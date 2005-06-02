@@ -196,7 +196,7 @@ public class FrmVedZaplati extends JDialog //implements ActionListener
         
         
         try {
-            reportParam.put("name", "хмяюид 3 - ннд");
+            reportParam.put("name", namefirm);
             if (reportParam  != null){
             System.out.println("niama Problem sas Hash");
             }
