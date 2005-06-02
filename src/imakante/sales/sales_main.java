@@ -108,6 +108,12 @@ public class sales_main extends javax.swing.JFrame {
         helpMenu.add(contentMenuItem);
 
         aboutMenuItem.setText("\u0410\u0432\u0442\u043e\u0440\u0438");
+        aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutMenuItemActionPerformed(evt);
+            }
+        });
+
         helpMenu.add(aboutMenuItem);
 
         jMenuItem1.setText("Item");
@@ -120,6 +126,11 @@ public class sales_main extends javax.swing.JFrame {
         pack();
     }
     // </editor-fold>//GEN-END:initComponents
+
+    private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
+     imakante.com.frmAbout salesAbout = new imakante.com.frmAbout(this, true);
+     salesAbout.setVisible(true);
+    }//GEN-LAST:event_aboutMenuItemActionPerformed
 
     private void nomMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomMenuActionPerformed
 // TODO add your handling code here:
