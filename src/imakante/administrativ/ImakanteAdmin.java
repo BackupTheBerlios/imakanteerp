@@ -199,7 +199,7 @@ public class ImakanteAdmin extends javax.swing.JFrame {
     }
     public void loadConn(){
         imakante.com.pubFrmConnection fconn = new imakante.com.pubFrmConnection(this);
-        fconn.show();
+        fconn.setVisible(true);
     }
     public java.sql.Connection makeConn(String dbDriver,String dbURL,String dbUser, String dbPass) throws java.sql.SQLException {
         
