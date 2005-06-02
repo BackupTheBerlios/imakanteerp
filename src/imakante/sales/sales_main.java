@@ -28,19 +28,21 @@ public class sales_main extends javax.swing.JFrame {
      */
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
-        desktopPane = new javax.swing.JDesktopPane();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         docMenu = new javax.swing.JMenu();
-        openMenuItem = new javax.swing.JMenuItem();
-        saveMenuItem = new javax.swing.JMenuItem();
-        saveAsMenuItem = new javax.swing.JMenuItem();
+        docMenu_Prod = new javax.swing.JMenuItem();
+        docMenu_Fak = new javax.swing.JMenuItem();
+        docMenu_Razp = new javax.swing.JMenuItem();
+        docMenu_Nar = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
         kasaMenu = new javax.swing.JMenu();
-        cutMenuItem = new javax.swing.JMenuItem();
-        copyMenuItem = new javax.swing.JMenuItem();
-        pasteMenuItem = new javax.swing.JMenuItem();
-        deleteMenuItem = new javax.swing.JMenuItem();
+        nomMenu = new javax.swing.JMenu();
+        nomMenu_Stoka = new javax.swing.JMenuItem();
+        nomMenu_Klienti = new javax.swing.JMenuItem();
+        nomMenu_dost = new javax.swing.JMenuItem();
+        sprMenu = new javax.swing.JMenu();
+        sluMenu = new javax.swing.JMenu();
         helpMenu = new javax.swing.JMenu();
         contentMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
@@ -48,19 +50,20 @@ public class sales_main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415 \u0422\u044a\u0440\u0433\u043e\u0432\u0441\u043a\u0438 \u043c\u043e\u0434\u0443\u043b");
-        getContentPane().add(desktopPane, java.awt.BorderLayout.CENTER);
-
         getContentPane().add(jDesktopPane1, java.awt.BorderLayout.NORTH);
 
         docMenu.setText("\u0414\u041e\u041a\u0423\u041c\u0415\u041d\u0422\u0418");
-        openMenuItem.setText("Open");
-        docMenu.add(openMenuItem);
+        docMenu_Prod.setText("\u041f\u0440\u043e\u0434\u0430\u0436\u0431\u0438");
+        docMenu.add(docMenu_Prod);
 
-        saveMenuItem.setText("Save");
-        docMenu.add(saveMenuItem);
+        docMenu_Fak.setText("\u0424\u0430\u043a\u0442\u0443\u0440\u0438");
+        docMenu.add(docMenu_Fak);
 
-        saveAsMenuItem.setText("Save As ...");
-        docMenu.add(saveAsMenuItem);
+        docMenu_Razp.setText("\u0420\u0430\u0437\u043f\u0438\u0441\u043a\u0438");
+        docMenu.add(docMenu_Razp);
+
+        docMenu_Nar.setText("Item");
+        docMenu.add(docMenu_Nar);
 
         exitMenuItem.setText("Exit");
         exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -74,25 +77,37 @@ public class sales_main extends javax.swing.JFrame {
         menuBar.add(docMenu);
 
         kasaMenu.setText("\u041a\u0410\u0421\u0410");
-        cutMenuItem.setText("Cut");
-        kasaMenu.add(cutMenuItem);
-
-        copyMenuItem.setText("Copy");
-        kasaMenu.add(copyMenuItem);
-
-        pasteMenuItem.setText("Paste");
-        kasaMenu.add(pasteMenuItem);
-
-        deleteMenuItem.setText("Delete");
-        kasaMenu.add(deleteMenuItem);
-
         menuBar.add(kasaMenu);
 
+        nomMenu.setText("\u041d\u041e\u041c\u0415\u041d\u041a\u041b\u0410\u0422\u0423\u0420\u0418");
+        nomMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomMenuActionPerformed(evt);
+            }
+        });
+
+        nomMenu_Stoka.setText("\u0421\u0442\u043e\u043a\u0430");
+        nomMenu.add(nomMenu_Stoka);
+
+        nomMenu_Klienti.setText("\u041a\u043b\u0438\u0435\u043d\u0442\u0438");
+        nomMenu.add(nomMenu_Klienti);
+
+        nomMenu_dost.setText("\u0414\u043e\u0441\u0442\u0430\u0432\u0447\u0438\u0446\u0438");
+        nomMenu.add(nomMenu_dost);
+
+        menuBar.add(nomMenu);
+
+        sprMenu.setText("\u0421\u041f\u0420\u0410\u0412\u041a\u0418");
+        menuBar.add(sprMenu);
+
+        sluMenu.setText("\u0421\u041b\u0423\u0416\u0415\u0411\u041d\u0418");
+        menuBar.add(sluMenu);
+
         helpMenu.setText("\u041f\u041e\u041c\u041e\u0429");
-        contentMenuItem.setText("Contents");
+        contentMenuItem.setText("\u0421\u044a\u0434\u044a\u0440\u0436\u0430\u043d\u0438\u0435");
         helpMenu.add(contentMenuItem);
 
-        aboutMenuItem.setText("About");
+        aboutMenuItem.setText("\u0410\u0432\u0442\u043e\u0440\u0438");
         helpMenu.add(aboutMenuItem);
 
         jMenuItem1.setText("Item");
@@ -105,6 +120,10 @@ public class sales_main extends javax.swing.JFrame {
         pack();
     }
     // </editor-fold>//GEN-END:initComponents
+
+    private void nomMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomMenuActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_nomMenuActionPerformed
     
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
         System.exit(0);
@@ -124,21 +143,23 @@ public class sales_main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem contentMenuItem;
-    private javax.swing.JMenuItem copyMenuItem;
-    private javax.swing.JMenuItem cutMenuItem;
-    private javax.swing.JMenuItem deleteMenuItem;
-    private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu docMenu;
+    private javax.swing.JMenuItem docMenu_Fak;
+    private javax.swing.JMenuItem docMenu_Nar;
+    private javax.swing.JMenuItem docMenu_Prod;
+    private javax.swing.JMenuItem docMenu_Razp;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu kasaMenu;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem openMenuItem;
-    private javax.swing.JMenuItem pasteMenuItem;
-    private javax.swing.JMenuItem saveAsMenuItem;
-    private javax.swing.JMenuItem saveMenuItem;
+    private javax.swing.JMenu nomMenu;
+    private javax.swing.JMenuItem nomMenu_Klienti;
+    private javax.swing.JMenuItem nomMenu_Stoka;
+    private javax.swing.JMenuItem nomMenu_dost;
+    private javax.swing.JMenu sluMenu;
+    private javax.swing.JMenu sprMenu;
     // End of variables declaration//GEN-END:variables
    
     java.sql.Connection dbConn = null;
