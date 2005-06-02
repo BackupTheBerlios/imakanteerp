@@ -23,10 +23,13 @@ import java.sql.Statement;
 import java.util.HashMap;
 import javax.swing.JScrollPane;
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JRViewer;
 
 
@@ -43,6 +46,7 @@ public class FrmVedZaplati extends JDialog //implements ActionListener
     private static String strYearsSQL;
     InputStream fs = null;
     JasperReport template = null;
+    HashMap reportParam;
     // String[] year = {"2005"};
     Connection dbInternal;
     Statement stm;
@@ -175,11 +179,15 @@ public class FrmVedZaplati extends JDialog //implements ActionListener
     
     
     private void jButton2_actionPerformed(ActionEvent e) {
-        String freport = "c:/nc1.jasper";
+        String freport = "c:/ved1.jasper";
         String namefirm = "хмяюид 3 - ннд";
         
-        HashMap reportParam = new HashMap();
-        reportParam = null;
+        reportParam = new HashMap();
+       // reportParam = null;
+       // reportParam.put("name", "хмяюид 3 - ннд");
+        
+       // reportParam.put("month", lMonth);
+       // reportParam.put("year", lYear);
         try{
             fs = new FileInputStream(freport);
         } catch (java.io.FileNotFoundException  ioex){
@@ -188,8 +196,12 @@ public class FrmVedZaplati extends JDialog //implements ActionListener
         
         
         try {
-            
-            
+            reportParam.put("name", "хмяюид 3 - ннд");
+            if (reportParam  != null){
+            System.out.println("niama Problem sas Hash");
+            }
+            //JasperDesign jasperDesign = JRXmlLoader.load("c:/ved3.xml");
+          //  JasperReport template= JasperCompileManager.compileReport(jasperDesign);
             template = JasperManager.loadReport(fs);
             JasperPrint print1 = JasperFillManager.fillReport(template,reportParam, dbInternal);
             // report1 = JasperManager.fillReport(report, reportParam, dbInternal);
