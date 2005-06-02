@@ -191,7 +191,7 @@ public class ImakanteAdmin extends javax.swing.JFrame {
             OpenTables FormOpen = new OpenTables(dbConn);
             desktopPane.add(FormOpen);
             FormOpen.setVisible(true);
-            FormOpen.show();
+            
         } else {
             JOptionPane.showMessageDialog(null,"Ot open  Възникнал проблем при осъществаване на връзка с базата.","ИМАКАНТЕ",JOptionPane.WARNING_MESSAGE);
         }
