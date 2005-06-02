@@ -94,10 +94,10 @@ public class pubFrmConnection extends JDialog implements ActionListener {
         }
         jTextField2.requestFocus();
     }
-    public pubFrmConnection(imakante.sales.sales_main m) {
+    public pubFrmConnection(imakante.sales.sales_main n) {
         super();
         try {
-            main1 = m;
+            main1 = n;
             i = 0;
             fint = "";
             this.setModal(true);
