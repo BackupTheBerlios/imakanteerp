@@ -26,6 +26,8 @@ public class FrmFishove extends javax.swing.JInternalFrame {
     private void initComponents() {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -35,16 +37,24 @@ public class FrmFishove extends javax.swing.JInternalFrame {
 
         setIconifiable(true);
         setTitle("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f \u043d\u0430 \u0444\u0438\u0448");
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
         jPanel1.setBorder(new javax.swing.border.EtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        jPanel1.add(jPanel3);
+        jPanel3.setBorder(new javax.swing.border.EtchedBorder());
+        jPanel1.add(jPanel3, java.awt.BorderLayout.CENTER);
+
+        jPanel4.setBorder(new javax.swing.border.EtchedBorder());
+        jPanel4.add(jLabel2);
+
+        jPanel1.add(jPanel4, java.awt.BorderLayout.NORTH);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         jPanel2.setBorder(new javax.swing.border.EtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        jButton1.setText("\u041e\u0442\u043f\u0443\u0441\u043a");
+        jButton1.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f");
         jPanel2.add(jButton1);
 
-        jButton2.setText("\u0411\u043e\u043b\u043d\u0438\u0447\u0435\u043d");
+        jButton2.setText("\u041f\u0435\u0447\u0430\u0442 \u0435\u0434\u0438\u043d \u0444\u0438\u0448");
         jPanel2.add(jButton2);
 
         jButton3.setText("jButton3");
@@ -69,9 +79,11 @@ public class FrmFishove extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
     
 }
