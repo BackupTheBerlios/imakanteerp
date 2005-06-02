@@ -32,6 +32,7 @@ import javax.swing.border.EtchedBorder;
 
 public class pubFrmConnection extends JDialog implements ActionListener {
     private imakante.administrativ.ImakanteAdmin main = null;
+    private imakante.sales.sales_main main1 = null;
     private JPanel jPanel1 = new JPanel();
     private JPanel jPanel2 = new JPanel();
     private JPanel jPanel3 = new JPanel();
@@ -93,7 +94,40 @@ public class pubFrmConnection extends JDialog implements ActionListener {
         }
         jTextField2.requestFocus();
     }
-    
+    public pubFrmConnection(imakante.sales.sales_main m) {
+        super();
+        try {
+            main1 = m;
+            i = 0;
+            fint = "";
+            this.setModal(true);
+            comboDriver = new JComboBox();
+            BufferedReader in = new BufferedReader(new InputStreamReader(new
+                    FileInputStream("c:/saleconn.ini"), "cp1251"));
+            if (in == null){
+                JOptionPane.showMessageDialog(null,"Възникнал проблем при четене на файл salary.ini .\n Моля копирайте стандартен файл.","ИМАКАНТЕ",JOptionPane.WARNING_MESSAGE);
+                
+            } else {
+                while ((lineStr = in.readLine()) != null) {
+                    
+                    i++;
+                    fint = fint + lineStr;
+                }
+                names =fint.split("!");
+                int sd = names.length;
+                
+                for (int j=0; j<names.length; j=j+3)  {
+                    comboDriver.addItem(names[j]);
+                }
+            }
+            
+            jbInit();
+            
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        jTextField2.requestFocus();
+    }
     private void jbInit() throws Exception {
         this.setTitle("Връзка с База Данни");
         this.setSize(new Dimension(463, 260));
