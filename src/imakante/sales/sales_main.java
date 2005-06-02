@@ -29,13 +29,14 @@ public class sales_main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         desktopPane = new javax.swing.JDesktopPane();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         docMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
         saveMenuItem = new javax.swing.JMenuItem();
         saveAsMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
-        Í‡Ò‡Menu = new javax.swing.JMenu();
+        kasaMenu = new javax.swing.JMenu();
         cutMenuItem = new javax.swing.JMenuItem();
         copyMenuItem = new javax.swing.JMenuItem();
         pasteMenuItem = new javax.swing.JMenuItem();
@@ -46,7 +47,10 @@ public class sales_main extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415 \u0422\u044a\u0440\u0433\u043e\u0432\u0441\u043a\u0438 \u043c\u043e\u0434\u0443\u043b");
         getContentPane().add(desktopPane, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(jDesktopPane1, java.awt.BorderLayout.NORTH);
 
         docMenu.setText("\u0414\u041e\u041a\u0423\u041c\u0415\u041d\u0422\u0418");
         openMenuItem.setText("Open");
@@ -69,20 +73,20 @@ public class sales_main extends javax.swing.JFrame {
 
         menuBar.add(docMenu);
 
-        Í‡Ò‡Menu.setText("\u041a\u0410\u0421\u0410");
+        kasaMenu.setText("\u041a\u0410\u0421\u0410");
         cutMenuItem.setText("Cut");
-        Í‡Ò‡Menu.add(cutMenuItem);
+        kasaMenu.add(cutMenuItem);
 
         copyMenuItem.setText("Copy");
-        Í‡Ò‡Menu.add(copyMenuItem);
+        kasaMenu.add(copyMenuItem);
 
         pasteMenuItem.setText("Paste");
-        Í‡Ò‡Menu.add(pasteMenuItem);
+        kasaMenu.add(pasteMenuItem);
 
         deleteMenuItem.setText("Delete");
-        Í‡Ò‡Menu.add(deleteMenuItem);
+        kasaMenu.add(deleteMenuItem);
 
-        menuBar.add(Í‡Ò‡Menu);
+        menuBar.add(kasaMenu);
 
         helpMenu.setText("\u041f\u041e\u041c\u041e\u0429");
         contentMenuItem.setText("Contents");
@@ -127,20 +131,23 @@ public class sales_main extends javax.swing.JFrame {
     private javax.swing.JMenu docMenu;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu helpMenu;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenu kasaMenu;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem pasteMenuItem;
     private javax.swing.JMenuItem saveAsMenuItem;
     private javax.swing.JMenuItem saveMenuItem;
-    private javax.swing.JMenu Í‡Ò‡Menu;
     // End of variables declaration//GEN-END:variables
-   java.sql.Connection dbConn = null;
+   
+    java.sql.Connection dbConn = null;
     public String dbName = null;
     public String dbURL = null;
     public String dbDriver = null;
     public String dbUser = null;
     public String dbPass = null;
+    
     public void loadConn(){
         imakante.com.pubFrmConnection fconn = new imakante.com.pubFrmConnection(this);
         fconn.setVisible(true);
