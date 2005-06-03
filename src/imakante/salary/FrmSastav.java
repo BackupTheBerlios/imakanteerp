@@ -276,11 +276,7 @@ public class FrmSastav extends JInternalFrame implements WindowListener {
                     stCus.close();
                     stCus = cnCus.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                             ResultSet.CONCUR_UPDATABLE);
-                    strSQL = "SELECT Id, nomer, first, second, family, egn, b_date, gender, "+
-                            "nomer_LK, data_izd_LK, oblast, postcode, grad, address, telefon, "+
-                            "mobilen, email, nomer_dogowor, data_naznach, data_postypwane, "+
-                            "data_napuskane, posl_den_w_osig, osnowanie_dog, srok_dog, d_st, "+
-                            "m_st, g_st, kateg_rabotnik, belejki FROM main_ls ORDER BY nomer ASC";
+                  
                     try {
                         rsCus = stCus.executeQuery(strSQL);
                     } catch (SQLException e) {JOptionPane.showMessageDialog(null,"Грешка ИЛС-С02Р  Възникнал проблем при осъществаване на връзка с базата.\n Моля въведете стойност в рамките 1 - 12.","ИМАКАНТЕ",JOptionPane.WARNING_MESSAGE);}
