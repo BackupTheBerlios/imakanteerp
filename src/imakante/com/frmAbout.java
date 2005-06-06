@@ -41,13 +41,7 @@ public class frmAbout extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmAbout(new javax.swing.JFrame(), true).setVisible(true);
-            }
-        });
-    }
+  
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
