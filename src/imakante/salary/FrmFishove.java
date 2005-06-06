@@ -101,7 +101,8 @@ public class FrmFishove extends javax.swing.JInternalFrame {
     // </editor-fold>//GEN-END:initComponents
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        frmFishPrev FrmFishPrev = new frmFishPrev(JFParentFrame, dbInternal, lYear,lMonth, fName);
+       
+        frmFishPrev FrmFishPrev = new frmFishPrev(JFParentFrame, dbInternal, lYear,lMonth, fName, 0);
         FrmFishPrev.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
     
@@ -119,8 +120,7 @@ public class FrmFishove extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
     JFrame JFParentFrame;
-    public int lYear;
-    public int lMonth;
+    public int lYear,lMonth,NL;
     public CustomTable jTable;
     public CustomTableModel jmodel;
     InputStream fs = null;
@@ -131,4 +131,5 @@ public class FrmFishove extends javax.swing.JInternalFrame {
     Statement stm;
     ResultSet rsCus;
     String strSQL;
+   
 }
