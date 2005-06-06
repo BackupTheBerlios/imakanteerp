@@ -162,6 +162,7 @@ public class frmConnSalary extends JDialog implements ActionListener {
         main.setPass(lDBPass);
         String firmName = (String)comboDriver.getSelectedItem();
         main.setFirm(firmName);
+        main.setNFirm(firmName);
         dispose();
     }
     

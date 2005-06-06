@@ -18,11 +18,11 @@ public class salary_main extends JFrame implements WindowListener{
     JDesktopPane Desk1 = new JDesktopPane();
     
     
-    JLabel StatusLabel = new JLabel("»Ã¿ ¿Õ“≈",JLabel.CENTER);
+    JLabel StatusLabel = new JLabel("»Ã¿ ¿Õ“≈ ",JLabel.CENTER);
     JLabel BTlabel = new JLabel();
     
     Dimension screen = 	Toolkit.getDefaultToolkit().getScreenSize();
-    
+    String StrName;
     String StrBTitle = null;
     String DBDriver = null; //"com.mysql.jdbc.Driver";
     String DBSource = null; //"jdbc:mysql://localhost:3306/mida";
@@ -902,7 +902,7 @@ public class salary_main extends JFrame implements WindowListener{
     protected void loadVedomostZForm() {
         
         
-        FrmVedZaplati FormVedZaplati = new FrmVedZaplati(this, dbCON, pYear,pMonth);
+        FrmVedZaplati FormVedZaplati = new FrmVedZaplati(this, dbCON, pYear,pMonth,StrName);
         FormVedZaplati.setVisible(true);
         
     }
@@ -1040,11 +1040,15 @@ public class salary_main extends JFrame implements WindowListener{
         return DBUserName;
     }
      public String setFirm(String strFirm){
-       
         StrBTitle = "ÀË˜ÂÌ Ò˙ÒÚ‡‚ Ì‡ ÙËÏ‡ " + strFirm;
         return StrBTitle;
+        
     }
-    
+     public String setNFirm(String strFirm){
+        StrName  =  strFirm;
+        return StrName;
+        
+    }
     public String setPass(String strPass){
         DBPassword = strPass;
         return DBPassword;

@@ -47,7 +47,7 @@ public class FrmVedZaplati extends JDialog //implements ActionListener
     InputStream fs = null;
     JasperReport template = null;
     HashMap reportParam;
-    // String[] year = {"2005"};
+    String fName;
     Connection dbInternal;
     Statement stm;
     ResultSet rsCus;
@@ -59,13 +59,13 @@ public class FrmVedZaplati extends JDialog //implements ActionListener
     public CustomTable jTable;
     public CustomTableModel jmodel;
     
-    public FrmVedZaplati(salary_main m, Connection dbCon, int tYear, int tMonth) {
+    public FrmVedZaplati(salary_main m, Connection dbCon, int tYear, int tMonth, String FName) {
         super();
         
         dbInternal = dbCon;
         lYear = tYear;
         lMonth = tMonth;
-        
+        fName = FName;
         try{
             stm = dbInternal.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
         } catch (SQLException sqle){
@@ -116,7 +116,7 @@ public class FrmVedZaplati extends JDialog //implements ActionListener
         jPanel2.setLayout(null);
         jPanel2.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
         jScrollPane1.setBounds(new Rectangle(5, 5, 480, 405));
-        B2.setText("Печат през JASPER");
+        B2.setText("Преглед през JASPER");
         B2.setBounds(new Rectangle(265, 10, 165, 25));
         B2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -132,46 +132,7 @@ public class FrmVedZaplati extends JDialog //implements ActionListener
     }
     
     private void jButton1_actionPerformed(ActionEvent e) {
-        System.out.println("OT PECHATA");
-        imakante.com.pubMethods PrintingClass = new imakante.com.pubMethods();
         
-        
-        String RecordToPrint = "";
-        
-        
-        RecordToPrint += "                            ВЕДОМОСТ за ЗАПЛАТИ за месец "+ lMonth+ "  година "+ lYear +"\n";
-        RecordToPrint += "\n\n\n";
-        RecordToPrint += " Номер            Име                     Щатна заплата     Удръжки      За получаване   Подпис  \n";
-        RecordToPrint += "___________________________________________________________________________________\n\n\n";
-        
-        try {
-            rsCus.beforeFirst();
-            while (rsCus.next()) {
-                String id = rsCus.getString("main_ls.id");
-                RecordToPrint += imakante.com.pubMethods.reverce_stringConverce(id, 5);
-                RecordToPrint +="   ";
-                String interName=rsCus.getString("main_ls.first") + " " + rsCus.getString("main_ls.second") + " " +rsCus.getString("main_ls.family");
-                RecordToPrint += imakante.com.pubMethods.stringConverce(interName, 45);
-                
-                
-                RecordToPrint += imakante.com.pubMethods.reverce_stringConverce(rsCus.getString("lsresult.zaplata"), 10);
-                
-                RecordToPrint += imakante.com.pubMethods.reverce_stringConverce(rsCus.getString("lsresult.psuma"), 10);
-                
-                RecordToPrint += imakante.com.pubMethods.reverce_stringConverce(rsCus.getString("lsresult.nsuma"), 10);
-                
-                RecordToPrint +="   ................\n";
-                RecordToPrint += "__________________________________________________________________________________\n";
-            }
-            RecordToPrint += "___________________________________________________________________________________\n";
-            RecordToPrint += "___________________________________________________________________________________\n\n";
-            PrintingClass.printRecord(RecordToPrint,main);
-            
-            
-            
-            
-            
-        } catch (SQLException ex) {}
     }
     
     
@@ -180,14 +141,14 @@ public class FrmVedZaplati extends JDialog //implements ActionListener
     
     private void jButton2_actionPerformed(ActionEvent e) {
         String freport = "c:/ved1.jasper";
-        String namefirm = "ИНСАЙД 3 - ООД";
+        //String namefirm = "ИНСАЙД 3 - ООД";
         
         reportParam = new HashMap();
-       // reportParam = null;
-       // reportParam.put("name", "ИНСАЙД 3 - ООД");
+        // reportParam = null;
+        // reportParam.put("name", "ИНСАЙД 3 - ООД");
         
-       // reportParam.put("month", lMonth);
-       // reportParam.put("year", lYear);
+        // reportParam.put("month", lMonth);
+        // reportParam.put("year", lYear);
         try{
             fs = new FileInputStream(freport);
         } catch (java.io.FileNotFoundException  ioex){
@@ -196,15 +157,18 @@ public class FrmVedZaplati extends JDialog //implements ActionListener
         
         
         try {
-            reportParam.put("name", namefirm);
+            reportParam.put("name", fName);
+            reportParam.put("lmonth", lMonth);
+            reportParam.put("lyear", lYear);
             if (reportParam  != null){
-            System.out.println("niama Problem sas Hash");
+                
             }
             //JasperDesign jasperDesign = JRXmlLoader.load("c:/ved3.xml");
-          //  JasperReport template= JasperCompileManager.compileReport(jasperDesign);
+            //  JasperReport template= JasperCompileManager.compileReport(jasperDesign);
             template = JasperManager.loadReport(fs);
             JasperPrint print1 = JasperFillManager.fillReport(template,reportParam, dbInternal);
             // report1 = JasperManager.fillReport(report, reportParam, dbInternal);
+            
             JRViewer jrv = new JRViewer(print1);
             jrv.setSize(490, 490);
             jrv.setVisible(true);
@@ -217,7 +181,7 @@ public class FrmVedZaplati extends JDialog //implements ActionListener
             jPanel2.remove(B2);
             panel.remove(jPanel2);
             panel.repaint();
-                        
+            
         } catch (JRException jrev){
             
             
@@ -225,5 +189,5 @@ public class FrmVedZaplati extends JDialog //implements ActionListener
         }
         
     }
-   
+    
 }
