@@ -166,7 +166,7 @@ public class FrmSastav extends JInternalFrame implements WindowListener {
             
             private void jButton1_actionPerformed(ActionEvent e) {
                 JDialog JDAdd = new frmAddLitse(true, JFParentFrame, cnCus, "", lMonth, lYear);
-                JDAdd.show();
+                JDAdd.setVisible(true);
             }
             
             private void jButton2_actionPerformed(ActionEvent e)
@@ -181,7 +181,7 @@ public class FrmSastav extends JInternalFrame implements WindowListener {
                                 "mobilen, email, nomer_dogowor, data_naznach, data_postypwane, "+
                                 "data_napuskane, posl_den_w_osig, osnowanie_dog, srok_dog, d_st, "+
                                 "m_st, g_st, kateg_rabotnik, belejki FROM main_ls WHERE id = " + jTable.getValueAt(jTable.getSelectedRow(), 0), lMonth, lYear);
-                        JDEdit.show();}
+                        JDEdit.setVisible(true);}
                 } catch (Exception sqlE) {
                     if (sqlE.getMessage() != null) {
                         System.out.println(sqlE.getMessage());
