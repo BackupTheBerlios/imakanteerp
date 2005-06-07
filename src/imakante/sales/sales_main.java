@@ -30,13 +30,19 @@ public class sales_main extends javax.swing.JFrame {
     private void initComponents() {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
+        programMenu = new javax.swing.JMenu();
+        programMenu_conn = new javax.swing.JMenuItem();
+        programMenu_logout = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JSeparator();
+        exitMenu = new javax.swing.JMenuItem();
         docMenu = new javax.swing.JMenu();
         docMenu_Prod = new javax.swing.JMenuItem();
         docMenu_Fak = new javax.swing.JMenuItem();
         docMenu_Razp = new javax.swing.JMenuItem();
         docMenu_Nar = new javax.swing.JMenuItem();
-        exitMenuItem = new javax.swing.JMenuItem();
         kasaMenu = new javax.swing.JMenu();
+        kasaMenu_prih = new javax.swing.JMenuItem();
+        kasaMenu_razh = new javax.swing.JMenuItem();
         nomMenu = new javax.swing.JMenu();
         nomMenu_Stoka = new javax.swing.JMenuItem();
         nomMenu_Klienti = new javax.swing.JMenuItem();
@@ -52,6 +58,20 @@ public class sales_main extends javax.swing.JFrame {
         setTitle("\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415 \u0422\u044a\u0440\u0433\u043e\u0432\u0441\u043a\u0438 \u043c\u043e\u0434\u0443\u043b");
         getContentPane().add(jDesktopPane1, java.awt.BorderLayout.NORTH);
 
+        programMenu.setText("\u041f\u0420\u041e\u0413\u0420\u0410\u041c\u0410");
+        programMenu_conn.setText("\u0412\u0440\u044a\u0437\u043a\u0430 \u0441 \u0431\u0430\u0437\u0430\u0442\u0430");
+        programMenu.add(programMenu_conn);
+
+        programMenu_logout.setText("\u041f\u0440\u0435\u043a\u044a\u0441\u0432\u0430\u043d\u0435 \u043d\u0430 \u0432\u0440\u044a\u0437\u043a\u0430");
+        programMenu.add(programMenu_logout);
+
+        programMenu.add(jSeparator1);
+
+        exitMenu.setText("\u0418\u0417\u0425\u041e\u0414");
+        programMenu.add(exitMenu);
+
+        menuBar.add(programMenu);
+
         docMenu.setText("\u0414\u041e\u041a\u0423\u041c\u0415\u041d\u0422\u0418");
         docMenu_Prod.setText("\u041f\u0440\u043e\u0434\u0430\u0436\u0431\u0438");
         docMenu.add(docMenu_Prod);
@@ -65,18 +85,15 @@ public class sales_main extends javax.swing.JFrame {
         docMenu_Nar.setText("Item");
         docMenu.add(docMenu_Nar);
 
-        exitMenuItem.setText("Exit");
-        exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitMenuItemActionPerformed(evt);
-            }
-        });
-
-        docMenu.add(exitMenuItem);
-
         menuBar.add(docMenu);
 
         kasaMenu.setText("\u041a\u0410\u0421\u0410");
+        kasaMenu_prih.setText("\u041f\u0440\u0438\u0445\u043e\u0434\u043d\u0438 \u043a\u0430\u0441\u043e\u0432\u0438 \u043e\u0440\u0434\u0435\u0440\u0438");
+        kasaMenu.add(kasaMenu_prih);
+
+        kasaMenu_razh.setText("\u0420\u0430\u0437\u0445\u043e\u0434\u043d\u0438 \u043a\u0430\u0441\u043e\u0432\u0438 \u043e\u0440\u0434\u0435\u0440\u0438");
+        kasaMenu.add(kasaMenu_razh);
+
         menuBar.add(kasaMenu);
 
         nomMenu.setText("\u041d\u041e\u041c\u0415\u041d\u041a\u041b\u0410\u0422\u0423\u0420\u0418");
@@ -135,11 +152,7 @@ public class sales_main extends javax.swing.JFrame {
     private void nomMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomMenuActionPerformed
 // TODO add your handling code here:
     }//GEN-LAST:event_nomMenuActionPerformed
-    
-    private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_exitMenuItemActionPerformed
-    
+        
     /**
      * @param args the command line arguments
      */
@@ -159,16 +172,22 @@ public class sales_main extends javax.swing.JFrame {
     private javax.swing.JMenuItem docMenu_Nar;
     private javax.swing.JMenuItem docMenu_Prod;
     private javax.swing.JMenuItem docMenu_Razp;
-    private javax.swing.JMenuItem exitMenuItem;
+    private javax.swing.JMenuItem exitMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JMenu kasaMenu;
+    private javax.swing.JMenuItem kasaMenu_prih;
+    private javax.swing.JMenuItem kasaMenu_razh;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu nomMenu;
     private javax.swing.JMenuItem nomMenu_Klienti;
     private javax.swing.JMenuItem nomMenu_Stoka;
     private javax.swing.JMenuItem nomMenu_dost;
+    private javax.swing.JMenu programMenu;
+    private javax.swing.JMenuItem programMenu_conn;
+    private javax.swing.JMenuItem programMenu_logout;
     private javax.swing.JMenu sluMenu;
     private javax.swing.JMenu sprMenu;
     // End of variables declaration//GEN-END:variables

@@ -4,6 +4,30 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="menuBar">
       <SubComponents>
+        <Menu class="javax.swing.JMenu" name="programMenu">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="ПРОГРАМА"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="programMenu_conn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Връзка с базата"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="programMenu_logout">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Прекъсване на връзка"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JSeparator" name="jSeparator1">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="exitMenu">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ИЗХОД"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
         <Menu class="javax.swing.JMenu" name="docMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="ДОКУМЕНТИ"/>
@@ -29,20 +53,24 @@
                 <Property name="text" type="java.lang.String" value="Item"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="exitMenuItem">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Exit"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitMenuItemActionPerformed"/>
-              </Events>
-            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="kasaMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="КАСА"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="kasaMenu_prih">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Приходни касови ордери"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="kasaMenu_razh">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Разходни касови ордери"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="nomMenu">
           <Properties>
