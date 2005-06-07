@@ -36,10 +36,14 @@ public class sales_main extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         exitMenu = new javax.swing.JMenuItem();
         docMenu = new javax.swing.JMenu();
-        docMenu_Prod = new javax.swing.JMenuItem();
-        docMenu_Fak = new javax.swing.JMenuItem();
-        docMenu_Razp = new javax.swing.JMenuItem();
-        docMenu_Nar = new javax.swing.JMenuItem();
+        doc_Menu_prod = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        fakMenu_dan = new javax.swing.JMenuItem();
+        fakMenu_opr = new javax.swing.JMenuItem();
+        docMenu_razp = new javax.swing.JMenu();
+        razpMenu_pol = new javax.swing.JMenuItem();
+        razpMenu_prehv = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         kasaMenu = new javax.swing.JMenu();
         kasaMenu_prih = new javax.swing.JMenuItem();
         kasaMenu_razh = new javax.swing.JMenuItem();
@@ -68,22 +72,40 @@ public class sales_main extends javax.swing.JFrame {
         programMenu.add(jSeparator1);
 
         exitMenu.setText("\u0418\u0417\u0425\u041e\u0414");
+        exitMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitMenuActionPerformed(evt);
+            }
+        });
+
         programMenu.add(exitMenu);
 
         menuBar.add(programMenu);
 
         docMenu.setText("\u0414\u041e\u041a\u0423\u041c\u0415\u041d\u0422\u0418");
-        docMenu_Prod.setText("\u041f\u0440\u043e\u0434\u0430\u0436\u0431\u0438");
-        docMenu.add(docMenu_Prod);
+        doc_Menu_prod.setText("\u041f\u0440\u043e\u0434\u0430\u0436\u0431\u0438");
+        docMenu.add(doc_Menu_prod);
 
-        docMenu_Fak.setText("\u0424\u0430\u043a\u0442\u0443\u0440\u0438");
-        docMenu.add(docMenu_Fak);
+        jMenu1.setText("\u0424\u0430\u043a\u0442\u0443\u0440\u0438");
+        fakMenu_dan.setText("\u0414\u0430\u043d\u044a\u0447\u043d\u0438");
+        jMenu1.add(fakMenu_dan);
 
-        docMenu_Razp.setText("\u0420\u0430\u0437\u043f\u0438\u0441\u043a\u0438");
-        docMenu.add(docMenu_Razp);
+        fakMenu_opr.setText("\u041e\u043f\u0440\u043e\u0441\u0442\u0435\u043d\u0438");
+        jMenu1.add(fakMenu_opr);
 
-        docMenu_Nar.setText("Item");
-        docMenu.add(docMenu_Nar);
+        docMenu.add(jMenu1);
+
+        docMenu_razp.setText("\u0420\u0430\u0437\u043f\u0438\u0441\u043a\u0438");
+        razpMenu_pol.setText("Item");
+        docMenu_razp.add(razpMenu_pol);
+
+        razpMenu_prehv.setText("\u041f\u0440\u0435\u0445\u0432\u044a\u0440\u043b\u044f\u043d\u0435");
+        docMenu_razp.add(razpMenu_prehv);
+
+        docMenu.add(docMenu_razp);
+
+        jMenuItem3.setText("Item");
+        docMenu.add(jMenuItem3);
 
         menuBar.add(docMenu);
 
@@ -144,6 +166,10 @@ public class sales_main extends javax.swing.JFrame {
     }
     // </editor-fold>//GEN-END:initComponents
 
+    private void exitMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuActionPerformed
+ 
+    }//GEN-LAST:event_exitMenuActionPerformed
+
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
      imakante.com.frmAbout salesAbout = new imakante.com.frmAbout(this, true);
      salesAbout.setVisible(true);
@@ -168,14 +194,16 @@ public class sales_main extends javax.swing.JFrame {
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem contentMenuItem;
     private javax.swing.JMenu docMenu;
-    private javax.swing.JMenuItem docMenu_Fak;
-    private javax.swing.JMenuItem docMenu_Nar;
-    private javax.swing.JMenuItem docMenu_Prod;
-    private javax.swing.JMenuItem docMenu_Razp;
+    private javax.swing.JMenu docMenu_razp;
+    private javax.swing.JMenuItem doc_Menu_prod;
     private javax.swing.JMenuItem exitMenu;
+    private javax.swing.JMenuItem fakMenu_dan;
+    private javax.swing.JMenuItem fakMenu_opr;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JMenu kasaMenu;
     private javax.swing.JMenuItem kasaMenu_prih;
@@ -188,6 +216,8 @@ public class sales_main extends javax.swing.JFrame {
     private javax.swing.JMenu programMenu;
     private javax.swing.JMenuItem programMenu_conn;
     private javax.swing.JMenuItem programMenu_logout;
+    private javax.swing.JMenuItem razpMenu_pol;
+    private javax.swing.JMenuItem razpMenu_prehv;
     private javax.swing.JMenu sluMenu;
     private javax.swing.JMenu sprMenu;
     // End of variables declaration//GEN-END:variables

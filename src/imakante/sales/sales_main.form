@@ -25,6 +25,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="ИЗХОД"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitMenuActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -33,22 +36,46 @@
             <Property name="text" type="java.lang.String" value="ДОКУМЕНТИ"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="docMenu_Prod">
+            <MenuItem class="javax.swing.JMenuItem" name="doc_Menu_prod">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Продажби"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="docMenu_Fak">
+            <Menu class="javax.swing.JMenu" name="jMenu1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Фактури"/>
               </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="docMenu_Razp">
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="fakMenu_dan">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Данъчни"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="fakMenu_opr">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Опростени"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="docMenu_razp">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Разписки"/>
               </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="docMenu_Nar">
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="razpMenu_pol">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Item"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="razpMenu_prehv">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Прехвърляне"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Item"/>
               </Properties>
