@@ -63,11 +63,13 @@ public class OpenTables extends javax.swing.JInternalFrame {
             e1.printStackTrace();
         }
         setVisible(true);
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
         jPanel1.setBorder(new javax.swing.border.EtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jPanel1.setAutoscrolls(true);
         jScrollPane1.setAutoscrolls(true);
         jScrollPane1.setViewportView(jTable);
-        jPanel1.add(jScrollPane1);
+        jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
