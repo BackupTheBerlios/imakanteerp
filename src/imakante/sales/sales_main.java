@@ -36,17 +36,30 @@ public class sales_main extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         exitMenu = new javax.swing.JMenuItem();
         docMenu = new javax.swing.JMenu();
-        doc_Menu_prod = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
+        docMenu_prod = new javax.swing.JMenuItem();
+        docMenu_fak = new javax.swing.JMenu();
         fakMenu_dan = new javax.swing.JMenuItem();
         fakMenu_opr = new javax.swing.JMenuItem();
         docMenu_razp = new javax.swing.JMenu();
         razpMenu_pol = new javax.swing.JMenuItem();
         razpMenu_prehv = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        docMenu_nar = new javax.swing.JMenuItem();
+        docMenu_prot = new javax.swing.JMenu();
+        protMenu_rev = new javax.swing.JMenuItem();
+        protMenu_brak = new javax.swing.JMenuItem();
+        protMenu_lipsa = new javax.swing.JMenuItem();
+        protMenu_preo = new javax.swing.JMenuItem();
+        docMenu_porach = new javax.swing.JMenu();
+        porachMenu_in = new javax.swing.JMenuItem();
+        porachMenu_out = new javax.swing.JMenuItem();
+        docMenu_offer = new javax.swing.JMenuItem();
         kasaMenu = new javax.swing.JMenu();
-        kasaMenu_prih = new javax.swing.JMenuItem();
-        kasaMenu_razh = new javax.swing.JMenuItem();
+        kasaMenu_order = new javax.swing.JMenu();
+        orderMenu_prih = new javax.swing.JMenuItem();
+        orderMenu_razh = new javax.swing.JMenuItem();
+        kasaMenu_nal = new javax.swing.JMenuItem();
+        kasaMenu_dvi = new javax.swing.JMenuItem();
+        kasaMenu_opis = new javax.swing.JMenuItem();
         nomMenu = new javax.swing.JMenu();
         nomMenu_Stoka = new javax.swing.JMenuItem();
         nomMenu_Klienti = new javax.swing.JMenuItem();
@@ -83,20 +96,20 @@ public class sales_main extends javax.swing.JFrame {
         menuBar.add(programMenu);
 
         docMenu.setText("\u0414\u041e\u041a\u0423\u041c\u0415\u041d\u0422\u0418");
-        doc_Menu_prod.setText("\u041f\u0440\u043e\u0434\u0430\u0436\u0431\u0438");
-        docMenu.add(doc_Menu_prod);
+        docMenu_prod.setText("\u041f\u0440\u043e\u0434\u0430\u0436\u0431\u0438");
+        docMenu.add(docMenu_prod);
 
-        jMenu1.setText("\u0424\u0430\u043a\u0442\u0443\u0440\u0438");
+        docMenu_fak.setText("\u0424\u0430\u043a\u0442\u0443\u0440\u0438");
         fakMenu_dan.setText("\u0414\u0430\u043d\u044a\u0447\u043d\u0438");
-        jMenu1.add(fakMenu_dan);
+        docMenu_fak.add(fakMenu_dan);
 
         fakMenu_opr.setText("\u041e\u043f\u0440\u043e\u0441\u0442\u0435\u043d\u0438");
-        jMenu1.add(fakMenu_opr);
+        docMenu_fak.add(fakMenu_opr);
 
-        docMenu.add(jMenu1);
+        docMenu.add(docMenu_fak);
 
         docMenu_razp.setText("\u0420\u0430\u0437\u043f\u0438\u0441\u043a\u0438");
-        razpMenu_pol.setText("Item");
+        razpMenu_pol.setText("\u041f\u043e\u043b\u0443\u0447\u0430\u0432\u0430\u043d\u0435");
         docMenu_razp.add(razpMenu_pol);
 
         razpMenu_prehv.setText("\u041f\u0440\u0435\u0445\u0432\u044a\u0440\u043b\u044f\u043d\u0435");
@@ -104,17 +117,56 @@ public class sales_main extends javax.swing.JFrame {
 
         docMenu.add(docMenu_razp);
 
-        jMenuItem3.setText("Item");
-        docMenu.add(jMenuItem3);
+        docMenu_nar.setText("\u041d\u0430\u0440\u0435\u0436\u0434\u0430\u043d\u0435");
+        docMenu.add(docMenu_nar);
+
+        docMenu_prot.setText("\u041f\u0440\u043e\u0442\u043e\u043a\u043e\u043b\u0438");
+        protMenu_rev.setText("\u0420\u0435\u0432\u0438\u0437\u0438\u044f");
+        docMenu_prot.add(protMenu_rev);
+
+        protMenu_brak.setText("\u0411\u0440\u0430\u043a");
+        docMenu_prot.add(protMenu_brak);
+
+        protMenu_lipsa.setText("\u041b\u0438\u043f\u0441\u0430");
+        docMenu_prot.add(protMenu_lipsa);
+
+        protMenu_preo.setText("\u041f\u0440\u0435\u043e\u0446\u0435\u043d\u043a\u0430");
+        docMenu_prot.add(protMenu_preo);
+
+        docMenu.add(docMenu_prot);
+
+        docMenu_porach.setText("\u041f\u043e\u0440\u044a\u0447\u043a\u0438");
+        porachMenu_in.setText("\u0412\u044a\u0442\u0440\u0435\u0448\u043d\u0438");
+        docMenu_porach.add(porachMenu_in);
+
+        porachMenu_out.setText("\u0412\u044a\u043d\u0448\u043d\u0438");
+        docMenu_porach.add(porachMenu_out);
+
+        docMenu.add(docMenu_porach);
+
+        docMenu_offer.setText("\u041e\u0444\u0435\u0440\u0442\u0438");
+        docMenu.add(docMenu_offer);
 
         menuBar.add(docMenu);
 
         kasaMenu.setText("\u041a\u0410\u0421\u0410");
-        kasaMenu_prih.setText("\u041f\u0440\u0438\u0445\u043e\u0434\u043d\u0438 \u043a\u0430\u0441\u043e\u0432\u0438 \u043e\u0440\u0434\u0435\u0440\u0438");
-        kasaMenu.add(kasaMenu_prih);
+        kasaMenu_order.setText("\u041e\u0440\u0434\u0435\u0440\u0438");
+        orderMenu_prih.setText("\u041f\u0440\u0438\u0445\u043e\u0434\u043d\u0438");
+        kasaMenu_order.add(orderMenu_prih);
 
-        kasaMenu_razh.setText("\u0420\u0430\u0437\u0445\u043e\u0434\u043d\u0438 \u043a\u0430\u0441\u043e\u0432\u0438 \u043e\u0440\u0434\u0435\u0440\u0438");
-        kasaMenu.add(kasaMenu_razh);
+        orderMenu_razh.setText("\u0420\u0430\u0437\u0445\u043e\u0434\u043d\u0438");
+        kasaMenu_order.add(orderMenu_razh);
+
+        kasaMenu.add(kasaMenu_order);
+
+        kasaMenu_nal.setText("\u041d\u0430\u043b\u0438\u0447\u043d\u043e\u0441\u0442 \u0432 \u043a\u0430\u0441\u0438");
+        kasaMenu.add(kasaMenu_nal);
+
+        kasaMenu_dvi.setText("\u0414\u0432\u0438\u0436\u0435\u043d\u0438\u0435");
+        kasaMenu.add(kasaMenu_dvi);
+
+        kasaMenu_opis.setText("\u041e\u043f\u0438\u0441 \u043d\u0430 \u043a\u043e\u043f\u044e\u0440\u0438");
+        kasaMenu.add(kasaMenu_opis);
 
         menuBar.add(kasaMenu);
 
@@ -194,28 +246,41 @@ public class sales_main extends javax.swing.JFrame {
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem contentMenuItem;
     private javax.swing.JMenu docMenu;
+    private javax.swing.JMenu docMenu_fak;
+    private javax.swing.JMenuItem docMenu_nar;
+    private javax.swing.JMenuItem docMenu_offer;
+    private javax.swing.JMenu docMenu_porach;
+    private javax.swing.JMenuItem docMenu_prod;
+    private javax.swing.JMenu docMenu_prot;
     private javax.swing.JMenu docMenu_razp;
-    private javax.swing.JMenuItem doc_Menu_prod;
     private javax.swing.JMenuItem exitMenu;
     private javax.swing.JMenuItem fakMenu_dan;
     private javax.swing.JMenuItem fakMenu_opr;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JMenu kasaMenu;
-    private javax.swing.JMenuItem kasaMenu_prih;
-    private javax.swing.JMenuItem kasaMenu_razh;
+    private javax.swing.JMenuItem kasaMenu_dvi;
+    private javax.swing.JMenuItem kasaMenu_nal;
+    private javax.swing.JMenuItem kasaMenu_opis;
+    private javax.swing.JMenu kasaMenu_order;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu nomMenu;
     private javax.swing.JMenuItem nomMenu_Klienti;
     private javax.swing.JMenuItem nomMenu_Stoka;
     private javax.swing.JMenuItem nomMenu_dost;
+    private javax.swing.JMenuItem orderMenu_prih;
+    private javax.swing.JMenuItem orderMenu_razh;
+    private javax.swing.JMenuItem porachMenu_in;
+    private javax.swing.JMenuItem porachMenu_out;
     private javax.swing.JMenu programMenu;
     private javax.swing.JMenuItem programMenu_conn;
     private javax.swing.JMenuItem programMenu_logout;
+    private javax.swing.JMenuItem protMenu_brak;
+    private javax.swing.JMenuItem protMenu_lipsa;
+    private javax.swing.JMenuItem protMenu_preo;
+    private javax.swing.JMenuItem protMenu_rev;
     private javax.swing.JMenuItem razpMenu_pol;
     private javax.swing.JMenuItem razpMenu_prehv;
     private javax.swing.JMenu sluMenu;
