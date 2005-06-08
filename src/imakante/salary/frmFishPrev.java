@@ -63,12 +63,12 @@ public class frmFishPrev extends javax.swing.JDialog {
     private void initComponents() {
         jPanel1 = new javax.swing.JPanel();
 
-        getContentPane().setLayout(new java.awt.FlowLayout());
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
         jPanel1.add(jrv, -1);
         jPanel1.setBorder(new javax.swing.border.EtchedBorder());
-        getContentPane().add(jPanel1);
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }
