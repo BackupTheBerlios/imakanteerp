@@ -104,6 +104,7 @@ public class FrmFishove extends javax.swing.JInternalFrame {
        
         frmFishPrev FrmFishPrev = new frmFishPrev(JFParentFrame, dbInternal, lYear,lMonth, fName, 0);
         FrmFishPrev.setVisible(true);
+        
     }//GEN-LAST:event_jButton3ActionPerformed
     
     
