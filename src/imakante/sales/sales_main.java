@@ -6,6 +6,7 @@
 
 package imakante.sales;
 
+import java.beans.PropertyVetoException;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -28,7 +29,9 @@ public class sales_main extends javax.swing.JFrame {
      */
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        desktopPane = new javax.swing.JDesktopPane();
+        jToolBar1 = new javax.swing.JToolBar();
+        jButton1 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         programMenu = new javax.swing.JMenu();
         programMenu_conn = new javax.swing.JMenuItem();
@@ -73,10 +76,27 @@ public class sales_main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415 \u0422\u044a\u0440\u0433\u043e\u0432\u0441\u043a\u0438 \u043c\u043e\u0434\u0443\u043b");
-        getContentPane().add(jDesktopPane1, java.awt.BorderLayout.NORTH);
+        getContentPane().add(desktopPane, java.awt.BorderLayout.CENTER);
+
+        jButton1.setIcon(new javax.swing.ImageIcon("C:\\REA\\src\\midass\\openfile.gif"));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jToolBar1.add(jButton1);
+
+        getContentPane().add(jToolBar1, java.awt.BorderLayout.NORTH);
 
         programMenu.setText("\u041f\u0420\u041e\u0413\u0420\u0410\u041c\u0410");
         programMenu_conn.setText("\u0412\u0440\u044a\u0437\u043a\u0430 \u0441 \u0431\u0430\u0437\u0430\u0442\u0430");
+        programMenu_conn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                programMenu_connActionPerformed(evt);
+            }
+        });
+
         programMenu.add(programMenu_conn);
 
         programMenu_logout.setText("\u041f\u0440\u0435\u043a\u044a\u0441\u0432\u0430\u043d\u0435 \u043d\u0430 \u0432\u0440\u044a\u0437\u043a\u0430");
@@ -181,6 +201,12 @@ public class sales_main extends javax.swing.JFrame {
         nomMenu.add(nomMenu_Stoka);
 
         nomMenu_Klienti.setText("\u041a\u043b\u0438\u0435\u043d\u0442\u0438");
+        nomMenu_Klienti.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomMenu_KlientiActionPerformed(evt);
+            }
+        });
+
         nomMenu.add(nomMenu_Klienti);
 
         nomMenu_dost.setText("\u0414\u043e\u0441\u0442\u0430\u0432\u0447\u0438\u0446\u0438");
@@ -217,20 +243,39 @@ public class sales_main extends javax.swing.JFrame {
         pack();
     }
     // </editor-fold>//GEN-END:initComponents
-
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try{
+            loadKlienti();} catch (java.sql.SQLException sql1){}
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
+    private void programMenu_connActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_programMenu_connActionPerformed
+        loadConn();
+        try {
+            makeConn(dbDriver,dbURL,dbUser,dbPass);
+        } catch (java.sql.SQLException sql1){
+            JOptionPane.showMessageDialog(null,"Възникнал проблем при осъществаване на връзка с базата.","ИМАКАНТЕ",JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_programMenu_connActionPerformed
+    
+    private void nomMenu_KlientiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomMenu_KlientiActionPerformed
+        try{
+            loadKlienti();} catch (java.sql.SQLException sql1){}
+    }//GEN-LAST:event_nomMenu_KlientiActionPerformed
+    
     private void exitMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuActionPerformed
- 
+        
     }//GEN-LAST:event_exitMenuActionPerformed
-
+    
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
-     imakante.com.frmAbout salesAbout = new imakante.com.frmAbout(this, true);
-     salesAbout.setVisible(true);
+        imakante.com.frmAbout salesAbout = new imakante.com.frmAbout(this, true);
+        salesAbout.setVisible(true);
     }//GEN-LAST:event_aboutMenuItemActionPerformed
-
+    
     private void nomMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomMenuActionPerformed
 // TODO add your handling code here:
     }//GEN-LAST:event_nomMenuActionPerformed
-        
+    
     /**
      * @param args the command line arguments
      */
@@ -245,6 +290,7 @@ public class sales_main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem contentMenuItem;
+    private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu docMenu;
     private javax.swing.JMenu docMenu_fak;
     private javax.swing.JMenuItem docMenu_nar;
@@ -257,9 +303,10 @@ public class sales_main extends javax.swing.JFrame {
     private javax.swing.JMenuItem fakMenu_dan;
     private javax.swing.JMenuItem fakMenu_opr;
     private javax.swing.JMenu helpMenu;
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenu kasaMenu;
     private javax.swing.JMenuItem kasaMenu_dvi;
     private javax.swing.JMenuItem kasaMenu_nal;
@@ -286,19 +333,23 @@ public class sales_main extends javax.swing.JFrame {
     private javax.swing.JMenu sluMenu;
     private javax.swing.JMenu sprMenu;
     // End of variables declaration//GEN-END:variables
-   
+    
     java.sql.Connection dbConn = null;
     public String dbName = null;
     public String dbURL = null;
     public String dbDriver = null;
     public String dbUser = null;
     public String dbPass = null;
+    //forms
+    imakante.sales.FrmKlienti FormKlienti;
+    
+    
     
     public void loadConn(){
-        imakante.com.pubFrmConnection fconn = new imakante.com.pubFrmConnection(this);
+        imakante.sales.salesFrmConnection fconn = new salesFrmConnection(this);
+        
         fconn.setVisible(true);
     }
-    
     public java.sql.Connection makeConn(String dbDriver,String dbURL,String dbUser, String dbPass) throws java.sql.SQLException {
         
         String DBDriver = dbDriver;
@@ -339,9 +390,20 @@ public class sales_main extends javax.swing.JFrame {
         dbDriver = null;
         dbUser = null;
         dbPass = null;
-    } 
+    }
     
-      
+    public void loadKlienti() throws java.sql.SQLException {
+        if (dbConn != null){
+            FrmKlienti FormKlienti = new FrmKlienti(dbConn);
+            desktopPane.add(FormKlienti);
+            FormKlienti.setVisible(true);
+            
+        } else {
+            JOptionPane.showMessageDialog(null,"Възникнал проблем при осъществаване на връзка с базата.","ИМАКАНТЕ",JOptionPane.WARNING_MESSAGE);
+        }
+        
+    }
+    
     public String setDBDriver(String strDriver){
         dbDriver = strDriver;
         return dbDriver;

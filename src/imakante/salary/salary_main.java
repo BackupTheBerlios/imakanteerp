@@ -18,6 +18,7 @@ public class salary_main extends JFrame implements WindowListener{
     JDesktopPane Desk1 = new JDesktopPane();
     
     
+    
     JLabel StatusLabel = new JLabel("ИМАКАНТЕ ",JLabel.CENTER);
     JLabel BTlabel = new JLabel();
     
@@ -29,7 +30,7 @@ public class salary_main extends JFrame implements WindowListener{
     String DBUserName = null; //"rado";
     String DBPassword = null; //"123";
     Connection dbCON;
-    
+    boolean suportStProc = false;
     int pMonth = 0;
     int pYear = 0;
     //--Start variable the contains forms
@@ -44,9 +45,9 @@ public class salary_main extends JFrame implements WindowListener{
     FrmOtdel     FormOtdel;
     FrmDlajnost  FormDlajnost;
     FrmVedZaplati FormVedZaplati;
-
     
-    Font menuFont = new Font("Dialog", Font.PLAIN, 12);
+    
+    Font menuFont = new Font("Tahoma", Font.PLAIN, 11);
     
 //	Thread ThFormLogo = new Thread(FormLogo);
     
@@ -69,7 +70,7 @@ public class salary_main extends JFrame implements WindowListener{
             System.err.println("Unable to connect");
             e.printStackTrace();
             System.exit(1);
-                    }
+        }
         //End set the main form properties
         
         
@@ -79,7 +80,7 @@ public class salary_main extends JFrame implements WindowListener{
         
         StatusLabel.setBorder(BorderFactory.createTitledBorder(""));
         StatusLabel.setFont(menuFont);
-      
+        
         BTlabel.setText(StrBTitle);
         BTlabel.setHorizontalAlignment(JLabel.LEFT);
         BTlabel.setForeground(new Color(166,0,0));
@@ -111,7 +112,7 @@ public class salary_main extends JFrame implements WindowListener{
         setResizable(true);
         
         setVisible(true);
-       
+        
         
         
         //End set the main form properties
@@ -809,9 +810,10 @@ public class salary_main extends JFrame implements WindowListener{
             FormDOD = new FrmDOD(dbCON,this);
             Desk1.add(FormDOD);
             
+            
             //Load the FormSupplier
             FormDOD.setVisible(true);
-           
+            
             try{
                 FormDOD.setIcon(false);
                 FormDOD.setSelected(true);
@@ -843,7 +845,7 @@ public class salary_main extends JFrame implements WindowListener{
             
             //Load the FormSupplier
             FormDOO.setVisible(true);
-         
+            
             try{
                 FormDOO.setIcon(false);
                 FormDOO.setSelected(true);
@@ -865,7 +867,7 @@ public class salary_main extends JFrame implements WindowListener{
         //Verify if the form is already loaded
         boolean AlreadyLoaded = isLoaded("Месечни данни");
         if(AlreadyLoaded==false){
-        
+            
             FormMonth = new FrmMonth(dbCON,this,pMonth,pYear);
             Desk1.add(FormMonth);
             
@@ -963,7 +965,7 @@ public class salary_main extends JFrame implements WindowListener{
             FormOtdel = new FrmOtdel(dbCON,this);
             Desk1.add(FormOtdel);
             FormOtdel.setVisible(true);
-           
+            
             try{
                 FormOtdel.setIcon(false);
                 FormOtdel.setSelected(true);
@@ -1009,6 +1011,19 @@ public class salary_main extends JFrame implements WindowListener{
     
     
     /******************** End method for loading form start *******************/
+    public boolean setSupportStProc(boolean sp){
+        suportStProc = sp;
+        return suportStProc;
+    }
+    
+    public boolean getSupportStProc(){
+        if (suportStProc){
+            return true;
+        } else{
+            return false;
+        }
+    }
+    
     public int setMonth(int xMonth) {
         pMonth = xMonth;
         return pMonth;
@@ -1039,12 +1054,12 @@ public class salary_main extends JFrame implements WindowListener{
         DBUserName = strUser;
         return DBUserName;
     }
-     public String setFirm(String strFirm){
+    public String setFirm(String strFirm){
         StrBTitle = "Личен състав на фирма " + strFirm;
         return StrBTitle;
         
     }
-     public String setNFirm(String strFirm){
+    public String setNFirm(String strFirm){
         StrName  =  strFirm;
         return StrName;
         
@@ -1248,7 +1263,7 @@ public class salary_main extends JFrame implements WindowListener{
             } catch (Exception e) {}
         }else if(sSelectedTheme == 2){
             //If Failed to load the liquid them then load my own XPStyleTheme
-           // MetalTheme myXPStyleTheme = new XPStyleTheme();
+            // MetalTheme myXPStyleTheme = new XPStyleTheme();
             //MetalLookAndFeel.setCurrentTheme(myXPStyleTheme);
             try {
                 UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
@@ -1264,8 +1279,8 @@ public class salary_main extends JFrame implements WindowListener{
     
     public static void main(String[] args){
         try {
-           // MetalTheme myXPStyleTheme = new XPStyleTheme();
-         //   MetalLookAndFeel.setCurrentTheme(myXPStyleTheme);
+            // MetalTheme myXPStyleTheme = new XPStyleTheme();
+            //   MetalLookAndFeel.setCurrentTheme(myXPStyleTheme);
             //     javax.swing.UIManager.setLookAndFeel("com.birosoft.liquid.LiquidLookAndFeel");
         } catch (Exception e) {
             System.out.println("Error Loading Theme:" + e.toString());

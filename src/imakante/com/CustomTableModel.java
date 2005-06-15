@@ -42,7 +42,7 @@ public class CustomTableModel extends AbstractTableModel implements Serializable
 	try
         {
 	    con = connect;
-      String[] sNames = strl;
+            String[] sNames = strl;
 	    rs = rset;
 	    rsMetaData = rs.getMetaData();
     

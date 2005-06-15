@@ -94,40 +94,7 @@ public class pubFrmConnection extends JDialog implements ActionListener {
         }
         jTextField2.requestFocus();
     }
-    public pubFrmConnection(imakante.sales.sales_main n) {
-        super();
-        try {
-            main1 = n;
-            i = 0;
-            fint = "";
-            this.setModal(true);
-            comboDriver = new JComboBox();
-            BufferedReader in = new BufferedReader(new InputStreamReader(new
-                    FileInputStream("c:/saleconn.ini"), "cp1251"));
-            if (in == null){
-                JOptionPane.showMessageDialog(null,"Възникнал проблем при четене на файл salary.ini .\n Моля копирайте стандартен файл.","ИМАКАНТЕ",JOptionPane.WARNING_MESSAGE);
-                
-            } else {
-                while ((lineStr = in.readLine()) != null) {
-                    
-                    i++;
-                    fint = fint + lineStr;
-                }
-                names =fint.split("!");
-                int sd = names.length;
-                
-                for (int j=0; j<names.length; j=j+3)  {
-                    comboDriver.addItem(names[j]);
-                }
-            }
-            
-            jbInit();
-            
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-        jTextField2.requestFocus();
-    }
+    
     private void jbInit() throws Exception {
         this.setTitle("Връзка с База Данни");
         this.setSize(new Dimension(463, 260));
@@ -200,6 +167,7 @@ public class pubFrmConnection extends JDialog implements ActionListener {
         lDBSource =  names[selectedIntCombo+2];
         lDBUser = jTextField2.getText();
         lDBPass = new String(jPasswordField1.getPassword());
+      
         main.setDBDriver(lDBDriver);
         main.setDBSource(lDBSource);
         main.setUser(lDBUser);

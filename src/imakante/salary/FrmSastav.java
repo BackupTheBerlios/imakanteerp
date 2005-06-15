@@ -5,14 +5,13 @@ import imakante.com.CustomTableModel;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
-import java.text.*;
-import java.util.*;
 import javax.swing.*;
 import javax.swing.JScrollPane;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
 import java.awt.Dimension;
 import java.awt.Rectangle;
+
 
 public class FrmSastav extends JInternalFrame implements WindowListener {
     JFrame JFParentFrame;
@@ -32,6 +31,8 @@ public class FrmSastav extends JInternalFrame implements WindowListener {
     private JButton jButton3 = new JButton();
     private JButton jButton4 = new JButton();
     private JButton jButton5 = new JButton();
+    private JButton jButton6 = new JButton();
+    private JButton jButton7 = new JButton();
     public static final String Names[] = {"", "Номер на служител", "Име",
             "Презиме", "Фамилия", "ЕГН", "Дата на раждане", "Пол",
             "Номер на ЛК", "Издадена на", "Област", "Пощенски код",
@@ -42,15 +43,17 @@ public class FrmSastav extends JInternalFrame implements WindowListener {
             "Дни стаж", "Месеци стаж", "Години стаж", "Категория работник", "Бележки" };
             public static imakante.com.CustomTableModel model;
             public static imakante.com.CustomTable jTable;
-            private JButton jButton6 = new JButton();
+            
             Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
             public int lMonth;
             public int lYear;
+            java.awt.Font fontP;
             
             public FrmSastav(Connection srcCN, JFrame getParentFrame,int pMonth, int pYear)
             throws SQLException {
-                super("Списък служители", false, true, false, true);
+                super("Списък служители", false, true,true, true);
                 this.setClosable(true);
+                
                 
                 setSize(900, 600);
                 setLocation(20,20);
@@ -82,43 +85,39 @@ public class FrmSastav extends JInternalFrame implements WindowListener {
             }
             
             private void jbInit() throws Exception {
-                panel.setLayout(null);
+                panel.setLayout(new java.awt.BorderLayout());
                 panel.setBounds(new Rectangle(5, 5, 880, 480));
                 panel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
-                jPanelTable.setLayout(null);
-                jPanelTable.setBounds(new Rectangle(5, 5, 880, 480));
+                jPanelTable.setLayout(new java.awt.BorderLayout());
+                // jPanelTable.setBounds(new Rectangle(5, 5, 880, 480));
                 jPanelTable.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
-                jPanelButtons.setLayout(null);
+                jPanelButtons.setLayout(new java.awt.FlowLayout());
                 jPanelButtons.setBounds(new Rectangle(5, 490, 880, 75));
                 jPanelButtons.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
                 
                 jScrollPane1.setBounds(new Rectangle(5, 5, 870, 470));
                 jScrollPane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
                 jScrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-                jPanelTable.add(jScrollPane1, null);
-                //this.getContentPane().add(jPanelTable, BorderLayout.CENTER);
+                jPanelTable.add(jScrollPane1, java.awt.BorderLayout.CENTER);
                 jButton1.setText("Нов служител");
-                jButton1.setBounds(new Rectangle(15, 25, 120, 23));
                 jButton2.setText("Редакция");
-                jButton2.setBounds(new Rectangle(145, 25, 120, 23));
                 jButton3.setText("Изтриване");
-                jButton3.setBounds(new Rectangle(275, 25, 120, 23));
-                jButton4.setText("Печат");
-                jButton4.setBounds(new Rectangle(405, 25, 120, 23));
+                jButton4.setText("Печат на личен картон");
                 jButton5.setText("Търсене");
-                jButton5.setBounds(new Rectangle(535, 25, 120, 23));
                 jButton6.setText("Опресни");
-                jButton6.setBounds(new Rectangle(750, 25, 120, 23));
-                jPanelButtons.add(jButton1, null);
-                jPanelButtons.add(jButton2, null);
-                jPanelButtons.add(jButton3, null);
-                jPanelButtons.add(jButton4, null);
-                jPanelButtons.add(jButton5, null);
-                jPanelButtons.add(jButton6, null);
-                panel.add(jPanelTable, null);
-                panel.add(jPanelButtons, null);
+                jButton7.setText("Печат списък служители");
+                jPanelButtons.add(jButton1);
+                jPanelButtons.add(jButton2);
+                jPanelButtons.add(jButton3);
+                jPanelButtons.add(jButton7);
+                jPanelButtons.add(jButton4);
+                jPanelButtons.add(jButton5);
+                jPanelButtons.add(jButton6);
+                panel.add(jPanelTable, java.awt.BorderLayout.CENTER);
+                panel.add(jPanelButtons, java.awt.BorderLayout.SOUTH);
                 this.getContentPane().add(panel, BorderLayout.CENTER);
-                //this.getContentPane().add(jPanelButtons, BorderLayout.CENTER);
+                
+                
                 jButton1.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         jButton1_actionPerformed(e);
@@ -187,57 +186,16 @@ public class FrmSastav extends JInternalFrame implements WindowListener {
                 try {
                     if (jTable.getValueAt(jTable.getSelectedRow(),
                             jTable.getSelectedColumn()) != null) {
-                        imakante.com.pubMethods PrintingClass = new imakante.com.pubMethods();
-                        ResultSet rsPrint = stCus
-                                .executeQuery("SELECT Id, nomer, first, second, family, egn, b_date, gender, "+
-                                "nomer_LK, data_izd_LK, oblast, postcode, grad, address, telefon, "+
-                                "mobilen, email, nomer_dogowor, data_naznach, data_postypwane, "+
-                                "data_napuskane, posl_den_w_osig, osnowanie_dog, srok_dog, d_st, "+
-                                "m_st, g_st, kateg_rabotnik, belejki FROM main_ls WHERE id = "
-                                + jTable.getValueAt(jTable.getSelectedRow(), 0));
-                        if (rsPrint.next() == true) {
-                            String RecordToPrint = "";
-                            java.util.Date CurrentDate = new java.util.Date();
-                            SimpleDateFormat SDFDateFormatter = new SimpleDateFormat(
-                                    "MMM. dd, yyyy", Locale.getDefault());
-                            
-                            RecordToPrint += "                            ПЕЧАТ ЛИЧЕН КАРТОН\n";
-                            RecordToPrint += "                   Дата на печат          "
-                                    + SDFDateFormatter.format(CurrentDate)
-                                    .toString() + "\n\n\n";
-                            
-                            RecordToPrint += "___________________________________________________________________________________\n\n\n";
-                            
-                            RecordToPrint += " Номер: "
-                                    + rsPrint.getString("nomer")
-                                    + "      Име: "
-                                    + rsPrint.getString("first") + " " + rsPrint.getString("second") + " " +rsPrint.getString("family")
-                                    + "\n";
-                            RecordToPrint += " ЕГН: "
-                                    + rsPrint.getString("egn") + "     Дата на раждане: " + rsPrint.getString("b_date")
-                                    + "\n";
-                            
-                            RecordToPrint += "___________________________________________________________________________________\n";
-                            RecordToPrint += "___________________________________________________________________________________\n\n";
-                            
-                            
-                            PrintingClass.printRecord(RecordToPrint,
-                                    JFParentFrame);
-                            
-                            CurrentDate = null;
-                            SDFDateFormatter = null;
-                            RecordToPrint = null;
-                            
-                        } else {
-                            JOptionPane.showMessageDialog(null,
-                                    "Записът е променян. Моля натиснете бутон 'Опресни'!",
-                                    "Не е избран запис за печат",
-                                    JOptionPane.WARNING_MESSAGE);
-                        }
-                        //Dispose the variable
-                        rsPrint = null;
                         
+                        
+                    } else {
+                        JOptionPane.showMessageDialog(null,
+                                "Записът е променян. Моля натиснете бутон 'Опресни'!",
+                                "Не е избран запис за печат",
+                                JOptionPane.WARNING_MESSAGE);
                     }
+                    
+                    
                 } catch (Exception sqlE) {
                     if (sqlE.getMessage() != null) {
                         System.out.println(sqlE.getMessage());
@@ -264,7 +222,7 @@ public class FrmSastav extends JInternalFrame implements WindowListener {
                     stCus.close();
                     stCus = cnCus.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                             ResultSet.CONCUR_UPDATABLE);
-                  
+                    
                     try {
                         rsCus = stCus.executeQuery(strSQL);
                     } catch (SQLException e) {JOptionPane.showMessageDialog(null,"Грешка ИЛС-С02Р  Възникнал проблем при осъществаване на връзка с базата.\n Моля въведете стойност в рамките 1 - 12.","ИМАКАНТЕ",JOptionPane.WARNING_MESSAGE);}

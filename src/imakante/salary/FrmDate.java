@@ -21,6 +21,7 @@ import java.sql.Connection;
 import java.sql.Statement;
 public class FrmDate extends JDialog //implements ActionListener
 {
+    boolean sdf;
     private salary_main main = null;
     private JPanel panel = new JPanel();
     private JButton B1 = new JButton();
@@ -32,51 +33,66 @@ public class FrmDate extends JDialog //implements ActionListener
     public int pYear, pMonth;
     private int selected;
     private JPanel jPanel1 = new JPanel();
-    private static String strYearsSQL;
+    private static String strYearsCusSQL;
     String[] month = {"Януари","Февруари","Март","Април","Май","Юни","Юли","Август",
             "Септември","Октомври","Ноември","Декември"};
-            
-            Connection dbInternal;
-            Statement stm;
-            ResultSet rsGL;
+            boolean suportStProc = false;
+            java.sql.Connection dbInternal;
+            java.sql.Statement stm;
+            java.sql.ResultSet rsCus;
+            java.sql.PreparedStatement pstm;
             String[] s;
             private JPanel jPanel2 = new JPanel();
             
             public FrmDate(salary_main m, Connection dbCon) {
                 super();
+                main = m;
+                this.setModal(true);
                 comboYear = new JComboBox();
                 dbInternal = dbCon;
-                
                 try{
-                    stm = dbInternal.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
-                } catch (SQLException sqle){
-                    System.out.println("Problem v statement - date");
-                }
-                
-                strYearsSQL = "SELECT DISTINCT pyear FROM monthpar WHERE pyear IS NOT NULL ORDER BY pyear";
-                try{
-                    rsGL = stm.executeQuery(strYearsSQL);} catch (SQLException sd){}
-                if (rsGL == null) {System.out.println("Празен резулт сет");};
-                try {
-                    
-                    ResultSetMetaData rsmd = rsGL.getMetaData();
-                    while (rsGL.next()) {
-                        for (int i=0; i<rsmd.getColumnCount(); i++) {
-                            
-                            comboYear.addItem(rsGL.getString("pyear"));
-                        }
+                    java.sql.DatabaseMetaData dmd = dbInternal.getMetaData();
+                    if (dmd.supportsStoredProcedures()) {
+                        main.setSupportStProc(true);
+                        
                     }
+                } catch(java.sql.SQLException sqle){}
+                
+               
+                if(main.getSupportStProc()){
+                    try {
+                        System.out.println("vhoh");
+                        try{
+                        pstm = dbInternal.prepareStatement("SELECT * FROM sp_getyear");}catch(java.sql.SQLException se){System.out.println("problem v statement");
+                        se.printStackTrace();}
+                        
+                         rsCus = pstm.executeQuery();
+                        if (rsCus == null){System.out.println("Niama result");}
+                        if (rsCus!=null){System.out.println("iama result");}
+                        while(rsCus.next()){
+                            comboYear.addItem(rsCus.getString("pyear"));
+                        }
+                    } catch(java.sql.SQLException sqle){}
                     
-                    System.out.println(s);
+                } else {
+                    try{
+                        System.out.println("VATRE v 2 try");
+                        stm = dbInternal.createStatement();
+                        rsCus = stm.executeQuery("SELECT DISTINCT pyear FROM lsresult WHERE pyear IS NOT NULL ORDER BY pyear");
+                        if (rsCus == null){System.out.println("Niama result");}
+                        if (rsCus!=null){System.out.println("iama result");}
+                       // rsCus.absolute(-1);
+                        while(rsCus.next()){
+                            
+                            comboYear.addItem(rsCus.getString("pyear"));
+                            
+                            System.out.println(rsCus.getString("pyear"));
+                        }
+                    } catch(java.sql.SQLException sqle){
+                        sqle.printStackTrace();
+                    }
                 }
-                
-                catch(SQLException sqle1){}
-                
-                
                 try {
-                    
-                    main = m;
-                    this.setModal(true);
                     
                     jbInit();
                 } catch(Exception e) {
@@ -110,7 +126,6 @@ public class FrmDate extends JDialog //implements ActionListener
                 L1.setBounds(new Rectangle(25, 10, 130, 20));
                 L2.setText("Година");
                 L2.setBounds(new Rectangle(25, 40, 90, 20));
-                
                 
                 comboYear.setSelectedIndex(selected);
                 comboYear.addActionListener(new ActionListener() {

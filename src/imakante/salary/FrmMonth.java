@@ -56,7 +56,7 @@ public class FrmMonth extends JInternalFrame implements WindowListener {
     public static Statement stCus;
     
     public static ResultSet rsCus;
-    
+    java.awt.Font fontP;
     public static String strSQL;
     public int lMonthl;
     public int lYearl;
@@ -68,6 +68,7 @@ public class FrmMonth extends JInternalFrame implements WindowListener {
     public FrmMonth(Connection srcCN, JFrame getParentFrame,int pMonth,int pYear) throws SQLException {
         super("Месечни данни", false, true, false, true);
         try {
+            
             lMonthl = pMonth;
             lYearl  = pYear;
             cnCus = srcCN;
@@ -76,6 +77,7 @@ public class FrmMonth extends JInternalFrame implements WindowListener {
             strSQL = "SELECT dni5, dni6, minrzd, minod," +
                     " maxod, maxbdf, avdod, dodbln, dodso, pzdo, psozo, ppdo, ptzpb, pgzrs, mrz FROM monthpar WHERE pmonth = " + lMonthl +" AND pyear = " + lYearl + " ORDER BY id ASC";
             rsCus = stCus.executeQuery(strSQL);
+            fontP = new java.awt.Font("Tahoma", 0, 11);
             jbInit();
         } catch(Exception e) {
             e.printStackTrace();
@@ -92,49 +94,64 @@ public class FrmMonth extends JInternalFrame implements WindowListener {
         this.setSize(375, 500);
         this.setLocation((screen.width - 847) / 2, ((screen.height - 450) / 2) - 45);
         jPanel1.setLayout(null);
+        jLabel1.setFont(fontP);
         jLabel1.setText("Работни дни при 5 дневна работна седмица");
         jLabel1.setBounds(new Rectangle(25, 10, 225, 10));
         
         jTextField1.setBounds(new Rectangle(255, 5, 60, 20));
         jLabel2.setText("Работни дни при 6 дневна работна седмица");
+        jLabel2.setFont(fontP);
         jLabel2.setBounds(new Rectangle(25, 38, 225, 10));
         
         jTextField2.setBounds(new Rectangle(255, 33, 60, 20));
+        jLabel3.setFont(fontP);
         jLabel3.setText("Минимална работна заплата");
         jLabel3.setBounds(new Rectangle(25, 66, 225, 10));
         
         jTextField3.setBounds(new Rectangle(255, 61, 60, 20));
+        jLabel4.setFont(fontP);
         jLabel4.setText("Минимален осигурителен доход");
         jLabel4.setBounds(new Rectangle(25, 94, 225, 10));
         
         jTextField4.setBounds(new Rectangle(255, 89, 60, 20));
+        jLabel5.setFont(fontP);
         jLabel5.setText("Максимален осигурителен доход");
         jLabel5.setBounds(new Rectangle(25, 122, 225, 10));
         
         jTextField5.setBounds(new Rectangle(255, 117, 60, 20));
+        jLabel6.setFont(fontP);
         jLabel6.setText("Максимален брой болнични  от фирмата");
         jLabel6.setToolTipText("null");
         jLabel6.setBounds(new Rectangle(25, 150, 225, 10));
         
         jTextField6.setBounds(new Rectangle(255, 145, 60, 20));
+        jLabel7.setFont(fontP);
         jLabel7.setText("Авансова вноска ДОД");
         jLabel7.setBounds(new Rectangle(25, 178, 225, 10));
         
         jTextField7.setBounds(new Rectangle(255, 173, 60, 20));
+        jLabel7.setFont(fontP);
+        jLabel8.setFont(fontP);
         jLabel8.setText("Процент ДОО върху болнични");
         jLabel8.setBounds(new Rectangle(25, 207, 225, 10));
         
         jTextField8.setBounds(new Rectangle(255, 202, 60, 20));
+        jLabel9.setFont(fontP);
         jLabel9.setText("Процент ДОО върху социални разходи");
         jLabel9.setBounds(new Rectangle(25, 235, 225, 10));
+        jLabel10.setFont(fontP);
         jLabel10.setText("Процент здравна осигуровка");
         jLabel10.setBounds(new Rectangle(25, 263, 225, 10));
+        jLabel11.setFont(fontP);
         jLabel11.setText("Процент СО и ЗО от работника");
         jLabel11.setBounds(new Rectangle(25, 291, 225, 10));
+        jLabel12.setFont(fontP);
         jLabel12.setText("Процент признати доброволни осигуровки");
         jLabel12.setBounds(new Rectangle(25, 319, 225, 10));
+        jLabel13.setFont(fontP);
         jLabel13.setText("Трудова злополука и проф. болест");
         jLabel13.setBounds(new Rectangle(25, 347, 225, 10));
+        jLabel14.setFont(fontP);
         jLabel14.setText("Гарантирани вземания от раб. и служ.");
         jLabel14.setBounds(new Rectangle(25, 375, 225, 10));
         
@@ -149,9 +166,11 @@ public class FrmMonth extends JInternalFrame implements WindowListener {
         jTextField13.setBounds(new Rectangle(255, 342, 60, 20));
         
         jTextField14.setBounds(new Rectangle(255, 370, 60, 20));
+        jLabel15.setFont(fontP);
         jLabel15.setText("Максимален брой МРЗ за ДОО");
         jLabel15.setBounds(new Rectangle(25, 400, 225, 10));
         jTextField15.setBounds(new Rectangle(255, 395, 60, 20));
+        jButton1.setFont(fontP);
         jButton1.setText("Запази");
         jButton1.setBounds(new Rectangle(65, 435, 75, 23));
         jButton1.addActionListener(new ActionListener() {
@@ -159,6 +178,7 @@ public class FrmMonth extends JInternalFrame implements WindowListener {
                 jButton1_actionPerformed(e);
             }
         });
+        jButton2.setFont(fontP);
         jButton2.setText("Отмени");
         jButton2.setBounds(new Rectangle(210, 435, 75, 23));
         jButton2.addActionListener(new ActionListener() {
@@ -279,6 +299,7 @@ public class FrmMonth extends JInternalFrame implements WindowListener {
     }
     private void jButton2_actionPerformed(ActionEvent e) {
         UnloadWindow();
+        
     }
     
     protected void UnloadWindow(){
@@ -290,7 +311,7 @@ public class FrmMonth extends JInternalFrame implements WindowListener {
             try {stCus.close();} catch (SQLException ex){}
             stCus = null;
         }
-        JFParentFrame.dispose();
+       dispose();
     }
     public void windowOpened(WindowEvent e){
     }

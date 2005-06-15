@@ -152,14 +152,18 @@ public class frmConnSalary extends JDialog implements ActionListener {
     
     private void jButton1_actionPerformed(ActionEvent e) {
         int selectedIntCombo = comboDriver.getSelectedIndex();
-        lDBDriver = names[selectedIntCombo+1];
-        lDBSource =  names[selectedIntCombo+2];
+        lDBDriver = names[(selectedIntCombo*3) + 1];
+        lDBSource =  names[(selectedIntCombo*3) + 2];
         lDBUser = jTextField2.getText();
         lDBPass = new String(jPasswordField1.getPassword());
         main.setDBDriver(lDBDriver);
+        System.out.println(lDBDriver);
         main.setDBSource(lDBSource);
+        System.out.println(lDBSource);
         main.setUser(lDBUser);
+        System.out.println(lDBUser);
         main.setPass(lDBPass);
+        System.out.println(lDBPass);
         String firmName = (String)comboDriver.getSelectedItem();
         main.setFirm(firmName);
         main.setNFirm(firmName);
