@@ -1,9 +1,31 @@
 package imakante.salary;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+//import javax.swing.*;
+
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Insets;
+import java.awt.Toolkit;
 import java.beans.*;
-import java.sql.*;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JToolBar;
+import javax.swing.KeyStroke;
+import javax.swing.UIManager;
+
 
 
 
@@ -12,9 +34,9 @@ import java.sql.*;
  * @author admin/dragiiski@mbox.contact.bg
  */
 
-public class salary_main extends JFrame implements WindowListener{
+public class salary_main extends javax.swing.JFrame implements java.awt.event.WindowListener{
     
-    JPanel Panel1;
+    javax.swing.JPanel Panel1;
     JDesktopPane Desk1 = new JDesktopPane();
     
     
@@ -29,7 +51,7 @@ public class salary_main extends JFrame implements WindowListener{
     String DBSource = null; //"jdbc:mysql://localhost:3306/mida";
     String DBUserName = null; //"rado";
     String DBPassword = null; //"123";
-    Connection dbCON;
+    java.sql.Connection dbCON;
     boolean suportStProc = false;
     int pMonth = 0;
     int pYear = 0;
@@ -45,28 +67,31 @@ public class salary_main extends JFrame implements WindowListener{
     FrmOtdel     FormOtdel;
     FrmDlajnost  FormDlajnost;
     FrmVedZaplati FormVedZaplati;
+       
     
     
     Font menuFont = new Font("Tahoma", Font.PLAIN, 11);
     
-//	Thread ThFormLogo = new Thread(FormLogo);
+    
     
     public salary_main(){
         
         super("ИМАКАНТЕ ЛИЧЕН СЪСТАВ v 0.0.1a");
         
-        
-        frmConnSalary fdia = new frmConnSalary(this);
+   //     final frmLogo splash = new frmLogo();
+        imakante.salary.frmLogo splash = new imakante.salary.frmLogo(5000);
+        frmConnSalary fdia = new frmConnSalary(this,true);
         fdia.setVisible(true);
-        
+        frmPrint FormPrint = new frmPrint(this, true);
+        FormPrint.setVisible(true);
         try{
             Class.forName(DBDriver);
-            dbCON = DriverManager.getConnection(DBSource,DBUserName ,DBPassword);
+            dbCON = java.sql.DriverManager.getConnection(DBSource,DBUserName ,DBPassword);
         } catch(ClassNotFoundException e)  {
             System.err.println("Failed to load driver");
             e.printStackTrace();
             System.exit(1);
-        } catch(SQLException e){
+        } catch(java.sql.SQLException e){
             System.err.println("Unable to connect");
             e.printStackTrace();
             System.exit(1);
@@ -141,7 +166,7 @@ public class salary_main extends JFrame implements WindowListener{
         ItmLockApp.setIcon(new ImageIcon("images/lockapplication.png"));
         ItmLockApp.setAccelerator(
                 KeyStroke.getKeyStroke(
-                KeyEvent.VK_L,ActionEvent.CTRL_MASK
+                java.awt.event.KeyEvent.VK_L,java.awt.event.ActionEvent.CTRL_MASK
                 )
                 );
         ItmLockApp.setActionCommand("lockapp");
@@ -154,7 +179,7 @@ public class salary_main extends JFrame implements WindowListener{
         ItmLogon.setIcon(new ImageIcon("images/lockapplication.png"));
         ItmLogon.setAccelerator(
                 KeyStroke.getKeyStroke(
-                KeyEvent.VK_I,ActionEvent.CTRL_MASK
+                java.awt.event.KeyEvent.VK_I,java.awt.event.ActionEvent.CTRL_MASK
                 )
                 );
         ItmLogon.setActionCommand("logon");
@@ -169,7 +194,7 @@ public class salary_main extends JFrame implements WindowListener{
         ItmLoggOff.setIcon(new ImageIcon("images/loggoff.png"));
         ItmLoggOff.setAccelerator(
                 KeyStroke.getKeyStroke(
-                KeyEvent.VK_O,ActionEvent.CTRL_MASK
+                java.awt.event.KeyEvent.VK_O,java.awt.event.ActionEvent.CTRL_MASK
                 )
                 );
         ItmLoggOff.setActionCommand("loggoff");
@@ -182,7 +207,7 @@ public class salary_main extends JFrame implements WindowListener{
         ItmPeriod.setIcon(new ImageIcon("images/lockapplication.png"));
         ItmPeriod.setAccelerator(
                 KeyStroke.getKeyStroke(
-                KeyEvent.VK_H,ActionEvent.CTRL_MASK
+                java.awt.event.KeyEvent.VK_H,java.awt.event.ActionEvent.CTRL_MASK
                 )
                 );
         ItmPeriod.setActionCommand("period");
@@ -195,7 +220,7 @@ public class salary_main extends JFrame implements WindowListener{
         ItmExit.setIcon(new ImageIcon("images/exit.png"));
         ItmExit.setAccelerator(
                 KeyStroke.getKeyStroke(
-                KeyEvent.VK_E,ActionEvent.CTRL_MASK
+                java.awt.event.KeyEvent.VK_E,java.awt.event.ActionEvent.CTRL_MASK
                 )
                 );
         ItmExit.setActionCommand("exit");
@@ -225,7 +250,7 @@ public class salary_main extends JFrame implements WindowListener{
         ItmProd.setIcon(new ImageIcon("images/prod.png"));
         ItmProd.setAccelerator(
                 KeyStroke.getKeyStroke(
-                KeyEvent.VK_P,ActionEvent.CTRL_MASK
+                java.awt.event.KeyEvent.VK_P,java.awt.event.ActionEvent.CTRL_MASK
                 )
                 );
         ItmProd.setActionCommand("sluj");
@@ -240,7 +265,7 @@ public class salary_main extends JFrame implements WindowListener{
         ItmFakturi.setIcon(new ImageIcon("images/fak.png"));
         ItmFakturi.setAccelerator(
                 KeyStroke.getKeyStroke(
-                KeyEvent.VK_F,ActionEvent.CTRL_MASK
+                java.awt.event.KeyEvent.VK_F,java.awt.event.ActionEvent.CTRL_MASK
                 )
                 );
         ItmFakturi.setActionCommand("doo");
@@ -455,7 +480,7 @@ public class salary_main extends JFrame implements WindowListener{
         ItmAvansi.setIcon(new ImageIcon("images/customer.png"));
         ItmAvansi.setAccelerator(
                 KeyStroke.getKeyStroke(
-                KeyEvent.VK_C,ActionEvent.CTRL_MASK
+                java.awt.event.KeyEvent.VK_C,java.awt.event.ActionEvent.CTRL_MASK
                 )
                 );
         ItmAvansi.setActionCommand("avansi");
@@ -473,7 +498,7 @@ public class salary_main extends JFrame implements WindowListener{
         ItmFishove.setIcon(new ImageIcon("images/supplier.png"));
         ItmFishove.setAccelerator(
                 KeyStroke.getKeyStroke(
-                KeyEvent.VK_S,ActionEvent.CTRL_MASK
+                java.awt.event.KeyEvent.VK_S,java.awt.event.ActionEvent.CTRL_MASK
                 )
                 );
         ItmFishove.setActionCommand("fish");
@@ -489,7 +514,7 @@ public class salary_main extends JFrame implements WindowListener{
         ItmZarab.setIcon(new ImageIcon("images/SalesRep.png"));
         ItmZarab.setAccelerator(
                 KeyStroke.getKeyStroke(
-                KeyEvent.VK_B,ActionEvent.CTRL_MASK
+                java.awt.event.KeyEvent.VK_B,java.awt.event.ActionEvent.CTRL_MASK
                 )
                 );
         ItmZarab.setActionCommand("zarab");
@@ -505,7 +530,7 @@ public class salary_main extends JFrame implements WindowListener{
         ItmPremii.setIcon(new ImageIcon("images/Warehouse.png"));
         ItmPremii.setAccelerator(
                 KeyStroke.getKeyStroke(
-                KeyEvent.VK_V,ActionEvent.CTRL_MASK
+                java.awt.event.KeyEvent.VK_V,java.awt.event.ActionEvent.CTRL_MASK
                 )
                 );
         ItmPremii.setActionCommand("premii");
@@ -535,7 +560,7 @@ public class salary_main extends JFrame implements WindowListener{
         ItmSPFish.setIcon(new ImageIcon("images/newinvoice.png"));
         ItmSPFish.setAccelerator(
                 KeyStroke.getKeyStroke(
-                KeyEvent.VK_F1,ActionEvent.CTRL_MASK
+                java.awt.event.KeyEvent.VK_F1,java.awt.event.ActionEvent.CTRL_MASK
                 )
                 );
         ItmSPFish.setActionCommand("SPInv");
@@ -768,7 +793,7 @@ public class salary_main extends JFrame implements WindowListener{
     
     /********************** Method for loading form start *********************/
     
-    protected void loadSastavForm() throws SQLException{
+    protected void loadSastavForm() throws java.sql.SQLException{
         //Verify if the form is already loaded
         boolean AlreadyLoaded = isLoaded("Списък служители");
         if (pMonth != 0){
@@ -802,7 +827,7 @@ public class salary_main extends JFrame implements WindowListener{
     //End create customer from
     
     //Create dod form
-    protected void loadDODForm() throws SQLException{
+    protected void loadDODForm() throws java.sql.SQLException{
         //Verify if the form is already loaded
         System.out.println(pYear);
         boolean AlreadyLoaded = isLoaded("ДОО таблица");
@@ -836,11 +861,11 @@ public class salary_main extends JFrame implements WindowListener{
     
     
     
-    protected void loadDOOForm() throws SQLException{
+    protected void loadDOOForm() throws java.sql.SQLException{
         //Verify if the form is already loaded
         boolean AlreadyLoaded = isLoaded("ДОО начисления");
         if(AlreadyLoaded==false){
-            FormDOO = new FrmDOO(dbCON,this,pMonth, pYear);
+            FormDOO = new FrmDOO(dbCON,this);
             Desk1.add(FormDOO);
             
             //Load the FormSupplier
@@ -863,7 +888,7 @@ public class salary_main extends JFrame implements WindowListener{
         
     }
     //End create supplier form
-    protected void loadMonthForm() throws SQLException{
+    protected void loadMonthForm() throws java.sql.SQLException{
         //Verify if the form is already loaded
         boolean AlreadyLoaded = isLoaded("Месечни данни");
         if(AlreadyLoaded==false){
@@ -908,22 +933,22 @@ public class salary_main extends JFrame implements WindowListener{
         FormVedZaplati.setVisible(true);
         
     }
-    protected void loadLogonForm() throws SQLException{
+    protected void loadLogonForm() throws java.sql.SQLException{
         try {
             dbCON.close();
-        } catch(SQLException sqle){
+        } catch(java.sql.SQLException sqle){
         }
-        frmConnSalary frm = new frmConnSalary(this);
+        frmConnSalary frm = new frmConnSalary(this, true);
         frm.setVisible(true);
         
         try{
             Class.forName(DBDriver);
-            dbCON = DriverManager.getConnection(DBSource,DBUserName ,DBPassword);
+            dbCON = java.sql.DriverManager.getConnection(DBSource,DBUserName ,DBPassword);
         } catch(ClassNotFoundException e)  {
             System.err.println("Failed to load driver");
             e.printStackTrace();
             System.exit(1);
-        } catch(SQLException e){
+        } catch(java.sql.SQLException e){
             System.err.println("Unable to connect");
             e.printStackTrace();
             System.exit(1);
@@ -935,7 +960,7 @@ public class salary_main extends JFrame implements WindowListener{
         
     }
     
-    protected void loadNewMForm() throws SQLException{
+    protected void loadNewMForm() throws java.sql.SQLException{
         
         boolean AlreadyLoaded = isLoaded("Месечни данни");
         if(AlreadyLoaded==false){
@@ -958,7 +983,7 @@ public class salary_main extends JFrame implements WindowListener{
         }
     }
     
-    protected void loadOtdelForm() throws SQLException{
+    protected void loadOtdelForm() throws java.sql.SQLException{
         
         boolean AlreadyLoaded = isLoaded("Списък отдели");
         if(AlreadyLoaded==false){
@@ -982,7 +1007,7 @@ public class salary_main extends JFrame implements WindowListener{
         //End verify if the form is already loaded
         
     }
-    protected void loadDlajForm() throws SQLException{
+    protected void loadDlajForm() throws java.sql.SQLException{
         
         boolean AlreadyLoaded = isLoaded("Списък отдели");
         if(AlreadyLoaded==false){
@@ -1073,13 +1098,13 @@ public class salary_main extends JFrame implements WindowListener{
     /************************** Event handling start **************************/
     
     //Create action listener for JMenu
-    ActionListener JMenuActionListener = new ActionListener(){
-        public void actionPerformed(ActionEvent e) {
+    java.awt.event.ActionListener JMenuActionListener = new java.awt.event.ActionListener(){
+        public void actionPerformed(java.awt.event.ActionEvent e) {
             String srcObject = e.getActionCommand();
             if(srcObject=="newm"){
                 try{
                     loadNewMForm();
-                }catch(SQLException sqle){
+                }catch(java.sql.SQLException sqle){
                     
                 }
             }
@@ -1087,40 +1112,40 @@ public class salary_main extends JFrame implements WindowListener{
             else if(srcObject=="doo"){
                 try{
                     loadDODForm();
-                }catch(SQLException sqle){
+                }catch(java.sql.SQLException sqle){
                 }
             }
             
             else if(srcObject=="loggoff"){
                 try{
                     UnloadConnection();
-                }catch(SQLException sqle){
+                }catch(java.sql.SQLException sqle){
                 }
             }
             
             else if(srcObject=="logon"){
                 try{
                     loadLogonForm();
-                }catch(SQLException sqle){
+                }catch(java.sql.SQLException sqle){
                 }
             }
             
             else if(srcObject=="sluj"){
                 try{
                     loadSastavForm();
-                }catch(SQLException sqle){
+                }catch(java.sql.SQLException sqle){
                 }
             }
             
             else if(srcObject=="doo1"){
                 try{
                     loadDOOForm();
-                }catch(SQLException sqle){
+                }catch(java.sql.SQLException sqle){
                 }
             } else if(srcObject=="mes"){
                 try{
                     loadMonthForm();
-                }catch(SQLException sqle){
+                }catch(java.sql.SQLException sqle){
                 }
             } else if(srcObject=="period"){
                 
@@ -1130,21 +1155,21 @@ public class salary_main extends JFrame implements WindowListener{
                 
                 try{
                     loadOtdelForm();
-                }catch(SQLException sqle){
+                }catch(java.sql.SQLException sqle){
                 };
                 
             } else if(srcObject=="dlaj"){
                 
                 try{
                     loadDlajForm();
-                }catch(SQLException sqle){
+                }catch(java.sql.SQLException sqle){
                 };
             } else if(srcObject=="expflat"){
                 
                 try{
                     FrmExport fExport = new FrmExport(dbCON);
                     fExport.setVisible(true);
-                }catch(SQLException sqle){
+                }catch(java.sql.SQLException sqle){
                 };
             } else if(srcObject=="zved"){
                 
@@ -1162,20 +1187,20 @@ public class salary_main extends JFrame implements WindowListener{
     //End create action listener for JMenu
     
     //Create action Listerner for JToolBar Button
-    ActionListener JToolBarActionListener = new ActionListener(){
-        public void actionPerformed(ActionEvent e)	{
+    java.awt.event.ActionListener JToolBarActionListener = new java.awt.event.ActionListener(){
+        public void actionPerformed(java.awt.event.ActionEvent e)	{
             String srcObject = e.getActionCommand();
             if(srcObject=="doo"){
                 try{
                     loadDODForm();
-                }catch(SQLException sqle){
+                }catch(java.sql.SQLException sqle){
                 }
             }
             
             else if(srcObject=="toolInv"){
                 try{
                     loadNewMForm();
-                }catch(SQLException sqle){
+                }catch(java.sql.SQLException sqle){
                 }
             }
         }
@@ -1183,20 +1208,20 @@ public class salary_main extends JFrame implements WindowListener{
     //End create action Listerner for JToolBar Button
     
     //Interface event from WindowListener start
-    public void windowOpened(WindowEvent e){
+    public void windowOpened(java.awt.event.WindowEvent e){
     }
-    public void windowClosing(WindowEvent e){
+    public void windowClosing(java.awt.event.WindowEvent e){
         UnloadWindow();
     }
-    public void windowClosed(WindowEvent e){
+    public void windowClosed(java.awt.event.WindowEvent e){
     }
-    public void windowIconified(WindowEvent e){
+    public void windowIconified(java.awt.event.WindowEvent e){
     }
-    public void windowDeiconified(WindowEvent e){
+    public void windowDeiconified(java.awt.event.WindowEvent e){
     }
-    public void windowActivated(WindowEvent e){
+    public void windowActivated(java.awt.event.WindowEvent e){
     }
-    public void windowDeactivated(WindowEvent e){
+    public void windowDeactivated(java.awt.event.WindowEvent e){
     }
     //End interface event from WindowListener start
     
@@ -1204,7 +1229,7 @@ public class salary_main extends JFrame implements WindowListener{
     
     /************************** Custom method start ***************************/
     
-    protected void UnloadConnection() throws SQLException {
+    protected void UnloadConnection() throws java.sql.SQLException {
         String ObjButtons[] = {"ДА","НЕ"};
         int PromptResult = JOptionPane.showOptionDialog(null,"Прекасване на връзка с базата?","ИМАКАНТЕ",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE,null,ObjButtons,ObjButtons[1]);
         if(PromptResult==0){
@@ -1216,7 +1241,7 @@ public class salary_main extends JFrame implements WindowListener{
             try {
                 dbCON.close();
                 JOptionPane.showMessageDialog(null,"Връзката към базата е успешно прекъсната.\n За да продължите работа - ПРОГРАМА -> Вход в Базата.","ПРОЕКТ ИМАКАНТЕ",JOptionPane.WARNING_MESSAGE);
-            } catch(SQLException sqle){
+            } catch(java.sql.SQLException sqle){
             }
         }
     }
@@ -1278,6 +1303,8 @@ public class salary_main extends JFrame implements WindowListener{
     /**************************** Main method start ***************************/
     
     public static void main(String[] args){
+        
+        
         try {
             // MetalTheme myXPStyleTheme = new XPStyleTheme();
             //   MetalLookAndFeel.setCurrentTheme(myXPStyleTheme);
@@ -1295,6 +1322,7 @@ public class salary_main extends JFrame implements WindowListener{
                 System.out.println("Error loading Theme:" + err.toString());
             }
         }
+       
         new salary_main();
     }
     
