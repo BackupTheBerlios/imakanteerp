@@ -9,9 +9,7 @@ public class frmConnSalary extends java.awt.Dialog {
         super(m, modal);
         main = m;
         dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        x = (int)((dim.width - (2*(dim.width))/3));
-        y = (int)(dim.getHeight()- (2*(dim.getHeight())/3));
-        
+                
         try{
             java.io.BufferedReader in = new java.io.BufferedReader(new java.io.InputStreamReader(new
                     java.io.FileInputStream("c:/salary.ini"), "cp1251"));
@@ -30,6 +28,9 @@ public class frmConnSalary extends java.awt.Dialog {
             }}catch(java.io.IOException iox){}
         
         initComponents();
+       x = (((dim.width)-(this.getSize().width))/2);
+       y = (((dim.height)-(this.getSize().height))/2);
+       
         this.setLocation(x,y);
         
     }

@@ -42,7 +42,7 @@ public class FrmDOD extends javax.swing.JInternalFrame implements java.awt.event
         setResizable(true);
         setTitle("\u0414\u041e\u0414");
         jPanel1.setLayout(new java.awt.BorderLayout());
-        
+        jPanel1.setBorder(new javax.swing.border.EtchedBorder());
         
         jScrollPane1.getViewport().add(jTable, null);
         jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -50,14 +50,14 @@ public class FrmDOD extends javax.swing.JInternalFrame implements java.awt.event
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
         
         jPanel2.setLayout(new java.awt.BorderLayout());
-        
+        jPanel2.setBorder(new javax.swing.border.EtchedBorder());
         
         jPanel3.setLayout(new java.awt.GridBagLayout());
-        
+       
         jButton1.setLabel("\u041d\u043e\u0432\u0430 \u0441\u0442\u0430\u0432\u043a\u0430");
-        jButton1.setMaximumSize(new java.awt.Dimension(100, 25));
-        jButton1.setMinimumSize(new java.awt.Dimension(100, 25));
-        jButton1.setPreferredSize(new java.awt.Dimension(100, 25));
+       // jButton1.setMaximumSize(new java.awt.Dimension(100, 25));
+       // jButton1.setMinimumSize(new java.awt.Dimension(100, 25));
+        //jButton1.setPreferredSize(new java.awt.Dimension(100, 25));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -68,14 +68,15 @@ public class FrmDOD extends javax.swing.JInternalFrame implements java.awt.event
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 3;
         gridBagConstraints.ipady = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
-        gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
+        gridBagConstraints.insets = new java.awt.Insets(5, 15, 5, 15);
         jPanel3.add(jButton1, gridBagConstraints);
         
         jButton2.setLabel("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f");
-        jButton2.setMaximumSize(new java.awt.Dimension(100, 25));
-        jButton2.setMinimumSize(new java.awt.Dimension(100, 25));
-        jButton2.setPreferredSize(new java.awt.Dimension(100, 25));
+       // jButton2.setMaximumSize(new java.awt.Dimension(100, 25));
+       // jButton2.setMinimumSize(new java.awt.Dimension(100, 25));
+       // jButton2.setPreferredSize(new java.awt.Dimension(100, 25));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -89,11 +90,11 @@ public class FrmDOD extends javax.swing.JInternalFrame implements java.awt.event
         gridBagConstraints.ipadx = 3;
         gridBagConstraints.ipady = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
-        gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
+        gridBagConstraints.insets = new java.awt.Insets(5, 15, 5, 15);
         jPanel3.add(jButton2, gridBagConstraints);
         
         jButton3.setLabel("\u041f\u0440\u0435\u043c\u0430\u0445\u0432\u0430\u043d\u0435");
-        jButton3.setPreferredSize(new java.awt.Dimension(100, 25));
+       // jButton3.setPreferredSize(new java.awt.Dimension(100, 25));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -106,16 +107,17 @@ public class FrmDOD extends javax.swing.JInternalFrame implements java.awt.event
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 3;
         gridBagConstraints.ipady = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
-        gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
+        gridBagConstraints.insets = new java.awt.Insets(5, 15, 5, 15);
         jPanel3.add(jButton3, gridBagConstraints);
         
         jPanel2.add(jPanel3, java.awt.BorderLayout.NORTH);
         
         jButton4.setLabel("\u041e\u043f\u0440\u0435\u0441\u043d\u044f\u0432\u0430\u043d\u0435");
-        jButton4.setMaximumSize(new java.awt.Dimension(100, 25));
-        jButton4.setMinimumSize(new java.awt.Dimension(100, 25));
-        jButton4.setPreferredSize(new java.awt.Dimension(100, 25));
+       // jButton4.setMaximumSize(new java.awt.Dimension(100, 25));
+       // jButton4.setMinimumSize(new java.awt.Dimension(100, 25));
+        //jButton4.setPreferredSize(new java.awt.Dimension(100, 25));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);

@@ -67,23 +67,24 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     FrmOtdel     FormOtdel;
     FrmDlajnost  FormDlajnost;
     FrmVedZaplati FormVedZaplati;
-       
+    
     
     
     Font menuFont = new Font("Tahoma", Font.PLAIN, 11);
-    
-    
+    imakante.salary.frmLogo splash = new imakante.salary.frmLogo();
+    Thread FormSplash = new Thread(splash);
     
     public salary_main(){
         
         super("»Ã¿ ¿Õ“≈ À»◊≈Õ —⁄—“¿¬ v 0.0.1a");
         
-   //     final frmLogo splash = new frmLogo();
-        imakante.salary.frmLogo splash = new imakante.salary.frmLogo(5000);
+        //     final frmLogo splash = new frmLogo();
+        
+        loadSplashScreen();
+        FormSplash.yield();
         frmConnSalary fdia = new frmConnSalary(this,true);
         fdia.setVisible(true);
-        frmPrint FormPrint = new frmPrint(this, true);
-        FormPrint.setVisible(true);
+        
         try{
             Class.forName(DBDriver);
             dbCON = java.sql.DriverManager.getConnection(DBSource,DBUserName ,DBPassword);
@@ -1032,6 +1033,17 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
     }
     
+    protected void loadSplashScreen(){
+        
+        FormSplash.start();
+        
+       
+            try{
+                Thread.sleep(5000);
+            }catch(InterruptedException e){
+            }
+        
+    }
     
     
     
@@ -1322,7 +1334,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 System.out.println("Error loading Theme:" + err.toString());
             }
         }
-       
+        
         new salary_main();
     }
     

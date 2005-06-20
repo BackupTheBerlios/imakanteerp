@@ -277,11 +277,11 @@ public class frmAddDOO extends JDialog{
                             // Start Display the new record
                             int total =0;
                             total = imakante.com.pubMethods.getMaxNum("SELECT * FROM dobavki ORDER BY id",cnAEC,"id");
-                            if(total != 0){
-                                FrmDOO.reloadRecord("SELECT * FROM dobavki WHERE id = " + total + " ORDER BY id ASC");
-                            }else{
-                                FrmDOO.reloadRecord("SELECT * FROM dobavki ORDER BY id ASC");
-                            }
+                           
+                                FrmDOO.reloadRecord();
+                           
+                                
+                            
                             total =0;
                             // End Display the new record
                             JOptionPane.showMessageDialog(null,"Записът е успешен .","РЕА - ПРОЕКТ МИДАСС",JOptionPane.INFORMATION_MESSAGE);
@@ -317,7 +317,7 @@ public class frmAddDOO extends JDialog{
                                     JTF9.getText() + "', zr = '" +
                                     JTF10.getText() +
                                     "' WHERE id = " + RowIndex);
-                            FrmDOO.reloadRecord("SELECT * FROM dobavki ORDER BY id ASC");
+                            FrmDOO.reloadRecord();
                             JOptionPane.showMessageDialog(null,"Записът е променен.","РЕА - ПРОЕКТ МИДАСС",JOptionPane.INFORMATION_MESSAGE);
                             RowIndex="";
                             dispose();

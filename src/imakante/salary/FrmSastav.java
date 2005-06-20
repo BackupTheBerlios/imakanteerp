@@ -2,18 +2,29 @@ package imakante.salary;
 
 import imakante.com.CustomTable;
 import imakante.com.CustomTableModel;
-import java.awt.*;
-import java.awt.event.*;
-import java.sql.*;
-import javax.swing.*;
+import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
 import java.awt.Dimension;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 
-public class FrmSastav extends JInternalFrame implements WindowListener {
+public class FrmSastav extends JInternalFrame implements java.awt.event.WindowListener {
     JFrame JFParentFrame;
     public static Connection cnCus;
     public static Statement stCus;
@@ -123,22 +134,22 @@ public class FrmSastav extends JInternalFrame implements WindowListener {
                         jButton1_actionPerformed(e);
                     }
                 });
-                jButton2.addActionListener(new ActionListener() {
+                jButton2.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         jButton2_actionPerformed(e);
                     }
                 });
-                jButton3.addActionListener(new ActionListener() {
+                jButton3.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         jButton3_actionPerformed(e);
                     }
                 });
-                jButton4.addActionListener(new ActionListener() {
+                jButton4.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         jButton4_actionPerformed(e);
                     }
                 });
-                jButton5.addActionListener(new ActionListener() {
+                jButton5.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         jButton5_actionPerformed(e);
                     }
@@ -151,12 +162,12 @@ public class FrmSastav extends JInternalFrame implements WindowListener {
                 
             }
             
-            private void jButton1_actionPerformed(ActionEvent e) {
+            private void jButton1_actionPerformed(java.awt.event.ActionEvent e) {
                 JDialog JDAdd = new frmAddLitse(true, JFParentFrame, cnCus, "", lMonth, lYear);
                 JDAdd.setVisible(true);
             }
             
-            private void jButton2_actionPerformed(ActionEvent e)
+            private void jButton2_actionPerformed(java.awt.event.ActionEvent e)
             
             {
                 try{
@@ -179,10 +190,10 @@ public class FrmSastav extends JInternalFrame implements WindowListener {
                 }
             }
             
-            private void jButton3_actionPerformed(ActionEvent e) {
+            private void jButton3_actionPerformed(java.awt.event.ActionEvent e) {
             }
             
-            private void jButton4_actionPerformed(ActionEvent e) {
+            private void jButton4_actionPerformed(java.awt.event.ActionEvent e) {
                 try {
                     if (jTable.getValueAt(jTable.getSelectedRow(),
                             jTable.getSelectedColumn()) != null) {
@@ -209,10 +220,10 @@ public class FrmSastav extends JInternalFrame implements WindowListener {
             }
             
             
-            private void jButton5_actionPerformed(ActionEvent e) {
+            private void jButton5_actionPerformed(java.awt.event.ActionEvent e) {
             }
             
-            private void jButton6_actionPerformed(ActionEvent e) {
+            private void jButton6_actionPerformed(java.awt.event.ActionEvent e) {
                 reloadRecord();
             }
             
@@ -247,19 +258,19 @@ public class FrmSastav extends JInternalFrame implements WindowListener {
             }
             
             
-            public void windowOpened(WindowEvent e){
+            public void windowOpened(java.awt.event.WindowEvent e){
             }
-            public void windowClosing(WindowEvent e){
+            public void windowClosing(java.awt.event.WindowEvent e){
                 UnloadWindow();
             }
-            public void windowClosed(WindowEvent e){
+            public void windowClosed(java.awt.event.WindowEvent e){
             }
-            public void windowIconified(WindowEvent e){
+            public void windowIconified(java.awt.event.WindowEvent e){
             }
-            public void windowDeiconified(WindowEvent e){
+            public void windowDeiconified(java.awt.event.WindowEvent e){
             }
-            public void windowActivated(WindowEvent e){
+            public void windowActivated(java.awt.event.WindowEvent e){
             }
-            public void windowDeactivated(WindowEvent e){
+            public void windowDeactivated(java.awt.event.WindowEvent e){
             }
 }

@@ -4,32 +4,40 @@ package imakante.salary;
 
 import imakante.com.CustomTable;
 import imakante.com.CustomTableModel;
-import java.awt.*;
+
 import java.awt.event.*;
-import java.sql.*;
-import javax.swing.*;
+
+
 import javax.swing.JScrollPane;
 import java.awt.Dimension;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.border.EtchedBorder;
 import javax.swing.JPanel;
 
-public class FrmOtdel extends JInternalFrame implements WindowListener
+public class FrmOtdel extends javax.swing.JInternalFrame implements WindowListener
 {
-  JFrame JFParentFrame;
-  public static Connection cnCus;
-  public static Statement stCus;
-	public static ResultSet rsCus;
+  javax.swing.JFrame JFParentFrame;
+  public static java.sql.Connection cnCus;
+  public static java.sql.Statement stCus;
+	public static java.sql.ResultSet rsCus;
   public static String strSQL;
   public static Object Content[][];
 	public static int rowNum = 0;
 	public static int total = 0;
   public static JPanel jPanel1 = new JPanel();
-  private JButton jButton1 = new JButton();
-  private JButton jButton2 = new JButton();
-  private JButton jButton3 = new JButton();
-  private JButton jButton4 = new JButton();
+  private javax.swing.JButton jButton1 = new JButton();
+  private javax.swing.JButton jButton2 = new JButton();
+  private javax.swing.JButton jButton3 = new JButton();
+  private javax.swing.JButton jButton4 = new JButton();
   public static final String Names[] = {"", "Номер", "Име на отделa"};
   public static imakante.com.CustomTableModel model;
   public static imakante.com.CustomTable jTable;
