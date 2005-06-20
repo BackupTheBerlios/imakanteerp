@@ -1,6 +1,4 @@
 package imakante.salary;
-//import javax.swing.*;
-
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -8,7 +6,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Insets;
 import java.awt.Toolkit;
-import java.beans.*;
+import java.beans.PropertyVetoException;
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -81,7 +80,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         //     final frmLogo splash = new frmLogo();
         
         loadSplashScreen();
-        FormSplash.yield();
+        
         frmConnSalary fdia = new frmConnSalary(this,true);
         fdia.setVisible(true);
         
