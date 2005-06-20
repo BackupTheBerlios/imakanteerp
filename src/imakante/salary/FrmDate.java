@@ -30,7 +30,7 @@ public class FrmDate extends JDialog //implements ActionListener
     private JLabel L2 = new JLabel();
     private JComboBox comboMonth;
     public JComboBox comboYear;
-    public int pYear, pMonth;
+    public int pYear, pMonth,x,y;
     private int selected;
     private JPanel jPanel1 = new JPanel();
     private static String strYearsCusSQL;
@@ -43,11 +43,12 @@ public class FrmDate extends JDialog //implements ActionListener
             java.sql.PreparedStatement pstm;
             String[] s;
             private JPanel jPanel2 = new JPanel();
-            
+            public java.awt.Dimension dim;
             public FrmDate(salary_main m, Connection dbCon) {
                 super();
                 main = m;
                 this.setModal(true);
+                dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
                 comboYear = new JComboBox();
                 dbInternal = dbCon;
                 try{
@@ -58,15 +59,15 @@ public class FrmDate extends JDialog //implements ActionListener
                     }
                 } catch(java.sql.SQLException sqle){}
                 
-               
+                
                 if(main.getSupportStProc()){
                     try {
                         System.out.println("vhoh");
                         try{
-                        pstm = dbInternal.prepareStatement("SELECT * FROM sp_getyear");}catch(java.sql.SQLException se){System.out.println("problem v statement");
-                        se.printStackTrace();}
+                            pstm = dbInternal.prepareStatement("SELECT * FROM sp_getyear");}catch(java.sql.SQLException se){System.out.println("problem v statement");
+                            se.printStackTrace();}
                         
-                         rsCus = pstm.executeQuery();
+                        rsCus = pstm.executeQuery();
                         if (rsCus == null){System.out.println("Niama result");}
                         if (rsCus!=null){System.out.println("iama result");}
                         while(rsCus.next()){
@@ -76,12 +77,10 @@ public class FrmDate extends JDialog //implements ActionListener
                     
                 } else {
                     try{
-                        System.out.println("VATRE v 2 try");
+                        
                         stm = dbInternal.createStatement();
                         rsCus = stm.executeQuery("SELECT DISTINCT pyear FROM lsresult WHERE pyear IS NOT NULL ORDER BY pyear");
-                        if (rsCus == null){System.out.println("Niama result");}
-                        if (rsCus!=null){System.out.println("iama result");}
-                       // rsCus.absolute(-1);
+                        
                         while(rsCus.next()){
                             
                             comboYear.addItem(rsCus.getString("pyear"));
@@ -95,6 +94,10 @@ public class FrmDate extends JDialog //implements ActionListener
                 try {
                     
                     jbInit();
+                    x = (((dim.width)-(this.getSize().width))/2);
+                    y = (((dim.height)-(this.getSize().height))/2);
+                    
+                    this.setLocation(x,y);
                 } catch(Exception e) {
                     e.printStackTrace();
                 }

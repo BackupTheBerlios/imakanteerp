@@ -46,16 +46,16 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     Dimension screen = 	Toolkit.getDefaultToolkit().getScreenSize();
     String StrName;
     String StrBTitle = null;
-    String DBDriver = null; //"com.mysql.jdbc.Driver";
-    String DBSource = null; //"jdbc:mysql://localhost:3306/mida";
-    String DBUserName = null; //"rado";
-    String DBPassword = null; //"123";
+    String DBDriver = null; 
+    String DBSource = null; 
+    String DBUserName = null;
+    String DBPassword = null; 
     java.sql.Connection dbCON;
     boolean suportStProc = false;
     int pMonth = 0;
     int pYear = 0;
     //--Start variable the contains forms
-    // frmDialog    FormDialog;
+ 
     
     FrmSastav    FormSastav;
     FrmDOD       FormDOD;
@@ -620,7 +620,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         //End proccess sub menu
         
-        //-- For New ДДС
+   
         JMenuItem ItmSPZarab = new JMenuItem("Заработки");
         ItmSPZarab.setFont(menuFont);
         ItmSPZarab.setActionCommand("spzarab");
@@ -722,6 +722,17 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         MnuSys.add(ItmImport);
         
+        
+        
+        
+        ///
+        JMenuItem ItmImportPic = new JMenuItem("Снимки");
+        ItmImportPic.setFont(menuFont);
+        ItmImportPic.setActionCommand("snim");
+        ItmImportPic.addActionListener(JMenuActionListener);
+        ItmImportPic.setBackground(new Color(255,255,255));
+        
+        MnuSys.add(ItmImportPic);
         
         //End  menu
         
@@ -927,10 +938,30 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     
     //End create Date
     protected void loadVedomostZForm() {
+        boolean AlreadyLoaded = isLoaded("Ведомости");
+        if (pMonth != 0){
+            if(AlreadyLoaded==false){
+                
+                FormVedZaplati = new imakante.salary.FrmVedZaplati(dbCON,this,pMonth,pYear);
+                Desk1.add(FormVedZaplati);
+                FormVedZaplati.setVisible(true);
+                
+                try{
+                    FormVedZaplati.setIcon(false);
+                    FormVedZaplati.setSelected(true);
+                }catch(PropertyVetoException e){
+                }
+                
+            }else{
+                try{
+                    FormSastav.setIcon(false);
+                    FormSastav.setSelected(true);
+                }catch(PropertyVetoException e){
+                }
+            }} else {
+            JOptionPane.showMessageDialog(null,"Няма работна дата.\n Въведете: Програма -> Смяна на период.","РЕА - Проект Мидас",JOptionPane.WARNING_MESSAGE);
+            }
         
-        
-        FrmVedZaplati FormVedZaplati = new FrmVedZaplati(this, dbCON, pYear,pMonth,StrName);
-        FormVedZaplati.setVisible(true);
         
     }
     protected void loadLogonForm() throws java.sql.SQLException{
@@ -1036,11 +1067,11 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         FormSplash.start();
         
-       
-            try{
-                Thread.sleep(5000);
-            }catch(InterruptedException e){
-            }
+        
+        try{
+            Thread.sleep(3000);
+        }catch(InterruptedException e){
+        }
         
     }
     

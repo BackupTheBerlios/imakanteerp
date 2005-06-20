@@ -6,7 +6,6 @@ import imakante.com.CustomTable;
 import imakante.com.CustomTableModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.JDialog;
 import java.awt.Dimension;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
@@ -21,51 +20,53 @@ import javax.swing.border.EtchedBorder;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.HashMap;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JRViewer;
 
 
-public class FrmVedZaplati extends JDialog //implements ActionListener
+public class FrmVedZaplati extends javax.swing.JInternalFrame implements java.awt.event.WindowListener
 {
-    private salary_main main = null;
-    private JPanel panel = new JPanel();
+    javax.swing.JFrame JFParentFrame;
+    private javax.swing.JPanel panel = new JPanel();
+    private javax.swing.JPanel jPanel1 = new JPanel();
+    private javax.swing.JPanel jPanel2 = new JPanel();
+    public javax.swing.JScrollPane jScrollPane1 = new JScrollPane();
     private JButton B1 = new JButton();
     private JButton B2 = new JButton();
     private JButton B3 = new JButton();
     public int pYear, pMonth;
     private int selected;
-    private JPanel jPanel1 = new JPanel();
+   
     private static String strYearsSQL;
     InputStream fs = null;
     JasperReport template = null;
     HashMap reportParam;
     String fName;
-    Connection dbInternal;
-    Statement stm;
-    ResultSet rsCus;
+    java.sql.Connection dbInternal;
+    java.sql.Statement stm;
+    java.sql.ResultSet rsCus;
     String[] s;
-    private JPanel jPanel2 = new JPanel();
-    public JScrollPane jScrollPane1 = new JScrollPane();
+    
+    
     public int lYear;
     public int lMonth;
     public CustomTable jTable;
     public CustomTableModel jmodel;
     
-    public FrmVedZaplati(salary_main m, Connection dbCon, int tYear, int tMonth, String FName) {
-        super();
+    public FrmVedZaplati(Connection srcCN, JFrame getParentFrame,int pMonth, int pYear) {
+        super("Ведомости", false, true,true, true);
         
-        dbInternal = dbCon;
-        lYear = tYear;
-        lMonth = tMonth;
-        fName = FName;
+        dbInternal = srcCN;
+        lYear = pYear;
+        lMonth = pMonth;
+       //fName = FName;
         try{
             stm = dbInternal.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
         } catch (SQLException sqle){
@@ -83,8 +84,7 @@ public class FrmVedZaplati extends JDialog //implements ActionListener
         
         try {
             
-            main = m;
-            this.setModal(true);
+            
             
             jbInit();
         } catch(Exception e) {
@@ -141,14 +141,9 @@ public class FrmVedZaplati extends JDialog //implements ActionListener
     
     private void jButton2_actionPerformed(ActionEvent e) {
         String freport = "c:/ved1.jasper";
-        //String namefirm = "ИНСАЙД 3 - ООД";
-        
+             
         reportParam = new HashMap();
-        // reportParam = null;
-        // reportParam.put("name", "ИНСАЙД 3 - ООД");
         
-        // reportParam.put("month", lMonth);
-        // reportParam.put("year", lYear);
         try{
             fs = new FileInputStream(freport);
         } catch (java.io.FileNotFoundException  ioex){
@@ -189,5 +184,31 @@ public class FrmVedZaplati extends JDialog //implements ActionListener
         }
         
     }
-    
+     protected void UnloadWindow(){
+                try {
+                    rsCus.close();
+                    stm.close();
+                } catch(SQLException e) {
+                    JOptionPane.showMessageDialog(null,"Грешка ИЛС-С03Р  Възникнал проблем при затваряне на ресурси.\n","ИМАКАНТЕ",JOptionPane.WARNING_MESSAGE);
+                }
+                this.dispose();
+                
+            }
+            
+            
+            public void windowOpened(java.awt.event.WindowEvent e){
+            }
+            public void windowClosing(java.awt.event.WindowEvent e){
+                UnloadWindow();
+            }
+            public void windowClosed(java.awt.event.WindowEvent e){
+            }
+            public void windowIconified(java.awt.event.WindowEvent e){
+            }
+            public void windowDeiconified(java.awt.event.WindowEvent e){
+            }
+            public void windowActivated(java.awt.event.WindowEvent e){
+            }
+            public void windowDeactivated(java.awt.event.WindowEvent e){
+            }
 }
