@@ -1,16 +1,7 @@
-/*
- * frmLogo.java
- *
- * Created on Четвъвтък, 2005, Юни 16, 8:58
- */
 
 package imakante.salary;
 import javax.swing.SwingUtilities;
 
-/**
- *
- * @author  user
- */
 public class frmLogo extends javax.swing.JFrame implements Runnable {
     
  
