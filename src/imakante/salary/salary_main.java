@@ -26,13 +26,6 @@ import javax.swing.KeyStroke;
 import javax.swing.UIManager;
 
 
-
-
-/**
- *
- * @author admin/dragiiski@mbox.contact.bg
- */
-
 public class salary_main extends javax.swing.JFrame implements java.awt.event.WindowListener{
     
     javax.swing.JPanel Panel1;
@@ -44,7 +37,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     JLabel BTlabel = new JLabel();
     
     Dimension screen = 	Toolkit.getDefaultToolkit().getScreenSize();
-    String StrName;
+    public static String StrName;
     String StrBTitle = null;
     String DBDriver = null; 
     String DBSource = null; 
@@ -1126,11 +1119,16 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         return StrBTitle;
         
     }
-    public String setNFirm(String strFirm){
+    public static String setNFirm(String strFirm){
         StrName  =  strFirm;
         return StrName;
         
     }
+    
+    public static String getNFirm(){
+    return StrName;
+    }
+    
     public String setPass(String strPass){
         DBPassword = strPass;
         return DBPassword;

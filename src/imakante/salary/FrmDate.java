@@ -1,24 +1,13 @@
 package imakante.salary;
-
-
-
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
-import java.awt.Dimension;
 import javax.swing.JPanel;
-import java.awt.BorderLayout;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Rectangle;
+import java.awt.event.ActionListener;
 import javax.swing.JLabel;
-import javax.swing.BorderFactory;
-import javax.swing.border.EtchedBorder;
 import java.sql.Connection;
-import java.sql.Statement;
+
 public class FrmDate extends JDialog //implements ActionListener
 {
     boolean sdf;
@@ -105,11 +94,97 @@ public class FrmDate extends JDialog //implements ActionListener
             }
             
             private void jbInit() throws Exception {
+                java.awt.GridBagConstraints gridBagConstraints;
+                
+                jPanel1 = new javax.swing.JPanel();
+                L1 = new javax.swing.JLabel();
+                L2 = new javax.swing.JLabel();
+               comboMonth = new javax.swing.JComboBox(month);
+                //comboYear = new javax.swing.JComboBox();
+                jPanel2 = new javax.swing.JPanel();
+                B1 = new javax.swing.JButton();
+                B2= new javax.swing.JButton();
+                
+                setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+                jPanel1.setLayout(new java.awt.GridBagLayout());
+                
+                jPanel1.setBorder(new javax.swing.border.EtchedBorder());
+                L1.setText("\u041c\u0435\u0441\u0435\u0446");
+                gridBagConstraints = new java.awt.GridBagConstraints();
+                gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+                gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+                jPanel1.add(L1, gridBagConstraints);
+                
+                L2.setText("\u0413\u043e\u0434\u0438\u043d\u0430");
+                gridBagConstraints = new java.awt.GridBagConstraints();
+                gridBagConstraints.gridx = 0;
+                gridBagConstraints.gridy = 1;
+                gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+                gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+                jPanel1.add(L2, gridBagConstraints);
+                
+                comboMonth.setBackground(new java.awt.Color(240, 240, 240));
+                gridBagConstraints = new java.awt.GridBagConstraints();
+                gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+                gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+                jPanel1.add(comboMonth, gridBagConstraints);
+                comboMonth.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        comboMactionPerformed(e);
+                    }
+                });
+                
+                comboYear.setBackground(new java.awt.Color(240, 240, 240));
+                gridBagConstraints = new java.awt.GridBagConstraints();
+                gridBagConstraints.gridx = 1;
+                gridBagConstraints.gridy = 1;
+                gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+                gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+                jPanel1.add(comboYear, gridBagConstraints);
+                comboYear.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        comboYactionPerformed(e);
+                    }
+                });
+                getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+                
+                jPanel2.setLayout(new java.awt.GridBagLayout());
+                
+                jPanel2.setBorder(new javax.swing.border.EtchedBorder());
+                B1.setText("\u041f\u041e\u0422\u0412\u042a\u0420\u0414\u0418");
+                gridBagConstraints = new java.awt.GridBagConstraints();
+                gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+                gridBagConstraints.ipadx = 3;
+                gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+                jPanel2.add(B1, gridBagConstraints);
+                B1.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        jButton1_actionPerformed(evt);
+                    }
+                });
+                
+                B2.setText("\u041e\u0422\u041c\u0415\u041d\u0418");
+                gridBagConstraints = new java.awt.GridBagConstraints();
+                gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+                gridBagConstraints.ipadx = 3;
+                gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+                jPanel2.add(B2, gridBagConstraints);
+                B2.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        jButton2_actionPerformed(evt);
+                    }
+                });
+                getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
+                
+                pack();
+                
+                
+            /*    ---
                 this.setTitle("Промяна на период");
                 this.setLocation(200,200);
                 this.setSize(new Dimension(339, 196));
                 panel.setLayout(null);
-                
+             
                 comboMonth = new JComboBox(month);
                 comboMonth.setSelectedIndex(selected);
                 comboMonth.addActionListener(new ActionListener() {
@@ -129,7 +204,7 @@ public class FrmDate extends JDialog //implements ActionListener
                 L1.setBounds(new Rectangle(25, 10, 130, 20));
                 L2.setText("Година");
                 L2.setBounds(new Rectangle(25, 40, 90, 20));
-                
+             
                 comboYear.setSelectedIndex(selected);
                 comboYear.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
@@ -158,7 +233,7 @@ public class FrmDate extends JDialog //implements ActionListener
                 jPanel2.add(B2, null);
                 panel.add(jPanel2, null);
                 panel.add(jPanel1, null);
-                this.getContentPane().add(panel, BorderLayout.CENTER);
+                this.getContentPane().add(panel, BorderLayout.CENTER);*/
             }
             
             private void jButton1_actionPerformed(ActionEvent e) {
