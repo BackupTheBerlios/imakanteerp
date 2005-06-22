@@ -38,17 +38,17 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     
     Dimension screen = 	Toolkit.getDefaultToolkit().getScreenSize();
     public static String StrName;
-    String StrBTitle = null;
-    String DBDriver = null; 
-    String DBSource = null; 
-    String DBUserName = null;
-    String DBPassword = null; 
+    String StrBTitle;
+    String DBDriver;
+    public static String DBSource;
+    public static String DBUserName;
+    public static String DBPassword;
     java.sql.Connection dbCON;
     boolean suportStProc = false;
-    int pMonth = 0;
-    int pYear = 0;
+    public static int pMonth, pYear;
+    
     //--Start variable the contains forms
- 
+    
     
     FrmSastav    FormSastav;
     FrmDOD       FormDOD;
@@ -124,7 +124,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         setExtendedState(this.MAXIMIZED_BOTH);
         
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        setIconImage(new ImageIcon("images/appicon.png").getImage());
+        setIconImage(new ImageIcon("/imakante/imakante_small.jpg").getImage());
         setLocation(0,0);
         setSize(screen);
         setResizable(true);
@@ -613,7 +613,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         //End proccess sub menu
         
-   
+        
         JMenuItem ItmSPZarab = new JMenuItem("Заработки");
         ItmSPZarab.setFont(menuFont);
         ItmSPZarab.setActionCommand("spzarab");
@@ -967,7 +967,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         try{
             Class.forName(DBDriver);
-            dbCON = java.sql.DriverManager.getConnection(DBSource,DBUserName ,DBPassword);
+            dbCON = java.sql.DriverManager.getConnection(DBSource,DBUserName ,DBPassword.toString());
         } catch(ClassNotFoundException e)  {
             System.err.println("Failed to load driver");
             e.printStackTrace();
@@ -1068,7 +1068,10 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
     }
     
-    
+    protected void loadLockApp(){
+         javax.swing.JDialog lockFrm = new frmLock_app_salary(this, true);
+               lockFrm.setVisible(true);
+    }
     
     /******************** End method for loading form start *******************/
     public boolean setSupportStProc(boolean sp){
@@ -1088,30 +1091,39 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         pMonth = xMonth;
         return pMonth;
     }
-    public int setYear(int xYear){
-        
-        
-        pYear = xYear;
-        //System.out.println(pYear);
-        return pYear;
+     public static int getMonth(int xMonth) {
+        return pMonth;
     }
-    
+    public int setYear(int xYear){
+       pYear = xYear;
+       return pYear;
+    }
+    public static int getYear(int xYear){
+       return pYear;
+    }
     // za nastroika na bazata
     
     public String setDBDriver(String strDriver){
         DBDriver = strDriver;
         return DBDriver;
     }
-    
+    public String getDBDriver(String strDriver){
+        return DBDriver;
+    }
     
     public String setDBSource(String strSource){
         DBSource = strSource;
         return DBSource;
     }
-    
+    public static String getDBSource(String strSource){
+        return DBSource;
+    }
     
     public String setUser(String strUser){
         DBUserName = strUser;
+        return DBUserName;
+    }
+    public static String getUser(){
         return DBUserName;
     }
     public String setFirm(String strFirm){
@@ -1126,14 +1138,16 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     }
     
     public static String getNFirm(){
-    return StrName;
+        return StrName;
     }
     
     public String setPass(String strPass){
         DBPassword = strPass;
         return DBPassword;
     }
-    
+    public static String getPass(){
+        return DBPassword;
+    }
     
     /************************** Event handling start **************************/
     
@@ -1148,7 +1162,9 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                     
                 }
             }
-            
+            else if(srcObject=="lockapp"){
+               loadLockApp();
+            }
             else if(srcObject=="doo"){
                 try{
                     loadDODForm();
