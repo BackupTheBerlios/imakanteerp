@@ -201,6 +201,7 @@ public class FrmNewM extends JInternalFrame {
         jPanel1.add(jLabel8, null);
         
         try{
+            
             rsCus = stCus.executeQuery(strSQL);
             rsCus.next();
             jTextField1.setText("" + rsCus.getString("dni5"));

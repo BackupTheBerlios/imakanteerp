@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import javax.swing.JLabel;
 import java.sql.Connection;
 
@@ -99,7 +100,7 @@ public class FrmDate extends JDialog //implements ActionListener
                 jPanel1 = new javax.swing.JPanel();
                 L1 = new javax.swing.JLabel();
                 L2 = new javax.swing.JLabel();
-               comboMonth = new javax.swing.JComboBox(month);
+                comboMonth = new javax.swing.JComboBox(month);
                 //comboYear = new javax.swing.JComboBox();
                 jPanel2 = new javax.swing.JPanel();
                 B1 = new javax.swing.JButton();
@@ -133,7 +134,11 @@ public class FrmDate extends JDialog //implements ActionListener
                         comboMactionPerformed(e);
                     }
                 });
-                
+                comboMonth.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyPressed(java.awt.event.KeyEvent evt) {
+                        comboMonthKeyPressed(evt);
+                    }
+                });
                 comboYear.setBackground(new java.awt.Color(240, 240, 240));
                 gridBagConstraints = new java.awt.GridBagConstraints();
                 gridBagConstraints.gridx = 1;
@@ -144,6 +149,11 @@ public class FrmDate extends JDialog //implements ActionListener
                 comboYear.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         comboYactionPerformed(e);
+                    }
+                });
+                comboYear.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyPressed(java.awt.event.KeyEvent evt) {
+                        comboYearKeyPressed(evt);
                     }
                 });
                 getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -162,6 +172,11 @@ public class FrmDate extends JDialog //implements ActionListener
                         jButton1_actionPerformed(evt);
                     }
                 });
+                B1.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyPressed(java.awt.event.KeyEvent evt) {
+                        B1KeyPressed(evt);
+                    }
+                });
                 
                 B2.setText("\u041e\u0422\u041c\u0415\u041d\u0418");
                 gridBagConstraints = new java.awt.GridBagConstraints();
@@ -174,67 +189,30 @@ public class FrmDate extends JDialog //implements ActionListener
                         jButton2_actionPerformed(evt);
                     }
                 });
+                B2.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyPressed(java.awt.event.KeyEvent evt) {
+                        B2KeyPressed(evt);
+                    }
+                });
                 getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
                 
                 pack();
                 
-                
-            /*    ---
-                this.setTitle("Промяна на период");
-                this.setLocation(200,200);
-                this.setSize(new Dimension(339, 196));
-                panel.setLayout(null);
-             
-                comboMonth = new JComboBox(month);
-                comboMonth.setSelectedIndex(selected);
-                comboMonth.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        comboMactionPerformed(e);
-                    }
-                });
-                comboMonth.setBounds(new Rectangle(160, 10, 100, 20));
-                B1.setText("Промени");
-                B1.setBounds(new Rectangle(35, 20, 95, 25));
-                B1.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        jButton1_actionPerformed(e);
-                    }
-                });
-                L1.setText("Месец");
-                L1.setBounds(new Rectangle(25, 10, 130, 20));
-                L2.setText("Година");
-                L2.setBounds(new Rectangle(25, 40, 90, 20));
-             
-                comboYear.setSelectedIndex(selected);
-                comboYear.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        comboYactionPerformed(e);
-                    }
-                });
-                comboYear.setBounds(new Rectangle(160, 40, 100, 20));
-                jPanel1.setBounds(new Rectangle(10, 5, 310, 70));
-                jPanel1.setLayout(null);
-                jPanel1.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
-                jPanel2.setBounds(new Rectangle(10, 85, 310, 65));
-                jPanel2.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
-                jPanel2.setLayout(null);
-                B2.setText("Отмени");
-                B2.setBounds(new Rectangle(175, 20, 95, 25));
-                B2.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        jButton2_actionPerformed(e);
-                    }
-                });
-                jPanel1.add(L1, null);
-                jPanel1.add(comboMonth, null);
-                jPanel1.add(L2, null);
-                jPanel1.add(comboYear, null);
-                jPanel2.add(B1, null);
-                jPanel2.add(B2, null);
-                panel.add(jPanel2, null);
-                panel.add(jPanel1, null);
-                this.getContentPane().add(panel, BorderLayout.CENTER);*/
             }
+            
+            private void B1KeyPressed(java.awt.event.KeyEvent evt) {
+                if (evt.getKeyCode() == KeyEvent.VK_ENTER){ B1.doClick(); }
+            }
+            private void B2KeyPressed(java.awt.event.KeyEvent evt) {
+                if (evt.getKeyCode() == KeyEvent.VK_ENTER){ B2.doClick(); }
+            }
+            private void comboMonthKeyPressed(java.awt.event.KeyEvent evt) {
+                if (evt.getKeyCode() == KeyEvent.VK_ENTER){ comboMonth.transferFocus();}
+            }
+            private void comboYearKeyPressed(java.awt.event.KeyEvent evt) {
+                if (evt.getKeyCode() == KeyEvent.VK_ENTER){ comboYear.transferFocus();}
+            }
+            
             
             private void jButton1_actionPerformed(ActionEvent e) {
                 pMonth = (selected+1);
@@ -248,7 +226,7 @@ public class FrmDate extends JDialog //implements ActionListener
             }
             
             private void jButton2_actionPerformed(ActionEvent e) {
-                System.exit(0);
+                this.dispose();
             }
             
             private void comboMactionPerformed(ActionEvent e) {

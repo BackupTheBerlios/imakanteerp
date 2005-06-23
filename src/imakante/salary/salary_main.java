@@ -30,12 +30,8 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     
     javax.swing.JPanel Panel1;
     JDesktopPane Desk1 = new JDesktopPane();
-    
-    
-    
     JLabel StatusLabel = new JLabel("ИМАКАНТЕ ",JLabel.CENTER);
     JLabel BTlabel = new JLabel();
-    
     Dimension screen = 	Toolkit.getDefaultToolkit().getScreenSize();
     public static String StrName;
     String StrBTitle;
@@ -46,10 +42,8 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     java.sql.Connection dbCON;
     boolean suportStProc = false;
     public static int pMonth, pYear;
-    
+    public static java.util.HashMap rightsUser;
     //--Start variable the contains forms
-    
-    
     FrmSastav    FormSastav;
     FrmDOD       FormDOD;
     FrmDOO       FormDOO;
@@ -59,9 +53,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     FrmOtdel     FormOtdel;
     FrmDlajnost  FormDlajnost;
     FrmVedZaplati FormVedZaplati;
-    
-    
-    
+    frmSleujParam  FormSleujParam;
     Font menuFont = new Font("Tahoma", Font.PLAIN, 11);
     imakante.salary.frmLogo splash = new imakante.salary.frmLogo();
     Thread FormSplash = new Thread(splash);
@@ -69,33 +61,15 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     public salary_main(){
         
         super("ИМАКАНТЕ ЛИЧЕН СЪСТАВ v 0.0.1a");
-        
-        //     final frmLogo splash = new frmLogo();
-        
+      
         loadSplashScreen();
         
         frmConnSalary fdia = new frmConnSalary(this,true);
         fdia.setVisible(true);
-        
-        try{
-            Class.forName(DBDriver);
-            dbCON = java.sql.DriverManager.getConnection(DBSource,DBUserName ,DBPassword);
-        } catch(ClassNotFoundException e)  {
-            System.err.println("Failed to load driver");
-            e.printStackTrace();
-            System.exit(1);
-        } catch(java.sql.SQLException e){
-            System.err.println("Unable to connect");
-            e.printStackTrace();
-            System.exit(1);
-        }
-        //End set the main form properties
-        
-        
+               
         FrmDate fdate = new FrmDate(this,dbCON);
         fdate.setVisible(true);
-        //FormLogo.dispose();
-        
+              
         StatusLabel.setBorder(BorderFactory.createTitledBorder(""));
         StatusLabel.setFont(menuFont);
         
@@ -800,7 +774,8 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     protected void loadSastavForm() throws java.sql.SQLException{
         //Verify if the form is already loaded
         boolean AlreadyLoaded = isLoaded("Списък служители");
-        if (pMonth != 0){
+        
+        if (pMonth != 0 && (rightsUser.get("sastav").toString()) != "0"){
             if(AlreadyLoaded==false){
                 
                 FormSastav = new FrmSastav(dbCON,this,pMonth,pYear);
@@ -832,8 +807,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     
     //Create dod form
     protected void loadDODForm() throws java.sql.SQLException{
-        //Verify if the form is already loaded
-        System.out.println(pYear);
+      
         boolean AlreadyLoaded = isLoaded("ДОО таблица");
         if(AlreadyLoaded==false){
             FormDOD = new FrmDOD(dbCON,this);
@@ -932,12 +906,13 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     //End create Date
     protected void loadVedomostZForm() {
         boolean AlreadyLoaded = isLoaded("Ведомости");
-        if (pMonth != 0){
+        if (pMonth != 0 && (rightsUser.get("vedom").toString()) != "0"){
             if(AlreadyLoaded==false){
-                
+                try{
                 FormVedZaplati = new imakante.salary.FrmVedZaplati(dbCON,this,pMonth,pYear);
                 Desk1.add(FormVedZaplati);
                 FormVedZaplati.setVisible(true);
+                }catch(java.sql.SQLException sqle){}
                 
                 try{
                     FormVedZaplati.setIcon(false);
@@ -984,10 +959,14 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
     }
     
-    protected void loadNewMForm() throws java.sql.SQLException{
+    /**
+     * 
+     * @throws java.sql.SQLException 
+     */
+    protected void loadNewMForm() throws java.sql.SQLException {
         
-        boolean AlreadyLoaded = isLoaded("Месечни данни");
-        if(AlreadyLoaded==false){
+        boolean AlreadyLoaded = isLoaded("Създаване на нов месец");
+        if(AlreadyLoaded==false && (rightsUser.get("newmonth").toString()) != "0"){
             FormNewM = new FrmNewM(dbCON,this);
             Desk1.add(FormNewM);
             FormNewM.setVisible(true);
@@ -1055,7 +1034,13 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         //End verify if the form is already loaded
         
     }
-    
+    protected void loadSlujParam(){
+    try{
+        FormSleujParam = new frmSleujParam(this, dbCON, true);
+       FormSleujParam.setVisible(true);
+    }
+    catch(java.sql.SQLException sqle){}
+    }
     protected void loadSplashScreen(){
         
         FormSplash.start();
@@ -1102,6 +1087,14 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
        return pYear;
     }
     // za nastroika na bazata
+    public java.sql.Connection setConnection(java.sql.Connection extCon){
+    dbCON = extCon;
+    return dbCON;
+    }
+    public java.util.HashMap setRights(java.util.HashMap extHash){
+      rightsUser = extHash;
+        return rightsUser;
+    }
     
     public String setDBDriver(String strDriver){
         DBDriver = strDriver;
@@ -1227,7 +1220,11 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                     fExport.setVisible(true);
                 }catch(java.sql.SQLException sqle){
                 };
-            } else if(srcObject=="zved"){
+            } 
+            else if(srcObject=="danfirm"){
+                
+                loadSlujParam();
+            }else if(srcObject=="zved"){
                 
                 try{
                     loadVedomostZForm();

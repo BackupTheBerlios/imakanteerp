@@ -62,6 +62,11 @@ public class FrmDlajnost extends JInternalFrame implements WindowListener {
             e.printStackTrace();
         }
         jScrollPane1.getViewport().add(jTable, null);
+        java.awt.Dimension  dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        int   x = (((dim.width)-(this.getSize().width))/2);
+        int  y = (((dim.height)-(this.getSize().height))/2);
+                
+        this.setLocation(x,y);
     }
     
     private void jbInit() throws Exception {

@@ -20,6 +20,7 @@ public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.ev
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     public static final String Names[] = {"", "Номер на служител", "Име",
             "Презиме", "Фамилия", "ЕГН", "Дата на раждане", "Пол",
             "Номер на ЛК", "Издадена на", "Област", "Пощенски код",
@@ -81,7 +82,7 @@ public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.ev
                 jButton5 = new javax.swing.JButton();
                 jButton6 = new javax.swing.JButton();
                 jButton7 = new javax.swing.JButton();
-                
+                jButton8 = new javax.swing.JButton();
                 jPanel1.setLayout(new java.awt.BorderLayout());
                 
                 jPanel1.setBorder(new javax.swing.border.EtchedBorder());
@@ -152,6 +153,23 @@ public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.ev
                 });
                 
                 jPanel2.add(jButton7);
+                jButton7.setText("\u041e\u043f\u0440\u0435\u0441\u043d\u044f\u0432\u0430\u043d\u0435");
+                jButton7.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        jButton7ActionPerformed(evt);
+                    }
+                });
+                
+                jPanel2.add(jButton7);
+                
+                jButton8.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
+                jButton8.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        jButton8ActionPerformed(evt);
+                    }
+                });
+                
+                jPanel2.add(jButton8);
                 
                 getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
                 
@@ -267,7 +285,9 @@ public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.ev
             private void jButton7ActionPerformed(java.awt.event.ActionEvent e) {
                 reloadRecord();
             }
-            
+            private void jButton8ActionPerformed(java.awt.event.ActionEvent e) {
+                UnloadWindow();
+            }
             public static void reloadRecord() {
                 try{
                     rsCus.close();

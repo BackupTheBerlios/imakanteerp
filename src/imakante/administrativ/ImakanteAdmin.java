@@ -47,21 +47,34 @@ public class ImakanteAdmin extends javax.swing.JFrame {
         copyMenuItem = new javax.swing.JMenuItem();
         pasteMenuItem = new javax.swing.JMenuItem();
         deleteMenuItem = new javax.swing.JMenuItem();
+        userMenu = new javax.swing.JMenu();
+        userMenu_ls = new javax.swing.JMenuItem();
+        userMenu_sale = new javax.swing.JMenuItem();
+        userMenu_acc = new javax.swing.JMenuItem();
+        userMenu_man = new javax.swing.JMenuItem();
+        userMenu_stat = new javax.swing.JMenuItem();
+        userMenu_ai = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         contentMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("\u0418\u041c\u0410\u041a\u041d\u0422\u0415 \u0410\u0414\u041c\u0418\u041d");
+        setFont(new java.awt.Font("Tahoma", 0, 12));
+        setIconImage(getIconImage());
         getContentPane().add(desktopPane, java.awt.BorderLayout.CENTER);
 
+        jToolBar1.setFont(new java.awt.Font("Tahoma", 0, 11));
         jLabel1.setText("Обработка база - " + dbName+ "   Потребител" + dbUser);
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jToolBar1.add(jLabel1);
 
         getContentPane().add(jToolBar1, java.awt.BorderLayout.NORTH);
 
+        menuBar.setBorder(new javax.swing.border.EtchedBorder());
         jConn.setText("\u0412\u0440\u044a\u0437\u043a\u0430");
+        jConn.setFont(new java.awt.Font("Tahoma", 0, 11));
+        jConnIn.setFont(new java.awt.Font("Tahoma", 0, 11));
         jConnIn.setText("\u0412\u0445\u043e\u0434 \u0432 \u0431\u0430\u0437\u0430 ...");
         jConnIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,6 +84,7 @@ public class ImakanteAdmin extends javax.swing.JFrame {
 
         jConn.add(jConnIn);
 
+        jConnExit.setFont(new java.awt.Font("Tahoma", 0, 11));
         jConnExit.setText("\u0418\u0437\u0445\u043e\u0434 \u043e\u0442 \u0431\u0430\u0437\u0430");
         jConnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,8 +94,10 @@ public class ImakanteAdmin extends javax.swing.JFrame {
 
         jConn.add(jConnExit);
 
+        jSeparator1.setFont(new java.awt.Font("Tahoma", 0, 10));
         jConn.add(jSeparator1);
 
+        jExit.setFont(new java.awt.Font("Tahoma", 0, 11));
         jExit.setText("\u0418\u0417\u0425\u041e\u0414");
         jExit.setToolTipText("\u0418\u0437\u0445\u043e\u0434 \u043e\u0442 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0430\u0442\u0430");
         jExit.addActionListener(new java.awt.event.ActionListener() {
@@ -95,6 +111,8 @@ public class ImakanteAdmin extends javax.swing.JFrame {
         menuBar.add(jConn);
 
         tableMenu.setText("\u0422\u0430\u0431\u043b\u0438\u0446\u0438");
+        tableMenu.setFont(new java.awt.Font("Tahoma", 0, 11));
+        openMenuItem.setFont(new java.awt.Font("Tahoma", 0, 11));
         openMenuItem.setText("\u041e\u0442\u0432\u0430\u0440\u044f\u043d\u0435 \u043d\u0430 \u0442\u0430\u0431\u043b\u0438\u0446\u0430");
         openMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,33 +122,71 @@ public class ImakanteAdmin extends javax.swing.JFrame {
 
         tableMenu.add(openMenuItem);
 
+        saveMenuItem.setFont(new java.awt.Font("Tahoma", 0, 11));
         saveMenuItem.setText("Save");
         tableMenu.add(saveMenuItem);
 
+        saveAsMenuItem.setFont(new java.awt.Font("Tahoma", 0, 11));
         saveAsMenuItem.setText("Save As ...");
         tableMenu.add(saveAsMenuItem);
 
         menuBar.add(tableMenu);
 
         dbMenu.setText("\u0411\u0430\u0437\u0438");
+        dbMenu.setFont(new java.awt.Font("Tahoma", 0, 11));
+        cutMenuItem.setFont(new java.awt.Font("Tahoma", 0, 11));
         cutMenuItem.setText("Cut");
         dbMenu.add(cutMenuItem);
 
+        copyMenuItem.setFont(new java.awt.Font("Tahoma", 0, 11));
         copyMenuItem.setText("Copy");
         dbMenu.add(copyMenuItem);
 
+        pasteMenuItem.setFont(new java.awt.Font("Tahoma", 0, 11));
         pasteMenuItem.setText("Paste");
         dbMenu.add(pasteMenuItem);
 
+        deleteMenuItem.setFont(new java.awt.Font("Tahoma", 0, 11));
         deleteMenuItem.setText("Delete");
         dbMenu.add(deleteMenuItem);
 
         menuBar.add(dbMenu);
 
+        userMenu.setText("\u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b\u0438");
+        userMenu.setFont(new java.awt.Font("Tahoma", 0, 11));
+        userMenu_ls.setFont(new java.awt.Font("Tahoma", 0, 11));
+        userMenu_ls.setText("\u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b\u0438  \u041b\u0438\u0447\u0435\u043d \u0421\u044a\u0441\u0442\u0430\u0432");
+        userMenu.add(userMenu_ls);
+
+        userMenu_sale.setFont(new java.awt.Font("Tahoma", 0, 11));
+        userMenu_sale.setText("\u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b\u0438 \u0421\u043a\u043b\u0430\u0434");
+        userMenu.add(userMenu_sale);
+
+        userMenu_acc.setFont(new java.awt.Font("Tahoma", 0, 11));
+        userMenu_acc.setText("\u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b\u0438 \u0421\u0447\u0435\u0442\u043e\u0432\u043e\u0434\u0441\u0442\u0432\u043e");
+        userMenu.add(userMenu_acc);
+
+        userMenu_man.setFont(new java.awt.Font("Tahoma", 0, 11));
+        userMenu_man.setText("\u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b\u0438 \u041f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u043e");
+        userMenu.add(userMenu_man);
+
+        userMenu_stat.setFont(new java.awt.Font("Tahoma", 0, 11));
+        userMenu_stat.setText("\u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b\u0438 \u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043a\u0430");
+        userMenu.add(userMenu_stat);
+
+        userMenu_ai.setFont(new java.awt.Font("Tahoma", 0, 11));
+        userMenu_ai.setText("\u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b\u0438 \u0418\u0418");
+        userMenu.add(userMenu_ai);
+
+        menuBar.add(userMenu);
+
         helpMenu.setText("\u041f\u043e\u043c\u043e\u0449");
+        helpMenu.setFont(new java.awt.Font("Tahoma", 0, 11));
+        contentMenuItem.setFont(new java.awt.Font("Tahoma", 0, 11));
         contentMenuItem.setText("Contents");
         helpMenu.add(contentMenuItem);
 
+        aboutMenuItem.setFont(new java.awt.Font("Tahoma", 0, 11));
         aboutMenuItem.setText("About");
         helpMenu.add(aboutMenuItem);
 
@@ -264,6 +320,13 @@ public class ImakanteAdmin extends javax.swing.JFrame {
     private javax.swing.JMenuItem saveAsMenuItem;
     private javax.swing.JMenuItem saveMenuItem;
     private javax.swing.JMenu tableMenu;
+    private javax.swing.JMenu userMenu;
+    private javax.swing.JMenuItem userMenu_acc;
+    private javax.swing.JMenuItem userMenu_ai;
+    private javax.swing.JMenuItem userMenu_ls;
+    private javax.swing.JMenuItem userMenu_man;
+    private javax.swing.JMenuItem userMenu_sale;
+    private javax.swing.JMenuItem userMenu_stat;
     // End of variables declaration//GEN-END:variables
     
     

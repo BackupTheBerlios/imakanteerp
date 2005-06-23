@@ -5,7 +5,6 @@ package imakante.salary;
 import imakante.com.CustomTable;
 import imakante.com.CustomTableModel;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.awt.Dimension;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
@@ -17,9 +16,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import javax.swing.BorderFactory;
 import javax.swing.border.EtchedBorder;
-import java.sql.Connection;
 import java.util.HashMap;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import net.sf.jasperreports.engine.JasperReport;
@@ -54,7 +51,9 @@ public class FrmVedZaplati extends javax.swing.JInternalFrame implements java.aw
     public CustomTable jTable;
     public CustomTableModel jmodel;
     public java.awt.Dimension dim;
-    public FrmVedZaplati(Connection srcCN, JFrame getParentFrame,int pMonth, int pYear) {
+    public FrmVedZaplati(java.sql.Connection srcCN, javax.swing.JFrame getParentFrame,
+            int pMonth, int pYear) throws java.sql.SQLException {
+        
         super("Ведомости", false, true,true, true);
         
         dbInternal = srcCN;
@@ -63,7 +62,7 @@ public class FrmVedZaplati extends javax.swing.JInternalFrame implements java.aw
         //fName = FName;
         try{
             stm = dbInternal.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
-        } catch (SQLException sqle){
+        } catch (java.sql.SQLException sqle){
             System.out.println("Problem v statement - date");
         }
         
@@ -71,7 +70,7 @@ public class FrmVedZaplati extends javax.swing.JInternalFrame implements java.aw
                 " lsresult.zaplata, lsresult.psuma, lsresult.nsuma FROM main_ls" +
                 " INNER JOIN lsresult ON (main_ls.Id = lsresult.idrab)  WHERE lsresult.pyear = " + lYear + " AND " + "lsresult.pmonth = " + lMonth;
         try{
-            rsCus = stm.executeQuery(strYearsSQL);} catch (SQLException sd){}
+            rsCus = stm.executeQuery(strYearsSQL);} catch (java.sql.SQLException sd){}
         
         jmodel = new CustomTableModel(dbInternal, rsCus, null);
         jTable = new CustomTable(jmodel);
@@ -159,7 +158,7 @@ public class FrmVedZaplati extends javax.swing.JInternalFrame implements java.aw
         try {
             rsCus.close();
             stm.close();
-        } catch(SQLException e) {
+        } catch(java.sql.SQLException e) {
             JOptionPane.showMessageDialog(null,"Грешка ИЛС-С03Р  Възникнал проблем при затваряне на ресурси.\n","ИМАКАНТЕ",JOptionPane.WARNING_MESSAGE);
         }
         this.dispose();

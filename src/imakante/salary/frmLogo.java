@@ -25,7 +25,7 @@ public class frmLogo extends javax.swing.JFrame implements Runnable {
         panel2 = new java.awt.Panel();
         jProgressBar1 = new javax.swing.JProgressBar();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setFont(new java.awt.Font("Tahoma", 0, 10));
         setResizable(false);
         panel1.setLayout(new java.awt.BorderLayout());
