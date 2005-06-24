@@ -68,7 +68,7 @@ public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.ev
                 } catch(Exception e) {
                     e.printStackTrace();
                 }
-              //  jScrollPane1.getViewport().add(jTable, null);
+                //  jScrollPane1.getViewport().add(jTable, null);
             }
             
             private void jbInit() throws Exception {
@@ -209,16 +209,16 @@ public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.ev
             }
             
             private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
-                 try {
+                try {
                     if (jTable.getValueAt(jTable.getSelectedRow(),
                             jTable.getSelectedColumn()) != null) {
-                       int index = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
-                       try{
-                       stCus.executeUpdate("UPDATE main_ls SET nomer = NULL WHERE id = " + index);
-                       }catch(java.sql.SQLException sqle){}
+                        int index = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
                         try{
-                       stCus.executeUpdate("UPDATE lsresult SET nomer = NULL WHERE id = " + index + "AND pmonth =" + lMonth + "AND pyear = " + lYear );
-                       }catch(java.sql.SQLException sqle){}
+                            stCus.executeUpdate("UPDATE main_ls SET nomer = NULL WHERE id = " + index);
+                        }catch(java.sql.SQLException sqle){}
+                        try{
+                            stCus.executeUpdate("UPDATE lsresult SET nomer = NULL WHERE id = " + index + "AND pmonth =" + lMonth + "AND pyear = " + lYear );
+                        }catch(java.sql.SQLException sqle){}
                     } else {
                         javax.swing.JOptionPane.showMessageDialog(null,
                                 "Записът е променян. Моля натиснете бутон 'Опресни'!",
@@ -242,7 +242,20 @@ public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.ev
             
             
             private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
+                String freport = "c:/spisak.jasper";
                 
+                java.util.HashMap reportParam = new java.util.HashMap();
+                
+                try{
+                    java.io.FileInputStream fs = new java.io.FileInputStream(freport);
+                } catch (java.io.FileNotFoundException  ioex){
+                    System.out.println("Ne moga da nameria faila  ");
+                }
+                String fName =  salary_main.getNFirm();
+                reportParam.put("name_firm", fName);
+                
+                javax.swing.JDialog formPrint = new imakante.salary.frmPrint(JFParentFrame,true,cnCus ,freport,reportParam);
+                formPrint.setVisible(true);
             }
             private void jButton3_actionPerformed(java.awt.event.ActionEvent e) {
             }
@@ -251,13 +264,13 @@ public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.ev
                 try {
                     if (jTable.getValueAt(jTable.getSelectedRow(),
                             jTable.getSelectedColumn()) != null) {
-                       int index = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
-                       try{
-                       stCus.executeUpdate("UPDATE main_ls SET nomer = NULL WHERE id = " + index);
-                       }catch(java.sql.SQLException sqle){}
+                        int index = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
                         try{
-                       stCus.executeUpdate("UPDATE lsresult SET nomer = NULL WHERE id = " + index + "AND pmonth =" + lMonth + "AND pyear = " + lYear );
-                       }catch(java.sql.SQLException sqle){}
+                            stCus.executeUpdate("UPDATE main_ls SET nomer = NULL WHERE id = " + index);
+                        }catch(java.sql.SQLException sqle){}
+                        try{
+                            stCus.executeUpdate("UPDATE lsresult SET nomer = NULL WHERE id = " + index + "AND pmonth =" + lMonth + "AND pyear = " + lYear );
+                        }catch(java.sql.SQLException sqle){}
                     } else {
                         javax.swing.JOptionPane.showMessageDialog(null,
                                 "Записът е променян. Моля натиснете бутон 'Опресни'!",
