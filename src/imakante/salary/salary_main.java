@@ -54,6 +54,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     FrmDlajnost  FormDlajnost;
     FrmVedZaplati FormVedZaplati;
     frmSleujParam  FormSleujParam;
+    FrmAct        FormActStDlaj;
     Font menuFont = new Font("Tahoma", Font.PLAIN, 11);
     imakante.salary.frmLogo splash = new imakante.salary.frmLogo();
     Thread FormSplash = new Thread(splash);
@@ -61,15 +62,15 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     public salary_main(){
         
         super("»Ã¿ ¿Õ“≈ À»◊≈Õ —⁄—“¿¬ v 0.0.1a");
-      
+        
         loadSplashScreen();
         
         frmConnSalary fdia = new frmConnSalary(this,true);
         fdia.setVisible(true);
-               
+        
         FrmDate fdate = new FrmDate(this,dbCON);
         fdate.setVisible(true);
-              
+        
         StatusLabel.setBorder(BorderFactory.createTitledBorder(""));
         StatusLabel.setFont(menuFont);
         
@@ -510,6 +511,9 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         //End records sub menu
         
+        
+        
+        
         //Setup proccess menu
         JMenu MnuProccess = new JMenu("—œ–¿¬ »");
         MnuProccess.setFont(menuFont);
@@ -637,6 +641,27 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmUTD.setBackground(new Color(255,255,255));
         
         MnuProccess.add(ItmUTD);
+        
+        
+        
+        ////
+        //Setup system menu
+        JMenu MnuDocum = new JMenu("ƒŒ ”Ã≈Õ“»");
+        MnuDocum.setFont(menuFont);
+        MnuDocum.setMnemonic('S');
+        MnuDocum.setBackground(new Color(255,255,255));
+        NewJMenuBar.add(MnuDocum);
+        //
+        
+        JMenuItem ItmActStDlaj = new JMenuItem("¿ÍÚ Á‡ ‚ÒÚ˙Ô‚‡ÌÂ ‚ ‰Î˙ÊÌÓÒÚ");
+        ItmActStDlaj.setFont(menuFont);
+        ItmActStDlaj.setActionCommand("actsdl");
+        ItmActStDlaj.addActionListener(JMenuActionListener);
+        ItmActStDlaj.setBackground(new Color(255,255,255));
+        
+        MnuDocum.add(ItmActStDlaj);
+        
+        
         
         //Setup system menu
         JMenu MnuSys = new JMenu("—»—“≈ÃÕ»");
@@ -807,7 +832,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     
     //Create dod form
     protected void loadDODForm() throws java.sql.SQLException{
-      
+        
         boolean AlreadyLoaded = isLoaded("ƒŒŒ Ú‡·ÎËˆ‡");
         if(AlreadyLoaded==false){
             FormDOD = new FrmDOD(dbCON,this);
@@ -909,9 +934,9 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         if (pMonth != 0 && (rightsUser.get("vedom").toString()) != "0"){
             if(AlreadyLoaded==false){
                 try{
-                FormVedZaplati = new imakante.salary.FrmVedZaplati(dbCON,this,pMonth,pYear);
-                Desk1.add(FormVedZaplati);
-                FormVedZaplati.setVisible(true);
+                    FormVedZaplati = new imakante.salary.FrmVedZaplati(dbCON,this,pMonth,pYear);
+                    Desk1.add(FormVedZaplati);
+                    FormVedZaplati.setVisible(true);
                 }catch(java.sql.SQLException sqle){}
                 
                 try{
@@ -960,8 +985,8 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     }
     
     /**
-     * 
-     * @throws java.sql.SQLException 
+     *
+     * @throws java.sql.SQLException
      */
     protected void loadNewMForm() throws java.sql.SQLException {
         
@@ -1035,12 +1060,28 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
     }
     protected void loadSlujParam(){
-    try{
-        FormSleujParam = new frmSleujParam(this, dbCON, true);
-       FormSleujParam.setVisible(true);
+        try{
+            FormSleujParam = new frmSleujParam(this, dbCON, true);
+            FormSleujParam.setVisible(true);
+        } catch(java.sql.SQLException sqle){}
     }
-    catch(java.sql.SQLException sqle){}
+    
+    
+    
+    protected void loadActStDlaj(){
+        try{
+            System.out.println("Vliza v load ");
+            FormActStDlaj = new FrmAct(this, dbCON, "c:/imakante/salary/jasper/","","¿ÍÚ Á‡ ‚ÒÚ˙Ô‚‡ÌÂ ‚ ‰Î˙ÊÌÓÒÚ");
+            Desk1.add(FormActStDlaj);
+            FormActStDlaj.setVisible(true);
+            
+        }catch(java.sql.SQLException sqle){}
+        
+        
     }
+    
+    
+    
     protected void loadSplashScreen(){
         
         FormSplash.start();
@@ -1054,8 +1095,8 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     }
     
     protected void loadLockApp(){
-         javax.swing.JDialog lockFrm = new frmLock_app_salary(this, true);
-               lockFrm.setVisible(true);
+        javax.swing.JDialog lockFrm = new frmLock_app_salary(this, true);
+        lockFrm.setVisible(true);
     }
     
     /******************** End method for loading form start *******************/
@@ -1076,23 +1117,23 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         pMonth = xMonth;
         return pMonth;
     }
-     public static int getMonth(int xMonth) {
+    public static int getMonth(int xMonth) {
         return pMonth;
     }
     public int setYear(int xYear){
-       pYear = xYear;
-       return pYear;
+        pYear = xYear;
+        return pYear;
     }
     public static int getYear(int xYear){
-       return pYear;
+        return pYear;
     }
     // za nastroika na bazata
     public java.sql.Connection setConnection(java.sql.Connection extCon){
-    dbCON = extCon;
-    return dbCON;
+        dbCON = extCon;
+        return dbCON;
     }
     public java.util.HashMap setRights(java.util.HashMap extHash){
-      rightsUser = extHash;
+        rightsUser = extHash;
         return rightsUser;
     }
     
@@ -1154,11 +1195,9 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 }catch(java.sql.SQLException sqle){
                     
                 }
-            }
-            else if(srcObject=="lockapp"){
-               loadLockApp();
-            }
-            else if(srcObject=="doo"){
+            } else if(srcObject=="lockapp"){
+                loadLockApp();
+            } else if(srcObject=="doo"){
                 try{
                     loadDODForm();
                 }catch(java.sql.SQLException sqle){
@@ -1207,7 +1246,11 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 }catch(java.sql.SQLException sqle){
                 };
                 
-            } else if(srcObject=="dlaj"){
+            } else if(srcObject=="actsdl"){
+                
+                loadActStDlaj();
+                
+            }else if(srcObject=="dlaj"){
                 
                 try{
                     loadDlajForm();
@@ -1220,8 +1263,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                     fExport.setVisible(true);
                 }catch(java.sql.SQLException sqle){
                 };
-            } 
-            else if(srcObject=="danfirm"){
+            } else if(srcObject=="danfirm"){
                 
                 loadSlujParam();
             }else if(srcObject=="zved"){
