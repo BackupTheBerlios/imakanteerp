@@ -55,6 +55,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     FrmVedZaplati FormVedZaplati;
     frmSleujParam  FormSleujParam;
     FrmAct        FormActStDlaj;
+    
     Font menuFont = new Font("Tahoma", Font.PLAIN, 11);
     imakante.salary.frmLogo splash = new imakante.salary.frmLogo();
     Thread FormSplash = new Thread(splash);
@@ -692,7 +693,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         JMenuItem ItmDelM = new JMenuItem("Премахване на месец");
         ItmDelM.setFont(menuFont);
-        ItmDelM.setActionCommand("danfirm");
+        ItmDelM.setActionCommand("ereasem");
         ItmDelM.addActionListener(JMenuActionListener);
         ItmDelM.setBackground(new Color(255,255,255));
         
@@ -1079,7 +1080,11 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         
     }
-    
+    protected void loadEreaseM(){
+       
+          frmEreseMonth  FormEreseM = new frmEreseMonth(this, true, dbCON);
+            FormEreseM.setVisible(true);
+         }
     
     
     protected void loadSplashScreen(){
@@ -1266,7 +1271,13 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
             } else if(srcObject=="danfirm"){
                 
                 loadSlujParam();
-            }else if(srcObject=="zved"){
+            }
+             else if(srcObject=="ereasem"){
+                
+                loadEreaseM();
+            }
+                       
+            else if(srcObject=="zved"){
                 
                 try{
                     loadVedomostZForm();

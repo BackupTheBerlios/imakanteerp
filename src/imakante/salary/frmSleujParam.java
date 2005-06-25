@@ -6,9 +6,9 @@ import java.awt.event.KeyEvent;
 
 public class frmSleujParam extends javax.swing.JDialog {
     
-    public frmSleujParam(java.awt.Frame parent, java.sql.Connection dbCon, boolean modal) throws java.sql.SQLException {
-        super(parent, modal);
-        
+    public frmSleujParam(salary_main m, java.sql.Connection dbCon, boolean modal) throws java.sql.SQLException {
+        super(m, modal);
+         main = m;
         java.sql.Connection dbInternal = dbCon;
         try{
             stm = dbInternal.createStatement(java.sql.ResultSet.TYPE_SCROLL_SENSITIVE,
@@ -23,7 +23,6 @@ public class frmSleujParam extends javax.swing.JDialog {
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         int x = (((dim.width)-(this.getSize().width))/2);
         int y = (((dim.height)-(this.getSize().height))/2);
-        System.out.println("ot parvo textovo pole "+jTextField3.getText());
         this.setLocation(x,y);
     }
     
@@ -300,7 +299,8 @@ public class frmSleujParam extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
     java.sql.Statement stm=null;
     java.sql.ResultSet rs=null;
-    
+     private salary_main main = null;
+     
     public void initFields(){
         try{
             if(rs!=null){
