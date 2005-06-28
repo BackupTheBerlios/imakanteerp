@@ -42,7 +42,7 @@ public class frmEreseMonth extends javax.swing.JDialog {
         getContentPane().add(jPanel2, java.awt.BorderLayout.NORTH);
 
         jPanel3.setBorder(new javax.swing.border.EtchedBorder());
-        jButton1.setText("\u0418\u0437\u043f\u044a\u043b\u043d\u0438");
+        jButton1.setText("\u041f\u0440\u0438\u043b\u043e\u0436\u0438");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -89,6 +89,11 @@ public class frmEreseMonth extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 20, 5);
         jPanel4.add(jLabel3, gridBagConstraints);
 
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField2KeyPressed(evt);
@@ -102,6 +107,11 @@ public class frmEreseMonth extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 20, 20);
         jPanel4.add(jTextField2, gridBagConstraints);
 
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField1KeyPressed(evt);
@@ -120,6 +130,34 @@ public class frmEreseMonth extends javax.swing.JDialog {
         pack();
     }
     // </editor-fold>//GEN-END:initComponents
+    
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        try{
+            int numInt = Integer.parseInt(jTextField1.getText());
+            
+        } catch(NumberFormatException nm){
+            JOptionPane.showMessageDialog(null,"\u041d\u0435\u0432\u0430\u043b\u0438\u0434\u043d\u0430 \u0441\u0442\u043e\u0439\u043d\u043e\u0441\u0442 \u0437\u0430 \u043f\u043e\u043b\u0435\u0442\u043e \u043c\u0435\u0441\u0435\u0446",
+                    "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415",JOptionPane.INFORMATION_MESSAGE);
+            jTextField2.requestFocus();
+        }
+    }//GEN-LAST:event_jTextField2ActionPerformed
+    
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        try{
+            int numInt = Integer.parseInt(jTextField1.getText());
+            if (numInt<1 && numInt>12 ){
+                JOptionPane.showMessageDialog(null,"\u0421\u0442\u043e\u0439\u043d\u043e\u0441\u0442\u0442\u0430 \u043d\u0430 \u043f\u043e\u043b\u0435\u0442\u043e \u0442\u0440\u044f\u0431\u0432\u0430 \u0434\u0430 \u0431\u0430\u0434\u0435 \u0432 \u0440\u0430\u043c\u043a\u0438\u0442\u0435 \u043d\u0430 0 - 12",
+                        "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415",JOptionPane.INFORMATION_MESSAGE);
+                jTextField1.setText("");
+                jTextField1.requestFocus();
+            }
+        }catch(NumberFormatException nm){
+            JOptionPane.showMessageDialog(null,"\u041d\u0435\u0432\u0430\u043b\u0438\u0434\u043d\u0430 \u0441\u0442\u043e\u0439\u043d\u043e\u0441\u0442 \u0437\u0430 \u043f\u043e\u043b\u0435\u0442\u043e \u043c\u0435\u0441\u0435\u0446",
+                    "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415",JOptionPane.INFORMATION_MESSAGE);
+            jTextField2.requestFocus();
+        }
+        
+    }//GEN-LAST:event_jTextField1ActionPerformed
     
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jTextField1.transferFocus();}
@@ -152,7 +190,7 @@ public class frmEreseMonth extends javax.swing.JDialog {
             
         }
         JOptionPane.showMessageDialog(null,"\u0417\u0410\u041f\u0418\u0421\u042a\u0422 \u0415 \u041f\u0420\u041e\u041c\u0415\u041d\u0415\u041d",
-                    "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415",JOptionPane.INFORMATION_MESSAGE);
+                "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415",JOptionPane.INFORMATION_MESSAGE);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
     
