@@ -226,9 +226,7 @@ public class frmConnSalary extends java.awt.Dialog {
             Class.forName(lDBDriver);
             dbConn = java.sql.DriverManager.getConnection(lDBSource,lDBUser ,lDBPass);
             java.sql.Statement stm = dbConn.createStatement();
-            //stm.execute("SET CHARACTER SET cp1251");
-            //  stm.execute("SET COLLATION_CONNECTION=CP1251_GENERAL_CI");
-        } catch(ClassNotFoundException e)  {
+             } catch(ClassNotFoundException e)  {
             System.err.println("Failed to load driver");
             e.printStackTrace();
             System.exit(1);
@@ -247,17 +245,19 @@ public class frmConnSalary extends java.awt.Dialog {
             userRights.put("vedom", "3");
             userRights.put("fishove", "3");
             userRights.put("newmonth", "3");
+            userRights.put("vedoma", "3");
         } else {
             try {
                 stm = dbConn.createStatement(java.sql.ResultSet.TYPE_SCROLL_SENSITIVE,
                         java.sql.ResultSet.CONCUR_READ_ONLY);
-                rs = stm.executeQuery("SELECT  sastav, vedom, fishove,newmonth FROM ls_users_rights" +
+                rs = stm.executeQuery("SELECT  sastav, vedom, fishove,newmonth,vedoma FROM ls_users_rights" +
                         "INNER JOIN user_master ON(user_master.Id = ls_users_rights.id_user) WHERE user_master.name = '" + lDBUser + "'");
                 // userRights = new HashMap();
                 userRights.put("sastav", rs.getInt(0));
                 userRights.put("vedom", rs.getInt(1));
                 userRights.put("fishove", rs.getInt(2));
                 userRights.put("newmonth", rs.getInt(3));
+                userRights.put("vedoma", rs.getInt(4));
                 
             } catch(java.sql.SQLException sqle){}
             

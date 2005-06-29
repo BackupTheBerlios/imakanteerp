@@ -137,7 +137,7 @@ public class FrmVedAvans extends javax.swing.JInternalFrame implements java.awt.
     
     
     private void jButton2_actionPerformed(ActionEvent e) {
-        String freport = "c:/imakante/salary/jasper/ved_avans.jasper";
+        String freport = "c:/ved_avansi.jasper";
         
         reportParam = new HashMap();
         

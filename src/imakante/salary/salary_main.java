@@ -53,6 +53,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     FrmOtdel     FormOtdel;
     FrmDlajnost  FormDlajnost;
     FrmVedZaplati FormVedZaplati;
+    FrmVedAvans   FormVedAvans;
     frmSleujParam  FormSleujParam;
     FrmAct        FormActStDlaj;
     
@@ -380,7 +381,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         //
         JMenuItem ItmRazhoo = new JMenuItem("Ведомости аванси");
         ItmRazhoo.setFont(menuFont);
-        ItmRazhoo.setActionCommand("aved");
+        ItmRazhoo.setActionCommand("vedoma");
         ItmRazhoo.addActionListener(JMenuActionListener);
         ItmRazhoo.setBackground(new Color(255,255,255));
         
@@ -958,6 +959,36 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         
     }
+    protected void loadVedomostАForm() {
+        boolean AlreadyLoaded = isLoaded("Ведомости Аванси");
+        
+        if (pMonth != 0 && (rightsUser.get("vedom").toString()) != "0"){
+            if(AlreadyLoaded==false){
+                
+                try{
+                    FormVedAvans = new FrmVedAvans(dbCON,this,pMonth,pYear);
+                    Desk1.add(FormVedAvans);
+                    FormVedAvans.setVisible(true);
+                }catch(java.sql.SQLException sqle){}
+                
+                try{
+                    FormVedAvans.setIcon(false);
+                    FormVedAvans.setSelected(true);
+                }catch(PropertyVetoException e){
+                }
+                
+            }else{
+                try{
+                    FormVedAvans.setIcon(false);
+                    FormVedAvans.setSelected(true);
+                }catch(PropertyVetoException e){
+                }
+            }} else {
+            JOptionPane.showMessageDialog(null,"Няма работна дата.\n Въведете: Програма -> Смяна на период.","РЕА - Проект Мидас",JOptionPane.WARNING_MESSAGE);
+            }
+        
+        
+    }
     protected void loadLogonForm() throws java.sql.SQLException{
         try {
             dbCON.close();
@@ -1281,6 +1312,12 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 
                 try{
                     loadVedomostZForm();
+                } catch(Exception qle){
+                };
+            }else if(srcObject=="vedoma"){
+                
+                try{
+                    loadVedomostАForm();
                 } catch(Exception qle){
                 };
             }
