@@ -47,7 +47,7 @@ public class FrmDlajnost extends JInternalFrame implements WindowListener {
         
         cnCus = srcCN;
         stCus = cnCus.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-        strSQL = "SELECT * FROM dlaj ORDER BY nomer ASC";
+        strSQL = "SELECT * FROM ls_dlajnosti ORDER BY nomer ASC";
         try {
             rsCus = stCus.executeQuery(strSQL);
         } catch (SQLException e) {
@@ -131,7 +131,7 @@ public class FrmDlajnost extends JInternalFrame implements WindowListener {
             if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
                 JDialog JDEdit = new frmAdddlaj(false,
                         JFParentFrame, cnCus,
-                        "SELECT * FROM dlaj WHERE id = "
+                        "SELECT * FROM ls_dlajnosti WHERE id = "
                         + jTable.getValueAt(jTable.getSelectedRow(), 0));
                 
                 JDEdit.show();}
@@ -158,7 +158,7 @@ public class FrmDlajnost extends JInternalFrame implements WindowListener {
             rsCus.close();
             stCus.close();
             stCus = cnCus.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            strSQL = "SELECT * FROM dlaj ORDER BY nomer ASC";
+            strSQL = "SELECT * FROM ls_dlajnosti ORDER BY nomer ASC";
             try {
                 rsCus = stCus.executeQuery(strSQL);
             } catch (SQLException e) {JOptionPane.showMessageDialog(null,"Грешка ИЛС-С02Р  Възникнал проблем при осъществаване на връзка с базата.\n Моля въведете стойност в рамките 1 - 12.","ИМАКАНТЕ",JOptionPane.WARNING_MESSAGE);}

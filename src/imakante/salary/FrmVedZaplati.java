@@ -66,9 +66,9 @@ public class FrmVedZaplati extends javax.swing.JInternalFrame implements java.aw
             System.out.println("Problem v statement - date");
         }
         
-        strYearsSQL = "SELECT main_ls.id, main_ls.first, main_ls.second,  main_ls.family," +
-                " lsresult.zaplata, lsresult.psuma, lsresult.nsuma FROM main_ls" +
-                " INNER JOIN lsresult ON (main_ls.Id = lsresult.idrab)  WHERE lsresult.pyear = " + lYear + " AND " + "lsresult.pmonth = " + lMonth;
+        strYearsSQL = "SELECT ls_main.id, ls_main.first, ls_main.second,  ls_main.family," +
+                " lsresult.zaplata, lsresult.psuma, lsresult.nsuma FROM ls_main" +
+                " INNER JOIN lsresult ON (ls_main.Id = lsresult.idrab)  WHERE lsresult.pyear = " + lYear + " AND " + "lsresult.pmonth = " + lMonth;
         try{
             rsCus = stm.executeQuery(strYearsSQL);} catch (java.sql.SQLException sd){}
         

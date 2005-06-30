@@ -52,7 +52,7 @@ public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.ev
                         "nomer_LK, data_izd_LK, oblast, postcode, grad, address, telefon, "+
                         "mobilen, email, nomer_dogowor, DATE_FORMAT('data_naznach','%Y-%m-%d') AS nazdate, DATE_FORMAT('data_postypwane','%Y-%m-%d') AS postdate, "+
                         "DATE_FORMAT('data_napuskane','%Y-%m-%d') AS napudate, DATE_FORMAT('posl_den_w_osig','%Y-%m-%d') AS posddate, osnowanie_dog, srok_dog, d_st, "+
-                        "m_st, g_st, kateg_rabotnik, belejki FROM main_ls WHERE nomer IS NOT NULL ORDER BY nomer ASC";
+                        "m_st, g_st, kateg_rabotnik, belejki FROM ls_main WHERE nomer IS NOT NULL ORDER BY nomer ASC";
                 try {
                     rsCus = stCus.executeQuery(strSQL);
                 } catch (java.sql.SQLException e) {
@@ -192,7 +192,7 @@ public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.ev
                                 "nomer_LK, data_izd_LK, oblast, postcode, grad, address, telefon, "+
                                 "mobilen, email, nomer_dogowor, data_naznach, data_postypwane, "+
                                 "data_napuskane, posl_den_w_osig, osnowanie_dog, srok_dog, d_st, "+
-                                "m_st, g_st, kateg_rabotnik, belejki FROM main_ls WHERE id = " + jTable.getValueAt(jTable.getSelectedRow(), 0), lMonth, lYear);
+                                "m_st, g_st, kateg_rabotnik, belejki FROM ls_main WHERE id = " + jTable.getValueAt(jTable.getSelectedRow(), 0), lMonth, lYear);
                         JDEdit.setVisible(true);}
                 } catch (Exception sqlE) {
                     if (sqlE.getMessage() != null) {
@@ -214,7 +214,7 @@ public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.ev
                             jTable.getSelectedColumn()) != null) {
                         int index = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
                         try{
-                            stCus.executeUpdate("UPDATE main_ls SET nomer = NULL WHERE id = " + index);
+                            stCus.executeUpdate("UPDATE ls_main SET nomer = NULL WHERE id = " + index);
                         }catch(java.sql.SQLException sqle){}
                         try{
                             stCus.executeUpdate("UPDATE lsresult SET nomer = NULL WHERE id = " + index + "AND pmonth =" + lMonth + "AND pyear = " + lYear );
@@ -266,7 +266,7 @@ public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.ev
                             jTable.getSelectedColumn()) != null) {
                         int index = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
                         try{
-                            stCus.executeUpdate("UPDATE main_ls SET nomer = NULL WHERE id = " + index);
+                            stCus.executeUpdate("UPDATE ls_main SET nomer = NULL WHERE id = " + index);
                         }catch(java.sql.SQLException sqle){}
                         try{
                             stCus.executeUpdate("UPDATE lsresult SET nomer = NULL WHERE id = " + index + "AND pmonth =" + lMonth + "AND pyear = " + lYear );

@@ -195,7 +195,6 @@ public class frmConnSalary extends java.awt.Dialog {
         makeAcc();
     }
     
-    /** Closes the dialog */
     public void makeAcc(){
         int selectedIntCombo = choice1.getSelectedIndex();
         lDBDriver = names[(selectedIntCombo*3) + 1];
@@ -239,9 +238,7 @@ public class frmConnSalary extends java.awt.Dialog {
     
     public java.util.HashMap getUserRights(){
         if (lDBUser.equals("root")) {
-            // userRights = new HashMap();
             userRights.put("sastav", "3");
-            System.out.println(userRights.get("sastav"));
             userRights.put("vedom", "3");
             userRights.put("fishove", "3");
             userRights.put("newmonth", "3");
@@ -252,7 +249,6 @@ public class frmConnSalary extends java.awt.Dialog {
                         java.sql.ResultSet.CONCUR_READ_ONLY);
                 rs = stm.executeQuery("SELECT  sastav, vedom, fishove,newmonth,vedoma FROM ls_users_rights" +
                         "INNER JOIN user_master ON(user_master.Id = ls_users_rights.id_user) WHERE user_master.name = '" + lDBUser + "'");
-                // userRights = new HashMap();
                 userRights.put("sastav", rs.getInt(0));
                 userRights.put("vedom", rs.getInt(1));
                 userRights.put("fishove", rs.getInt(2));

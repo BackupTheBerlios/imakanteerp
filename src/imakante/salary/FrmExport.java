@@ -22,7 +22,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
-import java.sql.*;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -43,17 +43,17 @@ public class FrmExport extends JDialog {
     private JLabel jLabel1 = new JLabel();
     public static CustomTableModel model;
     public static CustomTable jTable;
-    public static Connection cnCus;
-    public static Statement stCus;
-    public static ResultSet rsCus;
+    public static java.sql.Connection cnCus;
+    public static java.sql.Statement stCus;
+    public static java.sql.ResultSet rsCus;
     public static String strSQL;
-    public  Statement stmt;
+    public  java.sql.Statement stmt;
     private JPanel jPanel1 = new JPanel();
     private JScrollPane jScrollPane1 = new JScrollPane();
     
-    public FrmExport(Connection srcCN) throws SQLException {
+    public FrmExport(java.sql.Connection srcCN) throws SQLException {
         cnCus = srcCN;
-        stCus = cnCus.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+        stCus = cnCus.createStatement(java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE,java.sql.ResultSet.CONCUR_READ_ONLY);
         
         strSQL = "SHOW TABLE STATUS FROM `mida`";
         try {
