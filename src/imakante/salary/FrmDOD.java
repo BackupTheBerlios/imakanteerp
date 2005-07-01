@@ -145,10 +145,11 @@ public class FrmDOD extends javax.swing.JInternalFrame implements java.awt.event
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         try{
             if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
-                javax.swing.JDialog JDEdit = new imakante.salary.frmAddDOD(false,
-                        JFParentFrame, cnCus,
-                        "SELECT * FROM dod WHERE id = "
-                        + jTable.getValueAt(jTable.getSelectedRow(), 0));
+                int row = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
+                javax.swing.JDialog JDEdit = new imakante.salary.frmAddDOD(row,
+                        JFParentFrame, cnCus,true);
+                        
+                      
                 
                 JDEdit.setVisible(true);
             }
@@ -163,8 +164,8 @@ public class FrmDOD extends javax.swing.JInternalFrame implements java.awt.event
     }
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        javax.swing.JDialog JDAdd = new imakante.salary.frmAddDOD(true, JFParentFrame,
-                cnCus, "");
+        javax.swing.JDialog JDAdd = new imakante.salary.frmAddDOD(0, JFParentFrame,
+                cnCus, true);
         JDAdd.setVisible(true);
     }
     
@@ -189,7 +190,7 @@ public class FrmDOD extends javax.swing.JInternalFrame implements java.awt.event
     public static int rowNum = 0;
     public static int total = 0;
     
-    public static final String strSQL = "SELECT * FROM dod ORDER BY Id ASC";
+    public static final String strSQL = "SELECT * FROM ls_dod ORDER BY Id ASC";
     public static final String Names[] = {"","Дата", "Доход", "Сума","Процент"};
     public static imakante.com.CustomTableModel model;
     public static imakante.com.CustomTable jTable;

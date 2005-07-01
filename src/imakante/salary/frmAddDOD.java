@@ -1,260 +1,224 @@
+
 package imakante.salary;
 
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 
+public class frmAddDOD extends javax.swing.JDialog {
+    
+    
+    public frmAddDOD(int id,javax.swing.JFrame OwnerForm,java.sql.Connection srcCN, boolean modal) {
+        super(OwnerForm, modal);
+        idI=id;
+        dbInternal = srcCN;
+        
+        
+        initComponents();
+        makeTextFields();
+    }
+    
+    
+    // <editor-fold defaultstate="collapsed" desc=" Generated Code ">
+    private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-public class frmAddDOD extends JDialog{
-    JButton JBUpdate = new JButton(new ImageIcon("images/save.png"));
-    JButton JBReset = new JButton("Промяна",new ImageIcon("images/reset.png"));
-    JButton JBCancel = new JButton("Отмяна",new ImageIcon("images/cancel.png"));
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
+        jPanel1.setBorder(new javax.swing.border.EtchedBorder());
+        jLabel1.setText("\u0414\u0430\u0442\u0430");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(30, 40, 5, 5);
+        jPanel1.add(jLabel1, gridBagConstraints);
+
+        jLabel2.setText("\u0414\u043e\u0445\u043e\u0434");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(5, 40, 5, 5);
+        jPanel1.add(jLabel2, gridBagConstraints);
+
+        jLabel3.setText("\u0421\u0443\u043c\u0430");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(5, 40, 5, 5);
+        jPanel1.add(jLabel3, gridBagConstraints);
+
+        jLabel4.setText("\u041f\u0440\u043e\u0446\u0435\u043d\u0442");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(5, 40, 20, 5);
+        jPanel1.add(jLabel4, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.ipadx = 150;
+        gridBagConstraints.insets = new java.awt.Insets(30, 5, 5, 40);
+        jPanel1.add(jTextField1, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 150;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 40);
+        jPanel1.add(jTextField2, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipadx = 150;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 40);
+        jPanel1.add(jTextField3, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.ipadx = 150;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 20, 40);
+        jPanel1.add(jTextField4, gridBagConstraints);
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+
+        jPanel2.setBorder(new javax.swing.border.EtchedBorder());
+        jButton1.setText("\u0417\u0410\u041f\u0410\u0417\u0418");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
+            }
+        });
+
+        jPanel2.add(jButton1);
+
+        jButton2.setText("\u041e\u0422\u041c\u0415\u041d\u0418");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton2KeyPressed(evt);
+            }
+        });
+
+        jPanel2.add(jButton2);
+
+        getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
+
+        pack();
+    }
+    // </editor-fold>
     
-    JLabel JLPic1 = new JLabel();
-    JLabel JLBanner = new JLabel("Моля попълнете необходимата информация.");
+    private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton2.doClick(); }
+    }
     
-    JLabel JL1 = new JLabel("Дата:");
-    JLabel JL2 = new JLabel("Доход:");
-    JLabel JL3 = new JLabel("Сума:");
-    JLabel JL4 = new JLabel("Процент:");
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+        dispose();
+    }
+    
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton1.doClick(); }
+    }
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        inputDataDB();
+    }
     
     
+    // Variables declaration - do not modify
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    // End of variables declaration
+    private java.sql.Connection dbInternal;
+    private java.sql.Statement stm;
+    private java.sql.ResultSet rs;
+    private int idI;
     
-    
-    
-    JTextField JTF1 = new JTextField();
-    JTextField JTF2 = new JTextField();
-    JTextField JTF3 = new JTextField();
-    JTextField JTF4 = new JTextField();
-    
-    
-    Connection cnAEC;
-    Statement stAEC;
-    ResultSet rsAEC;
-    
-    Dimension screen = 	Toolkit.getDefaultToolkit().getScreenSize();
-    
-    boolean ADDING_STATE;
-    
-    public frmAddDOD(boolean ADD_STATE,JFrame OwnerForm,Connection srcCN,String srcSQL){
-        super(OwnerForm,true);
-        cnAEC = srcCN;
-        ADDING_STATE = ADD_STATE;
+    public void setBlanckFields(){
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+        
+    }
+    public void makeTextFields(){
         try{
-            stAEC = cnAEC.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
-        }catch( SQLException sqlEx){
-            System.out.println("\nERROR IN (frmAddDOD):" + sqlEx + "\n");
-        }
-        
-        
-        if(ADD_STATE==true){
-            JLPic1.setIcon(new ImageIcon("images/bNew.png"));
-            setTitle("Добавяне на нова ставка");
-            JBUpdate.setText("Прибави");
-            
-        } else{
-            JLPic1.setIcon(new ImageIcon("images/bModify.png"));
-            setTitle("Промяна ставка");
-            JBUpdate.setText("Запази");
-            try{
-                rsAEC = stAEC.executeQuery(srcSQL);
-                rsAEC.next();
-                JTF1.setText("" + rsAEC.getString("datep"));
-                JTF2.setText("" + rsAEC.getString("doh"));
-                JTF3.setText("" + rsAEC.getString("sum"));
-                JTF4.setText("" + rsAEC.getString("prct"));
-                
-                
-            }catch(SQLException sqlEx){
-                System.out.println(sqlEx.getMessage());
-            }
-        }
-        JPanel JPContainer = new JPanel();
-        JPContainer.setLayout(null);
-        //-- Add the JLPic1
-        JLPic1.setBounds(5,5,32,32);
-        JPContainer.add(JLPic1);
-        
-        //-- Add the JLBanner
-        JLBanner.setBounds(55,5,268,48);
-        JLBanner.setFont(new Font("Dialog",Font.PLAIN,12));
-        JPContainer.add(JLBanner);
-        
-        //******************** Start adding of input field
-        //-- Add Id Input Field
-        JL1.setBounds(5,50,105,20);
-        JL1.setFont(new Font("Dialog",Font.PLAIN,12));
-        
-        JTF1.setBounds(110,50,200,20);
-        JTF1.setFont(new Font("Dialog",Font.PLAIN,12));
-        
-        JPContainer.add(JL1);
-        JPContainer.add(JTF1);
-        
-        //-- Add Name Input Field
-        JL2.setBounds(5,72,105,20);
-        JL2.setFont(new Font("Dialog",Font.PLAIN,12));
-        
-        JTF2.setBounds(110,72,200,20);
-        JTF2.setFont(new Font("Dialog",Font.PLAIN,12));
-        
-        JPContainer.add(JL2);
-        JPContainer.add(JTF2);
-        //-- Add Contact Name Input Field
-        JL3.setBounds(5,94,105,20);
-        JL3.setFont(new Font("Dialog",Font.PLAIN,12));
-        
-        JTF3.setBounds(110,94,200,20);
-        JTF3.setFont(new Font("Dialog",Font.PLAIN,12));
-        
-        JPContainer.add(JL3);
-        JPContainer.add(JTF3);
-        
-        //-- Add Contact Title Input Field
-        JL4.setBounds(5,116,105,20);
-        JL4.setFont(new Font("Dialog",Font.PLAIN,12));
-        
-        JTF4.setBounds(110,116,200,20);
-        JTF4.setFont(new Font("Dialog",Font.PLAIN,12));
-        
-        JPContainer.add(JL4);
-        JPContainer.add(JTF4);
-        
-        
-        
-        
-        //******************** End adding of input field
-        
-        //-- Add the JBUpdate
-        JBUpdate.setBounds(5,518,105,25);
-        JBUpdate.setFont(new Font("Dialog", Font.PLAIN, 12));
-        JBUpdate.setMnemonic(KeyEvent.VK_A);
-        JBUpdate.addActionListener(JBActionListener);
-        JBUpdate.setActionCommand("update");
-        JPContainer.add(JBUpdate);
-        
-        //-- Add the JBReset
-        JBReset.setBounds(112,518,99,25);
-        JBReset.setFont(new Font("Dialog", Font.PLAIN, 12));
-        JBReset.setMnemonic(KeyEvent.VK_R);
-        JBReset.addActionListener(JBActionListener);
-        JBReset.setActionCommand("reset");
-        JPContainer.add(JBReset);
-        
-        //-- Add the JBCancel
-        JBCancel.setBounds(212,518,99,25);
-        JBCancel.setFont(new Font("Dialog", Font.PLAIN, 12));
-        JBCancel.setMnemonic(KeyEvent.VK_C);
-        JBCancel.addActionListener(JBActionListener);
-        JBCancel.setActionCommand("cancel");
-        JPContainer.add(JBCancel);
-        
-        getContentPane().add(JPContainer);
-        setSize(750,600);
-        setResizable(false);
-        setLocation((screen.width - 750)/2,((screen.height-600)/2));
-    }
-    private boolean RequiredFieldEmpty(){
-        if(JTF1.getText().equals("") || JTF1.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Има празни полета.\n Моля попълнете ги.","РЕА - Проект Мидас",JOptionPane.WARNING_MESSAGE);
-            JTF1.requestFocus();
-            return true;
-        }else{
-            return false;
-        }
-    }
-    private void clearFields(){
-        JTF1.setText("");
-        JTF2.setText("");
-        JTF3.setText("");
-        JTF4.setText("");
-        
-    }
-    
-    ActionListener JBActionListener = new ActionListener(){
-        public void actionPerformed(ActionEvent e){
-            String srcObj = e.getActionCommand();
-            if(srcObj=="update"){
-                if(RequiredFieldEmpty()==false){
-                    if(ADDING_STATE == true){
-                        try{
-                            
-                            stAEC.executeUpdate("INSERT INTO dod(datep, doh, sum, prct)"  +
-                                    
-                                    "VALUES ('" +
-                                    JTF1.getText() + "', '" +
-                                    JTF2.getText() + "', '" +
-                                    JTF3.getText() + "', '" +
-                                    JTF4.getText() +
-                                    "')");
-                            // Start Display the new record
-                            int total =0;
-                            total = imakante.com.pubMethods.getMaxNum("SELECT * FROM dod ORDER BY datep",cnAEC,"nomer");
-                            if(total != 0){
-                                FrmSastav.reloadRecord();
-                                FrmSastav.reloadRecord();
-                            }else{
-                                FrmSastav.reloadRecord();
-                            }
-                            total =0;
-                            // End Display the new record
-                            JOptionPane.showMessageDialog(null,"Записът е успешен .","РЕА - ПРОЕКТ МИДАСС",JOptionPane.INFORMATION_MESSAGE);
-                            String ObjButtons[] = {"ДА","НЕ"};
-                            int PromptResult = JOptionPane.showOptionDialog(null,"Ще добавяте ли нови записи?","ПРОЕКТ МИДАСС",JOptionPane.DEFAULT_OPTION,JOptionPane.QUESTION_MESSAGE,null,ObjButtons,ObjButtons[0]);
-                            if(PromptResult==0){
-                                clearFields();
-                                JTF1.requestFocus(true);
-                            }else{
-                                dispose();
-                            }
-                        }catch(SQLException sqlEx){
-                            System.out.println(sqlEx.getMessage());
-                        }
-                    }else{
-                        try{
-                            String RowIndex;
-                            RowIndex = rsAEC.getString("id");
-                            //
-                            //
-                            //   Tuk triabva da se prezaredi zapis ot teku] red
-                            //
-                            //    JCBCountry.getSelectedItem().toString() + "', tel1_customer = '" +
-                            stAEC.executeUpdate("UPDATE dod SET datep = '" +
-                                    JTF1.getText() + "', doh = '" +
-                                    JTF2.getText() + "', sum = '" +
-                                    JTF3.getText() + "', prct = '" +
-                                    JTF4.getText() +
-                                    "' WHERE id = " + RowIndex);
-                            FrmSastav.reloadRecord();
-                            JOptionPane.showMessageDialog(null,"Записът е променен.","РЕА - ПРОЕКТ МИДАСС",JOptionPane.INFORMATION_MESSAGE);
-                            RowIndex="";
-                            dispose();
-                        }catch(SQLException sqlEx){
-                            System.out.println(sqlEx.getMessage());
-                        }
-                    }
+            stm = dbInternal.createStatement(java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    java.sql.ResultSet.CONCUR_UPDATABLE);
+            if (idI!=0){
+                rs = stm.executeQuery("SELECT ls_dod.datep, ls_dod.doh, ls_dod.sum, ls_dod.prct FROM ls_dod WHERE id = " + idI);
+                while(rs.next()){
+                    jTextField1.setText(rs.getString("datep"));
+                    jTextField2.setText(rs.getString("doh"));
+                    jTextField3.setText(rs.getString("sum"));
+                    jTextField4.setText(rs.getString("prct"));
+                    
                 }
-            }else if(srcObj=="reset"){
-                clearFields();
-            }else if(srcObj=="cancel"){
-                dispose();
+            }else{
+                setBlanckFields();
             }
+        }catch(java.sql.SQLException sqle){}
+        
+    }
+    public void inputDataDB(){
+        if(idI!=0){
+            try{
+                stm.executeUpdate("UPDATE ls_dod SET datep = '" +
+                        jTextField1.getText() + "', doh = '" +
+                        jTextField2.getText() + "', sum = '" +
+                        jTextField3.getText() + "', prct = '" +
+                        jTextField4.getText() +
+                        "' WHERE id = " + idI);
+                FrmSastav.reloadRecord();
+                JOptionPane.showMessageDialog(null,"Записът е променен.","Имаканте",JOptionPane.INFORMATION_MESSAGE);
+            }catch(java.sql.SQLException sqle){}
+            
+        }else{
+            try{
+                stm.executeUpdate("INSERT INTO ls_dod(datep, doh, sum, prct)"  +
+                        
+                        "VALUES ('" +
+                        jTextField1.getText() + "', '" +
+                        jTextField2.getText() + "', '" +
+                        jTextField3.getText() + "', '" +
+                        jTextField4.getText() +
+                        "')");}catch(java.sql.SQLException sqle){}
+            
         }
-    };
-    
+        dispose();
+    }
 }

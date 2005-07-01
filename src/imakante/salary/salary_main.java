@@ -30,7 +30,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     
     javax.swing.JPanel Panel1;
     JDesktopPane Desk1 = new JDesktopPane();
-    JLabel StatusLabel = new JLabel("ИМАКАНТЕ ",JLabel.CENTER);
+    JLabel StatusLabel = new JLabel("ИМАКАНТЕ - ЛС ",JLabel.CENTER);
     JLabel BTlabel = new JLabel();
     Dimension screen = 	Toolkit.getDefaultToolkit().getScreenSize();
     public static String StrName;
@@ -57,7 +57,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     frmSleujParam  FormSleujParam;
     FrmAct        FormActStDlaj;
     
-    Font menuFont = new Font("Tahoma", Font.PLAIN, 11);
+    Font menuFont = new Font("Tahoma", Font.PLAIN, 14);
     imakante.salary.frmLogo splash = new imakante.salary.frmLogo();
     Thread FormSplash = new Thread(splash);
     
@@ -270,12 +270,6 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         JMenuItem ItmIzv = new JMenuItem("Удръжки");
         ItmIzv.setFont(menuFont);
         ItmIzv.setMnemonic('f');
-        ItmIzv.setIcon(new ImageIcon("images/fak.png"));
-        //ItmFakturi.setAccelerator(
-        //	KeyStroke.getKeyStroke(
-        //			KeyEvent.VK_C,ActionEvent.CTRL_MASK
-        //		)
-        //	);
         ItmIzv.setActionCommand("Izv");
         ItmIzv.addActionListener(JMenuActionListener);
         ItmIzv.setBackground(new Color(255,255,255));
@@ -288,12 +282,6 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         JMenuItem ItmPorach = new JMenuItem("Списък отдели");
         ItmPorach.setFont(menuFont);
         ItmPorach.setMnemonic('f');
-        ItmPorach.setIcon(new ImageIcon("images/fak.png"));
-        //ItmFakturi.setAccelerator(
-        //	KeyStroke.getKeyStroke(
-        //			KeyEvent.VK_C,ActionEvent.CTRL_MASK
-        //		)
-        //	);
         ItmPorach.setActionCommand("otd");
         ItmPorach.addActionListener(JMenuActionListener);
         ItmPorach.setBackground(new Color(255,255,255));
@@ -304,12 +292,6 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         JMenuItem ItmDlaj = new JMenuItem("Списък длъжности");
         ItmDlaj.setFont(menuFont);
         ItmDlaj.setMnemonic('f');
-        ItmDlaj.setIcon(new ImageIcon("images/fak.png"));
-        //ItmFakturi.setAccelerator(
-        //	KeyStroke.getKeyStroke(
-        //			KeyEvent.VK_C,ActionEvent.CTRL_MASK
-        //		)
-        //	);
         ItmDlaj.setActionCommand("dlaj");
         ItmDlaj.addActionListener(JMenuActionListener);
         ItmDlaj.setBackground(new Color(255,255,255));
@@ -405,7 +387,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         //
         
-        JMenuItem ItmOpis = new JMenuItem("ДОО от работници");
+        JMenuItem ItmOpis = new JMenuItem("Ведомости ДОО от работници");
         ItmOpis.setFont(menuFont);
         ItmOpis.setActionCommand("Prihoo");
         ItmOpis.addActionListener(JMenuActionListener);
@@ -481,28 +463,16 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         JMenuItem ItmZarab = new JMenuItem("Заработка");
         ItmZarab.setFont(menuFont);
         ItmZarab.setMnemonic('B');
-        ItmZarab.setIcon(new ImageIcon("images/SalesRep.png"));
-        ItmZarab.setAccelerator(
-                KeyStroke.getKeyStroke(
-                java.awt.event.KeyEvent.VK_B,java.awt.event.ActionEvent.CTRL_MASK
-                )
-                );
         ItmZarab.setActionCommand("zarab");
         ItmZarab.addActionListener(JMenuActionListener);
         ItmZarab.setBackground(new Color(255,255,255));
         
         MnuRec.add(ItmZarab);
         
-        //-- For Warehouse
+        //
         JMenuItem ItmPremii = new JMenuItem("Премии");
         ItmPremii.setFont(menuFont);
         ItmPremii.setMnemonic('V');
-        ItmPremii.setIcon(new ImageIcon("images/Warehouse.png"));
-        ItmPremii.setAccelerator(
-                KeyStroke.getKeyStroke(
-                java.awt.event.KeyEvent.VK_V,java.awt.event.ActionEvent.CTRL_MASK
-                )
-                );
         ItmPremii.setActionCommand("premii");
         ItmPremii.addActionListener(JMenuActionListener);
         ItmPremii.setBackground(new Color(255,255,255));
@@ -752,7 +722,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         NewJToolBar.setMargin(new Insets(0,0,0,0));
         
         //Create a toolbar button
-        NewJToolBar.add(CreateJToolbarButton("Customers Record","images/customer.png","toolCus"));
+        NewJToolBar.add(CreateJToolbarButton("Редакция служители","c:/imakante/ico_sluj.png","sluj"));
         NewJToolBar.add(CreateJToolbarButton("Suppliers Record","images/supplier.png","toolSup"));
         NewJToolBar.add(CreateJToolbarButton("SalesRep Record","images/SalesRep.png","toolSalesrep"));
         NewJToolBar.add(CreateJToolbarButton("Warehouse Record","images/Warehouse.png","toolWareh"));
