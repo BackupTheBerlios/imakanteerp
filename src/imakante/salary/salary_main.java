@@ -30,7 +30,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     
     javax.swing.JPanel Panel1;
     JDesktopPane Desk1 = new JDesktopPane();
-    JLabel StatusLabel = new JLabel("ИМАКАНТЕ - ЛС ",JLabel.CENTER);
+    private JLabel StatusLabel = new JLabel("\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415 - \u041b\u0421",JLabel.CENTER);
     JLabel BTlabel = new JLabel();
     Dimension screen = 	Toolkit.getDefaultToolkit().getScreenSize();
     public static String StrName;
@@ -55,7 +55,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     FrmVedZaplati FormVedZaplati;
     FrmVedAvans   FormVedAvans;
     frmSleujParam  FormSleujParam;
-    FrmAct        FormActStDlaj;
+    private FrmAct        FormActStDlaj;
     FrmPic FormPic;
     Font menuFont = new Font("Tahoma", Font.PLAIN, 14);
     imakante.salary.frmLogo splash = new imakante.salary.frmLogo();
@@ -63,7 +63,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     
     public salary_main(){
         
-        super("ИМАКАНТЕ ЛИЧЕН СЪСТАВ v 0.0.1a");
+        super("\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415 \u041b\u0418\u0427\u0415\u041d \u0421\u042a\u0421\u0422\u0410\u0412 v 0.0.1a");
         
         loadSplashScreen();
         
@@ -73,8 +73,8 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         FrmDate fdate = new FrmDate(this,dbCON);
         fdate.setVisible(true);
         
-        StatusLabel.setBorder(BorderFactory.createTitledBorder(""));
-        StatusLabel.setFont(menuFont);
+        getStatusLabel().setBorder(BorderFactory.createTitledBorder(""));
+        getStatusLabel().setFont(menuFont);
         
         BTlabel.setText(StrBTitle);
         BTlabel.setHorizontalAlignment(JLabel.LEFT);
@@ -95,7 +95,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         getContentPane().add(CreateJToolBar(),BorderLayout.PAGE_START);
         getContentPane().add(Panel1,BorderLayout.CENTER);
-        getContentPane().add(StatusLabel,BorderLayout.PAGE_END);
+        getContentPane().add(getStatusLabel(), BorderLayout.PAGE_END);
         
         setJMenuBar(CreateJMenuBar());
         setExtendedState(this.MAXIMIZED_BOTH);
@@ -122,7 +122,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         JMenuBar NewJMenuBar = new JMenuBar();
         
         //Setup file menu
-        JMenu MnuFile = new JMenu("ПРОГРАМА");
+        JMenu MnuFile = new JMenu("\u041f\u0420\u041e\u0413\u0420\u0410\u041c\u0410");
         MnuFile.setFont(menuFont);
         MnuFile.setMnemonic('F');
         MnuFile.setBackground(new Color(255,255,255));
@@ -130,7 +130,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         //End setup file menu
         
         //Set file sub menu
-        JMenuItem ItmLockApp = new JMenuItem("Заключване на програмата");
+        JMenuItem ItmLockApp = new JMenuItem("\u0417\u0430\u043a\u043b\u044e\u0447\u0432\u0430\u043d\u0435 \u043d\u0430 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0430\u0442\u0430");
         ItmLockApp.setFont(menuFont);
         ItmLockApp.setMnemonic('L');
         ItmLockApp.setIcon(new ImageIcon("images/lockapplication.png"));
@@ -140,10 +140,10 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 )
                 );
         ItmLockApp.setActionCommand("lockapp");
-        ItmLockApp.addActionListener(JMenuActionListener);
+        ItmLockApp.addActionListener(getJMenuActionListener());
         ItmLockApp.setBackground(new Color(255,255,255));
         
-        JMenuItem ItmLogon = new JMenuItem("Вход в базата");
+        JMenuItem ItmLogon = new JMenuItem("\u0412\u0445\u043e\u0434 \u0432 \u0431\u0430\u0437\u0430\u0442\u0430");
         ItmLogon.setFont(menuFont);
         ItmLogon.setMnemonic('I');
         ItmLogon.setIcon(new ImageIcon("images/lockapplication.png"));
@@ -153,12 +153,12 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 )
                 );
         ItmLogon.setActionCommand("logon");
-        ItmLogon.addActionListener(JMenuActionListener);
+        ItmLogon.addActionListener(getJMenuActionListener());
         ItmLogon.setBackground(new Color(255,255,255));
         
         
         
-        JMenuItem ItmLoggOff = new JMenuItem("Изход от базата...");
+        JMenuItem ItmLoggOff = new JMenuItem("\u0418\u0437\u0445\u043e\u0434 \u043e\u0442 \u0431\u0430\u0437\u0430\u0442\u0430...");
         ItmLoggOff.setFont(menuFont);
         ItmLoggOff.setMnemonic('O');
         ItmLoggOff.setIcon(new ImageIcon("images/loggoff.png"));
@@ -168,10 +168,10 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 )
                 );
         ItmLoggOff.setActionCommand("loggoff");
-        ItmLoggOff.addActionListener(JMenuActionListener);
+        ItmLoggOff.addActionListener(getJMenuActionListener());
         ItmLoggOff.setBackground(new Color(255,255,255));
         
-        JMenuItem ItmPeriod = new JMenuItem("Смяна на период");
+        JMenuItem ItmPeriod = new JMenuItem("\u0421\u043c\u044f\u043d\u0430 \u043d\u0430 \u043f\u0435\u0440\u0438\u043e\u0434");
         ItmPeriod.setFont(menuFont);
         ItmPeriod.setMnemonic('H');
         ItmPeriod.setIcon(new ImageIcon("images/lockapplication.png"));
@@ -181,10 +181,10 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 )
                 );
         ItmPeriod.setActionCommand("period");
-        ItmPeriod.addActionListener(JMenuActionListener);
+        ItmPeriod.addActionListener(getJMenuActionListener());
         ItmPeriod.setBackground(new Color(255,255,255));
         
-        JMenuItem ItmExit = new JMenuItem("ИЗХОД");
+        JMenuItem ItmExit = new JMenuItem("\u0418\u0417\u0425\u041e\u0414");
         ItmExit.setFont(menuFont);
         ItmExit.setMnemonic('E');
         ItmExit.setIcon(new ImageIcon("images/exit.png"));
@@ -194,7 +194,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 )
                 );
         ItmExit.setActionCommand("exit");
-        ItmExit.addActionListener(JMenuActionListener);
+        ItmExit.addActionListener(getJMenuActionListener());
         ItmExit.setBackground(new Color(255,255,255));
         
         MnuFile.add(ItmLockApp);
@@ -207,14 +207,14 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         //Setup records menu
         
-        JMenu MnuDoc = new JMenu("РЕДАКТИРАНЕ");
+        JMenu MnuDoc = new JMenu("\u0420\u0415\u0414\u0410\u041a\u0422\u0418\u0420\u0410\u041d\u0415");
         MnuDoc.setFont(menuFont);
         MnuDoc.setMnemonic('D');
         MnuDoc.setBackground(new Color(255,255,255));
         NewJMenuBar.add(MnuDoc);
         //
         
-        JMenuItem ItmProd = new JMenuItem("Списък служители");
+        JMenuItem ItmProd = new JMenuItem("\u0421\u043f\u0438\u0441\u044a\u043a \u0441\u043b\u0443\u0436\u0438\u0442\u0435\u043b\u0438");
         ItmProd.setFont(menuFont);
         ItmProd.setMnemonic('P');
         ItmProd.setIcon(new ImageIcon("images/prod.png"));
@@ -224,12 +224,12 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 )
                 );
         ItmProd.setActionCommand("sluj");
-        ItmProd.addActionListener(JMenuActionListener);
+        ItmProd.addActionListener(getJMenuActionListener());
         ItmProd.setBackground(new Color(255,255,255));
         
         MnuDoc.add(ItmProd);
         
-        JMenuItem ItmFakturi = new JMenuItem("ДОО таблица");
+        JMenuItem ItmFakturi = new JMenuItem("\u0414\u041e\u041e \u0442\u0430\u0431\u043b\u0438\u0446\u0430");
         ItmFakturi.setFont(menuFont);
         ItmFakturi.setMnemonic('F');
         ItmFakturi.setIcon(new ImageIcon("images/fak.png"));
@@ -239,68 +239,46 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 )
                 );
         ItmFakturi.setActionCommand("doo");
-        ItmFakturi.addActionListener(JMenuActionListener);
+        ItmFakturi.addActionListener(getJMenuActionListener());
         ItmFakturi.setBackground(new Color(255,255,255));
         
         MnuDoc.add(ItmFakturi);
         //
         //
-        JMenuItem ItmProhods = new JMenuItem("ДОО начисления");
+        JMenuItem ItmProhods = new JMenuItem("\u041d\u0430\u0447\u0438\u0441\u043b\u0435\u043d\u0438\u044f \u0438 \u0443\u0434\u0440\u044a\u0436\u043a\u0438");
         ItmProhods.setFont(menuFont);
         ItmProhods.setMnemonic('f');
         ItmProhods.setIcon(new ImageIcon("images/fak.png"));
-        //ItmFakturi.setAccelerator(
-        //	KeyStroke.getKeyStroke(
-        //			KeyEvent.VK_C,ActionEvent.CTRL_MASK
-        //		)
-        //	);
+        
         ItmProhods.setActionCommand("doo1");
-        ItmProhods.addActionListener(JMenuActionListener);
+        ItmProhods.addActionListener(getJMenuActionListener());
         ItmProhods.setBackground(new Color(255,255,255));
         
         MnuDoc.add(ItmProhods);
-        //
-        //
+            
         
-        
-        //
-        //
-        
-        
-        JMenuItem ItmIzv = new JMenuItem("Удръжки");
-        ItmIzv.setFont(menuFont);
-        ItmIzv.setMnemonic('f');
-        ItmIzv.setActionCommand("Izv");
-        ItmIzv.addActionListener(JMenuActionListener);
-        ItmIzv.setBackground(new Color(255,255,255));
-        
-        MnuDoc.add(ItmIzv);
-        //
-        //
-        
-        
-        JMenuItem ItmPorach = new JMenuItem("Списък отдели");
+        JMenuItem ItmPorach = new JMenuItem("\u0421\u043f\u0438\u0441\u044a\u043a \u043e\u0442\u0434\u0435\u043b\u0438");
         ItmPorach.setFont(menuFont);
         ItmPorach.setMnemonic('f');
         ItmPorach.setActionCommand("otd");
-        ItmPorach.addActionListener(JMenuActionListener);
+        ItmPorach.addActionListener(getJMenuActionListener());
         ItmPorach.setBackground(new Color(255,255,255));
         
         MnuDoc.add(ItmPorach);
         //
         
-        JMenuItem ItmDlaj = new JMenuItem("Списък длъжности");
+        JMenuItem ItmDlaj = new JMenuItem("\u0421\u043f\u0438\u0441\u044a\u043a \u0434\u043b\u044a\u0436\u043d\u043e\u0441\u0442\u0438");
         ItmDlaj.setFont(menuFont);
         ItmDlaj.setMnemonic('f');
         ItmDlaj.setActionCommand("dlaj");
-        ItmDlaj.addActionListener(JMenuActionListener);
+        ItmDlaj.addActionListener(getJMenuActionListener());
         ItmDlaj.setBackground(new Color(255,255,255));
         
         MnuDoc.add(ItmDlaj);
         //
         
         
-        JMenuItem ItmMDanni = new JMenuItem("Месечни данни");
+        JMenuItem ItmMDanni = new JMenuItem("\u041c\u0435\u0441\u0435\u0447\u043d\u0438 \u0434\u0430\u043d\u043d\u0438");
         ItmMDanni.setFont(menuFont);
         ItmMDanni.setMnemonic('f');
         ItmMDanni.setIcon(new ImageIcon("images/fak.png"));
@@ -310,14 +288,14 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         //		)
         //	);
         ItmMDanni.setActionCommand("mes");
-        ItmMDanni.addActionListener(JMenuActionListener);
+        ItmMDanni.addActionListener(getJMenuActionListener());
         ItmMDanni.setBackground(new Color(255,255,255));
         
         MnuDoc.add(ItmMDanni);
         //
         
         
-        JMenuItem ItmOtpis = new JMenuItem("Уведомления за трудови договори");
+        JMenuItem ItmOtpis = new JMenuItem("\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u044f \u0437\u0430 \u0442\u0440\u0443\u0434\u043e\u0432\u0438 \u0434\u043e\u0433\u043e\u0432\u043e\u0440\u0438");
         ItmOtpis.setFont(menuFont);
         ItmOtpis.setMnemonic('f');
         ItmOtpis.setIcon(new ImageIcon("images/fak.png"));
@@ -327,7 +305,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         //		)
         //	);
         ItmOtpis.setActionCommand("Prehv");
-        ItmOtpis.addActionListener(JMenuActionListener);
+        ItmOtpis.addActionListener(getJMenuActionListener());
         ItmOtpis.setBackground(new Color(255,255,255));
         
         MnuDoc.add(ItmOtpis);
@@ -335,88 +313,88 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         //
         
         
-        JMenuItem ItmOffer = new JMenuItem("Социални осигуровки");
+        JMenuItem ItmOffer = new JMenuItem("\u0421\u043e\u0446\u0438\u0430\u043b\u043d\u0438 \u043e\u0441\u0438\u0433\u0443\u0440\u043e\u0432\u043a\u0438");
         ItmOffer.setFont(menuFont);
         ItmOffer.setMnemonic('f');
-        ItmOffer.setActionCommand("Offer");
-        ItmOffer.addActionListener(JMenuActionListener);
+        ItmOffer.setActionCommand("sotialo");
+        ItmOffer.addActionListener(getJMenuActionListener());
         ItmOffer.setBackground(new Color(255,255,255));
         
         MnuDoc.add(ItmOffer);
         
         //
         //
-        JMenu MnuKasa = new JMenu("ВЕДОМОСТИ");
+        JMenu MnuKasa = new JMenu("\u0412\u0415\u0414\u041e\u041c\u041e\u0421\u0422\u0418");
         MnuKasa.setFont(menuFont);
         MnuKasa.setBackground(new Color(255,255,255));
         NewJMenuBar.add(MnuKasa);
         //End records menu
         //
-        JMenuItem ItmPrihoo = new JMenuItem("Ведомости заплати");
+        JMenuItem ItmPrihoo = new JMenuItem("\u0412\u0435\u0434\u043e\u043c\u043e\u0441\u0442\u0438 \u0437\u0430\u043f\u043b\u0430\u0442\u0438");
         ItmPrihoo.setFont(menuFont);
         ItmPrihoo.setActionCommand("zved");
-        ItmPrihoo.addActionListener(JMenuActionListener);
+        ItmPrihoo.addActionListener(getJMenuActionListener());
         ItmPrihoo.setBackground(new Color(255,255,255));
         
         MnuKasa.add(ItmPrihoo);
         //
         //
-        JMenuItem ItmRazhoo = new JMenuItem("Ведомости аванси");
+        JMenuItem ItmRazhoo = new JMenuItem("\u0412\u0435\u0434\u043e\u043c\u043e\u0441\u0442\u0438 \u0430\u0432\u0430\u043d\u0441\u0438");
         ItmRazhoo.setFont(menuFont);
         ItmRazhoo.setActionCommand("vedoma");
-        ItmRazhoo.addActionListener(JMenuActionListener);
+        ItmRazhoo.addActionListener(getJMenuActionListener());
         ItmRazhoo.setBackground(new Color(255,255,255));
         
         MnuKasa.add(ItmRazhoo);
         //
-        JMenuItem ItmNalicni = new JMenuItem("Ведомости ДОО");
+        JMenuItem ItmNalicni = new JMenuItem("\u0412\u0435\u0434\u043e\u043c\u043e\u0441\u0442\u0438 \u0414\u041e\u041e");
         ItmNalicni.setFont(menuFont);
         ItmNalicni.setActionCommand("dooved");
-        ItmNalicni.addActionListener(JMenuActionListener);
+        ItmNalicni.addActionListener(getJMenuActionListener());
         ItmNalicni.setBackground(new Color(255,255,255));
         
         MnuKasa.add(ItmNalicni);
         
-        JMenuItem ItmVedCO = new JMenuItem("Ведомости СО");
+        JMenuItem ItmVedCO = new JMenuItem("\u0412\u0435\u0434\u043e\u043c\u043e\u0441\u0442\u0438 \u0421\u041e");
         ItmVedCO.setFont(menuFont);
         ItmVedCO.setActionCommand("soved");
-        ItmVedCO.addActionListener(JMenuActionListener);
+        ItmVedCO.addActionListener(getJMenuActionListener());
         ItmVedCO.setBackground(new Color(255,255,255));
         
         MnuKasa.add(ItmVedCO);
         
         //
         
-        JMenuItem ItmOpis = new JMenuItem("Ведомости ДОО от работници");
+        JMenuItem ItmOpis = new JMenuItem("\u0412\u0435\u0434\u043e\u043c\u043e\u0441\u0442\u0438 \u0414\u041e\u041e \u043e\u0442 \u0440\u0430\u0431\u043e\u0442\u043d\u0438\u0446\u0438");
         ItmOpis.setFont(menuFont);
         ItmOpis.setActionCommand("Prihoo");
-        ItmOpis.addActionListener(JMenuActionListener);
+        ItmOpis.addActionListener(getJMenuActionListener());
         ItmOpis.setBackground(new Color(255,255,255));
         
         MnuKasa.add(ItmOpis);
         
         //
         
-        JMenuItem ItmZDR = new JMenuItem("Здравни осигуровки");
+        JMenuItem ItmZDR = new JMenuItem("\u0417\u0434\u0440\u0430\u0432\u043d\u0438 \u043e\u0441\u0438\u0433\u0443\u0440\u043e\u0432\u043a\u0438");
         ItmZDR.setFont(menuFont);
         ItmZDR.setActionCommand("Prihoo");
-        ItmZDR.addActionListener(JMenuActionListener);
+        ItmZDR.addActionListener(getJMenuActionListener());
         ItmZDR.setBackground(new Color(255,255,255));
         
         MnuKasa.add(ItmZDR);
         //
         
-        JMenuItem ItmBank = new JMenuItem("Банкови плащания");
+        JMenuItem ItmBank = new JMenuItem("\u0411\u0430\u043d\u043a\u043e\u0432\u0438 \u043f\u043b\u0430\u0449\u0430\u043d\u0438\u044f");
         ItmBank.setFont(menuFont);
         ItmBank.setActionCommand("Prihoo");
-        ItmBank.addActionListener(JMenuActionListener);
+        ItmBank.addActionListener(getJMenuActionListener());
         ItmBank.setBackground(new Color(255,255,255));
         
         MnuKasa.add(ItmBank);
         
         
         //
-        JMenu MnuRec = new JMenu("ИЗПЪЛНЕНИЕ");
+        JMenu MnuRec = new JMenu("\u0418\u0417\u041f\u042a\u041b\u041d\u0415\u041d\u0418\u0415");
         MnuRec.setFont(menuFont);
         MnuRec.setMnemonic('R');
         MnuRec.setBackground(new Color(255,255,255));
@@ -426,7 +404,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         //Set records sub menu
         
         //-- For Customer
-        JMenuItem ItmAvansi = new JMenuItem("Аванси");
+        JMenuItem ItmAvansi = new JMenuItem("\u0410\u0432\u0430\u043d\u0441\u0438");
         ItmAvansi.setFont(menuFont);
         ItmAvansi.setMnemonic('C');
         ItmAvansi.setIcon(new ImageIcon("images/customer.png"));
@@ -436,7 +414,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 )
                 );
         ItmAvansi.setActionCommand("avansi");
-        ItmAvansi.addActionListener(JMenuActionListener);
+        ItmAvansi.addActionListener(getJMenuActionListener());
         ItmAvansi.setBackground(new Color(255,255,255));
         
         MnuRec.add(ItmAvansi);
@@ -444,7 +422,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         //-- For FISHOVE
         
-        JMenuItem ItmFishove = new JMenuItem("Фишове");
+        JMenuItem ItmFishove = new JMenuItem("\u0424\u0438\u0448\u043e\u0432\u0435");
         ItmFishove.setFont(menuFont);
         ItmFishove.setMnemonic('S');
         ItmFishove.setIcon(new ImageIcon("images/supplier.png"));
@@ -454,40 +432,35 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 )
                 );
         ItmFishove.setActionCommand("fish");
-        ItmFishove.addActionListener(JMenuActionListener);
+        ItmFishove.addActionListener(getJMenuActionListener());
         ItmFishove.setBackground(new Color(255,255,255));
         
         MnuRec.add(ItmFishove);
         
         //-- For SalesRep
-        JMenuItem ItmZarab = new JMenuItem("Заработка");
+        JMenuItem ItmZarab = new JMenuItem("\u0417\u0430\u0440\u0430\u0431\u043e\u0442\u043a\u0430");
         ItmZarab.setFont(menuFont);
         ItmZarab.setMnemonic('B');
         ItmZarab.setActionCommand("zarab");
-        ItmZarab.addActionListener(JMenuActionListener);
+        ItmZarab.addActionListener(getJMenuActionListener());
         ItmZarab.setBackground(new Color(255,255,255));
         
         MnuRec.add(ItmZarab);
         
         //
-        JMenuItem ItmPremii = new JMenuItem("Премии");
+        JMenuItem ItmPremii = new JMenuItem("\u041f\u0440\u0435\u043c\u0438\u0438");
         ItmPremii.setFont(menuFont);
         ItmPremii.setMnemonic('V');
         ItmPremii.setActionCommand("premii");
-        ItmPremii.addActionListener(JMenuActionListener);
+        ItmPremii.addActionListener(getJMenuActionListener());
         ItmPremii.setBackground(new Color(255,255,255));
         
         MnuRec.add(ItmPremii);
         
-        
-        
         //End records sub menu
-        
-        
-        
-        
+      
         //Setup proccess menu
-        JMenu MnuProccess = new JMenu("СПРАВКИ");
+        JMenu MnuProccess = new JMenu("\u0421\u041f\u0420\u0410\u0412\u041a\u0418");
         MnuProccess.setFont(menuFont);
         MnuProccess.setMnemonic('P');
         MnuProccess.setBackground(new Color(255,255,255));
@@ -497,7 +470,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         //Set proccess sub menu
         
         //-- For New Invoice
-        JMenuItem ItmSPFish = new JMenuItem("Фишове");
+        JMenuItem ItmSPFish = new JMenuItem("\u0424\u0438\u0448\u043e\u0432\u0435");
         ItmSPFish.setFont(menuFont);
         ItmSPFish.setMnemonic('I');
         ItmSPFish.setIcon(new ImageIcon("images/newinvoice.png"));
@@ -507,56 +480,56 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 )
                 );
         ItmSPFish.setActionCommand("SPInv");
-        ItmSPFish.addActionListener(JMenuActionListener);
+        ItmSPFish.addActionListener(getJMenuActionListener());
         ItmSPFish.setBackground(new Color(255,255,255));
         
         MnuProccess.add(ItmSPFish);
         
         //-- For New PO
-        JMenuItem ItmSPNU = new JMenuItem("Начисления и удръжки");
+        JMenuItem ItmSPNU = new JMenuItem("\u041d\u0430\u0447\u0438\u0441\u043b\u0435\u043d\u0438\u044f \u0438 \u0443\u0434\u0440\u044a\u0436\u043a\u0438");
         ItmSPNU.setFont(menuFont);
         ItmSPNU.setMnemonic('P');
         ItmSPNU.setIcon(new ImageIcon("images/newpurchaseorder.png"));
         ItmSPNU.setActionCommand("Oborot");
-        ItmSPNU.addActionListener(JMenuActionListener);
+        ItmSPNU.addActionListener(getJMenuActionListener());
         ItmSPNU.setBackground(new Color(255,255,255));
         
         MnuProccess.add(ItmSPNU);
         
         //-- For New Purchase Receipt
-        JMenuItem ItmSBalance = new JMenuItem("Суми за счетоводна информация");
+        JMenuItem ItmSBalance = new JMenuItem("\u0421\u0443\u043c\u0438 \u0437\u0430 \u0441\u0447\u0435\u0442\u043e\u0432\u043e\u0434\u043d\u0430 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f");
         ItmSBalance.setFont(menuFont);
         ItmSBalance.setMnemonic('E');
         ItmSBalance.setIcon(new ImageIcon("images/newrecieve.png"));
         ItmSBalance.setActionCommand("SBalance");
-        ItmSBalance.addActionListener(JMenuActionListener);
+        ItmSBalance.addActionListener(getJMenuActionListener());
         ItmSBalance.setBackground(new Color(255,255,255));
         
         MnuProccess.add(ItmSBalance);
         
         //-- For New Expenses
-        JMenuItem ItmSProhod = new JMenuItem("Списъци");
+        JMenuItem ItmSProhod = new JMenuItem("\u0421\u043f\u0438\u0441\u044a\u0446\u0438");
         ItmSProhod.setFont(menuFont);
         ItmSProhod.setActionCommand("SProhod");
-        ItmSProhod.addActionListener(JMenuActionListener);
+        ItmSProhod.addActionListener(getJMenuActionListener());
         ItmSProhod.setBackground(new Color(255,255,255));
         
         MnuProccess.add(ItmSProhod);
         
         //-- For New Expenses
-        JMenuItem ItmSPSalaryP = new JMenuItem("Заплати за период от време");
+        JMenuItem ItmSPSalaryP = new JMenuItem("\u0417\u0430\u043f\u043b\u0430\u0442\u0438 \u0437\u0430 \u043f\u0435\u0440\u0438\u043e\u0434 \u043e\u0442 \u0432\u0440\u0435\u043c\u0435");
         ItmSPSalaryP.setFont(menuFont);
         ItmSPSalaryP.setActionCommand("SExpense");
-        ItmSPSalaryP.addActionListener(JMenuActionListener);
+        ItmSPSalaryP.addActionListener(getJMenuActionListener());
         ItmSPSalaryP.setBackground(new Color(255,255,255));
         
         MnuProccess.add(ItmSPSalaryP);
         
         //-- For New ДДС
-        JMenuItem ItmStaj = new JMenuItem("Натрупан стаж");
+        JMenuItem ItmStaj = new JMenuItem("\u041d\u0430\u0442\u0440\u0443\u043f\u0430\u043d \u0441\u0442\u0430\u0436");
         ItmStaj.setFont(menuFont);
         ItmStaj.setActionCommand("spstaj");
-        ItmStaj.addActionListener(JMenuActionListener);
+        ItmStaj.addActionListener(getJMenuActionListener());
         ItmStaj.setBackground(new Color(255,255,255));
         
         MnuProccess.add(ItmStaj);
@@ -564,52 +537,52 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         //End proccess sub menu
         
         
-        JMenuItem ItmSPZarab = new JMenuItem("Заработки");
+        JMenuItem ItmSPZarab = new JMenuItem("\u0417\u0430\u0440\u0430\u0431\u043e\u0442\u043a\u0438");
         ItmSPZarab.setFont(menuFont);
         ItmSPZarab.setActionCommand("spzarab");
-        ItmSPZarab.addActionListener(JMenuActionListener);
+        ItmSPZarab.addActionListener(getJMenuActionListener());
         ItmSPZarab.setBackground(new Color(255,255,255));
         
         MnuProccess.add(ItmSPZarab);
         
 //
-        JMenuItem ItmSPSots = new JMenuItem("Отчет за социално осигуряване");
+        JMenuItem ItmSPSots = new JMenuItem("\u041e\u0442\u0447\u0435\u0442 \u0437\u0430 \u0441\u043e\u0446\u0438\u0430\u043b\u043d\u043e \u043e\u0441\u0438\u0433\u0443\u0440\u044f\u0432\u0430\u043d\u0435");
         ItmSPSots.setFont(menuFont);
         ItmSPSots.setActionCommand("spsots");
-        ItmSPSots.addActionListener(JMenuActionListener);
+        ItmSPSots.addActionListener(getJMenuActionListener());
         ItmSPSots.setBackground(new Color(255,255,255));
         
         MnuProccess.add(ItmSPSots);
         
         //End proccess sub menu
-        JMenuItem ItmSpStistic = new JMenuItem("Справки за статистиката");
+        JMenuItem ItmSpStistic = new JMenuItem("\u0421\u043f\u0440\u0430\u0432\u043a\u0438 \u0437\u0430 \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043a\u0430\u0442\u0430");
         ItmSpStistic.setFont(menuFont);
         ItmSpStistic.setActionCommand("spstatist");
-        ItmSpStistic.addActionListener(JMenuActionListener);
+        ItmSpStistic.addActionListener(getJMenuActionListener());
         ItmSpStistic.setBackground(new Color(255,255,255));
         
         MnuProccess.add(ItmSpStistic);
         //
-        JMenuItem ItmPDOD = new JMenuItem("Преизчисляване на ДОД");
+        JMenuItem ItmPDOD = new JMenuItem("\u041f\u0440\u0435\u0438\u0437\u0447\u0438\u0441\u043b\u044f\u0432\u0430\u043d\u0435 \u043d\u0430 \u0414\u041e\u0414");
         ItmPDOD.setFont(menuFont);
         ItmPDOD.setActionCommand("pdod");
-        ItmPDOD.addActionListener(JMenuActionListener);
+        ItmPDOD.addActionListener(getJMenuActionListener());
         ItmPDOD.setBackground(new Color(255,255,255));
         
         MnuProccess.add(ItmPDOD);
         //
-        JMenuItem ItmBPL = new JMenuItem("Банкови плащания");
+        JMenuItem ItmBPL = new JMenuItem("\u0411\u0430\u043d\u043a\u043e\u0432\u0438 \u043f\u043b\u0430\u0449\u0430\u043d\u0438\u044f");
         ItmBPL.setFont(menuFont);
         ItmBPL.setActionCommand("bpl");
-        ItmBPL.addActionListener(JMenuActionListener);
+        ItmBPL.addActionListener(getJMenuActionListener());
         ItmBPL.setBackground(new Color(255,255,255));
         
         MnuProccess.add(ItmBPL);
         //
-        JMenuItem ItmUTD = new JMenuItem("Уведомления за трудови договори");
+        JMenuItem ItmUTD = new JMenuItem("\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u044f \u0437\u0430 \u0442\u0440\u0443\u0434\u043e\u0432\u0438 \u0434\u043e\u0433\u043e\u0432\u043e\u0440\u0438");
         ItmUTD.setFont(menuFont);
         ItmUTD.setActionCommand("Zadalk");
-        ItmUTD.addActionListener(JMenuActionListener);
+        ItmUTD.addActionListener(getJMenuActionListener());
         ItmUTD.setBackground(new Color(255,255,255));
         
         MnuProccess.add(ItmUTD);
@@ -618,17 +591,17 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         ////
         //Setup system menu
-        JMenu MnuDocum = new JMenu("ДОКУМЕНТИ");
+        JMenu MnuDocum = new JMenu("\u0414\u041e\u041a\u0423\u041c\u0415\u041d\u0422\u0418");
         MnuDocum.setFont(menuFont);
         MnuDocum.setMnemonic('S');
         MnuDocum.setBackground(new Color(255,255,255));
         NewJMenuBar.add(MnuDocum);
         //
         
-        JMenuItem ItmActStDlaj = new JMenuItem("Акт за встъпване в длъжност");
+        JMenuItem ItmActStDlaj = new JMenuItem("\u0410\u043a\u0442 \u0437\u0430 \u0432\u0441\u0442\u044a\u043f\u0432\u0430\u043d\u0435 \u0432 \u0434\u043b\u044a\u0436\u043d\u043e\u0441\u0442");
         ItmActStDlaj.setFont(menuFont);
         ItmActStDlaj.setActionCommand("actsdl");
-        ItmActStDlaj.addActionListener(JMenuActionListener);
+        ItmActStDlaj.addActionListener(getJMenuActionListener());
         ItmActStDlaj.setBackground(new Color(255,255,255));
         
         MnuDocum.add(ItmActStDlaj);
@@ -636,52 +609,52 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         
         //Setup system menu
-        JMenu MnuSys = new JMenu("СИСТЕМНИ");
+        JMenu MnuSys = new JMenu("u0421\u0418\u0421\u0422\u0415\u041c\u041d\u0418");
         MnuSys.setFont(menuFont);
         MnuSys.setMnemonic('S');
         MnuSys.setBackground(new Color(255,255,255));
         NewJMenuBar.add(MnuSys);
         ////
         
-        JMenuItem ItmFirma = new JMenuItem("Данни на фирмата");
+        JMenuItem ItmFirma = new JMenuItem("\u0414\u0430\u043d\u043d\u0438 \u043d\u0430 \u0444\u0438\u0440\u043c\u0430\u0442\u0430");
         ItmFirma.setFont(menuFont);
         ItmFirma.setActionCommand("danfirm");
-        ItmFirma.addActionListener(JMenuActionListener);
+        ItmFirma.addActionListener(getJMenuActionListener());
         ItmFirma.setBackground(new Color(255,255,255));
         
         MnuSys.add(ItmFirma);
         
         ///////
         
-        JMenuItem ItmNewM = new JMenuItem("Създаване на месец");
+        JMenuItem ItmNewM = new JMenuItem("\u0421\u044a\u0437\u0434\u0430\u0432\u0430\u043d\u0435 \u043d\u0430 \u043c\u0435\u0441\u0435\u0446");
         ItmNewM.setFont(menuFont);
         ItmNewM.setActionCommand("newm");
-        ItmNewM.addActionListener(JMenuActionListener);
+        ItmNewM.addActionListener(getJMenuActionListener());
         ItmNewM.setBackground(new Color(255,255,255));
         
         MnuSys.add(ItmNewM);
         ////
         
-        JMenuItem ItmDelM = new JMenuItem("Премахване на месец");
+        JMenuItem ItmDelM = new JMenuItem("\u041f\u0440\u0435\u043c\u0430\u0445\u0432\u0430\u043d\u0435 \u043d\u0430 \u043c\u0435\u0441\u0435\u0446");
         ItmDelM.setFont(menuFont);
         ItmDelM.setActionCommand("ereasem");
-        ItmDelM.addActionListener(JMenuActionListener);
+        ItmDelM.addActionListener(getJMenuActionListener());
         ItmDelM.setBackground(new Color(255,255,255));
         
         MnuSys.add(ItmDelM);
         ///
-        JMenuItem ItmExport = new JMenuItem("Експорт на данни");
+        JMenuItem ItmExport = new JMenuItem("\u0415\u043a\u0441\u043f\u043e\u0440\u0442 \u043d\u0430 \u0434\u0430\u043d\u043d\u0438");
         ItmExport.setFont(menuFont);
         ItmExport.setActionCommand("expflat");
-        ItmExport.addActionListener(JMenuActionListener);
+        ItmExport.addActionListener(getJMenuActionListener());
         ItmExport.setBackground(new Color(255,255,255));
         
         MnuSys.add(ItmExport);
         ////
-        JMenuItem ItmImport = new JMenuItem("Импорт на данни");
+        JMenuItem ItmImport = new JMenuItem("\u0418\u043c\u043f\u043e\u0440\u0442 \u043d\u0430 \u0434\u0430\u043d\u043d\u0438");
         ItmImport.setFont(menuFont);
         ItmImport.setActionCommand("danfirm");
-        ItmImport.addActionListener(JMenuActionListener);
+        ItmImport.addActionListener(getJMenuActionListener());
         ItmImport.setBackground(new Color(255,255,255));
         
         MnuSys.add(ItmImport);
@@ -690,10 +663,10 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         
         ///
-        JMenuItem ItmImportPic = new JMenuItem("Снимки");
+        JMenuItem ItmImportPic = new JMenuItem("\u0421\u043d\u0438\u043c\u043a\u0438");
         ItmImportPic.setFont(menuFont);
         ItmImportPic.setActionCommand("pic");
-        ItmImportPic.addActionListener(JMenuActionListener);
+        ItmImportPic.addActionListener(getJMenuActionListener());
         ItmImportPic.setBackground(new Color(255,255,255));
         
         MnuSys.add(ItmImportPic);
@@ -703,7 +676,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         
         //Setup help menu
-        JMenu MnuHelp = new JMenu("ПОМОЩ");
+        JMenu MnuHelp = new JMenu("\u041f\u041e\u041c\u041e\u0429");
         MnuHelp.setFont(menuFont);
         MnuHelp.setMnemonic('H');
         MnuHelp.setBackground(new Color(255,255,255));
@@ -770,7 +743,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     
     protected void loadSastavForm() throws java.sql.SQLException{
         //Verify if the form is already loaded
-        boolean AlreadyLoaded = isLoaded("Списък служители");
+        boolean AlreadyLoaded = isLoaded("\u0421\u043f\u0438\u0441\u044a\u043a \u0441\u043b\u0443\u0436\u0438\u0442\u0435\u043b\u0438");
         
         if (pMonth != 0 && (rightsUser.get("sastav").toString()) != "0"){
             if(AlreadyLoaded==false){
@@ -795,7 +768,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 }catch(PropertyVetoException e){
                 }
             }} else {
-            JOptionPane.showMessageDialog(null,"Няма работна дата.\n Въведете: Програма -> Смяна на период.","РЕА - Проект Мидас",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"\u041d\u044f\u043c\u0430 \u0440\u0430\u0431\u043e\u0442\u043d\u0430 \u0434\u0430\u0442\u0430.\n ","",JOptionPane.WARNING_MESSAGE);
             }
         //End verify if the form is already loaded
         
@@ -805,7 +778,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     //Create dod form
     protected void loadDODForm() throws java.sql.SQLException{
         
-        boolean AlreadyLoaded = isLoaded("ДОО таблица");
+        boolean AlreadyLoaded = isLoaded("\u0414\u041e\u041e \u0442\u0430\u0431\u043b\u0438\u0446\u0430");
         if(AlreadyLoaded==false){
             FormDOD = new FrmDOD(dbCON,this);
             Desk1.add(FormDOD);
@@ -838,7 +811,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     
     protected void loadDOOForm() throws java.sql.SQLException{
         //Verify if the form is already loaded
-        boolean AlreadyLoaded = isLoaded("ДОО начисления");
+        boolean AlreadyLoaded = isLoaded("\u0414\u041e\u041e \u043d\u0430\u0447\u0438\u0441\u043b\u0435\u043d\u0438\u044f");
         if(AlreadyLoaded==false){
             FormDOO = new FrmDOO(dbCON,this);
             Desk1.add(FormDOO);
@@ -865,7 +838,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     //End create supplier form
     protected void loadMonthForm() throws java.sql.SQLException{
         //Verify if the form is already loaded
-        boolean AlreadyLoaded = isLoaded("Месечни данни");
+        boolean AlreadyLoaded = isLoaded("\u041c\u0435\u0441\u0435\u0447\u043d\u0438 \u0434\u0430\u043d\u043d\u0438");
         if(AlreadyLoaded==false){
             
             FormMonth = new FrmMonth(dbCON,this,pMonth,pYear);
@@ -954,7 +927,8 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 }catch(PropertyVetoException e){
                 }
             }} else {
-            JOptionPane.showMessageDialog(null,"Няма работна дата.\n Въведете: Програма -> Смяна на период.","РЕА - Проект Мидас",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Няма работна дата.\n Въведете: Програма -> Смяна на период.",
+                    "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415",JOptionPane.WARNING_MESSAGE);
             }
         
         
@@ -1089,10 +1063,9 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     
     protected void loadActStDlaj(){
         try{
-            System.out.println("Vliza v load ");
-            FormActStDlaj = new FrmAct(this, dbCON, "c:/imakante/salary/jasper/","","Акт за встъпване в длъжност");
-            Desk1.add(FormActStDlaj);
-            FormActStDlaj.setVisible(true);
+            setFormActStDlaj(new FrmAct(this, dbCON, "c:/imakante/salary/jasper/","","Акт за встъпване в длъжност"));
+            Desk1.add(getFormActStDlaj());
+            getFormActStDlaj().setVisible(true);
             
         }catch(java.sql.SQLException sqle){}
         
@@ -1184,7 +1157,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         return DBUserName;
     }
     public String setFirm(String strFirm){
-        StrBTitle = "Личен състав на фирма " + strFirm;
+        StrBTitle = "\u041b\u0438\u0447\u0435\u043d \u0441\u044a\u0441\u0442\u0430\u0432 \u043d\u0430 \u0444\u0438\u0440\u043c\u0430 " + strFirm;
         return StrBTitle;
         
     }
@@ -1209,7 +1182,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     /************************** Event handling start **************************/
     
     //Create action listener for JMenu
-    java.awt.event.ActionListener JMenuActionListener = new java.awt.event.ActionListener(){
+    private java.awt.event.ActionListener JMenuActionListener = new java.awt.event.ActionListener(){
         public void actionPerformed(java.awt.event.ActionEvent e) {
             String srcObject = e.getActionCommand();
             if(srcObject=="newm"){
@@ -1364,29 +1337,32 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     /************************** Custom method start ***************************/
     
     protected void UnloadConnection() throws java.sql.SQLException {
-        String ObjButtons[] = {"ДА","НЕ"};
-        int PromptResult = JOptionPane.showOptionDialog(null,"Прекасване на връзка с базата?","ИМАКАНТЕ",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE,null,ObjButtons,ObjButtons[1]);
+        String ObjButtons[] = {"\u0414\u0410","\u041d\u0415"};
+        int PromptResult = JOptionPane.showOptionDialog(null,"\u041f\u0440\u0435\u043a\u0430\u0441\u0432\u0430\u043d\u0435 \u043d\u0430 \u0432\u0440\u044a\u0437\u043a\u0430 \u0441 \u0431\u0430\u0437\u0430\u0442\u0430?"
+                ,"\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE,null,ObjButtons,ObjButtons[1]);
         if(PromptResult==0){
             System.out.println(
                     "\n\n" +
-                    "ИМАКАНТЕ" +
+                    "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415" +
                     "\n\n"
                     );
             try {
                 dbCON.close();
-                JOptionPane.showMessageDialog(null,"Връзката към базата е успешно прекъсната.\n За да продължите работа - ПРОГРАМА -> Вход в Базата.","ПРОЕКТ ИМАКАНТЕ",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"\u0412\u0440\u044a\u0437\u043a\u0430\u0442\u0430 \u043a\u044a\u043c \u0431\u0430\u0437\u0430\u0442\u0430 \u0435 \u0443\u0441\u043f\u0435\u0448\u043d\u043e \u043f\u0440\u0435\u043a\u044a\u0441\u043d\u0430\u0442\u0430.\n \u0417\u0430 \u0434\u0430 \u043f\u0440\u043e\u0434\u044a\u043b\u0436\u0438\u0442\u0435 \u0440\u0430\u0431\u043e\u0442\u0430 - \u041f\u0420\u041e\u0413\u0420\u0410\u041c\u0410 -> \u0412\u0445\u043e\u0434 \u0432 \u0411\u0430\u0437\u0430\u0442\u0430."
+                        ,"\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415",JOptionPane.WARNING_MESSAGE);
             } catch(java.sql.SQLException sqle){
             }
         }
     }
     
     protected void UnloadWindow(){
-        String ObjButtons[] = {"ДА","НЕ"};
-        int PromptResult = JOptionPane.showOptionDialog(null,"Изход от прорамата?","ИМАКАНТЕ",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE,null,ObjButtons,ObjButtons[1]);
+        String ObjButtons[] = {"\u0414\u0410","\u041d\u0415"};
+        int PromptResult = JOptionPane.showOptionDialog(null,"\u0418\u0437\u0445\u043e\u0434 \u043e\u0442 \u043f\u0440\u043e\u0440\u0430\u043c\u0430\u0442\u0430?"
+                ,"\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE,null,ObjButtons,ObjButtons[1]);
         if(PromptResult==0){
             System.out.println(
                     "\n\n" +
-                    "ИМАКАНТЕ" +
+                    "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415" +
                     "\n\n"
                     );
             System.exit(0);
@@ -1461,4 +1437,29 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     }
     
     /************************** End main method start *************************/
+//encaps//
+    
+    public java.awt.event.ActionListener getJMenuActionListener() {
+        return JMenuActionListener;
+    }
+
+    public void setJMenuActionListener(java.awt.event.ActionListener JMenuActionListener) {
+        this.JMenuActionListener = JMenuActionListener;
+    }
+
+    public JLabel getStatusLabel() {
+        return StatusLabel;
+    }
+
+    public void setStatusLabel(JLabel StatusLabel) {
+        this.StatusLabel = StatusLabel;
+    }
+
+    public FrmAct getFormActStDlaj() {
+        return FormActStDlaj;
+    }
+
+    public void setFormActStDlaj(FrmAct FormActStDlaj) {
+        this.FormActStDlaj = FormActStDlaj;
+    }
 }

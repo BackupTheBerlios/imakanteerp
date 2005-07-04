@@ -93,8 +93,7 @@ public class FrmAct extends javax.swing.JInternalFrame implements java.awt.event
         try{
             java.io.FileInputStream fs = new FileInputStream(freport);
         } catch (java.io.FileNotFoundException  ioex){
-            System.out.println("Ne moga da nameria faila  ");
-        }
+               }
         fName =  salary_main.getNFirm();
         reportParam.put("name", fName);
         try {
@@ -155,7 +154,8 @@ public class FrmAct extends javax.swing.JInternalFrame implements java.awt.event
                             java.sql.ResultSet.CONCUR_READ_ONLY);
                     rsCus = stCus.executeQuery(strSQL);
                     if(rsCus!=null){System.out.println("imakame rs");}
-                } catch (java.sql.SQLException e) {javax.swing.JOptionPane.showMessageDialog(null,"Грешка ИЛС-С02Р  Възникнал проблем при осъществаване на връзка с базата.\n Моля въведете стойност в рамките 1 - 12.","ИМАКАНТЕ",javax.swing.JOptionPane.WARNING_MESSAGE);}
+                } catch (java.sql.SQLException e) {javax.swing.JOptionPane.showMessageDialog(null," \u0412\u044a\u0437\u043d\u0438\u043a\u043d\u0430\u043b \u043f\u0440\u043e\u0431\u043b\u0435\u043c \u043f\u0440\u0438 \u043e\u0441\u044a\u0449\u0435\u0441\u0442\u0432\u0430\u0432\u0430\u043d\u0435 \u043d\u0430 \u0432\u0440\u044a\u0437\u043a\u0430 \u0441 \u0431\u0430\u0437\u0430\u0442\u0430.\n \u041c\u043e\u043b\u044f \u0432\u044a\u0432\u0435\u0434\u0435\u0442\u0435 \u0441\u0442\u043e\u0439\u043d\u043e\u0441\u0442 \u0432 \u0440\u0430\u043c\u043a\u0438\u0442\u0435 1 - 12."
+                        ,"\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415",javax.swing.JOptionPane.WARNING_MESSAGE);}
                 
             }
             public static void initModelTable(){
