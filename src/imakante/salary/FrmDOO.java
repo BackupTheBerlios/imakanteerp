@@ -137,7 +137,7 @@ public class FrmDOO extends javax.swing.JInternalFrame implements java.awt.event
             if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
                 javax.swing.JDialog JDEdit = new imakante.salary.frmAddDOO(false,
                         JFParentFrame, cnCus,
-                        "SELECT * FROM dod WHERE id = "
+                        "SELECT * FROM ls_dod WHERE id = "
                         + jTable.getValueAt(jTable.getSelectedRow(), 0));
                 
                 JDEdit.setVisible(true);
@@ -146,8 +146,8 @@ public class FrmDOO extends javax.swing.JInternalFrame implements java.awt.event
             if (sqlE.getMessage() != null) {
                 System.out.println(sqlE.getMessage());
             } else {
-                JOptionPane.showMessageDialog(null,"Моля изберете запис.","Не е избран запис",
-                        JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null,"\u041c\u043e\u043b\u044f \u0438\u0437\u0431\u0435\u0440\u0435\u0442\u0435 \u0437\u0430\u043f\u0438\u0441."
+                        ,"\u041d\u0435 \u0435 \u0438\u0437\u0431\u0440\u0430\u043d \u0437\u0430\u043f\u0438\u0441",  JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }
@@ -179,7 +179,7 @@ public class FrmDOO extends javax.swing.JInternalFrame implements java.awt.event
     public static int rowNum = 0;
     public static int total = 0;
     
-    public static final String strSQL = "SELECT * FROM dobavki ORDER BY Id ASC";
+    public static final String strSQL = "SELECT * FROM ls_dobavki ORDER BY Id ASC";
     
     public static imakante.com.CustomTableModel model;
     public static imakante.com.CustomTable jTable;
@@ -190,7 +190,8 @@ public class FrmDOO extends javax.swing.JInternalFrame implements java.awt.event
             rsCus.close();
             stCus.close();
         } catch(java.sql.SQLException e) {
-            JOptionPane.showMessageDialog(null,"Грешка ИЛС-С03Р  Възникнал проблем при затваряне на ресурси.\n","ИМАКАНТЕ",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"\u0413\u0440\u0435\u0448\u043a\u0430 \u0418\u041b\u0421-\u042103\u0420  \u0412\u044a\u0437\u043d\u0438\u043a\u043d\u0430\u043b \u043f\u0440\u043e\u0431\u043b\u0435\u043c \u043f\u0440\u0438 \u0437\u0430\u0442\u0432\u0430\u0440\u044f\u043d\u0435 \u043d\u0430 \u0440\u0435\u0441\u0443\u0440\u0441\u0438.\n",
+                    "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415",JOptionPane.WARNING_MESSAGE);
         }
         this.dispose();
         
@@ -200,7 +201,8 @@ public class FrmDOO extends javax.swing.JInternalFrame implements java.awt.event
             stCus = cnCus.createStatement(java.sql.ResultSet.TYPE_SCROLL_SENSITIVE,
                     java.sql.ResultSet.CONCUR_UPDATABLE);
             rsCus = stCus.executeQuery(strSQL);
-        } catch (java.sql.SQLException e) {JOptionPane.showMessageDialog(null,"Грешка ИЛС-С02Р  Възникнал проблем при осъществаване на връзка с базата.\n Моля въведете стойност в рамките 1 - 12.","ИМАКАНТЕ",JOptionPane.WARNING_MESSAGE);}
+        } catch (java.sql.SQLException e) {JOptionPane.showMessageDialog(null,"\u0413\u0440\u0435\u0448\u043a\u0430 \u0418\u041b\u0421-\u042102\u0420  \u0412\u044a\u0437\u043d\u0438\u043a\u043d\u0430\u043b \u043f\u0440\u043e\u0431\u043b\u0435\u043c \u043f\u0440\u0438 \u043e\u0441\u044a\u0449\u0435\u0441\u0442\u0432\u0430\u0432\u0430\u043d\u0435 \u043d\u0430 \u0432\u0440\u044a\u0437\u043a\u0430 \u0441 \u0431\u0430\u0437\u0430\u0442\u0430.\\n \u041c\u043e\u043b\u044f \u0432\u044a\u0432\u0435\u0434\u0435\u0442\u0435 \u0441\u0442\u043e\u0439\u043d\u043e\u0441\u0442 \u0432 \u0440\u0430\u043c\u043a\u0438\u0442\u0435 1 - 12."
+                ,"\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415",JOptionPane.WARNING_MESSAGE);}
         
     }
     public static void initModelTable(){
