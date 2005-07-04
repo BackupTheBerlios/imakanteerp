@@ -24,8 +24,9 @@ public class FrmDate extends JDialog //implements ActionListener
     private int selected;
     private JPanel jPanel1 = new JPanel();
     private static String strYearsCusSQL;
-    String[] month = {"Януари","Февруари","Март","Април","Май","Юни","Юли","Август",
-            "Септември","Октомври","Ноември","Декември"};
+    String[] month = {"\u042f\u043d\u0443\u0430\u0440\u0438","\u0424\u0435\u0432\u0440\u0443\u0430\u0440\u0438","\u041c\u0430\u0440\u0442","\u0410\u043f\u0440\u0438\u043b","\u041c\u0430\u0439",
+            "\u042e\u043d\u0438","\u042e\u043b\u0438","\u0410\u0432\u0433\u0443\u0441\u0442",
+            "\u0421\u0435\u043f\u0442\u0435\u043c\u0432\u0440\u0438","\u041e\u043a\u0442\u043e\u043c\u0432\u0440\u0438","\u041d\u043e\u0435\u043c\u0432\u0440\u0438","\u0414\u0435\u043a\u0435\u043c\u0432\u0440\u0438"};
             boolean suportStProc = false;
             java.sql.Connection dbInternal;
             java.sql.Statement stm;
@@ -52,14 +53,13 @@ public class FrmDate extends JDialog //implements ActionListener
                 
                 if(main.getSupportStProc()){
                     try {
-                        System.out.println("vhoh");
                         try{
                             pstm = dbInternal.prepareStatement("SELECT * FROM sp_getyear");}catch(java.sql.SQLException se){System.out.println("problem v statement");
                             se.printStackTrace();}
                         
                         rsCus = pstm.executeQuery();
-                        if (rsCus == null){System.out.println("Niama result");}
-                        if (rsCus!=null){System.out.println("iama result");}
+                        if (rsCus == null){}
+                        if (rsCus!=null){}
                         while(rsCus.next()){
                             comboYear.addItem(rsCus.getString("pyear"));
                         }
@@ -217,8 +217,6 @@ public class FrmDate extends JDialog //implements ActionListener
             private void jButton1_actionPerformed(ActionEvent e) {
                 pMonth = (selected+1);
                 pYear = Integer.parseInt((String)comboYear.getSelectedItem());
-                {System.out.println("Месец:  " + pMonth);
-                 System.out.println("Година: " + pYear);}
                 main.setMonth(pMonth);
                 main.setYear(pYear);
                 dispose();
