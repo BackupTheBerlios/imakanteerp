@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 
 
 
-public class FrmDOO extends javax.swing.JInternalFrame {
+public class FrmDOO extends javax.swing.JInternalFrame implements java.awt.event.WindowListener {
         
 
     public FrmDOO(java.sql.Connection srcCN, javax.swing.JFrame getParentFrame) throws java.sql.SQLException {
@@ -135,7 +135,7 @@ public class FrmDOO extends javax.swing.JInternalFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         try{
             if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
-                javax.swing.JDialog JDEdit = new imakante.salary.frmAddDOD(false,
+                javax.swing.JDialog JDEdit = new imakante.salary.frmAddDOO(false,
                         JFParentFrame, cnCus,
                         "SELECT * FROM dod WHERE id = "
                         + jTable.getValueAt(jTable.getSelectedRow(), 0));
@@ -153,7 +153,7 @@ public class FrmDOO extends javax.swing.JInternalFrame {
     }
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        javax.swing.JDialog JDAdd = new imakante.salary.frmAddDOD(true, JFParentFrame,
+        javax.swing.JDialog JDAdd = new imakante.salary.frmAddDOO(true, JFParentFrame,
                 cnCus, "");
         JDAdd.setVisible(true);
     }

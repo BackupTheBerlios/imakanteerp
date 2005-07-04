@@ -56,7 +56,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     FrmVedAvans   FormVedAvans;
     frmSleujParam  FormSleujParam;
     FrmAct        FormActStDlaj;
-    
+    FrmPic FormPic;
     Font menuFont = new Font("Tahoma", Font.PLAIN, 14);
     imakante.salary.frmLogo splash = new imakante.salary.frmLogo();
     Thread FormSplash = new Thread(splash);
@@ -692,7 +692,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ///
         JMenuItem ItmImportPic = new JMenuItem("Снимки");
         ItmImportPic.setFont(menuFont);
-        ItmImportPic.setActionCommand("snim");
+        ItmImportPic.setActionCommand("pic");
         ItmImportPic.addActionListener(JMenuActionListener);
         ItmImportPic.setBackground(new Color(255,255,255));
         
@@ -979,17 +979,13 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
             e.printStackTrace();
             System.exit(1);
         }
-        
-//	   jta.setText(((MyDialog)ae.getSource()).getText());
+
         
         System.out.println(pYear);
         
     }
     
-    /**
-     *
-     * @throws java.sql.SQLException
-     */
+    
     protected void loadNewMForm() throws java.sql.SQLException {
         
         boolean AlreadyLoaded = isLoaded("Създаване на нов месец");
@@ -1026,7 +1022,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 FormOtdel.setSelected(true);
             }catch(PropertyVetoException e){
             }
-            //End load the FormDOD
+       
         }else{
             try{
                 FormOtdel.setIcon(false);
@@ -1034,7 +1030,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
             }catch(PropertyVetoException e){
             }
         }
-        //End verify if the form is already loaded
+   
         
     }
     protected void loadDlajForm() throws java.sql.SQLException{
@@ -1050,7 +1046,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 FormDlajnost.setSelected(true);
             }catch(PropertyVetoException e){
             }
-            //End load the FormDOD
+       
         }else{
             try{
                 FormDlajnost.setIcon(false);
@@ -1058,8 +1054,29 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
             }catch(PropertyVetoException e){
             }
         }
-        //End verify if the form is already loaded
+               
+    }
+    protected void loadPic() {
         
+        boolean AlreadyLoaded = isLoaded("Снимки");
+        if(AlreadyLoaded==false){
+            FormPic = new FrmPic(dbCON);
+            Desk1.add(FormPic);
+            FormPic.setVisible(true);
+            
+            try{
+                FormPic.setIcon(false);
+                FormPic.setSelected(true);
+            }catch(PropertyVetoException e){
+            }
+            }else{
+            try{
+                FormPic.setIcon(false);
+                FormPic.setSelected(true);
+            }catch(PropertyVetoException e){
+            }
+        }
+             
     }
     protected void loadSlujParam(){
         try{
@@ -1094,7 +1111,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         
         try{
-            Thread.sleep(3000);
+            Thread.sleep(2000);
         }catch(InterruptedException e){
         }
         
@@ -1276,6 +1293,10 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
              else if(srcObject=="ereasem"){
                 
                 loadEreaseM();
+            }
+            else if(srcObject=="pic"){
+                
+                loadPic();
             }
                        
             else if(srcObject=="zved"){
