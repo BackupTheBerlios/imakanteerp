@@ -151,7 +151,7 @@ public class FrmPic extends javax.swing.JInternalFrame implements java.awt.event
                     rsCus.close();
                     stCus.close();
                 } catch(java.sql.SQLException e) {
-                    JOptionPane.showMessageDialog(null,"Грешка ИЛС-С03Р  Възникнал проблем при затваряне на ресурси.\n","ИМАКАНТЕ",JOptionPane.WARNING_MESSAGE);
+                 
                 }
                 this.dispose();
                 
@@ -161,7 +161,7 @@ public class FrmPic extends javax.swing.JInternalFrame implements java.awt.event
                     stCus = dbInternal.createStatement(java.sql.ResultSet.TYPE_SCROLL_SENSITIVE,
                             java.sql.ResultSet.CONCUR_READ_ONLY);
                     rsCus = stCus.executeQuery(strSQL);
-                } catch (java.sql.SQLException e) {JOptionPane.showMessageDialog(null,"Грешка ИЛС-С02Р  Възникнал проблем при осъществаване на връзка с базата.\n Моля въведете стойност в рамките 1 - 12.","ИМАКАНТЕ",JOptionPane.WARNING_MESSAGE);}
+                } catch (java.sql.SQLException e) {}
                 
             }
             public static void initModelTable(){
@@ -213,7 +213,8 @@ public class FrmPic extends javax.swing.JInternalFrame implements java.awt.event
                     if (sqlE.getMessage() != null) {
                         System.out.println(sqlE.getMessage());
                     } else {
-                        JOptionPane.showMessageDialog(null,"Моля изберете запис.","Не е избран запис",
+                        JOptionPane.showMessageDialog(null,"\u041c\u043e\u043b\u044f \u0438\u0437\u0431\u0435\u0440\u0435\u0442\u0435 \u0437\u0430\u043f\u0438\u0441.",
+                                "\u041d\u0435 \u0435 \u0438\u0437\u0431\u0440\u0430\u043d \u0437\u0430\u043f\u0438\u0441",
                                 JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
