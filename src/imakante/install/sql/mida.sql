@@ -16,20 +16,6 @@ USE `mida`;
 
 
 #
-# Table structure for table bolnichni
-#
-
-CREATE TABLE `bolnichni` (
-  `id` int(10) unsigned NOT NULL auto_increment,
-  `id_rab` int(10) unsigned NOT NULL default '0',
-  `bol_date` date default NULL,
-  `bol_day_firm` int(11) default NULL,
-  `bol_day_noi` int(11) default NULL,
-  PRIMARY KEY  (`id`),
-  UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
-
-#
 # Table structure for table category_product
 #
 
@@ -61,39 +47,6 @@ CREATE TABLE `country` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251 COLLATE=cp1251_bulgarian_ci;
 
 #
-# Table structure for table customer
-#
-
-CREATE TABLE `customer` (
-  `Id` int(6) unsigned NOT NULL auto_increment,
-  `n_customer` varchar(8) NOT NULL default '',
-  `name_customer` varchar(45) NOT NULL default '',
-  `mol_customer` varchar(45) default NULL,
-  `obekt_customer` varchar(45) default NULL,
-  `address_customer` varchar(25) default NULL,
-  `grad_dr_customer` varchar(20) default NULL,
-  `grad_ob_customer` varchar(20) default NULL,
-  `oblast_customer` varchar(20) default NULL,
-  `postcode_customer` varchar(8) default NULL,
-  `country_customer` varchar(15) default NULL,
-  `tel_customer` varchar(12) default NULL,
-  `fax_customer` varchar(12) default NULL,
-  `bul` varchar(11) default NULL,
-  `dan` varchar(11) default NULL,
-  `address_ob_customer` varchar(25) default NULL,
-  `egnmol_customer` varchar(10) default NULL,
-  `oso_customer` varchar(20) default NULL,
-  `egnoso_customer` varchar(10) default NULL,
-  `fix_rb_customer` tinyint(2) unsigned default '0' COMMENT 'Fix rebate',
-  `dist01_customer` tinyint(4) unsigned default NULL COMMENT 'Nomer na distributor 1',
-  `dist02_customer` tinyint(4) unsigned default NULL,
-  `dist03_customer` tinyint(4) unsigned default NULL,
-  `max_credit_limit` double default NULL,
-  `email` varchar(20) default NULL,
-  PRIMARY KEY  (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
-
-#
 # Table structure for table customer_pri
 #
 
@@ -103,18 +56,6 @@ CREATE TABLE `customer_pri` (
   `Name` varchar(30) NOT NULL default '',
   PRIMARY KEY  (`Id_customer`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
-
-#
-# Table structure for table dlaj
-#
-
-CREATE TABLE `dlaj` (
-  `Id` int(11) NOT NULL auto_increment,
-  `nomer` tinyint(4) default NULL,
-  `namedlaj` varchar(50) default NULL,
-  `nomkod` varchar(8) default NULL,
-  PRIMARY KEY  (`Id`)
-) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 #
 # Table structure for table dobavki
@@ -133,19 +74,6 @@ CREATE TABLE `dobavki` (
   `vdm` tinyint(1) default NULL,
   `zr` tinyint(1) default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
-
-#
-# Table structure for table dod
-#
-
-CREATE TABLE `dod` (
-  `Id` int(6) unsigned NOT NULL auto_increment,
-  `datep` date default NULL,
-  `doh` float default NULL,
-  `sum` float default NULL,
-  `prct` float default NULL,
-  PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 #
@@ -216,87 +144,49 @@ CREATE TABLE `kasadet001razhod` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 #
-# Table structure for table ls_sluj
+# Table structure for table ls_bolnichni
 #
 
-CREATE TABLE `ls_sluj` (
-  `Id` int(6) unsigned NOT NULL auto_increment,
-  `name_firm` varchar(60) default NULL,
-  `dan_nom` varchar(11) default NULL,
-  `bul` varchar(11) default NULL,
-  `address` varchar(100) default NULL,
-  `nam_boss` varchar(60) default NULL,
-  `nam_acc` varchar(70) default NULL,
+CREATE TABLE `ls_bolnichni` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `id_rab` int(10) unsigned NOT NULL default '0',
+  `bol_date` date default NULL,
+  `bol_day_firm` int(11) default NULL,
+  `bol_day_noi` int(11) default NULL,
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Table structure for table ls_dlajnosti
+#
+
+CREATE TABLE `ls_dlajnosti` (
+  `Id` int(11) NOT NULL auto_increment,
+  `nomer` tinyint(4) default NULL,
+  `namedlaj` varchar(50) default NULL,
+  `nomkod` varchar(8) default NULL,
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 #
-# Table structure for table ls_users_rights
+# Table structure for table ls_dod
 #
 
-CREATE TABLE `ls_users_rights` (
+CREATE TABLE `ls_dod` (
   `Id` int(6) unsigned NOT NULL auto_increment,
-  `id_user` int(4) default NULL COMMENT 'id user from user_master',
-  `sastav` tinyint(1) default NULL COMMENT 'right to use form sastav',
-  `vedom` tinyint(1) default NULL COMMENT 'right to use vedomost',
-  `fishove` tinyint(1) default NULL COMMENT 'right to use fishove',
-  `newmonth` tinyint(1) default NULL COMMENT 'right to create new month',
+  `datep` date default NULL,
+  `doh` float default NULL,
+  `sum` float default NULL,
+  `prct` float default NULL,
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 #
-# Table structure for table lsresult
+# Table structure for table ls_main
 #
 
-CREATE TABLE `lsresult` (
-  `Id` int(6) unsigned NOT NULL auto_increment,
-  `pmonth` tinyint(4) default NULL,
-  `pyear` int(6) NOT NULL default '0',
-  `idrab` tinyint(4) NOT NULL default '0',
-  `ID_dlaj` int(5) unsigned NOT NULL default '0',
-  `avans` float NOT NULL default '0',
-  `zaplata` float(7,2) unsigned NOT NULL default '0.00' COMMENT 'Shatna zaplata',
-  `zsuma` float NOT NULL default '0' COMMENT 'Zarabotena suma',
-  `psuma` float NOT NULL default '0' COMMENT 'Osiguritelen dohod',
-  `dsuma` float NOT NULL default '0' COMMENT 'oblagaem dohod',
-  `nsuma` float NOT NULL default '0' COMMENT 'suma za poluchawane',
-  `srsuma` float default NULL COMMENT 'zaem i drugi ',
-  `sdod` float NOT NULL default '0' COMMENT 'suma dod',
-  `viddoo` tinyint(4) NOT NULL default '1' COMMENT 'vid danachno osig',
-  `vdzo` tinyint(4) default NULL,
-  `doo` float NOT NULL default '0',
-  `doou` float NOT NULL default '0',
-  `dodpl` tinyint(4) NOT NULL default '0',
-  `dodyear` tinyint(4) NOT NULL default '1',
-  `npr` float NOT NULL default '0',
-  `sumavn` float NOT NULL default '0',
-  `dni` tinyint(4) NOT NULL default '0',
-  `otdel` tinyint(4) NOT NULL default '0',
-  `cod` tinyint(4) NOT NULL default '0',
-  `fullrab` tinyint(4) NOT NULL default '0',
-  `hours` tinyint(4) NOT NULL default '0',
-  `hoursdlg` tinyint(4) NOT NULL default '0',
-  `odso` float NOT NULL default '0',
-  `odzo` float default '0',
-  `noonly` tinyint(4) NOT NULL default '1',
-  `novdm` tinyint(4) NOT NULL default '1',
-  `nozono` tinyint(4) NOT NULL default '1',
-  `viddog` tinyint(4) NOT NULL default '0',
-  `vidppf` float NOT NULL default '0',
-  `vidupf` tinyint(4) NOT NULL default '0',
-  `upf` float NOT NULL default '0',
-  `upfr` float NOT NULL default '0.75',
-  `nkp` tinyint(4) NOT NULL default '0',
-  `nkid` int(6) NOT NULL default '0',
-  `nomer` int(6) NOT NULL default '0',
-  PRIMARY KEY  (`Id`)
-) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
-
-#
-# Table structure for table main_ls
-#
-
-CREATE TABLE `main_ls` (
+CREATE TABLE `ls_main` (
   `Id` int(6) unsigned NOT NULL auto_increment,
   `nomer` int(6) unsigned default NULL,
   `first` varchar(20) NOT NULL default '',
@@ -332,10 +222,10 @@ CREATE TABLE `main_ls` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 #
-# Table structure for table monthpar
+# Table structure for table ls_monthpar
 #
 
-CREATE TABLE `monthpar` (
+CREATE TABLE `ls_monthpar` (
   `id` int(5) unsigned NOT NULL auto_increment,
   `pmonth` tinyint(4) default NULL,
   `pyear` int(6) default NULL,
@@ -358,10 +248,10 @@ CREATE TABLE `monthpar` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 #
-# Table structure for table otdeli
+# Table structure for table ls_otdeli
 #
 
-CREATE TABLE `otdeli` (
+CREATE TABLE `ls_otdeli` (
   `Id` int(6) unsigned NOT NULL auto_increment,
   `nomer` tinyint(5) default NULL,
   `nameotdel` varchar(25) default NULL,
@@ -369,10 +259,10 @@ CREATE TABLE `otdeli` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 #
-# Table structure for table otpusk
+# Table structure for table ls_otpusk
 #
 
-CREATE TABLE `otpusk` (
+CREATE TABLE `ls_otpusk` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `id_rab` int(11) NOT NULL default '0',
   `date_otp` date default NULL,
@@ -380,6 +270,107 @@ CREATE TABLE `otpusk` (
   `day_rabotnik` int(11) default NULL,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Table structure for table ls_pic
+#
+
+CREATE TABLE `ls_pic` (
+  `Id` int(11) NOT NULL auto_increment,
+  `id_rabotnik` int(11) default NULL,
+  `pic` blob COMMENT 'snimka na rabotnika',
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Table structure for table ls_result
+#
+
+CREATE TABLE `ls_result` (
+  `Id` int(6) unsigned NOT NULL auto_increment,
+  `pmonth` tinyint(4) default NULL,
+  `pyear` int(6) default NULL,
+  `idrab` tinyint(4) NOT NULL default '0',
+  `ID_dlaj` int(5) unsigned NOT NULL default '0',
+  `avans` float NOT NULL default '0',
+  `zaplata` float(6,2) unsigned NOT NULL default '0.00' COMMENT 'Shatna zaplata',
+  `zsuma` float(6,2) NOT NULL default '0.00' COMMENT 'Zarabotena suma',
+  `psuma` float(6,2) NOT NULL default '0.00' COMMENT 'Osiguritelen dohod',
+  `dsuma` float(6,2) NOT NULL default '0.00' COMMENT 'oblagaem dohod',
+  `nsuma` float(6,2) NOT NULL default '0.00' COMMENT 'suma za poluchawane',
+  `srsuma` float(6,2) default NULL COMMENT 'zaem',
+  `sdod` float(6,2) NOT NULL default '0.00' COMMENT 'suma dod',
+  `sumaudr` float(6,2) NOT NULL default '0.00' COMMENT 'vsichki udrajki',
+  `viddoo` tinyint(4) NOT NULL default '1' COMMENT 'vid danachno osig',
+  `vdzo` tinyint(4) default NULL,
+  `doo` float NOT NULL default '0' COMMENT 'doo ot rabotnika suma',
+  `doou` float NOT NULL default '0' COMMENT 'doo ot firmata suma',
+  `dodpl` tinyint(4) NOT NULL default '0',
+  `dodyear` tinyint(4) NOT NULL default '1',
+  `npr` float NOT NULL default '0',
+  `dni` tinyint(3) NOT NULL default '0' COMMENT 'otraboteni dni',
+  `otdel` tinyint(4) NOT NULL default '0',
+  `cod` tinyint(4) NOT NULL default '0',
+  `fullrab` tinyint(4) NOT NULL default '0',
+  `hours` tinyint(4) NOT NULL default '0',
+  `hoursdlg` tinyint(4) NOT NULL default '0',
+  `odso` float NOT NULL default '0',
+  `odzo` float default '0',
+  `noonly` tinyint(4) NOT NULL default '1',
+  `novdm` tinyint(4) NOT NULL default '1',
+  `nozono` tinyint(4) NOT NULL default '1',
+  `viddog` tinyint(4) NOT NULL default '0',
+  `vidppf` float NOT NULL default '0',
+  `vidupf` float(3,2) NOT NULL default '0.00' COMMENT 'procent',
+  `upf` float NOT NULL default '0' COMMENT 'upf ot firmata',
+  `upfr` float NOT NULL default '0' COMMENT 'upf ot rabotnika',
+  `nkp` tinyint(4) NOT NULL default '0',
+  `nkid` int(6) NOT NULL default '0',
+  `nomer` int(6) NOT NULL default '0',
+  `marker` tinyint(2) default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Table structure for table ls_sluj
+#
+
+CREATE TABLE `ls_sluj` (
+  `Id` int(6) unsigned NOT NULL auto_increment,
+  `name_firm` varchar(60) default NULL,
+  `dan_nom` varchar(11) default NULL,
+  `bul` varchar(11) default NULL,
+  `address` varchar(100) default NULL,
+  `nam_boss` varchar(60) default NULL,
+  `nam_acc` varchar(70) default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Table structure for table ls_users_rights
+#
+
+CREATE TABLE `ls_users_rights` (
+  `Id` int(6) unsigned NOT NULL auto_increment,
+  `id_user` int(4) default NULL COMMENT 'id user from user_master',
+  `sastav` tinyint(1) default NULL COMMENT 'right to use form sastav',
+  `vedom` tinyint(1) default NULL COMMENT 'right to use vedomost',
+  `fishove` tinyint(1) default NULL COMMENT 'right to use fishove',
+  `newmonth` tinyint(1) default NULL COMMENT 'right to create new month',
+  `vedoma` tinyint(1) default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Table structure for table ls_vid_osiguren
+#
+
+CREATE TABLE `ls_vid_osiguren` (
+  `Id` int(11) NOT NULL auto_increment,
+  `kod` char(2) NOT NULL default '',
+  `opisanie` varchar(64) NOT NULL default '',
+  PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 #
@@ -581,57 +572,6 @@ CREATE TABLE `salesdetsd001_11_04` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 #
-# Table structure for table sec_ls
-#
-
-CREATE TABLE `sec_ls` (
-  `Id` int(6) unsigned NOT NULL auto_increment,
-  `year` tinyint(5) default NULL,
-  `month` tinyint(3) default NULL,
-  `idperson` int(6) default NULL,
-  `dlaj` varchar(15) default NULL,
-  `avans` float default NULL,
-  `suma` float default NULL,
-  `zsuma` float default NULL,
-  `suma1` float default NULL,
-  `suma2` float default NULL,
-  `suma3` float default NULL,
-  `suma4` float default NULL,
-  `dodsuma` float default NULL,
-  `vdoo` tinyint(4) default NULL,
-  `vzo` tinyint(4) default NULL,
-  `prdoo` float default NULL,
-  `sdoo` float default NULL,
-  `udoo` float default NULL,
-  `ydod` float default NULL,
-  `npr` float default NULL,
-  `osuma` float default NULL,
-  `vnsuma` float default NULL,
-  `PKB` float(3,2) default NULL,
-  `pkbr` float(3,2) default NULL,
-  `dni` tinyint(4) default NULL,
-  `otdel` tinyint(4) default NULL,
-  `COD` tinyint(4) default NULL,
-  `full` set('Да',' Не') character set utf8 default NULL,
-  `hours` tinyint(4) default NULL,
-  `hoursd` tinyint(4) default NULL,
-  `odso` float default NULL,
-  `ch328` set('??',' ??') character set utf8 default NULL,
-  `novdm` set('??',' ??') character set utf8 default NULL,
-  `nozon` set('??',' ??') character set utf8 default NULL,
-  `vidig` tinyint(4) default NULL,
-  `vidppf` tinyint(4) default NULL,
-  `ppf` float default NULL,
-  `vidupf` tinyint(4) default NULL,
-  `upf` float default NULL,
-  `uprf` float(8,2) default NULL,
-  `NKP` tinyint(4) default NULL,
-  `nkid` tinyint(4) default NULL,
-  `NR` tinyint(4) default NULL,
-  PRIMARY KEY  (`Id`)
-) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
-
-#
 # Table structure for table skl_strukt
 #
 
@@ -657,6 +597,178 @@ CREATE TABLE `skladove` (
   `skl003f` int(10) unsigned NOT NULL default '0',
   PRIMARY KEY  (`idskladove`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Table structure for table sl_n_baccount
+#
+
+CREATE TABLE `sl_n_baccount` (
+  `Id` int(6) unsigned NOT NULL auto_increment,
+  `Id_cust` int(6) unsigned NOT NULL default '0',
+  `bank_code` varchar(10) default NULL,
+  `bank_name` varchar(45) default NULL,
+  `account` varchar(10) default NULL COMMENT 'Bankova smetka',
+  `DDS_account` varchar(10) default NULL COMMENT 'Smetka po DDS',
+  PRIMARY KEY  (`Id`),
+  KEY `Customer` (`Id_cust`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Table structure for table sl_n_country
+#
+
+CREATE TABLE `sl_n_country` (
+  `Id` tinyint(3) unsigned NOT NULL auto_increment,
+  `code` char(3) default NULL,
+  `name` varchar(20) NOT NULL default '',
+  PRIMARY KEY  (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Table structure for table sl_n_cust_info
+#
+
+CREATE TABLE `sl_n_cust_info` (
+  `Id` int(6) unsigned NOT NULL auto_increment,
+  `Id_cust` int(6) unsigned NOT NULL default '0',
+  `fix_rebate` tinyint(2) unsigned default '0' COMMENT 'Fix rebate',
+  `credit_limit` double default NULL,
+  PRIMARY KEY  (`Id`),
+  KEY `Customer` (`Id_cust`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Table structure for table sl_n_customer
+#
+
+CREATE TABLE `sl_n_customer` (
+  `Id` int(6) unsigned NOT NULL auto_increment,
+  `code` varchar(10) NOT NULL default '' COMMENT 'User filed customer code',
+  `name` varchar(45) NOT NULL default '',
+  `bul` varchar(13) default NULL COMMENT 'Bulstat',
+  `dann` varchar(10) default NULL COMMENT 'NDR',
+  `address` varchar(25) default NULL,
+  `Id_nm` int(6) unsigned default NULL COMMENT 'Cod na naseleno miasto',
+  `tel` varchar(12) default NULL,
+  `fax` varchar(12) default NULL,
+  `email` varchar(20) default NULL,
+  `web` varchar(20) default NULL,
+  `Id_mol` int(10) default NULL,
+  `Id_oso` int(10) default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Table structure for table sl_n_distributors
+#
+
+CREATE TABLE `sl_n_distributors` (
+  `Id` int(6) unsigned NOT NULL auto_increment,
+  `Id_cust` int(6) unsigned NOT NULL default '0',
+  `code` varchar(4) NOT NULL default '' COMMENT 'User filed code',
+  `name` varchar(20) default NULL,
+  `comment` varchar(45) default NULL,
+  PRIMARY KEY  (`Id`),
+  KEY `Customer` (`Id_cust`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Table structure for table sl_n_nm
+#
+
+CREATE TABLE `sl_n_nm` (
+  `Id` int(6) unsigned NOT NULL auto_increment,
+  `name` varchar(20) NOT NULL default '',
+  `postcode` varchar(8) default NULL,
+  `Id_oblast` tinyint(2) default NULL,
+  PRIMARY KEY  (`Id`),
+  KEY `Oblast` (`Id_oblast`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Table structure for table sl_n_obekt
+#
+
+CREATE TABLE `sl_n_obekt` (
+  `Id` int(6) unsigned NOT NULL auto_increment,
+  `Id_cust` int(6) unsigned NOT NULL default '0',
+  `name` varchar(45) default NULL,
+  `address` varchar(25) default NULL,
+  `Id_nm` int(6) unsigned default NULL COMMENT 'Cod na naseleno miasto',
+  PRIMARY KEY  (`Id`),
+  KEY `Customer` (`Id_cust`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Table structure for table sl_n_oblast
+#
+
+CREATE TABLE `sl_n_oblast` (
+  `Id` tinyint(2) unsigned NOT NULL auto_increment,
+  `name` varchar(20) NOT NULL default '',
+  `Id_country` tinyint(3) default NULL,
+  PRIMARY KEY  (`Id`),
+  KEY `Country` (`Id_country`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Table structure for table sl_n_person
+#
+
+CREATE TABLE `sl_n_person` (
+  `Id` int(10) unsigned NOT NULL auto_increment,
+  `egn` varchar(10) default NULL,
+  `nlk` varchar(9) default NULL COMMENT 'Nomer na licna karta',
+  `name` varchar(20) NOT NULL default '',
+  `comment` varchar(20) NOT NULL default '' COMMENT 'Extra info',
+  PRIMARY KEY  (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Table structure for table sl_n_product_ext
+#
+
+CREATE TABLE `sl_n_product_ext` (
+  `Id` int(11) NOT NULL auto_increment,
+  `id_prod_pri` int(11) default NULL,
+  `id_dost` int(11) default NULL COMMENT 'id na dostavchika',
+  `tsena_dost` decimal(10,4) default NULL COMMENT 'Dostavna tsena bez dds za razf',
+  `tsena_prod1` decimal(10,4) default NULL COMMENT 'prodajna tsena 1 za razf',
+  `tsena_prod2` decimal(10,4) default NULL COMMENT 'prodajna tsena 2 za razf',
+  `tsena_prod3` decimal(10,4) default NULL COMMENT 'prodajna tsena 3 za razf',
+  `tsena_promo` decimal(10,4) default NULL COMMENT 'promocionalna tsena',
+  `razf1` decimal(6,4) default NULL COMMENT 'razfasovka 1',
+  `razf2` decimal(6,4) default NULL COMMENT 'razfasofka 2',
+  `razf_name` varchar(10) default NULL COMMENT 'ime na razfasofka osnovana',
+  `razf1_name` varchar(10) default NULL COMMENT 'ime na razfasofka 1',
+  `razf2_name` int(11) default NULL COMMENT 'ime na razfasofka 2',
+  `date_dost` date default NULL COMMENT 'data na dostavka',
+  `date_dognost` date default NULL COMMENT 'posleden den na godnost',
+  `date_promotsia` date default NULL COMMENT 'posleden den na promotsia',
+  `sertifikat` varchar(15) default NULL COMMENT 'sertifikat',
+  `partida` varchar(11) default NULL COMMENT 'partiden nomer',
+  `DDS` tinyint(1) default NULL COMMENT 'dds da ili ne(0/1)',
+  `max_proc` decimal(3,2) default NULL COMMENT 'maksimalen procent na otstapka ot tsena_prod1',
+  PRIMARY KEY  (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251 COMMENT='razshirenio parametri na produkta';
+
+#
+# Table structure for table sl_n_product_pri
+#
+
+CREATE TABLE `sl_n_product_pri` (
+  `Id` int(11) NOT NULL auto_increment,
+  `nomer` varchar(8) default NULL COMMENT 'nomer na produkta',
+  `id_cat` varchar(5) default NULL COMMENT 'id kategoria produkt',
+  `name` varchar(30) default NULL COMMENT 'Ime na produkta',
+  `name_f` varchar(30) default NULL COMMENT 'ime za faktura',
+  `name_s` varchar(11) default NULL COMMENT 'kratko ime',
+  `nomer_eq` varchar(8) default NULL COMMENT 'nomer za saotvetstvie',
+  `code_s1` varchar(15) default NULL COMMENT 'dopalnitelen kod',
+  `code_s2` varchar(15) default NULL COMMENT 'dopalnitelen kod 2',
+  `НовоПоле` varchar(15) default 'barcode' COMMENT 'barkod na produkta',
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='Osnovni harakteristiki na produktite';
 
 #
 # Table structure for table slujebna
@@ -718,17 +830,6 @@ CREATE TABLE `valuta` (
   `Stoinost_valuta` float unsigned NOT NULL default '0',
   PRIMARY KEY  (`idvaluta`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
-
-#
-# Table structure for table wid_osiguren
-#
-
-CREATE TABLE `wid_osiguren` (
-  `Id` int(11) NOT NULL auto_increment,
-  `kod` char(2) NOT NULL default '',
-  `opisanie` varchar(64) NOT NULL default '',
-  PRIMARY KEY  (`Id`)
-) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 #
 #  Foreign keys for table product_nom

@@ -2,14 +2,13 @@ package imakante.salary;
 
 import imakante.com.CustomTable;
 import imakante.com.CustomTableModel;
-import java.sql.Statement;
 import java.io.InputStream;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import net.sf.jasperreports.engine.JasperReport;
 import java.sql.SQLException;
 import javax.swing.JFrame;
+
 
 
 
@@ -27,17 +26,17 @@ public class FrmFishove extends javax.swing.JInternalFrame {
         try{
             stm = dbInternal.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
         } catch (SQLException sqle){
-            System.out.println("Problem v statement - date");
+            
         }
         
-        strSQL = "SELECT main_ls.id, main_ls.first, main_ls.second,  main_ls.family," +
-                " lsresult.zaplata, lsresult.psuma, lsresult.nsuma FROM main_ls" +
-                " INNER JOIN lsresult ON (main_ls.Id = lsresult.idrab)  WHERE lsresult.year = " + lYear + " AND " + "lsresult.month = " + lMonth+";";
+        strSQL = "SELECT ls_main.id, main_ls.first, main_ls.second,  main_ls.family," +
+                " lsresult.zaplata, lsresult.psuma, lsresult.nsuma FROM ls_main" +
+                " INNER JOIN lsresult ON (ls_main.Id = lsresult.idrab)  WHERE lsresult.year = " + lYear + " AND " + "lsresult.month = " + lMonth+";";
         try{
             rsCus = stm.executeQuery(strSQL);} catch (SQLException sd){}
         
-        jmodel = new CustomTableModel(dbInternal, rsCus, null);
-        jTable = new CustomTable(jmodel);
+        model = new CustomTableModel(dbInternal, rsCus, null);
+        jTable = new CustomTable(model);
         
         initComponents();
     }
@@ -118,19 +117,51 @@ public class FrmFishove extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
+    public static javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
     JFrame JFParentFrame;
     public int lYear,lMonth,NL;
-    public CustomTable jTable;
-    public CustomTableModel jmodel;
+    public static imakante.com.CustomTable jTable;
+    public static imakante.com.CustomTableModel model;
     InputStream fs = null;
     JasperReport template = null;
     HashMap reportParam;
     String fName;
-    Connection dbInternal;
-    Statement stm;
-    ResultSet rsCus;
+     public static final String Names[] = {"","\u041d\u043e\u043c\u0435\u0440", "\u0421\u043e\u0431\u0441\u0442\u0432\u0435\u043d\u043e",
+             "\u041f\u0440\u0435\u0437\u0438\u043c\u0435","\u0424\u0430\u043c\u0438\u043b\u0438\u044f","\u0429\u0430\u0442\u043d\u0430 \u0437\u0430\u043f\u043b\u0430\u0442\u0430",
+     "\u0421\u0443\u043c\u0430 \u0443\u0434\u0440\u044a\u0436\u043a\u0438","\u0421\u0443\u043c\u0430 \u0437\u0430 \u043f\u043e\u043b\u0443\u0447\u0430\u0432\u0430\u043d\u0435"};
+    public static java.sql.Connection dbInternal;
+    public static java.sql.Statement stm;
+    public static java.sql.ResultSet rsCus;
     String strSQL;
-   
+    
+    protected void UnloadWindow(){
+        try {
+            rsCus.close();
+            stm.close();
+        } catch(java.sql.SQLException e) {
+            javax.swing.JOptionPane.showMessageDialog(null,
+                    "\u0413\u0440\u0435\u0448\u043a\u0430 \u0418\u041b\u0421-\u042103\u0420  \u0412\u044a\u0437\u043d\u0438\u043a\u043d\u0430\u043b \u043f\u0440\u043e\u0431\u043b\u0435\u043c \u043f\u0440\u0438 \u0437\u0430\u0442\u0432\u0430\u0440\u044f\u043d\u0435 \u043d\u0430 \u0440\u0435\u0441\u0443\u0440\u0441\u0438.\n",
+                    "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415",javax.swing.JOptionPane.WARNING_MESSAGE);
+        
+        }
+        this.dispose();
+        
+    }
+    
+    public static void initModelTable(){
+        model = new imakante.com.CustomTableModel(dbInternal, rsCus, Names);
+        jTable = new imakante.com.CustomTable(model);
+    }
+    public static void reloadRecord() {
+        try{
+            rsCus.close();
+            stm.close();
+            jScrollPane1.getViewport().remove(jTable);
+            initModelTable();
+            jScrollPane1.getViewport().add(jTable);
+            jScrollPane1.repaint();
+            
+        } catch (Exception e){}
+    }
 }
