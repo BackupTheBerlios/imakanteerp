@@ -106,8 +106,10 @@ public class FrmPic extends javax.swing.JInternalFrame implements java.awt.event
             
             
         } catch(java.io.IOException ioex){}
+        
         icon = new ImageIcon();
         icon.setImage(image);
+     
         jLabel1.setIcon(icon);
         jLabel1.repaint();
         jPanel4.revalidate();

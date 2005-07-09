@@ -92,7 +92,7 @@ public class FrmKlienti extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
-    String strQU = "SELECT * FROM customer";
+    String strQU = "SELECT * FROM sl_n_customer";
     java.sql.Connection intConn;
     java.sql.Statement stm;
     java.sql.ResultSet rs;

@@ -67,6 +67,9 @@ public class sales_main extends javax.swing.JFrame {
         nomMenu_Stoka = new javax.swing.JMenuItem();
         nomMenu_Klienti = new javax.swing.JMenuItem();
         nomMenu_dost = new javax.swing.JMenuItem();
+        nomMenu_nasm = new javax.swing.JMenuItem();
+        nomMenu_obl = new javax.swing.JMenuItem();
+        nomMenu_con = new javax.swing.JMenuItem();
         sprMenu = new javax.swing.JMenu();
         sluMenu = new javax.swing.JMenu();
         helpMenu = new javax.swing.JMenu();
@@ -212,6 +215,15 @@ public class sales_main extends javax.swing.JFrame {
         nomMenu_dost.setText("\u0414\u043e\u0441\u0442\u0430\u0432\u0447\u0438\u0446\u0438");
         nomMenu.add(nomMenu_dost);
 
+        nomMenu_nasm.setText("\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e");
+        nomMenu.add(nomMenu_nasm);
+
+        nomMenu_obl.setText("\u041e\u0431\u043b\u0430\u0441\u0442\u0438");
+        nomMenu.add(nomMenu_obl);
+
+        nomMenu_con.setText("\u0414\u044a\u0440\u0436\u0430\u0432\u0438");
+        nomMenu.add(nomMenu_con);
+
         menuBar.add(nomMenu);
 
         sprMenu.setText("\u0421\u041f\u0420\u0410\u0412\u041a\u0418");
@@ -316,7 +328,10 @@ public class sales_main extends javax.swing.JFrame {
     private javax.swing.JMenu nomMenu;
     private javax.swing.JMenuItem nomMenu_Klienti;
     private javax.swing.JMenuItem nomMenu_Stoka;
+    private javax.swing.JMenuItem nomMenu_con;
     private javax.swing.JMenuItem nomMenu_dost;
+    private javax.swing.JMenuItem nomMenu_nasm;
+    private javax.swing.JMenuItem nomMenu_obl;
     private javax.swing.JMenuItem orderMenu_prih;
     private javax.swing.JMenuItem orderMenu_razh;
     private javax.swing.JMenuItem porachMenu_in;

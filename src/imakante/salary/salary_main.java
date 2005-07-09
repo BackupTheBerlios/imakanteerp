@@ -653,7 +653,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ////
         JMenuItem ItmImport = new JMenuItem("\u0418\u043c\u043f\u043e\u0440\u0442 \u043d\u0430 \u0434\u0430\u043d\u043d\u0438");
         ItmImport.setFont(menuFont);
-        ItmImport.setActionCommand("danfirm");
+        ItmImport.setActionCommand("calendar");
         ItmImport.addActionListener(getJMenuActionListener());
         ItmImport.setBackground(new Color(255,255,255));
         
@@ -1089,7 +1089,11 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         }
         
     }
+    protected void loadCalendar(){
+    javax.swing.JDialog calendar = new calendarClass(this, true, pMonth, pYear);
+    calendar.setVisible(true);
     
+    }
     protected void loadLockApp(){
         javax.swing.JDialog lockFrm = new frmLock_app_salary(this, true);
         lockFrm.setVisible(true);
@@ -1271,7 +1275,10 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 
                 loadPic();
             }
-                       
+                else if(srcObject=="calendar"){
+                
+                loadCalendar();
+            }        
             else if(srcObject=="zved"){
                 
                 try{

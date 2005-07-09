@@ -199,6 +199,21 @@
                 <Property name="text" type="java.lang.String" value="Доставчици"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="nomMenu_nasm">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Населено място"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="nomMenu_obl">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Области"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="nomMenu_con">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Държави"/>
+              </Properties>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="sprMenu">

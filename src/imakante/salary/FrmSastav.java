@@ -198,9 +198,7 @@ public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.ev
                     if (sqlE.getMessage() != null) {
                         System.out.println(sqlE.getMessage());
                     } else {
-                        javax.swing.JOptionPane.showMessageDialog(null,
-                                "Моля изберете запис.","Не е избран запис",
-                                javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                        
                     }
                 }
             }
