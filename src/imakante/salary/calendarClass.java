@@ -3,6 +3,7 @@ package imakante.salary;
 import javax.swing.JLabel;
 
 
+
 public class calendarClass extends javax.swing.JDialog {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -16,24 +17,40 @@ public class calendarClass extends javax.swing.JDialog {
     public javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     public javax.swing.JPanel jPanel3;
-    
+    public javax.swing.JLabel   jLabelYear;
+    public  javax.swing.JLabel  jLabelY;
+    public javax.swing.JLabel   jLabelMonth;
+    public  javax.swing.JLabel  jLabelM;
     public int m,n,gap;
     public java.awt.Color colorL;
     public java.awt.Color blackC = new java.awt.Color(0,0,0);
     public java.awt.Color redC = new java.awt.Color(255,0,0);
-    public javax.swing.JLabel  jCalendarLabel[][];
+    public javax.swing.JLabel  jCalendarLabel[];
     public int lMonth, lYear;
     public org.joda.time.DateTime calendarG;
-    
-    public calendarClass(javax.swing.JFrame parent, boolean modal, int pMonth, int pYear) {
+    public java.sql.Connection dbInt;
+    public java.sql.Statement stm;
+    public java.sql.ResultSet rs;
+    public String strRes,strS;
+    public calendarClass(javax.swing.JFrame parent, boolean modal,java.sql.Connection con, int pMonth, int pYear) {
         super(parent, modal);
+        dbInt = con;
         lMonth = pMonth;
         lYear = pYear;
         gap=0;
         m=1;
+        strRes="";
+             
+        getDays();
+        
         
         initM();
         initComponents();
+        initRazp();
+       java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        int x_width = (((dim.width)-(this.getSize().width))/2);
+       int y_height = (((dim.height)-(this.getSize().height))/2);
+       this.setLocation(x_width,y_height);
     }
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
@@ -46,12 +63,18 @@ public class calendarClass extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabelYear = new javax.swing.JLabel();
+        jLabelY = new javax.swing.JLabel();
+        jLabelMonth = new javax.swing.JLabel();
+        jLabelM = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+         setUndecorated(true);
         jPanel1.setLayout(new java.awt.GridBagLayout());
         
         jPanel1.setBorder(new javax.swing.border.EtchedBorder());
@@ -61,6 +84,7 @@ public class calendarClass extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel1.add(jLabel1, gridBagConstraints);
         
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18));
@@ -68,6 +92,7 @@ public class calendarClass extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel1.add(jLabel2, gridBagConstraints);
         
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18));
@@ -75,6 +100,7 @@ public class calendarClass extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel1.add(jLabel3, gridBagConstraints);
         
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18));
@@ -82,6 +108,7 @@ public class calendarClass extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel1.add(jLabel4, gridBagConstraints);
         
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18));
@@ -89,6 +116,7 @@ public class calendarClass extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel1.add(jLabel5, gridBagConstraints);
         
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18));
@@ -96,6 +124,7 @@ public class calendarClass extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel1.add(jLabel6, gridBagConstraints);
         
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18));
@@ -103,82 +132,133 @@ public class calendarClass extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel1.add(jLabel7, gridBagConstraints);
         
-        jCalendarLabel =  new javax.swing.JLabel[7][8];
+        jCalendarLabel =  new javax.swing.JLabel[50];
         m=1;
         for (int i = 1 ; i <7; i++){
             for (int j = 1; j<8 && m < n + 1 ; j++){
                 if (i==1 && j == 1){j = gap;}
                 
-                System.out.println("i "+i+"  j"+j);
-                jCalendarLabel[i][j] = new JLabel();
-                jCalendarLabel[i][j].setText(""+m);
-                jCalendarLabel[i][j].addMouseListener(jLabelClickedAdaptor);
-                String nameB = jCalendarLabel[i][j].getText().toString();
-                // jCalendarLabel[i][j].setActionCommand("nameB");
+                jCalendarLabel[m] = new JLabel();
+                jCalendarLabel[m].setText(""+m);
+                jCalendarLabel[m].addMouseListener(jLabelClickedAdaptor);
+                String nameB = jCalendarLabel[m].getText().toString();
                 if(j == 6 || j == 7){
-                    jCalendarLabel[i][j].setForeground(redC);
+                    jCalendarLabel[m].setForeground(redC);
                 }
                 
                 gridBagConstraints = new java.awt.GridBagConstraints();
                 gridBagConstraints.gridx = j - 1;
                 gridBagConstraints.gridy = i;
-                jPanel1.add(jCalendarLabel[i][j],gridBagConstraints );
+                gridBagConstraints.ipadx = 10;
+                gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+                gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+                jPanel1.add(jCalendarLabel[m],gridBagConstraints );
                 m++;
             }
         }
         
         
-        
-        
-      
-        
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
         
         jPanel2.setBorder(new javax.swing.border.EtchedBorder());
+        jPanel2.setBorder(new javax.swing.border.EtchedBorder());
+        jLabelYear.setText("\u0413\u043e\u0434\u0438\u043d\u0430      ");
+        jPanel2.add(jLabelYear);
+        jLabelY.setText("" + lYear);
+        jPanel2.add(jLabelY);
+        
+        jLabelMonth.setText("    \u041c\u0435\u0441\u0435\u0446   ");
+        jPanel2.add(jLabelMonth);
+        jLabelM.setText("" + lMonth);
+        jPanel2.add(jLabelM);
+        
         getContentPane().add(jPanel2, java.awt.BorderLayout.NORTH);
+         jButton1.setText("\u0417\u0410\u041f\u0410\u0417\u0418");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jPanel3.add(jButton1);
         
         getContentPane().add(jPanel3, java.awt.BorderLayout.SOUTH);
         
         pack();
     }
     public void initM(){
-        
         calendarG  = new org.joda.time.DateTime(lYear, lMonth,1,0,0,0,0);
-      
-        System.out.println("lYear " + calendarG.getYear());
-        System.out.println("lMonth " + calendarG.getMonthOfYear());
         gap = calendarG.getDayOfWeek();
-       
-        System.out.println("gap "+ gap);
-      
         n = calendarG.dayOfMonth().getMaximumValue(); //broi dni v mesets
-        System.out.println("n "+ n);
     }
     
-    java.awt.event.ActionListener buttonAction = new java.awt.event.ActionListener(){
-        public void actionPerformed(java.awt.event.ActionEvent e){
-            String srcObj = e.getActionCommand();
-            
-            
-            
-        }
-    };
     private void jLabelMouseClicked(java.awt.event.MouseEvent evt) {
-        colorL = jLabel3.getForeground();
-        if (colorL == blackC){
-            jLabel3.setForeground(redC);
+        
+        String sr1 = ((JLabel) evt.getComponent()).getText();
+        int mop = Integer.parseInt(((JLabel) evt.getComponent()).getText());
+        if (((JLabel) evt.getComponent()).getForeground() == redC){
+            ((JLabel) evt.getComponent()).setForeground(blackC);
             
-        }else {
-            jLabel3.setForeground(blackC);
+            strRes =  strRes.substring(0 , mop) + "1" + strRes.substring(mop + 1);
+            System.out.println(strRes);
+            ((JLabel) evt.getComponent()).repaint();
+            
+        }else{
+            ((JLabel) evt.getComponent()).setForeground(redC);
+            strRes =  strRes.substring(0 , mop) + "0" + strRes.substring(mop + 1);
+            ((JLabel) evt.getComponent()).repaint();
+            
+            
         }
-        jPanel3.repaint();
+        System.out.println(strRes);
     }
     
     java.awt.event.MouseAdapter jLabelClickedAdaptor = new java.awt.event.MouseAdapter(){
         public void mouseClicked(java.awt.event.MouseEvent evt) {
             jLabelMouseClicked(evt);
         }
+        
     };
+    
+    public void setDays(){
+        
+        
+    }
+    public void getDays(){
+               
+        try{    stm = dbInt.createStatement();
+                rs = stm.executeQuery("SELECT seq FROM ls_monthpar WHERE pmonth = '" + lMonth + "' AND pyear = '" + lYear + "'");
+        if(rs!=null){
+            while(rs.next()){        
+            strRes = rs.getString("seq");}
+            
+        } else{strRes = "";}
+        }catch(java.sql.SQLException sql){
+            sql.printStackTrace();
+            }
+    }
+    public void initRazp(){
+        if(strRes!=""){
+            for (int i = 0; i < n ; i++){
+                
+                int mop = Character.digit(strRes.charAt(i),3);
+                if (mop == 0){
+                    jCalendarLabel[i+1].setForeground(redC);
+                    jCalendarLabel[i+1].repaint();
+                }else{jCalendarLabel[i+1].setForeground(blackC);jCalendarLabel[i+1].repaint();}
+            }
+        }else{
+            for (int i = 0; i < n; i++){
+                if(jCalendarLabel[i+1].getForeground()==redC){
+                    strRes = strRes + "0";} else {strRes = strRes +"1";}
+                       }
+             System.out.println(strRes);
+        }
+    }
+     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        this.dispose();
+    }
 }
