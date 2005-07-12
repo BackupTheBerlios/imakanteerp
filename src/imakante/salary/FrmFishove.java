@@ -29,9 +29,9 @@ public class FrmFishove extends javax.swing.JInternalFrame {
             
         }
         
-        strSQL = "SELECT ls_main.id, main_ls.first, main_ls.second,  main_ls.family," +
+        strSQL = "SELECT ls_main.id, ls_main.first, ls_main.second,  ls_main.family," +
                 " lsresult.zaplata, lsresult.psuma, lsresult.nsuma FROM ls_main" +
-                " INNER JOIN lsresult ON (ls_main.Id = lsresult.idrab)  WHERE lsresult.year = " + lYear + " AND " + "lsresult.month = " + lMonth+";";
+                " INNER JOIN ls_result ON (ls_main.Id = ls_result.idrab)  WHERE ls_result.year = " + lYear + " AND " + "ls_result.month = " + lMonth+";";
         try{
             rsCus = stm.executeQuery(strSQL);} catch (SQLException sd){}
         
@@ -61,9 +61,11 @@ public class FrmFishove extends javax.swing.JInternalFrame {
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBorder(new javax.swing.border.EtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        jPanel3.setLayout(new java.awt.BorderLayout());
+
         jScrollPane1.getViewport().add(jTable, null);
         jPanel3.setBorder(new javax.swing.border.EtchedBorder());
-        jPanel3.add(jScrollPane1);
+        jPanel3.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         jPanel1.add(jPanel3, java.awt.BorderLayout.CENTER);
 
@@ -76,9 +78,31 @@ public class FrmFishove extends javax.swing.JInternalFrame {
 
         jPanel2.setBorder(new javax.swing.border.EtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jButton1.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
+            }
+        });
+
         jPanel2.add(jButton1);
 
         jButton2.setText("\u041f\u0435\u0447\u0430\u0442 \u0435\u0434\u0438\u043d \u0444\u0438\u0448");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton2KeyPressed(evt);
+            }
+        });
+
         jPanel2.add(jButton2);
 
         jButton3.setText("\u041f\u0435\u0447\u0430\u0442 \u043d\u0430 \u0432\u0441\u0438\u0447\u043a\u0438 \u0444\u0438\u0448\u043e\u0432\u0435");
@@ -87,10 +111,26 @@ public class FrmFishove extends javax.swing.JInternalFrame {
                 jButton3ActionPerformed(evt);
             }
         });
+        jButton3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton3KeyPressed(evt);
+            }
+        });
 
         jPanel2.add(jButton3);
 
         jButton4.setText("\u041e\u043f\u0440\u0435\u0441\u043d\u044f\u0432\u0430\u043d\u0435");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jButton4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton4KeyPressed(evt);
+            }
+        });
+
         jPanel2.add(jButton4);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
@@ -98,6 +138,34 @@ public class FrmFishove extends javax.swing.JInternalFrame {
         pack();
     }
     // </editor-fold>//GEN-END:initComponents
+
+    private void jButton4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton4KeyPressed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton4KeyPressed
+
+    private void jButton3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton3KeyPressed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton3KeyPressed
+
+    private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton2KeyPressed
+
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1KeyPressed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        

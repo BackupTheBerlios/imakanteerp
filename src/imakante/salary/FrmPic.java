@@ -1,11 +1,17 @@
 
 package imakante.salary;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.sql.PreparedStatement;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+
 
 public class FrmPic extends javax.swing.JInternalFrame implements java.awt.event.WindowListener{
     
@@ -46,10 +52,21 @@ public class FrmPic extends javax.swing.JInternalFrame implements java.awt.event
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
         jPanel3.setBorder(new javax.swing.border.EtchedBorder());
-        jPanel4.setLayout(new java.awt.BorderLayout());
+        jPanel4.setLayout(null);
 
         jPanel4.setBorder(new javax.swing.border.EtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        jPanel4.add(jLabel1, java.awt.BorderLayout.CENTER);
+        jPanel4.setMaximumSize(new java.awt.Dimension(151, 200));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setAutoscrolls(true);
+        jLabel1.setMaximumSize(new java.awt.Dimension(150, 200));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+
+        jPanel4.add(jLabel1);
+        jLabel1.setBounds(2, 2, 150, 200);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 150;
@@ -67,22 +84,44 @@ public class FrmPic extends javax.swing.JInternalFrame implements java.awt.event
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 100;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel3.add(jButton8, gridBagConstraints);
 
         jButton9.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 100;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel3.add(jButton9, gridBagConstraints);
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.WEST);
 
         jButton1.setText("\u0417\u0410\u041f\u0410\u0417\u0418");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         jPanel2.add(jButton1);
 
         jButton2.setText("\u041f\u041e\u041a\u0410\u0416\u0418");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         jPanel2.add(jButton2);
 
         jButton3.setText("\u0418\u0417\u0425\u041e\u0414");
@@ -94,27 +133,25 @@ public class FrmPic extends javax.swing.JInternalFrame implements java.awt.event
     }
     // </editor-fold>//GEN-END:initComponents
     
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        javax.swing.JFrame frame = new JFrame();
-        javax.swing.JFileChooser chooser = new JFileChooser();
-        chooser.addChoosableFileFilter(new jpegFilter());
-        chooser.showOpenDialog(frame);
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        setImage_to_DB();
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         
-        java.io.File file = chooser.getSelectedFile();
-        try{
-            image = ImageIO.read(file);
-            
-            
-        } catch(java.io.IOException ioex){}
-        
-        icon = new ImageIcon();
-        icon.setImage(image);
-     
-        jLabel1.setIcon(icon);
+    }//GEN-LAST:event_jLabel1MouseClicked
+    
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        jLabel1.setIcon(null);
         jLabel1.repaint();
-        jPanel4.revalidate();
-        jPanel4.repaint();
-        
+    }//GEN-LAST:event_jButton9ActionPerformed
+    
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        getImageDB();
+    }//GEN-LAST:event_jButton2ActionPerformed
+    
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        openImage_Dialog();
         
     }//GEN-LAST:event_jButton8ActionPerformed
     
@@ -146,18 +183,47 @@ public class FrmPic extends javax.swing.JInternalFrame implements java.awt.event
             public static imakante.com.CustomTable jTable;
             public static java.sql.Connection dbInternal;
             public static java.sql.Statement stCus;
+            public static java.sql.PreparedStatement ps;
+            public static java.io.File file;
             public static java.sql.ResultSet rsCus;
+            public static  ByteArrayInputStream inStream;
+            public static InputStream streamedJpg;
+            public byte[] b;
+            public int fileLength;
             
             protected void UnloadWindow(){
-                try {
+                try{
                     rsCus.close();
+                }catch(java.sql.SQLException sq){}
+                try{
                     stCus.close();
-                } catch(java.sql.SQLException e) {
-                 
-                }
+                }catch(java.sql.SQLException sq){}
                 this.dispose();
                 
             }
+            
+            public void openImage_Dialog(){
+                javax.swing.JFrame frame = new JFrame();
+                javax.swing.JFileChooser chooser = new JFileChooser();
+                chooser.addChoosableFileFilter(new jpegFilter());
+                chooser.showOpenDialog(frame);
+                
+                file = chooser.getSelectedFile();
+                try{
+                    image = ImageIO.read(file);
+                    image = image.getScaledInstance(150, 200, 1);
+                    
+                } catch(java.io.IOException ioex){}
+                
+                icon = new ImageIcon();
+                icon.setImage(image);
+                
+                jLabel1.setIcon(icon);
+                jLabel1.setSize(151, 201);
+                jLabel1.repaint();
+                
+            }
+            
             public static void initStRs(){
                 try {
                     stCus = dbInternal.createStatement(java.sql.ResultSet.TYPE_SCROLL_SENSITIVE,
@@ -166,14 +232,27 @@ public class FrmPic extends javax.swing.JInternalFrame implements java.awt.event
                 } catch (java.sql.SQLException e) {}
                 
             }
+            
             public static void initModelTable(){
                 model = new imakante.com.CustomTableModel(dbInternal, rsCus, Names);
                 jTable = new imakante.com.CustomTable(model);
+                try{
+                    rsCus.close();
+                }catch(java.sql.SQLException sq){}
+                try{
+                    stCus.close();
+                }catch(java.sql.SQLException sq){}
             }
+            
             public static void reloadRecord() {
                 try{
                     rsCus.close();
+                }catch(java.sql.SQLException sq){}
+                try{
                     stCus.close();
+                }catch(java.sql.SQLException sq){}
+                
+                try{
                     initStRs();
                     jScrollPane1.getViewport().remove(jTable);
                     initModelTable();
@@ -183,42 +262,66 @@ public class FrmPic extends javax.swing.JInternalFrame implements java.awt.event
                 } catch (Exception e){}
             }
             
+            
+            public void setImage_to_DB(){
+                
+                if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
+                    int row = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
+                    try{
+                        System.out.println("row  " + row);
+                        PreparedStatement ps = dbInternal.prepareStatement("UPDATE ls_pic SET  pic = ? WHERE id_rabotnik = " + row );
+                        try{
+                            
+                            fileLength = (int)file.length();
+                            System.out.println("fail lenth " + fileLength);
+                            InputStream streamedJpg = new FileInputStream(file);
+                            
+                        }catch(java.io.IOException iox){System.out.println("Problem pri faila");}
+                        System.out.println("fail lenth " + fileLength);
+                        ps.setBinaryStream(1,streamedJpg,fileLength);
+                        
+                        ps.executeUpdate();
+                    }catch(java.sql.SQLException sqle){System.out.println("Problem pri sql");
+                    sqle.printStackTrace();}
+                    
+                    
+                }
+            }
+            
             public void getImageDB(){
-                try{
-                    if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
-                        int row = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
+                if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
+                    int row = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
+                    try{
                         rsCus = dbInternal.createStatement().executeQuery("SELECT pic From ls_pic where id_rabotnik = " + row );
-                        // if record found process blob
                         if (rsCus.next()) {
                             // get blob
                             bimage = rsCus.getBlob("pic");
                             // setup the streams to process blob
                             java.io.InputStream input = bimage.getBinaryStream();
-                            // output = new ByteArrayOutputStream();
+                            output = new ByteArrayOutputStream();
                             // set read buffer size
-                            byte[] rb = new byte[1024];
+                            byte[] rb = new byte[102400];
                             int ch = 0;
-                            // process blob
-                            while ((ch=input.read(rb)) != -1) {
-                                output.write(rb, 0, ch);
-                            }
-                            // transfer to byte buffer
-                            byte[] b = output.toByteArray();
-                            input.close();
-                            output.close();
+                            try{
+                                while ((ch=input.read(rb)) != -1) {
+                                    output.write(rb, 0, ch);
+                                }
+                                // transfer to byte buffer
+                                byte[] b = output.toByteArray();
+                                input.close();
+                                output.close();
+                            }catch(java.io.IOException iox){}
+                            rsCus.close();
+                            
                             // load final buffer to image icon
                             icon = new ImageIcon(b);
-                        }
-                        
-                    }
-                } catch (Exception sqlE) {
-                    if (sqlE.getMessage() != null) {
-                        System.out.println(sqlE.getMessage());
-                    } else {
-                        JOptionPane.showMessageDialog(null,"\u041c\u043e\u043b\u044f \u0438\u0437\u0431\u0435\u0440\u0435\u0442\u0435 \u0437\u0430\u043f\u0438\u0441.",
-                                "\u041d\u0435 \u0435 \u0438\u0437\u0431\u0440\u0430\u043d \u0437\u0430\u043f\u0438\u0441",
-                                JOptionPane.INFORMATION_MESSAGE);
-                    }
+                            jLabel1.setIcon(icon);
+                            jLabel1.repaint();
+                        }} catch(java.sql.SQLException sqle){}
+                    
+                    
+                    
+                    
                 }
             }
             
@@ -237,6 +340,9 @@ public class FrmPic extends javax.swing.JInternalFrame implements java.awt.event
             }
             public void windowDeactivated(java.awt.event.WindowEvent e){
             }
+            
+            
+            
             class jpegFilter extends javax.swing.filechooser.FileFilter {
                 public boolean accept(java.io.File file) {
                     String filename = file.getName();

@@ -255,7 +255,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmProhods.setBackground(new Color(255,255,255));
         
         MnuDoc.add(ItmProhods);
-            
+        
         
         JMenuItem ItmPorach = new JMenuItem("\u0421\u043f\u0438\u0441\u044a\u043a \u043e\u0442\u0434\u0435\u043b\u0438");
         ItmPorach.setFont(menuFont);
@@ -458,7 +458,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         MnuRec.add(ItmPremii);
         
         //End records sub menu
-      
+        
         //Setup proccess menu
         JMenu MnuProccess = new JMenu("\u0421\u041f\u0420\u0410\u0412\u041a\u0418");
         MnuProccess.setFont(menuFont);
@@ -609,7 +609,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         
         //Setup system menu
-        JMenu MnuSys = new JMenu("u0421\u0418\u0421\u0422\u0415\u041c\u041d\u0418");
+        JMenu MnuSys = new JMenu("\u0421\u0418\u0421\u0422\u0415\u041c\u041d\u0418");
         MnuSys.setFont(menuFont);
         MnuSys.setMnemonic('S');
         MnuSys.setBackground(new Color(255,255,255));
@@ -953,7 +953,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
             e.printStackTrace();
             System.exit(1);
         }
-
+        
         
         System.out.println(pYear);
         
@@ -996,7 +996,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 FormOtdel.setSelected(true);
             }catch(PropertyVetoException e){
             }
-       
+            
         }else{
             try{
                 FormOtdel.setIcon(false);
@@ -1004,7 +1004,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
             }catch(PropertyVetoException e){
             }
         }
-   
+        
         
     }
     protected void loadDlajForm() throws java.sql.SQLException{
@@ -1020,7 +1020,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 FormDlajnost.setSelected(true);
             }catch(PropertyVetoException e){
             }
-       
+            
         }else{
             try{
                 FormDlajnost.setIcon(false);
@@ -1028,7 +1028,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
             }catch(PropertyVetoException e){
             }
         }
-               
+        
     }
     protected void loadPic() {
         
@@ -1043,14 +1043,14 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 FormPic.setSelected(true);
             }catch(PropertyVetoException e){
             }
-            }else{
+        }else{
             try{
                 FormPic.setIcon(false);
                 FormPic.setSelected(true);
             }catch(PropertyVetoException e){
             }
         }
-             
+        
     }
     protected void loadSlujParam(){
         try{
@@ -1072,10 +1072,10 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
     }
     protected void loadEreaseM(){
-       
-          frmEreseMonth  FormEreseM = new frmEreseMonth(this, true, dbCON);
-            FormEreseM.setVisible(true);
-         }
+        
+        frmEreseMonth  FormEreseM = new frmEreseMonth(this, true, dbCON);
+        FormEreseM.setVisible(true);
+    }
     
     
     protected void loadSplashScreen(){
@@ -1090,9 +1090,9 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
     }
     protected void loadCalendar(){
-    javax.swing.JDialog calendar = new calendarClass(this, true, pMonth, pYear);
-    calendar.setVisible(true);
-    
+        javax.swing.JDialog calendar = new calendarClass(this, true, dbCON, pMonth, pYear);
+        calendar.setVisible(true);
+        
     }
     protected void loadLockApp(){
         javax.swing.JDialog lockFrm = new frmLock_app_salary(this, true);
@@ -1266,20 +1266,16 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
             } else if(srcObject=="danfirm"){
                 
                 loadSlujParam();
-            }
-             else if(srcObject=="ereasem"){
+            } else if(srcObject=="ereasem"){
                 
                 loadEreaseM();
-            }
-            else if(srcObject=="pic"){
+            } else if(srcObject=="pic"){
                 
                 loadPic();
-            }
-                else if(srcObject=="calendar"){
+            } else if(srcObject=="calendar"){
                 
                 loadCalendar();
-            }        
-            else if(srcObject=="zved"){
+            } else if(srcObject=="zved"){
                 
                 try{
                     loadVedomostZForm();
@@ -1449,23 +1445,23 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     public java.awt.event.ActionListener getJMenuActionListener() {
         return JMenuActionListener;
     }
-
+    
     public void setJMenuActionListener(java.awt.event.ActionListener JMenuActionListener) {
         this.JMenuActionListener = JMenuActionListener;
     }
-
+    
     public JLabel getStatusLabel() {
         return StatusLabel;
     }
-
+    
     public void setStatusLabel(JLabel StatusLabel) {
         this.StatusLabel = StatusLabel;
     }
-
+    
     public FrmAct getFormActStDlaj() {
         return FormActStDlaj;
     }
-
+    
     public void setFormActStDlaj(FrmAct FormActStDlaj) {
         this.FormActStDlaj = FormActStDlaj;
     }
