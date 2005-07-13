@@ -32,6 +32,7 @@ public class calendarClass extends javax.swing.JDialog {
     public java.sql.Statement stm;
     public java.sql.ResultSet rs;
     public String strRes,strS;
+    public boolean flag;
     public calendarClass(javax.swing.JFrame parent, boolean modal,java.sql.Connection con, int pMonth, int pYear) {
         super(parent, modal);
         dbInt = con;
@@ -40,17 +41,17 @@ public class calendarClass extends javax.swing.JDialog {
         gap=0;
         m=1;
         strRes="";
-             
+        
         getDays();
         
         
         initM();
         initComponents();
         initRazp();
-       java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         int x_width = (((dim.width)-(this.getSize().width))/2);
-       int y_height = (((dim.height)-(this.getSize().height))/2);
-       this.setLocation(x_width,y_height);
+        int y_height = (((dim.height)-(this.getSize().height))/2);
+        this.setLocation(x_width,y_height);
     }
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
@@ -74,7 +75,7 @@ public class calendarClass extends javax.swing.JDialog {
         jButton1 = new javax.swing.JButton();
         
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-         setUndecorated(true);
+        setUndecorated(true);
         jPanel1.setLayout(new java.awt.GridBagLayout());
         
         jPanel1.setBorder(new javax.swing.border.EtchedBorder());
@@ -176,13 +177,13 @@ public class calendarClass extends javax.swing.JDialog {
         jPanel2.add(jLabelM);
         
         getContentPane().add(jPanel2, java.awt.BorderLayout.NORTH);
-         jButton1.setText("\u0417\u0410\u041f\u0410\u0417\u0418");
+        jButton1.setText("\u0417\u0410\u041f\u0410\u0417\u0418");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-
+        
         jPanel3.add(jButton1);
         
         getContentPane().add(jPanel3, java.awt.BorderLayout.SOUTH);
@@ -202,18 +203,18 @@ public class calendarClass extends javax.swing.JDialog {
         if (((JLabel) evt.getComponent()).getForeground() == redC){
             ((JLabel) evt.getComponent()).setForeground(blackC);
             
-            strRes =  strRes.substring(0 , mop) + "1" + strRes.substring(mop + 1);
-            System.out.println(strRes);
+            strRes =  strRes.substring(0 , mop-1) + "1" + strRes.substring(mop);
+         
             ((JLabel) evt.getComponent()).repaint();
             
         }else{
             ((JLabel) evt.getComponent()).setForeground(redC);
-            strRes =  strRes.substring(0 , mop) + "0" + strRes.substring(mop + 1);
+            strRes =  strRes.substring(0 , mop-1) + "0" + strRes.substring(mop);
             ((JLabel) evt.getComponent()).repaint();
             
             
         }
-        System.out.println(strRes);
+       
     }
     
     java.awt.event.MouseAdapter jLabelClickedAdaptor = new java.awt.event.MouseAdapter(){
@@ -228,37 +229,55 @@ public class calendarClass extends javax.swing.JDialog {
         
     }
     public void getDays(){
-               
+        
         try{    stm = dbInt.createStatement();
-                rs = stm.executeQuery("SELECT seq FROM ls_monthpar WHERE pmonth = '" + lMonth + "' AND pyear = '" + lYear + "'");
+        rs = stm.executeQuery("SELECT seq FROM ls_monthpar WHERE pmonth = '" + lMonth + "' AND pyear = '" + lYear + "'");
         if(rs!=null){
-            while(rs.next()){        
-            strRes = rs.getString("seq");}
             
-        } else{strRes = "";}
+            while(rs.next()){
+                strRes = rs.getString("seq");}
+            flag = false;
+        } else{strRes = ""; flag = true;}
         }catch(java.sql.SQLException sql){
             sql.printStackTrace();
-            }
-    }
-    public void initRazp(){
-        if(strRes!=""){
-            for (int i = 0; i < n ; i++){
-                
-                int mop = Character.digit(strRes.charAt(i),3);
-                if (mop == 0){
-                    jCalendarLabel[i+1].setForeground(redC);
-                    jCalendarLabel[i+1].repaint();
-                }else{jCalendarLabel[i+1].setForeground(blackC);jCalendarLabel[i+1].repaint();}
-            }
-        }else{
-            for (int i = 0; i < n; i++){
-                if(jCalendarLabel[i+1].getForeground()==redC){
-                    strRes = strRes + "0";} else {strRes = strRes +"1";}
-                       }
-             System.out.println(strRes);
         }
     }
-     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+    public void initRazp(){
+       
+        if(strRes!="" && strRes!=null && strRes.length()==n){
+            for (int i = 1; i < n+1 ; i++){
+                
+                int mop = Integer.parseInt((String.valueOf(strRes.charAt(i-1))));
+                if (mop == 0){
+                    jCalendarLabel[i].setForeground(redC);
+                    jCalendarLabel[i].repaint();
+                }else{jCalendarLabel[i].setForeground(blackC);jCalendarLabel[i].repaint();}
+            }
+        }else{
+            for (int i = 1; i < n+1; i++){
+                if(jCalendarLabel[i].getForeground()==redC){
+                    strRes = strRes + "0";} else {strRes = strRes +"1";}
+            }
+            
+        }
+    }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        if (flag==true){
+            try{
+                 stm = dbInt.createStatement();
+                 stm.executeUpdate("INSERT INTO ls_monthpar(seq, pmonth, pyear) VALUES(" + strRes + "', '" + lMonth + "', '" + lYear + "')");
+            }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        }else{try{
+            
+            stm = dbInt.createStatement();
+            stm.executeUpdate("UPDATE ls_monthpar SET seq = '" + strRes + "' WHERE pmonth = " + lMonth + " AND pyear = " + lYear );
+        }catch(java.sql.SQLException sqle){sqle.printStackTrace();};
+        }
+        try{
+            rs.close();}catch(java.sql.SQLException sqle){}
+        try{
+            stm.close();}catch(java.sql.SQLException sqle){}
+        
         this.dispose();
     }
 }
