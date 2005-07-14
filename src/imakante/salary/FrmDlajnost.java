@@ -5,6 +5,7 @@ package imakante.salary;
 import java.awt.Rectangle;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.border.EtchedBorder;
 
 public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.event.WindowListener {
