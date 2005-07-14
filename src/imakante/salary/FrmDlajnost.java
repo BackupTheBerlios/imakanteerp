@@ -98,21 +98,30 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
                 jButton1_actionPerformed(e);
             }
         });
+        jButton1.addKeyListener(keyCl);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 jButton2_actionPerformed(e);
             }
         });
+        
+        jButton2.addKeyListener(keyCl);
+        
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 jButton3_actionPerformed(e);
             }
         });
+        
+        jButton3.addKeyListener(keyCl);
+        
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 jButton4_actionPerformed(e);
             }
         });
+        
+        jButton4.addKeyListener(keyCl);
     }
     
     private void jButton1_actionPerformed(java.awt.event.ActionEvent e) {
@@ -180,7 +189,16 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
         this.dispose();
         
     }
-    
+    java.awt.event.KeyAdapter keyCl = new java.awt.event.KeyAdapter() {
+                    public void keyPressed(java.awt.event.KeyEvent evt) {
+                        ButtonEnterPressed(evt);
+                    }
+                };
+             private void ButtonEnterPressed(java.awt.event.KeyEvent evt) {
+                if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ 
+                    ((JButton) evt.getComponent()).doClick();
+                }
+            }
     
     public void windowOpened(java.awt.event.WindowEvent e){
     }

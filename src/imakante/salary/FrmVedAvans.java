@@ -104,7 +104,7 @@ public class FrmVedAvans extends javax.swing.JInternalFrame implements java.awt.
                 jButton1_actionPerformed(e);
             }
         });
-        
+         B1.addKeyListener(keyCl);
         
         jPanel1.setBounds(new Rectangle(5, 5, 490, 415));
         jPanel1.setLayout(null);
@@ -120,6 +120,7 @@ public class FrmVedAvans extends javax.swing.JInternalFrame implements java.awt.
                 jButton2_actionPerformed(e);
             }
         });
+        B2.addKeyListener(keyCl);
         jPanel1.add(jScrollPane1, null);
         panel.add(jPanel1, null);
         jPanel2.add(B1, null);
@@ -164,7 +165,16 @@ public class FrmVedAvans extends javax.swing.JInternalFrame implements java.awt.
         this.dispose();
         
     }
-    
+     java.awt.event.KeyAdapter keyCl = new java.awt.event.KeyAdapter() {
+                    public void keyPressed(java.awt.event.KeyEvent evt) {
+                        ButtonEnterPressed(evt);
+                    }
+                };
+             private void ButtonEnterPressed(java.awt.event.KeyEvent evt) {
+                if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ 
+                    ((JButton) evt.getComponent()).doClick();
+                }
+            }
     
     public void windowOpened(java.awt.event.WindowEvent e){
     }

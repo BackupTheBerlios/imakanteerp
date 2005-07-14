@@ -1,6 +1,7 @@
 
 
 package imakante.salary;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 
@@ -47,15 +48,13 @@ public class FrmDOD extends javax.swing.JInternalFrame implements java.awt.event
         jPanel3.setLayout(new java.awt.GridBagLayout());
        
         jButton1.setLabel("\u041d\u043e\u0432\u0430 \u0441\u0442\u0430\u0432\u043a\u0430");
-       // jButton1.setMaximumSize(new java.awt.Dimension(100, 25));
-       // jButton1.setMinimumSize(new java.awt.Dimension(100, 25));
-        //jButton1.setPreferredSize(new java.awt.Dimension(100, 25));
+       
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        
+        jButton1.addKeyListener(keyCl);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 3;
@@ -66,15 +65,13 @@ public class FrmDOD extends javax.swing.JInternalFrame implements java.awt.event
         jPanel3.add(jButton1, gridBagConstraints);
         
         jButton2.setLabel("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f");
-       // jButton2.setMaximumSize(new java.awt.Dimension(100, 25));
-       // jButton2.setMinimumSize(new java.awt.Dimension(100, 25));
-       // jButton2.setPreferredSize(new java.awt.Dimension(100, 25));
+       
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        
+        jButton2.addKeyListener(keyCl);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -92,7 +89,7 @@ public class FrmDOD extends javax.swing.JInternalFrame implements java.awt.event
                 jButton3ActionPerformed(evt);
             }
         });
-        
+        jButton3.addKeyListener(keyCl);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -115,7 +112,7 @@ public class FrmDOD extends javax.swing.JInternalFrame implements java.awt.event
                 jButton4ActionPerformed(evt);
             }
         });
-        
+        jButton4.addKeyListener(keyCl);
         jPanel4.add(jButton4);
         
         jPanel2.add(jPanel4, java.awt.BorderLayout.SOUTH);
@@ -224,6 +221,18 @@ public class FrmDOD extends javax.swing.JInternalFrame implements java.awt.event
             
         } catch (Exception e){}
     }
+    
+    
+    java.awt.event.KeyAdapter keyCl = new java.awt.event.KeyAdapter() {
+                    public void keyPressed(java.awt.event.KeyEvent evt) {
+                        ButtonEnterPressed(evt);
+                    }
+                };
+             private void ButtonEnterPressed(java.awt.event.KeyEvent evt) {
+                if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ 
+                    ((JButton) evt.getComponent()).doClick();
+                }
+            }
     public void windowOpened(java.awt.event.WindowEvent e){
     }
     public void windowClosing(java.awt.event.WindowEvent e){
