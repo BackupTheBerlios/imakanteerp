@@ -62,7 +62,7 @@ public class reportError extends javax.swing.JDialog {
     // </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-           send();
+          // send();
     }//GEN-LAST:event_jButton2ActionPerformed
     
     
@@ -77,7 +77,7 @@ public class reportError extends javax.swing.JDialog {
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
     
-    public static void send()
+    /*public static void send()
             throws AddressException, MessagingException {
             // Create a mail session
             java.util.Properties props = new java.util.Properties();
@@ -95,6 +95,5 @@ public class reportError extends javax.swing.JDialog {
             // Send the message
             Transport.send(msg);
         }
-    
-    
+    *///    
 }

@@ -122,7 +122,6 @@ public class frmImport extends javax.swing.JDialog {
     // </editor-fold>//GEN-END:initComponents
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
         closeResource();
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -165,11 +164,12 @@ public class frmImport extends javax.swing.JDialog {
     public void initTable(){
         
         try {  strSQL = "SHOW TABLE STATUS FROM mida";
+        
         stCus = cnCus.createStatement(java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE,java.sql.ResultSet.CONCUR_READ_ONLY);
         rsCus = stCus.executeQuery(strSQL);
         } catch (java.sql.SQLException sqle) {
             sqle.printStackTrace();
-            
+           
         }
         model = new CustomTableModel(cnCus, rsCus, null);
         jTable = new CustomTable(model);
@@ -177,7 +177,6 @@ public class frmImport extends javax.swing.JDialog {
     }
     
     public void closeResource(){
-        
         try{
             rsCus.close();
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}

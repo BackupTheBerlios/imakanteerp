@@ -1,5 +1,7 @@
 package imakante.salary;
 
+import javax.swing.JButton;
+
 
 public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.event.WindowListener {
     javax.swing.JFrame JFParentFrame;
@@ -97,6 +99,7 @@ public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.ev
                         jButton1ActionPerformed(evt);
                     }
                 });
+                jButton1.addKeyListener(keyCl);
                 
                 jPanel2.add(jButton1);
                 
@@ -106,7 +109,7 @@ public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.ev
                         jButton2ActionPerformed(evt);
                     }
                 });
-                
+                jButton2.addKeyListener(keyCl);
                 jPanel2.add(jButton2);
                 
                 jButton3.setText("\u041f\u0435\u0447\u0430\u0442 \u0441\u043f\u0438\u0441\u044a\u043a");
@@ -115,7 +118,7 @@ public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.ev
                         jButton3ActionPerformed(evt);
                     }
                 });
-                
+                jButton3.addKeyListener(keyCl);
                 jPanel2.add(jButton3);
                 
                 jButton4.setText("\u041f\u0435\u0447\u0430\u0442 \u043a\u0430\u0440\u0442\u043e\u043d");
@@ -124,7 +127,7 @@ public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.ev
                         jButton4ActionPerformed(evt);
                     }
                 });
-                
+                jButton4.addKeyListener(keyCl);
                 jPanel2.add(jButton4);
                 
                 jButton5.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
@@ -133,7 +136,7 @@ public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.ev
                         jButton5ActionPerformed(evt);
                     }
                 });
-                
+                jButton5.addKeyListener(keyCl);
                 jPanel2.add(jButton5);
                 
                 jButton6.setText("\u0422\u044a\u0440\u0441\u0435\u043d\u0435");
@@ -142,7 +145,7 @@ public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.ev
                         jButton6ActionPerformed(evt);
                     }
                 });
-                
+                jButton6.addKeyListener(keyCl);
                 jPanel2.add(jButton6);
                 
                 jButton7.setText("\u041e\u043f\u0440\u0435\u0441\u043d\u044f\u0432\u0430\u043d\u0435");
@@ -159,7 +162,7 @@ public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.ev
                         jButton7ActionPerformed(evt);
                     }
                 });
-                
+                jButton7.addKeyListener(keyCl);
                 jPanel2.add(jButton7);
                 
                 jButton8.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
@@ -332,8 +335,16 @@ public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.ev
                 this.dispose();
                 
             }
-            
-            
+            java.awt.event.KeyAdapter keyCl = new java.awt.event.KeyAdapter() {
+                    public void keyPressed(java.awt.event.KeyEvent evt) {
+                        ButtonEnterPressed(evt);
+                    }
+                };
+             private void ButtonEnterPressed(java.awt.event.KeyEvent evt) {
+                if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ 
+                    ((JButton) evt.getComponent()).doClick();
+                }
+            }
             public void windowOpened(java.awt.event.WindowEvent e){
             }
             public void windowClosing(java.awt.event.WindowEvent e){
