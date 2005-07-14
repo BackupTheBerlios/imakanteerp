@@ -37,16 +37,6 @@ CREATE TABLE `cdate` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 #
-# Table structure for table country
-#
-
-CREATE TABLE `country` (
-  `Id` int(6) unsigned NOT NULL auto_increment,
-  `Name_country` varchar(45) character set cp1251 NOT NULL default '',
-  PRIMARY KEY  (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251 COLLATE=cp1251_bulgarian_ci;
-
-#
 # Table structure for table customer_pri
 #
 
@@ -56,25 +46,6 @@ CREATE TABLE `customer_pri` (
   `Name` varchar(30) NOT NULL default '',
   PRIMARY KEY  (`Id_customer`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
-
-#
-# Table structure for table dobavki
-#
-
-CREATE TABLE `dobavki` (
-  `id` int(3) unsigned NOT NULL auto_increment,
-  `name` varchar(50) default NULL,
-  `dd` tinyint(4) default NULL,
-  `nsi` tinyint(3) default NULL,
-  `ndo` tinyint(3) default NULL,
-  `pkb` tinyint(1) default NULL,
-  `co` tinyint(1) default NULL,
-  `shifar` int(6) default NULL,
-  `dod` tinyint(1) default NULL,
-  `vdm` tinyint(1) default NULL,
-  `zr` tinyint(1) default NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 #
 # Table structure for table dop
@@ -170,6 +141,20 @@ CREATE TABLE `ls_dlajnosti` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 #
+# Table structure for table ls_dobavki
+#
+
+CREATE TABLE `ls_dobavki` (
+  `id` int(3) unsigned NOT NULL auto_increment,
+  `name` varchar(50) default NULL,
+  `co` tinyint(1) default NULL,
+  `shifar` int(6) default NULL,
+  `dod` tinyint(1) default NULL COMMENT 'daljim li e dan 0- ne 1 da',
+  `zro` tinyint(1) default NULL COMMENT 'dalji li se vu sumata zo 0-ne 1 da',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
 # Table structure for table ls_dod
 #
 
@@ -229,6 +214,7 @@ CREATE TABLE `ls_monthpar` (
   `id` int(5) unsigned NOT NULL auto_increment,
   `pmonth` tinyint(4) default NULL,
   `pyear` int(6) default NULL,
+  `seq` varchar(40) default NULL,
   `dni5` tinyint(4) default NULL,
   `dni6` tinyint(4) default NULL,
   `minrzd` float default NULL,
@@ -611,7 +597,18 @@ CREATE TABLE `sl_n_baccount` (
   `DDS_account` varchar(10) default NULL COMMENT 'Smetka po DDS',
   PRIMARY KEY  (`Id`),
   KEY `Customer` (`Id_cust`)
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Table structure for table sl_n_cat_product
+#
+
+CREATE TABLE `sl_n_cat_product` (
+  `idsl_n_cat_product` int(10) unsigned NOT NULL auto_increment,
+  `name` varchar(45) NOT NULL default '',
+  `name_s` varchar(5) default NULL,
+  PRIMARY KEY  (`idsl_n_cat_product`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 #
 # Table structure for table sl_n_country
@@ -725,23 +722,54 @@ CREATE TABLE `sl_n_person` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 #
-# Table structure for table sl_n_product_ext
+# Table structure for table sl_n_product_pri
 #
 
-CREATE TABLE `sl_n_product_ext` (
+CREATE TABLE `sl_n_product_pri` (
+  `idsl_n_product_pri` int(10) unsigned NOT NULL auto_increment,
+  `nomer` varchar(10) default NULL,
+  `name_product` varchar(45) NOT NULL default '',
+  `id_cat` int(10) unsigned NOT NULL default '0',
+  `name_f` varchar(45) default NULL,
+  `name_s` varchar(45) default NULL,
+  `nomer_eq` varchar(10) default NULL,
+  `code1` varchar(15) default NULL,
+  `code2` varchar(15) default NULL,
+  `bar_code` varchar(15) default NULL,
+  PRIMARY KEY  (`idsl_n_product_pri`,`id_cat`),
+  KEY `FK_sl_n_product_pri_1` (`id_cat`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Table structure for table sl_n_product_razf
+#
+
+CREATE TABLE `sl_n_product_razf` (
+  `Id` int(10) unsigned NOT NULL auto_increment,
+  `id_product` int(10) unsigned NOT NULL default '0',
+  `osn_razf` int(10) unsigned NOT NULL default '0',
+  `razf1` int(10) unsigned NOT NULL default '0',
+  `razf1_eq` double(6,4) unsigned NOT NULL default '0.0000',
+  `razf2` int(10) unsigned NOT NULL default '0',
+  `razf2_eq` double(6,4) unsigned NOT NULL default '0.0000',
+  PRIMARY KEY  (`Id`),
+  KEY `product` (`id_product`),
+  KEY `Index_razf` (`razf2`,`razf1`,`osn_razf`),
+  KEY `FK_sl_n_product_razf_1` (`osn_razf`,`razf1`,`razf2`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Table structure for table sl_n_product_tsen
+#
+
+CREATE TABLE `sl_n_product_tsen` (
   `Id` int(11) NOT NULL auto_increment,
-  `id_prod_pri` int(11) default NULL,
   `id_dost` int(11) default NULL COMMENT 'id na dostavchika',
   `tsena_dost` decimal(10,4) default NULL COMMENT 'Dostavna tsena bez dds za razf',
   `tsena_prod1` decimal(10,4) default NULL COMMENT 'prodajna tsena 1 za razf',
   `tsena_prod2` decimal(10,4) default NULL COMMENT 'prodajna tsena 2 za razf',
   `tsena_prod3` decimal(10,4) default NULL COMMENT 'prodajna tsena 3 za razf',
   `tsena_promo` decimal(10,4) default NULL COMMENT 'promocionalna tsena',
-  `razf1` decimal(6,4) default NULL COMMENT 'razfasovka 1',
-  `razf2` decimal(6,4) default NULL COMMENT 'razfasofka 2',
-  `razf_name` varchar(10) default NULL COMMENT 'ime na razfasofka osnovana',
-  `razf1_name` varchar(10) default NULL COMMENT 'ime na razfasofka 1',
-  `razf2_name` int(11) default NULL COMMENT 'ime na razfasofka 2',
   `date_dost` date default NULL COMMENT 'data na dostavka',
   `date_dognost` date default NULL COMMENT 'posleden den na godnost',
   `date_promotsia` date default NULL COMMENT 'posleden den na promotsia',
@@ -749,26 +777,21 @@ CREATE TABLE `sl_n_product_ext` (
   `partida` varchar(11) default NULL COMMENT 'partiden nomer',
   `DDS` tinyint(1) default NULL COMMENT 'dds da ili ne(0/1)',
   `max_proc` decimal(3,2) default NULL COMMENT 'maksimalen procent na otstapka ot tsena_prod1',
-  PRIMARY KEY  (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251 COMMENT='razshirenio parametri na produkta';
+  `id_prod_pri` int(10) unsigned NOT NULL default '0',
+  PRIMARY KEY  (`Id`,`id_prod_pri`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='razshirenio parametri na produkta';
 
 #
-# Table structure for table sl_n_product_pri
+# Table structure for table sl_n_razfasofki
 #
 
-CREATE TABLE `sl_n_product_pri` (
-  `Id` int(11) NOT NULL auto_increment,
-  `nomer` varchar(8) default NULL COMMENT 'nomer na produkta',
-  `id_cat` varchar(5) default NULL COMMENT 'id kategoria produkt',
-  `name` varchar(30) default NULL COMMENT 'Ime na produkta',
-  `name_f` varchar(30) default NULL COMMENT 'ime za faktura',
-  `name_s` varchar(11) default NULL COMMENT 'kratko ime',
-  `nomer_eq` varchar(8) default NULL COMMENT 'nomer za saotvetstvie',
-  `code_s1` varchar(15) default NULL COMMENT 'dopalnitelen kod',
-  `code_s2` varchar(15) default NULL COMMENT 'dopalnitelen kod 2',
-  `НовоПоле` varchar(15) default 'barcode' COMMENT 'barkod na produkta',
+CREATE TABLE `sl_n_razfasofki` (
+  `Id` int(4) NOT NULL auto_increment,
+  `metrika` int(1) NOT NULL default '0' COMMENT 'dali i pozvoleno drobno ch.',
+  `name` varchar(20) default NULL,
+  `name_short` varchar(5) default NULL,
   PRIMARY KEY  (`Id`)
-) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='Osnovni harakteristiki na produktite';
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 #
 # Table structure for table slujebna
