@@ -22,9 +22,11 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
     private javax.swing.JButton jButton2 = new javax.swing.JButton();
     private javax.swing.JButton jButton3 = new javax.swing.JButton();
     private javax.swing.JButton jButton4 = new javax.swing.JButton();
-    public static final String Names[] = {"", "\u041d\u043e\u043c\u0435\u0440",
+    public static final String Names[] = {"\u0412\u044a\u0442\u0440\u0435\u0448\u0435\u043d \u043d\u043e\u043c\u0435\u0440",
+            "\u041d\u043e\u043c\u0435\u0440",
             "\u0418\u043c\u0435 \u043d\u0430 \u0434\u043b\u044a\u0436\u043d\u043e\u0441\u0442\u0442\u0430", 
-            "\u041a\u043e\u0434 \u043f\u043e \u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0430"};
+            "\u041d\u0410\u0418\u041c\u0415\u041d\u041e\u0412\u0410\u041d\u0418\u0415 \u041d\u0410 \u0414\u041b\u042a\u0416\u041d\u041e\u0421\u0422\u0422\u0410",
+            "\u043a\u043e\u0434 \u043f\u043e \u041d\u041a\u041f"};
     public static imakante.com.CustomTableModel model;
     public static imakante.com.CustomTable jTable;
     
@@ -37,8 +39,7 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
         super("\u0421\u043f\u0438\u0441\u044a\u043a \u0414\u043b\u044a\u0436\u043d\u043e\u0441\u0442\u0438", false, true, false, true);
         this.setClosable(true);
         
-        setSize((screen.width - 540), (screen.height - 360));
-        setLocation(100,20);
+        
         JFParentFrame = getParentFrame;
         
         cnCus = srcCN;
