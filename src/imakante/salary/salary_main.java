@@ -57,6 +57,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     frmSleujParam  FormSleujParam;
     private FrmAct        FormActStDlaj;
     FrmPic FormPic;
+    imakante.salary.FrmNCP FormNCP;
     Font menuFont = new Font("Tahoma", Font.PLAIN, 14);
     imakante.salary.frmLogo splash = new imakante.salary.frmLogo();
     Thread FormSplash = new Thread(splash);
@@ -670,6 +671,24 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmImportPic.setBackground(new Color(255,255,255));
         
         MnuSys.add(ItmImportPic);
+        MnuFile.addSeparator();
+        ///
+        JMenuItem ItmNKLPROF = new JMenuItem("\u041d\u0430\u0446\u0438\u043e\u043d\u0430\u043b\u0435\u043d \u043a\u043b\u0430\u0441\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 \u043d\u0430 \u043f\u0440\u043e\u0444\u0435\u0441\u0438\u0438\u0442\u0435");
+        ItmNKLPROF.setFont(menuFont);
+        ItmNKLPROF.setActionCommand("nprof");
+        ItmNKLPROF.addActionListener(getJMenuActionListener());
+        ItmNKLPROF.setBackground(new Color(255,255,255));
+        
+        MnuSys.add(ItmNKLPROF);
+        ///
+        JMenuItem ItmNKLID= new JMenuItem("\u041d\u0430\u0446\u0438\u043e\u043d\u0430\u043b\u0435\u043d \u043a\u043b\u0430\u0441\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 \u043d\u0430 \u0438\u043a\u043e\u043d\u043e\u043c\u0438\u0447\u0435\u0441\u043a\u0438\u0442\u0435 \u0434\u0435\u0439\u043d\u043e\u0441\u0442\u0438");
+        ItmNKLID.setFont(menuFont);
+        ItmNKLID.setActionCommand("nkid");
+        ItmNKLID.addActionListener(getJMenuActionListener());
+        ItmNKLID.setBackground(new Color(255,255,255));
+        
+        MnuSys.add(ItmNKLID);
+        
         
         //End  menu
         
@@ -1104,7 +1123,31 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         javax.swing.JDialog lockFrm = new frmLock_app_salary(this, true);
         lockFrm.setVisible(true);
     }
-    
+    protected void loadNCP() {
+        
+        boolean AlreadyLoaded = isLoaded("\u041d\u0430\u0446\u0438\u043e\u043d\u0430\u043b\u0435\u043d \u043a\u043b\u0430\u0441\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 \u043d\u0430 \u043f\u0440\u043e\u0444\u0435\u0441\u0438\u0438\u0442\u0435");
+        if(AlreadyLoaded==false){
+            try{
+            FormNCP = new FrmNCP(dbCON, this);}catch(java.sql.SQLException sqle){}
+          
+            Desk1.add(FormNCP);
+             try{FormNCP.setMaximum(true);}catch(java.beans.PropertyVetoException bpve){}
+            FormNCP.setVisible(true);
+            
+            try{
+                FormNCP.setIcon(false);
+                FormNCP.setSelected(true);
+            }catch(PropertyVetoException e){
+            }
+        }else{
+            try{
+                FormNCP.setIcon(false);
+                FormNCP.setSelected(true);
+            }catch(PropertyVetoException e){
+            }
+        }
+        
+    }
     /******************** End method for loading form start *******************/
     public boolean setSupportStProc(boolean sp){
         suportStProc = sp;
@@ -1294,6 +1337,13 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 
                 try{
                     loadVedomost¿Form();
+                } catch(Exception qle){
+                };
+            }
+            else if(srcObject=="nprof"){
+                
+                try{
+                    loadNCP();
                 } catch(Exception qle){
                 };
             }

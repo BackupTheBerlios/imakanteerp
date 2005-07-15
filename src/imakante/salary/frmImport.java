@@ -127,7 +127,7 @@ public class frmImport extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton3ActionPerformed
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-// TODO add your handling code here:
+
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -135,7 +135,12 @@ public class frmImport extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-// TODO add your handling code here:
+
+        if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
+        nameTabl = jTable.getValueAt(jTable.getSelectedRow(), 0).toString();
+        }
+        
+        
     }//GEN-LAST:event_jButton4ActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -158,7 +163,7 @@ public class frmImport extends javax.swing.JDialog {
     public static java.sql.Connection cnCus;
     public static java.sql.Statement stCus;
     public static java.sql.ResultSet rsCus;
-    public static String strSQL;
+    public static String strSQL, nameTabl;
     
     
     public void initTable(){
