@@ -1,5 +1,6 @@
 
 package imakante.salary;
+import java.awt.SystemColor;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
@@ -52,7 +53,7 @@ public class frmConnSalary extends java.awt.Dialog {
         panel2 = new java.awt.Panel();
         button1 = new java.awt.Button();
         button2 = new java.awt.Button();
-        
+        button2.setBackground(SystemColor.control);
         setFont(new java.awt.Font("Tahoma", 0, 12));
         setLocationRelativeTo(this);
         setResizable(false);
