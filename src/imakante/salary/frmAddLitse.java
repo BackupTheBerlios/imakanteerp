@@ -148,7 +148,7 @@ public class frmAddLitse extends JDialog{
             System.out.println("\nERROR IN (frmAddLitse):" + sqlEx + "\n");
         }
         
-        comboGender = imakante.com.pubMethods.fillCombo("SELECT * FROM dop",cnAEC,"gender");
+        comboGender = imakante.com.pubMethods.fillCombo("SELECT * FROM ls_dop",cnAEC,"gender");
         
         if(ADD_STATE==true){
             JLPic1.setIcon(new ImageIcon("images/bNew.png"));
