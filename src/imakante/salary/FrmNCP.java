@@ -13,9 +13,7 @@ public class FrmNCP extends javax.swing.JInternalFrame implements java.awt.event
         JFParentFrame = getParentFrame;
         initResource();
         initComponents();
-        
-        // setSize(900, 600);
-        //setLocation(20,20);
+               
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -163,7 +161,14 @@ public class FrmNCP extends javax.swing.JInternalFrame implements java.awt.event
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    
+           try{
+           if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
+                    int row = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
+                    int nom = imakante.com.pubMethods.getMaxNum("SELECT nomer FROM ls_dlajnosti",dbInternal, "nomer") + 1; 
+                 stm.executeUpdate("INSERT INTO ls_dlajnosti (nomer, id_ncl) VALUES('"+ nom + "', '"+row +"')");        
+           }
+           }
+           catch(java.sql.SQLException sqle){sqle.printStackTrace();}    
         
         
         
@@ -254,7 +259,7 @@ public class FrmNCP extends javax.swing.JInternalFrame implements java.awt.event
     java.sql.ResultSet rsCus;
     public imakante.com.CustomTable jTable;
     public imakante.com.CustomTableModel jmodel;
-    public java.awt.Dimension dim;
+
     javax.swing.JFrame JFParentFrame;
     public static final String Names[] = {"\u0412\u044a\u0442\u0440\u0435\u0448\u0435\u043d \u043d\u043e\u043c\u0435\u0440",
             "\u041d\u0410\u0418\u041c\u0415\u041d\u041e\u0412\u0410\u041d\u0418\u0415 \u041d\u0410 \u0414\u041b\u042a\u0416\u041d\u041e\u0421\u0422\u0422\u0410",

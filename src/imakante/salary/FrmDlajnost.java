@@ -20,6 +20,7 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane1.getViewport().add(jTable, null);
         jPanel5 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();

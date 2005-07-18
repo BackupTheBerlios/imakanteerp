@@ -638,9 +638,7 @@ public class frmAddLitse extends JDialog{
                         try{
                             int id = 0;
                             id = imakante.com.pubMethods.getMaxNum("SELECT id FROM main_ls",cnAEC,"id");
-                            System.out.println(lMonth);
-                            System.out.println(lYear);
-                            System.out.println(id);
+                            
                             
                             stAEC.executeUpdate("INSERT INTO lsresult(month, year, idrab, Id_dlaj, zaplata) VALUES ('"+ lMonth+ "', '" + lYear+ "', '" + id +
                                     "', '" + tPosition.getText() + "', '" + itSalary + "')");
