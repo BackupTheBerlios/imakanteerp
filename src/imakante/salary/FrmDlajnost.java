@@ -89,11 +89,32 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
     }//GEN-LAST:event_jButton4ActionPerformed
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+      try{
+           if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
+                    int row = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
+                   
+                 stm.executeUpdate("DELETE * FROM ls_dlajnosti WHERE id = '"+ row + "')");        
+           }
+           }
+           catch(java.sql.SQLException sqle){sqle.printStackTrace();}    
+        
         
     }//GEN-LAST:event_jButton3ActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try{
+            
+            int row = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
+            int nom = imakante.com.pubMethods.getMaxNum("SELECT nomer FROM ls_dlajnosti",dbInternal, "nomer") + 1;
+            stm.executeUpdate("INSERT INTO ls_dlajnosti (nomer) VALUES('"+ nom + "')");
+            
+        } catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         
+        jScrollPane1.remove(jTable);
+        initResource();
+        jScrollPane1.getViewport().add(jTable, null);
+        jScrollPane1.repaint(); jScrollPane1.getViewport().add(jTable, null);
+        jScrollPane1.repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
     
     
