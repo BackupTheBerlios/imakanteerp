@@ -30,6 +30,7 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
         jTextField2 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -102,6 +103,8 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         jPanel2.setBorder(new javax.swing.border.EtchedBorder());
+        jPanel2.add(jLabel3);
+
         getContentPane().add(jPanel2, java.awt.BorderLayout.NORTH);
 
         jPanel3.setBorder(new javax.swing.border.EtchedBorder());
@@ -226,6 +229,7 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
