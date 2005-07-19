@@ -2,6 +2,8 @@
 
 package imakante.salary;
 
+import java.awt.event.KeyEvent;
+
 public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.event.WindowListener {
     
     
@@ -155,33 +157,41 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
         pack();
     }
     // </editor-fold>//GEN-END:initComponents
-
+    
     private void jButton4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton4KeyPressed
-// TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton4.doClick();}
     }//GEN-LAST:event_jButton4KeyPressed
-
+    
     private void jButton3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton3KeyPressed
-// TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton3.doClick();}
     }//GEN-LAST:event_jButton3KeyPressed
-
+    
     private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
-// TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton1.doClick();}
     }//GEN-LAST:event_jButton1KeyPressed
-
+    
     private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
-// TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jTextField2.transferFocus();}
     }//GEN-LAST:event_jTextField2KeyPressed
-
+    
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-// TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jTextField1.transferFocus();}
     }//GEN-LAST:event_jTextField1KeyPressed
-
+    
     private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
-// TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton2.doClick();}
     }//GEN-LAST:event_jButton2KeyPressed
-
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-// TODO add your handling code here:
+        try{
+            rsCus = stm.executeQuery("SELECT * FROM ls_dlajnosti WHERE nomer LIKE '%" + jTextField1.getText() + "%' AND namedlaj LIKE '%" + jTextField2.getText()+"%'");
+            if (rsCus==null){System.out.println(" problem s rs");}
+            jScrollPane1.remove(jTable);
+            model = new imakante.com.CustomTableModel(dbInternal, rsCus, Names);
+            jTable = new imakante.com.CustomTable(model);
+            jScrollPane1.getViewport().add(jTable, null);
+            jScrollPane1.repaint();
+        } catch (java.sql.SQLException sqle){sqle.printStackTrace();}
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -193,14 +203,20 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
     }//GEN-LAST:event_jButton4ActionPerformed
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-      try{
-           if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
-                    int row = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
-                   
-                 stm.executeUpdate("DELETE * FROM ls_dlajnosti WHERE id = '"+ row + "')");        
-           }
-           }
-           catch(java.sql.SQLException sqle){sqle.printStackTrace();}    
+        try{
+            if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
+                int row = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
+                System.out.println("row "+row);
+                stm = dbInternal.createStatement(java.sql.ResultSet.TYPE_SCROLL_SENSITIVE,
+                        java.sql.ResultSet.CONCUR_UPDATABLE);
+                stm.execute("DELETE FROM ls_dlajnosti WHERE id = "+ row );
+                jScrollPane1.remove(jTable);
+                initResource();
+                jScrollPane1.getViewport().add(jTable, null);
+                jScrollPane1.repaint(); jScrollPane1.getViewport().add(jTable, null);
+                jScrollPane1.repaint();
+            }
+        } catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         
         
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -208,8 +224,9 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try{
             
-           
+            
             int nom = imakante.com.pubMethods.getMaxNum("SELECT nomer FROM ls_dlajnosti",dbInternal, "nomer") + 1;
+            stm = dbInternal.createStatement();
             stm.executeUpdate("INSERT INTO ls_dlajnosti (nomer) VALUES('"+ nom + "')");
             
         } catch(java.sql.SQLException sqle){sqle.printStackTrace();}
