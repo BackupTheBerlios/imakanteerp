@@ -15,6 +15,7 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
         initResource();
         
         initComponents();
+        
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -35,6 +36,7 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
@@ -124,6 +126,20 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
 
         jPanel3.add(jButton1);
 
+        jButton5.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jButton5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton5KeyPressed(evt);
+            }
+        });
+
+        jPanel3.add(jButton5);
+
         jButton3.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,6 +173,21 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
         pack();
     }
     // </editor-fold>//GEN-END:initComponents
+    
+    private void jButton5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton5KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton5.doClick();}
+    }//GEN-LAST:event_jButton5KeyPressed
+    
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
+            int row = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
+            try{
+                imakante.salary.frmAddDlajnost frmDialog = new imakante.salary.frmAddDlajnost(JFParentFrame, true, dbInternal, row);
+                frmDialog.setVisible(true);
+                
+            } catch(Exception e){e.printStackTrace();}
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
     
     private void jButton4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton4KeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton4.doClick();}
@@ -195,11 +226,7 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        jScrollPane1.remove(jTable);
-        initResource();
-        jScrollPane1.getViewport().add(jTable, null);
-        jScrollPane1.repaint(); jScrollPane1.getViewport().add(jTable, null);
-        jScrollPane1.repaint();
+        repaintTable();
     }//GEN-LAST:event_jButton4ActionPerformed
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -210,11 +237,7 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
                 stm = dbInternal.createStatement(java.sql.ResultSet.TYPE_SCROLL_SENSITIVE,
                         java.sql.ResultSet.CONCUR_UPDATABLE);
                 stm.execute("DELETE FROM ls_dlajnosti WHERE id = "+ row );
-                jScrollPane1.remove(jTable);
-                initResource();
-                jScrollPane1.getViewport().add(jTable, null);
-                jScrollPane1.repaint(); jScrollPane1.getViewport().add(jTable, null);
-                jScrollPane1.repaint();
+                repaintTable();
             }
         } catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         
@@ -222,28 +245,26 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
     }//GEN-LAST:event_jButton3ActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try{
-            
-            
-            int nom = imakante.com.pubMethods.getMaxNum("SELECT nomer FROM ls_dlajnosti",dbInternal, "nomer") + 1;
-            stm = dbInternal.createStatement();
-            stm.executeUpdate("INSERT INTO ls_dlajnosti (nomer) VALUES('"+ nom + "')");
-            
-        } catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         
+        imakante.salary.frmAddDlajnost frmDialog = new imakante.salary.frmAddDlajnost(JFParentFrame, true, dbInternal, 0);
+        frmDialog.setVisible(true);
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+    public static void repaintTable(){
         jScrollPane1.remove(jTable);
         initResource();
         jScrollPane1.getViewport().add(jTable, null);
         jScrollPane1.repaint(); jScrollPane1.getViewport().add(jTable, null);
         jScrollPane1.repaint();
-    }//GEN-LAST:event_jButton1ActionPerformed
-    
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -272,16 +293,19 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
             
             
             
-            protected void initResource(){
+            protected static void initResource(){
                 try{
                     stm = dbInternal.createStatement(java.sql.ResultSet.TYPE_SCROLL_SENSITIVE,
                             java.sql.ResultSet.CONCUR_UPDATABLE);
                 } catch (java.sql.SQLException sqle){
                 }
                 
-                String strSQL = "SELECT * FROM ls_dlajnosti ORDER BY nomer ASC";
+                
                 try{
-                    rsCus = stm.executeQuery(strSQL);} catch (java.sql.SQLException sqle){}
+                    rsCus = stm.executeQuery("SELECT ls_dlajnosti.id, ls_dlajnosti.nomer, ls_dlajnosti.namedlaj, natc_clasifikator_prof.name_prof FROM ls_dlajnosti LEFT JOIN natc_clasifikator_prof ON (natc_clasifikator_prof.Id = ls_dlajnosti.id_ncl)"
+                            
+                            
+                            );} catch (java.sql.SQLException sqle){}
                 
                 model = new imakante.com.CustomTableModel(dbInternal, rsCus, Names);
                 jTable = new imakante.com.CustomTable(model);
