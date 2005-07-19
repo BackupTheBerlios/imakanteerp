@@ -43,8 +43,7 @@ public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.ev
             throws java.sql.SQLException {
                 super("Списък служители", false, true,true, true);
                 
-                setSize(900, 600);
-                setLocation(20,20);
+               
                 JFParentFrame = getParentFrame;
                 lMonth = pMonth;
                 lYear = pYear;

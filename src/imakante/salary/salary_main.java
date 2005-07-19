@@ -1032,6 +1032,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         if(AlreadyLoaded==false){
             FormDlajnost = new FrmDlajnost(dbCON,this);
             Desk1.add(FormDlajnost);
+            try{FormDlajnost.setMaximum(true);}catch(java.beans.PropertyVetoException bpve){}
             FormDlajnost.setVisible(true);
             
             try{

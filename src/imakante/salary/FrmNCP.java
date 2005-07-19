@@ -150,7 +150,7 @@ public class FrmNCP extends javax.swing.JInternalFrame implements java.awt.event
        
         try{
             rsCus = stm.executeQuery("SELECT * FROM natc_clasifikator_prof WHERE Id LIKE '%" + jTextField1.getText() + "%' AND name_prof LIKE '%" + jTextField2.getText()+"%' AND cod LIKE '%"+ jTextField3.getText()+"%'");
-            if (rsCus==null){System.out.println(" problem s rs");}
+     
             jScrollPane1.remove(jTable);
             jmodel = new imakante.com.CustomTableModel(dbInternal, rsCus, Names);
             jTable = new imakante.com.CustomTable(jmodel);
