@@ -7,7 +7,7 @@ public class FrmOtdel extends javax.swing.JInternalFrame implements java.awt.eve
     
     
     public FrmOtdel(java.sql.Connection srcCN, javax.swing.JFrame getParentFrame) {
-        
+        super("\u0421\u043f\u0438\u0441\u044a\u043a \u0414\u043b\u044a\u0436\u043d\u043e\u0441\u0442\u0438", true, true, true, true);
         JFParentFrame = getParentFrame;
         
         dbInternal = srcCN;
@@ -23,6 +23,7 @@ public class FrmOtdel extends javax.swing.JInternalFrame implements java.awt.eve
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane1.getViewport().add(jTable, null);
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -169,15 +170,7 @@ public class FrmOtdel extends javax.swing.JInternalFrame implements java.awt.eve
     // </editor-fold>//GEN-END:initComponents
     
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        try{
-            rsCus = stm.executeQuery("SELECT * FROM ls_otdeli WHERE nomer LIKE '%" + jTextField1.getText() + "%' AND nameotdel LIKE '%" + jTextField2.getText()+"%'");
-            
-            jScrollPane1.remove(jTable);
-            model = new imakante.com.CustomTableModel(dbInternal, rsCus, Names);
-            jTable = new imakante.com.CustomTable(model);
-            jScrollPane1.getViewport().add(jTable, null);
-            jScrollPane1.repaint();
-        } catch (java.sql.SQLException sqle){sqle.printStackTrace();}
+        searchRecord();
     }//GEN-LAST:event_jButton5ActionPerformed
     
     private void jButton4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton4KeyPressed
@@ -209,29 +202,21 @@ public class FrmOtdel extends javax.swing.JInternalFrame implements java.awt.eve
     }//GEN-LAST:event_jTextField1KeyPressed
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-// TODO add your handling code here:
+        repaintTable();
+        
     }//GEN-LAST:event_jButton4ActionPerformed
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        try{
-            if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
-                int row = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
-                System.out.println("row "+row);
-                stm = dbInternal.createStatement(java.sql.ResultSet.TYPE_SCROLL_SENSITIVE,
-                        java.sql.ResultSet.CONCUR_UPDATABLE);
-                stm.execute("DELETE FROM ls_otdeli WHERE id = "+ row );
-                repaintTable();
-            }
-        } catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        deleteRecord();
         
     }//GEN-LAST:event_jButton3ActionPerformed
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-// TODO add your handling code here:
+        editRecord();
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-// TODO add your handling code here:
+       newRecord();
     }//GEN-LAST:event_jButton1ActionPerformed
     
     
@@ -262,7 +247,52 @@ public class FrmOtdel extends javax.swing.JInternalFrame implements java.awt.eve
     public static final String Names[] = {"\u0412\u044a\u0442\u0440\u0435\u0448\u0435\u043d \u043d\u043e\u043c\u0435\u0440",
             "\u041d\u043e\u043c\u0435\u0440","\u0418\u043c\u0435 \u043d\u0430 \u043e\u0442\u0434\u0435\u043b\u0430"
     };
+    protected void newRecord(){
+     
+        imakante.salary.frmAddOtdel frmDialog = new imakante.salary.frmAddOtdel(JFParentFrame, true, dbInternal, 0);
+        frmDialog.setVisible(true);
+        
     
+    }
+    
+    
+    protected void editRecord(){
+        if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
+            int row = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
+            try{
+                imakante.salary.frmAddOtdel frmDialog = new imakante.salary.frmAddOtdel(JFParentFrame, true, dbInternal, row);
+                frmDialog.setVisible(true);
+                
+            } catch(Exception e){e.printStackTrace();}
+        }
+     }
+    
+    protected void deleteRecord(){
+        try{
+            if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
+                int row = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
+                System.out.println("row "+row);
+                stm = dbInternal.createStatement(java.sql.ResultSet.TYPE_SCROLL_SENSITIVE,
+                        java.sql.ResultSet.CONCUR_UPDATABLE);
+                stm.execute("DELETE FROM ls_otdeli WHERE id = "+ row );
+                repaintTable();
+            }
+        } catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        
+        
+    }
+    
+    protected void searchRecord(){
+        try{
+            rsCus = stm.executeQuery("SELECT * FROM ls_otdeli WHERE nomer LIKE '%" + jTextField1.getText() + "%' AND nameotdel LIKE '%" + jTextField2.getText()+"%'");
+            
+            jScrollPane1.remove(jTable);
+            model = new imakante.com.CustomTableModel(dbInternal, rsCus, Names);
+            jTable = new imakante.com.CustomTable(model);
+            jScrollPane1.getViewport().add(jTable, null);
+            jScrollPane1.repaint();
+        } catch (java.sql.SQLException sqle){sqle.printStackTrace();}
+    }
     
     public static void repaintTable(){
         jScrollPane1.remove(jTable);
@@ -277,12 +307,12 @@ public class FrmOtdel extends javax.swing.JInternalFrame implements java.awt.eve
         try{
             stm = dbInternal.createStatement(java.sql.ResultSet.TYPE_SCROLL_SENSITIVE,
                     java.sql.ResultSet.CONCUR_UPDATABLE);
-        } catch (java.sql.SQLException sqle){
+        } catch (java.sql.SQLException sqle){sqle.printStackTrace();
         }
         
         
         try{
-            rsCus = stm.executeQuery("SELECT id, nomer, nameotdel FROM ls_otdeli");} catch (java.sql.SQLException sqle){}
+            rsCus = stm.executeQuery("SELECT * FROM ls_otdeli");} catch (java.sql.SQLException sqle){sqle.printStackTrace();}
         
         model = new imakante.com.CustomTableModel(dbInternal, rsCus, Names);
         jTable = new imakante.com.CustomTable(model);
@@ -290,10 +320,10 @@ public class FrmOtdel extends javax.swing.JInternalFrame implements java.awt.eve
         
     }
     protected void closeResource(){
-        try{  rsCus.close();
-        }catch(java.sql.SQLException sqle){}
-        try{ stm.close();
-        }catch(java.sql.SQLException sqle){}
+        if(rsCus!=null){ try{  rsCus.close();
+        }catch(java.sql.SQLException sqle){}}
+        if(stm!=null){ try{ stm.close();
+        }catch(java.sql.SQLException sqle){}}
         
     }
     

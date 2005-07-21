@@ -139,23 +139,12 @@ public class frmAddDlajnost extends javax.swing.JDialog {
     // </editor-fold>//GEN-END:initComponents
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        closeResource();
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if ( id == 0){
-            try{
-                stm = dbInternal.createStatement();
-                stm.execute("INSERT INTO ls_dlajnosti (nomer, namedlaj, id_ncl) VALUES('"+  jTextField1.getText() + "', '" +jTextField2.getText()+ "','" + jTextField3.getText()+"')");
-            }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
-        }else{
-            try{
-                stm = dbInternal.createStatement();
-                stm.execute("UPDATE ls_dlajnosti SET nomer = '"+  jTextField1.getText() + "', namedlaj = '" +jTextField2.getText()+ "', id_ncl ='" + jTextField3.getText()+"' WHERE id =" +id);
-            }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
-        }
-        imakante.salary.FrmDlajnost.repaintTable();
-        this.dispose();
+        insertRecord();
     }//GEN-LAST:event_jButton1ActionPerformed
     
     private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
@@ -177,6 +166,24 @@ public class frmAddDlajnost extends javax.swing.JDialog {
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jTextField1.transferFocus();}
     }//GEN-LAST:event_jTextField1KeyPressed
+    protected void insertRecord(){
+        if ( id == 0){
+            try{
+                stm = dbInternal.createStatement();
+                stm.execute("INSERT INTO ls_dlajnosti (nomer, namedlaj, id_ncl) VALUES('"+  jTextField1.getText() + "', '" +jTextField2.getText()+ "','" + jTextField3.getText()+"')");
+            }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        }else{
+            try{
+                stm = dbInternal.createStatement();
+                stm.execute("UPDATE ls_dlajnosti SET nomer = '"+  jTextField1.getText() + "', namedlaj = '" +jTextField2.getText()+ "', id_ncl ='" + jTextField3.getText()+"' WHERE id =" +id);
+            }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        }
+        imakante.salary.FrmDlajnost.repaintTable();
+        this.dispose();
+        
+    }
+    
+    
     public void revalidateTextFields(){
         
         if (id!=0){
@@ -196,7 +203,13 @@ public class frmAddDlajnost extends javax.swing.JDialog {
             
         }
     }
-    
+    protected void closeResource(){
+        if(rs!=null){ try{  rs.close();
+        }catch(java.sql.SQLException sqle){}}
+        if(stm!=null){ try{ stm.close();
+        }catch(java.sql.SQLException sqle){}}
+        
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

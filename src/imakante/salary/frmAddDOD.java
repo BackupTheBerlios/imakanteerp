@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 public class frmAddDOD extends javax.swing.JDialog {
     
     
-    public frmAddDOD(int id,javax.swing.JFrame OwnerForm,java.sql.Connection srcCN, boolean modal) {
+    public frmAddDOD(javax.swing.JFrame OwnerForm, boolean modal,java.sql.Connection srcCN, int id) {
         super(OwnerForm, modal);
         idI=id;
         dbInternal = srcCN;
@@ -15,6 +15,10 @@ public class frmAddDOD extends javax.swing.JDialog {
         
         initComponents();
         makeTextFields();
+        java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (((dim.width)-(this.getSize().width))/2);
+        int y = (((dim.height)-(this.getSize().height))/2);
+        this.setLocation(x, y);
     }
     
     
@@ -203,8 +207,8 @@ public class frmAddDOD extends javax.swing.JDialog {
                         jTextField3.getText() + "', prct = '" +
                         jTextField4.getText() +
                         "' WHERE id = " + idI);
-                FrmSastav.reloadRecord();
-                JOptionPane.showMessageDialog(null,"Записът е променен.","Имаканте",JOptionPane.INFORMATION_MESSAGE);
+                FrmDOD.repaintTable();
+               
             }catch(java.sql.SQLException sqle){}
             
         }else{
@@ -219,6 +223,6 @@ public class frmAddDOD extends javax.swing.JDialog {
                         "')");}catch(java.sql.SQLException sqle){}
             
         }
-        dispose();
+        this.dispose();
     }
 }

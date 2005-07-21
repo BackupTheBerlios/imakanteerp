@@ -40,6 +40,12 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
+
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBorder(new javax.swing.border.EtchedBorder());
@@ -174,19 +180,19 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
     }
     // </editor-fold>//GEN-END:initComponents
     
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_F3){ newRecord();}
+        else if (evt.getKeyCode() == KeyEvent.VK_F4){ editRecord();}
+        else if (evt.getKeyCode() == KeyEvent.VK_DELETE){ deleteRecord();}
+        else if (evt.getKeyCode() == KeyEvent.VK_F5){ searchRecord();}
+    }//GEN-LAST:event_formKeyPressed
+    
     private void jButton5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton5KeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton5.doClick();}
     }//GEN-LAST:event_jButton5KeyPressed
     
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
-            int row = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
-            try{
-                imakante.salary.frmAddDlajnost frmDialog = new imakante.salary.frmAddDlajnost(JFParentFrame, true, dbInternal, row);
-                frmDialog.setVisible(true);
-                
-            } catch(Exception e){e.printStackTrace();}
-        }
+        editRecord();
     }//GEN-LAST:event_jButton5ActionPerformed
     
     private void jButton4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton4KeyPressed
@@ -214,15 +220,7 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
     }//GEN-LAST:event_jButton2KeyPressed
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        try{
-            rsCus = stm.executeQuery("SELECT * FROM ls_dlajnosti WHERE nomer LIKE '%" + jTextField1.getText() + "%' AND namedlaj LIKE '%" + jTextField2.getText()+"%'");
-            if (rsCus==null){System.out.println(" problem s rs");}
-            jScrollPane1.remove(jTable);
-            model = new imakante.com.CustomTableModel(dbInternal, rsCus, Names);
-            jTable = new imakante.com.CustomTable(model);
-            jScrollPane1.getViewport().add(jTable, null);
-            jScrollPane1.repaint();
-        } catch (java.sql.SQLException sqle){sqle.printStackTrace();}
+        searchRecord();
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -230,25 +228,13 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
     }//GEN-LAST:event_jButton4ActionPerformed
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        try{
-            if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
-                int row = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
-                System.out.println("row "+row);
-                stm = dbInternal.createStatement(java.sql.ResultSet.TYPE_SCROLL_SENSITIVE,
-                        java.sql.ResultSet.CONCUR_UPDATABLE);
-                stm.execute("DELETE FROM ls_dlajnosti WHERE id = "+ row );
-                repaintTable();
-            }
-        } catch(java.sql.SQLException sqle){sqle.printStackTrace();}
-        
+        deleteRecord();
         
     }//GEN-LAST:event_jButton3ActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        imakante.salary.frmAddDlajnost frmDialog = new imakante.salary.frmAddDlajnost(JFParentFrame, true, dbInternal, 0);
-        frmDialog.setVisible(true);
-        
+        newRecord();
         
     }//GEN-LAST:event_jButton1ActionPerformed
     public static void repaintTable(){
@@ -290,7 +276,51 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
             "\u041d\u0410\u0418\u041c\u0415\u041d\u041e\u0412\u0410\u041d\u0418\u0415 \u041d\u0410 \u0414\u041b\u042a\u0416\u041d\u041e\u0421\u0422\u0422\u0410",
             "\u043a\u043e\u0434 \u043f\u043e \u041d\u041a\u041f"};
             
+            protected void editRecord(){
+                if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
+                    int row = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
+                    try{
+                        imakante.salary.frmAddDlajnost frmDialog = new imakante.salary.frmAddDlajnost(JFParentFrame, true, dbInternal, row);
+                        frmDialog.setVisible(true);
+                        
+                    } catch(Exception e){e.printStackTrace();}
+                }
+                
+            }
+            protected void searchRecord(){
+                try{
+                    rsCus = stm.executeQuery("SELECT * FROM ls_dlajnosti WHERE nomer LIKE '%" + jTextField1.getText() + "%' AND namedlaj LIKE '%" + jTextField2.getText()+"%'");
+                    if (rsCus==null){System.out.println(" problem s rs");}
+                    jScrollPane1.remove(jTable);
+                    model = new imakante.com.CustomTableModel(dbInternal, rsCus, Names);
+                    jTable = new imakante.com.CustomTable(model);
+                    jScrollPane1.getViewport().add(jTable, null);
+                    jScrollPane1.repaint();
+                } catch (java.sql.SQLException sqle){sqle.printStackTrace();}
+                
+            }
             
+            protected void newRecord(){
+                
+                imakante.salary.frmAddDlajnost frmDialog = new imakante.salary.frmAddDlajnost(JFParentFrame, true, dbInternal, 0);
+                frmDialog.setVisible(true);
+                
+                
+                
+            }
+            protected void deleteRecord(){
+                try{
+                    if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
+                        int row = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
+                        System.out.println("row "+row);
+                        stm = dbInternal.createStatement(java.sql.ResultSet.TYPE_SCROLL_SENSITIVE,
+                                java.sql.ResultSet.CONCUR_UPDATABLE);
+                        stm.execute("DELETE FROM ls_dlajnosti WHERE id = "+ row );
+                        repaintTable();
+                    }
+                } catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+                
+            }
             
             
             protected static void initResource(){
@@ -313,10 +343,10 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
                 
             }
             protected void closeResource(){
-                try{  rsCus.close();
-                }catch(java.sql.SQLException sqle){}
-                try{ stm.close();
-                }catch(java.sql.SQLException sqle){}
+                if(rsCus!=null){ try{  rsCus.close();
+                }catch(java.sql.SQLException sqle){}}
+                if(stm!=null){ try{ stm.close();
+                }catch(java.sql.SQLException sqle){}}
                 
             }
             
