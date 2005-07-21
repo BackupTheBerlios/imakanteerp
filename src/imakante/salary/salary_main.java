@@ -799,7 +799,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         boolean AlreadyLoaded = isLoaded("\u0414\u041e\u041e \u0442\u0430\u0431\u043b\u0438\u0446\u0430");
         if(AlreadyLoaded==false){
-            FormDOD = new FrmDOD(dbCON,this);
+            FormDOD = new FrmDOD(dbCON,this, pYear);
             Desk1.add(FormDOD);
             
             
