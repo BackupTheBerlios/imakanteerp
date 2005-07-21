@@ -1,10 +1,12 @@
 
 
 package imakante.salary;
-
+import java.awt.event.KeyEvent;
 public class FrmModifikatori extends javax.swing.JInternalFrame implements java.awt.event.WindowListener {
     
     public FrmModifikatori(java.sql.Connection srcCN, javax.swing.JFrame getParentFrame) {
+         super("\u041d\u0430\u0447\u0438\u0441\u043b\u0435\u043d\u0438\u044f \u0438 \u0443\u0434\u0440\u044a\u0436\u043a\u0438", true, true, true, true);
+        dbInternal = srcCN;
         JFParentFrame = getParentFrame;
         
         dbInternal = srcCN;
@@ -16,6 +18,7 @@ public class FrmModifikatori extends javax.swing.JInternalFrame implements java.
     private void initComponents() {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane1.getViewport().add(jTable);
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -37,6 +40,11 @@ public class FrmModifikatori extends javax.swing.JInternalFrame implements java.
                 jButton1ActionPerformed(evt);
             }
         });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
+            }
+        });
 
         jPanel2.add(jButton1);
 
@@ -44,6 +52,11 @@ public class FrmModifikatori extends javax.swing.JInternalFrame implements java.
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+        jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton2KeyPressed(evt);
             }
         });
 
@@ -55,6 +68,11 @@ public class FrmModifikatori extends javax.swing.JInternalFrame implements java.
                 jButton3ActionPerformed(evt);
             }
         });
+        jButton3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton3KeyPressed(evt);
+            }
+        });
 
         jPanel2.add(jButton3);
 
@@ -62,6 +80,11 @@ public class FrmModifikatori extends javax.swing.JInternalFrame implements java.
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
+            }
+        });
+        jButton4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton4KeyPressed(evt);
             }
         });
 
@@ -73,20 +96,36 @@ public class FrmModifikatori extends javax.swing.JInternalFrame implements java.
     }
     // </editor-fold>//GEN-END:initComponents
     
+    private void jButton4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton4KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton4.doClick();}
+    }//GEN-LAST:event_jButton4KeyPressed
+    
+    private void jButton3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton3KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton3.doClick();}
+    }//GEN-LAST:event_jButton3KeyPressed
+    
+    private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton2.doClick();}
+    }//GEN-LAST:event_jButton2KeyPressed
+    
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton1.doClick();}
+    }//GEN-LAST:event_jButton1KeyPressed
+    
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-// TODO add your handling code here:
+        repaintTable();
     }//GEN-LAST:event_jButton4ActionPerformed
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-// TODO add your handling code here:
+        deleteRecord();
     }//GEN-LAST:event_jButton3ActionPerformed
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-// TODO add your handling code here:
+        editRecord();
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-// TODO add your handling code here:
+        newRecord();
     }//GEN-LAST:event_jButton1ActionPerformed
     
     
@@ -136,7 +175,7 @@ public class FrmModifikatori extends javax.swing.JInternalFrame implements java.
                 System.out.println("row "+row);
                 stm = dbInternal.createStatement(java.sql.ResultSet.TYPE_SCROLL_SENSITIVE,
                         java.sql.ResultSet.CONCUR_UPDATABLE);
-                stm.execute("DELETE FROM ls_otdeli WHERE id = "+ row );
+                stm.execute("DELETE FROM ls_dobavki WHERE id = "+ row );
                 repaintTable();
             }
         } catch(java.sql.SQLException sqle){sqle.printStackTrace();}
@@ -150,7 +189,7 @@ public class FrmModifikatori extends javax.swing.JInternalFrame implements java.
         jScrollPane1.remove(jTable);
         initResource();
         jScrollPane1.getViewport().add(jTable, null);
-        jScrollPane1.repaint(); jScrollPane1.getViewport().add(jTable, Names);
+        jScrollPane1.repaint(); jScrollPane1.getViewport().add(jTable, null);
         jScrollPane1.repaint();
     }
     
@@ -164,9 +203,9 @@ public class FrmModifikatori extends javax.swing.JInternalFrame implements java.
         
         
         try{
-            rsCus = stm.executeQuery("SELECT * FROM ls_otdeli");} catch (java.sql.SQLException sqle){sqle.printStackTrace();}
+            rsCus = stm.executeQuery("SELECT * FROM ls_dobavki");} catch (java.sql.SQLException sqle){sqle.printStackTrace();}
         
-        model = new imakante.com.CustomTableModel(dbInternal, rsCus, Names);
+        model = new imakante.com.CustomTableModel(dbInternal, rsCus, null);
         jTable = new imakante.com.CustomTable(model);
         
         

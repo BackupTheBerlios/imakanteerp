@@ -46,7 +46,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     //--Start variable the contains forms
     FrmSastav    FormSastav;
     FrmDOD       FormDOD;
-    FrmDOO       FormDOO;
+   
     FrmMonth     FormMonth;
     FrmDate      FormDate;
     FrmNewM      FormNewM;
@@ -768,6 +768,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
             if(AlreadyLoaded==false){
                 
                 FormSastav = new FrmSastav(dbCON,this,pMonth,pYear);
+                try{FormSastav.setMaximum(true);}catch(java.beans.PropertyVetoException bpve){bpve.printStackTrace();}
                 Desk1.add(FormSastav);
                 
                 
@@ -832,10 +833,10 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         //Verify if the form is already loaded
         boolean AlreadyLoaded = isLoaded("\u0414\u041e\u041e \u043d\u0430\u0447\u0438\u0441\u043b\u0435\u043d\u0438\u044f");
         if(AlreadyLoaded==false){
-            FormDOO = new FrmDOO(dbCON,this);
+            imakante.salary.FrmModifikatori FormDOO = new imakante.salary.FrmModifikatori(dbCON,this);
             Desk1.add(FormDOO);
             
-            //Load the FormSupplier
+            try{FormDOO.setMaximum(true);}catch(java.beans.PropertyVetoException bpve){bpve.printStackTrace();}
             FormDOO.setVisible(true);
             
             try{
@@ -1115,9 +1116,9 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
     }
     protected void loadImport(){
-       javax.swing.JDialog FrmImport = new frmImport(this, true, dbCON);
+        javax.swing.JDialog FrmImport = new frmImport(this, true, dbCON);
         FrmImport.setVisible(true);
-    
+        
     }
     
     protected void loadLockApp(){
@@ -1129,10 +1130,10 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         boolean AlreadyLoaded = isLoaded("\u041d\u0430\u0446\u0438\u043e\u043d\u0430\u043b\u0435\u043d \u043a\u043b\u0430\u0441\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 \u043d\u0430 \u043f\u0440\u043e\u0444\u0435\u0441\u0438\u0438\u0442\u0435");
         if(AlreadyLoaded==false){
             try{
-            FormNCP = new FrmNCP(dbCON, this);}catch(java.sql.SQLException sqle){}
-          
+                FormNCP = new FrmNCP(dbCON, this);}catch(java.sql.SQLException sqle){}
+            
             Desk1.add(FormNCP);
-             try{FormNCP.setMaximum(true);}catch(java.beans.PropertyVetoException bpve){}
+            try{FormNCP.setMaximum(true);}catch(java.beans.PropertyVetoException bpve){}
             FormNCP.setVisible(true);
             
             try{
@@ -1340,8 +1341,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                     loadVedomost¿Form();
                 } catch(Exception qle){
                 };
-            }
-            else if(srcObject=="nprof"){
+            } else if(srcObject=="nprof"){
                 
                 try{
                     loadNCP();
