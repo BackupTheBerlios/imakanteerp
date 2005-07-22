@@ -76,7 +76,7 @@ public class jdAddLice extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 4;
         gridBagConstraints.insets = new java.awt.Insets(20, 20, 5, 10);
         jpPerson.add(jlNumber, gridBagConstraints);
 
@@ -86,7 +86,7 @@ public class jdAddLice extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 10);
         jpPerson.add(jtfNumber, gridBagConstraints);
 
@@ -95,14 +95,14 @@ public class jdAddLice extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 10);
         jpPerson.add(jlIDCard, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.ipadx = 55;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
         jpPerson.add(jtfIDCard, gridBagConstraints);
 
@@ -111,14 +111,14 @@ public class jdAddLice extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 20);
         jpPerson.add(jlIDCDate, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.ipadx = 50;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
         jpPerson.add(jtfIDCDate, gridBagConstraints);
 
@@ -135,7 +135,7 @@ public class jdAddLice extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 10);
         jpPerson.add(jlName, gridBagConstraints);
 
@@ -153,14 +153,15 @@ public class jdAddLice extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
         jpPerson.add(jlMName, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.ipadx = 100;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
         jpPerson.add(jtfMName, gridBagConstraints);
 
@@ -168,14 +169,15 @@ public class jdAddLice extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
         jpPerson.add(jlFNmae, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.ipadx = 100;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
         jpPerson.add(jtfFName, gridBagConstraints);
 
@@ -191,16 +193,15 @@ public class jdAddLice extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 10);
         jpPerson.add(jlEGN, gridBagConstraints);
 
-        jtfEGN.setColumns(10);
+        jtfEGN.setColumns(8);
         jtfEGN.setFont(new java.awt.Font("Tahoma", 0, 11));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 20, 10);
         jpPerson.add(jtfEGN, gridBagConstraints);
 
@@ -208,14 +209,14 @@ public class jdAddLice extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
         jpPerson.add(jlBDate, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 7;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 60;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 20, 10);
         jpPerson.add(jtfBDate, gridBagConstraints);
 
@@ -223,19 +224,20 @@ public class jdAddLice extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
         jpPerson.add(jlGender, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 7;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 30;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 20, 20);
         jpPerson.add(jcbGender, gridBagConstraints);
 
         jpPicture.setLayout(new java.awt.GridBagLayout());
 
+        jpPicture.setBorder(new javax.swing.border.BevelBorder(javax.swing.border.BevelBorder.RAISED));
         jlPic.setFont(new java.awt.Font("Tahoma", 0, 11));
         jlPic.setText("\u0421\u043d\u0438\u043c\u043a\u0430");
         jlPic.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -245,9 +247,8 @@ public class jdAddLice extends javax.swing.JDialog {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridheight = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 3;
-        gridBagConstraints.ipady = 5;
+        gridBagConstraints.ipadx = 45;
+        gridBagConstraints.ipady = 80;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 20);
         jpPerson.add(jpPicture, gridBagConstraints);
 
@@ -259,30 +260,28 @@ public class jdAddLice extends javax.swing.JDialog {
         jlArea.setFont(new java.awt.Font("Tahoma", 0, 11));
         jlArea.setText("\u041e\u0431\u043b\u0430\u0441\u0442");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(20, 20, 5, 10);
         jpWhereabouts.add(jlArea, gridBagConstraints);
 
+        jtfArea.setColumns(20);
         jtfArea.setFont(new java.awt.Font("Tahoma", 0, 11));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(6, 20, 6, 10);
         jpWhereabouts.add(jtfArea, gridBagConstraints);
 
         jlPCode.setFont(new java.awt.Font("Tahoma", 0, 11));
         jlPCode.setText("\u041f\u043e\u0449\u0435\u043d\u0441\u043a\u0438 \u043a\u043e\u0434");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 10);
         jpWhereabouts.add(jlPCode, gridBagConstraints);
 
+        jtfPCode.setColumns(4);
         jtfPCode.setFont(new java.awt.Font("Tahoma", 0, 11));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
         jpWhereabouts.add(jtfPCode, gridBagConstraints);
 
@@ -291,15 +290,14 @@ public class jdAddLice extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 20);
         jpWhereabouts.add(jlCity, gridBagConstraints);
 
+        jtfCity.setColumns(25);
         jtfCity.setFont(new java.awt.Font("Tahoma", 0, 11));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
         jpWhereabouts.add(jtfCity, gridBagConstraints);
 
@@ -309,10 +307,10 @@ public class jdAddLice extends javax.swing.JDialog {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 20);
         jpWhereabouts.add(jlAddress, gridBagConstraints);
 
+        jtfAddress.setColumns(60);
         jtfAddress.setFont(new java.awt.Font("Tahoma", 0, 11));
         jtfAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -324,7 +322,6 @@ public class jdAddLice extends javax.swing.JDialog {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 20);
         jpWhereabouts.add(jtfAddress, gridBagConstraints);
 
@@ -341,14 +338,15 @@ public class jdAddLice extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.insets = new java.awt.Insets(20, 20, 5, 10);
         jpWhereabouts.add(jlPhone, gridBagConstraints);
 
+        jtfPhone.setColumns(15);
         jtfPhone.setFont(new java.awt.Font("Tahoma", 0, 11));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 20, 10);
         jpWhereabouts.add(jtfPhone, gridBagConstraints);
 
@@ -357,14 +355,15 @@ public class jdAddLice extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 10);
         jpWhereabouts.add(jlMobile, gridBagConstraints);
 
+        jtfMobile.setColumns(15);
         jtfMobile.setFont(new java.awt.Font("Tahoma", 0, 11));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 20, 10);
         jpWhereabouts.add(jtfMobile, gridBagConstraints);
 
@@ -373,14 +372,15 @@ public class jdAddLice extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 20);
         jpWhereabouts.add(jlEmail, gridBagConstraints);
 
+        jtfEmail.setColumns(25);
         jtfEmail.setFont(new java.awt.Font("Tahoma", 0, 11));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 20, 20);
         jpWhereabouts.add(jtfEmail, gridBagConstraints);
 
