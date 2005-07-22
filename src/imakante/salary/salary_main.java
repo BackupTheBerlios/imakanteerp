@@ -46,7 +46,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     //--Start variable the contains forms
     FrmSastav    FormSastav;
     FrmDOD       FormDOD;
-   
+    FrmModifikatori    FormDOO;
     FrmMonth     FormMonth;
     FrmDate      FormDate;
     FrmNewM      FormNewM;
@@ -833,7 +833,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         //Verify if the form is already loaded
         boolean AlreadyLoaded = isLoaded("\u0414\u041e\u041e \u043d\u0430\u0447\u0438\u0441\u043b\u0435\u043d\u0438\u044f");
         if(AlreadyLoaded==false){
-            imakante.salary.FrmModifikatori FormDOO = new imakante.salary.FrmModifikatori(dbCON,this);
+            FormDOO = new imakante.salary.FrmModifikatori(dbCON,this);
             Desk1.add(FormDOO);
             
             try{FormDOO.setMaximum(true);}catch(java.beans.PropertyVetoException bpve){bpve.printStackTrace();}
