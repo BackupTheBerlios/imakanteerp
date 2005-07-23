@@ -3,7 +3,6 @@
  *
  * Created on Четвъвтък, 2005, Юли 21, 18:46
  */
-
 package imakante.salary;
 
 /**
@@ -11,6 +10,13 @@ package imakante.salary;
  * @author  jp
  */
 public class jdAddLice extends javax.swing.JDialog {
+    
+    java.sql.Connection cnAEC;
+    java.sql.Statement stAEC;
+    java.sql.ResultSet rsAEC;
+    
+    boolean ADDING_STATE;
+    public int lMonth, lYear;
     
     public jdAddLice(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -277,11 +283,11 @@ public class jdAddLice extends javax.swing.JDialog {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridheight = 4;
-        gridBagConstraints.ipadx = 45;
-        gridBagConstraints.ipady = 80;
-        gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 20);
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridheight = 6;
+        gridBagConstraints.ipadx = 70;
+        gridBagConstraints.ipady = 120;
+        gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 10);
         jpPerson.add(jpPicture, gridBagConstraints);
 
         jtpDataInput.addTab("\u041b\u0438\u0447\u043d\u0438 \u0434\u0430\u043d\u043d\u0438", jpPerson);
@@ -344,12 +350,6 @@ public class jdAddLice extends javax.swing.JDialog {
 
         jtfAddress.setColumns(60);
         jtfAddress.setFont(new java.awt.Font("Tahoma", 0, 11));
-        jtfAddress.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfAddressActionPerformed(evt);
-            }
-        });
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
@@ -468,12 +468,6 @@ public class jdAddLice extends javax.swing.JDialog {
         jpWorker.add(jlSignonDate, gridBagConstraints);
 
         jtfSignonDate.setFont(new java.awt.Font("Tahoma", 0, 11));
-        jtfSignonDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfSignonDateActionPerformed(evt);
-            }
-        });
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 1;
@@ -528,12 +522,6 @@ public class jdAddLice extends javax.swing.JDialog {
         jpWorker.add(jlQuitDate, gridBagConstraints);
 
         jtfQuitDate.setFont(new java.awt.Font("Tahoma", 0, 11));
-        jtfQuitDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfQuitDateActionPerformed(evt);
-            }
-        });
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 3;
@@ -548,7 +536,7 @@ public class jdAddLice extends javax.swing.JDialog {
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.insets = new java.awt.Insets(10, 5, 5, 10);
+        gridBagConstraints.insets = new java.awt.Insets(10, 5, 5, 15);
         jpWorker.add(jlLastInsDate, gridBagConstraints);
 
         jtfLastInsDate.setFont(new java.awt.Font("Tahoma", 0, 11));
@@ -734,20 +722,8 @@ public class jdAddLice extends javax.swing.JDialog {
     }
     // </editor-fold>//GEN-END:initComponents
 
-    private void jtfQuitDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfQuitDateActionPerformed
-// TODO add your handling code here:
-    }//GEN-LAST:event_jtfQuitDateActionPerformed
-
-    private void jtfSignonDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfSignonDateActionPerformed
-// TODO add your handling code here:
-    }//GEN-LAST:event_jtfSignonDateActionPerformed
-
-    private void jtfAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfAddressActionPerformed
-// TODO add your handling code here:
-    }//GEN-LAST:event_jtfAddressActionPerformed
-
     private void jbQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbQuitActionPerformed
-// TODO add your handling code here:
+        
     }//GEN-LAST:event_jbQuitActionPerformed
     
     
