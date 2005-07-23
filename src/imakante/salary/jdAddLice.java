@@ -62,6 +62,38 @@ public class jdAddLice extends javax.swing.JDialog {
         jlEmail = new javax.swing.JLabel();
         jtfEmail = new javax.swing.JTextField();
         jpWorker = new javax.swing.JPanel();
+        jlContractNum = new javax.swing.JLabel();
+        jtfContractNum = new javax.swing.JTextField();
+        jlAssignDate = new javax.swing.JLabel();
+        jtfAssignDate = new javax.swing.JTextField();
+        jlSignonDate = new javax.swing.JLabel();
+        jtfSignonDate = new javax.swing.JTextField();
+        jlGrounds = new javax.swing.JLabel();
+        jtfGorunds = new javax.swing.JTextField();
+        jlTerm = new javax.swing.JLabel();
+        jtfTerm = new javax.swing.JTextField();
+        jlQuitDate = new javax.swing.JLabel();
+        jtfQuitDate = new javax.swing.JTextField();
+        jlLastInsDate = new javax.swing.JLabel();
+        jtfLastInsDate = new javax.swing.JTextField();
+        jsDates2Payment = new javax.swing.JSeparator();
+        jlPosition = new javax.swing.JLabel();
+        jtfPosition = new javax.swing.JTextField();
+        jlSalary = new javax.swing.JLabel();
+        jtfSalary = new javax.swing.JTextField();
+        jlTypeEmp = new javax.swing.JLabel();
+        jtfTypeEmp = new javax.swing.JTextField();
+        jsPayment2Exts = new javax.swing.JSeparator();
+        jpLOS = new javax.swing.JPanel();
+        jlLOSDays = new javax.swing.JLabel();
+        jtfLOSDays = new javax.swing.JTextField();
+        jlLOSMonths = new javax.swing.JLabel();
+        jtfLOSMonths = new javax.swing.JTextField();
+        jlLOSYears = new javax.swing.JLabel();
+        jtfLOSYears = new javax.swing.JTextField();
+        jlNotes = new javax.swing.JLabel();
+        jspNotes = new javax.swing.JScrollPane();
+        jtaNotes = new javax.swing.JTextArea();
         jpButtons = new javax.swing.JPanel();
         jbAdd = new javax.swing.JButton();
         jbChange = new javax.swing.JButton();
@@ -118,7 +150,7 @@ public class jdAddLice extends javax.swing.JDialog {
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.ipadx = 50;
+        gridBagConstraints.ipadx = 60;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
         jpPerson.add(jtfIDCDate, gridBagConstraints);
 
@@ -177,7 +209,7 @@ public class jdAddLice extends javax.swing.JDialog {
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.ipadx = 120;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
         jpPerson.add(jtfFName, gridBagConstraints);
 
@@ -390,6 +422,293 @@ public class jdAddLice extends javax.swing.JDialog {
 
         jpWorker.setBorder(new javax.swing.border.EtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jpWorker.setRequestFocusEnabled(false);
+        jlContractNum.setFont(new java.awt.Font("Tahoma", 0, 11));
+        jlContractNum.setText("\u2116 \u0434\u043e\u0433\u043e\u0432\u043e\u0440");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(20, 10, 5, 5);
+        jpWorker.add(jlContractNum, gridBagConstraints);
+
+        jtfContractNum.setFont(new java.awt.Font("Tahoma", 0, 11));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 60;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 5);
+        jpWorker.add(jtfContractNum, gridBagConstraints);
+
+        jlAssignDate.setFont(new java.awt.Font("Tahoma", 0, 11));
+        jlAssignDate.setText("\u0414\u0430\u0442\u0430 \u043d\u0430 \u043d\u0430\u043f\u0443\u0441\u043a\u0430\u043d\u0435");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 5);
+        jpWorker.add(jlAssignDate, gridBagConstraints);
+
+        jtfAssignDate.setFont(new java.awt.Font("Tahoma", 0, 11));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jpWorker.add(jtfAssignDate, gridBagConstraints);
+
+        jlSignonDate.setFont(new java.awt.Font("Tahoma", 0, 11));
+        jlSignonDate.setText("\u0414\u0430\u0442\u0430 \u043d\u0430 \u043f\u043e\u0441\u0442\u044a\u043f\u0432\u0430\u043d\u0435");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 10);
+        jpWorker.add(jlSignonDate, gridBagConstraints);
+
+        jtfSignonDate.setFont(new java.awt.Font("Tahoma", 0, 11));
+        jtfSignonDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfSignonDateActionPerformed(evt);
+            }
+        });
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
+        jpWorker.add(jtfSignonDate, gridBagConstraints);
+
+        jlGrounds.setFont(new java.awt.Font("Tahoma", 0, 11));
+        jlGrounds.setText("\u041e\u0441\u043d\u043e\u0432\u0430\u043d\u0438\u0435");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 5, 5);
+        jpWorker.add(jlGrounds, gridBagConstraints);
+
+        jtfGorunds.setFont(new java.awt.Font("Tahoma", 0, 11));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.insets = new java.awt.Insets(5, 25, 5, 20);
+        jpWorker.add(jtfGorunds, gridBagConstraints);
+
+        jlTerm.setFont(new java.awt.Font("Tahoma", 0, 11));
+        jlTerm.setText("\u0421\u0440\u043e\u043a \u043d\u0430 \u0434\u043e\u0433\u043e\u0432\u043e\u0440\u0430");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(10, 5, 5, 5);
+        jpWorker.add(jlTerm, gridBagConstraints);
+
+        jtfTerm.setFont(new java.awt.Font("Tahoma", 0, 11));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 20);
+        jpWorker.add(jtfTerm, gridBagConstraints);
+
+        jlQuitDate.setFont(new java.awt.Font("Tahoma", 0, 11));
+        jlQuitDate.setText("\u0414\u0430\u0442\u0430 \u043d\u0430 \u043d\u0430\u043f\u0443\u0441\u043a\u0430\u043d\u0435");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(10, 5, 5, 5);
+        jpWorker.add(jlQuitDate, gridBagConstraints);
+
+        jtfQuitDate.setFont(new java.awt.Font("Tahoma", 0, 11));
+        jtfQuitDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfQuitDateActionPerformed(evt);
+            }
+        });
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 20);
+        jpWorker.add(jtfQuitDate, gridBagConstraints);
+
+        jlLastInsDate.setFont(new java.awt.Font("Tahoma", 0, 11));
+        jlLastInsDate.setText("\u041f\u043e\u0441\u043b\u0435\u0434\u0435\u043d \u0434\u0435\u043d \u0432 \u043e\u0441\u0438\u0433\u0443\u0440\u044f\u0432\u0430\u043d\u0435");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(10, 5, 5, 10);
+        jpWorker.add(jlLastInsDate, gridBagConstraints);
+
+        jtfLastInsDate.setFont(new java.awt.Font("Tahoma", 0, 11));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
+        jpWorker.add(jtfLastInsDate, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        jpWorker.add(jsDates2Payment, gridBagConstraints);
+
+        jlPosition.setFont(new java.awt.Font("Tahoma", 0, 11));
+        jlPosition.setText("\u0414\u043b\u044a\u0436\u043d\u043e\u0441\u0442");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 5);
+        jpWorker.add(jlPosition, gridBagConstraints);
+
+        jtfPosition.setFont(new java.awt.Font("Tahoma", 0, 11));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 5);
+        jpWorker.add(jtfPosition, gridBagConstraints);
+
+        jlSalary.setFont(new java.awt.Font("Tahoma", 0, 11));
+        jlSalary.setText("\u0417\u0430\u043f\u043b\u0430\u0442\u0430");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jpWorker.add(jlSalary, gridBagConstraints);
+
+        jtfSalary.setFont(new java.awt.Font("Tahoma", 0, 11));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 80;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jpWorker.add(jtfSalary, gridBagConstraints);
+
+        jlTypeEmp.setFont(new java.awt.Font("Tahoma", 0, 11));
+        jlTypeEmp.setText("\u041a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f \u0440\u0430\u0431\u043e\u0442\u043d\u0438\u043a");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
+        jpWorker.add(jlTypeEmp, gridBagConstraints);
+
+        jtfTypeEmp.setFont(new java.awt.Font("Tahoma", 0, 11));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
+        jpWorker.add(jtfTypeEmp, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        jpWorker.add(jsPayment2Exts, gridBagConstraints);
+
+        jpLOS.setLayout(new java.awt.GridBagLayout());
+
+        jpLOS.setBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u0421\u0442\u0430\u0436 \u0438\u0437\u0432\u044a\u043d \u0444\u0438\u0440\u043c\u0430\u0442\u0430", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
+        jpLOS.setFont(new java.awt.Font("Tahoma", 0, 11));
+        jlLOSDays.setFont(new java.awt.Font("Tahoma", 0, 11));
+        jlLOSDays.setText("\u0414\u043d\u0438");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jpLOS.add(jlLOSDays, gridBagConstraints);
+
+        jtfLOSDays.setFont(new java.awt.Font("Tahoma", 0, 11));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 15;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jpLOS.add(jtfLOSDays, gridBagConstraints);
+
+        jlLOSMonths.setFont(new java.awt.Font("Tahoma", 0, 11));
+        jlLOSMonths.setText("\u041c\u0435\u0441\u0435\u0446\u0438");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jpLOS.add(jlLOSMonths, gridBagConstraints);
+
+        jtfLOSMonths.setFont(new java.awt.Font("Tahoma", 0, 11));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 15;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jpLOS.add(jtfLOSMonths, gridBagConstraints);
+
+        jlLOSYears.setFont(new java.awt.Font("Tahoma", 0, 11));
+        jlLOSYears.setText("\u0413\u043e\u0434\u0438\u043d\u0438");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jpLOS.add(jlLOSYears, gridBagConstraints);
+
+        jtfLOSYears.setFont(new java.awt.Font("Tahoma", 0, 11));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 15;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jpLOS.add(jtfLOSYears, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 12;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 15, 5);
+        jpWorker.add(jpLOS, gridBagConstraints);
+
+        jlNotes.setFont(new java.awt.Font("Tahoma", 0, 11));
+        jlNotes.setText("\u0411\u0435\u043b\u0435\u0436\u043a\u0438");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
+        jpWorker.add(jlNotes, gridBagConstraints);
+
+        jtaNotes.setColumns(20);
+        jtaNotes.setFont(new java.awt.Font("Tahoma", 0, 11));
+        jtaNotes.setLineWrap(true);
+        jtaNotes.setWrapStyleWord(true);
+        jspNotes.setViewportView(jtaNotes);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 15, 10);
+        jpWorker.add(jspNotes, gridBagConstraints);
+
         jtpDataInput.addTab("\u0414\u0430\u043d\u043d\u0438 \u043d\u0430 \u0440\u0430\u0431\u043e\u0442\u043d\u0438\u043a\u0430", jpWorker);
 
         getContentPane().add(jtpDataInput, java.awt.BorderLayout.CENTER);
@@ -415,6 +734,14 @@ public class jdAddLice extends javax.swing.JDialog {
     }
     // </editor-fold>//GEN-END:initComponents
 
+    private void jtfQuitDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfQuitDateActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jtfQuitDateActionPerformed
+
+    private void jtfSignonDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfSignonDateActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jtfSignonDateActionPerformed
+
     private void jtfAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfAddressActionPerformed
 // TODO add your handling code here:
     }//GEN-LAST:event_jtfAddressActionPerformed
@@ -431,44 +758,76 @@ public class jdAddLice extends javax.swing.JDialog {
     private javax.swing.JComboBox jcbGender;
     private javax.swing.JLabel jlAddress;
     private javax.swing.JLabel jlArea;
+    private javax.swing.JLabel jlAssignDate;
     private javax.swing.JLabel jlBDate;
     private javax.swing.JLabel jlCity;
+    private javax.swing.JLabel jlContractNum;
     private javax.swing.JLabel jlEGN;
     private javax.swing.JLabel jlEmail;
     private javax.swing.JLabel jlFNmae;
     private javax.swing.JLabel jlGender;
+    private javax.swing.JLabel jlGrounds;
     private javax.swing.JLabel jlIDCDate;
     private javax.swing.JLabel jlIDCard;
+    private javax.swing.JLabel jlLOSDays;
+    private javax.swing.JLabel jlLOSMonths;
+    private javax.swing.JLabel jlLOSYears;
+    private javax.swing.JLabel jlLastInsDate;
     private javax.swing.JLabel jlMName;
     private javax.swing.JLabel jlMobile;
     private javax.swing.JLabel jlName;
+    private javax.swing.JLabel jlNotes;
     private javax.swing.JLabel jlNumber;
     private javax.swing.JLabel jlPCode;
     private javax.swing.JLabel jlPhone;
     private javax.swing.JLabel jlPic;
+    private javax.swing.JLabel jlPosition;
+    private javax.swing.JLabel jlQuitDate;
+    private javax.swing.JLabel jlSalary;
+    private javax.swing.JLabel jlSignonDate;
+    private javax.swing.JLabel jlTerm;
+    private javax.swing.JLabel jlTypeEmp;
     private javax.swing.JPanel jpButtons;
+    private javax.swing.JPanel jpLOS;
     private javax.swing.JPanel jpPerson;
     private javax.swing.JPanel jpPicture;
     private javax.swing.JPanel jpWhereabouts;
     private javax.swing.JPanel jpWorker;
+    private javax.swing.JSeparator jsDates2Payment;
     private javax.swing.JSeparator jsHabitat2Comm;
     private javax.swing.JSeparator jsNames2Birth;
     private javax.swing.JSeparator jsNums2Names;
+    private javax.swing.JSeparator jsPayment2Exts;
+    private javax.swing.JScrollPane jspNotes;
+    private javax.swing.JTextArea jtaNotes;
     private javax.swing.JTextField jtfAddress;
     private javax.swing.JTextField jtfArea;
+    private javax.swing.JTextField jtfAssignDate;
     private javax.swing.JTextField jtfBDate;
     private javax.swing.JTextField jtfCity;
+    private javax.swing.JTextField jtfContractNum;
     private javax.swing.JTextField jtfEGN;
     private javax.swing.JTextField jtfEmail;
     private javax.swing.JTextField jtfFName;
+    private javax.swing.JTextField jtfGorunds;
     private javax.swing.JTextField jtfIDCDate;
     private javax.swing.JTextField jtfIDCard;
+    private javax.swing.JTextField jtfLOSDays;
+    private javax.swing.JTextField jtfLOSMonths;
+    private javax.swing.JTextField jtfLOSYears;
+    private javax.swing.JTextField jtfLastInsDate;
     private javax.swing.JTextField jtfMName;
     private javax.swing.JTextField jtfMobile;
     private javax.swing.JTextField jtfName;
     private javax.swing.JTextField jtfNumber;
     private javax.swing.JTextField jtfPCode;
     private javax.swing.JTextField jtfPhone;
+    private javax.swing.JTextField jtfPosition;
+    private javax.swing.JTextField jtfQuitDate;
+    private javax.swing.JTextField jtfSalary;
+    private javax.swing.JTextField jtfSignonDate;
+    private javax.swing.JTextField jtfTerm;
+    private javax.swing.JTextField jtfTypeEmp;
     private javax.swing.JTabbedPane jtpDataInput;
     // End of variables declaration//GEN-END:variables
     
