@@ -44,7 +44,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     public static int pMonth, pYear;
     public static java.util.HashMap rightsUser;
     //--Start variable the contains forms
-    FrmSastav    FormSastav;
+    FrmNSastav    FormSastav;
     FrmDOD       FormDOD;
     FrmModifikatori    FormDOO;
     FrmMonth     FormMonth;
@@ -767,8 +767,8 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         if (pMonth != 0 && (rightsUser.get("sastav").toString()) != "0"){
             if(AlreadyLoaded==false){
                 
-                FormSastav = new FrmSastav(dbCON,this,pMonth,pYear);
-                try{FormSastav.setMaximum(true);}catch(java.beans.PropertyVetoException bpve){bpve.printStackTrace();}
+                FormSastav = new FrmNSastav(dbCON,this);
+                //try{FormSastav.setMaximum(true);}catch(java.beans.PropertyVetoException bpve){bpve.printStackTrace();}
                 Desk1.add(FormSastav);
                 
                 
