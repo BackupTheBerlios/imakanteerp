@@ -52,8 +52,8 @@ public class jdAddLice extends javax.swing.JDialog {
         jpPicture = new javax.swing.JPanel();
         jlPic = new javax.swing.JLabel();
         jpWhereabouts = new javax.swing.JPanel();
-        jlArea = new javax.swing.JLabel();
-        jtfArea = new javax.swing.JTextField();
+        jlDistrict = new javax.swing.JLabel();
+        jcbDistrict = new javax.swing.JComboBox();
         jlPCode = new javax.swing.JLabel();
         jtfPCode = new javax.swing.JTextField();
         jlCity = new javax.swing.JLabel();
@@ -85,6 +85,8 @@ public class jdAddLice extends javax.swing.JDialog {
         jsDates2Payment = new javax.swing.JSeparator();
         jlPosition = new javax.swing.JLabel();
         jtfPosition = new javax.swing.JTextField();
+        jlHoursPerDay = new javax.swing.JLabel();
+        jtfHoursPerDay = new javax.swing.JTextField();
         jlSalary = new javax.swing.JLabel();
         jtfSalary = new javax.swing.JTextField();
         jlTypeEmp = new javax.swing.JLabel();
@@ -295,19 +297,18 @@ public class jdAddLice extends javax.swing.JDialog {
         jpWhereabouts.setLayout(new java.awt.GridBagLayout());
 
         jpWhereabouts.setBorder(new javax.swing.border.EtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        jlArea.setFont(new java.awt.Font("Tahoma", 0, 11));
-        jlArea.setText("\u041e\u0431\u043b\u0430\u0441\u0442");
+        jlDistrict.setFont(new java.awt.Font("Tahoma", 0, 11));
+        jlDistrict.setText("\u041e\u0431\u043b\u0430\u0441\u0442");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.insets = new java.awt.Insets(20, 20, 5, 10);
-        jpWhereabouts.add(jlArea, gridBagConstraints);
+        jpWhereabouts.add(jlDistrict, gridBagConstraints);
 
-        jtfArea.setColumns(20);
-        jtfArea.setFont(new java.awt.Font("Tahoma", 0, 11));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.insets = new java.awt.Insets(6, 20, 6, 10);
-        jpWhereabouts.add(jtfArea, gridBagConstraints);
+        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 10);
+        jpWhereabouts.add(jcbDistrict, gridBagConstraints);
 
         jlPCode.setFont(new java.awt.Font("Tahoma", 0, 11));
         jlPCode.setText("\u041f\u043e\u0449\u0435\u043d\u0441\u043a\u0438 \u043a\u043e\u0434");
@@ -559,7 +560,7 @@ public class jdAddLice extends javax.swing.JDialog {
         jlPosition.setFont(new java.awt.Font("Tahoma", 0, 11));
         jlPosition.setText("\u0414\u043b\u044a\u0436\u043d\u043e\u0441\u0442");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 5);
@@ -567,17 +568,34 @@ public class jdAddLice extends javax.swing.JDialog {
 
         jtfPosition.setFont(new java.awt.Font("Tahoma", 0, 11));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 100;
         gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 5);
         jpWorker.add(jtfPosition, gridBagConstraints);
 
+        jlHoursPerDay.setFont(new java.awt.Font("Tahoma", 0, 11));
+        jlHoursPerDay.setText("\u0427\u0430\u0441\u043e\u0432\u0435 / \u0414\u0435\u043d");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jpWorker.add(jlHoursPerDay, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 50;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jpWorker.add(jtfHoursPerDay, gridBagConstraints);
+
         jlSalary.setFont(new java.awt.Font("Tahoma", 0, 11));
         jlSalary.setText("\u0417\u0430\u043f\u043b\u0430\u0442\u0430");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
@@ -585,7 +603,7 @@ public class jdAddLice extends javax.swing.JDialog {
 
         jtfSalary.setFont(new java.awt.Font("Tahoma", 0, 11));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 80;
@@ -595,7 +613,7 @@ public class jdAddLice extends javax.swing.JDialog {
         jlTypeEmp.setFont(new java.awt.Font("Tahoma", 0, 11));
         jlTypeEmp.setText("\u041a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f \u0440\u0430\u0431\u043e\u0442\u043d\u0438\u043a");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
@@ -603,7 +621,7 @@ public class jdAddLice extends javax.swing.JDialog {
 
         jtfTypeEmp.setFont(new java.awt.Font("Tahoma", 0, 11));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 100;
@@ -731,18 +749,20 @@ public class jdAddLice extends javax.swing.JDialog {
     private javax.swing.JButton jbAdd;
     private javax.swing.JButton jbChange;
     private javax.swing.JButton jbQuit;
+    private javax.swing.JComboBox jcbDistrict;
     private javax.swing.JComboBox jcbGender;
     private javax.swing.JLabel jlAddress;
-    private javax.swing.JLabel jlArea;
     private javax.swing.JLabel jlAssignDate;
     private javax.swing.JLabel jlBDate;
     private javax.swing.JLabel jlCity;
     private javax.swing.JLabel jlContractNum;
+    private javax.swing.JLabel jlDistrict;
     private javax.swing.JLabel jlEGN;
     private javax.swing.JLabel jlEmail;
     private javax.swing.JLabel jlFNmae;
     private javax.swing.JLabel jlGender;
     private javax.swing.JLabel jlGrounds;
+    private javax.swing.JLabel jlHoursPerDay;
     private javax.swing.JLabel jlIDCDate;
     private javax.swing.JLabel jlIDCard;
     private javax.swing.JLabel jlLOSDays;
@@ -777,7 +797,6 @@ public class jdAddLice extends javax.swing.JDialog {
     private javax.swing.JScrollPane jspNotes;
     private javax.swing.JTextArea jtaNotes;
     private javax.swing.JTextField jtfAddress;
-    private javax.swing.JTextField jtfArea;
     private javax.swing.JTextField jtfAssignDate;
     private javax.swing.JTextField jtfBDate;
     private javax.swing.JTextField jtfCity;
@@ -786,6 +805,7 @@ public class jdAddLice extends javax.swing.JDialog {
     private javax.swing.JTextField jtfEmail;
     private javax.swing.JTextField jtfFName;
     private javax.swing.JTextField jtfGorunds;
+    private javax.swing.JTextField jtfHoursPerDay;
     private javax.swing.JTextField jtfIDCDate;
     private javax.swing.JTextField jtfIDCard;
     private javax.swing.JTextField jtfLOSDays;
