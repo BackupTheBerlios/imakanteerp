@@ -223,7 +223,7 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
     // </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
+   newFilter();
     }//GEN-LAST:event_jButton4ActionPerformed
     
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -268,6 +268,7 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
     public static int al;
     public static final String iniNam = "11111111111111111111111111111";
     public static String strQ;
+    public static String str1;
     
     public static void initNames(String strIniTable){
         strQ="SELECT ";
@@ -353,7 +354,7 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
     }
       protected void newFilter(){
                 
-                imakante.salary.frmFilterSastav frmDialog = new imakante.salary.frmFilterSastav(JFParentFrame, true, dbInternal, 0);
+                imakante.salary.frmFilterSastav frmDialog = new imakante.salary.frmFilterSastav(JFParentFrame, true, iniNam);
                 frmDialog.setVisible(true);
                 
                 
