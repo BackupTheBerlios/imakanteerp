@@ -1,6 +1,8 @@
 
 package imakante.salary;
 
+import java.awt.event.KeyEvent;
+
 public class frmArea extends javax.swing.JDialog implements java.awt.event.WindowListener{
     
     public frmArea(javax.swing.JFrame parent, boolean modal,java.sql.Connection srcCN) {
@@ -80,7 +82,8 @@ public class frmArea extends javax.swing.JDialog implements java.awt.event.Windo
     // </editor-fold>//GEN-END:initComponents
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-// TODO add your handling code here:
+        closeResource();
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -88,19 +91,20 @@ public class frmArea extends javax.swing.JDialog implements java.awt.event.Windo
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        newRecord();
+        repaintTable();
     }//GEN-LAST:event_jButton1ActionPerformed
     
     private void jButton3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton3KeyPressed
-// TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton3.doClick();}
     }//GEN-LAST:event_jButton3KeyPressed
     
     private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
-// TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton2.doClick();}
     }//GEN-LAST:event_jButton2KeyPressed
     
     private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
-// TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton1.doClick();}
     }//GEN-LAST:event_jButton1KeyPressed
     
     
@@ -121,91 +125,85 @@ public class frmArea extends javax.swing.JDialog implements java.awt.event.Windo
     public static imakante.com.CustomTable jTable;
     public static final String Names[] = {"\u041d\u043e\u043c\u0435\u0440",
             "\u0418\u043c\u0435 \u043d\u0430 \u043e\u0431\u043b\u0430\u0441\u0442\u0442\u0430"};
-    
-    
-    
-    
-    
-    protected void deleteRecord(){
-        try{
-            if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
-                int row = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
-                System.out.println("row "+row);
-                stm = dbInternal.createStatement(java.sql.ResultSet.TYPE_SCROLL_SENSITIVE,
-                        java.sql.ResultSet.CONCUR_UPDATABLE);
-                stm.execute("DELETE FROM oblasti WHERE id = "+ row );
-                repaintTable();
+            
+            
+            
+            
+            
+            protected void deleteRecord(){
+                try{
+                    if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
+                        int row = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
+                        System.out.println("row "+row);
+                        stm = dbInternal.createStatement(java.sql.ResultSet.TYPE_SCROLL_SENSITIVE,
+                                java.sql.ResultSet.CONCUR_UPDATABLE);
+                        stm.execute("DELETE FROM oblasti WHERE id = "+ row );
+                        repaintTable();
+                    }
+                } catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+                
+                
             }
-        } catch(java.sql.SQLException sqle){sqle.printStackTrace();}
-        
-        
-    }
-    
-    
-    
-    public static void repaintTable(){
-        jScrollPane1.remove(jTable);
-        initResource();
-        jScrollPane1.getViewport().add(jTable, null);
-        jScrollPane1.repaint(); jScrollPane1.getViewport().add(jTable, Names);
-        jScrollPane1.repaint();
-    }
-    
-    
-    protected static void initResource(){
-        try{
-            stm = dbInternal.createStatement(java.sql.ResultSet.TYPE_SCROLL_SENSITIVE,
-                    java.sql.ResultSet.CONCUR_UPDATABLE);
-        } catch (java.sql.SQLException sqle){sqle.printStackTrace();
-        }
-        
-        
-        try{
-            rsCus = stm.executeQuery("SELECT * FROM oblasti");} catch (java.sql.SQLException sqle){sqle.printStackTrace();}
-        
-        model = new imakante.com.CustomTableModel(dbInternal, rsCus, Names);
-        jTable = new imakante.com.CustomTable(model);
-        
-        
-    }
-    protected void closeResource(){
-        if(rsCus!=null){ try{  rsCus.close();
-        }catch(java.sql.SQLException sqle){}}
-        if(stm!=null){ try{ stm.close();
-        }catch(java.sql.SQLException sqle){}}
-        
-    }
-    
-    
-    protected void UnloadWindow(){
-        closeResource();
-        this.dispose();
-        
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    public void windowOpened(java.awt.event.WindowEvent e){
-    }
-    public void windowClosing(java.awt.event.WindowEvent e){
-        UnloadWindow();
-    }
-    public void windowClosed(java.awt.event.WindowEvent e){
-    }
-    public void windowIconified(java.awt.event.WindowEvent e){
-    }
-    public void windowDeiconified(java.awt.event.WindowEvent e){
-    }
-    public void windowActivated(java.awt.event.WindowEvent e){
-    }
-    public void windowDeactivated(java.awt.event.WindowEvent e){
-    }
+            
+            
+            
+            public static void repaintTable(){
+                jScrollPane1.remove(jTable);
+                initResource();
+                jScrollPane1.getViewport().add(jTable, null);
+                jScrollPane1.repaint(); jScrollPane1.getViewport().add(jTable, Names);
+                jScrollPane1.repaint();
+            }
+            protected static void newRecord(){
+                try{
+                    stm.execute("INSERT INTO oblasti VALUES('')");}catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+                
+            }
+            
+            protected static void initResource(){
+                try{
+                    stm = dbInternal.createStatement(java.sql.ResultSet.TYPE_SCROLL_SENSITIVE,
+                            java.sql.ResultSet.CONCUR_UPDATABLE);
+                } catch (java.sql.SQLException sqle){sqle.printStackTrace();
+                }
+                
+                
+                try{
+                    rsCus = stm.executeQuery("SELECT * FROM oblasti");} catch (java.sql.SQLException sqle){sqle.printStackTrace();}
+                
+                model = new imakante.com.CustomTableModel(dbInternal, rsCus, Names);
+                jTable = new imakante.com.CustomTable(model);
+                
+                
+            }
+            protected void closeResource(){
+                if(rsCus!=null){ try{  rsCus.close();
+                }catch(java.sql.SQLException sqle){}}
+                if(stm!=null){ try{ stm.close();
+                }catch(java.sql.SQLException sqle){}}
+                
+            }
+            
+            
+            protected void UnloadWindow(){
+                closeResource();
+                this.dispose();
+                
+            }
+          
+            public void windowOpened(java.awt.event.WindowEvent e){
+            }
+            public void windowClosing(java.awt.event.WindowEvent e){
+                UnloadWindow();
+            }
+            public void windowClosed(java.awt.event.WindowEvent e){
+            }
+            public void windowIconified(java.awt.event.WindowEvent e){
+            }
+            public void windowDeiconified(java.awt.event.WindowEvent e){
+            }
+            public void windowActivated(java.awt.event.WindowEvent e){
+            }
+            public void windowDeactivated(java.awt.event.WindowEvent e){
+            }
 }

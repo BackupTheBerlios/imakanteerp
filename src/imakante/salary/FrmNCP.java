@@ -2,6 +2,8 @@
 
 package imakante.salary;
 
+import java.awt.event.KeyEvent;
+
 
 
 public class FrmNCP extends javax.swing.JInternalFrame implements java.awt.event.WindowListener{
@@ -13,7 +15,7 @@ public class FrmNCP extends javax.swing.JInternalFrame implements java.awt.event
         JFParentFrame = getParentFrame;
         initResource();
         initComponents();
-               
+        
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -59,6 +61,12 @@ public class FrmNCP extends javax.swing.JInternalFrame implements java.awt.event
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel4.add(jLabel1, gridBagConstraints);
 
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 50;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
@@ -68,6 +76,12 @@ public class FrmNCP extends javax.swing.JInternalFrame implements java.awt.event
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel4.add(jLabel2, gridBagConstraints);
+
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField2KeyPressed(evt);
+            }
+        });
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 300;
@@ -85,12 +99,23 @@ public class FrmNCP extends javax.swing.JInternalFrame implements java.awt.event
                 jButton2ActionPerformed(evt);
             }
         });
+        jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton2KeyPressed(evt);
+            }
+        });
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel4.add(jButton2, gridBagConstraints);
+
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField3KeyPressed(evt);
+            }
+        });
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
@@ -110,6 +135,11 @@ public class FrmNCP extends javax.swing.JInternalFrame implements java.awt.event
                 jButton1ActionPerformed(evt);
             }
         });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
+            }
+        });
 
         jPanel3.add(jButton1);
 
@@ -119,10 +149,21 @@ public class FrmNCP extends javax.swing.JInternalFrame implements java.awt.event
                 jButton3ActionPerformed(evt);
             }
         });
+        jButton3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton3KeyPressed(evt);
+            }
+        });
 
         jPanel3.add(jButton3);
 
         jButton4.setText("\u0418\u0437\u0445\u043e\u0434");
+        jButton4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton4KeyPressed(evt);
+            }
+        });
+
         jPanel3.add(jButton4);
 
         jPanel1.add(jPanel3, java.awt.BorderLayout.SOUTH);
@@ -132,6 +173,34 @@ public class FrmNCP extends javax.swing.JInternalFrame implements java.awt.event
         pack();
     }
     // </editor-fold>//GEN-END:initComponents
+    
+    private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton2.doClick();}
+    }//GEN-LAST:event_jButton2KeyPressed
+    
+    private void jButton4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton4KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton4.doClick();}
+    }//GEN-LAST:event_jButton4KeyPressed
+    
+    private void jButton3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton3KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton3.doClick();}
+    }//GEN-LAST:event_jButton3KeyPressed
+    
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton1.doClick();}
+    }//GEN-LAST:event_jButton1KeyPressed
+    
+    private void jTextField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jTextField3.transferFocus();}
+    }//GEN-LAST:event_jTextField3KeyPressed
+    
+    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jTextField2.transferFocus();}
+    }//GEN-LAST:event_jTextField2KeyPressed
+    
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jTextField1.transferFocus();}
+    }//GEN-LAST:event_jTextField1KeyPressed
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         jScrollPane1.remove(jTable);
@@ -147,28 +216,27 @@ public class FrmNCP extends javax.swing.JInternalFrame implements java.awt.event
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 // search button
-       
+        
         try{
             rsCus = stm.executeQuery("SELECT * FROM natc_clasifikator_prof WHERE Id LIKE '%" + jTextField1.getText() + "%' AND name_prof LIKE '%" + jTextField2.getText()+"%' AND cod LIKE '%"+ jTextField3.getText()+"%'");
-     
+            
             jScrollPane1.remove(jTable);
             jmodel = new imakante.com.CustomTableModel(dbInternal, rsCus, Names);
             jTable = new imakante.com.CustomTable(jmodel);
             jScrollPane1.getViewport().add(jTable, null);
             jScrollPane1.repaint();
         } catch (java.sql.SQLException sqle){sqle.printStackTrace();}
-       
+        
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-           try{
-           if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
-                    int row = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
-                    int nom = imakante.com.pubMethods.getMaxNum("SELECT nomer FROM ls_dlajnosti",dbInternal, "nomer") + 1; 
-                 stm.executeUpdate("INSERT INTO ls_dlajnosti (nomer, id_ncl) VALUES('"+ nom + "', '"+row +"')");        
-           }
-           }
-           catch(java.sql.SQLException sqle){sqle.printStackTrace();}    
+        try{
+            if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
+                int row = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
+                int nom = imakante.com.pubMethods.getMaxNum("SELECT nomer FROM ls_dlajnosti",dbInternal, "nomer") + 1;
+                stm.executeUpdate("INSERT INTO ls_dlajnosti (nomer, id_ncl) VALUES('"+ nom + "', '"+row +"')");
+            }
+        } catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         
         
         
@@ -259,7 +327,7 @@ public class FrmNCP extends javax.swing.JInternalFrame implements java.awt.event
     java.sql.ResultSet rsCus;
     public imakante.com.CustomTable jTable;
     public imakante.com.CustomTableModel jmodel;
-
+    
     javax.swing.JFrame JFParentFrame;
     public static final String Names[] = {"\u0412\u044a\u0442\u0440\u0435\u0448\u0435\u043d \u043d\u043e\u043c\u0435\u0440",
             "\u041d\u0410\u0418\u041c\u0415\u041d\u041e\u0412\u0410\u041d\u0418\u0415 \u041d\u0410 \u0414\u041b\u042a\u0416\u041d\u041e\u0421\u0422\u0422\u0410",
