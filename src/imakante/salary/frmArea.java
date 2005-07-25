@@ -7,7 +7,9 @@ public class frmArea extends javax.swing.JDialog implements java.awt.event.Windo
     
     public frmArea(javax.swing.JFrame parent, boolean modal,java.sql.Connection srcCN) {
         super(parent, modal);
-        
+         
+        dbInternal = srcCN;
+        initResource();
         
         initComponents();
     }
