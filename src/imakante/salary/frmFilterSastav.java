@@ -1,17 +1,8 @@
-/*
- * frmFilterSastav.java
- *
- * Created on Петък, 2005, Юли 22, 9:10
- */
 
 package imakante.salary;
 
 import java.awt.event.KeyEvent;
 
-/**
- *
- * @author  user
- */
 public class frmFilterSastav extends javax.swing.JDialog {
     
     public frmFilterSastav(javax.swing.JFrame parent, boolean modal, String strINI) {
@@ -21,7 +12,10 @@ public class frmFilterSastav extends javax.swing.JDialog {
         
         initComponents();
         validateCheckBox();
-        validateCheckBox();
+        java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (((dim.width)-(this.getSize().width))/2);
+        int y = (((dim.height)-(this.getSize().height))/2);
+        
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
