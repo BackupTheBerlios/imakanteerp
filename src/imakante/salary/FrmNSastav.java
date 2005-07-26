@@ -426,6 +426,11 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
             if(Integer.parseInt((String.valueOf(strIniTable.charAt(26))))==1){ Names[x] = "id"; strQ=strQ + "g_st, ";x++;}
             if(Integer.parseInt((String.valueOf(strIniTable.charAt(27))))==1){ Names[x] = "id"; strQ=strQ + "kateg_rabotnik, ";x++;}
             if(Integer.parseInt((String.valueOf(strIniTable.charAt(28))))==1){ Names[x] = "id"; strQ=strQ + "belejki ";x++;}
+            if(x<1){
+                strQ = strQ + " id, nomer, first, family ";
+                Names =  new String[4];
+                Names = null;
+            }
             strQ=strQ + "FROM ls_main";
         }catch(Exception e1) {e1.printStackTrace();}
         str1=strIniTable;
@@ -458,7 +463,9 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
     }
     protected void searchRecord(){
         try{
-            rsCus = stm.executeQuery(strQ + "WHERE nomer LIKE '%" + jTextField1.getText() + "%' AND first LIKE '%" + jTextField2.getText()+ "%' AND family LIKE '%" + jTextField3.getText()+ "%' AND egn LIKE '%" + jTextField4.getText());
+            String searchStr=strQ + " WHERE nomer LIKE '%" + jTextField1.getText() + "%' AND first LIKE '%" + jTextField2.getText()+ "%' AND family LIKE '%" + jTextField3.getText()+ "%' AND egn LIKE '%" + jTextField4.getText() + "%'";
+            System.out.println(searchStr);
+            rsCus = stm.executeQuery(searchStr);
             if (rsCus==null){System.out.println(" problem s rs");}
             jScrollPane1.remove(jTable);
             model = new imakante.com.CustomTableModel(dbInternal, rsCus, Names);
@@ -468,7 +475,21 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
         } catch (java.sql.SQLException sqle){sqle.printStackTrace();}
         
     }
+    public static void extsearchRecord(String strX){
+     try{
+            String searchStr=strQ + strX;
+            System.out.println(searchStr);
+            rsCus = stm.executeQuery(searchStr);
+            if (rsCus==null){System.out.println(" problem s rs");}
+            jScrollPane1.remove(jTable);
+            model = new imakante.com.CustomTableModel(dbInternal, rsCus, Names);
+            jTable = new imakante.com.CustomTable(model);
+            jScrollPane1.getViewport().add(jTable, Names);
+            jScrollPane1.repaint();
+        } catch (java.sql.SQLException sqle){sqle.printStackTrace();}
     
+    
+    }
     
     
     protected void newFilter(){

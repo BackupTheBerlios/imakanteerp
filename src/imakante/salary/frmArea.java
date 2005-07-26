@@ -10,7 +10,6 @@ public class frmArea extends javax.swing.JDialog implements java.awt.event.Windo
          
         dbInternal = srcCN;
         initResource();
-        
         initComponents();
     }
     
