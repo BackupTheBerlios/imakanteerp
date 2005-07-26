@@ -648,10 +648,26 @@ public class frmExtSearchSastav extends javax.swing.JDialog {
                 jButton1ActionPerformed(evt);
             }
         });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
+            }
+        });
 
         jPanel2.add(jButton1);
 
         jButton2.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton2KeyPressed(evt);
+            }
+        });
+
         jPanel2.add(jButton2);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
@@ -659,10 +675,22 @@ public class frmExtSearchSastav extends javax.swing.JDialog {
         pack();
     }
     // </editor-fold>//GEN-END:initComponents
-
+    
+    private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton2KeyPressed
+    
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+    
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1KeyPressed
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
         
+        constructString();
         imakante.salary.FrmNSastav.extsearchRecord(conString);
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -835,14 +863,14 @@ public class frmExtSearchSastav extends javax.swing.JDialog {
     
     
     private void constructString(){
-    conString = " WHERE nomer LIKE '%" + jTextField1.getText() + "%' AND first LIKE '%" + jTextField2.getText()+
-               "%' AND family LIKE '%" + jTextField3.getText()+ "%' AND egn LIKE '%" + jTextField4.getText() + 
-            
-            
-            
-            
-            "%'";
-    
+        conString = " WHERE nomer LIKE '%" + jTextField1.getText() + "%' AND first LIKE '%" + jTextField2.getText()+
+                "%' AND family LIKE '%" + jTextField3.getText()+ "%' AND egn LIKE '%" + jTextField4.getText() +
+                
+                
+                
+                
+                "%'";
+        
     }
     
 }

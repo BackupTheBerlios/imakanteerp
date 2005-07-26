@@ -397,35 +397,36 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
         Names =  new String[al];
         int x =0;
         try{
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(0))))==1){ Names[x] = "id"; strQ=strQ + "id, "; x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(1))))==1){ Names[x] = "id"; strQ=strQ + "nomer, ";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(2))))==1){ Names[x] = "id"; strQ=strQ + "first, ";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(3))))==1){ Names[x] = "id"; strQ=strQ + "second, ";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(4))))==1){ Names[x] = "id"; strQ=strQ + "family, ";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(5))))==1){ Names[x] = "id"; strQ=strQ + "egn, ";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(6))))==1){ Names[x] = "id"; strQ=strQ + "DATE_FORMAT(`b_date`,'%Y-%m-%d') AS bdate, ";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(7))))==1){ Names[x] = "id"; strQ=strQ + "gender, ";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(8))))==1){ Names[x] = "id"; strQ=strQ + "nomer_LK, ";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(9)))) == 1){Names[x] ="id"; strQ=strQ + "data_izd_LK, ";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(10))))==1){ Names[x] = "id"; strQ=strQ + "oblast, ";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(11))))==1){ Names[x] = "id"; strQ=strQ + "postcode, ";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(12))))==1){ Names[x] = "id"; strQ=strQ + "grad, ";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(13))))==1){ Names[x] = "id"; strQ=strQ + "address, ";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(14))))==1){ Names[x] = "id"; strQ=strQ + "telefon, ";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(15))))==1){ Names[x] = "id"; strQ=strQ + "mobilen, ";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(16))))==1){ Names[x] = "id"; strQ=strQ + "email, ";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(17))))==1){ Names[x] = "id"; strQ=strQ + "nomer_dogowor, ";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(18))))==1){ Names[x] = "id"; strQ=strQ + "DATE_FORMAT('data_naznach','%Y-%m-%d') AS nazdate, ";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(19))))==1){ Names[x] = "id"; strQ=strQ + "DATE_FORMAT('data_postypwane','%Y-%m-%d') AS postdate, ";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(20))))==1){ Names[x] = "id"; strQ=strQ + "DATE_FORMAT('data_napuskane','%Y-%m-%d') AS napudate, ";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(21))))==1){ Names[x] = "id"; strQ=strQ + "DATE_FORMAT('posl_den_w_osig','%Y-%m-%d') AS posddate, ";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(22))))==1){ Names[x] = "id"; strQ=strQ + "osnowanie_dog, ";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(23))))==1){ Names[x] = "id"; strQ=strQ + "srok_dog, ";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(24))))==1){ Names[x] = "id"; strQ=strQ + "d_st, ";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(25))))==1){ Names[x] = "id"; strQ=strQ + "m_st, ";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(26))))==1){ Names[x] = "id"; strQ=strQ + "g_st, ";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(27))))==1){ Names[x] = "id"; strQ=strQ + "kateg_rabotnik, ";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(28))))==1){ Names[x] = "id"; strQ=strQ + "belejki ";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(0))))==1){ Names[x] = "id"; strQ=strQ + "id"; x++;}
+            System.out.println(strQ);
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(1))))==1){ Names[x] = "id"; strQ=strQ + ", nomer";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(2))))==1){ Names[x] = "id"; strQ=strQ + ", first";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(3))))==1){ Names[x] = "id"; strQ=strQ + ", second";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(4))))==1){ Names[x] = "id"; strQ=strQ + ", family";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(5))))==1){ Names[x] = "id"; strQ=strQ + ", egn";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(6))))==1){ Names[x] = "id"; strQ=strQ + ", DATE_FORMAT(`b_date`,'%Y-%m-%d') AS bdate";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(7))))==1){ Names[x] = "id"; strQ=strQ + ", gender";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(8))))==1){ Names[x] = "id"; strQ=strQ + ", nomer_LK";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(9)))) == 1){Names[x] ="id"; strQ=strQ + ", data_izd_LK";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(10))))==1){ Names[x] = "id"; strQ=strQ + ", oblast";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(11))))==1){ Names[x] = "id"; strQ=strQ + ", postcode";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(12))))==1){ Names[x] = "id"; strQ=strQ + ", grad";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(13))))==1){ Names[x] = "id"; strQ=strQ + ", address";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(14))))==1){ Names[x] = "id"; strQ=strQ + ", telefon";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(15))))==1){ Names[x] = "id"; strQ=strQ + ", mobilen";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(16))))==1){ Names[x] = "id"; strQ=strQ + ", email";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(17))))==1){ Names[x] = "id"; strQ=strQ + ", nomer_dogowor";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(18))))==1){ Names[x] = "id"; strQ=strQ + ", DATE_FORMAT('data_naznach','%Y-%m-%d') AS nazdate";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(19))))==1){ Names[x] = "id"; strQ=strQ + ", DATE_FORMAT('data_postypwane','%Y-%m-%d') AS postdate";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(20))))==1){ Names[x] = "id"; strQ=strQ + ", DATE_FORMAT('data_napuskane','%Y-%m-%d') AS napudate";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(21))))==1){ Names[x] = "id"; strQ=strQ + ", DATE_FORMAT('posl_den_w_osig','%Y-%m-%d') AS posddate";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(22))))==1){ Names[x] = "id"; strQ=strQ + ", osnowanie_dog";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(23))))==1){ Names[x] = "id"; strQ=strQ + ", srok_dog";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(24))))==1){ Names[x] = "id"; strQ=strQ + ", d_st";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(25))))==1){ Names[x] = "id"; strQ=strQ + ", m_st";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(26))))==1){ Names[x] = "id"; strQ=strQ + ", g_st";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(27))))==1){ Names[x] = "id"; strQ=strQ + ", kateg_rabotnik";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(28))))==1){ Names[x] = "id"; strQ=strQ + ", belejki";x++;}
             if(x<1){
                 strQ = strQ + " id, nomer, first, family ";
                 Names =  new String[4];
