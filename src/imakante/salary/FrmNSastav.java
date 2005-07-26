@@ -398,7 +398,6 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
         int x =0;
         try{
             if(Integer.parseInt((String.valueOf(strIniTable.charAt(0))))==1){ Names[x] = "id"; strQ=strQ + "id"; x++;}
-            System.out.println(strQ);
             if(Integer.parseInt((String.valueOf(strIniTable.charAt(1))))==1){ Names[x] = "id"; strQ=strQ + ", nomer";x++;}
             if(Integer.parseInt((String.valueOf(strIniTable.charAt(2))))==1){ Names[x] = "id"; strQ=strQ + ", first";x++;}
             if(Integer.parseInt((String.valueOf(strIniTable.charAt(3))))==1){ Names[x] = "id"; strQ=strQ + ", second";x++;}
@@ -426,13 +425,15 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
             if(Integer.parseInt((String.valueOf(strIniTable.charAt(25))))==1){ Names[x] = "id"; strQ=strQ + ", m_st";x++;}
             if(Integer.parseInt((String.valueOf(strIniTable.charAt(26))))==1){ Names[x] = "id"; strQ=strQ + ", g_st";x++;}
             if(Integer.parseInt((String.valueOf(strIniTable.charAt(27))))==1){ Names[x] = "id"; strQ=strQ + ", kateg_rabotnik";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(28))))==1){ Names[x] = "id"; strQ=strQ + ", belejki";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(28))))==1){ Names[x] = "id"; strQ=strQ + ", belejki ";x++;}
+            
             if(x<1){
                 strQ = strQ + " id, nomer, first, family ";
                 Names =  new String[4];
                 Names = null;
             }
             strQ=strQ + "FROM ls_main";
+            System.out.println(strQ);
         }catch(Exception e1) {e1.printStackTrace();}
         str1=strIniTable;
         
@@ -477,7 +478,7 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
         
     }
     public static void extsearchRecord(String strX){
-     try{
+        try{
             String searchStr=strQ + strX;
             System.out.println(searchStr);
             rsCus = stm.executeQuery(searchStr);
@@ -488,8 +489,8 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
             jScrollPane1.getViewport().add(jTable, Names);
             jScrollPane1.repaint();
         } catch (java.sql.SQLException sqle){sqle.printStackTrace();}
-    
-    
+        
+        
     }
     
     
