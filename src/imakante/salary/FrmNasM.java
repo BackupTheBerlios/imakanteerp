@@ -3,21 +3,18 @@ package imakante.salary;
 
 import java.awt.event.KeyEvent;
 
-public class frmArea extends javax.swing.JDialog implements java.awt.event.WindowListener{
+public class FrmNasM extends javax.swing.JInternalFrame implements java.awt.event.WindowListener {
     
-    public frmArea(javax.swing.JFrame parent, boolean modal,java.sql.Connection srcCN) {
-        super(parent, modal);
+    public FrmNasM(java.sql.Connection srcCN, javax.swing.JFrame getParentFrame)  throws java.sql.SQLException{
         
-        dbInternal = srcCN;
-        initResource();
+        
+        
         initComponents();
-        java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        int x = (((dim.width)-(this.getSize().width))/2);
-        int y = (((dim.height)-(this.getSize().height))/2);
-        this.setLocation(x, y);
+        
+        
+        
         
     }
-    
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -28,9 +25,9 @@ public class frmArea extends javax.swing.JDialog implements java.awt.event.Windo
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("\u041e\u0431\u043b\u0430\u0441\u0442\u0438");
+        setTitle("\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u0438 \u043c\u0435\u0441\u0442\u0430");
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBorder(new javax.swing.border.EtchedBorder());
@@ -53,7 +50,7 @@ public class frmArea extends javax.swing.JDialog implements java.awt.event.Windo
 
         jPanel2.add(jButton1);
 
-        jButton2.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
+        jButton2.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -67,7 +64,7 @@ public class frmArea extends javax.swing.JDialog implements java.awt.event.Windo
 
         jPanel2.add(jButton2);
 
-        jButton3.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
+        jButton3.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -81,25 +78,29 @@ public class frmArea extends javax.swing.JDialog implements java.awt.event.Windo
 
         jPanel2.add(jButton3);
 
+        jButton4.setText("\u0417\u0430\u0442\u0432\u0430\u0440\u044f\u043d\u0435");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jButton4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton4KeyPressed(evt);
+            }
+        });
+
+        jPanel2.add(jButton4);
+
         getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
 
         pack();
     }
     // </editor-fold>//GEN-END:initComponents
     
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        closeResource();
-        this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
-    
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        deleteRecord();
-    }//GEN-LAST:event_jButton2ActionPerformed
-    
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        newRecord();
-        repaintTable();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButton4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton4KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton4.doClick();}
+    }//GEN-LAST:event_jButton4KeyPressed
     
     private void jButton3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton3KeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton3.doClick();}
@@ -113,16 +114,32 @@ public class frmArea extends javax.swing.JDialog implements java.awt.event.Windo
         if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton1.doClick();}
     }//GEN-LAST:event_jButton1KeyPressed
     
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+    
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+    
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     public static javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
-    
     public static java.sql.Connection dbInternal;
     public static java.sql.Statement stm;
     public static java.sql.ResultSet rsCus;
@@ -130,10 +147,7 @@ public class frmArea extends javax.swing.JDialog implements java.awt.event.Windo
     public static imakante.com.CustomTableModel model;
     public static imakante.com.CustomTable jTable;
     public static final String Names[] = {"\u041d\u043e\u043c\u0435\u0440",
-            "\u0418\u043c\u0435 \u043d\u0430 \u043e\u0431\u043b\u0430\u0441\u0442\u0442\u0430"};
-            
-            
-            
+            "\u0418\u043c\u0435 \u043d\u0430 \u043e\u0431\u043b\u0430\u0441\u0442\u0442\u0430", "ид"};
             
             
             protected void deleteRecord(){
@@ -175,7 +189,7 @@ public class frmArea extends javax.swing.JDialog implements java.awt.event.Windo
                 
                 
                 try{
-                    rsCus = stm.executeQuery("SELECT * FROM oblasti");} catch (java.sql.SQLException sqle){sqle.printStackTrace();}
+                    rsCus = stm.executeQuery("SELECT n_nm.id, n_nm.name, oblasti.name_oblast FROM oblasti INNER JOIN grad ON oblasti.id = n_nm.id_oblast;");} catch (java.sql.SQLException sqle){sqle.printStackTrace();}
                 
                 model = new imakante.com.CustomTableModel(dbInternal, rsCus, Names);
                 jTable = new imakante.com.CustomTable(model);

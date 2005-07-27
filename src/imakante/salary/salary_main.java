@@ -671,7 +671,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmImportPic.setBackground(new Color(255,255,255));
         
         MnuSys.add(ItmImportPic);
-        MnuFile.addSeparator();
+        MnuSys.addSeparator();
         ///
         JMenuItem ItmNKLPROF = new JMenuItem("\u041d\u0430\u0446\u0438\u043e\u043d\u0430\u043b\u0435\u043d \u043a\u043b\u0430\u0441\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 \u043d\u0430 \u043f\u0440\u043e\u0444\u0435\u0441\u0438\u0438\u0442\u0435");
         ItmNKLPROF.setFont(menuFont);
@@ -686,8 +686,26 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmNKLID.setActionCommand("calendar");
         ItmNKLID.addActionListener(getJMenuActionListener());
         ItmNKLID.setBackground(new Color(255,255,255));
-        
         MnuSys.add(ItmNKLID);
+        
+        
+        MnuSys.addSeparator();
+        
+        JMenuItem ItmArea= new JMenuItem("\u041e\u0431\u043b\u0430\u0441\u0442\u0438");
+        ItmArea.setFont(menuFont);
+        ItmArea.setActionCommand("area");
+        ItmArea.addActionListener(getJMenuActionListener());
+        ItmArea.setBackground(new Color(255,255,255));
+        MnuSys.add(ItmArea);
+        
+        
+        
+        JMenuItem ItmNas= new JMenuItem("\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u0438 \u043c\u0435\u0441\u0442\u0430");
+        ItmNas.setFont(menuFont);
+        ItmNas.setActionCommand("nas");
+        ItmNas.addActionListener(getJMenuActionListener());
+        ItmNas.setBackground(new Color(255,255,255));
+        MnuSys.add(ItmNas);
         
         
         //End  menu
@@ -1125,6 +1143,12 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         javax.swing.JDialog lockFrm = new frmLock_app_salary(this, true);
         lockFrm.setVisible(true);
     }
+    
+    protected void loadArea(){
+        javax.swing.JDialog FormArea = new frmArea(this, true, dbCON);
+        FormArea.setVisible(true);
+    }
+    
     protected void loadNCP() {
         
         boolean AlreadyLoaded = isLoaded("\u041d\u0430\u0446\u0438\u043e\u043d\u0430\u043b\u0435\u043d \u043a\u043b\u0430\u0441\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 \u043d\u0430 \u043f\u0440\u043e\u0444\u0435\u0441\u0438\u0438\u0442\u0435");
@@ -1345,6 +1369,12 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 
                 try{
                     loadNCP();
+                } catch(Exception qle){
+                };
+            } else if(srcObject=="area"){
+                
+                try{
+                    loadArea();
                 } catch(Exception qle){
                 };
             }
