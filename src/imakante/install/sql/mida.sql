@@ -5,34 +5,84 @@
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES 'utf8' */;
 
-DROP DATABASE IF EXISTS `mida`;
-CREATE DATABASE `mida` /*!40100 DEFAULT CHARACTER SET cp1251 */;
-USE `mida`;
+# Host: localhost    Database: mida
+# ------------------------------------------------------
+# Server version 4.1.10a-nt
 /*!40101 SET NAMES cp1251 */;
 
+
+#
+# Table structure for table category_product
+#
+
+DROP TABLE IF EXISTS `category_product`;
 CREATE TABLE `category_product` (
   `Category_ID` tinyint(3) unsigned NOT NULL auto_increment,
   `CategoryName` varchar(20) NOT NULL default '',
   `Description` varchar(45) NOT NULL default '',
   PRIMARY KEY  (`Category_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251 COMMENT='InnoDB free: 4096 kB; (`Id_Customer`) REFER `mida/customer_p';
+
+#
+# Dumping data for table category_product
+#
+
+
+#
+# Table structure for table cdate
+#
+
+DROP TABLE IF EXISTS `cdate`;
 CREATE TABLE `cdate` (
   `Id` int(6) unsigned NOT NULL auto_increment,
   `mon` tinyint(2) default NULL,
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table cdate
+#
+
+
+#
+# Table structure for table customer_pri
+#
+
+DROP TABLE IF EXISTS `customer_pri`;
 CREATE TABLE `customer_pri` (
   `Id_customer` int(10) unsigned NOT NULL auto_increment,
   `N1_Customer` varchar(8) NOT NULL default '',
   `Name` varchar(30) NOT NULL default '',
   PRIMARY KEY  (`Id_customer`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table customer_pri
+#
+
+
+#
+# Table structure for table dop
+#
+
+DROP TABLE IF EXISTS `dop`;
 CREATE TABLE `dop` (
   `Id` int(6) unsigned NOT NULL auto_increment,
   `gender` varchar(4) NOT NULL default '',
   `sec` char(2) NOT NULL default '',
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table dop
+#
+
+
+#
+# Table structure for table kasa001
+#
+
+DROP TABLE IF EXISTS `kasa001`;
 CREATE TABLE `kasa001` (
   `kasaID` int(10) unsigned NOT NULL default '0',
   `Id_customer` int(11) default NULL,
@@ -48,6 +98,17 @@ CREATE TABLE `kasa001` (
   `Plateno` enum('y','n') character set utf8 NOT NULL default 'y',
   PRIMARY KEY  (`kasaID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table kasa001
+#
+
+
+#
+# Table structure for table kasa001razhod
+#
+
+DROP TABLE IF EXISTS `kasa001razhod`;
 CREATE TABLE `kasa001razhod` (
   `kasaIDraz` int(11) NOT NULL auto_increment,
   `Id_customer` int(11) default NULL,
@@ -62,6 +123,17 @@ CREATE TABLE `kasa001razhod` (
   `Id_kasa_order` int(11) default NULL,
   PRIMARY KEY  (`kasaIDraz`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table kasa001razhod
+#
+
+
+#
+# Table structure for table kasadet001razhod
+#
+
+DROP TABLE IF EXISTS `kasadet001razhod`;
 CREATE TABLE `kasadet001razhod` (
   `Id_Saledet` int(11) NOT NULL auto_increment,
   `SaleID` int(11) default NULL,
@@ -74,80 +146,177 @@ CREATE TABLE `kasadet001razhod` (
   `Idskl_strukt` smallint(6) default NULL,
   PRIMARY KEY  (`Id_Saledet`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table kasadet001razhod
+#
+
+
+#
+# Table structure for table ls_addresses
+#
+
+DROP TABLE IF EXISTS `ls_addresses`;
+CREATE TABLE `ls_addresses` (
+  `idls_addresses` int(10) unsigned NOT NULL auto_increment,
+  `address` varchar(70) default NULL,
+  `telofon` varchar(10) default NULL,
+  `mobilen` varchar(15) default NULL,
+  `email` varchar(30) default NULL,
+  `id_rab` int(10) unsigned default NULL,
+  `id_nasm` int(10) unsigned default NULL,
+  PRIMARY KEY  (`idls_addresses`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table ls_addresses
+#
+
+
+#
+# Table structure for table ls_bolnichni
+#
+
+DROP TABLE IF EXISTS `ls_bolnichni`;
 CREATE TABLE `ls_bolnichni` (
-  `id` int(10) unsigned NOT NULL auto_increment,
-  `id_rab` int(10) unsigned NOT NULL default '0',
+  `id` int(11) NOT NULL default '0',
+  `id_rab` int(11) default NULL,
   `bol_date` date default NULL,
   `bol_day_firm` int(11) default NULL,
   `bol_day_noi` int(11) default NULL,
   PRIMARY KEY  (`id`),
-  UNIQUE KEY `id` (`id`)
+  KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table ls_bolnichni
+#
+
+
+#
+# Table structure for table ls_dates
+#
+
+DROP TABLE IF EXISTS `ls_dates`;
+CREATE TABLE `ls_dates` (
+  `idls_dates` int(11) NOT NULL default '0',
+  `id_rab` int(10) unsigned default NULL,
+  `b_date` date default NULL,
+  `data_izd_LK` date default NULL,
+  `data_naznach` date default NULL,
+  `data_postypwane` date default NULL,
+  `data_napuskane` date default NULL,
+  `posl_den_w_osig` date default NULL,
+  PRIMARY KEY  (`idls_dates`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table ls_dates
+#
+
+
+#
+# Table structure for table ls_dlajnosti
+#
+
+DROP TABLE IF EXISTS `ls_dlajnosti`;
 CREATE TABLE `ls_dlajnosti` (
   `id` int(11) NOT NULL auto_increment,
-  `nomer` tinyint(4) default NULL,
+  `nomer` tinyint(4) NOT NULL default '0',
   `namedlaj` varchar(50) default NULL,
-  `id_ncl` int(6) default NULL,
+  `id_ncl` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table ls_dlajnosti
+#
+
+
+#
+# Table structure for table ls_dobavki
+#
+
+DROP TABLE IF EXISTS `ls_dobavki`;
 CREATE TABLE `ls_dobavki` (
-  `id` int(3) unsigned NOT NULL auto_increment,
+  `id` int(11) NOT NULL default '0',
   `name` varchar(50) default NULL,
-  `co` tinyint(1) default NULL,
-  `shifar` int(6) default NULL,
-  `dod` tinyint(1) default NULL COMMENT 'daljim li e dan 0- ne 1 da',
-  `zro` tinyint(1) default NULL COMMENT 'dalji li se vu sumata zo 0-ne 1 da',
+  `co` tinyint(4) NOT NULL default '0',
+  `shifar` int(11) NOT NULL default '0',
+  `dod` tinyint(4) NOT NULL default '0',
+  `zro` tinyint(4) NOT NULL default '0',
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table ls_dobavki
+#
+
+
+#
+# Table structure for table ls_dod
+#
+
+DROP TABLE IF EXISTS `ls_dod`;
 CREATE TABLE `ls_dod` (
-  `Id` int(6) unsigned NOT NULL auto_increment,
+  `Id` int(11) NOT NULL default '0',
   `datep` date default NULL,
   `doh` float default NULL,
   `sum` float default NULL,
   `prct` float default NULL,
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table ls_dod
+#
+
+
+#
+# Table structure for table ls_main
+#
+
+DROP TABLE IF EXISTS `ls_main`;
 CREATE TABLE `ls_main` (
-  `Id` int(6) unsigned NOT NULL auto_increment,
-  `nomer` int(6) unsigned default NULL,
-  `first` varchar(20) NOT NULL default '',
-  `second` varchar(20) NOT NULL default '',
-  `family` varchar(30) NOT NULL default '',
-  `egn` varchar(10) NOT NULL default '',
-  `b_date` date default '0000-00-00',
-  `gender` varchar(4) NOT NULL default '',
+  `Id` int(11) NOT NULL default '0',
+  `nomer` int(11) NOT NULL default '0',
+  `first` varchar(20) default NULL,
+  `second` varchar(20) default NULL,
+  `family` varchar(30) default NULL,
+  `egn` varchar(10) default NULL,
+  `gender` varchar(4) default NULL,
   `nomer_LK` varchar(9) default NULL,
-  `data_izd_LK` date default NULL,
-  `oblast` varchar(15) default NULL,
-  `postcode` varchar(4) default NULL,
-  `grad` varchar(25) default NULL,
-  `address` varchar(64) default NULL,
-  `telefon` varchar(10) default NULL,
-  `mobilen` varchar(15) default NULL,
-  `email` varchar(25) default NULL,
   `nomer_dogowor` varchar(10) default NULL,
-  `data_naznach` date NOT NULL default '0000-00-00',
-  `data_postypwane` date NOT NULL default '0000-00-00',
-  `data_napuskane` date default '0000-00-00',
-  `posl_den_w_osig` date default '0000-00-00',
   `osnowanie_dog` varchar(4) default NULL,
   `srok_dog` varchar(15) default NULL,
-  `d_st` tinyint(2) unsigned default '0',
-  `m_st` tinyint(2) unsigned default '0',
-  `g_st` tinyint(2) unsigned default '0',
+  `d_st` int(11) NOT NULL default '0',
+  `m_st` int(11) NOT NULL default '0',
+  `g_st` int(11) NOT NULL default '0',
   `kateg_rabotnik` varchar(4) default NULL,
   `fam_status` varchar(7) default NULL,
-  `children` tinyint(2) unsigned default '0',
+  `children` int(11) NOT NULL default '0',
+  `trudosposobnost` tinyint(3) unsigned default NULL,
   `belejki` varchar(250) default NULL,
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table ls_main
+#
+
+
+#
+# Table structure for table ls_monthpar
+#
+
+DROP TABLE IF EXISTS `ls_monthpar`;
 CREATE TABLE `ls_monthpar` (
-  `id` int(5) unsigned NOT NULL auto_increment,
-  `pmonth` tinyint(4) default NULL,
-  `pyear` int(6) default NULL,
+  `id` int(11) NOT NULL default '0',
+  `pmonth` tinyint(4) NOT NULL default '0',
+  `pyear` int(11) NOT NULL default '0',
   `seq` varchar(40) default NULL,
-  `dni5` tinyint(4) default NULL,
-  `dni6` tinyint(4) default NULL,
+  `dni5` tinyint(4) NOT NULL default '0',
+  `dni6` tinyint(4) NOT NULL default '0',
   `minrzd` float default NULL,
   `minod` float default NULL,
   `maxod` float default NULL,
@@ -163,73 +332,129 @@ CREATE TABLE `ls_monthpar` (
   `mrz` float default NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table ls_monthpar
+#
+
+
+#
+# Table structure for table ls_otdeli
+#
+
+DROP TABLE IF EXISTS `ls_otdeli`;
 CREATE TABLE `ls_otdeli` (
-  `Id` int(6) unsigned NOT NULL auto_increment,
-  `nomer` tinyint(5) default NULL,
+  `Id` int(11) NOT NULL default '0',
+  `nomer` tinyint(4) NOT NULL default '0',
   `nameotdel` varchar(25) default NULL,
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table ls_otdeli
+#
+
+
+#
+# Table structure for table ls_otpusk
+#
+
+DROP TABLE IF EXISTS `ls_otpusk`;
 CREATE TABLE `ls_otpusk` (
-  `id` int(10) unsigned NOT NULL auto_increment,
-  `id_rab` int(11) NOT NULL default '0',
+  `id` int(11) NOT NULL default '0',
+  `id_rab` int(11) default NULL,
   `date_otp` date default NULL,
   `day_firm` int(11) default NULL,
   `day_rabotnik` int(11) default NULL,
   PRIMARY KEY  (`id`),
-  UNIQUE KEY `id` (`id`)
+  KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table ls_otpusk
+#
+
+
+#
+# Table structure for table ls_pic
+#
+
+DROP TABLE IF EXISTS `ls_pic`;
 CREATE TABLE `ls_pic` (
   `Id` int(11) NOT NULL auto_increment,
   `id_rabotnik` int(11) default NULL,
-  `pic` longblob COMMENT 'snimka na rabotnika',
+  `pic` blob NOT NULL,
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table ls_pic
+#
+
+
+#
+# Table structure for table ls_result
+#
+
+DROP TABLE IF EXISTS `ls_result`;
 CREATE TABLE `ls_result` (
-  `Id` int(6) unsigned NOT NULL auto_increment,
+  `Id` int(11) NOT NULL default '0',
   `pmonth` tinyint(4) default NULL,
-  `pyear` int(6) default NULL,
-  `idrab` tinyint(4) NOT NULL default '0',
-  `ID_dlaj` int(5) unsigned NOT NULL default '0',
-  `avans` float NOT NULL default '0',
-  `zaplata` float(6,2) unsigned NOT NULL default '0.00' COMMENT 'Shatna zaplata',
-  `zsuma` float(6,2) NOT NULL default '0.00' COMMENT 'Zarabotena suma',
-  `psuma` float(6,2) NOT NULL default '0.00' COMMENT 'Osiguritelen dohod',
-  `dsuma` float(6,2) NOT NULL default '0.00' COMMENT 'oblagaem dohod',
-  `nsuma` float(6,2) NOT NULL default '0.00' COMMENT 'suma za poluchawane',
-  `srsuma` float(6,2) default NULL COMMENT 'zaem',
-  `sdod` float(6,2) NOT NULL default '0.00' COMMENT 'suma dod',
-  `sumaudr` float(6,2) NOT NULL default '0.00' COMMENT 'vsichki udrajki',
-  `viddoo` tinyint(4) NOT NULL default '1' COMMENT 'vid danachno osig',
+  `pyear` int(11) default NULL,
+  `idrab` int(11) NOT NULL default '0',
+  `ID_dlaj` int(11) default NULL,
+  `avans` decimal(6,2) default NULL,
+  `zaplata` decimal(6,2) default NULL,
+  `zsuma` decimal(6,2) default NULL,
+  `psuma` decimal(6,2) default NULL,
+  `dsuma` decimal(6,2) default NULL,
+  `nsuma` float(6,2) default NULL,
+  `srsuma` float(6,2) default NULL,
+  `sdod` float(6,2) default NULL,
+  `sumaudr` float(6,2) default NULL,
+  `viddoo` tinyint(4) default NULL,
   `vdzo` tinyint(4) default NULL,
-  `doo` float NOT NULL default '0' COMMENT 'doo ot rabotnika suma',
-  `doou` float NOT NULL default '0' COMMENT 'doo ot firmata suma',
-  `dodpl` tinyint(4) NOT NULL default '0',
-  `dodyear` tinyint(4) NOT NULL default '1',
-  `npr` float NOT NULL default '0',
-  `dni` tinyint(3) NOT NULL default '0' COMMENT 'otraboteni dni',
-  `otdel` tinyint(4) NOT NULL default '0',
-  `cod` tinyint(4) NOT NULL default '0',
-  `fullrab` tinyint(4) NOT NULL default '0',
-  `hours` tinyint(4) NOT NULL default '0',
-  `hoursdlg` tinyint(4) NOT NULL default '0',
-  `odso` float NOT NULL default '0',
-  `odzo` float default '0',
-  `noonly` tinyint(4) NOT NULL default '1',
-  `novdm` tinyint(4) NOT NULL default '1',
-  `nozono` tinyint(4) NOT NULL default '1',
-  `viddog` tinyint(4) NOT NULL default '0',
-  `vidppf` float NOT NULL default '0',
-  `vidupf` float(3,2) NOT NULL default '0.00' COMMENT 'procent',
-  `upf` float NOT NULL default '0' COMMENT 'upf ot firmata',
-  `upfr` float NOT NULL default '0' COMMENT 'upf ot rabotnika',
-  `nkp` tinyint(4) NOT NULL default '0',
-  `nkid` int(6) NOT NULL default '0',
-  `nomer` int(6) NOT NULL default '0',
-  `marker` tinyint(2) default NULL,
+  `doo` decimal(6,2) default NULL,
+  `doou` decimal(6,2) default NULL,
+  `dodpl` tinyint(4) default NULL,
+  `dodyear` tinyint(4) default NULL,
+  `npr` float(6,2) default NULL,
+  `dni` tinyint(4) default NULL,
+  `otdel` tinyint(4) default NULL,
+  `cod` tinyint(4) default NULL,
+  `fullrab` tinyint(4) default NULL,
+  `hours` tinyint(4) default NULL,
+  `hoursdlg` tinyint(4) default NULL,
+  `odso` float default NULL,
+  `odzo` float default NULL,
+  `noonly` tinyint(4) default NULL,
+  `novdm` tinyint(4) default NULL,
+  `nozono` tinyint(4) default NULL,
+  `viddog` tinyint(4) default NULL,
+  `vidppf` float default NULL,
+  `vidupf` float default NULL,
+  `upf` float default NULL,
+  `upfr` float default NULL,
+  `nkp` tinyint(4) default NULL,
+  `nkid` int(11) default NULL,
+  `nomer` int(11) default NULL,
+  `marker` tinyint(4) default NULL,
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table ls_result
+#
+
+INSERT INTO `ls_result` VALUES (1,1,2000,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0);
+
+#
+# Table structure for table ls_sluj
+#
+
+DROP TABLE IF EXISTS `ls_sluj`;
 CREATE TABLE `ls_sluj` (
-  `Id` int(6) unsigned NOT NULL auto_increment,
+  `Id` int(11) NOT NULL default '0',
   `name_firm` varchar(60) default NULL,
   `dan_nom` varchar(11) default NULL,
   `bul` varchar(11) default NULL,
@@ -238,28 +463,107 @@ CREATE TABLE `ls_sluj` (
   `nam_acc` varchar(70) default NULL,
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table ls_sluj
+#
+
+
+#
+# Table structure for table ls_users_rights
+#
+
+DROP TABLE IF EXISTS `ls_users_rights`;
 CREATE TABLE `ls_users_rights` (
-  `Id` int(6) unsigned NOT NULL auto_increment,
-  `id_user` int(4) default NULL COMMENT 'id user from user_master',
-  `sastav` tinyint(1) default NULL COMMENT 'right to use form sastav',
-  `vedom` tinyint(1) default NULL COMMENT 'right to use vedomost',
-  `fishove` tinyint(1) default NULL COMMENT 'right to use fishove',
-  `newmonth` tinyint(1) default NULL COMMENT 'right to create new month',
-  `vedoma` tinyint(1) default NULL,
+  `Id` int(11) NOT NULL default '0',
+  `id_user` int(11) default NULL,
+  `sastav` tinyint(4) default NULL,
+  `vedom` tinyint(4) default NULL,
+  `fishove` tinyint(4) default NULL,
+  `newmonth` tinyint(4) default NULL,
+  `vedoma` tinyint(4) default NULL,
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table ls_users_rights
+#
+
+
+#
+# Table structure for table ls_vid_osiguren
+#
+
+DROP TABLE IF EXISTS `ls_vid_osiguren`;
 CREATE TABLE `ls_vid_osiguren` (
   `Id` int(11) NOT NULL auto_increment,
-  `kod` char(2) NOT NULL default '',
-  `opisanie` varchar(64) NOT NULL default '',
+  `kod` char(1) NOT NULL default '',
+  `opisanie` varchar(64) default NULL,
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table ls_vid_osiguren
+#
+
+
+#
+# Table structure for table n_nm
+#
+
+DROP TABLE IF EXISTS `n_nm`;
+CREATE TABLE `n_nm` (
+  `Id` int(11) NOT NULL default '0',
+  `name` varchar(20) default NULL,
+  `Postcode` varchar(10) default NULL,
+  `Id_oblast` int(11) default NULL,
+  PRIMARY KEY  (`Id`),
+  KEY `Oblast` (`Id_oblast`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table n_nm
+#
+
+
+#
+# Table structure for table natc_clasifikator_prof
+#
+
+DROP TABLE IF EXISTS `natc_clasifikator_prof`;
 CREATE TABLE `natc_clasifikator_prof` (
   `Id` int(11) NOT NULL auto_increment,
   `name_prof` varchar(50) default NULL,
-  `cod` int(5) default NULL,
+  `cod` int(11) NOT NULL default '0',
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table natc_clasifikator_prof
+#
+
+
+#
+# Table structure for table oblasti
+#
+
+DROP TABLE IF EXISTS `oblasti`;
+CREATE TABLE `oblasti` (
+  `id` int(11) NOT NULL default '0',
+  `name_oblast` varchar(40) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table oblasti
+#
+
+
+#
+# Table structure for table person
+#
+
+DROP TABLE IF EXISTS `person`;
 CREATE TABLE `person` (
   `idperson` int(10) unsigned NOT NULL auto_increment,
   `n_person` varchar(30) default NULL COMMENT 'sobstveno',
@@ -270,6 +574,17 @@ CREATE TABLE `person` (
   `fk_au` tinyint(4) unsigned default NULL COMMENT 'fakturen',
   PRIMARY KEY  (`idperson`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table person
+#
+
+
+#
+# Table structure for table prihod001
+#
+
+DROP TABLE IF EXISTS `prihod001`;
 CREATE TABLE `prihod001` (
   `PrihodID` int(11) NOT NULL auto_increment,
   `Id_customer` int(11) default NULL,
@@ -285,6 +600,17 @@ CREATE TABLE `prihod001` (
   `valuta` varchar(15) NOT NULL default '',
   PRIMARY KEY  (`PrihodID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table prihod001
+#
+
+
+#
+# Table structure for table product_nom
+#
+
+DROP TABLE IF EXISTS `product_nom`;
 CREATE TABLE `product_nom` (
   `Id_Product` int(10) unsigned NOT NULL auto_increment,
   `N_Product` varchar(8) NOT NULL default '',
@@ -302,6 +628,17 @@ CREATE TABLE `product_nom` (
   KEY `FK_product_nom_1` (`Id_customer`),
   KEY `FK_product_nom_2` (`Category_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251 COMMENT='InnoDB free: 4096 kB; (`Category_ID`) REFER `mida/category_p';
+
+#
+# Dumping data for table product_nom
+#
+
+
+#
+# Table structure for table product_raf
+#
+
+DROP TABLE IF EXISTS `product_raf`;
 CREATE TABLE `product_raf` (
   `id_product` int(10) unsigned NOT NULL auto_increment,
   `name1` char(20) default NULL COMMENT 'Ime za faktura',
@@ -319,6 +656,17 @@ CREATE TABLE `product_raf` (
   `BARCOD` int(11) default NULL,
   PRIMARY KEY  (`id_product`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251 ROW_FORMAT=FIXED;
+
+#
+# Dumping data for table product_raf
+#
+
+
+#
+# Table structure for table sale001
+#
+
+DROP TABLE IF EXISTS `sale001`;
 CREATE TABLE `sale001` (
   `SaleID` int(10) unsigned NOT NULL auto_increment,
   `Id_customer` int(10) unsigned NOT NULL default '0',
@@ -335,6 +683,17 @@ CREATE TABLE `sale001` (
   KEY `sale001_ibfk_2` (`Id_customer`),
   KEY `sale001_ibfk_3` (`Idperson`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251 COMMENT='InnoDB free: 4096 kB';
+
+#
+# Dumping data for table sale001
+#
+
+
+#
+# Table structure for table sale001x
+#
+
+DROP TABLE IF EXISTS `sale001x`;
 CREATE TABLE `sale001x` (
   `SaleIDx` int(10) unsigned NOT NULL auto_increment,
   `Id_customer` int(11) default NULL,
@@ -349,6 +708,17 @@ CREATE TABLE `sale001x` (
   `Id_kasa_order` int(11) default NULL,
   PRIMARY KEY  (`SaleIDx`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table sale001x
+#
+
+
+#
+# Table structure for table saledet001
+#
+
+DROP TABLE IF EXISTS `saledet001`;
 CREATE TABLE `saledet001` (
   `Id_Saledet` int(10) unsigned NOT NULL auto_increment,
   `SaleID` int(10) unsigned NOT NULL default '0',
@@ -364,20 +734,42 @@ CREATE TABLE `saledet001` (
   KEY `FK_saledet001_2` (`Id_Product`),
   KEY `FK_saledet001_3` (`Idskl_strukt`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251 COMMENT='InnoDB free: 3072 kB; (`SaleID`) REFER `mida/sale001`(`SaleI';
+
+#
+# Dumping data for table saledet001
+#
+
+
+#
+# Table structure for table saledet001x
+#
+
+DROP TABLE IF EXISTS `saledet001x`;
 CREATE TABLE `saledet001x` (
   `Id_Saledet` int(11) NOT NULL auto_increment,
   `SaleIDx` int(11) default NULL,
   `Id_Product` int(11) default NULL,
   `UnitPrice` double default NULL,
   `Quantity` float default NULL,
-  `Discount` smallint(6) default NULL,
+  `Discount` smallint(6) NOT NULL default '0',
   `Totalcol` double default NULL,
   `Vatcol` double default NULL,
-  `Idskl_strukt` smallint(6) default NULL,
-  `Id_prototipe` int(10) unsigned default NULL COMMENT 'nomer na beljka ako ima takava',
-  `tip_document` tinyint(3) unsigned default NULL COMMENT 'tip na dokumenta',
+  `Idskl_strukt` smallint(6) NOT NULL default '0',
+  `Id_prototipe` int(11) NOT NULL default '0',
+  `tip_document` int(11) NOT NULL default '0',
   PRIMARY KEY  (`Id_Saledet`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table saledet001x
+#
+
+
+#
+# Table structure for table salesd001_11_04
+#
+
+DROP TABLE IF EXISTS `salesd001_11_04`;
 CREATE TABLE `salesd001_11_04` (
   `idSALESD001_11_04` int(10) unsigned NOT NULL auto_increment,
   `SaleID` int(10) unsigned NOT NULL default '0',
@@ -393,6 +785,17 @@ CREATE TABLE `salesd001_11_04` (
   `Namefirm` varchar(45) NOT NULL default '',
   PRIMARY KEY  (`idSALESD001_11_04`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table salesd001_11_04
+#
+
+
+#
+# Table structure for table salesdetsd001_11_04
+#
+
+DROP TABLE IF EXISTS `salesdetsd001_11_04`;
 CREATE TABLE `salesdetsd001_11_04` (
   `idSalesdetsd001_11_04` int(10) unsigned NOT NULL auto_increment,
   `idSalesd001_11_04` int(10) unsigned NOT NULL default '0',
@@ -408,26 +811,59 @@ CREATE TABLE `salesdetsd001_11_04` (
   PRIMARY KEY  (`idSalesdetsd001_11_04`),
   KEY `FK_Salesdetsd001_11_04_1` (`idSalesd001_11_04`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table salesdetsd001_11_04
+#
+
+
+#
+# Table structure for table skl_strukt
+#
+
+DROP TABLE IF EXISTS `skl_strukt`;
 CREATE TABLE `skl_strukt` (
   `idskl_strukt` tinyint(4) unsigned NOT NULL auto_increment,
   `Name_sklad` varchar(11) NOT NULL default '',
   `TIMEST` timestamp NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (`idskl_strukt`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table skl_strukt
+#
+
+
+#
+# Table structure for table skladove
+#
+
+DROP TABLE IF EXISTS `skladove`;
 CREATE TABLE `skladove` (
-  `idskladove` int(10) unsigned NOT NULL auto_increment,
-  `n_produkt` varchar(8) NOT NULL default '',
-  `skl001v` int(10) unsigned NOT NULL default '0' COMMENT 'realno kolichestvo v nai- malka ed. za sklad 001',
-  `skl001f` int(10) unsigned NOT NULL default '0' COMMENT 'fakturno za sklad 001',
-  `skl002v` int(10) unsigned NOT NULL default '0',
-  `skl002f` int(10) unsigned NOT NULL default '0',
-  `skl003v` int(10) unsigned NOT NULL default '0',
-  `skl003f` int(10) unsigned NOT NULL default '0',
+  `idskladove` int(11) NOT NULL default '0',
+  `n_produkt` varchar(8) default NULL,
+  `skl001v` int(11) default NULL,
+  `skl001f` int(11) default NULL,
+  `skl002v` int(11) default NULL,
+  `skl002f` int(11) default NULL,
+  `skl003v` int(11) default NULL,
+  `skl003f` int(11) default NULL,
   PRIMARY KEY  (`idskladove`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table skladove
+#
+
+
+#
+# Table structure for table sl_n_baccount
+#
+
+DROP TABLE IF EXISTS `sl_n_baccount`;
 CREATE TABLE `sl_n_baccount` (
-  `Id` int(6) unsigned NOT NULL auto_increment,
-  `Id_cust` int(6) unsigned NOT NULL default '0',
+  `Id` int(11) NOT NULL default '0',
+  `Id_cust` int(11) default NULL,
   `bank_code` varchar(10) default NULL,
   `bank_name` varchar(45) default NULL,
   `account` varchar(10) default NULL COMMENT 'Bankova smetka',
@@ -435,34 +871,78 @@ CREATE TABLE `sl_n_baccount` (
   PRIMARY KEY  (`Id`),
   KEY `Customer` (`Id_cust`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table sl_n_baccount
+#
+
+
+#
+# Table structure for table sl_n_cat_product
+#
+
+DROP TABLE IF EXISTS `sl_n_cat_product`;
 CREATE TABLE `sl_n_cat_product` (
-  `idsl_n_cat_product` int(10) unsigned NOT NULL auto_increment,
-  `name` varchar(45) NOT NULL default '',
+  `idsl_n_cat_product` int(11) NOT NULL default '0',
+  `name` varchar(45) default NULL,
   `name_s` varchar(5) default NULL,
   PRIMARY KEY  (`idsl_n_cat_product`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table sl_n_cat_product
+#
+
+
+#
+# Table structure for table sl_n_country
+#
+
+DROP TABLE IF EXISTS `sl_n_country`;
 CREATE TABLE `sl_n_country` (
-  `Id` tinyint(3) unsigned NOT NULL auto_increment,
-  `code` char(3) default NULL,
-  `name` varchar(20) NOT NULL default '',
+  `Id` int(11) NOT NULL default '0',
+  `code` char(1) NOT NULL default '',
+  `name` varchar(20) default NULL,
   PRIMARY KEY  (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table sl_n_country
+#
+
+
+#
+# Table structure for table sl_n_cust_info
+#
+
+DROP TABLE IF EXISTS `sl_n_cust_info`;
 CREATE TABLE `sl_n_cust_info` (
-  `Id` int(6) unsigned NOT NULL auto_increment,
-  `Id_cust` int(6) unsigned NOT NULL default '0',
-  `fix_rebate` tinyint(2) unsigned default '0' COMMENT 'Fix rebate',
+  `Id` int(11) NOT NULL default '0',
+  `Id_cust` int(11) default NULL,
+  `fix_rebate` int(11) NOT NULL default '0',
   `credit_limit` double default NULL,
   PRIMARY KEY  (`Id`),
   KEY `Customer` (`Id_cust`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table sl_n_cust_info
+#
+
+
+#
+# Table structure for table sl_n_customer
+#
+
+DROP TABLE IF EXISTS `sl_n_customer`;
 CREATE TABLE `sl_n_customer` (
-  `Id` int(6) unsigned NOT NULL auto_increment,
-  `code` varchar(10) NOT NULL default '' COMMENT 'User filed customer code',
-  `name` varchar(45) NOT NULL default '',
+  `Id` int(11) NOT NULL default '0',
+  `code` varchar(10) default NULL,
+  `name` varchar(45) default NULL,
   `bul` varchar(13) default NULL COMMENT 'Bulstat',
   `dann` varchar(10) default NULL COMMENT 'NDR',
   `address` varchar(25) default NULL,
-  `Id_nm` int(6) unsigned default NULL COMMENT 'Cod na naseleno miasto',
+  `Id_nm` int(11) NOT NULL default '0',
   `tel` varchar(12) default NULL,
   `fax` varchar(12) default NULL,
   `email` varchar(20) default NULL,
@@ -471,6 +951,17 @@ CREATE TABLE `sl_n_customer` (
   `Id_oso` int(10) default NULL,
   PRIMARY KEY  (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table sl_n_customer
+#
+
+
+#
+# Table structure for table sl_n_distributors
+#
+
+DROP TABLE IF EXISTS `sl_n_distributors`;
 CREATE TABLE `sl_n_distributors` (
   `Id` int(6) unsigned NOT NULL auto_increment,
   `Id_cust` int(6) unsigned NOT NULL default '0',
@@ -480,6 +971,17 @@ CREATE TABLE `sl_n_distributors` (
   PRIMARY KEY  (`Id`),
   KEY `Customer` (`Id_cust`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table sl_n_distributors
+#
+
+
+#
+# Table structure for table sl_n_nm
+#
+
+DROP TABLE IF EXISTS `sl_n_nm`;
 CREATE TABLE `sl_n_nm` (
   `Id` int(6) unsigned NOT NULL auto_increment,
   `name` varchar(20) NOT NULL default '',
@@ -488,6 +990,17 @@ CREATE TABLE `sl_n_nm` (
   PRIMARY KEY  (`Id`),
   KEY `Oblast` (`Id_oblast`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table sl_n_nm
+#
+
+
+#
+# Table structure for table sl_n_obekt
+#
+
+DROP TABLE IF EXISTS `sl_n_obekt`;
 CREATE TABLE `sl_n_obekt` (
   `Id` int(6) unsigned NOT NULL auto_increment,
   `Id_cust` int(6) unsigned NOT NULL default '0',
@@ -497,6 +1010,17 @@ CREATE TABLE `sl_n_obekt` (
   PRIMARY KEY  (`Id`),
   KEY `Customer` (`Id_cust`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table sl_n_obekt
+#
+
+
+#
+# Table structure for table sl_n_oblast
+#
+
+DROP TABLE IF EXISTS `sl_n_oblast`;
 CREATE TABLE `sl_n_oblast` (
   `Id` tinyint(2) unsigned NOT NULL auto_increment,
   `name` varchar(20) NOT NULL default '',
@@ -504,6 +1028,17 @@ CREATE TABLE `sl_n_oblast` (
   PRIMARY KEY  (`Id`),
   KEY `Country` (`Id_country`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table sl_n_oblast
+#
+
+
+#
+# Table structure for table sl_n_person
+#
+
+DROP TABLE IF EXISTS `sl_n_person`;
 CREATE TABLE `sl_n_person` (
   `Id` int(10) unsigned NOT NULL auto_increment,
   `egn` varchar(10) default NULL,
@@ -512,6 +1047,17 @@ CREATE TABLE `sl_n_person` (
   `comment` varchar(20) NOT NULL default '' COMMENT 'Extra info',
   PRIMARY KEY  (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table sl_n_person
+#
+
+
+#
+# Table structure for table sl_n_product_pri
+#
+
+DROP TABLE IF EXISTS `sl_n_product_pri`;
 CREATE TABLE `sl_n_product_pri` (
   `idsl_n_product_pri` int(10) unsigned NOT NULL auto_increment,
   `nomer` varchar(10) default NULL,
@@ -526,6 +1072,17 @@ CREATE TABLE `sl_n_product_pri` (
   PRIMARY KEY  (`idsl_n_product_pri`,`id_cat`),
   KEY `FK_sl_n_product_pri_1` (`id_cat`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table sl_n_product_pri
+#
+
+
+#
+# Table structure for table sl_n_product_razf
+#
+
+DROP TABLE IF EXISTS `sl_n_product_razf`;
 CREATE TABLE `sl_n_product_razf` (
   `Id` int(10) unsigned NOT NULL auto_increment,
   `id_product` int(10) unsigned NOT NULL default '0',
@@ -539,6 +1096,17 @@ CREATE TABLE `sl_n_product_razf` (
   KEY `Index_razf` (`razf2`,`razf1`,`osn_razf`),
   KEY `FK_sl_n_product_razf_1` (`osn_razf`,`razf1`,`razf2`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table sl_n_product_razf
+#
+
+
+#
+# Table structure for table sl_n_product_tsen
+#
+
+DROP TABLE IF EXISTS `sl_n_product_tsen`;
 CREATE TABLE `sl_n_product_tsen` (
   `Id` int(11) NOT NULL auto_increment,
   `id_dost` int(11) default NULL COMMENT 'id na dostavchika',
@@ -557,6 +1125,17 @@ CREATE TABLE `sl_n_product_tsen` (
   `id_prod_pri` int(10) unsigned NOT NULL default '0',
   PRIMARY KEY  (`Id`,`id_prod_pri`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='razshirenio parametri na produkta';
+
+#
+# Dumping data for table sl_n_product_tsen
+#
+
+
+#
+# Table structure for table sl_n_razfasofki
+#
+
+DROP TABLE IF EXISTS `sl_n_razfasofki`;
 CREATE TABLE `sl_n_razfasofki` (
   `Id` int(4) NOT NULL auto_increment,
   `metrika` int(1) NOT NULL default '0' COMMENT 'dali i pozvoleno drobno ch.',
@@ -564,11 +1143,33 @@ CREATE TABLE `sl_n_razfasofki` (
   `name_short` varchar(5) default NULL,
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table sl_n_razfasofki
+#
+
+
+#
+# Table structure for table slujebna
+#
+
+DROP TABLE IF EXISTS `slujebna`;
 CREATE TABLE `slujebna` (
   `Id` int(6) unsigned NOT NULL auto_increment,
   `name` varchar(25) default NULL,
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table slujebna
+#
+
+
+#
+# Table structure for table supl
+#
+
+DROP TABLE IF EXISTS `supl`;
 CREATE TABLE `supl` (
   `idsupl` tinyint(3) unsigned NOT NULL auto_increment,
   `n_supl` varchar(4) NOT NULL default '',
@@ -581,18 +1182,51 @@ CREATE TABLE `supl` (
   `country` varchar(25) default NULL,
   PRIMARY KEY  (`idsupl`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table supl
+#
+
+
+#
+# Table structure for table tablestr
+#
+
+DROP TABLE IF EXISTS `tablestr`;
 CREATE TABLE `tablestr` (
-  `idTableStr` int(10) unsigned NOT NULL auto_increment,
-  `NameTable` varchar(20) NOT NULL default '',
-  `Opisanie` varchar(45) NOT NULL default '',
+  `idTableStr` int(11) NOT NULL default '0',
+  `NameTable` varchar(20) default NULL,
+  `Opisanie` varchar(45) default NULL,
   PRIMARY KEY  (`idTableStr`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table tablestr
+#
+
+
+#
+# Table structure for table user_master
+#
+
+DROP TABLE IF EXISTS `user_master`;
 CREATE TABLE `user_master` (
   `Id` int(6) unsigned NOT NULL auto_increment,
   `name` varchar(14) default NULL,
   `nomer` int(4) default NULL,
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
+# Dumping data for table user_master
+#
+
+
+#
+# Table structure for table valuta
+#
+
+DROP TABLE IF EXISTS `valuta`;
 CREATE TABLE `valuta` (
   `idvaluta` tinyint(3) unsigned NOT NULL auto_increment,
   `name_valuta` varchar(15) NOT NULL default '',
@@ -601,20 +1235,45 @@ CREATE TABLE `valuta` (
   PRIMARY KEY  (`idvaluta`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
+#
+# Dumping data for table valuta
+#
+
+
+#
+#  Foreign keys for table product_nom
+#
+
 ALTER TABLE `product_nom`
   ADD FOREIGN KEY (`Category_ID`) REFERENCES `category_product` (`Category_ID`);
 
+#
+#  Foreign keys for table product_raf
+#
+
 ALTER TABLE `product_raf`
   ADD FOREIGN KEY (`id_product`) REFERENCES `product_nom` (`Id_Product`);
+
+#
+#  Foreign keys for table sale001
+#
 
 ALTER TABLE `sale001`
   ADD FOREIGN KEY (`Id_customer`) REFERENCES `customer_pri` (`Id_customer`),
   ADD FOREIGN KEY (`Idperson`) REFERENCES `person` (`idperson`);
 
+#
+#  Foreign keys for table saledet001
+#
+
 ALTER TABLE `saledet001`
   ADD FOREIGN KEY (`Id_Product`) REFERENCES `product_nom` (`Id_Product`),
   ADD FOREIGN KEY (`Id_Product`) REFERENCES `product_nom` (`Id_Product`),
   ADD FOREIGN KEY (`Idskl_strukt`) REFERENCES `skl_strukt` (`idskl_strukt`);
+
+#
+#  Foreign keys for table salesdetsd001_11_04
+#
 
 ALTER TABLE `salesdetsd001_11_04`
   ADD FOREIGN KEY (`idSalesd001_11_04`) REFERENCES `salesd001_11_04` (`idSALESD001_11_04`);
