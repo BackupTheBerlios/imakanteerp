@@ -185,7 +185,8 @@ public class FrmPic extends javax.swing.JInternalFrame implements java.awt.event
             public static java.sql.Statement stCus;
             public static java.sql.PreparedStatement ps;
             public static java.io.File file;
-            public static java.sql.ResultSet rsCus;
+            public static java.sql.ResultSet rsCus, rs;
+            java.sql.ResultSetMetaData rsmd;
             public static  ByteArrayInputStream inStream;
             public static InputStream streamedJpg;
             public byte[] b;
@@ -213,7 +214,7 @@ public class FrmPic extends javax.swing.JInternalFrame implements java.awt.event
                     image = ImageIO.read(file);
                     image = image.getScaledInstance(150, 200, 1);
                     
-                } catch(java.io.IOException ioex){}
+                } catch(java.io.IOException ioex){ioex.printStackTrace();}
                 
                 icon = new ImageIcon();
                 icon.setImage(image);
@@ -268,23 +269,49 @@ public class FrmPic extends javax.swing.JInternalFrame implements java.awt.event
                 if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
                     int row = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
                     try{
-                        System.out.println("row  " + row);
-                        PreparedStatement ps = dbInternal.prepareStatement("UPDATE ls_pic SET  pic = ? WHERE id_rabotnik = " + row );
-                        try{
+                        rs = dbInternal.createStatement().executeQuery("SELECT id_rabotnik FROM ls_pic WHERE id_rabotnik = "+row);
+                      
+                       System.out.println("col  "+col);
+                        if(rs.getString("id_rabotnik")!=null || rs.getString("id_rabotnik")!="" ){
+                            try{
+                                System.out.println("ot update row  " + row);
+                                PreparedStatement ps = dbInternal.prepareStatement("UPDATE ls_pic SET  pic = ? WHERE id_rabotnik = " + row );
+                                try{
+                                    
+                                    fileLength = (int)file.length();
+                                    System.out.println("fail lenth " + fileLength);
+                                    InputStream streamedJpg = new FileInputStream(file);
+                                    
+                                }catch(java.io.IOException iox){System.out.println("Problem pri faila");iox.printStackTrace();}
+                                System.out.println("fail lenth " + fileLength);
+                                ps.setBinaryStream(1,streamedJpg,fileLength);
+                                
+                                ps.executeUpdate();
+                            }catch(java.sql.SQLException sqle){System.out.println("Problem pri sql");
+                            sqle.printStackTrace();}
                             
-                            fileLength = (int)file.length();
-                            System.out.println("fail lenth " + fileLength);
-                            InputStream streamedJpg = new FileInputStream(file);
+                        }else{
+                            try{
+                                System.out.println("ot insert row  " + row);
+                                PreparedStatement ps = dbInternal.prepareStatement("INSERT INTO `ls_pic` (`id_rabotnik`, `pic`) VALUES ("+ row + ", ?)");
+                                
+                                try{
+                                    
+                                    fileLength = (int)file.length();
+                                    System.out.println("fail lenth " + fileLength);
+                                    InputStream streamedJpg = new FileInputStream(file);
+                                    
+                                }catch(java.io.IOException iox){System.out.println("Problem pri faila");iox.printStackTrace();}
+                                System.out.println("fail lenth " + fileLength);
+                                ps.setBinaryStream(1,streamedJpg,fileLength);
+                                
+                                ps.executeUpdate();
+                            }catch(java.sql.SQLException sqle){System.out.println("Problem pri sql");
+                            sqle.printStackTrace();}
                             
-                        }catch(java.io.IOException iox){System.out.println("Problem pri faila");}
-                        System.out.println("fail lenth " + fileLength);
-                        ps.setBinaryStream(1,streamedJpg,fileLength);
-                        
-                        ps.executeUpdate();
-                    }catch(java.sql.SQLException sqle){System.out.println("Problem pri sql");
-                    sqle.printStackTrace();}
-                    
-                    
+                            
+                        }
+                    } catch(java.sql.SQLException sqle){sqle.printStackTrace();}
                 }
             }
             
@@ -310,14 +337,14 @@ public class FrmPic extends javax.swing.JInternalFrame implements java.awt.event
                                 byte[] b = output.toByteArray();
                                 input.close();
                                 output.close();
-                            }catch(java.io.IOException iox){}
+                            }catch(java.io.IOException iox){iox.printStackTrace();}
                             rsCus.close();
                             
                             // load final buffer to image icon
                             icon = new ImageIcon(b);
                             jLabel1.setIcon(icon);
                             jLabel1.repaint();
-                        }} catch(java.sql.SQLException sqle){}
+                        }} catch(java.sql.SQLException sqle){sqle.printStackTrace();}
                     
                     
                     
