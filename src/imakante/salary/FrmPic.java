@@ -125,6 +125,12 @@ public class FrmPic extends javax.swing.JInternalFrame implements java.awt.event
         jPanel2.add(jButton2);
 
         jButton3.setText("\u0418\u0417\u0425\u041e\u0414");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         jPanel2.add(jButton3);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
@@ -132,6 +138,11 @@ public class FrmPic extends javax.swing.JInternalFrame implements java.awt.event
         pack();
     }
     // </editor-fold>//GEN-END:initComponents
+    
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
+        UnloadWindow();
+    }//GEN-LAST:event_jButton3ActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         setImage_to_DB();
@@ -142,6 +153,7 @@ public class FrmPic extends javax.swing.JInternalFrame implements java.awt.event
     }//GEN-LAST:event_jLabel1MouseClicked
     
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+      
         jLabel1.setIcon(null);
         jLabel1.repaint();
     }//GEN-LAST:event_jButton9ActionPerformed
@@ -270,44 +282,40 @@ public class FrmPic extends javax.swing.JInternalFrame implements java.awt.event
                     int row = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
                     try{
                         rs = dbInternal.createStatement().executeQuery("SELECT id_rabotnik FROM ls_pic WHERE id_rabotnik = "+row);
-                      
-                       System.out.println("col  "+col);
-                        if(rs.getString("id_rabotnik")!=null || rs.getString("id_rabotnik")!="" ){
+                        
+                        
+                        if(rs.next()){
                             try{
                                 System.out.println("ot update row  " + row);
                                 PreparedStatement ps = dbInternal.prepareStatement("UPDATE ls_pic SET  pic = ? WHERE id_rabotnik = " + row );
-                                try{
-                                    
                                     fileLength = (int)file.length();
                                     System.out.println("fail lenth " + fileLength);
                                     InputStream streamedJpg = new FileInputStream(file);
-                                    
-                                }catch(java.io.IOException iox){System.out.println("Problem pri faila");iox.printStackTrace();}
+                                
                                 System.out.println("fail lenth " + fileLength);
                                 ps.setBinaryStream(1,streamedJpg,fileLength);
                                 
                                 ps.executeUpdate();
-                            }catch(java.sql.SQLException sqle){System.out.println("Problem pri sql");
-                            sqle.printStackTrace();}
+                            }catch(Exception e){System.out.println("Problem pri sql");
+                            e.printStackTrace();}
                             
                         }else{
                             try{
                                 System.out.println("ot insert row  " + row);
                                 PreparedStatement ps = dbInternal.prepareStatement("INSERT INTO `ls_pic` (`id_rabotnik`, `pic`) VALUES ("+ row + ", ?)");
                                 
-                                try{
-                                    
-                                    fileLength = (int)file.length();
-                                    System.out.println("fail lenth " + fileLength);
-                                    InputStream streamedJpg = new FileInputStream(file);
-                                    
-                                }catch(java.io.IOException iox){System.out.println("Problem pri faila");iox.printStackTrace();}
+                                
+                                fileLength = (int)file.length();
+                                System.out.println("fail lenth " + fileLength);
+                                InputStream streamedJpg = new FileInputStream(file);
+                                
+                                
                                 System.out.println("fail lenth " + fileLength);
                                 ps.setBinaryStream(1,streamedJpg,fileLength);
                                 
                                 ps.executeUpdate();
-                            }catch(java.sql.SQLException sqle){System.out.println("Problem pri sql");
-                            sqle.printStackTrace();}
+                            }catch(Exception e){System.out.println("Problem pri sql");
+                            e.printStackTrace();}
                             
                             
                         }
@@ -327,24 +335,25 @@ public class FrmPic extends javax.swing.JInternalFrame implements java.awt.event
                             java.io.InputStream input = bimage.getBinaryStream();
                             output = new ByteArrayOutputStream();
                             // set read buffer size
-                            byte[] rb = new byte[102400];
+                            byte[] rb = new byte[1024];
                             int ch = 0;
-                            try{
-                                while ((ch=input.read(rb)) != -1) {
-                                    output.write(rb, 0, ch);
-                                }
-                                // transfer to byte buffer
-                                byte[] b = output.toByteArray();
-                                input.close();
-                                output.close();
-                            }catch(java.io.IOException iox){iox.printStackTrace();}
+                            
+                            while ((ch=input.read(rb)) != -1) {
+                                output.write(rb, 0, ch);
+                            }
+                            // transfer to byte buffer
+                            byte[] b = output.toByteArray();
+                            input.close();
+                            output.close();
+                            
                             rsCus.close();
                             
                             // load final buffer to image icon
                             icon = new ImageIcon(b);
                             jLabel1.setIcon(icon);
                             jLabel1.repaint();
-                        }} catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+                        }
+                    } catch(Exception e){e.printStackTrace();}
                     
                     
                     
