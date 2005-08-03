@@ -9,7 +9,7 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
     
     public FrmDlajnost(java.sql.Connection srcCN, javax.swing.JFrame getParentFrame)
     throws java.sql.SQLException {
-        super("\u0421\u043f\u0438\u0441\u044a\u043a \u0414\u043b\u044a\u0436\u043d\u043e\u0441\u0442\u0438", true, true, true, true);
+        super(java.util.ResourceBundle.getBundle("bundle/salary/names").getString("pozition"), true, true, true, true);
         dbInternal = srcCN;
         JFParentFrame = getParentFrame;
         initResource();
@@ -59,7 +59,7 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
         jPanel5.setLayout(new java.awt.GridBagLayout());
 
         jPanel5.setBorder(new javax.swing.border.EtchedBorder());
-        jLabel1.setText("\u041d\u043e\u043c\u0435\u0440");
+        jLabel1.setText(java.util.ResourceBundle.getBundle("bundle/salary/names").getString("number"));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel5.add(jLabel1, gridBagConstraints);
@@ -75,7 +75,7 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel5.add(jTextField1, gridBagConstraints);
 
-        jLabel2.setText("\u0414\u043b\u044a\u0436\u043d\u043e\u0441\u0442");
+        jLabel2.setText(java.util.ResourceBundle.getBundle("bundle/salary/names").getString("pozition"));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel5.add(jLabel2, gridBagConstraints);
@@ -91,7 +91,7 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel5.add(jTextField2, gridBagConstraints);
 
-        jButton2.setText("\u0422\u044a\u0440\u0441\u0438");
+        jButton2.setText(java.util.ResourceBundle.getBundle("bundle/salary/names").getString("search"));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -118,7 +118,7 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
         getContentPane().add(jPanel2, java.awt.BorderLayout.NORTH);
 
         jPanel3.setBorder(new javax.swing.border.EtchedBorder());
-        jButton1.setText("\u041d\u043e\u0432\u0430 \u0434\u043b\u044a\u0436\u043d\u043e\u0441\u0442");
+        jButton1.setText(java.util.ResourceBundle.getBundle("bundle/salary/names").getString("new_pozition"));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -132,7 +132,7 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
 
         jPanel3.add(jButton1);
 
-        jButton5.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f");
+        jButton5.setText(java.util.ResourceBundle.getBundle("bundle/salary/names").getString("edit"));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -146,7 +146,7 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
 
         jPanel3.add(jButton5);
 
-        jButton3.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
+        jButton3.setText(java.util.ResourceBundle.getBundle("bundle/salary/names").getString("delete"));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -160,7 +160,7 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
 
         jPanel3.add(jButton3);
 
-        jButton4.setText("\u041e\u043f\u0440\u0435\u0441\u043d\u044f\u0432\u0430\u043d\u0435");
+        jButton4.setText(java.util.ResourceBundle.getBundle("bundle/salary/names").getString("refresh"));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
