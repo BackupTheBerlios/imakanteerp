@@ -35,13 +35,13 @@ public class frmAddNas extends javax.swing.JDialog implements java.awt.event.Win
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jPanel1.setBorder(new javax.swing.border.EtchedBorder());
-        jLabel1.setText("\u0418\u043c\u0435 \u043d\u0430 \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u043e\u0442\u043e \u043c\u044f\u0441\u0442\u043e");
+        jLabel1.setText(java.util.ResourceBundle.getBundle("bundle/salary/names_bg").getString("city"));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(20, 20, 5, 5);
         jPanel1.add(jLabel1, gridBagConstraints);
 
-        jLabel2.setText("\u041e\u0431\u043b\u0430\u0441\u0442");
+        jLabel2.setText(java.util.ResourceBundle.getBundle("bundle/salary/names_bg").getString("area"));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -78,7 +78,7 @@ public class frmAddNas extends javax.swing.JDialog implements java.awt.event.Win
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         jPanel2.setBorder(new javax.swing.border.EtchedBorder());
-        jButton1.setText("\u0417\u0430\u043f\u0430\u0437\u0438");
+        jButton1.setText(java.util.ResourceBundle.getBundle("bundle/salary/names_bg").getString("save"));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -92,7 +92,7 @@ public class frmAddNas extends javax.swing.JDialog implements java.awt.event.Win
 
         jPanel2.add(jButton1);
 
-        jButton2.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
+        jButton2.setText(java.util.ResourceBundle.getBundle("bundle/salary/names_bg").getString("close"));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);

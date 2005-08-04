@@ -55,8 +55,9 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     FrmVedZaplati FormVedZaplati;
     FrmVedAvans   FormVedAvans;
     frmSleujParam  FormSleujParam;
-    private FrmAct        FormActStDlaj;
+    FrmAct        FormActStDlaj;
     FrmPic FormPic;
+    FrmNasM    FormNasM;
     imakante.salary.FrmNCP FormNCP;
     Font menuFont = new Font("Tahoma", Font.PLAIN, 14);
     imakante.salary.frmLogo splash = new imakante.salary.frmLogo();
@@ -811,9 +812,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         //End verify if the form is already loaded
         
     }
-    //End create customer from
-    
-    //Create dod form
+   
     protected void loadDODForm() throws java.sql.SQLException{
         
         boolean AlreadyLoaded = isLoaded("\u0414\u041e\u041e \u0442\u0430\u0431\u043b\u0438\u0446\u0430");
@@ -841,12 +840,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         //End verify if the form is already loaded
         
     }
-    //End create supplier form
-    
-    //Create SalesRep form
-    
-    
-    
+  
     protected void loadDOOForm() throws java.sql.SQLException{
         //Verify if the form is already loaded
         boolean AlreadyLoaded = isLoaded("\u0414\u041e\u041e \u043d\u0430\u0447\u0438\u0441\u043b\u0435\u043d\u0438\u044f");
@@ -873,7 +867,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         //End verify if the form is already loaded
         
     }
-    //End create supplier form
+    
     protected void loadMonthForm() throws java.sql.SQLException{
         //Verify if the form is already loaded
         boolean AlreadyLoaded = isLoaded("\u041c\u0435\u0441\u0435\u0447\u043d\u0438 \u0434\u0430\u043d\u043d\u0438");
@@ -901,9 +895,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         //End verify if the form is already loaded
         
     }
-    
-    
-    
+   
     protected void loadDateForm() {
         
         FrmDate frm = new FrmDate(this,dbCON);
@@ -911,7 +903,6 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
     }
     
-    //End create Date
     protected void loadVedomostZForm() {
         boolean AlreadyLoaded = isLoaded("Ведомости");
         if (pMonth != 0 && (rightsUser.get("vedom").toString()) != "0"){
@@ -940,6 +931,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         
     }
+    
     protected void loadVedomostАForm() {
         boolean AlreadyLoaded = isLoaded("Ведомости Аванси");
         
@@ -971,6 +963,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         
     }
+    
     protected void loadLogonForm() throws java.sql.SQLException{
         try {
             dbCON.close();
@@ -996,7 +989,6 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         System.out.println(pYear);
         
     }
-    
     
     protected void loadNewMForm() throws java.sql.SQLException {
         
@@ -1045,6 +1037,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         
     }
+    
     protected void loadDlajForm() throws java.sql.SQLException{
         
         boolean AlreadyLoaded = isLoaded("Списък отдели");
@@ -1069,6 +1062,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         }
         
     }
+    
     protected void loadPic() {
         
         boolean AlreadyLoaded = isLoaded("Снимки");
@@ -1091,15 +1085,14 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         }
         
     }
+    
     protected void loadSlujParam(){
         try{
             FormSleujParam = new frmSleujParam(this, dbCON, true);
             FormSleujParam.setVisible(true);
         } catch(java.sql.SQLException sqle){}
     }
-    
-    
-    
+   
     protected void loadActStDlaj(){
         try{
             setFormActStDlaj(new FrmAct(this, dbCON, "c:/imakante/salary/jasper/","","Акт за встъпване в длъжност"));
@@ -1110,13 +1103,13 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         
     }
+    
     protected void loadEreaseM(){
         
         frmEreseMonth  FormEreseM = new frmEreseMonth(this, true, dbCON);
         FormEreseM.setVisible(true);
     }
-    
-    
+        
     protected void loadSplashScreen(){
         
         FormSplash.start();
@@ -1128,11 +1121,13 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         }
         
     }
+    
     protected void loadCalendar(){
         javax.swing.JDialog calendar = new calendarClass(this, true, dbCON, pMonth, pYear);
         calendar.setVisible(true);
         
     }
+    
     protected void loadImport(){
         javax.swing.JDialog FrmImport = new frmImport(this, true, dbCON);
         FrmImport.setVisible(true);
@@ -1174,6 +1169,34 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         }
         
     }
+    
+    protected void loadNasM() {
+        
+        boolean AlreadyLoaded = isLoaded("\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u0438 \u043c\u0435\u0441\u0442\u0430");
+        if(AlreadyLoaded==false){
+            try{
+               FormNasM = new FrmNasM(dbCON, this) ;}catch(java.sql.SQLException sqle){}
+            
+            Desk1.add(FormNasM);
+            try{FormNasM.setMaximum(true);}catch(java.beans.PropertyVetoException bpve){}
+            FormNasM.setVisible(true);
+            
+            try{
+                FormNasM.setIcon(false);
+                FormNasM.setSelected(true);
+            }catch(PropertyVetoException e){
+            }
+        }else{
+            try{
+                FormNasM.setIcon(false);
+                FormNasM.setSelected(true);
+            }catch(PropertyVetoException e){
+            }
+        }
+        
+    }
+      
+       
     /******************** End method for loading form start *******************/
     public boolean setSupportStProc(boolean sp){
         suportStProc = sp;
@@ -1192,21 +1215,25 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         pMonth = xMonth;
         return pMonth;
     }
+    
     public static int getMonth(int xMonth) {
         return pMonth;
     }
+    
     public int setYear(int xYear){
         pYear = xYear;
         return pYear;
     }
+    
     public static int getYear(int xYear){
         return pYear;
     }
-    // za nastroika na bazata
+   
     public java.sql.Connection setConnection(java.sql.Connection extCon){
         dbCON = extCon;
         return dbCON;
     }
+    
     public java.util.HashMap setRights(java.util.HashMap extHash){
         rightsUser = extHash;
         return rightsUser;
@@ -1216,14 +1243,16 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         DBDriver = strDriver;
         return DBDriver;
     }
+    
     public String getDBDriver(String strDriver){
         return DBDriver;
     }
-    
+   
     public String setDBSource(String strSource){
         DBSource = strSource;
         return DBSource;
     }
+    
     public static String getDBSource(String strSource){
         return DBSource;
     }
@@ -1232,14 +1261,17 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         DBUserName = strUser;
         return DBUserName;
     }
+    
     public static String getUser(){
         return DBUserName;
     }
+    
     public String setFirm(String strFirm){
         StrBTitle = "\u041b\u0438\u0447\u0435\u043d \u0441\u044a\u0441\u0442\u0430\u0432 \u043d\u0430 \u0444\u0438\u0440\u043c\u0430 " + strFirm;
         return StrBTitle;
         
     }
+    
     public static String setNFirm(String strFirm){
         StrName  =  strFirm;
         return StrName;
@@ -1254,6 +1286,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         DBPassword = strPass;
         return DBPassword;
     }
+    
     public static String getPass(){
         return DBPassword;
     }
@@ -1378,7 +1411,13 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 } catch(Exception qle){
                 };
             }
-            
+            else if(srcObject=="nas"){
+                
+                try{
+                    loadNasM();
+                } catch(Exception qle){
+                };
+            }
             else if(srcObject=="exit"){
                 UnloadWindow();
             }

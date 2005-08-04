@@ -130,11 +130,8 @@ public class frmArea extends javax.swing.JDialog implements java.awt.event.Windo
     public static imakante.com.CustomTableModel model;
     public static imakante.com.CustomTable jTable;
     public static final String Names[] = {"\u041d\u043e\u043c\u0435\u0440",
-            "\u0418\u043c\u0435 \u043d\u0430 \u043e\u0431\u043b\u0430\u0441\u0442\u0442\u0430"};
-            
-            
-            
-            
+            "\u0418\u043c\u0435 \u043d\u0430 \u043e\u0431\u043b\u0430\u0441\u0442\u0442\u0430"
+            ,"\u0414\u044a\u0440\u0436\u0430\u0432\u0430"};
             
             protected void deleteRecord(){
                 try{
@@ -143,7 +140,7 @@ public class frmArea extends javax.swing.JDialog implements java.awt.event.Windo
                         System.out.println("row "+row);
                         stm = dbInternal.createStatement(java.sql.ResultSet.TYPE_SCROLL_SENSITIVE,
                                 java.sql.ResultSet.CONCUR_UPDATABLE);
-                        stm.execute("DELETE FROM oblasti WHERE id = "+ row );
+                        stm.execute("DELETE FROM n_oblast WHERE id = "+ row );
                         repaintTable();
                     }
                 } catch(java.sql.SQLException sqle){sqle.printStackTrace();}
@@ -162,7 +159,7 @@ public class frmArea extends javax.swing.JDialog implements java.awt.event.Windo
             }
             protected static void newRecord(){
                 try{
-                    stm.execute("INSERT INTO `oblasti` (`name_oblast`) VALUES ('')");}catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+                    stm.execute("INSERT INTO n_oblast (name) VALUES ('')");}catch(java.sql.SQLException sqle){sqle.printStackTrace();}
                 
             }
             
@@ -175,7 +172,7 @@ public class frmArea extends javax.swing.JDialog implements java.awt.event.Windo
                 
                 
                 try{
-                    rsCus = stm.executeQuery("SELECT * FROM oblasti");} catch (java.sql.SQLException sqle){sqle.printStackTrace();}
+                    rsCus = stm.executeQuery("SELECT * FROM n_oblast");} catch (java.sql.SQLException sqle){sqle.printStackTrace();}
                 
                 model = new imakante.com.CustomTableModel(dbInternal, rsCus, Names);
                 jTable = new imakante.com.CustomTable(model);
