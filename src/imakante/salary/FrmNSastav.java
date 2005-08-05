@@ -407,12 +407,12 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
             if(Integer.parseInt((String.valueOf(strIniTable.charAt(7))))==1){ Names[x] = "\u041f\u043e\u043b"; strQ=strQ + ", gender";x++;}
             if(Integer.parseInt((String.valueOf(strIniTable.charAt(8))))==1){ Names[x] = "\u041d\u043e\u043c\u0435\u0440 \u043d\u0430 \u041b\u041a"; strQ=strQ + ", nomer_LK";x++;}
             if(Integer.parseInt((String.valueOf(strIniTable.charAt(9)))) == 1){Names[x] ="\u0418\u0437\u0434\u0430\u0434\u0435\u043d\u0430 \u043d\u0430"; strQ=strQ + ", DATE_FORMAT(ls_dates.data_izd_LK,'%Y-%m-%d') AS date_lk";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(10))))==1){ Names[x] = "\u041e\u0431\u043b\u0430\u0441\u0442"; strQ=strQ + ", oblast";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(11))))==1){ Names[x] = "\u041f\u043e\u0449\u0435\u043d\u0441\u043a\u0438 \u043a\u043e\u0434"; strQ=strQ + ", postcode";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(12))))==1){ Names[x] = "\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e"; strQ=strQ + ", grad";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(13))))==1){ Names[x] = "\u0410\u0434\u0440\u0435\u0441"; strQ=strQ + ", address";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(14))))==1){ Names[x] = "\u0414\u043e\u043c\u0430\u0448\u0435\u043d \u0442\u0435\u043b\u0435\u0444\u043e\u043d"; strQ=strQ + ", telefon";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(15))))==1){ Names[x] = "\u041c\u043e\u0431\u0438\u043b\u0435\u043d \u0442\u0435\u043b\u0435\u0444\u043e\u043d"; strQ=strQ + ", mobilen";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(10))))==1){ Names[x] = "\u041e\u0431\u043b\u0430\u0441\u0442"; strQ=strQ + ", n_oblast.name AS name_oblast";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(11))))==1){ Names[x] = "\u041f\u043e\u0449\u0435\u043d\u0441\u043a\u0438 \u043a\u043e\u0434"; strQ=strQ + ", n_nm.postcode";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(12))))==1){ Names[x] = "\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e"; strQ=strQ + ", n_nm.name AS name_grad";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(13))))==1){ Names[x] = "\u0410\u0434\u0440\u0435\u0441"; strQ=strQ + ", ls_addresses.address";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(14))))==1){ Names[x] = "\u0414\u043e\u043c\u0430\u0448\u0435\u043d \u0442\u0435\u043b\u0435\u0444\u043e\u043d"; strQ=strQ + ", ls_addresses.telåfon";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(15))))==1){ Names[x] = "\u041c\u043e\u0431\u0438\u043b\u0435\u043d \u0442\u0435\u043b\u0435\u0444\u043e\u043d"; strQ=strQ + ", ls_addresses.mobilen";x++;}
             if(Integer.parseInt((String.valueOf(strIniTable.charAt(16))))==1){ Names[x] = "\u0435@\u043c\u0430\u0439\u043b"; strQ=strQ + ", email";x++;}
             if(Integer.parseInt((String.valueOf(strIniTable.charAt(17))))==1){ Names[x] = "\u041d\u043e\u043c\u0435\u0440 \u043d\u0430 \u0434\u043e\u0433\u043e\u0432\u043e\u0440\u0430"; strQ=strQ + ", nomer_dogowor";x++;}
             if(Integer.parseInt((String.valueOf(strIniTable.charAt(18))))==1){ Names[x] = "\u0414\u0430\u0442\u0430 \u043d\u0430 \u043d\u0430\u0437\u043d\u0430\u0447\u0430\u0432\u0430\u043d\u0435"; strQ=strQ + ", DATE_FORMAT(ls_dates.data_naznach,'%Y-%m-%d') AS nazdate";x++;}
@@ -420,7 +420,7 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
             if(Integer.parseInt((String.valueOf(strIniTable.charAt(20))))==1){ Names[x] = "\u0414\u0430\u0442\u0430 \u043d\u0430 \u043d\u0430\u043f\u0443\u0441\u043a\u0430\u043d\u0435"; strQ=strQ + ", DATE_FORMAT(ls_dates.data_napuskane,'%Y-%m-%d') AS napudate";x++;}
             if(Integer.parseInt((String.valueOf(strIniTable.charAt(21))))==1){ Names[x] = "\u041f\u043e\u0441\u043b\u0435\u0434\u0435\u043d \u0434\u0435\u043d \u0432 \u043e\u0441\u0438\u0433\u0443\u0440\u044f\u0432\u0430\u043d\u0435"; strQ=strQ + ", DATE_FORMAT(ls_dates.posl_den_w_osig,'%Y-%m-%d') AS posddate";x++;}
             if(Integer.parseInt((String.valueOf(strIniTable.charAt(22))))==1){ Names[x] = "\u041e\u0441\u043d\u043e\u0432\u0430\u043d\u0438\u0435 \u043d\u0430 \u0434\u043e\u0433\u043e\u0432\u043e\u0440\u0430"; strQ=strQ + ", osnowanie_dog";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(23))))==1){ Names[x] = "\u0421\u0440\u043e\u043a \u043d\u0430 \u0414\u043e\u0433\u043e\u0432\u043e\u0440\u0430"; strQ=strQ + ", srok_dog";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(23))))==1){ Names[x] = "\u0421\u0440\u043e\u043a \u043d\u0430 \u0414\u043e\u0433\u043e\u0432\u043e\u0440\u0430"; strQ=strQ + ", DATE_FORMAT(ls_dates.srok_dogov, '%Y-%m-%d') AS srok_dog ";x++;}
             if(Integer.parseInt((String.valueOf(strIniTable.charAt(24))))==1){ Names[x] = "\u0414\u043d\u0438 \u0421\u0442\u0430\u0436"; strQ=strQ + ", d_st";x++;}
             if(Integer.parseInt((String.valueOf(strIniTable.charAt(25))))==1){ Names[x] = "\u041c\u0435\u0441\u0435\u0446\u0438 \u0421\u0442\u0430\u0436"; strQ=strQ + ", m_st";x++;}
             if(Integer.parseInt((String.valueOf(strIniTable.charAt(26))))==1){ Names[x] = "\u0413\u043e\u0434\u0438\u043d\u0438 \u0441\u0442\u0430\u0436"; strQ=strQ + ", g_st";x++;}
@@ -432,7 +432,7 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
                 Names =  new String[4];
                 Names = null;
             }
-            strQ=strQ + " FROM ls_main LEFT JOIN ls_dates ON (ls_dates.id_rab = ls_main.id)";
+            strQ=strQ + " FROM ls_main LEFT JOIN ls_dates ON (ls_dates.id_rab = ls_main.id) LEFT JOIN ls_addresses ON (ls_addresses.id_rab = ls_main.id) LEFT JOIN n_nm ON (n_nm.id = ls_addresses.id_nasm) LEFT JOIN n_oblast ON (n_oblast.id = n_nm.id_oblast)";
             
             System.out.println(strQ);
         }catch(Exception e1) {e1.printStackTrace();}
