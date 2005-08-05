@@ -1,28 +1,14 @@
-/*
- * jdAddLice.java
- *
- * Created on Четвъвтък, 2005, Юли 21, 18:46
- */
+
 package imakante.salary;
 
-/**
- *
- * @author  jp
- */
 public class jdAddLice extends javax.swing.JDialog implements java.awt.event.WindowListener{
-    
-    java.sql.Connection cnAEC;
-    java.sql.Statement stAEC;
-    java.sql.ResultSet rsAEC;
-    
-    boolean ADDING_STATE;
-    public int lMonth, lYear;
+   
     
     public jdAddLice(java.awt.Frame parent, boolean modal, java.sql.Connection dbCon, int id_rab) {
         super(parent, modal);
         dbInternal = dbCon;
         id_row = id_rab;
-        
+        initResource();
         
         initComponents();
     }
@@ -784,7 +770,8 @@ public class jdAddLice extends javax.swing.JDialog implements java.awt.event.Win
     public static java.sql.Statement stm;
     public static java.sql.ResultSet rs;
     public static int id_row;
-    
+    boolean ADDING_STATE;
+    public int lMonth, lYear;
     
     
     protected static void initResource(){
