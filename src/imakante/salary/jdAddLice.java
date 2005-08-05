@@ -786,8 +786,8 @@ public class jdAddLice extends javax.swing.JDialog implements java.awt.event.Win
                 rs = stm.executeQuery("SELECT ls_main.id, ls_main.nomer, ls_main.first, ls_main.second, ls_main.family, ls_main.egn, DATE_FORMAT(ls_dates.b_date,'%Y-%m-%d') AS bdate, gender, nomer_LK, DATE_FORMAT(ls_dates.data_izd_LK,'%Y-%m-%d') AS date_lk, n_oblast.name AS name_oblast, n_nm.postcode, n_nm.name AS name_grad, ls_addresses.address, ls_addresses.telåfon, ls_addresses.mobilen, email, nomer_dogowor, DATE_FORMAT(ls_dates.data_naznach,'%Y-%m-%d') AS nazdate, DATE_FORMAT(ls_dates.data_postypwane,'%Y-%m-%d') AS postdate, DATE_FORMAT(ls_dates.data_napuskane,'%Y-%m-%d') AS napudate, DATE_FORMAT(ls_dates.posl_den_w_osig,'%Y-%m-%d') AS posddate, osnowanie_dog, DATE_FORMAT(ls_dates.srok_dogov, '%Y-%m-%d') AS srok_dog , d_st, m_st, g_st, kateg_rabotnik, belejki  FROM ls_main LEFT JOIN ls_dates ON (ls_dates.id_rab = ls_main.id) LEFT JOIN ls_addresses ON (ls_addresses.id_rab = ls_main.id) LEFT JOIN n_nm ON (n_nm.id = ls_addresses.id_nasm) LEFT JOIN n_oblast ON (n_oblast.id = n_nm.id_oblast) WHERE ls_main.id = " + id_row);
                 while(rs.next()){
                     
-                    jcbDistrict;
-                    jcbGender;
+                    jcbDistrict;    // oblast
+                    jcbGender;  // pol
                     
                     jtaNotes.setText(rs.getString("belejki"));
                     jtfAddress.setText(rs.getString("address"));
@@ -798,8 +798,8 @@ public class jdAddLice extends javax.swing.JDialog implements java.awt.event.Win
                     jtfEGN.setText(rs.getString("egn"));
                     jtfEmail.setText(rs.getString("email"));
                     jtfFName.setText(rs.getString("family"));
-                    jtfGorunds;
-                    jtfHoursPerDay;
+                    jtfGorunds.setText(rs.getString("")); // osnowanie na dogowora
+                    jtfHoursPerDay.setText(rs.getString("")); // x4asow raboten den
                     jtfIDCDate.setText(rs.getString("date_lk"));
                     jtfIDCard.setText(rs.getString("nomer_LK"));
                     jtfLOSDays.setText(rs.getString("d_st"));
@@ -812,13 +812,13 @@ public class jdAddLice extends javax.swing.JDialog implements java.awt.event.Win
                     jtfNumber.setText(rs.getString("nomer"));
                     jtfPCode.setText(rs.getString("postcode"));
                     jtfPhone.setText(rs.getString("telefon"));
-                    jtfPosition;
+                    jtfPosition.setText(rs.getString(""));    // dlyjnost
                     jtfQuitDate.setText(rs.getString("napudate"));
-                    jtfSalary;
-                    jtfSignonDate;
-                    jtfTerm;
-                    jtfTypeEmp;
-                    jtpDataInput;
+                    jtfSalary.setText(rs.getString(""));  // zaplata
+                    jtfSignonDate.setText(rs.getString(""));  // data na postypwane
+                    jtfTerm.setText(rs.getString(""));    // srok na dogowora
+                    jtfTypeEmp.setText(rs.getString("")); // kategoriq rabotnik
+                    jtpDataInput;   // JTabbedPane!!! - ne e tekstow komponent!
                     
                 }
                 
