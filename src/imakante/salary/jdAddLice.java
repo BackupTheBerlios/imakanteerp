@@ -787,8 +787,7 @@ public class jdAddLice extends javax.swing.JDialog implements java.awt.event.Win
                 while(rs.next()){
                     
                     jcbDistrict;    // oblast
-                    jcbGender;  // pol
-                    
+                    jcbGender.setText(rs.getString("gender"));  // pol
                     jtaNotes.setText(rs.getString("belejki"));
                     jtfAddress.setText(rs.getString("address"));
                     jtfAssignDate.setText(rs.getString("nazdate"));
@@ -798,7 +797,7 @@ public class jdAddLice extends javax.swing.JDialog implements java.awt.event.Win
                     jtfEGN.setText(rs.getString("egn"));
                     jtfEmail.setText(rs.getString("email"));
                     jtfFName.setText(rs.getString("family"));
-                    jtfGorunds.setText(rs.getString("")); // osnowanie na dogowora
+                    jtfGorunds.setText(rs.getString("osnowanie_dog")); // osnowanie na dogowora
                     jtfHoursPerDay.setText(rs.getString("")); // x4asow raboten den
                     jtfIDCDate.setText(rs.getString("date_lk"));
                     jtfIDCard.setText(rs.getString("nomer_LK"));
@@ -815,10 +814,10 @@ public class jdAddLice extends javax.swing.JDialog implements java.awt.event.Win
                     jtfPosition.setText(rs.getString(""));    // dlyjnost
                     jtfQuitDate.setText(rs.getString("napudate"));
                     jtfSalary.setText(rs.getString(""));  // zaplata
-                    jtfSignonDate.setText(rs.getString(""));  // data na postypwane
-                    jtfTerm.setText(rs.getString(""));    // srok na dogowora
+                    jtfSignonDate.setText(rs.getString("postdate"));  // data na postypwane
+                    jtfTerm.setText(rs.getString("srok_dog"));    // srok na dogowora
                     jtfTypeEmp.setText(rs.getString("")); // kategoriq rabotnik
-                    jtpDataInput;   // JTabbedPane!!! - ne e tekstow komponent!
+                  
                     
                 }
                 
