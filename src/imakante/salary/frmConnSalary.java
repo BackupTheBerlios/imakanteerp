@@ -17,7 +17,9 @@ public class frmConnSalary extends java.awt.Dialog {
             java.io.BufferedReader in = new java.io.BufferedReader(new java.io.InputStreamReader(new
                     java.io.FileInputStream("c:/salary.ini"), "cp1251"));
             if (in == null){
-                JOptionPane.showMessageDialog(null,"Възникнал проблем при четене на файл salary.ini .\n Моля копирайте стандартен файл.","ИМАКАНТЕ",JOptionPane.WARNING_MESSAGE);
+                
+                JOptionPane.showMessageDialog(null,java.util.ResourceBundle.getBundle("bundle/salary/err_mes").getString("err_ini"),java.util.ResourceBundle.getBundle("bundle/salary/err_mes").getString("IMAKANTE"),JOptionPane.WARNING_MESSAGE);
+                names[0] = "ПРОБНА";
                 
             } else {
                 while ((lineStr = in.readLine()) != null) {
@@ -227,13 +229,15 @@ public class frmConnSalary extends java.awt.Dialog {
             dbConn = java.sql.DriverManager.getConnection(lDBSource,lDBUser ,lDBPass);
             java.sql.Statement stm = dbConn.createStatement();
              } catch(ClassNotFoundException e)  {
+                 JOptionPane.showMessageDialog(null,"Възникнал проблем при четене на файл salary.ini .\n Моля копирайте стандартен файл.","ИМАКАНТЕ",JOptionPane.WARNING_MESSAGE);
+                
             System.err.println("Failed to load driver");
             e.printStackTrace();
-            System.exit(1);
+           // System.exit(1);
         } catch(java.sql.SQLException e){
             System.err.println("Unable to connect");
             e.printStackTrace();
-            System.exit(1);
+          //  System.exit(1);
         }
     }
     

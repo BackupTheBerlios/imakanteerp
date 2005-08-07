@@ -689,8 +689,8 @@ public class jdAddLice extends javax.swing.JDialog implements java.awt.event.Win
     private javax.swing.JButton jbAdd;
     private javax.swing.JButton jbChange;
     private javax.swing.JButton jbQuit;
-    private javax.swing.JComboBox jcbDistrict;
-    private javax.swing.JComboBox jcbGender;
+    protected static javax.swing.JComboBox jcbDistrict;
+    protected static javax.swing.JComboBox jcbGender;
     private javax.swing.JLabel jlAddress;
     private javax.swing.JLabel jlAssignDate;
     private javax.swing.JLabel jlBDate;
@@ -735,35 +735,35 @@ public class jdAddLice extends javax.swing.JDialog implements java.awt.event.Win
     private javax.swing.JSeparator jsNums2Names;
     private javax.swing.JSeparator jsPayment2Exts;
     private javax.swing.JScrollPane jspNotes;
-    private javax.swing.JTextArea jtaNotes;
-    private javax.swing.JTextField jtfAddress;
-    private javax.swing.JTextField jtfAssignDate;
-    private javax.swing.JTextField jtfBDate;
-    private javax.swing.JTextField jtfCity;
-    private javax.swing.JTextField jtfContractNum;
-    private javax.swing.JTextField jtfEGN;
-    private javax.swing.JTextField jtfEmail;
-    private javax.swing.JTextField jtfFName;
-    private javax.swing.JTextField jtfGorunds;
-    private javax.swing.JTextField jtfHoursPerDay;
-    private javax.swing.JTextField jtfIDCDate;
-    private javax.swing.JTextField jtfIDCard;
-    private javax.swing.JTextField jtfLOSDays;
-    private javax.swing.JTextField jtfLOSMonths;
-    private javax.swing.JTextField jtfLOSYears;
-    private javax.swing.JTextField jtfLastInsDate;
-    private javax.swing.JTextField jtfMName;
-    private javax.swing.JTextField jtfMobile;
-    private javax.swing.JTextField jtfName;
-    private javax.swing.JTextField jtfNumber;
-    private javax.swing.JTextField jtfPCode;
-    private javax.swing.JTextField jtfPhone;
-    private javax.swing.JTextField jtfPosition;
-    private javax.swing.JTextField jtfQuitDate;
-    private javax.swing.JTextField jtfSalary;
-    private javax.swing.JTextField jtfSignonDate;
-    private javax.swing.JTextField jtfTerm;
-    private javax.swing.JTextField jtfTypeEmp;
+    protected static javax.swing.JTextArea jtaNotes;
+    protected static javax.swing.JTextField jtfAddress;
+    protected static javax.swing.JTextField jtfAssignDate;
+    protected static javax.swing.JTextField jtfBDate;
+    protected static javax.swing.JTextField jtfCity;
+    protected static javax.swing.JTextField jtfContractNum;
+    protected static javax.swing.JTextField jtfEGN;
+    protected static javax.swing.JTextField jtfEmail;
+    protected static javax.swing.JTextField jtfFName;
+    protected static javax.swing.JTextField jtfGorunds;
+    protected static javax.swing.JTextField jtfHoursPerDay;
+    protected static javax.swing.JTextField jtfIDCDate;
+    protected static javax.swing.JTextField jtfIDCard;
+    protected static javax.swing.JTextField jtfLOSDays;
+    protected static javax.swing.JTextField jtfLOSMonths;
+    protected static javax.swing.JTextField jtfLOSYears;
+    protected static javax.swing.JTextField jtfLastInsDate;
+    protected static javax.swing.JTextField jtfMName;
+    protected static javax.swing.JTextField jtfMobile;
+    protected static javax.swing.JTextField jtfName;
+    protected static javax.swing.JTextField jtfNumber;
+    protected static javax.swing.JTextField jtfPCode;
+    protected static javax.swing.JTextField jtfPhone;
+    protected static javax.swing.JTextField jtfPosition;
+    protected static javax.swing.JTextField jtfQuitDate;
+    protected static javax.swing.JTextField jtfSalary;
+    protected static javax.swing.JTextField jtfSignonDate;
+    protected static javax.swing.JTextField jtfTerm;
+    protected static javax.swing.JTextField jtfTypeEmp;
     private javax.swing.JTabbedPane jtpDataInput;
     // End of variables declaration//GEN-END:variables
     public static java.sql.Connection dbInternal;
@@ -786,8 +786,8 @@ public class jdAddLice extends javax.swing.JDialog implements java.awt.event.Win
                 rs = stm.executeQuery("SELECT ls_main.id, ls_main.nomer, ls_main.first, ls_main.second, ls_main.family, ls_main.egn, DATE_FORMAT(ls_dates.b_date,'%Y-%m-%d') AS bdate, gender, nomer_LK, DATE_FORMAT(ls_dates.data_izd_LK,'%Y-%m-%d') AS date_lk, n_oblast.name AS name_oblast, n_nm.postcode, n_nm.name AS name_grad, ls_addresses.address, ls_addresses.telåfon, ls_addresses.mobilen, email, nomer_dogowor, DATE_FORMAT(ls_dates.data_naznach,'%Y-%m-%d') AS nazdate, DATE_FORMAT(ls_dates.data_postypwane,'%Y-%m-%d') AS postdate, DATE_FORMAT(ls_dates.data_napuskane,'%Y-%m-%d') AS napudate, DATE_FORMAT(ls_dates.posl_den_w_osig,'%Y-%m-%d') AS posddate, osnowanie_dog, DATE_FORMAT(ls_dates.srok_dogov, '%Y-%m-%d') AS srok_dog , d_st, m_st, g_st, kateg_rabotnik, belejki  FROM ls_main LEFT JOIN ls_dates ON (ls_dates.id_rab = ls_main.id) LEFT JOIN ls_addresses ON (ls_addresses.id_rab = ls_main.id) LEFT JOIN n_nm ON (n_nm.id = ls_addresses.id_nasm) LEFT JOIN n_oblast ON (n_oblast.id = n_nm.id_oblast) WHERE ls_main.id = " + id_row);
                 while(rs.next()){
                     
-                    jcbDistrict;    // oblast
-                    jcbGender.setText(rs.getString("gender"));  // pol
+                   // jcbDistrict;    // oblast
+                 //   jcbGender.setText(rs.getString("gender"));  // pol
                     jtaNotes.setText(rs.getString("belejki"));
                     jtfAddress.setText(rs.getString("address"));
                     jtfAssignDate.setText(rs.getString("nazdate"));
@@ -805,7 +805,7 @@ public class jdAddLice extends javax.swing.JDialog implements java.awt.event.Win
                     jtfLOSMonths.setText(rs.getString("m_st"));
                     jtfLOSYears.setText(rs.getString("g_st"));
                     jtfLastInsDate.setText(rs.getString("posddate"));
-                    jtfMName.setTeext(rs.getString("second"));
+                    jtfMName.setText(rs.getString("second"));
                     jtfMobile.setText(rs.getString("mobilen"));
                     jtfName.setText(rs.getString("first"));
                     jtfNumber.setText(rs.getString("nomer"));
