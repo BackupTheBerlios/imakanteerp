@@ -69,7 +69,7 @@ public class FrmDate extends JDialog //implements ActionListener
                     try{
                         
                         stm = dbInternal.createStatement();
-                        rsCus = stm.executeQuery("SELECT DISTINCT pyear FROM ls_result WHERE pyear IS NOT NULL ORDER BY pyear");
+                        rsCus = stm.executeQuery("SELECT DISTINCT ls_result.pyear FROM ls_result WHERE ls_result.pyear IS NOT NULL ORDER BY ls_result.pyear");
                         
                         while(rsCus.next()){
                             
