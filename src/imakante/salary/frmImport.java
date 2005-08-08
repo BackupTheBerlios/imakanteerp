@@ -3,6 +3,8 @@ package imakante.salary;
 
 import imakante.com.CustomTable;
 import imakante.com.CustomTableModel;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 
 
 
@@ -27,7 +29,8 @@ public class frmImport extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        jTextPane1 = new javax.swing.JTextPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jScrollPane1.getViewport().add(jTable,null);
@@ -36,6 +39,7 @@ public class frmImport extends javax.swing.JDialog {
         jPanel4 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
@@ -49,7 +53,9 @@ public class frmImport extends javax.swing.JDialog {
         jPanel5.setLayout(new java.awt.BorderLayout());
 
         jPanel5.setBorder(new javax.swing.border.EtchedBorder());
-        jPanel5.add(jTextPane1, java.awt.BorderLayout.CENTER);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        jPanel5.add(jScrollPane2, java.awt.BorderLayout.CENTER);
 
         jPanel2.add(jPanel5, java.awt.BorderLayout.SOUTH);
 
@@ -76,6 +82,8 @@ public class frmImport extends javax.swing.JDialog {
 
         jPanel1.add(jPanel3, java.awt.BorderLayout.NORTH);
 
+        jPanel4.setLayout(new java.awt.GridBagLayout());
+
         jPanel4.setBorder(new javax.swing.border.EtchedBorder());
         jButton4.setText("\u0418\u0417\u0411\u0415\u0420\u0418 \u0422\u0410\u0411\u041b\u0418\u0426\u0410");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -84,7 +92,7 @@ public class frmImport extends javax.swing.JDialog {
             }
         });
 
-        jPanel4.add(jButton4);
+        jPanel4.add(jButton4, new java.awt.GridBagConstraints());
 
         jButton1.setText("\u041e\u0422\u0412\u041e\u0420\u0418 \u0424\u0410\u0419\u041b");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -93,7 +101,19 @@ public class frmImport extends javax.swing.JDialog {
             }
         });
 
-        jPanel4.add(jButton1);
+        jPanel4.add(jButton1, new java.awt.GridBagConstraints());
+
+        jButton5.setText("\u0418\u0417\u0422\u0420\u0418\u0412\u0410\u041d\u0415 \u0421\u042a\u0414\u042a\u0420\u0416\u0410\u041d\u0418\u0415 \u041d\u0410 \u0422\u0410\u0411\u041b\u0418\u0426\u0410");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        jPanel4.add(jButton5, gridBagConstraints);
 
         jButton2.setText("\u041f\u0420\u0415\u041d\u0415\u0421\u0418 \u0418\u041d\u0424\u041e\u0420\u041c\u0410\u0426\u0418\u042f");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -102,7 +122,7 @@ public class frmImport extends javax.swing.JDialog {
             }
         });
 
-        jPanel4.add(jButton2);
+        jPanel4.add(jButton2, new java.awt.GridBagConstraints());
 
         jButton3.setText("\u041e\u0422\u041a\u0410\u0417");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -111,7 +131,7 @@ public class frmImport extends javax.swing.JDialog {
             }
         });
 
-        jPanel4.add(jButton3);
+        jPanel4.add(jButton3, new java.awt.GridBagConstraints());
 
         jPanel1.add(jPanel4, java.awt.BorderLayout.SOUTH);
 
@@ -121,23 +141,33 @@ public class frmImport extends javax.swing.JDialog {
     }
     // </editor-fold>//GEN-END:initComponents
     
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        
+        if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
+            nameTabl = jTable.getValueAt(jTable.getSelectedRow(), 0).toString();
+        }
+        try{
+            stCus.execute("DELETE * FROM " + nameTabl);}catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        
+    }//GEN-LAST:event_jButton5ActionPerformed
+    
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         closeResource();
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+        
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-// TODO add your handling code here:
+        open_Dialog();
     }//GEN-LAST:event_jButton1ActionPerformed
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
+        
         if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
-        nameTabl = jTable.getValueAt(jTable.getSelectedRow(), 0).toString();
+            nameTabl = jTable.getValueAt(jTable.getSelectedRow(), 0).toString();
         }
         
         
@@ -148,6 +178,7 @@ public class frmImport extends javax.swing.JDialog {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -156,7 +187,8 @@ public class frmImport extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     public static javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
     public static imakante.com.CustomTableModel model;
     public static imakante.com.CustomTable jTable;
@@ -164,6 +196,9 @@ public class frmImport extends javax.swing.JDialog {
     public static java.sql.Statement stCus;
     public static java.sql.ResultSet rsCus;
     public static String strSQL, nameTabl;
+    javax.swing.JFrame frame;
+    javax.swing.JFileChooser chooser;
+    public static java.io.File file;
     
     
     public void initTable(){
@@ -174,7 +209,7 @@ public class frmImport extends javax.swing.JDialog {
         rsCus = stCus.executeQuery(strSQL);
         } catch (java.sql.SQLException sqle) {
             sqle.printStackTrace();
-           
+            
         }
         model = new CustomTableModel(cnCus, rsCus, null);
         jTable = new CustomTable(model);
@@ -189,6 +224,20 @@ public class frmImport extends javax.swing.JDialog {
         try{
             stCus.close();
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        
+    }
+    
+    
+    public void open_Dialog(){
+        javax.swing.JFrame frame = new JFrame();
+        javax.swing.JFileChooser chooser = new JFileChooser();
+        
+        chooser.showOpenDialog(frame);
+        
+        file = chooser.getSelectedFile();
+        System.out.println("faila e" + file.getPath().toString());
+        jTextArea1.append(file.getPath().toString());
+        jTextArea1.append(file.getName().toString());
         
     }
 }
