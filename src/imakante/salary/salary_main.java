@@ -1,38 +1,13 @@
 package imakante.salary;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Insets;
-import java.awt.Toolkit;
-import java.beans.PropertyVetoException;
-
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JDesktopPane;
-import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JToolBar;
-import javax.swing.KeyStroke;
-import javax.swing.UIManager;
-
 
 public class salary_main extends javax.swing.JFrame implements java.awt.event.WindowListener{
     
     javax.swing.JPanel Panel1;
-    JDesktopPane Desk1 = new JDesktopPane();
-    private JLabel StatusLabel = new JLabel("\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415 - \u041b\u0421",JLabel.CENTER);
-    JLabel BTlabel = new JLabel();
-    Dimension screen = 	Toolkit.getDefaultToolkit().getScreenSize();
+    javax.swing.JDesktopPane Desk1 = new javax.swing.JDesktopPane();
+    private javax.swing.JLabel StatusLabel = new javax.swing.JLabel("\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415 - \u041b\u0421",javax.swing.JLabel.CENTER);
+    javax.swing.JLabel BTlabel = new javax.swing.JLabel();
+    java.awt.Dimension screen = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
     public static String StrName;
     String StrBTitle;
     String DBDriver;
@@ -59,7 +34,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     FrmPic FormPic;
     FrmNasM    FormNasM;
     imakante.salary.FrmNCP FormNCP;
-    Font menuFont = new Font("Tahoma", Font.PLAIN, 14);
+    java.awt.Font menuFont = new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 14);
     imakante.salary.frmLogo splash = new imakante.salary.frmLogo();
     Thread FormSplash = new Thread(splash);
     
@@ -75,35 +50,35 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         FrmDate fdate = new FrmDate(this,dbCON);
         fdate.setVisible(true);
         
-        getStatusLabel().setBorder(BorderFactory.createTitledBorder(""));
+        getStatusLabel().setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         getStatusLabel().setFont(menuFont);
         
         BTlabel.setText(StrBTitle);
-        BTlabel.setHorizontalAlignment(JLabel.LEFT);
-        BTlabel.setForeground(new Color(166,0,0));
+        BTlabel.setHorizontalAlignment(javax.swing.JLabel.LEFT);
+        BTlabel.setForeground(new java.awt.Color(166,0,0));
         
         //Set the main form properties
         addWindowListener(this);
         
-        Desk1.setBackground(Color.gray);
-        Desk1.setBorder(BorderFactory.createEmptyBorder());
+        Desk1.setBackground(java.awt.Color.gray);
+        Desk1.setBorder(javax.swing.BorderFactory.createEmptyBorder());
         //Most fastest drag mode
-        Desk1.setDragMode(JDesktopPane.OUTLINE_DRAG_MODE);
+        Desk1.setDragMode(javax.swing.JDesktopPane.OUTLINE_DRAG_MODE);
         
-        Panel1 = new JPanel(new BorderLayout());
-        Panel1.setBackground(Color.gray);
-        Panel1.setBorder(BorderFactory.createLoweredBevelBorder());
-        Panel1.add(new JScrollPane(Desk1),BorderLayout.CENTER);
+        Panel1 = new javax.swing.JPanel(new java.awt.BorderLayout());
+        Panel1.setBackground(java.awt.Color.gray);
+        Panel1.setBorder(javax.swing.BorderFactory.createLoweredBevelBorder());
+        Panel1.add(new javax.swing.JScrollPane(Desk1),java.awt.BorderLayout.CENTER);
         
-        getContentPane().add(CreateJToolBar(),BorderLayout.PAGE_START);
-        getContentPane().add(Panel1,BorderLayout.CENTER);
-        getContentPane().add(getStatusLabel(), BorderLayout.PAGE_END);
+        getContentPane().add(CreateJToolBar(), java.awt.BorderLayout.PAGE_START);
+        getContentPane().add(Panel1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(getStatusLabel(), java.awt.BorderLayout.PAGE_END);
         
         setJMenuBar(CreateJMenuBar());
         setExtendedState(this.MAXIMIZED_BOTH);
         
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        setIconImage(new ImageIcon("/imakante/imakante_small.jpg").getImage());
+        setDefaultCloseOperation(javax.swing.JFrame.DO_NOTHING_ON_CLOSE);
+        setIconImage(new javax.swing.ImageIcon("/imakante/imakante_small.jpg").getImage());
         setLocation(0,0);
         setSize(screen);
         setResizable(true);
@@ -120,84 +95,84 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     /*********************** Custom class creation start **********************/
     
     //Create menu bar
-    protected JMenuBar CreateJMenuBar(){
-        JMenuBar NewJMenuBar = new JMenuBar();
+    protected javax.swing.JMenuBar CreateJMenuBar(){
+        javax.swing.JMenuBar NewJMenuBar = new javax.swing.JMenuBar();
         
         //Setup file menu
-        JMenu MnuFile = new JMenu("\u041f\u0420\u041e\u0413\u0420\u0410\u041c\u0410");
+        javax.swing.JMenu MnuFile = new javax.swing.JMenu("\u041f\u0420\u041e\u0413\u0420\u0410\u041c\u0410");
         MnuFile.setFont(menuFont);
         MnuFile.setMnemonic('F');
-        MnuFile.setBackground(new Color(255,255,255));
+        MnuFile.setBackground(new java.awt.Color(255,255,255));
         NewJMenuBar.add(MnuFile);
         //End setup file menu
         
         //Set file sub menu
-        JMenuItem ItmLockApp = new JMenuItem("\u0417\u0430\u043a\u043b\u044e\u0447\u0432\u0430\u043d\u0435 \u043d\u0430 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0430\u0442\u0430");
+        javax.swing.JMenuItem ItmLockApp = new javax.swing.JMenuItem("\u0417\u0430\u043a\u043b\u044e\u0447\u0432\u0430\u043d\u0435 \u043d\u0430 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0430\u0442\u0430");
         ItmLockApp.setFont(menuFont);
         ItmLockApp.setMnemonic('L');
-        ItmLockApp.setIcon(new ImageIcon("images/lockapplication.png"));
+        ItmLockApp.setIcon(new javax.swing.ImageIcon("images/lockapplication.png"));
         ItmLockApp.setAccelerator(
-                KeyStroke.getKeyStroke(
+                javax.swing.KeyStroke.getKeyStroke(
                 java.awt.event.KeyEvent.VK_L,java.awt.event.ActionEvent.CTRL_MASK
                 )
                 );
         ItmLockApp.setActionCommand("lockapp");
         ItmLockApp.addActionListener(getJMenuActionListener());
-        ItmLockApp.setBackground(new Color(255,255,255));
+        ItmLockApp.setBackground(new java.awt.Color(255,255,255));
         
-        JMenuItem ItmLogon = new JMenuItem("\u0412\u0445\u043e\u0434 \u0432 \u0431\u0430\u0437\u0430\u0442\u0430");
+        javax.swing.JMenuItem ItmLogon = new javax.swing.JMenuItem("\u0412\u0445\u043e\u0434 \u0432 \u0431\u0430\u0437\u0430\u0442\u0430");
         ItmLogon.setFont(menuFont);
         ItmLogon.setMnemonic('I');
-        ItmLogon.setIcon(new ImageIcon("images/lockapplication.png"));
+        ItmLogon.setIcon(new javax.swing.ImageIcon("images/lockapplication.png"));
         ItmLogon.setAccelerator(
-                KeyStroke.getKeyStroke(
+                javax.swing.KeyStroke.getKeyStroke(
                 java.awt.event.KeyEvent.VK_I,java.awt.event.ActionEvent.CTRL_MASK
                 )
                 );
         ItmLogon.setActionCommand("logon");
         ItmLogon.addActionListener(getJMenuActionListener());
-        ItmLogon.setBackground(new Color(255,255,255));
+        ItmLogon.setBackground(new java.awt.Color(255,255,255));
         
         
         
-        JMenuItem ItmLoggOff = new JMenuItem("\u0418\u0437\u0445\u043e\u0434 \u043e\u0442 \u0431\u0430\u0437\u0430\u0442\u0430...");
+        javax.swing.JMenuItem ItmLoggOff = new javax.swing.JMenuItem("\u0418\u0437\u0445\u043e\u0434 \u043e\u0442 \u0431\u0430\u0437\u0430\u0442\u0430...");
         ItmLoggOff.setFont(menuFont);
         ItmLoggOff.setMnemonic('O');
-        ItmLoggOff.setIcon(new ImageIcon("images/loggoff.png"));
+        ItmLoggOff.setIcon(new javax.swing.ImageIcon("images/loggoff.png"));
         ItmLoggOff.setAccelerator(
-                KeyStroke.getKeyStroke(
+                javax.swing.KeyStroke.getKeyStroke(
                 java.awt.event.KeyEvent.VK_O,java.awt.event.ActionEvent.CTRL_MASK
                 )
                 );
         ItmLoggOff.setActionCommand("loggoff");
         ItmLoggOff.addActionListener(getJMenuActionListener());
-        ItmLoggOff.setBackground(new Color(255,255,255));
+        ItmLoggOff.setBackground(new java.awt.Color(255,255,255));
         
-        JMenuItem ItmPeriod = new JMenuItem("\u0421\u043c\u044f\u043d\u0430 \u043d\u0430 \u043f\u0435\u0440\u0438\u043e\u0434");
+        javax.swing.JMenuItem ItmPeriod = new javax.swing.JMenuItem("\u0421\u043c\u044f\u043d\u0430 \u043d\u0430 \u043f\u0435\u0440\u0438\u043e\u0434");
         ItmPeriod.setFont(menuFont);
         ItmPeriod.setMnemonic('H');
-        ItmPeriod.setIcon(new ImageIcon("images/lockapplication.png"));
+        ItmPeriod.setIcon(new javax.swing.ImageIcon("images/lockapplication.png"));
         ItmPeriod.setAccelerator(
-                KeyStroke.getKeyStroke(
+                javax.swing.KeyStroke.getKeyStroke(
                 java.awt.event.KeyEvent.VK_H,java.awt.event.ActionEvent.CTRL_MASK
                 )
                 );
         ItmPeriod.setActionCommand("period");
         ItmPeriod.addActionListener(getJMenuActionListener());
-        ItmPeriod.setBackground(new Color(255,255,255));
+        ItmPeriod.setBackground(new java.awt.Color(255,255,255));
         
-        JMenuItem ItmExit = new JMenuItem("\u0418\u0417\u0425\u041e\u0414");
+        javax.swing.JMenuItem ItmExit = new javax.swing.JMenuItem("\u0418\u0417\u0425\u041e\u0414");
         ItmExit.setFont(menuFont);
         ItmExit.setMnemonic('E');
-        ItmExit.setIcon(new ImageIcon("images/exit.png"));
+        ItmExit.setIcon(new javax.swing.ImageIcon("images/exit.png"));
         ItmExit.setAccelerator(
-                KeyStroke.getKeyStroke(
+                javax.swing.KeyStroke.getKeyStroke(
                 java.awt.event.KeyEvent.VK_E,java.awt.event.ActionEvent.CTRL_MASK
                 )
                 );
         ItmExit.setActionCommand("exit");
         ItmExit.addActionListener(getJMenuActionListener());
-        ItmExit.setBackground(new Color(255,255,255));
+        ItmExit.setBackground(new java.awt.Color(255,255,255));
         
         MnuFile.add(ItmLockApp);
         MnuFile.add(ItmPeriod);
@@ -209,81 +184,81 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         //Setup records menu
         
-        JMenu MnuDoc = new JMenu("\u0420\u0415\u0414\u0410\u041a\u0422\u0418\u0420\u0410\u041d\u0415");
+        javax.swing.JMenu MnuDoc = new javax.swing.JMenu("\u0420\u0415\u0414\u0410\u041a\u0422\u0418\u0420\u0410\u041d\u0415");
         MnuDoc.setFont(menuFont);
         MnuDoc.setMnemonic('D');
-        MnuDoc.setBackground(new Color(255,255,255));
+        MnuDoc.setBackground(new java.awt.Color(255,255,255));
         NewJMenuBar.add(MnuDoc);
         //
         
-        JMenuItem ItmProd = new JMenuItem("\u0421\u043f\u0438\u0441\u044a\u043a \u0441\u043b\u0443\u0436\u0438\u0442\u0435\u043b\u0438");
+        javax.swing.JMenuItem ItmProd = new javax.swing.JMenuItem("\u0421\u043f\u0438\u0441\u044a\u043a \u0441\u043b\u0443\u0436\u0438\u0442\u0435\u043b\u0438");
         ItmProd.setFont(menuFont);
         ItmProd.setMnemonic('P');
-        ItmProd.setIcon(new ImageIcon("images/prod.png"));
+        ItmProd.setIcon(new javax.swing.ImageIcon("images/prod.png"));
         ItmProd.setAccelerator(
-                KeyStroke.getKeyStroke(
+                javax.swing.KeyStroke.getKeyStroke(
                 java.awt.event.KeyEvent.VK_P,java.awt.event.ActionEvent.CTRL_MASK
                 )
                 );
         ItmProd.setActionCommand("sluj");
         ItmProd.addActionListener(getJMenuActionListener());
-        ItmProd.setBackground(new Color(255,255,255));
+        ItmProd.setBackground(new java.awt.Color(255,255,255));
         
         MnuDoc.add(ItmProd);
         
-        JMenuItem ItmFakturi = new JMenuItem("\u0414\u041e\u041e \u0442\u0430\u0431\u043b\u0438\u0446\u0430");
+        javax.swing.JMenuItem ItmFakturi = new javax.swing.JMenuItem("\u0414\u041e\u041e \u0442\u0430\u0431\u043b\u0438\u0446\u0430");
         ItmFakturi.setFont(menuFont);
         ItmFakturi.setMnemonic('F');
-        ItmFakturi.setIcon(new ImageIcon("images/fak.png"));
+        ItmFakturi.setIcon(new javax.swing.ImageIcon("images/fak.png"));
         ItmFakturi.setAccelerator(
-                KeyStroke.getKeyStroke(
+                javax.swing.KeyStroke.getKeyStroke(
                 java.awt.event.KeyEvent.VK_F,java.awt.event.ActionEvent.CTRL_MASK
                 )
                 );
         ItmFakturi.setActionCommand("doo");
         ItmFakturi.addActionListener(getJMenuActionListener());
-        ItmFakturi.setBackground(new Color(255,255,255));
+        ItmFakturi.setBackground(new java.awt.Color(255,255,255));
         
         MnuDoc.add(ItmFakturi);
         //
         //
-        JMenuItem ItmProhods = new JMenuItem("\u041d\u0430\u0447\u0438\u0441\u043b\u0435\u043d\u0438\u044f \u0438 \u0443\u0434\u0440\u044a\u0436\u043a\u0438");
+        javax.swing.JMenuItem ItmProhods = new javax.swing.JMenuItem("\u041d\u0430\u0447\u0438\u0441\u043b\u0435\u043d\u0438\u044f \u0438 \u0443\u0434\u0440\u044a\u0436\u043a\u0438");
         ItmProhods.setFont(menuFont);
         ItmProhods.setMnemonic('f');
-        ItmProhods.setIcon(new ImageIcon("images/fak.png"));
+        ItmProhods.setIcon(new javax.swing.ImageIcon("images/fak.png"));
         
         ItmProhods.setActionCommand("doo1");
         ItmProhods.addActionListener(getJMenuActionListener());
-        ItmProhods.setBackground(new Color(255,255,255));
+        ItmProhods.setBackground(new java.awt.Color(255,255,255));
         
         MnuDoc.add(ItmProhods);
         
         
-        JMenuItem ItmPorach = new JMenuItem("\u0421\u043f\u0438\u0441\u044a\u043a \u043e\u0442\u0434\u0435\u043b\u0438");
+        javax.swing.JMenuItem ItmPorach = new javax.swing.JMenuItem("\u0421\u043f\u0438\u0441\u044a\u043a \u043e\u0442\u0434\u0435\u043b\u0438");
         ItmPorach.setFont(menuFont);
         ItmPorach.setMnemonic('f');
         ItmPorach.setActionCommand("otd");
         ItmPorach.addActionListener(getJMenuActionListener());
-        ItmPorach.setBackground(new Color(255,255,255));
+        ItmPorach.setBackground(new java.awt.Color(255,255,255));
         
         MnuDoc.add(ItmPorach);
         //
         
-        JMenuItem ItmDlaj = new JMenuItem("\u0421\u043f\u0438\u0441\u044a\u043a \u0434\u043b\u044a\u0436\u043d\u043e\u0441\u0442\u0438");
+        javax.swing.JMenuItem ItmDlaj = new javax.swing.JMenuItem("\u0421\u043f\u0438\u0441\u044a\u043a \u0434\u043b\u044a\u0436\u043d\u043e\u0441\u0442\u0438");
         ItmDlaj.setFont(menuFont);
         ItmDlaj.setMnemonic('f');
         ItmDlaj.setActionCommand("dlaj");
         ItmDlaj.addActionListener(getJMenuActionListener());
-        ItmDlaj.setBackground(new Color(255,255,255));
+        ItmDlaj.setBackground(new java.awt.Color(255,255,255));
         
         MnuDoc.add(ItmDlaj);
         //
         
         
-        JMenuItem ItmMDanni = new JMenuItem("\u041c\u0435\u0441\u0435\u0447\u043d\u0438 \u0434\u0430\u043d\u043d\u0438");
+        javax.swing.JMenuItem ItmMDanni = new javax.swing.JMenuItem("\u041c\u0435\u0441\u0435\u0447\u043d\u0438 \u0434\u0430\u043d\u043d\u0438");
         ItmMDanni.setFont(menuFont);
         ItmMDanni.setMnemonic('f');
-        ItmMDanni.setIcon(new ImageIcon("images/fak.png"));
+        ItmMDanni.setIcon(new javax.swing.ImageIcon("images/fak.png"));
         //ItmFakturi.setAccelerator(
         //	KeyStroke.getKeyStroke(
         //			KeyEvent.VK_C,ActionEvent.CTRL_MASK
@@ -291,16 +266,16 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         //	);
         ItmMDanni.setActionCommand("mes");
         ItmMDanni.addActionListener(getJMenuActionListener());
-        ItmMDanni.setBackground(new Color(255,255,255));
+        ItmMDanni.setBackground(new java.awt.Color(255,255,255));
         
         MnuDoc.add(ItmMDanni);
         //
         
         
-        JMenuItem ItmOtpis = new JMenuItem("\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u044f \u0437\u0430 \u0442\u0440\u0443\u0434\u043e\u0432\u0438 \u0434\u043e\u0433\u043e\u0432\u043e\u0440\u0438");
+        javax.swing.JMenuItem ItmOtpis = new javax.swing.JMenuItem("\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u044f \u0437\u0430 \u0442\u0440\u0443\u0434\u043e\u0432\u0438 \u0434\u043e\u0433\u043e\u0432\u043e\u0440\u0438");
         ItmOtpis.setFont(menuFont);
         ItmOtpis.setMnemonic('f');
-        ItmOtpis.setIcon(new ImageIcon("images/fak.png"));
+        ItmOtpis.setIcon(new javax.swing.ImageIcon("images/fak.png"));
         //ItmFakturi.setAccelerator(
         //	KeyStroke.getKeyStroke(
         //			KeyEvent.VK_C,ActionEvent.CTRL_MASK
@@ -308,284 +283,284 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         //	);
         ItmOtpis.setActionCommand("Prehv");
         ItmOtpis.addActionListener(getJMenuActionListener());
-        ItmOtpis.setBackground(new Color(255,255,255));
+        ItmOtpis.setBackground(new java.awt.Color(255,255,255));
         
         MnuDoc.add(ItmOtpis);
         //
         //
         
         
-        JMenuItem ItmOffer = new JMenuItem("\u0421\u043e\u0446\u0438\u0430\u043b\u043d\u0438 \u043e\u0441\u0438\u0433\u0443\u0440\u043e\u0432\u043a\u0438");
+        javax.swing.JMenuItem ItmOffer = new javax.swing.JMenuItem("\u0421\u043e\u0446\u0438\u0430\u043b\u043d\u0438 \u043e\u0441\u0438\u0433\u0443\u0440\u043e\u0432\u043a\u0438");
         ItmOffer.setFont(menuFont);
         ItmOffer.setMnemonic('f');
         ItmOffer.setActionCommand("sotialo");
         ItmOffer.addActionListener(getJMenuActionListener());
-        ItmOffer.setBackground(new Color(255,255,255));
+        ItmOffer.setBackground(new java.awt.Color(255,255,255));
         
         MnuDoc.add(ItmOffer);
         
         //
         //
-        JMenu MnuKasa = new JMenu("\u0412\u0415\u0414\u041e\u041c\u041e\u0421\u0422\u0418");
+        javax.swing.JMenu MnuKasa = new javax.swing.JMenu("\u0412\u0415\u0414\u041e\u041c\u041e\u0421\u0422\u0418");
         MnuKasa.setFont(menuFont);
-        MnuKasa.setBackground(new Color(255,255,255));
+        MnuKasa.setBackground(new java.awt.Color(255,255,255));
         NewJMenuBar.add(MnuKasa);
         //End records menu
         //
-        JMenuItem ItmPrihoo = new JMenuItem("\u0412\u0435\u0434\u043e\u043c\u043e\u0441\u0442\u0438 \u0437\u0430\u043f\u043b\u0430\u0442\u0438");
+        javax.swing.JMenuItem ItmPrihoo = new javax.swing.JMenuItem("\u0412\u0435\u0434\u043e\u043c\u043e\u0441\u0442\u0438 \u0437\u0430\u043f\u043b\u0430\u0442\u0438");
         ItmPrihoo.setFont(menuFont);
         ItmPrihoo.setActionCommand("zved");
         ItmPrihoo.addActionListener(getJMenuActionListener());
-        ItmPrihoo.setBackground(new Color(255,255,255));
+        ItmPrihoo.setBackground(new java.awt.Color(255,255,255));
         
         MnuKasa.add(ItmPrihoo);
         //
         //
-        JMenuItem ItmRazhoo = new JMenuItem("\u0412\u0435\u0434\u043e\u043c\u043e\u0441\u0442\u0438 \u0430\u0432\u0430\u043d\u0441\u0438");
+        javax.swing.JMenuItem ItmRazhoo = new javax.swing.JMenuItem("\u0412\u0435\u0434\u043e\u043c\u043e\u0441\u0442\u0438 \u0430\u0432\u0430\u043d\u0441\u0438");
         ItmRazhoo.setFont(menuFont);
         ItmRazhoo.setActionCommand("vedoma");
         ItmRazhoo.addActionListener(getJMenuActionListener());
-        ItmRazhoo.setBackground(new Color(255,255,255));
+        ItmRazhoo.setBackground(new java.awt.Color(255,255,255));
         
         MnuKasa.add(ItmRazhoo);
         //
-        JMenuItem ItmNalicni = new JMenuItem("\u0412\u0435\u0434\u043e\u043c\u043e\u0441\u0442\u0438 \u0414\u041e\u041e");
+        javax.swing.JMenuItem ItmNalicni = new javax.swing.JMenuItem("\u0412\u0435\u0434\u043e\u043c\u043e\u0441\u0442\u0438 \u0414\u041e\u041e");
         ItmNalicni.setFont(menuFont);
         ItmNalicni.setActionCommand("dooved");
         ItmNalicni.addActionListener(getJMenuActionListener());
-        ItmNalicni.setBackground(new Color(255,255,255));
+        ItmNalicni.setBackground(new java.awt.Color(255,255,255));
         
         MnuKasa.add(ItmNalicni);
         
-        JMenuItem ItmVedCO = new JMenuItem("\u0412\u0435\u0434\u043e\u043c\u043e\u0441\u0442\u0438 \u0421\u041e");
+        javax.swing.JMenuItem ItmVedCO = new javax.swing.JMenuItem("\u0412\u0435\u0434\u043e\u043c\u043e\u0441\u0442\u0438 \u0421\u041e");
         ItmVedCO.setFont(menuFont);
         ItmVedCO.setActionCommand("soved");
         ItmVedCO.addActionListener(getJMenuActionListener());
-        ItmVedCO.setBackground(new Color(255,255,255));
+        ItmVedCO.setBackground(new java.awt.Color(255,255,255));
         
         MnuKasa.add(ItmVedCO);
         
         //
         
-        JMenuItem ItmOpis = new JMenuItem("\u0412\u0435\u0434\u043e\u043c\u043e\u0441\u0442\u0438 \u0414\u041e\u041e \u043e\u0442 \u0440\u0430\u0431\u043e\u0442\u043d\u0438\u0446\u0438");
+        javax.swing.JMenuItem ItmOpis = new javax.swing.JMenuItem("\u0412\u0435\u0434\u043e\u043c\u043e\u0441\u0442\u0438 \u0414\u041e\u041e \u043e\u0442 \u0440\u0430\u0431\u043e\u0442\u043d\u0438\u0446\u0438");
         ItmOpis.setFont(menuFont);
         ItmOpis.setActionCommand("Prihoo");
         ItmOpis.addActionListener(getJMenuActionListener());
-        ItmOpis.setBackground(new Color(255,255,255));
+        ItmOpis.setBackground(new java.awt.Color(255,255,255));
         
         MnuKasa.add(ItmOpis);
         
         //
         
-        JMenuItem ItmZDR = new JMenuItem("\u0417\u0434\u0440\u0430\u0432\u043d\u0438 \u043e\u0441\u0438\u0433\u0443\u0440\u043e\u0432\u043a\u0438");
+        javax.swing.JMenuItem ItmZDR = new javax.swing.JMenuItem("\u0417\u0434\u0440\u0430\u0432\u043d\u0438 \u043e\u0441\u0438\u0433\u0443\u0440\u043e\u0432\u043a\u0438");
         ItmZDR.setFont(menuFont);
         ItmZDR.setActionCommand("Prihoo");
         ItmZDR.addActionListener(getJMenuActionListener());
-        ItmZDR.setBackground(new Color(255,255,255));
+        ItmZDR.setBackground(new java.awt.Color(255,255,255));
         
         MnuKasa.add(ItmZDR);
         //
         
-        JMenuItem ItmBank = new JMenuItem("\u0411\u0430\u043d\u043a\u043e\u0432\u0438 \u043f\u043b\u0430\u0449\u0430\u043d\u0438\u044f");
+        javax.swing.JMenuItem ItmBank = new javax.swing.JMenuItem("\u0411\u0430\u043d\u043a\u043e\u0432\u0438 \u043f\u043b\u0430\u0449\u0430\u043d\u0438\u044f");
         ItmBank.setFont(menuFont);
         ItmBank.setActionCommand("Prihoo");
         ItmBank.addActionListener(getJMenuActionListener());
-        ItmBank.setBackground(new Color(255,255,255));
+        ItmBank.setBackground(new java.awt.Color(255,255,255));
         
         MnuKasa.add(ItmBank);
         
         
         //
-        JMenu MnuRec = new JMenu("\u0418\u0417\u041f\u042a\u041b\u041d\u0415\u041d\u0418\u0415");
+        javax.swing.JMenu MnuRec = new javax.swing.JMenu("\u0418\u0417\u041f\u042a\u041b\u041d\u0415\u041d\u0418\u0415");
         MnuRec.setFont(menuFont);
         MnuRec.setMnemonic('R');
-        MnuRec.setBackground(new Color(255,255,255));
+        MnuRec.setBackground(new java.awt.Color(255,255,255));
         NewJMenuBar.add(MnuRec);
         //End records menu
         
         //Set records sub menu
         
         //-- For Customer
-        JMenuItem ItmAvansi = new JMenuItem("\u0410\u0432\u0430\u043d\u0441\u0438");
+        javax.swing.JMenuItem ItmAvansi = new javax.swing.JMenuItem("\u0410\u0432\u0430\u043d\u0441\u0438");
         ItmAvansi.setFont(menuFont);
         ItmAvansi.setMnemonic('C');
-        ItmAvansi.setIcon(new ImageIcon("images/customer.png"));
+        ItmAvansi.setIcon(new javax.swing.ImageIcon("images/customer.png"));
         ItmAvansi.setAccelerator(
-                KeyStroke.getKeyStroke(
+                javax.swing.KeyStroke.getKeyStroke(
                 java.awt.event.KeyEvent.VK_C,java.awt.event.ActionEvent.CTRL_MASK
                 )
                 );
         ItmAvansi.setActionCommand("avansi");
         ItmAvansi.addActionListener(getJMenuActionListener());
-        ItmAvansi.setBackground(new Color(255,255,255));
+        ItmAvansi.setBackground(new java.awt.Color(255,255,255));
         
         MnuRec.add(ItmAvansi);
         
         
         //-- For FISHOVE
         
-        JMenuItem ItmFishove = new JMenuItem("\u0424\u0438\u0448\u043e\u0432\u0435");
+        javax.swing.JMenuItem ItmFishove = new javax.swing.JMenuItem("\u0424\u0438\u0448\u043e\u0432\u0435");
         ItmFishove.setFont(menuFont);
         ItmFishove.setMnemonic('S');
-        ItmFishove.setIcon(new ImageIcon("images/supplier.png"));
+        ItmFishove.setIcon(new javax.swing.ImageIcon("images/supplier.png"));
         ItmFishove.setAccelerator(
-                KeyStroke.getKeyStroke(
+                javax.swing.KeyStroke.getKeyStroke(
                 java.awt.event.KeyEvent.VK_S,java.awt.event.ActionEvent.CTRL_MASK
                 )
                 );
         ItmFishove.setActionCommand("fish");
         ItmFishove.addActionListener(getJMenuActionListener());
-        ItmFishove.setBackground(new Color(255,255,255));
+        ItmFishove.setBackground(new java.awt.Color(255,255,255));
         
         MnuRec.add(ItmFishove);
         
         //-- For SalesRep
-        JMenuItem ItmZarab = new JMenuItem("\u0417\u0430\u0440\u0430\u0431\u043e\u0442\u043a\u0430");
+        javax.swing.JMenuItem ItmZarab = new javax.swing.JMenuItem("\u0417\u0430\u0440\u0430\u0431\u043e\u0442\u043a\u0430");
         ItmZarab.setFont(menuFont);
         ItmZarab.setMnemonic('B');
         ItmZarab.setActionCommand("zarab");
         ItmZarab.addActionListener(getJMenuActionListener());
-        ItmZarab.setBackground(new Color(255,255,255));
+        ItmZarab.setBackground(new java.awt.Color(255,255,255));
         
         MnuRec.add(ItmZarab);
         
         //
-        JMenuItem ItmPremii = new JMenuItem("\u041f\u0440\u0435\u043c\u0438\u0438");
+        javax.swing.JMenuItem ItmPremii = new javax.swing.JMenuItem("\u041f\u0440\u0435\u043c\u0438\u0438");
         ItmPremii.setFont(menuFont);
         ItmPremii.setMnemonic('V');
         ItmPremii.setActionCommand("premii");
         ItmPremii.addActionListener(getJMenuActionListener());
-        ItmPremii.setBackground(new Color(255,255,255));
+        ItmPremii.setBackground(new java.awt.Color(255,255,255));
         
         MnuRec.add(ItmPremii);
         
         //End records sub menu
         
         //Setup proccess menu
-        JMenu MnuProccess = new JMenu("\u0421\u041f\u0420\u0410\u0412\u041a\u0418");
+        javax.swing.JMenu MnuProccess = new javax.swing.JMenu("\u0421\u041f\u0420\u0410\u0412\u041a\u0418");
         MnuProccess.setFont(menuFont);
         MnuProccess.setMnemonic('P');
-        MnuProccess.setBackground(new Color(255,255,255));
+        MnuProccess.setBackground(new java.awt.Color(255,255,255));
         NewJMenuBar.add(MnuProccess);
         //End records menu
         
         //Set proccess sub menu
         
         //-- For New Invoice
-        JMenuItem ItmSPFish = new JMenuItem("\u0424\u0438\u0448\u043e\u0432\u0435");
+        javax.swing.JMenuItem ItmSPFish = new javax.swing.JMenuItem("\u0424\u0438\u0448\u043e\u0432\u0435");
         ItmSPFish.setFont(menuFont);
         ItmSPFish.setMnemonic('I');
-        ItmSPFish.setIcon(new ImageIcon("images/newinvoice.png"));
+        ItmSPFish.setIcon(new javax.swing.ImageIcon("images/newinvoice.png"));
         ItmSPFish.setAccelerator(
-                KeyStroke.getKeyStroke(
+                javax.swing.KeyStroke.getKeyStroke(
                 java.awt.event.KeyEvent.VK_F1,java.awt.event.ActionEvent.CTRL_MASK
                 )
                 );
         ItmSPFish.setActionCommand("SPInv");
         ItmSPFish.addActionListener(getJMenuActionListener());
-        ItmSPFish.setBackground(new Color(255,255,255));
+        ItmSPFish.setBackground(new java.awt.Color(255,255,255));
         
         MnuProccess.add(ItmSPFish);
         
         //-- For New PO
-        JMenuItem ItmSPNU = new JMenuItem("\u041d\u0430\u0447\u0438\u0441\u043b\u0435\u043d\u0438\u044f \u0438 \u0443\u0434\u0440\u044a\u0436\u043a\u0438");
+        javax.swing.JMenuItem ItmSPNU = new javax.swing.JMenuItem("\u041d\u0430\u0447\u0438\u0441\u043b\u0435\u043d\u0438\u044f \u0438 \u0443\u0434\u0440\u044a\u0436\u043a\u0438");
         ItmSPNU.setFont(menuFont);
         ItmSPNU.setMnemonic('P');
-        ItmSPNU.setIcon(new ImageIcon("images/newpurchaseorder.png"));
+        ItmSPNU.setIcon(new javax.swing.ImageIcon("images/newpurchaseorder.png"));
         ItmSPNU.setActionCommand("Oborot");
         ItmSPNU.addActionListener(getJMenuActionListener());
-        ItmSPNU.setBackground(new Color(255,255,255));
+        ItmSPNU.setBackground(new java.awt.Color(255,255,255));
         
         MnuProccess.add(ItmSPNU);
         
         //-- For New Purchase Receipt
-        JMenuItem ItmSBalance = new JMenuItem("\u0421\u0443\u043c\u0438 \u0437\u0430 \u0441\u0447\u0435\u0442\u043e\u0432\u043e\u0434\u043d\u0430 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f");
+        javax.swing.JMenuItem ItmSBalance = new javax.swing.JMenuItem("\u0421\u0443\u043c\u0438 \u0437\u0430 \u0441\u0447\u0435\u0442\u043e\u0432\u043e\u0434\u043d\u0430 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f");
         ItmSBalance.setFont(menuFont);
         ItmSBalance.setMnemonic('E');
-        ItmSBalance.setIcon(new ImageIcon("images/newrecieve.png"));
+        ItmSBalance.setIcon(new javax.swing.ImageIcon("images/newrecieve.png"));
         ItmSBalance.setActionCommand("SBalance");
         ItmSBalance.addActionListener(getJMenuActionListener());
-        ItmSBalance.setBackground(new Color(255,255,255));
+        ItmSBalance.setBackground(new java.awt.Color(255,255,255));
         
         MnuProccess.add(ItmSBalance);
         
         //-- For New Expenses
-        JMenuItem ItmSProhod = new JMenuItem("\u0421\u043f\u0438\u0441\u044a\u0446\u0438");
+        javax.swing.JMenuItem ItmSProhod = new javax.swing.JMenuItem("\u0421\u043f\u0438\u0441\u044a\u0446\u0438");
         ItmSProhod.setFont(menuFont);
         ItmSProhod.setActionCommand("SProhod");
         ItmSProhod.addActionListener(getJMenuActionListener());
-        ItmSProhod.setBackground(new Color(255,255,255));
+        ItmSProhod.setBackground(new java.awt.Color(255,255,255));
         
         MnuProccess.add(ItmSProhod);
         
         //-- For New Expenses
-        JMenuItem ItmSPSalaryP = new JMenuItem("\u0417\u0430\u043f\u043b\u0430\u0442\u0438 \u0437\u0430 \u043f\u0435\u0440\u0438\u043e\u0434 \u043e\u0442 \u0432\u0440\u0435\u043c\u0435");
+        javax.swing.JMenuItem ItmSPSalaryP = new javax.swing.JMenuItem("\u0417\u0430\u043f\u043b\u0430\u0442\u0438 \u0437\u0430 \u043f\u0435\u0440\u0438\u043e\u0434 \u043e\u0442 \u0432\u0440\u0435\u043c\u0435");
         ItmSPSalaryP.setFont(menuFont);
         ItmSPSalaryP.setActionCommand("SExpense");
         ItmSPSalaryP.addActionListener(getJMenuActionListener());
-        ItmSPSalaryP.setBackground(new Color(255,255,255));
+        ItmSPSalaryP.setBackground(new java.awt.Color(255,255,255));
         
         MnuProccess.add(ItmSPSalaryP);
         
         //-- For New ДДС
-        JMenuItem ItmStaj = new JMenuItem("\u041d\u0430\u0442\u0440\u0443\u043f\u0430\u043d \u0441\u0442\u0430\u0436");
+        javax.swing.JMenuItem ItmStaj = new javax.swing.JMenuItem("\u041d\u0430\u0442\u0440\u0443\u043f\u0430\u043d \u0441\u0442\u0430\u0436");
         ItmStaj.setFont(menuFont);
         ItmStaj.setActionCommand("spstaj");
         ItmStaj.addActionListener(getJMenuActionListener());
-        ItmStaj.setBackground(new Color(255,255,255));
+        ItmStaj.setBackground(new java.awt.Color(255,255,255));
         
         MnuProccess.add(ItmStaj);
         
         //End proccess sub menu
         
         
-        JMenuItem ItmSPZarab = new JMenuItem("\u0417\u0430\u0440\u0430\u0431\u043e\u0442\u043a\u0438");
+        javax.swing.JMenuItem ItmSPZarab = new javax.swing.JMenuItem("\u0417\u0430\u0440\u0430\u0431\u043e\u0442\u043a\u0438");
         ItmSPZarab.setFont(menuFont);
         ItmSPZarab.setActionCommand("spzarab");
         ItmSPZarab.addActionListener(getJMenuActionListener());
-        ItmSPZarab.setBackground(new Color(255,255,255));
+        ItmSPZarab.setBackground(new java.awt.Color(255,255,255));
         
         MnuProccess.add(ItmSPZarab);
         
 //
-        JMenuItem ItmSPSots = new JMenuItem("\u041e\u0442\u0447\u0435\u0442 \u0437\u0430 \u0441\u043e\u0446\u0438\u0430\u043b\u043d\u043e \u043e\u0441\u0438\u0433\u0443\u0440\u044f\u0432\u0430\u043d\u0435");
+        javax.swing.JMenuItem ItmSPSots = new javax.swing.JMenuItem("\u041e\u0442\u0447\u0435\u0442 \u0437\u0430 \u0441\u043e\u0446\u0438\u0430\u043b\u043d\u043e \u043e\u0441\u0438\u0433\u0443\u0440\u044f\u0432\u0430\u043d\u0435");
         ItmSPSots.setFont(menuFont);
         ItmSPSots.setActionCommand("spsots");
         ItmSPSots.addActionListener(getJMenuActionListener());
-        ItmSPSots.setBackground(new Color(255,255,255));
+        ItmSPSots.setBackground(new java.awt.Color(255,255,255));
         
         MnuProccess.add(ItmSPSots);
         
         //End proccess sub menu
-        JMenuItem ItmSpStistic = new JMenuItem("\u0421\u043f\u0440\u0430\u0432\u043a\u0438 \u0437\u0430 \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043a\u0430\u0442\u0430");
+        javax.swing.JMenuItem ItmSpStistic = new javax.swing.JMenuItem("\u0421\u043f\u0440\u0430\u0432\u043a\u0438 \u0437\u0430 \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043a\u0430\u0442\u0430");
         ItmSpStistic.setFont(menuFont);
         ItmSpStistic.setActionCommand("spstatist");
         ItmSpStistic.addActionListener(getJMenuActionListener());
-        ItmSpStistic.setBackground(new Color(255,255,255));
+        ItmSpStistic.setBackground(new java.awt.Color(255,255,255));
         
         MnuProccess.add(ItmSpStistic);
         //
-        JMenuItem ItmPDOD = new JMenuItem("\u041f\u0440\u0435\u0438\u0437\u0447\u0438\u0441\u043b\u044f\u0432\u0430\u043d\u0435 \u043d\u0430 \u0414\u041e\u0414");
+        javax.swing.JMenuItem ItmPDOD = new javax.swing.JMenuItem("\u041f\u0440\u0435\u0438\u0437\u0447\u0438\u0441\u043b\u044f\u0432\u0430\u043d\u0435 \u043d\u0430 \u0414\u041e\u0414");
         ItmPDOD.setFont(menuFont);
         ItmPDOD.setActionCommand("pdod");
         ItmPDOD.addActionListener(getJMenuActionListener());
-        ItmPDOD.setBackground(new Color(255,255,255));
+        ItmPDOD.setBackground(new java.awt.Color(255,255,255));
         
         MnuProccess.add(ItmPDOD);
         //
-        JMenuItem ItmBPL = new JMenuItem("\u0411\u0430\u043d\u043a\u043e\u0432\u0438 \u043f\u043b\u0430\u0449\u0430\u043d\u0438\u044f");
+        javax.swing.JMenuItem ItmBPL = new javax.swing.JMenuItem("\u0411\u0430\u043d\u043a\u043e\u0432\u0438 \u043f\u043b\u0430\u0449\u0430\u043d\u0438\u044f");
         ItmBPL.setFont(menuFont);
         ItmBPL.setActionCommand("bpl");
         ItmBPL.addActionListener(getJMenuActionListener());
-        ItmBPL.setBackground(new Color(255,255,255));
+        ItmBPL.setBackground(new java.awt.Color(255,255,255));
         
         MnuProccess.add(ItmBPL);
         //
-        JMenuItem ItmUTD = new JMenuItem("\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u044f \u0437\u0430 \u0442\u0440\u0443\u0434\u043e\u0432\u0438 \u0434\u043e\u0433\u043e\u0432\u043e\u0440\u0438");
+        javax.swing.JMenuItem ItmUTD = new javax.swing.JMenuItem("\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u044f \u0437\u0430 \u0442\u0440\u0443\u0434\u043e\u0432\u0438 \u0434\u043e\u0433\u043e\u0432\u043e\u0440\u0438");
         ItmUTD.setFont(menuFont);
         ItmUTD.setActionCommand("Zadalk");
         ItmUTD.addActionListener(getJMenuActionListener());
-        ItmUTD.setBackground(new Color(255,255,255));
+        ItmUTD.setBackground(new java.awt.Color(255,255,255));
         
         MnuProccess.add(ItmUTD);
         
@@ -593,119 +568,116 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         ////
         //Setup system menu
-        JMenu MnuDocum = new JMenu("\u0414\u041e\u041a\u0423\u041c\u0415\u041d\u0422\u0418");
+        javax.swing.JMenu MnuDocum = new javax.swing.JMenu("\u0414\u041e\u041a\u0423\u041c\u0415\u041d\u0422\u0418");
         MnuDocum.setFont(menuFont);
         MnuDocum.setMnemonic('S');
-        MnuDocum.setBackground(new Color(255,255,255));
+        MnuDocum.setBackground(new java.awt.Color(255,255,255));
         NewJMenuBar.add(MnuDocum);
         //
         
-        JMenuItem ItmActStDlaj = new JMenuItem("\u0410\u043a\u0442 \u0437\u0430 \u0432\u0441\u0442\u044a\u043f\u0432\u0430\u043d\u0435 \u0432 \u0434\u043b\u044a\u0436\u043d\u043e\u0441\u0442");
+        javax.swing.JMenuItem ItmActStDlaj = new javax.swing.JMenuItem("\u0410\u043a\u0442 \u0437\u0430 \u0432\u0441\u0442\u044a\u043f\u0432\u0430\u043d\u0435 \u0432 \u0434\u043b\u044a\u0436\u043d\u043e\u0441\u0442");
         ItmActStDlaj.setFont(menuFont);
         ItmActStDlaj.setActionCommand("actsdl");
         ItmActStDlaj.addActionListener(getJMenuActionListener());
-        ItmActStDlaj.setBackground(new Color(255,255,255));
+        ItmActStDlaj.setBackground(new java.awt.Color(255,255,255));
         
         MnuDocum.add(ItmActStDlaj);
         
         
         
         //Setup system menu
-        JMenu MnuSys = new JMenu("\u0421\u0418\u0421\u0422\u0415\u041c\u041d\u0418");
+        javax.swing.JMenu MnuSys = new javax.swing.JMenu("\u0421\u0418\u0421\u0422\u0415\u041c\u041d\u0418");
         MnuSys.setFont(menuFont);
         MnuSys.setMnemonic('S');
-        MnuSys.setBackground(new Color(255,255,255));
+        MnuSys.setBackground(new java.awt.Color(255,255,255));
         NewJMenuBar.add(MnuSys);
         ////
         
-        JMenuItem ItmFirma = new JMenuItem("\u0414\u0430\u043d\u043d\u0438 \u043d\u0430 \u0444\u0438\u0440\u043c\u0430\u0442\u0430");
+        javax.swing.JMenuItem ItmFirma = new javax.swing.JMenuItem("\u0414\u0430\u043d\u043d\u0438 \u043d\u0430 \u0444\u0438\u0440\u043c\u0430\u0442\u0430");
         ItmFirma.setFont(menuFont);
         ItmFirma.setActionCommand("danfirm");
         ItmFirma.addActionListener(getJMenuActionListener());
-        ItmFirma.setBackground(new Color(255,255,255));
+        ItmFirma.setBackground(new java.awt.Color(255,255,255));
         
         MnuSys.add(ItmFirma);
         
         ///////
         
-        JMenuItem ItmNewM = new JMenuItem("\u0421\u044a\u0437\u0434\u0430\u0432\u0430\u043d\u0435 \u043d\u0430 \u043c\u0435\u0441\u0435\u0446");
+        javax.swing.JMenuItem ItmNewM = new javax.swing.JMenuItem("\u0421\u044a\u0437\u0434\u0430\u0432\u0430\u043d\u0435 \u043d\u0430 \u043c\u0435\u0441\u0435\u0446");
         ItmNewM.setFont(menuFont);
         ItmNewM.setActionCommand("newm");
         ItmNewM.addActionListener(getJMenuActionListener());
-        ItmNewM.setBackground(new Color(255,255,255));
+        ItmNewM.setBackground(new java.awt.Color(255,255,255));
         
         MnuSys.add(ItmNewM);
         ////
         
-        JMenuItem ItmDelM = new JMenuItem("\u041f\u0440\u0435\u043c\u0430\u0445\u0432\u0430\u043d\u0435 \u043d\u0430 \u043c\u0435\u0441\u0435\u0446");
+        javax.swing.JMenuItem ItmDelM = new javax.swing.JMenuItem("\u041f\u0440\u0435\u043c\u0430\u0445\u0432\u0430\u043d\u0435 \u043d\u0430 \u043c\u0435\u0441\u0435\u0446");
         ItmDelM.setFont(menuFont);
         ItmDelM.setActionCommand("ereasem");
         ItmDelM.addActionListener(getJMenuActionListener());
-        ItmDelM.setBackground(new Color(255,255,255));
+        ItmDelM.setBackground(new java.awt.Color(255,255,255));
         
         MnuSys.add(ItmDelM);
         ///
-        JMenuItem ItmExport = new JMenuItem("\u0415\u043a\u0441\u043f\u043e\u0440\u0442 \u043d\u0430 \u0434\u0430\u043d\u043d\u0438");
+        javax.swing.JMenuItem ItmExport = new javax.swing.JMenuItem("\u0415\u043a\u0441\u043f\u043e\u0440\u0442 \u043d\u0430 \u0434\u0430\u043d\u043d\u0438");
         ItmExport.setFont(menuFont);
         ItmExport.setActionCommand("expflat");
         ItmExport.addActionListener(getJMenuActionListener());
-        ItmExport.setBackground(new Color(255,255,255));
+        ItmExport.setBackground(new java.awt.Color(255,255,255));
         
         MnuSys.add(ItmExport);
         ////
-        JMenuItem ItmImport = new JMenuItem("\u0418\u043c\u043f\u043e\u0440\u0442 \u043d\u0430 \u0434\u0430\u043d\u043d\u0438");
+        javax.swing.JMenuItem ItmImport = new javax.swing.JMenuItem("\u0418\u043c\u043f\u043e\u0440\u0442 \u043d\u0430 \u0434\u0430\u043d\u043d\u0438");
         ItmImport.setFont(menuFont);
         ItmImport.setActionCommand("import");
         ItmImport.addActionListener(getJMenuActionListener());
-        ItmImport.setBackground(new Color(255,255,255));
+        ItmImport.setBackground(new java.awt.Color(255,255,255));
         
         MnuSys.add(ItmImport);
         
-        
-        
-        
         ///
-        JMenuItem ItmImportPic = new JMenuItem("\u0421\u043d\u0438\u043c\u043a\u0438");
+        javax.swing.JMenuItem ItmImportPic = new javax.swing.JMenuItem("\u0421\u043d\u0438\u043c\u043a\u0438");
         ItmImportPic.setFont(menuFont);
         ItmImportPic.setActionCommand("pic");
         ItmImportPic.addActionListener(getJMenuActionListener());
-        ItmImportPic.setBackground(new Color(255,255,255));
+        ItmImportPic.setBackground(new java.awt.Color(255,255,255));
         
         MnuSys.add(ItmImportPic);
         MnuSys.addSeparator();
         ///
-        JMenuItem ItmNKLPROF = new JMenuItem("\u041d\u0430\u0446\u0438\u043e\u043d\u0430\u043b\u0435\u043d \u043a\u043b\u0430\u0441\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 \u043d\u0430 \u043f\u0440\u043e\u0444\u0435\u0441\u0438\u0438\u0442\u0435");
+        javax.swing.JMenuItem ItmNKLPROF = new javax.swing.JMenuItem("\u041d\u0430\u0446\u0438\u043e\u043d\u0430\u043b\u0435\u043d \u043a\u043b\u0430\u0441\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 \u043d\u0430 \u043f\u0440\u043e\u0444\u0435\u0441\u0438\u0438\u0442\u0435");
         ItmNKLPROF.setFont(menuFont);
         ItmNKLPROF.setActionCommand("nprof");
         ItmNKLPROF.addActionListener(getJMenuActionListener());
-        ItmNKLPROF.setBackground(new Color(255,255,255));
+        ItmNKLPROF.setBackground(new java.awt.Color(255,255,255));
         
         MnuSys.add(ItmNKLPROF);
         ///
-        JMenuItem ItmNKLID= new JMenuItem("\u041d\u0430\u0446\u0438\u043e\u043d\u0430\u043b\u0435\u043d \u043a\u043b\u0430\u0441\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 \u043d\u0430 \u0438\u043a\u043e\u043d\u043e\u043c\u0438\u0447\u0435\u0441\u043a\u0438\u0442\u0435 \u0434\u0435\u0439\u043d\u043e\u0441\u0442\u0438");
+        javax.swing.JMenuItem ItmNKLID= new javax.swing.JMenuItem("\u041d\u0430\u0446\u0438\u043e\u043d\u0430\u043b\u0435\u043d \u043a\u043b\u0430\u0441\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 \u043d\u0430 \u0438\u043a\u043e\u043d\u043e\u043c\u0438\u0447\u0435\u0441\u043a\u0438\u0442\u0435 \u0434\u0435\u0439\u043d\u043e\u0441\u0442\u0438");
         ItmNKLID.setFont(menuFont);
         ItmNKLID.setActionCommand("calendar");
         ItmNKLID.addActionListener(getJMenuActionListener());
-        ItmNKLID.setBackground(new Color(255,255,255));
+        ItmNKLID.setBackground(new java.awt.Color(255,255,255));
         MnuSys.add(ItmNKLID);
         
         
         MnuSys.addSeparator();
         
-        JMenuItem ItmArea= new JMenuItem("\u041e\u0431\u043b\u0430\u0441\u0442\u0438");
+        javax.swing.JMenuItem ItmArea= new javax.swing.JMenuItem("\u041e\u0431\u043b\u0430\u0441\u0442\u0438");
         ItmArea.setFont(menuFont);
         ItmArea.setActionCommand("area");
         ItmArea.addActionListener(getJMenuActionListener());
-        ItmArea.setBackground(new Color(255,255,255));
+        ItmArea.setBackground(new java.awt.Color(255,255,255));
         MnuSys.add(ItmArea);
         
         
         
-        JMenuItem ItmNas= new JMenuItem("\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u0438 \u043c\u0435\u0441\u0442\u0430");
+        javax.swing.JMenuItem ItmNas= new javax.swing.JMenuItem("\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u0438 \u043c\u0435\u0441\u0442\u0430");
         ItmNas.setFont(menuFont);
         ItmNas.setActionCommand("nas");
         ItmNas.addActionListener(getJMenuActionListener());
-        ItmNas.setBackground(new Color(255,255,255));
+        ItmNas.setBackground(new java.awt.Color(255,255,255));
         MnuSys.add(ItmNas);
         
         
@@ -714,23 +686,23 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         
         //Setup help menu
-        JMenu MnuHelp = new JMenu("\u041f\u041e\u041c\u041e\u0429");
+        javax.swing.JMenu MnuHelp = new javax.swing.JMenu("\u041f\u041e\u041c\u041e\u0429");
         MnuHelp.setFont(menuFont);
         MnuHelp.setMnemonic('H');
-        MnuHelp.setBackground(new Color(255,255,255));
+        MnuHelp.setBackground(new java.awt.Color(255,255,255));
         NewJMenuBar.add(MnuHelp);
         //End records menu
         
-        NewJMenuBar.setBackground(new Color(255,255,255));
+        NewJMenuBar.setBackground(new java.awt.Color(255,255,255));
         return NewJMenuBar;
     }
     //End create menu bar
     
     //Create a tool bar
-    protected JToolBar CreateJToolBar(){
-        JToolBar NewJToolBar = new JToolBar("Toolbar");
+    protected javax.swing.JToolBar CreateJToolBar(){
+        javax.swing.JToolBar NewJToolBar = new javax.swing.JToolBar("Toolbar");
         
-        NewJToolBar.setMargin(new Insets(0,0,0,0));
+        NewJToolBar.setMargin(new java.awt.Insets(0,0,0,0));
         
         //Create a toolbar button
         NewJToolBar.add(CreateJToolbarButton("Редакция служители","c:/imakante/ico_sluj.png","sluj"));
@@ -765,8 +737,8 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     }
     //End create a tool bar
     
-    protected JButton CreateJToolbarButton(String srcToolTipText,String srcImageLocation,String srcActionCommand){
-        JButton NewJButton = new JButton(new ImageIcon(srcImageLocation));
+    protected javax.swing.JButton CreateJToolbarButton(String srcToolTipText,String srcImageLocation,String srcActionCommand){
+        javax.swing.JButton NewJButton = new javax.swing.JButton(new javax.swing.ImageIcon(srcImageLocation));
         
         NewJButton.setActionCommand(srcActionCommand);
         NewJButton.setToolTipText(srcToolTipText);
@@ -797,17 +769,17 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 try{
                     FormSastav.setIcon(false);
                     FormSastav.setSelected(true);
-                }catch(PropertyVetoException e){
+                }catch(java.beans.PropertyVetoException e){
                 }
                 //End load the FormCustomer
             }else{
                 try{
                     FormSastav.setIcon(false);
                     FormSastav.setSelected(true);
-                }catch(PropertyVetoException e){
+                }catch(java.beans.PropertyVetoException e){
                 }
             }} else {
-            JOptionPane.showMessageDialog(null,"\u041d\u044f\u043c\u0430 \u0440\u0430\u0431\u043e\u0442\u043d\u0430 \u0434\u0430\u0442\u0430.\n ","",JOptionPane.WARNING_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(null,"\u041d\u044f\u043c\u0430 \u0440\u0430\u0431\u043e\u0442\u043d\u0430 \u0434\u0430\u0442\u0430.\n ","",javax.swing.JOptionPane.WARNING_MESSAGE);
             }
         //End verify if the form is already loaded
         
@@ -827,14 +799,14 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
             try{
                 FormDOD.setIcon(false);
                 FormDOD.setSelected(true);
-            }catch(PropertyVetoException e){
+            }catch(java.beans.PropertyVetoException e){
             }
             //End load the FormDOD
         }else{
             try{
                 FormDOD.setIcon(false);
                 FormDOD.setSelected(true);
-            }catch(PropertyVetoException e){
+            }catch(java.beans.PropertyVetoException e){
             }
         }
         //End verify if the form is already loaded
@@ -854,14 +826,14 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
             try{
                 FormDOO.setIcon(false);
                 FormDOO.setSelected(true);
-            }catch(PropertyVetoException e){
+            }catch(java.beans.PropertyVetoException e){
             }
             //End load the FormDOD
         }else{
             try{
                 FormDOO.setIcon(false);
                 FormDOO.setSelected(true);
-            }catch(PropertyVetoException e){
+            }catch(java.beans.PropertyVetoException e){
             }
         }
         //End verify if the form is already loaded
@@ -882,14 +854,14 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
             try{
                 FormMonth.setIcon(false);
                 FormMonth.setSelected(true);
-            }catch(PropertyVetoException e){
+            }catch(java.beans.PropertyVetoException e){
             }
             //End load the FormDOD
         }else{
             try{
                 FormMonth.setIcon(false);
                 FormMonth.setSelected(true);
-            }catch(PropertyVetoException e){
+            }catch(java.beans.PropertyVetoException e){
             }
         }
         //End verify if the form is already loaded
@@ -916,17 +888,17 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 try{
                     FormVedZaplati.setIcon(false);
                     FormVedZaplati.setSelected(true);
-                }catch(PropertyVetoException e){
+                }catch(java.beans.PropertyVetoException e){
                 }
                 
             }else{
                 try{
                     FormSastav.setIcon(false);
                     FormSastav.setSelected(true);
-                }catch(PropertyVetoException e){
+                }catch(java.beans.PropertyVetoException e){
                 }
             }} else {
-            JOptionPane.showMessageDialog(null,"Няма работна дата.\n Въведете: Програма -> Смяна на период.","РЕА - Проект Мидас",JOptionPane.WARNING_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(null,"Няма работна дата.\n Въведете: Програма -> Смяна на период.","РЕА - Проект Мидас",javax.swing.JOptionPane.WARNING_MESSAGE);
             }
         
         
@@ -947,18 +919,18 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 try{
                     FormVedAvans.setIcon(false);
                     FormVedAvans.setSelected(true);
-                }catch(PropertyVetoException e){
+                }catch(java.beans.PropertyVetoException e){
                 }
                 
             }else{
                 try{
                     FormVedAvans.setIcon(false);
                     FormVedAvans.setSelected(true);
-                }catch(PropertyVetoException e){
+                }catch(java.beans.PropertyVetoException e){
                 }
             }} else {
-            JOptionPane.showMessageDialog(null,"Няма работна дата.\n Въведете: Програма -> Смяна на период.",
-                    "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415",JOptionPane.WARNING_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(null,"Няма работна дата.\n Въведете: Програма -> Смяна на период.",
+                    "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415",javax.swing.JOptionPane.WARNING_MESSAGE);
             }
         
         
@@ -1001,14 +973,14 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
             try{
                 FormNewM.setIcon(false);
                 FormNewM.setSelected(true);
-            }catch(PropertyVetoException e){
+            }catch(java.beans.PropertyVetoException e){
             }
             
         }else{
             try{
                 FormNewM.setIcon(false);
                 FormNewM.setSelected(true);
-            }catch(PropertyVetoException e){
+            }catch(java.beans.PropertyVetoException e){
             }
         }
     }
@@ -1024,14 +996,14 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
             try{
                 FormOtdel.setIcon(false);
                 FormOtdel.setSelected(true);
-            }catch(PropertyVetoException e){
+            }catch(java.beans.PropertyVetoException e){
             }
             
         }else{
             try{
                 FormOtdel.setIcon(false);
                 FormOtdel.setSelected(true);
-            }catch(PropertyVetoException e){
+            }catch(java.beans.PropertyVetoException e){
             }
         }
         
@@ -1050,14 +1022,14 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
             try{
                 FormDlajnost.setIcon(false);
                 FormDlajnost.setSelected(true);
-            }catch(PropertyVetoException e){
+            }catch(java.beans.PropertyVetoException e){
             }
             
         }else{
             try{
                 FormDlajnost.setIcon(false);
                 FormDlajnost.setSelected(true);
-            }catch(PropertyVetoException e){
+            }catch(java.beans.PropertyVetoException e){
             }
         }
         
@@ -1074,13 +1046,13 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
             try{
                 FormPic.setIcon(false);
                 FormPic.setSelected(true);
-            }catch(PropertyVetoException e){
+            }catch(java.beans.PropertyVetoException e){
             }
         }else{
             try{
                 FormPic.setIcon(false);
                 FormPic.setSelected(true);
-            }catch(PropertyVetoException e){
+            }catch(java.beans.PropertyVetoException e){
             }
         }
         
@@ -1158,13 +1130,13 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
             try{
                 FormNCP.setIcon(false);
                 FormNCP.setSelected(true);
-            }catch(PropertyVetoException e){
+            }catch(java.beans.PropertyVetoException e){
             }
         }else{
             try{
                 FormNCP.setIcon(false);
                 FormNCP.setSelected(true);
-            }catch(PropertyVetoException e){
+            }catch(java.beans.PropertyVetoException e){
             }
         }
         
@@ -1184,13 +1156,13 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
             try{
                 FormNasM.setIcon(false);
                 FormNasM.setSelected(true);
-            }catch(PropertyVetoException e){
+            }catch(java.beans.PropertyVetoException e){
             }
         }else{
             try{
                 FormNasM.setIcon(false);
                 FormNasM.setSelected(true);
-            }catch(PropertyVetoException e){
+            }catch(java.beans.PropertyVetoException e){
             }
         }
         
@@ -1470,8 +1442,8 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     
     protected void UnloadConnection() throws java.sql.SQLException {
         String ObjButtons[] = {"\u0414\u0410","\u041d\u0415"};
-        int PromptResult = JOptionPane.showOptionDialog(null,"\u041f\u0440\u0435\u043a\u0430\u0441\u0432\u0430\u043d\u0435 \u043d\u0430 \u0432\u0440\u044a\u0437\u043a\u0430 \u0441 \u0431\u0430\u0437\u0430\u0442\u0430?"
-                ,"\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE,null,ObjButtons,ObjButtons[1]);
+        int PromptResult = javax.swing.JOptionPane.showOptionDialog(null,"\u041f\u0440\u0435\u043a\u0430\u0441\u0432\u0430\u043d\u0435 \u043d\u0430 \u0432\u0440\u044a\u0437\u043a\u0430 \u0441 \u0431\u0430\u0437\u0430\u0442\u0430?"
+                ,"\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415",javax.swing.JOptionPane.DEFAULT_OPTION,javax.swing.JOptionPane.WARNING_MESSAGE,null,ObjButtons,ObjButtons[1]);
         if(PromptResult==0){
             System.out.println(
                     "\n\n" +
@@ -1480,8 +1452,8 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                     );
             try {
                 dbCON.close();
-                JOptionPane.showMessageDialog(null,"\u0412\u0440\u044a\u0437\u043a\u0430\u0442\u0430 \u043a\u044a\u043c \u0431\u0430\u0437\u0430\u0442\u0430 \u0435 \u0443\u0441\u043f\u0435\u0448\u043d\u043e \u043f\u0440\u0435\u043a\u044a\u0441\u043d\u0430\u0442\u0430.\n \u0417\u0430 \u0434\u0430 \u043f\u0440\u043e\u0434\u044a\u043b\u0436\u0438\u0442\u0435 \u0440\u0430\u0431\u043e\u0442\u0430 - \u041f\u0420\u041e\u0413\u0420\u0410\u041c\u0410 -> \u0412\u0445\u043e\u0434 \u0432 \u0411\u0430\u0437\u0430\u0442\u0430."
-                        ,"\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415",JOptionPane.WARNING_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(null,"\u0412\u0440\u044a\u0437\u043a\u0430\u0442\u0430 \u043a\u044a\u043c \u0431\u0430\u0437\u0430\u0442\u0430 \u0435 \u0443\u0441\u043f\u0435\u0448\u043d\u043e \u043f\u0440\u0435\u043a\u044a\u0441\u043d\u0430\u0442\u0430.\n \u0417\u0430 \u0434\u0430 \u043f\u0440\u043e\u0434\u044a\u043b\u0436\u0438\u0442\u0435 \u0440\u0430\u0431\u043e\u0442\u0430 - \u041f\u0420\u041e\u0413\u0420\u0410\u041c\u0410 -> \u0412\u0445\u043e\u0434 \u0432 \u0411\u0430\u0437\u0430\u0442\u0430."
+                        ,"\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415",javax.swing.JOptionPane.WARNING_MESSAGE);
             } catch(java.sql.SQLException sqle){
             }
         }
@@ -1489,8 +1461,8 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     
     protected void UnloadWindow(){
         String ObjButtons[] = {"\u0414\u0410","\u041d\u0415"};
-        int PromptResult = JOptionPane.showOptionDialog(null,"\u0418\u0437\u0445\u043e\u0434 \u043e\u0442 \u043f\u0440\u043e\u0440\u0430\u043c\u0430\u0442\u0430?"
-                ,"\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE,null,ObjButtons,ObjButtons[1]);
+        int PromptResult = javax.swing.JOptionPane.showOptionDialog(null,"\u0418\u0437\u0445\u043e\u0434 \u043e\u0442 \u043f\u0440\u043e\u0440\u0430\u043c\u0430\u0442\u0430?"
+                ,"\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415",javax.swing.JOptionPane.DEFAULT_OPTION,javax.swing.JOptionPane.WARNING_MESSAGE,null,ObjButtons,ObjButtons[1]);
         if(PromptResult==0){
             System.out.println(
                     "\n\n" +
@@ -1504,14 +1476,14 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     
     protected boolean isLoaded(String FormTitle) {
         
-        JInternalFrame Form[] = Desk1.getAllFrames();
+        javax.swing.JInternalFrame Form[] = Desk1.getAllFrames();
         for (int i = 0; i < Form.length; i++) {
             if (Form[i].getTitle().equalsIgnoreCase(FormTitle)) {
                 Form[i].setVisible(true);
                 try{
                     Form[i].setIcon(false);
                     Form[i].setSelected(true);
-                }catch(PropertyVetoException e){
+                }catch(java.beans.PropertyVetoException e){
                 }
                 return true;
             }
@@ -1526,14 +1498,14 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         if(sSelectedTheme == 1){
             try {
                 javax.swing.UIManager.setLookAndFeel("com.birosoft.liquid.LiquidLookAndFeel");
-                JFrame.setDefaultLookAndFeelDecorated(true);
+                javax.swing.JFrame.setDefaultLookAndFeelDecorated(true);
             } catch (Exception e) {}
         }else if(sSelectedTheme == 2){
             //If Failed to load the liquid them then load my own XPStyleTheme
             // MetalTheme myXPStyleTheme = new XPStyleTheme();
             //MetalLookAndFeel.setCurrentTheme(myXPStyleTheme);
             try {
-                UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+                javax.swing.UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
             } catch (Exception err) {
                 System.out.println("Error loading myXPStyleTheme");
                 System.out.println(err);
@@ -1557,8 +1529,8 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
             //	MetalTheme myXPStyleTheme = new XPStyleTheme();
             //	MetalLookAndFeel.setCurrentTheme(myXPStyleTheme);
             try {
-                String sysLook = UIManager.getSystemLookAndFeelClassName();
-                UIManager.setLookAndFeel(sysLook);
+                String sysLook = javax.swing.UIManager.getSystemLookAndFeelClassName();
+                javax.swing.UIManager.setLookAndFeel(sysLook);
                 
             } catch (Exception err) {
                 System.out.println("Error loading Theme:" + err.toString());
@@ -1579,11 +1551,11 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         this.JMenuActionListener = JMenuActionListener;
     }
     
-    public JLabel getStatusLabel() {
+    public javax.swing.JLabel getStatusLabel() {
         return StatusLabel;
     }
     
-    public void setStatusLabel(JLabel StatusLabel) {
+    public void setStatusLabel(javax.swing.JLabel StatusLabel) {
         this.StatusLabel = StatusLabel;
     }
     
