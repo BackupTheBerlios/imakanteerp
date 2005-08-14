@@ -1,7 +1,5 @@
 package imakante.salary;
 
-import javax.swing.JButton;
-
 
 public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.event.WindowListener {
     javax.swing.JFrame JFParentFrame;
@@ -35,6 +33,7 @@ public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.ev
             public static imakante.com.CustomTable jTable;
             
             java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+            public int idRab;
             public int lMonth;
             public int lYear;
             java.awt.Font fontP;
@@ -43,8 +42,9 @@ public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.ev
             throws java.sql.SQLException {
                 super("Списък служители", false, true,true, true);
                 
-               
+                
                 JFParentFrame = getParentFrame;
+                idRab = 1;
                 lMonth = pMonth;
                 lYear = pYear;
                 cnCus = srcCN;
@@ -179,14 +179,12 @@ public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.ev
             }
             
             private void jButton1ActionPerformed(java.awt.event.ActionEvent e) {
-                javax.swing.JDialog JDAdd = new frmAddLitse(true, JFParentFrame, cnCus, "", lMonth, lYear);
+                javax.swing.JDialog JDAdd = new frmAddLitse(JFParentFrame, true, cnCus, idRab, lMonth, lYear);
                 JDAdd.setVisible(true);
             }
             
-            private void jButton2ActionPerformed(java.awt.event.ActionEvent e)
-            
-            {
-                try{
+            private void jButton2ActionPerformed(java.awt.event.ActionEvent e){
+                /*try{
                     if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
                         javax.swing.JDialog JDEdit = new frmAddLitse(false,
                                 JFParentFrame, cnCus,
@@ -200,10 +198,11 @@ public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.ev
                     if (sqlE.getMessage() != null) {
                         System.out.println(sqlE.getMessage());
                     } else {
-                        
+                 
                     }
-                }
+                }*/
             }
+            
             private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {
                 
             }
@@ -334,14 +333,15 @@ public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.ev
                 this.dispose();
                 
             }
+            
             java.awt.event.KeyAdapter keyCl = new java.awt.event.KeyAdapter() {
-                    public void keyPressed(java.awt.event.KeyEvent evt) {
-                        ButtonEnterPressed(evt);
-                    }
-                };
-             private void ButtonEnterPressed(java.awt.event.KeyEvent evt) {
-                if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ 
-                    ((JButton) evt.getComponent()).doClick();
+                public void keyPressed(java.awt.event.KeyEvent evt) {
+                    ButtonEnterPressed(evt);
+                }
+            };
+            private void ButtonEnterPressed(java.awt.event.KeyEvent evt) {
+                if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+                    ((javax.swing.JButton) evt.getComponent()).doClick();
                 }
             }
             public void windowOpened(java.awt.event.WindowEvent e){
