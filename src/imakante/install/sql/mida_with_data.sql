@@ -100,7 +100,7 @@ CREATE TABLE `kasadet001razhod` (
 CREATE TABLE `ls_addresses` (
   `idls_addresses` int(11) NOT NULL default '0',
   `address` varchar(70) default NULL,
-  `telofon` varchar(10) default NULL,
+  `telefon` varchar(10) default NULL,
   `mobilen` varchar(15) default NULL,
   `email` varchar(30) default NULL,
   `id_rab` int(11) NOT NULL default '0',
