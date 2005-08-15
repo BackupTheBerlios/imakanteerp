@@ -1188,7 +1188,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         return pMonth;
     }
     
-    public static int getMonth(int xMonth) {
+    public static int getMonth() {
         return pMonth;
     }
     
@@ -1197,7 +1197,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         return pYear;
     }
     
-    public static int getYear(int xYear){
+    public static int getYear(){
         return pYear;
     }
    
