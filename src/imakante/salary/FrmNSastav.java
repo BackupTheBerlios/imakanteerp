@@ -185,6 +185,11 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
 
         jPanel2.setBorder(new javax.swing.border.EtchedBorder());
         jButton1.setText("\u041d\u043e\u0432 \u0441\u043b\u0443\u0436\u0438\u0442\u0435\u043b");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jButton1KeyPressed(evt);
@@ -196,6 +201,11 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
         jPanel2.add(jButton1, gridBagConstraints);
 
         jButton2.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jButton2KeyPressed(evt);
@@ -276,6 +286,14 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
         pack();
     }
     // </editor-fold>//GEN-END:initComponents
+    
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        editRecord();
+    }//GEN-LAST:event_jButton2ActionPerformed
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        newRecord();
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     private void jButton6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton6KeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton6.doClick();}
@@ -411,7 +429,7 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
             if(Integer.parseInt((String.valueOf(strIniTable.charAt(11))))==1){ Names[x] = "\u041f\u043e\u0449\u0435\u043d\u0441\u043a\u0438 \u043a\u043e\u0434"; strQ=strQ + ", n_nm.postcode";x++;}
             if(Integer.parseInt((String.valueOf(strIniTable.charAt(12))))==1){ Names[x] = "\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e"; strQ=strQ + ", n_nm.name AS name_grad";x++;}
             if(Integer.parseInt((String.valueOf(strIniTable.charAt(13))))==1){ Names[x] = "\u0410\u0434\u0440\u0435\u0441"; strQ=strQ + ", ls_addresses.address";x++;}
-            if(Integer.parseInt((String.valueOf(strIniTable.charAt(14))))==1){ Names[x] = "\u0414\u043e\u043c\u0430\u0448\u0435\u043d \u0442\u0435\u043b\u0435\u0444\u043e\u043d"; strQ=strQ + ", ls_addresses.telåfon";x++;}
+            if(Integer.parseInt((String.valueOf(strIniTable.charAt(14))))==1){ Names[x] = "\u0414\u043e\u043c\u0430\u0448\u0435\u043d \u0442\u0435\u043b\u0435\u0444\u043e\u043d"; strQ=strQ + ", ls_addresses.telefon";x++;}
             if(Integer.parseInt((String.valueOf(strIniTable.charAt(15))))==1){ Names[x] = "\u041c\u043e\u0431\u0438\u043b\u0435\u043d \u0442\u0435\u043b\u0435\u0444\u043e\u043d"; strQ=strQ + ", ls_addresses.mobilen";x++;}
             if(Integer.parseInt((String.valueOf(strIniTable.charAt(16))))==1){ Names[x] = "\u0435@\u043c\u0430\u0439\u043b"; strQ=strQ + ", email";x++;}
             if(Integer.parseInt((String.valueOf(strIniTable.charAt(17))))==1){ Names[x] = "\u041d\u043e\u043c\u0435\u0440 \u043d\u0430 \u0434\u043e\u0433\u043e\u0432\u043e\u0440\u0430"; strQ=strQ + ", nomer_dogowor";x++;}
@@ -457,8 +475,11 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
         if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
             int row = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
             try{
-                imakante.salary.frmAddDlajnost frmDialog = new imakante.salary.frmAddDlajnost(JFParentFrame, true, dbInternal, row);
+                int lMonth = imakante.salary.salary_main.getMonth();
+                int lYear = imakante.salary.salary_main.getYear();
+                imakante.salary.frmAddLitse frmDialog = new imakante.salary.frmAddLitse(JFParentFrame, false, dbInternal, row, lMonth, lYear);
                 frmDialog.setVisible(true);
+                
                 
             } catch(Exception e){e.printStackTrace();}
         }
@@ -505,13 +526,15 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
     }
     
     protected void newRecord(){
-        
-        imakante.salary.frmAddDlajnost frmDialog = new imakante.salary.frmAddDlajnost(JFParentFrame, true, dbInternal, 0);
+        int lMonth = imakante.salary.salary_main.getMonth();
+        int lYear = imakante.salary.salary_main.getYear();
+        imakante.salary.frmAddLitse frmDialog = new imakante.salary.frmAddLitse(JFParentFrame, false, dbInternal, 0, lMonth, lYear);
         frmDialog.setVisible(true);
         
         
         
     }
+    
     protected void deleteRecord(){
         try{
             if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {

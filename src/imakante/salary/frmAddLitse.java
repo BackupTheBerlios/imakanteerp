@@ -1,6 +1,8 @@
 
 package imakante.salary;
 
+import java.awt.event.KeyEvent;
+
 public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.WindowListener{
     
     
@@ -11,6 +13,11 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         id_row = id_rab;
         initResource();
         initComponents();
+        
+        java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        int x_width = (((dim.width)-(this.getSize().width))/2);
+        int y_height = (((dim.height)-(this.getSize().height))/2);
+        this.setLocation(x_width,y_height);
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -57,6 +64,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         jtfMobile = new javax.swing.JTextField();
         jlEmail = new javax.swing.JLabel();
         jtfEmail = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jpWorker = new javax.swing.JPanel();
         jlContractNum = new javax.swing.JLabel();
         jtfContractNum = new javax.swing.JTextField();
@@ -231,6 +239,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 20, 10);
         jpPerson.add(jtfEGN, gridBagConstraints);
 
@@ -245,6 +254,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 7;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 60;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 20, 10);
         jpPerson.add(jtfBDate, gridBagConstraints);
@@ -317,6 +327,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         jpWhereabouts.add(jlCity, gridBagConstraints);
 
         jtfCity.setColumns(25);
+        jtfCity.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfCityKeyPressed(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -391,6 +407,13 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.gridy = 6;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 20, 20);
         jpWhereabouts.add(jtfEmail, gridBagConstraints);
+
+        jLabel1.setText("* F7 - \u0418\u0437\u0431\u043e\u0440 \u043d\u0430 \u0432\u044a\u0437\u043c\u043e\u0436\u043d\u043e\u0441\u0442\u0438");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 3;
+        jpWhereabouts.add(jLabel1, gridBagConstraints);
 
         jtpDataInput.addTab("\u041c\u0435\u0441\u0442\u043e\u0436\u0438\u0432\u0435\u0435\u043d\u0435 \u0438 \u041a\u043e\u043c\u0443\u043d\u0438\u043a\u0430\u0446\u0438\u044f", jpWhereabouts);
 
@@ -686,6 +709,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     }
     // </editor-fold>//GEN-END:initComponents
     
+    private void jtfCityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCityKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_F7){
+            
+        }
+    }//GEN-LAST:event_jtfCityKeyPressed
+    
     private void jtfEGNFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfEGNFocusLost
         EGN = jtfEGN.getText();
         if (EGN.length()!=10){
@@ -693,7 +722,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             int Warner = javax.swing.JOptionPane.showOptionDialog(null,"\u041d\u0435\u043a\u043e\u0440\u0435\u043a\u0442\u043d\u0430 \u0441\u0442\u043e\u0439\u043d\u043e\u0441\u0442!", "\u0426\u0438\u0444\u0440\u0438\u0442\u0435 \u0442\u0440\u044f\u0431\u0432\u0430 \u0434\u0430 \u0441\u0430 10!",javax.swing.JOptionPane.DEFAULT_OPTION,javax.swing.JOptionPane.WARNING_MESSAGE,null,Ops,Ops[1]);
             switch (Warner) {
                 case 1: jtfEGN.setText(""); break;
-                case 2: break;
+                case 2: jtfEGN.requestFocus(); break;
                 case 3: dispose(); break;
             }
             if(EGN.equals("")) {} else {;}
@@ -705,7 +734,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                 int Warner = javax.swing.JOptionPane.showOptionDialog(null,"\u041d\u0415\u0412\u0410\u041b\u0418\u0414\u041d\u041e \u0415\u0413\u041d!", "\u0412\u041d\u0418\u041c\u0410\u041d\u0418\u0415!!! \u0412\u044a\u0432\u0435\u0434\u0435\u043d\u043e\u0442\u043e \u0415\u0413\u041d \u0435 \u043d\u0435\u0432\u0430\u043b\u0438\u0434\u043d\u043e! \u041f\u0440\u043e\u0432\u0435\u0440\u0435\u0442\u0435 \u0437\u0430 \u0433\u0440\u0435\u0448\u043a\u0430!",javax.swing.JOptionPane.DEFAULT_OPTION,javax.swing.JOptionPane.WARNING_MESSAGE,null,Ops,Ops[1]);
                 switch (Warner) {
                     case 1: jtfEGN.setText(""); break;
-                    case 2: break;
+                    case 2: jtfEGN.requestFocus(); break;
                     case 3: dispose(); break;
                 }
             }
@@ -724,6 +753,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton jbAdd;
     private javax.swing.JButton jbChange;
     private javax.swing.JButton jbQuit;
@@ -864,8 +894,15 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             
         }
     }
-    
-    
+    protected void insertRecord(){
+        
+        
+    }
+    public static void insertN_NM(){
+        
+        
+        
+    }
     protected void closeResource(){
         if(rs!=null){ try{  rs.close();
         }catch(java.sql.SQLException sqle){}}
