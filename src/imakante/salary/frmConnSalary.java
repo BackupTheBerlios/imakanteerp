@@ -252,15 +252,16 @@ public class frmConnSalary extends java.awt.Dialog {
             try {
                 stm = dbConn.createStatement(java.sql.ResultSet.TYPE_SCROLL_SENSITIVE,
                         java.sql.ResultSet.CONCUR_READ_ONLY);
-                rs = stm.executeQuery("SELECT  sastav, vedom, fishove,newmonth,vedoma FROM ls_users_rights" +
-                        "INNER JOIN user_master ON(user_master.Id = ls_users_rights.id_user) WHERE user_master.name = '" + lDBUser + "'");
-                userRights.put("sastav", rs.getInt(0));
-                userRights.put("vedom", rs.getInt(1));
-                userRights.put("fishove", rs.getInt(2));
-                userRights.put("newmonth", rs.getInt(3));
-                userRights.put("vedoma", rs.getInt(4));
+                String sqlQ_Hash = "SELECT  sastav, vedom, fishove,newmonth,vedoma FROM ls_users_rights INNER JOIN user_master ON(user_master.Id = ls_users_rights.id_user) WHERE user_master.name = '" + lDBUser + "'";
+              
+                rs = stm.executeQuery(sqlQ_Hash);
+               while(rs.next()) {userRights.put("sastav", rs.getString("sastav"));
+                userRights.put("vedom", rs.getString("vedom"));
+                userRights.put("fishove", rs.getString("fishove"));
+                userRights.put("newmonth", rs.getString("newmonth"));
+                userRights.put("vedoma", rs.getString("vedoma"));}
                 
-            } catch(java.sql.SQLException sqle){}
+            } catch(java.sql.SQLException sqle){sqle.printStackTrace();}
             
         }
         
