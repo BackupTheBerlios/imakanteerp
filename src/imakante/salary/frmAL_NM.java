@@ -5,8 +5,9 @@ import java.awt.event.KeyEvent;
 
 public class frmAL_NM extends javax.swing.JDialog implements java.awt.event.WindowListener {
     
-    public frmAL_NM(javax.swing.JFrame parent, boolean modal, String patt_name, int post_code, boolean ftr) {
+    public frmAL_NM(javax.swing.JFrame parent, boolean modal, java.sql.Connection dbCon, String patt_name, int post_code, boolean ftr) {
         super(parent, modal);
+        dbInternal = dbCon;
         name = patt_name;
         p_code = post_code;
         lftr = ftr;
@@ -70,7 +71,7 @@ public class frmAL_NM extends javax.swing.JDialog implements java.awt.event.Wind
         
         
         try{
-            rsCus = stm.executeQuery("SELECT n_nm.id, n_nm.postcode, n_nm.name, n_oblast.name FROM n_nm LEFT JOIN n_oblast ON(n_oblast.id = n_nm.id_oblast) WHERE n_nm.name  LIKE '%"+ name + "%'");} catch (java.sql.SQLException sqle){sqle.printStackTrace();}
+            rsCus = stm.executeQuery("SELECT n_nm.id, n_nm.postcode, n_nm.name, n_oblast.name, n_oblast.id FROM n_nm LEFT JOIN n_oblast ON(n_oblast.id = n_nm.id_oblast) WHERE n_nm.name  LIKE '%"+ name + "%'");} catch (java.sql.SQLException sqle){sqle.printStackTrace();}
         
         model = new imakante.com.CustomTableModel(dbInternal, rsCus, Names);
         jTable = new imakante.com.CustomTable(model);}
@@ -107,15 +108,15 @@ public class frmAL_NM extends javax.swing.JDialog implements java.awt.event.Wind
     public static imakante.com.CustomTable jTable;
     public static final String Names[] = {"\u041d\u043e\u043c\u0435\u0440","\u041f\u043e\u0449\u0435\u043d\u0441\u043a\u0438 \u043a\u043e\u0434",
             "\u0418\u043c\u0435 \u043d\u0430 \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u043e\u0442\u043e \u043c\u044f\u0441\u0442\u043e",
-            "\u041e\u0431\u043b\u0430\u0441\u0442"
+            "\u041e\u0431\u043b\u0430\u0441\u0442","oblast id"
     };
-    public static String name;
-    public static int p_code;
+    public static String name,code,city;
+    public static int p_code, area;
     static boolean lftr;
     
     private void jTable_event(java.awt.event.KeyEvent evt) {
         if (evt.getKeyCode() == KeyEvent.VK_INSERT){
-            
+            getRecords();
         }
         if (evt.getKeyCode() == KeyEvent.VK_ESCAPE){
             UnloadWindow();
@@ -123,6 +124,17 @@ public class frmAL_NM extends javax.swing.JDialog implements java.awt.event.Wind
         
     }
     
+    protected void getRecords(){
+        
+        if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
+            
+            area = (Integer) jTable.getValueAt(jTable.getSelectedRow(),4);
+            code =  jTable.getValueAt(jTable.getSelectedRow(),1).toString();
+            city = jTable.getValueAt(jTable.getSelectedRow(),2).toString();
+            imakante.salary.frmAddLitse.insertN_NM(area, code, city);
+        }
+         UnloadWindow();
+    }
     
     protected void closeResource(){
         if(rsCus!=null){ try{  rsCus.close();
@@ -131,7 +143,7 @@ public class frmAL_NM extends javax.swing.JDialog implements java.awt.event.Wind
         }catch(java.sql.SQLException sqle){}}
         
     }
-    
+   
     
     protected void UnloadWindow(){
         closeResource();

@@ -8,12 +8,14 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     
     public frmAddLitse(javax.swing.JFrame parent, boolean modal, java.sql.Connection dbCon, int id_rab, int lMonth, int lYear) {
         super(parent, modal);
+        parent_in=parent;
         System.out.println("Wytre sym!!!");
         dbInternal = dbCon;
         id_row = id_rab;
-        initResource();
-        initComponents();
         
+        initComponents();
+        initCombo_Area();
+        initResource();
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         int x_width = (((dim.width)-(this.getSize().width))/2);
         int y_height = (((dim.height)-(this.getSize().height))/2);
@@ -316,6 +318,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 50;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
         jpWhereabouts.add(jtfPCode, gridBagConstraints);
 
@@ -336,6 +339,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 150;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
         jpWhereabouts.add(jtfCity, gridBagConstraints);
 
@@ -352,6 +356,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 250;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 20);
         jpWhereabouts.add(jtfAddress, gridBagConstraints);
 
@@ -375,6 +380,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
+        gridBagConstraints.ipadx = 100;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 20, 10);
         jpWhereabouts.add(jtfPhone, gridBagConstraints);
 
@@ -390,6 +396,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
+        gridBagConstraints.ipadx = 100;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 20, 10);
         jpWhereabouts.add(jtfMobile, gridBagConstraints);
 
@@ -405,6 +412,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
+        gridBagConstraints.ipadx = 150;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 20, 20);
         jpWhereabouts.add(jtfEmail, gridBagConstraints);
 
@@ -711,7 +719,9 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     
     private void jtfCityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCityKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_F7){
+            imakante.salary.frmAL_NM frmDialog = new imakante.salary.frmAL_NM(parent_in, true,dbInternal, jtfCity.getText(), 0, true);
             
+            frmDialog.setVisible(true);
         }
     }//GEN-LAST:event_jtfCityKeyPressed
     
@@ -834,6 +844,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     protected static javax.swing.JTextField jtfTypeEmp;
     private javax.swing.JTabbedPane jtpDataInput;
     // End of variables declaration//GEN-END:variables
+    javax.swing.JFrame parent_in;
     public static java.sql.Connection dbInternal;
     public static java.sql.Statement stm;
     public static java.sql.ResultSet rs;
@@ -852,10 +863,10 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             }
             
             try{
-                rs = stm.executeQuery("SELECT ls_main.id, ls_main.nomer, ls_main.first, ls_main.second, ls_main.family, ls_main.egn, DATE_FORMAT(ls_dates.b_date,'%Y-%m-%d') AS bdate, gender, nomer_LK, DATE_FORMAT(ls_dates.data_izd_LK,'%Y-%m-%d') AS date_lk, n_oblast.name AS name_oblast, n_nm.postcode, n_nm.name AS name_grad, ls_addresses.address, ls_addresses.telåfon, ls_addresses.mobilen, email, nomer_dogowor, DATE_FORMAT(ls_dates.data_naznach,'%Y-%m-%d') AS nazdate, DATE_FORMAT(ls_dates.data_postypwane,'%Y-%m-%d') AS postdate, DATE_FORMAT(ls_dates.data_napuskane,'%Y-%m-%d') AS napudate, DATE_FORMAT(ls_dates.posl_den_w_osig,'%Y-%m-%d') AS posddate, osnowanie_dog, DATE_FORMAT(ls_dates.srok_dogov, '%Y-%m-%d') AS srok_dog , d_st, m_st, g_st, kateg_rabotnik, belejki  FROM ls_main LEFT JOIN ls_dates ON (ls_dates.id_rab = ls_main.id) LEFT JOIN ls_addresses ON (ls_addresses.id_rab = ls_main.id) LEFT JOIN n_nm ON (n_nm.id = ls_addresses.id_nasm) LEFT JOIN n_oblast ON (n_oblast.id = n_nm.id_oblast) WHERE ls_main.id = " + id_row);
+                rs = stm.executeQuery("SELECT ls_main.id, ls_main.nomer, ls_main.first, ls_main.second, ls_main.family, ls_main.egn, DATE_FORMAT(ls_dates.b_date,'%Y-%m-%d') AS bdate, gender, nomer_LK, DATE_FORMAT(ls_dates.data_izd_LK,'%Y-%m-%d') AS date_lk, n_oblast.name AS name_oblast, n_nm.postcode, n_nm.name AS name_grad, ls_addresses.address, ls_addresses.telåfon, ls_addresses.mobilen, email, nomer_dogowor, DATE_FORMAT(ls_dates.data_naznach,'%Y-%m-%d') AS nazdate, DATE_FORMAT(ls_dates.data_postypwane,'%Y-%m-%d') AS postdate, DATE_FORMAT(ls_dates.data_napuskane,'%Y-%m-%d') AS napudate, DATE_FORMAT(ls_dates.posl_den_w_osig,'%Y-%m-%d') AS posddate, osnowanie_dog, DATE_FORMAT(ls_dates.srok_dogov, '%Y-%m-%d') AS srok_dog , d_st, m_st, g_st, kateg_rabotnik, belejki, n_oblast.id AS id_oblast FROM ls_main LEFT JOIN ls_dates ON (ls_dates.id_rab = ls_main.id) LEFT JOIN ls_addresses ON (ls_addresses.id_rab = ls_main.id) LEFT JOIN n_nm ON (n_nm.id = ls_addresses.id_nasm) LEFT JOIN n_oblast ON (n_oblast.id = n_nm.id_oblast) WHERE ls_main.id = " + id_row);
                 while(rs.next()){
                     
-                    jcbDistrict.setSelectedItem("Plovdiv");
+                    jcbDistrict.setSelectedItem(rs.getInt("id_oblast"));
                     jcbGender.setSelectedItem(rs.getString(Gender[0]));
                     jtaNotes.setText(rs.getString("belejki"));
                     jtfAddress.setText(rs.getString("address"));
@@ -898,17 +909,44 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         
         
     }
-    public static void insertN_NM(){
+    
+    
+    public static void insertN_NM(int area, String post, String City){
         
-        
+        jcbDistrict.setSelectedIndex(area);
+        jtfPCode.setText(post);
+        jtfCity.setText(City);
         
     }
+    
+    
     protected void closeResource(){
         if(rs!=null){ try{  rs.close();
         }catch(java.sql.SQLException sqle){}}
         if(stm!=null){ try{ stm.close();
         }catch(java.sql.SQLException sqle){}}
         
+    }
+    
+    protected void initCombo_Area(){
+        try{
+            
+            stm = dbInternal.createStatement();
+            rs = stm.executeQuery("SELECT n_oblast.name FROM n_oblast ORDER BY n_oblast.id");
+            
+            jcbDistrict.addItem("");// za parvi prazen zapis
+            
+            while(rs.next()){
+                
+                jcbDistrict.addItem(rs.getString("name"));
+                
+            }
+        } catch(java.sql.SQLException sqle){
+            sqle.printStackTrace();
+            
+        }
+        try{stm.close();}catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        try{rs.close();}catch(java.sql.SQLException sqle){sqle.printStackTrace();}
     }
     
     protected void UnloadWindow(){

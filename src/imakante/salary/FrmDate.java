@@ -74,13 +74,13 @@ public class FrmDate extends JDialog //implements ActionListener
                         while(rsCus.next()){
                             
                             comboYear.addItem(rsCus.getString("pyear"));
-                            
-                            System.out.println(rsCus.getString("pyear"));
+                           
                         }
                     } catch(java.sql.SQLException sqle){
                         sqle.printStackTrace();
                     }
                 }
+                
                 try {
                     
                     jbInit();
