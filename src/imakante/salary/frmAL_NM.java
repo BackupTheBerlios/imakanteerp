@@ -5,7 +5,7 @@ import java.awt.event.KeyEvent;
 
 public class frmAL_NM extends javax.swing.JDialog implements java.awt.event.WindowListener {
     
-    public frmAL_NM(javax.swing.JFrame parent, boolean modal, java.sql.Connection dbCon, String patt_name, int post_code, boolean ftr) {
+    public frmAL_NM(javax.swing.JFrame parent, boolean modal, java.sql.Connection dbCon, String patt_name, String post_code, boolean ftr) {
         super(parent, modal);
         dbInternal = dbCon;
         name = patt_name;
@@ -63,7 +63,8 @@ public class frmAL_NM extends javax.swing.JDialog implements java.awt.event.Wind
         UnloadWindow();
     }//GEN-LAST:event_formKeyPressed
     protected static void initResource(){
-        if ( lftr = true ) { try{
+        System.out.println(lftr);
+        if ( lftr == true ) { try{
             stm = dbInternal.createStatement(java.sql.ResultSet.TYPE_SCROLL_SENSITIVE,
                     java.sql.ResultSet.CONCUR_UPDATABLE);
         } catch (java.sql.SQLException sqle){sqle.printStackTrace();
@@ -71,12 +72,12 @@ public class frmAL_NM extends javax.swing.JDialog implements java.awt.event.Wind
         
         
         try{
-            rsCus = stm.executeQuery("SELECT n_nm.id, n_nm.postcode, n_nm.name, n_oblast.name, n_oblast.id FROM n_nm LEFT JOIN n_oblast ON(n_oblast.id = n_nm.id_oblast) WHERE n_nm.name  LIKE '%"+ name + "%'");} catch (java.sql.SQLException sqle){sqle.printStackTrace();}
+            rsCus = stm.executeQuery("SELECT n_nm.id, n_nm.postcode, n_nm.name, n_oblast.name, n_oblast.id FROM n_nm LEFT JOIN n_oblast ON(n_oblast.id = n_nm.id_oblast) WHERE n_nm.name LIKE '%"+ name + "%'");} catch (java.sql.SQLException sqle){sqle.printStackTrace();}
         
         model = new imakante.com.CustomTableModel(dbInternal, rsCus, Names);
         jTable = new imakante.com.CustomTable(model);}
         
-        if ( lftr = false ) { try{
+        if ( lftr == false ) { try{
             stm = dbInternal.createStatement(java.sql.ResultSet.TYPE_SCROLL_SENSITIVE,
                     java.sql.ResultSet.CONCUR_UPDATABLE);
         } catch (java.sql.SQLException sqle){sqle.printStackTrace();
@@ -84,7 +85,8 @@ public class frmAL_NM extends javax.swing.JDialog implements java.awt.event.Wind
         
         
         try{
-            rsCus = stm.executeQuery("SELECT n_nm.id, n_nm.postcode, n_nm.name, n_oblast.name FROM n_nm LEFT JOIN n_oblast ON(n_oblast.id = n_nm.id_oblast) WHERE n_nm.postcode  LIKE '%"+ p_code + "%'");} catch (java.sql.SQLException sqle){sqle.printStackTrace();}
+            System.out.println("pcode" + p_code);
+            rsCus = stm.executeQuery("SELECT n_nm.id, n_nm.postcode, n_nm.name, n_oblast.name FROM n_nm LEFT JOIN n_oblast ON(n_oblast.id = n_nm.id_oblast) WHERE n_nm.postcode LIKE '%"+ p_code + "%'");} catch (java.sql.SQLException sqle){sqle.printStackTrace();}
         
         model = new imakante.com.CustomTableModel(dbInternal, rsCus, Names);
         jTable = new imakante.com.CustomTable(model);}
@@ -110,8 +112,8 @@ public class frmAL_NM extends javax.swing.JDialog implements java.awt.event.Wind
             "\u0418\u043c\u0435 \u043d\u0430 \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u043e\u0442\u043e \u043c\u044f\u0441\u0442\u043e",
             "\u041e\u0431\u043b\u0430\u0441\u0442","oblast id"
     };
-    public static String name,code,city;
-    public static int p_code, area;
+    public static String name,code,city,p_code;
+    public static int  area;
     static boolean lftr;
     
     private void jTable_event(java.awt.event.KeyEvent evt) {

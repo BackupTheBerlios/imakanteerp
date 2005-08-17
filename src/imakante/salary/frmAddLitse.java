@@ -15,11 +15,14 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         
         initComponents();
         initCombo_Area();
+        initCombo_Gender();
         initResource();
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        this.setSize(650,450);
         int x_width = (((dim.width)-(this.getSize().width))/2);
         int y_height = (((dim.height)-(this.getSize().height))/2);
         this.setLocation(x_width,y_height);
+        
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -108,6 +111,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         jbQuit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("\u0421\u043b\u0443\u0436\u0438\u0442\u0435\u043b");
         jpPerson.setLayout(new java.awt.GridBagLayout());
 
         jpPerson.setBorder(new javax.swing.border.EtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -121,6 +125,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
 
         jtfNumber.setColumns(5);
         jtfNumber.setMinimumSize(new java.awt.Dimension(10, 20));
+        jtfNumber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfNumberKeyPressed(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -134,6 +144,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.gridy = 0;
         gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 10);
         jpPerson.add(jlIDCard, gridBagConstraints);
+
+        jtfIDCard.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfIDCardKeyPressed(evt);
+            }
+        });
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -149,6 +165,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.gridy = 0;
         gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 20);
         jpPerson.add(jlIDCDate, gridBagConstraints);
+
+        jtfIDCDate.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfIDCDateKeyPressed(evt);
+            }
+        });
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -176,6 +198,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         jpPerson.add(jlName, gridBagConstraints);
 
         jtfName.setColumns(12);
+        jtfName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfNameKeyPressed(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
@@ -190,6 +218,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
         jpPerson.add(jlMName, gridBagConstraints);
+
+        jtfMName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfMNameKeyPressed(evt);
+            }
+        });
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -206,6 +240,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
         jpPerson.add(jlFNmae, gridBagConstraints);
+
+        jtfFName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfFNameKeyPressed(evt);
+            }
+        });
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -237,6 +277,11 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                 jtfEGNFocusLost(evt);
             }
         });
+        jtfEGN.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfEGNKeyPressed(evt);
+            }
+        });
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -253,6 +298,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
         jpPerson.add(jlBDate, gridBagConstraints);
 
+        jtfBDate.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfBDateKeyPressed(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 7;
@@ -268,6 +319,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
         jpPerson.add(jlGender, gridBagConstraints);
+
+        jcbGender.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jcbGenderKeyPressed(evt);
+            }
+        });
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -315,6 +372,17 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         jpWhereabouts.add(jlPCode, gridBagConstraints);
 
         jtfPCode.setColumns(4);
+        jtfPCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfPCodeActionPerformed(evt);
+            }
+        });
+        jtfPCode.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfPCodeKeyPressed(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -330,6 +398,11 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         jpWhereabouts.add(jlCity, gridBagConstraints);
 
         jtfCity.setColumns(25);
+        jtfCity.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfCityFocusLost(evt);
+            }
+        });
         jtfCity.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jtfCityKeyPressed(evt);
@@ -696,10 +769,22 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
 
         getContentPane().add(jtpDataInput, java.awt.BorderLayout.CENTER);
 
-        jbAdd.setText("\u041f\u0440\u0438\u0431\u0430\u0432\u0438");
+        jbAdd.setText("\u0417\u0430\u043f\u0430\u0437\u0438");
+        jbAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAddActionPerformed(evt);
+            }
+        });
+
         jpButtons.add(jbAdd);
 
-        jbChange.setText("\u041f\u0440\u043e\u043c\u0435\u043d\u0438");
+        jbChange.setText("\u0418\u0437\u0447\u0438\u0441\u0442\u0438");
+        jbChange.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbChangeActionPerformed(evt);
+            }
+        });
+
         jpButtons.add(jbChange);
 
         jbQuit.setText("\u041e\u0442\u043a\u0430\u0437");
@@ -717,9 +802,72 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     }
     // </editor-fold>//GEN-END:initComponents
     
+    private void jtfCityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfCityFocusLost
+        checkNM();
+    }//GEN-LAST:event_jtfCityFocusLost
+    
+    private void jbChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbChangeActionPerformed
+        clear_all_fields();
+    }//GEN-LAST:event_jbChangeActionPerformed
+    
+    private void jbAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAddActionPerformed
+        if (id_row!=0){update_db_Record();} else{insert_db_Record();}
+        UnloadWindow();
+    }//GEN-LAST:event_jbAddActionPerformed
+    
+    private void jcbGenderKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jcbGenderKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){  jcbGender.transferFocus();}
+    }//GEN-LAST:event_jcbGenderKeyPressed
+    
+    private void jtfBDateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfBDateKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){  jtfBDate.transferFocus();}
+    }//GEN-LAST:event_jtfBDateKeyPressed
+    
+    private void jtfEGNKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfEGNKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jtfEGN.transferFocus();}
+    }//GEN-LAST:event_jtfEGNKeyPressed
+    
+    private void jtfFNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfFNameKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jtfFName.transferFocus();}
+    }//GEN-LAST:event_jtfFNameKeyPressed
+    
+    private void jtfMNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfMNameKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jtfMName.transferFocus();}
+    }//GEN-LAST:event_jtfMNameKeyPressed
+    
+    private void jtfNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNameKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jtfName.transferFocus();}
+    }//GEN-LAST:event_jtfNameKeyPressed
+    
+    private void jtfIDCDateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfIDCDateKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jtfIDCDate.transferFocus();}
+    }//GEN-LAST:event_jtfIDCDateKeyPressed
+    
+    private void jtfIDCardKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfIDCardKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jtfIDCard.transferFocus();}
+    }//GEN-LAST:event_jtfIDCardKeyPressed
+    
+    private void jtfNumberKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNumberKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jtfNumber.transferFocus();}
+    }//GEN-LAST:event_jtfNumberKeyPressed
+    
+    private void jtfPCodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPCodeKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_F7){
+            String p_code = jtfPCode.getText();
+            System.out.println("pcode 1 " + p_code);
+            imakante.salary.frmAL_NM frmDialog = new imakante.salary.frmAL_NM(parent_in, true,dbInternal, "", p_code , false);
+            
+            frmDialog.setVisible(true);
+        }
+    }//GEN-LAST:event_jtfPCodeKeyPressed
+    
+    private void jtfPCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfPCodeActionPerformed
+        
+    }//GEN-LAST:event_jtfPCodeActionPerformed
+    
     private void jtfCityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCityKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_F7){
-            imakante.salary.frmAL_NM frmDialog = new imakante.salary.frmAL_NM(parent_in, true,dbInternal, jtfCity.getText(), 0, true);
+            imakante.salary.frmAL_NM frmDialog = new imakante.salary.frmAL_NM(parent_in, true,dbInternal, jtfCity.getText(), "", true);
             
             frmDialog.setVisible(true);
         }
@@ -758,7 +906,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     }//GEN-LAST:event_jtfEGNFocusLost
     
     private void jbQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbQuitActionPerformed
-        this.dispose();
+        UnloadWindow();
     }//GEN-LAST:event_jbQuitActionPerformed
     
     
@@ -844,6 +992,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     protected static javax.swing.JTextField jtfTypeEmp;
     private javax.swing.JTabbedPane jtpDataInput;
     // End of variables declaration//GEN-END:variables
+    
     javax.swing.JFrame parent_in;
     public static java.sql.Connection dbInternal;
     public static java.sql.Statement stm;
@@ -853,6 +1002,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     public int lMonth, lYear;
     public static String[] Gender = {"\u041c\u044a\u0436","\u0416\u0435\u043d\u0430"};
     public String EGN;
+    int inter_id;
     
     protected static void initResource(){
         if (id_row!=0){
@@ -867,7 +1017,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                 while(rs.next()){
                     
                     jcbDistrict.setSelectedItem(rs.getInt("id_oblast"));
-                    jcbGender.setSelectedItem(rs.getString(Gender[0]));
+                    jcbGender.setSelectedItem(fill_combo_Gender_rs(rs.getString("gender")));
                     jtaNotes.setText(rs.getString("belejki"));
                     jtfAddress.setText(rs.getString("address"));
                     jtfAssignDate.setText(rs.getString("nazdate"));
@@ -905,12 +1055,99 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             
         }
     }
-    protected void insertRecord(){
+    protected void clear_all_fields(){
+        jcbDistrict.setSelectedItem(0);
+        jcbGender.setSelectedItem(0);
+        jtaNotes.setText("");
+        jtfAddress.setText("");
+        jtfAssignDate.setText("");
+        jtfBDate.setText("");
+        jtfCity.setText("");
+        jtfContractNum.setText("");
+        jtfEGN.setText("");
+        jtfEmail.setText("");
+        jtfFName.setText("");
+        jtfGorunds.setText(""); // osnowanie na dogowora
+        jtfHoursPerDay.setText(""); // x4asow raboten den
+        jtfIDCDate.setText("");
+        jtfIDCard.setText("");
+        jtfLOSDays.setText("");
+        jtfLOSMonths.setText("");
+        jtfLOSYears.setText("");
+        jtfLastInsDate.setText("");
+        jtfMName.setText("");
+        jtfMobile.setText("");
+        jtfName.setText("");
+        jtfNumber.setText("");
+        jtfPCode.setText("");
+        jtfPhone.setText("");
+        jtfPosition.setText("");    // dlyjnost
+        jtfQuitDate.setText("");
+        jtfSalary.setText("");  // zaplata
+        jtfSignonDate.setText("");  // data na postypwane
+        jtfTerm.setText("");    // srok na dogowora
+        jtfTypeEmp.setText(""); // kategoriq rabotnik
+        
+        jtfNumber.requestFocus();
+    }
+    protected void insert_db_Record(){
+        try{
+            inter_id = imakante.com.pubMethods.getMaxNum("Select id FROM ls_main", dbInternal, "id") + 1;
+            stm = dbInternal.createStatement();
+            stm.execute("INSERT INTO ls_main (nomer,first,second,family,egn,gender,nomer_LK,osnowanie_dog,srok_dog,d_st,m_st,g_st,kateg_rabotnik,belejki) " +
+                    "VALUES(" + jtfNumber.getText() +
+                    ", " + jtfName.getText() +
+                    ", " + jtfMName.getText() +
+                    ", " + jtfFName.getText() +
+                    ", " + jcbGender.getSelectedItem().toString() +
+                    ", " + jtfIDCard.getText() +
+                    ", " + jtfGorunds.getText() +
+                    ", " + jtfTerm.getText() +
+                    ", " + jtfLOSDays.getText() +
+                    ", " + jtfLOSMonths.getText() +
+                    ", " + jtfLOSYears.getText() +
+                    ", " + jtfTypeEmp.getText() +
+                    ", " + jtaNotes.getText() +
+                    
+                    ")");
+            
+            stm.execute("" + "" +
+                    "" +
+                    "" +
+                    "" +
+                    "" +
+                    "" +
+                    "" +
+                    "" +
+                    "");
+            
+        }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        
+        
+        
+        
+        
+        
+        
         
         
     }
-    
-    
+    protected void update_db_Record(){
+        
+        
+    }
+    protected void checkNM(){
+        String City = "";
+        City = jtfCity.getText();
+        closeResource();
+        try {
+            stm = dbInternal.createStatement();
+            rs = stm.executeQuery("SELECT n_nm.name FROM n_nm WHERE n_nm.name = '"+ City +"'");
+            System.out.println("resurs ot pole City (" + rs.getString("name")+")");
+            if (rs.toString()==""){jtfCity.requestFocus();}
+        }catch(java.sql.SQLException sqle){sqle.printStackTrace();jtfCity.requestFocus();}
+        
+    }
     public static void insertN_NM(int area, String post, String City){
         
         jcbDistrict.setSelectedIndex(area);
@@ -926,6 +1163,17 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         if(stm!=null){ try{ stm.close();
         }catch(java.sql.SQLException sqle){}}
         
+    }
+    protected static int fill_combo_Gender_rs(String gender){
+        int gen_int = 0;
+        if(gender.equals("\u041c\u044a\u0436")){ gen_int = 0;}
+        if(gender.equals("\u0416\u0435\u043d\u0430")){ gen_int = 1;}
+        return gen_int;
+    }
+    
+    protected void initCombo_Gender(){
+        jcbGender.addItem(Gender[0]);
+        jcbGender.addItem(Gender[1]);
     }
     
     protected void initCombo_Area(){
