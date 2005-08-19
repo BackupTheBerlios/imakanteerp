@@ -1094,11 +1094,11 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         
         try{
             int_d = Integer.parseInt(str_d);
-        }catch(NumberFormatException nfe){is_valid = false; return is_valid;}
+        }catch(NumberFormatException nfe){nfe.printStackTrace(); is_valid = false; return is_valid;}
         
         try{
             int_m =Integer.parseInt(str_m);
-        }catch(NumberFormatException nfe){is_valid = false; return is_valid;}
+        }catch(NumberFormatException nfe){nfe.printStackTrace();is_valid = false; return is_valid;}
         
         try{
             int_y =Integer.parseInt(str_y);

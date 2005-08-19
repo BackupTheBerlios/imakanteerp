@@ -86,7 +86,7 @@ public class frmAL_NM extends javax.swing.JDialog implements java.awt.event.Wind
         
         try{
             System.out.println("pcode" + p_code);
-            rsCus = stm.executeQuery("SELECT n_nm.id, n_nm.postcode, n_nm.name, n_oblast.name FROM n_nm LEFT JOIN n_oblast ON(n_oblast.id = n_nm.id_oblast) WHERE n_nm.postcode LIKE '%"+ p_code + "%'");} catch (java.sql.SQLException sqle){sqle.printStackTrace();}
+            rsCus = stm.executeQuery("SELECT n_nm.id, n_nm.postcode, n_nm.name, n_oblast.name, n_oblast.id FROM n_nm LEFT JOIN n_oblast ON(n_oblast.id = n_nm.id_oblast) WHERE n_nm.postcode LIKE '%"+ p_code + "%'");} catch (java.sql.SQLException sqle){sqle.printStackTrace();}
         
         model = new imakante.com.CustomTableModel(dbInternal, rsCus, Names);
         jTable = new imakante.com.CustomTable(model);}
@@ -129,9 +129,8 @@ public class frmAL_NM extends javax.swing.JDialog implements java.awt.event.Wind
     protected void getRecords(){
         
         if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
-            
-            area = (Integer) jTable.getValueAt(jTable.getSelectedRow(),4);
-            nm = Integer.parseInt(jTable.getValueAt(jTable.getSelectedRow(),1).toString());
+            try{area = Integer.parseInt(jTable.getValueAt(jTable.getSelectedRow(),4).toString());}catch(NumberFormatException nfe){}
+            try{nm = Integer.parseInt(jTable.getValueAt(jTable.getSelectedRow(),1).toString());}catch(NumberFormatException nfe){}
             code =  jTable.getValueAt(jTable.getSelectedRow(),1).toString();
             city = jTable.getValueAt(jTable.getSelectedRow(),2).toString();
             imakante.salary.frmAddLitse.insertN_NM(area, code, city,nm);
