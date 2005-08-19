@@ -113,7 +113,7 @@ public class frmAL_NM extends javax.swing.JDialog implements java.awt.event.Wind
             "\u041e\u0431\u043b\u0430\u0441\u0442","oblast id"
     };
     public static String name,code,city,p_code;
-    public static int  area;
+    public static int  area, nm;
     static boolean lftr;
     
     private void jTable_event(java.awt.event.KeyEvent evt) {
@@ -131,9 +131,10 @@ public class frmAL_NM extends javax.swing.JDialog implements java.awt.event.Wind
         if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
             
             area = (Integer) jTable.getValueAt(jTable.getSelectedRow(),4);
+            nm = Integer.parseInt(jTable.getValueAt(jTable.getSelectedRow(),1).toString());
             code =  jTable.getValueAt(jTable.getSelectedRow(),1).toString();
             city = jTable.getValueAt(jTable.getSelectedRow(),2).toString();
-            imakante.salary.frmAddLitse.insertN_NM(area, code, city);
+            imakante.salary.frmAddLitse.insertN_NM(area, code, city,nm);
         }
          UnloadWindow();
     }

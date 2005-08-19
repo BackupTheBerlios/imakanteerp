@@ -997,12 +997,26 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     public static java.sql.Connection dbInternal;
     public static java.sql.Statement stm;
     public static java.sql.ResultSet rs;
-    public static int id_row;
+    public static int id_row,id_nm;
     boolean ADDING_STATE;
     public int lMonth, lYear;
     public static String[] Gender = {"\u041c\u044a\u0436","\u0416\u0435\u043d\u0430"};
     public String EGN;
     int inter_id;
+    
+    protected boolean validateDate(String str){
+        boolean is_valid = false;
+        
+        
+        return is_valid;
+    }
+    
+    protected String convertDate(String str){
+        String converted_str = "0000-00-00";
+        converted_str = str.substring(6, 9) + "-" +str.substring(3, 4) + "-" + str.substring(0, 1);
+        
+        return converted_str;
+    }
     
     protected static void initResource(){
         if (id_row!=0){
@@ -1013,7 +1027,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             }
             
             try{
-                rs = stm.executeQuery("SELECT ls_main.id, ls_main.nomer, ls_main.first, ls_main.second, ls_main.family, ls_main.egn, DATE_FORMAT(ls_dates.b_date,'%Y-%m-%d') AS bdate, gender, nomer_LK, DATE_FORMAT(ls_dates.data_izd_LK,'%Y-%m-%d') AS date_lk, n_oblast.name AS name_oblast, n_nm.postcode, n_nm.name AS name_grad, ls_addresses.address, ls_addresses.telåfon, ls_addresses.mobilen, email, nomer_dogowor, DATE_FORMAT(ls_dates.data_naznach,'%Y-%m-%d') AS nazdate, DATE_FORMAT(ls_dates.data_postypwane,'%Y-%m-%d') AS postdate, DATE_FORMAT(ls_dates.data_napuskane,'%Y-%m-%d') AS napudate, DATE_FORMAT(ls_dates.posl_den_w_osig,'%Y-%m-%d') AS posddate, osnowanie_dog, DATE_FORMAT(ls_dates.srok_dogov, '%Y-%m-%d') AS srok_dog , d_st, m_st, g_st, kateg_rabotnik, belejki, n_oblast.id AS id_oblast FROM ls_main LEFT JOIN ls_dates ON (ls_dates.id_rab = ls_main.id) LEFT JOIN ls_addresses ON (ls_addresses.id_rab = ls_main.id) LEFT JOIN n_nm ON (n_nm.id = ls_addresses.id_nasm) LEFT JOIN n_oblast ON (n_oblast.id = n_nm.id_oblast) WHERE ls_main.id = " + id_row);
+                rs = stm.executeQuery("SELECT ls_main.id, ls_main.nomer, ls_main.first, ls_main.second, ls_main.family, ls_main.egn, DATE_FORMAT(ls_dates.b_date,'%d-%m-%Y') AS bdate, gender, nomer_LK, DATE_FORMAT(ls_dates.data_izd_LK,'%d-%m-%Y') AS date_lk, n_oblast.name AS name_oblast, n_nm.postcode, n_nm.name AS name_grad, ls_addresses.address, ls_addresses.telåfon, ls_addresses.mobilen, email, nomer_dogowor, DATE_FORMAT(ls_dates.data_naznach,'%d-%m-%Y') AS nazdate, DATE_FORMAT(ls_dates.data_postypwane,'%d-%m-%Y') AS postdate, DATE_FORMAT(ls_dates.data_napuskane,'%d-%m-%Y') AS napudate, DATE_FORMAT(ls_dates.posl_den_w_osig,'%d-%m-%Y') AS posddate, osnowanie_dog, DATE_FORMAT(ls_dates.srok_dogov, '%d-%m-%Y') AS srok_dog , d_st, m_st, g_st, kateg_rabotnik, belejki, n_oblast.id AS id_oblast FROM ls_main LEFT JOIN ls_dates ON (ls_dates.id_rab = ls_main.id) LEFT JOIN ls_addresses ON (ls_addresses.id_rab = ls_main.id) LEFT JOIN n_nm ON (n_nm.id = ls_addresses.id_nasm) LEFT JOIN n_oblast ON (n_oblast.id = n_nm.id_oblast) WHERE ls_main.id = " + id_row);
                 while(rs.next()){
                     
                     jcbDistrict.setSelectedItem(rs.getInt("id_oblast"));
@@ -1111,15 +1125,16 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                     
                     ")");
             
-            stm.execute("" + "" +
-                    "" +
-                    "" +
-                    "" +
-                    "" +
-                    "" +
-                    "" +
-                    "" +
-                    "");
+            stm.execute("INSERT INTO ls_addresses (address, telefon, mobilen,email,id_rab, id_nasm ) VALUES(" + jtfAddress.getText() +
+                    ", " + jtfPhone.getText() +
+                    ", " + jtfMobile.getText() +
+                    ", " + jtfEmail.getText() +
+                    ", " +  inter_id +
+                    ", " + id_nm +
+                    
+                    ")");
+            
+            
             
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         
@@ -1143,17 +1158,17 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         try {
             stm = dbInternal.createStatement();
             rs = stm.executeQuery("SELECT n_nm.name FROM n_nm WHERE n_nm.name = '"+ City +"'");
-            System.out.println("resurs ot pole City (" + rs.getString("name")+")");
-            if (rs.toString()==""){jtfCity.requestFocus();}
+            // System.out.println("resurs ot pole City (" + rs.getString("name")+")");
+            if (rs.getRow()==0){jtfCity.requestFocus();}
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();jtfCity.requestFocus();}
         
     }
-    public static void insertN_NM(int area, String post, String City){
+    public static void insertN_NM(int area, String post, String City, int id_n_nm ){
         
         jcbDistrict.setSelectedIndex(area);
         jtfPCode.setText(post);
         jtfCity.setText(City);
-        
+        id_nm =id_n_nm;
     }
     
     

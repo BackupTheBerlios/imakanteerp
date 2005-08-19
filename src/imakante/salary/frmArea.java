@@ -2,6 +2,7 @@
 package imakante.salary;
 
 import java.awt.event.KeyEvent;
+import java.text.SimpleDateFormat;
 
 public class frmArea extends javax.swing.JDialog implements java.awt.event.WindowListener{
     
@@ -122,7 +123,7 @@ public class frmArea extends javax.swing.JDialog implements java.awt.event.Windo
     private javax.swing.JPanel jPanel2;
     public static javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
-    
+   
     public static java.sql.Connection dbInternal;
     public static java.sql.Statement stm;
     public static java.sql.ResultSet rsCus;
@@ -133,6 +134,7 @@ public class frmArea extends javax.swing.JDialog implements java.awt.event.Windo
             "\u0418\u043c\u0435 \u043d\u0430 \u043e\u0431\u043b\u0430\u0441\u0442\u0442\u0430"
             ,"\u0414\u044a\u0440\u0436\u0430\u0432\u0430"};
             
+          
             protected void deleteRecord(){
                 try{
                     if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
