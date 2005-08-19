@@ -166,6 +166,11 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 20);
         jpPerson.add(jlIDCDate, gridBagConstraints);
 
+        jtfIDCDate.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfIDCDateFocusLost(evt);
+            }
+        });
         jtfIDCDate.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jtfIDCDateKeyPressed(evt);
@@ -298,6 +303,11 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
         jpPerson.add(jlBDate, gridBagConstraints);
 
+        jtfBDate.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfBDateFocusLost(evt);
+            }
+        });
         jtfBDate.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jtfBDateKeyPressed(evt);
@@ -526,6 +536,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 5);
         jpWorker.add(jlAssignDate, gridBagConstraints);
 
+        jtfAssignDate.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfAssignDateFocusLost(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
@@ -541,6 +557,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 10);
         jpWorker.add(jlSignonDate, gridBagConstraints);
+
+        jtfSignonDate.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfSignonDateFocusLost(evt);
+            }
+        });
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
@@ -574,6 +596,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 5, 5);
         jpWorker.add(jlTerm, gridBagConstraints);
 
+        jtfTerm.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfTermFocusLost(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 3;
@@ -590,6 +618,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 5, 5);
         jpWorker.add(jlQuitDate, gridBagConstraints);
 
+        jtfQuitDate.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfQuitDateFocusLost(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 3;
@@ -605,6 +639,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 5, 15);
         jpWorker.add(jlLastInsDate, gridBagConstraints);
+
+        jtfLastInsDate.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfLastInsDateFocusLost(evt);
+            }
+        });
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
@@ -802,6 +842,34 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     }
     // </editor-fold>//GEN-END:initComponents
     
+    private void jtfTermFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfTermFocusLost
+        if(validateDate(jtfTerm.getText()) == false){jtfTerm.requestFocus();}
+    }//GEN-LAST:event_jtfTermFocusLost
+    
+    private void jtfLastInsDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfLastInsDateFocusLost
+        if(validateDate(jtfLastInsDate.getText()) == false){jtfLastInsDate.requestFocus();}
+    }//GEN-LAST:event_jtfLastInsDateFocusLost
+    
+    private void jtfQuitDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfQuitDateFocusLost
+        if(validateDate(jtfQuitDate.getText()) == false){jtfQuitDate.requestFocus();}
+    }//GEN-LAST:event_jtfQuitDateFocusLost
+    
+    private void jtfSignonDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfSignonDateFocusLost
+        if(validateDate(jtfSignonDate.getText()) == false){jtfSignonDate.requestFocus();}
+    }//GEN-LAST:event_jtfSignonDateFocusLost
+    
+    private void jtfAssignDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfAssignDateFocusLost
+        if(validateDate(jtfAssignDate.getText()) == false){jtfAssignDate.requestFocus();}
+    }//GEN-LAST:event_jtfAssignDateFocusLost
+    
+    private void jtfBDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfBDateFocusLost
+        if(validateDate(jtfBDate.getText()) == false){jtfBDate.requestFocus();}
+    }//GEN-LAST:event_jtfBDateFocusLost
+    
+    private void jtfIDCDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfIDCDateFocusLost
+        if(validateDate(jtfIDCDate.getText()) == false){jtfIDCDate.requestFocus();}
+    }//GEN-LAST:event_jtfIDCDateFocusLost
+    
     private void jtfCityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfCityFocusLost
         checkNM();
     }//GEN-LAST:event_jtfCityFocusLost
@@ -859,6 +927,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             
             frmDialog.setVisible(true);
         }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jtfPCode.transferFocus();}
     }//GEN-LAST:event_jtfPCodeKeyPressed
     
     private void jtfPCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfPCodeActionPerformed
@@ -1005,17 +1074,51 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     int inter_id;
     
     protected boolean validateDate(String str){
-        boolean is_valid = false;
         
+        boolean is_valid = true;
+        String str_d ="";
+        String str_m ="";
+        String str_y ="";
+        int int_d = 0;
+        int int_m = 0;
+        int int_y =0;
+        if(str.equals("")){is_valid = true; return is_valid;}
+        try{
+            str_d = str.substring(0, 1);}catch(IndexOutOfBoundsException ioobe){is_valid = false; return is_valid;}
+        
+        try{
+            str_m = str.substring(3, 4);}catch(IndexOutOfBoundsException ioobe){is_valid = false; return is_valid;}
+        
+        try{
+            str_y = str.substring(6, 9);}catch(IndexOutOfBoundsException ioobe){is_valid = false; return is_valid;}
+        
+        try{
+            int_d = Integer.parseInt(str_d);
+        }catch(NumberFormatException nfe){is_valid = false; return is_valid;}
+        
+        try{
+            int_m =Integer.parseInt(str_m);
+        }catch(NumberFormatException nfe){is_valid = false; return is_valid;}
+        
+        try{
+            int_y =Integer.parseInt(str_y);
+        }catch(NumberFormatException nfe){is_valid = false; return is_valid;}
+        if(int_d==0 || int_m==0 ){ is_valid = false; return is_valid;}
+        if(int_d > 31 || int_m > 12 ){is_valid = false; return is_valid;}
         
         return is_valid;
     }
     
     protected String convertDate(String str){
         String converted_str = "0000-00-00";
-        converted_str = str.substring(6, 9) + "-" +str.substring(3, 4) + "-" + str.substring(0, 1);
+        if(str.equals("")!=true){
+            try{
+                converted_str = str.substring(6, 9) + "-" +str.substring(3, 4) + "-" + str.substring(0, 1);
+            }catch(IndexOutOfBoundsException ioobe){converted_str = ""; return converted_str;}
+            return converted_str;
+        }else{converted_str = ""; return converted_str;}
         
-        return converted_str;
+        
     }
     
     protected static void initResource(){
@@ -1134,7 +1237,15 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                     
                     ")");
             
-            
+            stm.execute("INSERT INTO ls_dates (id_rab, b_date, date_izd_LK, date_naznach,data_postypwane, srok_dogov) VALUES(" + inter_id +
+                    
+                    ", " + jtfPhone.getText() +
+                    ", " + jtfMobile.getText() +
+                    ", " + jtfEmail.getText() +
+                    ", " +  inter_id +
+                    ", " + id_nm +
+                    
+                    ")");
             
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         

@@ -109,6 +109,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jtfIDCDate">
               <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtfIDCDateFocusLost"/>
                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfIDCDateKeyPressed"/>
               </Events>
               <AuxValues>
@@ -250,6 +251,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jtfBDate">
               <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtfBDateFocusLost"/>
                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfBDateKeyPressed"/>
               </Events>
               <AuxValues>
@@ -568,6 +570,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="jtfAssignDate">
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtfAssignDateFocusLost"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
               </AuxValues>
@@ -588,6 +593,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="jtfSignonDate">
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtfSignonDateFocusLost"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
               </AuxValues>
@@ -628,6 +636,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="jtfTerm">
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtfTermFocusLost"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
               </AuxValues>
@@ -648,6 +659,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="jtfQuitDate">
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtfQuitDateFocusLost"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
               </AuxValues>
@@ -668,6 +682,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="jtfLastInsDate">
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtfLastInsDateFocusLost"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
               </AuxValues>
