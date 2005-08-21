@@ -843,31 +843,31 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     // </editor-fold>//GEN-END:initComponents
     
     private void jtfTermFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfTermFocusLost
-        if(validateDate(jtfTerm.getText()) == false){jtfTerm.requestFocus();}
+        if(validateDate(jtfTerm.getText()) == false){jtfTerm.requestFocus();jtfTerm.setBackground(java.awt.Color.PINK);}else{jtfTerm.setBackground(java.awt.Color.WHITE);}
     }//GEN-LAST:event_jtfTermFocusLost
     
     private void jtfLastInsDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfLastInsDateFocusLost
-        if(validateDate(jtfLastInsDate.getText()) == false){jtfLastInsDate.requestFocus();}
+        if(validateDate(jtfLastInsDate.getText()) == false){jtfLastInsDate.requestFocus();jtfLastInsDate.setBackground(java.awt.Color.PINK);}else{jtfLastInsDate.setBackground(java.awt.Color.WHITE);}
     }//GEN-LAST:event_jtfLastInsDateFocusLost
     
     private void jtfQuitDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfQuitDateFocusLost
-        if(validateDate(jtfQuitDate.getText()) == false){jtfQuitDate.requestFocus();}
+        if(validateDate(jtfQuitDate.getText()) == false){jtfQuitDate.requestFocus();jtfQuitDate.setBackground(java.awt.Color.PINK);}else{jtfQuitDate.setBackground(java.awt.Color.WHITE);}
     }//GEN-LAST:event_jtfQuitDateFocusLost
     
     private void jtfSignonDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfSignonDateFocusLost
-        if(validateDate(jtfSignonDate.getText()) == false){jtfSignonDate.requestFocus();}
+        if(validateDate(jtfSignonDate.getText()) == false){jtfSignonDate.requestFocus();jtfSignonDate.setBackground(java.awt.Color.PINK);}else{jtfSignonDate.setBackground(java.awt.Color.WHITE);}
     }//GEN-LAST:event_jtfSignonDateFocusLost
     
     private void jtfAssignDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfAssignDateFocusLost
-        if(validateDate(jtfAssignDate.getText()) == false){jtfAssignDate.requestFocus();}
+        if(validateDate(jtfAssignDate.getText()) == false){jtfAssignDate.requestFocus();jtfAssignDate.setBackground(java.awt.Color.PINK);}else{jtfAssignDate.setBackground(java.awt.Color.WHITE);}
     }//GEN-LAST:event_jtfAssignDateFocusLost
     
     private void jtfBDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfBDateFocusLost
-        if(validateDate(jtfBDate.getText()) == false){jtfBDate.requestFocus();}
+        if(validateDate(jtfBDate.getText()) == false){jtfBDate.requestFocus();jtfBDate.setBackground(java.awt.Color.PINK);}else{jtfBDate.setBackground(java.awt.Color.WHITE);}
     }//GEN-LAST:event_jtfBDateFocusLost
     
     private void jtfIDCDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfIDCDateFocusLost
-        if(validateDate(jtfIDCDate.getText()) == false){jtfIDCDate.requestFocus();}
+        if(validateDate(jtfIDCDate.getText()) == false){jtfIDCDate.requestFocus();jtfIDCDate.setBackground(java.awt.Color.PINK);}else{jtfIDCDate.setBackground(java.awt.Color.WHITE);}
     }//GEN-LAST:event_jtfIDCDateFocusLost
     
     private void jtfCityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfCityFocusLost
@@ -1084,13 +1084,13 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         int int_y =0;
         if(str.equals("")){is_valid = true; return is_valid;}
         try{
-            str_d = str.substring(0, 1);}catch(IndexOutOfBoundsException ioobe){is_valid = false; return is_valid;}
+            str_d = str.substring(0, 2);}catch(IndexOutOfBoundsException ioobe){is_valid = false; return is_valid;}
         
         try{
-            str_m = str.substring(3, 4);}catch(IndexOutOfBoundsException ioobe){is_valid = false; return is_valid;}
+            str_m = str.substring(3, 5);}catch(IndexOutOfBoundsException ioobe){is_valid = false; return is_valid;}
         
         try{
-            str_y = str.substring(6, 9);}catch(IndexOutOfBoundsException ioobe){is_valid = false; return is_valid;}
+            str_y = str.substring(6, 10);}catch(IndexOutOfBoundsException ioobe){is_valid = false; return is_valid;}
         
         try{
             int_d = Integer.parseInt(str_d);
@@ -1103,17 +1103,22 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         try{
             int_y =Integer.parseInt(str_y);
         }catch(NumberFormatException nfe){is_valid = false; return is_valid;}
+       
         if(int_d==0 || int_m==0 ){ is_valid = false; return is_valid;}
         if(int_d > 31 || int_m > 12 ){is_valid = false; return is_valid;}
         
         return is_valid;
     }
+    protected boolean super_validateDates(){
+    boolean validate = true;
     
+    return validate;
+    }
     protected String convertDate(String str){
         String converted_str = "0000-00-00";
         if(str.equals("")!=true){
             try{
-                converted_str = str.substring(6, 9) + "-" +str.substring(3, 4) + "-" + str.substring(0, 1);
+                converted_str = str.substring(6, 10) + "-" +str.substring(3, 5) + "-" + str.substring(0, 2);
             }catch(IndexOutOfBoundsException ioobe){converted_str = ""; return converted_str;}
             return converted_str;
         }else{converted_str = ""; return converted_str;}

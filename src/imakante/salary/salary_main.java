@@ -5,6 +5,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     
     javax.swing.JPanel Panel1;
     javax.swing.JDesktopPane Desk1 = new javax.swing.JDesktopPane();
+    
     private javax.swing.JLabel StatusLabel = new javax.swing.JLabel("\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415 - \u041b\u0421",javax.swing.JLabel.CENTER);
     javax.swing.JLabel BTlabel = new javax.swing.JLabel();
     java.awt.Dimension screen = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
@@ -60,7 +61,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         //Set the main form properties
         addWindowListener(this);
         
-        Desk1.setBackground(java.awt.Color.gray);
+        Desk1.setBackground(java.awt.Color.DARK_GRAY);
         Desk1.setBorder(javax.swing.BorderFactory.createEmptyBorder());
         //Most fastest drag mode
         Desk1.setDragMode(javax.swing.JDesktopPane.OUTLINE_DRAG_MODE);
