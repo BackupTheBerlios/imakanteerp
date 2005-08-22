@@ -879,7 +879,8 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     }//GEN-LAST:event_jbChangeActionPerformed
     
     private void jbAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAddActionPerformed
-        if (id_row!=0){update_db_Record();} else{insert_db_Record();}
+        if (id_row!=0 && super_validateDates()){update_db_Record();}
+        if (id_row == 0 && super_validateDates()){insert_db_Record();}
         UnloadWindow();
     }//GEN-LAST:event_jbAddActionPerformed
     
@@ -1103,17 +1104,76 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         try{
             int_y =Integer.parseInt(str_y);
         }catch(NumberFormatException nfe){is_valid = false; return is_valid;}
-       
+        
         if(int_d==0 || int_m==0 ){ is_valid = false; return is_valid;}
         if(int_d > 31 || int_m > 12 ){is_valid = false; return is_valid;}
         
         return is_valid;
     }
-    protected boolean super_validateDates(){
-    boolean validate = true;
     
-    return validate;
+    protected boolean super_validateDates(){
+        
+        boolean validate = true;
+        
+        if(validateDate(jtfTerm.getText()) == false){
+            jtfTerm.requestFocus();
+            jtfTerm.setBackground(java.awt.Color.PINK);
+            validate = false;
+            return validate;
+        }
+        
+        if(validateDate(jtfLastInsDate.getText()) == false){
+            jtfLastInsDate.requestFocus();
+            jtfLastInsDate.setBackground(java.awt.Color.PINK);
+            validate = false;
+            return validate;
+        }
+        
+        if(validateDate(jtfQuitDate.getText()) == false){
+            jtfQuitDate.requestFocus();
+            jtfQuitDate.setBackground(java.awt.Color.PINK);
+            validate = false;
+            return validate;
+        }
+        
+        if(validateDate(jtfSignonDate.getText()) == false){
+            jtfSignonDate.requestFocus();
+            jtfSignonDate.setBackground(java.awt.Color.PINK);
+            validate = false;
+            return validate;
+        }
+        
+        if(validateDate(jtfAssignDate.getText()) == false){
+            jtfAssignDate.requestFocus();
+            jtfAssignDate.setBackground(java.awt.Color.PINK);
+            validate = false;
+            return validate;
+        }
+        
+        if(validateDate(jtfBDate.getText()) == false){
+            jtfBDate.requestFocus();
+            jtfBDate.setBackground(java.awt.Color.PINK);
+            validate = false;
+            return validate;
+        }
+        
+        if(validateDate(jtfBDate.getText()) == false){
+            jtfBDate.requestFocus();
+            jtfBDate.setBackground(java.awt.Color.PINK);
+            validate = false;
+            return validate;
+        }
+        
+        if(validateDate(jtfIDCDate.getText()) == false){
+            jtfIDCDate.requestFocus();
+            jtfIDCDate.setBackground(java.awt.Color.PINK);
+            validate = false;
+            return validate;
+        }
+        
+        return validate;
     }
+    
     protected String convertDate(String str){
         String converted_str = "0000-00-00";
         if(str.equals("")!=true){
@@ -1216,22 +1276,24 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         try{
             inter_id = imakante.com.pubMethods.getMaxNum("Select id FROM ls_main", dbInternal, "id") + 1;
             stm = dbInternal.createStatement();
-            stm.execute("INSERT INTO ls_main (nomer,first,second,family,egn,gender,nomer_LK,osnowanie_dog,srok_dog,d_st,m_st,g_st,kateg_rabotnik,belejki) " +
-                    "VALUES(" + jtfNumber.getText() +
-                    ", " + jtfName.getText() +
-                    ", " + jtfMName.getText() +
-                    ", " + jtfFName.getText() +
-                    ", " + jcbGender.getSelectedItem().toString() +
-                    ", " + jtfIDCard.getText() +
-                    ", " + jtfGorunds.getText() +
-                    ", " + jtfTerm.getText() +
-                    ", " + jtfLOSDays.getText() +
-                    ", " + jtfLOSMonths.getText() +
-                    ", " + jtfLOSYears.getText() +
-                    ", " + jtfTypeEmp.getText() +
-                    ", " + jtaNotes.getText() +
+            String strSQl ="INSERT INTO ls_main (nomer,first,second,family,egn,gender,nomer_LK,osnowanie_dog,srok_dog,d_st,m_st,g_st,kateg_rabotnik,belejki) " +
+                    "VALUES('" + jtfNumber.getText() +
+                    "', '" + jtfName.getText() +
+                    "', '" + jtfMName.getText() +
+                    "', '" + jtfFName.getText() +
+                    "', '" + jcbGender.getSelectedItem().toString() +
+                    "', '" + jtfIDCard.getText() +
+                    "', '" + jtfGorunds.getText() +
+                    "', '" + jtfTerm.getText() +
+                    "', '" + jtfLOSDays.getText() +
+                    "', '" + jtfLOSMonths.getText() +
+                    "', '" + jtfLOSYears.getText() +
+                    "', '" + jtfTypeEmp.getText() +
+                    "', '" + jtaNotes.getText() +
                     
-                    ")");
+                    "')";
+            System.out.println(strSQl);
+            stm.execute(strSQl);
             
             stm.execute("INSERT INTO ls_addresses (address, telefon, mobilen,email,id_rab, id_nasm ) VALUES(" + jtfAddress.getText() +
                     ", " + jtfPhone.getText() +
@@ -1244,12 +1306,11 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             
             stm.execute("INSERT INTO ls_dates (id_rab, b_date, date_izd_LK, date_naznach,data_postypwane, srok_dogov) VALUES(" + inter_id +
                     
-                    ", " + jtfPhone.getText() +
-                    ", " + jtfMobile.getText() +
-                    ", " + jtfEmail.getText() +
-                    ", " +  inter_id +
-                    ", " + id_nm +
-                    
+                    ", " + convertDate(jtfBDate.getText()) +
+                    ", " + convertDate(jtfIDCDate.getText()) +
+                    ", " + convertDate(jtfAssignDate.getText()) +
+                    ", " + convertDate(jtfSignonDate.getText()) +
+                    ", " + convertDate(jtfTerm.getText()) +
                     ")");
             
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
