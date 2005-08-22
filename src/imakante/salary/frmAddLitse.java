@@ -9,7 +9,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     public frmAddLitse(javax.swing.JFrame parent, boolean modal, java.sql.Connection dbCon, int id_rab, int lMonth, int lYear) {
         super(parent, modal);
         parent_in=parent;
-        System.out.println("Wytre sym!!!");
+       
         dbInternal = dbCon;
         id_row = id_rab;
         
@@ -105,6 +105,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         jlNotes = new javax.swing.JLabel();
         jspNotes = new javax.swing.JScrollPane();
         jtaNotes = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
         jpButtons = new javax.swing.JPanel();
         jbAdd = new javax.swing.JButton();
         jbChange = new javax.swing.JButton();
@@ -376,7 +377,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 10);
         jpWhereabouts.add(jcbDistrict, gridBagConstraints);
 
-        jlPCode.setText("\u041f\u043e\u0449\u0435\u043d\u0441\u043a\u0438 \u043a\u043e\u0434");
+        jlPCode.setText("\u041f\u043e\u0449\u0435\u043d\u0441\u043a\u0438 \u043a\u043e\u0434*");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 10);
         jpWhereabouts.add(jlPCode, gridBagConstraints);
@@ -400,7 +401,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
         jpWhereabouts.add(jtfPCode, gridBagConstraints);
 
-        jlCity.setText("\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e");
+        jlCity.setText("\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e*");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
@@ -662,7 +663,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
         jpWorker.add(jsDates2Payment, gridBagConstraints);
 
-        jlPosition.setText("\u0414\u043b\u044a\u0436\u043d\u043e\u0441\u0442");
+        jlPosition.setText("\u0414\u043b\u044a\u0436\u043d\u043e\u0441\u0442*");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
@@ -710,7 +711,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jpWorker.add(jtfSalary, gridBagConstraints);
 
-        jlTypeEmp.setText("\u041a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f \u0440\u0430\u0431\u043e\u0442\u043d\u0438\u043a");
+        jlTypeEmp.setText("\u041a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f \u0440\u0430\u0431\u043e\u0442\u043d\u0438\u043a*");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 5;
@@ -742,6 +743,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jpLOS.add(jlLOSDays, gridBagConstraints);
 
+        jtfLOSDays.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfLOSDaysFocusLost(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -754,6 +761,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jpLOS.add(jlLOSMonths, gridBagConstraints);
 
+        jtfLOSMonths.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfLOSMonthsFocusLost(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -765,6 +778,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jpLOS.add(jlLOSYears, gridBagConstraints);
+
+        jtfLOSYears.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfLOSYearsFocusLost(evt);
+            }
+        });
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -805,6 +824,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 15, 10);
         jpWorker.add(jspNotes, gridBagConstraints);
 
+        jLabel2.setText("* F7 - \u0418\u0437\u0431\u043e\u0440 \u043d\u0430 \u0432\u044a\u0437\u043c\u043e\u0436\u043d\u043e\u0441\u0442\u0438");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 10;
+        jpWorker.add(jLabel2, gridBagConstraints);
+
         jtpDataInput.addTab("\u0414\u0430\u043d\u043d\u0438 \u043d\u0430 \u0440\u0430\u0431\u043e\u0442\u043d\u0438\u043a\u0430", jpWorker);
 
         getContentPane().add(jtpDataInput, java.awt.BorderLayout.CENTER);
@@ -841,6 +866,18 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         pack();
     }
     // </editor-fold>//GEN-END:initComponents
+    
+    private void jtfLOSYearsFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfLOSYearsFocusLost
+        if(isNumber(jtfLOSYears.getText()) == false){jtfLOSYears.requestFocus();jtfLOSYears.setBackground(java.awt.Color.PINK);}else{jtfLOSYears.setBackground(java.awt.Color.WHITE);}
+    }//GEN-LAST:event_jtfLOSYearsFocusLost
+    
+    private void jtfLOSMonthsFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfLOSMonthsFocusLost
+        if(isNumber(jtfLOSMonths.getText()) == false){jtfLOSMonths.requestFocus();jtfLOSMonths.setBackground(java.awt.Color.PINK);}else{jtfLOSMonths.setBackground(java.awt.Color.WHITE);}
+    }//GEN-LAST:event_jtfLOSMonthsFocusLost
+    
+    private void jtfLOSDaysFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfLOSDaysFocusLost
+        if(isNumber(jtfLOSDays.getText()) == false){jtfLOSDays.requestFocus();jtfLOSDays.setBackground(java.awt.Color.PINK);}else{jtfLOSDays.setBackground(java.awt.Color.WHITE);}
+    }//GEN-LAST:event_jtfLOSDaysFocusLost
     
     private void jtfTermFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfTermFocusLost
         if(validateDate(jtfTerm.getText()) == false){jtfTerm.requestFocus();jtfTerm.setBackground(java.awt.Color.PINK);}else{jtfTerm.setBackground(java.awt.Color.WHITE);}
@@ -982,6 +1019,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton jbAdd;
     private javax.swing.JButton jbChange;
     private javax.swing.JButton jbQuit;
@@ -1173,6 +1211,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         
         return validate;
     }
+    protected boolean isNumber(String str_num){
+        boolean is_number = true;
+        try{
+            int y = Integer.parseInt(str_num);}catch(NumberFormatException nfe){is_number = false; return is_number; }
+        return is_number;
+    }
     
     protected String convertDate(String str){
         String converted_str = "0000-00-00";
@@ -1281,6 +1325,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                     "', '" + jtfName.getText() +
                     "', '" + jtfMName.getText() +
                     "', '" + jtfFName.getText() +
+                    "', '" + jtfEGN.getText() +
                     "', '" + jcbGender.getSelectedItem().toString() +
                     "', '" + jtfIDCard.getText() +
                     "', '" + jtfGorunds.getText() +

@@ -357,7 +357,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jlPCode">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Пощенски код"/>
+                <Property name="text" type="java.lang.String" value="Пощенски код*"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -384,7 +384,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jlCity">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Населено място"/>
+                <Property name="text" type="java.lang.String" value="Населено място*"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -703,7 +703,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jlPosition">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Длъжност"/>
+                <Property name="text" type="java.lang.String" value="Длъжност*"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -763,7 +763,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jlTypeEmp">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Категория работник"/>
+                <Property name="text" type="java.lang.String" value="Категория работник*"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -819,6 +819,9 @@
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jtfLOSDays">
+                  <Events>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtfLOSDaysFocusLost"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
                   </AuxValues>
@@ -839,6 +842,9 @@
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jtfLOSMonths">
+                  <Events>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtfLOSMonthsFocusLost"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
                   </AuxValues>
@@ -859,6 +865,9 @@
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jtfLOSYears">
+                  <Events>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtfLOSYearsFocusLost"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
                   </AuxValues>
@@ -904,6 +913,16 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JLabel" name="jLabel2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="* F7 - Избор на възможности"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                  <GridBagConstraints gridX="4" gridY="10" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
+                </Constraint>
+              </Constraints>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>
