@@ -5,10 +5,10 @@ import java.awt.event.KeyEvent;
 
 public class FrmNasM extends javax.swing.JInternalFrame implements java.awt.event.WindowListener {
     
-    public FrmNasM(java.sql.Connection srcCN, javax.swing.JFrame getParentFrame)  throws java.sql.SQLException{
+    public FrmNasM(java.sql.Connection srcCN, javax.swing.JFrame parent)  throws java.sql.SQLException{
         
         super("\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u0438 \u043c\u0435\u0441\u0442\u0430",true,true,true,true);
-        
+        parent_in=parent;
         dbInternal = srcCN;
         initResource();
         
@@ -39,7 +39,6 @@ public class FrmNasM extends javax.swing.JInternalFrame implements java.awt.even
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
 
         setTitle("\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u0438 \u043c\u0435\u0441\u0442\u0430");
         jPanel1.setLayout(new java.awt.BorderLayout());
@@ -170,9 +169,6 @@ public class FrmNasM extends javax.swing.JInternalFrame implements java.awt.even
 
         jPanel2.add(jButton4);
 
-        jButton6.setText("\u0412\u043c\u044a\u043a\u0432\u0430\u043d\u0435");
-        jPanel2.add(jButton6);
-
         getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
 
         pack();
@@ -180,19 +176,19 @@ public class FrmNasM extends javax.swing.JInternalFrame implements java.awt.even
     // </editor-fold>//GEN-END:initComponents
     
     private void jButton5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton5KeyPressed
-// TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton5.doClick();}
     }//GEN-LAST:event_jButton5KeyPressed
     
     private void jTextField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyPressed
-// TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jTextField3.transferFocus();}
     }//GEN-LAST:event_jTextField3KeyPressed
     
     private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
-// TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jTextField2.transferFocus();}
     }//GEN-LAST:event_jTextField2KeyPressed
     
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-// TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jTextField1.transferFocus();}
     }//GEN-LAST:event_jTextField1KeyPressed
     
     private void jButton4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton4KeyPressed
@@ -212,19 +208,20 @@ public class FrmNasM extends javax.swing.JInternalFrame implements java.awt.even
     }//GEN-LAST:event_jButton1KeyPressed
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-// TODO add your handling code here:
+        UnloadWindow();
     }//GEN-LAST:event_jButton4ActionPerformed
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-// TODO add your handling code here:
+        deleteRecord();
+       
     }//GEN-LAST:event_jButton3ActionPerformed
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-// TODO add your handling code here:
+        editRecord();
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-// TODO add your handling code here:
+        newRecord();
     }//GEN-LAST:event_jButton1ActionPerformed
     
     
@@ -234,7 +231,6 @@ public class FrmNasM extends javax.swing.JInternalFrame implements java.awt.even
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -246,6 +242,7 @@ public class FrmNasM extends javax.swing.JInternalFrame implements java.awt.even
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
+    public static javax.swing.JFrame parent_in;
     public static java.sql.Connection dbInternal;
     public static java.sql.Statement stm;
     public static java.sql.ResultSet rsCus;
@@ -282,9 +279,22 @@ public class FrmNasM extends javax.swing.JInternalFrame implements java.awt.even
         jScrollPane1.repaint(); jScrollPane1.getViewport().add(jTable, Names);
         jScrollPane1.repaint();
     }
+    
     protected static void newRecord(){
-        try{
-            stm.execute("INSERT INTO `oblasti` (`name_oblast`) VALUES ('')");}catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        imakante.salary.frmAddNas frmDialog = new imakante.salary.frmAddNas(parent_in, true, dbInternal, 0);
+        frmDialog.setVisible(true);
+        
+        
+    }
+    protected void editRecord(){
+        if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
+            int row = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
+            try{
+                imakante.salary.frmAddNas frmDialog = new imakante.salary.frmAddNas(parent_in, true, dbInternal, row);
+                frmDialog.setVisible(true);
+                
+            } catch(Exception e){e.printStackTrace();}
+        }
         
     }
     
@@ -304,6 +314,7 @@ public class FrmNasM extends javax.swing.JInternalFrame implements java.awt.even
         
         
     }
+    
     protected void closeResource(){
         if(rsCus!=null){ try{  rsCus.close();
         }catch(java.sql.SQLException sqle){}}

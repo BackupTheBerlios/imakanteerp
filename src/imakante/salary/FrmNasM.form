@@ -191,11 +191,6 @@
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jButton4KeyPressed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton6">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Вмъкване"/>
-          </Properties>
-        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
