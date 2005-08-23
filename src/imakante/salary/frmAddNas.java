@@ -1,6 +1,8 @@
 
 package imakante.salary;
 
+import java.awt.event.KeyEvent;
+
 
 public class frmAddNas extends javax.swing.JDialog implements java.awt.event.WindowListener {
     
@@ -117,9 +119,9 @@ public class frmAddNas extends javax.swing.JDialog implements java.awt.event.Win
         pack();
     }
     // </editor-fold>//GEN-END:initComponents
-
+    
     private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
-// TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jTextField2.transferFocus();}
     }//GEN-LAST:event_jTextField2KeyPressed
     
     private void jComboBox1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox1KeyPressed
@@ -127,9 +129,9 @@ public class frmAddNas extends javax.swing.JDialog implements java.awt.event.Win
     }//GEN-LAST:event_jComboBox1KeyPressed
     
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-// TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jTextField2.transferFocus();}
     }//GEN-LAST:event_jTextField1KeyPressed
-                    
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -146,9 +148,9 @@ public class frmAddNas extends javax.swing.JDialog implements java.awt.event.Win
     public static java.sql.Connection dbInternal;
     public static java.sql.Statement stm;
     public static java.sql.ResultSet rsCus;
-    public static String strSQL; 
+    public static String strSQL;
     
-   
+    
     
     protected void closeResource(){
         if(rsCus!=null){ try{  rsCus.close();
