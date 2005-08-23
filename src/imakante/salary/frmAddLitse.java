@@ -9,7 +9,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     public frmAddLitse(javax.swing.JFrame parent, boolean modal, java.sql.Connection dbCon, int id_rab, int lMonth, int lYear) {
         super(parent, modal);
         parent_in=parent;
-       
+        
         dbInternal = dbCon;
         id_row = id_rab;
         
@@ -671,6 +671,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 5);
         jpWorker.add(jlPosition, gridBagConstraints);
 
+        jtfPosition.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfPositionKeyPressed(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
@@ -867,6 +873,16 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     }
     // </editor-fold>//GEN-END:initComponents
     
+    private void jtfPositionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPositionKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_F7){
+            imakante.salary.frmAL_Dlajnosti frmDialog = new imakante.salary.frmAL_Dlajnosti(parent_in, true,dbInternal, jtfCity.getText());
+            
+            frmDialog.setVisible(true);
+        }
+        
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jtfPosition.transferFocus();}
+    }//GEN-LAST:event_jtfPositionKeyPressed
+    
     private void jtfLOSYearsFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfLOSYearsFocusLost
         if(isNumber(jtfLOSYears.getText()) == false){jtfLOSYears.requestFocus();jtfLOSYears.setBackground(java.awt.Color.PINK);}else{jtfLOSYears.setBackground(java.awt.Color.WHITE);}
     }//GEN-LAST:event_jtfLOSYearsFocusLost
@@ -959,12 +975,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     
     private void jtfPCodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPCodeKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_F7){
-            String p_code = jtfPCode.getText();
-            System.out.println("pcode 1 " + p_code);
+            
             imakante.salary.frmAL_NM frmDialog = new imakante.salary.frmAL_NM(parent_in, true,dbInternal, "", p_code , false);
             
             frmDialog.setVisible(true);
         }
+        
         if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jtfPCode.transferFocus();}
     }//GEN-LAST:event_jtfPCodeKeyPressed
     
@@ -978,6 +994,8 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             
             frmDialog.setVisible(true);
         }
+        
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jtfCity.transferFocus();}
     }//GEN-LAST:event_jtfCityKeyPressed
     
     private void jtfEGNFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfEGNFocusLost
@@ -1111,6 +1129,9 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     public static String[] Gender = {"\u041c\u044a\u0436","\u0416\u0435\u043d\u0430"};
     public String EGN;
     int inter_id;
+    public static int  id_dlajnost;
+    public static String name_dlajnost;
+    
     
     protected boolean validateDate(String str){
         
@@ -1393,6 +1414,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         id_nm =id_n_nm;
     }
     
+    public static void insertDlajnost(String name_dl, int id_dlaj){
+        name_dlajnost = name_dl;
+        id_dlajnost = id_dlaj;
+        jtfPosition.setText(name_dlajnost);
+        
+    }
     
     protected void closeResource(){
         if(rs!=null){ try{  rs.close();

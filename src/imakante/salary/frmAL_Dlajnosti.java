@@ -5,7 +5,7 @@ import java.awt.event.KeyEvent;
 
 public class frmAL_Dlajnosti extends javax.swing.JDialog implements java.awt.event.WindowListener {
     
-    public frmAL_Dlajnosti(java.awt.Frame parent, boolean modal, java.sql.Connection dbCon, String patt_name, String post_code, boolean ftr) {
+    public frmAL_Dlajnosti(java.awt.Frame parent, boolean modal, java.sql.Connection dbCon, String patt_name) {
         super(parent, modal);
         
         dbInternal = dbCon;
