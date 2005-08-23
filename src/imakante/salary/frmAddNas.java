@@ -9,7 +9,7 @@ public class frmAddNas extends javax.swing.JDialog implements java.awt.event.Win
     public frmAddNas(javax.swing.JFrame parent, boolean modal,java.sql.Connection srcCN, int row) {
         super(parent, modal);
         
-        
+        id=row;
         initComponents();
         
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
@@ -109,9 +109,31 @@ public class frmAddNas extends javax.swing.JDialog implements java.awt.event.Win
 
         jPanel2.setBorder(new javax.swing.border.EtchedBorder());
         jButton1.setText("\u0417\u0430\u043f\u0430\u0437\u0438");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
+            }
+        });
+
         jPanel2.add(jButton1);
 
         jButton2.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton2KeyPressed(evt);
+            }
+        });
+
         jPanel2.add(jButton2);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
@@ -120,12 +142,29 @@ public class frmAddNas extends javax.swing.JDialog implements java.awt.event.Win
     }
     // </editor-fold>//GEN-END:initComponents
     
+    private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton2.doClick();}
+    }//GEN-LAST:event_jButton2KeyPressed
+    
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton1.doClick();}
+    }//GEN-LAST:event_jButton1KeyPressed
+    
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        UnloadWindow();
+    }//GEN-LAST:event_jButton2ActionPerformed
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        insertRecord();
+        UnloadWindow();
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
     private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jTextField2.transferFocus();}
     }//GEN-LAST:event_jTextField2KeyPressed
     
     private void jComboBox1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox1KeyPressed
-// TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jComboBox1.transferFocus();}
     }//GEN-LAST:event_jComboBox1KeyPressed
     
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
@@ -147,8 +186,46 @@ public class frmAddNas extends javax.swing.JDialog implements java.awt.event.Win
     // End of variables declaration//GEN-END:variables
     public static java.sql.Connection dbInternal;
     public static java.sql.Statement stm;
-    public static java.sql.ResultSet rsCus;
+    public static java.sql.ResultSet rsCus, rs;
     public static String strSQL;
+    public static int id;
+    
+    protected void initCombo_Area(){
+        try{
+            
+            stm = dbInternal.createStatement();
+            rs = stm.executeQuery("SELECT n_oblast.name FROM n_oblast ORDER BY n_oblast.id");
+            
+            jComboBox1.addItem("");// za parvi prazen zapis
+            
+            while(rs.next()){
+                
+                jComboBox1.addItem(rs.getString("name"));
+                
+            }
+        } catch(java.sql.SQLException sqle){
+            sqle.printStackTrace();
+            
+        }
+        try{stm.close();}catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        try{rs.close();}catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+    }
+    
+    protected void insertRecord(){
+        if ( id == 0){
+            try{
+                stm = dbInternal.createStatement();
+                stm.execute("INSERT INTO n_nm (postcode, name, id_oblast) VALUES('"+  jTextField2.getText() + "', '" +jTextField1.getText()+ "','" +jComboBox1.getSelectedIndex() +"')");
+            }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        }else{
+            try{
+                stm = dbInternal.createStatement();
+                stm.execute("UPDATE n_nm SET postcode = '"+  jTextField2.getText() + "', name = '" +jTextField1.getText()+ "', id_oblast ='" +  jComboBox1.getSelectedIndex() +"' WHERE id =" +id);
+            }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        }
+        imakante.salary.FrmNasM.repaintTable();
+        
+    }
     
     
     
