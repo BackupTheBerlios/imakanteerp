@@ -7,8 +7,7 @@ public class frmAL_Dlajnosti extends javax.swing.JDialog implements java.awt.eve
     
     public frmAL_Dlajnosti(java.awt.Frame parent, boolean modal, java.sql.Connection dbCon, String patt_name) {
         super(parent, modal);
-        
-        dbInternal = dbCon;
+       dbInternal = dbCon;
         name = patt_name;
         initResource();
         jTable.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -80,7 +79,7 @@ public class frmAL_Dlajnosti extends javax.swing.JDialog implements java.awt.eve
                 
                 try{
                     stm = dbInternal.createStatement(java.sql.ResultSet.TYPE_SCROLL_SENSITIVE,
-                            java.sql.ResultSet.CONCUR_UPDATABLE);
+                            java.sql.ResultSet.CONCUR_READ_ONLY);
                 } catch (java.sql.SQLException sqle){sqle.printStackTrace();
                 }
                 
@@ -101,7 +100,7 @@ public class frmAL_Dlajnosti extends javax.swing.JDialog implements java.awt.eve
                 if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
                     try{id_dlaj = Integer.parseInt(jTable.getValueAt(jTable.getSelectedRow(),0).toString());}catch(NumberFormatException nfe){}
                     name =  jTable.getValueAt(jTable.getSelectedRow(),2).toString();
-                    
+                    imakante.salary.frmAddLitse.insertDlajnost(name, id_dlaj);
                 }
                 UnloadWindow();
             }

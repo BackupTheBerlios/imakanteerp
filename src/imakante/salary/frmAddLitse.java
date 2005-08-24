@@ -725,6 +725,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
         jpWorker.add(jlTypeEmp, gridBagConstraints);
 
+        jtfTypeEmp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfTypeEmpKeyPressed(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 6;
@@ -872,6 +878,16 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         pack();
     }
     // </editor-fold>//GEN-END:initComponents
+
+    private void jtfTypeEmpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfTypeEmpKeyPressed
+   if (evt.getKeyCode() == KeyEvent.VK_F7){
+            imakante.salary.frmAL_VOsig frmDialog = new imakante.salary.frmAL_VOsig(parent_in, true,dbInternal, jtfTypeEmp.getText());
+            
+            frmDialog.setVisible(true);
+        }
+        
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jtfTypeEmp.transferFocus();}
+    }//GEN-LAST:event_jtfTypeEmpKeyPressed
     
     private void jtfPositionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPositionKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_F7){
@@ -976,7 +992,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     private void jtfPCodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPCodeKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_F7){
             
-            imakante.salary.frmAL_NM frmDialog = new imakante.salary.frmAL_NM(parent_in, true,dbInternal, "", p_code , false);
+            imakante.salary.frmAL_NM frmDialog = new imakante.salary.frmAL_NM(parent_in, true,dbInternal, "", jtfPCode.getText() , false);
             
             frmDialog.setVisible(true);
         }
@@ -1131,7 +1147,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     int inter_id;
     public static int  id_dlajnost;
     public static String name_dlajnost;
-    
+    public static String name_os, cod_os;
     
     protected boolean validateDate(String str){
         
@@ -1419,6 +1435,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         id_dlajnost = id_dlaj;
         jtfPosition.setText(name_dlajnost);
         
+    }
+    
+    public static void insertVidOsiguren(String name_osiguren, String cod_osiguren){
+    name_os = name_osiguren;
+    cod_os = cod_osiguren;
+    
     }
     
     protected void closeResource(){

@@ -89,8 +89,7 @@ public class frmArea extends javax.swing.JDialog implements java.awt.event.Windo
     // </editor-fold>//GEN-END:initComponents
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        closeResource();
-        this.dispose();
+        UnloadWindow();
     }//GEN-LAST:event_jButton3ActionPerformed
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -140,8 +139,7 @@ public class frmArea extends javax.swing.JDialog implements java.awt.event.Windo
                     if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
                         int row = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
                         System.out.println("row "+row);
-                        stm = dbInternal.createStatement(java.sql.ResultSet.TYPE_SCROLL_SENSITIVE,
-                                java.sql.ResultSet.CONCUR_UPDATABLE);
+                        stm = dbInternal.createStatement();
                         stm.execute("DELETE FROM n_oblast WHERE id = "+ row );
                         repaintTable();
                     }
