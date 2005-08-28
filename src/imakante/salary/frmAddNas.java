@@ -11,7 +11,8 @@ public class frmAddNas extends javax.swing.JDialog implements java.awt.event.Win
         
         id=row;
         initComponents();
-        
+        initResource();
+        initCombo_Area();
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         int x = (((dim.width)-(this.getSize().width))/2);
         int y = (((dim.height)-(this.getSize().height))/2);
@@ -189,6 +190,25 @@ public class frmAddNas extends javax.swing.JDialog implements java.awt.event.Win
     public static java.sql.ResultSet rsCus, rs;
     public static String strSQL;
     public static int id;
+    
+    
+    protected void initResource(){
+        if (id!=0){
+            try{
+                stm = dbInternal.createStatement();
+                rs = stm.executeQuery("SELECT n_nm.postcode, n_nm.name FROM n_nm WHERE n_nm.id = " + id );
+                while(rs.next()){
+                    jTextField2.setText(rs.getString("postcode"));
+                    jTextField1.setText(rs.getString("name"));
+                }
+            }catch(java.sql.SQLException sqle){}
+            
+        }else{}
+        
+        try{stm.close();}catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        try{rs.close();}catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+    }
+    
     
     protected void initCombo_Area(){
         try{

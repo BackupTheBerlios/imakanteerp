@@ -125,7 +125,7 @@ public class FrmVidOsig extends javax.swing.JDialog  implements java.awt.event.W
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private static javax.swing.JScrollPane jScrollPane1;
+    public static javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
     public static java.sql.Connection dbInternal;
     public static java.sql.Statement stm;
@@ -133,7 +133,7 @@ public class FrmVidOsig extends javax.swing.JDialog  implements java.awt.event.W
     public static String strSQL;
     public static imakante.com.CustomTableModel model;
     public static imakante.com.CustomTable jTable;
-    public static final String Names[] = {"\u041a\u043e\u0434 \u043e\u0441\u0438\u0433\u0443\u0440\u044f\u0432\u0430\u043d\u0435",
+    public static final String Names[] = {"","\u041a\u043e\u0434 \u043e\u0441\u0438\u0433\u0443\u0440\u044f\u0432\u0430\u043d\u0435",
     "\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u043d\u0430 \u0432\u0438\u0434\u043e\u0432\u0435 \u043e\u0441\u0438\u0433\u0443\u0440\u0435\u043d\u0438"};
             
             protected void deleteRecord(){
@@ -174,7 +174,7 @@ public class FrmVidOsig extends javax.swing.JDialog  implements java.awt.event.W
                 
                 
                 try{
-                    rsCus = stm.executeQuery("SELECT n_vidosig.cod_os, n_vidosig.name_os FROM n_vidosig");} catch (java.sql.SQLException sqle){sqle.printStackTrace();}
+                    rsCus = stm.executeQuery("SELECT * FROM n_vidosig");} catch (java.sql.SQLException sqle){sqle.printStackTrace();}
                 
                 model = new imakante.com.CustomTableModel(dbInternal, rsCus, Names);
                 jTable = new imakante.com.CustomTable(model);

@@ -21,7 +21,9 @@ public class FrmDate extends JDialog //implements ActionListener
     private JComboBox comboMonth;
     public JComboBox comboYear;
     public int pYear, pMonth,x,y;
+    private int intYear, intMonth, valueYear;
     private int selected;
+    private String year_str = "", month_str = "";
     private JPanel jPanel1 = new JPanel();
     private static String strYearsCusSQL;
     String[] month = {"\u042f\u043d\u0443\u0430\u0440\u0438","\u0424\u0435\u0432\u0440\u0443\u0430\u0440\u0438","\u041c\u0430\u0440\u0442","\u0410\u043f\u0440\u0438\u043b","\u041c\u0430\u0439",
@@ -41,6 +43,7 @@ public class FrmDate extends JDialog //implements ActionListener
                 this.setModal(true);
                 dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
                 comboYear = new JComboBox();
+                comboMonth = new JComboBox();
                 dbInternal = dbCon;
                 try{
                     java.sql.DatabaseMetaData dmd = dbInternal.getMetaData();
@@ -66,24 +69,48 @@ public class FrmDate extends JDialog //implements ActionListener
                     } catch(java.sql.SQLException sqle){}
                     
                 } else {
+                    
+                    //comboYear
                     try{
                         
                         stm = dbInternal.createStatement();
                         rsCus = stm.executeQuery("SELECT DISTINCT ls_result.pyear FROM ls_result WHERE ls_result.pyear IS NOT NULL ORDER BY ls_result.pyear");
+                        intYear=-1;
+                        while(rsCus.next()){
+                            year_str = rsCus.getString("pyear");
+                            comboYear.addItem(year_str);
+                            intYear = intYear + 1;
+                            
+                        }
+                        
+                    } catch(java.sql.SQLException sqle){
+                        sqle.printStackTrace();
+                        
+                    }
+                    
+                    //comboMonth
+                     try{
+                        rsCus = stm.executeQuery("SELECT DISTINCT ls_result.pmonth FROM ls_result WHERE ls_result.pyear IS NOT NULL" + year_str +" ORDER BY ls_result.pmonth");
                         
                         while(rsCus.next()){
+                            month_str = rsCus.getString("pmonth");
+                            int index_month = Integer.parseInt(month_str);
                             
-                            comboYear.addItem(rsCus.getString("pyear"));
-                           
+                            comboMonth.addItem(month[index_month -1 ]);
+                            
                         }
                     } catch(java.sql.SQLException sqle){
                         sqle.printStackTrace();
+                        
                     }
+                    
+                    
                 }
                 
                 try {
                     
                     jbInit();
+                    comboYear.setSelectedIndex(intYear);
                     x = (((dim.width)-(this.getSize().width))/2);
                     y = (((dim.height)-(this.getSize().height))/2);
                     
@@ -100,7 +127,7 @@ public class FrmDate extends JDialog //implements ActionListener
                 jPanel1 = new javax.swing.JPanel();
                 L1 = new javax.swing.JLabel();
                 L2 = new javax.swing.JLabel();
-                comboMonth = new javax.swing.JComboBox(month);
+               // comboMonth = new javax.swing.JComboBox(month);
                 //comboYear = new javax.swing.JComboBox();
                 jPanel2 = new javax.swing.JPanel();
                 B1 = new javax.swing.JButton();
@@ -235,8 +262,11 @@ public class FrmDate extends JDialog //implements ActionListener
             
             private void comboYactionPerformed(ActionEvent e) {
                 JComboBox comboYear = (JComboBox)e.getSource();
-                String year = (String)comboMonth.getSelectedItem();
+                String year = (String)comboMonth.getSelectedItem(); // Tova e mnogo stranno
             }
+            private void setBeginigDate(java.sql.Connection jcon){
             
+            
+            }
             
 }

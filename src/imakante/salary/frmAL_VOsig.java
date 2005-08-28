@@ -80,7 +80,7 @@ public class frmAL_VOsig extends javax.swing.JDialog  implements java.awt.event.
                 
                 
                 try{
-                    rsCus = stm.executeQuery("SELECT n_vidosig.cod_os, n_vidosig.name_os FROM n_vidosig WHERE ls_dlajnosti.namedlaj LIKE '%" + name + "%'");} catch (java.sql.SQLException sqle){sqle.printStackTrace();}
+                    rsCus = stm.executeQuery("SELECT n_vidosig.cod_os, n_vidosig.name_os FROM n_vidosig" );} catch (java.sql.SQLException sqle){sqle.printStackTrace();}
                 
                 model = new imakante.com.CustomTableModel(dbInternal, rsCus, Names);
                 jTable = new imakante.com.CustomTable(model);

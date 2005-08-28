@@ -8,8 +8,9 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     
     private javax.swing.JLabel StatusLabel = new javax.swing.JLabel("\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415 - \u041b\u0421",javax.swing.JLabel.CENTER);
     javax.swing.JLabel BTlabel = new javax.swing.JLabel();
+    public static javax.swing.JLabel PeriodLabel = new javax.swing.JLabel();
     java.awt.Dimension screen = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-    public static String StrName;
+    public static String StrName, StrPeriod;
     String StrBTitle;
     String DBDriver;
     public static String DBSource;
@@ -47,17 +48,23 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         frmConnSalary fdia = new frmConnSalary(this,true);
         fdia.setVisible(true);
+        setCurrDate(dbCON);
         
-        FrmDate fdate = new FrmDate(this,dbCON);
-        fdate.setVisible(true);
+        // FrmDate fdate = new FrmDate(this,dbCON);
+        //fdate.setVisible(true);
         
         getStatusLabel().setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         getStatusLabel().setFont(menuFont);
         
+        //etiket za imeto na firmata i bazata
         BTlabel.setText(StrBTitle);
         BTlabel.setHorizontalAlignment(javax.swing.JLabel.LEFT);
         BTlabel.setForeground(new java.awt.Color(166,0,0));
         
+        //etiket za tekushia period 
+        PeriodLabel.setText(StrPeriod);
+        PeriodLabel.setHorizontalAlignment(javax.swing.JLabel.RIGHT);
+        BTlabel.setForeground(new java.awt.Color(0,0,155));
         //Set the main form properties
         addWindowListener(this);
         
@@ -681,6 +688,21 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmNas.setBackground(new java.awt.Color(255,255,255));
         MnuSys.add(ItmNas);
         
+        MnuSys.addSeparator();
+        
+        javax.swing.JMenuItem ItmVidOsig= new javax.swing.JMenuItem("\u0412\u0438\u0434 \u043e\u0441\u0438\u0433\u0443\u0440\u0435\u043d\u0438");
+        ItmVidOsig.setFont(menuFont);
+        ItmVidOsig.setActionCommand("vidosig");
+        ItmVidOsig.addActionListener(getJMenuActionListener());
+        ItmVidOsig.setBackground(new java.awt.Color(255,255,255));
+        MnuSys.add(ItmVidOsig);
+        
+        javax.swing.JMenuItem ItmNKID= new javax.swing.JMenuItem("\u041d\u0430\u0446\u0438\u043e\u043d\u0430\u043b\u0435\u043d \u043a\u043b\u0430\u0441\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 \u043d\u0430 \u0438\u043a\u043e\u043d\u043e\u043c\u0438\u0447\u0435\u0441\u043a\u0438\u0442\u0435 \u0434\u0435\u0439\u043d\u043e\u0441\u0442\u0438");
+        ItmNKID.setFont(menuFont);
+        ItmNKID.setActionCommand("nkid");
+        ItmNKID.addActionListener(getJMenuActionListener());
+        ItmNKID.setBackground(new java.awt.Color(255,255,255));
+        MnuSys.add(ItmNKID);
         
         //End  menu
         
@@ -785,7 +807,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         //End verify if the form is already loaded
         
     }
-   
+    
     protected void loadDODForm() throws java.sql.SQLException{
         
         boolean AlreadyLoaded = isLoaded("\u0414\u041e\u041e \u0442\u0430\u0431\u043b\u0438\u0446\u0430");
@@ -813,7 +835,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         //End verify if the form is already loaded
         
     }
-  
+    
     protected void loadDOOForm() throws java.sql.SQLException{
         //Verify if the form is already loaded
         boolean AlreadyLoaded = isLoaded("\u0414\u041e\u041e \u043d\u0430\u0447\u0438\u0441\u043b\u0435\u043d\u0438\u044f");
@@ -868,7 +890,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         //End verify if the form is already loaded
         
     }
-   
+    
     protected void loadDateForm() {
         
         FrmDate frm = new FrmDate(this,dbCON);
@@ -1065,7 +1087,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
             FormSleujParam.setVisible(true);
         } catch(java.sql.SQLException sqle){}
     }
-   
+    
     protected void loadActStDlaj(){
         try{
             setFormActStDlaj(new FrmAct(this, dbCON, "c:/imakante/salary/jasper/","","Акт за встъпване в длъжност"));
@@ -1082,7 +1104,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         frmEreseMonth  FormEreseM = new frmEreseMonth(this, true, dbCON);
         FormEreseM.setVisible(true);
     }
-        
+    
     protected void loadSplashScreen(){
         
         FormSplash.start();
@@ -1116,7 +1138,15 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         javax.swing.JDialog FormArea = new frmArea(this, true, dbCON);
         FormArea.setVisible(true);
     }
+    protected void loadVidOsig(){
+        javax.swing.JDialog FormVidOsiguren = new FrmVidOsig(this, true, dbCON);
+        FormVidOsiguren .setVisible(true);
+    }
     
+    protected void loadNIKD(){
+        javax.swing.JDialog FormNIKD = new FrmNKID(this, true, dbCON);
+        FormNIKD .setVisible(true);
+    }
     protected void loadNCP() {
         
         boolean AlreadyLoaded = isLoaded("\u041d\u0430\u0446\u0438\u043e\u043d\u0430\u043b\u0435\u043d \u043a\u043b\u0430\u0441\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 \u043d\u0430 \u043f\u0440\u043e\u0444\u0435\u0441\u0438\u0438\u0442\u0435");
@@ -1148,7 +1178,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         boolean AlreadyLoaded = isLoaded("\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u0438 \u043c\u0435\u0441\u0442\u0430");
         if(AlreadyLoaded==false){
             try{
-               FormNasM = new FrmNasM(dbCON, this) ;}catch(java.sql.SQLException sqle){}
+                FormNasM = new FrmNasM(dbCON, this) ;}catch(java.sql.SQLException sqle){}
             
             Desk1.add(FormNasM);
             try{FormNasM.setMaximum(true);}catch(java.beans.PropertyVetoException bpve){}
@@ -1168,8 +1198,8 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         }
         
     }
-      
-       
+    
+    
     /******************** End method for loading form start *******************/
     public boolean setSupportStProc(boolean sp){
         suportStProc = sp;
@@ -1184,7 +1214,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         }
     }
     
-    public int setMonth(int xMonth) {
+    public static int setMonth(int xMonth) {
         pMonth = xMonth;
         return pMonth;
     }
@@ -1193,7 +1223,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         return pMonth;
     }
     
-    public int setYear(int xYear){
+    public static int setYear(int xYear){
         pYear = xYear;
         return pYear;
     }
@@ -1201,7 +1231,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     public static int getYear(){
         return pYear;
     }
-   
+    
     public java.sql.Connection setConnection(java.sql.Connection extCon){
         dbCON = extCon;
         return dbCON;
@@ -1220,7 +1250,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     public String getDBDriver(String strDriver){
         return DBDriver;
     }
-   
+    
     public String setDBSource(String strSource){
         DBSource = strSource;
         return DBSource;
@@ -1383,15 +1413,26 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                     loadArea();
                 } catch(Exception qle){
                 };
-            }
-            else if(srcObject=="nas"){
+                
+            } else if(srcObject=="nas"){
                 
                 try{
                     loadNasM();
                 } catch(Exception qle){
                 };
-            }
-            else if(srcObject=="exit"){
+            } else if(srcObject=="vidosig"){
+                
+                try{
+                    loadVidOsig();
+                } catch(Exception qle){
+                };
+            } else if(srcObject=="nkid"){
+                
+                try{
+                    loadNIKD();
+                } catch(Exception qle){
+                };
+            } else if(srcObject=="exit"){
                 UnloadWindow();
             }
         }
@@ -1566,5 +1607,20 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     
     public void setFormActStDlaj(FrmAct FormActStDlaj) {
         this.FormActStDlaj = FormActStDlaj;
+    }
+    
+    private static void setCurrDate(java.sql.Connection jcon){
+        java.sql.Connection dbInternal = jcon;
+        
+        try{ java.sql.Statement stm = dbInternal.createStatement();
+        java.sql.ResultSet rs = stm.executeQuery("SELECT MAX(ls_result.pmonth) AS lmonth, MAX(ls_result.pyear) AS lyear FROM ls_result WHERE ls_result.pyear = (SELECT MAX(ls_result.pyear) FROM ls_result)");
+        while(rs.next()){
+            setMonth(rs.getInt("lmonth"));
+            setYear(rs.getInt("lyear"));
+            
+        }
+        } catch(java.sql.SQLException sqle){}
+        StrPeriod = "Текущия период е месец "+getMonth()+"   година "+getYear();
+        
     }
 }
