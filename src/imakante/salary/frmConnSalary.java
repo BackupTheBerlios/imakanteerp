@@ -37,6 +37,7 @@ public class frmConnSalary extends java.awt.Dialog {
         panel2 = new java.awt.Panel();
         button1 = new java.awt.Button();
         button2 = new java.awt.Button();
+        button3 = new java.awt.Button();
         button2.setBackground(SystemColor.control);
         setFont(new java.awt.Font("Tahoma", 0, 12));
         setLocationRelativeTo(this);
@@ -150,6 +151,21 @@ public class frmConnSalary extends java.awt.Dialog {
         });
         panel2.add(button2);
         
+        
+        button3.setLabel("\u041d\u043e\u0432\u0430 \u0431\u0430\u0437\u0430");
+        button3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button3ActionPerformed(evt);
+            }
+        });
+        button3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                button2Field1KeyPressed(evt);
+            }
+        });
+        panel2.add(button3);
+        
+        
         add(panel2, java.awt.BorderLayout.SOUTH);
         
         pack();
@@ -175,7 +191,9 @@ public class frmConnSalary extends java.awt.Dialog {
     private void button2ActionPerformed(java.awt.event.ActionEvent evt) {
         System.exit(0);
     }
-    
+     private void button3ActionPerformed(java.awt.event.ActionEvent evt) {
+        System.exit(0);
+    }
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {
         makeAcc();
     }
@@ -272,6 +290,7 @@ public class frmConnSalary extends java.awt.Dialog {
     // Variables declaration - do not modify
     private java.awt.Button button1;
     private java.awt.Button button2;
+    private java.awt.Button button3;
     private java.awt.Choice choice1;
     private javax.swing.JPasswordField jPasswordField1;
     private java.awt.Label label1;
