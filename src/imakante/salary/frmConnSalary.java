@@ -13,25 +13,7 @@ public class frmConnSalary extends java.awt.Dialog {
         main = m;
         dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         userRights = new HashMap();
-        try{
-            java.io.BufferedReader in = new java.io.BufferedReader(new java.io.InputStreamReader(new
-                    java.io.FileInputStream("c:/salary.ini"), "cp1251"));
-            if (in == null){
-                
-                JOptionPane.showMessageDialog(null,java.util.ResourceBundle.getBundle("bundle/salary/err_mes").getString("err_ini"),java.util.ResourceBundle.getBundle("bundle/salary/err_mes").getString("IMAKANTE"),JOptionPane.WARNING_MESSAGE);
-                names[0] = "опнамю";
-                
-            } else {
-                while ((lineStr = in.readLine()) != null) {
-                    
-                    i++;
-                    fint = fint + lineStr;
-                }
-                names =fint.split("!");
-                sd = names.length;
-                
-            }}catch(java.io.IOException iox){}
-        
+        check_processIniFile();
         initComponents();
         x = (((dim.width)-(this.getSize().width))/2);
         y = (((dim.height)-(this.getSize().height))/2);
@@ -40,7 +22,7 @@ public class frmConnSalary extends java.awt.Dialog {
         
     }
     
-    
+  
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
@@ -240,7 +222,27 @@ public class frmConnSalary extends java.awt.Dialog {
           //  System.exit(1);
         }
     }
+    private void check_processIniFile(){
+     try{
+            java.io.BufferedReader in = new java.io.BufferedReader(new java.io.InputStreamReader(new
+                    java.io.FileInputStream("c:/salary.ini"), "cp1251"));
+            if (in == null){
+                
+                JOptionPane.showMessageDialog(null,java.util.ResourceBundle.getBundle("bundle/salary/err_mes").getString("err_ini"),java.util.ResourceBundle.getBundle("bundle/salary/err_mes").getString("IMAKANTE"),JOptionPane.WARNING_MESSAGE);
+                names[0] = "опнамю";
+                
+            } else {
+                while ((lineStr = in.readLine()) != null) {
+                    
+                    i++;
+                    fint = fint + lineStr;
+                }
+                names =fint.split("!");
+                sd = names.length;
+                
+            }}catch(java.io.IOException iox){}
     
+    }
     public java.util.HashMap getUserRights(){
         if (lDBUser.equals("root")) {
             userRights.put("sastav", "3");
