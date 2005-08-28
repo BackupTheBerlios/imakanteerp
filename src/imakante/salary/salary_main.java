@@ -752,7 +752,9 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         NewJToolBar.add(CreateJToolbarButton("Lock Application","images/lockapplication.png","toolLockApp"));
         NewJToolBar.addSeparator();
         NewJToolBar.add(BTlabel);
+       
         NewJToolBar.addSeparator();
+        NewJToolBar.add(PeriodLabel);
         //End create a toolbar button
         
         
