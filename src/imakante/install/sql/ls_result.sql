@@ -25,6 +25,7 @@ CREATE TABLE `ls_result` (
   `pyear` int(5) default NULL,
   `idrab` int(11) default NULL,
   `id_dlaj` int(11) default NULL,
+  `cat_rab` char(2) default NULL,
   `m_rab` tinyint(3) default NULL COMMENT 'mesetsi obsho rabota',
   `y_rab` tinyint(3) default NULL COMMENT 'godini obsho rabota',
   `h_dogovor_day` tinyint(3) default NULL,
@@ -44,6 +45,9 @@ CREATE TABLE `ls_result` (
   `sum_oblagane_dod` decimal(10,2) default '0.00' COMMENT 'nivo 30 - suma za oblagane',
   `sum_dod` decimal(6,2) default '0.00' COMMENT 'suma _dod',
   `sum_end` decimal(10,2) default NULL COMMENT 'nivo 99 - suma za poluchavane',
+  `sum_osig_dohod` decimal(10,2) default '0.00' COMMENT 'suma v/u koiato she se nachisl os.',
+  `sum_obl_dohod` decimal(10,2) default '0.00' COMMENT 'suma za oblagane na DOD',
+  `sum_min_os` decimal(6,2) default '0.00' COMMENT 'suma min osig dohod',
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
