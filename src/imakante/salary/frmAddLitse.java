@@ -1396,6 +1396,8 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         
         jtfNumber.requestFocus();
     }
+    
+    
     protected void insert_db_Record(){
         try{
             inter_id = imakante.com.pubMethods.getMaxNum("Select id FROM ls_main", dbInternal, "id") + 1;
@@ -1452,10 +1454,52 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         
         
     }
-    
-    
     protected void update_db_Record(){
-        
+        try{
+            
+            stm = dbInternal.createStatement();
+            String strSQl ="UPDATE INTO ls_main (" + id_row + ",first,second,family,egn,gender,nomer_LK,osnowanie_dog,srok_dog,d_st,m_st,g_st,kateg_rabotnik,belejki) " +
+                    "VALUES('" + jtfNumber.getText() +
+                    "', '" + jtfName.getText() +
+                    "', '" + jtfMName.getText() +
+                    "', '" + jtfFName.getText() +
+                    "', '" + jtfEGN.getText() +
+                    "', '" + jcbGender.getSelectedItem().toString() +
+                    "', '" + jtfIDCard.getText() +
+                    "', '" + jtfGorunds.getText() +
+                    "', '" + jtfTerm.getText() +
+                    "', '" + jtfLOSDays.getText() +
+                    "', '" + jtfLOSMonths.getText() +
+                    "', '" + jtfLOSYears.getText() +
+                    "', '" + jtfTypeEmp.getText() +
+                    "', '" + jtaNotes.getText() +
+                    
+                    "')";
+            System.out.println(strSQl);
+            stm.execute(strSQl);
+            
+            stm.execute("UPDATE INTO ls_addresses (address, telefon, mobilen,email," + id_row +", id_nasm ) VALUES(" + jtfAddress.getText() +
+                    ", " + jtfPhone.getText() +
+                    ", " + jtfMobile.getText() +
+                    ", " + jtfEmail.getText() +
+                    ", " +  inter_id +
+                    ", " + id_nm +
+                    
+                    ")");
+            
+            stm.execute("UPDATE INTO ls_dates (" + id_row + ", b_date, date_izd_LK, date_naznach,data_postypwane, srok_dogov) VALUES(" + inter_id +
+                    
+                    ", " + convertDate(jtfBDate.getText()) +
+                    ", " + convertDate(jtfIDCDate.getText()) +
+                    ", " + convertDate(jtfAssignDate.getText()) +
+                    ", " + convertDate(jtfSignonDate.getText()) +
+                    ", " + convertDate(jtfTerm.getText()) +
+                    ")");
+            
+            stm.execute("UPDATE INTO ls_result (pmonth, pyear, " + id_row + ", id_dlaj, cat_rab, m_rab, y_rab, h_dogovor_day, day_used, zaplata )");
+            
+            
+        }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         
     }
     
