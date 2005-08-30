@@ -12,7 +12,9 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         
         dbInternal = dbCon;
         id_row = id_rab;
-        
+        lmonth=lMonth;
+        lyear=lYear;
+        initProcent();
         initComponents();
         initCombo_Area();
         initCombo_Gender();
@@ -878,9 +880,9 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         pack();
     }
     // </editor-fold>//GEN-END:initComponents
-
+    
     private void jtfTypeEmpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfTypeEmpKeyPressed
-   if (evt.getKeyCode() == KeyEvent.VK_F7){
+        if (evt.getKeyCode() == KeyEvent.VK_F7){
             imakante.salary.frmAL_VOsig frmDialog = new imakante.salary.frmAL_VOsig(parent_in, true,dbInternal, jtfTypeEmp.getText());
             
             frmDialog.setVisible(true);
@@ -1145,9 +1147,16 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     public static String[] Gender = {"\u041c\u044a\u0436","\u0416\u0435\u043d\u0430"};
     public String EGN;
     int inter_id;
-    public static int  id_dlajnost;
+    public static int  id_dlajnost, lmonth, lyear, days, month_days;
     public static String name_dlajnost;
     public static String name_os, cod_os;
+    private static double ktu = 0.6, prc_oz = 0.9, prc_pensii = 8.7, prc_zo = 1.8, prc_bezr = 1.05, prc_upf = 0.9;
+    
+    private double string2double(String str_d){
+    double doub = 0;
+    try{ doub = Double.parseDouble(str_d);}catch(NumberFormatException nfe){doub = 0; return doub;}
+    return doub;
+    }
     
     protected boolean validateDate(String str){
         
@@ -1254,7 +1263,13 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             int y = Integer.parseInt(str_num);}catch(NumberFormatException nfe){is_number = false; return is_number; }
         return is_number;
     }
-    
+    protected boolean isFloat(String str_float){
+        boolean is_float = true;
+        try{
+            float f = Float.parseFloat(str_float);}catch(NumberFormatException nfe){is_float =false; return is_float;}
+        return is_float;
+        
+    }
     protected String convertDate(String str){
         String converted_str = "0000-00-00";
         if(str.equals("")!=true){
@@ -1266,6 +1281,28 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         
         
     }
+    protected static void initProcent(){
+        try{
+            stm = dbInternal.createStatement(java.sql.ResultSet.TYPE_SCROLL_SENSITIVE,
+                    java.sql.ResultSet.CONCUR_UPDATABLE);
+        } catch (java.sql.SQLException sqle){sqle.printStackTrace();}
+        
+        try{
+            rs = stm.executeQuery("SELECT * FROM ls_monthpar WHERE pmotn ="+ lmonth + " AND pyear = "+ lyear);
+            while(rs.next()){
+                ktu = rs.getDouble("ktu");
+                prc_oz = rs.getDouble("max_os_prag");
+                prc_pensii = rs.getDouble("proc_pensii");
+                prc_zo =rs.getDouble("proc_zo");
+                prc_bezr = rs.getDouble("proc_bez");
+                prc_upf = rs.getDouble("proc_upf");
+                }
+            
+            rs.close();
+        } catch (java.sql.SQLException sqle){sqle.printStackTrace();}
+        
+    }
+    
     
     protected static void initResource(){
         if (id_row!=0){
@@ -1291,7 +1328,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                     jtfEmail.setText(rs.getString("email"));
                     jtfFName.setText(rs.getString("family"));
                     jtfGorunds.setText(rs.getString("osnowanie_dog")); // osnowanie na dogowora
-                    jtfHoursPerDay.setText(rs.getString("")); // x4asow raboten den
+                    
                     jtfIDCDate.setText(rs.getString("date_lk"));
                     jtfIDCard.setText(rs.getString("nomer_LK"));
                     jtfLOSDays.setText(rs.getString("d_st"));
@@ -1304,16 +1341,22 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                     jtfNumber.setText(rs.getString("nomer"));
                     jtfPCode.setText(rs.getString("postcode"));
                     jtfPhone.setText(rs.getString("telefon"));
-                    jtfPosition.setText(rs.getString(""));    // dlyjnost
+                    
                     jtfQuitDate.setText(rs.getString("napudate"));
-                    jtfSalary.setText(rs.getString(""));  // zaplata
+                    
                     jtfSignonDate.setText(rs.getString("postdate"));  // data na postypwane
                     jtfTerm.setText(rs.getString("srok_dog"));    // srok na dogowora
-                    jtfTypeEmp.setText(rs.getString("")); // kategoriq rabotnik
                     
                     
+                    rs.close();
                 }
-                
+                rs = stm.executeQuery("SELECT ls_result.cat_rab, ls_result.h_dogovor_day, ls_result.zaplata, ls_dlajnosti.namedlaj FROM ls_result LEFT JOIN ls_dlajnosti ON (ls_dlajnosti.id = ls_result.id_dlaj) WHERE ls_result.idrab = " + id_row);
+                while(rs.next()){
+                    jtfTypeEmp.setText(rs.getString("")); // kategoriq rabotnik
+                    jtfHoursPerDay.setText(rs.getString("h_dogovor_day")); // x4asow raboten den
+                    jtfSalary.setText(rs.getString(""));  // zaplata
+                    jtfPosition.setText(rs.getString(""));    // dlyjnost
+                }
             } catch (java.sql.SQLException sqle){sqle.printStackTrace();}
             
         }
@@ -1395,6 +1438,9 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                     ", " + convertDate(jtfTerm.getText()) +
                     ")");
             
+            stm.execute("INSERT INTO ls_result (pmonth, pyear, id_rab, id_dlaj, cat_rab, m_rab, y_rab, h_dogovor_day, day_used, zaplata )");
+            
+            
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         
         
@@ -1406,10 +1452,58 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         
         
     }
+    
+    
     protected void update_db_Record(){
         
         
     }
+    
+    
+    protected void processMDays(){
+        String str_d="";
+        int i_days=0;
+        String str_area="";
+        int e_day=0, m_day = 0;
+        try{
+            str_d = jtfAssignDate.getText().substring(0, 2);}catch(IndexOutOfBoundsException ioobe){}
+        try {i_days = Integer.parseInt(str_d);} catch(NumberFormatException nfe){}
+        try{stm = dbInternal.createStatement();
+        rs = stm.executeQuery("SELECT  seq FROM ls_monthpar WHERE pmonth= "+lmonth+"AND pyear ="+lyear);
+        while(rs.next()){
+            str_area = rs.getString("seq");
+            
+        }
+        }catch(java.sql.SQLException sqle){}
+        for (int i = 0; i<str_area.length(); i++){
+            
+            if(str_area.charAt(i)==1){m_day++;}
+        }
+        for (int i = i_days - 1; i <  str_area.length(); i++){
+            if(str_area.charAt(i)==1){ e_day++; }
+        }
+        days = e_day;
+        month_days = m_day;
+    }
+    
+    
+    protected void processNewSalary(){
+        float sht_zaplata = 0;
+        double zarabotka = 0;
+        int losYears = 0;
+        
+        if(isFloat(jtfSalary.getText())){
+            
+            sht_zaplata = Float.parseFloat(jtfSalary.getText());
+            losYears = Integer.parseInt(jtfLOSYears.getText());
+            zarabotka = ((sht_zaplata*days)/month_days + (((sht_zaplata*days)/month_days)*ktu/100));
+           
+            
+        }
+        
+    }
+    
+    
     protected void checkNM(){
         String City = "";
         City = jtfCity.getText();
@@ -1438,9 +1532,9 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     }
     
     public static void insertVidOsiguren(String name_osiguren, String cod_osiguren){
-    name_os = name_osiguren;
-    cod_os = cod_osiguren;
-    
+        name_os = name_osiguren;
+        cod_os = cod_osiguren;
+        
     }
     
     protected void closeResource(){
