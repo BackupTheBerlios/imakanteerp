@@ -98,9 +98,9 @@ CREATE TABLE `kasadet001razhod` (
 #
 
 CREATE TABLE `ls_addresses` (
-  `idls_addresses` int(11) NOT NULL auto_increment,
+  `idls_addresses` int(11) NOT NULL default '0',
   `address` varchar(70) default NULL,
-  `telåfon` varchar(10) default NULL,
+  `telefon` varchar(10) default NULL,
   `mobilen` varchar(15) default NULL,
   `email` varchar(30) default NULL,
   `id_rab` int(11) NOT NULL default '0',
@@ -127,7 +127,7 @@ CREATE TABLE `ls_bolnichni` (
 #
 
 CREATE TABLE `ls_dates` (
-  `idls_dates` int(11) NOT NULL auto_increment,
+  `idls_dates` int(11) NOT NULL default '0',
   `id_rab` int(11) NOT NULL default '0',
   `b_date` date default NULL,
   `data_izd_LK` date default NULL,
@@ -135,7 +135,6 @@ CREATE TABLE `ls_dates` (
   `data_postypwane` date default NULL,
   `data_napuskane` date default NULL,
   `posl_den_w_osig` date default NULL,
-  `srok_dogov` date default NULL,
   PRIMARY KEY  (`idls_dates`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
@@ -157,7 +156,10 @@ CREATE TABLE `ls_dlajnosti` (
 
 CREATE TABLE `ls_dobavki` (
   `id` int(11) NOT NULL default '0',
+  `cod` int(6) default NULL COMMENT 'kod na modifikator',
   `name` varchar(50) default NULL,
+  `in-level` tinyint(3) default NULL COMMENT 'nivo na wkliuchwane na sumi',
+  `out-level` tinyint(3) default NULL COMMENT 'nivo na izkliuchvane na sumata',
   `co` tinyint(4) default NULL,
   `shifar` int(11) default NULL,
   `dod` tinyint(4) default NULL,
@@ -183,7 +185,7 @@ CREATE TABLE `ls_dod` (
 #
 
 CREATE TABLE `ls_main` (
-  `Id` int(11) NOT NULL auto_increment,
+  `Id` int(11) NOT NULL default '0',
   `nomer` int(11) default NULL,
   `first` varchar(20) default NULL,
   `second` varchar(20) default NULL,
@@ -193,6 +195,7 @@ CREATE TABLE `ls_main` (
   `nomer_LK` varchar(9) default NULL,
   `nomer_dogowor` varchar(10) default NULL,
   `osnowanie_dog` varchar(4) default NULL,
+  `srok_dog` varchar(15) default NULL,
   `d_st` int(11) default NULL,
   `m_st` int(11) default NULL,
   `g_st` int(11) default NULL,
@@ -209,25 +212,21 @@ CREATE TABLE `ls_main` (
 #
 
 CREATE TABLE `ls_monthpar` (
-  `id` int(11) NOT NULL default '0',
+  `id` int(11) NOT NULL auto_increment,
   `pmonth` tinyint(4) default NULL,
   `pyear` int(11) default NULL,
   `seq` varchar(40) default NULL,
   `dni5` tinyint(4) default NULL,
   `dni6` tinyint(4) default NULL,
-  `minrzd` float default NULL,
-  `minod` float default NULL,
-  `maxod` float default NULL,
-  `maxbdf` float default NULL,
-  `avdod` float default NULL,
-  `dodbln` float default NULL,
-  `dodso` float default NULL,
-  `pzdo` float default NULL,
-  `psozo` float default NULL,
-  `ppdo` float default NULL,
-  `ptzpb` float default NULL,
-  `pgzrs` float default NULL,
-  `mrz` float default NULL,
+  `ktu` decimal(3,2) NOT NULL default '0.60' COMMENT 'ktu',
+  `min_rab_zaplata` decimal(10,2) NOT NULL default '0.00' COMMENT 'minimalna rabotna zaplata',
+  `max_os_prag` decimal(10,2) NOT NULL default '0.00' COMMENT 'maksimalen osig. prag',
+  `proc_oz` decimal(3,2) NOT NULL default '0.00' COMMENT 'fond oz i majchinstvo',
+  `proc_pensii` decimal(3,2) NOT NULL default '0.00' COMMENT 'procent pensii',
+  `proc_zo` decimal(3,2) NOT NULL default '0.00' COMMENT 'proc zdravno',
+  `proc_bez` decimal(3,2) NOT NULL default '0.00' COMMENT 'proc bezrabotitsa',
+  `proc_upf` decimal(3,2) NOT NULL default '0.00' COMMENT 'procent_upf',
+  `coef` tinyint(3) NOT NULL default '3' COMMENT 'otnoshenie rabotodatel/rabotnik',
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
@@ -272,48 +271,35 @@ CREATE TABLE `ls_pic` (
 #
 
 CREATE TABLE `ls_result` (
-  `Id` int(11) NOT NULL default '0',
+  `id` int(11) NOT NULL auto_increment,
   `pmonth` tinyint(4) NOT NULL default '0',
-  `pyear` int(11) default NULL,
+  `pyear` int(5) default NULL,
   `idrab` int(11) default NULL,
-  `ID_dlaj` int(11) default NULL,
-  `avans` decimal(10,0) NOT NULL default '0',
-  `zaplata` decimal(10,0) NOT NULL default '0',
-  `zsuma` decimal(10,0) NOT NULL default '0',
-  `psuma` decimal(10,0) NOT NULL default '0',
-  `dsuma` decimal(10,0) NOT NULL default '0',
-  `nsuma` float NOT NULL default '0',
-  `srsuma` float NOT NULL default '0',
-  `sdod` float NOT NULL default '0',
-  `sumaudr` float NOT NULL default '0',
-  `viddoo` tinyint(4) NOT NULL default '0',
-  `vdzo` tinyint(4) NOT NULL default '0',
-  `doo` decimal(10,0) NOT NULL default '0',
-  `doou` decimal(10,0) NOT NULL default '0',
-  `dodpl` tinyint(4) NOT NULL default '0',
-  `dodyear` tinyint(4) NOT NULL default '0',
-  `npr` float NOT NULL default '0',
-  `dni` tinyint(4) NOT NULL default '0',
-  `otdel` tinyint(4) NOT NULL default '0',
-  `cod` tinyint(4) NOT NULL default '0',
-  `fullrab` tinyint(4) NOT NULL default '0',
-  `hours` tinyint(4) NOT NULL default '0',
-  `hoursdlg` tinyint(4) NOT NULL default '0',
-  `odso` float default NULL,
-  `odzo` float default NULL,
-  `noonly` tinyint(4) NOT NULL default '0',
-  `novdm` tinyint(4) NOT NULL default '0',
-  `nozono` tinyint(4) NOT NULL default '0',
-  `viddog` tinyint(4) NOT NULL default '0',
-  `vidppf` float default NULL,
-  `vidupf` float default NULL,
-  `upf` float default NULL,
-  `upfr` float default NULL,
-  `nkp` tinyint(4) NOT NULL default '0',
-  `nkid` int(11) default NULL,
-  `nomer` int(11) default NULL,
-  `marker` tinyint(4) NOT NULL default '0',
-  PRIMARY KEY  (`Id`)
+  `id_dlaj` int(11) default NULL,
+  `cat_rab` char(2) default NULL,
+  `m_rab` tinyint(3) default NULL COMMENT 'mesetsi obsho rabota',
+  `y_rab` tinyint(3) default NULL COMMENT 'godini obsho rabota',
+  `h_dogovor_day` tinyint(3) default NULL,
+  `day_used` tinyint(3) default NULL,
+  `avans` decimal(10,2) NOT NULL default '0.00',
+  `zaplata` decimal(10,2) NOT NULL default '0.00' COMMENT 'nivo 1 - osnovna zaplata',
+  `sum_kt` decimal(6,2) default '0.00' COMMENT 'nivo 2 - suma doplacane po kt',
+  `sum_otpuska` decimal(6,2) default '0.00' COMMENT 'nivo 3 - suma otpuska',
+  `sum_bol_rab` decimal(6,2) default '0.00' COMMENT 'nivo 4 - suma bolnichni ot rabotodatel',
+  `sum_bol_noi` decimal(6,2) default '0.00' COMMENT 'nivo 5 - suma bol noi',
+  `sum_oz_m` decimal(6,2) default '0.00' COMMENT 'nivo 6 - suma fon oz i mai',
+  `sum_pensii` decimal(6,2) default '0.00' COMMENT 'nivo 7 - suma pensii',
+  `sum_zoo` decimal(6,2) default '0.00' COMMENT 'nivo 8 suma zdravno osig',
+  `sum_bzr` decimal(6,2) default '0.00' COMMENT 'nivo 9 - suma fond bezrabotitsa',
+  `sum_upf` decimal(6,2) default '0.00' COMMENT 'nivo 10 - suma upf',
+  `sum_dobl_zoso` decimal(6,2) default '0.00' COMMENT 'nivo 20 - drugi sumi za oblagane s  dod ne podlejashi na obl',
+  `sum_oblagane_dod` decimal(10,2) default '0.00' COMMENT 'nivo 30 - suma za oblagane',
+  `sum_dod` decimal(6,2) default '0.00' COMMENT 'suma _dod',
+  `sum_end` decimal(10,2) default NULL COMMENT 'nivo 99 - suma za poluchavane',
+  `sum_osig_dohod` decimal(10,2) default '0.00' COMMENT 'suma v/u koiato she se nachisl os.',
+  `sum_obl_dohod` decimal(10,2) default '0.00' COMMENT 'suma za oblagane na DOD',
+  `sum_min_os` decimal(6,2) default '0.00' COMMENT 'suma min osig dohod',
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 #

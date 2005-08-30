@@ -1,16 +1,4 @@
-# MySQL-Front 3.2  (Build 6.14)
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES 'utf8' */;
-
-# Host: localhost    Database: mida
-# ------------------------------------------------------
-# Server version 4.1.10a-nt-max
-
-DROP DATABASE IF EXISTS `mida`;
-CREATE DATABASE `mida` /*!40100 DEFAULT CHARACTER SET cp1251 */;
 USE `mida`;
 /*!40101 SET NAMES cp1251 */;
 
@@ -18,7 +6,7 @@ USE `mida`;
 #
 # Table structure for table ls_monthpar
 #
-
+DROP TABLE `ls_monthpar`;
 CREATE TABLE `ls_monthpar` (
   `id` int(11) NOT NULL auto_increment,
   `pmonth` tinyint(4) default NULL,
