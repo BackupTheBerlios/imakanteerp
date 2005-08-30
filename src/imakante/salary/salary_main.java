@@ -1146,8 +1146,9 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     }
     
     protected void loadNIKD(){
-        javax.swing.JDialog FormNIKD = new FrmNKID(this, true, dbCON);
-        FormNIKD .setVisible(true);
+        
+       // javax.swing.JDialog FormNIKD = new FrmNKID(this, true, dbCON);
+       // FormNIKD .setVisible(true);
     }
     protected void loadNCP() {
         
