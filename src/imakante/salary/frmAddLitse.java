@@ -1151,7 +1151,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     public static String name_dlajnost;
     public static String name_os, cod_os;
     private static double ktu = 0.6, prc_oz = 0.9, prc_pensii = 8.7, prc_zo = 1.8, prc_bezr = 1.05, prc_upf = 0.9;
-    
+    private static double sum_ktu =0, sum_oz =0, sum_pensii =0, sum_zo = 0, sum_bezr = 0, sum_upf = 0; 
     private double string2double(String str_d){
     double doub = 0;
     try{ doub = Double.parseDouble(str_d);}catch(NumberFormatException nfe){doub = 0; return doub;}
@@ -1540,8 +1540,11 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             
             sht_zaplata = Float.parseFloat(jtfSalary.getText());
             losYears = Integer.parseInt(jtfLOSYears.getText());
-            zarabotka = ((sht_zaplata*days)/month_days + (((sht_zaplata*days)/month_days)*ktu/100));
-           
+            zarabotka = ((sht_zaplata*days)/month_days);
+            sum_ktu = ((zarabotka*ktu)/100);
+            zarabotka = zarabotka + sum_ktu;
+            
+            
             
         }
         

@@ -1623,6 +1623,8 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
             
         }
         } catch(java.sql.SQLException sqle){}
+        
+        
         StrPeriod = "Текущия период е месец "+getMonth()+"   година "+getYear();
         
     }
