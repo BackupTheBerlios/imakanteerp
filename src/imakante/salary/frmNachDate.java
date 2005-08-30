@@ -7,7 +7,13 @@ public class frmNachDate extends javax.swing.JDialog {
     
     public frmNachDate(java.awt.Frame parent, boolean modal, java.sql.Connection conn) {
         super(parent, modal);
+        dbInternal=conn;
         initComponents();
+        java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+       // this.setSize(650,450);
+        int x_width = (((dim.width)-(this.getSize().width))/2);
+        int y_height = (((dim.height)-(this.getSize().height))/2);
+        this.setLocation(x_width,y_height);
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -33,14 +39,14 @@ public class frmNachDate extends javax.swing.JDialog {
         jPanel2.setBorder(new javax.swing.border.EtchedBorder());
         jLabel1.setText("\u041c\u0435\u0441\u0435\u0446");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.insets = new java.awt.Insets(30, 30, 10, 10);
+        gridBagConstraints.insets = new java.awt.Insets(30, 70, 10, 10);
         jPanel2.add(jLabel1, gridBagConstraints);
 
         jLabel2.setText("\u0413\u043e\u0434\u0438\u043d\u0430");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.insets = new java.awt.Insets(10, 30, 20, 10);
+        gridBagConstraints.insets = new java.awt.Insets(10, 70, 20, 10);
         jPanel2.add(jLabel2, gridBagConstraints);
 
         jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -56,7 +62,7 @@ public class frmNachDate extends javax.swing.JDialog {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.ipadx = 50;
-        gridBagConstraints.insets = new java.awt.Insets(30, 10, 10, 30);
+        gridBagConstraints.insets = new java.awt.Insets(30, 10, 10, 40);
         jPanel2.add(jTextField1, gridBagConstraints);
 
         jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -74,7 +80,7 @@ public class frmNachDate extends javax.swing.JDialog {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.ipadx = 50;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 20, 30);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 20, 40);
         jPanel2.add(jTextField2, gridBagConstraints);
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -150,7 +156,9 @@ public class frmNachDate extends javax.swing.JDialog {
     
     private int transform2int(String str){
         int val = 0;
-        try {}catch(NumberFormatException nfe){}
+        try {
+        val = Integer.parseInt(str);
+        }catch(NumberFormatException nfe){nfe.printStackTrace();}
         return val;
     }
     
@@ -159,13 +167,13 @@ public class frmNachDate extends javax.swing.JDialog {
         try{
             
             stm = dbInternal.createStatement();
-            stm.execute("INSERT INTO ls_monthpar (pmonth, pyear) VALUES ('"+transform2int(jTextField1.getText())+ ", "+transform2int(jTextField2.getText()) +")");
+            stm.execute("INSERT INTO ls_monthpar (pmonth, pyear) VALUES ('"+transform2int(jTextField1.getText())+ "', '"+transform2int(jTextField2.getText()) +"')");
             
         }catch(java.sql.SQLException sqle){
-            imakante.salary.salary_main.setMonth(transform2int(jTextField1.getText()));
-            imakante.salary.salary_main.setYear(transform2int(jTextField2.getText()));
+           sqle.printStackTrace();
         }
-        
+         imakante.salary.salary_main.setMonth(transform2int(jTextField1.getText()));
+            imakante.salary.salary_main.setYear(transform2int(jTextField2.getText()));
     }
     
     

@@ -1616,22 +1616,25 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         int imonth =0,iyear=0;
         java.sql.Connection dbInternal = jcon;
         
-        try{ java.sql.Statement stm = dbInternal.createStatement();
-        java.sql.ResultSet rs = stm.executeQuery("SELECT MAX(ls_monthpar.pmonth) AS lmonth, MAX(ls_monthpar.pyear) AS lyear FROM ls_monthpar WHERE ls_result.monthpar = (SELECT MAX(ls_monthpar.pyear) FROM ls_monthpar)");
+        try{ 
+            java.sql.Statement stm = dbInternal.createStatement();
+        java.sql.ResultSet rs = stm.executeQuery("SELECT MAX(ls_monthpar.pmonth) AS lmonth, MAX(ls_monthpar.pyear) AS lyear FROM ls_monthpar WHERE ls_monthpar.pyear = (SELECT MAX(ls_monthpar.pyear) FROM ls_monthpar)");
         
         while(rs.next()){
             imonth = rs.getInt("lmonth");
             iyear  = rs.getInt("lyear");
             
         }
+         System.out.println("ddsfdsfs1 " + imonth);
         if(imonth == 0){
+            System.out.println("ddsfdsfs " + imonth);
             javax.swing.JDialog FrmNachDate = new imakante.salary.frmNachDate(this, true, dbCON);
             FrmNachDate.setVisible(true);
         }else {
             setYear(iyear);
             setMonth(imonth);
         }
-        } catch(java.sql.SQLException sqle){}
+        } catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         
         
         StrPeriod = "     Текущия период е месец   "+  getMonth()+ "    година " + getYear();
