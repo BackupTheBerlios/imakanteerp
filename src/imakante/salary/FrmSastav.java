@@ -21,14 +21,14 @@ public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.ev
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    public static final String Names[] = {"", "Номер на служител", "Име",
-            "Презиме", "Фамилия", "ЕГН", "Дата на раждане", "Пол",
-            "Номер на ЛК", "Издадена на", "Област", "Пощенски код",
-            "Населено място", "Адрес на местоживеене","Домашен телфон",
-            "Мобилен телефон", "Е-м@йл", "Номер на договора", "Дата на назначаване",
-            "Дата на постъпване", "Дата на напускане", "Последен ден в осигуряване",
-            "Основание на договора", "Срок на договора",
-            "Дни стаж", "Месеци стаж", "Години стаж", "Категория работник", "Бележки" };
+    public static final String Names[] = {"", "\u041d\u043e\u043c\u0435\u0440 \u043d\u0430 \u0441\u043b\u0443\u0436\u0438\u0442\u0435\u043b", "\u0418\u043c\u0435",
+            "\u041f\u0440\u0435\u0437\u0438\u043c\u0435", "\u0424\u0430\u043c\u0438\u043b\u0438\u044f", "\u0415\u0413\u041d", "\u0414\u0430\u0442\u0430 \u043d\u0430 \u0440\u0430\u0436\u0434\u0430\u043d\u0435", "\u041f\u043e\u043b",
+            "\u041d\u043e\u043c\u0435\u0440 \u043d\u0430 \u041b\u041a", "\u0418\u0437\u0434\u0430\u0434\u0435\u043d\u0430 \u043d\u0430", "\u041e\u0431\u043b\u0430\u0441\u0442", "\u041f\u043e\u0449\u0435\u043d\u0441\u043a\u0438 \u043a\u043e\u0434",
+            "\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e", "\u0410\u0434\u0440\u0435\u0441 \u043d\u0430 \u043c\u0435\u0441\u0442\u043e\u0436\u0438\u0432\u0435\u0435\u043d\u0435","\u0414\u043e\u043c\u0430\u0448\u0435\u043d \u0442\u0435\u043b\u0435\u0444\u043e\u043d",
+            "\u041c\u043e\u0431\u0438\u043b\u0435\u043d \u0442\u0435\u043b\u0435\u0444\u043e\u043d", "\u0415-\u043c@\u0439\u043b", "\u041d\u043e\u043c\u0435\u0440 \u043d\u0430 \u0434\u043e\u0433\u043e\u0432\u043e\u0440\u0430", "\u0414\u0430\u0442\u0430 \u043d\u0430 \u043d\u0430\u0437\u043d\u0430\u0447\u0430\u0432\u0430\u043d\u0435",
+            "\u0414\u0430\u0442\u0430 \u043d\u0430 \u043f\u043e\u0441\u0442\u044a\u043f\u0432\u0430\u043d\u0435", "\u0414\u0430\u0442\u0430 \u043d\u0430 \u043d\u0430\u043f\u0443\u0441\u043a\u0430\u043d\u0435", "\u041f\u043e\u0441\u043b\u0435\u0434\u0435\u043d \u0434\u0435\u043d \u0432 \u043e\u0441\u0438\u0433\u0443\u0440\u044f\u0432\u0430\u043d\u0435",
+            "\u041e\u0441\u043d\u043e\u0432\u0430\u043d\u0438\u0435 \u043d\u0430 \u0434\u043e\u0433\u043e\u0432\u043e\u0440\u0430", "\u0421\u0440\u043e\u043a \u043d\u0430 \u0434\u043e\u0433\u043e\u0432\u043e\u0440\u0430",
+            "\u0414\u043d\u0438 \u0441\u0442\u0430\u0436", "\u041c\u0435\u0441\u0435\u0446\u0438 \u0441\u0442\u0430\u0436", "\u0413\u043e\u0434\u0438\u043d\u0438 \u0441\u0442\u0430\u0436", "\u041a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f \u0440\u0430\u0431\u043e\u0442\u043d\u0438\u043a", "\u0411\u0435\u043b\u0435\u0436\u043a\u0438" };
             public static imakante.com.CustomTableModel model;
             public static imakante.com.CustomTable jTable;
             
@@ -40,7 +40,7 @@ public class FrmSastav extends javax.swing.JInternalFrame implements java.awt.ev
             
             public FrmSastav(java.sql.Connection srcCN, javax.swing.JFrame getParentFrame,int pMonth, int pYear)
             throws java.sql.SQLException {
-                super("Списък служители", false, true,true, true);
+                super("\u0421\u043f\u0438\u0441\u044a\u043a \u0441\u043b\u0443\u0436\u0438\u0442\u0435\u043b\u0438", false, true,true, true);
                 
                 
                 JFParentFrame = getParentFrame;
