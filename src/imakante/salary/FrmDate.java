@@ -90,7 +90,7 @@ public class FrmDate extends JDialog //implements ActionListener
                     
                     //comboMonth
                      try{
-                        rsCus = stm.executeQuery("SELECT DISTINCT ls_result.pmonth FROM ls_result WHERE ls_result.pyear IS NOT NULL" + year_str +" ORDER BY ls_result.pmonth");
+                        rsCus = stm.executeQuery("SELECT DISTINCT ls_result.pmonth FROM ls_result WHERE ls_result.pyear IS NOT NULL " + year_str +" ORDER BY ls_result.pmonth");
                         
                         while(rsCus.next()){
                             month_str = rsCus.getString("pmonth");
