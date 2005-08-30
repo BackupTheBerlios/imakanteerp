@@ -61,7 +61,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         BTlabel.setHorizontalAlignment(javax.swing.JLabel.LEFT);
         BTlabel.setForeground(new java.awt.Color(166,0,0));
         
-        //etiket za tekushia period 
+        //etiket za tekushia period
         PeriodLabel.setText(StrPeriod);
         PeriodLabel.setHorizontalAlignment(javax.swing.JLabel.RIGHT);
         BTlabel.setForeground(new java.awt.Color(0,0,155));
@@ -752,7 +752,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         NewJToolBar.add(CreateJToolbarButton("Lock Application","images/lockapplication.png","toolLockApp"));
         NewJToolBar.addSeparator();
         NewJToolBar.add(BTlabel);
-       
+        
         NewJToolBar.addSeparator();
         NewJToolBar.add(PeriodLabel);
         //End create a toolbar button
@@ -1147,8 +1147,8 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     
     protected void loadNIKD(){
         
-       // javax.swing.JDialog FormNIKD = new FrmNKID(this, true, dbCON);
-       // FormNIKD .setVisible(true);
+        // javax.swing.JDialog FormNIKD = new FrmNKID(this, true, dbCON);
+        // FormNIKD .setVisible(true);
     }
     protected void loadNCP() {
         
@@ -1612,20 +1612,29 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         this.FormActStDlaj = FormActStDlaj;
     }
     
-    private static void setCurrDate(java.sql.Connection jcon){
+    private  void setCurrDate(java.sql.Connection jcon){
+        int imonth =0,iyear=0;
         java.sql.Connection dbInternal = jcon;
         
         try{ java.sql.Statement stm = dbInternal.createStatement();
-        java.sql.ResultSet rs = stm.executeQuery("SELECT MAX(ls_result.pmonth) AS lmonth, MAX(ls_result.pyear) AS lyear FROM ls_result WHERE ls_result.pyear = (SELECT MAX(ls_result.pyear) FROM ls_result)");
+        java.sql.ResultSet rs = stm.executeQuery("SELECT MAX(ls_monthpar.pmonth) AS lmonth, MAX(ls_monthpar.pyear) AS lyear FROM ls_monthpar WHERE ls_result.monthpar = (SELECT MAX(ls_monthpar.pyear) FROM ls_monthpar)");
+        
         while(rs.next()){
-            setMonth(rs.getInt("lmonth"));
-            setYear(rs.getInt("lyear"));
+            imonth = rs.getInt("lmonth");
+            iyear  = rs.getInt("lyear");
             
+        }
+        if(imonth == 0){
+            javax.swing.JDialog FrmNachDate = new imakante.salary.frmNachDate(this, true, dbCON);
+            FrmNachDate.setVisible(true);
+        }else {
+            setYear(iyear);
+            setMonth(imonth);
         }
         } catch(java.sql.SQLException sqle){}
         
         
-        StrPeriod = "Текущия период е месец "+getMonth()+"   година "+getYear();
+        StrPeriod = "     Текущия период е месец   "+  getMonth()+ "    година " + getYear();
         
     }
 }
