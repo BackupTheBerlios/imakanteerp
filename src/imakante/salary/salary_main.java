@@ -1640,4 +1640,11 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         StrPeriod = "     Текущия период е месец   "+  getMonth()+ "    година " + getYear();
         
     }
+    
+    public static void loadNewBase(){
+    javax.swing.JFrame FrmNBase = new imakante.salary.FrmNewBase();
+    FrmNBase.setVisible(true);
+    }
+    
+    
 }

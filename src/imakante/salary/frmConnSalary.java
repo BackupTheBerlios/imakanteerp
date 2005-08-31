@@ -192,7 +192,7 @@ public class frmConnSalary extends java.awt.Dialog {
         System.exit(0);
     }
      private void button3ActionPerformed(java.awt.event.ActionEvent evt) {
-        System.exit(0);
+       System.exit(0);
     }
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {
         makeAcc();
@@ -247,7 +247,7 @@ public class frmConnSalary extends java.awt.Dialog {
             if (in == null){
                 
                 JOptionPane.showMessageDialog(null,java.util.ResourceBundle.getBundle("bundle/salary/err_mes").getString("err_ini"),java.util.ResourceBundle.getBundle("bundle/salary/err_mes").getString("IMAKANTE"),JOptionPane.WARNING_MESSAGE);
-                names[0] = "опнамю";
+                
                 
             } else {
                 while ((lineStr = in.readLine()) != null) {
