@@ -46,6 +46,7 @@ public class calendarClass extends javax.swing.JDialog {
         
         
         initM();
+       //  getDays();
         initComponents();
         initRazp();
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
@@ -204,7 +205,7 @@ public class calendarClass extends javax.swing.JDialog {
             ((JLabel) evt.getComponent()).setForeground(blackC);
             
             strRes =  strRes.substring(0 , mop-1) + "1" + strRes.substring(mop);
-         
+            
             ((JLabel) evt.getComponent()).repaint();
             
         }else{
@@ -214,7 +215,7 @@ public class calendarClass extends javax.swing.JDialog {
             
             
         }
-       
+        
     }
     
     java.awt.event.MouseAdapter jLabelClickedAdaptor = new java.awt.event.MouseAdapter(){
@@ -236,17 +237,20 @@ public class calendarClass extends javax.swing.JDialog {
             
             while(rs.next()){
                 strRes = rs.getString("seq");}
+          
             flag = false;
+            
+          if (strRes == null){strRes = "";}
         } else{strRes = ""; flag = true;}
         }catch(java.sql.SQLException sql){
             sql.printStackTrace();
         }
     }
+    
     public void initRazp(){
-       
-        if(strRes!="" && strRes!=null && strRes.length()==n){
+        if(strRes.equals("")!=true && strRes.equals(null)!=true && strRes.length()==n){
             for (int i = 1; i < n+1 ; i++){
-                
+               
                 int mop = Integer.parseInt((String.valueOf(strRes.charAt(i-1))));
                 if (mop == 0){
                     jCalendarLabel[i].setForeground(redC);
@@ -254,6 +258,7 @@ public class calendarClass extends javax.swing.JDialog {
                 }else{jCalendarLabel[i].setForeground(blackC);jCalendarLabel[i].repaint();}
             }
         }else{
+             
             for (int i = 1; i < n+1; i++){
                 if(jCalendarLabel[i].getForeground()==redC){
                     strRes = strRes + "0";} else {strRes = strRes +"1";}
@@ -264,8 +269,8 @@ public class calendarClass extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         if (flag==true){
             try{
-                 stm = dbInt.createStatement();
-                 stm.executeUpdate("INSERT INTO ls_monthpar(seq, pmonth, pyear) VALUES(" + strRes + "', '" + lMonth + "', '" + lYear + "')");
+                stm = dbInt.createStatement();
+                stm.executeUpdate("INSERT INTO ls_monthpar(seq, pmonth, pyear) VALUES(" + strRes + "', '" + lMonth + "', '" + lYear + "')");
             }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         }else{try{
             

@@ -2,13 +2,13 @@
 
 package imakante.salary;
 
-public class FrmNewBase extends javax.swing.JDialog {
-
-    public FrmNewBase(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+public class FrmNewBase extends javax.swing.JFrame {
+    
+    public FrmNewBase() {
+        
         initComponents();
     }
-
+    
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
@@ -226,6 +226,12 @@ public class FrmNewBase extends javax.swing.JDialog {
         jPanel4.add(jButton2);
 
         jButton3.setText("\u0418\u0437\u0445\u043e\u0434");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         jPanel4.add(jButton3);
 
         jPanel1.add(jPanel4, java.awt.BorderLayout.SOUTH);
@@ -235,11 +241,15 @@ public class FrmNewBase extends javax.swing.JDialog {
         pack();
     }
     // </editor-fold>//GEN-END:initComponents
-
+    
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton3ActionPerformed
+    
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
 // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
- 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

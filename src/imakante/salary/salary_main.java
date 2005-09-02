@@ -1616,24 +1616,26 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         int imonth =0,iyear=0;
         java.sql.Connection dbInternal = jcon;
         
-        try{ 
+        try{
             java.sql.Statement stm = dbInternal.createStatement();
-        java.sql.ResultSet rs = stm.executeQuery("SELECT MAX(ls_monthpar.pmonth) AS lmonth, MAX(ls_monthpar.pyear) AS lyear FROM ls_monthpar WHERE ls_monthpar.pyear = (SELECT MAX(ls_monthpar.pyear) FROM ls_monthpar)");
-        
-        while(rs.next()){
-            imonth = rs.getInt("lmonth");
-            iyear  = rs.getInt("lyear");
+            java.sql.ResultSet rs = stm.executeQuery("SELECT MAX(ls_monthpar.pmonth) AS lmonth, MAX(ls_monthpar.pyear) AS lyear FROM ls_monthpar WHERE ls_monthpar.pyear = (SELECT MAX(ls_monthpar.pyear) FROM ls_monthpar)");
             
-        }
-         System.out.println("ddsfdsfs1 " + imonth);
-        if(imonth == 0){
-            System.out.println("ddsfdsfs " + imonth);
-            javax.swing.JDialog FrmNachDate = new imakante.salary.frmNachDate(this, true, dbCON);
-            FrmNachDate.setVisible(true);
-        }else {
-            setYear(iyear);
-            setMonth(imonth);
-        }
+            while(rs.next()){
+                imonth = rs.getInt("lmonth");
+                iyear  = rs.getInt("lyear");
+                
+            }
+            System.out.println("ddsfdsfs1 " + imonth);
+            if(imonth == 0){
+                System.out.println("ddsfdsfs " + imonth);
+                javax.swing.JDialog FrmNachDate = new imakante.salary.frmNachDate(this, true, dbCON);
+                FrmNachDate.setVisible(true);
+                javax.swing.JDialog  clandarNew = new imakante.salary.calendarClass(this, true,dbCON,getMonth(),getYear());
+                clandarNew.setVisible(true);
+            }else {
+                setYear(iyear);
+                setMonth(imonth);
+            }
         } catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         
         
@@ -1642,8 +1644,8 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     }
     
     public static void loadNewBase(){
-    javax.swing.JFrame FrmNBase = new imakante.salary.FrmNewBase();
-    FrmNBase.setVisible(true);
+        javax.swing.JFrame FrmNBase = new imakante.salary.FrmNewBase();
+        FrmNBase.setVisible(true);
     }
     
     
