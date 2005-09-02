@@ -158,7 +158,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.ipadx = 55;
+        gridBagConstraints.ipadx = 80;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
         jpPerson.add(jtfIDCard, gridBagConstraints);
 
@@ -184,7 +184,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.ipadx = 60;
+        gridBagConstraints.ipadx = 80;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
         jpPerson.add(jtfIDCDate, gridBagConstraints);
 
@@ -531,7 +531,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 5);
         jpWorker.add(jtfContractNum, gridBagConstraints);
 
-        jlAssignDate.setText("\u0414\u0430\u0442\u0430 \u043d\u0430 \u043d\u0430\u043f\u0443\u0441\u043a\u0430\u043d\u0435");
+        jlAssignDate.setText("\u0414\u0430\u0442\u0430 \u043d\u0430 \u043d\u0430\u0437\u043d\u0430\u0447\u0432\u0430\u043d\u0435");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
@@ -1288,7 +1288,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         } catch (java.sql.SQLException sqle){sqle.printStackTrace();}
         
         try{
-            rs = stm.executeQuery("SELECT * FROM ls_monthpar WHERE pmotn ="+ lmonth + " AND pyear = "+ lyear);
+            rs = stm.executeQuery("SELECT * FROM ls_monthpar WHERE pmonth ="+ lmonth + " AND pyear = "+ lyear);
             while(rs.next()){
                 ktu = rs.getDouble("ktu");
                 prc_oz = rs.getDouble("max_os_prag");
