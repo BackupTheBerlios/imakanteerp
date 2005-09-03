@@ -108,6 +108,10 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         jspNotes = new javax.swing.JScrollPane();
         jtaNotes = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jtfOsigSuma = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jCheckBox1 = new javax.swing.JCheckBox();
         jpButtons = new javax.swing.JPanel();
         jbAdd = new javax.swing.JButton();
         jbChange = new javax.swing.JButton();
@@ -519,24 +523,21 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.insets = new java.awt.Insets(20, 10, 5, 5);
+        gridBagConstraints.insets = new java.awt.Insets(40, 30, 5, 5);
         jpWorker.add(jlContractNum, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 60;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 5);
+        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.insets = new java.awt.Insets(5, 30, 5, 5);
         jpWorker.add(jtfContractNum, gridBagConstraints);
 
         jlAssignDate.setText("\u0414\u0430\u0442\u0430 \u043d\u0430 \u043d\u0430\u0437\u043d\u0430\u0447\u0432\u0430\u043d\u0435");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 5);
+        gridBagConstraints.insets = new java.awt.Insets(40, 5, 5, 5);
         jpWorker.add(jlAssignDate, gridBagConstraints);
 
         jtfAssignDate.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -546,19 +547,17 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         });
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 100;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jpWorker.add(jtfAssignDate, gridBagConstraints);
 
         jlSignonDate.setText("\u0414\u0430\u0442\u0430 \u043d\u0430 \u043f\u043e\u0441\u0442\u044a\u043f\u0432\u0430\u043d\u0435");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 10);
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.insets = new java.awt.Insets(5, 30, 5, 5);
         jpWorker.add(jlSignonDate, gridBagConstraints);
 
         jtfSignonDate.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -568,35 +567,31 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         });
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.ipadx = 100;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
+        gridBagConstraints.insets = new java.awt.Insets(5, 30, 5, 5);
         jpWorker.add(jtfSignonDate, gridBagConstraints);
 
         jlGrounds.setText("\u041e\u0441\u043d\u043e\u0432\u0430\u043d\u0438\u0435");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 5, 5);
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(40, 5, 5, 5);
         jpWorker.add(jlGrounds, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.ipadx = 100;
-        gridBagConstraints.insets = new java.awt.Insets(5, 25, 5, 20);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jpWorker.add(jtfGorunds, gridBagConstraints);
 
         jlTerm.setText("\u0421\u0440\u043e\u043a \u043d\u0430 \u0434\u043e\u0433\u043e\u0432\u043e\u0440\u0430");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.insets = new java.awt.Insets(10, 5, 5, 5);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jpWorker.add(jlTerm, gridBagConstraints);
 
         jtfTerm.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -608,17 +603,15 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 100;
-        gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 20);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jpWorker.add(jtfTerm, gridBagConstraints);
 
         jlQuitDate.setText("\u0414\u0430\u0442\u0430 \u043d\u0430 \u043d\u0430\u043f\u0443\u0441\u043a\u0430\u043d\u0435");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.insets = new java.awt.Insets(10, 5, 5, 5);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jpWorker.add(jlQuitDate, gridBagConstraints);
 
         jtfQuitDate.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -630,17 +623,15 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 100;
-        gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 20);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jpWorker.add(jtfQuitDate, gridBagConstraints);
 
         jlLastInsDate.setText("\u041f\u043e\u0441\u043b\u0435\u0434\u0435\u043d \u0434\u0435\u043d \u0432 \u043e\u0441\u0438\u0433\u0443\u0440\u044f\u0432\u0430\u043d\u0435");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.insets = new java.awt.Insets(10, 5, 5, 15);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 30);
         jpWorker.add(jlLastInsDate, gridBagConstraints);
 
         jtfLastInsDate.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -652,25 +643,23 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 100;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 30);
         jpWorker.add(jtfLastInsDate, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.gridwidth = 7;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        gridBagConstraints.insets = new java.awt.Insets(5, 30, 5, 30);
         jpWorker.add(jsDates2Payment, gridBagConstraints);
 
         jlPosition.setText("\u0414\u043b\u044a\u0436\u043d\u043e\u0441\u0442*");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 5);
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(40, 5, 5, 30);
         jpWorker.add(jlPosition, gridBagConstraints);
 
         jtfPosition.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -680,41 +669,36 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         });
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.ipadx = 100;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 5);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 30);
         jpWorker.add(jtfPosition, gridBagConstraints);
 
         jlHoursPerDay.setText("\u0427\u0430\u0441\u043e\u0432\u0435 / \u0414\u0435\u043d");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        gridBagConstraints.insets = new java.awt.Insets(5, 30, 5, 5);
         jpWorker.add(jlHoursPerDay, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 50;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        gridBagConstraints.insets = new java.awt.Insets(5, 30, 5, 5);
         jpWorker.add(jtfHoursPerDay, gridBagConstraints);
 
         jlSalary.setText("\u0417\u0430\u043f\u043b\u0430\u0442\u0430");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jpWorker.add(jlSalary, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 80;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jpWorker.add(jtfSalary, gridBagConstraints);
@@ -723,8 +707,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 30);
         jpWorker.add(jlTypeEmp, gridBagConstraints);
 
         jtfTypeEmp.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -736,17 +719,16 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 100;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 30);
         jpWorker.add(jtfTypeEmp, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridwidth = 7;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        gridBagConstraints.insets = new java.awt.Insets(5, 30, 5, 30);
         jpWorker.add(jsPayment2Exts, gridBagConstraints);
 
         jpLOS.setLayout(new java.awt.GridBagLayout());
@@ -766,7 +748,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 15;
+        gridBagConstraints.ipadx = 25;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jpLOS.add(jtfLOSDays, gridBagConstraints);
 
@@ -784,7 +766,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 15;
+        gridBagConstraints.ipadx = 25;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jpLOS.add(jtfLOSMonths, gridBagConstraints);
 
@@ -802,23 +784,24 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 15;
+        gridBagConstraints.ipadx = 25;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jpLOS.add(jtfLOSYears, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 10;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.gridheight = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 12;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 15, 5);
+        gridBagConstraints.insets = new java.awt.Insets(5, 30, 15, 5);
         jpWorker.add(jpLOS, gridBagConstraints);
 
         jlNotes.setText("\u0411\u0435\u043b\u0435\u0436\u043a\u0438");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 10;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
@@ -832,17 +815,47 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridy = 11;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 15, 10);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 15, 30);
         jpWorker.add(jspNotes, gridBagConstraints);
 
         jLabel2.setText("* F7 - \u0418\u0437\u0431\u043e\u0440 \u043d\u0430 \u0432\u044a\u0437\u043c\u043e\u0436\u043d\u043e\u0441\u0442\u0438");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridy = 12;
         jpWorker.add(jLabel2, gridBagConstraints);
+
+        jLabel3.setText("\u041e\u0441\u0438\u0433\u0443\u0440\u0438\u0442\u0435\u043b\u043d\u0430 \u0441\u0443\u043c\u0430");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jpWorker.add(jLabel3, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.ipadx = 80;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jpWorker.add(jtfOsigSuma, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(5, 30, 5, 30);
+        jpWorker.add(jSeparator1, gridBagConstraints);
+
+        jCheckBox1.setText("\u041e\u0441\u0438\u0433\u0443\u0440\u043e\u0432\u043a\u0438\u0442\u0435 \u0434\u0430 \u0441\u0435 \u0441\u043c\u044f\u0442\u0430\u0442 \u0432\u044a\u0440\u0445\u0443 \u043e\u0441\u0438\u0433\u0443\u0440\u0438\u0442\u0435\u043b\u043d\u0430 \u0441\u0443\u0441\u0443\u043c\u0430");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jpWorker.add(jCheckBox1, gridBagConstraints);
 
         jtpDataInput.addTab("\u0414\u0430\u043d\u043d\u0438 \u043d\u0430 \u0440\u0430\u0431\u043e\u0442\u043d\u0438\u043a\u0430", jpWorker);
 
@@ -1054,8 +1067,11 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton jbAdd;
     private javax.swing.JButton jbChange;
     private javax.swing.JButton jbQuit;
@@ -1126,6 +1142,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     protected static javax.swing.JTextField jtfMobile;
     protected static javax.swing.JTextField jtfName;
     protected static javax.swing.JTextField jtfNumber;
+    private javax.swing.JTextField jtfOsigSuma;
     protected static javax.swing.JTextField jtfPCode;
     protected static javax.swing.JTextField jtfPhone;
     protected static javax.swing.JTextField jtfPosition;
@@ -1151,11 +1168,11 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     public static String name_dlajnost;
     public static String name_os, cod_os;
     private static double ktu = 0.6, prc_oz = 0.9, prc_pensii = 8.7, prc_zo = 1.8, prc_bezr = 1.05, prc_upf = 0.9;
-    private static double sum_ktu =0, sum_oz =0, sum_pensii =0, sum_zo = 0, sum_bezr = 0, sum_upf = 0; 
+    private static double sum_ktu =0, sum_oz =0, sum_pensii =0, sum_zo = 0, sum_bezr = 0, sum_upf = 0, sum_min_os =  150;
     private double string2double(String str_d){
-    double doub = 0;
-    try{ doub = Double.parseDouble(str_d);}catch(NumberFormatException nfe){doub = 0; return doub;}
-    return doub;
+        double doub = 0;
+        try{ doub = Double.parseDouble(str_d);}catch(NumberFormatException nfe){doub = 0; return doub;}
+        return doub;
     }
     
     protected boolean validateDate(String str){
@@ -1290,13 +1307,15 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         try{
             rs = stm.executeQuery("SELECT * FROM ls_monthpar WHERE pmonth ="+ lmonth + " AND pyear = "+ lyear);
             while(rs.next()){
+                
                 ktu = rs.getDouble("ktu");
                 prc_oz = rs.getDouble("max_os_prag");
                 prc_pensii = rs.getDouble("proc_pensii");
                 prc_zo =rs.getDouble("proc_zo");
                 prc_bezr = rs.getDouble("proc_bez");
                 prc_upf = rs.getDouble("proc_upf");
-                }
+                
+            }
             
             rs.close();
         } catch (java.sql.SQLException sqle){sqle.printStackTrace();}
@@ -1532,17 +1551,55 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     
     
     protected void processNewSalary(){
-        float sht_zaplata = 0;
-        double zarabotka = 0;
-        int losYears = 0;
+        
+        float sht_zaplata = 0; // shatna rabotna zaplata
+        double zarabotka = 0;  // zaraboteno
+        int losYears = 0;  // godini trudov staj
+        double day_s =1; // dni otraboteni
+        double days_min_os = 0;  //suma dnevna minimalna osigurovka
+        double zarabotka_day = 0; // dnevna zarabotka
+        int year_birth = 0; //godin na rajdane
+        try {
+           year_birth = Integer.parseInt(jtfEGN.getText().substring(0, 2)); 
+        }catch(NumberFormatException nfe){year_birth = 60;}
+        try {
+           sum_min_os = Integer.parseInt(jtfEGN.getText().substring(0, 2)); 
+        }catch(NumberFormatException nfe){}
+        try{
+            
+            losYears = Integer.parseInt(jtfLOSYears.getText()); // vzimane na broia na izrabotenite godini 
+        }catch(NumberFormatException nfe){losYears = 0;}
         
         if(isFloat(jtfSalary.getText())){
             
-            sht_zaplata = Float.parseFloat(jtfSalary.getText());
-            losYears = Integer.parseInt(jtfLOSYears.getText());
-            zarabotka = ((sht_zaplata*days)/month_days);
-            sum_ktu = ((zarabotka*ktu)/100);
-            zarabotka = zarabotka + sum_ktu;
+            sht_zaplata = Float.parseFloat(jtfSalary.getText()); //vzima shatnata zaplata
+            day_s = days/month_days; // koefitsient na izrabotneoto vreme - dni izraboteni/dni rabotni v mesetsa
+            zarabotka = (sht_zaplata*day_s);  // zarabotka za otrabotenia period
+            sum_ktu = ((zarabotka*ktu*losYears)/100);  // suma za KTU
+            zarabotka = zarabotka + sum_ktu;  // zarabotkata + suma KTU
+            zarabotka_day = zarabotka /day_s;   // zarabotka za edin otraboten den
+            days_min_os = sum_min_os / day_s; //min os za edin otraboten den (min osiguritelen dneven prag)
+            
+            if(zarabotka_day > sum_min_os){  //proverka dali izrabotenoto dnevno i min osiguritelen dneven prag
+                sum_oz  = (zarabotka*prc_oz)/100;
+                if (year_birth < 60){
+                sum_pensii = ((zarabotka*(prc_pensii + 0.75))/100);
+                    }else{sum_pensii =((zarabotka*prc_pensii)/100);}
+                sum_zo = (zarabotka*prc_zo)/100;
+                sum_bezr = (zarabotka*prc_bezr)/100;
+                sum_upf = (zarabotka*prc_upf)/100;
+                
+               }else{
+                sum_oz  = (sum_min_os*prc_oz)/100;
+                if (year_birth < 60){
+                sum_pensii = ((sum_min_os*(prc_pensii + 0.75))/100);
+                    }else{sum_pensii =((sum_min_os*prc_pensii)/100);}
+                sum_zo = (sum_min_os*prc_zo)/100;
+                sum_bezr = (sum_min_os*prc_bezr)/100;
+                sum_upf = (sum_min_os*prc_upf)/100;
+               
+               
+               }
             
             
             
