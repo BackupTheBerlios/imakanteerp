@@ -834,6 +834,17 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jpWorker.add(jLabel3, gridBagConstraints);
 
+        jtfOsigSuma.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfOsigSumaFocusLost(evt);
+            }
+        });
+        jtfOsigSuma.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfOsigSumaKeyPressed(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 6;
@@ -893,6 +904,14 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         pack();
     }
     // </editor-fold>//GEN-END:initComponents
+    
+    private void jtfOsigSumaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfOsigSumaKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jtfOsigSuma.transferFocus();}
+    }//GEN-LAST:event_jtfOsigSumaKeyPressed
+    
+    private void jtfOsigSumaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfOsigSumaFocusLost
+        validateOsigFiled();
+    }//GEN-LAST:event_jtfOsigSumaFocusLost
     
     private void jtfTypeEmpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfTypeEmpKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_F7){
@@ -1168,13 +1187,22 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     public static String name_dlajnost;
     public static String name_os, cod_os;
     private static double ktu = 0.6, prc_oz = 0.9, prc_pensii = 8.7, prc_zo = 1.8, prc_bezr = 1.05, prc_upf = 0.9;
-    private static double sum_ktu =0, sum_oz =0, sum_pensii =0, sum_zo = 0, sum_bezr = 0, sum_upf = 0, sum_min_os =  150;
+    private static double sum_ktu =0, sum_oz =0, sum_pensii =0, sum_zo = 0, sum_bezr = 0, sum_upf = 0, sum_min_os =  150, max_os = 1300;
     private double string2double(String str_d){
         double doub = 0;
         try{ doub = Double.parseDouble(str_d);}catch(NumberFormatException nfe){doub = 0; return doub;}
         return doub;
     }
-    
+    private void validateOsigFiled(){
+        float osiSuma = 0;
+        try{
+            osiSuma = Float.parseFloat(jtfOsigSuma.getText());
+            if (osiSuma > max_os){jtfOsigSuma.setBackground(java.awt.Color.PINK);
+            jtfOsigSuma.requestFocus();}else{jtfOsigSuma.setBackground(java.awt.Color.WHITE);}
+        }catch(NumberFormatException nfe){jtfOsigSuma.setBackground(java.awt.Color.PINK);
+        jtfOsigSuma.requestFocus();
+        }
+    }
     protected boolean validateDate(String str){
         
         boolean is_valid = true;
@@ -1314,6 +1342,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                 prc_zo =rs.getDouble("proc_zo");
                 prc_bezr = rs.getDouble("proc_bez");
                 prc_upf = rs.getDouble("proc_upf");
+                max_os = rs.getDouble("max_os_prag");
                 
             }
             
@@ -1551,6 +1580,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     
     
     protected void processNewSalary(){
+        boolean charge_os = false; // dali rabotodatelia she plasha osigurovki razlichni ot zaplatata
         
         float sht_zaplata = 0; // shatna rabotna zaplata
         double zarabotka = 0;  // zaraboteno
@@ -1558,16 +1588,18 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         double day_s =1; // dni otraboteni
         double days_min_os = 0;  //suma dnevna minimalna osigurovka
         double zarabotka_day = 0; // dnevna zarabotka
+        double oblagaema = 0; //oblagaema suma s DOD
         int year_birth = 0; //godin na rajdane
+        charge_os = jCheckBox1.isSelected();
         try {
-           year_birth = Integer.parseInt(jtfEGN.getText().substring(0, 2)); 
+            year_birth = Integer.parseInt(jtfEGN.getText().substring(0, 2));
         }catch(NumberFormatException nfe){year_birth = 60;}
         try {
-           sum_min_os = Integer.parseInt(jtfEGN.getText().substring(0, 2)); 
+            sum_min_os = Integer.parseInt(jtfEGN.getText().substring(0, 2));
         }catch(NumberFormatException nfe){}
         try{
             
-            losYears = Integer.parseInt(jtfLOSYears.getText()); // vzimane na broia na izrabotenite godini 
+            losYears = Integer.parseInt(jtfLOSYears.getText()); // vzimane na broia na izrabotenite godini
         }catch(NumberFormatException nfe){losYears = 0;}
         
         if(isFloat(jtfSalary.getText())){
@@ -1580,26 +1612,25 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             zarabotka_day = zarabotka /day_s;   // zarabotka za edin otraboten den
             days_min_os = sum_min_os / day_s; //min os za edin otraboten den (min osiguritelen dneven prag)
             
-            if(zarabotka_day > sum_min_os){  //proverka dali izrabotenoto dnevno i min osiguritelen dneven prag
+            if(zarabotka_day > sum_min_os && zarabotka_day < (max_os/day_s) && charge_os == false){  //proverka dali izrabotenoto dnevno i min osiguritelen dneven prag
                 sum_oz  = (zarabotka*prc_oz)/100;
                 if (year_birth < 60){
-                sum_pensii = ((zarabotka*(prc_pensii + 0.75))/100);
-                    }else{sum_pensii =((zarabotka*prc_pensii)/100);}
+                    sum_pensii = ((zarabotka*(prc_pensii + 0.75))/100);
+                }else{sum_pensii =((zarabotka*prc_pensii)/100);}
                 sum_zo = (zarabotka*prc_zo)/100;
                 sum_bezr = (zarabotka*prc_bezr)/100;
                 sum_upf = (zarabotka*prc_upf)/100;
                 
-               }else{
+            }else{
                 sum_oz  = (sum_min_os*prc_oz)/100;
                 if (year_birth < 60){
-                sum_pensii = ((sum_min_os*(prc_pensii + 0.75))/100);
-                    }else{sum_pensii =((sum_min_os*prc_pensii)/100);}
+                    sum_pensii = ((sum_min_os*(prc_pensii + 0.75))/100);
+                }else{sum_pensii =((sum_min_os*prc_pensii)/100);}
                 sum_zo = (sum_min_os*prc_zo)/100;
                 sum_bezr = (sum_min_os*prc_bezr)/100;
                 sum_upf = (sum_min_os*prc_upf)/100;
-               
-               
-               }
+                
+            }
             
             
             
