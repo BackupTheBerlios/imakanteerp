@@ -1506,7 +1506,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         try{
             
             stm = dbInternal.createStatement();
-            String strSQl ="UPDATE INTO ls_main (" + id_row + ",first,second,family,egn,gender,nomer_LK,osnowanie_dog,srok_dog,d_st,m_st,g_st,kateg_rabotnik,belejki) " +
+            String strSQl ="UPDATE ls_main SET (" + id_row + ",first,second,family,egn,gender,nomer_LK,osnowanie_dog,srok_dog,d_st,m_st,g_st,kateg_rabotnik,belejki) " +
                     "VALUES('" + jtfNumber.getText() +
                     "', '" + jtfName.getText() +
                     "', '" + jtfMName.getText() +
@@ -1526,7 +1526,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             System.out.println(strSQl);
             stm.execute(strSQl);
             
-            stm.execute("UPDATE INTO ls_addresses (address, telefon, mobilen,email," + id_row +", id_nasm ) VALUES(" + jtfAddress.getText() +
+            stm.execute("UPDATE ls_addresses SET (address, telefon, mobilen,email," + id_row +", id_nasm ) VALUES(" + jtfAddress.getText() +
                     ", " + jtfPhone.getText() +
                     ", " + jtfMobile.getText() +
                     ", " + jtfEmail.getText() +
@@ -1535,7 +1535,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                     
                     ")");
             
-            stm.execute("UPDATE INTO ls_dates (" + id_row + ", b_date, date_izd_LK, date_naznach,data_postypwane, srok_dogov) VALUES(" + inter_id +
+            stm.execute("UPDATE ls_dates SET (" + id_row + ", b_date, date_izd_LK, date_naznach,data_postypwane, srok_dogov) VALUES(" + inter_id +
                     
                     ", " + convertDate(jtfBDate.getText()) +
                     ", " + convertDate(jtfIDCDate.getText()) +
