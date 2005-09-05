@@ -15,6 +15,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         lmonth=lMonth;
         lyear=lYear;
         initProcent();
+        initTaxDOD();
         initComponents();
         initCombo_Area();
         initCombo_Gender();
@@ -934,15 +935,15 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     }//GEN-LAST:event_jtfPositionKeyPressed
     
     private void jtfLOSYearsFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfLOSYearsFocusLost
-        if(isNumber(jtfLOSYears.getText()) == false){jtfLOSYears.requestFocus();jtfLOSYears.setBackground(java.awt.Color.PINK);}else{jtfLOSYears.setBackground(java.awt.Color.WHITE);}
+        if(isNumber(jtfLOSYears.getText()) == false){jtfLOSYears.setText(""+0);jtfLOSYears.requestFocus();jtfLOSYears.setBackground(java.awt.Color.PINK);}else{jtfLOSYears.setBackground(java.awt.Color.WHITE);}
     }//GEN-LAST:event_jtfLOSYearsFocusLost
     
     private void jtfLOSMonthsFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfLOSMonthsFocusLost
-        if(isNumber(jtfLOSMonths.getText()) == false){jtfLOSMonths.requestFocus();jtfLOSMonths.setBackground(java.awt.Color.PINK);}else{jtfLOSMonths.setBackground(java.awt.Color.WHITE);}
+        if(isNumber(jtfLOSMonths.getText()) == false){jtfLOSMonths.setText(""+0);jtfLOSMonths.requestFocus();jtfLOSMonths.setBackground(java.awt.Color.PINK);}else{jtfLOSMonths.setBackground(java.awt.Color.WHITE);}
     }//GEN-LAST:event_jtfLOSMonthsFocusLost
     
     private void jtfLOSDaysFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfLOSDaysFocusLost
-        if(isNumber(jtfLOSDays.getText()) == false){jtfLOSDays.requestFocus();jtfLOSDays.setBackground(java.awt.Color.PINK);}else{jtfLOSDays.setBackground(java.awt.Color.WHITE);}
+        if(isNumber(jtfLOSDays.getText()) == false){jtfLOSDays.setText(""+0);jtfLOSDays.requestFocus();jtfLOSDays.setBackground(java.awt.Color.PINK);}else{jtfLOSDays.setBackground(java.awt.Color.WHITE);}
     }//GEN-LAST:event_jtfLOSDaysFocusLost
     
     private void jtfTermFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfTermFocusLost
@@ -1177,32 +1178,64 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     public static java.sql.Connection dbInternal;
     public static java.sql.Statement stm;
     public static java.sql.ResultSet rs;
+    java.sql.ResultSetMetaData rsmd;
     public static int id_row,id_nm;
     boolean ADDING_STATE;
     public int lMonth, lYear;
     public static String[] Gender = {"\u041c\u044a\u0436","\u0416\u0435\u043d\u0430"};
+    private  double[] taxDOD_doh = new double[10];
+    private  double[] taxDOD_sum = new double[10];
+    private  double[] taxDOD_prct = new double[10];
     public String EGN;
     int inter_id;
+    int DOD_id = 0;// broi dod iteratsii
     public static int  id_dlajnost, lmonth, lyear, days, month_days;
     public static String name_dlajnost;
     public static String name_os, cod_os;
     private static double ktu = 0.6, prc_oz = 0.9, prc_pensii = 8.7, prc_zo = 1.8, prc_bezr = 1.05, prc_upf = 0.9;
     private static double sum_ktu =0, sum_oz =0, sum_pensii =0, sum_zo = 0, sum_bezr = 0, sum_upf = 0, sum_min_os =  150, max_os = 1300;
+   
+    
     private double string2double(String str_d){
         double doub = 0;
         try{ doub = Double.parseDouble(str_d);}catch(NumberFormatException nfe){doub = 0; return doub;}
         return doub;
     }
+    
     private void validateOsigFiled(){
         float osiSuma = 0;
         try{
             osiSuma = Float.parseFloat(jtfOsigSuma.getText());
             if (osiSuma > max_os){jtfOsigSuma.setBackground(java.awt.Color.PINK);
-            jtfOsigSuma.requestFocus();}else{jtfOsigSuma.setBackground(java.awt.Color.WHITE);}
-        }catch(NumberFormatException nfe){jtfOsigSuma.setBackground(java.awt.Color.PINK);
+            System.out.println("max " + max_os + " osiSuma "+ osiSuma);
+            jtfOsigSuma.requestFocus();
+            jtfOsigSuma.setText("" + max_os);
+            }else{jtfOsigSuma.setBackground(java.awt.Color.WHITE);}
+        }
+        catch(NumberFormatException nfe){jtfOsigSuma.setBackground(java.awt.Color.PINK);
         jtfOsigSuma.requestFocus();
+        jtfOsigSuma.setText("" + 150);
+        
         }
     }
+    
+    protected void initTaxDOD(){
+              
+        try{
+        stm = dbInternal.createStatement();
+        rs = stm.executeQuery("SELECT * FROM ls_dod WHERE pmoth = "+ lmonth + " AND  pyear = " + lyear);
+        while(rs.next()){
+           
+         taxDOD_doh[DOD_id] = rs.getDouble("doh"); 
+         taxDOD_sum[DOD_id] = rs.getDouble("suma");
+         taxDOD_prct[DOD_id] = rs.getDouble("prct");
+         
+         DOD_id++;
+        }
+        }catch(java.sql.SQLException sqle){}
+                
+    }
+    
     protected boolean validateDate(String str){
         
         boolean is_valid = true;
@@ -1450,7 +1483,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         try{
             inter_id = imakante.com.pubMethods.getMaxNum("Select id FROM ls_main", dbInternal, "id") + 1;
             stm = dbInternal.createStatement();
-            String strSQl ="INSERT INTO ls_main (nomer,first,second,family,egn,gender,nomer_LK,osnowanie_dog,srok_dog,d_st,m_st,g_st,kateg_rabotnik,belejki) " +
+            String strSQl ="INSERT INTO ls_main (nomer,first,second,family,egn,gender,nomer_LK,osnowanie_dog,d_st,m_st,g_st,kateg_rabotnik,belejki) " +
                     "VALUES('" + jtfNumber.getText() +
                     "', '" + jtfName.getText() +
                     "', '" + jtfMName.getText() +
@@ -1459,7 +1492,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                     "', '" + jcbGender.getSelectedItem().toString() +
                     "', '" + jtfIDCard.getText() +
                     "', '" + jtfGorunds.getText() +
-                    "', '" + jtfTerm.getText() +
+                  
                     "', '" + jtfLOSDays.getText() +
                     "', '" + jtfLOSMonths.getText() +
                     "', '" + jtfLOSYears.getText() +
@@ -1469,26 +1502,32 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                     "')";
             System.out.println(strSQl);
             stm.execute(strSQl);
-            
-            stm.execute("INSERT INTO ls_addresses (address, telefon, mobilen,email,id_rab, id_nasm ) VALUES(" + jtfAddress.getText() +
-                    ", " + jtfPhone.getText() +
-                    ", " + jtfMobile.getText() +
-                    ", " + jtfEmail.getText() +
-                    ", " +  inter_id +
-                    ", " + id_nm +
+            strSQl = "INSERT INTO ls_addresses (address, telefon, mobilen, email, id_rab, id_nasm ) VALUES('" 
+                    + jtfAddress.getText() +
+                    "', '" + jtfPhone.getText() +
+                    "', '" + jtfMobile.getText() +
+                    "', '" + jtfEmail.getText() +
+                    "', '" +  inter_id +
+                    "', '" + id_nm +
                     
-                    ")");
+                    "')";
+            System.out.println(strSQl);
+            stm.execute(strSQl);
             
-            stm.execute("INSERT INTO ls_dates (id_rab, b_date, date_izd_LK, date_naznach,data_postypwane, srok_dogov) VALUES(" + inter_id +
+            strSQl = "INSERT INTO ls_dates (id_rab, b_date, data_izd_LK, data_naznach, data_postypwane, srok_dogov) VALUES('" 
+                    + inter_id +
                     
-                    ", " + convertDate(jtfBDate.getText()) +
-                    ", " + convertDate(jtfIDCDate.getText()) +
-                    ", " + convertDate(jtfAssignDate.getText()) +
-                    ", " + convertDate(jtfSignonDate.getText()) +
-                    ", " + convertDate(jtfTerm.getText()) +
-                    ")");
+                    "', '" + convertDate(jtfBDate.getText()) +
+                    "', '" + convertDate(jtfIDCDate.getText()) +
+                    "', '" + convertDate(jtfAssignDate.getText()) +
+                    "', '" + convertDate(jtfSignonDate.getText()) +
+                    "', '" + convertDate(jtfTerm.getText()) +
+                    "')";
+            System.out.println(strSQl);
+            stm.execute(strSQl);
             
-            stm.execute("INSERT INTO ls_result (pmonth, pyear, id_rab, id_dlaj, cat_rab, m_rab, y_rab, h_dogovor_day, day_used, zaplata )");
+            
+        //    stm.execute("INSERT INTO ls_result (pmonth, pyear, id_rab, id_dlaj, cat_rab, m_rab, y_rab, h_dogovor_day, day_used, zaplata )");
             
             
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
@@ -1589,8 +1628,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         double days_min_os = 0;  //suma dnevna minimalna osigurovka
         double zarabotka_day = 0; // dnevna zarabotka
         double oblagaema = 0; //oblagaema suma s DOD
+        double neto = 0; // suma za poluchavane
         int year_birth = 0; //godin na rajdane
+        int i_dod = 0; // array index za dod na konkretnia oblagaem
+        
         charge_os = jCheckBox1.isSelected();
+        
         try {
             year_birth = Integer.parseInt(jtfEGN.getText().substring(0, 2));
         }catch(NumberFormatException nfe){year_birth = 60;}
@@ -1629,10 +1672,14 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                 sum_zo = (sum_min_os*prc_zo)/100;
                 sum_bezr = (sum_min_os*prc_bezr)/100;
                 sum_upf = (sum_min_os*prc_upf)/100;
-                
+             }
+            oblagaema = zarabotka - sum_oz - sum_pensii - sum_zo - sum_bezr - sum_upf;
+            for (int i= 0 ; i < DOD_id + 1; i++){
+             if (oblagaema >= taxDOD_doh[i]){
+                 i_dod = i; 
+              }
+             neto = oblagaema - taxDOD_sum[i_dod] - (((oblagaema - taxDOD_sum[i_dod])*taxDOD_prct[i_dod])/100);
             }
-            
-            
             
         }
         
