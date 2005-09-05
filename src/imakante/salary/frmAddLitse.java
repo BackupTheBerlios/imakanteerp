@@ -143,6 +143,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.ipadx = 40;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 10);
         jpPerson.add(jtfNumber, gridBagConstraints);
 
@@ -221,6 +222,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 100;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 10);
         jpPerson.add(jtfName, gridBagConstraints);
 
@@ -299,7 +301,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 80;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 20, 10);
         jpPerson.add(jtfEGN, gridBagConstraints);
 
@@ -1394,7 +1396,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             }
             
             try{
-                rs = stm.executeQuery("SELECT ls_main.id, ls_main.nomer, ls_main.first, ls_main.second, ls_main.family, ls_main.egn, DATE_FORMAT(ls_dates.b_date,'%d-%m-%Y') AS bdate, gender, nomer_LK, DATE_FORMAT(ls_dates.data_izd_LK,'%d-%m-%Y') AS date_lk, n_oblast.name AS name_oblast, n_nm.postcode, n_nm.name AS name_grad, ls_addresses.address, ls_addresses.telåfon, ls_addresses.mobilen, email, nomer_dogowor, DATE_FORMAT(ls_dates.data_naznach,'%d-%m-%Y') AS nazdate, DATE_FORMAT(ls_dates.data_postypwane,'%d-%m-%Y') AS postdate, DATE_FORMAT(ls_dates.data_napuskane,'%d-%m-%Y') AS napudate, DATE_FORMAT(ls_dates.posl_den_w_osig,'%d-%m-%Y') AS posddate, osnowanie_dog, DATE_FORMAT(ls_dates.srok_dogov, '%d-%m-%Y') AS srok_dog , d_st, m_st, g_st, kateg_rabotnik, belejki, n_oblast.id AS id_oblast FROM ls_main LEFT JOIN ls_dates ON (ls_dates.id_rab = ls_main.id) LEFT JOIN ls_addresses ON (ls_addresses.id_rab = ls_main.id) LEFT JOIN n_nm ON (n_nm.id = ls_addresses.id_nasm) LEFT JOIN n_oblast ON (n_oblast.id = n_nm.id_oblast) WHERE ls_main.id = " + id_row);
+                rs = stm.executeQuery("SELECT ls_main.id, ls_main.nomer, ls_main.first, ls_main.second, ls_main.family, ls_main.egn, DATE_FORMAT(ls_dates.b_date,'%d-%m-%Y') AS bdate, gender, nomer_LK, DATE_FORMAT(ls_dates.data_izd_LK,'%d-%m-%Y') AS date_lk, n_oblast.name AS name_oblast, n_nm.postcode, n_nm.name AS name_grad, ls_addresses.address, ls_addresses.telefon, ls_addresses.mobilen, email, nomer_dogowor, DATE_FORMAT(ls_dates.data_naznach,'%d-%m-%Y') AS nazdate, DATE_FORMAT(ls_dates.data_postypwane,'%d-%m-%Y') AS postdate, DATE_FORMAT(ls_dates.data_napuskane,'%d-%m-%Y') AS napudate, DATE_FORMAT(ls_dates.posl_den_w_osig,'%d-%m-%Y') AS posddate, osnowanie_dog, DATE_FORMAT(ls_dates.srok_dogov, '%d-%m-%Y') AS srok_dog , d_st, m_st, g_st, kateg_rabotnik, belejki, n_oblast.id AS id_oblast FROM ls_main LEFT JOIN ls_dates ON (ls_dates.id_rab = ls_main.id) LEFT JOIN ls_addresses ON (ls_addresses.id_rab = ls_main.id) LEFT JOIN n_nm ON (n_nm.id = ls_addresses.id_nasm) LEFT JOIN n_oblast ON (n_oblast.id = n_nm.id_oblast) WHERE ls_main.id = " + id_row);
                 while(rs.next()){
                     
                     jcbDistrict.setSelectedItem(rs.getInt("id_oblast"));
@@ -1587,6 +1589,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             
             
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        
         
     }
     
