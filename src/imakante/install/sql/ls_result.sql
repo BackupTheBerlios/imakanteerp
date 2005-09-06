@@ -6,7 +6,7 @@ USE `mida`;
 #
 # Table structure for table ls_result
 #
-DROP TABLE `ls_result`;
+
 
 CREATE TABLE `ls_result` (
   `id` int(11) NOT NULL auto_increment,
