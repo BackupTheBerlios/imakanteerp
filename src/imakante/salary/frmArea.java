@@ -2,7 +2,7 @@
 package imakante.salary;
 
 import java.awt.event.KeyEvent;
-import java.text.SimpleDateFormat;
+
 
 public class frmArea extends javax.swing.JDialog implements java.awt.event.WindowListener{
     

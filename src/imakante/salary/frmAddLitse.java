@@ -1683,7 +1683,21 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
               }
              neto = oblagaema - taxDOD_sum[i_dod] - (((oblagaema - taxDOD_sum[i_dod])*taxDOD_prct[i_dod])/100);
             }
-            
+            try {
+            stm =dbInternal.createStatement();
+            String sql ="INSERT INTO ls_result (id_rab, id_dlaj, cat_rab, m_rab, y_rab," + 
+                    "h_dogovor_day, day_used, zaplata, sum_kt, sum_oz_m, sum_pensii,"+
+                    "sum_zoo, sum_bzr, sum_upf, sum_osig_dohod, sum_obl_dohod, sum_dod, sum_end) VALUES(" +
+                    "'" + id_row +
+                    "', '" + 
+                    "', '" + jtfTypeEmp.getText() +
+                    "', '" + jtfLOSMonths.getText() +
+                    "', '" + jtfLOSYears.getText() +
+                    "', '" +
+                    "', '" +
+                    "" +
+                    "";
+            }catch(java.sql.SQLException sqle){}
         }
         
     }
