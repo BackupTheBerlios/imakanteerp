@@ -249,6 +249,11 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
         jPanel2.add(jButton4, gridBagConstraints);
 
         jButton5.setText("\u041f\u0435\u0447\u0430\u0442 \u0441\u043f\u0438\u0441\u044a\u043a");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jButton5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jButton5KeyPressed(evt);
@@ -286,6 +291,11 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
         pack();
     }
     // </editor-fold>//GEN-END:initComponents
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+           //java.swing.JDialog printS = new imakante.salary.frmPrint();
+
+    }//GEN-LAST:event_jButton5ActionPerformed
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         editRecord();

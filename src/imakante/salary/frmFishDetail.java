@@ -3,12 +3,18 @@
 package imakante.salary;
 
 
-public class frmFishDetail extends javax.swing.JDialog {
-    public frmFishDetail(java.awt.Frame parent, boolean modal) {
+public class frmFishDetail extends javax.swing.JDialog implements java.awt.event.WindowListener{
+    public frmFishDetail(javax.swing.JFrame parent, boolean modal, java.sql.Connection dbCon, int id_rab, int lMonth, int lYear) {
         super(parent, modal);
+        parent_in=parent;
+        
+        dbInternal = dbCon;
+        id_row = id_rab;
+        lmonth=lMonth;
+        lyear=lYear;
         initComponents();
     }
-
+    
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
@@ -16,9 +22,6 @@ public class frmFishDetail extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel7 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
         jPanel5 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -46,28 +49,13 @@ public class frmFishDetail extends javax.swing.JDialog {
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBorder(new javax.swing.border.EtchedBorder());
-        jPanel4.setLayout(new java.awt.GridBagLayout());
+        jPanel4.setLayout(new java.awt.BorderLayout());
 
         jPanel4.setBorder(new javax.swing.border.EtchedBorder());
         jPanel6.setLayout(new java.awt.BorderLayout());
 
         jPanel6.setBorder(new javax.swing.border.EtchedBorder());
-        jPanel6.add(jScrollPane1, java.awt.BorderLayout.CENTER);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.ipadx = 300;
-        gridBagConstraints.ipady = 200;
-        jPanel4.add(jPanel6, gridBagConstraints);
-
-        jPanel7.setLayout(new java.awt.BorderLayout());
-
-        jPanel7.setBorder(new javax.swing.border.EtchedBorder());
-        jPanel7.add(jScrollPane2, java.awt.BorderLayout.CENTER);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.ipadx = 300;
-        gridBagConstraints.ipady = 200;
-        jPanel4.add(jPanel7, gridBagConstraints);
+        jPanel4.add(jPanel6, java.awt.BorderLayout.CENTER);
 
         jPanel1.add(jPanel4, java.awt.BorderLayout.CENTER);
 
@@ -75,36 +63,49 @@ public class frmFishDetail extends javax.swing.JDialog {
 
         jPanel5.setBorder(new javax.swing.border.EtchedBorder());
         jLabel13.setText("\u0411\u0410\u0417\u0410 \u0417\u0410 \u0414\u041e\u041e ");
-        jPanel5.add(jLabel13, new java.awt.GridBagConstraints());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jPanel5.add(jLabel13, gridBagConstraints);
 
         jLabel14.setText("\u0417\u0414\u0420\u0410\u0412\u041d\u0418 \u041e\u0421\u0418\u0413\u0423\u0420\u041e\u0412\u041a\u0418 ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel5.add(jLabel14, gridBagConstraints);
 
         jLabel15.setText("\u0411\u041e\u041b\u041d\u0418\u0427\u041d\u0418");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel5.add(jLabel15, gridBagConstraints);
 
         jLabel16.setText("\u0411\u041e\u041b\u041d\u0418\u0427\u041d\u0418 \u0418 \u041c\u0410\u0419\u0427\u0415\u0421\u041d\u0421\u0422\u0412\u041e");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel5.add(jLabel16, gridBagConstraints);
 
         jLabel17.setText("\u0421\u041e\u0426\u0418\u0410\u041b\u041d\u0418");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel5.add(jLabel17, gridBagConstraints);
 
         jLabel18.setText("\u041e\u0422\u041f\u0423\u0421\u041a");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel5.add(jLabel18, gridBagConstraints);
 
         jPanel1.add(jPanel5, java.awt.BorderLayout.NORTH);
@@ -219,7 +220,7 @@ public class frmFishDetail extends javax.swing.JDialog {
         pack();
     }
     // </editor-fold>//GEN-END:initComponents
-
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -247,9 +248,49 @@ public class frmFishDetail extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
+    javax.swing.JFrame parent_in;
+    public static java.sql.Connection dbInternal;
+    public static java.sql.Statement stm;
+    public static java.sql.ResultSet rs;
+    public static int id_row,id_nm;
+    boolean ADDING_STATE;
+    int inter_id;
+    int DOD_id = 0;// broi dod iteratsii
+    public static int  id_dlajnost, lmonth, lyear, days, month_days;
+    public static String name_dlajnost;
+    public static String name_os, cod_os;
+    private static double ktu = 0.6, prc_oz = 0.9, prc_pensii = 8.7, prc_zo = 1.8, prc_bezr = 1.05, prc_upf = 0.9;
+    private static double sum_ktu =0, sum_oz =0, sum_pensii =0, sum_zo = 0, sum_bezr = 0, sum_upf = 0, sum_min_os =  150, max_os = 1300;
+   
     
+    protected void closeResource(){
+        if(rs!=null){ try{  rs.close();
+        }catch(java.sql.SQLException sqle){}}
+        if(stm!=null){ try{ stm.close();
+        }catch(java.sql.SQLException sqle){}}
+        
+    }
+    
+    protected void UnloadWindow(){
+        closeResource();
+        this.dispose();
+        
+    }
+    
+    public void windowOpened(java.awt.event.WindowEvent e){
+    }
+    public void windowClosing(java.awt.event.WindowEvent e){
+        UnloadWindow();
+    }
+    public void windowClosed(java.awt.event.WindowEvent e){
+    }
+    public void windowIconified(java.awt.event.WindowEvent e){
+    }
+    public void windowDeiconified(java.awt.event.WindowEvent e){
+    }
+    public void windowActivated(java.awt.event.WindowEvent e){
+    }
+    public void windowDeactivated(java.awt.event.WindowEvent e){
+    }
 }

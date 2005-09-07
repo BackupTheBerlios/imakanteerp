@@ -1183,7 +1183,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     java.sql.ResultSetMetaData rsmd;
     public static int id_row,id_nm;
     boolean ADDING_STATE;
-    public int lMonth, lYear;
+   
     public static String[] Gender = {"\u041c\u044a\u0436","\u0416\u0435\u043d\u0430"};
     private  double[] taxDOD_doh = new double[10];
     private  double[] taxDOD_sum = new double[10];
