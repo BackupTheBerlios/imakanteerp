@@ -1,21 +1,6 @@
-/*
- * EGNChecker.java
- *
- * Created on Четвъвтък, 2005, Юли 28, 0:32
- *
- */
 
 package imakante.com;
 
-/**
- * Contains basic methods for checking validity and extracting the information
- * contained in a certain EGN.
- *
- * !!! The condition (int)EGN.charAt(x)-48 is deduced upon the cp-1251 encoding 
- *     and might not produce corect calculation for the other encodings !!!
- *
- * @author jp
- */
 public final class EGNChecker {
     
     public static int gen;
