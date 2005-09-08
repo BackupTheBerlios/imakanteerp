@@ -928,7 +928,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     
     private void jtfPositionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPositionKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_F7){
-            imakante.salary.frmAL_Dlajnosti frmDialog = new imakante.salary.frmAL_Dlajnosti(parent_in, true,dbInternal, jtfCity.getText());
+            imakante.salary.frmAL_Dlajnosti frmDialog = new imakante.salary.frmAL_Dlajnosti(parent_in, true,dbInternal, jtfPosition.getText());
             
             frmDialog.setVisible(true);
         }
@@ -985,8 +985,21 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     }//GEN-LAST:event_jbChangeActionPerformed
     
     private void jbAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAddActionPerformed
+        
+        int rabotnik = 0;
         if (id_row!=0 && super_validateDates()){update_db_Record();}
-        if (id_row == 0 && super_validateDates()){insert_db_Record();}
+        if (id_row == 0 && super_validateDates()){
+            insert_db_Record();
+            try{
+                stm = dbInternal.createStatement();
+                rs = stm.executeQuery("SELECT id FROM ls_main WHERE name " + jtfName.getText() + " AND nomer = " + jtfNumber);
+                while(rs.next()){
+                    rabotnik = rs.getInt("id");}
+                rs.close();
+                stm.close();
+            }catch(java.sql.SQLException sqle){}
+            processNewSalary(rabotnik);
+        }
         UnloadWindow();
     }//GEN-LAST:event_jbAddActionPerformed
     
@@ -1183,7 +1196,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     java.sql.ResultSetMetaData rsmd;
     public static int id_row,id_nm;
     boolean ADDING_STATE;
-   
+    
     public static String[] Gender = {"\u041c\u044a\u0436","\u0416\u0435\u043d\u0430"};
     private  double[] taxDOD_doh = new double[10];
     private  double[] taxDOD_sum = new double[10];
@@ -1196,7 +1209,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     public static String name_os, cod_os;
     private static double ktu = 0.6, prc_oz = 0.9, prc_pensii = 8.7, prc_zo = 1.8, prc_bezr = 1.05, prc_upf = 0.9;
     private static double sum_ktu =0, sum_oz =0, sum_pensii =0, sum_zo = 0, sum_bezr = 0, sum_upf = 0, sum_min_os =  150, max_os = 1300;
-   
+    
     
     private double string2double(String str_d){
         double doub = 0;
@@ -1213,8 +1226,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             jtfOsigSuma.requestFocus();
             jtfOsigSuma.setText("" + max_os);
             }else{jtfOsigSuma.setBackground(java.awt.Color.WHITE);}
-        }
-        catch(NumberFormatException nfe){jtfOsigSuma.setBackground(java.awt.Color.PINK);
+        } catch(NumberFormatException nfe){jtfOsigSuma.setBackground(java.awt.Color.PINK);
         jtfOsigSuma.requestFocus();
         jtfOsigSuma.setText("" + 150);
         
@@ -1222,20 +1234,20 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     }
     
     protected void initTaxDOD(){
-              
+        
         try{
-        stm = dbInternal.createStatement();
-        rs = stm.executeQuery("SELECT * FROM ls_dod WHERE pmoth = "+ lmonth + " AND  pyear = " + lyear);
-        while(rs.next()){
-           
-         taxDOD_doh[DOD_id] = rs.getDouble("doh"); 
-         taxDOD_sum[DOD_id] = rs.getDouble("suma");
-         taxDOD_prct[DOD_id] = rs.getDouble("prct");
-         
-         DOD_id++;
-        }
-        }catch(java.sql.SQLException sqle){}
+            stm = dbInternal.createStatement();
+            rs = stm.executeQuery("SELECT * FROM ls_dod WHERE pmoth = "+ lmonth + " AND  pyear = " + lyear);
+            while(rs.next()){
                 
+                taxDOD_doh[DOD_id] = rs.getDouble("doh");
+                taxDOD_sum[DOD_id] = rs.getDouble("suma");
+                taxDOD_prct[DOD_id] = rs.getDouble("prct");
+                
+                DOD_id++;
+            }
+        }catch(java.sql.SQLException sqle){}
+        
     }
     
     protected boolean validateDate(String str){
@@ -1494,7 +1506,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                     "', '" + jcbGender.getSelectedItem().toString() +
                     "', '" + jtfIDCard.getText() +
                     "', '" + jtfGorunds.getText() +
-                  
+                    
                     "', '" + jtfLOSDays.getText() +
                     "', '" + jtfLOSMonths.getText() +
                     "', '" + jtfLOSYears.getText() +
@@ -1504,7 +1516,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                     "')";
             System.out.println(strSQl);
             stm.execute(strSQl);
-            strSQl = "INSERT INTO ls_addresses (address, telefon, mobilen, email, id_rab, id_nasm ) VALUES('" 
+            strSQl = "INSERT INTO ls_addresses (address, telefon, mobilen, email, id_rab, id_nasm ) VALUES('"
                     + jtfAddress.getText() +
                     "', '" + jtfPhone.getText() +
                     "', '" + jtfMobile.getText() +
@@ -1516,7 +1528,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             System.out.println(strSQl);
             stm.execute(strSQl);
             
-            strSQl = "INSERT INTO ls_dates (id_rab, b_date, data_izd_LK, data_naznach, data_postypwane, srok_dogov) VALUES('" 
+            strSQl = "INSERT INTO ls_dates (id_rab, b_date, data_izd_LK, data_naznach, data_postypwane, srok_dogov) VALUES('"
                     + inter_id +
                     
                     "', '" + convertDate(jtfBDate.getText()) +
@@ -1529,7 +1541,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             stm.execute(strSQl);
             
             
-        //    stm.execute("INSERT INTO ls_result (pmonth, pyear, id_rab, id_dlaj, cat_rab, m_rab, y_rab, h_dogovor_day, day_used, zaplata )");
+            //    stm.execute("INSERT INTO ls_result (pmonth, pyear, id_rab, id_dlaj, cat_rab, m_rab, y_rab, h_dogovor_day, day_used, zaplata )");
             
             
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
@@ -1571,11 +1583,11 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                     ", " + jtfPhone.getText() +
                     ", " + jtfMobile.getText() +
                     ", " + jtfEmail.getText() +
-                    ", "  + id_nm + 
+                    ", "  + id_nm +
                     ") WHERE id_rab = " + id_row);
             
             stm.execute("UPDATE ls_dates SET (b_date, date_izd_LK, date_naznach,data_postypwane, srok_dogov) VALUES(" + inter_id +
-              
+                    
                     "', '" + convertDate(jtfBDate.getText()) +
                     "', '" + convertDate(jtfIDCDate.getText()) +
                     "', '" + convertDate(jtfAssignDate.getText()) +
@@ -1583,7 +1595,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                     "', '" + convertDate(jtfTerm.getText()) +
                     ") WHERE id_rab = " + id_row);
             
-           
+            
             
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         
@@ -1645,7 +1657,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             losYears = Integer.parseInt(jtfLOSYears.getText()); // vzimane na broia na izrabotenite godini
         }catch(NumberFormatException nfe){losYears = 0;}
         
-        if(isFloat(jtfSalary.getText())){
+        if( isFloat(jtfSalary.getText())){
             
             sht_zaplata = Float.parseFloat(jtfSalary.getText()); //vzima shatnata zaplata
             day_s = days/month_days; // koefitsient na izrabotneoto vreme - dni izraboteni/dni rabotni v mesetsa
@@ -1672,35 +1684,35 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                 sum_zo = (sum_min_os*prc_zo)/100;
                 sum_bezr = (sum_min_os*prc_bezr)/100;
                 sum_upf = (sum_min_os*prc_upf)/100;
-             }
+            }
             oblagaema = zarabotka - sum_oz - sum_pensii - sum_zo - sum_bezr - sum_upf;
             for (int i= 0 ; i < DOD_id + 1; i++){
-             if (oblagaema >= taxDOD_doh[i]){
-                 i_dod = i; 
-              }
-             neto = oblagaema - taxDOD_sum[i_dod] - (((oblagaema - taxDOD_sum[i_dod])*taxDOD_prct[i_dod])/100);
+                if (oblagaema >= taxDOD_doh[i]){
+                    i_dod = i;
+                }
+                neto = oblagaema - taxDOD_sum[i_dod] - (((oblagaema - taxDOD_sum[i_dod])*taxDOD_prct[i_dod])/100);
             }
             try {
-            stm =dbInternal.createStatement();
-            String sql ="INSERT INTO ls_result (id_rab, id_dlaj, cat_rab, m_rab, y_rab," + 
-                    "h_dogovor_day, day_used, zaplata, sum_kt, sum_oz_m, sum_pensii,"+
-                    "sum_zoo, sum_bzr, sum_upf, sum_osig_dohod, sum_obl_dohod, sum_dod, sum_end) VALUES(" +
-                    "'" + id_rabotnik +
-                    "', '" + 
-                    "', '" + jtfTypeEmp.getText() +
-                    "', '" + jtfLOSMonths.getText() +
-                    "', '" + jtfLOSYears.getText() +
-                    "', '" + jtfTypeEmp.getText() + 
-                    "', '" + sum_zo +
-                     "', '" + sum_bezr +
-                     "', '" + sum_upf +
-                     "', '" + sum_zo +
-                    "', '" + jtfOsigSuma.getText() +
-                    "', '" + oblagaema +
-                    "', '" + (oblagaema - neto) +
-                    "', '" + neto +
-                    "')" 
-                    ;
+                stm =dbInternal.createStatement();
+                String sql ="INSERT INTO ls_result (id_rab, id_dlaj, cat_rab, m_rab, y_rab," +
+                        "h_dogovor_day, day_used, zaplata, sum_kt, sum_oz_m, sum_pensii,"+
+                        "sum_zoo, sum_bzr, sum_upf, sum_osig_dohod, sum_obl_dohod, sum_dod, sum_end) VALUES(" +
+                        "'" + id_rabotnik +
+                        "', '" +
+                        "', '" + jtfTypeEmp.getText() +
+                        "', '" + jtfLOSMonths.getText() +
+                        "', '" + jtfLOSYears.getText() +
+                        "', '" + jtfTypeEmp.getText() +
+                        "', '" + sum_zo +
+                        "', '" + sum_bezr +
+                        "', '" + sum_upf +
+                        "', '" + sum_zo +
+                        "', '" + jtfOsigSuma.getText() +
+                        "', '" + oblagaema +
+                        "', '" + (oblagaema - neto) +
+                        "', '" + neto +
+                        "')"
+                        ;
             }catch(java.sql.SQLException sqle){}
         }
         
