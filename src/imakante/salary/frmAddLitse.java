@@ -1864,11 +1864,11 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         
         for (int i = 0; i<str_area.length(); i++){
             
-            if(String.valueOf(str_area.charAt(i)) == "1"){m_day++;
+            if(String.valueOf(str_area.charAt(i)).equals("1")){m_day++;
             System.out.println("m_day = "+m_day);}
         }
         for (int i = i_days - 1; i <  str_area.length(); i++){
-            if(String.valueOf(str_area.charAt(i)) == "1"){ e_day++; 
+            if(String.valueOf(str_area.charAt(i)).equals("1")){ e_day++; 
             System.out.println("e_day = "+e_day);}
         }
         days = e_day;
@@ -1897,9 +1897,9 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         processMDays();
         try {
             year_birth = Integer.parseInt(jtfEGN.getText().substring(0, 2));
-        }catch(NumberFormatException nfe){year_birth = 60;}
+        }catch(NumberFormatException nfe){nfe.printStackTrace();}
         try {
-            sum_min_os = Integer.parseInt(jtfEGN.getText().substring(0, 2));
+            sum_min_os = 230;
         }catch(NumberFormatException nfe){}
         try{
             
@@ -1909,15 +1909,23 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         if( isFloat(jtfSalary.getText())){
             
             sht_zaplata = Float.parseFloat(jtfSalary.getText()); //vzima shatnata zaplata
+            System.out.println("sh_zaplata "+sht_zaplata);
             day_s = days/month_days; // koefitsient na izrabotneoto vreme - dni izraboteni/dni rabotni v mesetsa
+            System.out.println("day_s "+day_s);
             zarabotka = (sht_zaplata*day_s);  // zarabotka za otrabotenia period
+            System.out.println("zarabotka "+zarabotka);
             sum_ktu = ((zarabotka*ktu*losYears)/100);  // suma za KTU
+             System.out.println("sum_ktu "+sum_ktu);
             zarabotka = zarabotka + sum_ktu;  // zarabotkata + suma KTU
+            System.out.println("zarabotka "+zarabotka);
             zarabotka_day = zarabotka /day_s;   // zarabotka za edin otraboten den
+            System.out.println("zarabotka_day "+zarabotka_day);
             days_min_os = sum_min_os / day_s; //min os za edin otraboten den (min osiguritelen dneven prag)
+            System.out.println("days_min_os "+days_min_os);
             
             if(zarabotka_day > sum_min_os && zarabotka_day < (max_os/day_s) && charge_os == false){  //proverka dali izrabotenoto dnevno i min osiguritelen dneven prag
                 sum_oz  = (zarabotka*prc_oz)/100;
+                System.out.println("sum_oz "+sum_oz);
                 if (year_birth < 60){
                     sum_pensii = ((zarabotka*(prc_pensii + 0.75))/100);
                 }else{sum_pensii =((zarabotka*prc_pensii)/100);}
@@ -1962,6 +1970,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                         "', '" + neto +
                         "')"
                         ;
+                stm.execute(sql);
                 
             }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         }
