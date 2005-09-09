@@ -130,10 +130,10 @@ public class frmAL_NM extends javax.swing.JDialog implements java.awt.event.Wind
         
         if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
             try{area = Integer.parseInt(jTable.getValueAt(jTable.getSelectedRow(),4).toString());}catch(NumberFormatException nfe){}
-            try{nm = Integer.parseInt(jTable.getValueAt(jTable.getSelectedRow(),1).toString());}catch(NumberFormatException nfe){}
+            try{nm = Integer.parseInt(jTable.getValueAt(jTable.getSelectedRow(),0).toString());}catch(NumberFormatException nfe){}
             code =  jTable.getValueAt(jTable.getSelectedRow(),1).toString();
             city = jTable.getValueAt(jTable.getSelectedRow(),2).toString();
-            imakante.salary.frmAddLitse.insertN_NM(area, code, city,nm);
+            imakante.salary.frmAddLitse.insertN_NM(area, code, city, nm);
         }
          UnloadWindow();
     }
