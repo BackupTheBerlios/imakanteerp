@@ -16,6 +16,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         lyear=lYear;
         initProcent();
         initTaxDOD();
+        
         initComponents();
         initCombo_Area();
         initCombo_Gender();
@@ -1166,7 +1167,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     private void jbAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAddActionPerformed
         
         int rabotnik = 0;
-        if (id_row!=0 && super_validateDates()){update_db_Record();}
+        if (id_row!=0 && super_validateDates()){update_db_Record();UnloadWindow();}
         if (id_row == 0 & super_validateDates() & isFieldsOK()){
             insert_db_Record();
             try{
@@ -1178,8 +1179,9 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                 stm.close();
             }catch(java.sql.SQLException sqle){}
             processNewSalary(rabotnik);
+            UnloadWindow();
         }
-        UnloadWindow();
+      
     }//GEN-LAST:event_jbAddActionPerformed
     
     private void jcbGenderKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jcbGenderKeyPressed
@@ -1847,28 +1849,37 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         String str_area="";
         int e_day=0, m_day = 0;
         try{
-            str_d = jtfAssignDate.getText().substring(0, 2);}catch(IndexOutOfBoundsException ioobe){}
-        try {i_days = Integer.parseInt(str_d);} catch(NumberFormatException nfe){}
-        try{stm = dbInternal.createStatement();
-        rs = stm.executeQuery("SELECT  seq FROM ls_monthpar WHERE pmonth= "+lmonth+"AND pyear ="+lyear);
-        while(rs.next()){
-            str_area = rs.getString("seq");
-            
-        }
-        }catch(java.sql.SQLException sqle){}
+            str_d = jtfAssignDate.getText().substring(0, 2);}catch(IndexOutOfBoundsException ioobe){ioobe.printStackTrace();}
+        try {
+            i_days = Integer.parseInt(str_d);
+        } catch(NumberFormatException nfe){nfe.printStackTrace();}
+        try{
+            stm = dbInternal.createStatement();
+            rs = stm.executeQuery("SELECT  seq FROM ls_monthpar WHERE pmonth = " + lmonth + " AND pyear ="+lyear);
+            while(rs.next()){
+                str_area = rs.getString("seq");
+                System.out.println("str_area = "+str_area);
+            }
+        }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        
         for (int i = 0; i<str_area.length(); i++){
             
-            if(str_area.charAt(i)==1){m_day++;}
+            if(String.valueOf(str_area.charAt(i)) == "1"){m_day++;
+            System.out.println("m_day = "+m_day);}
         }
         for (int i = i_days - 1; i <  str_area.length(); i++){
-            if(str_area.charAt(i)==1){ e_day++; }
+            if(String.valueOf(str_area.charAt(i)) == "1"){ e_day++; 
+            System.out.println("e_day = "+e_day);}
         }
         days = e_day;
+        System.out.println("days ="+days);
         month_days = m_day;
+        System.out.println("month_days ="+ month_days);
     }
     
     
     protected void processNewSalary(int rabotnik){
+        
         boolean charge_os = false; // dali rabotodatelia she plasha osigurovki razlichni ot zaplatata
         int id_rabotnik = rabotnik;
         float sht_zaplata = 0; // shatna rabotna zaplata
@@ -1883,7 +1894,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         int i_dod = 0; // array index za dod na konkretnia oblagaem
         
         charge_os = jCheckBox1.isSelected();
-        
+        processMDays();
         try {
             year_birth = Integer.parseInt(jtfEGN.getText().substring(0, 2));
         }catch(NumberFormatException nfe){year_birth = 60;}
@@ -1952,7 +1963,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                         "')"
                         ;
                 
-            }catch(java.sql.SQLException sqle){}
+            }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         }
         
     }
