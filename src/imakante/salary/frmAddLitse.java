@@ -988,7 +988,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         
         int rabotnik = 0;
         if (id_row!=0 && super_validateDates()){update_db_Record();}
-        if (id_row == 0 && super_validateDates()){
+        if (id_row == 0 & super_validateDates() & isFieldsOK()){
             insert_db_Record();
             try{
                 stm = dbInternal.createStatement();
@@ -1216,6 +1216,72 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         try{ doub = Double.parseDouble(str_d);}catch(NumberFormatException nfe){doub = 0; return doub;}
         return doub;
     }
+    
+    private boolean isFieldsOK(){
+        
+        boolean valid = true;
+        
+        
+        if(jtfCity.getText().equals("")){
+            jtfCity.requestFocus(); jtfCity.setBackground(java.awt.Color.PINK);
+            valid = false;
+            return valid;
+        }
+        if(jtfContractNum.getText().equals("")){
+            jtfContractNum.requestFocus(); jtfContractNum.setBackground(java.awt.Color.PINK);
+            valid = false;
+            return valid;
+        }
+        if(jtfEGN.getText().equals("")){
+            jtfEGN.requestFocus(); jtfEGN.setBackground(java.awt.Color.PINK);
+            valid = false;
+            return valid;
+        }
+        if(jtfBDate.getText().equals("")){
+            jtfBDate.requestFocus(); jtfBDate.setBackground(java.awt.Color.PINK);
+            valid = false;
+            return valid;
+        }
+       if(jtfName.getText().equals("")){
+            jtfName.requestFocus(); jtfName.setBackground(java.awt.Color.PINK);
+            valid = false;
+            return valid;
+        }
+        if(jtfMName.getText().equals("")){
+            jtfMName.requestFocus(); jtfMName.setBackground(java.awt.Color.PINK);
+            valid = false;
+            return valid;
+        }
+        if(jtfFName.getText().equals("")){
+            jtfFName.requestFocus(); jtfFName.setBackground(java.awt.Color.PINK);
+            valid = false;
+            return valid;
+        }
+        if(jtfAssignDate.getText().equals("")){
+            jtfAssignDate.requestFocus(); jtfAssignDate.setBackground(java.awt.Color.PINK);
+            valid = false;
+            return valid;
+        }
+        if(jtfLOSDays.getText().equals("")){
+            jtfMName.requestFocus(); jtfMName.setBackground(java.awt.Color.PINK);
+            valid = false;
+            return valid;
+        }
+        if(jtfLOSMonths.getText().equals("")){
+            jtfLOSMonths.requestFocus(); jtfLOSMonths.setBackground(java.awt.Color.PINK);
+            valid = false;
+            return valid;
+        }
+         if(jtfLOSYears.getText().equals("")){
+            jtfLOSYears.requestFocus(); jtfLOSYears.setBackground(java.awt.Color.PINK);
+            valid = false;
+            return valid;
+        }
+        
+        return valid;
+        
+    }
+    
     
     private void validateOsigFiled(){
         float osiSuma = 0;
@@ -1713,6 +1779,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                         "', '" + neto +
                         "')"
                         ;
+                
             }catch(java.sql.SQLException sqle){}
         }
         
