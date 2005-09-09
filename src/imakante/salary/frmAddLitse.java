@@ -1170,6 +1170,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         if (id_row!=0 && super_validateDates()){update_db_Record();UnloadWindow();}
         if (id_row == 0 & super_validateDates() & isFieldsOK()){
             insert_db_Record();
+            processMDays();
             try{
                 stm = dbInternal.createStatement();
                 rs = stm.executeQuery("SELECT id FROM ls_main WHERE name " + jtfName.getText() + " AND nomer = " + jtfNumber);
@@ -1894,7 +1895,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         int i_dod = 0; // array index za dod na konkretnia oblagaem
         
         charge_os = jCheckBox1.isSelected();
-        processMDays();
+       
         try {
             year_birth = Integer.parseInt(jtfEGN.getText().substring(0, 2));
         }catch(NumberFormatException nfe){nfe.printStackTrace();}
