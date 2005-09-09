@@ -445,6 +445,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         jpWhereabouts.add(jlAddress, gridBagConstraints);
 
         jtfAddress.setColumns(60);
+        jtfAddress.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfAddressKeyPressed(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
@@ -470,6 +476,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         jpWhereabouts.add(jlPhone, gridBagConstraints);
 
         jtfPhone.setColumns(15);
+        jtfPhone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfPhoneKeyPressed(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
@@ -486,6 +498,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         jpWhereabouts.add(jlMobile, gridBagConstraints);
 
         jtfMobile.setColumns(15);
+        jtfMobile.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfMobileKeyPressed(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
@@ -502,6 +520,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         jpWhereabouts.add(jlEmail, gridBagConstraints);
 
         jtfEmail.setColumns(25);
+        jtfEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfEmailKeyPressed(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
@@ -529,6 +553,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.insets = new java.awt.Insets(40, 30, 5, 5);
         jpWorker.add(jlContractNum, gridBagConstraints);
 
+        jtfContractNum.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfContractNumKeyPressed(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -546,6 +576,11 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         jtfAssignDate.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jtfAssignDateFocusLost(evt);
+            }
+        });
+        jtfAssignDate.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfAssignDateKeyPressed(evt);
             }
         });
 
@@ -568,6 +603,11 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                 jtfSignonDateFocusLost(evt);
             }
         });
+        jtfSignonDate.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfSignonDateKeyPressed(evt);
+            }
+        });
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -582,6 +622,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.gridy = 0;
         gridBagConstraints.insets = new java.awt.Insets(40, 5, 5, 5);
         jpWorker.add(jlGrounds, gridBagConstraints);
+
+        jtfGorunds.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfGorundsKeyPressed(evt);
+            }
+        });
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -600,6 +646,11 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         jtfTerm.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jtfTermFocusLost(evt);
+            }
+        });
+        jtfTerm.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfTermKeyPressed(evt);
             }
         });
 
@@ -622,6 +673,11 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                 jtfQuitDateFocusLost(evt);
             }
         });
+        jtfQuitDate.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfQuitDateKeyPressed(evt);
+            }
+        });
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -640,6 +696,11 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         jtfLastInsDate.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jtfLastInsDateFocusLost(evt);
+            }
+        });
+        jtfLastInsDate.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfLastInsDateKeyPressed(evt);
             }
         });
 
@@ -685,6 +746,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.insets = new java.awt.Insets(5, 30, 5, 5);
         jpWorker.add(jlHoursPerDay, gridBagConstraints);
 
+        jtfHoursPerDay.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfHoursPerDayKeyPressed(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
@@ -698,6 +765,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.gridy = 5;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jpWorker.add(jlSalary, gridBagConstraints);
+
+        jtfSalary.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfSalaryKeyPressed(evt);
+            }
+        });
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -747,6 +820,11 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                 jtfLOSDaysFocusLost(evt);
             }
         });
+        jtfLOSDays.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfLOSDaysKeyPressed(evt);
+            }
+        });
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -765,6 +843,11 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                 jtfLOSMonthsFocusLost(evt);
             }
         });
+        jtfLOSMonths.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfLOSMonthsKeyPressed(evt);
+            }
+        });
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -781,6 +864,11 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         jtfLOSYears.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jtfLOSYearsFocusLost(evt);
+            }
+        });
+        jtfLOSYears.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfLOSYearsKeyPressed(evt);
             }
         });
 
@@ -881,6 +969,11 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                 jbAddActionPerformed(evt);
             }
         });
+        jbAdd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jbAddKeyPressed(evt);
+            }
+        });
 
         jpButtons.add(jbAdd);
 
@@ -888,6 +981,11 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         jbChange.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbChangeActionPerformed(evt);
+            }
+        });
+        jbChange.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jbChangeKeyPressed(evt);
             }
         });
 
@@ -899,6 +997,11 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                 jbQuitActionPerformed(evt);
             }
         });
+        jbQuit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jbQuitKeyPressed(evt);
+            }
+        });
 
         jpButtons.add(jbQuit);
 
@@ -907,6 +1010,82 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         pack();
     }
     // </editor-fold>//GEN-END:initComponents
+    
+    private void jbQuitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbQuitKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jbQuit.doClick();}
+    }//GEN-LAST:event_jbQuitKeyPressed
+    
+    private void jbChangeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbChangeKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jbChange.doClick();}
+    }//GEN-LAST:event_jbChangeKeyPressed
+    
+    private void jbAddKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbAddKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jbAdd.doClick();}
+    }//GEN-LAST:event_jbAddKeyPressed
+    
+    private void jtfLOSYearsKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfLOSYearsKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){  jtfLOSYears.transferFocus();}
+    }//GEN-LAST:event_jtfLOSYearsKeyPressed
+    
+    private void jtfLOSMonthsKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfLOSMonthsKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){  jtfLOSMonths.transferFocus();}
+    }//GEN-LAST:event_jtfLOSMonthsKeyPressed
+    
+    private void jtfLOSDaysKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfLOSDaysKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){  jtfLOSDays.transferFocus();}
+    }//GEN-LAST:event_jtfLOSDaysKeyPressed
+    
+    private void jtfSalaryKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfSalaryKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){  jtfSalary.transferFocus();}
+    }//GEN-LAST:event_jtfSalaryKeyPressed
+    
+    private void jtfHoursPerDayKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfHoursPerDayKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){  jtfHoursPerDay.transferFocus();}
+    }//GEN-LAST:event_jtfHoursPerDayKeyPressed
+    
+    private void jtfLastInsDateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfLastInsDateKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){  jtfLastInsDate.transferFocus();}
+    }//GEN-LAST:event_jtfLastInsDateKeyPressed
+    
+    private void jtfQuitDateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfQuitDateKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){  jtfQuitDate.transferFocus();}
+    }//GEN-LAST:event_jtfQuitDateKeyPressed
+    
+    private void jtfTermKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfTermKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){  jtfTerm.transferFocus();}
+    }//GEN-LAST:event_jtfTermKeyPressed
+    
+    private void jtfSignonDateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfSignonDateKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){  jtfSignonDate.transferFocus();}
+    }//GEN-LAST:event_jtfSignonDateKeyPressed
+    
+    private void jtfGorundsKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfGorundsKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){  jtfGorunds.transferFocus();}
+    }//GEN-LAST:event_jtfGorundsKeyPressed
+    
+    private void jtfAssignDateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfAssignDateKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){  jtfAssignDate.transferFocus();}
+    }//GEN-LAST:event_jtfAssignDateKeyPressed
+    
+    private void jtfContractNumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfContractNumKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){  jtfContractNum.transferFocus();}
+    }//GEN-LAST:event_jtfContractNumKeyPressed
+    
+    private void jtfEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfEmailKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){  jtfEmail.transferFocus();}
+    }//GEN-LAST:event_jtfEmailKeyPressed
+    
+    private void jtfMobileKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfMobileKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){  jtfMobile.transferFocus();}
+    }//GEN-LAST:event_jtfMobileKeyPressed
+    
+    private void jtfPhoneKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPhoneKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){  jtfPhone.transferFocus();}
+    }//GEN-LAST:event_jtfPhoneKeyPressed
+    
+    private void jtfAddressKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfAddressKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){  jtfAddress.transferFocus();}
+    }//GEN-LAST:event_jtfAddressKeyPressed
     
     private void jtfOsigSumaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfOsigSumaKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jtfOsigSuma.transferFocus();}
@@ -1242,7 +1421,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             valid = false;
             return valid;
         }
-       if(jtfName.getText().equals("")){
+        if(jtfName.getText().equals("")){
             jtfName.requestFocus(); jtfName.setBackground(java.awt.Color.PINK);
             valid = false;
             return valid;
@@ -1272,7 +1451,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             valid = false;
             return valid;
         }
-         if(jtfLOSYears.getText().equals("")){
+        if(jtfLOSYears.getText().equals("")){
             jtfLOSYears.requestFocus(); jtfLOSYears.setBackground(java.awt.Color.PINK);
             valid = false;
             return valid;
