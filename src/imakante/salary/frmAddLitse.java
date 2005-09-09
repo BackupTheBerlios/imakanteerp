@@ -1791,15 +1791,8 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         
-        
-        
-        
-        
-        
-        
-        
-        
     }
+    
     protected void update_db_Record(){
         try{
             
