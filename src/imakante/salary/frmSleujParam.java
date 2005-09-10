@@ -337,6 +337,7 @@ public class frmSleujParam extends javax.swing.JDialog {
                 jTextField4.setText("" + rs.getString("nam_boss"));
                 jTextField5.setText("" + rs.getString("nam_acc"));
                 jTextField6.setText("" + rs.getString("address"));
+                jTextField7.setText("" + rs.getString("nkid"));
             } else{System.out.println("Prazen rezultat");};
         }catch(java.sql.SQLException sqle){}
     }
