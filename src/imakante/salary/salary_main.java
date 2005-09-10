@@ -665,7 +665,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ///
         javax.swing.JMenuItem ItmNKLID= new javax.swing.JMenuItem("\u041d\u0430\u0446\u0438\u043e\u043d\u0430\u043b\u0435\u043d \u043a\u043b\u0430\u0441\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 \u043d\u0430 \u0438\u043a\u043e\u043d\u043e\u043c\u0438\u0447\u0435\u0441\u043a\u0438\u0442\u0435 \u0434\u0435\u0439\u043d\u043e\u0441\u0442\u0438");
         ItmNKLID.setFont(menuFont);
-        ItmNKLID.setActionCommand("calendar");
+        ItmNKLID.setActionCommand("nkid");
         ItmNKLID.addActionListener(getJMenuActionListener());
         ItmNKLID.setBackground(new java.awt.Color(255,255,255));
         MnuSys.add(ItmNKLID);
@@ -698,9 +698,9 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmVidOsig.setBackground(new java.awt.Color(255,255,255));
         MnuSys.add(ItmVidOsig);
         
-        javax.swing.JMenuItem ItmNKID= new javax.swing.JMenuItem("\u041d\u0430\u0446\u0438\u043e\u043d\u0430\u043b\u0435\u043d \u043a\u043b\u0430\u0441\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 \u043d\u0430 \u0438\u043a\u043e\u043d\u043e\u043c\u0438\u0447\u0435\u0441\u043a\u0438\u0442\u0435 \u0434\u0435\u0439\u043d\u043e\u0441\u0442\u0438");
+        javax.swing.JMenuItem ItmNKID= new javax.swing.JMenuItem("\u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440");
         ItmNKID.setFont(menuFont);
-        ItmNKID.setActionCommand("nkid");
+        ItmNKID.setActionCommand("calendar");
         ItmNKID.addActionListener(getJMenuActionListener());
         ItmNKID.setBackground(new java.awt.Color(255,255,255));
         MnuSys.add(ItmNKID);
@@ -1452,7 +1452,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 
                 try{
                     loadNIKD();
-                } catch(Exception qle){
+                } catch(Exception qle){qle.printStackTrace();
                 };
             } else if(srcObject=="exit"){
                 UnloadWindow();

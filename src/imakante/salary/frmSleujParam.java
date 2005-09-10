@@ -13,7 +13,7 @@ public class frmSleujParam extends javax.swing.JDialog {
         try{
             stm = dbInternal.createStatement(java.sql.ResultSet.TYPE_SCROLL_SENSITIVE,
                     java.sql.ResultSet.CONCUR_UPDATABLE);
-            rs = stm.executeQuery("SELECT name_firm, dan_nom, bul, address, nam_boss, nam_acc FROM ls_sluj");
+            rs = stm.executeQuery("SELECT name_firm, dan_nom, bul, address, nam_boss, nam_acc, nkid FROM ls_sluj");
             
         }catch(java.sql.SQLException sqle){}
         
@@ -37,7 +37,6 @@ public class frmSleujParam extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
@@ -45,6 +44,9 @@ public class frmSleujParam extends javax.swing.JDialog {
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField7 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -88,7 +90,7 @@ public class frmSleujParam extends javax.swing.JDialog {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(5, 20, 20, 5);
+        gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 5);
         jPanel1.add(jLabel5, gridBagConstraints);
 
         jLabel6.setText("\u0410\u0434\u0440\u0435\u0441 \u043d\u0430 \u0434\u0430\u043d\u044a\u0447\u043d\u0430 \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044f");
@@ -99,17 +101,11 @@ public class frmSleujParam extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 5);
         jPanel1.add(jLabel6, gridBagConstraints);
 
-        jSeparator1.setBorder(new javax.swing.border.EtchedBorder());
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        jPanel1.add(jSeparator1, gridBagConstraints);
-
         jSeparator2.setBorder(new javax.swing.border.EtchedBorder());
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         jPanel1.add(jSeparator2, gridBagConstraints);
 
@@ -174,7 +170,7 @@ public class frmSleujParam extends javax.swing.JDialog {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 7;
         gridBagConstraints.ipadx = 350;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 20, 20);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
         jPanel1.add(jTextField5, gridBagConstraints);
 
         jTextField6.setFont(new java.awt.Font("Arial", 0, 11));
@@ -190,6 +186,29 @@ public class frmSleujParam extends javax.swing.JDialog {
         gridBagConstraints.ipadx = 350;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
         jPanel1.add(jTextField6, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel1.add(jSeparator3, gridBagConstraints);
+
+        jLabel7.setText("\u041d\u041a\u0418\u0414");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(5, 20, 20, 5);
+        jPanel1.add(jLabel7, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.ipadx = 60;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 20, 5);
+        jPanel1.add(jTextField7, gridBagConstraints);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -273,7 +292,9 @@ public class frmSleujParam extends javax.swing.JDialog {
                     "', bul = '" + jTextField3.getText() +
                     "', address = '" + jTextField6.getText() +
                     "', nam_boss = '" + jTextField4.getText() +
-                    "', nam_acc = '"  + jTextField5.getText() + "' WHERE Id = 1");
+                    "', nam_acc = '"  + jTextField5.getText() + 
+                    "', nkid = '" + jTextField6.getText() +
+                    "' WHERE Id = 1");
         } catch(java.sql.SQLException sqle){System.out.println("problem pri update");}
     }//GEN-LAST:event_jButton1ActionPerformed
     
@@ -286,16 +307,18 @@ public class frmSleujParam extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     public javax.swing.JTextField jTextField1;
     public javax.swing.JTextField jTextField2;
     public javax.swing.JTextField jTextField3;
     public javax.swing.JTextField jTextField4;
     public javax.swing.JTextField jTextField5;
     public javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
     java.sql.Statement stm=null;
     java.sql.ResultSet rs=null;

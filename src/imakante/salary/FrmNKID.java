@@ -171,15 +171,15 @@ public class FrmNKID extends javax.swing.JInternalFrame implements java.awt.even
         pack();
     }
     // </editor-fold>//GEN-END:initComponents
-
+    
     private void jButton3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton3KeyPressed
-// TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton3.doClick();}
     }//GEN-LAST:event_jButton3KeyPressed
-
+    
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
-
+    
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -191,7 +191,7 @@ public class FrmNKID extends javax.swing.JInternalFrame implements java.awt.even
     private void jButton4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton4KeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton4.doClick();}
     }//GEN-LAST:event_jButton4KeyPressed
-        
+    
     private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton1.doClick();}
     }//GEN-LAST:event_jButton1KeyPressed
@@ -203,7 +203,7 @@ public class FrmNKID extends javax.swing.JInternalFrame implements java.awt.even
     private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jTextField2.transferFocus();}
     }//GEN-LAST:event_jTextField2KeyPressed
-            
+    
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         
     }//GEN-LAST:event_formKeyPressed
@@ -212,7 +212,7 @@ public class FrmNKID extends javax.swing.JInternalFrame implements java.awt.even
 // search button
         
         try{
-            rsCus = stm.executeQuery("SELECT * FROM natc_clasifikator_deinosti WHERE LIKE name_prof LIKE '%" + jTextField2.getText()+"%' AND cod LIKE '%"+ jTextField3.getText()+"%'");
+            rsCus = stm.executeQuery("SELECT * FROM natc_clasifikator_deinosti WHERE  name LIKE '%" + jTextField2.getText()+"%' AND nkid LIKE '%"+ jTextField3.getText()+"%'");
             
             jScrollPane1.remove(jTable);
             jmodel = new imakante.com.CustomTableModel(dbInternal, rsCus, Names);
@@ -224,7 +224,7 @@ public class FrmNKID extends javax.swing.JInternalFrame implements java.awt.even
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
+        
         
         
         
@@ -322,8 +322,9 @@ public class FrmNKID extends javax.swing.JInternalFrame implements java.awt.even
             "\u0420\u044a\u043a\u043e\u0432\u043e\u0434\u043d\u0438 \u0441\u043b\u0443\u0436\u0438\u0442\u0435\u043b\u0438",
             "\u0410\u043d\u0430\u043b\u0438\u0442\u0438\u0447\u043d\u0438 \u0441\u043f\u0435\u0446\u0438\u0430\u043b\u0438\u0441\u0442\u0438",
             "\u041f\u0440\u0438\u043b\u043e\u0436\u043d\u0438 \u0441\u043f\u0435\u0446\u0438\u0430\u043b\u0438\u0441\u0442\u0438",
+            "\u041f\u043e\u043c\u043e\u0449\u0435\u043d \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b ",
             "\u041f\u0435\u0440\u0441\u043e\u043d\u0430\u043b \u0437\u0430\u0435\u0442 \u0441 \u0443\u0441\u043b\u0443\u0433\u0438 \u0437\u0430 \u043d\u0430\u0441\u0435\u043b., \u043e\u0445\u0440\u0430\u043d\u0430 \u0438 \u0442\u044a\u0440\u0433\u043e\u0432\u0438\u044f",
-            "\u041f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0438\u0442\u0435\u043b\u0438 \u0432 \u0441\u0435\u043b\u0441\u043a\u043e\u0442\u043e, \u0433\u043e\u0440\u0441\u043a\u043e\u0442\u043e \u0438 \u0440\u0438\u0431\u043d\u043e\u0442\u043e \u0441\u0442\u043e\u043f., \u043b\u043e\u0432\u0446\u0438 \u0438 \u0440\u0438\u0431\u043e\u043b\u043e\u0432\u0446\u0438",
+            "\u041f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0438\u0442\u0435\u043b\u0438 \u0432 \u0441\u0435\u043b\u0441\u043a\u043e\u0442\u043e, \u0433\u043e\u0440\u0441\u043a\u043e\u0442\u043e \u0438 \u0440\u0438\u0431\u043d\u043e\u0442\u043e \u0441\u0442\u043e\u043f. \u043b\u043e\u0432\u0446\u0438 \u0438 \u0440\u0438\u0431\u043e\u043b\u043e\u0432\u0446\u0438",
             "\u041a\u0432\u0430\u043b\u0438\u0444\u0438\u0446\u0438\u0440\u0430\u043d\u0438 \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u0435\u043d\u0438 \u0440\u0430\u0431\u043e\u0442\u043d\u0438\u0446\u0438",
             "\u041e\u043f\u0435\u0440\u0430\u0442\u043e\u0440\u0438 \u043d\u0430 \u0441\u044a\u043e\u0440\u044a\u0436\u0435\u043d\u0438\u044f, \u043c\u0430\u0448\u0438\u043d\u0438 \u0438 \u0442\u0440\u0430\u043d\u0441\u043f. \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430",
             "\u041d\u0438\u0441\u043a\u043e\u043a\u0432\u0430\u043b\u0438\u0444\u0438\u0446\u0438\u0440\u0430\u043d\u0438 \u0440\u0430\u0431\u043e\u0442\u043d\u0438\u0446\u0438"
