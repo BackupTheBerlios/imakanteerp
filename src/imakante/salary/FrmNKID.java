@@ -33,6 +33,8 @@ public class FrmNKID extends javax.swing.JInternalFrame implements java.awt.even
         jButton2 = new javax.swing.JButton();
         jTextField3 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
@@ -116,6 +118,29 @@ public class FrmNKID extends javax.swing.JInternalFrame implements java.awt.even
         jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
 
         jPanel3.setBorder(new javax.swing.border.EtchedBorder());
+        jButton3.setText("\u041d\u043e\u0432 \u0437\u0430\u043f\u0438\u0441");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jButton3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton3KeyPressed(evt);
+            }
+        });
+
+        jPanel3.add(jButton3);
+
+        jButton5.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jPanel3.add(jButton5);
+
         jButton1.setText("\u041f\u0440\u0435\u043d\u043e\u0441 \u0432\u044a\u0432 \u0444\u0438\u0440\u043c\u0435\u043d\u0430 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,6 +171,18 @@ public class FrmNKID extends javax.swing.JInternalFrame implements java.awt.even
         pack();
     }
     // </editor-fold>//GEN-END:initComponents
+
+    private void jButton3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton3KeyPressed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton3KeyPressed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
     
     private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton2.doClick();}
@@ -175,7 +212,7 @@ public class FrmNKID extends javax.swing.JInternalFrame implements java.awt.even
 // search button
         
         try{
-            rsCus = stm.executeQuery("SELECT * FROM natc_clasifikator_prof WHERE Id LIKE '%" + jTextField1.getText() + "%' AND name_prof LIKE '%" + jTextField2.getText()+"%' AND cod LIKE '%"+ jTextField3.getText()+"%'");
+            rsCus = stm.executeQuery("SELECT * FROM natc_clasifikator_deinosti WHERE LIKE name_prof LIKE '%" + jTextField2.getText()+"%' AND cod LIKE '%"+ jTextField3.getText()+"%'");
             
             jScrollPane1.remove(jTable);
             jmodel = new imakante.com.CustomTableModel(dbInternal, rsCus, Names);
@@ -187,13 +224,7 @@ public class FrmNKID extends javax.swing.JInternalFrame implements java.awt.even
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try{
-            if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
-                int row = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
-                int nom = imakante.com.pubMethods.getMaxNum("SELECT nomer FROM ls_dlajnosti",dbInternal, "nomer") + 1;
-                stm.executeUpdate("INSERT INTO ls_dlajnosti (nomer, id_ncl) VALUES('"+ nom + "', '"+row +"')");
-            }
-        } catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+       
         
         
         
@@ -265,7 +296,9 @@ public class FrmNKID extends javax.swing.JInternalFrame implements java.awt.even
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
