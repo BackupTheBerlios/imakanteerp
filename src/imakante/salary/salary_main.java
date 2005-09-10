@@ -35,6 +35,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     FrmAct        FormActStDlaj;
     FrmPic FormPic;
     FrmNasM    FormNasM;
+    FrmNKID     FormNKID;
     imakante.salary.FrmNCP FormNCP;
     java.awt.Font menuFont = new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 14);
     imakante.salary.frmLogo splash = new imakante.salary.frmLogo();
@@ -1146,9 +1147,27 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     }
     
     protected void loadNIKD(){
-        
-        // javax.swing.JDialog FormNIKD = new FrmNKID(this, true, dbCON);
-        // FormNIKD .setVisible(true);
+         boolean AlreadyLoaded = isLoaded("\u041d\u041a\u0418\u0414");
+        if(AlreadyLoaded==false){
+            try{
+                FormNKID = new imakante.salary.FrmNKID(dbCON, this);}catch(java.sql.SQLException sqle){}
+            
+            Desk1.add(FormNKID);
+            try{FormNKID.setMaximum(true);}catch(java.beans.PropertyVetoException bpve){}
+            FormNKID.setVisible(true);
+            
+            try{
+                FormNKID.setIcon(false);
+                FormNKID.setSelected(true);
+            }catch(java.beans.PropertyVetoException e){
+            }
+        }else{
+            try{
+                FormNKID.setIcon(false);
+                FormNKID.setSelected(true);
+            }catch(java.beans.PropertyVetoException e){
+            }
+        }
     }
     protected void loadNCP() {
         
