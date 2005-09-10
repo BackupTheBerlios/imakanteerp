@@ -224,7 +224,7 @@ public class FrmNKID extends javax.swing.JInternalFrame implements java.awt.even
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+insertNKID();        
         
         
         
@@ -273,7 +273,17 @@ public class FrmNKID extends javax.swing.JInternalFrame implements java.awt.even
         
     }
     
+    private void insertNKID(){
+    try{
+            if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
+                int row = (Integer) jTable.getValueAt(jTable.getSelectedRow(),1);
+                stm = dbInternal.createStatement();
+                stm.execute("UPDATE ls_slij SET nkid = '" + row + " id = 1");
+                
+            }
+        } catch(java.sql.SQLException sqle){sqle.printStackTrace();}
     
+    }
     
     
     
