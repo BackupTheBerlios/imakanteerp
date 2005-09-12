@@ -1908,7 +1908,8 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         }catch(NumberFormatException nfe){losYears = 0;}
         
         if( isFloat(jtfSalary.getText())){
-            
+            System.out.println("days "+days);
+            System.out.println("month_days "+month_days);
             sht_zaplata = Float.parseFloat(jtfSalary.getText()); //vzima shatnata zaplata
             System.out.println("sh_zaplata "+sht_zaplata);
             day_s = days/month_days; // koefitsient na izrabotneoto vreme - dni izraboteni/dni rabotni v mesetsa
