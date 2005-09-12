@@ -56,7 +56,7 @@ public class frmPrint extends javax.swing.JDialog {
         
         initComponents();
         dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        this.setSize(dim.width, dim.height);
+        this.setSize(dim.width, dim.height-20);
         int  x = (((dim.width)-(this.getSize().width))/2);
         int  y = (((dim.height)-(this.getSize().height))/2);
        

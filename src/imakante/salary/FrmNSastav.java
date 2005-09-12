@@ -293,7 +293,7 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
     // </editor-fold>//GEN-END:initComponents
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-           //java.swing.JDialog printS = new imakante.salary.frmPrint();
+          printList();
 
     }//GEN-LAST:event_jButton5ActionPerformed
     
@@ -412,6 +412,12 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
     public static final String iniNam = "11111111111111111111111111111";
     public static String strQ;
     public static String str1;
+    
+    java.io.InputStream fs = null;
+    net.sf.jasperreports.engine.JasperReport template = null;
+    java.util.HashMap reportParam;
+    String fName;
+    
     
     public static void initNames(String strIniTable){
         strQ="SELECT ";
@@ -591,7 +597,23 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
         
     }
     
-    
+    private void printList(){
+       String freport = "c:/list_01.jasper";
+        
+       reportParam = new java.util.HashMap();
+        
+        try{
+          fs = new java.io.FileInputStream(freport);
+        } catch (java.io.FileNotFoundException  ioex){
+            System.out.println("Ne moga da nameria faila  ");
+        }
+        fName =  salary_main.getNFirm();
+        reportParam.put("name", fName);
+        
+        javax.swing.JDialog formPrint = new imakante.salary.frmPrint(JFParentFrame,true,dbInternal,freport,reportParam);
+        formPrint.setVisible(true);
+      
+    }
     
     
     public void windowOpened(java.awt.event.WindowEvent e){

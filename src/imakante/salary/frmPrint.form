@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.0" type="org.netbeans.modules.form.forminfo.DialogFormInfo">
+<Form version="1.0" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <Properties>
     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
       <Font name="Tahoma" size="12" style="0"/>
