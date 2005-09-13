@@ -101,7 +101,7 @@ public class calculateSalary  {
         System.out.println("sum_ktu "+sum_ktu);
         zarabotka = zarabotka + sum_ktu;  // zarabotkata + suma KTU
         System.out.println("zarabotka "+zarabotka);
-        zarabotka_day = zarabotka /day_s;   // zarabotka za edin otraboten den
+        zarabotka_day = zarabotka /e_day;   // zarabotka za edin otraboten den
         System.out.println("zarabotka_day "+zarabotka_day);
         days_min_os = sum_min_os / day_s; //min os za edin otraboten den (min osiguritelen dneven prag)
         System.out.println("days_min_os "+days_min_os);

@@ -1170,7 +1170,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         if (id_row!=0 && super_validateDates()){update_db_Record();UnloadWindow();}
         if (id_row == 0 & super_validateDates() & isFieldsOK()){
             insert_db_Record();
-            processMDays();
+            
             try{
                 stm = dbInternal.createStatement();
                 rs = stm.executeQuery("SELECT id FROM ls_main WHERE name " + jtfName.getText() + " AND nomer = " + jtfNumber);
@@ -1179,7 +1179,13 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                 rs.close();
                 stm.close();
             }catch(java.sql.SQLException sqle){}
-            processNewSalary(rabotnik);
+            int b_year = Integer.parseInt((jtfBDate.getText()).substring(0, 2));
+            int a_date = Integer.parseInt((jtfAssignDate.getText()).substring(8, 10));
+            int los_years = Integer.parseInt(jtfLOSYears.getText());
+            double zaplata = Double.parseDouble(jtfSalary.getText());
+            double sum_os = Double.parseDouble(jtfOsigSuma.getText());
+            boolean is_check = jCheckBox1.isSelected();
+            imakante.salary.calculateSalary.processNewSalary(dbInternal, rabotnik, b_year, a_date, los_years, zaplata, sum_os, is_check);
             UnloadWindow();
         }
       
