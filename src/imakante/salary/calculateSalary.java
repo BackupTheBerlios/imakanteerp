@@ -1,14 +1,14 @@
 
 package imakante.salary;
 
-public class calculateSalary {
+public class calculateSalary  {
     
     
     
-    protected void processNewSalary(java.sql.Connection dbCon,
+    public static void processNewSalary(java.sql.Connection dbCon,
             int rabotnik, int b_year, int a_date, int los_years,
-            int mday, int br_year,
-            int wday, double s_zaplata,
+           
+            double s_zaplata,
             double sum_os, boolean pay_ins){
         
         int DOD_id = 0;// broi dod iteratsii
@@ -31,7 +31,7 @@ public class calculateSalary {
         double oblagaema = 0; //oblagaema suma s DOD
         double neto = 0; // suma za poluchavane
        
-        int year_birth = br_year; //godin na rajdane
+        int year_birth = b_year; //godin na rajdane
         int i_dod = 0; // array index za dod na konkretnia oblagaem
         int i_days = a_date; //data na zapochvane
         
@@ -41,7 +41,7 @@ public class calculateSalary {
         String str_d="";
         
         String str_area="";
-        int e_day=0, m_day = 0;
+         double e_day=0, m_day = 0;
         
         try{
             stm = intCon.createStatement();
@@ -63,11 +63,11 @@ public class calculateSalary {
                 prc_upf = rs.getDouble("proc_upf");
                 max_os = rs.getDouble("max_os_prag");}
             
-            rs = stm.executeQuery("SELECT * FROM ls_dod WHERE pmonth = "+ imakante.salary.salary_main.getMonth() + " AND  pyear = " + imakante.salary.salary_main.getYear());
+            rs = stm.executeQuery("SELECT * FROM ls_dod WHERE YEAR(datep) = " + imakante.salary.salary_main.getYear());
             while(rs.next()){
                 
                 taxDOD_doh[DOD_id] = rs.getDouble("doh");
-                taxDOD_sum[DOD_id] = rs.getDouble("suma");
+                taxDOD_sum[DOD_id] = rs.getDouble("sum");
                 taxDOD_prct[DOD_id] = rs.getDouble("prct");
                 
                 DOD_id++;}
@@ -79,11 +79,17 @@ public class calculateSalary {
             if(String.valueOf(str_area.charAt(i)).equals("1")){m_day++;
             System.out.println("m_day = "+m_day);}
         }
+         System.out.println("i_days = " + i_days);
+         
         for (int i = i_days - 1; i <  str_area.length(); i++){
             if(String.valueOf(str_area.charAt(i)).equals("1")){ e_day++;
             System.out.println("e_day = "+e_day);}
         }
-        day_s = e_day/m_day; // koefitsient na izrabotneoto vreme - dni izraboteni/dni rabotni v mesetsa
+         
+         
+         System.out.println("e_day = "+e_day);
+          System.out.println("m_day = "+m_day);
+        day_s = (e_day)/(m_day); // koefitsient na izrabotneoto vreme - dni izraboteni/dni rabotni v mesetsa
         System.out.println("day_s "+day_s);
         zarabotka = (sht_zaplata*day_s);  // zarabotka za otrabotenia period
         System.out.println("zarabotka "+zarabotka);
