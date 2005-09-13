@@ -62,15 +62,13 @@ public class FrmVedAvans extends javax.swing.JInternalFrame implements java.awt.
         //fName = FName;
         try{
             stm = dbInternal.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
-        } catch (java.sql.SQLException sqle){
-            System.out.println("Problem v statement - date");
-        }
+       
       
-        strYearsSQL = "SELECT ls_main.id, ls_main.first, ls_main.second,  ls_main.family," +
-                "  lsresult.avans FROM ls_main" +
-                " INNER JOIN lsresult ON (ls_main.Id = lsresult.idrab)  WHERE lsresult.avans IS NOT NULL AND lsresult.avans > 0 AND lsresult.pyear = " + lYear + " AND " + "lsresult.pmonth = " + lMonth;
-        try{
-            rsCus = stm.executeQuery(strYearsSQL);} catch (java.sql.SQLException sd){}
+          strYearsSQL = "SELECT ls_main.nomer, ls_main.first, ls_main.second,  ls_main.family," +
+                "  ls_result.avans FROM ls_main" +
+                " INNER JOIN ls_result ON (ls_main.id = ls_result.idrab)  WHERE ls_result.avans IS NOT NULL AND ls_result.avans > 0 AND ls_result.pyear = " + lYear + " AND " + "ls_result.pmonth = " + lMonth;
+       
+            rsCus = stm.executeQuery(strYearsSQL);} catch (java.sql.SQLException sqle){sqle.printStackTrace();}
         
         jmodel = new CustomTableModel(dbInternal, rsCus, null);
         jTable = new CustomTable(jmodel);
@@ -78,7 +76,7 @@ public class FrmVedAvans extends javax.swing.JInternalFrame implements java.awt.
         try {
             
             
-            
+            System.out.print("vatre v avansi");
             jbInit();
         } catch(Exception e) {
             e.printStackTrace();

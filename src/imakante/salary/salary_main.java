@@ -931,16 +931,17 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     }
     
     protected void loadVedomost¿Form() {
+        System.out.println("avansi 1");
         boolean AlreadyLoaded = isLoaded("¬Â‰ÓÏÓÒÚË ¿‚‡ÌÒË");
         
-        if (pMonth != 0 && (rightsUser.get("vedom").toString()) != "0"){
+        if (pMonth != 0){
             if(AlreadyLoaded==false){
-                
+                System.out.println("avansi 2");
                 try{
                     FormVedAvans = new FrmVedAvans(dbCON,this,pMonth,pYear);
                     Desk1.add(FormVedAvans);
                     FormVedAvans.setVisible(true);
-                }catch(java.sql.SQLException sqle){}
+                }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
                 
                 try{
                     FormVedAvans.setIcon(false);
