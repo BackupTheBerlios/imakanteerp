@@ -126,6 +126,7 @@ public class calculateSalary  {
             sum_upf = (sum_min_os*prc_upf)/100;
         }
         oblagaema = zarabotka - sum_oz - sum_pensii - sum_zo - sum_bezr - sum_upf;
+        System.out.println("oblagaema"  + oblagaema);
         for (int i= 0 ; i < DOD_id + 1; i++){
             if (oblagaema >= taxDOD_doh[i]){
                 i_dod = i;
@@ -134,14 +135,14 @@ public class calculateSalary  {
         }
         try {
            
-            String sql ="INSERT INTO ls_result (id_rab," +
+            String sql ="INSERT INTO ls_result (idrab," +
                     " day_used, zaplata, sum_kt, sum_oz_m, sum_pensii,"+
-                    "sum_zoo, sum_bzr, sum_upf, sum_osig_dohod, sum_obl_dohod, sum_dod, sum_end) VALUES(" +
+                    " sum_bzr, sum_upf, sum_osig_dohod, sum_obl_dohod, sum_dod, sum_end) VALUES(" +
                     "'" + id_rabotnik +
                     "', '" + e_day +
                     "', '" + sht_zaplata +
                     "', '" + sum_ktu +
-                     "', '" + sum_pensii +
+                    "', '" + sum_pensii +
                     "', '" + sum_zo +
                     "', '" + sum_bezr +
                     "', '" + sum_upf +
