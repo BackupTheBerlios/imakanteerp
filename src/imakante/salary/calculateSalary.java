@@ -58,13 +58,19 @@ public class calculateSalary  {
             while(rs.next()){
                 
                 ktu = rs.getDouble("ktu");
-                prc_oz = rs.getDouble("max_os_prag");
+                System.out.println("ktu" + ktu);
+                prc_oz = rs.getDouble("proc_oz");
+                System.out.println("prc_oz" +prc_oz);
                 prc_pensii = rs.getDouble("proc_pensii");
+                System.out.println("prc_pensii" +prc_pensii);
                 prc_zo =rs.getDouble("proc_zo");
+                System.out.println("proc_zo" + prc_zo);
                 prc_bezr = rs.getDouble("proc_bez");
+                 System.out.println("prc_bezr" + prc_bezr);
+                 
                 prc_upf = rs.getDouble("proc_upf");
                 max_os = rs.getDouble("max_os_prag");}
-            
+         
             rs = stm.executeQuery("SELECT * FROM ls_dod WHERE YEAR(datep) = " + imakante.salary.salary_main.getYear());
             while(rs.next()){
                 
