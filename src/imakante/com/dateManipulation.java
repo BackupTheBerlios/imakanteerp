@@ -2,6 +2,64 @@
 package imakante.com;
 
 public class dateManipulation {
+    
+    public static String convertDate(String str){ // obrasha formata na data po iziskvaniata na MySQL
+        String converted_str = "0000-00-00";
+        
+        if(str.length()==10){
+            try{
+                converted_str = str.substring(6, 10) + "-" +str.substring(3, 5) + "-" + str.substring(0, 2);
+            }catch(IndexOutOfBoundsException ioobe){converted_str = ""; return converted_str;}
+            return converted_str;
+        }
+                
+        if(str.length()==9){
+            if(imakante.com.pubMethods.isInteger(str.substring(0, 2))){
+                 try{
+                converted_str = str.substring(5, 9) + "-" +str.substring(3, 4) + "-" + str.substring(0, 2);
+            }catch(IndexOutOfBoundsException ioobe){converted_str = ""; return converted_str;}
+            return converted_str;
+            }else{
+            try{
+                converted_str = str.substring(5, 9) + "-" +str.substring(2, 4) + "-" + str.substring(0, 1);
+            }catch(IndexOutOfBoundsException ioobe){converted_str = ""; return converted_str;}
+            return converted_str;
+            }
+        
+        }
+        
+       if(str.length()==8){
+            try{
+                converted_str = str.substring(6, 8) + "-" +str.substring(3, 5) + "-" + str.substring(0, 2);
+            }catch(IndexOutOfBoundsException ioobe){converted_str = ""; return converted_str;}
+            return converted_str;
+        }
+        
+        if(str.length()==7){
+            if(imakante.com.pubMethods.isInteger(str.substring(0, 2))){
+                 try{
+                converted_str = str.substring(5, 7) + "-" +str.substring(3, 4) + "-" + str.substring(0, 2);
+            }catch(IndexOutOfBoundsException ioobe){converted_str = ""; return converted_str;}
+            return converted_str;
+            }else{
+            try{
+                converted_str = str.substring(5, 7) + "-" +str.substring(2, 4) + "-" + str.substring(0, 1);
+            }catch(IndexOutOfBoundsException ioobe){converted_str = ""; return converted_str;}
+            return converted_str;
+            }
+        
+        }
+        
+         if(str.length()==6){
+            try{
+                converted_str = str.substring(4, 6) + "-" +str.substring(2, 3) + "-" + str.substring(0, 1);
+            }catch(IndexOutOfBoundsException ioobe){converted_str = ""; return converted_str;}
+            return converted_str;
+        }
+        
+        return converted_str;
+    }
+    
     public static String parseDate(String str){
    //  boolean is_valid = true;
         String local_str = str;

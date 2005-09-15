@@ -19,6 +19,25 @@ public class pubMethods {
             return true;   
         }
         
+         public static boolean isFloat(String str){
+        
+            try{
+            float i = Float.parseFloat(str);
+            }catch(NumberFormatException nfe){return false;}
+            
+            return true;   
+        }
+         
+         
+         public static boolean isDouble(String str){
+        
+            try{
+            double i = Double.parseDouble(str);
+            }catch(NumberFormatException nfe){return false;}
+            
+            return true;   
+        }
+         
 	public static boolean recordExist(String strSQL,Connection sCN){
 		Statement stRE;
 		ResultSet rsRE;
