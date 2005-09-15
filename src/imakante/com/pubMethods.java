@@ -9,7 +9,16 @@ import java.awt.PrintJob;
 import javax.swing.*;
 
 public class pubMethods {
-
+    
+        public static boolean isInteger(String str){
+        
+            try{
+            int i = Integer.parseInt(str);
+            }catch(NumberFormatException nfe){return false;}
+            
+            return true;   
+        }
+        
 	public static boolean recordExist(String strSQL,Connection sCN){
 		Statement stRE;
 		ResultSet rsRE;
