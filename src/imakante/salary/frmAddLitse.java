@@ -1117,15 +1117,15 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     }//GEN-LAST:event_jtfPositionKeyPressed
     
     private void jtfLOSYearsFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfLOSYearsFocusLost
-        if(isNumber(jtfLOSYears.getText()) == false){jtfLOSYears.setText(""+0);jtfLOSYears.requestFocus();jtfLOSYears.setBackground(java.awt.Color.PINK);}else{jtfLOSYears.setBackground(java.awt.Color.WHITE);}
+        if(imakante.com.pubMethods.isInteger(jtfLOSYears.getText()) == false){jtfLOSYears.setText(""+0);jtfLOSYears.requestFocus();jtfLOSYears.setBackground(java.awt.Color.PINK);}else{jtfLOSYears.setBackground(java.awt.Color.WHITE);}
     }//GEN-LAST:event_jtfLOSYearsFocusLost
     
     private void jtfLOSMonthsFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfLOSMonthsFocusLost
-        if(isNumber(jtfLOSMonths.getText()) == false){jtfLOSMonths.setText(""+0);jtfLOSMonths.requestFocus();jtfLOSMonths.setBackground(java.awt.Color.PINK);}else{jtfLOSMonths.setBackground(java.awt.Color.WHITE);}
+        if(imakante.com.pubMethods.isInteger(jtfLOSMonths.getText()) == false){jtfLOSMonths.setText(""+0);jtfLOSMonths.requestFocus();jtfLOSMonths.setBackground(java.awt.Color.PINK);}else{jtfLOSMonths.setBackground(java.awt.Color.WHITE);}
     }//GEN-LAST:event_jtfLOSMonthsFocusLost
     
     private void jtfLOSDaysFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfLOSDaysFocusLost
-        if(isNumber(jtfLOSDays.getText()) == false){jtfLOSDays.setText(""+0);jtfLOSDays.requestFocus();jtfLOSDays.setBackground(java.awt.Color.PINK);}else{jtfLOSDays.setBackground(java.awt.Color.WHITE);}
+        if(imakante.com.pubMethods.isInteger(jtfLOSDays.getText()) == false){jtfLOSDays.setText(""+0);jtfLOSDays.requestFocus();jtfLOSDays.setBackground(java.awt.Color.PINK);}else{jtfLOSDays.setBackground(java.awt.Color.WHITE);}
     }//GEN-LAST:event_jtfLOSDaysFocusLost
     
     private void jtfTermFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfTermFocusLost
@@ -1167,8 +1167,8 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     private void jbAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAddActionPerformed
         
         int rabotnik = 0;
-        if (id_row!=0 && super_validateDates()){update_db_Record();UnloadWindow();}
-        if (id_row == 0 & super_validateDates() & isFieldsOK()){
+        if (id_row!=0 && isFieldsOK()){update_db_Record();UnloadWindow();}
+        if (id_row == 0 & isFieldsOK()){
             insert_db_Record();
             
             try{
@@ -1503,119 +1503,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         }catch(java.sql.SQLException sqle){}
         
     }
-    
-    protected boolean validateDate(String str){
-        
-        boolean is_valid = true;
-        String str_d ="";
-        String str_m ="";
-        String str_y ="";
-        int int_d = 0;
-        int int_m = 0;
-        int int_y =0;
-        if(str.equals("")){is_valid = true; return is_valid;}
-        try{
-            str_d = str.substring(0, 2);}catch(IndexOutOfBoundsException ioobe){is_valid = false; return is_valid;}
-        
-        try{
-            str_m = str.substring(3, 5);}catch(IndexOutOfBoundsException ioobe){is_valid = false; return is_valid;}
-        
-        try{
-            str_y = str.substring(6, 10);}catch(IndexOutOfBoundsException ioobe){is_valid = false; return is_valid;}
-        
-        try{
-            int_d = Integer.parseInt(str_d);
-        }catch(NumberFormatException nfe){nfe.printStackTrace(); is_valid = false; return is_valid;}
-        
-        try{
-            int_m =Integer.parseInt(str_m);
-        }catch(NumberFormatException nfe){nfe.printStackTrace();is_valid = false; return is_valid;}
-        
-        try{
-            int_y =Integer.parseInt(str_y);
-        }catch(NumberFormatException nfe){is_valid = false; return is_valid;}
-        
-        if(int_d==0 || int_m==0 ){ is_valid = false; return is_valid;}
-        if(int_d > 31 || int_m > 12 ){is_valid = false; return is_valid;}
-        
-        return is_valid;
-    }
-    
-    protected boolean super_validateDates(){
-        
-        boolean validate = true;
-        
-        if(validateDate(jtfTerm.getText()) == false){
-            jtfTerm.requestFocus();
-            jtfTerm.setBackground(java.awt.Color.PINK);
-            validate = false;
-            return validate;
-        }
-        
-        if(validateDate(jtfLastInsDate.getText()) == false){
-            jtfLastInsDate.requestFocus();
-            jtfLastInsDate.setBackground(java.awt.Color.PINK);
-            validate = false;
-            return validate;
-        }
-        
-        if(validateDate(jtfQuitDate.getText()) == false){
-            jtfQuitDate.requestFocus();
-            jtfQuitDate.setBackground(java.awt.Color.PINK);
-            validate = false;
-            return validate;
-        }
-        
-        if(validateDate(jtfSignonDate.getText()) == false){
-            jtfSignonDate.requestFocus();
-            jtfSignonDate.setBackground(java.awt.Color.PINK);
-            validate = false;
-            return validate;
-        }
-        
-        if(validateDate(jtfAssignDate.getText()) == false){
-            jtfAssignDate.requestFocus();
-            jtfAssignDate.setBackground(java.awt.Color.PINK);
-            validate = false;
-            return validate;
-        }
-        
-        if(validateDate(jtfBDate.getText()) == false){
-            jtfBDate.requestFocus();
-            jtfBDate.setBackground(java.awt.Color.PINK);
-            validate = false;
-            return validate;
-        }
-        
-        if(validateDate(jtfBDate.getText()) == false){
-            jtfBDate.requestFocus();
-            jtfBDate.setBackground(java.awt.Color.PINK);
-            validate = false;
-            return validate;
-        }
-        
-        if(validateDate(jtfIDCDate.getText()) == false){
-            jtfIDCDate.requestFocus();
-            jtfIDCDate.setBackground(java.awt.Color.PINK);
-            validate = false;
-            return validate;
-        }
-        
-        return validate;
-    }
-    protected boolean isNumber(String str_num){
-        boolean is_number = true;
-        try{
-            int y = Integer.parseInt(str_num);}catch(NumberFormatException nfe){is_number = false; return is_number; }
-        return is_number;
-    }
-    protected boolean isFloat(String str_float){
-        boolean is_float = true;
-        try{
-            float f = Float.parseFloat(str_float);}catch(NumberFormatException nfe){is_float =false; return is_float;}
-        return is_float;
-        
-    }
+ 
     protected String convertDate(String str){
         String converted_str = "0000-00-00";
         if(str.equals("")!=true){
@@ -1848,144 +1736,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         
         
     }
-    
-    
-    protected void processMDays(){
-        String str_d="";
-        int i_days=0;
-        String str_area="";
-        int e_day=0, m_day = 0;
-        try{
-            str_d = jtfAssignDate.getText().substring(0, 2);}catch(IndexOutOfBoundsException ioobe){ioobe.printStackTrace();}
-        try {
-            i_days = Integer.parseInt(str_d);
-        } catch(NumberFormatException nfe){nfe.printStackTrace();}
-        try{
-            stm = dbInternal.createStatement();
-            rs = stm.executeQuery("SELECT  seq FROM ls_monthpar WHERE pmonth = " + lmonth + " AND pyear ="+lyear);
-            while(rs.next()){
-                str_area = rs.getString("seq");
-                System.out.println("str_area = "+str_area);
-            }
-        }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
-        
-        for (int i = 0; i<str_area.length(); i++){
-            
-            if(String.valueOf(str_area.charAt(i)).equals("1")){m_day++;
-            System.out.println("m_day = "+m_day);}
-        }
-        for (int i = i_days - 1; i <  str_area.length(); i++){
-            if(String.valueOf(str_area.charAt(i)).equals("1")){ e_day++; 
-            System.out.println("e_day = "+e_day);}
-        }
-        days = e_day;
-        System.out.println("days ="+days);
-        month_days = m_day;
-        System.out.println("month_days ="+ month_days);
-    }
-    
-    
-    protected void processNewSalary(int rabotnik){
-        
-        boolean charge_os = false; // dali rabotodatelia she plasha osigurovki razlichni ot zaplatata
-        int id_rabotnik = rabotnik;
-        float sht_zaplata = 0; // shatna rabotna zaplata
-        double zarabotka = 0;  // zaraboteno
-        int losYears = 0;  // godini trudov staj
-        double day_s =1; // dni otraboteni
-        double days_min_os = 0;  //suma dnevna minimalna osigurovka
-        double zarabotka_day = 0; // dnevna zarabotka
-        double oblagaema = 0; //oblagaema suma s DOD
-        double neto = 0; // suma za poluchavane
-        int year_birth = 0; //godin na rajdane
-        int i_dod = 0; // array index za dod na konkretnia oblagaem
-        
-        charge_os = jCheckBox1.isSelected();
-       
-        try {
-            year_birth = Integer.parseInt(jtfEGN.getText().substring(0, 2));
-        }catch(NumberFormatException nfe){nfe.printStackTrace();}
-        try {
-            sum_min_os = 230;
-        }catch(NumberFormatException nfe){}
-        try{
-            
-            losYears = Integer.parseInt(jtfLOSYears.getText()); // vzimane na broia na izrabotenite godini
-        }catch(NumberFormatException nfe){losYears = 0;}
-        
-        if( isFloat(jtfSalary.getText())){
-            System.out.println("days "+days);
-            System.out.println("month_days "+month_days);
-            sht_zaplata = Float.parseFloat(jtfSalary.getText()); //vzima shatnata zaplata
-            System.out.println("sh_zaplata "+sht_zaplata);
-            day_s = days/month_days; // koefitsient na izrabotneoto vreme - dni izraboteni/dni rabotni v mesetsa
-            System.out.println("day_s "+day_s);
-            zarabotka = (sht_zaplata*day_s);  // zarabotka za otrabotenia period
-            System.out.println("zarabotka "+zarabotka);
-            sum_ktu = ((zarabotka*ktu*losYears)/100);  // suma za KTU
-             System.out.println("sum_ktu "+sum_ktu);
-            zarabotka = zarabotka + sum_ktu;  // zarabotkata + suma KTU
-            System.out.println("zarabotka "+zarabotka);
-            zarabotka_day = zarabotka /day_s;   // zarabotka za edin otraboten den
-            System.out.println("zarabotka_day "+zarabotka_day);
-            days_min_os = sum_min_os / day_s; //min os za edin otraboten den (min osiguritelen dneven prag)
-            System.out.println("days_min_os "+days_min_os);
-            
-            if(zarabotka_day > sum_min_os && zarabotka_day < (max_os/day_s) && charge_os == false){  //proverka dali izrabotenoto dnevno i min osiguritelen dneven prag
-                sum_oz  = (zarabotka*prc_oz)/100;
-                System.out.println("sum_oz "+sum_oz);
-                if (year_birth < 60){
-                    sum_pensii = ((zarabotka*(prc_pensii + 0.75))/100);
-                }else{sum_pensii =((zarabotka*prc_pensii)/100);}
-                sum_zo = (zarabotka*prc_zo)/100;
-                sum_bezr = (zarabotka*prc_bezr)/100;
-                sum_upf = (zarabotka*prc_upf)/100;
-                
-            }else{
-                sum_oz  = (sum_min_os*prc_oz)/100;
-                if (year_birth < 60){
-                    sum_pensii = ((sum_min_os*(prc_pensii + 0.75))/100);
-                }else{sum_pensii =((sum_min_os*prc_pensii)/100);}
-                sum_zo = (sum_min_os*prc_zo)/100;
-                sum_bezr = (sum_min_os*prc_bezr)/100;
-                sum_upf = (sum_min_os*prc_upf)/100;
-            }
-            oblagaema = zarabotka - sum_oz - sum_pensii - sum_zo - sum_bezr - sum_upf;
-            for (int i= 0 ; i < DOD_id + 1; i++){
-                if (oblagaema >= taxDOD_doh[i]){
-                    i_dod = i;
-                }
-                neto = oblagaema - taxDOD_sum[i_dod] - (((oblagaema - taxDOD_sum[i_dod])*taxDOD_prct[i_dod])/100);
-            }
-            try {
-                stm =dbInternal.createStatement();
-                String sql ="INSERT INTO ls_result (id_rab, id_dlaj, cat_rab, m_rab, y_rab," +
-                        "h_dogovor_day, day_used, zaplata, sum_kt, sum_oz_m, sum_pensii,"+
-                        "sum_zoo, sum_bzr, sum_upf, sum_osig_dohod, sum_obl_dohod, sum_dod, sum_end) VALUES(" +
-                        "'" + id_rabotnik +
-                        "', '" +
-                        "', '" + jtfTypeEmp.getText() +
-                        "', '" + jtfLOSMonths.getText() +
-                        "', '" + jtfLOSYears.getText() +
-                        "', '" + jtfTypeEmp.getText() +
-                        "', '" + sum_zo +
-                        "', '" + sum_bezr +
-                        "', '" + sum_upf +
-                        "', '" + sum_zo +
-                        "', '" + jtfOsigSuma.getText() +
-                        "', '" + oblagaema +
-                        "', '" + (oblagaema - neto) +
-                        "', '" + neto +
-                        "')"
-                        ;
-                stm.execute(sql);
-                
-            }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
-        }
-        
-    }
-    
-    
+   
     protected void checkNM(){
         String City = "";
         City = jtfCity.getText();
