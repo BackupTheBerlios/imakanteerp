@@ -1504,17 +1504,6 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         
     }
  
-    protected String convertDate(String str){
-        String converted_str = "0000-00-00";
-        if(str.equals("")!=true){
-            try{
-                converted_str = str.substring(6, 10) + "-" +str.substring(3, 5) + "-" + str.substring(0, 2);
-            }catch(IndexOutOfBoundsException ioobe){converted_str = ""; return converted_str;}
-            return converted_str;
-        }else{converted_str = ""; return converted_str;}
-        
-        
-    }
     protected static void initProcent(){
         try{
             stm = dbInternal.createStatement(java.sql.ResultSet.TYPE_SCROLL_SENSITIVE,
@@ -1673,11 +1662,11 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             strSQl = "INSERT INTO ls_dates (id_rab, b_date, data_izd_LK, data_naznach, data_postypwane, srok_dogov) VALUES('"
                     + inter_id +
                     
-                    "', '" + convertDate(jtfBDate.getText()) +
-                    "', '" + convertDate(jtfIDCDate.getText()) +
-                    "', '" + convertDate(jtfAssignDate.getText()) +
-                    "', '" + convertDate(jtfSignonDate.getText()) +
-                    "', '" + convertDate(jtfTerm.getText()) +
+                    "', '" + imakante.com.dateManipulation.convertDate(jtfBDate.getText()) +
+                    "', '" + imakante.com.dateManipulation.convertDate(jtfIDCDate.getText()) +
+                    "', '" + imakante.com.dateManipulation.convertDate(jtfAssignDate.getText()) +
+                    "', '" + imakante.com.dateManipulation.convertDate(jtfSignonDate.getText()) +
+                    "', '" + imakante.com.dateManipulation.convertDate(jtfTerm.getText()) +
                     "')";
             System.out.println(strSQl);
             stm.execute(strSQl);
@@ -1723,11 +1712,11 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             
             stm.execute("UPDATE ls_dates SET (b_date, date_izd_LK, date_naznach,data_postypwane, srok_dogov) VALUES(" + inter_id +
                     
-                    "', '" + convertDate(jtfBDate.getText()) +
-                    "', '" + convertDate(jtfIDCDate.getText()) +
-                    "', '" + convertDate(jtfAssignDate.getText()) +
-                    "', '" + convertDate(jtfSignonDate.getText()) +
-                    "', '" + convertDate(jtfTerm.getText()) +
+                    "', '" + imakante.com.dateManipulation.convertDate(jtfBDate.getText()) +
+                    "', '" + imakante.com.dateManipulation.convertDate(jtfIDCDate.getText()) +
+                    "', '" + imakante.com.dateManipulation.convertDate(jtfAssignDate.getText()) +
+                    "', '" + imakante.com.dateManipulation.convertDate(jtfSignonDate.getText()) +
+                    "', '" + imakante.com.dateManipulation.convertDate(jtfTerm.getText()) +
                     ") WHERE id_rab = " + id_row);
             
             
