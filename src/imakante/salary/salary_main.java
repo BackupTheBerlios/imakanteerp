@@ -6,6 +6,8 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     javax.swing.JPanel Panel1;
     javax.swing.JDesktopPane Desk1 = new javax.swing.JDesktopPane();
     
+    private static int id_period = 1;
+    
     private javax.swing.JLabel StatusLabel = new javax.swing.JLabel("\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415 - \u041b\u0421",javax.swing.JLabel.CENTER);
     javax.swing.JLabel BTlabel = new javax.swing.JLabel();
     public static javax.swing.JLabel PeriodLabel = new javax.swing.JLabel();
@@ -33,6 +35,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     FrmVedAvans   FormVedAvans;
     frmSleujParam  FormSleujParam;
     FrmAct        FormActStDlaj;
+    FrmExternalRes FormExtRes;
     FrmPic FormPic;
     FrmNasM    FormNasM;
     FrmNKID     FormNKID;
@@ -309,6 +312,17 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         MnuDoc.add(ItmOffer);
         
         //
+        
+        
+        //
+        javax.swing.JMenuItem ItmPr = new javax.swing.JMenuItem("\u0414\u0430\u043d\u043d\u0438 \u043e\u0442 \u043f\u0440\u0435\u0434\u0438\u0448\u043d\u0438 \u041e\u0441\u0438\u0433\u0443\u0440\u0438\u0442\u0435\u043b\u0438");
+        ItmPr.setFont(menuFont);
+        ItmPr.setMnemonic('f');
+        ItmPr.setActionCommand("pred");
+        ItmPr.addActionListener(getJMenuActionListener());
+        ItmPr.setBackground(new java.awt.Color(255,255,255));
+        
+        MnuDoc.add(ItmPr);
         //
         javax.swing.JMenu MnuKasa = new javax.swing.JMenu("\u0412\u0415\u0414\u041e\u041c\u041e\u0421\u0422\u0418");
         MnuKasa.setFont(menuFont);
@@ -1148,7 +1162,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     }
     
     protected void loadNIKD(){
-         boolean AlreadyLoaded = isLoaded("\u041d\u041a\u0418\u0414");
+        boolean AlreadyLoaded = isLoaded("\u041d\u041a\u0418\u0414");
         if(AlreadyLoaded==false){
             try{
                 FormNKID = new imakante.salary.FrmNKID(dbCON, this);}catch(java.sql.SQLException sqle){}
@@ -1216,6 +1230,32 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
             try{
                 FormNasM.setIcon(false);
                 FormNasM.setSelected(true);
+            }catch(java.beans.PropertyVetoException e){
+            }
+        }
+        
+    }
+     protected void loadExtern() {
+        
+        boolean AlreadyLoaded = isLoaded("\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u0438 \u043c\u0435\u0441\u0442\u0430");
+        if(AlreadyLoaded==false){
+            try{
+                System.out.println("vliza v loadExtern");
+            FormExtRes= new imakante.salary.FrmExternalRes(dbCON, this) ;}catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+            
+            Desk1.add(FormExtRes);
+            try{FormExtRes.setMaximum(true);}catch(java.beans.PropertyVetoException bpve){bpve.printStackTrace();}
+            FormExtRes.setVisible(true);
+            
+            try{
+                FormExtRes.setIcon(false);
+                FormExtRes.setSelected(true);
+            }catch(java.beans.PropertyVetoException e){
+            }
+        }else{
+            try{
+                FormExtRes.setIcon(false);
+                FormExtRes.setSelected(true);
             }catch(java.beans.PropertyVetoException e){
             }
         }
@@ -1449,6 +1489,14 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                     loadVidOsig();
                 } catch(Exception qle){
                 };
+                
+            } else if(srcObject=="pred"){
+                System.out.println("Vliza v else if");
+                try{
+                    loadExtern();
+                } catch(Exception qle){
+                };
+                
             } else if(srcObject=="nkid"){
                 
                 try{
@@ -1638,11 +1686,12 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         try{
             java.sql.Statement stm = dbInternal.createStatement();
-            java.sql.ResultSet rs = stm.executeQuery("SELECT MAX(ls_monthpar.pmonth) AS lmonth, MAX(ls_monthpar.pyear) AS lyear FROM ls_monthpar WHERE ls_monthpar.pyear = (SELECT MAX(ls_monthpar.pyear) FROM ls_monthpar)");
+            java.sql.ResultSet rs = stm.executeQuery("SELECT ls_monthpar.pmonth AS lmonth, ls_monthpar.pyear AS lyear, MAX(ls_monthpar.id_period) AS period FROM ls_monthpar WHERE ls_monthpar.id_period = (SELECT MAX(id_period) FROM ls_monthpar) GROUP BY ls_monthpar.id_period");
             
             while(rs.next()){
                 imonth = rs.getInt("lmonth");
                 iyear  = rs.getInt("lyear");
+                id_period = rs.getInt("period");
                 
             }
             System.out.println("ddsfdsfs1 " + imonth);
@@ -1666,6 +1715,14 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     public static void loadNewBase(){
         javax.swing.JFrame FrmNBase = new imakante.salary.FrmNewBase();
         FrmNBase.setVisible(true);
+    }
+    
+    public static int getId_period() {
+        return id_period;
+    }
+    
+    public static void setId_period(int aId_period) {
+        id_period = aId_period;
     }
     
     

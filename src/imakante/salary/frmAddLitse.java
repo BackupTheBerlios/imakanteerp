@@ -6,14 +6,15 @@ import java.awt.event.KeyEvent;
 public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.WindowListener{
     
     
-    public frmAddLitse(javax.swing.JFrame parent, boolean modal, java.sql.Connection dbCon, int id_rab, int lMonth, int lYear) {
+    public frmAddLitse(javax.swing.JFrame parent, boolean modal, java.sql.Connection dbCon, int id_rab) {
         super(parent, modal);
         parent_in=parent;
         
         dbInternal = dbCon;
         id_row = id_rab;
-        lmonth=lMonth;
-        lyear=lYear;
+        id_period = imakante.salary.salary_main.getId_period();
+//        lmonth=lMonth;
+//        lyear=lYear;
         initProcent();
         initTaxDOD();
         
@@ -1117,43 +1118,50 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     }//GEN-LAST:event_jtfPositionKeyPressed
     
     private void jtfLOSYearsFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfLOSYearsFocusLost
-        if(imakante.com.pubMethods.isInteger(jtfLOSYears.getText()) == false){jtfLOSYears.setText(""+0);jtfLOSYears.requestFocus();jtfLOSYears.setBackground(java.awt.Color.PINK);}else{jtfLOSYears.setBackground(java.awt.Color.WHITE);}
+        if(imakante.com.pubMethods.isInteger(jtfLOSYears.getText()) == false){jtfLOSYears.setText("" + 0);jtfLOSYears.requestFocus();jtfLOSYears.setBackground(java.awt.Color.PINK);}else{jtfLOSYears.setBackground(java.awt.Color.WHITE);}
     }//GEN-LAST:event_jtfLOSYearsFocusLost
     
     private void jtfLOSMonthsFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfLOSMonthsFocusLost
-        if(imakante.com.pubMethods.isInteger(jtfLOSMonths.getText()) == false){jtfLOSMonths.setText(""+0);jtfLOSMonths.requestFocus();jtfLOSMonths.setBackground(java.awt.Color.PINK);}else{jtfLOSMonths.setBackground(java.awt.Color.WHITE);}
+        if(imakante.com.pubMethods.isInteger(jtfLOSMonths.getText()) == false){jtfLOSMonths.setText("" + 0);jtfLOSMonths.requestFocus();jtfLOSMonths.setBackground(java.awt.Color.PINK);}else{jtfLOSMonths.setBackground(java.awt.Color.WHITE);}
     }//GEN-LAST:event_jtfLOSMonthsFocusLost
     
     private void jtfLOSDaysFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfLOSDaysFocusLost
-        if(imakante.com.pubMethods.isInteger(jtfLOSDays.getText()) == false){jtfLOSDays.setText(""+0);jtfLOSDays.requestFocus();jtfLOSDays.setBackground(java.awt.Color.PINK);}else{jtfLOSDays.setBackground(java.awt.Color.WHITE);}
+        if(imakante.com.pubMethods.isInteger(jtfLOSDays.getText()) == false){jtfLOSDays.setText("" + 0);jtfLOSDays.requestFocus();jtfLOSDays.setBackground(java.awt.Color.PINK);}else{jtfLOSDays.setBackground(java.awt.Color.WHITE);}
     }//GEN-LAST:event_jtfLOSDaysFocusLost
     
     private void jtfTermFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfTermFocusLost
-        if(validateDate(jtfTerm.getText()) == false){jtfTerm.requestFocus();jtfTerm.setBackground(java.awt.Color.PINK);}else{jtfTerm.setBackground(java.awt.Color.WHITE);}
+      String s = imakante.com.dateManipulation.parseDate(jtfTerm.getText());
+      jtfTerm.setText(s);
     }//GEN-LAST:event_jtfTermFocusLost
     
     private void jtfLastInsDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfLastInsDateFocusLost
-        if(validateDate(jtfLastInsDate.getText()) == false){jtfLastInsDate.requestFocus();jtfLastInsDate.setBackground(java.awt.Color.PINK);}else{jtfLastInsDate.setBackground(java.awt.Color.WHITE);}
+      String s = imakante.com.dateManipulation.parseDate(jtfLastInsDate.getText());
+      jtfLastInsDate.setText(s);
     }//GEN-LAST:event_jtfLastInsDateFocusLost
     
     private void jtfQuitDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfQuitDateFocusLost
-        if(validateDate(jtfQuitDate.getText()) == false){jtfQuitDate.requestFocus();jtfQuitDate.setBackground(java.awt.Color.PINK);}else{jtfQuitDate.setBackground(java.awt.Color.WHITE);}
+       String s = imakante.com.dateManipulation.parseDate(jtfQuitDate.getText());
+      jtfQuitDate.setText(s);
     }//GEN-LAST:event_jtfQuitDateFocusLost
     
     private void jtfSignonDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfSignonDateFocusLost
-        if(validateDate(jtfSignonDate.getText()) == false){jtfSignonDate.requestFocus();jtfSignonDate.setBackground(java.awt.Color.PINK);}else{jtfSignonDate.setBackground(java.awt.Color.WHITE);}
+        String s = imakante.com.dateManipulation.parseDate(jtfSignonDate.getText());
+       jtfSignonDate.setText(s);
     }//GEN-LAST:event_jtfSignonDateFocusLost
     
     private void jtfAssignDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfAssignDateFocusLost
-        if(validateDate(jtfAssignDate.getText()) == false){jtfAssignDate.requestFocus();jtfAssignDate.setBackground(java.awt.Color.PINK);}else{jtfAssignDate.setBackground(java.awt.Color.WHITE);}
+       String s = imakante.com.dateManipulation.parseDate(jtfAssignDate.getText());
+       jtfAssignDate.setText(s);
     }//GEN-LAST:event_jtfAssignDateFocusLost
     
     private void jtfBDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfBDateFocusLost
-        if(validateDate(jtfBDate.getText()) == false){jtfBDate.requestFocus();jtfBDate.setBackground(java.awt.Color.PINK);}else{jtfBDate.setBackground(java.awt.Color.WHITE);}
+        String s = imakante.com.dateManipulation.parseDate(jtfBDate.getText());
+        jtfBDate.setText(s);
     }//GEN-LAST:event_jtfBDateFocusLost
     
     private void jtfIDCDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfIDCDateFocusLost
-        if(validateDate(jtfIDCDate.getText()) == false){jtfIDCDate.requestFocus();jtfIDCDate.setBackground(java.awt.Color.PINK);}else{jtfIDCDate.setBackground(java.awt.Color.WHITE);}
+        String s = imakante.com.dateManipulation.parseDate(jtfIDCDate.getText());
+        jtfIDCDate.setText(s);
     }//GEN-LAST:event_jtfIDCDateFocusLost
     
     private void jtfCityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfCityFocusLost
@@ -1392,6 +1400,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     public String EGN;
     int inter_id;
     int DOD_id = 0;// broi dod iteratsii
+    private int id_period;
     public static int  id_dlajnost, lmonth, lyear, days, month_days;
     public static String name_dlajnost;
     public static String name_os, cod_os;

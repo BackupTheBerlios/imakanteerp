@@ -167,13 +167,14 @@ public class frmNachDate extends javax.swing.JDialog {
         try{
             
             stm = dbInternal.createStatement();
-            stm.execute("INSERT INTO ls_monthpar (pmonth, pyear) VALUES ('"+transform2int(jTextField1.getText())+ "', '"+transform2int(jTextField2.getText()) +"')");
+            stm.execute("INSERT INTO ls_monthpar (pmonth, pyear, id_period) VALUES ('"+transform2int(jTextField1.getText())+ "', '"+transform2int(jTextField2.getText()) +"', '1')");
             
         }catch(java.sql.SQLException sqle){
            sqle.printStackTrace();
         }
-         imakante.salary.salary_main.setMonth(transform2int(jTextField1.getText()));
-            imakante.salary.salary_main.setYear(transform2int(jTextField2.getText()));
+        imakante.salary.salary_main.setMonth(transform2int(jTextField1.getText()));
+        imakante.salary.salary_main.setYear(transform2int(jTextField2.getText()));
+        imakante.salary.salary_main.setId_period(1);
     }
     
     

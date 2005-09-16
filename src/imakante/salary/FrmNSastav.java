@@ -11,6 +11,7 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
         dbInternal = srcCN;
         JFParentFrame = getParentFrame;
         str1=iniNam;
+        id_period = imakante.salary.salary_main.getId_period();
         initNames(str1);
         initResource();
         initComponents();
@@ -412,6 +413,7 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
     public static final String iniNam = "11111111111111111111111111111";
     public static String strQ;
     public static String str1;
+    private static int id_period;
     
     java.io.InputStream fs = null;
     net.sf.jasperreports.engine.JasperReport template = null;
@@ -493,7 +495,7 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
             try{
                 int lMonth = imakante.salary.salary_main.getMonth();
                 int lYear = imakante.salary.salary_main.getYear();
-                imakante.salary.frmAddLitse frmDialog = new imakante.salary.frmAddLitse(JFParentFrame, false, dbInternal, row, lMonth, lYear);
+                imakante.salary.frmAddLitse frmDialog = new imakante.salary.frmAddLitse(JFParentFrame, false, dbInternal, row);
                 frmDialog.setVisible(true);
                 
                 
@@ -544,7 +546,7 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
     protected void newRecord(){
         int lMonth = imakante.salary.salary_main.getMonth();
         int lYear = imakante.salary.salary_main.getYear();
-        imakante.salary.frmAddLitse frmDialog = new imakante.salary.frmAddLitse(JFParentFrame, false, dbInternal, 0, lMonth, lYear);
+        imakante.salary.frmAddLitse frmDialog = new imakante.salary.frmAddLitse(JFParentFrame, false, dbInternal, 0);
         frmDialog.setVisible(true);
         
         
