@@ -8,10 +8,6 @@
 # Host: localhost    Database: mida
 # ------------------------------------------------------
 # Server version 4.1.10a-nt-max
-
-DROP DATABASE IF EXISTS `mida`;
-CREATE DATABASE `mida` /*!40100 DEFAULT CHARACTER SET cp1251 */;
-USE `mida`;
 /*!40101 SET NAMES cp1251 */;
 
 
@@ -19,6 +15,7 @@ USE `mida`;
 # Table structure for table customer_pri
 #
 
+DROP TABLE IF EXISTS `customer_pri`;
 CREATE TABLE `customer_pri` (
   `Id_customer` int(11) NOT NULL default '0',
   `N1_Customer` varchar(8) default NULL,
@@ -30,6 +27,7 @@ CREATE TABLE `customer_pri` (
 # Table structure for table dop
 #
 
+DROP TABLE IF EXISTS `dop`;
 CREATE TABLE `dop` (
   `Id` int(11) NOT NULL default '0',
   `gender` varchar(4) default NULL,
@@ -41,6 +39,7 @@ CREATE TABLE `dop` (
 # Table structure for table kasa001
 #
 
+DROP TABLE IF EXISTS `kasa001`;
 CREATE TABLE `kasa001` (
   `kasaID` int(11) NOT NULL default '0',
   `Id_customer` int(11) default NULL,
@@ -61,6 +60,7 @@ CREATE TABLE `kasa001` (
 # Table structure for table kasa001razhod
 #
 
+DROP TABLE IF EXISTS `kasa001razhod`;
 CREATE TABLE `kasa001razhod` (
   `kasaIDraz` int(11) NOT NULL auto_increment,
   `Id_customer` int(11) default NULL,
@@ -80,6 +80,7 @@ CREATE TABLE `kasa001razhod` (
 # Table structure for table kasadet001razhod
 #
 
+DROP TABLE IF EXISTS `kasadet001razhod`;
 CREATE TABLE `kasadet001razhod` (
   `Id_Saledet` int(11) NOT NULL auto_increment,
   `SaleID` int(11) default NULL,
@@ -97,10 +98,11 @@ CREATE TABLE `kasadet001razhod` (
 # Table structure for table ls_addresses
 #
 
+DROP TABLE IF EXISTS `ls_addresses`;
 CREATE TABLE `ls_addresses` (
-  `idls_addresses` int(11) NOT NULL default '0',
+  `idls_addresses` int(11) NOT NULL auto_increment,
   `address` varchar(70) default NULL,
-  `telefon` varchar(10) default NULL,
+  `telefon` varchar(20) default NULL,
   `mobilen` varchar(15) default NULL,
   `email` varchar(30) default NULL,
   `id_rab` int(11) NOT NULL default '0',
@@ -109,25 +111,41 @@ CREATE TABLE `ls_addresses` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 #
+# Table structure for table ls_boln_impl
+#
+
+DROP TABLE IF EXISTS `ls_boln_impl`;
+CREATE TABLE `ls_boln_impl` (
+  `Id` int(11) NOT NULL auto_increment,
+  `id_rab` int(11) NOT NULL default '0',
+  `id_boln` smallint(6) default NULL COMMENT 'От шаблона',
+  `id_period` int(11) NOT NULL default '0' COMMENT 'pmoth+pyear',
+  `id_per_otn` int(11) default NULL COMMENT 'При сторниране',
+  `beg_date` date NOT NULL default '0000-00-00' COMMENT 'Начална дата',
+  `n_o_days` tinyint(3) NOT NULL default '0' COMMENT 'Брой дни болнични',
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
 # Table structure for table ls_bolnichni
 #
 
+DROP TABLE IF EXISTS `ls_bolnichni`;
 CREATE TABLE `ls_bolnichni` (
-  `id` int(11) NOT NULL default '0',
-  `id_rab` int(11) default NULL,
-  `bol_date` date default NULL,
-  `bol_day_firm` int(11) default NULL,
-  `bol_day_noi` int(11) default NULL,
-  PRIMARY KEY  (`id`),
-  KEY `id` (`id`)
+  `id` smallint(6) NOT NULL auto_increment,
+  `name` varchar(50) NOT NULL default '0' COMMENT 'Име на вида болничен',
+  `cod` varchar(6) NOT NULL default '' COMMENT 'Вътрешен код за вида болничен',
+  `procent` decimal(3,2) unsigned NOT NULL default '0.00' COMMENT 'Процент на болничния',
+  UNIQUE KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 #
 # Table structure for table ls_dates
 #
 
+DROP TABLE IF EXISTS `ls_dates`;
 CREATE TABLE `ls_dates` (
-  `idls_dates` int(11) NOT NULL default '0',
+  `idls_dates` int(11) NOT NULL auto_increment,
   `id_rab` int(11) NOT NULL default '0',
   `b_date` date default NULL,
   `data_izd_LK` date default NULL,
@@ -135,6 +153,7 @@ CREATE TABLE `ls_dates` (
   `data_postypwane` date default NULL,
   `data_napuskane` date default NULL,
   `posl_den_w_osig` date default NULL,
+  `srok_dogov` date default NULL,
   PRIMARY KEY  (`idls_dates`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
@@ -142,6 +161,7 @@ CREATE TABLE `ls_dates` (
 # Table structure for table ls_dlajnosti
 #
 
+DROP TABLE IF EXISTS `ls_dlajnosti`;
 CREATE TABLE `ls_dlajnosti` (
   `id` int(11) NOT NULL auto_increment,
   `nomer` tinyint(4) default NULL,
@@ -154,6 +174,7 @@ CREATE TABLE `ls_dlajnosti` (
 # Table structure for table ls_dobavki
 #
 
+DROP TABLE IF EXISTS `ls_dobavki`;
 CREATE TABLE `ls_dobavki` (
   `id` int(11) NOT NULL default '0',
   `cod` int(6) default NULL COMMENT 'kod na modifikator',
@@ -171,8 +192,9 @@ CREATE TABLE `ls_dobavki` (
 # Table structure for table ls_dod
 #
 
+DROP TABLE IF EXISTS `ls_dod`;
 CREATE TABLE `ls_dod` (
-  `Id` int(11) NOT NULL default '0',
+  `Id` int(11) NOT NULL auto_increment,
   `datep` date default NULL,
   `doh` float default NULL,
   `sum` float default NULL,
@@ -184,8 +206,9 @@ CREATE TABLE `ls_dod` (
 # Table structure for table ls_main
 #
 
+DROP TABLE IF EXISTS `ls_main`;
 CREATE TABLE `ls_main` (
-  `Id` int(11) NOT NULL default '0',
+  `Id` int(11) NOT NULL auto_increment,
   `nomer` int(11) default NULL,
   `first` varchar(20) default NULL,
   `second` varchar(20) default NULL,
@@ -195,7 +218,6 @@ CREATE TABLE `ls_main` (
   `nomer_LK` varchar(9) default NULL,
   `nomer_dogowor` varchar(10) default NULL,
   `osnowanie_dog` varchar(4) default NULL,
-  `srok_dog` varchar(15) default NULL,
   `d_st` int(11) default NULL,
   `m_st` int(11) default NULL,
   `g_st` int(11) default NULL,
@@ -211,6 +233,7 @@ CREATE TABLE `ls_main` (
 # Table structure for table ls_monthpar
 #
 
+DROP TABLE IF EXISTS `ls_monthpar`;
 CREATE TABLE `ls_monthpar` (
   `id` int(11) NOT NULL auto_increment,
   `pmonth` tinyint(4) default NULL,
@@ -227,6 +250,7 @@ CREATE TABLE `ls_monthpar` (
   `proc_bez` decimal(3,2) NOT NULL default '0.00' COMMENT 'proc bezrabotitsa',
   `proc_upf` decimal(3,2) NOT NULL default '0.00' COMMENT 'procent_upf',
   `coef` tinyint(3) NOT NULL default '3' COMMENT 'otnoshenie rabotodatel/rabotnik',
+  `id_period` smallint(5) unsigned NOT NULL default '0' COMMENT 'Работен период',
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
@@ -234,6 +258,7 @@ CREATE TABLE `ls_monthpar` (
 # Table structure for table ls_otdeli
 #
 
+DROP TABLE IF EXISTS `ls_otdeli`;
 CREATE TABLE `ls_otdeli` (
   `Id` int(11) NOT NULL default '0',
   `nomer` tinyint(4) default NULL,
@@ -242,23 +267,38 @@ CREATE TABLE `ls_otdeli` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 #
+# Table structure for table ls_otp_impl
+#
+
+DROP TABLE IF EXISTS `ls_otp_impl`;
+CREATE TABLE `ls_otp_impl` (
+  `Id` int(11) NOT NULL auto_increment,
+  `id_rab` int(11) NOT NULL default '0' COMMENT 'Актуален работник',
+  `id_otp` smallint(6) NOT NULL default '0' COMMENT 'От шаблона',
+  `id_period` int(11) NOT NULL default '0' COMMENT 'pmonth+pyear',
+  `id_per_otn` smallint(6) default NULL COMMENT 'Период за строниране',
+  `beg_date` date NOT NULL default '0000-00-00' COMMENT 'Начална дата',
+  `n_o_days` tinyint(3) unsigned NOT NULL default '0' COMMENT 'Брой дни отпуск в месеца',
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='Изчислени болнични за конкретен ';
+
+#
 # Table structure for table ls_otpusk
 #
 
+DROP TABLE IF EXISTS `ls_otpusk`;
 CREATE TABLE `ls_otpusk` (
-  `id` int(11) NOT NULL default '0',
-  `id_rab` int(11) default NULL,
-  `date_otp` date default NULL,
-  `day_firm` int(11) default NULL,
-  `day_rabotnik` int(11) default NULL,
-  PRIMARY KEY  (`id`),
-  KEY `id` (`id`)
+  `id` smallint(4) NOT NULL auto_increment,
+  `name` varchar(50) NOT NULL default '' COMMENT 'Име на отпуск',
+  `cod` varchar(6) NOT NULL default '' COMMENT 'Код на вида отпуск',
+  UNIQUE KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 #
 # Table structure for table ls_pic
 #
 
+DROP TABLE IF EXISTS `ls_pic`;
 CREATE TABLE `ls_pic` (
   `Id` int(11) NOT NULL auto_increment,
   `id_rabotnik` int(11) default NULL,
@@ -270,10 +310,11 @@ CREATE TABLE `ls_pic` (
 # Table structure for table ls_result
 #
 
+DROP TABLE IF EXISTS `ls_result`;
 CREATE TABLE `ls_result` (
   `id` int(11) NOT NULL auto_increment,
-  `pmonth` tinyint(4) NOT NULL default '0',
-  `pyear` int(5) default NULL,
+  `state` tinyint(2) unsigned NOT NULL default '1' COMMENT 'Всички записи генерирани в (0=извън) приложението',
+  `id_period` smallint(5) unsigned NOT NULL default '0' COMMENT 'Работен период',
   `idrab` int(11) default NULL,
   `id_dlaj` int(11) default NULL,
   `cat_rab` char(2) default NULL,
@@ -306,6 +347,7 @@ CREATE TABLE `ls_result` (
 # Table structure for table ls_sluj
 #
 
+DROP TABLE IF EXISTS `ls_sluj`;
 CREATE TABLE `ls_sluj` (
   `Id` int(11) NOT NULL default '0',
   `name_firm` varchar(60) default NULL,
@@ -314,6 +356,7 @@ CREATE TABLE `ls_sluj` (
   `address` varchar(100) default NULL,
   `nam_boss` varchar(60) default NULL,
   `nam_acc` varchar(70) default NULL,
+  `nkid` varchar(5) default NULL,
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
@@ -321,6 +364,7 @@ CREATE TABLE `ls_sluj` (
 # Table structure for table ls_users_rights
 #
 
+DROP TABLE IF EXISTS `ls_users_rights`;
 CREATE TABLE `ls_users_rights` (
   `Id` int(11) NOT NULL default '0',
   `id_user` int(11) default NULL,
@@ -336,6 +380,7 @@ CREATE TABLE `ls_users_rights` (
 # Table structure for table ls_vid_osiguren
 #
 
+DROP TABLE IF EXISTS `ls_vid_osiguren`;
 CREATE TABLE `ls_vid_osiguren` (
   `Id` int(11) NOT NULL auto_increment,
   `kod` char(1) default NULL,
@@ -347,6 +392,7 @@ CREATE TABLE `ls_vid_osiguren` (
 # Table structure for table n_country
 #
 
+DROP TABLE IF EXISTS `n_country`;
 CREATE TABLE `n_country` (
   `Id` int(11) NOT NULL default '0',
   `code` char(1) NOT NULL default '',
@@ -358,6 +404,7 @@ CREATE TABLE `n_country` (
 # Table structure for table n_nm
 #
 
+DROP TABLE IF EXISTS `n_nm`;
 CREATE TABLE `n_nm` (
   `id` int(11) NOT NULL default '0',
   `postcode` int(6) default NULL,
@@ -370,6 +417,7 @@ CREATE TABLE `n_nm` (
 # Table structure for table n_oblast
 #
 
+DROP TABLE IF EXISTS `n_oblast`;
 CREATE TABLE `n_oblast` (
   `id` int(11) NOT NULL default '0',
   `name` varchar(20) default NULL,
@@ -378,9 +426,31 @@ CREATE TABLE `n_oblast` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 #
+# Table structure for table natc_clasifikator_deinosti
+#
+
+DROP TABLE IF EXISTS `natc_clasifikator_deinosti`;
+CREATE TABLE `natc_clasifikator_deinosti` (
+  `id` int(11) NOT NULL auto_increment,
+  `nkid` varchar(6) default NULL,
+  `name` varchar(50) default NULL,
+  `n1` decimal(6,2) unsigned NOT NULL default '0.00',
+  `n2` decimal(6,2) unsigned NOT NULL default '0.00',
+  `n3` decimal(6,2) unsigned NOT NULL default '0.00',
+  `n4` decimal(6,2) unsigned NOT NULL default '0.00',
+  `n5` decimal(6,2) unsigned NOT NULL default '0.00',
+  `n6` decimal(6,2) unsigned NOT NULL default '0.00',
+  `n7` decimal(6,2) unsigned NOT NULL default '0.00',
+  `n8` decimal(6,2) unsigned NOT NULL default '0.00',
+  `n9` decimal(6,2) unsigned NOT NULL default '0.00',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+#
 # Table structure for table natc_clasifikator_prof
 #
 
+DROP TABLE IF EXISTS `natc_clasifikator_prof`;
 CREATE TABLE `natc_clasifikator_prof` (
   `Id` int(11) NOT NULL auto_increment,
   `name_prof` varchar(50) default NULL,
@@ -392,6 +462,7 @@ CREATE TABLE `natc_clasifikator_prof` (
 # Table structure for table person
 #
 
+DROP TABLE IF EXISTS `person`;
 CREATE TABLE `person` (
   `idperson` int(11) NOT NULL default '0',
   `n_person` varchar(30) default NULL COMMENT 'sobstveno',
@@ -407,6 +478,7 @@ CREATE TABLE `person` (
 # Table structure for table sl_d_delivery
 #
 
+DROP TABLE IF EXISTS `sl_d_delivery`;
 CREATE TABLE `sl_d_delivery` (
   `Id` int(11) NOT NULL auto_increment,
   `id_doc` int(11) default NULL COMMENT 'id na documenta',
@@ -427,6 +499,7 @@ CREATE TABLE `sl_d_delivery` (
 # Table structure for table sl_d_documents
 #
 
+DROP TABLE IF EXISTS `sl_d_documents`;
 CREATE TABLE `sl_d_documents` (
   `Id` int(11) NOT NULL auto_increment,
   `id_customer` int(11) default NULL COMMENT 'id na contragenta',
@@ -447,6 +520,7 @@ CREATE TABLE `sl_d_documents` (
 # Table structure for table sl_d_sale
 #
 
+DROP TABLE IF EXISTS `sl_d_sale`;
 CREATE TABLE `sl_d_sale` (
   `Id` int(11) NOT NULL auto_increment,
   `id_doc` int(11) default NULL COMMENT 'id na documenta',
@@ -463,6 +537,7 @@ CREATE TABLE `sl_d_sale` (
 # Table structure for table sl_n_baccount
 #
 
+DROP TABLE IF EXISTS `sl_n_baccount`;
 CREATE TABLE `sl_n_baccount` (
   `Id` int(11) NOT NULL default '0',
   `Id_cust` int(11) default NULL,
@@ -478,6 +553,7 @@ CREATE TABLE `sl_n_baccount` (
 # Table structure for table sl_n_cat_product
 #
 
+DROP TABLE IF EXISTS `sl_n_cat_product`;
 CREATE TABLE `sl_n_cat_product` (
   `idsl_n_cat_product` int(11) NOT NULL default '0',
   `name` varchar(45) default NULL,
@@ -489,6 +565,7 @@ CREATE TABLE `sl_n_cat_product` (
 # Table structure for table sl_n_cust_info
 #
 
+DROP TABLE IF EXISTS `sl_n_cust_info`;
 CREATE TABLE `sl_n_cust_info` (
   `Id` int(11) NOT NULL default '0',
   `Id_cust` int(11) default NULL,
@@ -502,6 +579,7 @@ CREATE TABLE `sl_n_cust_info` (
 # Table structure for table sl_n_customer
 #
 
+DROP TABLE IF EXISTS `sl_n_customer`;
 CREATE TABLE `sl_n_customer` (
   `Id` int(11) NOT NULL default '0',
   `code` varchar(10) default NULL,
@@ -523,6 +601,7 @@ CREATE TABLE `sl_n_customer` (
 # Table structure for table sl_n_distributors
 #
 
+DROP TABLE IF EXISTS `sl_n_distributors`;
 CREATE TABLE `sl_n_distributors` (
   `Id` int(11) NOT NULL default '0',
   `Id_cust` int(11) default NULL,
@@ -537,6 +616,7 @@ CREATE TABLE `sl_n_distributors` (
 # Table structure for table sl_n_docs
 #
 
+DROP TABLE IF EXISTS `sl_n_docs`;
 CREATE TABLE `sl_n_docs` (
   `Id` int(11) NOT NULL default '0',
   `name` varchar(20) default NULL COMMENT 'ime na documentaa',
@@ -548,6 +628,7 @@ CREATE TABLE `sl_n_docs` (
 # Table structure for table sl_n_obekt
 #
 
+DROP TABLE IF EXISTS `sl_n_obekt`;
 CREATE TABLE `sl_n_obekt` (
   `Id` int(11) NOT NULL default '0',
   `Id_cust` int(11) default NULL,
@@ -562,6 +643,7 @@ CREATE TABLE `sl_n_obekt` (
 # Table structure for table sl_n_person
 #
 
+DROP TABLE IF EXISTS `sl_n_person`;
 CREATE TABLE `sl_n_person` (
   `Id` int(11) NOT NULL default '0',
   `egn` varchar(10) default NULL,
@@ -575,6 +657,7 @@ CREATE TABLE `sl_n_person` (
 # Table structure for table sl_n_product
 #
 
+DROP TABLE IF EXISTS `sl_n_product`;
 CREATE TABLE `sl_n_product` (
   `Id` int(11) NOT NULL auto_increment,
   `name` varchar(10) default NULL,
@@ -599,6 +682,7 @@ CREATE TABLE `sl_n_product` (
 # Table structure for table sl_n_product_pri
 #
 
+DROP TABLE IF EXISTS `sl_n_product_pri`;
 CREATE TABLE `sl_n_product_pri` (
   `idsl_n_product_pri` int(11) NOT NULL default '0',
   `nomer` varchar(10) default NULL,
@@ -618,6 +702,7 @@ CREATE TABLE `sl_n_product_pri` (
 # Table structure for table sl_n_product_razf
 #
 
+DROP TABLE IF EXISTS `sl_n_product_razf`;
 CREATE TABLE `sl_n_product_razf` (
   `Id` int(11) NOT NULL default '0',
   `id_product` int(11) default NULL,
@@ -636,6 +721,7 @@ CREATE TABLE `sl_n_product_razf` (
 # Table structure for table sl_n_product_tsen
 #
 
+DROP TABLE IF EXISTS `sl_n_product_tsen`;
 CREATE TABLE `sl_n_product_tsen` (
   `Id` int(11) NOT NULL auto_increment,
   `id_dost` int(11) default NULL COMMENT 'id na dostavchika',
@@ -659,6 +745,7 @@ CREATE TABLE `sl_n_product_tsen` (
 # Table structure for table sl_n_razfasofki
 #
 
+DROP TABLE IF EXISTS `sl_n_razfasofki`;
 CREATE TABLE `sl_n_razfasofki` (
   `Id` int(11) NOT NULL default '0',
   `metrika` int(11) default NULL,
@@ -671,6 +758,7 @@ CREATE TABLE `sl_n_razfasofki` (
 # Table structure for table sl_n_storage
 #
 
+DROP TABLE IF EXISTS `sl_n_storage`;
 CREATE TABLE `sl_n_storage` (
   `Id` int(11) NOT NULL default '0',
   `name` varchar(20) default NULL COMMENT 'ime na sklada',
@@ -682,6 +770,7 @@ CREATE TABLE `sl_n_storage` (
 # Table structure for table user_master
 #
 
+DROP TABLE IF EXISTS `user_master`;
 CREATE TABLE `user_master` (
   `Id` int(11) NOT NULL default '0',
   `name` varchar(14) default NULL,
