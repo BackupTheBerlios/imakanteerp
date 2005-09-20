@@ -114,7 +114,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         javax.swing.JMenu MnuFile = new javax.swing.JMenu("\u041f\u0420\u041e\u0413\u0420\u0410\u041c\u0410");
         MnuFile.setFont(menuFont);
         MnuFile.setMnemonic('F');
-        MnuFile.setBackground(new java.awt.Color(255,255,255));
+        MnuFile.setBackground(new java.awt.Color(224,223,227));
         NewJMenuBar.add(MnuFile);
         //End setup file menu
         
@@ -130,7 +130,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 );
         ItmLockApp.setActionCommand("lockapp");
         ItmLockApp.addActionListener(getJMenuActionListener());
-        ItmLockApp.setBackground(new java.awt.Color(255,255,255));
+        ItmLockApp.setBackground(new java.awt.Color(224,223,227));
         
         javax.swing.JMenuItem ItmLogon = new javax.swing.JMenuItem("\u0412\u0445\u043e\u0434 \u0432 \u0431\u0430\u0437\u0430\u0442\u0430");
         ItmLogon.setFont(menuFont);
@@ -143,7 +143,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 );
         ItmLogon.setActionCommand("logon");
         ItmLogon.addActionListener(getJMenuActionListener());
-        ItmLogon.setBackground(new java.awt.Color(255,255,255));
+        ItmLogon.setBackground(new java.awt.Color(224,223,227));
         
         
         
@@ -158,7 +158,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 );
         ItmLoggOff.setActionCommand("loggoff");
         ItmLoggOff.addActionListener(getJMenuActionListener());
-        ItmLoggOff.setBackground(new java.awt.Color(255,255,255));
+        ItmLoggOff.setBackground(new java.awt.Color(224,223,227));
         
         javax.swing.JMenuItem ItmPeriod = new javax.swing.JMenuItem("\u0421\u043c\u044f\u043d\u0430 \u043d\u0430 \u043f\u0435\u0440\u0438\u043e\u0434");
         ItmPeriod.setFont(menuFont);
@@ -171,7 +171,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 );
         ItmPeriod.setActionCommand("period");
         ItmPeriod.addActionListener(getJMenuActionListener());
-        ItmPeriod.setBackground(new java.awt.Color(255,255,255));
+        ItmPeriod.setBackground(new java.awt.Color(224,223,227));
         
         javax.swing.JMenuItem ItmExit = new javax.swing.JMenuItem("\u0418\u0417\u0425\u041e\u0414");
         ItmExit.setFont(menuFont);
@@ -184,7 +184,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 );
         ItmExit.setActionCommand("exit");
         ItmExit.addActionListener(getJMenuActionListener());
-        ItmExit.setBackground(new java.awt.Color(255,255,255));
+        ItmExit.setBackground(new java.awt.Color(224,223,227));
         
         MnuFile.add(ItmLockApp);
         MnuFile.add(ItmPeriod);
@@ -199,7 +199,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         javax.swing.JMenu MnuDoc = new javax.swing.JMenu("\u0420\u0415\u0414\u0410\u041a\u0422\u0418\u0420\u0410\u041d\u0415");
         MnuDoc.setFont(menuFont);
         MnuDoc.setMnemonic('D');
-        MnuDoc.setBackground(new java.awt.Color(255,255,255));
+        MnuDoc.setBackground(new java.awt.Color(224,223,227));
         NewJMenuBar.add(MnuDoc);
         //
         
@@ -214,7 +214,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 );
         ItmProd.setActionCommand("sluj");
         ItmProd.addActionListener(getJMenuActionListener());
-        ItmProd.setBackground(new java.awt.Color(255,255,255));
+        ItmProd.setBackground(new java.awt.Color(224,223,227));
         
         MnuDoc.add(ItmProd);
         
@@ -229,7 +229,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 );
         ItmFakturi.setActionCommand("doo");
         ItmFakturi.addActionListener(getJMenuActionListener());
-        ItmFakturi.setBackground(new java.awt.Color(255,255,255));
+        ItmFakturi.setBackground(new java.awt.Color(224,223,227));
         
         MnuDoc.add(ItmFakturi);
         //
@@ -241,7 +241,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         ItmProhods.setActionCommand("doo1");
         ItmProhods.addActionListener(getJMenuActionListener());
-        ItmProhods.setBackground(new java.awt.Color(255,255,255));
+        ItmProhods.setBackground(new java.awt.Color(224,223,227));
         
         MnuDoc.add(ItmProhods);
         
@@ -251,7 +251,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmPorach.setMnemonic('f');
         ItmPorach.setActionCommand("otd");
         ItmPorach.addActionListener(getJMenuActionListener());
-        ItmPorach.setBackground(new java.awt.Color(255,255,255));
+        ItmPorach.setBackground(new java.awt.Color(224,223,227));
         
         MnuDoc.add(ItmPorach);
         //
@@ -261,7 +261,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmDlaj.setMnemonic('f');
         ItmDlaj.setActionCommand("dlaj");
         ItmDlaj.addActionListener(getJMenuActionListener());
-        ItmDlaj.setBackground(new java.awt.Color(255,255,255));
+        ItmDlaj.setBackground(new java.awt.Color(224,223,227));
         
         MnuDoc.add(ItmDlaj);
         //
@@ -278,7 +278,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         //	);
         ItmMDanni.setActionCommand("mes");
         ItmMDanni.addActionListener(getJMenuActionListener());
-        ItmMDanni.setBackground(new java.awt.Color(255,255,255));
+        ItmMDanni.setBackground(new java.awt.Color(224,223,227));
         
         MnuDoc.add(ItmMDanni);
         //
@@ -295,7 +295,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         //	);
         ItmOtpis.setActionCommand("Prehv");
         ItmOtpis.addActionListener(getJMenuActionListener());
-        ItmOtpis.setBackground(new java.awt.Color(255,255,255));
+        ItmOtpis.setBackground(new java.awt.Color(224,223,227));
         
         MnuDoc.add(ItmOtpis);
         //
@@ -307,7 +307,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmOffer.setMnemonic('f');
         ItmOffer.setActionCommand("sotialo");
         ItmOffer.addActionListener(getJMenuActionListener());
-        ItmOffer.setBackground(new java.awt.Color(255,255,255));
+        ItmOffer.setBackground(new java.awt.Color(224,223,227));
         
         MnuDoc.add(ItmOffer);
         
@@ -320,13 +320,13 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmPr.setMnemonic('f');
         ItmPr.setActionCommand("pred");
         ItmPr.addActionListener(getJMenuActionListener());
-        ItmPr.setBackground(new java.awt.Color(255,255,255));
+        ItmPr.setBackground(new java.awt.Color(224,223,227));
         
         MnuDoc.add(ItmPr);
         //
         javax.swing.JMenu MnuKasa = new javax.swing.JMenu("\u0412\u0415\u0414\u041e\u041c\u041e\u0421\u0422\u0418");
         MnuKasa.setFont(menuFont);
-        MnuKasa.setBackground(new java.awt.Color(255,255,255));
+        MnuKasa.setBackground(new java.awt.Color(224,223,227));
         NewJMenuBar.add(MnuKasa);
         //End records menu
         //
@@ -334,7 +334,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmPrihoo.setFont(menuFont);
         ItmPrihoo.setActionCommand("zved");
         ItmPrihoo.addActionListener(getJMenuActionListener());
-        ItmPrihoo.setBackground(new java.awt.Color(255,255,255));
+        ItmPrihoo.setBackground(new java.awt.Color(224,223,227));
         
         MnuKasa.add(ItmPrihoo);
         //
@@ -343,7 +343,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmRazhoo.setFont(menuFont);
         ItmRazhoo.setActionCommand("vedoma");
         ItmRazhoo.addActionListener(getJMenuActionListener());
-        ItmRazhoo.setBackground(new java.awt.Color(255,255,255));
+        ItmRazhoo.setBackground(new java.awt.Color(224,223,227));
         
         MnuKasa.add(ItmRazhoo);
         //
@@ -351,7 +351,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmNalicni.setFont(menuFont);
         ItmNalicni.setActionCommand("dooved");
         ItmNalicni.addActionListener(getJMenuActionListener());
-        ItmNalicni.setBackground(new java.awt.Color(255,255,255));
+        ItmNalicni.setBackground(new java.awt.Color(224,223,227));
         
         MnuKasa.add(ItmNalicni);
         
@@ -359,7 +359,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmVedCO.setFont(menuFont);
         ItmVedCO.setActionCommand("soved");
         ItmVedCO.addActionListener(getJMenuActionListener());
-        ItmVedCO.setBackground(new java.awt.Color(255,255,255));
+        ItmVedCO.setBackground(new java.awt.Color(224,223,227));
         
         MnuKasa.add(ItmVedCO);
         
@@ -369,7 +369,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmOpis.setFont(menuFont);
         ItmOpis.setActionCommand("Prihoo");
         ItmOpis.addActionListener(getJMenuActionListener());
-        ItmOpis.setBackground(new java.awt.Color(255,255,255));
+        ItmOpis.setBackground(new java.awt.Color(224,223,227));
         
         MnuKasa.add(ItmOpis);
         
@@ -379,7 +379,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmZDR.setFont(menuFont);
         ItmZDR.setActionCommand("Prihoo");
         ItmZDR.addActionListener(getJMenuActionListener());
-        ItmZDR.setBackground(new java.awt.Color(255,255,255));
+        ItmZDR.setBackground(new java.awt.Color(224,223,227));
         
         MnuKasa.add(ItmZDR);
         //
@@ -388,7 +388,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmBank.setFont(menuFont);
         ItmBank.setActionCommand("Prihoo");
         ItmBank.addActionListener(getJMenuActionListener());
-        ItmBank.setBackground(new java.awt.Color(255,255,255));
+        ItmBank.setBackground(new java.awt.Color(224,223,227));
         
         MnuKasa.add(ItmBank);
         
@@ -397,7 +397,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         javax.swing.JMenu MnuRec = new javax.swing.JMenu("\u0418\u0417\u041f\u042a\u041b\u041d\u0415\u041d\u0418\u0415");
         MnuRec.setFont(menuFont);
         MnuRec.setMnemonic('R');
-        MnuRec.setBackground(new java.awt.Color(255,255,255));
+        MnuRec.setBackground(new java.awt.Color(224,223,227));
         NewJMenuBar.add(MnuRec);
         //End records menu
         
@@ -415,7 +415,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 );
         ItmAvansi.setActionCommand("avansi");
         ItmAvansi.addActionListener(getJMenuActionListener());
-        ItmAvansi.setBackground(new java.awt.Color(255,255,255));
+        ItmAvansi.setBackground(new java.awt.Color(224,223,227));
         
         MnuRec.add(ItmAvansi);
         
@@ -433,7 +433,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 );
         ItmFishove.setActionCommand("fish");
         ItmFishove.addActionListener(getJMenuActionListener());
-        ItmFishove.setBackground(new java.awt.Color(255,255,255));
+        ItmFishove.setBackground(new java.awt.Color(224,223,227));
         
         MnuRec.add(ItmFishove);
         
@@ -443,7 +443,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmZarab.setMnemonic('B');
         ItmZarab.setActionCommand("zarab");
         ItmZarab.addActionListener(getJMenuActionListener());
-        ItmZarab.setBackground(new java.awt.Color(255,255,255));
+        ItmZarab.setBackground(new java.awt.Color(224,223,227));
         
         MnuRec.add(ItmZarab);
         
@@ -453,7 +453,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmPremii.setMnemonic('V');
         ItmPremii.setActionCommand("premii");
         ItmPremii.addActionListener(getJMenuActionListener());
-        ItmPremii.setBackground(new java.awt.Color(255,255,255));
+        ItmPremii.setBackground(new java.awt.Color(224,223,227));
         
         MnuRec.add(ItmPremii);
         
@@ -463,7 +463,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         javax.swing.JMenu MnuProccess = new javax.swing.JMenu("\u0421\u041f\u0420\u0410\u0412\u041a\u0418");
         MnuProccess.setFont(menuFont);
         MnuProccess.setMnemonic('P');
-        MnuProccess.setBackground(new java.awt.Color(255,255,255));
+        MnuProccess.setBackground(new java.awt.Color(224,223,227));
         NewJMenuBar.add(MnuProccess);
         //End records menu
         
@@ -481,7 +481,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
                 );
         ItmSPFish.setActionCommand("SPInv");
         ItmSPFish.addActionListener(getJMenuActionListener());
-        ItmSPFish.setBackground(new java.awt.Color(255,255,255));
+        ItmSPFish.setBackground(new java.awt.Color(224,223,227));
         
         MnuProccess.add(ItmSPFish);
         
@@ -492,7 +492,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmSPNU.setIcon(new javax.swing.ImageIcon("images/newpurchaseorder.png"));
         ItmSPNU.setActionCommand("Oborot");
         ItmSPNU.addActionListener(getJMenuActionListener());
-        ItmSPNU.setBackground(new java.awt.Color(255,255,255));
+        ItmSPNU.setBackground(new java.awt.Color(224,223,227));
         
         MnuProccess.add(ItmSPNU);
         
@@ -503,7 +503,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmSBalance.setIcon(new javax.swing.ImageIcon("images/newrecieve.png"));
         ItmSBalance.setActionCommand("SBalance");
         ItmSBalance.addActionListener(getJMenuActionListener());
-        ItmSBalance.setBackground(new java.awt.Color(255,255,255));
+        ItmSBalance.setBackground(new java.awt.Color(224,223,227));
         
         MnuProccess.add(ItmSBalance);
         
@@ -512,7 +512,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmSProhod.setFont(menuFont);
         ItmSProhod.setActionCommand("SProhod");
         ItmSProhod.addActionListener(getJMenuActionListener());
-        ItmSProhod.setBackground(new java.awt.Color(255,255,255));
+        ItmSProhod.setBackground(new java.awt.Color(224,223,227));
         
         MnuProccess.add(ItmSProhod);
         
@@ -521,7 +521,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmSPSalaryP.setFont(menuFont);
         ItmSPSalaryP.setActionCommand("SExpense");
         ItmSPSalaryP.addActionListener(getJMenuActionListener());
-        ItmSPSalaryP.setBackground(new java.awt.Color(255,255,255));
+        ItmSPSalaryP.setBackground(new java.awt.Color(224,223,227));
         
         MnuProccess.add(ItmSPSalaryP);
         
@@ -530,7 +530,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmStaj.setFont(menuFont);
         ItmStaj.setActionCommand("spstaj");
         ItmStaj.addActionListener(getJMenuActionListener());
-        ItmStaj.setBackground(new java.awt.Color(255,255,255));
+        ItmStaj.setBackground(new java.awt.Color(224,223,227));
         
         MnuProccess.add(ItmStaj);
         
@@ -541,7 +541,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmSPZarab.setFont(menuFont);
         ItmSPZarab.setActionCommand("spzarab");
         ItmSPZarab.addActionListener(getJMenuActionListener());
-        ItmSPZarab.setBackground(new java.awt.Color(255,255,255));
+        ItmSPZarab.setBackground(new java.awt.Color(224,223,227));
         
         MnuProccess.add(ItmSPZarab);
         
@@ -550,7 +550,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmSPSots.setFont(menuFont);
         ItmSPSots.setActionCommand("spsots");
         ItmSPSots.addActionListener(getJMenuActionListener());
-        ItmSPSots.setBackground(new java.awt.Color(255,255,255));
+        ItmSPSots.setBackground(new java.awt.Color(224,223,227));
         
         MnuProccess.add(ItmSPSots);
         
@@ -559,7 +559,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmSpStistic.setFont(menuFont);
         ItmSpStistic.setActionCommand("spstatist");
         ItmSpStistic.addActionListener(getJMenuActionListener());
-        ItmSpStistic.setBackground(new java.awt.Color(255,255,255));
+        ItmSpStistic.setBackground(new java.awt.Color(224,223,227));
         
         MnuProccess.add(ItmSpStistic);
         //
@@ -567,7 +567,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmPDOD.setFont(menuFont);
         ItmPDOD.setActionCommand("pdod");
         ItmPDOD.addActionListener(getJMenuActionListener());
-        ItmPDOD.setBackground(new java.awt.Color(255,255,255));
+        ItmPDOD.setBackground(new java.awt.Color(224,223,227));
         
         MnuProccess.add(ItmPDOD);
         //
@@ -575,7 +575,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmBPL.setFont(menuFont);
         ItmBPL.setActionCommand("bpl");
         ItmBPL.addActionListener(getJMenuActionListener());
-        ItmBPL.setBackground(new java.awt.Color(255,255,255));
+        ItmBPL.setBackground(new java.awt.Color(224,223,227));
         
         MnuProccess.add(ItmBPL);
         //
@@ -583,7 +583,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmUTD.setFont(menuFont);
         ItmUTD.setActionCommand("Zadalk");
         ItmUTD.addActionListener(getJMenuActionListener());
-        ItmUTD.setBackground(new java.awt.Color(255,255,255));
+        ItmUTD.setBackground(new java.awt.Color(224,223,227));
         
         MnuProccess.add(ItmUTD);
         
@@ -594,7 +594,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         javax.swing.JMenu MnuDocum = new javax.swing.JMenu("\u0414\u041e\u041a\u0423\u041c\u0415\u041d\u0422\u0418");
         MnuDocum.setFont(menuFont);
         MnuDocum.setMnemonic('S');
-        MnuDocum.setBackground(new java.awt.Color(255,255,255));
+        MnuDocum.setBackground(new java.awt.Color(224,223,227));
         NewJMenuBar.add(MnuDocum);
         //
         
@@ -602,7 +602,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmActStDlaj.setFont(menuFont);
         ItmActStDlaj.setActionCommand("actsdl");
         ItmActStDlaj.addActionListener(getJMenuActionListener());
-        ItmActStDlaj.setBackground(new java.awt.Color(255,255,255));
+        ItmActStDlaj.setBackground(new java.awt.Color(224,223,227));
         
         MnuDocum.add(ItmActStDlaj);
         
@@ -612,7 +612,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         javax.swing.JMenu MnuSys = new javax.swing.JMenu("\u0421\u0418\u0421\u0422\u0415\u041c\u041d\u0418");
         MnuSys.setFont(menuFont);
         MnuSys.setMnemonic('S');
-        MnuSys.setBackground(new java.awt.Color(255,255,255));
+        MnuSys.setBackground(new java.awt.Color(224,223,227));
         NewJMenuBar.add(MnuSys);
         ////
         
@@ -620,7 +620,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmFirma.setFont(menuFont);
         ItmFirma.setActionCommand("danfirm");
         ItmFirma.addActionListener(getJMenuActionListener());
-        ItmFirma.setBackground(new java.awt.Color(255,255,255));
+        ItmFirma.setBackground(new java.awt.Color(224,223,227));
         
         MnuSys.add(ItmFirma);
         
@@ -630,7 +630,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmNewM.setFont(menuFont);
         ItmNewM.setActionCommand("newm");
         ItmNewM.addActionListener(getJMenuActionListener());
-        ItmNewM.setBackground(new java.awt.Color(255,255,255));
+        ItmNewM.setBackground(new java.awt.Color(224,223,227));
         
         MnuSys.add(ItmNewM);
         ////
@@ -639,7 +639,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmDelM.setFont(menuFont);
         ItmDelM.setActionCommand("ereasem");
         ItmDelM.addActionListener(getJMenuActionListener());
-        ItmDelM.setBackground(new java.awt.Color(255,255,255));
+        ItmDelM.setBackground(new java.awt.Color(224,223,227));
         
         MnuSys.add(ItmDelM);
         ///
@@ -647,7 +647,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmExport.setFont(menuFont);
         ItmExport.setActionCommand("expflat");
         ItmExport.addActionListener(getJMenuActionListener());
-        ItmExport.setBackground(new java.awt.Color(255,255,255));
+        ItmExport.setBackground(new java.awt.Color(224,223,227));
         
         MnuSys.add(ItmExport);
         ////
@@ -655,7 +655,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmImport.setFont(menuFont);
         ItmImport.setActionCommand("import");
         ItmImport.addActionListener(getJMenuActionListener());
-        ItmImport.setBackground(new java.awt.Color(255,255,255));
+        ItmImport.setBackground(new java.awt.Color(224,223,227));
         
         MnuSys.add(ItmImport);
         
@@ -664,7 +664,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmImportPic.setFont(menuFont);
         ItmImportPic.setActionCommand("pic");
         ItmImportPic.addActionListener(getJMenuActionListener());
-        ItmImportPic.setBackground(new java.awt.Color(255,255,255));
+        ItmImportPic.setBackground(new java.awt.Color(224,223,227));
         
         MnuSys.add(ItmImportPic);
         MnuSys.addSeparator();
@@ -673,7 +673,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmNKLPROF.setFont(menuFont);
         ItmNKLPROF.setActionCommand("nprof");
         ItmNKLPROF.addActionListener(getJMenuActionListener());
-        ItmNKLPROF.setBackground(new java.awt.Color(255,255,255));
+        ItmNKLPROF.setBackground(new java.awt.Color(224,223,227));
         
         MnuSys.add(ItmNKLPROF);
         ///
@@ -681,7 +681,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmNKLID.setFont(menuFont);
         ItmNKLID.setActionCommand("nkid");
         ItmNKLID.addActionListener(getJMenuActionListener());
-        ItmNKLID.setBackground(new java.awt.Color(255,255,255));
+        ItmNKLID.setBackground(new java.awt.Color(224,223,227));
         MnuSys.add(ItmNKLID);
         
         
@@ -691,7 +691,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmArea.setFont(menuFont);
         ItmArea.setActionCommand("area");
         ItmArea.addActionListener(getJMenuActionListener());
-        ItmArea.setBackground(new java.awt.Color(255,255,255));
+        ItmArea.setBackground(new java.awt.Color(224,223,227));
         MnuSys.add(ItmArea);
         
         
@@ -700,7 +700,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmNas.setFont(menuFont);
         ItmNas.setActionCommand("nas");
         ItmNas.addActionListener(getJMenuActionListener());
-        ItmNas.setBackground(new java.awt.Color(255,255,255));
+        ItmNas.setBackground(new java.awt.Color(224,223,227));
         MnuSys.add(ItmNas);
         
         MnuSys.addSeparator();
@@ -709,14 +709,14 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         ItmVidOsig.setFont(menuFont);
         ItmVidOsig.setActionCommand("vidosig");
         ItmVidOsig.addActionListener(getJMenuActionListener());
-        ItmVidOsig.setBackground(new java.awt.Color(255,255,255));
+        ItmVidOsig.setBackground(new java.awt.Color(224,223,227));
         MnuSys.add(ItmVidOsig);
         
         javax.swing.JMenuItem ItmNKID= new javax.swing.JMenuItem("\u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440");
         ItmNKID.setFont(menuFont);
         ItmNKID.setActionCommand("calendar");
         ItmNKID.addActionListener(getJMenuActionListener());
-        ItmNKID.setBackground(new java.awt.Color(255,255,255));
+        ItmNKID.setBackground(new java.awt.Color(224,223,227));
         MnuSys.add(ItmNKID);
         
         //End  menu
@@ -727,11 +727,11 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         javax.swing.JMenu MnuHelp = new javax.swing.JMenu("\u041f\u041e\u041c\u041e\u0429");
         MnuHelp.setFont(menuFont);
         MnuHelp.setMnemonic('H');
-        MnuHelp.setBackground(new java.awt.Color(255,255,255));
+        MnuHelp.setBackground(new java.awt.Color(224,223,227));
         NewJMenuBar.add(MnuHelp);
         //End records menu
         
-        NewJMenuBar.setBackground(new java.awt.Color(255,255,255));
+        NewJMenuBar.setBackground(new java.awt.Color(224,223,227));
         return NewJMenuBar;
     }
     //End create menu bar
@@ -1630,17 +1630,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     /**************************** Main method start ***************************/
     
     public static void main(String[] args){
-        
-        
-        try {
-            // MetalTheme myXPStyleTheme = new XPStyleTheme();
-            //   MetalLookAndFeel.setCurrentTheme(myXPStyleTheme);
-            //     javax.swing.UIManager.setLookAndFeel("com.birosoft.liquid.LiquidLookAndFeel");
-        } catch (Exception e) {
-            System.out.println("Error Loading Theme:" + e.toString());
-            //If Failed to load the liquid them then load my own XPStyleTheme
-            //	MetalTheme myXPStyleTheme = new XPStyleTheme();
-            //	MetalLookAndFeel.setCurrentTheme(myXPStyleTheme);
+       
             try {
                 String sysLook = javax.swing.UIManager.getSystemLookAndFeelClassName();
                 javax.swing.UIManager.setLookAndFeel(sysLook);
@@ -1648,7 +1638,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
             } catch (Exception err) {
                 System.out.println("Error loading Theme:" + err.toString());
             }
-        }
+        
         
         new salary_main();
     }

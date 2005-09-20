@@ -581,6 +581,8 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
         
         model = new imakante.com.CustomTableModel(dbInternal, rsCus, Names);
         jTable = new imakante.com.CustomTable(model);
+        jTable.setGridColor(new java.awt.Color(224,223,227));
+        
         
         
     }

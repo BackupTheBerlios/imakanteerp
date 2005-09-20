@@ -172,7 +172,7 @@ public class frmArea extends javax.swing.JDialog implements java.awt.event.Windo
                 
                 
                 try{
-                    rsCus = stm.executeQuery("SELECT * FROM n_oblast");} catch (java.sql.SQLException sqle){sqle.printStackTrace();}
+                    rsCus = stm.executeQuery("SELECT n_oblast.id, n_oblast.name, n_country.name FROM n_oblast LEFT JOIN n_country ON(n_oblast.id_country = n_country.code)");} catch (java.sql.SQLException sqle){sqle.printStackTrace();}
                 
                 model = new imakante.com.CustomTableModel(dbInternal, rsCus, Names);
                 jTable = new imakante.com.CustomTable(model);

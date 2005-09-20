@@ -1,12 +1,4 @@
-/*
- * pubFrmConnection.java
- *
- * Created on Събота, 2005, Май 28, 11:43
- *
- * To change this template, choose Tools | Options and locate the template under
- * the Source Creation and Management node. Right-click the template and choose
- * Open. You can then make changes to the template in the Source Editor.
- */
+
 
 package imakante.com;
 
@@ -173,7 +165,7 @@ public class pubFrmConnection extends JDialog implements ActionListener {
         main.setUser(lDBUser);
         main.setPass(lDBPass);
         String firmName = (String)comboDriver.getSelectedItem();
-        main.setFirm(firmName);
+        main.setName(firmName);
         dispose();
     }
     

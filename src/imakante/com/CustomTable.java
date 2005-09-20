@@ -1,12 +1,3 @@
-/*
- * CustomTable.java
- *
- * Created on Понеделник, 2005, Май 23, 11:21
- *
- * To change this template, choose Tools | Options and locate the template under
- * the Source Creation and Management node. Right-click the template and choose
- * Open. You can then make changes to the template in the Source Editor.
- */
 
 package imakante.com;
 
@@ -23,11 +14,6 @@ public class CustomTable extends JTable
    protected CustomTableModel model = null;
     protected EventListenerList listenerList = new EventListenerList();
 
-
-    /*
-     * Parameterized constructor. Accepts a
-     * non-null CustomTableModel.
-     */ 
     public CustomTable(CustomTableModel m)
     {
 	super(m);
@@ -284,7 +270,7 @@ public class CustomTable extends JTable
 		if (textField.getText().trim().length() == 0)
 		    return null; 
 
-		SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat fm = new SimpleDateFormat("dd-MM-YYYY");
 		java.util.Date utilDate = fm.parse(textField.getText().trim());
 		java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 		
