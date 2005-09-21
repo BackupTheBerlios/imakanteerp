@@ -181,24 +181,62 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nomMenuActionPerformed"/>
           </Events>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="nomMenu_Stoka">
+            <Menu class="javax.swing.JMenu" name="nomMenu_stock">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Стока"/>
+                <Property name="text" type="java.lang.String" value="Стокови"/>
               </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="nomMenu_Klienti">
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="stock_Menu_stock">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Стока"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Други активи"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="nomMenu_Kontragenti">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Клиенти"/>
+                <Property name="text" type="java.lang.String" value="Контрагенти"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nomMenu_KlientiActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="nomMenu_dost">
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="kontragentiMenu_Clients">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Клиенти"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="kontragentiMenu_supl">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Доставчици"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="kontragentiMenu_bank">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Банки"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="nomMenu_Litsa">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Доставчици"/>
+                <Property name="text" type="java.lang.String" value="Лица"/>
               </Properties>
-            </MenuItem>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="litsaMenu_in">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Вътрешни лица"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="litsaMenu_out">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Външни лица"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
             <MenuItem class="javax.swing.JMenuItem" name="nomMenu_nasm">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Населено място"/>
@@ -214,6 +252,23 @@
                 <Property name="text" type="java.lang.String" value="Държави"/>
               </Properties>
             </MenuItem>
+            <Menu class="javax.swing.JMenu" name="nomMenu_object">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Обекти"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="objectMenu_skl">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Складове"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="objectMenu_kasa">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Каси"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="sprMenu">
