@@ -229,8 +229,7 @@ public class frmConnSalary extends java.awt.Dialog {
             dbConn = java.sql.DriverManager.getConnection(lDBSource,lDBUser ,lDBPass);
             java.sql.Statement stm = dbConn.createStatement();
              } catch(ClassNotFoundException e)  {
-                 JOptionPane.showMessageDialog(null,"Възникнал проблем при четене на файл salary.ini .\n Моля копирайте стандартен файл.","ИМАКАНТЕ",JOptionPane.WARNING_MESSAGE);
-                
+                 
             System.err.println("Failed to load driver");
             e.printStackTrace();
            // System.exit(1);
@@ -300,18 +299,18 @@ public class frmConnSalary extends java.awt.Dialog {
     private java.awt.Panel panel2;
     private java.awt.TextField textField1;
     java.util.HashMap userRights;
-    public salary_main main = null;
-    public String lDBDriver = null;
-    public String lDBSource = null;
-    public String lDBUser = null;
-    public String lDBPass =null;
-    public java.sql.Connection dbConn;
-    public java.sql.Statement stm;
-    public java.sql.ResultSet rs;
-    public int sd;
-    String[] drivers;
-    String[] names, urls;
-    public String fint ="",lineStr;
-    public java.awt.Dimension dim;
-    int i, x, y;
+    private salary_main main = null;
+    private String lDBDriver = null;
+    private String lDBSource = null;
+    private String lDBUser = null;
+    private String lDBPass =null;
+    private java.sql.Connection dbConn;
+    private java.sql.Statement stm;
+    private java.sql.ResultSet rs;
+    private int sd;
+    private String[] drivers;
+    private String[] names, urls;
+    private String fint ="",lineStr;
+    private java.awt.Dimension dim;
+    private int i, x, y;
 }

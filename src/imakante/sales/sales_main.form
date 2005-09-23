@@ -3,12 +3,27 @@
 <Form version="1.0" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="menuBar">
+      <Properties>
+        <Property name="font" preCode="programMenu.setFont(menuFont);"/>
+      </Properties>
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="programMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="ПРОГРАМА"/>
           </Properties>
           <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="programMenuLock">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Заключване"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="programMenuUnlock">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Отключване"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JSeparator" name="jSeparator2">
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="programMenu_conn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Връзка с базата"/>
@@ -186,12 +201,17 @@
                 <Property name="text" type="java.lang.String" value="Стокови"/>
               </Properties>
               <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="stock_Menu_group_stock">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Групи"/>
+                  </Properties>
+                </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="stock_Menu_stock">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Стока"/>
                   </Properties>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+                <MenuItem class="javax.swing.JMenuItem" name="stock_Menu_activ">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Други активи"/>
                   </Properties>
@@ -218,6 +238,11 @@
                     <Property name="text" type="java.lang.String" value="Банки"/>
                   </Properties>
                 </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="kontragentiMenu_obekti">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Обслужвани обекти"/>
+                  </Properties>
+                </MenuItem>
               </SubComponents>
             </Menu>
             <Menu class="javax.swing.JMenu" name="nomMenu_Litsa">
@@ -225,6 +250,11 @@
                 <Property name="text" type="java.lang.String" value="Лица"/>
               </Properties>
               <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="litsaMenu_groupe_litsa">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Групи лица"/>
+                  </Properties>
+                </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="litsaMenu_in">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Вътрешни лица"/>
@@ -237,6 +267,52 @@
                 </MenuItem>
               </SubComponents>
             </Menu>
+            <Menu class="javax.swing.JMenu" name="nomMenu_object">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Обекти"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="objectMenu_groupe_object">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Групи обекти"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="objectMenu_skl">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Складове"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="objectMenu_kasa">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Каси"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="moneyMenu">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Парични"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="moneyMenu_groupe">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Групи парични"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="moneyMenu_in">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Приходи"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="moneyMenu_out">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Разходи"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <MenuItem class="javax.swing.JSeparator" name="jSeparator3">
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="nomMenu_nasm">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Населено място"/>
@@ -252,23 +328,6 @@
                 <Property name="text" type="java.lang.String" value="Държави"/>
               </Properties>
             </MenuItem>
-            <Menu class="javax.swing.JMenu" name="nomMenu_object">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Обекти"/>
-              </Properties>
-              <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="objectMenu_skl">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Складове"/>
-                  </Properties>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="objectMenu_kasa">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Каси"/>
-                  </Properties>
-                </MenuItem>
-              </SubComponents>
-            </Menu>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="sprMenu">
@@ -280,6 +339,21 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="СЛУЖЕБНИ"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sluMenuActionPerformed"/>
+          </Events>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Параметри Фирма"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Настроика Програма"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="helpMenu">
           <Properties>

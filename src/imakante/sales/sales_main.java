@@ -22,6 +22,9 @@ public class sales_main extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         programMenu = new javax.swing.JMenu();
+        programMenuLock = new javax.swing.JMenuItem();
+        programMenuUnlock = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JSeparator();
         programMenu_conn = new javax.swing.JMenuItem();
         programMenu_logout = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JSeparator();
@@ -53,23 +56,34 @@ public class sales_main extends javax.swing.JFrame {
         kasaMenu_opis = new javax.swing.JMenuItem();
         nomMenu = new javax.swing.JMenu();
         nomMenu_stock = new javax.swing.JMenu();
+        stock_Menu_group_stock = new javax.swing.JMenuItem();
         stock_Menu_stock = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        stock_Menu_activ = new javax.swing.JMenuItem();
         nomMenu_Kontragenti = new javax.swing.JMenu();
         kontragentiMenu_Clients = new javax.swing.JMenuItem();
         kontragentiMenu_supl = new javax.swing.JMenuItem();
         kontragentiMenu_bank = new javax.swing.JMenuItem();
+        kontragentiMenu_obekti = new javax.swing.JMenuItem();
         nomMenu_Litsa = new javax.swing.JMenu();
+        litsaMenu_groupe_litsa = new javax.swing.JMenuItem();
         litsaMenu_in = new javax.swing.JMenuItem();
         litsaMenu_out = new javax.swing.JMenuItem();
+        nomMenu_object = new javax.swing.JMenu();
+        objectMenu_groupe_object = new javax.swing.JMenuItem();
+        objectMenu_skl = new javax.swing.JMenuItem();
+        objectMenu_kasa = new javax.swing.JMenuItem();
+        moneyMenu = new javax.swing.JMenu();
+        moneyMenu_groupe = new javax.swing.JMenuItem();
+        moneyMenu_in = new javax.swing.JMenuItem();
+        moneyMenu_out = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JSeparator();
         nomMenu_nasm = new javax.swing.JMenuItem();
         nomMenu_obl = new javax.swing.JMenuItem();
         nomMenu_con = new javax.swing.JMenuItem();
-        nomMenu_object = new javax.swing.JMenu();
-        objectMenu_skl = new javax.swing.JMenuItem();
-        objectMenu_kasa = new javax.swing.JMenuItem();
         sprMenu = new javax.swing.JMenu();
         sluMenu = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         contentMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
@@ -91,7 +105,16 @@ public class sales_main extends javax.swing.JFrame {
 
         getContentPane().add(jToolBar1, java.awt.BorderLayout.NORTH);
 
+        programMenu.setFont(menuFont);
         programMenu.setText("\u041f\u0420\u041e\u0413\u0420\u0410\u041c\u0410");
+        programMenuLock.setText("\u0417\u0430\u043a\u043b\u044e\u0447\u0432\u0430\u043d\u0435");
+        programMenu.add(programMenuLock);
+
+        programMenuUnlock.setText("\u041e\u0442\u043a\u043b\u044e\u0447\u0432\u0430\u043d\u0435");
+        programMenu.add(programMenuUnlock);
+
+        programMenu.add(jSeparator2);
+
         programMenu_conn.setText("\u0412\u0440\u044a\u0437\u043a\u0430 \u0441 \u0431\u0430\u0437\u0430\u0442\u0430");
         programMenu_conn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,11 +223,14 @@ public class sales_main extends javax.swing.JFrame {
         });
 
         nomMenu_stock.setText("\u0421\u0442\u043e\u043a\u043e\u0432\u0438");
+        stock_Menu_group_stock.setText("\u0413\u0440\u0443\u043f\u0438");
+        nomMenu_stock.add(stock_Menu_group_stock);
+
         stock_Menu_stock.setText("\u0421\u0442\u043e\u043a\u0430");
         nomMenu_stock.add(stock_Menu_stock);
 
-        jMenuItem2.setText("\u0414\u0440\u0443\u0433\u0438 \u0430\u043a\u0442\u0438\u0432\u0438");
-        nomMenu_stock.add(jMenuItem2);
+        stock_Menu_activ.setText("\u0414\u0440\u0443\u0433\u0438 \u0430\u043a\u0442\u0438\u0432\u0438");
+        nomMenu_stock.add(stock_Menu_activ);
 
         nomMenu.add(nomMenu_stock);
 
@@ -218,9 +244,15 @@ public class sales_main extends javax.swing.JFrame {
         kontragentiMenu_bank.setText("\u0411\u0430\u043d\u043a\u0438");
         nomMenu_Kontragenti.add(kontragentiMenu_bank);
 
+        kontragentiMenu_obekti.setText("\u041e\u0431\u0441\u043b\u0443\u0436\u0432\u0430\u043d\u0438 \u043e\u0431\u0435\u043a\u0442\u0438");
+        nomMenu_Kontragenti.add(kontragentiMenu_obekti);
+
         nomMenu.add(nomMenu_Kontragenti);
 
         nomMenu_Litsa.setText("\u041b\u0438\u0446\u0430");
+        litsaMenu_groupe_litsa.setText("\u0413\u0440\u0443\u043f\u0438 \u043b\u0438\u0446\u0430");
+        nomMenu_Litsa.add(litsaMenu_groupe_litsa);
+
         litsaMenu_in.setText("\u0412\u044a\u0442\u0440\u0435\u0448\u043d\u0438 \u043b\u0438\u0446\u0430");
         nomMenu_Litsa.add(litsaMenu_in);
 
@@ -228,6 +260,32 @@ public class sales_main extends javax.swing.JFrame {
         nomMenu_Litsa.add(litsaMenu_out);
 
         nomMenu.add(nomMenu_Litsa);
+
+        nomMenu_object.setText("\u041e\u0431\u0435\u043a\u0442\u0438");
+        objectMenu_groupe_object.setText("\u0413\u0440\u0443\u043f\u0438 \u043e\u0431\u0435\u043a\u0442\u0438");
+        nomMenu_object.add(objectMenu_groupe_object);
+
+        objectMenu_skl.setText("\u0421\u043a\u043b\u0430\u0434\u043e\u0432\u0435");
+        nomMenu_object.add(objectMenu_skl);
+
+        objectMenu_kasa.setText("\u041a\u0430\u0441\u0438");
+        nomMenu_object.add(objectMenu_kasa);
+
+        nomMenu.add(nomMenu_object);
+
+        moneyMenu.setText("\u041f\u0430\u0440\u0438\u0447\u043d\u0438");
+        moneyMenu_groupe.setText("\u0413\u0440\u0443\u043f\u0438 \u043f\u0430\u0440\u0438\u0447\u043d\u0438");
+        moneyMenu.add(moneyMenu_groupe);
+
+        moneyMenu_in.setText("\u041f\u0440\u0438\u0445\u043e\u0434\u0438");
+        moneyMenu.add(moneyMenu_in);
+
+        moneyMenu_out.setText("\u0420\u0430\u0437\u0445\u043e\u0434\u0438");
+        moneyMenu.add(moneyMenu_out);
+
+        nomMenu.add(moneyMenu);
+
+        nomMenu.add(jSeparator3);
 
         nomMenu_nasm.setText("\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e");
         nomMenu.add(nomMenu_nasm);
@@ -238,21 +296,24 @@ public class sales_main extends javax.swing.JFrame {
         nomMenu_con.setText("\u0414\u044a\u0440\u0436\u0430\u0432\u0438");
         nomMenu.add(nomMenu_con);
 
-        nomMenu_object.setText("\u041e\u0431\u0435\u043a\u0442\u0438");
-        objectMenu_skl.setText("\u0421\u043a\u043b\u0430\u0434\u043e\u0432\u0435");
-        nomMenu_object.add(objectMenu_skl);
-
-        objectMenu_kasa.setText("\u041a\u0430\u0441\u0438");
-        nomMenu_object.add(objectMenu_kasa);
-
-        nomMenu.add(nomMenu_object);
-
         menuBar.add(nomMenu);
 
         sprMenu.setText("\u0421\u041f\u0420\u0410\u0412\u041a\u0418");
         menuBar.add(sprMenu);
 
         sluMenu.setText("\u0421\u041b\u0423\u0416\u0415\u0411\u041d\u0418");
+        sluMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sluMenuActionPerformed(evt);
+            }
+        });
+
+        jMenuItem3.setText("\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0424\u0438\u0440\u043c\u0430");
+        sluMenu.add(jMenuItem3);
+
+        jMenuItem2.setText("\u041d\u0430\u0441\u0442\u0440\u043e\u0438\u043a\u0430 \u041f\u0440\u043e\u0433\u0440\u0430\u043c\u0430");
+        sluMenu.add(jMenuItem2);
+
         menuBar.add(sluMenu);
 
         helpMenu.setText("\u041f\u041e\u041c\u041e\u0429");
@@ -278,6 +339,10 @@ public class sales_main extends javax.swing.JFrame {
         pack();
     }
     // </editor-fold>//GEN-END:initComponents
+
+    private void sluMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sluMenuActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_sluMenuActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try{
@@ -342,7 +407,10 @@ public class sales_main extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenu kasaMenu;
     private javax.swing.JMenuItem kasaMenu_dvi;
@@ -351,10 +419,16 @@ public class sales_main extends javax.swing.JFrame {
     private javax.swing.JMenu kasaMenu_order;
     private javax.swing.JMenuItem kontragentiMenu_Clients;
     private javax.swing.JMenuItem kontragentiMenu_bank;
+    private javax.swing.JMenuItem kontragentiMenu_obekti;
     private javax.swing.JMenuItem kontragentiMenu_supl;
+    private javax.swing.JMenuItem litsaMenu_groupe_litsa;
     private javax.swing.JMenuItem litsaMenu_in;
     private javax.swing.JMenuItem litsaMenu_out;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenu moneyMenu;
+    private javax.swing.JMenuItem moneyMenu_groupe;
+    private javax.swing.JMenuItem moneyMenu_in;
+    private javax.swing.JMenuItem moneyMenu_out;
     private javax.swing.JMenu nomMenu;
     private javax.swing.JMenu nomMenu_Kontragenti;
     private javax.swing.JMenu nomMenu_Litsa;
@@ -363,6 +437,7 @@ public class sales_main extends javax.swing.JFrame {
     private javax.swing.JMenu nomMenu_object;
     private javax.swing.JMenuItem nomMenu_obl;
     private javax.swing.JMenu nomMenu_stock;
+    private javax.swing.JMenuItem objectMenu_groupe_object;
     private javax.swing.JMenuItem objectMenu_kasa;
     private javax.swing.JMenuItem objectMenu_skl;
     private javax.swing.JMenuItem orderMenu_prih;
@@ -370,6 +445,8 @@ public class sales_main extends javax.swing.JFrame {
     private javax.swing.JMenuItem porachMenu_in;
     private javax.swing.JMenuItem porachMenu_out;
     private javax.swing.JMenu programMenu;
+    private javax.swing.JMenuItem programMenuLock;
+    private javax.swing.JMenuItem programMenuUnlock;
     private javax.swing.JMenuItem programMenu_conn;
     private javax.swing.JMenuItem programMenu_logout;
     private javax.swing.JMenuItem protMenu_brak;
@@ -380,15 +457,31 @@ public class sales_main extends javax.swing.JFrame {
     private javax.swing.JMenuItem razpMenu_prehv;
     private javax.swing.JMenu sluMenu;
     private javax.swing.JMenu sprMenu;
+    private javax.swing.JMenuItem stock_Menu_activ;
+    private javax.swing.JMenuItem stock_Menu_group_stock;
     private javax.swing.JMenuItem stock_Menu_stock;
     // End of variables declaration//GEN-END:variables
     
-    private java.sql.Connection dbConn = null;
-    private String dbName = null;
-    private String dbURL = null;
-    private String dbDriver = null;
-    private String dbUser = null;
-    private String dbPass = null;
+    // main app parameters
+    private static boolean logged = false; // for logging into app
+    private java.sql.Connection dbConn = null; // connection
+    private String dbName = null; // name of the db
+    private String dbURL = null; // url of the db
+    private String dbDriver = null; // driver name
+    private String dbUser = null;  // user name
+    private String dbPass = null; // user password
+    private String firmName = null; // relative firm name
+    
+    // visual parameters
+    //menu
+    private java.awt.Font menuFont = new java.awt.Font("Tahoma", 1, 12); // menu font 
+    private java.awt.Color menuBackColor = new java.awt.Color(224,223,227); // menu bakgoround color 
+    private java.awt.Color menuForeColor = new java.awt.Color(0,0,0); // menu foreground color
+    //submenu
+    private java.awt.Font subFont = new java.awt.Font("Tahoma", 0, 11); //submenu font
+    private java.awt.Color subBackColor = new java.awt.Color(224,223,227); // submenu bakgoround color 
+    private java.awt.Color subForeColor = new java.awt.Color(0,0,0); // submenu foreground color
+    
     //forms
     imakante.sales.FrmKlienti FormKlienti;
     
@@ -436,6 +529,11 @@ public class sales_main extends javax.swing.JFrame {
         }
         return getDbConn();
     }
+    
+    private void lockApp(){
+    logged = false;
+    }
+    
     private void closeConn() {
         if (getDbConn() != null ){
             try {
@@ -450,18 +548,21 @@ public class sales_main extends javax.swing.JFrame {
     }
     
     private void loadKlienti() throws java.sql.SQLException {
-        if (getDbConn() != null){
+        if (logged==true){
             FrmKlienti FormKlienti = new FrmKlienti(getDbConn());
             desktopPane.add(FormKlienti);
             FormKlienti.setVisible(true);
             
         } else {
-            JOptionPane.showMessageDialog(null,"Възникнал проблем при осъществаване на връзка с базата.","ИМАКАНТЕ",JOptionPane.WARNING_MESSAGE);
+            lockMessage();
         }
         
     }
  
-
+   private void lockMessage(){
+    JOptionPane.showMessageDialog(null,"Възникнал проблем при осъществаване на връзка с базата.","ИМАКАНТЕ",JOptionPane.WARNING_MESSAGE);
+        
+   }
     public String getDbName() {
         return dbName;
     }
@@ -508,5 +609,21 @@ public class sales_main extends javax.swing.JFrame {
 
     public void setDbPass(String dbPass) {
         this.dbPass = dbPass;
+    }
+
+    public static boolean isLogged() {
+        return logged;
+    }
+
+    public static void setLogged(boolean aLogged) {
+        logged = aLogged;
+    }
+
+    public String getFirmName() {
+        return firmName;
+    }
+
+    public void setFirmName(String firmName) {
+        this.firmName = firmName;
     }
 }

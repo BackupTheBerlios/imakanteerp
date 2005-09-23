@@ -5,8 +5,8 @@ import javax.swing.JOptionPane;
 
 public class FrmKlienti extends javax.swing.JInternalFrame {
     
-    public FrmKlienti(java.sql.Connection dbConn) throws java.sql.SQLException {
-        intConn = dbConn;
+    public FrmKlienti() throws java.sql.SQLException {
+        intConn = parent.getDbConn();
         
         stm = intConn.createStatement(java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE,java.sql.ResultSet.CONCUR_READ_ONLY);
         
@@ -77,6 +77,7 @@ public class FrmKlienti extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+    private imakante.sales.sales_main parent;
     String strQU = "SELECT * FROM sl_n_customer";
     java.sql.Connection intConn;
     java.sql.Statement stm;
