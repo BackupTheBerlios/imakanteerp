@@ -77,10 +77,10 @@ public class frmClient extends javax.swing.JDialog {
     
     
     private void clearFields(){
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jTextField4.setText("");
+        //jTextField1.setText("");
+        //jTextField2.setText("");
+        //jTextField3.setText("");
+        //jTextField4.setText("");
     }
     
     private void setFields(){
@@ -89,10 +89,10 @@ public class frmClient extends javax.swing.JDialog {
         try{
             rs = stm.executeQuery(interSQL);
             rs.next();
-            jTextField1.setText("" + rs.getString("datep"));
-            jTextField2.setText("" + rs.getString("doh"));
-            jTextField3.setText("" + rs.getString("sum"));
-            jTextField4.setText("" + rs.getString("prct"));
+          //  jTextField1.setText("" + rs.getString("datep"));
+            //jTextField2.setText("" + rs.getString("doh"));
+           // jTextField3.setText("" + rs.getString("sum"));
+           // jTextField4.setText("" + rs.getString("prct"));
             
             
         }catch(java.sql.SQLException sqlEx){

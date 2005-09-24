@@ -5,7 +5,8 @@ import javax.swing.JOptionPane;
 
 public class FrmKlienti extends javax.swing.JInternalFrame {
     
-    public FrmKlienti() throws java.sql.SQLException {
+    public FrmKlienti(java.sql.Connection conn
+            ) throws java.sql.SQLException {
         intConn = parent.getDbConn();
         
         stm = intConn.createStatement(java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE,java.sql.ResultSet.CONCUR_READ_ONLY);

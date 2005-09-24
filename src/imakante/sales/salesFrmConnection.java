@@ -160,12 +160,9 @@ public class salesFrmConnection extends JDialog implements ActionListener {
         lDBUser = jTextField2.getText();
         lDBPass = new String(jPasswordField1.getPassword());
         
-        main.setDBDriver(lDBDriver);
-        main.setDBSource(lDBSource);
-        main.setUser(lDBUser);
-        main.setPass(lDBPass);
+      
         String firmName = (String)comboDriver.getSelectedItem();
-        main.setFirm(firmName);
+       
         dispose();
     }
     
