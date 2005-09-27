@@ -60,6 +60,7 @@ public class sales_main extends javax.swing.JFrame {
         stock_Menu_stock = new javax.swing.JMenuItem();
         stock_Menu_activ = new javax.swing.JMenuItem();
         nomMenu_Kontragenti = new javax.swing.JMenu();
+        kontragentiMenu_groupe = new javax.swing.JMenuItem();
         kontragentiMenu_Clients = new javax.swing.JMenuItem();
         kontragentiMenu_supl = new javax.swing.JMenuItem();
         kontragentiMenu_bank = new javax.swing.JMenuItem();
@@ -76,11 +77,17 @@ public class sales_main extends javax.swing.JFrame {
         moneyMenu_groupe = new javax.swing.JMenuItem();
         moneyMenu_in = new javax.swing.JMenuItem();
         moneyMenu_out = new javax.swing.JMenuItem();
+        moneyMenu_valutes = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JSeparator();
         nomMenu_nasm = new javax.swing.JMenuItem();
         nomMenu_obl = new javax.swing.JMenuItem();
         nomMenu_con = new javax.swing.JMenuItem();
         sprMenu = new javax.swing.JMenu();
+        spravkiMenu_nal = new javax.swing.JMenuItem();
+        balansMenu = new javax.swing.JMenu();
+        balansMenu_stock = new javax.swing.JMenuItem();
+        balansMenu_kol = new javax.swing.JMenuItem();
+        spravkiMenu_doc = new javax.swing.JMenuItem();
         sluMenu = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -235,6 +242,9 @@ public class sales_main extends javax.swing.JFrame {
         nomMenu.add(nomMenu_stock);
 
         nomMenu_Kontragenti.setText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
+        kontragentiMenu_groupe.setText("\u0413\u0440\u0443\u043f\u0438");
+        nomMenu_Kontragenti.add(kontragentiMenu_groupe);
+
         kontragentiMenu_Clients.setText("\u041a\u043b\u0438\u0435\u043d\u0442\u0438");
         nomMenu_Kontragenti.add(kontragentiMenu_Clients);
 
@@ -283,6 +293,9 @@ public class sales_main extends javax.swing.JFrame {
         moneyMenu_out.setText("\u0420\u0430\u0437\u0445\u043e\u0434\u0438");
         moneyMenu.add(moneyMenu_out);
 
+        moneyMenu_valutes.setText("\u0412\u0430\u043b\u0443\u0442\u0438");
+        moneyMenu.add(moneyMenu_valutes);
+
         nomMenu.add(moneyMenu);
 
         nomMenu.add(jSeparator3);
@@ -299,6 +312,21 @@ public class sales_main extends javax.swing.JFrame {
         menuBar.add(nomMenu);
 
         sprMenu.setText("\u0421\u041f\u0420\u0410\u0412\u041a\u0418");
+        spravkiMenu_nal.setText("\u041d\u0430\u043b\u0438\u0447\u043d\u043e\u0441\u0442");
+        sprMenu.add(spravkiMenu_nal);
+
+        balansMenu.setText("\u0411\u0430\u043b\u0430\u043d\u0441\u0438");
+        balansMenu_stock.setText("\u0421\u0442\u043e\u043a\u043e\u0432");
+        balansMenu.add(balansMenu_stock);
+
+        balansMenu_kol.setText("\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u0435\u043d");
+        balansMenu.add(balansMenu_kol);
+
+        sprMenu.add(balansMenu);
+
+        spravkiMenu_doc.setText("\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438");
+        sprMenu.add(spravkiMenu_doc);
+
         menuBar.add(sprMenu);
 
         sluMenu.setText("\u0421\u041b\u0423\u0416\u0415\u0411\u041d\u0418");
@@ -390,6 +418,9 @@ public class sales_main extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
+    private javax.swing.JMenu balansMenu;
+    private javax.swing.JMenuItem balansMenu_kol;
+    private javax.swing.JMenuItem balansMenu_stock;
     private javax.swing.JMenuItem contentMenuItem;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu docMenu;
@@ -419,6 +450,7 @@ public class sales_main extends javax.swing.JFrame {
     private javax.swing.JMenu kasaMenu_order;
     private javax.swing.JMenuItem kontragentiMenu_Clients;
     private javax.swing.JMenuItem kontragentiMenu_bank;
+    private javax.swing.JMenuItem kontragentiMenu_groupe;
     private javax.swing.JMenuItem kontragentiMenu_obekti;
     private javax.swing.JMenuItem kontragentiMenu_supl;
     private javax.swing.JMenuItem litsaMenu_groupe_litsa;
@@ -429,6 +461,7 @@ public class sales_main extends javax.swing.JFrame {
     private javax.swing.JMenuItem moneyMenu_groupe;
     private javax.swing.JMenuItem moneyMenu_in;
     private javax.swing.JMenuItem moneyMenu_out;
+    private javax.swing.JMenuItem moneyMenu_valutes;
     private javax.swing.JMenu nomMenu;
     private javax.swing.JMenu nomMenu_Kontragenti;
     private javax.swing.JMenu nomMenu_Litsa;
@@ -457,6 +490,8 @@ public class sales_main extends javax.swing.JFrame {
     private javax.swing.JMenuItem razpMenu_prehv;
     private javax.swing.JMenu sluMenu;
     private javax.swing.JMenu sprMenu;
+    private javax.swing.JMenuItem spravkiMenu_doc;
+    private javax.swing.JMenuItem spravkiMenu_nal;
     private javax.swing.JMenuItem stock_Menu_activ;
     private javax.swing.JMenuItem stock_Menu_group_stock;
     private javax.swing.JMenuItem stock_Menu_stock;

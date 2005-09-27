@@ -223,6 +223,11 @@
                 <Property name="text" type="java.lang.String" value="Контрагенти"/>
               </Properties>
               <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="kontragentiMenu_groupe">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Групи"/>
+                  </Properties>
+                </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="kontragentiMenu_Clients">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Клиенти"/>
@@ -309,6 +314,11 @@
                     <Property name="text" type="java.lang.String" value="Разходи"/>
                   </Properties>
                 </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="moneyMenu_valutes">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Валути"/>
+                  </Properties>
+                </MenuItem>
               </SubComponents>
             </Menu>
             <MenuItem class="javax.swing.JSeparator" name="jSeparator3">
@@ -334,6 +344,35 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="СПРАВКИ"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="spravkiMenu_nal">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Наличност"/>
+              </Properties>
+            </MenuItem>
+            <Menu class="javax.swing.JMenu" name="balansMenu">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Баланси"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="balansMenu_stock">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Стоков"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="balansMenu_kol">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Количествен"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <MenuItem class="javax.swing.JMenuItem" name="spravkiMenu_doc">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Документи"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="sluMenu">
           <Properties>
