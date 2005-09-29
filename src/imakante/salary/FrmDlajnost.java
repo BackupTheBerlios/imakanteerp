@@ -241,7 +241,6 @@ public class FrmDlajnost extends javax.swing.JInternalFrame implements java.awt.
         jScrollPane1.remove(jTable);
         initResource();
         jScrollPane1.getViewport().add(jTable, null);
-        jScrollPane1.repaint(); jScrollPane1.getViewport().add(jTable, null);
         jScrollPane1.repaint();
     }
     

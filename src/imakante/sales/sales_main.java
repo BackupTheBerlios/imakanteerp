@@ -507,6 +507,10 @@ public class sales_main extends javax.swing.JFrame {
     private String dbPass = null; // user password
     private String firmName = null; // relative firm name
     
+    public static java.util.HashMap colorHash; 
+    public static java.util.HashMap fontHash;
+    public static java.util.HashMap dimentionMap;
+   
     // visual parameters
     //menu
     private java.awt.Font menuFont = new java.awt.Font("Tahoma", 1, 12); // menu font 
@@ -520,7 +524,11 @@ public class sales_main extends javax.swing.JFrame {
     //forms
     imakante.sales.FrmKlienti FormKlienti;
     
+     private void initColorHash(){
     
+    
+    
+    }
     
     private void loadConn(){
         imakante.sales.salesFrmConnection fconn = new salesFrmConnection(this);
