@@ -43,6 +43,7 @@ public class editKlient extends javax.swing.JDialog {
         jTextField12 = new javax.swing.JTextField();
         jTextField13 = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -272,7 +273,9 @@ public class editKlient extends javax.swing.JDialog {
 
         jTabbedPane1.addTab("\u0414\u0410\u041d\u041d\u0418 \u041d\u0410 \u0424\u0418\u0420\u041c\u0410\u0422\u0410", jPanel3);
 
-        jTabbedPane1.addTab("tab2", jPanel4);
+        jTabbedPane1.addTab("\u0414\u0430\u043d\u043d\u0438 \u0437\u0430 \u041e\u0421\u041e", jPanel4);
+
+        jTabbedPane1.addTab("\u0414\u0430\u043d\u043d\u0438 \u0437\u0430 \u041e\u0431\u0435\u043a\u0442\u0438", jPanel5);
 
         jPanel1.add(jTabbedPane1, java.awt.BorderLayout.CENTER);
 
@@ -315,6 +318,7 @@ public class editKlient extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;

@@ -16,13 +16,11 @@ import javax.swing.JFrame;
 public class FrmFishove extends javax.swing.JInternalFrame implements java.awt.event.WindowListener{
     
     
-    public FrmFishove(JFrame getParentFrame, java.sql.Connection dbCon, int tYear, int tMonth, String FName) {
+    public FrmFishove(JFrame getParentFrame, java.sql.Connection dbCon) {
         
         JFParentFrame = getParentFrame;
         dbInternal = dbCon;
-        lYear = tYear;
-        lMonth = tMonth;
-        fName = FName;
+        fName = imakante.salary.salary_main.getNFirm();
         
         
         initComponents();
@@ -199,7 +197,7 @@ public class FrmFishove extends javax.swing.JInternalFrame implements java.awt.e
                 
                 strSQL = "SELECT ls_main.id, ls_main.first, ls_main.second,  ls_main.family," +
                         " lsresult.zaplata, lsresult.psuma, lsresult.nsuma FROM ls_main" +
-                        " INNER JOIN ls_result ON (ls_main.Id = ls_result.idrab)  WHERE ls_result.year = " + lYear + " AND " + "ls_result.month = " + lMonth+";";
+                        " INNER JOIN ls_result ON (ls_main.Id = ls_result.idrab)  WHERE ls_result.id_period = " + imakante.salary.salary_main.getId_period();
                 try{
                     rsCus = stm.executeQuery(strSQL);} catch (SQLException sd){}
                 

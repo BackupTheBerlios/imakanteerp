@@ -1239,10 +1239,8 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
         boolean AlreadyLoaded = isLoaded("\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u0438 \u043c\u0435\u0441\u0442\u0430");
         if(AlreadyLoaded==false){
-            try{
-                System.out.println("vliza v loadExtern");
-            FormExtRes= new imakante.salary.FrmExternalRes(dbCON, this) ;}catch(java.sql.SQLException sqle){sqle.printStackTrace();}
             
+            FormExtRes= new imakante.salary.FrmExternalRes() ;
             Desk1.add(FormExtRes);
             try{FormExtRes.setMaximum(true);}catch(java.beans.PropertyVetoException bpve){bpve.printStackTrace();}
             FormExtRes.setVisible(true);

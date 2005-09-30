@@ -115,6 +115,8 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         jtfOsigSuma = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jCheckBox1 = new javax.swing.JCheckBox();
+        jLabel4 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
         jpButtons = new javax.swing.JPanel();
         jbAdd = new javax.swing.JButton();
         jbChange = new javax.swing.JButton();
@@ -803,7 +805,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridy = 10;
         gridBagConstraints.gridwidth = 7;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(5, 30, 5, 30);
@@ -883,7 +885,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridy = 11;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
@@ -894,7 +896,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         jlNotes.setText("\u0411\u0435\u043b\u0435\u0436\u043a\u0438");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridy = 11;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
@@ -908,7 +910,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridy = 12;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 15, 30);
@@ -917,7 +919,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         jLabel2.setText("* F7 - \u0418\u0437\u0431\u043e\u0440 \u043d\u0430 \u0432\u044a\u0437\u043c\u043e\u0436\u043d\u043e\u0441\u0442\u0438");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 12;
+        gridBagConstraints.gridy = 13;
         jpWorker.add(jLabel2, gridBagConstraints);
 
         jLabel3.setText("\u041e\u0441\u0438\u0433\u0443\u0440\u0438\u0442\u0435\u043b\u043d\u0430 \u0441\u0443\u043c\u0430");
@@ -953,13 +955,26 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.insets = new java.awt.Insets(5, 30, 5, 30);
         jpWorker.add(jSeparator1, gridBagConstraints);
 
-        jCheckBox1.setText("\u041e\u0441\u0438\u0433\u0443\u0440\u043e\u0432\u043a\u0438\u0442\u0435 \u0434\u0430 \u0441\u0435 \u0441\u043c\u044f\u0442\u0430\u0442 \u0432\u044a\u0440\u0445\u0443 \u043e\u0441\u0438\u0433\u0443\u0440\u0438\u0442\u0435\u043b\u043d\u0430 \u0441\u0443\u0441\u0443\u043c\u0430");
+        jCheckBox1.setText("\u041e\u0441\u0438\u0433\u0443\u0440\u043e\u0432\u043a\u0438\u0442\u0435 \u0434\u0430 \u0441\u0435 \u0441\u043c\u044f\u0442\u0430\u0442 \u0432\u044a\u0440\u0445\u0443 \u043e\u0441\u0438\u0433\u0443\u0440\u0438\u0442\u0435\u043b\u043d\u0430 \u0441\u0443\u043c\u0430");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 9;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jpWorker.add(jCheckBox1, gridBagConstraints);
+
+        jLabel4.setText("\u041e\u0442\u0434\u0435\u043b");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 8;
+        jpWorker.add(jLabel4, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 150;
+        jpWorker.add(jComboBox1, gridBagConstraints);
 
         jtpDataInput.addTab("\u0414\u0430\u043d\u043d\u0438 \u043d\u0430 \u0440\u0430\u0431\u043e\u0442\u043d\u0438\u043a\u0430", jpWorker);
 
@@ -1299,9 +1314,11 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton jbAdd;
     private javax.swing.JButton jbChange;
