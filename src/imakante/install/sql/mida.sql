@@ -1,4 +1,4 @@
-# MySQL-Front 3.2  (Build 6.14)
+# MySQL-Front 3.2  (Build 7.19)
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -8,91 +8,59 @@
 # Host: localhost    Database: mida
 # ------------------------------------------------------
 # Server version 4.1.10a-nt-max
+
 /*!40101 SET NAMES cp1251 */;
 
-
 #
-# Table structure for table customer_pri
-#
-
-DROP TABLE IF EXISTS `customer_pri`;
-CREATE TABLE `customer_pri` (
-  `Id_customer` int(11) NOT NULL default '0',
-  `N1_Customer` varchar(8) default NULL,
-  `Name` varchar(30) default NULL,
-  PRIMARY KEY  (`Id_customer`)
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
-
-#
-# Table structure for table dop
+# Table structure for table log_ls_init_worker
 #
 
-DROP TABLE IF EXISTS `dop`;
-CREATE TABLE `dop` (
-  `Id` int(11) NOT NULL default '0',
-  `gender` varchar(4) default NULL,
-  `sec` char(1) default NULL,
-  PRIMARY KEY  (`Id`)
+DROP TABLE IF EXISTS `log_ls_init_worker`;
+CREATE TABLE `log_ls_init_worker` (
+  `id` int(11) NOT NULL auto_increment,
+  `id_rab` int(11) default NULL,
+  `id_user` int(11) default NULL,
+  `date_init` date default NULL,
+  `time_init` time default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
-#
-# Table structure for table kasa001
-#
-
-DROP TABLE IF EXISTS `kasa001`;
-CREATE TABLE `kasa001` (
-  `kasaID` int(11) NOT NULL default '0',
-  `Id_customer` int(11) default NULL,
-  `Idperson` int(11) default NULL,
-  `Date` datetime default NULL,
-  `Total` double default NULL,
-  `Totalwovat` double default NULL,
-  `VAT` double default NULL,
-  `ShipVIA` int(11) default NULL,
-  `plat` double default NULL,
-  `Tip_plat` smallint(6) NOT NULL default '0',
-  `Id_kasa_order` int(11) default NULL,
-  `Plateno` char(1) default NULL,
-  PRIMARY KEY  (`kasaID`)
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 #
-# Table structure for table kasa001razhod
+# Table structure for table log_ls_osig
 #
 
-DROP TABLE IF EXISTS `kasa001razhod`;
-CREATE TABLE `kasa001razhod` (
-  `kasaIDraz` int(11) NOT NULL auto_increment,
-  `Id_customer` int(11) default NULL,
-  `Idperson` int(11) default NULL,
-  `Date` datetime default NULL,
-  `Total` double default NULL,
-  `Totalwovat` double default NULL,
-  `VAT` double default NULL,
-  `ShipVIA` int(11) default NULL,
-  `plat` double default NULL,
-  `Tip_plat` smallint(6) NOT NULL default '0',
-  `Id_kasa_order` int(11) default NULL,
-  PRIMARY KEY  (`kasaIDraz`)
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+DROP TABLE IF EXISTS `log_ls_osig`;
+CREATE TABLE `log_ls_osig` (
+  `id` int(11) NOT NULL auto_increment,
+  `id_rab` int(11) default NULL,
+  `id_period` int(11) default NULL,
+  `old_val` decimal(10,2) default NULL,
+  `new_val` decimal(10,2) default NULL,
+  `id_user` int(11) default NULL,
+  `date_change` date default NULL,
+  `time_change` time default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
 
 #
-# Table structure for table kasadet001razhod
+# Table structure for table log_ls_salary
 #
 
-DROP TABLE IF EXISTS `kasadet001razhod`;
-CREATE TABLE `kasadet001razhod` (
-  `Id_Saledet` int(11) NOT NULL auto_increment,
-  `SaleID` int(11) default NULL,
-  `Id_Product` int(11) default NULL,
-  `UnitPrice` double default NULL,
-  `Quantity` float default NULL,
-  `Discount` smallint(6) NOT NULL default '0',
-  `Totalcol` double default NULL,
-  `Vatcol` double default NULL,
-  `Idskl_strukt` smallint(6) NOT NULL default '0',
-  PRIMARY KEY  (`Id_Saledet`)
-) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+DROP TABLE IF EXISTS `log_ls_salary`;
+CREATE TABLE `log_ls_salary` (
+  `id` int(11) NOT NULL auto_increment,
+  `id_rab` int(11) default NULL,
+  `id_period` int(11) default NULL,
+  `old_val` decimal(10,2) default NULL,
+  `new_val` decimal(10,2) default NULL,
+  `id_user` int(11) default NULL,
+  `date_change` date default NULL,
+  `time_change` time default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='trace salary change';
+
 
 #
 # Table structure for table ls_addresses
@@ -110,6 +78,7 @@ CREATE TABLE `ls_addresses` (
   PRIMARY KEY  (`idls_addresses`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
+
 #
 # Table structure for table ls_boln_impl
 #
@@ -126,6 +95,7 @@ CREATE TABLE `ls_boln_impl` (
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
+
 #
 # Table structure for table ls_bolnichni
 #
@@ -138,6 +108,7 @@ CREATE TABLE `ls_bolnichni` (
   `procent` decimal(3,2) unsigned NOT NULL default '0.00' COMMENT 'Процент на болничния',
   UNIQUE KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
 
 #
 # Table structure for table ls_dates
@@ -157,6 +128,7 @@ CREATE TABLE `ls_dates` (
   PRIMARY KEY  (`idls_dates`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
+
 #
 # Table structure for table ls_dlajnosti
 #
@@ -169,6 +141,7 @@ CREATE TABLE `ls_dlajnosti` (
   `id_ncl` int(11) default NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
 
 #
 # Table structure for table ls_dobavki
@@ -188,6 +161,7 @@ CREATE TABLE `ls_dobavki` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
+
 #
 # Table structure for table ls_dod
 #
@@ -201,6 +175,7 @@ CREATE TABLE `ls_dod` (
   `prct` float default NULL,
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
 
 #
 # Table structure for table ls_main
@@ -229,6 +204,7 @@ CREATE TABLE `ls_main` (
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
+
 #
 # Table structure for table ls_monthpar
 #
@@ -254,6 +230,7 @@ CREATE TABLE `ls_monthpar` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
+
 #
 # Table structure for table ls_otdeli
 #
@@ -265,6 +242,7 @@ CREATE TABLE `ls_otdeli` (
   `nameotdel` varchar(25) default NULL,
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
 
 #
 # Table structure for table ls_otp_impl
@@ -282,6 +260,7 @@ CREATE TABLE `ls_otp_impl` (
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='Изчислени болнични за конкретен ';
 
+
 #
 # Table structure for table ls_otpusk
 #
@@ -293,6 +272,7 @@ CREATE TABLE `ls_otpusk` (
   `cod` varchar(6) NOT NULL default '' COMMENT 'Код на вида отпуск',
   UNIQUE KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
 
 #
 # Table structure for table ls_pic
@@ -306,6 +286,7 @@ CREATE TABLE `ls_pic` (
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
+
 #
 # Table structure for table ls_result
 #
@@ -317,6 +298,7 @@ CREATE TABLE `ls_result` (
   `id_period` smallint(5) unsigned NOT NULL default '0' COMMENT 'Работен период',
   `idrab` int(11) default NULL,
   `id_dlaj` int(11) default NULL,
+  `id_otdel` int(11) default NULL,
   `cat_rab` char(2) default NULL,
   `m_rab` tinyint(3) default NULL COMMENT 'mesetsi obsho rabota',
   `y_rab` tinyint(3) default NULL COMMENT 'godini obsho rabota',
@@ -343,6 +325,7 @@ CREATE TABLE `ls_result` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
+
 #
 # Table structure for table ls_sluj
 #
@@ -360,6 +343,7 @@ CREATE TABLE `ls_sluj` (
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
+
 #
 # Table structure for table ls_users_rights
 #
@@ -376,6 +360,7 @@ CREATE TABLE `ls_users_rights` (
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
+
 #
 # Table structure for table ls_vid_osiguren
 #
@@ -388,17 +373,19 @@ CREATE TABLE `ls_vid_osiguren` (
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
+
 #
 # Table structure for table n_country
 #
 
 DROP TABLE IF EXISTS `n_country`;
 CREATE TABLE `n_country` (
-  `Id` int(11) NOT NULL default '0',
+  `id` smallint(6) NOT NULL auto_increment,
   `code` char(1) NOT NULL default '',
   `name` varchar(20) default NULL,
-  PRIMARY KEY  (`Id`)
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
 
 #
 # Table structure for table n_nm
@@ -413,6 +400,7 @@ CREATE TABLE `n_nm` (
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
+
 #
 # Table structure for table n_oblast
 #
@@ -424,6 +412,7 @@ CREATE TABLE `n_oblast` (
   `id_country` tinyint(3) NOT NULL default '0',
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
 
 #
 # Table structure for table natc_clasifikator_deinosti
@@ -446,6 +435,7 @@ CREATE TABLE `natc_clasifikator_deinosti` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
+
 #
 # Table structure for table natc_clasifikator_prof
 #
@@ -457,6 +447,7 @@ CREATE TABLE `natc_clasifikator_prof` (
   `cod` int(11) default NULL,
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
 
 #
 # Table structure for table person
@@ -473,6 +464,7 @@ CREATE TABLE `person` (
   `fk_au` int(11) NOT NULL default '0',
   PRIMARY KEY  (`idperson`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
 
 #
 # Table structure for table sl_d_delivery
@@ -495,6 +487,7 @@ CREATE TABLE `sl_d_delivery` (
   PRIMARY KEY  (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251 COMMENT='parametri na dostavkata - partidi';
 
+
 #
 # Table structure for table sl_d_documents
 #
@@ -516,6 +509,7 @@ CREATE TABLE `sl_d_documents` (
   PRIMARY KEY  (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251 COMMENT='parametri na documenta';
 
+
 #
 # Table structure for table sl_d_sale
 #
@@ -533,6 +527,7 @@ CREATE TABLE `sl_d_sale` (
   PRIMARY KEY  (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251 COMMENT='parametri na dostavkata - partidi';
 
+
 #
 # Table structure for table sl_n_baccount
 #
@@ -549,6 +544,7 @@ CREATE TABLE `sl_n_baccount` (
   KEY `Customer` (`Id_cust`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
+
 #
 # Table structure for table sl_n_cat_product
 #
@@ -560,6 +556,7 @@ CREATE TABLE `sl_n_cat_product` (
   `name_s` varchar(5) default NULL,
   PRIMARY KEY  (`idsl_n_cat_product`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
 
 #
 # Table structure for table sl_n_cust_info
@@ -574,6 +571,7 @@ CREATE TABLE `sl_n_cust_info` (
   PRIMARY KEY  (`Id`),
   KEY `Customer` (`Id_cust`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
 
 #
 # Table structure for table sl_n_customer
@@ -597,6 +595,7 @@ CREATE TABLE `sl_n_customer` (
   PRIMARY KEY  (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
+
 #
 # Table structure for table sl_n_distributors
 #
@@ -612,6 +611,7 @@ CREATE TABLE `sl_n_distributors` (
   KEY `Customer` (`Id_cust`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
+
 #
 # Table structure for table sl_n_docs
 #
@@ -623,6 +623,63 @@ CREATE TABLE `sl_n_docs` (
   `info` varchar(15) default NULL COMMENT 'komentar',
   PRIMARY KEY  (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251 COMMENT='tipove documenti';
+
+
+#
+# Table structure for table sl_n_gr_contr
+#
+
+DROP TABLE IF EXISTS `sl_n_gr_contr`;
+CREATE TABLE `sl_n_gr_contr` (
+  `id` int(11) NOT NULL auto_increment,
+  `cod` varchar(6) default NULL,
+  `name` varchar(30) default NULL,
+  `opisanie` varchar(150) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+
+#
+# Table structure for table sl_n_gr_object
+#
+
+DROP TABLE IF EXISTS `sl_n_gr_object`;
+CREATE TABLE `sl_n_gr_object` (
+  `id` int(11) NOT NULL auto_increment,
+  `cod` varchar(6) default NULL,
+  `name` varchar(30) default NULL,
+  `opisanie` varchar(150) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+
+#
+# Table structure for table sl_n_gr_parichni
+#
+
+DROP TABLE IF EXISTS `sl_n_gr_parichni`;
+CREATE TABLE `sl_n_gr_parichni` (
+  `id` int(6) NOT NULL auto_increment,
+  `cod` varchar(6) default NULL,
+  `name` varchar(30) default NULL,
+  `opisanie` varchar(150) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+
+#
+# Table structure for table sl_n_gr_stock
+#
+
+DROP TABLE IF EXISTS `sl_n_gr_stock`;
+CREATE TABLE `sl_n_gr_stock` (
+  `id` int(11) NOT NULL auto_increment,
+  `cod` varchar(6) default NULL,
+  `name` varchar(30) default NULL,
+  `opisanie` varchar(150) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
 
 #
 # Table structure for table sl_n_obekt
@@ -639,6 +696,7 @@ CREATE TABLE `sl_n_obekt` (
   KEY `Customer` (`Id_cust`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
+
 #
 # Table structure for table sl_n_person
 #
@@ -652,6 +710,7 @@ CREATE TABLE `sl_n_person` (
   `comment` varchar(20) default NULL,
   PRIMARY KEY  (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
 
 #
 # Table structure for table sl_n_product
@@ -678,6 +737,7 @@ CREATE TABLE `sl_n_product` (
   PRIMARY KEY  (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251 COMMENT='razshireni parametri na produkta';
 
+
 #
 # Table structure for table sl_n_product_pri
 #
@@ -698,6 +758,7 @@ CREATE TABLE `sl_n_product_pri` (
   KEY `FK_sl_n_product_pri_1` (`id_cat`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
+
 #
 # Table structure for table sl_n_product_razf
 #
@@ -716,6 +777,7 @@ CREATE TABLE `sl_n_product_razf` (
   KEY `Index_razf` (`razf2`,`razf1`,`osn_razf`),
   KEY `FK_sl_n_product_razf_1` (`osn_razf`,`razf1`,`razf2`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
 
 #
 # Table structure for table sl_n_product_tsen
@@ -741,6 +803,7 @@ CREATE TABLE `sl_n_product_tsen` (
   PRIMARY KEY  (`Id`,`id_prod_pri`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='razshirenio parametri na produkta';
 
+
 #
 # Table structure for table sl_n_razfasofki
 #
@@ -754,6 +817,7 @@ CREATE TABLE `sl_n_razfasofki` (
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
+
 #
 # Table structure for table sl_n_storage
 #
@@ -765,6 +829,7 @@ CREATE TABLE `sl_n_storage` (
   `info` varchar(15) default NULL COMMENT 'komentar',
   PRIMARY KEY  (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251 COMMENT='skladove';
+
 
 #
 # Table structure for table user_master
