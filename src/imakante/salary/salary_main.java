@@ -1,5 +1,7 @@
 package imakante.salary;
 
+import org.jvnet.substance.SubstanceLookAndFeel;
+
 
 public class salary_main extends javax.swing.JFrame implements java.awt.event.WindowListener{
     
@@ -35,7 +37,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     FrmVedAvans   FormVedAvans;
     frmSleujParam  FormSleujParam;
     FrmAct        FormActStDlaj;
-    FrmExternalRes FormExtRes;
+//    FrmExternalRes FormExtRes;
     FrmPic FormPic;
     FrmNasM    FormNasM;
     FrmNKID     FormNKID;
@@ -1235,8 +1237,8 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         }
         
     }
-     protected void loadExtern() {
-        
+    protected void loadExtern() {
+     /*   
         boolean AlreadyLoaded = isLoaded("\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u0438 \u043c\u0435\u0441\u0442\u0430");
         if(AlreadyLoaded==false){
             
@@ -1257,7 +1259,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
             }catch(java.beans.PropertyVetoException e){
             }
         }
-        
+        */
     }
     
     
@@ -1628,15 +1630,34 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     /**************************** Main method start ***************************/
     
     public static void main(String[] args){
-       
-            try {
-                String sysLook = javax.swing.UIManager.getSystemLookAndFeelClassName();
-                javax.swing.UIManager.setLookAndFeel(sysLook);
-                
-            } catch (Exception err) {
-                System.out.println("Error loading Theme:" + err.toString());
+        try{
+            String theme ="1";
+            java.io.BufferedReader config_file = new java.io.BufferedReader(new java.io.InputStreamReader(new
+                    java.io.FileInputStream("c:/ima_config.ini"), "cp1251"));
+            theme = config_file.readLine();
+            if(theme.equals("1")){
+                try {
+                    String sysLook = javax.swing.UIManager.getSystemLookAndFeelClassName();
+                    javax.swing.UIManager.setLookAndFeel(sysLook);
+                    
+                } catch (Exception err) {
+                    System.out.println("Error loading Theme:" + err.toString());
+                }
+            } else if(theme.equals("2")){
+                try{
+                javax.swing.UIManager.setLookAndFeel(new org.jvnet.substance.SubstanceLookAndFeel());
+                javax.swing.UIManager.setLookAndFeel("org.jvnet.substance.SubstanceLookAndFeel");
+                }catch(Exception err){}
             }
-        
+        }catch(java.io.IOException iox){
+        try {
+            String sysLook = javax.swing.UIManager.getSystemLookAndFeelClassName();
+            javax.swing.UIManager.setLookAndFeel(sysLook);
+            
+        } catch (Exception err) {
+            System.out.println("Error loading Theme:" + err.toString());
+        }
+        }
         
         new salary_main();
     }
