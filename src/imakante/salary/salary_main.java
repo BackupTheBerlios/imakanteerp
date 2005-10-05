@@ -1238,15 +1238,15 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
         
     }
     protected void loadExtern() {
-     /*   
+     /*
         boolean AlreadyLoaded = isLoaded("\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u0438 \u043c\u0435\u0441\u0442\u0430");
         if(AlreadyLoaded==false){
-            
+      
             FormExtRes= new imakante.salary.FrmExternalRes() ;
             Desk1.add(FormExtRes);
             try{FormExtRes.setMaximum(true);}catch(java.beans.PropertyVetoException bpve){bpve.printStackTrace();}
             FormExtRes.setVisible(true);
-            
+      
             try{
                 FormExtRes.setIcon(false);
                 FormExtRes.setSelected(true);
@@ -1259,7 +1259,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
             }catch(java.beans.PropertyVetoException e){
             }
         }
-        */
+      */
     }
     
     
@@ -1625,136 +1625,177 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
             }
         }
     }
+    
+    protected static void setWM(String watermark) {
+        
+        if (watermark.equals("1")) {
+            org.jvnet.substance.SubstanceLookAndFeel.setCurrentWatermark("org.jvnet.substance.watermark.SubstanceStripeWatermark");
+        } else if (watermark.equals("2")) {
+            org.jvnet.substance.SubstanceLookAndFeel.setCurrentWatermark("org.jvnet.substance.watermark.SubstanceKatakanaWatermark");
+        } else if (watermark.equals("3")) {
+            org.jvnet.substance.SubstanceLookAndFeel.setCurrentWatermark("org.jvnet.substance.watermark.SubstanceBubblesWatermark");
+        } else if (watermark.equals("4")) {
+            org.jvnet.substance.SubstanceLookAndFeel.setCurrentWatermark("org.jvnet.substance.watermark.SubstanceCrosshatchWatermark");
+        } else if (watermark.equals("5")) {
+            org.jvnet.substance.SubstanceLookAndFeel.setCurrentWatermark("org.jvnet.substance.watermark.SubstanceBinaryWatermark");
+        } else if (watermark.equals("6")) {
+            org.jvnet.substance.SubstanceLookAndFeel.setCurrentWatermark("org.jvnet.substance.watermark.SubstanceMosaicWatermark");
+        } else if (watermark.equals("7")) {
+            org.jvnet.substance.SubstanceLookAndFeel.setCurrentWatermark("org.jvnet.substance.watermark.SubstanceLatchWatermark");
+        } else if (watermark.equals("8")) {
+            org.jvnet.substance.SubstanceLookAndFeel.setCurrentWatermark("org.jvnet.substance.watermark.SubstanceMetalWallWatermark");
+        } else if (watermark.equals("9")) {
+            String img = "C:/Imakante/imakante.jpg";
+            org.jvnet.substance.SubstanceLookAndFeel.setCurrentWatermark(new org.jvnet.substance.watermark.SubstanceImageWatermark(img));
+        }
+    }
     /************************* End custom method end **************************/
     
     /**************************** Main method start ***************************/
     
     public static void main(String[] args){
         try{
-            String theme ="1";
-            java.io.BufferedReader config_file = new java.io.BufferedReader(new java.io.InputStreamReader(new
+            String theme = "1", wm = "1";
+            java.io.BufferedReader themer = new java.io.BufferedReader(new java.io.InputStreamReader(new
                     java.io.FileInputStream("c:/ima_config.ini"), "cp1251"));
-            theme = config_file.readLine();
-            if(theme.equals("1")){
+            theme = themer.readLine();
+            wm = themer.readLine();
+            if(theme.equals("1")){  // Konfigurirane na Temata
                 try {
-                    String sysLook = javax.swing.UIManager.getSystemLookAndFeelClassName();
+                    String sysLook = javax.swing.UIManager.getSystemLookAndFeelClassName();     // Win L&F
                     javax.swing.UIManager.setLookAndFeel(sysLook);
                     
                 } catch (Exception err) {
-                    
+                    err.printStackTrace();
                 }
             } else if(theme.equals("2")){
                 try{
-                    
-                org.jvnet.substance.SubstanceLookAndFeel sustance = new org.jvnet.substance.SubstanceLookAndFeel();
-                javax.swing.UIManager.setLookAndFeel(sustance);
-                javax.swing.UIManager.setLookAndFeel("org.jvnet.substance.SubstanceLookAndFeel");
+                    org.jvnet.substance.SubstanceLookAndFeel sustance = new org.jvnet.substance.SubstanceLookAndFeel();
+                    setWM(wm);
+                    javax.swing.UIManager.setLookAndFeel(sustance);
+                    javax.swing.UIManager.setLookAndFeel("org.jvnet.substance.SubstanceLookAndFeel");
                 }catch(Exception err){}
             }else if(theme.equals("3")){
                 try{
-                org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
-                substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceBarbyPinkTheme());
-                javax.swing.UIManager.setLookAndFeel(substance);
-                   }catch(Exception err){}
+                    org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
+                    substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceBarbyPinkTheme());
+                    setWM(wm);
+                    javax.swing.UIManager.setLookAndFeel(substance);
+                }catch(Exception err){}
             }else if(theme.equals("4")){
                 try{
-                org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
-                substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceBottleGreenTheme());
-                javax.swing.UIManager.setLookAndFeel(substance);
-                   }catch(Exception err){}
+                    org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
+                    substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceBottleGreenTheme());
+                    setWM(wm);
+                    javax.swing.UIManager.setLookAndFeel(substance);
+                }catch(Exception err){}
             }else if(theme.equals("5")){
                 try{
-                org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
-                substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceBrownTheme());
-                javax.swing.UIManager.setLookAndFeel(substance);
-                   }catch(Exception err){}
+                    org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
+                    substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceBrownTheme());
+                    setWM(wm);
+                    javax.swing.UIManager.setLookAndFeel(substance);
+                }catch(Exception err){}
             }else if(theme.equals("6")){
                 try{
-                org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
-                substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceCharcoalTheme());
-                javax.swing.UIManager.setLookAndFeel(substance);
-                   }catch(Exception err){}
+                    org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
+                    substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceCharcoalTheme());
+                    setWM(wm);
+                    javax.swing.UIManager.setLookAndFeel(substance);
+                }catch(Exception err){}
             }else if(theme.equals("7")){
                 try{
-                org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
-                substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceDarkVioletTheme());
-                javax.swing.UIManager.setLookAndFeel(substance);
-                   }catch(Exception err){}
+                    org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
+                    substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceDarkVioletTheme());
+                    setWM(wm);
+                    javax.swing.UIManager.setLookAndFeel(substance);
+                }catch(Exception err){}
             }else if(theme.equals("8")){
                 try{
-                org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
-                substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceEbonyTheme());
-                javax.swing.UIManager.setLookAndFeel(substance);
-                   }catch(Exception err){}
+                    org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
+                    substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceEbonyTheme());
+                    setWM(wm);
+                    javax.swing.UIManager.setLookAndFeel(substance);
+                }catch(Exception err){}
             }else if(theme.equals("9")){
                 try{
-                org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
-                substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceLightAquaTheme());
-                javax.swing.UIManager.setLookAndFeel(substance);
-                   }catch(Exception err){}
+                    org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
+                    substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceLightAquaTheme());
+                    setWM(wm);
+                    javax.swing.UIManager.setLookAndFeel(substance);
+                }catch(Exception err){}
             }else if(theme.equals("10")){
                 try{
-                org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
-                substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceLimeGreenTheme());
-                javax.swing.UIManager.setLookAndFeel(substance);
-                   }catch(Exception err){}
+                    org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
+                    substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceLimeGreenTheme());
+                    setWM(wm);
+                    javax.swing.UIManager.setLookAndFeel(substance);
+                }catch(Exception err){}
             }else if(theme.equals("11")){
                 try{
-                org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
-                substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceOliveTheme());
-                javax.swing.UIManager.setLookAndFeel(substance);
-                   }catch(Exception err){}
+                    org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
+                    substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceOliveTheme());
+                    setWM(wm);
+                    javax.swing.UIManager.setLookAndFeel(substance);
+                }catch(Exception err){}
             }else if(theme.equals("12")){
                 try{
-                org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
-                substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceOrangeTheme());
-                javax.swing.UIManager.setLookAndFeel(substance);
-                   }catch(Exception err){}
+                    org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
+                    substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceOrangeTheme());
+                    setWM(wm);
+                    javax.swing.UIManager.setLookAndFeel(substance);
+                }catch(Exception err){}
             }else if(theme.equals("13")){
                 try{
-                org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
-                substance.setCurrentTheme(new org.jvnet.substance.theme.SubstancePurpleTheme());
-                javax.swing.UIManager.setLookAndFeel(substance);
-                   }catch(Exception err){}
+                    org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
+                    substance.setCurrentTheme(new org.jvnet.substance.theme.SubstancePurpleTheme());
+                    setWM(wm);
+                    javax.swing.UIManager.setLookAndFeel(substance);
+                }catch(Exception err){}
             }else if(theme.equals("14")){
                 try{
-                org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
-                substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceRaspberryTheme());
-                javax.swing.UIManager.setLookAndFeel(substance);
+                    org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
+                    substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceRaspberryTheme());
+                    setWM(wm);
+                    javax.swing.UIManager.setLookAndFeel(substance);
                 }catch(Exception err){}
             }else if(theme.equals("15")){
                 try{
-                org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
-                substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceSepiaTheme());
-                javax.swing.UIManager.setLookAndFeel(substance);
-                   }catch(Exception err){}
+                    org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
+                    substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceSepiaTheme());
+                    setWM(wm);
+                    javax.swing.UIManager.setLookAndFeel(substance);
+                }catch(Exception err){}
             }else if(theme.equals("16")){
                 try{
-                org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
-                substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceSteelBlueTheme());
-                javax.swing.UIManager.setLookAndFeel(substance);
-                   }catch(Exception err){}
+                    org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
+                    substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceSteelBlueTheme());
+                    setWM(wm);
+                    javax.swing.UIManager.setLookAndFeel(substance);
+                }catch(Exception err){}
             }else if(theme.equals("17")){
                 try{
-                org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
-                substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceSunsetTheme());
-                javax.swing.UIManager.setLookAndFeel(substance);
-                   }catch(Exception err){}
+                    org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
+                    substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceSunsetTheme());
+                    setWM(wm);
+                    javax.swing.UIManager.setLookAndFeel(substance);
+                }catch(Exception err){}
             }else if(theme.equals("18")){
                 try{
-                org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
-                substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceTerracottaTheme());
-                javax.swing.UIManager.setLookAndFeel(substance);
-                   }catch(Exception err){}
+                    org.jvnet.substance.SubstanceLookAndFeel substance = new org.jvnet.substance.SubstanceLookAndFeel();
+                    substance.setCurrentTheme(new org.jvnet.substance.theme.SubstanceTerracottaTheme());
+                    setWM(wm);
+                    javax.swing.UIManager.setLookAndFeel(substance);
+                }catch(Exception err){}
             }
         }catch(java.io.IOException iox){
-        try {
-            String sysLook = javax.swing.UIManager.getSystemLookAndFeelClassName();
-            javax.swing.UIManager.setLookAndFeel(sysLook);
-            
-        } catch (Exception err) {
-            System.out.println("Error loading Theme:" + err.toString());
-        }
+            try {
+                String sysLook = javax.swing.UIManager.getSystemLookAndFeelClassName();
+                javax.swing.UIManager.setLookAndFeel(sysLook);
+                
+            } catch (Exception err) {
+                System.out.println("Error loading Theme:" + err.toString());
+            }
         }
         
         new salary_main();
