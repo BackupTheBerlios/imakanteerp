@@ -17,8 +17,8 @@ public class iInternalFrame extends javax.swing.JInternalFrame implements java.i
     public iInternalFrame(String title, imakante.com.iFrame frame) {
         
      super(title); 
-     myFrame = frame;
-     this.setInternalConn(myFrame.getPrimaryConn());
+     setMyFrame(frame);
+     this.setInternalConn(getMyFrame().getPrimaryConn());
      
     }
      
@@ -45,6 +45,14 @@ public class iInternalFrame extends javax.swing.JInternalFrame implements java.i
 
     public void setInternalConn(java.sql.Connection conn) {
         this.conn = conn;
+    }
+
+    public imakante.com.iFrame getMyFrame() {
+        return myFrame;
+    }
+
+    public void setMyFrame(imakante.com.iFrame myFrame) {
+        this.myFrame = myFrame;
     }
     
     
