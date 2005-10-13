@@ -3,7 +3,7 @@ package imakante.salary;
 import org.jvnet.substance.SubstanceLookAndFeel;
 
 
-public class salary_main extends javax.swing.JFrame implements java.awt.event.WindowListener{
+public class salary_main extends imakante.com.iFrame implements java.awt.event.WindowListener{
     
     javax.swing.JPanel Panel1;
     javax.swing.JDesktopPane Desk1 = new javax.swing.JDesktopPane();
@@ -48,7 +48,7 @@ public class salary_main extends javax.swing.JFrame implements java.awt.event.Wi
     
     public salary_main(){
         
-        super("\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415 \u041b\u0418\u0427\u0415\u041d \u0421\u042a\u0421\u0422\u0410\u0412 v 0.0.1a");
+        super("Imakante Lite - HR  ARES");
         
         loadSplashScreen();
         
