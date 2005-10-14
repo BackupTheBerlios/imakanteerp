@@ -19,4 +19,5 @@ public class iStatement extends imakante.com.dbObject{
         cstm = conn.prepareCall(sql);}catch(java.sql.SQLException sqle){}
        
       }
+    
 }
