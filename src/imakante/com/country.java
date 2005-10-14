@@ -1,13 +1,15 @@
 
 package imakante.com;
 
-public class country{
+public class country extends imakante.com.iStatement {
 
     public country(java.sql.Connection connection) {
+        super();
+       
         
     }
     
     
-    java.sql.Connection conn;
+    java.sql.Statement stm;
 
 }

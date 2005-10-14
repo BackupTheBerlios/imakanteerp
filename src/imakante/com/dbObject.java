@@ -1,10 +1,12 @@
 
 package imakante.com;
 
-public  class dbObject {
+public abstract class dbObject extends imakante.com.imakanteObject{
 
     public dbObject(java.sql.Connection connection) {
+       
         setConn(connection);
+        
     }
     
     private java.sql.Connection conn;
