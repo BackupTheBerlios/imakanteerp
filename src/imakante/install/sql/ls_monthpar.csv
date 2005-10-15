@@ -1,0 +1,3 @@
+"id"	"id_period"	"pmonth"	"pyear"	"seq"	"dni5"	"dni6"	"ktu"	"min_rab_zaplata"	"max_os_prag"	"proc_oz"	"proc_pensii"	"proc_zo"	"proc_bez"	"proc_upf"	"coef"
+"11"	"1"	"5"	"2005"	"0111110011111001011100000000000"	"NULL"	"NULL"	"0.6"	"120"	"1300"	"0"	"0"	"0"	"0"	"0"	"3"
+"12"	"2"	"8"	"2005"	"0111110011111001011100000000000"	"NULL"	"NULL"	"0.6"	"150"	"1300"	"0.7"	"1"	"1.1"	"0.5"	"0.9"	"3"
