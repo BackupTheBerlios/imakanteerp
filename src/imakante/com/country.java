@@ -19,12 +19,18 @@ public class country extends imakante.com.dbObject{
     private java.sql.CallableStatement cstm;
     private java.sql.ResultSet rs;
     private int id;
-    
+     private String code;
+     private String name;
+     
     public void getInstance(){
         try{
         setCstm(getConn().prepareCall("{call ls_procedure_select_row_nm(?)}")); 
         getCstm().setInt("row_index", getId());
         setRs(getCstm().executeQuery());
+        while(getRs().next()){
+        setCode(getRs().getString("code"));
+        setName(getRs().getString("name"));
+        }
         }catch(java.sql.SQLException sqle){}
     }
 
@@ -66,6 +72,22 @@ public class country extends imakante.com.dbObject{
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
     
 }
