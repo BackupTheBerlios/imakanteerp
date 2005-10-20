@@ -8,10 +8,12 @@ public class country extends imakante.com.dbObject{
         setConn(connection);
         
     }
+    
     public country(java.sql.Connection connection, int id_t){
         super(connection);
         setConn(connection);
         setId(id_t);
+        getInstance();
         
     }
     private java.sql.Connection conn;
