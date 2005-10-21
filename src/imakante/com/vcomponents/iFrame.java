@@ -10,12 +10,8 @@ public class iFrame extends javax.swing.JFrame implements java.io.Serializable{
     }
    private java.sql.Connection conn = null;
    private String title; 
-   
-   
-   private void setMainFrameTitle(){
-    this.setTitle(getFrameTitle());
-    }
-   
+   static final long serialVersionUID=1;
+  
    
    
     public java.sql.Connection getPrimaryConn() {
