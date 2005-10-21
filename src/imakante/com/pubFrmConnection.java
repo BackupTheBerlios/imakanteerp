@@ -23,8 +23,12 @@ import javax.swing.JOptionPane;
 import javax.swing.border.EtchedBorder;
 
 public class pubFrmConnection extends JDialog implements ActionListener {
-    private imakante.administrativ.ImakanteAdmin main = null;
-    private imakante.sales.sales_main main1 = null;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -6073065392015169557L;
+	private imakante.administrativ.ImakanteAdmin main = null;
+  //  private imakante.sales.sales_main main1 = null;
     private JPanel jPanel1 = new JPanel();
     private JPanel jPanel2 = new JPanel();
     private JPanel jPanel3 = new JPanel();
@@ -43,7 +47,7 @@ public class pubFrmConnection extends JDialog implements ActionListener {
     public String lDBUser = null;
     public String lDBPass =null;
     private JComboBox comboDriver;
-    String[] drivers;
+    String drivers;
     String[] names, urls;
     public String fint,lineStr;
     
@@ -61,9 +65,9 @@ public class pubFrmConnection extends JDialog implements ActionListener {
             this.setModal(true);
             comboDriver = new JComboBox();
             BufferedReader in = new BufferedReader(new InputStreamReader(new
-                    FileInputStream("c:/dbconn.ini"), "cp1251"));
+                    FileInputStream("/dbconn.ini"), "cp1251"));
             if (in == null){
-                JOptionPane.showMessageDialog(null,"Възникнал проблем при четене на файл salary.ini .\n Моля копирайте стандартен файл.","ИМАКАНТЕ",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ salary.ini .\n пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ.","пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ",JOptionPane.WARNING_MESSAGE);
                 
             } else {
                 while ((lineStr = in.readLine()) != null) {
@@ -72,8 +76,6 @@ public class pubFrmConnection extends JDialog implements ActionListener {
                     fint = fint + lineStr;
                 }
                 names =fint.split("!");
-                int sd = names.length;
-                
                 for (int j=0; j<names.length; j=j+3)  {
                     comboDriver.addItem(names[j]);
                 }
@@ -88,16 +90,16 @@ public class pubFrmConnection extends JDialog implements ActionListener {
     }
     
     private void jbInit() throws Exception {
-        this.setTitle("Връзка с База Данни");
+        this.setTitle("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ");
         this.setSize(new Dimension(463, 260));
         this.setLocation(200,200);
         jPanel1.setLayout(null);
-        jLabel1.setText("База ");
+        jLabel1.setText("пїЅпїЅпїЅпїЅ ");
         jLabel1.setBounds(new Rectangle(10, 30, 185, 20));
         
-        jLabel3.setText("Потребител:");
+        jLabel3.setText("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ:");
         jLabel3.setBounds(new Rectangle(10, 10, 175, 20));
-        jLabel4.setText("Парола:");
+        jLabel4.setText("пїЅпїЅпїЅпїЅпїЅпїЅ:");
         jLabel4.setBounds(new Rectangle(10, 35, 180, 20));
         // comboDriver = new JComboBox(drivers);
         comboDriver.addActionListener(this);
@@ -111,14 +113,14 @@ public class pubFrmConnection extends JDialog implements ActionListener {
         jTextField2.setBounds(new Rectangle(215, 10, 205, 20));
         jPasswordField1.setText("");
         jPasswordField1.setBounds(new Rectangle(215, 40, 205, 20));
-        jButton1.setText("ВХОД");
+        jButton1.setText("пїЅпїЅпїЅпїЅ");
         jButton1.setBounds(new Rectangle(75, 15, 100, 25));
         jButton1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 jButton1_actionPerformed(e);
             }
         });
-        jButton2.setText("ИЗХОД");
+        jButton2.setText("пїЅпїЅпїЅпїЅпїЅ");
         jButton2.setBounds(new Rectangle(270, 15, 100, 25));
         jButton2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -171,6 +173,6 @@ public class pubFrmConnection extends JDialog implements ActionListener {
     
     public void actionPerformed(ActionEvent e) {
         JComboBox comboDriver = (JComboBox)e.getSource();
-        String drivers = (String)comboDriver.getSelectedItem();
+       drivers = (String)comboDriver.getSelectedItem();
     }
 }
