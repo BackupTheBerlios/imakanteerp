@@ -42,39 +42,58 @@ public class country extends imakante.com.dbObject implements ConnInerface{
         }catch(java.sql.SQLException sqle){}
     }
     
-   
+    /* (non-Javadoc)
+	 * @see imakante.com.ConnInerface#getConn()
+	 */
     public java.sql.Connection getConn() {
         return conn;
     }
-   
+    
+    /* (non-Javadoc)
+	 * @see imakante.com.ConnInerface#setConn(java.sql.Connection)
+	 */
     public void setConn(java.sql.Connection conn) {
         this.conn = conn;
     }
     
+    /* (non-Javadoc)
+	 * @see imakante.com.ConnInerface#getStm()
+	 */
     public java.sql.Statement getStm() {
         return stm;
     }
     
-  
+    /* (non-Javadoc)
+	 * @see imakante.com.ConnInerface#setStm(java.sql.Statement)
+	 */
     public void setStm(java.sql.Statement stm) {
         this.stm = stm;
     }
     
-   
+    /* (non-Javadoc)
+	 * @see imakante.com.ConnInerface#getCstm()
+	 */
     public java.sql.CallableStatement getCstm() {
         return cstm;
     }
     
-    
+    /* (non-Javadoc)
+	 * @see imakante.com.ConnInerface#setCstm(java.sql.CallableStatement)
+	 */
     public void setCstm(java.sql.CallableStatement cstm) {
         this.cstm = cstm;
     }
     
-
+    /* (non-Javadoc)
+	 * @see imakante.com.ConnInerface#getRs()
+	 */
     public java.sql.ResultSet getRs() {
         return rs;
     }
-  
+    
+    /* (non-Javadoc)
+	 * @see imakante.com.ConnInerface#setRs(java.sql.ResultSet)
+	 */
     public void setRs(java.sql.ResultSet rs) {
         this.rs = rs;
     }
