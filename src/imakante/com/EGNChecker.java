@@ -1,4 +1,3 @@
-
 package imakante.com;
 
 public final class EGNChecker {
@@ -43,9 +42,11 @@ public final class EGNChecker {
         if (mpos == 0 || mpos == 1) {
             bdate = EGN.substring(4, 6) + "." + EGN.substring(2, 4) + "." + "19" + EGN.substring(0, 2);
         } else if (mpos == 2 || mpos == 3) {
-            // bdate = EGN.substring(4, 6) + EGN.substring(2, 4) + "18" + EGN.substring(0, 2);
+            int month = java.lang.Integer.decode(EGN.substring(2, 4)) - 20;
+            bdate = EGN.substring(4, 6) + "." + month + ".18" + EGN.substring(0, 2);
         } else if (mpos == 4 || mpos == 5) {
-            // bdate = EGN.substring(4, 6) + EGN.substring(2, 4) + "20" + EGN.substring(0, 2);
+            int month = java.lang.Integer.decode(EGN.substring(2, 4)) - 40;
+            bdate = EGN.substring(4, 6) + "." + month + ".20" + EGN.substring(0, 2);
         } else {
             return "00.00.0000";
         }
@@ -69,14 +70,15 @@ public final class EGNChecker {
             return true;    // myj
         }
     }
-     
-    /*public static int Gender(String EGN) {
-        return 0;
-    }
-     
-    public static String BirthPlace(String EGN) {
-        String DistrictCities[] = {"София-град", "София", "Пловдив", "Варна", "Бургас", "Русе"};
-     
-        return "";
+    
+/*    public static boolean IsAdult(String EGN) {
+        int age = 0;
+        System.out.println(org.joda.time.DateTime);
+        if (age > 18) {
+            return true;
+        } else {
+            return false;
+        }
     }*/
+    
 }
