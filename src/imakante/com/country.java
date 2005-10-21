@@ -1,15 +1,21 @@
 
 package imakante.com;
 
-public class country extends imakante.com.dbObject{
+import java.sql.Connection;
+
+public class country extends imakante.com.dbObject implements ConnInerface{
     
-    public country(java.sql.Connection connection) {
+    public static ConnInerface createcountry(Connection connection, int id_t) {
+		return new country(connection, id_t);
+	}
+
+	public country(java.sql.Connection connection) {
         super(connection);
         setConn(connection);
         
     }
     
-    public country(java.sql.Connection connection, int id_t){
+    private country(java.sql.Connection connection, int id_t){
         super(connection);
         setConn(connection);
         setId(id_t);
@@ -36,10 +42,11 @@ public class country extends imakante.com.dbObject{
         }catch(java.sql.SQLException sqle){}
     }
     
+   
     public java.sql.Connection getConn() {
         return conn;
     }
-    
+   
     public void setConn(java.sql.Connection conn) {
         this.conn = conn;
     }
@@ -48,22 +55,26 @@ public class country extends imakante.com.dbObject{
         return stm;
     }
     
+  
     public void setStm(java.sql.Statement stm) {
         this.stm = stm;
     }
     
+   
     public java.sql.CallableStatement getCstm() {
         return cstm;
     }
+    
     
     public void setCstm(java.sql.CallableStatement cstm) {
         this.cstm = cstm;
     }
     
+
     public java.sql.ResultSet getRs() {
         return rs;
     }
-    
+  
     public void setRs(java.sql.ResultSet rs) {
         this.rs = rs;
     }
