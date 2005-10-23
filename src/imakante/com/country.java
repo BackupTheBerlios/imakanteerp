@@ -6,14 +6,14 @@ import java.sql.Connection;
 public class country extends imakante.com.dbObject implements ConnInerface{
     
     public static ConnInerface createcountry(Connection connection, int id_t) {
-		return new country(connection, id_t);
-	}
-
-	public static country createcountry(Connection connection) {
-		return new country(connection);
-	}
-
-	private country(java.sql.Connection connection) {
+        return new country(connection, id_t);
+    }
+    
+    public static country createcountry(Connection connection) {
+        return new country(connection);
+    }
+    
+    private country(java.sql.Connection connection) {
         super(connection);
         setConn(connection);
         
@@ -46,11 +46,11 @@ public class country extends imakante.com.dbObject implements ConnInerface{
         }catch(java.sql.SQLException sqle){}
     }
     
-   
+    
     public java.sql.Connection getConn() {
         return conn;
     }
-   
+    
     public void setConn(java.sql.Connection conn) {
         this.conn = conn;
     }
@@ -59,12 +59,12 @@ public class country extends imakante.com.dbObject implements ConnInerface{
         return stm;
     }
     
-  
+    
     public void setStm(java.sql.Statement stm) {
         this.stm = stm;
     }
     
-   
+    
     public java.sql.CallableStatement getCstm() {
         return cstm;
     }
@@ -74,11 +74,11 @@ public class country extends imakante.com.dbObject implements ConnInerface{
         this.cstm = cstm;
     }
     
-
+    
     public java.sql.ResultSet getRs() {
         return rs;
     }
-  
+    
     public void setRs(java.sql.ResultSet rs) {
         this.rs = rs;
     }
@@ -111,7 +111,15 @@ public class country extends imakante.com.dbObject implements ConnInerface{
         setCode(code);
         setName(name);
     }
-    
+    public void insertRecord(){
+        try{
+            setCstm(getConn().prepareCall("{call ls_procedure_insert_row_country(?,?)}"));
+            getCstm().setString("in_code", getCode());
+            getCstm().setString("in_name", getName());
+            getCstm().execute();
+            
+        }catch(java.sql.SQLException sql){}
+    }
     public void updateRecord(){
         try{
             setCstm(getConn().prepareCall("{call ls_procedure_update_row_country(?,?,?)}"));
@@ -136,19 +144,23 @@ public class country extends imakante.com.dbObject implements ConnInerface{
         
     }
     public void deleteRecord(int in_id){     // bad
-     setId(in_id);
-     try{
+        setId(in_id);
+        try{
             setCstm(getConn().prepareCall("{call ls_procedure_delete_row_country(?)}"));
             getCstm().setInt("in_id", getId());
             getCstm().execute();
         }catch(java.sql.SQLException sqle){}
-     }
+    }
     
-    public void deleteRecord(){    //good 
-         try{
+    public void deleteRecord(){    //good
+        try{
             setCstm(getConn().prepareCall("{call ls_procedure_delete_row_country(?)}"));
             getCstm().setInt("in_id", getId());
             getCstm().execute();
         }catch(java.sql.SQLException sqle){}
-     }
+    }
+   public void close(){
+    try{getRs().close();}catch(java.sql.SQLException sqle){}
+    try{getCstm().close();}catch(java.sql.SQLException sqle){}
+    }
 }
