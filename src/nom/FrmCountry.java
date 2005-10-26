@@ -26,6 +26,11 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jScrollPane1.add(table);
         jPanel4 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -38,6 +43,22 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame {
         jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         jPanel4.setBorder(new javax.swing.border.EtchedBorder());
+        jLabel1.setText("\u041a\u043e\u0434");
+        jPanel4.add(jLabel1);
+
+        jTextField1.setMinimumSize(new java.awt.Dimension(60, 19));
+        jTextField1.setPreferredSize(new java.awt.Dimension(60, 19));
+        jPanel4.add(jTextField1);
+
+        jLabel2.setText("\u0418\u043c\u0435");
+        jPanel4.add(jLabel2);
+
+        jTextField2.setPreferredSize(new java.awt.Dimension(250, 19));
+        jPanel4.add(jTextField2);
+
+        jButton4.setText("\u0422\u044a\u0440\u0441\u0438");
+        jPanel4.add(jButton4);
+
         jPanel1.add(jPanel4, java.awt.BorderLayout.SOUTH);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -114,11 +135,16 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
     
 }
