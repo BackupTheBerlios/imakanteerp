@@ -1,6 +1,8 @@
 
 package imakante.salary;
 import java.awt.event.KeyEvent;
+import java.io.FileInputStream;
+import java.util.HashMap;
 
 public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.event.WindowListener{
     
@@ -292,10 +294,11 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
         pack();
     }
     // </editor-fold>//GEN-END:initComponents
-
+    
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-          printList();
 
+        printList();
+ 
     }//GEN-LAST:event_jButton5ActionPerformed
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -635,7 +638,6 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
     }
     public void windowDeactivated(java.awt.event.WindowEvent e){
     }
-    
-    
+       
     
 }

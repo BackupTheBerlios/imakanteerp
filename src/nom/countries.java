@@ -14,10 +14,12 @@ public class countries extends imakante.com.dbObject {
     
     public java.sql.ResultSet getResult() {
         try {
+            System.out.println("from country");
+            System.out.println(conn.toString());
             setCstm(getConn().prepareCall("{call ls_pocedure_get_table_countries()}"));
             setRs(getCstm().executeQuery());
             return getRs();
-        } catch(java.sql.SQLException sqle) {return null;}
+        } catch(java.sql.SQLException sqle) {sqle.printStackTrace(); return null;}
     }
 
     public java.sql.Connection getConn() {

@@ -1,23 +1,19 @@
-/*
- * FrmCountry.java
- *
- * Created on Петък, 2005, Октомври 14, 6:55
- */
 
 package nom;
 
-/**
- *
- * @author  Radoslav
- */
 public class FrmCountry extends imakante.com.vcomponents.iInternalFrame {
     
     public FrmCountry(String title, imakante.com.vcomponents.iFrame frame) {
         super("Strani");
-        setConn(frame.getPrimaryConn());
-        countriesT = new nom.countries(getConn());
+        System.out.println("Vliza v country");
+        try{
+        setConn(frame.getConn());}catch(Exception e){e.printStackTrace();}
+        System.out.println(conn.toString());
+        try{
+        countriesT = new nom.countries(getConn());}catch(Exception e){e.printStackTrace();}
         initTable();
         initComponents();
+        this.setSize(600,800);
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -57,6 +53,12 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame {
         jPanel4.add(jTextField2);
 
         jButton4.setText("\u0422\u044a\u0440\u0441\u0438");
+        jButton4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton4KeyPressed(evt);
+            }
+        });
+
         jPanel4.add(jButton4);
 
         jPanel1.add(jPanel4, java.awt.BorderLayout.SOUTH);
@@ -73,6 +75,11 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
+            }
+        });
 
         jPanel3.add(jButton1);
 
@@ -80,6 +87,11 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+        jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton2KeyPressed(evt);
             }
         });
 
@@ -91,6 +103,11 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame {
                 jButton3ActionPerformed(evt);
             }
         });
+        jButton3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton3KeyPressed(evt);
+            }
+        });
 
         jPanel3.add(jButton3);
 
@@ -99,6 +116,22 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame {
         pack();
     }
     // </editor-fold>//GEN-END:initComponents
+
+    private void jButton4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton4KeyPressed
+
+    }//GEN-LAST:event_jButton4KeyPressed
+
+    private void jButton3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton3KeyPressed
+
+    }//GEN-LAST:event_jButton3KeyPressed
+
+    private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
+
+    }//GEN-LAST:event_jButton2KeyPressed
+
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1KeyPressed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
@@ -113,12 +146,14 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
     
     private void initTable() {
+        try{
         model = new imakante.com.CustomTableModel(getConn(), countriesT.getResult(), null);
         table = new imakante.com.CustomTable(model);
-        
+        }catch(Exception e){e.printStackTrace();}
     }
     
     private java.sql.Connection getConn() {
+        System.out.println("ot country getConn()");
         return conn;
     }
     

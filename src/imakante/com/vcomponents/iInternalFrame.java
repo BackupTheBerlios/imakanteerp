@@ -17,9 +17,9 @@ public class iInternalFrame extends javax.swing.JInternalFrame implements java.i
      
     public iInternalFrame(String title, imakante.com.vcomponents.iFrame frame) {
         
-     super(title); 
+     super(title,true,true,true,true); 
      setMyFrame(frame);
-     this.setInternalConn(getMyFrame().getPrimaryConn());
+     this.setInternalConn(getMyFrame().getConn());
      
      
     }

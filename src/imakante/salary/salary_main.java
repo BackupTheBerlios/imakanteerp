@@ -3,7 +3,7 @@ package imakante.salary;
 import org.jvnet.substance.SubstanceLookAndFeel;
 
 
-public class salary_main extends imakante.com.iFrame implements java.awt.event.WindowListener{
+public class salary_main extends imakante.com.vcomponents.iFrame implements java.awt.event.WindowListener{
     
     javax.swing.JPanel Panel1;
     javax.swing.JDesktopPane Desk1 = new javax.swing.JDesktopPane();
@@ -42,6 +42,7 @@ public class salary_main extends imakante.com.iFrame implements java.awt.event.W
     FrmNasM    FormNasM;
     FrmNKID     FormNKID;
     imakante.salary.FrmNCP FormNCP;
+    nom.FrmCountry Formc;
     java.awt.Font menuFont = new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 14);
     imakante.salary.frmLogo splash = new imakante.salary.frmLogo();
     Thread FormSplash = new Thread(splash);
@@ -1214,28 +1215,11 @@ public class salary_main extends imakante.com.iFrame implements java.awt.event.W
     
     protected void loadNasM() {
         
-        boolean AlreadyLoaded = isLoaded("\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u0438 \u043c\u0435\u0441\u0442\u0430");
-        if(AlreadyLoaded==false){
-            try{
-                FormNasM = new FrmNasM(dbCON, this) ;}catch(java.sql.SQLException sqle){}
-            
-            Desk1.add(FormNasM);
-            try{FormNasM.setMaximum(true);}catch(java.beans.PropertyVetoException bpve){}
-            FormNasM.setVisible(true);
-            
-            try{
-                FormNasM.setIcon(false);
-                FormNasM.setSelected(true);
-            }catch(java.beans.PropertyVetoException e){
-            }
-        }else{
-            try{
-                FormNasM.setIcon(false);
-                FormNasM.setSelected(true);
-            }catch(java.beans.PropertyVetoException e){
-            }
-        }
-        
+            nom.FrmCountry Formc = new nom.FrmCountry("Strani", this);  
+            Desk1.add(Formc);
+            try{Formc.setMaximum(true);}catch(java.beans.PropertyVetoException bpve){}
+            Formc.setVisible(true);
+       
     }
     protected void loadExtern() {
      /*
@@ -1871,6 +1855,16 @@ public class salary_main extends imakante.com.iFrame implements java.awt.event.W
     
     public static void setId_period(int aId_period) {
         id_period = aId_period;
+    }
+
+    public void setConn(java.sql.Connection conn) {
+
+        this.dbCON = conn;
+    }
+
+    public java.sql.Connection getConn() {
+
+        return dbCON;
     }
     
     

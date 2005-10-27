@@ -6,6 +6,7 @@ import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperManager;
 import net.sf.jasperreports.view.JRViewer;
+
 public class frmPrint extends javax.swing.JDialog {
     java.sql.Connection dbInternal;
     java.util.HashMap reportParam;

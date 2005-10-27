@@ -31,11 +31,11 @@ public class iFrame extends javax.swing.JFrame implements java.io.Serializable{
    
    
 
-    public java.sql.Connection getPrimaryConn() {
+    public java.sql.Connection getConn() {
         return conn;
     }
 
-    public void setPrimaryConn(java.sql.Connection conn) {
+    public void setConn(java.sql.Connection conn) {
         this.conn = conn;
     }
 
