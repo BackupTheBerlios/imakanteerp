@@ -1284,7 +1284,12 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             if(EGN.equals("")) {} else {;}
         } else {
             if(imakante.com.EGNChecker.ValidEGN(EGN) == true) {
-                System.out.println("EGN-to " + EGN + " e walidno!");
+                System.out.println("D: " + imakante.com.EGNChecker.IsAdult(EGN));
+                
+                if (imakante.com.EGNChecker.IsAdult(EGN)==false) {
+                    javax.swing.JOptionPane.showMessageDialog(null,"\u041b\u0438\u0446\u0435\u0442\u043e \u0435 \u041d\u0415\u043f\u044a\u043b\u043d\u043e\u043b\u0435\u0442\u043d\u043e!", 
+                            "\u0412\u041d\u0418\u041c\u0410\u041d\u0418\u0415!", javax.swing.JOptionPane.WARNING_MESSAGE);
+                }
             } else {
                 String Ops[] = {"\u0412\u044a\u0440\u043d\u0438 \u0441\u0435", "\u041d\u0435 \u043f\u0440\u043e\u0432\u0435\u0440\u044f\u0432\u0430\u0439", "\u041e\u0442\u043a\u0430\u0437"};
                 int Warner = javax.swing.JOptionPane.showOptionDialog(null,"\u041d\u0415\u0412\u0410\u041b\u0418\u0414\u041d\u041e \u0415\u0413\u041d!", "\u0412\u041d\u0418\u041c\u0410\u041d\u0418\u0415!!! \u0412\u044a\u0432\u0435\u0434\u0435\u043d\u043e\u0442\u043e \u0415\u0413\u041d \u0435 \u043d\u0435\u0432\u0430\u043b\u0438\u0434\u043d\u043e! \u041f\u0440\u043e\u0432\u0435\u0440\u0435\u0442\u0435 \u0437\u0430 \u0433\u0440\u0435\u0448\u043a\u0430!",javax.swing.JOptionPane.DEFAULT_OPTION,javax.swing.JOptionPane.WARNING_MESSAGE,null,Ops,Ops[1]);
