@@ -7,7 +7,7 @@ public final class EGNChecker {
     public static boolean ValidEGN(String EGN) {
         
         final int weights[] = {2, 4, 8, 5, 10, 9, 7, 3, 6};
-        int EGNdigits[] = {0, 0, 0, 0, 0, 0, 0, 0, 0}, sum = 0, cd;
+        int EGNdigits[] = {0, 0, 0, 0, 0, 0, 0, 0, 0}, sum = 0, cd; // cd = check digit
         
         if (EGN.length() == 10) {
             
@@ -36,8 +36,8 @@ public final class EGNChecker {
     
     public static String BirthDate(String EGN) {
         
-        int mpos = (int)EGN.charAt(2)-48;
-        String bdate = "";
+        int mpos = (int)EGN.charAt(2)-48;   // first month's digit's position
+        String bdate = "\u0000";
         
         if (mpos == 0 || mpos == 1) {
             bdate = EGN.substring(4, 6) + "." + EGN.substring(2, 4) + "." + "19" + EGN.substring(0, 2);
@@ -70,15 +70,20 @@ public final class EGNChecker {
             return true;    // myj
         }
     }
-    
-/*    public static boolean IsAdult(String EGN) {
+    // trqbwa da se wzemat dne6nata data i datata na rajdane i da se opredeli razlikata w godini
+    // definira se period ot 18 godini i se srawnqwa s gorepolu4enata razlika
+    public static boolean IsAdult(String EGN) {
+        org.joda.time.DateTime now = new org.joda.time.DateTime();  // Sega6niqt moment - dne6na data
+        
+        String BDate = BirthDate(EGN);
+        System.out.println(BDate);
         int age = 0;
-        System.out.println(org.joda.time.DateTime);
+        System.out.println("DT: " + now);
         if (age > 18) {
             return true;
         } else {
             return false;
         }
-    }*/
+    }
     
 }
