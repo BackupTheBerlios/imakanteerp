@@ -208,6 +208,7 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
     private void searchRecords(){
         jScrollPane1.remove(table);
+        System.out.println(jTextField2.getText());
         try{
             model = new imakante.com.CustomTableModel(getConn(), countriesT.getRs(jTextField1.getText(),jTextField2.getText()), null);
             table = new imakante.com.CustomTable(model);
