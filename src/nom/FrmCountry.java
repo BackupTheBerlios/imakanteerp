@@ -5,22 +5,25 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame {
     
     public FrmCountry(String title, imakante.com.vcomponents.iFrame frame) {
         super("Strani");
-        System.out.println("Vliza v country");
+       
+        this.setClosable(true);
+        this.setMaximizable(true);
+        
         try{
         setConn(frame.getConn());}catch(Exception e){e.printStackTrace();}
-        System.out.println(conn.toString());
+      
         try{
-        countriesT = new nom.countries(getConn());}catch(Exception e){e.printStackTrace();}
+        countriesT = new nom.countries(getConn(), "", "");}catch(Exception e){e.printStackTrace();}
         initTable();
         initComponents();
-        this.setSize(600,800);
+        
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jScrollPane1.add(table);
+        jScrollPane1.getViewport().add(table);
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -147,7 +150,7 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame {
     
     private void initTable() {
         try{
-        model = new imakante.com.CustomTableModel(getConn(), countriesT.getResult(), null);
+        model = new imakante.com.CustomTableModel(getConn(), countriesT.getRs(), null);
         table = new imakante.com.CustomTable(model);
         }catch(Exception e){e.printStackTrace();}
     }
