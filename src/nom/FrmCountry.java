@@ -35,8 +35,10 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         jPanel1.setLayout(new java.awt.BorderLayout());
@@ -106,6 +108,9 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame {
 
         jPanel3.add(jButton1);
 
+        jButton7.setText("\u041f\u0435\u0447\u0430\u0442");
+        jPanel3.add(jButton7);
+
         jButton2.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,6 +138,9 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame {
         });
 
         jPanel3.add(jButton5);
+
+        jButton6.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435 \u043d\u0430 \u0442\u0430\u0431\u043b\u0438\u0446\u0430\u0442\u0430");
+        jPanel3.add(jButton6);
 
         jButton3.setText("\u0417\u0430\u0442\u0432\u0430\u0440\u044f\u043d\u0435");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -244,6 +252,8 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

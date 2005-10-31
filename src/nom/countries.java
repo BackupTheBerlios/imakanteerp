@@ -16,18 +16,24 @@ public class countries extends imakante.com.dbObject {
     private java.sql.ResultSet rs;
     private String code = "";
     private String name = "";
+    private int id = 0;
+    private int comprator = 0;
     
     public void registerParameters(){
             try{
+                
+            getCstm().setInt("in_id", getId());
+            getCstm().setInt("comprator", getComprator());
             getCstm().setString("in_code", getCode());
             getCstm().setString("in_name", getName());
+        
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
     }
     
     private void prepareCstm() {
         try {
             
-            setCstm(getConn().prepareCall("{call ls_procedure_search_country(?,?)}"));
+            setCstm(getConn().prepareCall("{call ls_procedure_search_country(?,?,?,?)}"));
             
         } catch(java.sql.SQLException sqle) {sqle.printStackTrace();}
     }
@@ -91,5 +97,21 @@ public class countries extends imakante.com.dbObject {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getComprator() {
+        return comprator;
+    }
+
+    public void setComprator(int comprator) {
+        this.comprator = comprator;
     }
 }
