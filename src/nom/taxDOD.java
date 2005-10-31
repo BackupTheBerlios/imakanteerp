@@ -19,8 +19,7 @@ public class taxDOD extends dbObject {
     
     public void registerParameters(){
         try{
-            
-           
+          
             cstm.setInt("period", period);
             
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
@@ -29,7 +28,7 @@ public class taxDOD extends dbObject {
     private void prepareCstm() {
         try {
             
-            cstm = conn.prepareCall("{call ls_procedure_taxOOD(?)}");
+            cstm = conn.prepareCall("{call ls_procedure_taxDOD(?)}");
             
         } catch(java.sql.SQLException sqle) {sqle.printStackTrace();}
     }
