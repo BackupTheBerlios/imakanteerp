@@ -70,19 +70,15 @@ public final class EGNChecker {
             return true;    // myj
         }
     }
-    // trqbwa da se wzemat dne6nata data i datata na rajdane i da se opredeli razlikata w godini
-    // definira se period ot 18 godini i se srawnqwa s gorepolu4enata razlika
+    
     public static boolean IsAdult(String EGN) {
-        org.joda.time.DateTime now = new org.joda.time.DateTime();  // Sega6niqt moment - dne6na data
-        
-        String BDate = BirthDate(EGN);
-        System.out.println(BDate);
-        int age = 0;
-        System.out.println("DT: " + now);
-        if (age > 18) {
-            return true;
+        String bd = BirthDate(EGN).substring(6) + "-" + BirthDate(EGN).substring(3, 5) + "-" + BirthDate(EGN).substring(0, 2) + "T00:00Z";
+        org.joda.time.DateTime then = new org.joda.time.DateTime(bd);
+        org.joda.time.DateTime diff = then.plus(org.joda.time.Period.years(18));
+        if (diff.isBeforeNow()==true) {
+            return true;    // pylnoletni
         } else {
-            return false;
+            return false;   // nepylnoletni
         }
     }
     
