@@ -28,7 +28,7 @@ public class taxDOO extends dbObject{
     private void prepareCstm() {
         try {
             
-            cstm = conn.prepareCall("{call ls_procedure_taxDOO(?)}");
+            cstm = conn.prepareCall("{call ls_procedure_taxDOO(?,?)}");
             
         } catch(java.sql.SQLException sqle) {sqle.printStackTrace();}
     }
