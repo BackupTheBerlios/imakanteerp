@@ -117,7 +117,7 @@ public class taxDOO extends dbObject{
         this.period = period;
     }
     
-    public void closeTaxOOD(){
+    public void close(){
         try{getRs().close();}catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         try{cstm.close();}catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         
