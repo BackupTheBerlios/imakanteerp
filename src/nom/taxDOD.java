@@ -43,6 +43,13 @@ public class taxDOD extends dbObject {
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
     }
     
+     private void prepareRezult(){
+        try{
+            registerParameters();
+            setRs(cstm.executeQuery());}catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        
+    } 
+     
     private void prepareCstm() {
         try {
             
