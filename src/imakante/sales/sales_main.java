@@ -391,7 +391,7 @@ public class sales_main extends javax.swing.JFrame {
     }//GEN-LAST:event_exitMenuActionPerformed
     
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
-       
+
     }//GEN-LAST:event_aboutMenuItemActionPerformed
     
     private void nomMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomMenuActionPerformed
