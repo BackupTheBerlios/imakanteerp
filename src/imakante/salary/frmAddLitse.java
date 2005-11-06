@@ -1103,7 +1103,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     }//GEN-LAST:event_jtfOsigSumaKeyPressed
     
     private void jtfOsigSumaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfOsigSumaFocusLost
-      
+        
     }//GEN-LAST:event_jtfOsigSumaFocusLost
     
     private void jtfTypeEmpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfTypeEmpKeyPressed
@@ -1139,28 +1139,28 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     }//GEN-LAST:event_jtfLOSDaysFocusLost
     
     private void jtfTermFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfTermFocusLost
-      String s = imakante.com.dateManipulation.parseDate(jtfTerm.getText());
-      jtfTerm.setText(s);
+        String s = imakante.com.dateManipulation.parseDate(jtfTerm.getText());
+        jtfTerm.setText(s);
     }//GEN-LAST:event_jtfTermFocusLost
     
     private void jtfLastInsDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfLastInsDateFocusLost
-      String s = imakante.com.dateManipulation.parseDate(jtfLastInsDate.getText());
-      jtfLastInsDate.setText(s);
+        String s = imakante.com.dateManipulation.parseDate(jtfLastInsDate.getText());
+        jtfLastInsDate.setText(s);
     }//GEN-LAST:event_jtfLastInsDateFocusLost
     
     private void jtfQuitDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfQuitDateFocusLost
-       String s = imakante.com.dateManipulation.parseDate(jtfQuitDate.getText());
-      jtfQuitDate.setText(s);
+        String s = imakante.com.dateManipulation.parseDate(jtfQuitDate.getText());
+        jtfQuitDate.setText(s);
     }//GEN-LAST:event_jtfQuitDateFocusLost
     
     private void jtfSignonDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfSignonDateFocusLost
         String s = imakante.com.dateManipulation.parseDate(jtfSignonDate.getText());
-       jtfSignonDate.setText(s);
+        jtfSignonDate.setText(s);
     }//GEN-LAST:event_jtfSignonDateFocusLost
     
     private void jtfAssignDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfAssignDateFocusLost
-       String s = imakante.com.dateManipulation.parseDate(jtfAssignDate.getText());
-       jtfAssignDate.setText(s);
+        String s = imakante.com.dateManipulation.parseDate(jtfAssignDate.getText());
+        jtfAssignDate.setText(s);
     }//GEN-LAST:event_jtfAssignDateFocusLost
     
     private void jtfBDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfBDateFocusLost
@@ -1196,7 +1196,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                 rs.close();
                 stm.close();
             }catch(java.sql.SQLException sqle){}
-
+            
             int b_year = Integer.parseInt((jtfBDate.getText()).substring(0, 2));
             int a_date = Integer.parseInt((jtfAssignDate.getText()).substring(8, 10));
             int los_years = Integer.parseInt(jtfLOSYears.getText());
@@ -1204,10 +1204,10 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             double sum_os = Double.parseDouble(jtfOsigSuma.getText());
             boolean is_check = jCheckBox1.isSelected();
             imakante.salary.calculateSalary.processNewSalary(dbInternal, rabotnik, b_year, a_date, los_years, zaplata, sum_os, is_check);
-
+            
             UnloadWindow();
         }
-      
+        
     }//GEN-LAST:event_jbAddActionPerformed
     
     private void jcbGenderKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jcbGenderKeyPressed
@@ -1274,37 +1274,31 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     private void jtfEGNFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfEGNFocusLost
         EGN = jtfEGN.getText();
         if (EGN.length()!=10){
-            String Ops[] = {"\u0412\u044a\u0440\u043d\u0438 \u0441\u0435", "\u041d\u0435 \u043f\u0440\u043e\u0432\u0435\u0440\u044f\u0432\u0430\u0439", "\u041e\u0442\u043a\u0430\u0437"};
-            int Warner = javax.swing.JOptionPane.showOptionDialog(null,"\u041d\u0435\u043a\u043e\u0440\u0435\u043a\u0442\u043d\u0430 \u0441\u0442\u043e\u0439\u043d\u043e\u0441\u0442!", "\u0426\u0438\u0444\u0440\u0438\u0442\u0435 \u0442\u0440\u044f\u0431\u0432\u0430 \u0434\u0430 \u0441\u0430 10!",javax.swing.JOptionPane.DEFAULT_OPTION,javax.swing.JOptionPane.WARNING_MESSAGE,null,Ops,Ops[1]);
-            switch (Warner) {
-                case 1: jtfEGN.setText(""); break;
-                case 2: jtfEGN.requestFocus(); break;
-                case 3: dispose(); break;
+            if(EGN.equals("")) {
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(null, "\u0412\u0441\u044f\u043a\u043e \u0415\u0413\u041d \u0441\u0435 \u0441\u044a\u0441\u0442\u043e\u0438 \u043e\u0442 \u0442\u043e\u0447\u043d\u043e 10 \u0446\u0438\u0444\u0440\u0438.",
+                        "\u041d\u0435\u043a\u043e\u0440\u0435\u043a\u0442\u043d\u0430 \u0441\u0442\u043e\u0439\u043d\u043e\u0441\u0442!", javax.swing.JOptionPane.WARNING_MESSAGE);
+                jtfEGN.setText("");
+                EGN = "";
+                jtfBDate.setText("");
+                jtfEGN.requestFocus();
             }
-            if(EGN.equals("")) {} else {;}
         } else {
             if(imakante.com.EGNChecker.ValidEGN(EGN) == true) {
-                System.out.println("D: " + imakante.com.EGNChecker.IsAdult(EGN));
-                
                 if (imakante.com.EGNChecker.IsAdult(EGN)==false) {
-                    javax.swing.JOptionPane.showMessageDialog(null,"\u041b\u0438\u0446\u0435\u0442\u043e \u0435 \u041d\u0415\u043f\u044a\u043b\u043d\u043e\u043b\u0435\u0442\u043d\u043e!", 
+                    javax.swing.JOptionPane.showMessageDialog(null, "\u041b\u0438\u0446\u0435\u0442\u043e \u0435 \u041d\u0415\u043f\u044a\u043b\u043d\u043e\u043b\u0435\u0442\u043d\u043e!",
                             "\u0412\u041d\u0418\u041c\u0410\u041d\u0418\u0415!", javax.swing.JOptionPane.WARNING_MESSAGE);
                 }
-            } else {
-                String Ops[] = {"\u0412\u044a\u0440\u043d\u0438 \u0441\u0435", "\u041d\u0435 \u043f\u0440\u043e\u0432\u0435\u0440\u044f\u0432\u0430\u0439", "\u041e\u0442\u043a\u0430\u0437"};
-                int Warner = javax.swing.JOptionPane.showOptionDialog(null,"\u041d\u0415\u0412\u0410\u041b\u0418\u0414\u041d\u041e \u0415\u0413\u041d!", "\u0412\u041d\u0418\u041c\u0410\u041d\u0418\u0415!!! \u0412\u044a\u0432\u0435\u0434\u0435\u043d\u043e\u0442\u043e \u0415\u0413\u041d \u0435 \u043d\u0435\u0432\u0430\u043b\u0438\u0434\u043d\u043e! \u041f\u0440\u043e\u0432\u0435\u0440\u0435\u0442\u0435 \u0437\u0430 \u0433\u0440\u0435\u0448\u043a\u0430!",javax.swing.JOptionPane.DEFAULT_OPTION,javax.swing.JOptionPane.WARNING_MESSAGE,null,Ops,Ops[1]);
-                switch (Warner) {
-                    case 1: jtfEGN.setText(""); break;
-                    case 2: jtfEGN.requestFocus(); break;
-                    case 3: dispose(); break;
+                if(imakante.com.EGNChecker.Gender(EGN) == true) {
+                    jcbGender.setSelectedItem(Gender[0]);
+                } else {
+                    jcbGender.setSelectedItem(Gender[1]);
                 }
-            }
-            if(imakante.com.EGNChecker.Gender(EGN) == true) {
-                jcbGender.setSelectedItem(Gender[0]);
+                jtfBDate.setText(imakante.com.EGNChecker.BirthDate(EGN));
             } else {
-                jcbGender.setSelectedItem(Gender[1]);
+                javax.swing.JOptionPane.showMessageDialog(null, "\u0412\u041d\u0418\u041c\u0410\u041d\u0418\u0415!!! \u0412\u044a\u0432\u0435\u0434\u0435\u043d\u043e\u0442\u043e \u0415\u0413\u041d \u0435 \u043d\u0435\u0432\u0430\u043b\u0438\u0434\u043d\u043e! \u041f\u0440\u043e\u0432\u0435\u0440\u0435\u0442\u0435 \u0437\u0430 \u0433\u0440\u0435\u0448\u043a\u0430!",
+                        "\u041d\u0415\u0412\u0410\u041b\u0418\u0414\u041d\u041e \u0415\u0413\u041d!", javax.swing.JOptionPane.WARNING_MESSAGE);
             }
-            jtfBDate.setText(imakante.com.EGNChecker.BirthDate(EGN));
         }
     }//GEN-LAST:event_jtfEGNFocusLost
     
@@ -1412,7 +1406,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     boolean ADDING_STATE;
     
     public static String[] Gender = {"\u041c\u044a\u0436","\u0416\u0435\u043d\u0430"};
-   
+    
     public String EGN;
     int inter_id;
     int DOD_id = 0;// broi dod iteratsii
@@ -1431,7 +1425,6 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     private boolean isFieldsOK(){
         
         boolean valid = true;
-        
         
         if(jtfCity.getText().equals("")){
             jtfCity.requestFocus(); jtfCity.setBackground(java.awt.Color.PINK);
@@ -1488,14 +1481,9 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             valid = false;
             return valid;
         }
-        
         return valid;
-        
     }
     
-
-       
-       
     protected boolean validateDate(String str){
         
         boolean is_valid = true;
@@ -1592,22 +1580,23 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             validate = false;
             return validate;
         }
-        
         return validate;
     }
+    
     protected boolean isNumber(String str_num){
         boolean is_number = true;
         try{
             int y = Integer.parseInt(str_num);}catch(NumberFormatException nfe){is_number = false; return is_number; }
         return is_number;
     }
+    
     protected boolean isFloat(String str_float){
         boolean is_float = true;
         try{
             float f = Float.parseFloat(str_float);}catch(NumberFormatException nfe){is_float =false; return is_float;}
         return is_float;
-        
     }
+    
     protected String convertDate(String str){
         String converted_str = "0000-00-00";
         if(str.equals("")!=true){
@@ -1616,10 +1605,8 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             }catch(IndexOutOfBoundsException ioobe){converted_str = ""; return converted_str;}
             return converted_str;
         }else{converted_str = ""; return converted_str;}
-        
-        
     }
-
+    
     private void validateOsigFiled(){
        /* float osiSuma = 0;
         try{
@@ -1635,7 +1622,6 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         
         }*/
     }
-     
     
     protected static void initResource(){
         if (id_row!=0){
@@ -1691,9 +1677,9 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
                     jtfPosition.setText(rs.getString(""));    // dlyjnost
                 }
             } catch (java.sql.SQLException sqle){sqle.printStackTrace();}
-            
         }
     }
+    
     protected void clear_all_fields(){
         jcbDistrict.setSelectedItem(0);
         jcbGender.setSelectedItem(0);
@@ -1729,7 +1715,6 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         
         jtfNumber.requestFocus();
     }
-    
     
     protected void insert_db_Record(){
         try{
@@ -1783,7 +1768,6 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             
             
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
-        
     }
     
     protected void update_db_Record(){
@@ -1829,11 +1813,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             
             
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
-        
-        
     }
-
-    
     
     protected void processMDays(){
         String str_d="";
@@ -1860,7 +1840,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             System.out.println("m_day = "+m_day);}
         }
         for (int i = i_days - 1; i <  str_area.length(); i++){
-            if(String.valueOf(str_area.charAt(i)).equals("1")){ e_day++; 
+            if(String.valueOf(str_area.charAt(i)).equals("1")){ e_day++;
             System.out.println("e_day = "+e_day);}
         }
         days = e_day;
@@ -1868,7 +1848,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         month_days = m_day;
         System.out.println("month_days ="+ month_days);
     }
-
+    
     protected void checkNM(){
         String City = "";
         City = jtfCity.getText();
@@ -1879,8 +1859,8 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
             // System.out.println("resurs ot pole City (" + rs.getString("name")+")");
             if (rs.getRow()==0){jtfCity.requestFocus();}
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();jtfCity.requestFocus();}
-        
     }
+    
     public static void insertN_NM(int area, String post, String City, int id_n_nm ){
         
         jcbDistrict.setSelectedIndex(area);
@@ -1893,7 +1873,6 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         name_dlajnost = name_dl;
         id_dlajnost = id_dlaj;
         jtfPosition.setText(name_dlajnost);
-        
     }
     
     public static void insertVidOsiguren(String name_osiguren, String cod_osiguren){
@@ -1909,6 +1888,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         }catch(java.sql.SQLException sqle){}}
         
     }
+    
     protected static int fill_combo_Gender_rs(String gender){
         int gen_int = 0;
         if(gender.equals("\u041c\u044a\u0436")){ gen_int = 0;}
