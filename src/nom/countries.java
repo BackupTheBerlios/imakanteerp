@@ -2,12 +2,9 @@ package nom;
 
 public class countries extends imakante.com.dbObject {
     
-    public countries(java.sql.Connection conn, String in_code, String in_name) {
+    public countries(java.sql.Connection conn) {
         super(conn);
-        setCode(in_code);
-        setName(in_name);
-        prepareCstm();
-        prepareRezult();
+        
     }
     
     private java.sql.Connection conn;
@@ -19,14 +16,57 @@ public class countries extends imakante.com.dbObject {
     private int id = 0;
     private int comprator = 0;
     
-    public void registerParameters(){
-            try{
-                
+    public java.sql.ResultSet getTable(){
+        code = "";
+        name = "";
+        id = 0;
+        comprator = 0;
+        try{
+            registerParameters();
+            setRs(getCstm().executeQuery());}catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        return rs;
+    }
+    public void updateRow(int in_id, String in_code, String in_name){
+        comprator = 2;
+        id = in_id;
+        code = in_code;
+        name = in_name;
+        try{
+            registerParameters();
+            cstm.execute();
+        }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        
+        
+    }
+    
+    public void deleteRow(int in_id){
+        comprator = 3;
+        id = in_id;
+        try{
+            registerParameters();
+            cstm.execute();
+        }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        
+    }
+    
+    public void getRow(int in_id){
+        comprator = 4;
+        id = in_id;
+        try{
+            registerParameters();
+            cstm.execute();
+        }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        
+    }
+    
+    private void registerParameters(){
+        try{
+            
             getCstm().setInt("in_id", getId());
             getCstm().setInt("comprator", getComprator());
             getCstm().setString("in_code", getCode());
             getCstm().setString("in_name", getName());
-        
+            
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
     }
     
@@ -75,42 +115,42 @@ public class countries extends imakante.com.dbObject {
     public java.sql.ResultSet getRs(String in_code, String in_name) {
         setCode(in_code);
         setName(in_name);
-        prepareRezult();        
+        prepareRezult();
         return getRs();
     }
     
     public void setRs(java.sql.ResultSet rs) {
         this.rs = rs;
     }
-
+    
     public String getCode() {
         return code;
     }
-
+    
     public void setCode(String code) {
         this.code = code;
     }
-
+    
     public String getName() {
         return name;
     }
-
+    
     public void setName(String name) {
         this.name = name;
     }
-
+    
     public int getId() {
         return id;
     }
-
+    
     public void setId(int id) {
         this.id = id;
     }
-
+    
     public int getComprator() {
         return comprator;
     }
-
+    
     public void setComprator(int comprator) {
         this.comprator = comprator;
     }
