@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 public class FrmCountry extends imakante.com.vcomponents.iInternalFrame {
     
     public FrmCountry(String title, imakante.com.vcomponents.iFrame frame) {
-        super("Strani");
+        super("\u0414\u044a\u0440\u0436\u0430\u0432\u0438");
         
         this.setClosable(true);
         this.setMaximizable(true);
@@ -15,7 +15,8 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame {
             setConn(frame.getConn());}catch(Exception e){e.printStackTrace();}
         
         try{
-            countriesT = new nom.countries(getConn(), "", "");}catch(Exception e){e.printStackTrace();}
+//            countriesT = new nom.countries(getConn(), "", "");    - защо?
+            countriesT = new nom.countries(getConn());}catch(Exception e){e.printStackTrace();}
         initTable();
         initComponents();
         

@@ -1,9 +1,7 @@
 
 package nom;
 
-import imakante.com.dbObject;
-
-public class branch extends dbObject{
+public class branch extends imakante.com.dbObject {
 
     public branch(java.sql.Connection conn) {
         super(conn);
