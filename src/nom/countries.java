@@ -54,7 +54,11 @@ public class countries extends imakante.com.dbObject {
         id = in_id;
         try{
             registerParameters();
-            cstm.execute();
+            rs = cstm.executeQuery();
+            while(rs.next()){
+                code = rs.getString("code");
+                name = rs.getString("name");
+            }
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         
     }
