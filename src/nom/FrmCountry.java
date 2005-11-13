@@ -7,16 +7,12 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame implemen
     
     public FrmCountry(String title, imakante.com.vcomponents.iFrame frame) {
         super("\u0414\u044a\u0440\u0436\u0430\u0432\u0438");
-        
+        myframe = frame;
         this.setClosable(true);
         this.setMaximizable(true);
-        
+        prepareConn();
+        constructObject();
         try{
-            setConn(frame.getConn());}catch(Exception e){e.printStackTrace();}
-        
-        try{
-//
-            boolean cl= conn.isClosed(); System.out.println(cl);
             countriesT = new nom.countries(conn);}catch(Exception e){e.printStackTrace();}
         initTable();
         initComponents();
@@ -169,12 +165,7 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame implemen
     }//GEN-LAST:event_jButton5KeyPressed
     
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        jScrollPane1.remove(table);
-        model = new imakante.com.CustomTableModel(conn, countriesT.getTable(), null);
-        table = new imakante.com.CustomTable(model);
-        jScrollPane1.getViewport().add(table);
-        jScrollPane1.repaint();
-        
+        refreshTable();
     }//GEN-LAST:event_jButton5ActionPerformed
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -216,6 +207,18 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame implemen
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
     }//GEN-LAST:event_jButton3ActionPerformed
+    private void prepareConn(){
+        try{
+            setConn(myframe.getConn());}catch(Exception e){e.printStackTrace();}
+    }
+    
+    private void constructObject(){
+     try{
+            countriesT = new nom.countries(conn);}catch(Exception e){e.printStackTrace();}
+    
+    }
+    
+    
     private void searchRecords(){
         jScrollPane1.remove(table);
         System.out.println(jTextField2.getText());
@@ -236,6 +239,14 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame implemen
         }catch(Exception e){e.printStackTrace();}
     }
     
+    public void refreshTable(){
+        jScrollPane1.remove(table);
+        model = new imakante.com.CustomTableModel(conn, countriesT.getTable(), null);
+        table = new imakante.com.CustomTable(model);
+        jScrollPane1.getViewport().add(table);
+        jScrollPane1.repaint();
+        
+    }
     // private java.sql.Connection getConn() {
     //   System.out.println("ot country getConn()");
     //   return conn;
@@ -250,7 +261,7 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame implemen
     private nom.countries countriesT;
     private imakante.com.CustomTableModel model;
     private imakante.com.CustomTable table;
-    
+    private imakante.com.vcomponents.iFrame myframe;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -269,41 +280,41 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame implemen
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
-      
+    
     
     protected void closeResource(){
-                
-                 try{  rs.close();
-                }catch(java.sql.SQLException sqle){}
-                 rs =null;
-             }
-            
-            
-            protected void UnloadWindow(){
-                closeResource();
-                this.dispose();
-                
-            }
-            
-            
-            
-            
-            public void windowOpened(java.awt.event.WindowEvent e){
-            }
-            public void windowClosing(java.awt.event.WindowEvent e){
-                UnloadWindow();
-            }
-            public void windowClosed(java.awt.event.WindowEvent e){
-            }
-            public void windowIconified(java.awt.event.WindowEvent e){
-            }
-            public void windowDeiconified(java.awt.event.WindowEvent e){
-            }
-            public void windowActivated(java.awt.event.WindowEvent e){
-            }
-            public void windowDeactivated(java.awt.event.WindowEvent e){
-            }
-            
-            
-            
+        
+        try{  rs.close();
+        }catch(java.sql.SQLException sqle){}
+        rs =null;
+    }
+    
+    
+    protected void UnloadWindow(){
+        closeResource();
+        this.dispose();
+        
+    }
+    
+    
+    
+    
+    public void windowOpened(java.awt.event.WindowEvent e){
+    }
+    public void windowClosing(java.awt.event.WindowEvent e){
+        UnloadWindow();
+    }
+    public void windowClosed(java.awt.event.WindowEvent e){
+    }
+    public void windowIconified(java.awt.event.WindowEvent e){
+    }
+    public void windowDeiconified(java.awt.event.WindowEvent e){
+    }
+    public void windowActivated(java.awt.event.WindowEvent e){
+    }
+    public void windowDeactivated(java.awt.event.WindowEvent e){
+    }
+    
+    
+    
 }
