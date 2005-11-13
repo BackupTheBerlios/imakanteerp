@@ -12,8 +12,6 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame implemen
         this.setMaximizable(true);
         prepareConn();
         constructObject();
-        try{
-            countriesT = new nom.countries(conn);}catch(Exception e){e.printStackTrace();}
         initTable();
         initComponents();
         
@@ -201,7 +199,7 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame implemen
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        newRecord();
     }//GEN-LAST:event_jButton1ActionPerformed
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -213,9 +211,9 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame implemen
     }
     
     private void constructObject(){
-     try{
+        try{
             countriesT = new nom.countries(conn);}catch(Exception e){e.printStackTrace();}
-    
+        
     }
     
     
@@ -239,9 +237,10 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame implemen
         }catch(Exception e){e.printStackTrace();}
     }
     
-    public void refreshTable(){
+    protected static void refreshTable(){
         jScrollPane1.remove(table);
-        model = new imakante.com.CustomTableModel(conn, countriesT.getTable(), null);
+        rs = countriesT.getTable();
+        model = new imakante.com.CustomTableModel(conn, rs, null);
         table = new imakante.com.CustomTable(model);
         jScrollPane1.getViewport().add(table);
         jScrollPane1.repaint();
@@ -251,16 +250,19 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame implemen
     //   System.out.println("ot country getConn()");
     //   return conn;
     // }
-    
+    protected void newRecord(){
+        nom.aeCountry dialog = new nom.aeCountry(this, true);
+        dialog.setVisible(true);
+    }
     private void setConn(java.sql.Connection connection) {
         this.conn = connection;
     }
     
-    private java.sql.Connection conn;
-    private java.sql.ResultSet rs;
-    private nom.countries countriesT;
-    private imakante.com.CustomTableModel model;
-    private imakante.com.CustomTable table;
+    private static java.sql.Connection conn;
+    private static java.sql.ResultSet rs;
+    private static  nom.countries countriesT;
+    private static imakante.com.CustomTableModel model;
+    private static imakante.com.CustomTable table;
     private imakante.com.vcomponents.iFrame myframe;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -276,7 +278,7 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame implemen
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
+    private static javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables

@@ -2,12 +2,12 @@
 package nom;
 
 public class aeCountry extends imakante.com.vcomponents.iDialog{
-
+    
     public aeCountry(imakante.com.vcomponents.iInternalFrame frame, boolean ismodal) {
         super(frame, ismodal);
         initComponents();
     }
-
+    
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
@@ -55,9 +55,21 @@ public class aeCountry extends imakante.com.vcomponents.iDialog{
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         jButton1.setText("\u0417\u0430\u043f\u0430\u0437\u0438");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         jPanel2.add(jButton1);
 
         jButton2.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         jPanel2.add(jButton2);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
@@ -65,7 +77,15 @@ public class aeCountry extends imakante.com.vcomponents.iDialog{
         pack();
     }
     // </editor-fold>//GEN-END:initComponents
-
+    
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        closeDialog();
+    }//GEN-LAST:event_jButton2ActionPerformed
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        r();
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -76,5 +96,13 @@ public class aeCountry extends imakante.com.vcomponents.iDialog{
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+    private nom.FrmCountry myparent;
     
+    
+    private void r(){
+        nom.FrmCountry.refreshTable();
+    }
+    private void closeDialog(){
+        this.dispose();
+    }
 }
