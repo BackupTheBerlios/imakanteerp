@@ -4,6 +4,7 @@ public class countries extends imakante.com.dbObject {
     
     public countries(java.sql.Connection conn) {
         super(conn);
+        prepareCstm();
         
     }
     
@@ -17,8 +18,8 @@ public class countries extends imakante.com.dbObject {
     private int comprator = 0;
     
     public java.sql.ResultSet getTable(){
-        code = "";
-        name = "";
+        code = "0";
+        name = "0";
         id = 0;
         comprator = 0;
         try{
@@ -62,6 +63,16 @@ public class countries extends imakante.com.dbObject {
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         
     }
+    public java.sql.ResultSet searchRecords(String in_code, String in_name){
+        comprator = 5;
+        code = in_code;
+        name = in_name;
+        try{
+            registerParameters();
+            setRs(getCstm().executeQuery());}catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        return rs;
+        
+    }
     
     private void registerParameters(){
         try{
@@ -77,7 +88,7 @@ public class countries extends imakante.com.dbObject {
     private void prepareCstm() {
         try {
             
-            setCstm(getConn().prepareCall("{call ls_procedure_search_country(?,?,?,?)}"));
+            setCstm(getConn().prepareCall("{call ls_procedure_country(?,?,?,?)}"));
             
         } catch(java.sql.SQLException sqle) {sqle.printStackTrace();}
     }

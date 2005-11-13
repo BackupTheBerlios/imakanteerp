@@ -15,8 +15,9 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame {
             setConn(frame.getConn());}catch(Exception e){e.printStackTrace();}
         
         try{
-//            countriesT = new nom.countries(getConn(), "", "");    - защо?
-            countriesT = new nom.countries(getConn());}catch(Exception e){e.printStackTrace();}
+//           
+            boolean cl= conn.isClosed(); System.out.println(cl);
+            countriesT = new nom.countries(conn);}catch(Exception e){e.printStackTrace();}
         initTable();
         initComponents();
         
@@ -169,7 +170,7 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame {
     
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         jScrollPane1.remove(table);
-        model = new imakante.com.CustomTableModel(getConn(), countriesT.getRs("", ""), null);
+        model = new imakante.com.CustomTableModel(conn, countriesT.getTable(), null);
         table = new imakante.com.CustomTable(model);
         jScrollPane1.getViewport().add(table);
         jScrollPane1.repaint();
@@ -219,7 +220,8 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame {
         jScrollPane1.remove(table);
         System.out.println(jTextField2.getText());
         try{
-            model = new imakante.com.CustomTableModel(getConn(), countriesT.getRs(jTextField1.getText(),jTextField2.getText()), null);
+           rs = countriesT.searchRecords(jTextField1.getText(),jTextField2.getText());
+            model = new imakante.com.CustomTableModel(conn,rs, null);
             table = new imakante.com.CustomTable(model);
         }catch(Exception e){e.printStackTrace();}
         jScrollPane1.getViewport().add(table);
@@ -228,21 +230,23 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame {
     
     private void initTable() {
         try{
-            model = new imakante.com.CustomTableModel(getConn(), countriesT.getRs(), null);
+            rs = countriesT.getTable();
+            model = new imakante.com.CustomTableModel(conn,rs, null);
             table = new imakante.com.CustomTable(model);
         }catch(Exception e){e.printStackTrace();}
     }
     
-    private java.sql.Connection getConn() {
-        System.out.println("ot country getConn()");
-        return conn;
-    }
+   // private java.sql.Connection getConn() {
+     //   System.out.println("ot country getConn()");
+     //   return conn;
+   // }
     
     private void setConn(java.sql.Connection connection) {
         this.conn = connection;
     }
     
     private java.sql.Connection conn;
+    private java.sql.ResultSet rs;
     private nom.countries countriesT;
     private imakante.com.CustomTableModel model;
     private imakante.com.CustomTable table;
