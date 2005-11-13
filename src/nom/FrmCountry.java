@@ -3,7 +3,7 @@ package nom;
 
 import java.awt.event.KeyEvent;
 
-public class FrmCountry extends imakante.com.vcomponents.iInternalFrame {
+public class FrmCountry extends imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener{
     
     public FrmCountry(String title, imakante.com.vcomponents.iFrame frame) {
         super("\u0414\u044a\u0440\u0436\u0430\u0432\u0438");
@@ -15,7 +15,7 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame {
             setConn(frame.getConn());}catch(Exception e){e.printStackTrace();}
         
         try{
-//           
+//
             boolean cl= conn.isClosed(); System.out.println(cl);
             countriesT = new nom.countries(conn);}catch(Exception e){e.printStackTrace();}
         initTable();
@@ -220,7 +220,7 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame {
         jScrollPane1.remove(table);
         System.out.println(jTextField2.getText());
         try{
-           rs = countriesT.searchRecords(jTextField1.getText(),jTextField2.getText());
+            rs = countriesT.searchRecords(jTextField1.getText(),jTextField2.getText());
             model = new imakante.com.CustomTableModel(conn,rs, null);
             table = new imakante.com.CustomTable(model);
         }catch(Exception e){e.printStackTrace();}
@@ -236,10 +236,10 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame {
         }catch(Exception e){e.printStackTrace();}
     }
     
-   // private java.sql.Connection getConn() {
-     //   System.out.println("ot country getConn()");
-     //   return conn;
-   // }
+    // private java.sql.Connection getConn() {
+    //   System.out.println("ot country getConn()");
+    //   return conn;
+    // }
     
     private void setConn(java.sql.Connection connection) {
         this.conn = connection;
@@ -269,5 +269,41 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
+      
     
+    protected void closeResource(){
+                
+                 try{  rs.close();
+                }catch(java.sql.SQLException sqle){}
+                 rs =null;
+             }
+            
+            
+            protected void UnloadWindow(){
+                closeResource();
+                this.dispose();
+                
+            }
+            
+            
+            
+            
+            public void windowOpened(java.awt.event.WindowEvent e){
+            }
+            public void windowClosing(java.awt.event.WindowEvent e){
+                UnloadWindow();
+            }
+            public void windowClosed(java.awt.event.WindowEvent e){
+            }
+            public void windowIconified(java.awt.event.WindowEvent e){
+            }
+            public void windowDeiconified(java.awt.event.WindowEvent e){
+            }
+            public void windowActivated(java.awt.event.WindowEvent e){
+            }
+            public void windowDeactivated(java.awt.event.WindowEvent e){
+            }
+            
+            
+            
 }
