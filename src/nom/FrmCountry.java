@@ -246,14 +246,21 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame implemen
         jScrollPane1.repaint();
         
     }
+    
+    
     // private java.sql.Connection getConn() {
     //   System.out.println("ot country getConn()");
     //   return conn;
     // }
-    protected void newRecord(){
-        nom.aeCountry dialog = new nom.aeCountry(this, true);
+    
+    
+    private void newRecord(){
+      //  int i = 0;
+      //  i = countriesT.getMaxCode() + 1;
+        nom.aeCountry dialog = new nom.aeCountry(this, true, 0,"");
         dialog.setVisible(true);
     }
+    
     private void setConn(java.sql.Connection connection) {
         this.conn = connection;
     }

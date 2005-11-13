@@ -74,6 +74,20 @@ public class countries extends imakante.com.dbObject {
         
     }
     
+    public int getMaxCode(){
+        int i = 0;
+        comprator = 6;
+        try{
+            registerParameters();
+            setRs(getCstm().executeQuery());
+            while(rs.next()){
+            i=rs.getInt(code);
+           }
+            
+        }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        
+        return i;
+    }
     private void registerParameters(){
         try{
             
