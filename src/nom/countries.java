@@ -15,19 +15,18 @@ public class countries extends dbObject {
     private java.sql.Statement stm;
     private java.sql.CallableStatement cstm;
     private java.sql.ResultSet rs;
-    private int code =0;
+    private int code = 0;
     private String name = "";
     private int id = 0;
     private int comprator = 0;
     
     public java.sql.ResultSet getTable(){
-        code = 0;
-        name = "0";
-        id = 0;
-        comprator = 0;
+      
+        this.comprator = 0;
         try{
             registerParameters();
             setRs(getCstm().executeQuery());}catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        System.out.println("ot getTable()");
         return rs;
     }
     
@@ -103,7 +102,7 @@ public class countries extends dbObject {
         
         return i;
     }
-     public int getMaxInt(){
+     public int getMaxId(){
         int i = 0;
         comprator = 7;
         try{
@@ -131,9 +130,9 @@ public class countries extends dbObject {
             
             getCstm().setInt("in_id", getId());
             getCstm().setInt("comprator", getComprator());
-            getCstm().setInt("in_code", getCode());
+            getCstm().setInt("in_code", code);
             getCstm().setString("in_name", getName());
-            
+            System.out.println("ot registerparameter");
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
     }
     

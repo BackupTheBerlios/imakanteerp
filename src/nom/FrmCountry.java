@@ -226,8 +226,9 @@ public class FrmCountry extends iInternalFrame{
     
     private void constructObject(){
         try{
+            
             countriesT = new nom.countries(conn);}catch(Exception e){e.printStackTrace();}
-        
+        System.out.println("ot construct object");
     }
     
     
@@ -249,6 +250,7 @@ public class FrmCountry extends iInternalFrame{
             model = new imakante.com.CustomTableModel(conn,rs, null);
             table = new imakante.com.CustomTable(model);
         }catch(Exception e){e.printStackTrace();}
+        System.out.println("ot init Table()");
     }
     
     protected static void refreshTable(){
@@ -276,7 +278,8 @@ public class FrmCountry extends iInternalFrame{
         code = countriesT.getMaxCode() + 1;
         String name = "";
         countriesT.insertRow(code, name);
-        nom.aeCountry dialog = new nom.aeCountry(this, true, 0,code,name);
+        row =  countriesT.getMaxId();
+        nom.aeCountry dialog = new nom.aeCountry(this, true, row ,code ,name);
         dialog.setVisible(true);
         }
         
