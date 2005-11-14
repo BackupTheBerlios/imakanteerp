@@ -1215,11 +1215,19 @@ public class salary_main extends imakante.com.vcomponents.iFrame implements java
     
     protected void loadNasM() {
         
-            nom.FrmCountry Formc = new nom.FrmCountry("Strani", this);  
-            Desk1.add(Formc);
-            try{Formc.setMaximum(true);}catch(java.beans.PropertyVetoException bpve){}
-            Formc.setVisible(true);
-       
+        nom.FrmCountry Formc = new nom.FrmCountry("Strani", this);
+        Desk1.add(Formc);
+        try{Formc.setMaximum(true);}catch(java.beans.PropertyVetoException bpve){}
+        Formc.setVisible(true);
+        
+    }
+    protected void loadDOO() {
+        nom.FrmTaxDOO Formdoo = new nom.FrmTaxDOO();
+        Desk1.add(Formdoo);
+        
+        Formdoo.setVisible(true);
+        
+        
     }
     protected void loadExtern() {
      /*
@@ -1389,10 +1397,10 @@ public class salary_main extends imakante.com.vcomponents.iFrame implements java
                 }catch(java.sql.SQLException sqle){
                 }
             } else if(srcObject=="mes"){
-                try{
-                    loadMonthForm();
-                }catch(java.sql.SQLException sqle){
-                }
+                
+                    loadDOO();
+               
+               
             } else if(srcObject=="period"){
                 
                 loadDateForm();
@@ -1856,14 +1864,14 @@ public class salary_main extends imakante.com.vcomponents.iFrame implements java
     public static void setId_period(int aId_period) {
         id_period = aId_period;
     }
-
+    
     public void setConn(java.sql.Connection conn) {
-
+        
         this.dbCON = conn;
     }
-
+    
     public java.sql.Connection getConn() {
-
+        
         return dbCON;
     }
     
