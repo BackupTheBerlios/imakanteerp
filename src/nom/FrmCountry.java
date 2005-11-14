@@ -264,6 +264,7 @@ public class FrmCountry extends iInternalFrame{
     }
   
     protected void aeRecord(){
+        
         if (table.getValueAt(table.getSelectedRow(), table.getSelectedColumn()) != null) {
              setRow((Integer) table.getValueAt(table.getSelectedRow(),0));
              setCode((Integer) table.getValueAt(table.getSelectedRow(),1));
@@ -276,9 +277,11 @@ public class FrmCountry extends iInternalFrame{
             } catch(Exception e){e.printStackTrace();}
         }else{
         code = countriesT.getMaxCode() + 1;
+        System.out.println("code "+code);
         String name = "";
         countriesT.insertRow(code, name);
         row =  countriesT.getMaxId();
+        System.out.println("row "+row);
         nom.aeCountry dialog = new nom.aeCountry(this, true, row ,code ,name);
         dialog.setVisible(true);
         }
