@@ -4,9 +4,10 @@ package nom;
 import java.awt.event.KeyEvent;
 import java.sql.*;
 import imakante.com.vcomponents.*;
+import java.awt.event.*;
 
-public class FrmCountry extends imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener{
-
+public class FrmCountry extends iInternalFrame{
+    
     
     public FrmCountry(String title, imakante.com.vcomponents.iFrame frame) {
         super("\u0414\u044a\u0440\u0436\u0430\u0432\u0438");
@@ -139,6 +140,12 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame implemen
         jPanel3.add(jButton5);
 
         jButton6.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435 \u043d\u0430 \u0442\u0430\u0431\u043b\u0438\u0446\u0430\u0442\u0430");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         jPanel3.add(jButton6);
 
         jButton3.setText("\u0417\u0430\u0442\u0432\u0430\u0440\u044f\u043d\u0435");
@@ -160,6 +167,10 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame implemen
         pack();
     }
     // </editor-fold>//GEN-END:initComponents
+    
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
     
     private void jButton5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton5KeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton5.doClick();}
@@ -202,7 +213,7 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame implemen
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        newRecord();
+        aeRecord();
     }//GEN-LAST:event_jButton1ActionPerformed
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -256,10 +267,23 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame implemen
     //   return conn;
     // }
     
-    
+    protected void aeRecord(){
+        if (table.getValueAt(table.getSelectedRow(), table.getSelectedColumn()) != null) {
+            int row = (Integer) table.getValueAt(table.getSelectedRow(),0);
+            try{
+                nom.aeCountry dialog = new nom.aeCountry(this, true, row,"");
+                dialog.setVisible(true);
+                
+            } catch(Exception e){e.printStackTrace();}
+        }else{
+        nom.aeCountry dialog = new nom.aeCountry(this, true, 0,"");
+        dialog.setVisible(true);
+        }
+        
+    }
     private void newRecord(){
-      //  int i = 0;
-      //  i = countriesT.getMaxCode() + 1;
+        //  int i = 0;
+        //  i = countriesT.getMaxCode() + 1;
         nom.aeCountry dialog = new nom.aeCountry(this, true, 0,"");
         dialog.setVisible(true);
     }
@@ -274,6 +298,7 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame implemen
     private static imakante.com.CustomTableModel model;
     private static imakante.com.CustomTable table;
     private imakante.com.vcomponents.iFrame myframe;
+    private int row;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -326,21 +351,29 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame implemen
     }
     public void windowDeactivated(java.awt.event.WindowEvent e){
     }
-
+    
     public ResultSet getRs() {
         return rs;
     }
-
+    
     public void setRs(ResultSet val) {
         this.rs = val;
     }
-
+    
     public iFrame getMyframe() {
         return myframe;
     }
-
+    
     public void setMyframe(iFrame val) {
         this.myframe = val;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public void setRow(int val) {
+        this.row = val;
     }
     
     

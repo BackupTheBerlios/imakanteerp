@@ -84,7 +84,7 @@ public class countries extends dbObject {
             registerParameters();
             setRs(getCstm().executeQuery());
             while(rs.next()){
-            i=rs.getInt(code);
+            i=rs.getInt("code");
            }
             
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}

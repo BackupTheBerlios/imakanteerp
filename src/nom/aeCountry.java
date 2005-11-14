@@ -11,7 +11,11 @@ public class aeCountry extends iDialog{
     public aeCountry(imakante.com.vcomponents.iInternalFrame frame, boolean ismodal, int code, String name) {
         super(frame, ismodal);
         initComponents();
-        
+        this.setResizable(false);
+        java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (((dim.width)-(this.getSize().width))/2);
+        int y = (((dim.height)-(this.getSize().height))/2);
+        this.setLocation(x, y);
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
