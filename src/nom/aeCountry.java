@@ -8,7 +8,7 @@ import javax.swing.event.*;
 
 public class aeCountry extends iDialog{
     
-    public aeCountry(imakante.com.vcomponents.iInternalFrame frame, boolean ismodal, int code, String name) {
+    public aeCountry(imakante.com.vcomponents.iInternalFrame frame, boolean ismodal,int id, int code, String name) {
         super(frame, ismodal);
         initComponents();
         this.setResizable(false);
@@ -176,6 +176,7 @@ public class aeCountry extends iDialog{
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
     private nom.FrmCountry myparent;
+    private int id = 0;
     private int code =0;
     private String name = "";
     private String newname = "";

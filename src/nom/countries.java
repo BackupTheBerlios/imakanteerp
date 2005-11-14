@@ -15,13 +15,13 @@ public class countries extends dbObject {
     private java.sql.Statement stm;
     private java.sql.CallableStatement cstm;
     private java.sql.ResultSet rs;
-    private String code = "";
+    private int code =0;
     private String name = "";
     private int id = 0;
     private int comprator = 0;
     
     public java.sql.ResultSet getTable(){
-        code = "0";
+        code = 0;
         name = "0";
         id = 0;
         comprator = 0;
@@ -30,7 +30,19 @@ public class countries extends dbObject {
             setRs(getCstm().executeQuery());}catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         return rs;
     }
-    public void updateRow(int in_id, String in_code, String in_name){
+    
+    public void insertRow(int in_code, String in_name){
+        comprator = 1;
+        this.code = in_code;
+        this.name = in_name;
+        try{
+            registerParameters();
+            cstm.execute();
+        }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        
+    }
+    
+    public void updateRow(int in_id, int in_code, String in_name){
         comprator = 2;
         id = in_id;
         code = in_code;
@@ -60,13 +72,13 @@ public class countries extends dbObject {
             registerParameters();
             rs = cstm.executeQuery();
             while(rs.next()){
-                code = rs.getString("code");
+                code = rs.getInt("code");
                 name = rs.getString("name");
             }
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         
     }
-    public java.sql.ResultSet searchRecords(String in_code, String in_name){
+    public java.sql.ResultSet searchRecords(int in_code, String in_name){
         comprator = 5;
         code = in_code;
         name = in_name;
@@ -84,19 +96,42 @@ public class countries extends dbObject {
             registerParameters();
             setRs(getCstm().executeQuery());
             while(rs.next()){
-            i=rs.getInt("code");
-           }
+                i=rs.getInt("code");
+            }
             
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         
         return i;
     }
+     public int getMaxInt(){
+        int i = 0;
+        comprator = 7;
+        try{
+            registerParameters();
+            setRs(getCstm().executeQuery());
+            while(rs.next()){
+                i=rs.getInt("id");
+            }
+            
+        }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        
+        return i;
+    }
+    
+    
+    public void deleteALL(){
+        comprator = 8;
+        try{
+            registerParameters();
+            cstm.execute();} catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+     }
+    
     private void registerParameters(){
         try{
             
             getCstm().setInt("in_id", getId());
             getCstm().setInt("comprator", getComprator());
-            getCstm().setString("in_code", getCode());
+            getCstm().setInt("in_code", getCode());
             getCstm().setString("in_name", getName());
             
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
@@ -144,7 +179,7 @@ public class countries extends dbObject {
         return rs;
     }
     
-    public java.sql.ResultSet getRs(String in_code, String in_name) {
+    public java.sql.ResultSet getRs(int in_code, String in_name) {
         setCode(in_code);
         setName(in_name);
         prepareRezult();
@@ -155,11 +190,11 @@ public class countries extends dbObject {
         this.rs = rs;
     }
     
-    public String getCode() {
+    public int getCode() {
         return code;
     }
     
-    public void setCode(String code) {
+    public void setCode(int code) {
         this.code = code;
     }
     

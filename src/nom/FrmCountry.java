@@ -235,7 +235,7 @@ public class FrmCountry extends iInternalFrame{
         jScrollPane1.remove(table);
         System.out.println(jTextField2.getText());
         try{
-            rs = countriesT.searchRecords(jTextField1.getText(),jTextField2.getText());
+            rs = countriesT.searchRecords(imakante.com.pubMethods.makeInt(jTextField1.getText()),jTextField2.getText());
             model = new imakante.com.CustomTableModel(conn,rs, null);
             table = new imakante.com.CustomTable(model);
         }catch(Exception e){e.printStackTrace();}
@@ -260,33 +260,28 @@ public class FrmCountry extends iInternalFrame{
         jScrollPane1.repaint();
         
     }
-    
-    
-    // private java.sql.Connection getConn() {
-    //   System.out.println("ot country getConn()");
-    //   return conn;
-    // }
-    
+  
     protected void aeRecord(){
         if (table.getValueAt(table.getSelectedRow(), table.getSelectedColumn()) != null) {
-            int row = (Integer) table.getValueAt(table.getSelectedRow(),0);
+             setRow((Integer) table.getValueAt(table.getSelectedRow(),0));
+             setCode((Integer) table.getValueAt(table.getSelectedRow(),1));
+             setName((String) table.getValueAt(table.getSelectedRow(),2));
+             
             try{
-                nom.aeCountry dialog = new nom.aeCountry(this, true, row,"");
+                nom.aeCountry dialog = new nom.aeCountry(this, true, getRow(), getCode(), getName());
                 dialog.setVisible(true);
                 
             } catch(Exception e){e.printStackTrace();}
         }else{
-        nom.aeCountry dialog = new nom.aeCountry(this, true, 0,"");
+        code = countriesT.getMaxCode() + 1;
+        String name = "";
+        countriesT.insertRow(code, name);
+        nom.aeCountry dialog = new nom.aeCountry(this, true, 0,code,name);
         dialog.setVisible(true);
         }
         
     }
-    private void newRecord(){
-        //  int i = 0;
-        //  i = countriesT.getMaxCode() + 1;
-        nom.aeCountry dialog = new nom.aeCountry(this, true, 0,"");
-        dialog.setVisible(true);
-    }
+  
     
     private void setConn(java.sql.Connection connection) {
         this.conn = connection;
@@ -298,7 +293,8 @@ public class FrmCountry extends iInternalFrame{
     private static imakante.com.CustomTableModel model;
     private static imakante.com.CustomTable table;
     private imakante.com.vcomponents.iFrame myframe;
-    private int row;
+    private static int row, code;
+    private static String name;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -375,6 +371,15 @@ public class FrmCountry extends iInternalFrame{
     public void setRow(int val) {
         this.row = val;
     }
+
+    public static int getCode() {
+        return code;
+    }
+
+    public static void setCode(int aCode) {
+        code = aCode;
+    }
+
     
     
     
