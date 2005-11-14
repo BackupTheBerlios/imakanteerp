@@ -1,6 +1,9 @@
 package nom;
 
-public class countries extends imakante.com.dbObject {
+import java.sql.*;
+import imakante.com.*;
+
+public class countries extends dbObject {
     
     public countries(java.sql.Connection conn) {
         super(conn);

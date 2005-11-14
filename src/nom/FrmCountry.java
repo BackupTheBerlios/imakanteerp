@@ -2,8 +2,11 @@
 package nom;
 
 import java.awt.event.KeyEvent;
+import java.sql.*;
+import imakante.com.vcomponents.*;
 
 public class FrmCountry extends imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener{
+
     
     public FrmCountry(String title, imakante.com.vcomponents.iFrame frame) {
         super("\u0414\u044a\u0440\u0436\u0430\u0432\u0438");
@@ -322,6 +325,22 @@ public class FrmCountry extends imakante.com.vcomponents.iInternalFrame implemen
     public void windowActivated(java.awt.event.WindowEvent e){
     }
     public void windowDeactivated(java.awt.event.WindowEvent e){
+    }
+
+    public ResultSet getRs() {
+        return rs;
+    }
+
+    public void setRs(ResultSet val) {
+        this.rs = val;
+    }
+
+    public iFrame getMyframe() {
+        return myframe;
+    }
+
+    public void setMyframe(iFrame val) {
+        this.myframe = val;
     }
     
     
