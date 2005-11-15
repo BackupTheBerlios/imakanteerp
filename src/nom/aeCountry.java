@@ -7,8 +7,9 @@ import imakante.com.vcomponents.*;
 
 public class aeCountry extends iDialog{
     
-    public aeCountry(imakante.com.vcomponents.iInternalFrame frame, boolean ismodal,int id, int code, String name) {
+    public aeCountry(imakante.com.vcomponents.iInternalFrame frame, boolean ismodal,int row, int id, int code, String name) {
         super(frame, ismodal);
+        this.row = row;
         this.id = id;
         this.code = code;
         this.name =name;
@@ -190,6 +191,7 @@ public class aeCountry extends iDialog{
     // End of variables declaration//GEN-END:variables
    
     private nom.FrmCountry myparent;
+    private int row = 0;
     private int id = 0;
     private int code =0;
     private String name = "";
@@ -203,8 +205,11 @@ public class aeCountry extends iDialog{
     
     private void repaintComp(){
         id = nom.FrmCountry.getRow();
+        System.out.println(""+id);
         code = nom.FrmCountry.getCode();
+        System.out.println(""+code);
         name = nom.FrmCountry.getNameC();
+        System.out.println(name);
         jLabel2.setText(""+code); jLabel2.repaint();
         jTextField1.setText(name); jTextField1.repaint(); 
     }
@@ -212,6 +217,8 @@ public class aeCountry extends iDialog{
     private void update(){
         
         nom.FrmCountry.updateRow(id,code, jTextField1.getText());
+        nom.FrmCountry.refreshTable();
+        
     }
     
     private void closeDialog(){

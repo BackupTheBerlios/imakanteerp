@@ -186,7 +186,7 @@ public class FrmCountry extends iInternalFrame{
     }//GEN-LAST:event_jButtonEditActionPerformed
     
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-// TODO add your handling code here:
+        UnloadWindow();
     }//GEN-LAST:event_jButton6ActionPerformed
     
     private void jButton5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton5KeyPressed
@@ -252,6 +252,7 @@ public class FrmCountry extends iInternalFrame{
         countriesT.updateRow(in_id, in_code, in_name);
         
     }
+    
     private void searchRecords(){
         jScrollPane1.remove(table);
         System.out.println(jTextField2.getText());
@@ -285,10 +286,12 @@ public class FrmCountry extends iInternalFrame{
     
     public static void mOneRow(){
         
-        setRow(getRow() + 1);
+        setRow(getRow()+1);
         try{
+            setId((Integer) table.getValueAt(getId(), 0));
             setCode((Integer) table.getValueAt(getRow(), 1));
-            setNameC((String) table.getValueAt(getRow(), 2));}catch(ArrayIndexOutOfBoundsException aioobe){setRow(getRow() - 1);}
+            setNameC((String) table.getValueAt(getRow(), 2));}catch(ArrayIndexOutOfBoundsException aioobe){setRow(getRow() - 1);
+            System.out.println("problem");}
         
     }
     
@@ -297,9 +300,9 @@ public class FrmCountry extends iInternalFrame{
         System.out.println("code "+getCode());
         String name = "";
         countriesT.insertRow(getCode(), name);
-        setRow(countriesT.getMaxId());
-        System.out.println("row "+getRow());
-        nom.aeCountry dialog = new nom.aeCountry(this, true, getRow(), getCode(), name);
+        setId(countriesT.getMaxId());
+        System.out.println("row "+getId());
+        nom.aeCountry dialog = new nom.aeCountry(this, true, getRow(), getId(), getCode(), name);
         dialog.setVisible(true);
         
     }
@@ -308,10 +311,10 @@ public class FrmCountry extends iInternalFrame{
         if (table.getValueAt(table.getSelectedRow(), table.getSelectedColumn()) != null) {
             setRow((Integer) table.getValueAt(table.getSelectedRow(),0));
             setCode((Integer) table.getValueAt(table.getSelectedRow(),1));
-            setName((String) table.getValueAt(table.getSelectedRow(),2));
+            setNameC((String) table.getValueAt(table.getSelectedRow(),2));
             
             try{
-                nom.aeCountry dialog = new nom.aeCountry(this, true, getRow(), getCode(), getName());
+                nom.aeCountry dialog = new nom.aeCountry(this, true, getRow(), getCode(), getNameC());
                 dialog.setVisible(true);
                 
             } catch(Exception e){e.printStackTrace();}
@@ -332,7 +335,7 @@ public class FrmCountry extends iInternalFrame{
     private static imakante.com.CustomTableModel model;
     private static imakante.com.CustomTable table;
     private imakante.com.vcomponents.iFrame myframe;
-    private static int row, code;
+    private static int row, code, id;
     private static String name;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
