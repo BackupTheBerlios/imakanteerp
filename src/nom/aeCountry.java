@@ -147,7 +147,7 @@ public class aeCountry extends iDialog{
     // </editor-fold>//GEN-END:initComponents
     
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        mOne();
+        mOnePluse();
     }//GEN-LAST:event_jButton6ActionPerformed
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -198,13 +198,18 @@ public class aeCountry extends iDialog{
     private String newname = "";
     private boolean isEdited = false;
     
-    private void mOne(){
-        nom.FrmCountry.mOneRow();
+    private void mOnePlus(){
+        nom.FrmCountry.mOneRowPlus();
         repaintComp();
     }
     
+    private void mOneMinus(){
+        nom.FrmCountry.mOneRowMinus();
+        if(nom.FrmCountry.)
+        repaintComp();
+    }
     private void repaintComp(){
-        id = nom.FrmCountry.getRow();
+        id = nom.FrmCountry.getId();
         System.out.println(""+id);
         code = nom.FrmCountry.getCode();
         System.out.println(""+code);
@@ -216,7 +221,7 @@ public class aeCountry extends iDialog{
     
     private void update(){
         
-        nom.FrmCountry.updateRow(id,code, jTextField1.getText());
+        nom.FrmCountry.updateRow(id, code, jTextField1.getText());
         nom.FrmCountry.refreshTable();
         
     }
