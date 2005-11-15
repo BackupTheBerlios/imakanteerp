@@ -2,14 +2,16 @@
 package nom;
 
 import java.awt.event.KeyEvent;
-import java.awt.event.*;
 import imakante.com.vcomponents.*;
-import javax.swing.event.*;
+
 
 public class aeCountry extends iDialog{
     
     public aeCountry(imakante.com.vcomponents.iInternalFrame frame, boolean ismodal,int id, int code, String name) {
         super(frame, ismodal);
+        this.id = id;
+        this.code = code;
+        this.name =name;
         initComponents();
         this.setResizable(false);
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
@@ -28,6 +30,7 @@ public class aeCountry extends iDialog{
         jLabel2.setText(""+code);
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jTextField1.setText(name);
         jPanel4 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -84,6 +87,12 @@ public class aeCountry extends iDialog{
         jPanel4.add(jButton5);
 
         jButton6.setText(">");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         jPanel4.add(jButton6);
 
         jButton7.setText(">>");
@@ -136,6 +145,10 @@ public class aeCountry extends iDialog{
     }
     // </editor-fold>//GEN-END:initComponents
     
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        mOne();
+    }//GEN-LAST:event_jButton6ActionPerformed
+    
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         closeDialog();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -152,7 +165,7 @@ public class aeCountry extends iDialog{
     }//GEN-LAST:event_jTextField1KeyPressed
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       getOldValue();
+        getOldValue();
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -175,6 +188,7 @@ public class aeCountry extends iDialog{
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+   
     private nom.FrmCountry myparent;
     private int id = 0;
     private int code =0;
@@ -182,16 +196,31 @@ public class aeCountry extends iDialog{
     private String newname = "";
     private boolean isEdited = false;
     
+    private void mOne(){
+        nom.FrmCountry.mOneRow();
+        repaintComp();
+    }
+    
+    private void repaintComp(){
+        id = nom.FrmCountry.getRow();
+        code = nom.FrmCountry.getCode();
+        name = nom.FrmCountry.getNameC();
+        jLabel2.setText(""+code); jLabel2.repaint();
+        jTextField1.setText(name); jTextField1.repaint(); 
+    }
+    
     private void refresh(){
         
         nom.FrmCountry.refreshTable();
     }
+    
     private void closeDialog(){
         this.dispose();
     }
+    
     private void getOldValue(){
-     jTextField1.setText(name);
-         
-     }
-
+        jTextField1.setText(name);
+        
+    }
+    
 }

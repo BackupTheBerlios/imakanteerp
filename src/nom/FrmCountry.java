@@ -1,10 +1,13 @@
 
 package nom;
 
+import imakante.com.CustomTable;
+import imakante.com.CustomTableModel;
 import java.awt.event.KeyEvent;
 import java.sql.*;
 import imakante.com.vcomponents.*;
-import java.awt.event.*;
+
+
 
 public class FrmCountry extends iInternalFrame{
     
@@ -34,7 +37,8 @@ public class FrmCountry extends iInternalFrame{
         jButton4 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        jButtonNew = new javax.swing.JButton();
+        jButtonEdit = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -94,19 +98,28 @@ public class FrmCountry extends iInternalFrame{
         getContentPane().add(jPanel2, java.awt.BorderLayout.NORTH);
 
         jPanel3.setBorder(new javax.swing.border.EtchedBorder());
-        jButton1.setText("\u041d\u043e\u0432/\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonNew.setText("\u041d\u043e\u0432");
+        jButtonNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonNewActionPerformed(evt);
             }
         });
-        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+        jButtonNew.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jButton1KeyPressed(evt);
+                jButtonNewKeyPressed(evt);
             }
         });
 
-        jPanel3.add(jButton1);
+        jPanel3.add(jButtonNew);
+
+        jButtonEdit.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f");
+        jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditActionPerformed(evt);
+            }
+        });
+
+        jPanel3.add(jButtonEdit);
 
         jButton7.setText("\u041f\u0435\u0447\u0430\u0442");
         jPanel3.add(jButton7);
@@ -168,6 +181,10 @@ public class FrmCountry extends iInternalFrame{
     }
     // </editor-fold>//GEN-END:initComponents
     
+    private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
+        editRecord();
+    }//GEN-LAST:event_jButtonEditActionPerformed
+    
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
@@ -204,17 +221,17 @@ public class FrmCountry extends iInternalFrame{
         if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton2.doClick();}
     }//GEN-LAST:event_jButton2KeyPressed
     
-    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton1.doClick();}
-    }//GEN-LAST:event_jButton1KeyPressed
+    private void jButtonNewKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonNewKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButtonNew.doClick();}
+    }//GEN-LAST:event_jButtonNewKeyPressed
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
     }//GEN-LAST:event_jButton2ActionPerformed
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        aeRecord();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButtonNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewActionPerformed
+        newRecord();
+    }//GEN-LAST:event_jButtonNewActionPerformed
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
@@ -262,32 +279,45 @@ public class FrmCountry extends iInternalFrame{
         jScrollPane1.repaint();
         
     }
-  
-    protected void aeRecord(){
+    
+    public static void mOneRow(){
+        
+        setRow(getRow() + 1);
+        try{
+            setCode((Integer) table.getValueAt(getRow(), 1));
+            setNameC((String) table.getValueAt(getRow(), 2));}catch(ArrayIndexOutOfBoundsException aioobe){setRow(getRow() - 1);}
+        
+    }
+    
+    private void newRecord(){
+        setCode(countriesT.getMaxCode() + 1);
+        System.out.println("code "+getCode());
+        String name = "";
+        countriesT.insertRow(getCode(), name);
+        setRow(countriesT.getMaxId());
+        System.out.println("row "+getRow());
+        nom.aeCountry dialog = new nom.aeCountry(this, true, getRow(), getCode(), name);
+        dialog.setVisible(true);
+        
+    }
+    protected void editRecord(){
         
         if (table.getValueAt(table.getSelectedRow(), table.getSelectedColumn()) != null) {
-             setRow((Integer) table.getValueAt(table.getSelectedRow(),0));
-             setCode((Integer) table.getValueAt(table.getSelectedRow(),1));
-             setName((String) table.getValueAt(table.getSelectedRow(),2));
-             
+            setRow((Integer) table.getValueAt(table.getSelectedRow(),0));
+            setCode((Integer) table.getValueAt(table.getSelectedRow(),1));
+            setName((String) table.getValueAt(table.getSelectedRow(),2));
+            
             try{
                 nom.aeCountry dialog = new nom.aeCountry(this, true, getRow(), getCode(), getName());
                 dialog.setVisible(true);
                 
             } catch(Exception e){e.printStackTrace();}
         }else{
-        code = countriesT.getMaxCode() + 1;
-        System.out.println("code "+code);
-        String name = "";
-        countriesT.insertRow(code, name);
-        row =  countriesT.getMaxId();
-        System.out.println("row "+row);
-        nom.aeCountry dialog = new nom.aeCountry(this, true, row ,code ,name);
-        dialog.setVisible(true);
+            
         }
         
     }
-  
+    
     
     private void setConn(java.sql.Connection connection) {
         this.conn = connection;
@@ -302,13 +332,14 @@ public class FrmCountry extends iInternalFrame{
     private static int row, code;
     private static String name;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButtonEdit;
+    private javax.swing.JButton jButtonNew;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -354,12 +385,42 @@ public class FrmCountry extends iInternalFrame{
     public void windowDeactivated(java.awt.event.WindowEvent e){
     }
     
+    public static int getCode() {
+        return code;
+    }
+    
+    
+    
     public ResultSet getRs() {
         return rs;
     }
     
     public void setRs(ResultSet val) {
         this.rs = val;
+    }
+    
+    public countries getCountriesT() {
+        return countriesT;
+    }
+    
+    public void setCountriesT(countries val) {
+        this.countriesT = val;
+    }
+    
+    public CustomTableModel getModel() {
+        return model;
+    }
+    
+    public void setModel(CustomTableModel val) {
+        this.model = val;
+    }
+    
+    public CustomTable getTable() {
+        return table;
+    }
+    
+    public void setTable(CustomTable val) {
+        this.table = val;
     }
     
     public iFrame getMyframe() {
@@ -369,23 +430,32 @@ public class FrmCountry extends iInternalFrame{
     public void setMyframe(iFrame val) {
         this.myframe = val;
     }
-
-    public int getRow() {
+    
+    public static int getRow() {
         return row;
     }
-
-    public void setRow(int val) {
-        this.row = val;
+    
+    public static void setRow(int val) {
+        row = val;
     }
-
-    public static int getCode() {
-        return code;
+    
+    
+    public Connection getConn() {
+        return conn;
     }
-
+    
     public static void setCode(int aCode) {
         code = aCode;
     }
-
+    
+    public static String getNameC() {
+        return name;
+    }
+    
+    public static void setNameC(String aName) {
+        name = aName;
+    }
+    
     
     
     
