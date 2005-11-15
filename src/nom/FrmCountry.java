@@ -248,7 +248,10 @@ public class FrmCountry extends iInternalFrame{
         System.out.println("ot construct object");
     }
     
-    
+    public static void updateRow(int in_id ,int in_code, String in_name){
+        countriesT.updateRow(in_id, in_code, in_name);
+        
+    }
     private void searchRecords(){
         jScrollPane1.remove(table);
         System.out.println(jTextField2.getText());

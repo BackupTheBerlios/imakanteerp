@@ -169,7 +169,7 @@ public class aeCountry extends iDialog{
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        refresh();
+        update();
     }//GEN-LAST:event_jButton1ActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -209,9 +209,9 @@ public class aeCountry extends iDialog{
         jTextField1.setText(name); jTextField1.repaint(); 
     }
     
-    private void refresh(){
+    private void update(){
         
-        nom.FrmCountry.refreshTable();
+        nom.FrmCountry.updateRow(id,code, jTextField1.getText());
     }
     
     private void closeDialog(){
