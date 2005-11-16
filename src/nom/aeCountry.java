@@ -50,6 +50,7 @@ public class aeCountry extends iDialog{
         jLabel1.setText("\u041d\u043e\u043c\u0435\u0440");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 20, 5, 5);
         jPanel1.add(jLabel1, gridBagConstraints);
 
@@ -63,9 +64,12 @@ public class aeCountry extends iDialog{
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 10, 5);
         jPanel1.add(jLabel3, gridBagConstraints);
 
+        jTextField1.setMaximumSize(new java.awt.Dimension(2147483647, 200));
+        jTextField1.setPreferredSize(new java.awt.Dimension(160, 19));
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField1KeyPressed(evt);
@@ -75,16 +79,27 @@ public class aeCountry extends iDialog{
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 200;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 10, 20);
         jPanel1.add(jTextField1, gridBagConstraints);
 
         jPanel4.setBorder(new javax.swing.border.TitledBorder("\u041d\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u044f "));
         jButton4.setText("<<");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         jPanel4.add(jButton4);
 
         jButton5.setText("<");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         jPanel4.add(jButton5);
 
         jButton6.setText(">");
@@ -97,13 +112,19 @@ public class aeCountry extends iDialog{
         jPanel4.add(jButton6);
 
         jButton7.setText(">>");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
         jPanel4.add(jButton7);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         jPanel1.add(jPanel4, gridBagConstraints);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -146,8 +167,20 @@ public class aeCountry extends iDialog{
     }
     // </editor-fold>//GEN-END:initComponents
     
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        mOneMinus();
+    }//GEN-LAST:event_jButton5ActionPerformed
+    
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        goBegin();
+    }//GEN-LAST:event_jButton4ActionPerformed
+    
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        goEnd();
+    }//GEN-LAST:event_jButton7ActionPerformed
+    
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        mOnePluse();
+        mOnePlus();
     }//GEN-LAST:event_jButton6ActionPerformed
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -189,7 +222,7 @@ public class aeCountry extends iDialog{
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
-   
+    
     private nom.FrmCountry myparent;
     private int row = 0;
     private int id = 0;
@@ -197,17 +230,43 @@ public class aeCountry extends iDialog{
     private String name = "";
     private String newname = "";
     private boolean isEdited = false;
+    private boolean atEnd = false;
+    private boolean atBegin = false;
     
     private void mOnePlus(){
         nom.FrmCountry.mOneRowPlus();
+        if(nom.FrmCountry.isAtEnd()){
+            jButtonMaxDisable();
+           
+        }
+         jButtonMinEnable();
         repaintComp();
     }
     
     private void mOneMinus(){
         nom.FrmCountry.mOneRowMinus();
-        if(nom.FrmCountry.)
+        if(nom.FrmCountry.isAtBegining()){
+            jButtonMinDisable();
+            
+        }
+        jButtonMaxEnable();
         repaintComp();
     }
+    private void goBegin(){
+        nom.FrmCountry.mTableBegining();
+        jButtonMinDisable();
+        jButtonMaxEnable();
+        repaintComp();
+    }
+    
+    private void goEnd(){
+        nom.FrmCountry.mTableEnd();
+        jButtonMaxDisable();
+        jButtonMinEnable();
+        repaintComp();
+        
+    }
+    
     private void repaintComp(){
         id = nom.FrmCountry.getId();
         System.out.println(""+id);
@@ -216,7 +275,7 @@ public class aeCountry extends iDialog{
         name = nom.FrmCountry.getNameC();
         System.out.println(name);
         jLabel2.setText(""+code); jLabel2.repaint();
-        jTextField1.setText(name); jTextField1.repaint(); 
+        jTextField1.setText(name); jTextField1.repaint();
     }
     
     private void update(){
@@ -233,6 +292,34 @@ public class aeCountry extends iDialog{
     private void getOldValue(){
         jTextField1.setText(name);
         
+    }
+    
+    private void jButtonMaxDisable(){
+        jButton6.setEnabled(false);
+        jButton6.repaint();
+        jButton7.setEnabled(false);
+        jButton7.repaint();
+    }
+    
+    private void jButtonMaxEnable(){
+        jButton6.setEnabled(true);
+        jButton6.repaint();
+        jButton7.setEnabled(true);
+        jButton7.repaint();
+    }
+    
+    private void jButtonMinDisable(){
+        jButton4.setEnabled(false);
+        jButton4.repaint();
+        jButton5.setEnabled(false);
+        jButton5.repaint();
+    }
+    
+    private void jButtonMinEnable(){
+        jButton4.setEnabled(true);
+        jButton4.repaint();
+        jButton5.setEnabled(true);
+        jButton5.repaint();
     }
     
 }

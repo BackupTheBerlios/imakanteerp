@@ -13,6 +13,7 @@ public class FrmCountry extends iInternalFrame{
     
     
     public FrmCountry(String title, imakante.com.vcomponents.iFrame frame) {
+        
         super("\u0414\u044a\u0440\u0436\u0430\u0432\u0438");
         myframe = frame;
         this.setClosable(true);
@@ -286,8 +287,10 @@ public class FrmCountry extends iInternalFrame{
     
     
     public static void mOneRowMinus(){
-        if(getRow() > 0){
-            setRow(getRow() - 1);
+        if(getRow() >= 0){
+            if(getRow() > 0){
+                setRow(getRow() - 1);}
+            setAtEnd(false);
             try{
                 setId((Integer) table.getValueAt(getRow(), 0));
                 setCode((Integer) table.getValueAt(getRow(), 1));
@@ -302,8 +305,10 @@ public class FrmCountry extends iInternalFrame{
     }
     
     public static void mOneRowPlus(){
-        if(getRow() > getMaxRow()){
-            setRow(getRow()+1);
+        if(getRow() <= getMaxRow()){
+            if(getRow() < getMaxRow()){
+                setRow(getRow()+1);}
+            setAtBegining(false);
             try{
                 setId((Integer) table.getValueAt(getRow(), 0));
                 setCode((Integer) table.getValueAt(getRow(), 1));
@@ -327,12 +332,14 @@ public class FrmCountry extends iInternalFrame{
     }
     
     public static void mTableEnd(){
-        setRow(getMaxRow() + 1);
+        setRow(getMaxRow());
         try{
             setId((Integer) table.getValueAt(getRow(), 0));
             setCode((Integer) table.getValueAt(getRow(), 1));
             setNameC((String) table.getValueAt(getRow(), 2));}catch(ArrayIndexOutOfBoundsException aioobe){setRow(getRow() - 1);
             System.out.println("problem");}
+        setAtBegining(false);
+        setAtEnd(true);
     }
     
     private void newRecord(){
@@ -353,6 +360,12 @@ public class FrmCountry extends iInternalFrame{
         
         if (table.getValueAt(table.getSelectedRow(), table.getSelectedColumn()) != null) {
             setRow(table.getSelectedRow());
+            if(getRow()==0){
+                setAtBegining(true);
+            }
+            if(getRow()==getMaxRow()){
+                setAtEnd(true);
+            }
             setId((Integer) table.getValueAt(table.getSelectedRow(),0));
             setCode((Integer) table.getValueAt(table.getSelectedRow(),1));
             setNameC((String) table.getValueAt(table.getSelectedRow(),2));
@@ -521,19 +534,19 @@ public class FrmCountry extends iInternalFrame{
     public static void setId(int aId) {
         id = aId;
     }
-
+    
     public static boolean isAtBegining() {
         return atBegining;
     }
-
+    
     public static void setAtBegining(boolean aAtBegining) {
         atBegining = aAtBegining;
     }
-
+    
     public static boolean isAtEnd() {
         return atEnd;
     }
-
+    
     public static void setAtEnd(boolean aAtEnd) {
         atEnd = aAtEnd;
     }
