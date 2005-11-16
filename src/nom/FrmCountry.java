@@ -515,7 +515,8 @@ public class FrmCountry extends iInternalFrame{
     
     
     public Connection getConn() {
-        return conn;
+     
+       return conn;
     }
     
     public static void setCode(int aCode) {
