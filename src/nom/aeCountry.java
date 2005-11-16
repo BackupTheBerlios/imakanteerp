@@ -14,6 +14,7 @@ public class aeCountry extends iDialog{
         this.code = code;
         this.name =name;
         initComponents();
+        getNavigatiionState();
         this.setResizable(false);
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         int x = (((dim.width)-(this.getSize().width))/2);
@@ -321,5 +322,14 @@ public class aeCountry extends iDialog{
         jButton5.setEnabled(true);
         jButton5.repaint();
     }
-    
+    private void getNavigatiionState(){
+     if(nom.FrmCountry.isAtBegining()){
+            jButtonMinDisable();
+            
+        }
+     if(nom.FrmCountry.isAtEnd()){
+            jButtonMaxDisable();
+           
+        }
+    }
 }

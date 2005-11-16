@@ -351,13 +351,16 @@ public class FrmCountry extends iInternalFrame{
         setRow(getMaxRow() + 1);
         System.out.println("id "+ getId());
         System.out.println("row "+ getRow());
+        setAtEnd(true);
+        setAtBegining(false);
         nom.aeCountry dialog = new nom.aeCountry(this, true, getRow(), getId(), getCode(), name);
         dialog.setVisible(true);
         
     }
     
     protected void editRecord(){
-        
+        setAtEnd(false);
+        setAtBegining(false);
         if (table.getValueAt(table.getSelectedRow(), table.getSelectedColumn()) != null) {
             setRow(table.getSelectedRow());
             if(getRow()==0){
