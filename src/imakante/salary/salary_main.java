@@ -57,6 +57,7 @@ public class salary_main extends imakante.com.vcomponents.iFrame implements java
         fdia.setVisible(true);
         setCurrDate(dbCON);
         
+        
         // FrmDate fdate = new FrmDate(this,dbCON);
         //fdate.setVisible(true);
         
@@ -690,6 +691,14 @@ public class salary_main extends imakante.com.vcomponents.iFrame implements java
         
         MnuSys.addSeparator();
         
+        javax.swing.JMenuItem ItmCountry= new javax.swing.JMenuItem("\u0414\u044a\u0440\u0436\u0430\u0432\u0438");
+        ItmCountry.setFont(menuFont);
+        ItmCountry.setActionCommand("country");
+        ItmCountry.addActionListener(getJMenuActionListener());
+        ItmCountry.setBackground(new java.awt.Color(224,223,227));
+        MnuSys.add(ItmCountry);
+        
+        
         javax.swing.JMenuItem ItmArea= new javax.swing.JMenuItem("\u041e\u0431\u043b\u0430\u0441\u0442\u0438");
         ItmArea.setFont(menuFont);
         ItmArea.setActionCommand("area");
@@ -1214,8 +1223,16 @@ public class salary_main extends imakante.com.vcomponents.iFrame implements java
     }
     
     protected void loadNasM() {
+        try{
+            FormNasM = new imakante.salary.FrmNasM(dbCON, this);}catch(java.sql.SQLException sqle){}
+        Desk1.add(FormNasM);
+        try{FormNasM.setMaximum(true);}catch(java.beans.PropertyVetoException bpve){}
+        FormNasM.setVisible(true);
         
-        nom.FrmCountry Formc = new nom.FrmCountry("Strani", this);
+    }
+    protected void loadCountry() {
+        
+        nom.FrmCountry Formc = new nom.FrmCountry("\u0414\u044a\u0440\u0436\u0430\u0432\u0438", this);
         Desk1.add(Formc);
         try{Formc.setMaximum(true);}catch(java.beans.PropertyVetoException bpve){}
         Formc.setVisible(true);
@@ -1398,9 +1415,9 @@ public class salary_main extends imakante.com.vcomponents.iFrame implements java
                 }
             } else if(srcObject=="mes"){
                 
-                    loadDOO();
-               
-               
+                loadDOO();
+                
+                
             } else if(srcObject=="period"){
                 
                 loadDateForm();
@@ -1469,7 +1486,13 @@ public class salary_main extends imakante.com.vcomponents.iFrame implements java
                 } catch(Exception qle){
                 };
                 
-            } else if(srcObject=="nas"){
+            } else if(srcObject=="country"){
+                
+                try{
+                    loadCountry();
+                } catch(Exception qle){
+                };
+            }else if(srcObject=="nas"){
                 
                 try{
                     loadNasM();

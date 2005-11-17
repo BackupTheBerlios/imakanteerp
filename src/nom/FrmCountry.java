@@ -43,12 +43,12 @@ public class FrmCountry extends iInternalFrame{
         jPanel3 = new javax.swing.JPanel();
         jButtonNew = new javax.swing.JButton();
         jButtonEdit = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jButtonPrintPlain = new javax.swing.JButton();
+        jButtonPrintRep = new javax.swing.JButton();
+        jButtonDeleteRow = new javax.swing.JButton();
+        jButtonRefresh = new javax.swing.JButton();
+        jButtonDeleteAll = new javax.swing.JButton();
+        jButtonClose = new javax.swing.JButton();
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
@@ -123,100 +123,137 @@ public class FrmCountry extends iInternalFrame{
                 jButtonEditActionPerformed(evt);
             }
         });
+        jButtonEdit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonEditKeyPressed(evt);
+            }
+        });
 
         jPanel3.add(jButtonEdit);
 
-        jButton7.setText("\u041f\u0435\u0447\u0430\u0442");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPrintPlain.setText("\u041f\u0435\u0447\u0430\u0442");
+        jButtonPrintPlain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                jButtonPrintPlainActionPerformed(evt);
             }
         });
-
-        jPanel3.add(jButton7);
-
-        jButton1.setText("\u041f\u0435\u0447\u0430\u0442 \u0420\u0435\u043f\u043e\u0440\u0442");
-        jPanel3.add(jButton1);
-
-        jButton2.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
+        jButtonPrintPlain.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jButton2KeyPressed(evt);
+                jButtonPrintPlainKeyPressed(evt);
             }
         });
 
-        jPanel3.add(jButton2);
+        jPanel3.add(jButtonPrintPlain);
 
-        jButton5.setText("\u0412\u0441\u0438\u0447\u043a\u0438 \u0437\u0430\u043f\u0438\u0441\u0438");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        jButton5.addKeyListener(new java.awt.event.KeyAdapter() {
+        jButtonPrintRep.setText("\u041f\u0435\u0447\u0430\u0442 \u0420\u0435\u043f\u043e\u0440\u0442");
+        jButtonPrintRep.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jButton5KeyPressed(evt);
+                jButtonPrintRepKeyPressed(evt);
             }
         });
 
-        jPanel3.add(jButton5);
+        jPanel3.add(jButtonPrintRep);
 
-        jButton6.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435 \u043d\u0430 \u0442\u0430\u0431\u043b\u0438\u0446\u0430\u0442\u0430");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jButtonDeleteRow.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
+        jButtonDeleteRow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jButtonDeleteRowActionPerformed(evt);
             }
         });
-
-        jPanel3.add(jButton6);
-
-        jButton3.setText("\u0417\u0430\u0442\u0432\u0430\u0440\u044f\u043d\u0435");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jButton3.addKeyListener(new java.awt.event.KeyAdapter() {
+        jButtonDeleteRow.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jButton3KeyPressed(evt);
+                jButtonDeleteRowKeyPressed(evt);
             }
         });
 
-        jPanel3.add(jButton3);
+        jPanel3.add(jButtonDeleteRow);
+
+        jButtonRefresh.setText("\u0412\u0441\u0438\u0447\u043a\u0438 \u0437\u0430\u043f\u0438\u0441\u0438");
+        jButtonRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRefreshActionPerformed(evt);
+            }
+        });
+        jButtonRefresh.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonRefreshKeyPressed(evt);
+            }
+        });
+
+        jPanel3.add(jButtonRefresh);
+
+        jButtonDeleteAll.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435 \u043d\u0430 \u0442\u0430\u0431\u043b\u0438\u0446\u0430\u0442\u0430");
+        jButtonDeleteAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteAllActionPerformed(evt);
+            }
+        });
+        jButtonDeleteAll.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonDeleteAllKeyPressed(evt);
+            }
+        });
+
+        jPanel3.add(jButtonDeleteAll);
+
+        jButtonClose.setText("\u0417\u0430\u0442\u0432\u0430\u0440\u044f\u043d\u0435");
+        jButtonClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCloseActionPerformed(evt);
+            }
+        });
+        jButtonClose.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonCloseKeyPressed(evt);
+            }
+        });
+
+        jPanel3.add(jButtonClose);
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.SOUTH);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void jButtonDeleteAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonDeleteAllKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){  jButtonDeleteAll.doClick();}
+    }//GEN-LAST:event_jButtonDeleteAllKeyPressed
+    
+    private void jButtonPrintRepKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonPrintRepKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){  jButtonPrintRep.doClick();}
+    }//GEN-LAST:event_jButtonPrintRepKeyPressed
+    
+    private void jButtonPrintPlainKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonPrintPlainKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButtonPrintPlain.doClick();}
+    }//GEN-LAST:event_jButtonPrintPlainKeyPressed
+    
+    private void jButtonEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonEditKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButtonEdit.doClick();}
+    }//GEN-LAST:event_jButtonEditKeyPressed
+    
+    private void jButtonPrintPlainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintPlainActionPerformed
         try {
             printTable();
         } catch (PrinterException ex) {
             ex.printStackTrace();
         }
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_jButtonPrintPlainActionPerformed
     
     private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
         editRecord();
     }//GEN-LAST:event_jButtonEditActionPerformed
     
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void jButtonDeleteAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteAllActionPerformed
         UnloadWindow();
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_jButtonDeleteAllActionPerformed
     
-    private void jButton5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton5KeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton5.doClick();}
-    }//GEN-LAST:event_jButton5KeyPressed
+    private void jButtonRefreshKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonRefreshKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButtonRefresh.doClick();}
+    }//GEN-LAST:event_jButtonRefreshKeyPressed
     
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jButtonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshActionPerformed
         refreshTable();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jButtonRefreshActionPerformed
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         searchRecords();
@@ -234,29 +271,29 @@ public class FrmCountry extends iInternalFrame{
         if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton4.doClick();}
     }//GEN-LAST:event_jButton4KeyPressed
     
-    private void jButton3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton3KeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton3.doClick();}
-    }//GEN-LAST:event_jButton3KeyPressed
+    private void jButtonCloseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonCloseKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButtonClose.doClick();}
+    }//GEN-LAST:event_jButtonCloseKeyPressed
     
-    private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton2.doClick();}
-    }//GEN-LAST:event_jButton2KeyPressed
+    private void jButtonDeleteRowKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonDeleteRowKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButtonDeleteRow.doClick();}
+    }//GEN-LAST:event_jButtonDeleteRowKeyPressed
     
     private void jButtonNewKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonNewKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButtonNew.doClick();}
     }//GEN-LAST:event_jButtonNewKeyPressed
     
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jButtonDeleteRowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteRowActionPerformed
+        deleteRecord();
+    }//GEN-LAST:event_jButtonDeleteRowActionPerformed
     
     private void jButtonNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewActionPerformed
         newRecord();
     }//GEN-LAST:event_jButtonNewActionPerformed
     
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
         
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonCloseActionPerformed
     private void prepareConn(){
         try{
             setConn(myframe.getConn());}catch(Exception e){e.printStackTrace();}
@@ -292,8 +329,8 @@ public class FrmCountry extends iInternalFrame{
             model = new imakante.com.CustomTableModel(conn,rs, null);
             table = new imakante.com.CustomTable(model);
         }catch(Exception e){e.printStackTrace();}
-       table.requestFocus();
-       
+        table.requestFocus();
+        
         try {
             
             table.setEditingRow(0);
@@ -387,9 +424,9 @@ public class FrmCountry extends iInternalFrame{
     
     protected void editRecord(){
         setAtEnd(false);
-        setAtBegining(false);         
+        setAtBegining(false);
         if (table.getSelectedRow() != -1) { //table.getValueAt(table.getSelectedRow(), table.getSelectedColumn()) != null
-     
+            
             setRow(table.getSelectedRow());
             if(getRow()==0){
                 setAtBegining(true);
@@ -450,15 +487,15 @@ public class FrmCountry extends iInternalFrame{
     private static boolean atBegining=false;
     private static boolean atEnd = false;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButtonClose;
+    private javax.swing.JButton jButtonDeleteAll;
+    private javax.swing.JButton jButtonDeleteRow;
     private javax.swing.JButton jButtonEdit;
     private javax.swing.JButton jButtonNew;
+    private javax.swing.JButton jButtonPrintPlain;
+    private javax.swing.JButton jButtonPrintRep;
+    private javax.swing.JButton jButtonRefresh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

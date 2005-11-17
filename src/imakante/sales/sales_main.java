@@ -532,9 +532,7 @@ public class sales_main extends javax.swing.JFrame {
     }
     
     private void loadConn(){
-        imakante.sales.salesFrmConnection fconn = new salesFrmConnection(this);
         
-        fconn.setVisible(true);
     }
 
     private java.sql.Connection makeConn(String dbDriver,String dbURL,String dbUser, String dbPass) throws java.sql.SQLException {

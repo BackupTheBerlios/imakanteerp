@@ -227,7 +227,8 @@ public class frmConnSalary extends java.awt.Dialog {
         try{
             Class.forName(lDBDriver);
             dbConn = java.sql.DriverManager.getConnection(lDBSource,lDBUser ,lDBPass);
-            java.sql.Statement stm = dbConn.createStatement();
+            System.out.println(dbConn.getMetaData());
+           
              } catch(ClassNotFoundException e)  {
                  
             System.err.println("Failed to load driver");
