@@ -404,6 +404,13 @@ public class FrmCountry extends iInternalFrame{
         
     }
     
+    private void deleteRecord(){
+        if (table.getValueAt(table.getSelectedRow(), table.getSelectedColumn()) != null) {
+            setRow(table.getSelectedRow());
+            setId((Integer) table.getValueAt(table.getSelectedRow(),0));
+            countriesT.deleteRow(id);}
+        refreshTable();
+    }
     
     private static int  getMaxRow(){
         int i = 0;
@@ -423,7 +430,7 @@ public class FrmCountry extends iInternalFrame{
         
     }
     
-            
+    
     private static java.sql.Connection conn;
     private static java.sql.ResultSet rs;
     private static  nom.countries countriesT;
