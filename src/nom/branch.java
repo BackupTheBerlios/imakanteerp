@@ -88,6 +88,30 @@ public class branch extends imakante.com.dbObject {
         
         return i;
     }
+    
+        public int getMaxId(){
+        int i = 0;
+        comprator = 7;
+        try{
+            registerParameters();
+            setRs(getCstm().executeQuery());
+            while(rs.next()){
+                i=rs.getInt("id");
+            }
+            
+        }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        
+        return i;
+    }
+    
+    
+    public void deleteALL(){
+        comprator = 8;
+        try{
+            registerParameters();
+            cstm.execute();} catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+     }
+    
     private void registerParameters(){
         try{
             
