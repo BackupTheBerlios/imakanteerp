@@ -292,7 +292,14 @@ public class FrmCountry extends iInternalFrame{
             model = new imakante.com.CustomTableModel(conn,rs, null);
             table = new imakante.com.CustomTable(model);
         }catch(Exception e){e.printStackTrace();}
-        System.out.println("ot init Table()");
+       table.requestFocus();
+       
+        try {
+            
+            table.setEditingRow(0);
+            
+        } catch(Exception ex) {
+        }
     }
     
     protected static void refreshTable(){
@@ -380,8 +387,9 @@ public class FrmCountry extends iInternalFrame{
     
     protected void editRecord(){
         setAtEnd(false);
-        setAtBegining(false);
-        if (table.getValueAt(table.getSelectedRow(), table.getSelectedColumn()) != null) {
+        setAtBegining(false);         
+        if (table.getSelectedRow() != -1) { //table.getValueAt(table.getSelectedRow(), table.getSelectedColumn()) != null
+     
             setRow(table.getSelectedRow());
             if(getRow()==0){
                 setAtBegining(true);
@@ -405,7 +413,7 @@ public class FrmCountry extends iInternalFrame{
     }
     
     private void deleteRecord(){
-        if (table.getValueAt(table.getSelectedRow(), table.getSelectedColumn()) != null) {
+        if (table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());
             setId((Integer) table.getValueAt(table.getSelectedRow(),0));
             countriesT.deleteRow(id);}
