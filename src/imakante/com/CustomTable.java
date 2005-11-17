@@ -150,7 +150,7 @@ public class CustomTable extends JTable
          }
      }
 
-    
+ 
     /*
      * This class allows a cell's data to be displayed over the mouse cursor 
      * when the mouse cursor is over the selected cell. Note: to actually have

@@ -28,7 +28,7 @@ public class ktu  extends imakante.com.dbObject {
     private void prepareCstm() {
         try {
             
-            cstm = conn.prepareCall("{call ls_procedure_search_country(?,?)}");
+            cstm = conn.prepareCall("{call ls_procedure_ktu(?,?)}");
             
         } catch(java.sql.SQLException sqle) {sqle.printStackTrace();}
     }

@@ -9,24 +9,24 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="programMenu">
           <Properties>
-            <Property name="text" type="java.lang.String" value="ПРОГРАМА"/>
+            <Property name="text" type="java.lang.String" value="&#x41f;&#x420;&#x41e;&#x413;&#x420;&#x410;&#x41c;&#x410;"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="programMenuLock">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Заключване"/>
+                <Property name="text" type="java.lang.String" value="&#x417;&#x430;&#x43a;&#x43b;&#x44e;&#x447;&#x432;&#x430;&#x43d;&#x435;"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="programMenuUnlock">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Отключване"/>
+                <Property name="text" type="java.lang.String" value="&#x41e;&#x442;&#x43a;&#x43b;&#x44e;&#x447;&#x432;&#x430;&#x43d;&#x435;"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JSeparator" name="jSeparator2">
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="programMenu_conn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Връзка с базата"/>
+                <Property name="text" type="java.lang.String" value="&#x412;&#x440;&#x44a;&#x437;&#x43a;&#x430; &#x441; &#x431;&#x430;&#x437;&#x430;&#x442;&#x430;"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="programMenu_connActionPerformed"/>
@@ -34,14 +34,14 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="programMenu_logout">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Прекъсване на връзка"/>
+                <Property name="text" type="java.lang.String" value="&#x41f;&#x440;&#x435;&#x43a;&#x44a;&#x441;&#x432;&#x430;&#x43d;&#x435; &#x43d;&#x430; &#x432;&#x440;&#x44a;&#x437;&#x43a;&#x430;"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JSeparator" name="jSeparator1">
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="exitMenu">
               <Properties>
-                <Property name="text" type="java.lang.String" value="ИЗХОД"/>
+                <Property name="text" type="java.lang.String" value="&#x418;&#x417;&#x425;&#x41e;&#x414;"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitMenuActionPerformed"/>
@@ -51,146 +51,146 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="docMenu">
           <Properties>
-            <Property name="text" type="java.lang.String" value="ДОКУМЕНТИ"/>
+            <Property name="text" type="java.lang.String" value="&#x414;&#x41e;&#x41a;&#x423;&#x41c;&#x415;&#x41d;&#x422;&#x418;"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="docMenu_prod">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Продажби"/>
+                <Property name="text" type="java.lang.String" value="&#x41f;&#x440;&#x43e;&#x434;&#x430;&#x436;&#x431;&#x438;"/>
               </Properties>
             </MenuItem>
             <Menu class="javax.swing.JMenu" name="docMenu_fak">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Фактури"/>
+                <Property name="text" type="java.lang.String" value="&#x424;&#x430;&#x43a;&#x442;&#x443;&#x440;&#x438;"/>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="fakMenu_dan">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Данъчни"/>
+                    <Property name="text" type="java.lang.String" value="&#x414;&#x430;&#x43d;&#x44a;&#x447;&#x43d;&#x438;"/>
                   </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="fakMenu_opr">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Опростени"/>
+                    <Property name="text" type="java.lang.String" value="&#x41e;&#x43f;&#x440;&#x43e;&#x441;&#x442;&#x435;&#x43d;&#x438;"/>
                   </Properties>
                 </MenuItem>
               </SubComponents>
             </Menu>
             <Menu class="javax.swing.JMenu" name="docMenu_razp">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Разписки"/>
+                <Property name="text" type="java.lang.String" value="&#x420;&#x430;&#x437;&#x43f;&#x438;&#x441;&#x43a;&#x438;"/>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="razpMenu_pol">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Получаване"/>
+                    <Property name="text" type="java.lang.String" value="&#x41f;&#x43e;&#x43b;&#x443;&#x447;&#x430;&#x432;&#x430;&#x43d;&#x435;"/>
                   </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="razpMenu_prehv">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Прехвърляне"/>
+                    <Property name="text" type="java.lang.String" value="&#x41f;&#x440;&#x435;&#x445;&#x432;&#x44a;&#x440;&#x43b;&#x44f;&#x43d;&#x435;"/>
                   </Properties>
                 </MenuItem>
               </SubComponents>
             </Menu>
             <MenuItem class="javax.swing.JMenuItem" name="docMenu_nar">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Нареждане"/>
+                <Property name="text" type="java.lang.String" value="&#x41d;&#x430;&#x440;&#x435;&#x436;&#x434;&#x430;&#x43d;&#x435;"/>
               </Properties>
             </MenuItem>
             <Menu class="javax.swing.JMenu" name="docMenu_prot">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Протоколи"/>
+                <Property name="text" type="java.lang.String" value="&#x41f;&#x440;&#x43e;&#x442;&#x43e;&#x43a;&#x43e;&#x43b;&#x438;"/>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="protMenu_rev">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Ревизия"/>
+                    <Property name="text" type="java.lang.String" value="&#x420;&#x435;&#x432;&#x438;&#x437;&#x438;&#x44f;"/>
                   </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="protMenu_brak">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Брак"/>
+                    <Property name="text" type="java.lang.String" value="&#x411;&#x440;&#x430;&#x43a;"/>
                   </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="protMenu_lipsa">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Липса"/>
+                    <Property name="text" type="java.lang.String" value="&#x41b;&#x438;&#x43f;&#x441;&#x430;"/>
                   </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="protMenu_preo">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Преоценка"/>
+                    <Property name="text" type="java.lang.String" value="&#x41f;&#x440;&#x435;&#x43e;&#x446;&#x435;&#x43d;&#x43a;&#x430;"/>
                   </Properties>
                 </MenuItem>
               </SubComponents>
             </Menu>
             <Menu class="javax.swing.JMenu" name="docMenu_porach">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Поръчки"/>
+                <Property name="text" type="java.lang.String" value="&#x41f;&#x43e;&#x440;&#x44a;&#x447;&#x43a;&#x438;"/>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="porachMenu_in">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Вътрешни"/>
+                    <Property name="text" type="java.lang.String" value="&#x412;&#x44a;&#x442;&#x440;&#x435;&#x448;&#x43d;&#x438;"/>
                   </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="porachMenu_out">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Външни"/>
+                    <Property name="text" type="java.lang.String" value="&#x412;&#x44a;&#x43d;&#x448;&#x43d;&#x438;"/>
                   </Properties>
                 </MenuItem>
               </SubComponents>
             </Menu>
             <MenuItem class="javax.swing.JMenuItem" name="docMenu_offer">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Оферти"/>
+                <Property name="text" type="java.lang.String" value="&#x41e;&#x444;&#x435;&#x440;&#x442;&#x438;"/>
               </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="kasaMenu">
           <Properties>
-            <Property name="text" type="java.lang.String" value="КАСА"/>
+            <Property name="text" type="java.lang.String" value="&#x41a;&#x410;&#x421;&#x410;"/>
           </Properties>
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="kasaMenu_order">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ордери"/>
+                <Property name="text" type="java.lang.String" value="&#x41e;&#x440;&#x434;&#x435;&#x440;&#x438;"/>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="orderMenu_prih">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Приходни"/>
+                    <Property name="text" type="java.lang.String" value="&#x41f;&#x440;&#x438;&#x445;&#x43e;&#x434;&#x43d;&#x438;"/>
                   </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="orderMenu_razh">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Разходни"/>
+                    <Property name="text" type="java.lang.String" value="&#x420;&#x430;&#x437;&#x445;&#x43e;&#x434;&#x43d;&#x438;"/>
                   </Properties>
                 </MenuItem>
               </SubComponents>
             </Menu>
             <MenuItem class="javax.swing.JMenuItem" name="kasaMenu_nal">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Наличност в каси"/>
+                <Property name="text" type="java.lang.String" value="&#x41d;&#x430;&#x43b;&#x438;&#x447;&#x43d;&#x43e;&#x441;&#x442; &#x432; &#x43a;&#x430;&#x441;&#x438;"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="kasaMenu_dvi">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Движение"/>
+                <Property name="text" type="java.lang.String" value="&#x414;&#x432;&#x438;&#x436;&#x435;&#x43d;&#x438;&#x435;"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="kasaMenu_opis">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Опис на копюри"/>
+                <Property name="text" type="java.lang.String" value="&#x41e;&#x43f;&#x438;&#x441; &#x43d;&#x430; &#x43a;&#x43e;&#x43f;&#x44e;&#x440;&#x438;"/>
               </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="nomMenu">
           <Properties>
-            <Property name="text" type="java.lang.String" value="НОМЕНКЛАТУРИ"/>
+            <Property name="text" type="java.lang.String" value="&#x41d;&#x41e;&#x41c;&#x415;&#x41d;&#x41a;&#x41b;&#x410;&#x422;&#x423;&#x420;&#x418;"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nomMenuActionPerformed"/>
@@ -198,125 +198,125 @@
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="nomMenu_stock">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Стокови"/>
+                <Property name="text" type="java.lang.String" value="&#x421;&#x442;&#x43e;&#x43a;&#x43e;&#x432;&#x438;"/>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="stock_Menu_group_stock">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Групи"/>
+                    <Property name="text" type="java.lang.String" value="&#x413;&#x440;&#x443;&#x43f;&#x438;"/>
                   </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="stock_Menu_stock">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Стока"/>
+                    <Property name="text" type="java.lang.String" value="&#x421;&#x442;&#x43e;&#x43a;&#x430;"/>
                   </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="stock_Menu_activ">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Други активи"/>
+                    <Property name="text" type="java.lang.String" value="&#x414;&#x440;&#x443;&#x433;&#x438; &#x430;&#x43a;&#x442;&#x438;&#x432;&#x438;"/>
                   </Properties>
                 </MenuItem>
               </SubComponents>
             </Menu>
             <Menu class="javax.swing.JMenu" name="nomMenu_Kontragenti">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Контрагенти"/>
+                <Property name="text" type="java.lang.String" value="&#x41a;&#x43e;&#x43d;&#x442;&#x440;&#x430;&#x433;&#x435;&#x43d;&#x442;&#x438;"/>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="kontragentiMenu_groupe">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Групи"/>
+                    <Property name="text" type="java.lang.String" value="&#x413;&#x440;&#x443;&#x43f;&#x438;"/>
                   </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="kontragentiMenu_Clients">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Клиенти"/>
+                    <Property name="text" type="java.lang.String" value="&#x41a;&#x43b;&#x438;&#x435;&#x43d;&#x442;&#x438;"/>
                   </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="kontragentiMenu_supl">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Доставчици"/>
+                    <Property name="text" type="java.lang.String" value="&#x414;&#x43e;&#x441;&#x442;&#x430;&#x432;&#x447;&#x438;&#x446;&#x438;"/>
                   </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="kontragentiMenu_bank">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Банки"/>
+                    <Property name="text" type="java.lang.String" value="&#x411;&#x430;&#x43d;&#x43a;&#x438;"/>
                   </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="kontragentiMenu_obekti">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Обслужвани обекти"/>
+                    <Property name="text" type="java.lang.String" value="&#x41e;&#x431;&#x441;&#x43b;&#x443;&#x436;&#x432;&#x430;&#x43d;&#x438; &#x43e;&#x431;&#x435;&#x43a;&#x442;&#x438;"/>
                   </Properties>
                 </MenuItem>
               </SubComponents>
             </Menu>
             <Menu class="javax.swing.JMenu" name="nomMenu_Litsa">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Лица"/>
+                <Property name="text" type="java.lang.String" value="&#x41b;&#x438;&#x446;&#x430;"/>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="litsaMenu_groupe_litsa">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Групи лица"/>
+                    <Property name="text" type="java.lang.String" value="&#x413;&#x440;&#x443;&#x43f;&#x438; &#x43b;&#x438;&#x446;&#x430;"/>
                   </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="litsaMenu_in">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Вътрешни лица"/>
+                    <Property name="text" type="java.lang.String" value="&#x412;&#x44a;&#x442;&#x440;&#x435;&#x448;&#x43d;&#x438; &#x43b;&#x438;&#x446;&#x430;"/>
                   </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="litsaMenu_out">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Външни лица"/>
+                    <Property name="text" type="java.lang.String" value="&#x412;&#x44a;&#x43d;&#x448;&#x43d;&#x438; &#x43b;&#x438;&#x446;&#x430;"/>
                   </Properties>
                 </MenuItem>
               </SubComponents>
             </Menu>
             <Menu class="javax.swing.JMenu" name="nomMenu_object">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Обекти"/>
+                <Property name="text" type="java.lang.String" value="&#x41e;&#x431;&#x435;&#x43a;&#x442;&#x438;"/>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="objectMenu_groupe_object">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Групи обекти"/>
+                    <Property name="text" type="java.lang.String" value="&#x413;&#x440;&#x443;&#x43f;&#x438; &#x43e;&#x431;&#x435;&#x43a;&#x442;&#x438;"/>
                   </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="objectMenu_skl">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Складове"/>
+                    <Property name="text" type="java.lang.String" value="&#x421;&#x43a;&#x43b;&#x430;&#x434;&#x43e;&#x432;&#x435;"/>
                   </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="objectMenu_kasa">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Каси"/>
+                    <Property name="text" type="java.lang.String" value="&#x41a;&#x430;&#x441;&#x438;"/>
                   </Properties>
                 </MenuItem>
               </SubComponents>
             </Menu>
             <Menu class="javax.swing.JMenu" name="moneyMenu">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Парични"/>
+                <Property name="text" type="java.lang.String" value="&#x41f;&#x430;&#x440;&#x438;&#x447;&#x43d;&#x438;"/>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="moneyMenu_groupe">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Групи парични"/>
+                    <Property name="text" type="java.lang.String" value="&#x413;&#x440;&#x443;&#x43f;&#x438; &#x43f;&#x430;&#x440;&#x438;&#x447;&#x43d;&#x438;"/>
                   </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="moneyMenu_in">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Приходи"/>
+                    <Property name="text" type="java.lang.String" value="&#x41f;&#x440;&#x438;&#x445;&#x43e;&#x434;&#x438;"/>
                   </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="moneyMenu_out">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Разходи"/>
+                    <Property name="text" type="java.lang.String" value="&#x420;&#x430;&#x437;&#x445;&#x43e;&#x434;&#x438;"/>
                   </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="moneyMenu_valutes">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Валути"/>
+                    <Property name="text" type="java.lang.String" value="&#x412;&#x430;&#x43b;&#x443;&#x442;&#x438;"/>
                   </Properties>
                 </MenuItem>
               </SubComponents>
@@ -325,58 +325,58 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="nomMenu_nasm">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Населено място"/>
+                <Property name="text" type="java.lang.String" value="&#x41d;&#x430;&#x441;&#x435;&#x43b;&#x435;&#x43d;&#x43e; &#x43c;&#x44f;&#x441;&#x442;&#x43e;"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="nomMenu_obl">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Области"/>
+                <Property name="text" type="java.lang.String" value="&#x41e;&#x431;&#x43b;&#x430;&#x441;&#x442;&#x438;"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="nomMenu_con">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Държави"/>
+                <Property name="text" type="java.lang.String" value="&#x414;&#x44a;&#x440;&#x436;&#x430;&#x432;&#x438;"/>
               </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="sprMenu">
           <Properties>
-            <Property name="text" type="java.lang.String" value="СПРАВКИ"/>
+            <Property name="text" type="java.lang.String" value="&#x421;&#x41f;&#x420;&#x410;&#x412;&#x41a;&#x418;"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="spravkiMenu_nal">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Наличност"/>
+                <Property name="text" type="java.lang.String" value="&#x41d;&#x430;&#x43b;&#x438;&#x447;&#x43d;&#x43e;&#x441;&#x442;"/>
               </Properties>
             </MenuItem>
             <Menu class="javax.swing.JMenu" name="balansMenu">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Баланси"/>
+                <Property name="text" type="java.lang.String" value="&#x411;&#x430;&#x43b;&#x430;&#x43d;&#x441;&#x438;"/>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="balansMenu_stock">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Стоков"/>
+                    <Property name="text" type="java.lang.String" value="&#x421;&#x442;&#x43e;&#x43a;&#x43e;&#x432;"/>
                   </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="balansMenu_kol">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Количествен"/>
+                    <Property name="text" type="java.lang.String" value="&#x41a;&#x43e;&#x43b;&#x438;&#x447;&#x435;&#x441;&#x442;&#x432;&#x435;&#x43d;"/>
                   </Properties>
                 </MenuItem>
               </SubComponents>
             </Menu>
             <MenuItem class="javax.swing.JMenuItem" name="spravkiMenu_doc">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Документи"/>
+                <Property name="text" type="java.lang.String" value="&#x414;&#x43e;&#x43a;&#x443;&#x43c;&#x435;&#x43d;&#x442;&#x438;"/>
               </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="sluMenu">
           <Properties>
-            <Property name="text" type="java.lang.String" value="СЛУЖЕБНИ"/>
+            <Property name="text" type="java.lang.String" value="&#x421;&#x41b;&#x423;&#x416;&#x415;&#x411;&#x41d;&#x418;"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sluMenuActionPerformed"/>
@@ -384,29 +384,29 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Параметри Фирма"/>
+                <Property name="text" type="java.lang.String" value="&#x41f;&#x430;&#x440;&#x430;&#x43c;&#x435;&#x442;&#x440;&#x438; &#x424;&#x438;&#x440;&#x43c;&#x430;"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Настроика Програма"/>
+                <Property name="text" type="java.lang.String" value="&#x41d;&#x430;&#x441;&#x442;&#x440;&#x43e;&#x438;&#x43a;&#x430; &#x41f;&#x440;&#x43e;&#x433;&#x440;&#x430;&#x43c;&#x430;"/>
               </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="helpMenu">
           <Properties>
-            <Property name="text" type="java.lang.String" value="ПОМОЩ"/>
+            <Property name="text" type="java.lang.String" value="&#x41f;&#x41e;&#x41c;&#x41e;&#x429;"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="contentMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Съдържание"/>
+                <Property name="text" type="java.lang.String" value="&#x421;&#x44a;&#x434;&#x44a;&#x440;&#x436;&#x430;&#x43d;&#x438;&#x435;"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="aboutMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Автори"/>
+                <Property name="text" type="java.lang.String" value="&#x410;&#x432;&#x442;&#x43e;&#x440;&#x438;"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="aboutMenuItemActionPerformed"/>
@@ -424,10 +424,14 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="ИМАКАНТЕ Търговски модул"/>
+    <Property name="title" type="java.lang.String" value="&#x418;&#x41c;&#x410;&#x41a;&#x410;&#x41d;&#x422;&#x415; &#x422;&#x44a;&#x440;&#x433;&#x43e;&#x432;&#x441;&#x43a;&#x438; &#x43c;&#x43e;&#x434;&#x443;&#x43b;"/>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="99" green="99" red="99" type="rgb"/>
+    </Property>
     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
       <Font name="Tahoma" size="12" style="1"/>
     </Property>
+    <Property name="name" type="java.lang.String" value="frameSale"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="menuBar"/>

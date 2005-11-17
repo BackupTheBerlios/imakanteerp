@@ -4,8 +4,11 @@ package nom;
 import imakante.com.CustomTable;
 import imakante.com.CustomTableModel;
 import java.awt.event.KeyEvent;
+import java.awt.print.PrinterException;
 import java.sql.*;
 import imakante.com.vcomponents.*;
+import java.text.MessageFormat;
+import javax.swing.JTable;
 
 
 
@@ -41,6 +44,7 @@ public class FrmCountry extends iInternalFrame{
         jButtonNew = new javax.swing.JButton();
         jButtonEdit = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
@@ -48,10 +52,10 @@ public class FrmCountry extends iInternalFrame{
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
-        jScrollPane1.setBorder(new javax.swing.border.EtchedBorder());
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        jPanel4.setBorder(new javax.swing.border.EtchedBorder());
+        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel1.setText("\u041a\u043e\u0434");
         jPanel4.add(jLabel1);
 
@@ -95,10 +99,10 @@ public class FrmCountry extends iInternalFrame{
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        jPanel2.setBorder(new javax.swing.border.EtchedBorder());
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(jPanel2, java.awt.BorderLayout.NORTH);
 
-        jPanel3.setBorder(new javax.swing.border.EtchedBorder());
+        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButtonNew.setText("\u041d\u043e\u0432");
         jButtonNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,7 +127,16 @@ public class FrmCountry extends iInternalFrame{
         jPanel3.add(jButtonEdit);
 
         jButton7.setText("\u041f\u0435\u0447\u0430\u0442");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
         jPanel3.add(jButton7);
+
+        jButton1.setText("\u041f\u0435\u0447\u0430\u0442 \u0420\u0435\u043f\u043e\u0440\u0442");
+        jPanel3.add(jButton1);
 
         jButton2.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -179,8 +192,15 @@ public class FrmCountry extends iInternalFrame{
         getContentPane().add(jPanel3, java.awt.BorderLayout.SOUTH);
 
         pack();
-    }
-    // </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>//GEN-END:initComponents
+    
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        try {
+            printTable();
+        } catch (PrinterException ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
     
     private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
         editRecord();
@@ -395,6 +415,15 @@ public class FrmCountry extends iInternalFrame{
         this.conn = connection;
     }
     
+    private void printTable() throws PrinterException{
+        MessageFormat headerFormat = new MessageFormat("Спсък на Държавите");
+        MessageFormat footerFormat = new MessageFormat(" Стр. "+"- {0} -"+" отпечатано ПП 'ИМАКАНТЕ - ЛС' ");
+        table.print(JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
+        
+        
+    }
+    
+            
     private static java.sql.Connection conn;
     private static java.sql.ResultSet rs;
     private static  nom.countries countriesT;
@@ -406,6 +435,7 @@ public class FrmCountry extends iInternalFrame{
     private static boolean atBegining=false;
     private static boolean atEnd = false;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -515,8 +545,8 @@ public class FrmCountry extends iInternalFrame{
     
     
     public Connection getConn() {
-     
-       return conn;
+        
+        return conn;
     }
     
     public static void setCode(int aCode) {

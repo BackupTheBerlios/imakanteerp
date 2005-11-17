@@ -5,6 +5,7 @@ import java.beans.PropertyVetoException;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import nom.FrmKlienti;
 
 public class sales_main extends javax.swing.JFrame {
 
@@ -98,7 +99,9 @@ public class sales_main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415 \u0422\u044a\u0440\u0433\u043e\u0432\u0441\u043a\u0438 \u043c\u043e\u0434\u0443\u043b");
+        setBackground(new java.awt.Color(153, 153, 153));
         setFont(new java.awt.Font("Tahoma", 1, 12));
+        setName("frameSale");
         getContentPane().add(desktopPane, java.awt.BorderLayout.CENTER);
 
         jButton1.setIcon(new javax.swing.ImageIcon("C:\\REA\\src\\midass\\openfile.gif"));
@@ -365,8 +368,7 @@ public class sales_main extends javax.swing.JFrame {
         setJMenuBar(menuBar);
 
         pack();
-    }
-    // </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>//GEN-END:initComponents
 
     private void sluMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sluMenuActionPerformed
 // TODO add your handling code here:
@@ -521,7 +523,7 @@ public class sales_main extends javax.swing.JFrame {
     private java.awt.Color subForeColor = new java.awt.Color(0,0,0); // submenu foreground color
     
     //forms
-    imakante.sales.FrmKlienti FormKlienti;
+    nom.FrmKlienti FormKlienti;
     
      private void initColorHash(){
     
@@ -660,5 +662,9 @@ public class sales_main extends javax.swing.JFrame {
 
     public void setFirmName(String firmName) {
         this.firmName = firmName;
+    }
+
+    private void loadGrProduct() {
+        
     }
 }

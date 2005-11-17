@@ -14,4 +14,12 @@ public class iDialog extends javax.swing.JDialog implements java.io.Serializable
     private void setMyFrame(imakante.com.vcomponents.iInternalFrame myFrame) {
         this.myIFrame = myFrame;
     }
+
+    public iInternalFrame getMyIFrame() {
+        return myIFrame;
+    }
+
+    public void setMyIFrame(iInternalFrame val) {
+        this.myIFrame = val;
+    }
 }

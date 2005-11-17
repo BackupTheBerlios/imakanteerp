@@ -76,7 +76,6 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         jtfPhone = new javax.swing.JTextField();
         jtfMobile = new javax.swing.JTextField();
         jtfEmail = new javax.swing.JTextField();
-        jPanelBirthLoc = new javax.swing.JPanel();
         jpWorker = new javax.swing.JPanel();
         jlContractNum = new javax.swing.JLabel();
         jtfContractNum = new javax.swing.JTextField();
@@ -127,7 +126,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("\u0421\u043b\u0443\u0436\u0438\u0442\u0435\u043b");
         jtpDataInput.setBorder(new javax.swing.border.EmptyBorder(new java.awt.Insets(1, 1, 1, 1)));
-        jtpDataInput.setPreferredSize(new java.awt.Dimension(550, 450));
+        jtpDataInput.setPreferredSize(new java.awt.Dimension(600, 450));
         jpPerson.setLayout(new java.awt.GridBagLayout());
 
         jpPerson.setBorder(new javax.swing.border.EmptyBorder(new java.awt.Insets(1, 1, 1, 1)));
@@ -139,9 +138,8 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridheight = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 70;
-        gridBagConstraints.ipady = 120;
+        gridBagConstraints.ipadx = 120;
+        gridBagConstraints.ipady = 160;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 10);
         jpPerson.add(jpPicture, gridBagConstraints);
 
@@ -602,7 +600,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.ipadx = 120;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 20, 10);
         jPanelComm.add(jtfPhone, gridBagConstraints);
 
@@ -616,7 +614,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 100;
+        gridBagConstraints.ipadx = 120;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 20, 10);
         jPanelComm.add(jtfMobile, gridBagConstraints);
 
@@ -636,14 +634,9 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        jpWhereabouts.add(jPanelComm, gridBagConstraints);
-
-        jPanelBirthLoc.setBorder(new javax.swing.border.TitledBorder("\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e - \u0420\u0430\u0436\u0434\u0430\u043d\u0435"));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        jpWhereabouts.add(jPanelBirthLoc, gridBagConstraints);
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jpWhereabouts.add(jPanelComm, gridBagConstraints);
 
         jtpDataInput.addTab("\u041c\u0435\u0441\u0442\u043e\u0436\u0438\u0432\u0435\u0435\u043d\u0435 \u0438 \u041a\u043e\u043c\u0443\u043d\u0438\u043a\u0430\u0446\u0438\u044f", jpWhereabouts);
 
@@ -1427,7 +1420,6 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
     private javax.swing.JLabel jLabelCountryCurr;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanelBirthLoc;
     private javax.swing.JPanel jPanelComm;
     private javax.swing.JPanel jPanelCurrLoc;
     private javax.swing.JPanel jPanelINames;
