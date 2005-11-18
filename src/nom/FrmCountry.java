@@ -12,7 +12,7 @@ import javax.swing.JTable;
 
 
 
-public class FrmCountry extends iInternalFrame{
+public class FrmCountry extends iInternalFrame implements WindowListener{
     
     
     public FrmCountry(String title, imakante.com.vcomponents.iFrame frame) {

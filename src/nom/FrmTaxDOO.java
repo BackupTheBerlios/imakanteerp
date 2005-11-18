@@ -2,15 +2,22 @@
 
 package nom;
 
-public class FrmTaxDOO extends javax.swing.JInternalFrame {
+import imakante.com.vcomponents.iInternalFrame;
+import java.awt.event.WindowListener;
 
-    public FrmTaxDOO() {
+public class FrmTaxDOO extends iInternalFrame implements WindowListener {
+    
+    public FrmTaxDOO(String title, imakante.com.vcomponents.iFrame frame) {
+        super("");
+        myframe = frame;
+        
+        
         initComponents();
         this.setResizable(false);
         this.setClosable(true);
-       
+        
     }
-
+    
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
@@ -345,7 +352,60 @@ public class FrmTaxDOO extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
-
-
+    private static java.sql.Connection conn;
+    private static java.sql.ResultSet rs;
+    private static  nom.taxDOO taxObject;
+    private static imakante.com.CustomTableModel model;
+    private static imakante.com.CustomTable table;
+    private imakante.com.vcomponents.iFrame myframe;
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+       
+    protected void closeResource(){
+        
+        try{  rs.close();
+        }catch(java.sql.SQLException sqle){}
+        rs =null;
+    }
+    
+    
+    protected void UnloadWindow(){
+        closeResource();
+        this.dispose();
+        
+    }
+    
+    
+    
+    
+    public void windowOpened(java.awt.event.WindowEvent e){
+    }
+    public void windowClosing(java.awt.event.WindowEvent e){
+        UnloadWindow();
+    }
+    public void windowClosed(java.awt.event.WindowEvent e){
+    }
+    public void windowIconified(java.awt.event.WindowEvent e){
+    }
+    public void windowDeiconified(java.awt.event.WindowEvent e){
+    }
+    public void windowActivated(java.awt.event.WindowEvent e){
+    }
+    public void windowDeactivated(java.awt.event.WindowEvent e){
+    }
 }

@@ -27,7 +27,7 @@
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Период"/>
+                <TitledBorder title="&#x41f;&#x435;&#x440;&#x438;&#x43e;&#x434;"/>
               </Border>
             </Property>
           </Properties>
@@ -41,7 +41,7 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Година"/>
+                <Property name="text" type="java.lang.String" value="&#x413;&#x43e;&#x434;&#x438;&#x43d;&#x430;"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -58,7 +58,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Месец"/>
+                <Property name="text" type="java.lang.String" value="&#x41c;&#x435;&#x441;&#x435;&#x446;"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -75,7 +75,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButton1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Календар"/>
+                <Property name="text" type="java.lang.String" value="&#x41a;&#x430;&#x43b;&#x435;&#x43d;&#x434;&#x430;&#x440;"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -89,7 +89,7 @@
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Данъци"/>
+                <TitledBorder title="&#x414;&#x430;&#x43d;&#x44a;&#x446;&#x438;"/>
               </Border>
             </Property>
           </Properties>
@@ -106,7 +106,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="66" red="0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="За родени преди 1.01.1960"/>
+                <Property name="text" type="java.lang.String" value="&#x417;&#x430; &#x440;&#x43e;&#x434;&#x435;&#x43d;&#x438; &#x43f;&#x440;&#x435;&#x434;&#x438; 1.01.1960"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -119,7 +119,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="66" red="0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="За родени след 31.12.1959"/>
+                <Property name="text" type="java.lang.String" value="&#x417;&#x430; &#x440;&#x43e;&#x434;&#x435;&#x43d;&#x438; &#x441;&#x43b;&#x435;&#x434; 31.12.1959"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -129,7 +129,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Фонд &quot;Пенсии&quot; за сметка на осигурителя"/>
+                <Property name="text" type="java.lang.String" value="&#x424;&#x43e;&#x43d;&#x434; &quot;&#x41f;&#x435;&#x43d;&#x441;&#x438;&#x438;&quot; &#x437;&#x430; &#x441;&#x43c;&#x435;&#x442;&#x43a;&#x430; &#x43d;&#x430; &#x43e;&#x441;&#x438;&#x433;&#x443;&#x440;&#x438;&#x442;&#x435;&#x43b;&#x44f;"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -158,7 +158,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Фонд &quot;Пенсии&quot; за сметка на осигурения"/>
+                <Property name="text" type="java.lang.String" value="&#x424;&#x43e;&#x43d;&#x434; &quot;&#x41f;&#x435;&#x43d;&#x441;&#x438;&#x438;&quot; &#x437;&#x430; &#x441;&#x43c;&#x435;&#x442;&#x43a;&#x430; &#x43d;&#x430; &#x43e;&#x441;&#x438;&#x433;&#x443;&#x440;&#x435;&#x43d;&#x438;&#x44f;"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -168,7 +168,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel9">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Фонд &quot;ОЗМ&quot; за сметка на осигурителя"/>
+                <Property name="text" type="java.lang.String" value="&#x424;&#x43e;&#x43d;&#x434; &quot;&#x41e;&#x417;&#x41c;&quot; &#x437;&#x430; &#x441;&#x43c;&#x435;&#x442;&#x43a;&#x430; &#x43d;&#x430; &#x43e;&#x441;&#x438;&#x433;&#x443;&#x440;&#x438;&#x442;&#x435;&#x43b;&#x44f;"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -178,7 +178,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel10">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Фонд &quot;ОЗМ&quot; за сметка на осигурения"/>
+                <Property name="text" type="java.lang.String" value="&#x424;&#x43e;&#x43d;&#x434; &quot;&#x41e;&#x417;&#x41c;&quot; &#x437;&#x430; &#x441;&#x43c;&#x435;&#x442;&#x43a;&#x430; &#x43d;&#x430; &#x43e;&#x441;&#x438;&#x433;&#x443;&#x440;&#x435;&#x43d;&#x438;&#x44f;"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -188,7 +188,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel11">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Фонд &quot;Безработица&quot; за сметка на осигурителя"/>
+                <Property name="text" type="java.lang.String" value="&#x424;&#x43e;&#x43d;&#x434; &quot;&#x411;&#x435;&#x437;&#x440;&#x430;&#x431;&#x43e;&#x442;&#x438;&#x446;&#x430;&quot; &#x437;&#x430; &#x441;&#x43c;&#x435;&#x442;&#x43a;&#x430; &#x43d;&#x430; &#x43e;&#x441;&#x438;&#x433;&#x443;&#x440;&#x438;&#x442;&#x435;&#x43b;&#x44f;"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -198,7 +198,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel12">
               <Properties>
-                <Property name="text" type="java.lang.String" value="За &quot;УПФ&quot; за сметка на осигурителя"/>
+                <Property name="text" type="java.lang.String" value="&#x417;&#x430; &quot;&#x423;&#x41f;&#x424;&quot; &#x437;&#x430; &#x441;&#x43c;&#x435;&#x442;&#x43a;&#x430; &#x43d;&#x430; &#x43e;&#x441;&#x438;&#x433;&#x443;&#x440;&#x438;&#x442;&#x435;&#x43b;&#x44f;"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -208,7 +208,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel13">
               <Properties>
-                <Property name="text" type="java.lang.String" value="За &quot;УПФ&quot; за сметка на осигурения"/>
+                <Property name="text" type="java.lang.String" value="&#x417;&#x430; &quot;&#x423;&#x41f;&#x424;&quot; &#x437;&#x430; &#x441;&#x43c;&#x435;&#x442;&#x43a;&#x430; &#x43d;&#x430; &#x43e;&#x441;&#x438;&#x433;&#x443;&#x440;&#x435;&#x43d;&#x438;&#x44f;"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -218,7 +218,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel14">
               <Properties>
-                <Property name="text" type="java.lang.String" value="За фонд &quot;ГВРС&quot;"/>
+                <Property name="text" type="java.lang.String" value="&#x417;&#x430; &#x444;&#x43e;&#x43d;&#x434; &quot;&#x413;&#x412;&#x420;&#x421;&quot;"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -348,12 +348,12 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Съхрани"/>
+            <Property name="text" type="java.lang.String" value="&#x421;&#x44a;&#x445;&#x440;&#x430;&#x43d;&#x438;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Затвори"/>
+            <Property name="text" type="java.lang.String" value="&#x417;&#x430;&#x442;&#x432;&#x43e;&#x440;&#x438;"/>
           </Properties>
         </Component>
       </SubComponents>
