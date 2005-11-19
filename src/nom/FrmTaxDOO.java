@@ -12,8 +12,9 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
         this.period = period;
         this.pmonth = pmonth;
         this.pyear = pyear;
+        prepareConn();
         initComponents();
-        setLablePeriof();
+        setLablePeriod();
         this.setResizable(false);
         this.setClosable(true);
         
@@ -408,7 +409,7 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
     private static double zo_sl = 0;               // zdrawno osigurqwane ot slujitelq
     private static double zo_rb = 0;
     
-    private void setLablePeriof(){
+    private void setLablePeriod(){
     jLabelYear.setText(""+pyear);
     jLabelMonth.setText(""+pmonth);
     }
