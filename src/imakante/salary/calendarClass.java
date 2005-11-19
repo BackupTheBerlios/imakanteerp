@@ -33,7 +33,7 @@ public class calendarClass extends javax.swing.JDialog {
     public java.sql.ResultSet rs;
     public String strRes,strS;
     public boolean flag;
-    public calendarClass(javax.swing.JFrame parent, boolean modal,java.sql.Connection con, int pMonth, int pYear) {
+    public calendarClass(imakante.com.vcomponents.iFrame parent, boolean modal,java.sql.Connection con, int pMonth, int pYear) {
         super(parent, modal);
         dbInt = con;
         lMonth = pMonth;

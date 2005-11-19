@@ -19,23 +19,23 @@ public class taxDOO extends dbObject{
     private int comprator= 0;
     private int period = 0;
     
-    private double ktu = 0;
-    private double min_rab_zaplata = 0;
-    private double max_os_prag = 0;
-    private double pensii1_sl = 0;
-    private double pensii1_rb = 0;
-    private double pensii2_sl = 0;
-    private double pensii2_rb = 0;
-    private double fozm_sl = 0;
-    private double fozm_rb = 0;
-    private double fbzr_sl = 0;
-    private double fbzr_rb = 0;
-    private double ppf = 0;
-    private double upf_sl = 0;
-    private double upf_rb = 0;
-    private double fgvrs = 0;
-    private double zo_sl = 0;
-    private double zo_rb = 0;
+    private double ktu = 0;                 // koeficient na trudowo u4astie
+    private double min_rab_zaplata = 0;     // minimalna rabotna zaplata
+    private double max_os_prag = 0;         // maksimalen osiguritelen prag
+    private double pensii1_sl = 0;          // fond Pensionen ot slujitelq za rodenite predi 1960 g
+    private double pensii1_rb = 0;          // fond Pensionen ot rabotodatelq za rodenite predi 1960 g
+    private double pensii2_sl = 0;          // fond Pensionen ot slujitelq za rodenite sled 1960 g
+    private double pensii2_rb = 0;          // fond Pensionen ot slujitelq za rodenite sled 1960 g
+    private double fozm_sl = 0;             // fond ob6to zabolqwane i mai4instwo ot slujitelq
+    private double fozm_rb = 0;             // fond ob6to zabolqwane i mai4instwo ot rabotodatelq
+    private double fbzr_sl = 0;             // fond Bezrabotica ot slujitelq
+    private double fbzr_rb = 0;             // fond Bezrabotica ot rabotodatelq
+    private double ppf = 0;                 // profesionalen pensionen fond
+    private double upf_sl = 0;              // uniwersalen pensionen fond ot slujitelq
+    private double upf_rb = 0;              // uniwersalen pensionen fond ot rabotodatelq
+    private double fgvrs = 0;               // fond GVRS
+    private double zo_sl = 0;               // zdrawno osigurqwane ot slujitelq
+    private double zo_rb = 0;               // zdrawno osigurqwane ot rabotodatelq
     
     public java.sql.ResultSet getTable(){
         

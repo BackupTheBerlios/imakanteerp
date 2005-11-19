@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.print.PrinterException;
 import java.sql.*;
 import imakante.com.vcomponents.*;
+import java.awt.event.WindowListener;
 import java.text.MessageFormat;
 import javax.swing.JTable;
 
@@ -413,8 +414,7 @@ public class FrmCountry extends iInternalFrame implements WindowListener{
         countriesT.insertRow(getCode(), name);
         setId(countriesT.getMaxId());
         setRow(getMaxRow() + 1);
-        System.out.println("id "+ getId());
-        System.out.println("row "+ getRow());
+        refreshTable();
         setAtEnd(true);
         setAtBegining(false);
         nom.aeCountry dialog = new nom.aeCountry(this, true, getRow(), getId(), getCode(), name);

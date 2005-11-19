@@ -17,6 +17,16 @@ public class pubMethods {
         
         return i;
     }
+    public static double makeDouble(String str){
+       double i = 0;
+        try{
+             i = Double.parseDouble(str);
+        }catch(NumberFormatException nfe){return i;}
+        
+        return i;
+    
+    
+    }
     public static boolean isInteger(String str){
         
         try{

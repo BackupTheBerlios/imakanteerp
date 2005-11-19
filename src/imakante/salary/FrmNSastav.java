@@ -1,8 +1,9 @@
 
 package imakante.salary;
 import java.awt.event.KeyEvent;
-import java.io.FileInputStream;
-import java.util.HashMap;
+import java.awt.print.PrinterException;
+import java.text.MessageFormat;
+import javax.swing.JTable;
 
 public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.event.WindowListener{
     
@@ -43,13 +44,14 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
-        jPanel1.setBorder(new javax.swing.border.EtchedBorder());
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel3.setLayout(new java.awt.BorderLayout());
 
         jPanel3.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -58,7 +60,7 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
 
         jPanel4.setLayout(new java.awt.GridBagLayout());
 
-        jPanel4.setBorder(new javax.swing.border.EtchedBorder());
+        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel1.setText("\u041d\u043e\u043c\u0435\u0440");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
@@ -186,7 +188,7 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
 
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        jPanel2.setBorder(new javax.swing.border.EtchedBorder());
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButton1.setText("\u041d\u043e\u0432 \u0441\u043b\u0443\u0436\u0438\u0442\u0435\u043b");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -251,6 +253,20 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 10, 5);
         jPanel2.add(jButton4, gridBagConstraints);
 
+        jButton10.setText("\u041f\u0435\u0447\u0430\u0442");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+        jButton10.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton10KeyPressed(evt);
+            }
+        });
+
+        jPanel2.add(jButton10, new java.awt.GridBagConstraints());
+
         jButton5.setText("\u041f\u0435\u0447\u0430\u0442 \u0441\u043f\u0438\u0441\u044a\u043a");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -292,8 +308,15 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
         getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
 
         pack();
-    }
-    // </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton10KeyPressed
+  if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButton10.doClick();}
+    }//GEN-LAST:event_jButton10KeyPressed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+      try{printTable();}catch(PrinterException pe){}
+    }//GEN-LAST:event_jButton10ActionPerformed
     
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
 
@@ -382,6 +405,7 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -622,6 +646,13 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
       
     }
     
+     private void printTable() throws PrinterException{
+        MessageFormat headerFormat = new MessageFormat("Спсък на Служителите");
+        MessageFormat footerFormat = new MessageFormat(" Стр. "+"- {0} -"+" отпечатано ПП 'ИМАКАНТЕ - ЛС' ");
+        jTable.print(JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
+        
+        
+    }
     
     public void windowOpened(java.awt.event.WindowEvent e){
     }

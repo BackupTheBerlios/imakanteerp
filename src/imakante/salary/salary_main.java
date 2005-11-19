@@ -1239,7 +1239,7 @@ public class salary_main extends imakante.com.vcomponents.iFrame implements java
         
     }
     protected void loadDOO() {
-        nom.FrmTaxDOO Formdoo = new nom.FrmTaxDOO();
+        nom.FrmTaxDOO Formdoo = new nom.FrmTaxDOO("",this,id_period, pMonth, pYear);
         Desk1.add(Formdoo);
         
         Formdoo.setVisible(true);
