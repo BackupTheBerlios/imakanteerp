@@ -505,10 +505,10 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
         ktu = imakante.com.pubMethods.makeDouble(jtfKTU.getText());
         min_rab_zaplata = 0;
         max_os_prag = 0;
-        pensii1_sl = imakante.com.pubMethods.makeDouble(jtfPens1RabBefore.getText());
-        pensii1_rb = imakante.com.pubMethods.makeDouble(jtfPens1SlBefore.getText());
-        pensii2_sl = 0;
-        pensii2_rb = 0;
+        pensii1_sl = imakante.com.pubMethods.makeDouble(jtfPens1SlBefore.getText());
+        pensii1_rb = imakante.com.pubMethods.makeDouble(jtfPens1RabBefore.getText());
+        pensii2_sl = imakante.com.pubMethods.makeDouble(jtfPens2SlAfter.getText());
+        pensii2_rb = imakante.com.pubMethods.makeDouble(jtfPens2RabAfter.getText());
         fozm_sl = 0;
         fozm_rb = 0;
         fbzr_sl = 0;
