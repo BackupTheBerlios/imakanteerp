@@ -18,7 +18,7 @@ public class taxDOO extends dbObject{
     private java.sql.ResultSet rs;
     private int comprator= 0;
     private int period = 0;
-    
+    private int dni5 = 22; // broi rabotni dni pri 5 dnevna rabotna sedmitsa
     private double ktu = 0;                 // koeficient na trudowo u4astie
     private double min_rab_zaplata = 0;     // minimalna rabotna zaplata
     private double max_os_prag = 0;         // maksimalen osiguritelen prag
@@ -46,7 +46,7 @@ public class taxDOO extends dbObject{
         return rs;
     }
     public void updateRow( int in_period,
-            
+            int in_dni5,
             double in_ktu,
             double in_min_rab_zaplata,
             double in_max_os_prag,
@@ -67,6 +67,7 @@ public class taxDOO extends dbObject{
         
         comprator = 2;
         this.period =  in_period;
+        this.dni5 = in_dni5;
         this.ktu = in_ktu;
         this.min_rab_zaplata = in_min_rab_zaplata;
         this.max_os_prag = in_max_os_prag;
