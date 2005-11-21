@@ -54,18 +54,20 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
         jtfGVRSBefore = new javax.swing.JTextField();
         jtfPens2RabAfter = new javax.swing.JTextField();
         jtfPens2SlAfter = new javax.swing.JTextField();
-        jtfOZMRabAfter = new javax.swing.JTextField();
-        jtfOZMSlAfter = new javax.swing.JTextField();
-        jtfBezrabRabAfter = new javax.swing.JTextField();
-        jtfUPFRabAfter = new javax.swing.JTextField();
-        jtfUPFSlAfter = new javax.swing.JTextField();
-        jtfGVRSAfter = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jtfKTU = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jtfMinZapl = new javax.swing.JTextField();
         jtfMaxOsP = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jtfBezrsl = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
@@ -73,6 +75,7 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel4.setLayout(new java.awt.GridBagLayout());
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("\u041f\u0435\u0440\u0438\u043e\u0434"));
@@ -129,7 +132,7 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
         jLabel4.setText("\u0417\u0430 \u0440\u043e\u0434\u0435\u043d\u0438 \u043f\u0440\u0435\u0434\u0438 1.01.1960");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 12;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(15, 5, 5, 10);
         jPanel5.add(jLabel4, gridBagConstraints);
@@ -138,7 +141,7 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
         jLabel5.setText("\u0417\u0430 \u0440\u043e\u0434\u0435\u043d\u0438 \u0441\u043b\u0435\u0434 31.12.1959");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 12;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(15, 5, 5, 5);
         jPanel5.add(jLabel5, gridBagConstraints);
@@ -146,7 +149,7 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
         jLabel3.setText("\u0424\u043e\u043d\u0434 \"\u041f\u0435\u043d\u0441\u0438\u0438\" \u0437\u0430 \u0441\u043c\u0435\u0442\u043a\u0430 \u043d\u0430 \u043e\u0441\u0438\u0433\u0443\u0440\u0438\u0442\u0435\u043b\u044f");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 13;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel5.add(jLabel3, gridBagConstraints);
@@ -154,14 +157,14 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
         jtfPens1RabBefore.setMaximumSize(new java.awt.Dimension(50, 50));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 13;
         gridBagConstraints.ipadx = 50;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
         jPanel5.add(jtfPens1RabBefore, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 14;
         gridBagConstraints.ipadx = 50;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
         jPanel5.add(jtfPens1SlBefore, gridBagConstraints);
@@ -169,7 +172,7 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
         jLabel6.setText("\u0424\u043e\u043d\u0434 \"\u041f\u0435\u043d\u0441\u0438\u0438\" \u0437\u0430 \u0441\u043c\u0435\u0442\u043a\u0430 \u043d\u0430 \u043e\u0441\u0438\u0433\u0443\u0440\u0435\u043d\u0438\u044f");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 14;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel5.add(jLabel6, gridBagConstraints);
@@ -177,7 +180,7 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
         jLabel9.setText("\u0424\u043e\u043d\u0434 \"\u041e\u0417\u041c\" \u0437\u0430 \u0441\u043c\u0435\u0442\u043a\u0430 \u043d\u0430 \u043e\u0441\u0438\u0433\u0443\u0440\u0438\u0442\u0435\u043b\u044f");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel5.add(jLabel9, gridBagConstraints);
@@ -185,7 +188,7 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
         jLabel10.setText("\u0424\u043e\u043d\u0434 \"\u041e\u0417\u041c\" \u0437\u0430 \u0441\u043c\u0435\u0442\u043a\u0430 \u043d\u0430 \u043e\u0441\u0438\u0433\u0443\u0440\u0435\u043d\u0438\u044f");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel5.add(jLabel10, gridBagConstraints);
@@ -193,7 +196,7 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
         jLabel11.setText("\u0424\u043e\u043d\u0434 \"\u0411\u0435\u0437\u0440\u0430\u0431\u043e\u0442\u0438\u0446\u0430\" \u0437\u0430 \u0441\u043c\u0435\u0442\u043a\u0430 \u043d\u0430 \u043e\u0441\u0438\u0433\u0443\u0440\u0438\u0442\u0435\u043b\u044f");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel5.add(jLabel11, gridBagConstraints);
@@ -201,7 +204,7 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
         jLabel12.setText("\u0417\u0430 \"\u0423\u041f\u0424\" \u0437\u0430 \u0441\u043c\u0435\u0442\u043a\u0430 \u043d\u0430 \u043e\u0441\u0438\u0433\u0443\u0440\u0438\u0442\u0435\u043b\u044f");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridy = 15;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel5.add(jLabel12, gridBagConstraints);
@@ -209,7 +212,7 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
         jLabel13.setText("\u0417\u0430 \"\u0423\u041f\u0424\" \u0437\u0430 \u0441\u043c\u0435\u0442\u043a\u0430 \u043d\u0430 \u043e\u0441\u0438\u0433\u0443\u0440\u0435\u043d\u0438\u044f");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridy = 16;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel5.add(jLabel13, gridBagConstraints);
@@ -217,42 +220,42 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
         jLabel14.setText("\u0417\u0430 \u0444\u043e\u043d\u0434 \"\u0413\u0412\u0420\u0421\"");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel5.add(jLabel14, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.ipadx = 50;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
         jPanel5.add(jtfOZMRabBefore, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.ipadx = 50;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
         jPanel5.add(jtfOZMSlBefore, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.ipadx = 50;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
         jPanel5.add(jtfBezrabRabBefore, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridy = 15;
         gridBagConstraints.ipadx = 50;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
         jPanel5.add(jtfUPFRabBefore, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridy = 16;
         gridBagConstraints.ipadx = 50;
         gridBagConstraints.weightx = 50.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
@@ -260,7 +263,7 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.ipadx = 50;
         gridBagConstraints.weightx = 50.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
@@ -268,52 +271,17 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 13;
         gridBagConstraints.ipadx = 50;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel5.add(jtfPens2RabAfter, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 14;
         gridBagConstraints.ipadx = 50;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel5.add(jtfPens2SlAfter, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.ipadx = 50;
-        jPanel5.add(jtfOZMRabAfter, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.ipadx = 50;
-        jPanel5.add(jtfOZMSlAfter, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.ipadx = 50;
-        jPanel5.add(jtfBezrabRabAfter, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 9;
-        gridBagConstraints.ipadx = 50;
-        jPanel5.add(jtfUPFRabAfter, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 10;
-        gridBagConstraints.ipadx = 50;
-        jPanel5.add(jtfUPFSlAfter, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 11;
-        gridBagConstraints.ipadx = 50;
-        jPanel5.add(jtfGVRSAfter, gridBagConstraints);
 
         jLabel7.setText("\u041a\u043e\u0435\u0444\u0438\u0446\u0438\u0435\u043d\u0442 \u043d\u0430 \u0422\u0440\u0443\u0434\u043e\u0432\u043e \u0423\u0447\u0430\u0441\u0442\u0438\u0435");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -360,8 +328,68 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 50;
-        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel5.add(jtfMaxOsP, gridBagConstraints);
+
+        jLabel16.setText("\u0424\u043e\u043d\u0434 \"\u0411\u0435\u0437\u0440\u0430\u0431\u043e\u0442\u0438\u0446\u0430\" \u0437\u0430 \u0441\u043c\u0435\u0442\u0433\u0430 \u043d\u0430 \u043e\u0441\u0438\u0433\u0443\u0440\u0435\u043d\u0438\u044f");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jPanel5.add(jLabel16, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.ipadx = 50;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 11);
+        jPanel5.add(jtfBezrsl, gridBagConstraints);
+
+        jLabel17.setText("\u0424\u043e\u043d\u0434 \"\u0422\u0417\u041f\u0411\"");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jPanel5.add(jLabel17, gridBagConstraints);
+
+        jLabel18.setText("\u0417\u0434\u0440\u0430\u0432\u043d\u0438 \u043e\u0441\u0433\u0443\u0440\u043e\u0432\u043a\u0438 \u0437\u0430 \u0441\u043c\u0435\u0442\u043a\u0430 \u043d\u0430 \u043e\u0441\u0438\u0433\u0443\u0440\u0438\u0442\u0435\u043b\u044f");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jPanel5.add(jLabel18, gridBagConstraints);
+
+        jLabel19.setText("\u0417\u0434\u0440\u0430\u0432\u043d\u0438 \u043e\u0441\u0438\u0433\u0443\u0440\u043e\u0432\u043a\u0438 \u0437\u0430 \u0441\u043c\u0435\u0442\u043a\u0430 \u043d\u0430 \u043e\u0441\u0438\u0433\u0443\u0440\u0435\u043d\u0438\u044f");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jPanel5.add(jLabel19, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.ipadx = 50;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jPanel5.add(jTextField1, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.ipadx = 50;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jPanel5.add(jTextField2, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.ipadx = 50;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jPanel5.add(jTextField3, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -399,6 +427,10 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -416,25 +448,23 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JButton jbCalendar;
-    private javax.swing.JTextField jtfBezrabRabAfter;
     private javax.swing.JTextField jtfBezrabRabBefore;
-    private javax.swing.JTextField jtfGVRSAfter;
+    private javax.swing.JTextField jtfBezrsl;
     private javax.swing.JTextField jtfGVRSBefore;
     private static javax.swing.JTextField jtfKTU;
     private javax.swing.JTextField jtfMaxOsP;
     private javax.swing.JTextField jtfMinZapl;
-    private javax.swing.JTextField jtfOZMRabAfter;
     private javax.swing.JTextField jtfOZMRabBefore;
-    private javax.swing.JTextField jtfOZMSlAfter;
     private javax.swing.JTextField jtfOZMSlBefore;
     private static javax.swing.JTextField jtfPens1RabBefore;
     private javax.swing.JTextField jtfPens1SlBefore;
     private javax.swing.JTextField jtfPens2RabAfter;
     private javax.swing.JTextField jtfPens2SlAfter;
-    private javax.swing.JTextField jtfUPFRabAfter;
     private javax.swing.JTextField jtfUPFRabBefore;
-    private javax.swing.JTextField jtfUPFSlAfter;
     private javax.swing.JTextField jtfUPFSlBefore;
     // End of variables declaration//GEN-END:variables
     private static java.sql.Connection conn;
@@ -509,14 +539,14 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
         pensii1_rb = imakante.com.pubMethods.makeDouble(jtfPens1RabBefore.getText());
         pensii2_sl = imakante.com.pubMethods.makeDouble(jtfPens2SlAfter.getText());
         pensii2_rb = imakante.com.pubMethods.makeDouble(jtfPens2RabAfter.getText());
-        fozm_sl = 0;
-        fozm_rb = 0;
-        fbzr_sl = 0;
-        fbzr_rb = 0;
+        fozm_sl = imakante.com.pubMethods.makeDouble(jtfOZMRabBefore.getText());
+        fozm_rb = imakante.com.pubMethods.makeDouble(jtfOZMSlBefore.getText());
+        fbzr_sl = imakante.com.pubMethods.makeDouble(jtfBezrabRabBefore.getText());
+        fbzr_rb = imakante.com.pubMethods.makeDouble(jtfBezrsl.getText());
         ppf = 0;
-        upf_sl = 0;
-        upf_rb = 0;
-        fgvrs = 0;
+        upf_sl = imakante.com.pubMethods.makeDouble(jtfUPFRabBefore.getText());
+        upf_rb = imakante.com.pubMethods.makeDouble(jtfUPFSlBefore.getText());
+        fgvrs = imakante.com.pubMethods.makeDouble(jtfGVRSBefore.getText());
         zo_sl = 0;
         zo_rb = 0;
         
