@@ -460,6 +460,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x421;&#x44a;&#x445;&#x440;&#x430;&#x43d;&#x438;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton3">
           <Properties>

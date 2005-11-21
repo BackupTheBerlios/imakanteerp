@@ -54,6 +54,19 @@ public class iInternalFrame extends javax.swing.JInternalFrame implements java.i
     public void setMyFrame(imakante.com.vcomponents.iFrame myFrame) {
         this.myFrame = myFrame;
     }
+
+    private int calendar_wdays = 0;
+
+    public int getCalendar_wdays() {
+
+        return this.calendar_wdays;
+    }
+
+    public void setCalendar_wdays(int calendar_wdays) {
+
+        this.calendar_wdays = calendar_wdays;
+    }
+
     
     
 }

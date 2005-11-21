@@ -377,4 +377,5 @@ public class taxDOO extends dbObject{
     public void setZo_rb(double zo_rb) {
         this.zo_rb = zo_rb;
     }
+
 }

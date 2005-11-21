@@ -42,10 +42,7 @@ public class calendarClass extends javax.swing.JDialog {
         gap=0;
         m=1;
         strRes="";
-        
         getDays();
-        
-        
         initM();
        //  getDays();
         initComponents();
@@ -55,6 +52,29 @@ public class calendarClass extends javax.swing.JDialog {
         int y_height = (((dim.height)-(this.getSize().height))/2);
         this.setLocation(x_width,y_height);
     }
+    
+    
+    public calendarClass(imakante.com.vcomponents.iFrame parent, imakante.com.vcomponents.iInternalFrame myparent, boolean modal,java.sql.Connection con, int pMonth, int pYear) {
+     super(parent, modal);
+        dbInt = con;
+        lMonth = pMonth;
+        lYear = pYear;
+        gap=0;
+        m=1;
+        strRes="";
+        getDays();
+        initM();
+        initComponents();
+        initRazp();
+        java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        int x_width = (((dim.width)-(this.getSize().width))/2);
+        int y_height = (((dim.height)-(this.getSize().height))/2);
+        this.setLocation(x_width,y_height);
+    }
+    
+    
+    
+    
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
         
@@ -295,5 +315,5 @@ public class calendarClass extends javax.swing.JDialog {
     }
     
     }
-    
+
 }

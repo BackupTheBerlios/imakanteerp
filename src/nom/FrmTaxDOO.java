@@ -402,6 +402,12 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
         getContentPane().add(jPanel2, java.awt.BorderLayout.NORTH);
 
         jButton2.setText("\u0421\u044a\u0445\u0440\u0430\u043d\u0438");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         jPanel3.add(jButton2);
 
         jButton3.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
@@ -411,6 +417,10 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+    }//GEN-LAST:event_jButton2ActionPerformed
     
     private void jbCalendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCalendarActionPerformed
         showCalendar();
@@ -561,6 +571,8 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
                 zo_sl, zo_rb);
     
     }
+    
+    
     protected void closeResource(){
         
         try{  rs.close();
@@ -583,14 +595,21 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
     public void windowClosing(java.awt.event.WindowEvent e){
         UnloadWindow();
     }
+    
     public void windowClosed(java.awt.event.WindowEvent e){
     }
+    
     public void windowIconified(java.awt.event.WindowEvent e){
     }
+    
     public void windowDeiconified(java.awt.event.WindowEvent e){
     }
+    
     public void windowActivated(java.awt.event.WindowEvent e){
     }
+    
     public void windowDeactivated(java.awt.event.WindowEvent e){
     }
+    
+    
 }
