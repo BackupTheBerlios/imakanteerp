@@ -65,9 +65,9 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jtfTZPB = new javax.swing.JTextField();
+        jtfZOrb = new javax.swing.JTextField();
+        jtfZOsl = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
@@ -296,7 +296,7 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 50;
-        gridBagConstraints.insets = new java.awt.Insets(10, 5, 5, 5);
+        gridBagConstraints.insets = new java.awt.Insets(10, 5, 5, 10);
         jPanel5.add(jtfKTU, gridBagConstraints);
 
         jLabel8.setText("\u041c\u0438\u043d\u0438\u043c\u0430\u043b\u043d\u0430 \u0440\u0430\u0431\u043e\u0442\u043d\u0430 \u0437\u0430\u043f\u043b\u0430\u0442\u0430");
@@ -321,14 +321,14 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.ipadx = 50;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
         jPanel5.add(jtfMinZapl, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 50;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
         jPanel5.add(jtfMaxOsP, gridBagConstraints);
 
         jLabel16.setText("\u0424\u043e\u043d\u0434 \"\u0411\u0435\u0437\u0440\u0430\u0431\u043e\u0442\u0438\u0446\u0430\" \u0437\u0430 \u0441\u043c\u0435\u0442\u0433\u0430 \u043d\u0430 \u043e\u0441\u0438\u0433\u0443\u0440\u0435\u043d\u0438\u044f");
@@ -375,21 +375,21 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
         gridBagConstraints.gridy = 8;
         gridBagConstraints.ipadx = 50;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel5.add(jTextField1, gridBagConstraints);
+        jPanel5.add(jtfTZPB, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 9;
         gridBagConstraints.ipadx = 50;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel5.add(jTextField2, gridBagConstraints);
+        jPanel5.add(jtfZOrb, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 10;
         gridBagConstraints.ipadx = 50;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel5.add(jTextField3, gridBagConstraints);
+        jPanel5.add(jtfZOsl, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -448,9 +448,6 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JButton jbCalendar;
     private javax.swing.JTextField jtfBezrabRabBefore;
     private javax.swing.JTextField jtfBezrsl;
@@ -464,8 +461,11 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
     private javax.swing.JTextField jtfPens1SlBefore;
     private javax.swing.JTextField jtfPens2RabAfter;
     private javax.swing.JTextField jtfPens2SlAfter;
+    private javax.swing.JTextField jtfTZPB;
     private javax.swing.JTextField jtfUPFRabBefore;
     private javax.swing.JTextField jtfUPFSlBefore;
+    private javax.swing.JTextField jtfZOrb;
+    private javax.swing.JTextField jtfZOsl;
     // End of variables declaration//GEN-END:variables
     private static java.sql.Connection conn;
     private static java.sql.ResultSet rs;
@@ -487,7 +487,7 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
     private static double fozm_rb = 0;             // fond ob6to zabolqwane i mai4instwo ot rabotodatelq
     private static double fbzr_sl = 0;             // fond Bezrabotica ot slujitelq
     private static double fbzr_rb = 0;             // fond Bezrabotica ot rabotodatelq
-    private static double ppf = 0;                 // profesionalen pensionen fond
+    private static double tzpb = 0;                 // profesionalen pensionen fond
     private static double upf_sl = 0;              // uniwersalen pensionen fond ot slujitelq
     private static double upf_rb = 0;              // uniwersalen pensionen fond ot rabotodatelq
     private static double fgvrs = 0;               // fond GVRS
@@ -530,11 +530,12 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
       
     }
     
-    public void updateRow() {
+    public void getValues() throws NumberFormatException {
+        
         dni5 = imakante.com.pubMethods.makeInt(jLabelBrRDNI.getText());
         ktu = imakante.com.pubMethods.makeDouble(jtfKTU.getText());
-        min_rab_zaplata = 0;
-        max_os_prag = 0;
+        min_rab_zaplata = imakante.com.pubMethods.makeDouble(jtfMinZapl.getText());
+        max_os_prag = imakante.com.pubMethods.makeDouble(jtfMaxOsP.getText());
         pensii1_sl = imakante.com.pubMethods.makeDouble(jtfPens1SlBefore.getText());
         pensii1_rb = imakante.com.pubMethods.makeDouble(jtfPens1RabBefore.getText());
         pensii2_sl = imakante.com.pubMethods.makeDouble(jtfPens2SlAfter.getText());
@@ -543,21 +544,23 @@ public class FrmTaxDOO extends iInternalFrame implements WindowListener {
         fozm_rb = imakante.com.pubMethods.makeDouble(jtfOZMSlBefore.getText());
         fbzr_sl = imakante.com.pubMethods.makeDouble(jtfBezrabRabBefore.getText());
         fbzr_rb = imakante.com.pubMethods.makeDouble(jtfBezrsl.getText());
-        ppf = 0;
+        tzpb = imakante.com.pubMethods.makeDouble(jtfTZPB.getText());;
         upf_sl = imakante.com.pubMethods.makeDouble(jtfUPFRabBefore.getText());
         upf_rb = imakante.com.pubMethods.makeDouble(jtfUPFSlBefore.getText());
         fgvrs = imakante.com.pubMethods.makeDouble(jtfGVRSBefore.getText());
-        zo_sl = 0;
-        zo_rb = 0;
-        
-        taxObject.updateRow(period,dni5, ktu, min_rab_zaplata, max_os_prag,
-                pensii1_sl, pensii1_rb, pensii2_sl, pensii2_rb, fozm_sl,
-                fozm_rb, fbzr_sl, fbzr_rb, ppf, upf_sl,upf_rb, fgvrs,
-                zo_sl, zo_rb);
+        zo_sl = imakante.com.pubMethods.makeDouble(jtfZOrb.getText());
+        zo_rb = imakante.com.pubMethods.makeDouble(jtfZOsl.getText());
+          
         
     }
     
+    private void updateRecords(){
+     taxObject.updateRow(period,dni5, ktu, min_rab_zaplata, max_os_prag,
+                pensii1_sl, pensii1_rb, pensii2_sl, pensii2_rb, fozm_sl,
+                fozm_rb, fbzr_sl, fbzr_rb,tzpb, upf_sl,upf_rb, fgvrs,
+                zo_sl, zo_rb);
     
+    }
     protected void closeResource(){
         
         try{  rs.close();

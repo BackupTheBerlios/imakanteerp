@@ -30,7 +30,7 @@ public class taxDOO extends dbObject{
     private double fozm_rb = 0;             // fond ob6to zabolqwane i mai4instwo ot rabotodatelq
     private double fbzr_sl = 0;             // fond Bezrabotica ot slujitelq
     private double fbzr_rb = 0;             // fond Bezrabotica ot rabotodatelq
-    private double ppf = 0;                 // profesionalen pensionen fond
+    private double tzpb = 0;                 // profesionalen pensionen fond
     private double upf_sl = 0;              // uniwersalen pensionen fond ot slujitelq
     private double upf_rb = 0;              // uniwersalen pensionen fond ot rabotodatelq
     private double fgvrs = 0;               // fond GVRS
@@ -58,7 +58,7 @@ public class taxDOO extends dbObject{
             double in_fozm_rb,
             double in_fbzr_sl,
             double in_fbzr_rb,
-            double in_ppf,
+            double in_tzpb,
             double in_upf_sl,
             double in_upf_rb,
             double in_fgvrs,
@@ -79,7 +79,7 @@ public class taxDOO extends dbObject{
         this.fozm_rb = in_fozm_rb;
         this.fbzr_sl =  in_fbzr_sl;
         this.fbzr_rb =  in_fbzr_rb;
-        this.fbzr_rb =  in_ppf;
+        this.tzpb =  in_tzpb;
         this.upf_sl =  in_upf_sl;
         this.upf_rb =  in_upf_rb;
         this.fgvrs = in_fgvrs;
@@ -129,6 +129,7 @@ public class taxDOO extends dbObject{
                 this.fgvrs = rs.getDouble("fgvrs");
                 this.zo_sl = rs.getDouble("zo_sl");
                 this.zo_rb = rs.getDouble("zo_rb");
+                this.tzpb = rs.getDouble("tzpb");
             }
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         
@@ -168,7 +169,7 @@ public class taxDOO extends dbObject{
             cstm.setDouble("in_fozm_rb", getFozm_rb());
             cstm.setDouble("in_fbzr_sl", getFbzr_sl());
             cstm.setDouble("in_fbzr_rb", getFbzr_rb());
-            cstm.setDouble("in_ppf", getPpf());
+            cstm.setDouble("in_tzpb", tzpb);
             cstm.setDouble("in_upf_sl", getUpf_sl());
             cstm.setDouble("in_upf_rb", getUpf_rb());
             cstm.setDouble("in_fgvrs", getFgvrs());
@@ -192,7 +193,7 @@ public class taxDOO extends dbObject{
                 setFozm_rb(getRs().getDouble("fozm_rb"));
                 setFbzr_sl(getRs().getDouble("fbzr_s1"));
                 setFbzr_rb(getRs().getDouble("fbzr_rb"));
-                setPpf(getRs().getDouble("ppf"));
+                tzpb = (getRs().getDouble("tzpb"));
                 setUpf_sl(getRs().getDouble("upf_sl"));
                 setUpf_rb(getRs().getDouble("upf_rb"));
                 setFgvrs(getRs().getDouble("fgvrs"));
@@ -335,14 +336,7 @@ public class taxDOO extends dbObject{
     public void setFbzr_rb(double fbzr_rb) {
         this.fbzr_rb = fbzr_rb;
     }
-    
-    public double getPpf() {
-        return ppf;
-    }
-    
-    public void setPpf(double ppf) {
-        this.ppf = ppf;
-    }
+ 
     
     public double getUpf_sl() {
         return upf_sl;

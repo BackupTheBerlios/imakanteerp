@@ -26,7 +26,8 @@ public class calendarClass extends javax.swing.JDialog {
     public java.awt.Color blackC = new java.awt.Color(0,0,0);
     public java.awt.Color redC = new java.awt.Color(255,0,0);
     public javax.swing.JLabel  jCalendarLabel[];
-    public int lMonth, lYear;
+    private int lMonth, lYear;
+    private int rabdays = 0;
     public org.joda.time.DateTime calendarG;
     public java.sql.Connection dbInt;
     public java.sql.Statement stm;
@@ -267,6 +268,7 @@ public class calendarClass extends javax.swing.JDialog {
         }
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        claculateWorkDays();
         if (flag==true){
             try{
                 stm = dbInt.createStatement();
@@ -275,7 +277,7 @@ public class calendarClass extends javax.swing.JDialog {
         }else{try{
             
             stm = dbInt.createStatement();
-            stm.executeUpdate("UPDATE ls_monthpar SET seq = '" + strRes + "' WHERE pmonth = " + lMonth + " AND pyear = " + lYear );
+            stm.executeUpdate("UPDATE ls_monthpar SET seq = '" + strRes + "', dni5 = '" + rabdays +"' WHERE pmonth = " + lMonth + " AND pyear = " + lYear );
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();};
         }
         try{
@@ -285,4 +287,13 @@ public class calendarClass extends javax.swing.JDialog {
         
         this.dispose();
     }
+    
+    private void claculateWorkDays(){
+    for(int i = 0; i < strRes.length(); i++){
+    int mop = Integer.parseInt((String.valueOf(strRes.charAt(i))));
+    rabdays=rabdays + mop;
+    }
+    
+    }
+    
 }
