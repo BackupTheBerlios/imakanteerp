@@ -6,6 +6,9 @@ import imakante.com.CustomTableModel;
 import java.awt.event.KeyEvent;
 import java.sql.*;
 import imakante.com.vcomponents.*;
+import java.awt.print.PrinterException;
+import java.text.MessageFormat;
+import javax.swing.JTable;
 
 
 
@@ -245,12 +248,12 @@ public class newFrmBranch extends iInternalFrame{
     private void constructObject(){
         try{
             
-            countriesT = new nom.countries(conn);}catch(Exception e){e.printStackTrace();}
+            branchT = new nom.countries(conn);}catch(Exception e){e.printStackTrace();}
         System.out.println("ot construct object");
     }
     
     public static void updateRow(int in_id ,int in_code, String in_name){
-        countriesT.updateRow(in_id, in_code, in_name);
+        branchT.updateRow(in_id, in_code, in_name);
         
     }
     
@@ -258,7 +261,7 @@ public class newFrmBranch extends iInternalFrame{
         jScrollPane1.remove(table);
         System.out.println(jTextField2.getText());
         try{
-            rs = countriesT.searchRecords(imakante.com.pubMethods.makeInt(jTextField1.getText()),jTextField2.getText());
+            rs = branchT.searchRecords(imakante.com.pubMethods.makeInt(jTextField1.getText()),jTextField2.getText());
             model = new imakante.com.CustomTableModel(conn,rs, null);
             table = new imakante.com.CustomTable(model);
         }catch(Exception e){e.printStackTrace();}
@@ -268,16 +271,23 @@ public class newFrmBranch extends iInternalFrame{
     
     private void initTable() {
         try{
-            rs = countriesT.getTable();
+            rs = branchT.getTable();
             model = new imakante.com.CustomTableModel(conn,rs, null);
             table = new imakante.com.CustomTable(model);
         }catch(Exception e){e.printStackTrace();}
-        System.out.println("ot init Table()");
+        table.requestFocus();
+        
+        try {
+            
+            table.setEditingRow(0);
+            
+        } catch(Exception ex) {
+        }
     }
     
     protected static void refreshTable(){
         jScrollPane1.remove(table);
-        rs = countriesT.getTable();
+        rs = branchT.getTable();
         model = new imakante.com.CustomTableModel(conn, rs, null);
         table = new imakante.com.CustomTable(model);
         jScrollPane1.getViewport().add(table);
@@ -343,17 +353,16 @@ public class newFrmBranch extends iInternalFrame{
     }
     
     private void newRecord(){
-        setCode(countriesT.getMaxCode() + 1);
+        setCode(branchT.getMaxCode() + 1);
         System.out.println("code "+getCode());
         String name = "";
-        countriesT.insertRow(getCode(), name);
-        setId(countriesT.getMaxId());
+        branchT.insertRow(getCode(), name);
+        setId(branchT.getMaxId());
         setRow(getMaxRow() + 1);
-        System.out.println("id "+ getId());
-        System.out.println("row "+ getRow());
+        refreshTable();
         setAtEnd(true);
         setAtBegining(false);
-        nom.aeCountry dialog = new nom.aeCountry(this, true, getRow(), getId(), getCode(), name);
+        nom.aeBranch dialog = new nom.aeBranch(this, true, getRow(), getId(), getCode(), name);
         dialog.setVisible(true);
         
     }
@@ -361,7 +370,8 @@ public class newFrmBranch extends iInternalFrame{
     protected void editRecord(){
         setAtEnd(false);
         setAtBegining(false);
-        if (table.getValueAt(table.getSelectedRow(), table.getSelectedColumn()) != null) {
+        if (table.getSelectedRow() != -1) { //table.getValueAt(table.getSelectedRow(), table.getSelectedColumn()) != null
+            
             setRow(table.getSelectedRow());
             if(getRow()==0){
                 setAtBegining(true);
@@ -374,7 +384,7 @@ public class newFrmBranch extends iInternalFrame{
             setNameC((String) table.getValueAt(table.getSelectedRow(),2));
             
             try{
-                nom.aeCountry dialog = new nom.aeCountry(this, true, getRow(),getId(), getCode(), getNameC());
+                nom.aeBranch dialog = new nom.aeBranch(this, true, getRow(),getId(), getCode(), getNameC());
                 dialog.setVisible(true);
                 
             } catch(Exception e){e.printStackTrace();}
@@ -384,6 +394,13 @@ public class newFrmBranch extends iInternalFrame{
         
     }
     
+    private void deleteRecord(){
+        if (table.getSelectedRow() != -1) {
+            setRow(table.getSelectedRow());
+            setId((Integer) table.getValueAt(table.getSelectedRow(),0));
+            branchT.deleteRow(id);}
+        refreshTable();
+    }
     
     private static int  getMaxRow(){
         int i = 0;
@@ -395,9 +412,17 @@ public class newFrmBranch extends iInternalFrame{
         this.conn = connection;
     }
     
+    private void printTable() throws PrinterException{
+        MessageFormat headerFormat = new MessageFormat("Спсък на Отделите");
+        MessageFormat footerFormat = new MessageFormat(" Стр. "+"- {0} -"+" отпечатано ПП 'ИМАКАНТЕ - ЛС' ");
+        table.print(JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
+        
+        
+    }
+    
     private static java.sql.Connection conn;
     private static java.sql.ResultSet rs;
-    private static  nom.countries countriesT;
+    private static  nom.countries branchT;
     private static imakante.com.CustomTableModel model;
     private static imakante.com.CustomTable table;
     private imakante.com.vcomponents.iFrame myframe;
@@ -473,12 +498,12 @@ public class newFrmBranch extends iInternalFrame{
         this.rs = val;
     }
     
-    public countries getCountriesT() {
-        return countriesT;
+    public countries getbranchT() {
+        return branchT;
     }
     
-    public void setCountriesT(countries val) {
-        this.countriesT = val;
+    public void setbranchT(countries val) {
+        this.branchT = val;
     }
     
     public CustomTableModel getModel() {
