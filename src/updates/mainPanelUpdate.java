@@ -1,23 +1,27 @@
 
 package updates;
 
-public class mainPanelUpdate extends javax.swing.JInternalFrame {
+import imakante.com.vcomponents.iInternalFrame;
+import java.awt.event.WindowListener;
+
+public class mainPanelUpdate extends iInternalFrame implements WindowListener {
     
-  
-    public mainPanelUpdate() {
+    
+    public mainPanelUpdate(String title, imakante.com.vcomponents.iFrame frame) {
+        super("");
         initComponents();
         
     }
-   
+    
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jtfServer = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jtfUser = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        jpfPass = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -27,11 +31,11 @@ public class mainPanelUpdate extends javax.swing.JInternalFrame {
 
         jLabel2.setText("\u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b");
 
-        jTextField2.setText("common");
+        jtfUser.setText("common");
 
         jLabel3.setText("\u041f\u0430\u0440\u043e\u043b\u0430");
 
-        jPasswordField1.setText("jPasswordField1");
+        jpfPass.setText("jPasswordField1");
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -45,10 +49,10 @@ public class mainPanelUpdate extends javax.swing.JInternalFrame {
                     .add(jLabel3))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
+                    .add(jtfServer, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                        .add(org.jdesktop.layout.GroupLayout.LEADING, jPasswordField1)
-                        .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)))
+                        .add(org.jdesktop.layout.GroupLayout.LEADING, jpfPass)
+                        .add(jtfUser, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -56,15 +60,15 @@ public class mainPanelUpdate extends javax.swing.JInternalFrame {
             .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1Layout.createSequentialGroup()
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel1)
-                    .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jtfServer, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel2)
-                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jtfUser, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel3)
-                    .add(jPasswordField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jpfPass, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -98,7 +102,7 @@ public class mainPanelUpdate extends javax.swing.JInternalFrame {
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 10, Short.MAX_VALUE)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jButton1)
                     .add(jButton2))
@@ -106,9 +110,9 @@ public class mainPanelUpdate extends javax.swing.JInternalFrame {
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       makeConnection();
+        makeConnection();
     }//GEN-LAST:event_jButton1ActionPerformed
     
     
@@ -119,14 +123,14 @@ public class mainPanelUpdate extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JPasswordField jpfPass;
+    private javax.swing.JTextField jtfServer;
+    private javax.swing.JTextField jtfUser;
     // End of variables declaration//GEN-END:variables
-    
+    private static java.sql.Connection conn;
     private java.sql.Connection CConn;
     private String CDriver = "jdbc.com.mysql.Driver";
-    private String CSource = "";
+    private String CSource = "jdbc:mysql://213.91.240.189/update";
     private String CUser = "common";
     private String CPass = "x4005000";
     
@@ -137,19 +141,62 @@ public class mainPanelUpdate extends javax.swing.JInternalFrame {
             Class.forName(CDriver);
             CConn = java.sql.DriverManager.getConnection(CSource,CUser ,CPass);
             System.out.println(CConn.getMetaData());
-           
-             } catch(ClassNotFoundException e)  {
-                 
+            
+        } catch(ClassNotFoundException e)  {
+            
             System.err.println("Failed to load driver");
             e.printStackTrace();
-          
+            
         } catch(java.sql.SQLException e){
             System.err.println("Unable to connect");
             e.printStackTrace();
-         
+            
         }
     }
     
+    private void iniFields(){
+        jtfServer.setText(CSource);
+        jtfUser.setText(CUser);
+        jpfPass.setText(CPass);
+        
+    }
+    
+    
+    
+    protected void closeResource(){
+        
+        try{ CConn.close();
+        CConn =null;
+        }catch(java.sql.SQLException sqle){}
+        
+        
+    }
+    
+    
+    protected void UnloadWindow(){
+        closeResource();
+        this.dispose();
+        
+    }
+    
+    
+    
+    
+    public void windowOpened(java.awt.event.WindowEvent e){
+    }
+    public void windowClosing(java.awt.event.WindowEvent e){
+        UnloadWindow();
+    }
+    public void windowClosed(java.awt.event.WindowEvent e){
+    }
+    public void windowIconified(java.awt.event.WindowEvent e){
+    }
+    public void windowDeiconified(java.awt.event.WindowEvent e){
+    }
+    public void windowActivated(java.awt.event.WindowEvent e){
+    }
+    public void windowDeactivated(java.awt.event.WindowEvent e){
+    }
     
     
 }

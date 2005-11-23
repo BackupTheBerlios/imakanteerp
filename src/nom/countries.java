@@ -21,7 +21,7 @@ public class countries extends dbObject {
     private int comprator = 0;
     
     public java.sql.ResultSet getTable(){
-      
+        
         this.comprator = 0;
         try{
             registerParameters();
@@ -102,7 +102,7 @@ public class countries extends dbObject {
         
         return i;
     }
-     public int getMaxId(){
+    public int getMaxId(){
         int i = 0;
         comprator = 7;
         try{
@@ -123,7 +123,7 @@ public class countries extends dbObject {
         try{
             registerParameters();
             cstm.execute();} catch(java.sql.SQLException sqle){sqle.printStackTrace();}
-     }
+    }
     
     private void registerParameters(){
         try{
@@ -219,5 +219,17 @@ public class countries extends dbObject {
     
     public void setComprator(int comprator) {
         this.comprator = comprator;
+    }
+    public void close(){
+        try{
+            rs.close();
+            rs=null;
+        }catch(java.sql.SQLException sqle){}
+        
+        try{
+            cstm.close();
+            cstm=null;
+        }catch(java.sql.SQLException sqle){}
+        
     }
 }

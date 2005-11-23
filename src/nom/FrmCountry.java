@@ -510,9 +510,10 @@ public class FrmCountry extends iInternalFrame implements WindowListener{
     
     protected void closeResource(){
         
-        try{  rs.close();
+        try{ rs.close();
         }catch(java.sql.SQLException sqle){}
         rs =null;
+        countriesT.close();
     }
     
     
