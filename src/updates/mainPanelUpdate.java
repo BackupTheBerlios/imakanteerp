@@ -171,15 +171,7 @@ public class mainPanelUpdate extends iInternalFrame implements WindowListener {
         jpfPass.setText(CPass);
         
     }
-    
-    private void prepareConn(){
-        try{
-            setConn(myframe.getConn());}catch(Exception e){e.printStackTrace();}
-    }
-    
-    private void setConn(java.sql.Connection connection) {
-        this.conn = connection;
-    }
+  
     
     protected void closeResource(){
         

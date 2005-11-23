@@ -5,9 +5,11 @@ import imakante.com.vcomponents.iDialog;
 
 public class Update extends iDialog {
     
-    public Update(imakante.com.vcomponents.iFrame frame, boolean modal, java.sql.ResultSet rs) {
+    public Update(imakante.com.vcomponents.iFrame frame, boolean modal, java.sql.Connection uconn, java.sql.ResultSet rs) {
         super(frame, modal);
+        CConn = uconn;
         conn = frame.getConn();
+        this.RS = rs;
         initComponents();
     }
     
@@ -110,10 +112,18 @@ public class Update extends iDialog {
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextPane jTextPane2;
     // End of variables declaration//GEN-END:variables
-    
+    private java.sql.Connection CConn;
     private java.sql.ResultSet RS;
     
     private java.sql.Connection conn;
     private java.sql.Statement stm;
+    private static imakante.com.CustomTableModel model;
+    private static imakante.com.CustomTable table;
+    
+    private void prepareTable(){
+    model  = new imakante.com.CustomTableModel(CConn, RS, null);
+    table  = new imakante.com.CustomTable(model);
+    }
+    
     
 }
