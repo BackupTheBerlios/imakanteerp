@@ -1,13 +1,16 @@
 
 package updates;
 
-public class Update extends javax.swing.JDialog {
+import imakante.com.vcomponents.iDialog;
 
-    public Update(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+public class Update extends iDialog {
+    
+    public Update(imakante.com.vcomponents.iFrame frame, boolean modal, java.sql.ResultSet rs) {
+        super(frame, modal);
+        conn = frame.getConn();
         initComponents();
     }
-
+    
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         jSplitPane1 = new javax.swing.JSplitPane();
@@ -92,7 +95,7 @@ public class Update extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
@@ -107,5 +110,10 @@ public class Update extends javax.swing.JDialog {
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextPane jTextPane2;
     // End of variables declaration//GEN-END:variables
+    
+    private java.sql.ResultSet RS;
+    
+    private java.sql.Connection conn;
+    private java.sql.Statement stm;
     
 }

@@ -9,6 +9,7 @@ public class mainPanelUpdate extends iInternalFrame implements WindowListener {
     
     public mainPanelUpdate(String title, imakante.com.vcomponents.iFrame frame) {
         super("");
+        myframe = frame;
         initComponents();
         
     }
@@ -127,13 +128,17 @@ public class mainPanelUpdate extends iInternalFrame implements WindowListener {
     private javax.swing.JTextField jtfServer;
     private javax.swing.JTextField jtfUser;
     // End of variables declaration//GEN-END:variables
-    private static java.sql.Connection conn;
-    private java.sql.Connection CConn;
+    
+    
+    private java.sql.Connection CConn; //connection update server
+    private java.sql.Statement CStm; //statement CConn
+    private java.sql.ResultSet CRs; // ResultSet
+    
     private String CDriver = "jdbc.com.mysql.Driver";
     private String CSource = "jdbc:mysql://213.91.240.189/update";
     private String CUser = "common";
     private String CPass = "x4005000";
-    
+    private imakante.com.vcomponents.iFrame myframe;
     
     private void makeConnection(){
         
@@ -153,7 +158,13 @@ public class mainPanelUpdate extends iInternalFrame implements WindowListener {
             
         }
     }
-    
+     private void prepareCResult(){
+     try{
+     CStm = CConn.createStatement();
+     CRs = CStm.executeQuery("SELECT * FROM list l");
+      }catch(java.sql.SQLException sqle){}
+          
+     }
     private void iniFields(){
         jtfServer.setText(CSource);
         jtfUser.setText(CUser);
@@ -161,7 +172,14 @@ public class mainPanelUpdate extends iInternalFrame implements WindowListener {
         
     }
     
+    private void prepareConn(){
+        try{
+            setConn(myframe.getConn());}catch(Exception e){e.printStackTrace();}
+    }
     
+    private void setConn(java.sql.Connection connection) {
+        this.conn = connection;
+    }
     
     protected void closeResource(){
         
