@@ -20,6 +20,7 @@ public class aeCountry extends iDialog{
         int x = (((dim.width)-(this.getSize().width))/2);
         int y = (((dim.height)-(this.getSize().height))/2);
         this.setLocation(x, y);
+        
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
