@@ -330,7 +330,7 @@ public class FrmCountry extends iInternalFrame implements WindowListener{
             model = new imakante.com.CustomTableModel(conn,rs, null);
             table = new imakante.com.CustomTable(model);
         }catch(Exception e){e.printStackTrace();}
-        table.requestFocus();
+         table.requestFocus();
         
         try {
             
