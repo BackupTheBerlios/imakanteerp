@@ -172,14 +172,7 @@ public class dod extends dbObject{
     public java.sql.ResultSet getRs() {
         return rs;
     }
-    
-    public java.sql.ResultSet getRs(int in_code, String in_name) {
-        setCode(in_code);
-        setName(in_name);
-        prepareRezult();
-        return getRs();
-    }
-    
+   
     public void setRs(java.sql.ResultSet rs) {
         this.rs = rs;
     }

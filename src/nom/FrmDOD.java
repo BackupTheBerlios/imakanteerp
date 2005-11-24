@@ -311,8 +311,8 @@ public class FrmDOD extends iInternalFrame{
             setAtEnd(false);
             try{
                 setId((Integer) table.getValueAt(getRow(), 0));
-                setCode((Integer) table.getValueAt(getRow(), 1));
-                setNameC((String) table.getValueAt(getRow(), 2));}catch(ArrayIndexOutOfBoundsException aioobe){setRow(getRow() + 1);
+               
+               }catch(ArrayIndexOutOfBoundsException aioobe){setRow(getRow() + 1);
                 System.out.println("problem");}
             if(getRow() == 0){
                 setAtBegining(true);
@@ -329,9 +329,7 @@ public class FrmDOD extends iInternalFrame{
             setAtBegining(false);
             try{
                 setId((Integer) table.getValueAt(getRow(), 0));
-                setCode((Integer) table.getValueAt(getRow(), 1));
-                setNameC((String) table.getValueAt(getRow(), 2));}catch(ArrayIndexOutOfBoundsException aioobe){setRow(getRow() - 1);
-                System.out.println("problem");}
+                 }catch(ArrayIndexOutOfBoundsException aioobe){setRow(getRow() - 1);}
             if(getRow() == getMaxRow()){
                 setAtEnd(true);
             }
@@ -341,10 +339,7 @@ public class FrmDOD extends iInternalFrame{
     public static void mTableBegining(){
         setRow(0);
         try{
-            setId((Integer) table.getValueAt(getRow(), 0));
-            setCode((Integer) table.getValueAt(getRow(), 1));
-            setNameC((String) table.getValueAt(getRow(), 2));}catch(ArrayIndexOutOfBoundsException aioobe){setRow(getRow() - 1);
-            System.out.println("problem");}
+            setId((Integer) table.getValueAt(getRow(), 0));}catch(ArrayIndexOutOfBoundsException aioobe){setRow(getRow() - 1);}
         setAtBegining(true);
         setAtEnd(false);
     }
@@ -352,10 +347,8 @@ public class FrmDOD extends iInternalFrame{
     public static void mTableEnd(){
         setRow(getMaxRow());
         try{
-            setId((Integer) table.getValueAt(getRow(), 0));
-            setCode((Integer) table.getValueAt(getRow(), 1));
-            setNameC((String) table.getValueAt(getRow(), 2));}catch(ArrayIndexOutOfBoundsException aioobe){setRow(getRow() - 1);
-            System.out.println("problem");}
+            setId((Integer) table.getValueAt(getRow(), 0));}catch(ArrayIndexOutOfBoundsException aioobe){setRow(getRow() - 1);}
+            
         setAtBegining(false);
         setAtEnd(true);
     }
@@ -543,13 +536,7 @@ public class FrmDOD extends iInternalFrame{
     }
    
     
-    public static String getNameC() {
-        return name;
-    }
-    
-    public static void setNameC(String aName) {
-        name = aName;
-    }
+   
     
     public static int getId() {
         return id;
