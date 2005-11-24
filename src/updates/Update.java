@@ -123,6 +123,7 @@ public class Update extends iDialog {
     private void prepareTable(){
     model  = new imakante.com.CustomTableModel(CConn, RS, null);
     table  = new imakante.com.CustomTable(model);
+    table.getColumn(3).setWidth(0);
     }
     
     
