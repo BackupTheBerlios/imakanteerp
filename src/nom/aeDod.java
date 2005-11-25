@@ -7,12 +7,11 @@ import imakante.com.vcomponents.*;
 
 public class aeDod extends iDialog{
     
-    public aeDod(imakante.com.vcomponents.iInternalFrame frame, boolean ismodal,int row, int id, int code, String name) {
+    public aeDod(imakante.com.vcomponents.iInternalFrame frame, boolean ismodal,int row, int id, String datep, double doh, double sum, double prct) {
         super(frame, ismodal);
         this.row = row;
         this.id = id;
-        this.code = code;
-        this.name =name;
+        
         initComponents();
         getNavigatiionState();
         this.setResizable(false);
@@ -265,9 +264,10 @@ public class aeDod extends iDialog{
     private nom.FrmCountry myparent;
     private int row = 0;
     private int id = 0;
-    private int code =0;
-    private String name = "";
-    private String newname = "";
+    private String datep = "";
+    private double doh = 0;
+    private double sum = 0;
+    private double prct = 0;
     private boolean isEdited = false;
     private boolean atEnd = false;
     private boolean atBegin = false;

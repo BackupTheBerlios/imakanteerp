@@ -741,7 +741,34 @@ public class salary_main extends imakante.com.vcomponents.iFrame implements java
         MnuHelp.setMnemonic('H');
         MnuHelp.setBackground(new java.awt.Color(224,223,227));
         NewJMenuBar.add(MnuHelp);
-        //End records menu
+        
+        javax.swing.JMenuItem ItmHelp= new javax.swing.JMenuItem("За Програмата");
+        ItmHelp.setFont(menuFont);
+        ItmHelp.setActionCommand("za");
+        ItmHelp.addActionListener(getJMenuActionListener());
+        ItmHelp.setBackground(new java.awt.Color(224,223,227));
+        MnuHelp.add(ItmHelp);
+        
+        javax.swing.JMenuItem ItmDocum= new javax.swing.JMenuItem("Документация");
+        ItmDocum.setFont(menuFont);
+        ItmDocum.setActionCommand("document");
+        ItmDocum.addActionListener(getJMenuActionListener());
+        ItmDocum.setBackground(new java.awt.Color(224,223,227));
+        MnuHelp.add(ItmDocum);
+        
+        MnuHelp.addSeparator();
+        
+        javax.swing.JMenuItem ItmUpdate= new javax.swing.JMenuItem("Обновяване");
+        ItmUpdate.setFont(menuFont);
+        ItmUpdate.setActionCommand("document");
+        ItmUpdate.addActionListener(getJMenuActionListener());
+        ItmUpdate.setBackground(new java.awt.Color(224,223,227));
+        MnuHelp.add(ItmUpdate);
+        
+//End records menu
+        
+        
+        
         
         NewJMenuBar.setBackground(new java.awt.Color(224,223,227));
         return NewJMenuBar;

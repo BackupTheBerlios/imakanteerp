@@ -311,9 +311,9 @@ public class FrmDOD extends iInternalFrame{
             setAtEnd(false);
             try{
                 setId((Integer) table.getValueAt(getRow(), 0));
-               
-               }catch(ArrayIndexOutOfBoundsException aioobe){setRow(getRow() + 1);
-                System.out.println("problem");}
+                
+            }catch(ArrayIndexOutOfBoundsException aioobe){setRow(getRow() + 1);
+            System.out.println("problem");}
             if(getRow() == 0){
                 setAtBegining(true);
             }
@@ -329,7 +329,7 @@ public class FrmDOD extends iInternalFrame{
             setAtBegining(false);
             try{
                 setId((Integer) table.getValueAt(getRow(), 0));
-                 }catch(ArrayIndexOutOfBoundsException aioobe){setRow(getRow() - 1);}
+            }catch(ArrayIndexOutOfBoundsException aioobe){setRow(getRow() - 1);}
             if(getRow() == getMaxRow()){
                 setAtEnd(true);
             }
@@ -348,23 +348,18 @@ public class FrmDOD extends iInternalFrame{
         setRow(getMaxRow());
         try{
             setId((Integer) table.getValueAt(getRow(), 0));}catch(ArrayIndexOutOfBoundsException aioobe){setRow(getRow() - 1);}
-            
+        
         setAtBegining(false);
         setAtEnd(true);
     }
     
     private void newRecord(){
-        setCode(dodT.getMaxCode() + 1);
-        System.out.println("code "+getCode());
-        String name = "";
-        dodT.insertRow(getCode(), name);
+        dodT.insertRow(datep,doh,sum,prct);
         setId(dodT.getMaxId());
         setRow(getMaxRow() + 1);
-        System.out.println("id "+ getId());
-        System.out.println("row "+ getRow());
         setAtEnd(true);
         setAtBegining(false);
-        nom.aeCountry dialog = new nom.aeCountry(this, true, getRow(), getId(), getCode(), name);
+        nom.aeCountry dialog = new nom.aeDod(this, true, getRow(), getId(), datep, doh, prct);
         dialog.setVisible(true);
         
     }
@@ -477,7 +472,7 @@ public class FrmDOD extends iInternalFrame{
     }
     public void windowDeactivated(java.awt.event.WindowEvent e){
     }
-   
+    
     
     
     
@@ -534,9 +529,9 @@ public class FrmDOD extends iInternalFrame{
         
         return conn;
     }
-   
     
-   
+    
+    
     
     public static int getId() {
         return id;
