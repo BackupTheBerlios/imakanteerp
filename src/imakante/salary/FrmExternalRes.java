@@ -1,8 +1,4 @@
-/*
- * FrmExternalRes.java
- *
- * Created on Четвъвтък, 2005, Септември 29, 10:38
- */
+
 
 package imakante.salary;
 

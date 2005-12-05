@@ -647,8 +647,8 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
     }
     
      private void printTable() throws PrinterException{
-        MessageFormat headerFormat = new MessageFormat("Спсък на Служителите");
-        MessageFormat footerFormat = new MessageFormat(" Стр. "+"- {0} -"+" отпечатано ПП 'ИМАКАНТЕ - ЛС' ");
+        MessageFormat headerFormat = new MessageFormat("List");
+        MessageFormat footerFormat = new MessageFormat(" Page. "+"- {0} -"+" Imakante");
         jTable.print(JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
         
         

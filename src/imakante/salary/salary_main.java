@@ -28,7 +28,7 @@ public class salary_main extends imakante.com.vcomponents.iFrame implements java
     FrmNSastav    FormSastav;
     FrmDOD       FormDOD;
     FrmModifikatori    FormDOO;
-    FrmMonth     FormMonth;
+   
     FrmDate      FormDate;
     FrmNewM      FormNewM;
     FrmOtdel     FormOtdel;
@@ -924,24 +924,7 @@ public class salary_main extends imakante.com.vcomponents.iFrame implements java
         boolean AlreadyLoaded = isLoaded("\u041c\u0435\u0441\u0435\u0447\u043d\u0438 \u0434\u0430\u043d\u043d\u0438");
         if(AlreadyLoaded==false){
             
-            FormMonth = new FrmMonth(dbCON,this,pMonth,pYear);
-            Desk1.add(FormMonth);
-            
-            //Load the FormSupplier
-            FormMonth.setVisible(true);
-            
-            try{
-                FormMonth.setIcon(false);
-                FormMonth.setSelected(true);
-            }catch(java.beans.PropertyVetoException e){
-            }
-            //End load the FormDOD
-        }else{
-            try{
-                FormMonth.setIcon(false);
-                FormMonth.setSelected(true);
-            }catch(java.beans.PropertyVetoException e){
-            }
+          
         }
         //End verify if the form is already loaded
         
