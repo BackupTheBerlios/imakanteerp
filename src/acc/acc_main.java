@@ -1,15 +1,6 @@
-/*
- * acc_main.java
- *
- * Created on Неделя, 2005, Октомври 9, 5:14
- */
 
 package acc;
 
-/**
- *
- * @author  Radoslav
- */
 public class acc_main extends javax.swing.JFrame {
     
     /** Creates new form acc_main */

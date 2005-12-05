@@ -59,7 +59,7 @@ public class FrmExport extends JDialog {
         try {
             rsCus = stCus.executeQuery(strSQL);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,"Грешка ИЛС-С02Р  Възникнал проблем при осъществаване на връзка с базата.","ИМАКАНТЕ",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Error.","Imakante",JOptionPane.WARNING_MESSAGE);
         }
         model = new CustomTableModel(cnCus, rsCus, null);
         jTable = new CustomTable(model);
@@ -73,7 +73,7 @@ public class FrmExport extends JDialog {
     }
     
     private void jbInit() throws Exception {
-        this.setTitle("Експортиране на данни");
+        this.setTitle("Export");
         this.setLocation(100, 100);
         this.setSize(new Dimension(509, 561));
         this.getContentPane().setLayout(null);
@@ -86,20 +86,20 @@ public class FrmExport extends JDialog {
         jPanel4.setBounds(new Rectangle(15, 385, 470, 40));
         jPanel4.setLayout(null);
         jPanel4.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
-        jCheckBox1.setText("Използване на ZIP");
+        jCheckBox1.setText("to ZIP");
         jCheckBox1.setBounds(new Rectangle(85, 10, 165, 25));
-        jCheckBox2.setText("Използване на DES");
+        jCheckBox2.setText("to DES");
         jCheckBox2.setBounds(new Rectangle(275, 10, 150, 25));
         jPanel5.setBounds(new Rectangle(15, 435, 470, 40));
         jPanel5.setLayout(null);
         jPanel5.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
-        jRadioButton1.setText("Разделител TAB");
+        jRadioButton1.setText("delemiterTAB");
         jRadioButton1.setBounds(new Rectangle(15, 10, 110, 25));
-        jRadioButton2.setText("Разделител Интервал");
+        jRadioButton2.setText("");
         jRadioButton2.setBounds(new Rectangle(140, 10, 160, 25));
-        jRadioButton3.setText("Разделител запетая");
+        jRadioButton3.setText("");
         jRadioButton3.setBounds(new Rectangle(305, 10, 155, 25));
-        jButton1.setText("Експорт");
+        jButton1.setText("");
         jButton1.setBounds(new Rectangle(125, 490, 115, 25));
         jButton1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -107,7 +107,7 @@ public class FrmExport extends JDialog {
             }
         });
         
-        jButton2.setText("Отказ");
+        jButton2.setText("");
         jButton2.setBounds(new Rectangle(280, 490, 115, 25));
         jButton2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -117,7 +117,7 @@ public class FrmExport extends JDialog {
         
         jTextField1.setText("");
         jTextField1.setBounds(new Rectangle(225, 10, 230, 20));
-        jLabel1.setText("Име на файла");
+        jLabel1.setText("");
         jLabel1.setBounds(new Rectangle(10, 10, 195, 20));
         jPanel1.setBounds(new Rectangle(15, 15, 470, 315));
         jPanel1.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
@@ -157,7 +157,7 @@ public class FrmExport extends JDialog {
             String _fd = "SELECT * INTO OUTFILE \"" + filename + "\" FROM " + tablename;
             try {
                 stmt.execute(_fd);
-                JOptionPane.showMessageDialog(null,"Файлът е създаден." + filename,"Таблица " + tablename,
+                JOptionPane.showMessageDialog(null,"пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ." + filename,"пїЅпїЅпїЅпїЅпїЅпїЅпїЅ " + tablename,
                         JOptionPane.INFORMATION_MESSAGE);
                 
             }

@@ -529,7 +529,7 @@ public class salary_main extends imakante.com.vcomponents.iFrame implements java
         
         MnuProccess.add(ItmSPSalaryP);
         
-        //-- For New ДДС
+        //-- For New пїЅпїЅпїЅ
         javax.swing.JMenuItem ItmStaj = new javax.swing.JMenuItem("\u041d\u0430\u0442\u0440\u0443\u043f\u0430\u043d \u0441\u0442\u0430\u0436");
         ItmStaj.setFont(menuFont);
         ItmStaj.setActionCommand("spstaj");
@@ -742,14 +742,14 @@ public class salary_main extends imakante.com.vcomponents.iFrame implements java
         MnuHelp.setBackground(new java.awt.Color(224,223,227));
         NewJMenuBar.add(MnuHelp);
         
-        javax.swing.JMenuItem ItmHelp= new javax.swing.JMenuItem("За Програмата");
+        javax.swing.JMenuItem ItmHelp= new javax.swing.JMenuItem("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
         ItmHelp.setFont(menuFont);
         ItmHelp.setActionCommand("za");
         ItmHelp.addActionListener(getJMenuActionListener());
         ItmHelp.setBackground(new java.awt.Color(224,223,227));
         MnuHelp.add(ItmHelp);
         
-        javax.swing.JMenuItem ItmDocum= new javax.swing.JMenuItem("Документация");
+        javax.swing.JMenuItem ItmDocum= new javax.swing.JMenuItem("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
         ItmDocum.setFont(menuFont);
         ItmDocum.setActionCommand("document");
         ItmDocum.addActionListener(getJMenuActionListener());
@@ -758,7 +758,7 @@ public class salary_main extends imakante.com.vcomponents.iFrame implements java
         
         MnuHelp.addSeparator();
         
-        javax.swing.JMenuItem ItmUpdate= new javax.swing.JMenuItem("Обновяване");
+        javax.swing.JMenuItem ItmUpdate= new javax.swing.JMenuItem("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
         ItmUpdate.setFont(menuFont);
         ItmUpdate.setActionCommand("document");
         ItmUpdate.addActionListener(getJMenuActionListener());
@@ -782,7 +782,7 @@ public class salary_main extends imakante.com.vcomponents.iFrame implements java
         NewJToolBar.setMargin(new java.awt.Insets(0,0,0,0));
         
         //Create a toolbar button
-        NewJToolBar.add(CreateJToolbarButton("Редакция служители","c:/imakante/ico_sluj.png","sluj"));
+        NewJToolBar.add(CreateJToolbarButton("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ","c:/imakante/ico_sluj.png","sluj"));
         NewJToolBar.add(CreateJToolbarButton("Suppliers Record","images/supplier.png","toolSup"));
         NewJToolBar.add(CreateJToolbarButton("SalesRep Record","images/SalesRep.png","toolSalesrep"));
         NewJToolBar.add(CreateJToolbarButton("Warehouse Record","images/Warehouse.png","toolWareh"));
@@ -955,7 +955,7 @@ public class salary_main extends imakante.com.vcomponents.iFrame implements java
     }
     
     protected void loadVedomostZForm() {
-        boolean AlreadyLoaded = isLoaded("Ведомости");
+        boolean AlreadyLoaded = isLoaded("Vedomost");
         if (pMonth != 0 && (rightsUser.get("vedom").toString()) != "0"){
             if(AlreadyLoaded==false){
                 try{
@@ -977,15 +977,14 @@ public class salary_main extends imakante.com.vcomponents.iFrame implements java
                 }catch(java.beans.PropertyVetoException e){
                 }
             }} else {
-            javax.swing.JOptionPane.showMessageDialog(null,"Няма работна дата.\n Въведете: Програма -> Смяна на период.","РЕА - Проект Мидас",javax.swing.JOptionPane.WARNING_MESSAGE);
             }
         
         
     }
     
-    protected void loadVedomostАForm() {
-        System.out.println("avansi 1");
-        boolean AlreadyLoaded = isLoaded("Ведомости Аванси");
+    protected void loadVedomostForm() {
+        
+        boolean AlreadyLoaded = isLoaded("Avansi");
         
         if (pMonth != 0){
             if(AlreadyLoaded==false){
@@ -1009,9 +1008,7 @@ public class salary_main extends imakante.com.vcomponents.iFrame implements java
                 }catch(java.beans.PropertyVetoException e){
                 }
             }} else {
-            javax.swing.JOptionPane.showMessageDialog(null,"Няма работна дата.\n Въведете: Програма -> Смяна на период.",
-                    "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415",javax.swing.JOptionPane.WARNING_MESSAGE);
-            }
+             }
         
         
     }
@@ -1044,7 +1041,7 @@ public class salary_main extends imakante.com.vcomponents.iFrame implements java
     
     protected void loadNewMForm() throws java.sql.SQLException {
         
-        boolean AlreadyLoaded = isLoaded("Създаване на нов месец");
+        boolean AlreadyLoaded = isLoaded("New Month");
         if(AlreadyLoaded==false && (rightsUser.get("newmonth").toString()) != "0"){
             FormNewM = new FrmNewM(dbCON,this);
             Desk1.add(FormNewM);
@@ -1067,7 +1064,7 @@ public class salary_main extends imakante.com.vcomponents.iFrame implements java
     
     protected void loadOtdelForm() throws java.sql.SQLException{
         
-        boolean AlreadyLoaded = isLoaded("Списък отдели");
+        boolean AlreadyLoaded = isLoaded("Branch");
         if(AlreadyLoaded==false){
             FormOtdel = new FrmOtdel(dbCON,this);
             Desk1.add(FormOtdel);
@@ -1092,7 +1089,7 @@ public class salary_main extends imakante.com.vcomponents.iFrame implements java
     
     protected void loadDlajForm() throws java.sql.SQLException{
         
-        boolean AlreadyLoaded = isLoaded("Списък отдели");
+        boolean AlreadyLoaded = isLoaded("Dlaj");
         if(AlreadyLoaded==false){
             FormDlajnost = new FrmDlajnost(dbCON,this);
             Desk1.add(FormDlajnost);
@@ -1117,7 +1114,7 @@ public class salary_main extends imakante.com.vcomponents.iFrame implements java
     
     protected void loadPic() {
         
-        boolean AlreadyLoaded = isLoaded("Снимки");
+        boolean AlreadyLoaded = isLoaded("Pic");
         if(AlreadyLoaded==false){
             FormPic = new FrmPic(dbCON);
             Desk1.add(FormPic);
@@ -1147,7 +1144,7 @@ public class salary_main extends imakante.com.vcomponents.iFrame implements java
     
     protected void loadActStDlaj(){
         try{
-            setFormActStDlaj(new FrmAct(this, dbCON, "c:/imakante/salary/jasper/","","Акт за встъпване в длъжност"));
+            setFormActStDlaj(new FrmAct(this, dbCON, "c:/imakante/salary/jasper/","",""));
             Desk1.add(getFormActStDlaj());
             getFormActStDlaj().setVisible(true);
             
@@ -1497,7 +1494,7 @@ public class salary_main extends imakante.com.vcomponents.iFrame implements java
             }else if(srcObject=="vedoma"){
                 
                 try{
-                    loadVedomostАForm();
+                    loadVedomostForm();
                 } catch(Exception qle){
                 };
             } else if(srcObject=="nprof"){
@@ -1898,7 +1895,7 @@ public class salary_main extends imakante.com.vcomponents.iFrame implements java
         } catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         
         
-        StrPeriod = "     Текущия период е месец   "+  getMonth()+ "    година " + getYear();
+        StrPeriod = "     month   "+  getMonth()+ "   year " + getYear();
         
     }
     

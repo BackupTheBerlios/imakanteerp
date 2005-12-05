@@ -1,8 +1,3 @@
-/*
- * FrmAct.java
- *
- * Created on Петък, 2005, Юни 24, 12:35
- */
 
 package imakante.salary;
 
