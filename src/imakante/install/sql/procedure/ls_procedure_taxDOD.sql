@@ -1,6 +1,4 @@
-﻿DELIMITER $$
-
-DROP PROCEDURE IF EXISTS `mida`.`ls_procedure_taxDOD`$$
+DROP PROCEDURE IF EXISTS `mida`.`ls_procedure_taxDOD`
 CREATE PROCEDURE `mida`.`ls_procedure_taxDOD` (IN comprator TINYINT, IN in_pyear INT,
                                                IN in_id INT, in_date DATE, IN in_doh DOUBLE,
                                                IN in_sum DOUBLE, IN in_prct DOUBLE)
@@ -27,6 +25,4 @@ BEGIN
          SELECT  l.doh, l.sum, l.prct FROM ls_dod l WHERE l.id = in_id;
      END IF;
 
-END$$
-
-DELIMITER ;
+END
