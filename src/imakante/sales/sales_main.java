@@ -384,7 +384,7 @@ public class sales_main extends javax.swing.JFrame {
         try {
             makeConn(getDbDriver(), getDbURL(), getDbUser(), getDbPass());
         } catch (java.sql.SQLException sql1){
-            JOptionPane.showMessageDialog(null,"Възникнал проблем при осъществаване на връзка с базата.","ИМАКАНТЕ",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,"пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.","пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ",JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_programMenu_connActionPerformed
         
@@ -559,9 +559,7 @@ public class sales_main extends javax.swing.JFrame {
         }
         if (getDbConn() != null){
             
-        } else {
-            JOptionPane.showMessageDialog(null,"Възникнал проблем при осъществаване на връзка с базата.","ИМАКАНТЕ",JOptionPane.WARNING_MESSAGE);
-        }
+        } else { }
         return getDbConn();
     }
     
@@ -595,8 +593,6 @@ public class sales_main extends javax.swing.JFrame {
     }
  
    private void lockMessage(){
-    JOptionPane.showMessageDialog(null,"Възникнал проблем при осъществаване на връзка с базата.","ИМАКАНТЕ",JOptionPane.WARNING_MESSAGE);
-        
    }
     public String getDbName() {
         return dbName;

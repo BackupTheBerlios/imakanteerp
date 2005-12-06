@@ -1,8 +1,4 @@
-/*
- * calendar.java
- *
- * Created on Вторник, 2005, Юли 5, 8:29
- */
+
 
 package imakante.salary;
 

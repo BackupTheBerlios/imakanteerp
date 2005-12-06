@@ -96,8 +96,7 @@ public class frmLock_app_salary extends javax.swing.JDialog implements java.awt.
         System.out.println(passT + "  "+ lPass);
         if (passT.equals(lPass)){
             this.dispose();
-        }else{  JOptionPane.showMessageDialog(null,"Невярна парола .\n Погледнете дали и включена кирилицата.","ИМАКАНТЕ - Личен Състав",JOptionPane.WARNING_MESSAGE);
-        jPasswordField1.requestFocus();
+        }else{   jPasswordField1.requestFocus();
                 }
                 
                 
