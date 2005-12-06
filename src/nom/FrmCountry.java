@@ -468,8 +468,8 @@ public class FrmCountry extends iInternalFrame implements WindowListener{
     }
     
     private void printTable() throws PrinterException{
-        MessageFormat headerFormat = new MessageFormat("Спсък на Държавите");
-        MessageFormat footerFormat = new MessageFormat(" Стр. "+"- {0} -"+" отпечатано ПП 'ИМАКАНТЕ - ЛС' ");
+        MessageFormat headerFormat = new MessageFormat("Country");
+        MessageFormat footerFormat = new MessageFormat("Page. "+"- {0} -"+" IMAKANTE' ");
         table.print(JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
         
         

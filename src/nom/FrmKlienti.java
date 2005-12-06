@@ -16,9 +16,7 @@ public class FrmKlienti extends javax.swing.JInternalFrame {
         try {
             rs = stm.executeQuery(strQU);
             
-        } catch (java.sql.SQLException e) {
-           javax.swing.JOptionPane.showMessageDialog(null,"Грешка ИЛС-С02Р  Възникнал проблем при осъществаване на връзка с базата.","ИМАКАНТЕ",JOptionPane.WARNING_MESSAGE);
-        }
+        } catch (java.sql.SQLException e) {  }
         model = new imakante.com.CustomTableModel(intConn, rs, null);
         jTable = new imakante.com.CustomTable(model);
         
