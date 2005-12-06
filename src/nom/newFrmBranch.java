@@ -413,8 +413,8 @@ public class newFrmBranch extends iInternalFrame{
     }
     
     private void printTable() throws PrinterException{
-        MessageFormat headerFormat = new MessageFormat("Спсък на Отделите");
-        MessageFormat footerFormat = new MessageFormat(" Стр. "+"- {0} -"+" отпечатано ПП 'ИМАКАНТЕ - ЛС' ");
+        MessageFormat headerFormat = new MessageFormat("Branch");
+        MessageFormat footerFormat = new MessageFormat(" Page. "+"- {0} -"+" Imakante' ");
         table.print(JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
         
         
