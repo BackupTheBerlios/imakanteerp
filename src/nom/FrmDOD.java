@@ -359,8 +359,8 @@ public class FrmDOD extends iInternalFrame{
         setRow(getMaxRow() + 1);
         setAtEnd(true);
         setAtBegining(false);
-        nom.aeCountry dialog = new nom.aeDod(this, true, getRow(), getId(), datep, doh, prct);
-        dialog.setVisible(true);
+       // nom.aeCountry dialog = new nom.aeDod(this, true, getRow(), getId(), datep, doh, prct);
+       // dialog.setVisible(true);
         
     }
     
@@ -376,12 +376,12 @@ public class FrmDOD extends iInternalFrame{
                 setAtEnd(true);
             }
             setId((Integer) table.getValueAt(table.getSelectedRow(),0));
-            setCode((Integer) table.getValueAt(table.getSelectedRow(),1));
-            setNameC((String) table.getValueAt(table.getSelectedRow(),2));
+           // setCode((Integer) table.getValueAt(table.getSelectedRow(),1));
+          //  setNameC((String) table.getValueAt(table.getSelectedRow(),2));
             
             try{
-                nom.aeDOD dialog = new nom.aeCountry(this, true, getRow(),getId(), getCode(), getNameC());
-                dialog.setVisible(true);
+            //    nom.aeDOD dialog = new nom.aeCountry(this, true, getRow(),getId(), getCode(), getNameC());
+             //   dialog.setVisible(true);
                 
             } catch(Exception e){e.printStackTrace();}
         }else{
