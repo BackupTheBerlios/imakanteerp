@@ -1,18 +1,5 @@
-/*
- * commonNom.java
- *
- * Created on Сряда, 2005, Декември 7, 23:42
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
 
 package nom;
-
-/**
- *
- * @author Ivan Katsarov
- */
 
 import com.mysql.jdbc.Statement;
 import java.sql.*;

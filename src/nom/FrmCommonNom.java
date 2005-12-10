@@ -1,15 +1,6 @@
-/*
- * FrmCommonNom.java
- *
- * Created on Сряда, 2005, Декември 7, 21:24
- */
 
 package nom;
 
-/**
- *
- * @author  Ivan Katsarov
- */
 import com.sun.org.apache.bcel.internal.generic.ExceptionThrower;
 import imakante.com.CustomTable;
 import imakante.com.CustomTableModel;
