@@ -18,6 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.BorderFactory;
 import org.jdesktop.layout.*;
+import java.util.*;
 
 public class FrmCommonNom extends  imakante.com.vcomponents.iInternalFrame implements WindowListener {
     
@@ -163,6 +164,8 @@ public class FrmCommonNom extends  imakante.com.vcomponents.iInternalFrame imple
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+    private static boolean atBegining=false;
+    private static boolean atEnd = false;
     private imakante.com.vcomponents.iFrame myframe; 
     private int idNom;
     private java.sql.Connection conn;
@@ -174,7 +177,7 @@ public class FrmCommonNom extends  imakante.com.vcomponents.iInternalFrame imple
     private String Pass="javadude";  // vremenna promenliva za test
     private String Url = "jdbc:mysql://127.0.0.1:3306/frmtest";  // vremenna promenliva za test
     private java.sql.Connection ccc; // vremenna promenliva za test
-  private void prepareConn()
+  private void prepareConn() //TEST
   {
       // samo za testovate ------------
       try
@@ -197,12 +200,12 @@ public class FrmCommonNom extends  imakante.com.vcomponents.iInternalFrame imple
        }*/
 
   }
-  private void createCommonNomDB()
+  private void createCommonNomDB() //TEST
   {
       countriesT = new commonNom(conn,2);
       System.out.println("ot construct object");
   }
-  private void initTable()
+  private void initTable() //OK
   {
       try
         {
@@ -248,5 +251,182 @@ public class FrmCommonNom extends  imakante.com.vcomponents.iInternalFrame imple
   public void windowDeactivated(java.awt.event.WindowEvent e) // close iInternalFrame`s windows
    {
    
-   }   
+   } 
+   
+    public static boolean isAtBegining() //OK
+    {
+        return atBegining;
+    }
+    
+    public static void setAtBegining(boolean aAtBegining)//OK
+    {
+        atBegining = aAtBegining;
+    }
+    
+    public static boolean isAtEnd()//OK
+    {
+        return atEnd;
+    }
+    
+    public static void setAtEnd(boolean aAtEnd)//OK
+    {
+        atEnd = aAtEnd;
+    }
+public commonNom getCountriesT() //OK
+   {
+   return countriesT;
+   }
+    
+public void setCountriesT(commonNom val) //OK
+   {
+        this.countriesT = val;
+    }
+    
+public CustomTableModel getModel() //OK
+   {
+        return model;
+    }
+    
+public void setModel(CustomTableModel val) //OK
+   {
+        this.model = val;
+    }
+    
+public CustomTable getTable() //OK
+   {
+        return table;
+    }
+    
+public void setTable(CustomTable val) //OK
+   {
+        this.table = val;
+    }
+public iFrame getMyframe() //OK
+   {
+        return myframe;
+    }
+    
+public void setMyframe(iFrame val) //OK
+   {
+        this.myframe = val;
+    }
+    
+protected void UnloadWindow() //OK
+   {
+        closeResource();
+        this.dispose();
+ }  
+protected void closeResource() //OK
+   {
+        
+        try{ rs.close();
+        }catch(java.sql.SQLException sqle){}
+        rs =null;
+        countriesT.close();
+  }
+
+public ResultSet getRs() //OK
+   {
+        return rs;
+    }
+
+private  int  getMaxRow()
+   {
+        int i = 0;
+        i  = table.getRowCount() - 1;
+        return i;
+ }
+ private Object[] deleteRecord() //OK
+   {
+     Object ob[] = new Object[countriesT.tableInfo.splitColumns.length];
+      if (table.getSelectedRow() != -1) 
+      {
+          
+          for(int i=0;i<ob.length;i++)
+          {
+              ob[i] = table.getValueAt(table.getSelectedRow(),i);
+          }
+            countriesT.tableInfo.setColumnsData(ob);
+            countriesT.deleteRow(table.getSelectedRow());
+      }
+        refreshTable();
+        return ob;
+    }
+protected  void refreshTable() // OK  
+   {
+        jScrollPane1.remove(table);
+        rs = countriesT.getTable();
+        model = new imakante.com.CustomTableModel(conn, rs, null);
+        table = new imakante.com.CustomTable(model);
+        jScrollPane1.getViewport().add(table);
+        jScrollPane1.repaint();
+        
+    }
+protected void editRecord() // !!! trqbva da se prerabori aeCommonNom !!!
+   {
+        setAtEnd(false);
+        setAtBegining(false);
+        Object ob[] = new Object[countriesT.tableInfo.splitColumns.length];
+        if (table.getSelectedRow() != -1) { //table.getValueAt(table.getSelectedRow(), table.getSelectedColumn()) != null
+            
+           
+            if(table.getSelectedRow()==0)
+            {
+                setAtBegining(true);
+            }
+            if(table.getSelectedRow()==getMaxRow())
+            {
+                setAtEnd(true);
+            }
+            for(int i=0;i<ob.length;i++)
+             {
+                  ob[i] = table.getValueAt(table.getSelectedRow(),i);
+             }
+            countriesT.tableInfo.setColumnsData(ob);
+           
+            
+            try{
+                // !! kato vhodni parametri na aeCommonNom podavame: poleta koito iskame da se redaktirat, id  !!!
+                
+              //  nom.aeCountry dialog = new nom.aeCountry(this, true, getRow(),getId(), getCode(), getNameC());
+             //   dialog.setVisible(true);
+                
+            } catch(Exception e){e.printStackTrace();}
+        }else{
+            
+        }
+        
+    }
+private void newRecord() // !!! trqbva da se prerabori aeCommonNom !!!
+{
+        refreshTable();
+        setAtEnd(true);
+        setAtBegining(false);
+        countriesT.getMaxId();
+        
+        // izvikva se aeCommonNom
+        
+        //nom.aeCountry dialog = new nom.aeCountry(this, true, getRow(), getId(), getCode(), name);
+        //dialog.setVisible(true);
+        
+   }
+
+ private void searchRecords()// !!!!!
+ {
+        jScrollPane1.remove(table);
+       // System.out.println(jTextField2.getText());
+         Object ob[] = new Object[countriesT.tableInfo.splitColumns.length];
+         
+           
+        try{
+            
+            rs = countriesT.searchRecords(ob);
+            model = new imakante.com.CustomTableModel(conn,rs, null);
+            table = new imakante.com.CustomTable(model);
+        }catch(Exception e){e.printStackTrace();}
+      
+        jScrollPane1.getViewport().add(table);
+        jScrollPane1.repaint();
+    }
+
 }
