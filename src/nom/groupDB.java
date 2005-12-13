@@ -19,6 +19,7 @@ import java.sql.*;
 public class groupDB  extends dbObject 
 {
     //-------------START MyVariables
+   private String splitNamesOfAnLevel[];
    private java.sql.ResultSet rs;
    private java.sql.Statement stmt;
    private java.sql.CallableStatement cstm;
@@ -107,9 +108,10 @@ public class groupDB  extends dbObject
         }
         
     }
- public void updateRow(int in_nom, String in_cod,String in_name, int alID) //OK
+ public void updateRow(int in_id, int in_nom, String in_cod,String in_name, int alID) //OK
     {
         comprator = 2;
+        this.id = in_id;
         this.nom = in_nom;
         this.cod = in_cod;
         this.name = in_name;
@@ -223,6 +225,25 @@ public class groupDB  extends dbObject
     {
         return id;
     }
+    public int getMaxId()
+    {
+        comprator = 7;
+        int return_int=-1;
+         try
+        {
+            registerParameters();
+            rs = cstm.executeQuery();
+            while(rs.next())
+            {
+                return_int = rs.getInt(1);
+            }
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+       return return_int;
+    }
     public void setNom(int NOM) //OK
     {
         this.nom = NOM;
@@ -276,5 +297,29 @@ public class groupDB  extends dbObject
         }catch(java.sql.SQLException sqle){}
         
     }
-    
+    public String[] getAnLevelName()
+    {
+        comprator=6;
+        String return_str=new String("");
+        int oldId = id;
+        ResultSet oldRs = rs;
+       
+         try
+        {
+             registerParameters();
+            rs = cstm.executeQuery();
+            while(rs.next())
+            {
+               return_str =return_str + rs.getString(3) + " ";
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        rs = oldRs;
+        id = oldId;
+        splitNamesOfAnLevel = return_str.split(" ");
+        return splitNamesOfAnLevel;
+    }
 }

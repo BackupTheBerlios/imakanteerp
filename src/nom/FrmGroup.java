@@ -25,7 +25,8 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
     {
         super(title);
       // myframe = frame; 
-       this.idGroup = idGroup;
+       
+       this.nom = idGroup;
         prepareConn();     // zapazva connection
         constructGroupDB(); // inicializira class otgovarq6t za vryzkata s DB
         initTable();
@@ -43,6 +44,12 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jTextCod = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jTextName = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jTextAnLevel = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jButtonNew = new javax.swing.JButton();
@@ -63,20 +70,29 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setPreferredSize(new java.awt.Dimension(452, 45));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jScrollPane1.getViewport().add(table);
         jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel4.setPreferredSize(new java.awt.Dimension(448, 37));
-        org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 775, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 33, Short.MAX_VALUE)
-        );
+        jLabel1.setText("\u041a\u043e\u0434:");
+        jPanel4.add(jLabel1);
+
+        jTextCod.setPreferredSize(new java.awt.Dimension(45, 20));
+        jPanel4.add(jTextCod);
+
+        jLabel2.setText("\u0418\u043c\u0435:");
+        jPanel4.add(jLabel2);
+
+        jTextName.setPreferredSize(new java.awt.Dimension(100, 20));
+        jPanel4.add(jTextName);
+
+        jLabel3.setText("\u0410\u043d\u0430\u043b\u0438\u0442\u0438\u0447\u043d\u0438 \u043d\u0438\u0432\u0430:");
+        jPanel4.add(jLabel3);
+
+        jTextAnLevel.setPreferredSize(new java.awt.Dimension(45, 20));
+        jPanel4.add(jTextAnLevel);
+
         jPanel1.add(jPanel4, java.awt.BorderLayout.SOUTH);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -106,6 +122,12 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
         jPanel3.add(jButtonNew);
 
         jButtonEdit.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f");
+        jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditActionPerformed(evt);
+            }
+        });
+
         jPanel3.add(jButtonEdit);
 
         jButtonPrint.setText("\u041f\u0435\u0447\u0430\u0442");
@@ -131,8 +153,58 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
+// TODO add your handling code here:
+        
+        if (table.getSelectedRow() != -1) 
+        { 
+            
+            setRow(table.getSelectedRow());
+            if(getRow()==0){
+                setAtBegining(true);
+            }
+            if(getRow()==getMaxRow()){
+                setAtEnd(true);
+            }
+            setId((Integer) table.getValueAt(getRow(), 0));
+            setCod((String) table.getValueAt(getRow(), 1));
+            setNames((String) table.getValueAt(getRow(), 2));
+            setAnID((Integer) table.getValueAt(getRow(), 3));
+            
+            
+            try
+            {
+                nom.aeGroup dialog = new nom.aeGroup(this, true);
+                dialog.setVisible(true);
+                
+            } catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+        }else{
+            
+        }
+        
+    }//GEN-LAST:event_jButtonEditActionPerformed
+
     private void jButtonNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewActionPerformed
 // TODO add your handling code here:
+        setCod("");
+        setNames("");
+        setAnID(0);
+        countriesT.insertRow(getNom(),getCod(),getNames(),getAnID());
+        setId(countriesT.getMaxId());
+         try
+            {
+                nom.aeGroup dialog = new nom.aeGroup(this, true);
+                dialog.setVisible(true);
+                
+            } catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+        
+        
     }//GEN-LAST:event_jButtonNewActionPerformed
     
     /**
@@ -160,14 +232,27 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
     private javax.swing.JButton jButtonPrint;
     private javax.swing.JButton jButtonPrnReport;
     private javax.swing.JButton jButtonRefresh;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextAnLevel;
+    private javax.swing.JTextField jTextCod;
+    private javax.swing.JTextField jTextName;
     // End of variables declaration//GEN-END:variables
  //--------------- My Variables
-    private int idGroup;
+    private int id=0; // imena ot tablicata                              
+    private int nom=0; // imena ot tablicata                            
+    private String cod,name; // imena ot tablicata                      
+    private int alId=0; // vryzkata kym tablicata za analitu4nite niva
+    private  boolean atBegining=false;
+    private  boolean atEnd = false;
+    private int row;
+   
     private imakante.com.vcomponents.iFrame myframe;
     private java.sql.Connection conn;
     private  java.sql.ResultSet rs; 
@@ -211,9 +296,10 @@ private void constructGroupDB() //OK
         try
         {
             
-         countriesT = new nom.groupDB(conn,idGroup);
+         countriesT = new nom.groupDB(conn,nom);
         }
         catch(Exception e)
+        
         {
             e.printStackTrace();
         }
@@ -223,7 +309,7 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
     {
       try
         {
-            countriesT.setNom(idGroup); // za izvli4ane na samo poleta otgovarq6ti s idGroup
+            countriesT.setNom(nom); // za izvli4ane na samo poleta otgovarq6ti s idGroup
             rs = countriesT.getTable();
             model = new imakante.com.CustomTableModel(conn,rs, null);
             table = new imakante.com.CustomTable(model);
@@ -270,44 +356,211 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
    
    } 
     
-  public groupDB getCountriesT()
+  public groupDB getCountriesT() //OK
      {
         return countriesT;
     }
     
-  public void setCountriesT(groupDB val)
+  public void setCountriesT(groupDB val)//OK
      {
         this.countriesT = val;
     }
     
-  public CustomTableModel getModel()
+  public CustomTableModel getModel()//OK
      {
         return model;
     }
     
-  public void setModel(CustomTableModel val)
+  public void setModel(CustomTableModel val)//OK
      {
         this.model = val;
     }
     
-  public CustomTable getTable()
+  public CustomTable getTable()//OK
      {
         return table;
     }
     
-  public void setTable(CustomTable val) 
+  public void setTable(CustomTable val) //OK
      {
         this.table = val;
     }
     
-  public iFrame getMyframe()
+  public iFrame getMyframe()//OK
      {
         return myframe;
     }
     
-  public void setMyframe(iFrame val)
+  public void setMyframe(iFrame val)//OK
      {
         this.myframe = val;
     }
+  public  boolean isAtBegining()//OK
+  {
+        return atBegining;
+    }
     
+  public  void setAtBegining(boolean aAtBegining)//OK
+  {
+        atBegining = aAtBegining;
+    }
+    
+    public  boolean isAtEnd()//OK
+    {
+        return atEnd;
+    }
+    
+    public  void setAtEnd(boolean aAtEnd) //OK
+    {
+        atEnd = aAtEnd;
+    } 
+   private int  getMaxRow() //OK
+   {
+        int i = 0;
+        i  = table.getRowCount() - 1;
+        return i;
+   }
+   public  int getRow()
+   {
+        return row;
+    }
+   
+     public void setId(int ID) //OK
+    {
+        this.id = ID;
+    }
+    public int getId() //OK
+    {
+        return id;
+    }
+    public void setNom(int NOM) //OK
+    {
+        this.nom = NOM;
+    }
+    public int getNom()//OK
+    {
+        return nom;
+    }
+    public void setCod(String COD) //OK
+    {
+        this.cod = COD;
+    }
+    public String getCod() //OK
+    {
+        return cod;
+    }
+    public void setNames(String Name) //OK
+    {
+        this.name = Name;
+    }
+    public String getNames() //OK
+    {
+        return name;
+    }
+   
+     public void setAnID(int anid) //OK
+    {
+        this.alId = anid;
+    }
+    public int getAnID() //OK
+    {
+        return alId;
+    }
+    public  void setRow(int val) {
+        row = val;
+    }
+ public  void mTableEnd() //OK
+ {
+        setRow(getMaxRow());
+        try{
+            setId((Integer) table.getValueAt(getRow(), 0));
+            setCod((String) table.getValueAt(getRow(), 1));
+            setNames((String) table.getValueAt(getRow(), 2));
+            setAnID((Integer) table.getValueAt(getRow(), 3));
+            
+        }
+        catch(ArrayIndexOutOfBoundsException aioobe)
+        {
+            setRow(getRow() - 1);
+            System.out.println("problem");
+        }
+        setAtBegining(false);
+        setAtEnd(true);
+    }
+ public void mOneRowPlus() //OK
+ {
+      if(getRow() <= getMaxRow())
+      {
+        if(getRow() < getMaxRow())
+        {
+          setRow(getRow()+1);
+        }
+        setAtBegining(false);
+        try
+        {
+            setId((Integer) table.getValueAt(getRow(), 0));
+            setCod((String) table.getValueAt(getRow(), 1));
+            setNames((String) table.getValueAt(getRow(), 2));
+            setAnID((Integer) table.getValueAt(getRow(), 3));    
+        }
+        catch(ArrayIndexOutOfBoundsException aioobe)
+        {
+            setRow(getRow() - 1);
+            System.out.println("problem");
+        }
+        if(getRow() == getMaxRow())
+        {
+                setAtEnd(true);
+        }
+      }
+ }
+ public  void mOneRowMinus() //OK
+ {
+        if(getRow() >= 0){
+            if(getRow() > 0){
+                setRow(getRow() - 1);}
+            setAtEnd(false);
+            try
+            {
+                setId((Integer) table.getValueAt(getRow(), 0));
+                setCod((String) table.getValueAt(getRow(), 1));
+                setNames((String) table.getValueAt(getRow(), 2));
+                setAnID((Integer) table.getValueAt(getRow(), 3)); 
+            }
+            catch(ArrayIndexOutOfBoundsException aioobe)
+            {
+                setRow(getRow() + 1);
+            }
+                System.out.println("problem");}
+            if(getRow() == 0){
+                setAtBegining(true);
+            }
+        }   
+ public void mTableBegining() //OK
+ {
+      setRow(0);
+        try
+        {
+            setId((Integer) table.getValueAt(getRow(), 0));
+            setCod((String) table.getValueAt(getRow(), 1));
+            setNames((String) table.getValueAt(getRow(), 2));
+            setAnID((Integer) table.getValueAt(getRow(), 3)); 
+        }
+        catch(ArrayIndexOutOfBoundsException aioobe)
+        {
+            setRow(getRow() - 1);
+            System.out.println("problem");
+        }
+        setAtBegining(true);
+        setAtEnd(false);
+ }
+  protected  void refreshTable(){
+        jScrollPane1.remove(table);
+        rs = countriesT.getTable();
+        model = new imakante.com.CustomTableModel(conn, rs, null);
+        table = new imakante.com.CustomTable(model);
+        jScrollPane1.getViewport().add(table);
+        jScrollPane1.repaint();
+        
+    }
 }// end class
