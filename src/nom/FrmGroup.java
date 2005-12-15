@@ -12,10 +12,13 @@ package nom;
  */
 
 import java.awt.event.WindowListener;
+import java.awt.print.PrinterException;
 import java.sql.*;
 import imakante.com.*;
 import imakante.com.vcomponents.*;
+import javax.print.PrintException;
 import javax.swing.*;
+import java.text.MessageFormat;
 
 public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implements WindowListener
 {
@@ -112,7 +115,7 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 779, Short.MAX_VALUE)
+            .add(0, 825, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -141,6 +144,12 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
         jPanel3.add(jButtonEdit);
 
         jButtonPrint.setText("\u041f\u0435\u0447\u0430\u0442");
+        jButtonPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPrintActionPerformed(evt);
+            }
+        });
+
         jPanel3.add(jButtonPrint);
 
         jButtonPrnReport.setText("\u041f\u0435\u0447\u0430\u0442 \u0440\u0435\u043f\u043e\u0440\u0442");
@@ -168,12 +177,38 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
         jPanel3.add(jButtonDeleteAll);
 
         jButtonClose.setText("\u0417\u0430\u0442\u0432\u0430\u0440\u044f\u043d\u0435");
+        jButtonClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCloseActionPerformed(evt);
+            }
+        });
+
         jPanel3.add(jButtonClose);
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.SOUTH);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
+// TODO add your handling code here:
+        
+        try
+        {
+        MessageFormat headerFormat = new MessageFormat("Group");
+        MessageFormat footerFormat = new MessageFormat("Page. "+"- {0} -"+" IMAKANTE' ");
+        table.print(JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
+        }
+        catch(PrinterException e)
+        {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButtonPrintActionPerformed
+
+    private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
+// TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButtonCloseActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
@@ -183,14 +218,17 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
          String searchName = jTextName.getText();
          int searchAnLevel = Integer.parseInt(jTextAnLevel.getText());
          rs = countriesT.searchRecords(getNom(),searchCod,searchName,searchAnLevel);
-         table.removeAll();
+         jScrollPane1.remove(table);
          model = new imakante.com.CustomTableModel(conn,rs, null);
          table = new imakante.com.CustomTable(model);
+         jScrollPane1.getViewport().add(table);
+         jScrollPane1.repaint();
         }
         catch(Exception e)
         {
             e.printStackTrace();
         }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshActionPerformed

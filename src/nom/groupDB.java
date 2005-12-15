@@ -70,11 +70,11 @@ public class groupDB  extends dbObject
          {
             
             getCstm().setInt("in_id", getId());
-            getCstm().setInt("in_nom", getNom());
+            getCstm().setInt("in_nom", getNom()); // za suotvetnata grupa
             getCstm().setString("in_cod", getCod());
             getCstm().setString("in_name", getName());
             getCstm().setInt("in_alid", getAnID());
-            getCstm().setInt("comprator", getComprator());
+            getCstm().setInt("comprator", getComprator()); // izbor na SQL zaqwka
             
             System.out.println("ot registerparameter");
         }
@@ -176,7 +176,7 @@ public class groupDB  extends dbObject
         {
             sqle.printStackTrace();
         }
-        return rs;
+        return getRs();
         
     }
     public java.sql.Connection getConn() //OK
@@ -297,14 +297,14 @@ public class groupDB  extends dbObject
         }catch(java.sql.SQLException sqle){}
         
     }
-    public String[] getAnLevelName() //OK
+    public String[] getAnLevelName() //OK --> da sa uto4ni koi variant!!!!!!
     {
         comprator=6;
         String return_str=new String("");
         int oldId = id;
         ResultSet oldRs = rs;
        
-         try
+         try              // variant I - vzima vsi4ki zapisi
         {
              registerParameters();
             rs = cstm.executeQuery();
@@ -320,6 +320,10 @@ public class groupDB  extends dbObject
         rs = oldRs;
         id = oldId;
         splitNamesOfAnLevel = return_str.split(" ");
+    // varioan II - vzima zapisite otnasq6ti samo za grupata
+   // variantite zavisqt ot SQL zaqwkata v procedurata
+        
+       
         return splitNamesOfAnLevel;
     }
 }
