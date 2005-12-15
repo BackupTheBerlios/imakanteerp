@@ -43,6 +43,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x41f;&#x440;&#x435;&#x434;&#x438;&#x448;&#x43d;&#x438;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonUndoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonClose">
           <Properties>

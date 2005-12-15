@@ -14,7 +14,7 @@ public class aeGroup extends imakante.com.vcomponents.iDialog
 {
     
     /** Creates new form aeGroup */
-    public aeGroup(imakante.com.vcomponents.iInternalFrame frame, boolean modal)
+    public aeGroup(imakante.com.vcomponents.iInternalFrame frame, boolean modal,int selectComboBoxItem)
     {
         
         super(frame, modal);
@@ -23,6 +23,7 @@ public class aeGroup extends imakante.com.vcomponents.iDialog
         initComponents();
        
         getNavigatiionState();
+        jButtonUndo.setEnabled(false);
         this.setResizable(false);
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         int x = (((dim.width)-(this.getSize().width))/2);
@@ -33,6 +34,11 @@ public class aeGroup extends imakante.com.vcomponents.iDialog
         {
             jComboAnLevel.addItem(new String(splitNamesOfAnLevel[i]));
         }
+        this.selectComboBoxItem = selectComboBoxItem;
+        if(selectComboBoxItem != 0)
+          {
+             jComboAnLevel.setSelectedIndex(selectComboBoxItem);
+          }
         
         repaintComp();
         
@@ -76,6 +82,12 @@ public class aeGroup extends imakante.com.vcomponents.iDialog
         jPanel1.add(jButtonSave);
 
         jButtonUndo.setText("\u041f\u0440\u0435\u0434\u0438\u0448\u043d\u0438");
+        jButtonUndo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUndoActionPerformed(evt);
+            }
+        });
+
         jPanel1.add(jButtonUndo);
 
         jButtonClose.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
@@ -186,16 +198,33 @@ public class aeGroup extends imakante.com.vcomponents.iDialog
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUndoActionPerformed
+// TODO add your handling code here:
+        myParent.setNames(oldName);
+        myParent.setCod(oldCod);
+        myParent.setAnID(oldAnLevel);
+        repaintComp();
+        jButtonUndo.setEnabled(false);
+    }//GEN-LAST:event_jButtonUndoActionPerformed
+
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
 // TODO add your handling code here:
         
+        oldName = myParent.getNames(); //    \
+        oldCod = myParent.getCod();    //     > za vyztanovqvane na staritestoinosti
+        oldAnLevel = myParent.getAnID();//   /
         myParent.setCod(jTextCod.getText());
         myParent.setNames(jTextName.getText());
  // da se dobavi za ComboBox       !!!!!!
-        myParent.setAnID(jComboAnLevel.getSelectedIndex()+1);
+        myParent.setAnID(jComboAnLevel.getSelectedIndex());
         myParent.getCountriesT().updateRow(myParent.getId(),myParent.getNom(),
                                           myParent.getCod(),myParent.getNames(),myParent.getAnID());
         myParent.refreshTable();
+        
+        jTextCod.setText("");
+        jTextName.setText("");
+        
+        jButtonUndo.setEnabled(true);
         
         
     }//GEN-LAST:event_jButtonSaveActionPerformed
@@ -311,6 +340,10 @@ public class aeGroup extends imakante.com.vcomponents.iDialog
  //--------------- My Variables
     private nom.FrmGroup myParent;
     private String splitNamesOfAnLevel[];
+    private int selectComboBoxItem;
+    private int oldAnLevel;
+    private String oldName = "";
+    private String oldCod = "";
  //---------------END My Variables
 //---------------START MyFunction 
  
@@ -336,8 +369,9 @@ private void repaintComp() //OK ---> !!!da se dovyr6i za ComboBox
 {
     jTextCod.setText(myParent.getCod());
     jTextName.setText(myParent.getNames());
-    jTextCod.repaint();
-    jTextName.repaint();
+    //jTextCod.repaint();
+   // jTextName.repaint();
+    jComboAnLevel.setSelectedIndex(myParent.getAnID());
     
 }
 }// end class

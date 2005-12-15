@@ -50,6 +50,7 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
         jTextName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jTextAnLevel = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jButtonNew = new javax.swing.JButton();
@@ -92,6 +93,15 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
 
         jTextAnLevel.setPreferredSize(new java.awt.Dimension(45, 20));
         jPanel4.add(jTextAnLevel);
+
+        jButton1.setText("\u0422\u044a\u0440\u0441\u0435\u043d\u0435");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jPanel4.add(jButton1);
 
         jPanel1.add(jPanel4, java.awt.BorderLayout.SOUTH);
 
@@ -137,9 +147,21 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
         jPanel3.add(jButtonPrnReport);
 
         jButtonDel.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
+        jButtonDel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDelActionPerformed(evt);
+            }
+        });
+
         jPanel3.add(jButtonDel);
 
         jButtonRefresh.setText("\u0412\u0441\u0438\u0447\u043a\u0438 \u0437\u0430\u043f\u0438\u0441\u0438");
+        jButtonRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRefreshActionPerformed(evt);
+            }
+        });
+
         jPanel3.add(jButtonRefresh);
 
         jButtonDeleteAll.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435 \u043d\u0430 \u0442\u0430\u0431\u043b\u0438\u0446\u0430");
@@ -152,6 +174,41 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+// TODO add your handling code here:
+        try
+        {
+         String searchCod = jTextCod.getText();
+         String searchName = jTextName.getText();
+         int searchAnLevel = Integer.parseInt(jTextAnLevel.getText());
+         rs = countriesT.searchRecords(getNom(),searchCod,searchName,searchAnLevel);
+         table.removeAll();
+         model = new imakante.com.CustomTableModel(conn,rs, null);
+         table = new imakante.com.CustomTable(model);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButtonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshActionPerformed
+// TODO add your handling code here:
+        refreshTable();
+    }//GEN-LAST:event_jButtonRefreshActionPerformed
+
+    private void jButtonDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDelActionPerformed
+// TODO add your handling code here:
+        if(table.getSelectedRow() != -1)
+        {
+            setRow(table.getSelectedRow());
+            setId((Integer)table.getValueAt(getRow(),0));
+            countriesT.deleteRow(getId());
+            refreshTable();
+        }
+        
+    }//GEN-LAST:event_jButtonDelActionPerformed
 
     private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
 // TODO add your handling code here:
@@ -174,7 +231,7 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
             
             try
             {
-                nom.aeGroup dialog = new nom.aeGroup(this, true);
+                nom.aeGroup dialog = new nom.aeGroup(this, true,getAnID());
                 dialog.setVisible(true);
                 
             } catch(Exception e)
@@ -194,9 +251,10 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
         setAnID(0);
         countriesT.insertRow(getNom(),getCod(),getNames(),getAnID());
         setId(countriesT.getMaxId());
+        refreshTable();
          try
             {
-                nom.aeGroup dialog = new nom.aeGroup(this, true);
+                nom.aeGroup dialog = new nom.aeGroup(this, true,0);
                 dialog.setVisible(true);
                 
             } catch(Exception e)
@@ -224,6 +282,7 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonClose;
     private javax.swing.JButton jButtonDel;
     private javax.swing.JButton jButtonDeleteAll;
@@ -466,7 +525,8 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
     {
         return alId;
     }
-    public  void setRow(int val) {
+    public  void setRow(int val) //OK
+    {
         row = val;
     }
  public  void mTableEnd() //OK
@@ -477,6 +537,8 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
             setCod((String) table.getValueAt(getRow(), 1));
             setNames((String) table.getValueAt(getRow(), 2));
             setAnID((Integer) table.getValueAt(getRow(), 3));
+            
+            table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
             
         }
         catch(ArrayIndexOutOfBoundsException aioobe)
@@ -501,7 +563,9 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
             setId((Integer) table.getValueAt(getRow(), 0));
             setCod((String) table.getValueAt(getRow(), 1));
             setNames((String) table.getValueAt(getRow(), 2));
-            setAnID((Integer) table.getValueAt(getRow(), 3));    
+            setAnID((Integer) table.getValueAt(getRow(), 3));  
+            
+            table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
         }
         catch(ArrayIndexOutOfBoundsException aioobe)
         {
@@ -526,6 +590,8 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
                 setCod((String) table.getValueAt(getRow(), 1));
                 setNames((String) table.getValueAt(getRow(), 2));
                 setAnID((Integer) table.getValueAt(getRow(), 3)); 
+                
+                table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
             }
             catch(ArrayIndexOutOfBoundsException aioobe)
             {
@@ -545,6 +611,8 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
             setCod((String) table.getValueAt(getRow(), 1));
             setNames((String) table.getValueAt(getRow(), 2));
             setAnID((Integer) table.getValueAt(getRow(), 3)); 
+            
+            table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
         }
         catch(ArrayIndexOutOfBoundsException aioobe)
         {
@@ -554,7 +622,8 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
         setAtBegining(true);
         setAtEnd(false);
  }
-  protected  void refreshTable(){
+  protected  void refreshTable() //OK
+  {
         jScrollPane1.remove(table);
         rs = countriesT.getTable();
         model = new imakante.com.CustomTableModel(conn, rs, null);

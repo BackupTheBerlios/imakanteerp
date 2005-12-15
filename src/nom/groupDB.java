@@ -138,7 +138,7 @@ public class groupDB  extends dbObject
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         
     }
- public void getRow(int in_id) //OK
+ public java.sql.ResultSet getRow(int in_id) //OK
     {
         comprator = 4;
         id = in_id;
@@ -158,7 +158,7 @@ public class groupDB  extends dbObject
         {
             sqle.printStackTrace();
         }
-        
+      return rs;  
     }
  public java.sql.ResultSet searchRecords(int in_nom, String in_cod,String in_name, int alID) //OK
     {
@@ -225,7 +225,7 @@ public class groupDB  extends dbObject
     {
         return id;
     }
-    public int getMaxId()
+    public int getMaxId() //OK
     {
         comprator = 7;
         int return_int=-1;
@@ -272,7 +272,7 @@ public class groupDB  extends dbObject
     {
         this.alId = anid;
     }
-    public int getAnID()
+    public int getAnID() //OK
     {
         return alId;
     }
@@ -297,7 +297,7 @@ public class groupDB  extends dbObject
         }catch(java.sql.SQLException sqle){}
         
     }
-    public String[] getAnLevelName()
+    public String[] getAnLevelName() //OK
     {
         comprator=6;
         String return_str=new String("");
