@@ -13,13 +13,17 @@ package nom;
  *
  * @author Ivan Katsarov
  */
+import com.mysql.jdbc.ResultSetMetaData;
 import imakante.com.*;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class groupDB  extends dbObject 
 {
     //-------------START MyVariables
    private String splitNamesOfAnLevel[];
+   private int indexConnOfId[] = null; // masiv prave6t vryzkata mejdu indexite na ComboBox_a i "ID" na tablicata za analiti4ni niva
    private java.sql.ResultSet rs;
    private java.sql.Statement stmt;
    private java.sql.CallableStatement cstm;
@@ -297,20 +301,28 @@ public class groupDB  extends dbObject
         }catch(java.sql.SQLException sqle){}
         
     }
-    public String[] getAnLevelName() //OK --> da sa uto4ni koi variant!!!!!!
+    public String[] getAnLevelName() //OK 
     {
         comprator=6;
         String return_str=new String("");
         int oldId = id;
         ResultSet oldRs = rs;
+        String strIndexConnOfId = new String("");
+        ArrayList in = new ArrayList();
+        Iterator it = null;
+        int i = 0;
        
-         try              // variant I - vzima vsi4ki zapisi
+         try              
         {
              registerParameters();
             rs = cstm.executeQuery();
+                        
+           
             while(rs.next())
             {
                return_str =return_str + rs.getString(3) + " ";
+               in.add(new Integer(rs.getInt(1)));
+               i++;
             }
         }
         catch(Exception e)
@@ -320,10 +332,20 @@ public class groupDB  extends dbObject
         rs = oldRs;
         id = oldId;
         splitNamesOfAnLevel = return_str.split(" ");
-    // varioan II - vzima zapisite otnasq6ti samo za grupata
-   // variantite zavisqt ot SQL zaqwkata v procedurata
-        
-       
+        indexConnOfId = new int[i];
+        it = in.iterator();
+        i=0;
+        while(it.hasNext())
+        {
+            indexConnOfId[i] =(Integer) it.next();
+            i++;
+        }
+             
         return splitNamesOfAnLevel;
     }
-}
+    
+  public int[] getIndexConnOfId()
+  {
+      return indexConnOfId;
+  }
+}// end class

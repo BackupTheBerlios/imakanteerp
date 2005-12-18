@@ -33,11 +33,15 @@ public class aeGroup extends imakante.com.vcomponents.iDialog
         for(int i=0;i<splitNamesOfAnLevel.length;i++)
         {
             jComboAnLevel.addItem(new String(splitNamesOfAnLevel[i]));
+            
         }
-        this.selectComboBoxItem = selectComboBoxItem;
+        
         if(selectComboBoxItem != 0)
           {
-             jComboAnLevel.setSelectedIndex(selectComboBoxItem);
+            
+            selectComboBoxItem = getNewComboBoxIndex(selectComboBoxItem);
+            
+            jComboAnLevel.setSelectedIndex(selectComboBoxItem);
           }
         
         repaintComp();
@@ -108,7 +112,7 @@ public class aeGroup extends imakante.com.vcomponents.iDialog
         jLabel1.setText("\u041a\u043e\u0434:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 10, 5, 5);
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 5, 5);
         jPanel2.add(jLabel1, gridBagConstraints);
 
         jLabel2.setText("\u0418\u043c\u0435:");
@@ -116,7 +120,7 @@ public class aeGroup extends imakante.com.vcomponents.iDialog
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 20, 5, 5);
+        gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 5);
         jPanel2.add(jLabel2, gridBagConstraints);
 
         jLabel3.setText("\u0410\u043d.\u043d\u0438\u0432\u0430??:");
@@ -124,13 +128,13 @@ public class aeGroup extends imakante.com.vcomponents.iDialog
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 10, 5, 5);
+        gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 5);
         jPanel2.add(jLabel3, gridBagConstraints);
 
         jTextCod.setPreferredSize(new java.awt.Dimension(45, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 10, 5, 5);
+        gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 20);
         jPanel2.add(jTextCod, gridBagConstraints);
 
         jTextName.setPreferredSize(new java.awt.Dimension(150, 20));
@@ -138,7 +142,7 @@ public class aeGroup extends imakante.com.vcomponents.iDialog
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 10, 5, 5);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
         jPanel2.add(jTextName, gridBagConstraints);
 
         jComboAnLevel.setPreferredSize(new java.awt.Dimension(150, 22));
@@ -146,7 +150,7 @@ public class aeGroup extends imakante.com.vcomponents.iDialog
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 10, 5, 5);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
         jPanel2.add(jComboAnLevel, gridBagConstraints);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("\u041d\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u044f"));
@@ -190,7 +194,7 @@ public class aeGroup extends imakante.com.vcomponents.iDialog
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.insets = new java.awt.Insets(40, 20, 5, 5);
+        gridBagConstraints.insets = new java.awt.Insets(40, 5, 10, 20);
         jPanel2.add(jPanel3, gridBagConstraints);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -211,19 +215,18 @@ public class aeGroup extends imakante.com.vcomponents.iDialog
 // TODO add your handling code here:
         
         oldName = myParent.getNames(); //    \
-        oldCod = myParent.getCod();    //     > za vyztanovqvane na staritestoinosti
+        oldCod = myParent.getCod();    //     > za vyztanovqvane na starite stoinosti
         oldAnLevel = myParent.getAnID();//   /
         myParent.setCod(jTextCod.getText());
         myParent.setNames(jTextName.getText());
- // da se dobavi za ComboBox       !!!!!!
-        myParent.setAnID(jComboAnLevel.getSelectedIndex());
+// ustanovqvame AnID 4rez masiva za vryzkata mejdu indexite na ComboBox_a i "ID" na tablicata      
+        myParent.setAnID(myParent.getCountriesT().getIndexConnOfId()[jComboAnLevel.getSelectedIndex()]);
         myParent.getCountriesT().updateRow(myParent.getId(),myParent.getNom(),
                                           myParent.getCod(),myParent.getNames(),myParent.getAnID());
         myParent.refreshTable();
         
-        jTextCod.setText("");
-        jTextName.setText("");
-        
+       
+        myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
         jButtonUndo.setEnabled(true);
         
         
@@ -365,13 +368,26 @@ private void getNavigatiionState() //OK
     }
      
 }
-private void repaintComp() //OK ---> !!!da se dovyr6i za ComboBox
+private void repaintComp() //OK 
 {
     jTextCod.setText(myParent.getCod());
     jTextName.setText(myParent.getNames());
     //jTextCod.repaint();
    // jTextName.repaint();
-    jComboAnLevel.setSelectedIndex(myParent.getAnID());
+    jComboAnLevel.setSelectedIndex(getNewComboBoxIndex(myParent.getAnID()));
     
+}
+private int getNewComboBoxIndex(int oldindex) //OK
+{ 
+    int newindex= 0;
+    for(int i = 0; i < myParent.getCountriesT().getIndexConnOfId().length; i++)
+       {
+        if(myParent.getCountriesT().getIndexConnOfId()[i]==oldindex)
+          {
+           newindex = i;
+           break;
+          }
+      }
+    return newindex;
 }
 }// end class
