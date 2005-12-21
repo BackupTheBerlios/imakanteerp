@@ -27,15 +27,16 @@ public class contragentDB extends dbObject
    private String cod,name,bull,dan,address,tel,fax,email,web;
    
     /** Creates a new instance of contragentDB */
-    public contragentDB(java.sql.Connection conn)
+    public contragentDB(java.sql.Connection conn, int flag) //ok
     {
         super(conn);
+        this.flag = flag;
         prepareCstm();
     }
- private void prepareCstm() // vhodnite parametri
+ private void prepareCstm() //ok
     {
      try {
-          setCstm(getConn().prepareCall("{call nom_procedure_contragent(?,?,?,?,?,?)}"));
+          setCstm(getConn().prepareCall("{call nom_procedure_contragent(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
          }
      catch(java.sql.SQLException sqle)
      {
@@ -92,7 +93,7 @@ public class contragentDB extends dbObject
         this.web = in_web;
         this.id_mol = in_id_mol;
         this.id_oso = in_id_oso;
-        this.flag = 0;
+       // this.flag = 0;
         try
         {
             registerParameters();
@@ -132,9 +133,10 @@ public class contragentDB extends dbObject
       
         
     }
- private void changeFlag(int flag, int id) //ok
+ private void changeFlag(int flag, int id) //ok 
  {
-     comprator = 2; 
+     // smenqme flaga na opredelen red !!!
+     comprator = 2;  // sqlska zaqwka koqto samo 6te smenq flaga
      this.flag = flag;
      this.id = id;
      try
@@ -172,7 +174,7 @@ public class contragentDB extends dbObject
         this.web = in_web;
         this.id_mol = in_id_mol;
         this.id_oso = in_id_oso;
-        this.flag = 0;
+        //this.flag = 0;
         
         
         try
@@ -220,7 +222,7 @@ public class contragentDB extends dbObject
         this.rs = rs;
     }
     
- public java.sql.ResultSet getTable()
+ public java.sql.ResultSet getTable() //ok
     {
         
         this.comprator = 0;
@@ -235,7 +237,45 @@ public class contragentDB extends dbObject
         System.out.println("ot getTable()");
         return rs;
     }
- private void registerParameters() //OK - ima da se divyr6vat poleta
+ public String getAddressName(int id_nm) //ok izvli4ane na naselenoto mqsto sprqmo id_nm
+ {
+     String adres = new String("");
+     this.id_nm = id_nm;
+     this.comprator = 10;           // SQLska zaqvka za izvli4ane na naselenoto mqsto v zavisimost id_nm
+     try
+        {
+            registerParameters();
+            setRs(getCstm().executeQuery());
+            while(rs.next())
+            {
+                adres = rs.getString(1);
+            }
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+        System.out.println("ot contragentDB.getAddress()");
+        return adres;   
+ }
+ public java.sql.ResultSet getTablesAddressName(String nm) // izvli4ane na naseleneto mqsto, oblasta, stranata
+ {
+     this.comprator = 11;
+     String adres = address;
+     this.address = nm;
+        try{
+            registerParameters();
+            setRs(getCstm().executeQuery());
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+        System.out.println("ot contragentDB.getTablesAddressName()");
+        address = adres;
+        return rs;
+ }
+ private void registerParameters() //ok
     {
          try
          {
@@ -262,15 +302,15 @@ public class contragentDB extends dbObject
              sqle.printStackTrace();
          }
     }
-  public int getComprator() //OK
+  public int getComprator() 
     {
         return comprator;
     }
-    public void setComprator(int com) //OK
+    public void setComprator(int com) 
     {
         this.comprator = com;
     }
-    public void close() //OK
+    public void close() 
     {
         try{
             rs.close();
@@ -283,27 +323,27 @@ public class contragentDB extends dbObject
         }catch(java.sql.SQLException sqle){}
         
     }
- public void setId(int ID) //OK
+ public void setId(int ID) 
     {
         this.id = ID;
     }
-    public int getId() //OK
+    public int getId() 
     {
         return id;
     }
-  public void setCod(String COD) //OK
+  public void setCod(String COD) 
     {
         this.cod = COD;
     }
-    public String getCod() //OK
+    public String getCod() 
     {
         return cod;
     }
-    public void setName(String Name) //OK
+    public void setName(String Name) 
     {
         this.name = Name;
     }
-    public String getName() //OK
+    public String getName() 
     {
         return name;
     }

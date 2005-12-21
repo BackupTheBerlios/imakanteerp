@@ -10,16 +10,19 @@ package nom;
  *
  * @author  admin
  */
-public class aeContragent extends javax.swing.JDialog {
+public class aeContragent extends imakante.com.vcomponents.iDialog {
     
     /** Creates new form aeContragent */
-    public aeContragent(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public aeContragent(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
+        super(frame, modal);
+        this.myframe = frame;
+        this.myParent = (nom.FrmContragent) frame;
         initComponents();
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         int x = (((dim.width)-(this.getSize().width))/2);
         int y = (((dim.height)-(this.getSize().height))/2);
         this.setLocation(x, y);
+        repaintComp();
     }
     
     /** This method is called from within the constructor to
@@ -267,12 +270,24 @@ public class aeContragent extends javax.swing.JDialog {
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setPreferredSize(new java.awt.Dimension(263, 40));
         jButton1.setText("\u0421\u044a\u0445\u0440\u0430\u043d\u0438");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         jPanel2.add(jButton1);
 
         jButton2.setText("\u041f\u0440\u0435\u0434\u0438\u0448\u0435\u043d");
         jPanel2.add(jButton2);
 
         jButton3.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         jPanel2.add(jButton3);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
@@ -280,25 +295,47 @@ public class aeContragent extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+// TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+// TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void jTextFieldNMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNMKeyPressed
 // TODO add your handling code here:
  // pri natiskane na F7 6te se izvikva aContragent, za izbor na naseleno mqsto ot bazata danni
        if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode())
        {
-        aContragent setNM = new aContragent(null,true);
+        if(jTextFieldNM.getText()=="")
+        {
+        java.sql.ResultSet r1 = myParent.getCountriesT().getTablesAddressName("");
+        java.sql.Connection c1 = myParent.getCountriesT().getConn();
+        showAddressContragent setNM = new showAddressContragent(myframe,true,r1,c1);
+        }
+        else
+        {
+        java.sql.ResultSet r1 = myParent.getCountriesT().getTablesAddressName(jTextFieldNM.getText());
+        java.sql.Connection c1 = myParent.getCountriesT().getConn();
+        showAddressContragent setNM = new showAddressContragent(myframe,true,r1,c1); 
+        }
+        repaintComp();
        }
     }//GEN-LAST:event_jTextFieldNMKeyPressed
     
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+   /* public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new aeContragent(new javax.swing.JFrame(), true).setVisible(true);
             }
         });
-    }
+    }*/
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -332,13 +369,26 @@ public class aeContragent extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldWeb;
     // End of variables declaration//GEN-END:variables
  //--------------- My Variables
-   
+   private FrmContragent myParent;
+   private imakante.com.vcomponents.iInternalFrame myframe;
  //---------------END My Variables
 //---------------START MyFunction 
     
- private void repaintComp() // Ni6to
+ private void repaintComp() //
 {
+   jTextFieldAddress.setText(myParent.getAddress());
+   jTextFieldBulstat.setText(myParent.getBulstat());
+   jTextFieldCod.setText(myParent.getCod());
+   jTextFieldDanNomer.setText(myParent.getDanNomer());
+   jTextFieldEmail.setText(myParent.getEmail());
+   jTextFieldFax.setText(myParent.getFax());
+   jTextFieldName.setText(myParent.getName());
+   jTextFieldTel.setText(myParent.getTel());
+   jTextFieldWeb.setText(myParent.getWeb());
    
+   String adres = myParent.getCountriesT().getAddressName(myParent.getID_NM());
+   jTextFieldNM.setText(adres);
     
-}   
+} 
+ 
 }// end class
