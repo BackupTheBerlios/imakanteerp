@@ -1,15 +1,7 @@
-/*
- * FrmGroup.java
- *
- * Created on Monday, 2005, December 12, 21:26
- */
+
 
 package nom;
 
-/**
- *
- * @author  Ivan Katsarov
- */
 
 import java.awt.event.WindowListener;
 import java.awt.print.PrinterException;
@@ -22,8 +14,7 @@ import java.text.MessageFormat;
 
 public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implements WindowListener
 {
-    
-    /** Creates new form FrmGroup */
+
     public FrmGroup(String title, int idGroup) // TEST ----> da se dobavi: imakante.com.vcomponents.iFrame frame,
     {
         super(title);

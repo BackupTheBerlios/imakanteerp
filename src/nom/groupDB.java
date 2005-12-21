@@ -1,18 +1,7 @@
-/*
- * groupDB.java
- *
- * Created on Monday, 2005, December 12, 22:24
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
+
 
 package nom;
 
-/**
- *
- * @author Ivan Katsarov
- */
 import com.mysql.jdbc.ResultSetMetaData;
 import imakante.com.*;
 import java.sql.*;

@@ -1,15 +1,6 @@
-/*
- * aeGroup.java
- *
- * Created on Вторник, 2005, Декември 13, 19:31
- */
 
 package nom;
 
-/**
- *
- * @author  admin
- */
 public class aeGroup extends imakante.com.vcomponents.iDialog 
 {
     
