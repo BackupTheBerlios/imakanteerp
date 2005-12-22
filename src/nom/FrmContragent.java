@@ -1,15 +1,15 @@
 /*
- * FrmContragent.java
+ *0.FrmContragent.java
  *
- * Created on Сряда, 2005, Декември 21, 20:38
+ * 1.contragentDB - cannection to SQL server;
+ * 2.aeContragent - edit/insert/search element of table;
+ * 3.showAddressContragent - select address (City,province, post code);
+ * 4.showNameOfMOL_OSO - select names (first name, surname last name);
  */
 
 package nom;
 
-/**
- *
- * @author  admin
- */
+
 
 import java.awt.event.WindowListener;
 import java.awt.print.PrinterException;
@@ -65,7 +65,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 779, Short.MAX_VALUE)
+            .add(0, 834, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -85,7 +85,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 779, Short.MAX_VALUE)
+            .add(0, 834, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -98,6 +98,12 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel3.setPreferredSize(new java.awt.Dimension(801, 37));
         jButtonNew.setText("\u041d\u043e\u0432");
+        jButtonNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNewActionPerformed(evt);
+            }
+        });
+
         jPanel3.add(jButtonNew);
 
         jButtonEdit.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f");
@@ -116,21 +122,91 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
         jPanel3.add(jButtonPrintReport);
 
         jButtonDelete.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
+        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteActionPerformed(evt);
+            }
+        });
+
         jPanel3.add(jButtonDelete);
 
         jButtonRefresh.setText("\u0412\u0441\u0438\u0447\u043a\u0438 \u0437\u0430\u043f\u0438\u0441\u0438");
+        jButtonRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRefreshActionPerformed(evt);
+            }
+        });
+
         jPanel3.add(jButtonRefresh);
 
         jButtonDeleteAll.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435 \u043d\u0430 \u0442\u0430\u0431\u043b\u0438\u0446\u0430");
         jPanel3.add(jButtonDeleteAll);
 
         jButtonClose.setText("\u0417\u0430\u0442\u0432\u0430\u0440\u044f\u043d\u0435");
+        jButtonClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCloseActionPerformed(evt);
+            }
+        });
+
         jPanel3.add(jButtonClose);
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.SOUTH);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshActionPerformed
+// TODO add your handling code here:
+        refreshTable();
+    }//GEN-LAST:event_jButtonRefreshActionPerformed
+
+    private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
+// TODO add your handling code here:
+        if(table.getSelectedRow() != -1)
+        {
+            setRow(table.getSelectedRow());
+            setId((Integer)table.getValueAt(getRow(),0));
+            countriesT.deleteRow(getId());
+            refreshTable();
+        }
+        
+    }//GEN-LAST:event_jButtonDeleteActionPerformed
+
+    private void jButtonNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewActionPerformed
+// TODO add your handling code here:
+        setCod("");
+        setName("");
+        setBulstat("");
+        setDanNomer("");
+        setAddress("");
+        setID_NM(-1);
+        setTel("");
+        setFax("");
+        setEmail("");
+        setWeb("");
+        setID_MOL(-1);
+        setID_OSO(-1);
+        
+     
+       
+         try
+            {
+                nom.aeContragent dialog = new nom.aeContragent(this, true,true);
+                dialog.setVisible(true);
+                
+            } catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+        refreshTable(); 
+        
+    }//GEN-LAST:event_jButtonNewActionPerformed
+
+    private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
+// TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButtonCloseActionPerformed
 
     private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
 // TODO add your handling code here:
@@ -156,12 +232,12 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
             setEmail((String) table.getValueAt(getRow(), 13));
             setWeb((String) table.getValueAt(getRow(), 14));
             setID_MOL((Integer) table.getValueAt(getRow(), 15));
-            setID_OSO((Integer) table.getValueAt(getRow(), 16));
+            setID_OSO((Integer) table.getValueAt(getRow(), 17));
             
             
             try
             {
-                nom.aeContragent dialog = new nom.aeContragent(this, true);
+                nom.aeContragent dialog = new nom.aeContragent(this, true,false);
                 dialog.setVisible(true);
                 
             } catch(Exception e)
@@ -457,4 +533,14 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
    {
        return countriesT;
    }
+    protected  void refreshTable() //OK
+  {
+        jScrollPane1.remove(table);
+        rs = countriesT.getTable();
+        model = new imakante.com.CustomTableModel(conn, rs, null);
+        table = new imakante.com.CustomTable(model);
+        jScrollPane1.getViewport().add(table);
+        jScrollPane1.repaint();
+        
+    }
 }// end class

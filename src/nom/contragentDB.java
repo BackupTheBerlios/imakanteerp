@@ -275,6 +275,55 @@ public class contragentDB extends dbObject
         address = adres;
         return rs;
  }
+ public java.sql.ResultSet getTablesWithNames(String nam) // izvli4ane na imenata - ime , prezime familiq, egn ...
+ {
+     this.comprator = 12; 
+     String oldName = name;
+     this.name = nam;
+        try{
+            registerParameters();
+            setRs(getCstm().executeQuery());
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+        System.out.println("ot contragentDB.getTablesWithNames()");
+        name = oldName;
+        return rs;
+     
+ }
+ public String getNameWithID(int id_nam,boolean mol_oso) //ok izvli4ane na imenata na MOL
+ {
+     String nam = new String("");
+     if(mol_oso) // ako e true izvli4ame stoinost za MOL
+     {
+          this.id_mol = id_nam;
+          this.id_oso = -1;
+     }
+     else // ako e fause izvli4ame stoinost za OSO;
+     {
+         this.id_oso = id_nam;
+         this.id_mol = -1;
+     }
+    
+     this.comprator = 13;          
+     try
+        {
+            registerParameters();
+            setRs(getCstm().executeQuery());
+            while(rs.next())
+            {
+                nam = rs.getString("name");
+            }
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+        System.out.println("ot contragentDB.getNameWithID()");
+        return nam;   
+ }
  private void registerParameters() //ok
     {
          try
@@ -301,6 +350,25 @@ public class contragentDB extends dbObject
          {
              sqle.printStackTrace();
          }
+    }
+  public int getMaxId() //OK
+    {
+        comprator = 7;
+        int return_int=-1;
+         try
+        {
+            registerParameters();
+            rs = cstm.executeQuery();
+            while(rs.next())
+            {
+                return_int = rs.getInt(1);
+            }
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+       return return_int;
     }
   public int getComprator() 
     {

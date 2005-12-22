@@ -1,21 +1,15 @@
-/*
- * aeContragent.java
- *
- * Created on Вторник, 2005, Декември 20, 19:34
- */
+
 
 package nom;
 
-/**
- *
- * @author  admin
- */
+import javax.swing.JOptionPane;
 public class aeContragent extends imakante.com.vcomponents.iDialog {
     
     /** Creates new form aeContragent */
-    public aeContragent(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
+    public aeContragent(imakante.com.vcomponents.iInternalFrame frame, boolean modal, boolean isnew) {
         super(frame, modal);
         this.myframe = frame;
+        this.isNew = isnew; // opredelq dali zapisa sy6testwuwa v bazata;
         this.myParent = (nom.FrmContragent) frame;
         initComponents();
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
@@ -61,7 +55,6 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
         jTextFieldOSO = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -250,6 +243,12 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
         jPanel1.add(jTextFieldWeb, gridBagConstraints);
 
         jTextFieldMOL.setPreferredSize(new java.awt.Dimension(170, 20));
+        jTextFieldMOL.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldMOLKeyPressed(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
@@ -258,6 +257,12 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
         jPanel1.add(jTextFieldMOL, gridBagConstraints);
 
         jTextFieldOSO.setPreferredSize(new java.awt.Dimension(170, 20));
+        jTextFieldOSO.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldOSOKeyPressed(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 6;
@@ -278,9 +283,6 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
 
         jPanel2.add(jButton1);
 
-        jButton2.setText("\u041f\u0440\u0435\u0434\u0438\u0448\u0435\u043d");
-        jPanel2.add(jButton2);
-
         jButton3.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -295,6 +297,47 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTextFieldOSOKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldOSOKeyPressed
+// TODO add your handling code here:
+         if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode())
+       {
+        if(jTextFieldOSO.getText()=="")
+        {
+        java.sql.ResultSet r1 = myParent.getCountriesT().getTablesWithNames("");
+        java.sql.Connection c1 = myParent.getCountriesT().getConn();
+        showNameOfMOL_OSO setOSO = new showNameOfMOL_OSO(myframe,true,r1,c1,false);
+        }
+        else
+        {
+        java.sql.ResultSet r1 = myParent.getCountriesT().getTablesWithNames(jTextFieldOSO.getText());
+        java.sql.Connection c1 = myParent.getCountriesT().getConn();
+         showNameOfMOL_OSO setOSO = new showNameOfMOL_OSO(myframe,true,r1,c1,false);
+        }
+        repaintComp();
+       }  
+    }//GEN-LAST:event_jTextFieldOSOKeyPressed
+
+    private void jTextFieldMOLKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldMOLKeyPressed
+// TODO add your handling code here:
+       if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode())
+       {
+        if(jTextFieldMOL.getText()=="")
+        {
+        java.sql.ResultSet r1 = myParent.getCountriesT().getTablesWithNames("");
+        java.sql.Connection c1 = myParent.getCountriesT().getConn();
+        showNameOfMOL_OSO setMOL = new showNameOfMOL_OSO(myframe,true,r1,c1,true);
+        }
+        else
+        {
+        java.sql.ResultSet r1 = myParent.getCountriesT().getTablesWithNames(jTextFieldMOL.getText());
+        java.sql.Connection c1 = myParent.getCountriesT().getConn();
+         showNameOfMOL_OSO setMOL = new showNameOfMOL_OSO(myframe,true,r1,c1,true); 
+        }
+        repaintComp();
+       }  
+        
+    }//GEN-LAST:event_jTextFieldMOLKeyPressed
+
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 // TODO add your handling code here:
         this.dispose();
@@ -302,7 +345,54 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
-        
+        if(isNew) // zapisa NE sy6testvuva v bazata!!
+        {
+            if((myParent.getID_NM()==-1) | (myParent.getID_MOL()==-1) | (myParent.getID_OSO()==-1))
+            {
+                // syob6tenie da se vuvede naseleneto mqsto, MOL i OSO;
+               JOptionPane.showMessageDialog(this, "\u041c\u043e\u043b\u044f \u0432\u044a\u0432\u0435\u0434\u0435\u0442\u0435 \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e, \u041c\u041e\u041b \u0438 \u041e\u0421\u041e");
+               
+            }
+            else
+            {
+                myParent.setCod(jTextFieldCod.getText());
+                myParent.setName(jTextFieldName.getText());
+                myParent.setBulstat(jTextFieldBulstat.getText());
+                myParent.setDanNomer(jTextFieldDanNomer.getText());
+                myParent.setAddress(jTextFieldAddress.getText());
+                myParent.setTel(jTextFieldTel.getText());
+                myParent.setFax(jTextFieldFax.getText());
+                myParent.setEmail(jTextFieldEmail.getText());
+                myParent.setWeb(jTextFieldWeb.getText());
+                myParent.getCountriesT().insertRow(myParent.getCod(),myParent.getName(),
+                                                  myParent.getBulstat(),myParent.getDanNomer(),
+                                                  myParent.getAddress(),myParent.getID_NM(),
+                                                  myParent.getTel(),myParent.getFax(),myParent.getEmail(),
+                                                  myParent.getWeb(),myParent.getID_MOL(),myParent.getID_OSO());
+               
+            }
+        }
+        else  // zapisa  sy6testvuva v bazata!!
+        {
+                myParent.setCod(jTextFieldCod.getText());
+                myParent.setName(jTextFieldName.getText());
+                myParent.setBulstat(jTextFieldBulstat.getText());
+                myParent.setDanNomer(jTextFieldDanNomer.getText());
+                myParent.setAddress(jTextFieldAddress.getText());
+                myParent.setTel(jTextFieldTel.getText());
+                myParent.setFax(jTextFieldFax.getText());
+                myParent.setEmail(jTextFieldEmail.getText());
+                myParent.setWeb(jTextFieldWeb.getText());
+                
+                myParent.getCountriesT().updateRow(myParent.getId(),myParent.getCod(),myParent.getName(),
+                                                  myParent.getBulstat(),myParent.getDanNomer(),
+                                                  myParent.getAddress(),myParent.getID_NM(),
+                                                  myParent.getTel(),myParent.getFax(),myParent.getEmail(),
+                                                  myParent.getWeb(),myParent.getID_MOL(),myParent.getID_OSO());
+            
+        }
+      jButton3.doClick();
+      myParent.refreshTable();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextFieldNMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNMKeyPressed
@@ -339,7 +429,6 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabelAddress;
     private javax.swing.JLabel jLabelBulstat;
@@ -371,11 +460,14 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
  //--------------- My Variables
    private FrmContragent myParent;
    private imakante.com.vcomponents.iInternalFrame myframe;
+   boolean isNew; // za opredelqne dali zapisa e 4isto nov, t.e dali ne sy6testva b bazata
  //---------------END My Variables
 //---------------START MyFunction 
     
  private void repaintComp() //
 {
+   if(!isNew)
+   {
    jTextFieldAddress.setText(myParent.getAddress());
    jTextFieldBulstat.setText(myParent.getBulstat());
    jTextFieldCod.setText(myParent.getCod());
@@ -385,10 +477,22 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
    jTextFieldName.setText(myParent.getName());
    jTextFieldTel.setText(myParent.getTel());
    jTextFieldWeb.setText(myParent.getWeb());
-   
+   }
+   if((myParent.getID_NM()!=-1))
+   {
    String adres = myParent.getCountriesT().getAddressName(myParent.getID_NM());
    jTextFieldNM.setText(adres);
-    
+   }
+   if(myParent.getID_MOL()!=-1) 
+   {
+   String namMOL = myParent.getCountriesT().getNameWithID(myParent.getID_MOL(),true);
+   jTextFieldMOL.setText(namMOL);
+   }
+   if (myParent.getID_OSO()!=-1)
+   {
+   String namOSO = myParent.getCountriesT().getNameWithID(myParent.getID_OSO(),false);
+   jTextFieldOSO.setText(namOSO);
+   }
 } 
  
 }// end class
