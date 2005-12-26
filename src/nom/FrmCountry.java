@@ -517,7 +517,7 @@ public class FrmCountry extends iInternalFrame implements WindowListener{
     }
     
     
-    protected void UnloadWindow(){
+    private void UnloadWindow(){
         closeResource();
         this.dispose();
         
