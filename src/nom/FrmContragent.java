@@ -47,6 +47,25 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jTextFieldCod = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jTextFieldName = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jTextFieldBulstat = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jTextFieldDanNomer = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jTextFieldAddress = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jTextFieldTel = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jTextFieldFax = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jTextFieldEmail = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jTextFieldWeb = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jButtonNew = new javax.swing.JButton();
         jButtonEdit = new javax.swing.JButton();
@@ -65,7 +84,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 834, Short.MAX_VALUE)
+            .add(0, 1057, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -80,17 +99,70 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
         jPanel2.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel4.setPreferredSize(new java.awt.Dimension(801, 37));
-        org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 834, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 33, Short.MAX_VALUE)
-        );
+        jPanel4.setPreferredSize(new java.awt.Dimension(801, 60));
+        jLabel1.setText("\u041a\u043e\u0434:");
+        jPanel4.add(jLabel1);
+
+        jTextFieldCod.setPreferredSize(new java.awt.Dimension(45, 20));
+        jPanel4.add(jTextFieldCod);
+
+        jLabel2.setText("\u0418\u043c\u0435:");
+        jPanel4.add(jLabel2);
+
+        jTextFieldName.setPreferredSize(new java.awt.Dimension(200, 20));
+        jPanel4.add(jTextFieldName);
+
+        jLabel3.setText("\u0411\u0443\u043b\u0441\u0442\u0430\u0442:");
+        jPanel4.add(jLabel3);
+
+        jTextFieldBulstat.setPreferredSize(new java.awt.Dimension(90, 20));
+        jPanel4.add(jTextFieldBulstat);
+
+        jLabel4.setText("\u0414.\u043d\u043e\u043c\u0435\u0440:");
+        jPanel4.add(jLabel4);
+
+        jTextFieldDanNomer.setPreferredSize(new java.awt.Dimension(90, 20));
+        jPanel4.add(jTextFieldDanNomer);
+
+        jLabel5.setText("\u0410\u0434\u0440\u0435\u0441:");
+        jPanel4.add(jLabel5);
+
+        jTextFieldAddress.setPreferredSize(new java.awt.Dimension(200, 20));
+        jPanel4.add(jTextFieldAddress);
+
+        jLabel6.setText("\u0422\u0435\u043b.:");
+        jPanel4.add(jLabel6);
+
+        jTextFieldTel.setPreferredSize(new java.awt.Dimension(70, 20));
+        jPanel4.add(jTextFieldTel);
+
+        jLabel7.setText("\u0424\u0430\u043a\u0441:");
+        jPanel4.add(jLabel7);
+
+        jTextFieldFax.setPreferredSize(new java.awt.Dimension(70, 20));
+        jPanel4.add(jTextFieldFax);
+
+        jLabel8.setText("E-mail:");
+        jPanel4.add(jLabel8);
+
+        jTextFieldEmail.setPreferredSize(new java.awt.Dimension(150, 20));
+        jPanel4.add(jTextFieldEmail);
+
+        jLabel9.setText("Web page:");
+        jPanel4.add(jLabel9);
+
+        jTextFieldWeb.setPreferredSize(new java.awt.Dimension(150, 20));
+        jPanel4.add(jTextFieldWeb);
+
+        jButton1.setText("\u0422\u044a\u0440\u0441\u0435\u043d\u0435");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jPanel4.add(jButton1);
+
         jPanel2.add(jPanel4, java.awt.BorderLayout.SOUTH);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -116,6 +188,12 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
         jPanel3.add(jButtonEdit);
 
         jButtonPrint.setText("\u041f\u0435\u0447\u0430\u0442");
+        jButtonPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPrintActionPerformed(evt);
+            }
+        });
+
         jPanel3.add(jButtonPrint);
 
         jButtonPrintReport.setText("\u041f\u0435\u0447\u0430\u0442 \u0440\u0435\u043f\u043e\u0440\u0442");
@@ -155,6 +233,57 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
+// TODO add your handling code here:
+        try
+        {
+        MessageFormat headerFormat = new MessageFormat("Contragent");
+        MessageFormat footerFormat = new MessageFormat("Page. "+"- {0} -"+" IMAKANTE' ");
+        table.print(JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
+        }
+        catch(PrinterException e)
+        {
+            e.printStackTrace();
+        }
+        
+    }//GEN-LAST:event_jButtonPrintActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+// TODO add your handling code here:
+        setCod(jTextFieldCod.getText());
+        setName(jTextFieldName.getText());
+        setBulstat(jTextFieldBulstat.getText());
+        setDanNomer(jTextFieldDanNomer.getText());
+        setAddress(jTextFieldAddress.getText());
+        setTel(jTextFieldTel.getText());
+        setFax(jTextFieldFax.getText());
+        setEmail(jTextFieldEmail.getText());
+        setWeb(jTextFieldWeb.getText());
+        
+        
+        try
+        {
+            
+            rs = countriesT.searchRecords(getCod(),getName(),getBulstat(),
+                          getDanNomer(),getAddress(),getID_NM(), getTel(),
+                          getFax(),getEmail(),getWeb(),getID_MOL(),getID_OSO());
+            
+            model = new imakante.com.CustomTableModel(conn,rs, null);
+            table = new imakante.com.CustomTable(model);
+            // da se napravqt skriti kolona "id" 
+            jScrollPane1.getViewport().add(table);
+            jScrollPane1.repaint();
+        }
+       catch(Exception e)
+       {
+           e.printStackTrace();
+       }
+       table.requestFocus();
+       
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshActionPerformed
 // TODO add your handling code here:
@@ -266,6 +395,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonClose;
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonDeleteAll;
@@ -274,11 +404,29 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
     private javax.swing.JButton jButtonPrint;
     private javax.swing.JButton jButtonPrintReport;
     private javax.swing.JButton jButtonRefresh;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextFieldAddress;
+    private javax.swing.JTextField jTextFieldBulstat;
+    private javax.swing.JTextField jTextFieldCod;
+    private javax.swing.JTextField jTextFieldDanNomer;
+    private javax.swing.JTextField jTextFieldEmail;
+    private javax.swing.JTextField jTextFieldFax;
+    private javax.swing.JTextField jTextFieldName;
+    private javax.swing.JTextField jTextFieldTel;
+    private javax.swing.JTextField jTextFieldWeb;
     // End of variables declaration//GEN-END:variables
 //--------------- My Variables
     private  boolean atBegining=false;
@@ -297,7 +445,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
     private  static JFrame fr = new JFrame("test");
     private String User="javauser";  // vremenna promenliva za test
     private String Pass="javadude";  // vremenna promenliva za test
-    private String Url = "jdbc:mysql://127.0.0.1:3306/frmtest";  // vremenna promenliva za test
+    private String Url = "jdbc:mysql://127.0.0.1:3306/mida";  // vremenna promenliva za test
  
     
 //---------------END My Variables

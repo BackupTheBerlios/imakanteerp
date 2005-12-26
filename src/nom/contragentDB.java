@@ -1,18 +1,6 @@
-/*
- * contragentDB.java
- *
- * Created 20.12.2005, 20:38
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
-
 package nom;
 
-/**
- *
- * @author Ivan Katsarov
- */
+
 import imakante.com.*;
 
 public class contragentDB extends dbObject 
@@ -112,8 +100,8 @@ public class contragentDB extends dbObject
     {
         changeFlag(1,in_id);
      // po princip trqbva da izpolzvame comprator = 2, no nie defakto nqma da redaktirame redove,
-     // a 6te dobavim nov, kato promenim flaga na stariq zapis ot 0 na 1, a na noviq zapis s glag 0  
-        comprator = 1;   // comprator: 1.INSERT INTO <tablename>  ... ;2.UPDATE <table name> ... ;
+     // a 6te dobavim nov, kato promenim flaga na stariq zapis ot 0 na 1, a na noviq zapis s flag 0  
+        comprator = 1;   // ---> comprator: 1.INSERT INTO <tablename>  ... ;2.UPDATE <table name> ... <---- ;
       /*  this.id = in_id;
         this.cod = in_cod;
         this.name = in_name;
@@ -137,6 +125,7 @@ public class contragentDB extends dbObject
  {
      // smenqme flaga na opredelen red !!!
      comprator = 2;  // sqlska zaqwka koqto samo 6te smenq flaga
+     int old_flag = this.flag;
      this.flag = flag;
      this.id = id;
      try
@@ -148,6 +137,7 @@ public class contragentDB extends dbObject
      {
          sqle.printStackTrace();
      }
+     this.flag = old_flag;
  }
  public void deleteRow(int in_id) // ok
     {

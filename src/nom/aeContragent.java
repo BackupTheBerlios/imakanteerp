@@ -313,7 +313,12 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
         java.sql.Connection c1 = myParent.getCountriesT().getConn();
          showNameOfMOL_OSO setOSO = new showNameOfMOL_OSO(myframe,true,r1,c1,false);
         }
-        repaintComp();
+       // repaintComp();
+        if (myParent.getID_OSO()!=-1)
+           {
+           String namOSO = myParent.getCountriesT().getNameWithID(myParent.getID_OSO(),false);
+           jTextFieldOSO.setText(namOSO);
+           }
        }  
     }//GEN-LAST:event_jTextFieldOSOKeyPressed
 
@@ -333,7 +338,13 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
         java.sql.Connection c1 = myParent.getCountriesT().getConn();
          showNameOfMOL_OSO setMOL = new showNameOfMOL_OSO(myframe,true,r1,c1,true); 
         }
-        repaintComp();
+       // repaintComp();
+         if(myParent.getID_MOL()!=-1) 
+           {
+           String namMOL = myParent.getCountriesT().getNameWithID(myParent.getID_MOL(),true);
+           jTextFieldMOL.setText(namMOL);
+           }
+        
        }  
         
     }//GEN-LAST:event_jTextFieldMOLKeyPressed
@@ -412,7 +423,12 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
         java.sql.Connection c1 = myParent.getCountriesT().getConn();
         showAddressContragent setNM = new showAddressContragent(myframe,true,r1,c1); 
         }
-        repaintComp();
+       // repaintComp();
+        if((myParent.getID_NM()!=-1))
+           {
+           String adres = myParent.getCountriesT().getAddressName(myParent.getID_NM());
+           jTextFieldNM.setText(adres);
+           }
        }
     }//GEN-LAST:event_jTextFieldNMKeyPressed
     
