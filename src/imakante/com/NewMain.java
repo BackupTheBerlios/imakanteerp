@@ -1,8 +1,11 @@
 package imakante.com;
 
+
+
 public class NewMain extends javax.swing.JFrame {
     
     public NewMain() {
+        getSProp();
         initComponents();
     }
     
@@ -138,14 +141,26 @@ public class NewMain extends javax.swing.JFrame {
         Connected = false;
         return true;
     }
+   
+    
+    /// GET SYSTEM PROP
+    private void  getSProp(){
+        
+        OS_name = System.getProperty("os.name");
+        user_home = System.getProperty("user.home");
+        user_dir = System.getProperty("user.dir");
+        
+    }
+    
     //// Info related
     public static final String getMsgTitle() {
         return "Imakante";
     }
     
-    
-    
-    
+    public static final void showAboutDlg(int nModule, String sModuleInfo) {
+        dlgAbout dlg = new dlgAbout(null, true, nModule, sModuleInfo);
+        dlg.setVisible(true);
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -173,6 +188,8 @@ public class NewMain extends javax.swing.JFrame {
     private static String dbPass = null;
     
     //SYSTEM PROP
+    public static String OS_name;
+    public static String user_home;
+    public static String user_dir;
     
-    public static java.util.Properties sProp;
 }
