@@ -81,32 +81,38 @@ public class NewMain extends javax.swing.JFrame {
     public static final boolean isConnected() {
         return Connected;
     }
+    
     public static final java.sql.Connection getConnection() {
         return dbConn;
     }
+    
     public static final void setConnection(java.sql.Connection conn) {
         try {
             if (null == conn) return;
             if (dbConn != null) dbConn.close();
-            dbConn = conn;
-            Connected = true;
+            setDbConn(conn);
+            setConnected(true);
         } catch (java.sql.SQLException sqle) {
             System.err.println("SQLException: " + sqle.getMessage());
             sqle.printStackTrace();
         }
     }
+   
     // User and pass info
     public static final String getUser() {
         return dbUser;
     }
+    
     public static final void setUser(String sUser) {
-        dbUser = sUser;
+        setDbUser(sUser);
     }
+    
     public static final String getPassword() {
         return dbPass;
     }
+    
     public static final void setPassword(String sPass) {
-        dbPass = sPass;
+        setDbPass(sPass);
     }
     
     
@@ -126,6 +132,7 @@ public class NewMain extends javax.swing.JFrame {
         }
         return false;
     }
+    
     public static final boolean disconnect(){
         if (dbConn != null ){
             try {
@@ -135,10 +142,10 @@ public class NewMain extends javax.swing.JFrame {
                 return false;
             }
         }
-        dbConn = null;
-        dbUser = null;
-        dbPass = null;
-        Connected = false;
+        setDbConn(null);
+        setDbUser(null);
+        setDbPass(null);
+        setConnected(false);
         return true;
     }
    
@@ -146,9 +153,9 @@ public class NewMain extends javax.swing.JFrame {
     /// GET SYSTEM PROP
     private void  getSProp(){
         
-        OS_name = System.getProperty("os.name");
-        user_home = System.getProperty("user.home");
-        user_dir = System.getProperty("user.dir");
+        setOS_name(System.getProperty("os.name"));
+        setUser_home(System.getProperty("user.home"));
+        setUser_dir(System.getProperty("user.dir"));
         
     }
     
@@ -188,8 +195,46 @@ public class NewMain extends javax.swing.JFrame {
     private static String dbPass = null;
     
     //SYSTEM PROP
-    public static String OS_name;
-    public static String user_home;
-    public static String user_dir;
+    private static String OS_name;
+    private static String user_home;
+    private static String user_dir;
+
+   
+
+    public static void setActiveModules(boolean[] aActiveModules) {
+        ActiveModules = aActiveModules;
+    }
+
+    public static void setConnected(boolean aConnected) {
+        Connected = aConnected;
+    }
+
+    public static void setDbConn(java.sql.Connection aDbConn) {
+        dbConn = aDbConn;
+    }
+
+    public static void setDbUser(String aDbUser) {
+        dbUser = aDbUser;
+    }
+
+    public static void setDbPass(String aDbPass) {
+        dbPass = aDbPass;
+    }
+
+    public static void setOS_name(String aOS_name) {
+        OS_name = aOS_name;
+    }
+
+    public static String getUser_home() {
+        return user_home;
+    }
+
+    public static void setUser_home(String aUser_home) {
+        user_home = aUser_home;
+    }
+
+    public static void setUser_dir(String aUser_dir) {
+        user_dir = aUser_dir;
+    }
     
 }

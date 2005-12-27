@@ -1,38 +1,33 @@
 
 package imakante.com;
 
-
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.Properties;
-import java.util.InvalidPropertiesFormatException;
-import javax.swing.*;
-import javax.swing.event.*;
-import java.io.*;
-import java.lang.*;
-
 public class dlgLogin extends javax.swing.JDialog {
     
-    private Properties prop = new Properties();
+    private java.util.Properties prop = new java.util.Properties();
     
     /** Creates new form dlgLogin */
     
-    public dlgLogin(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public dlgLogin(imakante.com.NewMain frame, boolean modal) {
+        super(frame, modal);
+        inframe = frame;
         initComponents();
         fillCombo();
         jUserTxtField.requestFocus();
     }
+    private void locateConfig(){
+    fileConfig = inframe.getUser_home()+"//imakante.xml";
+    }
     
     /** Helper private method that fills combo*/
+        
     private void fillCombo() {
-        FileInputStream inStream = null;
+        java.io.FileInputStream inStream = null;
         int i, n;
         String s, sKey;
         try {
             //// Try to load properties from file
             // Prepare
-            inStream = new FileInputStream("c:/imakante.xml");
+            inStream = new java.io.FileInputStream(fileConfig);
             // Load from stream
             prop.loadFromXML(inStream);
             // Close file
@@ -44,26 +39,26 @@ public class dlgLogin extends javax.swing.JDialog {
                 s = prop.getProperty(sKey);
                 jLabelCombo.addItem(s);
             }
-        } catch (FileNotFoundException e){
+        } catch (java.io.FileNotFoundException e){
             System.err.println("FileNotFoundException: " + e.getMessage());
-            javax.swing.JOptionPane.showMessageDialog(null,"Не откривам 'c:/imakante.xml' !",
-                    imakante.com.NewMain.getMsgTitle(),JOptionPane.ERROR_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(null,"Не откривам 'imakante.xml' !",
+                    imakante.com.NewMain.getMsgTitle(),javax.swing.JOptionPane.ERROR_MESSAGE);
         } catch (SecurityException e){
             System.err.println("SecurityException: " + e.getMessage());
-            JOptionPane.showMessageDialog(null,"Нямам право на достъп до 'c:/imakante.xml' !",
-                    imakante.com.NewMain.getMsgTitle(),JOptionPane.ERROR_MESSAGE);
-        } catch (InvalidPropertiesFormatException e){
+            javax.swing.JOptionPane.showMessageDialog(null,"Нямам право на достъп до 'imakante.xml' !",
+                    imakante.com.NewMain.getMsgTitle(),javax.swing.JOptionPane.ERROR_MESSAGE);
+        } catch (java.util.InvalidPropertiesFormatException e){
             System.err.println("InvalidPropertiesFormatException: " + e.getMessage());
-            JOptionPane.showMessageDialog(null,"Некоректен формат !",
-                    imakante.com.NewMain.getMsgTitle(),JOptionPane.ERROR_MESSAGE);
-        } catch (IOException e){
+            javax.swing.JOptionPane.showMessageDialog(null,"Некоректен формат !",
+                    imakante.com.NewMain.getMsgTitle(),javax.swing.JOptionPane.ERROR_MESSAGE);
+        } catch (java.io.IOException e){
             System.err.println("IOException: " + e.getMessage());
-            JOptionPane.showMessageDialog(null,"Не мога да прочета настройките !",
-                    imakante.com.NewMain.getMsgTitle(),JOptionPane.ERROR_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(null,"Не мога да прочета настройките !",
+                    imakante.com.NewMain.getMsgTitle(),javax.swing.JOptionPane.ERROR_MESSAGE);
         } catch (NullPointerException e){
             System.err.println("NullPointerException: " + e.getMessage());
-            JOptionPane.showMessageDialog(null,"Не мога да отворя файла !",
-                    imakante.com.NewMain.getMsgTitle(),JOptionPane.ERROR_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(null,"Не мога да отворя файла !",
+                    imakante.com.NewMain.getMsgTitle(),javax.swing.JOptionPane.ERROR_MESSAGE);
         } catch (Exception e){
             System.err.println("OtherException: " + e.getMessage());
         }
@@ -182,7 +177,7 @@ public class dlgLogin extends javax.swing.JDialog {
                 DBPassword = new String(jPassField.getPassword());
                 // Login
                 Class.forName(DBDriver);
-                dbConn = DriverManager.getConnection(DBSource, DBUserName, DBPassword);
+                dbConn = java.sql.DriverManager.getConnection(DBSource, DBUserName, DBPassword);
                 // Save info to pubMain
                 imakante.com.NewMain.setConnection(dbConn);
                 imakante.com.NewMain.setUser(DBUserName);
@@ -195,11 +190,11 @@ public class dlgLogin extends javax.swing.JDialog {
             }
         } catch(ClassNotFoundException e)  {
             System.err.println("JDBC Driver: " + e.getMessage());
-        } catch(SQLException e){
+        } catch(java.sql.SQLException e){
             System.err.println("Unable to connect");
             System.err.println("SQLException: " + e.getMessage());
             javax.swing.JOptionPane.showMessageDialog(null,"Възникна проблем при опита за връзка с базата.",
-                    imakante.com.NewMain.getMsgTitle(),JOptionPane.WARNING_MESSAGE);
+                    imakante.com.NewMain.getMsgTitle(),javax.swing.JOptionPane.WARNING_MESSAGE);
             e.printStackTrace();
         }
     }//GEN-LAST:event_jLoginBtnActionPerformed
@@ -219,5 +214,6 @@ public class dlgLogin extends javax.swing.JDialog {
     private javax.swing.JPasswordField jPassField;
     private javax.swing.JTextField jUserTxtField;
     // End of variables declaration//GEN-END:variables
-    
+    private imakante.com.NewMain inframe;
+    private String fileConfig;
 }
