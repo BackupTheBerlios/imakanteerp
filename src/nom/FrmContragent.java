@@ -498,6 +498,7 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
             rs = countriesT.getTable();
             model = new imakante.com.CustomTableModel(conn,rs, null);
             table = new imakante.com.CustomTable(model);
+            
             // da se napravqt skriti kolona "id" 
         }
        catch(Exception e)
@@ -558,7 +559,10 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
     {
         return atEnd;
     }
-    
+     public  boolean isAtBegining()//OK
+  {
+        return atBegining;
+    }
     public  void setAtEnd(boolean aAtEnd) //OK
     {
         atEnd = aAtEnd;
@@ -681,7 +685,7 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
    {
        return countriesT;
    }
-    protected  void refreshTable() //OK
+    protected  void refreshTable() //ok
   {
         jScrollPane1.remove(table);
         rs = countriesT.getTable();
@@ -691,4 +695,133 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
         jScrollPane1.repaint();
         
     }
+    public  void mTableEnd() // ok 
+ {
+        setRow(getMaxRow());
+        try{
+            setId((Integer) table.getValueAt(getRow(), 0));
+            setCod((String) table.getValueAt(getRow(), 1));
+            setName((String) table.getValueAt(getRow(), 2));
+            setBulstat((String)table.getValueAt(getRow(),3));
+            setDanNomer((String)table.getValueAt(getRow(),4));
+            setAddress((String)table.getValueAt(getRow(),5));
+            setID_NM((Integer) table.getValueAt(getRow(), 6));
+            setTel((String) table.getValueAt(getRow(), 11));
+            setFax((String) table.getValueAt(getRow(), 12));
+            setEmail((String) table.getValueAt(getRow(), 13));
+            setWeb((String) table.getValueAt(getRow(), 14));
+            setID_MOL((Integer) table.getValueAt(getRow(), 15));
+            setID_OSO((Integer) table.getValueAt(getRow(), 17));
+            
+            table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
+            
+        }
+        catch(ArrayIndexOutOfBoundsException aioobe)
+        {
+            setRow(getRow() - 1);
+            System.out.println("problem - mTableEnd");
+        }
+        setAtBegining(false);
+        setAtEnd(true);
+    }
+ public void mOneRowPlus() // ok 
+ {
+      if(getRow() <= getMaxRow())
+      {
+        if(getRow() < getMaxRow())
+        {
+          setRow(getRow()+1);
+        }
+        setAtBegining(false);
+        try
+        {
+            setId((Integer) table.getValueAt(getRow(), 0));
+            setCod((String) table.getValueAt(getRow(), 1));
+            setName((String) table.getValueAt(getRow(), 2));
+            setBulstat((String)table.getValueAt(getRow(),3));
+            setDanNomer((String)table.getValueAt(getRow(),4));
+            setAddress((String)table.getValueAt(getRow(),5));
+            setID_NM((Integer) table.getValueAt(getRow(), 6));
+            setTel((String) table.getValueAt(getRow(), 11));
+            setFax((String) table.getValueAt(getRow(), 12));
+            setEmail((String) table.getValueAt(getRow(), 13));
+            setWeb((String) table.getValueAt(getRow(), 14));
+            setID_MOL((Integer) table.getValueAt(getRow(), 15));
+            setID_OSO((Integer) table.getValueAt(getRow(), 17));
+            
+            table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
+        }
+        catch(ArrayIndexOutOfBoundsException aioobe)
+        {
+            setRow(getRow() - 1);
+            System.out.println("problem - mOneRowPlus");
+        }
+        if(getRow() == getMaxRow())
+        {
+                setAtEnd(true);
+        }
+      }
+ }
+ public  void mOneRowMinus() // ok 
+ {
+        if(getRow() >= 0){
+            if(getRow() > 0){
+                setRow(getRow() - 1);}
+            setAtEnd(false);
+            try
+            {
+            setId((Integer) table.getValueAt(getRow(), 0));
+            setCod((String) table.getValueAt(getRow(), 1));
+            setName((String) table.getValueAt(getRow(), 2));
+            setBulstat((String)table.getValueAt(getRow(),3));
+            setDanNomer((String)table.getValueAt(getRow(),4));
+            setAddress((String)table.getValueAt(getRow(),5));
+            setID_NM((Integer) table.getValueAt(getRow(), 6));
+            setTel((String) table.getValueAt(getRow(), 11));
+            setFax((String) table.getValueAt(getRow(), 12));
+            setEmail((String) table.getValueAt(getRow(), 13));
+            setWeb((String) table.getValueAt(getRow(), 14));
+            setID_MOL((Integer) table.getValueAt(getRow(), 15));
+            setID_OSO((Integer) table.getValueAt(getRow(), 17));
+                
+                table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
+            }
+            catch(ArrayIndexOutOfBoundsException aioobe)
+            {
+                setRow(getRow() + 1);
+            }
+                System.out.println("problem - mOneRowMinus");}
+            if(getRow() == 0){
+                setAtBegining(true);
+            }
+        }   
+ public void mTableBegining() // ok 
+ {
+      setRow(0);
+        try
+        {
+            setId((Integer) table.getValueAt(getRow(), 0));
+            setCod((String) table.getValueAt(getRow(), 1));
+            setName((String) table.getValueAt(getRow(), 2));
+            setBulstat((String)table.getValueAt(getRow(),3));
+            setDanNomer((String)table.getValueAt(getRow(),4));
+            setAddress((String)table.getValueAt(getRow(),5));
+            setID_NM((Integer) table.getValueAt(getRow(), 6));
+            setTel((String) table.getValueAt(getRow(), 11));
+            setFax((String) table.getValueAt(getRow(), 12));
+            setEmail((String) table.getValueAt(getRow(), 13));
+            setWeb((String) table.getValueAt(getRow(), 14));
+            setID_MOL((Integer) table.getValueAt(getRow(), 15));
+            setID_OSO((Integer) table.getValueAt(getRow(), 17)); 
+            
+            table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
+        }
+        catch(ArrayIndexOutOfBoundsException aioobe)
+        {
+            setRow(getRow() - 1);
+            System.out.println("problem- mTableBegining");
+        }
+        setAtBegining(true);
+        setAtEnd(false);
+ } 
 }// end class
