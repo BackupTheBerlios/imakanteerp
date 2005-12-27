@@ -171,6 +171,10 @@ public class NewMain extends javax.swing.JFrame {
     }
     
     // User RIGHTS
+    private void ConstructRights(){
+    currentRight = new imakante.com.userRights(dbConn);
+    }
+    
     public static int getRight(int modul, int rightn){
     int outright = 0;
     outright = currentRight.getRight(modul,rightn);

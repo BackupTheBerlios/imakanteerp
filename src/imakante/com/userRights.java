@@ -18,6 +18,11 @@ public class userRights {
     private java.sql.Statement stm;
     private java.sql.ResultSet rs;
     
+    
+    private void constructStm(){
+    stm = inconn.createStatement();
+    }
+    
     private java.util.HashMap constructHash(){
         java.util.HashMap hm = null;
         return hm;
