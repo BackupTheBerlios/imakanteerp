@@ -5,7 +5,7 @@ import java.beans.PropertyVetoException;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import nom.FrmKlienti;
+
 
 public class sales_main extends javax.swing.JFrame {
 
@@ -542,7 +542,7 @@ public class sales_main extends javax.swing.JFrame {
     private java.awt.Color subForeColor = new java.awt.Color(0,0,0); // submenu foreground color
     
     //forms
-    nom.FrmKlienti FormKlienti;
+  
     
      private void initColorHash(){
     
@@ -600,15 +600,7 @@ public class sales_main extends javax.swing.JFrame {
     }
     
     private void loadKlienti() throws java.sql.SQLException {
-        if (logged==true){
-            FrmKlienti FormKlienti = new FrmKlienti(getDbConn());
-            desktopPane.add(FormKlienti);
-            FormKlienti.setVisible(true);
-            
-        } else {
-            lockMessage();
-        }
-        
+       
     }
  
    private void lockMessage(){

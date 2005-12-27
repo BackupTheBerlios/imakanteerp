@@ -14,7 +14,7 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
         dbInternal = srcCN;
         JFParentFrame = getParentFrame;
         str1=iniNam;
-        id_period = imakante.salary.salary_main.getId_period();
+        id_period = 1;
         initNames(str1);
         initResource();
         initComponents();
@@ -520,8 +520,8 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
         if (jTable.getValueAt(jTable.getSelectedRow(), jTable.getSelectedColumn()) != null) {
             int row = (Integer) jTable.getValueAt(jTable.getSelectedRow(),0);
             try{
-                int lMonth = imakante.salary.salary_main.getMonth();
-                int lYear = imakante.salary.salary_main.getYear();
+                int lMonth = imakante.salary.salary_main.getPMonth();
+                int lYear = imakante.salary.salary_main.getPYear();
                 imakante.salary.frmAddLitse frmDialog = new imakante.salary.frmAddLitse(JFParentFrame, false, dbInternal, row);
                 frmDialog.setVisible(true);
                 
@@ -571,8 +571,8 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
     }
     
     protected void newRecord(){
-        int lMonth = imakante.salary.salary_main.getMonth();
-        int lYear = imakante.salary.salary_main.getYear();
+        int lMonth = imakante.salary.salary_main.getPMonth();
+        int lYear = imakante.salary.salary_main.getPYear();
         imakante.salary.frmAddLitse frmDialog = new imakante.salary.frmAddLitse(JFParentFrame, false, dbInternal, 0);
         frmDialog.setVisible(true);
         
@@ -638,7 +638,7 @@ public class FrmNSastav extends javax.swing.JInternalFrame implements java.awt.e
         } catch (java.io.FileNotFoundException  ioex){
             System.out.println("Ne moga da nameria faila  ");
         }
-        fName =  salary_main.getNFirm();
+        fName =  "Probna firma";
         reportParam.put("name", fName);
         
         javax.swing.JDialog formPrint = new imakante.salary.frmPrint(JFParentFrame,true,dbInternal,freport,reportParam);

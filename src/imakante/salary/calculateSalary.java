@@ -47,14 +47,14 @@ public class calculateSalary  {
         
         try{
             stm = intCon.createStatement();
-            rs = stm.executeQuery("SELECT  seq FROM ls_monthpar WHERE pmonth = " + imakante.salary.salary_main.getMonth() + " AND pyear ="+imakante.salary.salary_main.getYear());
+            rs = stm.executeQuery("SELECT  seq FROM ls_monthpar WHERE pmonth = " + imakante.salary.salary_main.getPMonth() + " AND pyear ="+imakante.salary.salary_main.getPYear());
             
             while(rs.next()){
                 str_area = rs.getString("seq");
                 System.out.println("str_area = "+str_area);
             }
             
-            rs = stm.executeQuery("SELECT * FROM ls_monthpar WHERE pmonth ="+ imakante.salary.salary_main.getMonth() + " AND pyear ="+imakante.salary.salary_main.getYear());
+            rs = stm.executeQuery("SELECT * FROM ls_monthpar WHERE pmonth ="+ imakante.salary.salary_main.getPMonth() + " AND pyear ="+imakante.salary.salary_main.getPYear());
             while(rs.next()){
                 
                 ktu = rs.getDouble("ktu");
@@ -71,7 +71,7 @@ public class calculateSalary  {
                 prc_upf = rs.getDouble("proc_upf");
                 max_os = rs.getDouble("max_os_prag");}
          
-            rs = stm.executeQuery("SELECT * FROM ls_dod WHERE YEAR(datep) = " + imakante.salary.salary_main.getYear());
+            rs = stm.executeQuery("SELECT * FROM ls_dod WHERE YEAR(datep) = " + imakante.salary.salary_main.getPYear());
             while(rs.next()){
                 
                 taxDOD_doh[DOD_id] = rs.getDouble("doh");

@@ -20,7 +20,7 @@ public class FrmFishove extends javax.swing.JInternalFrame implements java.awt.e
         
         JFParentFrame = getParentFrame;
         dbInternal = dbCon;
-        fName = imakante.salary.salary_main.getNFirm();
+        fName = "Probna FIRMA";
         
         
         initComponents();
@@ -197,7 +197,7 @@ public class FrmFishove extends javax.swing.JInternalFrame implements java.awt.e
                 
                 strSQL = "SELECT ls_main.id, ls_main.first, ls_main.second,  ls_main.family," +
                         " lsresult.zaplata, lsresult.psuma, lsresult.nsuma FROM ls_main" +
-                        " INNER JOIN ls_result ON (ls_main.Id = ls_result.idrab)  WHERE ls_result.id_period = " + imakante.salary.salary_main.getId_period();
+                        " INNER JOIN ls_result ON (ls_main.Id = ls_result.idrab)  WHERE ls_result.id_period = ";
                 try{
                     rsCus = stm.executeQuery(strSQL);} catch (SQLException sd){}
                 

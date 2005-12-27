@@ -89,7 +89,7 @@ public class FrmAct extends javax.swing.JInternalFrame implements java.awt.event
             java.io.FileInputStream fs = new FileInputStream(freport);
         } catch (java.io.FileNotFoundException  ioex){
                }
-        fName =  salary_main.getNFirm();
+        fName =  "FIRMA";
         reportParam.put("name", fName);
         try {
             rsCus = stCus.executeQuery(strSQL);

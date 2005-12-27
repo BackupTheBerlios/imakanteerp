@@ -31,5 +31,33 @@ public class salary_main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+ 
+    private static int pMonth;
+    private static int pYear;
+    private static int idPeriod;
+
+    public static int getPMonth() {
+        return pMonth;
+    }
+
+    public static void setPMonth(int aPMonth) {
+        pMonth = aPMonth;
+    }
+
+    public static int getPYear() {
+        return pYear;
+    }
+
+    public static void setPYear(int aPYear) {
+        pYear = aPYear;
+    }
+
+    public static int getIdPeriod() {
+        return idPeriod;
+    }
+
+    public static void setIdPeriod(int aIdPeriod) {
+        idPeriod = aIdPeriod;
+    }
     
 }

@@ -11,7 +11,7 @@ public class frmAddLitse extends javax.swing.JDialog implements java.awt.event.W
         parent_in=parent;
         dbInternal = dbCon;
         id_row = id_rab;
-        id_period = imakante.salary.salary_main.getId_period();
+        id_period = imakante.salary.salary_main.getIdPeriod();
         initComponents();
         initCombo_Area();
         initCombo_Gender();
