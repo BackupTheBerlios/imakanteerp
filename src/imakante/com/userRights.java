@@ -15,6 +15,13 @@ public class userRights {
     private java.util.HashMap modul3;
     private java.util.HashMap modul4;
     private java.sql.Connection inconn;
+    private java.sql.Statement stm;
+    private java.sql.ResultSet rs;
+    
+    private java.util.HashMap constructHash(){
+        java.util.HashMap hm = null;
+        return hm;
+    }
     
     // Method for extracting user rights
     public int getRight(int modul, int rightn){
