@@ -6,6 +6,7 @@ public class NewMain extends javax.swing.JFrame {
     
     public NewMain() {
         getSProp();
+        currentRight = new imakante.com.userRights(dbConn);
         initComponents();
     }
     
@@ -169,6 +170,12 @@ public class NewMain extends javax.swing.JFrame {
         dlg.setVisible(true);
     }
     
+    // User RIGHTS
+    public static int getRight(int modul, int rightn){
+    int outright = 0;
+    outright = currentRight.getRight(modul,rightn);
+    return outright;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -199,7 +206,8 @@ public class NewMain extends javax.swing.JFrame {
     private static String user_home;
     private static String user_dir;
 
-   
+   //USER RIGHTS
+    private static imakante.com.userRights currentRight;
 
     public static void setActiveModules(boolean[] aActiveModules) {
         ActiveModules = aActiveModules;
