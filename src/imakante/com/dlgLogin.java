@@ -182,6 +182,7 @@ public class dlgLogin extends javax.swing.JDialog {
                 imakante.com.NewMain.setConnection(dbConn);
                 imakante.com.NewMain.setUser(DBUserName);
                 imakante.com.NewMain.setPassword(DBPassword);
+                
                 // Close dialog
                 this.dispose();
             } else {

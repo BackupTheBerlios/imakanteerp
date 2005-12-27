@@ -176,6 +176,7 @@ public class NewMain extends javax.swing.JFrame {
     outright = currentRight.getRight(modul,rightn);
     return outright;
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
