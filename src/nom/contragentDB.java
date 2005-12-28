@@ -251,7 +251,7 @@ public class contragentDB extends dbObject
  public java.sql.ResultSet getTablesAddressName(String nm) // izvli4ane na naseleneto mqsto, oblasta, stranata
  {
      this.comprator = 11;
-     String adres = address;
+     String adres = new String(address);
      this.address = nm;
         try{
             registerParameters();
@@ -262,13 +262,13 @@ public class contragentDB extends dbObject
             sqle.printStackTrace();
         }
         System.out.println("ot contragentDB.getTablesAddressName()");
-        address = adres;
+        address = new String(adres);
         return rs;
  }
  public java.sql.ResultSet getTablesWithNames(String nam) // izvli4ane na imenata - ime , prezime familiq, egn ...
  {
      this.comprator = 12; 
-     String oldName = name;
+     String oldName = new String(name);
      this.name = nam;
         try{
             registerParameters();
@@ -279,7 +279,7 @@ public class contragentDB extends dbObject
             sqle.printStackTrace();
         }
         System.out.println("ot contragentDB.getTablesWithNames()");
-        name = oldName;
+        name = new String(oldName);
         return rs;
      
  }

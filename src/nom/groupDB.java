@@ -6,6 +6,7 @@ import com.mysql.jdbc.ResultSetMetaData;
 import imakante.com.*;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 
 public class groupDB  extends dbObject 
@@ -299,6 +300,9 @@ public class groupDB  extends dbObject
         String strIndexConnOfId = new String("");
         ArrayList in = new ArrayList();
         Iterator it = null;
+        // nova ideq porodena ot fakta 4e pri razdelqneto na stringa i 
+        //ako imeto na ednata kletka ima intervali no se polu4ava gre6ka
+        HashMap key_Anlevel = new HashMap();
         int i = 0;
        
          try              
@@ -309,6 +313,7 @@ public class groupDB  extends dbObject
            
             while(rs.next())
             {
+               key_Anlevel.put(new Integer(rs.getInt(1)),new String(rs.getString(3)));  // new
                return_str =return_str + rs.getString(3) + " ";
                in.add(new Integer(rs.getInt(1)));
                i++;
@@ -323,13 +328,18 @@ public class groupDB  extends dbObject
         splitNamesOfAnLevel = return_str.split(" ");
         indexConnOfId = new int[i];
         it = in.iterator();
+        
+        splitNamesOfAnLevel = new String[i]; // new
         i=0;
         while(it.hasNext())
         {
             indexConnOfId[i] =(Integer) it.next();
+            splitNamesOfAnLevel[i] = (String) key_Anlevel.get(indexConnOfId[i]); // new
             i++;
         }
-             
+       
+        
+        
         return splitNamesOfAnLevel;
     }
     

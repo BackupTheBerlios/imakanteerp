@@ -15,12 +15,12 @@ import java.text.MessageFormat;
 public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implements WindowListener
 {
 
-    public FrmGroup(String title, int idGroup) // TEST ----> da se dobavi: imakante.com.vcomponents.iFrame frame,
+    public FrmGroup(String title, imakante.com.vcomponents.iFrame frame, int idGroup) // TEST 
     {
         super(title);
-      // myframe = frame; 
+        myframe = frame; 
        
-       this.nom = idGroup;
+        this.nom = idGroup;
         prepareConn();     // zapazva connection
         constructGroupDB(); // inicializira class otgovarq6t za vryzkata s DB
         initTable();
@@ -297,7 +297,7 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+   /* public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 
@@ -308,7 +308,7 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
                 
             }
         });
-    }
+    }*/
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -351,13 +351,13 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
     private  static JFrame fr = new JFrame("test");
     private String User="javauser";  // vremenna promenliva za test
     private String Pass="javadude";  // vremenna promenliva za test
-    private String Url = "jdbc:mysql://127.0.0.1:3306/frmtest";  // vremenna promenliva za test
+    private String Url = "jdbc:mysql://127.0.0.1:3306/mida";  // vremenna promenliva za test
  //---------------END My Variables
  //---------------START MyFunction
 private void prepareConn() //TEST
     {
       // samo za testovate ------------
-      try
+     /* try
          {
           Class.forName("com.mysql.jdbc.Driver");
            
@@ -369,15 +369,15 @@ private void prepareConn() //TEST
          {
              e.printStackTrace();
          }
-      //
-      /* try
+      //*/
+       try
        {
             setConn(myframe.getConn());
        }
        catch(Exception e)
        {
        e.printStackTrace();
-       }*/
+       }
   }
 private void constructGroupDB() //OK 
     {
@@ -443,7 +443,11 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
    {
    
    } 
-    
+  
+  public void setConn(java.sql.Connection con)
+  {
+      this.conn = con;
+  }
   public groupDB getCountriesT() //OK
      {
         return countriesT;
