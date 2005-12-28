@@ -229,7 +229,11 @@ public class NewMain extends javax.swing.JFrame {
     public static void setDbUser(String aDbUser) {
         dbUser = aDbUser;
     }
-
+    
+    public static String getDbUser(){
+    return dbUser;
+    }
+    
     public static void setDbPass(String aDbPass) {
         dbPass = aDbPass;
     }
