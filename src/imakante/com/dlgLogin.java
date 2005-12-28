@@ -41,23 +41,23 @@ public class dlgLogin extends javax.swing.JDialog {
             }
         } catch (java.io.FileNotFoundException e){
             System.err.println("FileNotFoundException: " + e.getMessage());
-            javax.swing.JOptionPane.showMessageDialog(null,"Не откривам 'imakante.xml' !",
+            javax.swing.JOptionPane.showMessageDialog(null,java.util.ResourceBundle.getBundle("{err_mess}").getString("{err_config_file}"),
                     imakante.com.NewMain.getMsgTitle(),javax.swing.JOptionPane.ERROR_MESSAGE);
         } catch (SecurityException e){
             System.err.println("SecurityException: " + e.getMessage());
-            javax.swing.JOptionPane.showMessageDialog(null,"Нямам право на достъп до 'imakante.xml' !",
+            javax.swing.JOptionPane.showMessageDialog(null,java.util.ResourceBundle.getBundle("{err_mess}").getString("{err_rights}"),
                     imakante.com.NewMain.getMsgTitle(),javax.swing.JOptionPane.ERROR_MESSAGE);
         } catch (java.util.InvalidPropertiesFormatException e){
             System.err.println("InvalidPropertiesFormatException: " + e.getMessage());
-            javax.swing.JOptionPane.showMessageDialog(null,"Некоректен формат !",
+            javax.swing.JOptionPane.showMessageDialog(null,java.util.ResourceBundle.getBundle("{err_mess}").getString("{err_format_config}"),
                     imakante.com.NewMain.getMsgTitle(),javax.swing.JOptionPane.ERROR_MESSAGE);
         } catch (java.io.IOException e){
             System.err.println("IOException: " + e.getMessage());
-            javax.swing.JOptionPane.showMessageDialog(null,"Не мога да прочета настройките !",
+            javax.swing.JOptionPane.showMessageDialog(null,java.util.ResourceBundle.getBundle("{err_mess}").getString("{err_read_config}"),
                     imakante.com.NewMain.getMsgTitle(),javax.swing.JOptionPane.ERROR_MESSAGE);
         } catch (NullPointerException e){
             System.err.println("NullPointerException: " + e.getMessage());
-            javax.swing.JOptionPane.showMessageDialog(null,"Не мога да отворя файла !",
+            javax.swing.JOptionPane.showMessageDialog(null,java.util.ResourceBundle.getBundle("{err_mess}").getString("{err_read_file_config}"),
                     imakante.com.NewMain.getMsgTitle(),javax.swing.JOptionPane.ERROR_MESSAGE);
         } catch (Exception e){
             System.err.println("OtherException: " + e.getMessage());
@@ -186,7 +186,7 @@ public class dlgLogin extends javax.swing.JDialog {
                 // Close dialog
                 this.dispose();
             } else {
-                javax.swing.JOptionPane.showMessageDialog(null,"Моля изберете фирма и опитайте отново !",
+                javax.swing.JOptionPane.showMessageDialog(null,java.util.ResourceBundle.getBundle("{mainB}").getString("{ch_firm}"),
                         imakante.com.NewMain.getMsgTitle(),javax.swing.JOptionPane.WARNING_MESSAGE);
             }
         } catch(ClassNotFoundException e)  {
@@ -194,7 +194,7 @@ public class dlgLogin extends javax.swing.JDialog {
         } catch(java.sql.SQLException e){
             System.err.println("Unable to connect");
             System.err.println("SQLException: " + e.getMessage());
-            javax.swing.JOptionPane.showMessageDialog(null,"Възникна проблем при опита за връзка с базата.",
+            javax.swing.JOptionPane.showMessageDialog(null,java.util.ResourceBundle.getBundle("{err_mes}").getString("{conn_problem}"),
                     imakante.com.NewMain.getMsgTitle(),javax.swing.JOptionPane.WARNING_MESSAGE);
             e.printStackTrace();
         }

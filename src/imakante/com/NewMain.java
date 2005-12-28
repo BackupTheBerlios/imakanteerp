@@ -1,12 +1,10 @@
 package imakante.com;
 
-
-
 public class NewMain extends javax.swing.JFrame {
     
     public NewMain() {
         getSProp();
-        currentRight = new imakante.com.userRights(dbConn);
+        ConstructRights();
         initComponents();
     }
     
@@ -98,7 +96,7 @@ public class NewMain extends javax.swing.JFrame {
             sqle.printStackTrace();
         }
     }
-   
+    
     // User and pass info
     public static final String getUser() {
         return dbUser;
@@ -149,7 +147,7 @@ public class NewMain extends javax.swing.JFrame {
         setConnected(false);
         return true;
     }
-   
+    
     
     /// GET SYSTEM PROP
     private void  getSProp(){
@@ -172,13 +170,13 @@ public class NewMain extends javax.swing.JFrame {
     
     // User RIGHTS
     private void ConstructRights(){
-    currentRight = new imakante.com.userRights(dbConn);
+        currentRight = new imakante.com.userRights(dbConn);
     }
     
     public static int getRight(int modul, int rightn){
-    int outright = 0;
-    outright = currentRight.getRight(modul,rightn);
-    return outright;
+        int outright = 0;
+        outright = currentRight.getRight(modul,rightn);
+        return outright;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -210,46 +208,46 @@ public class NewMain extends javax.swing.JFrame {
     private static String OS_name;
     private static String user_home;
     private static String user_dir;
-
-   //USER RIGHTS
+    
+    //USER RIGHTS
     private static imakante.com.userRights currentRight;
-
+    
     public static void setActiveModules(boolean[] aActiveModules) {
         ActiveModules = aActiveModules;
     }
-
+    
     public static void setConnected(boolean aConnected) {
         Connected = aConnected;
     }
-
+    
     public static void setDbConn(java.sql.Connection aDbConn) {
         dbConn = aDbConn;
     }
-
+    
     public static void setDbUser(String aDbUser) {
         dbUser = aDbUser;
     }
     
     public static String getDbUser(){
-    return dbUser;
+        return dbUser;
     }
     
     public static void setDbPass(String aDbPass) {
         dbPass = aDbPass;
     }
-
+    
     public static void setOS_name(String aOS_name) {
         OS_name = aOS_name;
     }
-
+    
     public static String getUser_home() {
         return user_home;
     }
-
+    
     public static void setUser_home(String aUser_home) {
         user_home = aUser_home;
     }
-
+    
     public static void setUser_dir(String aUser_dir) {
         user_dir = aUser_dir;
     }
