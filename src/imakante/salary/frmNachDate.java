@@ -172,9 +172,9 @@ public class frmNachDate extends javax.swing.JDialog {
         }catch(java.sql.SQLException sqle){
            sqle.printStackTrace();
         }
-        imakante.salary.salary_main.setMonth(transform2int(jTextField1.getText()));
-        imakante.salary.salary_main.setYear(transform2int(jTextField2.getText()));
-        imakante.salary.salary_main.setId_period(1);
+        imakante.salary.salary_main.setPMonth(transform2int(jTextField1.getText()));
+        imakante.salary.salary_main.setPYear(transform2int(jTextField2.getText()));
+        imakante.salary.salary_main.setIdPeriod(1);
     }
     
     

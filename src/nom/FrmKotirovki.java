@@ -352,7 +352,7 @@ catch(Exception e)
     private void prepareConn() //TEST
     {
          try{
-            setConn(myframe.getConn());}catch(Exception e){e.printStackTrace();}
+            conn = myframe.getConn();}catch(Exception e){e.printStackTrace();}
     
     }
     private void constructGroupDB() //OK

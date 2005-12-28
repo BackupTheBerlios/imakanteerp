@@ -22,20 +22,7 @@ public class aeAktivi extends imakante.com.vcomponents.iDialog
         int y = (((dim.height)-(this.getSize().height))/2);
         this.setLocation(x, y);
         splitNamesOfAnLevel = myParent.getCountriesT().getAnLevelName();
-        for(int i=0;i<splitNamesOfAnLevel.length;i++)
-{
-            jComboAnLevel.addItem(new String(splitNamesOfAnLevel[i]));
-            
-        }
-        
-        if(selectComboBoxItem != 0)
-{
-            
-            selectComboBoxItem = getNewComboBoxIndex(selectComboBoxItem);
-            
-            jComboAnLevel.setSelectedIndex(selectComboBoxItem);
-        }
-        
+       
         repaintComp();
         
     }
