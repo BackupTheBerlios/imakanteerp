@@ -1,15 +1,36 @@
-
+/*
+ * ID GROUP:
+ * 0:Stoki;
+ * 1:Aktivi;
+ * 2:Contragent;
+ * 3:Lica;
+ * 4:Skladowe;
+ * 5:Kasa;
+ * 6:Pari;
+*/
 package imakante.sales;
 
 import java.beans.PropertyVetoException;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import nom.FrmGroup;
 
 
-public class sales_main extends javax.swing.JFrame {
-
-    public sales_main() {
+public class sales_main extends imakante.com.vcomponents.iFrame
+{
+private final static int MAX_GROUP=7; // pokazva maximalniq broj na grupite;
+private final static int ID_STOCK = 0;
+private final static int ID_AKTIVI = 1;
+private final static int ID_CONTRAGENT = 2;
+private final static int ID_LICA = 3;
+private final static int ID_OBJECT = 4;
+private final static int ID_KASA = 5;
+private final static int ID_MONEY = 6;
+    public sales_main() 
+    {
+        super();
+        System.out.println("Start sales_main");
         initComponents();
       //  loadPaneForm();
         
@@ -106,6 +127,15 @@ public class sales_main extends javax.swing.JFrame {
         setBackground(new java.awt.Color(153, 153, 153));
         setFont(new java.awt.Font("Tahoma", 1, 12));
         setName("frameSale");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
+
         getContentPane().add(desktopPane, java.awt.BorderLayout.CENTER);
 
         jButton1.setIcon(new javax.swing.ImageIcon("C:\\REA\\src\\midass\\openfile.gif"));
@@ -238,6 +268,12 @@ public class sales_main extends javax.swing.JFrame {
 
         nomMenu_stock.setText("\u0421\u0442\u043e\u043a\u043e\u0432\u0438");
         stock_Menu_group_stock.setText("\u0413\u0440\u0443\u043f\u0438");
+        stock_Menu_group_stock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stock_Menu_group_stockActionPerformed(evt);
+            }
+        });
+
         nomMenu_stock.add(stock_Menu_group_stock);
 
         stock_Menu_stock.setText("\u0421\u0442\u043e\u043a\u0430");
@@ -247,6 +283,12 @@ public class sales_main extends javax.swing.JFrame {
 
         nomMenu_Aktiv.setText("\u0410\u043a\u0442\u0438\u0432\u0438");
         aktiviMenu_grupi.setText("\u0413\u0440\u0443\u043f\u0438 \u0430\u043a\u0442\u0438\u0432\u0438");
+        aktiviMenu_grupi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aktiviMenu_grupiActionPerformed(evt);
+            }
+        });
+
         nomMenu_Aktiv.add(aktiviMenu_grupi);
 
         aktiviMenu_Aktivi.setText("\u0410\u043a\u0442\u0438\u0432\u0438");
@@ -256,9 +298,21 @@ public class sales_main extends javax.swing.JFrame {
 
         nomMenu_Kontragenti.setText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
         kontragentiMenu_groupe.setText("\u0413\u0440\u0443\u043f\u0438");
+        kontragentiMenu_groupe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kontragentiMenu_groupeActionPerformed(evt);
+            }
+        });
+
         nomMenu_Kontragenti.add(kontragentiMenu_groupe);
 
         kontragentiMenu_Kontr.setText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
+        kontragentiMenu_Kontr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kontragentiMenu_KontrActionPerformed(evt);
+            }
+        });
+
         nomMenu_Kontragenti.add(kontragentiMenu_Kontr);
 
         kontragentiMenu_bank.setText("\u0411\u0430\u043d\u043a\u0438");
@@ -271,6 +325,12 @@ public class sales_main extends javax.swing.JFrame {
 
         nomMenu_Litsa.setText("\u041b\u0438\u0446\u0430");
         litsaMenu_groupe_litsa.setText("\u0413\u0440\u0443\u043f\u0438 \u043b\u0438\u0446\u0430");
+        litsaMenu_groupe_litsa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                litsaMenu_groupe_litsaActionPerformed(evt);
+            }
+        });
+
         nomMenu_Litsa.add(litsaMenu_groupe_litsa);
 
         litsaMenu_in.setText("\u041b\u0438\u0446\u0430");
@@ -280,6 +340,12 @@ public class sales_main extends javax.swing.JFrame {
 
         nomMenu_object.setText("\u0421\u043a\u043b\u0430\u0434\u043e\u0432\u0435");
         objectMenu_groupe_object.setText("\u0413\u0440\u0443\u043f\u0438 \u0441\u043a\u043b\u0430\u0434\u043e\u0432\u0435");
+        objectMenu_groupe_object.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                objectMenu_groupe_objectActionPerformed(evt);
+            }
+        });
+
         nomMenu_object.add(objectMenu_groupe_object);
 
         objectMenu_skl.setText("\u0421\u043a\u043b\u0430\u0434\u043e\u0432\u0435");
@@ -289,6 +355,12 @@ public class sales_main extends javax.swing.JFrame {
 
         nomMenu_kasi.setText("\u041a\u0430\u0441\u0438");
         kasiMenu_grupi.setText("\u0413\u0440\u0443\u043f\u0438 \u043a\u0430\u0441\u0438");
+        kasiMenu_grupi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kasiMenu_grupiActionPerformed(evt);
+            }
+        });
+
         nomMenu_kasi.add(kasiMenu_grupi);
 
         kasiMenu_kasi.setText("\u041a\u0430\u0441\u0438");
@@ -298,6 +370,12 @@ public class sales_main extends javax.swing.JFrame {
 
         moneyMenu.setText("\u041f\u0430\u0440\u0438\u0447\u043d\u0438");
         moneyMenu_groupe.setText("\u0413\u0440\u0443\u043f\u0438 \u043f\u0430\u0440\u0438\u0447\u043d\u0438");
+        moneyMenu_groupe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                moneyMenu_groupeActionPerformed(evt);
+            }
+        });
+
         moneyMenu.add(moneyMenu_groupe);
 
         moneyMenu_in.setText("\u041f\u0440\u0438\u0445\u043e\u0434\u0438");
@@ -385,6 +463,57 @@ public class sales_main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void kontragentiMenu_KontrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kontragentiMenu_KontrActionPerformed
+// TODO add your handling code here:
+        loadFrmContragent();
+    }//GEN-LAST:event_kontragentiMenu_KontrActionPerformed
+
+    private void moneyMenu_groupeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moneyMenu_groupeActionPerformed
+// TODO add your handling code here:
+        loadFrmGroup("\u0413\u0420\u0423\u041f\u0410 \u041f\u0410\u0420\u0418\u0427\u041d\u0418",ID_MONEY);
+    }//GEN-LAST:event_moneyMenu_groupeActionPerformed
+
+    private void kasiMenu_grupiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kasiMenu_grupiActionPerformed
+// TODO add your handling code here:
+        loadFrmGroup("\u0413\u0420\u0423\u041f\u0410 \u041a\u0410\u0421\u0410",ID_KASA);
+    }//GEN-LAST:event_kasiMenu_grupiActionPerformed
+
+    private void objectMenu_groupe_objectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_objectMenu_groupe_objectActionPerformed
+// TODO add your handling code here:
+        loadFrmGroup("\u0413\u0420\u0423\u041f\u0410 \u0421\u041a\u041b\u0410\u0414\u041e\u0412\u0415",ID_OBJECT);
+    }//GEN-LAST:event_objectMenu_groupe_objectActionPerformed
+
+    private void litsaMenu_groupe_litsaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_litsaMenu_groupe_litsaActionPerformed
+// TODO add your handling code here:
+        loadFrmGroup("\u0413\u0420\u0423\u041f\u0410 \u041b\u0418\u0426\u0410",ID_LICA);
+    }//GEN-LAST:event_litsaMenu_groupe_litsaActionPerformed
+
+    private void kontragentiMenu_groupeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kontragentiMenu_groupeActionPerformed
+// TODO add your handling code here:
+        loadFrmGroup("\u0413\u0420\u0423\u041f\u0410 \u041a\u041e\u041d\u0422\u0420\u0410\u0413\u0415\u041d\u0422",ID_CONTRAGENT);
+    }//GEN-LAST:event_kontragentiMenu_groupeActionPerformed
+
+    private void aktiviMenu_grupiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aktiviMenu_grupiActionPerformed
+// TODO add your handling code here:
+        loadFrmGroup("\u0413\u0420\u0423\u041f\u0410 \u0410\u041a\u0422\u0418\u0412\u0418",ID_AKTIVI);
+    }//GEN-LAST:event_aktiviMenu_grupiActionPerformed
+
+    private void stock_Menu_group_stockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stock_Menu_group_stockActionPerformed
+// TODO add your handling code here:
+        
+        loadFrmGroup("\u0413\u0420\u0423\u041f\u0410 \u0421\u0422\u041e\u041a\u0418",ID_STOCK);
+    }//GEN-LAST:event_stock_Menu_group_stockActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+// TODO add your handling code here:
+         System.out.println("end sales_main-formWindowClosing");
+    }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+// TODO add your handling code here:
+        System.out.println("end sales_main-formWindowClosed");
+    }//GEN-LAST:event_formWindowClosed
+
     private void sluMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sluMenuActionPerformed
 // TODO add your handling code here:
     }//GEN-LAST:event_sluMenuActionPerformed
@@ -415,7 +544,7 @@ public class sales_main extends javax.swing.JFrame {
 // TODO add your handling code here:
     }//GEN-LAST:event_nomMenuActionPerformed
     
-    public static void main(String args[]) {
+   /* public static void main(String args[]) {
         
             try {
                 String sysLook = javax.swing.UIManager.getSystemLookAndFeelClassName();
@@ -430,7 +559,7 @@ public class sales_main extends javax.swing.JFrame {
                 new sales_main().setVisible(true);
             }
         });
-    }
+    }*/
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
@@ -520,11 +649,13 @@ public class sales_main extends javax.swing.JFrame {
     // main app parameters
     private static boolean logged = false; // for logging into app
     private java.sql.Connection dbConn = null; // connection
-    private String dbName = null; // name of the db
-    private String dbURL = null; // url of the db
-    private String dbDriver = null; // driver name
-    private String dbUser = null;  // user name
-    private String dbPass = null; // user password
+    // testovi stoinosti za DB
+    private String dbName = "mida"; // name of the db
+    private String dbURL = "jdbc:mysql://127.0.0.1:3306/mida"; // url of the db
+    private String dbDriver = "com.mysql.jdbc.Driver"; // driver name
+    private String dbUser = "javauser";  // user name
+    private String dbPass = "javadude"; // user password
+    // end  testovi stoinosti za DB
     private String firmName = null; // relative firm name
     
     public static java.util.HashMap colorHash; 
@@ -542,9 +673,16 @@ public class sales_main extends javax.swing.JFrame {
     private java.awt.Color subForeColor = new java.awt.Color(0,0,0); // submenu foreground color
     
     //forms
-  
-    
-     private void initColorHash(){
+     private nom.FrmGroup iFormGroup[] = new nom.FrmGroup[MAX_GROUP];
+     public boolean isStartFrmGroup[] = new boolean[MAX_GROUP];
+     
+     private nom.FrmContragent iFrmContragent;
+     public boolean isStartFrmContragent = false; // FLAG dali da se startira FrmContagent,
+                                                  //promenq se i ot FrmContragent pri zatvarqne
+                                                  // na FrmContragent
+     
+     private void initColorHash()
+     {
     
     
     
@@ -672,4 +810,36 @@ public class sales_main extends javax.swing.JFrame {
     private void loadGrProduct() {
         
     }
+    public java.sql.Connection getConn()
+    {
+        return getDbConn();
+    }
+    private void loadFrmGroup(String title, int nm)
+    {
+        if((nm < MAX_GROUP)&& (!isStartFrmGroup[nm]))
+            
+        {
+            try
+            {
+               iFormGroup[nm] = new FrmGroup(title,this,nm);
+               desktopPane.add(iFormGroup[nm]);
+               iFormGroup[nm].setVisible(true);
+               isStartFrmGroup[nm] = true;
+            }
+            catch(Exception e)
+            {
+                System.out.println("E R R o R");
+            }
+        }
+    }
+   private void loadFrmContragent()
+   {
+       if(!isStartFrmContragent)
+       {
+           iFrmContragent = new nom.FrmContragent("\u041a\u041e\u041d\u0422\u0420\u0410\u0413\u0415\u041d\u0422\u0418",this,0);
+           desktopPane.add(iFrmContragent);
+           iFrmContragent.setVisible(true);
+           isStartFrmContragent = true;
+       }
+   }
 }

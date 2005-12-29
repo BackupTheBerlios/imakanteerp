@@ -12,6 +12,7 @@ import javax.print.PrintException;
 import javax.swing.*;
 import java.text.MessageFormat;
 
+
 public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implements WindowListener
 {
 
@@ -58,8 +59,27 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
+
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -181,6 +201,12 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+// TODO add your handling code here:
+        imakante.sales.sales_main tmp =  (imakante.sales.sales_main) myframe;
+        tmp.isStartFrmGroup[getNom()] = false; // flag dali da se startira FrmGroup ot sales_main
+    }//GEN-LAST:event_formInternalFrameClosed
+
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
 // TODO add your handling code here:
         
@@ -256,11 +282,11 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
             setCod((String) table.getValueAt(getRow(), 1));
             setNames((String) table.getValueAt(getRow(), 2));
             setAnID((Integer) table.getValueAt(getRow(), 3));
-            
-            
-            try
+                     
+            try 
             {
-                nom.aeGroup dialog = new nom.aeGroup(this, true,getAnID());
+               
+                dialog = new aeGroup(this, true,getAnID());
                 dialog.setVisible(true);
                 
             } catch(Exception e)
@@ -281,9 +307,9 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
         countriesT.insertRow(getNom(),getCod(),getNames(),getAnID());
         setId(countriesT.getMaxId());
         refreshTable();
-         try
+         try 
             {
-                nom.aeGroup dialog = new nom.aeGroup(this, true,0);
+                dialog = new aeGroup(this, true,0);
                 dialog.setVisible(true);
                 
             } catch(Exception e)
@@ -340,7 +366,7 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
     private  boolean atBegining=false;
     private  boolean atEnd = false;
     private int row;
-   
+    private aeGroup dialog;
     private imakante.com.vcomponents.iFrame myframe;
     private java.sql.Connection conn;
     private  java.sql.ResultSet rs; 
@@ -357,7 +383,7 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
 private void prepareConn() //TEST
     {
       // samo za testovate ------------
-     /* try
+   /*   try
          {
           Class.forName("com.mysql.jdbc.Driver");
            
@@ -420,24 +446,28 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
     
  public void windowOpened(java.awt.event.WindowEvent e)
   {
+    
    }
   public void windowClosing(java.awt.event.WindowEvent e) // colose frame`s windows
    {
-        System.exit(1);
+        
    }
         
   public void windowClosed(java.awt.event.WindowEvent e)
    {
-        System.out.println("windowClosed");
+        
    }
   public void windowIconified(java.awt.event.WindowEvent e)
    {
+      
    }
   public void windowDeiconified(java.awt.event.WindowEvent e)
    {
+      
    }
   public void windowActivated(java.awt.event.WindowEvent e)
    {
+      
    }
   public void windowDeactivated(java.awt.event.WindowEvent e) 
    {

@@ -205,6 +205,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x413;&#x440;&#x443;&#x43f;&#x438;"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stock_Menu_group_stockActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="stock_Menu_stock">
                   <Properties>
@@ -222,6 +225,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x413;&#x440;&#x443;&#x43f;&#x438; &#x430;&#x43a;&#x442;&#x438;&#x432;&#x438;"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="aktiviMenu_grupiActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="aktiviMenu_Aktivi">
                   <Properties>
@@ -239,11 +245,17 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x413;&#x440;&#x443;&#x43f;&#x438;"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kontragentiMenu_groupeActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="kontragentiMenu_Kontr">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x41a;&#x43e;&#x43d;&#x442;&#x440;&#x430;&#x433;&#x435;&#x43d;&#x442;&#x438;"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kontragentiMenu_KontrActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="kontragentiMenu_bank">
                   <Properties>
@@ -266,6 +278,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x413;&#x440;&#x443;&#x43f;&#x438; &#x43b;&#x438;&#x446;&#x430;"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="litsaMenu_groupe_litsaActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="litsaMenu_in">
                   <Properties>
@@ -283,6 +298,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x413;&#x440;&#x443;&#x43f;&#x438; &#x441;&#x43a;&#x43b;&#x430;&#x434;&#x43e;&#x432;&#x435;"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="objectMenu_groupe_objectActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="objectMenu_skl">
                   <Properties>
@@ -300,6 +318,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x413;&#x440;&#x443;&#x43f;&#x438; &#x43a;&#x430;&#x441;&#x438;"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kasiMenu_grupiActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="kasiMenu_kasi">
                   <Properties>
@@ -317,6 +338,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x413;&#x440;&#x443;&#x43f;&#x438; &#x43f;&#x430;&#x440;&#x438;&#x447;&#x43d;&#x438;"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="moneyMenu_groupeActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="moneyMenu_in">
                   <Properties>
@@ -458,6 +482,10 @@
     <SyntheticProperty name="menuBar" type="java.lang.String" value="menuBar"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowClosed" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosed"/>
+    <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosing"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>

@@ -1,6 +1,7 @@
 
 package nom;
 
+import imakante.com.vcomponents.iInternalFrame;
 public class aeGroup extends imakante.com.vcomponents.iDialog 
 {
     
@@ -9,7 +10,7 @@ public class aeGroup extends imakante.com.vcomponents.iDialog
     {
         
         super(frame, modal);
-        this.myParent =(nom.FrmGroup) frame;
+        this.myParent =(FrmGroup) frame;
             
         initComponents();
        

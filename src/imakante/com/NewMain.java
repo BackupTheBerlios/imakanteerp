@@ -1,10 +1,12 @@
 package imakante.com;
 
+import imakante.sales.sales_main;
+
 public class NewMain extends javax.swing.JFrame {
     
     public NewMain() {
         getSProp();
-        ConstructRights();
+      //  ConstructRights(); // ??
         initComponents();
     }
     
@@ -18,7 +20,21 @@ public class NewMain extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
+
         jButton1.setText("\u0421\u041a\u041b\u0410\u0414");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("\u041b\u0421 \u0418 \u0422\u0420\u0417");
 
@@ -66,12 +82,28 @@ public class NewMain extends javax.swing.JFrame {
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+// TODO add your handling code here:
+        System.out.println("end NewMain - formWindowClosed ");
+    }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+// TODO add your handling code here:
+        System.out.println("end NewMain - formWindowClosing");
+    }//GEN-LAST:event_formWindowClosing
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+// TODO add your handling code here:
+        loadSalesMain();
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new NewMain().setVisible(true);
+                
             }
         });
     }
@@ -251,5 +283,17 @@ public class NewMain extends javax.swing.JFrame {
     public static void setUser_dir(String aUser_dir) {
         user_dir = aUser_dir;
     }
+    private void loadSalesMain()
+    {
+       
+         java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                 new imakante.sales.sales_main().setVisible(true);
+                 
+            }
+        });
+               
+    }
     
-}
+}// end class
+

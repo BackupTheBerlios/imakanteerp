@@ -24,10 +24,10 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
 {
     
     /** Creates new form FrmContragent */
-    public FrmContragent(String title, int flag) // // TEST ----> da se dobavi: imakante.com.vcomponents.iFrame frame,
+    public FrmContragent(String title,imakante.com.vcomponents.iFrame frame, int flag) // // TEST 
     {
         super(title);
-      // myframe = frame; 
+       myframe = frame; 
         prepareConn();     // zapazva connection
         this.flag = flag; //  za da rabotim samo s opredeleni zapisi ima6ti syotvetniq fag
         constructGroupDB(); // inicializira class otgovarq6t za vryzkata s DB
@@ -77,8 +77,27 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
         jButtonClose = new javax.swing.JButton();
 
         setClosable(true);
+        setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
+
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -234,6 +253,12 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+// TODO add your handling code here:
+        imakante.sales.sales_main tmp =  (imakante.sales.sales_main) myframe;
+        tmp.isStartFrmContragent = false; // flag dali da se startira FrmContragent ot sales_main
+    }//GEN-LAST:event_formInternalFrameClosed
+
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
 // TODO add your handling code here:
         try
@@ -321,7 +346,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
        
          try
             {
-                nom.aeContragent dialog = new nom.aeContragent(this, true,true);
+                dialog = new aeContragent(this, true,true);
                 dialog.setVisible(true);
                 
             } catch(Exception e)
@@ -366,7 +391,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
             
             try
             {
-                nom.aeContragent dialog = new nom.aeContragent(this, true,false);
+                dialog = new aeContragent(this, true,false);
                 dialog.setVisible(true);
                 
             } catch(Exception e)
@@ -382,7 +407,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+  /*  public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                
@@ -392,7 +417,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
                 fr.setVisible(true);
             }
         });
-    }
+    }*/
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -432,7 +457,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
     private  boolean atBegining=false;
     private  boolean atEnd = false;
     private int row;
-   
+    private  aeContragent dialog;
     private int id,id_nm,id_mol,id_oso,flag;
     private String cod,name,bull,dan,address,tel,fax,email,web;
     private imakante.com.vcomponents.iFrame myframe;
