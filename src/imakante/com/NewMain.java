@@ -271,7 +271,9 @@ public class NewMain extends javax.swing.JFrame {
     public static void setOS_name(String aOS_name) {
         OS_name = aOS_name;
     }
-    
+    public static String getOS_name(){
+    return OS_name;
+    }
     public static String getUser_home() {
         return user_home;
     }

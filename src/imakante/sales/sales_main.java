@@ -10,12 +10,19 @@
 */
 package imakante.sales;
 
-import java.beans.PropertyVetoException;
+import java.awt.event.WindowEvent;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+
 import javax.swing.JOptionPane;
 import nom.FrmGroup;
+//>>>>>>> 1.24
 
+//<<<<<<< sales_main.java
+//public class sales_main extends imakante.com.vcomponents.iFrame implements  java.awt.event.WindowListener, Runnable {
+    
+//    public void sales_main(java.sql.Connection con) {
+//=======
 
 public class sales_main extends imakante.com.vcomponents.iFrame
 {
@@ -31,12 +38,15 @@ private final static int ID_MONEY = 6;
     {
         super();
         System.out.println("Start sales_main");
-        initComponents();
-      //  loadPaneForm();
-        
-      
-    }
 
+        initComponents();
+        //  loadPaneForm();
+        // this.setVisible(true);
+        
+    }
+    public void run(){
+    
+    }
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         desktopPane = new javax.swing.JDesktopPane();
@@ -122,7 +132,7 @@ private final static int ID_MONEY = 6;
         aboutMenuItem = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415 \u0422\u044a\u0440\u0433\u043e\u0432\u0441\u043a\u0438 \u043c\u043e\u0434\u0443\u043b");
         setBackground(new java.awt.Color(153, 153, 153));
         setFont(new java.awt.Font("Tahoma", 1, 12));
@@ -460,8 +470,12 @@ private final static int ID_MONEY = 6;
 
         setJMenuBar(menuBar);
 
-        pack();
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-757)/2, (screenSize.height-448)/2, 757, 448);
     }// </editor-fold>//GEN-END:initComponents
+//<<<<<<< sales_main.java
+    
+//=======
 
     private void kontragentiMenu_KontrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kontragentiMenu_KontrActionPerformed
 // TODO add your handling code here:
@@ -514,6 +528,7 @@ private final static int ID_MONEY = 6;
         System.out.println("end sales_main-formWindowClosed");
     }//GEN-LAST:event_formWindowClosed
 
+
     private void sluMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sluMenuActionPerformed
 // TODO add your handling code here:
     }//GEN-LAST:event_sluMenuActionPerformed
@@ -528,38 +543,23 @@ private final static int ID_MONEY = 6;
         try {
             makeConn(getDbDriver(), getDbURL(), getDbUser(), getDbPass());
         } catch (java.sql.SQLException sql1){
-            JOptionPane.showMessageDialog(null,"��������� ������� ��� ������������� �� ������ � ������.","��������",JOptionPane.WARNING_MESSAGE);
+            
         }
     }//GEN-LAST:event_programMenu_connActionPerformed
-        
+    
     private void exitMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuActionPerformed
-        
+        this.dispose();
     }//GEN-LAST:event_exitMenuActionPerformed
     
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
-
+        
     }//GEN-LAST:event_aboutMenuItemActionPerformed
     
     private void nomMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomMenuActionPerformed
 // TODO add your handling code here:
     }//GEN-LAST:event_nomMenuActionPerformed
     
-   /* public static void main(String args[]) {
-        
-            try {
-                String sysLook = javax.swing.UIManager.getSystemLookAndFeelClassName();
-                javax.swing.UIManager.setLookAndFeel(sysLook);
-                
-            } catch (Exception err) {
-                System.out.println("Error loading Theme:" + err.toString());
-            }
-        
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new sales_main().setVisible(true);
-            }
-        });
-    }*/
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
@@ -658,22 +658,22 @@ private final static int ID_MONEY = 6;
     // end  testovi stoinosti za DB
     private String firmName = null; // relative firm name
     
-    public static java.util.HashMap colorHash; 
+    public static java.util.HashMap colorHash;
     public static java.util.HashMap fontHash;
     public static java.util.HashMap dimentionMap;
-   
+    
     // visual parameters
     //menu
-    private java.awt.Font menuFont = new java.awt.Font("Tahoma", 1, 12); // menu font 
-    private java.awt.Color menuBackColor = new java.awt.Color(224,223,227); // menu bakgoround color 
+    private java.awt.Font menuFont = new java.awt.Font("Tahoma", 1, 12); // menu font
+    private java.awt.Color menuBackColor = new java.awt.Color(224,223,227); // menu bakgoround color
     private java.awt.Color menuForeColor = new java.awt.Color(0,0,0); // menu foreground color
     //submenu
     private java.awt.Font subFont = new java.awt.Font("Tahoma", 0, 11); //submenu font
-    private java.awt.Color subBackColor = new java.awt.Color(224,223,227); // submenu bakgoround color 
+    private java.awt.Color subBackColor = new java.awt.Color(224,223,227); // submenu bakgoround color
     private java.awt.Color subForeColor = new java.awt.Color(0,0,0); // submenu foreground color
     
     //forms
-     private nom.FrmGroup iFormGroup[] = new nom.FrmGroup[MAX_GROUP];
+    private nom.FrmGroup iFormGroup[] = new nom.FrmGroup[MAX_GROUP];
      public boolean isStartFrmGroup[] = new boolean[MAX_GROUP];
      
      private nom.FrmContragent iFrmContragent;
@@ -681,17 +681,12 @@ private final static int ID_MONEY = 6;
                                                   //promenq se i ot FrmContragent pri zatvarqne
                                                   // na FrmContragent
      
-     private void initColorHash()
-     {
-    
-    
-    
-    }
+ 
     
     private void loadConn(){
         
     }
-
+    
     private java.sql.Connection makeConn(String dbDriver,String dbURL,String dbUser, String dbPass) throws java.sql.SQLException {
         
         String DBDriver = dbDriver;
@@ -721,7 +716,7 @@ private final static int ID_MONEY = 6;
     }
     
     private void lockApp(){
-    logged = false;
+        logged = false;
     }
     
     private void closeConn() {
@@ -738,78 +733,104 @@ private final static int ID_MONEY = 6;
     }
     
     private void loadKlienti() throws java.sql.SQLException {
-       
+        
     }
- 
-   private void lockMessage(){
-   }
+    
+    private void lockMessage(){
+    }
     public String getDbName() {
         return dbName;
     }
-
+    
     public void setDbName(String dbName) {
         this.dbName = dbName;
     }
-
+    
     public java.sql.Connection getDbConn() {
         return dbConn;
     }
-
+    
     public void setDbConn(java.sql.Connection dbConn) {
         this.dbConn = dbConn;
     }
-
+    
     public String getDbURL() {
         return dbURL;
     }
-
+    
     public void setDbURL(String dbURL) {
         this.dbURL = dbURL;
     }
-
+    
     public String getDbDriver() {
         return dbDriver;
     }
-
+    
     public void setDbDriver(String dbDriver) {
         this.dbDriver = dbDriver;
     }
-
+    
     public String getDbUser() {
         return dbUser;
     }
-
+    
     public void setDbUser(String dbUser) {
         this.dbUser = dbUser;
     }
-
+    
     public String getDbPass() {
         return dbPass;
     }
-
+    
     public void setDbPass(String dbPass) {
         this.dbPass = dbPass;
     }
-
+    
     public static boolean isLogged() {
         return logged;
     }
-
+    
     public static void setLogged(boolean aLogged) {
         logged = aLogged;
     }
-
+    
     public String getFirmName() {
         return firmName;
     }
-
+    
     public void setFirmName(String firmName) {
         this.firmName = firmName;
     }
-
+    
     private void loadGrProduct() {
         
     }
+
+    
+    public void windowOpened(WindowEvent e) {
+    }
+    
+    public void windowClosing(WindowEvent e) {
+        this.dispose();
+        
+    }
+    
+    public void windowClosed(WindowEvent e) {
+    }
+    
+    public void windowIconified(WindowEvent e) {
+    }
+    
+    public void windowDeiconified(WindowEvent e) {
+    }
+    
+    public void windowActivated(WindowEvent e) {
+    }
+    
+    public void windowDeactivated(WindowEvent e) {
+    }
+    
+
     public java.sql.Connection getConn()
     {
         return getDbConn();
@@ -842,4 +863,5 @@ private final static int ID_MONEY = 6;
            isStartFrmContragent = true;
        }
    }
+
 }

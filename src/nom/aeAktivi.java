@@ -236,24 +236,7 @@ public class aeAktivi extends imakante.com.vcomponents.iDialog
     }//GEN-LAST:event_jButtonUndoActionPerformed
     
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
-// TODO add your handling code here:
-        
-        oldName = myParent.getNames(); //    \
-        oldCod = myParent.getCod();    //     > za vyztanovqvane na starite stoinosti
-        oldAnLevel = myParent.getAnID();//   /
-        myParent.setCod(jTextCod.getText());
-        myParent.setNames(jTextName.getText());
-// ustanovqvame AnID 4rez masiva za vryzkata mejdu indexite na ComboBox_a i "ID" na tablicata
-        myParent.setAnID(myParent.getCountriesT().getIndexConnOfId()[jComboAnLevel.getSelectedIndex()]);
-        myParent.getCountriesT().updateRow(myParent.getId(),myParent.getNom(),
-                myParent.getCod(),myParent.getNames(),myParent.getAnID());
-        myParent.refreshTable();
-        
-        
-        myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
-        jButtonUndo.setEnabled(true);
-        
-        
+
     }//GEN-LAST:event_jButtonSaveActionPerformed
     
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
@@ -395,12 +378,6 @@ public class aeAktivi extends imakante.com.vcomponents.iDialog
     
     private void repaintComp() //OK
     {
-        jTextCod.setText(myParent.getCod());
-        jTextName.setText(myParent.getNames());
-        //jTextCod.repaint();
-        // jTextName.repaint();
-        jComboAnLevel.setSelectedIndex(getNewComboBoxIndex(myParent.getAnID()));
-        
     }
     
     private int getNewComboBoxIndex(int oldindex) //OK

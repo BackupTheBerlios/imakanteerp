@@ -29,21 +29,7 @@ public class aeKotirovki extends imakante.com.vcomponents.iDialog
         int x = (((dim.width)-(this.getSize().width))/2);
         int y = (((dim.height)-(this.getSize().height))/2);
         this.setLocation(x, y);
-        splitNamesOfAnLevel = myParent.getCountriesT().getAnLevelName();
-        for(int i=0;i<splitNamesOfAnLevel.length;i++)
-{
-            jComboAnLevel.addItem(new String(splitNamesOfAnLevel[i]));
-            
-        }
-        
-        if(selectComboBoxItem != 0)
-{
-            
-            selectComboBoxItem = getNewComboBoxIndex(selectComboBoxItem);
-            
-            jComboAnLevel.setSelectedIndex(selectComboBoxItem);
-        }
-        
+               
         repaintComp();
         
     }
@@ -223,10 +209,10 @@ public class aeKotirovki extends imakante.com.vcomponents.iDialog
         oldName = myParent.getNames(); //    \
         oldCod = myParent.getCod();    //     > za vyztanovqvane na starite stoinosti
         oldAnLevel = myParent.getAnID();//   /
-        myParent.setCod(jTextCod.getText());
-        myParent.setNames(jTextName.getText());
+       // myParent.setCod(jTextCod.getText());
+     //   myParent.setNames(jTextName.getText());
 // ustanovqvame AnID 4rez masiva za vryzkata mejdu indexite na ComboBox_a i "ID" na tablicata
-        myParent.setAnID(myParent.getCountriesT().getIndexConnOfId()[jComboAnLevel.getSelectedIndex()]);
+    //    myParent.setAnID(myParent.getCountriesT().getIndexConnOfId()[jComboAnLevel.getSelectedIndex()]);
         myParent.getCountriesT().updateRow(myParent.getId(),myParent.getNom(),
                 myParent.getCod(),myParent.getNames(),myParent.getAnID());
         myParent.refreshTable();
@@ -378,11 +364,11 @@ public class aeKotirovki extends imakante.com.vcomponents.iDialog
     }
     private void repaintComp() //OK
     {
-        jTextCod.setText(myParent.getCod());
-        jTextName.setText(myParent.getNames());
+      //  jTextCod.setText(myParent.getCod());
+     //   jTextName.setText(myParent.getNames());
         //jTextCod.repaint();
         // jTextName.repaint();
-        jComboAnLevel.setSelectedIndex(getNewComboBoxIndex(myParent.getAnID()));
+     //   jComboAnLevel.setSelectedIndex(getNewComboBoxIndex(myParent.getAnID()));
         
     }
     private int getNewComboBoxIndex(int oldindex) //OK

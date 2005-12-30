@@ -10,12 +10,16 @@ public class dlgLogin extends javax.swing.JDialog {
     public dlgLogin(imakante.com.NewMain frame, boolean modal) {
         super(frame, modal);
         inframe = frame;
+        locateConfig();
         initComponents();
         fillCombo();
         jUserTxtField.requestFocus();
     }
     private void locateConfig(){
-    fileConfig = inframe.getUser_home()+"//imakante.xml";
+    System.out.println(inframe.getOS_name());
+    
+    fileConfig ="c:/imakante.xml";
+    System.out.println(fileConfig );
     }
     
     /** Helper private method that fills combo*/
@@ -25,6 +29,7 @@ public class dlgLogin extends javax.swing.JDialog {
         int i, n;
         String s, sKey;
         try {
+           
             //// Try to load properties from file
             // Prepare
             inStream = new java.io.FileInputStream(fileConfig);
@@ -41,23 +46,23 @@ public class dlgLogin extends javax.swing.JDialog {
             }
         } catch (java.io.FileNotFoundException e){
             System.err.println("FileNotFoundException: " + e.getMessage());
-            javax.swing.JOptionPane.showMessageDialog(null,java.util.ResourceBundle.getBundle("{err_mess}").getString("{err_config_file}"),
+            javax.swing.JOptionPane.showMessageDialog(null,java.util.ResourceBundle.getBundle("bundle/salary/err_mes").getString("err_config_file"),
                     imakante.com.NewMain.getMsgTitle(),javax.swing.JOptionPane.ERROR_MESSAGE);
         } catch (SecurityException e){
             System.err.println("SecurityException: " + e.getMessage());
-            javax.swing.JOptionPane.showMessageDialog(null,java.util.ResourceBundle.getBundle("{err_mess}").getString("{err_rights}"),
+            javax.swing.JOptionPane.showMessageDialog(null,java.util.ResourceBundle.getBundle("bundle/salary/err_mes").getString("err_rights"),
                     imakante.com.NewMain.getMsgTitle(),javax.swing.JOptionPane.ERROR_MESSAGE);
         } catch (java.util.InvalidPropertiesFormatException e){
             System.err.println("InvalidPropertiesFormatException: " + e.getMessage());
-            javax.swing.JOptionPane.showMessageDialog(null,java.util.ResourceBundle.getBundle("{err_mess}").getString("{err_format_config}"),
+            javax.swing.JOptionPane.showMessageDialog(null,java.util.ResourceBundle.getBundle("bundle/salary/err_mes").getString("err_format_config"),
                     imakante.com.NewMain.getMsgTitle(),javax.swing.JOptionPane.ERROR_MESSAGE);
         } catch (java.io.IOException e){
             System.err.println("IOException: " + e.getMessage());
-            javax.swing.JOptionPane.showMessageDialog(null,java.util.ResourceBundle.getBundle("{err_mess}").getString("{err_read_config}"),
+            javax.swing.JOptionPane.showMessageDialog(null,java.util.ResourceBundle.getBundle("bundle/salary/err_mes").getString("err_read_config"),
                     imakante.com.NewMain.getMsgTitle(),javax.swing.JOptionPane.ERROR_MESSAGE);
         } catch (NullPointerException e){
             System.err.println("NullPointerException: " + e.getMessage());
-            javax.swing.JOptionPane.showMessageDialog(null,java.util.ResourceBundle.getBundle("{err_mess}").getString("{err_read_file_config}"),
+            javax.swing.JOptionPane.showMessageDialog(null,java.util.ResourceBundle.getBundle("bundle/salary/err_mes").getString("err_read_file_config"),
                     imakante.com.NewMain.getMsgTitle(),javax.swing.JOptionPane.ERROR_MESSAGE);
         } catch (Exception e){
             System.err.println("OtherException: " + e.getMessage());

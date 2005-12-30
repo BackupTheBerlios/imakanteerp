@@ -289,8 +289,5 @@ catch(java.sql.SQLException sqle)
         }catch(java.sql.SQLException sqle){}
         
     }
-    public int[] getIndexConnOfId()
-{
-        return indexConnOfId;
-    }
+ 
 }// end class
