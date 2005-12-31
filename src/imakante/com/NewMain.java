@@ -14,10 +14,10 @@ public class NewMain extends javax.swing.JFrame {
     private void initComponents() {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jBSales = new javax.swing.JButton();
+        jBLS = new javax.swing.JButton();
+        jBACC = new javax.swing.JButton();
+        jBMN = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -43,18 +43,18 @@ public class NewMain extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\imakante\\imakante_l2.jpg"));
         jLabel1.setText("jLabel1");
 
-        jButton1.setText("\u0421\u041a\u041b\u0410\u0414");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBSales.setText("\u0421\u041a\u041b\u0410\u0414");
+        jBSales.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBSalesActionPerformed(evt);
             }
         });
 
-        jButton2.setText("\u041b\u0421 \u0418 \u0422\u0420\u0417");
+        jBLS.setText("\u041b\u0421 \u0418 \u0422\u0420\u0417");
 
-        jButton3.setText("\u0421\u0427\u0415\u0422\u041e\u0412\u041e\u0414\u0421\u0422\u0412\u041e");
+        jBACC.setText("\u0421\u0427\u0415\u0422\u041e\u0412\u041e\u0414\u0421\u0422\u0412\u041e");
 
-        jButton4.setText("\u041f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u043e");
+        jBMN.setText("\u041f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u043e");
 
         jButton5.setText("\u0418\u0417\u0425\u041e\u0414");
 
@@ -67,13 +67,13 @@ public class NewMain extends javax.swing.JFrame {
                 .addContainerGap(47, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jButton1)
+                .add(jBSales)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButton2)
+                .add(jBLS)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButton3)
+                .add(jBACC)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButton4)
+                .add(jBMN)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 93, Short.MAX_VALUE)
                 .add(jButton5)
                 .add(91, 91, 91))
@@ -84,10 +84,10 @@ public class NewMain extends javax.swing.JFrame {
                 .add(jLabel1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jButton1)
-                    .add(jButton2)
-                    .add(jButton3)
-                    .add(jButton4)
+                    .add(jBSales)
+                    .add(jBLS)
+                    .add(jBACC)
+                    .add(jBMN)
                     .add(jButton5))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -150,10 +150,10 @@ public class NewMain extends javax.swing.JFrame {
         System.out.println("end NewMain - formWindowClosing");
     }//GEN-LAST:event_formWindowClosing
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBSalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalesActionPerformed
 // TODO add your handling code here:
         loadSalesMain();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jBSalesActionPerformed
     
     
     public static void main(String args[]) {
@@ -270,7 +270,12 @@ public class NewMain extends javax.swing.JFrame {
         outright = currentRight.getRight(modul,rightn);
         return outright;
     }
+    //BUTON RELATED
     
+    private void disableButtons(){
+        
+        
+    }
     //Create login dialog
     private void loginDialog(){
         imakante.com.dlgLogin login = new imakante.com.dlgLogin(this, true);
@@ -278,10 +283,10 @@ public class NewMain extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private static javax.swing.JButton jBACC;
+    private static javax.swing.JButton jBLS;
+    private static javax.swing.JButton jBMN;
+    private static javax.swing.JButton jBSales;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
@@ -300,7 +305,6 @@ public class NewMain extends javax.swing.JFrame {
     public static final int MOD_SALARY = 1;
     public static final int MOD_SALES = 2;
     public static final int MOD_ACCOUNTING = 3;
-    
     
     // Module status booleans
     private static boolean B_AD = false;
@@ -365,6 +369,8 @@ public class NewMain extends javax.swing.JFrame {
     public static void setUser_dir(String aUser_dir) {
         user_dir = aUser_dir;
     }
+    
+    //tread for Sale
     private void loadSalesMain() {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -374,6 +380,69 @@ public class NewMain extends javax.swing.JFrame {
             }
         });
         
+    }
+    
+    public static boolean isB_AD() {
+        return B_AD;
+    }
+    
+    public static void setB_AD(boolean aB_AD) {
+        
+        B_AD = aB_AD;
+    }
+    
+    public static boolean isB_SR() {
+        return B_SR;
+    }
+    
+    public static void setB_SR(boolean aB_SR) {
+        
+        if(aB_SR){
+            jBLS.setEnabled(false);
+        }else{
+            jBLS.setEnabled(true);
+        }
+        B_SR = aB_SR;
+    }
+    
+    public static boolean isB_SL() {
+        
+        return B_SL;
+    }
+    
+    public static void setB_SL(boolean aB_SL) {
+        if(aB_SL){
+            jBSales.setEnabled(false);
+        }else{
+            jBSales.setEnabled(true);
+        }
+        B_SL = aB_SL;
+    }
+    
+    public static boolean isB_AC() {
+        return B_AC;
+    }
+    
+    public static void setB_AC(boolean aB_AC) {
+        if(aB_AC){
+            jBACC.setEnabled(false);
+        }else{
+            jBACC.setEnabled(true);
+        }
+        B_AC = aB_AC;
+    }
+    
+    public static boolean isB_MN() {
+        return B_MN;
+    }
+    
+    public static void setB_MN(boolean aB_MN) {
+         if(aB_MN){
+            jBMN.setEnabled(false);
+        }else{
+            jBMN.setEnabled(true);
+        }
+        B_MN = aB_MN;
     }
     
 }// end class

@@ -7,48 +7,6 @@
         <Property name="font" preCode="programMenu.setFont(menuFont);"/>
       </Properties>
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="programMenu">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="&#x41f;&#x420;&#x41e;&#x413;&#x420;&#x410;&#x41c;&#x410;"/>
-          </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="programMenuLock">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="&#x417;&#x430;&#x43a;&#x43b;&#x44e;&#x447;&#x432;&#x430;&#x43d;&#x435;"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="programMenuUnlock">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="&#x41e;&#x442;&#x43a;&#x43b;&#x44e;&#x447;&#x432;&#x430;&#x43d;&#x435;"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JSeparator" name="jSeparator2">
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="programMenu_conn">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="&#x412;&#x440;&#x44a;&#x437;&#x43a;&#x430; &#x441; &#x431;&#x430;&#x437;&#x430;&#x442;&#x430;"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="programMenu_connActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="programMenu_logout">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="&#x41f;&#x440;&#x435;&#x43a;&#x44a;&#x441;&#x432;&#x430;&#x43d;&#x435; &#x43d;&#x430; &#x432;&#x440;&#x44a;&#x437;&#x43a;&#x430;"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JSeparator" name="jSeparator1">
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="exitMenu">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="&#x418;&#x417;&#x425;&#x41e;&#x414;"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitMenuActionPerformed"/>
-              </Events>
-            </MenuItem>
-          </SubComponents>
-        </Menu>
         <Menu class="javax.swing.JMenu" name="docMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x414;&#x41e;&#x41a;&#x423;&#x41c;&#x415;&#x41d;&#x422;&#x418;"/>
@@ -463,6 +421,15 @@
               </Properties>
             </MenuItem>
           </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="programMenu">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#x418;&#x417;&#x425;&#x41e;&#x414; &#x421;&#x41a;&#x41b;&#x410;&#x414;"/>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="programMenuActionPerformed"/>
+          </Events>
         </Menu>
       </SubComponents>
     </Menu>

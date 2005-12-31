@@ -440,8 +440,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame implements  java
     }// </editor-fold>//GEN-END:initComponents
     
     private void programMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_programMenuActionPerformed
-       imakante.com.NewMain.setB_SL(false);
-        this.dispose();
+      imakante.com.NewMain.setB_SL(false);
+      this.dispose();
         
     }//GEN-LAST:event_programMenuActionPerformed
 //<<<<<<< sales_main.java
