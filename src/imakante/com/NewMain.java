@@ -6,7 +6,7 @@ public class NewMain extends javax.swing.JFrame {
     
     public NewMain() {
         getSProp();
-      //  ConstructRights(); // ??
+        //  ConstructRights(); // ??
         initComponents();
     }
     
@@ -21,6 +21,10 @@ public class NewMain extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JSeparator();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 153));
@@ -89,6 +93,24 @@ public class NewMain extends javax.swing.JFrame {
         );
 
         jMenu1.setText("\u041f\u0420\u041e\u0413\u0420\u0410\u041c\u0410");
+        jMenuItem1.setText("\u0412\u0445\u043e\u0434 \u0432 \u0431\u0430\u0437\u0430\u0442\u0430");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("\u0418\u0437\u0445\u043e\u0434 \u043e\u0442 \u0431\u0430\u0437\u0430\u0442\u0430");
+        jMenu1.add(jMenuItem2);
+
+        jMenu1.add(jSeparator1);
+
+        jMenuItem3.setFont(new java.awt.Font("Tahoma", 1, 11));
+        jMenuItem3.setText("\u0418\u0417\u0425\u041e\u0414");
+        jMenu1.add(jMenuItem3);
+
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
@@ -113,17 +135,21 @@ public class NewMain extends javax.swing.JFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-605)/2, (screenSize.height-389)/2, 605, 389);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        loginDialog();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
 // TODO add your handling code here:
         System.out.println("end NewMain - formWindowClosed ");
     }//GEN-LAST:event_formWindowClosed
-
+    
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
 // TODO add your handling code here:
         System.out.println("end NewMain - formWindowClosing");
     }//GEN-LAST:event_formWindowClosing
-
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
         loadSalesMain();
@@ -133,7 +159,7 @@ public class NewMain extends javax.swing.JFrame {
     public static void main(String args[]) {
         String sysLook = javax.swing.UIManager.getSystemLookAndFeelClassName();
         try{
-        javax.swing.UIManager.setLookAndFeel(sysLook);} catch(Exception ex){ex.printStackTrace();}
+            javax.swing.UIManager.setLookAndFeel(sysLook);} catch(Exception ex){ex.printStackTrace();}
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new NewMain().setVisible(true);
@@ -245,6 +271,12 @@ public class NewMain extends javax.swing.JFrame {
         return outright;
     }
     
+    //Create login dialog
+    private void loginDialog(){
+        imakante.com.dlgLogin login = new imakante.com.dlgLogin(this, true);
+        login.setVisible(true);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -254,18 +286,29 @@ public class NewMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
     /// Important constants
     // Modules count
-    public static final int MOD_COUNT = 4;
+    public static final int MOD_COUNT = 5;
     // Module indexes
     public static final int MOD_ADMINISTRATIV = 0;
     public static final int MOD_SALARY = 1;
     public static final int MOD_SALES = 2;
     public static final int MOD_ACCOUNTING = 3;
-    /// Other variables
-    // Module status
+    
+    
+    // Module status booleans
+    private static boolean B_AD = false;
+    private static boolean B_SR = false;
+    private static boolean B_SL = false;
+    private static boolean B_AC = false;
+    private static boolean B_MN = false;
+    
     private static boolean[] ActiveModules = {false,false,false,false};
     // Connection related
     private static boolean Connected = false;
@@ -309,7 +352,7 @@ public class NewMain extends javax.swing.JFrame {
         OS_name = aOS_name;
     }
     public static String getOS_name(){
-    return OS_name;
+        return OS_name;
     }
     public static String getUser_home() {
         return user_home;
@@ -322,16 +365,15 @@ public class NewMain extends javax.swing.JFrame {
     public static void setUser_dir(String aUser_dir) {
         user_dir = aUser_dir;
     }
-    private void loadSalesMain()
-    {
-       
-         java.awt.EventQueue.invokeLater(new Runnable() {
+    private void loadSalesMain() {
+        
+        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                 new imakante.sales.sales_main().setVisible(true);
-                 
+                new imakante.sales.sales_main().setVisible(true);
+                
             }
         });
-               
+        
     }
     
 }// end class

@@ -7,7 +7,7 @@
  * 4:Skladowe;
  * 5:Kasa;
  * 6:Pari;
-*/
+ */
 package imakante.sales;
 
 import java.awt.event.WindowEvent;
@@ -20,32 +20,31 @@ import nom.FrmGroup;
 
 //<<<<<<< sales_main.java
 //public class sales_main extends imakante.com.vcomponents.iFrame implements  java.awt.event.WindowListener, Runnable {
-    
+
 //    public void sales_main(java.sql.Connection con) {
 //=======
 
-public class sales_main extends imakante.com.vcomponents.iFrame
-{
-private final static int MAX_GROUP=7; // pokazva maximalniq broj na grupite;
-private final static int ID_STOCK = 0;
-private final static int ID_AKTIVI = 1;
-private final static int ID_CONTRAGENT = 2;
-private final static int ID_LICA = 3;
-private final static int ID_OBJECT = 4;
-private final static int ID_KASA = 5;
-private final static int ID_MONEY = 6;
-    public sales_main() 
-    {
+public class sales_main extends imakante.com.vcomponents.iFrame {
+    private final static int MAX_GROUP=7; // pokazva maximalniq broj na grupite;
+    private final static int ID_STOCK = 0;
+    private final static int ID_AKTIVI = 1;
+    private final static int ID_CONTRAGENT = 2;
+    private final static int ID_LICA = 3;
+    private final static int ID_OBJECT = 4;
+    private final static int ID_KASA = 5;
+    private final static int ID_MONEY = 6;
+    public sales_main() {
         super();
+        
         System.out.println("Start sales_main");
-
+        
         initComponents();
         //  loadPaneForm();
         // this.setVisible(true);
         
     }
     public void run(){
-    
+        
     }
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -476,59 +475,59 @@ private final static int ID_MONEY = 6;
 //<<<<<<< sales_main.java
     
 //=======
-
+    
     private void kontragentiMenu_KontrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kontragentiMenu_KontrActionPerformed
 // TODO add your handling code here:
         loadFrmContragent();
     }//GEN-LAST:event_kontragentiMenu_KontrActionPerformed
-
+    
     private void moneyMenu_groupeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moneyMenu_groupeActionPerformed
 // TODO add your handling code here:
         loadFrmGroup("\u0413\u0420\u0423\u041f\u0410 \u041f\u0410\u0420\u0418\u0427\u041d\u0418",ID_MONEY);
     }//GEN-LAST:event_moneyMenu_groupeActionPerformed
-
+    
     private void kasiMenu_grupiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kasiMenu_grupiActionPerformed
 // TODO add your handling code here:
         loadFrmGroup("\u0413\u0420\u0423\u041f\u0410 \u041a\u0410\u0421\u0410",ID_KASA);
     }//GEN-LAST:event_kasiMenu_grupiActionPerformed
-
+    
     private void objectMenu_groupe_objectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_objectMenu_groupe_objectActionPerformed
 // TODO add your handling code here:
         loadFrmGroup("\u0413\u0420\u0423\u041f\u0410 \u0421\u041a\u041b\u0410\u0414\u041e\u0412\u0415",ID_OBJECT);
     }//GEN-LAST:event_objectMenu_groupe_objectActionPerformed
-
+    
     private void litsaMenu_groupe_litsaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_litsaMenu_groupe_litsaActionPerformed
 // TODO add your handling code here:
         loadFrmGroup("\u0413\u0420\u0423\u041f\u0410 \u041b\u0418\u0426\u0410",ID_LICA);
     }//GEN-LAST:event_litsaMenu_groupe_litsaActionPerformed
-
+    
     private void kontragentiMenu_groupeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kontragentiMenu_groupeActionPerformed
 // TODO add your handling code here:
         loadFrmGroup("\u0413\u0420\u0423\u041f\u0410 \u041a\u041e\u041d\u0422\u0420\u0410\u0413\u0415\u041d\u0422",ID_CONTRAGENT);
     }//GEN-LAST:event_kontragentiMenu_groupeActionPerformed
-
+    
     private void aktiviMenu_grupiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aktiviMenu_grupiActionPerformed
 // TODO add your handling code here:
         loadFrmGroup("\u0413\u0420\u0423\u041f\u0410 \u0410\u041a\u0422\u0418\u0412\u0418",ID_AKTIVI);
     }//GEN-LAST:event_aktiviMenu_grupiActionPerformed
-
+    
     private void stock_Menu_group_stockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stock_Menu_group_stockActionPerformed
 // TODO add your handling code here:
         
         loadFrmGroup("\u0413\u0420\u0423\u041f\u0410 \u0421\u0422\u041e\u041a\u0418",ID_STOCK);
     }//GEN-LAST:event_stock_Menu_group_stockActionPerformed
-
+    
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
 // TODO add your handling code here:
-         System.out.println("end sales_main-formWindowClosing");
+        System.out.println("end sales_main-formWindowClosing");
     }//GEN-LAST:event_formWindowClosing
-
+    
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
 // TODO add your handling code here:
         System.out.println("end sales_main-formWindowClosed");
     }//GEN-LAST:event_formWindowClosed
-
-
+    
+    
     private void sluMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sluMenuActionPerformed
 // TODO add your handling code here:
     }//GEN-LAST:event_sluMenuActionPerformed
@@ -540,11 +539,11 @@ private final static int ID_MONEY = 6;
     
     private void programMenu_connActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_programMenu_connActionPerformed
         loadConn();
-        try {
-            makeConn(getDbDriver(), getDbURL(), getDbUser(), getDbPass());
-        } catch (java.sql.SQLException sql1){
+      //  try {
+      //      makeConn(getDbDriver(), getDbURL(), getDbUser(), getDbPass());
+       // } catch (java.sql.SQLException sql1){
             
-        }
+      //  }
     }//GEN-LAST:event_programMenu_connActionPerformed
     
     private void exitMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuActionPerformed
@@ -559,7 +558,7 @@ private final static int ID_MONEY = 6;
 // TODO add your handling code here:
     }//GEN-LAST:event_nomMenuActionPerformed
     
-
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
@@ -674,17 +673,17 @@ private final static int ID_MONEY = 6;
     
     //forms
     private nom.FrmGroup iFormGroup[] = new nom.FrmGroup[MAX_GROUP];
-     public boolean isStartFrmGroup[] = new boolean[MAX_GROUP];
-     
-     private nom.FrmContragent iFrmContragent;
-     public boolean isStartFrmContragent = false; // FLAG dali da se startira FrmContagent,
-                                                  //promenq se i ot FrmContragent pri zatvarqne
-                                                  // na FrmContragent
-     
- 
+    public boolean isStartFrmGroup[] = new boolean[MAX_GROUP];
+    
+    private nom.FrmContragent iFrmContragent;
+    public boolean isStartFrmContragent = false; // FLAG dali da se startira FrmContagent,
+    //promenq se i ot FrmContragent pri zatvarqne
+    // na FrmContragent
+    
+    
     
     private void loadConn(){
-        
+        dbConn = imakante.com.NewMain.getConnection();
     }
     
     private java.sql.Connection makeConn(String dbDriver,String dbURL,String dbUser, String dbPass) throws java.sql.SQLException {
@@ -805,7 +804,7 @@ private final static int ID_MONEY = 6;
     private void loadGrProduct() {
         
     }
-
+    
     
     public void windowOpened(WindowEvent e) {
     }
@@ -830,38 +829,31 @@ private final static int ID_MONEY = 6;
     public void windowDeactivated(WindowEvent e) {
     }
     
-
-    public java.sql.Connection getConn()
-    {
+    
+    public java.sql.Connection getConn() {
         return getDbConn();
     }
-    private void loadFrmGroup(String title, int nm)
-    {
+    private void loadFrmGroup(String title, int nm) {
         if((nm < MAX_GROUP)&& (!isStartFrmGroup[nm]))
             
         {
-            try
-            {
-               iFormGroup[nm] = new FrmGroup(title,this,nm);
-               desktopPane.add(iFormGroup[nm]);
-               iFormGroup[nm].setVisible(true);
-               isStartFrmGroup[nm] = true;
-            }
-            catch(Exception e)
-            {
+            try {
+                iFormGroup[nm] = new FrmGroup(title,this,nm);
+                desktopPane.add(iFormGroup[nm]);
+                iFormGroup[nm].setVisible(true);
+                isStartFrmGroup[nm] = true;
+            } catch(Exception e) {
                 System.out.println("E R R o R");
             }
         }
     }
-   private void loadFrmContragent()
-   {
-       if(!isStartFrmContragent)
-       {
-           iFrmContragent = new nom.FrmContragent("\u041a\u041e\u041d\u0422\u0420\u0410\u0413\u0415\u041d\u0422\u0418",this,0);
-           desktopPane.add(iFrmContragent);
-           iFrmContragent.setVisible(true);
-           isStartFrmContragent = true;
-       }
-   }
-
+    private void loadFrmContragent() {
+        if(!isStartFrmContragent) {
+            iFrmContragent = new nom.FrmContragent("\u041a\u041e\u041d\u0422\u0420\u0410\u0413\u0415\u041d\u0422\u0418",this,0);
+            desktopPane.add(iFrmContragent);
+            iFrmContragent.setVisible(true);
+            isStartFrmContragent = true;
+        }
+    }
+    
 }
