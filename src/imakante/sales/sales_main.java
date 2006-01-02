@@ -24,7 +24,7 @@ import nom.FrmGroup;
 //    public void sales_main(java.sql.Connection con) {
 //=======
 
-public class sales_main extends imakante.com.vcomponents.iFrame implements  java.awt.event.WindowListener{
+public class sales_main extends imakante.com.vcomponents.iFrame {
     private final static int MAX_GROUP=7; // pokazva maximalniq broj na grupite;
     private final static int ID_STOCK = 0;
     private final static int ID_AKTIVI = 1;
@@ -490,7 +490,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame implements  java
     }//GEN-LAST:event_stock_Menu_group_stockActionPerformed
     
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-// TODO add your handling code here:
+ imakante.com.NewMain.setB_SL(false);
         System.out.println("end sales_main-formWindowClosing");
     }//GEN-LAST:event_formWindowClosing
     
@@ -757,32 +757,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame implements  java
         
     }
     
-    
-    public void windowOpened(WindowEvent e) {
-    }
-    
-    public void windowClosing(WindowEvent e) {
-        imakante.com.NewMain.setB_SL(false);
-        this.dispose();
-       
-    }
-    
-    public void windowClosed(WindowEvent e) {
-    }
-    
-    public void windowIconified(WindowEvent e) {
-    }
-    
-    public void windowDeiconified(WindowEvent e) {
-    }
-    
-    public void windowActivated(WindowEvent e) {
-    }
-    
-    public void windowDeactivated(WindowEvent e) {
-    }
-    
-    
+  
+     
     public java.sql.Connection getConn() {
         return getDbConn();
     }
@@ -808,5 +784,6 @@ public class sales_main extends imakante.com.vcomponents.iFrame implements  java
             isStartFrmContragent = true;
         }
     }
+
     
 }

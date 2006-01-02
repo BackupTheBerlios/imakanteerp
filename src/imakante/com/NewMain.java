@@ -57,6 +57,11 @@ public class NewMain extends javax.swing.JFrame {
         jBMN.setText("\u041f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u043e");
 
         jButton5.setText("\u0418\u0417\u0425\u041e\u0414");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -135,6 +140,10 @@ public class NewMain extends javax.swing.JFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-605)/2, (screenSize.height-389)/2, 605, 389);
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton5ActionPerformed
     
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         loginDialog();
@@ -437,7 +446,7 @@ public class NewMain extends javax.swing.JFrame {
     }
     
     public static void setB_MN(boolean aB_MN) {
-         if(aB_MN){
+        if(aB_MN){
             jBMN.setEnabled(false);
         }else{
             jBMN.setEnabled(true);
