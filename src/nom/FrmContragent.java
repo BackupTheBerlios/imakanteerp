@@ -27,7 +27,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
     public FrmContragent(String title,imakante.com.vcomponents.iFrame frame, int flag) // // TEST 
     {
         super(title);
-       myframe = frame; 
+        myframe = frame; 
         prepareConn();     // zapazva connection
         this.flag = flag; //  za da rabotim samo s opredeleni zapisi ima6ti syotvetniq fag
         constructGroupDB(); // inicializira class otgovarq6t za vryzkata s DB
@@ -479,7 +479,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
  private void prepareConn() //TEST
     {
       // samo za testovate ------------
-      try
+     /* try
          {
           Class.forName("com.mysql.jdbc.Driver");
            
@@ -491,15 +491,15 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
          {
              e.printStackTrace();
          }
-      //
-      /* try
+      //*/
+       try
        {
             setConn(myframe.getConn());
        }
        catch(Exception e)
        {
        e.printStackTrace();
-       }*/
+       }
   }
 private void constructGroupDB() // ok
     {
@@ -848,5 +848,10 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
         }
         setAtBegining(true);
         setAtEnd(false);
+        
  } 
+ public void setConn(java.sql.Connection con)
+ {
+     this.conn = con;
+ }
 }// end class
