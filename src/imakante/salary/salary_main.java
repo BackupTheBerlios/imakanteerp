@@ -1,12 +1,14 @@
 
 package imakante.salary;
 
-public class salary_main extends javax.swing.JFrame {
+public class salary_main extends imakante.com.vcomponents.iFrame {
     
     public salary_main() {
         initComponents();
     }
-    
+    public void run(){
+        
+    }
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         jmbSalary = new javax.swing.JMenuBar();
@@ -15,7 +17,7 @@ public class salary_main extends javax.swing.JFrame {
         jsStaff2Exit = new javax.swing.JSeparator();
         jmiExit = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jmOperations.setText("\u041e\u043f\u0435\u0440\u0430\u0446\u0438\u0438");
         jmiStaff.setText("\u0421\u043f\u0438\u0441\u044a\u043a \u043d\u0430 \u0441\u043b\u0443\u0436\u0438\u0442\u0435\u043b\u0438\u0442\u0435");
         jmiStaff.setActionCommand("stafflist");
@@ -47,7 +49,8 @@ public class salary_main extends javax.swing.JFrame {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(0, 279, Short.MAX_VALUE)
         );
-        pack();
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-400)/2, (screenSize.height-300)/2, 400, 300);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmiExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiExitActionPerformed
