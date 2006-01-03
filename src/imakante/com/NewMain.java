@@ -1,6 +1,7 @@
 package imakante.com;
 
 import imakante.sales.sales_main;
+import imakante.salary.salary_main;
 
 public class NewMain extends javax.swing.JFrame {
     
@@ -18,7 +19,7 @@ public class NewMain extends javax.swing.JFrame {
         jBLS = new javax.swing.JButton();
         jBACC = new javax.swing.JButton();
         jBMN = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jbExit = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -51,15 +52,22 @@ public class NewMain extends javax.swing.JFrame {
         });
 
         jBLS.setText("\u041b\u0421 \u0418 \u0422\u0420\u0417");
+        jBLS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLSActionPerformed(evt);
+            }
+        });
 
         jBACC.setText("\u0421\u0427\u0415\u0422\u041e\u0412\u041e\u0414\u0421\u0422\u0412\u041e");
+        jBACC.setEnabled(false);
 
         jBMN.setText("\u041f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u043e");
+        jBMN.setEnabled(false);
 
-        jButton5.setText("\u0418\u0417\u0425\u041e\u0414");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jbExit.setText("\u0418\u0417\u0425\u041e\u0414");
+        jbExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jbExitActionPerformed(evt);
             }
         });
 
@@ -69,7 +77,7 @@ public class NewMain extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1Layout.createSequentialGroup()
                 .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 598, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jBSales)
@@ -80,7 +88,7 @@ public class NewMain extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jBMN)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 93, Short.MAX_VALUE)
-                .add(jButton5)
+                .add(jbExit)
                 .add(91, 91, 91))
         );
         jPanel1Layout.setVerticalGroup(
@@ -93,8 +101,8 @@ public class NewMain extends javax.swing.JFrame {
                     .add(jBLS)
                     .add(jBACC)
                     .add(jBMN)
-                    .add(jButton5))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(jbExit))
+                .addContainerGap(291, Short.MAX_VALUE))
         );
 
         jMenu1.setText("\u041f\u0420\u041e\u0413\u0420\u0410\u041c\u0410");
@@ -132,35 +140,36 @@ public class NewMain extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 334, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+            .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
             .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 334, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-605)/2, (screenSize.height-389)/2, 605, 389);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBLSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLSActionPerformed
+        loadSalaryMain();
+    }//GEN-LAST:event_jBLSActionPerformed
     
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jbExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExitActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jbExitActionPerformed
     
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         loginDialog();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
     
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-// TODO add your handling code here:
         System.out.println("end NewMain - formWindowClosed ");
     }//GEN-LAST:event_formWindowClosed
     
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-// TODO add your handling code here:
         System.out.println("end NewMain - formWindowClosing");
     }//GEN-LAST:event_formWindowClosing
     
     private void jBSalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalesActionPerformed
-// TODO add your handling code here:
         loadSalesMain();
     }//GEN-LAST:event_jBSalesActionPerformed
     
@@ -296,7 +305,6 @@ public class NewMain extends javax.swing.JFrame {
     private static javax.swing.JButton jBLS;
     private static javax.swing.JButton jBMN;
     private static javax.swing.JButton jBSales;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
@@ -305,6 +313,7 @@ public class NewMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton jbExit;
     // End of variables declaration//GEN-END:variables
     /// Important constants
     // Modules count
@@ -379,7 +388,7 @@ public class NewMain extends javax.swing.JFrame {
         user_dir = aUser_dir;
     }
     
-    //tread for Sale
+    //thread for Sale
     private void loadSalesMain() {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -389,6 +398,15 @@ public class NewMain extends javax.swing.JFrame {
             }
         });
         
+    }
+    
+    // Salary's thread
+    private void loadSalaryMain() {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+           public void run()  {
+               new imakante.salary.salary_main().setVisible(true);
+           }
+        });
     }
     
     public static boolean isB_AD() {
