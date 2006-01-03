@@ -640,14 +640,14 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
    jTextFieldTel.setText(myParent.getTel());
    jTextFieldWeb.setText(myParent.getWeb());
    }
-  if(isNew)
+ /* if(isNew)
   {
    int maxcode =  myParent.getCountriesT().getMaxCod();
    if(maxcode!=-1)
     {
        jTextFieldCod.setText(String.valueOf(maxcode+1));
     }
-  }  
+  }  */
    
    if((myParent.getID_NM()!=-1))
    {
