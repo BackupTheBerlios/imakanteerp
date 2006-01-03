@@ -493,4 +493,30 @@ public class contragentDB extends dbObject
     {
         return flag;
     }
+    public int getMaxCod() // vzemane na maxCod
+    {
+        int maxcod=-1;
+     String nam = new String("");    
+     java.util.ArrayList max = new java.util.ArrayList();
+     int tmp=0;
+     this.comprator = 14;          
+     try
+        {
+            registerParameters();
+            setRs(getCstm().executeQuery());
+            while(rs.next())
+            {
+                nam = rs.getString("code");
+                tmp = Integer.parseInt(nam);
+                if(tmp > maxcod) maxcod = tmp;
+                max.add(new String(nam));
+            }
+        }
+        catch(Exception sqle)
+        {
+            sqle.printStackTrace();
+        }
+        System.out.println("ot contragentDB.getMaxCod()");
+        return maxcod;
+    }
 }// end class

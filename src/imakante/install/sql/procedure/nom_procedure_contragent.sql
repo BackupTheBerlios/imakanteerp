@@ -63,7 +63,11 @@ BEGIN
             SELECT ls.id, ls.name, ls.egn, ls.nlk, ls.coment FROM `mida`.`ls_n_person` ls WHERE ls.id=in_id_oso;
         END IF;
      END IF;
-
+     
+     IF (comprator = 14) THEN
+        SELECT  c.code
+        FROM `mida`.`contragent` c where c.flag = in_flag;
+     END IF;
 
 END $$
 

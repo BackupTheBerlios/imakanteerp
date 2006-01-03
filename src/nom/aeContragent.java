@@ -248,6 +248,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
         jPanel1.add(jTextFieldWeb, gridBagConstraints);
 
+        jTextFieldMOL.setToolTipText("F7  \u0437\u0430 \u0438\u0437\u0431\u043e\u0440 \u043d\u0430 \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e");
         jTextFieldMOL.setPreferredSize(new java.awt.Dimension(170, 20));
         jTextFieldMOL.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -262,6 +263,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel1.add(jTextFieldMOL, gridBagConstraints);
 
+        jTextFieldOSO.setToolTipText("F7  \u0437\u0430 \u0438\u0437\u0431\u043e\u0440 \u043d\u0430 \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e");
         jTextFieldOSO.setPreferredSize(new java.awt.Dimension(170, 20));
         jTextFieldOSO.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -629,6 +631,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
    {
    jTextFieldAddress.setText(myParent.getAddress());
    jTextFieldBulstat.setText(myParent.getBulstat());
+  
    jTextFieldCod.setText(myParent.getCod());
    jTextFieldDanNomer.setText(myParent.getDanNomer());
    jTextFieldEmail.setText(myParent.getEmail());
@@ -637,6 +640,15 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
    jTextFieldTel.setText(myParent.getTel());
    jTextFieldWeb.setText(myParent.getWeb());
    }
+  if(isNew)
+  {
+   int maxcode =  myParent.getCountriesT().getMaxCod();
+   if(maxcode!=-1)
+    {
+       jTextFieldCod.setText(String.valueOf(maxcode+1));
+    }
+  }  
+   
    if((myParent.getID_NM()!=-1))
    {
    String adres = myParent.getCountriesT().getAddressName(myParent.getID_NM());

@@ -285,6 +285,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldMOL">
           <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="F7  &#x437;&#x430; &#x438;&#x437;&#x431;&#x43e;&#x440; &#x43d;&#x430; &#x43d;&#x430;&#x441;&#x435;&#x43b;&#x435;&#x43d;&#x43e; &#x43c;&#x44f;&#x441;&#x442;&#x43e;"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[170, 20]"/>
             </Property>
@@ -300,6 +301,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldOSO">
           <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="F7  &#x437;&#x430; &#x438;&#x437;&#x431;&#x43e;&#x440; &#x43d;&#x430; &#x43d;&#x430;&#x441;&#x435;&#x43b;&#x435;&#x43d;&#x43e; &#x43c;&#x44f;&#x441;&#x442;&#x43e;"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[170, 20]"/>
             </Property>
