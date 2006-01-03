@@ -8,8 +8,7 @@ import javax.swing.JTable;
 
 public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
-    public FrmMoney(String title) // TEST ----> da se dobavi: imakante.com.vcomponents.iFrame frame,
-    {
+    public FrmMoney(String title) {
         super(title);
         // myframe = frame;
         
@@ -29,9 +28,9 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
         jLabel1 = new javax.swing.JLabel();
         jTextCod = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextName = new javax.swing.JTextField();
+        jTextCodLat = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextAnLevel = new javax.swing.JTextField();
+        jTextName = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -67,14 +66,14 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
         jLabel2.setText("\u041a\u043e\u0434 \u043b\u0430\u0442\u0438\u043d\u0438\u0446\u0430:");
         jPanel4.add(jLabel2);
 
-        jTextName.setPreferredSize(new java.awt.Dimension(80, 20));
-        jPanel4.add(jTextName);
+        jTextCodLat.setPreferredSize(new java.awt.Dimension(80, 20));
+        jPanel4.add(jTextCodLat);
 
         jLabel3.setText("\u0418\u043c\u0435 \u043d\u0430 \u0412\u0430\u043b\u0443\u0442\u0430\u0442\u0430");
         jPanel4.add(jLabel3);
 
-        jTextAnLevel.setPreferredSize(new java.awt.Dimension(160, 20));
-        jPanel4.add(jTextAnLevel);
+        jTextName.setPreferredSize(new java.awt.Dimension(160, 20));
+        jPanel4.add(jTextName);
 
         jButton1.setText("\u0422\u044a\u0440\u0441\u0435\u043d\u0435");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -189,10 +188,7 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         try {
-            String searchCod = jTextCod.getText();
-            String searchName = jTextName.getText();
-            int searchAnLevel = Integer.parseInt(jTextAnLevel.getText());
-            rs = internalObject.searchRecords(getNom(),searchCod,searchName,searchAnLevel);
+            rs = internalObject.searchRecords(jTextCod.getText(),jTextCodLat.getText(),jTextName.getText());
             jScrollPane1.remove(table);
             model = new imakante.com.CustomTableModel(getConn(), rs, null);
             table = new imakante.com.CustomTable(model);
@@ -234,17 +230,10 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
             }
             setId((Integer) table.getValueAt(getRow(), 0));
             setCod((String) table.getValueAt(getRow(), 1));
-            setNames((String) table.getValueAt(getRow(), 2));
-            setAnID((Integer) table.getValueAt(getRow(), 3));
+            setCodLat((String) table.getValueAt(getRow(), 2));
+            setNames((String) table.getValueAt(getRow(), 3));
+            setComment((String) table.getValueAt(getRow(), 4));
             
-            
-            try {
-                nom.aeGroup dialog = new nom.aeGroup(this, true,getAnID());
-                dialog.setVisible(true);
-                
-            } catch(Exception e) {
-                e.printStackTrace();
-            }
         }else{
             
         }
@@ -253,21 +242,15 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
     
     private void jButtonNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewActionPerformed
 // TODO add your handling code here:
+        //insert record
         setCod("");
+        setCodLat("");
         setNames("");
-        setAnID(0);
-        internalObject.insertRow(getNom(),getCod(),getNames(),getAnID());
+        setComment("");
+        internalObject.insertRow(getCod(),getCodLat(),getNames(),getComment());
         setId(internalObject.getMaxId());
         refreshTable();
-        try {
-            nom.aeGroup dialog = new nom.aeGroup(this, true,0);
-            dialog.setVisible(true);
-            
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-        
-        
+       
     }//GEN-LAST:event_jButtonNewActionPerformed
     
     
@@ -289,24 +272,24 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextAnLevel;
     private javax.swing.JTextField jTextCod;
+    private javax.swing.JTextField jTextCodLat;
     private javax.swing.JTextField jTextName;
     // End of variables declaration//GEN-END:variables
     
     //--------------- My Variables
     private int id=0; // imena ot tablicata
     private int nom=0; // imena ot tablicata
-    private String cod,name; // imena ot tablicata
-    private int alId=0; // vryzkata kym tablicata za analitu4nite niva
+    private String cod,codLat,name,comment; // imena ot tablicata
+    
     private  boolean atBegining=false;
     private  boolean atEnd = false;
     private int row;
     
-    private imakante.com.vcomponents.iFrame myframe;
-    private java.sql.Connection conn;
+    private  imakante.com.vcomponents.iFrame myframe;
+    private  java.sql.Connection conn;
     private  java.sql.ResultSet rs;
-    private groupDB internalObject;
+    private  nom.moneyDB internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
     
@@ -325,7 +308,7 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
     {
         try {
             
-            internalObject = new nom.groupDB(getConn(), nom);
+            internalObject = new nom.moneyDB(getConn());
         } catch(Exception e)
         
         {
@@ -336,7 +319,7 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
     private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
     {
         try {
-            internalObject.setNom(nom); // za izvli4ane na samo poleta otgovarq6ti s idGroup
+            
             rs = internalObject.getTable();
             model = new imakante.com.CustomTableModel(getConn(), rs, null);
             table = new imakante.com.CustomTable(model);
@@ -372,12 +355,12 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
         
     }
     
-    public groupDB getInternalObject() //OK
+    public nom.moneyDB getInternalObject() //OK
     {
         return internalObject;
     }
     
-    public void setInternalObject(groupDB val)//OK
+    public void setInternalObject(nom.moneyDB val)//OK
     {
         this.internalObject = val;
     }
@@ -464,6 +447,14 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
     {
         return cod;
     }
+    public void setCodLat(String CODLAT) //OK
+    {
+        this.codLat = CODLAT;
+    }
+    public String getCodLat() //OK
+    {
+        return codLat;
+    }
     public void setNames(String Name) //OK
     {
         this.name = Name;
@@ -472,15 +463,15 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
     {
         return name;
     }
+    public void setComment(String Comment) //OK
+    {
+        this.comment = Comment;
+    }
+    public String getComment() //OK
+    {
+        return comment;
+    }
     
-    public void setAnID(int anid) //OK
-    {
-        this.alId = anid;
-    }
-    public int getAnID() //OK
-    {
-        return alId;
-    }
     public  void setRow(int val) //OK
     {
         row = val;
@@ -491,8 +482,9 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
         try{
             setId((Integer) table.getValueAt(getRow(), 0));
             setCod((String) table.getValueAt(getRow(), 1));
-            setNames((String) table.getValueAt(getRow(), 2));
-            setAnID((Integer) table.getValueAt(getRow(), 3));
+            setCodLat((String) table.getValueAt(getRow(), 2));
+            setNames((String) table.getValueAt(getRow(), 3));
+            setComment((String) table.getValueAt(getRow(), 4));
             
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
             
@@ -513,8 +505,9 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
             try {
                 setId((Integer) table.getValueAt(getRow(), 0));
                 setCod((String) table.getValueAt(getRow(), 1));
-                setNames((String) table.getValueAt(getRow(), 2));
-                setAnID((Integer) table.getValueAt(getRow(), 3));
+                setCodLat((String) table.getValueAt(getRow(), 2));
+                setNames((String) table.getValueAt(getRow(), 3));
+                setComment((String) table.getValueAt(getRow(), 4));
                 
                 table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
             } catch(ArrayIndexOutOfBoundsException aioobe) {
@@ -535,8 +528,9 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
             try {
                 setId((Integer) table.getValueAt(getRow(), 0));
                 setCod((String) table.getValueAt(getRow(), 1));
-                setNames((String) table.getValueAt(getRow(), 2));
-                setAnID((Integer) table.getValueAt(getRow(), 3));
+                setCodLat((String) table.getValueAt(getRow(), 2));
+                setNames((String) table.getValueAt(getRow(), 3));
+                setComment((String) table.getValueAt(getRow(), 4));
                 
                 table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
             } catch(ArrayIndexOutOfBoundsException aioobe) {
@@ -553,8 +547,9 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
         try {
             setId((Integer) table.getValueAt(getRow(), 0));
             setCod((String) table.getValueAt(getRow(), 1));
-            setNames((String) table.getValueAt(getRow(), 2));
-            setAnID((Integer) table.getValueAt(getRow(), 3));
+            setCodLat((String) table.getValueAt(getRow(), 2));
+            setNames((String) table.getValueAt(getRow(), 3));
+            setComment((String) table.getValueAt(getRow(), 4));
             
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
         } catch(ArrayIndexOutOfBoundsException aioobe) {

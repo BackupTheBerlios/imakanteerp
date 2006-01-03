@@ -12,8 +12,8 @@ public class moneyDB  extends imakante.com.dbObject {
     private int id=0; // imena ot tablicata
     private String cod = ""; // kod na kirilitsa
     private String cod_lat = "";  //kod na latinitsa
-    private String name; // imena na valutite
-    private String comment; // belejki otnosno valutata
+    private String name = ""; // imena na valutite
+    private String comment = ""; // belejki otnosno valutata
     private java.sql.Connection conn; // connection
     
     
@@ -31,7 +31,7 @@ public class moneyDB  extends imakante.com.dbObject {
     private void prepareCstm() {
         try {
             
-            cstm = conn.prepareCall("{call n_procedure_money(?,?,?,?,?,?)}");
+            cstm = conn.prepareCall("{call nom_procedure_money(?,?,?,?,?,?)}");
             
         } catch(java.sql.SQLException sqle) {sqle.printStackTrace();}
     }

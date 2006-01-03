@@ -1,15 +1,13 @@
 
 package nom;
 
-public class aeMoney extends imakante.com.vcomponents.iDialog
-{
+public class aeMoney extends imakante.com.vcomponents.iDialog {
     
     /** Creates new form aeGroup */
-    public aeMoney(imakante.com.vcomponents.iInternalFrame frame, boolean modal,int selectComboBoxItem)
-{
+    public aeMoney(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
         
         super(frame, modal);
-        this.myParent =(nom.FrmGroup) frame;
+        this.myParent =(nom.FrmMoney) frame;
         
         initComponents();
         
@@ -20,7 +18,7 @@ public class aeMoney extends imakante.com.vcomponents.iDialog
         int x = (((dim.width)-(this.getSize().width))/2);
         int y = (((dim.height)-(this.getSize().height))/2);
         this.setLocation(x, y);
-       
+        
         
         repaintComp();
         
@@ -195,25 +193,25 @@ public class aeMoney extends imakante.com.vcomponents.iDialog
     
     private void jButtonUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUndoActionPerformed
 // TODO add your handling code here:
-        myParent.setNames(oldName);
         myParent.setCod(oldCod);
-        myParent.setAnID(oldAnLevel);
+        myParent.setCodLat(oldCodLat);
+        myParent.setNames(oldName);
         repaintComp();
         jButtonUndo.setEnabled(false);
     }//GEN-LAST:event_jButtonUndoActionPerformed
     
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
 // TODO add your handling code here:
+        oldCod = myParent.getCod();
+        oldCodLat = myParent.getCodLat();
+        oldName = myParent.getNames();
         
-        oldName = myParent.getNames(); //    \
-        oldCod = myParent.getCod();    //     > za vyztanovqvane na starite stoinosti
-        oldAnLevel = myParent.getAnID();//   /
-      //  myParent.setCod(jTextCod.getText());
-      //  myParent.setNames(jTextName.getText());
-// ustanovqvame AnID 4rez masiva za vryzkata mejdu indexite na ComboBox_a i "ID" na tablicata
-      //  myParent.setAnID(myParent.getCountriesT().getIndexConnOfId()[jComboAnLevel.getSelectedIndex()]);
-        myParent.getCountriesT().updateRow(myParent.getId(),myParent.getNom(),
-                myParent.getCod(),myParent.getNames(),myParent.getAnID());
+        //  myParent.setCod(jTextCod.getText());
+        //  myParent.setNames(jTextName.getText());
+        // ustanovqvame AnID 4rez masiva za vryzkata mejdu indexite na ComboBox_a i "ID" na tablicata
+        //  myParent.setAnID(myParent.getCountriesT().getIndexConnOfId()[jComboAnLevel.getSelectedIndex()]);
+        myParent.getInternalObject().updateRow(myParent.getId(), myParent.getCod(),
+                myParent.getCodLat(),myParent.getNames(),myParent.getComment());
         myParent.refreshTable();
         
         
@@ -231,8 +229,7 @@ public class aeMoney extends imakante.com.vcomponents.iDialog
     private void jButtonOneRowPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowPActionPerformed
 // TODO add your handling code here:
         myParent.mOneRowPlus();
-        if(myParent.isAtEnd())
-{
+        if(myParent.isAtEnd()) {
             jButtonToEnd.setEnabled(false);
             jButtonOneRowP.setEnabled(false);
             jButtonToEnd.repaint();
@@ -268,8 +265,7 @@ public class aeMoney extends imakante.com.vcomponents.iDialog
     private void jButtonOneRowMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowMActionPerformed
 // TODO add your handling code here:
         myParent.mOneRowMinus();
-        if(myParent.isAtBegining())
-{
+        if(myParent.isAtBegining()) {
             jButtonToBegin.setEnabled(false);
             jButtonOneRowM.setEnabled(false);
             jButtonToBegin.repaint();
@@ -302,16 +298,6 @@ public class aeMoney extends imakante.com.vcomponents.iDialog
         
     }//GEN-LAST:event_jButtonToBeginActionPerformed
     
-    /**
-     * @param args the command line arguments
-     */
-    /*  public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                //new aeGroup(new javax.swing.JFrame(), true).setVisible(true);
-            }
-        });
-    }*/
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonClose;
@@ -336,26 +322,23 @@ public class aeMoney extends imakante.com.vcomponents.iDialog
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
     //--------------- My Variables
-    private nom.FrmGroup myParent;
-    private String splitNamesOfAnLevel[];
-    private int selectComboBoxItem;
-    private int oldAnLevel;
-    private String oldName = "";
+    private nom.FrmMoney myParent;
     private String oldCod = "";
+    private String oldCodLat = "";
+    private String oldName = "";
+    
     //---------------END My Variables
 //---------------START MyFunction
     
     private void getNavigatiionState() //OK
     {
-        if(myParent.isAtBegining())
-{
+        if(myParent.isAtBegining()) {
             jButtonToBegin.setEnabled(false);
             jButtonOneRowM.setEnabled(false);
             jButtonToBegin.repaint();
             jButtonOneRowM.repaint();
         }
-        if(myParent.isAtEnd())
-{
+        if(myParent.isAtEnd()) {
             jButtonToEnd.setEnabled(false);
             jButtonOneRowP.setEnabled(false);
             jButtonToEnd.repaint();
@@ -365,24 +348,12 @@ public class aeMoney extends imakante.com.vcomponents.iDialog
     }
     private void repaintComp() //OK
     {
-     //   jTextCod.setText(myParent.getCod());
-     //   jTextName.setText(myParent.getNames());
+        //   jTextCod.setText(myParent.getCod());
+        //   jTextName.setText(myParent.getNames());
         //jTextCod.repaint();
         // jTextName.repaint();
-      //  jComboAnLevel.setSelectedIndex(getNewComboBoxIndex(myParent.getAnID()));
+        //  jComboAnLevel.setSelectedIndex(getNewComboBoxIndex(myParent.getAnID()));
         
     }
-    private int getNewComboBoxIndex(int oldindex) //OK
-    {
-        int newindex= 0;
-        for(int i = 0; i < myParent.getCountriesT().getIndexConnOfId().length; i++)
-{
-            if(myParent.getCountriesT().getIndexConnOfId()[i]==oldindex)
-{
-                newindex = i;
-                break;
-            }
-        }
-        return newindex;
-    }
+    
 }// end class
