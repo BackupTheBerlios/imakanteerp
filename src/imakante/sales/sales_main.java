@@ -35,6 +35,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private final static int ID_MONEY = 6;
     public sales_main() {
         super();
+        loadConn();
         initComponents();
         //  loadPaneForm();
         // this.setVisible(true);
@@ -364,6 +365,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         nomMenu.add(nomMenu_obl);
 
         nomMenu_con.setText("\u0414\u044a\u0440\u0436\u0430\u0432\u0438");
+        nomMenu_con.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomMenu_conActionPerformed(evt);
+            }
+        });
+
         nomMenu.add(nomMenu_con);
 
         nomMenu.add(jSeparator4);
@@ -442,6 +449,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-448)/2, 757, 448);
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void nomMenu_conActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomMenu_conActionPerformed
+        nom.FrmCountry Country = new nom.FrmCountry("", this);
+        desktopPane.add(Country);
+        Country.setVisible(true);
+    }//GEN-LAST:event_nomMenu_conActionPerformed
     
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         imakante.com.NewMain.setB_SL(false);

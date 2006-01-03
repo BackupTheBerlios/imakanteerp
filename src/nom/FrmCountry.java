@@ -19,6 +19,7 @@ public class FrmCountry extends iInternalFrame implements WindowListener{
     public FrmCountry(String title, imakante.com.vcomponents.iFrame frame) {
         
         super("\u0414\u044a\u0440\u0436\u0430\u0432\u0438");
+        System.out.print("v country");
         myframe = frame;
         this.setClosable(true);
         this.setMaximizable(true);
@@ -297,7 +298,11 @@ public class FrmCountry extends iInternalFrame implements WindowListener{
     }//GEN-LAST:event_jButtonCloseActionPerformed
     private void prepareConn(){
         try{
-            setConn(myframe.getConn());}catch(Exception e){e.printStackTrace();}
+            setConn(myframe.getConn());
+           if(conn == null){
+           System.out.println("null connection");
+           } else{ System.out.println("ok connection");}
+           }catch(Exception e){e.printStackTrace();}
     }
     
     private void constructObject(){
