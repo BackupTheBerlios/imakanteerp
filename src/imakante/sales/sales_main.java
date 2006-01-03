@@ -35,7 +35,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private final static int ID_MONEY = 6;
     public sales_main() {
         super();
-         initComponents();
+        initComponents();
         //  loadPaneForm();
         // this.setVisible(true);
         imakante.com.NewMain.setB_SL(true);
@@ -120,6 +120,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         aboutMenuItem = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         programMenu = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415 \u0422\u044a\u0440\u0433\u043e\u0432\u0441\u043a\u0438 \u043c\u043e\u0434\u0443\u043b");
@@ -423,13 +424,16 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         menuBar.add(helpMenu);
 
-        programMenu.setText("\u0418\u0417\u0425\u041e\u0414 \u0421\u041a\u041b\u0410\u0414");
-        programMenu.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        programMenu.addActionListener(new java.awt.event.ActionListener() {
+        programMenu.setText("\u041f\u0420\u041e\u0413\u0420\u0410\u041c\u0410");
+        jMenuItem4.setFont(new java.awt.Font("Tahoma", 1, 11));
+        jMenuItem4.setText("\u0418\u0417\u0425\u041e\u0414");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                programMenuActionPerformed(evt);
+                jMenuItem4ActionPerformed(evt);
             }
         });
+
+        programMenu.add(jMenuItem4);
 
         menuBar.add(programMenu);
 
@@ -439,12 +443,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         setBounds((screenSize.width-757)/2, (screenSize.height-448)/2, 757, 448);
     }// </editor-fold>//GEN-END:initComponents
     
-    private void programMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_programMenuActionPerformed
-      imakante.com.NewMain.setB_SL(false);
-      this.dispose();
-        
-    }//GEN-LAST:event_programMenuActionPerformed
-//<<<<<<< sales_main.java
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        imakante.com.NewMain.setB_SL(false);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    //<<<<<<< sales_main.java
     
 //=======
     
@@ -490,7 +493,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_stock_Menu_group_stockActionPerformed
     
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
- imakante.com.NewMain.setB_SL(false);
+        imakante.com.NewMain.setB_SL(false);
         System.out.println("end sales_main-formWindowClosing");
     }//GEN-LAST:event_formWindowClosing
     
@@ -543,6 +546,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JToolBar jToolBar1;
@@ -757,8 +761,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         
     }
     
-  
-     
+    
+    
     public java.sql.Connection getConn() {
         return getDbConn();
     }
@@ -784,6 +788,6 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             isStartFrmContragent = true;
         }
     }
-
+    
     
 }
