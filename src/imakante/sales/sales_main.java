@@ -352,6 +352,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         moneyMenu.add(moneyMenu_out);
 
         moneyMenu_valutes.setText("\u0412\u0430\u043b\u0443\u0442\u0438");
+        moneyMenu_valutes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                moneyMenu_valutesActionPerformed(evt);
+            }
+        });
+
         moneyMenu.add(moneyMenu_valutes);
 
         nomMenu.add(moneyMenu);
@@ -449,6 +455,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-448)/2, 757, 448);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void moneyMenu_valutesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moneyMenu_valutesActionPerformed
+loadFrmMoney();
+    }//GEN-LAST:event_moneyMenu_valutesActionPerformed
     
     private void nomMenu_conActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomMenu_conActionPerformed
         nom.FrmCountry Country = new nom.FrmCountry("", this);
@@ -793,6 +803,9 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             }
         }
     }
+    
+    //METHOD FOR LOAD FORMS
+    
     private void loadFrmContragent() {
         if(!isStartFrmContragent) {
             iFrmContragent = new nom.FrmContragent("\u041a\u041e\u041d\u0422\u0420\u0410\u0413\u0415\u041d\u0422\u0418",this,0);
@@ -801,6 +814,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             isStartFrmContragent = true;
         }
     }
+    private void loadFrmMoney(){
     
+    nom.FrmMoney Money = new nom.FrmMoney("Money", this);
+    desktopPane.add(Money);
+    Money.setVisible(true);
+    }
     
 }

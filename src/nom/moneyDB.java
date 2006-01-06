@@ -22,6 +22,7 @@ public class moneyDB  extends imakante.com.dbObject {
     /** Creates a new instance of groupDB */
     public moneyDB(java.sql.Connection conn) {
         super(conn);
+        this.conn = conn;
         prepareCstm();
     }
     
@@ -52,12 +53,13 @@ public class moneyDB  extends imakante.com.dbObject {
     private void registerParameters() //OK
     {
         try {
-            cstm.setInt("comprator",comprator);
+            
             cstm.setInt("in_id", id);
+            cstm.setInt("comprator",comprator);
             cstm.setString("in_code", cod);
             cstm.setString("in_cod_lat", cod_lat);
             cstm.setString("in_name", name);
-            cstm.setString("in_comment", comment);
+            cstm.setString("in_comments", comment);
             
         } catch(java.sql.SQLException sqle) {
             sqle.printStackTrace();

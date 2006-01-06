@@ -8,10 +8,9 @@ import javax.swing.JTable;
 
 public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
-    public FrmMoney(String title) {
+    public FrmMoney(String title,imakante.com.vcomponents.iFrame frame) {
         super(title);
-        // myframe = frame;
-        
+        myframe = frame;
         prepareConn();     // zapazva connection
         constructObject(); // inicializira class otgovarq6t za vryzkata s DB
         initTable();
@@ -222,7 +221,7 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
         if (table.getSelectedRow() != -1) {
             
             setRow(table.getSelectedRow());
-            if(getRow()==0){
+            if(getRow()==0){          //manage button state of ae form
                 setAtBegining(true);
             }
             if(getRow()==getMaxRow()){
@@ -233,7 +232,8 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
             setCodLat((String) table.getValueAt(getRow(), 2));
             setNames((String) table.getValueAt(getRow(), 3));
             setComment((String) table.getValueAt(getRow(), 4));
-            
+            nom.aeMoney ae_Money = new nom.aeMoney(this, true);
+            ae_Money.setVisible(true);
         }else{
             
         }
@@ -249,8 +249,10 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
         setComment("");
         internalObject.insertRow(getCod(),getCodLat(),getNames(),getComment());
         setId(internalObject.getMaxId());
+        nom.aeMoney ae_Money = new nom.aeMoney(this, true);
+        ae_Money.setVisible(true);
         refreshTable();
-       
+        
     }//GEN-LAST:event_jButtonNewActionPerformed
     
     
@@ -300,7 +302,10 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
     private void prepareConn() //TEST
     {
         try{
-            setConn(myframe.getConn());}catch(Exception e){e.printStackTrace();}
+            conn =  myframe.getConn();
+            if(conn==null){System.out.println("conn problem");
+            }
+        }catch(Exception e){e.printStackTrace();}
     }
     
     
@@ -308,7 +313,7 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
     {
         try {
             
-            internalObject = new nom.moneyDB(getConn());
+            internalObject = new nom.moneyDB(conn);
         } catch(Exception e)
         
         {
@@ -415,8 +420,10 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
     }
     private int  getMaxRow() //OK
     {
+        System.out.println("from getMaxRow()");
         int i = 0;
         i  = table.getRowCount() - 1;
+        System.out.println("from getMaxRow()");
         return i;
     }
     public  int getRow() {

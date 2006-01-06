@@ -8,9 +8,7 @@ public class aeMoney extends imakante.com.vcomponents.iDialog {
         
         super(frame, modal);
         this.myParent =(nom.FrmMoney) frame;
-        
         initComponents();
-        
         getNavigatiionState();
         jButtonUndo.setEnabled(false);
         this.setResizable(false);
@@ -31,8 +29,6 @@ public class aeMoney extends imakante.com.vcomponents.iDialog {
      */
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
-
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jButtonSave = new javax.swing.JButton();
@@ -135,6 +131,18 @@ public class aeMoney extends imakante.com.vcomponents.iDialog {
 
         jLabel5.setText("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440:");
 
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
+        });
+
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField2KeyPressed(evt);
+            }
+        });
+
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
@@ -191,6 +199,14 @@ public class aeMoney extends imakante.com.vcomponents.iDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
+    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
+        
+    }//GEN-LAST:event_jTextField2KeyPressed
+    
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+        
+    }//GEN-LAST:event_jTextField1KeyPressed
+    
     private void jButtonUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUndoActionPerformed
 // TODO add your handling code here:
         myParent.setCod(oldCod);
@@ -206,14 +222,13 @@ public class aeMoney extends imakante.com.vcomponents.iDialog {
         oldCodLat = myParent.getCodLat();
         oldName = myParent.getNames();
         
-        //  myParent.setCod(jTextCod.getText());
-        //  myParent.setNames(jTextName.getText());
-        // ustanovqvame AnID 4rez masiva za vryzkata mejdu indexite na ComboBox_a i "ID" na tablicata
-        //  myParent.setAnID(myParent.getCountriesT().getIndexConnOfId()[jComboAnLevel.getSelectedIndex()]);
+        myParent.setCod(jTextField1.getText());
+        myParent.setCodLat(jTextField2.getText());
+        myParent.setNames(jTextField3.getText());
+        myParent.setComment(jTextArea1.getText());
         myParent.getInternalObject().updateRow(myParent.getId(), myParent.getCod(),
                 myParent.getCodLat(),myParent.getNames(),myParent.getComment());
         myParent.refreshTable();
-        
         
         myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
         jButtonUndo.setEnabled(true);
@@ -348,12 +363,14 @@ public class aeMoney extends imakante.com.vcomponents.iDialog {
     }
     private void repaintComp() //OK
     {
-        //   jTextCod.setText(myParent.getCod());
-        //   jTextName.setText(myParent.getNames());
-        //jTextCod.repaint();
-        // jTextName.repaint();
-        //  jComboAnLevel.setSelectedIndex(getNewComboBoxIndex(myParent.getAnID()));
-        
+        jTextField1.setText(myParent.getCod());
+        jTextField2.setText(myParent.getCodLat());
+        jTextField3.setText(myParent.getNames());
+        jTextArea1.setText(myParent.getComment());
+        jTextField1.repaint();
+        jTextField2.repaint();
+        jTextField3.repaint();
+        jTextArea1.repaint();
     }
     
 }// end class
