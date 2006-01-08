@@ -164,8 +164,10 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel1.add(jLabelOSO, gridBagConstraints);
 
+        jTextFieldCod.setToolTipText("\u041c\u043e\u043b\u044f, \u0432\u044a\u0432\u0435\u0434\u0435\u0442\u0435 \u0441\u0430\u043c\u043e \u0446\u0438\u0444\u0440\u0438");
         jTextFieldCod.setPreferredSize(new java.awt.Dimension(80, 20));
-        jTextFieldCod.setInputVerifier(new InputVerifier()
+        jTextFieldCod.setInputVerifier(new imakante.com.InputIntegerVerifier());
+        /*jTextFieldCod.setInputVerifier(new InputVerifier()
             {
                 public boolean verify(JComponent input)
                 {
@@ -188,7 +190,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
                     System.out.println("setInputVerifier" + checkSimbol );
                     return checkSimbol;
                 }
-            });
+            });*/
 
             gridBagConstraints = new java.awt.GridBagConstraints();
             gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
