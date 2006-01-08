@@ -11,8 +11,8 @@ public class contragentDB extends dbObject
    private java.sql.Connection conn;
    private int comprator;
    
-   private int id,id_nm,id_mol,id_oso,flag;
-   private String cod,name,bull,dan,address,tel,fax,email,web;
+   private int cod,id,id_nm,id_mol,id_oso,flag;
+   private String name,bull,dan,address,tel,fax,email,web;
    
     /** Creates a new instance of contragentDB */
     public contragentDB(java.sql.Connection conn, int flag) //ok
@@ -41,7 +41,7 @@ public class contragentDB extends dbObject
             rs = cstm.executeQuery();
             while(rs.next())
             {
-                cod = rs.getString("code");
+                cod = rs.getInt("code");
                 name = rs.getString("name");
                 bull = rs.getString("bul");
                 dan = rs.getString("dan");
@@ -62,7 +62,7 @@ public class contragentDB extends dbObject
         }
       return rs;  
     }
-  public void insertRow(String in_cod, String in_name, String in_bul,
+  public void insertRow(int in_cod, String in_name, String in_bul,
                       String in_dan, String in_address, int in_id_nm, String in_tel,
                       String in_fax, String in_email, String in_web, int in_id_mol,
                        int in_id_oso) //ok
@@ -93,7 +93,7 @@ public class contragentDB extends dbObject
         }
         
     }
- public void updateRow(int in_id, String in_cod, String in_name, String in_bul,
+ public void updateRow(int in_id, int in_cod, String in_name, String in_bul,
                       String in_dan, String in_address, int in_id_nm, String in_tel,
                       String in_fax, String in_email, String in_web, int in_id_mol,
                        int in_id_oso) // ok
@@ -146,7 +146,7 @@ public class contragentDB extends dbObject
         changeFlag(1,in_id);
             
     }
- public java.sql.ResultSet searchRecords(String in_cod, String in_name, String in_bul,
+ public java.sql.ResultSet searchRecords(int in_cod, String in_name, String in_bul,
                       String in_dan, String in_address, int in_id_nm, String in_tel,
                       String in_fax, String in_email, String in_web, int in_id_mol,
                        int in_id_oso) //ok
@@ -320,7 +320,7 @@ public class contragentDB extends dbObject
          {
             getCstm().setInt("comprator", getComprator()); // izbor na SQL zaqwka
             getCstm().setInt("in_id", getId());
-            getCstm().setString("in_cod", getCod());
+            getCstm().setInt("in_cod", getCod());
             getCstm().setString("in_name", getName());
             getCstm().setString("in_bul",getBulstat());
             getCstm().setString("in_dan",getDanNomer());
@@ -389,11 +389,11 @@ public class contragentDB extends dbObject
     {
         return id;
     }
-  public void setCod(String COD) 
+  public void setCod(int COD) 
     {
         this.cod = COD;
     }
-    public String getCod() 
+    public int getCod() // was String
     {
         return cod;
     }
@@ -495,10 +495,7 @@ public class contragentDB extends dbObject
     }
     public int getMaxCod() // vzemane na maxCod
     {
-        int maxcod=-1;
-     String nam = new String("");    
-     java.util.ArrayList max = new java.util.ArrayList();
-     int tmp=0;
+     int maxcod=-1;
      this.comprator = 14;          
      try
         {
@@ -506,10 +503,8 @@ public class contragentDB extends dbObject
             setRs(getCstm().executeQuery());
             while(rs.next())
             {
-                nam = rs.getString("code");
-                tmp = Integer.parseInt(nam);
-                if(tmp > maxcod) maxcod = tmp;
-                max.add(new String(nam));
+                maxcod = rs.getInt("code");
+                
             }
         }
         catch(Exception sqle)

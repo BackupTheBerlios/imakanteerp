@@ -2,7 +2,9 @@
 
 package nom;
 
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
+import javax.swing.*;
 public class aeContragent extends imakante.com.vcomponents.iDialog {
     
     /** Creates new form aeContragent */
@@ -163,191 +165,216 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
         jPanel1.add(jLabelOSO, gridBagConstraints);
 
         jTextFieldCod.setPreferredSize(new java.awt.Dimension(80, 20));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 5);
-        jPanel1.add(jTextFieldCod, gridBagConstraints);
+        jTextFieldCod.setInputVerifier(new InputVerifier()
+            {
+                public boolean verify(JComponent input)
+                {
+                    byte UpRange = 57;
+                    byte DownRange = 48;
+                    boolean checkSimbol=false;
+                    JTextField tf = (JTextField) input;
+                    int lenth = tf.getText().length();
+                    byte ch[] = new byte[lenth];
+                    ch = tf.getText().getBytes();
 
-        jTextFieldName.setPreferredSize(new java.awt.Dimension(170, 20));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel1.add(jTextFieldName, gridBagConstraints);
+                    for(int i=0;i < lenth; i++)
+                    {
+                        if(( ch[i]<= UpRange)&&(ch[i] >=DownRange))
+                        {
+                            checkSimbol = true;
+                        }
+                        else checkSimbol= false;
+                    }
+                    System.out.println("setInputVerifier" + checkSimbol );
+                    return checkSimbol;
+                }
+            });
 
-        jTextFieldDanNomer.setPreferredSize(new java.awt.Dimension(80, 20));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel1.add(jTextFieldDanNomer, gridBagConstraints);
+            gridBagConstraints = new java.awt.GridBagConstraints();
+            gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+            gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 5);
+            jPanel1.add(jTextFieldCod, gridBagConstraints);
 
-        jTextFieldBulstat.setMinimumSize(new java.awt.Dimension(150, 20));
-        jTextFieldBulstat.setPreferredSize(new java.awt.Dimension(80, 20));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
-        jPanel1.add(jTextFieldBulstat, gridBagConstraints);
+            jTextFieldName.setPreferredSize(new java.awt.Dimension(170, 20));
+            gridBagConstraints = new java.awt.GridBagConstraints();
+            gridBagConstraints.gridx = 1;
+            gridBagConstraints.gridy = 1;
+            gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+            gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+            jPanel1.add(jTextFieldName, gridBagConstraints);
 
-        jTextFieldAddress.setPreferredSize(new java.awt.Dimension(170, 20));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel1.add(jTextFieldAddress, gridBagConstraints);
+            jTextFieldDanNomer.setPreferredSize(new java.awt.Dimension(80, 20));
+            gridBagConstraints = new java.awt.GridBagConstraints();
+            gridBagConstraints.gridx = 1;
+            gridBagConstraints.gridy = 2;
+            gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+            gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+            jPanel1.add(jTextFieldDanNomer, gridBagConstraints);
 
-        jTextFieldNM.setToolTipText("F7  \u0437\u0430 \u0438\u0437\u0431\u043e\u0440 \u043d\u0430 \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e");
-        jTextFieldNM.setPreferredSize(new java.awt.Dimension(170, 20));
-        jTextFieldNM.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextFieldNMKeyPressed(evt);
-            }
-        });
+            jTextFieldBulstat.setMinimumSize(new java.awt.Dimension(150, 20));
+            jTextFieldBulstat.setPreferredSize(new java.awt.Dimension(80, 20));
+            gridBagConstraints = new java.awt.GridBagConstraints();
+            gridBagConstraints.gridx = 3;
+            gridBagConstraints.gridy = 2;
+            gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+            gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
+            jPanel1.add(jTextFieldBulstat, gridBagConstraints);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
-        jPanel1.add(jTextFieldNM, gridBagConstraints);
+            jTextFieldAddress.setPreferredSize(new java.awt.Dimension(170, 20));
+            gridBagConstraints = new java.awt.GridBagConstraints();
+            gridBagConstraints.gridx = 1;
+            gridBagConstraints.gridy = 3;
+            gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+            gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+            jPanel1.add(jTextFieldAddress, gridBagConstraints);
 
-        jTextFieldTel.setPreferredSize(new java.awt.Dimension(170, 20));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel1.add(jTextFieldTel, gridBagConstraints);
+            jTextFieldNM.setToolTipText("F7  \u0437\u0430 \u0438\u0437\u0431\u043e\u0440 \u043d\u0430 \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e");
+            jTextFieldNM.setPreferredSize(new java.awt.Dimension(170, 20));
+            jTextFieldNM.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyPressed(java.awt.event.KeyEvent evt) {
+                    jTextFieldNMKeyPressed(evt);
+                }
+            });
 
-        jTextFieldFax.setPreferredSize(new java.awt.Dimension(170, 20));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
-        jPanel1.add(jTextFieldFax, gridBagConstraints);
+            gridBagConstraints = new java.awt.GridBagConstraints();
+            gridBagConstraints.gridx = 3;
+            gridBagConstraints.gridy = 3;
+            gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+            gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
+            jPanel1.add(jTextFieldNM, gridBagConstraints);
 
-        jTextFieldEmail.setPreferredSize(new java.awt.Dimension(170, 20));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel1.add(jTextFieldEmail, gridBagConstraints);
+            jTextFieldTel.setPreferredSize(new java.awt.Dimension(170, 20));
+            gridBagConstraints = new java.awt.GridBagConstraints();
+            gridBagConstraints.gridx = 1;
+            gridBagConstraints.gridy = 4;
+            gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+            gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+            jPanel1.add(jTextFieldTel, gridBagConstraints);
 
-        jTextFieldWeb.setPreferredSize(new java.awt.Dimension(170, 20));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
-        jPanel1.add(jTextFieldWeb, gridBagConstraints);
+            jTextFieldFax.setPreferredSize(new java.awt.Dimension(170, 20));
+            gridBagConstraints = new java.awt.GridBagConstraints();
+            gridBagConstraints.gridx = 3;
+            gridBagConstraints.gridy = 4;
+            gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+            gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
+            jPanel1.add(jTextFieldFax, gridBagConstraints);
 
-        jTextFieldMOL.setToolTipText("F7  \u0437\u0430 \u0438\u0437\u0431\u043e\u0440 \u043d\u0430 \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e");
-        jTextFieldMOL.setPreferredSize(new java.awt.Dimension(170, 20));
-        jTextFieldMOL.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextFieldMOLKeyPressed(evt);
-            }
-        });
+            jTextFieldEmail.setPreferredSize(new java.awt.Dimension(170, 20));
+            gridBagConstraints = new java.awt.GridBagConstraints();
+            gridBagConstraints.gridx = 1;
+            gridBagConstraints.gridy = 5;
+            gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+            gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+            jPanel1.add(jTextFieldEmail, gridBagConstraints);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel1.add(jTextFieldMOL, gridBagConstraints);
+            jTextFieldWeb.setPreferredSize(new java.awt.Dimension(170, 20));
+            gridBagConstraints = new java.awt.GridBagConstraints();
+            gridBagConstraints.gridx = 3;
+            gridBagConstraints.gridy = 5;
+            gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+            gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
+            jPanel1.add(jTextFieldWeb, gridBagConstraints);
 
-        jTextFieldOSO.setToolTipText("F7  \u0437\u0430 \u0438\u0437\u0431\u043e\u0440 \u043d\u0430 \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e");
-        jTextFieldOSO.setPreferredSize(new java.awt.Dimension(170, 20));
-        jTextFieldOSO.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextFieldOSOKeyPressed(evt);
-            }
-        });
+            jTextFieldMOL.setToolTipText("F7  \u0437\u0430 \u0438\u0437\u0431\u043e\u0440 \u043d\u0430 \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e");
+            jTextFieldMOL.setPreferredSize(new java.awt.Dimension(170, 20));
+            jTextFieldMOL.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyPressed(java.awt.event.KeyEvent evt) {
+                    jTextFieldMOLKeyPressed(evt);
+                }
+            });
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
-        jPanel1.add(jTextFieldOSO, gridBagConstraints);
+            gridBagConstraints = new java.awt.GridBagConstraints();
+            gridBagConstraints.gridx = 1;
+            gridBagConstraints.gridy = 6;
+            gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+            gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+            jPanel1.add(jTextFieldMOL, gridBagConstraints);
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("\u041d\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u044f"));
-        jPanel3.setPreferredSize(new java.awt.Dimension(230, 70));
-        jButtonToBegin.setText("<<");
-        jButtonToBegin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonToBeginActionPerformed(evt);
-            }
-        });
+            jTextFieldOSO.setToolTipText("F7  \u0437\u0430 \u0438\u0437\u0431\u043e\u0440 \u043d\u0430 \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e");
+            jTextFieldOSO.setPreferredSize(new java.awt.Dimension(170, 20));
+            jTextFieldOSO.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyPressed(java.awt.event.KeyEvent evt) {
+                    jTextFieldOSOKeyPressed(evt);
+                }
+            });
 
-        jPanel3.add(jButtonToBegin);
+            gridBagConstraints = new java.awt.GridBagConstraints();
+            gridBagConstraints.gridx = 3;
+            gridBagConstraints.gridy = 6;
+            gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+            gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
+            jPanel1.add(jTextFieldOSO, gridBagConstraints);
 
-        jButtonOneRowM.setText("<");
-        jButtonOneRowM.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonOneRowMActionPerformed(evt);
-            }
-        });
+            jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("\u041d\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u044f"));
+            jPanel3.setPreferredSize(new java.awt.Dimension(230, 70));
+            jButtonToBegin.setText("<<");
+            jButtonToBegin.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonToBeginActionPerformed(evt);
+                }
+            });
 
-        jPanel3.add(jButtonOneRowM);
+            jPanel3.add(jButtonToBegin);
 
-        jButtonOneRowP.setText(">");
-        jButtonOneRowP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonOneRowPActionPerformed(evt);
-            }
-        });
+            jButtonOneRowM.setText("<");
+            jButtonOneRowM.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonOneRowMActionPerformed(evt);
+                }
+            });
 
-        jPanel3.add(jButtonOneRowP);
+            jPanel3.add(jButtonOneRowM);
 
-        jButtonToEnd.setText(">>");
-        jButtonToEnd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonToEndActionPerformed(evt);
-            }
-        });
+            jButtonOneRowP.setText(">");
+            jButtonOneRowP.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonOneRowPActionPerformed(evt);
+                }
+            });
 
-        jPanel3.add(jButtonToEnd);
+            jPanel3.add(jButtonOneRowP);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 20);
-        jPanel1.add(jPanel3, gridBagConstraints);
+            jButtonToEnd.setText(">>");
+            jButtonToEnd.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButtonToEndActionPerformed(evt);
+                }
+            });
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+            jPanel3.add(jButtonToEnd);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel2.setPreferredSize(new java.awt.Dimension(263, 40));
-        jButton1.setText("\u0421\u044a\u0445\u0440\u0430\u043d\u0438");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+            gridBagConstraints = new java.awt.GridBagConstraints();
+            gridBagConstraints.gridx = 3;
+            gridBagConstraints.gridy = 7;
+            gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 20);
+            jPanel1.add(jPanel3, gridBagConstraints);
 
-        jPanel2.add(jButton1);
+            getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        jButton3.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
+            jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+            jPanel2.setPreferredSize(new java.awt.Dimension(263, 40));
+            jButton1.setText("\u0421\u044a\u0445\u0440\u0430\u043d\u0438");
+            jButton1.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButton1ActionPerformed(evt);
+                }
+            });
 
-        jPanel2.add(jButton3);
+            jPanel2.add(jButton1);
 
-        getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
+            jButton3.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
+            jButton3.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButton3ActionPerformed(evt);
+                }
+            });
 
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
+            jPanel2.add(jButton3);
+
+            getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
+
+            pack();
+        }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonToEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToEndActionPerformed
 // TODO add your handling code here:
@@ -490,7 +517,14 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
             }
             else
             {
-                myParent.setCod(jTextFieldCod.getText());
+               try
+               {
+                myParent.setCod(Integer.parseInt(jTextFieldCod.getText()));
+               }
+               catch(Exception e)
+               {
+                   e.printStackTrace();
+               }
                 myParent.setName(jTextFieldName.getText());
                 myParent.setBulstat(jTextFieldBulstat.getText());
                 myParent.setDanNomer(jTextFieldDanNomer.getText());
@@ -509,7 +543,14 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
         }
         else  // zapisa  sy6testvuva v bazata!!
         {
-                myParent.setCod(jTextFieldCod.getText());
+                try
+                  {
+                    myParent.setCod(Integer.parseInt(jTextFieldCod.getText()));
+                  }
+                catch(Exception e)
+                  {
+                    e.printStackTrace();
+                  }
                 myParent.setName(jTextFieldName.getText());
                 myParent.setBulstat(jTextFieldBulstat.getText());
                 myParent.setDanNomer(jTextFieldDanNomer.getText());
@@ -632,7 +673,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
    jTextFieldAddress.setText(myParent.getAddress());
    jTextFieldBulstat.setText(myParent.getBulstat());
   
-   jTextFieldCod.setText(myParent.getCod());
+   jTextFieldCod.setText(String.valueOf(myParent.getCod()));
    jTextFieldDanNomer.setText(myParent.getDanNomer());
    jTextFieldEmail.setText(myParent.getEmail());
    jTextFieldFax.setText(myParent.getFax());
@@ -640,14 +681,14 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
    jTextFieldTel.setText(myParent.getTel());
    jTextFieldWeb.setText(myParent.getWeb());
    }
- /* if(isNew)
+  if(isNew)
   {
    int maxcode =  myParent.getCountriesT().getMaxCod();
    if(maxcode!=-1)
     {
-       jTextFieldCod.setText(String.valueOf(maxcode+1));
+      jTextFieldCod.setText(String.valueOf(maxcode+1));
     }
-  }  */
+  }  
    
    if((myParent.getID_NM()!=-1))
    {
@@ -667,3 +708,26 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
 } 
  
 }// end class
+
+class InputIntegerVerifier extends InputVerifier
+{
+         public boolean verify(JComponent input)
+         {
+               byte UpRange = 57;
+               byte DownRange = 48;
+               boolean checkSimbol=false;
+               JTextField tf = (JTextField) input;
+               int lenth = tf.getText().length();
+               byte ch[] = new byte[lenth];
+               tf.getText().getBytes();
+               for(int i=0;i < lenth; i++)
+               {
+                   if((ch[i] <= UpRange)&&(ch[i] >=DownRange))
+                   {
+                       checkSimbol = true;
+                   }
+                   else checkSimbol= false;
+               }
+               return checkSimbol;
+         }
+}// end calss InputIntegerVerifier*/

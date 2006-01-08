@@ -65,7 +65,7 @@ BEGIN
      END IF;
      
      IF (comprator = 14) THEN
-        SELECT  c.code
+        SELECT  MAX(c.code) as code
         FROM `mida`.`contragent` c where c.flag = in_flag;
      END IF;
 

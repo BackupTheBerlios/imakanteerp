@@ -276,7 +276,14 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
-        setCod(jTextFieldCod.getText());
+        try
+        {
+        setCod(Integer.parseInt(jTextFieldCod.getText()));
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
         setName(jTextFieldName.getText());
         setBulstat(jTextFieldBulstat.getText());
         setDanNomer(jTextFieldDanNomer.getText());
@@ -329,7 +336,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
 
     private void jButtonNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewActionPerformed
 // TODO add your handling code here:
-        setCod("");
+        setCod(-1);
         setName("");
         setBulstat("");
         setDanNomer("");
@@ -375,7 +382,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
                 setAtEnd(true);
             }
             setId((Integer) table.getValueAt(getRow(), 0));
-            setCod((String) table.getValueAt(getRow(), 1));
+            setCod((Integer) table.getValueAt(getRow(), 1));
             setName((String) table.getValueAt(getRow(), 2));
             setBulstat((String)table.getValueAt(getRow(),3));
             setDanNomer((String)table.getValueAt(getRow(),4));
@@ -458,8 +465,8 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
     private  boolean atEnd = false;
     private int row;
     private  aeContragent dialog;
-    private int id,id_nm,id_mol,id_oso,flag;
-    private String cod,name,bull,dan,address,tel,fax,email,web;
+    private int cod,id,id_nm,id_mol,id_oso,flag;
+    private String name,bull,dan,address,tel,fax,email,web;
     private imakante.com.vcomponents.iFrame myframe;
     private java.sql.Connection conn;
     private  java.sql.ResultSet rs; 
@@ -606,11 +613,11 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
     {
         return id;
     }
-  public void setCod(String COD) 
+  public void setCod(int COD) 
     {
         this.cod = COD;
     }
-    public String getCod() 
+    public int getCod()  // was String
     {
         return cod;
     }
@@ -725,7 +732,7 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
         setRow(getMaxRow());
         try{
             setId((Integer) table.getValueAt(getRow(), 0));
-            setCod((String) table.getValueAt(getRow(), 1));
+            setCod((Integer) table.getValueAt(getRow(), 1));
             setName((String) table.getValueAt(getRow(), 2));
             setBulstat((String)table.getValueAt(getRow(),3));
             setDanNomer((String)table.getValueAt(getRow(),4));
@@ -761,7 +768,7 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
         try
         {
             setId((Integer) table.getValueAt(getRow(), 0));
-            setCod((String) table.getValueAt(getRow(), 1));
+            setCod((Integer) table.getValueAt(getRow(), 1));
             setName((String) table.getValueAt(getRow(), 2));
             setBulstat((String)table.getValueAt(getRow(),3));
             setDanNomer((String)table.getValueAt(getRow(),4));
@@ -796,7 +803,7 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
             try
             {
             setId((Integer) table.getValueAt(getRow(), 0));
-            setCod((String) table.getValueAt(getRow(), 1));
+            setCod((Integer) table.getValueAt(getRow(), 1));
             setName((String) table.getValueAt(getRow(), 2));
             setBulstat((String)table.getValueAt(getRow(),3));
             setDanNomer((String)table.getValueAt(getRow(),4));
@@ -826,7 +833,7 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
         try
         {
             setId((Integer) table.getValueAt(getRow(), 0));
-            setCod((String) table.getValueAt(getRow(), 1));
+            setCod((Integer) table.getValueAt(getRow(), 1));
             setName((String) table.getValueAt(getRow(), 2));
             setBulstat((String)table.getValueAt(getRow(),3));
             setDanNomer((String)table.getValueAt(getRow(),4));

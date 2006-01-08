@@ -162,6 +162,9 @@
               <Dimension value="[80, 20]"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTextFieldCod.setInputVerifier(new InputVerifier() &#xa;{&#xa;    public boolean verify(JComponent input) &#xa;    {&#xa;      byte UpRange = 57;&#xa;      byte DownRange = 48;&#xa;      boolean checkSimbol=false;&#xa;      JTextField tf = (JTextField) input;&#xa;      int lenth = tf.getText().length();&#xa;      byte ch[] = new byte[lenth];&#xa;      ch = tf.getText().getBytes();&#xa;      &#xa;      for(int i=0;i &lt; lenth; i++)&#xa;         {&#xa;          if(( ch[i]&lt;= UpRange)&amp;&amp;(ch[i] &gt;=DownRange))&#xa;            {&#xa;             checkSimbol = true;&#xa;            }&#xa;          else checkSimbol= false;&#xa;            }&#xa;       System.out.println(&quot;setInputVerifier&quot; + checkSimbol );&#xa;       return checkSimbol;&#xa;    }&#xa;});&#xa;"/>
+          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
               <GridBagConstraints gridX="-1" gridY="-1" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="20" insetsLeft="5" insetsBottom="5" insetsRight="5" anchor="17" weightX="0.0" weightY="0.0"/>
