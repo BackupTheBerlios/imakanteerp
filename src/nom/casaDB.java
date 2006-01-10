@@ -1,0 +1,367 @@
+
+
+package nom;
+
+import com.mysql.jdbc.ResultSetMetaData;
+import imakante.com.*;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+
+public class casaDB  extends dbObject {
+    //-------------START MyVariables
+    private String splitNamesG[];
+    private int indexConnOfId[] = null; // masiv prave6t vryzkata mejdu indexite na ComboBox_a i "ID" na tablicata za grupi kasi
+    private java.sql.ResultSet rs;
+    private java.sql.Statement stmt;
+    private java.sql.CallableStatement cstm;
+    private int comprator = 1;
+    private int id=0; // imena ot tablicata                                \
+    private int code=0; // imena ot tablicata                           \
+    private String name; // imena ot tablicata                                 > tablica "kasi"
+    private int id_groupe=0; // vryzkata kym tablicata za grope  /
+    private String comment="";//                                                  /
+    private Connection conn;
+    //-------------END MyVariables
+    
+    /** Creates a new instance of kasiDB */
+    public casaDB(java.sql.Connection conn) {
+        super(conn);
+        prepareCstm();
+        
+    }
+    //-------SART MyFunction
+    private void prepareCstm() // OK
+    {
+        try {
+            
+            setCstm(getConn().prepareCall("{call nom_procedure_casa(?,?,?,?,?,?)}"));
+            
+        } catch(java.sql.SQLException sqle) {sqle.printStackTrace();}
+    }
+    public java.sql.ResultSet getTable() //OK
+    {
+        
+        this.comprator = 0;
+        try{
+            registerParameters();
+            setRs(getCstm().executeQuery());
+        } catch(java.sql.SQLException sqle) {
+            sqle.printStackTrace();
+        }
+        
+        return rs;
+    }
+    private void registerParameters() //OK
+    {
+        try {
+            
+            getCstm().setInt("in_id", getId());
+            getCstm().setInt("in_id_groupe", getIDOblast());
+            getCstm().setInt("in_code", getcode());
+            getCstm().setString("in_name", getName());
+            getCstm().setString("in_comment", getComment());
+            getCstm().setInt("comprator", getComprator());
+            
+            
+        } catch(java.sql.SQLException sqle) {
+            sqle.printStackTrace();
+        }
+        
+    }
+    private void prepareRezult() //OK
+    {
+        try{
+            registerParameters();
+            setRs(getCstm().executeQuery());}catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        
+    }
+    public void insertRow() // OK  comprator = 1;
+    {
+        comprator = 1;
+        this.id = getMaxId() + 1;
+        this.code = getMaxCod() + 1;
+        this.name = "";
+        this.id_groupe = 1;
+        this.comment = "";
+        try {
+            registerParameters();
+            cstm.execute();
+        } catch(java.sql.SQLException sqle) {
+            sqle.printStackTrace();
+        }
+        
+    }
+    public void updateRow(int in_id,  int in_id_groupe, int in_code, String in_name, String in_comment) //OK   comprator = 2;
+    {
+        comprator = 2;
+        this.id = in_id;
+        this.id_groupe = in_id_groupe;
+        this.code = in_code;
+        this.name = in_name;
+        this.comment = in_comment;
+        try {
+            registerParameters();
+            cstm.execute();
+        } catch(java.sql.SQLException sqle) {
+            sqle.printStackTrace();
+        }
+        
+        
+    }
+    public void deleteRow(int in_id) //OK   comprator = 3;
+    {
+        comprator = 3;
+        id = in_id;
+        try{
+            registerParameters();
+            cstm.execute();
+        }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        
+    }
+    
+    public java.sql.ResultSet getRow(int in_id) //OK  comprator = 4;
+    {
+        comprator = 4;
+        id = in_id;
+        try {
+            registerParameters();
+            rs = cstm.executeQuery();
+            while(rs.next()) {
+                id_groupe = rs.getInt("id_groupe");
+                name = rs.getString("name");
+                code = rs.getInt("code");
+                comment = rs.getString("comments");
+            }
+        } catch(java.sql.SQLException sqle) {
+            sqle.printStackTrace();
+        }
+        return rs;
+    }
+    
+    public java.sql.ResultSet searchRecords(int in_id_groupe, int in_code, String in_name) // -OK  comprator = 5;
+    {
+        comprator = 5;
+        this.id_groupe = in_id_groupe;
+        this.code = in_code;
+        this.name = in_name;
+        
+        try {
+            registerParameters();
+            setRs(getCstm().executeQuery());
+        } catch(java.sql.SQLException sqle) {
+            sqle.printStackTrace();
+        }
+        return getRs();
+        
+    }
+   
+    
+    public java.sql.Connection getConn() //OK
+    {
+        return conn;
+    }
+    
+    public void setConn(java.sql.Connection conn) //OK
+    {
+        this.conn = conn;
+    }
+    
+    public java.sql.Statement getStm() //OK
+    {
+        return stmt;
+    }
+    
+    public void setStm(java.sql.Statement stm) //KO
+    {
+        this.stmt = stm;
+    }
+    
+    public java.sql.CallableStatement getCstm() //OK
+    {
+        return cstm;
+    }
+    
+    public void setCstm(java.sql.CallableStatement cstm) //OK
+    {
+        this.cstm = cstm;
+    }
+    
+    public java.sql.ResultSet getRs() //OK
+    {
+        return rs;
+    }
+    public void setRs(java.sql.ResultSet rs) //OK
+    {
+        this.rs = rs;
+    }
+    public void setId(int ID) //OK
+    {
+        this.id = ID;
+    }
+    public int getId() //OK
+    {
+        return id;
+    }
+    
+    
+    public int getMaxId() //OK    comprator = 7;
+    {
+        comprator = 7;
+        int return_int=-1;
+        try {
+            registerParameters();
+            rs = cstm.executeQuery();
+            while(rs.next()) {
+                return_int = rs.getInt(1);
+            }
+        } catch(java.sql.SQLException sqle) {
+            sqle.printStackTrace();
+        }
+        return return_int;
+    }
+    
+    
+    
+    public int getMaxCod() //OK    comprator = 8;
+    {
+        comprator = 8;
+        int return_int=-1;
+        try {
+            registerParameters();
+            rs = cstm.executeQuery();
+            while(rs.next()) {
+                return_int = rs.getInt(1);
+            }
+        } catch(java.sql.SQLException sqle) {
+            sqle.printStackTrace();
+        }
+        return return_int;
+    }
+    
+     public boolean validateCod(int target){ //proverka za nalichieto na takav kod tablitsata
+    comprator = 9;
+    boolean in_list = false;
+    int return_int=-1;
+        try {
+            registerParameters();
+            rs = cstm.executeQuery();
+            while(rs.next()) {
+                return_int = rs.getInt(1);
+                if(target == return_int){
+                in_list = true;
+                }
+            }
+        } catch(java.sql.SQLException sqle) {
+            sqle.printStackTrace();
+        }
+     return in_list;  
+    
+    }
+     
+    public void setIDOblast(int COD) //OK
+    {
+        this.id_groupe = COD;
+    }
+    public int getIDOblast() //OK
+    {
+        return id_groupe;
+    }
+    public void setName(String Name) //OK
+    {
+        this.name = Name;
+    }
+    public String getName() //OK
+    {
+        return name;
+    }
+    public void setcode(int anid) //OK
+    {
+        this.code = anid;
+    }
+    public int getcode() //OK
+    {
+        return code;
+    }
+    public int getComprator() //OK
+    {
+        return comprator;
+    }
+    public void setComprator(int com) //OK
+    {
+        this.comprator = com;
+    }
+    
+    public void setComment(String Comment){
+    
+    this.comment = Comment;
+    
+    }
+    public String getComment(){
+    return comment;
+    }
+    
+    public void close() //OK
+    {
+        try{
+            rs.close();
+            rs=null;
+        }catch(java.sql.SQLException sqle){}
+        
+        try{
+            cstm.close();
+            cstm=null;
+        }catch(java.sql.SQLException sqle){}
+        
+    }
+    public String[] getCasaG() //test comprator = 6;
+    {
+        comprator=6;
+        String return_str=new String("");
+        int oldId = id;
+        ResultSet oldRs = rs;
+        String strIndexConnOfId = new String("");
+        ArrayList in = new ArrayList();
+        Iterator it = null;
+        // nova ideq porodena ot fakta 4e pri razdelqneto na stringa i
+        //ako imeto na ednata kletka ima intervali no se polu4ava gre6ka
+        HashMap key_Anlevel = new HashMap();
+        int i = 0;
+        
+        try {
+            registerParameters();
+            rs = cstm.executeQuery();
+            
+            
+            while(rs.next()) {
+                key_Anlevel.put(new Integer(rs.getInt("id")),new String(rs.getString("name")));
+                in.add(new Integer(rs.getInt("id")));
+                i++;
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        rs = oldRs;
+        id = oldId;
+        indexConnOfId = new int[i];
+        it = in.iterator();
+        
+        splitNamesG = new String[i];
+        i=0;
+        while(it.hasNext()) {
+            indexConnOfId[i] =(Integer) it.next();
+            splitNamesG[i] = (String) key_Anlevel.get(indexConnOfId[i]);
+            i++;
+        }
+        
+        
+        
+        return splitNamesG;
+    }
+    
+    public int[] getIndexConnOfId() //OK
+    {
+        return indexConnOfId;
+    }
+}// end class

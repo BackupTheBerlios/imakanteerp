@@ -98,7 +98,7 @@
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="jPanel3" alignment="0" max="32767" attributes="1"/>
                       <Component id="jTextField1" alignment="0" min="-2" pref="80" max="-2" attributes="1"/>
-                      <Component id="jComboBox1" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                      <Component id="jComboG" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                       <Component id="jScrollPane1" alignment="1" pref="370" max="32767" attributes="1"/>
                       <Component id="jTextField3" alignment="0" max="32767" attributes="1"/>
                   </Group>
@@ -112,7 +112,7 @@
                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboG" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -227,7 +227,7 @@
             <Property name="text" type="java.lang.String" value="&#x413;&#x440;&#x443;&#x43f;&#x430;:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="jComboG">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
