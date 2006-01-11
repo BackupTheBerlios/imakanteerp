@@ -140,10 +140,10 @@ public class casaDB  extends dbObject {
         return rs;
     }
     
-    public java.sql.ResultSet searchRecords(int in_id_groupe, int in_code, String in_name) // -OK  comprator = 5;
+    public java.sql.ResultSet searchRecords( int in_code, String in_name) // -OK  comprator = 5;
     {
         comprator = 5;
-        this.id_groupe = in_id_groupe;
+        
         this.code = in_code;
         this.name = in_name;
         
