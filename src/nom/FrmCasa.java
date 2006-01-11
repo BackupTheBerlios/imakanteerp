@@ -188,7 +188,12 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         try {
-            rs = internalObject.searchRecords(jComboG.getSelectedIndex(),jTextCod.getText(),jTextName.getText());
+            try {
+                rs = internalObject.searchRecords(jComboG.getSelectedIndex(),Integer.parseInt(jTextCod.getText()),jTextName.getText());
+            } catch (NumberFormatException ex) {
+                ex.printStackTrace();
+                jTextCod.requestFocus();
+            }
             jScrollPane1.remove(table);
             model = new imakante.com.CustomTableModel(getConn(), rs, null);
             table = new imakante.com.CustomTable(model);
@@ -389,7 +394,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     {
         int i = 0;
         i  = table.getRowCount() - 1;
-       
+        
         return i;
     }
     public  int getRow() {
@@ -584,18 +589,18 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     }
     
     //Combo ini
-     private void initCombo(){
+    private void initCombo(){
         namesG = getInternalObject().getCasaG();
         for(int i=0;i<namesG.length;i++) {
             jComboG.addItem(new String(namesG[i]));
             
         }
-       
-              
+        
+        
     }
     
     
-   
+    
     
     
     
