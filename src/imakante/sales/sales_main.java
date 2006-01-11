@@ -320,12 +320,6 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         nomMenu.add(nomMenu_object);
 
         nomMenu_kasi.setText("\u041a\u0430\u0441\u0438");
-        nomMenu_kasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomMenu_kasiActionPerformed(evt);
-            }
-        });
-
         kasiMenu_grupi.setText("\u0413\u0440\u0443\u043f\u0438 \u043a\u0430\u0441\u0438");
         kasiMenu_grupi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -336,6 +330,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         nomMenu_kasi.add(kasiMenu_grupi);
 
         kasiMenu_kasi.setText("\u041a\u0430\u0441\u0438");
+        kasiMenu_kasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kasiMenu_kasiActionPerformed(evt);
+            }
+        });
+
         nomMenu_kasi.add(kasiMenu_kasi);
 
         nomMenu.add(nomMenu_kasi);
@@ -472,11 +472,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-448)/2, 757, 448);
     }// </editor-fold>//GEN-END:initComponents
-    
-    private void nomMenu_kasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomMenu_kasiActionPerformed
-        loadCasa();
-    }//GEN-LAST:event_nomMenu_kasiActionPerformed
-    
+
+    private void kasiMenu_kasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kasiMenu_kasiActionPerformed
+   loadCasa();
+    }//GEN-LAST:event_kasiMenu_kasiActionPerformed
+        
     private void nomMenu_nasmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomMenu_nasmActionPerformed
         loadNM();
     }//GEN-LAST:event_nomMenu_nasmActionPerformed

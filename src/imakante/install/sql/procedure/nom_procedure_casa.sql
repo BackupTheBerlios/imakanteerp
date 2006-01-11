@@ -23,7 +23,7 @@ BEGIN
      IF (comprator = 5) THEN
         SELECT n.id_n_casa, n.id_n_group, ng.name_n_group, n.code_n_casa, n.name_n_casa,
                    n.comments_n_casa FROM n_casa n LEFT OUTER JOIN n_group ng ON ng.id_n_group=n.id_n_group
-                   WHERE LIKE n.code_n_casa LIKE CONCAT('%',in_code,'%'); AND  n.code_n_casa LIKE CONCAT('%',in_name,'%');
+                   WHERE n.code_n_casa LIKE CONCAT('%',in_code,'%') AND  n.code_n_casa LIKE CONCAT('%',in_name,'%');
 
      END IF;
 
@@ -35,6 +35,10 @@ BEGIN
 
      IF (comprator = 7) THEN
         SELECT MAX(n.id_n_casa) AS id FROM `mida`.`n_casa` n;
+     END IF;
+
+     IF (comprator = 8) THEN
+        SELECT MAX(n.code_n_casa) AS code_n_casa FROM `mida`.`n_casa` n;
      END IF;
 
 END $$

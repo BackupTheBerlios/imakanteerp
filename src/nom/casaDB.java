@@ -36,7 +36,7 @@ public class casaDB  extends dbObject {
     {
         try {
             
-            setCstm(getConn().prepareCall("{call nom_procedure_casa`(?,?,?,?,?,?)}"));
+            setCstm(getConn().prepareCall("{call nom_procedure_casa(?,?,?,?,?,?)}"));
             
         } catch(java.sql.SQLException sqle) {sqle.printStackTrace();}
     }
@@ -56,14 +56,13 @@ public class casaDB  extends dbObject {
     private void registerParameters() //OK
     {
         try {
-            
+            getCstm().setInt("comprator", getComprator());
             getCstm().setInt("in_id", getId());
             getCstm().setInt("in_id_groupe", getIDOblast());
             getCstm().setInt("in_code", getcode());
             getCstm().setString("in_name", getName());
-            getCstm().setString("in_comment", getComment());
-            getCstm().setInt("comprator", getComprator());
-            
+            getCstm().setString("in_comments", getComment());
+                       
             
         } catch(java.sql.SQLException sqle) {
             sqle.printStackTrace();
