@@ -17,10 +17,10 @@ import java.lang.Byte;
 public class FrmNaseleniMesta extends  imakante.com.vcomponents.iInternalFrame implements WindowListener
 {
 
-    public FrmNaseleniMesta(String title) // TEST da se dobavi , imakante.com.vcomponents.iFrame frame
+    public FrmNaseleniMesta(String title,imakante.com.vcomponents.iFrame frame) // TEST da se dobavi , imakante.com.vcomponents.iFrame frame
     {
         super(title);
-       // myframe = frame; 
+        myframe = frame; 
         prepareConn();     // zapazva connection
         constructNaseleniMestaDB(); // inicializira class otgovarq6t za vryzkata s DB
         initTable();
