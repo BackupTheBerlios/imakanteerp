@@ -17,10 +17,10 @@ import java.lang.Byte;
 public class FrmOblast extends  imakante.com.vcomponents.iInternalFrame implements WindowListener
 {
 
-    public FrmOblast(String title) // TEST da se dobavi , imakante.com.vcomponents.iFrame frame
+    public FrmOblast(String title,imakante.com.vcomponents.iFrame frame) // TEST da se dobavi , imakante.com.vcomponents.iFrame frame
     {
         super(title);
-       // myframe = frame; 
+        myframe = frame; 
         prepareConn();     // zapazva connection
         constructOblastDB(); // inicializira class otgovarq6t za vryzkata s DB
         initTable();
@@ -181,7 +181,8 @@ public class FrmOblast extends  imakante.com.vcomponents.iInternalFrame implemen
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.SOUTH);
 
-        pack();
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-835)/2, (screenSize.height-319)/2, 835, 319);
     }// </editor-fold>//GEN-END:initComponents
 
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
@@ -304,23 +305,21 @@ public class FrmOblast extends  imakante.com.vcomponents.iInternalFrame implemen
         
     }//GEN-LAST:event_jButtonNewActionPerformed
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) 
-    {
-        java.awt.EventQueue.invokeLater(new Runnable()
-        {
-            public void run() {
-                
-                FrmOblast frCN =   new FrmOblast("ttt");
-                fr.add(frCN);
-                frCN.setVisible(true);
-                fr.setVisible(true);
-                
-            }
-        });
-    }
+//  
+//    public static void main(String args[]) 
+//    {
+//        java.awt.EventQueue.invokeLater(new Runnable()
+//        {
+//            public void run() {
+//                
+//                FrmOblast frCN =   new FrmOblast("ttt");
+//                fr.add(frCN);
+//                frCN.setVisible(true);
+//                fr.setVisible(true);
+//                
+//            }
+//        });
+//    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

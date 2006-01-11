@@ -17,7 +17,7 @@ import java.lang.Byte;
 public class FrmNaseleniMesta extends  imakante.com.vcomponents.iInternalFrame implements WindowListener
 {
 
-    public FrmNaseleniMesta(String title,imakante.com.vcomponents.iFrame frame) // TEST da se dobavi , imakante.com.vcomponents.iFrame frame
+    public FrmNaseleniMesta(String title, imakante.com.vcomponents.iFrame frame) // TEST da se dobavi , imakante.com.vcomponents.iFrame frame
     {
         super(title);
         myframe = frame; 

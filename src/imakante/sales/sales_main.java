@@ -11,6 +11,7 @@
 package imakante.sales;
 
 import java.awt.event.WindowEvent;
+import java.beans.PropertyVetoException;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -467,17 +468,13 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-448)/2, 757, 448);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void nomMenu_nasmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomMenu_nasmActionPerformed
-       nom.FrmNaseleniMesta nm = new nom.FrmNaseleniMesta("NASM");
-       desktopPane.add(nm);
-       nm.setVisible(true);
+      loadNM();
     }//GEN-LAST:event_nomMenu_nasmActionPerformed
     
     private void nomMenu_oblActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomMenu_oblActionPerformed
-        nom.FrmOblast oblast = new nom.FrmOblast("AREA");
-        desktopPane.add(oblast);
-        oblast.setVisible(true);
+        loadOblasti();
     }//GEN-LAST:event_nomMenu_oblActionPerformed
     
     private void moneyMenu_valutesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moneyMenu_valutesActionPerformed
@@ -820,6 +817,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             try {
                 iFormGroup[nm] = new FrmGroup(title,this,nm);
                 desktopPane.add(iFormGroup[nm]);
+                try {
+                    iFormGroup[nm].setMaximum(true);
+                } catch (PropertyVetoException ex) {
+                    ex.printStackTrace();
+                }
                 iFormGroup[nm].setVisible(true);
                 isStartFrmGroup[nm] = true;
             } catch(Exception e) {
@@ -829,20 +831,54 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }
     
     //METHOD FOR LOAD FORMS
-    
+    //KONTRAGENTI
     private void loadFrmContragent() {
         if(!isStartFrmContragent) {
             iFrmContragent = new nom.FrmContragent("\u041a\u041e\u041d\u0422\u0420\u0410\u0413\u0415\u041d\u0422\u0418",this,0);
             desktopPane.add(iFrmContragent);
+            try {
+                iFrmContragent.setMaximum(true);
+            } catch (PropertyVetoException ex) {
+                ex.printStackTrace();
+            }
             iFrmContragent.setVisible(true);
             isStartFrmContragent = true;
         }
     }
+    //PARICHNI
     private void loadFrmMoney(){
         
         nom.FrmMoney Money = new nom.FrmMoney("Money", this);
         desktopPane.add(Money);
+        try {
+            Money.setMaximum(true);
+        } catch (PropertyVetoException ex) {
+            ex.printStackTrace();
+        }
         Money.setVisible(true);
     }
     
+    //OBLASTI
+    private void loadOblasti(){
+        nom.FrmOblast oblast = new nom.FrmOblast("AREA", this);
+        desktopPane.add(oblast);
+        try {
+            oblast.setMaximum(true);
+        } catch (PropertyVetoException ex) {
+            ex.printStackTrace();
+        }
+        oblast.setVisible(true);
+        
+    }
+    //NASELENI MESTA
+    private void loadNM(){
+        nom.FrmNaseleniMesta nm = new nom.FrmNaseleniMesta("NASM", this);
+        desktopPane.add(nm);
+        try {
+            nm.setMaximum(true);
+        } catch (PropertyVetoException ex) {
+            ex.printStackTrace();
+        }
+        nm.setVisible(true);
+    }
 }
