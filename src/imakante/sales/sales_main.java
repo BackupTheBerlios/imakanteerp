@@ -10,12 +10,9 @@
  */
 package imakante.sales;
 
-import java.awt.event.WindowEvent;
 import java.beans.PropertyVetoException;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
-import javax.swing.JOptionPane;
 import nom.FrmGroup;
 //>>>>>>> 1.24
 
@@ -40,6 +37,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         initComponents();
         //  loadPaneForm();
         // this.setVisible(true);
+        
         imakante.com.NewMain.setB_SL(true);
     }
     public void run(){
@@ -322,6 +320,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         nomMenu.add(nomMenu_object);
 
         nomMenu_kasi.setText("\u041a\u0430\u0441\u0438");
+        nomMenu_kasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomMenu_kasiActionPerformed(evt);
+            }
+        });
+
         kasiMenu_grupi.setText("\u0413\u0440\u0443\u043f\u0438 \u043a\u0430\u0441\u0438");
         kasiMenu_grupi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -469,8 +473,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         setBounds((screenSize.width-757)/2, (screenSize.height-448)/2, 757, 448);
     }// </editor-fold>//GEN-END:initComponents
     
+    private void nomMenu_kasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomMenu_kasiActionPerformed
+        loadCasa();
+    }//GEN-LAST:event_nomMenu_kasiActionPerformed
+    
     private void nomMenu_nasmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomMenu_nasmActionPerformed
-      loadNM();
+        loadNM();
     }//GEN-LAST:event_nomMenu_nasmActionPerformed
     
     private void nomMenu_oblActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomMenu_oblActionPerformed
@@ -845,6 +853,20 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             isStartFrmContragent = true;
         }
     }
+    
+    //kasi
+    private void loadCasa(){
+        
+        nom.FrmCasa Casa = new nom.FrmCasa("Casa", this);
+        desktopPane.add(Casa);
+        try {
+            Casa.setMaximum(true);
+        } catch (PropertyVetoException ex) {
+            ex.printStackTrace();
+        }
+        Casa.setVisible(true);
+    }
+    
     //PARICHNI
     private void loadFrmMoney(){
         
@@ -857,6 +879,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         }
         Money.setVisible(true);
     }
+    
     //OBLASTI
     private void loadOblasti(){
         nom.FrmOblast oblast = new nom.FrmOblast("AREA", this);

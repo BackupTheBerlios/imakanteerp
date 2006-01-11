@@ -271,6 +271,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x41a;&#x430;&#x441;&#x438;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nomMenu_kasiActionPerformed"/>
+              </Events>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="kasiMenu_grupi">
                   <Properties>
