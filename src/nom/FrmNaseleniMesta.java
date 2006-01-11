@@ -320,23 +320,23 @@ public class FrmNaseleniMesta extends  imakante.com.vcomponents.iInternalFrame i
         
     }//GEN-LAST:event_jButtonNewActionPerformed
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) 
-    {
-        java.awt.EventQueue.invokeLater(new Runnable()
-        {
-            public void run() {
-                
-                FrmNaseleniMesta frCN =   new FrmNaseleniMesta("ttt");
-                fr.add(frCN);
-                frCN.setVisible(true);
-                fr.setVisible(true);
-                
-            }
-        });
-    }
+//    /**
+//     * @param args the command line arguments
+//     */
+//    public static void main(String args[]) 
+//    {
+//        java.awt.EventQueue.invokeLater(new Runnable()
+//        {
+//            public void run() {
+//                
+//                FrmNaseleniMesta frCN =   new FrmNaseleniMesta("ttt");
+//                fr.add(frCN);
+//                frCN.setVisible(true);
+//                fr.setVisible(true);
+//                
+//            }
+//        });
+//    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -382,28 +382,28 @@ public class FrmNaseleniMesta extends  imakante.com.vcomponents.iInternalFrame i
  //---------------START MyFunction
 private void prepareConn() //TEST
     {
-      // samo za testovate ------------
-      try
-         {
-          Class.forName("com.mysql.jdbc.Driver");
-           
-           ccc = DriverManager.getConnection(Url, User, Pass);
-           conn = ccc;
-          
-         }
-         catch(Exception e)
-         {
-             e.printStackTrace();
-         }
+//      // samo za testovate ------------
+//      try
+//         {
+//          Class.forName("com.mysql.jdbc.Driver");
+//           
+//           ccc = DriverManager.getConnection(Url, User, Pass);
+//           conn = ccc;
+//          
+//         }
+//         catch(Exception e)
+//         {
+//             e.printStackTrace();
+//         }
       // ---------------------------
-     /*  try
+       try
        {
             setConn(myframe.getConn());
        }
        catch(Exception e)
        {
        e.printStackTrace();
-       }*/
+       }
   }
 private void constructNaseleniMestaDB() // OK
     {

@@ -365,9 +365,21 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         nomMenu.add(jSeparator3);
 
         nomMenu_nasm.setText("\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e");
+        nomMenu_nasm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomMenu_nasmActionPerformed(evt);
+            }
+        });
+
         nomMenu.add(nomMenu_nasm);
 
         nomMenu_obl.setText("\u041e\u0431\u043b\u0430\u0441\u0442\u0438");
+        nomMenu_obl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomMenu_oblActionPerformed(evt);
+            }
+        });
+
         nomMenu.add(nomMenu_obl);
 
         nomMenu_con.setText("\u0414\u044a\u0440\u0436\u0430\u0432\u0438");
@@ -456,8 +468,20 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         setBounds((screenSize.width-757)/2, (screenSize.height-448)/2, 757, 448);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void nomMenu_nasmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomMenu_nasmActionPerformed
+       nom.FrmNaseleniMesta nm = new nom.FrmNaseleniMesta("NASM");
+       desktopPane.add(nm);
+       nm.setVisible(true);
+    }//GEN-LAST:event_nomMenu_nasmActionPerformed
+    
+    private void nomMenu_oblActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomMenu_oblActionPerformed
+        nom.FrmOblast oblast = new nom.FrmOblast("AREA");
+        desktopPane.add(oblast);
+        oblast.setVisible(true);
+    }//GEN-LAST:event_nomMenu_oblActionPerformed
+    
     private void moneyMenu_valutesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moneyMenu_valutesActionPerformed
-loadFrmMoney();
+        loadFrmMoney();
     }//GEN-LAST:event_moneyMenu_valutesActionPerformed
     
     private void nomMenu_conActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomMenu_conActionPerformed
@@ -815,10 +839,10 @@ loadFrmMoney();
         }
     }
     private void loadFrmMoney(){
-    
-    nom.FrmMoney Money = new nom.FrmMoney("Money", this);
-    desktopPane.add(Money);
-    Money.setVisible(true);
+        
+        nom.FrmMoney Money = new nom.FrmMoney("Money", this);
+        desktopPane.add(Money);
+        Money.setVisible(true);
     }
     
 }
