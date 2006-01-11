@@ -857,7 +857,6 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         }
         Money.setVisible(true);
     }
-    
     //OBLASTI
     private void loadOblasti(){
         nom.FrmOblast oblast = new nom.FrmOblast("AREA", this);
