@@ -24,8 +24,6 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jComboG = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         jTextCod = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -56,13 +54,6 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel4.setPreferredSize(new java.awt.Dimension(448, 37));
-        jLabel1.setText("\u0413\u0440\u0443\u043f\u0430 \u043a\u0430\u0441\u0438:");
-        jPanel4.add(jLabel1);
-
-        jComboG.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboG.setPreferredSize(new java.awt.Dimension(200, 22));
-        jPanel4.add(jComboG);
-
         jLabel2.setText("\u041a\u043e\u0434:");
         jPanel4.add(jLabel2);
 
@@ -189,7 +180,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
         
         try {
             try {
-                rs = internalObject.searchRecords(jComboG.getSelectedIndex(),Integer.parseInt(jTextCod.getText()),jTextName.getText());
+                rs = internalObject.searchRecords(Integer.parseInt(jTextCod.getText()),jTextName.getText());
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
                 jTextCod.requestFocus();
@@ -236,8 +227,6 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     private javax.swing.JButton jButtonPrint;
     private javax.swing.JButton jButtonPrnReport;
     private javax.swing.JButton jButtonRefresh;
-    private javax.swing.JComboBox jComboG;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
@@ -588,17 +577,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
         
     }
     
-    //Combo ini
-    private void initCombo(){
-        namesG = getInternalObject().getCasaG();
-        for(int i=0;i<namesG.length;i++) {
-            jComboG.addItem(new String(namesG[i]));
-            
-        }
-        
-        
-    }
-    
+
     
     
     
