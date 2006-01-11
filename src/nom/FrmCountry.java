@@ -334,6 +334,11 @@ public class FrmCountry extends iInternalFrame implements WindowListener{
             rs = countriesT.getTable();
             model = new imakante.com.CustomTableModel(conn,rs, null);
             table = new imakante.com.CustomTable(model);
+            
+            table.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
+            table.getColumnModel().getColumn(0).setResizable(false);
+            table.getColumnModel().getColumn(0).setWidth(0);
+            table.getColumnModel().getColumn(0).setPreferredWidth(0);
         }catch(Exception e){e.printStackTrace();}
          table.requestFocus();
         
