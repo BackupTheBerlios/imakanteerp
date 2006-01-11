@@ -197,7 +197,7 @@ public class NewMain extends javax.swing.JFrame {
     
     public static final void setConnection(java.sql.Connection conn) {
         try {
-            if (null == conn) ;
+            
             if (dbConn != null) {
                 System.out.print("parvo zatvariam conn");
                 dbConn.close();

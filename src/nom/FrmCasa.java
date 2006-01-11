@@ -27,7 +27,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
         jLabel1 = new javax.swing.JLabel();
         jComboG = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
-        jTextCodLat = new javax.swing.JTextField();
+        jTextCod = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jTextName = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -66,10 +66,10 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
         jLabel2.setText("\u041a\u043e\u0434:");
         jPanel4.add(jLabel2);
 
-        jTextCodLat.setPreferredSize(new java.awt.Dimension(80, 20));
-        jPanel4.add(jTextCodLat);
+        jTextCod.setPreferredSize(new java.awt.Dimension(80, 20));
+        jPanel4.add(jTextCod);
 
-        jLabel3.setText("\u0418\u043c\u0435 \u043d\u0430 \u0412\u0430\u043b\u0443\u0442\u0430\u0442\u0430");
+        jLabel3.setText("\u0418\u043c\u0435:");
         jPanel4.add(jLabel3);
 
         jTextName.setPreferredSize(new java.awt.Dimension(160, 20));
@@ -172,7 +172,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
 // TODO add your handling code here:
         
         try {
-            java.text.MessageFormat headerFormat = new java.text.MessageFormat("Group");
+            java.text.MessageFormat headerFormat = new java.text.MessageFormat("Casa");
             java.text.MessageFormat footerFormat = new java.text.MessageFormat("Page. "+"- {0} -"+" IMAKANTE' ");
             table.print(JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
         } catch(PrinterException e) {
@@ -188,7 +188,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         try {
-            rs = internalObject.searchRecords(jTextCod.getText(),jTextName.getText());
+            rs = internalObject.searchRecords(jComboG.getSelectedIndex(),jTextCod.getText(),jTextName.getText());
             jScrollPane1.remove(table);
             model = new imakante.com.CustomTableModel(getConn(), rs, null);
             table = new imakante.com.CustomTable(model);
@@ -240,7 +240,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextCodLat;
+    private javax.swing.JTextField jTextCod;
     private javax.swing.JTextField jTextName;
     // End of variables declaration//GEN-END:variables
     
@@ -250,6 +250,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     private int cod = 0;
     private String name,comment; // imena ot tablicata
     private String namesG[]; //imena na grupi
+    private int selectComboBoxItem;
     private  boolean atBegining=false;
     private  boolean atEnd = false;
     private int row;
@@ -581,6 +582,22 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
         }
         
     }
+    
+    //Combo ini
+     private void initCombo(){
+        namesG = getInternalObject().getCasaG();
+        for(int i=0;i<namesG.length;i++) {
+            jComboG.addItem(new String(namesG[i]));
+            
+        }
+       
+              
+    }
+    
+    
+   
+    
+    
     
     public java.sql.Connection getConn() {
         return conn;

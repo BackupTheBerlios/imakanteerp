@@ -1,6 +1,8 @@
 
 package nom;
 
+import java.awt.event.KeyEvent;
+
 public class aeCasa extends imakante.com.vcomponents.iDialog {
     
     /** Creates new form aeGroup */
@@ -56,6 +58,11 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
                 jButtonSaveActionPerformed(evt);
             }
         });
+        jButtonSave.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonSaveKeyPressed(evt);
+            }
+        });
 
         jPanel1.add(jButtonSave);
 
@@ -65,6 +72,11 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
                 jButtonUndoActionPerformed(evt);
             }
         });
+        jButtonUndo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonUndoKeyPressed(evt);
+            }
+        });
 
         jPanel1.add(jButtonUndo);
 
@@ -72,6 +84,11 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
         jButtonClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCloseActionPerformed(evt);
+            }
+        });
+        jButtonClose.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonCloseKeyPressed(evt);
             }
         });
 
@@ -89,6 +106,11 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
                 jButtonToBeginActionPerformed(evt);
             }
         });
+        jButtonToBegin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonToBeginKeyPressed(evt);
+            }
+        });
 
         jPanel3.add(jButtonToBegin);
 
@@ -96,6 +118,11 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
         jButtonOneRowM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonOneRowMActionPerformed(evt);
+            }
+        });
+        jButtonOneRowM.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonOneRowMKeyPressed(evt);
             }
         });
 
@@ -107,6 +134,11 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
                 jButtonOneRowPActionPerformed(evt);
             }
         });
+        jButtonOneRowP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonOneRowPKeyPressed(evt);
+            }
+        });
 
         jPanel3.add(jButtonOneRowP);
 
@@ -114,6 +146,11 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
         jButtonToEnd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonToEndActionPerformed(evt);
+            }
+        });
+        jButtonToEnd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonToEndKeyPressed(evt);
             }
         });
 
@@ -125,9 +162,20 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
 
         jLabel5.setText("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440:");
 
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField1FocusLost(evt);
+            }
+        });
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField1KeyPressed(evt);
+            }
+        });
+
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField3KeyPressed(evt);
             }
         });
 
@@ -138,6 +186,11 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
         jLabel3.setText("\u0413\u0440\u0443\u043f\u0430:");
 
         jComboG.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboG.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboGKeyPressed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -188,8 +241,60 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
+    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+        if(cFields()==true){
+            jTextField1.transferFocus();
+            jTextField1.setBackground(new java.awt.Color(255,204,204));
+        }else{
+            jTextField1.requestFocus();
+            
+        }
+    }//GEN-LAST:event_jTextField1FocusLost
+    
+    private void jButtonCloseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonCloseKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButtonClose.doClick();}
+    }//GEN-LAST:event_jButtonCloseKeyPressed
+    
+    private void jButtonUndoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonUndoKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButtonUndo.doClick();}
+    }//GEN-LAST:event_jButtonUndoKeyPressed
+    
+    private void jButtonSaveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonSaveKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButtonSave.doClick();}
+    }//GEN-LAST:event_jButtonSaveKeyPressed
+    
+    private void jButtonToEndKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonToEndKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButtonToEnd.doClick();}
+    }//GEN-LAST:event_jButtonToEndKeyPressed
+    
+    private void jButtonOneRowPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonOneRowPKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButtonOneRowP.doClick();}
+    }//GEN-LAST:event_jButtonOneRowPKeyPressed
+    
+    private void jButtonOneRowMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonOneRowMKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButtonOneRowM.doClick();}
+    }//GEN-LAST:event_jButtonOneRowMKeyPressed
+    
+    private void jButtonToBeginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonToBeginKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButtonToBegin.doClick();}
+    }//GEN-LAST:event_jButtonToBeginKeyPressed
+    
+    private void jTextField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyPressed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3KeyPressed
+    
+    private void jComboGKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboGKeyPressed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jComboGKeyPressed
+    
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-        
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            if(cFields()==true){
+                jTextField1.transferFocus();
+                jTextField1.setBackground(new java.awt.Color(255,204,204));}} else{
+            jTextField1.requestFocus();
+            
+                }
     }//GEN-LAST:event_jTextField1KeyPressed
     
     private void jButtonUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUndoActionPerformed
@@ -260,7 +365,7 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButtonOneRowMActionPerformed
     
     private void jButtonToBeginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToBeginActionPerformed
-
+        
         myParent.mTableBegining();
         
         jButtonToBegin.setEnabled(false);
@@ -306,25 +411,49 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
     private int oldCod = 0;
     private String oldName = "";
     private String oldComment =  "";
+    private String namesG[];
+    private int selectComboBoxItem;
     
     //---------------END My Variables
     
     //---------------START My Methods
     
+    //Proverka na poletata
+    private boolean cFields(){ // V sluchaia samo na edno pole dali e integer i dali ima takav zapis
+        boolean check  = true;     // v bazata
+        int i = 0;
+        try {
+            i = Integer.parseInt(jTextField1.getText()); // proverka za int
+            if (myParent.getInternalObject().validateCod(i)==false){ // proverka za nalichie na cod v bazata
+                check = false;
+            }
+        } catch (NumberFormatException nfex) {
+            check = false;
+            jTextField1.setBackground(new java.awt.Color(255,204,204));
+            nfex.printStackTrace();
+        }
+        return check;
+    }
     
     //SAVE
     private void saveRecord(){
-        oldCod = myParent.getCod();
-        oldName = myParent.getNames();
-        oldComment = myParent.getComment();
-        myParent.setCod(Integer.parseInt(jTextField1.getText()));
-        myParent.setNames(jTextField3.getText());
-        myParent.setComment(jTextArea1.getText());
-        myParent.setIDG(myParent.getInternalObject().getIndexConnOfId()[jComboG.getSelectedIndex()]);
-        myParent.getInternalObject().updateRow(myParent.getId(),myParent.getNames(), myParent.getPostCode(),myParent.getIDOblast());
-        myParent.refreshTable();
-        myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
-        jButtonUndo.setEnabled(true);
+        if(cFields()){
+            oldCod = myParent.getCod();
+            oldName = myParent.getNames();
+            oldComment = myParent.getComment();
+            try {
+                myParent.setCod(Integer.parseInt(jTextField1.getText()));
+            } catch (NumberFormatException nfex) {
+                nfex.printStackTrace();
+            }
+            myParent.setNames(jTextField3.getText());
+            myParent.setComment(jTextArea1.getText());
+            myParent.setIDG(myParent.getInternalObject().getIndexConnOfId()[jComboG.getSelectedIndex()]);
+            myParent.getInternalObject().updateRow(myParent.getId(), myParent.getIDG(),myParent.getCod(),
+                    myParent.getNames(), myParent.getComment());
+            myParent.refreshTable();
+            myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
+            jButtonUndo.setEnabled(true);}
     }
     
     //UNDO
@@ -355,18 +484,17 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
     }
     private void repaintComp() //OK
     {
-        jTextField1.setText(myParent.getCod());
-        jTextField2.setText(myParent.getCodLat());
+        jTextField1.setText(""+myParent.getCod());
         jTextField3.setText(myParent.getNames());
         jTextArea1.setText(myParent.getComment());
         jTextField1.repaint();
-        jTextField2.repaint();
+        
         jTextField3.repaint();
         jTextArea1.repaint();
     }
     
     private void initCombo(){
-        namesG = myParent.getCountriesT().getOblastName();
+        namesG = myParent.getInternalObject().getCasaG();
         for(int i=0;i<namesG.length;i++) {
             jComboG.addItem(new String(namesG[i]));
             
@@ -376,7 +504,7 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
             
             selectComboBoxItem = getNewComboBoxIndex(selectComboBoxItem);
             
-            jComboOblast.setSelectedIndex(selectComboBoxItem);
+            jComboG.setSelectedIndex(selectComboBoxItem);
         }
         
     }
@@ -385,8 +513,8 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
     private int getNewComboBoxIndex(int oldindex) //OK
     {
         int newindex= 0;
-        for(int i = 0; i < myParent.getCountriesT().getIndexConnOfId().length; i++) {
-            if(myParent.getCountriesT().getIndexConnOfId()[i]==oldindex) {
+        for(int i = 0; i < myParent.getInternalObject().getIndexConnOfId().length; i++) {
+            if(myParent.getInternalObject().getIndexConnOfId()[i]==oldindex) {
                 newindex = i;
                 break;
             }
