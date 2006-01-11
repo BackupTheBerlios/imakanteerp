@@ -17,10 +17,10 @@ import java.lang.Byte;
 public class FrmOblast extends  imakante.com.vcomponents.iInternalFrame implements WindowListener
 {
 
-    public FrmOblast(String title,imakante.com.vcomponents.iFrame frame) // TEST da se dobavi , imakante.com.vcomponents.iFrame frame
+    public FrmOblast(String title) // TEST da se dobavi , imakante.com.vcomponents.iFrame frame
     {
         super(title);
-        myframe = frame; 
+       // myframe = frame; 
         prepareConn();     // zapazva connection
         constructOblastDB(); // inicializira class otgovarq6t za vryzkata s DB
         initTable();
@@ -304,21 +304,23 @@ public class FrmOblast extends  imakante.com.vcomponents.iInternalFrame implemen
         
     }//GEN-LAST:event_jButtonNewActionPerformed
     
-//  
-//    public static void main(String args[]) 
-//    {
-//        java.awt.EventQueue.invokeLater(new Runnable()
-//        {
-//            public void run() {
-//                
-//                FrmOblast frCN =   new FrmOblast("ttt");
-//                fr.add(frCN);
-//                frCN.setVisible(true);
-//                fr.setVisible(true);
-//                
-//            }
-//        });
-//    }
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) 
+    {
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run() {
+                
+                FrmOblast frCN =   new FrmOblast("ttt");
+                fr.add(frCN);
+                frCN.setVisible(true);
+                fr.setVisible(true);
+                
+            }
+        });
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
