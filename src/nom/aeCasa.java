@@ -13,11 +13,12 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
         initComponents();
         getNavigatiionState();
         jButtonUndo.setEnabled(false);
+        initCombo();
         this.setResizable(false);
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        int x = (((dim.width)-(this.getSize().width))/2);
-        int y = (((dim.height)-(this.getSize().height))/2);
-        this.setLocation(x, y);
+//        int x = (((dim.width)-(this.getSize().width))/2);
+//        int y = (((dim.height)-(this.getSize().height))/2);
+//        this.setLocation(x, y);
         
         
         repaintComp();
@@ -185,7 +186,6 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
 
         jLabel3.setText("\u0413\u0440\u0443\u043f\u0430:");
 
-        jComboG.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboG.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jComboGKeyPressed(evt);
@@ -209,9 +209,9 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 80, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jComboG, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 213, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jTextField3))
-                .add(23, 23, 23))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jTextField3)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE))
+                .add(73, 73, 73))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -234,17 +234,18 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
                     .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
-        pack();
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-497)/2, (screenSize.height-320)/2, 497, 320);
     }// </editor-fold>//GEN-END:initComponents
     
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        if(cFields()==true){
+        if(cFields()){
             jTextField1.transferFocus();
-            jTextField1.setBackground(new java.awt.Color(255,204,204));
+         
         }else{
             jTextField1.requestFocus();
             
@@ -289,10 +290,10 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
     
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER){
-            if(cFields()==true){
+            if(cFields()){
                 jTextField1.transferFocus();
-                jTextField1.setBackground(new java.awt.Color(255,204,204));}} else{
-            jTextField1.requestFocus();
+                }} else{
+                jTextField1.requestFocus();
             
                 }
     }//GEN-LAST:event_jTextField1KeyPressed
@@ -419,14 +420,12 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
     //---------------START My Methods
     
     //Proverka na poletata
-    private boolean cFields(){ // V sluchaia samo na edno pole dali e integer i dali ima takav zapis
+    private boolean cFields(){ // V sluchaia samo na edno pole dali e integer 
         boolean check  = true;     // v bazata
         int i = 0;
         try {
             i = Integer.parseInt(jTextField1.getText()); // proverka za int
-            if (myParent.getInternalObject().validateCod(i)==false){ // proverka za nalichie na cod v bazata
-                check = false;
-            }
+            jTextField1.setBackground(new java.awt.Color(255,255,255));
         } catch (NumberFormatException nfex) {
             check = false;
             jTextField1.setBackground(new java.awt.Color(255,204,204));

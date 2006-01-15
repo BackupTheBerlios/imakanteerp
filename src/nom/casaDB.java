@@ -58,7 +58,7 @@ public class casaDB  extends dbObject {
         try {
             getCstm().setInt("comprator", getComprator());
             getCstm().setInt("in_id", getId());
-            getCstm().setInt("in_id_groupe", getIDOblast());
+            getCstm().setInt("in_id_groupe", getIDGr());
             getCstm().setInt("in_code", getcode());
             getCstm().setString("in_name", getName());
             getCstm().setString("in_comments", getComment());
@@ -76,13 +76,13 @@ public class casaDB  extends dbObject {
             setRs(getCstm().executeQuery());}catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         
     }
-    public void insertRow() // OK  comprator = 1;
+    public void insertRow(int in_code, int in_id_groupe) // OK  comprator = 1;
     {
         comprator = 1;
-        this.id = getMaxId() + 1;
-        this.code = getMaxCod() + 1;
+        
+        this.code = in_code;
         this.name = "";
-        this.id_groupe = 1;
+        this.id_groupe = in_id_groupe;
         this.comment = "";
         try {
             registerParameters();
@@ -239,31 +239,27 @@ public class casaDB  extends dbObject {
         return return_int;
     }
     
-     public boolean validateCod(int target){ //proverka za nalichieto na takav kod tablitsata
-    comprator = 9;
-    boolean in_list = false;
-    int return_int=-1;
+   public int getMaxGrID() //OK    comprator = 8;
+    {
+        comprator = 9;
+        int return_int=-1;
         try {
             registerParameters();
             rs = cstm.executeQuery();
             while(rs.next()) {
                 return_int = rs.getInt(1);
-                if(target == return_int){
-                in_list = true;
-                }
             }
         } catch(java.sql.SQLException sqle) {
             sqle.printStackTrace();
         }
-     return in_list;  
-    
+        return return_int;
     }
      
-    public void setIDOblast(int COD) //OK
+    public void setIDGr(int COD) //OK
     {
         this.id_groupe = COD;
     }
-    public int getIDOblast() //OK
+    public int getIDGr() //OK
     {
         return id_groupe;
     }
@@ -325,7 +321,7 @@ public class casaDB  extends dbObject {
         Iterator it = null;
         // nova ideq porodena ot fakta 4e pri razdelqneto na stringa i
         //ako imeto na ednata kletka ima intervali no se polu4ava gre6ka
-        HashMap key_Anlevel = new HashMap();
+        HashMap Gropes = new HashMap();
         int i = 0;
         
         try {
@@ -334,8 +330,8 @@ public class casaDB  extends dbObject {
             
             
             while(rs.next()) {
-                key_Anlevel.put(new Integer(rs.getInt("id")),new String(rs.getString("name")));
-                in.add(new Integer(rs.getInt("id")));
+                Gropes.put(new Integer(rs.getInt("id_n_group")),new String(rs.getString("name_n_group")));
+                in.add(new Integer(rs.getInt("id_n_group")));
                 i++;
             }
         } catch(Exception e) {
@@ -350,7 +346,7 @@ public class casaDB  extends dbObject {
         i=0;
         while(it.hasNext()) {
             indexConnOfId[i] =(Integer) it.next();
-            splitNamesG[i] = (String) key_Anlevel.get(indexConnOfId[i]);
+            splitNamesG[i] = (String) Gropes.get(indexConnOfId[i]);
             i++;
         }
         

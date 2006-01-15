@@ -442,10 +442,10 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
         try{
             
             setId((Integer) table.getValueAt(getRow(), 0));
-            setIDG((Byte) table.getValueAt(getRow(), 1));
-            setCod((Integer) table.getValueAt(getRow(), 2));
-            setNames((String) table.getValueAt(getRow(), 3));
-            setComment((String) table.getValueAt(getRow(), 4));
+            setIDG((Integer) table.getValueAt(getRow(), 1));
+            setCod((Integer) table.getValueAt(getRow(), 3));
+            setNames((String) table.getValueAt(getRow(), 4));
+            setComment((String) table.getValueAt(getRow(), 5));
             
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
             
@@ -456,6 +456,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
         setAtBegining(false);
         setAtEnd(true);
     }
+    
     public void mOneRowPlus() //OK
     {
         if(getRow() <= getMaxRow()) {
@@ -465,10 +466,10 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
             setAtBegining(false);
             try {
                 setId((Integer) table.getValueAt(getRow(), 0));
-                setIDG((Byte) table.getValueAt(getRow(), 1));
-                setCod((Integer) table.getValueAt(getRow(), 2));
-                setNames((String) table.getValueAt(getRow(), 3));
-                setComment((String) table.getValueAt(getRow(), 4));
+                setIDG((Integer) table.getValueAt(getRow(), 1));
+                setCod((Integer) table.getValueAt(getRow(), 3));
+                setNames((String) table.getValueAt(getRow(), 4));
+                setComment((String) table.getValueAt(getRow(), 5));
                 
                 table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
             } catch(ArrayIndexOutOfBoundsException aioobe) {
@@ -488,10 +489,10 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
             setAtEnd(false);
             try {
                 setId((Integer) table.getValueAt(getRow(), 0));
-                setIDG((Byte) table.getValueAt(getRow(), 1));
-                setCod((Integer) table.getValueAt(getRow(), 2));
-                setNames((String) table.getValueAt(getRow(), 3));
-                setComment((String) table.getValueAt(getRow(), 4));
+                setIDG((Integer) table.getValueAt(getRow(), 1));
+                setCod((Integer) table.getValueAt(getRow(), 3));
+                setNames((String) table.getValueAt(getRow(), 4));
+                setComment((String) table.getValueAt(getRow(), 5));
                 
                 table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
             } catch(ArrayIndexOutOfBoundsException aioobe) {
@@ -507,10 +508,10 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
         setRow(0);
         try {
             setId((Integer) table.getValueAt(getRow(), 0));
-            setIDG((Byte) table.getValueAt(getRow(), 1));
-            setCod((Integer) table.getValueAt(getRow(), 2));
-            setNames((String) table.getValueAt(getRow(), 3));
-            setComment((String) table.getValueAt(getRow(), 4));
+            setIDG((Integer) table.getValueAt(getRow(), 1));
+            setCod((Integer) table.getValueAt(getRow(), 3));
+            setNames((String) table.getValueAt(getRow(), 4));
+            setComment((String) table.getValueAt(getRow(), 5));
             
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
         } catch(ArrayIndexOutOfBoundsException aioobe) {
@@ -532,9 +533,10 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     }
     
     private void newRecord(){
-        
-        internalObject.insertRow();
         setId(internalObject.getMaxId());
+        setIDG(internalObject.getMaxGrID());
+        setCod(internalObject.getMaxCod()+1);
+        internalObject.insertRow(getCod(),getIDG());
         nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
         ae_Casa.setVisible(true);
         refreshTable();
@@ -554,10 +556,10 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
                 setAtEnd(true);
             }
             setId((Integer) table.getValueAt(getRow(), 0));
-            setIDG((Byte) table.getValueAt(getRow(), 1));
-            setCod((Integer) table.getValueAt(getRow(), 2));
-            setNames((String) table.getValueAt(getRow(), 3));
-            setComment((String) table.getValueAt(getRow(), 4));
+            setIDG((Integer) table.getValueAt(getRow(), 1));
+            setCod((Integer) table.getValueAt(getRow(), 3));
+            setNames((String) table.getValueAt(getRow(), 4));
+            setComment((String) table.getValueAt(getRow(), 5));
             nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
             ae_Casa.setVisible(true);
         }else{
