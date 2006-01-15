@@ -16,11 +16,6 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
         initCombo();
         this.setResizable(false);
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-//        int x = (((dim.width)-(this.getSize().width))/2);
-//        int y = (((dim.height)-(this.getSize().height))/2);
-//        this.setLocation(x, y);
-        
-        
         repaintComp();
         
     }
