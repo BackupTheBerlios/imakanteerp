@@ -24,10 +24,10 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
 {
     
     /** Creates new form FrmProduct */
-    public FrmProduct(String title,imakante.com.vcomponents.iFrame frame, int flag) // // TEST 
+    public FrmProduct(String title, int flag) // // TEST imakante.com.vcomponents.iFrame frame,
     {
         super(title);
-        myframe = frame; 
+        //myframe = frame; 
         prepareConn();     // zapazva connection
         this.flag_pm = flag; //  za da rabotim samo s opredeleni zapisi ima6ti syotvetniq fag
         constructGroupDB(); // inicializira class otgovarq6t za vryzkata s DB
@@ -274,23 +274,8 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     }//GEN-LAST:event_jButtonPrintActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-// TODO add your handling code here:
-    /*    try
-        {
-        setCod(Integer.parseInt(jTextFieldCod.getText()));
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-        setName(jTextFieldName.getText());
-        setBulstat(jTextFieldBulstat.getText());
-        setDanNomer(jTextFieldDanNomer.getText());
-        setAddress(jTextFieldAddress.getText());
-        setTel(jTextFieldTel.getText());
-        setFax(jTextFieldFax.getText());
-        setEmail(jTextFieldEmail.getText());
-        setWeb(jTextFieldWeb.getText());
+// TODO add your handling code here: SEARCH
+    /*  
         
         
         try
@@ -335,21 +320,22 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
 
     private void jButtonNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewActionPerformed
 // TODO add your handling code here:
-       /* setCod(-1);
-        setName("");
-        setBulstat("");
-        setDanNomer("");
-        setAddress("");
-        setID_NM(-1);
-        setTel("");
-        setFax("");
-        setEmail("");
-        setWeb("");
-        setID_MOL(-1);
-        setID_OSO(-1);*/
-        
-     
-       
+      setId_PF(0);
+      setId_PM(0);
+      setId_PP(0);
+      setId_PPP(0);
+      setId_PD(0);
+      setNamePM("");
+      setFNamePM("");
+      setSNamePM("");
+      setCNamePM("");
+      setBarCod(0);
+      setCod1("");
+      setCod2("");
+      setExpertSheet("");
+      setFlag(0);
+      setId_Group(0);
+             
          try
             {
                 dialog = new aeProduct(this, true,true);
@@ -399,9 +385,9 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     }//GEN-LAST:event_jButtonEditActionPerformed
     
     /**
-     * @param args the command line arguments
+     * @param args the command line arguments---------------------------------
      */
-  /*  public static void main(String args[]) {
+    public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                
@@ -411,7 +397,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
                 fr.setVisible(true);
             }
         });
-    }*/
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -453,7 +439,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     private  boolean atEnd = false;
     private int row;
     private  aeProduct dialog;
-    private int id_pm,id_n_group,id_ppp, id_pp,id_pf,id_contragent,flag_pm;              //       \
+    private int id_pm,id_n_group,id_ppp, id_pp,id_pf,id_pd,flag_pm;              //       \
     private int barcod_pm,max_pop_pm;                                                   //         >
     private String name_pm, sname_pm, fname_pm, cname_pm, cod1_pm, cod2_pm;            //         /
     private String expertsheet_pm ;                                                   //        /
@@ -603,13 +589,13 @@ private void initTable() //ok  -- !!ima za dovyr6wane - skrivane na koloni!!
     {
         return id_pm;
     }
-     public void setId_Contragent(int ID) // ok
+     public void setId_PD(int ID) // ok
     {
-        this.id_contragent = ID;
+        this.id_pd = ID;
     }
-    public int getId_Contragent() // ok
+    public int getId_PD() // ok
     {
-        return id_contragent;
+        return id_pd;
     }
      public void setId_Group(int ID)  // ok
     {

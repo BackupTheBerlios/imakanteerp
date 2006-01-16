@@ -11,29 +11,31 @@ public class productDB extends dbObject
    private java.sql.Connection conn;
    private int comprator;
    
-    private int id_pm,id_n_group,id_ppp, id_pp,id_pf,id_contragent,flag_pm;              //       \
+    private int id_pm,id_n_group,id_ppp, id_pp,id_pf,id_pd,flag_pm;              //       \
     private int barcod_pm,max_pop_pm;                                                   //         >
     private String name_pm, sname_pm, fname_pm, cname_pm, cod1_pm, cod2_pm;             //        /
      private String expertsheet_pm ;                                                   //        /
-    /** Creates a new instance of contragentDB */
+    /** Creates a new instance of productDB */
      
     public productDB(java.sql.Connection conn, int flag) //-
     {
         super(conn);
+        this.conn  = conn;
         this.flag_pm = flag;
         prepareCstm();
     }
  private void prepareCstm() // ok
     {
      try {
-          setCstm(getConn().prepareCall("{call nom_procedure_product(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
+          setCstm(getConn().prepareCall("{call nom_procedure_product(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
+        
          }
      catch(java.sql.SQLException sqle)
      {
          sqle.printStackTrace();
      }
     }
-  public java.sql.ResultSet getRow(int in_id) //-
+  public java.sql.ResultSet getRow(int in_id) // ok
     {
         comprator = 4;
         id_pm = in_id;
@@ -43,19 +45,23 @@ public class productDB extends dbObject
             rs = cstm.executeQuery();
             while(rs.next())
             {
-                cod = rs.getInt("code");
-                name = rs.getString("name");
-                bull = rs.getString("bul");
-                dan = rs.getString("dan");
-                address = rs.getString("address");
-                id_nm = rs.getInt("id_nm");
-                tel = rs.getString("tel");
-                fax = rs.getString("fax");
-                email = rs.getString("email");
-                web = rs.getString("web");
-                id_mol = rs.getInt("id_mol");
-                id_oso = rs.getInt("id_oso");
-                flag = rs.getInt("flag");
+               id_pm = rs.getInt("id_pm") ;
+               id_ppp = rs.getInt("id_ppp");
+               id_pp  = rs.getInt("id_ppp");
+               id_pf  = rs.getInt("id_pf");
+               id_n_group = rs.getInt("id_n_group");
+               id_pd = rs.getInt("id_pd");
+               name_pm = rs.getString("name_pm");
+               sname_pm = rs.getString("sname_pm");
+               fname_pm = rs.getString("fname_pm");
+               cname_pm = rs.getString("cname_pm");
+               max_pop_pm = rs.getInt("max_pop_pm");
+               flag_pm = rs.getInt("flag_pm");
+               expertsheet_pm = rs.getString("expertsheet_pm");
+               barcod_pm = rs.getInt("barcod_pm");
+               cod1_pm = rs.getString("cod1_pm");
+               cod2_pm = rs.getString("cod2_pm");
+                
             }
         }
         catch(java.sql.SQLException sqle)
@@ -64,26 +70,30 @@ public class productDB extends dbObject
         }
       return rs;  
     }
-  public void insertRow(int in_cod, String in_name, String in_bul,
-                      String in_dan, String in_address, int in_id_nm, String in_tel,
-                      String in_fax, String in_email, String in_web, int in_id_mol,
-                       int in_id_oso) //-
+  public void insertRow(int in_id_pm, int in_id_ppp, int in_id_pp, int in_id_pf, int in_id_n_group,
+                        int in_id_pd, String in_name_pm, String in_sname_pm, String in_fname_pm,
+                        String in_cname_pm,int in_max_pop_pm, int in_flag_pm, String in_expertsheet_pm,int in_barcod_pm,
+                        String in_cod1_pm , String in_cod2_pm) // ok
+                      
     {
         comprator = 1;
         
-        this.cod = in_cod;
-        this.name = in_name;
-        this.bull = in_bul;
-        this.dan = in_dan;
-        this.address = in_address;
-        this.id_nm = in_id_nm;
-        this.tel = in_tel;
-        this.fax = in_fax;
-        this.email = in_email;
-        this.web = in_web;
-        this.id_mol = in_id_mol;
-        this.id_oso = in_id_oso;
-       // this.flag = 0;
+        this.id_pm = in_id_pm ;
+        this.id_ppp = in_id_ppp;
+        this.id_pp  = in_id_ppp;
+        this.id_pf  = in_id_pf;
+        this.id_n_group = in_id_n_group;
+        this.id_pd = in_id_pd;
+        this.name_pm = in_name_pm;
+        this.sname_pm = in_sname_pm;
+        this.fname_pm = in_fname_pm;
+        this.cname_pm = in_cname_pm;
+        this.max_pop_pm = in_max_pop_pm;
+        this.flag_pm = in_flag_pm;
+        this.expertsheet_pm = in_expertsheet_pm;
+        this.barcod_pm = in_barcod_pm;
+        this.cod1_pm = in_cod1_pm;
+        this.cod2_pm = in_cod2_pm;
         try
         {
             registerParameters();
@@ -95,35 +105,22 @@ public class productDB extends dbObject
         }
         
     }
- public void updateRow(int in_id, int in_cod, String in_name, String in_bul,
-                      String in_dan, String in_address, int in_id_nm, String in_tel,
-                      String in_fax, String in_email, String in_web, int in_id_mol,
-                       int in_id_oso) //-
+ public void updateRow(int in_id_pm, int in_id_ppp, int in_id_pp, int in_id_pf, int in_id_n_group,
+                        int in_id_pd, String in_name_pm, String in_sname_pm, String in_fname_pm,
+                        String in_cname_pm,int in_max_pop_pm, int in_flag_pm, String in_expertsheet_pm,int in_barcod_pm,
+                        String in_cod1_pm , String in_cod2_pm) // ok
     {
-        changeFlag(1,in_id);
-     // po princip trqbva da izpolzvame comprator = 2, no nie defakto nqma da redaktirame redove,
-     // a 6te dobavim nov, kato promenim flaga na stariq zapis ot 0 na 1, a na noviq zapis s flag 0  
-        comprator = 1;   // ---> comprator: 1.INSERT INTO <tablename>  ... ;2.UPDATE <table name> ... <---- ;
-      /*  this.id = in_id;
-        this.cod = in_cod;
-        this.name = in_name;
-        this.bull = in_bul;
-        this.dan = in_dan;
-        this.address = in_address;
-        this.id_nm = in_id_nm;
-        this.tel = in_tel;
-        this.fax = in_fax;
-        this.email = in_email;
-        this.web = in_web;
-        this.id_mol = in_id_mol;
-        this.id_oso = in_id_oso;*/
+        changeFlag(1,in_id_pm);
+    
       
-        insertRow(in_cod,in_name,in_bul,in_dan,in_address,in_id_nm,in_tel,in_fax,in_email,
-                  in_web,in_id_mol,in_id_oso);
+        insertRow( in_id_pm,  in_id_ppp,  in_id_pp,  in_id_pf,  in_id_n_group,
+                   in_id_pd, in_name_pm, in_sname_pm, in_fname_pm,
+                   in_cname_pm, in_max_pop_pm, in_flag_pm, in_expertsheet_pm,
+                   in_barcod_pm, in_cod1_pm , in_cod2_pm) ;
       
         
     }
- private void changeFlag(int flag, int id) //- 
+ private void changeFlag(int flag, int id) // ok 
  {
      // smenqme flaga na opredelen red !!!
      comprator = 2;  // sqlska zaqwka koqto samo 6te smenq flaga
@@ -141,33 +138,21 @@ public class productDB extends dbObject
      }
      this.flag_pm = old_flag;
  }
- public void deleteRow(int in_id) //-
+ public void deleteRow(int in_id) // ok
     {
      // po princip trqbva da iztriem reda ot tablicata,  no po iziskvaneto da ne se triqt reove
      // ot tablicata, nie samo smenqme flaga 
         changeFlag(1,in_id);
             
     }
- public java.sql.ResultSet searchRecords(int in_cod, String in_name, String in_bul,
-                      String in_dan, String in_address, int in_id_nm, String in_tel,
-                      String in_fax, String in_email, String in_web, int in_id_mol,
-                       int in_id_oso) //-
+ public java.sql.ResultSet searchRecords(int in_id_pm, int in_id_ppp, int in_id_pp, int in_id_pf, int in_id_n_group,
+                        int in_id_pd, String in_name_pm, String in_sname_pm, String in_fname_pm,
+                        String in_cname_pm,int in_max_pop_pm, int in_flag_pm, String in_expertsheet_pm,int in_barcod_pm,
+                        String in_cod1_pm , String in_cod2_pm) //- ima da se dovyr6va
     {
         comprator = 5;
-        this.cod = in_cod;
-        this.name = in_name;
-        this.bull = in_bul;
-        this.dan = in_dan;
-        this.address = in_address;
-        this.id_nm = in_id_nm;
-        this.tel = in_tel;
-        this.fax = in_fax;
-        this.email = in_email;
-        this.web = in_web;
-        this.id_mol = in_id_mol;
-        this.id_oso = in_id_oso;
-        //this.flag = 0;
         
+      // ----------------------- da se dovur6i   
         
         try
         {
@@ -181,35 +166,35 @@ public class productDB extends dbObject
         return getRs();
         
     }
- public void setCstm(java.sql.CallableStatement cstm) //-
+ public void setCstm(java.sql.CallableStatement cstm) // ok
     {
         this.cstm = cstm;
     }
-  public java.sql.Statement getStm() //-
+  public java.sql.Statement getStm() // ok
     {
         return stmt;
     }
- public void setStm(java.sql.Statement stm) //-
+ public void setStm(java.sql.Statement stm) //ok
     {
         this.stmt = stm;
     }
- public java.sql.CallableStatement getCstm() //-
+ public java.sql.CallableStatement getCstm() //ok
     {
         return cstm;
     }
- public java.sql.Connection getConn() //-
+ public java.sql.Connection getConn() //ok
     {
         return conn;
     }
- public void setConn(java.sql.Connection conn) //-
+ public void setConn(java.sql.Connection conn) //ok
     {
         this.conn = conn;
     }
-   public java.sql.ResultSet getRs() //-
+   public java.sql.ResultSet getRs() //ok
     {
         return rs;
     }
-    public void setRs(java.sql.ResultSet rs) //-
+    public void setRs(java.sql.ResultSet rs) //ok
     {
         this.rs = rs;
     }
@@ -233,7 +218,7 @@ public class productDB extends dbObject
  
 
  
- private void registerParameters() //-
+ private void registerParameters() //ok
     {
          try
          {
@@ -243,7 +228,7 @@ public class productDB extends dbObject
             getCstm().setInt("in_id_ppp", getId_PPP());
             getCstm().setInt("in_id_pf", getId_PF());
             getCstm().setInt("in_id_n_group", getId_Group());
-            getCstm().setInt("in_id_contragent", getId_Contragent());
+            getCstm().setInt("in_id_pd", getId_PD());
             getCstm().setInt("in_barcod_pm", getBarCod());
             getCstm().setInt("in_flag_pm", getFlag());
             getCstm().setInt("in_max_pop_pm", getMax_POP());
@@ -262,7 +247,7 @@ public class productDB extends dbObject
              sqle.printStackTrace();
          }
     }
-  public int getMaxId() //-
+  public int getMaxId() //ok
     {
         comprator = 7;
         int return_int=-1;
@@ -281,15 +266,15 @@ public class productDB extends dbObject
         }
        return return_int;
     }
-  public int getComprator() 
+  public int getComprator() //ok
     {
         return comprator;
     }
-    public void setComprator(int com) 
+    public void setComprator(int com) //ok
     {
         this.comprator = com;
     }
-    public void close() 
+    public void close() //ok
     {
         try{
             rs.close();
@@ -302,30 +287,7 @@ public class productDB extends dbObject
         }catch(java.sql.SQLException sqle){}
         
     }
-
-   
     
-    public int getMaxCod() // vzemane na maxCod
-    {
-     int maxcod=-1;
-     this.comprator = 14;          
-     try
-        {
-            registerParameters();
-            setRs(getCstm().executeQuery());
-            while(rs.next())
-            {
-                maxcod = rs.getInt("code");
-                
-            }
-        }
-        catch(Exception sqle)
-        {
-            sqle.printStackTrace();
-        }
-        System.out.println("ot contragentDB.getMaxCod()");
-        return maxcod;
-    }
   public void setId_PM(int ID) // ok
     {
         this.id_pm = ID;
@@ -334,13 +296,13 @@ public class productDB extends dbObject
     {
         return id_pm;
     }
-     public void setId_Contragent(int ID) // ok
+     public void setId_PD(int ID) // ok
     {
-        this.id_contragent = ID;
+        this.id_pd = ID;
     }
-    public int getId_Contragent() // ok
+    public int getId_PD() // ok
     {
-        return id_contragent;
+        return id_pd;
     }
      public void setId_Group(int ID)  // ok
     {
