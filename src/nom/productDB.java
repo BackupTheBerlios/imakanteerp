@@ -222,7 +222,7 @@ public class productDB extends dbObject
     {
          try
          {
-            getCstm().setInt("comprator", getComprator()); // izbor na SQL zaqwka
+            getCstm().setInt("in_comprator", getComprator()); // izbor na SQL zaqwka
             getCstm().setInt("in_id_pm", getId_PM());
             getCstm().setInt("in_id_pp", getId_PP());
             getCstm().setInt("in_id_ppp", getId_PPP());
@@ -419,4 +419,194 @@ public class productDB extends dbObject
    {
        return max_pop_pm;
    }
+   public String[][] getDescription(int id) // Test ?comprator = ??;
+   {
+       String des[][] = new String[3][2];
+       int oldid_pd = id_pd;
+       id_pd = id;
+      // comprator = ;
+       try
+        {
+            registerParameters();
+            rs = cstm.executeQuery();
+            
+            while(rs.next())
+            {
+                des[0][0] = rs.getString("m1_pd");
+                des[1][0] = rs.getString("m2_pd");
+                des[2][0] = rs.getString("m3_pd");
+                des[0][1] = rs.getString("v1_pd");
+                des[1][1] = rs.getString("v2_pd");
+                des[2][1] = rs.getString("v3_pd");
+            }
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+       
+       id_pd = oldid_pd;
+       return des;
+   }
+   public String getProdictFee(int id) // Test ?comprator = ??;
+   {
+       String fee = new String();
+        int oldid_pf = id_pf;
+       id_pf = id;
+      // comprator = ;
+       try
+        {
+            registerParameters();
+            rs = cstm.executeQuery();
+            
+            while(rs.next())
+            {
+                fee = "DDS:" + String.valueOf(rs.getDouble("dds_pf"));
+                fee = fee + ", Akcizi:" + String.valueOf(rs.getDouble("excise_pf"));
+                fee = fee + ", Drugi:" + String.valueOf(rs.getDouble("other_pf"));
+            }
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+       
+       id_pf = oldid_pf;
+       
+       return fee;
+   }
+   public String getProductPrice(int id)  // Test ?comprator = ??;
+   {
+       String price = new String();
+       int oldid_pp = id_pp;
+       id_pp = id;
+      // comprator = ;
+       try
+        {
+            registerParameters();
+            rs = cstm.executeQuery();
+            
+            while(rs.next())
+            {
+                price = String.valueOf(rs.getDouble("price_pp"));
+                price = price + " "+ rs.getString("name_n_money");
+                price = price + " Kurs:" + String.valueOf(rs.getDouble("value_sl_curs"));
+            }
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+       
+       id_pp = oldid_pp;
+       
+       return price;
+   }
+   public String getProductPromotionPrice(int id)  // Test ?comprator = ??;
+   {
+       String promo_price = new String();
+        int oldid_ppp = id_ppp;
+       id_ppp = id;
+      // comprator = ;
+       try
+        {
+            registerParameters();
+            rs = cstm.executeQuery();
+            
+            while(rs.next())
+            {
+                promo_price = String.valueOf(rs.getDouble("price_ppp"));
+                promo_price = promo_price + " Ot:" + String.valueOf(rs.getDouble("datestart_ppp"));
+                promo_price = promo_price + " Do:" + String.valueOf(rs.getDouble("datestop_ppp"));
+                
+            }
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+       
+       id_ppp = oldid_ppp;
+       
+       return promo_price;
+   }
+   public String getProductGroup(int id) // Test ?comprator = ??;
+   {
+        String group = new String();
+         int oldid_group = id_n_group;
+       id_n_group = id;
+      // comprator = ;
+       try
+        {
+            registerParameters();
+            rs = cstm.executeQuery();
+            
+            while(rs.next())
+            {
+                group = rs.getString("name_n_group");
+                
+            }
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+       
+       id_n_group = oldid_group;
+        
+        return group;
+    }
+   public String getProductContragent(int id) // Test ?comprator = ??;
+   {
+       String contragent = new String();
+       int oldid_pm = id_pm;   
+      // comprator = ;
+       try
+        {
+            registerParameters();
+            rs = cstm.executeQuery();
+            
+            while(rs.next())
+            {
+                contragent = rs.getString("name_n_contragent");
+                
+            }
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+       
+       
+       id_pm = oldid_pm;
+       return contragent;
+       
+   }
+   public java.sql.ResultSet getShowContein(int in) // Test ?comprator = ??;
+   {
+       java.sql.ResultSet rs1=null;
+       int oldid = id_pm;
+       if(in == 1) id_pm = 1; // za contragent
+       if(in == 2) id_pm = 2; // za group
+       if(in == 3) id_pm = 3; // za price
+       if(in == 4) id_pm = 4; // za promotion price
+       if(in == 5) id_pm = 5; // za fee
+       // comprator = ;
+       try
+        {
+            registerParameters();
+            rs1 = cstm.executeQuery();
+            
+            
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+       
+     id_pm = oldid;  
+     return rs1;
+       
+   }
+           
 }// end class

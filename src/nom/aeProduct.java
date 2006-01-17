@@ -59,15 +59,18 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
         jTextFieldFee = new javax.swing.JTextField();
         jTextFieldPromoPrices = new javax.swing.JTextField();
         jTextFieldMaxPOP = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jTextFieldContragent = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jTextFieldCod1 = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
+        jPanelDescription = new javax.swing.JPanel();
+        jTableDescription = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jButtonToBegin = new javax.swing.JButton();
         jButtonOneRowM = new javax.swing.JButton();
         jButtonOneRowP = new javax.swing.JButton();
         jButtonToEnd = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jTextFieldContragent = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextFieldCod1 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -77,7 +80,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setToolTipText("");
-        jPanel1.setPreferredSize(new java.awt.Dimension(675, 330));
+        jPanel1.setPreferredSize(new java.awt.Dimension(675, 270));
         jLabelCod.setText("\u0413\u0440\u0443\u043f\u0430:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
@@ -173,7 +176,6 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
         jPanel1.add(jLabelOSO, gridBagConstraints);
 
         jTextFieldGroup.setEditable(false);
-        jTextFieldGroup.setToolTipText("");
         jTextFieldGroup.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTextFieldGroup.setPreferredSize(new java.awt.Dimension(170, 20));
         //jTextFieldCod.setInputVerifier(new imakante.com.InputIntegerVerifier());
@@ -235,7 +237,6 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel1.add(jTextFieldSName, gridBagConstraints);
 
-        jTextFieldBarCod.setToolTipText("F7  \u0437\u0430 \u0438\u0437\u0431\u043e\u0440 \u043d\u0430 \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e");
         jTextFieldBarCod.setPreferredSize(new java.awt.Dimension(170, 20));
         jTextFieldBarCod.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -325,7 +326,6 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
         jPanel1.add(jTextFieldFee, gridBagConstraints);
 
         jTextFieldPromoPrices.setEditable(false);
-        jTextFieldPromoPrices.setToolTipText("");
         jTextFieldPromoPrices.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTextFieldPromoPrices.setPreferredSize(new java.awt.Dimension(170, 20));
         jTextFieldPromoPrices.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -354,64 +354,13 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel1.add(jTextFieldPromoPrices, gridBagConstraints);
 
-        jTextFieldMaxPOP.setToolTipText("");
         jTextFieldMaxPOP.setPreferredSize(new java.awt.Dimension(170, 20));
-        jTextFieldMaxPOP.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextFieldMaxPOPKeyPressed(evt);
-            }
-        });
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
         jPanel1.add(jTextFieldMaxPOP, gridBagConstraints);
-
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("\u041d\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u044f"));
-        jPanel3.setPreferredSize(new java.awt.Dimension(230, 70));
-        jButtonToBegin.setText("<<");
-        jButtonToBegin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonToBeginActionPerformed(evt);
-            }
-        });
-
-        jPanel3.add(jButtonToBegin);
-
-        jButtonOneRowM.setText("<");
-        jButtonOneRowM.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonOneRowMActionPerformed(evt);
-            }
-        });
-
-        jPanel3.add(jButtonOneRowM);
-
-        jButtonOneRowP.setText(">");
-        jButtonOneRowP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonOneRowPActionPerformed(evt);
-            }
-        });
-
-        jPanel3.add(jButtonOneRowP);
-
-        jButtonToEnd.setText(">>");
-        jButtonToEnd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonToEndActionPerformed(evt);
-            }
-        });
-
-        jPanel3.add(jButtonToEnd);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 20);
-        jPanel1.add(jPanel3, gridBagConstraints);
 
         jLabel1.setText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -462,7 +411,92 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
         jPanel1.add(jTextFieldCod1, gridBagConstraints);
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(jPanel1, java.awt.BorderLayout.NORTH);
+
+        jPanel4.setLayout(new java.awt.GridBagLayout());
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel4.setPreferredSize(new java.awt.Dimension(200, 100));
+        jPanelDescription.setLayout(new javax.swing.BoxLayout(jPanelDescription, javax.swing.BoxLayout.X_AXIS));
+
+        jPanelDescription.setBorder(javax.swing.BorderFactory.createTitledBorder("\u0420\u0430\u0437\u0444\u0430\u0441\u043e\u0432\u043a\u0430"));
+        jPanelDescription.setPreferredSize(new java.awt.Dimension(230, 70));
+        jTableDescription.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jTableDescription.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableDescription.setAutoscrolls(false);
+        jTableDescription.setPreferredSize(new java.awt.Dimension(200, 50));
+        jTableDescription.setRowSelectionAllowed(false);
+        jPanelDescription.add(jTableDescription);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 20);
+        jPanel4.add(jPanelDescription, gridBagConstraints);
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("\u041d\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u044f"));
+        jPanel3.setPreferredSize(new java.awt.Dimension(230, 70));
+        jButtonToBegin.setText("<<");
+        jButtonToBegin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonToBeginActionPerformed(evt);
+            }
+        });
+
+        jPanel3.add(jButtonToBegin);
+
+        jButtonOneRowM.setText("<");
+        jButtonOneRowM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonOneRowMActionPerformed(evt);
+            }
+        });
+
+        jPanel3.add(jButtonOneRowM);
+
+        jButtonOneRowP.setText(">");
+        jButtonOneRowP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonOneRowPActionPerformed(evt);
+            }
+        });
+
+        jPanel3.add(jButtonOneRowP);
+
+        jButtonToEnd.setText(">>");
+        jButtonToEnd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonToEndActionPerformed(evt);
+            }
+        });
+
+        jPanel3.add(jButtonToEnd);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 20);
+        jPanel4.add(jPanel3, gridBagConstraints);
+
+        getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setPreferredSize(new java.awt.Dimension(263, 40));
@@ -501,10 +535,12 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
 
     private void jTextFieldContragentKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldContragentKeyPressed
 // TODO add your handling code here:
+        showContein(1,true);
     }//GEN-LAST:event_jTextFieldContragentKeyPressed
 
     private void jTextFieldContragentMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldContragentMousePressed
 // TODO add your handling code here:
+        showContein(1,true);
     }//GEN-LAST:event_jTextFieldContragentMousePressed
 
     private void jTextFieldFeeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldFeeFocusGained
@@ -551,15 +587,18 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
 
     private void jTextFieldPriceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPriceKeyPressed
 // TODO add your handling code here:
+        showContein(3,true); //??
     }//GEN-LAST:event_jTextFieldPriceKeyPressed
 
     private void jTextFieldPriceMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldPriceMousePressed
 // TODO add your handling code here:
+         showContein(3,true);
     }//GEN-LAST:event_jTextFieldPriceMousePressed
 
     private void jTextFieldGroupMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldGroupMousePressed
 // TODO add your handling code here:
-        System.out.println("jTextFieldCodMousePressed");
+        showContein(2,true);
+        
     }//GEN-LAST:event_jTextFieldGroupMousePressed
 
     private void jTextFieldGroupFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldGroupFocusLost
@@ -572,13 +611,16 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
 // TODO add your handling code here:
        
         jTextFieldGroup.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
+        
     }//GEN-LAST:event_jTextFieldGroupFocusGained
 
     private void jTextFieldGroupKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldGroupKeyPressed
 // TODO add your handling code here:
-        System.out.println("jTextFieldCodKeyPressed");
+        
+        showContein(2,true);
     }//GEN-LAST:event_jTextFieldGroupKeyPressed
 
+    //
     private void jButtonToEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToEndActionPerformed
 // TODO add your handling code here:
          myParent.mTableEnd();
@@ -651,11 +693,6 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
         repaintComp();
     }//GEN-LAST:event_jButtonToBeginActionPerformed
 
-    private void jTextFieldMaxPOPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldMaxPOPKeyPressed
-// TODO add your handling code here:
-       
-    }//GEN-LAST:event_jTextFieldMaxPOPKeyPressed
-
     private void jTextFieldPromoPricesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPromoPricesKeyPressed
 // TODO add your handling code here:
    
@@ -668,68 +705,42 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
-      /*  if(isNew) // zapisa NE sy6testvuva v bazata!!
+        if(isNew) // zapisa NE sy6testvuva v bazata!!
         {
-            if((myParent.getID_NM()==-1) | (myParent.getID_MOL()==-1) | (myParent.getID_OSO()==-1))
+            if((myParent.getId_Group()==-1) | (myParent.getId_PF()==-1) |
+                    (myParent.getId_PD()==-1) | (myParent.getId_PP()==-1) | (myParent.getId_PPP()==-1))
             {
                 // syob6tenie da se vuvede naseleneto mqsto, MOL i OSO;
-               JOptionPane.showMessageDialog(this, "\u041c\u043e\u043b\u044f \u0432\u044a\u0432\u0435\u0434\u0435\u0442\u0435 \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e, \u041c\u041e\u041b \u0438 \u041e\u0421\u041e");
+               JOptionPane.showMessageDialog(this, "---------------------------");
                
             }
             else
             {
-               try
-               {
-                myParent.setCod(Integer.parseInt(jTextFieldCod.getText()));
-               }
-               catch(Exception e)
-               {
-                   e.printStackTrace();
-               }
-                myParent.setName(jTextFieldName.getText());
-                myParent.setBulstat(jTextFieldBulstat.getText());
-                myParent.setDanNomer(jTextFieldDanNomer.getText());
-                myParent.setAddress(jTextFieldAddress.getText());
-                myParent.setTel(jTextFieldTel.getText());
-                myParent.setFax(jTextFieldFax.getText());
-                myParent.setEmail(jTextFieldEmail.getText());
-                myParent.setWeb(jTextFieldWeb.getText());
-                myParent.getCountriesT().insertRow(myParent.getCod(),myParent.getName(),
-                                                  myParent.getBulstat(),myParent.getDanNomer(),
-                                                  myParent.getAddress(),myParent.getID_NM(),
-                                                  myParent.getTel(),myParent.getFax(),myParent.getEmail(),
-                                                  myParent.getWeb(),myParent.getID_MOL(),myParent.getID_OSO());
-               
+              
+                myParent.setAllVariables();
+                myParent.getCountriesT().insertRow(myParent.getId_PM(),myParent.getId_PPP(),myParent.getId_PP(),
+                                                   myParent.getId_PF(),myParent.getId_Group(),myParent.getId_PD(),
+                                                   myParent.getNamePM(),myParent.getSNamePM(),myParent.getFNamePM(),
+                                                   myParent.getCNamePM(),myParent.getMax_POP(),myParent.getFlag(),
+                                                   myParent.getExpertSheet(),myParent.getBarCod(),myParent.getCod1(),
+                                                   myParent.getCod2());
+                
             }
         }
         else  // zapisa  sy6testvuva v bazata!!
         {
-                try
-                  {
-                    myParent.setCod(Integer.parseInt(jTextFieldCod.getText()));
-                  }
-                catch(Exception e)
-                  {
-                    e.printStackTrace();
-                  }
-                myParent.setName(jTextFieldName.getText());
-                myParent.setBulstat(jTextFieldBulstat.getText());
-                myParent.setDanNomer(jTextFieldDanNomer.getText());
-                myParent.setAddress(jTextFieldAddress.getText());
-                myParent.setTel(jTextFieldTel.getText());
-                myParent.setFax(jTextFieldFax.getText());
-                myParent.setEmail(jTextFieldEmail.getText());
-                myParent.setWeb(jTextFieldWeb.getText());
+                myParent.setAllVariables();
                 
-                myParent.getCountriesT().updateRow(myParent.getId(),myParent.getCod(),myParent.getName(),
-                                                  myParent.getBulstat(),myParent.getDanNomer(),
-                                                  myParent.getAddress(),myParent.getID_NM(),
-                                                  myParent.getTel(),myParent.getFax(),myParent.getEmail(),
-                                                  myParent.getWeb(),myParent.getID_MOL(),myParent.getID_OSO());
+                myParent.getCountriesT().updateRow(myParent.getId_PM(),myParent.getId_PPP(),myParent.getId_PP(),
+                                                   myParent.getId_PF(),myParent.getId_Group(),myParent.getId_PD(),
+                                                   myParent.getNamePM(),myParent.getSNamePM(),myParent.getFNamePM(),
+                                                   myParent.getCNamePM(),myParent.getMax_POP(),myParent.getFlag(),
+                                                   myParent.getExpertSheet(),myParent.getBarCod(),myParent.getCod1(),
+                                                   myParent.getCod2());
             
         }
-    //  jButton3.doClick(); // zatvarq se aeContragen
-      myParent.refreshTable();*/
+    //  jButton3.doClick(); // zatvarq se aeProsuct
+      myParent.refreshTable();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextFieldBarCodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBarCodKeyPressed
@@ -773,6 +784,9 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanelDescription;
+    private javax.swing.JTable jTableDescription;
     private javax.swing.JTextField jTextFieldBarCod;
     private javax.swing.JTextField jTextFieldCName;
     private javax.swing.JTextField jTextFieldCod1;
@@ -790,11 +804,12 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
     // End of variables declaration//GEN-END:variables
  //--------------- My Variables
    private FrmProduct myParent;
+   private showContentsCon_Gr showContein;
    private imakante.com.vcomponents.iInternalFrame myframe;
    boolean isNew; // za opredelqne dali zapisa e 4isto nov, t.e dali ne sy6testva b bazata
  //---------------END My Variables
 //---------------START MyFunction 
- private void getNavigatiionState() // -
+ private void getNavigatiionState() // ok
     {
     if(myParent.isAtBegining())
     {
@@ -811,46 +826,80 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
         jButtonOneRowP.repaint();
     }
 }
- private void repaintComp() // -
+ private void repaintComp() // Test
     {
- /*  if(!isNew)
+   if(!isNew)
    {
-   jTextFieldAddress.setText(myParent.getAddress());
-   jTextFieldBulstat.setText(myParent.getBulstat());
-  
-   jTextFieldCod.setText(String.valueOf(myParent.getCod()));
-   jTextFieldDanNomer.setText(myParent.getDanNomer());
-   jTextFieldEmail.setText(myParent.getEmail());
-   jTextFieldFax.setText(myParent.getFax());
-   jTextFieldName.setText(myParent.getName());
-   jTextFieldTel.setText(myParent.getTel());
-   jTextFieldWeb.setText(myParent.getWeb());
+   jTextFieldName.setText(myParent.getNamePM());
+   jTextFieldCName.setText(myParent.getCNamePM());
+   jTextFieldSName.setText(myParent.getSNamePM());
+   jTextFieldFName.setText(myParent.getFNamePM());
+   jTextFieldBarCod.setText(String.valueOf(myParent.getBarCod()));
+   
+   jTextFieldCod1.setText(myParent.getCod1());
+   jTextFieldCod2.setText(myParent.getCod2());
+   jTextFieldMaxPOP.setText(String.valueOf(myParent.getMax_POP()));
+   jTextFieldExpertSheet.setText(myParent.getExpertSheet());
+     
+   
    }
   if(isNew)
   {
-   int maxcode =  myParent.getCountriesT().getMaxCod();
-   if(maxcode!=-1)
-    {
-      jTextFieldCod.setText(String.valueOf(maxcode+1));
-    }
+   
   }  
    
-   if((myParent.getID_NM()!=-1))
+  if((myParent.getId_PD()!=0)) // n_product_description
    {
-   String adres = myParent.getCountriesT().getAddressName(myParent.getID_NM());
-   jTextFieldNM.setText(adres);
+   String description[][] = myParent.getCountriesT().getDescription(myParent.getId_PD());
+   for(int i = 0; i < 2; i++)
+    for(int j=0; j < 3; j++)
+      {
+       jTableDescription.setValueAt(new String(description[i][j]),i,j);
+      }
    }
-   if(myParent.getID_MOL()!=-1) 
+   if(myParent.getId_PF()!=0) 
    {
-   String namMOL = myParent.getCountriesT().getNameWithID(myParent.getID_MOL(),true);
-   jTextFieldMOL.setText(namMOL);
+   String  fee = myParent.getCountriesT().getProdictFee(myParent.getId_PF());
+   jTextFieldFee.setText(fee);
    }
-   if (myParent.getID_OSO()!=-1)
+   if (myParent.getId_PP()!=0)
    {
-   String namOSO = myParent.getCountriesT().getNameWithID(myParent.getID_OSO(),false);
-   jTextFieldOSO.setText(namOSO);
-   }*/
+   String price = myParent.getCountriesT().getProductPrice(myParent.getId_PP());
+   jTextFieldPrice.setText(price);
+   }
+   if (myParent.getId_PPP()!=0)
+   {
+   String promotion_price = myParent.getCountriesT().getProductPromotionPrice(myParent.getId_PPP());
+   jTextFieldPromoPrices.setText(promotion_price);
+   }
+  
+   if (myParent.getId_Group()!=0)
+   {
+   String group = myParent.getCountriesT().getProductGroup(myParent.getId_Group());
+   jTextFieldGroup.setText(group);
+   }
+   
+   {
+   String contragent = myParent.getCountriesT().getProductContragent(myParent.getId_PM());
+   jTextFieldContragent.setText(contragent);
+   }
+   
 } 
- 
+ private void showContein(int con_gr, boolean isEditalble) // test
+ {
+      try
+            {
+         
+             java.sql.ResultSet r1 = myParent.getCountriesT().getShowContein(con_gr);
+             showContein = new showContentsCon_Gr(myframe,true,myParent.getCountriesT().getRs(),myParent.getCountriesT().getConn(),con_gr);
+             showContein.setVisible(true);
+                
+            } catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+     
+     
+ }
 }// end class
 

@@ -35,11 +35,11 @@ public class showContentsCon_Gr   extends imakante.com.vcomponents.iDialog
                  int ID = (Integer)table.getValueAt(row,0);
                  if(Con_Gr ==1)  
                  {
-                     myParent.setID_Contragent(ID);
+                     myParent.setId_PD(ID);
                  }
                  else
                  {
-                     myParent.setID_Group(ID);
+                     myParent.setId_Group(ID);
                  }
                  close();
                 }
@@ -88,9 +88,19 @@ public class showContentsCon_Gr   extends imakante.com.vcomponents.iDialog
         if(java.awt.event.KeyEvent.VK_ENTER == evt.getKeyCode())
         {
             int row = table.getSelectedRow();
-            myParent.setID_NM(row);
-            this.dispose();
+            int ID = (Integer)table.getValueAt(row,0);
+            if(Con_Gr ==1)  
+              {
+                myParent.setId_PD(ID);
+              }
+               else
+               {
+                 myParent.setId_Group(ID);
+               }
+            this.dispose();  
         }
+            
+        
         
     }//GEN-LAST:event_jScrollPane1KeyPressed
     

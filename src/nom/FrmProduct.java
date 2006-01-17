@@ -30,7 +30,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
         //myframe = frame; 
         prepareConn();     // zapazva connection
         this.flag_pm = flag; //  za da rabotim samo s opredeleni zapisi ima6ti syotvetniq fag
-        constructGroupDB(); // inicializira class otgovarq6t za vryzkata s DB
+        constructProductDB(); // inicializira class otgovarq6t za vryzkata s DB
         initTable();
         initComponents();
         fr.addWindowListener(this);
@@ -451,8 +451,8 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     private  imakante.com.CustomTable table; 
     private java.sql.Connection ccc;  // samo za testvaneto
     private  static JFrame fr = new JFrame("test");
-    private String User="javauser";  // vremenna promenliva za test
-    private String Pass="javadude";  // vremenna promenliva za test
+    private String User="root";  // vremenna promenliva za test
+    private String Pass="root";  // vremenna promenliva za test
     private String Url = "jdbc:mysql://127.0.0.1:3306/mida";  // vremenna promenliva za test
  
     
@@ -484,7 +484,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
        e.printStackTrace();
        }*/
   }
-private void constructGroupDB() // ok
+private void constructProductDB() // ok
     {
         try
         {
@@ -731,11 +731,12 @@ private void initTable() //ok  -- !!ima za dovyr6wane - skrivane na koloni!!
         jScrollPane1.repaint();
         
     }
-    private void setAllVariables()
+    public void setAllVariables() // ne e dovyr6eno 
     {
         
         setId_PF((Integer) table.getValueAt(getRow(), 0));
-         setName((String) table.getValueAt(getRow(), 2));
+        setNamePM((String)table.getValueAt(getRow(),5));
+      //  setNamePM((String) table.getValueAt(getRow(), 2));
         
     }
     public  void mTableEnd() //- 
