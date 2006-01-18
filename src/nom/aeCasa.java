@@ -5,7 +5,6 @@ import java.awt.event.KeyEvent;
 
 public class aeCasa extends imakante.com.vcomponents.iDialog {
     
-    /** Creates new form aeGroup */
     public aeCasa(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
         
         super(frame, modal);
@@ -276,11 +275,11 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButtonToBeginKeyPressed
     
     private void jTextField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyPressed
-// TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextField3KeyPressed
     
     private void jComboGKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboGKeyPressed
-// TODO add your handling code here:
+        
     }//GEN-LAST:event_jComboGKeyPressed
     
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
@@ -302,12 +301,10 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButtonSaveActionPerformed
     
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
-// TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButtonCloseActionPerformed
     
     private void jButtonOneRowPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowPActionPerformed
-// TODO add your handling code here:
         myParent.mOneRowPlus();
         if(myParent.isAtEnd()) {
             jButtonToEnd.setEnabled(false);
@@ -325,7 +322,6 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButtonOneRowPActionPerformed
     
     private void jButtonToEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToEndActionPerformed
-// TODO add your handling code here:  OK
         myParent.mTableEnd();
         jButtonToEnd.setEnabled(false);
         jButtonOneRowP.setEnabled(false);
@@ -343,7 +339,6 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButtonToEndActionPerformed
     
     private void jButtonOneRowMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowMActionPerformed
-// TODO add your handling code here:
         myParent.mOneRowMinus();
         if(myParent.isAtBegining()) {
             jButtonToBegin.setEnabled(false);

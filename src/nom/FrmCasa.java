@@ -28,7 +28,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
         jTextCod = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jTextName = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jButtonSearch = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jButtonNew = new javax.swing.JButton();
@@ -66,14 +66,14 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
         jTextName.setPreferredSize(new java.awt.Dimension(160, 20));
         jPanel4.add(jTextName);
 
-        jButton1.setText("\u0422\u044a\u0440\u0441\u0435\u043d\u0435");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSearch.setText("\u0422\u044a\u0440\u0441\u0435\u043d\u0435");
+        jButtonSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonSearchActionPerformed(evt);
             }
         });
 
-        jPanel4.add(jButton1);
+        jPanel4.add(jButtonSearch);
 
         jPanel1.add(jPanel4, java.awt.BorderLayout.SOUTH);
 
@@ -84,7 +84,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 821, Short.MAX_VALUE)
+            .add(0, 825, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -160,8 +160,6 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
-// TODO add your handling code here:
-        
         try {
             java.text.MessageFormat headerFormat = new java.text.MessageFormat("Casa");
             java.text.MessageFormat footerFormat = new java.text.MessageFormat("Page. "+"- {0} -"+" IMAKANTE' ");
@@ -172,12 +170,10 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     }//GEN-LAST:event_jButtonPrintActionPerformed
     
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
-// TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButtonCloseActionPerformed
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+    private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
         try {
             try {
                 rs = internalObject.searchRecords(Integer.parseInt(jTextCod.getText()),jTextName.getText());
@@ -193,11 +189,9 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
         } catch(Exception e) {
             e.printStackTrace();
         }
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonSearchActionPerformed
     
     private void jButtonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshActionPerformed
-// TODO add your handling code here:
         refreshTable();
     }//GEN-LAST:event_jButtonRefreshActionPerformed
     
@@ -207,7 +201,6 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     
     private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
         editRecord();
-        
     }//GEN-LAST:event_jButtonEditActionPerformed
     
     private void jButtonNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewActionPerformed
@@ -218,7 +211,6 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonClose;
     private javax.swing.JButton jButtonDel;
     private javax.swing.JButton jButtonDeleteAll;
@@ -227,6 +219,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     private javax.swing.JButton jButtonPrint;
     private javax.swing.JButton jButtonPrnReport;
     private javax.swing.JButton jButtonRefresh;
+    private javax.swing.JButton jButtonSearch;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
@@ -303,11 +296,9 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     
     public void windowOpened(java.awt.event.WindowEvent e) {
     }
-    public void windowClosing(java.awt.event.WindowEvent e) // colose frame`s windows
-    {
+    public void windowClosing(java.awt.event.WindowEvent e) {
         
     }
-    
     public void windowClosed(java.awt.event.WindowEvent e) {
         
     }
@@ -318,7 +309,6 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     public void windowActivated(java.awt.event.WindowEvent e) {
     }
     public void windowDeactivated(java.awt.event.WindowEvent e) {
-        
     }
     
     public nom.casaDB getInternalObject() //OK

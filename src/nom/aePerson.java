@@ -18,8 +18,10 @@ public class aePerson extends javax.swing.JDialog {
         jbLast = new javax.swing.JButton();
         jlGroup = new javax.swing.JLabel();
         jcbGroups = new javax.swing.JComboBox();
-        jlCode = new javax.swing.JLabel();
-        jtfCode = new javax.swing.JTextField();
+        jlEGN = new javax.swing.JLabel();
+        jtfEGN = new javax.swing.JTextField();
+        jlNomLK = new javax.swing.JLabel();
+        jtfNomLK = new javax.swing.JTextField();
         jlName = new javax.swing.JLabel();
         jtfName = new javax.swing.JTextField();
         jlComment = new javax.swing.JLabel();
@@ -54,7 +56,7 @@ public class aePerson extends javax.swing.JDialog {
                 .add(jbNext)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jbLast)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         jpNavigationLayout.setVerticalGroup(
             jpNavigationLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -70,7 +72,10 @@ public class aePerson extends javax.swing.JDialog {
 
         jlGroup.setText("\u0413\u0440\u0443\u043f\u0430:");
 
-        jlCode.setText("\u041a\u043e\u0434:");
+        jlEGN.setText("\u0415\u0413\u041d:");
+
+        jlNomLK.setFont(new java.awt.Font("Tahoma", 0, 11));
+        jlNomLK.setText("\u2116 \u043d\u0430 \u041b\u041a:");
 
         jlName.setText("\u0418\u043c\u0435:");
 
@@ -84,58 +89,58 @@ public class aePerson extends javax.swing.JDialog {
         jpData.setLayout(jpDataLayout);
         jpDataLayout.setHorizontalGroup(
             jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jpDataLayout.createSequentialGroup()
+            .add(org.jdesktop.layout.GroupLayout.LEADING, jpDataLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jlComment)
                     .add(jlGroup)
-                    .add(jlCode)
+                    .add(jlEGN)
+                    .add(jlComment)
+                    .add(jlNomLK, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 49, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jlName))
                 .add(12, 12, 12)
                 .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jpDataLayout.createSequentialGroup()
                         .add(jcbGroups, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 242, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(171, 171, 171))
+                        .add(173, 173, 173))
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jpDataLayout.createSequentialGroup()
-                        .add(jtfCode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 84, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(329, Short.MAX_VALUE))
+                        .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, jtfEGN)
+                            .add(jtfNomLK, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                        .add(265, 265, 265))
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jpDataLayout.createSequentialGroup()
                         .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, jtfName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
                             .add(org.jdesktop.layout.GroupLayout.LEADING, jpNavigation)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, jtfName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
-                            .add(jspComment, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE))
-                        .add(74, 74, 74))))
+                            .add(jspComment, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE))
+                        .add(75, 75, 75))))
         );
         jpDataLayout.setVerticalGroup(
             jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.LEADING, jpDataLayout.createSequentialGroup()
                 .addContainerGap()
+                .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jlGroup)
+                    .add(jcbGroups, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jlEGN)
+                    .add(jtfEGN, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jtfNomLK, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jlNomLK, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jlName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jtfName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(9, 9, 9)
                 .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jpDataLayout.createSequentialGroup()
-                        .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jlGroup)
-                            .add(jcbGroups, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jlCode)
-                            .add(jtfCode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .add(38, 38, 38)
-                        .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jpDataLayout.createSequentialGroup()
-                                .add(jlComment)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 57, Short.MAX_VALUE))
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jpDataLayout.createSequentialGroup()
-                                .add(jspComment, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                                .add(2, 2, 2)))
-                        .add(24, 24, 24))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jpDataLayout.createSequentialGroup()
-                        .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jlName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jtfName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .add(103, 103, 103)))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jpNavigation, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                        .add(jspComment, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 84, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(26, 26, 26)
+                        .add(jpNavigation, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jlComment))
+                .add(14, 14, 14))
         );
         getContentPane().add(jpData, java.awt.BorderLayout.CENTER);
 
@@ -162,17 +167,19 @@ public class aePerson extends javax.swing.JDialog {
     private javax.swing.JButton jbSave;
     private javax.swing.JButton jbUndo;
     private javax.swing.JComboBox jcbGroups;
-    private javax.swing.JLabel jlCode;
     private javax.swing.JLabel jlComment;
+    private javax.swing.JLabel jlEGN;
     private javax.swing.JLabel jlGroup;
     private javax.swing.JLabel jlName;
+    private javax.swing.JLabel jlNomLK;
     private javax.swing.JPanel jpControls;
     private javax.swing.JPanel jpData;
     private javax.swing.JPanel jpNavigation;
     private javax.swing.JScrollPane jspComment;
     private javax.swing.JTextArea jtaComment;
-    private javax.swing.JTextField jtfCode;
+    private javax.swing.JTextField jtfEGN;
     private javax.swing.JTextField jtfName;
+    private javax.swing.JTextField jtfNomLK;
     // End of variables declaration//GEN-END:variables
     
 }
