@@ -24,7 +24,7 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
     private boolean Last = false;
     private int id = 0;
     private int groupCode = 0;
-    private String egn, nomLK, name, comment;
+    private String egn, nomlk, name, comment;
     private String groupNames[];
     private int selectedItem;
     private int row;
@@ -103,7 +103,7 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
 
         jpMiddle.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jpSearch.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jlCode.setText("\u041a\u043e\u0434:");
+        jlCode.setText("\u0415\u0413\u041d:");
         jpSearch.add(jlCode);
 
         jtfCode.setPreferredSize(new java.awt.Dimension(80, 20));
@@ -334,6 +334,10 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
         return i;
     }
     
+    public  void setRow(int value) {
+        row = value;
+    }
+    
     public  int getRow() {
         return row;
     }
@@ -346,22 +350,28 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
         return id;
     }
     
-    public void setIDG(int Gr) {
-        this.code_groupe = Gr;
+    public void setIDGroup(int Group) {
+        this.groupCode = Group;
     }
     
-    public int getIDG() {
-        return code_groupe;
+    public int getIDGroup() {
+        return groupCode;
     }
     
-    public void setCod(int Cod) {
-        this.cod = Cod;
-        
+    public void setEGN(String EGN) {
+        this.egn = EGN;
     }
     
-    public int getCod() {
-        return cod;
-        
+    public String getEGN() {
+        return egn;
+    }
+    
+    public void setNomLK(String NumLK) {
+        this.nomlk = NumLK;
+    }
+    
+    public String getNomLK() {
+        return nomlk;
     }
     
     public void setNames(String Name) {
@@ -372,125 +382,113 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
         return name;
     }
     
-    public void setComment(String Comment) //OK
-    {
+    public void setComment(String Comment) {
         this.comment = Comment;
     }
-    public String getComment() //OK
-    {
+    
+    public String getComment() {
         return comment;
     }
     
-    public  void setRow(int val) //OK
-    {
-        row = val;
-    }
-    public  void mTableEnd() //OK
-    {
+    public  void mTableEnd() {
         setRow(getMaxRow());
         try{
-            
             setId((Integer) table.getValueAt(getRow(), 0));
-            setIDG((Integer) table.getValueAt(getRow(), 1));
-            setCod((Integer) table.getValueAt(getRow(), 3));
-            setNames((String) table.getValueAt(getRow(), 4));
-            setComment((String) table.getValueAt(getRow(), 5));
-            
+            setIDGroup((Integer) table.getValueAt(getRow(), 1));
+            setEGN((String) table.getValueAt(getRow(), 3));
+            setNomLK((String) table.getValueAt(getRow(), 4));
+            setNames((String) table.getValueAt(getRow(), 5));
+            setComment((String) table.getValueAt(getRow(), 6));
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
-            
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
             System.out.println("problem");
         }
-        setAtBegining(false);
-        setAtEnd(true);
+        setFirst(false);
+        setLast(true);
     }
     
-    public void mOneRowPlus() //OK
-    {
+    public void mOneRowPlus() {
         if(getRow() <= getMaxRow()) {
             if(getRow() < getMaxRow()) {
                 setRow(getRow()+1);
             }
-            setAtBegining(false);
+            setFirst(false);
             try {
                 setId((Integer) table.getValueAt(getRow(), 0));
-                setIDG((Integer) table.getValueAt(getRow(), 1));
-                setCod((Integer) table.getValueAt(getRow(), 3));
-                setNames((String) table.getValueAt(getRow(), 4));
-                setComment((String) table.getValueAt(getRow(), 5));
-                
+                setIDGroup((Integer) table.getValueAt(getRow(), 1));
+                setEGN((String) table.getValueAt(getRow(), 3));
+                setNomLK((String) table.getValueAt(getRow(), 4));
+                setNames((String) table.getValueAt(getRow(), 5));
+                setComment((String) table.getValueAt(getRow(), 6));
                 table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
             } catch(ArrayIndexOutOfBoundsException aioobe) {
                 setRow(getRow() - 1);
                 System.out.println("problem");
             }
             if(getRow() == getMaxRow()) {
-                setAtEnd(true);
+                setLast(true);
             }
         }
     }
-    public  void mOneRowMinus() //OK
-    {
+    
+    public  void mOneRowMinus() {
         if(getRow() >= 0){
             if(getRow() > 0){
                 setRow(getRow() - 1);}
-            setAtEnd(false);
+            setLast(false);
             try {
                 setId((Integer) table.getValueAt(getRow(), 0));
-                setIDG((Integer) table.getValueAt(getRow(), 1));
-                setCod((Integer) table.getValueAt(getRow(), 3));
-                setNames((String) table.getValueAt(getRow(), 4));
-                setComment((String) table.getValueAt(getRow(), 5));
-                
+                setIDGroup((Integer) table.getValueAt(getRow(), 1));
+                setEGN((String) table.getValueAt(getRow(), 3));
+                setNomLK((String) table.getValueAt(getRow(), 4));
+                setNames((String) table.getValueAt(getRow(), 5));
+                setComment((String) table.getValueAt(getRow(), 6));
                 table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
             } catch(ArrayIndexOutOfBoundsException aioobe) {
                 setRow(getRow() + 1);
             }
             System.out.println("problem");}
         if(getRow() == 0){
-            setAtBegining(true);
+            setFirst(true);
         }
     }
-    public void mTableBegining() //OK
-    {
+    
+    public void mTableBegining() {
         setRow(0);
         try {
             setId((Integer) table.getValueAt(getRow(), 0));
-            setIDG((Integer) table.getValueAt(getRow(), 1));
-            setCod((Integer) table.getValueAt(getRow(), 3));
-            setNames((String) table.getValueAt(getRow(), 4));
-            setComment((String) table.getValueAt(getRow(), 5));
-            
+            setIDGroup((Integer) table.getValueAt(getRow(), 1));
+            setEGN((String) table.getValueAt(getRow(), 3));
+            setNomLK((String) table.getValueAt(getRow(), 4));
+            setNames((String) table.getValueAt(getRow(), 5));
+            setComment((String) table.getValueAt(getRow(), 6));
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
             System.out.println("problem");
         }
-        setAtBegining(true);
-        setAtEnd(false);
+        setFirst(true);
+        setLast(false);
     }
-    protected  void refreshTable() //OK
-    {
-        jScrollPane1.remove(table);
-        rs = internalObject.getTable();
+    
+    protected  void refreshTable() {
+        jspData.remove(table);
+        rs = personObject.getTable();
         model = new imakante.com.CustomTableModel(getConn(), rs, null);
         table = new imakante.com.CustomTable(model);
-        jScrollPane1.getViewport().add(table);
-        jScrollPane1.repaint();
-        
+        jspData.getViewport().add(table);
+        jspData.repaint();
     }
     
     private void newRecord(){
-        setId(internalObject.getMaxId());
-        setIDG(internalObject.getMaxGrID());
-        setCod(internalObject.getMaxCod()+1);
-        internalObject.insertRow(getCod(),getIDG());
-        nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
-        ae_Casa.setVisible(true);
+        setId(personObject.getMaxId());
+        setIDGroup(personObject.getMaxGrID());
+        setEGN(personObject.getMaxEGN()+1);
+        personObject.insertRow(getEGN(), getIDGroup());
+        nom.aePerson aeP = new nom.aePerson(this, true);
+        aeP.setVisible(true);
         refreshTable();
-        
-        
         
     }
     
@@ -499,33 +497,31 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
             
             setRow(table.getSelectedRow());
             if(getRow()==0){          //manage button state of ae form
-                setAtBegining(true);
+                setFirst(true);
             }
             if(getRow()==getMaxRow()){
-                setAtEnd(true);
+                setLast(true);
             }
             setId((Integer) table.getValueAt(getRow(), 0));
-            setIDG((Integer) table.getValueAt(getRow(), 1));
-            setCod((Integer) table.getValueAt(getRow(), 3));
-            setNames((String) table.getValueAt(getRow(), 4));
-            setComment((String) table.getValueAt(getRow(), 5));
+            setIDGroup((Integer) table.getValueAt(getRow(), 1));
+            setEGN((String) table.getValueAt(getRow(), 3));
+            setNomLK((String) table.getValueAt(getRow(), 4));
+            setNames((String) table.getValueAt(getRow(), 5));
+            setComment((String) table.getValueAt(getRow(), 6));
             nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
             ae_Casa.setVisible(true);
-        }else{
+        } else {
             
         }
-        
     }
     
     private void delRecord(){
-        
         if(table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());
             setId((Integer)table.getValueAt(getRow(),0));
-            internalObject.deleteRow(getId());
+            personObject.deleteRow(getId());
             refreshTable();
         }
-        
     }
     
     private java.sql.Connection getConn() {
