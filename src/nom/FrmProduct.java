@@ -19,6 +19,11 @@ import imakante.com.vcomponents.*;
 import javax.print.PrintException;
 import javax.swing.*;
 import java.text.MessageFormat;
+import javax.swing.table.TableColumn;
+import javax.swing.table.*;
+import java.awt.Component;
+import java.awt.Color;
+import java.awt.Dimension;
 
 public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implements WindowListener
 {
@@ -508,6 +513,7 @@ private void initTable() //ok  -- !!ima za dovyr6wane - skrivane na koloni!!
             table = new imakante.com.CustomTable(model);
             
             // da se napravqt skriti kolona "id" 
+            
         }
        catch(Exception e)
        {
@@ -522,6 +528,9 @@ private void initTable() //ok  -- !!ima za dovyr6wane - skrivane na koloni!!
         {
         
         }
+        HideColumns(getColumnIndex("id_pm")); //test
+        HideColumns(getColumnIndex("id_pp")); //test 
+         
   }
        
  public void windowOpened(java.awt.event.WindowEvent e)
@@ -825,4 +834,25 @@ private void initTable() //ok  -- !!ima za dovyr6wane - skrivane na koloni!!
  {
      this.conn = con;
  }
+ private int getColumnIndex(String in) //test
+ {
+     int count = table.getColumnCount();
+     for(int i=0; i < count; i++)
+     {
+         if(table.getColumnName(i).equals(in)) return i;
+     }
+     return 0;
+ }
+ private void HideColumns(int col)
+ {
+   int iColumn = col;
+// set column width
+table.getColumnModel().getColumn(iColumn).setMaxWidth(0);
+table.getColumnModel().getColumn(iColumn).setMinWidth(0);
+table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
+table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
+     
+ }
 }// end class
+
+
