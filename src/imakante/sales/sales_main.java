@@ -866,7 +866,17 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         }
         Casa.setVisible(true);
     }
-    
+        //storages
+    private void loadStorage(){
+        nom.FrmStorage Storage = new nom.FrmStorage("\u041a\u0410\u0421\u0410", this);
+        desktopPane.add(Storage);
+        try {
+            Storage.setMaximum(true);
+        } catch (java.beans.PropertyVetoException ex) {
+            ex.printStackTrace();
+        }
+        Storage.setVisible(true);
+    }
     //PARICHNI
     private void loadFrmMoney(){
         
