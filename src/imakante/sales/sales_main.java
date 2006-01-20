@@ -321,6 +321,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         nomMenu_object.add(objectMenu_groupe_object);
 
         objectMenu_skl.setText("\u0421\u043a\u043b\u0430\u0434\u043e\u0432\u0435");
+        objectMenu_skl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                objectMenu_sklActionPerformed(evt);
+            }
+        });
+
         nomMenu_object.add(objectMenu_skl);
 
         nomMenu.add(nomMenu_object);
@@ -478,15 +484,19 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-448)/2, 757, 448);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void objectMenu_sklActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_objectMenu_sklActionPerformed
+        loadStorage();
+    }//GEN-LAST:event_objectMenu_sklActionPerformed
+    
     private void litsaMenu_inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_litsaMenu_inActionPerformed
         loadPerson();
     }//GEN-LAST:event_litsaMenu_inActionPerformed
-
+    
     private void kasiMenu_kasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kasiMenu_kasiActionPerformed
         loadCasa();
     }//GEN-LAST:event_kasiMenu_kasiActionPerformed
-        
+    
     private void nomMenu_nasmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomMenu_nasmActionPerformed
         loadNM();
     }//GEN-LAST:event_nomMenu_nasmActionPerformed
@@ -866,7 +876,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         }
         Casa.setVisible(true);
     }
-        //storages
+    //storages
     private void loadStorage(){
         nom.FrmStorage Storage = new nom.FrmStorage("\u041a\u0410\u0421\u0410", this);
         desktopPane.add(Storage);
