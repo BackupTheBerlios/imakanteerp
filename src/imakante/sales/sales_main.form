@@ -244,6 +244,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x41b;&#x438;&#x446;&#x430;"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="litsaMenu_inActionPerformed"/>
+                  </Events>
                 </MenuItem>
               </SubComponents>
             </Menu>

@@ -10,10 +10,6 @@
  */
 package imakante.sales;
 
-import java.beans.PropertyVetoException;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import nom.FrmGroup;
 //>>>>>>> 1.24
 
 //<<<<<<< sales_main.java
@@ -31,6 +27,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private final static int ID_OBJECT = 4;
     private final static int ID_KASA = 5;
     private final static int ID_MONEY = 6;
+    
+    
     public sales_main() {
         super();
         loadConn();
@@ -40,9 +38,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         
         imakante.com.NewMain.setB_SL(true);
     }
+    
     public void run(){
         
     }
+    
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         desktopPane = new javax.swing.JDesktopPane();
@@ -300,6 +300,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         nomMenu_Litsa.add(litsaMenu_groupe_litsa);
 
         litsaMenu_in.setText("\u041b\u0438\u0446\u0430");
+        litsaMenu_in.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                litsaMenu_inActionPerformed(evt);
+            }
+        });
+
         nomMenu_Litsa.add(litsaMenu_in);
 
         nomMenu.add(nomMenu_Litsa);
@@ -473,8 +479,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         setBounds((screenSize.width-757)/2, (screenSize.height-448)/2, 757, 448);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void litsaMenu_inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_litsaMenu_inActionPerformed
+        loadPerson();
+    }//GEN-LAST:event_litsaMenu_inActionPerformed
+
     private void kasiMenu_kasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kasiMenu_kasiActionPerformed
-   loadCasa();
+        loadCasa();
     }//GEN-LAST:event_kasiMenu_kasiActionPerformed
         
     private void nomMenu_nasmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomMenu_nasmActionPerformed
@@ -504,43 +514,34 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 //=======
     
     private void kontragentiMenu_KontrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kontragentiMenu_KontrActionPerformed
-// TODO add your handling code here:
         loadFrmContragent();
     }//GEN-LAST:event_kontragentiMenu_KontrActionPerformed
     
     private void moneyMenu_groupeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moneyMenu_groupeActionPerformed
-// TODO add your handling code here:
         loadFrmGroup("\u0413\u0420\u0423\u041f\u0410 \u041f\u0410\u0420\u0418\u0427\u041d\u0418",ID_MONEY);
     }//GEN-LAST:event_moneyMenu_groupeActionPerformed
     
     private void kasiMenu_grupiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kasiMenu_grupiActionPerformed
-// TODO add your handling code here:
         loadFrmGroup("\u0413\u0420\u0423\u041f\u0410 \u041a\u0410\u0421\u0410",ID_KASA);
     }//GEN-LAST:event_kasiMenu_grupiActionPerformed
     
     private void objectMenu_groupe_objectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_objectMenu_groupe_objectActionPerformed
-// TODO add your handling code here:
         loadFrmGroup("\u0413\u0420\u0423\u041f\u0410 \u0421\u041a\u041b\u0410\u0414\u041e\u0412\u0415",ID_OBJECT);
     }//GEN-LAST:event_objectMenu_groupe_objectActionPerformed
     
     private void litsaMenu_groupe_litsaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_litsaMenu_groupe_litsaActionPerformed
-// TODO add your handling code here:
         loadFrmGroup("\u0413\u0420\u0423\u041f\u0410 \u041b\u0418\u0426\u0410",ID_LICA);
     }//GEN-LAST:event_litsaMenu_groupe_litsaActionPerformed
     
     private void kontragentiMenu_groupeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kontragentiMenu_groupeActionPerformed
-// TODO add your handling code here:
         loadFrmGroup("\u0413\u0420\u0423\u041f\u0410 \u041a\u041e\u041d\u0422\u0420\u0410\u0413\u0415\u041d\u0422",ID_CONTRAGENT);
     }//GEN-LAST:event_kontragentiMenu_groupeActionPerformed
     
     private void aktiviMenu_grupiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aktiviMenu_grupiActionPerformed
-// TODO add your handling code here:
         loadFrmGroup("\u0413\u0420\u0423\u041f\u0410 \u0410\u041a\u0422\u0418\u0412\u0418",ID_AKTIVI);
     }//GEN-LAST:event_aktiviMenu_grupiActionPerformed
     
     private void stock_Menu_group_stockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stock_Menu_group_stockActionPerformed
-// TODO add your handling code here:
-        
         loadFrmGroup("\u0413\u0420\u0423\u041f\u0410 \u0421\u0422\u041e\u041a\u0418",ID_STOCK);
     }//GEN-LAST:event_stock_Menu_group_stockActionPerformed
     
@@ -550,18 +551,18 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_formWindowClosing
     
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-// TODO add your handling code here:
         System.out.println("end sales_main-formWindowClosed");
     }//GEN-LAST:event_formWindowClosed
     
     
     private void sluMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sluMenuActionPerformed
-// TODO add your handling code here:
+        
     }//GEN-LAST:event_sluMenuActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try{
-            loadKlienti();} catch (java.sql.SQLException sql1){}
+            loadKlienti();
+        } catch (java.sql.SQLException sql1) {}
     }//GEN-LAST:event_jButton1ActionPerformed
     
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
@@ -569,7 +570,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_aboutMenuItemActionPerformed
     
     private void nomMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomMenuActionPerformed
-// TODO add your handling code here:
+        
     }//GEN-LAST:event_nomMenuActionPerformed
     
     
@@ -706,12 +707,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         
         try{
             Class.forName(DBDriver);
-            setDbConn(DriverManager.getConnection(DBSource,DBUserName ,DBPassword));
+            setDbConn(java.sql.DriverManager.getConnection(DBSource, DBUserName, DBPassword));
         } catch(ClassNotFoundException e)  {
             System.err.println("Failed to load driver");
             e.printStackTrace();
             System.exit(1);
-        } catch(SQLException e){
+        } catch(java.sql.SQLException e){
             System.err.println("Unable to connect");
             e.printStackTrace();
             System.exit(1);
@@ -730,7 +731,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         if (getDbConn() != null ){
             try {
                 getDbConn().close();
-            } catch(SQLException sq2){
+            } catch(java.sql.SQLException sq2){
             }}
         setDbName(null);
         setDbURL(null);
@@ -823,11 +824,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             
         {
             try {
-                iFormGroup[nm] = new FrmGroup(title,this,nm);
+                iFormGroup[nm] = new nom.FrmGroup(title,this,nm);
                 desktopPane.add(iFormGroup[nm]);
                 try {
                     iFormGroup[nm].setMaximum(true);
-                } catch (PropertyVetoException ex) {
+                } catch (java.beans.PropertyVetoException ex) {
                     ex.printStackTrace();
                 }
                 iFormGroup[nm].setVisible(true);
@@ -846,7 +847,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             desktopPane.add(iFrmContragent);
             try {
                 iFrmContragent.setMaximum(true);
-            } catch (PropertyVetoException ex) {
+            } catch (java.beans.PropertyVetoException ex) {
                 ex.printStackTrace();
             }
             iFrmContragent.setVisible(true);
@@ -856,12 +857,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     
     //kasi
     private void loadCasa(){
-        
-        nom.FrmCasa Casa = new nom.FrmCasa("Casa", this);
+        nom.FrmCasa Casa = new nom.FrmCasa("\u041a\u0410\u0421\u0410", this);
         desktopPane.add(Casa);
         try {
             Casa.setMaximum(true);
-        } catch (PropertyVetoException ex) {
+        } catch (java.beans.PropertyVetoException ex) {
             ex.printStackTrace();
         }
         Casa.setVisible(true);
@@ -870,11 +870,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     //PARICHNI
     private void loadFrmMoney(){
         
-        nom.FrmMoney Money = new nom.FrmMoney("Money", this);
+        nom.FrmMoney Money = new nom.FrmMoney("\u041f\u0410\u0420\u0418\u0427\u041d\u0418", this);
         desktopPane.add(Money);
         try {
             Money.setMaximum(true);
-        } catch (PropertyVetoException ex) {
+        } catch (java.beans.PropertyVetoException ex) {
             ex.printStackTrace();
         }
         Money.setVisible(true);
@@ -882,25 +882,38 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     
     //OBLASTI
     private void loadOblasti(){
-        nom.FrmOblast oblast = new nom.FrmOblast("AREA", this);
+        nom.FrmOblast oblast = new nom.FrmOblast("\u041e\u0411\u041b\u0410\u0421\u0422\u0418", this);
         desktopPane.add(oblast);
         try {
             oblast.setMaximum(true);
-        } catch (PropertyVetoException ex) {
+        } catch (java.beans.PropertyVetoException ex) {
             ex.printStackTrace();
         }
         oblast.setVisible(true);
         
     }
+    
     //NASELENI MESTA
     private void loadNM(){
-        nom.FrmNaseleniMesta nm = new nom.FrmNaseleniMesta("NASM", this);
+        nom.FrmNaseleniMesta nm = new nom.FrmNaseleniMesta("\u041d\u0410\u0421\u0415\u041b\u0415\u041d\u0418 \u041c\u0415\u0421\u0422\u0410", this);
         desktopPane.add(nm);
         try {
             nm.setMaximum(true);
-        } catch (PropertyVetoException ex) {
+        } catch (java.beans.PropertyVetoException ex) {
             ex.printStackTrace();
         }
         nm.setVisible(true);
+    }
+    
+    // LICA
+    private void loadPerson() {
+        nom.FrmPerson pers = new nom.FrmPerson("\u041b\u0418\u0426\u0410", this);
+        desktopPane.add(pers);
+        try {
+            pers.setMaximum(true);
+        } catch (java.beans.PropertyVetoException ex) {
+            ex.printStackTrace();
+        }
+        pers.setVisible(true);
     }
 }
