@@ -1,10 +1,10 @@
 
 package nom;
 
-public class aePerson extends javax.swing.JDialog {
+public class aePerson extends imakante.com.vcomponents.iDialog {
     
-    public aePerson(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public aePerson(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
+        super(frame, modal);
         initComponents();
     }
     

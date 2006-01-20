@@ -70,8 +70,8 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
         jpTop = new javax.swing.JPanel();
         jpMiddle = new javax.swing.JPanel();
         jpSearch = new javax.swing.JPanel();
-        jlCode = new javax.swing.JLabel();
-        jtfCode = new javax.swing.JTextField();
+        jlEGN = new javax.swing.JLabel();
+        jtfEGN = new javax.swing.JTextField();
         jlName = new javax.swing.JLabel();
         jtfName = new javax.swing.JTextField();
         jbSearch = new javax.swing.JButton();
@@ -103,11 +103,11 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
 
         jpMiddle.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jpSearch.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jlCode.setText("\u0415\u0413\u041d:");
-        jpSearch.add(jlCode);
+        jlEGN.setText("\u0415\u0413\u041d:");
+        jpSearch.add(jlEGN);
 
-        jtfCode.setPreferredSize(new java.awt.Dimension(80, 20));
-        jpSearch.add(jtfCode);
+        jtfEGN.setPreferredSize(new java.awt.Dimension(80, 20));
+        jpSearch.add(jtfEGN);
 
         jlName.setText("\u0418\u043c\u0435:");
         jpSearch.add(jlName);
@@ -250,10 +250,10 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
     private void jbSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSearchActionPerformed
         try {
             try {
-                rs = personObject.searchRecords(Integer.parseInt(jtfCode.getText()), jtfName.getText());
+                rs = personObject.searchRecords(jtfEGN.getText(), jtfName.getText());
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
-                jtfCode.requestFocus();
+                jtfEGN.requestFocus();
             }
             jspData.remove(table);
             model = new imakante.com.CustomTableModel(getConn(), rs, null);
@@ -541,14 +541,14 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
     private javax.swing.JButton jbPrint;
     private javax.swing.JButton jbPrintReport;
     private javax.swing.JButton jbSearch;
-    private javax.swing.JLabel jlCode;
+    private javax.swing.JLabel jlEGN;
     private javax.swing.JLabel jlName;
     private javax.swing.JPanel jpBottom;
     private javax.swing.JPanel jpMiddle;
     private javax.swing.JPanel jpSearch;
     private javax.swing.JPanel jpTop;
     private javax.swing.JScrollPane jspData;
-    private javax.swing.JTextField jtfCode;
+    private javax.swing.JTextField jtfEGN;
     private javax.swing.JTextField jtfName;
     // End of variables declaration//GEN-END:variables
     

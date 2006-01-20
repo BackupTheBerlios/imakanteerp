@@ -54,7 +54,7 @@ public class dbPerson extends imakante.com.dbObject {
             getCstm().setString("in_egn", getEGN());
             getCstm().setString("in_nomlk", getNomLK());
             getCstm().setString("in_name", getName());
-            getCstm().setString("in_comments", getComment());
+            getCstm().setString("in_comment", getComment());
                        
             
         } catch(java.sql.SQLException sqle) {
@@ -124,7 +124,7 @@ public class dbPerson extends imakante.com.dbObject {
                 egn = rs.getString("egn");
                 nomlk = rs.getString("nomlk");
                 name = rs.getString("name");
-                comment = rs.getString("comments");
+                comment = rs.getString("comment");
             }
         } catch(java.sql.SQLException sqle) {
             sqle.printStackTrace();
