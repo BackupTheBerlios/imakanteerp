@@ -484,8 +484,7 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
     private void newRecord(){
         setId(personObject.getMaxId());
         setIDGroup(personObject.getMaxGrID());
-        setEGN(personObject.getMaxEGN()+1);
-        personObject.insertRow(getEGN(), getIDGroup());
+        personObject.insertRow(getIDGroup());
         nom.aePerson aeP = new nom.aePerson(this, true);
         aeP.setVisible(true);
         refreshTable();
