@@ -27,7 +27,7 @@ CREATE TABLE `ls_n_person` (
   `egn_ls_n_person` varchar(10) collate cp1251_bulgarian_ci NOT NULL,
   `nlk_ls_n_person` varchar(9) collate cp1251_bulgarian_ci NOT NULL,
   `name_ls_n_person` varchar(45) collate cp1251_bulgarian_ci NOT NULL,
-  `coment_ls_n_person` varchar(45) collate cp1251_bulgarian_ci default NULL,
+  `coment_ls_n_person` varchar(250) collate cp1251_bulgarian_ci default NULL,
   PRIMARY KEY  (`id_ls_n_person`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COLLATE=cp1251_bulgarian_ci;
 
