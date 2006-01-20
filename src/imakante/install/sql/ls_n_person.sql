@@ -23,7 +23,7 @@ USE `mida`;
 DROP TABLE IF EXISTS `ls_n_person`;
 CREATE TABLE `ls_n_person` (
   `id_ls_n_person` int(11) NOT NULL auto_increment,
-  `id_n_goup` int(11) unsigned default NULL,
+  `id_n_group` int(11) unsigned default NULL,
   `egn_ls_n_person` varchar(10) collate cp1251_bulgarian_ci NOT NULL,
   `nlk_ls_n_person` varchar(9) collate cp1251_bulgarian_ci NOT NULL,
   `name_ls_n_person` varchar(45) collate cp1251_bulgarian_ci NOT NULL,
