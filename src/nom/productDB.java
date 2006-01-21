@@ -2,7 +2,9 @@ package nom;
 
 
 import imakante.com.*;
-
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 public class productDB extends dbObject 
 {
    private java.sql.ResultSet rs;
@@ -10,11 +12,15 @@ public class productDB extends dbObject
    private java.sql.CallableStatement cstm;
    private java.sql.Connection conn;
    private int comprator;
+   private int  indexConnOfId[] = null;
+   private String splitGroup[] = null;
    
-    private int id_pm,id_n_group,id_ppp, id_pp,id_pf,id_pd,flag_pm;              //       \
-    private int barcod_pm,max_pop_pm;                                                   //         >
-    private String name_pm, sname_pm, fname_pm, cname_pm, cod1_pm, cod2_pm;             //        /
-     private String expertsheet_pm ;                                                   //        /
+    private int id_pm,id_n_group,id_ppp, id_pp,id_pf,id_pd,flag_pm;            //       \
+    private int barcod_pm,max_pop_pm;                                          //        \
+    private String name_pm, sname_pm, fname_pm, cname_pm, cod1_pm, cod2_pm;    //         >
+    private String expertsheet_pm ;                                            //        /
+    private double price0_pp,price1_pp,price2_pp,price3_pp;                   //        /
+    
     /** Creates a new instance of productDB */
      
     public productDB(java.sql.Connection conn, int flag) //-
@@ -27,7 +33,7 @@ public class productDB extends dbObject
  private void prepareCstm() // ok
     {
      try {
-          setCstm(getConn().prepareCall("{call nom_procedure_product(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
+          setCstm(getConn().prepareCall("{call nom_procedure_product(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
         
          }
      catch(java.sql.SQLException sqle)
@@ -239,6 +245,11 @@ public class productDB extends dbObject
             getCstm().setString("in_cod1_pm", getCod1());
             getCstm().setString("in_cod2_pm", getCod2());
             getCstm().setString("in_expertsheet_pm", getExpertSheet());
+            getCstm().setDouble("in_price0_pp",getDostPrice());
+            getCstm().setDouble("in_price1_pp",getPrice1());
+            getCstm().setDouble("in_price2_pp",getPrice2());
+            getCstm().setDouble("in_price3_pp",getPrice3());
+             
             
             System.out.println("ot registerparameter");
         }
@@ -419,6 +430,7 @@ public class productDB extends dbObject
    {
        return max_pop_pm;
    }
+   
    public String[][] getDescription(int id) // Test ?comprator = ??;
    {
        String des[][] = new String[3][2];
@@ -477,7 +489,7 @@ public class productDB extends dbObject
    }
    public String getProductPrice(int id)  // Test ?comprator = ??;
    {
-       String price = new String();
+       String price[] = new String[4];
        int oldid_pp = id_pp;
        id_pp = id;
       // comprator = ;
@@ -488,9 +500,13 @@ public class productDB extends dbObject
             
             while(rs.next())
             {
-                price = String.valueOf(rs.getDouble("price_pp"));
-                price = price + " "+ rs.getString("name_n_money");
-                price = price + " Kurs:" + String.valueOf(rs.getDouble("value_sl_curs"));
+                price[0] = String.valueOf(rs.getDouble("price1_pp"));
+                price[0] = price + " "+ rs.getString("name_n_money");
+                price[0] = price + " Kurs:" + String.valueOf(rs.getDouble("value_sl_curs"));
+                price[1] = String.valueOf(rs.getDouble("price2_pp"));
+                price[2] = String.valueOf(rs.getDouble("price3_pp"));
+                price[3] = String.valueOf(rs.getDouble("price4_pp"));
+               
             }
         }
         catch(java.sql.SQLException sqle)
@@ -500,9 +516,89 @@ public class productDB extends dbObject
        
        id_pp = oldid_pp;
        
-       return price;
+       return price[0];
    }
-   public String getProductPromotionPrice(int id)  // Test ?comprator = ??;
+   public double getDostPrice()
+   {
+       return price0_pp;
+   }
+public void setDostPrice(double in)    
+{
+    this.price0_pp = in;
+}
+
+public double getPrice1()
+{
+    return price1_pp;
+}
+
+public double getPrice2()
+   {
+    return price2_pp;
+}
+public double getPrice3()
+   {
+    return price3_pp;
+}
+public void setPrice1(double in)
+   {
+    this.price1_pp = in;
+}
+public void setPrice2(double in)
+   {
+    this.price2_pp = in;
+}
+public void setPrice3(double in)
+   {
+    this.price3_pp = in;
+}
+public void setNewPrice(int id,double price0, double price1, double price2, double price3) // Test ?comprator = ??;
+   {
+       double p0,p1,p2,p3;
+       int oldid = id_pp;
+       id_pp = id;
+       price0_pp = price0;
+       price1_pp = price1;
+       price2_pp = price2;
+       price3_pp = price3;
+       // comprator = ??;
+      try
+        {
+            registerParameters();
+            cstm.execute();
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+      
+       id_pp = oldid;
+       
+   }
+public void updateProductPrice(int id,double price0, double price1, double price2, double price3)  // Test ?comprator = ??;
+   {
+        double p0,p1,p2,p3;
+       int oldid = id_pp;
+       id_pp = id;
+       price0_pp = price0;
+       price1_pp = price1;
+       price2_pp = price2;
+       price3_pp = price3;
+       // comprator = ??;
+      try
+        {
+            registerParameters();
+            cstm.execute();
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+      
+       id_pp = oldid;
+   }
+   
+public String getProductPromotionPrice(int id)  // Test ?comprator = ??;
    {
        String promo_price = new String();
         int oldid_ppp = id_ppp;
@@ -530,33 +626,53 @@ public class productDB extends dbObject
        
        return promo_price;
    }
-   public String getProductGroup(int id) // Test ?comprator = ??;
+public String[] getProductGroup() // Test ?comprator = ??; da se opredeli kakvo da se pokazva 
    {
-        String group = new String();
-         int oldid_group = id_n_group;
-       id_n_group = id;
-      // comprator = ;
-       try
+        java.sql.ResultSet oldRs = rs;
+        ArrayList in = new ArrayList();
+        Iterator it = null;
+        HashMap key_Group = new HashMap();
+        //  comprator = ??;
+        int i = 0;
+       
+         try              
         {
-            registerParameters();
+             registerParameters();
             rs = cstm.executeQuery();
-            
+                        
+           
             while(rs.next())
             {
-                group = rs.getString("name_n_group");
-                
+               key_Group.put(new Integer(rs.getInt(1)),new String(rs.getString(3)));  
+               in.add(new Integer(rs.getInt(1)));
+               i++;
             }
         }
-        catch(java.sql.SQLException sqle)
+        catch(Exception e)
         {
-            sqle.printStackTrace();
+            e.printStackTrace();
+        }
+        rs = oldRs;
+        indexConnOfId = new int[i];
+        it = in.iterator();
+        splitGroup = new String[i]; // new
+        i=0;
+        while(it.hasNext())
+        {
+            indexConnOfId[i] =(Integer) it.next();
+            splitGroup[i] = (String) key_Group.get(indexConnOfId[i]); 
+            i++;
         }
        
-       id_n_group = oldid_group;
         
-        return group;
+        
+        return splitGroup;
     }
-   public String getProductContragent(int id) // Test ?comprator = ??;
+ public int[] getIndexConnOfId()
+  {
+      return indexConnOfId;
+  }
+public String getProductContragent(int id) // Test ?comprator = ??;
    {
        String contragent = new String();
        int oldid_pm = id_pm;   
@@ -582,7 +698,7 @@ public class productDB extends dbObject
        return contragent;
        
    }
-   public java.sql.ResultSet getShowContein(int in) // Test ?comprator = ??;
+public java.sql.ResultSet getShowContein(int in) // Test ?comprator = ??;
    {
        java.sql.ResultSet rs1=null;
        int oldid = id_pm;
@@ -608,5 +724,5 @@ public class productDB extends dbObject
      return rs1;
        
    }
-           
+  
 }// end class

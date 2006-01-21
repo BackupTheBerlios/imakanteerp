@@ -445,7 +445,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     private int row;
     private  aeProduct dialog;
     private int id_pm,id_n_group,id_ppp, id_pp,id_pf,id_pd,flag_pm;              //       \
-    private int barcod_pm,max_pop_pm;                                                   //         >
+    private int barcod_pm,max_pop_pm, min_pm;                                                   //         >
     private String name_pm, sname_pm, fname_pm, cname_pm, cod1_pm, cod2_pm;            //         /
     private String expertsheet_pm ;                                                   //        /
     private imakante.com.vcomponents.iFrame myframe;
@@ -528,8 +528,13 @@ private void initTable() //ok  -- !!ima za dovyr6wane - skrivane na koloni!!
         {
         
         }
-        HideColumns(getColumnIndex("id_pm")); //test
-        HideColumns(getColumnIndex("id_pp")); //test 
+        HideColumns(getColumnIndex("id_pm")); 
+        HideColumns(getColumnIndex("id_pp")); 
+        HideColumns(getColumnIndex("id_ppp"));
+        HideColumns(getColumnIndex("id_pd"));
+        HideColumns(getColumnIndex("id_pf"));
+        HideColumns(getColumnIndex("id_n_group"));
+        
          
   }
        
@@ -722,6 +727,14 @@ private void initTable() //ok  -- !!ima za dovyr6wane - skrivane na koloni!!
    {
        return max_pop_pm;
    }
+   public void setMinProduct(int min)
+   {
+       this.min_pm = min;
+   }
+   public int getMinProduct()
+   {
+       return min_pm;
+   }
    public void setCountriesT(productDB ccc) // ok
    {
        countriesT = ccc;
@@ -740,12 +753,29 @@ private void initTable() //ok  -- !!ima za dovyr6wane - skrivane na koloni!!
         jScrollPane1.repaint();
         
     }
-    public void setAllVariables() // ne e dovyr6eno 
+    public void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti na cyrillica 
     {
+        setId_PM((Integer) table.getValueAt(getRow(), getColumnIndex("id_pm")));
+        setId_PF((Integer) table.getValueAt(getRow(), getColumnIndex("id_pf")));
+        setId_PP((Integer) table.getValueAt(getRow(), getColumnIndex("id_pp")));
+        setId_PPP((Integer) table.getValueAt(getRow(), getColumnIndex("id_ppp")));
+        setId_PD((Integer) table.getValueAt(getRow(), getColumnIndex("id_pd")));
+        setId_Group((Integer) table.getValueAt(getRow(), getColumnIndex("id_n_group")));
+       
+        setMax_POP((Integer) table.getValueAt(getRow(), getColumnIndex("max_pop_pm")));
+        setBarCod((Integer) table.getValueAt(getRow(), getColumnIndex("barcod_pm")));
+        setNamePM((String)table.getValueAt(getRow(),getColumnIndex("name_pm")));
+        setSNamePM((String)table.getValueAt(getRow(),getColumnIndex("sname_pm")));
+        setFNamePM((String)table.getValueAt(getRow(),getColumnIndex("fname_pm")));
+        setCNamePM((String)table.getValueAt(getRow(),getColumnIndex("cname_pm")));
+        setExpertSheet((String)table.getValueAt(getRow(),getColumnIndex("expertsheet_pm")));
+        setCod1((String)table.getValueAt(getRow(),getColumnIndex("cod1_pm")));
+        setCod2((String)table.getValueAt(getRow(),getColumnIndex("cod2_pm")));
+        setMinProduct((Integer) table.getValueAt(getRow(), getColumnIndex("min_pm")));
         
-        setId_PF((Integer) table.getValueAt(getRow(), 0));
-        setNamePM((String)table.getValueAt(getRow(),5));
-      //  setNamePM((String) table.getValueAt(getRow(), 2));
+        
+        
+      
         
     }
     public  void mTableEnd() //- 

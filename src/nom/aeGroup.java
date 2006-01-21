@@ -115,7 +115,7 @@ public class aeGroup extends imakante.com.vcomponents.iDialog
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 5);
         jPanel2.add(jLabel2, gridBagConstraints);
 
-        jLabel3.setText("\u0410\u043d.\u043d\u0438\u0432\u0430??:");
+        jLabel3.setText("\u0410\u043d.\u043d\u0438\u0432\u0430:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
