@@ -44,7 +44,7 @@ public class frmPrint extends javax.swing.JDialog {
             
             jrv = new JRViewer(print1);
             
-            
+                
             
         } catch (JRException jrev){
             

@@ -86,6 +86,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         kontragentiMenu_Kontr = new javax.swing.JMenuItem();
         kontragentiMenu_bank = new javax.swing.JMenuItem();
         kontragentiMenu_obekti = new javax.swing.JMenuItem();
+        kontragentiMenu_typeobject = new javax.swing.JMenuItem();
         nomMenu_Litsa = new javax.swing.JMenu();
         litsaMenu_groupe_litsa = new javax.swing.JMenuItem();
         litsaMenu_in = new javax.swing.JMenuItem();
@@ -286,6 +287,9 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         kontragentiMenu_obekti.setText("\u041e\u0431\u0441\u043b\u0443\u0436\u0432\u0430\u043d\u0438 \u043e\u0431\u0435\u043a\u0442\u0438");
         nomMenu_Kontragenti.add(kontragentiMenu_obekti);
+
+        kontragentiMenu_typeobject.setText("\u0422\u0438\u043f\u043e\u0432\u0435 \u043e\u0431\u0435\u043a\u0442\u0438");
+        nomMenu_Kontragenti.add(kontragentiMenu_typeobject);
 
         nomMenu.add(nomMenu_Kontragenti);
 
@@ -624,6 +628,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenuItem kontragentiMenu_bank;
     private javax.swing.JMenuItem kontragentiMenu_groupe;
     private javax.swing.JMenuItem kontragentiMenu_obekti;
+    private javax.swing.JMenuItem kontragentiMenu_typeobject;
     private javax.swing.JMenuItem litsaMenu_groupe_litsa;
     private javax.swing.JMenuItem litsaMenu_in;
     private javax.swing.JMenuBar menuBar;
