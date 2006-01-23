@@ -15,7 +15,7 @@ public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog
         this.id_price = id_price;
         this.isNew = isnew;
         initComponents();
-        if(!isNew) getDataByID();
+        if(!isNew) getPrices();
         this.setResizable(false);
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         int x = (((dim.width)-(this.getSize().width))/2);
@@ -43,7 +43,7 @@ public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextPromoPrice = new javax.swing.JTextField();
+        jTextFieldPromoPrice = new javax.swing.JTextField();
         jTextFieldDataStart = new javax.swing.JTextField();
         jTextFieldDateStop = new javax.swing.JTextField();
 
@@ -97,21 +97,21 @@ public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 5);
         jPanel2.add(jLabel3, gridBagConstraints);
 
-        jTextPromoPrice.setPreferredSize(new java.awt.Dimension(80, 20));
-        jTextPromoPrice.setInputVerifier(new imakante.com.InputDoubleVerifier());
-        jTextPromoPrice.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextFieldPromoPrice.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextFieldPromoPrice.setInputVerifier(new imakante.com.InputDoubleVerifier());
+        jTextFieldPromoPrice.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextPromoPriceKeyPressed(evt);
+                jTextFieldPromoPriceKeyPressed(evt);
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextPromoPriceKeyReleased(evt);
+                jTextFieldPromoPriceKeyReleased(evt);
             }
         });
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 20);
-        jPanel2.add(jTextPromoPrice, gridBagConstraints);
+        jPanel2.add(jTextFieldPromoPrice, gridBagConstraints);
 
         jTextFieldDataStart.setPreferredSize(new java.awt.Dimension(80, 20));
         jTextFieldDataStart.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -158,99 +158,62 @@ public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog
 
     private void jTextFieldDateStopFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldDateStopFocusLost
 // TODO add your handling code here:
-        p2 = Double.parseDouble(jTextFieldPrice2.getText());
-        p_p2 = (100 * p2) / p0; 
-        jTextFieldProcent2.setText(String.valueOf(p_p2));
+        
     }//GEN-LAST:event_jTextFieldDateStopFocusLost
 
     private void jTextFieldDateStopKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDateStopKeyPressed
 // TODO add your handling code here:
-       if(evt.getKeyCode()==evt.VK_ENTER)
-        {
-            try
-            {
-                p2 = Double.parseDouble(jTextFieldPrice2.getText());
-                p_p2 = (100 * p2) / p0; 
-                jTextFieldProcent2.setText(String.valueOf(p_p2));
-                
-            }
-            catch(NumberFormatException e)
-            {
-               showMessage();
-            }
-         
-        }
+       
     }//GEN-LAST:event_jTextFieldDateStopKeyPressed
 
     private void jTextFieldDataStartFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldDataStartFocusLost
 // TODO add your handling code here:
-        p1 = Double.parseDouble(jTextFieldPrice1.getText());
-        p_p1 = (100 * p1) / p0; 
-        jTextFieldProcent1.setText(String.valueOf(p_p1));
+       
         
     }//GEN-LAST:event_jTextFieldDataStartFocusLost
 
     private void jTextFieldDataStartKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDataStartKeyPressed
 // TODO add your handling code here:
        
-        if(evt.getKeyCode()==evt.VK_ENTER)
-        {
-            try
-            {
-                p1 = Double.parseDouble(jTextFieldPrice1.getText());
-                p_p1 = (100 * p1) / p0; 
-                jTextFieldProcent1.setText(String.valueOf(p_p1));
-                
-            }
-            catch(NumberFormatException e)
-            {
-                showMessage();
-            }
-         
-        }
+        
     }//GEN-LAST:event_jTextFieldDataStartKeyPressed
 
-    private void jTextPromoPriceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextPromoPriceKeyPressed
+    private void jTextFieldPromoPriceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPromoPriceKeyPressed
 // TODO add your handling code here:
-        if(jTextDostPrice.getText().length()>0)
-        {
-            jTextFieldPrice1.setEnabled(true);
-            jTextFieldPrice2.setEnabled(true);
-            jTextFieldPrice2.setEnabled(true);
-            jTextFieldProcent3.setEnabled(true); 
-            jTextFieldPrice3.setEnabled(true);
-            jTextFieldProcent3.setEnabled(true);  
-        }
-    }//GEN-LAST:event_jTextPromoPriceKeyPressed
+       
+    }//GEN-LAST:event_jTextFieldPromoPriceKeyPressed
 
-    private void jTextPromoPriceKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextPromoPriceKeyReleased
+    private void jTextFieldPromoPriceKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPromoPriceKeyReleased
 // TODO add your handling code here:
-    }//GEN-LAST:event_jTextPromoPriceKeyReleased
+    }//GEN-LAST:event_jTextFieldPromoPriceKeyReleased
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
 // TODO add your handling code here:
-       if(p0==0 && p1==0 && p2==0 && p3==0)
-       {
+        try
+        {
+            promo = Double.parseDouble(jTextFieldPromoPrice.getText());
+            dateStart = jTextFieldDataStart.getText();
+            dateStop = jTextFieldDateStop.getText();
+            if(isNew)
+              {
+                  myParent.setId_PPP(myParent.getCountriesT().setProductPromotionPrice(promo,dateStart,dateStop));
+                  jButtonClose.doClick();
+              }
+            else
+              {
+                  myParent.getCountriesT().updateProductPromotionPrice(myParent.getId_PPP(),promo,dateStart,dateStop);
+                   jButtonClose.doClick();
+              }
+        }
+        catch(Exception e)
+        {
            showMessage();
-       }
-       else
-       {
-        p0 = Double.parseDouble(jTextDostPrice.getText());
-        p1 = Double.parseDouble(jTextFieldPrice1.getText());
-        p2 = Double.parseDouble(jTextFieldPrice2.getText());
-        p3 = Double.parseDouble(jTextFieldPrice3.getText());
-        
-        if(isNew)
-        {
-            myParent.getCountriesT().setNewPrice(id_price,p0,p1,p2,p3);
         }
-        else
-        {
-            myParent.getCountriesT().updateProductPrice(id_price,p0,p1,p2,p3);
-        }
+     
         
-       }
         
+      
+    
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
@@ -280,30 +243,25 @@ public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextFieldDataStart;
     private javax.swing.JTextField jTextFieldDateStop;
-    private javax.swing.JTextField jTextPromoPrice;
+    private javax.swing.JTextField jTextFieldPromoPrice;
     // End of variables declaration//GEN-END:variables
  //--------------- My Variables
     private nom.FrmProduct myParent;
     private int id_price;
-    private double p0=0,p1=0,p2=0,p3=0;
-    private double p_p1,p_p2,p_p3;
+    private double promo;
+    private String dateStart, dateStop;
+    
     private boolean isNew = false;
  //---------------END My Variables
 //---------------START MyFunction 
  
 
-private void getDataByID()
+private void getPrices()
 {
-    String prices[] = new String[4];
-    
-    prices = myParent.getCountriesT().getProductPrice(id_price);
-    
-    jTextDostPrice.setText(prices[0]);
-    jTextFieldPrice1.setText(prices[1]);
-    jTextFieldPrice2.setText(prices[2]);
-    jTextFieldPrice3.setText(prices[3]);
-    
-    
+    String prices[] = myParent.getCountriesT().getProductPromotionPrice(id_price);
+    jTextFieldPromoPrice.setText(prices[0]);
+    jTextFieldDataStart.setText(prices[1]);
+    jTextFieldDateStop.setText(prices[2]);
     
 }
 private void showMessage()

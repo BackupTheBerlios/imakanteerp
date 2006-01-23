@@ -7,15 +7,15 @@ public class aeProductPriceFee extends imakante.com.vcomponents.iDialog
 {
     
     /** Creates new form aeProductPriceFee */
-    public aeProductPriceFee(imakante.com.vcomponents.iInternalFrame frame, boolean modal,int id_price, boolean isnew)
+    public aeProductPriceFee(imakante.com.vcomponents.iInternalFrame frame, boolean modal,int id_fee, boolean isnew)
     {
         
         super(frame, modal);
         this.myParent =(FrmProduct) frame;
-        this.id_price = id_price;
+        this.id_fee = id_fee;
         this.isNew = isnew;
         initComponents();
-        if(!isNew) getDataByID();
+        if(!isNew) getAllFee();
         this.setResizable(false);
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         int x = (((dim.width)-(this.getSize().width))/2);
@@ -100,15 +100,6 @@ public class aeProductPriceFee extends imakante.com.vcomponents.iDialog
 
         jTextFieldDDS.setPreferredSize(new java.awt.Dimension(80, 20));
         jTextFieldDDS.setInputVerifier(new imakante.com.InputDoubleVerifier());
-        jTextFieldDDS.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextFieldDDSKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextFieldDDSKeyReleased(evt);
-            }
-        });
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 20);
@@ -116,17 +107,6 @@ public class aeProductPriceFee extends imakante.com.vcomponents.iDialog
 
         jTextFieldAkcizi.setPreferredSize(new java.awt.Dimension(80, 20));
         jTextFieldAkcizi.setInputVerifier(new imakante.com.InputDoubleVerifier());
-        jTextFieldAkcizi.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextFieldAkciziFocusLost(evt);
-            }
-        });
-        jTextFieldAkcizi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextFieldAkciziKeyPressed(evt);
-            }
-        });
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -143,17 +123,6 @@ public class aeProductPriceFee extends imakante.com.vcomponents.iDialog
 
         jTextFieldOther.setPreferredSize(new java.awt.Dimension(80, 20));
         jTextFieldOther.setInputVerifier(new imakante.com.InputDoubleVerifier());
-        jTextFieldOther.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextFieldOtherFocusLost(evt);
-            }
-        });
-        jTextFieldOther.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextFieldOtherKeyPressed(evt);
-            }
-        });
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -166,100 +135,30 @@ public class aeProductPriceFee extends imakante.com.vcomponents.iDialog
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldOtherFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldOtherFocusLost
-// TODO add your handling code here:
-        p2 = Double.parseDouble(jTextFieldPrice2.getText());
-        p_p2 = (100 * p2) / p0; 
-        jTextFieldProcent2.setText(String.valueOf(p_p2));
-    }//GEN-LAST:event_jTextFieldOtherFocusLost
-
-    private void jTextFieldOtherKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldOtherKeyPressed
-// TODO add your handling code here:
-       if(evt.getKeyCode()==evt.VK_ENTER)
-        {
-            try
-            {
-                p2 = Double.parseDouble(jTextFieldPrice2.getText());
-                p_p2 = (100 * p2) / p0; 
-                jTextFieldProcent2.setText(String.valueOf(p_p2));
-                
-            }
-            catch(NumberFormatException e)
-            {
-               showMessage();
-            }
-         
-        }
-    }//GEN-LAST:event_jTextFieldOtherKeyPressed
-
-    private void jTextFieldAkciziFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldAkciziFocusLost
-// TODO add your handling code here:
-        p1 = Double.parseDouble(jTextFieldPrice1.getText());
-        p_p1 = (100 * p1) / p0; 
-        jTextFieldProcent1.setText(String.valueOf(p_p1));
-        
-    }//GEN-LAST:event_jTextFieldAkciziFocusLost
-
-    private void jTextFieldAkciziKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldAkciziKeyPressed
-// TODO add your handling code here:
-       
-        if(evt.getKeyCode()==evt.VK_ENTER)
-        {
-            try
-            {
-                p1 = Double.parseDouble(jTextFieldPrice1.getText());
-                p_p1 = (100 * p1) / p0; 
-                jTextFieldProcent1.setText(String.valueOf(p_p1));
-                
-            }
-            catch(NumberFormatException e)
-            {
-                showMessage();
-            }
-         
-        }
-    }//GEN-LAST:event_jTextFieldAkciziKeyPressed
-
-    private void jTextFieldDDSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDDSKeyPressed
-// TODO add your handling code here:
-        if(jTextDostPrice.getText().length()>0)
-        {
-            jTextFieldPrice1.setEnabled(true);
-            jTextFieldPrice2.setEnabled(true);
-            jTextFieldPrice2.setEnabled(true);
-            jTextFieldProcent3.setEnabled(true); 
-            jTextFieldPrice3.setEnabled(true);
-            jTextFieldProcent3.setEnabled(true);  
-        }
-    }//GEN-LAST:event_jTextFieldDDSKeyPressed
-
-    private void jTextFieldDDSKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDDSKeyReleased
-// TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldDDSKeyReleased
-
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
 // TODO add your handling code here:
-       if(p0==0 && p1==0 && p2==0 && p3==0)
-       {
-           showMessage();
-       }
+      try
+      {
+         dds = Double.parseDouble(jTextFieldDDS.getText());
+         akcizi = Double.parseDouble(jTextFieldAkcizi.getText());
+         other = Double.parseDouble(jTextFieldOther.getText());
+         if(isNew)
+           {
+              myParent.setId_PF(myParent.getCountriesT().setProductFee(dds,akcizi,other));
+             jButtonClose.doClick();
+           }
        else
-       {
-        p0 = Double.parseDouble(jTextDostPrice.getText());
-        p1 = Double.parseDouble(jTextFieldPrice1.getText());
-        p2 = Double.parseDouble(jTextFieldPrice2.getText());
-        p3 = Double.parseDouble(jTextFieldPrice3.getText());
-        
-        if(isNew)
-        {
-            myParent.getCountriesT().setNewPrice(id_price,p0,p1,p2,p3);
-        }
-        else
-        {
-            myParent.getCountriesT().updateProductPrice(id_price,p0,p1,p2,p3);
-        }
-        
-       }
+           {
+              myParent.getCountriesT().updateProductFee(id_fee,dds,akcizi,other);
+              jButtonClose.doClick();
+           }
+      }
+      catch(Exception e)
+      {
+          showMessage();
+      }
+      
+    
         
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
@@ -295,26 +194,19 @@ public class aeProductPriceFee extends imakante.com.vcomponents.iDialog
     // End of variables declaration//GEN-END:variables
  //--------------- My Variables
     private nom.FrmProduct myParent;
-    private int id_price;
-    private double p0=0,p1=0,p2=0,p3=0;
-    private double p_p1,p_p2,p_p3;
+    private int id_fee;
+    private double dds,akcizi,other;
     private boolean isNew = false;
  //---------------END My Variables
 //---------------START MyFunction 
  
 
-private void getDataByID()
+private void getAllFee()
 {
-    String prices[] = new String[4];
-    
-    prices = myParent.getCountriesT().getProductPrice(id_price);
-    
-    jTextDostPrice.setText(prices[0]);
-    jTextFieldPrice1.setText(prices[1]);
-    jTextFieldPrice2.setText(prices[2]);
-    jTextFieldPrice3.setText(prices[3]);
-    
-    
+    String fee[] = myParent.getCountriesT().getProdictFee(id_fee);
+    jTextFieldDDS.setText(fee[0]);
+    jTextFieldAkcizi.setText(fee[1]);
+    jTextFieldOther.setText(fee[2]);
     
 }
 private void showMessage()

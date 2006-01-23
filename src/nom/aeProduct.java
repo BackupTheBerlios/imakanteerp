@@ -6,13 +6,17 @@ import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.*;
 import java.awt.Color;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
+import javax.swing.table.DefaultTableCellRenderer;
 public class aeProduct extends imakante.com.vcomponents.iDialog 
 {
     
     /** Creates new form aeProduct */
-    public aeProduct(imakante.com.vcomponents.iInternalFrame frame, boolean modal, boolean isnew, int selectComboBoxItem)// T
+    public aeProduct(imakante.com.vcomponents.iInternalFrame frame, boolean modal, boolean isnew, int selectComboBoxItem)// Test imakante.com.vcomponents.iInternalFrame frame
     {
-        super(frame, modal);
+        super(frame, modal); 
         this.myframe = frame;
         this.isNew = isnew; // opredelq dali zapisa sy6testwuwa v bazata;
         this.myParent = (nom.FrmProduct) frame;
@@ -36,6 +40,34 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
             
             jComboBoxGroup.setSelectedIndex(selectComboBoxItem);
           }
+        
+        // ------------Popylvane na colonite za opisanie
+       splitNameOfColumn1 = myParent.getCountriesT().getProductDescriptionColumn();
+       
+        for(int i=0;i<splitNameOfColumn1.length;i++)
+        {
+            jComboBoxColumn1.addItem(new String(splitNameOfColumn1[i]));
+            jComboBoxColumn2.addItem(new String(splitNameOfColumn1[i]));
+            jComboBoxColumn3.addItem(new String(splitNameOfColumn1[i]));
+        }
+        
+        
+      // DefaultTableCellRenderer renderer =
+      //          new DefaultTableCellRenderer();
+        
+        jTableDescription.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(jComboBoxColumn1));
+       // jTableDescription.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(jComboBoxColumn2));
+       // jTableDescription.getColumnModel().getColumn(2).setCellEditor(new DefaultCellEditor(jComboBoxColumn3));
+          
+        
+        DefaultTableCellRenderer ff = new  DefaultTableCellRenderer() ;
+        ff.add(jComboBoxColumn2);
+        jTableDescription.getColumnModel().getColumn(0).setHeaderRenderer(ff);
+        //jTableDescription.getColumnModel().getColumn(0).setCellRenderer(renderer);
+        //jTableDescription.getColumnModel().getColumn(1).setCellRenderer(renderer);
+        //jTableDescription.getColumnModel().getColumn(2).setCellRenderer(renderer);
+        
+        
         
         
         repaintComp();
@@ -298,6 +330,9 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
             }
         });
         jTextFieldFee.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldFeeKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextFieldFeeKeyReleased(evt);
             }
@@ -444,6 +479,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
         jTableDescription.setAutoscrolls(false);
         jTableDescription.setPreferredSize(new java.awt.Dimension(200, 50));
         jTableDescription.setRowSelectionAllowed(false);
+        //jComboBoxColumn1
         jPanelDescription.add(jTableDescription);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -537,6 +573,20 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTextFieldFeeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFeeKeyPressed
+// TODO add your handling code here:
+        try
+            {
+              new aeProductPriceFee(myParent,true,myParent.getId_PF(),isNew).setVisible(true);
+                
+                
+            } catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+        repaintComp();
+    }//GEN-LAST:event_jTextFieldFeeKeyPressed
+
     private void jTextFieldContragentFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldContragentFocusLost
 // TODO add your handling code here:
         jTextFieldContragent.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -573,6 +623,16 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
 
     private void jTextFieldFeeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldFeeMousePressed
 // TODO add your handling code here:
+        try
+            {
+              new aeProductPriceFee(myParent,true,myParent.getId_PF(),isNew).setVisible(true);
+                
+                
+            } catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+        repaintComp();
     }//GEN-LAST:event_jTextFieldFeeMousePressed
 
     private void jTextFieldPromoPricesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPromoPricesFocusLost
@@ -587,6 +647,17 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
 
     private void jTextFieldPromoPricesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldPromoPricesMousePressed
 // TODO add your handling code here:
+         try
+            {
+              promoDialog = new aeProductPricePromotion(myParent,true,myParent.getId_PPP(),isNew);
+              promoDialog.setVisible(true);
+                
+                
+            } catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+         repaintComp();
     }//GEN-LAST:event_jTextFieldPromoPricesMousePressed
 
     private void jTextFieldPriceFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPriceFocusLost
@@ -601,17 +672,39 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
 
     private void jTextFieldPriceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPriceKeyPressed
 // TODO add your handling code here:
-        showContein(3,true); //??
+       
+            
+         try
+            {
+              new aeProductPrice(myParent,true,myParent.getId_PP(),isNew).setVisible(true);
+                
+                
+            } catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+        
+       repaintComp(); 
     }//GEN-LAST:event_jTextFieldPriceKeyPressed
 
     private void jTextFieldPriceMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldPriceMousePressed
 // TODO add your handling code here:
-         showContein(3,true);
+         try
+            {
+              new aeProductPrice(myParent,true,myParent.getId_PP(),isNew).setVisible(true);
+                
+                
+            } catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+         repaintComp();
     }//GEN-LAST:event_jTextFieldPriceMousePressed
 
     //
     private void jButtonToEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToEndActionPerformed
 // TODO add your handling code here:
+         isNew = false;
          myParent.mTableEnd();
          jButtonToEnd.setEnabled(false);
          jButtonOneRowP.setEnabled(false);
@@ -630,6 +723,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
 
     private void jButtonOneRowPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowPActionPerformed
 // TODO add your handling code here:
+         isNew = false;
          myParent.mOneRowPlus();
         if(myParent.isAtEnd())
         {
@@ -649,6 +743,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
 
     private void jButtonOneRowMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowMActionPerformed
 // TODO add your handling code here:
+         isNew = false;
          myParent.mOneRowMinus();
         if(myParent.isAtBegining())
         {
@@ -667,6 +762,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
 
     private void jButtonToBeginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToBeginActionPerformed
 // TODO add your handling code here:
+        isNew = false;
         myParent.mTableBegining();
         
         jButtonToBegin.setEnabled(false);
@@ -684,7 +780,17 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
 
     private void jTextFieldPromoPricesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPromoPricesKeyPressed
 // TODO add your handling code here:
+        try
+            {
+              new aeProductPricePromotion(myParent,true,myParent.getId_PPP(),isNew).setVisible(true);
+                
+                
+            } catch(Exception e)
+            {
+                e.printStackTrace();
+            }
    
+        repaintComp();
     }//GEN-LAST:event_jTextFieldPromoPricesKeyPressed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -700,25 +806,34 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
                     (myParent.getId_PD()==-1) | (myParent.getId_PP()==-1) | (myParent.getId_PPP()==-1))
             {
                 // syob6tenie da se vuvede naseleneto mqsto, MOL i OSO;
-               JOptionPane.showMessageDialog(this, "---------------------------");
+                   showMessage();
                
             }
             else
             {
               
-                myParent.setAllVariables();
+                if(setAllVariables())
+                {
                 myParent.getCountriesT().insertRow(myParent.getId_PM(),myParent.getId_PPP(),myParent.getId_PP(),
                                                    myParent.getId_PF(),myParent.getId_Group(),myParent.getId_PD(),
                                                    myParent.getNamePM(),myParent.getSNamePM(),myParent.getFNamePM(),
                                                    myParent.getCNamePM(),myParent.getMax_POP(),myParent.getFlag(),
                                                    myParent.getExpertSheet(),myParent.getBarCod(),myParent.getCod1(),
                                                    myParent.getCod2());
+                }
+                else
+                {
+                    showMessage();
+                    jComboBoxGroup.setFocusable(true);
+                    jComboBoxGroup.setSelectedIndex(0);
+                }
                 
             }
         }
         else  // zapisa  sy6testvuva v bazata!!
         {
-                myParent.setAllVariables();
+                if(setAllVariables())
+                {
                 
                 myParent.getCountriesT().updateRow(myParent.getId_PM(),myParent.getId_PPP(),myParent.getId_PP(),
                                                    myParent.getId_PF(),myParent.getId_Group(),myParent.getId_PD(),
@@ -726,6 +841,13 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
                                                    myParent.getCNamePM(),myParent.getMax_POP(),myParent.getFlag(),
                                                    myParent.getExpertSheet(),myParent.getBarCod(),myParent.getCod1(),
                                                    myParent.getCod2());
+                }
+                else
+                {
+                    showMessage();
+                    jComboBoxGroup.setFocusable(true);
+                    jComboBoxGroup.setSelectedIndex(0);
+                }
             
         }
     //  jButton3.doClick(); // zatvarq se aeProsuct
@@ -741,10 +863,10 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
     /**
      * @param args the command line arguments
      */
-  /*  public static void main(String args[]) {
+   /* public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new aeProduct(new JFrame(),true,true).setVisible(true);
+                new aeProduct(new JFrame(),true,true,1).setVisible(true);
             }
         });
     }*/
@@ -795,9 +917,16 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
     // End of variables declaration//GEN-END:variables
  //--------------- My Variables
    private FrmProduct myParent;
+   private javax.swing.JComboBox jComboBoxColumn1 = new javax.swing.JComboBox();
+   private javax.swing.JComboBox jComboBoxColumn2 = new javax.swing.JComboBox();
+   private javax.swing.JComboBox jComboBoxColumn3 = new javax.swing.JComboBox();
    private showContentsCon_Gr showContein;
    private imakante.com.vcomponents.iInternalFrame myframe;
    private String splitGroups[] = null;
+   private String splitNameOfColumn1[] = null;
+   private String splitNameOfColumn2[] = null;
+   private String splitNameOfColumn3[] = null;
+   private aeProductPricePromotion promoDialog;
    boolean isNew; // za opredelqne dali zapisa e 4isto nov, t.e dali ne sy6testva b bazata
  //---------------END My Variables
 //---------------START MyFunction 
@@ -844,26 +973,38 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
   if((myParent.getId_PD()!=0)) // n_product_description
    {
    String description[][] = myParent.getCountriesT().getDescription(myParent.getId_PD());
-   for(int i = 0; i < 2; i++)
-    for(int j=0; j < 3; j++)
-      {
-       jTableDescription.setValueAt(new String(description[i][j]),i,j);
-      }
+   
+   
+       int newItem = getNewComboBoxColumnIndex(Integer.parseInt(description[0][0]));
+       jComboBoxColumn1.setSelectedIndex(newItem); 
+       
+        newItem = getNewComboBoxColumnIndex(Integer.parseInt(description[1][0]));
+       jComboBoxColumn2.setSelectedIndex(newItem); 
+       
+        newItem = getNewComboBoxColumnIndex(Integer.parseInt(description[2][0]));
+       jComboBoxColumn3.setSelectedIndex(newItem); 
+       
+   
+        jTableDescription.setValueAt(new String(description[0][1]),1,0);
+        jTableDescription.setValueAt(new String(description[1][1]),1,1);
+        jTableDescription.setValueAt(new String(description[2][1]),1,2);
+    
+    
    }
    if(myParent.getId_PF()!=0) 
    {
-   String  fee = myParent.getCountriesT().getProdictFee(myParent.getId_PF());
-   jTextFieldFee.setText(fee);
+   String  fee[] = myParent.getCountriesT().getProdictFee(myParent.getId_PF());
+   jTextFieldFee.setText(fee[0]);
    }
    if (myParent.getId_PP()!=0)
    {
-   String price = myParent.getCountriesT().getProductPrice(myParent.getId_PP());
-   jTextFieldPrice.setText(price);
+   String price[] = myParent.getCountriesT().getProductPrice(myParent.getId_PP());
+   jTextFieldPrice.setText(price[0]);
    }
    if (myParent.getId_PPP()!=0)
    {
-   String promotion_price = myParent.getCountriesT().getProductPromotionPrice(myParent.getId_PPP());
-   jTextFieldPromoPrices.setText(promotion_price);
+   String promotion_price[] = myParent.getCountriesT().getProductPromotionPrice(myParent.getId_PPP());
+   jTextFieldPromoPrices.setText(promotion_price[0]);
    }
   
    if (myParent.getId_Group()!=0) // ????? drug varioan da se izmisli
@@ -871,10 +1012,10 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
      jComboBoxGroup.setSelectedItem(getNewComboBoxIndex(myParent.getId_Group()));
    }
    
-   {
+   /*{
    String contragent = myParent.getCountriesT().getProductContragent(myParent.getId_PM());
    jTextFieldContragent.setText(contragent);
-   }
+   }*/
    
 } 
  private void showContein(int con_gr, boolean isEditalble) // test
@@ -882,8 +1023,8 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
       try
             {
          
-             java.sql.ResultSet r1 = myParent.getCountriesT().getShowContein(con_gr);
-             showContein = new showContentsCon_Gr(myframe,true,myParent.getCountriesT().getRs(),myParent.getCountriesT().getConn(),con_gr);
+             java.sql.ResultSet r1 = myParent.getCountriesT().getShowContein();
+             showContein = new showContentsCon_Gr(myframe,true,r1,myParent.getCountriesT().getConn());
              showContein.setVisible(true);
                 
             } catch(Exception e)
@@ -905,6 +1046,55 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
           }
       }
     return newindex;
+}
+
+private int getNewComboBoxColumnIndex(int oldindex) //OK
+{ 
+    int newindex= 0;
+    for(int i = 0; i < myParent.getCountriesT().getIndexConnOfIdColumn().length; i++)
+       {
+        if(myParent.getCountriesT().getIndexConnOfIdColumn()[i]==oldindex)
+          {
+           newindex = i;
+           break;
+          }
+      }
+    return newindex;
+}
+ private boolean  setAllVariables()
+ { 
+     boolean isOk= true;
+          
+     myParent.setNamePM(jTextFieldName.getText());
+     myParent.setSNamePM(jTextFieldSName.getText());
+     myParent.setFNamePM(jTextFieldFName.getText());
+     myParent.setCNamePM(jTextFieldCName.getText());
+     myParent.setCod1(jTextFieldCod1.getText());
+     myParent.setCod2(jTextFieldCod2.getText());
+     myParent.setExpertSheet(jTextFieldExpertSheet.getText());
+     try
+     {
+     myParent.setBarCod(Integer.parseInt(jTextFieldBarCod.getText()));
+     myParent.setMax_POP(Integer.parseInt(jTextFieldMaxPOP.getText()));
+     myParent.setMinProduct(Integer.parseInt(jTextFieldMinProduct.getText()));
+     }
+     catch(Exception e)
+     {
+       showMessage();  
+       isOk = false;
+     }
+     if( (myParent.getId_PF() ==0) | (myParent.getId_Group()==0) | (myParent.getId_PP()==0) |
+             (myParent.getId_PPP() ==0)) //(myParent.getId_PD()==0) |
+     {
+        isOk = false;
+     }
+     return isOk;
+ }
+ private void showMessage()
+{
+     JOptionPane.showMessageDialog(this,"\u041c\u043e\u043b\u044f, \u0432\u044a\u0432\u0435\u0434\u0435\u0442\u0435 \u043a\u043e\u0440\u0435\u043a\u043d\u043e \u0434\u0430\u043d\u043d\u0438\u0442\u0435");
+     
+    
 }
 }// end class
 

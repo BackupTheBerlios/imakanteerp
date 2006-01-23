@@ -316,7 +316,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
         if(table.getSelectedRow() != -1)
         {
             setRow(table.getSelectedRow());
-            setId_PM((Integer)table.getValueAt(getRow(),0));
+            setAllVariables();
             countriesT.deleteRow(getId_PM());
             refreshTable();
         }
@@ -343,13 +343,14 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
              
          try
             {
-                dialog = new aeProduct(this, true,true);
+                dialog = new aeProduct(this, true,true,0);
                 dialog.setVisible(true);
                 
             } catch(Exception e)
             {
                 e.printStackTrace();
             }
+      
         refreshTable(); 
         
     }//GEN-LAST:event_jButtonNewActionPerformed
@@ -376,7 +377,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
             
             try
             {
-                dialog = new aeProduct(this, true,false);
+                dialog = new aeProduct(this, true,false,getId_Group());
                 dialog.setVisible(true);
                 
             } catch(Exception e)
@@ -402,6 +403,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
                 fr.setVisible(true);
             }
         });
+        
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -440,6 +442,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     // End of variables declaration//GEN-END:variables
 //--------------- My Variables
     private String nameOfColumns[];
+    private int tmpInt =0;
     private  boolean atBegining=false;
     private  boolean atEnd = false;
     private int row;
@@ -882,6 +885,14 @@ table.getColumnModel().getColumn(iColumn).setMinWidth(0);
 table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
 table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
      
+ }
+ public void setTMPINT(int in)
+ {
+     this.tmpInt = in;
+ }
+ public int getTMPINT()
+ {
+     return tmpInt;
  }
 }// end class
 
