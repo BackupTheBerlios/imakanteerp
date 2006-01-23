@@ -567,5 +567,28 @@ public class FrmTypeObject extends  imakante.com.vcomponents.iInternalFrame impl
         this.conn = conn;
     }
     
+    private void executeHide(){
+    
+    
+    }
+    
+    
+    private void executeUnhide(){
+    
+    
+    
+    }
+    
+    //Method for hiding column
+    
+    private void HideColumns(int col) {
+        int iColumn = col;
+        // set column width
+        table.getColumnModel().getColumn(iColumn).setMaxWidth(0);
+        table.getColumnModel().getColumn(iColumn).setMinWidth(0);
+        table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
+        table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
+        
+    }
     
 }// end class
