@@ -22,7 +22,7 @@ public class InputDoubleVerifier extends InputVerifier
       
        for(int i=0;i < lenth; i++)
          {
-           if(count > 0) 
+           if(count > 1) 
            {
                
                break;
@@ -34,7 +34,7 @@ public class InputDoubleVerifier extends InputVerifier
            }
            else countCommaDot[i] = 0;
          }
-       if(count < 1)  // ako potrebitelq e vkaral pove4e ot edin pat to4ka ili zapetaq
+       if(count <= 1)  // ako potrebitelq e vkaral pove4e ot edin pat to4ka ili zapetaq
            {
               for(int i =0; i < lenth; i++ )
               {
