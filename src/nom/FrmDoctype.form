@@ -21,9 +21,6 @@
             <EtchetBorder/>
           </Border>
         </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="11" style="0"/>
-        </Property>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
@@ -51,9 +48,6 @@
             <EtchetBorder/>
           </Border>
         </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="11" style="0"/>
-        </Property>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
@@ -69,9 +63,6 @@
               <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
                 <EtchetBorder/>
               </Border>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="11" style="0"/>
             </Property>
           </Properties>
           <Constraints>
@@ -89,9 +80,6 @@
                 <EtchetBorder/>
               </Border>
             </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="11" style="0"/>
-            </Property>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
@@ -103,17 +91,11 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jlDocName">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="11" style="0"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="&#x418;&#x43c;&#x435; &#x43d;&#x430; &#x434;&#x43e;&#x43a;&#x443;&#x43c;&#x435;&#x43d;&#x442;:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jtfDocName">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="11" style="0"/>
-                </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[200, 20]"/>
                 </Property>
@@ -121,9 +103,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="jbSearch">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="11" style="0"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="&#x41d;&#x410;&#x41c;&#x415;&#x420;&#x418;"/>
               </Properties>
               <Events>
@@ -141,9 +120,6 @@
             <EtchetBorder/>
           </Border>
         </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="11" style="0"/>
-        </Property>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
@@ -155,9 +131,6 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="jbNew">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="11" style="0"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="&#x41d;&#x43e;&#x432;"/>
           </Properties>
           <Events>
@@ -166,9 +139,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="jbEdit">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="11" style="0"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="&#x420;&#x435;&#x434;&#x430;&#x43a;&#x446;&#x438;&#x44f;"/>
           </Properties>
           <Events>
@@ -177,9 +147,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="jbPrint">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="11" style="0"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="&#x41f;&#x435;&#x447;&#x430;&#x442;"/>
           </Properties>
           <Events>
@@ -188,9 +155,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="jbPrintRep">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="11" style="0"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="&#x41f;&#x435;&#x447;&#x430;&#x442; &#x420;&#x430;&#x43f;&#x43e;&#x440;&#x442;"/>
           </Properties>
           <Events>
@@ -199,9 +163,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="jbAll">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="11" style="0"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="&#x412;&#x441;&#x438;&#x447;&#x43a;&#x438; &#x437;&#x430;&#x43f;&#x438;&#x441;&#x438;"/>
           </Properties>
           <Events>
@@ -210,9 +171,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="jbDel">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="11" style="0"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="&#x418;&#x437;&#x442;&#x440;&#x438;&#x432;&#x430;&#x43d;&#x435;"/>
           </Properties>
           <Events>
@@ -221,9 +179,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="jbDropData">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="11" style="0"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="&#x418;&#x437;&#x442;&#x440;&#x438;&#x432;&#x430;&#x43d;&#x435; &#x442;&#x430;&#x431;&#x43b;&#x438;&#x446;&#x430;"/>
           </Properties>
           <Events>
@@ -232,9 +187,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="jbClose">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="11" style="0"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="&#x417;&#x430;&#x442;&#x432;&#x43e;&#x440;&#x438;"/>
           </Properties>
           <Events>

@@ -9,7 +9,19 @@ package nom;
 
 public class EditorControl {
     
-    public EditorControl() {
+    protected void gotoFirst() {
+        
+    }
+    
+    protected void gotoNext() {
+        
+    }
+    
+    protected void gotoPrev() {
+        
+    }
+    
+    protected void gotoLast() {
         
     }
     

@@ -189,12 +189,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbDeleteActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jbDropTable">
+        <Component class="javax.swing.JButton" name="jbDropData">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x418;&#x437;&#x442;&#x440;&#x438;&#x432;&#x430;&#x43d;&#x435; &#x43d;&#x430; &#x442;&#x430;&#x431;&#x43b;&#x438;&#x446;&#x430;"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbDropTableActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbDropDataActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jbClose">

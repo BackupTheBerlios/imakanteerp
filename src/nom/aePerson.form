@@ -131,7 +131,7 @@
                       <Component id="jbNext" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jbLast" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="77" max="32767" attributes="0"/>
+                      <EmptySpace pref="65" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -155,21 +155,33 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="&lt;&lt;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbFirstActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jbPrevious">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&lt;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbPreviousActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jbNext">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&gt;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbNextActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jbLast">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&gt;&gt;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbLastActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -194,9 +206,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jlNomLK">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="11" style="0"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="&#x2116; &#x43d;&#x430; &#x41b;&#x41a;:"/>
           </Properties>
         </Component>
@@ -241,16 +250,25 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x421;&#x44a;&#x445;&#x440;&#x430;&#x43d;&#x438;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbSaveActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jbUndo">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x41f;&#x440;&#x435;&#x434;&#x438;&#x448;&#x43d;&#x438;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbUndoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jbClose">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x417;&#x430;&#x442;&#x432;&#x43e;&#x440;&#x438;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbCloseActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -83,7 +83,7 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
         jbPrintReport = new javax.swing.JButton();
         jbAll = new javax.swing.JButton();
         jbDelete = new javax.swing.JButton();
-        jbDropTable = new javax.swing.JButton();
+        jbDropData = new javax.swing.JButton();
         jbClose = new javax.swing.JButton();
 
         jpTop.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -186,14 +186,14 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
 
         jpBottom.add(jbDelete);
 
-        jbDropTable.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435 \u043d\u0430 \u0442\u0430\u0431\u043b\u0438\u0446\u0430");
-        jbDropTable.addActionListener(new java.awt.event.ActionListener() {
+        jbDropData.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435 \u043d\u0430 \u0442\u0430\u0431\u043b\u0438\u0446\u0430");
+        jbDropData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbDropTableActionPerformed(evt);
+                jbDropDataActionPerformed(evt);
             }
         });
 
-        jpBottom.add(jbDropTable);
+        jpBottom.add(jbDropData);
 
         jbClose.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
         jbClose.addActionListener(new java.awt.event.ActionListener() {
@@ -210,12 +210,12 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCloseActionPerformed
-        this.dispose();
+        unload();
     }//GEN-LAST:event_jbCloseActionPerformed
 
-    private void jbDropTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDropTableActionPerformed
-        
-    }//GEN-LAST:event_jbDropTableActionPerformed
+    private void jbDropDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDropDataActionPerformed
+        emptyTable();
+    }//GEN-LAST:event_jbDropDataActionPerformed
 
     private void jbDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDeleteActionPerformed
         delRecord();
@@ -226,17 +226,11 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
     }//GEN-LAST:event_jbAllActionPerformed
 
     private void jbPrintReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPrintReportActionPerformed
-        
+        printReport();
     }//GEN-LAST:event_jbPrintReportActionPerformed
 
     private void jbPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPrintActionPerformed
-        try {
-            java.text.MessageFormat headerFormat = new java.text.MessageFormat("Person");
-            java.text.MessageFormat footerFormat = new java.text.MessageFormat("Page. "+"- {0} -"+" IMAKANTE' ");
-            table.print(javax.swing.JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
-        } catch(java.awt.print.PrinterException e) {
-            e.printStackTrace();
-        }
+        printTable();
     }//GEN-LAST:event_jbPrintActionPerformed
 
     private void jbEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditActionPerformed
@@ -248,6 +242,79 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
     }//GEN-LAST:event_jbNewActionPerformed
 
     private void jbSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSearchActionPerformed
+        searchRecords();
+    }//GEN-LAST:event_jbSearchActionPerformed
+    
+    private void emptyTable() {
+        
+    }
+    
+    private void delRecord(){
+        if(table.getSelectedRow() != -1) {
+            setRow(table.getSelectedRow());
+            setId((Integer)table.getValueAt(getRow(),0));
+            personObject.deleteRow(getId());
+            refreshTable();
+        }
+    }
+    
+    protected  void refreshTable() {
+        jspData.remove(table);
+        rs = personObject.getTable();
+        model = new imakante.com.CustomTableModel(getConn(), rs, null);
+        table = new imakante.com.CustomTable(model);
+        jspData.getViewport().add(table);
+        jspData.repaint();
+    }
+    
+    private void printReport() {
+        
+    }
+    
+    private void printTable() {
+        try {
+            java.text.MessageFormat headerFormat = new java.text.MessageFormat("Person");
+            java.text.MessageFormat footerFormat = new java.text.MessageFormat("Page. "+"- {0} -"+" IMAKANTE' ");
+            table.print(javax.swing.JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
+        } catch(java.awt.print.PrinterException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void editRecord(){
+        if (table.getSelectedRow() != -1) {
+            
+            setRow(table.getSelectedRow());
+            if(getRow()==0){          //manage button state of ae form
+                setFirst(true);
+            }
+            if(getRow()==getMaxRow()){
+                setLast(true);
+            }
+            setId((Integer) table.getValueAt(getRow(), 0));
+            setIDGroup((Integer) table.getValueAt(getRow(), 1));
+            setEGN((String) table.getValueAt(getRow(), 3));
+            setNomLK((String) table.getValueAt(getRow(), 4));
+            setNames((String) table.getValueAt(getRow(), 5));
+            setComment((String) table.getValueAt(getRow(), 6));
+            nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
+            ae_Casa.setVisible(true);
+        } else {
+            
+        }
+    }
+    
+    private void newRecord(){
+        setId(personObject.getMaxId());
+        setIDGroup(personObject.getMaxGrID());
+        personObject.insertRow(getIDGroup());
+        nom.aePerson aeP = new nom.aePerson(this, true);
+        aeP.setVisible(true);
+        refreshTable();
+        
+    }
+    
+    private void searchRecords() {
         try {
             try {
                 rs = personObject.searchRecords(jtfEGN.getText(), jtfName.getText());
@@ -263,11 +330,12 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
         } catch(Exception e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_jbSearchActionPerformed
-
+    }
+    
     public void windowOpened(java.awt.event.WindowEvent e) {
     }
     public void windowClosing(java.awt.event.WindowEvent e) {
+        unload();
     }
     public void windowClosed(java.awt.event.WindowEvent e) {
     }
@@ -402,7 +470,6 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
-            System.out.println("problem");
         }
         setFirst(false);
         setLast(true);
@@ -424,7 +491,6 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
                 table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
             } catch(ArrayIndexOutOfBoundsException aioobe) {
                 setRow(getRow() - 1);
-                System.out.println("problem");
             }
             if(getRow() == getMaxRow()) {
                 setLast(true);
@@ -448,7 +514,7 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
             } catch(ArrayIndexOutOfBoundsException aioobe) {
                 setRow(getRow() + 1);
             }
-            System.out.println("problem");}
+            }
         if(getRow() == 0){
             setFirst(true);
         }
@@ -466,61 +532,22 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
-            System.out.println("problem");
         }
         setFirst(true);
         setLast(false);
     }
     
-    protected  void refreshTable() {
-        jspData.remove(table);
-        rs = personObject.getTable();
-        model = new imakante.com.CustomTableModel(getConn(), rs, null);
-        table = new imakante.com.CustomTable(model);
-        jspData.getViewport().add(table);
-        jspData.repaint();
+    private void unload() {
+        closeResource();
+        this.dispose();
     }
     
-    private void newRecord(){
-        setId(personObject.getMaxId());
-        setIDGroup(personObject.getMaxGrID());
-        personObject.insertRow(getIDGroup());
-        nom.aePerson aeP = new nom.aePerson(this, true);
-        aeP.setVisible(true);
-        refreshTable();
-        
-    }
-    
-    private void editRecord(){
-        if (table.getSelectedRow() != -1) {
-            
-            setRow(table.getSelectedRow());
-            if(getRow()==0){          //manage button state of ae form
-                setFirst(true);
-            }
-            if(getRow()==getMaxRow()){
-                setLast(true);
-            }
-            setId((Integer) table.getValueAt(getRow(), 0));
-            setIDGroup((Integer) table.getValueAt(getRow(), 1));
-            setEGN((String) table.getValueAt(getRow(), 3));
-            setNomLK((String) table.getValueAt(getRow(), 4));
-            setNames((String) table.getValueAt(getRow(), 5));
-            setComment((String) table.getValueAt(getRow(), 6));
-            nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
-            ae_Casa.setVisible(true);
-        } else {
-            
-        }
-    }
-    
-    private void delRecord(){
-        if(table.getSelectedRow() != -1) {
-            setRow(table.getSelectedRow());
-            setId((Integer)table.getValueAt(getRow(),0));
-            personObject.deleteRow(getId());
-            refreshTable();
-        }
+    protected void closeResource() {
+        try{
+            rs.close();
+        } catch(java.sql.SQLException sqle) {  }
+        rs = null;
+        personObject.close();
     }
     
     private java.sql.Connection getConn() {
@@ -535,7 +562,7 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
     private javax.swing.JButton jbAll;
     private javax.swing.JButton jbClose;
     private javax.swing.JButton jbDelete;
-    private javax.swing.JButton jbDropTable;
+    private javax.swing.JButton jbDropData;
     private javax.swing.JButton jbEdit;
     private javax.swing.JButton jbNew;
     private javax.swing.JButton jbPrint;

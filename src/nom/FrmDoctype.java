@@ -199,7 +199,7 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
     }//GEN-LAST:event_jbDropDataActionPerformed
     
     private void jbCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCloseActionPerformed
-        this.dispose();
+        unload();
     }//GEN-LAST:event_jbCloseActionPerformed
     // GUI actions methods
     private void searchRecords() {
