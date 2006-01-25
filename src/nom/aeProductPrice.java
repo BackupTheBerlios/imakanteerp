@@ -363,12 +363,17 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
 
     private void jTextFieldValueMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldValueMousePressed
 // TODO add your handling code here:
+        String curs[] = null;
         try
         {
             java.sql.ResultSet r1 = myParent.getCountriesT().getShowConteinCurs();
-            new showConteinCurs(myParent,true,r1,myParent.getCountriesT().getConn()).setVisible(true);
+            new showConteinCurs(myParent,true,r1,myParent.getCountriesT().getConn());
             id_curs = myParent.getTMPINT();
-            jTextFieldValue.setText(String.valueOf(id_curs));
+            curs = myParent.getCountriesT().getCurs(id_curs);
+            jTextFieldValue.setText(curs[2]);
+            selectComboBoxItem = Integer.parseInt(curs[1]);
+            
+            myParent.setTMPINT(0);
         }
         catch(Exception e)
         {
@@ -545,6 +550,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
             jTextFieldProcent3.setEnabled(true); 
             jTextFieldPrice3.setEnabled(true);
             jTextFieldProcent3.setEnabled(true);  
+            p0 = Double.parseDouble(jTextDostPrice.getText());
         }
     }//GEN-LAST:event_jTextDostPriceKeyPressed
 
@@ -574,7 +580,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
         if(isNew)
         {
             
-            myParent.getCountriesT().setNewPrice(p0,p1,p2,p3,id_curs);
+            myParent.setId_PP(myParent.getCountriesT().setNewPrice(p0,p1,p2,p3,id_curs));
             jButtonClose.doClick();
         }
         else

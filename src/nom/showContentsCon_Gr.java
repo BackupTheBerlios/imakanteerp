@@ -26,7 +26,7 @@ public class showContentsCon_Gr   extends imakante.com.vcomponents.iDialog
                 {
                  int row = table.getSelectedRow();
                  int ID = (Integer)table.getValueAt(row,0);
-                // myParent.set //????? 
+                 myParent.setId_Contragent(ID);
                  close();
                 }
             }
@@ -88,16 +88,7 @@ public class showContentsCon_Gr   extends imakante.com.vcomponents.iDialog
         
     }//GEN-LAST:event_jScrollPane1KeyPressed
     
-    /**
-     * @param args the command line arguments
-     */
-   /* public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-               // new aContragent(new javax.swing.JFrame(), true).setVisible(true);
-            }
-        });
-    }*/
+   
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;

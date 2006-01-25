@@ -46,31 +46,20 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
        
         for(int i=0;i<splitNameOfColumn1.length;i++)
         {
-            jComboBoxColumn1.addItem(new String(splitNameOfColumn1[i]));
-            jComboBoxColumn2.addItem(new String(splitNameOfColumn1[i]));
-            jComboBoxColumn3.addItem(new String(splitNameOfColumn1[i]));
+           
+            jComboBoxDescript1.addItem(new String(splitNameOfColumn1[i]));
+            jComboBoxDescript2.addItem(new String(splitNameOfColumn1[i]));
+            jComboBoxDescript3.addItem(new String(splitNameOfColumn1[i]));
+            
         }
         
         
-      // DefaultTableCellRenderer renderer =
-      //          new DefaultTableCellRenderer();
-        
-        jTableDescription.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(jComboBoxColumn1));
-       // jTableDescription.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(jComboBoxColumn2));
-       // jTableDescription.getColumnModel().getColumn(2).setCellEditor(new DefaultCellEditor(jComboBoxColumn3));
-          
-        
-        DefaultTableCellRenderer ff = new  DefaultTableCellRenderer() ;
-        ff.add(jComboBoxColumn2);
-        jTableDescription.getColumnModel().getColumn(0).setHeaderRenderer(ff);
-        //jTableDescription.getColumnModel().getColumn(0).setCellRenderer(renderer);
-        //jTableDescription.getColumnModel().getColumn(1).setCellRenderer(renderer);
-        //jTableDescription.getColumnModel().getColumn(2).setCellRenderer(renderer);
+     
         
         
         
         
-        repaintComp();
+       if(!isNew) repaintComp();
     }
     
     /** This method is called from within the constructor to
@@ -112,15 +101,20 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
         jTextFieldCod1 = new javax.swing.JTextField();
         jComboBoxGroup = new javax.swing.JComboBox();
         jPanel4 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jTextFieldMinProduct = new javax.swing.JTextField();
         jPanelDescription = new javax.swing.JPanel();
-        jTableDescription = new javax.swing.JTable();
+        jComboBoxDescript1 = new javax.swing.JComboBox();
+        jComboBoxDescript2 = new javax.swing.JComboBox();
+        jComboBoxDescript3 = new javax.swing.JComboBox();
+        jTextFieldDescript1 = new javax.swing.JTextField();
+        jTextFieldDescript2 = new javax.swing.JTextField();
+        jTextFieldDescript3 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jButtonToBegin = new javax.swing.JButton();
         jButtonOneRowM = new javax.swing.JButton();
         jButtonOneRowP = new javax.swing.JButton();
         jButtonToEnd = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jTextFieldMinProduct = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -130,7 +124,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setToolTipText("");
-        jPanel1.setPreferredSize(new java.awt.Dimension(675, 270));
+        jPanel1.setPreferredSize(new java.awt.Dimension(650, 270));
         jLabelCod.setText("\u0413\u0440\u0443\u043f\u0430:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
@@ -450,44 +444,49 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.NORTH);
 
-        jPanel4.setLayout(new java.awt.GridBagLayout());
-
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel4.setPreferredSize(new java.awt.Dimension(500, 100));
-        jPanelDescription.setLayout(new javax.swing.BoxLayout(jPanelDescription, javax.swing.BoxLayout.X_AXIS));
+        jPanel4.setPreferredSize(new java.awt.Dimension(700, 100));
+        jLabel3.setText("\u041c\u0438\u043d. \u043a\u043e\u043b.:");
+        jPanel4.add(jLabel3);
 
-        jPanelDescription.setBorder(javax.swing.BorderFactory.createTitledBorder("\u0420\u0430\u0437\u0444\u0430\u0441\u043e\u0432\u043a\u0430"));
-        jPanelDescription.setPreferredSize(new java.awt.Dimension(230, 70));
-        jTableDescription.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jTableDescription.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
+        jTextFieldMinProduct.setPreferredSize(new java.awt.Dimension(50, 20));
+        jPanel4.add(jTextFieldMinProduct);
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTableDescription.setAutoscrolls(false);
-        jTableDescription.setPreferredSize(new java.awt.Dimension(200, 50));
-        jTableDescription.setRowSelectionAllowed(false);
-        //jComboBoxColumn1
-        jPanelDescription.add(jTableDescription);
+        jPanelDescription.setLayout(new java.awt.GridBagLayout());
 
+        jPanelDescription.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "\u0420\u0430\u0437\u0444\u0430\u0441\u043e\u0432\u043a\u0430", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        jPanelDescription.setPreferredSize(new java.awt.Dimension(350, 70));
+        jComboBoxDescript1.setPreferredSize(new java.awt.Dimension(80, 20));
+        jPanelDescription.add(jComboBoxDescript1, new java.awt.GridBagConstraints());
+
+        jComboBoxDescript2.setPreferredSize(new java.awt.Dimension(80, 20));
+        jPanelDescription.add(jComboBoxDescript2, new java.awt.GridBagConstraints());
+
+        jComboBoxDescript3.setPreferredSize(new java.awt.Dimension(80, 20));
+        jPanelDescription.add(jComboBoxDescript3, new java.awt.GridBagConstraints());
+
+        jTextFieldDescript1.setAutoscrolls(false);
+        jTextFieldDescript1.setPreferredSize(new java.awt.Dimension(80, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        jPanelDescription.add(jTextFieldDescript1, gridBagConstraints);
+
+        jTextFieldDescript2.setAutoscrolls(false);
+        jTextFieldDescript2.setPreferredSize(new java.awt.Dimension(80, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        jPanelDescription.add(jTextFieldDescript2, gridBagConstraints);
+
+        jTextFieldDescript3.setAutoscrolls(false);
+        jTextFieldDescript3.setPreferredSize(new java.awt.Dimension(80, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 20);
-        jPanel4.add(jPanelDescription, gridBagConstraints);
+        gridBagConstraints.gridy = 1;
+        jPanelDescription.add(jTextFieldDescript3, gridBagConstraints);
+
+        jPanel4.add(jPanelDescription);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("\u041d\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u044f"));
         jPanel3.setPreferredSize(new java.awt.Dimension(230, 70));
@@ -527,29 +526,12 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
 
         jPanel3.add(jButtonToEnd);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 20);
-        jPanel4.add(jPanel3, gridBagConstraints);
-
-        jLabel3.setText("\u041c\u0438\u043d. \u043a\u043e\u043b.:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 5);
-        jPanel4.add(jLabel3, gridBagConstraints);
-
-        jTextFieldMinProduct.setPreferredSize(new java.awt.Dimension(50, 20));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 5);
-        jPanel4.add(jTextFieldMinProduct, gridBagConstraints);
+        jPanel4.add(jPanel3);
 
         getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel2.setPreferredSize(new java.awt.Dimension(263, 40));
+        jPanel2.setPreferredSize(new java.awt.Dimension(650, 40));
         jButton1.setText("\u0421\u044a\u0445\u0440\u0430\u043d\u0438");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -800,6 +782,8 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
+        myParent.setId_PD(1);
+        myParent.setId_Group(myParent.getCountriesT().getIndexConnOfId()[jComboBoxGroup.getSelectedIndex()]);
         if(isNew) // zapisa NE sy6testvuva v bazata!!
         {
             if((myParent.getId_Group()==-1) | (myParent.getId_PF()==-1) |
@@ -819,7 +803,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
                                                    myParent.getNamePM(),myParent.getSNamePM(),myParent.getFNamePM(),
                                                    myParent.getCNamePM(),myParent.getMax_POP(),myParent.getFlag(),
                                                    myParent.getExpertSheet(),myParent.getBarCod(),myParent.getCod1(),
-                                                   myParent.getCod2());
+                                                   myParent.getCod2(),myParent.getMinProduct());
                 }
                 else
                 {
@@ -840,7 +824,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
                                                    myParent.getNamePM(),myParent.getSNamePM(),myParent.getFNamePM(),
                                                    myParent.getCNamePM(),myParent.getMax_POP(),myParent.getFlag(),
                                                    myParent.getExpertSheet(),myParent.getBarCod(),myParent.getCod1(),
-                                                   myParent.getCod2());
+                                                   myParent.getCod2(),myParent.getMinProduct());
                 }
                 else
                 {
@@ -878,6 +862,9 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
     private javax.swing.JButton jButtonOneRowP;
     private javax.swing.JButton jButtonToBegin;
     private javax.swing.JButton jButtonToEnd;
+    private javax.swing.JComboBox jComboBoxDescript1;
+    private javax.swing.JComboBox jComboBoxDescript2;
+    private javax.swing.JComboBox jComboBoxDescript3;
     private javax.swing.JComboBox jComboBoxGroup;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -899,12 +886,14 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanelDescription;
-    private javax.swing.JTable jTableDescription;
     private javax.swing.JTextField jTextFieldBarCod;
     private javax.swing.JTextField jTextFieldCName;
     private javax.swing.JTextField jTextFieldCod1;
     private javax.swing.JTextField jTextFieldCod2;
     private javax.swing.JTextField jTextFieldContragent;
+    private javax.swing.JTextField jTextFieldDescript1;
+    private javax.swing.JTextField jTextFieldDescript2;
+    private javax.swing.JTextField jTextFieldDescript3;
     private javax.swing.JTextField jTextFieldExpertSheet;
     private javax.swing.JTextField jTextFieldFName;
     private javax.swing.JTextField jTextFieldFee;
@@ -976,18 +965,20 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
    
    
        int newItem = getNewComboBoxColumnIndex(Integer.parseInt(description[0][0]));
-       jComboBoxColumn1.setSelectedIndex(newItem); 
+       jComboBoxDescript1.setSelectedIndex(newItem); 
        
         newItem = getNewComboBoxColumnIndex(Integer.parseInt(description[1][0]));
-       jComboBoxColumn2.setSelectedIndex(newItem); 
+       jComboBoxDescript2.setSelectedIndex(newItem); 
        
         newItem = getNewComboBoxColumnIndex(Integer.parseInt(description[2][0]));
-       jComboBoxColumn3.setSelectedIndex(newItem); 
+       jComboBoxDescript3.setSelectedIndex(newItem); 
        
    
-        jTableDescription.setValueAt(new String(description[0][1]),1,0);
-        jTableDescription.setValueAt(new String(description[1][1]),1,1);
-        jTableDescription.setValueAt(new String(description[2][1]),1,2);
+       jTextFieldDescript1.setText(description[0][1]);
+       jTextFieldDescript2.setText(description[1][1]);
+       jTextFieldDescript3.setText(description[2][1]);
+       
+      
     
     
    }
@@ -1007,15 +998,16 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
    jTextFieldPromoPrices.setText(promotion_price[0]);
    }
   
-   if (myParent.getId_Group()!=0) // ????? drug varioan da se izmisli
+   if (myParent.getId_Group()!=0) // ????? 
    {
      jComboBoxGroup.setSelectedItem(getNewComboBoxIndex(myParent.getId_Group()));
    }
    
-   /*{
-   String contragent = myParent.getCountriesT().getProductContragent(myParent.getId_PM());
+   if (myParent.getId_Contragent()!=0) 
+   {
+   String contragent = myParent.getCountriesT().getProductContragent(myParent.getId_Contragent());
    jTextFieldContragent.setText(contragent);
-   }*/
+   }
    
 } 
  private void showContein(int con_gr, boolean isEditalble) // test
@@ -1026,6 +1018,8 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
              java.sql.ResultSet r1 = myParent.getCountriesT().getShowContein();
              showContein = new showContentsCon_Gr(myframe,true,r1,myParent.getCountriesT().getConn());
              showContein.setVisible(true);
+             String contragent = myParent.getCountriesT().getProductContragent(myParent.getId_Contragent());
+             jTextFieldContragent.setText(contragent);
                 
             } catch(Exception e)
             {
@@ -1072,10 +1066,11 @@ private int getNewComboBoxColumnIndex(int oldindex) //OK
      myParent.setCod1(jTextFieldCod1.getText());
      myParent.setCod2(jTextFieldCod2.getText());
      myParent.setExpertSheet(jTextFieldExpertSheet.getText());
+     
      try
      {
      myParent.setBarCod(Integer.parseInt(jTextFieldBarCod.getText()));
-     myParent.setMax_POP(Integer.parseInt(jTextFieldMaxPOP.getText()));
+     myParent.setMax_POP(Double.parseDouble(jTextFieldMaxPOP.getText()));
      myParent.setMinProduct(Integer.parseInt(jTextFieldMinProduct.getText()));
      }
      catch(Exception e)

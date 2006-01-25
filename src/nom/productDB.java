@@ -26,7 +26,7 @@ package nom;
  *
  *comprator = 16; getProductGroup();
  *
- *comprator = 17;
+ *comprator = 17;  getProductContragent();
  *
  *comprator = 18; getMaxID product price
  *comprator = 19; getMaxID product promotion price
@@ -61,7 +61,8 @@ public class productDB extends dbObject
     private String splitColumn[] = null;
    
     private int id_pm,id_n_group,id_ppp, id_pp,id_pf,id_pd,flag_pm;            //       \
-    private int barcod_pm,max_pop_pm;                                          //        \
+    private int barcod_pm,min_pm;                                          //        \
+    private double max_pop_pm;
     private String name_pm, sname_pm, fname_pm, cname_pm, cod1_pm, cod2_pm;    //         >
     private String expertsheet_pm ;                                            //        /
     private double price0_pp,price1_pp,price2_pp,price3_pp;                   //        /
@@ -78,7 +79,7 @@ public class productDB extends dbObject
  private void prepareCstm() // ok
     {
      try {
-          setCstm(getConn().prepareCall("{call nom_procedure_product(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
+          setCstm(getConn().prepareCall("{call nom_procedure_product(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
         
          }
      catch(java.sql.SQLException sqle)
@@ -123,8 +124,8 @@ public class productDB extends dbObject
     }
   public void insertRow(int in_id_pm, int in_id_ppp, int in_id_pp, int in_id_pf, int in_id_n_group,
                         int in_id_pd, String in_name_pm, String in_sname_pm, String in_fname_pm,
-                        String in_cname_pm,int in_max_pop_pm, int in_flag_pm, String in_expertsheet_pm,int in_barcod_pm,
-                        String in_cod1_pm , String in_cod2_pm) // ok   comprator = 1;
+                        String in_cname_pm,double in_max_pop_pm, int in_flag_pm, String in_expertsheet_pm,int in_barcod_pm,
+                        String in_cod1_pm , String in_cod2_pm, int in_min_pm) // ok   comprator = 1;
                       
     {
         comprator = 1;
@@ -145,6 +146,7 @@ public class productDB extends dbObject
         this.barcod_pm = in_barcod_pm;
         this.cod1_pm = in_cod1_pm;
         this.cod2_pm = in_cod2_pm;
+        this.min_pm = in_min_pm;
         try
         {
             registerParameters();
@@ -158,8 +160,8 @@ public class productDB extends dbObject
     } 
  public void updateRow(int in_id_pm, int in_id_ppp, int in_id_pp, int in_id_pf, int in_id_n_group,
                         int in_id_pd, String in_name_pm, String in_sname_pm, String in_fname_pm,
-                        String in_cname_pm,int in_max_pop_pm, int in_flag_pm, String in_expertsheet_pm,int in_barcod_pm,
-                        String in_cod1_pm , String in_cod2_pm) // ok
+                        String in_cname_pm,double in_max_pop_pm, int in_flag_pm, String in_expertsheet_pm,int in_barcod_pm,
+                        String in_cod1_pm , String in_cod2_pm,int in_min_pm) // ok
     {
         changeFlag(1,in_id_pm);
     
@@ -167,7 +169,7 @@ public class productDB extends dbObject
         insertRow( in_id_pm,  in_id_ppp,  in_id_pp,  in_id_pf,  in_id_n_group,
                    in_id_pd, in_name_pm, in_sname_pm, in_fname_pm,
                    in_cname_pm, in_max_pop_pm, in_flag_pm, in_expertsheet_pm,
-                   in_barcod_pm, in_cod1_pm , in_cod2_pm) ;
+                   in_barcod_pm, in_cod1_pm , in_cod2_pm,in_min_pm) ;
       
         
     }
@@ -199,7 +201,7 @@ public class productDB extends dbObject
  public java.sql.ResultSet searchRecords(int in_id_pm, int in_id_ppp, int in_id_pp, int in_id_pf, int in_id_n_group,
                         int in_id_pd, String in_name_pm, String in_sname_pm, String in_fname_pm,
                         String in_cname_pm,int in_max_pop_pm, int in_flag_pm, String in_expertsheet_pm,int in_barcod_pm,
-                        String in_cod1_pm , String in_cod2_pm) //- ima da se dovyr6va --- comprator = 5;
+                        String in_cod1_pm , String in_cod2_pm,int in_min_pm) //- ima da se dovyr6va --- comprator = 5;
     {
         comprator = 5;
         
@@ -282,7 +284,8 @@ public class productDB extends dbObject
             getCstm().setInt("in_id_pd", getId_PD());
             getCstm().setInt("in_barcod_pm", getBarCod());
             getCstm().setInt("in_flag_pm", getFlag());
-            getCstm().setInt("in_max_pop_pm", getMax_POP());
+            getCstm().setDouble("in_max_pop_pm", getMax_POP());
+            getCstm().setInt("in_min_pm", getMinProduct());
             getCstm().setString("in_name_pm", getNamePM());
             getCstm().setString("in_sname_pm", getSNamePM());
             getCstm().setString("in_fname_pm", getFNamePM());
@@ -466,14 +469,23 @@ public class productDB extends dbObject
    {
        return flag_pm;
    }
-   public void setMax_POP(int max) // ok
+   public void setMax_POP(double max) // ok
    {
        this.max_pop_pm = max;
        
    }
-   public int getMax_POP() // ok
+   public double getMax_POP() // ok
    {
        return max_pop_pm;
+   }
+     public void setMinProduct(int min) // ok
+   {
+       this.min_pm = min;
+       
+   }
+   public int getMinProduct() // ok
+   {
+       return min_pm;
    }
    
    public String[][] getDescription(int id) // Test   comprator = 3;
@@ -893,10 +905,11 @@ public String[] getProductGroup() // Test  da se opredeli kakvo da se pokazva  /
       return indexConnOfIdOnMoney;
   }
  
-public String getProductContragent(int id_pm) // Test ?comprator = 17;
+public String getProductContragent(int in_id_pm) // Test ?comprator = 17;
    {
        String contragent = new String();
-       int oldid_pm = id_pm;   
+       int oldid_pm = id_pm; 
+       id_pm = in_id_pm;
        comprator = 17;
        try
         {

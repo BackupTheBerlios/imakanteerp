@@ -447,8 +447,9 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     private  boolean atEnd = false;
     private int row;
     private  aeProduct dialog;
-    private int id_pm,id_n_group,id_ppp, id_pp,id_pf,id_pd,flag_pm;              //       \
-    private int barcod_pm,max_pop_pm, min_pm;                                                   //         >
+    private int id_pm,id_n_group,id_ppp, id_pp,id_pf,id_pd,flag_pm,id_contragent;              //       \
+    private int barcod_pm, min_pm;                                                   //         >
+    private double max_pop_pm;
     private String name_pm, sname_pm, fname_pm, cname_pm, cod1_pm, cod2_pm;            //         /
     private String expertsheet_pm ;                                                   //        /
     private imakante.com.vcomponents.iFrame myframe;
@@ -721,12 +722,12 @@ private void initTable() //ok  -- !!ima za dovyr6wane - skrivane na koloni!!
    {
        return flag_pm;
    }
-   public void setMax_POP(int max)
+   public void setMax_POP(double max)
    {
        this.max_pop_pm = max;
        
    }
-   public int getMax_POP()
+   public double getMax_POP()
    {
        return max_pop_pm;
    }
@@ -737,6 +738,14 @@ private void initTable() //ok  -- !!ima za dovyr6wane - skrivane na koloni!!
    public int getMinProduct()
    {
        return min_pm;
+   }
+    public void setId_Contragent(int in)
+   {
+       this.id_contragent = in;
+   }
+   public int getId_Contragent()
+   {
+       return id_contragent;
    }
    public void setCountriesT(productDB ccc) // ok
    {
