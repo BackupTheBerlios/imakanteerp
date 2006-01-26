@@ -569,13 +569,7 @@ public class FrmIncom extends  imakante.com.vcomponents.iInternalFrame implement
         }
         
     }
-    
-    
-    
-    
-    
-    
-    
+ 
     public java.sql.Connection getConn() {
         return conn;
     }

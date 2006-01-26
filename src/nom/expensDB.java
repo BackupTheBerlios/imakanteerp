@@ -36,7 +36,7 @@ public class expensDB  extends dbObject {
     {
         try {
             
-            setCstm(getConn().prepareCall("{call nom_procedure_casa(?,?,?,?,?,?)}"));
+            setCstm(getConn().prepareCall("{call nom_procedure_expens(?,?,?,?,?,?)}"));
             
         } catch(java.sql.SQLException sqle) {sqle.printStackTrace();}
     }

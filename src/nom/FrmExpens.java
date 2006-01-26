@@ -162,7 +162,7 @@ public class FrmExpens extends  imakante.com.vcomponents.iInternalFrame implemen
     
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
         try {
-            java.text.MessageFormat headerFormat = new java.text.MessageFormat("Casa");
+            java.text.MessageFormat headerFormat = new java.text.MessageFormat("Expens");
             java.text.MessageFormat footerFormat = new java.text.MessageFormat("Page. "+"- {0} -"+" IMAKANTE' ");
             table.print(JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
         } catch(PrinterException e) {
@@ -246,7 +246,7 @@ public class FrmExpens extends  imakante.com.vcomponents.iInternalFrame implemen
     private  imakante.com.vcomponents.iFrame myframe;
     private  java.sql.Connection conn;
     private  java.sql.ResultSet rs;
-    private  nom.casaDB internalObject;
+    private  nom.expensDB internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
     
@@ -268,7 +268,7 @@ public class FrmExpens extends  imakante.com.vcomponents.iInternalFrame implemen
     {
         try {
             
-            internalObject = new nom.casaDB(conn);
+            internalObject = new nom.expensDB(conn);
         } catch(Exception e)
         
         {
@@ -312,12 +312,12 @@ public class FrmExpens extends  imakante.com.vcomponents.iInternalFrame implemen
     public void windowDeactivated(java.awt.event.WindowEvent e) {
     }
     
-    public nom.casaDB getInternalObject() //OK
+    public nom.expensDB getInternalObject() //OK
     {
         return internalObject;
     }
     
-    public void setInternalObject(nom.casaDB val)//OK
+    public void setInternalObject(nom.expensDB val)//OK
     {
         this.internalObject = val;
     }
@@ -528,8 +528,8 @@ public class FrmExpens extends  imakante.com.vcomponents.iInternalFrame implemen
         setIDG(internalObject.getMaxGrID());
         setCod(internalObject.getMaxCod()+1);
         internalObject.insertRow(getCod(),getIDG());
-        nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
-        ae_Casa.setVisible(true);
+        nom.aeExpens ae_Expens = new nom.aeExpens(this, true);
+        ae_Expens.setVisible(true);
         refreshTable();
         
         
@@ -551,8 +551,8 @@ public class FrmExpens extends  imakante.com.vcomponents.iInternalFrame implemen
             setCod((Integer) table.getValueAt(getRow(), 3));
             setNames((String) table.getValueAt(getRow(), 4));
             setComment((String) table.getValueAt(getRow(), 5));
-            nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
-            ae_Casa.setVisible(true);
+            nom.aeExpens ae_Expens = new nom.aeExpens(this, true);
+            ae_Expens.setVisible(true);
         }else{
             
         }
