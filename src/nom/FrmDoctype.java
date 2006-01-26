@@ -20,6 +20,8 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
         jpMiddle = new javax.swing.JPanel();
         jspData = new javax.swing.JScrollPane();
         jpControls = new javax.swing.JPanel();
+        jlCode = new javax.swing.JLabel();
+        jtfCode = new javax.swing.JTextField();
         jlDocName = new javax.swing.JLabel();
         jtfDocName = new javax.swing.JTextField();
         jbSearch = new javax.swing.JButton();
@@ -34,7 +36,6 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
         jbClose = new javax.swing.JButton();
 
         jpTop.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jpTop.setFont(new java.awt.Font("Tahoma", 0, 11));
         org.jdesktop.layout.GroupLayout jpTopLayout = new org.jdesktop.layout.GroupLayout(jpTop);
         jpTop.setLayout(jpTopLayout);
         jpTopLayout.setHorizontalGroup(
@@ -50,22 +51,22 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
         jpMiddle.setLayout(new java.awt.BorderLayout());
 
         jpMiddle.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jpMiddle.setFont(new java.awt.Font("Tahoma", 0, 11));
         jspData.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jspData.setFont(new java.awt.Font("Tahoma", 0, 11));
         jpMiddle.add(jspData, java.awt.BorderLayout.CENTER);
 
         jpControls.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jpControls.setFont(new java.awt.Font("Tahoma", 0, 11));
-        jlDocName.setFont(new java.awt.Font("Tahoma", 0, 11));
+        jlCode.setText("\u041a\u043e\u0434:");
+        jpControls.add(jlCode);
+
+        jtfCode.setPreferredSize(new java.awt.Dimension(80, 20));
+        jpControls.add(jtfCode);
+
         jlDocName.setText("\u0418\u043c\u0435 \u043d\u0430 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442:");
         jpControls.add(jlDocName);
 
-        jtfDocName.setFont(new java.awt.Font("Tahoma", 0, 11));
         jtfDocName.setPreferredSize(new java.awt.Dimension(200, 20));
         jpControls.add(jtfDocName);
 
-        jbSearch.setFont(new java.awt.Font("Tahoma", 0, 11));
         jbSearch.setText("\u041d\u0410\u041c\u0415\u0420\u0418");
         jbSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,8 +81,6 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
         getContentPane().add(jpMiddle, java.awt.BorderLayout.CENTER);
 
         jpBottom.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jpBottom.setFont(new java.awt.Font("Tahoma", 0, 11));
-        jbNew.setFont(new java.awt.Font("Tahoma", 0, 11));
         jbNew.setText("\u041d\u043e\u0432");
         jbNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,7 +90,6 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
 
         jpBottom.add(jbNew);
 
-        jbEdit.setFont(new java.awt.Font("Tahoma", 0, 11));
         jbEdit.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f");
         jbEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,7 +99,6 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
 
         jpBottom.add(jbEdit);
 
-        jbPrint.setFont(new java.awt.Font("Tahoma", 0, 11));
         jbPrint.setText("\u041f\u0435\u0447\u0430\u0442");
         jbPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,7 +108,6 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
 
         jpBottom.add(jbPrint);
 
-        jbPrintRep.setFont(new java.awt.Font("Tahoma", 0, 11));
         jbPrintRep.setText("\u041f\u0435\u0447\u0430\u0442 \u0420\u0430\u043f\u043e\u0440\u0442");
         jbPrintRep.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,7 +117,6 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
 
         jpBottom.add(jbPrintRep);
 
-        jbAll.setFont(new java.awt.Font("Tahoma", 0, 11));
         jbAll.setText("\u0412\u0441\u0438\u0447\u043a\u0438 \u0437\u0430\u043f\u0438\u0441\u0438");
         jbAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,7 +126,6 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
 
         jpBottom.add(jbAll);
 
-        jbDel.setFont(new java.awt.Font("Tahoma", 0, 11));
         jbDel.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
         jbDel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,7 +135,6 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
 
         jpBottom.add(jbDel);
 
-        jbDropData.setFont(new java.awt.Font("Tahoma", 0, 11));
         jbDropData.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435 \u0442\u0430\u0431\u043b\u0438\u0446\u0430");
         jbDropData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,7 +144,6 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
 
         jpBottom.add(jbDropData);
 
-        jbClose.setFont(new java.awt.Font("Tahoma", 0, 11));
         jbClose.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
         jbClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -204,9 +196,8 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
     // GUI actions methods
     private void searchRecords() {
         jspData.remove(table);
-        System.out.println(jtfDocName.getText());
         try{
-            rs = doctypeObject.searchRecords(jtfDocName.getText());
+            rs = doctypeObject.searchRecords(Integer.parseInt(jtfCode.getText()), jtfDocName.getText());
             model = new imakante.com.CustomTableModel(conn, rs, null);
             table = new imakante.com.CustomTable(model);
         } catch(Exception e) { e.printStackTrace(); }
@@ -215,7 +206,7 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
     }
     
     private void addNewRecord() {
-        setID(doctypeObject.getMaxID());
+        setId(doctypeObject.getMaxId());
         
     }
     
@@ -253,12 +244,14 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
     private javax.swing.JButton jbPrint;
     private javax.swing.JButton jbPrintRep;
     private javax.swing.JButton jbSearch;
+    private javax.swing.JLabel jlCode;
     private javax.swing.JLabel jlDocName;
     private javax.swing.JPanel jpBottom;
     private javax.swing.JPanel jpControls;
     private javax.swing.JPanel jpMiddle;
     private javax.swing.JPanel jpTop;
     private javax.swing.JScrollPane jspData;
+    private javax.swing.JTextField jtfCode;
     private javax.swing.JTextField jtfDocName;
     // End of variables declaration//GEN-END:variables
     

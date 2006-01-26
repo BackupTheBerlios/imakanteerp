@@ -6367,6 +6367,7 @@ CREATE TABLE `n_storage` (
 
 CREATE TABLE `n_type_doc` (
   `id_ntd` int(11) NOT NULL auto_increment,
+  `code_ntd` int(11) unsigned NOT NULL default '0',
   `name_ntd` varchar(50) default NULL,
   `name_print_ntd` varchar(50) default NULL,
   PRIMARY KEY  (`id_ntd`)
