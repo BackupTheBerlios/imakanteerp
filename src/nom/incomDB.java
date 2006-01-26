@@ -31,7 +31,7 @@ public class incomDB  extends imakante.com.dbObject {
     private void prepareCstm() {
         try {
             
-            cstm = conn.prepareCall("{call nom_procedure_expens(?,?,?,?,?,?)}");
+            cstm = conn.prepareCall("{call nom_procedure_incom(?,?,?,?,?,?)}");
             
         } catch(java.sql.SQLException sqle) {sqle.printStackTrace();}
     }
