@@ -174,7 +174,7 @@ public class dbDoctype extends imakante.com.dbObject {
         return code;
     }
     
-    public int getMaxCod() {
+    public int getMaxCode() {
         comprator = 8;
         int return_int=-1;
         try {
