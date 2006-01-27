@@ -1,24 +1,19 @@
 
 package nom;
 
-import java.awt.event.KeyEvent;
-
 public class aeCasa extends imakante.com.vcomponents.iDialog {
     
     public aeCasa(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
-        
         super(frame, modal);
-        this.myParent =(nom.FrmCasa) frame;
+        this.myParent = (nom.FrmCasa) frame;
         initComponents();
-        getNavigatiionState();
+        getNavigationState();
         jButtonUndo.setEnabled(false);
         initCombo();
         this.setResizable(false);
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         repaintComp();
-        
     }
-    
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -237,41 +232,35 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
     }// </editor-fold>//GEN-END:initComponents
     
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        if(cFields()){
-            jTextField1.transferFocus();
-         
-        }else{
-            jTextField1.requestFocus();
-            
-        }
+        cfFocus();
     }//GEN-LAST:event_jTextField1FocusLost
     
     private void jButtonCloseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonCloseKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButtonClose.doClick();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonClose.doClick();}
     }//GEN-LAST:event_jButtonCloseKeyPressed
     
     private void jButtonUndoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonUndoKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButtonUndo.doClick();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonUndo.doClick();}
     }//GEN-LAST:event_jButtonUndoKeyPressed
     
     private void jButtonSaveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonSaveKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButtonSave.doClick();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonSave.doClick();}
     }//GEN-LAST:event_jButtonSaveKeyPressed
     
     private void jButtonToEndKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonToEndKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButtonToEnd.doClick();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonToEnd.doClick();}
     }//GEN-LAST:event_jButtonToEndKeyPressed
     
     private void jButtonOneRowPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonOneRowPKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButtonOneRowP.doClick();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonOneRowP.doClick();}
     }//GEN-LAST:event_jButtonOneRowPKeyPressed
     
     private void jButtonOneRowMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonOneRowMKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButtonOneRowM.doClick();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonOneRowM.doClick();}
     }//GEN-LAST:event_jButtonOneRowMKeyPressed
     
     private void jButtonToBeginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonToBeginKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER){ jButtonToBegin.doClick();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonToBegin.doClick();}
     }//GEN-LAST:event_jButtonToBeginKeyPressed
     
     private void jTextField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyPressed
@@ -283,13 +272,7 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jComboGKeyPressed
     
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
-            if(cFields()){
-                jTextField1.transferFocus();
-                } else{
-                jTextField1.requestFocus();
-            
-                }}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ cfFocus(); }
     }//GEN-LAST:event_jTextField1KeyPressed
     
     private void jButtonUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUndoActionPerformed
@@ -303,7 +286,7 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonCloseActionPerformed
-    
+    // gotoNext
     private void jButtonOneRowPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowPActionPerformed
         myParent.mOneRowPlus();
         if(myParent.isAtEnd()) {
@@ -311,33 +294,27 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
             jButtonOneRowP.setEnabled(false);
             jButtonToEnd.repaint();
             jButtonOneRowP.repaint();
-            
         }
-        
         jButtonToBegin.setEnabled(true);
         jButtonOneRowM.setEnabled(true);
         jButtonToBegin.repaint();
         jButtonOneRowM.repaint();
         repaintComp();
     }//GEN-LAST:event_jButtonOneRowPActionPerformed
-    
+    // gotoLast
     private void jButtonToEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToEndActionPerformed
         myParent.mTableEnd();
         jButtonToEnd.setEnabled(false);
         jButtonOneRowP.setEnabled(false);
         jButtonToEnd.repaint();
         jButtonOneRowP.repaint();
-        
-        
         jButtonToBegin.setEnabled(true);
         jButtonOneRowM.setEnabled(true);
         jButtonToBegin.repaint();
         jButtonOneRowM.repaint();
-        
-        
         repaintComp();
     }//GEN-LAST:event_jButtonToEndActionPerformed
-    
+    // gotoPrev
     private void jButtonOneRowMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowMActionPerformed
         myParent.mOneRowMinus();
         if(myParent.isAtBegining()) {
@@ -345,34 +322,34 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
             jButtonOneRowM.setEnabled(false);
             jButtonToBegin.repaint();
             jButtonOneRowM.repaint();
-            
         }
         jButtonToEnd.setEnabled(true);
         jButtonOneRowP.setEnabled(true);
         jButtonToEnd.repaint();
         jButtonOneRowP.repaint();
         repaintComp();
-        
     }//GEN-LAST:event_jButtonOneRowMActionPerformed
-    
+    // gotoFirst
     private void jButtonToBeginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToBeginActionPerformed
-        
         myParent.mTableBegining();
-        
         jButtonToBegin.setEnabled(false);
         jButtonOneRowM.setEnabled(false);
         jButtonToBegin.repaint();
         jButtonOneRowM.repaint();
-        
         jButtonToEnd.setEnabled(true);
         jButtonOneRowP.setEnabled(true);
         jButtonToEnd.repaint();
         jButtonOneRowP.repaint();
-        
         repaintComp();
-        
     }//GEN-LAST:event_jButtonToBeginActionPerformed
     
+    private void cfFocus() {
+        if(cFields()) {
+            jTextField1.transferFocus();
+        } else {
+            jTextField1.requestFocus();
+        }
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonClose;
@@ -410,7 +387,7 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
     //---------------START My Methods
     
     //Proverka na poletata
-    private boolean cFields(){ // V sluchaia samo na edno pole dali e integer 
+    private boolean cFields() { // V sluchaia samo na edno pole dali e integer 
         boolean check  = true;     // v bazata
         int i = 0;
         try {
@@ -425,7 +402,7 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
     }
     
     //SAVE
-    private void saveRecord(){
+    private void saveRecord() {
         if(cFields()){
             oldCod = myParent.getCod();
             oldName = myParent.getNames();
@@ -446,7 +423,7 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
     }
     
     //UNDO
-    private void undoCorr(){
+    private void undoCorr() {
         myParent.setIDG(oldIDG);
         myParent.setCod(oldCod);
         myParent.setNames(oldName);
@@ -455,8 +432,7 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
         jButtonUndo.setEnabled(false);
     }
     
-    private void getNavigatiionState() //OK
-    {
+    private void getNavigationState() {
         if(myParent.isAtBegining()) {
             jButtonToBegin.setEnabled(false);
             jButtonOneRowM.setEnabled(false);
@@ -469,20 +445,18 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
             jButtonToEnd.repaint();
             jButtonOneRowP.repaint();
         }
-        
     }
-    private void repaintComp() //OK
-    {
+    
+    private void repaintComp() {
         jTextField1.setText(""+myParent.getCod());
         jTextField3.setText(myParent.getNames());
         jTextArea1.setText(myParent.getComment());
         jTextField1.repaint();
-        
         jTextField3.repaint();
         jTextArea1.repaint();
     }
     
-    private void initCombo(){
+    private void initCombo() {
         namesG = myParent.getInternalObject().getCasaG();
         for(int i=0;i<namesG.length;i++) {
             jComboG.addItem(new String(namesG[i]));
@@ -498,9 +472,7 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
         
     }
     
-    
-    private int getNewComboBoxIndex(int oldindex) //OK
-    {
+    private int getNewComboBoxIndex(int oldindex) {
         int newindex= 0;
         for(int i = 0; i < myParent.getInternalObject().getIndexConnOfId().length; i++) {
             if(myParent.getInternalObject().getIndexConnOfId()[i]==oldindex) {

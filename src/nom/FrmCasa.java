@@ -1,10 +1,5 @@
-package nom;
 
-import imakante.com.CustomTable;
-import imakante.com.CustomTableModel;
-import imakante.com.vcomponents.iFrame;
-import java.awt.print.PrinterException;
-import javax.swing.JTable;
+package nom;
 
 public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
@@ -15,9 +10,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
         constructObject(); // inicializira class otgovarq6t za vryzkata s DB
         initTable();
         initComponents();
-        
     }
-    
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -160,35 +153,15 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
-        try {
-            java.text.MessageFormat headerFormat = new java.text.MessageFormat("Casa");
-            java.text.MessageFormat footerFormat = new java.text.MessageFormat("Page. "+"- {0} -"+" IMAKANTE' ");
-            table.print(JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
-        } catch(PrinterException e) {
-            e.printStackTrace();
-        }
+        printTable();
     }//GEN-LAST:event_jButtonPrintActionPerformed
     
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
-        this.dispose();
+        unload();
     }//GEN-LAST:event_jButtonCloseActionPerformed
     
     private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
-        try {
-            try {
-                rs = internalObject.searchRecords(Integer.parseInt(jTextCod.getText()),jTextName.getText());
-            } catch (NumberFormatException ex) {
-                ex.printStackTrace();
-                jTextCod.requestFocus();
-            }
-            jScrollPane1.remove(table);
-            model = new imakante.com.CustomTableModel(getConn(), rs, null);
-            table = new imakante.com.CustomTable(model);
-            jScrollPane1.getViewport().add(table);
-            jScrollPane1.repaint();
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+        searchRecords();
     }//GEN-LAST:event_jButtonSearchActionPerformed
     
     private void jButtonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshActionPerformed
@@ -204,9 +177,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     }//GEN-LAST:event_jButtonEditActionPerformed
     
     private void jButtonNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewActionPerformed
-        
         newRecord();
-        
     }//GEN-LAST:event_jButtonNewActionPerformed
     
     
@@ -253,54 +224,40 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     
     //---------------START Methods
     
-    private void prepareConn() //TEST
-    {
+    private void prepareConn() {
         try{
             conn =  myframe.getConn();
             if(conn==null){System.out.println("conn problem");
             }
-        }catch(Exception e){e.printStackTrace();}
+        } catch(Exception e) { e.printStackTrace(); }
     }
     
     
-    private void constructObject() //OK
-    {
+    private void constructObject() {
         try {
-            
             internalObject = new nom.casaDB(conn);
-        } catch(Exception e)
-        
-        {
-            e.printStackTrace();
-        }
-        
+        } catch(Exception e) { e.printStackTrace(); }
     }
-    private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
-    {
+    
+    private void initTable() {  //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
         try {
-            
             rs = internalObject.getTable();
             model = new imakante.com.CustomTableModel(getConn(), rs, null);
             table = new imakante.com.CustomTable(model);
             // da se napravqt skriti kolona "id" i kolona "nom"
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+        } catch(Exception e) { e.printStackTrace(); }
         table.requestFocus();
         try {
             table.setEditingRow(0);
-        } catch(Exception ex) {
-            
-        }
+        } catch(Exception ex) {  }
     }
     
     public void windowOpened(java.awt.event.WindowEvent e) {
     }
     public void windowClosing(java.awt.event.WindowEvent e) {
-        
+        unload();
     }
     public void windowClosed(java.awt.event.WindowEvent e) {
-        
     }
     public void windowIconified(java.awt.event.WindowEvent e) {
     }
@@ -311,66 +268,54 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     public void windowDeactivated(java.awt.event.WindowEvent e) {
     }
     
-    public nom.casaDB getInternalObject() //OK
-    {
+    public nom.casaDB getInternalObject() {
         return internalObject;
     }
     
-    public void setInternalObject(nom.casaDB val)//OK
-    {
+    public void setInternalObject(nom.casaDB val) {
         this.internalObject = val;
     }
     
-    public CustomTableModel getModel()//OK
-    {
+    public imakante.com.CustomTableModel getModel() {
         return model;
     }
     
-    public void setModel(CustomTableModel val)//OK
-    {
+    public void setModel(imakante.com.CustomTableModel val) {
         this.model = val;
     }
     
-    public CustomTable getTable()//OK
-    {
+    public imakante.com.CustomTable getTable() {
         return table;
     }
     
-    public void setTable(CustomTable val) //OK
-    {
+    public void setTable(imakante.com.CustomTable val) {
         this.table = val;
     }
     
-    public iFrame getMyframe()//OK
-    {
+    public imakante.com.vcomponents.iFrame getMyframe() {
         return myframe;
     }
     
-    public void setMyframe(iFrame val)//OK
-    {
+    public void setMyframe(imakante.com.vcomponents.iFrame val) {
         this.myframe = val;
     }
-    public  boolean isAtBegining()//OK
-    {
+    public  boolean isAtBegining() {
         return atBegining;
     }
     
-    public  void setAtBegining(boolean aAtBegining)//OK
-    {
+    public  void setAtBegining(boolean aAtBegining) {
         atBegining = aAtBegining;
     }
     
-    public  boolean isAtEnd()//OK
-    {
+    public  boolean isAtEnd() {
         return atEnd;
     }
     
-    public  void setAtEnd(boolean aAtEnd) //OK
-    {
+    public  void setAtEnd(boolean aAtEnd) {
         atEnd = aAtEnd;
     }
-    private int  getMaxRow() //OK
-    {
+    
+    private int  getMaxRow() {
         int i = 0;
         i  = table.getRowCount() - 1;
         
@@ -380,65 +325,58 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
         return row;
     }
     
-    public void setId(int ID) //OK
-    {
+    public void setId(int ID) {
         this.id = ID;
     }
-    public int getId() //OK
-    {
+    
+    public int getId() {
         return id;
     }
-    public void setIDG(int Gr) //OK
-    {
+    
+    public void setIDG(int Gr) {
         this.code_groupe = Gr;
     }
-    public int getIDG() //OK
-    {
+    
+    public int getIDG() {
         return code_groupe;
     }
-    public void setCod(int Cod){
+    
+    public void setCod(int Cod) {
         this.cod = Cod;
-        
     }
     
-    public int getCod(){
+    public int getCod() {
         return cod;
-        
     }
-    public void setNames(String Name) //OK
-    {
+    public void setNames(String Name) {
         this.name = Name;
     }
-    public String getNames() //OK
-    {
+    
+    public String getNames() {
         return name;
     }
-    public void setComment(String Comment) //OK
-    {
+    
+    public void setComment(String Comment) {
         this.comment = Comment;
     }
-    public String getComment() //OK
-    {
+    
+    public String getComment() {
         return comment;
     }
     
-    public  void setRow(int val) //OK
-    {
+    public  void setRow(int val) {
         row = val;
     }
-    public  void mTableEnd() //OK
-    {
+    
+    public  void mTableEnd() {
         setRow(getMaxRow());
         try{
-            
             setId((Integer) table.getValueAt(getRow(), 0));
             setIDG((Integer) table.getValueAt(getRow(), 1));
             setCod((Integer) table.getValueAt(getRow(), 3));
             setNames((String) table.getValueAt(getRow(), 4));
             setComment((String) table.getValueAt(getRow(), 5));
-            
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
-            
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
             System.out.println("problem");
@@ -447,8 +385,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
         setAtEnd(true);
     }
     
-    public void mOneRowPlus() //OK
-    {
+    public void mOneRowPlus() {
         if(getRow() <= getMaxRow()) {
             if(getRow() < getMaxRow()) {
                 setRow(getRow()+1);
@@ -460,8 +397,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
                 setCod((Integer) table.getValueAt(getRow(), 3));
                 setNames((String) table.getValueAt(getRow(), 4));
                 setComment((String) table.getValueAt(getRow(), 5));
-                
-                table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
+                table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
             } catch(ArrayIndexOutOfBoundsException aioobe) {
                 setRow(getRow() - 1);
                 System.out.println("problem");
@@ -471,11 +407,12 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
             }
         }
     }
-    public  void mOneRowMinus() //OK
-    {
-        if(getRow() >= 0){
-            if(getRow() > 0){
-                setRow(getRow() - 1);}
+    
+    public  void mOneRowMinus() {
+        if(getRow() >= 0) {
+            if(getRow() > 0) {
+                setRow(getRow() - 1);
+            }
             setAtEnd(false);
             try {
                 setId((Integer) table.getValueAt(getRow(), 0));
@@ -483,18 +420,18 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
                 setCod((Integer) table.getValueAt(getRow(), 3));
                 setNames((String) table.getValueAt(getRow(), 4));
                 setComment((String) table.getValueAt(getRow(), 5));
-                
                 table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
             } catch(ArrayIndexOutOfBoundsException aioobe) {
                 setRow(getRow() + 1);
+                System.out.println("problem");
             }
-            System.out.println("problem");}
+        }
         if(getRow() == 0){
             setAtBegining(true);
         }
     }
-    public void mTableBegining() //OK
-    {
+    
+    public void mTableBegining() {
         setRow(0);
         try {
             setId((Integer) table.getValueAt(getRow(), 0));
@@ -502,7 +439,6 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
             setCod((Integer) table.getValueAt(getRow(), 3));
             setNames((String) table.getValueAt(getRow(), 4));
             setComment((String) table.getValueAt(getRow(), 5));
-            
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
@@ -511,33 +447,52 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
         setAtBegining(true);
         setAtEnd(false);
     }
-    protected  void refreshTable() //OK
-    {
+    
+    private void printTable() {
+        try {
+            java.text.MessageFormat headerFormat = new java.text.MessageFormat("Casa");
+            java.text.MessageFormat footerFormat = new java.text.MessageFormat("Page. " + "- {0} -" + " IMAKANTE' ");
+            table.print(javax.swing.JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
+        } catch(java.awt.print.PrinterException e) { e.printStackTrace(); }
+    }
+    
+    private void searchRecords() {
+        try {
+            try {
+                rs = internalObject.searchRecords(Integer.parseInt(jTextCod.getText()),jTextName.getText());
+            } catch (NumberFormatException ex) {
+                ex.printStackTrace();
+                jTextCod.requestFocus();
+            }
+            jScrollPane1.remove(table);
+            model = new imakante.com.CustomTableModel(getConn(), rs, null);
+            table = new imakante.com.CustomTable(model);
+            jScrollPane1.getViewport().add(table);
+            jScrollPane1.repaint();
+        } catch(Exception e) { e.printStackTrace(); }
+    }
+    
+    protected  void refreshTable() {
         jScrollPane1.remove(table);
         rs = internalObject.getTable();
         model = new imakante.com.CustomTableModel(getConn(), rs, null);
         table = new imakante.com.CustomTable(model);
         jScrollPane1.getViewport().add(table);
         jScrollPane1.repaint();
-        
     }
     
-    private void newRecord(){
+    private void newRecord() {
         setId(internalObject.getMaxId());
         setIDG(internalObject.getMaxGrID());
         setCod(internalObject.getMaxCod()+1);
-        internalObject.insertRow(getCod(),getIDG());
+        internalObject.insertRow(getCod(), getIDG());
         nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
         ae_Casa.setVisible(true);
         refreshTable();
-        
-        
-        
     }
     
-    private void editRecord(){
+    private void editRecord() {
         if (table.getSelectedRow() != -1) {
-            
             setRow(table.getSelectedRow());
             if(getRow()==0){          //manage button state of ae form
                 setAtBegining(true);
@@ -552,28 +507,17 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
             setComment((String) table.getValueAt(getRow(), 5));
             nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
             ae_Casa.setVisible(true);
-        }else{
-            
-        }
-        
+        } else {  }
     }
     
     private void delRecord(){
-        
         if(table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());
             setId((Integer)table.getValueAt(getRow(),0));
             internalObject.deleteRow(getId());
             refreshTable();
         }
-        
     }
-    
-
-    
-    
-    
-    
     
     public java.sql.Connection getConn() {
         return conn;
@@ -583,5 +527,16 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
         this.conn = conn;
     }
     
+    private void unload() {
+        closeResource();
+        this.dispose();
+    }
     
-}// end class
+    protected void closeResource() {
+        try{
+            rs.close();
+        } catch(java.sql.SQLException sqle) {  }
+        rs = null;
+        internalObject.close();
+    }
+}
