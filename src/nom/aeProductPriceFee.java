@@ -144,12 +144,14 @@ public class aeProductPriceFee extends imakante.com.vcomponents.iDialog
          other = Double.parseDouble(jTextFieldOther.getText());
          if(isNew)
            {
-              myParent.setId_PF(myParent.getCountriesT().setProductFee(dds,akcizi,other));
+             //myParent.setId_PF(myParent.getCountriesT().setProductFee(dds,akcizi,other));
+             myParent.setProductFee(dds,akcizi,other);
              jButtonClose.doClick();
            }
        else
            {
-              myParent.getCountriesT().updateProductFee(id_fee,dds,akcizi,other);
+             // myParent.getCountriesT().updateProductFee(id_fee,dds,akcizi,other);
+             myParent.setProductFee(dds,akcizi,other);
               jButtonClose.doClick();
            }
       }

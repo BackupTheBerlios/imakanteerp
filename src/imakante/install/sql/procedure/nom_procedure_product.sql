@@ -3,10 +3,10 @@
 DROP PROCEDURE IF EXISTS `mida`.`nom_procedure_product` $$
 CREATE PROCEDURE `nom_procedure_product`(IN in_comprator TINYINT,    IN in_id_pm INT(11),              IN in_id_ppp INT(11),        IN in_id_pp INT(11),
                                                  IN in_id_pf INT(11),        IN in_id_n_group INT(11),         IN in_id_pd INT(11),         IN in_name_pm VARCHAR(30),
-                                                 IN in_sname_pm VARCHAR(20), IN in_fname_pm VARCHAR(20),       IN in_cname_pm VARCHAR(20),  IN in_max_pop_pm INT(3),
+                                                 IN in_sname_pm VARCHAR(20), IN in_fname_pm VARCHAR(20),       IN in_cname_pm VARCHAR(20),  IN in_max_pop_pm DOUBLE,
                                                  IN in_flag_pm TINYINT,      IN in_expertsheet_pm VARCHAR(45), IN in_barcod_pm INT,         IN in_cod1_pm VARCHAR(20),
                                                  IN in_cod2_pm VARCHAR(20),  IN in_price0_pp DOUBLE,           IN in_price1_pp DOUBLE,      IN in_price2_pp DOUBLE,
-                                                 IN in_price3_pp DOUBLE)
+                                                 IN in_price3_pp DOUBLE, IN in_min_pm INT(11))
 BEGIN
      IF (in_comprator = 0) THEN
         SELECT n.id_pm, n.id_n_group, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.cod1_pm,
@@ -18,8 +18,8 @@ BEGIN
      END IF;
      IF (in_comprator = 1) THEN
         INSERT INTO n_product_main(id_n_group,id_ppp,id_pp, id_pf,name_pm, fname_pm, sname_pm,cname_pm,cod1_pm,
-          cod2_pm,  barcod_pm,  max_pop_pm,  expertsheet_pm,  flag_pm, id_pd)  VALUES(in_id_n_group,in_id_ppp,in_id_pp, in_id_pf,in_name_pm,
-          in_fname_pm, in_sname_pm, in_cname_pm, in_cod1_pm, in_cod2_pm,  in_barcod_pm, in_max_pop_pm, in_expertsheet_pm, in_flag_pm, in_id_pd);
+          cod2_pm,  barcod_pm,  max_pop_pm,  expertsheet_pm,min_pm, flag_pm, id_pd)  VALUES(in_id_n_group,in_id_ppp,in_id_pp, in_id_pf,in_name_pm,
+          in_fname_pm, in_sname_pm, in_cname_pm, in_cod1_pm, in_cod2_pm,  in_barcod_pm, in_max_pop_pm, in_expertsheet_pm, in_min_pm, in_flag_pm, in_id_pd);
      END IF;
      IF (in_comprator = 2) THEN
        UPDATE `mida`.`n_product_main` SET flag_pm = in_flag_pm
@@ -55,7 +55,7 @@ BEGIN
          WHERE n.id_pp = in_id_pp;
      END IF;
       IF (in_comprator = 9) THEN
-         INSERT INTO n_product_price(id_sl_curs,price0_pp,price1_pp,price2_pp,price3_pp) VALUES(in_id_pd,in_price0_pp,in_price1_pp,in_price2_pp,in_price3_pp);
+         INSERT INTO n_product_price(id_sl_curs,price0_pp,price1_pp,price2_pp,price3_pp) VALUES(in_id_pp,in_price0_pp,in_price1_pp,in_price2_pp,in_price3_pp);
      END IF;
 
      IF (in_comprator = 10) THEN
@@ -98,7 +98,10 @@ BEGIN
     END IF;
 
       IF (in_comprator = 17) THEN
-          SELECT n.name_n_group, n.cod_n_group, n.nom_n_group FROM n_group n ORDER BY n.name_n_group;
+          SELECT n.id_oso, n.id_mol, n.id_nm, n.code_contragent, n.name_n_contragent,
+           n.bul_n_contragent, n.dan_n_contragent, n.addres_n_contragent, n.tel_contragent, n.fax_contragent,
+           n.email_contragent, n.web_contragent, n.flag_n_contragent FROM mida.n_contragent n
+           WHERE n.flag_n_contragent = 0 AND n.id_contragent=in_id_pm;
     END IF;
 
       IF (in_comprator = 18) THEN
@@ -131,11 +134,28 @@ BEGIN
           SELECT n.id_pam, n.name_pam, n.sname_pam FROM mida.n_product_all_measure n ORDER BY name_pam;
     END IF;
 
+     IF (in_comprator = 26) THEN
+         SELECT s.id_sl_curs, s.data_time_sl_curs, s.id_n_money, s.value_sl_curs FROM mida.sl_curs s ORDER BY s.data_time_sl_curs;
+    END IF;
 
+      IF (in_comprator = 27) THEN
+        INSERT INTO mida.n_product_description(v1_pd,v2_pd,v3_pd,m1_pd,m2_pd,m3_pd)
+        VALUES(in_id_pm,in_id_pp,in_id_ppp,in_id_pf,in_id_pd,in_id_n_group);
+    END IF;
 
+     IF (in_comprator = 28) THEN
+         SELECT MAX(n.id_pd) AS id_pd FROM mida.n_product_description n;
+    END IF;
 
-
-
+     IF (in_comprator = 29) THEN
+         UPDATE mida.n_product_description n SET v1_pd = in_id_pm,
+         v2_pd = in_id_pp,
+         v3_pd = in_id_ppp,
+         m1_pd = in_id_pf,
+         m2_pd = in_barcod_pm,
+         m3_pd = in_id_n_group
+         WHERE id_pd = in_id_pd;
+    END IF;
 
 
 

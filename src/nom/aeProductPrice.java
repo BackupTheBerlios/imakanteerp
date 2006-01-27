@@ -236,7 +236,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
         jPanel2.add(jLabel7, gridBagConstraints);
 
         jTextFieldProcent1.setEnabled(false);
-        jTextFieldProcent1.setPreferredSize(new java.awt.Dimension(30, 20));
+        jTextFieldProcent1.setPreferredSize(new java.awt.Dimension(50, 20));
         jTextFieldProcent1.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextFieldProcent1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -256,7 +256,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
         jPanel2.add(jTextFieldProcent1, gridBagConstraints);
 
         jTextFieldProcent2.setEnabled(false);
-        jTextFieldProcent2.setPreferredSize(new java.awt.Dimension(30, 20));
+        jTextFieldProcent2.setPreferredSize(new java.awt.Dimension(50, 20));
         jTextFieldProcent1.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextFieldProcent2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -276,7 +276,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
         jPanel2.add(jTextFieldProcent2, gridBagConstraints);
 
         jTextFieldProcent3.setEnabled(false);
-        jTextFieldProcent3.setPreferredSize(new java.awt.Dimension(30, 20));
+        jTextFieldProcent3.setPreferredSize(new java.awt.Dimension(50, 20));
         jTextFieldProcent1.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextFieldProcent3.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -295,7 +295,8 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 20, 5);
         jPanel2.add(jTextFieldProcent3, gridBagConstraints);
 
-        jComboBoxValuta.setPreferredSize(new java.awt.Dimension(50, 20));
+        jComboBoxValuta.setEnabled(false);
+        jComboBoxValuta.setPreferredSize(new java.awt.Dimension(70, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
@@ -384,9 +385,11 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
 
     private void jTextFieldProcent3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldProcent3FocusLost
 // TODO add your handling code here:
+       
        p_p3 = Double.parseDouble(jTextFieldProcent3.getText());
-       p3 = (p_p3/100)*p0;
+       p3 = (p_p3/100)*p0 + p0;
        jTextFieldPrice3.setText(String.valueOf(p3));  
+       
     }//GEN-LAST:event_jTextFieldProcent3FocusLost
 
     private void jTextFieldProcent3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldProcent3KeyPressed
@@ -395,8 +398,9 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
         {
             try
             {
+               p0 = Double.parseDouble(jTextDostPrice.getText());
                p_p3 = Double.parseDouble(jTextFieldProcent3.getText());
-               p3 = (p_p3/100)*p0;
+               p3 = (p_p3/100)*p0 + p0;
                jTextFieldPrice3.setText(String.valueOf(p3));
                 
             }
@@ -410,9 +414,14 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
 
     private void jTextFieldPrice3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice3FocusLost
 // TODO add your handling code here:
+     
+                
+        p0 = Double.parseDouble(jTextDostPrice.getText());
        p3 = Double.parseDouble(jTextFieldPrice3.getText());
-       p_p3 = (100 * p3) / p0; 
+       if(p3>p0) p_p3 = (100 * (p3-p0)) / p0; 
+       else showMessage();
        jTextFieldProcent3.setText(String.valueOf(p_p3)); 
+        
     }//GEN-LAST:event_jTextFieldPrice3FocusLost
 
     private void jTextFieldPrice3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPrice3KeyPressed
@@ -422,7 +431,8 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
             try
             {
                 p3 = Double.parseDouble(jTextFieldPrice3.getText());
-                p_p3 = (100 * p3) / p0; 
+                if (p3 > p0) p_p3 = (100 * (p3-p0)) / p0; 
+                else showMessage();
                 jTextFieldProcent3.setText(String.valueOf(p_p3));
                 
             }
@@ -440,8 +450,9 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
         {
             try
             {
+               p0 = Double.parseDouble(jTextDostPrice.getText());
                p_p2 = Double.parseDouble(jTextFieldProcent2.getText());
-               p2 = (p_p2/100)*p0;
+               p2 = (p_p2/100)*p0 + p0;
                jTextFieldPrice2.setText(String.valueOf(p2));
                 
             }
@@ -455,15 +466,27 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
 
     private void jTextFieldProcent2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldProcent2FocusLost
 // TODO add your handling code here:
+        try
+        {
+        p0 = Double.parseDouble(jTextDostPrice.getText());
         p_p2 = Double.parseDouble(jTextFieldProcent2.getText());
-        p2 = (p_p2/100)*p0;
+        p2 = (p_p2/100)*p0 + p0;
         jTextFieldPrice2.setText(String.valueOf(p2));
+        }
+        catch(Exception e)
+        {
+            showMessage();
+        }
     }//GEN-LAST:event_jTextFieldProcent2FocusLost
 
+    
     private void jTextFieldPrice2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice2FocusLost
 // TODO add your handling code here:
+        
+        p0 = Double.parseDouble(jTextDostPrice.getText());
         p2 = Double.parseDouble(jTextFieldPrice2.getText());
-        p_p2 = (100 * p2) / p0; 
+        if(p2 > p0)  p_p2 = (100 * (p2-p0)) / p0; 
+        else showMessage();
         jTextFieldProcent2.setText(String.valueOf(p_p2));
     }//GEN-LAST:event_jTextFieldPrice2FocusLost
 
@@ -473,8 +496,10 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
         {
             try
             {
+                p0 = Double.parseDouble(jTextDostPrice.getText());
                 p2 = Double.parseDouble(jTextFieldPrice2.getText());
-                p_p2 = (100 * p2) / p0; 
+                if(p2 > p0)p_p2 = (100 * (p2-p0)) / p0; 
+                else showMessage();
                 jTextFieldProcent2.setText(String.valueOf(p_p2));
                 
             }
@@ -486,14 +511,16 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
         }
     }//GEN-LAST:event_jTextFieldPrice2KeyPressed
 
+    
     private void jTextFieldProcent1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldProcent1KeyPressed
 // TODO add your handling code here:
         if(evt.getKeyCode()==evt.VK_ENTER)
         {
             try
             {
+               p0 = Double.parseDouble(jTextDostPrice.getText());
                p_p1 = Double.parseDouble(jTextFieldProcent1.getText());
-               p1 = (p_p1/100)*p0;
+               p1 = (p_p1/100)*p0 + p0;
                jTextFieldPrice1.setText(String.valueOf(p1));
                 
             }
@@ -507,15 +534,19 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
 
     private void jTextFieldProcent1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldProcent1FocusLost
 // TODO add your handling code here:
+        p0 = Double.parseDouble(jTextDostPrice.getText());
         p_p1 = Double.parseDouble(jTextFieldProcent1.getText());
-        p1 = (p_p1/100)*p0;
+        p1 =(p_p1/100);
+        p1 = p1*p0 + p0;
         jTextFieldPrice1.setText(String.valueOf(p1));
     }//GEN-LAST:event_jTextFieldProcent1FocusLost
 
     private void jTextFieldPrice1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice1FocusLost
 // TODO add your handling code here:
+        p0 = Double.parseDouble(jTextDostPrice.getText());
         p1 = Double.parseDouble(jTextFieldPrice1.getText());
-        p_p1 = (100 * p1) / p0; 
+        if(p1 > p0) p_p1 = (100 * (p1-p0)) / p0; 
+        else showMessage();
         jTextFieldProcent1.setText(String.valueOf(p_p1));
         
     }//GEN-LAST:event_jTextFieldPrice1FocusLost
@@ -527,8 +558,11 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
         {
             try
             {
+                p0 = Double.parseDouble(jTextDostPrice.getText());
                 p1 = Double.parseDouble(jTextFieldPrice1.getText());
-                p_p1 = (100 * p1) / p0; 
+                if (p1 > p0 ) p_p1 = (100 * (p1-p0)) / p0; 
+                else showMessage();
+               
                 jTextFieldProcent1.setText(String.valueOf(p_p1));
                 
             }
@@ -546,10 +580,10 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
         {
             jTextFieldPrice1.setEnabled(true);
             jTextFieldPrice2.setEnabled(true);
-            jTextFieldPrice2.setEnabled(true);
-            jTextFieldProcent3.setEnabled(true); 
             jTextFieldPrice3.setEnabled(true);
-            jTextFieldProcent3.setEnabled(true);  
+            jTextFieldProcent3.setEnabled(true); 
+             jTextFieldProcent2.setEnabled(true);
+              jTextFieldProcent1.setEnabled(true);  
             p0 = Double.parseDouble(jTextDostPrice.getText());
         }
     }//GEN-LAST:event_jTextDostPriceKeyPressed
@@ -580,12 +614,16 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
         if(isNew)
         {
             
-            myParent.setId_PP(myParent.getCountriesT().setNewPrice(p0,p1,p2,p3,id_curs));
+           // myParent.setId_PP(myParent.getCountriesT().setNewPrice(p0,p1,p2,p3,id_curs));
+            myParent.setNewPrice(p0,p1,p2,p3,id_curs);
+           
             jButtonClose.doClick();
         }
         else
         {
-            myParent.getCountriesT().updateProductPrice(id_price,p0,p1,p2,p3,id_curs);
+           // myParent.getCountriesT().updateProductPrice(id_price,p0,p1,p2,p3,id_curs);
+            myParent.setNewPrice(p0,p1,p2,p3,id_curs);
+            
             jButtonClose.doClick();
         }
         
@@ -672,12 +710,13 @@ private void getDataByID()
     jTextFieldProcent3.setEnabled(true); 
     
      p0 = Double.parseDouble(jTextDostPrice.getText());
+     
      p1 = Double.parseDouble(jTextFieldPrice1.getText());
      p_p1 = (100 * p1) / p0; 
      jTextFieldProcent1.setText(String.valueOf(p_p1)); 
      
      p2 = Double.parseDouble(jTextFieldPrice2.getText());
-     p_p2 = (100 * p2) / p0; 
+     p_p2 = (100 * p2) / p0 ; 
      
      jTextFieldProcent2.setText(String.valueOf(p_p2));
      

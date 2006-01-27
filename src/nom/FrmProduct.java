@@ -445,13 +445,19 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     private int tmpInt =0;
     private  boolean atBegining=false;
     private  boolean atEnd = false;
+    public boolean isTypedPrice = false, isTypedFee = false;
+    public boolean isTypePromoPrice = false;
     private int row;
     private  aeProduct dialog;
     private int id_pm,id_n_group,id_ppp, id_pp,id_pf,id_pd,flag_pm,id_contragent;              //       \
     private int barcod_pm, min_pm;                                                   //         >
     private double max_pop_pm;
     private String name_pm, sname_pm, fname_pm, cname_pm, cod1_pm, cod2_pm;            //         /
-    private String expertsheet_pm ;                                                   //        /
+    private String expertsheet_pm ;
+    private double price0,price1,price2,price3,dds,akcizi,other;
+    private int id_curs, id_n_contragent;//        /
+    private double promoprice;
+    private String start,  stop;
     private imakante.com.vcomponents.iFrame myframe;
     private java.sql.Connection conn;
     private  java.sql.ResultSet rs; 
@@ -532,12 +538,12 @@ private void initTable() //ok  -- !!ima za dovyr6wane - skrivane na koloni!!
         {
         
         }
-        HideColumns(getColumnIndex("id_pm")); 
+      /*  HideColumns(getColumnIndex("id_pm")); 
         HideColumns(getColumnIndex("id_pp")); 
         HideColumns(getColumnIndex("id_ppp"));
         HideColumns(getColumnIndex("id_pd"));
         HideColumns(getColumnIndex("id_pf"));
-        HideColumns(getColumnIndex("id_n_group"));
+        HideColumns(getColumnIndex("id_n_group"));*/
         
          
   }
@@ -902,6 +908,70 @@ table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
  public int getTMPINT()
  {
      return tmpInt;
+ }
+ public void setNewPrice(double price0, double price1, double price2, double price3,int id_curs) 
+   {
+     this.price0 = price0;
+     this.price1 = price1;
+     this.price2 = price2;
+     this.price3 = price3;
+     this.id_curs = id_curs;
+     this.isTypedPrice = true;
+      
+   }
+ public void setProductFee(double dds, double akcizi, double other) 
+   {
+     this.dds = dds;
+     this.akcizi =akcizi;
+     this.other = other;
+     this.isTypedFee = true;
+    
+ }
+ public void setProductPromotionPrice(double promoprice, String start, String stop) 
+   {
+     this.promoprice = promoprice;
+     this.start = start;
+     this.stop = stop;
+     this.isTypePromoPrice = true;
+ }
+ public int saveProductPromotionPriceToDB()
+ {
+     
+     return getCountriesT().setProductPromotionPrice(promoprice,start,stop);
+ }
+ public int saveProductFeeToDB()
+ {
+     return getCountriesT().setProductFee(dds,akcizi,other);
+ }
+ public int saveNewPriceToDb()
+ {
+     return getCountriesT().setNewPrice(price0,price1,price2,price3,id_curs);
+ }
+  public void updateProductPromotionPriceToDB()
+ {
+     
+     getCountriesT().updateProductPromotionPrice(id_ppp,promoprice,start,stop);
+ }
+ public void updateProductFeeToDB()
+ {
+     getCountriesT().updateProductFee(id_pf,dds,akcizi,other);
+ }
+ public void updateNewPriceToDb()
+ {
+     getCountriesT().updateProductPrice(id_pp,price0,price1,price2,price3,id_curs);
+ }
+ public String getViewPrice()
+ {
+     return String.valueOf(price0);
+ }
+ 
+ public String getViewFee()
+ {
+     return String.valueOf(dds);
+ }
+public String getViewPromoPrice()
+ {
+     return String.valueOf(promoprice);
  }
 }// end class
 

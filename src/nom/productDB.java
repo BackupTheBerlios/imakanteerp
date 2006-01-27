@@ -40,6 +40,10 @@ package nom;
  *
  *comprator = 25; getProductDescriptionColumn()
  *comprator = 26; getShowConteinCurs()
+ *
+ *comprator = 27; setProductDescriptionColumn()
+ *comprator = 28; getMaxID product description
+ *comprator = 29; updateProductDescription(Column)
  **/
 
 import imakante.com.*;
@@ -132,7 +136,7 @@ public class productDB extends dbObject
         
         this.id_pm = in_id_pm ;
         this.id_ppp = in_id_ppp;
-        this.id_pp  = in_id_ppp;
+        this.id_pp  = in_id_pp;
         this.id_pf  = in_id_pf;
         this.id_n_group = in_id_n_group;
         this.id_pd = in_id_pd;
@@ -1085,5 +1089,103 @@ public java.sql.ResultSet getShowConteinCurs() //test //comprator = 26;
         System.out.println("ot getShowConteinCurs()");
         return newrs;
     
+}
+public int setProductDescriptionColumn(int v1,int v2,int v3 ,int m1 ,int m2 , int m3) //test //comprator = 27;comprator = 28;   v- values; m -measure
+{
+    int newID=0;
+    int oldid_pm,oldid_pp,oldid_ppp,oldid_pf,oldid_n_group,oldid_pd;
+    
+    comprator = 27;
+    oldid_pm = id_pm;
+    oldid_pp = id_pp;
+    oldid_ppp = id_ppp;
+    oldid_pf = id_pf;
+    oldid_n_group= id_n_group;
+    oldid_pd = id_pd;
+    id_pm = v1;
+    id_pp = v2;
+    id_ppp = v3;
+    id_pf = m1;
+    id_pd = m2;
+    id_n_group = m3;
+    
+    try
+        {
+            registerParameters();
+            cstm.execute();
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+       
+      
+       comprator = 28;
+       try
+        {
+            registerParameters();
+            rs = cstm.executeQuery();
+            
+            while(rs.next())
+            {
+               newID = rs.getInt("id_pd");
+            }
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+      
+    id_pm = oldid_pm;
+    id_pp = oldid_pp;
+    id_ppp = oldid_ppp;
+    id_pf = oldid_pf;
+    id_pd = oldid_pd;
+    id_n_group = oldid_n_group;
+    return newID;
+   
+}
+public void updateProductDescriprionColumn(int in_id_pd,int v1,int v2,int v3 ,int m1 ,int m2 , int m3) //test //comprator = 29;   v- values; m -measure
+{
+    
+    int oldid_pm,oldid_pp,oldid_ppp,oldid_pf,oldid_n_group,oldid_pd,oldbarcod_pm;
+    
+    comprator = 29;
+    oldid_pm = id_pm;
+    oldid_pp = id_pp;
+    oldid_ppp = id_ppp;
+    oldid_pf = id_pf;
+    oldid_n_group= id_n_group;
+    oldid_pd = id_pd;
+    oldbarcod_pm = barcod_pm;
+    id_pd = in_id_pd;
+    
+    id_pm = v1;
+    id_pp = v2;
+    id_ppp = v3;
+    id_pf = m1;
+    barcod_pm = m2;
+    id_n_group = m3;
+    
+    try
+        {
+            registerParameters();
+            cstm.execute();
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+       
+      
+    id_pm = oldid_pm;
+    id_pp = oldid_pp;
+    id_ppp = oldid_ppp;
+    id_pf = oldid_pf;
+    id_pd = oldid_pd;
+    id_n_group = oldid_n_group;
+    barcod_pm = oldbarcod_pm;
+    
+   
 }
 }// end class

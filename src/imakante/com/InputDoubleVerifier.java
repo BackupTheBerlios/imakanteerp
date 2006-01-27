@@ -5,6 +5,18 @@ import javax.swing.*;
 
 public class InputDoubleVerifier extends InputVerifier
 {
+    private int maxIntBefore = -1;
+    private int maxIntAffter = -1;
+    public InputDoubleVerifier(int maxBefor,int maxAffter)
+    {
+        super();
+        this.maxIntAffter = maxAffter;
+        this.maxIntBefore = maxBefor;
+    }
+     public InputDoubleVerifier()
+     {
+       super();  
+     }
     public boolean verify(JComponent input) 
     {
       byte UpRange = 57;
@@ -13,13 +25,14 @@ public class InputDoubleVerifier extends InputVerifier
       byte dot = 46;
       int countCommaDot[] = null; // masiv za rzpolovenieto na zapetaqta
       int count = 0; // za broene kolko pyti se sre6ta zapetaq ili to4ka
+      int intNumber=0;
       boolean checkSimbol=false;
       JTextField tf = (JTextField) input;
       int lenth = tf.getText().length();
       byte ch[] = new byte[lenth];
       ch = tf.getText().getBytes();
       countCommaDot = new int[lenth];
-      
+      if(lenth<=0) return true;
        for(int i=0;i < lenth; i++)
          {
            if(count > 1) 
@@ -36,17 +49,19 @@ public class InputDoubleVerifier extends InputVerifier
          }
        if(count <= 1)  // ako potrebitelq e vkaral pove4e ot edin pat to4ka ili zapetaq
            {
+             
               for(int i =0; i < lenth; i++ )
               {
                   if(countCommaDot[i]==1) 
                   {
-                      count = i;
+                      intNumber = i;
                       break;
                   }
               }
-             if(count !=0)       
+             if(intNumber > 0)       // predi zapetaq;
              {   
-              for(int i=0;i < count-1; i++)
+                 if((intNumber-1)<=maxIntBefore | maxIntBefore ==-1)
+              for(int i=0;i < intNumber-1; i++)
                  {
                    if(( ch[i]<= UpRange)&&(ch[i] >=DownRange))
                      {
@@ -55,10 +70,23 @@ public class InputDoubleVerifier extends InputVerifier
                    else checkSimbol= false;
                  }
              }
-             
-             if(count != lenth)       
-             {    
-               for(int i=count+1;i < lenth; i++)
+             if(intNumber == 0)       // ako nqma zapetaq
+             { 
+                  if((lenth)<=maxIntBefore | maxIntBefore ==-1)
+              for(int i=0;i < lenth; i++)
+                 {
+                   if(( ch[i]<= UpRange)&&(ch[i] >=DownRange))
+                     {
+                      checkSimbol = true;
+                     }
+                   else checkSimbol= false;
+                 }
+             }
+             else
+             if(intNumber < lenth)       // sled zapetaq
+             {  
+                  if((intNumber+1)<=maxIntAffter | maxIntAffter ==-1)
+               for(int i=intNumber+1;i < lenth; i++)
                  {
                    if(( ch[i]<= UpRange)&&(ch[i] >=DownRange))
                      {
@@ -67,6 +95,7 @@ public class InputDoubleVerifier extends InputVerifier
                    else checkSimbol= false;
                 }
              }
+             
        }
       
        return checkSimbol;

@@ -196,12 +196,14 @@ public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog
             dateStop = jTextFieldDateStop.getText();
             if(isNew)
               {
-                  myParent.setId_PPP(myParent.getCountriesT().setProductPromotionPrice(promo,dateStart,dateStop));
+                 //myParent.setId_PPP(myParent.getCountriesT().setProductPromotionPrice(promo,dateStart,dateStop));
+                  myParent.setProductPromotionPrice(promo,dateStart,dateStop);
                   jButtonClose.doClick();
               }
             else
               {
-                  myParent.getCountriesT().updateProductPromotionPrice(myParent.getId_PPP(),promo,dateStart,dateStop);
+                 // myParent.getCountriesT().updateProductPromotionPrice(myParent.getId_PPP(),promo,dateStart,dateStop);
+                   myParent.setProductPromotionPrice(promo,dateStart,dateStop);
                    jButtonClose.doClick();
               }
         }
