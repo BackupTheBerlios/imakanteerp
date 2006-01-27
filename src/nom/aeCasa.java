@@ -286,10 +286,10 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER){
             if(cFields()){
                 jTextField1.transferFocus();
-                }} else{
+                } else{
                 jTextField1.requestFocus();
             
-                }
+                }}
     }//GEN-LAST:event_jTextField1KeyPressed
     
     private void jButtonUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUndoActionPerformed
