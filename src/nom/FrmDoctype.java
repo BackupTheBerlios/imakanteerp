@@ -1,8 +1,6 @@
 
 package nom;
 
-import java.awt.event.WindowEvent;
-
 public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
     public FrmDoctype(String title, imakante.com.vcomponents.iFrame frame) {
@@ -207,27 +205,59 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
     
     private void addNewRecord() {
         setId(doctypeObject.getMaxId());
-        
+        setCode(doctypeObject.getMaxCode() + 1);
+        doctypeObject.insertRow(getCode());
+        nom.aeDoctype typeDoc = new nom.aeDoctype(this, true);
+        typeDoc.setVisible(true);
+        refreshTable();
     }
     
     private void editRecord() {
-        
+        if (table.getSelectedRow() != -1) {
+            setRow(table.getSelectedRow());
+            if(getRow()==0){          //manage button state of ae form
+                setFirst(true);
+            }
+            if(getRow()==getMaxRow()){
+                setLast(true);
+            }
+            setId((Integer) table.getValueAt(getRow(), 0));
+            setCode((Integer) table.getValueAt(getRow(), 1));
+            setName((String) table.getValueAt(getRow(), 2));
+            setPName((String) table.getValueAt(getRow(), 3));
+            nom.aeDoctype typeDoc = new nom.aeDoctype(this, true);
+            typeDoc.setVisible(true);
+        } else {  }
     }
     
     private void printTable() {
-        
+        try {
+            java.text.MessageFormat headerFormat = new java.text.MessageFormat("Types of Documents");
+            java.text.MessageFormat footerFormat = new java.text.MessageFormat("Page. " + "- {0} -" + " IMAKANTE' ");
+            table.print(javax.swing.JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
+        } catch(java.awt.print.PrinterException e) { e.printStackTrace(); }
     }
     
     private void printReport() {
         
     }
     
-    private void refreshTable() {
-        
+    protected void refreshTable() {
+        jspData.remove(table);
+        rs = doctypeObject.getTable();
+        model = new imakante.com.CustomTableModel(getConn(), rs, null);
+        table = new imakante.com.CustomTable(model);
+        jspData.getViewport().add(table);
+        jspData.repaint();
     }
     
     private void deleteRecord() {
-        
+        if(table.getSelectedRow() != -1) {
+            setRow(table.getSelectedRow());
+            setId((Integer)table.getValueAt(getRow(),0));
+            doctypeObject.deleteRow(getId());
+            refreshTable();
+        }
     }
     
     private void clearTable() {
@@ -263,7 +293,14 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
     private java.sql.ResultSet rs;
     private nom.dbDoctype doctypeObject;
     
-    // Constructor methods
+    private int row;
+    private int id = 0;
+    private int code = 0;
+    private String name = "";
+    private String printName = "";
+    private boolean first = false;
+    private boolean last = false;
+    
     private void prepConn() {
         try{
             conn =  here.getConn();
@@ -296,24 +333,189 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
         }
     }
     
-    // Window implemented methods
-    public void windowOpened(WindowEvent e) {
-    }
-    public void windowClosing(WindowEvent e) {
-        unload();
-    }
-    public void windowClosed(WindowEvent e) {
-    }
-    public void windowIconified(WindowEvent e) {
-    }
-    public void windowDeiconified(WindowEvent e) {
-    }
-    public void windowActivated(WindowEvent e) {
-    }
-    public void windowDeactivated(WindowEvent e) {
+    public void mTableBegining() {
+        setRow(0);
+        try {
+            setId((Integer) table.getValueAt(getRow(), 0));
+            setCode((Integer) table.getValueAt(getRow(), 1));
+            setName((String) table.getValueAt(getRow(), 2));
+            setPName((String) table.getValueAt(getRow(), 3));
+            table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
+        } catch(ArrayIndexOutOfBoundsException aioobe) {
+            setRow(getRow() - 1);
+        }
+        setFirst(true);
+        setLast(false);
     }
     
-    // Custom methods
+    public  void mOneRowMinus() {
+        if(getRow() >= 0) {
+            if(getRow() > 0) {
+                setRow(getRow() - 1);
+            }
+            setLast(false);
+            try {
+                setId((Integer) table.getValueAt(getRow(), 0));
+                setCode((Integer) table.getValueAt(getRow(), 1));
+                setName((String) table.getValueAt(getRow(), 2));
+                setPName((String) table.getValueAt(getRow(), 3));
+                table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
+            } catch(ArrayIndexOutOfBoundsException aioobe) {
+                setRow(getRow() + 1);
+            }
+        }
+        if(getRow() == 0){
+            setFirst(true);
+        }
+    }
+    
+    public void mOneRowPlus() {
+        if(getRow() <= getMaxRow()) {
+            if(getRow() < getMaxRow()) {
+                setRow(getRow()+1);
+            }
+            setFirst(false);
+            try {
+                setId((Integer) table.getValueAt(getRow(), 0));
+                setCode((Integer) table.getValueAt(getRow(), 1));
+                setName((String) table.getValueAt(getRow(), 2));
+                setPName((String) table.getValueAt(getRow(), 3));
+                table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
+            } catch(ArrayIndexOutOfBoundsException aioobe) {
+                setRow(getRow() - 1);
+            }
+            if(getRow() == getMaxRow()) {
+                setLast(true);
+            }
+        }
+    }
+    
+    public  void mTableEnd() {
+        setRow(getMaxRow());
+        try{
+            setId((Integer) table.getValueAt(getRow(), 0));
+            setCode((Integer) table.getValueAt(getRow(), 1));
+            setName((String) table.getValueAt(getRow(), 2));
+            setPName((String) table.getValueAt(getRow(), 3));
+            table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
+        } catch(ArrayIndexOutOfBoundsException aioobe) {
+            setRow(getRow() - 1);
+        }
+        setFirst(false);
+        setLast(true);
+    }
+    
+    public void windowOpened(java.awt.event.WindowEvent e) {
+    }
+    public void windowClosing(java.awt.event.WindowEvent e) {
+        unload();
+    }
+    public void windowClosed(java.awt.event.WindowEvent e) {
+    }
+    public void windowIconified(java.awt.event.WindowEvent e) {
+    }
+    public void windowDeiconified(java.awt.event.WindowEvent e) {
+    }
+    public void windowActivated(java.awt.event.WindowEvent e) {
+    }
+    public void windowDeactivated(java.awt.event.WindowEvent e) {
+    }
+    
+    
+    public nom.dbDoctype getDoctypeObject() {
+        return doctypeObject;
+    }
+    
+    public void setDoctypeObject(nom.dbDoctype DTO) {
+        this.doctypeObject = DTO;
+    }
+    
+    public imakante.com.CustomTableModel getModel() {
+        return model;
+    }
+    
+    public void setModel(imakante.com.CustomTableModel mod) {
+        this.model = mod;
+    }
+    
+    public imakante.com.CustomTable getTable() {
+        return table;
+    }
+    
+    public void setTable(imakante.com.CustomTable tab) {
+        this.table = tab;
+    }
+    
+    public imakante.com.vcomponents.iFrame getThisFrame() {
+        return here;
+    }
+    
+    public void setThisFrame(imakante.com.vcomponents.iFrame fra) {
+        this.here = fra;
+    }
+    
+    public boolean isFirst() {
+        return first;
+    }
+    
+    public void setFirst(boolean First) {
+        first = First;
+    }
+    
+    public boolean isLast() {
+        return last;
+    }
+    
+    public void setLast(boolean Last) {
+        last = Last;
+    }
+    
+    private int  getMaxRow() {
+        int i = 0;
+        i  = table.getRowCount() - 1;
+        return i;
+    }
+    
+    public  int getRow() {
+        return row;
+    }
+    
+    public  void setRow(int Row) {
+        row = Row;
+    }
+    
+    public int getId() {
+        return id;
+    }
+    
+    public void setId(int ID) {
+        this.id = ID;
+    }
+    
+    public int getCode() {
+        return code;
+    }
+    
+    public void setCode(int Code) {
+        this.code = Code;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String Name) {
+        this.name = Name;
+    }
+    
+    public String getPName() {
+        return printName;
+    }
+    
+    public void setPName(String PName) {
+        this.printName = PName;
+    }
+    
     private void unload() {
         closeResource();
         this.dispose();
