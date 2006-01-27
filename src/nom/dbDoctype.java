@@ -9,6 +9,7 @@ public class dbDoctype extends imakante.com.dbObject {
     private java.sql.CallableStatement cstm;
     private int comprator = 1;
     private int id = 0;
+    private int code = 0;
     private String name;
     private String printName;
     private java.sql.Connection conn;
@@ -20,7 +21,7 @@ public class dbDoctype extends imakante.com.dbObject {
     
     private void prepareCStm() {
         try {
-            setCstm(getConn().prepareCall("{call nom_procedure_doctype(?,?,?,?)}"));
+            setCstm(getConn().prepareCall("{call nom_procedure_doctype(?,?,?,?,?)}"));
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
@@ -28,7 +29,7 @@ public class dbDoctype extends imakante.com.dbObject {
         try {
             getCstm().setInt("in_id", getId());
             getCstm().setInt("comprator", getComprator());
-//            getCstm().setInt("in_code", getcode());
+            getCstm().setInt("in_code", getCode());
             getCstm().setString("in_name", getName());
             getCstm().setString("in_print_name", getPrintName());
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
@@ -50,9 +51,9 @@ public class dbDoctype extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    public void insertRow(int in_code, int in_id_groupe) {
+    public void insertRow(int in_code) {
         comprator = 1;
-//        this.code = in_code;
+        this.code = in_code;
         this.name = "";
         this.printName = "";
         try {
@@ -61,10 +62,10 @@ public class dbDoctype extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    public void updateRow(int in_id, /*int in_code, */String in_name, String in_print_name) {
+    public void updateRow(int in_id, int in_code, String in_name, String in_print_name) {
         comprator = 2;
         this.id = in_id;
-//        this.code = in_code;
+        this.code = in_code;
         this.name = in_name;
         this.printName = in_print_name;
         try {
@@ -89,7 +90,7 @@ public class dbDoctype extends imakante.com.dbObject {
             registerParameters();
             rs = cstm.executeQuery();
             while(rs.next()) {
-//                code = rs.getInt("code");
+                code = rs.getInt("code");
                 name = rs.getString("name");
                 printName = rs.getString("printName");
             }
@@ -99,7 +100,7 @@ public class dbDoctype extends imakante.com.dbObject {
     
     public java.sql.ResultSet searchRecords(int in_code, String in_name) {
         comprator = 5;
-//        this.code = in_code;
+        this.code = in_code;
         this.name = in_name;
         try {
             registerParameters();
@@ -167,6 +168,27 @@ public class dbDoctype extends imakante.com.dbObject {
     
     public void setId(int ID) {
         this.id = ID;
+    }
+    
+    public int getCode() {
+        return code;
+    }
+    
+    public int getMaxCod() {
+        comprator = 8;
+        int return_int=-1;
+        try {
+            registerParameters();
+            rs = cstm.executeQuery();
+            while(rs.next()) {
+                return_int = rs.getInt(1);
+            }
+        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
+        return return_int;
+    }
+    
+    public void setCode(int Code) {
+        this.code = Code;
     }
     
     public String getName() {
