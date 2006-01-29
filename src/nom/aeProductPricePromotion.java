@@ -114,6 +114,7 @@ public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog
         jPanel2.add(jTextFieldPromoPrice, gridBagConstraints);
 
         jTextFieldDataStart.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextFieldDataStart.setInputVerifier(new imakante.com.InputDateVerifier());
         jTextFieldDataStart.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextFieldDataStartFocusLost(evt);
@@ -133,6 +134,7 @@ public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog
         jPanel2.add(jTextFieldDataStart, gridBagConstraints);
 
         jTextFieldDateStop.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextFieldDateStop.setInputVerifier(new imakante.com.InputDateVerifier());
         jTextFieldDateStop.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextFieldDateStopFocusLost(evt);
@@ -194,16 +196,19 @@ public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog
             promo = Double.parseDouble(jTextFieldPromoPrice.getText());
             dateStart = jTextFieldDataStart.getText();
             dateStop = jTextFieldDateStop.getText();
+            imakante.com.dateManipulation newdate = new imakante.com.dateManipulation();
+            String newDateStart = newdate.convertDate(dateStart);
+            String newDateStop =  newdate.convertDate(dateStop);
             if(isNew)
               {
                  //myParent.setId_PPP(myParent.getCountriesT().setProductPromotionPrice(promo,dateStart,dateStop));
-                  myParent.setProductPromotionPrice(promo,dateStart,dateStop);
+                  myParent.setProductPromotionPrice(promo,newDateStart,newDateStop);
                   jButtonClose.doClick();
               }
             else
               {
                  // myParent.getCountriesT().updateProductPromotionPrice(myParent.getId_PPP(),promo,dateStart,dateStop);
-                   myParent.setProductPromotionPrice(promo,dateStart,dateStop);
+                   myParent.setProductPromotionPrice(promo,newDateStart,newDateStart);
                    jButtonClose.doClick();
               }
         }

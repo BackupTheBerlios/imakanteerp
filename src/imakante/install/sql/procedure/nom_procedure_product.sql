@@ -157,8 +157,22 @@ BEGIN
          WHERE id_pd = in_id_pd;
     END IF;
 
+     IF (in_comprator = 30) THEN
+         SELECT s.id_pm, s.id_contragent, s.flag_scp FROM mida.sl_contragent_product s
+         WHERE id_pm = in_id_pm AND flag_scp = in_flag_pm;
+    END IF;
 
+     IF (in_comprator = 31) THEN
+         INSERT INTO mida.sl_contragent_product(id_pm,id_contragent,flag_scp)
+          VALUES(in_id_pm,in_id_n_group,in_flag_pm);
+    END IF;
 
+    IF (in_comprator = 32) THEN
+     UPDATE mida.sl_contragent_product  SET id_contragent = in_id_n_group,
+         flag_scp = in_flag_pm
+         WHERE id_pm = in_id_pm;
+
+    END IF;
 
 
 END $$

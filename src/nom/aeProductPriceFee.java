@@ -3,6 +3,7 @@ package nom;
 
 import imakante.com.vcomponents.iInternalFrame;
 import javax.swing.JOptionPane;
+import java.math.*;
 public class aeProductPriceFee extends imakante.com.vcomponents.iDialog 
 {
     
@@ -140,8 +141,11 @@ public class aeProductPriceFee extends imakante.com.vcomponents.iDialog
       try
       {
          dds = Double.parseDouble(jTextFieldDDS.getText());
+      //   dds = doubleRound(6,dds);
          akcizi = Double.parseDouble(jTextFieldAkcizi.getText());
+      //   akcizi = doubleRound(6,akcizi);
          other = Double.parseDouble(jTextFieldOther.getText());
+      //   otther = doubleRound(6,other);
          if(isNew)
            {
              //myParent.setId_PF(myParent.getCountriesT().setProductFee(dds,akcizi,other));
@@ -214,5 +218,14 @@ private void getAllFee()
 private void showMessage()
 {
      JOptionPane.showMessageDialog(this,"\u041c\u043e\u043b\u044f, \u0432\u044a\u0432\u0435\u0434\u0435\u0442\u0435 \u043a\u043e\u0440\u0435\u043a\u043d\u043e \u0434\u0430\u043d\u043d\u0438\u0442\u0435");
+}
+ private double doubleRound(int digit, double indouble)
+{
+    String newDouble = new String();
+    double r = indouble;
+    BigDecimal bd = new BigDecimal(r);
+    bd = bd.setScale(digit,BigDecimal.ROUND_HALF_UP);
+    r = bd.doubleValue();
+    return r;
 }
 }// end class

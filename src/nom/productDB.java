@@ -1188,4 +1188,77 @@ public void updateProductDescriprionColumn(int in_id_pd,int v1,int v2,int v3 ,in
     
    
 }
+public int getContragentID(int in_id_pm, int in_flag) //test //comprator = 30;
+{
+    int oldid_pm = id_pm;
+    int oldflag = flag_pm;
+    id_pm = in_id_pm;
+    flag_pm = in_flag;
+    int newID = 0;
+     comprator = 30 ;
+       try
+        {
+            registerParameters();
+            rs = cstm.executeQuery();
+            
+            while(rs.next())
+            {
+               newID = rs.getInt("id_contragent");
+            }
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+      id_pm = oldid_pm;
+       
+      
+       return newID;
+}
+public void setIDProductContragent(int in_id_pm,int in_id_contragent, int in_flag) //test //comprator = 31;
+{
+    int oldid_pm = id_pm;
+    int oldid_contragent = id_n_group;
+    int oldflag = flag_pm;
+    flag_pm = in_flag;
+    id_pm = in_id_pm;
+    id_n_group = in_id_contragent;
+    comprator = 31;
+      try
+        {
+            registerParameters();
+            cstm.execute();
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+       
+   id_pm = oldid_pm;
+   id_n_group = oldid_contragent;
+   flag_pm = oldflag;   
+}
+public void updateIDProductContragent(int in_id_pm,int in_id_contragent,int in_flag) //test //comprator = 32;
+{
+    int oldid_pm = id_pm;
+    int oldid_contragent = id_n_group;
+    int oldflag = flag_pm;
+    flag_pm = in_flag;
+    id_pm = in_id_pm;
+    id_n_group = in_id_contragent;
+    comprator = 32;
+      try
+        {
+            registerParameters();
+            cstm.execute();
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+       
+   id_pm = oldid_pm;
+   id_n_group = oldid_contragent;
+   flag_pm = oldflag;    
+}
 }// end class

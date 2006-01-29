@@ -841,7 +841,8 @@ private void initTable() //ok  -- !!ima za dovyr6wane - skrivane na koloni!!
  }
  public  void mOneRowMinus() //- 
  {
-        if(getRow() >= 0){
+        if(getRow() >= 0)
+        {
             if(getRow() > 0){
                 setRow(getRow() - 1);}
             setAtEnd(false);
@@ -854,8 +855,10 @@ private void initTable() //ok  -- !!ima za dovyr6wane - skrivane na koloni!!
             catch(ArrayIndexOutOfBoundsException aioobe)
             {
                 setRow(getRow() + 1);
+                System.out.println("problem - mOneRowMinus");
             }
-                System.out.println("problem - mOneRowMinus");}
+            
+        }
             if(getRow() == 0){
                 setAtBegining(true);
             }

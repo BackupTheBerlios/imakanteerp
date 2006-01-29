@@ -3,6 +3,7 @@ package nom;
 
 import imakante.com.vcomponents.iInternalFrame;
 import javax.swing.JOptionPane;
+import java.math.*;
 public class aeProductPrice extends imakante.com.vcomponents.iDialog 
 {
     
@@ -388,7 +389,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
        
        p_p3 = Double.parseDouble(jTextFieldProcent3.getText());
        p3 = (p_p3/100)*p0 + p0;
-       jTextFieldPrice3.setText(String.valueOf(p3));  
+       jTextFieldPrice3.setText( doubleRoundToString(6,p3));  
        
     }//GEN-LAST:event_jTextFieldProcent3FocusLost
 
@@ -401,7 +402,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
                p0 = Double.parseDouble(jTextDostPrice.getText());
                p_p3 = Double.parseDouble(jTextFieldProcent3.getText());
                p3 = (p_p3/100)*p0 + p0;
-               jTextFieldPrice3.setText(String.valueOf(p3));
+               jTextFieldPrice3.setText( doubleRoundToString(6,p3));
                 
             }
             catch(NumberFormatException e)
@@ -416,11 +417,11 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
 // TODO add your handling code here:
      
                 
-        p0 = Double.parseDouble(jTextDostPrice.getText());
+       p0 = Double.parseDouble(jTextDostPrice.getText());
        p3 = Double.parseDouble(jTextFieldPrice3.getText());
        if(p3>p0) p_p3 = (100 * (p3-p0)) / p0; 
        else showMessage();
-       jTextFieldProcent3.setText(String.valueOf(p_p3)); 
+       jTextFieldProcent3.setText( doubleRoundToString(3,p_p3)); 
         
     }//GEN-LAST:event_jTextFieldPrice3FocusLost
 
@@ -433,7 +434,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
                 p3 = Double.parseDouble(jTextFieldPrice3.getText());
                 if (p3 > p0) p_p3 = (100 * (p3-p0)) / p0; 
                 else showMessage();
-                jTextFieldProcent3.setText(String.valueOf(p_p3));
+                jTextFieldProcent3.setText( doubleRoundToString(3,p_p3));
                 
             }
             catch(NumberFormatException e)
@@ -453,7 +454,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
                p0 = Double.parseDouble(jTextDostPrice.getText());
                p_p2 = Double.parseDouble(jTextFieldProcent2.getText());
                p2 = (p_p2/100)*p0 + p0;
-               jTextFieldPrice2.setText(String.valueOf(p2));
+               jTextFieldPrice2.setText( doubleRoundToString(6,p2));
                 
             }
             catch(NumberFormatException e)
@@ -471,7 +472,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
         p0 = Double.parseDouble(jTextDostPrice.getText());
         p_p2 = Double.parseDouble(jTextFieldProcent2.getText());
         p2 = (p_p2/100)*p0 + p0;
-        jTextFieldPrice2.setText(String.valueOf(p2));
+        jTextFieldPrice2.setText( doubleRoundToString(6,p2));
         }
         catch(Exception e)
         {
@@ -487,7 +488,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
         p2 = Double.parseDouble(jTextFieldPrice2.getText());
         if(p2 > p0)  p_p2 = (100 * (p2-p0)) / p0; 
         else showMessage();
-        jTextFieldProcent2.setText(String.valueOf(p_p2));
+        jTextFieldProcent2.setText( doubleRoundToString(3,p_p2));
     }//GEN-LAST:event_jTextFieldPrice2FocusLost
 
     private void jTextFieldPrice2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPrice2KeyPressed
@@ -500,7 +501,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
                 p2 = Double.parseDouble(jTextFieldPrice2.getText());
                 if(p2 > p0)p_p2 = (100 * (p2-p0)) / p0; 
                 else showMessage();
-                jTextFieldProcent2.setText(String.valueOf(p_p2));
+                jTextFieldProcent2.setText( doubleRoundToString(3,p_p2));
                 
             }
             catch(NumberFormatException e)
@@ -521,7 +522,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
                p0 = Double.parseDouble(jTextDostPrice.getText());
                p_p1 = Double.parseDouble(jTextFieldProcent1.getText());
                p1 = (p_p1/100)*p0 + p0;
-               jTextFieldPrice1.setText(String.valueOf(p1));
+               jTextFieldPrice1.setText( doubleRoundToString(6,p1));
                 
             }
             catch(NumberFormatException e)
@@ -538,7 +539,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
         p_p1 = Double.parseDouble(jTextFieldProcent1.getText());
         p1 =(p_p1/100);
         p1 = p1*p0 + p0;
-        jTextFieldPrice1.setText(String.valueOf(p1));
+        jTextFieldPrice1.setText( doubleRoundToString(6,p1));
     }//GEN-LAST:event_jTextFieldProcent1FocusLost
 
     private void jTextFieldPrice1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice1FocusLost
@@ -547,7 +548,8 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
         p1 = Double.parseDouble(jTextFieldPrice1.getText());
         if(p1 > p0) p_p1 = (100 * (p1-p0)) / p0; 
         else showMessage();
-        jTextFieldProcent1.setText(String.valueOf(p_p1));
+        
+        jTextFieldProcent1.setText( doubleRoundToString(3,p_p1));
         
     }//GEN-LAST:event_jTextFieldPrice1FocusLost
 
@@ -563,7 +565,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
                 if (p1 > p0 ) p_p1 = (100 * (p1-p0)) / p0; 
                 else showMessage();
                
-                jTextFieldProcent1.setText(String.valueOf(p_p1));
+                jTextFieldProcent1.setText( doubleRoundToString(3,p_p1));
                 
             }
             catch(NumberFormatException e)
@@ -713,16 +715,16 @@ private void getDataByID()
      
      p1 = Double.parseDouble(jTextFieldPrice1.getText());
      p_p1 = (100 * p1) / p0; 
-     jTextFieldProcent1.setText(String.valueOf(p_p1)); 
+     jTextFieldProcent1.setText( doubleRoundToString(3,p_p1)); 
      
      p2 = Double.parseDouble(jTextFieldPrice2.getText());
      p_p2 = (100 * p2) / p0 ; 
      
-     jTextFieldProcent2.setText(String.valueOf(p_p2));
+     jTextFieldProcent2.setText( doubleRoundToString(3,p_p3));
      
      p3 = Double.parseDouble(jTextFieldPrice3.getText());
      p_p3 = (100 * p3) / p0; 
-     jTextFieldProcent3.setText(String.valueOf(p_p3)); 
+     jTextFieldProcent3.setText( doubleRoundToString(3,p_p3)); 
      
      
     
@@ -744,5 +746,14 @@ private void showMessage()
           }
       }
     return newindex;
+}
+ private String doubleRoundToString(int digit, double indouble)
+{
+    String newDouble = new String();
+    double r = indouble;
+    BigDecimal bd = new BigDecimal(r);
+    bd = bd.setScale(digit,BigDecimal.ROUND_HALF_UP);
+    r = bd.doubleValue();
+    return newDouble.valueOf(r);
 }
 }// end class
