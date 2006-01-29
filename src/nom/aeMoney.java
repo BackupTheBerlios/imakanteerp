@@ -367,10 +367,7 @@ public class aeMoney extends imakante.com.vcomponents.iDialog {
         jTextField2.setText(myParent.getCodLat());
         jTextField3.setText(myParent.getNames());
         jTextArea1.setText(myParent.getComment());
-        jTextField1.repaint();
-        jTextField2.repaint();
-        jTextField3.repaint();
-        jTextArea1.repaint();
+        jComboG.setSelectedIndex(getNewComboBoxIndex(myParent.getIDG()));
     }
     
 }// end class

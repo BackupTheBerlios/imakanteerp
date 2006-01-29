@@ -35,7 +35,7 @@ BEGIN
 
 
      IF (comprator = 6) THEN
-        SELECT * FROM `mida`.`n_oblast` n ORDER BY name_n_oblast;
+        SELECT id_n_oblast AS id, name_n_oblast AS name FROM `mida`.`n_oblast` n ORDER BY name_n_oblast;
      END IF;
 
      IF (comprator = 7) THEN

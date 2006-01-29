@@ -476,10 +476,7 @@ public class aeStorage extends imakante.com.vcomponents.iDialog {
         jTextField1.setText(""+myParent.getCod());
         jTextField3.setText(myParent.getNames());
         jTextArea1.setText(myParent.getComment());
-        jTextField1.repaint();
-        
-        jTextField3.repaint();
-        jTextArea1.repaint();
+        jComboG.setSelectedIndex(getNewComboBoxIndex(myParent.getIDG()));
     }
     
     private void initCombo(){

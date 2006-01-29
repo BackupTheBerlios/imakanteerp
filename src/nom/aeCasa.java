@@ -41,6 +41,7 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
         jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043d\u0430 \u0437\u0430\u043f\u0438\u0441 \u043d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0430 \u041b\u0438\u0446\u0430");
         jPanel1.setPreferredSize(new java.awt.Dimension(263, 33));
         jButtonSave.setText("\u0421\u044a\u0445\u0440\u0430\u043d\u0438");
         jButtonSave.addActionListener(new java.awt.event.ActionListener() {
@@ -188,7 +189,7 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel2Layout.createSequentialGroup()
+                    .add(jPanel2Layout.createSequentialGroup()
                         .add(jLabel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED))
                     .add(jLabel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 60, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -204,7 +205,7 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel2Layout.createSequentialGroup()
+            .add(jPanel2Layout.createSequentialGroup()
                 .add(16, 16, 16)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel3)
@@ -387,7 +388,7 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
     //---------------START My Methods
     
     //Proverka na poletata
-    private boolean cFields() { // V sluchaia samo na edno pole dali e integer 
+    private boolean cFields() { // V sluchaia samo na edno pole dali e integer
         boolean check  = true;     // v bazata
         int i = 0;
         try {
@@ -451,9 +452,7 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
         jTextField1.setText(""+myParent.getCod());
         jTextField3.setText(myParent.getNames());
         jTextArea1.setText(myParent.getComment());
-        jTextField1.repaint();
-        jTextField3.repaint();
-        jTextArea1.repaint();
+        jComboG.setSelectedIndex(getNewComboBoxIndex(myParent.getIDG()));
     }
     
     private void initCombo() {

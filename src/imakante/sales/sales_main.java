@@ -932,13 +932,14 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     
     // LICA
     private void loadPerson() {
-        nom.FrmPerson pers = new nom.FrmPerson("\u041b\u0418\u0426\u0410", this);
+        nom.FrmPerson pers = new nom.FrmPerson("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0438 \u041b\u0438\u0446\u0430", this);
         desktopPane.add(pers);
         try {
             pers.setMaximum(true);
         } catch (java.beans.PropertyVetoException ex) {
             ex.printStackTrace();
         }
+        
         pers.setVisible(true);
     }
 }

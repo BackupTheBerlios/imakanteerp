@@ -338,7 +338,8 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
         if(cFields()) {
             jTextField1.transferFocus();
         } else {
-            jTextField1.requestFocus();
+            javax.swing.JOptionPane.showMessageDialog(this,"Chisloto ne e validno egn","Greshka",1);
+            
         }
     }
     
@@ -383,15 +384,7 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
     //Proverka na poletata
     private boolean cFields() { // V sluchaia samo na edno pole dali e integer
         boolean check  = true;     // v bazata
-        int i = 0;
-        try {
-            i = Integer.parseInt(jTextField1.getText()); // proverka za int
-            jTextField1.setBackground(new java.awt.Color(255,255,255));
-        } catch (NumberFormatException nfex) {
-            check = false;
-            jTextField1.setBackground(new java.awt.Color(255,204,204));
-            nfex.printStackTrace();
-        }
+        check = imakante.com.EGNChecker.ValidEGN(jTextField1.getText());
         return check;
     }
     
@@ -447,10 +440,8 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
         jTextField2.setText(myParent.getNLK());
         jTextField3.setText(myParent.getNames());
         jTextArea1.setText(myParent.getComment());
-        jTextField1.repaint();
-        jTextField2.repaint();
-        jTextField3.repaint();
-        jTextArea1.repaint();
+        
+        jComboG.setSelectedIndex(getNewComboBoxIndex(myParent.getIDG()));
     }
     
     private void initCombo() {

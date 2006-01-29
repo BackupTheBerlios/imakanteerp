@@ -30,7 +30,7 @@ BEGIN
 
 
      IF (comprator = 6) THEN
-        SELECT * FROM `mida`.`n_country` n ORDER BY name;
+        SELECT id_n_country AS id, name_n_country AS name FROM `mida`.`n_country` n ORDER BY name;
      END IF;
 
      IF (comprator = 7) THEN
