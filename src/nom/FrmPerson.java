@@ -297,8 +297,8 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
             setNomLK((String) table.getValueAt(getRow(), 4));
             setNames((String) table.getValueAt(getRow(), 5));
             setComment((String) table.getValueAt(getRow(), 6));
-            nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
-            ae_Casa.setVisible(true);
+            nom.aePerson ae_Person = new nom.aePerson(this, true);
+            ae_Person.setVisible(true);
         } else {
             
         }
