@@ -5,385 +5,475 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
     
     public aePerson(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
         super(frame, modal);
+        this.myParent = (nom.FrmPerson) frame;
         initComponents();
+        getNavigationState();
+        jButtonUndo.setEnabled(false);
+        initCombo();
+        this.setResizable(false);
+        java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        repaintComp();
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
-        jpData = new javax.swing.JPanel();
-        jpNavigation = new javax.swing.JPanel();
-        jbFirst = new javax.swing.JButton();
-        jbPrevious = new javax.swing.JButton();
-        jbNext = new javax.swing.JButton();
-        jbLast = new javax.swing.JButton();
-        jlGroup = new javax.swing.JLabel();
-        jcbGroups = new javax.swing.JComboBox();
-        jlEGN = new javax.swing.JLabel();
-        jtfEGN = new javax.swing.JTextField();
-        jlNomLK = new javax.swing.JLabel();
-        jtfNomLK = new javax.swing.JTextField();
-        jlName = new javax.swing.JLabel();
-        jtfName = new javax.swing.JTextField();
-        jlComment = new javax.swing.JLabel();
-        jspComment = new javax.swing.JScrollPane();
-        jtaComment = new javax.swing.JTextArea();
-        jpControls = new javax.swing.JPanel();
-        jbSave = new javax.swing.JButton();
-        jbUndo = new javax.swing.JButton();
-        jbClose = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jButtonSave = new javax.swing.JButton();
+        jButtonUndo = new javax.swing.JButton();
+        jButtonClose = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jButtonToBegin = new javax.swing.JButton();
+        jButtonOneRowM = new javax.swing.JButton();
+        jButtonOneRowP = new javax.swing.JButton();
+        jButtonToEnd = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
+        jComboG = new javax.swing.JComboBox();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+
+        jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        jpData.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jpNavigation.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "\u041d\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u044f"));
-        jbFirst.setText("<<");
-        jbFirst.addActionListener(new java.awt.event.ActionListener() {
+        jPanel1.setPreferredSize(new java.awt.Dimension(263, 33));
+        jButtonSave.setText("\u0421\u044a\u0445\u0440\u0430\u043d\u0438");
+        jButtonSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbFirstActionPerformed(evt);
+                jButtonSaveActionPerformed(evt);
+            }
+        });
+        jButtonSave.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonSaveKeyPressed(evt);
             }
         });
 
-        jbPrevious.setText("<");
-        jbPrevious.addActionListener(new java.awt.event.ActionListener() {
+        jPanel1.add(jButtonSave);
+
+        jButtonUndo.setText("\u041f\u0440\u0435\u0434\u0438\u0448\u043d\u0438");
+        jButtonUndo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbPreviousActionPerformed(evt);
+                jButtonUndoActionPerformed(evt);
+            }
+        });
+        jButtonUndo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonUndoKeyPressed(evt);
             }
         });
 
-        jbNext.setText(">");
-        jbNext.addActionListener(new java.awt.event.ActionListener() {
+        jPanel1.add(jButtonUndo);
+
+        jButtonClose.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
+        jButtonClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbNextActionPerformed(evt);
+                jButtonCloseActionPerformed(evt);
+            }
+        });
+        jButtonClose.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonCloseKeyPressed(evt);
             }
         });
 
-        jbLast.setText(">>");
-        jbLast.addActionListener(new java.awt.event.ActionListener() {
+        jPanel1.add(jButtonClose);
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.SOUTH);
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.setPreferredSize(new java.awt.Dimension(400, 300));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("\u041d\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u044f"));
+        jPanel3.setPreferredSize(new java.awt.Dimension(230, 70));
+        jButtonToBegin.setText("<<");
+        jButtonToBegin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbLastActionPerformed(evt);
+                jButtonToBeginActionPerformed(evt);
+            }
+        });
+        jButtonToBegin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonToBeginKeyPressed(evt);
             }
         });
 
-        org.jdesktop.layout.GroupLayout jpNavigationLayout = new org.jdesktop.layout.GroupLayout(jpNavigation);
-        jpNavigation.setLayout(jpNavigationLayout);
-        jpNavigationLayout.setHorizontalGroup(
-            jpNavigationLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, jpNavigationLayout.createSequentialGroup()
-                .add(57, 57, 57)
-                .add(jbFirst)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jbPrevious)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jbNext)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jbLast)
-                .addContainerGap(65, Short.MAX_VALUE))
-        );
-        jpNavigationLayout.setVerticalGroup(
-            jpNavigationLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, jpNavigationLayout.createSequentialGroup()
+        jPanel3.add(jButtonToBegin);
+
+        jButtonOneRowM.setText("<");
+        jButtonOneRowM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonOneRowMActionPerformed(evt);
+            }
+        });
+        jButtonOneRowM.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonOneRowMKeyPressed(evt);
+            }
+        });
+
+        jPanel3.add(jButtonOneRowM);
+
+        jButtonOneRowP.setText(">");
+        jButtonOneRowP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonOneRowPActionPerformed(evt);
+            }
+        });
+        jButtonOneRowP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonOneRowPKeyPressed(evt);
+            }
+        });
+
+        jPanel3.add(jButtonOneRowP);
+
+        jButtonToEnd.setText(">>");
+        jButtonToEnd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonToEndActionPerformed(evt);
+            }
+        });
+        jButtonToEnd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonToEndKeyPressed(evt);
+            }
+        });
+
+        jPanel3.add(jButtonToEnd);
+
+        jLabel2.setText("\u0415\u0413\u041d:");
+
+        jLabel4.setText("\u0418\u043c\u0435:");
+
+        jLabel5.setText("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440:");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jLabel3.setText("\u0413\u0440\u0443\u043f\u0430:");
+
+        jComboG.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboGKeyPressed(evt);
+            }
+        });
+
+        jLabel6.setText("\u041d\u041b\u041a:");
+
+        org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jpNavigationLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jbNext)
-                    .add(jbLast)
-                    .add(jbPrevious)
-                    .add(jbFirst))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel2Layout.createSequentialGroup()
+                        .add(jLabel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 38, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                        .add(jPanel2Layout.createSequentialGroup()
+                            .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
+                                .add(jPanel2Layout.createSequentialGroup()
+                                    .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                        .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                                            .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .add(jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE))
+                                        .add(jLabel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                    .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                        .add(jComboG, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 213, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 342, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                        .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                                            .add(org.jdesktop.layout.GroupLayout.LEADING, jTextField2)
+                                            .add(org.jdesktop.layout.GroupLayout.LEADING, jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE))
+                                        .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 331, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                            .add(73, 73, 73))
+                        .add(jPanel2Layout.createSequentialGroup()
+                            .add(jLabel6)
+                            .addContainerGap(399, Short.MAX_VALUE)))))
         );
-
-        jlGroup.setText("\u0413\u0440\u0443\u043f\u0430:");
-
-        jlEGN.setText("\u0415\u0413\u041d:");
-
-        jlNomLK.setText("\u2116 \u043d\u0430 \u041b\u041a:");
-
-        jlName.setText("\u0418\u043c\u0435:");
-
-        jlComment.setText("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440:");
-
-        jtaComment.setColumns(20);
-        jtaComment.setRows(5);
-        jspComment.setViewportView(jtaComment);
-
-        org.jdesktop.layout.GroupLayout jpDataLayout = new org.jdesktop.layout.GroupLayout(jpData);
-        jpData.setLayout(jpDataLayout);
-        jpDataLayout.setHorizontalGroup(
-            jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, jpDataLayout.createSequentialGroup()
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jlGroup)
-                    .add(jlEGN)
-                    .add(jlComment)
-                    .add(jlNomLK, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 49, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jlName))
-                .add(12, 12, 12)
-                .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jpDataLayout.createSequentialGroup()
-                        .add(jcbGroups, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 242, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(173, 173, 173))
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jpDataLayout.createSequentialGroup()
-                        .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, jtfEGN)
-                            .add(jtfNomLK, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
-                        .add(265, 265, 265))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jpDataLayout.createSequentialGroup()
-                        .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, jtfName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, jpNavigation)
-                            .add(jspComment, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE))
-                        .add(75, 75, 75))))
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel3)
+                    .add(jComboG, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel2)
+                    .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel6)
+                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel4)
+                    .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel5))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 11, Short.MAX_VALUE)
+                .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
-        jpDataLayout.setVerticalGroup(
-            jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, jpDataLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jlGroup)
-                    .add(jcbGroups, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jlEGN)
-                    .add(jtfEGN, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jtfNomLK, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jlNomLK, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jlName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jtfName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(9, 9, 9)
-                .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jpDataLayout.createSequentialGroup()
-                        .add(jspComment, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 84, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(26, 26, 26)
-                        .add(jpNavigation, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(jlComment))
-                .add(14, 14, 14))
-        );
-        getContentPane().add(jpData, java.awt.BorderLayout.CENTER);
+        getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
-        jbSave.setText("\u0421\u044a\u0445\u0440\u0430\u043d\u0438");
-        jbSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbSaveActionPerformed(evt);
-            }
-        });
-
-        jpControls.add(jbSave);
-
-        jbUndo.setText("\u041f\u0440\u0435\u0434\u0438\u0448\u043d\u0438");
-        jbUndo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbUndoActionPerformed(evt);
-            }
-        });
-
-        jpControls.add(jbUndo);
-
-        jbClose.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
-        jbClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbCloseActionPerformed(evt);
-            }
-        });
-
-        jpControls.add(jbClose);
-
-        getContentPane().add(jpControls, java.awt.BorderLayout.SOUTH);
-
-        pack();
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-446)/2, (screenSize.height-339)/2, 446, 339);
     }// </editor-fold>//GEN-END:initComponents
+        
+    private void jButtonCloseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonCloseKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonClose.doClick();}
+    }//GEN-LAST:event_jButtonCloseKeyPressed
     
-    private void jbFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFirstActionPerformed
-        gotoFirst();
-    }//GEN-LAST:event_jbFirstActionPerformed
+    private void jButtonUndoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonUndoKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonUndo.doClick();}
+    }//GEN-LAST:event_jButtonUndoKeyPressed
     
-    private void jbPreviousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPreviousActionPerformed
-        gotoPrev();
-    }//GEN-LAST:event_jbPreviousActionPerformed
+    private void jButtonSaveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonSaveKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonSave.doClick();}
+    }//GEN-LAST:event_jButtonSaveKeyPressed
     
-    private void jbNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNextActionPerformed
-        gotoNext();
-    }//GEN-LAST:event_jbNextActionPerformed
+    private void jButtonToEndKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonToEndKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonToEnd.doClick();}
+    }//GEN-LAST:event_jButtonToEndKeyPressed
     
-    private void jbLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLastActionPerformed
-        gotoLast();
-    }//GEN-LAST:event_jbLastActionPerformed
+    private void jButtonOneRowPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonOneRowPKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonOneRowP.doClick();}
+    }//GEN-LAST:event_jButtonOneRowPKeyPressed
     
-    private void jbSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSaveActionPerformed
+    private void jButtonOneRowMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonOneRowMKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonOneRowM.doClick();}
+    }//GEN-LAST:event_jButtonOneRowMKeyPressed
+    
+    private void jButtonToBeginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonToBeginKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonToBegin.doClick();}
+    }//GEN-LAST:event_jButtonToBeginKeyPressed
+        
+    private void jComboGKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboGKeyPressed
+        
+    }//GEN-LAST:event_jComboGKeyPressed
+        
+    private void jButtonUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUndoActionPerformed
+        undoCorr(); //vraja predishnite stoinosti
+    }//GEN-LAST:event_jButtonUndoActionPerformed
+    
+    private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         saveRecord();
-    }//GEN-LAST:event_jbSaveActionPerformed
+    }//GEN-LAST:event_jButtonSaveActionPerformed
     
-    private void jbUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbUndoActionPerformed
-        undoChanges();
-    }//GEN-LAST:event_jbUndoActionPerformed
-    
-    private void jbCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCloseActionPerformed
+    private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jbCloseActionPerformed
-    
-    private nom.FrmPerson myParent;
-    private int ID = 1;
-    private int IDgroup = 0;
-    private String EGN = null;
-    private String NomLK = null;
-    private String Name = null;
-    private String Comment = null;
-    private String GroupNames[];
-    private int selected;
-    private boolean isEdited = false;
-    private boolean isFirst = false;
-    private boolean isLast = false;
-    
-    private void gotoFirst() {
-        myParent.mTableBegining();
-        jButtonMinDisable();
-        jButtonMaxEnable();
-        repaintComp();
-    }
-    
-    private void gotoPrev() {
-        myParent.mOneRowMinus();
-        if(myParent.isFirst()){
-            jButtonMinDisable();
-        }
-        jButtonMaxEnable();
-        repaintComp();
-    }
-    
-    private void gotoNext() {
+    }//GEN-LAST:event_jButtonCloseActionPerformed
+    // gotoNext
+    private void jButtonOneRowPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowPActionPerformed
         myParent.mOneRowPlus();
-        if(myParent.isLast()){
-            jButtonMaxDisable();
+        if(myParent.isAtEnd()) {
+            jButtonToEnd.setEnabled(false);
+            jButtonOneRowP.setEnabled(false);
+            jButtonToEnd.repaint();
+            jButtonOneRowP.repaint();
         }
-        jButtonMinEnable();
+        jButtonToBegin.setEnabled(true);
+        jButtonOneRowM.setEnabled(true);
+        jButtonToBegin.repaint();
+        jButtonOneRowM.repaint();
         repaintComp();
-    }
-    
-    private void gotoLast() {
+    }//GEN-LAST:event_jButtonOneRowPActionPerformed
+    // gotoLast
+    private void jButtonToEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToEndActionPerformed
         myParent.mTableEnd();
-        jButtonMaxDisable();
-        jButtonMinEnable();
+        jButtonToEnd.setEnabled(false);
+        jButtonOneRowP.setEnabled(false);
+        jButtonToEnd.repaint();
+        jButtonOneRowP.repaint();
+        jButtonToBegin.setEnabled(true);
+        jButtonOneRowM.setEnabled(true);
+        jButtonToBegin.repaint();
+        jButtonOneRowM.repaint();
         repaintComp();
-    }
-    
-    private void repaintComp() {
-        jtfEGN.setText("" + myParent.getEGN());
-        jtfNomLK.setText("" + myParent.getNomLK());
-        jtfName.setText(myParent.getNames());
-        jtaComment.setText(myParent.getComment());
-        jtfEGN.repaint();
-        jtfNomLK.repaint();
-        jtfName.repaint();
-        jtaComment.repaint();
-    }
-    
-    private void jButtonMaxDisable(){
-        jbNext.setEnabled(false);
-        jbNext.repaint();
-        jbLast.setEnabled(false);
-        jbLast.repaint();
-    }
-    
-    private void jButtonMaxEnable(){
-        jbNext.setEnabled(true);
-        jbNext.repaint();
-        jbLast.setEnabled(true);
-        jbLast.repaint();
-    }
-    
-    private void jButtonMinDisable(){
-        jbFirst.setEnabled(false);
-        jbFirst.repaint();
-        jbPrevious.setEnabled(false);
-        jbPrevious.repaint();
-    }
-    
-    private void jButtonMinEnable(){
-        jbFirst.setEnabled(true);
-        jbFirst.repaint();
-        jbPrevious.setEnabled(true);
-        jbPrevious.repaint();
-    }
-    
-    private void getNavigatiionState(){
-     if(nom.FrmCountry.isAtBegining()){
-            jButtonMinDisable();
+    }//GEN-LAST:event_jButtonToEndActionPerformed
+    // gotoPrev
+    private void jButtonOneRowMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowMActionPerformed
+        myParent.mOneRowMinus();
+        if(myParent.isAtBegining()) {
+            jButtonToBegin.setEnabled(false);
+            jButtonOneRowM.setEnabled(false);
+            jButtonToBegin.repaint();
+            jButtonOneRowM.repaint();
         }
-     if(nom.FrmCountry.isAtEnd()){
-            jButtonMaxDisable();
+        jButtonToEnd.setEnabled(true);
+        jButtonOneRowP.setEnabled(true);
+        jButtonToEnd.repaint();
+        jButtonOneRowP.repaint();
+        repaintComp();
+    }//GEN-LAST:event_jButtonOneRowMActionPerformed
+    // gotoFirst
+    private void jButtonToBeginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToBeginActionPerformed
+        myParent.mTableBegining();
+        jButtonToBegin.setEnabled(false);
+        jButtonOneRowM.setEnabled(false);
+        jButtonToBegin.repaint();
+        jButtonOneRowM.repaint();
+        jButtonToEnd.setEnabled(true);
+        jButtonOneRowP.setEnabled(true);
+        jButtonToEnd.repaint();
+        jButtonOneRowP.repaint();
+        repaintComp();
+    }//GEN-LAST:event_jButtonToBeginActionPerformed
+    
+    private void cfFocus() {
+        if(cFields()) {
+            jTextField1.transferFocus();
+        } else {
+            jTextField1.requestFocus();
         }
     }
     
-    private void saveRecord() {
-        if( cFields() ) {
-            EGN = myParent.getEGN();
-            NomLK = myParent.getNomLK();
-            Name = myParent.getNames();
-            Comment = myParent.getComment();
-            try {
-                myParent.setEGN(jtfEGN.getText());
-            } catch (NumberFormatException nfex) {
-                nfex.printStackTrace();
-            }
-            myParent.setNomLK(jtfNomLK.getText());
-            myParent.setNames(jtfName.getText());
-            myParent.setComment(jtaComment.getText());
-            myParent.setIDGroup(myParent.getInternalObject().getIndexConnOfId()[jcbGroups.getSelectedIndex()]);
-            myParent.getInternalObject().updateRow(myParent.getId(), myParent.getIDGroup(), myParent.getEGN(),
-                    myParent.getNomLK(), myParent.getNames(), myParent.getComment());
-            myParent.refreshTable();
-            myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
-            jbUndo.setEnabled(true);}
-    }
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonClose;
+    private javax.swing.JButton jButtonOneRowM;
+    private javax.swing.JButton jButtonOneRowP;
+    private javax.swing.JButton jButtonSave;
+    private javax.swing.JButton jButtonToBegin;
+    private javax.swing.JButton jButtonToEnd;
+    private javax.swing.JButton jButtonUndo;
+    private javax.swing.JComboBox jComboG;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    // End of variables declaration//GEN-END:variables
+    //--------------- My Variables
+    private nom.FrmPerson myParent;
+    private int oldIDG = 1;
+    private String oldEGN = "";
+    private String oldNLK = "";
+    private String oldName = "";
+    private String oldComment =  "";
+    private String namesG[];
+    private int selectComboBoxItem;
     
-    private boolean cFields() {
-        boolean check  = true;
+    //---------------END My Variables
+    
+    //---------------START My Methods
+    
+    //Proverka na poletata
+    private boolean cFields() { // V sluchaia samo na edno pole dali e integer
+        boolean check  = true;     // v bazata
         int i = 0;
         try {
-            i = Integer.parseInt(jtfEGN.getText()); // proverka za int
-            jtfEGN.setBackground(new java.awt.Color(255,255,255));
+            i = Integer.parseInt(jTextField1.getText()); // proverka za int
+            jTextField1.setBackground(new java.awt.Color(255,255,255));
         } catch (NumberFormatException nfex) {
             check = false;
-            jtfEGN.setBackground(new java.awt.Color(255,204,204));
+            jTextField1.setBackground(new java.awt.Color(255,204,204));
             nfex.printStackTrace();
         }
         return check;
     }
     
-    private void undoChanges() {
-        myParent.setIDGroup(IDgroup);
-        myParent.setEGN(EGN);
-        myParent.setNomLK(NomLK);
-        myParent.setNames(Name);
-        myParent.setComment(Comment);
-        repaintComp();
-        jbUndo.setEnabled(false);
+    //SAVE
+    private void saveRecord() {
+        if(cFields()){
+            oldEGN = myParent.getEGN();
+            oldName = myParent.getNames();
+            oldComment = myParent.getComment();
+            try {
+                myParent.setEGN((jTextField1.getText()));
+            } catch (NumberFormatException nfex) {
+                nfex.printStackTrace();
+            }
+            myParent.setNames(jTextField3.getText());
+            myParent.setComment(jTextArea1.getText());
+            myParent.setIDG(myParent.getInternalObject().getIndexConnOfId()[jComboG.getSelectedIndex()]);
+            myParent.getInternalObject().updateRow(myParent.getId(), myParent.getIDG(),myParent.getEGN(),
+                    myParent.getNames(), myParent.getComment());
+            myParent.refreshTable();
+            myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
+            jButtonUndo.setEnabled(true);}
     }
     
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jbClose;
-    private javax.swing.JButton jbFirst;
-    private javax.swing.JButton jbLast;
-    private javax.swing.JButton jbNext;
-    private javax.swing.JButton jbPrevious;
-    private javax.swing.JButton jbSave;
-    private javax.swing.JButton jbUndo;
-    private javax.swing.JComboBox jcbGroups;
-    private javax.swing.JLabel jlComment;
-    private javax.swing.JLabel jlEGN;
-    private javax.swing.JLabel jlGroup;
-    private javax.swing.JLabel jlName;
-    private javax.swing.JLabel jlNomLK;
-    private javax.swing.JPanel jpControls;
-    private javax.swing.JPanel jpData;
-    private javax.swing.JPanel jpNavigation;
-    private javax.swing.JScrollPane jspComment;
-    private javax.swing.JTextArea jtaComment;
-    private javax.swing.JTextField jtfEGN;
-    private javax.swing.JTextField jtfName;
-    private javax.swing.JTextField jtfNomLK;
-    // End of variables declaration//GEN-END:variables
+    //UNDO
+    private void undoCorr() {
+        myParent.setIDG(oldIDG);
+        myParent.setEGN(oldEGN);
+        myParent.setNames(oldName);
+        myParent.setComment(oldComment);
+        repaintComp();
+        jButtonUndo.setEnabled(false);
+    }
     
-}
+    private void getNavigationState() {
+        if(myParent.isAtBegining()) {
+            jButtonToBegin.setEnabled(false);
+            jButtonOneRowM.setEnabled(false);
+            jButtonToBegin.repaint();
+            jButtonOneRowM.repaint();
+        }
+        if(myParent.isAtEnd()) {
+            jButtonToEnd.setEnabled(false);
+            jButtonOneRowP.setEnabled(false);
+            jButtonToEnd.repaint();
+            jButtonOneRowP.repaint();
+        }
+    }
+    
+    private void repaintComp() {
+        jTextField1.setText(""+myParent.getEGN());
+        jTextField3.setText(myParent.getNames());
+        jTextArea1.setText(myParent.getComment());
+        jTextField1.repaint();
+        jTextField3.repaint();
+        jTextArea1.repaint();
+    }
+    
+    private void initCombo() {
+        namesG = myParent.getInternalObject().getCasaG();
+        for(int i=0;i<namesG.length;i++) {
+            jComboG.addItem(new String(namesG[i]));
+            
+        }
+        
+        if(selectComboBoxItem != 0) {
+            
+            selectComboBoxItem = getNewComboBoxIndex(selectComboBoxItem);
+            
+            jComboG.setSelectedIndex(selectComboBoxItem);
+        }
+        
+    }
+    
+    private int getNewComboBoxIndex(int oldindex) {
+        int newindex= 0;
+        for(int i = 0; i < myParent.getInternalObject().getIndexConnOfId().length; i++) {
+            if(myParent.getInternalObject().getIndexConnOfId()[i]==oldindex) {
+                newindex = i;
+                break;
+            }
+        }
+        return newindex;
+    }
+}// end class
