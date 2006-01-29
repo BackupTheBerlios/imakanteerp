@@ -440,19 +440,20 @@ INSERT INTO `ls_monthpar` VALUES (12,2,8,2005,'0111110011111001011100000000000',
 #
 
 CREATE TABLE `ls_n_person` (
-  `id` int(10) unsigned zerofill NOT NULL auto_increment,
-  `egn` varchar(10) NOT NULL default '',
-  `nlk` varchar(9) NOT NULL default '',
-  `name` varchar(45) NOT NULL default '',
-  `coment` varchar(45) NOT NULL default '',
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+  `id_ls_n_person` int(11) NOT NULL auto_increment,
+  `id_n_group` int(11) unsigned default NULL,
+  `egn_ls_n_person` varchar(10) collate cp1251_bulgarian_ci NOT NULL,
+  `nlk_ls_n_person` varchar(9) collate cp1251_bulgarian_ci NOT NULL,
+  `name_ls_n_person` varchar(45) collate cp1251_bulgarian_ci NOT NULL,
+  `comment_ls_n_person` varchar(250) collate cp1251_bulgarian_ci default NULL,
+  PRIMARY KEY  (`id_ls_n_person`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COLLATE=cp1251_bulgarian_ci;
 
 #
 # Dumping data for table ls_n_person
 #
 
-INSERT INTO `ls_n_person` VALUES (1,'7401234649','6546','Radoslav','');
+INSERT INTO `ls_n_person` VALUES (1,2,'7401234649','6546','Radoslav','');
 
 
 #
@@ -485,7 +486,7 @@ CREATE TABLE `ls_otp_impl` (
   `beg_date` date NOT NULL default '0000-00-00' COMMENT 'Начална дата',
   `n_o_days` tinyint(3) unsigned NOT NULL default '0' COMMENT 'Брой дни отпуск в месеца',
   PRIMARY KEY  (`Id`)
-) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='�?зчислени болни�;
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='�?зчислени болни�';
 
 #
 # Dumping data for table ls_otp_impl
@@ -11123,6 +11124,52 @@ BEGIN
 
      IF (comprator = 7) THEN
         SELECT MAX(n.id_n_oblast) AS id FROM `n_oblast` n;
+     END IF;
+
+END;
+
+#
+# Source for procedure nom_procedure_person
+#
+
+CREATE PROCEDURE `nom_procedure_person`(IN comprator TINYINT, IN in_id INT(11),IN in_id_group INT(11), IN in_egn VARCHAR(10), IN in_nomlk VARCHAR(9), IN in_name VARCHAR(45), IN in_comment VARCHAR(250) )
+BEGIN
+     IF (comprator = 0) THEN
+          SELECT n.id_ls_n_person, n.id_n_group, ng.name_n_group, n.egn_ls_n_person, n.nlk_ls_n_person, n.name_ls_n_person,
+                   n.comment_ls_n_person FROM ls_n_person n LEFT OUTER JOIN n_group ng ON ng.id_n_group = n.id_n_group;
+     END IF;
+
+     IF (comprator = 1) THEN
+        INSERT INTO `mida`.`ls_n_person`(id_n_group, egn_ls_n_person, nlk_ls_n_person, name_ls_n_person, comment_ls_n_person) VALUES(in_id_group, in_egn, in_nomlk, in_name, in_comment);
+     END IF;
+
+     IF (comprator = 2) THEN
+        UPDATE `mida`.`ls_n_person` SET id_n_group = in_id_group, egn_ls_n_person = in_egn, nlk_ls_n_person = in_nomlk, name_ls_n_person = in_name, comment_ls_n_person = in_comment
+        WHERE `mida`.`ls_n_person`.id_ls_n_person = in_id;
+     END IF;
+
+     IF (comprator = 3) THEN
+        DELETE FROM `mida`.`ls_n_person`  WHERE id_ls_n_person = in_id;
+     END IF;
+
+     IF (comprator = 5) THEN
+        SELECT n.id_ls_n_person, n.id_n_group, ng.name_n_group, n.egn_ls_n_person, n.nlk_ls_n_person, n.name_ls_n_person,
+                   n.comment_ls_n_person FROM ls_n_person n LEFT OUTER JOIN n_group ng ON ng.id_n_group = n.id_n_group
+                   WHERE n.egn_ls_n_person LIKE CONCAT('%',in_egn,'%') AND n.name_ls_n_person LIKE CONCAT('%',in_name,'%');
+     END IF;
+
+     IF (comprator = 6) THEN
+        SELECT n.id_n_group, n.name_n_group FROM n_group n
+                              WHERE n.nom_n_group = 3;
+     END IF;
+
+     IF (comprator = 7) THEN
+        SELECT MAX(n.id_ls_n_person) FROM `mida`.`ls_n_person` n;
+     END IF;
+
+     IF (comprator = 9) THEN
+        SELECT MAX(n.id_n_group) AS id_n_group FROM n_group n
+                              WHERE n.nom_n_group = 3;
      END IF;
 
 END;
