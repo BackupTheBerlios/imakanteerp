@@ -550,8 +550,8 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
             setCod((Integer) table.getValueAt(getRow(), 3));
             setNames((String) table.getValueAt(getRow(), 4));
             setComment((String) table.getValueAt(getRow(), 5));
-            nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
-            ae_Casa.setVisible(true);
+            nom.aeStorage ae_Storage = new nom.aeStorage(this, true);
+            ae_Storage.setVisible(true);
         }else{
             
         }

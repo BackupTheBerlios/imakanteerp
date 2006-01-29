@@ -44,7 +44,7 @@ BEGIN
 
      IF (comprator = 9) THEN
         SELECT MAX(n.id_n_group) AS id_n_group FROM n_group n
-                              WHERE n.nom_n_group = 5;
+                              WHERE n.nom_n_group = 4;
      END IF;
 
 END $$
