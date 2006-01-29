@@ -12,6 +12,7 @@ public class frmLogo extends javax.swing.JFrame implements Runnable {
                 ((java.awt.Toolkit.getDefaultToolkit().getScreenSize().height - (this.getSize().height)))/2);
         this.setVisible(true);
     }
+ 
     
     public void dispose() {
         

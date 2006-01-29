@@ -15,7 +15,7 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
     // --- Custom Members --- //
     private imakante.com.vcomponents.iFrame personFrame;
     private java.sql.Connection conn;
-    private nom.dbPerson personObject;
+    private nom.dbPerson internalObject;
     private java.sql.ResultSet rs;
     private imakante.com.CustomTableModel model;
     private imakante.com.CustomTable table;
@@ -42,7 +42,7 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
     
     private void constructObject() {
         try {
-            personObject = new nom.dbPerson(conn);
+            internalObject = new nom.dbPerson(conn);
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -50,7 +50,7 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
     
     private void initTable() {
         try {
-            rs = personObject.getTable();
+            rs = internalObject.getTable();
             model = new imakante.com.CustomTableModel(getConn(), rs, null);
             table = new imakante.com.CustomTable(model);
             // da se napravqt skriti kolona "id" i kolona "nom"
@@ -253,14 +253,14 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
         if(table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());
             setId((Integer)table.getValueAt(getRow(),0));
-            personObject.deleteRow(getId());
+            internalObject.deleteRow(getId());
             refreshTable();
         }
     }
     
     protected  void refreshTable() {
         jspData.remove(table);
-        rs = personObject.getTable();
+        rs = internalObject.getTable();
         model = new imakante.com.CustomTableModel(getConn(), rs, null);
         table = new imakante.com.CustomTable(model);
         jspData.getViewport().add(table);
@@ -305,9 +305,9 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
     }
     
     private void newRecord(){
-        setId(personObject.getMaxId());
-        setIDGroup(personObject.getMaxGrID());
-        personObject.insertRow(getIDGroup());
+        setId(internalObject.getMaxId());
+        setIDGroup(internalObject.getMaxGrID());
+        internalObject.insertRow(getIDGroup());
         nom.aePerson aeP = new nom.aePerson(this, true);
         aeP.setVisible(true);
         refreshTable();
@@ -317,7 +317,7 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
     private void searchRecords() {
         try {
             try {
-                rs = personObject.searchRecords(jtfEGN.getText(), jtfName.getText());
+                rs = internalObject.searchRecords(jtfEGN.getText(), jtfName.getText());
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
                 jtfEGN.requestFocus();
@@ -348,12 +348,12 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
     public void windowDeactivated(java.awt.event.WindowEvent e) {
     }
     
-    public nom.dbPerson getPersonObject() {
-        return personObject;
+    public nom.dbPerson getInternalObject() {
+        return internalObject;
     }
     
-    public void setPersonObject(nom.dbPerson value) {
-        this.personObject = value;
+    public void setInternalObject(nom.dbPerson value) {
+        this.internalObject = value;
     }
     
     public imakante.com.CustomTableModel getModel() {
@@ -547,7 +547,7 @@ public class FrmPerson extends imakante.com.vcomponents.iInternalFrame implement
             rs.close();
         } catch(java.sql.SQLException sqle) {  }
         rs = null;
-        personObject.close();
+        internalObject.close();
     }
     
     private java.sql.Connection getConn() {

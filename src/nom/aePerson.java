@@ -223,7 +223,7 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
         this.dispose();
     }//GEN-LAST:event_jbCloseActionPerformed
     
-    private nom.FrmPerson superFrame;
+    private nom.FrmPerson myParent;
     private int ID = 1;
     private int IDgroup = 0;
     private String EGN = null;
@@ -237,15 +237,15 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
     private boolean isLast = false;
     
     private void gotoFirst() {
-        nom.FrmPerson.mTableBegining();
+        myParent.mTableBegining();
         jButtonMinDisable();
         jButtonMaxEnable();
         repaintComp();
     }
     
     private void gotoPrev() {
-        nom.FrmPerson.mOneRowMinus();
-        if(nom.FrmPerson.isFirst()){
+        myParent.mOneRowMinus();
+        if(myParent.isFirst()){
             jButtonMinDisable();
         }
         jButtonMaxEnable();
@@ -253,8 +253,8 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
     }
     
     private void gotoNext() {
-        nom.FrmPerson.mOneRowPlus();
-        if(nom.FrmPerson.isLast()){
+        myParent.mOneRowPlus();
+        if(myParent.isLast()){
             jButtonMaxDisable();
         }
         jButtonMinEnable();
@@ -262,17 +262,17 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
     }
     
     private void gotoLast() {
-        nom.FrmPerson.mTableEnd();
+        myParent.mTableEnd();
         jButtonMaxDisable();
         jButtonMinEnable();
         repaintComp();
     }
     
     private void repaintComp() {
-        jtfEGN.setText("" + superFrame.getEGN());
-        jtfNomLK.setText("" + superFrame.getNomLK());
-        jtfName.setText(superFrame.getNames());
-        jtaComment.setText(superFrame.getComment());
+        jtfEGN.setText("" + myParent.getEGN());
+        jtfNomLK.setText("" + myParent.getNomLK());
+        jtfName.setText(myParent.getNames());
+        jtaComment.setText(myParent.getComment());
         jtfEGN.repaint();
         jtfNomLK.repaint();
         jtfName.repaint();
@@ -318,23 +318,23 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
     
     private void saveRecord() {
         if( cFields() ) {
-            EGN = superFrame.getEGN();
-            NomLK = superFrame.getNomLK();
-            Name = superFrame.getNames();
-            Comment = superFrame.getComment();
+            EGN = myParent.getEGN();
+            NomLK = myParent.getNomLK();
+            Name = myParent.getNames();
+            Comment = myParent.getComment();
             try {
-                superFrame.setEGN(jtfEGN.getText());
+                myParent.setEGN(jtfEGN.getText());
             } catch (NumberFormatException nfex) {
                 nfex.printStackTrace();
             }
-            superFrame.setNomLK(jtfNomLK.getText());
-            superFrame.setNames(jtfName.getText());
-            superFrame.setComment(jtaComment.getText());
-            superFrame.setIDGroup(superFrame.getPersonObject().getIndexConnOfId()[jcbGroups.getSelectedIndex()]);
-            superFrame.getPersonObject().updateRow(superFrame.getId(), superFrame.getIDGroup(), superFrame.getEGN(),
-                    superFrame.getNomLK(), superFrame.getNames(), superFrame.getComment());
-            superFrame.refreshTable();
-            superFrame.getTable().changeSelection(superFrame.getRow(),2,false,false);
+            myParent.setNomLK(jtfNomLK.getText());
+            myParent.setNames(jtfName.getText());
+            myParent.setComment(jtaComment.getText());
+            myParent.setIDGroup(myParent.getInternalObject().getIndexConnOfId()[jcbGroups.getSelectedIndex()]);
+            myParent.getInternalObject().updateRow(myParent.getId(), myParent.getIDGroup(), myParent.getEGN(),
+                    myParent.getNomLK(), myParent.getNames(), myParent.getComment());
+            myParent.refreshTable();
+            myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
             jbUndo.setEnabled(true);}
     }
     
@@ -353,11 +353,11 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
     }
     
     private void undoChanges() {
-        superFrame.setIDGroup(IDgroup);
-        superFrame.setEGN(EGN);
-        superFrame.setNomLK(NomLK);
-        superFrame.setNames(Name);
-        superFrame.setComment(Comment);
+        myParent.setIDGroup(IDgroup);
+        myParent.setEGN(EGN);
+        myParent.setNomLK(NomLK);
+        myParent.setNames(Name);
+        myParent.setComment(Comment);
         repaintComp();
         jbUndo.setEnabled(false);
     }
