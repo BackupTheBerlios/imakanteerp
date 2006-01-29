@@ -1,7 +1,6 @@
 
 package imakante.com.vcomponents;
 
-
 public class iInternalFrame extends javax.swing.JInternalFrame implements java.io.Serializable{
 
     public iInternalFrame(String title) {
@@ -27,7 +26,12 @@ public class iInternalFrame extends javax.swing.JInternalFrame implements java.i
     private imakante.com.vcomponents.iFrame myFrame;
     private String names;
     private java.sql.Connection conn;
+    
     static final long serialVersionUID=1;
+    
+    
+    
+    
     
     public String getIFNames() {
         return names;
