@@ -410,7 +410,7 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
             myParent.setComment(jTextArea1.getText());
             myParent.setIDG(myParent.getInternalObject().getIndexConnOfId()[jComboG.getSelectedIndex()]);
             myParent.getInternalObject().updateRow(myParent.getId(), myParent.getIDG(),myParent.getEGN(),
-                    myParent.getNames(), myParent.getComment());
+                    myParent.getNLK(),myParent.getNames(), myParent.getComment());
             myParent.refreshTable();
             myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
             jButtonUndo.setEnabled(true);}
@@ -420,6 +420,7 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
     private void undoCorr() {
         myParent.setIDG(oldIDG);
         myParent.setEGN(oldEGN);
+        myParent.setNLK(oldNLK);
         myParent.setNames(oldName);
         myParent.setComment(oldComment);
         repaintComp();
@@ -442,16 +443,18 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
     }
     
     private void repaintComp() {
-        jTextField1.setText(""+myParent.getEGN());
+        jTextField1.setText(myParent.getEGN());
+        jTextField2.setText(myParent.getNLK());
         jTextField3.setText(myParent.getNames());
         jTextArea1.setText(myParent.getComment());
         jTextField1.repaint();
+        jTextField2.repaint();
         jTextField3.repaint();
         jTextArea1.repaint();
     }
     
     private void initCombo() {
-        namesG = myParent.getInternalObject().getCasaG();
+        namesG = myParent.getInternalObject().getPersonGroups();
         for(int i=0;i<namesG.length;i++) {
             jComboG.addItem(new String(namesG[i]));
             
