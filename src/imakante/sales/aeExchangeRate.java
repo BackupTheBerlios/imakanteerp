@@ -16,9 +16,12 @@ public class aeExchangeRate extends javax.swing.JDialog {
         jbPrevious = new javax.swing.JButton();
         jbNext = new javax.swing.JButton();
         jbLast = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jlDate = new javax.swing.JLabel();
+        jtfDate = new javax.swing.JTextField();
+        jlCurrency = new javax.swing.JLabel();
+        jcbCurrency = new javax.swing.JComboBox();
+        jlValue = new javax.swing.JLabel();
+        jtfValue = new javax.swing.JTextField();
         jpControls = new javax.swing.JPanel();
         jbSave = new javax.swing.JButton();
         jbUndo = new javax.swing.JButton();
@@ -34,6 +37,11 @@ public class aeExchangeRate extends javax.swing.JDialog {
                 jbFirstActionPerformed(evt);
             }
         });
+        jbFirst.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jbFirstKeyPressed(evt);
+            }
+        });
 
         jpMovement.add(jbFirst);
 
@@ -41,6 +49,11 @@ public class aeExchangeRate extends javax.swing.JDialog {
         jbPrevious.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbPreviousActionPerformed(evt);
+            }
+        });
+        jbPrevious.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jbPreviousKeyPressed(evt);
             }
         });
 
@@ -52,6 +65,11 @@ public class aeExchangeRate extends javax.swing.JDialog {
                 jbNextActionPerformed(evt);
             }
         });
+        jbNext.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jbNextKeyPressed(evt);
+            }
+        });
 
         jpMovement.add(jbNext);
 
@@ -61,40 +79,86 @@ public class aeExchangeRate extends javax.swing.JDialog {
                 jbLastActionPerformed(evt);
             }
         });
+        jbLast.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jbLastKeyPressed(evt);
+            }
+        });
 
         jpMovement.add(jbLast);
 
-        jLabel1.setText("\u0414\u0430\u0442\u0430:");
+        jlDate.setText("\u0414\u0430\u0442\u0430:");
 
-        jLabel2.setText("\u0412\u0430\u043b\u0443\u0442\u0430:");
+        jtfDate.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfDateFocusLost(evt);
+            }
+        });
+        jtfDate.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfDateKeyPressed(evt);
+            }
+        });
 
-        jLabel3.setText("\u041a\u0443\u0440\u0441:");
+        jlCurrency.setText("\u0412\u0430\u043b\u0443\u0442\u0430:");
+
+        jcbCurrency.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jlValue.setText("\u041a\u0443\u0440\u0441:");
+
+        jtfValue.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfValueFocusLost(evt);
+            }
+        });
+        jtfValue.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfValueKeyPressed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jpDataLayout = new org.jdesktop.layout.GroupLayout(jpData);
         jpData.setLayout(jpDataLayout);
         jpDataLayout.setHorizontalGroup(
             jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.LEADING, jpDataLayout.createSequentialGroup()
-                .add(56, 56, 56)
+                .add(26, 26, 26)
                 .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel3)
-                    .add(jLabel2)
-                    .add(jLabel1)
-                    .add(jpMovement, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 299, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(41, Short.MAX_VALUE))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jpDataLayout.createSequentialGroup()
+                        .add(jlValue)
+                        .add(186, 186, 186))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jpDataLayout.createSequentialGroup()
+                        .add(jlCurrency)
+                        .add(175, 175, 175))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                        .add(org.jdesktop.layout.GroupLayout.LEADING, jpDataLayout.createSequentialGroup()
+                            .add(jlDate)
+                            .add(36, 36, 36)
+                            .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                .add(jcbCurrency, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                                .add(jtfDate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                                .add(jtfValue, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)))
+                        .add(jpMovement, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 213, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .add(33, 33, 33))
         );
         jpDataLayout.setVerticalGroup(
             jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.LEADING, jpDataLayout.createSequentialGroup()
-                .add(40, 40, 40)
-                .add(jLabel1)
                 .add(24, 24, 24)
-                .add(jLabel2)
-                .add(35, 35, 35)
-                .add(jLabel3)
-                .add(33, 33, 33)
+                .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jlDate)
+                    .add(jtfDate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(20, 20, 20)
+                .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jlCurrency)
+                    .add(jcbCurrency, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(22, 22, 22)
+                .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jlValue)
+                    .add(jtfValue, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(32, 32, 32)
                 .add(jpMovement, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         getContentPane().add(jpData, java.awt.BorderLayout.CENTER);
 
@@ -103,6 +167,11 @@ public class aeExchangeRate extends javax.swing.JDialog {
         jbSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbSaveActionPerformed(evt);
+            }
+        });
+        jbSave.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jbSaveKeyPressed(evt);
             }
         });
 
@@ -114,6 +183,11 @@ public class aeExchangeRate extends javax.swing.JDialog {
                 jbUndoActionPerformed(evt);
             }
         });
+        jbUndo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jbUndoKeyPressed(evt);
+            }
+        });
 
         jpControls.add(jbUndo);
 
@@ -123,6 +197,11 @@ public class aeExchangeRate extends javax.swing.JDialog {
                 jbCloseActionPerformed(evt);
             }
         });
+        jbClose.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jbCloseKeyPressed(evt);
+            }
+        });
 
         jpControls.add(jbClose);
 
@@ -130,6 +209,50 @@ public class aeExchangeRate extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jtfDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfDateFocusLost
+        
+    }//GEN-LAST:event_jtfDateFocusLost
+
+    private void jtfDateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfDateKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){  }
+    }//GEN-LAST:event_jtfDateKeyPressed
+
+    private void jtfValueFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfValueFocusLost
+        
+    }//GEN-LAST:event_jtfValueFocusLost
+
+    private void jtfValueKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfValueKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jbSave.doClick(); }
+    }//GEN-LAST:event_jtfValueKeyPressed
+
+    private void jbFirstKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbFirstKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jbFirst.doClick(); }
+    }//GEN-LAST:event_jbFirstKeyPressed
+
+    private void jbPreviousKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbPreviousKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jbPrevious.doClick(); }
+    }//GEN-LAST:event_jbPreviousKeyPressed
+
+    private void jbNextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbNextKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jbNext.doClick(); }
+    }//GEN-LAST:event_jbNextKeyPressed
+
+    private void jbLastKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbLastKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jbLast.doClick(); }
+    }//GEN-LAST:event_jbLastKeyPressed
+
+    private void jbSaveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbSaveKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jbSave.doClick(); }
+    }//GEN-LAST:event_jbSaveKeyPressed
+
+    private void jbUndoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbUndoKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jbUndo.doClick(); }
+    }//GEN-LAST:event_jbUndoKeyPressed
+
+    private void jbCloseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbCloseKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jbClose.doClick(); }
+    }//GEN-LAST:event_jbCloseKeyPressed
 
     private void jbFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFirstActionPerformed
         
@@ -160,9 +283,6 @@ public class aeExchangeRate extends javax.swing.JDialog {
     }//GEN-LAST:event_jbCloseActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JButton jbClose;
     private javax.swing.JButton jbFirst;
     private javax.swing.JButton jbLast;
@@ -170,9 +290,15 @@ public class aeExchangeRate extends javax.swing.JDialog {
     private javax.swing.JButton jbPrevious;
     private javax.swing.JButton jbSave;
     private javax.swing.JButton jbUndo;
+    private javax.swing.JComboBox jcbCurrency;
+    private javax.swing.JLabel jlCurrency;
+    private javax.swing.JLabel jlDate;
+    private javax.swing.JLabel jlValue;
     private javax.swing.JPanel jpControls;
     private javax.swing.JPanel jpData;
     private javax.swing.JPanel jpMovement;
+    private javax.swing.JTextField jtfDate;
+    private javax.swing.JTextField jtfValue;
     // End of variables declaration//GEN-END:variables
     
 }

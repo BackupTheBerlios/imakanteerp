@@ -3,7 +3,6 @@ package nom;
 
 public class dbDoctype extends imakante.com.dbObject {
     
-    private int indexConnOfId[] = null;
     private java.sql.ResultSet rs;
     private java.sql.Statement stmt;
     private java.sql.CallableStatement cstm;

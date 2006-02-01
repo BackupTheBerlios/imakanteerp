@@ -3,6 +3,17 @@ package imakante.sales;
 
 public class dbExchangeRate extends imakante.com.dbObject {
     
+    private int indexConnOfId[] = null;
+    private java.sql.ResultSet rs;
+    private java.sql.Statement stmt;
+    private java.sql.CallableStatement cstm;
+    private int comprator = 1;
+    private int id = 0;
+    private int code = 0;
+    private String name;
+    private String printName;
+    private java.sql.Connection conn;
+    
     public dbExchangeRate(java.sql.Connection conn) {
         super(conn);
         prepareCStm();
@@ -10,7 +21,7 @@ public class dbExchangeRate extends imakante.com.dbObject {
     
     private void prepareCStm() {
         try {
-            setCstm(getConn().prepareCall("{call nom_procedure_doctype(?,?,?,?,?)}"));
+            setCstm(getConn().prepareCall("{call sl_procedure_exchange_rate(?,?,?,?,?)}"));
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
@@ -18,9 +29,9 @@ public class dbExchangeRate extends imakante.com.dbObject {
         try {
             getCstm().setInt("in_id", getId());
             getCstm().setInt("comprator", getComprator());
-            getCstm().setInt("in_code", getCode());
-            getCstm().setString("in_name", getName());
-            getCstm().setString("in_print_name", getPrintName());
+            getCstm().setInt("in_date", getDate());
+            getCstm().setString("in_money", get());
+            getCstm().setDouble("in_value", getValue());
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
