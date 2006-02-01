@@ -1,5 +1,5 @@
 
-package imakante.sales;
+package nom;
 
 import imakante.com.vcomponents.iInternalFrame;
 import javax.swing.*;
