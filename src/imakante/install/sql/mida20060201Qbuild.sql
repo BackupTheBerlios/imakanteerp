@@ -769,13 +769,12 @@ CREATE TABLE `sl_contragent_product` (
 # Table structure for table sl_curs
 #
 
-CREATE TABLE `sl_curs` (
-  `id_sl_curs` int(10) unsigned NOT NULL auto_increment,
-  `data_time_sl_curs` date default NULL,
+CREATE TABLE `sl_exchange_rate` (
+  `id_sl_exchange_rate` int(10) unsigned NOT NULL auto_increment,
+  `date_sl_exchange_rate` date default NULL,
   `id_n_money` int(11) default NULL,
-  `value_sl_curs` decimal(10,0) default NULL,
-  PRIMARY KEY  (`id_sl_curs`),
-  KEY `sl_curs_FKIndex1` (`id_n_money`)
+  `value_sl_exchange_rate` decimal(10,0) default NULL,
+  PRIMARY KEY  (`id_sl_exchange_rate`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='kursove na valutite';
 
 
