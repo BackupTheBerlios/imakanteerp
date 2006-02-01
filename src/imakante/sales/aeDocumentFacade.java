@@ -1,5 +1,5 @@
 
-package nom;
+package imakante.sales;
 
 import imakante.com.vcomponents.iInternalFrame;
 import javax.swing.*;
@@ -71,6 +71,8 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
         jTextFieldAddress = new javax.swing.JTextField();
         jTextFieldContTel = new javax.swing.JTextField();
         jTextFieldProsro4vane = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jTextFieldObektMOL = new javax.swing.JTextField();
         jPanelObekt = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -80,9 +82,6 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
         jTextFieldObektName = new javax.swing.JTextField();
         jTextFieldObektTel = new javax.swing.JTextField();
         jTextFieldObektAddress = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel15 = new javax.swing.JLabel();
-        jTextFieldObektMOL = new javax.swing.JTextField();
         jPanelInfo = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jTextFieldDistr = new javax.swing.JTextField();
@@ -106,6 +105,18 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
         jPanel4 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -182,305 +193,301 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
 
         jPanel3.add(jButtonToEnd);
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 900, -1, -1));
-
-        jPanelHead.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, 250, 60));
 
         jPanelHead.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel1.setText("\u041d\u043e\u043c\u0435\u0440 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442:");
-        jPanelHead.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         jLabel2.setText("\u0414\u0430\u0442\u0430:");
-        jPanelHead.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, -1));
 
         jLabelDocType.setFont(new java.awt.Font("Tahoma", 0, 24));
         jLabelDocType.setText("\u0421\u0422\u041e\u041a\u041e\u0412\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410");
-        jPanelHead.add(jLabelDocType, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, -1));
 
-        jPanelHead.add(jTextFieldNomerDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 120, -1));
-
-        jPanelHead.add(jTextFieldDateDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 120, -1));
-
-        jPanel2.add(jPanelHead, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 520, 110));
-
-        jPanelContragent.setLayout(new java.awt.GridBagLayout());
+        org.jdesktop.layout.GroupLayout jPanelHeadLayout = new org.jdesktop.layout.GroupLayout(jPanelHead);
+        jPanelHead.setLayout(jPanelHeadLayout);
+        jPanelHeadLayout.setHorizontalGroup(
+            jPanelHeadLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelHeadLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanelHeadLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jLabel2)
+                    .add(jLabel1))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanelHeadLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jTextFieldDateDoc, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 120, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jTextFieldNomerDoc, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 120, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(12, 12, 12)
+                .add(jLabelDocType)
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+        jPanelHeadLayout.setVerticalGroup(
+            jPanelHeadLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelHeadLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanelHeadLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jTextFieldNomerDoc, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel1))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanelHeadLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel2)
+                    .add(jTextFieldDateDoc, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelHeadLayout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .add(jLabelDocType)
+                .addContainerGap())
+        );
+        jPanel2.add(jPanelHead, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 480, 60));
 
         jPanelContragent.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel3.setText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442 No:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 20, 5, 5);
-        jPanelContragent.add(jLabel3, gridBagConstraints);
 
         jLabel4.setText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442 \u0438\u043c\u0435:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 20, 5, 5);
-        jPanelContragent.add(jLabel4, gridBagConstraints);
 
         jLabel5.setText("\u0411\u0443\u043b\u0441\u0442\u0430\u0442:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 5);
-        jPanelContragent.add(jLabel5, gridBagConstraints);
 
         jLabel6.setText("\u0414\u0430\u043d.No:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 5);
-        jPanelContragent.add(jLabel6, gridBagConstraints);
 
         jLabel7.setText("\u0437\u0430\u0434\u044a\u043b\u0436\u0435\u043d\u0438\u044f:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 20, 20, 5);
-        jPanelContragent.add(jLabel7, gridBagConstraints);
 
         jLabel8.setText("\u0410\u0434\u0440\u0435\u0441:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 5);
-        jPanelContragent.add(jLabel8, gridBagConstraints);
 
         jLabel9.setText("\u0422\u0435\u043b:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 5);
-        jPanelContragent.add(jLabel9, gridBagConstraints);
 
         jLabel10.setText("\u041f\u0440\u043e\u0441\u0440\u043e\u0447\u0432\u0430\u043d\u0435:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 20, 20, 5);
-        jPanelContragent.add(jLabel10, gridBagConstraints);
 
         jTextFieldContrName.setPreferredSize(new java.awt.Dimension(80, 20));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 53;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 20);
-        jPanelContragent.add(jTextFieldContrName, gridBagConstraints);
 
         jTextFieldBulstat.setPreferredSize(new java.awt.Dimension(80, 20));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 53;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanelContragent.add(jTextFieldBulstat, gridBagConstraints);
 
         jTextFieldDanNomer.setPreferredSize(new java.awt.Dimension(80, 20));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = 53;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanelContragent.add(jTextFieldDanNomer, gridBagConstraints);
 
         jTextFieldZadylveniq.setPreferredSize(new java.awt.Dimension(80, 20));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.ipadx = 53;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 20, 5);
-        jPanelContragent.add(jTextFieldZadylveniq, gridBagConstraints);
 
         jTextFieldConNom.setPreferredSize(new java.awt.Dimension(80, 20));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 53;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 5);
-        jPanelContragent.add(jTextFieldConNom, gridBagConstraints);
 
         jTextFieldAddress.setPreferredSize(new java.awt.Dimension(80, 20));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 53;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
-        jPanelContragent.add(jTextFieldAddress, gridBagConstraints);
 
         jTextFieldContTel.setMinimumSize(new java.awt.Dimension(80, 20));
         jTextFieldContTel.setPreferredSize(new java.awt.Dimension(80, 20));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = 53;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
-        jPanelContragent.add(jTextFieldContTel, gridBagConstraints);
 
         jTextFieldProsro4vane.setPreferredSize(new java.awt.Dimension(80, 20));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.ipadx = 53;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 20, 20);
-        jPanelContragent.add(jTextFieldProsro4vane, gridBagConstraints);
 
-        jPanel2.add(jPanelContragent, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 520, 160));
+        jLabel15.setText("\u041c\u041e\u041b \u0438\u043c\u0435:");
 
-        jPanelObekt.setLayout(new java.awt.GridBagLayout());
+        jTextFieldObektMOL.setPreferredSize(new java.awt.Dimension(80, 20));
+
+        org.jdesktop.layout.GroupLayout jPanelContragentLayout = new org.jdesktop.layout.GroupLayout(jPanelContragent);
+        jPanelContragent.setLayout(jPanelContragentLayout);
+        jPanelContragentLayout.setHorizontalGroup(
+            jPanelContragentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelContragentLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanelContragentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jLabel3)
+                    .add(jPanelContragentLayout.createSequentialGroup()
+                        .add(jPanelContragentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(jLabel6)
+                            .add(jLabel5)
+                            .add(jLabel7))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanelContragentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(jPanelContragentLayout.createSequentialGroup()
+                        .add(jTextFieldConNom, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(12, 12, 12)
+                        .add(jLabel4))
+                    .add(jPanelContragentLayout.createSequentialGroup()
+                        .add(jTextFieldBulstat, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(jLabel8))
+                    .add(jPanelContragentLayout.createSequentialGroup()
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jPanelContragentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jPanelContragentLayout.createSequentialGroup()
+                                .add(jTextFieldZadylveniq, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 27, Short.MAX_VALUE)
+                                .add(jLabel10))
+                            .add(jPanelContragentLayout.createSequentialGroup()
+                                .add(jTextFieldDanNomer, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 49, Short.MAX_VALUE)
+                                .add(jLabel15)))))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanelContragentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanelContragentLayout.createSequentialGroup()
+                        .add(jTextFieldProsro4vane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel9)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jTextFieldContTel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jPanelContragentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                        .add(org.jdesktop.layout.GroupLayout.LEADING, jTextFieldContrName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(org.jdesktop.layout.GroupLayout.LEADING, jTextFieldAddress, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(org.jdesktop.layout.GroupLayout.LEADING, jTextFieldObektMOL, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)))
+                .add(21, 21, 21))
+        );
+        jPanelContragentLayout.setVerticalGroup(
+            jPanelContragentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelContragentLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanelContragentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel3)
+                    .add(jTextFieldConNom, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel4)
+                    .add(jTextFieldContrName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanelContragentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel5)
+                    .add(jTextFieldBulstat, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel8)
+                    .add(jTextFieldAddress, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanelContragentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel6)
+                    .add(jTextFieldDanNomer, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel15)
+                    .add(jTextFieldObektMOL, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanelContragentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel7)
+                    .add(jTextFieldZadylveniq, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel10)
+                    .add(jTextFieldProsro4vane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel9)
+                    .add(jTextFieldContTel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2.add(jPanelContragent, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 730, 120));
 
         jPanelObekt.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel11.setText("\u041e\u0431\u0435\u043a\u0442 No:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 20, 5, 5);
-        jPanelObekt.add(jLabel11, gridBagConstraints);
 
         jLabel12.setText("\u0422\u0435\u043b.:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 20, 10, 5);
-        jPanelObekt.add(jLabel12, gridBagConstraints);
 
         jLabel13.setText("\u0418\u043c\u0435:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 20, 5, 5);
-        jPanelObekt.add(jLabel13, gridBagConstraints);
 
         jLabel14.setText("\u0410\u0434\u0440\u0435\u0441:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 20, 10, 5);
-        jPanelObekt.add(jLabel14, gridBagConstraints);
 
         jTextFieldObektNo.setPreferredSize(new java.awt.Dimension(80, 20));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 53;
-        gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 5);
-        jPanelObekt.add(jTextFieldObektNo, gridBagConstraints);
 
         jTextFieldObektName.setPreferredSize(new java.awt.Dimension(80, 20));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 53;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 20);
-        jPanelObekt.add(jTextFieldObektName, gridBagConstraints);
 
         jTextFieldObektTel.setPreferredSize(new java.awt.Dimension(80, 20));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 53;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 10, 5);
-        jPanelObekt.add(jTextFieldObektTel, gridBagConstraints);
 
         jTextFieldObektAddress.setPreferredSize(new java.awt.Dimension(80, 20));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 53;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 10, 20);
-        jPanelObekt.add(jTextFieldObektAddress, gridBagConstraints);
 
-        jSeparator1.setPreferredSize(new java.awt.Dimension(350, 10));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
-        gridBagConstraints.ipadx = 50;
-        gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 20);
-        jPanelObekt.add(jSeparator1, gridBagConstraints);
-
-        jLabel15.setText("\u041c\u041e\u041b \u0438\u043c\u0435:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 20, 20, 5);
-        jPanelObekt.add(jLabel15, gridBagConstraints);
-
-        jTextFieldObektMOL.setPreferredSize(new java.awt.Dimension(80, 20));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 53;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 5, 20, 20);
-        jPanelObekt.add(jTextFieldObektMOL, gridBagConstraints);
-
-        jPanel2.add(jPanelObekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 520, 160));
-
-        jPanelInfo.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 15));
+        org.jdesktop.layout.GroupLayout jPanelObektLayout = new org.jdesktop.layout.GroupLayout(jPanelObekt);
+        jPanelObekt.setLayout(jPanelObektLayout);
+        jPanelObektLayout.setHorizontalGroup(
+            jPanelObektLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelObektLayout.createSequentialGroup()
+                .add(39, 39, 39)
+                .add(jPanelObektLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jLabel11)
+                    .add(jLabel12))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanelObektLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jTextFieldObektNo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jTextFieldObektTel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(62, 62, 62)
+                .add(jPanelObektLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel13)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel14))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanelObektLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jTextFieldObektAddress, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+                    .add(jTextFieldObektName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanelObektLayout.setVerticalGroup(
+            jPanelObektLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelObektLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanelObektLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanelObektLayout.createSequentialGroup()
+                        .add(jPanelObektLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel13)
+                            .add(jTextFieldObektName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jPanelObektLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel14)
+                            .add(jTextFieldObektAddress, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                    .add(jPanelObektLayout.createSequentialGroup()
+                        .add(jPanelObektLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel11)
+                            .add(jTextFieldObektNo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jPanelObektLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jTextFieldObektTel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel12))))
+                .add(59, 59, 59))
+        );
+        jPanel2.add(jPanelObekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 730, 70));
 
         jPanelInfo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel16.setText("\u0414\u0438\u0441\u0442\u0440.:");
-        jPanelInfo.add(jLabel16);
 
         jTextFieldDistr.setPreferredSize(new java.awt.Dimension(100, 20));
-        jPanelInfo.add(jTextFieldDistr);
 
         jLabel17.setText("\u0414\u043e\u0441\u0442.:");
-        jPanelInfo.add(jLabel17);
 
         jTextFieldDeliver.setPreferredSize(new java.awt.Dimension(100, 20));
-        jPanelInfo.add(jTextFieldDeliver);
 
-        jLabel18.setText("\u0414\u0430\u0442\u0430:");
-        jPanelInfo.add(jLabel18);
+        jLabel18.setText("\u0414\u0430\u0442\u0430 \u043d\u0430 \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0430:");
 
         jTextField1.setMinimumSize(new java.awt.Dimension(80, 20));
         jTextField1.setPreferredSize(new java.awt.Dimension(80, 20));
-        jPanelInfo.add(jTextField1);
 
-        jPanel2.add(jPanelInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 520, 50));
+        org.jdesktop.layout.GroupLayout jPanelInfoLayout = new org.jdesktop.layout.GroupLayout(jPanelInfo);
+        jPanelInfo.setLayout(jPanelInfoLayout);
+        jPanelInfoLayout.setHorizontalGroup(
+            jPanelInfoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelInfoLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel16)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jTextFieldDistr, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 66, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel17)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jTextFieldDeliver, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel18)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(96, 96, 96))
+        );
+        jPanelInfoLayout.setVerticalGroup(
+            jPanelInfoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelInfoLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanelInfoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel16)
+                    .add(jTextFieldDistr, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel17)
+                    .add(jTextFieldDeliver, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel18)
+                    .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+        jPanel2.add(jPanelInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 460, 50));
 
         jPanelDocLine.setLayout(new javax.swing.BoxLayout(jPanelDocLine, javax.swing.BoxLayout.X_AXIS));
 
         jPanelDocLine.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Номер продукт", "Име на продукт", "Номер склад", "Цена 1", "Цена 2", "Цена 3", "Р-ка основна", "Разфасовка 1", "Разфасовка 2", "Ед. цена", "Процент отстъпка", "ДДС", "Общо линия"
+                "Номер продукт", "Име на продукт", "Номер склад", "Ценова листа", "Р-ка основна", "Разфасовка 1", "Разфасовка 2", "Ед. цена", "Процент отстъпка", "ДДС", "Общо линия"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false, false, false, false, false, false, false, false, false
+                true, false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -496,78 +503,199 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
 
         jPanelDocLine.add(jScrollPane2);
 
-        jPanel2.add(jPanelDocLine, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, 520, 90));
-
-        jPanelPrice.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 15));
+        jPanel2.add(jPanelDocLine, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 730, 160));
 
         jPanelPrice.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel19.setText("\u0412\u0438\u0434 \u043f\u043b\u0430\u0449\u0430\u043d\u0435:");
-        jPanelPrice.add(jLabel19);
 
         jComboBoxVidPla6tane.setPreferredSize(new java.awt.Dimension(100, 20));
-        jPanelPrice.add(jComboBoxVidPla6tane);
 
         jLabel20.setText("\u0414\u0414\u0421:");
-        jPanelPrice.add(jLabel20);
 
         jTextFieldDDS.setPreferredSize(new java.awt.Dimension(100, 20));
-        jPanelPrice.add(jTextFieldDDS);
 
-        jPanel2.add(jPanelPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 690, 520, 50));
-
-        jPanelUser.setLayout(new java.awt.GridBagLayout());
+        org.jdesktop.layout.GroupLayout jPanelPriceLayout = new org.jdesktop.layout.GroupLayout(jPanelPrice);
+        jPanelPrice.setLayout(jPanelPriceLayout);
+        jPanelPriceLayout.setHorizontalGroup(
+            jPanelPriceLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelPriceLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel19)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jComboBoxVidPla6tane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel20)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jTextFieldDDS, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(196, 196, 196))
+        );
+        jPanelPriceLayout.setVerticalGroup(
+            jPanelPriceLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelPriceLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanelPriceLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel19)
+                    .add(jLabel20)
+                    .add(jTextFieldDDS, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jComboBoxVidPla6tane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+        jPanel2.add(jPanelPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 340, 60));
 
         jPanelUser.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel21.setText("\u0418\u0437\u0434\u0430\u043b:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 20, 0, 0);
-        jPanelUser.add(jLabel21, gridBagConstraints);
 
         jTextField2.setPreferredSize(new java.awt.Dimension(80, 20));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 209;
-        gridBagConstraints.ipady = -1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 5, 0, 0);
-        jPanelUser.add(jTextField2, gridBagConstraints);
 
         jLabel22.setText("\u041f\u043e\u0441\u043b\u0435\u0434\u043d\u0430 \u043f\u0440\u0435\u0440\u0430\u0431\u043e\u0442\u043a\u0430:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 20, 20, 5);
-        jPanelUser.add(jLabel22, gridBagConstraints);
 
         jTextFieldDDS1.setPreferredSize(new java.awt.Dimension(100, 20));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 209;
-        gridBagConstraints.ipady = -1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 20, 20);
-        jPanelUser.add(jTextFieldDDS1, gridBagConstraints);
 
-        jPanel2.add(jPanelUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 750, 520, 70));
-
-        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 15));
+        org.jdesktop.layout.GroupLayout jPanelUserLayout = new org.jdesktop.layout.GroupLayout(jPanelUser);
+        jPanelUser.setLayout(jPanelUserLayout);
+        jPanelUserLayout.setHorizontalGroup(
+            jPanelUserLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelUserLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel21)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 163, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel22)
+                .add(89, 89, 89)
+                .add(jTextFieldDDS1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 165, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(140, 140, 140))
+        );
+        jPanelUserLayout.setVerticalGroup(
+            jPanelUserLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelUserLayout.createSequentialGroup()
+                .add(8, 8, 8)
+                .add(jPanelUserLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel21)
+                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 18, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel22)
+                    .add(jTextFieldDDS1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 18, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(23, 23, 23))
+        );
+        jPanel2.add(jPanelUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 730, 40));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel23.setText("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440:");
-        jPanel4.add(jLabel23);
 
         jTextField3.setPreferredSize(new java.awt.Dimension(300, 20));
-        jPanel4.add(jTextField3);
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 830, 520, 50));
+        org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel23)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel23)
+                    .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 580, 730, 50));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 980));
+        jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel24.setText("\u0414\u0430\u043d\u044a\u0447\u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0430:");
+
+        jLabel25.setText("\u0414\u0414\u0421:");
+
+        jLabel26.setText("100.00");
+
+        jLabel27.setText("20.00");
+
+        jLabel28.setFont(new java.awt.Font("Tahoma", 1, 11));
+        jLabel28.setText("\u041e\u0411\u0429\u041e");
+
+        jLabel29.setFont(new java.awt.Font("Tahoma", 1, 11));
+        jLabel29.setText("120.0000");
+
+        org.jdesktop.layout.GroupLayout jPanel5Layout = new org.jdesktop.layout.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel5Layout.createSequentialGroup()
+                .add(10, 10, 10)
+                .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jLabel24)
+                    .add(jLabel25))
+                .add(46, 46, 46)
+                .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel26)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel27))
+                .add(39, 39, 39)
+                .add(jLabel28)
+                .add(61, 61, 61)
+                .add(jLabel29, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 64, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel5Layout.createSequentialGroup()
+                .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel25)
+                    .add(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel28)
+                            .add(jLabel29)
+                            .add(jLabel27))))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel24)
+                    .add(jLabel26))
+                .add(21, 21, 21))
+        );
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 480, 390, 60));
+
+        jButton1.setText("\u0418\u0417\u041f\u042a\u041b\u041d\u0418");
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 640, -1, -1));
+
+        jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel30.setText("\u041d\u0430\u043b\u0438\u0447\u043d\u0438:");
+
+        jLabel31.setText("50000");
+
+        jLabel32.setText("2500000");
+
+        org.jdesktop.layout.GroupLayout jPanel6Layout = new org.jdesktop.layout.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jLabel32)
+                    .add(jPanel6Layout.createSequentialGroup()
+                        .add(jLabel30)
+                        .add(32, 32, 32)
+                        .add(jLabel31)))
+                .addContainerGap(137, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel6Layout.createSequentialGroup()
+                .add(jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel30)
+                    .add(jLabel31))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jLabel32)
+                .addContainerGap())
+        );
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 270, 270, 50));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -20, 1050, 980));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -681,6 +809,7 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonClose;
     private javax.swing.JButton jButtonOneRowM;
     private javax.swing.JButton jButtonOneRowP;
@@ -705,7 +834,16 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -717,6 +855,8 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanelContragent;
     private javax.swing.JPanel jPanelDocLine;
     private javax.swing.JPanel jPanelHead;
@@ -726,6 +866,7 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
     private javax.swing.JPanel jPanelUser;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
