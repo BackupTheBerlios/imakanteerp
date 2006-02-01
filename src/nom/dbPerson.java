@@ -3,7 +3,7 @@ package nom;
 
 public class dbPerson extends imakante.com.dbObject {
     
-    // --- Custom Members --- //
+        // --- Custom Members --- //
     private java.sql.Connection conn;
     private java.sql.ResultSet rs;
     private java.sql.Statement Stm;
