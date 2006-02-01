@@ -864,6 +864,21 @@ CREATE TABLE `sl_n_obekt` (
   PRIMARY KEY  (`Id_sno`),
   KEY `Customer` (`Id_cust`),
   KEY `sl_n_obekt_FKIndex1` (`id_ls_n_person`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+
+
+#
+# Table structure for table sl_nalichnosti
+#
+
+CREATE TABLE `sl_nalichnosti` (
+  `id_nal` int(11) NOT NULL auto_increment,
+  `id_pc` int(11) unsigned default NULL COMMENT 'partidni nomera',
+  `level` tinyint(3) unsigned default NULL,
+  `quant_nal` int(11) unsigned default NULL,
+  `quant_rezerv_nal` int(11) unsigned default NULL,
+  PRIMARY KEY  (`id_nal`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 
@@ -1664,13 +1679,6 @@ BEGIN
      END IF;
 
 END;
-
-#
-#  Foreign keys for table sl_n_obekt
-#
-
-ALTER TABLE `sl_n_obekt`
-  ADD FOREIGN KEY (`id_ls_n_person`) REFERENCES `ls_n_person` (`id_ls_n_person`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
