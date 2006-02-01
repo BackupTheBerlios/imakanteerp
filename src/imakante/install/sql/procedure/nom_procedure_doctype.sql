@@ -13,7 +13,7 @@ BEGIN
 
      IF (comprator = 2) THEN
         UPDATE n_type_doc SET code_ntd = in_code, name_ntd = in_name, name_print_ntd = in_print_name
-           WHERE n_typedoc.id_ntd = in_id;
+           WHERE n_type_doc.id_ntd = in_id;
      END IF;
 
      IF (comprator = 3) THEN
