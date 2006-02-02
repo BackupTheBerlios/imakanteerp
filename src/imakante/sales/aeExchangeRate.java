@@ -29,7 +29,6 @@ public class aeExchangeRate extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jpData.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jpData.setFont(new java.awt.Font("Tahoma", 0, 11));
         jpMovement.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u041d\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u044f"));
         jbFirst.setText("<<");
         jbFirst.addActionListener(new java.awt.event.ActionListener() {
@@ -121,29 +120,30 @@ public class aeExchangeRate extends javax.swing.JDialog {
         jpData.setLayout(jpDataLayout);
         jpDataLayout.setHorizontalGroup(
             jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, jpDataLayout.createSequentialGroup()
+            .add(jpDataLayout.createSequentialGroup()
                 .add(26, 26, 26)
                 .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jpDataLayout.createSequentialGroup()
+                    .add(jpDataLayout.createSequentialGroup()
                         .add(jlValue)
                         .add(186, 186, 186))
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jpDataLayout.createSequentialGroup()
+                    .add(jpDataLayout.createSequentialGroup()
                         .add(jlCurrency)
                         .add(175, 175, 175))
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                        .add(org.jdesktop.layout.GroupLayout.LEADING, jpDataLayout.createSequentialGroup()
-                            .add(jlDate)
-                            .add(36, 36, 36)
-                            .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                .add(jcbCurrency, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-                                .add(jtfDate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-                                .add(jtfValue, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)))
-                        .add(jpMovement, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 213, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .add(33, 33, 33))
+                    .add(jpDataLayout.createSequentialGroup()
+                        .add(jlDate)
+                        .add(36, 36, 36)
+                        .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jcbCurrency, 0, 159, Short.MAX_VALUE)
+                            .add(jtfDate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                            .add(jtfValue, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jpDataLayout.createSequentialGroup()
+                        .add(jpMovement, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)))
+                .add(39, 39, 39))
         );
         jpDataLayout.setVerticalGroup(
             jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, jpDataLayout.createSequentialGroup()
+            .add(jpDataLayout.createSequentialGroup()
                 .add(24, 24, 24)
                 .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jlDate)
@@ -158,11 +158,10 @@ public class aeExchangeRate extends javax.swing.JDialog {
                     .add(jtfValue, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(32, 32, 32)
                 .add(jpMovement, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         getContentPane().add(jpData, java.awt.BorderLayout.CENTER);
 
-        jpControls.setFont(new java.awt.Font("Tahoma", 0, 11));
         jbSave.setText("\u0421\u044a\u0445\u0440\u0430\u043d\u0438");
         jbSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

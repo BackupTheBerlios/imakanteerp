@@ -21,16 +21,17 @@ public class dbExchangeRate extends imakante.com.dbObject {
     
     private void prepareCStm() {
         try {
-            setCstm(getConn().prepareCall("{call sl_procedure_exchange_rate(?,?,?,?,?)}"));
+            setCstm(getConn().prepareCall("{call sl_procedure_exchange_rate(?,?,?,?,?,?)}"));
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
     private void registerParameters() {
         try {
-            getCstm().setInt("in_id", getId());
             getCstm().setInt("comprator", getComprator());
+            getCstm().setInt("in_id", getId());
             getCstm().setInt("in_date", getDate());
-            getCstm().setString("in_money", get());
+            getCstm().setString("in_id_money", get());
+            getCstm().setString("in_cod_money", get());
             getCstm().setDouble("in_value", getValue());
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
