@@ -23,13 +23,11 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
         jbClose = new javax.swing.JButton();
 
         jpTop.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jpTop.setFont(new java.awt.Font("Tahoma", 0, 11));
-        jpTop.setPreferredSize(new java.awt.Dimension(14, 14));
         org.jdesktop.layout.GroupLayout jpTopLayout = new org.jdesktop.layout.GroupLayout(jpTop);
         jpTop.setLayout(jpTopLayout);
         jpTopLayout.setHorizontalGroup(
             jpTopLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 770, Short.MAX_VALUE)
+            .add(0, 741, Short.MAX_VALUE)
         );
         jpTopLayout.setVerticalGroup(
             jpTopLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -40,15 +38,11 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
         jpMiddle.setLayout(new java.awt.BorderLayout());
 
         jpMiddle.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jpMiddle.setFont(new java.awt.Font("Tahoma", 0, 11));
-        jspData.setFont(new java.awt.Font("Tahoma", 0, 11));
         jpMiddle.add(jspData, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(jpMiddle, java.awt.BorderLayout.CENTER);
 
         jpBottom.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jpBottom.setFont(new java.awt.Font("Tahoma", 0, 11));
-        jbNew.setFont(new java.awt.Font("Tahoma", 0, 11));
         jbNew.setText("\u041d\u043e\u0432");
         jbNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,7 +52,6 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
 
         jpBottom.add(jbNew);
 
-        jbEdit.setFont(new java.awt.Font("Tahoma", 0, 11));
         jbEdit.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f");
         jbEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,7 +61,6 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
 
         jpBottom.add(jbEdit);
 
-        jbPrint.setFont(new java.awt.Font("Tahoma", 0, 11));
         jbPrint.setText("\u041f\u0435\u0447\u0430\u0442");
         jbPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,7 +70,6 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
 
         jpBottom.add(jbPrint);
 
-        jbPrintReport.setFont(new java.awt.Font("Tahoma", 0, 11));
         jbPrintReport.setText("\u041f\u0435\u0447\u0430\u0442 \u0420\u0430\u043f\u043e\u0440\u0442");
         jbPrintReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,7 +79,6 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
 
         jpBottom.add(jbPrintReport);
 
-        jbRefresh.setFont(new java.awt.Font("Tahoma", 0, 11));
         jbRefresh.setText("\u0412\u0441\u0438\u0447\u043a\u0438 \u0437\u0430\u043f\u0438\u0441\u0438");
         jbRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,7 +88,6 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
 
         jpBottom.add(jbRefresh);
 
-        jbDelete.setFont(new java.awt.Font("Tahoma", 0, 11));
         jbDelete.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
         jbDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,7 +97,6 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
 
         jpBottom.add(jbDelete);
 
-        jbDropData.setFont(new java.awt.Font("Tahoma", 0, 11));
         jbDropData.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435 \u0442\u0430\u0431\u043b\u0438\u0446\u0430");
         jbDropData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,7 +106,6 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
 
         jpBottom.add(jbDropData);
 
-        jbClose.setFont(new java.awt.Font("Tahoma", 0, 11));
         jbClose.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
         jbClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
