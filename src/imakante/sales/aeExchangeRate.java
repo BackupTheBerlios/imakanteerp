@@ -1,9 +1,9 @@
 
 package imakante.sales;
 
-public class aeExchangeRate extends javax.swing.JDialog {
+public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
     
-    public aeExchangeRate(java.awt.Frame parent, boolean modal) {
+    public aeExchangeRate(imakante.com.vcomponents.iInternalFrame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }

@@ -29,10 +29,10 @@ public class dbExchangeRate extends imakante.com.dbObject {
         try {
             getCstm().setInt("comprator", getComprator());
             getCstm().setInt("in_id", getId());
-            getCstm().setInt("in_date", getDate());
+            /*getCstm().setInt("in_date", getDate());
             getCstm().setString("in_id_money", get());
             getCstm().setString("in_cod_money", get());
-            getCstm().setDouble("in_value", getValue());
+            getCstm().setDouble("in_value", getValue());*/
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     

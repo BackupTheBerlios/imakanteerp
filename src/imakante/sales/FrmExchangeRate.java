@@ -3,7 +3,9 @@ package imakante.sales;
 
 public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
-    public FrmExchangeRate() {
+    public FrmExchangeRate(String title, imakante.com.vcomponents.iFrame frame) {
+        super(title);
+        thisFrame = frame;
         initComponents();
     }
     
@@ -27,7 +29,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
         jpTop.setLayout(jpTopLayout);
         jpTopLayout.setHorizontalGroup(
             jpTopLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 741, Short.MAX_VALUE)
+            .add(0, 811, Short.MAX_VALUE)
         );
         jpTopLayout.setVerticalGroup(
             jpTopLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -43,6 +45,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
         getContentPane().add(jpMiddle, java.awt.BorderLayout.CENTER);
 
         jpBottom.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jpBottom.setFont(new java.awt.Font("Tahoma", 0, 11));
         jbNew.setText("\u041d\u043e\u0432");
         jbNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,7 +73,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
 
         jpBottom.add(jbPrint);
 
-        jbPrintReport.setText("\u041f\u0435\u0447\u0430\u0442 \u0420\u0430\u043f\u043e\u0440\u0442");
+        jbPrintReport.setText("\u041f\u0435\u0447\u0430\u0442 \u041e\u0442\u0447\u0435\u0442");
         jbPrintReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbPrintReportActionPerformed(evt);
@@ -152,6 +155,34 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
         unload();
     }//GEN-LAST:event_jbCloseActionPerformed
 
+    private void newRecord() {
+        
+    }
+    
+    private void editRecord() {
+        
+    }
+    
+    private void printTable() {
+        
+    }
+    
+    private void printReport() {
+        
+    }
+    
+    private void refreshTable() {
+        
+    }
+    
+    private void deleteRecord() {
+        
+    }
+    
+    private void clearTable() {
+        
+    }
+    
     public void windowOpened(java.awt.event.WindowEvent e) {
     }
     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -183,5 +214,24 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     private javax.swing.JScrollPane jspData;
     // End of variables declaration//GEN-END:variables
     
+    private  imakante.com.vcomponents.iFrame thisFrame;
+    private  java.sql.Connection conn;
+    private  java.sql.ResultSet rs;
+    private  nom.dbPerson internalObject;
+    private  imakante.com.CustomTableModel model;
+    private  imakante.com.CustomTable table;
     
+    
+    private void unload() {
+        closeResource();
+        this.dispose();
+    }
+    
+    protected void closeResource() {
+        try{
+            rs.close();
+        } catch(java.sql.SQLException sqle) {  }
+        rs = null;
+        internalObject.close();
+    }
 }
