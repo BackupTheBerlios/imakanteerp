@@ -703,8 +703,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     public boolean isStartFrmContragent = false; // FLAG dali da se startira FrmContagent,
     //promenq se i ot FrmContragent pri zatvarqne
     // na FrmContragent
-    
-    
+    private boolean levelActivate = false;
+    private int currentLevel = 1;
     
     private void loadConn(){
         dbConn = imakante.com.NewMain.getConnection();
