@@ -219,7 +219,11 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     private  nom.casaDB internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
-    
+    public static final String Names[] = {"id",
+    "\u041d\u043e\u043c\u0435\u0440 \u0433\u0440\u0443\u043f\u0430",
+    "\u041a\u043e\u0434\u043e\u0432\u0435",
+    "\u0418\u043c\u0435\u043d\u0430",
+    "\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440"};
     //---------------END My Variables
     
     //---------------START Methods
@@ -242,9 +246,9 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     private void initTable() {  //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
         try {
             rs = internalObject.getTable();
-            model = new imakante.com.CustomTableModel(getConn(), rs, null);
+            model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
-            // da se napravqt skriti kolona "id" i kolona "nom"
+            HideColumns(0);
         } catch(Exception e) { e.printStackTrace(); }
         table.requestFocus();
         try {
@@ -371,12 +375,8 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     public  void mTableEnd() {
         setRow(getMaxRow());
         try{
-            setId((Integer) table.getValueAt(getRow(), 0));
-            setIDG((Integer) table.getValueAt(getRow(), 1));
-            setCod((Integer) table.getValueAt(getRow(), 3));
-            setNames((String) table.getValueAt(getRow(), 4));
-            setComment((String) table.getValueAt(getRow(), 5));
-            table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
+           setAllVariables();
+           table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
             System.out.println("problem");
@@ -392,11 +392,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
             }
             setAtBegining(false);
             try {
-                setId((Integer) table.getValueAt(getRow(), 0));
-                setIDG((Integer) table.getValueAt(getRow(), 1));
-                setCod((Integer) table.getValueAt(getRow(), 3));
-                setNames((String) table.getValueAt(getRow(), 4));
-                setComment((String) table.getValueAt(getRow(), 5));
+                setAllVariables();
                 table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
             } catch(ArrayIndexOutOfBoundsException aioobe) {
                 setRow(getRow() - 1);
@@ -415,11 +411,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
             }
             setAtEnd(false);
             try {
-                setId((Integer) table.getValueAt(getRow(), 0));
-                setIDG((Integer) table.getValueAt(getRow(), 1));
-                setCod((Integer) table.getValueAt(getRow(), 3));
-                setNames((String) table.getValueAt(getRow(), 4));
-                setComment((String) table.getValueAt(getRow(), 5));
+                setAllVariables();
                 table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
             } catch(ArrayIndexOutOfBoundsException aioobe) {
                 setRow(getRow() + 1);
@@ -434,11 +426,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     public void mTableBegining() {
         setRow(0);
         try {
-            setId((Integer) table.getValueAt(getRow(), 0));
-            setIDG((Integer) table.getValueAt(getRow(), 1));
-            setCod((Integer) table.getValueAt(getRow(), 3));
-            setNames((String) table.getValueAt(getRow(), 4));
-            setComment((String) table.getValueAt(getRow(), 5));
+            setAllVariables();
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
@@ -500,11 +488,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
             if(getRow()==getMaxRow()){
                 setAtEnd(true);
             }
-            setId((Integer) table.getValueAt(getRow(), 0));
-            setIDG((Integer) table.getValueAt(getRow(), 1));
-            setCod((Integer) table.getValueAt(getRow(), 3));
-            setNames((String) table.getValueAt(getRow(), 4));
-            setComment((String) table.getValueAt(getRow(), 5));
+           setAllVariables();
             nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
             ae_Casa.setVisible(true);
         } else {  }
@@ -538,5 +522,33 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
         } catch(java.sql.SQLException sqle) {  }
         rs = null;
         internalObject.close();
+    }
+    
+    private int getColumnIndex(String in) //test
+    {
+        int count = table.getColumnCount();
+        for(int i=0; i < count; i++) {
+            if(table.getColumnName(i).equals(in)) return i;
+        }
+        return 0;
+    }
+    
+    
+    
+    private void HideColumns(int col) {
+        int iColumn = col;
+// set column width
+        table.getColumnModel().getColumn(iColumn).setMaxWidth(0);
+        table.getColumnModel().getColumn(iColumn).setMinWidth(0);
+        table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
+        table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
+        
+    }
+    private void setAllVariables(){
+        setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
+        setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("\u041d\u043e\u043c\u0435\u0440 \u0433\u0440\u0443\u043f\u0430")));
+        setCod((Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434\u043e\u0432\u0435")));
+        setNames((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435\u043d\u0430")));
+        setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440")));
     }
 }
