@@ -500,8 +500,8 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
     
     private void printTable() {
         try {
-            java.text.MessageFormat headerFormat = new java.text.MessageFormat("Money");
-            java.text.MessageFormat footerFormat = new java.text.MessageFormat("Page. " + "- {0} -" + " IMAKANTE' ");
+            java.text.MessageFormat headerFormat = new java.text.MessageFormat("\u041f\u0410\u0420\u0418\u0427\u041d\u0418");
+            java.text.MessageFormat footerFormat = new java.text.MessageFormat("\u0421\u0442\u0440. " + "- {0} -" + " IMAKANTE' ");
             table.print(javax.swing.JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
         } catch(java.awt.print.PrinterException e) { e.printStackTrace(); }
     }
