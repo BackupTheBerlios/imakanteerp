@@ -3,17 +3,25 @@ package imakante.sales;
 
 import imakante.com.vcomponents.iInternalFrame;
 import javax.swing.*;
-public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog  // test
+import java.util.Date;
+import java.sql.*;
+
+
+public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 {
     
     /** Creates new form aeGroup */
-    public aeDocumentFacade(  JFrame frame, boolean modal) //test imakante.com.vcomponents.iInternalFrame frame
+    public aeDocumentFacade(imakante.com.vcomponents.iInternalFrame frame, boolean modal, boolean isnew,
+                           int user, int level, int pricelist, int doctype) //test imakante.com.vcomponents.iInternalFrame frame
     {
-        
-        super(frame, modal);
-       
-            
-        initComponents();
+       super(frame, modal);
+       this.user = user;
+       this.level = level;
+       this.priceList = pricelist;
+       this.docType = doctype;
+       this.isNew = isnew;
+       this.myParent = (FrmDocumentFacade) frame;
+       initComponents();
        
       //  getNavigatiionState();   // samo za testvane na formata
        
@@ -23,9 +31,18 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
         int y = (((dim.height)-(this.getSize().height))/2);
         this.setLocation(x, y);
        
+        if(isNew)
+        {
+          //  docNumberLast = myParent.getCountriesT().getDocBumberLast(user);
+            nowDate = new Date();
+        }
+        else
+        {
+            
+        }
         
         
-     //   repaintComp();
+       repaintComp();
         
     }
     
@@ -36,8 +53,6 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
      */
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
-
         jPanel1 = new javax.swing.JPanel();
         jButtonSave = new javax.swing.JButton();
         jButtonUndo = new javax.swing.JButton();
@@ -82,13 +97,13 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
         jTextFieldObektName = new javax.swing.JTextField();
         jTextFieldObektTel = new javax.swing.JTextField();
         jTextFieldObektAddress = new javax.swing.JTextField();
-        jPanelInfo = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jTextFieldDistr = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jTextFieldDeliver = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldDateDeliver = new javax.swing.JTextField();
         jPanelDocLine = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -96,15 +111,7 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
         jLabel19 = new javax.swing.JLabel();
         jComboBoxVidPla6tane = new javax.swing.JComboBox();
         jLabel20 = new javax.swing.JLabel();
-        jTextFieldDDS = new javax.swing.JTextField();
-        jPanelUser = new javax.swing.JPanel();
-        jLabel21 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel22 = new javax.swing.JLabel();
-        jTextFieldDDS1 = new javax.swing.JTextField();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel23 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTextFieldPayDate = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
@@ -117,6 +124,20 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabelPrice1 = new javax.swing.JLabel();
+        jLabelPrice2 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSplitPane1 = new javax.swing.JSplitPane();
+        jPanelComent = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jPanelUser = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        jTextFieldDDS1 = new javax.swing.JTextField();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -149,7 +170,7 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
 
         jPanel1.add(jButtonClose);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 1000, 477, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 670, 477, -1));
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -193,7 +214,7 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
 
         jPanel3.add(jButtonToEnd);
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, 250, 60));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 250, 60));
 
         jPanelHead.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel1.setText("\u041d\u043e\u043c\u0435\u0440 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442:");
@@ -202,6 +223,10 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
 
         jLabelDocType.setFont(new java.awt.Font("Tahoma", 0, 24));
         jLabelDocType.setText("\u0421\u0422\u041e\u041a\u041e\u0412\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410");
+
+        jTextFieldNomerDoc.setInputVerifier(new imakante.com.InputIntegerVerifier());
+
+        jTextFieldDateDoc.setInputVerifier(new imakante.com.InputDateVerifier());
 
         org.jdesktop.layout.GroupLayout jPanelHeadLayout = new org.jdesktop.layout.GroupLayout(jPanelHead);
         jPanelHead.setLayout(jPanelHeadLayout);
@@ -218,7 +243,7 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
                     .add(jTextFieldNomerDoc, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 120, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(12, 12, 12)
                 .add(jLabelDocType)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanelHeadLayout.setVerticalGroup(
             jPanelHeadLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -237,7 +262,7 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
                 .add(jLabelDocType)
                 .addContainerGap())
         );
-        jPanel2.add(jPanelHead, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 480, 60));
+        jPanel2.add(jPanelHead, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 490, 60));
 
         jPanelContragent.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel3.setText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442 No:");
@@ -257,25 +282,60 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
         jLabel10.setText("\u041f\u0440\u043e\u0441\u0440\u043e\u0447\u0432\u0430\u043d\u0435:");
 
         jTextFieldContrName.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextFieldContrName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldContrNameKeyPressed(evt);
+            }
+        });
 
         jTextFieldBulstat.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextFieldBulstat.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldBulstatKeyPressed(evt);
+            }
+        });
 
         jTextFieldDanNomer.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextFieldDanNomer.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldDanNomerKeyPressed(evt);
+            }
+        });
 
         jTextFieldZadylveniq.setPreferredSize(new java.awt.Dimension(80, 20));
 
         jTextFieldConNom.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextFieldConNom.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldConNomKeyPressed(evt);
+            }
+        });
 
         jTextFieldAddress.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextFieldAddress.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldAddressKeyPressed(evt);
+            }
+        });
 
         jTextFieldContTel.setMinimumSize(new java.awt.Dimension(80, 20));
         jTextFieldContTel.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextFieldContTel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldContTelKeyPressed(evt);
+            }
+        });
 
         jTextFieldProsro4vane.setPreferredSize(new java.awt.Dimension(80, 20));
 
         jLabel15.setText("\u041c\u041e\u041b \u0438\u043c\u0435:");
 
         jTextFieldObektMOL.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextFieldObektMOL.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldObektMOLKeyPressed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanelContragentLayout = new org.jdesktop.layout.GroupLayout(jPanelContragent);
         jPanelContragent.setLayout(jPanelContragentLayout);
@@ -323,7 +383,7 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
                     .add(jPanelContragentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
                         .add(org.jdesktop.layout.GroupLayout.LEADING, jTextFieldContrName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .add(org.jdesktop.layout.GroupLayout.LEADING, jTextFieldAddress, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(org.jdesktop.layout.GroupLayout.LEADING, jTextFieldObektMOL, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)))
+                        .add(org.jdesktop.layout.GroupLayout.LEADING, jTextFieldObektMOL, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)))
                 .add(21, 21, 21))
         );
         jPanelContragentLayout.setVerticalGroup(
@@ -369,12 +429,32 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
         jLabel14.setText("\u0410\u0434\u0440\u0435\u0441:");
 
         jTextFieldObektNo.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextFieldObektNo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldObektNoKeyPressed(evt);
+            }
+        });
 
         jTextFieldObektName.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextFieldObektName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldObektNameKeyPressed(evt);
+            }
+        });
 
         jTextFieldObektTel.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextFieldObektTel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldObektTelKeyPressed(evt);
+            }
+        });
 
         jTextFieldObektAddress.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextFieldObektAddress.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldObektAddressKeyPressed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanelObektLayout = new org.jdesktop.layout.GroupLayout(jPanelObekt);
         jPanelObekt.setLayout(jPanelObektLayout);
@@ -424,53 +504,42 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
         );
         jPanel2.add(jPanelObekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 730, 70));
 
-        jPanelInfo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 2, 11));
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel16.setText("\u0414\u0438\u0441\u0442\u0440.:");
+        jPanel4.add(jLabel16);
 
         jTextFieldDistr.setPreferredSize(new java.awt.Dimension(100, 20));
+        jTextFieldDistr.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldDistrKeyPressed(evt);
+            }
+        });
+
+        jPanel4.add(jTextFieldDistr);
 
         jLabel17.setText("\u0414\u043e\u0441\u0442.:");
+        jPanel4.add(jLabel17);
 
         jTextFieldDeliver.setPreferredSize(new java.awt.Dimension(100, 20));
+        jTextFieldDeliver.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldDeliverKeyPressed(evt);
+            }
+        });
 
-        jLabel18.setText("\u0414\u0430\u0442\u0430 \u043d\u0430 \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0430:");
+        jPanel4.add(jTextFieldDeliver);
 
-        jTextField1.setMinimumSize(new java.awt.Dimension(80, 20));
-        jTextField1.setPreferredSize(new java.awt.Dimension(80, 20));
+        jLabel18.setText("\u0414\u0430\u0442\u0430 \u043d\u0430 \u0434\u043e\u0441\u0442.:");
+        jPanel4.add(jLabel18);
 
-        org.jdesktop.layout.GroupLayout jPanelInfoLayout = new org.jdesktop.layout.GroupLayout(jPanelInfo);
-        jPanelInfo.setLayout(jPanelInfoLayout);
-        jPanelInfoLayout.setHorizontalGroup(
-            jPanelInfoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelInfoLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(jLabel16)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextFieldDistr, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 66, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel17)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextFieldDeliver, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel18)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(96, 96, 96))
-        );
-        jPanelInfoLayout.setVerticalGroup(
-            jPanelInfoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelInfoLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanelInfoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel16)
-                    .add(jTextFieldDistr, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel17)
-                    .add(jTextFieldDeliver, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel18)
-                    .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
-        jPanel2.add(jPanelInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 460, 50));
+        jTextFieldDateDeliver.setMinimumSize(new java.awt.Dimension(80, 20));
+        jTextFieldDateDeliver.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextFieldDateDeliver.setInputVerifier(new imakante.com.InputDateVerifier());
+        jPanel4.add(jTextFieldDateDeliver);
+
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 460, 50));
 
         jPanelDocLine.setLayout(new javax.swing.BoxLayout(jPanelDocLine, javax.swing.BoxLayout.X_AXIS));
 
@@ -503,16 +572,18 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
 
         jPanelDocLine.add(jScrollPane2);
 
-        jPanel2.add(jPanelDocLine, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 730, 160));
+        jPanel2.add(jPanelDocLine, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 730, 210));
 
         jPanelPrice.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel19.setText("\u0412\u0438\u0434 \u043f\u043b\u0430\u0449\u0430\u043d\u0435:");
 
+        jComboBoxVidPla6tane.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "\u0411\u0420\u041e\u0419", "\u0427\u0410\u0421\u0422\u0418\u0427\u041d\u041e", "\u041e\u0422\u041b\u041e\u0416\u0415\u041d\u041e", "\u041f\u041e \u0411\u0410\u041d\u041a\u0410" }));
         jComboBoxVidPla6tane.setPreferredSize(new java.awt.Dimension(100, 20));
 
-        jLabel20.setText("\u0414\u0414\u0421:");
+        jLabel20.setText("\u0414\u0430\u0442\u0430:");
 
-        jTextFieldDDS.setPreferredSize(new java.awt.Dimension(100, 20));
+        jTextFieldPayDate.setPreferredSize(new java.awt.Dimension(100, 20));
+        jTextFieldPayDate.setInputVerifier(new imakante.com.InputDateVerifier());
 
         org.jdesktop.layout.GroupLayout jPanelPriceLayout = new org.jdesktop.layout.GroupLayout(jPanelPrice);
         jPanelPrice.setLayout(jPanelPriceLayout);
@@ -526,8 +597,8 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel20)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextFieldDDS, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(196, 196, 196))
+                .add(jTextFieldPayDate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 62, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(234, 234, 234))
         );
         jPanelPriceLayout.setVerticalGroup(
             jPanelPriceLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -536,75 +607,11 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
                 .add(jPanelPriceLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel19)
                     .add(jLabel20)
-                    .add(jTextFieldDDS, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jComboBoxVidPla6tane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                    .add(jComboBoxVidPla6tane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jTextFieldPayDate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
-        jPanel2.add(jPanelPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 340, 60));
-
-        jPanelUser.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabel21.setText("\u0418\u0437\u0434\u0430\u043b:");
-
-        jTextField2.setPreferredSize(new java.awt.Dimension(80, 20));
-
-        jLabel22.setText("\u041f\u043e\u0441\u043b\u0435\u0434\u043d\u0430 \u043f\u0440\u0435\u0440\u0430\u0431\u043e\u0442\u043a\u0430:");
-
-        jTextFieldDDS1.setPreferredSize(new java.awt.Dimension(100, 20));
-
-        org.jdesktop.layout.GroupLayout jPanelUserLayout = new org.jdesktop.layout.GroupLayout(jPanelUser);
-        jPanelUser.setLayout(jPanelUserLayout);
-        jPanelUserLayout.setHorizontalGroup(
-            jPanelUserLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelUserLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(jLabel21)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 163, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel22)
-                .add(89, 89, 89)
-                .add(jTextFieldDDS1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 165, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(140, 140, 140))
-        );
-        jPanelUserLayout.setVerticalGroup(
-            jPanelUserLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelUserLayout.createSequentialGroup()
-                .add(8, 8, 8)
-                .add(jPanelUserLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel21)
-                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 18, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel22)
-                    .add(jTextFieldDDS1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 18, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(23, 23, 23))
-        );
-        jPanel2.add(jPanelUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 730, 40));
-
-        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabel23.setText("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440:");
-
-        jTextField3.setPreferredSize(new java.awt.Dimension(300, 20));
-
-        org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jLabel23)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel23)
-                    .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 580, 730, 50));
+        jPanel2.add(jPanelPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 340, 60));
 
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel24.setText("\u0414\u0430\u043d\u044a\u0447\u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0430:");
@@ -657,7 +664,7 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
                     .add(jLabel26))
                 .add(21, 21, 21))
         );
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 480, 390, 60));
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 530, 390, 60));
 
         jButton1.setText("\u0418\u0417\u041f\u042a\u041b\u041d\u0418");
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 640, -1, -1));
@@ -668,6 +675,16 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
         jLabel31.setText("50000");
 
         jLabel32.setText("2500000");
+
+        jLabel33.setText("\u0426\u0435\u043d\u0430 1");
+
+        jLabel34.setText("\u0426\u0435\u043d\u0430 2");
+
+        jLabelPrice1.setText("1");
+
+        jLabelPrice2.setText("1");
+
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         org.jdesktop.layout.GroupLayout jPanel6Layout = new org.jdesktop.layout.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -681,30 +698,432 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
                         .add(jLabel30)
                         .add(32, 32, 32)
                         .add(jLabel31)))
-                .addContainerGap(137, Short.MAX_VALUE))
+                .add(14, 14, 14)
+                .add(jSeparator1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(13, 13, 13)
+                .add(jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jLabelPrice1)
+                    .add(jLabel33))
+                .add(jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jPanel6Layout.createSequentialGroup()
+                        .add(42, 42, 42)
+                        .add(jLabelPrice2)
+                        .addContainerGap(35, Short.MAX_VALUE))
+                    .add(jPanel6Layout.createSequentialGroup()
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel34)
+                        .addContainerGap())))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel6Layout.createSequentialGroup()
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel6Layout.createSequentialGroup()
                 .add(jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel30)
-                    .add(jLabel31))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(jLabel32)
+                    .add(jLabel31)
+                    .add(jLabel33, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel34))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 7, Short.MAX_VALUE)
+                .add(jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel32)
+                    .add(jLabelPrice1)
+                    .add(jLabelPrice2))
                 .addContainerGap())
+            .add(jSeparator1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
         );
         jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 270, 270, 50));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -20, 1050, 980));
+        jSplitPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jSplitPane1.setDividerLocation(0);
+        jSplitPane1.setDividerSize(11);
+        jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        jSplitPane1.setOneTouchExpandable(true);
+        jSplitPane1.setPreferredSize(new java.awt.Dimension(200, 50));
+        jPanelComent.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel23.setText("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440:");
+
+        jTextField3.setPreferredSize(new java.awt.Dimension(300, 20));
+
+        org.jdesktop.layout.GroupLayout jPanelComentLayout = new org.jdesktop.layout.GroupLayout(jPanelComent);
+        jPanelComent.setLayout(jPanelComentLayout);
+        jPanelComentLayout.setHorizontalGroup(
+            jPanelComentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelComentLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel23)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 645, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanelComentLayout.setVerticalGroup(
+            jPanelComentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelComentLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanelComentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel23)
+                    .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jSplitPane1.setLeftComponent(jPanelComent);
+
+        jPanelUser.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel21.setText("\u0418\u0437\u0434\u0430\u043b:");
+
+        jTextField2.setPreferredSize(new java.awt.Dimension(80, 20));
+
+        jLabel22.setText("\u041f\u043e\u0441\u043b\u0435\u0434\u043d\u0430 \u043f\u0440\u0435\u0440\u0430\u0431\u043e\u0442\u043a\u0430:");
+
+        jTextFieldDDS1.setPreferredSize(new java.awt.Dimension(100, 20));
+
+        org.jdesktop.layout.GroupLayout jPanelUserLayout = new org.jdesktop.layout.GroupLayout(jPanelUser);
+        jPanelUser.setLayout(jPanelUserLayout);
+        jPanelUserLayout.setHorizontalGroup(
+            jPanelUserLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelUserLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel21)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 163, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel22)
+                .add(89, 89, 89)
+                .add(jTextFieldDDS1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 165, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(140, 140, 140))
+        );
+        jPanelUserLayout.setVerticalGroup(
+            jPanelUserLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelUserLayout.createSequentialGroup()
+                .add(8, 8, 8)
+                .add(jPanelUserLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel21)
+                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 18, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel22)
+                    .add(jTextFieldDDS1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 18, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(23, 23, 23))
+        );
+        jSplitPane1.setRightComponent(jPanelUser);
+
+        jPanel2.add(jSplitPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, 730, 50));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 770, 670));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUndoActionPerformed
+    private void jTextFieldDeliverKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDeliverKeyPressed
 // TODO add your handling code here:
-        myParent.setNames(oldName);
-        myParent.setCod(oldCod);
-        myParent.setAnID(oldAnLevel);
+         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableIncludeTextDistDeliv(jTextFieldConNom.getText(),selectDataOfDocFacade.DISTRIBUTOR_DELIVER);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.DISTRIBUTOR_DELIVER,false);
+            
+        }
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableStartTextDistDeliv(jTextFieldConNom.getText(),selectDataOfDocFacade.DISTRIBUTOR_DELIVER);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.DISTRIBUTOR_DELIVER,false);
+        }
+        
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableFinishTextDistDeliv(jTextFieldConNom.getText(),selectDataOfDocFacade.DISTRIBUTOR_DELIVER);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.DISTRIBUTOR_DELIVER,false);
+        } 
+    }//GEN-LAST:event_jTextFieldDeliverKeyPressed
+
+    private void jTextFieldDistrKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDistrKeyPressed
+// TODO add your handling code here:
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableIncludeTextDistDeliv(jTextFieldConNom.getText(),selectDataOfDocFacade.DISTRIBUTOR_DELIVER);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.DISTRIBUTOR_DELIVER,true);
+            
+        }
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableStartTextDistDeliv(jTextFieldConNom.getText(),selectDataOfDocFacade.DISTRIBUTOR_DELIVER);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.DISTRIBUTOR_DELIVER,true);
+        }
+        
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableFinishTextDistDeliv(jTextFieldConNom.getText(),selectDataOfDocFacade.DISTRIBUTOR_DELIVER);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.DISTRIBUTOR_DELIVER,true);
+        } 
+    }//GEN-LAST:event_jTextFieldDistrKeyPressed
+
+    private void jTextFieldObektTelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldObektTelKeyPressed
+// TODO add your handling code here:
+         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableIncludeTextObekt(jTextFieldConNom.getText(),selectDataOfDocFacade.OBEKT_TEL);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_TEL,false);
+            
+        }
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableStartTextObekt(jTextFieldConNom.getText(),selectDataOfDocFacade.OBEKT_TEL);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_TEL,false);
+        }
+        
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableFinishTextObekt(jTextFieldConNom.getText(),selectDataOfDocFacade.OBEKT_TEL);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_TEL,false);
+        }
+    }//GEN-LAST:event_jTextFieldObektTelKeyPressed
+
+    private void jTextFieldObektAddressKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldObektAddressKeyPressed
+// TODO add your handling code here:
+         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableIncludeTextObekt(jTextFieldConNom.getText(),selectDataOfDocFacade.OBEKT_ADDRESS);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_ADDRESS,false);
+            
+        }
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableStartTextObekt(jTextFieldConNom.getText(),selectDataOfDocFacade.OBEKT_ADDRESS);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_ADDRESS,false);
+        }
+        
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableFinishTextObekt(jTextFieldConNom.getText(),selectDataOfDocFacade.OBEKT_ADDRESS);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_ADDRESS,false);
+        }
+    }//GEN-LAST:event_jTextFieldObektAddressKeyPressed
+
+    private void jTextFieldObektNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldObektNameKeyPressed
+// TODO add your handling code here:
+         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableIncludeTextObekt(jTextFieldConNom.getText(),selectDataOfDocFacade.OBEKT_NAME);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_NAME,false);
+            
+        }
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableStartTextObekt(jTextFieldConNom.getText(),selectDataOfDocFacade.OBEKT_NAME);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_NAME,false);
+        }
+        
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableFinishTextObekt(jTextFieldConNom.getText(),selectDataOfDocFacade.OBEKT_NAME);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_NAME,false);
+        }
+    }//GEN-LAST:event_jTextFieldObektNameKeyPressed
+
+    private void jTextFieldObektNoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldObektNoKeyPressed
+// TODO add your handling code here:
+         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableIncludeTextObekt(jTextFieldConNom.getText(),selectDataOfDocFacade.OBEKT_NO);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_NO,false);
+            
+        }
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableStartTextObekt(jTextFieldConNom.getText(),selectDataOfDocFacade.OBEKT_NO);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_NO,false);
+        }
+        
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableFinishTextObekt(jTextFieldConNom.getText(),selectDataOfDocFacade.OBEKT_NO);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_NO,false);
+        }
+    }//GEN-LAST:event_jTextFieldObektNoKeyPressed
+
+    private void jTextFieldContTelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldContTelKeyPressed
+// TODO add your handling code here:
+         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableIncludeTextContragent(jTextFieldConNom.getText(),selectDataOfDocFacade.CONTARGENT_TEL);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_TEL,false);
+            
+        }
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableStartTextContragent(jTextFieldConNom.getText(),selectDataOfDocFacade.CONTARGENT_TEL);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_TEL,false);
+        }
+        
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableFinishTextContragent(jTextFieldConNom.getText(),selectDataOfDocFacade.CONTARGENT_TEL);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_TEL,false);
+        }
+    }//GEN-LAST:event_jTextFieldContTelKeyPressed
+
+    private void jTextFieldObektMOLKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldObektMOLKeyPressed
+// TODO add your handling code here:
+         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableIncludeTextContragent(jTextFieldConNom.getText(),selectDataOfDocFacade.CONTARGENT_MOL);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_MOL,false);
+            
+        }
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableStartTextContragent(jTextFieldConNom.getText(),selectDataOfDocFacade.CONTARGENT_MOL);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_MOL,false);
+        }
+        
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableFinishTextContragent(jTextFieldConNom.getText(),selectDataOfDocFacade.CONTARGENT_MOL);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_MOL,false);
+        }
+    }//GEN-LAST:event_jTextFieldObektMOLKeyPressed
+
+    private void jTextFieldAddressKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldAddressKeyPressed
+// TODO add your handling code here:
+         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableIncludeTextContragent(jTextFieldConNom.getText(),selectDataOfDocFacade.CONTARGENT_ADDRESS);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_ADDRESS,false);
+            
+        }
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableStartTextContragent(jTextFieldConNom.getText(),selectDataOfDocFacade.CONTARGENT_ADDRESS);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_ADDRESS,false);
+        }
+        
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableFinishTextContragent(jTextFieldConNom.getText(),selectDataOfDocFacade.CONTARGENT_ADDRESS);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_ADDRESS,false);
+        }
+    }//GEN-LAST:event_jTextFieldAddressKeyPressed
+
+    private void jTextFieldContrNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldContrNameKeyPressed
+// TODO add your handling code here:
+         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableIncludeTextContragent(jTextFieldConNom.getText(),selectDataOfDocFacade.CONTARGENT_NAME);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_NAME,false);
+            
+        }
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableStartTextContragent(jTextFieldConNom.getText(),selectDataOfDocFacade.CONTARGENT_NAME);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_NAME,false);
+        }
+        
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableFinishTextContragent(jTextFieldConNom.getText(),selectDataOfDocFacade.CONTARGENT_NAME);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_NAME,false);
+        }
+    }//GEN-LAST:event_jTextFieldContrNameKeyPressed
+
+    private void jTextFieldDanNomerKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDanNomerKeyPressed
+// TODO add your handling code here:
+         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableIncludeTextContragent(jTextFieldConNom.getText(),selectDataOfDocFacade.CONTARGENT_DAN_NO);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_DAN_NO,false);
+            
+        }
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableStartTextContragent(jTextFieldConNom.getText(),selectDataOfDocFacade.CONTARGENT_DAN_NO);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_DAN_NO,false);
+        }
+        
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableFinishTextContragent(jTextFieldConNom.getText(),selectDataOfDocFacade.CONTARGENT_DAN_NO);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_DAN_NO,false);
+        }
+    }//GEN-LAST:event_jTextFieldDanNomerKeyPressed
+
+    private void jTextFieldBulstatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBulstatKeyPressed
+// TODO add your handling code here:
+         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableIncludeTextContragent(jTextFieldConNom.getText(),selectDataOfDocFacade.CONTARGENT_BULSTAT);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_BULSTAT,false);
+            
+        }
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableStartTextContragent(jTextFieldConNom.getText(),selectDataOfDocFacade.CONTARGENT_BULSTAT);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_BULSTAT,false);
+        }
+        
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableFinishTextContragent(jTextFieldConNom.getText(),selectDataOfDocFacade.CONTARGENT_BULSTAT);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_BULSTAT,false);
+        }
+    }//GEN-LAST:event_jTextFieldBulstatKeyPressed
+
+    private void jTextFieldConNomKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldConNomKeyPressed
+// TODO add your handling code here:
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableIncludeTextContragent(jTextFieldConNom.getText(),selectDataOfDocFacade.CONTARGENT_NO);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_NO,false);
+            
+        }
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableStartTextContragent(jTextFieldConNom.getText(),selectDataOfDocFacade.CONTARGENT_NO);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_NO,false);
+        }
+        
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9)
+        {
+            javax.sql.RowSet rs1 = myParent.getCountriesT().getTableFinishTextContragent(jTextFieldConNom.getText(),selectDataOfDocFacade.CONTARGENT_NO);
+            Connection conn1 = myParent.getCountriesT().getConn();
+            dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_NO,false);
+        }
+    }//GEN-LAST:event_jTextFieldConNomKeyPressed
+
+    private void jButtonUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUndoActionPerformed
+// UNDO ACTION
+       
         repaintComp();
         jButtonUndo.setEnabled(false);
     }//GEN-LAST:event_jButtonUndoActionPerformed
@@ -724,7 +1143,7 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
 
     private void jButtonOneRowPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowPActionPerformed
 // TODO add your handling code here:
-       myParent.mOneRowPlus();
+      /* myParent.mOneRowPlus();
         if(myParent.isAtEnd())
         {
          jButtonToEnd.setEnabled(false);
@@ -738,12 +1157,12 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
         jButtonOneRowM.setEnabled(true);
         jButtonToBegin.repaint();
         jButtonOneRowM.repaint();
-        repaintComp();  
+        repaintComp(); */ 
     }//GEN-LAST:event_jButtonOneRowPActionPerformed
 
     private void jButtonToEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToEndActionPerformed
 // TODO add your handling code here:  OK
-         myParent.mTableEnd();
+       /*  myParent.mTableEnd();
          jButtonToEnd.setEnabled(false);
          jButtonOneRowP.setEnabled(false);
          jButtonToEnd.repaint();
@@ -756,12 +1175,12 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
         jButtonOneRowM.repaint();
       
        
-        repaintComp();
+        repaintComp();*/
     }//GEN-LAST:event_jButtonToEndActionPerformed
 
     private void jButtonOneRowMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowMActionPerformed
 // TODO add your handling code here:
-         myParent.mOneRowMinus();
+       /*  myParent.mOneRowMinus();
         if(myParent.isAtBegining())
         {
            jButtonToBegin.setEnabled(false);
@@ -774,13 +1193,13 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
          jButtonOneRowP.setEnabled(true);
          jButtonToEnd.repaint();
          jButtonOneRowP.repaint();
-        repaintComp();
+        repaintComp();*/
         
     }//GEN-LAST:event_jButtonOneRowMActionPerformed
 
     private void jButtonToBeginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToBeginActionPerformed
 // TODO add your handling code here:
-        myParent.mTableBegining();
+     /*   myParent.mTableBegining();
         
         jButtonToBegin.setEnabled(false);
         jButtonOneRowM.setEnabled(false);
@@ -792,21 +1211,21 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
          jButtonToEnd.repaint();
          jButtonOneRowP.repaint();
        
-        repaintComp();
+        repaintComp();*/
         
     }//GEN-LAST:event_jButtonToBeginActionPerformed
     
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+   /* public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                
-                new aeDocumentFacade(new JFrame(),true).setVisible(true);
+                new aeDocumentFacade(new JFrame(),true,true,1,1,1,1).setVisible(true);
             }
         });
-    }
+    }*/
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -844,6 +1263,8 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -851,24 +1272,25 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelDocType;
+    private javax.swing.JLabel jLabelPrice1;
+    private javax.swing.JLabel jLabelPrice2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanelComent;
     private javax.swing.JPanel jPanelContragent;
     private javax.swing.JPanel jPanelDocLine;
     private javax.swing.JPanel jPanelHead;
-    private javax.swing.JPanel jPanelInfo;
     private javax.swing.JPanel jPanelObekt;
     private javax.swing.JPanel jPanelPrice;
     private javax.swing.JPanel jPanelUser;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextFieldAddress;
@@ -876,9 +1298,9 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
     private javax.swing.JTextField jTextFieldConNom;
     private javax.swing.JTextField jTextFieldContTel;
     private javax.swing.JTextField jTextFieldContrName;
-    private javax.swing.JTextField jTextFieldDDS;
     private javax.swing.JTextField jTextFieldDDS1;
     private javax.swing.JTextField jTextFieldDanNomer;
+    private javax.swing.JTextField jTextFieldDateDeliver;
     private javax.swing.JTextField jTextFieldDateDoc;
     private javax.swing.JTextField jTextFieldDeliver;
     private javax.swing.JTextField jTextFieldDistr;
@@ -888,22 +1310,34 @@ public class aeDocumentFacade extends JDialog //imakante.com.vcomponents.iDialog
     private javax.swing.JTextField jTextFieldObektName;
     private javax.swing.JTextField jTextFieldObektNo;
     private javax.swing.JTextField jTextFieldObektTel;
+    private javax.swing.JTextField jTextFieldPayDate;
     private javax.swing.JTextField jTextFieldProsro4vane;
     private javax.swing.JTextField jTextFieldZadylveniq;
     // End of variables declaration//GEN-END:variables
  //--------------- My Variables
-    private nom.FrmGroup myParent;
-    private String splitNamesOfAnLevel[];
-    private int selectComboBoxItem;
-    private int oldAnLevel;
-    private String oldName = "";
-    private String oldCod = "";
+// input parametrs
+    private int user=0;
+    private int level = 0;
+    private int priceList=1;
+    private int docType;
+    private boolean isNew= false;
+//------------------------------------
+// internal parametrs
+   private int docNumberLast =0;                  // nomer na documenta 
+   private Date nowDate = null;                   // teku6ta data
+   private FrmDocumentFacade myParent; 
+  private selectDataOfDocFacade dialogSelectData = null;  
+//----------------------------------------
+   
+    
+   
+   
  //---------------END My Variables
 //---------------START MyFunction 
  
 private void getNavigatiionState() // ??
     {
-    if(myParent.isAtBegining())
+  /*  if(myParent.isAtBegining())
     {
         jButtonToBegin.setEnabled(false);
         jButtonOneRowM.setEnabled(false);
@@ -917,23 +1351,27 @@ private void getNavigatiionState() // ??
          jButtonToEnd.repaint();
         jButtonOneRowP.repaint();
     }
-     
+     */
 }
 private void repaintComp() // ?? 
 {
+    if(isNew)
+    {
+        String strDate = new String();
+        strDate = String.valueOf(nowDate.getDate());
+        strDate += "/" + String.valueOf(nowDate.getMonth());
+        strDate += "/" + String.valueOf(nowDate.getYear()+1900);
+        jTextFieldDateDoc.setText(strDate);
+        
+        jTextFieldNomerDoc.setText(String.valueOf(docNumberLast+1));
+        
+    }
+    else
+    {
+        
+    }
     
 }
-private int getNewComboBoxIndex(int oldindex) // ??
-{ 
-    int newindex= 0;
-    for(int i = 0; i < myParent.getCountriesT().getIndexConnOfId().length; i++)
-       {
-        if(myParent.getCountriesT().getIndexConnOfId()[i]==oldindex)
-          {
-           newindex = i;
-           break;
-          }
-      }
-    return newindex;
-}
+
+
 }// end class

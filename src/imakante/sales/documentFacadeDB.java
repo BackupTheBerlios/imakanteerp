@@ -1,6 +1,6 @@
 
 
-package nom;
+package imakante.sales;
 
 import com.mysql.jdbc.ResultSetMetaData;
 import imakante.com.*;
@@ -17,8 +17,32 @@ public class documentFacadeDB  extends dbObject
    private java.sql.CallableStatement cstm;
    private int comprator;
    private Connection conn;
-   
-   
+  
+    private int idDocFacade;
+    private int docFacadeNumber;
+    private int docFacadeType;
+    private String conditionDocFacade;
+    private int levelDocFacade;
+    private int idContragent_IN;
+    private int idContragent_OUT;
+    private int idObect_IN;
+    private int idObect_OUT;
+    private double allDDSPaing=0;
+    private double totalPaying=0;
+    private int userDocFacade;
+    private String docFacadeDate;
+    private int storageDocFacade;
+    private int idDistributor;
+    private int idDeliver;
+    private int idFakturaConnection;
+    private int idZaqvkaConnection;
+    private int descriptionPaying =0;
+    private int idPayingOrder;
+    private String payingDate;
+    private String dateDeliver;
+    private int userLastEdit ;
+    private String commentDocFacade;
+   // private int idrep; //??????? 
     //-------------END MyVariables
     
     /** Creates a new instance of groupDB */
@@ -30,11 +54,11 @@ public class documentFacadeDB  extends dbObject
         
     }
     //-------SART MyFunction
- private void prepareCstm() //????? imeto na procedurata ??
+ private void prepareCstm() //????? vhodnite parametri  - brojkata
     {
         try {
             
-            setCstm(getConn().prepareCall("{call ls_procedure_group(?,?,?,?,?,?)}"));
+            setCstm(getConn().prepareCall("{call ls_document_facade(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
             
         } catch(java.sql.SQLException sqle) {sqle.printStackTrace();}
     }
@@ -53,17 +77,39 @@ public class documentFacadeDB  extends dbObject
         System.out.println("ot getTable()");
         return rs;
     }
- private void registerParameters() //OK
+ private void registerParameters() 
     {
          try
          {
             
-            getCstm().setInt("in_id", getId());
-            getCstm().setInt("in_nom", getNom()); // za suotvetnata grupa
-            getCstm().setString("in_cod", getCod());
-            getCstm().setString("in_name", getName());
-            getCstm().setInt("in_alid", getAnID());
+            getCstm().setInt("in_id_df", getID_DocFacade());                       
+            getCstm().setInt("in_id_contragent_in", getID_Contragent_IN());         
+            getCstm().setInt("in_id_contragent_out", getID_Contragent_OUT());       
+            getCstm().setInt("in_id_obekt_out", getID_Obekt_OUT());                 
+            getCstm().setInt("in_id_obekt_in", getID_Obekt_IN());                  
+            getCstm().setInt("in_id_distributor", getID_Distributor());            
+            getCstm().setInt("in_id_deliver", getID_Deliver());                    
+            getCstm().setInt("in_descriptionPaying", getDescriptionPaying());             
+            getCstm().setInt("in_docFacadeNumber", getNumberDocFacade());          
+            getCstm().setInt("in_docFacadeUser", getUserDocFacade());              
+            getCstm().setInt("in_docFacadeUserLastEdit", getUserLastEditDocFacade()); 
             getCstm().setInt("comprator", getComprator()); // izbor na SQL zaqwka
+            getCstm().setInt("in_id_facturaConnection", getID_FakturaConnection());    
+            getCstm().setInt("in_id_payingOrder", getID_PayingOrder());               
+            getCstm().setInt("in_id_zaqvkaConnection", getID_ZaqvkaConnection());     
+            getCstm().setInt("in_docFacadeLevel", getLevelDocFacade());          
+            getCstm().setInt("in_docFacadeStorage", getStorageDocFacade());      
+            getCstm().setInt("in_docFacadeType", getDocFacadeType()); 
+            getCstm().setDouble("in_docFacadeAllDDS",getAllDDSPaingDocFacade());       
+            getCstm().setDouble("in_docFacadeTotal",getTotalPayingDocFacade());  
+            getCstm().setString("in_docFacadeCondition", getConditionDocFacade());   
+            getCstm().setString("in_docFacadeDate", getDateDocFacade());            
+            getCstm().setString("in_docFacadeCommnet", getCommentDocFacade());
+            getCstm().setString("in_dateDeliver", getDateDeliver());  
+            getCstm().setString("in_payingDate", getPayingDate()); 
+            //25
+            
+            
             
             System.out.println("ot registerparameter");
         }
@@ -79,13 +125,40 @@ public class documentFacadeDB  extends dbObject
             setRs(getCstm().executeQuery());}catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         
     }
- public void insertRow(int in_nom, String in_cod,String in_name, int alID) //OK
-    {
+ public void insertRow(int in_id_contragent_out , int in_id_contragent_in,
+            int in_id_obekt_out, int in_id_obekt_in, int in_id_distributor, int in_id_deliver,
+            int in_descriptionPaying, int in_docFacadeNumber, int in_docFacadeUser, int in_docFacadeUserLastEdit,
+            int in_id_facturaConnection, int in_id_payingOrder, int in_id_zaqvkaConnection, int in_docFacadeLevel,
+            int in_docFacadeStorage, int in_docFacadeType, double in_docFacadeTotal, double in_docFacadeAllDDS,
+            String in_docFacadeCondition, String in_docFacadeDate, String in_docFacadeCommnet,
+            String in_dateDeliver, String in_payingDate)
+      {
         comprator = 1;
-        this.nom = in_nom;
-        this.cod = in_cod;
-        this.name = in_name;
-        this.alId = alID;
+        setID_Contragent_IN(in_id_contragent_in);
+        setID_Contragent_OUT(in_id_contragent_out);
+        setID_Obekt_IN(in_id_obekt_in);
+        setID_Obekt_OUT(in_id_obekt_out);
+        setID_Distributor(in_id_distributor);
+        setID_Deliver(in_id_deliver);
+        setDescriptionPaying(in_descriptionPaying);
+        setNumberDocFacade(in_docFacadeNumber);
+        setUserDocFacade(in_docFacadeUser);
+        setUserLastEditDocFacade(in_docFacadeUserLastEdit);
+        setID_FakturaConnection(in_id_facturaConnection);
+        setID_PayingOrder(in_id_payingOrder);
+        setID_ZaqvkaConnection(in_id_zaqvkaConnection);
+        setLevelDocFacade(in_docFacadeLevel);
+        setStorageDocFacade(in_docFacadeStorage);
+        setDocFacadeType(in_docFacadeType);
+        setTotalPayingDocFacade(in_docFacadeTotal);
+        setAllDDSPaingDocFacade(in_docFacadeAllDDS);
+        setConditionDocFacade(in_docFacadeCondition);
+        setDateDocFacade(in_docFacadeDate);
+        setCommentDocFacade(in_docFacadeCommnet);
+        setDateDeliver(in_dateDeliver);
+        setPayingDate(in_payingDate);
+        
+        
         try
         {
             registerParameters();
@@ -97,14 +170,41 @@ public class documentFacadeDB  extends dbObject
         }
         
     }
- public void updateRow(int in_id, int in_nom, String in_cod,String in_name, int alID) //OK
+ public void updateRow(int in_id_df, int in_id_contragent_out , int in_id_contragent_in,
+            int in_id_obekt_out, int in_id_obekt_in, int in_id_distributor, int in_id_deliver,
+            int in_descriptionPaying, int in_docFacadeNumber, int in_docFacadeUser, int in_docFacadeUserLastEdit,
+            int in_id_facturaConnection, int in_id_payingOrder, int in_id_zaqvkaConnection, int in_docFacadeLevel,
+            int in_docFacadeStorage, int in_docFacadeType, double in_docFacadeTotal, double in_docFacadeAllDDS,
+            String in_docFacadeCondition, String in_docFacadeDate, String in_docFacadeCommnet,
+            String in_dateDeliver, String in_payingDate) 
     {
         comprator = 2;
-        this.id = in_id;
-        this.nom = in_nom;
-        this.cod = in_cod;
-        this.name = in_name;
-        this.alId = alID;
+        setID_DocFacade(in_id_df);
+        setID_Contragent_IN(in_id_contragent_in);
+        setID_Contragent_OUT(in_id_contragent_out);
+        setID_Obekt_IN(in_id_obekt_in);
+        setID_Obekt_OUT(in_id_obekt_out);
+        setID_Distributor(in_id_distributor);
+        setID_Deliver(in_id_deliver);
+        setDescriptionPaying(in_descriptionPaying);
+        setNumberDocFacade(in_docFacadeNumber);
+        setUserDocFacade(in_docFacadeUser);
+        setUserLastEditDocFacade(in_docFacadeUserLastEdit);
+        setID_FakturaConnection(in_id_facturaConnection);
+        setID_PayingOrder(in_id_payingOrder);
+        setID_ZaqvkaConnection(in_id_zaqvkaConnection);
+        setLevelDocFacade(in_docFacadeLevel);
+        setStorageDocFacade(in_docFacadeStorage);
+        setDocFacadeType(in_docFacadeType);
+        setTotalPayingDocFacade(in_docFacadeTotal);
+        setAllDDSPaingDocFacade(in_docFacadeAllDDS);
+        setConditionDocFacade(in_docFacadeCondition);
+        setDateDocFacade(in_docFacadeDate);
+        setCommentDocFacade(in_docFacadeCommnet);
+        setDateDeliver(in_dateDeliver);
+        setPayingDate(in_payingDate);
+        
+        
         try
         {
             registerParameters();
@@ -117,30 +217,27 @@ public class documentFacadeDB  extends dbObject
         
         
     }
- public void deleteRow(int in_id) //OK
+ public void deleteRow(int in_id_df) //OK
     {
         comprator = 3;
-        id = in_id;
+       
         try{
             registerParameters();
             cstm.execute();
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         
     }
- public java.sql.ResultSet getRow(int in_id) //OK
+ public java.sql.ResultSet getRow(int in_id_df) //OK
     {
         comprator = 4;
-        id = in_id;
+       setID_DocFacade(in_id_df);
         try
         {
             registerParameters();
             rs = cstm.executeQuery();
             while(rs.next())
             {
-                cod = rs.getString("cod");
-                name = rs.getString("name");
-                nom = rs.getInt("nom");
-                alId = rs.getInt("alid");
+               
             }
         }
         catch(java.sql.SQLException sqle)
@@ -149,13 +246,38 @@ public class documentFacadeDB  extends dbObject
         }
       return rs;  
     }
- public java.sql.ResultSet searchRecords(int in_nom, String in_cod,String in_name, int alID) //OK
+ public java.sql.ResultSet searchRecords(int in_id_contragent_out , int in_id_contragent_in,
+            int in_id_obekt_out, int in_id_obekt_in, int in_id_distributor, int in_id_deliver,
+            int in_descriptionPaying, int in_docFacadeNumber, int in_docFacadeUser, int in_docFacadeUserLastEdit,
+            int in_id_facturaConnection, int in_id_payingOrder, int in_id_zaqvkaConnection, int in_docFacadeLevel,
+            int in_docFacadeStorage, int in_docFacadeType, double in_docFacadeTotal, double in_docFacadeAllDDS,
+            String in_docFacadeCondition, String in_docFacadeDate, String in_docFacadeCommnet,
+            String in_dateDeliver, String in_payingDate)
     {
         comprator = 5;
-        this.nom = in_nom;
-        this.cod = in_cod;
-        this.name = in_name;
-        this.alId = alID;
+         setID_Contragent_IN(in_id_contragent_in);
+        setID_Contragent_OUT(in_id_contragent_out);
+        setID_Obekt_IN(in_id_obekt_in);
+        setID_Obekt_OUT(in_id_obekt_out);
+        setID_Distributor(in_id_distributor);
+        setID_Deliver(in_id_deliver);
+        setDescriptionPaying(in_descriptionPaying);
+        setNumberDocFacade(in_docFacadeNumber);
+        setUserDocFacade(in_docFacadeUser);
+        setUserLastEditDocFacade(in_docFacadeUserLastEdit);
+        setID_FakturaConnection(in_id_facturaConnection);
+        setID_PayingOrder(in_id_payingOrder);
+        setID_ZaqvkaConnection(in_id_zaqvkaConnection);
+        setLevelDocFacade(in_docFacadeLevel);
+        setStorageDocFacade(in_docFacadeStorage);
+        setDocFacadeType(in_docFacadeType);
+        setTotalPayingDocFacade(in_docFacadeTotal);
+        setAllDDSPaingDocFacade(in_docFacadeAllDDS);
+        setConditionDocFacade(in_docFacadeCondition);
+        setDateDocFacade(in_docFacadeDate);
+        setCommentDocFacade(in_docFacadeCommnet);
+        setDateDeliver(in_dateDeliver);
+        setPayingDate(in_payingDate);
         try
         {
             registerParameters();
@@ -206,14 +328,7 @@ public class documentFacadeDB  extends dbObject
     {
         this.rs = rs;
     }
-    public void setId(int ID) //OK
-    {
-        this.id = ID;
-    }
-    public int getId() //OK
-    {
-        return id;
-    }
+  
     public int getMaxId() //OK
     {
         comprator = 7;
@@ -233,38 +348,7 @@ public class documentFacadeDB  extends dbObject
         }
        return return_int;
     }
-    public void setNom(int NOM) //OK
-    {
-        this.nom = NOM;
-    }
-    public int getNom()//OK
-    {
-        return nom;
-    }
-    public void setCod(String COD) //OK
-    {
-        this.cod = COD;
-    }
-    public String getCod() //OK
-    {
-        return cod;
-    }
-    public void setName(String Name) //OK
-    {
-        this.name = Name;
-    }
-    public String getName() //OK
-    {
-        return name;
-    }
-    public void setAnID(int anid) //OK
-    {
-        this.alId = anid;
-    }
-    public int getAnID() //OK
-    {
-        return alId;
-    }
+  
     public int getComprator() //OK
     {
         return comprator;
@@ -286,60 +370,205 @@ public class documentFacadeDB  extends dbObject
         }catch(java.sql.SQLException sqle){}
         
     }
-    public String[] getAnLevelName() //OK 
+    
+//------------------------>
+    public void setNumberDocFacade(int numberDocFacade) 
     {
-        comprator=6;
-        String return_str=new String("");
-        int oldId = id;
-        ResultSet oldRs = rs;
-        String strIndexConnOfId = new String("");
-        ArrayList in = new ArrayList();
-        Iterator it = null;
-        // nova ideq porodena ot fakta 4e pri razdelqneto na stringa i 
-        //ako imeto na ednata kletka ima intervali no se polu4ava gre6ka
-        HashMap key_Anlevel = new HashMap();
-        int i = 0;
-       
-         try              
-        {
-             registerParameters();
-            rs = cstm.executeQuery();
-                        
-           
-            while(rs.next())
-            {
-               key_Anlevel.put(new Integer(rs.getInt(1)),new String(rs.getString(3)));  // new
-               return_str =return_str + rs.getString(3) + " ";
-               in.add(new Integer(rs.getInt(1)));
-               i++;
-            }
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-        rs = oldRs;
-        id = oldId;
-        splitNamesOfAnLevel = return_str.split(" ");
-        indexConnOfId = new int[i];
-        it = in.iterator();
-        
-        splitNamesOfAnLevel = new String[i]; // new
-        i=0;
-        while(it.hasNext())
-        {
-            indexConnOfId[i] =(Integer) it.next();
-            splitNamesOfAnLevel[i] = (String) key_Anlevel.get(indexConnOfId[i]); // new
-            i++;
-        }
-       
-        
-        
-        return splitNamesOfAnLevel;
+        this.docFacadeNumber = numberDocFacade;
+    }
+    public int getNumberDocFacade() 
+    {
+        return docFacadeNumber;
+    }
+    public void setDateDocFacade(String date) 
+    {
+        this.docFacadeDate = date;
+    }
+    public String getDateDocFacade() 
+    {
+        return docFacadeDate;
     }
     
-  public int[] getIndexConnOfId()
-  {
-      return indexConnOfId;
-  }
+   public void setID_DocFacade(int  id) 
+    {
+        this.idDocFacade = id;
+    }
+    public int getID_DocFacade() 
+    {
+        return idDocFacade;
+    }
+    public void setID_Contragent_IN(int  id) 
+    {
+        this.idContragent_IN = id;
+    }
+    public int getID_Contragent_IN() 
+    {
+        return idContragent_IN;
+    }
+    public void setID_Contragent_OUT(int  id) 
+    {
+        this.idContragent_OUT = id;
+    }
+    public int getID_Contragent_OUT() 
+    {
+        return idContragent_OUT;
+    }
+     public void setID_Obekt_IN(int  id) 
+    {
+        this.idObect_IN = id;
+    }
+    public int getID_Obekt_IN() 
+    {
+        return idObect_IN;
+    }
+     public void setID_Obekt_OUT(int  id) 
+    {
+        this.idObect_OUT = id;
+    }
+    public int getID_Obekt_OUT() 
+    {
+        return idObect_OUT;
+    }   
+    public void setID_Distributor(int  id) 
+    {
+        this.idDistributor = id;
+    }
+    public int getID_Distributor() 
+    {
+        return idDistributor;
+    }
+     public void setID_Deliver(int  id) 
+    {
+        this.idDeliver = id;
+    }
+    public int getID_Deliver() 
+    {
+        return idDeliver;
+    }   
+
+
+public void setAllDDSPaingDocFacade(double in)
+{
+   this.allDDSPaing = in;
+}
+public double getAllDDSPaingDocFacade()
+{
+   return allDDSPaing;
+}
+public void setTotalPayingDocFacade(double in)
+{
+   this.totalPaying = in;
+}
+public double getTotalPayingDocFacade()
+{
+   return totalPaying;
+}
+public void setUserLastEditDocFacade(int in)
+{
+   this.userLastEdit= in;
+}
+public int getUserLastEditDocFacade()
+{
+   return userLastEdit;
+}
+public void setUserDocFacade(int in)
+{
+   this.userDocFacade= in;
+}
+public int getUserDocFacade()
+{
+   return userDocFacade;
+}
+public void setCommentDocFacade(String in)
+{
+   this.commentDocFacade= in;
+}
+public String getCommentDocFacade()
+{
+   return commentDocFacade;
+}  
+public void setID_FakturaConnection(int factuta)
+{
+    this.idFakturaConnection = factuta;
+}
+public int getID_FakturaConnection()
+{
+    return idFakturaConnection;
+} 
+public void setID_ZaqvkaConnection(int zaqvka)
+{
+    this.idZaqvkaConnection = zaqvka;
+}
+public int getID_ZaqvkaConnection()
+{
+    return idZaqvkaConnection;
+}
+public void setDescriptionPaying(int in)
+{
+    this.descriptionPaying = in;
+}
+public int getDescriptionPaying()
+{
+    return descriptionPaying;
+}
+public void setID_PayingOrder(int in)
+{
+    this.idPayingOrder = in;
+}
+public int getID_PayingOrder()
+{
+    return idPayingOrder;
+}
+public void setPayingDate(String in)
+{
+    this.payingDate = in;
+}
+public String getPayingDate()
+{
+    return payingDate;
+}
+ 
+public void setDateDeliver(String in)
+{
+    this.dateDeliver = in;
+}
+public String getDateDeliver()
+{
+    return dateDeliver;
+}
+public void setStorageDocFacade(int in)
+{
+    this.storageDocFacade = in;
+}
+public int getStorageDocFacade()
+{
+    return storageDocFacade;
+}
+
+public void setLevelDocFacade(int in)
+{
+    this.levelDocFacade = in;
+}
+public int getLevelDocFacade()
+{
+    return levelDocFacade;
+}
+public void setConditionDocFacade(String in)
+{
+    this.conditionDocFacade = in;
+}
+public String getConditionDocFacade()
+{
+    return conditionDocFacade;
+}
+public void setDocFacadeType(int in)
+{
+    this.docFacadeType = in;
+}
+public int getDocFacadeType()
+{
+    return docFacadeType;
+}
+// <-----------------------
+    
 }// end class
