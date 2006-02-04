@@ -277,7 +277,7 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
         try {
             
             rs = internalObject.getTable();
-            model = new imakante.com.CustomTableModel(getConn(), rs, null);
+            model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
             // da se napravqt skriti kolona "id" i kolona "nom"
         } catch(Exception e) {
@@ -554,7 +554,7 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
     protected  void refreshTable() {
         jScrollPane1.remove(table);
         rs = internalObject.getTable();
-        model = new imakante.com.CustomTableModel(getConn(), rs, null);
+        model = new imakante.com.CustomTableModel(getConn(), rs, Names);
         table = new imakante.com.CustomTable(model);
         HideColumns(0);
         jScrollPane1.getViewport().add(table);

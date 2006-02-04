@@ -221,7 +221,12 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     private  nom.dbPerson internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
-    
+    public static final String Names[] = {"id",
+    "\u041d\u043e\u043c\u0435\u0440 \u0433\u0440\u0443\u043f\u0430",
+    "\u0415\u0413\u041d",
+    "\u2116 \u041b\u041a",
+    "\u0418\u043c\u0435\u043d\u0430",
+    "\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440"};
     //---------------END My Variables
     
     //---------------START Methods
@@ -244,7 +249,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     private void initTable() {  //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
         try {
             rs = internalObject.getTable();
-            model = new imakante.com.CustomTableModel(getConn(), rs, null);
+            model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
             // da se napravqt skriti kolona "id" i kolona "nom"
         } catch(Exception e) { e.printStackTrace(); }
@@ -358,11 +363,6 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     public String getNLK() {
         return NLK;
     }
-    
-    
-    
-    
-    
     
     public void setNames(String Name) {
         this.name = Name;
@@ -485,7 +485,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
                 jTextEGN.requestFocus();
             }
             jScrollPane1.remove(table);
-            model = new imakante.com.CustomTableModel(getConn(), rs, null);
+            model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
             jScrollPane1.getViewport().add(table);
             jScrollPane1.repaint();
@@ -558,5 +558,33 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
         } catch(java.sql.SQLException sqle) {  }
         rs = null;
         internalObject.close();
+    }
+       private int getColumnIndex(String in) //test
+    {
+        int count = table.getColumnCount();
+        for(int i=0; i < count; i++) {
+            if(table.getColumnName(i).equals(in)) return i;
+        }
+        return 0;
+    }
+    
+    
+    
+    private void HideColumns(int col) {
+        int iColumn = col;
+// set column width
+        table.getColumnModel().getColumn(iColumn).setMaxWidth(0);
+        table.getColumnModel().getColumn(iColumn).setMinWidth(0);
+        table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
+        table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
+        
+    }
+    private void setAllVariables(){
+        setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
+        setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("\u041d\u043e\u043c\u0435\u0440 \u0433\u0440\u0443\u043f\u0430")));
+        setEGN((String) table.getValueAt(getRow(), getColumnIndex("\u0415\u0413\u041d")));
+        setNLK((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434\u043e\u0432\u0435")));
+        setNames((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435\u043d\u0430")));
+        setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440")));
     }
 }
