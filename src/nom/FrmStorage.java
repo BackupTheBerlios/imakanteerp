@@ -245,8 +245,7 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
             }
         }catch(Exception e){e.printStackTrace();}
     }
-    
-    
+   
     private void constructObject() //OK
     {
         try {
@@ -264,7 +263,7 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
         try {
             
             rs = internalObject.getTable();
-            model = new imakante.com.CustomTableModel(getConn(), rs, null);
+            model = new imakante.com.CustomTableModel(getConn(), rs,Names);
             table = new imakante.com.CustomTable(model);
             HideColumns(0);
         } catch(Exception e) {
@@ -478,7 +477,7 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
     {
         jScrollPane1.remove(table);
         rs = internalObject.getTable();
-        model = new imakante.com.CustomTableModel(getConn(), rs, null);
+        model = new imakante.com.CustomTableModel(getConn(), rs, Names);
         table = new imakante.com.CustomTable(model);
         jScrollPane1.getViewport().add(table);
         jScrollPane1.repaint();
@@ -493,8 +492,6 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
         nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
         ae_Casa.setVisible(true);
         refreshTable();
-        
-        
         
     }
     
