@@ -455,6 +455,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
             jScrollPane1.remove(table);
             model = new imakante.com.CustomTableModel(getConn(), rs, null);
             table = new imakante.com.CustomTable(model);
+            HideColumns(0);
             jScrollPane1.getViewport().add(table);
             jScrollPane1.repaint();
         } catch(Exception e) { e.printStackTrace(); }
