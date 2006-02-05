@@ -708,8 +708,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private int currentLevel = 1;
     
     
-    private void loadLevelDialog(){
-    levelDialog lDialog = new levelDialog(this, true);
+    private void loadLevelDialog(int ModuleCode){
+    levelDialog lDialog = new levelDialog(this, true, ModuleCode);
     lDialog.setVisible(true);
     }
     
@@ -718,7 +718,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }
     private void loadProba(){
     if(levelActivate==false){
-    loadLevelDialog();
+    loadLevelDialog(1);
     FrmTransferi tr = new FrmTransferi();
     tr.setVisible(true);
     }else{
