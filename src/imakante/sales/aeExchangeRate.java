@@ -20,8 +20,8 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
         jtfDate = new javax.swing.JTextField();
         jlCurrency = new javax.swing.JLabel();
         jcbCurrency = new javax.swing.JComboBox();
-        jlValue = new javax.swing.JLabel();
-        jtfValue = new javax.swing.JTextField();
+        jlRate = new javax.swing.JLabel();
+        jtfRate = new javax.swing.JTextField();
         jpControls = new javax.swing.JPanel();
         jbSave = new javax.swing.JButton();
         jbUndo = new javax.swing.JButton();
@@ -103,16 +103,16 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
 
         jcbCurrency.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jlValue.setText("\u041a\u0443\u0440\u0441:");
+        jlRate.setText("\u041a\u0443\u0440\u0441:");
 
-        jtfValue.addFocusListener(new java.awt.event.FocusAdapter() {
+        jtfRate.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jtfValueFocusLost(evt);
+                jtfRateFocusLost(evt);
             }
         });
-        jtfValue.addKeyListener(new java.awt.event.KeyAdapter() {
+        jtfRate.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jtfValueKeyPressed(evt);
+                jtfRateKeyPressed(evt);
             }
         });
 
@@ -124,7 +124,7 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
                 .add(26, 26, 26)
                 .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jpDataLayout.createSequentialGroup()
-                        .add(jlValue)
+                        .add(jlRate)
                         .add(186, 186, 186))
                     .add(jpDataLayout.createSequentialGroup()
                         .add(jlCurrency)
@@ -133,9 +133,9 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
                         .add(jlDate)
                         .add(36, 36, 36)
                         .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jcbCurrency, 0, 159, Short.MAX_VALUE)
-                            .add(jtfDate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
-                            .add(jtfValue, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)))
+                            .add(jcbCurrency, 0, 150, Short.MAX_VALUE)
+                            .add(jtfDate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .add(jtfRate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)))
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jpDataLayout.createSequentialGroup()
                         .add(jpMovement, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)))
@@ -154,8 +154,8 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
                     .add(jcbCurrency, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(22, 22, 22)
                 .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jlValue)
-                    .add(jtfValue, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jlRate)
+                    .add(jtfRate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(32, 32, 32)
                 .add(jpMovement, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(28, Short.MAX_VALUE))
@@ -217,13 +217,13 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){  }
     }//GEN-LAST:event_jtfDateKeyPressed
 
-    private void jtfValueFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfValueFocusLost
+    private void jtfRateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfRateFocusLost
         
-    }//GEN-LAST:event_jtfValueFocusLost
+    }//GEN-LAST:event_jtfRateFocusLost
 
-    private void jtfValueKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfValueKeyPressed
+    private void jtfRateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfRateKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jbSave.doClick(); }
-    }//GEN-LAST:event_jtfValueKeyPressed
+    }//GEN-LAST:event_jtfRateKeyPressed
 
     private void jbFirstKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbFirstKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jbFirst.doClick(); }
@@ -292,12 +292,12 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
     private javax.swing.JComboBox jcbCurrency;
     private javax.swing.JLabel jlCurrency;
     private javax.swing.JLabel jlDate;
-    private javax.swing.JLabel jlValue;
+    private javax.swing.JLabel jlRate;
     private javax.swing.JPanel jpControls;
     private javax.swing.JPanel jpData;
     private javax.swing.JPanel jpMovement;
     private javax.swing.JTextField jtfDate;
-    private javax.swing.JTextField jtfValue;
+    private javax.swing.JTextField jtfRate;
     // End of variables declaration//GEN-END:variables
     
 }

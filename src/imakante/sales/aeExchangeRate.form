@@ -38,7 +38,7 @@
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jlValue" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlRate" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="186" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -51,7 +51,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jcbCurrency" alignment="0" pref="150" max="32767" attributes="0"/>
                               <Component id="jtfDate" alignment="0" pref="150" max="32767" attributes="0"/>
-                              <Component id="jtfValue" alignment="0" pref="150" max="32767" attributes="0"/>
+                              <Component id="jtfRate" alignment="0" pref="150" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
@@ -78,8 +78,8 @@
                   </Group>
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jlValue" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jtfValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlRate" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jtfRate" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="jpMovement" min="-2" max="-2" attributes="0"/>
@@ -170,15 +170,15 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jlValue">
+        <Component class="javax.swing.JLabel" name="jlRate">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x41a;&#x443;&#x440;&#x441;:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtfValue">
+        <Component class="javax.swing.JTextField" name="jtfRate">
           <Events>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtfValueFocusLost"/>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfValueKeyPressed"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtfRateFocusLost"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfRateKeyPressed"/>
           </Events>
         </Component>
       </SubComponents>

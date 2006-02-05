@@ -145,7 +145,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="jbClose">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&#x417;&#x430;&#x442;&#x432;&#x43e;&#x440;&#x438;"/>
+            <Property name="text" type="java.lang.String" value="&#x41a;&#x443;&#x440;&#x441;"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbCloseActionPerformed"/>
