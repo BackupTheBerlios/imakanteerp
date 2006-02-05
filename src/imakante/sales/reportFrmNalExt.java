@@ -277,7 +277,7 @@ public class reportFrmNalExt extends javax.swing.JInternalFrame {
 
         jButton1.setText("\u0413\u0435\u043d\u0435\u0440\u0438\u0440\u0430\u0439");
 
-        jButton2.setText("\u043e\u0442\u043a\u0430\u0437");
+        jButton2.setText("\u041e\u0442\u043a\u0430\u0437");
 
         org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
