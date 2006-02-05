@@ -703,13 +703,30 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     public boolean isStartFrmContragent = false; // FLAG dali da se startira FrmContagent,
     //promenq se i ot FrmContragent pri zatvarqne
     // na FrmContragent
+    
     private boolean levelActivate = false;
     private int currentLevel = 1;
+    
+    
+    private void loadLevelDialog(){
+    levelDialog lDialog = new levelDialog(this, true);
+    lDialog.setVisible(true);
+    }
     
     private void loadConn(){
         dbConn = imakante.com.NewMain.getConnection();
     }
+    private void loadProba(){
+    if(levelActivate==false){
+    loadLevelDialog();
+    FrmTransferi tr = new FrmTransferi();
+    tr.setVisible(true);
+    }else{
+            FrmTransferi tr = new FrmTransferi();
+            tr.setVisible(true);
+    }
     
+    }
     private java.sql.Connection makeConn(String dbDriver,String dbURL,String dbUser, String dbPass) throws java.sql.SQLException {
         
         String DBDriver = dbDriver;
