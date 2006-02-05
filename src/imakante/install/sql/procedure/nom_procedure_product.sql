@@ -94,7 +94,7 @@ BEGIN
     END IF;
 
      IF (in_comprator = 16) THEN
-        SELECT n.id_n_group,n.name_n_group, n.cod_n_group, n.nom_n_group FROM n_group n ORDER BY n.name_n_group;
+        SELECT n.id_n_group,n.name_n_group, n.cod_n_group, n.nom_n_group FROM n_group n WHERE n.nom_n_group=in_id_pf  ORDER BY n.name_n_group;
     END IF;
 
       IF (in_comprator = 17) THEN
