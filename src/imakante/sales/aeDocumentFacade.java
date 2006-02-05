@@ -2,10 +2,25 @@
 package imakante.sales;
 
 import imakante.com.vcomponents.iInternalFrame;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import javax.swing.*;
 import java.util.Date;
 import java.sql.*;
 import imakante.sales.FrmDocumentFacade;
+import javax.swing.event.CellEditorListener;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.TableColumnModelEvent;
+import javax.swing.event.TableColumnModelListener;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 
 public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 {
@@ -544,38 +559,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanelDocLine.setLayout(new javax.swing.BoxLayout(jPanelDocLine, javax.swing.BoxLayout.X_AXIS));
 
         jPanelDocLine.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Номер продукт", "Име на продукт", "Номер склад", "Ценова листа", "Р-ка основна", "Разфасовка 1", "Разфасовка 2", "Ед. цена", "Процент отстъпка", "ДДС", "Общо линия"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
-            };
-            boolean[] canEdit = new boolean [] {
-                true, false, false, false, false, false, false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-            public void enableCellEditable(int columnIndex)
-            {
-                 canEdit [columnIndex] = true;
-            }
-            public void disableCellEditable(int columnIndex)
-            {
-              canEdit [columnIndex] = false;
-            }
-        });
         jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jTable1.setModel(new MyTableModel());
         jTable1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTable1FocusGained(evt);
@@ -825,7 +810,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
     private void jTable1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable1FocusGained
 // TODO add your handling code here:
-        
+        jTable1.editCellAt(0,0);
     }//GEN-LAST:event_jTable1FocusGained
 
     private void jTextFieldDeliverKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDeliverKeyPressed
@@ -1394,6 +1379,98 @@ private void repaintComp() // ??
     
 }
 
+private void setInputLisener()
+{
+        jTable1.getCellEditor(0,0).addCellEditorListener(new CellEditorListener() 
+    {
+        int columnSelect =0;
+        public void editingCanceled(ChangeEvent e)
+        {
+        }
+        public void editingStopped(ChangeEvent e) 
+        {
+            columnSelect = jTable1.getSelectedColumn();
+                if(columnSelect == 0)
+                {
+                    // popylvat se drugite stoinosti na tdoc line
+                    
+                    jTable1.setValueAt(myParent.getNameProduct(),jTable1.getSelectedRow(),0);
+                    
+                    jTable1.setValueAt(myParent.getNameProduct(),jTable1.getSelectedRow(),1);
+                    jTable1.setValueAt(myParent.getStorageOUTProduct(),jTable1.getSelectedRow(),2);
+                    jTable1.setValueAt(myParent.getPriceListProduct(),jTable1.getSelectedRow(),3);
+                    jTable1.setValueAt(myParent.getBrojProduct(),jTable1.getSelectedRow(),4);
+                    jTable1.setValueAt(myParent.getRazfasovka1Produkt(),jTable1.getSelectedRow(),5);
+                    jTable1.setValueAt(myParent.getRazfasovka2Produkt(),jTable1.getSelectedRow(),6);
+                    jTable1.setValueAt(myParent.getPriceOneProduct(),jTable1.getSelectedRow(),7);
+                    jTable1.setValueAt(myParent.getProcentProduct(),jTable1.getSelectedRow(),8);
+                    jTable1.setValueAt(myParent.getDDSProduct(),jTable1.getSelectedRow(),9);
+                    
+                
+                    ((MyTableModel) jTable1.getModel()).enableCellEditable(3);
+                    ((MyTableModel) jTable1.getModel()).enableCellEditable(4);
+                    ((MyTableModel) jTable1.getModel()).enableCellEditable(5);
+                    ((MyTableModel) jTable1.getModel()).enableCellEditable(6);
+                  //  ((MyTableModel) jTable1.getModel()).enableCellEditable(7);
+                  //  ((MyTableModel) jTable1.getModel()).enableCellEditable(8);
+                  
+                 jTable1.editCellAt(jTable1.getSelectedRow(),3)   ; // otiva na cenova lista
+                }
+            if(columnSelect == 3)
+            {
+                // za iz4islenie na razfasovka 1 i razfasovka 2
+                jTable1.editCellAt(jTable1.getSelectedRow(),4)   ; // otiva na koli4estwo - osnovna razfasovka
+            }
+            if(columnSelect == 4)  // osnovna razfasovka
+            {
+                // da se dobavi za  iz4islenie na osnovna razfasowka i razfasowka 2
+               jTable1.editCellAt(jTable1.getSelectedRow(),5)   ; // otiva na  razfasovka  1
+            }
+            if(columnSelect == 5)  // otiva na  razfasovka  1
+            {
+                // da se dobavi za  iz4islenie na osnovna razfasowka i razfasowka 1
+               jTable1.editCellAt(jTable1.getSelectedRow(),6)   ; // otiva na  razfasovka  2
+                 
+            }
+            if(columnSelect == 6)  // otiva na  razfasovka  2
+            {
+                // da se dobavi za  iz4islenie na osnovna razfasowka i razfasowka 1
+                ((MyTableModel) jTable1.getModel()).enableCellEditable(7);
+                 ((MyTableModel) jTable1.getModel()).enableCellEditable(8);
+                jTable1.editCellAt(jTable1.getSelectedRow(),7)   ; // otiva na  razfasovka  2
+                 
+            }
+            
+            if(columnSelect == 7)  // ed cena
+            {
+                // da se dobavi za  iz4islenie na procenta i na ob6tata suma
+                
+                jTable1.editCellAt(jTable1.getSelectedRow(),8)   ; // otiva na  procent
+                 
+            }
+            if(columnSelect == 8)  // ed cena
+            {
+                
+                
+                
+                ((MyTableModel) jTable1.getModel()).setDefaultCellEditable();
+                myParent.setNameProduct((String)jTable1.getValueAt(jTable1.getSelectedRow(),0));
+                
+                myParent.setPriceOneProduct((Double)jTable1.getValueAt(jTable1.getSelectedRow(),7));
+                myParent.setDDSProduct((Double)jTable1.getValueAt(jTable1.getSelectedRow(),9));
+                myParent.setProcentProduct((Double)jTable1.getValueAt(jTable1.getSelectedRow(),8));
+                myParent.setBrojProduct((Double)jTable1.getValueAt(jTable1.getSelectedRow(),4));
+                
+                
+                // zapis v bazata za doc line------------------------ !!!!!!!!!!
+                
+                ((MyTableModel)jTable1.getModel()).addRow(new Object [][] {null, null, null, null, null, null, null, null, null, null, null});
+                 jTable1.editCellAt(jTable1.getSelectedRow()+1,0);
+            }
+        }
+    });
+    
+}
 
 }// end class
 

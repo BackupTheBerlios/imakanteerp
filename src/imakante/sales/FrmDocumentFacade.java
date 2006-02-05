@@ -393,6 +393,20 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
    private int userLastEdit = userDocFacade;
    private String commenatDocFacade;
    
+    private String numberProduct;
+    private String nameProduct;
+    private int    storageOUTProduct;
+    private int   priceListProduct;
+    private double brojProduct;
+    private double razfasovka1Produkt;
+    private double razfasovka2Produkt;
+    private double priceOneProduct;
+    private double procentProduct;
+    private double DDSProduct;
+    private double totalProduct;
+
+   
+   
    private  String nameColumnsDocFacade[] = {"id_df","id_contragent_in","id_contragent_out","id_n_obekt_in","id_n_obekt_out","ls_n_person_deliv","ls_n_person_dist",
                 "Номер на документа","Дата на документа","Код на контрагента","Име на контрагента",
                 "Адрес на контрагента","Телефон на контрагента","Дан. No на контрагента","МОЛ на контрагента",
@@ -814,7 +828,98 @@ public String getCommenatDocFacade()
 {
    return commenatDocFacade;
 }
-   
+ 
+// -- doc lines
+public void setNumberProduct(String in)
+{
+   this.numberProduct= in;
+}
+public String getNumberProduct()
+{
+   return numberProduct;
+}
+public void setNameProduct(String in)
+{
+   this.nameProduct= in;
+}
+public String getNameProduct()
+{
+   return nameProduct;
+}
+public void setStorageOUTProduct(int in)
+{
+   this.storageOUTProduct= in;
+}
+public int getStorageOUTProduct()
+{
+   return storageOUTProduct;
+}
+public void setPriceListProduct(int in)
+{
+   this.priceListProduct= in;
+}
+public int getPriceListProduct()
+{
+   return priceListProduct;
+}
+public void setBrojProduct(double in)
+{
+   this.brojProduct= in;
+}
+public double getBrojProduct()
+{
+   return brojProduct;
+}
+public void setRazfasovka1Produkt(double in)
+{
+   this.razfasovka1Produkt= in;
+}
+public double getRazfasovka1Produkt()
+{
+   return razfasovka1Produkt;
+}
+public void setRazfasovka2Produkt(double in)
+{
+   this.razfasovka2Produkt= in;
+}
+public double getRazfasovka2Produkt()
+{
+   return razfasovka2Produkt;
+}
+public void setPriceOneProduct(double in)
+{
+   this.priceOneProduct= in;
+}
+public double getPriceOneProduct()
+{
+   return priceOneProduct;
+}
+public void setProcentProduct(double in)
+{
+   this.procentProduct= in;
+}
+public double getProcentProduct()
+{
+   return procentProduct;
+}
+public void setDDSProduct(double in)
+{
+   this.DDSProduct= in;
+}
+public double getDDSProduct()
+{
+   return DDSProduct;
+}
+
+public void setTotalProduct(double in)
+{
+   this.totalProduct= in;
+}
+public double getTotalProduct()
+{
+   return totalProduct;
+}
+
 // <--------------------------------------- 
  public  int getRow()
    {
