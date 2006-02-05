@@ -4,6 +4,7 @@ package imakante.sales;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.*;
+import imakante.sales.FrmDocumentFacade;
 
 public class selectDataOfDocFacade   extends imakante.com.vcomponents.iDialog
 {
@@ -148,6 +149,7 @@ public class selectDataOfDocFacade   extends imakante.com.vcomponents.iDialog
                      {   
                          int ID = (Integer)table.getValueAt(row,getColumnIndex("id_contragent"));
                          myParent.setID_Contragent(ID);
+                         
                          ContragentData[0] = (String)table.getValueAt(row,getColumnIndex("id_contragent"));
                          ContragentData[1] = (String)table.getValueAt(row,getColumnIndex("bul_n_contragent"));
                          ContragentData[2] = (String)table.getValueAt(row,getColumnIndex("dan_n_contragent")); 
@@ -156,6 +158,7 @@ public class selectDataOfDocFacade   extends imakante.com.vcomponents.iDialog
                          ContragentData[5] = (String)table.getValueAt(row,getColumnIndex("ls_n_person_mol"));
                          ContragentData[6] = (String)table.getValueAt(row,getColumnIndex("tel_n_contragent"));
                          myParent.setContragentData(ContragentData);
+                        
                         
                      }
                  if(sqlselect == OBEKT_ADDRESS | sqlselect == OBEKT_NAME | sqlselect == OBEKT_NO | sqlselect == OBEKT_TEL)

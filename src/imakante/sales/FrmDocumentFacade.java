@@ -28,7 +28,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
        
         prepareConn();     // zapazva connection
         constructGroupDB(); // inicializira class otgovarq6t za vryzkata s DB
-        initTable();
+       initTable();
         initComponents();
         fr.addWindowListener(this);
     }
@@ -285,7 +285,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
             try 
             {
                
-                dialog = new aeDocumentFacade(this, true,false,userDocFacade,levelDocFacade,priceList,docType);
+            //    dialog = new aeDocumentFacade(this, true,false,userDocFacade,levelDocFacade,priceList,docType);
                 dialog.setVisible(true);
                 
             } catch(Exception e)
@@ -393,7 +393,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
    private int userLastEdit = userDocFacade;
    private String commenatDocFacade;
    
-   private  String nameColumnsDocFacade[] = {"id_df","id_contragent","id_n_obekt","ls_n_person_deliv","ls_n_person_dist",
+   private  String nameColumnsDocFacade[] = {"id_df","id_contragent_in","id_contragent_out","id_n_obekt_in","id_n_obekt_out","ls_n_person_deliv","ls_n_person_dist",
                 "Номер на документа","Дата на документа","Код на контрагента","Име на контрагента",
                 "Адрес на контрагента","Телефон на контрагента","Дан. No на контрагента","МОЛ на контрагента",
                 "Код на обекта","Име на обекта","Адрес на обекта","Телефон на обекта","Код на дистрибутор",
