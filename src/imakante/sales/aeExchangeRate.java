@@ -5,7 +5,14 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
     
     public aeExchangeRate(imakante.com.vcomponents.iInternalFrame parent, boolean modal) {
         super(parent, modal);
+        this.myParent = (imakante.sales.FrmExchangeRate) parent;
         initComponents();
+        getNavigationState();
+        jbUndo.setEnabled(false);
+        initCombo();
+        this.setResizable(false);
+        java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        repaintComp();
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -88,6 +95,7 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
 
         jlDate.setText("\u0414\u0430\u0442\u0430:");
 
+        jtfDate.setInputVerifier(new imakante.com.InputDateVerifier());
         jtfDate.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jtfDateFocusLost(evt);
@@ -105,6 +113,7 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
 
         jlRate.setText("\u041a\u0443\u0440\u0441:");
 
+        jtfRate.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jtfRate.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jtfRateFocusLost(evt);
@@ -133,9 +142,9 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
                         .add(jlDate)
                         .add(36, 36, 36)
                         .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jcbCurrency, 0, 150, Short.MAX_VALUE)
-                            .add(jtfDate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .add(jtfRate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)))
+                            .add(jcbCurrency, 0, 159, Short.MAX_VALUE)
+                            .add(jtfDate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                            .add(jtfRate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)))
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jpDataLayout.createSequentialGroup()
                         .add(jpMovement, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)))
@@ -300,4 +309,54 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
     private javax.swing.JTextField jtfRate;
     // End of variables declaration//GEN-END:variables
     
+    private imakante.sales.FrmExchangeRate myParent;
+    private int oldIDG = 1;
+    private int oldCod = 0;
+    private String oldName = "";
+    private String oldComment =  "";
+    private String Currencies[];
+    private int selectComboBoxItem;
+    
+    private void getNavigationState() {
+        if(myParent.isAtBegining()) {
+            jbFirst.setEnabled(false);
+            jbPrevious.setEnabled(false);
+            jbFirst.repaint();
+            jbPrevious.repaint();
+        }
+        if(myParent.isAtEnd()) {
+            jbLast.setEnabled(false);
+            jbNext.setEnabled(false);
+            jbLast.repaint();
+            jbNext.repaint();
+        }
+    }
+    
+    private void repaintComp() {
+        jtfDate.setText("" + myParent.getDate());
+        jcbCurrency.setSelectedIndex(getNewComboBoxIndex(myParent.getIDCurrency()));
+        jtfRate.setText(myParent.getRateValue().toString());
+    }
+    
+    private void initCombo() {
+        Currencies = myParent.getInternalObject().getCurrencies();
+        for(int i=0; i<Currencies.length; i++) {
+            jcbCurrency.addItem(new String(Currencies[i]));
+        }
+        if(selectComboBoxItem != 0) {
+            selectComboBoxItem = getNewComboBoxIndex(selectComboBoxItem);
+            jcbCurrency.setSelectedIndex(selectComboBoxItem);
+        }
+    }
+    
+    private int getNewComboBoxIndex(int oldindex) {
+        int newindex= 0;
+        for(int i = 0; i < myParent.getInternalObject().getIndexConnOfId().length; i++) {
+            if(myParent.getInternalObject().getIndexConnOfId()[i] == oldindex) {
+                newindex = i;
+                break;
+            }
+        }
+        return newindex;
+    }
 }

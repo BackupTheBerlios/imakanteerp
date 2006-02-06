@@ -49,9 +49,9 @@
                           <Component id="jlDate" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jcbCurrency" alignment="0" pref="150" max="32767" attributes="0"/>
-                              <Component id="jtfDate" alignment="0" pref="150" max="32767" attributes="0"/>
-                              <Component id="jtfRate" alignment="0" pref="150" max="32767" attributes="0"/>
+                              <Component id="jcbCurrency" alignment="0" pref="159" max="32767" attributes="0"/>
+                              <Component id="jtfDate" alignment="0" pref="159" max="32767" attributes="0"/>
+                              <Component id="jtfRate" alignment="0" pref="159" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
@@ -152,6 +152,9 @@
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtfDateFocusLost"/>
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfDateKeyPressed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jtfDate.setInputVerifier(new imakante.com.InputDateVerifier());"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jlCurrency">
           <Properties>
@@ -180,6 +183,9 @@
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtfRateFocusLost"/>
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfRateKeyPressed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jtfRate.setInputVerifier(new imakante.com.InputDoubleVerifier());"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
