@@ -161,6 +161,7 @@ public class groupDB  extends dbObject
         this.cod = in_cod;
         this.name = in_name;
         this.alId = alID;
+       
         try
         {
             registerParameters();

@@ -13,13 +13,13 @@ import javax.swing.*;
 import java.text.MessageFormat;
 
 
-public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implements WindowListener
+public class FrmGroup extends  iInternalFrame implements WindowListener //imakante.com.vcomponents.iInternalFrame implements WindowListener
 {
 
-    public FrmGroup(String title, imakante.com.vcomponents.iFrame frame, int idGroup) // TEST 
+    public FrmGroup(String title,  int idGroup) // TEST  da se dobavi imakante.com.vcomponents.iFrame frame,
     {
         super(title);
-        myframe = frame; 
+      //  myframe = frame; 
        
         this.nom = idGroup;
         prepareConn();     // zapazva connection
@@ -27,6 +27,16 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
         initTable();
         initComponents();
         fr.addWindowListener(this);
+        jComboBoxAnLevel.addItem("-----------------");
+        splitNamesOfAnLevel = getCountriesT().getAnLevelName();
+        for(int i=0;i<splitNamesOfAnLevel.length;i++)
+        {
+            jComboBoxAnLevel.addItem(new String(splitNamesOfAnLevel[i]));
+            
+        }
+        
+        
+        
     }
     
     /** This method is called from within the constructor to
@@ -44,7 +54,7 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
         jLabel2 = new javax.swing.JLabel();
         jTextName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextAnLevel = new javax.swing.JTextField();
+        jComboBoxAnLevel = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -105,8 +115,8 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
         jLabel3.setText("\u0410\u043d\u0430\u043b\u0438\u0442\u0438\u0447\u043d\u0438 \u043d\u0438\u0432\u0430:");
         jPanel4.add(jLabel3);
 
-        jTextAnLevel.setPreferredSize(new java.awt.Dimension(45, 20));
-        jPanel4.add(jTextAnLevel);
+        jComboBoxAnLevel.setPreferredSize(new java.awt.Dimension(100, 20));
+        jPanel4.add(jComboBoxAnLevel);
 
         jButton1.setText("\u0422\u044a\u0440\u0441\u0435\u043d\u0435");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +136,7 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 825, Short.MAX_VALUE)
+            .add(0, 821, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -233,12 +243,19 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
         {
          String searchCod = jTextCod.getText();
          String searchName = jTextName.getText();
-         int searchAnLevel = Integer.parseInt(jTextAnLevel.getText());
+         /* int searchAnLevel=0;
+        if(jTextAnLevel.getText().length()>0)
+         {
+         searchAnLevel = Integer.parseInt(jTextAnLevel.getText());
+         }*/
+         int searchAnLevel = jComboBoxAnLevel.getSelectedIndex();
          rs = countriesT.searchRecords(getNom(),searchCod,searchName,searchAnLevel);
          jScrollPane1.remove(table);
-         model = new imakante.com.CustomTableModel(conn,rs, null);
+         model = new imakante.com.CustomTableModel(conn,rs, columnsNames);
          table = new imakante.com.CustomTable(model);
          jScrollPane1.getViewport().add(table);
+         HideColumns(getColumnIndex("id_n_group"));
+         HideColumns(getColumnIndex("id_al"));
          jScrollPane1.repaint();
         }
         catch(Exception e)
@@ -323,7 +340,7 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
     /**
      * @param args the command line arguments
      */
-   /* public static void main(String args[]) {
+    public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 
@@ -334,7 +351,7 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
                 
             }
         });
-    }*/
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -346,6 +363,7 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
     private javax.swing.JButton jButtonPrint;
     private javax.swing.JButton jButtonPrnReport;
     private javax.swing.JButton jButtonRefresh;
+    private javax.swing.JComboBox jComboBoxAnLevel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -354,11 +372,12 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextAnLevel;
     private javax.swing.JTextField jTextCod;
     private javax.swing.JTextField jTextName;
     // End of variables declaration//GEN-END:variables
  //--------------- My Variables
+    private String columnsNames[] = {"id_n_group","\u041a\u043e\u0434","\u0418\u043c\u0435", "id_al" ,"\u0410\u043d\u0430\u043b\u0438\u0442\u0438\u0447\u043d\u0438 \u043d\u0438\u0432\u0430"};
+     private String splitNamesOfAnLevel[];
     private int id=0; // imena ot tablicata                              
     private int nom=0; // imena ot tablicata                            
     private String cod,name; // imena ot tablicata                      
@@ -375,15 +394,15 @@ public class FrmGroup extends  imakante.com.vcomponents.iInternalFrame implement
     private  imakante.com.CustomTable table; 
     private java.sql.Connection ccc;  // samo za testvaneto
     private  static JFrame fr = new JFrame("test");
-    private String User="javauser";  // vremenna promenliva za test
-    private String Pass="javadude";  // vremenna promenliva za test
-    private String Url = "jdbc:mysql://127.0.0.1:3306/mida";  // vremenna promenliva za test
+    private String User="root";  // vremenna promenliva za test
+    private String Pass="root";  // vremenna promenliva za test
+    private String Url = "jdbc:mysql://192.168.0.1:3307/mida";  // vremenna promenliva za test
  //---------------END My Variables
  //---------------START MyFunction
 private void prepareConn() //TEST
     {
-      // samo za testovate ------------
-   /*   try
+      // samo za testovate ------------start
+      try
          {
           Class.forName("com.mysql.jdbc.Driver");
            
@@ -395,15 +414,16 @@ private void prepareConn() //TEST
          {
              e.printStackTrace();
          }
-      //*/
-       try
+      //
+    // original   test end
+    /*  try
        {
             setConn(myframe.getConn());
        }
        catch(Exception e)
        {
        e.printStackTrace();
-       }
+       }*/
   }
 private void constructGroupDB() //OK 
     {
@@ -419,15 +439,19 @@ private void constructGroupDB() //OK
         }
         System.out.println("ot construct object");
     }
-private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
+private void initTable() //OK  -- 
     {
       try
         {
             countriesT.setNom(nom); // za izvli4ane na samo poleta otgovarq6ti s idGroup
             rs = countriesT.getTable();
-            model = new imakante.com.CustomTableModel(conn,rs, null);
+            
+            model = new imakante.com.CustomTableModel(conn,rs, columnsNames);
             table = new imakante.com.CustomTable(model);
-            // da se napravqt skriti kolona "id" i kolona "nom"
+            
+            HideColumns(getColumnIndex("id_n_group"));
+            HideColumns(getColumnIndex("id_al"));
+            
         }
        catch(Exception e)
        {
@@ -437,7 +461,7 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
        try
         {
           table.setEditingRow(0);
-       } 
+        } 
         catch(Exception ex) 
         {
         
@@ -689,10 +713,31 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
   {
         jScrollPane1.remove(table);
         rs = countriesT.getTable();
-        model = new imakante.com.CustomTableModel(conn, rs, null);
+        model = new imakante.com.CustomTableModel(conn, rs, columnsNames);
         table = new imakante.com.CustomTable(model);
         jScrollPane1.getViewport().add(table);
+        HideColumns(getColumnIndex("id_n_group"));
+        HideColumns(getColumnIndex("id_al"));
         jScrollPane1.repaint();
         
     }
+  private int getColumnIndex(String in) //test
+ {
+     int count = table.getColumnCount();
+     for(int i=0; i < count; i++)
+     {
+         if(table.getColumnName(i).equals(in)) return i;
+     }
+     return 0;
+ }
+ private void HideColumns(int col)
+ {
+   int iColumn = col;
+// set column width
+table.getColumnModel().getColumn(iColumn).setMaxWidth(0);
+table.getColumnModel().getColumn(iColumn).setMinWidth(0);
+table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
+table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
+     
+ }
 }// end class

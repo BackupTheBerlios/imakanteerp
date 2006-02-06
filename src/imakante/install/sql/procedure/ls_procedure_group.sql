@@ -1,10 +1,10 @@
 ﻿DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `mida`.`ls_procedure_group` $$
-CREATE PROCEDURE `ls_procedure_group`(IN in_id INT(6), IN in_nom TINYINT, IN comprator TINYINT, IN in_cod VARCHAR(30), IN in_name VARCHAR(30), IN in_alid TINYINT)
+CREATE PROCEDURE `mida`.`ls_procedure_group`(IN in_id INT(6), IN in_nom TINYINT, IN comprator TINYINT, IN in_cod VARCHAR(30), IN in_name VARCHAR(30), IN in_alid TINYINT)
 BEGIN
      IF (comprator = 0) THEN
-        SELECT n.id_n_group, n.cod_n_group, n.name_n_group, n.id_al FROM `n_group` n WHERE nom_n_group = in_nom;
+        SELECT n.id_n_group, n.cod_n_group, n.name_n_group, n.id_al, anlevel.name_al  FROM `n_group` n, anlevel WHERE nom_n_group = in_nom AND anlevel.id_al = n.id_al;
      END IF;
      IF (comprator = 1) THEN
         INSERT INTO `n_group`(nom_n_group, cod_n_group, name_n_group, id_al) VALUES(in_nom, in_cod, in_name, in_alid);
@@ -23,8 +23,14 @@ BEGIN
 
      END IF;
      IF (comprator = 5) THEN
-        SELECT n.id_n_group,  n.cod_n_group, n.name_n_group, n.id_al  FROM `n_group` n  WHERE n.cod_n_group LIKE CONCAT('%',in_cod,'%') AND
-        n.name_n_group LIKE CONCAT('%',in_name,'%') AND n.id_al LIKE CONCAT(in_alid,'%') AND n.nom_n_group=in_nom;
+           IF (in_alid != 0) THEN
+             SELECT n.id_n_group,  n.cod_n_group, n.name_n_group, n.id_al, anlevel.name_al  FROM `n_group` n, anlevel  WHERE n.cod_n_group LIKE CONCAT('%',in_cod,'%') AND
+             n.name_n_group LIKE CONCAT('%',in_name,'%') AND n.id_al LIKE CONCAT('%',in_alid,'%') AND n.nom_n_group=in_nom AND anlevel.id_al = n.id_al;
+          END IF;
+          IF (in_alid = 0) THEN
+             SELECT n.id_n_group,  n.cod_n_group, n.name_n_group, n.id_al,anlevel.name_al  FROM `n_group` n,anlevel  WHERE n.cod_n_group LIKE CONCAT('%',in_cod,'%') AND
+             n.name_n_group LIKE CONCAT('%',in_name,'%') AND n.nom_n_group=in_nom AND anlevel.id_al = n.id_al;
+          END IF;
      END IF;
 
      IF (comprator = 6) THEN
