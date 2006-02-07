@@ -332,6 +332,14 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="moneyMenu_valutesActionPerformed"/>
                   </Events>
                 </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="monyMenu_rates">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="&#x41a;&#x443;&#x440;&#x441;&#x43e;&#x432;&#x435;"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="monyMenu_ratesActionPerformed"/>
+                  </Events>
+                </MenuItem>
               </SubComponents>
             </Menu>
             <MenuItem class="javax.swing.JSeparator" name="jSeparator3">

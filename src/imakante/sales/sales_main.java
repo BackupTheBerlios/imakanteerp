@@ -101,6 +101,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         moneyMenu_in = new javax.swing.JMenuItem();
         moneyMenu_out = new javax.swing.JMenuItem();
         moneyMenu_valutes = new javax.swing.JMenuItem();
+        monyMenu_rates = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JSeparator();
         nomMenu_nasm = new javax.swing.JMenuItem();
         nomMenu_obl = new javax.swing.JMenuItem();
@@ -381,6 +382,15 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         moneyMenu.add(moneyMenu_valutes);
 
+        monyMenu_rates.setText("\u041a\u0443\u0440\u0441\u043e\u0432\u0435");
+        monyMenu_rates.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                monyMenu_ratesActionPerformed(evt);
+            }
+        });
+
+        moneyMenu.add(monyMenu_rates);
+
         nomMenu.add(moneyMenu);
 
         nomMenu.add(jSeparator3);
@@ -488,6 +498,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-448)/2, 757, 448);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void monyMenu_ratesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monyMenu_ratesActionPerformed
+        loadExRates();
+    }//GEN-LAST:event_monyMenu_ratesActionPerformed
     
     private void objectMenu_sklActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_objectMenu_sklActionPerformed
         loadStorage();
@@ -637,6 +651,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenuItem moneyMenu_in;
     private javax.swing.JMenuItem moneyMenu_out;
     private javax.swing.JMenuItem moneyMenu_valutes;
+    private javax.swing.JMenuItem monyMenu_rates;
     private javax.swing.JMenuItem nomALevel;
     private javax.swing.JMenu nomMenu;
     private javax.swing.JMenu nomMenu_Aktiv;
@@ -909,9 +924,9 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         }
         Storage.setVisible(true);
     }
+    
     //PARICHNI
-    private void loadFrmMoney(){
-        
+    private void loadFrmMoney() {
         nom.FrmMoney Money = new nom.FrmMoney("\u041f\u0410\u0420\u0418\u0427\u041d\u0418", this);
         desktopPane.add(Money);
         try {
@@ -920,6 +935,17 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             ex.printStackTrace();
         }
         Money.setVisible(true);
+    }
+    
+    private void loadExRates() {
+        imakante.sales.FrmExchangeRate Rates = new imakante.sales.FrmExchangeRate("\u041a\u0443\u0440\u0441\u043e\u0432\u0435 \u043d\u0430 \u0432\u0430\u043b\u0443\u0442\u0438", this);
+        desktopPane.add(Rates);
+        try {
+            Rates.setMaximum(true);
+        } catch(java.beans.PropertyVetoException pvex) {
+            pvex.printStackTrace();
+        }
+        Rates.setVisible(true);
     }
     
     //OBLASTI
