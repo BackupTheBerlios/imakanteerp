@@ -871,7 +871,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             
         {
             try {
-                iFormGroup[nm] = new nom.FrmGroup(title,this,nm);
+                iFormGroup[nm] = new nom.FrmGroup(title,nm);
                 desktopPane.add(iFormGroup[nm]);
                 try {
                     iFormGroup[nm].setMaximum(true);
