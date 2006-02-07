@@ -140,9 +140,9 @@ public class naseleniMestaDB  extends dbObject
             rs = cstm.executeQuery();
             while(rs.next())
             {
-                name = rs.getString("name");
-                postcode = rs.getInt("postcode");
-                id_oblast = rs.getByte("id_oblast");
+                name = rs.getString("name_n_nm");
+                postcode = rs.getInt("postcode_n_nm");
+                id_oblast = rs.getByte("id_n_oblast");
             }
         }
         catch(java.sql.SQLException sqle)
@@ -301,8 +301,8 @@ public class naseleniMestaDB  extends dbObject
            
             while(rs.next())
             {
-               key_Anlevel.put(new Integer(rs.getInt("id")),new String(rs.getString("name")));  
-               in.add(new Integer(rs.getInt("id")));
+               key_Anlevel.put(new Integer(rs.getInt("id_n_oblast")),new String(rs.getString("name_n_oblast")));  
+               in.add(new Integer(rs.getInt("id_n_oblast")));
                i++;
             }
         }

@@ -20,10 +20,11 @@ public class oblastDB  extends dbObject
    private int comprator;
    private int id=0; // imena ot tablicata                                \   
    			   // imena ot tablicata                           \ 
-   private String name; // imena ot tablicata                                 > tablica "naseleni mesta"
+   private String name; // imena ot tablicata                                 > tablica "oblast"
    private byte id_country=0; // vryzkata kym tablicata za analitu4nite niva  /
                        //                                                  /
    private Connection conn;
+   private String country;
     //-------------END MyVariables
     
     /** Creates a new instance of oblastDB */
@@ -38,7 +39,7 @@ public class oblastDB  extends dbObject
     {
         try {
             
-            setCstm(getConn().prepareCall("{call nom_procedure_oblast(?,?,?,?)}"));
+            setCstm(getConn().prepareCall("{call nom_procedure_oblast(?,?,?,?,?)}"));
             
         } catch(java.sql.SQLException sqle) {sqle.printStackTrace();}
     }
@@ -64,6 +65,7 @@ public class oblastDB  extends dbObject
             
             getCstm().setInt("in_id", getId());
             getCstm().setString("in_name", getName());
+            getCstm().setString("in_country", getNameCountry());
             getCstm().setInt("in_id_country", getIDCountry());
             getCstm().setInt("comprator", getComprator()); 
             
@@ -147,10 +149,12 @@ public class oblastDB  extends dbObject
         }
       return rs;  
     }
- public java.sql.ResultSet searchRecords(String in_name) //-OK  comprator = 5;
+ public java.sql.ResultSet searchRecords(String oblast, String country) //-OK  comprator = 5;
     {
         comprator = 5;
-        this.name = in_name;
+        this.name = oblast;
+        this.country = country;
+        
        
         try
         {
@@ -245,7 +249,14 @@ public class oblastDB  extends dbObject
     {
         return name;
     }
-    
+     public void setNameCountry(String Name) //OK
+    {
+        this.country = Name;
+    }
+    public String getNameCountry() //OK
+    {
+        return country;
+    }
     public int getComprator() //OK
     {
         return comprator;
@@ -289,8 +300,8 @@ public class oblastDB  extends dbObject
            
             while(rs.next())
             {
-               key_Anlevel.put(new Integer(rs.getInt("id")),new String(rs.getString("name")));  
-               in.add(new Integer(rs.getInt("id")));
+               key_Anlevel.put(new Integer(rs.getInt("id_n_country")),new String(rs.getString("name_n_country")));  
+               in.add(new Integer(rs.getInt("id_n_country")));
                i++;
             }
         }

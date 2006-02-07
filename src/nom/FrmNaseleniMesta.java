@@ -17,10 +17,10 @@ import java.lang.Byte;
 public class FrmNaseleniMesta extends  imakante.com.vcomponents.iInternalFrame implements WindowListener
 {
 
-    public FrmNaseleniMesta(String title, imakante.com.vcomponents.iFrame frame) // TEST da se dobavi , imakante.com.vcomponents.iFrame frame
+    public FrmNaseleniMesta(String title)//, imakante.com.vcomponents.iFrame frame) // TEST da se dobavi , imakante.com.vcomponents.iFrame frame
     {
         super(title);
-        myframe = frame; 
+      //  myframe = frame; 
         prepareConn();     // zapazva connection
         constructNaseleniMestaDB(); // inicializira class otgovarq6t za vryzkata s DB
         initTable();
@@ -233,9 +233,12 @@ public class FrmNaseleniMesta extends  imakante.com.vcomponents.iInternalFrame i
          String searchName = jTextName.getText();
          rs = countriesT.searchRecords(searchPostCode,searchName);
          jScrollPane1.remove(table);
-         model = new imakante.com.CustomTableModel(conn,rs, null);
+         model = new imakante.com.CustomTableModel(conn,rs, columnName);
          table = new imakante.com.CustomTable(model);
          jScrollPane1.getViewport().add(table);
+         HideColumns(getColumnIndex("id_n_nm"));
+         HideColumns(getColumnIndex("id_n_oblast"));
+            
          jScrollPane1.repaint();
         }
         catch(Exception e)
@@ -320,23 +323,23 @@ public class FrmNaseleniMesta extends  imakante.com.vcomponents.iInternalFrame i
         
     }//GEN-LAST:event_jButtonNewActionPerformed
     
-//    /**
-//     * @param args the command line arguments
-//     */
-//    public static void main(String args[]) 
-//    {
-//        java.awt.EventQueue.invokeLater(new Runnable()
-//        {
-//            public void run() {
-//                
-//                FrmNaseleniMesta frCN =   new FrmNaseleniMesta("ttt");
-//                fr.add(frCN);
-//                frCN.setVisible(true);
-//                fr.setVisible(true);
-//                
-//            }
-//        });
-//    }
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) 
+    {
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run() {
+                
+                FrmNaseleniMesta frCN =   new FrmNaseleniMesta("ttt");
+                fr.add(frCN);
+                frCN.setVisible(true);
+                fr.setVisible(true);
+                
+            }
+        });
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -359,6 +362,7 @@ public class FrmNaseleniMesta extends  imakante.com.vcomponents.iInternalFrame i
     private javax.swing.JTextField jTextPostCode;
     // End of variables declaration//GEN-END:variables
  //--------------- My Variables
+    private String columnName[] = {"id_n_nm","Пощенски код:","Населено място","id_n_oblast","Област:"};
     private int id=0; // imena ot tablicata                              
     private int postcode=0; // imena ot tablicata                            
     private String name; // imena ot tablicata                      
@@ -375,35 +379,35 @@ public class FrmNaseleniMesta extends  imakante.com.vcomponents.iInternalFrame i
     private  imakante.com.CustomTable table; 
     private java.sql.Connection ccc;  // samo za testvaneto
     private  static JFrame fr = new JFrame("test");
-    private String User="root";  // vremenna promenliva za test
-    private String Pass="root";  // vremenna promenliva za test
-    private String Url = "jdbc:mysql://127.0.0.1:3306/mida";  // vremenna promenliva za test
+    private String User="imakante";  // vremenna promenliva za test
+    private String Pass="imakante";  // vremenna promenliva za test
+    private String Url = "jdbc:mysql://www.katsarov.net:3307/mida";  // vremenna promenliva za test
  //---------------END My Variables
  //---------------START MyFunction
 private void prepareConn() //TEST
     {
-//      // samo za testovate ------------
-//      try
-//         {
-//          Class.forName("com.mysql.jdbc.Driver");
-//           
-//           ccc = DriverManager.getConnection(Url, User, Pass);
-//           conn = ccc;
-//          
-//         }
-//         catch(Exception e)
-//         {
-//             e.printStackTrace();
-//         }
+      // samo za testovate ------------
+      try
+         {
+          Class.forName("com.mysql.jdbc.Driver");
+           
+           ccc = DriverManager.getConnection(Url, User, Pass);
+           conn = ccc;
+          
+         }
+         catch(Exception e)
+         {
+             e.printStackTrace();
+         }
       // ---------------------------
-       try
+   /*    try
        {
             setConn(myframe.getConn());
        }
        catch(Exception e)
        {
        e.printStackTrace();
-       }
+       }*/
   }
 private void constructNaseleniMestaDB() // OK
     {
@@ -424,8 +428,10 @@ private void initTable() //-OK  -- !!ima za dovyr6wane - skrivane na koloni!!
       try
         {
             rs = countriesT.getTable();
-            model = new imakante.com.CustomTableModel(conn,rs, null);
+            model = new imakante.com.CustomTableModel(conn,rs, columnName);
             table = new imakante.com.CustomTable(model);
+            HideColumns(getColumnIndex("id_n_nm"));
+            HideColumns(getColumnIndex("id_n_oblast"));
             
         }
        catch(Exception e)
@@ -681,10 +687,32 @@ private void initTable() //-OK  -- !!ima za dovyr6wane - skrivane na koloni!!
   {
         jScrollPane1.remove(table);
         rs = countriesT.getTable();
-        model = new imakante.com.CustomTableModel(conn, rs, null);
+        model = new imakante.com.CustomTableModel(conn, rs, columnName);
         table = new imakante.com.CustomTable(model);
         jScrollPane1.getViewport().add(table);
+        HideColumns(getColumnIndex("id_n_nm"));
+        HideColumns(getColumnIndex("id_n_oblast"));
+            
         jScrollPane1.repaint();
         
     }
+     private int getColumnIndex(String in) //test
+ {
+     int count = table.getColumnCount();
+     for(int i=0; i < count; i++)
+     {
+         if(table.getColumnName(i).equals(in)) return i;
+     }
+     return 0;
+ }
+ private void HideColumns(int col)
+ {
+   int iColumn = col;
+// set column width
+table.getColumnModel().getColumn(iColumn).setMaxWidth(0);
+table.getColumnModel().getColumn(iColumn).setMinWidth(0);
+table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
+table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
+     
+ }
 }// end class

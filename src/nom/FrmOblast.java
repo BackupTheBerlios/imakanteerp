@@ -17,10 +17,10 @@ import java.lang.Byte;
 public class FrmOblast extends  imakante.com.vcomponents.iInternalFrame implements WindowListener
 {
 
-    public FrmOblast(String title,imakante.com.vcomponents.iFrame frame) // TEST da se dobavi , imakante.com.vcomponents.iFrame frame
+    public FrmOblast(String title) // TEST da se dobavi , imakante.com.vcomponents.iFrame frame
     {
         super(title);
-        myframe = frame; 
+      //  myframe = frame; 
         prepareConn();     // zapazva connection
         constructOblastDB(); // inicializira class otgovarq6t za vryzkata s DB
         initTable();
@@ -38,8 +38,10 @@ public class FrmOblast extends  imakante.com.vcomponents.iInternalFrame implemen
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jTextFieldOblast = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextName = new javax.swing.JTextField();
+        jTextFieldCountry = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -85,11 +87,17 @@ public class FrmOblast extends  imakante.com.vcomponents.iInternalFrame implemen
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel4.setPreferredSize(new java.awt.Dimension(448, 37));
+        jLabel1.setText("\u041e\u0431\u043b\u0430\u0441\u0442:");
+        jPanel4.add(jLabel1);
+
+        jTextFieldOblast.setPreferredSize(new java.awt.Dimension(150, 20));
+        jPanel4.add(jTextFieldOblast);
+
         jLabel2.setText("\u0414\u044a\u0440\u0436\u0430\u0432\u0430:");
         jPanel4.add(jLabel2);
 
-        jTextName.setPreferredSize(new java.awt.Dimension(100, 20));
-        jPanel4.add(jTextName);
+        jTextFieldCountry.setPreferredSize(new java.awt.Dimension(100, 20));
+        jPanel4.add(jTextFieldCountry);
 
         jButton1.setText("\u0422\u044a\u0440\u0441\u0435\u043d\u0435");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -218,12 +226,15 @@ public class FrmOblast extends  imakante.com.vcomponents.iInternalFrame implemen
             
          
            
-         String searchName = jTextName.getText();
-         rs = countriesT.searchRecords(searchName);
+         String searchNameCountry = jTextFieldCountry.getText();
+         String searchNameOblast = jTextFieldOblast.getText();
+         rs = countriesT.searchRecords(searchNameOblast,searchNameCountry);
          jScrollPane1.remove(table);
-         model = new imakante.com.CustomTableModel(conn,rs, null);
+         model = new imakante.com.CustomTableModel(conn,rs, columnName);
          table = new imakante.com.CustomTable(model);
          jScrollPane1.getViewport().add(table);
+          HideColumns(getColumnIndex("id_n_oblast"));
+          HideColumns(getColumnIndex("id_n_country"));
          jScrollPane1.repaint();
         }
         catch(Exception e)
@@ -290,6 +301,7 @@ public class FrmOblast extends  imakante.com.vcomponents.iInternalFrame implemen
         setId(countriesT.getMaxId()+1);
         setIDCountry(new Integer(0).byteValue());
         countriesT.insertRow(getId(), getNames(), getIDCountry());
+        
         setId(countriesT.getMaxId());
         refreshTable();
          try 
@@ -305,21 +317,21 @@ public class FrmOblast extends  imakante.com.vcomponents.iInternalFrame implemen
         
     }//GEN-LAST:event_jButtonNewActionPerformed
     
-//  
-//    public static void main(String args[]) 
-//    {
-//        java.awt.EventQueue.invokeLater(new Runnable()
-//        {
-//            public void run() {
-//                
-//                FrmOblast frCN =   new FrmOblast("ttt");
-//                fr.add(frCN);
-//                frCN.setVisible(true);
-//                fr.setVisible(true);
-//                
-//            }
-//        });
-//    }
+  
+    public static void main(String args[]) 
+    {
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run() {
+                
+                FrmOblast frCN =   new FrmOblast("ttt");
+                fr.add(frCN);
+                frCN.setVisible(true);
+                fr.setVisible(true);
+                
+            }
+        });
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -331,15 +343,18 @@ public class FrmOblast extends  imakante.com.vcomponents.iInternalFrame implemen
     private javax.swing.JButton jButtonPrint;
     private javax.swing.JButton jButtonPrnReport;
     private javax.swing.JButton jButtonRefresh;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextName;
+    private javax.swing.JTextField jTextFieldCountry;
+    private javax.swing.JTextField jTextFieldOblast;
     // End of variables declaration//GEN-END:variables
  //--------------- My Variables
+    private String columnName[] = {"id_n_oblast","Област:","id_n_country","Държава:"};
     private int id=0; // imena ot tablicata                              
     private int postcode=0; // imena ot tablicata                            
     private String name; // imena ot tablicata                      
@@ -356,35 +371,35 @@ public class FrmOblast extends  imakante.com.vcomponents.iInternalFrame implemen
     private  imakante.com.CustomTable table; 
     private java.sql.Connection ccc;  // samo za testvaneto
     private  static JFrame fr = new JFrame("test");
-    private String User="root";  // vremenna promenliva za test
-    private String Pass="root";  // vremenna promenliva za test
-    private String Url = "jdbc:mysql://127.0.0.1:3306/mida";  // vremenna promenliva za test
+    private String User="imakante";  // vremenna promenliva za test
+    private String Pass="imakante";  // vremenna promenliva za test
+    private String Url = "jdbc:mysql://www.katsarov.net:3307/mida?connectionCollation=cp1251_bulgarian_ci";  // vremenna promenliva za test
  //---------------END My Variables
  //---------------START MyFunction
 private void prepareConn() //TEST
     {
-//      // samo za testovate ------------
-//      try
-//         {
-//          Class.forName("com.mysql.jdbc.Driver");
-//           
-//           ccc = DriverManager.getConnection(Url, User, Pass);
-//           conn = ccc;
-//          
-//         }
-//         catch(Exception e)
-//         {
-//             e.printStackTrace();
-//         }
+      // samo za testovate ------------
+      try
+         {
+          Class.forName("com.mysql.jdbc.Driver");
+           
+           ccc = DriverManager.getConnection(Url, User, Pass);
+           conn = ccc;
+          
+         }
+         catch(Exception e)
+         {
+             e.printStackTrace();
+         }
       // ---------------------------
-    try
+   /* try
        {
             setConn(myframe.getConn());
        }
        catch(Exception e)
        {
        e.printStackTrace();
-       }
+       }*/
   }
 private void constructOblastDB() // OK
     {
@@ -405,8 +420,10 @@ private void initTable() //-OK  -- !!ima za dovyr6wane - skrivane na koloni!!
       try
         {
             rs = countriesT.getTable();
-            model = new imakante.com.CustomTableModel(conn,rs, null);
+            model = new imakante.com.CustomTableModel(conn,rs, columnName);
             table = new imakante.com.CustomTable(model);
+            HideColumns(getColumnIndex("id_n_oblast"));
+            HideColumns(getColumnIndex("id_n_country"));
             
         }
        catch(Exception e)
@@ -651,10 +668,31 @@ private void initTable() //-OK  -- !!ima za dovyr6wane - skrivane na koloni!!
   {
         jScrollPane1.remove(table);
         rs = countriesT.getTable();
-        model = new imakante.com.CustomTableModel(conn, rs, null);
+        model = new imakante.com.CustomTableModel(conn, rs, columnName);
         table = new imakante.com.CustomTable(model);
         jScrollPane1.getViewport().add(table);
+         HideColumns(getColumnIndex("id_n_oblast"));
+         HideColumns(getColumnIndex("id_n_country"));
         jScrollPane1.repaint();
         
     }
+   private int getColumnIndex(String in) //test
+ {
+     int count = table.getColumnCount();
+     for(int i=0; i < count; i++)
+     {
+         if(table.getColumnName(i).equals(in)) return i;
+     }
+     return 0;
+ }
+ private void HideColumns(int col)
+ {
+   int iColumn = col;
+// set column width
+table.getColumnModel().getColumn(iColumn).setMaxWidth(0);
+table.getColumnModel().getColumn(iColumn).setMinWidth(0);
+table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
+table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
+     
+ }
 }// end class

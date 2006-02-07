@@ -102,7 +102,7 @@ public class aeOblast extends imakante.com.vcomponents.iDialog
         jLabel2.setText("\u0414\u044a\u0440\u0436\u0430\u0432\u0430:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 5);
         jPanel2.add(jLabel2, gridBagConstraints);
@@ -110,7 +110,7 @@ public class aeOblast extends imakante.com.vcomponents.iDialog
         jLabel3.setText("\u041e\u0431\u043b\u0430\u0441\u0442:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 5);
         jPanel2.add(jLabel3, gridBagConstraints);
