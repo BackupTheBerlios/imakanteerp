@@ -17,6 +17,8 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jTextEGN = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -48,6 +50,13 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel4.setPreferredSize(new java.awt.Dimension(448, 37));
+        jLabel1.setText("\u041a\u043e\u0434:");
+        jPanel4.add(jLabel1);
+
+        jTextField1.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextField1.setInputVerifier(new imakante.com.InputIntegerVerifier());
+        jPanel4.add(jTextField1);
+
         jLabel2.setText("\u0415\u0413\u041d:");
         jPanel4.add(jLabel2);
 
@@ -78,7 +87,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 821, Short.MAX_VALUE)
+            .add(0, 825, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -192,6 +201,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     private javax.swing.JButton jButtonPrnReport;
     private javax.swing.JButton jButtonRefresh;
     private javax.swing.JButton jButtonSearch;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
@@ -200,6 +210,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextEGN;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextName;
     // End of variables declaration//GEN-END:variables
     
