@@ -172,6 +172,8 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
 
         jLabel7.setText("\u041a\u043e\u0434:");
 
+        jTextField1.setInputVerifier(new imakante.com.InputIntegerVerifier());
+
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
