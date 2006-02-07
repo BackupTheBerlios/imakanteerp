@@ -14,6 +14,7 @@ public class dbPerson extends imakante.com.dbObject {
     private int comprator = 1;
     private int id = 0;
     private int id_group = 0;
+    private int code = 0;
     private String egn = null;
     private String nomlk = null;
     private String name = null;
@@ -29,7 +30,7 @@ public class dbPerson extends imakante.com.dbObject {
     // --- Custom Methods --- //
     private void prepareCStm(){
         try {
-            setCstm(getConn().prepareCall("{call nom_procedure_person(?,?,?,?,?,?,?)}"));
+            setCstm(getConn().prepareCall("{call nom_procedure_person(?,?,?,?,?,?,?,?)}"));
         } catch(java.sql.SQLException sqle) {
             sqle.printStackTrace();
         }
@@ -51,16 +52,14 @@ public class dbPerson extends imakante.com.dbObject {
             getCstm().setInt("comprator", getComprator());
             getCstm().setInt("in_id", getID());
             getCstm().setInt("in_id_group", getIDGr());
+            getCstm().setInt("in_code", getCode());
             getCstm().setString("in_egn", getEGN());
             getCstm().setString("in_nomlk", getNomLK());
             getCstm().setString("in_name", getName());
             getCstm().setString("in_comment", getComment());
-                       
-            
         } catch(java.sql.SQLException sqle) {
             sqle.printStackTrace();
         }
-        
     }
     
     private void prepareRezult() {
@@ -72,9 +71,10 @@ public class dbPerson extends imakante.com.dbObject {
         }
     }
     
-    public void insertRow(int in_id_group) {
+    public void insertRow(int in_id_group, int in_code) {
         comprator = 1;
         this.id_group = in_id_group;
+        this.code = in_code;
         this.egn = "";
         this.nomlk = "";
         this.name = "";
@@ -87,10 +87,11 @@ public class dbPerson extends imakante.com.dbObject {
         }
     }
     
-    public void updateRow(int in_id, int in_id_group, String in_egn, String in_nomlk, String in_name, String in_comment) {
+    public void updateRow(int in_id, int in_id_group, int in_code, String in_egn, String in_nomlk, String in_name, String in_comment) {
         comprator = 2;
         this.id = in_id;
         this.id_group = in_id_group;
+        this.code = in_code;
         this.egn = in_egn;
         this.nomlk = in_nomlk;
         this.name = in_name;
@@ -121,6 +122,7 @@ public class dbPerson extends imakante.com.dbObject {
             rs = CStm.executeQuery();
             while(rs.next()) {
                 id_group = rs.getInt("id_group");
+                code = rs.getInt("in_code");
                 egn = rs.getString("egn");
                 nomlk = rs.getString("nomlk");
                 name = rs.getString("name");
@@ -132,8 +134,9 @@ public class dbPerson extends imakante.com.dbObject {
         return rs;
     }
     
-    public java.sql.ResultSet searchRecords(String in_egn, String in_name) {
+    public java.sql.ResultSet searchRecords(int in_code, String in_egn, String in_name) {
         comprator = 5;
+        this.code = in_code;
         this.egn = in_egn;
         this.name = in_name;
         try {
@@ -173,11 +176,12 @@ public class dbPerson extends imakante.com.dbObject {
         this.rs = RS;
     }
     
-    public void setID(int ID) {
-        this.id = ID;
-    }
     public int getID() {
         return id;
+    }
+    
+    public void setID(int ID) {
+        this.id = ID;
     }
     
     public int getMaxId() {
@@ -213,13 +217,38 @@ public class dbPerson extends imakante.com.dbObject {
     public void setIDGr(int COD) {
         this.id_group = COD;
     }
+    
     public int getIDGr() {
         return id_group;
+    }
+    
+    public int getMaxCod() {
+        comprator = 8;
+        int return_int = -1;
+        try {
+            registerParameters();
+            rs = CStm.executeQuery();
+            while(rs.next()) {
+                return_int = rs.getInt(1);
+            }
+        } catch(java.sql.SQLException sqle) {
+            sqle.printStackTrace();
+        }
+        return return_int;
+    }
+    
+    public int getCode() {
+        return code;
+    }
+    
+    public void setcode(int anid) {
+        this.code = anid;
     }
     
     public void setEGN(String EGN) {
         this.egn = EGN;
     }
+    
     public String getEGN() {
         return egn;
     }
@@ -234,6 +263,7 @@ public class dbPerson extends imakante.com.dbObject {
     public void setName(String Name) {
         this.name = Name;
     }
+    
     public String getName() {
         return name;
     }
@@ -241,6 +271,7 @@ public class dbPerson extends imakante.com.dbObject {
     public int getComprator() {
         return comprator;
     }
+    
     public void setComprator(int comp) {
         this.comprator = comp;
     }
