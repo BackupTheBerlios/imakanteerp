@@ -5,6 +5,9 @@ package nom;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.*;
+import nom.showAddressContragent;
+import nom.showNameOfMOL_OSO;
+
 public class aeContragent extends imakante.com.vcomponents.iDialog {
     
     /** Creates new form aeContragent */
@@ -19,6 +22,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
         int x = (((dim.width)-(this.getSize().width))/2);
         int y = (((dim.height)-(this.getSize().height))/2);
         this.setLocation(x, y);
+      //  showNameOfMOL_OSO setMOL = new showNameOfMOL_OSO(myframe,true,myParent.getCountriesT().getTablesWithNames(""),myParent.getCountriesT().getConn(),true); 
         repaintComp();
     }
     
@@ -479,9 +483,9 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
 // TODO add your handling code here:
        if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode())
        {
-        if(jTextFieldMOL.getText()=="")
+        if(jTextFieldMOL.getText()==null)
         {
-        java.sql.ResultSet r1 = myParent.getCountriesT().getTablesWithNames("");
+        java.sql.ResultSet r1 = myParent.getCountriesT().getTablesWithNames(null);
         java.sql.Connection c1 = myParent.getCountriesT().getConn();
         showNameOfMOL_OSO setMOL = new showNameOfMOL_OSO(myframe,true,r1,c1,true);
         }
@@ -578,9 +582,9 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
  // pri natiskane na F7 6te se izvikva aContragent, za izbor na naseleno mqsto ot bazata danni
        if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode())
        {
-        if(jTextFieldNM.getText()=="")
+        if(jTextFieldNM.getText()==null)
         {
-        java.sql.ResultSet r1 = myParent.getCountriesT().getTablesAddressName("");
+        java.sql.ResultSet r1 = myParent.getCountriesT().getTablesAddressName(null);
         java.sql.Connection c1 = myParent.getCountriesT().getConn();
         showAddressContragent setNM = new showAddressContragent(myframe,true,r1,c1);
         }

@@ -24,10 +24,10 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
 {
     
     /** Creates new form FrmContragent */
-    public FrmContragent(String title,imakante.com.vcomponents.iFrame frame, int flag) // // TEST 
+    public FrmContragent(String title, int flag)//,imakante.com.vcomponents.iFrame frame, int flag) // // TEST 
     {
         super(title);
-        myframe = frame; 
+      //  myframe = frame; 
         prepareConn();     // zapazva connection
         this.flag = flag; //  za da rabotim samo s opredeleni zapisi ima6ti syotvetniq fag
         constructGroupDB(); // inicializira class otgovarq6t za vryzkata s DB
@@ -414,7 +414,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
     /**
      * @param args the command line arguments
      */
-  /*  public static void main(String args[]) {
+    public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                
@@ -424,7 +424,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
                 fr.setVisible(true);
             }
         });
-    }*/
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -461,6 +461,8 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
     private javax.swing.JTextField jTextFieldWeb;
     // End of variables declaration//GEN-END:variables
 //--------------- My Variables
+    private String columnName[] = {"id_contragent","Код:","Име:","Булстат","Данъчен номер:","Адрес:","id_nm","Населено място","Област",
+                         "Код на страната","Държава","Телфон","Факс","E-mail","Web страница","id_mol","МОЛ","id_oso","ОСО","flag_n_contragent"};
     private  boolean atBegining=false;
     private  boolean atEnd = false;
     private int row;
@@ -475,9 +477,9 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
     private  imakante.com.CustomTable table; 
     private java.sql.Connection ccc;  // samo za testvaneto
     private  static JFrame fr = new JFrame("test");
-    private String User="javauser";  // vremenna promenliva za test
-    private String Pass="javadude";  // vremenna promenliva za test
-    private String Url = "jdbc:mysql://127.0.0.1:3306/mida";  // vremenna promenliva za test
+    private String User="imakante";  // vremenna promenliva za test
+    private String Pass="imakante";  // vremenna promenliva za test
+    private String Url = "jdbc:mysql://www.katsarov.net:3307/mida";  // vremenna promenliva za test
  
     
 //---------------END My Variables
@@ -486,7 +488,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
  private void prepareConn() //TEST
     {
       // samo za testovate ------------
-     /* try
+      try
          {
           Class.forName("com.mysql.jdbc.Driver");
            
@@ -498,15 +500,15 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
          {
              e.printStackTrace();
          }
-      //*/
-       try
+      
+     /*  try
        {
             setConn(myframe.getConn());
        }
        catch(Exception e)
        {
        e.printStackTrace();
-       }
+       }*/
   }
 private void constructGroupDB() // ok
     {
@@ -528,7 +530,8 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
         {
             countriesT.setFlag(flag);
             rs = countriesT.getTable();
-            model = new imakante.com.CustomTableModel(conn,rs, null);
+           
+            model = new imakante.com.CustomTableModel(conn,rs, columnName);
             table = new imakante.com.CustomTable(model);
             
             // da se napravqt skriti kolona "id" 

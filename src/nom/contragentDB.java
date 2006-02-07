@@ -304,7 +304,7 @@ public class contragentDB extends dbObject
             setRs(getCstm().executeQuery());
             while(rs.next())
             {
-                nam = rs.getString("name");
+                nam = rs.getString("name_ls_n_person");
             }
         }
         catch(java.sql.SQLException sqle)
