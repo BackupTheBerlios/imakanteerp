@@ -14,7 +14,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
 {
     
     /** Creates new form aeProduct */
-    public aeProduct(imakante.com.vcomponents.iInternalFrame frame, boolean modal, boolean isnew, int selectComboBoxItem)// Test imakante.com.vcomponents.iInternalFrame frame
+    public aeProduct(imakante.com.vcomponents.iInternalFrame frame, boolean modal, boolean isnew, int selectComboBoxItem)// Test imakante.com.vcomponents.iInternalFrame frame  --- da se dobavi GROUP - nomer
     {
         super(frame, modal); 
         this.myframe = frame;
@@ -27,7 +27,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
         int x = (((dim.width)-(this.getSize().width))/2);
         int y = (((dim.height)-(this.getSize().height))/2);
         this.setLocation(x, y);
-        splitGroups = myParent.getCountriesT().getProductGroup();
+        splitGroups = myParent.getCountriesT().getProductGroup(myParent.getGroup());
         for(int i=0;i<splitGroups.length;i++)
         {
             jComboBoxGroup.addItem(new String(splitGroups[i]));
@@ -441,7 +441,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
         getContentPane().add(jPanel1, java.awt.BorderLayout.NORTH);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel4.setPreferredSize(new java.awt.Dimension(700, 100));
+        jPanel4.setPreferredSize(new java.awt.Dimension(750, 100));
         jLabel3.setText("\u041c\u0438\u043d. \u043a\u043e\u043b.:");
         jPanel4.add(jLabel3);
 
@@ -804,10 +804,10 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
                     
             myParent.setId_PD( myParent.getCountriesT().setProductDescriptionColumn(v1,v2,v3,m1,m2,m3));
             if(myParent.isTypedFee) myParent.setId_PF(myParent.saveProductFeeToDB());
-            if(myParent.isTypePromoPrice) myParent.setId_PPP(myParent.saveProductPromotionPriceToDB());
+            if(myParent.isTypedPromoPrice) myParent.setId_PPP(myParent.saveProductPromotionPriceToDB());
             if(myParent.isTypedPrice) myParent.setId_PP(myParent.saveNewPriceToDb());
             myParent.isTypedFee = false;
-            myParent.isTypePromoPrice = false;
+            myParent.isTypedPromoPrice = false;
             myParent.isTypedPrice = false;
             if((myParent.getId_Group()==-1) | (myParent.getId_PF()==-1) |
                     (myParent.getId_PD()==-1) | (myParent.getId_PP()==-1) | (myParent.getId_PPP()==-1))
@@ -829,6 +829,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
                                                    myParent.getCNamePM(),myParent.getMax_POP(),myParent.getFlag(),
                                                    myParent.getExpertSheet(),myParent.getBarCod(),myParent.getCod1(),
                                                    myParent.getCod2(),myParent.getMinProduct());
+                
                 isNew = false;
                 
                 }
@@ -853,9 +854,12 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
                     m3 = myParent.getCountriesT().getIndexConnOfIdColumn()[jComboBoxDescript3.getSelectedIndex()];
                 myParent.getCountriesT().updateProductDescriprionColumn(myParent.getId_PD(),v1,v2,v3,m1,m2,m3);
                 
-                myParent.updateNewPriceToDb();
-                myParent.updateProductFeeToDB();
-                myParent.updateProductPromotionPriceToDB();
+               if(myParent.isTypedPrice) myParent.updateNewPriceToDb();
+               if(myParent.isTypedFee) myParent.updateProductFeeToDB();
+               if(myParent.isTypedPromoPrice) myParent.updateProductPromotionPriceToDB();
+                myParent.isTypedPrice = false;
+                myParent.isTypedFee = false;
+                myParent.isTypedPromoPrice = false;
                 myParent.getCountriesT().updateIDProductContragent(myParent.getId_PM(),myParent.getId_Contragent(),1);
                 myParent.getCountriesT().updateRow(myParent.getId_PM(),myParent.getId_PPP(),myParent.getId_PP(),
                                                    myParent.getId_PF(),myParent.getId_Group(),myParent.getId_PD(),
@@ -872,6 +876,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
             
         }
     //  jButton3.doClick(); // zatvarq se aeProsuct
+       repaintComp(); 
       myParent.refreshTable();
     }//GEN-LAST:event_jButton1ActionPerformed
 

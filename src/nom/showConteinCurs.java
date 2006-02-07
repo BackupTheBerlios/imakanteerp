@@ -12,8 +12,11 @@ public class showConteinCurs extends imakante.com.vcomponents.iDialog
         super(myframe, modal);
         myParent = (nom.FrmProduct)  myframe;
         this.rs = rs;
-        model = new imakante.com.CustomTableModel(conn,rs, null);
+        model = new imakante.com.CustomTableModel(conn,rs, columnName);
         table = new imakante.com.CustomTable(model);
+        HideColumns(getColumnIndex("id_sl_curs"));
+        HideColumns(getColumnIndex("id_n_money"));
+        
         table.addKeyListener(new KeyListener()
         {
             public void keyPressed(KeyEvent e)
@@ -21,7 +24,7 @@ public class showConteinCurs extends imakante.com.vcomponents.iDialog
               if(java.awt.event.KeyEvent.VK_ENTER == e.getKeyCode())
                 {
                  int row = table.getSelectedRow();
-                 int ID = (Integer)table.getValueAt(row,0);
+                 int ID = (Integer)table.getValueAt(row,getColumnIndex("id_sl_curs"));
                  myParent.setTMPINT(ID);
                  close();
                 }
@@ -68,10 +71,29 @@ public class showConteinCurs extends imakante.com.vcomponents.iDialog
     private  imakante.com.CustomTable table; 
     private  java.sql.ResultSet rs;
     private nom.FrmProduct myParent;
-   
+    private String columnName[] = {"id_sl_curs","Дата и час:","id_n_money","Валута:","Курс:"};   
     
     public void close()
     {
         this.dispose();
-    }   
+    } 
+     private int getColumnIndex(String in) //test
+ {
+     int count = table.getColumnCount();
+     for(int i=0; i < count; i++)
+     {
+         if(table.getColumnName(i).equals(in)) return i;
+     }
+     return 0;
+ }
+ private void HideColumns(int col)
+ {
+   int iColumn = col;
+// set column width
+table.getColumnModel().getColumn(iColumn).setMaxWidth(0);
+table.getColumnModel().getColumn(iColumn).setMinWidth(0);
+table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
+table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
+     
+ }
 }// end class

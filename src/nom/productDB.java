@@ -44,6 +44,9 @@ package nom;
  *comprator = 27; setProductDescriptionColumn()
  *comprator = 28; getMaxID product description
  *comprator = 29; updateProductDescription(Column)
+ *
+ *
+ *comprator = 33 : checkFlag()
  **/
 
 import imakante.com.*;
@@ -65,7 +68,8 @@ public class productDB extends dbObject
     private String splitColumn[] = null;
    
     private int id_pm,id_n_group,id_ppp, id_pp,id_pf,id_pd,flag_pm;            //       \
-    private int barcod_pm,min_pm;                                          //        \
+    private int barcod_pm;
+    private int min_pm;                                          //        \
     private double max_pop_pm;
     private String name_pm, sname_pm, fname_pm, cname_pm, cod1_pm, cod2_pm;    //         >
     private String expertsheet_pm ;                                            //        /
@@ -167,14 +171,17 @@ public class productDB extends dbObject
                         String in_cname_pm,double in_max_pop_pm, int in_flag_pm, String in_expertsheet_pm,int in_barcod_pm,
                         String in_cod1_pm , String in_cod2_pm,int in_min_pm) // ok
     {
+        
+        if(checkFlag(1,in_id_pm)==0)
+        {
         changeFlag(1,in_id_pm);
     
-      
+       
         insertRow( in_id_pm,  in_id_ppp,  in_id_pp,  in_id_pf,  in_id_n_group,
                    in_id_pd, in_name_pm, in_sname_pm, in_fname_pm,
                    in_cname_pm, in_max_pop_pm, in_flag_pm, in_expertsheet_pm,
                    in_barcod_pm, in_cod1_pm , in_cod2_pm,in_min_pm) ;
-      
+        }
         
     }
  private void changeFlag(int flag, int id) // ok  comprator = 2;
@@ -195,6 +202,35 @@ public class productDB extends dbObject
      }
      this.flag_pm = old_flag;
  }
+ private int checkFlag(int flag, int id) // ok  comprator = 2;
+ {
+     // smenqme flaga na opredelen red !!!
+     comprator = 33;  // sqlska zaqwka koqto samo 6te proverqva flaga
+     int newFlag=0;
+     int old_flag = this.flag_pm;
+     this.flag_pm = flag;
+     int oldid = id_pm;
+     this.id_pm = id;
+     java.sql.ResultSet rs1;
+      try
+        {
+            registerParameters();
+            rs1 = getCstm().executeQuery();
+           while(rs1.next())
+           {
+                newFlag = rs1.getInt("flag_pm");
+           }
+            
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+       
+     this.flag_pm = old_flag;
+     this.id_pm = oldid;
+     return newFlag;
+ }
  public void deleteRow(int in_id) // ok
     {
      // po princip trqbva da iztriem reda ot tablicata,  no po iziskvaneto da ne se triqt reove
@@ -204,12 +240,28 @@ public class productDB extends dbObject
     }
  public java.sql.ResultSet searchRecords(int in_id_pm, int in_id_ppp, int in_id_pp, int in_id_pf, int in_id_n_group,
                         int in_id_pd, String in_name_pm, String in_sname_pm, String in_fname_pm,
-                        String in_cname_pm,int in_max_pop_pm, int in_flag_pm, String in_expertsheet_pm,int in_barcod_pm,
-                        String in_cod1_pm , String in_cod2_pm,int in_min_pm) //- ima da se dovyr6va --- comprator = 5;
+                        String in_cname_pm,double in_max_pop_pm, int in_flag_pm, String in_expertsheet_pm,int in_barcod_pm,
+                        String in_cod1_pm , String in_cod2_pm,int in_min_pm) //- comprator = 5;
     {
         comprator = 5;
         
-      // ----------------------- da se dovur6i   
+        this.id_pm = in_id_pm ;
+        this.id_ppp = in_id_ppp;
+        this.id_pp  = in_id_pp;
+        this.id_pf  = in_id_pf;
+        this.id_n_group = in_id_n_group;
+        this.id_pd = in_id_pd;
+        this.name_pm = in_name_pm;
+        this.sname_pm = in_sname_pm;
+        this.fname_pm = in_fname_pm;
+        this.cname_pm = in_cname_pm;
+        this.max_pop_pm = in_max_pop_pm;
+        this.flag_pm = in_flag_pm;
+        this.expertsheet_pm = in_expertsheet_pm;
+        this.barcod_pm = in_barcod_pm;
+        this.cod1_pm = in_cod1_pm;
+        this.cod2_pm = in_cod2_pm;
+        this.min_pm = in_min_pm;  
         
         try
         {
@@ -260,12 +312,15 @@ public class productDB extends dbObject
     {
         
         this.comprator = 0;
+        registerParameters();
         try{
-            registerParameters();
+            
+            
             setRs(getCstm().executeQuery());
         }
         catch(java.sql.SQLException sqle)
         {
+            System.out.println("error ot getTable()");
             sqle.printStackTrace();
         }
         System.out.println("ot getTable()");
@@ -287,6 +342,7 @@ public class productDB extends dbObject
             getCstm().setInt("in_id_n_group", getId_Group());
             getCstm().setInt("in_id_pd", getId_PD());
             getCstm().setInt("in_barcod_pm", getBarCod());
+             
             getCstm().setInt("in_flag_pm", getFlag());
             getCstm().setDouble("in_max_pop_pm", getMax_POP());
             getCstm().setInt("in_min_pm", getMinProduct());
@@ -308,6 +364,7 @@ public class productDB extends dbObject
          catch(java.sql.SQLException sqle)
          {
              sqle.printStackTrace();
+             System.out.println(" error ot registerparameter");
          }
     }
   public int getMaxId() //ok  comprator = 7;
@@ -858,13 +915,15 @@ public void  updateProductFee(int id,double dds, double akcizi, double other)  /
    }
 
 
-public String[] getProductGroup() // Test  da se opredeli kakvo da se pokazva  //comprator = 16;
+public String[] getProductGroup(int group) // Test  da se opredeli kakvo da se pokazva  //comprator = 16;
    {
         java.sql.ResultSet oldRs = rs;
         ArrayList in = new ArrayList();
         Iterator it = null;
         HashMap key_Group = new HashMap();
          comprator = 16;
+         int oldid_pf = id_pf;
+         id_pf = group;
         int i = 0;
        
          try              
@@ -897,7 +956,7 @@ public String[] getProductGroup() // Test  da se opredeli kakvo da se pokazva  /
         }
        
         
-        
+        id_pf = oldid_pf;
         return splitGroup;
     }
  public int[] getIndexConnOfId()
@@ -1013,7 +1072,7 @@ public String[] getCurs(int id_curs) // test  comprator = 22;
         rs = cstm.executeQuery();
         while(rs.next())
          {
-            newCurs[0] =String.valueOf( rs.getInt("data_time_sl_curs"));
+            newCurs[0] =String.valueOf( rs.getInt("date_time_sl_curs"));
             newCurs[1] =String.valueOf( rs.getInt("id_n_money"));
             newCurs[2] =String.valueOf( rs.getDouble("value_sl_curs"));
           
@@ -1148,8 +1207,8 @@ public int setProductDescriptionColumn(int v1,int v2,int v3 ,int m1 ,int m2 , in
 public void updateProductDescriprionColumn(int in_id_pd,int v1,int v2,int v3 ,int m1 ,int m2 , int m3) //test //comprator = 29;   v- values; m -measure
 {
     
-    int oldid_pm,oldid_pp,oldid_ppp,oldid_pf,oldid_n_group,oldid_pd,oldbarcod_pm;
-    
+    int oldid_pm,oldid_pp,oldid_ppp,oldid_pf,oldid_n_group,oldid_pd;
+   int oldbarcod_pm;
     comprator = 29;
     oldid_pm = id_pm;
     oldid_pp = id_pp;
@@ -1195,7 +1254,7 @@ public int getContragentID(int in_id_pm, int in_flag) //test //comprator = 30;
     id_pm = in_id_pm;
     flag_pm = in_flag;
     int newID = 0;
-     comprator = 30 ;
+    comprator = 30 ;
        try
         {
             registerParameters();

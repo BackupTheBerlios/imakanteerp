@@ -29,10 +29,11 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
 {
     
     /** Creates new form FrmProduct */
-    public FrmProduct(String title, int flag) // // TEST imakante.com.vcomponents.iFrame frame,
+    public FrmProduct(String title, int flag, int group) // // TEST imakante.com.vcomponents.iFrame frame, int group
     {
         super(title);
         //myframe = frame; 
+        setGroup(group);
         prepareConn();     // zapazva connection
         this.flag_pm = flag; //  za da rabotim samo s opredeleni zapisi ima6ti syotvetniq fag
         constructProductDB(); // inicializira class otgovarq6t za vryzkata s DB
@@ -53,23 +54,21 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextFieldCod = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         jTextFieldName = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jTextFieldNameSyotv = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextFieldBulstat = new javax.swing.JTextField();
+        jTextFieldKysoName = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextFieldDanNomer = new javax.swing.JTextField();
+        jTextFieldFacturnoName = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextFieldAddress = new javax.swing.JTextField();
+        jTextFieldCod1 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextFieldTel = new javax.swing.JTextField();
+        jTextFieldCod2 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextFieldFax = new javax.swing.JTextField();
+        jTextFieldBarkod = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextFieldEmail = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jTextFieldWeb = new javax.swing.JTextField();
+        jTextFieldExperList = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jButtonNew = new javax.swing.JButton();
@@ -108,7 +107,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 1057, Short.MAX_VALUE)
+            .add(0, 1053, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -124,59 +123,54 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel4.setPreferredSize(new java.awt.Dimension(801, 60));
-        jLabel1.setText("\u041a\u043e\u0434:");
+        jLabel1.setText("\u0418\u043c\u0435:");
         jPanel4.add(jLabel1);
-
-        jTextFieldCod.setPreferredSize(new java.awt.Dimension(45, 20));
-        jPanel4.add(jTextFieldCod);
-
-        jLabel2.setText("\u0418\u043c\u0435:");
-        jPanel4.add(jLabel2);
 
         jTextFieldName.setPreferredSize(new java.awt.Dimension(200, 20));
         jPanel4.add(jTextFieldName);
 
-        jLabel3.setText("\u0411\u0443\u043b\u0441\u0442\u0430\u0442:");
+        jLabel2.setText("\u0418\u043c\u0435 \u043d\u0430 \u0441\u044a\u043e\u0442\u0432.:");
+        jPanel4.add(jLabel2);
+
+        jTextFieldNameSyotv.setPreferredSize(new java.awt.Dimension(170, 20));
+        jPanel4.add(jTextFieldNameSyotv);
+
+        jLabel3.setText("\u041a\u044a\u0441\u043e \u0438\u043c\u0435");
         jPanel4.add(jLabel3);
 
-        jTextFieldBulstat.setPreferredSize(new java.awt.Dimension(90, 20));
-        jPanel4.add(jTextFieldBulstat);
+        jTextFieldKysoName.setPreferredSize(new java.awt.Dimension(100, 20));
+        jPanel4.add(jTextFieldKysoName);
 
-        jLabel4.setText("\u0414.\u043d\u043e\u043c\u0435\u0440:");
+        jLabel4.setText("\u0424\u0430\u043a\u0442\u0443\u0440\u043d\u043e \u0438\u043c\u0435:");
         jPanel4.add(jLabel4);
 
-        jTextFieldDanNomer.setPreferredSize(new java.awt.Dimension(90, 20));
-        jPanel4.add(jTextFieldDanNomer);
+        jTextFieldFacturnoName.setPreferredSize(new java.awt.Dimension(100, 20));
+        jPanel4.add(jTextFieldFacturnoName);
 
-        jLabel5.setText("\u0410\u0434\u0440\u0435\u0441:");
+        jLabel5.setText("\u041a\u043e\u0434 1:");
         jPanel4.add(jLabel5);
 
-        jTextFieldAddress.setPreferredSize(new java.awt.Dimension(200, 20));
-        jPanel4.add(jTextFieldAddress);
+        jTextFieldCod1.setPreferredSize(new java.awt.Dimension(50, 20));
+        jPanel4.add(jTextFieldCod1);
 
-        jLabel6.setText("\u0422\u0435\u043b.:");
+        jLabel6.setText("\u041a\u043e\u0434 2:");
         jPanel4.add(jLabel6);
 
-        jTextFieldTel.setPreferredSize(new java.awt.Dimension(70, 20));
-        jPanel4.add(jTextFieldTel);
+        jTextFieldCod2.setPreferredSize(new java.awt.Dimension(50, 20));
+        jPanel4.add(jTextFieldCod2);
 
-        jLabel7.setText("\u0424\u0430\u043a\u0441:");
+        jLabel7.setText("\u0411\u0430\u0440\u043a\u0434:");
         jPanel4.add(jLabel7);
 
-        jTextFieldFax.setPreferredSize(new java.awt.Dimension(70, 20));
-        jPanel4.add(jTextFieldFax);
+        jTextFieldBarkod.setPreferredSize(new java.awt.Dimension(100, 20));
+        jTextFieldBarkod.setInputVerifier(new imakante.com.InputIntegerVerifier());
+        jPanel4.add(jTextFieldBarkod);
 
-        jLabel8.setText("E-mail:");
+        jLabel8.setText("\u0415\u043a\u0441\u043f\u0435\u0440\u0442\u0435\u043d \u043b\u0438\u0441\u0442:");
         jPanel4.add(jLabel8);
 
-        jTextFieldEmail.setPreferredSize(new java.awt.Dimension(150, 20));
-        jPanel4.add(jTextFieldEmail);
-
-        jLabel9.setText("Web page:");
-        jPanel4.add(jLabel9);
-
-        jTextFieldWeb.setPreferredSize(new java.awt.Dimension(150, 20));
-        jPanel4.add(jTextFieldWeb);
+        jTextFieldExperList.setPreferredSize(new java.awt.Dimension(150, 20));
+        jPanel4.add(jTextFieldExperList);
 
         jButton1.setText("\u0422\u044a\u0440\u0441\u0435\u043d\u0435");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -280,20 +274,61 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here: SEARCH
-    /*  
+      
         
         
         try
         {
             
-            rs = countriesT.searchRecords(getCod(),getName(),getBulstat(),
-                          getDanNomer(),getAddress(),getID_NM(), getTel(),
-                          getFax(),getEmail(),getWeb(),getID_MOL(),getID_OSO());
-            
-            model = new imakante.com.CustomTableModel(conn,rs, null);
+           /* rs = countriesT.searchRecords(getId_PM(),getId_PPP(),getId_PP(),
+                                          getId_PF(),getId_Group(),getId_PD(),
+                                          getNamePM(),getSNamePM(),getFNamePM(),
+                                          getCNamePM(),getMax_POP(),getFlag(),
+                                          getExpertSheet(),getBarCod(),getCod1(),
+                                          getCod2(),getMinProduct());*/
+           
+            if(jTextFieldBarkod.getText().length()>0)
+            {
+            rs = countriesT.searchRecords(0,0,0,0,0,0,
+                                          jTextFieldName.getText(),
+                                          jTextFieldKysoName.getText(),
+                                          jTextFieldFacturnoName.getText(),
+                                          jTextFieldNameSyotv.getText(),0.0,getFlag(),
+                                          jTextFieldExperList.getText(),
+                                          Integer.parseInt(jTextFieldBarkod.getText()),
+                                          jTextFieldCod1.getText(),
+                                          jTextFieldCod2.getText(),0);
+            }
+            else
+            {
+             rs = countriesT.searchRecords(0,0,0,0,0,0,
+                                          jTextFieldName.getText(),
+                                          jTextFieldKysoName.getText(),
+                                          jTextFieldFacturnoName.getText(),
+                                          jTextFieldNameSyotv.getText(),0.0,getFlag(),
+                                          jTextFieldExperList.getText(),
+                                          0,
+                                          jTextFieldCod1.getText(),
+                                          jTextFieldCod2.getText(),0);   
+            }
+            model = new imakante.com.CustomTableModel(conn,rs, columnsNames);
             table = new imakante.com.CustomTable(model);
             // da se napravqt skriti kolona "id" 
             jScrollPane1.getViewport().add(table);
+             HideColumns(getColumnIndex("id_pm")); 
+            HideColumns(getColumnIndex("id_pp")); 
+            HideColumns(getColumnIndex("id_ppp"));
+            HideColumns(getColumnIndex("id_pd"));
+            HideColumns(getColumnIndex("id_pf"));
+            HideColumns(getColumnIndex("m1_pd"));
+            HideColumns(getColumnIndex("m2_pd"));
+            HideColumns(getColumnIndex("m3_pd"));
+            HideColumns(getColumnIndex("v1_pd"));
+            HideColumns(getColumnIndex("v2_pd"));
+            HideColumns(getColumnIndex("v3_pd"));
+            HideColumns(getColumnIndex("flag_pm"));
+            HideColumns(getColumnIndex("id_sl_curs"));
+            HideColumns(getColumnIndex("id_n_group"));
             jScrollPane1.repaint();
         }
        catch(Exception e)
@@ -302,7 +337,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
        }
        table.requestFocus();
        
-       */ 
+       
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -397,7 +432,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                
-               FrmProduct frCN =   new FrmProduct("ttt",0);
+               FrmProduct frCN =   new FrmProduct("ttt",0,1);
                 fr.add(frCN);
                 frCN.setVisible(true);
                 fr.setVisible(true);
@@ -424,33 +459,33 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextFieldAddress;
-    private javax.swing.JTextField jTextFieldBulstat;
-    private javax.swing.JTextField jTextFieldCod;
-    private javax.swing.JTextField jTextFieldDanNomer;
-    private javax.swing.JTextField jTextFieldEmail;
-    private javax.swing.JTextField jTextFieldFax;
+    private javax.swing.JTextField jTextFieldBarkod;
+    private javax.swing.JTextField jTextFieldCod1;
+    private javax.swing.JTextField jTextFieldCod2;
+    private javax.swing.JTextField jTextFieldExperList;
+    private javax.swing.JTextField jTextFieldFacturnoName;
+    private javax.swing.JTextField jTextFieldKysoName;
     private javax.swing.JTextField jTextFieldName;
-    private javax.swing.JTextField jTextFieldTel;
-    private javax.swing.JTextField jTextFieldWeb;
+    private javax.swing.JTextField jTextFieldNameSyotv;
     // End of variables declaration//GEN-END:variables
 //--------------- My Variables
     private String nameOfColumns[];
     private int tmpInt =0;
+    private int group;
     private  boolean atBegining=false;
     private  boolean atEnd = false;
     public boolean isTypedPrice = false, isTypedFee = false;
-    public boolean isTypePromoPrice = false;
+    public boolean isTypedPromoPrice = false;
     private int row;
     private  aeProduct dialog;
     private int id_pm,id_n_group,id_ppp, id_pp,id_pf,id_pd,flag_pm,id_contragent;              //       \
-    private int barcod_pm, min_pm;                                                   //         >
+    private int barcod_pm;
+    private int min_pm;                                                   //         >
     private double max_pop_pm;
     private String name_pm, sname_pm, fname_pm, cname_pm, cod1_pm, cod2_pm;            //         /
     private String expertsheet_pm ;
@@ -466,11 +501,13 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     private  imakante.com.CustomTable table; 
     private java.sql.Connection ccc;  // samo za testvaneto
     private  static JFrame fr = new JFrame("test");
-    private String User="root";  // vremenna promenliva za test
-    private String Pass="root";  // vremenna promenliva za test
-    private String Url = "jdbc:mysql://127.0.0.1:3306/mida";  // vremenna promenliva za test
+    private String User="imakante";  // vremenna promenliva za test
+    private String Pass="imakante";  // vremenna promenliva za test
+    private String Url = "jdbc:mysql://www.katsarov.net:3307/mida";  // vremenna promenliva za test
  
-    
+    private String columnsNames[] ={"id_pm","id_n_group","id_ppp","id_pp","id_pf","Име:","Фактурно име:","Късо име:","Име на съответствия:","Код 1:","Код 2:","Баркод:","Отстъпка (в %):",
+                                  "Експертен лист:","flag_pm","id_sl_curs","Доставна цена:","Валута:","Стойност в лева"  ,"Цена 1:", "Цена 2:", "Цена 3:","ДДС:","Акцизи:","Др. такси:","id_pd",
+                                  "m1_pd","v1_pd","m2_pd","v2_pd","m3_pd","v3_pd","Минимално количество:"};
 //---------------END My Variables
  //---------------START MyFunction
     
@@ -519,7 +556,8 @@ private void initTable() //ok  -- !!ima za dovyr6wane - skrivane na koloni!!
         {
             countriesT.setFlag(flag_pm);
             rs = countriesT.getTable();
-            model = new imakante.com.CustomTableModel(conn,rs, null);
+           //columnsNames = null;
+            model = new imakante.com.CustomTableModel(conn,rs, columnsNames);
             table = new imakante.com.CustomTable(model);
             
             // da se napravqt skriti kolona "id" 
@@ -538,13 +576,20 @@ private void initTable() //ok  -- !!ima za dovyr6wane - skrivane na koloni!!
         {
         
         }
-      /*  HideColumns(getColumnIndex("id_pm")); 
+        HideColumns(getColumnIndex("id_pm")); 
         HideColumns(getColumnIndex("id_pp")); 
         HideColumns(getColumnIndex("id_ppp"));
         HideColumns(getColumnIndex("id_pd"));
         HideColumns(getColumnIndex("id_pf"));
-        HideColumns(getColumnIndex("id_n_group"));*/
-        
+        HideColumns(getColumnIndex("m1_pd"));
+        HideColumns(getColumnIndex("m2_pd"));
+        HideColumns(getColumnIndex("m3_pd"));
+        HideColumns(getColumnIndex("v1_pd"));
+        HideColumns(getColumnIndex("v2_pd"));
+        HideColumns(getColumnIndex("v3_pd"));
+        HideColumns(getColumnIndex("flag_pm"));
+        HideColumns(getColumnIndex("id_sl_curs"));
+        HideColumns(getColumnIndex("id_n_group"));
          
   }
        
@@ -765,9 +810,23 @@ private void initTable() //ok  -- !!ima za dovyr6wane - skrivane na koloni!!
   {
         jScrollPane1.remove(table);
         rs = countriesT.getTable();
-        model = new imakante.com.CustomTableModel(conn, rs, null);
+        model = new imakante.com.CustomTableModel(conn, rs, columnsNames);
         table = new imakante.com.CustomTable(model);
         jScrollPane1.getViewport().add(table);
+        HideColumns(getColumnIndex("id_pm")); 
+        HideColumns(getColumnIndex("id_pp")); 
+        HideColumns(getColumnIndex("id_ppp"));
+        HideColumns(getColumnIndex("id_pd"));
+        HideColumns(getColumnIndex("id_pf"));
+        HideColumns(getColumnIndex("m1_pd"));
+        HideColumns(getColumnIndex("m2_pd"));
+        HideColumns(getColumnIndex("m3_pd"));
+        HideColumns(getColumnIndex("v1_pd"));
+        HideColumns(getColumnIndex("v2_pd"));
+        HideColumns(getColumnIndex("v3_pd"));
+        HideColumns(getColumnIndex("flag_pm"));
+        HideColumns(getColumnIndex("id_sl_curs"));
+        HideColumns(getColumnIndex("id_n_group"));
         jScrollPane1.repaint();
         
     }
@@ -780,19 +839,18 @@ private void initTable() //ok  -- !!ima za dovyr6wane - skrivane na koloni!!
         setId_PD((Integer) table.getValueAt(getRow(), getColumnIndex("id_pd")));
         setId_Group((Integer) table.getValueAt(getRow(), getColumnIndex("id_n_group")));
        
-        setMax_POP((Integer) table.getValueAt(getRow(), getColumnIndex("max_pop_pm")));
-        setBarCod((Integer) table.getValueAt(getRow(), getColumnIndex("barcod_pm")));
-        setNamePM((String)table.getValueAt(getRow(),getColumnIndex("name_pm")));
-        setSNamePM((String)table.getValueAt(getRow(),getColumnIndex("sname_pm")));
-        setFNamePM((String)table.getValueAt(getRow(),getColumnIndex("fname_pm")));
-        setCNamePM((String)table.getValueAt(getRow(),getColumnIndex("cname_pm")));
-        setExpertSheet((String)table.getValueAt(getRow(),getColumnIndex("expertsheet_pm")));
-        setCod1((String)table.getValueAt(getRow(),getColumnIndex("cod1_pm")));
-        setCod2((String)table.getValueAt(getRow(),getColumnIndex("cod2_pm")));
-        setMinProduct((Integer) table.getValueAt(getRow(), getColumnIndex("min_pm")));
+        setMax_POP((Double) table.getValueAt(getRow(), getColumnIndex("Отстъпка (в %):")));
+        setBarCod((Integer) table.getValueAt(getRow(), getColumnIndex("Баркод:")));
+        setNamePM((String)table.getValueAt(getRow(),getColumnIndex("Име:")));
+        setSNamePM((String)table.getValueAt(getRow(),getColumnIndex("Късо име:")));
+        setFNamePM((String)table.getValueAt(getRow(),getColumnIndex("Фактурно име:")));
+        setCNamePM((String)table.getValueAt(getRow(),getColumnIndex("Име на съответствия:")));
+        setExpertSheet((String)table.getValueAt(getRow(),getColumnIndex("Експертен лист:")));
+        setCod1((String)table.getValueAt(getRow(),getColumnIndex("Код 1:")));
+        setCod2((String)table.getValueAt(getRow(),getColumnIndex("Код 1:")));
+        setMinProduct((Integer) table.getValueAt(getRow(), getColumnIndex("Минимално количество:")));
         
-        
-        
+       
       
         
     }
@@ -935,7 +993,7 @@ table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
      this.promoprice = promoprice;
      this.start = start;
      this.stop = stop;
-     this.isTypePromoPrice = true;
+     this.isTypedPromoPrice = true;
  }
  public int saveProductPromotionPriceToDB()
  {
@@ -976,6 +1034,15 @@ public String getViewPromoPrice()
  {
      return String.valueOf(promoprice);
  }
+public void setGroup(int in)
+{
+    this.group = in;
+}
+public int getGroup()
+{
+    return group;
+}
+
 }// end class
 
 

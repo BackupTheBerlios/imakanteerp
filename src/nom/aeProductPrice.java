@@ -419,7 +419,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
                 
        p0 = Double.parseDouble(jTextDostPrice.getText());
        p3 = Double.parseDouble(jTextFieldPrice3.getText());
-       if(p3>p0) p_p3 = (100 * (p3-p0)) / p0; 
+       if(p3>=p0) p_p3 = (100 * (p3-p0)) / p0; 
        else showMessage();
        jTextFieldProcent3.setText( doubleRoundToString(3,p_p3)); 
         
@@ -432,7 +432,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
             try
             {
                 p3 = Double.parseDouble(jTextFieldPrice3.getText());
-                if (p3 > p0) p_p3 = (100 * (p3-p0)) / p0; 
+                if (p3 >= p0) p_p3 = (100 * (p3-p0)) / p0; 
                 else showMessage();
                 jTextFieldProcent3.setText( doubleRoundToString(3,p_p3));
                 
@@ -486,7 +486,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
         
         p0 = Double.parseDouble(jTextDostPrice.getText());
         p2 = Double.parseDouble(jTextFieldPrice2.getText());
-        if(p2 > p0)  p_p2 = (100 * (p2-p0)) / p0; 
+        if(p2 >= p0)  p_p2 = (100 * (p2-p0)) / p0; 
         else showMessage();
         jTextFieldProcent2.setText( doubleRoundToString(3,p_p2));
     }//GEN-LAST:event_jTextFieldPrice2FocusLost
@@ -546,7 +546,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
 // TODO add your handling code here:
         p0 = Double.parseDouble(jTextDostPrice.getText());
         p1 = Double.parseDouble(jTextFieldPrice1.getText());
-        if(p1 > p0) p_p1 = (100 * (p1-p0)) / p0; 
+        if(p1 >= p0) p_p1 = (100 * (p1-p0)) / p0; 
         else showMessage();
         
         jTextFieldProcent1.setText( doubleRoundToString(3,p_p1));
@@ -562,7 +562,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
             {
                 p0 = Double.parseDouble(jTextDostPrice.getText());
                 p1 = Double.parseDouble(jTextFieldPrice1.getText());
-                if (p1 > p0 ) p_p1 = (100 * (p1-p0)) / p0; 
+                if (p1 >= p0 ) p_p1 = (100 * (p1-p0)) / p0; 
                 else showMessage();
                
                 jTextFieldProcent1.setText( doubleRoundToString(3,p_p1));
