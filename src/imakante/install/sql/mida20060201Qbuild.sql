@@ -275,6 +275,7 @@ CREATE TABLE `ls_monthpar` (
 
 CREATE TABLE `ls_n_person` (
   `id_ls_n_person` int(11) NOT NULL auto_increment,
+  `id_n_group` int(11) unsigned default NULL,
   `code_ls_n_person` varchar(6) default NULL,
   `egn_ls_n_person` varchar(10) NOT NULL,
   `nlk_ls_n_person` varchar(9) NOT NULL,
@@ -766,16 +767,13 @@ CREATE TABLE `sl_contragent_product` (
 
 
 #
-# Table structure for table sl_curs
+# Table structure for table sl_doc_balance
 #
 
-CREATE TABLE `sl_exchange_rate` (
-  `id_sl_exchange_rate` int(10) unsigned NOT NULL auto_increment,
-  `date_sl_exchange_rate` date default NULL,
-  `id_n_money` int(11) default NULL,
-  `value_sl_exchange_rate` decimal(10,0) default NULL,
-  PRIMARY KEY  (`id_sl_exchange_rate`)
-) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='kursove na valutite';
+CREATE TABLE `sl_doc_balance` (
+  `id` int(11) NOT NULL auto_increment,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 
 
@@ -847,6 +845,20 @@ CREATE TABLE `sl_document_lines` (
   KEY `n_document_lines_FKIndex2` (`id_df`),
   KEY `n_document_lines_FKIndex3` (`id_pm`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+
+
+#
+# Table structure for table sl_exchange_rate
+#
+
+CREATE TABLE `sl_exchange_rate` (
+  `id_sl_exchange_rate` int(10) unsigned NOT NULL auto_increment,
+  `date_sl_exchange_rate` date default NULL,
+  `id_n_money` int(11) default NULL,
+  `value_sl_exchange_rate` decimal(10,0) default NULL,
+  PRIMARY KEY  (`id_sl_exchange_rate`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='kursove na valutite';
 
 
 
@@ -1146,7 +1158,7 @@ BEGIN
 
      IF (comprator = 2) THEN
         UPDATE n_type_doc SET code_ntd = in_code, name_ntd = in_name, name_print_ntd = in_print_name
-           WHERE n_type_doc.id_ntd = in_id;
+           WHERE n_typedoc.id_ntd = in_id;
      END IF;
 
      IF (comprator = 3) THEN

@@ -490,7 +490,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     private void searchRecords() {
         try {
             try {
-                rs = internalObject.searchRecords(jTextEGN.getText(),jTextName.getText());
+        //        rs = internalObject.searchRecords((Integer)parseInt(jTextField1.getText()),jTextEGN.getText(),jTextName.getText());
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
                 jTextEGN.requestFocus();
@@ -515,7 +515,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     private void newRecord() {
         setId(internalObject.getMaxId());
         setIDG(internalObject.getMaxGrID());
-        internalObject.insertRow(getIDG());
+      //  internalObject.insertRow(getIDG());
         nom.aePerson ae_Person = new nom.aePerson(this, true);
         ae_Person.setVisible(true);
         refreshTable();

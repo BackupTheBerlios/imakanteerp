@@ -414,8 +414,8 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
             myParent.setNames(jTextField3.getText());
             myParent.setComment(jTextArea1.getText());
             myParent.setIDG(myParent.getInternalObject().getIndexConnOfId()[jComboG.getSelectedIndex()]);
-            myParent.getInternalObject().updateRow(myParent.getId(), myParent.getIDG(),myParent.getEGN(),
-                    myParent.getNLK(),myParent.getNames(), myParent.getComment());
+ // RADO       //   myParent.getInternalObject().updateRow(myParent.getId(), myParent.getIDG(),myParent.getEGN(),
+ // zaradi compilirane        //           myParent.getNLK(),myParent.getNames(), myParent.getComment());
             myParent.refreshTable();
             myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
             jButtonUndo.setEnabled(true);}

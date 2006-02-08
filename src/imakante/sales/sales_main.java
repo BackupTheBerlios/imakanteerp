@@ -890,7 +890,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     //KONTRAGENTI
     private void loadFrmContragent() {
         if(!isStartFrmContragent) {
-            iFrmContragent = new nom.FrmContragent("\u041a\u041e\u041d\u0422\u0420\u0410\u0413\u0415\u041d\u0422\u0418",this,0);
+            iFrmContragent = new nom.FrmContragent("\u041a\u041e\u041d\u0422\u0420\u0410\u0413\u0415\u041d\u0422\u0418",0);
             desktopPane.add(iFrmContragent);
             try {
                 iFrmContragent.setMaximum(true);
@@ -950,7 +950,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     
     //OBLASTI
     private void loadOblasti(){
-        nom.FrmOblast oblast = new nom.FrmOblast("\u041e\u0411\u041b\u0410\u0421\u0422\u0418", this);
+        nom.FrmOblast oblast = new nom.FrmOblast("\u041e\u0411\u041b\u0410\u0421\u0422\u0418");
         desktopPane.add(oblast);
         try {
             oblast.setMaximum(true);
@@ -963,7 +963,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     
     //NASELENI MESTA
     private void loadNM(){
-        nom.FrmNaseleniMesta nm = new nom.FrmNaseleniMesta("\u041d\u0410\u0421\u0415\u041b\u0415\u041d\u0418 \u041c\u0415\u0421\u0422\u0410", this);
+        nom.FrmNaseleniMesta nm = new nom.FrmNaseleniMesta("\u041d\u0410\u0421\u0415\u041b\u0415\u041d\u0418 \u041c\u0415\u0421\u0422\u0410");
         desktopPane.add(nm);
         try {
             nm.setMaximum(true);
