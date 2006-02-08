@@ -17,10 +17,10 @@ import java.lang.Byte;
 public class FrmOblast extends  imakante.com.vcomponents.iInternalFrame implements WindowListener
 {
 
-    public FrmOblast(String title) // TEST da se dobavi , imakante.com.vcomponents.iFrame frame
+    public FrmOblast(String title,imakante.com.vcomponents.iFrame frame) // TEST da se dobavi , imakante.com.vcomponents.iFrame frame
     {
         super(title);
-      //  myframe = frame; 
+        myframe = frame; 
         prepareConn();     // zapazva connection
         constructOblastDB(); // inicializira class otgovarq6t za vryzkata s DB
         initTable();
@@ -318,7 +318,7 @@ public class FrmOblast extends  imakante.com.vcomponents.iInternalFrame implemen
     }//GEN-LAST:event_jButtonNewActionPerformed
     
   
-    public static void main(String args[]) 
+   /* public static void main(String args[]) 
     {
         java.awt.EventQueue.invokeLater(new Runnable()
         {
@@ -331,7 +331,7 @@ public class FrmOblast extends  imakante.com.vcomponents.iInternalFrame implemen
                 
             }
         });
-    }
+    }*/
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -354,7 +354,8 @@ public class FrmOblast extends  imakante.com.vcomponents.iInternalFrame implemen
     private javax.swing.JTextField jTextFieldOblast;
     // End of variables declaration//GEN-END:variables
  //--------------- My Variables
-    private String columnName[] = {"id_n_oblast","Област:","id_n_country","Държава:"};
+   // private String columnName[] = {"id_n_oblast","Област:","id_n_country","Държава:"};
+     private String columnName[] = {"id_n_oblast","\u041e\u0431\u043b\u0430\u0441\u0442:","id_n_country","\u0414\u044a\u0440\u0436\u0430\u0432\u0430:"};
     private int id=0; // imena ot tablicata                              
     private int postcode=0; // imena ot tablicata                            
     private String name; // imena ot tablicata                      
@@ -379,7 +380,7 @@ public class FrmOblast extends  imakante.com.vcomponents.iInternalFrame implemen
 private void prepareConn() //TEST
     {
       // samo za testovate ------------
-      try
+    /*  try
          {
           Class.forName("com.mysql.jdbc.Driver");
            
@@ -391,15 +392,15 @@ private void prepareConn() //TEST
          {
              e.printStackTrace();
          }
-      // ---------------------------
-   /* try
+      // -----*/
+    try
        {
             setConn(myframe.getConn());
        }
        catch(Exception e)
        {
        e.printStackTrace();
-       }*/
+       }
   }
 private void constructOblastDB() // OK
     {
@@ -579,9 +580,7 @@ private void initTable() //-OK  -- !!ima za dovyr6wane - skrivane na koloni!!
  {
         setRow(getMaxRow());
         try{
-            setId((Integer) table.getValueAt(getRow(), 0));
-            setNames((String) table.getValueAt(getRow(), 1));
-            setIDCountry((Byte) table.getValueAt(getRow(), 2));
+            setAllVarioable();
             
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
             
@@ -605,10 +604,8 @@ private void initTable() //-OK  -- !!ima za dovyr6wane - skrivane na koloni!!
         setAtBegining(false);
         try
         {
-            setId((Integer) table.getValueAt(getRow(), 0));
-            setNames((String) table.getValueAt(getRow(), 1));
-            setIDCountry((Byte) table.getValueAt(getRow(), 2));  
-            
+           setAllVarioable();
+           
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
         }
         catch(ArrayIndexOutOfBoundsException aioobe)
@@ -630,9 +627,7 @@ private void initTable() //-OK  -- !!ima za dovyr6wane - skrivane na koloni!!
             setAtEnd(false);
             try
             {
-                setId((Integer) table.getValueAt(getRow(), 0));
-                setNames((String) table.getValueAt(getRow(), 1));
-                setIDCountry((Byte) table.getValueAt(getRow(), 2)); 
+                setAllVarioable();
                 
                 table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
             }
@@ -650,9 +645,7 @@ private void initTable() //-OK  -- !!ima za dovyr6wane - skrivane na koloni!!
       setRow(0);
         try
         {
-            setId((Integer) table.getValueAt(getRow(), 0));
-            setNames((String) table.getValueAt(getRow(), 1));
-            setIDCountry((Byte) table.getValueAt(getRow(), 2)); 
+           setAllVarioable();
             
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
         }
@@ -694,5 +687,12 @@ table.getColumnModel().getColumn(iColumn).setMinWidth(0);
 table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
 table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
      
+ }
+ private void setAllVarioable()
+ {
+    
+          setId((Integer) table.getValueAt(getRow(), getColumnIndex("id_n_oblast")));
+          setNames((String) table.getValueAt(getRow(), getColumnIndex("\u041e\u0431\u043b\u0430\u0441\u0442:")));
+          setIDCountry((Byte) table.getValueAt(getRow(), getColumnIndex("id_n_country"))); 
  }
 }// end class
