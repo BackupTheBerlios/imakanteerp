@@ -17,10 +17,10 @@ import java.lang.Byte;
 public class FrmNaseleniMesta extends  imakante.com.vcomponents.iInternalFrame implements WindowListener
 {
 
-    public FrmNaseleniMesta(String title)//, imakante.com.vcomponents.iFrame frame) // TEST da se dobavi , imakante.com.vcomponents.iFrame frame
+    public FrmNaseleniMesta(String title, imakante.com.vcomponents.iFrame frame) // TEST da se dobavi , imakante.com.vcomponents.iFrame frame
     {
         super(title);
-      //  myframe = frame; 
+        myframe = frame; 
         prepareConn();     // zapazva connection
         constructNaseleniMestaDB(); // inicializira class otgovarq6t za vryzkata s DB
         initTable();
@@ -326,7 +326,7 @@ public class FrmNaseleniMesta extends  imakante.com.vcomponents.iInternalFrame i
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) 
+  /*  public static void main(String args[]) 
     {
         java.awt.EventQueue.invokeLater(new Runnable()
         {
@@ -339,7 +339,7 @@ public class FrmNaseleniMesta extends  imakante.com.vcomponents.iInternalFrame i
                 
             }
         });
-    }
+    }*/
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -362,7 +362,9 @@ public class FrmNaseleniMesta extends  imakante.com.vcomponents.iInternalFrame i
     private javax.swing.JTextField jTextPostCode;
     // End of variables declaration//GEN-END:variables
  //--------------- My Variables
-    private String columnName[] = {"id_n_nm","Пощенски код:","Населено място","id_n_oblast","Област:"};
+  //  private String columnName[] = {"id_n_nm","Пощенски код:","Населено място","id_n_oblast","Област"};
+     private String columnName[] = {"id_n_nm","\u041f\u043e\u0449\u0435\u043d\u0441\u043a\u0438 \u043a\u043e\u0434",
+     "\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e","id_n_oblast","\u041e\u0431\u043b\u0430\u0441\u0442"};
     private int id=0; // imena ot tablicata                              
     private int postcode=0; // imena ot tablicata                            
     private String name; // imena ot tablicata                      
@@ -387,7 +389,7 @@ public class FrmNaseleniMesta extends  imakante.com.vcomponents.iInternalFrame i
 private void prepareConn() //TEST
     {
       // samo za testovate ------------
-      try
+    /*  try
          {
           Class.forName("com.mysql.jdbc.Driver");
            
@@ -399,15 +401,15 @@ private void prepareConn() //TEST
          {
              e.printStackTrace();
          }
-      // ---------------------------
-   /*    try
+      // ---------------------------*/
+      try
        {
             setConn(myframe.getConn());
        }
        catch(Exception e)
        {
        e.printStackTrace();
-       }*/
+       }
   }
 private void constructNaseleniMestaDB() // OK
     {
@@ -594,10 +596,7 @@ private void initTable() //-OK  -- !!ima za dovyr6wane - skrivane na koloni!!
  {
         setRow(getMaxRow());
         try{
-            setId((Integer) table.getValueAt(getRow(), 0));
-            setPostCode((Integer) table.getValueAt(getRow(), 1));
-            setNames((String) table.getValueAt(getRow(), 2));
-            setIDOblast((Byte) table.getValueAt(getRow(), 3));
+            setAllVariable();
             
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
             
@@ -621,10 +620,7 @@ private void initTable() //-OK  -- !!ima za dovyr6wane - skrivane na koloni!!
         setAtBegining(false);
         try
         {
-            setId((Integer) table.getValueAt(getRow(), 0));
-            setPostCode((Integer) table.getValueAt(getRow(), 1));
-            setNames((String) table.getValueAt(getRow(), 2));
-            setIDOblast((Byte) table.getValueAt(getRow(), 3));  
+            setAllVariable(); 
             
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
         }
@@ -647,10 +643,7 @@ private void initTable() //-OK  -- !!ima za dovyr6wane - skrivane na koloni!!
             setAtEnd(false);
             try
             {
-                setId((Integer) table.getValueAt(getRow(), 0));
-                setPostCode((Integer) table.getValueAt(getRow(), 1));
-                setNames((String) table.getValueAt(getRow(), 2));
-                setIDOblast((Byte) table.getValueAt(getRow(), 3)); 
+                 setAllVariable();
                 
                 table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
             }
@@ -668,10 +661,7 @@ private void initTable() //-OK  -- !!ima za dovyr6wane - skrivane na koloni!!
       setRow(0);
         try
         {
-            setId((Integer) table.getValueAt(getRow(), 0));
-            setPostCode((Integer) table.getValueAt(getRow(), 1));
-            setNames((String) table.getValueAt(getRow(), 2));
-            setIDOblast((Byte) table.getValueAt(getRow(), 3)); 
+            setAllVariable();
             
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
         }
@@ -713,6 +703,15 @@ table.getColumnModel().getColumn(iColumn).setMaxWidth(0);
 table.getColumnModel().getColumn(iColumn).setMinWidth(0);
 table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
 table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
+     
+ }
+ public void setAllVariable()
+ {
+      setId((Integer) table.getValueAt(getRow(), getColumnIndex("id_n_nm")));
+      setPostCode((Integer) table.getValueAt(getRow(), getColumnIndex("\u041f\u043e\u0449\u0435\u043d\u0441\u043a\u0438 \u043a\u043e\u0434")));
+      setNames((String) table.getValueAt(getRow(), getColumnIndex("\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e")));
+      setIDOblast((Byte) table.getValueAt(getRow(), getColumnIndex("id_n_oblast"))); 
+            
      
  }
 }// end class
