@@ -104,8 +104,10 @@ public class showContentsCon_Gr   extends imakante.com.vcomponents.iDialog
     private nom.FrmProduct myParent;
     private java.sql.Connection conn;
     private int Con_Gr =0;
-    private String columnName[] = {"id_contragent","is_oso","id_mol","id_nm","Код:","Име:","Булстат:","Данъчен номер:",
-                                  "Адрес:", "Телефон:","Факс:","E-mail:","Web page","flag_n_contragent"};
+  /*  private String columnName[] = {"id_contragent","is_oso","id_mol","id_nm","Код:","Име:","Булстат:","Данъчен номер:",
+                                  "Адрес:", "Телефон:","Факс:","E-mail:","Web page","flag_n_contragent"};*/
+     private String columnName[] = {"id_contragent","is_oso","id_mol","id_nm","\u041a\u043e\u0434:","\u0418\u043c\u0435:","\u0411\u0443\u043b\u0441\u0442\u0430\u0442:","\u0414\u0430\u043d\u044a\u0447\u0435\u043d \u043d\u043e\u043c\u0435\u0440:",
+"\u0410\u0434\u0440\u0435\u0441:","\u0422\u0435\u043b\u0435\u0444\u043e\u043d:","\u0424\u0430\u043a\u0441:","E-mail:","Web page","flag_n_contragent"};
     
     public void close()
     {

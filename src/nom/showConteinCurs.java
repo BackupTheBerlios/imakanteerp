@@ -71,8 +71,10 @@ public class showConteinCurs extends imakante.com.vcomponents.iDialog
     private  imakante.com.CustomTable table; 
     private  java.sql.ResultSet rs;
     private nom.FrmProduct myParent;
-    private String columnName[] = {"id_sl_curs","Дата и час:","id_n_money","Валута:","Курс:"};   
+  //  private String columnName[] = {"id_sl_curs","Дата и час:","id_n_money","Валута:","Курс:"};   
     
+     private String columnName[] = {"id_sl_curs","\u0414\u0430\u0442\u0430 \u0438 \u0447\u0430\u0441","id_n_money",
+       "\u0412\u0430\u043b\u0443\u0442\u0430","\u041a\u0443\u0440\u0441"};   
     public void close()
     {
         this.dispose();

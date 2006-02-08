@@ -29,10 +29,10 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
 {
     
     /** Creates new form FrmProduct */
-    public FrmProduct(String title, int flag, int group) // // TEST imakante.com.vcomponents.iFrame frame, int group
+    public FrmProduct(String title, int flag, imakante.com.vcomponents.iFrame frame, int group) // // TEST imakante.com.vcomponents.iFrame frame, int group
     {
         super(title);
-        //myframe = frame; 
+        myframe = frame; 
         setGroup(group);
         prepareConn();     // zapazva connection
         this.flag_pm = flag; //  za da rabotim samo s opredeleni zapisi ima6ti syotvetniq fag
@@ -428,7 +428,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     /**
      * @param args the command line arguments---------------------------------
      */
-    public static void main(String args[]) {
+  /*  public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                
@@ -439,7 +439,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
             }
         });
         
-    }
+    }*/
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -505,16 +505,23 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     private String Pass="imakante";  // vremenna promenliva za test
     private String Url = "jdbc:mysql://www.katsarov.net:3307/mida";  // vremenna promenliva za test
  
-    private String columnsNames[] ={"id_pm","id_n_group","id_ppp","id_pp","id_pf","Име:","Фактурно име:","Късо име:","Име на съответствия:","Код 1:","Код 2:","Баркод:","Отстъпка (в %):",
+   /* private String columnsNames[] ={"id_pm","id_n_group","id_ppp","id_pp","id_pf","Име:","Фактурно име:","Късо име:","Име на съответствия:","Код 1:","Код 2:","Баркод:","Отстъпка (в %):",
                                   "Експертен лист:","flag_pm","id_sl_curs","Доставна цена:","Валута:","Стойност в лева"  ,"Цена 1:", "Цена 2:", "Цена 3:","ДДС:","Акцизи:","Др. такси:","id_pd",
-                                  "m1_pd","v1_pd","m2_pd","v2_pd","m3_pd","v3_pd","Минимално количество:"};
+                                  "m1_pd","v1_pd","m2_pd","v2_pd","m3_pd","v3_pd","Минимално количество:"};*/
+    
+     private String columnsNames[] ={"id_pm","id_n_group","id_ppp","id_pp","id_pf","\u0418\u043c\u0435","\u0424\u0430\u043a\u0442\u0443\u0440\u043d\u043e \u0438\u043c\u0435","\u041a\u044a\u0441\u043e \u0438\u043c\u0435",
+"\u0418\u043c\u0435 \u043d\u0430 \u0441\u044a\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0438\u044f","\u041a\u043e\u0434 1","\u041a\u043e\u0434 2",
+"\u0411\u0430\u0440\u043a\u043e\u0434","\u041e\u0442\u0441\u0442\u044a\u043f\u043a\u0430 (\u0432 %)","\u0415\u043a\u0441\u043f\u0435\u0440\u0442\u0435\u043d \u043b\u0438\u0441\u0442","flag_pm","id_sl_curs",
+"\u0414\u043e\u0441\u0442\u0430\u0432\u043d\u0430 \u0446\u0435\u043d\u0430","\u0412\u0430\u043b\u0443\u0442\u0430","\u0421\u0442\u043e\u0439\u043d\u043e\u0441\u0442 \u0432 \u043b\u0435\u0432\u0430",
+"\u0426\u0435\u043d\u0430 1","\u0426\u0435\u043d\u0430 2","\u0426\u0435\u043d\u0430 3","\u0414\u0414\u0421","\u0410\u043a\u0446\u0438\u0437\u0438","\u0414\u0440. \u0442\u0430\u043a\u0441\u0438",
+"id_pd","m1_pd","v1_pd","m2_pd","v2_pd","m3_pd","v3_pd","\u041c\u0438\u043d\u0438\u043c\u0430\u043b\u043d\u043e \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e"};
 //---------------END My Variables
  //---------------START MyFunction
     
  private void prepareConn() //TEST
     {
       // samo za testovate ------------
-      try
+    /* try
          {
           Class.forName("com.mysql.jdbc.Driver");
            
@@ -526,15 +533,15 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
          {
              e.printStackTrace();
          }
-      //
-       /*try
+      //*/
+      try
        {
             setConn(myframe.getConn());
        }
        catch(Exception e)
        {
        e.printStackTrace();
-       }*/
+       }
   }
 private void constructProductDB() // ok
     {
@@ -839,16 +846,16 @@ private void initTable() //ok  -- !!ima za dovyr6wane - skrivane na koloni!!
         setId_PD((Integer) table.getValueAt(getRow(), getColumnIndex("id_pd")));
         setId_Group((Integer) table.getValueAt(getRow(), getColumnIndex("id_n_group")));
        
-        setMax_POP((Double) table.getValueAt(getRow(), getColumnIndex("Отстъпка (в %):")));
-        setBarCod((Integer) table.getValueAt(getRow(), getColumnIndex("Баркод:")));
-        setNamePM((String)table.getValueAt(getRow(),getColumnIndex("Име:")));
-        setSNamePM((String)table.getValueAt(getRow(),getColumnIndex("Късо име:")));
-        setFNamePM((String)table.getValueAt(getRow(),getColumnIndex("Фактурно име:")));
-        setCNamePM((String)table.getValueAt(getRow(),getColumnIndex("Име на съответствия:")));
-        setExpertSheet((String)table.getValueAt(getRow(),getColumnIndex("Експертен лист:")));
-        setCod1((String)table.getValueAt(getRow(),getColumnIndex("Код 1:")));
-        setCod2((String)table.getValueAt(getRow(),getColumnIndex("Код 1:")));
-        setMinProduct((Integer) table.getValueAt(getRow(), getColumnIndex("Минимално количество:")));
+        setMax_POP((Double) table.getValueAt(getRow(), getColumnIndex("\u041e\u0442\u0441\u0442\u044a\u043f\u043a\u0430 (\u0432 %)")));
+        setBarCod((Integer) table.getValueAt(getRow(), getColumnIndex("\u0411\u0430\u0440\u043a\u043e\u0434")));
+        setNamePM((String)table.getValueAt(getRow(),getColumnIndex("\u0418\u043c\u0435")));
+        setSNamePM((String)table.getValueAt(getRow(),getColumnIndex("\u041a\u044a\u0441\u043e \u0438\u043c\u0435")));
+        setFNamePM((String)table.getValueAt(getRow(),getColumnIndex("\u0424\u0430\u043a\u0442\u0443\u0440\u043d\u043e \u0438\u043c\u0435")));
+        setCNamePM((String)table.getValueAt(getRow(),getColumnIndex("\u0418\u043c\u0435 \u043d\u0430 \u0441\u044a\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0438\u044f")));
+        setExpertSheet((String)table.getValueAt(getRow(),getColumnIndex("\u0415\u043a\u0441\u043f\u0435\u0440\u0442\u0435\u043d \u043b\u0438\u0441\u0442")));
+        setCod1((String)table.getValueAt(getRow(),getColumnIndex("\u041a\u043e\u0434 1")));
+        setCod2((String)table.getValueAt(getRow(),getColumnIndex("\u041a\u043e\u0434 2")));
+        setMinProduct((Integer) table.getValueAt(getRow(), getColumnIndex("\u041c\u0438\u043d\u0438\u043c\u0430\u043b\u043d\u043e \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e")));
         
        
       
