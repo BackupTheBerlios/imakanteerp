@@ -16,10 +16,10 @@ import java.text.MessageFormat;
 public class FrmGroup extends  iInternalFrame implements WindowListener //imakante.com.vcomponents.iInternalFrame implements WindowListener
 {
 
-    public FrmGroup(String title,  int idGroup) // TEST  da se dobavi imakante.com.vcomponents.iFrame frame,
+    public FrmGroup(String title, imakante.com.vcomponents.iFrame frame, int idGroup) // TEST  da se dobavi imakante.com.vcomponents.iFrame frame,
     {
         super(title);
-      //  myframe = frame; 
+        myframe = frame; 
        
         this.nom = idGroup;
         prepareConn();     // zapazva connection
@@ -340,7 +340,7 @@ public class FrmGroup extends  iInternalFrame implements WindowListener //imakan
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+  /*  public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 
@@ -351,7 +351,7 @@ public class FrmGroup extends  iInternalFrame implements WindowListener //imakan
                 
             }
         });
-    }
+    }*/
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -402,7 +402,7 @@ public class FrmGroup extends  iInternalFrame implements WindowListener //imakan
 private void prepareConn() //TEST
     {
       // samo za testovate ------------start
-      try
+     /* try
          {
           Class.forName("com.mysql.jdbc.Driver");
            
@@ -414,16 +414,16 @@ private void prepareConn() //TEST
          {
              e.printStackTrace();
          }
-      //
+      //*/
     // original   test end
-    /*  try
+      try
        {
             setConn(myframe.getConn());
        }
        catch(Exception e)
        {
        e.printStackTrace();
-       }*/
+       }
   }
 private void constructGroupDB() //OK 
     {
@@ -620,10 +620,7 @@ private void initTable() //OK  --
  {
         setRow(getMaxRow());
         try{
-            setId((Integer) table.getValueAt(getRow(), 0));
-            setCod((String) table.getValueAt(getRow(), 1));
-            setNames((String) table.getValueAt(getRow(), 2));
-            setAnID((Integer) table.getValueAt(getRow(), 3));
+            setAllVariable(); 
             
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
             
@@ -647,10 +644,7 @@ private void initTable() //OK  --
         setAtBegining(false);
         try
         {
-            setId((Integer) table.getValueAt(getRow(), 0));
-            setCod((String) table.getValueAt(getRow(), 1));
-            setNames((String) table.getValueAt(getRow(), 2));
-            setAnID((Integer) table.getValueAt(getRow(), 3));  
+           setAllVariable(); 
             
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
         }
@@ -673,10 +667,7 @@ private void initTable() //OK  --
             setAtEnd(false);
             try
             {
-                setId((Integer) table.getValueAt(getRow(), 0));
-                setCod((String) table.getValueAt(getRow(), 1));
-                setNames((String) table.getValueAt(getRow(), 2));
-                setAnID((Integer) table.getValueAt(getRow(), 3)); 
+               setAllVariable(); 
                 
                 table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
             }
@@ -694,10 +685,7 @@ private void initTable() //OK  --
       setRow(0);
         try
         {
-            setId((Integer) table.getValueAt(getRow(), 0));
-            setCod((String) table.getValueAt(getRow(), 1));
-            setNames((String) table.getValueAt(getRow(), 2));
-            setAnID((Integer) table.getValueAt(getRow(), 3)); 
+           setAllVariable(); 
             
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
         }
@@ -739,5 +727,13 @@ table.getColumnModel().getColumn(iColumn).setMinWidth(0);
 table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
 table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
      
+ }
+ private void setAllVariable()
+ {
+    ;
+     setId((Integer) table.getValueAt(getRow(), getColumnIndex("id_n_group")));
+     setCod((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434")));
+     setNames((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435")));
+     setAnID((Integer) table.getValueAt(getRow(), getColumnIndex("id_al")));  
  }
 }// end class
