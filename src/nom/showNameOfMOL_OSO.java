@@ -13,8 +13,9 @@ public class showNameOfMOL_OSO extends imakante.com.vcomponents.iDialog
         MOL_OSO = mol_oos;
         myParent = (nom.FrmContragent)  myframe;
         this.rs = rs;
-        model = new imakante.com.CustomTableModel(conn,rs, null);
+        model = new imakante.com.CustomTableModel(conn,rs, columnName);
         table = new imakante.com.CustomTable(model);
+        HideColumns(getColumnIndex("id_ls_n_person"));
         table.addKeyListener(new KeyListener()
         {
             public void keyPressed(KeyEvent e)
@@ -22,7 +23,8 @@ public class showNameOfMOL_OSO extends imakante.com.vcomponents.iDialog
               if(java.awt.event.KeyEvent.VK_ENTER == e.getKeyCode())
                 {
                  int row = table.getSelectedRow();
-                 int ID = (Integer)table.getValueAt(row,0);
+                 int ID = (Integer)table.getValueAt(row,getColumnIndex("id_ls_n_person"));
+                
                  if(MOL_OSO) // ako e true to se otnasq za MOL
                  {
                   myParent.setID_MOL(ID);
@@ -77,9 +79,30 @@ public class showNameOfMOL_OSO extends imakante.com.vcomponents.iDialog
     private  java.sql.ResultSet rs;
     private nom.FrmContragent myParent;
     private  boolean MOL_OSO;
+   // private String columnName[] ={"id_ls_n_person","»ÏÂ","≈√Õ","ÕÀ "," ÓÏÂÌÚ‡"};
+     private String columnName[] ={"id_ls_n_person","\u0418\u043c\u0435","\u0415\u0413\u041d","\u041d\u041b\u041a","\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440"};
     
     public void close()
     {
         this.dispose();
-    }   
+    } 
+      private int getColumnIndex(String in) //test
+ {
+     int count = table.getColumnCount();
+     for(int i=0; i < count; i++)
+     {
+         if(table.getColumnName(i).equals(in)) return i;
+     }
+     return 0;
+ }
+ private void HideColumns(int col)
+ {
+   int iColumn = col;
+// set column width
+table.getColumnModel().getColumn(iColumn).setMaxWidth(0);
+table.getColumnModel().getColumn(iColumn).setMinWidth(0);
+table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
+table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
+     
+ }
 }// end class

@@ -24,10 +24,10 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
 {
     
     /** Creates new form FrmContragent */
-    public FrmContragent(String title, int flag)//,imakante.com.vcomponents.iFrame frame, int flag) // // TEST 
+    public FrmContragent(String title,imakante.com.vcomponents.iFrame frame, int flag)//,imakante.com.vcomponents.iFrame frame, int flag) // // TEST 
     {
         super(title);
-      //  myframe = frame; 
+        myframe = frame; 
         prepareConn();     // zapazva connection
         this.flag = flag; //  za da rabotim samo s opredeleni zapisi ima6ti syotvetniq fag
         constructGroupDB(); // inicializira class otgovarq6t za vryzkata s DB
@@ -276,6 +276,9 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
+        
+        if(jTextFieldCod.getText().length()>0)
+        {
         try
         {
         setCod(Integer.parseInt(jTextFieldCod.getText()));
@@ -284,6 +287,8 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
         {
             e.printStackTrace();
         }
+        }
+        else setCod(0);
         setName(jTextFieldName.getText());
         setBulstat(jTextFieldBulstat.getText());
         setDanNomer(jTextFieldDanNomer.getText());
@@ -303,8 +308,12 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
             
             model = new imakante.com.CustomTableModel(conn,rs, null);
             table = new imakante.com.CustomTable(model);
-            // da se napravqt skriti kolona "id" 
+           
             jScrollPane1.getViewport().add(table);
+            HideColumns(getColumnIndex("id_contragent"));
+            HideColumns(getColumnIndex("id_nm"));
+           HideColumns(getColumnIndex("id_mol"));
+           HideColumns(getColumnIndex("id_oso"));
             jScrollPane1.repaint();
         }
        catch(Exception e)
@@ -414,7 +423,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+  /*  public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                
@@ -424,7 +433,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
                 fr.setVisible(true);
             }
         });
-    }
+    }*/
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -461,8 +470,10 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
     private javax.swing.JTextField jTextFieldWeb;
     // End of variables declaration//GEN-END:variables
 //--------------- My Variables
-    private String columnName[] = {"id_contragent","Код:","Име:","Булстат","Данъчен номер:","Адрес:","id_nm","Населено място","Област",
-                         "Код на страната","Държава","Телфон","Факс","E-mail","Web страница","id_mol","МОЛ","id_oso","ОСО","flag_n_contragent"};
+   /* private String columnName[] = {"id_contragent","Код:","Име:","Булстат","Данъчен номер:","Адрес:","id_nm","Населено място","Област",
+                         "Код на страната","Държава","Телфон","Факс","E-mail","Web страница","id_mol","МОЛ","id_oso","ОСО","flag_n_contragent"};*/
+      private String columnName[] = {"id_contragent","\u041a\u043e\u0434","\u0418\u043c\u0435","\u0411\u0443\u043b\u0441\u0442\u0430\u0442","\u0414\u0430\u043d\u044a\u0447\u0435\u043d \u043d\u043e\u043c\u0435\u0440","\u0410\u0434\u0440\u0435\u0441","id_nm","\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e","\u041e\u0431\u043b\u0430\u0441\u0442",
+                         "\u041a\u043e\u0434 \u043d\u0430 \u0441\u0442\u0440\u0430\u043d\u0430\u0442\u0430","\u0414\u044a\u0440\u0436\u0430\u0432\u0430","\u0422\u0435\u043b\u0444\u043e\u043d","\u0424\u0430\u043a\u0441","E-mail","Web \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0430","id_mol","\u041c\u041e\u041b","id_oso","\u041e\u0421\u041e","flag_n_contragent"};
     private  boolean atBegining=false;
     private  boolean atEnd = false;
     private int row;
@@ -488,7 +499,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
  private void prepareConn() //TEST
     {
       // samo za testovate ------------
-      try
+    /*  try
          {
           Class.forName("com.mysql.jdbc.Driver");
            
@@ -500,15 +511,15 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
          {
              e.printStackTrace();
          }
-      
-     /*  try
+      */
+       try
        {
             setConn(myframe.getConn());
        }
        catch(Exception e)
        {
        e.printStackTrace();
-       }*/
+       }
   }
 private void constructGroupDB() // ok
     {
@@ -534,7 +545,10 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
             model = new imakante.com.CustomTableModel(conn,rs, columnName);
             table = new imakante.com.CustomTable(model);
             
-            // da se napravqt skriti kolona "id" 
+           HideColumns(getColumnIndex("id_contragent"));
+          HideColumns(getColumnIndex("id_nm"));
+          HideColumns(getColumnIndex("id_mol"));
+          HideColumns(getColumnIndex("id_oso")); 
         }
        catch(Exception e)
        {
@@ -727,6 +741,10 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
         model = new imakante.com.CustomTableModel(conn, rs, null);
         table = new imakante.com.CustomTable(model);
         jScrollPane1.getViewport().add(table);
+        HideColumns(getColumnIndex("id_contragent"));
+     HideColumns(getColumnIndex("id_nm"));
+     HideColumns(getColumnIndex("id_mol"));
+     HideColumns(getColumnIndex("id_oso"));
         jScrollPane1.repaint();
         
     }
@@ -734,19 +752,7 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
  {
         setRow(getMaxRow());
         try{
-            setId((Integer) table.getValueAt(getRow(), 0));
-            setCod((Integer) table.getValueAt(getRow(), 1));
-            setName((String) table.getValueAt(getRow(), 2));
-            setBulstat((String)table.getValueAt(getRow(),3));
-            setDanNomer((String)table.getValueAt(getRow(),4));
-            setAddress((String)table.getValueAt(getRow(),5));
-            setID_NM((Integer) table.getValueAt(getRow(), 6));
-            setTel((String) table.getValueAt(getRow(), 11));
-            setFax((String) table.getValueAt(getRow(), 12));
-            setEmail((String) table.getValueAt(getRow(), 13));
-            setWeb((String) table.getValueAt(getRow(), 14));
-            setID_MOL((Integer) table.getValueAt(getRow(), 15));
-            setID_OSO((Integer) table.getValueAt(getRow(), 17));
+           setAllVariable();
             
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
             
@@ -770,19 +776,7 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
         setAtBegining(false);
         try
         {
-            setId((Integer) table.getValueAt(getRow(), 0));
-            setCod((Integer) table.getValueAt(getRow(), 1));
-            setName((String) table.getValueAt(getRow(), 2));
-            setBulstat((String)table.getValueAt(getRow(),3));
-            setDanNomer((String)table.getValueAt(getRow(),4));
-            setAddress((String)table.getValueAt(getRow(),5));
-            setID_NM((Integer) table.getValueAt(getRow(), 6));
-            setTel((String) table.getValueAt(getRow(), 11));
-            setFax((String) table.getValueAt(getRow(), 12));
-            setEmail((String) table.getValueAt(getRow(), 13));
-            setWeb((String) table.getValueAt(getRow(), 14));
-            setID_MOL((Integer) table.getValueAt(getRow(), 15));
-            setID_OSO((Integer) table.getValueAt(getRow(), 17));
+           setAllVariable();
             
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
         }
@@ -805,19 +799,7 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
             setAtEnd(false);
             try
             {
-            setId((Integer) table.getValueAt(getRow(), 0));
-            setCod((Integer) table.getValueAt(getRow(), 1));
-            setName((String) table.getValueAt(getRow(), 2));
-            setBulstat((String)table.getValueAt(getRow(),3));
-            setDanNomer((String)table.getValueAt(getRow(),4));
-            setAddress((String)table.getValueAt(getRow(),5));
-            setID_NM((Integer) table.getValueAt(getRow(), 6));
-            setTel((String) table.getValueAt(getRow(), 11));
-            setFax((String) table.getValueAt(getRow(), 12));
-            setEmail((String) table.getValueAt(getRow(), 13));
-            setWeb((String) table.getValueAt(getRow(), 14));
-            setID_MOL((Integer) table.getValueAt(getRow(), 15));
-            setID_OSO((Integer) table.getValueAt(getRow(), 17));
+           setAllVariable();
                 
                 table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
             }
@@ -835,19 +817,7 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
       setRow(0);
         try
         {
-            setId((Integer) table.getValueAt(getRow(), 0));
-            setCod((Integer) table.getValueAt(getRow(), 1));
-            setName((String) table.getValueAt(getRow(), 2));
-            setBulstat((String)table.getValueAt(getRow(),3));
-            setDanNomer((String)table.getValueAt(getRow(),4));
-            setAddress((String)table.getValueAt(getRow(),5));
-            setID_NM((Integer) table.getValueAt(getRow(), 6));
-            setTel((String) table.getValueAt(getRow(), 11));
-            setFax((String) table.getValueAt(getRow(), 12));
-            setEmail((String) table.getValueAt(getRow(), 13));
-            setWeb((String) table.getValueAt(getRow(), 14));
-            setID_MOL((Integer) table.getValueAt(getRow(), 15));
-            setID_OSO((Integer) table.getValueAt(getRow(), 17)); 
+           setAllVariable();
             
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
         }
@@ -863,5 +833,43 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
  public void setConn(java.sql.Connection con)
  {
      this.conn = con;
+ }
+      private int getColumnIndex(String in) //test
+ {
+     int count = table.getColumnCount();
+     for(int i=0; i < count; i++)
+     {
+         if(table.getColumnName(i).equals(in)) return i;
+     }
+     return 0;
+ }
+ private void HideColumns(int col)
+ {
+   int iColumn = col;
+// set column width
+table.getColumnModel().getColumn(iColumn).setMaxWidth(0);
+table.getColumnModel().getColumn(iColumn).setMinWidth(0);
+table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
+table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
+     
+ }
+ public void setAllVariable()
+ {
+     
+        
+     
+     setId((Integer) table.getValueAt(getRow(), getColumnIndex("id_contragent")));
+     setCod((Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434")));
+     setName((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435")));
+     setBulstat((String)table.getValueAt(getRow(),getColumnIndex("\u0411\u0443\u043b\u0441\u0442\u0430\u0442")));
+     setDanNomer((String)table.getValueAt(getRow(),getColumnIndex("\u0414\u0430\u043d\u044a\u0447\u0435\u043d \u043d\u043e\u043c\u0435\u0440")));
+     setAddress((String)table.getValueAt(getRow(),getColumnIndex("\u0410\u0434\u0440\u0435\u0441")));
+     setID_NM((Integer) table.getValueAt(getRow(), getColumnIndex("id_nm")));
+     setTel((String) table.getValueAt(getRow(), getColumnIndex("\u0422\u0435\u043b\u0444\u043e\u043d")));
+     setFax((String) table.getValueAt(getRow(), getColumnIndex("\u0424\u0430\u043a\u0441")));
+     setEmail((String) table.getValueAt(getRow(), getColumnIndex("E-mail")));
+     setWeb((String) table.getValueAt(getRow(), getColumnIndex("Web \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0430")));
+     setID_MOL((Integer) table.getValueAt(getRow(), getColumnIndex("id_mol")));
+     setID_OSO((Integer) table.getValueAt(getRow(), getColumnIndex("id_oso"))); 
  }
 }// end class

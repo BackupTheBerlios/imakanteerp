@@ -22,8 +22,11 @@ public class showAddressContragent extends imakante.com.vcomponents.iDialog
         super(myframe, modal);
         myParent = (nom.FrmContragent)  myframe;
         this.rs = rs;
-        model = new imakante.com.CustomTableModel(conn,rs, null);
+        model = new imakante.com.CustomTableModel(conn,rs, columnName);
         table = new imakante.com.CustomTable(model);
+        HideColumns(getColumnIndex("id_n_nm"));
+         HideColumns(getColumnIndex("code_n_country"));
+       
         table.addKeyListener(new KeyListener()
         {
             public void keyPressed(KeyEvent e)
@@ -104,9 +107,31 @@ public class showAddressContragent extends imakante.com.vcomponents.iDialog
     private  imakante.com.CustomTable table; 
     private  java.sql.ResultSet rs;
     private nom.FrmContragent myParent;
+  //  private String columnName[] = {"id_n_nm","Населено място","Област","Държава","code_n_country"};
+     private String columnName[] = {"id_n_nm","\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e","\u041e\u0431\u043b\u0430\u0441\u0442",
+     "\u0414\u044a\u0440\u0436\u0430\u0432\u0430","code_n_country"};
     
     public void close()
     {
         this.dispose();
     }
+          private int getColumnIndex(String in) //test
+ {
+     int count = table.getColumnCount();
+     for(int i=0; i < count; i++)
+     {
+         if(table.getColumnName(i).equals(in)) return i;
+     }
+     return 0;
+ }
+ private void HideColumns(int col)
+ {
+   int iColumn = col;
+// set column width
+table.getColumnModel().getColumn(iColumn).setMaxWidth(0);
+table.getColumnModel().getColumn(iColumn).setMinWidth(0);
+table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
+table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
+     
+ }
 }
