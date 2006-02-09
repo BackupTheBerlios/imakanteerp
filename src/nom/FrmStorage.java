@@ -474,11 +474,12 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
         setAtEnd(false);
     }
     protected  void refreshTable() //OK
-    {
-        jScrollPane1.remove(table);
+    {jScrollPane1.remove(table);
         rs = internalObject.getTable();
         model = new imakante.com.CustomTableModel(getConn(), rs, Names);
         table = new imakante.com.CustomTable(model);
+        HideColumns(0);
+        HideColumns(1);
         jScrollPane1.getViewport().add(table);
         jScrollPane1.repaint();
         
@@ -582,7 +583,7 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
     }
     private void setAllVariables(){
         setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
-        setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("\u041d\u043e\u043c\u0435\u0440 \u0433\u0440\u0443\u043f\u0430")));
+        setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("id_group")));
         setCod((Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434\u043e\u0432\u0435")));
         setNames((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435\u043d\u0430")));
         setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440")));

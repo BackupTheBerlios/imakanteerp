@@ -249,6 +249,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
             model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
             HideColumns(0);
+            HideColumns(1);
         } catch(Exception e) { e.printStackTrace(); }
         table.requestFocus();
         try {

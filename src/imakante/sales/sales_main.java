@@ -947,7 +947,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     
     //kasi
     private void loadCasa(){
-        nom.FrmCasa Casa = new nom.FrmCasa("\u041a\u0410\u0421\u0410", this);
+        nom.FrmCasa Casa = new nom.FrmCasa("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0430 \u041a\u0430\u0441\u0438", this);
         desktopPane.add(Casa);
         try {
             Casa.setMaximum(true);
@@ -958,7 +958,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }
     //storages
     private void loadStorage(){
-        nom.FrmStorage Storage = new nom.FrmStorage("\u041a\u0410\u0421\u0410", this);
+        nom.FrmStorage Storage = new nom.FrmStorage("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0430 \u0421\u043a\u043b\u0430\u0434\u043e\u0432\u0435", this);
         desktopPane.add(Storage);
         try {
             Storage.setMaximum(true);
