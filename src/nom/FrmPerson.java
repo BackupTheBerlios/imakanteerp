@@ -217,6 +217,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     //--------------- My Variables
     private int id=0; // imena ot tablicata
     private int EGNe_groupe =0; // imena ot tablicata
+    private String Code= "";
     private String EGN = "";
     private String NLK = "";
     private String name,comment; // imena ot tablicata
@@ -232,13 +233,15 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     private  nom.dbPerson internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
-    public static final String Names[] = {"id", "id_group",
-    "\u0413\u0440\u0443\u043f\u0430",
-    "\u041a\u043e\u0434",
-    "\u0415\u0413\u041d",
-    "\u2116 \u041b\u041a",
-    "\u0418\u043c\u0435\u043d\u0430",
-    "\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440"};
+    public static final String Names[] = {
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"};
     //---------------END My Variables
     
     //---------------START Methods
@@ -263,7 +266,8 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
             rs = internalObject.getTable();
             model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
-            // da se napravqt skriti kolona "id" i kolona "nom"
+            HideColumns(0);
+            HideColumns(1);
         } catch(Exception e) { e.printStackTrace(); }
         table.requestFocus();
         try {
@@ -399,7 +403,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     public  void mTableEnd() {
         setRow(getMaxRow());
         try{
-             setAllVariables();
+            setAllVariables();
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
@@ -416,7 +420,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
             }
             setAtBegining(false);
             try {
-                 setAllVariables();
+                setAllVariables();
                 table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
             } catch(ArrayIndexOutOfBoundsException aioobe) {
                 setRow(getRow() - 1);
@@ -435,7 +439,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
             }
             setAtEnd(false);
             try {
-                 setAllVariables();
+                setAllVariables();
                 table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
             } catch(ArrayIndexOutOfBoundsException aioobe) {
                 setRow(getRow() + 1);
@@ -471,7 +475,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     private void searchRecords() {
         try {
             try {
-        //        rs = internalObject.searchRecords((Integer)parseInt(jTextField1.getText()),jTextEGN.getText(),jTextName.getText());
+                //        rs = internalObject.searchRecords((Integer)parseInt(jTextField1.getText()),jTextEGN.getText(),jTextName.getText());
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
                 jTextEGN.requestFocus();
@@ -480,15 +484,20 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
             model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
             jScrollPane1.getViewport().add(table);
+            HideColumns(0);
+            HideColumns(1);
             jScrollPane1.repaint();
+            
         } catch(Exception e) { e.printStackTrace(); }
     }
     
     protected  void refreshTable() {
         jScrollPane1.remove(table);
         rs = internalObject.getTable();
-        model = new imakante.com.CustomTableModel(getConn(), rs, null);
+        model = new imakante.com.CustomTableModel(getConn(), rs, Names);
         table = new imakante.com.CustomTable(model);
+        HideColumns(0);
+        HideColumns(1);
         jScrollPane1.getViewport().add(table);
         jScrollPane1.repaint();
     }
@@ -496,7 +505,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     private void newRecord() {
         setId(internalObject.getMaxId());
         setIDG(internalObject.getMaxGrID());
-      //  internalObject.insertRow(getIDG());
+        //  internalObject.insertRow(getIDG());
         nom.aePerson ae_Person = new nom.aePerson(this, true);
         ae_Person.setVisible(true);
         refreshTable();
@@ -546,7 +555,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
         rs = null;
         internalObject.close();
     }
-       private int getColumnIndex(String in) //test
+    private int getColumnIndex(String in) //test
     {
         int count = table.getColumnCount();
         for(int i=0; i < count; i++) {
@@ -567,11 +576,20 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
         
     }
     private void setAllVariables(){
-        setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
-        setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("id_group")));
-        setEGN((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434")));
-        setNLK((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434\u043e\u0432\u0435")));
-        setNames((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435\u043d\u0430")));
-        setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440")));
+        setId((Integer) table.getValueAt(getRow(), getColumnIndex("1")));
+        setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("2")));
+        setCode((String) table.getValueAt(getRow(), getColumnIndex("4")));
+        setEGN((String) table.getValueAt(getRow(), getColumnIndex("5")));
+        setNLK((String) table.getValueAt(getRow(), getColumnIndex("6")));
+        setNames((String) table.getValueAt(getRow(), getColumnIndex("7")));
+        setComment((String) table.getValueAt(getRow(), getColumnIndex("8")));
+    }
+    
+    public String getCode() {
+        return Code;
+    }
+    
+    public void setCode(String Code) {
+        this.Code = Code;
     }
 }

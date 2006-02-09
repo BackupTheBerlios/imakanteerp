@@ -189,7 +189,7 @@ public class FrmTransferi extends javax.swing.JInternalFrame {
                     .add(jLabel12)))
         );
 
-        jButton1.setText("\u041a\u043e\u0434");
+        jButton1.setText("\u0415\u0413\u041d");
 
         jButton2.setText("\u041e\u0442\u043a\u0430\u0437");
 
@@ -198,7 +198,7 @@ public class FrmTransferi extends javax.swing.JInternalFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(328, Short.MAX_VALUE)
+                .addContainerGap(330, Short.MAX_VALUE)
                 .add(jButton1)
                 .add(23, 23, 23)
                 .add(jButton2)

@@ -243,7 +243,7 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-370)/2, (screenSize.height-377)/2, 370, 377);
     }// </editor-fold>//GEN-END:initComponents
-        
+    
     private void jButtonCloseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonCloseKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonClose.doClick();}
     }//GEN-LAST:event_jButtonCloseKeyPressed
@@ -271,11 +271,11 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
     private void jButtonToBeginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonToBeginKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonToBegin.doClick();}
     }//GEN-LAST:event_jButtonToBeginKeyPressed
-        
+    
     private void jComboGKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboGKeyPressed
         
     }//GEN-LAST:event_jComboGKeyPressed
-        
+    
     private void jButtonUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUndoActionPerformed
         undoCorr(); //vraja predishnite stoinosti
     }//GEN-LAST:event_jButtonUndoActionPerformed
@@ -382,6 +382,7 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
     //--------------- My Variables
     private nom.FrmPerson myParent;
     private int oldIDG = 1;
+    private String oldCode = "";
     private String oldEGN = "";
     private String oldNLK = "";
     private String oldName = "";
@@ -403,10 +404,12 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
     //SAVE
     private void saveRecord() {
         if(cFields()){
+            oldCode = myParent.getCode();
             oldEGN = myParent.getEGN();
             oldName = myParent.getNames();
             oldComment = myParent.getComment();
             try {
+                myParent.setCode(jTextField4.getText());
                 myParent.setEGN((jTextField1.getText()));
             } catch (NumberFormatException nfex) {
                 nfex.printStackTrace();
@@ -414,8 +417,8 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
             myParent.setNames(jTextField3.getText());
             myParent.setComment(jTextArea1.getText());
             myParent.setIDG(myParent.getInternalObject().getIndexConnOfId()[jComboG.getSelectedIndex()]);
- // RADO       //   myParent.getInternalObject().updateRow(myParent.getId(), myParent.getIDG(),myParent.getEGN(),
- // zaradi compilirane        //           myParent.getNLK(),myParent.getNames(), myParent.getComment());
+            myParent.getInternalObject().updateRow(myParent.getId(), myParent.getIDG(),myParent.getCode(),myParent.getEGN(),
+                    myParent.getNLK(),myParent.getNames(), myParent.getComment());
             myParent.refreshTable();
             myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
             jButtonUndo.setEnabled(true);}
@@ -424,6 +427,7 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
     //UNDO
     private void undoCorr() {
         myParent.setIDG(oldIDG);
+        myParent.setCode(oldCode);
         myParent.setEGN(oldEGN);
         myParent.setNLK(oldNLK);
         myParent.setNames(oldName);
@@ -448,11 +452,11 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
     }
     
     private void repaintComp() {
+        jTextField4.setText(myParent.getCode());
         jTextField1.setText(myParent.getEGN());
         jTextField2.setText(myParent.getNLK());
         jTextField3.setText(myParent.getNames());
         jTextArea1.setText(myParent.getComment());
-        
         jComboG.setSelectedIndex(getNewComboBoxIndex(myParent.getIDG()));
     }
     
