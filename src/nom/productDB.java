@@ -72,7 +72,7 @@ public class productDB extends dbObject
     private int min_pm;                                          //        \
     private double max_pop_pm;
     private String name_pm, sname_pm, fname_pm, cname_pm, cod1_pm, cod2_pm;    //         >
-    private String expertsheet_pm ;                                            //        /
+    private String expertsheet_pm,code_pm ;                                            //        /
     private double price0_pp,price1_pp,price2_pp,price3_pp;                   //        /
     
     /** Creates a new instance of productDB */
@@ -87,7 +87,7 @@ public class productDB extends dbObject
  private void prepareCstm() // ok
     {
      try {
-          setCstm(getConn().prepareCall("{call nom_procedure_product(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
+          setCstm(getConn().prepareCall("{call nom_procedure_product(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
         
          }
      catch(java.sql.SQLException sqle)
@@ -121,6 +121,7 @@ public class productDB extends dbObject
                barcod_pm = rs.getInt("barcod_pm");
                cod1_pm = rs.getString("cod1_pm");
                cod2_pm = rs.getString("cod2_pm");
+               code_pm = rs.getString("code_pm");
                 
             }
         }
@@ -133,7 +134,7 @@ public class productDB extends dbObject
   public void insertRow(int in_id_pm, int in_id_ppp, int in_id_pp, int in_id_pf, int in_id_n_group,
                         int in_id_pd, String in_name_pm, String in_sname_pm, String in_fname_pm,
                         String in_cname_pm,double in_max_pop_pm, int in_flag_pm, String in_expertsheet_pm,int in_barcod_pm,
-                        String in_cod1_pm , String in_cod2_pm, int in_min_pm) // ok   comprator = 1;
+                        String in_cod1_pm , String in_cod2_pm, int in_min_pm,String in_code_pm) // ok   comprator = 1;
                       
     {
         comprator = 1;
@@ -155,6 +156,7 @@ public class productDB extends dbObject
         this.cod1_pm = in_cod1_pm;
         this.cod2_pm = in_cod2_pm;
         this.min_pm = in_min_pm;
+        this.code_pm = in_code_pm;
         try
         {
             registerParameters();
@@ -169,7 +171,7 @@ public class productDB extends dbObject
  public void updateRow(int in_id_pm, int in_id_ppp, int in_id_pp, int in_id_pf, int in_id_n_group,
                         int in_id_pd, String in_name_pm, String in_sname_pm, String in_fname_pm,
                         String in_cname_pm,double in_max_pop_pm, int in_flag_pm, String in_expertsheet_pm,int in_barcod_pm,
-                        String in_cod1_pm , String in_cod2_pm,int in_min_pm) // ok
+                        String in_cod1_pm , String in_cod2_pm,int in_min_pm,String in_code_pm) // ok
     {
         
         if(checkFlag(1,in_id_pm)==0)
@@ -180,7 +182,7 @@ public class productDB extends dbObject
         insertRow( in_id_pm,  in_id_ppp,  in_id_pp,  in_id_pf,  in_id_n_group,
                    in_id_pd, in_name_pm, in_sname_pm, in_fname_pm,
                    in_cname_pm, in_max_pop_pm, in_flag_pm, in_expertsheet_pm,
-                   in_barcod_pm, in_cod1_pm , in_cod2_pm,in_min_pm) ;
+                   in_barcod_pm, in_cod1_pm , in_cod2_pm,in_min_pm,in_code_pm) ;
         }
         
     }
@@ -241,7 +243,7 @@ public class productDB extends dbObject
  public java.sql.ResultSet searchRecords(int in_id_pm, int in_id_ppp, int in_id_pp, int in_id_pf, int in_id_n_group,
                         int in_id_pd, String in_name_pm, String in_sname_pm, String in_fname_pm,
                         String in_cname_pm,double in_max_pop_pm, int in_flag_pm, String in_expertsheet_pm,int in_barcod_pm,
-                        String in_cod1_pm , String in_cod2_pm,int in_min_pm) //- comprator = 5;
+                        String in_cod1_pm , String in_cod2_pm,int in_min_pm,String in_code_pm) //- comprator = 5;
     {
         comprator = 5;
         
@@ -261,7 +263,8 @@ public class productDB extends dbObject
         this.barcod_pm = in_barcod_pm;
         this.cod1_pm = in_cod1_pm;
         this.cod2_pm = in_cod2_pm;
-        this.min_pm = in_min_pm;  
+        this.min_pm = in_min_pm;
+        this.code_pm = in_code_pm;
         
         try
         {
@@ -352,6 +355,7 @@ public class productDB extends dbObject
             getCstm().setString("in_cname_pm", getCNamePM());
             getCstm().setString("in_cod1_pm", getCod1());
             getCstm().setString("in_cod2_pm", getCod2());
+            getCstm().setString("in_code_pm", getCodePM());
             getCstm().setString("in_expertsheet_pm", getExpertSheet());
             getCstm().setDouble("in_price0_pp",getDostPrice());
             getCstm().setDouble("in_price1_pp",getPrice1());
@@ -456,6 +460,16 @@ public class productDB extends dbObject
     {
         return id_pf;
     }
+    public void setCodePM(String COD) // ok
+    {
+        this.code_pm = COD;
+    }
+    public String getCodePM()   // ok
+    {
+        return code_pm;
+    } 
+    
+    
     public void setCod2(String COD) // ok
     {
         this.cod2_pm = COD;

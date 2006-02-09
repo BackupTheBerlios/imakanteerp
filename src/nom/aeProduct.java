@@ -96,9 +96,11 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
         jLabel2 = new javax.swing.JLabel();
         jTextFieldCod1 = new javax.swing.JTextField();
         jComboBoxGroup = new javax.swing.JComboBox();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         jTextFieldMinProduct = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jTextFieldCode = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
         jPanelDescription = new javax.swing.JPanel();
         jComboBoxDescript1 = new javax.swing.JComboBox();
         jComboBoxDescript2 = new javax.swing.JComboBox();
@@ -130,7 +132,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
         jLabelName.setText("\u0418\u043c\u0435:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 5);
         jPanel1.add(jLabelName, gridBagConstraints);
@@ -146,7 +148,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
         jLabelDanNomer.setText("\u0418\u043c\u0435 \u043d\u0430 \u0441\u044a\u043e\u0442\u0432.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 5);
         jPanel1.add(jLabelDanNomer, gridBagConstraints);
@@ -154,7 +156,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
         jLabelAddress.setText("\u041a\u044a\u0441\u043e \u0438\u043c\u0435:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 5);
         jPanel1.add(jLabelAddress, gridBagConstraints);
@@ -170,7 +172,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
         jLabelTel.setText("\u0424\u0430\u043a\u0442\u044a\u0440\u043d\u043e \u0438\u043c\u0435:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 5);
         jPanel1.add(jLabelTel, gridBagConstraints);
@@ -186,7 +188,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
         jLabelEmail.setText("\u0426\u0435\u043d\u0430:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 5);
         jPanel1.add(jLabelEmail, gridBagConstraints);
@@ -202,7 +204,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
         jLabelMOL.setText("\u041f\u0440\u043e\u043c\u043e. \u0446\u0435\u043d\u0438:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 10, 5);
         jPanel1.add(jLabelMOL, gridBagConstraints);
@@ -218,7 +220,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
         jTextFieldName.setPreferredSize(new java.awt.Dimension(170, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel1.add(jTextFieldName, gridBagConstraints);
@@ -226,7 +228,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
         jTextFieldCName.setPreferredSize(new java.awt.Dimension(170, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel1.add(jTextFieldCName, gridBagConstraints);
@@ -243,7 +245,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
         jTextFieldSName.setPreferredSize(new java.awt.Dimension(170, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel1.add(jTextFieldSName, gridBagConstraints);
@@ -266,7 +268,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
         jTextFieldFName.setPreferredSize(new java.awt.Dimension(170, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel1.add(jTextFieldFName, gridBagConstraints);
@@ -303,7 +305,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel1.add(jTextFieldPrice, gridBagConstraints);
@@ -364,7 +366,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel1.add(jTextFieldPromoPrices, gridBagConstraints);
@@ -438,16 +440,42 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
         gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 5);
         jPanel1.add(jComboBoxGroup, gridBagConstraints);
 
+        jTextFieldMinProduct.setPreferredSize(new java.awt.Dimension(50, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jPanel1.add(jTextFieldMinProduct, gridBagConstraints);
+
+        jLabel3.setText("\u041c\u0438\u043d. \u043a\u043e\u043b.:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jPanel1.add(jLabel3, gridBagConstraints);
+
+        jLabel4.setText("\u041a\u043e\u0434:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 5);
+        jPanel1.add(jLabel4, gridBagConstraints);
+
+        jTextFieldCode.setPreferredSize(new java.awt.Dimension(170, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jPanel1.add(jTextFieldCode, gridBagConstraints);
+
         getContentPane().add(jPanel1, java.awt.BorderLayout.NORTH);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel4.setPreferredSize(new java.awt.Dimension(750, 100));
-        jLabel3.setText("\u041c\u0438\u043d. \u043a\u043e\u043b.:");
-        jPanel4.add(jLabel3);
-
-        jTextFieldMinProduct.setPreferredSize(new java.awt.Dimension(50, 20));
-        jPanel4.add(jTextFieldMinProduct);
-
         jPanelDescription.setLayout(new java.awt.GridBagLayout());
 
         jPanelDescription.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "\u0420\u0430\u0437\u0444\u0430\u0441\u043e\u0432\u043a\u0430", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
@@ -827,7 +855,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
                                                    myParent.getNamePM(),myParent.getSNamePM(),myParent.getFNamePM(),
                                                    myParent.getCNamePM(),myParent.getMax_POP(),myParent.getFlag(),
                                                    myParent.getExpertSheet(),myParent.getBarCod(),myParent.getCod1(),
-                                                   myParent.getCod2(),myParent.getMinProduct());
+                                                   myParent.getCod2(),myParent.getMinProduct(),myParent.getCodePM());
                 int maxId_pm = myParent.getCountriesT().getMaxId();
                 if(jTextFieldContragent.getText().length() > 0)
                                   myParent.getCountriesT().setIDProductContragent(maxId_pm,myParent.getId_Contragent(),0); 
@@ -868,7 +896,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
                                                    myParent.getNamePM(),myParent.getSNamePM(),myParent.getFNamePM(),
                                                    myParent.getCNamePM(),myParent.getMax_POP(),myParent.getFlag(),
                                                    myParent.getExpertSheet(),myParent.getBarCod(),myParent.getCod1(),
-                                                   myParent.getCod2(),myParent.getMinProduct());
+                                                   myParent.getCod2(),myParent.getMinProduct(),myParent.getCodePM());
                  int maxId_pm = myParent.getCountriesT().getMaxId();
                      if(isNewInputContragent)
                     {
@@ -931,6 +959,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelAddress;
     private javax.swing.JLabel jLabelBulstat;
     private javax.swing.JLabel jLabelCod;
@@ -952,6 +981,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
     private javax.swing.JTextField jTextFieldCName;
     private javax.swing.JTextField jTextFieldCod1;
     private javax.swing.JTextField jTextFieldCod2;
+    private javax.swing.JTextField jTextFieldCode;
     private javax.swing.JTextField jTextFieldContragent;
     private javax.swing.JTextField jTextFieldDescript1;
     private javax.swing.JTextField jTextFieldDescript2;
@@ -1017,7 +1047,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
    jTextFieldExpertSheet.setText(myParent.getExpertSheet());
    jTextFieldMinProduct.setText(String.valueOf(myParent.getMinProduct()));
    
-     
+    jTextFieldCode.setText(myParent.getCodePM()); 
    
    }
   if(isNew)
@@ -1141,6 +1171,8 @@ private int getNewComboBoxColumnIndex(int oldindex) //OK
      myParent.setCod1(jTextFieldCod1.getText());
      myParent.setCod2(jTextFieldCod2.getText());
      myParent.setExpertSheet(jTextFieldExpertSheet.getText());
+     
+     myParent.setCodePM(jTextFieldCode.getText());
      
      try
      {

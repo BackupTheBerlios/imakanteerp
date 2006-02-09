@@ -53,6 +53,8 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jTextFieldCode = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jTextFieldName = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -123,6 +125,12 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel4.setPreferredSize(new java.awt.Dimension(801, 60));
+        jLabel9.setText("\u041a\u043e\u0434:");
+        jPanel4.add(jLabel9);
+
+        jTextFieldCode.setPreferredSize(new java.awt.Dimension(50, 20));
+        jPanel4.add(jTextFieldCode);
+
         jLabel1.setText("\u0418\u043c\u0435:");
         jPanel4.add(jLabel1);
 
@@ -297,7 +305,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
                                           jTextFieldExperList.getText(),
                                           Integer.parseInt(jTextFieldBarkod.getText()),
                                           jTextFieldCod1.getText(),
-                                          jTextFieldCod2.getText(),0);
+                                          jTextFieldCod2.getText(),0,jTextFieldCode.getText());
             }
             else
             {
@@ -309,7 +317,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
                                           jTextFieldExperList.getText(),
                                           0,
                                           jTextFieldCod1.getText(),
-                                          jTextFieldCod2.getText(),0);   
+                                          jTextFieldCod2.getText(),0,jTextFieldCode.getText());   
             }
             model = new imakante.com.CustomTableModel(conn,rs, columnsNames);
             table = new imakante.com.CustomTable(model);
@@ -459,6 +467,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -467,6 +476,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     private javax.swing.JTextField jTextFieldBarkod;
     private javax.swing.JTextField jTextFieldCod1;
     private javax.swing.JTextField jTextFieldCod2;
+    private javax.swing.JTextField jTextFieldCode;
     private javax.swing.JTextField jTextFieldExperList;
     private javax.swing.JTextField jTextFieldFacturnoName;
     private javax.swing.JTextField jTextFieldKysoName;
@@ -488,7 +498,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     private int min_pm;                                                   //         >
     private double max_pop_pm;
     private String name_pm, sname_pm, fname_pm, cname_pm, cod1_pm, cod2_pm;            //         /
-    private String expertsheet_pm ;
+    private String expertsheet_pm,code_pm ;
     private double price0,price1,price2,price3,dds,akcizi,other;
     private int id_curs, id_n_contragent;//        /
     private double promoprice;
@@ -505,11 +515,11 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     private String Pass="imakante";  // vremenna promenliva za test
     private String Url = "jdbc:mysql://www.katsarov.net:3307/mida";  // vremenna promenliva za test
  
-   /* private String columnsNames[] ={"id_pm","id_n_group","id_ppp","id_pp","id_pf","Име:","Фактурно име:","Късо име:","Име на съответствия:","Код 1:","Код 2:","Баркод:","Отстъпка (в %):",
+   /* private String columnsNames[] ={"Код","id_pm","id_n_group","id_ppp","id_pp","id_pf","Име:","Фактурно име:","Късо име:","Име на съответствия:","Код 1:","Код 2:","Баркод:","Отстъпка (в %):",
                                   "Експертен лист:","flag_pm","id_sl_curs","Доставна цена:","Валута:","Стойност в лева"  ,"Цена 1:", "Цена 2:", "Цена 3:","ДДС:","Акцизи:","Др. такси:","id_pd",
                                   "m1_pd","v1_pd","m2_pd","v2_pd","m3_pd","v3_pd","Минимално количество:"};*/
     
-     private String columnsNames[] ={"id_pm","id_n_group","id_ppp","id_pp","id_pf","\u0418\u043c\u0435","\u0424\u0430\u043a\u0442\u0443\u0440\u043d\u043e \u0438\u043c\u0435","\u041a\u044a\u0441\u043e \u0438\u043c\u0435",
+     private String columnsNames[] ={"\u041a\u043e\u0434","id_pm","id_n_group","id_ppp","id_pp","id_pf","\u0418\u043c\u0435","\u0424\u0430\u043a\u0442\u0443\u0440\u043d\u043e \u0438\u043c\u0435","\u041a\u044a\u0441\u043e \u0438\u043c\u0435",
 "\u0418\u043c\u0435 \u043d\u0430 \u0441\u044a\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0438\u044f","\u041a\u043e\u0434 1","\u041a\u043e\u0434 2",
 "\u0411\u0430\u0440\u043a\u043e\u0434","\u041e\u0442\u0441\u0442\u044a\u043f\u043a\u0430 (\u0432 %)","\u0415\u043a\u0441\u043f\u0435\u0440\u0442\u0435\u043d \u043b\u0438\u0441\u0442","flag_pm","id_sl_curs",
 "\u0414\u043e\u0441\u0442\u0430\u0432\u043d\u0430 \u0446\u0435\u043d\u0430","\u0412\u0430\u043b\u0443\u0442\u0430","\u0421\u0442\u043e\u0439\u043d\u043e\u0441\u0442 \u0432 \u043b\u0435\u0432\u0430",
@@ -814,6 +824,15 @@ private void initTable() //ok  -- !!ima za dovyr6wane - skrivane na koloni!!
    {
        return countriesT;
    }
+    public void setCodePM(String exp)    
+   {
+       this.code_pm = exp;
+   }
+   public String getCodePM()
+   {
+       return code_pm;
+   }
+   
     protected  void refreshTable() // ok
   {
         jScrollPane1.remove(table);
@@ -858,6 +877,7 @@ private void initTable() //ok  -- !!ima za dovyr6wane - skrivane na koloni!!
         setCod2((String)table.getValueAt(getRow(),getColumnIndex("\u041a\u043e\u0434 2")));
         setMinProduct((Integer) table.getValueAt(getRow(), getColumnIndex("\u041c\u0438\u043d\u0438\u043c\u0430\u043b\u043d\u043e \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e")));
         
+        setCodePM((String)table.getValueAt(getRow(),getColumnIndex("\u041a\u043e\u0434")));
        
       
         
@@ -883,6 +903,7 @@ private void initTable() //ok  -- !!ima za dovyr6wane - skrivane na koloni!!
  {
       if(getRow() <= getMaxRow())
       {
+
         if(getRow() < getMaxRow())
         {
           setRow(getRow()+1);
