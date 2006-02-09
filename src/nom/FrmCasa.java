@@ -456,7 +456,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
                 jTextCod.requestFocus();
             }
             jScrollPane1.remove(table);
-            model = new imakante.com.CustomTableModel(getConn(), rs, null);
+            model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
             HideColumns(0);
             HideColumns(1);

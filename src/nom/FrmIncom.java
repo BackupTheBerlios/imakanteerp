@@ -175,21 +175,7 @@ public class FrmIncom extends  imakante.com.vcomponents.iInternalFrame implement
     }//GEN-LAST:event_jButtonCloseActionPerformed
     
     private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
-        try {
-            try {
-                rs = internalObject.searchRecords(Integer.parseInt(jTextCod.getText()),jTextName.getText());
-            } catch (NumberFormatException ex) {
-                ex.printStackTrace();
-                jTextCod.requestFocus();
-            }
-            jScrollPane1.remove(table);
-            model = new imakante.com.CustomTableModel(getConn(), rs, null);
-            table = new imakante.com.CustomTable(model);
-            jScrollPane1.getViewport().add(table);
-            jScrollPane1.repaint();
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+        searchRecords();
     }//GEN-LAST:event_jButtonSearchActionPerformed
     
     private void jButtonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshActionPerformed
@@ -249,7 +235,11 @@ public class FrmIncom extends  imakante.com.vcomponents.iInternalFrame implement
     private  nom.incomDB internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
-    
+    public static final String Names[] = {"id","id_group",
+    "\u0418\u043c\u0435 \u0433\u0440\u0443\u043f\u0438",
+    "\u041a\u043e\u0434\u043e\u0432\u0435",
+    "\u0418\u043c\u0435\u043d\u0430",
+    "\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440"};
     //---------------END My Variables
     
     //---------------START Methods
@@ -277,22 +267,17 @@ public class FrmIncom extends  imakante.com.vcomponents.iInternalFrame implement
         
     }
     private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
-    {
-        try {
-            
-            rs = internalObject.getTable();
-            model = new imakante.com.CustomTableModel(getConn(), rs, null);
-            table = new imakante.com.CustomTable(model);
-            // da se napravqt skriti kolona "id" i kolona "nom"
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-        table.requestFocus();
-        try {
-            table.setEditingRow(0);
-        } catch(Exception ex) {
-            
-        }
+    { try {
+          rs = internalObject.getTable();
+          model = new imakante.com.CustomTableModel(getConn(), rs, Names);
+          table = new imakante.com.CustomTable(model);
+          HideColumns(0);
+          HideColumns(1);
+      } catch(Exception e) { e.printStackTrace(); }
+      table.requestFocus();
+      try {
+          table.setEditingRow(0);
+      } catch(Exception ex) {  }
     }
     
     public void windowOpened(java.awt.event.WindowEvent e) {
@@ -431,15 +416,8 @@ public class FrmIncom extends  imakante.com.vcomponents.iInternalFrame implement
     {
         setRow(getMaxRow());
         try{
-            
-            setId((Integer) table.getValueAt(getRow(), 0));
-            setIDG((Integer) table.getValueAt(getRow(), 1));
-            setCod((Integer) table.getValueAt(getRow(), 3));
-            setNames((String) table.getValueAt(getRow(), 4));
-            setComment((String) table.getValueAt(getRow(), 5));
-            
+            setAllVariables();
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
-            
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
             System.out.println("problem");
@@ -456,13 +434,8 @@ public class FrmIncom extends  imakante.com.vcomponents.iInternalFrame implement
             }
             setAtBegining(false);
             try {
-                setId((Integer) table.getValueAt(getRow(), 0));
-                setIDG((Integer) table.getValueAt(getRow(), 1));
-                setCod((Integer) table.getValueAt(getRow(), 3));
-                setNames((String) table.getValueAt(getRow(), 4));
-                setComment((String) table.getValueAt(getRow(), 5));
-                
-                table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
+                setAllVariables();
+                table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
             } catch(ArrayIndexOutOfBoundsException aioobe) {
                 setRow(getRow() - 1);
                 System.out.println("problem");
@@ -473,37 +446,28 @@ public class FrmIncom extends  imakante.com.vcomponents.iInternalFrame implement
         }
     }
     public  void mOneRowMinus() //OK
-    {
-        if(getRow() >= 0){
-            if(getRow() > 0){
-                setRow(getRow() - 1);}
-            setAtEnd(false);
-            try {
-                setId((Integer) table.getValueAt(getRow(), 0));
-                setIDG((Integer) table.getValueAt(getRow(), 1));
-                setCod((Integer) table.getValueAt(getRow(), 3));
-                setNames((String) table.getValueAt(getRow(), 4));
-                setComment((String) table.getValueAt(getRow(), 5));
-                
-                table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
-            } catch(ArrayIndexOutOfBoundsException aioobe) {
-                setRow(getRow() + 1);
-            }
-            System.out.println("problem");}
-        if(getRow() == 0){
-            setAtBegining(true);
-        }
+    { if(getRow() >= 0) {
+          if(getRow() > 0) {
+              setRow(getRow() - 1);
+          }
+          setAtEnd(false);
+          try {
+              setAllVariables();
+              table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
+          } catch(ArrayIndexOutOfBoundsException aioobe) {
+              setRow(getRow() + 1);
+              System.out.println("problem");
+          }
+      }
+      if(getRow() == 0){
+          setAtBegining(true);
+      }
     }
     public void mTableBegining() //OK
     {
         setRow(0);
         try {
-            setId((Integer) table.getValueAt(getRow(), 0));
-            setIDG((Integer) table.getValueAt(getRow(), 1));
-            setCod((Integer) table.getValueAt(getRow(), 3));
-            setNames((String) table.getValueAt(getRow(), 4));
-            setComment((String) table.getValueAt(getRow(), 5));
-            
+            setAllVariables();
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
@@ -512,12 +476,32 @@ public class FrmIncom extends  imakante.com.vcomponents.iInternalFrame implement
         setAtBegining(true);
         setAtEnd(false);
     }
+    private void searchRecords() {
+        try {
+            try {
+                rs = internalObject.searchRecords(Integer.parseInt(jTextCod.getText()),jTextName.getText());
+            } catch (NumberFormatException ex) {
+                ex.printStackTrace();
+                jTextCod.requestFocus();
+            }
+            jScrollPane1.remove(table);
+            model = new imakante.com.CustomTableModel(getConn(), rs, Names);
+            table = new imakante.com.CustomTable(model);
+            HideColumns(0);
+            HideColumns(1);
+            jScrollPane1.getViewport().add(table);
+            jScrollPane1.repaint();
+        } catch(Exception e) { e.printStackTrace(); }
+    }
+    
     protected  void refreshTable() //OK
     {
         jScrollPane1.remove(table);
         rs = internalObject.getTable();
-        model = new imakante.com.CustomTableModel(getConn(), rs, null);
+        model = new imakante.com.CustomTableModel(getConn(), rs, Names);
         table = new imakante.com.CustomTable(model);
+        HideColumns(0);
+        HideColumns(1);
         jScrollPane1.getViewport().add(table);
         jScrollPane1.repaint();
         
@@ -527,18 +511,14 @@ public class FrmIncom extends  imakante.com.vcomponents.iInternalFrame implement
         setId(internalObject.getMaxId());
         setIDG(internalObject.getMaxGrID());
         setCod(internalObject.getMaxCod()+1);
-        internalObject.insertRow(getCod(),getIDG());
-        nom.aeIncom ae_Incom = new nom.aeIncom(this, true);
-        ae_Incom.setVisible(true);
+        internalObject.insertRow(getCod(), getIDG());
+        nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
+        ae_Casa.setVisible(true);
         refreshTable();
-        
-        
-        
     }
     
     private void editRecord(){
         if (table.getSelectedRow() != -1) {
-            
             setRow(table.getSelectedRow());
             if(getRow()==0){          //manage button state of ae form
                 setAtBegining(true);
@@ -546,17 +526,10 @@ public class FrmIncom extends  imakante.com.vcomponents.iInternalFrame implement
             if(getRow()==getMaxRow()){
                 setAtEnd(true);
             }
-            setId((Integer) table.getValueAt(getRow(), 0));
-            setIDG((Integer) table.getValueAt(getRow(), 1));
-            setCod((Integer) table.getValueAt(getRow(), 3));
-            setNames((String) table.getValueAt(getRow(), 4));
-            setComment((String) table.getValueAt(getRow(), 5));
-            nom.aeIncom ae_Incom = new nom.aeIncom(this, true);
-            ae_Incom.setVisible(true);
-        }else{
-            
-        }
-        
+            setAllVariables();
+            nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
+            ae_Casa.setVisible(true);
+        } else {  }
     }
     
     private void delRecord(){
@@ -569,7 +542,7 @@ public class FrmIncom extends  imakante.com.vcomponents.iInternalFrame implement
         }
         
     }
- 
+    
     public java.sql.Connection getConn() {
         return conn;
     }
@@ -578,5 +551,31 @@ public class FrmIncom extends  imakante.com.vcomponents.iInternalFrame implement
         this.conn = conn;
     }
     
+    private int getColumnIndex(String in) //test
+    {
+        int count = table.getColumnCount();
+        for(int i=0; i < count; i++) {
+            if(table.getColumnName(i).equals(in)) return i;
+        }
+        return 0;
+    }
     
+    
+    
+    private void HideColumns(int col) {
+        int iColumn = col;
+// set column width
+        table.getColumnModel().getColumn(iColumn).setMaxWidth(0);
+        table.getColumnModel().getColumn(iColumn).setMinWidth(0);
+        table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
+        table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
+        
+    }
+    private void setAllVariables(){
+        setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
+        setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("id_group")));
+        setCod((Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434\u043e\u0432\u0435")));
+        setNames((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435\u043d\u0430")));
+        setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440")));
+    }
 }// end class
