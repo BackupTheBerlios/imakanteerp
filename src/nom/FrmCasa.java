@@ -375,8 +375,8 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     public  void mTableEnd() {
         setRow(getMaxRow());
         try{
-           setAllVariables();
-           table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
+            setAllVariables();
+            table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
             System.out.println("problem");
@@ -456,6 +456,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
             model = new imakante.com.CustomTableModel(getConn(), rs, null);
             table = new imakante.com.CustomTable(model);
             HideColumns(0);
+            HideColumns(1);
             jScrollPane1.getViewport().add(table);
             jScrollPane1.repaint();
         } catch(Exception e) { e.printStackTrace(); }
@@ -464,9 +465,10 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     protected  void refreshTable() {
         jScrollPane1.remove(table);
         rs = internalObject.getTable();
-        model = new imakante.com.CustomTableModel(getConn(), rs, null);
+        model = new imakante.com.CustomTableModel(getConn(), rs, Names);
         table = new imakante.com.CustomTable(model);
         HideColumns(0);
+        HideColumns(1);
         jScrollPane1.getViewport().add(table);
         jScrollPane1.repaint();
     }
@@ -490,7 +492,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
             if(getRow()==getMaxRow()){
                 setAtEnd(true);
             }
-           setAllVariables();
+            setAllVariables();
             nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
             ae_Casa.setVisible(true);
         } else {  }
