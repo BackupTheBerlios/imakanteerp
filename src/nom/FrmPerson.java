@@ -232,9 +232,9 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     private  nom.dbPerson internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
-    public static final String Names[] = {"id",
-    "\u041d\u043e\u043c\u0435\u0440 \u0433\u0440\u0443\u043f\u0430",
-    "\u0415\u0413\u041d",
+    public static final String Names[] = {"id", "id_group",
+    "\u0413\u0440\u0443\u043f\u0430","",
+    "\u041a\u043e\u0434",
     "\u2116 \u041b\u041a",
     "\u0418\u043c\u0435\u043d\u0430",
     "\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440"};
@@ -398,12 +398,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     public  void mTableEnd() {
         setRow(getMaxRow());
         try{
-            setId((Integer) table.getValueAt(getRow(), 0));
-            setIDG((Integer) table.getValueAt(getRow(), 1));
-            setEGN((String) table.getValueAt(getRow(), 3));
-            setNLK((String) table.getValueAt(getRow(), 4));
-            setNames((String) table.getValueAt(getRow(), 5));
-            setComment((String) table.getValueAt(getRow(), 6));
+             setAllVariables();
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
@@ -420,12 +415,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
             }
             setAtBegining(false);
             try {
-                setId((Integer) table.getValueAt(getRow(), 0));
-                setIDG((Integer) table.getValueAt(getRow(), 1));
-                setEGN((String) table.getValueAt(getRow(), 3));
-                setNLK((String) table.getValueAt(getRow(), 4));
-                setNames((String) table.getValueAt(getRow(), 5));
-                setComment((String) table.getValueAt(getRow(), 6));
+                 setAllVariables();
                 table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
             } catch(ArrayIndexOutOfBoundsException aioobe) {
                 setRow(getRow() - 1);
@@ -444,12 +434,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
             }
             setAtEnd(false);
             try {
-                setId((Integer) table.getValueAt(getRow(), 0));
-                setIDG((Integer) table.getValueAt(getRow(), 1));
-                setEGN((String) table.getValueAt(getRow(), 3));
-                setNLK((String) table.getValueAt(getRow(), 4));
-                setNames((String) table.getValueAt(getRow(), 5));
-                setComment((String) table.getValueAt(getRow(), 6));
+                 setAllVariables();
                 table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
             } catch(ArrayIndexOutOfBoundsException aioobe) {
                 setRow(getRow() + 1);
@@ -464,12 +449,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     public void mTableBegining() {
         setRow(0);
         try {
-            setId((Integer) table.getValueAt(getRow(), 0));
-            setIDG((Integer) table.getValueAt(getRow(), 1));
-            setEGN((String) table.getValueAt(getRow(), 3));
-            setNLK((String) table.getValueAt(getRow(), 4));
-            setNames((String) table.getValueAt(getRow(), 5));
-            setComment((String) table.getValueAt(getRow(), 6));
+            setAllVariables();
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
@@ -530,12 +510,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
             if(getRow()==getMaxRow()){
                 setAtEnd(true);
             }
-           setId((Integer) table.getValueAt(getRow(), 0));
-            setIDG((Integer) table.getValueAt(getRow(), 1));
-            setEGN((String) table.getValueAt(getRow(), 3));
-            setNLK((String) table.getValueAt(getRow(), 4));
-            setNames((String) table.getValueAt(getRow(), 5));
-            setComment((String) table.getValueAt(getRow(), 6));
+            setAllVariables();
             nom.aePerson ae_Person = new nom.aePerson(this, true);
             ae_Person.setVisible(true);
         } else {  }
@@ -592,7 +567,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     }
     private void setAllVariables(){
         setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
-        setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("\u041d\u043e\u043c\u0435\u0440 \u0433\u0440\u0443\u043f\u0430")));
+        setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("id_group")));
         setEGN((String) table.getValueAt(getRow(), getColumnIndex("\u0415\u0413\u041d")));
         setNLK((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434\u043e\u0432\u0435")));
         setNames((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435\u043d\u0430")));
