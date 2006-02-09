@@ -234,14 +234,14 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
     public static final String Names[] = {
-        "1",
-        "2",
+        "id",
+        "id_group",
         "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8"};
+        "\u041a\u043e\u0434",
+        "\u0415\u0413\u041d",
+        "\u041d\u041b\u041a",
+        "\u0418\u043c\u0435\u043d\u0430",
+        "\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440\u0438"};
     //---------------END My Variables
     
     //---------------START Methods
@@ -576,13 +576,13 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
         
     }
     private void setAllVariables(){
-        setId((Integer) table.getValueAt(getRow(), getColumnIndex("1")));
-        setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("2")));
-        setCode((String) table.getValueAt(getRow(), getColumnIndex("4")));
-        setEGN((String) table.getValueAt(getRow(), getColumnIndex("5")));
-        setNLK((String) table.getValueAt(getRow(), getColumnIndex("6")));
-        setNames((String) table.getValueAt(getRow(), getColumnIndex("7")));
-        setComment((String) table.getValueAt(getRow(), getColumnIndex("8")));
+        setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
+        setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("id_group")));
+        setCode((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434")));
+        setEGN((String) table.getValueAt(getRow(), getColumnIndex("\u0415\u0413\u041d")));
+        setNLK((String) table.getValueAt(getRow(), getColumnIndex("\u041d\u041b\u041a")));
+        setNames((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435\u043d\u0430")));
+        setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440\u0438")));
     }
     
     public String getCode() {
