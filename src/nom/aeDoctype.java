@@ -127,8 +127,8 @@ public class aeDoctype extends imakante.com.vcomponents.iDialog {
                         .add(21, 21, 21)
                         .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jtfPrintName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
-                            .add(jtfCode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 103, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jtfName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))))
+                            .add(jtfName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                            .add(jtfCode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 103, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
                 .add(52, 52, 52))
         );
         jpDataLayout.setVerticalGroup(
@@ -138,17 +138,17 @@ public class aeDoctype extends imakante.com.vcomponents.iDialog {
                 .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jtfCode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jlCode))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 26, Short.MAX_VALUE)
                 .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jtfName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jlName))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(20, 20, 20)
                 .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jlPrintName)
                     .add(jtfPrintName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(25, 25, 25)
                 .add(jpMovement, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(33, 33, 33))
+                .add(28, 28, 28))
         );
         getContentPane().add(jpData, java.awt.BorderLayout.CENTER);
 
