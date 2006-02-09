@@ -378,6 +378,16 @@
                 <Property name="text" type="java.lang.String" value="&#x410;&#x43d;&#x430;&#x43b;&#x438;&#x442;&#x438;&#x447;&#x43d;&#x438; &#x43d;&#x438;&#x432;&#x430;"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JSeparator" name="jSeparator1">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="nomMenu_DocType">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x422;&#x438;&#x43f;&#x43e;&#x432;&#x435; &#x434;&#x43e;&#x43a;&#x443;&#x43c;&#x435;&#x43d;&#x442;&#x438;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nomMenu_DocTypeActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="sprMenu">

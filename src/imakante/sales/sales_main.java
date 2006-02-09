@@ -30,7 +30,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private final static int ID_KASA = 5;
     private final static int ID_MONEY = 6;
     
-  
+    
     
     
     public sales_main() {
@@ -39,7 +39,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         initComponents();
         //  loadPaneForm();
         // this.setVisible(true);
-        
+        java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (((dim.width)-(this.getSize().width))/2);
+        int y = (((dim.height)-(this.getSize().height))/2);
+        this.setSize(dim.width,dim.height-30);
+        this.setLocation(0,0);
         imakante.com.NewMain.setB_SL(true);
     }
     
@@ -112,6 +116,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         nomMenu_con = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JSeparator();
         nomALevel = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JSeparator();
+        nomMenu_DocType = new javax.swing.JMenuItem();
         sprMenu = new javax.swing.JMenu();
         spravkiMenu_nal = new javax.swing.JMenuItem();
         balansMenu = new javax.swing.JMenu();
@@ -437,6 +443,17 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         nomALevel.setText("\u0410\u043d\u0430\u043b\u0438\u0442\u0438\u0447\u043d\u0438 \u043d\u0438\u0432\u0430");
         nomMenu.add(nomALevel);
 
+        nomMenu.add(jSeparator1);
+
+        nomMenu_DocType.setText("\u0422\u0438\u043f\u043e\u0432\u0435 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438");
+        nomMenu_DocType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomMenu_DocTypeActionPerformed(evt);
+            }
+        });
+
+        nomMenu.add(nomMenu_DocType);
+
         menuBar.add(nomMenu);
 
         sprMenu.setText("\u0421\u041f\u0420\u0410\u0412\u041a\u0418");
@@ -508,6 +525,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-448)/2, 757, 448);
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void nomMenu_DocTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomMenu_DocTypeActionPerformed
+        loadTypeDocuments();
+    }//GEN-LAST:event_nomMenu_DocTypeActionPerformed
     
     private void stock_Menu_stockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stock_Menu_stockActionPerformed
         loadFrmProducts();
@@ -642,6 +663,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JToolBar jToolBar1;
@@ -669,6 +691,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenuItem nomALevel;
     private javax.swing.JMenu nomMenu;
     private javax.swing.JMenu nomMenu_Aktiv;
+    private javax.swing.JMenuItem nomMenu_DocType;
     private javax.swing.JMenu nomMenu_Kontragenti;
     private javax.swing.JMenu nomMenu_Litsa;
     private javax.swing.JMenuItem nomMenu_con;
@@ -732,7 +755,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     public boolean isStartFrmContragent = false; // FLAG dali da se startira FrmContagent,
     //promenq se i ot FrmContragent pri zatvarqne
     // na FrmContragent
-     
+    
     private FrmProduct iFrmProduct;
     private static boolean isStartFrmProduct = false;
     
@@ -1028,12 +1051,25 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         
         pers.setVisible(true);
     }
+    // TYPE DOCUMENTS
     
-// ENCAPS METHODS FORM CONTROL 
+    private void loadTypeDocuments(){
+        nom.FrmDoctype DocType = new nom.FrmDoctype("tipove dokumenti", this);
+        desktopPane.add(DocType);
+        try {
+            DocType.setMaximum(true);
+        } catch (java.beans.PropertyVetoException ex) {
+            ex.printStackTrace();
+        }
+        
+        DocType.setVisible(true);
+    }
+    
+// ENCAPS METHODS FORM CONTROL
     public static boolean isIsStartFrmProduct() {
         return isStartFrmProduct;
     }
-
+    
     public static void setIsStartFrmProduct(boolean bool) {
         isStartFrmProduct = bool;
     }
