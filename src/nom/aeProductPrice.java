@@ -714,16 +714,17 @@ private void getDataByID()
      p0 = Double.parseDouble(jTextDostPrice.getText());
      
      p1 = Double.parseDouble(jTextFieldPrice1.getText());
-     p_p1 = (100 * p1) / p0; 
+     
+     p_p1 = (100 * (p1-p0)) / p0; 
      jTextFieldProcent1.setText( doubleRoundToString(3,p_p1)); 
      
      p2 = Double.parseDouble(jTextFieldPrice2.getText());
-     p_p2 = (100 * p2) / p0 ; 
+     p_p2 = (100 * (p2-p0)) / p0 ; 
      
-     jTextFieldProcent2.setText( doubleRoundToString(3,p_p3));
+     jTextFieldProcent2.setText( doubleRoundToString(3,p_p2));
      
      p3 = Double.parseDouble(jTextFieldPrice3.getText());
-     p_p3 = (100 * p3) / p0; 
+     p_p3 = (100 * (p3-p0)) / p0; 
      jTextFieldProcent3.setText( doubleRoundToString(3,p_p3)); 
      
      

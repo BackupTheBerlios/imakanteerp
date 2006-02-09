@@ -115,6 +115,7 @@ public class aeProductPriceFee extends imakante.com.vcomponents.iDialog
         gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 5);
         jPanel2.add(jTextFieldDDS, gridBagConstraints);
 
+        jTextFieldAkcizi.setText("0");
         jTextFieldAkcizi.setPreferredSize(new java.awt.Dimension(20, 20));
         jTextFieldAkcizi.setInputVerifier(new imakante.com.InputDoubleVerifier());
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -132,6 +133,7 @@ public class aeProductPriceFee extends imakante.com.vcomponents.iDialog
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 20, 5);
         jPanel2.add(jLabel4, gridBagConstraints);
 
+        jTextFieldOther.setText("0");
         jTextFieldOther.setPreferredSize(new java.awt.Dimension(20, 20));
         jTextFieldOther.setInputVerifier(new imakante.com.InputDoubleVerifier());
         gridBagConstraints = new java.awt.GridBagConstraints();

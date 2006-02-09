@@ -821,14 +821,16 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
               
                 if(setAllVariables())
                 {
-                 if(jTextFieldContragent.getText().length() > 0)
-                           myParent.getCountriesT().setIDProductContragent(myParent.getId_PM(),myParent.getId_Contragent(),0);   
+                  
                 myParent.getCountriesT().insertRow(myParent.getId_PM(),myParent.getId_PPP(),myParent.getId_PP(),
                                                    myParent.getId_PF(),myParent.getId_Group(),myParent.getId_PD(),
                                                    myParent.getNamePM(),myParent.getSNamePM(),myParent.getFNamePM(),
                                                    myParent.getCNamePM(),myParent.getMax_POP(),myParent.getFlag(),
                                                    myParent.getExpertSheet(),myParent.getBarCod(),myParent.getCod1(),
                                                    myParent.getCod2(),myParent.getMinProduct());
+                int maxId_pm = myParent.getCountriesT().getMaxId();
+                if(jTextFieldContragent.getText().length() > 0)
+                                  myParent.getCountriesT().setIDProductContragent(maxId_pm,myParent.getId_Contragent(),0); 
                 
                 isNew = false;
                 
@@ -860,13 +862,31 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
                 myParent.isTypedPrice = false;
                 myParent.isTypedFee = false;
                 myParent.isTypedPromoPrice = false;
-                myParent.getCountriesT().updateIDProductContragent(myParent.getId_PM(),myParent.getId_Contragent(),1);
+               
                 myParent.getCountriesT().updateRow(myParent.getId_PM(),myParent.getId_PPP(),myParent.getId_PP(),
                                                    myParent.getId_PF(),myParent.getId_Group(),myParent.getId_PD(),
                                                    myParent.getNamePM(),myParent.getSNamePM(),myParent.getFNamePM(),
                                                    myParent.getCNamePM(),myParent.getMax_POP(),myParent.getFlag(),
                                                    myParent.getExpertSheet(),myParent.getBarCod(),myParent.getCod1(),
                                                    myParent.getCod2(),myParent.getMinProduct());
+                 int maxId_pm = myParent.getCountriesT().getMaxId();
+                     if(isNewInputContragent)
+                    {
+                        if(jTextFieldContragent.getText().length() > 0)
+                               myParent.getCountriesT().setIDProductContragent(maxId_pm,myParent.getId_Contragent(),0);
+                        
+                    }
+                    else
+                        {
+                       
+                        if(jTextFieldContragent.getText().length() > 0)
+                        {
+                           myParent.getCountriesT().updateIDProductContragent(myParent.getId_PM(),myParent.getId_Contragent(),1);
+                           myParent.getCountriesT().setIDProductContragent(maxId_pm,myParent.getId_Contragent(),0); 
+                        }
+                        else myParent.getCountriesT().updateIDProductContragent(myParent.getId_PM(),myParent.getId_Contragent(),1);
+                        
+                        }
                 }
                 else
                 {
@@ -958,6 +978,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
    private String splitNameOfColumn2[] = null;
    private String splitNameOfColumn3[] = null;
    private aeProductPricePromotion promoDialog;
+   private boolean  isNewInputContragent = true;
    
    boolean isNew; // za opredelqne dali zapisa e 4isto nov, t.e dali ne sy6testva b bazata
  //---------------END My Variables
@@ -1053,10 +1074,12 @@ public class aeProduct extends imakante.com.vcomponents.iDialog
    }
    
    
-   
+   isNewInputContragent = true;
    myParent.setId_Contragent(myParent.getCountriesT().getContragentID(myParent.getId_PM(),0));
+   
    if(myParent.getId_Contragent() != 0)
    {
+   isNewInputContragent = false; // flag opredelq6t dali za tozi produkt imame vkaran kontragent ili ne    
    String contragent = myParent.getCountriesT().getProductContragent(myParent.getId_Contragent());
    jTextFieldContragent.setText(contragent);
    }
