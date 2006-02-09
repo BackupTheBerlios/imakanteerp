@@ -1,7 +1,7 @@
 ﻿DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `mida`.`sl_procedure_exchange_rate` $$
-CREATE PROCEDURE `sl_procedure_exchange_rate`(IN comprator TINYINT, IN in_id INT(10), IN in_date DATE, IN in_id_money INT(11), IN in_code_money VARCHAR(11), IN in_value DECIMAL(10,5))
+CREATE PROCEDURE `sl_procedure_exchange_rate`(IN comprator TINYINT, IN in_id INT(10), IN in_date DATE, IN in_id_money INT(11), IN in_value DECIMAL(10,5))
 BEGIN
      IF (comprator = 0) THEN
         SELECT n.id_sl_exchange_rate, n.date_sl_exchange_rate, n.id_n_money, nm.cod_n_money, n.value_sl_exchange_rate
@@ -37,6 +37,10 @@ BEGIN
 
      IF (comprator = 7) THEN
         SELECT MAX(n.id_sl_exchange_rate) AS id FROM sl_exchange_rate n;
+     END IF;
+
+     IF (comprator = 8) THEN
+        SELECT MAX(n.id_n_money) AS id_n_money FROM `mida`.`n_money` n;
      END IF;
 
      IF (comprator = 9) THEN

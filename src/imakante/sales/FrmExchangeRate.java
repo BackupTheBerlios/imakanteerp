@@ -142,7 +142,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
 
         jpBottom.add(jbDropData);
 
-        jbClose.setText("\u041a\u0443\u0440\u0441");
+        jbClose.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
         jbClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbCloseActionPerformed(evt);
@@ -211,7 +211,6 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     
     private void newRecord() {
         setId(internalObject.getMaxId());
-        
         imakante.sales.aeExchangeRate aeExRates = new imakante.sales.aeExchangeRate(this, true);
         aeExRates.setVisible(true);
         refreshTable();
