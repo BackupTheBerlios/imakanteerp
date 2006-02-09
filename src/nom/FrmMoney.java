@@ -279,7 +279,7 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
             rs = internalObject.getTable();
             model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
-            // da se napravqt skriti kolona "id" i kolona "nom"
+           HideColumns(0);
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -421,10 +421,13 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
     {
         return name;
     }
+    
+    
     public void setComment(String Comment) //OK
     {
         this.comment = Comment;
     }
+    
     public String getComment() //OK
     {
         return comment;
@@ -434,6 +437,7 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
     {
         row = val;
     }
+    
     public  void mTableEnd() {
         setRow(getMaxRow());
         try{
@@ -517,6 +521,7 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
         ae_Money.setVisible(true);
         refreshTable();
     }
+    
     private void editRecord(){
         if (table.getSelectedRow() != -1) {
             
@@ -588,6 +593,7 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
         table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
         
     }
+    
     private void setAllVariables(){
         setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
         setCod((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434\u043e\u0432\u0435")));

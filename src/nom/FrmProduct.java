@@ -605,7 +605,8 @@ private void initTable() //ok  -- !!ima za dovyr6wane - skrivane na koloni!!
    }
   public void windowClosing(java.awt.event.WindowEvent e) // colose frame`s windows
    {
-        System.exit(1);
+      imakante.sales.sales_main.setIsStartFrmProduct(false);
+      this.dispose();
    }
         
   public void windowClosed(java.awt.event.WindowEvent e)

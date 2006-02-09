@@ -228,7 +228,7 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
     private  nom.storageDB internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
-    public static final String Names[] = {"id",
+    public static final String Names[] = {"id", "id_group",
     "\u041d\u043e\u043c\u0435\u0440 \u0433\u0440\u0443\u043f\u0430",
     "\u041a\u043e\u0434\u043e\u0432\u0435",
     "\u0418\u043c\u0435\u043d\u0430",
@@ -489,8 +489,8 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
         setIDG(internalObject.getMaxGrID());
         setCod(internalObject.getMaxCod()+1);
         internalObject.insertRow(getCod(),getIDG());
-        nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
-        ae_Casa.setVisible(true);
+        nom.aeStorage ae_Storage = new nom.aeStorage(this, true);
+        ae_Storage.setVisible(true);
         refreshTable();
         
     }

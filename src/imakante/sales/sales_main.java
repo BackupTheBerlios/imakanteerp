@@ -10,6 +10,8 @@
  */
 package imakante.sales;
 
+import nom.FrmProduct;
+
 //>>>>>>> 1.24
 
 //<<<<<<< sales_main.java
@@ -27,6 +29,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private final static int ID_OBJECT = 4;
     private final static int ID_KASA = 5;
     private final static int ID_MONEY = 6;
+    
+  
     
     
     public sales_main() {
@@ -245,6 +249,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         nomMenu_stock.add(stock_Menu_group_stock);
 
         stock_Menu_stock.setText("\u0421\u0442\u043e\u043a\u0430");
+        stock_Menu_stock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stock_Menu_stockActionPerformed(evt);
+            }
+        });
+
         nomMenu_stock.add(stock_Menu_stock);
 
         nomMenu.add(nomMenu_stock);
@@ -498,7 +508,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-448)/2, 757, 448);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void stock_Menu_stockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stock_Menu_stockActionPerformed
+        loadFrmProducts();
+    }//GEN-LAST:event_stock_Menu_stockActionPerformed
+    
     private void monyMenu_ratesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monyMenu_ratesActionPerformed
         loadExRates();
     }//GEN-LAST:event_monyMenu_ratesActionPerformed
@@ -718,29 +732,32 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     public boolean isStartFrmContragent = false; // FLAG dali da se startira FrmContagent,
     //promenq se i ot FrmContragent pri zatvarqne
     // na FrmContragent
+     
+    private FrmProduct iFrmProduct;
+    private static boolean isStartFrmProduct = false;
     
     private boolean levelActivate = false;
     private int currentLevel = 1;
     
     
     private void loadLevelDialog(int ModuleCode){
-    levelDialog lDialog = new levelDialog(this, true, ModuleCode);
-    lDialog.setVisible(true);
+        levelDialog lDialog = new levelDialog(this, true, ModuleCode);
+        lDialog.setVisible(true);
     }
     
     private void loadConn(){
         dbConn = imakante.com.NewMain.getConnection();
     }
     private void loadProba(){
-    if(levelActivate==false){
-    loadLevelDialog(1);
-    FrmTransferi tr = new FrmTransferi();
-    tr.setVisible(true);
-    }else{
+        if(levelActivate==false){
+            loadLevelDialog(1);
             FrmTransferi tr = new FrmTransferi();
             tr.setVisible(true);
-    }
-    
+        }else{
+            FrmTransferi tr = new FrmTransferi();
+            tr.setVisible(true);
+        }
+        
     }
     private java.sql.Connection makeConn(String dbDriver,String dbURL,String dbUser, String dbPass) throws java.sql.SQLException {
         
@@ -871,7 +888,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             
         {
             try {
-                iFormGroup[nm] = new nom.FrmGroup(title,nm);
+                iFormGroup[nm] = new nom.FrmGroup(title,this,nm);
                 desktopPane.add(iFormGroup[nm]);
                 try {
                     iFormGroup[nm].setMaximum(true);
@@ -887,10 +904,36 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }
     
     //METHOD FOR LOAD FORMS
+    //PRODUCTS
+    
+    private void loadFrmProducts() {
+        if(!isIsStartFrmProduct()) {
+            iFrmProduct = new nom.FrmProduct("\u041d\u041e\u041c\u0415\u041d\u041a\u041b\u0410\u0422\u0423\u0420\u0410 \u0421\u0422\u041e\u041a\u0418",1,this,0);
+            desktopPane.add(iFrmProduct);
+            try {
+                iFrmProduct.setMaximum(true);
+            } catch (java.beans.PropertyVetoException ex) {
+                ex.printStackTrace();
+            }
+            iFrmProduct.setVisible(true);
+            setIsStartFrmProduct(true);
+        }else{
+            try {
+                iFrmProduct.grabFocus();
+                try {
+                    iFrmProduct.setMaximum(true);
+                } catch (java.beans.PropertyVetoException ex) {
+                    ex.printStackTrace();
+                }
+            } finally {
+            }
+        }
+    }
+    
     //KONTRAGENTI
     private void loadFrmContragent() {
         if(!isStartFrmContragent) {
-            iFrmContragent = new nom.FrmContragent("\u041a\u041e\u041d\u0422\u0420\u0410\u0413\u0415\u041d\u0422\u0418",0);
+            iFrmContragent = new nom.FrmContragent("\u041a\u041e\u041d\u0422\u0420\u0410\u0413\u0415\u041d\u0422\u0418",this,0);
             desktopPane.add(iFrmContragent);
             try {
                 iFrmContragent.setMaximum(true);
@@ -950,7 +993,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     
     //OBLASTI
     private void loadOblasti(){
-        nom.FrmOblast oblast = new nom.FrmOblast("\u041e\u0411\u041b\u0410\u0421\u0422\u0418");
+        nom.FrmOblast oblast = new nom.FrmOblast("\u041e\u0411\u041b\u0410\u0421\u0422\u0418", this);
         desktopPane.add(oblast);
         try {
             oblast.setMaximum(true);
@@ -963,7 +1006,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     
     //NASELENI MESTA
     private void loadNM(){
-        nom.FrmNaseleniMesta nm = new nom.FrmNaseleniMesta("\u041d\u0410\u0421\u0415\u041b\u0415\u041d\u0418 \u041c\u0415\u0421\u0422\u0410");
+        nom.FrmNaseleniMesta nm = new nom.FrmNaseleniMesta("\u041d\u0410\u0421\u0415\u041b\u0415\u041d\u0418 \u041c\u0415\u0421\u0422\u0410",this);
         desktopPane.add(nm);
         try {
             nm.setMaximum(true);
@@ -984,5 +1027,14 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         }
         
         pers.setVisible(true);
+    }
+    
+// ENCAPS METHODS FORM CONTROL 
+    public static boolean isIsStartFrmProduct() {
+        return isStartFrmProduct;
+    }
+
+    public static void setIsStartFrmProduct(boolean bool) {
+        isStartFrmProduct = bool;
     }
 }

@@ -219,7 +219,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     private  nom.casaDB internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
-    public static final String Names[] = {"id",
+    public static final String Names[] = {"id","id_group",
     "\u041d\u043e\u043c\u0435\u0440 \u0433\u0440\u0443\u043f\u0430",
     "\u041a\u043e\u0434\u043e\u0432\u0435",
     "\u0418\u043c\u0435\u043d\u0430",
