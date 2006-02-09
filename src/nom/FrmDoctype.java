@@ -33,12 +33,17 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
         jbDropData = new javax.swing.JButton();
         jbClose = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("\u0422\u0438\u043f\u043e\u0432\u0435 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438");
         jpTop.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         org.jdesktop.layout.GroupLayout jpTopLayout = new org.jdesktop.layout.GroupLayout(jpTop);
         jpTop.setLayout(jpTopLayout);
         jpTopLayout.setHorizontalGroup(
             jpTopLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 828, Short.MAX_VALUE)
+            .add(0, 824, Short.MAX_VALUE)
         );
         jpTopLayout.setVerticalGroup(
             jpTopLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -50,6 +55,7 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
 
         jpMiddle.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jspData.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jspData.getViewport().add(table);
         jpMiddle.add(jspData, java.awt.BorderLayout.CENTER);
 
         jpControls.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -196,7 +202,7 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
         jspData.remove(table);
         try{
             rs = doctypeObject.searchRecords(Integer.parseInt(jtfCode.getText()), jtfDocName.getText());
-            model = new imakante.com.CustomTableModel(conn, rs, null);
+            model = new imakante.com.CustomTableModel(conn, rs, Names);
             table = new imakante.com.CustomTable(model);
         } catch(Exception e) { e.printStackTrace(); }
         jspData.getViewport().add(table);
@@ -245,7 +251,7 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
     protected void refreshTable() {
         jspData.remove(table);
         rs = doctypeObject.getTable();
-        model = new imakante.com.CustomTableModel(getConn(), rs, null);
+        model = new imakante.com.CustomTableModel(getConn(), rs, Names);
         table = new imakante.com.CustomTable(model);
         jspData.getViewport().add(table);
         jspData.repaint();
@@ -300,6 +306,12 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
     private String printName = "";
     private boolean first = false;
     private boolean last = false;
+     public static final String Names[] = {"id",
+    
+    "\u041a\u043e\u0434\u043e\u0432\u0435",
+    "\u0418\u043c\u0435\u043d\u0430",
+    "\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440"};
+    
     
     private void prepConn() {
         try{
@@ -319,12 +331,9 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
     private void initTable() {
         try{
             rs = doctypeObject.getTable();
-            model = new imakante.com.CustomTableModel(conn,rs, null);
+            model = new imakante.com.CustomTableModel(conn,rs, Names);
             table = new imakante.com.CustomTable(model);
-            table.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-            table.getColumnModel().getColumn(0).setResizable(false);
-            table.getColumnModel().getColumn(0).setWidth(0);
-            table.getColumnModel().getColumn(0).setPreferredWidth(0);
+            HideColumns(0);
         }catch(Exception e){e.printStackTrace();}
         table.requestFocus();
         try {
@@ -336,10 +345,7 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
     public void mTableBegining() {
         setRow(0);
         try {
-            setId((Integer) table.getValueAt(getRow(), 0));
-            setCode((Integer) table.getValueAt(getRow(), 1));
-            setName((String) table.getValueAt(getRow(), 2));
-            setPName((String) table.getValueAt(getRow(), 3));
+            setAllVariables();
             table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
@@ -355,10 +361,7 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
             }
             setLast(false);
             try {
-                setId((Integer) table.getValueAt(getRow(), 0));
-                setCode((Integer) table.getValueAt(getRow(), 1));
-                setName((String) table.getValueAt(getRow(), 2));
-                setPName((String) table.getValueAt(getRow(), 3));
+                setAllVariables();
                 table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
             } catch(ArrayIndexOutOfBoundsException aioobe) {
                 setRow(getRow() + 1);
@@ -376,10 +379,7 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
             }
             setFirst(false);
             try {
-                setId((Integer) table.getValueAt(getRow(), 0));
-                setCode((Integer) table.getValueAt(getRow(), 1));
-                setName((String) table.getValueAt(getRow(), 2));
-                setPName((String) table.getValueAt(getRow(), 3));
+                setAllVariables();
                 table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
             } catch(ArrayIndexOutOfBoundsException aioobe) {
                 setRow(getRow() - 1);
@@ -393,10 +393,7 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
     public  void mTableEnd() {
         setRow(getMaxRow());
         try{
-            setId((Integer) table.getValueAt(getRow(), 0));
-            setCode((Integer) table.getValueAt(getRow(), 1));
-            setName((String) table.getValueAt(getRow(), 2));
-            setPName((String) table.getValueAt(getRow(), 3));
+            setAllVariables();
             table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
@@ -536,5 +533,35 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
     public void setConn(java.sql.Connection conn) {
         this.conn = conn;
     }
+    
+     private int getColumnIndex(String in) //test
+    {
+        int count = table.getColumnCount();
+        for(int i=0; i < count; i++) {
+            if(table.getColumnName(i).equals(in)) return i;
+        }
+        return 0;
+    }
+    
+    
+    
+    private void HideColumns(int col) {
+        int iColumn = col;
+// set column width
+        table.getColumnModel().getColumn(iColumn).setMaxWidth(0);
+        table.getColumnModel().getColumn(iColumn).setMinWidth(0);
+        table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
+        table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
+        
+    }
+    private void setAllVariables(){
+        setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
+        setCode((Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434\u043e\u0432\u0435")));
+        setName((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435\u043d\u0430")));
+        setPName((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440")));
+    
+    }
+    
+    
     
 }
