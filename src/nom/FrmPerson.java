@@ -233,8 +233,9 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
     public static final String Names[] = {"id", "id_group",
-    "\u0413\u0440\u0443\u043f\u0430","",
+    "\u0413\u0440\u0443\u043f\u0430",
     "\u041a\u043e\u0434",
+    "\u0415\u0413\u041d",
     "\u2116 \u041b\u041a",
     "\u0418\u043c\u0435\u043d\u0430",
     "\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440"};
@@ -568,7 +569,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     private void setAllVariables(){
         setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
         setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("id_group")));
-        setEGN((String) table.getValueAt(getRow(), getColumnIndex("\u0415\u0413\u041d")));
+        setEGN((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434")));
         setNLK((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434\u043e\u0432\u0435")));
         setNames((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435\u043d\u0430")));
         setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440")));
