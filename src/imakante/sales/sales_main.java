@@ -166,6 +166,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Contact.png")));
         jButton5.setToolTipText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         jToolBar1.add(jButton5);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Group 4.png")));
@@ -559,6 +565,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-448)/2, 757, 448);
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        try{
+            loadKlienti();
+        } catch (java.sql.SQLException sql1) {}
+    }//GEN-LAST:event_jButton5ActionPerformed
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         loadPerson();

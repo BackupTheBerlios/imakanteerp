@@ -212,6 +212,9 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="kontragentiMenu_Kontr">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/images/Contact16.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="&#x41a;&#x43e;&#x43d;&#x442;&#x440;&#x430;&#x433;&#x435;&#x43d;&#x442;&#x438;"/>
                   </Properties>
                   <Events>
@@ -250,6 +253,9 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="litsaMenu_in">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/images/Group416.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="&#x41b;&#x438;&#x446;&#x430;"/>
                   </Properties>
                   <Events>
@@ -378,8 +384,6 @@
                 <Property name="text" type="java.lang.String" value="&#x410;&#x43d;&#x430;&#x43b;&#x438;&#x442;&#x438;&#x447;&#x43d;&#x438; &#x43d;&#x438;&#x432;&#x430;"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JSeparator" name="jSeparator1">
-            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="sprMenu">
@@ -461,6 +465,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="contentMenuItem">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/Help16.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="&#x421;&#x44a;&#x434;&#x44a;&#x440;&#x436;&#x430;&#x43d;&#x438;&#x435;"/>
               </Properties>
             </MenuItem>
@@ -474,7 +481,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Item"/>
+                <Property name="text" type="java.lang.String" value="&#x41e;&#x431;&#x43d;&#x43e;&#x432;&#x44f;&#x432;&#x430;&#x43d;&#x435;"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -559,6 +566,14 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JButton" name="jButton5">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/Contact.png"/>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value="&#x41a;&#x43e;&#x43d;&#x442;&#x440;&#x430;&#x433;&#x435;&#x43d;&#x442;&#x438;"/>
+          </Properties>
+        </Component>
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -569,6 +584,14 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton4">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/Download.png"/>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value="&#x41e;&#x431;&#x43d;&#x43e;&#x432;&#x44f;&#x432;&#x430;&#x43d;&#x435;"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton3">
           <Properties>
