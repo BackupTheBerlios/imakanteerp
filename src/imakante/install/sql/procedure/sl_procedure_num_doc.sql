@@ -1,11 +1,11 @@
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `mida`.`sl_doc_type_num` $$
-CREATE PROCEDURE `sl_procedure_num_doc`(IN comprator TINYINT, IN in_id INT(11),IN in_id_groupe INT(11), IN in_code INT(11), IN in_name VARCHAR(40), IN in_comments VARCHAR(250) )
+CREATE PROCEDURE `sl_procedure_num_doc`(IN comprator TINYINT, IN in_id INT(11),IN in_id_doctype INT(11), IN in_area INT(11), IN in_name VARCHAR(40), IN in_comments VARCHAR(250) )
 BEGIN
      IF (comprator = 0) THEN
-          SELECT n.id_sdtn, n.id_ntd, ng.name_n_group, n.code_n_casa, n.name_n_casa,
-                   n.comments_n_casa FROM n_casa n LEFT OUTER JOIN n_group ng ON ng.id_n_group=n.id_n_group;
+          SELECT n.id_sdtn, n.id_ntd, ntd.name_ntd, n.area_number_sdtn 
+            FROM n_casa n LEFT OUTER JOIN n_type_doc ntd ON ntd.id_ntd = n.id_ntd;
      END IF;
      IF (comprator = 1) THEN
         INSERT INTO `mida`.`n_casa`( id_n_group, code_n_casa, name_n_casa, comments_n_casa) VALUES(in_id_groupe, in_code, in_name, in_comments);
