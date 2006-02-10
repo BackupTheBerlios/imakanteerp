@@ -10,9 +10,9 @@
 /*!40101 SET NAMES cp1251 */;
 /*!40103 SET TIME_ZONE='SYSTEM' */;
 
-# Host: localhost:3307    Database: mida
+# Host: www.katsarov.net:3307    Database: mida
 # ------------------------------------------------------
-# Server version 5.0.16-nt
+# Server version 5.0.18-standard
 
 DROP DATABASE IF EXISTS `mida`;
 CREATE DATABASE `mida` /*!40100 DEFAULT CHARACTER SET cp1251 */;
@@ -275,7 +275,7 @@ CREATE TABLE `ls_monthpar` (
 
 CREATE TABLE `ls_n_person` (
   `id_ls_n_person` int(11) NOT NULL auto_increment,
-  `id_n_group` int(11) unsigned default NULL,
+  `id_n_group` int(11) unsigned NOT NULL default '0',
   `code_ls_n_person` varchar(6) default NULL,
   `egn_ls_n_person` varchar(10) NOT NULL,
   `nlk_ls_n_person` varchar(9) NOT NULL,
@@ -418,13 +418,14 @@ CREATE TABLE `ls_vid_osiguren` (
 
 CREATE TABLE `n_baccount` (
   `id_nbc` int(11) NOT NULL default '0',
+  `id_n_group` int(11) unsigned default NULL,
   `code_nbc` varchar(10) default NULL COMMENT 'cod na bankata',
   `name_nbc` varchar(45) default NULL COMMENT 'ime na bankata',
   `account_nbc` varchar(20) default NULL COMMENT 'Bankova smetka',
   `address_nbc` varchar(100) default NULL,
-  `vid_account_nbc` tinyint(3) unsigned default '1',
+  `id_tbacc` int(11) unsigned default '1',
   PRIMARY KEY  (`id_nbc`)
-) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='bankovi smetki';
 
 
 
@@ -514,7 +515,7 @@ CREATE TABLE `n_expens` (
 #
 
 CREATE TABLE `n_group` (
-  `id_n_group` int(11) NOT NULL,
+  `id_n_group` int(11) NOT NULL auto_increment,
   `nom_n_group` int(11) default NULL,
   `cod_n_group` varchar(45) default NULL,
   `name_n_group` varchar(45) default NULL,
@@ -573,11 +574,12 @@ CREATE TABLE `n_nm` (
 #
 
 CREATE TABLE `n_obekt` (
-  `Id` int(11) NOT NULL,
+  `id_n_obekt` int(11) NOT NULL auto_increment,
   `Id_cust` int(11) default NULL,
   `name` varchar(45) default NULL,
   `address` varchar(25) default NULL,
-  PRIMARY KEY  (`Id`),
+  `code_n_obekt` varchar(10) NOT NULL,
+  PRIMARY KEY  (`id_n_obekt`),
   KEY `Customer` (`Id_cust`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
@@ -588,7 +590,7 @@ CREATE TABLE `n_obekt` (
 #
 
 CREATE TABLE `n_oblast` (
-  `id_n_oblast` int(11) NOT NULL default '0',
+  `id_n_oblast` int(11) NOT NULL auto_increment,
   `name_n_oblast` varchar(20) default NULL,
   `id_n_country` tinyint(4) default NULL,
   PRIMARY KEY  (`id_n_oblast`)
@@ -673,9 +675,11 @@ CREATE TABLE `n_product_main` (
   `cname_pm` varchar(10) collate cp1251_bulgarian_ci default NULL,
   `cod1_pm` varchar(20) collate cp1251_bulgarian_ci default NULL,
   `cod2_pm` varchar(20) collate cp1251_bulgarian_ci default NULL,
-  `barcod_pm` bigint(15) default NULL,
-  `max_pop_pm` decimal(4,2) default NULL,
+  `barcod_pm` int(11) unsigned default NULL,
+  `max_pop_pm` double default NULL,
   `expertsheet_pm` varchar(45) collate cp1251_bulgarian_ci default NULL,
+  `flag_pm` int(3) unsigned zerofill NOT NULL default '000',
+  `min_pm` int(11) unsigned NOT NULL default '0',
   PRIMARY KEY  (`id_pm`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COLLATE=cp1251_bulgarian_ci;
 
@@ -688,9 +692,10 @@ CREATE TABLE `n_product_main` (
 CREATE TABLE `n_product_price` (
   `id_pp` int(11) NOT NULL auto_increment,
   `id_sl_curs` int(10) unsigned NOT NULL,
-  `price1_pp` decimal(10,0) default NULL,
-  `price2_pp` decimal(10,0) default NULL,
-  `price3_pp` decimal(10,0) default NULL,
+  `price1_pp` decimal(10,5) default NULL,
+  `price2_pp` decimal(10,5) default NULL,
+  `price3_pp` decimal(10,5) default NULL,
+  `price0_pp` decimal(10,5) default NULL,
   PRIMARY KEY  (`id_pp`),
   KEY `n_product_price_FKIndex1` (`id_sl_curs`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
@@ -723,6 +728,18 @@ CREATE TABLE `n_storage` (
   `comments_n_storage` varchar(250) default NULL,
   PRIMARY KEY  (`id_n_storage`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='skladove';
+
+
+
+#
+# Table structure for table n_type_bacc
+#
+
+CREATE TABLE `n_type_bacc` (
+  `id_tbacc` int(11) NOT NULL auto_increment,
+  `name_tbacc` varchar(30) default NULL,
+  PRIMARY KEY  (`id_tbacc`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='tipove bankovi smetki';
 
 
 
@@ -760,20 +777,24 @@ CREATE TABLE `sl_contragent_obekt` (
 CREATE TABLE `sl_contragent_product` (
   `id_scp` int(11) NOT NULL auto_increment,
   `id_contragent` int(11) default NULL,
-  `id_product` int(11) default NULL,
+  `id_pm` int(11) default NULL,
+  `flag_scp` int(3) unsigned zerofill NOT NULL default '000',
   PRIMARY KEY  (`id_scp`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 
 
 #
-# Table structure for table sl_doc_balance
+# Table structure for table sl_curs
 #
 
-CREATE TABLE `sl_doc_balance` (
-  `id` int(11) NOT NULL auto_increment,
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+CREATE TABLE `sl_curs` (
+  `id_sl_curs` int(11) NOT NULL auto_increment,
+  `date_time_sl_curs` datetime NOT NULL,
+  `id_n_money` int(11) unsigned zerofill NOT NULL default '00000000000',
+  `value_sl_curs` decimal(10,5) default NULL,
+  PRIMARY KEY  (`id_sl_curs`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='Cursove na money';
 
 
 
@@ -810,17 +831,18 @@ CREATE TABLE `sl_document_facade` (
   `date_edition_df` date default NULL,
   `time_edition_df` int(11) default NULL,
   `distributor_df` int(11) unsigned default NULL,
-  `deliverer_df` time default NULL,
+  `delivere_df` time default NULL,
   `faktura_connection_df` int(10) unsigned default NULL,
   `zaiavka_connection_df` int(10) unsigned default NULL,
   `description_pay_df` tinyint(3) unsigned default NULL,
   `paying_order_df` int(10) unsigned default NULL,
   `date_deliver_df` date default NULL,
-  `duty_df` int(11) unsigned default NULL,
   `date_pay_df` date default NULL,
   `comments_df` varchar(250) default NULL,
-  `fag_finish_df` tinyint(3) unsigned default NULL,
+  `fag_finish_df` tinyint(3) unsigned zerofill NOT NULL default '000',
   `id_rep` int(11) unsigned default NULL,
+  `level_df` int(3) unsigned zerofill NOT NULL default '000',
+  `out_contragent_df` int(11) default NULL,
   PRIMARY KEY  (`id_df`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
@@ -856,7 +878,7 @@ CREATE TABLE `sl_exchange_rate` (
   `id_sl_exchange_rate` int(10) unsigned NOT NULL auto_increment,
   `date_sl_exchange_rate` date default NULL,
   `id_n_money` int(11) default NULL,
-  `value_sl_exchange_rate` decimal(10,0) default NULL,
+  `value_sl_exchange_rate` decimal(10,5) default NULL,
   PRIMARY KEY  (`id_sl_exchange_rate`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='kursove na valutite';
 
@@ -872,6 +894,7 @@ CREATE TABLE `sl_n_obekt` (
   `Id_cust` int(11) default NULL,
   `name_sno` varchar(45) default NULL,
   `address_sno` varchar(25) default NULL,
+  `code_sno` varchar(5) NOT NULL default '',
   PRIMARY KEY  (`Id_sno`),
   KEY `Customer` (`Id_cust`),
   KEY `sl_n_obekt_FKIndex1` (`id_ls_n_person`)
@@ -979,14 +1002,14 @@ END;
 CREATE PROCEDURE `ls_procedure_group`(IN in_id INT(6), IN in_nom TINYINT, IN comprator TINYINT, IN in_cod VARCHAR(30), IN in_name VARCHAR(30), IN in_alid TINYINT)
 BEGIN
      IF (comprator = 0) THEN
-        SELECT n.id_n_group, n.cod_n_group, n.name_n_group, n.id_al FROM `n_group` n WHERE nom_n_group = in_nom;
+        SELECT n.id_n_group, n.cod_n_group, n.name_n_group, n.id_al, anlevel.name_al  FROM `n_group` n, anlevel WHERE nom_n_group = in_nom AND anlevel.id_al = n.id_al;
      END IF;
      IF (comprator = 1) THEN
         INSERT INTO `n_group`(nom_n_group, cod_n_group, name_n_group, id_al) VALUES(in_nom, in_cod, in_name, in_alid);
      END IF;
      IF (comprator = 2) THEN
         UPDATE `n_group` SET cod_n_group = in_cod, name_n_group = in_name, nom_n_group = in_nom, id_al = in_alid
-           WHERE `group`.id = in_id;
+           WHERE `n_group`.id_n_group = in_id;
      END IF;
 
      IF (comprator = 3) THEN
@@ -998,8 +1021,14 @@ BEGIN
 
      END IF;
      IF (comprator = 5) THEN
-        SELECT n.id_n_group,  n.cod_n_group, n.name_n_group, n.id_al  FROM `n_group` n  WHERE n.cod_n_group LIKE CONCAT('%',in_cod,'%') AND
-        n.name_n_group LIKE CONCAT('%',in_name,'%') AND n.id_al LIKE CONCAT(in_alid,'%') AND n.nom_n_group=in_nom;
+           IF (in_alid != 0) THEN
+             SELECT n.id_n_group,  n.cod_n_group, n.name_n_group, n.id_al, anlevel.name_al  FROM `n_group` n, anlevel  WHERE n.cod_n_group LIKE CONCAT('%',in_cod,'%') AND
+             n.name_n_group LIKE CONCAT('%',in_name,'%') AND n.id_al LIKE CONCAT('%',in_alid,'%') AND n.nom_n_group=in_nom AND anlevel.id_al = n.id_al;
+          END IF;
+          IF (in_alid = 0) THEN
+             SELECT n.id_n_group,  n.cod_n_group, n.name_n_group, n.id_al,anlevel.name_al  FROM `n_group` n,anlevel  WHERE n.cod_n_group LIKE CONCAT('%',in_cod,'%') AND
+             n.name_n_group LIKE CONCAT('%',in_name,'%') AND n.nom_n_group=in_nom AND anlevel.id_al = n.id_al;
+          END IF;
      END IF;
 
      IF (comprator = 6) THEN
@@ -1078,66 +1107,78 @@ CREATE PROCEDURE `nom_procedure_contragent`(IN comprator TINYINT,  IN in_id INT(
                                             IN in_id_mol INT(10),  IN in_id_oso INT(10),  IN in_flag TINYINT)
 BEGIN
      IF (comprator = 0) THEN
-        SELECT c.id_contragent, c.code, c.name, c.bul, c.dan, c.address, c.id_nm, nm.name, obl.name, cont.code, cont.name, c.tel, c.fax, c.email, c.web, c.id_mol,
-                @MOL:=(select name from `ls_n_person` where id = id_mol) AS MOL,
-               c.id_oso, @OSO:=(select name from `ls_n_person` where id = id_oso) AS OSO, c.flag
-        FROM `contragent` c, `n_nm` nm, `n_oblast` obl , `n_country`  cont
-        WHERE (c.id_nm = nm.id and nm.id_oblast = obl.id and obl.id_country = cont.id) and c.flag = in_flag ORDER BY c.code;
+        SELECT c.id_contragent, c.code_contragent, c.name_n_contragent, c.bul_n_contragent, c.dan_n_contragent, c.address_n_contragent, c.id_nm, nm.name_n_nm, obl.name_n_oblast, cont.code_n_country, cont.name_n_country, c.tel_contragent, c.fax_contragent, c.email_contragent, c.web_contragent, c.id_mol,
+                @MOL:=(select name_ls_n_person from `ls_n_person` where id_ls_n_person = id_mol) AS MOL,
+               c.id_oso, @OSO:=(select name_ls_n_person from `ls_n_person` where id_ls_n_person = id_oso) AS OSO, c.flag_n_contragent
+        FROM `n_contragent` c, `n_nm` nm, `n_oblast` obl , `n_country`  cont
+        WHERE (c.id_nm = nm.id_n_nm and nm.id_n_oblast = obl.id_n_oblast and obl.id_n_country = cont.id_n_country) and c.flag_n_contragent = in_flag ORDER BY c.code_contragent;
      END IF;
 
      IF (comprator = 1) THEN
-        INSERT INTO `contragent`(code,name,bul,dan,address,id_nm,tel,fax,email,web,id_mol,id_oso,flag)
+        INSERT INTO `n_contragent`(code_contragent,name_n_contragent,bul_n_contragent,dan_n_contragent,address_n_contragent,id_nm,tel_contragent,fax_contragent,email_contragent,web_contragent,id_mol,id_oso,flag_n_contragent)
          VALUES(in_cod,in_name,in_bul,in_dan,in_address,in_id_nm,in_tel,in_fax,in_email,in_web,in_id_mol,in_id_oso,in_flag);
      END IF;
 
      IF (comprator = 2) THEN
-        UPDATE `contragent` SET flag = in_flag
-           WHERE `contragent`.id_contragent = in_id;
+        UPDATE `n_contragent` SET flag_n_contragent = in_flag
+           WHERE `n_contragent`.id_contragent = in_id;
      END IF;
 
      IF (comprator = 5) THEN
-       SELECT c.id_contragent, c.code, c.name, c.bul, c.dan, c.address, c.id_nm, nm.name, obl.name, cont.code, cont.name, c.tel, c.fax, c.email, c.web, c.id_mol,
-                @MOL:=(select name from `ls_n_person` where id = id_mol) AS MOL,
-               c.id_oso, @OSO:=(select name from `ls_n_person` where id = id_oso) AS OSO, c.flag
-        FROM `contragent` c, `n_nm` nm, `n_oblast` obl , `n_country`  cont
-        WHERE (c.id_nm = nm.id and nm.id_oblast = obl.id and obl.id_country = cont.id and c.flag = in_flag ) AND
-              c.code LIKE CONCAT('%',in_cod,'%') AND
-              c.name LIKE CONCAT('%',in_name,'%') AND  c.bul LIKE CONCAT('%',in_bul,'%') AND c.dan LIKE CONCAT('%',in_dan,'%') AND
-              c.address LIKE CONCAT('%',in_address,'%') AND c.tel LIKE CONCAT('%',in_tel,'%') AND c.fax LIKE CONCAT('%',in_fax,'%') AND
-              c.email LIKE CONCAT('%',in_email,'%') AND c.web LIKE CONCAT('%',in_web,'%') ORDER BY c.code;
+      IF (in_cod != 0) THEN
+       SELECT c.id_contragent, c.code_contragent, c.name_n_contragent, c.bul_n_contragent, c.dan_n_contragent, c.address_n_contragent, c.id_nm, nm.name_n_nm, obl.name_n_oblast, cont.code_n_country, cont.name_n_country, c.tel_contragent, c.fax_contragent, c.email_contragent, c.web_contragent, c.id_mol,
+                @MOL:=(select name_ls_n_person from `ls_n_person` where id_ls_n_person = id_mol) AS MOL,
+               c.id_oso, @OSO:=(select name_ls_n_person from `ls_n_person` where id_ls_n_person = id_oso) AS OSO, c.flag_n_contragent
+        FROM `n_contragent` c, `n_nm` nm, `n_oblast` obl , `n_country`  cont
+        WHERE (c.id_nm = nm.id_n_nm and nm.id_n_oblast = obl.id_n_oblast and obl.id_n_country = cont.id_n_country and c.flag_n_contragent = in_flag ) AND
+              c.code_contragent LIKE CONCAT('%',in_cod,'%') AND
+              c.name_n_contragent LIKE CONCAT('%',in_name,'%') AND  c.bul_n_contragent LIKE CONCAT('%',in_bul,'%') AND c.dan_n_contragent LIKE CONCAT('%',in_dan,'%') AND
+              c.address_n_contragent LIKE CONCAT('%',in_address,'%') AND c.tel_contragent LIKE CONCAT('%',in_tel,'%') AND c.fax_contragent LIKE CONCAT('%',in_fax,'%') AND
+              c.email_contragent LIKE CONCAT('%',in_email,'%') AND c.web_contragent LIKE CONCAT('%',in_web,'%') ORDER BY c.code_contragent;
      END IF;
+      IF (in_cod = 0) THEN
+              SELECT c.id_contragent, c.code_contragent, c.name_n_contragent, c.bul_n_contragent, c.dan_n_contragent, c.address_n_contragent, c.id_nm, nm.name_n_nm, obl.name_n_oblast, cont.code_n_country, cont.name_n_country, c.tel_contragent, c.fax_contragent, c.email_contragent, c.web_contragent, c.id_mol,
+                @MOL:=(select name_ls_n_person from `ls_n_person` where id_ls_n_person = id_mol) AS MOL,
+               c.id_oso, @OSO:=(select name_ls_n_person from `ls_n_person` where id_ls_n_person = id_oso) AS OSO, c.flag_n_contragent
+        FROM `n_contragent` c, `n_nm` nm, `n_oblast` obl , `n_country`  cont
+        WHERE (c.id_nm = nm.id_n_nm and nm.id_n_oblast = obl.id_n_oblast and obl.id_n_country = cont.id_n_country and c.flag_n_contragent = in_flag )
+         AND c.name_n_contragent LIKE CONCAT('%',in_name,'%') AND  c.bul_n_contragent LIKE CONCAT('%',in_bul,'%') AND c.dan_n_contragent LIKE CONCAT('%',in_dan,'%') AND
+              c.address_n_contragent LIKE CONCAT('%',in_address,'%') AND c.tel_contragent LIKE CONCAT('%',in_tel,'%') AND c.fax_contragent LIKE CONCAT('%',in_fax,'%') AND
+              c.email_contragent LIKE CONCAT('%',in_email,'%') AND c.web_contragent LIKE CONCAT('%',in_web,'%') ORDER BY c.code_contragent;
+      END IF;
+      END IF;
 
      IF (comprator = 7) THEN
-        SELECT MAX(n.id) AS id FROM `contragent` n;
+        SELECT MAX(n.id_contragent) AS id FROM `n_contragent` n;
      END IF;
 
      IF (comprator = 10) THEN
-        SELECT nm.name  FROM `n_nm` nm WHERE nm.id = in_id_nm;
+        SELECT nm.name_n_nm  FROM `n_nm` nm WHERE nm.id_n_nm = in_id_nm;
      END IF;
 
      IF (comprator = 11) THEN
-        SELECT nm.id, nm.name, obl.name, con.name, con.code
+        SELECT nm.id_n_nm, nm.name_n_nm, obl.name_n_oblast, con.name_n_country, con.code_n_country
         FROM `n_nm` nm, `n_oblast` obl, `n_country` con
-        WHERE  nm.id_oblast = obl.id and obl.id_country = con.id and nm.name like CONCAT('%',in_address,'%');
+        WHERE  nm.id_n_oblast = obl.id_n_oblast and obl.id_n_country = con.id_n_country and nm.name_n_nm like CONCAT('%',in_address,'%');
      END IF;
 
      IF (comprator = 12) THEN
-        SELECT ls.id, ls.name, ls.egn, ls.nlk, ls.coment
-        FROM `ls_n_person` ls WHERE ls.name like CONCAT('%',in_name,'%')
-        ORDER BY ls.name;
+        SELECT ls.id_ls_n_person, ls.name_ls_n_person, ls.egn_ls_n_person, ls.nlk_ls_n_person, ls.comment_ls_n_person
+        FROM `ls_n_person` ls WHERE ls.name_ls_n_person like CONCAT('%',in_name,'%')
+        ORDER BY ls.name_ls_n_person;
      END IF;
      IF (comprator = 13) THEN
         IF (in_id_mol != -1) THEN
-            SELECT ls.id, ls.name, ls.egn, ls.nlk, ls.coment FROM `ls_n_person` ls WHERE ls.id=in_id_mol;
+            SELECT ls.id_ls_n_person, ls.name_ls_n_person, ls.egn_ls_n_person, ls.nlk_ls_n_person, ls.comment_ls_n_person FROM `ls_n_person` ls WHERE ls.id_ls_n_person=in_id_mol;
         END IF;
         IF (in_id_oso != -1) THEN
-            SELECT ls.id, ls.name, ls.egn, ls.nlk, ls.coment FROM `ls_n_person` ls WHERE ls.id=in_id_oso;
+            SELECT ls.id_ls_n_person, ls.name_ls_n_person, ls.egn_ls_n_person, ls.nlk_ls_n_person, ls.comment_ls_n_person FROM `ls_n_person` ls WHERE ls.id_ls_n_person=in_id_oso;
         END IF;
      END IF;
-     
+
      IF (comprator = 14) THEN
-        SELECT  MAX(c.code) as code
-        FROM `contragent` c where c.flag = in_flag;
+        SELECT  MAX(c.code_contragent) as code
+        FROM `n_contragent` c where c.flag_n_contragent = in_flag;
      END IF;
 
 END;
@@ -1158,7 +1199,7 @@ BEGIN
 
      IF (comprator = 2) THEN
         UPDATE n_type_doc SET code_ntd = in_code, name_ntd = in_name, name_print_ntd = in_print_name
-           WHERE n_typedoc.id_ntd = in_id;
+           WHERE n_type_doc.id_ntd = in_id;
      END IF;
 
      IF (comprator = 3) THEN
@@ -1354,7 +1395,7 @@ BEGIN
      END IF;
      IF (comprator = 2) THEN
         UPDATE `n_nm` SET postcode_n_nm = in_postcode, name_n_nm = in_name, id_n_oblast = in_id_oblast
-        WHERE `n_nm`.id = in_id;
+        WHERE `n_nm`.id_n_nm = in_id;
      END IF;
 
      IF (comprator = 3) THEN
@@ -1367,11 +1408,12 @@ BEGIN
 
      IF (comprator = 5) THEN
         IF (in_postcode!=0)  THEN
-          SELECT n.id_n_nm,  n.postcode_n_nm, n.name_n_nm , n.id_n_oblast  FROM `n_nm` n  WHERE n.postcode_n_nm LIKE CONCAT(in_postcode,'%') AND
-          n.name_n_nm LIKE CONCAT('%',in_name,'%');
+          SELECT n.id_n_nm,  n.postcode_n_nm, n.name_n_nm , n.id_n_oblast,obl.name_n_oblast  FROM `n_nm` n, `n_oblast` obl WHERE n.postcode_n_nm LIKE CONCAT(in_postcode,'%') AND
+          n.name_n_nm LIKE CONCAT('%',in_name,'%') AND n.id_n_oblast = obl.id_n_oblast;
         END IF;
         IF (in_postcode=0)  THEN
-          SELECT n.id_n_nm,  n.postcode_n_nm, n.name_n_nm, n.id_n_oblast  FROM `n_nm` n  WHERE n.name_n_nm LIKE CONCAT('%',in_name,'%');
+          SELECT n.id_n_nm,  n.postcode_n_nm, n.name_n_nm, n.id_n_oblast,obl.name_n_oblast  FROM `n_nm` n, `n_oblast` obl
+           WHERE n.name_n_nm LIKE CONCAT('%',in_name,'%') AND n.id_n_oblast = obl.id_n_oblast;
         END IF;
      END IF;
 
@@ -1389,14 +1431,14 @@ END;
 # Source for procedure nom_procedure_oblast
 #
 
-CREATE PROCEDURE `nom_procedure_oblast`(IN comprator TINYINT, IN in_id INT(11), IN in_name VARCHAR(20), IN in_id_country INT(3) )
+CREATE PROCEDURE `nom_procedure_oblast`(IN comprator TINYINT, IN in_id INT(11), IN in_name VARCHAR(20), IN in_id_country INT(3), IN in_country VARCHAR(45) )
 BEGIN
      IF (comprator = 0) THEN
         SELECT n.id_n_oblast, n.name_n_oblast, n.id_n_country, c.name_n_country
         FROM `n_oblast` n, `n_country` c WHERE n.id_n_country=c.id_n_country;
      END IF;
      IF (comprator = 1) THEN
-        INSERT INTO `n_oblast`( id_n_oblast, name_n_oblast, id_n_country) VALUES(in_id, in_name, in_id_country);
+        INSERT INTO `n_oblast`( name_n_oblast, id_n_country) VALUES(in_name, in_id_country);
      END IF;
      IF (comprator = 2) THEN
         UPDATE `n_oblast` SET name_n_oblast = in_name, id_n_country = in_id_country
@@ -1412,13 +1454,14 @@ BEGIN
      END IF;
 
      IF (comprator = 5) THEN
-          SELECT n.id_n_oblast,  n.name_n_oblast, n.id_n_country  FROM `n_oblast` n  WHERE n.name_n_oblast LIKE CONCAT('%',in_name,'%');
+          SELECT n.id_n_oblast,  n.name_n_oblast, n.id_n_country,c.name_n_country  FROM `n_oblast` n, `n_country` c WHERE n.name_n_oblast LIKE CONCAT('%',in_name,'%')
+           AND c.name_n_country LIKE CONCAT('%',in_country,'%') AND c.id_n_country = n.id_n_country;
 
      END IF;
 
 
      IF (comprator = 6) THEN
-        SELECT * FROM `n_country` n ORDER BY name;
+        SELECT * FROM `n_country` n ORDER BY name_n_country;
      END IF;
 
      IF (comprator = 7) THEN
@@ -1431,19 +1474,19 @@ END;
 # Source for procedure nom_procedure_person
 #
 
-CREATE PROCEDURE `nom_procedure_person`(IN comprator TINYINT, IN in_id INT(11),IN in_id_group INT(11), IN in_egn VARCHAR(10), IN in_nomlk VARCHAR(9), IN in_name VARCHAR(45), IN in_comment VARCHAR(250) )
+CREATE PROCEDURE `nom_procedure_person`(IN comprator TINYINT, IN in_id INT(11),IN in_id_group INT(11), IN in_code VARCHAR(6), IN in_egn VARCHAR(10), IN in_nomlk VARCHAR(9), IN in_name VARCHAR(45), IN in_comment VARCHAR(250) )
 BEGIN
      IF (comprator = 0) THEN
-          SELECT n.id_ls_n_person, n.id_n_group, ng.name_n_group, n.egn_ls_n_person, n.nlk_ls_n_person, n.name_ls_n_person,
+          SELECT n.id_ls_n_person, n.id_n_group, ng.name_n_group, n.code_ls_n_person, n.egn_ls_n_person, n.nlk_ls_n_person, n.name_ls_n_person,
                    n.comment_ls_n_person FROM ls_n_person n LEFT OUTER JOIN n_group ng ON ng.id_n_group = n.id_n_group;
      END IF;
 
      IF (comprator = 1) THEN
-        INSERT INTO `ls_n_person`(id_n_group, egn_ls_n_person, nlk_ls_n_person, name_ls_n_person, comment_ls_n_person) VALUES(in_id_group, in_egn, in_nomlk, in_name, in_comment);
+        INSERT INTO `ls_n_person`(id_n_group, code_ls_n_person, egn_ls_n_person, nlk_ls_n_person, name_ls_n_person, comment_ls_n_person) VALUES(in_id_group, in_code, in_egn, in_nomlk, in_name, in_comment);
      END IF;
 
      IF (comprator = 2) THEN
-        UPDATE `ls_n_person` SET id_n_group = in_id_group, egn_ls_n_person = in_egn, nlk_ls_n_person = in_nomlk, name_ls_n_person = in_name, comment_ls_n_person = in_comment
+        UPDATE `ls_n_person` SET id_n_group = in_id_group, code_ls_n_person = in_code, egn_ls_n_person = in_egn, nlk_ls_n_person = in_nomlk, name_ls_n_person = in_name, comment_ls_n_person = in_comment
         WHERE `ls_n_person`.id_ls_n_person = in_id;
      END IF;
 
@@ -1452,9 +1495,9 @@ BEGIN
      END IF;
 
      IF (comprator = 5) THEN
-        SELECT n.id_ls_n_person, n.id_n_group, ng.name_n_group, n.egn_ls_n_person, n.nlk_ls_n_person, n.name_ls_n_person,
+        SELECT n.id_ls_n_person, n.id_n_group, ng.name_n_group, n.code_ls_n_person, n.egn_ls_n_person, n.nlk_ls_n_person, n.name_ls_n_person,
                    n.comment_ls_n_person FROM ls_n_person n LEFT OUTER JOIN n_group ng ON ng.id_n_group = n.id_n_group
-                   WHERE n.egn_ls_n_person LIKE CONCAT('%',in_egn,'%') AND n.name_ls_n_person LIKE CONCAT('%',in_name,'%');
+                   WHERE n.code_ls_n_person LIKE CONCAT('%',in_code,'%') AND n.egn_ls_n_person LIKE CONCAT('%',in_egn,'%') AND n.name_ls_n_person LIKE CONCAT('%',in_name,'%');
      END IF;
 
      IF (comprator = 6) THEN
@@ -1464,6 +1507,10 @@ BEGIN
 
      IF (comprator = 7) THEN
         SELECT MAX(n.id_ls_n_person) FROM `ls_n_person` n;
+     END IF;
+
+     IF (comprator = 8) THEN
+        SELECT MAX(n.code_ls_n_person) AS code_ls_n_person FROM `ls_n_person` n;
      END IF;
 
      IF (comprator = 9) THEN
@@ -1480,17 +1527,17 @@ END;
 CREATE PROCEDURE `nom_procedure_product`(IN in_comprator TINYINT,    IN in_id_pm INT(11),              IN in_id_ppp INT(11),        IN in_id_pp INT(11),
                                                  IN in_id_pf INT(11),        IN in_id_n_group INT(11),         IN in_id_pd INT(11),         IN in_name_pm VARCHAR(30),
                                                  IN in_sname_pm VARCHAR(20), IN in_fname_pm VARCHAR(20),       IN in_cname_pm VARCHAR(20),  IN in_max_pop_pm DOUBLE,
-                                                 IN in_flag_pm TINYINT,      IN in_expertsheet_pm VARCHAR(45), IN in_barcod_pm INT,         IN in_cod1_pm VARCHAR(20),
+                                                 IN in_flag_pm TINYINT,      IN in_expertsheet_pm VARCHAR(45), IN in_barcod_pm INT,  IN in_cod1_pm VARCHAR(20),
                                                  IN in_cod2_pm VARCHAR(20),  IN in_price0_pp DOUBLE,           IN in_price1_pp DOUBLE,      IN in_price2_pp DOUBLE,
                                                  IN in_price3_pp DOUBLE, IN in_min_pm INT(11))
 BEGIN
      IF (in_comprator = 0) THEN
         SELECT n.id_pm, n.id_n_group, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.cod1_pm,
-         n.cod2_pm, n.barcod_pm, n.max_pop_pm, n.expertsheet_pm, n.flag_pm,  pp.id_sl_curs, pp.price1_pp, pp.price2_pp,pp.price3_pp, pf.dds_pf, pf.excise_pf,
+         n.cod2_pm, n.barcod_pm, n.max_pop_pm, n.expertsheet_pm, n.flag_pm,  pp.id_sl_curs,pp.price0_pp,money.cod_lat_n_money,@stoinost_in_lv:=(sl_curs.value_sl_curs*pp.price0_pp)AS lv, pp.price1_pp, pp.price2_pp,pp.price3_pp, pf.dds_pf, pf.excise_pf,
          pf.other_pf, pd.id_pd, pd.m1_pd, pd.v1_pd, pd.m2_pd, pd.v2_pd, pd.m3_pd, pd.v3_pd,min_pm
-        FROM n_product_main n LEFT JOIN n_product_price pp ON pp.id_pp = n.id_pp LEFT JOIN n_product_fee pf ON pf.id_pf = n.id_pf LEFT JOIN
+        FROM n_product_main n LEFT JOIN n_product_price pp ON pp.id_pp = n.id_pp LEFT JOIN sl_curs  ON  pp.id_sl_curs = sl_curs.id_sl_curs LEFT JOIN n_money money ON money.id_n_money = sl_curs.id_sl_curs LEFT JOIN n_product_fee pf ON pf.id_pf = n.id_pf LEFT JOIN
          n_product_description pd ON pd.id_pd = n.id_pd LEFT JOIN n_product_promotion_price ppp ON ppp.id_ppp = n.id_ppp LEFT JOIN n_group g
-         ON g.id_n_group = n.id_n_group WHERE n.flag_pm = in_flag_pm;
+         ON g.id_n_group = n.id_n_group WHERE n.flag_pm = in_flag_pm ;
      END IF;
      IF (in_comprator = 1) THEN
         INSERT INTO n_product_main(id_n_group,id_ppp,id_pp, id_pf,name_pm, fname_pm, sname_pm,cname_pm,cod1_pm,
@@ -1513,6 +1560,30 @@ BEGIN
           FROM n_product_main n WHERE n.id_pm = in_id_pm;
      END IF;
 
+       IF (in_comprator = 5) THEN
+             IF (in_barcod_pm != 0) THEN
+              SELECT n.id_pm, n.id_n_group, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.cod1_pm,
+         n.cod2_pm, n.barcod_pm, n.max_pop_pm, n.expertsheet_pm, n.flag_pm,  pp.id_sl_curs,pp.price0_pp,money.cod_lat_n_money,@stoinost_in_lv:=(sl_curs.value_sl_curs*pp.price0_pp)AS lv, pp.price1_pp, pp.price2_pp,pp.price3_pp, pf.dds_pf, pf.excise_pf,
+         pf.other_pf, pd.id_pd, pd.m1_pd, pd.v1_pd, pd.m2_pd, pd.v2_pd, pd.m3_pd, pd.v3_pd,min_pm
+              FROM mida.n_product_main n LEFT JOIN n_product_price pp ON pp.id_pp = n.id_pp LEFT JOIN sl_curs  ON  pp.id_sl_curs = sl_curs.id_sl_curs LEFT JOIN n_money money ON money.id_n_money = sl_curs.id_sl_curs LEFT JOIN n_product_fee pf ON pf.id_pf = n.id_pf LEFT JOIN
+         n_product_description pd ON pd.id_pd = n.id_pd LEFT JOIN n_product_promotion_price ppp ON ppp.id_ppp = n.id_ppp LEFT JOIN n_group g
+         ON g.id_n_group = n.id_n_group WHERE n.name_pm  LIKE CONCAT('%',in_name_pm,'%') AND  n.fname_pm LIKE CONCAT('%',in_fname_pm,'%') AND
+              n.sname_pm LIKE CONCAT('%',in_sname_pm,'%') AND n.cname_pm LIKE CONCAT('%',in_cname_pm,'%') AND  n.cod1_pm LIKE CONCAT('%',in_cod1_pm,'%') AND
+              n.cod2_pm LIKE CONCAT('%',in_cod2_pm,'%') AND  n.barcod_pm LIKE CONCAT('%',in_barcod_pm,'%') AND  n.expertsheet_pm LIKE CONCAT('%',in_expertsheet_pm,'%')
+             AND flag_pm = in_flag_pm;
+           END IF;
+       IF (in_barcod_pm = 0) THEN
+          SELECT n.id_pm, n.id_n_group, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.cod1_pm,
+         n.cod2_pm, n.barcod_pm, n.max_pop_pm, n.expertsheet_pm, n.flag_pm,  pp.id_sl_curs,pp.price0_pp,money.cod_lat_n_money,@stoinost_in_lv:=(sl_curs.value_sl_curs*pp.price0_pp)AS lv, pp.price1_pp, pp.price2_pp,pp.price3_pp, pf.dds_pf, pf.excise_pf,
+         pf.other_pf, pd.id_pd, pd.m1_pd, pd.v1_pd, pd.m2_pd, pd.v2_pd, pd.m3_pd, pd.v3_pd,min_pm
+          FROM mida.n_product_main n LEFT JOIN n_product_price pp ON pp.id_pp = n.id_pp LEFT JOIN sl_curs  ON  pp.id_sl_curs = sl_curs.id_sl_curs LEFT JOIN n_money money ON money.id_n_money = sl_curs.id_sl_curs LEFT JOIN n_product_fee pf ON pf.id_pf = n.id_pf LEFT JOIN
+         n_product_description pd ON pd.id_pd = n.id_pd LEFT JOIN n_product_promotion_price ppp ON ppp.id_ppp = n.id_ppp LEFT JOIN n_group g
+         ON g.id_n_group = n.id_n_group WHERE n.name_pm  LIKE CONCAT('%',in_name_pm,'%') AND  n.fname_pm LIKE CONCAT('%',in_fname_pm,'%') AND
+          n.sname_pm LIKE CONCAT('%',in_sname_pm,'%') AND n.cname_pm LIKE CONCAT('%',in_cname_pm,'%') AND  n.cod1_pm LIKE CONCAT('%',in_cod1_pm,'%') AND
+          n.cod2_pm LIKE CONCAT('%',in_cod2_pm,'%') AND  n.expertsheet_pm LIKE CONCAT('%',in_expertsheet_pm,'%')
+         AND flag_pm = in_flag_pm;
+      END IF;
+     END IF;
 
 
 
@@ -1570,12 +1641,12 @@ BEGIN
     END IF;
 
      IF (in_comprator = 16) THEN
-        SELECT n.id_n_group,n.name_n_group, n.cod_n_group, n.nom_n_group FROM n_group n ORDER BY n.name_n_group;
+        SELECT n.id_n_group,n.name_n_group, n.cod_n_group, n.nom_n_group FROM n_group n WHERE n.nom_n_group=in_id_pf  ORDER BY n.name_n_group;
     END IF;
 
       IF (in_comprator = 17) THEN
           SELECT n.id_oso, n.id_mol, n.id_nm, n.code_contragent, n.name_n_contragent,
-           n.bul_n_contragent, n.dan_n_contragent, n.addres_n_contragent, n.tel_contragent, n.fax_contragent,
+           n.bul_n_contragent, n.dan_n_contragent, n.address_n_contragent, n.tel_contragent, n.fax_contragent,
            n.email_contragent, n.web_contragent, n.flag_n_contragent FROM mida.n_contragent n
            WHERE n.flag_n_contragent = 0 AND n.id_contragent=in_id_pm;
     END IF;
@@ -1597,12 +1668,12 @@ BEGIN
     END IF;
 
      IF (in_comprator = 22) THEN
-        SELECT s.id_sl_curs, s.data_time_sl_curs, s.id_n_money, s.value_sl_curs FROM sl_curs s WHERE s.id_sl_curs = in_id_pd;
+        SELECT s.id_sl_curs, s.date_time_sl_curs, s.id_n_money, s.value_sl_curs FROM sl_curs s WHERE s.id_sl_curs = in_id_pd;
     END IF;
 
     IF (in_comprator = 24) THEN
          SELECT n.id_contragent, n.id_oso, n.id_mol, n.id_nm, n.code_contragent, n.name_n_contragent, n.bul_n_contragent,
-           n.dan_n_contragent, n.addres_n_contragent, n.tel_contragent, n.fax_contragent, n.email_contragent, n.web_contragent,
+           n.dan_n_contragent, n.address_n_contragent, n.tel_contragent, n.fax_contragent, n.email_contragent, n.web_contragent,
            n.flag_n_contragent FROM n_contragent n WHERE n.flag_n_contragent = 0;
     END IF;
 
@@ -1611,7 +1682,8 @@ BEGIN
     END IF;
 
      IF (in_comprator = 26) THEN
-         SELECT s.id_sl_curs, s.data_time_sl_curs, s.id_n_money, s.value_sl_curs FROM mida.sl_curs s ORDER BY s.data_time_sl_curs;
+         SELECT s.id_sl_curs, s.date_time_sl_curs, s.id_n_money,money.cod_lat_n_money ,s.value_sl_curs FROM mida.sl_curs s, n_money money
+         WHERE money.id_n_money = s.id_n_money  ORDER BY s.date_time_sl_curs;
     END IF;
 
       IF (in_comprator = 27) THEN
@@ -1633,9 +1705,28 @@ BEGIN
          WHERE id_pd = in_id_pd;
     END IF;
 
+     IF (in_comprator = 30) THEN
+         SELECT s.id_pm, s.id_contragent, s.flag_scp FROM mida.sl_contragent_product s
+         WHERE id_pm = in_id_pm AND flag_scp = in_flag_pm;
+    END IF;
 
+     IF (in_comprator = 31) THEN
+         INSERT INTO mida.sl_contragent_product(id_pm,id_contragent,flag_scp)
+          VALUES(in_id_pm,in_id_n_group,in_flag_pm);
+    END IF;
 
+    IF (in_comprator = 32) THEN
+     UPDATE mida.sl_contragent_product  SET id_contragent = in_id_n_group,
+         flag_scp = in_flag_pm
+         WHERE id_pm = in_id_pm;
 
+    END IF;
+
+      IF (in_comprator = 33) THEN
+
+       SELECT n.id_pm, n.flag_pm FROM mida.n_product_main n WHERE n.id_pm = in_id_pm;
+
+    END IF;
 
 END;
 
@@ -1687,6 +1778,54 @@ BEGIN
      IF (comprator = 9) THEN
         SELECT MAX(n.id_n_group) AS id_n_group FROM n_group n
                               WHERE n.nom_n_group = 5;
+     END IF;
+
+END;
+
+#
+# Source for procedure sl_procedure_exchange_rate
+#
+
+CREATE PROCEDURE `sl_procedure_exchange_rate`(IN comprator TINYINT, IN in_id INT(10), IN in_date DATE, IN in_id_money INT(11), IN in_code_money VARCHAR(11), IN in_value DECIMAL(10,5))
+BEGIN
+     IF (comprator = 0) THEN
+        SELECT n.id_sl_exchange_rate, n.date_sl_exchange_rate, n.id_n_money, nm.cod_n_money, n.value_sl_exchange_rate
+            FROM sl_exchange_rate n LEFT OUTER JOIN n_money nm ON nm.id_n_money = n.id_n_money;
+     END IF;
+
+     IF (comprator = 1) THEN
+        INSERT INTO sl_exchange_rate (date_sl_exchange_rate, id_n_money, value_sl_exchange_rate) VALUES(in_date, in_id_money, in_value);
+     END IF;
+
+     IF (comprator = 2) THEN
+        UPDATE sl_exchange_rate SET date_sl_exchange_rate = in_date, id_n_money = in_id_money, value_sl_exchange_rate = in_value
+           WHERE sl_exchange_rate.id_sl_exchange_rate = in_id;
+     END IF;
+
+     IF (comprator = 3) THEN
+        DELETE FROM sl_exchange_rate  WHERE id_sl_exchange_rate = in_id;
+     END IF;
+
+     IF (comprator = 4) THEN
+        SELECT n.code_ntd, n.name_ntd, n.name_print_ntd FROM sl_exchange_rate n WHERE n.id_sl_exchange_rate = in_id;
+     END IF;
+
+     IF (comprator = 5) THEN
+        SELECT n.id_sl_exchange_rate, n.datesl_exchange_rate, n.id_n_money, nm.cod_n_money, n.valuesl_exchange_rate
+                   FROM sl_exchange_rate n LEFT OUTER JOIN n_money nm ON nm.id_n_money = n.id_n_money
+                   WHERE n.date_sl_exchange_rate LIKE CONCAT('%',in_date,'%') AND  nm.cod_n_money LIKE CONCAT('%',in_code_money,'%');
+     END IF;
+
+     IF (comprator = 6) THEN
+        SELECT nm.id_n_money, nm.cod_n_money FROM n_money nm WHERE nm.id_n_money = in_id_money;
+     END IF;
+
+     IF (comprator = 7) THEN
+        SELECT MAX(n.id_sl_exchange_rate) AS id FROM sl_exchange_rate n;
+     END IF;
+
+     IF (comprator = 9) THEN
+       DELETE FROM sl_exchange_rate;
      END IF;
 
 END;

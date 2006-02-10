@@ -162,7 +162,13 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         jToolBar1.add(jButton1);
 
-        jButton2.setText("jButton2");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Group 4.png")));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         jToolBar1.add(jButton2);
 
         getContentPane().add(jToolBar1, java.awt.BorderLayout.NORTH);
@@ -537,6 +543,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-448)/2, 757, 448);
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        loadPerson();
+    }//GEN-LAST:event_jButton2ActionPerformed
     
     private void nomMenu_DocTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomMenu_DocTypeActionPerformed
         loadTypeDocuments();
