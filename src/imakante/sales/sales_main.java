@@ -117,7 +117,6 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jSeparator4 = new javax.swing.JSeparator();
         nomALevel = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JSeparator();
-        nomMenu_DocType = new javax.swing.JMenuItem();
         sprMenu = new javax.swing.JMenu();
         spravkiMenu_nal = new javax.swing.JMenuItem();
         balansMenu = new javax.swing.JMenu();
@@ -127,6 +126,9 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         sluMenu = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        nomMenu_DocType = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         contentMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
@@ -445,15 +447,6 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         nomMenu.add(jSeparator1);
 
-        nomMenu_DocType.setText("\u0422\u0438\u043f\u043e\u0432\u0435 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438");
-        nomMenu_DocType.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomMenu_DocTypeActionPerformed(evt);
-            }
-        });
-
-        nomMenu.add(nomMenu_DocType);
-
         menuBar.add(nomMenu);
 
         sprMenu.setText("\u0421\u041f\u0420\u0410\u0412\u041a\u0418");
@@ -486,6 +479,21 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         jMenuItem2.setText("\u041d\u0430\u0441\u0442\u0440\u043e\u0438\u043a\u0430 \u041f\u0440\u043e\u0433\u0440\u0430\u043c\u0430");
         sluMenu.add(jMenuItem2);
+
+        nomMenu_DocType.setText("\u0422\u0438\u043f\u043e\u0432\u0435 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438");
+        nomMenu_DocType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomMenu_DocTypeActionPerformed(evt);
+            }
+        });
+
+        sluMenu.add(nomMenu_DocType);
+
+        jMenuItem6.setText("\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438 \u043d\u043e\u043c\u0435\u0440\u0430\u0446\u0438\u044f");
+        sluMenu.add(jMenuItem6);
+
+        jMenuItem5.setText("\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b\u0438");
+        sluMenu.add(jMenuItem5);
 
         menuBar.add(sluMenu);
 
@@ -663,6 +671,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
