@@ -222,7 +222,9 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
     private  nom.casaDB internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
-    public static final String Names[] = {"id","id_group",
+    public static final String Names[] = {
+    "id",
+    "id_group",
     "\u0418\u043c\u0435 \u0433\u0440\u0443\u043f\u0438",
     "\u041a\u043e\u0434\u043e\u0432\u0435",
     "\u0418\u043c\u0435\u043d\u0430",
@@ -555,8 +557,10 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
     private void setAllVariables(){
         setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
         setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("id_group")));
-        setCod((Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434\u043e\u0432\u0435")));
-        setNames((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435\u043d\u0430")));
-        setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440")));
+        setCod((Integer) table.getValueAt(getRow(), getColumnIndex("cod")));
+        setNames((String) table.getValueAt(getRow(), getColumnIndex("name")));
+     //   setAcc((String) table.getValueAt(getRow(), getColumnIndex("acc")));
+     //   setVidAcc((Integer) table.getValueAt(getRow(), getColumnIndex("va")));
+        setComment((String) table.getValueAt(getRow(), getColumnIndex("comm")));
     }
 }
