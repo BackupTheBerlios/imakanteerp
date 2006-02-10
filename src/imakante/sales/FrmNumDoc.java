@@ -223,10 +223,9 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
     public static final String Names[] = {"id","id_group",
-    "\u0418\u043c\u0435 \u0433\u0440\u0443\u043f\u0438",
-    "\u041a\u043e\u0434\u043e\u0432\u0435",
-    "\u0418\u043c\u0435\u043d\u0430",
-    "\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440"};
+    "3",
+    "4",
+    };
     //---------------END My Variables
     
     //---------------START Methods
@@ -555,8 +554,6 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
     private void setAllVariables(){
         setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
         setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("id_group")));
-        setCod((Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434\u043e\u0432\u0435")));
-        setNames((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435\u043d\u0430")));
-        setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440")));
-    }
+        setCod((Integer) table.getValueAt(getRow(), getColumnIndex("4")));
+     }
 }
