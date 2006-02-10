@@ -56,6 +56,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         desktopPane = new javax.swing.JDesktopPane();
         jToolBar1 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         docMenu = new javax.swing.JMenu();
         docMenu_prod = new javax.swing.JMenuItem();
@@ -160,6 +161,9 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         });
 
         jToolBar1.add(jButton1);
+
+        jButton2.setText("jButton2");
+        jToolBar1.add(jButton2);
 
         getContentPane().add(jToolBar1, java.awt.BorderLayout.NORTH);
 
@@ -667,6 +671,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenuItem fakMenu_opr;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
