@@ -542,6 +542,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         helpMenu.add(aboutMenuItem);
 
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Download16.png")));
         jMenuItem1.setText("\u041e\u0431\u043d\u043e\u0432\u044f\u0432\u0430\u043d\u0435");
         helpMenu.add(jMenuItem1);
 
