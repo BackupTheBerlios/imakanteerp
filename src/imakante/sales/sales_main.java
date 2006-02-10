@@ -56,7 +56,9 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         desktopPane = new javax.swing.JDesktopPane();
         jToolBar1 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         docMenu = new javax.swing.JMenu();
@@ -118,7 +120,6 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         nomMenu_con = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JSeparator();
         nomALevel = new javax.swing.JMenuItem();
-        jSeparator1 = new javax.swing.JSeparator();
         sprMenu = new javax.swing.JMenu();
         spravkiMenu_nal = new javax.swing.JMenuItem();
         balansMenu = new javax.swing.JMenu();
@@ -163,6 +164,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         jToolBar1.add(jButton1);
 
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Contact.png")));
+        jButton5.setToolTipText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
+        jToolBar1.add(jButton5);
+
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Group 4.png")));
         jButton2.setToolTipText("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0438 \u041b\u0438\u0446\u0430");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -172,6 +177,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         });
 
         jToolBar1.add(jButton2);
+
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Download.png")));
+        jButton4.setToolTipText("\u041e\u0431\u043d\u043e\u0432\u044f\u0432\u0430\u043d\u0435");
+        jToolBar1.add(jButton4);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help File.png")));
         jButton3.setToolTipText("\u041f\u043e\u043c\u043e\u0449");
@@ -308,6 +317,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         nomMenu_Kontragenti.add(kontragentiMenu_groupe);
 
+        kontragentiMenu_Kontr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Contact16.png")));
         kontragentiMenu_Kontr.setText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
         kontragentiMenu_Kontr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -338,6 +348,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         nomMenu_Litsa.add(litsaMenu_groupe_litsa);
 
+        litsaMenu_in.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Group416.png")));
         litsaMenu_in.setText("\u041b\u0438\u0446\u0430");
         litsaMenu_in.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -461,8 +472,6 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         nomALevel.setText("\u0410\u043d\u0430\u043b\u0438\u0442\u0438\u0447\u043d\u0438 \u043d\u0438\u0432\u0430");
         nomMenu.add(nomALevel);
 
-        nomMenu.add(jSeparator1);
-
         menuBar.add(nomMenu);
 
         sprMenu.setText("\u0421\u041f\u0420\u0410\u0412\u041a\u0418");
@@ -514,6 +523,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         menuBar.add(sluMenu);
 
         helpMenu.setText("\u041f\u041e\u041c\u041e\u0429");
+        contentMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help16.png")));
         contentMenuItem.setText("\u0421\u044a\u0434\u044a\u0440\u0436\u0430\u043d\u0438\u0435");
         helpMenu.add(contentMenuItem);
 
@@ -526,7 +536,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         helpMenu.add(aboutMenuItem);
 
-        jMenuItem1.setText("Item");
+        jMenuItem1.setText("\u041e\u0431\u043d\u043e\u0432\u044f\u0432\u0430\u043d\u0435");
         helpMenu.add(jMenuItem1);
 
         menuBar.add(helpMenu);
@@ -689,13 +699,14 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JToolBar jToolBar1;
