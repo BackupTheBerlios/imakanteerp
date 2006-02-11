@@ -56,6 +56,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         desktopPane = new javax.swing.JDesktopPane();
         jToolBar1 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -163,6 +164,16 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         });
 
         jToolBar1.add(jButton1);
+
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Objects 2_large.png")));
+        jButton6.setToolTipText("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0430 \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u0438");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jToolBar1.add(jButton6);
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Contact.png")));
         jButton5.setToolTipText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
@@ -567,6 +578,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         setBounds((screenSize.width-757)/2, (screenSize.height-448)/2, 757, 448);
     }// </editor-fold>//GEN-END:initComponents
     
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        loadFrmProducts();
+    }//GEN-LAST:event_jButton6ActionPerformed
+    
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         try{
             loadKlienti();
@@ -714,6 +729,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
@@ -828,7 +844,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         dbConn = imakante.com.NewMain.getConnection();
     }
     private void loadProba(){
-       
+        
     }
     private java.sql.Connection makeConn(String dbDriver,String dbURL,String dbUser, String dbPass) throws java.sql.SQLException {
         
