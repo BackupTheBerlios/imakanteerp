@@ -106,6 +106,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButtonSearch">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/Symbol Search.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="&#x422;&#x44a;&#x440;&#x441;&#x435;&#x43d;&#x435;"/>
               </Properties>
               <Events>
@@ -164,6 +167,9 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="jButtonNew">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/Symbol Add 2.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="&#x41d;&#x43e;&#x432;"/>
           </Properties>
           <Events>
@@ -172,6 +178,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonEdit">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/Report Edit 2.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="&#x420;&#x435;&#x434;&#x430;&#x43a;&#x446;&#x438;&#x44f;"/>
           </Properties>
           <Events>
@@ -180,6 +189,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonPrint">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/Printer.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="&#x41f;&#x435;&#x447;&#x430;&#x442;"/>
           </Properties>
           <Events>
@@ -193,6 +205,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonDel">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/Symbol Delete 2.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="&#x418;&#x437;&#x442;&#x440;&#x438;&#x432;&#x430;&#x43d;&#x435;"/>
           </Properties>
           <Events>
@@ -201,6 +216,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonRefresh">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/Symbol Refresh 3.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="&#x412;&#x441;&#x438;&#x447;&#x43a;&#x438; &#x437;&#x430;&#x43f;&#x438;&#x441;&#x438;"/>
           </Properties>
           <Events>
