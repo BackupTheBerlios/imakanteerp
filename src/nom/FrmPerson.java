@@ -519,6 +519,9 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
             }
             if(getRow()==getMaxRow()){
                 setAtEnd(true);
+            }else{
+            setAtBegining(false);
+            setAtEnd(false);
             }
             setAllVariables();
             nom.aePerson ae_Person = new nom.aePerson(this, true);

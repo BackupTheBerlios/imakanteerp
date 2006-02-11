@@ -294,6 +294,9 @@ public class FrmGroup extends  iInternalFrame implements WindowListener //imakan
             }
             if(getRow()==getMaxRow()){
                 setAtEnd(true);
+            }else{
+            setAtBegining(false);
+            setAtEnd(false);
             }
             setId((Integer) table.getValueAt(getRow(), 0));
             setCod((String) table.getValueAt(getRow(), 1));

@@ -507,6 +507,9 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
             }
             if(getRow()==getMaxRow()){
                 setAtEnd(true);
+            }else{
+            setAtBegining(false);
+            setAtEnd(false);
             }
             setId((Integer) table.getValueAt(getRow(), 0));
             setIDG((Integer) table.getValueAt(getRow(), 1));
