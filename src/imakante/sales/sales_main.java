@@ -828,15 +828,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         dbConn = imakante.com.NewMain.getConnection();
     }
     private void loadProba(){
-        if(levelActivate==false){
-            loadLevelDialog(1);
-            FrmTransferi tr = new FrmTransferi();
-            tr.setVisible(true);
-        }else{
-            FrmTransferi tr = new FrmTransferi();
-            tr.setVisible(true);
-        }
-        
+       
     }
     private java.sql.Connection makeConn(String dbDriver,String dbURL,String dbUser, String dbPass) throws java.sql.SQLException {
         
