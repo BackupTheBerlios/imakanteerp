@@ -508,10 +508,13 @@ public class FrmIncom extends  imakante.com.vcomponents.iInternalFrame implement
     }
     
     private void newRecord(){
-        setId(internalObject.getMaxId());
-        setIDG(internalObject.getMaxGrID());
-        setCod(internalObject.getMaxCod()+1);
-        internalObject.insertRow(getCod(), getIDG());
+        internalObject.insertRow((internalObject.getMaxCod() + 1), 0);
+        refreshTable();
+        setRow(getMaxRow());
+        table.changeSelection(getRow(), 2, false, false);
+        setAllVariables();
+        setAtBegining(false);
+        setAtEnd(true);
         nom.aeIncom ae_Incom = new nom.aeIncom(this, true);
         ae_Incom.setVisible(true);
         refreshTable();

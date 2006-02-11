@@ -435,9 +435,21 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         moneyMenu.add(moneyMenu_groupe);
 
         moneyMenu_in.setText("\u041f\u0440\u0438\u0445\u043e\u0434\u0438");
+        moneyMenu_in.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                moneyMenu_inActionPerformed(evt);
+            }
+        });
+
         moneyMenu.add(moneyMenu_in);
 
         moneyMenu_out.setText("\u0420\u0430\u0437\u0445\u043e\u0434\u0438");
+        moneyMenu_out.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                moneyMenu_outActionPerformed(evt);
+            }
+        });
+
         moneyMenu.add(moneyMenu_out);
 
         moneyMenu_valutes.setText("\u0412\u0430\u043b\u0443\u0442\u0438");
@@ -582,6 +594,14 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-448)/2, 757, 448);
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void moneyMenu_outActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moneyMenu_outActionPerformed
+        loadExpens();
+    }//GEN-LAST:event_moneyMenu_outActionPerformed
+    
+    private void moneyMenu_inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moneyMenu_inActionPerformed
+        loadIncome();
+    }//GEN-LAST:event_moneyMenu_inActionPerformed
     
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         loadFrmProducts();
@@ -998,7 +1018,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     //METHOD FOR LOAD FORMS
     /*
      *
-    */
+     */
     //PRODUCTS
     
     private void loadFrmProducts() {
@@ -1075,7 +1095,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         Money.setVisible(true);
     }
     //PARICHNI INCOME
-     private void loadIncome() {
+    private void loadIncome() {
         nom.FrmIncom Income = new nom.FrmIncom("\u041a\u0443\u0440\u0441\u043e\u0432\u0435 \u043d\u0430 \u0432\u0430\u043b\u0443\u0442\u0438", this);
         desktopPane.add(Income);
         try {
@@ -1085,7 +1105,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         }
         Income.setVisible(true);
     }
-     private void loadExpens() {
+    private void loadExpens() {
         nom.FrmExpens Expens = new nom.FrmExpens("\u041a\u0443\u0440\u0441\u043e\u0432\u0435 \u043d\u0430 \u0432\u0430\u043b\u0443\u0442\u0438", this);
         desktopPane.add(Expens);
         try {

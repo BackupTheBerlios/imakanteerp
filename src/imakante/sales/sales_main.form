@@ -327,11 +327,17 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x41f;&#x440;&#x438;&#x445;&#x43e;&#x434;&#x438;"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="moneyMenu_inActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="moneyMenu_out">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x420;&#x430;&#x437;&#x445;&#x43e;&#x434;&#x438;"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="moneyMenu_outActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="moneyMenu_valutes">
                   <Properties>
