@@ -60,6 +60,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
         jTextName.setPreferredSize(new java.awt.Dimension(160, 20));
         jPanel4.add(jTextName);
 
+        jButtonSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Search.png")));
         jButtonSearch.setText("\u0422\u044a\u0440\u0441\u0435\u043d\u0435");
         jButtonSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,6 +89,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel3.setPreferredSize(new java.awt.Dimension(801, 37));
+        jButtonNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Add 2.png")));
         jButtonNew.setText("\u041d\u043e\u0432");
         jButtonNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,6 +99,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
 
         jPanel3.add(jButtonNew);
 
+        jButtonEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Report Edit 2.png")));
         jButtonEdit.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f");
         jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,6 +109,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
 
         jPanel3.add(jButtonEdit);
 
+        jButtonPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Printer.png")));
         jButtonPrint.setText("\u041f\u0435\u0447\u0430\u0442");
         jButtonPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,6 +122,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
         jButtonPrnReport.setText("\u041f\u0435\u0447\u0430\u0442 \u0440\u0435\u043f\u043e\u0440\u0442");
         jPanel3.add(jButtonPrnReport);
 
+        jButtonDel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Delete 2.png")));
         jButtonDel.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
         jButtonDel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,6 +132,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
 
         jPanel3.add(jButtonDel);
 
+        jButtonRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Refresh 3.png")));
         jButtonRefresh.setText("\u0412\u0441\u0438\u0447\u043a\u0438 \u0437\u0430\u043f\u0438\u0441\u0438");
         jButtonRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -222,12 +228,12 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
     public static final String Names[] = {
-     "id",
-    "id_group",
-    "\u0418\u043c\u0435 \u0433\u0440\u0443\u043f\u0438",
-    "\u041a\u043e\u0434\u043e\u0432\u0435",
-    "\u0418\u043c\u0435\u043d\u0430",
-    "\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440"};
+        "id",
+        "id_group",
+        "\u0418\u043c\u0435 \u0433\u0440\u0443\u043f\u0438",
+        "\u041a\u043e\u0434\u043e\u0432\u0435",
+        "\u0418\u043c\u0435\u043d\u0430",
+        "\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440"};
     //---------------END My Variables
     
     //---------------START Methods
@@ -428,7 +434,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
         if(getRow() == 0){
             setAtBegining(true);
         }
-         System.out.println("mOneRowMinus()" + getRow() + "      " + getMaxRow());
+        System.out.println("mOneRowMinus()" + getRow() + "      " + getMaxRow());
     }
     
     public void mTableBegining() {
@@ -483,29 +489,33 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     }
     
     private void newRecord() {
-        setId(internalObject.getMaxId());
-        setIDG(internalObject.getMaxGrID());
-        setCod(internalObject.getMaxCod()+1);
-        internalObject.insertRow(getCod(), getIDG());
+        internalObject.insertRow((internalObject.getMaxCod() + 1), 0);
+        refreshTable();
+        setRow(getMaxRow());
+        table.changeSelection(getRow(), 2, false, false);
+        setAllVariables();
+        setAtBegining(false);
+        setAtEnd(true);
         nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
         ae_Casa.setVisible(true);
+        
         refreshTable();
     }
     
     private void editRecord() {
         if (table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());
-           
+            
             if(getRow()==0){          //manage button state of ae form
                 setAtBegining(true);
             }
             if(getRow()==getMaxRow()){
                 setAtEnd(true);
             }else{
-            setAtBegining(false);
-            setAtEnd(false);
+                setAtBegining(false);
+                setAtEnd(false);
             }
-                setAllVariables();
+            setAllVariables();
             nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
             ae_Casa.setVisible(true);
         } else {  }
