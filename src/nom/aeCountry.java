@@ -1,336 +1,427 @@
 
 package nom;
 
-import java.awt.event.KeyEvent;
-import imakante.com.vcomponents.*;
-
-
-public class aeCountry extends iDialog{
+public class aeCountry extends imakante.com.vcomponents.iDialog {
     
-    public aeCountry(imakante.com.vcomponents.iInternalFrame frame, boolean ismodal,int row, int id, int code, String name) {
-        super(frame, ismodal);
-        this.row = row;
-        this.id = id;
-        this.code = code;
-        this.name =name;
+    public aeCountry(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
+        super(frame, modal);
+        this.myParent = (nom.FrmCasa) frame;
         initComponents();
-        getNavigatiionState();
+        getNavigationState();
+        jButtonUndo.setEnabled(false);
+       
         this.setResizable(false);
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        int x = (((dim.width)-(this.getSize().width))/2);
-        int y = (((dim.height)-(this.getSize().height))/2);
-        this.setLocation(x, y);
-        
+        repaintComp();
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
-
-        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel2.setText(""+code);
-        jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField1.setText(name);
-        jPanel4 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jButtonSave = new javax.swing.JButton();
+        jButtonUndo = new javax.swing.JButton();
+        jButtonClose = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton2.setEnabled(false);
-        jButton3 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jButtonToBegin = new javax.swing.JButton();
+        jButtonOneRowM = new javax.swing.JButton();
+        jButtonOneRowP = new javax.swing.JButton();
+        jButtonToEnd = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+
+        jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        jPanel1.setLayout(new java.awt.GridBagLayout());
+        setTitle("\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043d\u0430 \u0437\u0430\u043f\u0438\u0441 \u043d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0430 \u041a\u0430\u0441\u0438");
+        jPanel1.setPreferredSize(new java.awt.Dimension(263, 33));
+        jButtonSave.setText("\u0421\u044a\u0445\u0440\u0430\u043d\u0438");
+        jButtonSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSaveActionPerformed(evt);
+            }
+        });
+        jButtonSave.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonSaveKeyPressed(evt);
+            }
+        });
 
-        jPanel1.setBorder(new javax.swing.border.TitledBorder(""));
-        jLabel1.setText("\u041d\u043e\u043c\u0435\u0440");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 20, 5, 5);
-        jPanel1.add(jLabel1, gridBagConstraints);
+        jPanel1.add(jButtonSave);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 20);
-        jPanel1.add(jLabel2, gridBagConstraints);
+        jButtonUndo.setText("\u041f\u0440\u0435\u0434\u0438\u0448\u043d\u0438");
+        jButtonUndo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUndoActionPerformed(evt);
+            }
+        });
+        jButtonUndo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonUndoKeyPressed(evt);
+            }
+        });
 
-        jLabel3.setText("\u0414\u044a\u0440\u0436\u0430\u0432\u0430");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 20, 10, 5);
-        jPanel1.add(jLabel3, gridBagConstraints);
+        jPanel1.add(jButtonUndo);
 
-        jTextField1.setMaximumSize(new java.awt.Dimension(2147483647, 200));
-        jTextField1.setPreferredSize(new java.awt.Dimension(160, 19));
+        jButtonClose.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
+        jButtonClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCloseActionPerformed(evt);
+            }
+        });
+        jButtonClose.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonCloseKeyPressed(evt);
+            }
+        });
+
+        jPanel1.add(jButtonClose);
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.SOUTH);
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.setPreferredSize(new java.awt.Dimension(400, 300));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("\u041d\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u044f"));
+        jPanel3.setPreferredSize(new java.awt.Dimension(230, 70));
+        jButtonToBegin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation First 2.png")));
+        jButtonToBegin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonToBeginActionPerformed(evt);
+            }
+        });
+        jButtonToBegin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonToBeginKeyPressed(evt);
+            }
+        });
+
+        jPanel3.add(jButtonToBegin);
+
+        jButtonOneRowM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation Left 2.png")));
+        jButtonOneRowM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonOneRowMActionPerformed(evt);
+            }
+        });
+        jButtonOneRowM.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonOneRowMKeyPressed(evt);
+            }
+        });
+
+        jPanel3.add(jButtonOneRowM);
+
+        jButtonOneRowP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation Right 2.png")));
+        jButtonOneRowP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonOneRowPActionPerformed(evt);
+            }
+        });
+        jButtonOneRowP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonOneRowPKeyPressed(evt);
+            }
+        });
+
+        jPanel3.add(jButtonOneRowP);
+
+        jButtonToEnd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation Last 2.png")));
+        jButtonToEnd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonToEndActionPerformed(evt);
+            }
+        });
+        jButtonToEnd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonToEndKeyPressed(evt);
+            }
+        });
+
+        jPanel3.add(jButtonToEnd);
+
+        jLabel2.setText("\u041a\u043e\u0434:");
+
+        jLabel4.setText("\u0418\u043c\u0435:");
+
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField1FocusLost(evt);
+            }
+        });
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField1KeyPressed(evt);
             }
         });
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 10, 20);
-        jPanel1.add(jTextField1, gridBagConstraints);
-
-        jPanel4.setBorder(new javax.swing.border.TitledBorder("\u041d\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u044f "));
-        jButton4.setText("<<");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField3KeyPressed(evt);
             }
         });
 
-        jPanel4.add(jButton4);
+        org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel2Layout.createSequentialGroup()
+                        .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jPanel2Layout.createSequentialGroup()
+                                .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED))
+                            .add(jPanel2Layout.createSequentialGroup()
+                                .add(jLabel4)
+                                .add(19, 19, 19)))
+                        .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 80, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 268, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(151, 151, 151))
+                    .add(jPanel2Layout.createSequentialGroup()
+                        .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                        .add(133, 133, 133))))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel2)
+                    .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel4)
+                    .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(17, 17, 17)
+                .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+        getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
-        jButton5.setText("<");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
-        jPanel4.add(jButton5);
-
-        jButton6.setText(">");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-
-        jPanel4.add(jButton6);
-
-        jButton7.setText(">>");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-
-        jPanel4.add(jButton7);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        jPanel1.add(jPanel4, gridBagConstraints);
-
-        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
-
-        jButton1.setText("\u0421\u044a\u0445\u0440\u0430\u043d\u0438");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jPanel2.add(jButton1);
-
-        jButton2.setText("\u041f\u0440\u0435\u0434\u0438\u0448\u043d\u0438");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jButton2.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jButton2StateChanged(evt);
-            }
-        });
-
-        jPanel2.add(jButton2);
-
-        jButton3.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jPanel2.add(jButton3);
-
-        getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
-
-        pack();
-    }
-    // </editor-fold>//GEN-END:initComponents
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-367)/2, (screenSize.height-228)/2, 367, 228);
+    }// </editor-fold>//GEN-END:initComponents
     
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        mOneMinus();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+        cfFocus();
+    }//GEN-LAST:event_jTextField1FocusLost
     
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        goBegin();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void jButtonCloseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonCloseKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonClose.doClick();}
+    }//GEN-LAST:event_jButtonCloseKeyPressed
     
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        goEnd();
-    }//GEN-LAST:event_jButton7ActionPerformed
+    private void jButtonUndoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonUndoKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonUndo.doClick();}
+    }//GEN-LAST:event_jButtonUndoKeyPressed
     
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        mOnePlus();
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void jButtonSaveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonSaveKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonSave.doClick();}
+    }//GEN-LAST:event_jButtonSaveKeyPressed
     
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        closeDialog();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void jButtonToEndKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonToEndKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonToEnd.doClick();}
+    }//GEN-LAST:event_jButtonToEndKeyPressed
     
-    private void jButton2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jButton2StateChanged
+    private void jButtonOneRowPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonOneRowPKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonOneRowP.doClick();}
+    }//GEN-LAST:event_jButtonOneRowPKeyPressed
+    
+    private void jButtonOneRowMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonOneRowMKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonOneRowM.doClick();}
+    }//GEN-LAST:event_jButtonOneRowMKeyPressed
+    
+    private void jButtonToBeginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonToBeginKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonToBegin.doClick();}
+    }//GEN-LAST:event_jButtonToBeginKeyPressed
+    
+    private void jTextField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyPressed
         
-    }//GEN-LAST:event_jButton2StateChanged
-    
+    }//GEN-LAST:event_jTextField3KeyPressed
+        
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-        
-        if (evt.getKeyCode() != KeyEvent.VK_ENTER){ jButton2.setEnabled(true);}
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER){jTextField1.transferFocus(); }
-        
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ cfFocus(); }
     }//GEN-LAST:event_jTextField1KeyPressed
     
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        getOldValue();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jButtonUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUndoActionPerformed
+        undoCorr(); //vraja predishnite stoinosti
+    }//GEN-LAST:event_jButtonUndoActionPerformed
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        update();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
+        saveRecord();
+    }//GEN-LAST:event_jButtonSaveActionPerformed
+    
+    private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButtonCloseActionPerformed
+    // gotoNext
+    private void jButtonOneRowPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowPActionPerformed
+        myParent.mOneRowPlus();
+        if(myParent.isAtEnd()) {
+            jButtonToEnd.setEnabled(false);
+            jButtonOneRowP.setEnabled(false);
+            jButtonToEnd.repaint();
+            jButtonOneRowP.repaint();
+        }
+        jButtonToBegin.setEnabled(true);
+        jButtonOneRowM.setEnabled(true);
+        jButtonToBegin.repaint();
+        jButtonOneRowM.repaint();
+        repaintComp();
+    }//GEN-LAST:event_jButtonOneRowPActionPerformed
+    // gotoLast
+    private void jButtonToEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToEndActionPerformed
+        myParent.mTableEnd();
+        jButtonToEnd.setEnabled(false);
+        jButtonOneRowP.setEnabled(false);
+        jButtonToEnd.repaint();
+        jButtonOneRowP.repaint();
+        jButtonToBegin.setEnabled(true);
+        jButtonOneRowM.setEnabled(true);
+        jButtonToBegin.repaint();
+        jButtonOneRowM.repaint();
+        repaintComp();
+    }//GEN-LAST:event_jButtonToEndActionPerformed
+    // gotoPrev
+    private void jButtonOneRowMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowMActionPerformed
+        myParent.mOneRowMinus();
+        if(myParent.isAtBegining()) {
+            jButtonToBegin.setEnabled(false);
+            jButtonOneRowM.setEnabled(false);
+            jButtonToBegin.repaint();
+            jButtonOneRowM.repaint();
+        }
+        jButtonToEnd.setEnabled(true);
+        jButtonOneRowP.setEnabled(true);
+        jButtonToEnd.repaint();
+        jButtonOneRowP.repaint();
+        repaintComp();
+    }//GEN-LAST:event_jButtonOneRowMActionPerformed
+    // gotoFirst
+    private void jButtonToBeginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToBeginActionPerformed
+        myParent.mTableBegining();
+        jButtonToBegin.setEnabled(false);
+        jButtonOneRowM.setEnabled(false);
+        jButtonToBegin.repaint();
+        jButtonOneRowM.repaint();
+        jButtonToEnd.setEnabled(true);
+        jButtonOneRowP.setEnabled(true);
+        jButtonToEnd.repaint();
+        jButtonOneRowP.repaint();
+        repaintComp();
+    }//GEN-LAST:event_jButtonToBeginActionPerformed
+    
+    private void cfFocus() {
+        if(cFields()) {
+            jTextField1.transferFocus();
+        } else {
+            jTextField1.requestFocus();
+        }
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButtonClose;
+    private javax.swing.JButton jButtonOneRowM;
+    private javax.swing.JButton jButtonOneRowP;
+    private javax.swing.JButton jButtonSave;
+    private javax.swing.JButton jButtonToBegin;
+    private javax.swing.JButton jButtonToEnd;
+    private javax.swing.JButton jButtonUndo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
+    //--------------- My Variables
+    private nom.FrmCountry myParent;
     
-    private nom.FrmCountry myparent;
-    private int row = 0;
-    private int id = 0;
-    private int code =0;
-    private String name = "";
-    private String newname = "";
-    private boolean isEdited = false;
-    private boolean atEnd = false;
-    private boolean atBegin = false;
+    private int oldCod = 0;
+    private String oldName = "";
+   
+    //---------------END My Variables
     
-    private void mOnePlus(){
-        nom.FrmCountry.mOneRowPlus();
-        if(nom.FrmCountry.isAtEnd()){
-            jButtonMaxDisable();
-           
+    //---------------START My Methods
+    
+    //Proverka na poletata
+    private boolean cFields() { // V sluchaia samo na edno pole dali e integer
+        boolean check  = true;     // v bazata
+        int i = 0;
+        try {
+            i = Integer.parseInt(jTextField1.getText()); // proverka za int
+            jTextField1.setBackground(new java.awt.Color(255,255,255));
+        } catch (NumberFormatException nfex) {
+            check = false;
+            jTextField1.setBackground(new java.awt.Color(255,204,204));
+            nfex.printStackTrace();
         }
-         jButtonMinEnable();
-        repaintComp();
+        return check;
     }
     
-    private void mOneMinus(){
-        nom.FrmCountry.mOneRowMinus();
-        if(nom.FrmCountry.isAtBegining()){
-            jButtonMinDisable();
+    //SAVE
+    private void saveRecord() {
+        if(cFields()){
+           
+            oldCod = myParent.getCod();
+         
+            try {
+                myParent.setCod(Integer.parseInt(jTextField1.getText()));
+            } catch (NumberFormatException nfex) {
+                nfex.printStackTrace();
+            }
+            myParent.setNames(jTextField3.getText());
+            
+            
+            myParent.getInternalObject().updateRow(myParent.getId(),myParent.getCod(),
+                    myParent.getNames());
+            myParent.refreshTable();
+            myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
+            jButtonUndo.setEnabled(true);}
+    }
+    
+    //UNDO
+    private void undoCorr() {
+       
+        myParent.setCod(oldCod);
+        myParent.setNames(oldName);
+       
+        repaintComp();
+        jButtonUndo.setEnabled(false);
+    }
+    
+    private void getNavigationState() {
+        jButtonToBegin.setEnabled(true);
+        jButtonOneRowM.setEnabled(true);
+        jButtonToEnd.setEnabled(true);
+        jButtonOneRowP.setEnabled(true);
+        if(myParent.isAtBegining()) {
+            jButtonToBegin.setEnabled(false);
+            jButtonOneRowM.setEnabled(false);
+            jButtonToBegin.repaint();
+            jButtonOneRowM.repaint();
             
         }
-        jButtonMaxEnable();
-        repaintComp();
-    }
-    private void goBegin(){
-        nom.FrmCountry.mTableBegining();
-        jButtonMinDisable();
-        jButtonMaxEnable();
-        repaintComp();
-    }
-    
-    private void goEnd(){
-        nom.FrmCountry.mTableEnd();
-        jButtonMaxDisable();
-        jButtonMinEnable();
-        repaintComp();
-        
-    }
-    
-    private void repaintComp(){
-        id = nom.FrmCountry.getId();
-        System.out.println(""+id);
-        code = nom.FrmCountry.getCode();
-        System.out.println(""+code);
-        name = nom.FrmCountry.getNameC();
-        System.out.println(name);
-        jLabel2.setText(""+code); jLabel2.repaint();
-        jTextField1.setText(name); jTextField1.repaint();
-    }
-    
-    private void update(){
-        
-        nom.FrmCountry.updateRow(id, code, jTextField1.getText());
-        nom.FrmCountry.refreshTable();
-        
-    }
-    
-    private void closeDialog(){
-        this.dispose();
-    }
-    
-    private void getOldValue(){
-        jTextField1.setText(name);
-        
-    }
-    
-    private void jButtonMaxDisable(){
-        jButton6.setEnabled(false);
-        jButton6.repaint();
-        jButton7.setEnabled(false);
-        jButton7.repaint();
-    }
-    
-    private void jButtonMaxEnable(){
-        jButton6.setEnabled(true);
-        jButton6.repaint();
-        jButton7.setEnabled(true);
-        jButton7.repaint();
-    }
-    
-    private void jButtonMinDisable(){
-        jButton4.setEnabled(false);
-        jButton4.repaint();
-        jButton5.setEnabled(false);
-        jButton5.repaint();
-    }
-    
-    private void jButtonMinEnable(){
-        jButton4.setEnabled(true);
-        jButton4.repaint();
-        jButton5.setEnabled(true);
-        jButton5.repaint();
-    }
-    private void getNavigatiionState(){
-     if(nom.FrmCountry.isAtBegining()){
-            jButtonMinDisable();
+        if(myParent.isAtEnd()) {
+            jButtonToEnd.setEnabled(false);
+            jButtonOneRowP.setEnabled(false);
+            jButtonToEnd.repaint();
+            jButtonOneRowP.repaint();
             
         }
-     if(nom.FrmCountry.isAtEnd()){
-            jButtonMaxDisable();
-           
-        }
     }
-}
+    
+    private void repaintComp() {
+        jTextField1.setText(""+myParent.getCod());
+        jTextField3.setText(myParent.getNames());
+       
+    }
+    
+  
+ }// end class
