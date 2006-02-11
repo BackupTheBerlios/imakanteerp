@@ -165,8 +165,9 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         jToolBar1.add(jButton1);
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Objects 2_large.png")));
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Objects 2_large_ps.png")));
         jButton6.setToolTipText("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0430 \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u0438");
+        jButton6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Objects 2_large.png")));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -175,8 +176,9 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         jToolBar1.add(jButton6);
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Contact.png")));
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Contact_ps.png")));
         jButton5.setToolTipText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
+        jButton5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Contact.png")));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -185,8 +187,9 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         jToolBar1.add(jButton5);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Group 4.png")));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Group 4_ps.png")));
         jButton2.setToolTipText("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0438 \u041b\u0438\u0446\u0430");
+        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Group 4.png")));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -195,12 +198,14 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         jToolBar1.add(jButton2);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Download.png")));
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Download_ps.png")));
         jButton4.setToolTipText("\u041e\u0431\u043d\u043e\u0432\u044f\u0432\u0430\u043d\u0435");
+        jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Download.png")));
         jToolBar1.add(jButton4);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help File.png")));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help File_ps.png")));
         jButton3.setToolTipText("\u041f\u043e\u043c\u043e\u0449");
+        jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help File.png")));
         jToolBar1.add(jButton3);
 
         getContentPane().add(jToolBar1, java.awt.BorderLayout.NORTH);
@@ -991,6 +996,9 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }
     
     //METHOD FOR LOAD FORMS
+    /*
+     *
+    */
     //PRODUCTS
     
     private void loadFrmProducts() {
@@ -1055,7 +1063,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         Storage.setVisible(true);
     }
     
-    //PARICHNI
+    //PARICHNI MONEY
     private void loadFrmMoney() {
         nom.FrmMoney Money = new nom.FrmMoney("\u041f\u0410\u0420\u0418\u0427\u041d\u0418", this);
         desktopPane.add(Money);
@@ -1066,7 +1074,28 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         }
         Money.setVisible(true);
     }
-    
+    //PARICHNI INCOME
+     private void loadIncome() {
+        nom.FrmIncom Income = new nom.FrmIncom("\u041a\u0443\u0440\u0441\u043e\u0432\u0435 \u043d\u0430 \u0432\u0430\u043b\u0443\u0442\u0438", this);
+        desktopPane.add(Income);
+        try {
+            Income.setMaximum(true);
+        } catch(java.beans.PropertyVetoException pvex) {
+            pvex.printStackTrace();
+        }
+        Income.setVisible(true);
+    }
+     private void loadExpens() {
+        nom.FrmExpens Expens = new nom.FrmExpens("\u041a\u0443\u0440\u0441\u043e\u0432\u0435 \u043d\u0430 \u0432\u0430\u043b\u0443\u0442\u0438", this);
+        desktopPane.add(Expens);
+        try {
+            Expens.setMaximum(true);
+        } catch(java.beans.PropertyVetoException pvex) {
+            pvex.printStackTrace();
+        }
+        Expens.setVisible(true);
+    }
+    //PARICHNI EXCHANGE RATE
     private void loadExRates() {
         imakante.sales.FrmExchangeRate Rates = new imakante.sales.FrmExchangeRate("\u041a\u0443\u0440\u0441\u043e\u0432\u0435 \u043d\u0430 \u0432\u0430\u043b\u0443\u0442\u0438", this);
         desktopPane.add(Rates);
