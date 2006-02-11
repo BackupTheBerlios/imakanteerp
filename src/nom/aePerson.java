@@ -406,11 +406,14 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
         if(cFields()){
             oldCode = myParent.getCode();
             oldEGN = myParent.getEGN();
+            oldNLK = myParent.getNLK();
             oldName = myParent.getNames();
             oldComment = myParent.getComment();
             try {
+                
                 myParent.setCode(jTextField4.getText());
-                myParent.setEGN((jTextField1.getText()));
+                myParent.setEGN(jTextField1.getText());
+                myParent.setNLK(jTextField2.getText())
             } catch (NumberFormatException nfex) {
                 nfex.printStackTrace();
             }

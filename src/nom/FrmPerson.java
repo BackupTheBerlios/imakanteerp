@@ -503,9 +503,13 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     }
     
     private void newRecord() {
-        setId(internalObject.getMaxId());
-        setIDG(internalObject.getMaxGrID());
-        //  internalObject.insertRow(getIDG());
+        internalObject.insertRow(0,"");
+        refreshTable();
+        setRow(getMaxRow());
+        table.changeSelection(getRow(), 2, false, false);
+        setAllVariables();
+        setAtBegining(false);
+        setAtEnd(true);
         nom.aePerson ae_Person = new nom.aePerson(this, true);
         ae_Person.setVisible(true);
         refreshTable();
