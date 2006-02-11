@@ -524,6 +524,9 @@ public class FrmExpens extends  imakante.com.vcomponents.iInternalFrame implemen
             }
             if(getRow()==getMaxRow()){
                 setAtEnd(true);
+            }else{
+            setAtBegining(false);
+            setAtEnd(false);
             }
             setAllVariables();
             nom.aeExpens ae_Expens = new nom.aeExpens(this, true);

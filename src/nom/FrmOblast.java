@@ -273,6 +273,9 @@ public class FrmOblast extends  imakante.com.vcomponents.iInternalFrame implemen
             }
             if(getRow()==getMaxRow()){
                 setAtEnd(true);
+            }else{
+            setAtBegining(false);
+            setAtEnd(false);
             }
             setId((Integer) table.getValueAt(getRow(), 0));
             setNames((String) table.getValueAt(getRow(), 1));

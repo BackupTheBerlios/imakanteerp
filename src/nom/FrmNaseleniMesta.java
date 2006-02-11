@@ -277,6 +277,9 @@ public class FrmNaseleniMesta extends  imakante.com.vcomponents.iInternalFrame i
             }
             if(getRow()==getMaxRow()){
                 setAtEnd(true);
+            }else{
+            setAtBegining(false);
+            setAtEnd(false);
             }
             setId((Integer) table.getValueAt(getRow(), 0));
             setPostCode((Integer) table.getValueAt(getRow(), 1));

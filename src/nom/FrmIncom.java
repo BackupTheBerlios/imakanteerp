@@ -525,6 +525,9 @@ public class FrmIncom extends  imakante.com.vcomponents.iInternalFrame implement
             }
             if(getRow()==getMaxRow()){
                 setAtEnd(true);
+            }else{
+            setAtBegining(false);
+            setAtEnd(false);
             }
             setAllVariables();
             nom.aeIncom ae_Incom = new nom.aeIncom(this, true);
