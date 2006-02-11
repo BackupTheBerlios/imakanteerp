@@ -217,77 +217,77 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jtfDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfDateFocusLost
-        
+//        jtfDate.setInputVerifier(new imakante.com.InputDateVerifier());
     }//GEN-LAST:event_jtfDateFocusLost
-
+    
     private void jtfDateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfDateKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){  }
     }//GEN-LAST:event_jtfDateKeyPressed
-
+    
     private void jtfRateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfRateFocusLost
-        
+//        jtfRate.setInputVerifier(new imakante.com.InputDoubleVerifier());
     }//GEN-LAST:event_jtfRateFocusLost
-
+    
     private void jtfRateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfRateKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jbSave.doClick(); }
     }//GEN-LAST:event_jtfRateKeyPressed
-
+    
     private void jbFirstKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbFirstKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jbFirst.doClick(); }
     }//GEN-LAST:event_jbFirstKeyPressed
-
+    
     private void jbPreviousKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbPreviousKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jbPrevious.doClick(); }
     }//GEN-LAST:event_jbPreviousKeyPressed
-
+    
     private void jbNextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbNextKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jbNext.doClick(); }
     }//GEN-LAST:event_jbNextKeyPressed
-
+    
     private void jbLastKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbLastKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jbLast.doClick(); }
     }//GEN-LAST:event_jbLastKeyPressed
-
+    
     private void jbSaveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbSaveKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jbSave.doClick(); }
     }//GEN-LAST:event_jbSaveKeyPressed
-
+    
     private void jbUndoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbUndoKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jbUndo.doClick(); }
     }//GEN-LAST:event_jbUndoKeyPressed
-
+    
     private void jbCloseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbCloseKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jbClose.doClick(); }
     }//GEN-LAST:event_jbCloseKeyPressed
-
+    
     private void jbFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFirstActionPerformed
-        
+        gotoFirst();
     }//GEN-LAST:event_jbFirstActionPerformed
-
+    
     private void jbPreviousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPreviousActionPerformed
-        
+        gotoPrev();
     }//GEN-LAST:event_jbPreviousActionPerformed
-
+    
     private void jbNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNextActionPerformed
-        
+        gotoNext();
     }//GEN-LAST:event_jbNextActionPerformed
-
+    
     private void jbLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLastActionPerformed
-        
+        gotoLast();
     }//GEN-LAST:event_jbLastActionPerformed
-
+    
     private void jbSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSaveActionPerformed
-        
+        saveRecord();
     }//GEN-LAST:event_jbSaveActionPerformed
-
+    
     private void jbUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbUndoActionPerformed
-        
+        undoCorr();
     }//GEN-LAST:event_jbUndoActionPerformed
-
+    
     private void jbCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCloseActionPerformed
-        
+        this.dispose();
     }//GEN-LAST:event_jbCloseActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -310,12 +310,35 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
     // End of variables declaration//GEN-END:variables
     
     private imakante.sales.FrmExchangeRate myParent;
-    private int oldIDG = 1;
-    private int oldCod = 0;
-    private String oldName = "";
-    private String oldComment =  "";
+    private String oldDate = "";
+    private int oldIDCurrency = 1;
+    private Double oldRate = 0.00;
     private String Currencies[];
     private int selectComboBoxItem;
+    
+    private void saveRecord() {
+        oldDate = myParent.getDate();
+        oldRate = myParent.getRateValue();
+        try {
+            myParent.setDate(imakante.com.dateManipulation.convertDate(jtfDate.getText()));
+        } catch (NumberFormatException nfex) {
+            nfex.printStackTrace();
+        }
+        myParent.setIDCurrency(myParent.getInternalObject().getIndexConnOfId()[jcbCurrency.getSelectedIndex()]);
+        myParent.setRateValue(Double.parseDouble(jtfRate.getText()));
+        myParent.getInternalObject().updateRow(myParent.getId(), myParent.getDate(), myParent.getIDCurrency(), myParent.getRateValue());
+        myParent.refreshTable();
+        myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
+        jbUndo.setEnabled(true);
+    }
+    
+    private void undoCorr() {
+        myParent.setDate(oldDate);
+        myParent.setIDCurrency(oldIDCurrency);
+        myParent.setRateValue(oldRate);
+        repaintComp();
+        jbUndo.setEnabled(false);
+    }
     
     private void getNavigationState() {
         if(myParent.isAtBegining()) {
@@ -330,6 +353,63 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
             jbLast.repaint();
             jbNext.repaint();
         }
+    }
+    
+    private void gotoFirst() {
+        myParent.mTableBegining();
+        jbFirst.setEnabled(false);
+        jbPrevious.setEnabled(false);
+        jbFirst.repaint();
+        jbPrevious.repaint();
+        jbLast.setEnabled(true);
+        jbNext.setEnabled(true);
+        jbLast.repaint();
+        jbNext.repaint();
+        repaintComp();
+    }
+    
+    private void gotoPrev() {
+        myParent.mOneRowMinus();
+        if(myParent.isAtBegining()) {
+            jbFirst.setEnabled(false);
+            jbPrevious.setEnabled(false);
+            jbFirst.repaint();
+            jbPrevious.repaint();
+        }
+        jbLast.setEnabled(true);
+        jbNext.setEnabled(true);
+        jbLast.repaint();
+        jbNext.repaint();
+        repaintComp();
+    }
+    
+    private void gotoNext() {
+        myParent.mOneRowPlus();
+        if(myParent.isAtEnd()) {
+            jbLast.setEnabled(false);
+            jbNext.setEnabled(false);
+            jbLast.repaint();
+            jbNext.repaint();
+        }
+        jbFirst.setEnabled(true);
+        jbPrevious.setEnabled(true);
+        jbFirst.repaint();
+        jbPrevious.repaint();
+        repaintComp();
+        
+    }
+    
+    private void gotoLast() {
+        myParent.mTableEnd();
+        jbLast.setEnabled(false);
+        jbNext.setEnabled(false);
+        jbLast.repaint();
+        jbNext.repaint();
+        jbFirst.setEnabled(true);
+        jbPrevious.setEnabled(true);
+        jbFirst.repaint();
+        jbPrevious.repaint();
+        repaintComp();
     }
     
     private void repaintComp() {

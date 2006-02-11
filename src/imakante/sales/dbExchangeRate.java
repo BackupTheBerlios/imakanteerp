@@ -9,8 +9,8 @@ public class dbExchangeRate extends imakante.com.dbObject {
     private java.sql.CallableStatement cstm;
     private int comprator = 1;
     private int id = 0;
-    private java.sql.Date date = null;
-    private int code_money = 0;
+    private String date = null;
+    private int id_money = 0;
     private Double rate = 0.00;
     private java.sql.Connection conn;
     private String splitCurrencies[];
@@ -30,7 +30,7 @@ public class dbExchangeRate extends imakante.com.dbObject {
         try {
             getCstm().setInt("comprator", getComprator());
             getCstm().setInt("in_id", getId());
-            getCstm().setDate("in_date", getDate());
+            getCstm().setString("in_date", getDate());
             getCstm().setInt("in_id_money", getIDCurrency());
             getCstm().setDouble("in_value", getRateValue());
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
@@ -52,10 +52,10 @@ public class dbExchangeRate extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    public void insertRow(java.sql.Date in_date) {
+    public void insertRow(String in_date) {
         comprator = 1;
         this.date = in_date;
-        this.code_money = 0;
+        this.id_money = 0;
         this.rate = 0.00;
         try {
             registerParameters();
@@ -63,17 +63,17 @@ public class dbExchangeRate extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-   /* public void updateRow(int in_id, java.sql.Date in_date, String in_code_money, Double in_value) {
+   public void updateRow(int in_id, String in_date, int in_id_money, Double in_value) {
         comprator = 2;
         this.id = in_id;
         this.date = in_date;
-        this.code_money = in_code_money;
+        this.id_money = in_id_money;
         this.rate = in_value;
         try {
             registerParameters();
             cstm.execute();
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
-    }*/
+    }
     
     public void deleteRow(int in_id) {
         comprator = 3;
@@ -91,18 +91,18 @@ public class dbExchangeRate extends imakante.com.dbObject {
             registerParameters();
             rs = cstm.executeQuery();
             while(rs.next()) {
-                date = rs.getDate("date_sl_exchange_rate");
-                code_money = rs.getInt("id_n_money");
+                date = rs.getDate("date_sl_exchange_rate").toString();
+                id_money = rs.getInt("id_n_money");
                 rate = rs.getDouble("value_sl_exchange_rate");
             }
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
         return rs;
     }
     
-    public java.sql.ResultSet searchRecords(java.sql.Date in_date, int in_code_money) {
+    public java.sql.ResultSet searchRecords(String in_date, int in_id_money) {
         comprator = 5;
         this.date = in_date;
-        this.code_money = in_code_money;
+        this.id_money = in_id_money;
         try {
             registerParameters();
             setRs(getCstm().executeQuery());
@@ -171,16 +171,16 @@ public class dbExchangeRate extends imakante.com.dbObject {
         this.id = ID;
     }
     
-    public java.sql.Date getDate() {
+    public String getDate() {
         return date;
     }
     
-    public void setDate(java.sql.Date Date) {
+    public void setDate(String Date) {
         this.date = Date;
     }
     
     public int getIDCurrency() {
-        return code_money;
+        return id_money;
     }
     
     public int getMaxCurrID() {
@@ -199,7 +199,7 @@ public class dbExchangeRate extends imakante.com.dbObject {
     }
     
     public void setIDCurrency(int Curr) {
-        this.code_money = Curr;
+        this.id_money = Curr;
     }
     
     public Double getRateValue() {

@@ -195,7 +195,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     private void searchRecords() {
         try {
             try {
-                rs = internalObject.searchRecords(java.sql.Date.valueOf(jtfDate.getText()), Integer.parseInt(jtfCurrency.getText()));
+                rs = internalObject.searchRecords(jtfDate.getText(), Integer.parseInt(jtfCurrency.getText()));
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
                 jtfDate.requestFocus();
@@ -243,12 +243,13 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
         
     }
     
-    private void refreshTable() {
+    protected void refreshTable() {
         jspData.remove(table);
         rs = internalObject.getTable();
         model = new imakante.com.CustomTableModel(getConn(), rs, null);
         table = new imakante.com.CustomTable(model);
         HideColumns(0);
+        HideColumns(2);
         jspData.getViewport().add(table);
         jspData.repaint();
     }
@@ -310,10 +311,10 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
     public static final String Names[] = {"id", "\u0414\u0430\u0442\u0430",
-    "\u0412\u0430\u043b\u0443\u0442\u0430", "\u041a\u0443\u0440\u0441"};
+    "id_currency", "\u0412\u0430\u043b\u0443\u0442\u0430", "\u041a\u0443\u0440\u0441"};
     
     private int id=0; // imena ot tablicata
-    private java.sql.Date date = null;
+    private String date = null;
     private int idCurrency = 0;
     private Double rate = 0.00;
     private String Currencies[]; //imena na grupi
@@ -330,7 +331,6 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
         } catch(Exception e) { e.printStackTrace(); }
     }
     
-    
     private void constructObject() {
         try {
             internalObject = new imakante.sales.dbExchangeRate(conn);
@@ -343,6 +343,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
             model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
             HideColumns(0);
+            HideColumns(2);
         } catch(Exception e) { e.printStackTrace(); }
         table.requestFocus();
         try {
@@ -419,11 +420,11 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
         this.id = ID;
     }
     
-    public java.sql.Date getDate() {
+    public String getDate() {
         return date;
     }
     
-    public void setDate(java.sql.Date Date) {
+    public void setDate(String Date) {
         this.date = Date;
     }
     
@@ -526,7 +527,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     
     private void setAllVariables(){
         setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
-        setDate((java.sql.Date) table.getValueAt(getRow(), getColumnIndex("\u0414\u0430\u0442\u0430")));
+        setDate((String) table.getValueAt(getRow(), getColumnIndex("\u0414\u0430\u0442\u0430")));
         setIDCurrency((Integer) table.getValueAt(getRow(), getColumnIndex("\u0412\u0430\u043b\u0443\u0442\u0430")));
         setRateValue((Double) table.getValueAt(getRow(), getColumnIndex("\u041a\u0443\u0440\u0441")));
     }
