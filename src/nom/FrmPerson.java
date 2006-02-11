@@ -517,7 +517,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
             if(getRow()==0){          //manage button state of ae form
                 setAtBegining(true);
             }
-            if(getRow()==getMaxRow()){
+            else if(getRow()==getMaxRow()){
                 setAtEnd(true);
             }else{
             setAtBegining(false);

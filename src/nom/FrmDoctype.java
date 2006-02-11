@@ -43,7 +43,7 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
         jpTop.setLayout(jpTopLayout);
         jpTopLayout.setHorizontalGroup(
             jpTopLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 824, Short.MAX_VALUE)
+            .add(0, 841, Short.MAX_VALUE)
         );
         jpTopLayout.setVerticalGroup(
             jpTopLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -85,6 +85,7 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
         getContentPane().add(jpMiddle, java.awt.BorderLayout.CENTER);
 
         jpBottom.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jbNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Add 2.png")));
         jbNew.setText("\u041d\u043e\u0432");
         jbNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +95,7 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
 
         jpBottom.add(jbNew);
 
+        jbEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Report Edit 2.png")));
         jbEdit.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f");
         jbEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,6 +105,7 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
 
         jpBottom.add(jbEdit);
 
+        jbPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Printer.png")));
         jbPrint.setText("\u041f\u0435\u0447\u0430\u0442");
         jbPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,6 +124,7 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
 
         jpBottom.add(jbPrintRep);
 
+        jbAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Refresh 3.png")));
         jbAll.setText("\u0412\u0441\u0438\u0447\u043a\u0438 \u0437\u0430\u043f\u0438\u0441\u0438");
         jbAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,6 +134,7 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
 
         jpBottom.add(jbAll);
 
+        jbDel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Delete 2.png")));
         jbDel.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
         jbDel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,9 +215,13 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
     }
     
     private void addNewRecord() {
-        setId(doctypeObject.getMaxId());
-        setCode(doctypeObject.getMaxCode() + 1);
-        doctypeObject.insertRow(getCode());
+        doctypeObject.insertRow((doctypeObject.getMaxCode() + 1));
+        refreshTable();
+        setRow(getMaxRow());
+        table.changeSelection(getRow(), 2, false, false);
+        setAllVariables();
+        setFirst(false);
+        setLast(true);
         nom.aeDoctype typeDoc = new nom.aeDoctype(this, true);
         typeDoc.setVisible(true);
         refreshTable();
@@ -224,13 +233,13 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
             if(getRow()==0){          //manage button state of ae form
                 setFirst(true);
             }
-            if(getRow()==getMaxRow()){
+            else if(getRow()==getMaxRow()){
                 setLast(true);
+            }else{
+                setFirst(false);
+                setLast(false);
             }
-            setId((Integer) table.getValueAt(getRow(), 0));
-            setCode((Integer) table.getValueAt(getRow(), 1));
-            setName((String) table.getValueAt(getRow(), 2));
-            setPName((String) table.getValueAt(getRow(), 3));
+            setAllVariables();
             nom.aeDoctype typeDoc = new nom.aeDoctype(this, true);
             typeDoc.setVisible(true);
         } else {  }

@@ -495,7 +495,7 @@ public class FrmCountry extends  imakante.com.vcomponents.iInternalFrame impleme
             if(getRow()==0){          //manage button state of ae form
                 setAtBegining(true);
             }
-            if(getRow()==getMaxRow()){
+            else if(getRow()==getMaxRow()){
                 setAtEnd(true);
             }else{
                 setAtBegining(false);

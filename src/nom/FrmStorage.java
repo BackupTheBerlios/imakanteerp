@@ -514,17 +514,13 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
             if(getRow()==0){          //manage button state of ae form
                 setAtBegining(true);
             }
-            if(getRow()==getMaxRow()){
+            else if(getRow()==getMaxRow()){
                 setAtEnd(true);
             }else{
             setAtBegining(false);
             setAtEnd(false);
             }
-            setId((Integer) table.getValueAt(getRow(), 0));
-            setIDG((Integer) table.getValueAt(getRow(), 1));
-            setCod((Integer) table.getValueAt(getRow(), 3));
-            setNames((String) table.getValueAt(getRow(), 4));
-            setComment((String) table.getValueAt(getRow(), 5));
+            setAllVariables();
             nom.aeStorage ae_Storage = new nom.aeStorage(this, true);
             ae_Storage.setVisible(true);
         }else{
