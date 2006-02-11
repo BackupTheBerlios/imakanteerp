@@ -462,7 +462,7 @@ public class FrmCountry extends  imakante.com.vcomponents.iInternalFrame impleme
             model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
             HideColumns(0);
-            HideColumns(1);
+          
             jScrollPane1.getViewport().add(table);
             jScrollPane1.repaint();
         } catch(Exception e) { e.printStackTrace(); }
@@ -474,16 +474,16 @@ public class FrmCountry extends  imakante.com.vcomponents.iInternalFrame impleme
         model = new imakante.com.CustomTableModel(getConn(), rs, Names);
         table = new imakante.com.CustomTable(model);
         HideColumns(0);
-        HideColumns(1);
+        
         jScrollPane1.getViewport().add(table);
         jScrollPane1.repaint();
     }
     
     private void newRecord() {
         setId(internalObject.getMaxId());
-        setCod(internalObject.getMaxCod()+1);
+        setCod(internalObject.getMaxCode() + 1);
         internalObject.insertRow(getCod(),"");
-        nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
+        nom.aeCountry ae_Casa = new nom.aeCountry(this, true);
         ae_Casa.setVisible(true);
         refreshTable();
     }

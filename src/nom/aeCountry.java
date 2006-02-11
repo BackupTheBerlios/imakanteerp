@@ -5,7 +5,7 @@ public class aeCountry extends imakante.com.vcomponents.iDialog {
     
     public aeCountry(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
         super(frame, modal);
-        this.myParent = (nom.FrmCasa) frame;
+        this.myParent = (nom.FrmCountry) frame;
         initComponents();
         getNavigationState();
         jButtonUndo.setEnabled(false);
