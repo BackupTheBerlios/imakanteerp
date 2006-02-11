@@ -221,7 +221,9 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     private  nom.casaDB internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
-    public static final String Names[] = {"id","id_group",
+    public static final String Names[] = {
+     "id",
+    "id_group",
     "\u0418\u043c\u0435 \u0433\u0440\u0443\u043f\u0438",
     "\u041a\u043e\u0434\u043e\u0432\u0435",
     "\u0418\u043c\u0435\u043d\u0430",
@@ -386,6 +388,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
         }
         setAtBegining(false);
         setAtEnd(true);
+        System.out.println("mTableEnd()" + getRow() + "      " + getMaxRow());
     }
     
     public void mOneRowPlus() {
@@ -405,6 +408,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
                 setAtEnd(true);
             }
         }
+        System.out.println("mOneRowPlus()" + getRow() + "      " + getMaxRow());
     }
     
     public  void mOneRowMinus() {
@@ -424,6 +428,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
         if(getRow() == 0){
             setAtBegining(true);
         }
+         System.out.println("mOneRowMinus()" + getRow() + "      " + getMaxRow());
     }
     
     public void mTableBegining() {
@@ -437,6 +442,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
         }
         setAtBegining(true);
         setAtEnd(false);
+        System.out.println("mTableBegining()" + getRow() + "      " + getMaxRow());
     }
     
     private void printTable() {
@@ -489,13 +495,17 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     private void editRecord() {
         if (table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());
+           
             if(getRow()==0){          //manage button state of ae form
                 setAtBegining(true);
             }
             if(getRow()==getMaxRow()){
                 setAtEnd(true);
+            }else{
+            setAtBegining(false);
+            setAtEnd(false);
             }
-            setAllVariables();
+                setAllVariables();
             nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
             ae_Casa.setVisible(true);
         } else {  }

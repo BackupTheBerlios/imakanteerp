@@ -377,7 +377,7 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
     // End of variables declaration//GEN-END:variables
     //--------------- My Variables
     private nom.FrmCasa myParent;
-    private int oldIDG = 1;
+    private int oldIDG = 0;
     private int oldCod = 0;
     private String oldName = "";
     private String oldComment =  "";
@@ -406,6 +406,7 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
     //SAVE
     private void saveRecord() {
         if(cFields()){
+            oldIDG = myParent.getIDG();
             oldCod = myParent.getCod();
             oldName = myParent.getNames();
             oldComment = myParent.getComment();
@@ -435,17 +436,23 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
     }
     
     private void getNavigationState() {
+        jButtonToBegin.setEnabled(true);
+        jButtonOneRowM.setEnabled(true);
+        jButtonToEnd.setEnabled(true);
+        jButtonOneRowP.setEnabled(true);
         if(myParent.isAtBegining()) {
             jButtonToBegin.setEnabled(false);
             jButtonOneRowM.setEnabled(false);
             jButtonToBegin.repaint();
             jButtonOneRowM.repaint();
+            
         }
         if(myParent.isAtEnd()) {
             jButtonToEnd.setEnabled(false);
             jButtonOneRowP.setEnabled(false);
             jButtonToEnd.repaint();
             jButtonOneRowP.repaint();
+           
         }
     }
     
