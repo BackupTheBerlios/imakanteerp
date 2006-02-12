@@ -6,7 +6,7 @@
  *comprator = 4 : getRow();
  *comprator = 5 : searchRecords()
  *comprator = 6 : getDocNumberLast()
- *comprator = 7 :  getMaxId()
+ *comprator = 7 : getMaxId()
  *comprator = 8 : getTableIncludeTextDistDeliv()
  *comprator = 9 : getTableStartTextDistDeliv()
  *comprator = 10 : getTableFinishTextDistDeliv()
@@ -16,10 +16,10 @@
  *comprator = 14 : getTableIncludeTextContragent()
  *comprator = 15 : getTableStartTextContragent()
  *comprator = 16 : getTableFinishTextContragent()
- *comprator = 17 :
- *comprator = 18 :
- *comprator = 19 :
- *comprator = 20 :
+ *comprator = 17 : getUserDataByID()
+ *comprator = 18 : getContragentDataByID()
+ *comprator = 19 : getObektDataByID()
+ *comprator = 20 : 
  *comprator = 21 :
  *
  *
@@ -73,6 +73,7 @@ public class documentFacadeDB  extends dbObject
     private String dateDeliver;
     private int userLastEdit ;
     private String commentDocFacade;
+    private int docFacadeFlagFinish;
    // private int idrep; //??????? 
     //-------------END MyVariables
     
@@ -89,7 +90,7 @@ public class documentFacadeDB  extends dbObject
     {
         try {
             
-            setCstm(getConn().prepareCall("{call ls_document_facade(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
+            setCstm(getConn().prepareCall("{call ls_procedure_document_facade(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
             
         } catch(java.sql.SQLException sqle) {sqle.printStackTrace();}
     }
@@ -131,14 +132,17 @@ public class documentFacadeDB  extends dbObject
             getCstm().setInt("in_docFacadeLevel", getLevelDocFacade());          
             getCstm().setInt("in_docFacadeStorage", getStorageDocFacade());      
             getCstm().setInt("in_docFacadeType", getDocFacadeType()); 
+            getCstm().setInt("in_docFacadeFlagFinish", getDocFacadeType()); 
             getCstm().setDouble("in_docFacadeAllDDS",getAllDDSPaingDocFacade());       
             getCstm().setDouble("in_docFacadeTotal",getTotalPayingDocFacade());  
             getCstm().setString("in_docFacadeCondition", getConditionDocFacade());   
             getCstm().setString("in_docFacadeDate", getDateDocFacade());            
-            getCstm().setString("in_docFacadeCommnet", getCommentDocFacade());
+            getCstm().setString("in_docFacadeComment", getCommentDocFacade());
             getCstm().setString("in_dateDeliver", getDateDeliver());  
             getCstm().setString("in_payingDate", getPayingDate()); 
-            //25
+            
+                    
+            //26
             
             
             
@@ -600,12 +604,23 @@ public int getDocFacadeType()
 {
     return docFacadeType;
 }
+
+public void setDocFacadeFlagFinish(int in)
+{
+    this.docFacadeFlagFinish = in;
+}
+public int getDocFacadeFlagFinish()
+{
+    return docFacadeFlagFinish;
+}
 public java.sql.ResultSet getTableIncludeTextDistDeliv(String in,int sqlselect)
 {
     java.sql.ResultSet rs1 = null;
      this.comprator = 8;
-     String oldvalues = getDateDeliver();
-     setDateDeliver(in);
+     String oldvalues = getCommentDocFacade();
+     int oldIntValue = getDocFacadeType();
+     setDocFacadeType(sqlselect);
+     setCommentDocFacade(in);
         try{
             registerParameters();
             rs1 = cstm.executeQuery();;
@@ -615,15 +630,18 @@ public java.sql.ResultSet getTableIncludeTextDistDeliv(String in,int sqlselect)
             sqle.printStackTrace();
         }
         System.out.println("ot getTable()");
-        setDateDeliver(oldvalues);
+        setCommentDocFacade(oldvalues);
+        setDocFacadeType(oldIntValue);
         return rs1;
 }
 
 public java.sql.ResultSet getTableStartTextDistDeliv(String in, int sqlselect)
 {
     java.sql.ResultSet rs1 = null;
-    String oldvalues = getDateDeliver();
-     setDateDeliver(in);
+     int oldIntValue = getDocFacadeType();
+     setDocFacadeType(sqlselect);
+    String oldvalues = getCommentDocFacade();
+    setCommentDocFacade(in);
    this.comprator = 9;
         try{
             registerParameters();
@@ -634,15 +652,18 @@ public java.sql.ResultSet getTableStartTextDistDeliv(String in, int sqlselect)
             sqle.printStackTrace();
         }
         System.out.println("ot getTable()");
-         setDateDeliver(oldvalues);
+         setDocFacadeType(oldIntValue);
+         setCommentDocFacade(oldvalues);
         return rs1;
 }
 
 public java.sql.ResultSet getTableFinishTextDistDeliv(String in , int sqlselect)
 {
      java.sql.ResultSet rs1 = null;
-     String oldvalues = getDateDeliver();
-      setDateDeliver(in);
+      int oldIntValue = getDocFacadeType();
+     setDocFacadeType(sqlselect);
+    String oldvalues = getCommentDocFacade();
+    setCommentDocFacade(in);
    this.comprator = 10;
         try{
             registerParameters();
@@ -653,16 +674,18 @@ public java.sql.ResultSet getTableFinishTextDistDeliv(String in , int sqlselect)
             sqle.printStackTrace();
         }
         System.out.println("ot getTable()");
-         setDateDeliver(oldvalues);
+         setDocFacadeType(oldIntValue);
+         setCommentDocFacade(oldvalues);
         return rs1;
 }
 
 public java.sql.ResultSet getTableIncludeTextObekt(String in, int sqlselect)
 {
      java.sql.ResultSet rs1 = null;
-     String oldvalues = getDateDeliver();
      int oldIntValue = getDocFacadeType();
      setDocFacadeType(sqlselect);
+     String oldvalues = getCommentDocFacade();
+     setCommentDocFacade(in);
      this.comprator = 11;
         try{
             registerParameters();
@@ -673,17 +696,18 @@ public java.sql.ResultSet getTableIncludeTextObekt(String in, int sqlselect)
             sqle.printStackTrace();
         }
         System.out.println("ot getTable()");
-        setDateDeliver(oldvalues);
+        setCommentDocFacade(oldvalues);
         setDocFacadeType(oldIntValue);
         return rs1;
     
 }
 public java.sql.ResultSet getTableStartTextObekt(String in , int sqlselect)
 { 
-    java.sql.ResultSet rs1 = null;
-     String oldvalues = getDateDeliver();
+     java.sql.ResultSet rs1 = null;
      int oldIntValue = getDocFacadeType();
      setDocFacadeType(sqlselect);
+     String oldvalues = getCommentDocFacade();
+     setCommentDocFacade(in);
      this.comprator = 12;
         try{
             registerParameters();
@@ -694,7 +718,7 @@ public java.sql.ResultSet getTableStartTextObekt(String in , int sqlselect)
             sqle.printStackTrace();
         }
         System.out.println("ot getTable()");
-        setDateDeliver(oldvalues);
+        setCommentDocFacade(oldvalues);
         setDocFacadeType(oldIntValue);
         return rs1;
     
@@ -703,9 +727,11 @@ public java.sql.ResultSet getTableStartTextObekt(String in , int sqlselect)
 public java.sql.ResultSet getTableFinishTextObekt(String in , int sqlselect)
 { 
     java.sql.ResultSet rs1 = null;
-     String oldvalues = getDateDeliver();
-     int oldIntValue = getDocFacadeType();
-     setDocFacadeType(sqlselect);
+    int oldIntValue = getDocFacadeType();
+    setDocFacadeType(sqlselect);
+    String oldvalues = getCommentDocFacade();
+    setCommentDocFacade(in); 
+     
      this.comprator = 13;
         try{
             registerParameters();
@@ -716,7 +742,7 @@ public java.sql.ResultSet getTableFinishTextObekt(String in , int sqlselect)
             sqle.printStackTrace();
         }
         System.out.println("ot getTable()");
-        setDateDeliver(oldvalues);
+        setCommentDocFacade(oldvalues);
         setDocFacadeType(oldIntValue);
         return rs1;
     
@@ -724,9 +750,11 @@ public java.sql.ResultSet getTableFinishTextObekt(String in , int sqlselect)
 public java.sql.ResultSet getTableIncludeTextContragent(String in , int sqlselect)
 { 
     java.sql.ResultSet rs1 = null;
-     String oldvalues = getDateDeliver();
-     int oldIntValue = getDocFacadeType();
-     setDocFacadeType(sqlselect);
+    int oldIntValue = getDocFacadeType();
+    setDocFacadeType(sqlselect);
+    String oldvalues = getCommentDocFacade();
+    setCommentDocFacade(in); 
+    
      this.comprator = 14;
         try{
             registerParameters();
@@ -737,7 +765,7 @@ public java.sql.ResultSet getTableIncludeTextContragent(String in , int sqlselec
             sqle.printStackTrace();
         }
         System.out.println("ot getTable()");
-        setDateDeliver(oldvalues);
+        setCommentDocFacade(oldvalues);
         setDocFacadeType(oldIntValue);
         return rs1;
     
@@ -745,9 +773,10 @@ public java.sql.ResultSet getTableIncludeTextContragent(String in , int sqlselec
 public java.sql.ResultSet getTableStartTextContragent(String in , int sqlselect)
 { 
     java.sql.ResultSet rs1 = null;
-     String oldvalues = getDateDeliver();
-     int oldIntValue = getDocFacadeType();
-     setDocFacadeType(sqlselect);
+    int oldIntValue = getDocFacadeType();
+    setDocFacadeType(sqlselect);
+    String oldvalues = getCommentDocFacade();
+    setCommentDocFacade(in); 
      this.comprator = 15;
         try{
             registerParameters();
@@ -758,7 +787,7 @@ public java.sql.ResultSet getTableStartTextContragent(String in , int sqlselect)
             sqle.printStackTrace();
         }
         System.out.println("ot getTable()");
-        setDateDeliver(oldvalues);
+        setCommentDocFacade(oldvalues);
         setDocFacadeType(oldIntValue);
         return rs1;
     
@@ -766,10 +795,12 @@ public java.sql.ResultSet getTableStartTextContragent(String in , int sqlselect)
 public java.sql.ResultSet getTableFinishTextContragent(String in , int sqlselect)
 { 
     java.sql.ResultSet rs1 = null;
-     String oldvalues = getDateDeliver();
-     int oldIntValue = getDocFacadeType();
-     setDocFacadeType(sqlselect);
+    int oldIntValue = getDocFacadeType();
+    setDocFacadeType(sqlselect);
+    String oldvalues = getCommentDocFacade();
+    setCommentDocFacade(in);  
      this.comprator = 16;
+    System.out.println("comprator: "+String.valueOf(comprator) + "  in:" + in+ "  sqlselect: " + String.valueOf(sqlselect));
         try{
             registerParameters();
             rs1 = cstm.executeQuery();;
@@ -778,27 +809,27 @@ public java.sql.ResultSet getTableFinishTextContragent(String in , int sqlselect
         {
             sqle.printStackTrace();
         }
-        System.out.println("ot getTable()");
-        setDateDeliver(oldvalues);
+        System.out.println("getTableFinishTextContragent()");
+        setCommentDocFacade(oldvalues);
         setDocFacadeType(oldIntValue);
         return rs1;
     
 }
 
-public int getDocNumberLast(int user)
+public int getDocNumberLast(int iduser)
 {
     int lastNumber = 0;
    
-     int oldIntValue = getDocFacadeType();
-     setDocFacadeType(user);
-     this.comprator = 17;
+     int oldIntValue = getUserDocFacade();
+     setUserDocFacade(iduser);
+     this.comprator = 6;
      try
         {
             registerParameters();
             rs = cstm.executeQuery();
             while(rs.next())
             {
-                lastNumber = rs.getInt(1);
+                lastNumber = rs.getInt("maxNumber");
             }
         }
         catch(java.sql.SQLException sqle)
@@ -806,10 +837,91 @@ public int getDocNumberLast(int user)
             sqle.printStackTrace();
         }
      
-    setDocFacadeType(oldIntValue);
+    setUserDocFacade(oldIntValue);
+    
     return lastNumber;
     
 }
+public String[] getUserDataByID(int iduser)
+{
+    String newUserDate[]= {" "," "};
+     this.comprator = 17;
+     int oldIntValue = getUserDocFacade();
+     setUserDocFacade(iduser);
+    
+     try
+        {
+            registerParameters();
+            rs = cstm.executeQuery();
+            while(rs.next())
+            {
+                newUserDate[0] = String.valueOf(rs.getInt("id_ndtur"));
+                newUserDate[1] = rs.getString("name_um");
+            }
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+    setUserDocFacade(oldIntValue);
+    return newUserDate;
+}
+public String[] getContragentDataByID(int idContragent)
+{
+    String ContragentData[] = new String[7];
+    int oldIntValue = getUserDocFacade();
+    setUserDocFacade(idContragent);
+     this.comprator = 18;
+     try
+        {
+            registerParameters();
+            rs = cstm.executeQuery();
+            while(rs.next())
+            {
+               ContragentData[0] =String.valueOf(rs.getInt("code_contragent"));
+               ContragentData[1] = rs.getString("bul_n_contragent");
+               ContragentData[2] = rs.getString("dan_n_contragent");
+               ContragentData[3] = rs.getString("name_n_contragent");
+               ContragentData[4] = rs.getString("address_n_contragent");
+               ContragentData[5] = rs.getString("name_ls_n_person");
+               ContragentData[6] = rs.getString("tel_contragent");
+            }
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }       
+   setUserDocFacade(oldIntValue);
+    return ContragentData;
+}
+public String[] getObektDataByID(int idObekt)
+{
+    String ObektData[] = new String[7];
+    int oldIntValue = getUserDocFacade();
+    setUserDocFacade(idObekt);
+     this.comprator = 19;
+     try
+        {
+            registerParameters();
+            rs = cstm.executeQuery();
+            while(rs.next())
+            {
+               ObektData[0] = rs.getString("code_n_obekt");
+               ObektData[1] = rs.getString("name_n_obekt");
+               ObektData[2] = rs.getString("address_n_obekt");
+               ObektData[3] = rs.getString("address_n_obekt");
+            }
+               
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }       
+   setUserDocFacade(oldIntValue);
+    return ObektData;
+}
+
+
 // <-----------------------
     
 }// end class

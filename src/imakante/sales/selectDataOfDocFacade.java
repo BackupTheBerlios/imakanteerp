@@ -20,6 +20,9 @@ public class selectDataOfDocFacade   extends imakante.com.vcomponents.iDialog
   final public static int OBEKT_ADDRESS =10;
   final public static int OBEKT_TEL =11;
   final public static int DISTRIBUTOR_DELIVER =12;
+  final public static int DISTRIBUTOR =13;
+  final public static int DELIVER =14;
+  
     /** Creates new form aContragent */
     public selectDataOfDocFacade(imakante.com.vcomponents.iInternalFrame myframe,
                    boolean modal, java.sql.ResultSet rs, java.sql.Connection con,
@@ -76,55 +79,58 @@ public class selectDataOfDocFacade   extends imakante.com.vcomponents.iDialog
         {
             case CONTARGENT_NO:
                 {
-                  table.moveColumn(getColumnIndex("code_contragent"),1);  
+                  table.moveColumn(getColumnIndex(columnName[1]),1);  
                   break; 
                 }
             case CONTARGENT_BULSTAT:
                 {
-                    table.moveColumn(getColumnIndex("bul_n_contragent"),1);
+                    table.moveColumn(getColumnIndex(columnName[3]),1);
                   break;
                 }
             case CONTARGENT_DAN_NO:
                 {
-                  table.moveColumn(getColumnIndex("dan_n_contragent"),1);
+                  table.moveColumn(getColumnIndex(columnName[4]),1);
                   break;
                 }
             case  CONTARGENT_NAME:
                 {
-                    table.moveColumn(getColumnIndex("name_n_contragent"),1);
+                    table.moveColumn(getColumnIndex(columnName[2]),1);
                     break;
                 }
 
              case  CONTARGENT_ADDRESS:
                 {
-                  table.moveColumn(getColumnIndex("address_n_contragent"),1);
+                  table.moveColumn(getColumnIndex(columnName[5]),1);
                   break;
                 }
             case  CONTARGENT_MOL:
                 {
-                    table.moveColumn(getColumnIndex("ls_n_person_mol"),1);
+                    table.moveColumn(getColumnIndex(columnName[12]),1);
                     break;
                 }
             case  CONTARGENT_TEL:
                 {
-                     table.moveColumn(getColumnIndex("tel_n_contragent"),1);
+                     table.moveColumn(getColumnIndex(columnName[7]),1);
                   break;
                 }
             case OBEKT_NO:
                 {
-                   table.moveColumn(getColumnIndex("code_n_contragent"),1); //?? za imeto na kolonata
+                   table.moveColumn(getColumnIndex(columnName[1]),1); 
                     break;
                 }
             case  OBEKT_NAME:
                 {
+                    table.moveColumn(getColumnIndex(columnName[2]),1); 
                   break;
                 }
             case  OBEKT_ADDRESS:
                 {
+                    table.moveColumn(getColumnIndex(columnName[3]),1); 
                     break;
                 }
              case  OBEKT_TEL:
                 {
+                    table.moveColumn(getColumnIndex(columnName[4]),1); 
                   break;
                 }
             case  DISTRIBUTOR_DELIVER:
@@ -150,14 +156,15 @@ public class selectDataOfDocFacade   extends imakante.com.vcomponents.iDialog
                          int ID = (Integer)table.getValueAt(row,getColumnIndex("id_contragent"));
                          myParent.setID_Contragent(ID);
                          
-                         ContragentData[0] = (String)table.getValueAt(row,getColumnIndex("id_contragent"));
-                         ContragentData[1] = (String)table.getValueAt(row,getColumnIndex("bul_n_contragent"));
-                         ContragentData[2] = (String)table.getValueAt(row,getColumnIndex("dan_n_contragent")); 
-                         ContragentData[3] = (String)table.getValueAt(row,getColumnIndex("name_n_contragent"));
-                         ContragentData[4] = (String)table.getValueAt(row,getColumnIndex("address_n_contragent"));
-                         ContragentData[5] = (String)table.getValueAt(row,getColumnIndex("ls_n_person_mol"));
-                         ContragentData[6] = (String)table.getValueAt(row,getColumnIndex("tel_n_contragent"));
+                         ContragentData[0] =String.valueOf((Integer)table.getValueAt(row,getColumnIndex(columnName[1]))); // code
+                         ContragentData[1] = (String)table.getValueAt(row,getColumnIndex(columnName[3]));  // bulstat
+                         ContragentData[2] = (String)table.getValueAt(row,getColumnIndex(columnName[4]));   // dany4en
+                         ContragentData[3] = (String)table.getValueAt(row,getColumnIndex(columnName[2]));  // name
+                         ContragentData[4] = (String)table.getValueAt(row,getColumnIndex(columnName[5])); //address
+                         ContragentData[5] = (String)table.getValueAt(row,getColumnIndex(columnName[12])); // MOL - name
+                         ContragentData[6] = (String)table.getValueAt(row,getColumnIndex(columnName[7])); // telefon
                          myParent.setContragentData(ContragentData);
+                         
                         
                         
                      }
@@ -165,10 +172,11 @@ public class selectDataOfDocFacade   extends imakante.com.vcomponents.iDialog
                     {
                           int ID = (Integer)table.getValueAt(row,getColumnIndex("id_obekt"));
                           myParent.setID_Obekt(ID);
-                          ObectData[0] = (String)table.getValueAt(row,getColumnIndex("code_n_obekt"));
-                          ObectData[1] = (String)table.getValueAt(row,getColumnIndex("code_n_obekt"));
-                          ObectData[2] = (String)table.getValueAt(row,getColumnIndex("code_n_obekt"));
-                          ObectData[3] = (String)table.getValueAt(row,getColumnIndex("code_n_obekt"));
+                          ObectData[0] = (String)table.getValueAt(row,getColumnIndex(columnName[1])); // code
+                          ObectData[1] = (String)table.getValueAt(row,getColumnIndex(columnName[2])); // name
+                          ObectData[2] = (String)table.getValueAt(row,getColumnIndex(columnName[3])); // address
+                          ObectData[3] = (String)table.getValueAt(row,getColumnIndex(columnName[4])); //telefon
+                            
                           myParent.setObektData(ObectData);
                     }
                  if(sqlselect == DISTRIBUTOR_DELIVER)
@@ -177,14 +185,14 @@ public class selectDataOfDocFacade   extends imakante.com.vcomponents.iDialog
                        if(isDistributor) // true  - ditributor
                        {
                          int ID = (Integer)table.getValueAt(row,getColumnIndex("id_ls_n_person"));
-                         codeDistributorDeliver = (String)table.getValueAt(row,getColumnIndex("code_ls_n_person"));
+                         codeDistributorDeliver = (String)table.getValueAt(row,getColumnIndex(columnName[1])); 
                          myParent.setID_Distributor(ID);
                          myParent.setDistributorData(codeDistributorDeliver);
                        }
                        else // false deliver
                        {
                          int ID = (Integer)table.getValueAt(row,getColumnIndex("id_ls_n_person"));
-                         codeDistributorDeliver = (String)table.getValueAt(row,getColumnIndex("code_ls_n_person"));
+                         codeDistributorDeliver = (String)table.getValueAt(row,getColumnIndex(columnName[1]));
                          myParent.setID_Deliver(ID);
                          myParent.setDeliverData(codeDistributorDeliver);   
                        }
@@ -266,6 +274,7 @@ public class selectDataOfDocFacade   extends imakante.com.vcomponents.iDialog
     private String columnName[] = null;
     private int sqlselect;
     private  boolean isDistributor;
+   
     
     public void close()
     {

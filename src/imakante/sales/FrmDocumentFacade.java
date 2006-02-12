@@ -20,7 +20,8 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
     {
         super(title);
        // myframe = frame; 
-        this.userDocFacade = user;
+     
+        this.userEditForm = user;
        this.levelDocFacade = level;
        this.priceList = pricelist;
        this.docType = doctype;
@@ -301,12 +302,12 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
     private void jButtonNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewActionPerformed
 // TODO add your handling code here:
        setAllVariablesDefault();
-//        countriesT.insertRow(getNom(),getCod(),getNames(),getAnID());
-        setID_DocFacade(countriesT.getMaxId());
-        refreshTable();
+
+      //  setID_DocFacade(countriesT.getMaxId());
+    //    refreshTable();
          try 
             {
-                dialog = new aeDocumentFacade(this, true,true,userDocFacade,levelDocFacade,priceList,docType);;
+                dialog = new aeDocumentFacade(this, true,true,priceList);;
                 dialog.setVisible(true);
                 
             } catch(Exception e)
@@ -326,6 +327,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
                 
                 FrmDocumentFacade frCN =   new FrmDocumentFacade("ttt",1,1,1,1,1);
                 fr.add(frCN);
+                frCN.setSize(400,400);
                 frCN.setVisible(true);
                 fr.setVisible(true);
                 
@@ -357,7 +359,8 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
     // End of variables declaration//GEN-END:variables
  //--------------- My Variables
   // input parametrs
-    private int userDocFacade=0;
+    private int userDocFacade=0; // usera ot zapisite ot BD
+    private int userEditForm = 0; // usera kojto vyvejda nannite
     private int levelDocFacade = 0;
     private int priceList=1;
     private int docType;
@@ -390,7 +393,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
    private String payingDate;
    private double allDDSPaing=0;
    private double totalPaying=0;
-   private int userLastEdit = userDocFacade;
+   private int userLastEdit = userEditForm;
    private String commenatDocFacade;
    
     private String numberProduct;
@@ -404,6 +407,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
     private double procentProduct;
     private double DDSProduct;
     private double totalProduct;
+    private int docFacadeFlagFinish;
 
    
    
@@ -474,6 +478,7 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
         {
            
             rs = countriesT.getTable();
+            nameColumnsDocFacade =null;
             model = new imakante.com.CustomTableModel(conn,rs, nameColumnsDocFacade);
             table = new imakante.com.CustomTable(model);
            
@@ -741,7 +746,14 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
         return idDeliver;
     }   
    
-    
+public void setDocFacadeType(int in)
+{
+    this.docType = in;
+}
+public int getDocFacadeType()
+{
+    return docType;
+}    
  public void setContragentData(String in[])
  {
      setCodeContragent(in[0]);
@@ -817,7 +829,14 @@ public int getUserDocFacade()
 {
    return userDocFacade;
 }
-
+public void setDocFacadeFlagFinish(int in)
+{
+    this.docFacadeFlagFinish = in;
+}
+public int getDocFacadeFlagFinish()
+{
+    return docFacadeFlagFinish;
+}
 
 
 public void setCommenatDocFacade(String in)
@@ -919,7 +938,18 @@ public double getTotalProduct()
 {
    return totalProduct;
 }
-
+public void setlDocFacadeLevel(int in)
+{
+    this.levelDocFacade = in;
+}
+public int getDocFacadeLevel()
+{
+    return levelDocFacade;
+}
+public int getUserEditFortm()
+{
+    return userEditForm;
+}
 // <--------------------------------------- 
  public  int getRow()
    {

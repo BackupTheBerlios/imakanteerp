@@ -291,7 +291,7 @@
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                               <Component id="jTextFieldContrName" alignment="0" max="32767" attributes="1"/>
                               <Component id="jTextFieldAddress" alignment="0" max="32767" attributes="1"/>
-                              <Component id="jTextFieldObektMOL" alignment="0" pref="352" max="32767" attributes="1"/>
+                              <Component id="jTextFieldContrMOL" alignment="0" pref="352" max="32767" attributes="1"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
@@ -320,7 +320,7 @@
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jTextFieldDanNomer" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldObektMOL" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldContrMOL" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -459,14 +459,14 @@
                 <Property name="text" type="java.lang.String" value="&#x41c;&#x41e;&#x41b; &#x438;&#x43c;&#x435;:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldObektMOL">
+            <Component class="javax.swing.JTextField" name="jTextFieldContrMOL">
               <Properties>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[80, 20]"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldObektMOLKeyPressed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldContrMOLKeyPressed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -672,6 +672,9 @@
                   <Dimension value="[80, 20]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextFieldDateDeliverFocusLost"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTextFieldDateDeliver.setInputVerifier(new imakante.com.InputDateVerifier());"/>
               </AuxValues>
@@ -695,6 +698,9 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
           <SubComponents>
             <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jScrollPane2MouseClicked"/>
+              </Events>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
@@ -1116,11 +1122,11 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField2" min="-2" pref="163" max="-2" attributes="0"/>
+                          <Component id="jTextFieldUserEdit" min="-2" pref="163" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
-                          <Component id="jTextFieldDDS1" min="-2" pref="165" max="-2" attributes="0"/>
+                          <Component id="jTextFieldUserLastEdit" min="-2" pref="165" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1131,9 +1137,9 @@
                           <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField2" alignment="3" min="-2" pref="18" max="-2" attributes="0"/>
+                              <Component id="jTextFieldUserEdit" alignment="3" min="-2" pref="18" max="-2" attributes="0"/>
                               <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextFieldDDS1" alignment="3" min="-2" pref="18" max="-2" attributes="0"/>
+                              <Component id="jTextFieldUserLastEdit" alignment="3" min="-2" pref="18" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       </Group>
@@ -1146,7 +1152,7 @@
                     <Property name="text" type="java.lang.String" value="&#x418;&#x437;&#x434;&#x430;&#x43b;:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField2">
+                <Component class="javax.swing.JTextField" name="jTextFieldUserEdit">
                   <Properties>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[80, 20]"/>
@@ -1158,7 +1164,7 @@
                     <Property name="text" type="java.lang.String" value="&#x41f;&#x43e;&#x441;&#x43b;&#x435;&#x434;&#x43d;&#x430; &#x43f;&#x440;&#x435;&#x440;&#x430;&#x431;&#x43e;&#x442;&#x43a;&#x430;:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextFieldDDS1">
+                <Component class="javax.swing.JTextField" name="jTextFieldUserLastEdit">
                   <Properties>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[100, 20]"/>
