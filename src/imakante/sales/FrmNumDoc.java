@@ -61,7 +61,8 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
         jTextName.setPreferredSize(new java.awt.Dimension(160, 20));
         jPanel4.add(jTextName);
 
-        jButtonSearch.setText("\u0422\u044a\u0440\u0441\u0435\u043d\u0435");
+        jButtonSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Search.png")));
+        jButtonSearch.setText("\u041d\u0410\u041c\u0415\u0420\u0418");
         jButtonSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSearchActionPerformed(evt);
@@ -79,7 +80,7 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 821, Short.MAX_VALUE)
+            .add(0, 825, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
