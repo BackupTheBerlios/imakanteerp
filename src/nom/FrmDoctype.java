@@ -43,7 +43,7 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
         jpTop.setLayout(jpTopLayout);
         jpTopLayout.setHorizontalGroup(
             jpTopLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 841, Short.MAX_VALUE)
+            .add(0, 857, Short.MAX_VALUE)
         );
         jpTopLayout.setVerticalGroup(
             jpTopLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -71,6 +71,7 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
         jtfDocName.setPreferredSize(new java.awt.Dimension(200, 20));
         jpControls.add(jtfDocName);
 
+        jbSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Search.png")));
         jbSearch.setText("\u041d\u0410\u041c\u0415\u0420\u0418");
         jbSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,7 +116,7 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
 
         jpBottom.add(jbPrint);
 
-        jbPrintRep.setText("\u041f\u0435\u0447\u0430\u0442 \u0420\u0430\u043f\u043e\u0440\u0442");
+        jbPrintRep.setText("\u041f\u0435\u0447\u0430\u0442 \u043e\u0442\u0447\u0435\u0442");
         jbPrintRep.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbPrintRepActionPerformed(evt);
@@ -316,10 +317,9 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
     private boolean first = false;
     private boolean last = false;
      public static final String Names[] = {"id",
-    
     "\u041a\u043e\u0434\u043e\u0432\u0435",
     "\u0418\u043c\u0435\u043d\u0430",
-    "\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440"};
+    "\u041f\u0435\u0447\u0430\u0442\u043d\u043e \u0438\u043c\u0435"};
     
     
     private void prepConn() {
@@ -543,8 +543,7 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
         this.conn = conn;
     }
     
-     private int getColumnIndex(String in) //test
-    {
+     private int getColumnIndex(String in) {
         int count = table.getColumnCount();
         for(int i=0; i < count; i++) {
             if(table.getColumnName(i).equals(in)) return i;
@@ -552,25 +551,19 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
         return 0;
     }
     
-    
-    
     private void HideColumns(int col) {
         int iColumn = col;
-// set column width
         table.getColumnModel().getColumn(iColumn).setMaxWidth(0);
         table.getColumnModel().getColumn(iColumn).setMinWidth(0);
         table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
         table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
-        
     }
+    
     private void setAllVariables(){
         setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
         setCode((Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434\u043e\u0432\u0435")));
         setName((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435\u043d\u0430")));
-        setPName((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440")));
-    
+        setPName((String) table.getValueAt(getRow(), getColumnIndex("\u041f\u0435\u0447\u0430\u0442\u043d\u043e \u0438\u043c\u0435")));
     }
-    
-    
     
 }
