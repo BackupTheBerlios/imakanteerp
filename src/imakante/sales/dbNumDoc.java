@@ -25,7 +25,7 @@ public class dbNumDoc extends imakante.com.dbObject {
     {
         try {
             
-            setCstm(getConn().prepareCall("{call nom_procedure_casa(?,?,?,?,?,?)}"));
+            setCstm(getConn().prepareCall("{call nom_procedure_numdoc(?,?,?,?,?,?)}"));
             
         } catch(java.sql.SQLException sqle) {sqle.printStackTrace();}
     }

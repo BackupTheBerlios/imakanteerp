@@ -89,6 +89,7 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel3.setPreferredSize(new java.awt.Dimension(801, 37));
+        jButtonNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Add 2.png")));
         jButtonNew.setText("\u041d\u043e\u0432");
         jButtonNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,6 +99,7 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
 
         jPanel3.add(jButtonNew);
 
+        jButtonEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Report Edit 2.png")));
         jButtonEdit.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f");
         jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,6 +109,7 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
 
         jPanel3.add(jButtonEdit);
 
+        jButtonPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Printer.png")));
         jButtonPrint.setText("\u041f\u0435\u0447\u0430\u0442");
         jButtonPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,6 +122,7 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
         jButtonPrnReport.setText("\u041f\u0435\u0447\u0430\u0442 \u0440\u0435\u043f\u043e\u0440\u0442");
         jPanel3.add(jButtonPrnReport);
 
+        jButtonDel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Delete 2.png")));
         jButtonDel.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
         jButtonDel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,6 +132,7 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
 
         jPanel3.add(jButtonDel);
 
+        jButtonRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Refresh 3.png")));
         jButtonRefresh.setText("\u0412\u0441\u0438\u0447\u043a\u0438 \u0437\u0430\u043f\u0438\u0441\u0438");
         jButtonRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -219,12 +224,15 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
     private  imakante.com.vcomponents.iFrame myframe;
     private  java.sql.Connection conn;
     private  java.sql.ResultSet rs;
-    private  nom.casaDB internalObject;
+    private  imakante.sales.dbNumDoc internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
-    public static final String Names[] = {"id","id_group",
-    "3",
-    "4",
+    public static final String Names[] = {
+        "id",
+        "id_ntd",
+        "\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442 \u0442\u0438\u043f",
+        "\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442",
+        "\u041d\u043e\u043c\u0435\u0440\u0430\u0446\u0438\u044f",
     };
     //---------------END My Variables
     
@@ -241,7 +249,7 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
     
     private void constructObject() {
         try {
-            internalObject = new nom.casaDB(conn);
+            internalObject = new imakante.sales.dbNumDoc(conn);
         } catch(Exception e) { e.printStackTrace(); }
     }
     
@@ -275,11 +283,11 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
     public void windowDeactivated(java.awt.event.WindowEvent e) {
     }
     
-    public nom.casaDB getInternalObject() {
+    public imakante.sales.dbNumDoc getInternalObject() {
         return internalObject;
     }
     
-    public void setInternalObject(nom.casaDB val) {
+    public void setInternalObject(imakante.sales.dbNumDoc val) {
         this.internalObject = val;
     }
     
@@ -481,8 +489,8 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
         setIDG(internalObject.getMaxGrID());
         setCod(internalObject.getMaxCod()+1);
         internalObject.insertRow(getCod(), getIDG());
-        nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
-        ae_Casa.setVisible(true);
+        imakante.sales.aeNumDoc nDoc = new imakante.sales.aeNumDoc(this, true);
+        nDoc.setVisible(true);
         refreshTable();
     }
     
@@ -496,8 +504,8 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
                 setAtEnd(true);
             }
             setAllVariables();
-            nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
-            ae_Casa.setVisible(true);
+            imakante.sales.aeNumDoc nDoc = new imakante.sales.aeNumDoc(this, true);
+            nDoc.setVisible(true);
         } else {  }
     }
     
@@ -553,7 +561,14 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
     }
     private void setAllVariables(){
         setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
-        setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("id_group")));
-        setCod((Integer) table.getValueAt(getRow(), getColumnIndex("4")));
-     }
+        setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("id_ntd")));
+        setName((String) table.getValueAt(getRow(), getColumnIndex("\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442")));
+        setCod((Integer) table.getValueAt(getRow(), getColumnIndex("\u041d\u043e\u043c\u0435\u0440\u0430\u0446\u0438\u044f")));
+    }
+//     public static final String Names[] = {"id",
+//    "id_ntd",
+//    "\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442",
+//    "\u041d\u043e\u043c\u0435\u0440\u0430\u0446\u0438\u044f",
+//    };
+    
 }
