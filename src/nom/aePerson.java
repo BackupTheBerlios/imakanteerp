@@ -413,7 +413,7 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
                 
                 myParent.setCode(jTextField4.getText());
                 myParent.setEGN(jTextField1.getText());
-                myParent.setNLK(jTextField2.getText())
+                myParent.setNLK(jTextField2.getText());
             } catch (NumberFormatException nfex) {
                 nfex.printStackTrace();
             }
