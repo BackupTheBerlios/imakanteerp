@@ -8,6 +8,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import javax.swing.*;
@@ -23,6 +24,7 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import imakante.sales.FrmDocumentFacade;
 import javax.swing.table.TableColumn;
+import java.awt.event.*;
 
 public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 {
@@ -53,7 +55,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
        initComponents();
        jTable1.getTableHeader().setReorderingAllowed(false);
        setInputLisener();
-       jTable1.setFocusable(false);
+      
        
         getNavigatiionState();   
        
@@ -1419,7 +1421,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private int DocFacadeType;
     private boolean isNew= false;
     private boolean isFinishRow = false;
-    private int columnSelect = -1;
+    private int columnSelect = 0;
+    private int rowSelect = 0;
 //------------------------------------
 // internal parametrs
    private int docNumberLast =0;                  // nomer na documenta 
@@ -1535,7 +1538,7 @@ private void setInputLisener()
 {
    
        
-       jTable1.getCellEditor(0,0).addCellEditorListener(new CellEditorListener()
+  /*     jTable1.getCellEditor(0,0).addCellEditorListener(new CellEditorListener()
    
     {
         
@@ -1553,7 +1556,7 @@ private void setInputLisener()
                     isFinishRow = false;
                   //  jTable1.setValueAt(myParent.getNameProduct(),jTable1.getSelectedRow(),0);
                     
-                /*    jTable1.setValueAt(myParent.getNameProduct(),jTable1.getSelectedRow(),1);
+                    jTable1.setValueAt(myParent.getNameProduct(),jTable1.getSelectedRow(),1);
                     jTable1.setValueAt(myParent.getStorageOUTProduct(),jTable1.getSelectedRow(),2);
                     jTable1.setValueAt(myParent.getPriceListProduct(),jTable1.getSelectedRow(),3);
                     jTable1.setValueAt(myParent.getBrojProduct(),jTable1.getSelectedRow(),4);
@@ -1561,7 +1564,7 @@ private void setInputLisener()
                     jTable1.setValueAt(myParent.getRazfasovka2Produkt(),jTable1.getSelectedRow(),6);
                     jTable1.setValueAt(myParent.getPriceOneProduct(),jTable1.getSelectedRow(),7);
                     jTable1.setValueAt(myParent.getProcentProduct(),jTable1.getSelectedRow(),8);
-                    jTable1.setValueAt(myParent.getDDSProduct(),jTable1.getSelectedRow(),9);*/
+                    jTable1.setValueAt(myParent.getDDSProduct(),jTable1.getSelectedRow(),9);
                     
                    jTable1.getCellEditor(jTable1.getSelectedRow(),3).addCellEditorListener(this);
                     ((MyTableModel) jTable1.getModel()).enableCellEditable(3);
@@ -1643,10 +1646,121 @@ private void setInputLisener()
                   isFinishRow = true;
             }
         }
-    });
+    });*/
+
+jTable1.addKeyListener(new KeyListener() {
+    public void keyPressed(KeyEvent e)
+    {
+       
+            
+        
+    }
+    public void keyReleased(KeyEvent e)
+    {
+        columnSelect = jTable1.getSelectedColumn();
+        rowSelect = jTable1.getSelectedRow();
+        if(e.getKeyCode()== KeyEvent.VK_RIGHT)
+        {
+            System.out.print("jTable1.getSelectedRow: ");
+            System.out.println(jTable1.getSelectedRow());
+            System.out.print("jTable1.getSelectedColumn: ");
+            System.out.println(jTable1.getSelectedColumn());
+            
+             if(columnSelect == 0+1)
+                {
+                    // popylvat se drugite stoinosti na tdoc line
+                    isFinishRow = false;
+                              
+                  
+                  
+                    ((MyTableModel) jTable1.getModel()).enableCellEditable(3);
+                  //  ((MyTableModel) jTable1.getModel()).enableCellEditable(4);
+                  //  ((MyTableModel) jTable1.getModel()).enableCellEditable(5);
+                 //   ((MyTableModel) jTable1.getModel()).enableCellEditable(6);
+                //    ((MyTableModel) jTable1.getModel()).enableCellEditable(7);
+                 //   ((MyTableModel) jTable1.getModel()).enableCellEditable(8);
+                  
+                
+                }
+            if(columnSelect == 3+1)
+            {
+                // za iz4islenie na razfasovka 1 i razfasovka 2
+              
+                ((MyTableModel) jTable1.getModel()).enableCellEditable(4);
+               
+          
+            }
+            if(columnSelect == 4+1)  // osnovna razfasovka
+            {
+                // da se dobavi za  iz4islenie na osnovna razfasowka i razfasowka 2
+               
+               ((MyTableModel) jTable1.getModel()).enableCellEditable(5);
+              
+            }
+            if(columnSelect == 5+1)  // otiva na  razfasovka  1
+            {
+                // da se dobavi za  iz4islenie na osnovna razfasowka i razfasowka 1
+            
+               ((MyTableModel) jTable1.getModel()).enableCellEditable(6);
+              
+                       
+            }
+            if(columnSelect == 6+1)  // otiva na  razfasovka  2
+            {
+                // da se dobavi za  iz4islenie na osnovna razfasowka i razfasowka 1
+               
+                 ((MyTableModel) jTable1.getModel()).enableCellEditable(7);
+                 ((MyTableModel) jTable1.getModel()).enableCellEditable(8);
+               
+            }
+            
+            if(columnSelect == 7+1)  // ed cena
+            {
+                // da se dobavi za  iz4islenie na procenta i na ob6tata suma
+                
+               
+           
+                 
+            }
+            if(columnSelect == 8+1)  // 
+            {
+                
+                
+                
+                ((MyTableModel) jTable1.getModel()).setDefaultCellEditable();
+              //  myParent.setNameProduct((String)jTable1.getValueAt(jTable1.getSelectedRow(),0));
+                
+             //   myParent.setPriceOneProduct((Double)jTable1.getValueAt(jTable1.getSelectedRow(),7));
+            //    myParent.setDDSProduct((Double)jTable1.getValueAt(jTable1.getSelectedRow(),9));
+            //    myParent.setProcentProduct((Double)jTable1.getValueAt(jTable1.getSelectedRow(),8));
+           //     myParent.setBrojProduct((Double)jTable1.getValueAt(jTable1.getSelectedRow(),4));
+                
+                
+                // zapis v bazata za doc line------------------------ !!!!!!!!!!
+               
+               if( !isFinishRow) 
+               {
+                
+                ((MyTableModel)jTable1.getModel()).addRow(new Object [][] {null, null, null, null, null, null, null, null, null, null, null});
+             
+                 jTable1.changeSelection(rowSelect+1,2,false,false);
+                
+               
+                
+               }
+                  isFinishRow = true;
+            }
+           }
+            
+        
+       
+    }
+    public void keyTyped(KeyEvent e)
+    {
+       
+    }
+});
  
-    
-    
 }
 
 }// end class
