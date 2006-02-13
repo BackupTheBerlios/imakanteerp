@@ -207,12 +207,17 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
     private void searchRecords() {
         jspData.remove(table);
         try{
-            rs = doctypeObject.searchRecords(Integer.parseInt(jtfCode.getText()), jtfDocName.getText());
+            if (jtfCode.getText()=="") {
+                rs = doctypeObject.searchRecords(0, jtfDocName.getText());
+            } else {
+                rs = doctypeObject.searchRecords(Integer.parseInt(jtfCode.getText()), jtfDocName.getText());
+            }
             model = new imakante.com.CustomTableModel(conn, rs, Names);
             table = new imakante.com.CustomTable(model);
         } catch(Exception e) { e.printStackTrace(); }
         jspData.getViewport().add(table);
         jspData.repaint();
+        HideColumns(0);
     }
     
     private void addNewRecord() {
