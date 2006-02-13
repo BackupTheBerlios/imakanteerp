@@ -158,9 +158,12 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jtfCode">
           <Events>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtfCodeFocusLost"/>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtfCodeFocusGained"/>
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfCodeKeyPressed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jtfCode.setInputVerifier(new imakante.com.InputIntegerVerifier());"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jlName">
           <Properties>
@@ -168,6 +171,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jtfName">
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtfNameFocusGained"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jlPrintName">
           <Properties>
@@ -175,6 +181,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jtfPrintName">
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtfPrintNameFocusGained"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

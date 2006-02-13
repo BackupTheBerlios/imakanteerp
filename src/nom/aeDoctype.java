@@ -95,9 +95,10 @@ public class aeDoctype extends imakante.com.vcomponents.iDialog {
 
         jlCode.setText("\u041a\u043e\u0434:");
 
+        jtfCode.setInputVerifier(new imakante.com.InputIntegerVerifier());
         jtfCode.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jtfCodeFocusLost(evt);
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfCodeFocusGained(evt);
             }
         });
         jtfCode.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -108,7 +109,19 @@ public class aeDoctype extends imakante.com.vcomponents.iDialog {
 
         jlName.setText("\u0418\u043c\u0435:");
 
+        jtfName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfNameFocusGained(evt);
+            }
+        });
+
         jlPrintName.setText("\u041f\u0435\u0447\u0430\u0442\u043d\u043e \u0438\u043c\u0435:");
+
+        jtfPrintName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfPrintNameFocusGained(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jpDataLayout = new org.jdesktop.layout.GroupLayout(jpData);
         jpData.setLayout(jpDataLayout);
@@ -201,13 +214,21 @@ public class aeDoctype extends imakante.com.vcomponents.iDialog {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-412)/2, (screenSize.height-267)/2, 412, 267);
     }// </editor-fold>//GEN-END:initComponents
-    
-    private void jtfCodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfCodeFocusLost
-        cfFocus();
-    }//GEN-LAST:event_jtfCodeFocusLost
-    
+
+    private void jtfCodeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfCodeFocusGained
+        jtfCode.selectAll();
+    }//GEN-LAST:event_jtfCodeFocusGained
+
+    private void jtfNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfNameFocusGained
+        jtfName.selectAll();
+    }//GEN-LAST:event_jtfNameFocusGained
+
+    private void jtfPrintNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfPrintNameFocusGained
+        jtfPrintName.selectAll();
+    }//GEN-LAST:event_jtfPrintNameFocusGained
+        
     private void jtfCodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCodeKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ cfFocus(); }
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jtfCode.transferFocus(); }
     }//GEN-LAST:event_jtfCodeKeyPressed
     
     private void jbFirstKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbFirstKeyPressed
@@ -266,10 +287,6 @@ public class aeDoctype extends imakante.com.vcomponents.iDialog {
         this.dispose();
     }//GEN-LAST:event_jbCloseActionPerformed
     
-    private void cfFocus() {
-        if(!cFields()) { jtfCode.requestFocus(); }
-    }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbClose;
     private javax.swing.JButton jbFirst;
@@ -294,22 +311,7 @@ public class aeDoctype extends imakante.com.vcomponents.iDialog {
     private String prevName = "";
     private String prevPName = "";
     
-    private boolean cFields() { // V sluchaia samo na edno pole dali e integer
-        boolean check  = true;     // v bazata
-        int i = 0;
-        try {
-            i = Integer.parseInt(jtfCode.getText()); // proverka za int
-            jtfCode.setBackground(new java.awt.Color(255,255,255));
-        } catch (NumberFormatException nfex) {
-            check = false;
-            jtfCode.setBackground(new java.awt.Color(255,204,204));
-            nfex.printStackTrace();
-        }
-        return check;
-    }
-    
     private void saveRecord() {
-        if( cFields() ) {
             prevCode = DTparent.getCode();
             prevName = DTparent.getName();
             prevPName = DTparent.getPName();
@@ -322,7 +324,6 @@ public class aeDoctype extends imakante.com.vcomponents.iDialog {
             DTparent.refreshTable();
             DTparent.getTable().changeSelection(DTparent.getRow(), 2, false, false);
             jbUndo.setEnabled(true);
-        }
     }
     
     private void undoCorr() {
