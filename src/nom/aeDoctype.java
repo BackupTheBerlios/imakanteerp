@@ -267,11 +267,7 @@ public class aeDoctype extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jbCloseActionPerformed
     
     private void cfFocus() {
-        if( cFields() ) {
-            jtfCode.transferFocus();
-        } else {
-            jtfCode.requestFocus();
-        }
+        if(!cFields()) { jtfCode.requestFocus(); }
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

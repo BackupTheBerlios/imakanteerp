@@ -233,8 +233,7 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
             setRow(table.getSelectedRow());
             if(getRow()==0){          //manage button state of ae form
                 setFirst(true);
-            }
-            else if(getRow()==getMaxRow()){
+            } else if(getRow()==getMaxRow()){
                 setLast(true);
             }else{
                 setFirst(false);
@@ -265,6 +264,7 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
         table = new imakante.com.CustomTable(model);
         jspData.getViewport().add(table);
         jspData.repaint();
+        HideColumns(0);
     }
     
     private void deleteRecord() {
@@ -316,7 +316,7 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
     private String printName = "";
     private boolean first = false;
     private boolean last = false;
-     public static final String Names[] = {"id",
+    public static final String Names[] = {"id",
     "\u041a\u043e\u0434\u043e\u0432\u0435",
     "\u0418\u043c\u0435\u043d\u0430",
     "\u041f\u0435\u0447\u0430\u0442\u043d\u043e \u0438\u043c\u0435"};
@@ -543,7 +543,7 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
         this.conn = conn;
     }
     
-     private int getColumnIndex(String in) {
+    private int getColumnIndex(String in) {
         int count = table.getColumnCount();
         for(int i=0; i < count; i++) {
             if(table.getColumnName(i).equals(in)) return i;
