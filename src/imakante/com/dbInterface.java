@@ -6,10 +6,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-/**
- *
- * @author Rado
- */
+
 public interface dbInterface {
     void close();
 
