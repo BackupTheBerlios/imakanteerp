@@ -21,7 +21,7 @@ public class dbNumDoc extends imakante.com.dbObject {
         prepareCstm();
     }
     
-    private void prepareCstm() // OK
+    protected void prepareCstm() // OK
     {
         try {
             
@@ -42,7 +42,7 @@ public class dbNumDoc extends imakante.com.dbObject {
         
         return rs;
     }
-    private void registerParameters() //OK
+    protected void registerParameters() //OK
     {
         try {
             getCstm().setInt("comprator", getComprator());
@@ -58,7 +58,7 @@ public class dbNumDoc extends imakante.com.dbObject {
         }
         
     }
-    private void prepareRezult() //OK
+    protected void prepareRezult() //OK
     {
         try{
             registerParameters();
