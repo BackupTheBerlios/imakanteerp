@@ -148,9 +148,10 @@ public class aeNumDoc extends imakante.com.vcomponents.iDialog {
 
         jLabel4.setText("\u0418\u043c\u0435:");
 
+        jTextField1.setInputVerifier(new imakante.com.InputIntegerVerifier());
         jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField1FocusLost(evt);
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField1FocusGained(evt);
             }
         });
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -159,6 +160,11 @@ public class aeNumDoc extends imakante.com.vcomponents.iDialog {
             }
         });
 
+        jTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField3FocusGained(evt);
+            }
+        });
         jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField3KeyPressed(evt);
@@ -214,7 +220,7 @@ public class aeNumDoc extends imakante.com.vcomponents.iDialog {
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel4)
                     .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 84, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -223,25 +229,29 @@ public class aeNumDoc extends imakante.com.vcomponents.iDialog {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-355)/2, (screenSize.height-260)/2, 355, 260);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+        jTextField1.selectAll();
+    }//GEN-LAST:event_jTextField1FocusGained
+    
+    private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
+        jTextField3.selectAll();
+    }//GEN-LAST:event_jTextField3FocusGained
+    
     private void jTextField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyPressed
-        
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonSave.doClick(); saveRecord(); }
     }//GEN-LAST:event_jTextField3KeyPressed
     
-    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        cfFocus();
-    }//GEN-LAST:event_jTextField1FocusLost
-    
     private void jButtonCloseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonCloseKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonClose.doClick();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonClose.doClick(); }
     }//GEN-LAST:event_jButtonCloseKeyPressed
     
     private void jButtonUndoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonUndoKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonUndo.doClick();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonUndo.doClick(); }
     }//GEN-LAST:event_jButtonUndoKeyPressed
     
     private void jButtonSaveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonSaveKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonSave.doClick();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonSave.doClick(); }
     }//GEN-LAST:event_jButtonSaveKeyPressed
     
     private void jButtonToEndKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonToEndKeyPressed
@@ -259,13 +269,13 @@ public class aeNumDoc extends imakante.com.vcomponents.iDialog {
     private void jButtonToBeginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonToBeginKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonToBegin.doClick();}
     }//GEN-LAST:event_jButtonToBeginKeyPressed
-        
+    
     private void jComboGKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboGKeyPressed
         
     }//GEN-LAST:event_jComboGKeyPressed
     
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ cfFocus(); }
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jTextField1.transferFocus(); }
     }//GEN-LAST:event_jTextField1KeyPressed
     
     private void jButtonUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUndoActionPerformed
@@ -393,24 +403,23 @@ public class aeNumDoc extends imakante.com.vcomponents.iDialog {
     
     //SAVE
     private void saveRecord() {
-        if(cFields()){
-            oldIDG = myParent.getIDG();
-            oldCod = myParent.getCod();
-            oldName = myParent.getNames();
-            oldComment = myParent.getComment();
-            try {
-                myParent.setCod(Integer.parseInt(jTextField1.getText()));
-            } catch (NumberFormatException nfex) {
-                nfex.printStackTrace();
-            }
-            myParent.setNames(jTextField3.getText());
-            
-            myParent.setIDG(myParent.getInternalObject().getIndexConnOfId()[jComboG.getSelectedIndex()]);
-            myParent.getInternalObject().updateRow(myParent.getId(), myParent.getIDG(),myParent.getCod(),
-                    myParent.getNames(), myParent.getComment());
-            myParent.refreshTable();
-            myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
-            jButtonUndo.setEnabled(true);}
+        oldIDG = myParent.getIDG();
+        oldCod = myParent.getCod();
+        oldName = myParent.getNames();
+        oldComment = myParent.getComment();
+        try {
+            myParent.setCod(Integer.parseInt(jTextField1.getText()));
+        } catch (NumberFormatException nfex) {
+            nfex.printStackTrace();
+        }
+        myParent.setNames(jTextField3.getText());
+        
+        myParent.setIDG(myParent.getInternalObject().getIndexConnOfId()[jComboG.getSelectedIndex()]);
+        myParent.getInternalObject().updateRow(myParent.getId(), myParent.getIDG(),myParent.getCod(),
+                myParent.getNames(), myParent.getComment());
+        myParent.refreshTable();
+        myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
+        jButtonUndo.setEnabled(true);
     }
     
     //UNDO
@@ -440,14 +449,13 @@ public class aeNumDoc extends imakante.com.vcomponents.iDialog {
             jButtonOneRowP.setEnabled(false);
             jButtonToEnd.repaint();
             jButtonOneRowP.repaint();
-            
         }
     }
     
     private void repaintComp() {
         jTextField1.setText(""+myParent.getCod());
         jTextField3.setText(myParent.getNames());
-       
+        
         jComboG.setSelectedIndex(getNewComboBoxIndex(myParent.getIDG()));
     }
     
@@ -455,16 +463,11 @@ public class aeNumDoc extends imakante.com.vcomponents.iDialog {
         namesG = myParent.getInternalObject().getCasaG();
         for(int i=0;i<namesG.length;i++) {
             jComboG.addItem(new String(namesG[i]));
-            
         }
-        
         if(selectComboBoxItem != 0) {
-            
             selectComboBoxItem = getNewComboBoxIndex(selectComboBoxItem);
-            
             jComboG.setSelectedIndex(selectComboBoxItem);
         }
-        
     }
     
     private int getNewComboBoxIndex(int oldindex) {

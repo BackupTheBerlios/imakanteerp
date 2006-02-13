@@ -122,6 +122,11 @@ public class aeDoctype extends imakante.com.vcomponents.iDialog {
                 jtfPrintNameFocusGained(evt);
             }
         });
+        jtfPrintName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfPrintNameKeyPressed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jpDataLayout = new org.jdesktop.layout.GroupLayout(jpData);
         jpData.setLayout(jpDataLayout);
@@ -214,6 +219,10 @@ public class aeDoctype extends imakante.com.vcomponents.iDialog {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-412)/2, (screenSize.height-267)/2, 412, 267);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jtfPrintNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPrintNameKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jbSave.doClick(); saveRecord(); }
+    }//GEN-LAST:event_jtfPrintNameKeyPressed
 
     private void jtfCodeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfCodeFocusGained
         jtfCode.selectAll();

@@ -80,7 +80,7 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 825, Short.MAX_VALUE)
+            .add(0, 893, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -120,7 +120,7 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
 
         jPanel3.add(jButtonPrint);
 
-        jButtonPrnReport.setText("\u041f\u0435\u0447\u0430\u0442 \u0440\u0435\u043f\u043e\u0440\u0442");
+        jButtonPrnReport.setText("\u041f\u0435\u0447\u0430\u0442 \u043e\u0442\u0447\u0435\u0442");
         jPanel3.add(jButtonPrnReport);
 
         jButtonDel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Delete 2.png")));
@@ -158,7 +158,7 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
         getContentPane().add(jPanel3, java.awt.BorderLayout.SOUTH);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-835)/2, (screenSize.height-470)/2, 835, 470);
+        setBounds((screenSize.width-903)/2, (screenSize.height-459)/2, 903, 459);
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
