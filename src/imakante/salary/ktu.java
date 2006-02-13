@@ -25,7 +25,7 @@ public class ktu  extends imakante.com.dbObject {
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
     }
     
-    private void prepareCstm() {
+    public void prepareCstm() {
         try {
             
             cstm = conn.prepareCall("{call ls_procedure_ktu(?,?)}");

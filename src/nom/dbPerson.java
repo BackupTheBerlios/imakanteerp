@@ -47,7 +47,7 @@ public class dbPerson extends imakante.com.dbObject {
         return rs;
     }
     
-    private void registerParameters() {
+    public void registerParameters() {
         try {
             getCstm().setInt("comprator", getComprator());
             getCstm().setInt("in_id", getID());
@@ -62,7 +62,7 @@ public class dbPerson extends imakante.com.dbObject {
         }
     }
     
-    private void prepareRezult() {
+    public void prepareRezult() {
         try{
             registerParameters();
             setRs(getCstm().executeQuery());
@@ -334,5 +334,8 @@ public class dbPerson extends imakante.com.dbObject {
     
     public int[] getIndexConnOfId() {
         return indexConnOfId;
+    }
+
+    protected void prepareCstm() {
     }
 }

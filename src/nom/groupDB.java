@@ -35,7 +35,7 @@ public class groupDB  extends dbObject
         
     }
     //-------SART MyFunction
- private void prepareCstm() //????? imeto na procedurata ??
+ public void prepareCstm() //????? imeto na procedurata ??
     {
         try {
             
@@ -58,7 +58,7 @@ public class groupDB  extends dbObject
         System.out.println("ot getTable()");
         return rs;
     }
- private void registerParameters() //OK
+ public void registerParameters() //OK
     {
          try
          {
@@ -77,7 +77,7 @@ public class groupDB  extends dbObject
              sqle.printStackTrace();
          }
     }
- private void prepareRezult() //OK
+ public void prepareRezult() //OK
     {
         try{
             registerParameters();

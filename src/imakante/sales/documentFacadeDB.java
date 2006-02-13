@@ -86,7 +86,7 @@ public class documentFacadeDB  extends dbObject
         
     }
     //-------SART MyFunction
- private void prepareCstm() //????? vhodnite parametri  - brojkata
+ public void prepareCstm() //????? vhodnite parametri  - brojkata
     {
         try {
             
@@ -109,7 +109,7 @@ public class documentFacadeDB  extends dbObject
         System.out.println("ot getTable()");
         return rs;
     }
- private void registerParameters() 
+ public void registerParameters() 
     {
          try
          {
@@ -153,7 +153,7 @@ public class documentFacadeDB  extends dbObject
              sqle.printStackTrace();
          }
     }
- private void prepareRezult() //OK
+ public void prepareRezult() //OK
     {
         try{
             registerParameters();

@@ -88,18 +88,10 @@ public class commonNom extends dbObject
             sqle.printStackTrace();
         }
     }
-    private java.sql.ResultSet prepareRezult()//OK
+    
+    public void prepareRezult()//OK
     {
-        try
-        {
-           registerParameters();
-           rs =  cstm.executeQuery();
-        }
-        catch(java.sql.SQLException sqle)
-        {
-            sqle.printStackTrace();
-        }
-       return rs; 
+        
     }
     public boolean getTableInfoNom(int idNom) //OK
     {
@@ -133,7 +125,7 @@ public class commonNom extends dbObject
        return return_check; 
     }
  
-     private void registerParameters() //OK
+     public void registerParameters() //OK
      {
          try
          {
@@ -367,6 +359,9 @@ public class commonNom extends dbObject
          } 
       
    }*/
+
+    protected void prepareCstm() {
+    }
 }
 //-----------------------------------------------------------------------------
 class CTableInfo

@@ -205,7 +205,7 @@ public class taxDOO extends dbObject{
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
     }
     
-    private void prepareCstm() {
+    public void prepareCstm() {
         try {
             
             cstm = conn.prepareCall("{call ls_procedure_taxDOO(?,?)}");
@@ -213,7 +213,7 @@ public class taxDOO extends dbObject{
         } catch(java.sql.SQLException sqle) {sqle.printStackTrace();}
     }
     
-    private void prepareRezult(){
+    public void prepareRezult(){
         try{
             registerParameters();
             setRs(cstm.executeQuery());}catch(java.sql.SQLException sqle){sqle.printStackTrace();}

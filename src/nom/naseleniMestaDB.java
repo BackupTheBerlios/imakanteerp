@@ -34,7 +34,7 @@ public class naseleniMestaDB  extends dbObject
                
     }
     //-------SART MyFunction
- private void prepareCstm() // OK
+ public void prepareCstm() // OK
     {
         try {
             
@@ -57,7 +57,7 @@ public class naseleniMestaDB  extends dbObject
         System.out.println("naseleniMesta.getTable()");
         return rs;
     }
- private void registerParameters() //OK
+ public void registerParameters() //OK
     {
          try
          {
@@ -76,7 +76,7 @@ public class naseleniMestaDB  extends dbObject
          }
      System.out.println("ot registerparameter");    
     }
- private void prepareRezult() //OK
+ public void prepareRezult() //OK
     {
         try{
             registerParameters();

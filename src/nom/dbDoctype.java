@@ -24,7 +24,7 @@ public class dbDoctype extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    private void registerParameters() {
+    public void registerParameters() {
         try {
             getCstm().setInt("in_id", getId());
             getCstm().setInt("comprator", getComprator());
@@ -43,7 +43,7 @@ public class dbDoctype extends imakante.com.dbObject {
         return rs;
     }
     
-    private void prepareRezult() {
+    public void prepareRezult() {
         try{
             registerParameters();
             setRs(getCstm().executeQuery());
@@ -216,5 +216,8 @@ public class dbDoctype extends imakante.com.dbObject {
             cstm = null;
         } catch(java.sql.SQLException sqle) {  }
         
+    }
+
+    protected void prepareCstm() {
     }
 }

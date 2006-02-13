@@ -125,7 +125,7 @@ public class countries extends dbObject {
             cstm.execute();} catch(java.sql.SQLException sqle){sqle.printStackTrace();}
     }
     
-    private void registerParameters(){
+    public void registerParameters(){
         try{
             
             getCstm().setInt("in_id", getId());
@@ -136,14 +136,14 @@ public class countries extends dbObject {
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
     }
     
-    private void prepareCstm() {
+    public void prepareCstm() {
         try {
             
             setCstm(getConn().prepareCall("{call ls_procedure_country(?,?,?,?)}"));
             
         } catch(java.sql.SQLException sqle) {sqle.printStackTrace();}
     }
-    private void prepareRezult(){
+    public void prepareRezult(){
         try{
             registerParameters();
             setRs(getCstm().executeQuery());}catch(java.sql.SQLException sqle){sqle.printStackTrace();}

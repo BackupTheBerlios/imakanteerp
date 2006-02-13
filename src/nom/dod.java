@@ -120,7 +120,7 @@ public class dod extends dbObject{
             cstm.execute();} catch(java.sql.SQLException sqle){sqle.printStackTrace();}
     }
     
-    private void registerParameters(){
+    public void registerParameters(){
         try{
             cstm.setInt("comprator", getComprator());
             cstm.setInt("in_id", getId());
@@ -131,14 +131,14 @@ public class dod extends dbObject{
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
     }
     
-    private void prepareCstm() {
+    public void prepareCstm() {
         try {
             
             setCstm(getConn().prepareCall("{call ls_procedure_taxDOD(?,?,?,?,?,?)}"));
             
         } catch(java.sql.SQLException sqle) {sqle.printStackTrace();}
     }
-    private void prepareRezult(){
+    public void prepareRezult(){
         try{
             registerParameters();
             setRs(getCstm().executeQuery());}catch(java.sql.SQLException sqle){sqle.printStackTrace();}

@@ -26,7 +26,7 @@ public class dbExchangeRate extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    private void registerParameters() {
+    public void registerParameters() {
         try {
             getCstm().setInt("comprator", getComprator());
             getCstm().setInt("in_id", getId());
@@ -45,7 +45,7 @@ public class dbExchangeRate extends imakante.com.dbObject {
         return rs;
     }
     
-    private void prepareRezult() {
+    public void prepareRezult() {
         try{
             registerParameters();
             setRs(getCstm().executeQuery());
@@ -259,5 +259,8 @@ public class dbExchangeRate extends imakante.com.dbObject {
     
     public int[] getIndexConnOfId() {
         return indexConnOfId;
+    }
+
+    protected void prepareCstm() {
     }
 }

@@ -32,7 +32,7 @@ public class incomDB  extends dbObject {
         
     }
     //-------SART MyFunction
-    private void prepareCstm() // OK
+    public void prepareCstm() // OK
     {
         try {
             
@@ -53,7 +53,7 @@ public class incomDB  extends dbObject {
         
         return rs;
     }
-    private void registerParameters() //OK
+    public void registerParameters() //OK
     {
         try {
             getCstm().setInt("comprator", getComprator());
@@ -69,7 +69,7 @@ public class incomDB  extends dbObject {
         }
         
     }
-    private void prepareRezult() //OK
+    public void prepareRezult() //OK
     {
         try{
             registerParameters();

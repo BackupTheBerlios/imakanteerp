@@ -28,7 +28,7 @@ public class typeobjectDB  extends imakante.com.dbObject {
     //-------SART Methods
     
     // Make Cstm - Call Statement
-    private void prepareCstm() {
+    public void prepareCstm() {
         try {
             
             cstm = conn.prepareCall("{call nom_procedure_typeobject(?,?,?,?,?)}");
@@ -49,7 +49,7 @@ public class typeobjectDB  extends imakante.com.dbObject {
         return rs;
     }
     
-    private void registerParameters() //OK
+    public void registerParameters() //OK
     {
         try {
             
@@ -63,7 +63,7 @@ public class typeobjectDB  extends imakante.com.dbObject {
             sqle.printStackTrace();
         }
     }
-    private void prepareRezult() //OK
+    public void prepareRezult() //OK
     {
         try{
             registerParameters();

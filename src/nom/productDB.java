@@ -84,7 +84,7 @@ public class productDB extends dbObject
         this.flag_pm = flag;
         prepareCstm();
     }
- private void prepareCstm() // ok
+ public void prepareCstm() // ok
     {
      try {
           setCstm(getConn().prepareCall("{call nom_procedure_product(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
@@ -333,7 +333,7 @@ public class productDB extends dbObject
  
 
  
- private void registerParameters() //ok
+ public void registerParameters() //ok
     {
          try
          {

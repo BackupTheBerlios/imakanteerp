@@ -21,7 +21,7 @@ public class contragentDB extends dbObject
         this.flag = flag;
         prepareCstm();
     }
- private void prepareCstm() //ok
+ public void prepareCstm() //ok
     {
      try {
           setCstm(getConn().prepareCall("{call nom_procedure_contragent(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
@@ -314,7 +314,7 @@ public class contragentDB extends dbObject
         System.out.println("ot contragentDB.getNameWithID()");
         return nam;   
  }
- private void registerParameters() //ok
+ public void registerParameters() //ok
     {
          try
          {
