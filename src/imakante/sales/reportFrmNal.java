@@ -253,10 +253,18 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
     private String[] Names= {"id", "cod", "names"};
     private  int intTransfer;
     private  int CompNumber = 0;
+    
     private String strContragent = "SELECT `rep_comm_nal`.`id_contragent`,"
             + "`rep_comm_nal`.`code_contragent`, `rep_comm_nal`.`name_n_contragent`"
             + "FROM `rep_comm_nal` WHERE `rep_comm_nal`.`code_contragent` LIKE  '%";
     
+     private String strProduct = "SELECT `rep_comm_nal`.`id_pm`,"
+            + "`rep_comm_nal`.`code_pm`, `rep_comm_nal`.`name_pm`"
+            + "FROM `rep_comm_nal` WHERE `rep_comm_nal`.`code_pm` LIKE  '%";
+    
+     private String strStore = "SELECT `rep_comm_nal`.`id_n_storage`,"
+            + "`rep_comm_nal`.`code_n_storage`, `rep_comm_nal`.`name_n_storage`"
+            + "FROM `rep_comm_nal` WHERE `rep_comm_nal`.`code_n_storage` LIKE  '%";
     
     
     //METHODS
@@ -384,14 +392,35 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
     }
     
     private void processField1() {
-        String newString = strContragent + this.jTextField1.getText() + "%'";
+        String newString = strStore + this.jTextField1.getText() + "%'";
         constructDialod(newString, 1);
         
     }
 
     private void processField2() {
-        String newString = strContragent + this.jTextField2.getText() + "%' AND `rep_comm_nal`.`code_contragent` >= " + this.jTextField1.getText() + ";";
+        String newString = strStore + this.jTextField2.getText() + "%' AND `rep_comm_nal`.`code_n_storage` >= " + this.jTextField1.getText() + ";";
         constructDialod(newString, 2);
+    }
+    
+     private void processField3() {
+        String newString =strProduct + this.jTextField3.getText() + "%'";
+        constructDialod(newString, 3);
+        
+    }
+
+    private void processField4() {
+        String newString = strProduct + this.jTextField4.getText() + "%' AND `rep_comm_nal`.`code_pm` >= " + this.jTextField3.getText() + ";";
+        constructDialod(newString, 4);
+    }
+       private void processField5() {
+        String newString = strContragent + this.jTextField5.getText() + "%'";
+        constructDialod(newString, 5);
+        
+    }
+
+    private void processField6() {
+        String newString = strContragent + this.jTextField6.getText() + "%' AND `rep_comm_nal`.`code_contragent` >= " + this.jTextField5.getText() + ";";
+        constructDialod(newString, 6);
     }
     
     
