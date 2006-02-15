@@ -510,6 +510,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         sprMenu.setText("\u0421\u041f\u0420\u0410\u0412\u041a\u0418");
         spravkiMenu_nal.setText("\u041d\u0430\u043b\u0438\u0447\u043d\u043e\u0441\u0442");
+        spravkiMenu_nal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                spravkiMenu_nalActionPerformed(evt);
+            }
+        });
+
         sprMenu.add(spravkiMenu_nal);
 
         balansMenu.setText("\u0411\u0430\u043b\u0430\u043d\u0441\u0438");
@@ -594,6 +600,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-448)/2, 757, 448);
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void spravkiMenu_nalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spravkiMenu_nalActionPerformed
+        loadReportNal();
+    }//GEN-LAST:event_spravkiMenu_nalActionPerformed
     
     private void moneyMenu_outActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moneyMenu_outActionPerformed
         loadExpens();
@@ -1185,5 +1195,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     
     public static void setIsStartFrmProduct(boolean bool) {
         isStartFrmProduct = bool;
+    }
+
+    private void loadReportNal() {
+       imakante.sales.reportFrmNal repNal = new imakante.sales.reportFrmNal("nalichnost", this);
+       desktopPane.add(repNal);
+       repNal.setVisible(true);
     }
 }

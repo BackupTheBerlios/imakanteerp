@@ -401,6 +401,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x41d;&#x430;&#x43b;&#x438;&#x447;&#x43d;&#x43e;&#x441;&#x442;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="spravkiMenu_nalActionPerformed"/>
+              </Events>
             </MenuItem>
             <Menu class="javax.swing.JMenu" name="balansMenu">
               <Properties>

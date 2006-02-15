@@ -25,7 +25,7 @@ public class iInternalFrame extends javax.swing.JInternalFrame implements java.i
     private imakante.com.vcomponents.iFrame myFrame;
     private String names;
     private java.sql.Connection conn;
-    
+    private int intTransfer;
     static final long serialVersionUID=1;
   
     public String getIFNames() {
@@ -66,6 +66,14 @@ public class iInternalFrame extends javax.swing.JInternalFrame implements java.i
     
     public void insertElement(String value){
        
+    }
+
+    public int getIntTransfer() {
+        return intTransfer;
+    }
+
+    public void setIntTransfer(int intTransfer) {
+        this.intTransfer = intTransfer;
     }
  
 }
