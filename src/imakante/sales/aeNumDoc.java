@@ -406,17 +406,12 @@ public class aeNumDoc extends imakante.com.vcomponents.iDialog {
         oldIDG = myParent.getIDG();
         oldCod = myParent.getCod();
         oldName = myParent.getNames();
-        oldComment = myParent.getComment();
         try {
             myParent.setCod(Integer.parseInt(jTextField1.getText()));
-        } catch (NumberFormatException nfex) {
-            nfex.printStackTrace();
-        }
+        } catch (NumberFormatException nfex) {nfex.printStackTrace();}
         myParent.setNames(jTextField3.getText());
-        
         myParent.setIDG(myParent.getInternalObject().getIndexConnOfId()[jComboG.getSelectedIndex()]);
-        myParent.getInternalObject().updateRow(myParent.getId(), myParent.getIDG(),myParent.getCod(),
-                myParent.getNames(), myParent.getComment());
+        myParent.getInternalObject().updateRow(myParent.getId(), myParent.getIDG(), myParent.getCod(), myParent.getNames());
         myParent.refreshTable();
         myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
         jButtonUndo.setEnabled(true);
@@ -427,7 +422,6 @@ public class aeNumDoc extends imakante.com.vcomponents.iDialog {
         myParent.setIDG(oldIDG);
         myParent.setCod(oldCod);
         myParent.setNames(oldName);
-        
         repaintComp();
         jButtonUndo.setEnabled(false);
     }
@@ -442,7 +436,6 @@ public class aeNumDoc extends imakante.com.vcomponents.iDialog {
             jButtonOneRowM.setEnabled(false);
             jButtonToBegin.repaint();
             jButtonOneRowM.repaint();
-            
         }
         if(myParent.isAtEnd()) {
             jButtonToEnd.setEnabled(false);
@@ -453,15 +446,14 @@ public class aeNumDoc extends imakante.com.vcomponents.iDialog {
     }
     
     private void repaintComp() {
-        jTextField1.setText(""+myParent.getCod());
+        jTextField1.setText("" + myParent.getCod());
         jTextField3.setText(myParent.getNames());
-        
         jComboG.setSelectedIndex(getNewComboBoxIndex(myParent.getIDG()));
     }
     
     private void initCombo() {
         namesG = myParent.getInternalObject().getCasaG();
-        for(int i=0;i<namesG.length;i++) {
+        for(int i=0; i<namesG.length; i++) {
             jComboG.addItem(new String(namesG[i]));
         }
         if(selectComboBoxItem != 0) {

@@ -17,7 +17,10 @@ BEGIN
      IF (comprator = 3) THEN
         DELETE FROM `mida`.`sl_doc_type_num`  WHERE id_sdtn = in_id;
      END IF;
-
+     IF (comprator = 4) THEN
+        SELECT n.id_ntd, ntd.name_ntd, n.area_number_sdtn, n.name_sdtn FROM sl_doc_type_num n
+            LEFT OUTER JOIN n_type_doc ntd ON ntd.id_ntd = n.id_ntd WHERE n.id_sdtn = in_id;
+     END IF;
      IF (comprator = 5) THEN
         SELECT n.id_sdtn, n.id_ntd, ntd.name_ntd, n.area_number_sdtn, n.name_sdtn
                FROM sl_doc_type_num n LEFT OUTER JOIN n_type_doc ntd ON ntd.id_ntd = n.id_ntd

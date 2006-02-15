@@ -212,13 +212,13 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
     // End of variables declaration//GEN-END:variables
     
     //--------------- My Variables
-    private int id=0; // imena ot tablicata
-    private int code_groupe =0; // imena ot tablicata
-    private int cod = 0;
-    private String name,comment; // imena ot tablicata
-    private String namesG[]; //imena na grupi
+    private int id = 0;
+    private int code_doctype = 0;
+    private int narea = 0;
+    private String name;
+    private String namesG[];
     private int selectComboBoxItem;
-    private  boolean atBegining=false;
+    private  boolean atBegining = false;
     private  boolean atEnd = false;
     private int row;
     
@@ -350,19 +350,19 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
     }
     
     public void setIDG(int Gr) {
-        this.code_groupe = Gr;
+        this.code_doctype = Gr;
     }
     
     public int getIDG() {
-        return code_groupe;
+        return code_doctype;
     }
     
     public void setCod(int Cod) {
-        this.cod = Cod;
+        this.narea = Cod;
     }
     
     public int getCod() {
-        return cod;
+        return narea;
     }
     public void setNames(String Name) {
         this.name = Name;
@@ -370,14 +370,6 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
     
     public String getNames() {
         return name;
-    }
-    
-    public void setComment(String Comment) {
-        this.comment = Comment;
-    }
-    
-    public String getComment() {
-        return comment;
     }
     
     public  void setRow(int val) {
