@@ -111,8 +111,20 @@ public class dlgLogin extends javax.swing.JDialog {
         jLabelCombo.setBounds(132, 10, 212, 22);
 
         jUserTxtField.setText("root");
+        jUserTxtField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jUserTxtFieldFocusGained(evt);
+            }
+        });
+
         jInfoPanel.add(jUserTxtField);
         jUserTxtField.setBounds(132, 50, 210, 22);
+
+        jPassField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPassFieldKeyPressed(evt);
+            }
+        });
 
         jInfoPanel.add(jPassField);
         jPassField.setBounds(132, 84, 210, 22);
@@ -163,7 +175,40 @@ public class dlgLogin extends javax.swing.JDialog {
         setBounds((screenSize.width-370)/2, (screenSize.height-201)/2, 370, 201);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jPassFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPassFieldKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            jLoginBtn.doClick();
+            login();
+        }
+    }//GEN-LAST:event_jPassFieldKeyPressed
+
+    private void jUserTxtFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jUserTxtFieldFocusGained
+        jUserTxtField.selectAll();
+    }//GEN-LAST:event_jUserTxtFieldFocusGained
+
     private void jLoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginBtnActionPerformed
+        login();
+    }//GEN-LAST:event_jLoginBtnActionPerformed
+
+    private void jCancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCancelBtnActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jCancelBtnActionPerformed
+    
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jCancelBtn;
+    private javax.swing.JPanel jInfoPanel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JComboBox jLabelCombo;
+    private javax.swing.JButton jLoginBtn;
+    private javax.swing.JPasswordField jPassField;
+    private javax.swing.JTextField jUserTxtField;
+    // End of variables declaration//GEN-END:variables
+    private imakante.com.NewMain inframe;
+    private String fileConfig;
+    
+    private void login() {
         String DBDriver;
         String DBSource;
         String DBUserName;
@@ -203,23 +248,5 @@ public class dlgLogin extends javax.swing.JDialog {
                     imakante.com.NewMain.getMsgTitle(),javax.swing.JOptionPane.WARNING_MESSAGE);
             e.printStackTrace();
         }
-    }//GEN-LAST:event_jLoginBtnActionPerformed
-
-    private void jCancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCancelBtnActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_jCancelBtnActionPerformed
-    
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jCancelBtn;
-    private javax.swing.JPanel jInfoPanel;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JComboBox jLabelCombo;
-    private javax.swing.JButton jLoginBtn;
-    private javax.swing.JPasswordField jPassField;
-    private javax.swing.JTextField jUserTxtField;
-    // End of variables declaration//GEN-END:variables
-    private imakante.com.NewMain inframe;
-    private String fileConfig;
+    }
 }
