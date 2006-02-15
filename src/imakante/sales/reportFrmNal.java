@@ -389,6 +389,10 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
             this.jTextField3.setText(""+this.intTransfer);}
         if(CompNumber == 4){
             this.jTextField4.setText(""+this.intTransfer);}
+        if(CompNumber == 5){
+            this.jTextField5.setText(""+this.intTransfer);}
+        if(CompNumber == 6){
+            this.jTextField6.setText(""+this.intTransfer);}
     }
     
     private void processField1() {
