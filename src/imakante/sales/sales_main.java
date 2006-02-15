@@ -555,6 +555,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         sluMenu.add(nomMenu_DocType);
 
         jMenuItem6.setText("\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438 \u043d\u043e\u043c\u0435\u0440\u0430\u0446\u0438\u044f");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+
         sluMenu.add(jMenuItem6);
 
         jMenuItem5.setText("\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b\u0438");
@@ -600,6 +606,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-448)/2, 757, 448);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        loadNumDocuments();
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
     
     private void spravkiMenu_nalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spravkiMenu_nalActionPerformed
         loadReportNal();
@@ -717,7 +727,6 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         System.out.println("end sales_main-formWindowClosed");
     }//GEN-LAST:event_formWindowClosed
-    
     
     private void sluMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sluMenuActionPerformed
         
@@ -1174,18 +1183,24 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         
         pers.setVisible(true);
     }
-    // TYPE DOCUMENTS
     
+    // TYPE DOCUMENTS & NUMBERING
     private void loadTypeDocuments(){
         nom.FrmDoctype DocType = new nom.FrmDoctype("tipove dokumenti", this);
         desktopPane.add(DocType);
         try {
             DocType.setMaximum(true);
-        } catch (java.beans.PropertyVetoException ex) {
-            ex.printStackTrace();
-        }
-        
+        } catch (java.beans.PropertyVetoException ex) {ex.printStackTrace();}
         DocType.setVisible(true);
+    }
+    
+    private void loadNumDocuments() {
+        imakante.sales.FrmNumDoc DocNums = new imakante.sales.FrmNumDoc("nomeracii na dokumenti", this);
+        desktopPane.add(DocNums);
+        try {
+            DocNums.setMaximum(true);
+        } catch (java.beans.PropertyVetoException ex) {ex.printStackTrace();}
+        DocNums.setVisible(true);
     }
     
 // ENCAPS METHODS FORM CONTROL
