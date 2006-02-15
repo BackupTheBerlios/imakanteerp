@@ -24,7 +24,7 @@ BEGIN
                WHERE n.area_number_sdtn LIKE CONCAT('%',in_area,'%') AND  n.name_sdtn LIKE CONCAT('%',in_name,'%');
      END IF;
      IF (comprator = 6) THEN
-        SELECT ntd.id_ntd, ntd.name_ntd FROM n_type_doc ntd WHERE n.nom_n_group = 5;
+        SELECT ntd.id_ntd, ntd.name_ntd FROM n_type_doc ntd;
      END IF;
      IF (comprator = 7) THEN
         SELECT MAX(n.id_sdtn) FROM `mida`.`sl_doc_type_num` n;
@@ -33,7 +33,7 @@ BEGIN
         SELECT MAX(n.area_number_sdtn) AS area_number FROM `mida`.`sl_doc_type_num` n;
      END IF;
      IF (comprator = 9) THEN
-        SELECT MAX(ntd.id_ntd) AS id_ntd FROM n_type_doc ntd WHERE ntd.nom_n_group = 5;
+        SELECT MAX(ntd.id_ntd) AS id_ntd FROM n_type_doc ntd;
      END IF;
 END $$
 
