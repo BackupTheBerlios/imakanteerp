@@ -435,7 +435,7 @@ CREATE TABLE `n_baccount` (
 
 CREATE TABLE `n_casa` (
   `id_n_casa` int(10) NOT NULL auto_increment,
-  `id_n_group` int(10) unsigned zerofill NOT NULL default '0000000000',
+  `id_n_group` int(11) unsigned NOT NULL default '0',
   `code_n_casa` int(11) unsigned NOT NULL default '0',
   `name_n_casa` varchar(40) collate cp1251_bulgarian_ci default NULL,
   `comments_n_casa` varchar(250) collate cp1251_bulgarian_ci default NULL,
@@ -451,15 +451,15 @@ CREATE TABLE `n_casa` (
 CREATE TABLE `n_contragent` (
   `id_contragent` int(11) NOT NULL auto_increment,
   `code_contragent` int(11) NOT NULL default '0',
-  `name_n_contragent` varchar(45) NOT NULL,
-  `bul_n_contragent` varchar(13) NOT NULL,
-  `dan_n_contragent` varchar(11) NOT NULL,
-  `address_n_contragent` varchar(35) NOT NULL,
+  `name_n_contragent` varchar(45) NOT NULL default 'Няма данни',
+  `bul_n_contragent` varchar(13) NOT NULL default '0000000001',
+  `dan_n_contragent` varchar(11) NOT NULL default '0000000000',
+  `address_n_contragent` varchar(35) NOT NULL default 'Няма данни',
   `id_nm` int(10) unsigned NOT NULL default '0',
-  `tel_contragent` varchar(12) NOT NULL,
-  `fax_contragent` varchar(12) NOT NULL,
-  `email_contragent` varchar(20) NOT NULL,
-  `web_contragent` varchar(20) NOT NULL,
+  `tel_contragent` varchar(12) NOT NULL default 'Няма данни',
+  `fax_contragent` varchar(12) NOT NULL default 'Няма данни',
+  `email_contragent` varchar(20) NOT NULL default 'Няма данни',
+  `web_contragent` varchar(20) NOT NULL default 'Няма данни',
   `id_mol` int(10) unsigned NOT NULL default '0',
   `id_oso` int(10) unsigned NOT NULL default '0',
   `flag_n_contragent` tinyint(3) unsigned NOT NULL default '0',
@@ -487,10 +487,11 @@ CREATE TABLE `n_country` (
 
 CREATE TABLE `n_doc_type_user_rights` (
   `id_ndtur` int(11) NOT NULL auto_increment,
-  `id_um` int(11) default NULL,
+  `id_um` int(11) NOT NULL default '0',
   `id_sdtn` int(11) NOT NULL,
   `rights_sdtn` int(11) NOT NULL,
-  PRIMARY KEY  (`id_ndtur`)
+  PRIMARY KEY  (`id_ndtur`),
+  UNIQUE KEY `compzite1` (`id_um`,`id_sdtn`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 
@@ -500,10 +501,10 @@ CREATE TABLE `n_doc_type_user_rights` (
 #
 
 CREATE TABLE `n_expens` (
-  `id_n_expens` int(11) NOT NULL,
+  `id_n_expens` int(11) NOT NULL auto_increment,
   `id_n_group` int(11) NOT NULL,
   `code_n_expens` int(11) NOT NULL,
-  `name_n_expens` int(11) default NULL,
+  `name_n_expens` varchar(50) default NULL,
   `comments_n_expens` varchar(250) default NULL,
   PRIMARY KEY  (`id_n_expens`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='//tablitsa za razhodite';
@@ -532,7 +533,7 @@ CREATE TABLE `n_group` (
 CREATE TABLE `n_incoms` (
   `id_n_incoms` int(11) NOT NULL auto_increment,
   `id_n_group` int(11) NOT NULL,
-  `cdode_n_incoms` int(11) NOT NULL,
+  `code_n_incoms` int(11) NOT NULL,
   `name_n_incoms` varchar(40) default NULL,
   `comments_n_incoms` varchar(250) default NULL,
   PRIMARY KEY  (`id_n_incoms`)
@@ -549,7 +550,7 @@ CREATE TABLE `n_money` (
   `cod_n_money` varchar(11) default NULL,
   `cod_lat_n_money` varchar(11) default NULL,
   `name_n_money` varchar(30) default NULL,
-  `comment_n_money` varchar(100) default NULL,
+  `comments_n_money` varchar(100) default NULL,
   PRIMARY KEY  (`id_n_money`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='opisanie na valutite';
 
@@ -576,9 +577,10 @@ CREATE TABLE `n_nm` (
 CREATE TABLE `n_obekt` (
   `id_n_obekt` int(11) NOT NULL auto_increment,
   `Id_cust` int(11) default NULL,
-  `name` varchar(45) default NULL,
-  `address` varchar(25) default NULL,
+  `name_n_obekt` varchar(45) default NULL,
+  `address_n_obekt` varchar(25) default NULL,
   `code_n_obekt` varchar(10) NOT NULL,
+  `id_ls_n_person` int(11) unsigned NOT NULL default '0',
   PRIMARY KEY  (`id_n_obekt`),
   KEY `Customer` (`Id_cust`)
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
@@ -616,7 +618,7 @@ CREATE TABLE `n_product_all_measure` (
 #
 
 CREATE TABLE `n_product_consigment` (
-  `id_pc` int(11) NOT NULL,
+  `id_pc` int(11) unsigned NOT NULL auto_increment,
   `id_pm` int(11) default NULL,
   `parcel_pc` int(11) NOT NULL,
   `dateofexpire_pc` date default NULL,
@@ -669,19 +671,20 @@ CREATE TABLE `n_product_main` (
   `id_ppp` int(11) unsigned NOT NULL default '0',
   `id_pp` int(11) unsigned NOT NULL default '0',
   `id_pf` int(11) unsigned NOT NULL default '0',
-  `name_pm` varchar(30) collate cp1251_bulgarian_ci NOT NULL,
-  `fname_pm` varchar(30) collate cp1251_bulgarian_ci default NULL,
-  `sname_pm` varchar(10) collate cp1251_bulgarian_ci default NULL,
-  `cname_pm` varchar(10) collate cp1251_bulgarian_ci default NULL,
-  `cod1_pm` varchar(20) collate cp1251_bulgarian_ci default NULL,
-  `cod2_pm` varchar(20) collate cp1251_bulgarian_ci default NULL,
+  `name_pm` varchar(30) character set cp1251 collate cp1251_bulgarian_ci NOT NULL,
+  `fname_pm` varchar(30) character set cp1251 collate cp1251_bulgarian_ci default NULL,
+  `sname_pm` varchar(10) character set cp1251 collate cp1251_bulgarian_ci default NULL,
+  `cname_pm` varchar(10) character set cp1251 collate cp1251_bulgarian_ci default NULL,
+  `cod1_pm` varchar(20) character set cp1251 collate cp1251_bulgarian_ci default NULL,
+  `cod2_pm` varchar(20) character set cp1251 collate cp1251_bulgarian_ci default NULL,
   `barcod_pm` int(11) unsigned default NULL,
   `max_pop_pm` double default NULL,
-  `expertsheet_pm` varchar(45) collate cp1251_bulgarian_ci default NULL,
+  `expertsheet_pm` varchar(45) character set cp1251 collate cp1251_bulgarian_ci default NULL,
   `flag_pm` int(3) unsigned zerofill NOT NULL default '000',
   `min_pm` int(11) unsigned NOT NULL default '0',
+  `code_pm` varchar(6) character set cp1251 collate cp1251_bulgarian_ci default NULL,
   PRIMARY KEY  (`id_pm`)
-) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COLLATE=cp1251_bulgarian_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 
 
@@ -721,7 +724,7 @@ CREATE TABLE `n_product_promotion_price` (
 #
 
 CREATE TABLE `n_storage` (
-  `id_n_storage` int(11) NOT NULL default '0',
+  `id_n_storage` int(11) NOT NULL auto_increment,
   `id_n_group` int(11) unsigned NOT NULL default '0',
   `code_n_storage` int(11) unsigned NOT NULL default '0',
   `name_n_storage` varchar(50) default NULL,
@@ -805,8 +808,10 @@ CREATE TABLE `sl_curs` (
 CREATE TABLE `sl_doc_type_num` (
   `id_sdtn` int(11) NOT NULL auto_increment,
   `id_ntd` int(11) unsigned default NULL,
-  `area_number_sdtn` int(3) default NULL,
-  PRIMARY KEY  (`id_sdtn`)
+  `area_number_sdtn` int(3) NOT NULL default '0',
+  `name_sdtn` varchar(50) default NULL,
+  PRIMARY KEY  (`id_sdtn`),
+  UNIQUE KEY `ndt1` (`id_ntd`,`area_number_sdtn`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 
@@ -908,6 +913,7 @@ CREATE TABLE `sl_n_obekt` (
 
 CREATE TABLE `sl_nalichnosti` (
   `id_nal` int(11) NOT NULL auto_increment,
+  `id_n_storage` int(11) default NULL,
   `id_pc` int(11) unsigned default NULL COMMENT 'partidni nomera',
   `level` tinyint(3) unsigned default NULL,
   `quant_nal` int(11) unsigned default NULL,
@@ -922,7 +928,7 @@ CREATE TABLE `sl_nalichnosti` (
 #
 
 CREATE TABLE `user_master` (
-  `id_um` int(11) NOT NULL default '0',
+  `id_um` int(11) NOT NULL auto_increment,
   `name_um` varchar(14) default NULL,
   `nomer_um` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id_um`)
@@ -944,6 +950,14 @@ CREATE TABLE `user_rights` (
   `modul4_ur` varchar(250) default NULL,
   PRIMARY KEY  (`id_ur`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+
+
+
+#
+# View structure for view rep_comm_nal
+#
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`imakante`@`%` SQL SECURITY DEFINER VIEW `rep_comm_nal` AS select sql_no_cache `n_contragent`.`code_contragent` AS `code_contragent`,`n_contragent`.`name_n_contragent` AS `name_n_contragent`,`n_product_main`.`id_pm` AS `id_pm`,`n_product_main`.`code_pm` AS `code_pm`,`n_product_main`.`name_pm` AS `name_pm`,`sl_nalichnosti`.`quant_nal` AS `quant_nal`,`sl_nalichnosti`.`level` AS `level`,`n_storage`.`code_n_storage` AS `code_n_storage`,`n_storage`.`name_n_storage` AS `name_n_storage`,`n_contragent`.`id_contragent` AS `id_contragent`,`n_storage`.`id_n_storage` AS `id_n_storage` from (((((`n_contragent` join `sl_contragent_product` on((`n_contragent`.`id_contragent` = `sl_contragent_product`.`id_contragent`))) join `n_product_main` on((`n_product_main`.`id_pm` = `sl_contragent_product`.`id_pm`))) join `n_product_consigment` on((`n_product_main`.`id_pm` = `n_product_consigment`.`id_pm`))) join `sl_nalichnosti` on((`n_product_consigment`.`id_pc` = `sl_nalichnosti`.`id_pc`))) join `n_storage` on((`n_storage`.`id_n_storage` = `sl_nalichnosti`.`id_n_storage`))) where ((`n_contragent`.`flag_n_contragent` = 0) and (`sl_contragent_product`.`flag_scp` = 0));
 
 
 
@@ -992,6 +1006,421 @@ BEGIN
        DELETE FROM n_country;
      END IF;
 
+
+END;
+
+#
+# Source for procedure ls_procedure_document_facade
+#
+
+CREATE PROCEDURE `ls_procedure_document_facade`(IN comprator TINYINT,      IN in_id_df INT(11),                IN in_id_contragent_in INT(11),     IN in_id_contragent_out INT(11),IN in_id_obekt_out INT(11),
+                                              IN in_id_obekt_in INT(11),           IN in_id_distributor INT(11),       IN in_id_deliver INT(11),           IN in_descriptionPaying INT(3), IN in_docFacadeNumber INT(10),
+                                              IN in_docFacadeUser INT(11),         IN in_docFacadeUserLastEdit INT(11),IN in_id_facturaConnection INT(11), IN in_id_payingOrder INT(11),   IN in_id_zaqvkaConnection INT(11),
+                                              IN in_docFacadeLevel INT(11),        IN in_docFacadeStorage INT(11),     IN in_docFacadeType INT (3),        IN in_docFacadeAllDDS DOUBLE,   IN in_docFacadeTotal DOUBLE,
+                                              IN in_docFacadeCondition VARCHAR(11),IN in_docFacadeDate VARCHAR(10),    IN in_docFacadeComment VARCHAR(250),IN in_dateDeliver VARCHAR(10),  IN in_payingDate VARCHAR(10),
+                                              IN in_docFacadeFlagFinish INT (3) )
+BEGIN
+     IF (comprator = 0) THEN
+        SELECT s.id_df,
+         s.in_contragent_df,contr_in.code_contragent, contr_in.bul_n_contragent, contr_in.dan_n_contragent, contr_in.name_n_contragent,
+         contr_in.address_n_contragent, p_contr_in.name_ls_n_person,
+         s.out_contragent_df,contr_out.code_contragent, contr_out.bul_n_contragent,contr_out.dan_n_contragent, contr_out.name_n_contragent,
+         contr_out.address_n_contragent, p_contr_out.name_ls_n_person,
+         s.in_obekt_df, obkt_in.name_n_obekt, obkt_in.address_n_obekt, obkt_in.code_n_obekt,
+         s.out_obekt_df, obkt_out.name_n_obekt, obkt_out.address_n_obekt, obkt_out.code_n_obekt,
+         s.type_df, s.number_df, s.condition_df, s.out_store_df,
+         s.total_df, s.dds_df, s.user_df, s.user_last_df, s.date_edition_df, s.time_edition_df, s.distributor_df,p_dist.code_ls_n_person AS dist,
+         s.delivere_df,p_deliv.code_ls_n_person AS devliv,
+         s.faktura_connection_df, s.zaiavka_connection_df, s.description_pay_df, s.paying_order_df, s.date_deliver_df,
+         s.date_pay_df, s.comments_df, s.fag_finish_df, s.id_rep, s.level_df, s.out_contragent_df
+         FROM mida.sl_document_facade s
+         LEFT JOIN mida.n_obekt obkt_in ON s.in_obekt_df=obkt_in.id_n_obekt
+         LEFT JOIN mida.n_obekt obkt_out ON s.out_obekt_df=obkt_out.id_n_obekt
+         LEFT JOIN mida.ls_n_person p_deliv ON p_deliv.id_ls_n_person=s.delivere_df
+         LEFT JOIN mida.ls_n_person p_dist ON p_dist.id_ls_n_person=s.distributor_df
+         LEFT JOIN  mida.n_contragent contr_in ON contr_in.id_contragent = s.in_contragent_df
+         LEFT JOIN  mida.n_contragent contr_out ON contr_out.id_contragent = s.out_contragent_df
+         LEFT JOIN  mida.ls_n_person p_contr_in ON contr_in.id_mol = p_contr_in.id_ls_n_person
+         LEFT JOIN  mida.ls_n_person p_contr_out ON contr_out.id_mol = p_contr_out.id_ls_n_person
+         LEFT JOIN mida.n_doc_type_user_rights usr_new ON s.user_df = usr_new.id_ndtur
+         LEFT JOIN mida.n_doc_type_user_rights usr_last ON s.user_last_df = usr_last.id_ndtur;
+
+
+
+     END IF;
+     IF (comprator = 1) THEN
+         INSERT INTO mida.sl_document_facade(in_contragent_df, out_obekt_df, in_obekt_df, number_df, type_df, condition_df,
+         out_store_df, total_df, dds_df, user_df, user_last_df, date_edition_df, distributor_df, delivere_df,
+         faktura_connection_df, zaiavka_connection_df, description_pay_df, paying_order_df, date_deliver_df, date_pay_df,
+         comments_df, fag_finish_df,  level_df, out_contragent_df)
+         VALUES(in_id_contragent_in,in_id_obekt_out,in_id_obekt_in,in_docFacadeNumber,in_docFacadeType,in_docFacadeCondition,
+           in_docFacadeStorage,in_docFacadeTotal,in_docFacadeAllDDS,in_docFacadeUser,in_docFacadeUserLastEdit, in_docFacadeDate,in_id_distributor,
+           in_id_deliver,in_id_facturaConnection,in_id_zaqvkaConnection, in_descriptionPaying,in_id_payingOrder,in_dateDeliver,in_payingDate,
+           in_docFacadeComment,in_docFacadeFlagFinish, in_docFacadeLevel,in_id_contragent_out);
+     END IF;
+     IF (comprator = 2) THEN
+          UPDATE mida.sl_document_facade s SET
+        s.in_contragent_df = in_id_contragent_in,
+        s.out_obekt_df = in_id_obekt_out,
+        s.in_obekt_df = in_id_obekt_in,
+        s.number_df = in_docFacadeNumber,
+        s.type_df = in_docFacadeType,
+        s.condition_df = in_docFacadeCondition,
+        s.out_store_df = in_docFacadeStorage,
+        s.total_df = in_docFacadeTotal,
+        s.dds_df = in_docFacadeAllDDS,
+        s.user_df = in_docFacadeUser,
+        s.user_last_df = in_docFacadeUserLastEdit,
+        s.date_edition_df = in_docFacadeDate,
+
+        s.distributor_df = in_id_distributor,
+        s.delivere_df = in_id_deliver,
+        s.faktura_connection_df = in_id_facturaConnection,
+        s.zaiavka_connection_df = in_id_zaqvkaConnection,
+        s.description_pay_df = in_descriptionPaying,
+        s.paying_order_df = in_id_payingOrder,
+        s.date_deliver_df = in_dateDeliver,
+        s.date_pay_df = in_payingDate,
+        s.comments_df = in_docFacadeComment,
+        s.fag_finish_df = in_docFacadeFlagFinish,
+
+        s.level_df = in_docFacadeLevel,
+        s.out_contragent_df =in_id_contragent_out
+        WHERE s.id_df = in_id_df;
+
+     END IF;
+
+   #  IF (comprator = 3) THEN
+   #       DELETE FROM mida.sl_document_facade WHERE id_df = in_id_df;
+    #  END IF;
+
+IF (comprator = 4) THEN
+         SELECT s.id_df, s.in_contragent_df,contr_in.code_contragent, contr_in.bul_n_contragent, contr_in.dan_n_contragent, contr_in.name_n_contragent,
+         contr_in.address_n_contragent, p_contr_in.name_ls_n_person,
+         s.in_obekt_df, obkt_in.name_sno, obkt_in.address_sno, obkt_in.code_sno,
+         s.type_df, s.number_df, s.condition_df, s.out_store_df,
+         s.total_df, s.dds_df, s.user_df, s.user_last_df, s.date_edition_df, s.time_edition_df, s.distributor_df,p_dist.code_ls_n_person AS dist,
+         s.delivere_df,p_deliv.code_ls_n_person AS devliv,
+         s.faktura_connection_df, s.zaiavka_connection_df, s.description_pay_df, s.paying_order_df, s.date_deliver_df,
+         s.date_pay_df, s.comments_df, s.fag_finish_df, s.id_rep, s.level_df, s.out_contragent_df
+         FROM mida.sl_document_facade s LEFT JOIN mida.n_obekt obkt_in ON s.in_obekt_df=obkt_in.id_sno
+         LEFT JOIN mida.ls_n_person p_deliv ON p_deliv.id_ls_n_person=s.delivere_df
+         LEFT JOIN mida.ls_n_person p_dist ON p_dist.id_ls_n_person=s.distributor_df
+         LEFT JOIN  mida.n_contragent contr_in ON contr_in.id_contragent = s.in_contragent_df
+         LEFT JOIN  mida.ls_n_person p_contr_in ON contr_in.id_mol = p_contr_in.id_ls_n_person
+         LEFT JOIN mida.n_doc_type_user_rights usr_new ON s.user_df = usr_new.id_ndtur
+         LEFT JOIN mida.n_doc_type_user_rights usr_last ON s.user_last_df = usr_last.id_ndtur
+         WHERE s.id_df = in_id_df;
+END IF;
+
+ #    IF (comprator = 5) THEN
+ #
+ #    END IF;
+
+IF (comprator = 6) THEN
+        SELECT MAX(number_df) AS maxNumber FROM mida.sl_document_facade s, sl_doc_type_num sl, n_doc_type_user_rights ur
+        WHERE number_df like CONCAT(sl.area_number_sdtn,'%')
+        AND sl.id_sdtn= ur.id_sdtn AND ur.id_ndtur = in_docFacadeUser;
+END IF;
+
+
+     #IF (comprator = 7) THEN
+     #
+    # END IF;
+
+    # 13 - DISTRIBUTOR
+    # 14 - DELIVER
+IF (comprator = 8) THEN
+       IF (in_docFacadeType = 13) THEN
+          SELECT l.id_ls_n_person, l.code_ls_n_person, l.egn_ls_n_person, l.nlk_ls_n_person, l.name_ls_n_person,
+          l.comment_ls_n_person FROM mida.ls_n_person l
+          WHERE l.code_ls_n_person LIKE CONCAT('%',in_docFacadeComment,'%')  ORDER BY   l.name_ls_n_person;
+       END IF;
+       IF (in_docFacadeType = 14) THEN
+           SELECT l.id_ls_n_person, l.code_ls_n_person, l.egn_ls_n_person, l.nlk_ls_n_person, l.name_ls_n_person,
+          l.comment_ls_n_person FROM mida.ls_n_person l
+          WHERE l.code_ls_n_person LIKE CONCAT('%',in_docFacadeComment,'%')  ORDER BY   l.name_ls_n_person;
+       END IF;
+END IF;
+
+IF (comprator = 9) THEN
+        IF (in_docFacadeType = 13) THEN
+          SELECT l.id_ls_n_person, l.code_ls_n_person, l.egn_ls_n_person, l.nlk_ls_n_person, l.name_ls_n_person,
+          l.comment_ls_n_person FROM mida.ls_n_person l
+          WHERE l.code_ls_n_person LIKE CONCAT(in_docFacadeComment,'%')  ORDER BY   l.name_ls_n_person;
+       END IF;
+       IF (in_docFacadeType = 14) THEN
+           SELECT l.id_ls_n_person, l.code_ls_n_person, l.egn_ls_n_person, l.nlk_ls_n_person, l.name_ls_n_person,
+          l.comment_ls_n_person FROM mida.ls_n_person l
+          WHERE l.code_ls_n_person LIKE CONCAT(in_docFacadeComment,'%')  ORDER BY   l.name_ls_n_person;
+       END IF;
+END IF;
+
+IF (comprator = 10) THEN
+       IF  (in_docFacadeType = 13) THEN
+        SELECT l.id_ls_n_person, l.code_ls_n_person, l.egn_ls_n_person, l.nlk_ls_n_person, l.name_ls_n_person,
+          l.comment_ls_n_person FROM mida.ls_n_person l
+          WHERE l.code_ls_n_person LIKE CONCAT('%',in_docFacadeComment)  ORDER BY   l.name_ls_n_person;
+       END IF;
+       IF (in_docFacadeType = 14) THEN
+           SELECT l.id_ls_n_person, l.code_ls_n_person, l.egn_ls_n_person, l.nlk_ls_n_person, l.name_ls_n_person,
+          l.comment_ls_n_person FROM mida.ls_n_person l
+          WHERE l.code_ls_n_person LIKE CONCAT('%',in_docFacadeComment)  ORDER BY   l.name_ls_n_person;
+      END IF;
+END IF;
+# include text obekt
+#--------------------------------
+IF (comprator = 11) THEN
+       IF  (in_docFacadeType = 0) THEN
+         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person FROM n_obekt n
+         WHERE n.code_n_obekt LIKE CONCAT('%',in_docFacadeComment,'%');
+       END IF;
+       IF  (in_docFacadeType = 1) THEN
+         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person FROM n_obekt n
+         WHERE n.name_n_obekt LIKE CONCAT('%',in_docFacadeComment,'%');
+       END IF;
+       IF  (in_docFacadeType = 2) THEN
+         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person FROM n_obekt n
+         WHERE n.address_n_obekt LIKE CONCAT('%',in_docFacadeComment,'%');
+       END IF;
+       IF  (in_docFacadeType = 3) THEN
+         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person FROM n_obekt n
+         WHERE n.code_n_obekt LIKE CONCAT('%',in_docFacadeComment,'%');
+       END IF;
+END IF;
+#----------------------
+# start text obekt
+IF (comprator = 12) THEN
+       IF  (in_docFacadeType = 0) THEN
+         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person FROM n_obekt n
+         WHERE n.code_n_obekt LIKE CONCAT(in_docFacadeComment,'%');
+       END IF;
+       IF  (in_docFacadeType = 1) THEN
+         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person FROM n_obekt n
+         WHERE n.name_n_obekt LIKE CONCAT(in_docFacadeComment,'%');
+       END IF;
+       IF  (in_docFacadeType = 2) THEN
+         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person FROM n_obekt n
+         WHERE n.address_n_obekt LIKE CONCAT(in_docFacadeComment,'%');
+       END IF;
+       IF  (in_docFacadeType = 3) THEN
+         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person FROM n_obekt n
+         WHERE n.code_n_obekt LIKE CONCAT(in_docFacadeComment,'%');
+       END IF;
+END IF;
+# end text obekt
+#--------------------------------
+IF (comprator = 13) THEN
+
+       IF  (in_docFacadeType = 0) THEN
+         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person FROM n_obekt n
+         WHERE n.code_n_obekt LIKE CONCAT('%',in_docFacadeComment);
+       END IF;
+       IF  (in_docFacadeType = 1) THEN
+         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person FROM n_obekt n
+         WHERE n.name_n_obekt LIKE CONCAT('%',in_docFacadeComment);
+       END IF;
+       IF  (in_docFacadeType = 2) THEN
+         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person FROM n_obekt n
+         WHERE n.address_n_obekt LIKE CONCAT('%',in_docFacadeComment);
+       END IF;
+       IF  (in_docFacadeType = 3) THEN
+         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person FROM n_obekt n
+         WHERE n.code_n_obekt LIKE CONCAT('%',in_docFacadeComment);
+       END IF;
+END IF;
+
+
+
+
+# include text  contragent
+#---------------------------------
+IF (comprator = 14) THEN
+ #   code_contragent include
+      IF  (in_docFacadeType = 0) THEN
+          SELECT n.id_contragent, n.code_contragent, n.name_n_contragent, n.bul_n_contragent, n.dan_n_contragent,
+           n.address_n_contragent, n.id_nm, n.tel_contragent, n.fax_contragent, n.email_contragent, n.web_contragent,
+           n.id_mol, ls.name_ls_n_person FROM n_contragent n
+           LEFT JOIN ls_n_person ls ON ls.id_ls_n_person=n.id_mol WHERE n.code_contragent LIKE CONCAT('%',in_docFacadeComment,'%');
+       END IF;
+# bul_n_contragent include
+       IF (in_docFacadeType = 1) THEN
+          SELECT n.id_contragent, n.code_contragent, n.name_n_contragent, n.bul_n_contragent, n.dan_n_contragent,
+          n.address_n_contragent, n.id_nm, n.tel_contragent, n.fax_contragent, n.email_contragent, n.web_contragent,
+          n.id_mol, ls.name_ls_n_person FROM n_contragent n
+          LEFT JOIN ls_n_person ls ON ls.id_ls_n_person=n.id_mol WHERE n.bul_n_contragent LIKE CONCAT('%',in_docFacadeComment,'%');
+      END IF;
+# dan_n_contragent include
+       IF (in_docFacadeType = 2) THEN
+          SELECT n.id_contragent, n.code_contragent, n.name_n_contragent, n.bul_n_contragent, n.dan_n_contragent,
+          n.address_n_contragent, n.id_nm, n.tel_contragent, n.fax_contragent, n.email_contragent, n.web_contragent,
+          n.id_mol, ls.name_ls_n_person FROM n_contragent n
+          LEFT JOIN ls_n_person ls ON ls.id_ls_n_person=n.id_mol WHERE n.dan_n_contragent LIKE CONCAT('%',in_docFacadeComment,'%');
+      END IF;
+# name_n_contragent include
+       IF (in_docFacadeType = 3) THEN
+          SELECT n.id_contragent, n.code_contragent, n.name_n_contragent, n.bul_n_contragent, n.dan_n_contragent,
+          n.address_n_contragent, n.id_nm, n.tel_contragent, n.fax_contragent, n.email_contragent, n.web_contragent,
+          n.id_mol, ls.name_ls_n_person FROM n_contragent n
+          LEFT JOIN ls_n_person ls ON ls.id_ls_n_person=n.id_mol WHERE n.name_n_contragent LIKE CONCAT('%',in_docFacadeComment,'%');
+      END IF;
+# address_n_contragent include
+       IF (in_docFacadeType = 4) THEN
+          SELECT n.id_contragent, n.code_contragent, n.name_n_contragent, n.bul_n_contragent, n.dan_n_contragent,
+          n.address_n_contragent, n.id_nm, n.tel_contragent, n.fax_contragent, n.email_contragent, n.web_contragent,
+          n.id_mol, ls.name_ls_n_person FROM n_contragent n
+          LEFT JOIN ls_n_person ls ON ls.id_ls_n_person=n.id_mol WHERE address_n_contragent  LIKE CONCAT('%',in_docFacadeComment,'%');
+      END IF;
+# tel_contragent include
+       IF (in_docFacadeType = 5) THEN
+          SELECT n.id_contragent, n.code_contragent, n.name_n_contragent, n.bul_n_contragent, n.dan_n_contragent,
+          n.address_n_contragent, n.id_nm, n.tel_contragent, n.fax_contragent, n.email_contragent, n.web_contragent,
+          n.id_mol, ls.name_ls_n_person FROM n_contragent n
+          LEFT JOIN ls_n_person ls ON ls.id_ls_n_person=n.id_mol WHERE n.tel_contragent LIKE CONCAT('%',in_docFacadeComment,'%');
+      END IF;
+# ls_n_person include
+       IF (in_docFacadeType = 6) THEN
+          SELECT n.id_contragent, n.code_contragent, n.name_n_contragent, n.bul_n_contragent, n.dan_n_contragent,
+          n.address_n_contragent, n.id_nm, n.tel_contragent, n.fax_contragent, n.email_contragent, n.web_contragent,
+          n.id_mol, ls.name_ls_n_person FROM n_contragent n
+          LEFT JOIN ls_n_person ls ON ls.id_ls_n_person=n.id_mol WHERE ls.name_ls_n_person LIKE CONCAT('%',in_docFacadeComment,'%');
+      END IF;
+
+
+END IF;
+ # start text  contragent
+ #--------------------------------
+IF (comprator = 15) THEN
+#  code_contragent start with text
+       IF (in_docFacadeType = 0) THEN
+           SELECT n.id_contragent, n.code_contragent, n.name_n_contragent, n.bul_n_contragent, n.dan_n_contragent,
+           n.address_n_contragent, n.id_nm, n.tel_contragent, n.fax_contragent, n.email_contragent, n.web_contragent,
+           n.id_mol, ls.name_ls_n_person FROM n_contragent n
+           LEFT JOIN ls_n_person ls ON ls.id_ls_n_person=n.id_mol WHERE n.code_contragent LIKE CONCAT(in_docFacadeComment,'%');
+      END IF;
+#  bul_n_contragent start with text
+       IF (in_docFacadeType = 1) THEN
+          SELECT n.id_contragent, n.code_contragent, n.name_n_contragent, n.bul_n_contragent, n.dan_n_contragent,
+          n.address_n_contragent, n.id_nm, n.tel_contragent, n.fax_contragent, n.email_contragent, n.web_contragent,
+          n.id_mol, ls.name_ls_n_person FROM n_contragent n
+          LEFT JOIN ls_n_person ls ON ls.id_ls_n_person=n.id_mol WHERE n.bul_n_contragent LIKE CONCAT(in_docFacadeComment,'%');
+      END IF;
+#  dan_n_contragent start with text
+       IF (in_docFacadeType = 2) THEN
+          SELECT n.id_contragent, n.code_contragent, n.name_n_contragent, n.bul_n_contragent, n.dan_n_contragent,
+          n.address_n_contragent, n.id_nm, n.tel_contragent, n.fax_contragent, n.email_contragent, n.web_contragent,
+          n.id_mol, ls.name_ls_n_person FROM n_contragent n
+          LEFT JOIN ls_n_person ls ON ls.id_ls_n_person=n.id_mol WHERE n.dan_n_contragent LIKE CONCAT(in_docFacadeComment,'%');
+      END IF;
+ #  name_n_contragent start with text
+       IF (in_docFacadeType = 3) THEN
+          SELECT n.id_contragent, n.code_contragent, n.name_n_contragent, n.bul_n_contragent, n.dan_n_contragent,
+          n.address_n_contragent, n.id_nm, n.tel_contragent, n.fax_contragent, n.email_contragent, n.web_contragent,
+          n.id_mol, ls.name_ls_n_person FROM n_contragent n
+          LEFT JOIN ls_n_person ls ON ls.id_ls_n_person=n.id_mol WHERE n.name_n_contragent LIKE CONCAT(in_docFacadeComment,'%');
+      END IF;
+ #  address_n_contragent start with text
+       IF (in_docFacadeType = 4) THEN
+          SELECT n.id_contragent, n.code_contragent, n.name_n_contragent, n.bul_n_contragent, n.dan_n_contragent,
+          n.address_n_contragent, n.id_nm, n.tel_contragent, n.fax_contragent, n.email_contragent, n.web_contragent,
+          n.id_mol, ls.name_ls_n_person FROM n_contragent n
+          LEFT JOIN ls_n_person ls ON ls.id_ls_n_person=n.id_mol WHERE n.address_n_contragent LIKE CONCAT(in_docFacadeComment,'%');
+      END IF;
+ #  tel_contragent start with text
+       IF (in_docFacadeType = 5) THEN
+          SELECT n.id_contragent, n.code_contragent, n.name_n_contragent, n.bul_n_contragent, n.dan_n_contragent,
+          n.address_n_contragent, n.id_nm, n.tel_contragent, n.fax_contragent, n.email_contragent, n.web_contragent,
+          n.id_mol, ls.name_ls_n_person FROM n_contragent n
+          LEFT JOIN ls_n_person ls ON ls.id_ls_n_person=n.id_mol WHERE n.tel_contragent LIKE CONCAT(in_docFacadeComment,'%');
+      END IF;
+#  ls_n_person start with text
+       IF (in_docFacadeType = 6) THEN
+          SELECT n.id_contragent, n.code_contragent, n.name_n_contragent, n.bul_n_contragent, n.dan_n_contragent,
+          n.address_n_contragent, n.id_nm, n.tel_contragent, n.fax_contragent, n.email_contragent, n.web_contragent,
+          n.id_mol, ls.name_ls_n_person FROM n_contragent n
+          LEFT JOIN ls_n_person ls ON ls.id_ls_n_person=n.id_mol WHERE ls.name_ls_n_person LIKE CONCAT(in_docFacadeComment,'%');
+      END IF;
+END IF;
+# end text  contragent
+#--------------------------------
+IF (comprator = 16) THEN
+
+#  code_contragent end with text
+       IF (in_docFacadeType = 0) THEN
+          SELECT n.id_contragent, n.code_contragent, n.name_n_contragent, n.bul_n_contragent, n.dan_n_contragent,
+           n.address_n_contragent, n.id_nm, n.tel_contragent, n.fax_contragent, n.email_contragent, n.web_contragent,
+           n.id_mol, ls.name_ls_n_person FROM n_contragent n
+           LEFT JOIN ls_n_person ls ON ls.id_ls_n_person=n.id_mol WHERE n.code_contragent LIKE CONCAT('%',in_docFacadeComment);
+      END IF;
+ #  bul_n_contragent end with text
+       IF (in_docFacadeType = 1) THEN
+          SELECT n.id_contragent, n.code_contragent, n.name_n_contragent, n.bul_n_contragent, n.dan_n_contragent,
+          n.address_n_contragent, n.id_nm, n.tel_contragent, n.fax_contragent, n.email_contragent, n.web_contragent,
+          n.id_mol, ls.name_ls_n_person FROM n_contragent n
+          LEFT JOIN ls_n_person ls ON ls.id_ls_n_person=n.id_mol WHERE n.bul_n_contragent LIKE CONCAT('%',in_docFacadeComment);
+       END IF;
+ #  dan_n_contragent end with text
+       IF (in_docFacadeType = 2) THEN
+          SELECT n.id_contragent, n.code_contragent, n.name_n_contragent, n.bul_n_contragent, n.dan_n_contragent,
+          n.address_n_contragent, n.id_nm, n.tel_contragent, n.fax_contragent, n.email_contragent, n.web_contragent,
+          n.id_mol, ls.name_ls_n_person FROM n_contragent n
+          LEFT JOIN ls_n_person ls ON ls.id_ls_n_person=n.id_mol WHERE n.dan_n_contragent LIKE CONCAT('%',in_docFacadeComment);
+       END IF;
+ #  name_n_contragent end with text
+       IF (in_docFacadeType = 3) THEN
+          SELECT n.id_contragent, n.code_contragent, n.name_n_contragent, n.bul_n_contragent, n.dan_n_contragent,
+          n.address_n_contragent, n.id_nm, n.tel_contragent, n.fax_contragent, n.email_contragent, n.web_contragent,
+          n.id_mol, ls.name_ls_n_person FROM n_contragent n
+          LEFT JOIN ls_n_person ls ON ls.id_ls_n_person=n.id_mol WHERE n.name_n_contragent LIKE CONCAT('%',in_docFacadeComment);
+       END IF;
+ #  address_n_contragent end with text
+       IF (in_docFacadeType = 4) THEN
+          SELECT n.id_contragent, n.code_contragent, n.name_n_contragent, n.bul_n_contragent, n.dan_n_contragent,
+          n.address_n_contragent, n.id_nm, n.tel_contragent, n.fax_contragent, n.email_contragent, n.web_contragent,
+          n.id_mol, ls.name_ls_n_person FROM n_contragent n
+          LEFT JOIN ls_n_person ls ON ls.id_ls_n_person=n.id_mol WHERE n.address_n_contragent LIKE CONCAT('%',in_docFacadeCommentr);
+       END IF;
+#  tel_contragent end with text
+       IF (in_docFacadeType = 5) THEN
+          SELECT n.id_contragent, n.code_contragent, n.name_n_contragent, n.bul_n_contragent, n.dan_n_contragent,
+          n.address_n_contragent, n.id_nm, n.tel_contragent, n.fax_contragent, n.email_contragent, n.web_contragent,
+          n.id_mol, ls.name_ls_n_person FROM n_contragent n
+          LEFT JOIN ls_n_person ls ON ls.id_ls_n_person=n.id_mol WHERE n.tel_contragent LIKE CONCAT('%',in_docFacadeComment);
+       END IF;
+#  ls_n_person end with text
+       IF (in_docFacadeType = 6) THEN
+          SELECT n.id_contragent, n.code_contragent, n.name_n_contragent, n.bul_n_contragent, n.dan_n_contragent,
+          n.address_n_contragent, n.id_nm, n.tel_contragent, n.fax_contragent, n.email_contragent, n.web_contragent,
+          n.id_mol, ls.name_ls_n_person FROM n_contragent n
+          LEFT JOIN ls_n_person ls ON ls.id_ls_n_person=n.id_mol WHERE ls.name_ls_n_person LIKE CONCAT('%',in_docFacadeComment);
+       END IF;
+
+
+END IF;
+
+# get user data
+#---------------------
+IF (comprator = 17) THEN
+    SELECT n.id_ndtur, u.name_um FROM n_doc_type_user_rights n
+    LEFT JOIN user_master u ON u.id_um = n.id_um
+    WHERE n.id_ndtur = in_docFacadeUser;
+
+
+END IF;
+
+IF (comprator = 18) THEN
+      SELECT n.id_contragent, n.code_contragent, n.name_n_contragent, n.bul_n_contragent, n.dan_n_contragent,
+      n.address_n_contragent, n.id_nm, n.tel_contragent, n.fax_contragent, n.email_contragent, n.web_contragent,
+      n.id_mol, ls.name_ls_n_person FROM n_contragent n
+      LEFT JOIN ls_n_person ls ON ls.id_ls_n_person=n.id_mol WHERE n.id_contragent = in_docFacadeUser;
+
+
+END IF;
+
+IF (comprator = 19) THEN
+      SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person FROM n_obekt n
+      WHERE n.id_n_obekt = in_docFacadeUser;
+END IF;
 
 END;
 
@@ -1181,13 +1610,28 @@ BEGIN
         FROM `n_contragent` c where c.flag_n_contragent = in_flag;
      END IF;
 
+    IF (comprator = 15) THEN
+          UPDATE mida.sl_contragent_product s SET
+          flag_scp = in_flag
+          WHERE id_contragent = in_id;
+    END IF;
+     IF (comprator = 16) THEN
+         INSERT INTO mida.sl_contragent_product(id_contragent,id_pm,flag_scp)
+         VALUES(in_id,in_id_oso,in_flag);
+    END IF;
+    IF (comprator = 17) THEN
+        SELECT s.id_contragent, s.id_pm, s.flag_scp
+        FROM mida.sl_contragent_product s
+        WHERE id_contragent = in_id AND flag_scp=in_flag;
+    END IF;
+
 END;
 
 #
 # Source for procedure nom_procedure_doctype
 #
 
-CREATE PROCEDURE `nom_procedure_doctype`(IN in_id INT(6), IN comprator TINYINT, IN in_code INT(10), IN in_name VARCHAR(50), IN in_print_name INT(50))
+CREATE PROCEDURE `nom_procedure_doctype`(IN in_id INT(6), IN comprator TINYINT, IN in_code INT(10), IN in_name VARCHAR(50), IN in_print_name VARCHAR(50))
 BEGIN
      IF (comprator = 0) THEN
         SELECT n.id_ntd, n.code_ntd, n.name_ntd, n.name_print_ntd FROM n_type_doc n;
@@ -1237,7 +1681,7 @@ CREATE PROCEDURE `nom_procedure_expens`(IN comprator TINYINT, IN in_id INT(11),I
 BEGIN
      IF (comprator = 0) THEN
           SELECT n.id_n_expens, n.id_n_group, ng.name_n_group, n.code_n_expens, n.name_n_expens,
-                   n.comments_n_expens FROM n_casa n LEFT OUTER JOIN n_group ng ON ng.id_n_group=n.id_n_group;
+                   n.comments_n_expens FROM n_expens n LEFT OUTER JOIN n_group ng ON ng.id_n_group=n.id_n_group;
      END IF;
      IF (comprator = 1) THEN
         INSERT INTO `n_expens`( id_n_group, code_n_expens, name_n_expens, comments_n_expens) VALUES(in_id_groupe, in_code, in_name, in_comments);
@@ -1262,7 +1706,7 @@ BEGIN
 
      IF (comprator = 6) THEN
         SELECT n.id_n_group, n.name_n_group FROM n_group n
-                              WHERE n.nom_n_group = 5;
+                              WHERE n.nom_n_group = 6;
      END IF;
 
      IF (comprator = 7) THEN
@@ -1276,7 +1720,7 @@ BEGIN
 
      IF (comprator = 9) THEN
         SELECT MAX(n.id_n_group) AS id_n_group FROM n_group n
-                              WHERE n.nom_n_group = 5;
+                              WHERE n.nom_n_group = 6;
      END IF;
 
 END;
@@ -1289,7 +1733,7 @@ CREATE PROCEDURE `nom_procedure_incom`(IN comprator TINYINT, IN in_id INT(11),IN
 BEGIN
      IF (comprator = 0) THEN
           SELECT n.id_n_incoms, n.id_n_group, ng.name_n_group, n.code_n_incoms, n.name_n_incoms,
-                   n.comments_n_incoms FROM n_casa n LEFT OUTER JOIN n_group ng ON ng.id_n_group=n.id_n_group;
+                   n.comments_n_incoms FROM n_incoms n LEFT OUTER JOIN n_group ng ON ng.id_n_group=n.id_n_group;
      END IF;
      IF (comprator = 1) THEN
         INSERT INTO `n_incoms`( id_n_group, code_n_incoms, name_n_incoms, comments_n_incoms) VALUES(in_id_groupe, in_code, in_name, in_comments);
@@ -1314,7 +1758,7 @@ BEGIN
 
      IF (comprator = 6) THEN
         SELECT n.id_n_group, n.name_n_group FROM n_group n
-                              WHERE n.nom_n_group = 5;
+                              WHERE n.nom_n_group = 6;
      END IF;
 
      IF (comprator = 7) THEN
@@ -1328,7 +1772,7 @@ BEGIN
 
      IF (comprator = 9) THEN
         SELECT MAX(n.id_n_group) AS id_n_group FROM n_group n
-                              WHERE n.nom_n_group = 5;
+                              WHERE n.nom_n_group = 6;
      END IF;
 
 END;
@@ -1529,20 +1973,20 @@ CREATE PROCEDURE `nom_procedure_product`(IN in_comprator TINYINT,    IN in_id_pm
                                                  IN in_sname_pm VARCHAR(20), IN in_fname_pm VARCHAR(20),       IN in_cname_pm VARCHAR(20),  IN in_max_pop_pm DOUBLE,
                                                  IN in_flag_pm TINYINT,      IN in_expertsheet_pm VARCHAR(45), IN in_barcod_pm INT,  IN in_cod1_pm VARCHAR(20),
                                                  IN in_cod2_pm VARCHAR(20),  IN in_price0_pp DOUBLE,           IN in_price1_pp DOUBLE,      IN in_price2_pp DOUBLE,
-                                                 IN in_price3_pp DOUBLE, IN in_min_pm INT(11))
+                                                 IN in_price3_pp DOUBLE, IN in_min_pm INT(11), IN in_code_pm VARCHAR(6))
 BEGIN
      IF (in_comprator = 0) THEN
-        SELECT n.id_pm, n.id_n_group, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.cod1_pm,
+        SELECT n.code_pm ,n.id_pm, n.id_n_group, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.cod1_pm,
          n.cod2_pm, n.barcod_pm, n.max_pop_pm, n.expertsheet_pm, n.flag_pm,  pp.id_sl_curs,pp.price0_pp,money.cod_lat_n_money,@stoinost_in_lv:=(sl_curs.value_sl_curs*pp.price0_pp)AS lv, pp.price1_pp, pp.price2_pp,pp.price3_pp, pf.dds_pf, pf.excise_pf,
          pf.other_pf, pd.id_pd, pd.m1_pd, pd.v1_pd, pd.m2_pd, pd.v2_pd, pd.m3_pd, pd.v3_pd,min_pm
         FROM n_product_main n LEFT JOIN n_product_price pp ON pp.id_pp = n.id_pp LEFT JOIN sl_curs  ON  pp.id_sl_curs = sl_curs.id_sl_curs LEFT JOIN n_money money ON money.id_n_money = sl_curs.id_sl_curs LEFT JOIN n_product_fee pf ON pf.id_pf = n.id_pf LEFT JOIN
          n_product_description pd ON pd.id_pd = n.id_pd LEFT JOIN n_product_promotion_price ppp ON ppp.id_ppp = n.id_ppp LEFT JOIN n_group g
-         ON g.id_n_group = n.id_n_group WHERE n.flag_pm = in_flag_pm ;
+         ON g.id_n_group = n.id_n_group WHERE n.flag_pm = in_flag_pm ORDER BY n.name_pm;
      END IF;
      IF (in_comprator = 1) THEN
         INSERT INTO n_product_main(id_n_group,id_ppp,id_pp, id_pf,name_pm, fname_pm, sname_pm,cname_pm,cod1_pm,
-          cod2_pm,  barcod_pm,  max_pop_pm,  expertsheet_pm,min_pm, flag_pm, id_pd)  VALUES(in_id_n_group,in_id_ppp,in_id_pp, in_id_pf,in_name_pm,
-          in_fname_pm, in_sname_pm, in_cname_pm, in_cod1_pm, in_cod2_pm,  in_barcod_pm, in_max_pop_pm, in_expertsheet_pm, in_min_pm, in_flag_pm, in_id_pd);
+          cod2_pm,  barcod_pm,  max_pop_pm,  expertsheet_pm,min_pm, flag_pm, id_pd, code_pm )  VALUES(in_id_n_group,in_id_ppp,in_id_pp, in_id_pf,in_name_pm,
+          in_fname_pm, in_sname_pm, in_cname_pm, in_cod1_pm, in_cod2_pm,  in_barcod_pm, in_max_pop_pm, in_expertsheet_pm, in_min_pm, in_flag_pm, in_id_pd, in_code_pm);
      END IF;
      IF (in_comprator = 2) THEN
        UPDATE `n_product_main` SET flag_pm = in_flag_pm
@@ -1562,7 +2006,7 @@ BEGIN
 
        IF (in_comprator = 5) THEN
              IF (in_barcod_pm != 0) THEN
-              SELECT n.id_pm, n.id_n_group, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.cod1_pm,
+              SELECT n.code_pm ,n.id_pm, n.id_n_group, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.cod1_pm,
          n.cod2_pm, n.barcod_pm, n.max_pop_pm, n.expertsheet_pm, n.flag_pm,  pp.id_sl_curs,pp.price0_pp,money.cod_lat_n_money,@stoinost_in_lv:=(sl_curs.value_sl_curs*pp.price0_pp)AS lv, pp.price1_pp, pp.price2_pp,pp.price3_pp, pf.dds_pf, pf.excise_pf,
          pf.other_pf, pd.id_pd, pd.m1_pd, pd.v1_pd, pd.m2_pd, pd.v2_pd, pd.m3_pd, pd.v3_pd,min_pm
               FROM mida.n_product_main n LEFT JOIN n_product_price pp ON pp.id_pp = n.id_pp LEFT JOIN sl_curs  ON  pp.id_sl_curs = sl_curs.id_sl_curs LEFT JOIN n_money money ON money.id_n_money = sl_curs.id_sl_curs LEFT JOIN n_product_fee pf ON pf.id_pf = n.id_pf LEFT JOIN
@@ -1570,10 +2014,10 @@ BEGIN
          ON g.id_n_group = n.id_n_group WHERE n.name_pm  LIKE CONCAT('%',in_name_pm,'%') AND  n.fname_pm LIKE CONCAT('%',in_fname_pm,'%') AND
               n.sname_pm LIKE CONCAT('%',in_sname_pm,'%') AND n.cname_pm LIKE CONCAT('%',in_cname_pm,'%') AND  n.cod1_pm LIKE CONCAT('%',in_cod1_pm,'%') AND
               n.cod2_pm LIKE CONCAT('%',in_cod2_pm,'%') AND  n.barcod_pm LIKE CONCAT('%',in_barcod_pm,'%') AND  n.expertsheet_pm LIKE CONCAT('%',in_expertsheet_pm,'%')
-             AND flag_pm = in_flag_pm;
+             AND n.code_pm LIKE CONCAT('%',in_code_pm,'%') AND flag_pm = in_flag_pm ORDER BY n.name_pm;
            END IF;
        IF (in_barcod_pm = 0) THEN
-          SELECT n.id_pm, n.id_n_group, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.cod1_pm,
+          SELECT n.code_pm ,n.id_pm, n.id_n_group, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.cod1_pm,
          n.cod2_pm, n.barcod_pm, n.max_pop_pm, n.expertsheet_pm, n.flag_pm,  pp.id_sl_curs,pp.price0_pp,money.cod_lat_n_money,@stoinost_in_lv:=(sl_curs.value_sl_curs*pp.price0_pp)AS lv, pp.price1_pp, pp.price2_pp,pp.price3_pp, pf.dds_pf, pf.excise_pf,
          pf.other_pf, pd.id_pd, pd.m1_pd, pd.v1_pd, pd.m2_pd, pd.v2_pd, pd.m3_pd, pd.v3_pd,min_pm
           FROM mida.n_product_main n LEFT JOIN n_product_price pp ON pp.id_pp = n.id_pp LEFT JOIN sl_curs  ON  pp.id_sl_curs = sl_curs.id_sl_curs LEFT JOIN n_money money ON money.id_n_money = sl_curs.id_sl_curs LEFT JOIN n_product_fee pf ON pf.id_pf = n.id_pf LEFT JOIN
@@ -1581,7 +2025,7 @@ BEGIN
          ON g.id_n_group = n.id_n_group WHERE n.name_pm  LIKE CONCAT('%',in_name_pm,'%') AND  n.fname_pm LIKE CONCAT('%',in_fname_pm,'%') AND
           n.sname_pm LIKE CONCAT('%',in_sname_pm,'%') AND n.cname_pm LIKE CONCAT('%',in_cname_pm,'%') AND  n.cod1_pm LIKE CONCAT('%',in_cod1_pm,'%') AND
           n.cod2_pm LIKE CONCAT('%',in_cod2_pm,'%') AND  n.expertsheet_pm LIKE CONCAT('%',in_expertsheet_pm,'%')
-         AND flag_pm = in_flag_pm;
+         AND n.code_pm LIKE CONCAT('%',in_code_pm,'%') AND flag_pm = in_flag_pm ORDER BY n.name_pm;
       END IF;
      END IF;
 
@@ -1727,6 +2171,70 @@ BEGIN
        SELECT n.id_pm, n.flag_pm FROM mida.n_product_main n WHERE n.id_pm = in_id_pm;
 
     END IF;
+    IF (in_comprator = 34) THEN
+       UPDATE mida.n_product_consigment n SET
+        id_pm = in_id_pm
+       WHERE id_pm =  in_id_pp;
+    END IF;
+
+    IF (in_comprator = 35) THEN
+      INSERT INTO mida.n_product_consigment(id_pm,parcel_pc,dateofexpire_pc)
+       VALUES(in_id_pm,"000001",null);
+
+    END IF;
+
+
+END;
+
+#
+# Source for procedure nom_procedure_sdtn
+#
+
+CREATE PROCEDURE `nom_procedure_sdtn`(IN comprator TINYINT, IN in_id INT(11),IN in_id_groupe INT(11), IN in_code INT(11), IN in_name VARCHAR(40), IN in_comments VARCHAR(250) )
+BEGIN
+     IF (comprator = 0) THEN
+          SELECT n.id_sl_doc_type_num, n.id_ntd, ng.name_n_type_doc, n.code_sl_doc_type_num, n.name_sl_doc_type_num,
+                   n.comments_sl_doc_type_num FROM sl_doc_type_num n LEFT OUTER JOIN n_type_doc ng ON ng.id_ntd=n.id_ntd;
+     END IF;
+     IF (comprator = 1) THEN
+        INSERT INTO `sl_dov_type_num`( id_ntd, code_sl_dov_type_num, name_sl_dov_type_num, comments_sl_dov_type_num) VALUES(in_id_groupe, in_code, in_name, in_comments);
+     END IF;
+     IF (comprator = 2) THEN
+        UPDATE `sl_dov_type_num` SET id_ntd = in_id_groupe, code_sl_dov_type_num = in_code,   name_sl_dov_type_num = in_name, comments_sl_dov_type_num = in_comments
+        WHERE `sl_dov_type_num`.id_sl_dov_type_num = in_id;
+     END IF;
+
+     IF (comprator = 3) THEN
+        DELETE FROM `sl_dov_type_num`  WHERE id_sdtn = in_id;
+     END IF;
+
+
+     IF (comprator = 5) THEN
+        SELECT n.id_sdtn, n.id_ntd, ng.name_n_type_doc, n.code_sl_dov_type_num, n.name_sl_dov_type_num,
+                   n.comments_sl_dov_type_num FROM sl_dov_type_num n LEFT OUTER JOIN n_type_doc ng ON ng.id_ntd=n.id_ntd
+                   WHERE n.code_sl_dov_type_num LIKE CONCAT('%',in_code,'%') AND  n.code_sl_dov_type_num LIKE CONCAT('%',in_name,'%');
+
+     END IF;
+
+
+     IF (comprator = 6) THEN
+        SELECT n.id_ntd, n.name_n_type_doc FROM n_type_doc n
+                              WHERE n.nom_n_type_doc = 5;
+     END IF;
+
+     IF (comprator = 7) THEN
+        SELECT MAX(n.id_sdtn) FROM `sl_dov_type_num` n;
+     END IF;
+
+     IF (comprator = 8) THEN
+        SELECT MAX(n.code_sl_dov_type_num) AS code_sl_dov_type_num FROM `sl_dov_type_num` n;
+     END IF;
+
+
+     IF (comprator = 9) THEN
+        SELECT MAX(n.id_ntd) AS id_ntd FROM n_type_doc n
+                              WHERE n.nom_n_type_doc = 5;
+     END IF;
 
 END;
 
@@ -1828,6 +2336,49 @@ BEGIN
        DELETE FROM sl_exchange_rate;
      END IF;
 
+END;
+
+#
+# Source for procedure sl_procedure_num_doc
+#
+
+CREATE PROCEDURE `sl_procedure_num_doc`(IN comprator TINYINT, IN in_id INT(11), IN in_id_doctype INT(11), IN in_area INT(3), IN in_name VARCHAR(40))
+BEGIN
+     IF (comprator = 0) THEN
+          SELECT n.id_sdtn, n.id_ntd, ntd.name_ntd, n.area_number_sdtn, n.name_sdtn
+            FROM sl_doc_type_num n LEFT OUTER JOIN n_type_doc ntd ON ntd.id_ntd = n.id_ntd;
+     END IF;
+     IF (comprator = 1) THEN
+        INSERT INTO `sl_doc_type_num`(id_ntd, area_number_sdtn, name_sdtn) VALUES(in_id_doctype, in_area, in_name);
+     END IF;
+     IF (comprator = 2) THEN
+        UPDATE `sl_doc_type_num` SET id_ntd = in_id_doctype, area_number_sdtn = in_area, name_sdtn = in_name
+        WHERE `sl_doc_type_num`.id_sdtn = in_id;
+     END IF;
+     IF (comprator = 3) THEN
+        DELETE FROM `sl_doc_type_num`  WHERE id_sdtn = in_id;
+     END IF;
+     IF (comprator = 4) THEN
+        SELECT n.id_ntd, ntd.name_ntd, n.area_number_sdtn, n.name_sdtn FROM sl_doc_type_num n
+            LEFT OUTER JOIN n_type_doc ntd ON ntd.id_ntd = n.id_ntd WHERE n.id_sdtn = in_id;
+     END IF;
+     IF (comprator = 5) THEN
+        SELECT n.id_sdtn, n.id_ntd, ntd.name_ntd, n.area_number_sdtn, n.name_sdtn
+               FROM sl_doc_type_num n LEFT OUTER JOIN n_type_doc ntd ON ntd.id_ntd = n.id_ntd
+               WHERE n.area_number_sdtn LIKE CONCAT('%',in_area,'%') AND  n.name_sdtn LIKE CONCAT('%',in_name,'%');
+     END IF;
+     IF (comprator = 6) THEN
+        SELECT ntd.id_ntd, ntd.name_ntd FROM n_type_doc ntd;
+     END IF;
+     IF (comprator = 7) THEN
+        SELECT MAX(n.id_sdtn) FROM `sl_doc_type_num` n;
+     END IF;
+     IF (comprator = 8) THEN
+        SELECT MAX(n.area_number_sdtn) AS area_number FROM `sl_doc_type_num` n;
+     END IF;
+     IF (comprator = 9) THEN
+        SELECT MAX(ntd.id_ntd) AS id_ntd FROM n_type_doc ntd;
+     END IF;
 END;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

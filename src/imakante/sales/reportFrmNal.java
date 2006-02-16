@@ -2,6 +2,7 @@
 package imakante.sales;
 
 import java.awt.event.WindowEvent;
+import java.net.MalformedURLException;
 import java.sql.SQLException;
 
 
@@ -233,7 +234,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
             processField6();
         }
         if(java.awt.event.KeyEvent.VK_ENTER == evt.getKeyCode()){
-            if(jTextField6.getText()==""){jTextField6.setText("99999999999");jTextField6.transferFocus();}
+            if(jTextField6.getText().equals("")){jTextField6.setText("999999999");jTextField6.transferFocus();}
         }
     }//GEN-LAST:event_jTextField6KeyPressed
     
@@ -242,7 +243,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
             processField5();
         }
         if(java.awt.event.KeyEvent.VK_ENTER == evt.getKeyCode()){
-            if(jTextField5.getText()==""){jTextField5.setText("1");jTextField5.transferFocus();}
+            if(jTextField5.getText().equals("")){jTextField5.setText("1");jTextField5.transferFocus();}
         }
     }//GEN-LAST:event_jTextField5KeyPressed
     
@@ -251,7 +252,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
             processField4();
         }
         if(java.awt.event.KeyEvent.VK_ENTER == evt.getKeyCode()){
-            if(jTextField4.getText()==""){jTextField4.setText("99999999999");jTextField4.transferFocus();}
+            if(jTextField4.getText().equals("")){jTextField4.setText("999999999");jTextField4.transferFocus();}
         }
     }//GEN-LAST:event_jTextField4KeyPressed
     
@@ -260,7 +261,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
             processField3();
         }
         if(java.awt.event.KeyEvent.VK_ENTER == evt.getKeyCode()){
-            if(jTextField3.getText()==""){jTextField3.setText("1");jTextField3.transferFocus();}
+            if(jTextField3.getText().equals("")){jTextField3.setText("1");jTextField3.transferFocus();}
         }
     }//GEN-LAST:event_jTextField3KeyPressed
     
@@ -274,7 +275,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
             processField2();
         }
         if(java.awt.event.KeyEvent.VK_ENTER == evt.getKeyCode()){
-            if(jTextField2.getText()==""){jTextField2.setText("99999999999");jTextField2.transferFocus();}
+            if(jTextField2.getText().equals("")){jTextField2.setText("999999999");jTextField2.transferFocus();}
         }
     }//GEN-LAST:event_jTextField2KeyPressed
     
@@ -291,7 +292,8 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
             processField1();
         }
         if(java.awt.event.KeyEvent.VK_ENTER == evt.getKeyCode()){
-            if(jTextField1.getText()==""){jTextField1.setText("1");jTextField1.transferFocus();}
+            if(jTextField1.getText().equals("")){jTextField1.setText("1");jTextField1.transferFocus();}else{jTextField1.transferFocus();}
+            
         }
     }//GEN-LAST:event_jTextField1KeyPressed
     
@@ -322,23 +324,28 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
     private java.sql.Statement stm;
     private  java.sql.ResultSet rs;
     
+    private java.io.FileInputStream fs=null;
+    private java.net.URL url=null;
+    
+    private java.util.HashMap hm = null;
+    
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
     private String idFCodeContr = "0";
     private String  idLastContr = "99999999999";
-    private String[] Names= {"id", "cod", "names"};
+    private String[] Names= { "cod", "names"};
     private  int intTransfer;
     private  int CompNumber = 0;
     
-    private String strContragent = "SELECT `rep_comm_nal`.`id_contragent`,"
+    private String strContragent = "SELECT "
             + "`rep_comm_nal`.`code_contragent`, `rep_comm_nal`.`name_n_contragent`"
             + "FROM `rep_comm_nal` WHERE `rep_comm_nal`.`code_contragent` LIKE  '%";
     
-    private String strProduct = "SELECT `rep_comm_nal`.`id_pm`,"
+    private String strProduct = "SELECT "
             + "`rep_comm_nal`.`code_pm`, `rep_comm_nal`.`name_pm`"
             + "FROM `rep_comm_nal` WHERE `rep_comm_nal`.`code_pm` LIKE  '%";
     
-    private String strStore = "SELECT `rep_comm_nal`.`id_n_storage`,"
+    private String strStore = "SELECT "
             + "`rep_comm_nal`.`code_n_storage`, `rep_comm_nal`.`name_n_storage`"
             + "FROM `rep_comm_nal` WHERE `rep_comm_nal`.`code_n_storage` LIKE  '%";
     
@@ -386,17 +393,14 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         try {
             model = new imakante.com.CustomTableModel(getConn(), rs, names);
             table = new imakante.com.CustomTable(model);
-            HideColumns(getColumnIndex("id"));
+            
         } catch(Exception e) { e.printStackTrace(); }
         
         try {
             table.setEditingRow(0);
         } catch(Exception ex) {  }
     }
-    private void initDialog(){
-        
-        
-    }
+    
     private void constructDialod(String str, int rCompNumber, String[] names){
         this.CompNumber = rCompNumber;
         initTable(str, names );
@@ -404,6 +408,9 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         td.setVisible(true);
         
     }
+    
+   
+    
     
     private int getColumnIndex(String in) //test
     {
@@ -413,19 +420,6 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         }
         return 0;
     }
-    
-    
-    
-    private void HideColumns(int col) {
-        int iColumn = col;
-// set column width
-        table.getColumnModel().getColumn(iColumn).setMaxWidth(0);
-        table.getColumnModel().getColumn(iColumn).setMinWidth(0);
-        table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
-        table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
-        
-    }
-    
     
     
     
@@ -495,49 +489,69 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
     }
     
     private void processField2() {
+        if(this.jTextField1.getText()==""){this.jTextField1.setText("0");}
         String newString = strStore + this.jTextField2.getText() + "%' AND `rep_comm_nal`.`code_n_storage` >= " + this.jTextField1.getText() + ";";
         constructDialod(newString, 2, Names);
     }
     
-    private void processField3() {
-        String newString =strProduct + this.jTextField3.getText() + "%'";
-        constructDialod(newString, 3, Names);
-        
-    }
-    
-    private void processField4() {
-        String newString = strProduct + this.jTextField4.getText() + "%' AND `rep_comm_nal`.`code_pm` >= " + this.jTextField3.getText() + ";";
-        constructDialod(newString, 4, Names);
-    }
     private void processField5() {
-        String newString = strContragent + this.jTextField5.getText() + "%'";
+        String newString =strProduct + this.jTextField5.getText() + "%'";
         constructDialod(newString, 5, Names);
         
     }
     
     private void processField6() {
-        String newString = strContragent + this.jTextField6.getText() + "%' AND `rep_comm_nal`.`code_contragent` >= " + this.jTextField5.getText() + ";";
+        if(this.jTextField5.getText()==""){this.jTextField5.setText("0");}
+        String newString = strProduct + this.jTextField6.getText() + "%' AND `rep_comm_nal`.`code_pm` >= " + this.jTextField5.getText() + ";";
         constructDialod(newString, 6, Names);
+    }
+    private void processField3() {
+        String newString = strContragent + this.jTextField3.getText() + "%'";
+        constructDialod(newString, 3, Names);
+        
+    }
+    
+    private void processField4() {
+        if(this.jTextField3.getText()==""){this.jTextField3.setText("0");}
+        String newString = strContragent + this.jTextField4.getText() + "%' AND `rep_comm_nal`.`code_contragent` >= " + this.jTextField3.getText() + ";";
+        constructDialod(newString, 4, Names);
     }
     
     private void processReport(){
-        String newString =qu + " WHERE `rep_comm_nal`.`code_contragent` BETWEEN '" +
-                this.jTextField5.getText() + "' AND '" + this.jTextField6.getText() +"' AND "+
-                " `rep_comm_nal`.`code_pm` BETWEEN '"+this.jTextField3.getText() + "' AND '" + this.jTextField4.getText() +"' AND "+
-                " `rep_comm_nal`.`code_n_storage` BETWEEN '"+this.jTextField1.getText() + "' AND '" + this.jTextField2.getText() +"'; ";
-        
-        constructDialod(newString, 0, NamesQ);
-        
+        String newString="";
+        try {
+            newString = qu + " WHERE `rep_comm_nal`.`code_contragent` BETWEEN '" +
+                    (Integer.parseInt(this.jTextField5.getText())-1) + "' AND '" + (Integer.parseInt(this.jTextField6.getText())+1) +
+                    "' AND " + " `rep_comm_nal`.`code_pm` BETWEEN '" + (Integer.parseInt(this.jTextField3.getText())-1) +
+                    "' AND '" + (Integer.parseInt(this.jTextField4.getText())+1) + "' AND " + " `rep_comm_nal`.`code_n_storage` BETWEEN '" +
+                    (Integer.parseInt(this.jTextField1.getText())-1) + "' AND '" + (Integer.parseInt(this.jTextField2.getText())+1) + "'; ";
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+        }
+        //Create Dialog with print
+        try{
+         
+            fs = new java.io.FileInputStream("c:/imakante/src/imakante/sales/jasper/nal_simp_01.jasper");
+            
+            initTable(newString, NamesQ);
+            imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table,
+                   myframe.getConn(), hm, fs);
+            td.setVisible(true);
+        } catch (java.io.FileNotFoundException  ioex){
+            ioex.printStackTrace();
+            constructDialod(newString, 0, NamesQ);
+            System.out.println("Ne moga da nameria faila  ");
+        }
         
     }
     
     private void fillBlanck(){
         if(jTextField1.getText()==""){jTextField1.setText("1");}
-        if(jTextField2.getText()==""){jTextField2.setText("99999999999");}
+        if(jTextField2.getText()==""){jTextField2.setText("999999999");}
         if(jTextField3.getText()==""){jTextField3.setText("1");}
-        if(jTextField4.getText()==""){jTextField4.setText("99999999999");}
+        if(jTextField4.getText()==""){jTextField4.setText("999999999");}
         if(jTextField5.getText()==""){jTextField5.setText("1");}
-        if(jTextField6.getText()==""){jTextField6.setText("99999999999");}
+        if(jTextField6.getText()==""){jTextField6.setText("999999999");}
     }
     
 }

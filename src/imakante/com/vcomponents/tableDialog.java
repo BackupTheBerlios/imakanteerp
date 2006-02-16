@@ -3,6 +3,10 @@ package imakante.com.vcomponents;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
 
 public class tableDialog extends imakante.com.vcomponents.iDialog {
     
@@ -24,7 +28,29 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
             }
         });
     }
-    
+    public tableDialog(imakante.com.vcomponents.iInternalFrame frame, boolean modal, imakante.com.CustomTable table,
+            java.sql.Connection conn, java.util.HashMap hm, java.io.FileInputStream fs) {
+        super(frame, modal, table);
+        this.myParent = (imakante.com.vcomponents.iInternalFrame) frame;
+        this.InternalTable = table;
+        this.conn = conn;
+        this.hm = hm;
+        this.fs = fs;
+        
+        initComponents();
+        InternalTable.addKeyListener(new KeyListener() {
+            public void keyPressed(KeyEvent e) {
+                if(java.awt.event.KeyEvent.VK_ENTER == e.getKeyCode()) {
+                    
+                }
+            }
+            public void keyReleased(KeyEvent e) {
+            }
+            public void keyTyped(KeyEvent e) {
+            }
+        });
+        this.jButton2.setText("Print");
+    }
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         jPanel1 = new javax.swing.JPanel();
@@ -43,9 +69,15 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         jButton2.setText("\u0412\u043c\u044a\u043a\u043d\u0438");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         jPanel2.add(jButton2);
 
-        jButton1.setText("\u041e\u0442\u043a\u0430\u0437");
+        jButton1.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -56,9 +88,15 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
 
-        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-312)/2, (screenSize.height-384)/2, 312, 384);
+        pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if (fs == null){myParent.setIntTransfer((Integer)InternalTable.getValueAt(InternalTable.getSelectedRow(),getColumnIndex("cod")));
+        close();} else{
+            prepareJassper();
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
@@ -72,7 +110,48 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
     private imakante.com.vcomponents.iInternalFrame myParent;
+    
+    private java.sql.Connection conn = null;
+    private java.io.FileInputStream fs = null;
+    private java.util.HashMap hm = null;
+    
     private imakante.com.CustomTable InternalTable;
+    
+    private net.sf.jasperreports.engine.JasperReport jasperReport;
+    private net.sf.jasperreports.engine.JasperPrint jasperPrint ;
+    private net.sf.jasperreports.view.JRViewer jrv;
+    
+    private void prepareJassper(){
+        
+        try {
+        
+            jasperReport = JasperCompileManager.compileReport("c:/imakante/src/imakante/sales/jasper/nal_simp_01.jRXML");
+        } catch (JRException ex) {
+            System.out.println("frmo compile");
+            ex.printStackTrace();
+            
+        }
+        try {
+            jasperPrint = JasperFillManager.fillReport("c:/imakante/src/imakante/sales/jasper/nal_simp_01.jasper",
+                    hm, conn);
+            jrv = new net.sf.jasperreports.view.JRViewer(jasperPrint);
+            this.jPanel1.removeAll();
+            this.jPanel1.add(jrv);
+            this.jPanel1.repaint();
+            if(conn==null){
+            System.out.println("konektsia nula");
+            }
+        } 
+        catch (JRException ex) {
+            System.out.println("frmo fill");
+            ex.printStackTrace();
+        }
+            
+            
+       
+        
+    }
+    
     private int getColumnIndex(String in) //test
     {
         int count = InternalTable.getColumnCount();
