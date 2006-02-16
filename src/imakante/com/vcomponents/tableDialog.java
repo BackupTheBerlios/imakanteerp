@@ -57,7 +57,7 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
         getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-400)/2, (screenSize.height-317)/2, 400, 317);
+        setBounds((screenSize.width-312)/2, (screenSize.height-384)/2, 312, 384);
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
