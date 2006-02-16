@@ -920,7 +920,29 @@ public String[] getObektDataByID(int idObekt)
    setUserDocFacade(oldIntValue);
     return ObektData;
 }
-
+public java.sql.ResultSet getTableProductInfo(String in , int sqlselect)
+{ 
+    java.sql.ResultSet rs1 = null;
+    int oldIntValue = getDocFacadeType();
+    setDocFacadeType(sqlselect);
+    String oldvalues = getCommentDocFacade();
+    setCommentDocFacade(in);  
+     this.comprator = 20;
+   
+        try{
+            registerParameters();
+            rs1 = cstm.executeQuery();;
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+        System.out.println("getTableProductInfo()");
+        setCommentDocFacade(oldvalues);
+        setDocFacadeType(oldIntValue);
+        return rs1;
+    
+}
 
 // <-----------------------
     

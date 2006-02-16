@@ -47,7 +47,7 @@ public class docLineTableModel extends AbstractTableModel
     private int columnsCound=0;
         // Types of the columns.
     private Class[]  colTypes =  new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class,
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class,
                 java.lang.Integer.class, java.lang.Integer.class,java.lang.Integer.class, java.lang.Integer.class,
                 java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class,
                 java.lang.Double.class, java.lang.Double.class};
@@ -57,7 +57,7 @@ public class docLineTableModel extends AbstractTableModel
     {
         super();
     }
-     public docLineTableModel(String codeOfProduct,String nameOfProduct,int storageOut,int priceList,
+     public docLineTableModel(int codeOfProduct,String nameOfProduct,int storageOut,int priceList,
                        int numberOfProduct, double pricePiece,double rateReduction,double priceTotal,double DDS,
                        String nameOfDisBaund[],int numerOfDisBaund[])
     {
@@ -100,7 +100,7 @@ public class docLineTableModel extends AbstractTableModel
           {
            case CODE_OF_PRODUCT    :
             {
-                dd.setCodeOfProduct((String)value);
+                dd.setCodeOfProduct((Integer)value);
                 break;
             }
            case NAME_OF_PRODUCT    :
@@ -188,6 +188,7 @@ public class docLineTableModel extends AbstractTableModel
             }
           }
           
+      fireTableDataChanged();     
     }
 
         
@@ -329,7 +330,7 @@ public class docLineTableModel extends AbstractTableModel
     rowsCount++;
     fireTableDataChanged();
  }
-public void addRow(String codeOfProduct,String nameOfProduct,int storageOut,int priceList,
+public void addRow(int codeOfProduct,String nameOfProduct,int storageOut,int priceList,
                        int numberOfProduct, double pricePiece,double rateReduction,double priceTotal,double DDS,
                        String nameOfDisBaund[],int numerOfDisBaund[])
     {

@@ -388,6 +388,11 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
    private int idDistributor;
    private int idDeliver;
    private int storageDocFacade;
+   private int idProduct;
+   private int idProductDescription;
+   private int idProductPrice;
+   private int idProductFee;
+   
    
    private int descriptionPaying =0;
    private String payingDate;
@@ -398,11 +403,13 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
    
     private String numberProduct;
     private String nameProduct;
+    private int codeProduct;
     private int    storageOUTProduct;
     private int   priceListProduct;
     private double brojProduct;
-    private double razfasovka1Produkt;
-    private double razfasovka2Produkt;
+    private int razfasovka1Produkt;
+    private int razfasovka2Produkt;
+     private int razfasovka3Produkt;
     private double priceOneProduct;
     private double procentProduct;
     private double DDSProduct;
@@ -865,6 +872,14 @@ public String getNameProduct()
 {
    return nameProduct;
 }
+public void setCodeProduct(int in)
+{
+   this.codeProduct= in;
+}
+public int getCodeProduct()
+{
+   return codeProduct;
+}
 public void setStorageOUTProduct(int in)
 {
    this.storageOUTProduct= in;
@@ -889,21 +904,29 @@ public double getBrojProduct()
 {
    return brojProduct;
 }
-public void setRazfasovka1Produkt(double in)
+public void setRazfasovka1Produkt(int in)
 {
    this.razfasovka1Produkt= in;
 }
-public double getRazfasovka1Produkt()
+public int getRazfasovka1Produkt()
 {
    return razfasovka1Produkt;
 }
-public void setRazfasovka2Produkt(double in)
+public void setRazfasovka2Produkt(int in)
 {
    this.razfasovka2Produkt= in;
 }
-public double getRazfasovka2Produkt()
+public int getRazfasovka2Produkt()
 {
    return razfasovka2Produkt;
+}
+public void setRazfasovka3Produkt(int in)
+{
+   this.razfasovka3Produkt= in;
+}
+public int getRazfasovka3Produkt()
+{
+   return razfasovka3Produkt;
 }
 public void setPriceOneProduct(double in)
 {
@@ -950,6 +973,38 @@ public int getUserEditFortm()
 {
     return userEditForm;
 }
+public void setID_Product(int in)
+{
+    idProduct = in;
+}
+public int getID_Product()
+{
+    return idProduct;
+}
+ public void setID_PD(int ID) 
+    {
+        this.idProductDescription = ID;
+    }
+ public int getID_PD()  
+    {
+        return idProductDescription;
+    }
+ public void setID_PP(int ID) 
+    {
+        this.idProductPrice = ID;
+    }
+ public int getID_PP()  
+    {
+        return idProductPrice;
+    }
+ public void setID_PF(int ID) 
+    {
+        this.idProductFee = ID;
+    }
+ public int getID_PF()  
+    {
+        return idProductFee;
+    }
 // <--------------------------------------- 
  public  int getRow()
    {
@@ -1165,4 +1220,6 @@ public void deleteRow()
 {
      countriesT.deleteRow()
 }*/
+
+
 }// end class

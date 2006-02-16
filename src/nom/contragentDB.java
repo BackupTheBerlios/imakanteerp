@@ -2,6 +2,7 @@ package nom;
 
 
 import imakante.com.*;
+import java.util.*;
 
 public class contragentDB extends dbObject 
 {
@@ -514,4 +515,85 @@ public class contragentDB extends dbObject
         System.out.println("ot contragentDB.getMaxCod()");
         return maxcod;
     }
+    
+ public void updateIDProductContragent(int in_id_contragent_old,int in_id_contragent_new ,int in_flag) //test //comprator = 15;
+{
+    ArrayList arrayID = getIDProductContragent(in_id_contragent_old,0) ;
+    setIDProductContragent(arrayID,in_id_contragent_new,0);
+    
+     
+   int oldIn_od = id;
+   id = in_id_contragent_old;
+   int oldIn_flag = flag;
+   flag = in_flag;
+   comprator = 15;
+      try
+        {
+            registerParameters();
+            cstm.execute();
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+       
+  
+    
+}
+  private void setIDProductContragent(ArrayList id_pm,int in_id_contragent_new,int in_flag) //test //comprator = 16;
+{
+   int oldIn_od = id;
+    int oldIn_flag = flag;
+    int oldId_in_OSO = id_oso;
+   id = in_id_contragent_new;
+  
+   flag = in_flag;
+   comprator = 16;
+   ArrayList arrayID = id_pm;
+   Iterator it = id_pm.iterator();
+      try
+        { 
+          while(it.hasNext())
+            {
+               registerParameters();
+               id_oso = (Integer)it.next();
+               cstm.execute();
+                
+            }
+            
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+       
+    
+}
+ private ArrayList getIDProductContragent(int in_id_contragent_old, int in_flag) //test //comprator = 17;
+{
+   ArrayList arrayIdOnProduct=new ArrayList();
+   int oldIn_flag = flag;
+   flag = in_flag;
+   int oldIn_od = id;
+   id = in_id_contragent_old;
+   comprator = 17;
+   java.sql.ResultSet rs1= null;
+      try
+        {
+            registerParameters();
+            rs1 = getCstm().executeQuery();
+            while(rs1.next())
+            {
+               arrayIdOnProduct.add(new Integer(rs1.getInt("id_pm")));
+       
+            }
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+     
+   
+   return arrayIdOnProduct; 
+}
 }// end class

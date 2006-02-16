@@ -571,6 +571,8 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
                                                   myParent.getAddress(),myParent.getID_NM(),
                                                   myParent.getTel(),myParent.getFax(),myParent.getEmail(),
                                                   myParent.getWeb(),myParent.getID_MOL(),myParent.getID_OSO());
+                int newIdContragent  = myParent.getCountriesT().getMaxId();
+                myParent.getCountriesT().updateIDProductContragent(myParent.getId(),newIdContragent,1);
             
         }
     //  jButton3.doClick(); // zatvarq se aeContragen

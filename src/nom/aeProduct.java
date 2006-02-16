@@ -833,6 +833,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
                             myParent.getExpertSheet(),myParent.getBarCod(),myParent.getCod1(),
                             myParent.getCod2(),myParent.getMinProduct(),myParent.getCodePM());
                     int maxId_pm = myParent.getCountriesT().getMaxId();
+                    myParent.getCountriesT().setNewConsigment(maxId_pm); // syzdavane na nova partida s nomer 0001;
                     if(jTextFieldContragent.getText().length() > 0)
                         myParent.getCountriesT().setIDProductContragent(maxId_pm,myParent.getId_Contragent(),0);
                     
@@ -870,6 +871,9 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
                         myParent.getExpertSheet(),myParent.getBarCod(),myParent.getCod1(),
                         myParent.getCod2(),myParent.getMinProduct(),myParent.getCodePM());
                 int maxId_pm = myParent.getCountriesT().getMaxId();
+                // update tablicat s partidite za novoto ID -------------
+                myParent.getCountriesT().updateIDProductConsigment(maxId_pm,myParent.getId_PM());
+                
                 if(isNewInputContragent) {
                     if(jTextFieldContragent.getText().length() > 0)
                         myParent.getCountriesT().setIDProductContragent(maxId_pm,myParent.getId_Contragent(),0);

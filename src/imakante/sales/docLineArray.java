@@ -5,7 +5,7 @@ package imakante.sales;
 
 public class docLineArray 
 {
-    private String codeOfProduct;
+    private int codeOfProduct;
     private String nameOfProduct;
     private int storageOut;
     private int priceList;
@@ -19,7 +19,7 @@ public class docLineArray
     
  public docLineArray()
     {
-        codeOfProduct   = null;
+        codeOfProduct   = 0;
         nameOfProduct   = null;     
         storageOut      = 0;  
         priceList       = 0;  
@@ -37,7 +37,7 @@ public class docLineArray
                 
     }
     
-    public docLineArray(String codeOfProduct,String nameOfProduct,int storageOut,int priceList,
+    public docLineArray(int codeOfProduct,String nameOfProduct,int storageOut,int priceList,
                        int numberOfProduct, double pricePiece,double rateReduction ,double priceTotal,double DDS,
                        String nameOfDisBand[],int numerOfDisBand[])
     {
@@ -72,7 +72,7 @@ public class docLineArray
     }
     
     
-    public void setALLData(String codeOfProduct,String nameOfProduct,int storageOut,int priceList,
+    public void setALLData(int codeOfProduct,String nameOfProduct,int storageOut,int priceList,
                        int numberOfProduct, double pricePiece,double rateReduction,double priceTotal,double DDS,
                        String nameOfDisBand[],int numerOfDisBand[])
     {
@@ -92,7 +92,7 @@ public class docLineArray
     
  // get metods
     
- public String getCodeOfProduct()
+ public int getCodeOfProduct()
    {
       return codeOfProduct;
   }
@@ -138,7 +138,7 @@ public  int[] getNumerOfDisBand()
 }
  //set metods   
     
- public void setCodeOfProduct(String in)
+ public void setCodeOfProduct(int in)
    {
        codeOfProduct=in;
   }

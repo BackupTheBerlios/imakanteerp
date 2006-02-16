@@ -47,6 +47,8 @@ package nom;
  *
  *
  *comprator = 33 : checkFlag()
+ *
+ *comprator = 34 : updateIDProductConsigment()
  **/
 
 import imakante.com.*;
@@ -1333,5 +1335,42 @@ public void updateIDProductContragent(int in_id_pm,int in_id_contragent,int in_f
    id_pm = oldid_pm;
    id_n_group = oldid_contragent;
    flag_pm = oldflag;    
+}
+public void updateIDProductConsigment(int in_id_pm_new,int in_id_pm_old) //test //comprator = 34;
+{
+    int oldid_pm = id_pm;
+    int oldId_pp = id_pp;
+    id_pp = in_id_pm_old;
+    id_pm = in_id_pm_new;
+   
+    comprator = 34;
+      try
+        {
+            registerParameters();
+            cstm.execute();
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+       
+   id_pm = oldid_pm;
+   id_pp = oldId_pp;  
+}
+public void setNewConsigment(int in_id_pm)
+{
+    int oldid_pm = id_pm;
+    comprator = 35;
+      try
+        {
+            registerParameters();
+            cstm.execute();
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+       
+   id_pm = oldid_pm; 
 }
 }// end class
