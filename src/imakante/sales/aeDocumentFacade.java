@@ -30,61 +30,64 @@ import java.awt.event.*;
 
 public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 {
-  final private static int CONTARGENT_NO = 0;
-  final private static int CONTARGENT_BULSTAT = 1;
-  final private static int CONTARGENT_DAN_NO = 2;
-  final private static int CONTARGENT_NAME = 3;
-  final private static int CONTARGENT_ADDRESS = 4;
-  final private static int CONTARGENT_MOL = 6;
-  final private static int CONTARGENT_TEL = 5;
-  final private static int OBEKT_NO =0;
-  final private static int OBEKT_NAME =1;
-  final private static int OBEKT_ADDRESS =2;
-  final private static int OBEKT_TEL =3;
-  
+    final private static int CONTARGENT_NO = 0;
+    final private static int CONTARGENT_BULSTAT = 1;
+    final private static int CONTARGENT_DAN_NO = 2;
+    final private static int CONTARGENT_NAME = 3;
+    final private static int CONTARGENT_ADDRESS = 4;
+    final private static int CONTARGENT_MOL = 6;
+    final private static int CONTARGENT_TEL = 5;
+    final private static int OBEKT_NO =0;
+    final private static int OBEKT_NAME =1;
+    final private static int OBEKT_ADDRESS =2;
+    final private static int OBEKT_TEL =3;
+    
     /** Creates new form aeGroup */
     public aeDocumentFacade(imakante.com.vcomponents.iInternalFrame frame, boolean modal, boolean isnew,
-                           int pricelist) //test 
+            int pricelist) //test
     {
-       super(frame, modal);
-       this.myParent = (FrmDocumentFacade) frame;
-       this.userDocFacade = myParent.getUserDocFacade();
-       this.levelDocFacade = myParent.getDocFacadeLevel();
-       this.priceList = pricelist;
-       this.DocFacadeType = myParent.getDocFacadeType();
-       this.isNew = isnew;
-       
-       initComponents();
-       jTable1.getTableHeader().setReorderingAllowed(false);
-       jTable1.setModel(new docLineTableModel());
-       jScrollPane2.getViewport().add(jTable1);
-       jScrollPane2.repaint();
-      
-       ((docLineTableModel)jTable1.getModel()).addRow(new docLineArray());
-       setInputLisener();
-      
-       
-        getNavigatiionState();   
-       
+        super(frame, modal);
+        this.myParent = (FrmDocumentFacade) frame;
+        this.userDocFacade = myParent.getUserDocFacade();
+        this.levelDocFacade = myParent.getDocFacadeLevel();
+        this.priceList = pricelist;
+        this.DocFacadeType = myParent.getDocFacadeType();
+        this.isNew = isnew;
+        
+        initComponents();
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        jTable1.setModel(new docLineTableModel());
+        jScrollPane2.getViewport().add(jTable1);
+        jScrollPane2.repaint();
+        
+        ((docLineTableModel)jTable1.getModel()).addRow(new docLineArray());
+        setInputLisener();
+        
+        InputMap im = jTable1.getInputMap(JTable.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        KeyStroke tab = KeyStroke.getKeyStroke(KeyEvent.VK_TAB, 0);
+        KeyStroke enter = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0);
+        im.put(enter, im.get(tab));
+        KeyStroke right = KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0);
+        im.put(right, "none");
+        
+        getNavigatiionState();
+        
         this.setResizable(false);
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         int x = (((dim.width)-(this.getSize().width))/2);
         int y = (((dim.height)-(this.getSize().height))/2);
         this.setLocation(x, y);
-       
-        if(isNew)
-        {
+        
+        if(isNew) {
             docNumberLast = myParent.getCountriesT().getDocNumberLast(userDocFacade);
             nowDate = new Date();
-           repainUserEdit(0);
-        }
-        else
-        {
+            repainUserEdit(0);
+        } else {
             
         }
         
         
-       repaintComp();
+        repaintComp();
         
     }
     
@@ -841,395 +844,355 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
 // TODO add your handling code here:
         System.exit(-1);
     }//GEN-LAST:event_formWindowClosed
-
+    
     private void jScrollPane2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane2MouseClicked
 // TODO add your handling code here:
-       
+        
         
     }//GEN-LAST:event_jScrollPane2MouseClicked
-
+    
     private void jTextFieldDateDeliverFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldDateDeliverFocusLost
 // Date deliver ditributor
-       if(jTextFieldDateDeliver.getText().length()>0)
-       {
-       imakante.com.dateManipulation newdate = new imakante.com.dateManipulation();
-       String newDateDistr = newdate.convertDate(jTextFieldDateDeliver.getText());
-       myParent.setDistributorData(newDateDistr);
-       }
-      
+        if(jTextFieldDateDeliver.getText().length()>0) {
+            imakante.com.dateManipulation newdate = new imakante.com.dateManipulation();
+            String newDateDistr = newdate.convertDate(jTextFieldDateDeliver.getText());
+            myParent.setDistributorData(newDateDistr);
+        }
+        
     }//GEN-LAST:event_jTextFieldDateDeliverFocusLost
-
+    
     private void jTextFieldDeliverKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDeliverKeyPressed
 // TODO add your handling code here:
-         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableIncludeTextDistDeliv(jTextFieldDeliver.getText(),selectDataOfDocFacade.DELIVER);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.DISTRIBUTOR_DELIVER,false);
             jTextFieldDeliver.setText(myParent.getDeliverDocFacade());
-             repainObektData(myParent.getID_Obekt());
+            repainObektData(myParent.getID_Obekt());
             
         }
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableStartTextDistDeliv(jTextFieldDeliver.getText(),selectDataOfDocFacade.DELIVER);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.DISTRIBUTOR_DELIVER,false);
             jTextFieldDeliver.setText(myParent.getDeliverDocFacade());
-             repainObektData(myParent.getID_Obekt());
+            repainObektData(myParent.getID_Obekt());
         }
         
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableFinishTextDistDeliv(jTextFieldDeliver.getText(),selectDataOfDocFacade.DELIVER);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.DISTRIBUTOR_DELIVER,false);
             jTextFieldDeliver.setText(myParent.getDeliverDocFacade());
-             repainObektData(myParent.getID_Obekt());
-        } 
+            repainObektData(myParent.getID_Obekt());
+        }
     }//GEN-LAST:event_jTextFieldDeliverKeyPressed
-
+    
     private void jTextFieldDistrKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDistrKeyPressed
 // TODO add your handling code here:
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableIncludeTextDistDeliv(jTextFieldDistr.getText(),selectDataOfDocFacade.DISTRIBUTOR);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.DISTRIBUTOR_DELIVER,true);
             jTextFieldDistr.setText(myParent.getDistributorDocFacade());
-             repainObektData(myParent.getID_Obekt());
+            repainObektData(myParent.getID_Obekt());
         }
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableStartTextDistDeliv(jTextFieldDistr.getText(),selectDataOfDocFacade.DISTRIBUTOR);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.DISTRIBUTOR_DELIVER,true);
             jTextFieldDistr.setText(myParent.getDistributorDocFacade());
-             repainObektData(myParent.getID_Obekt());
+            repainObektData(myParent.getID_Obekt());
         }
         
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableFinishTextDistDeliv(jTextFieldDistr.getText(),selectDataOfDocFacade.DISTRIBUTOR);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.DISTRIBUTOR_DELIVER,true);
             jTextFieldDistr.setText(myParent.getDistributorDocFacade());
-             repainObektData(myParent.getID_Obekt());
-        } 
+            repainObektData(myParent.getID_Obekt());
+        }
     }//GEN-LAST:event_jTextFieldDistrKeyPressed
-
+    
     private void jTextFieldObektTelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldObektTelKeyPressed
 // TODO add your handling code here:
-         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableIncludeTextObekt(jTextFieldObektTel.getText(),OBEKT_TEL);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_TEL,false);
-             repainObektData(myParent.getID_Obekt());
+            repainObektData(myParent.getID_Obekt());
             
         }
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableStartTextObekt(jTextFieldObektTel.getText(),OBEKT_TEL);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_TEL,false);
-             repainObektData(myParent.getID_Obekt());
+            repainObektData(myParent.getID_Obekt());
         }
         
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableFinishTextObekt(jTextFieldObektTel.getText(),OBEKT_TEL);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_TEL,false);
-             repainObektData(myParent.getID_Obekt());
+            repainObektData(myParent.getID_Obekt());
         }
     }//GEN-LAST:event_jTextFieldObektTelKeyPressed
-
+    
     private void jTextFieldObektAddressKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldObektAddressKeyPressed
 // TODO add your handling code here:
-         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableIncludeTextObekt(jTextFieldObektAddress.getText(),OBEKT_ADDRESS);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_ADDRESS,false);
-             repainObektData(myParent.getID_Obekt());
+            repainObektData(myParent.getID_Obekt());
             
         }
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableStartTextObekt(jTextFieldObektAddress.getText(),OBEKT_ADDRESS);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_ADDRESS,false);
-             repainObektData(myParent.getID_Obekt());
+            repainObektData(myParent.getID_Obekt());
         }
         
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableFinishTextObekt(jTextFieldObektAddress.getText(),OBEKT_ADDRESS);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_ADDRESS,false);
-             repainObektData(myParent.getID_Obekt());
+            repainObektData(myParent.getID_Obekt());
         }
     }//GEN-LAST:event_jTextFieldObektAddressKeyPressed
-
+    
     private void jTextFieldObektNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldObektNameKeyPressed
 // TODO add your handling code here:
-         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableIncludeTextObekt(jTextFieldObektName.getText(),OBEKT_NAME);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_NAME,false);
-             repainObektData(myParent.getID_Obekt());
+            repainObektData(myParent.getID_Obekt());
             
         }
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableStartTextObekt(jTextFieldObektName.getText(),OBEKT_NAME);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_NAME,false);
-             repainObektData(myParent.getID_Obekt());
+            repainObektData(myParent.getID_Obekt());
         }
         
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableFinishTextObekt(jTextFieldObektName.getText(),OBEKT_NAME);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_NAME,false);
-             repainObektData(myParent.getID_Obekt());
+            repainObektData(myParent.getID_Obekt());
         }
     }//GEN-LAST:event_jTextFieldObektNameKeyPressed
-
+    
     private void jTextFieldObektNoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldObektNoKeyPressed
 // TODO add your handling code here:
-         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableIncludeTextObekt(jTextFieldObektNo.getText(),OBEKT_NO);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_NO,false);
-             repainObektData(myParent.getID_Obekt());
+            repainObektData(myParent.getID_Obekt());
             
         }
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableStartTextObekt(jTextFieldObektNo.getText(),OBEKT_NO);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_NO,false);
-             repainObektData(myParent.getID_Obekt());
+            repainObektData(myParent.getID_Obekt());
         }
         
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableFinishTextObekt(jTextFieldObektNo.getText(),OBEKT_NO);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_NO,false);
             repainObektData(myParent.getID_Obekt());
         }
     }//GEN-LAST:event_jTextFieldObektNoKeyPressed
-
+    
     private void jTextFieldContTelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldContTelKeyPressed
 // TODO add your handling code here:
-         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableIncludeTextContragent(jTextFieldContTel.getText(),CONTARGENT_TEL);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_TEL,false);
-              repainContragentData(myParent.getID_Contragent());
+            repainContragentData(myParent.getID_Contragent());
             
         }
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableStartTextContragent(jTextFieldContTel.getText(),CONTARGENT_TEL);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_TEL,false);
-              repainContragentData(myParent.getID_Contragent());
+            repainContragentData(myParent.getID_Contragent());
         }
         
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableFinishTextContragent(jTextFieldContTel.getText(),CONTARGENT_TEL);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_TEL,false);
-              repainContragentData(myParent.getID_Contragent());
+            repainContragentData(myParent.getID_Contragent());
         }
     }//GEN-LAST:event_jTextFieldContTelKeyPressed
-
+    
     private void jTextFieldContrMOLKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldContrMOLKeyPressed
 // TODO add your handling code here:
-         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableIncludeTextContragent(jTextFieldContrMOL.getText(),CONTARGENT_MOL);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_MOL,false);
-              repainContragentData(myParent.getID_Contragent());
+            repainContragentData(myParent.getID_Contragent());
             
         }
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableStartTextContragent(jTextFieldContrMOL.getText(),CONTARGENT_MOL);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_MOL,false);
-              repainContragentData(myParent.getID_Contragent());
+            repainContragentData(myParent.getID_Contragent());
         }
         
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableFinishTextContragent(jTextFieldContrMOL.getText(),CONTARGENT_MOL);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_MOL,false);
-              repainContragentData(myParent.getID_Contragent());
+            repainContragentData(myParent.getID_Contragent());
         }
     }//GEN-LAST:event_jTextFieldContrMOLKeyPressed
-
+    
     private void jTextFieldAddressKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldAddressKeyPressed
 // TODO add your handling code here:
-         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableIncludeTextContragent(jTextFieldAddress.getText(),CONTARGENT_ADDRESS);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_ADDRESS,false);
-              repainContragentData(myParent.getID_Contragent());
+            repainContragentData(myParent.getID_Contragent());
             
         }
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableStartTextContragent(jTextFieldAddress.getText(),CONTARGENT_ADDRESS);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_ADDRESS,false);
-              repainContragentData(myParent.getID_Contragent());
+            repainContragentData(myParent.getID_Contragent());
         }
         
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableFinishTextContragent(jTextFieldAddress.getText(),CONTARGENT_ADDRESS);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_ADDRESS,false);
-              repainContragentData(myParent.getID_Contragent());
+            repainContragentData(myParent.getID_Contragent());
         }
     }//GEN-LAST:event_jTextFieldAddressKeyPressed
-
+    
     private void jTextFieldContrNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldContrNameKeyPressed
 // TODO add your handling code here:
-         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableIncludeTextContragent(jTextFieldContrName.getText(),CONTARGENT_NAME);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_NAME,false);
-              repainContragentData(myParent.getID_Contragent());
+            repainContragentData(myParent.getID_Contragent());
             
         }
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableStartTextContragent(jTextFieldContrName.getText(),CONTARGENT_NAME);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_NAME,false);
-              repainContragentData(myParent.getID_Contragent());
+            repainContragentData(myParent.getID_Contragent());
         }
         
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableFinishTextContragent(jTextFieldContrName.getText(),CONTARGENT_NAME);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_NAME,false);
-              repainContragentData(myParent.getID_Contragent());
+            repainContragentData(myParent.getID_Contragent());
         }
     }//GEN-LAST:event_jTextFieldContrNameKeyPressed
-
+    
     private void jTextFieldDanNomerKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDanNomerKeyPressed
 // TODO add your handling code here:
-         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableIncludeTextContragent(jTextFieldDanNomer.getText(),CONTARGENT_DAN_NO);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_DAN_NO,false);
-              repainContragentData(myParent.getID_Contragent());
+            repainContragentData(myParent.getID_Contragent());
             
         }
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableStartTextContragent(jTextFieldDanNomer.getText(),CONTARGENT_DAN_NO);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_DAN_NO,false);
-              repainContragentData(myParent.getID_Contragent());
+            repainContragentData(myParent.getID_Contragent());
         }
         
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableFinishTextContragent(jTextFieldDanNomer.getText(),CONTARGENT_DAN_NO);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_DAN_NO,false);
-              repainContragentData(myParent.getID_Contragent());
+            repainContragentData(myParent.getID_Contragent());
         }
     }//GEN-LAST:event_jTextFieldDanNomerKeyPressed
-
+    
     private void jTextFieldBulstatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBulstatKeyPressed
 // TODO add your handling code here:
-         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableIncludeTextContragent(jTextFieldBulstat.getText(),CONTARGENT_BULSTAT);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_BULSTAT,false);
-              repainContragentData(myParent.getID_Contragent());
+            repainContragentData(myParent.getID_Contragent());
             
         }
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableStartTextContragent(jTextFieldBulstat.getText(),CONTARGENT_BULSTAT);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_BULSTAT,false);
-              repainContragentData(myParent.getID_Contragent());
+            repainContragentData(myParent.getID_Contragent());
         }
         
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableFinishTextContragent(jTextFieldBulstat.getText(),CONTARGENT_BULSTAT);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_BULSTAT,false);
-              repainContragentData(myParent.getID_Contragent());
+            repainContragentData(myParent.getID_Contragent());
         }
     }//GEN-LAST:event_jTextFieldBulstatKeyPressed
-
+    
     private void jTextFieldConNomKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldConNomKeyPressed
 // TODO add your handling code here:
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableIncludeTextContragent(jTextFieldConNom.getText(),CONTARGENT_NO);
             Connection conn1 = myParent.getCountriesT().getConn();
-           
+            
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_NO,false);
             
             repainContragentData(myParent.getID_Contragent());
             
         }
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableStartTextContragent(jTextFieldConNom.getText(),CONTARGENT_NO);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_NO,false);
-              repainContragentData(myParent.getID_Contragent());
+            repainContragentData(myParent.getID_Contragent());
         }
         
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9)
-        {
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableFinishTextContragent(jTextFieldConNom.getText(),CONTARGENT_NO);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_NO,false);
             repainContragentData(myParent.getID_Contragent());
         }
     }//GEN-LAST:event_jTextFieldConNomKeyPressed
-
+    
     private void jButtonUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUndoActionPerformed
 // UNDO ACTION
-    
-jTable1.setValueAt(2222,0,0);        
-     //   repaintComp();
-       // jButtonUndo.setEnabled(false);
+        
+        jTable1.setValueAt(2222,0,0);
+        //   repaintComp();
+        // jButtonUndo.setEnabled(false);
     }//GEN-LAST:event_jButtonUndoActionPerformed
-
+    
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
 // TODO add your handling code here:
         
@@ -1237,68 +1200,66 @@ jTable1.setValueAt(2222,0,0);
         
         
     }//GEN-LAST:event_jButtonSaveActionPerformed
-
+    
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
 // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButtonCloseActionPerformed
-
+    
     private void jButtonOneRowPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowPActionPerformed
 // TODO add your handling code here:
-       myParent.mOneRowPlus();
-        if(myParent.isAtEnd())
-        {
-         jButtonToEnd.setEnabled(false);
-         jButtonOneRowP.setEnabled(false);
-         jButtonToEnd.repaint();
-         jButtonOneRowP.repaint();
-           
+        myParent.mOneRowPlus();
+        if(myParent.isAtEnd()) {
+            jButtonToEnd.setEnabled(false);
+            jButtonOneRowP.setEnabled(false);
+            jButtonToEnd.repaint();
+            jButtonOneRowP.repaint();
+            
         }
-         
+        
         jButtonToBegin.setEnabled(true);
         jButtonOneRowM.setEnabled(true);
         jButtonToBegin.repaint();
         jButtonOneRowM.repaint();
-        repaintComp();  
+        repaintComp();
     }//GEN-LAST:event_jButtonOneRowPActionPerformed
-
+    
     private void jButtonToEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToEndActionPerformed
 // TODO add your handling code here:  OK
-         myParent.mTableEnd();
-         jButtonToEnd.setEnabled(false);
-         jButtonOneRowP.setEnabled(false);
-         jButtonToEnd.repaint();
-         jButtonOneRowP.repaint();
+        myParent.mTableEnd();
+        jButtonToEnd.setEnabled(false);
+        jButtonOneRowP.setEnabled(false);
+        jButtonToEnd.repaint();
+        jButtonOneRowP.repaint();
         
-         
+        
         jButtonToBegin.setEnabled(true);
         jButtonOneRowM.setEnabled(true);
         jButtonToBegin.repaint();
         jButtonOneRowM.repaint();
-      
-       
+        
+        
         repaintComp();
     }//GEN-LAST:event_jButtonToEndActionPerformed
-
+    
     private void jButtonOneRowMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowMActionPerformed
 // TODO add your handling code here:
-         myParent.mOneRowMinus();
-        if(myParent.isAtBegining())
-        {
-           jButtonToBegin.setEnabled(false);
-        jButtonOneRowM.setEnabled(false);
-        jButtonToBegin.repaint();
-        jButtonOneRowM.repaint();
+        myParent.mOneRowMinus();
+        if(myParent.isAtBegining()) {
+            jButtonToBegin.setEnabled(false);
+            jButtonOneRowM.setEnabled(false);
+            jButtonToBegin.repaint();
+            jButtonOneRowM.repaint();
             
         }
         jButtonToEnd.setEnabled(true);
-         jButtonOneRowP.setEnabled(true);
-         jButtonToEnd.repaint();
-         jButtonOneRowP.repaint();
+        jButtonOneRowP.setEnabled(true);
+        jButtonToEnd.repaint();
+        jButtonOneRowP.repaint();
         repaintComp();
         
     }//GEN-LAST:event_jButtonOneRowMActionPerformed
-
+    
     private void jButtonToBeginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToBeginActionPerformed
 // TODO add your handling code here:
         myParent.mTableBegining();
@@ -1309,10 +1270,10 @@ jTable1.setValueAt(2222,0,0);
         jButtonOneRowM.repaint();
         
         jButtonToEnd.setEnabled(true);
-         jButtonOneRowP.setEnabled(true);
-         jButtonToEnd.repaint();
-         jButtonOneRowP.repaint();
-       
+        jButtonOneRowP.setEnabled(true);
+        jButtonToEnd.repaint();
+        jButtonOneRowP.repaint();
+        
         repaintComp();
         
     }//GEN-LAST:event_jButtonToBeginActionPerformed
@@ -1323,7 +1284,7 @@ jTable1.setValueAt(2222,0,0);
    /* public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               
+    
                 new aeDocumentFacade(new JFrame(),true,true,1,1,1,1).setVisible(true);
             }
         });
@@ -1415,7 +1376,7 @@ jTable1.setValueAt(2222,0,0);
     private javax.swing.JTextField jTextFieldUserLastEdit;
     private javax.swing.JTextField jTextFieldZadylveniq;
     // End of variables declaration//GEN-END:variables
- //--------------- My Variables
+    //--------------- My Variables
 // input parametrs
     private int userDocFacade=0;
     private int levelDocFacade = 0;
@@ -1427,425 +1388,389 @@ jTable1.setValueAt(2222,0,0);
     private int rowSelect = 0;
 //------------------------------------
 // internal parametrs
-   private int docNumberLast =0;                  // nomer na documenta 
-   private Date nowDate = null;                   // teku6ta data
-   private FrmDocumentFacade myParent; 
-  private selectDataOfDocFacade dialogSelectData = null;  
-  private String str=new String();
-  private JTable jTable1 = new JTable();
+    private int docNumberLast =0;                  // nomer na documenta
+    private Date nowDate = null;                   // teku6ta data
+    private FrmDocumentFacade myParent;
+    private selectDataOfDocFacade dialogSelectData = null;
+    private String str=new String();
+    private JTable jTable1 = new JTable();
 //----------------------------------------
-   
     
-   
-   
- //---------------END My Variables
-//---------------START MyFunction 
- 
-private void getNavigatiionState() // ??
-    {
-    if(myParent.isAtBegining())
-    {
-        jButtonToBegin.setEnabled(false);
-        jButtonOneRowM.setEnabled(false);
-        jButtonToBegin.repaint();
-        jButtonOneRowM.repaint();
-    }
-    if(myParent.isAtEnd())
-    {
-        jButtonToEnd.setEnabled(false);
-        jButtonOneRowP.setEnabled(false);
-         jButtonToEnd.repaint();
-        jButtonOneRowP.repaint();
-    }
-     
-}
-private void repaintComp() // ?? 
-{
-    if(isNew)
-    {
-        
-        String strDate = new String();
-        strDate = String.valueOf(nowDate.getDate());
-        strDate += "/" + String.valueOf(nowDate.getMonth());
-        strDate += "/" + String.valueOf(nowDate.getYear()+1900);
-        jTextFieldDateDoc.setText(strDate);
-        
-        jTextFieldNomerDoc.setText(String.valueOf(docNumberLast+1));
-        
-    }
-    else
-    {
-         repainObektData(myParent.getID_Obekt());
-         repainContragentData(myParent.getID_Obekt());
-         repainUserEdit(myParent.getUserDocFacade());
-    }
     
-}
-
-private void repainContragentData(int idcontragent)
-{
-    String contragentdata[] = new String[7];
-    if(idcontragent!=0)
-    {
-       contragentdata = myParent.getCountriesT().getContragentDataByID(idcontragent) ;
-       
-       jTextFieldConNom.setText(contragentdata[0]);
-       jTextFieldBulstat.setText(contragentdata[1]);
-       jTextFieldDanNomer.setText(contragentdata[2]);
-       jTextFieldContrName.setText(contragentdata[3]);
-       jTextFieldAddress.setText(contragentdata[4]);
-       jTextFieldContrMOL.setText(contragentdata[5]);
-       jTextFieldContTel.setText(contragentdata[6]);
-          
-    }
     
-}
-
-private void repainObektData(int idobekt)
-{
-    String obektdata[] = new String[4];
-    if(idobekt !=0)
+    
+    //---------------END My Variables
+//---------------START MyFunction
+    
+    private void getNavigatiionState() // ??
     {
-        obektdata =  myParent.getCountriesT().getObektDataByID(idobekt);
-        
-        jTextFieldObektNo.setText(obektdata[0]);
-        jTextFieldObektName.setText(obektdata[1]);
-        jTextFieldObektAddress.setText(obektdata[2]);
-        jTextFieldObektTel.setText(obektdata[3]);        
+        if(myParent.isAtBegining()) {
+            jButtonToBegin.setEnabled(false);
+            jButtonOneRowM.setEnabled(false);
+            jButtonToBegin.repaint();
+            jButtonOneRowM.repaint();
+        }
+        if(myParent.isAtEnd()) {
+            jButtonToEnd.setEnabled(false);
+            jButtonOneRowP.setEnabled(false);
+            jButtonToEnd.repaint();
+            jButtonOneRowP.repaint();
+        }
         
     }
-    
-}
-private void repainUserEdit(int iduser)
-{
-    if(iduser !=0 )
+    private void repaintComp() // ??
     {
-        String userData[] = myParent.getCountriesT().getUserDataByID(iduser);
-     jTextFieldUserEdit.setText(userData[1]);
-    }
-    else
-    {
-     String userData[] = myParent.getCountriesT().getUserDataByID(myParent.getUserEditFortm());
-     jTextFieldUserEdit.setText(userData[1]);
-    }       
-}
-private String changeColumnName(int column, String newname, JTable tbl)
-{
-    String oldName;
-    TableColumn tableColumn = tbl.getColumnModel().getColumn(column);
-    oldName  = (String)tableColumn.getHeaderValue();
-    tableColumn.setHeaderValue(newname);
-    tbl.getTableHeader().repaint();
-    return oldName;
-}
-private void setInputLisener()
-{
- 
-jTable1.addKeyListener(new KeyListener() {
-    public void keyPressed(KeyEvent e)
-    {
-       
-      if(e.getKeyCode()>=48 && e.getKeyCode()<=57) str += e.getKeyChar(); 
-       columnSelect = jTable1.getSelectedColumn();
-        rowSelect = jTable1.getSelectedRow();
-        if(e.getKeyCode()== KeyEvent.VK_ENTER)
-        {
-            System.out.print("jTable1.getSelectedRow: ");
-            System.out.println(jTable1.getSelectedRow());
-            System.out.print("jTable1.getSelectedColumn: ");
-            System.out.println(jTable1.getSelectedColumn());
-            if(columnSelect==-1)
-            {
-                System.out.println("xfgdfgdfggsdfgsdfgsdfgsdgsdfgsdfgsdg");
-            }
+        if(isNew) {
             
-             if(columnSelect == 0)
-                {
-                    // popylvat se drugite stoinosti na tdoc line
-                    isFinishRow = false;
-                              
-                  
-                  
-                    ((docLineTableModel) jTable1.getModel()).enableCellEditable(3);
-                    
-                    
-                   
-                    
+            String strDate = new String();
+            strDate = String.valueOf(nowDate.getDate());
+            strDate += "/" + String.valueOf(nowDate.getMonth());
+            strDate += "/" + String.valueOf(nowDate.getYear()+1900);
+            jTextFieldDateDoc.setText(strDate);
+            
+            jTextFieldNomerDoc.setText(String.valueOf(docNumberLast+1));
+            
+        } else {
+            repainObektData(myParent.getID_Obekt());
+            repainContragentData(myParent.getID_Obekt());
+            repainUserEdit(myParent.getUserDocFacade());
+        }
+        
+    }
+    
+    private void repainContragentData(int idcontragent) {
+        String contragentdata[] = new String[7];
+        if(idcontragent!=0) {
+            contragentdata = myParent.getCountriesT().getContragentDataByID(idcontragent) ;
+            
+            jTextFieldConNom.setText(contragentdata[0]);
+            jTextFieldBulstat.setText(contragentdata[1]);
+            jTextFieldDanNomer.setText(contragentdata[2]);
+            jTextFieldContrName.setText(contragentdata[3]);
+            jTextFieldAddress.setText(contragentdata[4]);
+            jTextFieldContrMOL.setText(contragentdata[5]);
+            jTextFieldContTel.setText(contragentdata[6]);
+            
+        }
+        
+    }
+    
+    private void repainObektData(int idobekt) {
+        String obektdata[] = new String[4];
+        if(idobekt !=0) {
+            obektdata =  myParent.getCountriesT().getObektDataByID(idobekt);
+            
+            jTextFieldObektNo.setText(obektdata[0]);
+            jTextFieldObektName.setText(obektdata[1]);
+            jTextFieldObektAddress.setText(obektdata[2]);
+            jTextFieldObektTel.setText(obektdata[3]);
+            
+        }
+        
+    }
+    private void repainUserEdit(int iduser) {
+        if(iduser !=0 ) {
+            String userData[] = myParent.getCountriesT().getUserDataByID(iduser);
+            jTextFieldUserEdit.setText(userData[1]);
+        } else {
+            String userData[] = myParent.getCountriesT().getUserDataByID(myParent.getUserEditFortm());
+            jTextFieldUserEdit.setText(userData[1]);
+        }
+    }
+    private String changeColumnName(int column, String newname, JTable tbl) {
+        String oldName;
+        TableColumn tableColumn = tbl.getColumnModel().getColumn(column);
+        oldName  = (String)tableColumn.getHeaderValue();
+        tableColumn.setHeaderValue(newname);
+        tbl.getTableHeader().repaint();
+        return oldName;
+    }
+    private void setInputLisener() {
+        
+        jTable1.addKeyListener(new KeyListener() {
+            public void keyPressed(KeyEvent e) {
                 
-                  
-                   jTable1.editCellAt(jTable1.getSelectedRow(),2); 
+                if(e.getKeyCode()>=48 && e.getKeyCode()<=57) str += e.getKeyChar();
+                columnSelect = jTable1.getSelectedColumn();
+                rowSelect = jTable1.getSelectedRow();
+                if(e.getKeyCode()== KeyEvent.VK_ENTER) {
+                    System.out.print("jTable1.getSelectedRow: ");
+                    System.out.println(jTable1.getSelectedRow());
+                    System.out.print("jTable1.getSelectedColumn: ");
+                    System.out.println(jTable1.getSelectedColumn());
+                    if(columnSelect==-1) {
+                        System.out.println("xfgdfgdfggsdfgsdfgsdfgsdgsdfgsdfgsdg");
+                    }
+                    
+                    if(columnSelect == 0) {
+                        // popylvat se drugite stoinosti na tdoc line
+                        isFinishRow = false;
+                        
+                        
+                        
+                        ((docLineTableModel) jTable1.getModel()).enableCellEditable(3);
+                        
+                        
+                        
+                        
+                        
+                        
+                        jTable1.editCellAt(jTable1.getSelectedRow(),2);
+                    }
+                    
+                    if(columnSelect == 3)  // osnovna razfasovka
+                    {
+                        
+                        
+                        
+                        ((docLineTableModel) jTable1.getModel()).enableCellEditable(4);
+                    }
+                    if(columnSelect == 4)  // otiva na  razfasovka  1
+                    {
+                        // da se dobavi za  iz4islenie na osnovna razfasowka i razfasowka 1
+                        
+                        ((docLineTableModel) jTable1.getModel()).enableCellEditable(5);
+                        
+                        
+                    }
+                    if(columnSelect == 5)  // otiva na  razfasovka  2
+                    {
+                        // da se dobavi za  iz4islenie na osnovna razfasowka i razfasowka 1
+                        
+                        ((docLineTableModel) jTable1.getModel()).enableCellEditable(6);
+                        
+                    }
+                    
+                    if(columnSelect == 6)  // ed cena
+                    {
+                        // da se dobavi za  iz4islenie na procenta i na ob6tata suma
+                        
+                        ((docLineTableModel) jTable1.getModel()).enableCellEditable(7);
+                        
+                        
+                    }
+                    if(columnSelect == 7)  //
+                    {
+                        
+                        ((docLineTableModel) jTable1.getModel()).enableCellEditable(8);
+                        
+                        
+                        //  myParent.setNameProduct((String)jTable1.getValueAt(jTable1.getSelectedRow(),0));
+                        
+                        //   myParent.setPriceOneProduct((Double)jTable1.getValueAt(jTable1.getSelectedRow(),7));
+                        //    myParent.setDDSProduct((Double)jTable1.getValueAt(jTable1.getSelectedRow(),9));
+                        //    myParent.setProcentProduct((Double)jTable1.getValueAt(jTable1.getSelectedRow(),8));
+                        //     myParent.setBrojProduct((Double)jTable1.getValueAt(jTable1.getSelectedRow(),4));
+                        
+                        
+                        // zapis v bazata za doc line------------------------ !!!!!!!!!!
+                        
+                        
+                        
+                        //  ((MyTableModel)jTable1.getModel()).addRow(new Object [][] {null, null, null, null, null, null, null, null, null, null, null});
+                        
+                        
+                        
+                        
+                        
+                        
+                    }
+                    if(columnSelect == 8)  //
+                    {
+                        ((docLineTableModel) jTable1.getModel()).enableCellEditable(9);
+                    }
+                    if(columnSelect == 9)  //
+                    {
+                        if( !isFinishRow) {
+                            ((docLineTableModel)jTable1.getModel()).addRow(new docLineArray());
+                        }
+                        
+                        isFinishRow = true;
+                        ((docLineTableModel)jTable1.getModel()).setDefaultCellEditable();
+                        
+                    }
                 }
-       
-            if(columnSelect == 3)  // osnovna razfasovka
-            {
                 
-               
-              
-              ((docLineTableModel) jTable1.getModel()).enableCellEditable(4);
+                
+                
+                if(e.getKeyCode()==KeyEvent.VK_F7) {
+                    System.out.println("----------------<1>-------------------");
+                    System.out.print("jTable1.getSelectedRow: ");
+                    System.out.println(jTable1.getSelectedRow());
+                    System.out.print("jTable1.getSelectedColumn: ");
+                    System.out.println(jTable1.getSelectedColumn());
+                    System.out.println("----------------<1>------------------");
+                    java.sql.ResultSet rs1 = myParent.getCountriesT().getTableProductInfo(str,0);
+                    Connection conn1 = myParent.getCountriesT().getConn();
+                    System.out.println(str);
+                    showProductDocLine dialog = new showProductDocLine(myParent,true,rs1,conn1);
+                    dialog.setVisible(true);
+                    str = "";
+                    System.out.println(myParent.getCodeProduct());
+                    
+                    ((docLineTableModel) jTable1.getModel()).enableCellEditable(3);
+                    jTable1.setEditingColumn(3);
+                    jTable1.setEditingRow(jTable1.getSelectedRow());
+                    System.out.println("----------------<2>-------------------");
+                    System.out.print("jTable1.getSelectedRow: ");
+                    System.out.println(jTable1.getSelectedRow());
+                    System.out.print("jTable1.getSelectedColumn: ");
+                    System.out.println(jTable1.getSelectedColumn());
+                    System.out.println("----------------<2>------------------");
+                    
+                    jTable1.setValueAt(myParent.getCodeProduct(),jTable1.getSelectedRow(),0);
+                    
+                    KeyEvent ev = new KeyEvent(jTable1,KeyEvent.KEY_PRESSED,0,0,KeyEvent.VK_ENTER);
+                    jTable1.dispatchEvent(ev);
+                    System.out.println("----------------<3>-------------------");
+                    System.out.print("jTable1.getSelectedRow: ");
+                    System.out.println(jTable1.getSelectedRow());
+                    System.out.print("jTable1.getSelectedColumn: ");
+                    System.out.println(jTable1.getSelectedColumn());
+                    System.out.println("----------------<3>------------------");
+                    
+                }
             }
-            if(columnSelect == 4)  // otiva na  razfasovka  1
-            {
-                // da se dobavi za  iz4islenie na osnovna razfasowka i razfasowka 1
-            
-             ((docLineTableModel) jTable1.getModel()).enableCellEditable(5);  
-              
-                       
+            public void keyReleased(KeyEvent e) {
+                
+                
+                
+                
+                
             }
-            if(columnSelect == 5)  // otiva na  razfasovka  2
-            {
-                // da se dobavi za  iz4islenie na osnovna razfasowka i razfasowka 1
-               
-                ((docLineTableModel) jTable1.getModel()).enableCellEditable(6); 
-               
+            public void keyTyped(KeyEvent e) {
+                
             }
-            
-            if(columnSelect == 6)  // ed cena
-            {
-                // da se dobavi za  iz4islenie na procenta i na ob6tata suma
-                
-               ((docLineTableModel) jTable1.getModel()).enableCellEditable(7);
-           
-                 
-            }
-            if(columnSelect == 7)  // 
-            {
-                
-                ((docLineTableModel) jTable1.getModel()).enableCellEditable(8);
-                
-               
-              //  myParent.setNameProduct((String)jTable1.getValueAt(jTable1.getSelectedRow(),0));
-                
-             //   myParent.setPriceOneProduct((Double)jTable1.getValueAt(jTable1.getSelectedRow(),7));
-            //    myParent.setDDSProduct((Double)jTable1.getValueAt(jTable1.getSelectedRow(),9));
-            //    myParent.setProcentProduct((Double)jTable1.getValueAt(jTable1.getSelectedRow(),8));
-           //     myParent.setBrojProduct((Double)jTable1.getValueAt(jTable1.getSelectedRow(),4));
-                
-                
-                // zapis v bazata za doc line------------------------ !!!!!!!!!!
-               
-              
-                
-             //  ((MyTableModel)jTable1.getModel()).addRow(new Object [][] {null, null, null, null, null, null, null, null, null, null, null});
-             
-             
-                
-               
-                
-              
-            }
-            if(columnSelect == 8)  // 
-            {
-                 ((docLineTableModel) jTable1.getModel()).enableCellEditable(9);
-            }
-            if(columnSelect == 9)  // 
-            {
-             if( !isFinishRow) 
-               {
-                ((docLineTableModel)jTable1.getModel()).addRow(new docLineArray());
-               }
-                
-               isFinishRow = true;
-                ((docLineTableModel)jTable1.getModel()).setDefaultCellEditable();
-              
-            }
-    }
+        });
         
-        
-        
-    if(e.getKeyCode()==KeyEvent.VK_F7)
-    {
-          System.out.println("----------------<1>-------------------"); 
-          System.out.print("jTable1.getSelectedRow: ");
-          System.out.println(jTable1.getSelectedRow());
-          System.out.print("jTable1.getSelectedColumn: ");
-          System.out.println(jTable1.getSelectedColumn());
-          System.out.println("----------------<1>------------------"); 
-           str = str.substring(0,str.length()-1);
-           java.sql.ResultSet rs1 = myParent.getCountriesT().getTableProductInfo(str,0);
-           Connection conn1 = myParent.getCountriesT().getConn();
-           System.out.println(str);
-           showProductDocLine dialog = new showProductDocLine(myParent,true,rs1,conn1);
-           dialog.setVisible(true);
-           str = "";
-           System.out.println(myParent.getCodeProduct());
-          
-          ((docLineTableModel) jTable1.getModel()).enableCellEditable(3);  
-          jTable1.setEditingColumn(3);
-          jTable1.setEditingRow(jTable1.getSelectedRow());
-          System.out.println("----------------<2>-------------------"); 
-          System.out.print("jTable1.getSelectedRow: ");
-          System.out.println(jTable1.getSelectedRow());
-          System.out.print("jTable1.getSelectedColumn: ");
-          System.out.println(jTable1.getSelectedColumn());
-          System.out.println("----------------<2>------------------"); 
-          
-          jTable1.setValueAt(myParent.getCodeProduct(),jTable1.getSelectedRow(),0);
-          
-         KeyEvent ev = new KeyEvent(jTable1,KeyEvent.KEY_PRESSED,0,0,KeyEvent.VK_ENTER);
-          jTable1.dispatchEvent(ev);
-          System.out.println("----------------<3>-------------------"); 
-          System.out.print("jTable1.getSelectedRow: ");
-          System.out.println(jTable1.getSelectedRow());
-          System.out.print("jTable1.getSelectedColumn: ");
-          System.out.println(jTable1.getSelectedColumn());
-          System.out.println("----------------<3>------------------"); 
-         
     }
-    }
-    public void keyReleased(KeyEvent e)
-    {
-       
-         
-       
-        
-       
-    }
-    public void keyTyped(KeyEvent e)
-    {
-       
-    }
-});
- 
-}
-
+    
 }// end class
 
 
-class MyTableModel extends javax.swing.table.DefaultTableModel
-{
-    public MyTableModel()
-    {
-       super(new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Номер продукт", "Име на продукт", "Номер склад", "Ценова листа", "Р-ка основна", "Разфасовка 1", "Разфасовка 2", "Ед. цена", "Процент отстъпка", "ДДС", "Общо линия"
-            }
+class MyTableModel extends javax.swing.table.DefaultTableModel {
+    public MyTableModel() {
+        super(new Object [][] {
+            {null, null, null, null, null, null, null, null, null, null, null}
+        },
+                new String [] {
+            "Номер продукт", "Име на продукт", "Номер склад", "Ценова листа", "Р-ка основна", "Разфасовка 1", "Разфасовка 2", "Ед. цена", "Процент отстъпка", "ДДС", "Общо линия"
+        }
         );
-       
+        
     };
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
-            };
-            boolean[] canEdit = new boolean [] {
-                true, false, false, false, false, false, false, false, false, false, false
-            };
-             
-           
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
+    Class[] types = new Class [] {
+        java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
+    };
+    boolean[] canEdit = new boolean [] {
+        true, false, false, false, false, false, false, false, false, false, false
+    };
+    
+    
+    public Class getColumnClass(int columnIndex) {
+        return types [columnIndex];
+    }
+    
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        return canEdit [columnIndex];
+    }
+    public void enableCellEditable(int columnIndex) {
+        canEdit [columnIndex] = true;
+    }
+    public void disableCellEditable(int columnIndex) {
+        canEdit [columnIndex] = false;
+    }
+    public void setDefaultCellEditable() {
+        boolean canEdit1[] = new boolean [] {
+            true, false, false, false, false, false, false, false, false, false, false};
+        canEdit = canEdit1;
+        
+    }
+};
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-            public void enableCellEditable(int columnIndex)
-            {
-                 canEdit [columnIndex] = true;
-            }
-            public void disableCellEditable(int columnIndex)
-            {
-              canEdit [columnIndex] = false;
-            }
-           public void setDefaultCellEditable()
-           {
-              boolean canEdit1[] = new boolean [] {
-                true, false, false, false, false, false, false, false, false, false, false};
-              canEdit = canEdit1;
-                        
-           }
-  };
-  
-class MyCellEditorListener implements CellEditorListener
-{
+class MyCellEditorListener implements CellEditorListener {
     private int columnSelect;
     private JTable ttable;
     private boolean isFinishRow;
-    public MyCellEditorListener(JTable t)
-    {
+    public MyCellEditorListener(JTable t) {
         super();
         ttable = t;
     }
-     public void editingCanceled(ChangeEvent e)
-        {
-              System.out.println("columnSelect: " + String.valueOf(columnSelect));
-        }
-        public void editingStopped(ChangeEvent e) 
-        {
-            columnSelect = ttable.getSelectedColumn();
-            System.out.println("columnSelect: " + String.valueOf(columnSelect));
-                if(columnSelect == 0)
-                {
-                    // popylvat se drugite stoinosti na tdoc line
-                    isFinishRow = false;
-                 
-                    ((MyTableModel) ttable.getModel()).enableCellEditable(3);
-                    ((MyTableModel) ttable.getModel()).enableCellEditable(4);
-                 //   ((MyTableModel) ttable.getModel()).enableCellEditable(5);
-                 //   ((MyTableModel) ttable.getModel()).enableCellEditable(6);
-                //    ((MyTableModel) ttable.getModel()).enableCellEditable(7);
-                //    ((MyTableModel) ttable.getModel()).enableCellEditable(8);
-                  
-                 ttable.editCellAt(ttable.getSelectedRow(),3)   ; // otiva na cenova lista
-                }
-            if(columnSelect == 3)
-            {
-                // za iz4islenie na razfasovka 1 i razfasovka 2
-                ((MyTableModel) ttable.getModel()).enableCellEditable(4);
-                ttable.editCellAt(ttable.getSelectedRow(),4)   ; // otiva na koli4estwo - osnovna razfasovka
-               
-                
-            }
-            if(columnSelect == 4)  // osnovna razfasovka
-            {
-                // da se dobavi za  iz4islenie na osnovna razfasowka i razfasowka 2
-               ((MyTableModel) ttable.getModel()).enableCellEditable(5);
-               ttable.editCellAt(ttable.getSelectedRow(),5)   ; // otiva na  razfasovka  1
-            }
-            if(columnSelect == 5)  // otiva na  razfasovka  1
-            {
-                // da se dobavi za  iz4islenie na osnovna razfasowka i razfasowka 1
-               ((MyTableModel) ttable.getModel()).enableCellEditable(6);
-               ttable.editCellAt(ttable.getSelectedRow(),6)   ; // otiva na  razfasovka  2
-                 
-            }
-            if(columnSelect == 6)  // otiva na  razfasovka  2
-            {
-                // da se dobavi za  iz4islenie na osnovna razfasowka i razfasowka 1
-                 ((MyTableModel) ttable.getModel()).enableCellEditable(7);
-                 ((MyTableModel) ttable.getModel()).enableCellEditable(8);
-                ttable.editCellAt(ttable.getSelectedRow(),7)   ; // otiva na  razfasovka  2
-                 
-            }
+    public void editingCanceled(ChangeEvent e) {
+        System.out.println("columnSelect: " + String.valueOf(columnSelect));
+    }
+    public void editingStopped(ChangeEvent e) {
+        columnSelect = ttable.getSelectedColumn();
+        System.out.println("columnSelect: " + String.valueOf(columnSelect));
+        if(columnSelect == 0) {
+            // popylvat se drugite stoinosti na tdoc line
+            isFinishRow = false;
             
-            if(columnSelect == 7)  // ed cena
-            {
-                // da se dobavi za  iz4islenie na procenta i na ob6tata suma
-                
-                ttable.editCellAt(ttable.getSelectedRow(),8)   ; // otiva na  procent
-                 
-            }
-            if(columnSelect == 8)  // 
-            {
-                
-                
-                
-                ((MyTableModel) ttable.getModel()).setDefaultCellEditable();
-               
-                
-          
-                
-                
-                // zapis v bazata za doc line------------------------ !!!!!!!!!!
-               
-               if( !isFinishRow) 
-               {
-                ((MyTableModel)ttable.getModel()).addRow(new Object [][] {null, null, null, null, null, null, null, null, null, null, null});
-                 ttable.editCellAt(ttable.getSelectedRow()+1,0);
-               }
-                  isFinishRow = true;
-            }
+            ((MyTableModel) ttable.getModel()).enableCellEditable(3);
+            ((MyTableModel) ttable.getModel()).enableCellEditable(4);
+            //   ((MyTableModel) ttable.getModel()).enableCellEditable(5);
+            //   ((MyTableModel) ttable.getModel()).enableCellEditable(6);
+            //    ((MyTableModel) ttable.getModel()).enableCellEditable(7);
+            //    ((MyTableModel) ttable.getModel()).enableCellEditable(8);
+            
+            ttable.editCellAt(ttable.getSelectedRow(),3)   ; // otiva na cenova lista
         }
+        if(columnSelect == 3) {
+            // za iz4islenie na razfasovka 1 i razfasovka 2
+            ((MyTableModel) ttable.getModel()).enableCellEditable(4);
+            ttable.editCellAt(ttable.getSelectedRow(),4)   ; // otiva na koli4estwo - osnovna razfasovka
+            
+            
+        }
+        if(columnSelect == 4)  // osnovna razfasovka
+        {
+            // da se dobavi za  iz4islenie na osnovna razfasowka i razfasowka 2
+            ((MyTableModel) ttable.getModel()).enableCellEditable(5);
+            ttable.editCellAt(ttable.getSelectedRow(),5)   ; // otiva na  razfasovka  1
+        }
+        if(columnSelect == 5)  // otiva na  razfasovka  1
+        {
+            // da se dobavi za  iz4islenie na osnovna razfasowka i razfasowka 1
+            ((MyTableModel) ttable.getModel()).enableCellEditable(6);
+            ttable.editCellAt(ttable.getSelectedRow(),6)   ; // otiva na  razfasovka  2
+            
+        }
+        if(columnSelect == 6)  // otiva na  razfasovka  2
+        {
+            // da se dobavi za  iz4islenie na osnovna razfasowka i razfasowka 1
+            ((MyTableModel) ttable.getModel()).enableCellEditable(7);
+            ((MyTableModel) ttable.getModel()).enableCellEditable(8);
+            ttable.editCellAt(ttable.getSelectedRow(),7)   ; // otiva na  razfasovka  2
+            
+        }
+        
+        if(columnSelect == 7)  // ed cena
+        {
+            // da se dobavi za  iz4islenie na procenta i na ob6tata suma
+            
+            ttable.editCellAt(ttable.getSelectedRow(),8)   ; // otiva na  procent
+            
+        }
+        if(columnSelect == 8)  //
+        {
+            
+            
+            
+            ((MyTableModel) ttable.getModel()).setDefaultCellEditable();
+            
+            
+            
+            
+            
+            // zapis v bazata za doc line------------------------ !!!!!!!!!!
+            
+            if( !isFinishRow) {
+                ((MyTableModel)ttable.getModel()).addRow(new Object [][] {null, null, null, null, null, null, null, null, null, null, null});
+                ttable.editCellAt(ttable.getSelectedRow()+1,0);
+            }
+            isFinishRow = true;
+        }
+    }
     
     
 }
