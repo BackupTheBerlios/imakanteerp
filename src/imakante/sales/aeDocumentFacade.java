@@ -1493,7 +1493,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 if(e.getKeyCode()>=48 && e.getKeyCode()<=57) str += e.getKeyChar();
                 columnSelect = jTable1.getSelectedColumn();
                 rowSelect = jTable1.getSelectedRow();
-                if(e.getKeyCode()== KeyEvent.VK_ENTER) {
+if(e.getKeyCode()== KeyEvent.VK_ENTER) {
                     System.out.print("jTable1.getSelectedRow: ");
                     System.out.println(jTable1.getSelectedRow());
                     System.out.print("jTable1.getSelectedColumn: ");
@@ -1506,16 +1506,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                         // popylvat se drugite stoinosti na tdoc line
                         isFinishRow = false;
                         
-                        
-                        
                         ((docLineTableModel) jTable1.getModel()).enableCellEditable(3);
-                        
-                        
-                        
-                        
-                        
-                        
-                        jTable1.editCellAt(jTable1.getSelectedRow(),2);
+                      
                     }
                     
                     if(columnSelect == 3)  // osnovna razfasovka
@@ -1564,15 +1556,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                         
                         
                         // zapis v bazata za doc line------------------------ !!!!!!!!!!
-                        
-                        
-                        
-                        //  ((MyTableModel)jTable1.getModel()).addRow(new Object [][] {null, null, null, null, null, null, null, null, null, null, null});
-                        
-                        
-                        
-                        
-                        
+                     
                         
                     }
                     if(columnSelect == 8)  //
@@ -1582,24 +1566,17 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     if(columnSelect == 9)  //
                     {
                         if( !isFinishRow) {
-                            if(jTable1.getSelectedRow()==(jTable1.getRowCount() - 1)){
-                                int i = 0;
-                                i = jTable1.getSelectedRow();
-                                ((docLineTableModel)jTable1.getModel()).addRow(new docLineArray());
-                                jTable1.changeSelection(i,0,false,false);
-                                System.out.println();}
-                            if(jTable1.getSelectedRow()!=(jTable1.getRowCount() - 1)){
-                                //DO SOMETHIG
-                            }
-                            
+                            ((docLineTableModel)jTable1.getModel()).addRow(new docLineArray());
                         }
                         
                         isFinishRow = true;
                         ((docLineTableModel)jTable1.getModel()).setDefaultCellEditable();
-                        
+                        jTable1.changeSelection((rowSelect+1),-1,false,false);
+                    
+                    
+  
                     }
                 }
-                
                 
                 
                 if(e.getKeyCode()==KeyEvent.VK_F7) {
