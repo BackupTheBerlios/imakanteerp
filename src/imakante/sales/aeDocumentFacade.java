@@ -69,7 +69,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         im.put(enter, im.get(tab));
         KeyStroke right = KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0);
         im.put(right, "none");
-        
+        jTable1.setInputMap(0,im);
         getNavigatiionState();
         
         this.setResizable(false);
@@ -1582,7 +1582,16 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     if(columnSelect == 9)  //
                     {
                         if( !isFinishRow) {
-                            ((docLineTableModel)jTable1.getModel()).addRow(new docLineArray());
+                            if(jTable1.getSelectedRow()==(jTable1.getRowCount() - 1)){
+                                int i = 0;
+                                i = jTable1.getSelectedRow();
+                                ((docLineTableModel)jTable1.getModel()).addRow(new docLineArray());
+                                jTable1.changeSelection(i,0,false,false);
+                                System.out.println();}
+                            if(jTable1.getSelectedRow()!=(jTable1.getRowCount() - 1)){
+                                //DO SOMETHIG
+                            }
+                            
                         }
                         
                         isFinishRow = true;
@@ -1771,6 +1780,7 @@ class MyCellEditorListener implements CellEditorListener {
             isFinishRow = true;
         }
     }
+    
     
     
 }
