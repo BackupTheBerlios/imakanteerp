@@ -1,14 +1,15 @@
 ﻿DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `mida`.`ls_procedure_document_facade` $$
-CREATE PROCEDURE `mida`.`ls_procedure_document_facade` (IN comprator TINYINT,      IN in_id_df INT(11),                IN in_id_contragent_in INT(11),     IN in_id_contragent_out INT(11),IN in_id_obekt_out INT(11),
-                                              IN in_id_obekt_in INT(11),           IN in_id_distributor INT(11),       IN in_id_deliver INT(11),           IN in_descriptionPaying INT(3), IN in_docFacadeNumber INT(10),
-                                              IN in_docFacadeUser INT(11),         IN in_docFacadeUserLastEdit INT(11),IN in_id_facturaConnection INT(11), IN in_id_payingOrder INT(11),   IN in_id_zaqvkaConnection INT(11),
-                                              IN in_docFacadeLevel INT(11),        IN in_docFacadeStorage INT(11),     IN in_docFacadeType INT (3),        IN in_docFacadeAllDDS DOUBLE,   IN in_docFacadeTotal DOUBLE,
-                                              IN in_docFacadeCondition VARCHAR(11),IN in_docFacadeDate VARCHAR(10),    IN in_docFacadeComment VARCHAR(250),IN in_dateDeliver VARCHAR(10),  IN in_payingDate VARCHAR(10),
-                                              IN in_docFacadeFlagFinish INT (3) )
+CREATE PROCEDURE `ls_procedure_document_facade`(IN comprator TINYINT,                IN in_id_df INT(11),                IN in_id_contragent_in INT(11),     IN in_id_contragent_out INT(11),IN in_id_obekt_out INT(11),
+                                                IN in_id_obekt_in INT(11),           IN in_id_distributor INT(11),       IN in_id_deliver INT(11),           IN in_descriptionPaying INT(3), IN in_docFacadeNumber INT(10),
+                                                IN in_docFacadeUser INT(11),         IN in_docFacadeUserLastEdit INT(11),IN in_id_facturaConnection INT(11), IN in_id_payingOrder INT(11),   IN in_id_zaqvkaConnection INT(11),
+                                                IN in_docFacadeLevel INT(11),        IN in_docFacadeStorage INT(11),     IN in_docFacadeType INT (3),        IN in_docFacadeAllDDS DOUBLE,   IN in_docFacadeTotal DOUBLE,
+                                                IN in_docFacadeCondition VARCHAR(11),IN in_docFacadeDate VARCHAR(10),    IN in_docFacadeComment VARCHAR(250),IN in_dateDeliver VARCHAR(10),  IN in_payingDate VARCHAR(10),
+                                                IN in_docFacadeFlagFinish INT (3) )
 BEGIN
-     IF (comprator = 0) THEN
+
+IF (comprator = 0) THEN
         SELECT s.id_df,
          s.in_contragent_df,contr_in.code_contragent, contr_in.bul_n_contragent, contr_in.dan_n_contragent, contr_in.name_n_contragent,
          contr_in.address_n_contragent, p_contr_in.name_ls_n_person,
@@ -18,7 +19,7 @@ BEGIN
          s.out_obekt_df, obkt_out.name_n_obekt, obkt_out.address_n_obekt, obkt_out.code_n_obekt,
          s.type_df, s.number_df, s.condition_df, s.out_store_df,
          s.total_df, s.dds_df, s.user_df, s.user_last_df, s.date_edition_df, s.time_edition_df, s.distributor_df,p_dist.code_ls_n_person AS dist,
-         s.delivere_df,p_deliv.code_ls_n_person AS devliv,
+         s.delivere_df,p_deliv.code_ls_n_person AS deliv,
          s.faktura_connection_df, s.zaiavka_connection_df, s.description_pay_df, s.paying_order_df, s.date_deliver_df,
          s.date_pay_df, s.comments_df, s.fag_finish_df, s.id_rep, s.level_df, s.out_contragent_df
          FROM mida.sl_document_facade s
@@ -35,8 +36,9 @@ BEGIN
 
 
 
-     END IF;
-     IF (comprator = 1) THEN
+END IF;
+
+IF (comprator = 1) THEN
          INSERT INTO mida.sl_document_facade(in_contragent_df, out_obekt_df, in_obekt_df, number_df, type_df, condition_df,
          out_store_df, total_df, dds_df, user_df, user_last_df, date_edition_df, distributor_df, delivere_df,
          faktura_connection_df, zaiavka_connection_df, description_pay_df, paying_order_df, date_deliver_df, date_pay_df,
@@ -410,6 +412,55 @@ IF (comprator = 19) THEN
       WHERE n.id_n_obekt = in_docFacadeUser;
 END IF;
 
+IF (comprator = 20) THEN
+   IF (in_docFacadeType = 0) THEN
+     SELECT n.id_pm, n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
+     pc.id_pc,pc.parcel_pc, pc.dateofexpire_pc ,
+     s.id_nal, s.id_n_storage,s.level, s.quant_nal, s.quant_rezerv_nal,
+     st.id_n_storage, st.code_n_storage, st.name_n_storage, st.comments_n_storage
+     FROM mida.n_product_main n LEFT JOIN mida.n_product_consigment pc ON pc.id_pm = n.id_pm
+     LEFT JOIN mida.sl_nalichnosti s ON pc.id_pc = s.id_pc
+     LEFT JOIN mida.n_storage st ON st.id_n_storage = s.id_n_storage
+     WHERE n.code_pm LIKE CONCAT('%',in_docFacadeComment,'%');
+   END IF;
+   IF (in_docFacadeType = 1) THEN
+       SELECT n.id_pm, n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
+       pc.id_pc,pc.parcel_pc, pc.dateofexpire_pc ,
+       s.id_nal, s.id_n_storage,s.level, s.quant_nal, s.quant_rezerv_nal,
+       st.id_n_storage, st.code_n_storage, st.name_n_storage, st.comments_n_storage
+       FROM mida.n_product_main n LEFT JOIN mida.n_product_consigment pc ON pc.id_pm = n.id_pm
+       LEFT JOIN mida.sl_nalichnosti s ON pc.id_pc = s.id_pc
+       LEFT JOIN mida.n_storage st ON st.id_n_storage = s.id_n_storage
+       WHERE n.code_pm LIKE CONCAT(in_docFacadeComment,'%');
+   END IF;
+   IF (in_docFacadeType = 2) THEN
+       SELECT n.id_pm, n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
+       pc.id_pc,pc.parcel_pc, pc.dateofexpire_pc ,
+       s.id_nal, s.id_n_storage,s.level, s.quant_nal, s.quant_rezerv_nal,
+       st.id_n_storage, st.code_n_storage, st.name_n_storage, st.comments_n_storage
+       FROM mida.n_product_main n LEFT JOIN mida.n_product_consigment pc ON pc.id_pm = n.id_pm
+       LEFT JOIN mida.sl_nalichnosti s ON pc.id_pc = s.id_pc
+       LEFT JOIN mida.n_storage st ON st.id_n_storage = s.id_n_storage
+       WHERE n.code_pm LIKE CONCAT('%',in_docFacadeComment);
+   END IF;
+END IF;
+IF (comprator = 21) THEN
+   SELECT n.price1_pp, n.price2_pp, n.price3_pp, n.price0_pp FROM mida.n_product_price n
+   WHERE n.id_pp = in_id_obekt_in;
+END IF;
+
+IF (comprator = 22) THEN
+   SELECT n.id_pd, n.m1_pd, n.v1_pd, n.m2_pd, n.v2_pd, n.m3_pd, n.v3_pd FROM mida.n_product_description n
+   WHERE n.id_pd = in_id_obekt_in;
+END IF;
+IF (comprator = 23) THEN
+    SELECT n.dds_pf, n.excise_pf, n.other_pf FROM mida.n_product_fee n
+     WHERE id_pf = in_id_obekt_in;
+END IF;
+IF (comprator = 24) THEN
+    SELECT n.id_pam, n.name_pam, n.sname_pam
+    FROM mida.n_product_all_measure n WHERE id_pam = in_id_obekt_in;
+END IF;
 END $$
 
 DELIMITER ;
