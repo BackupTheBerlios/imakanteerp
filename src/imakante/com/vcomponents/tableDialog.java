@@ -29,13 +29,13 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
         });
     }
     public tableDialog(imakante.com.vcomponents.iInternalFrame frame, boolean modal, imakante.com.CustomTable table,
-            java.sql.Connection conn, java.util.HashMap hm, java.io.FileInputStream fs) {
+            java.sql.Connection conn, java.util.HashMap hm, String filejasper ) {
         super(frame, modal, table);
         this.myParent = (imakante.com.vcomponents.iInternalFrame) frame;
         this.InternalTable = table;
         this.conn = conn;
         this.hm = hm;
-        this.fs = fs;
+        this.fileJasper = filejasper;
         
         initComponents();
         InternalTable.addKeyListener(new KeyListener() {
@@ -92,7 +92,7 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if (fs == null){myParent.setIntTransfer((Integer)InternalTable.getValueAt(InternalTable.getSelectedRow(),getColumnIndex("cod")));
+        if (fileJasper == null){myParent.setIntTransfer((Integer)InternalTable.getValueAt(InternalTable.getSelectedRow(),getColumnIndex("cod")));
         close();} else{
             prepareJassper();
         }
@@ -112,7 +112,7 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
     private imakante.com.vcomponents.iInternalFrame myParent;
     
     private java.sql.Connection conn = null;
-    private java.io.FileInputStream fs = null;
+    private String fileJasper = null;
     private java.util.HashMap hm = null;
     
     private imakante.com.CustomTable InternalTable;
@@ -123,33 +123,21 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
     
     private void prepareJassper(){
         
-        try {
         
-            jasperReport = JasperCompileManager.compileReport("c:/imakante/src/imakante/sales/jasper/nal_simp_01.jRXML");
-        } catch (JRException ex) {
-            System.out.println("frmo compile");
-            ex.printStackTrace();
-            
-        }
         try {
-            jasperPrint = JasperFillManager.fillReport("c:/imakante/src/imakante/sales/jasper/nal_simp_01.jasper",
+            jasperPrint = JasperFillManager.fillReport(fileJasper,
                     hm, conn);
             jrv = new net.sf.jasperreports.view.JRViewer(jasperPrint);
             this.jPanel1.removeAll();
             this.jPanel1.add(jrv);
+            this.jPanel1.revalidate();
             this.jPanel1.repaint();
-            if(conn==null){
-            System.out.println("konektsia nula");
-            }
-        } 
-        catch (JRException ex) {
+           
+        } catch (JRException ex) {
             System.out.println("frmo fill");
             ex.printStackTrace();
         }
-            
-            
-       
-        
+      
     }
     
     private int getColumnIndex(String in) //test
