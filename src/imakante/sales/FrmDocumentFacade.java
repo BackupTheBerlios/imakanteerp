@@ -26,11 +26,12 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
        this.priceList = pricelist;
        this.docType = doctype;
        this.storageDocFacade= storagedocdacade;
-       
+        initComponents();
         prepareConn();     // zapazva connection
         constructGroupDB(); // inicializira class otgovarq6t za vryzkata s DB
-       initTable();
-        initComponents();
+        initTable();
+       
+       
         fr.addWindowListener(this);
     }
     
@@ -405,8 +406,11 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
     private String nameProduct;
     private int codeProduct;
     private int    storageOUTProduct;
-    private int   priceListProduct;
-    private double brojProduct;
+    private double[]   priceListProduct;
+    private String productDescription[][] ;
+    private double productFee[];
+    
+    private int brojProduct;
     private int razfasovka1Produkt;
     private int razfasovka2Produkt;
      private int razfasovka3Produkt;
@@ -888,19 +892,39 @@ public int getStorageOUTProduct()
 {
    return storageOUTProduct;
 }
-public void setPriceListProduct(int in)
+public void setWorkPriceListProduct(double[] in)
 {
    this.priceListProduct= in;
 }
-public int getPriceListProduct()
+public double[] getWorkPriceListProduct()
 {
    return priceListProduct;
 }
-public void setBrojProduct(double in)
+public void setProductDescription(String[][] in)
+{
+   this.productDescription= in;
+}
+public String[][] getProductDescription()
+{
+   return productDescription;
+}
+public void setProductFee(double[] in)
+{
+   this.productFee= in;
+}
+public double[] getProductFee()
+{
+   return productFee;
+}
+public int getPriceList()
+{
+   return priceList;
+}
+public void setBrojProduct(int in)
 {
    this.brojProduct= in;
 }
-public double getBrojProduct()
+public int getBrojProduct()
 {
    return brojProduct;
 }

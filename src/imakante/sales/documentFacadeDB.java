@@ -19,10 +19,10 @@
  *comprator = 17 : getUserDataByID()
  *comprator = 18 : getContragentDataByID()
  *comprator = 19 : getObektDataByID()
- *comprator = 20 : 
- *comprator = 21 :
- *
- *
+ *comprator = 20 : getTableProductInfo()
+ *comprator = 21 : getPriceListByID();
+ * comprator = 22 :getProductDescriptionByID()
+ *comprator = 23: getProductFeeByID()
  *
  *
  *
@@ -91,6 +91,7 @@ public class documentFacadeDB  extends dbObject
         try {
             
             setCstm(getConn().prepareCall("{call ls_procedure_document_facade(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
+       
             
         } catch(java.sql.SQLException sqle) {sqle.printStackTrace();}
     }
@@ -101,6 +102,7 @@ public class documentFacadeDB  extends dbObject
         try{
             registerParameters();
             setRs(getCstm().executeQuery());
+            
         }
         catch(java.sql.SQLException sqle)
         {
@@ -943,7 +945,114 @@ public java.sql.ResultSet getTableProductInfo(String in , int sqlselect)
         return rs1;
     
 }
-
+public double[] getPriceListByID(int in_id_pp)
+{
+    double pricelist[] = new double[3];
+   int oldIntValue = getID_Obekt_IN();
+   setID_Obekt_IN(in_id_pp);
+     this.comprator = 21;
+     try
+        {
+            registerParameters();
+            rs = cstm.executeQuery();
+            while(rs.next())
+            {
+              pricelist[0] = rs.getDouble("price1_pp");
+              pricelist[1] = rs.getDouble("price2_pp");
+              pricelist[2] = rs.getDouble("price3_pp");
+            }
+               
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }       
+     
+     
+    setID_Obekt_IN(oldIntValue);
+   
+    return pricelist;
+}
+ public String[][] getProductDescriptionByID(int in_id_pd) // Test   comprator = 22;
+   {
+       String des[][] = new String[3][2];
+        int oldIntValue = getID_Obekt_IN();
+   setID_Obekt_IN(in_id_pd);
+       comprator = 22;
+       try
+        {
+            registerParameters();
+            rs = cstm.executeQuery();
+            
+            while(rs.next())
+            {
+                des[0][0] = rs.getString("m1_pd");
+                des[1][0] = rs.getString("m2_pd");
+                des[2][0] = rs.getString("m3_pd");
+                des[0][1] = rs.getString("v1_pd");
+                des[1][1] = rs.getString("v2_pd");
+                des[2][1] = rs.getString("v3_pd");
+            }
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+       
+       setID_Obekt_IN(oldIntValue);
+       return des;
+   }
+ public double[] getProductFeeByID(int in_id_pf) // Test   comprator = 23;
+   {
+      double fee[] =  new double[3];
+        int oldIntValue = getID_Obekt_IN();
+       setID_Obekt_IN(in_id_pf);
+       comprator = 23;
+       try
+        {
+            registerParameters();
+            rs = cstm.executeQuery();
+            
+            while(rs.next())
+            {
+                fee[0] = rs.getDouble("dds_pf");
+                fee[1] = rs.getDouble("excise_pf");
+                fee[2]  =rs.getDouble("other_pf") ;     
+            }
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+       
+       setID_Obekt_IN(oldIntValue);
+       return fee;
+   }
+ public String getProductDescriptionNameID(int in_id_pam) // Test   comprator = 24;
+   {
+       String des = new String();
+        int oldIntValue = getID_Obekt_IN();
+       setID_Obekt_IN(in_id_pam);
+       comprator = 24;
+       try
+        {
+            registerParameters();
+            rs = cstm.executeQuery();
+            
+            while(rs.next())
+            {
+                des = rs.getString("sname_pam");
+                
+            }
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+       
+       setID_Obekt_IN(oldIntValue);
+       return des;
+   }
 // <-----------------------
     
 }// end class

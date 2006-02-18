@@ -31,11 +31,21 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
                   myParent.setCodeProduct((Integer)table.getValueAt(row,getColumnIndex("code_pm")));
                   myParent.setStorageOUTProduct((Integer)table.getValueAt(row,getColumnIndex("id_n_sttorage")));
                   myParent.setID_PP((Integer)table.getValueAt(row,getColumnIndex("id_pp")));
+                  pricelist = myParent.getCountriesT().getPriceListByID(myParent.getID_PP());
+                  myParent.setWorkPriceListProduct(pricelist);
                   myParent.setBrojProduct((Integer)table.getValueAt(row,getColumnIndex("quant_nal")));
                   myParent.setID_PD((Integer)table.getValueAt(row,getColumnIndex("id_pd")));
+                  productDescription = myParent.getCountriesT().getProductDescriptionByID(myParent.getID_PD());
+                  productDescription[0][0] = myParent.getCountriesT().getProductDescriptionNameID(Integer.parseInt(productDescription[0][0]));
+                  productDescription[1][0] = myParent.getCountriesT().getProductDescriptionNameID(Integer.parseInt(productDescription[1][0]));
+                  productDescription[2][0] = myParent.getCountriesT().getProductDescriptionNameID(Integer.parseInt(productDescription[2][0]));
+                  
+                  myParent.setProductDescription(productDescription);
                   myParent.setProcentProduct((Double)table.getValueAt(row,getColumnIndex("max_pop_pm")));
                   myParent.setID_PF((Integer)table.getValueAt(row,getColumnIndex("id_pf")));
-                  
+                  productFee = myParent.getCountriesT().getProductFeeByID(myParent.getID_PF());
+                  myParent.setProductFee(productFee);
+                 
                  close();
                 }
             }
@@ -78,7 +88,9 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
     private  java.sql.ResultSet rs;
     private FrmDocumentFacade myParent;
    private String columnName[] = null;
-  
+   private double pricelist[] = new double[3];
+   private String productDescription[][] =new String[3][2];
+   private double productFee[]  = new double[3];
     
     public void close()
     {

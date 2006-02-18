@@ -94,6 +94,7 @@ public class docLineTableModel extends AbstractTableModel
 
  public void setValueAt(Object value, int row, int col) 
     {    
+         if(value==null) return;
           docLineArray dd = (docLineArray) rows.get(row);
           
           switch(col)
@@ -147,13 +148,17 @@ public class docLineTableModel extends AbstractTableModel
                 {
                    String str[] = new String[3];
                    str[0] = (String)value;
-                  dd.setNameOfDisBand(str) ;
+                   str[1] = dd.getNameOfDisBand()[1];
+                   str[2] = dd.getNameOfDisBand()[2];
+                   dd.setNameOfDisBand(str) ;
                 break;
             }
            case NUMBER_OF_DISBAUND_0 :
                 {
                     int ii[] = new int[3];
                     ii[0] = (Integer)value;
+                    ii[1] = dd.getNumerOfDisBand()[1];
+                    ii[2] = dd.getNumerOfDisBand()[2];
                     dd.setNumerOfDisBand(ii);
                     
                 break;
@@ -161,20 +166,26 @@ public class docLineTableModel extends AbstractTableModel
            case NAME_OF_DISBAUND_1   :
                 {
                    String str[] = new String[3];
+                    str[0] = dd.getNameOfDisBand()[0];
                    str[1] = (String)value;
-                  dd.setNameOfDisBand(str) ;   
+                    str[2] = dd.getNameOfDisBand()[2];
+                   dd.setNameOfDisBand(str) ;   
                 break;
             }
            case NUMBER_OF_DISBAUND_1 :
                 {
-                     int ii[] = new int[3];
+                    int ii[] = new int[3];
+                    ii[0] = dd.getNumerOfDisBand()[0];
                     ii[1] = (Integer)value;
+                    ii[2] = dd.getNumerOfDisBand()[2];
                     dd.setNumerOfDisBand(ii);
                 break;
             }
            case NAME_OF_DISBAUND_2   :
                 {
                    String str[] = new String[3];
+                   str[0] = dd.getNameOfDisBand()[0];
+                   str[1] = dd.getNameOfDisBand()[1];
                    str[2] = (String)value;
                   dd.setNameOfDisBand(str) ;   
                 break;
@@ -182,13 +193,15 @@ public class docLineTableModel extends AbstractTableModel
            case NUMBER_OF_DISBAUND_2 :
                 {
                      int ii[] = new int[3];
+                    ii[0] = dd.getNumerOfDisBand()[0];
+                    ii[1] = dd.getNumerOfDisBand()[1];
                     ii[2] = (Integer)value;
                     dd.setNumerOfDisBand(ii);
                 break;
             }
           }
           
-      fireTableDataChanged();     
+     fireTableCellUpdated(row, col);   
     }
 
         
@@ -348,14 +361,14 @@ public void insertRow(int row,  docLineArray rowData)
    docLine = new docLineArray(rowData);
     rows.add(row,docLine);
     rowsCount++; 
-    fireTableDataChanged();
+    fireTableRowsInserted(row, row);
 }
 
 public void removeRow(int row)
 {
     rows.remove(row);
     
-    fireTableDataChanged();
+   fireTableRowsDeleted(row, row);
     
 
 }
