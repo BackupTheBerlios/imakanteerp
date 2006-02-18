@@ -37,6 +37,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         super();
         loadConn();
         initComponents();
+        this.setTitle("\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415 - \u0421\u041a\u041b\u0410\u0414\u041e\u0412 \u041c\u041e\u0414\u0423\u041b    \u0432\u0435\u0440\u0441\u0438\u044f 0.5.6");
         //  loadPaneForm();
         // this.setVisible(true);
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();

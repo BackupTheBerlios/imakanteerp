@@ -8,6 +8,7 @@ public class NewMain extends javax.swing.JFrame {
     public NewMain() {
         getSProp();
         //  ConstructRights(); // ??
+        this.setTitle("\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415 - \u0413\u041b\u0410\u0412\u0415\u041d \u041f\u0410\u041d\u0415\u041b     \u0432\u0435\u0440\u0441\u0438\u044f 0.5.6");
         initComponents();
     }
     

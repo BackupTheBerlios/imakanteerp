@@ -333,7 +333,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
     private  imakante.com.CustomTable table;
     private String idFCodeContr = "0";
     private String  idLastContr = "99999999999";
-    private String[] Names= { "cod", "names"};
+    private String[] Names= { "\u041a\u041e\u0414", "\u0418\u041c\u0415"};
     private  int intTransfer;
     private  int CompNumber = 0;
     
@@ -349,7 +349,13 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
             + "`rep_comm_nal`.`code_n_storage`, `rep_comm_nal`.`name_n_storage`"
             + "FROM `rep_comm_nal` WHERE `rep_comm_nal`.`code_n_storage` LIKE  '%";
     
-    private String[] NamesQ= {"cod_kontr", "name_contr", "cod_prod", "name_pr", "nalichni", "cod_skl", "name_sklad"};
+    private String[] NamesQ= {"\u041a\u043e\u0434 \u043d\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442",
+    "\u0418\u043c\u0435 \u043d\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442", 
+    "\u041a\u043e\u0434 \u043d\u0430 \u043f\u0440\u043e\u0434\u0443\u043a\u0442", 
+    "\u0418\u043c\u0435 \u043d\u0430 \u043f\u0440\u043e\u0434\u0443\u043a\u0442", 
+    "\u041d\u0430\u043b\u0438\u0447\u043d\u043e\u0441\u0442", 
+    "\u041a\u043e\u0434 \u043d\u0430 \u0441\u043a\u043b\u0430\u0434", 
+    "\u0418\u043c\u0435 \u043d\u0430 \u0441\u043a\u043b\u0430\u0434"};
     private String qu =   "SELECT "
             + "`rep_comm_nal`.`code_contragent`, "
             + "`rep_comm_nal`.`name_n_contragent`, "
@@ -409,7 +415,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         
     }
     
-   
+    
     
     
     private int getColumnIndex(String in) //test
@@ -530,15 +536,12 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         }
         //Create Dialog with print
         try{
-         
-            fs = new java.io.FileInputStream("c:/imakante/src/imakante/sales/jasper/nal_simp_01.jasper");
-            
             initTable(newString, NamesQ);
             imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table,
-                   myframe.getConn(), hm, "/imakante/sales/jasper/nal_simp_01.jasper");
+                    myframe.getConn(), hm, "/imakante/sales/jasper/nal_simp_01.jasper");
             td.setVisible(true);
-        } catch (java.io.FileNotFoundException  ioex){
-            ioex.printStackTrace();
+        } catch (Exception  ex){
+            ex.printStackTrace();
             constructDialod(newString, 0, NamesQ);
             System.out.println("Ne moga da nameria faila  ");
         }

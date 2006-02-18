@@ -51,7 +51,12 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
             public void keyTyped(KeyEvent e) {
             }
         });
-        this.jButton2.setText("Print");
+        this.jButton2.setText("\u0418\u0437\u0433\u043b\u0435\u0434 \u041f\u0440\u0438\u043d\u0442");
+        try {
+            prepareJassper();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
     }
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -96,10 +101,10 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if (fileJasper == null){myParent.setIntTransfer((Integer)InternalTable.getValueAt(InternalTable.getSelectedRow(),getColumnIndex("cod")));
         close();} else{
-            try {
-                prepareJassper();
-            } catch (FileNotFoundException ex) {
-                ex.printStackTrace();
+            if( tableVizible ){
+            showJassper();
+            }
+            else { showTable();
             }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -127,25 +132,39 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
     private net.sf.jasperreports.engine.JasperPrint jasperPrint ;
     private net.sf.jasperreports.view.JRViewer jrv;
     
+    private boolean tableVizible = true;
+    
     private void prepareJassper() throws FileNotFoundException{
-             try {
-                jasperPrint = JasperFillManager.fillReport(new java.io.FileInputStream(new java.io.File((getClass().getResource(fileJasper)).toURI())),
-                        hm, conn);
-            } catch (FileNotFoundException ex) {
-                ex.printStackTrace();
-            } catch (URISyntaxException ex) {
-                ex.printStackTrace();
-            } catch (JRException ex) {
-                ex.printStackTrace();
-            }
-           
-            
-            jrv = new net.sf.jasperreports.view.JRViewer(jasperPrint);
-            this.jPanel1.removeAll();
-            this.jPanel1.add(jrv);
-            this.jPanel1.revalidate();
-            this.jPanel1.repaint();
-      
+        try {
+            jasperPrint = JasperFillManager.fillReport(new java.io.FileInputStream(new java.io.File((getClass().getResource(fileJasper)).toURI())),
+                    hm, conn);
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (URISyntaxException ex) {
+            ex.printStackTrace();
+        } catch (JRException ex) {
+            ex.printStackTrace();
+        }
+        
+        jrv = new net.sf.jasperreports.view.JRViewer(jasperPrint);
+    
+    }
+    private void showJassper(){
+        tableVizible = false;
+        this.jPanel1.removeAll();
+        this.jPanel1.add(jrv);
+        this.jPanel1.revalidate();
+        this.jPanel1.repaint();
+        this.jButton2.setText("\u0418\u0437\u0433\u043b\u0435\u0434 \u0422\u0430\u0431\u043b\u0438\u0446\u0430");
+    }
+    private void showTable(){
+         tableVizible = true;
+        this.jPanel1.removeAll();
+        this.jPanel1.add(this.jScrollPane1);
+        this.jPanel1.revalidate();
+        this.jPanel1.repaint();
+        this.jButton2.setText("\u0418\u0437\u0433\u043b\u0435\u0434 \u041f\u0440\u0438\u043d\u0442");
+        
     }
     
     private int getColumnIndex(String in) //test
