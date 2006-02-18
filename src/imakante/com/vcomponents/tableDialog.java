@@ -3,6 +3,8 @@ package imakante.com.vcomponents;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.FileNotFoundException;
+import java.net.URISyntaxException;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -94,7 +96,11 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if (fileJasper == null){myParent.setIntTransfer((Integer)InternalTable.getValueAt(InternalTable.getSelectedRow(),getColumnIndex("cod")));
         close();} else{
-            prepareJassper();
+            try {
+                prepareJassper();
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+            }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
     
@@ -121,22 +127,24 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
     private net.sf.jasperreports.engine.JasperPrint jasperPrint ;
     private net.sf.jasperreports.view.JRViewer jrv;
     
-    private void prepareJassper(){
-        
-        
-        try {
-            jasperPrint = JasperFillManager.fillReport(fileJasper,
-                    hm, conn);
+    private void prepareJassper() throws FileNotFoundException{
+             try {
+                jasperPrint = JasperFillManager.fillReport(new java.io.FileInputStream(new java.io.File((getClass().getResource(fileJasper)).toURI())),
+                        hm, conn);
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+            } catch (URISyntaxException ex) {
+                ex.printStackTrace();
+            } catch (JRException ex) {
+                ex.printStackTrace();
+            }
+           
+            
             jrv = new net.sf.jasperreports.view.JRViewer(jasperPrint);
             this.jPanel1.removeAll();
             this.jPanel1.add(jrv);
             this.jPanel1.revalidate();
             this.jPanel1.repaint();
-           
-        } catch (JRException ex) {
-            System.out.println("frmo fill");
-            ex.printStackTrace();
-        }
       
     }
     
