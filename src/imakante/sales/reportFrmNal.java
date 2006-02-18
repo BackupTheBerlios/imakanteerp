@@ -535,7 +535,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
             
             initTable(newString, NamesQ);
             imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table,
-                   myframe.getConn(), hm, fs);
+                   myframe.getConn(), hm, "/imakante/sales/jasper/nal_simp_01.jasper");
             td.setVisible(true);
         } catch (java.io.FileNotFoundException  ioex){
             ioex.printStackTrace();
