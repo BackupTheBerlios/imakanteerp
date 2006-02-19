@@ -310,7 +310,7 @@ public class FrmNaseleniMesta extends  imakante.com.vcomponents.iInternalFrame i
         setNames("");
         setId(countriesT.getMaxId()+1);
         setIDOblast(new Integer(0).byteValue());
-        countriesT.insertRow(getId(), getNames(),getPostCode() ,getIDOblast());
+        countriesT.insertRow( getNames(),getPostCode() ,getIDOblast());
         setId(countriesT.getMaxId());
         refreshTable();
          try 
@@ -325,24 +325,7 @@ public class FrmNaseleniMesta extends  imakante.com.vcomponents.iInternalFrame i
         
         
     }//GEN-LAST:event_jButtonNewActionPerformed
-    
-    /**
-     * @param args the command line arguments
-     */
-  /*  public static void main(String args[]) 
-    {
-        java.awt.EventQueue.invokeLater(new Runnable()
-        {
-            public void run() {
-                
-                FrmNaseleniMesta frCN =   new FrmNaseleniMesta("ttt");
-                fr.add(frCN);
-                frCN.setVisible(true);
-                fr.setVisible(true);
-                
-            }
-        });
-    }*/
+ 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -391,20 +374,7 @@ public class FrmNaseleniMesta extends  imakante.com.vcomponents.iInternalFrame i
  //---------------START MyFunction
 private void prepareConn() //TEST
     {
-      // samo za testovate ------------
-    /*  try
-         {
-          Class.forName("com.mysql.jdbc.Driver");
-           
-           ccc = DriverManager.getConnection(Url, User, Pass);
-           conn = ccc;
-          
-         }
-         catch(Exception e)
-         {
-             e.printStackTrace();
-         }
-      // ---------------------------*/
+    
       try
        {
             setConn(myframe.getConn());
