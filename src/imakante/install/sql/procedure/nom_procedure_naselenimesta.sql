@@ -8,7 +8,7 @@ BEGIN
         FROM `n_nm` n, `n_oblast` obl WHERE n.id_n_oblast=obl.id_n_oblast;
      END IF;
      IF (comprator = 1) THEN
-        INSERT INTO `n_nm`( id_n_nm, postcode_n_nm, name_n_nm, id_n_oblast) VALUES(in_id, in_postcode, in_name, in_id_oblast);
+        INSERT INTO `n_nm`(postcode_n_nm, name_n_nm, id_n_oblast) VALUES(in_postcode, in_name, in_id_oblast);
      END IF;
      IF (comprator = 2) THEN
         UPDATE `n_nm` SET postcode_n_nm = in_postcode, name_n_nm = in_name, id_n_oblast = in_id_oblast
