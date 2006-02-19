@@ -83,10 +83,10 @@ public class naseleniMestaDB  extends dbObject
             setRs(getCstm().executeQuery());}catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         
     }
- public void insertRow(int in_id,String in_name, int in_postcode, byte in_id_oblast) // OK  comprator = 1;
+ public void insertRow(String in_name, int in_postcode, byte in_id_oblast) // OK  comprator = 1;
     {
         comprator = 1;
-        this.id = in_id;
+        
         this.postcode = in_postcode;
         this.name = in_name;
         this.id_oblast = in_id_oblast;
