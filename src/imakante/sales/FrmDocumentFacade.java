@@ -26,11 +26,11 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
        this.priceList = pricelist;
        this.docType = doctype;
        this.storageDocFacade= storagedocdacade;
-        initComponents();
+       
         prepareConn();     // zapazva connection
         constructGroupDB(); // inicializira class otgovarq6t za vryzkata s DB
         initTable();
-       
+        initComponents();
        
         fr.addWindowListener(this);
     }
@@ -326,7 +326,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 
-                FrmDocumentFacade frCN =   new FrmDocumentFacade("ttt",1,1,1,1,1);
+                FrmDocumentFacade frCN =   new FrmDocumentFacade("ttt",1,0,1,1,1);
                 fr.add(frCN);
                 frCN.setSize(400,400);
                 frCN.setVisible(true);
@@ -490,7 +490,7 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
       try
         {
            
-            rs = countriesT.getTable();
+            rs = countriesT.getTable(getDocFacadeLevel());
             nameColumnsDocFacade =null;
             model = new imakante.com.CustomTableModel(conn,rs, nameColumnsDocFacade);
             table = new imakante.com.CustomTable(model);

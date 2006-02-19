@@ -94,13 +94,15 @@ public class documentFacadeDB  extends dbObject
     {
         try {
             
-            setCstm(getConn().prepareCall("{call ls_procedure_document_facade(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
+            setCstm(getConn().prepareCall("{call ls_procedure_document_facade(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
        
             
         } catch(java.sql.SQLException sqle) {sqle.printStackTrace();}
     }
- public java.sql.ResultSet getTable() //OK
+ public java.sql.ResultSet getTable(int level) //OK
     {
+     int oldID_DF = getID_DocFacade();
+     setID_DocFacade(level);
         
         this.comprator = 0;
         try{
@@ -113,6 +115,7 @@ public class documentFacadeDB  extends dbObject
             sqle.printStackTrace();
         }
         System.out.println("ot getTable()");
+        setID_DocFacade(oldID_DF);
         return rs;
     }
  public void registerParameters() 
