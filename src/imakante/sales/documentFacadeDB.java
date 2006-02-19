@@ -23,9 +23,11 @@
  *comprator = 21 : getPriceListByID();
  * comprator = 22 :getProductDescriptionByID()
  *comprator = 23: getProductFeeByID()
- *
- *
- *
+ *comprator = 24: getProductDescriptionNameID()
+ *comprator = 25: getAllProductWithOutLevel()
+ *comprator = 26: insertDocLine()
+ *comprator = 27: checkForEnoughProducts()
+ *comprator = 28: preserveProducts()
  *
  *
  * 
@@ -60,6 +62,8 @@ public class documentFacadeDB  extends dbObject
     private int idObect_OUT;
     private double allDDSPaing=0;
     private double totalPaying=0;
+    private double priceOne=0;
+    private double climbDown=0;
     private int userDocFacade;
     private String docFacadeDate;
     private int storageDocFacade;
@@ -136,7 +140,9 @@ public class documentFacadeDB  extends dbObject
             getCstm().setInt("in_docFacadeType", getDocFacadeType()); 
             getCstm().setInt("in_docFacadeFlagFinish", getDocFacadeType()); 
             getCstm().setDouble("in_docFacadeAllDDS",getAllDDSPaingDocFacade());       
-            getCstm().setDouble("in_docFacadeTotal",getTotalPayingDocFacade());  
+            getCstm().setDouble("in_docFacadeTotal",getTotalPayingDocFacade());
+            getCstm().setDouble("in_priceOne",getPriceOne());
+            getCstm().setDouble("in_climbDown",getClimbDown());
             getCstm().setString("in_docFacadeCondition", getConditionDocFacade());   
             getCstm().setString("in_docFacadeDate", getDateDocFacade());            
             getCstm().setString("in_docFacadeComment", getCommentDocFacade());
@@ -495,6 +501,22 @@ public double getAllDDSPaingDocFacade()
 public void setTotalPayingDocFacade(double in)
 {
    this.totalPaying = in;
+}
+public double getPriceOne()
+{
+   return priceOne;
+}
+public void setPriceOne(double in)
+{
+   this.priceOne = in;
+}
+public double getClimbDown()
+{
+   return climbDown;
+}
+public void setClimbDown(double in)
+{
+   this.climbDown = in;
 }
 public double getTotalPayingDocFacade()
 {
@@ -922,13 +944,18 @@ public String[] getObektDataByID(int idObekt)
    setUserDocFacade(oldIntValue);
     return ObektData;
 }
-public java.sql.ResultSet getTableProductInfo(String in , int sqlselect)
+public java.sql.ResultSet getTableProductInfo(String in , int sqlselect,int level, int flag)
 { 
     java.sql.ResultSet rs1 = null;
     int oldIntValue = getDocFacadeType();
     setDocFacadeType(sqlselect);
     String oldvalues = getCommentDocFacade();
     setCommentDocFacade(in);  
+    int oldID_df = getID_DocFacade();
+    int oldID_obekt_in = getID_Obekt_IN();
+    setID_DocFacade(level);
+    setID_Obekt_IN(flag);
+    
      this.comprator = 20;
    
         try{
@@ -942,6 +969,8 @@ public java.sql.ResultSet getTableProductInfo(String in , int sqlselect)
         System.out.println("getTableProductInfo()");
         setCommentDocFacade(oldvalues);
         setDocFacadeType(oldIntValue);
+        setID_DocFacade(oldID_df);
+        setID_Obekt_IN(oldID_obekt_in);
         return rs1;
     
 }
@@ -1053,6 +1082,106 @@ public double[] getPriceListByID(int in_id_pp)
        setID_Obekt_IN(oldIntValue);
        return des;
    }
+ public int getAllProductWithOutLevel(int in_id_pc, int flag)
+ {
+      int allProduct =0;
+      int oldIntValue = getID_Obekt_IN();
+      int oldID_df = getID_DocFacade();
+     
+       setID_Obekt_IN(in_id_pc);
+       setID_DocFacade(flag);
+      
+       comprator = 25;
+       try
+        {
+            registerParameters();
+            rs = cstm.executeQuery();
+            
+            while(rs.next())
+            {
+                allProduct += rs.getInt("quant_nal"); 
+                
+            }
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+      
+       setID_Obekt_IN(oldIntValue);
+       setID_DocFacade(oldID_df);
+       return allProduct;
+ }
+ 
+ public void insertDocLine(int in_id_pc,int in_id_storage,double priceone,double climbdown,int numberProduct,double dds,double totalall)
+ {
+     int oldID_obekt_in = getID_Obekt_IN();
+     int oldID_obekt_out = getID_Obekt_OUT();
+     int oldID_contragent_in = getID_Contragent_IN();
+     double oldDDS = getAllDDSPaingDocFacade();
+     double oldTotal = getTotalPayingDocFacade();
+       setID_Obekt_IN(in_id_pc);
+       setID_Obekt_OUT(in_id_storage);
+       setID_Contragent_IN(numberProduct);
+       setAllDDSPaingDocFacade(dds);
+       setTotalPayingDocFacade(totalall);
+       setPriceOne(priceone);
+       setClimbDown(climbdown);
+       comprator=26;
+       try
+        {
+            registerParameters();
+            cstm.execute();
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+       
+       
+       setTotalPayingDocFacade(oldTotal);
+       setAllDDSPaingDocFacade(oldDDS);
+       setID_Contragent_IN(oldID_contragent_in);
+       setID_Obekt_OUT(oldID_obekt_out);
+       setID_Obekt_IN(oldID_obekt_in);
+     
+ }
+ 
+ public int checkForEnoughProducts(int in_id_pc, int in_id_starage)
+ {
+     int enoughProduct = 0;
+     int maxNumber = 0;
+     comprator=27;
+     int oldID_DF = getID_DocFacade();
+     int oldID_Obekt_in = getID_Obekt_IN();
+     setID_Obekt_IN(in_id_starage);
+     setID_DocFacade(in_id_pc);
+    
+     try
+        {
+            registerParameters();
+            rs = cstm.executeQuery();
+            while(rs.next())
+            {
+               enoughProduct = rs.getInt("quant_rezerv_nal");
+               maxNumber = rs.getInt("quant_nal");
+            }
+               
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }       
+  
+     setID_Obekt_IN(oldID_Obekt_in);
+     setID_DocFacade(oldID_DF);
+     enoughProduct = maxNumber - enoughProduct;
+     return enoughProduct;
+ }
+ public void preserveProducts(int in_id_pc, int in_id_starage, int number)
+ {
+     comprator=28;
+ }
 // <-----------------------
     
 }// end class

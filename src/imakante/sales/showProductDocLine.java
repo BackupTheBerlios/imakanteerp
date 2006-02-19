@@ -27,6 +27,7 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
                  int ID = (Integer)table.getValueAt(row,getColumnIndex("id_pm"));
                               
                   myParent.setID_Product(ID);
+                  myParent.setID_PC((Integer)table.getValueAt(row,getColumnIndex("id_pc")));
                   myParent.setNameProduct((String)table.getValueAt(row,getColumnIndex("name_pm")));
                   myParent.setCodeProduct((Integer)table.getValueAt(row,getColumnIndex("code_pm")));
                   myParent.setStorageOUTProduct((Integer)table.getValueAt(row,getColumnIndex("id_n_sttorage")));
@@ -46,6 +47,7 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
                   productFee = myParent.getCountriesT().getProductFeeByID(myParent.getID_PF());
                   myParent.setProductFee(productFee);
                  
+                  myParent.setIsSelectProduct(true);
                  close();
                 }
             }

@@ -390,6 +390,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
    private int idDeliver;
    private int storageDocFacade;
    private int idProduct;
+   private int idProductConsignment;
    private int idProductDescription;
    private int idProductPrice;
    private int idProductFee;
@@ -429,6 +430,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
                 "Код на доставчика"};  
     private  boolean atBegining=false;
     private  boolean atEnd = false;
+    private boolean isSelectProduct = false;
     private int row;
     private aeDocumentFacade dialog;
     private imakante.com.vcomponents.iFrame myframe;
@@ -764,7 +766,17 @@ public void setDocFacadeType(int in)
 public int getDocFacadeType()
 {
     return docType;
-}    
+} 
+
+public void setIsSelectProduct(boolean in)
+{
+    this.isSelectProduct = in;
+}
+public boolean getIsSelectProduct()
+{
+    return isSelectProduct;
+} 
+
  public void setContragentData(String in[])
  {
      setCodeContragent(in[0]);
@@ -1004,6 +1016,14 @@ public void setID_Product(int in)
 public int getID_Product()
 {
     return idProduct;
+}
+public void setID_PC(int in)
+{
+    idProductConsignment = in;
+}
+public int getID_PC()
+{
+    return idProductConsignment;
 }
  public void setID_PD(int ID) 
     {

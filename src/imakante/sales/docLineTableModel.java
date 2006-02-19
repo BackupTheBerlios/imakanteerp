@@ -4,7 +4,7 @@ package imakante.sales;
 import java.util.ArrayList;
 import javax.swing.*;
 import java.awt.event.*;
-
+import java.io.Serializable;
 
 
 
@@ -12,7 +12,7 @@ import java.awt.event.*;
 import javax.swing.table.*;
 
 import javax.swing.*;
-public class docLineTableModel extends AbstractTableModel
+public class docLineTableModel extends AbstractTableModel implements Serializable
 {
     
     private final int CODE_OF_PRODUCT  = 0;
@@ -38,6 +38,7 @@ public class docLineTableModel extends AbstractTableModel
     private boolean[] canEdit = new boolean [] {
                           true, false, false,false, false, false, false,
                           false, false, false, false, false};
+    
     private String[] colNames =  new String [] {
                 "Номер продукт", "Име на продукт", "Номер склад", 
                 "Ценова листа","Брои продукти", "Р-ка основна", "Разфасовка 1",
@@ -55,13 +56,16 @@ public class docLineTableModel extends AbstractTableModel
         
     public docLineTableModel()
     {
-        super();
+        docLine = new docLineArray();
+        rows.add(docLine);
+        rowsCount++;
+        
     }
      public docLineTableModel(int codeOfProduct,String nameOfProduct,int storageOut,int priceList,
                        int numberOfProduct, double pricePiece,double rateReduction,double priceTotal,double DDS,
                        String nameOfDisBaund[],int numerOfDisBaund[])
     {
-        super();
+       
         docLine = new docLineArray( codeOfProduct, nameOfProduct, storageOut, priceList,
                         numberOfProduct,  pricePiece,rateReduction ,priceTotal, DDS,
                         nameOfDisBaund, numerOfDisBaund);
@@ -71,7 +75,7 @@ public class docLineTableModel extends AbstractTableModel
      
     public docLineTableModel(docLineArray in)
     {
-        super();
+        
         docLine = new docLineArray(in);
         rows.add(docLine);
         rowsCount++;
@@ -319,6 +323,7 @@ public class docLineTableModel extends AbstractTableModel
  public boolean isCellEditable(int rowIndex, int columnIndex)
  {
      return canEdit[columnIndex];
+     
  }
  public void enableCellEditable(int columnIndex)
             {
