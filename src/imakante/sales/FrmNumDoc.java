@@ -232,8 +232,8 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
         "id",
         "id_ntd",
         "\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442 \u0442\u0438\u043f",
-        "\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442",
         "\u041d\u043e\u043c\u0435\u0440\u0430\u0446\u0438\u044f",
+        "\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442",
     };
     //---------------END My Variables
     
@@ -369,6 +369,7 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
     }
     
     public String getNames() {
+        System.out.println(name);
         return name;
     }
     
@@ -478,10 +479,13 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
     }
     
     private void newRecord() {
-        setId(internalObject.getMaxId());
-        setIDG(internalObject.getMaxGrID());
-        setCod(internalObject.getMaxCod()+1);
-        internalObject.insertRow(getCod(), getIDG());
+        internalObject.insertRow((internalObject.getMaxCod() + 1), 0);
+        refreshTable();
+        setRow(getMaxRow());
+        table.changeSelection(getRow(), 2, false, false);
+        setAllVariables();
+        setAtBegining(false);
+        setAtEnd(true);
         imakante.sales.aeNumDoc nDoc = new imakante.sales.aeNumDoc(this, true);
         nDoc.setVisible(true);
         refreshTable();
@@ -555,13 +559,13 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
     private void setAllVariables(){
         setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
         setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("id_ntd")));
-        setName((String) table.getValueAt(getRow(), getColumnIndex("\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442")));
+        setNames((String) table.getValueAt(getRow(), getColumnIndex("\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442")));
         setCod((Integer) table.getValueAt(getRow(), getColumnIndex("\u041d\u043e\u043c\u0435\u0440\u0430\u0446\u0438\u044f")));
     }
-//     public static final String Names[] = {"id",
-//    "id_ntd",
-//    "\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442",
-//    "\u041d\u043e\u043c\u0435\u0440\u0430\u0446\u0438\u044f",
-//    };
-    
+//         "id",
+//        "id_ntd",
+//        "\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442 \u0442\u0438\u043f",
+//        "\u041d\u043e\u043c\u0435\u0440\u0430\u0446\u0438\u044f",
+//        "\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442",
+//    
 }

@@ -125,8 +125,8 @@ public class dbNumDoc extends imakante.com.dbObject {
             registerParameters();
             rs = cstm.executeQuery();
             while(rs.next()) {
-                Doctypes.put(new Integer(rs.getInt("id_n_doctype")), new String(rs.getString("name_ntd")));
-                in.add(new Integer(rs.getInt("id_n_doctype")));
+                Doctypes.put(new Integer(rs.getInt("id_ntd")), new String(rs.getString("name_ntd")));
+                in.add(new Integer(rs.getInt("id_ntd")));
                 i++;
             }
         } catch(Exception e) {e.printStackTrace();}
