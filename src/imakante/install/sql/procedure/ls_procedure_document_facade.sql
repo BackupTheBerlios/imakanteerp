@@ -6,11 +6,15 @@ CREATE PROCEDURE `ls_procedure_document_facade`(IN comprator TINYINT,           
                                                 IN in_docFacadeUser INT(11),         IN in_docFacadeUserLastEdit INT(11),IN in_id_facturaConnection INT(11), IN in_id_payingOrder INT(11),   IN in_id_zaqvkaConnection INT(11),
                                                 IN in_docFacadeLevel INT(11),        IN in_docFacadeStorage INT(11),     IN in_docFacadeType INT (3),        IN in_docFacadeAllDDS DOUBLE,   IN in_docFacadeTotal DOUBLE,
                                                 IN in_docFacadeCondition VARCHAR(11),IN in_docFacadeDate VARCHAR(10),    IN in_docFacadeComment VARCHAR(250),IN in_dateDeliver VARCHAR(10),  IN in_payingDate VARCHAR(10),
-                                                IN in_docFacadeFlagFinish INT (3) )
+                                                IN in_docFacadeFlagFinish INT (3),   IN in_priceOne DOUBLE,              IN in_climbDown DOUBLE )
 BEGIN
+IF (comprator = 100) THEN
+     SELECT * FROM mida.n_oblast n;
+END IF;
 
 IF (comprator = 0) THEN
-        SELECT s.id_df,
+        SELECT
+         s.id_df,
          s.in_contragent_df,contr_in.code_contragent, contr_in.bul_n_contragent, contr_in.dan_n_contragent, contr_in.name_n_contragent,
          contr_in.address_n_contragent, p_contr_in.name_ls_n_person,
          s.out_contragent_df,contr_out.code_contragent, contr_out.bul_n_contragent,contr_out.dan_n_contragent, contr_out.name_n_contragent,
@@ -33,9 +37,6 @@ IF (comprator = 0) THEN
          LEFT JOIN  mida.ls_n_person p_contr_out ON contr_out.id_mol = p_contr_out.id_ls_n_person
          LEFT JOIN mida.n_doc_type_user_rights usr_new ON s.user_df = usr_new.id_ndtur
          LEFT JOIN mida.n_doc_type_user_rights usr_last ON s.user_last_df = usr_last.id_ndtur;
-
-
-
 END IF;
 
 IF (comprator = 1) THEN
@@ -414,14 +415,14 @@ END IF;
 
 IF (comprator = 20) THEN
    IF (in_docFacadeType = 0) THEN
-     SELECT n.id_pm, n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
-     pc.id_pc,pc.parcel_pc, pc.dateofexpire_pc ,
+     SELECT pc.id_pc,n.id_pm, n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
+     pc.parcel_pc, pc.dateofexpire_pc ,
      s.id_nal, s.id_n_storage,s.level, s.quant_nal, s.quant_rezerv_nal,
      st.id_n_storage, st.code_n_storage, st.name_n_storage, st.comments_n_storage
      FROM mida.n_product_main n LEFT JOIN mida.n_product_consigment pc ON pc.id_pm = n.id_pm
      LEFT JOIN mida.sl_nalichnosti s ON pc.id_pc = s.id_pc
      LEFT JOIN mida.n_storage st ON st.id_n_storage = s.id_n_storage
-     WHERE n.code_pm LIKE CONCAT('%',in_docFacadeComment,'%');
+     WHERE n.code_pm LIKE CONCAT('%',in_docFacadeComment,'%') AND n.flag_pm = in_id_obekt_in AND  s.level= in_id_df;
    END IF;
    IF (in_docFacadeType = 1) THEN
        SELECT n.id_pm, n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
@@ -431,7 +432,7 @@ IF (comprator = 20) THEN
        FROM mida.n_product_main n LEFT JOIN mida.n_product_consigment pc ON pc.id_pm = n.id_pm
        LEFT JOIN mida.sl_nalichnosti s ON pc.id_pc = s.id_pc
        LEFT JOIN mida.n_storage st ON st.id_n_storage = s.id_n_storage
-       WHERE n.code_pm LIKE CONCAT(in_docFacadeComment,'%');
+       WHERE n.code_pm LIKE CONCAT(in_docFacadeComment,'%') AND n.flag_pm = in_id_obekt_in AND  s.level= in_id_df;
    END IF;
    IF (in_docFacadeType = 2) THEN
        SELECT n.id_pm, n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
@@ -441,7 +442,7 @@ IF (comprator = 20) THEN
        FROM mida.n_product_main n LEFT JOIN mida.n_product_consigment pc ON pc.id_pm = n.id_pm
        LEFT JOIN mida.sl_nalichnosti s ON pc.id_pc = s.id_pc
        LEFT JOIN mida.n_storage st ON st.id_n_storage = s.id_n_storage
-       WHERE n.code_pm LIKE CONCAT('%',in_docFacadeComment);
+       WHERE n.code_pm LIKE CONCAT('%',in_docFacadeComment) AND n.flag_pm = in_id_obekt_in AND  s.level= in_id_df;
    END IF;
 END IF;
 IF (comprator = 21) THEN
@@ -461,6 +462,32 @@ IF (comprator = 24) THEN
     SELECT n.id_pam, n.name_pam, n.sname_pam
     FROM mida.n_product_all_measure n WHERE id_pam = in_id_obekt_in;
 END IF;
+
+IF (comprator = 25) THEN
+    SELECT * FROM mida.sl_nalichnosti s LEFT JOIN mida.n_product_consigment n ON n.id_pc=s.id_pc
+    LEFT JOIN mida.n_product_main pm ON pm.id_pm = n.id_pm
+    WHERE n.id_pc =in_id_obekt_in AND pm.flag_pm = in_id_df;
+END IF;
+
+IF (comprator = 26) THEN
+    INSERT INTO mida.sl_document_lines(id_df,id_pc,id_n_storage,singly_price_dl,climb_down_dl,
+           numbers_piece_df,dds_dl,totalall_dl)
+    VALUES(in_id_df,in_id_obekt_in,in_id_obekt_out,in_priceOne,in_climbDown,in_id_contragent_in,in_docFacadeAllDDS,in_docFacadeTotal);
+END IF;
+
+IF (comprator = 27) THEN
+      SELECT * FROM mida.sl_nalichnosti s
+      WHERE id_pc = in_id_df AND id_n_storage = in_id_obekt_in;
+END IF;
+IF (comprator = 28) THEN
+     UPDATE mida.sl_nalichnosti s SET
+     s.quant_rezerv_nal = quant_rezerv_nal + in_id_contragent_in
+     WHERE id_pc = in_id_obekt_in AND id_n_storage = in_id_obekt_out ;
+
+END IF;
+
+
+
 END $$
 
 DELIMITER ;

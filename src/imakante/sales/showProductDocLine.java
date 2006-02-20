@@ -30,11 +30,11 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
                   myParent.setID_PC((Integer)table.getValueAt(row,getColumnIndex("id_pc")));
                   myParent.setNameProduct((String)table.getValueAt(row,getColumnIndex("name_pm")));
                   myParent.setCodeProduct((Integer)table.getValueAt(row,getColumnIndex("code_pm")));
-                  myParent.setStorageOUTProduct((Integer)table.getValueAt(row,getColumnIndex("id_n_sttorage")));
+                  myParent.setStorageOUTProduct((Integer)table.getValueAt(row,getColumnIndex("id_n_storage")));
                   myParent.setID_PP((Integer)table.getValueAt(row,getColumnIndex("id_pp")));
                   pricelist = myParent.getCountriesT().getPriceListByID(myParent.getID_PP());
                   myParent.setWorkPriceListProduct(pricelist);
-                  myParent.setBrojProduct((Integer)table.getValueAt(row,getColumnIndex("quant_nal")));
+                  myParent.setBrojProduct((Integer)table.getValueAt(row,getColumnIndex("quant_nal"))-(Integer)table.getValueAt(row,getColumnIndex("quant_rezerv_nal")));
                   myParent.setID_PD((Integer)table.getValueAt(row,getColumnIndex("id_pd")));
                   productDescription = myParent.getCountriesT().getProductDescriptionByID(myParent.getID_PD());
                   productDescription[0][0] = myParent.getCountriesT().getProductDescriptionNameID(Integer.parseInt(productDescription[0][0]));

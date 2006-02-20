@@ -94,7 +94,7 @@ public class documentFacadeDB  extends dbObject
     {
         try {
             
-            setCstm(getConn().prepareCall("{call ls_procedure_document_facade(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
+            setCstm(getConn().prepareCall("{call mida.ls_procedure_document_facade(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
        
             
         } catch(java.sql.SQLException sqle) {sqle.printStackTrace();}
@@ -1116,11 +1116,12 @@ public double[] getPriceListByID(int in_id_pp)
        return allProduct;
  }
  
- public void insertDocLine(int in_id_pc,int in_id_storage,double priceone,double climbdown,int numberProduct,double dds,double totalall)
+ public void insertDocLine(int in_id_df,int in_id_pc,int in_id_storage,double priceone,double climbdown,int numberProduct,double dds,double totalall)
  {
      int oldID_obekt_in = getID_Obekt_IN();
      int oldID_obekt_out = getID_Obekt_OUT();
      int oldID_contragent_in = getID_Contragent_IN();
+     int oldID_df = getID_DocFacade();
      double oldDDS = getAllDDSPaingDocFacade();
      double oldTotal = getTotalPayingDocFacade();
        setID_Obekt_IN(in_id_pc);
@@ -1130,6 +1131,7 @@ public double[] getPriceListByID(int in_id_pp)
        setTotalPayingDocFacade(totalall);
        setPriceOne(priceone);
        setClimbDown(climbdown);
+       setID_DocFacade(in_id_df);
        comprator=26;
        try
         {
@@ -1147,7 +1149,7 @@ public double[] getPriceListByID(int in_id_pp)
        setID_Contragent_IN(oldID_contragent_in);
        setID_Obekt_OUT(oldID_obekt_out);
        setID_Obekt_IN(oldID_obekt_in);
-     
+       setID_DocFacade(oldID_df);
  }
  
  public int checkForEnoughProducts(int in_id_pc, int in_id_starage)
@@ -1181,9 +1183,32 @@ public double[] getPriceListByID(int in_id_pp)
      enoughProduct = maxNumber - enoughProduct;
      return enoughProduct;
  }
- public void preserveProducts(int in_id_pc, int in_id_starage, int number)
+ public void preserveProducts(int in_id_pc, int in_id_storage, int number)
  {
+     int oldID_obekt_in = getID_Obekt_IN();
+     int oldID_obekt_out = getID_Obekt_OUT();
+     int oldID_contragent_in = getID_Contragent_IN();
      comprator=28;
+      setID_Obekt_IN(in_id_pc);
+      setID_Obekt_OUT(in_id_storage);
+       setID_Contragent_IN(number);
+     try
+        {
+            registerParameters();
+            cstm.execute();
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+       
+       
+       
+       
+     setID_Contragent_IN(oldID_contragent_in);
+       setID_Obekt_OUT(oldID_obekt_out);
+       setID_Obekt_IN(oldID_obekt_in);
+     
  }
 // <-----------------------
     

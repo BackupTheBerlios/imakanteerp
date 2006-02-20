@@ -1593,9 +1593,10 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                 int nn = (Integer)jTable1.getValueAt(rowSelect,4);
                                 double dds =(Double)jTable1.getValueAt(rowSelect,10);
                                 double total = (Double)jTable1.getValueAt(rowSelect,11);
-                                if(nn<=myParent.getCountriesT().checkForEnoughProducts(myParent.getID_PC(),myParent.getStorageOUTProduct()))
+                                int tmp = myParent.getCountriesT().checkForEnoughProducts(myParent.getID_PC(),myParent.getStorageOUTProduct());
+                                if(nn<=tmp)
                                 {
-                                myParent.getCountriesT().insertDocLine(myParent.getID_PC(),myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
+                                myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
                                                                           myParent.getProcentProduct(),nn,dds,total);
                                 //zapazvane na prodikta v tablicata s nali4nosti
                                  myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn);
@@ -1645,9 +1646,10 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     System.out.print("jTable1.getSelectedColumn: ");
                     System.out.println(jTable1.getSelectedColumn());
                     System.out.println("----------------<1>---------F7---------");
-                    str = String.valueOf(jTable1.getValueAt(rowSelect,columnSelect));
+                  //  str = String.valueOf(jTable1.getValueAt(rowSelect,columnSelect));
                     System.out.println("str :::"+str);
-                    java.sql.ResultSet rs1 = myParent.getCountriesT().getTableProductInfo(str,0,myParent.getDocFacadeLevel(),0);
+                  //  java.sql.ResultSet rs1 = myParent.getCountriesT().getTableProductInfo(str,0,myParent.getDocFacadeLevel(),0);
+                    java.sql.ResultSet rs1 = myParent.getCountriesT().getTableProductInfo(str,0,2,1); // za test
                     Connection conn1 = myParent.getCountriesT().getConn();
                    
                     showProductDocLine dialog = new showProductDocLine(myParent,true,rs1,conn1);
