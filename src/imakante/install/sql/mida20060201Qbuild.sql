@@ -1,4 +1,4 @@
-# MySQL-Front 3.2  (Build 10.2)
+# MySQL-Front 3.2  (Build 10.26)
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -30,7 +30,6 @@ CREATE TABLE `anlevel` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 
-
 #
 # Table structure for table log_ls_init_worker
 #
@@ -43,7 +42,6 @@ CREATE TABLE `log_ls_init_worker` (
   `time_init` time default NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
-
 
 
 #
@@ -63,7 +61,6 @@ CREATE TABLE `log_ls_osig` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 
-
 #
 # Table structure for table log_ls_salary
 #
@@ -81,7 +78,6 @@ CREATE TABLE `log_ls_salary` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='trace salary change';
 
 
-
 #
 # Table structure for table log_user_in
 #
@@ -94,7 +90,6 @@ CREATE TABLE `log_user_in` (
   `time_log` time default NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
-
 
 
 #
@@ -113,7 +108,6 @@ CREATE TABLE `ls_addresses` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 
-
 #
 # Table structure for table ls_boln_impl
 #
@@ -130,7 +124,6 @@ CREATE TABLE `ls_boln_impl` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 
-
 #
 # Table structure for table ls_bolnichni
 #
@@ -142,7 +135,6 @@ CREATE TABLE `ls_bolnichni` (
   `procent` decimal(3,2) unsigned NOT NULL default '0.00' COMMENT 'Процент на болничния',
   UNIQUE KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
-
 
 
 #
@@ -163,7 +155,6 @@ CREATE TABLE `ls_dates` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 
-
 #
 # Table structure for table ls_dlajnosti
 #
@@ -177,13 +168,12 @@ CREATE TABLE `ls_dlajnosti` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 
-
 #
 # Table structure for table ls_dobavki
 #
 
 CREATE TABLE `ls_dobavki` (
-  `id` int(11) NOT NULL default '0',
+  `id` int(11) NOT NULL auto_increment,
   `cod` int(6) default NULL COMMENT 'kod na modifikator',
   `name` varchar(50) default NULL,
   `in-level` tinyint(3) default NULL COMMENT 'nivo na wkliuchwane na sumi',
@@ -194,7 +184,6 @@ CREATE TABLE `ls_dobavki` (
   `zro` tinyint(4) default NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
-
 
 
 #
@@ -209,7 +198,6 @@ CREATE TABLE `ls_dod` (
   `prct` float default NULL,
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
-
 
 
 #
@@ -237,7 +225,6 @@ CREATE TABLE `ls_main` (
   `belejki` varchar(250) default NULL,
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
-
 
 
 #
@@ -268,7 +255,6 @@ CREATE TABLE `ls_monthpar` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 
-
 #
 # Table structure for table ls_n_person
 #
@@ -285,7 +271,6 @@ CREATE TABLE `ls_n_person` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 
-
 #
 # Table structure for table ls_otdeli
 #
@@ -296,7 +281,6 @@ CREATE TABLE `ls_otdeli` (
   `nameotdel` varchar(25) default NULL,
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
-
 
 
 #
@@ -315,7 +299,6 @@ CREATE TABLE `ls_otp_impl` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='�?зчислени болни�';
 
 
-
 #
 # Table structure for table ls_otpusk
 #
@@ -328,7 +311,6 @@ CREATE TABLE `ls_otpusk` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 
-
 #
 # Table structure for table ls_pic
 #
@@ -339,7 +321,6 @@ CREATE TABLE `ls_pic` (
   `pic` blob,
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
-
 
 
 #
@@ -380,13 +361,12 @@ CREATE TABLE `ls_result` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 
-
 #
 # Table structure for table ls_sluj
 #
 
 CREATE TABLE `ls_sluj` (
-  `Id` int(11) NOT NULL default '0',
+  `Id` int(11) NOT NULL auto_increment,
   `name_firm` varchar(60) default NULL,
   `dan_nom` varchar(11) default NULL,
   `bul` varchar(11) default NULL,
@@ -396,7 +376,6 @@ CREATE TABLE `ls_sluj` (
   `nkid` varchar(5) default NULL,
   PRIMARY KEY  (`Id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
-
 
 
 #
@@ -411,22 +390,20 @@ CREATE TABLE `ls_vid_osiguren` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 
-
 #
 # Table structure for table n_baccount
 #
 
 CREATE TABLE `n_baccount` (
-  `id_nbc` int(11) NOT NULL default '0',
+  `id_nbc` int(11) NOT NULL auto_increment,
   `id_n_group` int(11) unsigned default NULL,
   `code_nbc` varchar(10) default NULL COMMENT 'cod na bankata',
   `name_nbc` varchar(45) default NULL COMMENT 'ime na bankata',
-  `account_nbc` varchar(20) default NULL COMMENT 'Bankova smetka',
+  `account_nbc` varchar(28) default NULL COMMENT 'Bankova smetka',
   `address_nbc` varchar(100) default NULL,
   `id_tbacc` int(11) unsigned default '1',
   PRIMARY KEY  (`id_nbc`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='bankovi smetki';
-
 
 
 #
@@ -441,7 +418,6 @@ CREATE TABLE `n_casa` (
   `comments_n_casa` varchar(250) collate cp1251_bulgarian_ci default NULL,
   PRIMARY KEY  (`id_n_casa`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COLLATE=cp1251_bulgarian_ci COMMENT='kasi';
-
 
 
 #
@@ -467,18 +443,16 @@ CREATE TABLE `n_contragent` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='kontragenti';
 
 
-
 #
 # Table structure for table n_country
 #
 
 CREATE TABLE `n_country` (
-  `id_n_country` int(11) NOT NULL,
+  `id_n_country` int(11) NOT NULL auto_increment,
   `code_n_country` char(1) default NULL,
   `name_n_country` varchar(20) default NULL,
   PRIMARY KEY  (`id_n_country`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
-
 
 
 #
@@ -495,7 +469,6 @@ CREATE TABLE `n_doc_type_user_rights` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 
-
 #
 # Table structure for table n_expens
 #
@@ -508,7 +481,6 @@ CREATE TABLE `n_expens` (
   `comments_n_expens` varchar(250) default NULL,
   PRIMARY KEY  (`id_n_expens`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='//tablitsa za razhodite';
-
 
 
 #
@@ -525,7 +497,6 @@ CREATE TABLE `n_group` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='vsichki vidove grupi';
 
 
-
 #
 # Table structure for table n_incoms
 #
@@ -538,7 +509,6 @@ CREATE TABLE `n_incoms` (
   `comments_n_incoms` varchar(250) default NULL,
   PRIMARY KEY  (`id_n_incoms`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='//tablitsa za prihodite';
-
 
 
 #
@@ -555,19 +525,17 @@ CREATE TABLE `n_money` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='opisanie na valutite';
 
 
-
 #
 # Table structure for table n_nm
 #
 
 CREATE TABLE `n_nm` (
-  `id_n_nm` int(11) NOT NULL default '0',
+  `id_n_nm` int(11) NOT NULL auto_increment,
   `postcode_n_nm` int(11) NOT NULL,
   `name_n_nm` varchar(20) default NULL,
   `id_n_oblast` tinyint(4) NOT NULL,
   PRIMARY KEY  (`id_n_nm`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='naseleni mesta';
-
 
 
 #
@@ -586,7 +554,6 @@ CREATE TABLE `n_obekt` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 
-
 #
 # Table structure for table n_oblast
 #
@@ -597,7 +564,6 @@ CREATE TABLE `n_oblast` (
   `id_n_country` tinyint(4) default NULL,
   PRIMARY KEY  (`id_n_oblast`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
-
 
 
 #
@@ -612,7 +578,6 @@ CREATE TABLE `n_product_all_measure` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 
-
 #
 # Table structure for table n_product_consigment
 #
@@ -625,7 +590,6 @@ CREATE TABLE `n_product_consigment` (
   PRIMARY KEY  (`id_pc`),
   KEY `id_pm` (`id_pm`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
-
 
 
 #
@@ -645,7 +609,6 @@ CREATE TABLE `n_product_description` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 
-
 #
 # Table structure for table n_product_fee
 #
@@ -657,7 +620,6 @@ CREATE TABLE `n_product_fee` (
   `other_pf` decimal(10,0) NOT NULL,
   PRIMARY KEY  (`id_pf`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
-
 
 
 #
@@ -682,10 +644,9 @@ CREATE TABLE `n_product_main` (
   `expertsheet_pm` varchar(45) character set cp1251 collate cp1251_bulgarian_ci default NULL,
   `flag_pm` int(3) unsigned zerofill NOT NULL default '000',
   `min_pm` int(11) unsigned NOT NULL default '0',
-  `code_pm` varchar(6) character set cp1251 collate cp1251_bulgarian_ci default NULL,
+  `code_pm` int(11) unsigned NOT NULL default '0',
   PRIMARY KEY  (`id_pm`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
-
 
 
 #
@@ -704,7 +665,6 @@ CREATE TABLE `n_product_price` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 
-
 #
 # Table structure for table n_product_promotion_price
 #
@@ -716,7 +676,6 @@ CREATE TABLE `n_product_promotion_price` (
   `datestop_ppp` date default NULL,
   PRIMARY KEY  (`id_ppp`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
-
 
 
 #
@@ -733,7 +692,6 @@ CREATE TABLE `n_storage` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='skladove';
 
 
-
 #
 # Table structure for table n_type_bacc
 #
@@ -743,7 +701,6 @@ CREATE TABLE `n_type_bacc` (
   `name_tbacc` varchar(30) default NULL,
   PRIMARY KEY  (`id_tbacc`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='tipove bankovi smetki';
-
 
 
 #
@@ -759,7 +716,6 @@ CREATE TABLE `n_type_doc` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='tipove documenti';
 
 
-
 #
 # Table structure for table sl_contragent_obekt
 #
@@ -770,7 +726,6 @@ CREATE TABLE `sl_contragent_obekt` (
   `id_object` int(11) default NULL,
   PRIMARY KEY  (`id_sco`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
-
 
 
 #
@@ -786,7 +741,6 @@ CREATE TABLE `sl_contragent_product` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 
-
 #
 # Table structure for table sl_curs
 #
@@ -798,7 +752,6 @@ CREATE TABLE `sl_curs` (
   `value_sl_curs` decimal(10,5) default NULL,
   PRIMARY KEY  (`id_sl_curs`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='Cursove na money';
-
 
 
 #
@@ -813,7 +766,6 @@ CREATE TABLE `sl_doc_type_num` (
   PRIMARY KEY  (`id_sdtn`),
   UNIQUE KEY `ndt1` (`id_ntd`,`area_number_sdtn`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
-
 
 
 #
@@ -834,9 +786,9 @@ CREATE TABLE `sl_document_facade` (
   `user_df` int(11) unsigned default NULL,
   `user_last_df` int(11) unsigned default NULL,
   `date_edition_df` date default NULL,
-  `time_edition_df` int(11) default NULL,
+  `time_edition_df` time default NULL,
   `distributor_df` int(11) unsigned default NULL,
-  `delivere_df` time default NULL,
+  `delivere_df` int(10) unsigned default NULL,
   `faktura_connection_df` int(10) unsigned default NULL,
   `zaiavka_connection_df` int(10) unsigned default NULL,
   `description_pay_df` tinyint(3) unsigned default NULL,
@@ -852,27 +804,24 @@ CREATE TABLE `sl_document_facade` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 
-
 #
 # Table structure for table sl_document_lines
 #
 
 CREATE TABLE `sl_document_lines` (
   `id_dl` int(10) unsigned NOT NULL auto_increment,
-  `id_pm` int(11) NOT NULL,
-  `id_df` int(10) unsigned NOT NULL,
+  `id_pc` int(11) NOT NULL default '0',
   `id_n_storage` int(10) unsigned NOT NULL,
   `singly_price_dl` double NOT NULL,
   `climb_down_dl` double default NULL,
   `numbers_piece_df` int(10) unsigned NOT NULL,
   `dds_dl` double default NULL,
   `totalall_dl` double default NULL,
+  `id_df` int(10) unsigned NOT NULL default '0',
   PRIMARY KEY  (`id_dl`),
   KEY `n_document_lines_FKIndex1` (`id_n_storage`),
-  KEY `n_document_lines_FKIndex2` (`id_df`),
-  KEY `n_document_lines_FKIndex3` (`id_pm`)
+  KEY `n_document_lines_FKIndex3` (`id_pc`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
-
 
 
 #
@@ -888,13 +837,33 @@ CREATE TABLE `sl_exchange_rate` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='kursove na valutite';
 
 
+#
+# Table structure for table sl_m_operation
+#
+
+CREATE TABLE `sl_m_operation` (
+  `id_sl_mop` int(11) unsigned NOT NULL auto_increment,
+  `c_in_sl_mop` int(11) default NULL,
+  `c_out_sl_mop` int(11) default NULL,
+  `b_in_sl_mop` int(11) default NULL,
+  `b_out_sl_mop` int(11) default NULL,
+  `k_in_sl_mop` int(11) default NULL,
+  `k_out_sl_mop` int(11) default NULL,
+  `m_in_sl_mop` int(11) default NULL,
+  `m_out_sl_mop` int(11) default NULL,
+  `d_rel_sl_mop` int(11) default NULL,
+  `id_doc_fc` int(11) default NULL,
+  `id_doc_s` int(11) default NULL,
+  PRIMARY KEY  (`id_sl_mop`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
 
 #
 # Table structure for table sl_n_obekt
 #
 
 CREATE TABLE `sl_n_obekt` (
-  `Id_sno` int(11) NOT NULL,
+  `Id_sno` int(11) NOT NULL auto_increment,
   `id_ls_n_person` int(11) default NULL,
   `Id_cust` int(11) default NULL,
   `name_sno` varchar(45) default NULL,
@@ -904,7 +873,6 @@ CREATE TABLE `sl_n_obekt` (
   KEY `Customer` (`Id_cust`),
   KEY `sl_n_obekt_FKIndex1` (`id_ls_n_person`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
-
 
 
 #
@@ -922,18 +890,17 @@ CREATE TABLE `sl_nalichnosti` (
 ) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
 
 
-
 #
 # Table structure for table user_master
 #
 
 CREATE TABLE `user_master` (
   `id_um` int(11) NOT NULL auto_increment,
-  `name_um` varchar(14) default NULL,
+  `acc_user` varchar(14) default NULL,
+  `name_um` varchar(30) default NULL,
   `nomer_um` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id_um`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
-
 
 
 #
@@ -952,13 +919,18 @@ CREATE TABLE `user_rights` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 
-
 #
 # View structure for view rep_comm_nal
 #
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`imakante`@`%` SQL SECURITY DEFINER VIEW `rep_comm_nal` AS select sql_no_cache `n_contragent`.`code_contragent` AS `code_contragent`,`n_contragent`.`name_n_contragent` AS `name_n_contragent`,`n_product_main`.`id_pm` AS `id_pm`,`n_product_main`.`code_pm` AS `code_pm`,`n_product_main`.`name_pm` AS `name_pm`,`sl_nalichnosti`.`quant_nal` AS `quant_nal`,`sl_nalichnosti`.`level` AS `level`,`n_storage`.`code_n_storage` AS `code_n_storage`,`n_storage`.`name_n_storage` AS `name_n_storage`,`n_contragent`.`id_contragent` AS `id_contragent`,`n_storage`.`id_n_storage` AS `id_n_storage` from (((((`n_contragent` join `sl_contragent_product` on((`n_contragent`.`id_contragent` = `sl_contragent_product`.`id_contragent`))) join `n_product_main` on((`n_product_main`.`id_pm` = `sl_contragent_product`.`id_pm`))) join `n_product_consigment` on((`n_product_main`.`id_pm` = `n_product_consigment`.`id_pm`))) join `sl_nalichnosti` on((`n_product_consigment`.`id_pc` = `sl_nalichnosti`.`id_pc`))) join `n_storage` on((`n_storage`.`id_n_storage` = `sl_nalichnosti`.`id_n_storage`))) where ((`n_contragent`.`flag_n_contragent` = 0) and (`sl_contragent_product`.`flag_scp` = 0));
+CREATE ALGORITHM=UNDEFINED DEFINER=`imakante`@`%` SQL SECURITY DEFINER VIEW `rep_comm_nal` AS select `n_contragent`.`code_contragent` AS `code_contragent`,`n_contragent`.`name_n_contragent` AS `name_n_contragent`,`n_product_main`.`id_pm` AS `id_pm`,`n_product_main`.`code_pm` AS `code_pm`,`n_product_main`.`name_pm` AS `name_pm`,`sl_nalichnosti`.`quant_nal` AS `quant_nal`,`sl_nalichnosti`.`level` AS `level`,`n_storage`.`code_n_storage` AS `code_n_storage`,`n_storage`.`name_n_storage` AS `name_n_storage`,`n_contragent`.`id_contragent` AS `id_contragent`,`n_storage`.`id_n_storage` AS `id_n_storage` from (((((`n_contragent` join `sl_contragent_product` on((`n_contragent`.`id_contragent` = `sl_contragent_product`.`id_contragent`))) join `n_product_main` on((`n_product_main`.`id_pm` = `sl_contragent_product`.`id_pm`))) join `n_product_consigment` on((`n_product_main`.`id_pm` = `n_product_consigment`.`id_pm`))) join `sl_nalichnosti` on((`n_product_consigment`.`id_pc` = `sl_nalichnosti`.`id_pc`))) join `n_storage` on((`n_storage`.`id_n_storage` = `sl_nalichnosti`.`id_n_storage`))) where ((`n_contragent`.`flag_n_contragent` = 0) and (`sl_contragent_product`.`flag_scp` = 0));
 
+
+#
+# View structure for view rep_doc_pri
+#
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`imakante`@`%` SQL SECURITY DEFINER VIEW `rep_doc_pri` AS select `sl_document_facade`.`number_df` AS `number_df`,`sl_document_facade`.`type_df` AS `type_df`,`sl_document_facade`.`condition_df` AS `condition_df`,`n_contragent`.`code_contragent` AS `code_contragent`,`n_contragent`.`name_n_contragent` AS `name_n_contragent`,`n_contragent`.`bul_n_contragent` AS `bul_n_contragent`,`sl_document_facade`.`total_df` AS `total_df`,`sl_document_facade`.`dds_df` AS `dds_df`,`sl_document_facade`.`date_edition_df` AS `date_edition_df`,`sl_document_facade`.`level_df` AS `level_df`,`n_contragent`.`flag_n_contragent` AS `flag_n_contragent` from (`sl_document_facade` join `n_contragent` on((`n_contragent`.`id_contragent` = `sl_document_facade`.`in_contragent_df`)));
 
 
 #
@@ -1013,15 +985,20 @@ END;
 # Source for procedure ls_procedure_document_facade
 #
 
-CREATE PROCEDURE `ls_procedure_document_facade`(IN comprator TINYINT,      IN in_id_df INT(11),                IN in_id_contragent_in INT(11),     IN in_id_contragent_out INT(11),IN in_id_obekt_out INT(11),
-                                              IN in_id_obekt_in INT(11),           IN in_id_distributor INT(11),       IN in_id_deliver INT(11),           IN in_descriptionPaying INT(3), IN in_docFacadeNumber INT(10),
-                                              IN in_docFacadeUser INT(11),         IN in_docFacadeUserLastEdit INT(11),IN in_id_facturaConnection INT(11), IN in_id_payingOrder INT(11),   IN in_id_zaqvkaConnection INT(11),
-                                              IN in_docFacadeLevel INT(11),        IN in_docFacadeStorage INT(11),     IN in_docFacadeType INT (3),        IN in_docFacadeAllDDS DOUBLE,   IN in_docFacadeTotal DOUBLE,
-                                              IN in_docFacadeCondition VARCHAR(11),IN in_docFacadeDate VARCHAR(10),    IN in_docFacadeComment VARCHAR(250),IN in_dateDeliver VARCHAR(10),  IN in_payingDate VARCHAR(10),
-                                              IN in_docFacadeFlagFinish INT (3) )
+CREATE PROCEDURE `ls_procedure_document_facade`(IN comprator TINYINT,                IN in_id_df INT(11),                IN in_id_contragent_in INT(11),     IN in_id_contragent_out INT(11),IN in_id_obekt_out INT(11),
+                                                IN in_id_obekt_in INT(11),           IN in_id_distributor INT(11),       IN in_id_deliver INT(11),           IN in_descriptionPaying INT(3), IN in_docFacadeNumber INT(10),
+                                                IN in_docFacadeUser INT(11),         IN in_docFacadeUserLastEdit INT(11),IN in_id_facturaConnection INT(11), IN in_id_payingOrder INT(11),   IN in_id_zaqvkaConnection INT(11),
+                                                IN in_docFacadeLevel INT(11),        IN in_docFacadeStorage INT(11),     IN in_docFacadeType INT (3),        IN in_docFacadeAllDDS DOUBLE,   IN in_docFacadeTotal DOUBLE,
+                                                IN in_docFacadeCondition VARCHAR(11),IN in_docFacadeDate VARCHAR(10),    IN in_docFacadeComment VARCHAR(250),IN in_dateDeliver VARCHAR(10),  IN in_payingDate VARCHAR(10),
+                                                IN in_docFacadeFlagFinish INT (3),   IN in_priceOne DOUBLE,              IN in_climbDown DOUBLE )
 BEGIN
-     IF (comprator = 0) THEN
-        SELECT s.id_df,
+IF (comprator = 100) THEN
+     SELECT * FROM mida.n_oblast n;
+END IF;
+
+IF (comprator = 0) THEN
+        SELECT
+         s.id_df,
          s.in_contragent_df,contr_in.code_contragent, contr_in.bul_n_contragent, contr_in.dan_n_contragent, contr_in.name_n_contragent,
          contr_in.address_n_contragent, p_contr_in.name_ls_n_person,
          s.out_contragent_df,contr_out.code_contragent, contr_out.bul_n_contragent,contr_out.dan_n_contragent, contr_out.name_n_contragent,
@@ -1030,7 +1007,7 @@ BEGIN
          s.out_obekt_df, obkt_out.name_n_obekt, obkt_out.address_n_obekt, obkt_out.code_n_obekt,
          s.type_df, s.number_df, s.condition_df, s.out_store_df,
          s.total_df, s.dds_df, s.user_df, s.user_last_df, s.date_edition_df, s.time_edition_df, s.distributor_df,p_dist.code_ls_n_person AS dist,
-         s.delivere_df,p_deliv.code_ls_n_person AS devliv,
+         s.delivere_df,p_deliv.code_ls_n_person AS deliv,
          s.faktura_connection_df, s.zaiavka_connection_df, s.description_pay_df, s.paying_order_df, s.date_deliver_df,
          s.date_pay_df, s.comments_df, s.fag_finish_df, s.id_rep, s.level_df, s.out_contragent_df
          FROM mida.sl_document_facade s
@@ -1044,11 +1021,9 @@ BEGIN
          LEFT JOIN  mida.ls_n_person p_contr_out ON contr_out.id_mol = p_contr_out.id_ls_n_person
          LEFT JOIN mida.n_doc_type_user_rights usr_new ON s.user_df = usr_new.id_ndtur
          LEFT JOIN mida.n_doc_type_user_rights usr_last ON s.user_last_df = usr_last.id_ndtur;
+END IF;
 
-
-
-     END IF;
-     IF (comprator = 1) THEN
+IF (comprator = 1) THEN
          INSERT INTO mida.sl_document_facade(in_contragent_df, out_obekt_df, in_obekt_df, number_df, type_df, condition_df,
          out_store_df, total_df, dds_df, user_df, user_last_df, date_edition_df, distributor_df, delivere_df,
          faktura_connection_df, zaiavka_connection_df, description_pay_df, paying_order_df, date_deliver_df, date_pay_df,
@@ -1422,6 +1397,81 @@ IF (comprator = 19) THEN
       WHERE n.id_n_obekt = in_docFacadeUser;
 END IF;
 
+IF (comprator = 20) THEN
+   IF (in_docFacadeType = 0) THEN
+     SELECT pc.id_pc,n.id_pm, n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
+     pc.parcel_pc, pc.dateofexpire_pc ,
+     s.id_nal, s.id_n_storage,s.level, s.quant_nal, s.quant_rezerv_nal,
+     st.id_n_storage, st.code_n_storage, st.name_n_storage, st.comments_n_storage
+     FROM mida.n_product_main n LEFT JOIN mida.n_product_consigment pc ON pc.id_pm = n.id_pm
+     LEFT JOIN mida.sl_nalichnosti s ON pc.id_pc = s.id_pc
+     LEFT JOIN mida.n_storage st ON st.id_n_storage = s.id_n_storage
+     WHERE n.code_pm LIKE CONCAT('%',in_docFacadeComment,'%') AND n.flag_pm = in_id_obekt_in AND  s.level= in_id_df;
+   END IF;
+   IF (in_docFacadeType = 1) THEN
+       SELECT n.id_pm, n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
+       pc.id_pc,pc.parcel_pc, pc.dateofexpire_pc ,
+       s.id_nal, s.id_n_storage,s.level, s.quant_nal, s.quant_rezerv_nal,
+       st.id_n_storage, st.code_n_storage, st.name_n_storage, st.comments_n_storage
+       FROM mida.n_product_main n LEFT JOIN mida.n_product_consigment pc ON pc.id_pm = n.id_pm
+       LEFT JOIN mida.sl_nalichnosti s ON pc.id_pc = s.id_pc
+       LEFT JOIN mida.n_storage st ON st.id_n_storage = s.id_n_storage
+       WHERE n.code_pm LIKE CONCAT(in_docFacadeComment,'%') AND n.flag_pm = in_id_obekt_in AND  s.level= in_id_df;
+   END IF;
+   IF (in_docFacadeType = 2) THEN
+       SELECT n.id_pm, n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
+       pc.id_pc,pc.parcel_pc, pc.dateofexpire_pc ,
+       s.id_nal, s.id_n_storage,s.level, s.quant_nal, s.quant_rezerv_nal,
+       st.id_n_storage, st.code_n_storage, st.name_n_storage, st.comments_n_storage
+       FROM mida.n_product_main n LEFT JOIN mida.n_product_consigment pc ON pc.id_pm = n.id_pm
+       LEFT JOIN mida.sl_nalichnosti s ON pc.id_pc = s.id_pc
+       LEFT JOIN mida.n_storage st ON st.id_n_storage = s.id_n_storage
+       WHERE n.code_pm LIKE CONCAT('%',in_docFacadeComment) AND n.flag_pm = in_id_obekt_in AND  s.level= in_id_df;
+   END IF;
+END IF;
+IF (comprator = 21) THEN
+   SELECT n.price1_pp, n.price2_pp, n.price3_pp, n.price0_pp FROM mida.n_product_price n
+   WHERE n.id_pp = in_id_obekt_in;
+END IF;
+
+IF (comprator = 22) THEN
+   SELECT n.id_pd, n.m1_pd, n.v1_pd, n.m2_pd, n.v2_pd, n.m3_pd, n.v3_pd FROM mida.n_product_description n
+   WHERE n.id_pd = in_id_obekt_in;
+END IF;
+IF (comprator = 23) THEN
+    SELECT n.dds_pf, n.excise_pf, n.other_pf FROM mida.n_product_fee n
+     WHERE id_pf = in_id_obekt_in;
+END IF;
+IF (comprator = 24) THEN
+    SELECT n.id_pam, n.name_pam, n.sname_pam
+    FROM mida.n_product_all_measure n WHERE id_pam = in_id_obekt_in;
+END IF;
+
+IF (comprator = 25) THEN
+    SELECT * FROM mida.sl_nalichnosti s LEFT JOIN mida.n_product_consigment n ON n.id_pc=s.id_pc
+    LEFT JOIN mida.n_product_main pm ON pm.id_pm = n.id_pm
+    WHERE n.id_pc =in_id_obekt_in AND pm.flag_pm = in_id_df;
+END IF;
+
+IF (comprator = 26) THEN
+    INSERT INTO mida.sl_document_lines(id_df,id_pc,id_n_storage,singly_price_dl,climb_down_dl,
+           numbers_piece_df,dds_dl,totalall_dl)
+    VALUES(in_id_df,in_id_obekt_in,in_id_obekt_out,in_priceOne,in_climbDown,in_id_contragent_in,in_docFacadeAllDDS,in_docFacadeTotal);
+END IF;
+
+IF (comprator = 27) THEN
+      SELECT * FROM mida.sl_nalichnosti s
+      WHERE id_pc = in_id_df AND id_n_storage = in_id_obekt_in;
+END IF;
+IF (comprator = 28) THEN
+     UPDATE mida.sl_nalichnosti s SET
+     s.quant_rezerv_nal = quant_rezerv_nal + in_id_contragent_in
+     WHERE id_pc = in_id_obekt_in AND id_n_storage = in_id_obekt_out ;
+
+END IF;
+
+
+
 END;
 
 #
@@ -1471,6 +1521,64 @@ BEGIN
 
      IF (comprator = 8) THEN
        DELETE FROM `n_group`;
+     END IF;
+END;
+
+#
+# Source for procedure nom_procedure_baccount
+#
+
+CREATE PROCEDURE `nom_procedure_baccount`(IN comprator TINYINT, IN in_id INT(11), IN in_id_group INT(11), IN in_code VARCHAR(10),
+                IN in_name VARCHAR(45), IN in_account VARCHAR(28), IN in_address VARCHAR(100), IN in_id_tacc INT(11))
+BEGIN
+     IF (comprator = 0) THEN
+          SELECT n.id_nbc, n.id_n_group, ng.name_n_group, n.code_nbc, n.name_nbc, n.account_nbc, n.address_nbc, 
+            n.id_tbacc, nta.name_tbacc FROM n_baccount n
+            LEFT OUTER JOIN n_group ng ON ng.id_n_group = n.id_n_group
+            LEFT OUTER JOIN n_type_bacc nta ON nta.id_tbacc = n.id_tbacc;
+     END IF;
+     IF (comprator = 1) THEN
+        INSERT INTO `n_baccount`(id_n_group, code_nbc, name_nbc, account_nbc, address_nbc, id_tbacc) 
+        VALUES (in_id_group, in_code, in_name, in_account, in_address, in_id_tacc);
+     END IF;
+     IF (comprator = 2) THEN
+        UPDATE `n_baccount` SET id_n_group = in_id_group, code_nbc = in_code, name_nbc = in_name, account_nbc = in_account,
+        address_nbc = in_address, id_tbacc = in_id_tacc WHERE `n_baccount`.id_nbc = in_id;
+     END IF;
+     IF (comprator = 3) THEN
+        DELETE FROM `n_baccount`  WHERE id_nbc = in_id;
+     END IF;
+     IF (comprator = 4) THEN
+        SELECT n.id_n_group, ng.name_n_group, n.code_nbc, n.name_nbc, n.account_nbc, n.address_nbc, 
+            n.id_tbacc, nta.name_tbacc FROM n_baccount n
+            LEFT OUTER JOIN n_group ng ON ng.id_n_group = n.id_n_group
+            LEFT OUTER JOIN n_type_bacc nta ON nta.id_tbacc = n.id_tbacc
+            WHERE n.id_nbc = in_id;
+     END IF;
+     IF (comprator = 5) THEN
+        SELECT n.id_nbc, n.id_n_group, ng.name_n_group, n.code_nbc, n.name_nbc, n.account_nbc, n.address_nbc, 
+            n.id_tbacc, nta.name_tbacc FROM n_baccount n
+            LEFT OUTER JOIN n_group ng ON ng.id_n_group = n.id_n_group
+            LEFT OUTER JOIN n_type_bacc nta ON nta.id_tbacc = n.id_tbacc
+            WHERE n.code_nbc LIKE CONCAT('%',in_code,'%') AND n.name_nbc LIKE CONCAT('%',in_name,'%');
+     END IF;
+     IF (comprator = 6) THEN
+        SELECT ntb.id_tbacc, ntb.name_tbacc FROM n_type_doc ntb;
+     END IF;
+     IF (comprator = 7) THEN
+        SELECT MAX(n.id_nbc) FROM `n_baccount` n;
+     END IF;
+     IF (comprator = 8) THEN
+        SELECT MAX(n.code_nbc) AS account_code FROM `n_baccount` n;
+     END IF;
+     IF (comprator = 9) THEN
+        SELECT MAX(ntd.id_ntd) AS id_ntd FROM n_type_doc ntd;
+     END IF;
+     IF (comprator = 10) THEN
+        SELECT ng.id_n_group, ng.name_n_group FROM n_group ng WHERE n.nom_n_group = 6;
+     END IF;
+     IF (comprator = 11) THEN
+        SELECT MAX(ng.id_n_group) AS id_n_group FROM n_group n WHERE n.nom_n_group = 6;
      END IF;
 END;
 
@@ -1835,7 +1943,7 @@ BEGIN
         FROM `n_nm` n, `n_oblast` obl WHERE n.id_n_oblast=obl.id_n_oblast;
      END IF;
      IF (comprator = 1) THEN
-        INSERT INTO `n_nm`( id_n_nm, postcode_n_nm, name_n_nm, id_n_oblast) VALUES(in_id, in_postcode, in_name, in_id_oblast);
+        INSERT INTO `n_nm`(postcode_n_nm, name_n_nm, id_n_oblast) VALUES(in_postcode, in_name, in_id_oblast);
      END IF;
      IF (comprator = 2) THEN
         UPDATE `n_nm` SET postcode_n_nm = in_postcode, name_n_nm = in_name, id_n_oblast = in_id_oblast
@@ -2349,7 +2457,7 @@ BEGIN
             FROM sl_doc_type_num n LEFT OUTER JOIN n_type_doc ntd ON ntd.id_ntd = n.id_ntd;
      END IF;
      IF (comprator = 1) THEN
-        INSERT INTO `sl_doc_type_num`(id_ntd, area_number_sdtn, name_sdtn) VALUES(in_id_doctype, in_area, in_name);
+        INSERT INTO sl_doc_type_num (id_ntd, area_number_sdtn, name_sdtn) VALUES(in_id_doctype, in_area, in_name);
      END IF;
      IF (comprator = 2) THEN
         UPDATE `sl_doc_type_num` SET id_ntd = in_id_doctype, area_number_sdtn = in_area, name_sdtn = in_name
@@ -2371,7 +2479,7 @@ BEGIN
         SELECT ntd.id_ntd, ntd.name_ntd FROM n_type_doc ntd;
      END IF;
      IF (comprator = 7) THEN
-        SELECT MAX(n.id_sdtn) FROM `sl_doc_type_num` n;
+        SELECT MAX(n.id_sdtn) FROM  `sl_doc_type_num` n;
      END IF;
      IF (comprator = 8) THEN
         SELECT MAX(n.area_number_sdtn) AS area_number FROM `sl_doc_type_num` n;
@@ -2379,6 +2487,25 @@ BEGIN
      IF (comprator = 9) THEN
         SELECT MAX(ntd.id_ntd) AS id_ntd FROM n_type_doc ntd;
      END IF;
+END;
+
+#
+# Source for procedure test_docfacade
+#
+
+CREATE PROCEDURE `test_docfacade`(IN comprator TINYINT,                IN in_id_df INT(11),                IN in_id_contragent_in INT(11),     IN in_id_contragent_out INT(11),IN in_id_obekt_out INT(11),
+                                                IN in_id_obekt_in INT(11),           IN in_id_distributor INT(11),       IN in_id_deliver INT(11),           IN in_descriptionPaying INT(3), IN in_docFacadeNumber INT(10),
+                                                IN in_docFacadeUser INT(11),         IN in_docFacadeUserLastEdit INT(11),IN in_id_facturaConnection INT(11), IN in_id_payingOrder INT(11),   IN in_id_zaqvkaConnection INT(11),
+                                                IN in_docFacadeLevel INT(11),        IN in_docFacadeStorage INT(11),     IN in_docFacadeType INT (3),        IN in_docFacadeAllDDS DOUBLE,   IN in_docFacadeTotal DOUBLE,
+                                                IN in_docFacadeCondition VARCHAR(11),IN in_docFacadeDate VARCHAR(10),    IN in_docFacadeComment VARCHAR(250),IN in_dateDeliver VARCHAR(10),  IN in_payingDate VARCHAR(10),
+                                                IN in_docFacadeFlagFinish INT (3))
+BEGIN
+
+IF (comprator = 0) THEN
+     SELECT * FROM mida.sl_document_facade s;
+END IF;
+
+
 END;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
