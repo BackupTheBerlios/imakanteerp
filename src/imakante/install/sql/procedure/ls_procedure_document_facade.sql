@@ -8,9 +8,6 @@ CREATE PROCEDURE `ls_procedure_document_facade`(IN comprator TINYINT,           
                                                 IN in_docFacadeCondition VARCHAR(11),IN in_docFacadeDate VARCHAR(10),    IN in_docFacadeComment VARCHAR(250),IN in_dateDeliver VARCHAR(10),  IN in_payingDate VARCHAR(10),
                                                 IN in_docFacadeFlagFinish INT (3),   IN in_priceOne DOUBLE,              IN in_climbDown DOUBLE )
 BEGIN
-IF (comprator = 100) THEN
-     SELECT * FROM mida.n_oblast n;
-END IF;
 
 IF (comprator = 0) THEN
         SELECT
@@ -25,7 +22,7 @@ IF (comprator = 0) THEN
          s.total_df, s.dds_df, s.user_df, s.user_last_df, s.date_edition_df, s.time_edition_df, s.distributor_df,p_dist.code_ls_n_person AS dist,
          s.delivere_df,p_deliv.code_ls_n_person AS deliv,
          s.faktura_connection_df, s.zaiavka_connection_df, s.description_pay_df, s.paying_order_df, s.date_deliver_df,
-         s.date_pay_df, s.comments_df, s.fag_finish_df, s.id_rep, s.level_df, s.out_contragent_df
+         s.date_pay_df, s.comments_df, s.flag_finish_df, s.id_rep, s.level_df, s.out_contragent_df
          FROM mida.sl_document_facade s
          LEFT JOIN mida.n_obekt obkt_in ON s.in_obekt_df=obkt_in.id_n_obekt
          LEFT JOIN mida.n_obekt obkt_out ON s.out_obekt_df=obkt_out.id_n_obekt
@@ -49,7 +46,8 @@ IF (comprator = 1) THEN
            in_id_deliver,in_id_facturaConnection,in_id_zaqvkaConnection, in_descriptionPaying,in_id_payingOrder,in_dateDeliver,in_payingDate,
            in_docFacadeComment,in_docFacadeFlagFinish, in_docFacadeLevel,in_id_contragent_out);
      END IF;
-     IF (comprator = 2) THEN
+
+IF (comprator = 2) THEN
           UPDATE mida.sl_document_facade s SET
         s.in_contragent_df = in_id_contragent_in,
         s.out_obekt_df = in_id_obekt_out,
@@ -111,13 +109,13 @@ END IF;
 IF (comprator = 6) THEN
         SELECT MAX(number_df) AS maxNumber FROM mida.sl_document_facade s, sl_doc_type_num sl, n_doc_type_user_rights ur
         WHERE number_df like CONCAT(sl.area_number_sdtn,'%')
-        AND sl.id_sdtn= ur.id_sdtn AND ur.id_ndtur = in_docFacadeUser;
+        AND sl.id_sdtn=  ur.id_sdtn  AND ur.id_ndtur = in_docFacadeUser  AND s.level_df = in_id_obekt_in;
 END IF;
 
 
-     #IF (comprator = 7) THEN
-     #
-    # END IF;
+IF (comprator = 7) THEN
+          SELECT MAX(id_df) as id FROM mida.sl_document_facade s;
+END IF;
 
     # 13 - DISTRIBUTOR
     # 14 - DELIVER
@@ -446,7 +444,7 @@ IF (comprator = 20) THEN
    END IF;
 END IF;
 IF (comprator = 21) THEN
-   SELECT n.price1_pp, n.price2_pp, n.price3_pp, n.price0_pp FROM mida.n_product_price n
+   SELECT n.price1_pp, n.price2_pp, n.price3_pp, n.price0_pp,n.id_sl_curs FROM mida.n_product_price n
    WHERE n.id_pp = in_id_obekt_in;
 END IF;
 
@@ -485,9 +483,10 @@ IF (comprator = 28) THEN
      WHERE id_pc = in_id_obekt_in AND id_n_storage = in_id_obekt_out ;
 
 END IF;
-
-
-
+IF (comprator = 29) THEN
+    SELECT s.id_sl_curs, s.id_n_money, s.value_sl_curs,cod_lat_n_money FROM mida.sl_curs s LEFT JOIN n_money m ON m.id_n_money = s.id_n_money
+    WHERE s.id_sl_curs = in_id_obekt_in;
+END IF;
 END $$
 
 DELIMITER ;

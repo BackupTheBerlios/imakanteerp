@@ -34,6 +34,9 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
                   myParent.setID_PP((Integer)table.getValueAt(row,getColumnIndex("id_pp")));
                   pricelist = myParent.getCountriesT().getPriceListByID(myParent.getID_PP());
                   myParent.setWorkPriceListProduct(pricelist);
+                  
+                  
+                  
                   myParent.setBrojProduct((Integer)table.getValueAt(row,getColumnIndex("quant_nal"))-(Integer)table.getValueAt(row,getColumnIndex("quant_rezerv_nal")));
                   myParent.setID_PD((Integer)table.getValueAt(row,getColumnIndex("id_pd")));
                   productDescription = myParent.getCountriesT().getProductDescriptionByID(myParent.getID_PD());
@@ -90,7 +93,7 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
     private  java.sql.ResultSet rs;
     private FrmDocumentFacade myParent;
    private String columnName[] = null;
-   private double pricelist[] = new double[3];
+   private double pricelist[] = new double[4];
    private String productDescription[][] =new String[3][2];
    private double productFee[]  = new double[3];
     

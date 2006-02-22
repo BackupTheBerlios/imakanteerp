@@ -28,6 +28,12 @@
  *comprator = 26: insertDocLine()
  *comprator = 27: checkForEnoughProducts()
  *comprator = 28: preserveProducts()
+ *comprator = 29: getValutaByID()
+ *comprator = 30:
+ *comprator = 31:
+ *comprator = 32:
+ *comprator = 33:
+ *
  *
  *
  * 
@@ -843,10 +849,11 @@ public java.sql.ResultSet getTableFinishTextContragent(String in , int sqlselect
     
 }
 
-public int getDocNumberLast(int iduser)
+public int getDocNumberLast(int iduser, int level)
 {
     int lastNumber = 0;
-   
+    int oldId_obekt_in  = getID_Obekt_IN();
+    setID_Obekt_IN(level);
      int oldIntValue = getUserDocFacade();
      setUserDocFacade(iduser);
      this.comprator = 6;
@@ -865,7 +872,7 @@ public int getDocNumberLast(int iduser)
         }
      
     setUserDocFacade(oldIntValue);
-    
+    setID_Obekt_IN(oldId_obekt_in);
     return lastNumber;
     
 }
@@ -956,7 +963,27 @@ public java.sql.ResultSet getTableProductInfo(String in , int sqlselect,int leve
     setCommentDocFacade(in);  
     int oldID_df = getID_DocFacade();
     int oldID_obekt_in = getID_Obekt_IN();
-    setID_DocFacade(level);
+     int levelForNali4nost = 0;
+    switch(level)
+    {
+        case 2 :
+        {
+           levelForNali4nost =1;
+            break;
+        }
+        case 3 :
+        {
+            levelForNali4nost =0;
+            break;
+        }
+        case 1 :
+        {
+            levelForNali4nost =1;
+            break;
+        }
+    }
+    
+    setID_DocFacade(levelForNali4nost);
     setID_Obekt_IN(flag);
     
      this.comprator = 20;
@@ -979,7 +1006,7 @@ public java.sql.ResultSet getTableProductInfo(String in , int sqlselect,int leve
 }
 public double[] getPriceListByID(int in_id_pp)
 {
-    double pricelist[] = new double[3];
+    double pricelist[] = new double[4];
    int oldIntValue = getID_Obekt_IN();
    setID_Obekt_IN(in_id_pp);
      this.comprator = 21;
@@ -992,6 +1019,8 @@ public double[] getPriceListByID(int in_id_pp)
               pricelist[0] = rs.getDouble("price1_pp");
               pricelist[1] = rs.getDouble("price2_pp");
               pricelist[2] = rs.getDouble("price3_pp");
+              Integer  curs = ( Integer)rs.getInt("id_sl_curs");
+              pricelist[3] =curs.doubleValue();
             }
                
         }
@@ -1210,6 +1239,32 @@ public double[] getPriceListByID(int in_id_pp)
        setID_Obekt_IN(oldID_obekt_in);
      
  }
+ public String getValutaByID(int in_id_curs)
+ {
+     String valuta = new String();
+      int oldID_obekt_in = getID_Obekt_IN();
+      comprator=29;
+      setID_Obekt_IN(in_id_curs);
+       try
+        {
+            registerParameters();
+            rs = cstm.executeQuery();
+            while(rs.next())
+            {
+               valuta= (String) rs.getString("cod_lat_n_money");
+            }
+               
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }       
+      
+      
+     setID_Obekt_IN(oldID_obekt_in); 
+     return valuta;
+ }
+  
 // <-----------------------
     
 }// end class

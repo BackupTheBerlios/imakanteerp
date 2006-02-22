@@ -48,6 +48,15 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     final private static int OBEKT_NAME =1;
     final private static int OBEKT_ADDRESS =2;
     final private static int OBEKT_TEL =3;
+    final private static int FAKTURI=1;
+    final private static int POFORMA_FAKTURA=2;
+    final private static int STOKOVA_RAZPISKA_SK1=6;
+    final private static int STOKOVA_RAZPISKA_SK2=8;
+    final private static int KONSGNACIONEN_PROTOKOL=9;
+   
+             
+    
+    
     
     /** Creates new form aeGroup */
     public aeDocumentFacade(imakante.com.vcomponents.iInternalFrame frame, boolean modal, boolean isnew,
@@ -88,7 +97,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         this.setLocation(x, y);
         
         if(isNew) {
-            docNumberLast = myParent.getCountriesT().getDocNumberLast(userDocFacade);
+            docNumberLast = myParent.getCountriesT().getDocNumberLast(myParent.getUserEditFortm(),levelDocFacade);
             nowDate = new Date();
             repainUserEdit(0);
         } else {
@@ -184,15 +193,20 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jLabelPricelist_2 = new javax.swing.JLabel();
         jLabelPrice_1 = new javax.swing.JLabel();
         jLabelPrice_2 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabelValuta = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanelComent = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTextFieldComment = new javax.swing.JTextField();
         jPanelUser = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jTextFieldUserEdit = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
         jTextFieldUserLastEdit = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -231,7 +245,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jPanel1.add(jButtonClose);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 670, 477, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 670, 280, -1));
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -568,10 +582,11 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 2, 11));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel4.setPreferredSize(new java.awt.Dimension(446, 60));
         jLabel16.setText("\u0414\u0438\u0441\u0442\u0440.:");
         jPanel4.add(jLabel16);
 
-        jTextFieldDistr.setPreferredSize(new java.awt.Dimension(100, 20));
+        jTextFieldDistr.setPreferredSize(new java.awt.Dimension(80, 20));
         jTextFieldDistr.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldDistrKeyPressed(evt);
@@ -583,7 +598,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jLabel17.setText("\u0414\u043e\u0441\u0442.:");
         jPanel4.add(jLabel17);
 
-        jTextFieldDeliver.setPreferredSize(new java.awt.Dimension(100, 20));
+        jTextFieldDeliver.setPreferredSize(new java.awt.Dimension(80, 20));
         jTextFieldDeliver.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldDeliverKeyPressed(evt);
@@ -596,7 +611,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanel4.add(jLabel18);
 
         jTextFieldDateDeliver.setMinimumSize(new java.awt.Dimension(80, 20));
-        jTextFieldDateDeliver.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextFieldDateDeliver.setPreferredSize(new java.awt.Dimension(70, 20));
         jTextFieldDateDeliver.setInputVerifier(new imakante.com.InputDateVerifier());
         jTextFieldDateDeliver.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -606,7 +621,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jPanel4.add(jTextFieldDateDeliver);
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 450, 50));
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 430, 60));
 
         jPanelDocLine.setLayout(new javax.swing.BoxLayout(jPanelDocLine, javax.swing.BoxLayout.X_AXIS));
 
@@ -619,7 +634,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jPanelDocLine.add(jScrollPane2);
 
-        jPanel2.add(jPanelDocLine, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 730, 210));
+        jPanel2.add(jPanelDocLine, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 730, 200));
 
         jPanelPrice.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel19.setText("\u0412\u0438\u0434 \u043f\u043b\u0430\u0449\u0430\u043d\u0435:");
@@ -629,7 +644,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jLabel20.setText("\u0414\u0430\u0442\u0430:");
 
-        jTextFieldPayDate.setPreferredSize(new java.awt.Dimension(100, 20));
+        jTextFieldPayDate.setPreferredSize(new java.awt.Dimension(70, 20));
         jTextFieldPayDate.setInputVerifier(new imakante.com.InputDateVerifier());
 
         org.jdesktop.layout.GroupLayout jPanelPriceLayout = new org.jdesktop.layout.GroupLayout(jPanelPrice);
@@ -714,6 +729,12 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 530, 390, 60));
 
         jButton1.setText("\u0418\u0417\u041f\u042a\u041b\u041d\u0418");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 640, -1, -1));
 
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -726,31 +747,57 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanelPriceList.setLayout(new java.awt.GridBagLayout());
 
         jPanelPriceList.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabelPricelist_1.setText("\u0426\u0435\u043d\u0430 1");
+        jLabelPricelist_1.setText("\u0426\u0435\u043d\u0430 1:");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 5);
         jPanelPriceList.add(jLabelPricelist_1, gridBagConstraints);
 
-        jLabelPricelist_2.setText("\u0426\u0435\u043d\u0430 2");
+        jLabelPricelist_2.setText("\u0426\u0435\u043d\u0430 2:");
         gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 5);
         jPanelPriceList.add(jLabelPricelist_2, gridBagConstraints);
 
         jLabelPrice_1.setText("1");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 5);
         jPanelPriceList.add(jLabelPrice_1, gridBagConstraints);
 
         jLabelPrice_2.setText("1");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 5);
         jPanelPriceList.add(jLabelPrice_2, gridBagConstraints);
+
+        jLabel25.setText("\u0412\u0430\u043b\u0443\u0442\u0430:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 5);
+        jPanelPriceList.add(jLabel25, gridBagConstraints);
+
+        jLabelValuta.setText("\u043b\u0432.");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 5);
+        jPanelPriceList.add(jLabelValuta, gridBagConstraints);
+
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator1.setPreferredSize(new java.awt.Dimension(2, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 5);
+        jPanelPriceList.add(jSeparator1, gridBagConstraints);
 
         org.jdesktop.layout.GroupLayout jPanel6Layout = new org.jdesktop.layout.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -765,7 +812,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                         .add(jLabelAllBrojProduct))
                     .add(jLabel32))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelPriceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE))
+                .add(jPanelPriceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -773,12 +820,12 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 .add(jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel30)
                     .add(jLabelAllBrojProduct))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 17, Short.MAX_VALUE)
                 .add(jLabel32)
                 .addContainerGap())
-            .add(jPanelPriceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+            .add(jPanelPriceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
         );
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 270, 280, 50));
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 270, 300, 60));
 
         jSplitPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jSplitPane1.setDividerLocation(0);
@@ -789,7 +836,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanelComent.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel23.setText("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440:");
 
-        jTextField3.setPreferredSize(new java.awt.Dimension(300, 20));
+        jTextFieldComment.setPreferredSize(new java.awt.Dimension(300, 20));
 
         org.jdesktop.layout.GroupLayout jPanelComentLayout = new org.jdesktop.layout.GroupLayout(jPanelComent);
         jPanelComent.setLayout(jPanelComentLayout);
@@ -799,7 +846,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 .addContainerGap()
                 .add(jLabel23)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 645, Short.MAX_VALUE)
+                .add(jTextFieldComment, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 645, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelComentLayout.setVerticalGroup(
@@ -808,7 +855,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 .addContainerGap()
                 .add(jPanelComentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel23)
-                    .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jTextFieldComment, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jSplitPane1.setLeftComponent(jPanelComent);
@@ -854,8 +901,18 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 770, 670));
 
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 660, 110, -1));
+
+        jLabel24.setText("\u041a\u0443\u0440\u0441:");
+        getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 660, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+// TODO add your handling code here:
+        createDocument(myParent.getDocFacadeType());
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
 // TODO add your handling code here:
@@ -1328,6 +1385,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
@@ -1349,6 +1408,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private javax.swing.JLabel jLabelPrice_2;
     private javax.swing.JLabel jLabelPricelist_1;
     private javax.swing.JLabel jLabelPricelist_2;
+    private javax.swing.JLabel jLabelValuta;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1364,10 +1424,12 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private javax.swing.JPanel jPanelPriceList;
     private javax.swing.JPanel jPanelUser;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextFieldAddress;
     private javax.swing.JTextField jTextFieldBulstat;
+    private javax.swing.JTextField jTextFieldComment;
     private javax.swing.JTextField jTextFieldConNom;
     private javax.swing.JTextField jTextFieldContTel;
     private javax.swing.JTextField jTextFieldContrMOL;
@@ -1411,6 +1473,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private int productDescription_2;
     private int productDescription_3; 
     private boolean isPressKey = false;
+    private boolean isTyped = false;
 //----------------------------------------
     
     
@@ -1507,27 +1570,40 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jTable1.addKeyListener(new KeyListener() {
             public void keyPressed(KeyEvent e) {
                 
+                
+               
+                
                 if(e.getKeyCode()>=48 && e.getKeyCode()<=57) str += e.getKeyChar();
                 columnSelect = jTable1.getSelectedColumn();
                 rowSelect = jTable1.getSelectedRow();
-                System.out.println("===================================");
+                
+                  if(!isTyped)
+                {
+                Object value = jTable1.getCellEditor(rowSelect,columnSelect).getCellEditorValue();
+                Component com = jTable1.getCellEditor(rowSelect,columnSelect).getTableCellEditorComponent(jTable1,value,true,rowSelect,columnSelect);
+                JTextField ff = (JTextField) com;
+                ff.selectAll();
+                System.out.println(" >>>>>>>>>>>.. "+ff.getText()); 
+                } 
+                 isTyped = true;
+                System.out.println("===============keyPressed====================");
                 System.out.print("jTable1.getSelectedRow: ");
                 System.out.println(jTable1.getSelectedRow());
                 System.out.print("jTable1.getSelectedColumn: ");
                 System.out.println(jTable1.getSelectedColumn());
-                System.out.println("===================================");
+                System.out.println("================keyPressed===================");
                
                  if(e.getKeyCode()== KeyEvent.VK_F8) // za testove
                  {
                                 
-                    Object value = jTable1.getCellEditor(rowSelect,columnSelect).getCellEditorValue();
+                 //   Object value = jTable1.getCellEditor(rowSelect,columnSelect).getCellEditorValue();
                     
-                    Component com = jTable1.getCellEditor(rowSelect,columnSelect).getTableCellEditorComponent(jTable1,value,true,rowSelect,columnSelect);
-                    JTextField ff = (JTextField) com;
-                    ff.selectAll();
-                     System.out.println(" >>>>>>>>>>>.. "+ff.getText());
+                  //  Component com = jTable1.getCellEditor(rowSelect,columnSelect).getTableCellEditorComponent(jTable1,value,true,rowSelect,columnSelect);
+                //    JTextField ff = (JTextField) com;
+                //    ff.selectAll();
+                //     System.out.println(" >>>>>>>>>>>.. "+ff.getText());
                    
-                   
+                    isTyped = false;
                   
                  }
                 
@@ -1538,11 +1614,11 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     System.out.print("jTable1.getSelectedColumn: ");
                     System.out.println(columnSelect);
                     System.out.println("===========KeyEvent.VK_ENTER================");
-                                       
+                                    
                     if(columnSelect == 0) {
                         // popylvat se drugite stoinosti na tdoc line
                         isFinishRow = false;
-                       
+                         
                         ((docLineTableModel) jTable1.getModel()).enableCellEditable(3);
                        
                       
@@ -1551,7 +1627,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     if(columnSelect == 3)   // cenova lista
                     {
                                     
-                       
+                     
                         ((docLineTableModel) jTable1.getModel()).enableCellEditable(4);
                         ((docLineTableModel) jTable1.getModel()).enableCellEditable(5);
                         ((docLineTableModel) jTable1.getModel()).enableCellEditable(6);
@@ -1649,7 +1725,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                   //  str = String.valueOf(jTable1.getValueAt(rowSelect,columnSelect));
                     System.out.println("str :::"+str);
                   //  java.sql.ResultSet rs1 = myParent.getCountriesT().getTableProductInfo(str,0,myParent.getDocFacadeLevel(),0);
-                    java.sql.ResultSet rs1 = myParent.getCountriesT().getTableProductInfo(str,0,2,1); // za test
+                    java.sql.ResultSet rs1 = myParent.getCountriesT().getTableProductInfo(str,0,2,0); // za test
                     Connection conn1 = myParent.getCountriesT().getConn();
                    
                     showProductDocLine dialog = new showProductDocLine(myParent,true,rs1,conn1);
@@ -1681,7 +1757,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     
                     jLabelPrice_1.setText(String.valueOf(myParent.getWorkPriceListProduct()[calculatePriceList(myParent.getPriceList())[0]-1]));
                     jLabelPrice_2.setText(String.valueOf(myParent.getWorkPriceListProduct()[calculatePriceList(myParent.getPriceList())[1]-1]));
-                    
+                    Double curs = myParent.getWorkPriceListProduct()[3];
+                    jLabelValuta.setText(myParent.getCountriesT().getValutaByID(curs.intValue()));
                     
                     
                     jTable1.setValueAt(myParent.getBrojProduct(),jTable1.getSelectedRow(),4);
@@ -1731,10 +1808,15 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                  
              if(e.getKeyCode()== KeyEvent.VK_ENTER)
              {
-                 
+                 if(columnSelect == 2)
+                 {
+                                  
+                   
+                 }
+                     
                   if(columnSelect == 3)   // cenova lista ---------------------------------------------
                     {
-                        
+                       
                       int pp = (Integer)  jTable1.getValueAt(rowSelect,columnSelect);
                       double p[] = new double[3];
                       if(pp>=1 && pp <=3)  
@@ -1765,11 +1847,12 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                       }
                         ((docLineTableModel) jTable1.getModel()).disableCellEditable(3);
                         ((docLineTableModel) jTable1.getModel()).enableCellEditable(4);
-                       
+                   
+                        
                     }
                   if(columnSelect == 4)   // broiki ot produkta ---------------------------------------------
                     {
-                      
+                     
                       int br = (Integer) jTable1.getValueAt(rowSelect,columnSelect) ;
                       if(br <= myParent.getBrojProduct())
                       {
@@ -1782,6 +1865,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     }
                  if(columnSelect == 5)   // razfasovka 1 ---------------------------------------------
                    {
+                     isTyped = false;
                       int rz1 = (Integer) jTable1.getValueAt(rowSelect,columnSelect);
                       int br = (Integer) jTable1.getValueAt(rowSelect,4) ;
                       int oldRz1 = calculateProductDescription(br,productDescription_2,productDescription_3)[0];
@@ -1873,7 +1957,16 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 
                 
             }
-            public void keyTyped(KeyEvent e) {
+            public void keyTyped(KeyEvent e) 
+            {
+               /* if(!isTyped)
+                {
+                Object value = jTable1.getCellEditor(rowSelect,columnSelect).getCellEditorValue();
+                Component com = jTable1.getCellEditor(rowSelect,columnSelect).getTableCellEditorComponent(jTable1,value,true,rowSelect,columnSelect);
+                JTextField ff = (JTextField) com;
+                ff.selectAll();
+                System.out.println(" >>>>>>>>>>>.. "+ff.getText()); 
+                }*/
                 
             }
         });
@@ -1994,7 +2087,58 @@ private int[] calculatePriceList(int startpricelist)
      
      
  }
- 
+ private void createDocument(int typeDoc)
+ {
+     switch(typeDoc)
+     {
+         case FAKTURI :
+         {
+             
+             break;
+         }
+         case POFORMA_FAKTURA :
+         {
+             
+             break;
+         }
+         case STOKOVA_RAZPISKA_SK1 :
+         {
+             int facturaConnection=99;
+             int payingOrder = 99;
+             int zaqvkaConnection = 99;
+             int docFacadeLevel = myParent.getDocFacadeLevel();
+             int docFacadeStorage = myParent.getStorageOUTProduct();
+             int docFacadeType = myParent.getDocFacadeType();
+             double docFacadeTotal = Double.parseDouble(jLabelAllTotal.getText());
+             double docFacadeAllDDS = Double.parseDouble(jLabelAllDDS.getText());
+             String docFacadeCondition = "0";
+             String docFacadeDate = "00";
+             String docFacadeCommnet = jTextFieldComment.getText();
+             String dateDeliver = "00";
+             String payingDate = "";
+             myParent.getCountriesT().updateRow(myParent.getID_DocFacade(),myParent.getID_Contragent(),0,myParent.getID_Obekt(),
+                     0,myParent.getID_Distributor(),myParent.getID_Deliver(),jComboBoxVidPla6tane.getSelectedIndex(),
+                     Integer.parseInt(myParent.getNumberDocFacade()),myParent.getUserEditFortm(),myParent.getUserEditFortm(),
+                     facturaConnection,payingOrder,zaqvkaConnection,docFacadeLevel,docFacadeStorage,docFacadeType,
+                     docFacadeTotal,docFacadeAllDDS,docFacadeCondition,docFacadeDate,docFacadeCommnet,dateDeliver,payingDate);
+             break;
+         }
+         case STOKOVA_RAZPISKA_SK2 :
+             
+         {
+             break;
+         }
+         case KONSGNACIONEN_PROTOKOL :
+         {
+             
+             break;
+         }
+         
+         
+         
+         
+     }
+ }
  
  
 }// end class

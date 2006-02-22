@@ -21,7 +21,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
         super(title);
        // myframe = frame; 
      
-        this.userEditForm = user;
+       this.userEditForm = user;
        this.levelDocFacade = level;
        this.priceList = pricelist;
        this.docType = doctype;
@@ -303,14 +303,20 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
     private void jButtonNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewActionPerformed
 // TODO add your handling code here:
        setAllVariablesDefault();
-
+        
+       getCountriesT().insertRow(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,null,null,null,null,null);
+       setID_DocFacade(getCountriesT().getMaxId());
+       
+       
       //  setID_DocFacade(countriesT.getMaxId());
     //    refreshTable();
          try 
             {
+             if(getID_DocFacade()!=-1)
+             {
                 dialog = new aeDocumentFacade(this, true,true,priceList);;
                 dialog.setVisible(true);
-                
+             }  
             } catch(Exception e)
             {
                 e.printStackTrace();
@@ -326,7 +332,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 
-                FrmDocumentFacade frCN =   new FrmDocumentFacade("ttt",1,0,1,1,1);
+                FrmDocumentFacade frCN =   new FrmDocumentFacade("ttt",2,1,1,1,1);
                 fr.add(frCN);
                 frCN.setSize(400,400);
                 frCN.setVisible(true);
@@ -394,6 +400,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
    private int idProductDescription;
    private int idProductPrice;
    private int idProductFee;
+   private int idCurs;
    
    
    private int descriptionPaying =0;
@@ -741,7 +748,16 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
     public int getID_Obekt() 
     {
         return idObect;
+    }
+      public void setID_Curs(int  id) 
+    {
+        this.idCurs = id;
+    }
+    public int getID_Curs() 
+    {
+        return idCurs;
     }   
+    
     public void setID_Distributor(int  id) 
     {
         this.idDistributor = id;
