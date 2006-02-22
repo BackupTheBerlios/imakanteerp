@@ -20,6 +20,7 @@ public class dlgLogin extends javax.swing.JDialog {
         initComponents();
         fillCombo();
         jUserTxtField.requestFocus();
+        jUserTxtField.selectAll();
         sMsgTitle = imakante.com.pubMain.getMsgTitle();
     }
     
@@ -68,8 +69,6 @@ public class dlgLogin extends javax.swing.JDialog {
   
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
-
         jPanel1 = new javax.swing.JPanel();
         jInfoPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -83,7 +82,7 @@ public class dlgLogin extends javax.swing.JDialog {
         jCancelBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Връзка с базата данни");
+        setTitle("\u0412\u0440\u044a\u0437\u043a\u0430 \u0441 \u0431\u0430\u0437\u0430\u0442\u0430 \u0434\u0430\u043d\u043d\u0438");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setModal(true);
         setResizable(false);
@@ -92,17 +91,17 @@ public class dlgLogin extends javax.swing.JDialog {
         jInfoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Фирма :");
+        jLabel1.setText("\u0424\u0438\u0440\u043c\u0430 :");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Оператор :");
+        jLabel2.setText("\u041e\u043f\u0435\u0440\u0430\u0442\u043e\u0440 :");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Парола :");
+        jLabel3.setText("\u041f\u0430\u0440\u043e\u043b\u0430 :");
 
-        jLabelCombo.setToolTipText("Фирми в базата данни");
+        jLabelCombo.setToolTipText("\u0424\u0438\u0440\u043c\u0438 \u0432 \u0431\u0430\u0437\u0430\u0442\u0430 \u0434\u0430\u043d\u043d\u0438");
         jLabelCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jLabelComboActionPerformed(evt);
@@ -167,21 +166,21 @@ public class dlgLogin extends javax.swing.JDialog {
                 .add(jInfoPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jPassField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 22, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 153));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jLoginBtn.setText("Вход");
-        jLoginBtn.setToolTipText("Вход в системата");
+        jLoginBtn.setText("\u0412\u0445\u043e\u0434");
+        jLoginBtn.setToolTipText("\u0412\u0445\u043e\u0434 \u0432 \u0441\u0438\u0441\u0442\u0435\u043c\u0430\u0442\u0430");
         jLoginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jLoginBtnActionPerformed(evt);
             }
         });
 
-        jCancelBtn.setText("Отказ");
-        jCancelBtn.setToolTipText("Затваря диалога");
+        jCancelBtn.setText("\u041e\u0442\u043a\u0430\u0437");
+        jCancelBtn.setToolTipText("\u0417\u0430\u0442\u0432\u0430\u0440\u044f \u0434\u0438\u0430\u043b\u043e\u0433\u0430");
         jCancelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCancelBtnActionPerformed(evt);
@@ -223,7 +222,7 @@ public class dlgLogin extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jInfoPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                .add(jInfoPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -239,7 +238,8 @@ public class dlgLogin extends javax.swing.JDialog {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        pack();
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-374)/2, (screenSize.height-202)/2, 374, 202);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPassFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPassFieldKeyPressed
@@ -315,7 +315,6 @@ public class dlgLogin extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JComboBox jLabelCombo;
     private javax.swing.JButton jLoginBtn;
     private javax.swing.JPanel jPanel1;
