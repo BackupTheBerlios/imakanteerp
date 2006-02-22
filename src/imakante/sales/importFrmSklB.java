@@ -29,6 +29,7 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
         jTextField1 = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -63,7 +64,7 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
 
         jLabel1.setText("\u041a\u043e\u0447\u0430\u043d");
 
-        jButton4.setText("\u0422\u0440\u0430\u043d\u0441\u0444\u0435\u0440");
+        jButton4.setText("\u041f\u0440\u0435\u043e\u0431\u0440\u0430\u0437\u0443\u0432\u0430\u043d\u0435");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -71,6 +72,9 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
         });
 
         jLabel2.setText("\u0438\u0437\u0431\u0440\u0430\u043d \u0444\u0430\u0439\u043b");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11));
+        jLabel3.setForeground(new java.awt.Color(255, 0, 0));
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -82,14 +86,16 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
                     .add(jPanel2Layout.createSequentialGroup()
                         .add(jButton1)
                         .add(16, 16, 16)
-                        .add(jButton4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 105, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 180, Short.MAX_VALUE)
+                        .add(jButton4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 122, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 163, Short.MAX_VALUE)
                         .add(jLabel1)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 134, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jPanel2Layout.createSequentialGroup()
                         .add(jLabel2)
-                        .addContainerGap(503, Short.MAX_VALUE))))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel3)
+                        .addContainerGap(497, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -100,7 +106,9 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
                     .add(jLabel1)
                     .add(jButton4))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 17, Short.MAX_VALUE)
-                .add(jLabel2))
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel2)
+                    .add(jLabel3)))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("\u0412\u044a\u0437\u043d\u0438\u043a\u043d\u0430\u043b\u0438 \u0433\u0440\u0435\u0448\u043a\u0438"));
@@ -188,6 +196,7 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -212,6 +221,7 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
         javax.swing.JFileChooser jfc = new JFileChooser();
         jfc.showOpenDialog(frame);
         file = jfc.getSelectedFile();
+        this.jLabel3.setText(file.getName());
     }
     
     
@@ -225,21 +235,24 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
             String NDR = "";
             String vid = "";
             int  row = 0;
-           
+            
             while (str != null) {
                 
                 str = in.readLine();
                 if(str != null){
-                     ((MyTableModel)table.getModel()).insertRow(model.getRowCount(), new Object[]{"0","0","0","0"});
+                    
                     cod = str.substring(0,10);
                     data = str.substring(11, 21);
                     NDR = str.substring(31,41);
                     vid = str.substring(43,44);
-                    this.table.setValueAt(cod,row,0);
-                    this.table.setValueAt(data,row,1);
-                    this.table.setValueAt(NDR,row,2);
-                    this.table.setValueAt(vid,row,3);
-                    row++;}
+                    if(Integer.parseInt(vid)>0){
+                        ((MyTableModel)table.getModel()).insertRow(model.getRowCount(), new Object[]{"0","0","0","0"});
+                        this.table.setValueAt(cod,row,0);
+                        this.table.setValueAt(data,row,1);
+                        this.table.setValueAt(NDR,row,2);
+                        this.table.setValueAt(vid,row,3);
+                        row++;
+                    }}
             }
         } catch (IOException e) {
         }
@@ -261,13 +274,7 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
         
     }
     
-    
-    
-    
-    
-    
-    
-    
+ 
     
 }
 
