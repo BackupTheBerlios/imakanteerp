@@ -4,6 +4,7 @@ package imakante.sales;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.SQLException;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
@@ -14,6 +15,7 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
     public importFrmSklB() {
         
         initComponents();
+        prepareC();
         
     }
     
@@ -206,15 +208,32 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
-    
+    // SQL related
     private java.sql.Connection connection;
+    private java.sql.Statement stm;
+    private java.sql.ResultSet rs;
+    private String QString = "SELECT n_contragent.name_n_contragent, n_contragent.bul_n_contragent FROM n_contragent WHERE n_contragent.dan_n_contragent = ";
     
+    //FILE related
     private java.io.File file;
     private javax.swing.JFileChooser jfc;
     private java.io.InputStreamReader isr;
     private java.io.BufferedReader in;
+    
+    //TABLE related
     private MyTableModel model = new MyTableModel();
     private javax.swing.JTable table = new javax.swing.JTable(model);
+    
+    
+    private void prepareC(){
+        connection = imakante.com.NewMain.getConnection();
+        try {
+            stm = connection.createStatement();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+    }
     
     public void openFile_Dialog(){
         javax.swing.JFrame frame = new JFrame();
@@ -234,6 +253,8 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
             String data ="";
             String NDR = "";
             String vid = "";
+            String sum ="";
+            String dds ="";
             int  row = 0;
             
             while (str != null) {
@@ -245,27 +266,46 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
                     data = str.substring(11, 21);
                     NDR = str.substring(31,41);
                     vid = str.substring(43,44);
+                    sum = str.substring(106,112);
+                    dds = str.substring(129,134);
+                    
                     if(Integer.parseInt(vid)>0){
-                        ((MyTableModel)table.getModel()).insertRow(model.getRowCount(), new Object[]{"0","0","0","0"});
+                        ((MyTableModel)table.getModel()).insertRow(model.getRowCount(), new Object[]{"0","0","0","0","0","0","0","0"});
                         this.table.setValueAt(cod,row,0);
                         this.table.setValueAt(data,row,1);
                         this.table.setValueAt(NDR,row,2);
-                        this.table.setValueAt(vid,row,3);
+                        this.table.setValueAt(vid,row,5);
+                        this.table.setValueAt(sum,row,6);
+                        this.table.setValueAt(dds,row,7);
+                        try {
+                            
+                            rs = stm.executeQuery(QString +NDR);
+                            while(rs.next()){
+                                this.table.setValueAt(rs.getString("bul_n_contragent"),row,3);
+                                this.table.setValueAt(rs.getString("name_n_contragent"),row,4);
+                            }
+                        } catch (SQLException ex) {
+                            ex.printStackTrace();
+                        }
+                        
                         row++;
                     }}
             }
-        } catch (IOException e) {
+        } catch (IOException e) { e.printStackTrace();
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
         }
+        
         
         
     }
     
     public class MyTableModel extends DefaultTableModel {
         private String[] Names =  new String [] {
-            "Номер документ", "Дата", "Данъчен Номер", "Вид"};
+            "Номер документ", "Дата", "Данъчен Номер", "ИН", "Фирма","Вид", "Сума","ДДС"};
         
         public int getColumnCount() {
-            return 4;
+            return 8;
         }
         public String getColumnName(int col) {
             return Names[col];
@@ -274,7 +314,7 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
         
     }
     
- 
+    
     
 }
 
