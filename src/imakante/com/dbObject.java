@@ -108,6 +108,10 @@ public abstract class dbObject extends imakante.com.imakanteObject implements db
         return return_int;
     }
     
+    public String getBAccountNumber() {
+        return baccount;
+    }
+    
     public String getName() {
         return name;
     }
