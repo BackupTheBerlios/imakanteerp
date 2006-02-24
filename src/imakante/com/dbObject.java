@@ -19,11 +19,13 @@ public abstract class dbObject extends imakante.com.imakanteObject implements db
     private java.sql.Statement stmt;
     private java.sql.CallableStatement cstm;
     private int comprator = 1;
-    private int id=0; // imena ot tablicata
-    private int id_groupe=0;
-    private int code=0; // imena ot tablicata                           \
-    private String name; // imena ot tablicata
-    private String comment="";
+    private int id = 0;
+    private int id_groupe = 0;
+    private int code = 0;
+    private String name;
+    private String baccount;
+    private String address;
+    private String comment;
     public java.sql.Connection getConn() {
         return conn;
     }
@@ -108,8 +110,12 @@ public abstract class dbObject extends imakante.com.imakanteObject implements db
         return return_int;
     }
     
-    public String getBAccountNumber() {
+    public String getBankAccountNumber() {
         return baccount;
+    }
+    
+    public String getAddress() {
+        return address;
     }
     
     public String getName() {
@@ -195,6 +201,14 @@ public abstract class dbObject extends imakante.com.imakanteObject implements db
     public void setId(int ID) //OK
     {
         this.id = ID;
+    }
+    
+    public void setBankAccountNumber(String BAccount) {
+        this.baccount = BAccount;
+    }
+    
+    public void setAddress(String Address) {
+        this.address = Address;
     }
     
     public void setName(String Name) //OK
