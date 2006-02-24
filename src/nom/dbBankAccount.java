@@ -34,10 +34,18 @@ public class dbBankAccount extends imakante.com.dbObject {
             getCstm().setInt("in_id_group", getIDGr());
             getCstm().setInt("in_code", getcode());
             getCstm().setString("in_name", getName());
-            /*getCstm().setString("in_account", getAccount());
-            getCstm().setString("in_address", getAddress());*/
-            
+            getCstm().setString("in_account", getBankAccountNumber());
+            getCstm().setString("in_address", getAddress());
+            getCstm().setInt("in_id_tacc", getTypeBankAccount());
             getCstm().setString("in_comments", getComment());
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
+    }
+
+    private int getTypeBankAccount() {
+        return id_type;
+    }
+    
+    private void setTypeBankAccount(int TypeBAccount) {
+        this.id_type = TypeBAccount;
     }
 }
