@@ -1,7 +1,7 @@
 ﻿DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `mida`.`ls_procedure_document_facade` $$
-CREATE PROCEDURE `ls_procedure_document_facade`(IN comprator TINYINT,                IN in_id_df INT(11),                IN in_id_contragent_in INT(11),     IN in_id_contragent_out INT(11),IN in_id_obekt_out INT(11),
+CREATE PROCEDURE `mida`.`ls_procedure_document_facade`(IN comprator TINYINT,                IN in_id_df INT(11),                IN in_id_contragent_in INT(11),     IN in_id_contragent_out INT(11),IN in_id_obekt_out INT(11),
                                                 IN in_id_obekt_in INT(11),           IN in_id_distributor INT(11),       IN in_id_deliver INT(11),           IN in_descriptionPaying INT(3), IN in_docFacadeNumber INT(10),
                                                 IN in_docFacadeUser INT(11),         IN in_docFacadeUserLastEdit INT(11),IN in_id_facturaConnection INT(11), IN in_id_payingOrder INT(11),   IN in_id_zaqvkaConnection INT(11),
                                                 IN in_docFacadeLevel INT(11),        IN in_docFacadeStorage INT(11),     IN in_docFacadeType INT (3),        IN in_docFacadeAllDDS DOUBLE,   IN in_docFacadeTotal DOUBLE,
@@ -40,7 +40,7 @@ IF (comprator = 1) THEN
          INSERT INTO mida.sl_document_facade(in_contragent_df, out_obekt_df, in_obekt_df, number_df, type_df, condition_df,
          out_store_df, total_df, dds_df, user_df, user_last_df, date_edition_df, distributor_df, delivere_df,
          faktura_connection_df, zaiavka_connection_df, description_pay_df, paying_order_df, date_deliver_df, date_pay_df,
-         comments_df, fag_finish_df,  level_df, out_contragent_df)
+         comments_df, flag_finish_df,  level_df, out_contragent_df)
          VALUES(in_id_contragent_in,in_id_obekt_out,in_id_obekt_in,in_docFacadeNumber,in_docFacadeType,in_docFacadeCondition,
            in_docFacadeStorage,in_docFacadeTotal,in_docFacadeAllDDS,in_docFacadeUser,in_docFacadeUserLastEdit, in_docFacadeDate,in_id_distributor,
            in_id_deliver,in_id_facturaConnection,in_id_zaqvkaConnection, in_descriptionPaying,in_id_payingOrder,in_dateDeliver,in_payingDate,
@@ -71,7 +71,7 @@ IF (comprator = 2) THEN
         s.date_deliver_df = in_dateDeliver,
         s.date_pay_df = in_payingDate,
         s.comments_df = in_docFacadeComment,
-        s.fag_finish_df = in_docFacadeFlagFinish,
+        s.flag_finish_df = in_docFacadeFlagFinish,
 
         s.level_df = in_docFacadeLevel,
         s.out_contragent_df =in_id_contragent_out
@@ -91,7 +91,7 @@ IF (comprator = 4) THEN
          s.total_df, s.dds_df, s.user_df, s.user_last_df, s.date_edition_df, s.time_edition_df, s.distributor_df,p_dist.code_ls_n_person AS dist,
          s.delivere_df,p_deliv.code_ls_n_person AS devliv,
          s.faktura_connection_df, s.zaiavka_connection_df, s.description_pay_df, s.paying_order_df, s.date_deliver_df,
-         s.date_pay_df, s.comments_df, s.fag_finish_df, s.id_rep, s.level_df, s.out_contragent_df
+         s.date_pay_df, s.comments_df, s.flag_finish_df, s.id_rep, s.level_df, s.out_contragent_df
          FROM mida.sl_document_facade s LEFT JOIN mida.n_obekt obkt_in ON s.in_obekt_df=obkt_in.id_sno
          LEFT JOIN mida.ls_n_person p_deliv ON p_deliv.id_ls_n_person=s.delivere_df
          LEFT JOIN mida.ls_n_person p_dist ON p_dist.id_ls_n_person=s.distributor_df
@@ -469,7 +469,7 @@ END IF;
 
 IF (comprator = 26) THEN
     INSERT INTO mida.sl_document_lines(id_df,id_pc,id_n_storage,singly_price_dl,climb_down_dl,
-           numbers_piece_df,dds_dl,totalall_dl)
+           numbers_piece_dl,dds_dl,totalall_dl)
     VALUES(in_id_df,in_id_obekt_in,in_id_obekt_out,in_priceOne,in_climbDown,in_id_contragent_in,in_docFacadeAllDDS,in_docFacadeTotal);
 END IF;
 
@@ -487,6 +487,40 @@ IF (comprator = 29) THEN
     SELECT s.id_sl_curs, s.id_n_money, s.value_sl_curs,cod_lat_n_money FROM mida.sl_curs s LEFT JOIN n_money m ON m.id_n_money = s.id_n_money
     WHERE s.id_sl_curs = in_id_obekt_in;
 END IF;
+
+IF (comprator = 30) THEN
+    UPDATE mida.sl_nalichnosti s SET s.quant_nal=(quant_nal-quant_rezerv_nal)
+      , s.quant_rezerv_nal=0
+    WHERE id_n_storage IN
+                      (SELECT  dl.id_n_storage FROM mida.sl_document_lines dl
+                       WHERE dl.id_dl = in_id_df)
+            AND id_pc IN
+                     (SELECT  dl.id_pc FROM mida.sl_document_lines dl
+                       WHERE dl.id_dl = in_id_df);
+
+END IF;
+
+IF (comprator = 31) THEN
+    SELECT *
+    FROM mida.sl_document_lines s LEFT JOIN mida.n_product_consigment n ON s.id_pc = n.id_pc
+    LEFT JOIN mida.n_product_main pm ON pm.id_pm=n.id_pm
+    LEFT JOIN  mida.n_product_price pp   ON pm.id_pp=pp.id_pp
+    LEFT JOIN  mida.n_product_description pd   ON pm.id_pd=pd.id_pd
+    LEFT JOIN  mida.n_product_fee pf   ON pm.id_pf=pf.id_pf
+    LEFT JOIN  mida.n_storage st   ON st.id_n_storage = s.id_n_storage
+    WHERE id_df = in_id_df;
+END IF;
+
+IF (comprator = 33) THEN
+    DELETE FROM mida.sl_document_lines
+    WHERE  id_dl = in_id_df;
+END IF;
+
+IF (comprator = 34) THEN
+    SELECT MAX(id_dl) as id FROM mida.sl_document_lines s;
+
+END IF;
+
 END $$
 
 DELIMITER ;

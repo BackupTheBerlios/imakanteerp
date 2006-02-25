@@ -24,12 +24,15 @@ public class docLineTableModel extends AbstractTableModel implements Serializabl
     private final int RATE_REDUCTION    = 9;
     private final int PRICE_TOTAL       = 11;
     private final int DDS_              = 10;
-    private final int NAME_OF_DISBAUND_0  = 80;
-    private final int NAME_OF_DISBAUND_1  = 60;
-    private final int NAME_OF_DISBAUND_2 = 70;
+    private final int NAME_OF_DISBAUND_0  = 13;
+    private final int NAME_OF_DISBAUND_1  = 14;
+    private final int NAME_OF_DISBAUND_2 =  15;
     private final int NUMBER_OF_DISBAUND_0= 5;
     private final int NUMBER_OF_DISBAUND_1= 6;
     private final int NUMBER_OF_DISBAUND_2= 7;
+    private final int ID_DOCLINE          = 12;
+   
+    
     
     
     
@@ -37,13 +40,13 @@ public class docLineTableModel extends AbstractTableModel implements Serializabl
     private docLineArray docLine = null;
     private boolean[] canEdit = new boolean [] {
                           true, false, false,false, false, false, false,
-                          false, false, false, false, false};
+                          false, false, false, false, false, false, false, false, false};
     
     private String[] colNames =  new String [] {
                 "Номер продукт", "Име на продукт", "Номер склад", 
                 "Ценова листа","Брои продукти", "Р-ка основна", "Разфасовка 1",
                 "Разфасовка 2", "Ед. цена", "Процент отстъпка",
-                "ДДС", "Общо линия"};
+                "ДДС", "Общо линия","id_dl","r1","r2","r3"};
     private int rowsCount=0;
     private int columnsCound=0;
         // Types of the columns.
@@ -51,7 +54,8 @@ public class docLineTableModel extends AbstractTableModel implements Serializabl
                 java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class,
                 java.lang.Integer.class, java.lang.Integer.class,java.lang.Integer.class, java.lang.Integer.class,
                 java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class,
-                java.lang.Double.class, java.lang.Double.class};
+                java.lang.Double.class, java.lang.Double.class,java.lang.Integer.class,java.lang.String.class,
+                java.lang.String.class,java.lang.String.class};
         
         
     public docLineTableModel()
@@ -63,12 +67,12 @@ public class docLineTableModel extends AbstractTableModel implements Serializabl
     }
      public docLineTableModel(int codeOfProduct,String nameOfProduct,int storageOut,int priceList,
                        int numberOfProduct, double pricePiece,double rateReduction,double priceTotal,double DDS,
-                       String nameOfDisBaund[],int numerOfDisBaund[])
+                       String nameOfDisBaund[],int numerOfDisBaund[], int in_id_dl)
     {
        
         docLine = new docLineArray( codeOfProduct, nameOfProduct, storageOut, priceList,
                         numberOfProduct,  pricePiece,rateReduction ,priceTotal, DDS,
-                        nameOfDisBaund, numerOfDisBaund);
+                        nameOfDisBaund, numerOfDisBaund,in_id_dl);
         rows.add(docLine);
         rowsCount++;
     }
@@ -203,6 +207,12 @@ public class docLineTableModel extends AbstractTableModel implements Serializabl
                     dd.setNumerOfDisBand(ii);
                 break;
             }
+              case ID_DOCLINE :
+              {
+                  int ii = (Integer) value;
+                  dd.setID_DocLine(ii);
+                  break;
+              }
           }
           
      fireTableCellUpdated(row, col);   
@@ -316,6 +326,12 @@ public class docLineTableModel extends AbstractTableModel implements Serializabl
                       value = ii[2];
                 break;
             }
+            case ID_DOCLINE :
+              {
+                  int ii =  dd.getID_DocLine();
+                  value = ii;
+                  break;
+              }
           }  
       return value;  
    }
@@ -350,12 +366,12 @@ public class docLineTableModel extends AbstractTableModel implements Serializabl
  }
 public void addRow(int codeOfProduct,String nameOfProduct,int storageOut,int priceList,
                        int numberOfProduct, double pricePiece,double rateReduction,double priceTotal,double DDS,
-                       String nameOfDisBaund[],int numerOfDisBaund[])
+                       String nameOfDisBaund[],int numerOfDisBaund[],int in_id_dl)
     {
         
         docLine = new docLineArray( codeOfProduct, nameOfProduct, storageOut, priceList,
                         numberOfProduct,  pricePiece,rateReduction ,priceTotal, DDS,
-                        nameOfDisBaund, numerOfDisBaund);
+                        nameOfDisBaund, numerOfDisBaund,in_id_dl);
         rows.add(docLine);
         rowsCount++;
         fireTableDataChanged();

@@ -29,11 +29,11 @@
  *comprator = 27: checkForEnoughProducts()
  *comprator = 28: preserveProducts()
  *comprator = 29: getValutaByID()
- *comprator = 30:
- *comprator = 31:
- *comprator = 32:
- *comprator = 33:
- *
+ *comprator = 30: emptyPreservation()
+ *comprator = 31: getDocLine()
+ *comprator = 32: updateDocLine()
+ *comprator = 33: deleteDocLine()
+ *comprator = 34: getMaxIdDocLine()
  *
  *
  * 
@@ -1264,7 +1264,134 @@ public double[] getPriceListByID(int in_id_pp)
      setID_Obekt_IN(oldID_obekt_in); 
      return valuta;
  }
-  
-// <-----------------------
+public void emptyPreservation(int id_dl)
+{
+    int oldId_DF = getID_DocFacade();
+    setID_DocFacade(id_dl);
+     comprator=30;
+     try
+        {
+            registerParameters();
+            cstm.execute();
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+       
     
+    setID_DocFacade(oldId_DF);
+}
+
+public HashMap getDocLine(int id_df)
+{
+   
+     int oldId_DF = getID_DocFacade();
+    setID_DocFacade(id_df);
+     comprator=31;
+     HashMap rows = new HashMap(); 
+     docLineArray data;
+     java.sql.ResultSet rs12;
+     int key = 0;
+     try
+        {
+            registerParameters();
+            rs12 = cstm.executeQuery();
+            while(rs.next())
+            {
+               
+              data = new docLineArray();  
+              data.setCodeOfProduct((Integer)rs12.getInt("code_pm"));
+              data.setDDS((Double)rs12.getDouble("dds_dl"));
+              data.setNameOfProduct((String)rs12.getString("name_pm"));
+              data.setNumberOfProduct((Integer)rs12.getInt("numbers_piece_dl"));
+               
+              data.setPriceList((Integer)rs12.getInt("price_list_dl"));
+              data.setPricePiece((Double)rs12.getDouble("singly_price_dl"));
+              data.setPriceTotal((Double)rs12.getDouble("totalall_dl"));
+              data.setRateReduction((Double)rs12.getDouble("climb_down_dl"));
+              data.setStorageOut((Integer)rs12.getInt("id_n_storage"));
+              String nameOfDisBaund[]= new String[3];
+              nameOfDisBaund[0] = getProductDescriptionNameID(rs12.getInt("m1_pd"));
+              nameOfDisBaund[1] = getProductDescriptionNameID(rs12.getInt("m2_pd"));
+              nameOfDisBaund[2] = getProductDescriptionNameID(rs12.getInt("m3_pd"));
+              data.setNameOfDisBand(nameOfDisBaund);
+              int numerOfDisBaund[] = new int[3];
+              numerOfDisBaund[0] =  rs12.getInt("v1_pd");
+              numerOfDisBaund[1] =  rs12.getInt("v2_pd");
+              numerOfDisBaund[2] =  rs12.getInt("v3_pd");
+              data.setNumerOfDisBand(numerOfDisBaund);
+              data.setID_DocLine(rs12.getInt("id_dl"));
+              rows.put(key,data);
+              key++;
+               
+            }
+               
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }       
+     
+     
+     
+    setID_DocFacade(oldId_DF);
+    return rows;
+}
+
+ 
+/*public void updateDocLine(int id_df,int id_dl)
+ {
+      comprator=32;
+      
+      
+      
+ }
+*/
+ public void deleteDocLine(int id_dl)
+ {
+      int oldId_DF = getID_DocFacade();
+      setID_DocFacade(id_dl);
+     comprator = 33;
+     try
+        {
+            registerParameters();
+            cstm.execute();
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+     
+     
+      setID_DocFacade(oldId_DF);
+ }
+
+
+ public int getMaxIdDocLine()
+ {
+     int maxid =0;
+        comprator=34;
+      try
+        {
+            registerParameters();
+            rs = cstm.executeQuery();
+            while(rs.next())
+            {
+              maxid = rs.getInt("id");
+               
+            }
+               
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }       
+     
+     
+     return maxid;
+ }
+ 
+ 
+// <-----------------------
 }// end class

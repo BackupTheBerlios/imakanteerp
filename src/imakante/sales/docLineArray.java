@@ -14,6 +14,7 @@ public class docLineArray
     private double rateReduction;
     private double priceTotal;
     private double DDS;
+    private int id_dl;
     private String nameOfDisBaund[]= new String[3];
     private int numerOfDisBaund[] = new int[3];
     
@@ -39,7 +40,7 @@ public class docLineArray
     
     public docLineArray(int codeOfProduct,String nameOfProduct,int storageOut,int priceList,
                        int numberOfProduct, double pricePiece,double rateReduction ,double priceTotal,double DDS,
-                       String nameOfDisBand[],int numerOfDisBand[])
+                       String nameOfDisBand[],int numerOfDisBand[],int in_id_dl)
     {
          this.codeOfProduct   = codeOfProduct;
          this.nameOfProduct   = nameOfProduct;     
@@ -52,6 +53,7 @@ public class docLineArray
          this.rateReduction   = rateReduction;
          this.nameOfDisBaund = nameOfDisBand;
          this.numerOfDisBaund = numerOfDisBand; 
+         this.id_dl = in_id_dl;
       
     }
     
@@ -68,13 +70,13 @@ public class docLineArray
          this.rateReduction   =in.getRateReduction();
          this.nameOfDisBaund = in.getNameOfDisBand();
          this.numerOfDisBaund = in.getNumerOfDisBand(); 
-      
+         this.id_dl = in.getID_DocLine(); ;
     }
     
     
     public void setALLData(int codeOfProduct,String nameOfProduct,int storageOut,int priceList,
                        int numberOfProduct, double pricePiece,double rateReduction,double priceTotal,double DDS,
-                       String nameOfDisBand[],int numerOfDisBand[])
+                       String nameOfDisBand[],int numerOfDisBand[], int in_id_dl)
     {
          this.codeOfProduct   = codeOfProduct;
          this.nameOfProduct   = nameOfProduct;     
@@ -87,6 +89,7 @@ public class docLineArray
          this.rateReduction   = rateReduction;
          this.nameOfDisBaund = nameOfDisBand;
          this.numerOfDisBaund = numerOfDisBand;   
+         this.id_dl = in_id_dl;
     }
   
     
@@ -136,8 +139,16 @@ public  int[] getNumerOfDisBand()
 {
     return numerOfDisBaund;
 }
+public int getID_DocLine()
+{
+    return id_dl;
+}
  //set metods   
-    
+ 
+public void setID_DocLine(int in_id_dl)
+{
+     this.id_dl = in_id_dl;
+}
  public void setCodeOfProduct(int in)
    {
        codeOfProduct=in;
