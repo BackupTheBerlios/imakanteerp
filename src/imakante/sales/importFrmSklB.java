@@ -2,12 +2,16 @@
 package imakante.sales;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.data.JRTableModelDataSource;
 
 public class importFrmSklB extends javax.swing.JInternalFrame {
     
@@ -221,12 +225,14 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
     private java.io.BufferedReader in;
     
     //TABLE related
-    private MyTableModel model = new MyTableModel();
+    private  MyTableModel model = new MyTableModel();
     private javax.swing.JTable table = new javax.swing.JTable(model);
     
+    public static JRTableModelDataSource jtbm;
     
     private void prepareC(){
         connection = imakante.com.NewMain.getConnection();
+        
         try {
             stm = connection.createStatement();
         } catch (SQLException ex) {
@@ -266,8 +272,8 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
                     data = str.substring(11, 21);
                     NDR = str.substring(31,41);
                     vid = str.substring(43,44);
-                    sum = str.substring(106,112);
-                    dds = str.substring(129,134);
+                    sum = str.substring(104,112);
+                    dds = str.substring(127,134);
                     
                     if(Integer.parseInt(vid)>0){
                         ((MyTableModel)table.getModel()).insertRow(model.getRowCount(), new Object[]{"0","0","0","0","0","0","0","0"});
@@ -275,11 +281,11 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
                         this.table.setValueAt(data,row,1);
                         this.table.setValueAt(NDR,row,2);
                         this.table.setValueAt(vid,row,5);
-                        this.table.setValueAt(sum,row,6);
-                        this.table.setValueAt(dds,row,7);
+                        this.table.setValueAt(((Double.parseDouble(sum))/100),row,6);
+                        this.table.setValueAt(((Double.parseDouble(dds))/100),row,7);
                         try {
                             
-                            rs = stm.executeQuery(QString +NDR);
+                            rs = stm.executeQuery(QString + NDR);
                             while(rs.next()){
                                 this.table.setValueAt(rs.getString("bul_n_contragent"),row,3);
                                 this.table.setValueAt(rs.getString("name_n_contragent"),row,4);
@@ -313,8 +319,31 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
         
         
     }
-    
-    
+//    public void createData(){
+//        
+//        jtbm = new JRTableModelDataSource(model);
+//    }
+////    private void printTable(){
+//     try {
+//          JRTableModelDataSource jtbm = new JRTableModelDataSource(model);
+////            net.sf.jasperreports.engine.JasperReport jasperReport = new net.sf.jasperreports.engine.JasperReport();
+////            jasperPrint = JasperFillManager.fillReport(new java.io.FileInputStream(new java.io.File((getClass().getResource(fileJasper)).toURI())),
+////                    hm, conn);
+//        } catch (FileNotFoundException ex) {
+//            ex.printStackTrace();
+//        } catch (URISyntaxException ex) {
+//            ex.printStackTrace();
+//        } catch (JRException ex) {
+//            ex.printStackTrace();
+//        }
+//
+//            jrv = new net.sf.jasperreports.view.JRViewer(jasperPrint);
+//
+//
+//
+//
+//
+//    }
     
 }
 
