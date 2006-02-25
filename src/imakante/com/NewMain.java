@@ -342,6 +342,8 @@ public class NewMain extends javax.swing.JFrame {
     private static java.sql.Connection dbConn = null;
     private static String dbUser = null;
     private static String dbPass = null;
+    private static int userId = 0;
+    private static String userName = null;
     
     //SYSTEM PROP
     private static String OS_name;
@@ -475,6 +477,22 @@ public class NewMain extends javax.swing.JFrame {
             jBMN.setEnabled(true);
         }
         B_MN = aB_MN;
+    }
+
+    public static int getUserId() {
+        return userId;
+    }
+
+    public static void setUserId(int aUserId) {
+        userId = aUserId;
+    }
+
+    public static String getUserName() {
+        return userName;
+    }
+
+    public static void setUserName(String aUserName) {
+        userName = aUserName;
     }
     
 }// end class

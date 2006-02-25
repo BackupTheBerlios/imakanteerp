@@ -145,13 +145,10 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
         } catch (JRException ex) {
             ex.printStackTrace();
         }
-        try {
+       
        
             jrv = new net.sf.jasperreports.view.JRViewer(jasperPrint);
-        } catch (JRException ex) {
-            ex.printStackTrace();
-        }
-        
+       
     }
     private void showJassper(){
         tableVizible = false;

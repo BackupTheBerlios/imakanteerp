@@ -10,6 +10,8 @@
  */
 package imakante.sales;
 
+import java.sql.SQLException;
+import java.util.HashMap;
 import nom.FrmProduct;
 
 //>>>>>>> 1.24
@@ -46,6 +48,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         this.setSize(dim.width,dim.height-30);
         this.setLocation(0,0);
         imakante.com.NewMain.setB_SL(true);
+        loadRightsArea();
     }
     
     public void run(){
@@ -861,6 +864,9 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     // main app parameters
     private static boolean logged = false; // for logging into app
     private java.sql.Connection dbConn = null; // connection
+    private java.sql.Statement stm = null; //Statement
+    private java.sql.ResultSet rs = null;  //ResultSet
+    
     // testovi stoinosti za DB
     private String dbName = "mida"; // name of the db
     private String dbURL = "jdbc:mysql://127.0.0.1:3306/mida"; // url of the db
@@ -899,9 +905,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private boolean levelActivate = false;
     private int currentLevel = 1;
     
+    private HashMap OrderArea = new HashMap();
+    private HashMap FaktArea = new HashMap();
     
-    private void loadLevelDialog(int ModuleCode){
-        levelDialog lDialog = new levelDialog(this, true, ModuleCode);
+    private void loadLevelDialog(int ModuleCode, HashMap hash){
+        levelDialog lDialog = new levelDialog(this, true, ModuleCode, hash);
         lDialog.setVisible(true);
     }
     
@@ -1054,8 +1062,50 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             }
         }
     }
+    //METHODS FOR LOADING USER RIGHTS FOR AREA DOCUMENTS
     
-    //METHOD FOR LOAD FORMS
+    private void loadRightsArea(){
+        String StrQ = "SELECT `sl_doc_type_num`.`area_number_sdtn` " +
+              //  "`n_doc_type_user_rights`.`rights_sdtn`  " +
+                "FROM " +
+                "`user_master` " +
+                "Inner Join `n_doc_type_user_rights` ON `user_master`.`id_um` = `n_doc_type_user_rights`.`id_um` " +
+                "Inner Join `sl_doc_type_num` ON `sl_doc_type_num`.`id_sdtn` = `n_doc_type_user_rights`.`id_sdtn` " +
+                "WHERE " +
+                "`n_doc_type_user_rights`.`id_um` = '" +
+                imakante.com.NewMain.getUserId() +
+                "' AND " +
+                "`sl_doc_type_num`.`id_ntd` =  ";
+                
+        try {
+            int i = 0;
+            stm = this.dbConn.createStatement();
+            rs = stm.executeQuery(
+                   StrQ + "'1'"
+                    );
+            while(rs.next()){
+                i++;
+                getOrderArea().put(i,new String(rs.getString(1)));
+                
+            }
+           i = 0;
+            rs = stm.executeQuery(
+                     StrQ + "'2'"
+                    );
+             while(rs.next()){
+                i++;
+                getFaktArea().put(i,rs.getString(1));
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        
+        
+    }
+    
+    //METHODS FOR LOAD FORMS
     /*
      *
      */
@@ -1246,5 +1296,21 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         imakante.sales.reportFrmNal repNal = new imakante.sales.reportFrmNal("nalichnost", this);
         desktopPane.add(repNal);
         repNal.setVisible(true);
+    }
+
+    public HashMap getOrderArea() {
+        return OrderArea;
+    }
+
+    public void setOrderArea(HashMap OrderArea) {
+        this.OrderArea = OrderArea;
+    }
+
+    public HashMap getFaktArea() {
+        return FaktArea;
+    }
+
+    public void setFaktArea(HashMap FaktArea) {
+        this.FaktArea = FaktArea;
     }
 }

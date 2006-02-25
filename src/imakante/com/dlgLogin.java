@@ -1,8 +1,11 @@
 
 package imakante.com;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLWarning;
 import java.util.Properties;
 import java.util.InvalidPropertiesFormatException;
 import javax.swing.*;
@@ -14,6 +17,8 @@ public class dlgLogin extends javax.swing.JDialog {
     
     private String sMsgTitle;
     private Properties prop = new Properties();
+
+    private ResultSet rs;
     /** Creates new form dlgLogin */
     public dlgLogin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -273,6 +278,8 @@ public class dlgLogin extends javax.swing.JDialog {
         String DBUserName;
         String DBPassword;
         String sKey;
+        int userId = 0;
+        String userName = "";
         java.sql.Connection dbConn = null;
         int nIndex = jLabelCombo.getSelectedIndex();
         try {
@@ -291,8 +298,15 @@ public class dlgLogin extends javax.swing.JDialog {
                 NewMain.setConnection(dbConn);
                 NewMain.setUser(DBUserName);
                 NewMain.setPassword(DBPassword);
-                // Close dialog
-                this.dispose();
+                stm = dbConn.createStatement();
+                rs = stm.executeQuery("SELECT id_um, name_um FROM user_master WHERE acc_user = '"+ DBUserName+"'");
+                    while(rs.next()){
+                    userId = rs.getInt("id_um");
+                    NewMain.setUserId(userId);
+                    userName = rs.getString("name_um");
+                    NewMain.setUserName(userName);
+                    }
+               
             } else {
                 JOptionPane.showMessageDialog(null,"Моля изберете фирма и опитайте отново !",sMsgTitle,JOptionPane.WARNING_MESSAGE);
             }
@@ -304,6 +318,8 @@ public class dlgLogin extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Възникна проблем при опита за връзка с базата.",sMsgTitle,JOptionPane.WARNING_MESSAGE);
             e.printStackTrace();
         }
+        // Close dialog
+                this.dispose();
     }//GEN-LAST:event_jLoginBtnActionPerformed
 
     private void jCancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCancelBtnActionPerformed
@@ -323,5 +339,5 @@ public class dlgLogin extends javax.swing.JDialog {
     private javax.swing.JPasswordField jPassField;
     private javax.swing.JTextField jUserTxtField;
     // End of variables declaration//GEN-END:variables
-    
+    private  java.sql.Statement stm;
 }
