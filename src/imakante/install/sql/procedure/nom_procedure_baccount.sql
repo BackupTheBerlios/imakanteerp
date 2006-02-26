@@ -36,7 +36,7 @@ BEGIN
             WHERE n.code_nbc LIKE CONCAT('%',in_code,'%') AND n.name_nbc LIKE CONCAT('%',in_name,'%');
      END IF;
      IF (comprator = 6) THEN
-        SELECT ntb.id_tbacc, ntb.name_tbacc FROM n_type_doc ntb;
+        SELECT ntb.id_tbacc, ntb.name_tbacc FROM n_type_bacc ntb;
      END IF;
      IF (comprator = 7) THEN
         SELECT MAX(n.id_nbc) FROM `mida`.`n_baccount` n;
@@ -45,7 +45,7 @@ BEGIN
         SELECT MAX(n.code_nbc) AS account_code FROM `mida`.`n_baccount` n;
      END IF;
      IF (comprator = 9) THEN
-        SELECT MAX(ntd.id_ntd) AS id_ntd FROM n_type_doc ntd;
+        SELECT MAX(ntb.id_ntbacc) AS id_ntbacc FROM n_type_bacc ntb;
      END IF;
      IF (comprator = 10) THEN
         SELECT ng.id_n_group, ng.name_n_group FROM n_group ng WHERE n.nom_n_group = 6;
