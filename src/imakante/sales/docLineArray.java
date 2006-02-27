@@ -17,6 +17,7 @@ public class docLineArray
     private int id_dl;
     private String nameOfDisBaund[]= new String[3];
     private int numerOfDisBaund[] = new int[3];
+    private boolean isFinishRow = false;
     
  public docLineArray()
     {
@@ -143,8 +144,15 @@ public int getID_DocLine()
 {
     return id_dl;
 }
+public boolean getIsFinishRow()
+{
+    return isFinishRow;
+}
  //set metods   
- 
+public void setIsFinishRow(boolean is)
+{
+    isFinishRow = is;
+}
 public void setID_DocLine(int in_id_dl)
 {
      this.id_dl = in_id_dl;

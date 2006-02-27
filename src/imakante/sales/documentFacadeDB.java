@@ -34,8 +34,8 @@
  *comprator = 32: updateDocLine()
  *comprator = 33: deleteDocLine()
  *comprator = 34: getMaxIdDocLine()
- *
- *
+ *comprator = 35: deleteDocFacade()
+ *comprator = 35: clearPreservation()
  * 
  */
 
@@ -147,7 +147,7 @@ public class documentFacadeDB  extends dbObject
             getCstm().setInt("in_docFacadeLevel", getLevelDocFacade());          
             getCstm().setInt("in_docFacadeStorage", getStorageDocFacade());      
             getCstm().setInt("in_docFacadeType", getDocFacadeType()); 
-            getCstm().setInt("in_docFacadeFlagFinish", getDocFacadeType()); 
+            getCstm().setInt("in_docFacadeFlagFinish", getDocFacadeFlagFinish()); 
             getCstm().setDouble("in_docFacadeAllDDS",getAllDDSPaingDocFacade());       
             getCstm().setDouble("in_docFacadeTotal",getTotalPayingDocFacade());
             getCstm().setDouble("in_priceOne",getPriceOne());
@@ -180,10 +180,10 @@ public class documentFacadeDB  extends dbObject
  public void insertRow(int in_id_contragent_out , int in_id_contragent_in,
             int in_id_obekt_out, int in_id_obekt_in, int in_id_distributor, int in_id_deliver,
             int in_descriptionPaying, int in_docFacadeNumber, int in_docFacadeUser, int in_docFacadeUserLastEdit,
-            int in_id_facturaConnection, int in_id_payingOrder, int in_id_zaqvkaConnection, int in_docFacadeLevel,
+            int in_id_facturaConnection, int in_id_payingOrder, int in_id_zaqvkaConnection, int in_docFacadeLevel, //14
             int in_docFacadeStorage, int in_docFacadeType, double in_docFacadeTotal, double in_docFacadeAllDDS,
             String in_docFacadeCondition, String in_docFacadeDate, String in_docFacadeCommnet,
-            String in_dateDeliver, String in_payingDate)
+            String in_dateDeliver, String in_payingDate,int in_docFacadeFlagFinish)
       {
         comprator = 1;
         setID_Contragent_IN(in_id_contragent_in);
@@ -209,6 +209,7 @@ public class documentFacadeDB  extends dbObject
         setCommentDocFacade(in_docFacadeCommnet);
         setDateDeliver(in_dateDeliver);
         setPayingDate(in_payingDate);
+        setDocFacadeFlagFinish(in_docFacadeFlagFinish);
         
         
         try
@@ -228,7 +229,7 @@ public class documentFacadeDB  extends dbObject
             int in_id_facturaConnection, int in_id_payingOrder, int in_id_zaqvkaConnection, int in_docFacadeLevel,
             int in_docFacadeStorage, int in_docFacadeType, double in_docFacadeTotal, double in_docFacadeAllDDS,
             String in_docFacadeCondition, String in_docFacadeDate, String in_docFacadeCommnet,
-            String in_dateDeliver, String in_payingDate) 
+            String in_dateDeliver, String in_payingDate,int in_docFacadeFlagFinish) 
     {
         comprator = 2;
         setID_DocFacade(in_id_df);
@@ -255,7 +256,7 @@ public class documentFacadeDB  extends dbObject
         setCommentDocFacade(in_docFacadeCommnet);
         setDateDeliver(in_dateDeliver);
         setPayingDate(in_payingDate);
-        
+        setDocFacadeFlagFinish(in_docFacadeFlagFinish);
         
         try
         {
@@ -304,7 +305,7 @@ public class documentFacadeDB  extends dbObject
             int in_id_facturaConnection, int in_id_payingOrder, int in_id_zaqvkaConnection, int in_docFacadeLevel,
             int in_docFacadeStorage, int in_docFacadeType, double in_docFacadeTotal, double in_docFacadeAllDDS,
             String in_docFacadeCondition, String in_docFacadeDate, String in_docFacadeCommnet,
-            String in_dateDeliver, String in_payingDate)
+            String in_dateDeliver, String in_payingDate,int in_docFacadeFlagFinish)
     {
         comprator = 5;
          setID_Contragent_IN(in_id_contragent_in);
@@ -330,6 +331,7 @@ public class documentFacadeDB  extends dbObject
         setCommentDocFacade(in_docFacadeCommnet);
         setDateDeliver(in_dateDeliver);
         setPayingDate(in_payingDate);
+        setDocFacadeFlagFinish(in_docFacadeFlagFinish);
         try
         {
             registerParameters();
@@ -963,7 +965,7 @@ public java.sql.ResultSet getTableProductInfo(String in , int sqlselect,int leve
     setCommentDocFacade(in);  
     int oldID_df = getID_DocFacade();
     int oldID_obekt_in = getID_Obekt_IN();
-     int levelForNali4nost = 0;
+    int levelForNali4nost = 0;
     switch(level)
     {
         case 2 :
@@ -1095,14 +1097,15 @@ public double[] getPriceListByID(int in_id_pp)
         int oldIntValue = getID_Obekt_IN();
        setID_Obekt_IN(in_id_pam);
        comprator = 24;
+       java.sql.ResultSet rs1;
        try
         {
             registerParameters();
-            rs = cstm.executeQuery();
+            rs1 = cstm.executeQuery();
             
-            while(rs.next())
+            while(rs1.next())
             {
-                des = rs.getString("sname_pam");
+                des = rs1.getString("sname_pam");
                 
             }
         }
@@ -1264,9 +1267,12 @@ public double[] getPriceListByID(int in_id_pp)
      setID_Obekt_IN(oldID_obekt_in); 
      return valuta;
  }
-public void emptyPreservation(int id_dl)
+public void emptyPreservation(int id_dl, int nal)
 {
     int oldId_DF = getID_DocFacade();
+    int oldID_Obekt_in = getID_Obekt_IN();
+    setID_Obekt_IN(nal);
+    
     setID_DocFacade(id_dl);
      comprator=30;
      try
@@ -1279,7 +1285,28 @@ public void emptyPreservation(int id_dl)
             sqle.printStackTrace();
         }
        
+    setID_Obekt_IN(oldID_Obekt_in);
+    setID_DocFacade(oldId_DF);
+}
+public void clearPreservation(int id_dl, int nal)
+{
+    int oldId_DF = getID_DocFacade();
+    int oldID_Obekt_in = getID_Obekt_IN();
+    setID_Obekt_IN(nal);
     
+    setID_DocFacade(id_dl);
+     comprator=36;
+     try
+        {
+            registerParameters();
+            cstm.execute();
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+       
+    setID_Obekt_IN(oldID_Obekt_in);
     setID_DocFacade(oldId_DF);
 }
 
@@ -1291,16 +1318,26 @@ public HashMap getDocLine(int id_df)
      comprator=31;
      HashMap rows = new HashMap(); 
      docLineArray data;
-     java.sql.ResultSet rs12;
+     java.sql.ResultSet rs12 =null;
      int key = 0;
      try
         {
             registerParameters();
             rs12 = cstm.executeQuery();
-            while(rs.next())
+            while(rs12.next())
             {
-               
-              data = new docLineArray();  
+              int numerOfDisBaund[] = new int[3];
+              int v1 = (Integer) rs12.getInt("v1");
+              int v2 = (Integer) rs12.getInt("v2");
+              int v3 = (Integer) rs12.getInt("v3");
+              numerOfDisBaund[0] = v1;
+              numerOfDisBaund[1] = v2;
+              numerOfDisBaund[2] = v3;
+              
+                
+              data = new docLineArray();
+              data.setID_DocLine(rs12.getInt("id_dl"));
+              data.setNumerOfDisBand(numerOfDisBaund);
               data.setCodeOfProduct((Integer)rs12.getInt("code_pm"));
               data.setDDS((Double)rs12.getDouble("dds_dl"));
               data.setNameOfProduct((String)rs12.getString("name_pm"));
@@ -1312,16 +1349,15 @@ public HashMap getDocLine(int id_df)
               data.setRateReduction((Double)rs12.getDouble("climb_down_dl"));
               data.setStorageOut((Integer)rs12.getInt("id_n_storage"));
               String nameOfDisBaund[]= new String[3];
-              nameOfDisBaund[0] = getProductDescriptionNameID(rs12.getInt("m1_pd"));
-              nameOfDisBaund[1] = getProductDescriptionNameID(rs12.getInt("m2_pd"));
-              nameOfDisBaund[2] = getProductDescriptionNameID(rs12.getInt("m3_pd"));
-              data.setNameOfDisBand(nameOfDisBaund);
-              int numerOfDisBaund[] = new int[3];
-              numerOfDisBaund[0] =  rs12.getInt("v1_pd");
-              numerOfDisBaund[1] =  rs12.getInt("v2_pd");
-              numerOfDisBaund[2] =  rs12.getInt("v3_pd");
-              data.setNumerOfDisBand(numerOfDisBaund);
-              data.setID_DocLine(rs12.getInt("id_dl"));
+              int id_pd1 = (Integer) rs12.getInt("m1_pd");
+              int id_pd2 = (Integer) rs12.getInt("m2_pd");
+              int id_pd3 = (Integer) rs12.getInt("m3_pd");
+           //   nameOfDisBaund[0] = getProductDescriptionNameID(id_pd1); // ???? ne6to se precakva s ResultSeta ???????
+          //    nameOfDisBaund[1] = getProductDescriptionNameID(id_pd2);
+         //     nameOfDisBaund[2] = getProductDescriptionNameID(id_pd3);
+          //    data.setNameOfDisBand(nameOfDisBaund);
+             
+             
               rows.put(key,data);
               key++;
                
@@ -1392,6 +1428,30 @@ public HashMap getDocLine(int id_df)
      return maxid;
  }
  
- 
+public void  deleteRow(int type,int numberDocFadade, int level)
+ {
+      comprator=35;
+   int oldID_df = getID_DocFacade();
+   int oldID_obekt_in = getID_Obekt_IN();
+   int oldID_obekt_out = getID_Obekt_OUT();
+   setID_DocFacade(type);
+   setID_Obekt_IN(numberDocFadade);
+   setID_Obekt_OUT(level);
+   
+   try
+        {
+            registerParameters();
+            cstm.execute();
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+  
+   setID_Obekt_IN(oldID_obekt_in);
+   setID_Obekt_OUT(oldID_obekt_out);
+   setID_DocFacade(oldID_df);
+    
+ }
 // <-----------------------
 }// end class

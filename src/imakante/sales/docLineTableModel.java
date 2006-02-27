@@ -39,7 +39,7 @@ public class docLineTableModel extends AbstractTableModel implements Serializabl
     private ArrayList rows = new ArrayList();
     private docLineArray docLine = null;
     private boolean[] canEdit = new boolean [] {
-                          true, false, false,false, false, false, false,
+                          false, false, false,false, false, false, false,
                           false, false, false, false, false, false, false, false, false};
     
     private String[] colNames =  new String [] {
@@ -338,7 +338,9 @@ public class docLineTableModel extends AbstractTableModel implements Serializabl
  
  public boolean isCellEditable(int rowIndex, int columnIndex)
  {
-     return canEdit[columnIndex];
+     docLineArray dd = (docLineArray) rows.get(rowIndex); 
+     dd.getIsFinishRow();
+     return (canEdit[columnIndex] & !dd.getIsFinishRow());
      
  }
  public void enableCellEditable(int columnIndex)
@@ -352,7 +354,7 @@ public class docLineTableModel extends AbstractTableModel implements Serializabl
            public void setDefaultCellEditable()
            {
               boolean canEdit1[] = new boolean [] {
-                true, false, false, false,false, false, false, false, false, false, false, false};
+                false, false, false, false,false, false, false, false, false, false, false, false};
               canEdit = canEdit1;
            }
  
@@ -394,5 +396,11 @@ public void removeRow(int row)
 
 }
 
-    
+ public void setIsFinish(int row)
+ {
+    docLineArray dd = (docLineArray) rows.get(row); 
+    dd.setIsFinishRow(true);
+ }
+ 
+ 
 }
