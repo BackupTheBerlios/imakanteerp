@@ -391,13 +391,30 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
     
     
     private void writeFile(){
+        String l_etiket = "";
+        String pathFiles = "";
+        try {
+            if(this.jTextField3.equals("")){
+                pathFiles = "a:/";
+            }
+            BufferedWriter out = new BufferedWriter(new java.io.OutputStreamWriter(new FileOutputStream(pathFiles+etiket),this.jTextField2.getText()));
+            out.write(l_etiket);
+            
+            out.close();
+        }catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) { e.printStackTrace();
+        }
+        
         String Line="";
         for(int i=0; i<table.getRowCount(); i++){
             
             
             
         }
-        Line = (String)this.table.getValueAt(0,1).toString();
+        
+        Line = (String)this.table.getValueAt(0,0).toString();
+        Line = Line +(String)this.table.getValueAt(0,1).toString();
         Line = Line + (String)this.table.getValueAt(0,2).toString();
         Line = Line + (String)this.table.getValueAt(0,3).toString();
         Line = Line + (String)this.table.getValueAt(0,4).toString();
