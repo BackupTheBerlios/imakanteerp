@@ -1349,13 +1349,11 @@ public HashMap getDocLine(int id_df)
               data.setRateReduction((Double)rs12.getDouble("climb_down_dl"));
               data.setStorageOut((Integer)rs12.getInt("id_n_storage"));
               String nameOfDisBaund[]= new String[3];
-              int id_pd1 = (Integer) rs12.getInt("m1_pd");
-              int id_pd2 = (Integer) rs12.getInt("m2_pd");
-              int id_pd3 = (Integer) rs12.getInt("m3_pd");
-           //   nameOfDisBaund[0] = getProductDescriptionNameID(id_pd1); // ???? ne6to se precakva s ResultSeta ???????
-          //    nameOfDisBaund[1] = getProductDescriptionNameID(id_pd2);
-         //     nameOfDisBaund[2] = getProductDescriptionNameID(id_pd3);
-          //    data.setNameOfDisBand(nameOfDisBaund);
+              
+              nameOfDisBaund[0] = rs12.getString("m1");
+              nameOfDisBaund[1] = rs12.getString("m2");
+              nameOfDisBaund[2] = rs12.getString("m3");
+              data.setNameOfDisBand(nameOfDisBaund);
              
              
               rows.put(key,data);

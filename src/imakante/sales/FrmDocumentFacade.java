@@ -1266,7 +1266,7 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
                          setCodeContragent(String.valueOf(code));
                          break;
                      }
-                     case aeDocumentFacade.STOKOVA_RAZPISKA_SK1 :
+                     case aeDocumentFacade.STOKOVA_RAZPISKA :
                      {
                          setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
                          setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контарегнта2"))); //1
@@ -1294,7 +1294,7 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
                          setDistributorData(d1.toString());
                          break;
                      }
-                     case aeDocumentFacade.STOKOVA_RAZPISKA_SK2 :
+                     case aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE :
 
                      {  
                          setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
@@ -1351,7 +1351,14 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
                          setDistributorData(d1.toString());
                          break;
                      }
-
+                     case aeDocumentFacade.PREDAVATELNA_RAZPISKA :
+                         {
+                           break;
+                         }
+                     case aeDocumentFacade.PRIEMATELNA_RAZPISKA :
+                         {
+                           break;
+                         }
                  }
         
         

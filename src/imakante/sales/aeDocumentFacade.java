@@ -52,10 +52,13 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     final private static int OBEKT_ADDRESS =2;
     final private static int OBEKT_TEL =3;
     final public static int FAKTURI=1;
+    //DOKUMENTI
     final public static int POFORMA_FAKTURA=2;
-    final public static int STOKOVA_RAZPISKA_SK1=6;
-    final public static int STOKOVA_RAZPISKA_SK2=8;
+    final public static int STOKOVA_RAZPISKA=6;
     final public static int KONSGNACIONEN_PROTOKOL=9;
+    final public static int NAREZDANE_ZA_PREHVYRQNE=10;
+    final public static int PRIEMATELNA_RAZPISKA =11;
+    final public static int PREDAVATELNA_RAZPISKA =12;
    
              
     
@@ -645,7 +648,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanelPrice.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel19.setText("\u0412\u0438\u0434 \u043f\u043b\u0430\u0449\u0430\u043d\u0435:");
 
-        jComboBoxVidPla6tane.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "\u0411\u0420\u041e\u0419", "\u0427\u0410\u0421\u0422\u0418\u0427\u041d\u041e", "\u041e\u0422\u041b\u041e\u0416\u0415\u041d\u041e", "\u041f\u041e \u0411\u0410\u041d\u041a\u0410" }));
+        jComboBoxVidPla6tane.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "\u041e\u0422\u041b\u041e\u0416\u0415\u041d\u041e", "\u0411\u0420\u041e\u0419", "\u0411\u0410\u041d\u041a\u0410", "\u0427\u0410\u0421\u0422\u0418\u0427\u041d\u041e" }));
         jComboBoxVidPla6tane.setPreferredSize(new java.awt.Dimension(100, 20));
 
         jLabel20.setText("\u0414\u0430\u0442\u0430:");
@@ -935,7 +938,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
-        isNew = false;
+        
         createDocument(myParent.getDocFacadeType());
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -1578,7 +1581,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                          jTextFieldPayDate.setText(myParent.getPayingDate());
                          break;
                      }
-                     case STOKOVA_RAZPISKA_SK1 :
+                     case STOKOVA_RAZPISKA :
                      {
                          jTextFieldNomerDoc.setText(myParent.getNumberDocFacade());
                          jTextFieldDateDoc.setText(myParent.getDateDocFacade());
@@ -1589,19 +1592,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                          jTextFieldPayDate.setText(myParent.getPayingDate());
                          break;
                      }
-                     case STOKOVA_RAZPISKA_SK2 :
-
-                     {  
-                         jTextFieldNomerDoc.setText(myParent.getNumberDocFacade());
-                         jTextFieldDateDoc.setText(myParent.getDateDocFacade());
-                         repainObektData(myParent.getID_Obekt());
-                        repainContragentData(myParent.getID_Contragent());
-                        repainUserEdit(myParent.getUserDocFacade(),true);
-                         repainUserEdit(myParent.getUserDocFacade(),false);
-                        jTextFieldPayDate.setText(myParent.getPayingDate());
-                         break;
-                     }
-                     case KONSGNACIONEN_PROTOKOL :
+                   case KONSGNACIONEN_PROTOKOL :
                      {
                          jTextFieldNomerDoc.setText(myParent.getNumberDocFacade());
                          jTextFieldDateDoc.setText(myParent.getDateDocFacade());
@@ -1613,6 +1604,19 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                          break;
                      }
 
+                   case NAREZDANE_ZA_PREHVYRQNE:
+                      {
+                          break;
+                      }
+                      case PREDAVATELNA_RAZPISKA :
+                      {
+                          break;
+                      }
+                      case PRIEMATELNA_RAZPISKA :
+                      {
+
+                          break;
+                      }                   
                  }
            
             for(int i =0; i < jTable1.getRowCount();i++)  
@@ -1780,7 +1784,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 System.out.println(jTable1.getSelectedColumn());
                 System.out.println("================keyPressed===================");
                
-                 if(e.getKeyCode()== KeyEvent.VK_F5) // selektira teksta v kletkata
+                 if(e.getKeyCode()== KeyEvent.VK_DELETE) // selektira teksta v kletkata
                  {
                                 
                  //   Object value = jTable1.getCellEditor(rowSelect,columnSelect).getCellEditorValue();
@@ -1886,6 +1890,12 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                 int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
                                 jTable1.setValueAt(maxID_DocLine,rowSelect,12);
                                 //zapazvane na prodikta v tablicata s nali4nosti
+                                if(!isNew)
+                                {
+                                    //vzimane na razlikata ot tablicata za DocLine i redaktiranite broiki ot jTable1
+                                    // vry6tane na razlikata ako ima takava ili zapazvane na brojkite
+                                    
+                                }
                                  myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn);
                                 }
                                 else
@@ -2600,7 +2610,9 @@ private int[] calculatePriceList(int startpricelist)
              int docFacadeType = myParent.getDocFacadeType();
              double docFacadeTotal = Double.parseDouble(jLabelAllTotal.getText());
              double docFacadeAllDDS = Double.parseDouble(jLabelAllDDS.getText());
-             String docFacadeCondition = "0"; //??????
+             int userEdit =  myParent.getUserEditFortm(); // ne e gotovo - ???????
+             int userLastEdit =  myParent.getUserEditFortm();       
+             String docFacadeCondition = "0"; 
              String docFacadeCommnet = jTextFieldComment.getText();
              
              imakante.com.dateManipulation dateManip = new imakante.com.dateManipulation();
@@ -2611,7 +2623,7 @@ private int[] calculatePriceList(int startpricelist)
              int numberDoc = Integer.parseInt(myParent.getNumberDocFacade());
              myParent.getCountriesT().updateRow(myParent.getID_DocFacade(),contragent_out,contragent_in,obekt_out,
                      obekt_in,myParent.getID_Distributor(),myParent.getID_Deliver(),jComboBoxVidPla6tane.getSelectedIndex(),
-                     numberDoc,myParent.getUserEditFortm(),myParent.getUserEditFortm(),
+                     numberDoc,userEdit,userLastEdit,
                      facturaConnection,payingOrder,zaqvkaConnection,docFacadeLevel,docFacadeStorage,docFacadeType,
                      docFacadeTotal,docFacadeAllDDS,docFacadeCondition,docFacadeDate,docFacadeCommnet,dateDeliver,payingDate,1);
              break;
@@ -2621,7 +2633,7 @@ private int[] calculatePriceList(int startpricelist)
              
              break;
          }
-         case STOKOVA_RAZPISKA_SK1 :
+         case STOKOVA_RAZPISKA :
          {
              int contragent_in = 0;
              int contragent_out = myParent.getID_Contragent();
@@ -2652,39 +2664,7 @@ private int[] calculatePriceList(int startpricelist)
                      docFacadeTotal,docFacadeAllDDS,docFacadeCondition,docFacadeDate,docFacadeCommnet,dateDeliver,payingDate,1);
              break;
          }
-         case STOKOVA_RAZPISKA_SK2 :
-             
-         {
-             int contragent_in = 0;
-             int contragent_out = myParent.getID_Contragent();;
-             int obekt_in = 0;
-             int obekt_out = myParent.getID_Obekt();
-             int facturaConnection=0;
-             int payingOrder = 0;
-             int zaqvkaConnection = 0;
-             int docFacadeLevel = myParent.getDocFacadeLevel();
-             int docFacadeStorage = myParent.getStorageOUTProduct();
-             int docFacadeType = myParent.getDocFacadeType();
-             double docFacadeTotal = Double.parseDouble(jLabelAllTotal.getText());
-             double docFacadeAllDDS = Double.parseDouble(jLabelAllDDS.getText());
-             String docFacadeCondition = "0";
-             String docFacadeCommnet = jTextFieldComment.getText();
-             
-             
-             imakante.com.dateManipulation dateManip = new imakante.com.dateManipulation();
-             
-             String dateDeliver = dateManip.convertDate(jTextFieldDateDeliver.getText());
-             String payingDate = dateManip.convertDate(jTextFieldPayDate.getText());
-             String docFacadeDate = dateManip.convertDate(jTextFieldDateDoc.getText());
-             
-             myParent.getCountriesT().updateRow(myParent.getID_DocFacade(),contragent_out,contragent_in,obekt_out,
-                     obekt_in,myParent.getID_Distributor(),myParent.getID_Deliver(),jComboBoxVidPla6tane.getSelectedIndex(),
-                     Integer.parseInt(myParent.getNumberDocFacade()),myParent.getUserEditFortm(),myParent.getUserEditFortm(),
-                     facturaConnection,payingOrder,zaqvkaConnection,docFacadeLevel,docFacadeStorage,docFacadeType,
-                     docFacadeTotal,docFacadeAllDDS,docFacadeCondition,docFacadeDate,docFacadeCommnet,dateDeliver,payingDate,1);
-             break;
-         }
-         case KONSGNACIONEN_PROTOKOL :
+       case KONSGNACIONEN_PROTOKOL :
          {
              int contragent_in = 0;
              int contragent_out = myParent.getID_Contragent();
@@ -2714,10 +2694,22 @@ private int[] calculatePriceList(int startpricelist)
                      docFacadeTotal,docFacadeAllDDS,docFacadeCondition,docFacadeDate,docFacadeCommnet,dateDeliver,payingDate,1);
              break;
          }
-      
+           case NAREZDANE_ZA_PREHVYRQNE:
+          {
+              break;
+          }
+          case PREDAVATELNA_RAZPISKA :
+          {
+              break;
+          }
+          case PRIEMATELNA_RAZPISKA :
+          {
+              
+              break;
+          }
      }
   emptyPreservation();
-  
+  isNew = false; // ve4e dokumenta ne se vodi kato "nov"
  }
  
 private void emptyPreservation()
@@ -2752,15 +2744,10 @@ private void emptyPreservation()
              jPanel4.setVisible(false);
              break;
          }
-         case STOKOVA_RAZPISKA_SK1 :
+         case STOKOVA_RAZPISKA :
          {
              jLabelDocType.setText("\u0421\u0422\u041e\u041a\u041e\u0412\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410");
              
-             break;
-         }
-         case STOKOVA_RAZPISKA_SK2 :
-         {
-             jLabelDocType.setText("\u0421\u0422\u041e\u041a\u041e\u0412\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410");
              break;
          }
          case KONSGNACIONEN_PROTOKOL :
@@ -2769,8 +2756,19 @@ private void emptyPreservation()
              jLabelDocType.setText("\u041a\u041e\u041d\u0421\u0413\u041d\u0410\u0426\u0418\u041e\u041d\u0415\u041d \u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b");
              break;
          }
-         
-         
+          case NAREZDANE_ZA_PREHVYRQNE:
+          {
+              break;
+          }
+          case PREDAVATELNA_RAZPISKA :
+          {
+              break;
+          }
+          case PRIEMATELNA_RAZPISKA :
+          {
+              
+              break;
+          }
          
          
      }
@@ -2786,8 +2784,15 @@ private void showAllPanels()
  {
      int id_dl =(Integer) jTable1.getValueAt(selectRow,12);
      int nal = (Integer)jTable1.getValueAt(selectRow,4); 
-     myParent.getCountriesT().clearPreservation(id_dl,nal);  
-     myParent.getCountriesT().deleteDocLine(id_dl);
+     if(!isNew)
+     {
+       //vry6tane na koli4etvata v tablicata za nali4nostite
+     }
+     else
+     {
+       myParent.getCountriesT().clearPreservation(id_dl,nal);  
+       myParent.getCountriesT().deleteDocLine(id_dl);
+     }
      if(withRowTable)
      {
         
