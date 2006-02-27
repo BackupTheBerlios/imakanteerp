@@ -281,24 +281,44 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
     
     private final String  in_l = "115594691";
     private final int int_in = 10;
-    private final String name_b = "Иван Иванов";
+    private final String name_b = "Инсайд 3";
     private final int int_name_b = 50;
     private final String name_acc  = "Йорданка Брънкова";
     private final int int_name_acc = 50;
     private final String tel = "032/99999999";
     private final int int_tel = 25;
-    private final String zzd = "12/02/2006";
+    private final String zzd = "23/01/2001";
     private final int int_zzd = 10;
-    private final String pzd = "";
+    private final String pzd = "  /  /    ";
     private final int  int_pzd = 10;
-    private final String otp = "12/01/2006";
+    private final String otp = "200602";
     
     
     public static JRTableModelDataSource jtbm;
+    
+    
     private String fullString(String inString, int in_int){
         String str = "";
+        int f = 0;
+      
+        System.out.println("String lenght" + inString.length());
+       if (inString.length()> in_int){
+       str = inString.substring(0,50);
+       }
+        
+       if (inString.length() < in_int){
+            str = inString;
+          for (int i = 0; str.length()<in_int; i++){
+            str = str+" ";
+            System.out.print(str);
+          }
+       
+       } 
+        
         return str;
     }
+    
+    
     private void prepareC(){
         connection = imakante.com.NewMain.getConnection();
         
@@ -309,6 +329,7 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
         }
         
     }
+ 
     
     public void openFile_Dialog(){
         javax.swing.JFrame frame = new JFrame();
@@ -396,8 +417,17 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
         try {
             if(this.jTextField3.equals("")){
                 pathFiles = "a:/";
+                System.out.println(pathFiles);
             }
-            BufferedWriter out = new BufferedWriter(new java.io.OutputStreamWriter(new FileOutputStream(pathFiles+etiket),this.jTextField2.getText()));
+            l_etiket = l_etiket + fullString(in_l,10);
+            l_etiket = l_etiket + fullString(name_b,50);
+            l_etiket = l_etiket + fullString(name_acc,50);
+            l_etiket = l_etiket + fullString(tel,25);
+            
+            l_etiket = l_etiket + zzd + pzd +  otp + "\n";
+            System.out.println(l_etiket);
+            String to = pathFiles+etiket;
+            BufferedWriter out = new BufferedWriter(new java.io.OutputStreamWriter(new FileOutputStream("c:/install/ETIKET.TXT"),this.jTextField2.getText()));
             out.write(l_etiket);
             
             out.close();
@@ -429,10 +459,14 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
             out.close();
         }catch (UnsupportedEncodingException e) {
             e.printStackTrace();
+            
         } catch (IOException e) { e.printStackTrace();
         }
         
     }
+    
+    
+    
 //    public void createData(){
 //
 //        jtbm = new JRTableModelDataSource(model);
