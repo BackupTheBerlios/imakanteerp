@@ -9,8 +9,7 @@ BEGIN
             LEFT OUTER JOIN sl_doc_type_num dtn ON dtn.id_sdtn = n.id_sdtn;
      END IF;
      IF (comprator = 1) THEN
-        INSERT INTO `mida`.`n_doc_type_user_rights`(id_n_group, code_nbc, name_nbc, account_nbc, address_nbc, id_tbacc, comment_nbc) 
-        VALUES (in_id_group, in_code, in_name, in_account, in_address, in_id_tacc, in_comment);
+        INSERT INTO `mida`.`n_doc_type_user_rights`(id_um, id_sdtn, rights_sdtn) VALUES (in_id_um, in_id_sdtn, in_rights);
      END IF;
      IF (comprator = 2) THEN
         UPDATE `mida`.`n_baccount` SET id_n_group = in_id_group, code_nbc = in_code, name_nbc = in_name, account_nbc = in_account,
