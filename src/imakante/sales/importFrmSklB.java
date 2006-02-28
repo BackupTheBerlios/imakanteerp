@@ -8,6 +8,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
@@ -293,6 +297,7 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
     private final int  int_pzd = 10;
     private final String otp = "200602";
     
+    private java.util.Date data;
     
     public static JRTableModelDataSource jtbm;
     
@@ -450,33 +455,46 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
         }
         
         String Line="";
-        for(int i=0; i<table.getRowCount(); i++){
-            
-            
-            
-        }
-        
-        Line = (String)this.table.getValueAt(0,0).toString();
-        Line = Line +(String)this.table.getValueAt(0,1).toString();
-        Line = Line + (String)this.table.getValueAt(0,2).toString();
-        Line = Line + (String)this.table.getValueAt(0,3).toString();
-        Line = Line + (String)this.table.getValueAt(0,4).toString();
-        Line = Line + (String)this.table.getValueAt(0,5).toString();
-        Line = Line + (String)this.table.getValueAt(0,6).toString();
-        Line = Line + "\n";
-        
+       
+//        
+//        Line = (String)this.table.getValueAt(0,0).toString();
+//        Line = Line +(String)this.table.getValueAt(0,1).toString();
+//        Line = Line + (String)this.table.getValueAt(0,2).toString();
+//        Line = Line + (String)this.table.getValueAt(0,3).toString();
+//        Line = Line + (String)this.table.getValueAt(0,4).toString();
+//        Line = Line + (String)this.table.getValueAt(0,5).toString();
+//        Line = Line + (String)this.table.getValueAt(0,6).toString();
+//        Line = Line + "\n";
+//        
         try {
             
-            BufferedWriter out = new BufferedWriter(new java.io.OutputStreamWriter(new FileOutputStream("c:/rabotna2/proba.txt"),this.jTextField2.getText()));
-            
-            for(int i = 0; i<table.getRowCount(); i++){
+            BufferedWriter out = new BufferedWriter(new java.io.OutputStreamWriter(new FileOutputStream("c:/rabotna2/p.txt"),this.jTextField2.getText()));
+            int j = 0;
+            int k = table.getRowCount();
+            while(j<k){
+                
+                Line ="";
                 Line = Line + fullString(in_l,10,true);
                 Line = Line + "    ";
-                Line = Line + fullString(""+(i+1),7, false);
+                Line = Line + fullString(""+(j+1),7, false);
                 Line = Line +"06";
-                Line = Line + imakante.com.dateManipulation.parceInvDate(imakante.com.dateManipulation.parseDate((String)this.table.getValueAt(0,2).toString()));
+                Line  = Line + fullString((String)table.getValueAt(j,1),10,true);
+//                try {
+//                    data = (Date)(new SimpleDateFormat("dd.MM.yyyy").parse((String)this.table.getValueAt(j,2).toString()));
+//                //  Line = Line +  (Date)(DateFormat.getDateInstance(new SimpleDateFormat("dd/MM/yyyy")).parse((String)this.table.getValueAt(j,2).toString()));
+//                   Line = Line + (Date)(new SimpleDateFormat("dd/MM/yyyy").parse(data));
+//                } catch (ParseException ex) {
+//                    ex.printStackTrace();
+//                }
+                Line = Line + imakante.com.dateManipulation.parceInvDate((String)this.table.getValueAt(j,2));
+//                
+                Line = Line + table.getValueAt(j,4);
+                Line = Line + fullString((String)table.getValueAt(j,5), 50,true);
                 Line = Line + "\n";
-                out.write(Line);}
+                j++;
+                out.write(Line);
+                
+            }
             
             out.close();
         }catch (UnsupportedEncodingException e) {
