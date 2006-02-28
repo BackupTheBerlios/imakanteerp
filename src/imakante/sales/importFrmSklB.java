@@ -119,9 +119,9 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
                         .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                             .add(jLabel1)
                             .add(jLabel4)))
-                    .add(jPanel2Layout.createSequentialGroup()
-                        .add(jButton5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                        .add(298, 298, 298)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .add(jButton5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 98, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 310, Short.MAX_VALUE)
                         .add(jLabel5)))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
@@ -145,10 +145,10 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
                     .add(jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 16, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jButton5)
                     .add(jLabel5)
-                    .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jButton5))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         jButton2.setText("\u0422\u0440\u0430\u043d\u0441\u0444\u0435\u0440 \u043a\u044a\u043c \u0411\u0430\u0437\u0430");
@@ -297,24 +297,36 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
     public static JRTableModelDataSource jtbm;
     
     
-    private String fullString(String inString, int in_int){
+    private String fullString(String inString, int in_int, boolean reverce){
         String str = "";
         int f = 0;
-      
+        
         System.out.println("String lenght" + inString.length());
-       if (inString.length()> in_int){
-       str = inString.substring(0,50);
-       }
+        if(reverce){ if (inString.length()> in_int){
+            str = inString.substring(0,in_int);
+        }
         
-       if (inString.length() < in_int){
+        if (inString.length() < in_int){
             str = inString;
-          for (int i = 0; str.length()<in_int; i++){
-            str = str+" ";
-            System.out.print(str);
-          }
-       
-       } 
-        
+            for (int i = 0; str.length()<in_int; i++){
+                str = str+" ";
+                System.out.print(str);
+            }
+            
+        }
+        }else{
+            if (inString.length()> in_int){
+                str = inString.substring(0,in_int);
+            }
+            
+            if (inString.length() < in_int){
+                str = inString;
+                for (int i = 0; str.length()<in_int; i++){
+                    str = " " + str;
+                    System.out.print(str);
+                }
+            }
+        }
         return str;
     }
     
@@ -329,7 +341,7 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
         }
         
     }
- 
+    
     
     public void openFile_Dialog(){
         javax.swing.JFrame frame = new JFrame();
@@ -367,18 +379,19 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
                     
                     if(Integer.parseInt(vid)>0){
                         ((MyTableModel)table.getModel()).insertRow(model.getRowCount(), new Object[]{"0","0","0","0","0","0","0","0"});
-                        this.table.setValueAt(cod,row,0);
-                        this.table.setValueAt(data,row,1);
-                        this.table.setValueAt(NDR,row,2);
-                        this.table.setValueAt(vid,row,5);
-                        this.table.setValueAt(((Double.parseDouble(sum))/100),row,6);
-                        this.table.setValueAt(((Double.parseDouble(dds))/100),row,7);
+                        this.table.setValueAt(row +1,row,0);
+                        this.table.setValueAt(cod,row,1);
+                        this.table.setValueAt(data,row,2);
+                        this.table.setValueAt(NDR,row,3);
+                        this.table.setValueAt(vid,row,6);
+                        this.table.setValueAt(((Double.parseDouble(sum))/100),row,7);
+                        this.table.setValueAt(((Double.parseDouble(dds))/100),row,8);
                         try {
                             
                             rs = stm.executeQuery(QString + NDR);
                             while(rs.next()){
-                                this.table.setValueAt(rs.getString("bul_n_contragent"),row,3);
-                                this.table.setValueAt(rs.getString("name_n_contragent"),row,4);
+                                this.table.setValueAt(rs.getString("bul_n_contragent"),row,4);
+                                this.table.setValueAt(rs.getString("name_n_contragent"),row,5);
                             }
                         } catch (SQLException ex) {
                             ex.printStackTrace();
@@ -398,10 +411,10 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
     
     public class MyTableModel extends DefaultTableModel {
         private String[] Names =  new String [] {
-            "Номер документ", "Дата", "Данъчен Номер", "ИН", "Фирма","Вид", "Сума","ДДС"};
+            "№", "Номер документ", "Дата", "Данъчен Номер", "ИН", "Фирма","Вид", "Сума","ДДС"};
         
         public int getColumnCount() {
-            return 8;
+            return 9;
         }
         public String getColumnName(int col) {
             return Names[col];
@@ -419,10 +432,10 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
                 pathFiles = "a:/";
                 System.out.println(pathFiles);
             }
-            l_etiket = l_etiket + fullString(in_l,10);
-            l_etiket = l_etiket + fullString(name_b,50);
-            l_etiket = l_etiket + fullString(name_acc,50);
-            l_etiket = l_etiket + fullString(tel,25);
+            l_etiket = l_etiket + fullString(in_l,10, true);
+            l_etiket = l_etiket + fullString(name_b,50, true);
+            l_etiket = l_etiket + fullString(name_acc,50, true);
+            l_etiket = l_etiket + fullString(tel,25,true);
             
             l_etiket = l_etiket + zzd + pzd +  otp + "\n";
             System.out.println(l_etiket);
@@ -453,8 +466,17 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
         Line = Line + "\n";
         
         try {
+            
             BufferedWriter out = new BufferedWriter(new java.io.OutputStreamWriter(new FileOutputStream("c:/rabotna2/proba.txt"),this.jTextField2.getText()));
-            out.write(Line);
+            
+            for(int i = 0; i<table.getRowCount(); i++){
+                Line = Line + fullString(in_l,10,true);
+                Line = Line + "    ";
+                Line = Line + fullString(""+(i+1),7, false);
+                Line = Line +"06";
+                Line = Line + imakante.com.dateManipulation.parceInvDate(imakante.com.dateManipulation.parseDate((String)this.table.getValueAt(0,2).toString()));
+                Line = Line + "\n";
+                out.write(Line);}
             
             out.close();
         }catch (UnsupportedEncodingException e) {

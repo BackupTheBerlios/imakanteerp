@@ -238,7 +238,11 @@ public class dateManipulation {
         
     return "";
     }
-    
+    public static String parceInvDate(String str){
+    String returnString="";
+            returnString  = str.substring(8,10)+ "/" + str.substring(5,7)+ "/" + str.substring(0,4);
+        return returnString;
+    }
     public void parseDate(org.joda.time.DateTime begDate, org.joda.time.DateTime endDate){
     
     
