@@ -1516,6 +1516,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private boolean isTyped = false;
     private boolean isSetDataInTable = false;
     private boolean rowSelectedChange = false;
+    private HashMap  rows=null;
 //----------------------------------------
     
     
@@ -1624,7 +1625,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 ((docLineTableModel)jTable1.getModel()).removeRow(i);  
             }
               
-          HashMap  rows  = myParent.getCountriesT().getDocLine(myParent.getID_DocFacade());
+           rows  = myParent.getCountriesT().getDocLine(myParent.getID_DocFacade());
            int countRow = rows.size();
            
            
@@ -1882,21 +1883,42 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                 double dds =(Double)jTable1.getValueAt(rowSelect,10);
                                 double total = (Double)jTable1.getValueAt(rowSelect,11);
                                 int tmp = myParent.getCountriesT().checkForEnoughProducts(myParent.getID_PC(),myParent.getStorageOUTProduct());
-                                if(nn<=tmp)
+                                if(true) //nn<=tmp
                                 {
-                                myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
+                                
+                                if(myParent.getDocFacadeType()!=POFORMA_FAKTURA)
+                                  {
+                                    if(!isNew)
+                                    {
+                                        //vzimane na razlikata ot tablicata za DocLine i redaktiranite broiki ot jTable1
+                                        // vry6tane na razlikata ako ima takava ili zapazvane na brojkite
+                                        int id_dl = (Integer) jTable1.getValueAt(rowSelect,12);
+                                        int newNumberProduct = nn;
+                                        docLineArray d = (docLineArray) rows.get(rowSelect);
+                                        int oldNumberProduct = d.getNumberOfProduct();
+                                        if(newNumberProduct > oldNumberProduct)
+                                        {
+                                            myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(newNumberProduct - oldNumberProduct));
+                                        }else
+                                        {
+                                          myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(oldNumberProduct-newNumberProduct ));
+                                        }
+                                        
+                                        myParent.getCountriesT().updateDocLine(id_dl,myParent.getID_DocFacade(),myParent.getID_PC(),
+                                                                                        myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
+                                                                                        myParent.getProcentProduct(),newNumberProduct,dds,total);
+                                    }
+                                    else
+                                    {
+                                    myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
                                                                           myParent.getProcentProduct(),nn,dds,total);
                                 
-                                int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
-                                jTable1.setValueAt(maxID_DocLine,rowSelect,12);
-                                //zapazvane na prodikta v tablicata s nali4nosti
-                                if(!isNew)
-                                {
-                                    //vzimane na razlikata ot tablicata za DocLine i redaktiranite broiki ot jTable1
-                                    // vry6tane na razlikata ako ima takava ili zapazvane na brojkite
-                                    
-                                }
-                                 myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn);
+                                    int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
+                                    jTable1.setValueAt(maxID_DocLine,rowSelect,12);
+                                    //zapazvane na prodikta v tablicata s nali4nosti
+                                     myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn);
+                                    }
+                                  }
                                 }
                                 else
                                 {
@@ -2610,7 +2632,8 @@ private int[] calculatePriceList(int startpricelist)
              int docFacadeType = myParent.getDocFacadeType();
              double docFacadeTotal = Double.parseDouble(jLabelAllTotal.getText());
              double docFacadeAllDDS = Double.parseDouble(jLabelAllDDS.getText());
-             int userEdit =  myParent.getUserEditFortm(); // ne e gotovo - ???????
+             
+             int userEdit =  myParent.getUserDocFacade(); 
              int userLastEdit =  myParent.getUserEditFortm();       
              String docFacadeCondition = "0"; 
              String docFacadeCommnet = jTextFieldComment.getText();
@@ -2787,6 +2810,9 @@ private void showAllPanels()
      if(!isNew)
      {
        //vry6tane na koli4etvata v tablicata za nali4nostite
+        int numberProduct = (Integer) jTable1.getValueAt(selectRow,4) ;
+        myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(numberProduct));
+         myParent.getCountriesT().deleteDocLine(id_dl);
      }
      else
      {
