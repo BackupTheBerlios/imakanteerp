@@ -192,7 +192,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jLabelAllDDS = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jLabelAllTotal = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtonCreateDocFacade = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
         jLabelAllBrojProduct = new javax.swing.JLabel();
@@ -215,6 +215,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jLabel22 = new javax.swing.JLabel();
         jTextFieldUserLastEdit = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        jButtonAnulirane = new javax.swing.JButton();
+        jButtonDellDocFadade = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
 
@@ -668,8 +670,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel20)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextFieldPayDate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 62, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(234, 234, 234))
+                .add(jTextFieldPayDate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 84, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(29, 29, 29))
         );
         jPanelPriceLayout.setVerticalGroup(
             jPanelPriceLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -737,14 +739,14 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         );
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 530, 390, 60));
 
-        jButton1.setText("\u0418\u0417\u041f\u042a\u041b\u041d\u0418");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCreateDocFacade.setText("\u0421\u044a\u0437\u0434\u0430\u0432\u0430\u043d\u0435 \u043d\u0430 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442");
+        jButtonCreateDocFacade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonCreateDocFacadeActionPerformed(evt);
             }
         });
 
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 640, -1, -1));
+        jPanel2.add(jButtonCreateDocFacade, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 640, -1, -1));
 
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel30.setText("\u041d\u0430\u043b\u0438\u0447\u043d\u0438:");
@@ -919,6 +921,12 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 640, 150, -1));
 
+        jButtonAnulirane.setText("\u0410\u043d\u0443\u043b\u0438\u0440\u0430\u043d\u0435");
+        jPanel2.add(jButtonAnulirane, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 640, -1, -1));
+
+        jButtonDellDocFadade.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435 \u043d\u0430 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442");
+        jPanel2.add(jButtonDellDocFadade, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 640, -1, -1));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 770, 670));
 
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 660, 110, -1));
@@ -936,12 +944,12 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonCreateDocFacadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCreateDocFacadeActionPerformed
 // TODO add your handling code here:
         
         createDocument(myParent.getDocFacadeType());
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonCreateDocFacadeActionPerformed
     
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
 // TODO add your handling code here:
@@ -1399,9 +1407,11 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     }*/
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonAnulirane;
     private javax.swing.JButton jButtonClose;
+    private javax.swing.JButton jButtonCreateDocFacade;
+    private javax.swing.JButton jButtonDellDocFadade;
     private javax.swing.JButton jButtonOneRowM;
     private javax.swing.JButton jButtonOneRowP;
     private javax.swing.JButton jButtonSave;
@@ -1919,8 +1929,31 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                      myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn);
                                     }
                                   }
+                                else // ako dokumenta e POFORMA_FAKTURA
+                                {
+                                   if(!isNew)
+                                    {
+                                        int id_dl = (Integer) jTable1.getValueAt(rowSelect,12);
+                                        int newNumberProduct = nn;
+                                        docLineArray d = (docLineArray) rows.get(rowSelect);
+                                       
+                                                                            
+                                        myParent.getCountriesT().updateDocLine(id_dl,myParent.getID_DocFacade(),myParent.getID_PC(),
+                                                                                        myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
+                                                                                        myParent.getProcentProduct(),newNumberProduct,dds,total);
+                                    }
+                                    else
+                                    {
+                                    myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
+                                                                          myParent.getProcentProduct(),nn,dds,total);
+                                
+                                    int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
+                                    jTable1.setValueAt(maxID_DocLine,rowSelect,12);
+                                    } 
+                                  }
+                                
                                 }
-                                else
+                                 else
                                 {
                                     ((docLineTableModel) jTable1.getModel()).removeRow(rowSelect);
                                      if(rowSelect==0)
@@ -2811,12 +2844,14 @@ private void showAllPanels()
      {
        //vry6tane na koli4etvata v tablicata za nali4nostite
         int numberProduct = (Integer) jTable1.getValueAt(selectRow,4) ;
-        myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(numberProduct));
-         myParent.getCountriesT().deleteDocLine(id_dl);
+        if(myParent.getDocFacadeType()!=POFORMA_FAKTURA)
+                   myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(numberProduct));
+        myParent.getCountriesT().deleteDocLine(id_dl);
      }
      else
      {
-       myParent.getCountriesT().clearPreservation(id_dl,nal);  
+       if(myParent.getDocFacadeType()!=POFORMA_FAKTURA)
+                  myParent.getCountriesT().clearPreservation(id_dl,nal);  
        myParent.getCountriesT().deleteDocLine(id_dl);
      }
      if(withRowTable)

@@ -36,7 +36,10 @@
  *comprator = 34: getMaxIdDocLine()
  *comprator = 35: deleteDocFacade()
  *comprator = 35: clearPreservation()
- * 
+ *comprator = 36: returnProducts() 
+ *comprator = 37:
+ *comprator = 38:
+ *comprator = 39:
  */
 
 package imakante.sales;
@@ -1374,14 +1377,47 @@ public HashMap getDocLine(int id_df)
 }
 
  
-/*public void updateDocLine(int id_df,int id_dl)
+public void updateDocLine(int id_dl,int in_id_df,int in_id_pc,int in_id_storage,double priceone,double climbdown,int numberProduct,double dds,double totalall)
  {
       comprator=32;
-      
-      
+     int oldID_obekt_in = getID_Obekt_IN();
+     int oldID_obekt_out = getID_Obekt_OUT();
+     int oldID_contragent_in = getID_Contragent_IN();
+     int oldID_df = getID_DocFacade();
+     int oldID_contragent_out = getID_Contragent_OUT();
+     double oldDDS = getAllDDSPaingDocFacade();
+     double oldTotal = getTotalPayingDocFacade();
+       setID_Obekt_IN(in_id_pc);
+       setID_Obekt_OUT(in_id_storage);
+       setID_Contragent_IN(numberProduct);
+       setID_Contragent_OUT(id_dl);
+       setAllDDSPaingDocFacade(dds);
+       setTotalPayingDocFacade(totalall);
+       setPriceOne(priceone);
+       setClimbDown(climbdown);
+       setID_DocFacade(in_id_df);
+       
+       try
+        {
+            registerParameters();
+            cstm.execute();
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+       
+       
+       setTotalPayingDocFacade(oldTotal);
+       setAllDDSPaingDocFacade(oldDDS);
+       setID_Contragent_IN(oldID_contragent_in);
+       setID_Obekt_OUT(oldID_obekt_out);
+       setID_Obekt_IN(oldID_obekt_in);
+       setID_DocFacade(oldID_df); 
+       setID_Contragent_OUT(oldID_contragent_out);
       
  }
-*/
+
  public void deleteDocLine(int id_dl)
  {
       int oldId_DF = getID_DocFacade();
@@ -1450,6 +1486,33 @@ public void  deleteRow(int type,int numberDocFadade, int level)
    setID_Obekt_OUT(oldID_obekt_out);
    setID_DocFacade(oldID_df);
     
+ }
+ public void returnProducts(int in_id_pc, int in_id_storage, int number)
+ {
+     int oldID_obekt_in = getID_Obekt_IN();
+     int oldID_obekt_out = getID_Obekt_OUT();
+     int oldID_contragent_in = getID_Contragent_IN();
+     comprator=36;
+      setID_Obekt_IN(in_id_pc);
+      setID_Obekt_OUT(in_id_storage);
+       setID_Contragent_IN(number);
+     try
+        {
+            registerParameters();
+            cstm.execute();
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+       
+       
+       
+       
+     setID_Contragent_IN(oldID_contragent_in);
+       setID_Obekt_OUT(oldID_obekt_out);
+       setID_Obekt_IN(oldID_obekt_in);
+     
  }
 // <-----------------------
 }// end class

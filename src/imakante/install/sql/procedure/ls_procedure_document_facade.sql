@@ -508,13 +508,17 @@ n.id_pc, n.id_pm, n.parcel_pc, n.dateofexpire_pc,
  pd.id_pd, pd.m1_pd, pd.v1_pd as v1, pd.m2_pd, pd.v2_pd as v2, pd.m3_pd, pd.v3_pd as v3,
  pp.id_pp, pp.id_sl_curs, pp.price1_pp, pp.price2_pp, pp.price3_pp, pp.price0_pp,
  pf.id_pf, pf.dds_pf, pf.excise_pf, pf.other_pf,
- st.id_n_storage, st.id_n_group, st.code_n_storage, st.name_n_storage, st.comments_n_storage
+ st.id_n_storage, st.id_n_group, st.code_n_storage, st.name_n_storage, st.comments_n_storage,
+ pam1.sname_pam, pam2.sname_pam, pam3.sname_pam
     FROM mida.sl_document_lines s LEFT JOIN mida.n_product_consigment n ON s.id_pc = n.id_pc
     LEFT JOIN mida.n_product_main pm ON pm.id_pm=n.id_pm
     LEFT JOIN  mida.n_product_price pp   ON pm.id_pp=pp.id_pp
     LEFT JOIN  mida.n_product_description pd   ON pm.id_pd=pd.id_pd
     LEFT JOIN  mida.n_product_fee pf   ON pm.id_pf=pf.id_pf
     LEFT JOIN  mida.n_storage st   ON st.id_n_storage = s.id_n_storage
+    LEFT JOIN  mida.n_product_all_measure pam1 ON pam1.id_pam = pd.m1_pd
+    LEFT JOIN  mida.n_product_all_measure pam2 ON pam2.id_pam = pd.m2_pd
+    LEFT JOIN  mida.n_product_all_measure pam3 ON pam3.id_pam = pd.m3_pd
     WHERE id_df = in_id_df;
 END IF;
 
