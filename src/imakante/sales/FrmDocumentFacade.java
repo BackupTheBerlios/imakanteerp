@@ -1252,7 +1252,7 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
                          
                          break;
                      }
-                     case aeDocumentFacade.POFORMA_FAKTURA :
+                     case aeDocumentFacade.PROFORMA_FAKTURA :
                      {
                          setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
                          setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контарегнта2"))); //1
@@ -1279,8 +1279,8 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
                          int code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента2"));
                          setCodeContragent(String.valueOf(code));
                          setID_Obekt((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df")));       
-                         code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на обекта2"));        
-                         setCodeContragent(String.valueOf(code));
+                            
+                         setCodeObekt((String)table.getValueAt(getRow(), getColumnIndex("Код на обекта2")));
                          setNameObekt((String) table.getValueAt(getRow(), getColumnIndex("Име на обекта2")));
                          setAddressObekt((String) table.getValueAt(getRow(), getColumnIndex("Адрес на обекта2")));
                          setTelObekt(" ");
@@ -1308,8 +1308,8 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
                          int code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента2"));
                          setCodeContragent(String.valueOf(code));
                          setID_Obekt((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df")));       
-                         code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на обекта2"));        
-                         setCodeContragent(String.valueOf(code));
+                             
+                         setCodeObekt((String)table.getValueAt(getRow(), getColumnIndex("Код на обекта2")));
                          setNameObekt((String) table.getValueAt(getRow(), getColumnIndex("Име на обекта2")));
                          setAddressObekt((String) table.getValueAt(getRow(), getColumnIndex("Адрес на обекта2")));
                          setTelObekt(" ");
@@ -1336,8 +1336,8 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
                          int code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента2"));
                          setCodeContragent(String.valueOf(code));
                          setID_Obekt((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df")));       
-                         code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на обекта2"));        
-                         setCodeContragent(String.valueOf(code));
+                              
+                         setCodeObekt((String)table.getValueAt(getRow(), getColumnIndex("Код на обекта2")));
                          setNameObekt((String) table.getValueAt(getRow(), getColumnIndex("Име на обекта2")));
                          setAddressObekt((String) table.getValueAt(getRow(), getColumnIndex("Адрес на обекта2")));
                          setTelObekt(" ");

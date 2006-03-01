@@ -79,9 +79,11 @@ IF (comprator = 2) THEN
 
      END IF;
 
-   #  IF (comprator = 3) THEN
-   #       DELETE FROM mida.sl_document_facade WHERE id_df = in_id_df;
-    #  END IF;
+IF (comprator = 3) THEN
+      #   DELETE FROM mida.sl_document_facade WHERE id_df = in_id_df;
+      UPDATE mida.sl_document_facade s SET s.condition_df ="1"
+      WHERE id_df = in_id_df;
+END IF;
 
 IF (comprator = 4) THEN
          SELECT s.id_df, s.in_contragent_df,contr_in.code_contragent, contr_in.bul_n_contragent, contr_in.dan_n_contragent, contr_in.name_n_contragent,
@@ -469,8 +471,8 @@ END IF;
 
 IF (comprator = 26) THEN
     INSERT INTO mida.sl_document_lines(id_df,id_pc,id_n_storage,singly_price_dl,climb_down_dl,
-           numbers_piece_dl,dds_dl,totalall_dl)
-    VALUES(in_id_df,in_id_obekt_in,in_id_obekt_out,in_priceOne,in_climbDown,in_id_contragent_in,in_docFacadeAllDDS,in_docFacadeTotal);
+           numbers_piece_dl,dds_dl,totalall_dl,price_list_dl)
+    VALUES(in_id_df,in_id_obekt_in,in_id_obekt_out,in_priceOne,in_climbDown,in_id_contragent_in,in_docFacadeAllDDS,in_docFacadeTotal,in_id_deliver);
 END IF;
 
 IF (comprator = 27) THEN
@@ -509,7 +511,7 @@ n.id_pc, n.id_pm, n.parcel_pc, n.dateofexpire_pc,
  pp.id_pp, pp.id_sl_curs, pp.price1_pp, pp.price2_pp, pp.price3_pp, pp.price0_pp,
  pf.id_pf, pf.dds_pf, pf.excise_pf, pf.other_pf,
  st.id_n_storage, st.id_n_group, st.code_n_storage, st.name_n_storage, st.comments_n_storage,
- pam1.sname_pam, pam2.sname_pam, pam3.sname_pam
+ pam1.sname_pam as m1, pam2.sname_pam as m2, pam3.sname_pam as m3
     FROM mida.sl_document_lines s LEFT JOIN mida.n_product_consigment n ON s.id_pc = n.id_pc
     LEFT JOIN mida.n_product_main pm ON pm.id_pm=n.id_pm
     LEFT JOIN  mida.n_product_price pp   ON pm.id_pp=pp.id_pp
@@ -520,6 +522,19 @@ n.id_pc, n.id_pm, n.parcel_pc, n.dateofexpire_pc,
     LEFT JOIN  mida.n_product_all_measure pam2 ON pam2.id_pam = pd.m2_pd
     LEFT JOIN  mida.n_product_all_measure pam3 ON pam3.id_pam = pd.m3_pd
     WHERE id_df = in_id_df;
+END IF;
+
+IF (comprator = 32) THEN
+    UPDATE mida.sl_document_lines s SET s.id_pc = in_id_obekt_in,
+    s.id_n_storage = in_id_obekt_out,
+    s.singly_price_dl = in_priceOne ,
+    s.climb_down_dl = in_climbDown,
+    s.numbers_piece_dl=  in_id_contragent_in ,
+    s.dds_dl = in_docFacadeAllDDS ,
+    s.totalall_dl = in_docFacadeTotal,
+    s.id_df=  in_id_df,
+    s.price_list_dl= in_id_deliver
+    WHERE id_dl = in_id_contragent_out;
 END IF;
 
 IF (comprator = 33) THEN
@@ -533,8 +548,10 @@ IF (comprator = 34) THEN
 END IF;
 
 IF (comprator = 35) THEN
-   DELETE FROM mida.sl_document_facade
-   WHERE  type_df = in_id_df AND number_df = in_id_obekt_in AND level_df =in_id_obekt_out;
+  # DELETE FROM mida.sl_document_facade
+  # WHERE  type_df = in_id_df AND number_df = in_id_obekt_in AND level_df =in_id_obekt_out;
+   UPDATE mida.sl_document_facade s SET s.condition_df ="1"
+   WHERE type_df = in_id_df AND number_df = in_id_obekt_in AND level_df =in_id_obekt_out;
 
 END IF;
 IF (comprator = 36) THEN
@@ -548,6 +565,42 @@ IF (comprator = 36) THEN
                        WHERE dl.id_dl = in_id_df);
 
 END IF;
+
+IF (comprator = 37) THEN
+     UPDATE mida.sl_nalichnosti s SET
+     s.return_rezerv_nal = return_rezerv_nal + in_id_contragent_in
+     WHERE id_pc = in_id_obekt_in AND id_n_storage = in_id_obekt_out ;
+
+END IF;
+
+IF (comprator = 38) THEN
+     UPDATE mida.sl_nalichnosti s SET
+     s.return_rezerv_nal=return_rezerv_nal-in_id_obekt_in
+    WHERE id_n_storage IN
+                      (SELECT  dl.id_n_storage FROM mida.sl_document_lines dl
+                       WHERE dl.id_dl = in_id_df)
+            AND id_pc IN
+                     (SELECT  dl.id_pc FROM mida.sl_document_lines dl
+                       WHERE dl.id_dl = in_id_df);
+END IF;
+
+IF (comprator = 39) THEN
+    UPDATE mida.sl_nalichnosti s SET s.quant_nal=(quant_nal+in_id_obekt_in)
+      , s.return_rezerv_nal=return_rezerv_nal-in_id_obekt_in
+    WHERE id_n_storage IN
+                      (SELECT  dl.id_n_storage FROM mida.sl_document_lines dl
+                       WHERE dl.id_dl = in_id_df)
+            AND id_pc IN
+                     (SELECT  dl.id_pc FROM mida.sl_document_lines dl
+                       WHERE dl.id_dl = in_id_df);
+
+END IF;
+
+IF (comprator = 40) THEN
+    UPDATE mida.sl_document_facade s SET s.condition_df ="2"
+    WHERE s.id_df = in_id_df;
+END IF;
+
 
 END $$
 

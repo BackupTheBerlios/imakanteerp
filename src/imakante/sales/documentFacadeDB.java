@@ -34,13 +34,20 @@
  *comprator = 32: updateDocLine()
  *comprator = 33: deleteDocLine()
  *comprator = 34: getMaxIdDocLine()
- *comprator = 35: deleteDocFacade()
- *comprator = 35: clearPreservation()
- *comprator = 36: returnProducts() 
- *comprator = 37:
- *comprator = 38:
- *comprator = 39:
- */
+ *comprator = 35: deleteRow()
+ *comprator = 36: clearPreservation()
+ *comprator = 37: returnProducts() 
+ *comprator = 38: clearReturnProducts()
+ *comprator = 39: emptyReturnProducts()
+ *comprator = 40: cancellationDocFacade()
+ *comprator = 41:
+ *comprator = 42:
+ *comprator = 43
+ *
+ *
+ *
+ *
+  */
 
 package imakante.sales;
 
@@ -1151,12 +1158,13 @@ public double[] getPriceListByID(int in_id_pp)
        return allProduct;
  }
  
- public void insertDocLine(int in_id_df,int in_id_pc,int in_id_storage,double priceone,double climbdown,int numberProduct,double dds,double totalall)
+ public void insertDocLine(int in_id_df,int in_id_pc,int in_id_storage,double priceone,double climbdown,int numberProduct,double dds,double totalall,int pricelist)
  {
      int oldID_obekt_in = getID_Obekt_IN();
      int oldID_obekt_out = getID_Obekt_OUT();
      int oldID_contragent_in = getID_Contragent_IN();
      int oldID_df = getID_DocFacade();
+     int oldID_Deliver = getID_Deliver();
      double oldDDS = getAllDDSPaingDocFacade();
      double oldTotal = getTotalPayingDocFacade();
        setID_Obekt_IN(in_id_pc);
@@ -1168,6 +1176,7 @@ public double[] getPriceListByID(int in_id_pp)
        setClimbDown(climbdown);
        setID_DocFacade(in_id_df);
        comprator=26;
+       setID_Deliver(pricelist);
        try
         {
             registerParameters();
@@ -1185,6 +1194,7 @@ public double[] getPriceListByID(int in_id_pp)
        setID_Obekt_OUT(oldID_obekt_out);
        setID_Obekt_IN(oldID_obekt_in);
        setID_DocFacade(oldID_df);
+       setID_Deliver(oldID_Deliver);
  }
  
  public int checkForEnoughProducts(int in_id_pc, int in_id_starage)
@@ -1336,9 +1346,10 @@ public HashMap getDocLine(int id_df)
               numerOfDisBaund[0] = v1;
               numerOfDisBaund[1] = v2;
               numerOfDisBaund[2] = v3;
-              
+             
                 
               data = new docLineArray();
+              data.setID_PC((Integer)rs12.getInt("id_pc"));
               data.setID_DocLine(rs12.getInt("id_dl"));
               data.setNumerOfDisBand(numerOfDisBaund);
               data.setCodeOfProduct((Integer)rs12.getInt("code_pm"));
@@ -1377,7 +1388,7 @@ public HashMap getDocLine(int id_df)
 }
 
  
-public void updateDocLine(int id_dl,int in_id_df,int in_id_pc,int in_id_storage,double priceone,double climbdown,int numberProduct,double dds,double totalall)
+public void updateDocLine(int id_dl,int in_id_df,int in_id_pc,int in_id_storage,double priceone,double climbdown,int numberProduct,double dds,double totalall,int pricelist)
  {
       comprator=32;
      int oldID_obekt_in = getID_Obekt_IN();
@@ -1385,6 +1396,7 @@ public void updateDocLine(int id_dl,int in_id_df,int in_id_pc,int in_id_storage,
      int oldID_contragent_in = getID_Contragent_IN();
      int oldID_df = getID_DocFacade();
      int oldID_contragent_out = getID_Contragent_OUT();
+     int oldID_Deliver = getID_Deliver();
      double oldDDS = getAllDDSPaingDocFacade();
      double oldTotal = getTotalPayingDocFacade();
        setID_Obekt_IN(in_id_pc);
@@ -1396,6 +1408,7 @@ public void updateDocLine(int id_dl,int in_id_df,int in_id_pc,int in_id_storage,
        setPriceOne(priceone);
        setClimbDown(climbdown);
        setID_DocFacade(in_id_df);
+       setID_Deliver(pricelist);
        
        try
         {
@@ -1415,7 +1428,7 @@ public void updateDocLine(int id_dl,int in_id_df,int in_id_pc,int in_id_storage,
        setID_Obekt_IN(oldID_obekt_in);
        setID_DocFacade(oldID_df); 
        setID_Contragent_OUT(oldID_contragent_out);
-      
+       setID_Deliver(oldID_Deliver);
  }
 
  public void deleteDocLine(int id_dl)
@@ -1492,7 +1505,7 @@ public void  deleteRow(int type,int numberDocFadade, int level)
      int oldID_obekt_in = getID_Obekt_IN();
      int oldID_obekt_out = getID_Obekt_OUT();
      int oldID_contragent_in = getID_Contragent_IN();
-     comprator=36;
+     comprator=37;
       setID_Obekt_IN(in_id_pc);
       setID_Obekt_OUT(in_id_storage);
        setID_Contragent_IN(number);
@@ -1514,5 +1527,66 @@ public void  deleteRow(int type,int numberDocFadade, int level)
        setID_Obekt_IN(oldID_obekt_in);
      
  }
+ public void clearReturnProducts(int id_dl, int nal)
+{
+    int oldId_DF = getID_DocFacade();
+    int oldID_Obekt_in = getID_Obekt_IN();
+    setID_Obekt_IN(nal);
+    
+    setID_DocFacade(id_dl);
+     comprator=38;
+     try
+        {
+            registerParameters();
+            cstm.execute();
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+       
+    setID_Obekt_IN(oldID_Obekt_in);
+    setID_DocFacade(oldId_DF);
+}
+public void emptyReturnProducts(int id_dl, int nal)
+{
+    int oldId_DF = getID_DocFacade();
+    int oldID_Obekt_in = getID_Obekt_IN();
+    setID_Obekt_IN(nal);
+    
+    setID_DocFacade(id_dl);
+     comprator=39;
+     try
+        {
+            registerParameters();
+            cstm.execute();
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+       
+    setID_Obekt_IN(oldID_Obekt_in);
+    setID_DocFacade(oldId_DF);
+}
+
+public void cancellationDocFacade(int id_df)
+{
+    int oldID_DF = getID_DocFacade();
+    comprator = 40;
+    setID_DocFacade(id_df);
+     try
+        {
+            registerParameters();
+            cstm.execute();
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+    
+    
+    setID_DocFacade(oldID_DF);
+}
 // <-----------------------
 }// end class

@@ -15,6 +15,7 @@ public class docLineArray
     private double priceTotal;
     private double DDS;
     private int id_dl;
+    private int id_pc;
     private String nameOfDisBaund[]= new String[3];
     private int numerOfDisBaund[] = new int[3];
     private boolean isFinishRow = false;
@@ -148,7 +149,15 @@ public boolean getIsFinishRow()
 {
     return isFinishRow;
 }
+public int getID_PC()
+{
+    return id_pc;
+}
  //set metods   
+public void setID_PC(int id)
+{
+    id_pc=id;
+}
 public void setIsFinishRow(boolean is)
 {
     isFinishRow = is;
