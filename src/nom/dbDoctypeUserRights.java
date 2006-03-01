@@ -10,7 +10,7 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
     private int comprator = 1;
     private int id = 0;
     private int id_group = 0;
-    private int code = 0;
+    private String code = "";
     private int id_type = 0;
     private String splitNamesG[];
     private String splitTypes[];
@@ -50,7 +50,7 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
         this.id_type = TypeBAccount;
     }
     
-    public void insertRow(int in_code, int in_id_group) {
+    public void insertRow(String in_code, int in_id_group) {
         comprator = 1;
         this.code = in_code;
         this.id_group = in_id_group;
@@ -60,7 +60,7 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    public void updateRow(int in_id, int in_id_group, int in_code, String in_name,
+    public void updateRow(int in_id, int in_id_group, String in_code, String in_name,
             String in_account, String in_address, int in_id_tacc, String in_comment) {
         comprator = 2;
         this.id = in_id;
@@ -89,14 +89,14 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
             rs = cstm.executeQuery();
             while(rs.next()) {
                 id_group = rs.getInt("id_group");
-                code = rs.getInt("code");
+                code = rs.getString("code");
                 id_type = rs.getInt("id_type");
             }
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
         return rs;
     }
     
-    public java.sql.ResultSet searchRecords(int in_code, String in_name) {
+    public java.sql.ResultSet searchRecords(String in_code) {
         comprator = 5;
         this.code = in_code;
         try {

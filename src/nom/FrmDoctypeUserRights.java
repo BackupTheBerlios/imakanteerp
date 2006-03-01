@@ -211,7 +211,7 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
     private  imakante.com.vcomponents.iFrame myframe;
     private  java.sql.Connection conn;
     private  java.sql.ResultSet rs;
-    private  nom.casaDB internalObject;
+    private  nom.dbDoctypeUserRights internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
     public static final String Names[] = {
@@ -236,7 +236,7 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
     
     private void constructObject() {
         try {
-            internalObject = new nom.casaDB(conn);
+            internalObject = new nom.dbDoctypeUserRights(conn);
         } catch(Exception e) { e.printStackTrace(); }
     }
     
@@ -270,11 +270,11 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
     public void windowDeactivated(java.awt.event.WindowEvent e) {
     }
     
-    public nom.casaDB getInternalObject() {
+    public nom.dbDoctypeUserRights getInternalObject() {
         return internalObject;
     }
     
-    public void setInternalObject(nom.casaDB val) {
+    public void setInternalObject(nom.dbDoctypeUserRights val) {
         this.internalObject = val;
     }
     
@@ -445,7 +445,7 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
     private void searchRecords() {
         try {
             try {
-                rs = internalObject.searchRecords(Integer.parseInt(jTextCod.getText()));
+                rs = internalObject.searchRecords(jTextCod.getText());
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
                 jTextCod.requestFocus();
