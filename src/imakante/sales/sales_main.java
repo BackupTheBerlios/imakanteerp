@@ -139,6 +139,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuTransfer = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         contentMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
@@ -147,7 +148,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("ИМАКАНТЕ Търговски модул");
+        setTitle("\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415 \u0422\u044a\u0440\u0433\u043e\u0432\u0441\u043a\u0438 \u043c\u043e\u0434\u0443\u043b");
         setBackground(new java.awt.Color(153, 153, 153));
         setFont(new java.awt.Font("Tahoma", 1, 12));
         setName("frameSale");
@@ -172,7 +173,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jToolBar1.add(jButton1);
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Objects 2_large_ps.png")));
-        jButton6.setToolTipText("Номенклатура продукти");
+        jButton6.setToolTipText("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0430 \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u0438");
         jButton6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Objects 2_large.png")));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,7 +184,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jToolBar1.add(jButton6);
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Contact_ps.png")));
-        jButton5.setToolTipText("Контрагенти");
+        jButton5.setToolTipText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
         jButton5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Contact.png")));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,7 +195,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jToolBar1.add(jButton5);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Group 4_ps.png")));
-        jButton2.setToolTipText("Номенклатури Лица");
+        jButton2.setToolTipText("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0438 \u041b\u0438\u0446\u0430");
         jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Group 4.png")));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,102 +206,102 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jToolBar1.add(jButton2);
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Download_ps.png")));
-        jButton4.setToolTipText("Обновяване");
+        jButton4.setToolTipText("\u041e\u0431\u043d\u043e\u0432\u044f\u0432\u0430\u043d\u0435");
         jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Download.png")));
         jToolBar1.add(jButton4);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help File_ps.png")));
-        jButton3.setToolTipText("Помощ");
+        jButton3.setToolTipText("\u041f\u043e\u043c\u043e\u0449");
         jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help File.png")));
         jToolBar1.add(jButton3);
 
         getContentPane().add(jToolBar1, java.awt.BorderLayout.NORTH);
 
         programMenu.setFont(menuFont);
-        docMenu.setText("ДОКУМЕНТИ");
-        docMenu_prod.setText("Продажби");
+        docMenu.setText("\u0414\u041e\u041a\u0423\u041c\u0415\u041d\u0422\u0418");
+        docMenu_prod.setText("\u041f\u0440\u043e\u0434\u0430\u0436\u0431\u0438");
         docMenu.add(docMenu_prod);
 
-        docMenu_fak.setText("Фактури");
-        fakMenu_dan.setText("Данъчни");
+        docMenu_fak.setText("\u0424\u0430\u043a\u0442\u0443\u0440\u0438");
+        fakMenu_dan.setText("\u0414\u0430\u043d\u044a\u0447\u043d\u0438");
         docMenu_fak.add(fakMenu_dan);
 
-        fakMenu_opr.setText("Опростени");
+        fakMenu_opr.setText("\u041e\u043f\u0440\u043e\u0441\u0442\u0435\u043d\u0438");
         docMenu_fak.add(fakMenu_opr);
 
         docMenu.add(docMenu_fak);
 
-        docMenu_razp.setText("Разписки");
-        razpMenu_pol.setText("Получаване");
+        docMenu_razp.setText("\u0420\u0430\u0437\u043f\u0438\u0441\u043a\u0438");
+        razpMenu_pol.setText("\u041f\u043e\u043b\u0443\u0447\u0430\u0432\u0430\u043d\u0435");
         docMenu_razp.add(razpMenu_pol);
 
-        razpMenu_prehv.setText("Прехвърляне");
+        razpMenu_prehv.setText("\u041f\u0440\u0435\u0445\u0432\u044a\u0440\u043b\u044f\u043d\u0435");
         docMenu_razp.add(razpMenu_prehv);
 
         docMenu.add(docMenu_razp);
 
-        docMenu_nar.setText("Нареждане");
+        docMenu_nar.setText("\u041d\u0430\u0440\u0435\u0436\u0434\u0430\u043d\u0435");
         docMenu.add(docMenu_nar);
 
-        docMenu_prot.setText("Протоколи");
-        protMenu_rev.setText("Ревизия");
+        docMenu_prot.setText("\u041f\u0440\u043e\u0442\u043e\u043a\u043e\u043b\u0438");
+        protMenu_rev.setText("\u0420\u0435\u0432\u0438\u0437\u0438\u044f");
         docMenu_prot.add(protMenu_rev);
 
-        protMenu_brak.setText("Брак");
+        protMenu_brak.setText("\u0411\u0440\u0430\u043a");
         docMenu_prot.add(protMenu_brak);
 
-        protMenu_lipsa.setText("Липса");
+        protMenu_lipsa.setText("\u041b\u0438\u043f\u0441\u0430");
         docMenu_prot.add(protMenu_lipsa);
 
-        protMenu_preo.setText("Преоценка");
+        protMenu_preo.setText("\u041f\u0440\u0435\u043e\u0446\u0435\u043d\u043a\u0430");
         docMenu_prot.add(protMenu_preo);
 
         docMenu.add(docMenu_prot);
 
-        docMenu_porach.setText("Поръчки");
-        porachMenu_in.setText("Вътрешни");
+        docMenu_porach.setText("\u041f\u043e\u0440\u044a\u0447\u043a\u0438");
+        porachMenu_in.setText("\u0412\u044a\u0442\u0440\u0435\u0448\u043d\u0438");
         docMenu_porach.add(porachMenu_in);
 
-        porachMenu_out.setText("Външни");
+        porachMenu_out.setText("\u0412\u044a\u043d\u0448\u043d\u0438");
         docMenu_porach.add(porachMenu_out);
 
         docMenu.add(docMenu_porach);
 
-        docMenu_offer.setText("Оферти");
+        docMenu_offer.setText("\u041e\u0444\u0435\u0440\u0442\u0438");
         docMenu.add(docMenu_offer);
 
         menuBar.add(docMenu);
 
-        kasaMenu.setText("КАСА");
-        kasaMenu_order.setText("Ордери");
-        orderMenu_prih.setText("Приходни");
+        kasaMenu.setText("\u041a\u0410\u0421\u0410");
+        kasaMenu_order.setText("\u041e\u0440\u0434\u0435\u0440\u0438");
+        orderMenu_prih.setText("\u041f\u0440\u0438\u0445\u043e\u0434\u043d\u0438");
         kasaMenu_order.add(orderMenu_prih);
 
-        orderMenu_razh.setText("Разходни");
+        orderMenu_razh.setText("\u0420\u0430\u0437\u0445\u043e\u0434\u043d\u0438");
         kasaMenu_order.add(orderMenu_razh);
 
         kasaMenu.add(kasaMenu_order);
 
-        kasaMenu_nal.setText("Наличност в каси");
+        kasaMenu_nal.setText("\u041d\u0430\u043b\u0438\u0447\u043d\u043e\u0441\u0442 \u0432 \u043a\u0430\u0441\u0438");
         kasaMenu.add(kasaMenu_nal);
 
-        kasaMenu_dvi.setText("Движение");
+        kasaMenu_dvi.setText("\u0414\u0432\u0438\u0436\u0435\u043d\u0438\u0435");
         kasaMenu.add(kasaMenu_dvi);
 
-        kasaMenu_opis.setText("Опис на копюри");
+        kasaMenu_opis.setText("\u041e\u043f\u0438\u0441 \u043d\u0430 \u043a\u043e\u043f\u044e\u0440\u0438");
         kasaMenu.add(kasaMenu_opis);
 
         menuBar.add(kasaMenu);
 
-        nomMenu.setText("НОМЕНКЛАТУРИ");
+        nomMenu.setText("\u041d\u041e\u041c\u0415\u041d\u041a\u041b\u0410\u0422\u0423\u0420\u0418");
         nomMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nomMenuActionPerformed(evt);
             }
         });
 
-        nomMenu_stock.setText("Стокови");
-        stock_Menu_group_stock.setText("Групи");
+        nomMenu_stock.setText("\u0421\u0442\u043e\u043a\u043e\u0432\u0438");
+        stock_Menu_group_stock.setText("\u0413\u0440\u0443\u043f\u0438");
         stock_Menu_group_stock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stock_Menu_group_stockActionPerformed(evt);
@@ -309,7 +310,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         nomMenu_stock.add(stock_Menu_group_stock);
 
-        stock_Menu_stock.setText("Стока");
+        stock_Menu_stock.setText("\u0421\u0442\u043e\u043a\u0430");
         stock_Menu_stock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stock_Menu_stockActionPerformed(evt);
@@ -320,8 +321,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         nomMenu.add(nomMenu_stock);
 
-        nomMenu_Aktiv.setText("Активи");
-        aktiviMenu_grupi.setText("Групи активи");
+        nomMenu_Aktiv.setText("\u0410\u043a\u0442\u0438\u0432\u0438");
+        aktiviMenu_grupi.setText("\u0413\u0440\u0443\u043f\u0438 \u0430\u043a\u0442\u0438\u0432\u0438");
         aktiviMenu_grupi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aktiviMenu_grupiActionPerformed(evt);
@@ -330,13 +331,13 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         nomMenu_Aktiv.add(aktiviMenu_grupi);
 
-        aktiviMenu_Aktivi.setText("Активи");
+        aktiviMenu_Aktivi.setText("\u0410\u043a\u0442\u0438\u0432\u0438");
         nomMenu_Aktiv.add(aktiviMenu_Aktivi);
 
         nomMenu.add(nomMenu_Aktiv);
 
-        nomMenu_Kontragenti.setText("Контрагенти");
-        kontragentiMenu_groupe.setText("Групи");
+        nomMenu_Kontragenti.setText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
+        kontragentiMenu_groupe.setText("\u0413\u0440\u0443\u043f\u0438");
         kontragentiMenu_groupe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kontragentiMenu_groupeActionPerformed(evt);
@@ -346,7 +347,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         nomMenu_Kontragenti.add(kontragentiMenu_groupe);
 
         kontragentiMenu_Kontr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Contact16.png")));
-        kontragentiMenu_Kontr.setText("Контрагенти");
+        kontragentiMenu_Kontr.setText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
         kontragentiMenu_Kontr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kontragentiMenu_KontrActionPerformed(evt);
@@ -355,19 +356,19 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         nomMenu_Kontragenti.add(kontragentiMenu_Kontr);
 
-        kontragentiMenu_bank.setText("Банки");
+        kontragentiMenu_bank.setText("\u0411\u0430\u043d\u043a\u0438");
         nomMenu_Kontragenti.add(kontragentiMenu_bank);
 
-        kontragentiMenu_obekti.setText("Обслужвани обекти");
+        kontragentiMenu_obekti.setText("\u041e\u0431\u0441\u043b\u0443\u0436\u0432\u0430\u043d\u0438 \u043e\u0431\u0435\u043a\u0442\u0438");
         nomMenu_Kontragenti.add(kontragentiMenu_obekti);
 
-        kontragentiMenu_typeobject.setText("Типове обекти");
+        kontragentiMenu_typeobject.setText("\u0422\u0438\u043f\u043e\u0432\u0435 \u043e\u0431\u0435\u043a\u0442\u0438");
         nomMenu_Kontragenti.add(kontragentiMenu_typeobject);
 
         nomMenu.add(nomMenu_Kontragenti);
 
-        nomMenu_Litsa.setText("Лица");
-        litsaMenu_groupe_litsa.setText("Групи лица");
+        nomMenu_Litsa.setText("\u041b\u0438\u0446\u0430");
+        litsaMenu_groupe_litsa.setText("\u0413\u0440\u0443\u043f\u0438 \u043b\u0438\u0446\u0430");
         litsaMenu_groupe_litsa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 litsaMenu_groupe_litsaActionPerformed(evt);
@@ -377,7 +378,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         nomMenu_Litsa.add(litsaMenu_groupe_litsa);
 
         litsaMenu_in.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Group416.png")));
-        litsaMenu_in.setText("Лица");
+        litsaMenu_in.setText("\u041b\u0438\u0446\u0430");
         litsaMenu_in.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 litsaMenu_inActionPerformed(evt);
@@ -388,8 +389,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         nomMenu.add(nomMenu_Litsa);
 
-        nomMenu_object.setText("Складове");
-        objectMenu_groupe_object.setText("Групи складове");
+        nomMenu_object.setText("\u0421\u043a\u043b\u0430\u0434\u043e\u0432\u0435");
+        objectMenu_groupe_object.setText("\u0413\u0440\u0443\u043f\u0438 \u0441\u043a\u043b\u0430\u0434\u043e\u0432\u0435");
         objectMenu_groupe_object.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 objectMenu_groupe_objectActionPerformed(evt);
@@ -398,7 +399,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         nomMenu_object.add(objectMenu_groupe_object);
 
-        objectMenu_skl.setText("Складове");
+        objectMenu_skl.setText("\u0421\u043a\u043b\u0430\u0434\u043e\u0432\u0435");
         objectMenu_skl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 objectMenu_sklActionPerformed(evt);
@@ -409,8 +410,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         nomMenu.add(nomMenu_object);
 
-        nomMenu_kasi.setText("Каси");
-        kasiMenu_grupi.setText("Групи каси");
+        nomMenu_kasi.setText("\u041a\u0430\u0441\u0438");
+        kasiMenu_grupi.setText("\u0413\u0440\u0443\u043f\u0438 \u043a\u0430\u0441\u0438");
         kasiMenu_grupi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kasiMenu_grupiActionPerformed(evt);
@@ -419,7 +420,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         nomMenu_kasi.add(kasiMenu_grupi);
 
-        kasiMenu_kasi.setText("Каси");
+        kasiMenu_kasi.setText("\u041a\u0430\u0441\u0438");
         kasiMenu_kasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kasiMenu_kasiActionPerformed(evt);
@@ -430,8 +431,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         nomMenu.add(nomMenu_kasi);
 
-        moneyMenu.setText("Парични");
-        moneyMenu_groupe.setText("Групи парични");
+        moneyMenu.setText("\u041f\u0430\u0440\u0438\u0447\u043d\u0438");
+        moneyMenu_groupe.setText("\u0413\u0440\u0443\u043f\u0438 \u043f\u0430\u0440\u0438\u0447\u043d\u0438");
         moneyMenu_groupe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 moneyMenu_groupeActionPerformed(evt);
@@ -440,7 +441,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         moneyMenu.add(moneyMenu_groupe);
 
-        moneyMenu_in.setText("Приходи");
+        moneyMenu_in.setText("\u041f\u0440\u0438\u0445\u043e\u0434\u0438");
         moneyMenu_in.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 moneyMenu_inActionPerformed(evt);
@@ -449,7 +450,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         moneyMenu.add(moneyMenu_in);
 
-        moneyMenu_out.setText("Разходи");
+        moneyMenu_out.setText("\u0420\u0430\u0437\u0445\u043e\u0434\u0438");
         moneyMenu_out.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 moneyMenu_outActionPerformed(evt);
@@ -458,7 +459,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         moneyMenu.add(moneyMenu_out);
 
-        moneyMenu_valutes.setText("Валути");
+        moneyMenu_valutes.setText("\u0412\u0430\u043b\u0443\u0442\u0438");
         moneyMenu_valutes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 moneyMenu_valutesActionPerformed(evt);
@@ -467,7 +468,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         moneyMenu.add(moneyMenu_valutes);
 
-        monyMenu_rates.setText("Курсове");
+        monyMenu_rates.setText("\u041a\u0443\u0440\u0441\u043e\u0432\u0435");
         monyMenu_rates.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 monyMenu_ratesActionPerformed(evt);
@@ -480,7 +481,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         nomMenu.add(jSeparator3);
 
-        nomMenu_nasm.setText("Населено място");
+        nomMenu_nasm.setText("\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e");
         nomMenu_nasm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nomMenu_nasmActionPerformed(evt);
@@ -489,7 +490,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         nomMenu.add(nomMenu_nasm);
 
-        nomMenu_obl.setText("Области");
+        nomMenu_obl.setText("\u041e\u0431\u043b\u0430\u0441\u0442\u0438");
         nomMenu_obl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nomMenu_oblActionPerformed(evt);
@@ -498,7 +499,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         nomMenu.add(nomMenu_obl);
 
-        nomMenu_con.setText("Държави");
+        nomMenu_con.setText("\u0414\u044a\u0440\u0436\u0430\u0432\u0438");
         nomMenu_con.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nomMenu_conActionPerformed(evt);
@@ -509,13 +510,13 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         nomMenu.add(jSeparator4);
 
-        nomALevel.setText("Аналитични нива");
+        nomALevel.setText("\u0410\u043d\u0430\u043b\u0438\u0442\u0438\u0447\u043d\u0438 \u043d\u0438\u0432\u0430");
         nomMenu.add(nomALevel);
 
         menuBar.add(nomMenu);
 
-        sprMenu.setText("СПРАВКИ");
-        spravkiMenu_nal.setText("Наличност");
+        sprMenu.setText("\u0421\u041f\u0420\u0410\u0412\u041a\u0418");
+        spravkiMenu_nal.setText("\u041d\u0430\u043b\u0438\u0447\u043d\u043e\u0441\u0442");
         spravkiMenu_nal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 spravkiMenu_nalActionPerformed(evt);
@@ -524,34 +525,34 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         sprMenu.add(spravkiMenu_nal);
 
-        balansMenu.setText("Баланси");
-        balansMenu_stock.setText("Стоков");
+        balansMenu.setText("\u0411\u0430\u043b\u0430\u043d\u0441\u0438");
+        balansMenu_stock.setText("\u0421\u0442\u043e\u043a\u043e\u0432");
         balansMenu.add(balansMenu_stock);
 
-        balansMenu_kol.setText("Количествен");
+        balansMenu_kol.setText("\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u0435\u043d");
         balansMenu.add(balansMenu_kol);
 
         sprMenu.add(balansMenu);
 
-        spravkiMenu_doc.setText("Документи");
+        spravkiMenu_doc.setText("\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438");
         sprMenu.add(spravkiMenu_doc);
 
         menuBar.add(sprMenu);
 
-        sluMenu.setText("СЛУЖЕБНИ");
+        sluMenu.setText("\u0421\u041b\u0423\u0416\u0415\u0411\u041d\u0418");
         sluMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sluMenuActionPerformed(evt);
             }
         });
 
-        jMenuItem3.setText("Параметри Фирма");
+        jMenuItem3.setText("\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0424\u0438\u0440\u043c\u0430");
         sluMenu.add(jMenuItem3);
 
-        jMenuItem2.setText("Настроика Програма");
+        jMenuItem2.setText("\u041d\u0430\u0441\u0442\u0440\u043e\u0438\u043a\u0430 \u041f\u0440\u043e\u0433\u0440\u0430\u043c\u0430");
         sluMenu.add(jMenuItem2);
 
-        nomMenu_DocType.setText("Типове документи");
+        nomMenu_DocType.setText("\u0422\u0438\u043f\u043e\u0432\u0435 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438");
         nomMenu_DocType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nomMenu_DocTypeActionPerformed(evt);
@@ -560,7 +561,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         sluMenu.add(nomMenu_DocType);
 
-        jMenuItem6.setText("Документи номерация");
+        jMenuItem6.setText("\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438 \u043d\u043e\u043c\u0435\u0440\u0430\u0446\u0438\u044f");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem6ActionPerformed(evt);
@@ -569,11 +570,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         sluMenu.add(jMenuItem6);
 
-        jMenuItem5.setText("Параметри потребители");
+        jMenuItem5.setText("\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b\u0438");
         sluMenu.add(jMenuItem5);
 
-        jMenuTransfer.setText("Трансфер");
-        jMenuItem7.setText("Импорт СКЛ");
+        jMenuTransfer.setText("\u0422\u0440\u0430\u043d\u0441\u0444\u0435\u0440");
+        jMenuItem7.setText("\u0418\u043c\u043f\u043e\u0440\u0442 \u0421\u041a\u041b");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem7ActionPerformed(evt);
@@ -582,16 +583,25 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         jMenuTransfer.add(jMenuItem7);
 
+        jMenuItem8.setText("\u041a\u043e\u0440\u0435\u043a\u0446\u0438\u044f SKL1 ");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+
+        jMenuTransfer.add(jMenuItem8);
+
         sluMenu.add(jMenuTransfer);
 
         menuBar.add(sluMenu);
 
-        helpMenu.setText("ПОМОЩ");
+        helpMenu.setText("\u041f\u041e\u041c\u041e\u0429");
         contentMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help16.png")));
-        contentMenuItem.setText("Съдържание");
+        contentMenuItem.setText("\u0421\u044a\u0434\u044a\u0440\u0436\u0430\u043d\u0438\u0435");
         helpMenu.add(contentMenuItem);
 
-        aboutMenuItem.setText("Автори");
+        aboutMenuItem.setText("\u0410\u0432\u0442\u043e\u0440\u0438");
         aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aboutMenuItemActionPerformed(evt);
@@ -601,14 +611,14 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         helpMenu.add(aboutMenuItem);
 
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Download16.png")));
-        jMenuItem1.setText("Обновяване");
+        jMenuItem1.setText("\u041e\u0431\u043d\u043e\u0432\u044f\u0432\u0430\u043d\u0435");
         helpMenu.add(jMenuItem1);
 
         menuBar.add(helpMenu);
 
-        programMenu.setText("ПРОГРАМА");
+        programMenu.setText("\u041f\u0420\u041e\u0413\u0420\u0410\u041c\u0410");
         jMenuItem4.setFont(new java.awt.Font("Tahoma", 1, 11));
-        jMenuItem4.setText("ИЗХОД");
+        jMenuItem4.setText("\u0418\u0417\u0425\u041e\u0414");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem4ActionPerformed(evt);
@@ -624,6 +634,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-448)/2, 757, 448);
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        this.loadKorect();
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
     
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         this.loadImport();
@@ -803,6 +817,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenu jMenuTransfer;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -1066,7 +1081,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     
     private void loadRightsArea(){
         String StrQ = "SELECT `sl_doc_type_num`.`area_number_sdtn` " +
-              //  "`n_doc_type_user_rights`.`rights_sdtn`  " +
+                //  "`n_doc_type_user_rights`.`rights_sdtn`  " +
                 "FROM " +
                 "`user_master` " +
                 "Inner Join `n_doc_type_user_rights` ON `user_master`.`id_um` = `n_doc_type_user_rights`.`id_um` " +
@@ -1076,23 +1091,23 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
                 imakante.com.NewMain.getUserId() +
                 "' AND " +
                 "`sl_doc_type_num`.`id_ntd` =  ";
-                
+        
         try {
             int i = 0;
             stm = this.dbConn.createStatement();
             rs = stm.executeQuery(
-                   StrQ + "'1'"
+                    StrQ + "'1'"
                     );
             while(rs.next()){
                 i++;
                 getOrderArea().put(i,new String(rs.getString(1)));
                 
             }
-           i = 0;
+            i = 0;
             rs = stm.executeQuery(
-                     StrQ + "'2'"
+                    StrQ + "'2'"
                     );
-             while(rs.next()){
+            while(rs.next()){
                 i++;
                 getFaktArea().put(i,rs.getString(1));
             }
@@ -1280,8 +1295,13 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         desktopPane.add(imp);
         imp.setVisible(true);
     }
-    
-    
+   
+       private void  loadKorect(){
+        
+        imakante.sales.FrmImpExpSKL imp = new imakante.sales.FrmImpExpSKL();
+        desktopPane.add(imp);
+        imp.setVisible(true);
+    }
     
 // ENCAPS METHODS FORM CONTROL
     public static boolean isIsStartFrmProduct() {
@@ -1297,19 +1317,19 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         desktopPane.add(repNal);
         repNal.setVisible(true);
     }
-
+    
     public HashMap getOrderArea() {
         return OrderArea;
     }
-
+    
     public void setOrderArea(HashMap OrderArea) {
         this.OrderArea = OrderArea;
     }
-
+    
     public HashMap getFaktArea() {
         return FaktArea;
     }
-
+    
     public void setFaktArea(HashMap FaktArea) {
         this.FaktArea = FaktArea;
     }
