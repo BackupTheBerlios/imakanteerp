@@ -1,6 +1,6 @@
 DELIMITER $$
 
-DROP PROCEDURE IF EXISTS `mida`.`n_baccount` $$
+DROP PROCEDURE IF EXISTS `mida`.`nom_procedure_baccount` $$
 CREATE PROCEDURE `nom_procedure_baccount`(IN comprator TINYINT, IN in_id INT(11), IN in_id_group INT(11), IN in_code VARCHAR(10),
                 IN in_name VARCHAR(45), IN in_account VARCHAR(28), IN in_address VARCHAR(100), IN in_id_tacc INT(11), IN in_comment VARCHAR(250))
 BEGIN
@@ -51,7 +51,7 @@ BEGIN
         SELECT ng.id_n_group, ng.name_n_group FROM n_group ng WHERE n.nom_n_group = 6;
      END IF;
      IF (comprator = 11) THEN
-        SELECT MAX(ng.id_n_group) AS id_n_group FROM n_group n WHERE n.nom_n_group = 6;
+        SELECT MAX(ng.id_n_group) AS id_n_group FROM n_group ng WHERE n.nom_n_group = 6;
      END IF;
 END $$
 
