@@ -73,7 +73,7 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 821, Short.MAX_VALUE)
+            .add(0, 825, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -110,7 +110,7 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
 
         jPanel3.add(jButtonPrint);
 
-        jButtonPrnReport.setText("\u041f\u0435\u0447\u0430\u0442 \u0440\u0435\u043f\u043e\u0440\u0442");
+        jButtonPrnReport.setText("\u041f\u0435\u0447\u0430\u0442 \u043e\u0442\u0447\u0435\u0442");
         jPanel3.add(jButtonPrnReport);
 
         jButtonDel.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
@@ -177,7 +177,6 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
         newRecord();
     }//GEN-LAST:event_jButtonNewActionPerformed
     
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonClose;
     private javax.swing.JButton jButtonDel;
@@ -197,14 +196,13 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
     private javax.swing.JTextField jTextCod;
     // End of variables declaration//GEN-END:variables
     
-    //--------------- My Variables
-    private int id=0; // imena ot tablicata
-    private int code_groupe =0; // imena ot tablicata
+    private int id = 0;
+    private int code_groupe = 0;
     private int cod = 0;
-    private String name,comment; // imena ot tablicata
-    private String namesG[]; //imena na grupi
+    private String name, comment;
+    private String namesG[];
     private int selectComboBoxItem;
-    private  boolean atBegining=false;
+    private  boolean atBegining = false;
     private  boolean atEnd = false;
     private int row;
     
@@ -214,16 +212,11 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
     private  nom.dbDoctypeUserRights internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
-    public static final String Names[] = {
-        "id",
-        "id_group",
-        "\u0418\u043c\u0435 \u0433\u0440\u0443\u043f\u0438",
-        "\u041a\u043e\u0434\u043e\u0432\u0435",
-        "\u0418\u043c\u0435\u043d\u0430",
-        "\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440"};
-    //---------------END My Variables
+    public static final String Names[] = {"id",
+        "id_user_master","\u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b",
+        "id_doctype_area","\u041e\u0431\u043b\u0430\u0441\u0442","\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442",
+        "\u041f\u0440\u0430\u0432\u0430"};
     
-    //---------------START Methods
     
     private void prepareConn() {
         try{
@@ -232,7 +225,6 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
             }
         } catch(Exception e) { e.printStackTrace(); }
     }
-    
     
     private void constructObject() {
         try {
@@ -320,7 +312,6 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
     private int  getMaxRow() {
         int i = 0;
         i  = table.getRowCount() - 1;
-        
         return i;
     }
     public  int getRow() {
@@ -374,7 +365,7 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
         setRow(getMaxRow());
         try{
             setAllVariables();
-            table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
+            table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
             System.out.println("problem");
@@ -410,7 +401,7 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
             setAtEnd(false);
             try {
                 setAllVariables();
-                table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
+                table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
             } catch(ArrayIndexOutOfBoundsException aioobe) {
                 setRow(getRow() + 1);
                 System.out.println("problem");
