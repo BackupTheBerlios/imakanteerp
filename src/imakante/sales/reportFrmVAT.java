@@ -209,10 +209,12 @@ public class reportFrmVAT extends imakante.com.vcomponents.iInternalFrame implem
     private  imakante.com.CustomTable table;
     private  int CompNumber = 0;
     
-    
     private  int intTransfer;
     private String[] Names= {""};
     private String[] NamesQ = {""};
+    
+    private String strReceiptBook = "SELECT "       // ReceiptBook - ko4an, fakturnik
+            + "";
     
     private String qu = "SELECT "
             + "`rep_";
@@ -295,7 +297,7 @@ public class reportFrmVAT extends imakante.com.vcomponents.iInternalFrame implem
     }
     
     private void processField3() {
-        String newString = strContragent + this.jTextField3.getText() + "%'";
+        String newString = strReceiptBook + this.jTextField3.getText() + "%'";
         constructDialod(newString, 3, Names);
     }
     
@@ -303,10 +305,10 @@ public class reportFrmVAT extends imakante.com.vcomponents.iInternalFrame implem
         String newString="";
         try {
             newString = qu + " WHERE `rep_comm_nal`.`code_contragent` BETWEEN '" +
-                    (Integer.parseInt(this.jTextField5.getText())-1) + "' AND '" + (Integer.parseInt(this.jTextField6.getText())+1) +
-                    "' AND " + " `rep_comm_nal`.`code_pm` BETWEEN '" + (Integer.parseInt(this.jTextField3.getText())-1) +
-                    "' AND '" + (Integer.parseInt(this.jTextField4.getText())+1) + "' AND " + " `rep_comm_nal`.`code_n_storage` BETWEEN '" +
-                    (Integer.parseInt(this.jTextField1.getText())-1) + "' AND '" + (Integer.parseInt(this.jTextField2.getText())+1) + "'; ";
+                    " `rep_comm_nal`.`code_pm` BETWEEN '" + (Integer.parseInt(this.jTextField3.getText())-1) +
+                    "' AND " + " `rep_comm_nal`.`code_n_storage` BETWEEN '" +
+                    (Integer.parseInt(this.jTextField1.getText())-1) + 
+                    "' AND '" + (Integer.parseInt(this.jTextField2.getText())+1) + "'; ";
         } catch (NumberFormatException ex) {
             ex.printStackTrace();
         }
