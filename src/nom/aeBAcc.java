@@ -5,7 +5,7 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
     
     public aeBAcc(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
         super(frame, modal);
-        this.myParent = (nom.FrmCasa) frame;
+        this.myParent = (nom.FrmBankAccounts) frame;
         initComponents();
         getNavigationState();
         jButtonUndo.setEnabled(false);
@@ -40,7 +40,7 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
         jLabel6 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        jComboT = new javax.swing.JComboBox();
         jLabel8 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
 
@@ -230,7 +230,7 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
                         .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                             .add(jTextField4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                            .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 212, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                            .add(jComboT, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 212, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -263,7 +263,7 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel7)
-                    .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jComboT, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -277,13 +277,13 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-389)/2, (screenSize.height-407)/2, 389, 407);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jTextArea1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonSave.doClick(); saveRecord(); }
     }//GEN-LAST:event_jTextArea1KeyPressed
     
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        cfFocus();
+        jTextField1.transferFocus();
     }//GEN-LAST:event_jTextField1FocusLost
     
     private void jButtonCloseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonCloseKeyPressed
@@ -323,7 +323,7 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jComboGKeyPressed
     
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ cfFocus(); }
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jTextField1.transferFocus(); }
     }//GEN-LAST:event_jTextField1KeyPressed
     
     private void jButtonUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUndoActionPerformed
@@ -394,14 +394,6 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
         repaintComp();
     }//GEN-LAST:event_jButtonToBeginActionPerformed
     
-    private void cfFocus() {
-        if(cFields()) {
-            jTextField1.transferFocus();
-        } else {
-            jTextField1.requestFocus();
-        }
-    }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonClose;
     private javax.swing.JButton jButtonOneRowM;
@@ -410,8 +402,8 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
     private javax.swing.JButton jButtonToBegin;
     private javax.swing.JButton jButtonToEnd;
     private javax.swing.JButton jButtonUndo;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboG;
+    private javax.swing.JComboBox jComboT;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -431,52 +423,38 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
     private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
     //--------------- My Variables
-    private nom.FrmCasa myParent;
+    private nom.FrmBankAccounts myParent;
     private int oldIDG = 1;
     private int oldCod = 0;
     private String oldName = "";
     private String oldComment =  "";
     private String namesG[];
+    private String namesT[];
     private int selectComboBoxItem;
+    private int selectComboTItem;
     
     //---------------END My Variables
     
     //---------------START My Methods
     
-    //Proverka na poletata
-    private boolean cFields() { // V sluchaia samo na edno pole dali e integer
-        boolean check  = true;     // v bazata
-        int i = 0;
-        try {
-            i = Integer.parseInt(jTextField1.getText()); // proverka za int
-            jTextField1.setBackground(new java.awt.Color(255,255,255));
-        } catch (NumberFormatException nfex) {
-            check = false;
-            jTextField1.setBackground(new java.awt.Color(255,204,204));
-            nfex.printStackTrace();
-        }
-        return check;
-    }
-    
     //SAVE
     private void saveRecord() {
-        if(cFields()){
-            oldCod = myParent.getCod();
-            oldName = myParent.getNames();
-            oldComment = myParent.getComment();
-            try {
-                myParent.setCod(Integer.parseInt(jTextField1.getText()));
-            } catch (NumberFormatException nfex) {
-                nfex.printStackTrace();
-            }
-            myParent.setNames(jTextField3.getText());
-            myParent.setComment(jTextArea1.getText());
-            myParent.setIDG(myParent.getInternalObject().getIndexConnOfId()[jComboG.getSelectedIndex()]);
-            myParent.getInternalObject().updateRow(myParent.getId(), myParent.getIDG(),myParent.getCod(),
-                    myParent.getNames(), myParent.getComment());
-            myParent.refreshTable();
-            myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
-            jButtonUndo.setEnabled(true);}
+        oldCod = myParent.getCod();
+        oldName = myParent.getNames();
+        oldComment = myParent.getComment();
+        try {
+            myParent.setCod(Integer.parseInt(jTextField1.getText()));
+        } catch (NumberFormatException nfex) {
+            nfex.printStackTrace();
+        }
+        myParent.setNames(jTextField3.getText());
+        myParent.setComment(jTextArea1.getText());
+        myParent.setIDG(myParent.getInternalObject().getIndexConnOfId()[jComboG.getSelectedIndex()]);
+        myParent.getInternalObject().updateRow(myParent.getId(), myParent.getIDG(), myParent.getCod(), myParent.getNames(),
+                myParent.getBankAccount(), myParent.getAddress(), myParent.getTypeBankAccount(), myParent.getComment());
+        myParent.refreshTable();
+        myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
+        jButtonUndo.setEnabled(true);
     }
     
     //UNDO
@@ -512,29 +490,46 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
     }
     
     private void initCombo() {
-        namesG = myParent.getInternalObject().getCasaG();
-        for(int i=0;i<namesG.length;i++) {
+        namesG = myParent.getInternalObject().getBankAccountGroup();
+        for(int i=0; i<namesG.length; i++) {
             jComboG.addItem(new String(namesG[i]));
-            
         }
-        
         if(selectComboBoxItem != 0) {
-            
             selectComboBoxItem = getNewComboBoxIndex(selectComboBoxItem);
-            
             jComboG.setSelectedIndex(selectComboBoxItem);
         }
-        
     }
     
     private int getNewComboBoxIndex(int oldindex) {
         int newindex= 0;
-        for(int i = 0; i < myParent.getInternalObject().getIndexConnOfId().length; i++) {
+        for(int i=0; i<myParent.getInternalObject().getIndexConnOfId().length; i++) {
             if(myParent.getInternalObject().getIndexConnOfId()[i]==oldindex) {
                 newindex = i;
                 break;
             }
         }
         return newindex;
+    }
+    
+    private void initTypeAccountCombo() {
+        namesT = myParent.getInternalObject().getTypeBankAccounts();
+        for(int i=0; i<namesT.length; i++) {
+            jComboT.addItem(new String(namesT[i]));
+        }
+        if(selectComboTItem != 0) {
+            selectComboTItem = getNewTypeAccComboIndex(selectComboTItem);
+            jComboT.setSelectedIndex(selectComboTItem);
+        }
+    }
+    
+    private int getNewTypeAccComboIndex(int originalTAIndex) {
+        int newIndex = 0;
+        for(int i=0; i<myParent.getInternalObject().getIndexOfTypes().length; i++) {
+            if(myParent.getInternalObject().getIndexOfTypes()[i]==originalTAIndex) {
+                newIndex = i;
+                break;
+            }
+        }
+        return newIndex;
     }
 }// end class

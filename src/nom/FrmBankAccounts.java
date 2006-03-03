@@ -206,11 +206,12 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
     // End of variables declaration//GEN-END:variables
     
     //--------------- My Variables
-    private int id=0; // imena ot tablicata
-    private int code_groupe =0; // imena ot tablicata
-    private int cod = 0;
-    private String name,comment; // imena ot tablicata
-    private String namesG[]; //imena na grupi
+    private int id = 0;
+    private int code_group = 0;
+    private int code = 0;
+    private int typeAccount = 0;
+    private String name, baccount, address, comment;
+    private String namesG[];
     private int selectComboBoxItem;
     private  boolean atBegining=false;
     private  boolean atEnd = false;
@@ -219,7 +220,7 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
     private  imakante.com.vcomponents.iFrame myframe;
     private  java.sql.Connection conn;
     private  java.sql.ResultSet rs;
-    private  nom.casaDB internalObject;
+    private  nom.dbBankAccount internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
     public static final String Names[] = {
@@ -244,7 +245,7 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
     
     private void constructObject() {
         try {
-            internalObject = new nom.casaDB(conn);
+            internalObject = new nom.dbBankAccount(conn);
         } catch(Exception e) { e.printStackTrace(); }
     }
     
@@ -278,11 +279,11 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
     public void windowDeactivated(java.awt.event.WindowEvent e) {
     }
     
-    public nom.casaDB getInternalObject() {
+    public nom.dbBankAccount getInternalObject() {
         return internalObject;
     }
     
-    public void setInternalObject(nom.casaDB val) {
+    public void setInternalObject(nom.dbBankAccount val) {
         this.internalObject = val;
     }
     
@@ -344,26 +345,51 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
     }
     
     public void setIDG(int Gr) {
-        this.code_groupe = Gr;
+        this.code_group = Gr;
     }
     
     public int getIDG() {
-        return code_groupe;
+        return code_group;
     }
     
-    public void setCod(int Cod) {
-        this.cod = Cod;
+    public void setCod(int Code) {
+        this.code = Code;
     }
     
     public int getCod() {
-        return cod;
+        return code;
     }
+    
     public void setNames(String Name) {
         this.name = Name;
     }
     
     public String getNames() {
         return name;
+    }
+    
+    public void setBankAccount(String BankAccount) {
+        this.baccount = BankAccount;
+    }
+    
+    public String getBankAccount() {
+        return baccount;
+    }
+    
+    public void setAddress(String Address) {
+        this.address = Address;
+    }
+    
+    public String getAddress() {
+        return address;
+    }
+    
+    public void setTypeBankAccount(int TypeBAccount) {
+        this.typeAccount = TypeBAccount;
+    }
+    
+    public int getTypeBankAccount() {
+        return typeAccount;
     }
     
     public void setComment(String Comment) {
