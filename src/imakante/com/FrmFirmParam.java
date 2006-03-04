@@ -42,6 +42,8 @@ public class FrmFirmParam extends javax.swing.JDialog {
         jtfBoss = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jtfAcc = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jtfWeb = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -73,6 +75,8 @@ public class FrmFirmParam extends javax.swing.JDialog {
         jLabel12.setText("\u0418\u043c\u0435 \u0443\u043f\u0440\u0430\u0432\u0438\u0442\u0435\u043b:");
 
         jLabel13.setText("\u0418\u043c\u0435 \u0441\u0447\u0435\u0442\u043e\u0432\u043e\u0434\u0438\u0442\u0435\u043b:");
+
+        jLabel14.setText("Web:");
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -117,11 +121,13 @@ public class FrmFirmParam extends javax.swing.JDialog {
                         .add(13, 13, 13)
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                             .add(jLabel8)
-                            .add(jLabel10))
+                            .add(jLabel10)
+                            .add(jLabel14))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jtfEmail, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-                            .add(jtfCode, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)))
+                            .add(jtfCode, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                            .add(jtfWeb, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)))
                     .add(jtfBoss, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
                     .add(jtfAcc, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE))
                 .addContainerGap())
@@ -163,7 +169,9 @@ public class FrmFirmParam extends javax.swing.JDialog {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel11)
-                    .add(jtfNkid, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jtfNkid, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel14)
+                    .add(jtfWeb, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel12)
@@ -224,6 +232,7 @@ public class FrmFirmParam extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -247,6 +256,7 @@ public class FrmFirmParam extends javax.swing.JDialog {
     private javax.swing.JTextField jtfNkid;
     private javax.swing.JTextField jtfNm;
     private javax.swing.JTextField jtfTel;
+    private javax.swing.JTextField jtfWeb;
     // End of variables declaration//GEN-END:variables
     //JDBC Related
     private java.sql.Connection conn;
