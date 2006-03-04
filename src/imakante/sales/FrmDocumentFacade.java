@@ -9,19 +9,21 @@ import java.math.BigDecimal;
 import java.sql.*;
 import imakante.com.*;
 import imakante.com.vcomponents.*;
+import java.util.ArrayList;
 import javax.print.PrintException;
 import javax.swing.*;
 import java.text.MessageFormat;
-
+import java.util.*;
 
 public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame implements WindowListener
 {
 
-    public FrmDocumentFacade(String title, int user, int level, int pricelist, int doctype,int storagedocdacade) // TEST   imakante.com.vcomponents.iFrame frame,
+    public FrmDocumentFacade(String title, int user, int level, int pricelist, int doctype,int storagedocdacade,boolean makeDocByInputData,HashMap dataIn, ArrayList dataOut) // TEST   imakante.com.vcomponents.iFrame frame,
     {
         super(title);
        // myframe = frame; 
-     
+       this.dataInput = dataIn;
+       this.dataOutput = dataOut;
        this.userEditForm = user;
        this.levelDocFacade = level;
        this.priceList = pricelist;
@@ -30,9 +32,18 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
        
         prepareConn();     // zapazva connection
         constructGroupDB(); // inicializira class otgovarq6t za vryzkata s DB
+        checkForMakeDoc(makeDocByInputData);
         initTable();
         initComponents();
        
+       
+        if(makeDocByInputData) // pokazva napravo dokumenta koito trqbva da se izdade 
+        {
+           table.changeSelection(table.getRowCount()-1,2,false,false);
+           jButtonEdit.doClick();
+        }
+        
+        
         fr.addWindowListener(this);
     }
     
@@ -337,7 +348,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 
-                FrmDocumentFacade frCN =   new FrmDocumentFacade("ttt",2,1,1,1,1);
+                FrmDocumentFacade frCN =   new FrmDocumentFacade("ttt",2,1,1,1,1,false,null,null);
                 fr.add(frCN);
                 frCN.setSize(400,400);
                 frCN.setVisible(true);
@@ -376,7 +387,8 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
     private int levelDocFacade = 0;
     private int priceList=1;
     private int docType;
-   
+    private HashMap dataInput= null;
+    private ArrayList dataOutput = null;
 //------------------------------------  
    private String nameContragent;
    private String codeContragent;
@@ -432,6 +444,8 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
     private double DDSProduct;   // dds v procenti
     private double totalProduct; // edini4na cena * brojProdukti
     private int docFacadeFlagFinish;
+    
+    private ArrayList arrayOfID_DF = new ArrayList();
 
    
    
@@ -615,6 +629,14 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
         int i = 0;
         i  = table.getRowCount() - 1;
         return i;
+   }
+   public ArrayList getArrayOfID_DF()
+   {
+       return arrayOfID_DF;
+   }
+   public void setArrayOfID_DF(ArrayList in)
+   {
+       arrayOfID_DF = in;
    }
 //-------------------------------->
    public void setNamesContragent(String Name) 
@@ -1412,5 +1434,36 @@ public void deleteRow()
      countriesT.deleteRow()
 }*/
 
-
+private void checkForMakeDoc(boolean makeDoc)
+{
+    int maxID_df= 0;
+    if(makeDoc)
+    {
+      int number = getCountriesT().getDocNumberLast( getUserEditFortm(), getDocFacadeLevel());
+      number++;
+      getCountriesT().insertRow(0,0,0,0,0,0,0,number,0,0,0,0,0,
+                      getDocFacadeLevel(),0,getDocFacadeType(),0,0,null,null,null,null,null,1);
+       maxID_df = getCountriesT().getMaxId();
+     
+        
+       for(int i = 0; i < dataInput.size(); i++)
+         {
+            docLineArray d = (docLineArray) dataInput.get(i);
+            double total = d.getNumberOfProduct()*d.getPricePiece();
+            double dds = total*d.getDDS()/100;
+            getCountriesT().insertDocLine(getID_DocFacade(),d.getID_PC(),
+                   d.getStorageOut(),d.getPricePiece(),d.getRateReduction(),d.getNumberOfProduct(),
+                   dds,total,d.getPriceList());
+        
+        }  
+        for(int i=0 ; i < dataOutput.size(); i++)
+        {
+          int id_df =(Integer) dataOutput.get(i);
+          getCountriesT().updateConnectionID(id_df,maxID_df,0);
+          
+        }
+      
+      
+    }
+}
 }// end class

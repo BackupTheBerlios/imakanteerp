@@ -40,9 +40,14 @@
  *comprator = 38: clearReturnProducts()
  *comprator = 39: emptyReturnProducts()
  *comprator = 40: cancellationDocFacade()
- *comprator = 41:
- *comprator = 42:
- *comprator = 43
+ *comprator = 41: getIDPMByIDPC()
+ *comprator = 42: updateConnectionID()
+ *comprator = 43:
+ *comprator = 44:
+ *comprator = 45:
+ *comprator = 46:
+ *
+ *
  *
  *
  *
@@ -1587,6 +1592,55 @@ public void cancellationDocFacade(int id_df)
     
     
     setID_DocFacade(oldID_DF);
+}
+public int getIDPMByIDPC(int in_id_pc)
+{
+    int id_pm=0;
+    int oldID_DF = getID_DocFacade();
+    comprator = 41;
+    setID_DocFacade(in_id_pc);
+     try
+        {
+            registerParameters();
+            rs = cstm.executeQuery();
+            while(rs.next())
+            {
+              id_pm = rs.getInt("id_pm");
+               
+            }
+               
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }        
+    setID_DocFacade(oldID_DF);
+    return id_pm;
+}
+
+public void updateConnectionID(int in_oldDocID, int in_faktura_connection_df,int in_zaiavka_connection_df)
+{
+     int oldID_obekt_in = getID_Obekt_IN();
+     int oldID_obekt_out = getID_Obekt_OUT();
+     int oldID_DF = getID_DocFacade();
+     comprator=42;
+      setID_Obekt_IN(in_faktura_connection_df);
+      setID_Obekt_OUT(in_zaiavka_connection_df);
+       setID_DocFacade(in_oldDocID);
+     try
+        {
+            registerParameters();
+            cstm.execute();
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+  
+       setID_DocFacade(oldID_DF);
+       setID_Obekt_OUT(oldID_obekt_out);
+       setID_Obekt_IN(oldID_obekt_in);
+ 
 }
 // <-----------------------
 }// end class

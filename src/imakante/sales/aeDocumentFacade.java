@@ -13,6 +13,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
 import java.util.EventObject;
 import java.util.HashMap;
 import javax.swing.*;
@@ -22,6 +23,7 @@ import java.awt.*;
 import imakante.sales.FrmDocumentFacade;
 import javax.swing.event.CellEditorListener;
 import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableColumnModelEvent;
@@ -220,6 +222,9 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jButtonDellDocFadade = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
+        jPanelCreateFacturi = new javax.swing.JPanel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jButton1 = new javax.swing.JButton();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -231,6 +236,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         });
 
         jPanel1.setPreferredSize(new java.awt.Dimension(263, 33));
+        jButtonClose.setFont(new java.awt.Font("Tahoma", 1, 11));
         jButtonClose.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
         jButtonClose.setPreferredSize(new java.awt.Dimension(100, 23));
         jButtonClose.addActionListener(new java.awt.event.ActionListener() {
@@ -241,7 +247,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jPanel1.add(jButtonClose);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 670, 280, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 670, 140, -1));
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -925,13 +931,92 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 770, 670));
 
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 660, 110, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 660, 140, -1));
 
         jLabel24.setText("\u041a\u0443\u0440\u0441:");
         getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 660, -1, -1));
 
+        jCheckBox1.setText("\u0417\u0430 \u0441\u044a\u0437\u0434\u0430\u0432\u0430\u043d\u0435 \u043d\u0430 \u0444\u0430\u043a\u0442\u0443\u0440\u0430");
+        jCheckBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox1.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jCheckBox1StateChanged(evt);
+            }
+        });
+        jCheckBox1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jCheckBox1MousePressed(evt);
+            }
+        });
+
+        jPanelCreateFacturi.add(jCheckBox1);
+
+        jButton1.setText("\u0421\u044a\u0437\u0434\u0430\u0432\u0430\u043d\u0435 \u043d\u0430 \u0444\u0430\u043a\u0442\u0443\u0440\u0430...");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jPanelCreateFacturi.add(jButton1);
+
+        getContentPane().add(jPanelCreateFacturi, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 670, 360, 30));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jCheckBox1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBox1StateChanged
+// TODO add your handling code here:
+         if(jCheckBox1.isSelected())
+        {
+            myParent.getArrayOfID_DF().add((Integer)myParent.getID_DocFacade());
+            isCheckOne = true;
+        }
+         else
+         {
+             if(myParent.getArrayOfID_DF().size()>0)
+             {
+                 for(int i=0; i < myParent.getArrayOfID_DF().size(); i++)
+                 {
+                     int id_df = (Integer)myParent.getArrayOfID_DF().get(i);
+                     if(id_df == myParent.getID_DocFacade())
+                     {
+                        myParent.getArrayOfID_DF().remove(i);
+                     }
+                 }
+                if(myParent.getArrayOfID_DF().size()>0) isCheckOne = false; 
+             }
+             else isCheckOne=false;
+              
+         }
+    
+    }//GEN-LAST:event_jCheckBox1StateChanged
+
+    private void jCheckBox1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox1MousePressed
+// TODO add your handling code here:
+        
+        
+        
+        
+    }//GEN-LAST:event_jCheckBox1MousePressed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+// TODO add your handling code here:
+  
+   
+   Thread t = new Thread(new Runnable() {
+       public void run()
+       {
+           createArraysForFactura();
+       }
+   });
+   
+   t.start();
+   
+   
+   
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonDellDocFadadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDellDocFadadeActionPerformed
 // TODO add your handling code here:
@@ -952,8 +1037,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
     private void jButtonCreateDocFacadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCreateDocFacadeActionPerformed
 // TODO add your handling code here:
-        
-        createDocument(myParent.getDocFacadeType());
+        int id_df = myParent.getID_DocFacade();
+        createDocument(id_df,myParent.getDocFacadeType(),0);
         
     }//GEN-LAST:event_jButtonCreateDocFacadeActionPerformed
     
@@ -1430,6 +1515,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     }*/
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonAnulirane;
     private javax.swing.JButton jButtonClose;
@@ -1439,6 +1525,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private javax.swing.JButton jButtonOneRowP;
     private javax.swing.JButton jButtonToBegin;
     private javax.swing.JButton jButtonToEnd;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox jComboBoxVidPla6tane;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1488,6 +1575,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanelComent;
     private javax.swing.JPanel jPanelContragent;
+    private javax.swing.JPanel jPanelCreateFacturi;
     private javax.swing.JPanel jPanelDocLine;
     private javax.swing.JPanel jPanelHead;
     private javax.swing.JPanel jPanelObekt;
@@ -1548,6 +1636,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private boolean isSetDataInTable = false;
     private boolean rowSelectedChange = false;
     private HashMap  rows=null;
+    private boolean isCheckOne = false;
+    private int id_df_NewFaktura = 0;
 //----------------------------------------
     
     
@@ -2681,7 +2771,7 @@ private int[] calculatePriceList(int startpricelist)
      
      
  }
- private void createDocument(int typeDoc)
+ private void createDocument(int id_df,int typeDoc, int connection)
  {
      switch(typeDoc)
      {
@@ -2695,6 +2785,7 @@ private int[] calculatePriceList(int startpricelist)
              int facturaConnection=0;
              int payingOrder = 0;
              int zaqvkaConnection = 0;
+             
              int docFacadeLevel = myParent.getDocFacadeLevel();
              int docFacadeStorage = myParent.getStorageOUTProduct();
              int docFacadeType = myParent.getDocFacadeType();
@@ -2712,7 +2803,7 @@ private int[] calculatePriceList(int startpricelist)
              String payingDate = dateManip.convertDate(jTextFieldPayDate.getText());
              String docFacadeDate = dateManip.convertDate(jTextFieldDateDoc.getText());
              int numberDoc = Integer.parseInt(myParent.getNumberDocFacade());
-             myParent.getCountriesT().updateRow(myParent.getID_DocFacade(),contragent_out,contragent_in,obekt_out,
+             myParent.getCountriesT().updateRow(id_df,contragent_out,contragent_in,obekt_out,
                      obekt_in,myParent.getID_Distributor(),myParent.getID_Deliver(),jComboBoxVidPla6tane.getSelectedIndex(),
                      numberDoc,userEdit,userLastEdit,
                      facturaConnection,payingOrder,zaqvkaConnection,docFacadeLevel,docFacadeStorage,docFacadeType,
@@ -2730,9 +2821,12 @@ private int[] calculatePriceList(int startpricelist)
              int contragent_out = myParent.getID_Contragent();
              int obekt_in = 0;
              int obekt_out = myParent.getID_Obekt();
-             int facturaConnection= 0;
+             
+             
+             int facturaConnection= connection;
              int payingOrder = 0;
              int zaqvkaConnection = 0;
+             
              int docFacadeLevel = myParent.getDocFacadeLevel();
              int docFacadeStorage = myParent.getStorageOUTProduct();
              int docFacadeType = myParent.getDocFacadeType();
@@ -2748,7 +2842,7 @@ private int[] calculatePriceList(int startpricelist)
              String dateDeliver = dateManip.convertDate("01.01.1997");
              String payingDate = dateManip.convertDate(jTextFieldPayDate.getText());
              String docFacadeDate = dateManip.convertDate(jTextFieldDateDoc.getText());
-              myParent.getCountriesT().updateRow(myParent.getID_DocFacade(),contragent_out,contragent_in,obekt_out,
+              myParent.getCountriesT().updateRow(id_df,contragent_out,contragent_in,obekt_out,
                      obekt_in,myParent.getID_Distributor(),myParent.getID_Deliver(),jComboBoxVidPla6tane.getSelectedIndex(),
                      Integer.parseInt(myParent.getNumberDocFacade()),myParent.getUserEditFortm(),myParent.getUserEditFortm(),
                      facturaConnection,payingOrder,zaqvkaConnection,docFacadeLevel,docFacadeStorage,docFacadeType,
@@ -2778,7 +2872,7 @@ private int[] calculatePriceList(int startpricelist)
              String payingDate = dateManip.convertDate(jTextFieldPayDate.getText());
              String docFacadeDate = dateManip.convertDate(jTextFieldDateDoc.getText());
             
-             myParent.getCountriesT().updateRow(myParent.getID_DocFacade(),contragent_out,contragent_in,obekt_out,
+             myParent.getCountriesT().updateRow(id_df,contragent_out,contragent_in,obekt_out,
                      obekt_in,myParent.getID_Distributor(),myParent.getID_Deliver(),jComboBoxVidPla6tane.getSelectedIndex(),
                      Integer.parseInt(myParent.getNumberDocFacade()),myParent.getUserEditFortm(),myParent.getUserEditFortm(),
                      facturaConnection,payingOrder,zaqvkaConnection,docFacadeLevel,docFacadeStorage,docFacadeType,
@@ -3003,6 +3097,108 @@ private void  deleteDocFacade(int id_df)
  {
      myParent.getCountriesT().deleteRow(id_df);
  }
+private void createArraysForFactura() 
+{
+    
+    if(!isCheckOne)
+    {
+        
+        //showMesage
+        return;
+    }
+    //stage 1
+    HashMap data1;
+    HashMap data2;
+    ArrayList arrayOfData = new ArrayList();
+    int countDocFacade = myParent.getArrayOfID_DF().size();
+    for(int i=0;i<countDocFacade; i++)
+    {
+        
+        data1 = myParent.getCountriesT().getDocLine((Integer)myParent.getArrayOfID_DF().get(i));
+        arrayOfData.add(data1);
+    }
+    //stage 2
+    // sybirane na vsi4ki linii v edin hashmap
+    int countDocLine = arrayOfData.size();
+    // sybirane na linii
+    data1 = (HashMap)arrayOfData.get(0);
+    for(int i=1; i < countDocLine; i++)
+    {
+        data2 =(HashMap)arrayOfData.get(i);
+        data1 = addLineByID_PC(data1,data2);
+        
+    }
+    // stage 3
+    // zapis v HashMap namira6t se v salesMain
+    // i ustanovqvane na makeDocByInputData=true;
+    // proverka dali ima dokumenti za iskarvane(faktura) predi da se opiname da otvorim FrmDocLiune za (stokova razpiska)
+      myParent.dispose();
+ 
+    
+    
+}
+private HashMap addLineByID_PC(HashMap in1,HashMap in2)
+{
+    HashMap in1_in2=in1;
+    int countIn1 = in1.size();
+    int countIn2 = in2.size();
+    boolean isHaveOne = false;
+    boolean delDocLine[] = new boolean[countIn2];
+    for(int i=0;i<countIn1; i++)
+    {
+        docLineArray d1 = (docLineArray) in1.get(i);
+        int id_pm1 = myParent.getCountriesT().getIDPMByIDPC(d1.getID_PC());
+        double priceOne1 = d1.getPricePiece();
+       
+        docLineArray in1In2 = d1;
+        
+        for(int j=0; j < countIn2; j++)
+        {
+            if(!delDocLine[j])
+            {
+                docLineArray d2 = (docLineArray) in2.get(j);
+                int id_pm2 = myParent.getCountriesT().getIDPMByIDPC(d2.getID_PC());
+                double priceOne2 = d2.getPricePiece();
+
+                if((id_pm1==id_pm2)&&(priceOne1==priceOne2))
+                {
+
+                    in1In2.setCodeOfProduct(d1.getCodeOfProduct());
+                    in1In2.setDDS(d1.getDDS());
+                    in1In2.setID_DocLine(0); //////??????
+                    in1In2.setID_PC(d1.getID_PC());
+                    in1In2.setIsFinishRow(true);
+                    in1In2.setNameOfDisBand(d1.getNameOfDisBand());
+                    in1In2.setNameOfProduct(d1.getNameOfProduct());
+                    in1In2.setNumberOfProduct(d1.getNumberOfProduct()+d2.getNumberOfProduct());
+                    in1In2.setNumerOfDisBand(d1.getNumerOfDisBand());
+                    in1In2.setPriceList(d1.getPriceList());
+                    in1In2.setPricePiece(priceOne1);
+                    in1In2.setPriceTotal(d1.getPriceTotal()+d2.getPriceTotal());
+                    in1In2.setRateReduction(0);
+                    in1In2.setStorageOut(1);
+                    delDocLine[j] = true;
+
+                }
+            }
+            
+            
+        }
+        
+    }
+   int key = countIn1;
+    for(int j=0 ; j <countIn2; j++)
+    {
+        if(!delDocLine[j])
+        {
+            docLineArray d = (docLineArray) in2.get(j);
+            in1_in2.put(key,d);
+            key++;
+        }
+    }
+    
+    return in1_in2;
+}
 }// end class
 
 
