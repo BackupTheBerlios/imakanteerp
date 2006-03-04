@@ -1,6 +1,6 @@
 DELIMITER $$
 
-DROP PROCEDURE IF EXISTS `mida`.`nom_procedure__doc_type_user_rights` $$
+DROP PROCEDURE IF EXISTS `mida`.`nom_procedure_doctype_user_rights` $$
 CREATE PROCEDURE `nom_procedure_doctype_user_rights`(IN comprator TINYINT, IN in_id INT(11), IN in_id_um INT(11), IN in_id_sdtn INT(11), IN in_rights INT(11))
 BEGIN
      IF (comprator = 0) THEN
