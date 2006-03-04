@@ -9,6 +9,7 @@ public class aeDoctypeUserRights extends imakante.com.vcomponents.iDialog {
         initComponents();
         getNavigationState();
         jButtonUndo.setEnabled(false);
+        jTextField1.setEnabled(false);
         initCombo();
         this.setResizable(false);
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
@@ -156,6 +157,8 @@ public class aeDoctypeUserRights extends imakante.com.vcomponents.iDialog {
 
         jLabel7.setText("\u041a\u043e\u0447\u0430\u043d:");
 
+        jTextField1.setInputVerifier(new imakante.com.InputIntegerVerifier());
+
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -202,7 +205,7 @@ public class aeDoctypeUserRights extends imakante.com.vcomponents.iDialog {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-343)/2, (screenSize.height-263)/2, 343, 263);
     }// </editor-fold>//GEN-END:initComponents
-            
+    
     private void jButtonCloseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonCloseKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonClose.doClick();}
     }//GEN-LAST:event_jButtonCloseKeyPressed
@@ -230,11 +233,11 @@ public class aeDoctypeUserRights extends imakante.com.vcomponents.iDialog {
     private void jButtonToBeginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonToBeginKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonToBegin.doClick();}
     }//GEN-LAST:event_jButtonToBeginKeyPressed
-        
+    
     private void jComboGKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboGKeyPressed
         
     }//GEN-LAST:event_jComboGKeyPressed
-        
+    
     private void jButtonUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUndoActionPerformed
         undoCorr(); //vraja predishnite stoinosti
     }//GEN-LAST:event_jButtonUndoActionPerformed
@@ -303,14 +306,6 @@ public class aeDoctypeUserRights extends imakante.com.vcomponents.iDialog {
         repaintComp();
     }//GEN-LAST:event_jButtonToBeginActionPerformed
     
-    private void cfFocus() {
-        if(cFields()) {
-            jTextField1.transferFocus();
-        } else {
-            jTextField1.requestFocus();
-        }
-    }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonClose;
     private javax.swing.JButton jButtonOneRowM;
@@ -343,38 +338,22 @@ public class aeDoctypeUserRights extends imakante.com.vcomponents.iDialog {
     
     //---------------START My Methods
     
-    //Proverka na poletata
-    private boolean cFields() { // V sluchaia samo na edno pole dali e integer
-        boolean check  = true;     // v bazata
-        int i = 0;
-        try {
-            i = Integer.parseInt(jTextField1.getText()); // proverka za int
-            jTextField1.setBackground(new java.awt.Color(255,255,255));
-        } catch (NumberFormatException nfex) {
-            check = false;
-            jTextField1.setBackground(new java.awt.Color(255,204,204));
-            nfex.printStackTrace();
-        }
-        return check;
-    }
-    
     //SAVE
     private void saveRecord() {
-        if(cFields()){
-            oldCod = myParent.getCod();
-            oldName = myParent.getNames();
-            oldComment = myParent.getComment();
-            try {
-                myParent.setCod(Integer.parseInt(jTextField1.getText()));
-            } catch (NumberFormatException nfex) {
-                nfex.printStackTrace();
-            }
-            myParent.setIDG(myParent.getInternalObject().getIndexConnOfId()[jComboG.getSelectedIndex()]);
-            myParent.getInternalObject().updateRow(myParent.getId(), myParent.getIDG(),myParent.getCod(),
-                    myParent.getNames(), myParent.getComment());
-            myParent.refreshTable();
-            myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
-            jButtonUndo.setEnabled(true);}
+        oldCod = myParent.getCod();
+        oldName = myParent.getNames();
+        oldComment = myParent.getComment();
+        try {
+            myParent.setCod(Integer.parseInt(jTextField1.getText()));
+        } catch (NumberFormatException nfex) {
+            nfex.printStackTrace();
+        }
+        myParent.setIDG(myParent.getInternalObject().getIndexConnOfId()[jComboG.getSelectedIndex()]);
+        myParent.getInternalObject().updateRow(myParent.getId(), myParent.getIDG(),myParent.getCod(),
+                myParent.getNames(), myParent.getComment());
+        myParent.refreshTable();
+        myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
+        jButtonUndo.setEnabled(true);
     }
     
     //UNDO
@@ -403,7 +382,7 @@ public class aeDoctypeUserRights extends imakante.com.vcomponents.iDialog {
     }
     
     private void repaintComp() {
-        jTextField1.setText(""+myParent.getCod());
+        jTextField1.setText("" + myParent.getCod());
         jComboG.setSelectedIndex(getNewComboBoxIndex(myParent.getIDG()));
     }
     
@@ -411,16 +390,11 @@ public class aeDoctypeUserRights extends imakante.com.vcomponents.iDialog {
         namesG = myParent.getInternalObject().getCasaG();
         for(int i=0;i<namesG.length;i++) {
             jComboG.addItem(new String(namesG[i]));
-            
         }
-        
         if(selectComboBoxItem != 0) {
-            
             selectComboBoxItem = getNewComboBoxIndex(selectComboBoxItem);
-            
             jComboG.setSelectedIndex(selectComboBoxItem);
         }
-        
     }
     
     private int getNewComboBoxIndex(int oldindex) {

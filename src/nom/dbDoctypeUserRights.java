@@ -9,13 +9,13 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
     private java.sql.CallableStatement cstm;
     private int comprator = 1;
     private int id = 0;
-    private int id_group = 0;
-    private String code = "";
-    private int id_type = 0;
-    private String splitNamesG[];
-    private String splitTypes[];
-    private int indexConnOfId[] = null;
-    private int indexOfTypes[] = null;
+    private int id_usermaster = 0;
+    private int doctypeNum = 0;
+    private int rights;
+    private String splitNamesUsers[];
+    private String splitReceiptBooks[];
+    private int indexOfUsers[] = null;
+    private int indexOfRBooks[] = null;
     
     public dbDoctypeUserRights(java.sql.Connection conn) {
         super(conn);
@@ -24,7 +24,7 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
     
     protected void prepareCstm() {
         try {
-            setCstm(getConn().prepareCall("call nom_pocedure_baccount(?,?,?,?,?,?,?,?,?)"));
+            setCstm(getConn().prepareCall("call nom_pocedure_doctype_user_rights(?,?,?,?,?)"));
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
@@ -32,40 +32,28 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
         try {
             getCstm().setInt("comprator", getComprator());
             getCstm().setInt("in_id", getId());
-            getCstm().setInt("in_id_group", getIDGr());
-            getCstm().setInt("in_code", getcode());
-            getCstm().setString("in_name", getName());
-            getCstm().setString("in_account", getBankAccountNumber());
-            getCstm().setString("in_address", getAddress());
-            getCstm().setInt("in_id_tacc", getTypeBankAccount());
-            getCstm().setString("in_comments", getComment());
+            getCstm().setInt("in_id_um", getUserMaster());
+            getCstm().setInt("in_id_sdtn", getDoctypeNum());
+            getCstm().setInt("in_rights", getRights());
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    private int getTypeBankAccount() {
-        return id_type;
-    }
-    
-    private void setTypeBankAccount(int TypeBAccount) {
-        this.id_type = TypeBAccount;
-    }
-    
-    public void insertRow(String in_code, int in_id_group) {
+    public void insertRow(int in_id_um) {
         comprator = 1;
-        this.code = in_code;
-        this.id_group = in_id_group;
+        this.id_usermaster = in_id_um;
+        this.rights = 3;
         try {
             registerParameters();
             cstm.execute();
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    public void updateRow(int in_id, int in_id_group, String in_code, String in_name,
-            String in_account, String in_address, int in_id_tacc, String in_comment) {
+    public void updateRow(int in_id, int in_id_um, int in_sdtn, int in_rights) {
         comprator = 2;
         this.id = in_id;
-        this.id_group = in_id_group;
-        this.code = in_code;
+        this.id_usermaster = in_id_um;
+        this.doctypeNum = in_sdtn;
+        this.rights = in_rights;
         try {
             registerParameters();
             cstm.execute();
@@ -88,17 +76,16 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
             registerParameters();
             rs = cstm.executeQuery();
             while(rs.next()) {
-                id_group = rs.getInt("id_group");
-                code = rs.getString("code");
-                id_type = rs.getInt("id_type");
+                // ??????????????????????????????????????????????????????????????????
+                // koi poleta ot rs da se wzemat i s kakwi zaglawiq?
             }
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
         return rs;
     }
     
-    public java.sql.ResultSet searchRecords(String in_code) {
+    public java.sql.ResultSet searchRecords(int in_rights) {
         comprator = 5;
-        this.code = in_code;
+        this.rights = in_rights;
         try {
             registerParameters();
             setRs(getCstm().executeQuery());
@@ -106,35 +93,35 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
         return getRs();
     }
     
-    public String[] getTypeBankAccounts() {
-        comprator = 6;
+    public String[] getReceiptBooks() {
+        comprator = 8;
         String resultStr = new String("");
         int originalId = id, i = 0;
         java.sql.ResultSet originalRS = rs;
         java.util.ArrayList list = new java.util.ArrayList();
         java.util.Iterator iterator = null;
-        java.util.HashMap Types = new java.util.HashMap();
+        java.util.HashMap RBooks = new java.util.HashMap();
         try {
             registerParameters();
             rs = cstm.executeQuery();
             while(rs.next()) {
-                Types.put(new Integer(rs.getInt("id_tbacc")), new String(rs.getString("name_tbacc")));
-                list.add(new Integer(rs.getInt("id_tbacc")));
+                RBooks.put(new Integer(rs.getInt("")), new String(rs.getString("") + " - " + rs.getString("")));
+                list.add(new Integer(rs.getInt("")));
                 i++;
             }
         } catch(Exception e) { e.printStackTrace(); }
         rs = originalRS;
         id = originalId;
-        indexOfTypes = new int[i];
+        indexOfRBooks = new int[i];
         iterator = list.iterator();
-        splitTypes = new String[i];
+        splitReceiptBooks = new String[i];
         i=0;
         while(iterator.hasNext()) {
-            indexOfTypes[i] =(Integer) iterator.next();
-            splitTypes[i] = (String) Types.get(indexOfTypes[i]);
+            indexOfRBooks[i] =(Integer) iterator.next();
+            splitReceiptBooks[i] = (String) RBooks.get(indexOfRBooks[i]);
             i++;
         }
-        return splitTypes;
+        return splitReceiptBooks;
     }
     
     public String[] getBankAccountGroup() {
@@ -144,29 +131,29 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
         java.sql.ResultSet oldRs = rs;
         java.util.ArrayList in = new java.util.ArrayList();
         java.util.Iterator it = null;
-        java.util.HashMap Groupes = new java.util.HashMap();
+        java.util.HashMap Users = new java.util.HashMap();
         int i = 0;
         try {
             registerParameters();
             rs = cstm.executeQuery();
             while(rs.next()) {
-                Groupes.put(new Integer(rs.getInt("id_n_group")), new String(rs.getString("name_n_group")));
-                in.add(new Integer(rs.getInt("id_n_group")));
+                Users.put(new Integer(rs.getInt("")), new String(rs.getString("")));
+                in.add(new Integer(rs.getInt("")));
                 i++;
             }
         } catch(Exception e) { e.printStackTrace(); }
         rs = oldRs;
         id = oldId;
-        indexConnOfId = new int[i];
+        indexOfUsers = new int[i];
         it = in.iterator();
-        splitNamesG = new String[i];
+        splitNamesUsers = new String[i];
         i=0;
         while(it.hasNext()) {
-            indexConnOfId[i] =(Integer) it.next();
-            splitNamesG[i] = (String) Groupes.get(indexConnOfId[i]);
+            indexOfUsers[i] =(Integer) it.next();
+            splitNamesUsers[i] = (String) Users.get(indexOfUsers[i]);
             i++;
         }
-        return splitNamesG;
+        return splitNamesUsers;
     }
     
     public int getMaxGrID() {
@@ -182,11 +169,35 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
         return return_int;
     }
     
-    public int[] getIndexOfTypes() {
-        return indexOfTypes;
+    public int getUserMaster() {
+        return id_usermaster;
     }
     
-    public int[] getIndexConnOfId() {
-        return indexConnOfId;
+    public void setUsermaster(int UserMaster) {
+        this.id_usermaster = UserMaster;
+    }
+    
+    public int getDoctypeNum() {
+        return doctypeNum;
+    }
+    
+    public void setDoctypeNum(int DoctypeNum) {
+        this.doctypeNum = DoctypeNum;
+    }
+    
+    public int getRights() {
+        return rights;
+    }
+    
+    public void setRights(int Rights) {
+        this.rights = Rights;
+    }
+    
+    public int[] getIndexOfUsers() {
+        return indexOfUsers;
+    }
+    
+    public int[] getIndexOfRBooks() {
+        return indexOfRBooks;
     }
 }
