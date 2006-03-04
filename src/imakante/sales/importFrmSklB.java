@@ -265,7 +265,7 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
     private java.sql.Connection connection;
     private java.sql.Statement stm;
     private java.sql.ResultSet rs;
-    private String QString = "SELECT n_contragent.name_n_contragent, n_contragent.bul_n_contragent FROM n_contragent WHERE n_contragent.dan_n_contragent = ";
+    private String QString = "SELECT n_contragent.name_n_contragent, n_contragent.bul_n_contragent, n_contragent.id_n_contragent FROM n_contragent WHERE n_contragent.dan_n_contragent = ";
     
     //FILE related
     private java.io.File file;
@@ -391,12 +391,16 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
                         this.table.setValueAt(vid,row,6);
                         this.table.setValueAt(((Double.parseDouble(sum))/100),row,7);
                         this.table.setValueAt(((Double.parseDouble(dds))/100),row,8);
+                      
                         try {
                             
                             rs = stm.executeQuery(QString + NDR);
                             while(rs.next()){
                                 this.table.setValueAt(rs.getString("bul_n_contragent"),row,4);
                                 this.table.setValueAt(rs.getString("name_n_contragent"),row,5);
+                                this.table.setValueAt(rs.getString("id_n_contragent"),row,10);
+                                
+                                
                             }
                         } catch (SQLException ex) {
                             ex.printStackTrace();
@@ -416,10 +420,10 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
     
     public class MyTableModel extends DefaultTableModel {
         private String[] Names =  new String [] {
-            "№", "Номер документ", "Дата", "Данъчен Номер", "ИН", "Фирма","Вид", "Сума","ДДС"};
+            "№", "Номер документ", "Дата", "Данъчен Номер", "ИН", "Фирма","Вид", "Сума","ДДС","ID FIRM"};
         
         public int getColumnCount() {
-            return 9;
+            return 10;
         }
         public String getColumnName(int col) {
             return Names[col];
@@ -507,31 +511,7 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
     
     
     
-//    public void createData(){
-//
-//        jtbm = new JRTableModelDataSource(model);
-//    }
-////    private void printTable(){
-//     try {
-//          JRTableModelDataSource jtbm = new JRTableModelDataSource(model);
-////            net.sf.jasperreports.engine.JasperReport jasperReport = new net.sf.jasperreports.engine.JasperReport();
-////            jasperPrint = JasperFillManager.fillReport(new java.io.FileInputStream(new java.io.File((getClass().getResource(fileJasper)).toURI())),
-////                    hm, conn);
-//        } catch (FileNotFoundException ex) {
-//            ex.printStackTrace();
-//        } catch (URISyntaxException ex) {
-//            ex.printStackTrace();
-//        } catch (JRException ex) {
-//            ex.printStackTrace();
-//        }
-//
-//            jrv = new net.sf.jasperreports.view.JRViewer(jasperPrint);
-//
-//
-//
-//
-//
-//    }
+
     
 }
 

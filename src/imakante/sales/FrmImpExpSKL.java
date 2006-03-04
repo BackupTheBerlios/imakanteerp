@@ -369,27 +369,27 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
     
     
     private void writeFile(){
-        String l_etiket = "";
-        String pathFiles = "";
-        try {
-            
-            l_etiket = l_etiket + fullString(in_l,10, true);
-            l_etiket = l_etiket + fullString(name_b,50, true);
-            l_etiket = l_etiket + fullString(name_acc,50, true);
-            l_etiket = l_etiket + fullString(tel,25,true);
-            
-            l_etiket = l_etiket + zzd + pzd +  otp + "\n";
-            System.out.println(l_etiket);
-            String to = pathFiles+etiket;
-            BufferedWriter out = new BufferedWriter(new java.io.OutputStreamWriter(new FileOutputStream("c:/rabotna2/ETIKET.TXT"),"Cp866"));
-            out.write(l_etiket);
-            
-            out.close();
-        }catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (IOException e) { e.printStackTrace();
-        }
-        
+//        String l_etiket = "";
+//        String pathFiles = "";
+//        try {
+//            
+//            l_etiket = l_etiket + fullString(in_l,10, true);
+//            l_etiket = l_etiket + fullString(name_b,50, true);
+//            l_etiket = l_etiket + fullString(name_acc,50, true);
+//            l_etiket = l_etiket + fullString(tel,25,true);
+//            
+//            l_etiket = l_etiket + zzd + pzd +  otp + "\n";
+//            System.out.println(l_etiket);
+//            String to = pathFiles+etiket;
+//            BufferedWriter out = new BufferedWriter(new java.io.OutputStreamWriter(new FileOutputStream("c:/rabotna2/ETIKET.TXT"),"Cp866"));
+//            out.write(l_etiket);
+//            
+//            out.close();
+//        }catch (UnsupportedEncodingException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) { e.printStackTrace();
+//        }
+//        
         String Line="";
         
         
