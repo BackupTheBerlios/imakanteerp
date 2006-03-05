@@ -357,6 +357,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         nomMenu_Kontragenti.add(kontragentiMenu_Kontr);
 
         kontragentiMenu_bank.setText("\u0411\u0430\u043d\u043a\u0438");
+        kontragentiMenu_bank.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kontragentiMenu_bankActionPerformed(evt);
+            }
+        });
+
         nomMenu_Kontragenti.add(kontragentiMenu_bank);
 
         kontragentiMenu_obekti.setText("\u041e\u0431\u0441\u043b\u0443\u0436\u0432\u0430\u043d\u0438 \u043e\u0431\u0435\u043a\u0442\u0438");
@@ -634,6 +640,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-448)/2, 757, 448);
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void kontragentiMenu_bankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kontragentiMenu_bankActionPerformed
+        loadBankAcc();
+    }//GEN-LAST:event_kontragentiMenu_bankActionPerformed
     
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         this.loadKorect();
@@ -1164,7 +1174,17 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             isStartFrmContragent = true;
         }
     }
-    
+    //BANK
+    private void loadBankAcc(){
+        nom.FrmBankAccounts bank = new nom.FrmBankAccounts("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0430 \u041a\u0430\u0441\u0438", this);
+        desktopPane.add(bank);
+        try {
+            bank.setMaximum(true);
+        } catch (java.beans.PropertyVetoException ex) {
+            ex.printStackTrace();
+        }
+        bank.setVisible(true);
+    }
     //kasi
     private void loadCasa(){
         nom.FrmCasa Casa = new nom.FrmCasa("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0430 \u041a\u0430\u0441\u0438", this);
@@ -1295,8 +1315,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         desktopPane.add(imp);
         imp.setVisible(true);
     }
-   
-       private void  loadKorect(){
+    
+    private void  loadKorect(){
         
         imakante.sales.FrmImpExpSKL imp = new imakante.sales.FrmImpExpSKL();
         desktopPane.add(imp);
