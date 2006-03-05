@@ -46,7 +46,7 @@ public class FrmFirmParam extends javax.swing.JDialog {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("\u0424\u0438\u0440\u043c\u0435\u043d\u0438 \u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u0424\u0438\u0440\u043c\u0435\u043d\u0438 \u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438"));
         jLabel1.setText("\u0418\u043c\u0435 \u043d\u0430 \u0444\u0438\u0440\u043c\u0430\u0442\u0430:");
 
         jLabel2.setText("\u0418\u041d:");
@@ -107,9 +107,9 @@ public class FrmFirmParam extends javax.swing.JDialog {
                                     .add(jLabel3)))
                             .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                             .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                .add(jtfData_c, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                                .add(jtfData_c, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
                                 .add(jtfDan))))
-                    .add(jtfAddress, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+                    .add(jtfAddress, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
                             .add(org.jdesktop.layout.GroupLayout.LEADING, jtfNkid)
@@ -122,11 +122,11 @@ public class FrmFirmParam extends javax.swing.JDialog {
                             .add(jLabel14))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jtfEmail, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-                            .add(jtfCode, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-                            .add(jtfWeb, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)))
-                    .add(jtfBoss, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
-                    .add(jtfAcc, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE))
+                            .add(jtfEmail, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                            .add(jtfCode, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                            .add(jtfWeb, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)))
+                    .add(jtfBoss, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
+                    .add(jtfAcc, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -189,7 +189,7 @@ public class FrmFirmParam extends javax.swing.JDialog {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(523, Short.MAX_VALUE)
+                .addContainerGap(531, Short.MAX_VALUE)
                 .add(jButton1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jButton2)
@@ -215,7 +215,7 @@ public class FrmFirmParam extends javax.swing.JDialog {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 10, Short.MAX_VALUE)
                 .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
         pack();
@@ -280,24 +280,6 @@ public class FrmFirmParam extends javax.swing.JDialog {
             "`ls_sluj`.`web` AS `web` " +
             "FROM "+
             "`ls_sluj`";
-    private String updateQ =
-            "UPDATE `mida`.`ls_sluj` SET " +
-            "`ls_sluj`.`Id` AS `id`, " +
-            "`ls_sluj`.`name_firm` AS `name`, " +
-            "`ls_sluj`.`dan_nom` AS `dan`, " +
-            "`ls_sluj`.`bul` AS `bul`, " +
-            "`ls_sluj`.`address` AS `adsress`, " +
-            "`ls_sluj`.`nam_boss` AS `boss`, " +
-            "`ls_sluj`.`nam_acc` AS `acc`, " +
-            "`ls_sluj`.`nkid` AS `nkid`, " +
-            "`ls_sluj`.`telefon` AS `tel`, " +
-            "`ls_sluj`.`data_reg_dds` AS `data_r`, " +
-            "`ls_sluj`.`data_c` AS `data_c`, " +
-            "`ls_sluj`.`nm` AS `nm`, " +
-            "`ls_sluj`.`postcode` AS `code`, " +
-            "`ls_sluj`.`email` AS `email`, " +
-            "`ls_sluj`.`web` AS `web` " +
-            "WHERE `mida`.`ls_sluj`.Id = " + id;
     
     private void getParam(){
         try {
@@ -325,29 +307,28 @@ public class FrmFirmParam extends javax.swing.JDialog {
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
-    private void changeParam() {
+    private void changeParam(int ID) {
+        id = ID;
         try {
             stm = conn.createStatement();
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
         try {
-            rs = stm.executeQuery(updateQ);
-            while(rs.next()){
-                id = rs.getInt("id");
-                jtfName.setText(rs.getString("name"));
-                jtfDan.setText(rs.getString("dan"));
-                jtfBul.setText(rs.getString("bul"));
-                jtfAddress.setText(rs.getString("address"));
-                jtfBoss.setText(rs.getString("boss"));
-                jtfAcc.setText(rs.getString("acc"));
-                jtfNkid.setText(rs.getString("nkid"));
-                jtfTel.setText(rs.getString("tel"));
-                jtfData_r.setText(rs.getString("data_r"));
-                jtfData_c.setText(rs.getString("data_c"));
-                jtfNm.setText(rs.getString("nm"));
-                jtfCode.setText(rs.getString("code"));
-                jtfEmail.setText(rs.getString("email"));
-                jtfWeb.setText(rs.getString("web"));
-            }
+            rs = stm.executeQuery("UPDATE `mida`.`ls_sluj` SET " +
+            "`ls_sluj`.name_firm = " + jtfName.getText() + ", " +
+            "`ls_sluj`.dan_nom = " + jtfDan.getText() + ", " +
+            "`ls_sluj`.bul = " + jtfBul.getText() + ", " +
+            "`ls_sluj`.address = " + jtfAddress.getText() + ", " +
+            "`ls_sluj`.nam_boss = " + jtfBoss.getText() + ", " +
+            "`ls_sluj`.nam_acc = " + jtfAcc.getText() + ", " +
+            "`ls_sluj`.nkid = " + jtfNkid.getText() + ", " +
+            "`ls_sluj`.telefon = " + jtfTel.getText() + ", " +
+            "`ls_sluj`.data_reg_dds = " + jtfData_r.getText() + ", " +
+            "`ls_sluj`.data_c = " + jtfData_c.getText() + ", " +
+            "`ls_sluj`.nm = " + jtfNm.getText() + ", " +
+            "`ls_sluj`.postcode = " + jtfCode.getText() + ", " +
+            "`ls_sluj`.email = " + jtfEmail.getText() + ", " +
+            "`ls_sluj`.web = " + jtfWeb.getText() +
+            "WHERE `mida`.`ls_sluj`.Id = " + id);
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     

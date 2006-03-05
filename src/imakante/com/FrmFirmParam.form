@@ -25,7 +25,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="10" max="32767" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -36,7 +36,11 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="&#x424;&#x438;&#x440;&#x43c;&#x435;&#x43d;&#x438; &#x41f;&#x430;&#x440;&#x430;&#x43c;&#x435;&#x442;&#x440;&#x438;"/>
+            <TitledBorder title="&#x424;&#x438;&#x440;&#x43c;&#x435;&#x43d;&#x438; &#x41f;&#x430;&#x440;&#x430;&#x43c;&#x435;&#x442;&#x440;&#x438;">
+              <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                <EtchetBorder bevelType="0"/>
+              </Border>
+            </TitledBorder>
           </Border>
         </Property>
       </Properties>
@@ -76,12 +80,12 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jtfData_c" pref="171" max="32767" attributes="0"/>
+                                  <Component id="jtfData_c" pref="179" max="32767" attributes="0"/>
                                   <Component id="jtfDan" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <Component id="jtfAddress" pref="493" max="32767" attributes="0"/>
+                      <Component id="jtfAddress" pref="497" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="jtfNkid" alignment="0" max="32767" attributes="1"/>
@@ -96,13 +100,13 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jtfEmail" pref="176" max="32767" attributes="0"/>
-                              <Component id="jtfCode" alignment="0" pref="176" max="32767" attributes="0"/>
-                              <Component id="jtfWeb" alignment="0" pref="176" max="32767" attributes="0"/>
+                              <Component id="jtfEmail" pref="180" max="32767" attributes="0"/>
+                              <Component id="jtfCode" alignment="0" pref="180" max="32767" attributes="0"/>
+                              <Component id="jtfWeb" alignment="0" pref="180" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <Component id="jtfBoss" alignment="0" pref="493" max="32767" attributes="0"/>
-                      <Component id="jtfAcc" alignment="0" pref="493" max="32767" attributes="0"/>
+                      <Component id="jtfBoss" alignment="0" pref="497" max="32767" attributes="0"/>
+                      <Component id="jtfAcc" alignment="0" pref="497" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -277,7 +281,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="523" max="32767" attributes="0"/>
+                  <EmptySpace pref="531" max="32767" attributes="0"/>
                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jButton2" min="-2" max="-2" attributes="0"/>

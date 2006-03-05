@@ -1,13 +1,12 @@
 
 package imakante.com;
 
-import java.sql.SQLException;
-
 public class paramFirm {
     
     public paramFirm() {
        
     }
+    
     private  int id;
     private String name;
     private String dan;
@@ -22,7 +21,7 @@ public class paramFirm {
     private String nkid;
     private String boss;
     private String acc;
-    
+    private String web;
     
     private java.sql.Connection conn;
     private java.sql.Statement stm;
@@ -43,7 +42,8 @@ public class paramFirm {
             "`ls_sluj`.`data_c` AS `data_c`, " +
             "`ls_sluj`.`nm` AS `nm`, " +
             "`ls_sluj`.`postcode` AS `code`, " +
-            "`ls_sluj`.`email` AS `email` " +
+            "`ls_sluj`.`email` AS `email`, " +
+            "`ls_sluj`.`web` AS `web` " +
             "FROM "+
             "`ls_sluj`";
     
@@ -53,13 +53,10 @@ public class paramFirm {
         
         try {
             stm = conn.createStatement();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
         try {
-            rs = stm.executeQuery(selectQ );
-            
-            while (rs.next()){
+            rs = stm.executeQuery(selectQ);
+            while (rs.next()) {
                 id = rs.getInt("id");
                 setName(rs.getString("name"));
                 setDan(rs.getString("dan"));
@@ -72,37 +69,29 @@ public class paramFirm {
                 setData_r(rs.getString("data_r"));
                 setData_c(rs.getString("data_c"));
                 setNm(rs.getString("nm"));
-                
                 setCode(rs.getString("code"));
                 setEmail(rs.getString("email"));
+                setWeb(rs.getString("web"));
             }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
     private void closeRes(){
         try {
             rs.close();
             rs = null;
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
         try {
             stm.close();
             stm = null;
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
         try {
             conn.close();
             conn = null;
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-    
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
-    public void revalidateParam(){
+    
+    public void revalidateParam() {
         constructParam();
         closeRes();
     }
@@ -186,7 +175,15 @@ public class paramFirm {
     public void setEmail(String email) {
         this.email = email;
     }
-
+    
+    public String getWeb() {
+        return web;
+    }
+    
+    public void setWeb(String web) {
+        this.web = web;
+    }
+    
     public String getNkid() {
         return nkid;
     }
