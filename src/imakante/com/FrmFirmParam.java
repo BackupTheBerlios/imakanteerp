@@ -1,11 +1,8 @@
 
 package imakante.com;
 
-import java.sql.SQLException;
-
 public class FrmFirmParam extends javax.swing.JDialog {
     
-    /** Creates new form FrmFirmParam */
     public FrmFirmParam(java.awt.Frame parent, boolean modal,java.sql.Connection Connection) {
         super(parent, modal);
         conn = Connection;
@@ -258,15 +255,14 @@ public class FrmFirmParam extends javax.swing.JDialog {
     private javax.swing.JTextField jtfTel;
     private javax.swing.JTextField jtfWeb;
     // End of variables declaration//GEN-END:variables
-    //JDBC Related
+    
     private java.sql.Connection conn;
     private java.sql.Statement stm;
     private java.sql.ResultSet rs;
-    
     private int id = 0;
-    //String JDBC
+    
     private String selectQ =
-            " SELECT "+
+            " SELECT " +
             "`ls_sluj`.`Id` AS `id`, " +
             "`ls_sluj`.`name_firm` AS `name`, " +
             "`ls_sluj`.`dan_nom` AS `dan`, " +
@@ -280,64 +276,80 @@ public class FrmFirmParam extends javax.swing.JDialog {
             "`ls_sluj`.`data_c` AS `data_c`, " +
             "`ls_sluj`.`nm` AS `nm`, " +
             "`ls_sluj`.`postcode` AS `code`, " +
-            "`ls_sluj`.`email` AS `email` " +
+            "`ls_sluj`.`email` AS `email`, " +
+            "`ls_sluj`.`web` AS `web` " +
             "FROM "+
             "`ls_sluj`";
+    private String updateQ =
+            "UPDATE `mida`.`ls_sluj` SET " +
+            "`ls_sluj`.`Id` AS `id`, " +
+            "`ls_sluj`.`name_firm` AS `name`, " +
+            "`ls_sluj`.`dan_nom` AS `dan`, " +
+            "`ls_sluj`.`bul` AS `bul`, " +
+            "`ls_sluj`.`address` AS `adsress`, " +
+            "`ls_sluj`.`nam_boss` AS `boss`, " +
+            "`ls_sluj`.`nam_acc` AS `acc`, " +
+            "`ls_sluj`.`nkid` AS `nkid`, " +
+            "`ls_sluj`.`telefon` AS `tel`, " +
+            "`ls_sluj`.`data_reg_dds` AS `data_r`, " +
+            "`ls_sluj`.`data_c` AS `data_c`, " +
+            "`ls_sluj`.`nm` AS `nm`, " +
+            "`ls_sluj`.`postcode` AS `code`, " +
+            "`ls_sluj`.`email` AS `email`, " +
+            "`ls_sluj`.`web` AS `web` " +
+            "WHERE `mida`.`ls_sluj`.Id = " + id;
     
     private void getParam(){
         try {
             stm = conn.createStatement();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
         try {
             rs = stm.executeQuery(selectQ);
             while(rs.next()){
-            id = rs.getInt("id");
-            jtfName.setText(rs.getString("name"));
-            jtfDan.setText(rs.getString("dan"));
-            jtfBul.setText(rs.getString("bul"));
-            jtfAddress.setText(rs.getString("address"));
-            jtfBoss.setText(rs.getString("boss"));
-            jtfAcc.setText(rs.getString("acc"));
-            jtfNkid.setText(rs.getString("nkid"));
-            jtfTel.setText(rs.getString("tel"));
-            jtfData_r.setText(rs.getString("data_r"));
-            jtfData_c.setText(rs.getString("data_c"));
-            jtfNm.setText(rs.getString("nm"));
-            jtfCode.setText(rs.getString("code"));
-            jtfEmail.setText(rs.getString("email"));
+                id = rs.getInt("id");
+                jtfName.setText(rs.getString("name"));
+                jtfDan.setText(rs.getString("dan"));
+                jtfBul.setText(rs.getString("bul"));
+                jtfAddress.setText(rs.getString("address"));
+                jtfBoss.setText(rs.getString("boss"));
+                jtfAcc.setText(rs.getString("acc"));
+                jtfNkid.setText(rs.getString("nkid"));
+                jtfTel.setText(rs.getString("tel"));
+                jtfData_r.setText(rs.getString("data_r"));
+                jtfData_c.setText(rs.getString("data_c"));
+                jtfNm.setText(rs.getString("nm"));
+                jtfCode.setText(rs.getString("code"));
+                jtfEmail.setText(rs.getString("email"));
+                jtfWeb.setText(rs.getString("web"));
             }
-            
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        
-    }
-    private void changeParam(){
-        
-        
-        
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    private void changeParam() {
+        try {
+            stm = conn.createStatement();
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
+        try {
+            rs = stm.executeQuery(updateQ);
+            while(rs.next()){
+                id = rs.getInt("id");
+                jtfName.setText(rs.getString("name"));
+                jtfDan.setText(rs.getString("dan"));
+                jtfBul.setText(rs.getString("bul"));
+                jtfAddress.setText(rs.getString("address"));
+                jtfBoss.setText(rs.getString("boss"));
+                jtfAcc.setText(rs.getString("acc"));
+                jtfNkid.setText(rs.getString("nkid"));
+                jtfTel.setText(rs.getString("tel"));
+                jtfData_r.setText(rs.getString("data_r"));
+                jtfData_c.setText(rs.getString("data_c"));
+                jtfNm.setText(rs.getString("nm"));
+                jtfCode.setText(rs.getString("code"));
+                jtfEmail.setText(rs.getString("email"));
+                jtfWeb.setText(rs.getString("web"));
+            }
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
+    }
     
     
     
