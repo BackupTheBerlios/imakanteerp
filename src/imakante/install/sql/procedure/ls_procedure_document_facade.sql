@@ -33,7 +33,10 @@ IF (comprator = 0) THEN
          LEFT JOIN  mida.ls_n_person p_contr_in ON contr_in.id_mol = p_contr_in.id_ls_n_person
          LEFT JOIN  mida.ls_n_person p_contr_out ON contr_out.id_mol = p_contr_out.id_ls_n_person
          LEFT JOIN mida.n_doc_type_user_rights usr_new ON s.user_df = usr_new.id_ndtur
-         LEFT JOIN mida.n_doc_type_user_rights usr_last ON s.user_last_df = usr_last.id_ndtur ORDER BY id_df DESC;
+         LEFT JOIN mida.n_doc_type_user_rights usr_last ON s.user_last_df = usr_last.id_ndtur
+         LEFT JOIN mida.sl_doc_type_num sldtn ON sldtn.id_sdtn=usr_new.id_sdtn
+         WHERE  type_df = in_docFacadeType AND usr_new.id_ndtur = in_docFacadeUser AND level_df = in_docFacadeLevel
+         AND condition_df="0" ORDER BY id_df DESC;
 END IF;
 
 IF (comprator = 1) THEN
@@ -163,19 +166,19 @@ END IF;
 #--------------------------------
 IF (comprator = 11) THEN
        IF  (in_docFacadeType = 0) THEN
-         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person FROM n_obekt n
+         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person, n.tel_n_obekt  FROM n_obekt n
          WHERE n.code_n_obekt LIKE CONCAT('%',in_docFacadeComment,'%');
        END IF;
        IF  (in_docFacadeType = 1) THEN
-         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person FROM n_obekt n
+         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person, n.tel_n_obekt FROM n_obekt n
          WHERE n.name_n_obekt LIKE CONCAT('%',in_docFacadeComment,'%');
        END IF;
        IF  (in_docFacadeType = 2) THEN
-         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person FROM n_obekt n
+         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person, n.tel_n_obekt FROM n_obekt n
          WHERE n.address_n_obekt LIKE CONCAT('%',in_docFacadeComment,'%');
        END IF;
        IF  (in_docFacadeType = 3) THEN
-         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person FROM n_obekt n
+         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person, n.tel_n_obekt FROM n_obekt n
          WHERE n.code_n_obekt LIKE CONCAT('%',in_docFacadeComment,'%');
        END IF;
 END IF;
@@ -183,19 +186,19 @@ END IF;
 # start text obekt
 IF (comprator = 12) THEN
        IF  (in_docFacadeType = 0) THEN
-         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person FROM n_obekt n
+         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person, n.tel_n_obekt FROM n_obekt n
          WHERE n.code_n_obekt LIKE CONCAT(in_docFacadeComment,'%');
        END IF;
        IF  (in_docFacadeType = 1) THEN
-         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person FROM n_obekt n
+         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person, n.tel_n_obekt FROM n_obekt n
          WHERE n.name_n_obekt LIKE CONCAT(in_docFacadeComment,'%');
        END IF;
        IF  (in_docFacadeType = 2) THEN
-         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person FROM n_obekt n
+         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person, n.tel_n_obekt FROM n_obekt n
          WHERE n.address_n_obekt LIKE CONCAT(in_docFacadeComment,'%');
        END IF;
        IF  (in_docFacadeType = 3) THEN
-         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person FROM n_obekt n
+         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person, n.tel_n_obekt FROM n_obekt n
          WHERE n.code_n_obekt LIKE CONCAT(in_docFacadeComment,'%');
        END IF;
 END IF;
@@ -204,19 +207,19 @@ END IF;
 IF (comprator = 13) THEN
 
        IF  (in_docFacadeType = 0) THEN
-         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person FROM n_obekt n
+         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person, n.tel_n_obekt FROM n_obekt n
          WHERE n.code_n_obekt LIKE CONCAT('%',in_docFacadeComment);
        END IF;
        IF  (in_docFacadeType = 1) THEN
-         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person FROM n_obekt n
+         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person, n.tel_n_obekt FROM n_obekt n
          WHERE n.name_n_obekt LIKE CONCAT('%',in_docFacadeComment);
        END IF;
        IF  (in_docFacadeType = 2) THEN
-         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person FROM n_obekt n
+         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person, n.tel_n_obekt FROM n_obekt n
          WHERE n.address_n_obekt LIKE CONCAT('%',in_docFacadeComment);
        END IF;
        IF  (in_docFacadeType = 3) THEN
-         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person FROM n_obekt n
+         SELECT n.id_n_obekt, n.code_n_obekt, n.name_n_obekt, n.address_n_obekt, n.id_ls_n_person, n.tel_n_obekt FROM n_obekt n
          WHERE n.code_n_obekt LIKE CONCAT('%',in_docFacadeComment);
        END IF;
 END IF;
@@ -599,6 +602,22 @@ END IF;
 IF (comprator = 40) THEN
     UPDATE mida.sl_document_facade s SET s.condition_df ="2"
     WHERE s.id_df = in_id_df;
+END IF;
+
+IF (comprator = 41) THEN
+    SELECT pm.id_pm FROM n_product_consigment n
+    LEFT JOIN n_product_main pm ON pm.id_pm = n.id_pm;
+END IF;
+
+IF (comprator = 42) THEN
+   UPDATE sl_document_facade s SET s.faktura_connection_df = in_id_obekt_in ,
+    s.zaiavka_connection_df = in_id_obekt_out
+    WHERE s.id_df = in_id_df;
+END IF;
+
+IF (comprator = 43) THEN
+     SELECT * FROM sl_exchange_rate s  LEFT JOIN  n_money m ON s.id_n_money=m.id_n_money
+     GROUP BY  s.date_sl_exchange_rate;
 END IF;
 
 

@@ -347,8 +347,17 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                int user = 2;
+                int level =1;
+                int pricelist =1;
+                int doctype =1;
+                int storage =1;
+                boolean makedoc = false;
+                HashMap INdata = null;
+                ArrayList OUTdata = null;       
                 
-                FrmDocumentFacade frCN =   new FrmDocumentFacade("ttt",2,1,1,1,1,false,null,null);
+                
+                FrmDocumentFacade frCN =   new FrmDocumentFacade("ttt",user,level,pricelist,doctype,storage,makedoc,INdata,OUTdata);
                 fr.add(frCN);
                 frCN.setSize(400,400);
                 frCN.setVisible(true);
@@ -403,6 +412,8 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
    private String addressObekt;
    private String docFacadeNumber;
    private String docFacadeDate;
+   private String payingDate;
+   private String deliverDate;
    private String docFacadeDistributor;
    private String docFacadeDeliver;
    
@@ -421,7 +432,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
    
    
    private int descriptionPaying =0;
-   private String payingDate;
+   
    private double allDDSPaing=0;
    private double totalPaying=0;
    private int userLastEdit = userEditForm;
@@ -520,7 +531,7 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
       try
         {
            
-            rs = countriesT.getTable(getDocFacadeLevel());
+            rs = countriesT.getTable(getDocFacadeLevel(),getUserEditFortm(),getDocFacadeType());
         //    nameColumnsDocFacade =null;
         
             
@@ -846,13 +857,15 @@ public boolean getIsSelectProduct()
       setAddressObekt(in[3]);
   }
    
-public void setDistributorData(String in)
+public String getDeliverDate()
 {
-    setDistributorDocFacade(in);
+    return deliverDate;
 }
-public void setDeliverData(String in)
+
+public void setDeliverDate(String in)
 {
-    setDeliverDocFacade(in);
+    this.deliverDate=in;
+    //setDeliverDocFacade(in);
 }
 public void setDescriptipnPay(int  paying)
 {
@@ -1192,7 +1205,7 @@ public int getID_PC()
  protected  void refreshTable() //OK
    {
         jScrollPane1.remove(table);
-        rs = countriesT.getTable();
+        rs = countriesT.getTable(getDocFacadeLevel(),getUserEditFortm(),getDocFacadeType());
         model = new imakante.com.CustomTableModel(conn, rs, null);
         table = new imakante.com.CustomTable(model);
         jScrollPane1.getViewport().add(table);
@@ -1248,7 +1261,9 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
         d1= (java.sql.Date) table.getValueAt(getRow(),getColumnIndex("Дата на плащане"));
         setPayingDate(d1.toString());                                                                     //4
         Byte b1 = (Byte) table.getValueAt(getRow(), getColumnIndex("Вид плащане"));
-        setDescriptipnPay(b1.intValue()                                                     );            //3
+        setDescriptipnPay(b1.intValue());                                                                 //3
+     
+        
         setUserDocFacade((Integer) table.getValueAt(getRow(), getColumnIndex("Потребител"))) ;             //5
         setuserLastEditDocFacade((Integer) table.getValueAt(getRow(), getColumnIndex("Потребител-последна редакция")));     //6
         setCommenatDocFacade((String) table.getValueAt(getRow(), getColumnIndex("Коментар")));              //7
@@ -1300,20 +1315,23 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
                          setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ2"))) ;
                          int code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента2"));
                          setCodeContragent(String.valueOf(code));
-                         setID_Obekt((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df")));       
-                            
+                         
+                         setID_Obekt((Integer) table.getValueAt(getRow(), getColumnIndex("out_obekt_df")));       
                          setCodeObekt((String)table.getValueAt(getRow(), getColumnIndex("Код на обекта2")));
                          setNameObekt((String) table.getValueAt(getRow(), getColumnIndex("Име на обекта2")));
                          setAddressObekt((String) table.getValueAt(getRow(), getColumnIndex("Адрес на обекта2")));
                          setTelObekt(" ");
                          
-                         setID_Deliver((Integer) table.getValueAt(getRow(), getColumnIndex("ls_n_person_deliv")));        
-                         setID_Distributor((Integer) table.getValueAt(getRow(), getColumnIndex("ls_n_person_dist")));  
+                         setID_Deliver((Integer) table.getValueAt(getRow(), getColumnIndex("delivere_df")));        
+                         setID_Distributor((Integer) table.getValueAt(getRow(), getColumnIndex("distributor_df")));  
                          setDistributorDocFacade((String)table.getValueAt(getRow(),getColumnIndex("Код на дистрибутор"))); 
                          setDeliverDocFacade((String)table.getValueAt(getRow(),getColumnIndex("Код на доставчик"))); 
                          
                          d1 = (java.sql.Date) table.getValueAt(getRow(),getColumnIndex("Дата на доставяне"));
-                         setDistributorData(d1.toString());
+                         setDeliverDate(d1.toString());
+                         System.out.println(String.valueOf(getID_Deliver()));
+                         System.out.println(String.valueOf(getID_Distributor()));
+                         
                          break;
                      }
                      case aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE :
@@ -1342,7 +1360,7 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
                          setDeliverDocFacade((String)table.getValueAt(getRow(),getColumnIndex("Код на доставчик"))); 
                          
                          d1 = (java.sql.Date) table.getValueAt(getRow(),getColumnIndex("Дата на доставяне"));
-                         setDistributorData(d1.toString()); 
+                         setDeliverDate(d1.toString());
                          break;
                      }
                      case aeDocumentFacade.KONSGNACIONEN_PROTOKOL :
@@ -1370,7 +1388,7 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
                          setDeliverDocFacade((String)table.getValueAt(getRow(),getColumnIndex("Код на доставчик"))); 
                          
                          d1 = (java.sql.Date) table.getValueAt(getRow(),getColumnIndex("Дата на доставяне"));
-                         setDistributorData(d1.toString());
+                         setDeliverDate(d1.toString());
                          break;
                      }
                      case aeDocumentFacade.PREDAVATELNA_RAZPISKA :

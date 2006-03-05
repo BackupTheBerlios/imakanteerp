@@ -49,7 +49,7 @@ public class selectDataOfDocFacade   extends imakante.com.vcomponents.iDialog
         
          if(sqlselect == OBEKT_ADDRESS | sqlselect == OBEKT_NAME | sqlselect == OBEKT_NO | sqlselect == OBEKT_TEL)
                     {
-                         String columnNameObekt[] = {"id_n_obekt","Код","Име на обекта","Адрес на обекта","Телефон на обекта"}; // da se napi6at imenata na kolonite
+                         String columnNameObekt[] = {"id_n_obekt","Код","Име на обекта","Адрес на обекта","id_ls_n_person","Телефон на обекта"}; // da se napi6at imenata na kolonite
                          columnName = columnNameObekt;
                     }
          if(sqlselect == DISTRIBUTOR_DELIVER)
@@ -175,7 +175,7 @@ public class selectDataOfDocFacade   extends imakante.com.vcomponents.iDialog
                           ObectData[0] = (String)table.getValueAt(row,getColumnIndex(columnName[1])); // code
                           ObectData[1] = (String)table.getValueAt(row,getColumnIndex(columnName[2])); // name
                           ObectData[2] = (String)table.getValueAt(row,getColumnIndex(columnName[3])); // address
-                          ObectData[3] = (String)table.getValueAt(row,getColumnIndex(columnName[4])); //telefon
+                          ObectData[3] = (String)table.getValueAt(row,getColumnIndex(columnName[5])); //telefon
                             
                           myParent.setObektData(ObectData);
                     }
@@ -187,14 +187,14 @@ public class selectDataOfDocFacade   extends imakante.com.vcomponents.iDialog
                          int ID = (Integer)table.getValueAt(row,getColumnIndex("id_ls_n_person"));
                          codeDistributorDeliver = (String)table.getValueAt(row,getColumnIndex(columnName[1])); 
                          myParent.setID_Distributor(ID);
-                         myParent.setDistributorData(codeDistributorDeliver);
+                         myParent.setDistributorDocFacade(codeDistributorDeliver);
                        }
                        else // false deliver
                        {
                          int ID = (Integer)table.getValueAt(row,getColumnIndex("id_ls_n_person"));
                          codeDistributorDeliver = (String)table.getValueAt(row,getColumnIndex(columnName[1]));
                          myParent.setID_Deliver(ID);
-                         myParent.setDeliverData(codeDistributorDeliver);   
+                         myParent. setDeliverDocFacade(codeDistributorDeliver);   
                        }
                    }
                   close();

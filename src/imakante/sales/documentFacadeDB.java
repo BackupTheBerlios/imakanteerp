@@ -120,10 +120,15 @@ public class documentFacadeDB  extends dbObject
             
         } catch(java.sql.SQLException sqle) {sqle.printStackTrace();}
     }
- public java.sql.ResultSet getTable(int level) //OK
+ public java.sql.ResultSet getTable(int level, int user,int doctype) //OK
     {
-     int oldID_DF = getID_DocFacade();
-     setID_DocFacade(level);
+     int oldType = getDocFacadeType();
+     int oldUse = getUserDocFacade();
+     int oldLevel = getLevelDocFacade();
+     
+     setDocFacadeType(doctype);
+     setUserDocFacade(user);
+     setLevelDocFacade(level);
         
         this.comprator = 0;
         try{
@@ -136,7 +141,10 @@ public class documentFacadeDB  extends dbObject
             sqle.printStackTrace();
         }
         System.out.println("ot getTable()");
-        setID_DocFacade(oldID_DF);
+       setDocFacadeType(oldType);
+       setUserDocFacade(oldUse);
+       setLevelDocFacade(oldLevel);
+        
         return rs;
     }
  public void registerParameters() 
