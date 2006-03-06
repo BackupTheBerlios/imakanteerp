@@ -85,10 +85,7 @@ public class paramFirm {
             stm.close();
             stm = null;
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
-        try {
-            conn.close();
-            conn = null;
-        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
+        
     }
     
     public void revalidateParam() {

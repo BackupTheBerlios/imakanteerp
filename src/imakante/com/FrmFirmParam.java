@@ -1,6 +1,8 @@
 
 package imakante.com;
 
+import java.sql.SQLException;
+
 public class FrmFirmParam extends javax.swing.JDialog {
     
     public FrmFirmParam(java.awt.Frame parent, boolean modal,java.sql.Connection Connection) {
@@ -181,8 +183,18 @@ public class FrmFirmParam extends javax.swing.JDialog {
         );
 
         jButton1.setText("\u0417\u0430\u043f\u0430\u0437\u0438");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("\u0418\u0437\u0445\u043e\u0434");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -220,6 +232,14 @@ public class FrmFirmParam extends javax.swing.JDialog {
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        close();
+    }//GEN-LAST:event_jButton2ActionPerformed
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        changeParam();
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -307,31 +327,43 @@ public class FrmFirmParam extends javax.swing.JDialog {
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
-    private void changeParam(int ID) {
-        id = ID;
+    private void changeParam() {
+        
         try {
             stm = conn.createStatement();
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
         try {
             rs = stm.executeQuery("UPDATE `mida`.`ls_sluj` SET " +
-            "`ls_sluj`.name_firm = " + jtfName.getText() + ", " +
-            "`ls_sluj`.dan_nom = " + jtfDan.getText() + ", " +
-            "`ls_sluj`.bul = " + jtfBul.getText() + ", " +
-            "`ls_sluj`.address = " + jtfAddress.getText() + ", " +
-            "`ls_sluj`.nam_boss = " + jtfBoss.getText() + ", " +
-            "`ls_sluj`.nam_acc = " + jtfAcc.getText() + ", " +
-            "`ls_sluj`.nkid = " + jtfNkid.getText() + ", " +
-            "`ls_sluj`.telefon = " + jtfTel.getText() + ", " +
-            "`ls_sluj`.data_reg_dds = " + jtfData_r.getText() + ", " +
-            "`ls_sluj`.data_c = " + jtfData_c.getText() + ", " +
-            "`ls_sluj`.nm = " + jtfNm.getText() + ", " +
-            "`ls_sluj`.postcode = " + jtfCode.getText() + ", " +
-            "`ls_sluj`.email = " + jtfEmail.getText() + ", " +
-            "`ls_sluj`.web = " + jtfWeb.getText() +
-            "WHERE `mida`.`ls_sluj`.Id = " + id);
+                    "`ls_sluj`.name_firm = " + jtfName.getText() + ", " +
+                    "`ls_sluj`.dan_nom = " + jtfDan.getText() + ", " +
+                    "`ls_sluj`.bul = " + jtfBul.getText() + ", " +
+                    "`ls_sluj`.address = " + jtfAddress.getText() + ", " +
+                    "`ls_sluj`.nam_boss = " + jtfBoss.getText() + ", " +
+                    "`ls_sluj`.nam_acc = " + jtfAcc.getText() + ", " +
+                    "`ls_sluj`.nkid = " + jtfNkid.getText() + ", " +
+                    "`ls_sluj`.telefon = " + jtfTel.getText() + ", " +
+                    "`ls_sluj`.data_reg_dds = " + jtfData_r.getText() + ", " +
+                    "`ls_sluj`.data_c = " + jtfData_c.getText() + ", " +
+                    "`ls_sluj`.nm = " + jtfNm.getText() + ", " +
+                    "`ls_sluj`.postcode = " + jtfCode.getText() + ", " +
+                    "`ls_sluj`.email = " + jtfEmail.getText() + ", " +
+                    "`ls_sluj`.web = " + jtfWeb.getText() +
+                    "WHERE `mida`.`ls_sluj`.Id = " + id);
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
-    
+    private void close(){
+        try {
+            rs.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        try {
+            stm.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        this.dispose();
+    }
     
 }
