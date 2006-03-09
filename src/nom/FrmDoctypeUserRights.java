@@ -197,9 +197,9 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
     // End of variables declaration//GEN-END:variables
     
     private int id = 0;
-    private int code_groupe = 0;
-    private int cod = 0;
-    private String name, comment;
+    private int userMaster = 0;
+    private int doctypeNum = 0;
+    private int right = 3;
     private String namesG[];
     private int selectComboBoxItem;
     private  boolean atBegining = false;
@@ -213,9 +213,9 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
     public static final String Names[] = {"id",
-        "id_user_master","\u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b",
-        "id_doctype_area","\u041e\u0431\u043b\u0430\u0441\u0442","\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442",
-        "\u041f\u0440\u0430\u0432\u0430"};
+    "id_user_master","\u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b",
+    "id_doctype_area","\u041e\u0431\u043b\u0430\u0441\u0442","\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442",
+    "\u041f\u0440\u0430\u0432\u0430"};
     
     
     private void prepareConn() {
@@ -239,6 +239,7 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
             table = new imakante.com.CustomTable(model);
             HideColumns(0);
             HideColumns(1);
+            HideColumns(3);
         } catch(Exception e) { e.printStackTrace(); }
         table.requestFocus();
         try {
@@ -326,35 +327,28 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
         return id;
     }
     
-    public void setIDG(int Gr) {
-        this.code_groupe = Gr;
+    public void setUserMaster(int UserMaster) {
+        this.userMaster = UserMaster;
     }
     
-    public int getIDG() {
-        return code_groupe;
+    public int getUserMaster() {
+        return userMaster;
     }
     
-    public void setCod(int Cod) {
-        this.cod = Cod;
+    public void setDoctypeNumber(int DoctypeNum) {
+        this.doctypeNum = DoctypeNum;
     }
     
-    public int getCod() {
-        return cod;
-    }
-    public void setNames(String Name) {
-        this.name = Name;
+    public int getDoctypeNumber() {
+        return doctypeNum;
     }
     
-    public String getNames() {
-        return name;
+    public void setRight(int Right) {
+        this.right = Right;
     }
     
-    public void setComment(String Comment) {
-        this.comment = Comment;
-    }
-    
-    public String getComment() {
-        return comment;
+    public int getRight() {
+        return right;
     }
     
     public  void setRow(int val) {
@@ -436,7 +430,7 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
     private void searchRecords() {
         try {
             try {
-                rs = internalObject.searchRecords(jTextCod.getText());
+                rs = internalObject.searchRecords(Integer.parseInt(jTextCod.getText()));
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
                 jTextCod.requestFocus();
@@ -446,6 +440,7 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
             table = new imakante.com.CustomTable(model);
             HideColumns(0);
             HideColumns(1);
+            HideColumns(3);
             jScrollPane1.getViewport().add(table);
             jScrollPane1.repaint();
         } catch(Exception e) { e.printStackTrace(); }
@@ -458,17 +453,17 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
         table = new imakante.com.CustomTable(model);
         HideColumns(0);
         HideColumns(1);
+        HideColumns(3);
         jScrollPane1.getViewport().add(table);
         jScrollPane1.repaint();
     }
     
     private void newRecord() {
         setId(internalObject.getMaxId());
-        setIDG(internalObject.getMaxGrID());
-        setCod(internalObject.getMaxCod()+1);
-        internalObject.insertRow(getCod(), getIDG());
-        nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
-        ae_Casa.setVisible(true);
+        setRight(3);        // 3 - default value - maximum restricted rights
+        internalObject.insertRow(getUserMaster());
+        nom.aeDoctypeUserRights ae_DTUR= new nom.aeDoctypeUserRights(this, true);
+        ae_DTUR.setVisible(true);
         refreshTable();
     }
     
@@ -478,12 +473,12 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
             if(getRow()==0){          //manage button state of ae form
                 setAtBegining(true);
             }
-            if(getRow()==getMaxRow()){
+            if(getRow()==getMaxRow()) {
                 setAtEnd(true);
             }
             setAllVariables();
-            nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
-            ae_Casa.setVisible(true);
+            nom.aeDoctypeUserRights ae_DTUR= new nom.aeDoctypeUserRights(this, true);
+            ae_DTUR.setVisible(true);
         } else {  }
     }
     
@@ -526,24 +521,18 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
         return 0;
     }
     
-    
-    
     private void HideColumns(int col) {
         int iColumn = col;
-// set column width
         table.getColumnModel().getColumn(iColumn).setMaxWidth(0);
         table.getColumnModel().getColumn(iColumn).setMinWidth(0);
         table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
         table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
-        
     }
-    private void setAllVariables(){
-        setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
-        setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("id_group")));
-        setCod((Integer) table.getValueAt(getRow(), getColumnIndex("cod")));
-        setNames((String) table.getValueAt(getRow(), getColumnIndex("name")));
-        //   setAcc((String) table.getValueAt(getRow(), getColumnIndex("acc")));
-        //   setVidAcc((Integer) table.getValueAt(getRow(), getColumnIndex("va")));
-        setComment((String) table.getValueAt(getRow(), getColumnIndex("comm")));
+    
+    private void setAllVariables() {
+        setId((Integer) table.getValueAt(getRow(), getColumnIndex("id_ndtur")));
+        setUserMaster((Integer) table.getValueAt(getRow(), getColumnIndex("id_um")));
+        setDoctypeNumber((Integer) table.getValueAt(getRow(), getColumnIndex("id_sdtn")));
+        setRight((Integer) table.getValueAt(getRow(), getColumnIndex("rights_ndtur")));
     }
 }

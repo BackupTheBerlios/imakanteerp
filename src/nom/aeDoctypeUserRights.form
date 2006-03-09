@@ -105,8 +105,8 @@
                                   <Component id="jTextField1" min="-2" pref="107" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jComboBox1" alignment="0" pref="241" max="32767" attributes="1"/>
-                              <Component id="jComboG" alignment="0" pref="241" max="32767" attributes="0"/>
+                              <Component id="jComboRB" alignment="0" pref="241" max="32767" attributes="1"/>
+                              <Component id="jComboU" alignment="0" pref="241" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="jPanel3" alignment="0" min="-2" pref="310" max="-2" attributes="1"/>
@@ -121,12 +121,12 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboG" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboU" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboRB" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -215,14 +215,14 @@
             <Property name="text" type="java.lang.String" value="&#x41f;&#x43e;&#x442;&#x440;&#x435;&#x431;&#x438;&#x442;&#x435;&#x43b;:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboG">
+        <Component class="javax.swing.JComboBox" name="jComboU">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jComboGKeyPressed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jComboUKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
@@ -230,7 +230,7 @@
             <Property name="text" type="java.lang.String" value="&#x41a;&#x43e;&#x447;&#x430;&#x43d;:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="jComboRB">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>

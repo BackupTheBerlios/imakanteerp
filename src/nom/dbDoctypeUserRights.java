@@ -93,6 +93,38 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
         return getRs();
     }
     
+    public String[] getUserNames() {
+        comprator = 6;
+        String return_str = new String("");
+        int oldId = id;
+        java.sql.ResultSet oldRs = rs;
+        java.util.ArrayList in = new java.util.ArrayList();
+        java.util.Iterator it = null;
+        java.util.HashMap Users = new java.util.HashMap();
+        int i = 0;
+        try {
+            registerParameters();
+            rs = cstm.executeQuery();
+            while(rs.next()) {
+                Users.put(new Integer(rs.getInt("")), new String(rs.getString("")));
+                in.add(new Integer(rs.getInt("")));
+                i++;
+            }
+        } catch(Exception e) { e.printStackTrace(); }
+        rs = oldRs;
+        id = oldId;
+        indexOfUsers = new int[i];
+        it = in.iterator();
+        splitNamesUsers = new String[i];
+        i=0;
+        while(it.hasNext()) {
+            indexOfUsers[i] =(Integer) it.next();
+            splitNamesUsers[i] = (String) Users.get(indexOfUsers[i]);
+            i++;
+        }
+        return splitNamesUsers;
+    }
+    
     public String[] getReceiptBooks() {
         comprator = 8;
         String resultStr = new String("");
@@ -122,38 +154,6 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
             i++;
         }
         return splitReceiptBooks;
-    }
-    
-    public String[] getBankAccountGroup() {
-        comprator = 10;
-        String return_str = new String("");
-        int oldId = id;
-        java.sql.ResultSet oldRs = rs;
-        java.util.ArrayList in = new java.util.ArrayList();
-        java.util.Iterator it = null;
-        java.util.HashMap Users = new java.util.HashMap();
-        int i = 0;
-        try {
-            registerParameters();
-            rs = cstm.executeQuery();
-            while(rs.next()) {
-                Users.put(new Integer(rs.getInt("")), new String(rs.getString("")));
-                in.add(new Integer(rs.getInt("")));
-                i++;
-            }
-        } catch(Exception e) { e.printStackTrace(); }
-        rs = oldRs;
-        id = oldId;
-        indexOfUsers = new int[i];
-        it = in.iterator();
-        splitNamesUsers = new String[i];
-        i=0;
-        while(it.hasNext()) {
-            indexOfUsers[i] =(Integer) it.next();
-            splitNamesUsers[i] = (String) Users.get(indexOfUsers[i]);
-            i++;
-        }
-        return splitNamesUsers;
     }
     
     public int getMaxGrID() {
