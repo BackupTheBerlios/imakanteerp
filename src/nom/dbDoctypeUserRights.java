@@ -149,24 +149,11 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
         splitReceiptBooks = new String[i];
         i=0;
         while(iterator.hasNext()) {
-            indexOfRBooks[i] =(Integer) iterator.next();
+            indexOfRBooks[i] = (Integer) iterator.next();
             splitReceiptBooks[i] = (String) RBooks.get(indexOfRBooks[i]);
             i++;
         }
         return splitReceiptBooks;
-    }
-    
-    public int getMaxGrID() {
-        comprator = 11;
-        int return_int = -1;
-        try {
-            registerParameters();
-            rs = cstm.executeQuery();
-            while(rs.next()) {
-                return_int = rs.getInt(1);
-            }
-        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
-        return return_int;
     }
     
     public int getUserMaster() {
