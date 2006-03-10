@@ -137,6 +137,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         nomMenu_DocType = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem9DTUR = new javax.swing.JMenuItem();
         jMenuTransfer = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
@@ -579,6 +580,15 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jMenuItem5.setText("\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b\u0438");
         sluMenu.add(jMenuItem5);
 
+        jMenuItem9DTUR.setText("\u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b\u0441\u043a\u0438 \u043f\u0440\u0430\u0432\u0430 \u0432\u044a\u0440\u0445\u0443 \u043a\u043e\u0447\u0430\u043d\u0438");
+        jMenuItem9DTUR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9DTURActionPerformed(evt);
+            }
+        });
+
+        sluMenu.add(jMenuItem9DTUR);
+
         jMenuTransfer.setText("\u0422\u0440\u0430\u043d\u0441\u0444\u0435\u0440");
         jMenuItem7.setText("\u0418\u043c\u043f\u043e\u0440\u0442 \u0421\u041a\u041b");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
@@ -640,6 +650,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-448)/2, 757, 448);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItem9DTURActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9DTURActionPerformed
+        loadDTUR();
+    }//GEN-LAST:event_jMenuItem9DTURActionPerformed
     
     private void kontragentiMenu_bankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kontragentiMenu_bankActionPerformed
         loadBankAcc();
@@ -828,6 +842,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9DTUR;
     private javax.swing.JMenu jMenuTransfer;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -1296,8 +1311,17 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         desktopPane.add(DocType);
         try {
             DocType.setMaximum(true);
-        } catch (java.beans.PropertyVetoException ex) {ex.printStackTrace();}
+        } catch (java.beans.PropertyVetoException ex) { ex.printStackTrace(); }
         DocType.setVisible(true);
+    }
+    
+    private void loadDTUR() {
+        nom.FrmDoctypeUserRights DTUR = new nom.FrmDoctypeUserRights("prawa wyrhu kochani", this);
+        desktopPane.add(DTUR);
+        try {
+            DTUR.setMaximum(true);
+        } catch (java.beans.PropertyVetoException pve) { pve.printStackTrace(); }
+        DTUR.setVisible(true);
     }
     
     private void loadNumDocuments() {

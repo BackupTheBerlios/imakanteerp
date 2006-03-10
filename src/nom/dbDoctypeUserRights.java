@@ -24,7 +24,7 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
     
     protected void prepareCstm() {
         try {
-            setCstm(getConn().prepareCall("call nom_pocedure_doctype_user_rights(?,?,?,?,?)"));
+            setCstm(getConn().prepareCall("call nom_procedure_doctype_user_rights(?,?,?,?,?)"));
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
