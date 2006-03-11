@@ -8,6 +8,7 @@ public class levelDialog extends javax.swing.JDialog {
     /** Creates new form levelDialog */
     public levelDialog(imakante.sales.sales_main parent, boolean modal, int ModuleCode, HashMap area) {
         super(parent, modal);
+        frame = parent;
         modul = ModuleCode;
         hash = area;
         initComponents();
@@ -95,15 +96,17 @@ public class levelDialog extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
+    private imakante.sales.sales_main frame;
     private HashMap hash;
     private int modul= 0;
-    
+    private String namesCombo[];
+    private int selectComboBoxItem;
     
     private void load(){
         switch (modul){
             
-            case 1:
-                
+            case 1:hash = frame.getOrderArea();
+            case 4:hash = frame.getFaktArea();    
             default:;break;
         }
     }

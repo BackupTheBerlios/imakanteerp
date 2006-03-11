@@ -385,13 +385,22 @@ public class aeDoctypeUserRights extends imakante.com.vcomponents.iDialog {
     }
     
     private void initUsersCombo() {
-        namesUsers = myParent.getInternalObject().getUserNames();
-        for(int i = 0; i < namesUsers.length; i++) {
-            jComboU.addItem(new String(namesUsers[i]));
+        try {
+            namesUsers = myParent.getInternalObject().getUserNames();
+        } finally {
+           
         }
-        if (selectedUser != 0) {
-            selectedUser = getNewUComboIndex(selectedUser);
-            jComboU.setSelectedIndex(selectedUser);
+        if(namesUsers!=null){
+            for(int i = 0; i < namesUsers.length; i++) {
+                jComboU.addItem(new String(namesUsers[i]));
+            }
+            if (selectedUser != 0) {
+                selectedUser = getNewUComboIndex(selectedUser);
+                jComboU.setSelectedIndex(selectedUser);
+            }}
+        if(namesUsers==null){
+            jComboU.addItem("ERROR!");
+            this.jButtonSave.setEnabled(false);
         }
     }
     
@@ -407,13 +416,21 @@ public class aeDoctypeUserRights extends imakante.com.vcomponents.iDialog {
     }
     
     private void initRBooksCombo() {
-        namesRBooks = myParent.getInternalObject().getReceiptBooks();
-        for(int i = 0; i < namesRBooks.length; i++) {
-            jComboRB.addItem(new String(namesRBooks[i]));
+        try {
+            namesRBooks = myParent.getInternalObject().getReceiptBooks();
+        } finally {
         }
-        if (selectedRBook != 0) {
-            selectedRBook = getNewRBComboIndex(selectedRBook);
-            jComboRB.setSelectedIndex(selectedRBook);
+        if(namesRBooks!=null){
+            for(int i = 0; i < namesRBooks.length; i++) {
+                jComboRB.addItem(new String(namesRBooks[i]));
+            }
+            if (selectedRBook != 0) {
+                selectedRBook = getNewRBComboIndex(selectedRBook);
+                jComboRB.setSelectedIndex(selectedRBook);
+            }}
+        if(namesRBooks==null){
+            jComboRB.addItem("ERROR!");
+            this.jButtonSave.setEnabled(false);
         }
     }
     

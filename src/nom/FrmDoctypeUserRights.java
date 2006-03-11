@@ -5,11 +5,17 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
     
     public FrmDoctypeUserRights(String title, imakante.com.vcomponents.iFrame frame) {
         super(title);
+        System.out.println("1   ");
         myframe = frame;
+        System.out.println("2   ");
         prepareConn();
+        System.out.println("3   ");
         constructObject();
+        System.out.println("4   ");
         initTable();
+        System.out.println("5   ");
         initComponents();
+        System.out.println("6   ");
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -37,7 +43,6 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
         setMaximizable(true);
         setResizable(true);
         setTitle("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0430: \u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b\u0441\u043a\u0438 \u043f\u0440\u0430\u0432\u0430 \u0432\u044a\u0440\u0445\u0443 \u043a\u043e\u0447\u0430\u043d\u0438");
-        setDesktopIcon(null);
         setFont(new java.awt.Font("Tahoma", 0, 11));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
@@ -73,7 +78,7 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 825, Short.MAX_VALUE)
+            .add(0, 763, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -145,8 +150,7 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.SOUTH);
 
-        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-835)/2, (screenSize.height-518)/2, 835, 518);
+        pack();
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed

@@ -57,7 +57,7 @@ public class casaDB  extends dbObject {
     }
     public void updateRow(int in_id,  int in_id_groupe, int in_code, String in_name, String in_comment) //OK   comprator = 2;
     {
-        comprator = 2;
+        setComprator(2);
         this.id = in_id;
         this.id_groupe = in_id_groupe;
         this.code = in_code;
@@ -75,7 +75,7 @@ public class casaDB  extends dbObject {
     
     public java.sql.ResultSet searchRecords( int in_code, String in_name) // -OK  comprator = 5;
     {
-        comprator = 5;
+        setComprator(5);
         
         this.code = in_code;
         this.name = in_name;
@@ -92,7 +92,7 @@ public class casaDB  extends dbObject {
   
    public int getMaxGrID() //OK    comprator = 8;
     {
-        comprator = 9;
+       setComprator(9);
         int return_int=-1;
         try {
             registerParameters();
@@ -107,7 +107,7 @@ public class casaDB  extends dbObject {
     }
     public String[] getCasaG() //test comprator = 6;
     {
-        comprator=6;
+        setComprator(6);
         String return_str=new String("");
         int oldId = id;
         ResultSet oldRs = rs;
@@ -121,7 +121,7 @@ public class casaDB  extends dbObject {
         
         try {
             registerParameters();
-            rs = cstm.executeQuery();
+            rs = getCstm().executeQuery();
             
             
             while(rs.next()) {

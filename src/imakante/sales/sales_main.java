@@ -945,8 +945,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private boolean levelActivate = false;
     private int currentLevel = 1;
     
-    private HashMap OrderArea = new HashMap();
-    private HashMap FaktArea = new HashMap();
+    private static HashMap OrderArea = new HashMap();
+    private static HashMap FaktArea = new HashMap();
     
     private void loadLevelDialog(int ModuleCode, HashMap hash){
         levelDialog lDialog = new levelDialog(this, true, ModuleCode, hash);
@@ -1320,7 +1320,9 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         desktopPane.add(DTUR);
         try {
             DTUR.setMaximum(true);
-        } catch (java.beans.PropertyVetoException pve) { pve.printStackTrace(); }
+        } catch (java.beans.PropertyVetoException pve) {
+            System.out.println("Problem setMax");
+            pve.printStackTrace(); }
         DTUR.setVisible(true);
     }
     
@@ -1362,19 +1364,19 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         repNal.setVisible(true);
     }
     
-    public HashMap getOrderArea() {
+    public static HashMap getOrderArea() {
         return OrderArea;
     }
     
-    public void setOrderArea(HashMap OrderArea) {
+    public  void setOrderArea(HashMap OrderArea) {
         this.OrderArea = OrderArea;
     }
     
-    public HashMap getFaktArea() {
+    public static HashMap getFaktArea() {
         return FaktArea;
     }
     
-    public void setFaktArea(HashMap FaktArea) {
+    public  void setFaktArea(HashMap FaktArea) {
         this.FaktArea = FaktArea;
     }
 }

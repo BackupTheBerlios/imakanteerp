@@ -1,17 +1,18 @@
 
 package nom;
 
+import java.sql.SQLException;
+
 public class dbDoctypeUserRights extends imakante.com.dbObject {
     
     private java.sql.Connection conn;
-    private java.sql.ResultSet rs;
-    private java.sql.Statement stmt;
-    private java.sql.CallableStatement cstm;
-    private int comprator = 1;
+   
+   
+  
     private int id = 0;
     private int id_usermaster = 0;
     private int doctypeNum = 0;
-    private int rights;
+    private int rights = 3;
     private String splitNamesUsers[];
     private String splitReceiptBooks[];
     private int indexOfUsers[] = null;
@@ -35,56 +36,58 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
             getCstm().setInt("in_id_um", getUserMaster());
             getCstm().setInt("in_id_sdtn", getDoctypeNum());
             getCstm().setInt("in_rights", getRights());
-        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
+        } catch(java.sql.SQLException sqle) { 
+            System.out.println("Problem register param ");
+            sqle.printStackTrace(); }
     }
     
     public void insertRow(int in_id_um) {
-        comprator = 1;
+        setComprator(1);
         this.id_usermaster = in_id_um;
         this.rights = 3;
         try {
             registerParameters();
-            cstm.execute();
+            getCstm().execute();
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
     public void updateRow(int in_id, int in_id_um, int in_sdtn, int in_rights) {
-        comprator = 2;
+       setComprator(2);
         this.id = in_id;
         this.id_usermaster = in_id_um;
         this.doctypeNum = in_sdtn;
         this.rights = in_rights;
         try {
             registerParameters();
-            cstm.execute();
+            getCstm().execute();
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
+//    
+//    public void deleteRow(int in_id) {
+//        comprator = 3;
+//        id = in_id;
+//        try{
+//            registerParameters();
+//            getCstm().execute();
+//        }catch(java.sql.SQLException sqle){ sqle.printStackTrace(); }
+//    }
     
-    public void deleteRow(int in_id) {
-        comprator = 3;
-        id = in_id;
-        try{
-            registerParameters();
-            cstm.execute();
-        }catch(java.sql.SQLException sqle){ sqle.printStackTrace(); }
-    }
-    
-    public java.sql.ResultSet getRow(int in_id) {
-        comprator = 4;
-        id = in_id;
-        try {
-            registerParameters();
-            rs = cstm.executeQuery();
-            while(rs.next()) {
-                // ??????????????????????????????????????????????????????????????????
-                // koi poleta ot rs da se wzemat i s kakwi zaglawiq?
-            }
-        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
-        return rs;
-    }
+//    public java.sql.ResultSet getRow(int in_id) {
+//        comprator = 4;
+//        id = in_id;
+//        try {
+//            registerParameters();
+//            rs = getCstm().executeQuery();
+//            while(rs.next()) {
+//                // ??????????????????????????????????????????????????????????????????
+//                // koi poleta ot rs da se wzemat i s kakwi zaglawiq?
+//            }
+//        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
+//        return rs;
+//    }
     
     public java.sql.ResultSet searchRecords(int in_rights) {
-        comprator = 5;
+       setComprator(5);
         this.rights = in_rights;
         try {
             registerParameters();
@@ -94,24 +97,30 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
     }
     
     public String[] getUserNames() {
-        comprator = 6;
+        setComprator(6);
         String return_str = new String("");
         int oldId = id;
-        java.sql.ResultSet oldRs = rs;
+        java.sql.ResultSet oldRs = getRs();
         java.util.ArrayList in = new java.util.ArrayList();
         java.util.Iterator it = null;
         java.util.HashMap Users = new java.util.HashMap();
         int i = 0;
         try {
             registerParameters();
-            rs = cstm.executeQuery();
-            while(rs.next()) {
-                Users.put(new Integer(rs.getInt("")), new String(rs.getString("")));
-                in.add(new Integer(rs.getInt("")));
+            try {
+                setRs(getCstm().executeQuery());
+            } catch (SQLException ex) {
+                System.out.println("problem constructing rs ");
+                ex.printStackTrace();
+            }
+            while(getRs().next()) {
+                System.out.println("dassdfsadfsdfsdfsd sdffsdf");
+                Users.put(new Integer(getRs().getInt("id_um")), new String(getRs().getString("name_um")));
+                in.add(new Integer(getRs().getInt("id_um")));
                 i++;
             }
         } catch(Exception e) { e.printStackTrace(); }
-        rs = oldRs;
+        setRs(oldRs);
         id = oldId;
         indexOfUsers = new int[i];
         it = in.iterator();
@@ -126,23 +135,24 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
     }
     
     public String[] getReceiptBooks() {
-        comprator = 8;
+        setComprator(8);
         String resultStr = new String("");
         int originalId = id, i = 0;
-        java.sql.ResultSet originalRS = rs;
+        java.sql.ResultSet originalRS = getRs();
         java.util.ArrayList list = new java.util.ArrayList();
         java.util.Iterator iterator = null;
         java.util.HashMap RBooks = new java.util.HashMap();
         try {
             registerParameters();
-            rs = cstm.executeQuery();
-            while(rs.next()) {
-                RBooks.put(new Integer(rs.getInt("")), new String(rs.getString("") + " - " + rs.getString("")));
-                list.add(new Integer(rs.getInt("")));
+           setRs(getCstm().executeQuery());
+            while(getRs().next()) {
+                RBooks.put(new Integer(getRs().getInt("id_sdtn")), new String(getRs().getString("area_number_sdtn") + " - " + 
+                        getRs().getString("name_sdtn")));
+                list.add(new Integer(getRs().getInt("id_sdtn")));
                 i++;
             }
         } catch(Exception e) { e.printStackTrace(); }
-        rs = originalRS;
+        setRs(originalRS);
         id = originalId;
         indexOfRBooks = new int[i];
         iterator = list.iterator();
