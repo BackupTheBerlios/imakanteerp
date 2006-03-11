@@ -1,5 +1,5 @@
-DROP PROCEDURE IF EXISTS `mida`.`ls_procedure_branch`
-CREATE PROCEDURE `ls_procedure_branch`(IN in_id INT(6), IN comprator TINYINT, IN in_code INT(6), IN in_name VARCHAR(30))
+DROP PROCEDURE IF EXISTS ls_procedure_branch
+CREATE PROCEDURE ls_procedure_branch (IN in_id INT(6), IN comprator TINYINT, IN in_code INT(6), IN in_name VARCHAR(30))
 BEGIN
      IF (comprator = 0) THEN
         SELECT n.id, n.code, n.name FROM ls_otdeli n;

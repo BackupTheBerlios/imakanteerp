@@ -1,22 +1,22 @@
 ﻿DELIMITER $$
 
-DROP PROCEDURE IF EXISTS `mida`.`nom_procedure_storage` $$
-CREATE PROCEDURE `nom_procedure_storage`(IN comprator TINYINT, IN in_id INT(11),IN in_id_groupe INT(11), IN in_code INT(11), IN in_name VARCHAR(40), IN in_comments VARCHAR(250) )
+DROP PROCEDURE IF EXISTS nom_procedure_storage $$
+CREATE PROCEDURE nom_procedure_storage (IN comprator TINYINT, IN in_id INT(11),IN in_id_groupe INT(11), IN in_code INT(11), IN in_name VARCHAR(40), IN in_comments VARCHAR(250) )
 BEGIN
      IF (comprator = 0) THEN
           SELECT n.id_n_storage, n.id_n_group, ng.name_n_group, n.code_n_storage, n.name_n_storage,
                    n.comments_n_storage FROM n_storage n LEFT OUTER JOIN n_group ng ON ng.id_n_group=n.id_n_group;
      END IF;
      IF (comprator = 1) THEN
-        INSERT INTO `mida`.`n_storage`( id_n_group, code_n_storage, name_n_storage, comments_n_storage) VALUES(in_id_groupe, in_code, in_name, in_comments);
+        INSERT INTO n_storage ( id_n_group, code_n_storage, name_n_storage, comments_n_storage) VALUES(in_id_groupe, in_code, in_name, in_comments);
      END IF;
      IF (comprator = 2) THEN
-        UPDATE `mida`.`n_storage` SET id_n_group = in_id_groupe, code_n_storage = in_code,   name_n_storage = in_name, comments_n_storage = in_comments
-        WHERE `mida`.`n_storage`.id_n_storage = in_id;
+        UPDATE n_storage SET id_n_group = in_id_groupe, code_n_storage = in_code,   name_n_storage = in_name, comments_n_storage = in_comments
+        WHERE n_storage.id_n_storage = in_id;
      END IF;
 
      IF (comprator = 3) THEN
-        DELETE FROM `mida`.`n_storage`  WHERE id_n_storage = in_id;
+        DELETE FROM n_storage  WHERE id_n_storage = in_id;
      END IF;
 
 
@@ -34,11 +34,11 @@ BEGIN
      END IF;
 
      IF (comprator = 7) THEN
-        SELECT MAX(n.id_n_storage) FROM `mida`.`n_storage` n;
+        SELECT MAX(n.id_n_storage) FROM n_storage n;
      END IF;
 
      IF (comprator = 8) THEN
-        SELECT MAX(n.code_n_storage) AS code_n_storage FROM `mida`.`n_storage` n;
+        SELECT MAX(n.code_n_storage) AS code_n_storage FROM n_storage n;
      END IF;
 
 

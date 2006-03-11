@@ -1,7 +1,7 @@
 ﻿DELIMITER $$
 
-DROP PROCEDURE IF EXISTS `mida`.`nom_procedure_naselenimesta` $$
-CREATE PROCEDURE `mida`.`nom_procedure_naselenimesta`(IN comprator TINYINT, IN in_id INT(11), IN in_postcode INT(6), IN in_name VARCHAR(20), IN in_id_oblast INT(3) )
+DROP PROCEDURE IF EXISTS nom_procedure_naselenimesta $$
+CREATE PROCEDURE nom_procedure_naselenimesta (IN comprator TINYINT, IN in_id INT(11), IN in_postcode INT(6), IN in_name VARCHAR(20), IN in_id_oblast INT(3) )
 BEGIN
      IF (comprator = 0) THEN
         SELECT n.id_n_nm, n.postcode_n_nm, n.name_n_nm, n.id_n_oblast, obl.name_n_oblast
