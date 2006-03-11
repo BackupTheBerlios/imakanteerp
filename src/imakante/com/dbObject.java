@@ -124,7 +124,7 @@ public abstract class dbObject extends imakante.com.imakanteObject implements db
         return getRs();
     }
     
-    public int getcode() {
+    public int getCode() {
         return code;
     }
     
@@ -190,7 +190,7 @@ public abstract class dbObject extends imakante.com.imakanteObject implements db
         this.stmt = stm;
     }
     
-    public void setcode(int anid) {
+    public void setCode(int anid) {
         this.code = anid;
     }
     

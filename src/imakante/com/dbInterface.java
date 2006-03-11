@@ -1,13 +1,8 @@
 
 package imakante.com;
 
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-
-
 public interface dbInterface {
+    
     void close();
 
     void deleteRow(int in_id);
@@ -16,9 +11,9 @@ public interface dbInterface {
 
     int getComprator();
 
-    Connection getConn();
+    java.sql.Connection getConn();
 
-    CallableStatement getCstm();
+    java.sql.CallableStatement getCstm();
 
     int getIDGr();
 
@@ -30,13 +25,13 @@ public interface dbInterface {
 
     String getName();
 
-    ResultSet getRs();
+    java.sql.ResultSet getRs();
 
-    Statement getStm();
+    java.sql.Statement getStm();
 
-    ResultSet getTable();
+    java.sql.ResultSet getTable();
 
-    int getcode();
+    int getCode();
 
     void insertRow(int in_code, int in_id_groupe);
 
@@ -44,9 +39,9 @@ public interface dbInterface {
 
     void setComprator(int com);
 
-    void setConn(Connection conn);
+    void setConn(java.sql.Connection conn);
 
-    void setCstm(CallableStatement cstm);
+    void setCstm(java.sql.CallableStatement cstm);
 
     void setIDGr(int COD);
 
@@ -54,10 +49,10 @@ public interface dbInterface {
 
     void setName(String Name);
 
-    void setRs(ResultSet rs);
+    void setRs(java.sql.ResultSet rs);
 
-    void setStm(Statement stm);
+    void setStm(java.sql.Statement stm);
 
-    void setcode(int anid);
+    void setCode(int anid);
     
 }
