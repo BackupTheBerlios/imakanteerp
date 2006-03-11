@@ -38,12 +38,13 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
         setMaximizable(true);
         setResizable(true);
         setTitle("\u0422\u0438\u043f\u043e\u0432\u0435 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
         jpTop.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         org.jdesktop.layout.GroupLayout jpTopLayout = new org.jdesktop.layout.GroupLayout(jpTop);
         jpTop.setLayout(jpTopLayout);
         jpTopLayout.setHorizontalGroup(
             jpTopLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 857, Short.MAX_VALUE)
+            .add(0, 853, Short.MAX_VALUE)
         );
         jpTopLayout.setVerticalGroup(
             jpTopLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)

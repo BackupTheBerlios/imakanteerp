@@ -5,17 +5,11 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
     
     public FrmDoctypeUserRights(String title, imakante.com.vcomponents.iFrame frame) {
         super(title);
-        System.out.println("1   ");
         myframe = frame;
-        System.out.println("2   ");
         prepareConn();
-        System.out.println("3   ");
         constructObject();
-        System.out.println("4   ");
         initTable();
-        System.out.println("5   ");
         initComponents();
-        System.out.println("6   ");
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -44,6 +38,7 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
         setResizable(true);
         setTitle("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0430: \u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b\u0441\u043a\u0438 \u043f\u0440\u0430\u0432\u0430 \u0432\u044a\u0440\u0445\u0443 \u043a\u043e\u0447\u0430\u043d\u0438");
         setFont(new java.awt.Font("Tahoma", 0, 11));
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -60,6 +55,7 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
         jTextCod.setPreferredSize(new java.awt.Dimension(80, 20));
         jPanel4.add(jTextCod);
 
+        jButtonSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Search.png")));
         jButtonSearch.setText("\u0422\u044a\u0440\u0441\u0435\u043d\u0435");
         jButtonSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,7 +74,7 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 763, Short.MAX_VALUE)
+            .add(0, 868, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -88,6 +84,7 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel3.setPreferredSize(new java.awt.Dimension(801, 37));
+        jButtonNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Add 2.png")));
         jButtonNew.setText("\u041d\u043e\u0432");
         jButtonNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,6 +94,7 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
 
         jPanel3.add(jButtonNew);
 
+        jButtonEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Report Edit 2.png")));
         jButtonEdit.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f");
         jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,6 +104,7 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
 
         jPanel3.add(jButtonEdit);
 
+        jButtonPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Printer.png")));
         jButtonPrint.setText("\u041f\u0435\u0447\u0430\u0442");
         jButtonPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,6 +117,7 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
         jButtonPrnReport.setText("\u041f\u0435\u0447\u0430\u0442 \u043e\u0442\u0447\u0435\u0442");
         jPanel3.add(jButtonPrnReport);
 
+        jButtonDel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Delete 2.png")));
         jButtonDel.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
         jButtonDel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,6 +127,7 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
 
         jPanel3.add(jButtonDel);
 
+        jButtonRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Refresh 3.png")));
         jButtonRefresh.setText("\u0412\u0441\u0438\u0447\u043a\u0438 \u0437\u0430\u043f\u0438\u0441\u0438");
         jButtonRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -363,10 +364,9 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
         setRow(getMaxRow());
         try{
             setAllVariables();
-            table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
+            table.changeSelection(getRow(), 2, false, false);
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
-            System.out.println("problem");
         }
         setAtBegining(false);
         setAtEnd(true);
@@ -380,10 +380,9 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
             setAtBegining(false);
             try {
                 setAllVariables();
-                table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
+                table.changeSelection(getRow(), 2, false, false);
             } catch(ArrayIndexOutOfBoundsException aioobe) {
                 setRow(getRow() - 1);
-                System.out.println("problem");
             }
             if(getRow() == getMaxRow()) {
                 setAtEnd(true);
@@ -399,10 +398,9 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
             setAtEnd(false);
             try {
                 setAllVariables();
-                table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
+                table.changeSelection(getRow(), 2, false, false);
             } catch(ArrayIndexOutOfBoundsException aioobe) {
                 setRow(getRow() + 1);
-                System.out.println("problem");
             }
         }
         if(getRow() == 0){
@@ -414,10 +412,9 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
         setRow(0);
         try {
             setAllVariables();
-            table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
+            table.changeSelection(getRow(), 2, false, false);
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
-            System.out.println("problem");
         }
         setAtBegining(true);
         setAtEnd(false);
@@ -474,7 +471,7 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
     private void editRecord() {
         if (table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());
-            if(getRow()==0){          //manage button state of ae form
+            if(getRow() == 0) {          //manage button state of ae form
                 setAtBegining(true);
             }
             if(getRow()==getMaxRow()) {

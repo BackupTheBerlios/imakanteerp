@@ -150,12 +150,6 @@ public class aeDoctypeUserRights extends imakante.com.vcomponents.iDialog {
 
         jLabel3.setText("\u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b:");
 
-        jComboU.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jComboUKeyPressed(evt);
-            }
-        });
-
         jLabel7.setText("\u041a\u043e\u0447\u0430\u043d:");
 
         jTextField1.setInputVerifier(new imakante.com.InputIntegerVerifier());
@@ -198,7 +192,7 @@ public class aeDoctypeUserRights extends imakante.com.vcomponents.iDialog {
                     .add(jLabel5)
                     .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(14, 14, 14)
-                .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+                .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
                 .addContainerGap())
         );
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -234,11 +228,7 @@ public class aeDoctypeUserRights extends imakante.com.vcomponents.iDialog {
     private void jButtonToBeginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonToBeginKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonToBegin.doClick();}
     }//GEN-LAST:event_jButtonToBeginKeyPressed
-    
-    private void jComboUKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboUKeyPressed
         
-    }//GEN-LAST:event_jComboUKeyPressed
-    
     private void jButtonUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUndoActionPerformed
         undoCorr(); //vraja predishnite stoinosti
     }//GEN-LAST:event_jButtonUndoActionPerformed
@@ -335,7 +325,6 @@ public class aeDoctypeUserRights extends imakante.com.vcomponents.iDialog {
     private int selectedUser;
     private String namesRBooks[];
     private int selectedRBook;
-    
     //---------------END My Variables
     
     //---------------START My Methods
@@ -350,7 +339,7 @@ public class aeDoctypeUserRights extends imakante.com.vcomponents.iDialog {
         myParent.setRight(3);       // !!!
         myParent.getInternalObject().updateRow(myParent.getId(), myParent.getUserMaster(), myParent.getDoctypeNumber(), myParent.getRight());
         myParent.refreshTable();
-        myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
+        myParent.getTable().changeSelection(myParent.getRow(), 2, false, false);
         jButtonUndo.setEnabled(true);
     }
     
@@ -385,12 +374,8 @@ public class aeDoctypeUserRights extends imakante.com.vcomponents.iDialog {
     }
     
     private void initUsersCombo() {
-        try {
             namesUsers = myParent.getInternalObject().getUserNames();
-        } finally {
-           
-        }
-        if(namesUsers!=null){
+        if(namesUsers != null){
             for(int i = 0; i < namesUsers.length; i++) {
                 jComboU.addItem(new String(namesUsers[i]));
             }
@@ -398,7 +383,7 @@ public class aeDoctypeUserRights extends imakante.com.vcomponents.iDialog {
                 selectedUser = getNewUComboIndex(selectedUser);
                 jComboU.setSelectedIndex(selectedUser);
             }}
-        if(namesUsers==null){
+        if(namesUsers == null){
             jComboU.addItem("ERROR!");
             this.jButtonSave.setEnabled(false);
         }
@@ -416,11 +401,8 @@ public class aeDoctypeUserRights extends imakante.com.vcomponents.iDialog {
     }
     
     private void initRBooksCombo() {
-        try {
             namesRBooks = myParent.getInternalObject().getReceiptBooks();
-        } finally {
-        }
-        if(namesRBooks!=null){
+        if(namesRBooks != null){
             for(int i = 0; i < namesRBooks.length; i++) {
                 jComboRB.addItem(new String(namesRBooks[i]));
             }
@@ -428,14 +410,14 @@ public class aeDoctypeUserRights extends imakante.com.vcomponents.iDialog {
                 selectedRBook = getNewRBComboIndex(selectedRBook);
                 jComboRB.setSelectedIndex(selectedRBook);
             }}
-        if(namesRBooks==null){
+        if(namesRBooks == null){
             jComboRB.addItem("ERROR!");
             this.jButtonSave.setEnabled(false);
         }
     }
     
     private int getNewRBComboIndex(int oldindex) {
-        int newindex= 0;
+        int newindex = 0;
         for(int i = 0; i < myParent.getInternalObject().getIndexOfRBooks().length; i++) {
             if(myParent.getInternalObject().getIndexOfRBooks()[i] == oldindex) {
                 newindex = i;

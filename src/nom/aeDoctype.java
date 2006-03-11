@@ -408,7 +408,6 @@ public class aeDoctype extends imakante.com.vcomponents.iDialog {
         jbFirst.repaint();
         jbPrevious.repaint();
         repaintComp();
-        
     }
     
     private void gotoLast() {

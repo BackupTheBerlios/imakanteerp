@@ -1,14 +1,9 @@
 
 package nom;
 
-import java.sql.SQLException;
-
 public class dbDoctypeUserRights extends imakante.com.dbObject {
     
     private java.sql.Connection conn;
-   
-   
-  
     private int id = 0;
     private int id_usermaster = 0;
     private int doctypeNum = 0;
@@ -36,9 +31,7 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
             getCstm().setInt("in_id_um", getUserMaster());
             getCstm().setInt("in_id_sdtn", getDoctypeNum());
             getCstm().setInt("in_rights", getRights());
-        } catch(java.sql.SQLException sqle) { 
-            System.out.println("Problem register param ");
-            sqle.printStackTrace(); }
+        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
     public void insertRow(int in_id_um) {
@@ -52,8 +45,8 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
     }
     
     public void updateRow(int in_id, int in_id_um, int in_sdtn, int in_rights) {
-       setComprator(2);
-        this.id = in_id;
+        setComprator(2);
+        this.setId(in_id);
         this.id_usermaster = in_id_um;
         this.doctypeNum = in_sdtn;
         this.rights = in_rights;
@@ -62,7 +55,7 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
             getCstm().execute();
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
-//    
+//
 //    public void deleteRow(int in_id) {
 //        comprator = 3;
 //        id = in_id;
@@ -87,7 +80,7 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
 //    }
     
     public java.sql.ResultSet searchRecords(int in_rights) {
-       setComprator(5);
+        setComprator(5);
         this.rights = in_rights;
         try {
             registerParameters();
@@ -107,14 +100,8 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
         int i = 0;
         try {
             registerParameters();
-            try {
-                setRs(getCstm().executeQuery());
-            } catch (SQLException ex) {
-                System.out.println("problem constructing rs ");
-                ex.printStackTrace();
-            }
+            setRs(getCstm().executeQuery());
             while(getRs().next()) {
-                System.out.println("dassdfsadfsdfsdfsd sdffsdf");
                 Users.put(new Integer(getRs().getInt("id_um")), new String(getRs().getString("name_um")));
                 in.add(new Integer(getRs().getInt("id_um")));
                 i++;
@@ -144,9 +131,9 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
         java.util.HashMap RBooks = new java.util.HashMap();
         try {
             registerParameters();
-           setRs(getCstm().executeQuery());
+            setRs(getCstm().executeQuery());
             while(getRs().next()) {
-                RBooks.put(new Integer(getRs().getInt("id_sdtn")), new String(getRs().getString("area_number_sdtn") + " - " + 
+                RBooks.put(new Integer(getRs().getInt("id_sdtn")), new String(getRs().getString("area_number_sdtn") + " - " +
                         getRs().getString("name_sdtn")));
                 list.add(new Integer(getRs().getInt("id_sdtn")));
                 i++;
