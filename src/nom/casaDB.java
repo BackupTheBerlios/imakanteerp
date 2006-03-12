@@ -45,7 +45,7 @@ public class casaDB  extends dbObject {
             getCstm().setInt("comprator", getComprator());
             getCstm().setInt("in_id", getId());
             getCstm().setInt("in_id_groupe", getIDGr());
-            getCstm().setInt("in_code", getcode());
+            getCstm().setInt("in_code", getCode());
             getCstm().setString("in_name", getName());
             getCstm().setString("in_comments", getComment());
                        
