@@ -217,7 +217,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     //--------------- My Variables
     private int id=0; // imena ot tablicata
     private int EGNe_groupe =0; // imena ot tablicata
-    private String Code= "";
+    private int Code= 0;
     private String EGN = "";
     private String NLK = "";
     private String name,comment; // imena ot tablicata
@@ -503,7 +503,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     }
     
     private void newRecord() {
-        internalObject.insertRow(0,"");
+        internalObject.insertRow(0,0);
         refreshTable();
         setRow(getMaxRow());
         table.changeSelection(getRow(), 2, false, false);
@@ -585,18 +585,18 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     private void setAllVariables(){
         setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
         setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("id_group")));
-        setCode((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434")));
+        setCode((Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434")));
         setEGN((String) table.getValueAt(getRow(), getColumnIndex("\u0415\u0413\u041d")));
         setNLK((String) table.getValueAt(getRow(), getColumnIndex("\u041d\u041b\u041a")));
         setNames((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435\u043d\u0430")));
         setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440\u0438")));
     }
     
-    public String getCode() {
+    public int getCode() {
         return Code;
     }
     
-    public void setCode(String Code) {
+    public void setCode(int Code) {
         this.Code = Code;
     }
 }

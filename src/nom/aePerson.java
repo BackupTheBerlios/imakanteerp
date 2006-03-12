@@ -382,7 +382,7 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
     //--------------- My Variables
     private nom.FrmPerson myParent;
     private int oldIDG = 1;
-    private String oldCode = "";
+    private int oldCode = 0;
     private String oldEGN = "";
     private String oldNLK = "";
     private String oldName = "";
@@ -404,6 +404,7 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
     //SAVE
     private void saveRecord() {
         if(cFields()){
+            
             oldCode = myParent.getCode();
             oldEGN = myParent.getEGN();
             oldNLK = myParent.getNLK();
@@ -411,7 +412,7 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
             oldComment = myParent.getComment();
             try {
                 
-                myParent.setCode(jTextField4.getText());
+                myParent.setCode(Integer.parseInt(jTextField4.getText()));
                 myParent.setEGN(jTextField1.getText());
                 myParent.setNLK(jTextField2.getText());
             } catch (NumberFormatException nfex) {
@@ -455,7 +456,7 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
     }
     
     private void repaintComp() {
-        jTextField4.setText(myParent.getCode());
+        jTextField4.setText("" + myParent.getCode());
         jTextField1.setText(myParent.getEGN());
         jTextField2.setText(myParent.getNLK());
         jTextField3.setText(myParent.getNames());

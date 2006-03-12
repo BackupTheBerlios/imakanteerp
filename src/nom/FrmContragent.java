@@ -261,7 +261,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
         setEmail(jTextFieldEmail.getText());
         setWeb(jTextFieldWeb.getText());
         try {
-            rs = contragent.searchRecords(getCod(),getName(),getBulstat(),
+            rs = getContragentDB().searchRecords(getCod(),getName(),getBulstat(),
                     getDanNomer(),getAddress(),getID_NM(), getTel(),
                     getFax(),getEmail(),getWeb(),getID_MOL(),getID_OSO());
             model = new imakante.com.CustomTableModel(conn,rs, null);
@@ -284,7 +284,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
         if(table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());
             setId((Integer)table.getValueAt(getRow(),0));
-            contragent.deleteRow(getId());
+            getContragentDB().deleteRow(getId());
             refreshTable();
         }
     }//GEN-LAST:event_jButtonDeleteActionPerformed
@@ -405,14 +405,14 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
     
     private void constructGroupDB() {
         try {
-            contragent = new nom.contragentDB(conn, flag);
+            setContragent(new nom.contragentDB(conn, flag));
         } catch(Exception e) { e.printStackTrace(); }
     }
     
     private void initTable() {
         try {
-            contragent.setFlag(flag);
-            rs = contragent.getTable();
+            getContragentDB().setFlag(flag);
+            rs = getContragentDB().getTable();
             model = new imakante.com.CustomTableModel(conn, rs, columnName);
             table = new imakante.com.CustomTable(model);
             HideColumns(getColumnIndex("id_contragent"));
@@ -578,7 +578,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
     
     protected  void refreshTable() {
         jScrollPane1.remove(table);
-        rs = contragent.getTable();
+        rs = getContragentDB().getTable();
         model = new imakante.com.CustomTableModel(conn, rs, null);
         table = new imakante.com.CustomTable(model);
         jScrollPane1.getViewport().add(table);
@@ -698,7 +698,15 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
             rs.close();
         } catch(java.sql.SQLException sqle) {  }
         rs = null;
-        contragent.close();
+        getContragentDB().close();
+    }
+
+    public nom.contragentDB getContragentDB() {
+        return contragent;
+    }
+
+    public void setContragent(nom.contragentDB contragent) {
+        this.contragent = contragent;
     }
     
 }// end class

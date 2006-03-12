@@ -12,6 +12,7 @@ package imakante.sales;
 
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import nom.FrmProduct;
 
 //>>>>>>> 1.24
@@ -945,10 +946,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private boolean levelActivate = false;
     private int currentLevel = 1;
     
-    private static HashMap OrderArea = new HashMap();
-    private static HashMap FaktArea = new HashMap();
+    private static LinkedHashMap OrderArea = new LinkedHashMap();
+    private static LinkedHashMap FaktArea = new LinkedHashMap();
     
-    private void loadLevelDialog(int ModuleCode, HashMap hash){
+    private void loadLevelDialog(int ModuleCode, LinkedHashMap hash){
         levelDialog lDialog = new levelDialog(this, true, ModuleCode, hash);
         lDialog.setVisible(true);
     }
@@ -1105,17 +1106,18 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     //METHODS FOR LOADING USER RIGHTS FOR AREA DOCUMENTS
     
     private void loadRightsArea(){
-        String StrQ = "SELECT `sl_doc_type_num`.`area_number_sdtn` " +
-                //  "`n_doc_type_user_rights`.`rights_sdtn`  " +
-                "FROM " +
-                "`user_master` " +
-                "Inner Join `n_doc_type_user_rights` ON `user_master`.`id_um` = `n_doc_type_user_rights`.`id_um` " +
-                "Inner Join `sl_doc_type_num` ON `sl_doc_type_num`.`id_sdtn` = `n_doc_type_user_rights`.`id_sdtn` " +
-                "WHERE " +
-                "`n_doc_type_user_rights`.`id_um` = '" +
-                imakante.com.NewMain.getUserId() +
-                "' AND " +
-                "`sl_doc_type_num`.`id_ntd` =  ";
+        String StrQ = "SELECT " +
+                      "`n_doc_type_user_rights`.`id_ndtur`, " +
+                      "`sl_doc_type_num`.`area_number_sdtn` " +
+                      "FROM " +
+                      "`n_doc_type_user_rights` " +
+                      "Inner Join `sl_doc_type_num` ON `sl_doc_type_num`.`id_sdtn` = `n_doc_type_user_rights`.`id_sdtn` " +
+                      "Inner Join `n_type_doc` ON `n_type_doc`.`id_ntd` = `sl_doc_type_num`.`id_ntd` " +
+                       " WHERE " +
+                      "`n_doc_type_user_rights`.`id_um` = '" +
+                       imakante.com.NewMain.getUserId() +
+                      "' AND " +
+                       "`n_type_doc`.`code_ntd` =";
         
         try {
             int i = 0;
@@ -1124,23 +1126,32 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
                     StrQ + "'1'"
                     );
             while(rs.next()){
-                i++;
-                getOrderArea().put(i,new String(rs.getString(1)));
+              
+                getOrderArea().put(rs.getInt("id_ndtur"),new String(rs.getString("area_number_sdtn")));
                 
             }
             i = 0;
             rs = stm.executeQuery(
-                    StrQ + "'2'"
+                    StrQ + "'4'"
                     );
             while(rs.next()){
-                i++;
-                getFaktArea().put(i,rs.getString(1));
+                
+                getFaktArea().put(rs.getInt("id_ndtur"),new String(rs.getString("area_number_sdtn")));;
             }
             
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        
+        try {
+            rs.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        try {
+            stm.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
         
         
     }
@@ -1364,19 +1375,19 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         repNal.setVisible(true);
     }
     
-    public static HashMap getOrderArea() {
+    public static LinkedHashMap getOrderArea() {
         return OrderArea;
     }
     
-    public  void setOrderArea(HashMap OrderArea) {
+    public  void setOrderArea(LinkedHashMap OrderArea) {
         this.OrderArea = OrderArea;
     }
     
-    public static HashMap getFaktArea() {
+    public static LinkedHashMap getFaktArea() {
         return FaktArea;
     }
     
-    public  void setFaktArea(HashMap FaktArea) {
+    public  void setFaktArea(LinkedHashMap FaktArea) {
         this.FaktArea = FaktArea;
     }
 }

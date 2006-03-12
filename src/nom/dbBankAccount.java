@@ -34,7 +34,7 @@ public class dbBankAccount extends imakante.com.dbObject {
             getCstm().setInt("comprator", getComprator());
             getCstm().setInt("in_id", getId());
             getCstm().setInt("in_id_group", getIDGr());
-            getCstm().setInt("in_code", getcode());
+            getCstm().setInt("in_code", getCode());
             getCstm().setString("in_name", getName());
             getCstm().setString("in_account", getBankAccountNumber());
             getCstm().setString("in_address", getAddress());

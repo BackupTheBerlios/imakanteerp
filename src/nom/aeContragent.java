@@ -22,7 +22,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
         int x = (((dim.width)-(this.getSize().width))/2);
         int y = (((dim.height)-(this.getSize().height))/2);
         this.setLocation(x, y);
-      //  showNameOfMOL_OSO setMOL = new showNameOfMOL_OSO(myframe,true,myParent.getCountriesT().getTablesWithNames(""),myParent.getCountriesT().getConn(),true); 
+      //  showNameOfMOL_OSO setMOL = new showNameOfMOL_OSO(myframe,true,myParent.getContragentDB().getTablesWithNames(""),myParent.getContragentDB().getConn(),true); 
         repaintComp();
     }
     
@@ -460,20 +460,20 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
        {
         if(jTextFieldOSO.getText()=="")
         {
-        java.sql.ResultSet r1 = myParent.getCountriesT().getTablesWithNames("");
-        java.sql.Connection c1 = myParent.getCountriesT().getConn();
+        java.sql.ResultSet r1 = myParent.getContragentDB().getTablesWithNames("");
+        java.sql.Connection c1 = myParent.getContragentDB().getConn();
         showNameOfMOL_OSO setOSO = new showNameOfMOL_OSO(myframe,true,r1,c1,false);
         }
         else
         {
-        java.sql.ResultSet r1 = myParent.getCountriesT().getTablesWithNames(jTextFieldOSO.getText());
-        java.sql.Connection c1 = myParent.getCountriesT().getConn();
+        java.sql.ResultSet r1 = myParent.getContragentDB().getTablesWithNames(jTextFieldOSO.getText());
+        java.sql.Connection c1 = myParent.getContragentDB().getConn();
          showNameOfMOL_OSO setOSO = new showNameOfMOL_OSO(myframe,true,r1,c1,false);
         }
        // repaintComp();
         if (myParent.getID_OSO()!=-1)
            {
-           String namOSO = myParent.getCountriesT().getNameWithID(myParent.getID_OSO(),false);
+           String namOSO = myParent.getContragentDB().getNameWithID(myParent.getID_OSO(),false);
            jTextFieldOSO.setText(namOSO);
            }
        }  
@@ -485,20 +485,20 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
        {
         if(jTextFieldMOL.getText()==null)
         {
-        java.sql.ResultSet r1 = myParent.getCountriesT().getTablesWithNames(null);
-        java.sql.Connection c1 = myParent.getCountriesT().getConn();
+        java.sql.ResultSet r1 = myParent.getContragentDB().getTablesWithNames(null);
+        java.sql.Connection c1 = myParent.getContragentDB().getConn();
         showNameOfMOL_OSO setMOL = new showNameOfMOL_OSO(myframe,true,r1,c1,true);
         }
         else
         {
-        java.sql.ResultSet r1 = myParent.getCountriesT().getTablesWithNames(jTextFieldMOL.getText());
-        java.sql.Connection c1 = myParent.getCountriesT().getConn();
+        java.sql.ResultSet r1 = myParent.getContragentDB().getTablesWithNames(jTextFieldMOL.getText());
+        java.sql.Connection c1 = myParent.getContragentDB().getConn();
          showNameOfMOL_OSO setMOL = new showNameOfMOL_OSO(myframe,true,r1,c1,true); 
         }
        // repaintComp();
          if(myParent.getID_MOL()!=-1) 
            {
-           String namMOL = myParent.getCountriesT().getNameWithID(myParent.getID_MOL(),true);
+           String namMOL = myParent.getContragentDB().getNameWithID(myParent.getID_MOL(),true);
            jTextFieldMOL.setText(namMOL);
            }
         
@@ -539,7 +539,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
                 myParent.setFax(jTextFieldFax.getText());
                 myParent.setEmail(jTextFieldEmail.getText());
                 myParent.setWeb(jTextFieldWeb.getText());
-                myParent.getCountriesT().insertRow(myParent.getCod(),myParent.getName(),
+                myParent.getContragentDB().insertRow(myParent.getCod(),myParent.getName(),
                                                   myParent.getBulstat(),myParent.getDanNomer(),
                                                   myParent.getAddress(),myParent.getID_NM(),
                                                   myParent.getTel(),myParent.getFax(),myParent.getEmail(),
@@ -566,13 +566,13 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
                 myParent.setEmail(jTextFieldEmail.getText());
                 myParent.setWeb(jTextFieldWeb.getText());
                 
-                myParent.getCountriesT().updateRow(myParent.getId(),myParent.getCod(),myParent.getName(),
+                myParent.getContragentDB().updateRow(myParent.getId(),myParent.getCod(),myParent.getName(),
                                                   myParent.getBulstat(),myParent.getDanNomer(),
                                                   myParent.getAddress(),myParent.getID_NM(),
                                                   myParent.getTel(),myParent.getFax(),myParent.getEmail(),
                                                   myParent.getWeb(),myParent.getID_MOL(),myParent.getID_OSO());
-                int newIdContragent  = myParent.getCountriesT().getMaxId();
-                myParent.getCountriesT().updateIDProductContragent(myParent.getId(),newIdContragent,1);
+                int newIdContragent  = myParent.getContragentDB().getMaxId();
+                myParent.getContragentDB().updateIDProductContragent(myParent.getId(),newIdContragent,1);
             
         }
     //  jButton3.doClick(); // zatvarq se aeContragen
@@ -586,20 +586,20 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
        {
         if(jTextFieldNM.getText()==null)
         {
-        java.sql.ResultSet r1 = myParent.getCountriesT().getTablesAddressName(null);
-        java.sql.Connection c1 = myParent.getCountriesT().getConn();
+        java.sql.ResultSet r1 = myParent.getContragentDB().getTablesAddressName(null);
+        java.sql.Connection c1 = myParent.getContragentDB().getConn();
         showAddressContragent setNM = new showAddressContragent(myframe,true,r1,c1);
         }
         else
         {
-        java.sql.ResultSet r1 = myParent.getCountriesT().getTablesAddressName(jTextFieldNM.getText());
-        java.sql.Connection c1 = myParent.getCountriesT().getConn();
+        java.sql.ResultSet r1 = myParent.getContragentDB().getTablesAddressName(jTextFieldNM.getText());
+        java.sql.Connection c1 = myParent.getContragentDB().getConn();
         showAddressContragent setNM = new showAddressContragent(myframe,true,r1,c1); 
         }
        // repaintComp();
         if((myParent.getID_NM()!=-1))
            {
-           String adres = myParent.getCountriesT().getAddressName(myParent.getID_NM());
+           String adres = myParent.getContragentDB().getAddressName(myParent.getID_NM());
            jTextFieldNM.setText(adres);
            }
        }
@@ -691,7 +691,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
    }
   if(isNew)
   {
-   int maxcode =  myParent.getCountriesT().getMaxCod();
+   int maxcode =  myParent.getContragentDB().getMaxCod();
    if(maxcode!=-1)
     {
       jTextFieldCod.setText(String.valueOf(maxcode+1));
@@ -700,17 +700,17 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
    
    if((myParent.getID_NM()!=-1))
    {
-   String adres = myParent.getCountriesT().getAddressName(myParent.getID_NM());
+   String adres = myParent.getContragentDB().getAddressName(myParent.getID_NM());
    jTextFieldNM.setText(adres);
    }
    if(myParent.getID_MOL()!=-1) 
    {
-   String namMOL = myParent.getCountriesT().getNameWithID(myParent.getID_MOL(),true);
+   String namMOL = myParent.getContragentDB().getNameWithID(myParent.getID_MOL(),true);
    jTextFieldMOL.setText(namMOL);
    }
    if (myParent.getID_OSO()!=-1)
    {
-   String namOSO = myParent.getCountriesT().getNameWithID(myParent.getID_OSO(),false);
+   String namOSO = myParent.getContragentDB().getNameWithID(myParent.getID_OSO(),false);
    jTextFieldOSO.setText(namOSO);
    }
 } 

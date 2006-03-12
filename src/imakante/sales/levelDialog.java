@@ -1,12 +1,15 @@
 
 package imakante.sales;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 
 public class levelDialog extends javax.swing.JDialog {
     
     /** Creates new form levelDialog */
-    public levelDialog(imakante.sales.sales_main parent, boolean modal, int ModuleCode, HashMap area) {
+    public levelDialog(imakante.sales.sales_main parent, boolean modal, int ModuleCode, LinkedHashMap area) {
         super(parent, modal);
         frame = parent;
         modul = ModuleCode;
@@ -97,20 +100,34 @@ public class levelDialog extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
     private imakante.sales.sales_main frame;
-    private HashMap hash;
+    private LinkedHashMap hash;
     private int modul= 0;
     private String namesCombo[];
     private int selectComboBoxItem;
+    private int i= 0;
+
+    private ArrayList in;
     
     private void load(){
         switch (modul){
             
             case 1:hash = frame.getOrderArea();
-            case 4:hash = frame.getFaktArea();    
+            case 4:hash = frame.getFaktArea();
             default:;break;
         }
     }
     
+    private void constructComboNames(){
+        in = new ArrayList(hash.keySet());
+        for (Iterator it =hash.keySet().iterator(); it.hasNext(); ) {
+            Object key = it.next();
+            in.add(key);
+            Object value = hash.get(key);
+            jComboBox1.addItem(value);
+            
+        }
+        
+    }
     
     private void close(){
         

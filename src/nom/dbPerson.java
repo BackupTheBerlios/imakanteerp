@@ -3,7 +3,7 @@ package nom;
 
 public class dbPerson extends imakante.com.dbObject {
     
-        // --- Custom Members --- //
+    // --- Custom Members --- //
     private java.sql.Connection conn;
     private java.sql.ResultSet rs;
     private java.sql.Statement Stm;
@@ -14,7 +14,7 @@ public class dbPerson extends imakante.com.dbObject {
     private int comprator = 1;
     private int id = 0;
     private int id_group = 0;
-    private String code = "";
+    private int code = 0;
     private String egn = null;
     private String nomlk = null;
     private String name = null;
@@ -23,36 +23,26 @@ public class dbPerson extends imakante.com.dbObject {
     // --- Constructor --- //
     public dbPerson(java.sql.Connection conn) {
         super(conn);
-        prepareCStm();
+        prepareCstm();
     }
     
     
     // --- Custom Methods --- //
-    private void prepareCStm(){
+    public void prepareCstm(){
         try {
             setCstm(getConn().prepareCall("{call nom_procedure_person(?,?,?,?,?,?,?,?)}"));
         } catch(java.sql.SQLException sqle) {
             sqle.printStackTrace();
         }
     }
-    
-    public java.sql.ResultSet getTable() {
-        this.comprator = 0;
-        try{
-            registerParameters();
-            setRs(getCstm().executeQuery());
-        } catch(java.sql.SQLException sqle) {
-            sqle.printStackTrace();
-        }
-        return rs;
-    }
+  
     
     public void registerParameters() {
         try {
             getCstm().setInt("comprator", getComprator());
             getCstm().setInt("in_id", getID());
             getCstm().setInt("in_id_group", getIDGr());
-            getCstm().setString("in_code", getCode());
+            getCstm().setInt("in_code", getCode());
             getCstm().setString("in_egn", getEGN());
             getCstm().setString("in_nomlk", getNomLK());
             getCstm().setString("in_name", getName());
@@ -61,17 +51,8 @@ public class dbPerson extends imakante.com.dbObject {
             sqle.printStackTrace();
         }
     }
-    
-    public void prepareRezult() {
-        try{
-            registerParameters();
-            setRs(getCstm().executeQuery());
-        } catch(java.sql.SQLException sqle) {
-            sqle.printStackTrace();
-        }
-    }
-    
-    public void insertRow(int in_id_group, String in_code) {
+ 
+    public void insertRow(int in_id_group, int in_code) {
         comprator = 1;
         this.id_group = in_id_group;
         this.code = in_code;
@@ -87,7 +68,7 @@ public class dbPerson extends imakante.com.dbObject {
         }
     }
     
-    public void updateRow(int in_id, int in_id_group, String in_code, String in_egn, String in_nomlk, String in_name, String in_comment) {
+    public void updateRow(int in_id, int in_id_group, int in_code, String in_egn, String in_nomlk, String in_name, String in_comment) {
         comprator = 2;
         this.id = in_id;
         this.id_group = in_id_group;
@@ -104,37 +85,9 @@ public class dbPerson extends imakante.com.dbObject {
         }
     }
     
-    public void deleteRow(int in_id) {
-        comprator = 3;
-        id = in_id;
-        try{
-            registerParameters();
-            CStm.execute();
-        }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
-        
-    }
     
-    public java.sql.ResultSet getRow(int in_id) {
-        comprator = 4;
-        id = in_id;
-        try {
-            registerParameters();
-            rs = CStm.executeQuery();
-            while(rs.next()) {
-                id_group = rs.getInt("id_group");
-                code = rs.getString("in_code");
-                egn = rs.getString("egn");
-                nomlk = rs.getString("nomlk");
-                name = rs.getString("name");
-                comment = rs.getString("comment");
-            }
-        } catch(java.sql.SQLException sqle) {
-            sqle.printStackTrace();
-        }
-        return rs;
-    }
     
-    public java.sql.ResultSet searchRecords(String in_code, String in_egn, String in_name) {
+    public java.sql.ResultSet searchRecords(int in_code, String in_egn, String in_name) {
         comprator = 5;
         this.code = in_code;
         this.egn = in_egn;
@@ -148,33 +101,6 @@ public class dbPerson extends imakante.com.dbObject {
         return getRs();
     }
     
-    public java.sql.Connection getConn() {
-        return conn;
-    }
-    public void setConn(java.sql.Connection conn) {
-        this.conn = conn;
-    }
-    
-    public java.sql.Statement getStm() {
-        return Stm;
-    }
-    public void setStm(java.sql.Statement stm) {
-        this.Stm = stm;
-    }
-    
-    public java.sql.CallableStatement getCstm() {
-        return CStm;
-    }
-    public void setCstm(java.sql.CallableStatement cstm) {
-        this.CStm = cstm;
-    }
-    
-    public java.sql.ResultSet getRs() {
-        return rs;
-    }
-    public void setRs(java.sql.ResultSet RS) {
-        this.rs = RS;
-    }
     
     public int getID() {
         return id;
@@ -184,22 +110,7 @@ public class dbPerson extends imakante.com.dbObject {
         this.id = ID;
     }
     
-    public int getMaxId() {
-        comprator = 7;
-        int actInt = -1;
-        try {
-            registerParameters();
-            rs = CStm.executeQuery();
-            while(rs.next()) {
-                actInt = rs.getInt(1);
-            }
-        } catch(java.sql.SQLException sqle) {
-            sqle.printStackTrace();
-        }
-        return actInt;
-    }
-    
-   public int getMaxGrID() {
+    public int getMaxGrID() {
         comprator = 9;
         int actInt = -1;
         try {
@@ -213,35 +124,11 @@ public class dbPerson extends imakante.com.dbObject {
         }
         return actInt;
     }
-     
-    public void setIDGr(int COD) {
-        this.id_group = COD;
-    }
     
-    public int getIDGr() {
-        return id_group;
-    }
     
-    public int getMaxCod() {
-        comprator = 8;
-        int return_int = -1;
-        try {
-            registerParameters();
-            rs = CStm.executeQuery();
-            while(rs.next()) {
-                return_int = rs.getInt(1);
-            }
-        } catch(java.sql.SQLException sqle) {
-            sqle.printStackTrace();
-        }
-        return return_int;
-    }
+  
     
-    public String getCode() {
-        return code;
-    }
-    
-    public void setcode(String anid) {
+    public void setcode(int anid) {
         this.code = anid;
     }
     
@@ -260,39 +147,7 @@ public class dbPerson extends imakante.com.dbObject {
         return nomlk;
     }
     
-    public void setName(String Name) {
-        this.name = Name;
-    }
-    
-    public String getName() {
-        return name;
-    }
-    
-    public int getComprator() {
-        return comprator;
-    }
-    
-    public void setComprator(int comp) {
-        this.comprator = comp;
-    }
-    
-    public void setComment(String Comment) {
-        this.comment = Comment;
-    }
-    public String getComment() {
-        return comment;
-    }
-    
-    public void close() {
-        try{
-            rs.close();
-            rs = null;
-        } catch(java.sql.SQLException sqle) {  }
-        try{
-            CStm.close();
-            CStm = null;
-        }catch(java.sql.SQLException sqle) {  }
-    }
+
     
     public String[] getPersonGroups() {
         comprator=6;
@@ -336,6 +191,7 @@ public class dbPerson extends imakante.com.dbObject {
         return indexConnOfId;
     }
 
-    protected void prepareCstm() {
-    }
+    
+    
+    
 }
