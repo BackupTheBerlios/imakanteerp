@@ -242,9 +242,9 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
             rs = internalObject.getTable();
             model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
-            HideColumns(0);
-            HideColumns(1);
-            HideColumns(3);
+            HideColumns(getColumnIndex("id_ndtur"));
+            HideColumns(getColumnIndex("id_um"));
+            HideColumns(getColumnIndex("id_sdtn"));
         } catch(Exception e) { e.printStackTrace(); }
         table.requestFocus();
         try {
@@ -439,9 +439,9 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
             jScrollPane1.remove(table);
             model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
-            HideColumns(0);
-            HideColumns(1);
-            HideColumns(3);
+            HideColumns(getColumnIndex("id_ndtur"));
+            HideColumns(getColumnIndex("id_um"));
+            HideColumns(getColumnIndex("id_sdtn"));
             jScrollPane1.getViewport().add(table);
             jScrollPane1.repaint();
         } catch(Exception e) { e.printStackTrace(); }
@@ -452,9 +452,9 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
         rs = internalObject.getTable();
         model = new imakante.com.CustomTableModel(getConn(), rs, Names);
         table = new imakante.com.CustomTable(model);
-        HideColumns(0);
-        HideColumns(1);
-        HideColumns(3);
+        HideColumns(getColumnIndex("id_ndtur"));
+        HideColumns(getColumnIndex("id_um"));
+        HideColumns(getColumnIndex("id_sdtn"));
         jScrollPane1.getViewport().add(table);
         jScrollPane1.repaint();
     }

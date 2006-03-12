@@ -138,6 +138,7 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
         try {
             jasperPrint = JasperFillManager.fillReport(new java.io.FileInputStream(new java.io.File((getClass().getResource(fileJasper)).toURI())),
                     hm, conn);
+               jrv = new net.sf.jasperreports.view.JRViewer(jasperPrint);
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         } catch (URISyntaxException ex) {
@@ -145,8 +146,6 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
         } catch (JRException ex) {
             ex.printStackTrace();
         }
-      
-            jrv = new net.sf.jasperreports.view.JRViewer(jasperPrint);
       
        
     }

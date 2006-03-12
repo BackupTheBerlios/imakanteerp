@@ -344,7 +344,7 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
             rs = doctypeObject.getTable();
             model = new imakante.com.CustomTableModel(conn,rs, Names);
             table = new imakante.com.CustomTable(model);
-            HideColumns(0);
+            HideColumns(getColumnIndex("id_ntd"));
         }catch(Exception e){e.printStackTrace();}
         table.requestFocus();
         try {
