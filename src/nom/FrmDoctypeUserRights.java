@@ -218,8 +218,8 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
     public static final String Names[] = {"id",
-    "id_user_master","\u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b",
-    "id_doctype_area","\u041e\u0431\u043b\u0430\u0441\u0442","\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442",
+    "id_um","\u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b",
+    "id_sdtn","\u041e\u0431\u043b\u0430\u0441\u0442","\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442",
     "\u041f\u0440\u0430\u0432\u0430"};
     
     
