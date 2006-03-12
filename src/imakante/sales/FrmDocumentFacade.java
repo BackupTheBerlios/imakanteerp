@@ -350,7 +350,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
                 int user = 2;
                 int level =1;
                 int pricelist =1;
-                int doctype =1;
+                int doctype =5;
                 int storage =1;
                 boolean makedoc = false;
                 HashMap INdata = null;

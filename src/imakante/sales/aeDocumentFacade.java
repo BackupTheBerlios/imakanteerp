@@ -219,6 +219,12 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jButtonAnulirane = new javax.swing.JButton();
         jButtonDellDocFadade = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jPanelStorageINOUT = new javax.swing.JPanel();
+        jLabel26 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel29 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
         jPanelCreateFacturi = new javax.swing.JPanel();
@@ -285,7 +291,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jLabel2.setText("\u0414\u0430\u0442\u0430:");
 
         jLabelDocType.setFont(new java.awt.Font("Tahoma", 0, 18));
-        jLabelDocType.setText("\u041a\u041e\u041d\u0421\u0413\u041d\u0410\u0426\u0418\u041e\u041d\u0415\u041d \u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b");
+        jLabelDocType.setText("\u041d\u0410\u0420\u0415\u0416\u0414\u0410\u041d\u0415 \u0417\u0410 \u041f\u0420\u0415\u0425\u0412\u042a\u0420\u041b\u042f\u041d\u0415");
 
         jTextFieldNomerDoc.setInputVerifier(new imakante.com.InputIntegerVerifier());
 
@@ -305,7 +311,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     .add(jTextFieldDateDoc, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 120, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jPanelHeadLayout.createSequentialGroup()
                         .add(jTextFieldNomerDoc, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 120, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 14, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 8, Short.MAX_VALUE)
                         .add(jLabelDocType))))
         );
         jPanelHeadLayout.setVerticalGroup(
@@ -924,17 +930,65 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 640, -1, -1));
 
+        jPanelStorageINOUT.setLayout(new java.awt.GridBagLayout());
+
+        jPanelStorageINOUT.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel26.setText("\u041e\u0422:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jPanelStorageINOUT.add(jLabel26, gridBagConstraints);
+
+        jTextField2.setEditable(false);
+        jTextField2.setFont(new java.awt.Font("Tahoma", 1, 11));
+        jTextField2.setPreferredSize(new java.awt.Dimension(40, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jPanelStorageINOUT.add(jTextField2, gridBagConstraints);
+
+        jLabel27.setText("\u041a\u042a\u041c:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jPanelStorageINOUT.add(jLabel27, gridBagConstraints);
+
+        jTextField3.setFont(new java.awt.Font("Tahoma", 1, 11));
+        jTextField3.setPreferredSize(new java.awt.Dimension(40, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jPanelStorageINOUT.add(jTextField3, gridBagConstraints);
+
+        jLabel29.setText("\u0421\u043a\u043b\u0430\u0434\u043e\u0432\u0435:");
+        jPanelStorageINOUT.add(jLabel29, new java.awt.GridBagConstraints());
+
+        jPanel2.add(jPanelStorageINOUT, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 300, 50));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 770, 670));
 
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField1FocusLost(evt);
+            }
+        });
         jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTextField1MouseClicked(evt);
             }
         });
 
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 660, 140, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 680, 100, -1));
 
-        jLabel24.setText("\u041a\u0443\u0440\u0441:");
+        jLabel24.setText("\u0414\u0430\u0442\u0430 \u043d\u0430 \u043a\u0443\u0440\u0441:");
         getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 660, -1, -1));
 
         jPanelCreateFacturi.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
@@ -976,12 +1030,23 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+// TODO add your handling code here:
+       imakante.com.dateManipulation dateManip = new imakante.com.dateManipulation();
+       String dateCurs = dateManip.convertDate(jTextField1.getText());
+        
+       arrayRate =  myParent.getCountriesT().getRateByDate(dateCurs);
+        
+       rate = 1;
+        
+    }//GEN-LAST:event_jTextField1FocusLost
+
     private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
 // TODO add your handling code here:
         if(evt.getClickCount()==2)
         {
             //dialog za izbora na kurs na valutata
-            rate =1;
+          
             
         }
         
@@ -1607,7 +1672,10 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel32;
@@ -1642,11 +1710,14 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private javax.swing.JPanel jPanelObekt;
     private javax.swing.JPanel jPanelPrice;
     private javax.swing.JPanel jPanelPriceList;
+    private javax.swing.JPanel jPanelStorageINOUT;
     private javax.swing.JPanel jPanelUser;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextFieldAddress;
     private javax.swing.JTextField jTextFieldBulstat;
     private javax.swing.JTextField jTextFieldComment;
@@ -1701,7 +1772,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private boolean isCheckOne = false;
     private HashMap  rows=null;
     private double rate = 0;
-    private ArrayList arrayRate = new ArrayList();
+    private HashMap arrayRate = new HashMap();
 //----------------------------------------
     
     
@@ -1735,8 +1806,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             strDate += "/" + String.valueOf(nowDate.getMonth());
             strDate += "/" + String.valueOf(nowDate.getYear()+1900);
             jTextFieldDateDoc.setText(strDate);
-           
-          
+             
             jTextFieldNomerDoc.setText(myParent.getNumberDocFacade());
             
         } else {
@@ -1801,6 +1871,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
                    case NAREZDANE_ZA_PREHVYRQNE:
                       {
+                          
                           break;
                       }
                       case PREDAVATELNA_RAZPISKA :
@@ -2105,7 +2176,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                             allTotal += alldds+ddsOsnova;
                             jLabelAllTotal.setText(doubleRoundToString(4,allTotal));
                             
-                            if(jTable1.getSelectedRow()==(jTable1.getRowCount() - 1))
+                            if(jTable1.getSelectedRow()==(jTable1.getRowCount() - 1)) // pri polovfenie 4e reda e posleden
                             {
                                 int i = 0;
                                 i = jTable1.getSelectedRow();
@@ -2124,7 +2195,77 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                 int tmp = myParent.getCountriesT().checkForEnoughProducts(myParent.getID_PC(),myParent.getStorageOUTProduct());
                                 if(true) //nn<=tmp
                                 {
+                                if(myParent.getDocFacadeType()==PRIEMATELNA_RAZPISKA)   
+                                {
+                                    if(isNew)
+                                    {
+                                      myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
+                                                                          myParent.getProcentProduct(),nn,dds,total,prList);
                                 
+                                    int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
+                                    jTable1.setValueAt(maxID_DocLine,rowSelect,12);
+                                    //vry5tane na prodikta v tablicata s nali4nosti
+                                    
+                                    myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn);    
+                                    }
+                                    else
+                                    {
+//------------------------------------
+                                        int id_dl = (Integer) jTable1.getValueAt(rowSelect,12);
+                                        int newNumberProduct = nn;
+                                        docLineArray d =null;
+                                        int oldNumberProduct = 0;
+                                        for(int j=0; j < rows.size();j++)
+                                            {
+                                               d = (docLineArray) rows.get(j);
+                                               if(id_dl==d.getID_DocLine())
+                                               {
+                                                   oldNumberProduct = d.getNumberOfProduct();
+                                                   break;
+                                               }
+
+                                            }
+                                       if(newNumberProduct > oldNumberProduct)
+                                        {
+                                           myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(newNumberProduct-oldNumberProduct));
+                                        }
+                                       else
+                                        {
+                                          
+                                            myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(oldNumberProduct-newNumberProduct ));
+                                        }
+                                      if(oldNumberProduct>0)
+                                        {
+                                          myParent.getCountriesT().updateDocLine(id_dl,myParent.getID_DocFacade(),myParent.getID_PC(),
+                                                                                        myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
+                                                                                        myParent.getProcentProduct(),newNumberProduct,dds,total,prList);
+                                        }
+                                      else
+                                        {
+                                           myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
+                                                                                  myParent.getProcentProduct(),newNumberProduct,dds,total,prList);
+                                            int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
+                                           jTable1.setValueAt(maxID_DocLine,rowSelect,12);
+                                           
+                                         
+                                        }
+//------------------------------------------
+                                        
+                                    }
+                                }
+                                else
+                                if(myParent.getDocFacadeType()==NAREZDANE_ZA_PREHVYRQNE)
+                                {
+                                   if(isNew)
+                                    {
+                                        
+                                    }
+                                    else
+                                    {
+                                        
+                                    }  
+                                }
+                                else
                                 if(myParent.getDocFacadeType()!=PROFORMA_FAKTURA)
                                   {
                                     if(!isNew)
@@ -2215,9 +2356,9 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                  isSetDataInTable = false;  
                                 
                             }
-                            if(jTable1.getSelectedRow()!=(jTable1.getRowCount() - 1))
+                            if(jTable1.getSelectedRow()!=(jTable1.getRowCount() - 1)) // pri polovenie 4e reda ne e posleden
                             {
-  //----------------------------------------- start                             
+                          
                                int i = 0;
                                 i = jTable1.getSelectedRow();
                                 ((docLineTableModel)jTable1.getModel()).setDefaultCellEditable();
@@ -2235,7 +2376,73 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                 int tmp = myParent.getCountriesT().checkForEnoughProducts(myParent.getID_PC(),myParent.getStorageOUTProduct());
                                 if(true) //nn<=tmp
                                 {
+                                if(myParent.getDocFacadeType()==PRIEMATELNA_RAZPISKA)   
+                                 {
+                                    if(isNew)
+                                    {
+                                     myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
+                                                                          myParent.getProcentProduct(),nn,dds,total,prList);
                                 
+                                    int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
+                                    jTable1.setValueAt(maxID_DocLine,rowSelect,12);
+                                    //vry5tane na prodikta v tablicata s nali4nosti
+                                    myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn);    
+                                    }
+                                    else
+                                    {
+                                       int id_dl = (Integer) jTable1.getValueAt(rowSelect,12);
+                                        int newNumberProduct = nn;
+                                        docLineArray d =null;
+                                        int oldNumberProduct = 0;
+                                        for(int j=0; j < rows.size();j++)
+                                            {
+                                               d = (docLineArray) rows.get(j);
+                                               if(id_dl==d.getID_DocLine())
+                                               {
+                                                   oldNumberProduct = d.getNumberOfProduct();
+                                                   break;
+                                               }
+
+                                            }
+                                       if(newNumberProduct > oldNumberProduct)
+                                        {
+                                           myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(newNumberProduct-oldNumberProduct));
+                                        }
+                                       else
+                                        {
+                                          
+                                            myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(oldNumberProduct-newNumberProduct ));
+                                        }
+                                      if(oldNumberProduct>0)
+                                        {
+                                          myParent.getCountriesT().updateDocLine(id_dl,myParent.getID_DocFacade(),myParent.getID_PC(),
+                                                                                        myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
+                                                                                        myParent.getProcentProduct(),newNumberProduct,dds,total,prList);
+                                        }
+                                      else
+                                        {
+                                           myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
+                                                                                  myParent.getProcentProduct(),newNumberProduct,dds,total,prList);
+                                            int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
+                                           jTable1.setValueAt(maxID_DocLine,rowSelect,12);
+                                           
+                                         
+                                        } 
+                                    }
+                                 }
+                                 else   
+                                 if(myParent.getDocFacadeType()==NAREZDANE_ZA_PREHVYRQNE)
+                                {
+                                   if(isNew)
+                                    {
+                                        
+                                    }
+                                    else
+                                    {
+                                        
+                                    } 
+                                }
+                                else
                                 if(myParent.getDocFacadeType()!=PROFORMA_FAKTURA)
                                   {
                                     if(!isNew)
@@ -2317,7 +2524,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                 
 
 
-// --------------------------------------------end
+
                             }
                             
                             
@@ -2378,7 +2585,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                    if(myParent.getIsSelectProduct())
                    {
                         
-                     jLabel32.setText(String.valueOf(myParent.getCountriesT().getAllProductWithOutLevel(myParent.getID_PC(),0)));
+                    jLabel32.setText(String.valueOf(myParent.getCountriesT().getAllProductWithOutLevel(myParent.getID_PC(),0)));
                     jTable1.setValueAt(myParent.getCodeProduct(),jTable1.getSelectedRow(),0);
                     jTable1.setValueAt(myParent.getNameProduct(),jTable1.getSelectedRow(),1);
                     jTable1.setValueAt(myParent.getStorageOUTProduct(),jTable1.getSelectedRow(),2);
@@ -2391,7 +2598,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     jLabelPrice_2.setText(String.valueOf(myParent.getWorkPriceListProduct()[calculatePriceList(myParent.getPriceList())[1]-1]));
                     Double curs = myParent.getWorkPriceListProduct()[3];
                     jLabelValuta.setText(myParent.getCountriesT().getValutaByID(curs.intValue()));
-                    
+// rate select   
+                     rate = getRate(jLabelValuta.getText());
                     
                     jTable1.setValueAt(myParent.getBrojProduct(),jTable1.getSelectedRow(),4);
                     jLabelAllBrojProduct.setText(String.valueOf(myParent.getBrojProduct()));
@@ -2502,7 +2710,9 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     Double curs = myParent.getWorkPriceListProduct()[3];
                     jLabelValuta.setText(myParent.getCountriesT().getValutaByID(curs.intValue()));
                     
-                    
+ // rate select   
+                     rate = getRate(jLabelValuta.getText());   
+                     
                     jTable1.setValueAt(myParent.getBrojProduct(),jTable1.getSelectedRow(),4);
                     jLabelAllBrojProduct.setText(String.valueOf(myParent.getBrojProduct()));
                     
@@ -2613,7 +2823,9 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     jLabelPrice_2.setText(String.valueOf(myParent.getWorkPriceListProduct()[calculatePriceList(myParent.getPriceList())[1]-1]));
                     Double curs = myParent.getWorkPriceListProduct()[3];
                     jLabelValuta.setText(myParent.getCountriesT().getValutaByID(curs.intValue()));
-                    
+
+ // rate select   
+                     rate = getRate(jLabelValuta.getText());
                     
                     jTable1.setValueAt(myParent.getBrojProduct(),jTable1.getSelectedRow(),4);
                     jLabelAllBrojProduct.setText(String.valueOf(myParent.getBrojProduct()));
@@ -2639,7 +2851,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     
                     myParent.setPriceOneProduct(myParent.getWorkPriceListProduct()[myParent.getPriceList()-1]);
   //rate ----->
-                    jTable1.setValueAt(myParent.getPriceOneProduct(),jTable1.getSelectedRow(),8);
+                    jTable1.setValueAt(myParent.getPriceOneProduct()*rate,jTable1.getSelectedRow(),8);
                     
                     jTable1.setValueAt(myParent.getProcentProduct(),jTable1.getSelectedRow(),9);
                     
@@ -2703,7 +2915,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     jLabelPrice_2.setText(String.valueOf(myParent.getWorkPriceListProduct()[calculatePriceList(myParent.getPriceList())[1]-1]));
                     Double curs = myParent.getWorkPriceListProduct()[3];
                     jLabelValuta.setText(myParent.getCountriesT().getValutaByID(curs.intValue()));
-                    
+// rate select   
+                     rate = getRate(jLabelValuta.getText());                    
                     
                     jTable1.setValueAt(myParent.getBrojProduct(),jTable1.getSelectedRow(),4);
                     jLabelAllBrojProduct.setText(String.valueOf(myParent.getBrojProduct()));
@@ -2775,9 +2988,9 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                         jTable1.setValueAt(myParent.getPriceList(),rowSelect,columnSelect);
                         jLabelPricelist_1.setText("\u0426\u0435\u043d\u0430 "+String.valueOf(calculatePriceList(myParent.getPriceList())[0]));
                         jLabelPricelist_2.setText("\u0426\u0435\u043d\u0430 "+String.valueOf(calculatePriceList(myParent.getPriceList())[1]));
-
-                        jLabelPrice_1.setText(String.valueOf(myParent.getWorkPriceListProduct()[calculatePriceList(myParent.getPriceList())[0]-1]));
-                        jLabelPrice_2.setText(String.valueOf(myParent.getWorkPriceListProduct()[calculatePriceList(myParent.getPriceList())[1]-1]));
+//rate ---------->
+                        jLabelPrice_1.setText(String.valueOf(myParent.getWorkPriceListProduct()[calculatePriceList(myParent.getPriceList())[0]-1]*rate));
+                        jLabelPrice_2.setText(String.valueOf(myParent.getWorkPriceListProduct()[calculatePriceList(myParent.getPriceList())[1]-1]*rate));
                            
                       }
                         ((docLineTableModel) jTable1.getModel()).disableCellEditable(3);
@@ -2812,7 +3025,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                          if((br+tmp)<=myParent.getBrojProduct())
                          {
                              jTable1.setValueAt(new Integer(br+tmp),rowSelect,4);
-                              jTable1.setValueAt(calculateTotalPrice(myParent.getPriceOneProduct(),br+tmp),jTable1.getSelectedRow(),11);
+ //rate------->
+                              jTable1.setValueAt(calculateTotalPrice(myParent.getPriceOneProduct()*rate,br+tmp),jTable1.getSelectedRow(),11);
                          } else  jTable1.setValueAt(new Integer(oldRz1),rowSelect,5);
                       }
                       else  jTable1.setValueAt(new Integer(oldRz1),rowSelect,5);
@@ -2860,25 +3074,26 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                  } 
                  if(columnSelect == 8) // price one piece
                  {
+    //rate ---------->                 
                       double newPrice = (Double)jTable1.getValueAt(rowSelect,columnSelect);
                        int br = (Integer) jTable1.getValueAt(rowSelect,4) ; 
-                      if(newPrice<=myParent.getPriceOneProduct())
+                      if(newPrice<=myParent.getPriceOneProduct()*rate)
                       {
-                          double newPP =100-(newPrice*100)/myParent.getPriceOneProduct();
+                          double newPP =100-(newPrice*100)/(myParent.getPriceOneProduct()*rate);
                           jTable1.setValueAt(new Double(newPP),rowSelect,9);
                           
-                          jTable1.setValueAt(calculateTotalPrice(newPrice*rate,br),jTable1.getSelectedRow(),11);
+                          jTable1.setValueAt(calculateTotalPrice(newPrice,br),jTable1.getSelectedRow(),11);
                       }
-                      else jTable1.setValueAt(myParent.getPriceOneProduct(),rowSelect,8);
+                      else jTable1.setValueAt(myParent.getPriceOneProduct()*rate,rowSelect,8);
                       
                  }
                  if(columnSelect == 9) // procent 
                  {
-                      double newPP = (Double)(Double)jTable1.getValueAt(rowSelect,columnSelect);
+                      double newPP = (Double)jTable1.getValueAt(rowSelect,columnSelect);
                        int br = (Integer) jTable1.getValueAt(rowSelect,4) ; 
                       if(newPP <= myParent.getProcentProduct())
                       {
-                          double newPrice =myParent.getPriceOneProduct()-(newPP/100)*myParent.getPriceOneProduct();
+                          double newPrice =(myParent.getPriceOneProduct()*rate)-(newPP/100)*(myParent.getPriceOneProduct()*rate);
                           jTable1.setValueAt(new Double(newPrice),rowSelect,8);
                          
                           jTable1.setValueAt(calculateTotalPrice(newPrice,br),jTable1.getSelectedRow(),11);
@@ -2900,14 +3115,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             }
             public void keyTyped(KeyEvent e) 
             {
-               /* if(!isTyped)
-                {
-                Object value = jTable1.getCellEditor(rowSelect,columnSelect).getCellEditorValue();
-                Component com = jTable1.getCellEditor(rowSelect,columnSelect).getTableCellEditorComponent(jTable1,value,true,rowSelect,columnSelect);
-                JTextField ff = (JTextField) com;
-                ff.selectAll();
-                System.out.println(" >>>>>>>>>>>.. "+ff.getText()); 
-                }*/
+              
                 
             }
         });
@@ -3049,14 +3257,15 @@ private int[] calculatePriceList(int startpricelist)
              double docFacadeTotal = Double.parseDouble(jLabelAllTotal.getText());
              double docFacadeAllDDS = Double.parseDouble(jLabelAllDDS.getText());
              
-             int userEdit =  myParent.getUserDocFacade(); 
-             int userLastEdit =  myParent.getUserEditFortm();       
+             int userEdit =  myParent.getUserEditFortm(); 
+             int userLastEdit = userEdit;
+             if(myParent.getUserEditFortm()!=0) userLastEdit =  myParent.getUserEditFortm();       
              String docFacadeCondition = "0"; 
              String docFacadeCommnet = jTextFieldComment.getText();
              
              imakante.com.dateManipulation dateManip = new imakante.com.dateManipulation();
              
-             String dateDeliver = dateManip.convertDate(jTextFieldDateDeliver.getText());
+             String dateDeliver = dateManip.convertDate("01.01.2000");
              String payingDate = dateManip.convertDate(jTextFieldPayDate.getText());
              String docFacadeDate = dateManip.convertDate(jTextFieldDateDoc.getText());
              int numberDoc = Integer.parseInt(myParent.getNumberDocFacade());
@@ -3069,7 +3278,38 @@ private int[] calculatePriceList(int startpricelist)
          }
          case PROFORMA_FAKTURA :
          {
+             int contragent_in = 0;
+             int contragent_out = myParent.getID_Contragent();;
+             int obekt_in = 0;
+             int obekt_out = 0;
              
+             int facturaConnection=0;
+             int payingOrder = 0;
+             int zaqvkaConnection = 0;
+             
+             int docFacadeLevel = myParent.getDocFacadeLevel();
+             int docFacadeStorage = myParent.getStorageOUTProduct();
+             int docFacadeType = myParent.getDocFacadeType();
+             double docFacadeTotal = Double.parseDouble(jLabelAllTotal.getText());
+             double docFacadeAllDDS = Double.parseDouble(jLabelAllDDS.getText());
+             
+             int userEdit =  myParent.getUserEditFortm(); 
+             int userLastEdit = userEdit;
+             if(myParent.getUserEditFortm()!=0) userLastEdit =  myParent.getUserEditFortm();       
+             String docFacadeCondition = "0"; 
+             String docFacadeCommnet = jTextFieldComment.getText();
+             
+             imakante.com.dateManipulation dateManip = new imakante.com.dateManipulation();
+             
+             String dateDeliver = dateManip.convertDate("01.01.2000");
+             String payingDate = dateManip.convertDate(jTextFieldPayDate.getText());
+             String docFacadeDate = dateManip.convertDate(jTextFieldDateDoc.getText());
+             int numberDoc = Integer.parseInt(myParent.getNumberDocFacade());
+             myParent.getCountriesT().updateRow(id_df,contragent_out,contragent_in,obekt_out,
+                     obekt_in,myParent.getID_Distributor(),myParent.getID_Deliver(),jComboBoxVidPla6tane.getSelectedIndex(),
+                     numberDoc,userEdit,userLastEdit,
+                     facturaConnection,payingOrder,zaqvkaConnection,docFacadeLevel,docFacadeStorage,docFacadeType,
+                     docFacadeTotal,docFacadeAllDDS,docFacadeCondition,docFacadeDate,docFacadeCommnet,dateDeliver,payingDate,1);
              break;
          }
          case STOKOVA_RAZPISKA :
@@ -3092,16 +3332,18 @@ private int[] calculatePriceList(int startpricelist)
              String docFacadeCondition = "0";
             
              String docFacadeCommnet = jTextFieldComment.getText();
-             
+             int userEdit =  myParent.getUserEditFortm(); 
+             int userLastEdit = userEdit;
+             if(myParent.getUserEditFortm()!=0) userLastEdit =  myParent.getUserEditFortm();   
              
             imakante.com.dateManipulation dateManip = new imakante.com.dateManipulation();
              
-             String dateDeliver = dateManip.convertDate("01.01.1997");
+             String dateDeliver = dateManip.convertDate(jTextFieldDateDeliver.getText());
              String payingDate = dateManip.convertDate(jTextFieldPayDate.getText());
              String docFacadeDate = dateManip.convertDate(jTextFieldDateDoc.getText());
               myParent.getCountriesT().updateRow(id_df,contragent_out,contragent_in,obekt_out,
                      obekt_in,myParent.getID_Distributor(),myParent.getID_Deliver(),jComboBoxVidPla6tane.getSelectedIndex(),
-                     Integer.parseInt(myParent.getNumberDocFacade()),myParent.getUserEditFortm(),myParent.getUserEditFortm(),
+                     Integer.parseInt(myParent.getNumberDocFacade()),userEdit,userLastEdit,
                      facturaConnection,payingOrder,zaqvkaConnection,docFacadeLevel,docFacadeStorage,docFacadeType,
                      docFacadeTotal,docFacadeAllDDS,docFacadeCondition,docFacadeDate,docFacadeCommnet,dateDeliver,payingDate,1);
              break;
@@ -3112,26 +3354,32 @@ private int[] calculatePriceList(int startpricelist)
              int contragent_out = myParent.getID_Contragent();
              int obekt_in = 0;
              int obekt_out = myParent.getID_Obekt();
-             int facturaConnection=99;
-             int payingOrder = 99;
-             int zaqvkaConnection = 99;
+             
+             
+             int facturaConnection= connection;
+             int payingOrder = 0;
+             int zaqvkaConnection = 0;
+             
              int docFacadeLevel = myParent.getDocFacadeLevel();
              int docFacadeStorage = myParent.getStorageOUTProduct();
              int docFacadeType = myParent.getDocFacadeType();
              double docFacadeTotal = Double.parseDouble(jLabelAllTotal.getText());
              double docFacadeAllDDS = Double.parseDouble(jLabelAllDDS.getText());
              String docFacadeCondition = "0";
+            
              String docFacadeCommnet = jTextFieldComment.getText();
+             int userEdit =  myParent.getUserEditFortm(); 
+             int userLastEdit = userEdit;
+             if(myParent.getUserEditFortm()!=0) userLastEdit =  myParent.getUserEditFortm();   
              
-             imakante.com.dateManipulation dateManip = new imakante.com.dateManipulation();
+            imakante.com.dateManipulation dateManip = new imakante.com.dateManipulation();
              
              String dateDeliver = dateManip.convertDate(jTextFieldDateDeliver.getText());
              String payingDate = dateManip.convertDate(jTextFieldPayDate.getText());
              String docFacadeDate = dateManip.convertDate(jTextFieldDateDoc.getText());
-            
-             myParent.getCountriesT().updateRow(id_df,contragent_out,contragent_in,obekt_out,
+              myParent.getCountriesT().updateRow(id_df,contragent_out,contragent_in,obekt_out,
                      obekt_in,myParent.getID_Distributor(),myParent.getID_Deliver(),jComboBoxVidPla6tane.getSelectedIndex(),
-                     Integer.parseInt(myParent.getNumberDocFacade()),myParent.getUserEditFortm(),myParent.getUserEditFortm(),
+                     Integer.parseInt(myParent.getNumberDocFacade()),userEdit,userLastEdit,
                      facturaConnection,payingOrder,zaqvkaConnection,docFacadeLevel,docFacadeStorage,docFacadeType,
                      docFacadeTotal,docFacadeAllDDS,docFacadeCondition,docFacadeDate,docFacadeCommnet,dateDeliver,payingDate,1);
              break;
@@ -3239,6 +3487,7 @@ private void emptyPreservation(boolean isnew)
              jPanelObekt.setVisible(false);
              jPanel4.setVisible(false);
              jPanelCreateFacturi.setVisible(false);
+             jPanelStorageINOUT.setVisible(false);
              break;
             
          }
@@ -3248,11 +3497,13 @@ private void emptyPreservation(boolean isnew)
              jPanelObekt.setVisible(false);
              jPanel4.setVisible(false);
              jPanelCreateFacturi.setVisible(false);
+              jPanelStorageINOUT.setVisible(false);
              break;
          }
          case STOKOVA_RAZPISKA :
          {
              jLabelDocType.setText("\u0421\u0422\u041e\u041a\u041e\u0412\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410");
+             jPanelStorageINOUT.setVisible(false);
              
              break;
          }
@@ -3261,10 +3512,18 @@ private void emptyPreservation(boolean isnew)
              jLabelDocType.setFont(new java.awt.Font("Tahoma", 0, 18));
              jLabelDocType.setText("\u041a\u041e\u041d\u0421\u0413\u041d\u0410\u0426\u0418\u041e\u041d\u0415\u041d \u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b");
              jPanelCreateFacturi.setVisible(false);
+             jPanelStorageINOUT.setVisible(false);
              break;
          }
           case NAREZDANE_ZA_PREHVYRQNE:
           {
+             jLabelDocType.setText("\u041d\u0410\u0420\u0415\u0416\u0414\u0410\u041d\u0415 \u0417\u0410 \u041f\u0420\u0415\u0425\u0412\u042a\u0420\u041b\u042f\u041d\u0415");
+             jPanelObekt.setVisible(false);
+             jPanelContragent.setVisible(false);
+             jPanel4.setVisible(false);
+             jPanelCreateFacturi.setVisible(false);
+            
+              
               break;
           }
           case PREDAVATELNA_RAZPISKA :
@@ -3285,6 +3544,7 @@ private void showAllPanels()
        jPanelObekt.setVisible(true);
        jPanel4.setVisible(true);
        jPanelCreateFacturi.setVisible(true);
+       jPanelStorageINOUT.setVisible(true);
     
 }
  private void deleteDocLine(int selectRow, boolean withRowTable,boolean alsoInBD)
@@ -3499,6 +3759,14 @@ private void repainDistDeliv(String dist,String devil,String date)
     jTextFieldDeliver.setText(devil);
     jTextFieldDistr.setText(dist);
     jTextFieldDateDeliver.setText(date);
+}
+private double getRate(String valuta)
+{
+    double rate =0;
+    
+    rate =(Double) arrayRate.get(valuta);
+    
+    return rate;
 }
 }// end class
 
