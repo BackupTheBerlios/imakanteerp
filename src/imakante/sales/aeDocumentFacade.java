@@ -1035,7 +1035,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
        imakante.com.dateManipulation dateManip = new imakante.com.dateManipulation();
        String dateCurs = dateManip.convertDate(jTextField1.getText());
         
-       arrayRate =  myParent.getCountriesT().getRateByDate(dateCurs);
+    //   arrayRate =  myParent.getCountriesT().getRateByDate(dateCurs);
         
        rate = 1;
         

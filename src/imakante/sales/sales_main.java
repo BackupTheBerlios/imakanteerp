@@ -651,7 +651,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-448)/2, 757, 448);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jMenuItem9DTURActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9DTURActionPerformed
         loadDTUR();
     }//GEN-LAST:event_jMenuItem9DTURActionPerformed
@@ -665,7 +665,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_jMenuItem8ActionPerformed
     
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        this.loadImport();
+        this.loadLevelImport();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
     
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
@@ -1107,17 +1107,17 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     
     private void loadRightsArea(){
         String StrQ = "SELECT " +
-                      "`n_doc_type_user_rights`.`id_ndtur`, " +
-                      "`sl_doc_type_num`.`area_number_sdtn` " +
-                      "FROM " +
-                      "`n_doc_type_user_rights` " +
-                      "Inner Join `sl_doc_type_num` ON `sl_doc_type_num`.`id_sdtn` = `n_doc_type_user_rights`.`id_sdtn` " +
-                      "Inner Join `n_type_doc` ON `n_type_doc`.`id_ntd` = `sl_doc_type_num`.`id_ntd` " +
-                       " WHERE " +
-                      "`n_doc_type_user_rights`.`id_um` = '" +
-                       imakante.com.NewMain.getUserId() +
-                      "' AND " +
-                       "`n_type_doc`.`code_ntd` =";
+                "`n_doc_type_user_rights`.`id_ndtur`, " +
+                "`sl_doc_type_num`.`area_number_sdtn` " +
+                "FROM " +
+                "`n_doc_type_user_rights` " +
+                "Inner Join `sl_doc_type_num` ON `sl_doc_type_num`.`id_sdtn` = `n_doc_type_user_rights`.`id_sdtn` " +
+                "Inner Join `n_type_doc` ON `n_type_doc`.`id_ntd` = `sl_doc_type_num`.`id_ntd` " +
+                " WHERE " +
+                "`n_doc_type_user_rights`.`id_um` = " +
+                imakante.com.NewMain.getUserId() +
+                " AND " +
+                "`n_type_doc`.`code_ntd` =";
         
         try {
             int i = 0;
@@ -1126,7 +1126,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
                     StrQ + "'1'"
                     );
             while(rs.next()){
-              
+                
                 getOrderArea().put(rs.getInt("id_ndtur"),new String(rs.getString("area_number_sdtn")));
                 
             }
@@ -1160,6 +1160,17 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     /*
      *
      */
+    
+    
+    private void loadLevelImport(){
+        if (!this.getOrderArea().isEmpty()){
+        imakante.sales.levelDialog level = new imakante.sales.levelDialog(this, true, 1, this.getOrderArea());
+      //  desktopPane.add(level);
+        level.setVisible(true); }
+        else{System.out.println("Empty hash");};
+        
+    }
+    
     //PRODUCTS
     
     private void loadFrmProducts() {
@@ -1346,7 +1357,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         DocNums.setVisible(true);
     }
     
-    private void  loadImport(){
+    public void  loadImport(){
         
         imakante.sales.importFrmSklB imp = new imakante.sales.importFrmSklB();
         desktopPane.add(imp);
