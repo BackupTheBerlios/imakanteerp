@@ -1,51 +1,51 @@
 /*
- *comprator = 0 : getTable()
- *comprator = 1 : insertRow()
- *comprator = 2 : updateRow()
- *comprator = 3 : deleteRow()
- *comprator = 4 : getRow();
- *comprator = 5 : searchRecords()
- *comprator = 6 : getDocNumberLast()
- *comprator = 7 : getMaxId()
- *comprator = 8 : getTableIncludeTextDistDeliv()
- *comprator = 9 : getTableStartTextDistDeliv()
- *comprator = 10 : getTableFinishTextDistDeliv()
- *comprator = 11 : getTableIncludeTextObekt()
- *comprator = 12 : getTableStartTextObekt()
- *comprator = 13 : getTableFinishTextObekt()
- *comprator = 14 : getTableIncludeTextContragent()
- *comprator = 15 : getTableStartTextContragent()
- *comprator = 16 : getTableFinishTextContragent()
- *comprator = 17 : getUserDataByID()
- *comprator = 18 : getContragentDataByID()
- *comprator = 19 : getObektDataByID()
- *comprator = 20 : getTableProductInfo()
- *comprator = 21 : getPriceListByID();
- * comprator = 22 :getProductDescriptionByID()
- *comprator = 23: getProductFeeByID()
- *comprator = 24: getProductDescriptionNameID()
- *comprator = 25: getAllProductWithOutLevel()
- *comprator = 26: insertDocLine()
- *comprator = 27: checkForEnoughProducts()
- *comprator = 28: preserveProducts()
- *comprator = 29: getValutaByID()
- *comprator = 30: emptyPreservation()
- *comprator = 31: getDocLine()
- *comprator = 32: updateDocLine()
- *comprator = 33: deleteDocLine()
- *comprator = 34: getMaxIdDocLine()
- *comprator = 35: deleteRow()
- *comprator = 36: clearPreservation()
- *comprator = 37: returnProducts() 
- *comprator = 38: clearReturnProducts()
- *comprator = 39: emptyReturnProducts()
- *comprator = 40: cancellationDocFacade()
- *comprator = 41: getIDPMByIDPC()
- *comprator = 42: updateConnectionID()
- *comprator = 43:
- *comprator = 44:
- *comprator = 45:
- *comprator = 46:
+ *comprator= 0 : getTable()
+ *comprator= 1 : insertRow()
+ *comprator= 2 : updateRow()
+ *comprator= 3 : deleteRow()
+ *comprator= 4 : getRow();
+ *comprator= 5 : searchRecords()
+ *comprator= 6 : getDocNumberLast()
+ *comprator= 7 : getMaxId()
+ *comprator= 8 : getTableIncludeTextDistDeliv()
+ *comprator= 9 : getTableStartTextDistDeliv()
+ *comprator= 10 : getTableFinishTextDistDeliv()
+ *comprator= 11 : getTableIncludeTextObekt()
+ *comprator= 12 : getTableStartTextObekt()
+ *comprator= 13 : getTableFinishTextObekt()
+ *comprator= 14 : getTableIncludeTextContragent()
+ *comprator= 15 : getTableStartTextContragent()
+ *comprator= 16 : getTableFinishTextContragent()
+ *comprator= 17 : getUserDataByID()
+ *comprator= 18 : getContragentDataByID()
+ *comprator= 19 : getObektDataByID()
+ *comprator= 20 : getTableProductInfo()
+ *comprator= 21 : getPriceListByID();
+ *comprator= 22 :getProductDescriptionByID()
+ *comprator= 23: getProductFeeByID()
+ *comprator= 24: getProductDescriptionNameID()
+ *comprator= 25: getAllProductWithOutLevel()
+ *comprator= 26: insertDocLine()
+ *comprator= 27: checkForEnoughProducts()
+ *comprator= 28: preserveProducts()
+ *comprator= 29: getValutaByID()
+ *comprator= 30: emptyPreservation()
+ *comprator= 31: getDocLine()
+ *comprator= 32: updateDocLine()
+ *comprator= 33: deleteDocLine()
+ *comprator= 34: getMaxIdDocLine()
+ *comprator= 35: deleteRow()
+ *comprator= 36: clearPreservation()
+ *comprator= 37: returnProducts() 
+ *comprator= 38: clearReturnProducts()
+ *comprator= 39: emptyReturnProducts()
+ *comprator= 40: cancellationDocFacade()
+ *comprator= 41: getIDPMByIDPC()
+ *comprator= 42: updateConnectionID()
+ *comprator= 43:
+ *comprator= 44:
+ *comprator= 45:
+ *comprator= 46:
  *
  *
  *
@@ -56,21 +56,9 @@
 
 package imakante.sales;
 
-import com.mysql.jdbc.ResultSetMetaData;
-import imakante.com.*;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-
-public class documentFacadeDB  extends dbObject 
-{
+public class documentFacadeDB  extends imakante.com.dbObject {
     //-------------START MyVariables
-   private java.sql.ResultSet rs;
-   private java.sql.Statement stmt;
-   private java.sql.CallableStatement cstm;
-   private int comprator;
-   private Connection conn;
+   private java.sql.Connection conn;
   
     private int idDocFacade;
     private int docFacadeNumber;
@@ -130,7 +118,7 @@ public class documentFacadeDB  extends dbObject
      setUserDocFacade(user);
      setLevelDocFacade(level);
         
-        this.comprator = 0;
+        this.setComprator(0);
         try{
             registerParameters();
             setRs(getCstm().executeQuery());
@@ -145,7 +133,7 @@ public class documentFacadeDB  extends dbObject
        setUserDocFacade(oldUse);
        setLevelDocFacade(oldLevel);
         
-        return rs;
+        return getRs();
     }
  public void registerParameters() 
     {
@@ -208,7 +196,7 @@ public class documentFacadeDB  extends dbObject
             String in_docFacadeCondition, String in_docFacadeDate, String in_docFacadeCommnet,
             String in_dateDeliver, String in_payingDate,int in_docFacadeFlagFinish)
       {
-        comprator = 1;
+        setComprator(1);
         setID_Contragent_IN(in_id_contragent_in);
         setID_Contragent_OUT(in_id_contragent_out);
         setID_Obekt_IN(in_id_obekt_in);
@@ -238,7 +226,7 @@ public class documentFacadeDB  extends dbObject
         try
         {
             registerParameters();
-            cstm.execute();
+            getCstm().execute();
         }
         catch(java.sql.SQLException sqle)
         {
@@ -254,7 +242,7 @@ public class documentFacadeDB  extends dbObject
             String in_docFacadeCondition, String in_docFacadeDate, String in_docFacadeCommnet,
             String in_dateDeliver, String in_payingDate,int in_docFacadeFlagFinish) 
     {
-        comprator = 2;
+        setComprator(2);
         setID_DocFacade(in_id_df);
         setID_Contragent_IN(in_id_contragent_in);
         setID_Contragent_OUT(in_id_contragent_out);
@@ -284,7 +272,7 @@ public class documentFacadeDB  extends dbObject
         try
         {
             registerParameters();
-            cstm.execute();
+            getCstm().execute();
         }
         catch(java.sql.SQLException sqle)
         {
@@ -295,23 +283,23 @@ public class documentFacadeDB  extends dbObject
     }
  public void deleteRow(int in_id_df) //OK
     {
-        comprator = 3;
+        setComprator(3);
        
         try{
             registerParameters();
-            cstm.execute();
+            getCstm().execute();
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
         
     }
  public java.sql.ResultSet getRow(int in_id_df) //OK
     {
-        comprator = 4;
+        setComprator(4);
        setID_DocFacade(in_id_df);
         try
         {
             registerParameters();
-            rs = cstm.executeQuery();
-            while(rs.next())
+            setRs(getCstm().executeQuery());
+            while(getRs().next())
             {
                
             }
@@ -320,7 +308,7 @@ public class documentFacadeDB  extends dbObject
         {
             sqle.printStackTrace();
         }
-      return rs;  
+      return getRs();  
     }
  public java.sql.ResultSet searchRecords(int in_id_contragent_out , int in_id_contragent_in,
             int in_id_obekt_out, int in_id_obekt_in, int in_id_distributor, int in_id_deliver,
@@ -330,8 +318,8 @@ public class documentFacadeDB  extends dbObject
             String in_docFacadeCondition, String in_docFacadeDate, String in_docFacadeCommnet,
             String in_dateDeliver, String in_payingDate,int in_docFacadeFlagFinish)
     {
-        comprator = 5;
-         setID_Contragent_IN(in_id_contragent_in);
+        setComprator(5);
+        setID_Contragent_IN(in_id_contragent_in);
         setID_Contragent_OUT(in_id_contragent_out);
         setID_Obekt_IN(in_id_obekt_in);
         setID_Obekt_OUT(in_id_obekt_out);
@@ -377,46 +365,17 @@ public class documentFacadeDB  extends dbObject
         this.conn = conn;
     }
     
-    public java.sql.Statement getStm() //OK
-    {
-        return stmt;
-    }
-    
-    public void setStm(java.sql.Statement stm) //OK
-    {
-        this.stmt = stm;
-    }
-    
-    public java.sql.CallableStatement getCstm() //OK
-    {
-        return cstm;
-    }
-    
-    public void setCstm(java.sql.CallableStatement cstm) //OK
-    {
-        this.cstm = cstm;
-    }
-    
-    public java.sql.ResultSet getRs() //OK
-    {
-        return rs;
-    }
-    public void setRs(java.sql.ResultSet rs) //OK
-    {
-        this.rs = rs;
-    }
-  
     public int getMaxId() //OK
     {
-        comprator = 7;
+        setComprator(7);
         int return_int=-1;
          try
         {
             registerParameters();
-            rs = cstm.executeQuery();
-            while(rs.next())
+            setRs(getCstm().executeQuery());
+            while(getRs().next())
             {
-                return_int = rs.getInt(1);
+                return_int = getRs().getInt(1);
             }
         }
         catch(java.sql.SQLException sqle)
@@ -424,28 +383,6 @@ public class documentFacadeDB  extends dbObject
             sqle.printStackTrace();
         }
        return return_int;
-    }
-  
-    public int getComprator() //OK
-    {
-        return comprator;
-    }
-    public void setComprator(int com) //OK
-    {
-        this.comprator = com;
-    }
-    public void close() //OK
-    {
-        try{
-            rs.close();
-            rs=null;
-        }catch(java.sql.SQLException sqle){}
-        
-        try{
-            cstm.close();
-            cstm=null;
-        }catch(java.sql.SQLException sqle){}
-        
     }
     
 //------------------------>
@@ -674,14 +611,14 @@ public int getDocFacadeFlagFinish()
 public java.sql.ResultSet getTableIncludeTextDistDeliv(String in,int sqlselect)
 {
     java.sql.ResultSet rs1 = null;
-     this.comprator = 8;
+     this.setComprator(8);
      String oldvalues = getCommentDocFacade();
      int oldIntValue = getDocFacadeType();
      setDocFacadeType(sqlselect);
      setCommentDocFacade(in);
         try{
             registerParameters();
-            rs1 = cstm.executeQuery();;
+            rs1 = getCstm().executeQuery();;
         }
         catch(java.sql.SQLException sqle)
         {
@@ -700,10 +637,10 @@ public java.sql.ResultSet getTableStartTextDistDeliv(String in, int sqlselect)
      setDocFacadeType(sqlselect);
     String oldvalues = getCommentDocFacade();
     setCommentDocFacade(in);
-   this.comprator = 9;
+   this.setComprator(9);
         try{
             registerParameters();
-            rs1 = cstm.executeQuery();;
+            rs1 = getCstm().executeQuery();;
         }
         catch(java.sql.SQLException sqle)
         {
@@ -722,10 +659,10 @@ public java.sql.ResultSet getTableFinishTextDistDeliv(String in , int sqlselect)
      setDocFacadeType(sqlselect);
     String oldvalues = getCommentDocFacade();
     setCommentDocFacade(in);
-   this.comprator = 10;
+   this.setComprator(10);
         try{
             registerParameters();
-            rs1 = cstm.executeQuery();;
+            rs1 = getCstm().executeQuery();;
         }
         catch(java.sql.SQLException sqle)
         {
@@ -744,10 +681,10 @@ public java.sql.ResultSet getTableIncludeTextObekt(String in, int sqlselect)
      setDocFacadeType(sqlselect);
      String oldvalues = getCommentDocFacade();
      setCommentDocFacade(in);
-     this.comprator = 11;
+     this.setComprator(11);
         try{
             registerParameters();
-            rs1 = cstm.executeQuery();;
+            rs1 = getCstm().executeQuery();;
         }
         catch(java.sql.SQLException sqle)
         {
@@ -766,10 +703,10 @@ public java.sql.ResultSet getTableStartTextObekt(String in , int sqlselect)
      setDocFacadeType(sqlselect);
      String oldvalues = getCommentDocFacade();
      setCommentDocFacade(in);
-     this.comprator = 12;
+     this.setComprator(12);
         try{
             registerParameters();
-            rs1 = cstm.executeQuery();;
+            rs1 = getCstm().executeQuery();;
         }
         catch(java.sql.SQLException sqle)
         {
@@ -790,10 +727,10 @@ public java.sql.ResultSet getTableFinishTextObekt(String in , int sqlselect)
     String oldvalues = getCommentDocFacade();
     setCommentDocFacade(in); 
      
-     this.comprator = 13;
+     this.setComprator(13);
         try{
             registerParameters();
-            rs1 = cstm.executeQuery();;
+            rs1 = getCstm().executeQuery();;
         }
         catch(java.sql.SQLException sqle)
         {
@@ -813,10 +750,10 @@ public java.sql.ResultSet getTableIncludeTextContragent(String in , int sqlselec
     String oldvalues = getCommentDocFacade();
     setCommentDocFacade(in); 
     
-     this.comprator = 14;
+     this.setComprator(14);
         try{
             registerParameters();
-            rs1 = cstm.executeQuery();;
+            rs1 = getCstm().executeQuery();;
         }
         catch(java.sql.SQLException sqle)
         {
@@ -835,10 +772,10 @@ public java.sql.ResultSet getTableStartTextContragent(String in , int sqlselect)
     setDocFacadeType(sqlselect);
     String oldvalues = getCommentDocFacade();
     setCommentDocFacade(in); 
-     this.comprator = 15;
+     this.setComprator(15);
         try{
             registerParameters();
-            rs1 = cstm.executeQuery();;
+            rs1 = getCstm().executeQuery();;
         }
         catch(java.sql.SQLException sqle)
         {
@@ -857,11 +794,11 @@ public java.sql.ResultSet getTableFinishTextContragent(String in , int sqlselect
     setDocFacadeType(sqlselect);
     String oldvalues = getCommentDocFacade();
     setCommentDocFacade(in);  
-     this.comprator = 16;
-    System.out.println("comprator: "+String.valueOf(comprator) + "  in:" + in+ "  sqlselect: " + String.valueOf(sqlselect));
+     this.setComprator(16);
+    System.out.println("comprator: "+String.valueOf(getComprator()) + "  in:" + in+ "  sqlselect: " + String.valueOf(sqlselect));
         try{
             registerParameters();
-            rs1 = cstm.executeQuery();;
+            rs1 = getCstm().executeQuery();;
         }
         catch(java.sql.SQLException sqle)
         {
@@ -881,14 +818,14 @@ public int getDocNumberLast(int iduser, int level)
     setID_Obekt_IN(level);
      int oldIntValue = getUserDocFacade();
      setUserDocFacade(iduser);
-     this.comprator = 6;
+     this.setComprator(6);
      try
         {
             registerParameters();
-            rs = cstm.executeQuery();
-            while(rs.next())
+            setRs(getCstm().executeQuery());
+            while(getRs().next())
             {
-                lastNumber = rs.getInt("maxNumber");
+                lastNumber = getRs().getInt("maxNumber");
             }
         }
         catch(java.sql.SQLException sqle)
@@ -904,18 +841,18 @@ public int getDocNumberLast(int iduser, int level)
 public String[] getUserDataByID(int iduser)
 {
     String newUserDate[]= {" "," "};
-     this.comprator = 17;
+     this.setComprator(17);
      int oldIntValue = getUserDocFacade();
      setUserDocFacade(iduser);
     
      try
         {
             registerParameters();
-            rs = cstm.executeQuery();
-            while(rs.next())
+            setRs(getCstm().executeQuery());
+            while(getRs().next())
             {
-                newUserDate[0] = String.valueOf(rs.getInt("id_ndtur"));
-                newUserDate[1] = rs.getString("name_um");
+                newUserDate[0] = String.valueOf(getRs().getInt("id_ndtur"));
+                newUserDate[1] = getRs().getString("name_um");
             }
         }
         catch(java.sql.SQLException sqle)
@@ -930,20 +867,20 @@ public String[] getContragentDataByID(int idContragent)
     String ContragentData[] = new String[7];
     int oldIntValue = getUserDocFacade();
     setUserDocFacade(idContragent);
-     this.comprator = 18;
+     this.setComprator(18);
      try
         {
             registerParameters();
-            rs = cstm.executeQuery();
-            while(rs.next())
+            setRs(getCstm().executeQuery());
+            while(getRs().next())
             {
-               ContragentData[0] =String.valueOf(rs.getInt("code_contragent"));
-               ContragentData[1] = rs.getString("bul_n_contragent");
-               ContragentData[2] = rs.getString("dan_n_contragent");
-               ContragentData[3] = rs.getString("name_n_contragent");
-               ContragentData[4] = rs.getString("address_n_contragent");
-               ContragentData[5] = rs.getString("name_ls_n_person");
-               ContragentData[6] = rs.getString("tel_contragent");
+               ContragentData[0] =String.valueOf(getRs().getInt("code_contragent"));
+               ContragentData[1] = getRs().getString("bul_n_contragent");
+               ContragentData[2] = getRs().getString("dan_n_contragent");
+               ContragentData[3] = getRs().getString("name_n_contragent");
+               ContragentData[4] = getRs().getString("address_n_contragent");
+               ContragentData[5] = getRs().getString("name_ls_n_person");
+               ContragentData[6] = getRs().getString("tel_contragent");
             }
         }
         catch(java.sql.SQLException sqle)
@@ -958,17 +895,17 @@ public String[] getObektDataByID(int idObekt)
     String ObektData[] = new String[7];
     int oldIntValue = getUserDocFacade();
     setUserDocFacade(idObekt);
-     this.comprator = 19;
+     this.setComprator(19);
      try
         {
             registerParameters();
-            rs = cstm.executeQuery();
-            while(rs.next())
+            setRs(getCstm().executeQuery());
+            while(getRs().next())
             {
-               ObektData[0] = rs.getString("code_n_obekt");
-               ObektData[1] = rs.getString("name_n_obekt");
-               ObektData[2] = rs.getString("address_n_obekt");
-               ObektData[3] = rs.getString("address_n_obekt");
+               ObektData[0] = getRs().getString("code_n_obekt");
+               ObektData[1] = getRs().getString("name_n_obekt");
+               ObektData[2] = getRs().getString("address_n_obekt");
+               ObektData[3] = getRs().getString("address_n_obekt");
             }
                
         }
@@ -1011,11 +948,11 @@ public java.sql.ResultSet getTableProductInfo(String in , int sqlselect,int leve
     setID_DocFacade(levelForNali4nost);
     setID_Obekt_IN(flag);
     
-     this.comprator = 20;
+     this.setComprator(20);
    
         try{
             registerParameters();
-            rs1 = cstm.executeQuery();;
+            rs1 = getCstm().executeQuery();;
         }
         catch(java.sql.SQLException sqle)
         {
@@ -1034,17 +971,17 @@ public double[] getPriceListByID(int in_id_pp)
     double pricelist[] = new double[4];
    int oldIntValue = getID_Obekt_IN();
    setID_Obekt_IN(in_id_pp);
-     this.comprator = 21;
+     this.setComprator(21);
      try
         {
             registerParameters();
-            rs = cstm.executeQuery();
-            while(rs.next())
+            setRs(getCstm().executeQuery());
+            while(getRs().next())
             {
-              pricelist[0] = rs.getDouble("price1_pp");
-              pricelist[1] = rs.getDouble("price2_pp");
-              pricelist[2] = rs.getDouble("price3_pp");
-              Integer  curs = ( Integer)rs.getInt("id_sl_curs");
+              pricelist[0] = getRs().getDouble("price1_pp");
+              pricelist[1] = getRs().getDouble("price2_pp");
+              pricelist[2] = getRs().getDouble("price3_pp");
+              Integer  curs = (Integer) getRs().getInt("id_sl_curs");
               pricelist[3] =curs.doubleValue();
             }
                
@@ -1059,25 +996,25 @@ public double[] getPriceListByID(int in_id_pp)
    
     return pricelist;
 }
- public String[][] getProductDescriptionByID(int in_id_pd) // Test   comprator = 22;
+ public String[][] getProductDescriptionByID(int in_id_pd) // Test   getComprator(22;
    {
        String des[][] = new String[3][2];
         int oldIntValue = getID_Obekt_IN();
    setID_Obekt_IN(in_id_pd);
-       comprator = 22;
+       setComprator(22);
        try
         {
             registerParameters();
-            rs = cstm.executeQuery();
+            setRs(getCstm().executeQuery());
             
-            while(rs.next())
+            while(getRs().next())
             {
-                des[0][0] = rs.getString("m1_pd");
-                des[1][0] = rs.getString("m2_pd");
-                des[2][0] = rs.getString("m3_pd");
-                des[0][1] = rs.getString("v1_pd");
-                des[1][1] = rs.getString("v2_pd");
-                des[2][1] = rs.getString("v3_pd");
+                des[0][0] = getRs().getString("m1_pd");
+                des[1][0] = getRs().getString("m2_pd");
+                des[2][0] = getRs().getString("m3_pd");
+                des[0][1] = getRs().getString("v1_pd");
+                des[1][1] = getRs().getString("v2_pd");
+                des[2][1] = getRs().getString("v3_pd");
             }
         }
         catch(java.sql.SQLException sqle)
@@ -1088,22 +1025,22 @@ public double[] getPriceListByID(int in_id_pp)
        setID_Obekt_IN(oldIntValue);
        return des;
    }
- public double[] getProductFeeByID(int in_id_pf) // Test   comprator = 23;
+ public double[] getProductFeeByID(int in_id_pf) // Test   getComprator(23;
    {
       double fee[] =  new double[3];
         int oldIntValue = getID_Obekt_IN();
        setID_Obekt_IN(in_id_pf);
-       comprator = 23;
+       setComprator(23);
        try
         {
             registerParameters();
-            rs = cstm.executeQuery();
+            setRs(getCstm().executeQuery());
             
-            while(rs.next())
+            while(getRs().next())
             {
-                fee[0] = rs.getDouble("dds_pf");
-                fee[1] = rs.getDouble("excise_pf");
-                fee[2]  =rs.getDouble("other_pf") ;     
+                fee[0] = getRs().getDouble("dds_pf");
+                fee[1] = getRs().getDouble("excise_pf");
+                fee[2]  =getRs().getDouble("other_pf") ;     
             }
         }
         catch(java.sql.SQLException sqle)
@@ -1114,17 +1051,17 @@ public double[] getPriceListByID(int in_id_pp)
        setID_Obekt_IN(oldIntValue);
        return fee;
    }
- public String getProductDescriptionNameID(int in_id_pam) // Test   comprator = 24;
+ public String getProductDescriptionNameID(int in_id_pam) // Test   getComprator(24;
    {
        String des = new String();
         int oldIntValue = getID_Obekt_IN();
        setID_Obekt_IN(in_id_pam);
-       comprator = 24;
+       setComprator(24);
        java.sql.ResultSet rs1;
        try
         {
             registerParameters();
-            rs1 = cstm.executeQuery();
+            rs1 = getCstm().executeQuery();
             
             while(rs1.next())
             {
@@ -1149,15 +1086,15 @@ public double[] getPriceListByID(int in_id_pp)
        setID_Obekt_IN(in_id_pc);
        setID_DocFacade(flag);
       
-       comprator = 25;
+       setComprator(25);
        try
         {
             registerParameters();
-            rs = cstm.executeQuery();
+            setRs(getCstm().executeQuery());
             
-            while(rs.next())
+            while(getRs().next())
             {
-                allProduct += rs.getInt("quant_nal"); 
+                allProduct += getRs().getInt("quant_nal"); 
                 
             }
         }
@@ -1188,12 +1125,12 @@ public double[] getPriceListByID(int in_id_pp)
        setPriceOne(priceone);
        setClimbDown(climbdown);
        setID_DocFacade(in_id_df);
-       comprator=26;
+       setComprator(26);
        setID_Deliver(pricelist);
        try
         {
             registerParameters();
-            cstm.execute();
+            getCstm().execute();
         }
         catch(java.sql.SQLException sqle)
         {
@@ -1214,7 +1151,7 @@ public double[] getPriceListByID(int in_id_pp)
  {
      int enoughProduct = 0;
      int maxNumber = 0;
-     comprator=27;
+     setComprator(27);
      int oldID_DF = getID_DocFacade();
      int oldID_Obekt_in = getID_Obekt_IN();
      setID_Obekt_IN(in_id_starage);
@@ -1223,11 +1160,11 @@ public double[] getPriceListByID(int in_id_pp)
      try
         {
             registerParameters();
-            rs = cstm.executeQuery();
-            while(rs.next())
+            setRs(getCstm().executeQuery());
+            while(getRs().next())
             {
-               enoughProduct = rs.getInt("quant_rezerv_nal");
-               maxNumber = rs.getInt("quant_nal");
+               enoughProduct = getRs().getInt("quant_rezerv_nal");
+               maxNumber = getRs().getInt("quant_nal");
             }
                
         }
@@ -1246,14 +1183,14 @@ public double[] getPriceListByID(int in_id_pp)
      int oldID_obekt_in = getID_Obekt_IN();
      int oldID_obekt_out = getID_Obekt_OUT();
      int oldID_contragent_in = getID_Contragent_IN();
-     comprator=28;
+     setComprator(28);
       setID_Obekt_IN(in_id_pc);
       setID_Obekt_OUT(in_id_storage);
        setID_Contragent_IN(number);
      try
         {
             registerParameters();
-            cstm.execute();
+            getCstm().execute();
         }
         catch(java.sql.SQLException sqle)
         {
@@ -1272,15 +1209,15 @@ public double[] getPriceListByID(int in_id_pp)
  {
      String valuta = new String();
       int oldID_obekt_in = getID_Obekt_IN();
-      comprator=29;
+      setComprator(29);
       setID_Obekt_IN(in_id_curs);
        try
         {
             registerParameters();
-            rs = cstm.executeQuery();
-            while(rs.next())
+            setRs(getCstm().executeQuery());
+            while(getRs().next())
             {
-               valuta= (String) rs.getString("cod_lat_n_money");
+               valuta= (String) getRs().getString("cod_lat_n_money");
             }
                
         }
@@ -1300,11 +1237,11 @@ public void emptyPreservation(int id_dl, int nal)
     setID_Obekt_IN(nal);
     
     setID_DocFacade(id_dl);
-     comprator=30;
+     setComprator(30);
      try
         {
             registerParameters();
-            cstm.execute();
+            getCstm().execute();
         }
         catch(java.sql.SQLException sqle)
         {
@@ -1321,11 +1258,11 @@ public void clearPreservation(int id_dl, int nal)
     setID_Obekt_IN(nal);
     
     setID_DocFacade(id_dl);
-     comprator=36;
+     setComprator(36);
      try
         {
             registerParameters();
-            cstm.execute();
+            getCstm().execute();
         }
         catch(java.sql.SQLException sqle)
         {
@@ -1336,20 +1273,19 @@ public void clearPreservation(int id_dl, int nal)
     setID_DocFacade(oldId_DF);
 }
 
-public HashMap getDocLine(int id_df)
-{
+public java.util.HashMap getDocLine(int id_df) {
    
      int oldId_DF = getID_DocFacade();
     setID_DocFacade(id_df);
-     comprator=31;
-     HashMap rows = new HashMap(); 
+     setComprator(31);
+     java.util.HashMap rows = new java.util.HashMap(); 
      docLineArray data;
      java.sql.ResultSet rs12 =null;
      int key = 0;
      try
         {
             registerParameters();
-            rs12 = cstm.executeQuery();
+            rs12 = getCstm().executeQuery();
             while(rs12.next())
             {
               int numerOfDisBaund[] = new int[3];
@@ -1403,7 +1339,7 @@ public HashMap getDocLine(int id_df)
  
 public void updateDocLine(int id_dl,int in_id_df,int in_id_pc,int in_id_storage,double priceone,double climbdown,int numberProduct,double dds,double totalall,int pricelist)
  {
-      comprator=32;
+      setComprator(32);
      int oldID_obekt_in = getID_Obekt_IN();
      int oldID_obekt_out = getID_Obekt_OUT();
      int oldID_contragent_in = getID_Contragent_IN();
@@ -1426,7 +1362,7 @@ public void updateDocLine(int id_dl,int in_id_df,int in_id_pc,int in_id_storage,
        try
         {
             registerParameters();
-            cstm.execute();
+            getCstm().execute();
         }
         catch(java.sql.SQLException sqle)
         {
@@ -1448,11 +1384,11 @@ public void updateDocLine(int id_dl,int in_id_df,int in_id_pc,int in_id_storage,
  {
       int oldId_DF = getID_DocFacade();
       setID_DocFacade(id_dl);
-     comprator = 33;
+     setComprator(33);
      try
         {
             registerParameters();
-            cstm.execute();
+            getCstm().execute();
         }
         catch(java.sql.SQLException sqle)
         {
@@ -1467,14 +1403,14 @@ public void updateDocLine(int id_dl,int in_id_df,int in_id_pc,int in_id_storage,
  public int getMaxIdDocLine()
  {
      int maxid =0;
-        comprator=34;
+        setComprator(34);
       try
         {
             registerParameters();
-            rs = cstm.executeQuery();
-            while(rs.next())
+            setRs(getCstm().executeQuery());
+            while(getRs().next())
             {
-              maxid = rs.getInt("id");
+              maxid = getRs().getInt("id");
                
             }
                
@@ -1490,7 +1426,7 @@ public void updateDocLine(int id_dl,int in_id_df,int in_id_pc,int in_id_storage,
  
 public void  deleteRow(int type,int numberDocFadade, int level)
  {
-      comprator=35;
+      setComprator(35);
    int oldID_df = getID_DocFacade();
    int oldID_obekt_in = getID_Obekt_IN();
    int oldID_obekt_out = getID_Obekt_OUT();
@@ -1501,7 +1437,7 @@ public void  deleteRow(int type,int numberDocFadade, int level)
    try
         {
             registerParameters();
-            cstm.execute();
+            getCstm().execute();
         }
         catch(java.sql.SQLException sqle)
         {
@@ -1518,14 +1454,14 @@ public void  deleteRow(int type,int numberDocFadade, int level)
      int oldID_obekt_in = getID_Obekt_IN();
      int oldID_obekt_out = getID_Obekt_OUT();
      int oldID_contragent_in = getID_Contragent_IN();
-     comprator=37;
+     setComprator(37);
       setID_Obekt_IN(in_id_pc);
       setID_Obekt_OUT(in_id_storage);
        setID_Contragent_IN(number);
      try
         {
             registerParameters();
-            cstm.execute();
+            getCstm().execute();
         }
         catch(java.sql.SQLException sqle)
         {
@@ -1547,11 +1483,11 @@ public void  deleteRow(int type,int numberDocFadade, int level)
     setID_Obekt_IN(nal);
     
     setID_DocFacade(id_dl);
-     comprator=38;
+     setComprator(38);
      try
         {
             registerParameters();
-            cstm.execute();
+            getCstm().execute();
         }
         catch(java.sql.SQLException sqle)
         {
@@ -1568,11 +1504,11 @@ public void emptyReturnProducts(int id_dl, int nal)
     setID_Obekt_IN(nal);
     
     setID_DocFacade(id_dl);
-     comprator=39;
+     setComprator(39);
      try
         {
             registerParameters();
-            cstm.execute();
+            getCstm().execute();
         }
         catch(java.sql.SQLException sqle)
         {
@@ -1586,12 +1522,12 @@ public void emptyReturnProducts(int id_dl, int nal)
 public void cancellationDocFacade(int id_df)
 {
     int oldID_DF = getID_DocFacade();
-    comprator = 40;
+    setComprator(40);
     setID_DocFacade(id_df);
      try
         {
             registerParameters();
-            cstm.execute();
+            getCstm().execute();
         }
         catch(java.sql.SQLException sqle)
         {
@@ -1605,15 +1541,15 @@ public int getIDPMByIDPC(int in_id_pc)
 {
     int id_pm=0;
     int oldID_DF = getID_DocFacade();
-    comprator = 41;
+    setComprator(41);
     setID_DocFacade(in_id_pc);
      try
         {
             registerParameters();
-            rs = cstm.executeQuery();
-            while(rs.next())
+            setRs(getCstm().executeQuery());
+            while(getRs().next())
             {
-              id_pm = rs.getInt("id_pm");
+              id_pm = getRs().getInt("id_pm");
                
             }
                
@@ -1631,14 +1567,14 @@ public void updateConnectionID(int in_oldDocID, int in_faktura_connection_df,int
      int oldID_obekt_in = getID_Obekt_IN();
      int oldID_obekt_out = getID_Obekt_OUT();
      int oldID_DF = getID_DocFacade();
-     comprator=42;
+     setComprator(42);
       setID_Obekt_IN(in_faktura_connection_df);
       setID_Obekt_OUT(in_zaiavka_connection_df);
        setID_DocFacade(in_oldDocID);
      try
         {
             registerParameters();
-            cstm.execute();
+            getCstm().execute();
         }
         catch(java.sql.SQLException sqle)
         {
