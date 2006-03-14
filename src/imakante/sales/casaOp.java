@@ -11,11 +11,18 @@ import java.util.Iterator;
 
 public class casaOp  extends dbObject {
     //-------------START MyVariables
-    private String splitNamesG[];
-    private int indexConnOfId[] = null; // masiv prave6t vryzkata mejdu indexite na ComboBox_a i "ID" na tablicata za grupi kasi
+    private String splitNamesG[]; //kasi
+    private String splitNamesM[]; //Money
+    private String splitNamesD[]; // Doc
+    
+    private int indexConnOfId[] = null; // masiv prave6t vryzkata mejdu indexite na ComboBox_a i "ID" na tablicata za kasi
+    private int indexMoney[] = null; // masiv valuti
+    private int indexDoc[] = null; // vid doc prihodni orderi
+    
     private java.sql.ResultSet rs;
     private java.sql.Statement stmt;
     private java.sql.CallableStatement cstm;
+    
     private int comprator = 1;
     private int id=0; // imena ot tablicata                                \
     private int code=0; // imena ot tablicata                           \
@@ -105,7 +112,7 @@ public class casaOp  extends dbObject {
         }
         return return_int;
     }
-    public String[] getCasaG() //test comprator = 6;
+    public String[] getCasa() //test comprator = 6;
     {
         setComprator(6);
         String return_str=new String("");
@@ -121,12 +128,12 @@ public class casaOp  extends dbObject {
         
         try {
             registerParameters();
-            rs = getCstm().executeQuery();
+            setRs(getCstm().executeQuery());
             
             
             while(rs.next()) {
-                Gropes.put(new Integer(rs.getInt("id_n_group")),new String(rs.getString("name_n_group")));
-                in.add(new Integer(rs.getInt("id_n_group")));
+                Gropes.put(new Integer(rs.getInt("id_n_casa")),new String(rs.getString("code_n_casa")));
+                in.add(new Integer(rs.getInt("id_n_casa")));
                 i++;
             }
         } catch(Exception e) {
@@ -150,8 +157,120 @@ public class casaOp  extends dbObject {
         return splitNamesG;
     }
     
+    
+    
     public int[] getIndexConnOfId() //OK
     {
         return indexConnOfId;
     }
+    
+    public String[] getMoney() //test comprator = 6;
+    {
+        setComprator(11);
+        String return_str=new String("");
+        int oldId = id;
+        ResultSet oldRs = rs;
+        String strIndexConnOfId = new String("");
+        ArrayList in = new ArrayList();
+        Iterator it = null;
+        // nova ideq porodena ot fakta 4e pri razdelqneto na stringa i
+        //ako imeto na ednata kletka ima intervali no se polu4ava gre6ka
+        HashMap Gropes = new HashMap();
+        int i = 0;
+        
+        try {
+            registerParameters();
+            setRs(getCstm().executeQuery());
+            
+            
+            while(rs.next()) {
+                Gropes.put(new Integer(rs.getInt("id_n_money")),new String(rs.getString("code_n_money")));
+                in.add(new Integer(rs.getInt("id_n_money")));
+                i++;
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        rs = oldRs;
+        id = oldId;
+        indexMoney = new int[i];
+        it = in.iterator();
+        
+        splitNamesM = new String[i];
+        i=0;
+        while(it.hasNext()) {
+            indexMoney[i] =(Integer) it.next();
+            splitNamesM[i] = (String) Gropes.get(indexMoney[i]);
+            i++;
+        }
+        
+        
+        
+        return splitNamesM;
+    }
+    
+    
+    
+    public int[] getIndexMoney() //OK
+    {
+        return indexMoney;
+    }
+    
+   
+    
+    public String[] getDoc() //test comprator = 6;
+    {
+        setComprator(12);
+        String return_str=new String("");
+        int oldId = id;
+        ResultSet oldRs = rs;
+        String strIndexConnOfId = new String("");
+        ArrayList in = new ArrayList();
+        Iterator it = null;
+        // nova ideq porodena ot fakta 4e pri razdelqneto na stringa i
+        //ako imeto na ednata kletka ima intervali no se polu4ava gre6ka
+        HashMap Gropes = new HashMap();
+        int i = 0;
+        
+        try {
+            registerParameters();
+            setRs(getCstm().executeQuery());
+            
+            
+            while(rs.next()) {
+                Gropes.put(new Integer(rs.getInt("id_n_incoms")),new String(rs.getString("name_n_incoms")));
+                in.add(new Integer(rs.getInt("id_n_incoms")));
+                i++;
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        rs = oldRs;
+        id = oldId;
+        indexDoc = new int[i];
+        it = in.iterator();
+        
+        splitNamesD = new String[i];
+        i=0;
+        while(it.hasNext()) {
+            indexDoc[i] =(Integer) it.next();
+            splitNamesD[i] = (String) Gropes.get(indexDoc[i]);
+            i++;
+        }
+        
+        
+        
+        return splitNamesD;
+    }
+    
+    
+    
+    public int[] getIndexDoc() //OK
+    {
+        return indexDoc;
+    }
+    
+    
+    
+    
 }// end class

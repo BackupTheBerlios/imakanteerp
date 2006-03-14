@@ -5,11 +5,11 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     
     public aeCaseOp(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
         super(frame, modal);
-        this.myParent = (nom.FrmCasa) frame;
+        this.myParent = (imakante.sales.FrmCaseOperation) frame;
         initComponents();
         getNavigationState();
         jButtonUndo.setEnabled(false);
-        initCombo();
+        initComboK();
         this.setResizable(false);
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         repaintComp();
@@ -34,12 +34,12 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        jComboK = new javax.swing.JComboBox();
         jLabel6 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
+        jComboM = new javax.swing.JComboBox();
         jLabel7 = new javax.swing.JLabel();
         jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
         jLabel8 = new javax.swing.JLabel();
@@ -50,7 +50,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         jLabel11 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox();
+        jComboD = new javax.swing.JComboBox();
 
         jLabel1.setText("jLabel1");
 
@@ -165,6 +165,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
 
         jLabel5.setText("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440:");
 
+        jTextField1.setInputVerifier(new imakante.com.InputIntegerVerifier());
         jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextField1FocusLost(evt);
@@ -183,6 +184,8 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         jLabel3.setText("\u041a\u0430\u0441\u0430:");
 
         jLabel6.setText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442:");
+
+        jTextField3.setInputVerifier(new imakante.com.InputDoubleVerifier());
 
         jLabel4.setText("\u0421\u0443\u043c\u0430:");
 
@@ -228,7 +231,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                     .add(jTextField4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                                    .add(jComboBox1, 0, 164, Short.MAX_VALUE)
+                                    .add(jComboK, 0, 164, Short.MAX_VALUE)
                                     .add(jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
                                     .add(jTextField6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
                                     .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
@@ -245,8 +248,8 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
                                         .add(jLabel7)
                                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)))
                                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(jComboBox2, 0, 170, Short.MAX_VALUE)
-                                    .add(jComboBox3, 0, 170, Short.MAX_VALUE)
+                                    .add(jComboM, 0, 170, Short.MAX_VALUE)
+                                    .add(jComboD, 0, 170, Short.MAX_VALUE)
                                     .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
                                     .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))))))
                 .add(104, 104, 104))
@@ -264,20 +267,20 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                         .add(jLabel3)
-                        .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(jComboK, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(jLabel8))
                     .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(4, 4, 4)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel11)
                     .add(jTextField6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jComboBox3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jComboD, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel12))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel4)
                     .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jComboBox2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jComboM, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel7))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
@@ -421,9 +424,9 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     private javax.swing.JButton jButtonToBegin;
     private javax.swing.JButton jButtonToEnd;
     private javax.swing.JButton jButtonUndo;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
+    private javax.swing.JComboBox jComboD;
+    private javax.swing.JComboBox jComboK;
+    private javax.swing.JComboBox jComboM;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -450,12 +453,12 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
     // End of variables declaration//GEN-END:variables
     //--------------- My Variables
-    private nom.FrmCasa myParent;
+    private imakante.sales.FrmCaseOperation myParent;
     private int oldIDG = 0;
     private int oldCod = 0;
     private String oldName = "";
     private String oldComment =  "";
-    private String namesG[];
+    private String namesK[];
     private int selectComboBoxItem;
     
     //---------------END My Variables
@@ -491,7 +494,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
             }
             myParent.setNames(jTextField3.getText());
             myParent.setComment(jTextArea1.getText());
-            myParent.setIDG(myParent.getInternalObject().getIndexConnOfId()[jComboG.getSelectedIndex()]);
+            myParent.setIDG(myParent.getInternalObject().getIndexConnOfId()[jComboK.getSelectedIndex()]);
             myParent.getInternalObject().updateRow(myParent.getId(), myParent.getIDG(),myParent.getCod(),
                     myParent.getNames(), myParent.getComment());
             myParent.refreshTable();
@@ -534,13 +537,13 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         jTextField1.setText(""+myParent.getCod());
         jTextField3.setText(myParent.getNames());
         jTextArea1.setText(myParent.getComment());
-        jComboG.setSelectedIndex(getNewComboBoxIndex(myParent.getIDG()));
+        jComboK.setSelectedIndex(getNewComboBoxIndex(myParent.getIDG()));
     }
     
-    private void initCombo() {
-        namesG = myParent.getInternalObject().getCasaG();
-        for(int i=0;i<namesG.length;i++) {
-            jComboG.addItem(new String(namesG[i]));
+    private void initComboK() {
+        namesK = myParent.getInternalObject().getCasa();
+        for(int i=0;i<namesK.length;i++) {
+            jComboK.addItem(new String(namesK[i]));
             
         }
         
@@ -548,7 +551,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
             
             selectComboBoxItem = getNewComboBoxIndex(selectComboBoxItem);
             
-            jComboG.setSelectedIndex(selectComboBoxItem);
+            jComboK.setSelectedIndex(selectComboBoxItem);
         }
         
     }
@@ -563,4 +566,5 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         }
         return newindex;
     }
+  
 }// end class
