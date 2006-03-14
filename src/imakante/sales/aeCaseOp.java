@@ -459,7 +459,14 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     private String oldName = "";
     private String oldComment =  "";
     private String namesK[];
-    private int selectComboBoxItem;
+    private int selectComboBoxKasa;
+    private int selectComboBoxMoney;
+    private int selectComboBoxDoc;
+    private String[] namesM;
+
+    private String[] namesD;
+
+  
     
     //---------------END My Variables
     
@@ -547,11 +554,11 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
             
         }
         
-        if(selectComboBoxItem != 0) {
+        if(selectComboBoxKasa != 0) {
             
-            selectComboBoxItem = getNewComboBoxIndex(selectComboBoxItem);
+            selectComboBoxKasa = getNewComboBoxIndex(selectComboBoxKasa);
             
-            jComboK.setSelectedIndex(selectComboBoxItem);
+            jComboK.setSelectedIndex(selectComboBoxKasa);
         }
         
     }
@@ -566,5 +573,59 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         }
         return newindex;
     }
-  
+    
+   private void initComboM() {
+        namesM = myParent.getInternalObject().getMoney();
+        for(int i=0;i<namesM.length;i++) {
+            jComboM.addItem(new String(namesK[i]));
+            
+        }
+        
+        if(selectComboBoxMoney != 0) {
+            
+            selectComboBoxMoney = getNewComboBoxIndexMoney(selectComboBoxMoney);
+            
+            jComboM.setSelectedIndex(selectComboBoxMoney);
+        }
+        
+    }
+    
+    private int getNewComboBoxIndexMoney(int oldindex) {
+        int newindex= 0;
+        for(int i = 0; i < myParent.getInternalObject().getIndexMoney().length; i++) {
+            if(myParent.getInternalObject().getIndexMoney()[i]==oldindex) {
+                newindex = i;
+                break;
+            }
+        }
+        return newindex;
+    }
+    
+     private void initComboD() {
+        namesD = myParent.getInternalObject().getDoc();
+        for(int i=0;i<namesD.length;i++) {
+            jComboD.addItem(new String(namesD[i]));
+            
+        }
+        
+        if(selectComboBoxDoc != 0) {
+            
+            selectComboBoxDoc = getNewComboBoxIndexDoc(selectComboBoxDoc);
+            
+            jComboM.setSelectedIndex(selectComboBoxDoc);
+        }
+        
+    }
+    
+    private int getNewComboBoxIndexDoc(int oldindex) {
+        int newindex= 0;
+        for(int i = 0; i < myParent.getInternalObject().getIndexDoc().length; i++) {
+            if(myParent.getInternalObject().getIndexDoc()[i]==oldindex) {
+                newindex = i;
+                break;
+            }
+        }
+        return newindex;
+    }
+    
 }// end class
