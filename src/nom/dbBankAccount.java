@@ -4,14 +4,6 @@ package nom;
 public class dbBankAccount extends imakante.com.dbObject {
     
     private java.sql.Connection conn;
-    private java.sql.ResultSet rs;
-    private java.sql.Statement stmt;
-    private java.sql.CallableStatement cstm;
-    private int comprator = 1;
-    private int id = 0;
-    private int id_group = 0;
-    private int code = 0;
-    private String name, baccount, address, comment;
     private int id_type = 0;
     private String splitNamesG[];
     private String splitTypes[];
@@ -52,67 +44,58 @@ public class dbBankAccount extends imakante.com.dbObject {
     }
     
     public void insertRow(int in_code, int in_id_group) {
-        comprator = 1;
-        this.code = in_code;
-        this.id_group = in_id_group;
-        this.name = "";
+        setComprator(1);
+        this.setCode(in_code);
+        this.setIDGr(in_id_group);
+        this.setName("");
         
-        this.comment = "";
+        this.setComment("");
         try {
             registerParameters();
-            cstm.execute();
+            getCstm().execute();
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
     public void updateRow(int in_id, int in_id_group, int in_code, String in_name,
             String in_account, String in_address, int in_id_tacc, String in_comment) {
-        comprator = 2;
-        this.id = in_id;
-        this.id_group = in_id_group;
-        this.code = in_code;
-        this.name = in_name;
-        this.baccount = in_account;
-        this.address = in_address;
+        setComprator(2);
+        this.setId(in_id);
+        this.setIDGr(in_id_group);
+        this.setCode(in_code);
+        this.setName(in_name);
+        this.setBankAccountNumber(in_account);
+        this.setAddress(in_address);
         this.id_type = in_id_tacc;
-        this.comment = in_comment;
+        this.setComment(in_comment);
         try {
             registerParameters();
-            cstm.execute();
+            getCstm().execute();
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
-    
-    public void deleteRow(int in_id) {
-        comprator = 3;
-        id = in_id;
-        try{
-            registerParameters();
-            cstm.execute();
-        }catch(java.sql.SQLException sqle){ sqle.printStackTrace(); }
-    }
-    
-    public java.sql.ResultSet getRow(int in_id) {
-        comprator = 4;
-        id = in_id;
-        try {
-            registerParameters();
-            rs = cstm.executeQuery();
-            while(rs.next()) {
-                id_group = rs.getInt("id_group");
-                code = rs.getInt("code");
-                name = rs.getString("name");
-                baccount = rs.getString("baccount");
-                address = rs.getString("address");
-                id_type = rs.getInt("id_type");
-                comment = rs.getString("comments");
-            }
-        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
-        return rs;
-    }
-    
+//    
+//    public java.sql.ResultSet getRow(int in_id) {
+//        setComprator(4);
+//        setId(in_id);
+//        try {
+//            registerParameters();
+//            setRs(getCstm().executeQuery());
+//            while(getRs().next()) {
+//                setIDGr(getRs().getInt("id_group"));
+//                setCode(getRs().getInt("code"));
+//                setName(getRs().getString("name"));
+//                setBankAccountNumber(getRs().getString("baccount"));
+//                setAddress(getRs().getString("address"));
+//                id_type = getRs().getInt("id_type");
+//                setComment(getRs().getString("comments"));
+//            }
+//        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
+//        return getRs();
+//    }
+//    
     public java.sql.ResultSet searchRecords(int in_code, String in_name) {
-        comprator = 5;
-        this.code = in_code;
-        this.name = in_name;
+        setComprator(5);
+        this.setCode(in_code);
+        this.setName(in_name);
         try {
             registerParameters();
             setRs(getCstm().executeQuery());
@@ -121,30 +104,30 @@ public class dbBankAccount extends imakante.com.dbObject {
     }
     
     public String[] getTypeBankAccounts() {
-        comprator = 6;
+        setComprator(6);
         String resultStr = new String("");
-        int originalId = id, i = 0;
-        java.sql.ResultSet originalRS = rs;
+        int originalId = getId(), i = 0;
+        java.sql.ResultSet originalRS = getRs();
         java.util.ArrayList list = new java.util.ArrayList();
         java.util.Iterator iterator = null;
         java.util.HashMap Types = new java.util.HashMap();
         try {
             registerParameters();
-            rs = cstm.executeQuery();
-            while(rs.next()) {
-                Types.put(new Integer(rs.getInt("id_tbacc")), new String(rs.getString("name_tbacc")));
-                list.add(new Integer(rs.getInt("id_tbacc")));
+            setRs(getCstm().executeQuery());
+            while(getRs().next()) {
+                Types.put(new Integer(getRs().getInt("id_tbacc")), new String(getRs().getString("name_tbacc")));
+                list.add(new Integer(getRs().getInt("id_tbacc")));
                 i++;
             }
         } catch(Exception e) { e.printStackTrace(); }
-        rs = originalRS;
-        id = originalId;
+        setRs(originalRS);
+        setId(originalId);
         indexOfTypes = new int[i];
         iterator = list.iterator();
         splitTypes = new String[i];
-        i=0;
+        i = 0;
         while(iterator.hasNext()) {
-            indexOfTypes[i] =(Integer) iterator.next();
+            indexOfTypes[i] = (Integer) iterator.next();
             splitTypes[i] = (String) Types.get(indexOfTypes[i]);
             i++;
         }
@@ -152,31 +135,31 @@ public class dbBankAccount extends imakante.com.dbObject {
     }
     
     public String[] getBankAccountGroup() {
-        comprator = 10;
+        setComprator(10);
         String return_str = new String("");
-        int oldId = id;
-        java.sql.ResultSet oldRs = rs;
+        int oldId = getId();
+        java.sql.ResultSet oldRs = getRs();
         java.util.ArrayList in = new java.util.ArrayList();
         java.util.Iterator it = null;
         java.util.HashMap Groupes = new java.util.HashMap();
         int i = 0;
         try {
             registerParameters();
-            rs = cstm.executeQuery();
-            while(rs.next()) {
-                Groupes.put(new Integer(rs.getInt("id_n_group")), new String(rs.getString("name_n_group")));
-                in.add(new Integer(rs.getInt("id_n_group")));
+            setRs(getCstm().executeQuery());
+            while(getRs().next()) {
+                Groupes.put(new Integer(getRs().getInt("id_n_group")), new String(getRs().getString("name_n_group")));
+                in.add(new Integer(getRs().getInt("id_n_group")));
                 i++;
             }
         } catch(Exception e) { e.printStackTrace(); }
-        rs = oldRs;
-        id = oldId;
+        setRs(oldRs);
+        setId(oldId);
         indexConnOfId = new int[i];
         it = in.iterator();
         splitNamesG = new String[i];
-        i=0;
+        i = 0;
         while(it.hasNext()) {
-            indexConnOfId[i] =(Integer) it.next();
+            indexConnOfId[i] = (Integer) it.next();
             splitNamesG[i] = (String) Groupes.get(indexConnOfId[i]);
             i++;
         }
@@ -184,13 +167,13 @@ public class dbBankAccount extends imakante.com.dbObject {
     }
     
     public int getMaxGrID() {
-        comprator = 11;
+        setComprator(11);
         int return_int = -1;
         try {
             registerParameters();
-            rs = cstm.executeQuery();
-            while(rs.next()) {
-                return_int = rs.getInt(1);
+            setRs(getCstm().executeQuery());
+            while(getRs().next()) {
+                return_int = getRs().getInt(1);
             }
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
         return return_int;
