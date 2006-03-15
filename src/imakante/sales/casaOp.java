@@ -23,12 +23,23 @@ public class casaOp  extends dbObject {
     private java.sql.Statement stmt;
     private java.sql.CallableStatement cstm;
     
-    private int comprator = 1;
-    private int id=0; // imena ot tablicata                                \
-    private int code=0; // imena ot tablicata                           \
-    private String name; // imena ot tablicata                                 > tablica "kasi"
-    private int id_groupe=0; // vryzkata kym tablicata za grope  /
-    private String comment="";//                                                  /
+   
+//              IN in_id INT(11),
+//              IN in_number_sl_mop INT(11), code go zamenia v obekta
+   private     int in_in_sl_mop=0;
+   private     int in_outsl_mop=0;
+   private     int in_id_order_spec = 0 ;
+   private     int in_id_order_spec_type= 1;
+   private     int in_id_order_doc = 0;
+   private     String in_DATE;
+   private     int in_id_n_money=1;
+   private     double in_exchange_rate = 1;
+   private     double in_sum_sl_mop;
+   private     double in_sum_os_val_sl_mop;
+   private     int in_user_id;
+   private     int in_id_sdtn  = 1;
+//              IN in_comment_sl_mop VARCHAR(250)) comment
+//              
     private Connection conn;
     //-------------END MyVariables
     
@@ -38,25 +49,37 @@ public class casaOp  extends dbObject {
         prepareCstm();
         
     }
-    protected void prepareCstm()
-{
+    protected void prepareCstm() {
         try {
             
-            setCstm(getConn().prepareCall("{call nom_procedure_casa(?,?,?,?,?,?)}"));
+            setCstm(getConn().prepareCall("{call sl_procedure_case_in(?,?,?,?,?,?)}"));
             
         } catch (SQLException sqle) {sqle.printStackTrace();}
     }
     protected void registerParameters() //OK
     {
         try {
+            
+            
             getCstm().setInt("comprator", getComprator());
             getCstm().setInt("in_id", getId());
-            getCstm().setInt("in_id_groupe", getIDGr());
-            getCstm().setInt("in_code", getCode());
-            getCstm().setString("in_name", getName());
+            getCstm().setInt("in_number_sl_mop", getCode());
+            getCstm().setInt("in_outsl_mop", in_outsl_mop);
+            getCstm().setInt("in_id_order_spec", in_id_order_spec);
+            getCstm().setInt("in_id_order_spec_type", in_id_order_spec_type);
+            getCstm().setInt("in_id_order_doc", in_id_order_doc);
+            getCstm().setString("in_date_is", in_DATE);
+            getCstm().setInt("in_id_n_money", in_id_n_money);
+            getCstm().setDouble("in_sum_sl_mop", in_sum_sl_mop);
+            getCstm().setDouble("in_sum_os_val_sl_mop", in_sum_os_val_sl_mop);
+            getCstm().setInt("in_user_id", in_user_id);
+            getCstm().setInt("in_id_sdtn", in_id_sdtn);
             getCstm().setString("in_comments", getComment());
             
-            
+  
+ 
+  
+ 
         } catch(java.sql.SQLException sqle) {
             sqle.printStackTrace();
         }
@@ -65,11 +88,11 @@ public class casaOp  extends dbObject {
     public void updateRow(int in_id,  int in_id_groupe, int in_code, String in_name, String in_comment) //OK   comprator = 2;
     {
         setComprator(2);
-        this.id = in_id;
-        this.id_groupe = in_id_groupe;
-        this.code = in_code;
-        this.name = in_name;
-        this.comment = in_comment;
+        setId(in_id);
+       
+        setCode(in_code);
+       
+        setComment(in_comment);
         try {
             registerParameters();
             cstm.execute();
@@ -216,7 +239,7 @@ public class casaOp  extends dbObject {
         return indexMoney;
     }
     
-   
+    
     
     public String[] getDoc() //test comprator = 6;
     {
