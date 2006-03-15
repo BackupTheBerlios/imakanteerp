@@ -4,7 +4,6 @@ package nom;
 public class dbDoctypeUserRights extends imakante.com.dbObject {
     
     private java.sql.Connection conn;
-    private int id = 0;
     private int id_usermaster = 0;
     private int doctypeNum = 0;
     private int rights = 3;
@@ -92,7 +91,7 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
     public String[] getUserNames() {
         setComprator(6);
         String return_str = new String("");
-        int oldId = id;
+        int oldId = getId();
         java.sql.ResultSet oldRs = getRs();
         java.util.ArrayList in = new java.util.ArrayList();
         java.util.Iterator it = null;
@@ -108,13 +107,13 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
             }
         } catch(Exception e) { e.printStackTrace(); }
         setRs(oldRs);
-        id = oldId;
+        setId(oldId);
         indexOfUsers = new int[i];
         it = in.iterator();
         splitNamesUsers = new String[i];
-        i=0;
+        i = 0;
         while(it.hasNext()) {
-            indexOfUsers[i] =(Integer) it.next();
+            indexOfUsers[i] = (Integer) it.next();
             splitNamesUsers[i] = (String) Users.get(indexOfUsers[i]);
             i++;
         }
@@ -124,7 +123,7 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
     public String[] getReceiptBooks() {
         setComprator(8);
         String resultStr = new String("");
-        int originalId = id, i = 0;
+        int originalId = getId(), i = 0;
         java.sql.ResultSet originalRS = getRs();
         java.util.ArrayList list = new java.util.ArrayList();
         java.util.Iterator iterator = null;
@@ -140,11 +139,11 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
             }
         } catch(Exception e) { e.printStackTrace(); }
         setRs(originalRS);
-        id = originalId;
+        setId(originalId);
         indexOfRBooks = new int[i];
         iterator = list.iterator();
         splitReceiptBooks = new String[i];
-        i=0;
+        i = 0;
         while(iterator.hasNext()) {
             indexOfRBooks[i] = (Integer) iterator.next();
             splitReceiptBooks[i] = (String) RBooks.get(indexOfRBooks[i]);

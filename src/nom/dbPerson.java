@@ -9,15 +9,12 @@ public class dbPerson extends imakante.com.dbObject {
     private int indexConnOfId[] = null;
     private String egn = null;
     private String nomlk = null;
-    private String name = null;
-    private String comment = null;
     
     // --- Constructor --- //
     public dbPerson(java.sql.Connection conn) {
         super(conn);
         prepareCstm();
     }
-    
     
     // --- Custom Methods --- //
     public void prepareCstm(){
@@ -135,9 +132,9 @@ public class dbPerson extends imakante.com.dbObject {
         indexConnOfId = new int[i];
         it = in.iterator();
         splitGroupNames = new String[i];
-        i=0;
+        i = 0;
         while(it.hasNext()) {
-            indexConnOfId[i] =(Integer) it.next();
+            indexConnOfId[i] = (Integer) it.next();
             splitGroupNames[i] = (String) Groups.get(indexConnOfId[i]);
             i++;
         }

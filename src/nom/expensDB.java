@@ -1,15 +1,12 @@
 
-
 package nom;
 
-import com.mysql.jdbc.ResultSetMetaData;
-import imakante.com.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-public class expensDB  extends dbObject {
+public class expensDB  extends imakante.com.dbObject {
     //-------------START MyVariables
     private String splitNamesG[];
     private int indexConnOfId[] = null; // masiv prave6t vryzkata mejdu indexite na ComboBox_a i "ID" na tablicata za grupi kasi

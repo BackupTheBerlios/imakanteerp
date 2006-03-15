@@ -3,9 +3,6 @@ package nom;
 
 public class dbDoctype extends imakante.com.dbObject {
     
-    private int id = 0;
-    private int code = 0;
-    private String name;
     private String printName;
     private java.sql.Connection conn;
     
@@ -85,8 +82,8 @@ public class dbDoctype extends imakante.com.dbObject {
             registerParameters();
             setRs(getCstm().executeQuery());
             while(getRs().next()) {
-                code = getRs().getInt("code");
-                name = getRs().getString("name");
+                setCode(getRs().getInt("code"));
+                setName(getRs().getString("name"));
                 printName = getRs().getString("printName");
             }
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
