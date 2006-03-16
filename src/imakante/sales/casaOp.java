@@ -107,9 +107,7 @@ public class casaOp  extends dbObject {
     {
         setComprator(5);
         
-        this.code = in_code;
-        this.name = in_name;
-        
+       
         try {
             registerParameters();
             setRs(getCstm().executeQuery());
@@ -139,7 +137,7 @@ public class casaOp  extends dbObject {
     {
         setComprator(6);
         String return_str=new String("");
-        int oldId = id;
+        int oldId =getId();
         ResultSet oldRs = rs;
         String strIndexConnOfId = new String("");
         ArrayList in = new ArrayList();
@@ -163,7 +161,7 @@ public class casaOp  extends dbObject {
             e.printStackTrace();
         }
         rs = oldRs;
-        id = oldId;
+        setId(oldId);
         indexConnOfId = new int[i];
         it = in.iterator();
         
@@ -191,7 +189,7 @@ public class casaOp  extends dbObject {
     {
         setComprator(11);
         String return_str=new String("");
-        int oldId = id;
+        int oldId = getId();
         ResultSet oldRs = rs;
         String strIndexConnOfId = new String("");
         ArrayList in = new ArrayList();
@@ -215,7 +213,7 @@ public class casaOp  extends dbObject {
             e.printStackTrace();
         }
         rs = oldRs;
-        id = oldId;
+        setId(oldId);
         indexMoney = new int[i];
         it = in.iterator();
         
@@ -245,7 +243,7 @@ public class casaOp  extends dbObject {
     {
         setComprator(12);
         String return_str=new String("");
-        int oldId = id;
+        int oldId = getId();
         ResultSet oldRs = rs;
         String strIndexConnOfId = new String("");
         ArrayList in = new ArrayList();
@@ -269,7 +267,7 @@ public class casaOp  extends dbObject {
             e.printStackTrace();
         }
         rs = oldRs;
-        id = oldId;
+       setId(oldId);
         indexDoc = new int[i];
         it = in.iterator();
         
