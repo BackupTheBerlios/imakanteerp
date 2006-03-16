@@ -1,10 +1,5 @@
-package nom;
 
-import imakante.com.CustomTable;
-import imakante.com.CustomTableModel;
-import imakante.com.vcomponents.iFrame;
-import java.awt.print.PrinterException;
-import javax.swing.JTable;
+package nom;
 
 public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
@@ -15,7 +10,6 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
         constructObject(); // inicializira class otgovarq6t za vryzkata s DB
         initTable();
         initComponents();
-        
     }
     
     
@@ -172,7 +166,7 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
     }//GEN-LAST:event_jButtonPrintActionPerformed
     
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
-        this.dispose();
+        unload();
     }//GEN-LAST:event_jButtonCloseActionPerformed
     
     private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
@@ -192,11 +186,8 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
     }//GEN-LAST:event_jButtonEditActionPerformed
     
     private void jButtonNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewActionPerformed
-        
         newRecord();
-        
     }//GEN-LAST:event_jButtonNewActionPerformed
-    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonClose;
@@ -220,13 +211,13 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
     // End of variables declaration//GEN-END:variables
     
     //--------------- My Variables
-    private int id=0; // imena ot tablicata
-    private int code_groupe =0; // imena ot tablicata
+    private int id = 0; // imena ot tablicata
+    private int code_groupe = 0; // imena ot tablicata
     private int cod = 0;
-    private String name,comment; // imena ot tablicata
+    private String name, comment; // imena ot tablicata
     private String namesG[]; //imena na grupi
     private int selectComboBoxItem;
-    private  boolean atBegining=false;
+    private  boolean atBegining = false;
     private  boolean atEnd = false;
     private int row;
     
@@ -237,58 +228,46 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
     public static final String Names[] = {"id", "id_group",
-    "\u041d\u043e\u043c\u0435\u0440 \u0433\u0440\u0443\u043f\u0430",
+    "\u0413\u0440\u0443\u043f\u0438",
     "\u041a\u043e\u0434\u043e\u0432\u0435",
-    "\u0418\u043c\u0435\u043d\u0430",
+    "\u0418\u043c\u0435",
     "\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440"};
     //---------------END My Variables
     
     //---------------START Methods
-    
-    private void prepareConn() //TEST
-    {
+    private void prepareConn() {
         try{
             conn =  myframe.getConn();
-            if(conn==null){System.out.println("conn problem");
+            if(conn == null) {
+                System.out.println("conn problem");
             }
         }catch(Exception e){e.printStackTrace();}
     }
-   
-    private void constructObject() //OK
-    {
+    
+    private void constructObject() {
         try {
-            
             internalObject = new nom.storageDB(conn);
-        } catch(Exception e)
-        
-        {
-            e.printStackTrace();
-        }
-        
+        } catch(Exception e) { e.printStackTrace(); }
     }
-    private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
-    {
+    
+    private void initTable() {
         try {
-            
             rs = internalObject.getTable();
             model = new imakante.com.CustomTableModel(getConn(), rs,Names);
             table = new imakante.com.CustomTable(model);
-            HideColumns(0);
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+            HideColumns(getColumnIndex("id"));
+            HideColumns(getColumnIndex("id_group"));
+        } catch(Exception e) { e.printStackTrace(); }
         table.requestFocus();
         try {
             table.setEditingRow(0);
-        } catch(Exception ex) {
-            
-        }
+        } catch(Exception ex) {  }
     }
     
     public void windowOpened(java.awt.event.WindowEvent e) {
     }
     public void windowClosing(java.awt.event.WindowEvent e) {
-        
+        unload();
     }
     public void windowClosed(java.awt.event.WindowEvent e) {
         
@@ -302,146 +281,129 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
     public void windowDeactivated(java.awt.event.WindowEvent e) {
     }
     
-    public nom.storageDB getInternalObject() //OK
-    {
+    public nom.storageDB getInternalObject() {
         return internalObject;
     }
     
-    public void setInternalObject(nom.storageDB val)//OK
-    {
+    public void setInternalObject(nom.storageDB val) {
         this.internalObject = val;
     }
     
-    public CustomTableModel getModel()//OK
-    {
+    public imakante.com.CustomTableModel getModel() {
         return model;
     }
     
-    public void setModel(CustomTableModel val)//OK
-    {
+    public void setModel(imakante.com.CustomTableModel val) {
         this.model = val;
     }
     
-    public CustomTable getTable()//OK
-    {
+    public imakante.com.CustomTable getTable() {
         return table;
     }
     
-    public void setTable(CustomTable val) //OK
-    {
+    public void setTable(imakante.com.CustomTable val) {
         this.table = val;
     }
     
-    public iFrame getMyframe()//OK
-    {
+    public imakante.com.vcomponents.iFrame getMyframe() {
         return myframe;
     }
     
-    public void setMyframe(iFrame val)//OK
-    {
+    public void setMyframe(imakante.com.vcomponents.iFrame val) {
         this.myframe = val;
     }
-    public  boolean isAtBegining()//OK
-    {
+    
+    public  boolean isAtBegining() {
         return atBegining;
     }
     
-    public  void setAtBegining(boolean aAtBegining)//OK
-    {
+    public  void setAtBegining(boolean aAtBegining) {
         atBegining = aAtBegining;
     }
     
-    public  boolean isAtEnd()//OK
-    {
+    public  boolean isAtEnd() {
         return atEnd;
     }
     
-    public  void setAtEnd(boolean aAtEnd) //OK
-    {
+    public  void setAtEnd(boolean aAtEnd) {
         atEnd = aAtEnd;
     }
-    private int  getMaxRow() //OK
-    {
+    
+    private int  getMaxRow() {
         int i = 0;
         i  = table.getRowCount() - 1;
-        
         return i;
     }
+    
     public  int getRow() {
         return row;
     }
     
-    public void setId(int ID) //OK
-    {
+    public void setId(int ID) {
         this.id = ID;
     }
-    public int getId() //OK
-    {
+    
+    public int getId() {
         return id;
     }
-    public void setIDG(int Gr) //OK
-    {
+    
+    public void setIDG(int Gr) {
         this.code_groupe = Gr;
     }
-    public int getIDG() //OK
-    {
+    
+    public int getIDG() {
         return code_groupe;
     }
-    public void setCod(int Cod){
+    
+    public void setCod(int Cod) {
         this.cod = Cod;
-        
     }
     
-    public int getCod(){
+    public int getCod() {
         return cod;
-        
     }
-    public void setNames(String Name) //OK
-    {
+    
+    public void setNames(String Name) {
         this.name = Name;
     }
-    public String getNames() //OK
-    {
+    
+    public String getNames() {
         return name;
     }
-    public void setComment(String Comment) //OK
-    {
+    
+    public void setComment(String Comment) {
         this.comment = Comment;
     }
-    public String getComment() //OK
-    {
+    
+    public String getComment() {
         return comment;
     }
     
-    public  void setRow(int val) //OK
-    {
+    public  void setRow(int val) {
         row = val;
     }
-    public  void mTableEnd() //OK
-    {
+    
+    public  void mTableEnd() {
         setRow(getMaxRow());
         try{
             setAllVariables();
-            table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
-            
+            table.changeSelection(getRow(), 2, false, false);
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
-            System.out.println("problem");
         }
         setAtBegining(false);
         setAtEnd(true);
     }
     
-    public void mOneRowPlus() //OK
-    {
+    public void mOneRowPlus() {
         if(getRow() <= getMaxRow()) {
             if(getRow() < getMaxRow()) {
                 setRow(getRow()+1);
             }
             setAtBegining(false);
             try {
-                setAllVariables();;
-                table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
+                setAllVariables();
+                table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
             } catch(ArrayIndexOutOfBoundsException aioobe) {
                 setRow(getRow() - 1);
                 System.out.println("problem");
@@ -451,49 +413,49 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
             }
         }
     }
-    public  void mOneRowMinus() //OK
-    {
-        if(getRow() >= 0){
-            if(getRow() > 0){
-                setRow(getRow() - 1);}
+    
+    public  void mOneRowMinus() {
+        if(getRow() >= 0) {
+            if(getRow() > 0) {
+                setRow(getRow() - 1);
+            }
             setAtEnd(false);
             try {
                 setAllVariables();
-                table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
+                table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
             } catch(ArrayIndexOutOfBoundsException aioobe) {
                 setRow(getRow() + 1);
             }
-            System.out.println("problem");}
-        if(getRow() == 0){
+        }
+        if(getRow() == 0) {
             setAtBegining(true);
         }
     }
-    public void mTableBegining() //OK
-    {
+    
+    public void mTableBegining() {
         setRow(0);
         try {
             setAllVariables();
-            table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
+            table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
-            System.out.println("problem");
         }
         setAtBegining(true);
         setAtEnd(false);
     }
-    protected  void refreshTable() //OK
-    {jScrollPane1.remove(table);
+    
+    protected  void refreshTable() {
+        jScrollPane1.remove(table);
         rs = internalObject.getTable();
         model = new imakante.com.CustomTableModel(getConn(), rs, Names);
         table = new imakante.com.CustomTable(model);
-        HideColumns(0);
-        HideColumns(1);
+        HideColumns(getColumnIndex("id"));
+        HideColumns(getColumnIndex("id_group"));
         jScrollPane1.getViewport().add(table);
         jScrollPane1.repaint();
-        
     }
     
-    private void newRecord(){
+    private void newRecord() {
         internalObject.insertRow((internalObject.getMaxCod() + 1), 0);
         refreshTable();
         setRow(getMaxRow());
@@ -504,30 +466,25 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
         nom.aeStorage ae_Storage = new nom.aeStorage(this, true);
         ae_Storage.setVisible(true);
         refreshTable();
-        
     }
     
-    private void editRecord(){
+    private void editRecord() {
         if (table.getSelectedRow() != -1) {
-            
             setRow(table.getSelectedRow());
-            if(getRow()==0){          //manage button state of ae form
+            if(getRow() == 0){          //manage button state of ae form
                 setAtBegining(true);
-            }
-            else if(getRow()==getMaxRow()){
+            } else if(getRow() == getMaxRow()) {
                 setAtEnd(true);
-            }else{
-            setAtBegining(false);
-            setAtEnd(false);
+            } else {
+                setAtBegining(false);
+                setAtEnd(false);
             }
             setAllVariables();
             nom.aeStorage ae_Storage = new nom.aeStorage(this, true);
             ae_Storage.setVisible(true);
-        }else{
-            
-        }
-        
+        } else {  }
     }
+    
     private void printTable() {
         try {
             java.text.MessageFormat headerFormat = new java.text.MessageFormat("Storage");
@@ -535,10 +492,11 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
             table.print(javax.swing.JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
         } catch(java.awt.print.PrinterException e) { e.printStackTrace(); }
     }
+    
     private void searchRecords() {
         try {
             try {
-                rs = internalObject.searchRecords(Integer.parseInt(jTextCod.getText()),jTextName.getText());
+                rs = internalObject.searchRecords(Integer.parseInt(jTextCod.getText()), jTextName.getText());
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
                 jTextCod.requestFocus();
@@ -546,20 +504,20 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
             jScrollPane1.remove(table);
             model = new imakante.com.CustomTableModel(getConn(), rs, null);
             table = new imakante.com.CustomTable(model);
-            HideColumns(0);
+            HideColumns(getColumnIndex("id"));
+            HideColumns(getColumnIndex("id_group"));
             jScrollPane1.getViewport().add(table);
             jScrollPane1.repaint();
         } catch(Exception e) { e.printStackTrace(); }
     }
-    private void delRecord(){
-        
+    
+    private void delRecord() {
         if(table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());
-            setId((Integer)table.getValueAt(getRow(),0));
+            setId((Integer)table.getValueAt(getRow(), 0));
             internalObject.deleteRow(getId());
             refreshTable();
         }
-        
     }
     
     public java.sql.Connection getConn() {
@@ -570,17 +528,13 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
         this.conn = conn;
     }
     
-    
-    private int getColumnIndex(String in) //test
-    {
+    private int getColumnIndex(String in) {
         int count = table.getColumnCount();
         for(int i=0; i < count; i++) {
             if(table.getColumnName(i).equals(in)) return i;
         }
         return 0;
     }
-    
-    
     
     private void HideColumns(int col) {
         int iColumn = col;
@@ -589,8 +543,8 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
         table.getColumnModel().getColumn(iColumn).setMinWidth(0);
         table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
         table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
-        
     }
+    
     private void setAllVariables(){
         setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
         setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("id_group")));
@@ -599,7 +553,17 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
         setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440")));
     }
     
+    private void unload() {
+        closeResource();
+        this.dispose();
+    }
     
-    
+    protected void closeResource() {
+        try{
+            rs.close();
+        } catch(java.sql.SQLException sqle) {  }
+        rs = null;
+        internalObject.close();
+    }
     
 }// end class
