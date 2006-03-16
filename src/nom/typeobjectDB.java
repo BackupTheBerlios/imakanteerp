@@ -1,182 +1,109 @@
 package nom;
 
 public class typeobjectDB  extends imakante.com.dbObject {
-    
-    
     // ------------START Money Variables
-    
-    private java.sql.ResultSet rs;
-    private java.sql.Statement stmt;
-    private java.sql.CallableStatement cstm;
-    private int comprator;
-    private int id=0; // imena ot tablicata
-    private String cod = ""; // kod na kirilitsa
-    private String name = ""; // imena na valutite
-    private String comment = ""; // belejki otnosno valutata
-    private java.sql.Connection conn; // connection
-    
-    
+    private java.sql.Connection conn;
     //-------------END Money  Variables
     
-    /** Creates a new instance of groupDB */
     public typeobjectDB(java.sql.Connection conn) {
         super(conn);
-        this.conn = conn;
+        this.setConn(conn);
         prepareCstm();
     }
     
     //-------SART Methods
-    
-    // Make Cstm - Call Statement
     public void prepareCstm() {
         try {
-            
-            cstm = conn.prepareCall("{call nom_procedure_typeobject(?,?,?,?,?)}");
-            
-        } catch(java.sql.SQLException sqle) {sqle.printStackTrace();}
+            setCstm(getConn().prepareCall("{call nom_procedure_typeobject(?,?,?,?,?)}"));
+        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    public java.sql.ResultSet getTable() //OK
-    {
-        
-        this.comprator = 0;
+    public java.sql.ResultSet getTable() {
+        this.setComprator(0);
         try{
             registerParameters();
-            rs= cstm.executeQuery();
-        } catch(java.sql.SQLException sqle) {
-            sqle.printStackTrace();
-        }
-        return rs;
+            setRs(getCstm().executeQuery());
+        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
+        return getRs();
     }
     
-    public void registerParameters() //OK
-    {
+    public void registerParameters() {
         try {
-            
-            cstm.setInt("in_id", id);
-            cstm.setInt("comprator",comprator);
-            cstm.setString("in_code", cod);
-            cstm.setString("in_name", name);
-            cstm.setString("in_comments", comment);
-            
-        } catch(java.sql.SQLException sqle) {
-            sqle.printStackTrace();
-        }
+            getCstm().setInt("in_id", getId());
+            getCstm().setInt("comprator", getComprator());
+            getCstm().setInt("in_code", getCode());
+            getCstm().setString("in_name", getName());
+            getCstm().setString("in_comments", getComment());
+        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
-    public void prepareRezult() //OK
-    {
+    
+    public void prepareRezult() {
         try{
             registerParameters();
-            rs = cstm.executeQuery();}catch(java.sql.SQLException sqle){sqle.printStackTrace();}
-        
+            setRs(getCstm().executeQuery());
+        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
-    public void insertRow( String in_cod,  String in_name, String in_comment) //OK
-    {
-        comprator = 1;
-        this.cod = in_cod;
-        this.name = in_name;
-        this.comment = in_comment;
+    
+    public void insertRow(int in_code,  String in_name, String in_comment) {
+        setComprator(1);
+        this.setCode(in_code);
+        this.setName(in_name);
+        this.setComment(in_comment);
         try {
             registerParameters();
-            cstm.execute();
-        } catch(java.sql.SQLException sqle) {
-            sqle.printStackTrace();
-        }
-        
+            getCstm().execute();
+        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
-    public void updateRow(int in_id, String in_cod,  String in_name, String in_comment) //OK
-    {
-        comprator = 2;
-        this.id = in_id;
-        this.cod = in_cod;
-        this.name = in_name;
-        this.comment = in_comment;
+    
+    public void updateRow(int in_id, int in_code,  String in_name, String in_comment) {
+        setComprator(2);
+        this.setId(in_id);
+        this.setCode(in_code);
+        this.setName(in_name);
+        this.setComment(in_comment);
         try {
             registerParameters();
-            cstm.execute();
-        } catch(java.sql.SQLException sqle) {
-            sqle.printStackTrace();
-        }
-        
-        
+            getCstm().execute();
+        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
-    public void deleteRow(int in_id) //OK
-    {
-        comprator = 3;
-        id = in_id;
-        try{
-            registerParameters();
-            cstm.execute();
-        }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
-        
-    }
-    public java.sql.ResultSet getRow(int in_id) //OK
-    {
-        comprator = 4;
-        this.id = in_id;
+    
+    public java.sql.ResultSet getRow(int in_id) {
+        setComprator(4);
+        this.setId(in_id);
         try {
             registerParameters();
-            rs = cstm.executeQuery();
-            while(rs.next()) {
-                
-                cod = rs.getString("cod");
-                name = rs.getString("name");
-                comment = rs.getString("comment");
+            setRs(getCstm().executeQuery());
+            while(getRs().next()) {
+                setCode(getRs().getInt("code"));
+                setName(getRs().getString("name"));
+                setComment(getRs().getString("comment"));
             }
-        } catch(java.sql.SQLException sqle) {
-            sqle.printStackTrace();
-        }
-        return rs;
-    }
-    public java.sql.ResultSet searchRecords(String in_cod, String in_name) //OK
-    {
-        comprator = 5;
-        
-        this.cod = in_cod;
-        this.name = in_name;
-        
-        try {
-            registerParameters();
-            rs = cstm.executeQuery();
-        } catch(java.sql.SQLException sqle) {
-            sqle.printStackTrace();
-        }
-        return rs;
-        
+        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
+        return getRs();
     }
     
-    public int getMaxId() //OK
-    {
-        comprator = 7;
-        int return_int=-1;
+    public java.sql.ResultSet searchRecords(int in_code, String in_name) {
+        setComprator(5);
+        this.setCode(in_code);
+        this.setName(in_name);
         try {
             registerParameters();
-            rs = cstm.executeQuery();
-            while(rs.next()) {
-                return_int = rs.getInt(1);
+            setRs(getCstm().executeQuery());
+        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
+        return getRs();
+    }
+    
+    public int getMaxId() {
+        setComprator(7);
+        int return_int = -1;
+        try {
+            registerParameters();
+            setRs(getCstm().executeQuery());
+            while(getRs().next()) {
+                return_int = getRs().getInt(1);
             }
-        } catch(java.sql.SQLException sqle) {
-            sqle.printStackTrace();
-        }
+        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
         return return_int;
     }
-    
-    public void close() //OK
-    {
-        try{
-            rs.close();
-            rs=null;
-        }catch(java.sql.SQLException sqle){}
-        
-        try{
-            cstm.close();
-            cstm=null;
-        }catch(java.sql.SQLException sqle){}
-        
-    }
-    
-    
-    
-    
     
 }// end class

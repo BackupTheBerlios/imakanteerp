@@ -1,335 +1,172 @@
 
-
 package nom;
 
-import com.mysql.jdbc.ResultSetMetaData;
-import imakante.com.*;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-
-public class oblastDB  extends dbObject 
-{
+public class oblastDB  extends imakante.com.dbObject {
     //-------------START MyVariables
-   private String splitNamesOfCountry[];
-   private int indexConnOfId[] = null; // masiv prave6t vryzkata mejdu indexite na ComboBox_a i "ID" na tablicata za oblastite
-   private java.sql.ResultSet rs;
-   private java.sql.Statement stmt;
-   private java.sql.CallableStatement cstm;
-   private int comprator;
-   private int id=0; // imena ot tablicata                                \   
-   			   // imena ot tablicata                           \ 
-   private String name; // imena ot tablicata                                 > tablica "oblast"
-   private byte id_country=0; // vryzkata kym tablicata za analitu4nite niva  /
-                       //                                                  /
-   private Connection conn;
-   private String country;
+    private String splitNamesOfCountry[];
+    private int indexConnOfId[] = null;
+    private byte id_country=0;
+    private java.sql.Connection conn;
+    private String country;
     //-------------END MyVariables
     
-    /** Creates a new instance of oblastDB */
- public oblastDB(java.sql.Connection conn) 
-    {
+    public oblastDB(java.sql.Connection conn) {
         super(conn);
         prepareCstm();
-               
     }
+    
     //-------SART MyFunction
- public void prepareCstm() // OK -->>>>>????
-    {
+    public void prepareCstm() {
         try {
-            
             setCstm(getConn().prepareCall("{call nom_procedure_oblast(?,?,?,?,?)}"));
-            
-        } catch(java.sql.SQLException sqle) {sqle.printStackTrace();}
+        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
- public java.sql.ResultSet getTable() //OK
-    {
-        
-        this.comprator = 0;
+    
+    public java.sql.ResultSet getTable() {
+        this.setComprator(0);
         try{
             registerParameters();
             setRs(getCstm().executeQuery());
-        }
-        catch(java.sql.SQLException sqle)
-        {
-            sqle.printStackTrace();
-        }
-        System.out.println("naseleniMesta.getTable()");
-        return rs;
+        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
+        return getRs();
     }
- public void registerParameters() //OK
-    {
-         try
-         {
-            
+    
+    public void registerParameters() {
+        try {
             getCstm().setInt("in_id", getId());
             getCstm().setString("in_name", getName());
             getCstm().setString("in_country", getNameCountry());
             getCstm().setInt("in_id_country", getIDCountry());
-            getCstm().setInt("comprator", getComprator()); 
-            
-            
-        }
-         catch(java.sql.SQLException sqle)
-         {
-             sqle.printStackTrace();
-         }
-     System.out.println("ot registerparameter");    
+            getCstm().setInt("comprator", getComprator());
+        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
- public void prepareRezult() //OK
-    {
+    
+    public void prepareRezult() {
         try{
-            registerParameters();
-            setRs(getCstm().executeQuery());}catch(java.sql.SQLException sqle){sqle.printStackTrace();}
-        
-    }
- public void insertRow(int in_id,String in_name, byte in_id_country) // OK  comprator = 1;
-    {
-        comprator = 1;
-        this.id = in_id;
-        this.name = in_name;
-        this.id_country = in_id_country;
-        try
-        {
-            registerParameters();
-            cstm.execute();
-        }
-        catch(java.sql.SQLException sqle)
-        {
-            sqle.printStackTrace();
-        }
-        
-    }
- public void updateRow(int in_id, String in_name, byte in_id_country) //OK   comprator = 2;
-    {
-        comprator = 2;
-        this.id = in_id;
-        this.name = in_name;
-        this.id_country = in_id_country;
-        try
-        {
-            registerParameters();
-            cstm.execute();
-        }
-        catch(java.sql.SQLException sqle)
-        {
-            sqle.printStackTrace();
-        }
-        
-        
-    }
- public void deleteRow(int in_id) //OK   comprator = 3;
-    {
-        comprator = 3;
-        id = in_id;
-        try{
-            registerParameters();
-            cstm.execute();
-        }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
-        
-    }
- public java.sql.ResultSet getRow(int in_id) //OK  comprator = 4;
-    {
-        comprator = 4;
-        id = in_id;
-        try
-        {
-            registerParameters();
-            rs = cstm.executeQuery();
-            while(rs.next())
-            {
-                name = rs.getString("name");
-                id_country = rs.getByte("id_country");
-            }
-        }
-        catch(java.sql.SQLException sqle)
-        {
-            sqle.printStackTrace();
-        }
-      return rs;  
-    }
- public java.sql.ResultSet searchRecords(String oblast, String country) //-OK  comprator = 5;
-    {
-        comprator = 5;
-        this.name = oblast;
-        this.country = country;
-        
-       
-        try
-        {
             registerParameters();
             setRs(getCstm().executeQuery());
-        }
-        catch(java.sql.SQLException sqle)
-        {
-            sqle.printStackTrace();
-        }
-        return getRs();
-       
-    }
-    public java.sql.Connection getConn() //OK
-    {
-        return conn;
+        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    public void setConn(java.sql.Connection conn) //OK
-    {
-        this.conn = conn;
-    }
-    
-    public java.sql.Statement getStm() //OK
-    {
-        return stmt;
-    }
-    
-    public void setStm(java.sql.Statement stm) //KO
-    {
-        this.stmt = stm;
-    }
-    
-    public java.sql.CallableStatement getCstm() //OK
-    {
-        return cstm;
-    }
-    
-    public void setCstm(java.sql.CallableStatement cstm) //OK
-    {
-        this.cstm = cstm;
-    }
-    
-    public java.sql.ResultSet getRs() //OK
-    {
-        return rs;
-    }
-    public void setRs(java.sql.ResultSet rs) //OK
-    {
-        this.rs = rs;
-    }
-    public void setId(int ID) //OK
-    {
-        this.id = ID;
-    }
-    public int getId() //OK
-    {
-        return id;
-    }
-    public int getMaxId() //OK    comprator = 7;
-    {
-        comprator = 7;
-        int return_int=-1;
-         try
-        {
+    public void insertRow(int in_id, String in_name, byte in_id_country) {
+        setComprator(1);
+        this.setId(in_id);
+        this.setName(in_name);
+        this.setIDCountry(in_id_country);
+        try {
             registerParameters();
-            rs = cstm.executeQuery();
-            while(rs.next())
-            {
-                return_int = rs.getInt(1);
-            }
-        }
-        catch(java.sql.SQLException sqle)
-        {
-            sqle.printStackTrace();
-        }
-       return return_int;
+            getCstm().execute();
+        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
-    public void setIDCountry(byte COD) //OK
-    {
+    
+    public void updateRow(int in_id, String in_name, byte in_id_country) {
+        setComprator(2);
+        this.setId(in_id);
+        this.setName(in_name);
+        this.setIDCountry(in_id_country);
+        try {
+            registerParameters();
+            getCstm().execute();
+        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
+    }
+//    
+//    public java.sql.ResultSet getRow(int in_id) {
+//        setComprator(4);
+//        setId(in_id);
+//        try {
+//            registerParameters();
+//            setRs(getCstm().executeQuery());
+//            while(getRs().next()) {
+//                setName(getRs().getString("name"));
+//                setIDCountry(getRs().getByte("id_country"));
+//            }
+//        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
+//        return getRs();
+//    }
+//    
+    public java.sql.ResultSet searchRecords(String oblast, String country) {
+        setComprator(5);
+        this.setName(oblast);
+        this.setNameCountry(country);
+        try {
+            registerParameters();
+            setRs(getCstm().executeQuery());
+        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
+        return getRs();
+    }
+    
+    public int getMaxId() {
+        setComprator(7);
+        int return_int=-1;
+        try {
+            registerParameters();
+            setRs(getCstm().executeQuery());
+            while(getRs().next()) {
+                return_int = getRs().getInt(1);
+            }
+        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
+        return return_int;
+    }
+    
+    public void setIDCountry(byte COD) {
         this.id_country = COD;
     }
-    public byte getIDCountry() //OK
-    {
+    
+    public byte getIDCountry() {
         return id_country;
     }
-    public void setName(String Name) //OK
-    {
-        this.name = Name;
-    }
-    public String getName() //OK
-    {
-        return name;
-    }
-     public void setNameCountry(String Name) //OK
-    {
+    
+    public void setNameCountry(String Name) {
         this.country = Name;
     }
-    public String getNameCountry() //OK
-    {
+    
+    public String getNameCountry() {
         return country;
     }
-    public int getComprator() //OK
-    {
-        return comprator;
-    }
-    public void setComprator(int com) //OK
-    {
-        this.comprator = com;
-    }
-    public void close() //OK
-    {
-        try{
-            rs.close();
-            rs=null;
-        }catch(java.sql.SQLException sqle){}
-        
-        try{
-            cstm.close();
-            cstm=null;
-        }catch(java.sql.SQLException sqle){}
-        
-    }
-    public String[] getCountryName() //test comprator = 6;
-    {
-        comprator=6;
-        String return_str=new String("");
-        int oldId = id;
-        ResultSet oldRs = rs;
+    
+    public String[] getCountryName() {
+        setComprator(6);
+        String return_str = new String("");
+        int oldId = getId();
+        java.sql.ResultSet oldRs = getRs();
         String strIndexConnOfId = new String("");
-        ArrayList in = new ArrayList();
-        Iterator it = null;
-        // nova ideq porodena ot fakta 4e pri razdelqneto na stringa i 
-        //ako imeto na ednata kletka ima intervali no se polu4ava gre6ka
-        HashMap key_Anlevel = new HashMap();
+        java.util.ArrayList in = new java.util.ArrayList();
+        java.util.Iterator it = null;
+        java.util.HashMap key_Anlevel = new java.util.HashMap();
         int i = 0;
-       
-         try              
-        {
-             registerParameters();
-            rs = cstm.executeQuery();
-                        
-           
-            while(rs.next())
-            {
-               key_Anlevel.put(new Integer(rs.getInt("id_n_country")),new String(rs.getString("name_n_country")));  
-               in.add(new Integer(rs.getInt("id_n_country")));
-               i++;
+        try {
+            registerParameters();
+            setRs(getCstm().executeQuery());
+            while(getRs().next()) {
+                key_Anlevel.put(new Integer(getRs().getInt("id_n_country")), new String(getRs().getString("name_n_country")));
+                in.add(new Integer(getRs().getInt("id_n_country")));
+                i++;
             }
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-        rs = oldRs;
-        id = oldId;
+        } catch(Exception e) { e.printStackTrace(); }
+        setRs(oldRs);
+        setId(oldId);
         indexConnOfId = new int[i];
         it = in.iterator();
-        
-        splitNamesOfCountry = new String[i]; 
-        i=0;
-        while(it.hasNext())
-        {
-            indexConnOfId[i] =(Integer) it.next();
-            splitNamesOfCountry[i] = (String) key_Anlevel.get(indexConnOfId[i]); 
+        splitNamesOfCountry = new String[i];
+        i = 0;
+        while(it.hasNext()) {
+            indexConnOfId[i] = (Integer) it.next();
+            splitNamesOfCountry[i] = (String) key_Anlevel.get(indexConnOfId[i]);
             i++;
         }
-       
-        
-        
         return splitNamesOfCountry;
     }
     
-  public int[] getIndexConnOfId() //OK
-  {
-      return indexConnOfId;
-  }
+    public int[] getIndexConnOfId() {
+        return indexConnOfId;
+    }
+    
+    public java.sql.Connection getConn() {
+        return conn;
+    }
+    
+    public void setConn(java.sql.Connection conn) {
+        this.conn = conn;
+    }
+    
 }// end class
