@@ -1,8 +1,8 @@
 ﻿DELIMITER $$
 
-DROP PROCEDURE IF EXISTS `mida`.`sl_procedure_m` $$
-CREATE PROCEDURE `mida`.`sl_procedure_m` (IN vid INT(11),IN modulator INT(11), IN comprator INT(11), IN area VARCHAR(3),
-                  `                       IN BGDATE VARCHAR(20), IN ENDDATE VARCHAR(20))
+DROP PROCEDURE IF EXISTS sl_procedure_m $$
+CREATE PROCEDURE sl_procedure_m (IN vid INT(11),IN modulator INT(11), IN comprator INT(11), IN area VARCHAR(3),
+                                         IN BGDATE VARCHAR(20), IN ENDDATE VARCHAR(20))
 BEGIN
 
 
