@@ -5,7 +5,7 @@ CREATE PROCEDURE nom_procedure_incom (IN comprator TINYINT, IN in_id INT(11),IN 
 BEGIN
      IF (comprator = 0) THEN
           SELECT n.id_n_incoms, n.id_n_group, ng.name_n_group, n.code_n_incoms, n.name_n_incoms,
-                   n.comments_n_incoms FROM n_casa n LEFT OUTER JOIN n_group ng ON ng.id_n_group = n.id_n_group;
+                   n.comments_n_incoms FROM n_incoms n LEFT OUTER JOIN n_group ng ON ng.id_n_group = n.id_n_group;
      END IF;
      IF (comprator = 1) THEN
         INSERT INTO n_incoms ( id_n_group, code_n_incoms, name_n_incoms, comments_n_incoms) VALUES(in_id_groupe, in_code, in_name, in_comments);
@@ -22,7 +22,7 @@ BEGIN
 
      IF (comprator = 5) THEN
         SELECT n.id_n_incoms, n.id_n_group, ng.name_n_group, n.code_n_incoms, n.name_n_incoms,
-                   n.comments_n_incoms FROM n_incoms n LEFT OUTER JOIN n_group ng ON ng.id_n_group=n.id_n_group
+                   n.comments_n_incoms FROM n_incoms n LEFT OUTER JOIN n_group ng ON ng.id_n_group = n.id_n_group
                    WHERE n.code_n_incoms LIKE CONCAT('%',in_code,'%') AND  n.code_n_incoms LIKE CONCAT('%',in_name,'%');
 
      END IF;

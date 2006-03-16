@@ -1,7 +1,7 @@
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS nom_procedure_baccount $$
-CREATE PROCEDURE nom_procedure_baccount (IN comprator TINYINT, IN in_id INT(11), IN in_id_group INT(11), IN in_code VARCHAR(10),
+CREATE PROCEDURE nom_procedure_baccount (IN comprator TINYINT, IN in_id INT(11), IN in_id_group INT(11), IN in_code INT(11),
                 IN in_name VARCHAR(45), IN in_account VARCHAR(28), IN in_address VARCHAR(100), IN in_id_tacc INT(11), IN in_comment VARCHAR(250))
 BEGIN
      IF (comprator = 0) THEN
