@@ -334,7 +334,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     private  imakante.com.vcomponents.iFrame myframe;
     private  java.sql.Connection conn;
     private  java.sql.ResultSet rs;
-    private  nom.casaDB internalObject;
+    private  imakante.sales.casaOp internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
     public static final String Names[] = {
@@ -359,7 +359,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     
     private void constructObject() {
         try {
-            internalObject = new nom.casaDB(conn);
+            internalObject = new imakante.sales.casaOp(conn);
         } catch(Exception e) { e.printStackTrace(); }
     }
     
@@ -393,11 +393,11 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     public void windowDeactivated(java.awt.event.WindowEvent e) {
     }
     
-    public nom.casaDB getInternalObject() {
+    public imakante.sales.casaOp getInternalObject() {
         return internalObject;
     }
     
-    public void setInternalObject(nom.casaDB val) {
+    public void setInternalObject(imakante.sales.casaOp val) {
         this.internalObject = val;
     }
     
