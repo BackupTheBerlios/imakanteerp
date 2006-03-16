@@ -36,7 +36,7 @@ public class groupDB  extends imakante.com.dbObject {
         try {
             getCstm().setInt("in_id", getId());
             getCstm().setInt("in_nom", getNom()); // za suotvetnata grupa
-            getCstm().setString("in_cod", getCode());
+            getCstm().setInt("in_code", getCode());
             getCstm().setString("in_name", getName());
             getCstm().setInt("in_alid", getAnID());
             getCstm().setInt("comprator", getComprator());
@@ -50,10 +50,10 @@ public class groupDB  extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    public void insertRow(int in_nom, String in_cod,String in_name, int alID) {
+    public void insertRow(int in_nom, int in_code, String in_name, int alID) {
         setComprator(1);
         this.nom = in_nom;
-        this.setCode(in_cod);
+        this.setCode(in_code);
         this.setName(in_name);
         this.alId = alID;
         try {
@@ -62,11 +62,11 @@ public class groupDB  extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    public void updateRow(int in_id, int in_nom, String in_cod,String in_name, int alID) {
+    public void updateRow(int in_id, int in_nom, int in_code, String in_name, int alID) {
         setComprator(2);
         this.setId(in_id);
         this.nom = in_nom;
-        this.setCode(in_cod);
+        this.setCode(in_code);
         this.setName(in_name);
         this.alId = alID;
         try {
@@ -91,10 +91,10 @@ public class groupDB  extends imakante.com.dbObject {
 //        return getRs();
 //    }
 //    
-    public java.sql.ResultSet searchRecords(int in_nom, String in_cod,String in_name, int alID) {
+    public java.sql.ResultSet searchRecords(int in_nom, int in_code,String in_name, int alID) {
         setComprator(5);
         this.nom = in_nom;
-        this.setCode(in_cod);
+        this.setCode(in_code);
         this.setName(in_name);
         this.alId = alID;
         try {
@@ -104,8 +104,7 @@ public class groupDB  extends imakante.com.dbObject {
         return getRs();
     }
     
-    public int getMaxId() //OK
-    {
+    public int getMaxId() {
         setComprator(7);
         int return_int = -1;
         try {
@@ -136,7 +135,7 @@ public class groupDB  extends imakante.com.dbObject {
     
     public String[] getAnLevelName() {
         setComprator(6);
-        String return_str=new String("");
+        String return_str = new String("");
         int oldId = getId();
         java.sql.ResultSet oldRs = getRs();
         String strIndexConnOfId = new String("");

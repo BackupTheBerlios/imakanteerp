@@ -33,7 +33,7 @@ public class moneyDB  extends imakante.com.dbObject {
         try {
             getCstm().setInt("in_id", getId());
             getCstm().setInt("comprator", getComprator());
-            getCstm().setString("in_code", getCode());
+            getCstm().setInt("in_code", getCode());
             getCstm().setString("in_cod_lat", getCodeInt());
             getCstm().setString("in_name", getName());
             getCstm().setString("in_comments", getComment());
@@ -47,9 +47,9 @@ public class moneyDB  extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    public void insertRow( String in_cod, String in_cod_lat, String in_name, String in_comment) {
+    public void insertRow(int in_code, String in_cod_lat, String in_name, String in_comment) {
         setComprator(1);
-        this.setCode(in_cod);
+        this.setCode(in_code);
         this.setCodeInt(in_cod_lat);
         this.setName(in_name);
         this.setComment(in_comment);
@@ -59,10 +59,10 @@ public class moneyDB  extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    public void updateRow(int in_id, String in_cod, String in_cod_lat, String in_name, String in_comment) {
+    public void updateRow(int in_id, int in_code, String in_cod_lat, String in_name, String in_comment) {
         setComprator(2);
         this.setId(in_id);
-        this.setCode(in_cod);
+        this.setCode(in_code);
         this.setCodeInt(in_cod_lat);
         this.setName(in_name);
         this.setComment(in_comment);
@@ -88,9 +88,9 @@ public class moneyDB  extends imakante.com.dbObject {
 //        return getRs();
 //    }
 //    
-    public java.sql.ResultSet searchRecords(String in_cod, String in_cod_lat, String in_name) {
+    public java.sql.ResultSet searchRecords(int in_code, String in_cod_lat, String in_name) {
         setComprator(5);
-        this.setCode(in_cod);
+        this.setCode(in_code);
         this.setCodeInt(in_cod_lat);
         this.setName(in_name);
         try {
