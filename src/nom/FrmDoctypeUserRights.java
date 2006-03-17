@@ -74,7 +74,7 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 868, Short.MAX_VALUE)
+            .add(0, 879, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -471,14 +471,17 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
     private void editRecord() {
         if (table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());
-            if(getRow() == 0) {          //manage button state of ae form
+            if(getRow() == 0) {
                 setAtBegining(true);
             }
-            if(getRow()==getMaxRow()) {
+            if(getRow() == getMaxRow()) {
                 setAtEnd(true);
+            } else {
+                setAtBegining(false);
+                setAtEnd(false);
             }
             setAllVariables();
-            nom.aeDoctypeUserRights ae_DTUR= new nom.aeDoctypeUserRights(this, true);
+            nom.aeDoctypeUserRights ae_DTUR = new nom.aeDoctypeUserRights(this, true);
             ae_DTUR.setVisible(true);
         } else {  }
     }

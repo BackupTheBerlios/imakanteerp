@@ -91,7 +91,7 @@ public class groupDB  extends imakante.com.dbObject {
 //        return getRs();
 //    }
 //    
-    public java.sql.ResultSet searchRecords(int in_nom, int in_code,String in_name, int alID) {
+    public java.sql.ResultSet searchRecords(int in_nom, int in_code, String in_name, int alID) {
         setComprator(5);
         this.nom = in_nom;
         this.setCode(in_code);
