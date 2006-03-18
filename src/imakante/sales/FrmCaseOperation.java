@@ -18,20 +18,20 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextCod = new javax.swing.JTextField();
+        jtfCasaBegin = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextName = new javax.swing.JTextField();
+        jtfContragentBEGIN = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jButtonSearch = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jtfCasaEND = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jtfContragentEND = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        jXDatePickerBEGIN = new org.jdesktop.swingx.JXDatePicker();
+        jXDatePickerEND = new org.jdesktop.swingx.JXDatePicker();
         jPanel3 = new javax.swing.JPanel();
         jButtonNew = new javax.swing.JButton();
         jButtonEdit = new javax.swing.JButton();
@@ -56,21 +56,34 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         jPanel4.setPreferredSize(new java.awt.Dimension(448, 37));
         jLabel2.setText("\u041a\u0430\u0441\u0430:");
 
-        jTextCod.setPreferredSize(new java.awt.Dimension(80, 20));
+        jtfCasaBegin.setPreferredSize(new java.awt.Dimension(80, 20));
+        jtfCasaBegin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfCasaBeginKeyPressed(evt);
+            }
+        });
 
         jLabel3.setText("\u041a\u043b\u0438\u0435\u043d\u0442");
 
-        jTextName.setPreferredSize(new java.awt.Dimension(80, 20));
+        jtfContragentBEGIN.setPreferredSize(new java.awt.Dimension(80, 20));
+        jtfContragentBEGIN.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfContragentBEGINKeyPressed(evt);
+            }
+        });
 
         jLabel1.setText("\u0414\u0430\u0442\u0430");
-
-        jTextField1.setPreferredSize(new java.awt.Dimension(80, 19));
 
         jButtonSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Search.png")));
         jButtonSearch.setText("\u0422\u044a\u0440\u0441\u0435\u043d\u0435");
         jButtonSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSearchActionPerformed(evt);
+            }
+        });
+        jButtonSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonSearchKeyPressed(evt);
             }
         });
 
@@ -80,9 +93,33 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
 
         jLabel6.setText("\u041a\u0430\u0441\u0430:");
 
+        jtfCasaEND.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfCasaENDKeyPressed(evt);
+            }
+        });
+
         jLabel7.setText("\u041a\u043b\u0438\u0435\u043d\u0442");
 
+        jtfContragentEND.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfContragentENDKeyPressed(evt);
+            }
+        });
+
         jLabel8.setText("\u0414\u0430\u0442\u0430");
+
+        jXDatePickerBEGIN.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jXDatePickerBEGINKeyPressed(evt);
+            }
+        });
+
+        jXDatePickerEND.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jXDatePickerENDKeyPressed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -102,71 +139,76 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                     .add(jPanel4Layout.createSequentialGroup()
                         .add(5, 5, 5)
-                        .add(jTextCod, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(jtfCasaBegin, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jTextField2)))
+                        .add(jtfCasaEND)))
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                     .add(jPanel4Layout.createSequentialGroup()
                         .add(5, 5, 5)
                         .add(jLabel3)
                         .add(5, 5, 5)
-                        .add(jTextName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(jtfContragentBEGIN, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jLabel7)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jTextField3)))
-                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                        .add(jtfContragentEND)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel4Layout.createSequentialGroup()
-                        .add(5, 5, 5)
-                        .add(jLabel1)
-                        .add(5, 5, 5)
-                        .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jLabel8)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jTextField4)))
-                .add(34, 34, 34)
+                        .add(jXDatePickerEND, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .add(jLabel1)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jXDatePickerBEGIN, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .add(17, 17, 17)
                 .add(jButtonSearch)
-                .add(172, 172, 172))
+                .addContainerGap(141, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel4Layout.createSequentialGroup()
+                .add(24, 24, 24)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .add(7, 7, 7)
+                        .add(jtfCasaBegin, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .add(10, 10, 10)
+                        .add(jLabel3))
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .add(2, 2, 2)
+                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(jPanel4Layout.createSequentialGroup()
+                                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                                    .add(jtfContragentBEGIN, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(jLabel1))
+                                .add(5, 5, 5))
+                            .add(jPanel4Layout.createSequentialGroup()
+                                .add(jXDatePickerBEGIN, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)))
+                        .add(jXDatePickerEND, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jPanel4Layout.createSequentialGroup()
                         .add(10, 10, 10)
                         .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(jLabel2)
                             .add(jLabel4))
-                        .add(17, 17, 17)
+                        .add(14, 14, 14)
                         .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(jLabel5)
                             .add(jLabel6)
-                            .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jtfCasaEND, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(jLabel7)
-                            .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jLabel8)
-                            .add(jTextField4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jButtonSearch)))
-                    .add(jPanel4Layout.createSequentialGroup()
-                        .add(7, 7, 7)
-                        .add(jTextCod, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(jPanel4Layout.createSequentialGroup()
-                        .add(10, 10, 10)
-                        .add(jLabel3))
-                    .add(jPanel4Layout.createSequentialGroup()
-                        .add(7, 7, 7)
-                        .add(jTextName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(jPanel4Layout.createSequentialGroup()
-                        .add(10, 10, 10)
-                        .add(jLabel1))
-                    .add(jPanel4Layout.createSequentialGroup()
-                        .add(8, 8, 8)
-                        .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(12, Short.MAX_VALUE))
+                            .add(jtfContragentEND, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel8))))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(39, Short.MAX_VALUE)
+                .add(jButtonSearch)
+                .add(25, 25, 25))
         );
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
@@ -175,16 +217,16 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 822, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 822, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 822, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 822, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 503, Short.MAX_VALUE)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 82, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 93, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -258,8 +300,36 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         getContentPane().add(jPanel3, java.awt.BorderLayout.SOUTH);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-836)/2, (screenSize.height-667)/2, 836, 667);
+        setBounds((screenSize.width-834)/2, (screenSize.height-468)/2, 834, 468);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonSearchKeyPressed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButtonSearchKeyPressed
+
+    private void jXDatePickerENDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jXDatePickerENDKeyPressed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jXDatePickerENDKeyPressed
+
+    private void jXDatePickerBEGINKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jXDatePickerBEGINKeyPressed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jXDatePickerBEGINKeyPressed
+
+    private void jtfContragentENDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfContragentENDKeyPressed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jtfContragentENDKeyPressed
+
+    private void jtfContragentBEGINKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfContragentBEGINKeyPressed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jtfContragentBEGINKeyPressed
+
+    private void jtfCasaENDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCasaENDKeyPressed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jtfCasaENDKeyPressed
+
+    private void jtfCasaBeginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCasaBeginKeyPressed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jtfCasaBeginKeyPressed
     
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
         printTable();
@@ -312,19 +382,31 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextCod;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextName;
+    private org.jdesktop.swingx.JXDatePicker jXDatePickerBEGIN;
+    private org.jdesktop.swingx.JXDatePicker jXDatePickerEND;
+    private javax.swing.JTextField jtfCasaBegin;
+    private javax.swing.JTextField jtfCasaEND;
+    private javax.swing.JTextField jtfContragentBEGIN;
+    private javax.swing.JTextField jtfContragentEND;
     // End of variables declaration//GEN-END:variables
     
     //--------------- My Variables
     private int id=0; // imena ot tablicata
-    private int code_groupe =0; // imena ot tablicata
     private int cod = 0;
-    private String name,comment; // imena ot tablicata
+    private     int in_in_sl_mop=0;
+    private     int in_outsl_mop=0;
+    private     int in_id_order_spec = 0 ;
+    private     int in_id_order_spec_type= 1;
+    private     int in_id_order_doc = 0;
+    private     String in_DATE;
+    private     int in_id_n_money=1;
+    private     double in_exchange_rate = 1;
+    private     double in_sum_sl_mop;
+    private     double in_sum_os_val_sl_mop;
+    private     int in_user_id  = imakante.com.NewMain.getUserId();
+    private     int in_id_sdtn  = 1;
+    private String  comment ="";
+    
     private String namesG[]; //imena na grupi
     private int selectComboBoxItem;
     private  boolean atBegining=false;
@@ -337,13 +419,14 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     private  imakante.sales.casaOp internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
-    public static final String Names[] = {
-        "id",
-        "id_group",
-        "\u0418\u043c\u0435 \u0433\u0440\u0443\u043f\u0438",
-        "\u041a\u043e\u0434\u043e\u0432\u0435",
-        "\u0418\u043c\u0435\u043d\u0430",
-        "\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440"};
+    public static final String Names[] = null;
+//    {
+//        "id",
+//        "id_group",
+//        "\u0418\u043c\u0435 \u0433\u0440\u0443\u043f\u0438",
+//        "\u041a\u043e\u0434\u043e\u0432\u0435",
+//        "\u0418\u043c\u0435\u043d\u0430",
+//        "\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440"};
     //---------------END My Variables
     
     //---------------START Methods
@@ -458,13 +541,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         return id;
     }
     
-    public void setIDG(int Gr) {
-        this.code_groupe = Gr;
-    }
-    
-    public int getIDG() {
-        return code_groupe;
-    }
+  
     
     public void setCod(int Cod) {
         this.cod = Cod;
@@ -473,13 +550,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     public int getCod() {
         return cod;
     }
-    public void setNames(String Name) {
-        this.name = Name;
-    }
-    
-    public String getNames() {
-        return name;
-    }
+   
     
     public void setComment(String Comment) {
         this.comment = Comment;
@@ -572,10 +643,10 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     private void searchRecords() {
         try {
             try {
-                rs = internalObject.searchRecords(Integer.parseInt(jTextCod.getText()),jTextName.getText());
+                rs = internalObject.searchRecords();
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
-                jTextCod.requestFocus();
+                
             }
             jScrollPane1.remove(table);
             model = new imakante.com.CustomTableModel(getConn(), rs, Names);
@@ -599,7 +670,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     }
     
     private void newRecord() {
-        internalObject.insertRow((internalObject.getMaxCod() + 1), 0);
+        internalObject.insertRow((internalObject.getMaxCod() + 1));
         refreshTable();
         setRow(getMaxRow());
         table.changeSelection(getRow(), 2, false, false);
@@ -618,13 +689,12 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
             
             if(getRow()==0){          //manage button state of ae form
                 setAtBegining(true);
-            }
-else if(getRow()==getMaxRow()){
+            } else if(getRow()==getMaxRow()){
                 setAtEnd(true);
-}else{
+            }else{
                 setAtBegining(false);
                 setAtEnd(false);
-}
+            }
             setAllVariables();
             nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
             ae_Casa.setVisible(true);
@@ -674,7 +744,7 @@ else if(getRow()==getMaxRow()){
     
     private void HideColumns(int col) {
         int iColumn = col;
-// set column width
+        // set column width
         table.getColumnModel().getColumn(iColumn).setMaxWidth(0);
         table.getColumnModel().getColumn(iColumn).setMinWidth(0);
         table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
@@ -683,9 +753,9 @@ else if(getRow()==getMaxRow()){
     }
     private void setAllVariables(){
         setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
-        setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("id_group")));
+       
         setCod((Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434\u043e\u0432\u0435")));
-        setNames((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435\u043d\u0430")));
+       
         setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440")));
     }
 }

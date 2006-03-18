@@ -23,24 +23,33 @@ public class casaOp  extends dbObject {
     private java.sql.Statement stmt;
     private java.sql.CallableStatement cstm;
     
-   
+    
 //              IN in_id INT(11),
 //              IN in_number_sl_mop INT(11), code go zamenia v obekta
-   private     int in_in_sl_mop=0;
-   private     int in_outsl_mop=0;
-   private     int in_id_order_spec = 0 ;
-   private     int in_id_order_spec_type= 1;
-   private     int in_id_order_doc = 0;
-   private     String in_DATE;
-   private     int in_id_n_money=1;
-   private     double in_exchange_rate = 1;
-   private     double in_sum_sl_mop;
-   private     double in_sum_os_val_sl_mop;
-   private     int in_user_id;
-   private     int in_id_sdtn  = 1;
+    private     int in_in_sl_mop=0;
+    private     int in_outsl_mop=0;
+    private     int in_id_order_spec = 0 ;
+    private     int in_id_order_spec_type= 1;
+    private     int in_id_order_doc = 0;
+    private     String in_DATE;
+    private     int in_id_n_money=1;
+    private     double in_exchange_rate = 1;
+    private     double in_sum_sl_mop;
+    private     double in_sum_os_val_sl_mop;
+    private     int in_user_id  = imakante.com.NewMain.getUserId();
+    private     int in_id_sdtn  = 1;
 //              IN in_comment_sl_mop VARCHAR(250)) comment
-//              
+//
+    // SEARCH VARIABLES
+    private int CasaBegin = 0;
+    private int CasaEnd = 0;
+    private int ContragentBegin = 0;
+    private int ContragentEnd = 0;
+    private String DateBegin = "";
+    private String DateEnd = "";
     private Connection conn;
+    
+    
     //-------------END MyVariables
     
     /** Creates a new instance of kasiDB */
@@ -52,7 +61,7 @@ public class casaOp  extends dbObject {
     protected void prepareCstm() {
         try {
             
-            setCstm(getConn().prepareCall("{call sl_procedure_case_in(?,?,?,?,?,?)}"));
+            setCstm(getConn().prepareCall("{call sl_procedure_case_in(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
             
         } catch (SQLException sqle) {sqle.printStackTrace();}
     }
@@ -75,23 +84,59 @@ public class casaOp  extends dbObject {
             getCstm().setInt("in_user_id", in_user_id);
             getCstm().setInt("in_id_sdtn", in_id_sdtn);
             getCstm().setString("in_comments", getComment());
+            getCstm().setInt("in_casaBegin", CasaBegin);
+            getCstm().setInt("in_casaEnd", CasaEnd);
+            getCstm().setInt("in_contragentBegin", ContragentBegin);
+            getCstm().setInt("in_contragentEnd", ContragentEnd);
+            getCstm().setString("in_data_begin", DateBegin);
+            getCstm().setString("in_data_end", DateEnd);
             
-  
- 
-  
- 
         } catch(java.sql.SQLException sqle) {
             sqle.printStackTrace();
         }
         
     }
-    public void updateRow(int in_id,  int in_id_groupe, int in_code, String in_name, String in_comment) //OK   comprator = 2;
-    {
+    public void insertRow(int in_code) {
+        setComprator(1);
+        setCode(in_code);
+        
+        registerParameters();
+        try {
+            getCstm().execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+    }
+    
+    public void updateRow(int in_id,
+            int in_code,
+            int in_in_sl_mop,
+            int in_outsl_mop,
+            int in_id_order_spec,
+            int in_id_order_spec_type,
+            int in_id_order_doc,
+            String in_DATE,
+            int in_id_n_money,
+            double in_exchange_rate,
+            double in_sum_sl_mop,
+            double in_sum_os_val_sl_mop,
+            int in_id_sdtn,
+            String in_comment) {
         setComprator(2);
         setId(in_id);
-       
         setCode(in_code);
-       
+        this.in_in_sl_mop = in_in_sl_mop;
+        this.in_outsl_mop = in_outsl_mop;
+        this.in_id_order_spec = in_id_order_spec;
+        this.in_id_order_spec_type = in_id_order_spec_type;
+        this.in_id_order_doc = in_id_order_doc;
+        this.in_DATE = in_DATE;
+        this.in_id_n_money = in_id_n_money;
+        this.in_exchange_rate = in_exchange_rate;
+        this.in_sum_sl_mop = in_sum_sl_mop;
+        this.in_sum_os_val_sl_mop = in_sum_os_val_sl_mop;
+        this.in_id_sdtn = in_id_sdtn;
         setComment(in_comment);
         try {
             registerParameters();
@@ -103,11 +148,15 @@ public class casaOp  extends dbObject {
         
     }
     
-    public java.sql.ResultSet searchRecords( int in_code, String in_name) // -OK  comprator = 5;
+    public java.sql.ResultSet searchRecords( int casaBegin, int casaEnd, int contragentBegin,
+            int contragentEnd, String data_begin, String data_end) //   comprator = 5;
     {
         setComprator(5);
-        
-       
+        CasaBegin = casaBegin;
+        CasaEnd = casaEnd;
+        ContragentBegin = contragentEnd;
+        DateBegin = data_begin;
+        DateEnd = data_end;
         try {
             registerParameters();
             setRs(getCstm().executeQuery());
@@ -118,21 +167,7 @@ public class casaOp  extends dbObject {
         
     }
     
-    public int getMaxGrID() //OK    comprator = 8;
-    {
-        setComprator(9);
-        int return_int=-1;
-        try {
-            registerParameters();
-            rs = cstm.executeQuery();
-            while(rs.next()) {
-                return_int = rs.getInt(1);
-            }
-        } catch(java.sql.SQLException sqle) {
-            sqle.printStackTrace();
-        }
-        return return_int;
-    }
+    
     public String[] getCasa() //test comprator = 6;
     {
         setComprator(6);
@@ -267,7 +302,7 @@ public class casaOp  extends dbObject {
             e.printStackTrace();
         }
         rs = oldRs;
-       setId(oldId);
+        setId(oldId);
         indexDoc = new int[i];
         it = in.iterator();
         
