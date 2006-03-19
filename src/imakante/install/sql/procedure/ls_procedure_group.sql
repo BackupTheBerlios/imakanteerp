@@ -1,7 +1,7 @@
 ﻿DELIMITER $$
 
 DROP PROCEDURE IF EXISTS ls_procedure_group $$
-CREATE PROCEDURE ls_procedure_group (IN in_id INT(6), IN in_nom TINYINT, IN comprator TINYINT, IN in_code INT(11), IN in_name VARCHAR(30), IN in_alid TINYINT)
+CREATE PROCEDURE ls_procedure_group (IN in_id INT(6), IN in_nom TINYINT, IN comprator TINYINT, IN in_code INT(11), IN in_name VARCHAR(50), IN in_alid TINYINT)
 BEGIN
      IF (comprator = 0) THEN
         SELECT n.id_n_group, n.cod_n_group, n.name_n_group, n.id_al, anlevel.name_al  FROM `n_group` n, anlevel WHERE nom_n_group = in_nom AND anlevel.id_al = n.id_al;
