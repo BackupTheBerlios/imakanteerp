@@ -1,7 +1,7 @@
 ﻿DELIMITER $$
 
 DROP PROCEDURE IF EXISTS nom_procedure_person $$
-CREATE PROCEDURE nom_procedure_person (IN comprator TINYINT, IN in_id INT(11),IN in_id_group INT(11), IN in_code INT(11), IN in_egn VARCHAR(10), IN in_nomlk VARCHAR(9), IN in_name VARCHAR(45), IN in_comment VARCHAR(250) )
+CREATE PROCEDURE nom_procedure_person (IN comprator TINYINT, IN in_id INT(11), IN in_id_group INT(11), IN in_code INT(11), IN in_egn VARCHAR(10), IN in_nomlk VARCHAR(9), IN in_name VARCHAR(45), IN in_comment VARCHAR(250) )
 BEGIN
      IF (comprator = 0) THEN
           SELECT n.id_ls_n_person, n.id_n_group, ng.name_n_group, n.code_ls_n_person, n.egn_ls_n_person, n.nlk_ls_n_person, n.name_ls_n_person,
@@ -22,6 +22,9 @@ BEGIN
      END IF;
 
      IF (comprator = 5) THEN
+        IF (in_code = -1) THEN
+            SET in_code = '%'; 
+        END IF;
         SELECT n.id_ls_n_person, n.id_n_group, ng.name_n_group, n.code_ls_n_person, n.egn_ls_n_person, n.nlk_ls_n_person, n.name_ls_n_person,
                    n.comment_ls_n_person FROM ls_n_person n LEFT OUTER JOIN n_group ng ON ng.id_n_group = n.id_n_group
                    WHERE n.code_ls_n_person LIKE CONCAT('%',in_code,'%') AND n.egn_ls_n_person LIKE CONCAT('%',in_egn,'%') AND n.name_ls_n_person LIKE CONCAT('%',in_name,'%');
