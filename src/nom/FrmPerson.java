@@ -55,20 +55,54 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
 
         jTextField1.setPreferredSize(new java.awt.Dimension(80, 20));
         jTextField1.setInputVerifier(new imakante.com.InputIntegerVerifier());
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField1FocusGained(evt);
+            }
+        });
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
+        });
+
         jPanel4.add(jTextField1);
 
         jLabel2.setText("\u0415\u0413\u041d:");
         jPanel4.add(jLabel2);
 
         jTextEGN.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextEGN.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextEGNFocusGained(evt);
+            }
+        });
+        jTextEGN.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextEGNKeyPressed(evt);
+            }
+        });
+
         jPanel4.add(jTextEGN);
 
         jLabel3.setText("\u0418\u043c\u0435:");
         jPanel4.add(jLabel3);
 
         jTextName.setPreferredSize(new java.awt.Dimension(160, 20));
+        jTextName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextNameFocusGained(evt);
+            }
+        });
+        jTextName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextNameKeyPressed(evt);
+            }
+        });
+
         jPanel4.add(jTextName);
 
+        jButtonSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Search.png")));
         jButtonSearch.setText("\u0422\u044a\u0440\u0441\u0435\u043d\u0435");
         jButtonSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,7 +121,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 825, Short.MAX_VALUE)
+            .add(0, 879, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -97,6 +131,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel3.setPreferredSize(new java.awt.Dimension(801, 37));
+        jButtonNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Add 2.png")));
         jButtonNew.setText("\u041d\u043e\u0432");
         jButtonNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,6 +141,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
 
         jPanel3.add(jButtonNew);
 
+        jButtonEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Report Edit 2.png")));
         jButtonEdit.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f");
         jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,6 +151,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
 
         jPanel3.add(jButtonEdit);
 
+        jButtonPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Printer.png")));
         jButtonPrint.setText("\u041f\u0435\u0447\u0430\u0442");
         jButtonPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,9 +161,10 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
 
         jPanel3.add(jButtonPrint);
 
-        jButtonPrnReport.setText("\u041f\u0435\u0447\u0430\u0442 \u0440\u0435\u043f\u043e\u0440\u0442");
+        jButtonPrnReport.setText("\u041f\u0435\u0447\u0430\u0442 \u043e\u0442\u0447\u0435\u0442");
         jPanel3.add(jButtonPrnReport);
 
+        jButtonDel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Delete 2.png")));
         jButtonDel.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
         jButtonDel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,6 +174,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
 
         jPanel3.add(jButtonDel);
 
+        jButtonRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Refresh 3.png")));
         jButtonRefresh.setText("\u0412\u0441\u0438\u0447\u043a\u0438 \u0437\u0430\u043f\u0438\u0441\u0438");
         jButtonRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,6 +200,30 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+        jTextField1.selectAll();
+    }//GEN-LAST:event_jTextField1FocusGained
+
+    private void jTextEGNFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextEGNFocusGained
+        jTextEGN.selectAll();
+    }//GEN-LAST:event_jTextEGNFocusGained
+
+    private void jTextNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextNameFocusGained
+        jTextName.selectAll();
+    }//GEN-LAST:event_jTextNameFocusGained
+
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); }
+    }//GEN-LAST:event_jTextField1KeyPressed
+
+    private void jTextEGNKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextEGNKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); }
+    }//GEN-LAST:event_jTextEGNKeyPressed
+
+    private void jTextNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNameKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); }
+    }//GEN-LAST:event_jTextNameKeyPressed
     
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
         printTable();
@@ -189,7 +252,6 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     private void jButtonNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewActionPerformed
         newRecord();
     }//GEN-LAST:event_jButtonNewActionPerformed
-    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonClose;

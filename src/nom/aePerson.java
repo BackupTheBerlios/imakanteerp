@@ -45,6 +45,7 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
         jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("\u0414\u0430\u043d\u043d\u0438 \u043d\u0430 \u043b\u0438\u0446\u0435");
         jPanel1.setPreferredSize(new java.awt.Dimension(263, 33));
         jButtonSave.setText("\u0421\u044a\u0445\u0440\u0430\u043d\u0438");
         jButtonSave.addActionListener(new java.awt.event.ActionListener() {
@@ -94,7 +95,7 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
         jPanel2.setPreferredSize(new java.awt.Dimension(400, 300));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u041d\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u044f"));
         jPanel3.setPreferredSize(new java.awt.Dimension(230, 70));
-        jButtonToBegin.setText("<<");
+        jButtonToBegin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation First 2.png")));
         jButtonToBegin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonToBeginActionPerformed(evt);
@@ -108,7 +109,7 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
 
         jPanel3.add(jButtonToBegin);
 
-        jButtonOneRowM.setText("<");
+        jButtonOneRowM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation Left 2.png")));
         jButtonOneRowM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonOneRowMActionPerformed(evt);
@@ -122,7 +123,7 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
 
         jPanel3.add(jButtonOneRowM);
 
-        jButtonToEnd.setText(">>");
+        jButtonToEnd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation Right 2.png")));
         jButtonToEnd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonToEndActionPerformed(evt);
@@ -136,7 +137,7 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
 
         jPanel3.add(jButtonToEnd);
 
-        jButtonOneRowP.setText(">");
+        jButtonOneRowP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation Last 2.png")));
         jButtonOneRowP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonOneRowPActionPerformed(evt);
@@ -158,6 +159,12 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
+        jTextArea1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextArea1FocusGained(evt);
+            }
+        });
+
         jScrollPane1.setViewportView(jTextArea1);
 
         jLabel3.setText("\u0413\u0440\u0443\u043f\u0430:");
@@ -165,20 +172,42 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
         jLabel6.setText("\u041d\u041b\u041a:");
 
         jTextField1.setInputVerifier(new imakante.com.InputEGNVerifier());
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField1FocusGained(evt);
+            }
+        });
+
+        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField2FocusGained(evt);
+            }
+        });
+
+        jTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField3FocusGained(evt);
+            }
+        });
 
         jLabel7.setText("\u041a\u043e\u0434:");
 
         jTextField4.setInputVerifier(new imakante.com.InputIntegerVerifier());
+        jTextField4.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField4FocusGained(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel2Layout.createSequentialGroup()
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 336, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 336, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jPanel2Layout.createSequentialGroup()
                         .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jPanel2Layout.createSequentialGroup()
                                 .add(jLabel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 38, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -231,14 +260,34 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
                     .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel5))
                 .add(14, 14, 14)
-                .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                .addContainerGap())
         );
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-370)/2, (screenSize.height-377)/2, 370, 377);
+        setBounds((screenSize.width-370)/2, (screenSize.height-386)/2, 370, 386);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextArea1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea1FocusGained
+        jTextArea1.selectAll();
+    }//GEN-LAST:event_jTextArea1FocusGained
+
+    private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
+        jTextField3.selectAll();
+    }//GEN-LAST:event_jTextField3FocusGained
+
+    private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
+        jTextField2.selectAll();
+    }//GEN-LAST:event_jTextField2FocusGained
+
+    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+        jTextField1.selectAll();
+    }//GEN-LAST:event_jTextField1FocusGained
+
+    private void jTextField4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusGained
+        jTextField4.selectAll();
+    }//GEN-LAST:event_jTextField4FocusGained
     
     private void jButtonCloseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonCloseKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonClose.doClick();}

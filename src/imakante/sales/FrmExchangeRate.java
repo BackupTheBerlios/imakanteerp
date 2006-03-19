@@ -19,7 +19,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
         jspData = new javax.swing.JScrollPane();
         jpSearch = new javax.swing.JPanel();
         jlDate = new javax.swing.JLabel();
-        jtfDate = new javax.swing.JTextField();
+        jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
         jlCurrency = new javax.swing.JLabel();
         jtfCurrency = new javax.swing.JTextField();
         jbSearch = new javax.swing.JButton();
@@ -33,12 +33,14 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
         jbDropData = new javax.swing.JButton();
         jbClose = new javax.swing.JButton();
 
+        setTitle("\u041e\u0431\u043c\u0435\u043d\u043d\u0438 \u043a\u0443\u0440\u0441\u043e\u0432\u0435 \u043d\u0430 \u0432\u0430\u043b\u0443\u0442\u0438");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
         jpTop.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         org.jdesktop.layout.GroupLayout jpTopLayout = new org.jdesktop.layout.GroupLayout(jpTop);
         jpTop.setLayout(jpTopLayout);
         jpTopLayout.setHorizontalGroup(
             jpTopLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 811, Short.MAX_VALUE)
+            .add(0, 851, Short.MAX_VALUE)
         );
         jpTopLayout.setVerticalGroup(
             jpTopLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -55,9 +57,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
         jlDate.setText("\u0414\u0430\u0442\u0430:");
         jpSearch.add(jlDate);
 
-        jtfDate.setPreferredSize(new java.awt.Dimension(80, 20));
-        jtfDate.setInputVerifier(new imakante.com.InputDateVerifier());
-        jpSearch.add(jtfDate);
+        jpSearch.add(jXDatePicker1);
 
         jlCurrency.setText("\u0412\u0430\u043b\u0443\u0442\u0430:");
         jpSearch.add(jlCurrency);
@@ -71,6 +71,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
 
         jpSearch.add(jtfCurrency);
 
+        jbSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Search.png")));
         jbSearch.setText("\u0422\u044a\u0440\u0441\u0435\u043d\u0435");
         jpSearch.add(jbSearch);
 
@@ -79,6 +80,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
         getContentPane().add(jpMiddle, java.awt.BorderLayout.CENTER);
 
         jpBottom.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jbNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Add 2.png")));
         jbNew.setText("\u041d\u043e\u0432");
         jbNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,6 +90,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
 
         jpBottom.add(jbNew);
 
+        jbEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Report Edit 2.png")));
         jbEdit.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f");
         jbEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,6 +100,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
 
         jpBottom.add(jbEdit);
 
+        jbPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Printer.png")));
         jbPrint.setText("\u041f\u0435\u0447\u0430\u0442");
         jbPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,7 +110,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
 
         jpBottom.add(jbPrint);
 
-        jbPrintReport.setText("\u041f\u0435\u0447\u0430\u0442 \u041e\u0442\u0447\u0435\u0442");
+        jbPrintReport.setText("\u041f\u0435\u0447\u0430\u0442 \u043e\u0442\u0447\u0435\u0442");
         jbPrintReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbPrintReportActionPerformed(evt);
@@ -115,6 +119,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
 
         jpBottom.add(jbPrintReport);
 
+        jbRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Refresh 3.png")));
         jbRefresh.setText("\u0412\u0441\u0438\u0447\u043a\u0438 \u0437\u0430\u043f\u0438\u0441\u0438");
         jbRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,6 +129,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
 
         jpBottom.add(jbRefresh);
 
+        jbDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Delete 2.png")));
         jbDelete.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
         jbDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,10 +201,10 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     private void searchRecords() {
         try {
             try {
-                rs = internalObject.searchRecords(jtfDate.getText(), Integer.parseInt(jtfCurrency.getText()));
+                rs = internalObject.searchRecords(jXDatePicker1.getDate().toString(), Integer.parseInt(jtfCurrency.getText()));
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
-                jtfDate.requestFocus();
+                jXDatePicker1.requestFocus();
             }
             jspData.remove(table);
             model = new imakante.com.CustomTableModel(getConn(), rs, null);
@@ -284,6 +290,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
     private javax.swing.JButton jbClose;
     private javax.swing.JButton jbDelete;
     private javax.swing.JButton jbDropData;
@@ -301,7 +308,6 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     private javax.swing.JPanel jpTop;
     private javax.swing.JScrollPane jspData;
     private javax.swing.JTextField jtfCurrency;
-    private javax.swing.JTextField jtfDate;
     // End of variables declaration//GEN-END:variables
     
     private  imakante.com.vcomponents.iFrame myframe;

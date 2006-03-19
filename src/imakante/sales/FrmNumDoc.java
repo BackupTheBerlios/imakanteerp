@@ -39,6 +39,7 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
         setMaximizable(true);
         setResizable(true);
         setTitle("\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438 \u043d\u043e\u043c\u0435\u0440\u0430\u0446\u0438\u044f");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -452,7 +453,11 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
     private void searchRecords() {
         try {
             try {
-                rs = internalObject.searchRecords(Integer.parseInt(jTextCod.getText()),jTextName.getText());
+                if (jTextCod.getText().equals("")) {
+                    rs = internalObject.searchRecords(-1, jTextName.getText());
+                } else {
+                    rs = internalObject.searchRecords(Integer.parseInt(jTextCod.getText()), jTextName.getText());
+                }
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
                 jTextCod.requestFocus();
@@ -567,5 +572,5 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
 //        "\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442 \u0442\u0438\u043f",
 //        "\u041d\u043e\u043c\u0435\u0440\u0430\u0446\u0438\u044f",
 //        "\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442",
-//    
+//
 }

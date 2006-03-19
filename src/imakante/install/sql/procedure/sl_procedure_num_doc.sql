@@ -1,6 +1,6 @@
 DELIMITER $$
 
-DROP PROCEDURE IF EXISTS sl_doc_type_num $$
+DROP PROCEDURE IF EXISTS sl_procedure_num_doc $$
 CREATE PROCEDURE sl_procedure_num_doc (IN comprator TINYINT, IN in_id INT(11), IN in_id_doctype INT(11), IN in_area INT(3), IN in_name VARCHAR(40))
 BEGIN
      IF (comprator = 0) THEN
@@ -22,9 +22,16 @@ BEGIN
             LEFT OUTER JOIN n_type_doc ntd ON ntd.id_ntd = n.id_ntd WHERE n.id_sdtn = in_id;
      END IF;
      IF (comprator = 5) THEN
+        IF (in_area = -1 ) THEN
+        SELECT n.id_sdtn, n.id_ntd, ntd.name_ntd, n.area_number_sdtn, n.name_sdtn
+               FROM sl_doc_type_num n LEFT OUTER JOIN n_type_doc ntd ON ntd.id_ntd = n.id_ntd
+               WHERE n.name_sdtn LIKE CONCAT('%',in_name,'%');
+        END IF;
+        IF (in_area > -1 ) THEN
         SELECT n.id_sdtn, n.id_ntd, ntd.name_ntd, n.area_number_sdtn, n.name_sdtn
                FROM sl_doc_type_num n LEFT OUTER JOIN n_type_doc ntd ON ntd.id_ntd = n.id_ntd
                WHERE n.area_number_sdtn LIKE CONCAT('%',in_area,'%') AND  n.name_sdtn LIKE CONCAT('%',in_name,'%');
+        END IF;
      END IF;
      IF (comprator = 6) THEN
         SELECT ntd.id_ntd, ntd.name_ntd FROM n_type_doc ntd;
