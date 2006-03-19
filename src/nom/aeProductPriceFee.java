@@ -200,7 +200,7 @@ public class aeProductPriceFee extends imakante.com.vcomponents.iDialog
        else
            {
              // myParent.getCountriesT().updateProductFee(id_fee,dds,akcizi,other);
-             myParent.setProductFee(dds,akcizi,other);
+              myParent.setProductFee(dds,akcizi,other);
               jButtonClose.doClick();
            }
       }

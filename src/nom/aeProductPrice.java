@@ -369,7 +369,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
         try
         {
             java.sql.ResultSet r1 = myParent.getCountriesT().getShowConteinCurs();
-            new showConteinCurs(myParent,true,r1,myParent.getCountriesT().getConn());
+            shContein= new showConteinCurs(myParent,true,r1,myParent.getCountriesT().getConn());
             id_curs = myParent.getTMPINT();
             curs = myParent.getCountriesT().getCurs(id_curs);
             jTextFieldValue.setText(curs[2]);
@@ -685,6 +685,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
     private boolean isNew = false;
     private String splitMoney[] = null;
     private int selectComboBoxItem;
+    private showConteinCurs shContein;
  //---------------END My Variables
 //---------------START MyFunction 
  

@@ -44,12 +44,35 @@ package nom;
  *setComprator(27); setProductDescriptionColumn()
  *setComprator(28); getMaxID product description
  *setComprator(29); updateProductDescription(Column)
- *
- *
+ *setComprator(30) : getContragentID()
+ *setComprator(31) : setIDProductContragent()
+ *setComprator(32) : updateIDProductContragent()
  *setComprator(33) : checkFlag()
  *
  *setComprator(34) : updateIDProductConsigment()
+ *setComprator(35) : setNewConsigment()
+ *setComprator(36) : getConsigmentFromIdPM()
+ *setComprator(37) : getPriceIDs()
+ *setComprator(38) : insertConsigment() : setComprator(40) : maxId 
+ *setComprator(39) : updateConsigment()
+ 
+ *setComprator(41) :deleteConsigment()
+ *setComprator(42) :
+ *setComprator(43) :
+ *setComprator(44) :
+ *setComprator(45) :
+ *setComprator(46) :
+ *setComprator(47) :
+ *
+ *
+ *
+ *
+ *
+ *
+ *
  **/
+
+import java.util.*;
 
 public class productDB extends imakante.com.dbObject {
     private java.sql.Connection conn;
@@ -1130,7 +1153,7 @@ public class productDB extends imakante.com.dbObject {
         id_n_group = oldid_contragent;
         flag_pm = oldflag;
     }
-    public void updateIDProductConsigment(int in_id_pm_new,int in_id_pm_old) //test //setComprator(34;
+    public void updateIDProductConsigment(int in_id_pm_new,int in_id_pm_old) 
     {
         int oldid_pm = id_pm;
         int oldId_pp = id_pp;
@@ -1168,5 +1191,178 @@ public class productDB extends imakante.com.dbObject {
     public void setConn(java.sql.Connection conn) {
         this.conn = conn;
     }
+  public ArrayList getConsigmentFromIdPM(int in_id_pm)
+  {
+    setComprator(36); 
+    int oldID_pm = getId_PM();
+    setId_PM(in_id_pm);
+    ArrayList partidaNomer = new ArrayList();
+    infoConsigment iPartida = new infoConsigment(0,in_id_pm,0,0,"2000-01-01",0);
     
+    partidaNomer.add((infoConsigment)iPartida);
+    try
+    {
+      registerParameters();
+      setRs(getCstm().executeQuery());
+     int com=1;       
+      while(getRs().next())
+      {
+        
+         int id_pc = getRs().getInt("id_pc");
+         int barcod = getRs().getInt("barcod_pc");
+         int nomer = getRs().getInt("parcel_pc");
+         java.sql.Date date = getRs().getDate("dateofexpire_pc");
+         String strDate = date.toString();
+         partidaNomer.add(new infoConsigment(id_pc,in_id_pm,nomer,com,strDate,barcod));
+         com++;
+      }
+    }
+    catch(java.sql.SQLException sqle)
+    {
+      sqle.printStackTrace();
+    }
+       
+     setId_PM(oldID_pm)   ;
+        
+     return partidaNomer;
+    
+  }
+  public int[] getPriceIDs(int in_id_pc)
+  {
+      setComprator(37); 
+    int oldID_pm = getId_PM();
+    setId_PM(in_id_pc);
+    int idNumbers[] = new int[3];
+    try
+    {
+      registerParameters();
+      setRs(getCstm().executeQuery());
+            
+      while(getRs().next())
+      {
+         idNumbers[0]= (Integer)getRs().getInt("id_pp") ;
+         idNumbers[1]= (Integer)getRs().getInt("id_ppp") ;
+         idNumbers[2]= (Integer)getRs().getInt("id_pf") ;
+      }
+    }
+    catch(java.sql.SQLException sqle)
+    {
+      sqle.printStackTrace();
+    }
+       
+     setId_PM(oldID_pm)   ;
+        
+     return idNumbers;
+  }
+ public int insertConsigment(int in_id_pp,int in_id_ppp,int in_id_pf,int in_id_pm,int in_nomer,String in_date,int barcod) 
+ {
+    int oldid_pm = id_pm;
+    int oldid_pp = id_pp;
+    int oldid_ppp = id_ppp;
+    int oldid_pf = id_pf;
+    int oldid_pd = id_pd;
+    String oldsname = sname_pm;
+    int oldbarcod = barcod_pm;
+    setComprator(38);
+    id_pm = in_id_pm;
+    id_pp = in_id_pp;
+    id_ppp = in_id_ppp;
+    id_pf = in_id_pf;
+    id_pd = in_nomer;
+    sname_pm = in_date;
+    barcod_pm = barcod;
+    try
+    {
+            registerParameters();
+            getCstm().execute();
+    }
+    catch(java.sql.SQLException sqle) 
+    {
+      sqle.printStackTrace();
+    }
+    int maxID=0;
+    setComprator(40);
+  try
+    {
+      registerParameters();
+      setRs(getCstm().executeQuery());
+            
+      while(getRs().next())
+      {
+        maxID = getRs().getInt("id");
+      }
+    }
+    catch(java.sql.SQLException sqle)
+    {
+      sqle.printStackTrace();
+    }
+    
+    
+    
+    
+        id_pm = oldid_pm;
+        id_pp = oldid_pp;
+        id_ppp = oldid_ppp;
+        id_pf = oldid_pf;
+        id_pd = oldid_pd;
+        sname_pm = oldsname;
+        barcod_pm = oldbarcod;
+        return maxID;
+ }
+ public void updateConsigment(int in_id_pc,int in_id_pp,int in_id_ppp,int in_id_pf,int in_id_pm,int in_nomer,String in_date,int barcod) 
+ {
+    int oldid_pp = id_pp;
+    int oldid_ppp = id_ppp;
+    int oldid_pf = id_pf;
+    int oldid_pd = id_pd;
+    String oldsname = sname_pm;
+    int oldbarcod = barcod_pm;
+    int oldid_pm = id_pm;
+    int oldn_group = id_n_group;
+    setComprator(39);
+    id_n_group = in_id_pc;
+    id_pm = in_id_pm;
+    id_pp = in_id_pp;
+    id_ppp = in_id_ppp;
+    id_pf = in_id_pf;
+    id_pd = in_nomer;
+    sname_pm = in_date;
+    barcod_pm = barcod;
+    try
+    {
+            registerParameters();
+            getCstm().execute();
+    }
+    catch(java.sql.SQLException sqle) 
+    {
+      sqle.printStackTrace();
+    }
+        id_pm = oldid_pm; 
+        id_n_group = oldn_group;
+        id_pp = oldid_pp;
+        id_ppp = oldid_ppp;
+        id_pf = oldid_pf;
+        id_pd = oldid_pd;
+        sname_pm = oldsname;
+        barcod_pm = oldbarcod;
+ }
+
+  public  void deleteConsigment(int in_id_pc)
+    {
+      int oldid_pm = id_pm;
+      setComprator(41);
+      id_pm = in_id_pc;
+     try
+        {
+                registerParameters();
+                getCstm().execute();
+        }
+        catch(java.sql.SQLException sqle) 
+        {
+          sqle.printStackTrace();
+        }
+      id_pm = oldid_pm;  
+    }
+
+   
 }// end class

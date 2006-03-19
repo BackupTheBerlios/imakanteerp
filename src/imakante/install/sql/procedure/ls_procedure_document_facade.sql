@@ -616,9 +616,11 @@ IF (comprator = 42) THEN
 END IF;
 
 IF (comprator = 43) THEN
-     SELECT * FROM sl_exchange_rate s  LEFT JOIN  n_money m ON s.id_n_money=m.id_n_money
-     GROUP BY  s.date_sl_exchange_rate;
+     SELECT  n.cod_lat_n_money, s.value_sl_exchange_rate FROM mida.sl_exchange_rate s LEFT JOIN mida.n_money n ON n.id_n_money=s.id_n_money
+     WHERE s.date_sl_exchange_rate = in_docFacadeComment;
 END IF;
+
+
 
 
 END $$
