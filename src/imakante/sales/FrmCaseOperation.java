@@ -1,6 +1,8 @@
 
 package imakante.sales;
 
+import org.jdesktop.swingx.JXDatePicker;
+
 public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
     public FrmCaseOperation(String title,imakante.com.vcomponents.iFrame frame) {
@@ -643,7 +645,12 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     private void searchRecords() {
         try {
             try {
-                rs = internalObject.searchRecords();
+                rs = internalObject.searchRecords(Integer.parseInt(jtfCasaBegin.getText()),
+                                                  Integer.parseInt(jtfCasaEND.getText()),
+                                                  Integer.parseInt(jtfContragentBEGIN.getText()),
+                                                  Integer.parseInt(jtfContragentEND.getText()),
+                                                  jXDatePickerBEGIN.getDate().toString(),
+                                                  jXDatePickerEND.getDate().toString());
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
                 
