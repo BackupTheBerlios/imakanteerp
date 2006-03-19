@@ -236,7 +236,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     public static final String Names[] = {
         "id",
         "id_group",
-        "3",
+        "\u0413\u0440\u0443\u043f\u0430 \u043b\u0438\u0446\u0430",
         "\u041a\u043e\u0434",
         "\u0415\u0413\u041d",
         "\u041d\u041b\u041a",
@@ -341,9 +341,9 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     private int  getMaxRow() {
         int i = 0;
         i  = table.getRowCount() - 1;
-        
         return i;
     }
+    
     public  int getRow() {
         return row;
     }
@@ -404,10 +404,9 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
         setRow(getMaxRow());
         try{
             setAllVariables();
-            table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
+            table.changeSelection(getRow(), 2, false, false);
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
-            System.out.println("problem");
         }
         setAtBegining(false);
         setAtEnd(true);
@@ -421,10 +420,9 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
             setAtBegining(false);
             try {
                 setAllVariables();
-                table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
+                table.changeSelection(getRow(), 2, false, false);
             } catch(ArrayIndexOutOfBoundsException aioobe) {
                 setRow(getRow() - 1);
-                System.out.println("problem");
             }
             if(getRow() == getMaxRow()) {
                 setAtEnd(true);
@@ -440,10 +438,9 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
             setAtEnd(false);
             try {
                 setAllVariables();
-                table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
+                table.changeSelection(getRow(), 2, false, false);
             } catch(ArrayIndexOutOfBoundsException aioobe) {
                 setRow(getRow() + 1);
-                System.out.println("problem");
             }
         }
         if(getRow() == 0){
@@ -455,10 +452,9 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
         setRow(0);
         try {
             setAllVariables();
-            table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
+            table.changeSelection(getRow(), 2, false, false);
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
-            System.out.println("problem");
         }
         setAtBegining(true);
         setAtEnd(false);
@@ -475,7 +471,11 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     private void searchRecords() {
         try {
             try {
-                //        rs = internalObject.searchRecords((Integer)parseInt(jTextField1.getText()),jTextEGN.getText(),jTextName.getText());
+                if (jTextField1.getText().equals("")) {
+                    rs = internalObject.searchRecords(-1, jTextEGN.getText(), jTextName.getText());
+                } else {
+                    rs = internalObject.searchRecords(Integer.parseInt(jTextField1.getText()), jTextEGN.getText(), jTextName.getText());
+                }
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
                 jTextEGN.requestFocus();
@@ -500,6 +500,9 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
         HideColumns(1);
         jScrollPane1.getViewport().add(table);
         jScrollPane1.repaint();
+        jTextField1.setText("");
+        jTextEGN.setText("");
+        jTextName.setText("");
     }
     
     private void newRecord() {
@@ -520,12 +523,11 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
             setRow(table.getSelectedRow());
             if(getRow()==0){          //manage button state of ae form
                 setAtBegining(true);
-            }
-            else if(getRow()==getMaxRow()){
+            } else if(getRow()==getMaxRow()){
                 setAtEnd(true);
             }else{
-            setAtBegining(false);
-            setAtEnd(false);
+                setAtBegining(false);
+                setAtEnd(false);
             }
             setAllVariables();
             nom.aePerson ae_Person = new nom.aePerson(this, true);

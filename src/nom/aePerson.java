@@ -162,17 +162,13 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
 
         jLabel3.setText("\u0413\u0440\u0443\u043f\u0430:");
 
-        jComboG.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jComboGKeyPressed(evt);
-            }
-        });
-
         jLabel6.setText("\u041d\u041b\u041a:");
+
+        jTextField1.setInputVerifier(new imakante.com.InputEGNVerifier());
 
         jLabel7.setText("\u041a\u043e\u0434:");
 
-        jTextField1.setInputVerifier(new imakante.com.InputIntegerVerifier());
+        jTextField4.setInputVerifier(new imakante.com.InputIntegerVerifier());
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -272,10 +268,6 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonToBegin.doClick();}
     }//GEN-LAST:event_jButtonToBeginKeyPressed
     
-    private void jComboGKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboGKeyPressed
-        
-    }//GEN-LAST:event_jComboGKeyPressed
-    
     private void jButtonUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUndoActionPerformed
         undoCorr(); //vraja predishnite stoinosti
     }//GEN-LAST:event_jButtonUndoActionPerformed
@@ -344,15 +336,6 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
         repaintComp();
     }//GEN-LAST:event_jButtonToBeginActionPerformed
     
-    private void cfFocus() {
-        if(cFields()) {
-            jTextField1.transferFocus();
-        } else {
-            javax.swing.JOptionPane.showMessageDialog(this,"Chisloto ne e validno egn","Greshka",1);
-            
-        }
-    }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonClose;
     private javax.swing.JButton jButtonOneRowM;
@@ -403,29 +386,24 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
     
     //SAVE
     private void saveRecord() {
-        if(cFields()){
-            
-            oldCode = myParent.getCode();
-            oldEGN = myParent.getEGN();
-            oldNLK = myParent.getNLK();
-            oldName = myParent.getNames();
-            oldComment = myParent.getComment();
-            try {
-                
-                myParent.setCode(Integer.parseInt(jTextField4.getText()));
-                myParent.setEGN(jTextField1.getText());
-                myParent.setNLK(jTextField2.getText());
-            } catch (NumberFormatException nfex) {
-                nfex.printStackTrace();
-            }
-            myParent.setNames(jTextField3.getText());
-            myParent.setComment(jTextArea1.getText());
-            myParent.setIDG(myParent.getInternalObject().getIndexConnOfId()[jComboG.getSelectedIndex()]);
-            myParent.getInternalObject().updateRow(myParent.getId(), myParent.getIDG(),myParent.getCode(),myParent.getEGN(),
-                    myParent.getNLK(),myParent.getNames(), myParent.getComment());
-            myParent.refreshTable();
-            myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
-            jButtonUndo.setEnabled(true);}
+        oldCode = myParent.getCode();
+        oldEGN = myParent.getEGN();
+        oldNLK = myParent.getNLK();
+        oldName = myParent.getNames();
+        oldComment = myParent.getComment();
+        try {
+            myParent.setCode(Integer.parseInt(jTextField4.getText()));
+        } catch (NumberFormatException nfex) { nfex.printStackTrace(); }
+        myParent.setEGN(jTextField1.getText());
+        myParent.setNLK(jTextField2.getText());
+        myParent.setNames(jTextField3.getText());
+        myParent.setComment(jTextArea1.getText());
+        myParent.setIDG(myParent.getInternalObject().getIndexConnOfId()[jComboG.getSelectedIndex()]);
+        myParent.getInternalObject().updateRow(myParent.getId(), myParent.getIDG(), myParent.getCode(),
+                myParent.getEGN(), myParent.getNLK(), myParent.getNames(), myParent.getComment());
+        myParent.refreshTable();
+        myParent.getTable().changeSelection(myParent.getRow(), 2, false, false);
+        jButtonUndo.setEnabled(true);
     }
     
     //UNDO
@@ -483,7 +461,7 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
     private int getNewComboBoxIndex(int oldindex) {
         int newindex= 0;
         for(int i = 0; i < myParent.getInternalObject().getIndexConnOfId().length; i++) {
-            if(myParent.getInternalObject().getIndexConnOfId()[i]==oldindex) {
+            if(myParent.getInternalObject().getIndexConnOfId()[i] == oldindex) {
                 newindex = i;
                 break;
             }
