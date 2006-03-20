@@ -241,6 +241,12 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
 
         jComboBoxPartida.setEditable(true);
         jComboBoxPartida.setPreferredSize(new java.awt.Dimension(170, 20));
+        jComboBoxPartida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxPartidaActionPerformed(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
@@ -441,6 +447,18 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBoxPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPartidaActionPerformed
+// TODO add your handling code here:
+       
+        if(!isNew)
+        {
+            ctest++;
+            repaintComp();
+            
+        }
+        System.out.println("ddddddddddddddddd " + ctest);
+    }//GEN-LAST:event_jComboBoxPartidaActionPerformed
     
     private void jTextFieldFeeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFeeKeyPressed
 // TODO add your handling code here:
@@ -682,6 +700,7 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
               if(partidi.getConnection()==selItem)
               {
                  id_pc = partidi.getId_PC();
+                 partidi.setBarCod(barcod);
                  break;
               }
              
@@ -698,7 +717,7 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
        myParent.getCountriesT().updateConsigment(id_pc,id_pp,id_ppp,id_pf,id_pm,partidaNomer,expireDate,barcod);
        isNew = false;
         //  jButton3.doClick(); // zatvarq se aeProsuct
-        repaintComp();
+     //   repaintComp();
     
     }//GEN-LAST:event_jButton1ActionPerformed
     
@@ -773,6 +792,8 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
     private int id_pm,id_pp,id_ppp,id_pf;
     private infoConsigment infoPartida;
     private ArrayList splitPartidaNomer;
+    private boolean isFirstTimeAppearce = true;
+    private int ctest = 0;
 //---------------END My Variables
 //---------------START MyFunction
     private void getNavigatiionState() // ok
@@ -795,7 +816,7 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
        
        id_pm =  myParent.getId_PM();
        jTextFieldName.setText(myParent.getNamePM());
-       jTextFieldBarCod.setText(String.valueOf(myParent.getBarCod()));
+     
        jTextFieldCode.setText(myParent.getCodePM());
        if((myParent.getId_PD()!=0)) // n_product_description
         {
@@ -870,13 +891,17 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
         }
         else  
         {
-            int id_pc =0;
+          int id_pc =0;
+          int  dateInt[]= new int[3]; 
+          if(isFirstTimeAppearce)
+          {
+          isFirstTimeAppearce = false;
           jComboBoxPartida.removeAllItems();
           splitPartidaNomer = myParent.getCountriesT().getConsigmentFromIdPM(id_pm);
           splitPartidaNomer.remove(0);
           Iterator it = splitPartidaNomer.iterator();
           nom.infoConsigment partidi;
-          int  dateInt[]= new int[3]; 
+         
            while(it.hasNext())
            {
               partidi = (nom.infoConsigment) it.next();
@@ -887,15 +912,39 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
                   jComboBoxPartida.setSelectedIndex(0);
                   dateInt = partidi.getExpireDateAsInt();
                   id_pc = partidi.getId_PC();
+                  jTextFieldBarCod.setText(String.valueOf(partidi.getBarCod()));
               };
            }
-           
+          System.out.println("ffffff---fffffffffff--ff  " + ctest);
           
+          }
+          else
+          {
+           int selIndex = jComboBoxPartida.getSelectedIndex();
+           Iterator it = splitPartidaNomer.iterator();
+           nom.infoConsigment partidi;
+         
+           while(it.hasNext())
+           {
+             partidi = (nom.infoConsigment) it.next();
+             if(partidi.getConnection()==selIndex)
+             {
+                 id_pc = partidi.getId_PC();
+                 dateInt = partidi.getExpireDateAsInt();
+                 jTextFieldBarCod.setText(String.valueOf(partidi.getBarCod()));
+             }
+           }
+           
+          }
+          
+          System.out.println("id_pc : "+ id_pc);
           Date date = new Date(dateInt[2]-1900,dateInt[1],dateInt[0]);
           jXDatePicker1.setDate(date);
 
           int pricePartida[] = myParent.getCountriesT().getPriceIDs(id_pc);
-          
+          System.out.println("pricePartida[0] " + pricePartida[0] );
+           System.out.println("pricePartida[1] " + pricePartida[1] );
+            System.out.println("pricePartida[2] " + pricePartida[2] );
           if(pricePartida[0]!=0)
           {
               id_pp =pricePartida[0];
@@ -907,6 +956,15 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
               jTextFieldPrice.setText(price[0]);
               String promotion_price[] = myParent.getCountriesT().getProductPromotionPrice(id_ppp);
               jTextFieldPromoPrices.setText(promotion_price[0]);
+              System.out.println("id_pp " + id_pp);
+              System.out.println("fee " + fee[0]);
+              System.out.println("id_ppp " + id_ppp);
+              System.out.println("price " + price[0]);
+              System.out.println("id_pf " + id_pf);
+              System.out.println("promotion_price " + promotion_price[0]);
+              
+              
+              
           }
            
         }

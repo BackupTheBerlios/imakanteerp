@@ -1229,7 +1229,7 @@ public class productDB extends imakante.com.dbObject {
   }
   public int[] getPriceIDs(int in_id_pc)
   {
-      setComprator(37); 
+     setComprator(37); 
     int oldID_pm = getId_PM();
     setId_PM(in_id_pc);
     int idNumbers[] = new int[3];

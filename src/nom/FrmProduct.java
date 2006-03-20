@@ -29,10 +29,10 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
 {
     
     /** Creates new form FrmProduct */
-    public FrmProduct(String title, int flag, imakante.com.vcomponents.iFrame frame, int group) // // TEST imakante.com.vcomponents.iFrame frame, int group
+    public FrmProduct(String title, int flag, int group)//, imakante.com.vcomponents.iFrame frame, int group) //  TEST 
     {
         super(title);
-        myframe = frame; 
+     //   myframe = frame; 
         setGroup(group);
         prepareConn();     // zapazva connection
         this.flag_pm = flag; //  za da rabotim samo s opredeleni zapisi ima6ti syotvetniq fag
@@ -75,6 +75,8 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
         jPanel3 = new javax.swing.JPanel();
         jButtonNew = new javax.swing.JButton();
         jButtonEdit = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jButtonPrint = new javax.swing.JButton();
         jButtonPrintReport = new javax.swing.JButton();
         jButtonDelete = new javax.swing.JButton();
@@ -109,7 +111,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 1053, Short.MAX_VALUE)
+            .add(0, 1133, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -195,7 +197,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel3.setPreferredSize(new java.awt.Dimension(801, 37));
-        jButtonNew.setText("\u041d\u043e\u0432");
+        jButtonNew.setText("\u041d\u043e\u0432 \u043f\u0440\u043e\u0434\u0443\u043a\u0442");
         jButtonNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonNewActionPerformed(evt);
@@ -204,7 +206,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
 
         jPanel3.add(jButtonNew);
 
-        jButtonEdit.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f");
+        jButtonEdit.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f \u043d\u0430 \u043f\u0440\u043e\u0434\u0443\u043a\u0442");
         jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEditActionPerformed(evt);
@@ -212,6 +214,24 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
         });
 
         jPanel3.add(jButtonEdit);
+
+        jButton2.setText("\u041d\u043e\u0432\u0430 \u043f\u0430\u0440\u0442\u0438\u0434\u0430");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jPanel3.add(jButton2);
+
+        jButton3.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f \u043d\u0430 \u043f\u0430\u0440\u0442\u0438\u0434\u0430");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jPanel3.add(jButton3);
 
         jButtonPrint.setText("\u041f\u0435\u0447\u0430\u0442");
         jButtonPrint.addActionListener(new java.awt.event.ActionListener() {
@@ -259,6 +279,67 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+// Redakciq na partida:
+        if (table.getSelectedRow() != -1) 
+        { 
+            
+            setRow(table.getSelectedRow());
+            if(getRow()==0){
+                setAtBegining(true);
+            }
+            if(getRow()==getMaxRow()){
+                setAtEnd(true);
+            }
+            setAllVariables();
+              
+             
+         try
+            {
+                consigment = new aeConsigment(this, true,false);
+                consigment.setVisible(true);
+                
+            } catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+      
+         refreshTable(); 
+     } 
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+// Nova partida:
+     if (table.getSelectedRow() != -1) 
+        { 
+            
+            setRow(table.getSelectedRow());
+            if(getRow()==0){
+                setAtBegining(true);
+            }
+            if(getRow()==getMaxRow()){
+                setAtEnd(true);
+            }
+            setAllVariables();
+              
+             
+         try
+            {
+                consigment = new aeConsigment(this, true,true);
+                consigment.setVisible(true);
+                
+            } catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+      
+         refreshTable(); 
+     } 
+        
+        
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
 // TODO add your handling code here:
@@ -436,21 +517,23 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     /**
      * @param args the command line arguments---------------------------------
      */
-  /*  public static void main(String args[]) {
+    public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                
-               FrmProduct frCN =   new FrmProduct("ttt",0,1);
+               FrmProduct frCN =   new FrmProduct("ttt",0,6);
                 fr.add(frCN);
                 frCN.setVisible(true);
                 fr.setVisible(true);
             }
         });
         
-    }*/
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonClose;
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonDeleteAll;
@@ -493,6 +576,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     public boolean isTypedPromoPrice = false;
     private int row;
     private  aeProduct dialog;
+    private  aeConsigment consigment;
     private int id_pm,id_n_group,id_ppp, id_pp,id_pf,id_pd,flag_pm,id_contragent;              //       \
     private int barcod_pm;
     private int min_pm;                                                   //         >
@@ -531,7 +615,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
  private void prepareConn() //TEST
     {
       // samo za testovate ------------
-    /* try
+    try
          {
           Class.forName("com.mysql.jdbc.Driver");
            
@@ -543,15 +627,15 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
          {
              e.printStackTrace();
          }
-      //*/
-      try
+      //
+    /*  try
        {
             setConn(myframe.getConn());
        }
        catch(Exception e)
        {
        e.printStackTrace();
-       }
+       }*/
   }
 private void constructProductDB() // ok
     {
@@ -577,7 +661,7 @@ private void initTable() //ok  -- !!ima za dovyr6wane - skrivane na koloni!!
             model = new imakante.com.CustomTableModel(conn,rs, columnsNames);
             table = new imakante.com.CustomTable(model);
             
-            // da se napravqt skriti kolona "id" 
+            
             
         }
        catch(Exception e)
@@ -593,7 +677,7 @@ private void initTable() //ok  -- !!ima za dovyr6wane - skrivane na koloni!!
         {
         
         }
-        HideColumns(getColumnIndex("id_pm")); 
+       // HideColumns(getColumnIndex("id_pm")); 
         HideColumns(getColumnIndex("id_pp")); 
         HideColumns(getColumnIndex("id_ppp"));
         HideColumns(getColumnIndex("id_pd"));
@@ -876,8 +960,8 @@ private void initTable() //ok  -- !!ima za dovyr6wane - skrivane na koloni!!
         setCod1((String)table.getValueAt(getRow(),getColumnIndex("\u041a\u043e\u0434 1")));
         setCod2((String)table.getValueAt(getRow(),getColumnIndex("\u041a\u043e\u0434 2")));
         setMinProduct((Integer) table.getValueAt(getRow(), getColumnIndex("\u041c\u0438\u043d\u0438\u043c\u0430\u043b\u043d\u043e \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e")));
-        
-        setCodePM((String)table.getValueAt(getRow(),getColumnIndex("\u041a\u043e\u0434")));
+        int code_pm=(Integer)table.getValueAt(getRow(),getColumnIndex("\u041a\u043e\u0434"));
+        setCodePM(String.valueOf(code_pm));
        
       
         

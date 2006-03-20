@@ -1,7 +1,7 @@
 ﻿DELIMITER $$
 
-DROP PROCEDURE IF EXISTS nom_procedure_product $$
-CREATE PROCEDURE nom_procedure_product (IN in_comprator TINYINT,    IN in_id_pm INT(11),              IN in_id_ppp INT(11),        IN in_id_pp INT(11),
+DROP PROCEDURE IF EXISTS `mida`.`nom_procedure_product` $$
+CREATE PROCEDURE `nom_procedure_product`(IN in_comprator TINYINT,    IN in_id_pm INT(11),              IN in_id_ppp INT(11),        IN in_id_pp INT(11),
                                                  IN in_id_pf INT(11),        IN in_id_n_group INT(11),         IN in_id_pd INT(11),         IN in_name_pm VARCHAR(30),
                                                  IN in_sname_pm VARCHAR(20), IN in_fname_pm VARCHAR(20),       IN in_cname_pm VARCHAR(20),  IN in_max_pop_pm DOUBLE,
                                                  IN in_flag_pm TINYINT,      IN in_expertsheet_pm VARCHAR(45), IN in_barcod_pm INT,  IN in_cod1_pm VARCHAR(20),
@@ -22,12 +22,12 @@ BEGIN
           in_fname_pm, in_sname_pm, in_cname_pm, in_cod1_pm, in_cod2_pm,  in_barcod_pm, in_max_pop_pm, in_expertsheet_pm, in_min_pm, in_flag_pm, in_id_pd, in_code_pm);
      END IF;
      IF (in_comprator = 2) THEN
-       UPDATE n_product_main SET flag_pm = in_flag_pm
+       UPDATE `mida`.`n_product_main` SET flag_pm = in_flag_pm
         WHERE n_product_main.id_pm = in_id_pm;
      END IF;
 
      IF (in_comprator = 3) THEN
-          SELECT n.id_pd, n.m1_pd, n.v1_pd, n.m2_pd, n.v2_pd, n.m3_pd, n.v3_pd FROM n_product_description n
+          SELECT n.id_pd, n.m1_pd, n.v1_pd, n.m2_pd, n.v2_pd, n.m3_pd, n.v3_pd FROM mida.n_product_description n
            WHERE n.id_pd = in_id_pd;
      END IF;
 
@@ -42,7 +42,7 @@ BEGIN
               SELECT n.code_pm ,n.id_pm, n.id_n_group, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.cod1_pm,
          n.cod2_pm, n.barcod_pm, n.max_pop_pm, n.expertsheet_pm, n.flag_pm,  pp.id_sl_curs,pp.price0_pp,money.cod_lat_n_money,@stoinost_in_lv:=(sl_curs.value_sl_curs*pp.price0_pp)AS lv, pp.price1_pp, pp.price2_pp,pp.price3_pp, pf.dds_pf, pf.excise_pf,
          pf.other_pf, pd.id_pd, pd.m1_pd, pd.v1_pd, pd.m2_pd, pd.v2_pd, pd.m3_pd, pd.v3_pd,min_pm
-              FROM n_product_main n LEFT JOIN n_product_price pp ON pp.id_pp = n.id_pp LEFT JOIN sl_curs  ON  pp.id_sl_curs = sl_curs.id_sl_curs LEFT JOIN n_money money ON money.id_n_money = sl_curs.id_sl_curs LEFT JOIN n_product_fee pf ON pf.id_pf = n.id_pf LEFT JOIN
+              FROM mida.n_product_main n LEFT JOIN n_product_price pp ON pp.id_pp = n.id_pp LEFT JOIN sl_curs  ON  pp.id_sl_curs = sl_curs.id_sl_curs LEFT JOIN n_money money ON money.id_n_money = sl_curs.id_sl_curs LEFT JOIN n_product_fee pf ON pf.id_pf = n.id_pf LEFT JOIN
          n_product_description pd ON pd.id_pd = n.id_pd LEFT JOIN n_product_promotion_price ppp ON ppp.id_ppp = n.id_ppp LEFT JOIN n_group g
          ON g.id_n_group = n.id_n_group WHERE n.name_pm  LIKE CONCAT('%',in_name_pm,'%') AND  n.fname_pm LIKE CONCAT('%',in_fname_pm,'%') AND
               n.sname_pm LIKE CONCAT('%',in_sname_pm,'%') AND n.cname_pm LIKE CONCAT('%',in_cname_pm,'%') AND  n.cod1_pm LIKE CONCAT('%',in_cod1_pm,'%') AND
@@ -53,7 +53,7 @@ BEGIN
           SELECT n.code_pm ,n.id_pm, n.id_n_group, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.cod1_pm,
          n.cod2_pm, n.barcod_pm, n.max_pop_pm, n.expertsheet_pm, n.flag_pm,  pp.id_sl_curs,pp.price0_pp,money.cod_lat_n_money,@stoinost_in_lv:=(sl_curs.value_sl_curs*pp.price0_pp)AS lv, pp.price1_pp, pp.price2_pp,pp.price3_pp, pf.dds_pf, pf.excise_pf,
          pf.other_pf, pd.id_pd, pd.m1_pd, pd.v1_pd, pd.m2_pd, pd.v2_pd, pd.m3_pd, pd.v3_pd,min_pm
-          FROM n_product_main n LEFT JOIN n_product_price pp ON pp.id_pp = n.id_pp LEFT JOIN sl_curs  ON  pp.id_sl_curs = sl_curs.id_sl_curs LEFT JOIN n_money money ON money.id_n_money = sl_curs.id_sl_curs LEFT JOIN n_product_fee pf ON pf.id_pf = n.id_pf LEFT JOIN
+          FROM mida.n_product_main n LEFT JOIN n_product_price pp ON pp.id_pp = n.id_pp LEFT JOIN sl_curs  ON  pp.id_sl_curs = sl_curs.id_sl_curs LEFT JOIN n_money money ON money.id_n_money = sl_curs.id_sl_curs LEFT JOIN n_product_fee pf ON pf.id_pf = n.id_pf LEFT JOIN
          n_product_description pd ON pd.id_pd = n.id_pd LEFT JOIN n_product_promotion_price ppp ON ppp.id_ppp = n.id_ppp LEFT JOIN n_group g
          ON g.id_n_group = n.id_n_group WHERE n.name_pm  LIKE CONCAT('%',in_name_pm,'%') AND  n.fname_pm LIKE CONCAT('%',in_fname_pm,'%') AND
           n.sname_pm LIKE CONCAT('%',in_sname_pm,'%') AND n.cname_pm LIKE CONCAT('%',in_cname_pm,'%') AND  n.cod1_pm LIKE CONCAT('%',in_cod1_pm,'%') AND
@@ -71,7 +71,7 @@ BEGIN
 
 
      IF (in_comprator = 7) THEN
-        SELECT MAX(n.id_pm) AS id_pm FROM n_product_main n;
+        SELECT MAX(n.id_pm) AS id_pm FROM `mida`.`n_product_main` n;
      END IF;
 
       IF (in_comprator = 8) THEN
@@ -124,24 +124,24 @@ BEGIN
       IF (in_comprator = 17) THEN
           SELECT n.id_oso, n.id_mol, n.id_nm, n.code_contragent, n.name_n_contragent,
            n.bul_n_contragent, n.dan_n_contragent, n.address_n_contragent, n.tel_contragent, n.fax_contragent,
-           n.email_contragent, n.web_contragent, n.flag_n_contragent FROM n_contragent n
+           n.email_contragent, n.web_contragent, n.flag_n_contragent FROM mida.n_contragent n
            WHERE n.flag_n_contragent = 0 AND n.id_contragent=in_id_pm;
     END IF;
 
       IF (in_comprator = 18) THEN
-         SELECT MAX(n.id_pp)  AS id_pp FROM n_product_price n;
+         SELECT MAX(n.id_pp)  AS id_pp FROM `mida`.`n_product_price` n;
     END IF;
 
     IF (in_comprator = 19) THEN
-           SELECT MAX(n.id_ppp) AS id_ppp FROM n_product_promotion_price n;
+           SELECT MAX(n.id_ppp) AS id_ppp FROM `mida`.`n_product_promotion_price` n;
     END IF;
 
     IF (in_comprator = 20) THEN
-          SELECT MAX(n.id_pf) AS id_pf FROM n_product_fee n;
+          SELECT MAX(n.id_pf) AS id_pf FROM `mida`.`n_product_fee` n;
     END IF;
 
     IF (in_comprator = 21) THEN
-        SELECT  n.id_n_money,n.cod_n_money, n.cod_lat_n_money, n.name_n_money, n.comment_n_money FROM n_money n ORDER BY n.cod_lat_n_money;
+        SELECT  n.id_n_money,n.cod_n_money, n.cod_lat_n_money, n.name_n_money, n.comments_n_money FROM n_money n ORDER BY n.cod_lat_n_money;
     END IF;
 
      IF (in_comprator = 22) THEN
@@ -155,25 +155,25 @@ BEGIN
     END IF;
 
      IF (in_comprator = 25) THEN
-          SELECT n.id_pam, n.name_pam, n.sname_pam FROM n_product_all_measure n ORDER BY name_pam;
+          SELECT n.id_pam, n.name_pam, n.sname_pam FROM mida.n_product_all_measure n ORDER BY name_pam;
     END IF;
 
      IF (in_comprator = 26) THEN
-         SELECT s.id_sl_curs, s.date_time_sl_curs, s.id_n_money,money.cod_lat_n_money ,s.value_sl_curs FROM sl_curs s, n_money money
+         SELECT s.id_sl_curs, s.date_time_sl_curs, s.id_n_money,money.cod_lat_n_money ,s.value_sl_curs FROM mida.sl_curs s, n_money money
          WHERE money.id_n_money = s.id_n_money  ORDER BY s.date_time_sl_curs;
     END IF;
 
       IF (in_comprator = 27) THEN
-        INSERT INTO n_product_description(v1_pd,v2_pd,v3_pd,m1_pd,m2_pd,m3_pd)
+        INSERT INTO mida.n_product_description(v1_pd,v2_pd,v3_pd,m1_pd,m2_pd,m3_pd)
         VALUES(in_id_pm,in_id_pp,in_id_ppp,in_id_pf,in_id_pd,in_id_n_group);
     END IF;
 
      IF (in_comprator = 28) THEN
-         SELECT MAX(n.id_pd) AS id_pd FROM n_product_description n;
+         SELECT MAX(n.id_pd) AS id_pd FROM mida.n_product_description n;
     END IF;
 
      IF (in_comprator = 29) THEN
-         UPDATE n_product_description n SET v1_pd = in_id_pm,
+         UPDATE mida.n_product_description n SET v1_pd = in_id_pm,
          v2_pd = in_id_pp,
          v3_pd = in_id_ppp,
          m1_pd = in_id_pf,
@@ -183,17 +183,17 @@ BEGIN
     END IF;
 
      IF (in_comprator = 30) THEN
-         SELECT s.id_pm, s.id_contragent, s.flag_scp FROM sl_contragent_product s
+         SELECT s.id_pm, s.id_contragent, s.flag_scp FROM mida.sl_contragent_product s
          WHERE id_pm = in_id_pm AND flag_scp = in_flag_pm;
     END IF;
 
      IF (in_comprator = 31) THEN
-         INSERT INTO sl_contragent_product(id_pm,id_contragent,flag_scp)
+         INSERT INTO mida.sl_contragent_product(id_pm,id_contragent,flag_scp)
           VALUES(in_id_pm,in_id_n_group,in_flag_pm);
     END IF;
 
     IF (in_comprator = 32) THEN
-     UPDATE sl_contragent_product  SET id_contragent = in_id_n_group,
+     UPDATE mida.sl_contragent_product  SET id_contragent = in_id_n_group,
          flag_scp = in_flag_pm
          WHERE id_pm = in_id_pm;
 
@@ -201,9 +201,58 @@ BEGIN
 
       IF (in_comprator = 33) THEN
 
-       SELECT n.id_pm, n.flag_pm FROM n_product_main n WHERE n.id_pm = in_id_pm;
+       SELECT n.id_pm, n.flag_pm FROM mida.n_product_main n WHERE n.id_pm = in_id_pm;
 
     END IF;
+    IF (in_comprator = 34) THEN
+       UPDATE mida.n_product_consigment n SET
+        id_pm = in_id_pm
+       WHERE id_pm =  in_id_pp;
+    END IF;
+
+    IF (in_comprator = 35) THEN
+      INSERT INTO mida.n_product_consigment(id_pm,parcel_pc,dateofexpire_pc)
+       VALUES(in_id_pm,"000001",null);
+
+    END IF;
+
+    IF (in_comprator = 36) THEN
+         SELECT n.id_pc, n.parcel_pc, n.dateofexpire_pc, n.barcod_pc, n.id_pp, n.id_ppp, n.id_pf
+         FROM n_product_consigment n
+         WHERE id_pm =in_id_pm ;
+
+    END IF;
+     IF (in_comprator = 37) THEN
+         SELECT n.id_pp, n.id_ppp, n.id_pf FROM n_product_consigment n
+         WHERE id_pc =in_id_pm ;
+
+    END IF;
+    
+    IF (in_comprator = 38) THEN
+         INSERT INTO mida.n_product_consigment( id_pm, parcel_pc, dateofexpire_pc, barcod_pc, id_pp, id_ppp, id_pf)
+         VALUES(in_id_pm, in_id_pd, in_sname_pm, in_barcod_pm, in_id_pp, in_id_ppp, in_id_pf);
+
+    END IF;
+    IF (in_comprator = 39) THEN
+       UPDATE mida.n_product_consigment n SET n.id_pm  = in_id_pm,
+        n.parcel_pc = in_id_pd,
+        n.dateofexpire_pc = in_sname_pm,
+        n.barcod_pc = in_barcod_pm,
+        n.id_pp = in_id_pp,
+        n.id_ppp = in_id_ppp,
+        n.id_pf = in_id_pf
+        WHERE n.id_pc=in_id_n_group;
+   END IF;
+
+    IF (in_comprator = 40) THEN
+      SELECT MAX(id_pc) as id FROM mida.n_product_consigment n;
+
+   END IF;
+   IF (in_comprator = 41) THEN
+      DELETE FROM mida.n_product_consigment
+      WHERE id_pc = in_id_pm;
+
+   END IF;
 
 END $$
 
