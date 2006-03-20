@@ -32,60 +32,62 @@ public class FrmCountry extends  imakante.com.vcomponents.iInternalFrame impleme
         jButtonRefresh = new javax.swing.JButton();
         jButtonDeleteAll = new javax.swing.JButton();
         jButtonClose = new javax.swing.JButton();
-        
+
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0430:\u0414\u044a\u0440\u0436\u0430\u0432\u0438");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
         jPanel1.setLayout(new java.awt.BorderLayout());
-        
+
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setPreferredSize(new java.awt.Dimension(452, 45));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jScrollPane1.getViewport().add(table);
         jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
-        
+
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel4.setPreferredSize(new java.awt.Dimension(448, 37));
         jLabel2.setText("\u041a\u043e\u0434:");
         jPanel4.add(jLabel2);
-        
+
         jTextCod.setPreferredSize(new java.awt.Dimension(80, 20));
         jPanel4.add(jTextCod);
-        
+
         jLabel3.setText("\u0418\u043c\u0435:");
         jPanel4.add(jLabel3);
-        
+
         jTextName.setPreferredSize(new java.awt.Dimension(160, 20));
         jPanel4.add(jTextName);
-        
+
         jButtonSearch.setText("\u0422\u044a\u0440\u0441\u0435\u043d\u0435");
         jButtonSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSearchActionPerformed(evt);
             }
         });
-        
+
         jPanel4.add(jButtonSearch);
-        
+
         jPanel1.add(jPanel4, java.awt.BorderLayout.SOUTH);
-        
+
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
-        
+
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
-                jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                .add(0, 821, Short.MAX_VALUE)
-                );
+            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 821, Short.MAX_VALUE)
+        );
         jPanel2Layout.setVerticalGroup(
-                jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                .add(0, 10, Short.MAX_VALUE)
-                );
+            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 10, Short.MAX_VALUE)
+        );
         getContentPane().add(jPanel2, java.awt.BorderLayout.NORTH);
-        
+
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel3.setPreferredSize(new java.awt.Dimension(801, 37));
         jButtonNew.setText("\u041d\u043e\u0432");
@@ -94,62 +96,62 @@ public class FrmCountry extends  imakante.com.vcomponents.iInternalFrame impleme
                 jButtonNewActionPerformed(evt);
             }
         });
-        
+
         jPanel3.add(jButtonNew);
-        
+
         jButtonEdit.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f");
         jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEditActionPerformed(evt);
             }
         });
-        
+
         jPanel3.add(jButtonEdit);
-        
+
         jButtonPrint.setText("\u041f\u0435\u0447\u0430\u0442");
         jButtonPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPrintActionPerformed(evt);
             }
         });
-        
+
         jPanel3.add(jButtonPrint);
-        
+
         jButtonPrnReport.setText("\u041f\u0435\u0447\u0430\u0442 \u0440\u0435\u043f\u043e\u0440\u0442");
         jPanel3.add(jButtonPrnReport);
-        
+
         jButtonDel.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
         jButtonDel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonDelActionPerformed(evt);
             }
         });
-        
+
         jPanel3.add(jButtonDel);
-        
+
         jButtonRefresh.setText("\u0412\u0441\u0438\u0447\u043a\u0438 \u0437\u0430\u043f\u0438\u0441\u0438");
         jButtonRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRefreshActionPerformed(evt);
             }
         });
-        
+
         jPanel3.add(jButtonRefresh);
-        
+
         jButtonDeleteAll.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435 \u043d\u0430 \u0442\u0430\u0431\u043b\u0438\u0446\u0430");
         jPanel3.add(jButtonDeleteAll);
-        
+
         jButtonClose.setText("\u0417\u0430\u0442\u0432\u0430\u0440\u044f\u043d\u0435");
         jButtonClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCloseActionPerformed(evt);
             }
         });
-        
+
         jPanel3.add(jButtonClose);
-        
+
         getContentPane().add(jPanel3, java.awt.BorderLayout.SOUTH);
-        
+
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-835)/2, (screenSize.height-470)/2, 835, 470);
     }// </editor-fold>//GEN-END:initComponents
@@ -223,8 +225,8 @@ public class FrmCountry extends  imakante.com.vcomponents.iInternalFrame impleme
     private  imakante.com.CustomTable table;
     public static final String Names[] = {
        "id",
-       "cod",
-       "name",};
+       "\u041a\u043e\u0434",
+       "\u0418\u043c\u0435",};
     //---------------END My Variables
     
     //---------------START Methods
@@ -453,7 +455,11 @@ public class FrmCountry extends  imakante.com.vcomponents.iInternalFrame impleme
     private void searchRecords() {
         try {
             try {
-                rs = internalObject.searchRecords(Integer.parseInt(jTextCod.getText()),jTextName.getText());
+                if (jTextCod.getText().equals("")) {
+                    rs = internalObject.searchRecords(-1, jTextName.getText());
+                } else {
+                    rs = internalObject.searchRecords(Integer.parseInt(jTextCod.getText()), jTextName.getText());
+                }
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
                 jTextCod.requestFocus();
