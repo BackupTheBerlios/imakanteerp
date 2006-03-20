@@ -328,8 +328,8 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
             rs = internalObject.getTable();
             model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
-            HideColumns(0);
-            HideColumns(1);
+            HideColumns(getColumnIndex("id"));
+            HideColumns(getColumnIndex("id_group"));
         } catch(Exception e) { e.printStackTrace(); }
         table.requestFocus();
         try {
@@ -546,8 +546,8 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
             model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
             jScrollPane1.getViewport().add(table);
-            HideColumns(0);
-            HideColumns(1);
+            HideColumns(getColumnIndex("id"));
+            HideColumns(getColumnIndex("id_group"));
             jScrollPane1.repaint();
             
         } catch(Exception e) { e.printStackTrace(); }
@@ -558,8 +558,8 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
         rs = internalObject.getTable();
         model = new imakante.com.CustomTableModel(getConn(), rs, Names);
         table = new imakante.com.CustomTable(model);
-        HideColumns(0);
-        HideColumns(1);
+        HideColumns(getColumnIndex("id"));
+        HideColumns(getColumnIndex("id_group"));
         jScrollPane1.getViewport().add(table);
         jScrollPane1.repaint();
         jTextField1.setText("");
@@ -568,7 +568,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     }
     
     private void newRecord() {
-        internalObject.insertRow(0,0);
+        internalObject.insertRow(0, 0);
         refreshTable();
         setRow(getMaxRow());
         table.changeSelection(getRow(), 2, false, false);
@@ -583,11 +583,11 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     private void editRecord() {
         if (table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());
-            if(getRow()==0){          //manage button state of ae form
+            if(getRow() == 0) {          //manage button state of ae form
                 setAtBegining(true);
-            } else if(getRow()==getMaxRow()){
+            } else if(getRow() == getMaxRow()){
                 setAtEnd(true);
-            }else{
+            } else {
                 setAtBegining(false);
                 setAtEnd(false);
             }
