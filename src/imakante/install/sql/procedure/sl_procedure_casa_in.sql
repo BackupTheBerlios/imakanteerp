@@ -165,12 +165,36 @@ BEGIN
             Inner Join `user_master` ON `user_master`.`id_um` = `sl_m_operation`.`user_id`
             Inner Join `sl_doc_type_num` ON `sl_doc_type_num`.`id_sdtn` = `sl_m_operation`.`id_sdtn`
             WHERE
+             sl_m_operation.in_sl_mop = ANY (SELECT n_casa.id_n_casa FROM n_casa WHERE n_casa.code_n_casa BETWEEN in_casaBegin AND in_casaEnd ) AND
+             sl_m_operation.out_sl_mop = ANY (SELECT n_contragent.id_n_contragent FROM n_contragent WHERE n_contragent.code_n_contragent BETWEEN in_contragentBegin AND in_contragenEND ) AND
+             `sl_m_operation`.`date_is` BETWEEN  in_data_begin AND in_data_end AND
             `sl_m_operation`.`in_type_sl_mop` = 1 AND
             `sl_m_operation`.`out_type_sl_mop` = 3 AND
             `sl_m_operation`.`id_sdtn` = in_id_sdtn AND
             `sl_m_operation`.`levelx` = in_level;
 
-     END IF;
+       END IF;
+
+
+         IF (comprator = 6) THEN
+        SELECT n_casa.id_n_casa, n_casa.code_n_casa FROM `n_casa`;
+        END IF;
+
+         IF (comprator = 7) THEN
+        SELECT MAX(n.id_nbc) FROM `mida`.`n_baccount` n;
+        END IF;
+
+        IF (comprator = 8) THEN
+        SELECT MAX(n.code_nbc) AS account_code FROM `mida`.`n_baccount` n;
+        END IF;
+
+          IF (comprator = 11) THEN
+        SELECT n_money.id_n_money, n_money.cod_n_money FROM `n_money`;
+        END IF;
+
+          IF (comprator = 12) THEN
+        SELECT n_incoms.id_n_incoms, n_incoms.code_n_incoms FROM `n_incoms`;
+        END IF;
 
 END $$
 
