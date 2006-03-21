@@ -23,6 +23,7 @@ public class casaOp  extends dbObject {
     private java.sql.Statement stmt;
     private java.sql.CallableStatement cstm;
     
+    private int level = 1;
     
 //              IN in_id INT(11),
 //              IN in_number_sl_mop INT(11), code go zamenia v obekta
@@ -53,15 +54,17 @@ public class casaOp  extends dbObject {
     //-------------END MyVariables
     
     /** Creates a new instance of kasiDB */
-    public casaOp(java.sql.Connection conn) {
+    public casaOp(java.sql.Connection conn, int level, int sdtn) {
         super(conn);
+        this.setLevel(level);
+        this.setIn_id_sdtn(sdtn);
         prepareCstm();
         
     }
     protected void prepareCstm() {
         try {
             
-            setCstm(getConn().prepareCall("{call sl_procedure_case_in(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
+            setCstm(getConn().prepareCall("{call sl_procedure_case_in(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
             
         } catch (SQLException sqle) {sqle.printStackTrace();}
     }
@@ -82,7 +85,7 @@ public class casaOp  extends dbObject {
             getCstm().setDouble("in_sum_sl_mop", in_sum_sl_mop);
             getCstm().setDouble("in_sum_os_val_sl_mop", in_sum_os_val_sl_mop);
             getCstm().setInt("in_user_id", in_user_id);
-            getCstm().setInt("in_id_sdtn", in_id_sdtn);
+            getCstm().setInt("in_id_sdtn", getIn_id_sdtn());
             getCstm().setString("in_comments", getComment());
             getCstm().setInt("in_casaBegin", CasaBegin);
             getCstm().setInt("in_casaEnd", CasaEnd);
@@ -90,6 +93,7 @@ public class casaOp  extends dbObject {
             getCstm().setInt("in_contragentEnd", ContragentEnd);
             getCstm().setString("in_data_begin", DateBegin);
             getCstm().setString("in_data_end", DateEnd);
+            getCstm().setInt("in_level", getLevel());
             
         } catch(java.sql.SQLException sqle) {
             sqle.printStackTrace();
@@ -136,7 +140,7 @@ public class casaOp  extends dbObject {
         this.in_exchange_rate = in_exchange_rate;
         this.in_sum_sl_mop = in_sum_sl_mop;
         this.in_sum_os_val_sl_mop = in_sum_os_val_sl_mop;
-        this.in_id_sdtn = in_id_sdtn;
+        this.setIn_id_sdtn(in_id_sdtn);
         setComment(in_comment);
         try {
             registerParameters();
@@ -324,6 +328,22 @@ public class casaOp  extends dbObject {
     public int[] getIndexDoc() //OK
     {
         return indexDoc;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getIn_id_sdtn() {
+        return in_id_sdtn;
+    }
+
+    public void setIn_id_sdtn(int in_id_sdtn) {
+        this.in_id_sdtn = in_id_sdtn;
     }
     
     

@@ -292,7 +292,7 @@
             <Component class="org.jdesktop.swingx.JXDatePicker" name="jXDatePickerBEGIN">
               <Properties>
                 <Property name="monthView" type="org.jdesktop.swingx.calendar.JXMonthView" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="null"/>
+                  <ComponentRef name="default"/>
                 </Property>
               </Properties>
               <Events>

@@ -6,9 +6,11 @@ import java.text.SimpleDateFormat;
 
 public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
-    public FrmCaseOperation(String title,imakante.com.vcomponents.iFrame frame) {
+    public FrmCaseOperation(String title,imakante.com.vcomponents.iFrame frame,int level, int sdtn) {
         super(title);
         myframe = frame;
+        this.level = level;
+        this.sdtn = sdtn;
         prepareConn();     // zapazva connection
         constructObject(); // inicializira class otgovarq6t za vryzkata s DB
         initTable();
@@ -395,6 +397,9 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     // End of variables declaration//GEN-END:variables
     
     //--------------- My Variables
+    private int level = 1;
+    private int sdtn = 0;
+    
     private int id=0; // imena ot tablicata
     private int cod = 0;
     private     int in_in_sl_mop=0;
@@ -494,7 +499,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     
     private void constructObject() {
         try {
-            internalObject = new imakante.sales.casaOp(conn);
+            internalObject = new imakante.sales.casaOp(conn, this.level, this.sdtn);
         } catch(Exception e) { e.printStackTrace(); }
     }
     
