@@ -201,15 +201,15 @@ catch(PrinterException e)
 // TODO add your handling code here:
         try
 {
-            String searchCod = jTextCod.getText();
-            String searchName = jTextName.getText();
-            int searchAnLevel = Integer.parseInt(jTextAnLevel.getText());
-            rs = countriesT.searchRecords(getNom(),searchCod,searchName,searchAnLevel);
-            jScrollPane1.remove(table);
-            model = new imakante.com.CustomTableModel(conn,rs, null);
-            table = new imakante.com.CustomTable(model);
-            jScrollPane1.getViewport().add(table);
-            jScrollPane1.repaint();
+//            String searchCod = jTextCod.getText();
+//            String searchName = jTextName.getText();
+//            int searchAnLevel = Integer.parseInt(jTextAnLevel.getText());
+//            rs = countriesT.searchRecords(getNom(),searchCod,searchName,searchAnLevel);
+//            jScrollPane1.remove(table);
+//            model = new imakante.com.CustomTableModel(conn,rs, null);
+//            table = new imakante.com.CustomTable(model);
+//            jScrollPane1.getViewport().add(table);
+//            jScrollPane1.repaint();
         }
 catch(Exception e)
 {
@@ -274,7 +274,7 @@ catch(Exception e)
         setCod("");
         setNames("");
         setAnID(0);
-        countriesT.insertRow(getNom(),getCod(),getNames(),getAnID());
+//        countriesT.insertRow(getNom(),getCod(),getNames(),getAnID());
         setId(countriesT.getMaxId());
         refreshTable();
         try

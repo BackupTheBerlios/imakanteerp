@@ -264,7 +264,7 @@ public class aeObekt extends imakante.com.vcomponents.iDialog
     private void jButtonUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUndoActionPerformed
 // TODO add your handling code here:
         myParent.setNames(oldName);
-        myParent.setCod(oldCod);
+      //  myParent.setCod(oldCod);
         myParent.setAnID(oldAnLevel);
         repaintComp();
         jButtonUndo.setEnabled(false);
@@ -274,14 +274,14 @@ public class aeObekt extends imakante.com.vcomponents.iDialog
 // TODO add your handling code here:
         
         oldName = myParent.getNames(); //    \
-        oldCod = myParent.getCod();    //     > za vyztanovqvane na starite stoinosti
-        oldAnLevel = myParent.getAnID();//   /
-        myParent.setCod(jTextCod.getText());
-        myParent.setNames(jTextName.getText());
-// ustanovqvame AnID 4rez masiva za vryzkata mejdu indexite na ComboBox_a i "ID" na tablicata
-      //  myParent.setAnID(myParent.getCountriesT().getIndexConnOfId()[jComboAnLevel.getSelectedIndex()]);
-        myParent.getCountriesT().updateRow(myParent.getId(),myParent.getNom(),
-                myParent.getCod(),myParent.getNames(),myParent.getAnID());
+//        oldCod = myParent.getCod();    //     > za vyztanovqvane na starite stoinosti
+//        oldAnLevel = myParent.getAnID();//   /
+//        myParent.setCod(jTextCod.getText());
+//        myParent.setNames(jTextName.getText());
+//// ustanovqvame AnID 4rez masiva za vryzkata mejdu indexite na ComboBox_a i "ID" na tablicata
+//      //  myParent.setAnID(myParent.getCountriesT().getIndexConnOfId()[jComboAnLevel.getSelectedIndex()]);
+//        myParent.getCountriesT().updateRow(myParent.getId(),myParent.getNom(),
+//                myParent.getCod(),myParent.getNames(),myParent.getAnID());
         myParent.refreshTable();
         
         
@@ -444,7 +444,7 @@ public class aeObekt extends imakante.com.vcomponents.iDialog
     }
     private void repaintComp() //OK
     {
-        jTextCod.setText(myParent.getCod());
+      //  jTextCod.setText(myParent.getCod());
         jTextName.setText(myParent.getNames());
         //jTextCod.repaint();
         // jTextName.repaint();
@@ -454,14 +454,14 @@ public class aeObekt extends imakante.com.vcomponents.iDialog
     private int getNewComboBoxIndex(int oldindex) //OK
     {
         int newindex= 0;
-        for(int i = 0; i < myParent.getCountriesT().getIndexConnOfId().length; i++)
-{
-            if(myParent.getCountriesT().getIndexConnOfId()[i]==oldindex)
-{
-                newindex = i;
-                break;
-            }
-        }
+//        for(int i = 0; i < myParent.getCountriesT().getIndexConnOfId().length; i++)
+//{
+//            if(myParent.getCountriesT().getIndexConnOfId()[i]==oldindex)
+//{
+//                newindex = i;
+//                break;
+//            }
+//        }
         return newindex;
     }
 }// end class

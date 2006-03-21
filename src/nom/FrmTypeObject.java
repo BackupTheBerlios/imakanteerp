@@ -179,7 +179,7 @@ public class FrmTypeObject extends  imakante.com.vcomponents.iInternalFrame impl
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         try {
-            rs = internalObject.searchRecords(jTextCod.getText(),jTextName.getText());
+        //    rs = internalObject.searchRecords(jTextCod.getText(),jTextName.getText());
             jScrollPane1.remove(table);
             model = new imakante.com.CustomTableModel(getConn(), rs, null);
             table = new imakante.com.CustomTable(model);
@@ -237,7 +237,7 @@ public class FrmTypeObject extends  imakante.com.vcomponents.iInternalFrame impl
         setCod("");
         setNames("");
         setComment("");
-        internalObject.insertRow(getCod(),getNames(),getComment());
+       // internalObject.insertRow(getCod(),getNames(),getComment());
         setId(internalObject.getMaxId());
         nom.aeTypeObject TypeObject = new nom.aeTypeObject(this, true);
         TypeObject.setVisible(true);

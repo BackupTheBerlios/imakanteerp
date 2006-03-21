@@ -1175,7 +1175,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     
     private void loadFrmProducts() {
         if(!isIsStartFrmProduct()) {
-            iFrmProduct = new nom.FrmProduct("\u041d\u041e\u041c\u0415\u041d\u041a\u041b\u0410\u0422\u0423\u0420\u0410 \u0421\u0422\u041e\u041a\u0418",0,this,0);
+            iFrmProduct = new nom.FrmProduct("\u041d\u041e\u041c\u0415\u041d\u041a\u041b\u0410\u0422\u0423\u0420\u0410 \u0421\u0422\u041e\u041a\u0418",0,0);
             desktopPane.add(iFrmProduct);
             try {
                 iFrmProduct.setMaximum(true);
