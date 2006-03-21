@@ -400,21 +400,21 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     private int level = 1;
     private int sdtn = 0;
     
-    private int id=0; // imena ot tablicata
-    private int cod = 0;
-    private     int in_in_sl_mop=0;
-    private     int in_outsl_mop=0;
-    private     int in_id_order_spec = 0 ;
-    private     int in_id_order_spec_type= 1;
-    private     int in_id_order_doc = 0;
-    private     String in_DATE;
-    private     int in_id_n_money=1;
-    private     double in_exchange_rate = 1;
-    private     double in_sum_sl_mop;
-    private     double in_sum_os_val_sl_mop;
-    private     int in_user_id  = imakante.com.NewMain.getUserId();
-    private     int in_id_sdtn  = 1;
-    private String  comment ="";
+    private int id = 0; // imena ot tablicata
+    private int code = 0;
+    private int in_in_sl_mop = 0;
+    private int in_outsl_mop = 0;
+    private int in_id_order_spec = 0 ;
+    private int in_id_order_spec_type = 1;
+    private int in_id_order_doc = 0;
+    private String in_DATE;
+    private int in_id_n_money = 1;
+    private double in_exchange_rate = 1;
+    private double in_sum_sl_mop;
+    private double in_sum_os_val_sl_mop;
+    private int in_user_id = imakante.com.NewMain.getUserId();
+    private int in_id_sdtn = 1;
+    private String  comment = "";
     
     private String namesG[]; //imena na grupi
     private int selectComboBoxItem;
@@ -445,12 +445,12 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     private String strContragent = "SELECT "
             + "`n_contragent`.`code_contragent`, `n_contragent`.`name_n_contragent`"
             + "FROM `n_contragent` WHERE `n_contragent`.`code_contragent` LIKE  '%";
-
+    
     private String strCasa =  "SELECT "
             + "`n_casa`.`code_n_casa`, `n_casa`.`name_n_casa`"
             + "FROM `n_casa` WHERE `n_casa`.`code_n_casa` LIKE  '%";
     
-     SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
     
     //---------------END My Variables
     
@@ -463,7 +463,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
             }
         } catch(Exception e) { e.printStackTrace(); }
     }
-      private void prepareStm(){
+    private void prepareStm(){
         try {
             stm = conn.createStatement();
         } catch (SQLException ex) {
@@ -472,7 +472,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     }
     
     
-     private void initTableD(String str , String[] names) {
+    private void initTableD(String str , String[] names) {
         try {
             rs = stm.executeQuery(str);
         } catch (SQLException ex) {
@@ -533,11 +533,11 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     public void windowDeactivated(java.awt.event.WindowEvent e) {
     }
     
-      public int getIntTransfer() {
-        
+    public int getIntTransfer() {
         return intTransfer;
     }
-      private void processField1() {
+    
+    private void processField1() {
         String newString = strCasa + this.jtfCasaBegin.getText() + "%'";
         constructDialod(newString, 1, Names);
         
@@ -552,9 +552,9 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
 //    private void processField5() {
 //        String newString =strProduct + this.jTextField5.getText() + "%'";
 //        constructDialod(newString, 5, Names);
-//        
+//
 //    }
-//    
+//
 //    private void processField6() {
 //        if(this.jTextField5.getText()==""){this.jTextField5.setText("0");}
 //        String newString = strProduct + this.jTextField6.getText() + "%' AND `rep_comm_nal`.`code_pm` >= " + this.jTextField5.getText() + ";";
@@ -570,8 +570,8 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         if(this.jtfContragentBEGIN.getText()==""){this.jtfContragentBEGIN.setText("0");}
         String newString = strContragent + this.jtfContragentEND.getText() + "%' AND `n_contragent`.`code_contragent` >= " + this.jtfContragentBEGIN.getText() + ";";
         constructDialod(newString, 4, Names);
-    } 
-       public void setIntTransfer(int intTransfer) {
+    }
+    public void setIntTransfer(int intTransfer) {
         this.intTransfer = intTransfer;
         if (CompNumber == 0){}
         if(CompNumber == 1){
@@ -584,7 +584,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
             this.jtfContragentEND.setText(""+this.intTransfer);}
         
     }
-      
+    
     public imakante.sales.casaOp getInternalObject() {
         return internalObject;
     }
@@ -650,15 +650,22 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         return id;
     }
     
-    
-    
-    public void setCod(int Cod) {
-        this.cod = Cod;
+    public void setCode(int Cod) {
+        this.code = Cod;
     }
     
-    public int getCod() {
-        return cod;
+    public int getCode() {
+        return code;
     }
+    
+    public void setContragent(String Contragent) {
+        this.
+    }
+    
+    public String getContragent() {
+        return 
+    }
+    
     
     
     public void setComment(String Comment) {
@@ -748,16 +755,16 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
             table.print(javax.swing.JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
         } catch(java.awt.print.PrinterException e) { e.printStackTrace(); }
     }
-  
+    
     private void searchRecords() {
         try {
             try {
                 rs = internalObject.searchRecords(Integer.parseInt(jtfCasaBegin.getText()),
-                                                  Integer.parseInt(jtfCasaEND.getText()),
-                                                  Integer.parseInt(jtfContragentBEGIN.getText()),
-                                                  Integer.parseInt(jtfContragentEND.getText()),
-                                                  (String)formatter.format(this.jXDatePickerBEGIN.getDate()),
-                                                  (String)formatter.format(this.jXDatePickerEND.getDate()));
+                        Integer.parseInt(jtfCasaEND.getText()),
+                        Integer.parseInt(jtfContragentBEGIN.getText()),
+                        Integer.parseInt(jtfContragentEND.getText()),
+                        (String)formatter.format(this.jXDatePickerBEGIN.getDate()),
+                        (String)formatter.format(this.jXDatePickerEND.getDate()));
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
                 
@@ -868,7 +875,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     private void setAllVariables(){
         setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
         
-        setCod((Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434\u043e\u0432\u0435")));
+        setCode((Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434\u043e\u0432\u0435")));
         
         setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440")));
     }

@@ -1,6 +1,8 @@
 
 package imakante.sales;
 
+import imakante.com.InputIntegerVerifier;
+
 public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     
     public aeCaseOp(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
@@ -9,7 +11,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         initComponents();
         getNavigationState();
         jButtonUndo.setEnabled(false);
-        initComboK();
+        initComboCR();          // CR = CashRegister - kasa
         this.setResizable(false);
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         repaintComp();
@@ -34,7 +36,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
-        jComboK = new javax.swing.JComboBox();
+        jComboCR = new javax.swing.JComboBox();
         jLabel6 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
@@ -103,7 +105,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setPreferredSize(new java.awt.Dimension(400, 300));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("\u041d\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u044f"));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u041d\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u044f"));
         jPanel3.setPreferredSize(new java.awt.Dimension(230, 70));
         jButtonToBegin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation First 2.png")));
         jButtonToBegin.addActionListener(new java.awt.event.ActionListener() {
@@ -166,11 +168,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         jLabel5.setText("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440:");
 
         jTextField1.setInputVerifier(new imakante.com.InputIntegerVerifier());
-        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField1FocusLost(evt);
-            }
-        });
+        jTextField1.setInputVerifier(new imakante.com.InputIntegerVerifier());
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField1KeyPressed(evt);
@@ -185,6 +183,9 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
 
         jLabel6.setText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442:");
 
+        jTextField2.setInputVerifier(new imakante.com.InputIntegerVerifier());
+
+        jTextField3.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextField3.setInputVerifier(new imakante.com.InputDoubleVerifier());
 
         jLabel4.setText("\u0421\u0443\u043c\u0430:");
@@ -197,6 +198,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
 
         jTextField4.setBackground(new java.awt.Color(204, 204, 204));
         jTextField4.setEnabled(false);
+        jTextField4.setInputVerifier(new imakante.com.InputDoubleVerifier());
 
         jLabel10.setText("\u0418\u0437\u0434\u0430\u043b:");
 
@@ -205,16 +207,18 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
 
         jLabel11.setText("\u0421\u0432\u044a\u0440\u0437\u0430\u043d \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442:");
 
+        jTextField6.setInputVerifier(new imakante.com.InputIntegerVerifier());
+
         jLabel12.setText("\u0412\u0438\u0434 \u043e\u0440\u0434\u0435\u0440:");
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
+            .add(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
                     .add(jPanel2Layout.createSequentialGroup()
                         .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                             .add(jLabel5)
@@ -231,28 +235,28 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                     .add(jTextField4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                                    .add(jComboK, 0, 164, Short.MAX_VALUE)
+                                    .add(jComboCR, 0, 164, Short.MAX_VALUE)
                                     .add(jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
                                     .add(jTextField6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
                                     .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(7, 7, 7)
                                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                                     .add(jPanel2Layout.createSequentialGroup()
-                                        .add(7, 7, 7)
                                         .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                                             .add(jLabel8)
                                             .add(jLabel6))
                                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED))
-                                    .add(jLabel12)
                                     .add(jPanel2Layout.createSequentialGroup()
-                                        .add(jLabel7)
+                                        .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                                            .add(jLabel12)
+                                            .add(jLabel7))
                                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)))
                                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                     .add(jComboM, 0, 170, Short.MAX_VALUE)
                                     .add(jComboD, 0, 170, Short.MAX_VALUE)
                                     .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
                                     .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))))))
-                .add(104, 104, 104))
+                .add(12, 12, 12))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -261,52 +265,54 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel2)
                     .add(jLabel6)
-                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jTextField2)
+                    .add(jTextField1))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                        .add(jLabel3)
-                        .add(jComboK, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(jLabel8))
-                    .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jPanel2Layout.createSequentialGroup()
+                        .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel3)
+                            .add(jComboCR)
+                            .add(jLabel8))
+                        .add(2, 2, 2))
+                    .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .add(4, 4, 4)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel11)
-                    .add(jTextField6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jComboD, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jPanel2Layout.createSequentialGroup()
+                        .add(2, 2, 2)
+                        .add(jTextField6))
+                    .add(jComboD)
                     .add(jLabel12))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel4)
-                    .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jComboM, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jPanel2Layout.createSequentialGroup()
+                        .add(2, 2, 2)
+                        .add(jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE))
+                    .add(jComboM)
                     .add(jLabel7))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel9)
-                    .add(jTextField4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jTextField4))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel10)
-                    .add(jTextField5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jTextField5))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel5)
-                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jScrollPane1))
                 .add(14, 14, 14)
-                .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(65, 65, 65))
+                .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
+                .addContainerGap())
         );
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-638)/2, (screenSize.height-402)/2, 638, 402);
+        setBounds((screenSize.width-546)/2, (screenSize.height-412)/2, 546, 412);
     }// </editor-fold>//GEN-END:initComponents
-    
-    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        cfFocus();
-    }//GEN-LAST:event_jTextField1FocusLost
     
     private void jButtonCloseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonCloseKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonClose.doClick();}
@@ -335,9 +341,9 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     private void jButtonToBeginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonToBeginKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonToBegin.doClick();}
     }//GEN-LAST:event_jButtonToBeginKeyPressed
-            
+    
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ cfFocus(); }
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jTextField1.transferFocus(); }
     }//GEN-LAST:event_jTextField1KeyPressed
     
     private void jButtonUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUndoActionPerformed
@@ -408,14 +414,6 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         repaintComp();
     }//GEN-LAST:event_jButtonToBeginActionPerformed
     
-    private void cfFocus() {
-        if(cFields()) {
-            jTextField1.transferFocus();
-        } else {
-            jTextField1.requestFocus();
-        }
-    }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonClose;
     private javax.swing.JButton jButtonOneRowM;
@@ -424,8 +422,8 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     private javax.swing.JButton jButtonToBegin;
     private javax.swing.JButton jButtonToEnd;
     private javax.swing.JButton jButtonUndo;
+    private javax.swing.JComboBox jComboCR;
     private javax.swing.JComboBox jComboD;
-    private javax.swing.JComboBox jComboK;
     private javax.swing.JComboBox jComboM;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -454,67 +452,52 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     // End of variables declaration//GEN-END:variables
     //--------------- My Variables
     private imakante.sales.FrmCaseOperation myParent;
-    private int oldIDG = 0;
-    private int oldCod = 0;
-    private String oldName = "";
-    private String oldComment =  "";
-    private String namesK[];
-    private int selectComboBoxKasa;
-    private int selectComboBoxMoney;
-    private int selectComboBoxDoc;
+    private int NumDocument = 0;            // igrae rolqta na Code - getCode() ot dbObject
+    private String Contragent = "";
+    private String OpDate = "";
+    private int BoundDoc = 0;
+    private double AmountMoney = 0.00;
+    private double FCurrAmmount = 0.00;
+    private String Author = "";             // getName() ot dbObject
+    private String Comment =  "";           // getComment() ot dbObject
+    private int selectedCashReg;
+    private int selectedCurrency;
+    private int selectedDocument;
+    private String[] namesCR;
     private String[] namesM;
-
     private String[] namesD;
-
-  
     
     //---------------END My Variables
     
     //---------------START My Methods
     
-    //Proverka na poletata
-    private boolean cFields() { // V sluchaia samo na edno pole dali e integer
-        boolean check  = true;     // v bazata
-        int i = 0;
-        try {
-            i = Integer.parseInt(jTextField1.getText()); // proverka za int
-            jTextField1.setBackground(new java.awt.Color(255,255,255));
-        } catch (NumberFormatException nfex) {
-            check = false;
-            jTextField1.setBackground(new java.awt.Color(255,204,204));
-            nfex.printStackTrace();
-        }
-        return check;
-    }
-    
     //SAVE
     private void saveRecord() {
-        if(cFields()){
-         //   oldIDG = myParent.getIDG();
-            oldCod = myParent.getCod();
-          //  oldName = myParent.getNames();
-            oldComment = myParent.getComment();
-            try {
-                myParent.setCod(Integer.parseInt(jTextField1.getText()));
-            } catch (NumberFormatException nfex) {
-                nfex.printStackTrace();
-            }
+        NumDocument = myParent.getCode();
+        Contragent = myParent.getContragent();
+        Author = myParent.getName();
+        Comment = myParent.getComment();
+        try {
+            myParent.setCode(Integer.parseInt(jTextField1.getText()));
+        } catch (NumberFormatException nfex) {
+            nfex.printStackTrace();
+        }
 //            myParent.setNames(jTextField3.getText());
 //            myParent.setComment(jTextArea1.getText());
 //            myParent.setIDG(myParent.getInternalObject().getIndexConnOfId()[jComboK.getSelectedIndex()]);
 //            myParent.getInternalObject().updateRow(myParent.getId(), myParent.getIDG(),myParent.getCod(),
 //                    myParent.getNames(), myParent.getComment());
-            myParent.refreshTable();
-            myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
-            jButtonUndo.setEnabled(true);}
+        myParent.refreshTable();
+        myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
+        jButtonUndo.setEnabled(true);
     }
     
     //UNDO
     private void undoCorr() {
 //        myParent.setIDG(oldIDG);
-        myParent.setCod(oldCod);
+        myParent.setCode(NumDocument);
 //        myParent.setNames(oldName);
-        myParent.setComment(oldComment);
+        myParent.setComment(Comment);
         repaintComp();
         jButtonUndo.setEnabled(false);
     }
@@ -529,44 +512,40 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
             jButtonOneRowM.setEnabled(false);
             jButtonToBegin.repaint();
             jButtonOneRowM.repaint();
-            
         }
         if(myParent.isAtEnd()) {
             jButtonToEnd.setEnabled(false);
             jButtonOneRowP.setEnabled(false);
             jButtonToEnd.repaint();
             jButtonOneRowP.repaint();
-            
         }
     }
     
     private void repaintComp() {
-        jTextField1.setText(""+myParent.getCod());
-       // jTextField3.setText(myParent.getNames());
+        jTextField1.setText("" + myParent.getCode());
         jTextArea1.setText(myParent.getComment());
-      //  jComboK.setSelectedIndex(getNewComboBoxIndex(myParent.getIDG()));
     }
     
-    private void initComboK() {
-        namesK = myParent.getInternalObject().getCasa();
-        for(int i=0;i<namesK.length;i++) {
-            jComboK.addItem(new String(namesK[i]));
+    private void initComboCR() {
+        namesCR = myParent.getInternalObject().getCasa();
+        for(int i = 0; i < namesCR.length; i++) {
+            jComboCR.addItem(new String(namesCR[i]));
             
         }
         
-        if(selectComboBoxKasa != 0) {
+        if(selectedCashReg != 0) {
             
-            selectComboBoxKasa = getNewComboBoxIndex(selectComboBoxKasa);
+            selectedCashReg = getNewCashRegIndex(selectedCashReg);
             
-            jComboK.setSelectedIndex(selectComboBoxKasa);
+            jComboCR.setSelectedIndex(selectedCashReg);
         }
         
     }
     
-    private int getNewComboBoxIndex(int oldindex) {
-        int newindex= 0;
+    private int getNewCashRegIndex(int oldindex) {
+        int newindex = 0;
         for(int i = 0; i < myParent.getInternalObject().getIndexConnOfId().length; i++) {
-            if(myParent.getInternalObject().getIndexConnOfId()[i]==oldindex) {
+            if(myParent.getInternalObject().getIndexConnOfId()[i] == oldindex) {
                 newindex = i;
                 break;
             }
@@ -574,26 +553,26 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         return newindex;
     }
     
-   private void initComboM() {
+    private void initComboM() {
         namesM = myParent.getInternalObject().getMoney();
-        for(int i=0;i<namesM.length;i++) {
-            jComboM.addItem(new String(namesK[i]));
+        for(int i = 0; i < namesM.length; i++) {
+            jComboM.addItem(new String(namesM[i]));
             
         }
         
-        if(selectComboBoxMoney != 0) {
+        if(selectedCurrency != 0) {
             
-            selectComboBoxMoney = getNewComboBoxIndexMoney(selectComboBoxMoney);
+            selectedCurrency = getNewCurrencyIndex(selectedCurrency);
             
-            jComboM.setSelectedIndex(selectComboBoxMoney);
+            jComboM.setSelectedIndex(selectedCurrency);
         }
         
     }
     
-    private int getNewComboBoxIndexMoney(int oldindex) {
+    private int getNewCurrencyIndex(int oldindex) {
         int newindex= 0;
         for(int i = 0; i < myParent.getInternalObject().getIndexMoney().length; i++) {
-            if(myParent.getInternalObject().getIndexMoney()[i]==oldindex) {
+            if(myParent.getInternalObject().getIndexMoney()[i] == oldindex) {
                 newindex = i;
                 break;
             }
@@ -601,23 +580,23 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         return newindex;
     }
     
-     private void initComboD() {
+    private void initComboD() {
         namesD = myParent.getInternalObject().getDoc();
-        for(int i=0;i<namesD.length;i++) {
+        for(int i = 0; i < namesD.length; i++) {
             jComboD.addItem(new String(namesD[i]));
             
         }
         
-        if(selectComboBoxDoc != 0) {
+        if(selectedCurrency != 0) {
             
-            selectComboBoxDoc = getNewComboBoxIndexDoc(selectComboBoxDoc);
+            selectedDocument = getNewDocumentIndex(selectedDocument);
             
-            jComboM.setSelectedIndex(selectComboBoxDoc);
+            jComboD.setSelectedIndex(selectedDocument);
         }
         
     }
     
-    private int getNewComboBoxIndexDoc(int oldindex) {
+    private int getNewDocumentIndex(int oldindex) {
         int newindex= 0;
         for(int i = 0; i < myParent.getInternalObject().getIndexDoc().length; i++) {
             if(myParent.getInternalObject().getIndexDoc()[i]==oldindex) {
