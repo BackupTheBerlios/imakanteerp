@@ -2,8 +2,7 @@
 package imakante.sales;
 
 import java.sql.SQLException;
-
-import org.jdesktop.swingx.JXDatePicker;
+import java.text.SimpleDateFormat;
 
 public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
@@ -113,6 +112,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
 
         jLabel8.setText("\u0414\u0430\u0442\u0430");
 
+        jXDatePickerBEGIN.setMonthView(null);
         jXDatePickerBEGIN.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jXDatePickerBEGINKeyPressed(evt);
@@ -170,7 +170,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
                         .add(jXDatePickerBEGIN, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .add(17, 17, 17)
                 .add(jButtonSearch)
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addContainerGap(144, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -438,10 +438,14 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     private  int CompNumber = 0;
     
     private String strContragent = "SELECT "
-            + "`rep_comm_nal`.`code_contragent`, `rep_comm_nal`.`name_n_contragent`"
-            + "FROM `rep_comm_nal` WHERE `rep_comm_nal`.`code_contragent` LIKE  '%";
+            + "`n_contragent`.`code_contragent`, `n_contragent`.`name_n_contragent`"
+            + "FROM `n_contragent` WHERE `n_contragent`.`code_contragent` LIKE  '%";
 
-    private String strCasa;
+    private String strCasa =  "SELECT "
+            + "`n_casa`.`code_n_casa`, `n_casa`.`name_n_casa`"
+            + "FROM `n_casa` WHERE `n_casa`.`code_n_casa` LIKE  '%";
+    
+     SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
     
     //---------------END My Variables
     
@@ -529,37 +533,37 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         return intTransfer;
     }
       private void processField1() {
-        String newString = strCasa + this.jTextField1.getText() + "%'";
+        String newString = strCasa + this.jtfCasaBegin.getText() + "%'";
         constructDialod(newString, 1, Names);
         
     }
     
     private void processField2() {
-        if(this.jTextField1.getText()==""){this.jTextField1.setText("0");}
-        String newString = strCasa + this.jTextField2.getText() + "%' AND `rep_comm_nal`.`code_n_storage` >= " + this.jTextField1.getText() + ";";
+        if(this.jtfCasaBegin.getText()==""){this.jtfCasaBegin.setText("0");}
+        String newString = strCasa + this.jtfCasaEND.getText() + "%' AND `n_casa`.`code_n_casa` >= " + this.jtfCasaBegin.getText() + ";";
         constructDialod(newString, 2, Names);
     }
     
-    private void processField5() {
-        String newString =strProduct + this.jTextField5.getText() + "%'";
-        constructDialod(newString, 5, Names);
-        
-    }
-    
-    private void processField6() {
-        if(this.jTextField5.getText()==""){this.jTextField5.setText("0");}
-        String newString = strProduct + this.jTextField6.getText() + "%' AND `rep_comm_nal`.`code_pm` >= " + this.jTextField5.getText() + ";";
-        constructDialod(newString, 6, Names);
-    }
+//    private void processField5() {
+//        String newString =strProduct + this.jTextField5.getText() + "%'";
+//        constructDialod(newString, 5, Names);
+//        
+//    }
+//    
+//    private void processField6() {
+//        if(this.jTextField5.getText()==""){this.jTextField5.setText("0");}
+//        String newString = strProduct + this.jTextField6.getText() + "%' AND `rep_comm_nal`.`code_pm` >= " + this.jTextField5.getText() + ";";
+//        constructDialod(newString, 6, Names);
+//    }
     private void processField3() {
-        String newString = strContragent + this.jTextField3.getText() + "%'";
+        String newString = strContragent + this.jtfContragentBEGIN.getText() + "%'";
         constructDialod(newString, 3, Names);
         
     }
     
     private void processField4() {
-        if(this.jTextField3.getText()==""){this.jTextField3.setText("0");}
-        String newString = strContragent + this.jTextField4.getText() + "%' AND `rep_comm_nal`.`code_contragent` >= " + this.jTextField3.getText() + ";";
+        if(this.jtfContragentBEGIN.getText()==""){this.jtfContragentBEGIN.setText("0");}
+        String newString = strContragent + this.jtfContragentEND.getText() + "%' AND `n_contragent`.`code_contragent` >= " + this.jtfContragentBEGIN.getText() + ";";
         constructDialod(newString, 4, Names);
     } 
        public void setIntTransfer(int intTransfer) {
@@ -573,10 +577,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
             this.jtfContragentBEGIN.setText(""+this.intTransfer);}
         if(CompNumber == 4){
             this.jtfContragentEND.setText(""+this.intTransfer);}
-        if(CompNumber == 5){
-            this.jTextField5.setText(""+this.intTransfer);}
-        if(CompNumber == 6){
-            this.jTextField6.setText(""+this.intTransfer);}
+        
     }
       
     public imakante.sales.casaOp getInternalObject() {
@@ -742,7 +743,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
             table.print(javax.swing.JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
         } catch(java.awt.print.PrinterException e) { e.printStackTrace(); }
     }
-    
+  
     private void searchRecords() {
         try {
             try {
@@ -750,8 +751,8 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
                                                   Integer.parseInt(jtfCasaEND.getText()),
                                                   Integer.parseInt(jtfContragentBEGIN.getText()),
                                                   Integer.parseInt(jtfContragentEND.getText()),
-                                                  jXDatePickerBEGIN.getDate().toString(),
-                                                  jXDatePickerEND.getDate().toString());
+                                                  (String)formatter.format(this.jXDatePickerBEGIN.getDate()),
+                                                  (String)formatter.format(this.jXDatePickerEND.getDate()));
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
                 

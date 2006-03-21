@@ -490,20 +490,20 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     //SAVE
     private void saveRecord() {
         if(cFields()){
-            oldIDG = myParent.getIDG();
+         //   oldIDG = myParent.getIDG();
             oldCod = myParent.getCod();
-            oldName = myParent.getNames();
+          //  oldName = myParent.getNames();
             oldComment = myParent.getComment();
             try {
                 myParent.setCod(Integer.parseInt(jTextField1.getText()));
             } catch (NumberFormatException nfex) {
                 nfex.printStackTrace();
             }
-            myParent.setNames(jTextField3.getText());
-            myParent.setComment(jTextArea1.getText());
-            myParent.setIDG(myParent.getInternalObject().getIndexConnOfId()[jComboK.getSelectedIndex()]);
-            myParent.getInternalObject().updateRow(myParent.getId(), myParent.getIDG(),myParent.getCod(),
-                    myParent.getNames(), myParent.getComment());
+//            myParent.setNames(jTextField3.getText());
+//            myParent.setComment(jTextArea1.getText());
+//            myParent.setIDG(myParent.getInternalObject().getIndexConnOfId()[jComboK.getSelectedIndex()]);
+//            myParent.getInternalObject().updateRow(myParent.getId(), myParent.getIDG(),myParent.getCod(),
+//                    myParent.getNames(), myParent.getComment());
             myParent.refreshTable();
             myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
             jButtonUndo.setEnabled(true);}
@@ -511,9 +511,9 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     
     //UNDO
     private void undoCorr() {
-        myParent.setIDG(oldIDG);
+//        myParent.setIDG(oldIDG);
         myParent.setCod(oldCod);
-        myParent.setNames(oldName);
+//        myParent.setNames(oldName);
         myParent.setComment(oldComment);
         repaintComp();
         jButtonUndo.setEnabled(false);
@@ -542,9 +542,9 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     
     private void repaintComp() {
         jTextField1.setText(""+myParent.getCod());
-        jTextField3.setText(myParent.getNames());
+       // jTextField3.setText(myParent.getNames());
         jTextArea1.setText(myParent.getComment());
-        jComboK.setSelectedIndex(getNewComboBoxIndex(myParent.getIDG()));
+      //  jComboK.setSelectedIndex(getNewComboBoxIndex(myParent.getIDG()));
     }
     
     private void initComboK() {
