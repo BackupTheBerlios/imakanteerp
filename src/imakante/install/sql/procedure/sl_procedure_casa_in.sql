@@ -180,13 +180,15 @@ BEGIN
         SELECT n_casa.id_n_casa, n_casa.code_n_casa FROM `n_casa`;
         END IF;
 
-         IF (comprator = 7) THEN
-        SELECT MAX(n.id_nbc) FROM `mida`.`n_baccount` n;
+
+        IF (comprator = 7) THEN
+        SELECT MAX(sl_m_operation.id_sl_mop) FROM `n_baccount` n;
         END IF;
 
-        IF (comprator = 8) THEN
-        SELECT MAX(n.code_nbc) AS account_code FROM `mida`.`n_baccount` n;
+         IF (comprator = 8) THEN
+        SELECT MAX(sl_m_operation.number_sl_mop) FROM sl_m_operation  WHERE sl_m_operation.id_sdtn = in_id_sdtn AND sl_m_operation.levelx = in_level;
         END IF;
+
 
           IF (comprator = 11) THEN
         SELECT n_money.id_n_money, n_money.cod_n_money FROM `n_money`;
