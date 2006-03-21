@@ -542,7 +542,7 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
     private void searchRecords() {
         try {
             try {
-                rs = internalObject.searchRecords(jTextCod.getText(),jTextCodLat.getText(),jTextName.getText());
+                rs = internalObject.searchRecords(Integer.parseInt(jTextCod.getText()),jTextCodLat.getText(),jTextName.getText());
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
                 jTextCod.requestFocus();

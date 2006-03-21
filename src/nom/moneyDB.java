@@ -3,6 +3,7 @@ package nom;
 
 public class moneyDB  extends imakante.com.dbObject {
     // ------------START Money Variables
+    private String cod_bg = ""; // kod na bg
     private String cod_lat = "";  //kod na latinitsa (mejdunaroden kod -> Code International -> CodeInt
     private java.sql.Connection conn; // connection
     //-------------END Money  Variables
@@ -33,8 +34,8 @@ public class moneyDB  extends imakante.com.dbObject {
         try {
             getCstm().setInt("in_id", getId());
             getCstm().setInt("comprator", getComprator());
-            getCstm().setInt("in_code", getCode());
-            getCstm().setString("in_cod_lat", getCodeInt());
+            getCstm().setString("in_code", getCodeBG());
+            getCstm().setString("in_cod_lat", getCodeLat());
             getCstm().setString("in_name", getName());
             getCstm().setString("in_comments", getComment());
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
@@ -47,10 +48,10 @@ public class moneyDB  extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    public void insertRow(int in_code, String in_cod_lat, String in_name, String in_comment) {
+    public void insertRow(String in_code_bg, String in_cod_lat, String in_name, String in_comment) {
         setComprator(1);
-        this.setCode(in_code);
-        this.setCodeInt(in_cod_lat);
+        this.setCodeBG(in_code_bg);
+        this.setCodeLat(in_cod_lat);
         this.setName(in_name);
         this.setComment(in_comment);
         try {
@@ -59,11 +60,11 @@ public class moneyDB  extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    public void updateRow(int in_id, int in_code, String in_cod_lat, String in_name, String in_comment) {
+    public void updateRow(int in_id, String in_code_bg, String in_cod_lat, String in_name, String in_comment) {
         setComprator(2);
         this.setId(in_id);
-        this.setCode(in_code);
-        this.setCodeInt(in_cod_lat);
+        this.setCodeBG(in_code_bg);
+        this.setCodeLat(in_cod_lat);
         this.setName(in_name);
         this.setComment(in_comment);
         try {
@@ -91,7 +92,7 @@ public class moneyDB  extends imakante.com.dbObject {
     public java.sql.ResultSet searchRecords(int in_code, String in_cod_lat, String in_name) {
         setComprator(5);
         this.setCode(in_code);
-        this.setCodeInt(in_cod_lat);
+        this.setCodeLat(in_cod_lat);
         this.setName(in_name);
         try {
             registerParameters();
@@ -113,11 +114,20 @@ public class moneyDB  extends imakante.com.dbObject {
         return return_int;
     }
 
-    public String getCodeInt() {
+    public String getCodeBG() {
+        return cod_bg;
+    }
+
+    public void setCodeBG(String cod_bg) {
+        this.cod_bg = cod_bg;
+    }
+
+    
+    public String getCodeLat() {
         return cod_lat;
     }
 
-    public void setCodeInt(String cod_lat) {
+    public void setCodeLat(String cod_lat) {
         this.cod_lat = cod_lat;
     }
 
