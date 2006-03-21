@@ -16,7 +16,14 @@ CREATE PROCEDURE `sl_procedure_case_in`(
               IN in_sum_os_val_sl_mop DOUBLE(11,4),
               IN in_user_id INT(11),
               IN in_id_sdtn INT(11),
-              IN in_comment_sl_mop VARCHAR(250)
+              IN in_comment_sl_mop VARCHAR(250),
+              IN in_casaBegin INT(11),
+              IN in_casaEnd INT(11),
+              IN in_contragentBegin INT(11),
+              IN in_contragentEnd INT(11),
+              IN in_data_begin DATE,
+              IN in_data_end DATE,
+              IN in_level INT(11)
               )
 BEGIN
 
@@ -56,7 +63,8 @@ BEGIN
             WHERE
             `sl_m_operation`.`in_type_sl_mop` = 1 AND
             `sl_m_operation`.`out_type_sl_mop` = 3 AND
-            `sl_m_operation`.`id_sdtn` = in_id_sdtn;
+            `sl_m_operation`.`id_sdtn` = in_id_sdtn AND
+            `sl_m_operation`.`levelx` = in_level;
 
      END IF;
 
@@ -122,7 +130,47 @@ BEGIN
      IF (comprator = 3) THEN
         DELETE FROM `sl_m_operation`  WHERE  sl_m_operation.id_sl_mop = in_id;
      END IF;
-     
+
+      IF (comprator = 5) THEN
+            SELECT
+            sl_m_operation.id_sl_mop,
+            sl_m_operation.number_sl_mop,
+            n_casa.id_n_casa,
+            n_casa.code_n_casa,
+            n_contragent.id_contragent,
+            n_contragent.code_contragent,
+            n_contragent.name_n_contragent,
+            sl_document_facade.number_df,
+            sl_document_facade.id_df,
+            sl_m_operation.id_order_doc,
+            n_incoms.name_n_incoms,
+            sl_m_operation.id_n_money,
+            `n_money`.`cod_n_money`,
+            `sl_m_operation`.`date_is`,
+            `sl_m_operation`.`exchange_rate`,
+            `sl_m_operation`.`sum_sl_mop`,
+            `sl_m_operation`.`sum_os_val_sl_mop`,
+            `sl_m_operation`.`user_id`,
+            `user_master`.`name_um`,
+            `sl_m_operation`.`id_sdtn`,
+            `sl_doc_type_num`.`name_sdtn`,
+            `sl_m_operation`.`comment_sl_mop`
+            FROM
+            `sl_m_operation`
+            Inner Join `n_casa` ON `n_casa`.`id_n_casa` = `sl_m_operation`.`in_sl_mop`
+            Inner Join `n_contragent` ON `n_contragent`.`id_contragent` = `sl_m_operation`.`out_sl_mop`
+            Inner Join `sl_document_facade` ON `sl_document_facade`.`id_df` = `sl_m_operation`.`id_order_spec`
+            Inner Join `n_money` ON `n_money`.`id_n_money` = `sl_m_operation`.`id_n_money`
+            Inner Join `n_incoms` ON `n_incoms`.`id_n_incoms` = `sl_m_operation`.`id_order_doc`
+            Inner Join `user_master` ON `user_master`.`id_um` = `sl_m_operation`.`user_id`
+            Inner Join `sl_doc_type_num` ON `sl_doc_type_num`.`id_sdtn` = `sl_m_operation`.`id_sdtn`
+            WHERE
+            `sl_m_operation`.`in_type_sl_mop` = 1 AND
+            `sl_m_operation`.`out_type_sl_mop` = 3 AND
+            `sl_m_operation`.`id_sdtn` = in_id_sdtn AND
+            `sl_m_operation`.`levelx` = in_level;
+
+     END IF;
 
 END $$
 
