@@ -40,6 +40,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
         setMaximizable(true);
         setResizable(true);
         setTitle("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0438 \u041b\u0438\u0446\u0430");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -549,7 +550,6 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
             HideColumns(getColumnIndex("id"));
             HideColumns(getColumnIndex("id_group"));
             jScrollPane1.repaint();
-            
         } catch(Exception e) { e.printStackTrace(); }
     }
     
@@ -558,13 +558,13 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
         rs = internalObject.getTable();
         model = new imakante.com.CustomTableModel(getConn(), rs, Names);
         table = new imakante.com.CustomTable(model);
+        jScrollPane1.getViewport().add(table);
         HideColumns(getColumnIndex("id"));
         HideColumns(getColumnIndex("id_group"));
-        jScrollPane1.getViewport().add(table);
-        jScrollPane1.repaint();
         jTextField1.setText("");
         jTextEGN.setText("");
         jTextName.setText("");
+        jScrollPane1.repaint();
     }
     
     private void newRecord() {

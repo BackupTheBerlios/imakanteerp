@@ -25,8 +25,13 @@ BEGIN
      END IF;
 
      IF (comprator = 5) THEN
-        SELECT n.id_ntd, n.code_ntd, n.name_ntd, n.name_print_ntd FROM n_type_doc n WHERE n.code_ntd LIKE CONCAT('%',in_code,'%') AND
-        n.name_ntd LIKE CONCAT('%',in_name,'%');
+        IF (in_code = -1) THEN
+            SELECT n.id_ntd, n.code_ntd, n.name_ntd, n.name_print_ntd FROM n_type_doc n WHERE n.name_ntd LIKE CONCAT('%',in_name,'%');
+        END IF;
+        IF (in_code > -1 ) THEN
+            SELECT n.id_ntd, n.code_ntd, n.name_ntd, n.name_print_ntd FROM n_type_doc n WHERE n.code_ntd LIKE CONCAT('%',in_code,'%') AND
+                n.name_ntd LIKE CONCAT('%',in_name,'%');
+        END IF;
      END IF;
 
      IF (comprator = 7) THEN

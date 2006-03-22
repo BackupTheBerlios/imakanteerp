@@ -28,8 +28,8 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
         jbEdit = new javax.swing.JButton();
         jbPrint = new javax.swing.JButton();
         jbPrintRep = new javax.swing.JButton();
-        jbAll = new javax.swing.JButton();
         jbDel = new javax.swing.JButton();
+        jbAll = new javax.swing.JButton();
         jbDropData = new javax.swing.JButton();
         jbClose = new javax.swing.JButton();
 
@@ -44,7 +44,7 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
         jpTop.setLayout(jpTopLayout);
         jpTopLayout.setHorizontalGroup(
             jpTopLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 853, Short.MAX_VALUE)
+            .add(0, 857, Short.MAX_VALUE)
         );
         jpTopLayout.setVerticalGroup(
             jpTopLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -64,12 +64,34 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
         jpControls.add(jlCode);
 
         jtfCode.setPreferredSize(new java.awt.Dimension(80, 20));
+        jtfCode.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfCodeFocusGained(evt);
+            }
+        });
+        jtfCode.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfCodeKeyPressed(evt);
+            }
+        });
+
         jpControls.add(jtfCode);
 
         jlDocName.setText("\u0418\u043c\u0435 \u043d\u0430 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442:");
         jpControls.add(jlDocName);
 
         jtfDocName.setPreferredSize(new java.awt.Dimension(200, 20));
+        jtfDocName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfDocNameFocusGained(evt);
+            }
+        });
+        jtfDocName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfDocNameKeyPressed(evt);
+            }
+        });
+
         jpControls.add(jtfDocName);
 
         jbSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Search.png")));
@@ -126,16 +148,6 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
 
         jpBottom.add(jbPrintRep);
 
-        jbAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Refresh 3.png")));
-        jbAll.setText("\u0412\u0441\u0438\u0447\u043a\u0438 \u0437\u0430\u043f\u0438\u0441\u0438");
-        jbAll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbAllActionPerformed(evt);
-            }
-        });
-
-        jpBottom.add(jbAll);
-
         jbDel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Delete 2.png")));
         jbDel.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
         jbDel.addActionListener(new java.awt.event.ActionListener() {
@@ -145,6 +157,16 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
         });
 
         jpBottom.add(jbDel);
+
+        jbAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Refresh 3.png")));
+        jbAll.setText("\u0412\u0441\u0438\u0447\u043a\u0438 \u0437\u0430\u043f\u0438\u0441\u0438");
+        jbAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAllActionPerformed(evt);
+            }
+        });
+
+        jpBottom.add(jbAll);
 
         jbDropData.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435 \u0442\u0430\u0431\u043b\u0438\u0446\u0430");
         jbDropData.addActionListener(new java.awt.event.ActionListener() {
@@ -168,6 +190,22 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jtfDocNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfDocNameFocusGained
+        jtfDocName.selectAll();
+    }//GEN-LAST:event_jtfDocNameFocusGained
+
+    private void jtfCodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCodeKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jbSearch.doClick(); searchRecords(); }
+    }//GEN-LAST:event_jtfCodeKeyPressed
+
+    private void jtfCodeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfCodeFocusGained
+        jtfCode.selectAll();
+    }//GEN-LAST:event_jtfCodeFocusGained
+
+    private void jtfDocNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfDocNameKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jbSearch.doClick(); searchRecords(); }
+    }//GEN-LAST:event_jtfDocNameKeyPressed
     
     private void jbSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSearchActionPerformed
         searchRecords();
@@ -207,14 +245,20 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
     // GUI actions methods
     private void searchRecords() {
         jspData.remove(table);
-        try{
-            rs = doctypeObject.searchRecords(Integer.parseInt(jtfCode.getText()), jtfDocName.getText());
-            model = new imakante.com.CustomTableModel(conn, rs, Names);
+        try {
+            try {
+                if (jtfCode.getText().equals("")) {
+                    rs = doctypeObject.searchRecords(-1, jtfDocName.getText());
+                } else {
+                    rs = doctypeObject.searchRecords(Integer.parseInt(jtfCode.getText()), jtfDocName.getText());
+                }
+            } catch (NumberFormatException nfex) { nfex.printStackTrace(); }
+            model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
-        } catch(Exception e) { e.printStackTrace(); }
-        jspData.getViewport().add(table);
-        jspData.repaint();
-        HideColumns(0);
+            jspData.getViewport().add(table);
+            HideColumns(getColumnIndex("id"));
+            jspData.repaint();
+        } catch (Exception e) { e.printStackTrace(); }
     }
     
     private void addNewRecord() {
@@ -265,8 +309,10 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
         model = new imakante.com.CustomTableModel(getConn(), rs, Names);
         table = new imakante.com.CustomTable(model);
         jspData.getViewport().add(table);
+        HideColumns(getColumnIndex("id"));
+        jtfCode.setText("");
+        jtfDocName.setText("");
         jspData.repaint();
-        HideColumns(0);
     }
     
     private void deleteRecord() {
@@ -344,13 +390,12 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
             rs = doctypeObject.getTable();
             model = new imakante.com.CustomTableModel(conn,rs, Names);
             table = new imakante.com.CustomTable(model);
-            HideColumns(getColumnIndex("id_ntd"));
-        }catch(Exception e){e.printStackTrace();}
+            HideColumns(getColumnIndex("id"));
+        } catch(Exception e) { e.printStackTrace(); }
         table.requestFocus();
         try {
             table.setEditingRow(0);
-        } catch(Exception ex) {
-        }
+        } catch(Exception ex) {  }
     }
     
     public void mTableBegining() {
