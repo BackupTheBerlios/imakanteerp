@@ -29,10 +29,10 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
 {
     
     /** Creates new form FrmProduct */
-    public FrmProduct(String title, int flag, int group)//, imakante.com.vcomponents.iFrame frame, int group) //  TEST 
+    public FrmProduct(String title, int flag, imakante.com.vcomponents.iFrame frame, int group) //  TEST 
     {
         super(title);
-     //   myframe = frame; 
+        myframe = frame; 
         setGroup(group);
         prepareConn();     // zapazva connection
         this.flag_pm = flag; //  za da rabotim samo s opredeleni zapisi ima6ti syotvetniq fag
@@ -517,7 +517,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     /**
      * @param args the command line arguments---------------------------------
      */
-    public static void main(String args[]) {
+  /*  public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                
@@ -528,7 +528,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
             }
         });
         
-    }
+    }*/
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -615,7 +615,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
  private void prepareConn() //TEST
     {
       // samo za testovate ------------
-    try
+   /* try
          {
           Class.forName("com.mysql.jdbc.Driver");
            
@@ -627,15 +627,15 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
          {
              e.printStackTrace();
          }
-      //
-    /*  try
+      //*/
+      try
        {
             setConn(myframe.getConn());
        }
        catch(Exception e)
        {
        e.printStackTrace();
-       }*/
+       }
   }
 private void constructProductDB() // ok
     {

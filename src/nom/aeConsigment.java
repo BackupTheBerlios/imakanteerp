@@ -566,6 +566,7 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
     private void jButtonToEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToEndActionPerformed
 // TODO add your handling code here:
         isNew = false;
+        isFirstTimeAppearce = true;
         myParent.mTableEnd();
         jButtonToEnd.setEnabled(false);
         jButtonOneRowP.setEnabled(false);
@@ -585,6 +586,7 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
     private void jButtonOneRowPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowPActionPerformed
 // TODO add your handling code here:
         isNew = false;
+        isFirstTimeAppearce = true;
         myParent.mOneRowPlus();
         if(myParent.isAtEnd()) {
             jButtonToEnd.setEnabled(false);
@@ -605,6 +607,7 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
     private void jButtonOneRowMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowMActionPerformed
 // TODO add your handling code here:
         isNew = false;
+        isFirstTimeAppearce = true;
         myParent.mOneRowMinus();
         if(myParent.isAtBegining()) {
             jButtonToBegin.setEnabled(false);
@@ -624,6 +627,7 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
     private void jButtonToBeginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToBeginActionPerformed
 // TODO add your handling code here:
         isNew = false;
+        isFirstTimeAppearce = true;
         myParent.mTableBegining();
         
         jButtonToBegin.setEnabled(false);
