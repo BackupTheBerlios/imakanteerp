@@ -48,20 +48,50 @@ public class priceToString {
                 valString = valString.substring(1,valString.length());}
         }
         if(valString.length()==7){
-            if(endString.equals("")){
+            
             int s = Integer.parseInt(valString.substring(0,1));
             endString = endString + primary[s-1];
             valString = valString.substring(1,valString.length());
             if (s==1){
-            endString = endString + " милион ";
+                endString = endString + " милион ";
             }else{
-            endString = endString + " милионa ";
+                endString = endString + " милионa ";
             }
-           }
+            
+        }
+        if (valString.length()==6){
+            int s = Integer.parseInt(valString.substring(0,1));
+            endString = endString + centum[s-1];
+            valString = valString.substring(1,valString.length());
+        }
+        if (valString.length()==5){
+            int s = Integer.parseInt(valString.substring(0,2));
+            if (s<11){
+                if(!endString.equals("")){
+                    endString = endString + " и ";
+                }
+                endString = endString +  primary[s-1];
+                valString = valString.substring(2,valString.length());
+            }else{
+                endString = endString  + decade[s-1] + " и ";
+                valString = valString.substring(1,valString.length());}
+        }
+        if(valString.length()==5){
+            
+            int s = Integer.parseInt(valString.substring(0,1));
+            if (s==1){
+                if(endString.equals("")){
+                    endString = "хилияда";
+                }else{
+                    endString = endString + " една хилияди ";}
+            }else{
+                endString = endString + primary[s-1];
+                valString = valString.substring(1,valString.length());}
+            
+            
         }
         
+        
+        
     }
-    
-    
-    
 }
