@@ -430,14 +430,31 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     private  imakante.sales.casaOp internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
-    public static final String Names[] = null;
-//    {
-//        "id",
-//        "id_group",
-//        "\u0418\u043c\u0435 \u0433\u0440\u0443\u043f\u0438",
-//        "\u041a\u043e\u0434\u043e\u0432\u0435",
-//        "\u0418\u043c\u0435\u043d\u0430",
-//        "\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440"};
+    public static final String Names[] = 
+    {
+        "id",
+        "number",
+        "id_casa",
+        "code_casa",
+        "id_contragent",
+        "name_contragent",
+        "number_df",
+        "id_df",
+        "id_order_doc",
+        "name_n_incoms",
+        "id_n_money",
+        "cod_n_money",
+        "date_is",
+        "exchange_rate",
+        "sum_sl_mop",
+        "sum_os_val",
+        "user_id",
+        "name_id",
+        "id_sdtn",
+        "name_sdtn",
+        "comment"                
+};
+    
     private  imakante.com.CustomTableModel model1;
     private  imakante.com.CustomTable table1;
     private  int intTransfer;
