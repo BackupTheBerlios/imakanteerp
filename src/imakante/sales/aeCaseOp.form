@@ -118,25 +118,25 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane1" pref="400" max="32767" attributes="2"/>
-                              <Component id="jTextField5" alignment="0" pref="400" max="32767" attributes="0"/>
+                              <Component id="jScrollPane1" pref="390" max="32767" attributes="2"/>
+                              <Component id="jTextField5" alignment="0" pref="390" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jComboCR" pref="159" max="32767" attributes="2"/>
-                                              <Component id="jTextField1" alignment="0" pref="159" max="32767" attributes="2"/>
+                                              <Component id="jComboCR" pref="154" max="32767" attributes="2"/>
+                                              <Component id="jTextField1" alignment="0" pref="154" max="32767" attributes="2"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
-                                          <Component id="jTextField6" pref="162" max="32767" attributes="0"/>
+                                          <Component id="jTextField6" pref="157" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
                                           <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="jTextField4" alignment="0" pref="162" max="32767" attributes="0"/>
-                                              <Component id="jTextField3" alignment="1" pref="162" max="32767" attributes="0"/>
+                                              <Component id="jTextField4" alignment="0" pref="157" max="32767" attributes="0"/>
+                                              <Component id="jTextField3" alignment="1" pref="157" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
@@ -149,10 +149,10 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jXDatePicker1" pref="166" max="32767" attributes="2"/>
-                                      <Component id="jComboM" alignment="0" pref="166" max="32767" attributes="2"/>
-                                      <Component id="jComboD" pref="166" max="32767" attributes="0"/>
-                                      <Component id="jTextField2" alignment="0" pref="166" max="32767" attributes="2"/>
+                                      <Component id="jXDatePicker1" pref="161" max="32767" attributes="2"/>
+                                      <Component id="jComboM" alignment="0" pref="161" max="32767" attributes="2"/>
+                                      <Component id="jComboD" pref="161" max="32767" attributes="0"/>
+                                      <Component id="jTextField2" alignment="0" pref="161" max="32767" attributes="2"/>
                                   </Group>
                               </Group>
                               <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -215,7 +215,7 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jComboM" alignment="3" pref="20" max="32767" attributes="0"/>
+                      <Component id="jComboM" alignment="3" pref="19" max="32767" attributes="0"/>
                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -237,7 +237,7 @@
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="11" max="32767" attributes="0"/>
+                  <EmptySpace pref="10" max="32767" attributes="0"/>
                   <Component id="jPanel3" min="-2" pref="78" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>

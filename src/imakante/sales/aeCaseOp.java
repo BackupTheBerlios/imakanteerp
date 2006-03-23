@@ -381,7 +381,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jbPrintActionPerformed
     
     private void jbPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbPrintKeyPressed
-        
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jbPrint.doClick();}
     }//GEN-LAST:event_jbPrintKeyPressed
     
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained

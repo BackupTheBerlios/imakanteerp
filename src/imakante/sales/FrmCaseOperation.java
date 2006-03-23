@@ -52,6 +52,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setPreferredSize(new java.awt.Dimension(452, 45));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -130,62 +131,61 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel4Layout.createSequentialGroup()
-                .add(80, 80, 80)
-                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
+                .add(151, 151, 151)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel4Layout.createSequentialGroup()
-                        .add(jLabel5)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(jLabel6))
+                        .add(jLabel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 16, Short.MAX_VALUE)
+                        .add(65, 65, 65)
+                        .add(jLabel6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
                     .add(jPanel4Layout.createSequentialGroup()
-                        .add(jLabel4)
+                        .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE)
                         .add(67, 67, 67)
-                        .add(jLabel2)))
-                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                        .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)))
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel4Layout.createSequentialGroup()
                         .add(5, 5, 5)
-                        .add(jtfCasaBegin, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(jtfCasaBegin, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .add(jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jtfCasaEND)))
-                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                        .add(jtfCasaEND, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)))
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel4Layout.createSequentialGroup()
                         .add(5, 5, 5)
-                        .add(jLabel3)
+                        .add(jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
                         .add(5, 5, 5)
-                        .add(jtfContragentBEGIN, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(jtfContragentBEGIN, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
                     .add(jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jLabel7)
+                        .add(jLabel7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jtfContragentEND)))
+                        .add(jtfContragentEND, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel4Layout.createSequentialGroup()
-                        .add(jLabel8)
+                        .add(jLabel8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jXDatePickerEND, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(jXDatePickerEND, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))
                     .add(jPanel4Layout.createSequentialGroup()
-                        .add(jLabel1)
+                        .add(jLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jXDatePickerBEGIN, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                        .add(jXDatePickerBEGIN, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)))
                 .add(17, 17, 17)
-                .add(jButtonSearch)
-                .addContainerGap(187, Short.MAX_VALUE))
+                .add(jButtonSearch, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                .add(129, 129, 129))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel4Layout.createSequentialGroup()
-                .add(24, 24, 24)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel4Layout.createSequentialGroup()
-                        .add(7, 7, 7)
+                        .add(5, 5, 5)
                         .add(jtfCasaBegin, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jPanel4Layout.createSequentialGroup()
-                        .add(10, 10, 10)
+                        .add(8, 8, 8)
                         .add(jLabel3))
                     .add(jPanel4Layout.createSequentialGroup()
-                        .add(2, 2, 2)
                         .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                             .add(jPanel4Layout.createSequentialGroup()
                                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
@@ -197,7 +197,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)))
                         .add(jXDatePickerEND, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jPanel4Layout.createSequentialGroup()
-                        .add(10, 10, 10)
+                        .add(8, 8, 8)
                         .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(jLabel2)
                             .add(jLabel4))
@@ -208,30 +208,27 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
                             .add(jtfCasaEND, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(jLabel7)
                             .add(jtfContragentEND, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jLabel8))))
+                            .add(jLabel8)))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 13, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(jButtonSearch)
+                        .add(17, 17, 17)))
                 .addContainerGap())
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
-                .add(jButtonSearch)
-                .add(29, 29, 29))
         );
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 872, Short.MAX_VALUE)
-                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 872, Short.MAX_VALUE))
-                .addContainerGap())
+            .add(jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 878, Short.MAX_VALUE)
+            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 878, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
-                .add(2, 2, 2)
-                .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 97, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 81, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -441,7 +438,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         "code_contragent",     //         5. (V)
         "name_contragent",    //         6. (V)
         "number_df",          //         7. (V)
-        "id_df",              //         8. (H) 
+        "id_df",              //         8. (H)
         "id_order_doc",       //         9. (H)
         "name_n_incoms",      //        10. (V)
         "id_n_money",         //        11. (H)
@@ -454,7 +451,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         "name_id",            //        18. (V)
         "id_sdtn",            //        19. (H)
         "name_sdtn",          //        20. (V)
-        "comment"             //        21. (V) 
+        "comment"             //        21. (V)
     };
     
     private  imakante.com.CustomTableModel model1;
@@ -483,6 +480,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
             }
         } catch(Exception e) { e.printStackTrace(); }
     }
+    
     private void prepareStm(){
         try {
             stm = conn.createStatement();
@@ -528,8 +526,14 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
             rs = internalObject.getTable();
             model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
-            HideColumns(0);
-            HideColumns(1);
+            HideColumns(getColumnIndex("id"));
+            HideColumns(getColumnIndex("id_casa"));
+            HideColumns(getColumnIndex("id_contragent"));
+            HideColumns(getColumnIndex("id_df"));
+            HideColumns(getColumnIndex("id_order_doc"));
+            HideColumns(getColumnIndex("id_n_money"));
+            HideColumns(getColumnIndex("user_id"));
+            HideColumns(getColumnIndex("id_sdtn"));
         } catch(Exception e) { e.printStackTrace(); }
         table.requestFocus();
         try {
@@ -792,8 +796,14 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
             jScrollPane1.remove(table);
             model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
-            HideColumns(0);
-            HideColumns(1);
+            HideColumns(getColumnIndex("id"));
+            HideColumns(getColumnIndex("id_casa"));
+            HideColumns(getColumnIndex("id_contragent"));
+            HideColumns(getColumnIndex("id_df"));
+            HideColumns(getColumnIndex("id_order_doc"));
+            HideColumns(getColumnIndex("id_n_money"));
+            HideColumns(getColumnIndex("user_id"));
+            HideColumns(getColumnIndex("id_sdtn"));
             jScrollPane1.getViewport().add(table);
             jScrollPane1.repaint();
         } catch(Exception e) { e.printStackTrace(); }
@@ -804,8 +814,14 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         rs = internalObject.getTable();
         model = new imakante.com.CustomTableModel(getConn(), rs, Names);
         table = new imakante.com.CustomTable(model);
-        HideColumns(0);
-        HideColumns(1);
+        HideColumns(getColumnIndex("id"));
+        HideColumns(getColumnIndex("id_casa"));
+        HideColumns(getColumnIndex("id_contragent"));
+        HideColumns(getColumnIndex("id_df"));
+        HideColumns(getColumnIndex("id_order_doc"));
+        HideColumns(getColumnIndex("id_n_money"));
+        HideColumns(getColumnIndex("user_id"));
+        HideColumns(getColumnIndex("id_sdtn"));
         jScrollPane1.getViewport().add(table);
         jScrollPane1.repaint();
     }
@@ -907,75 +923,75 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         setIn_id_sdtn((Integer) table.getValueAt(getRow(), getColumnIndex("id_sdtn")));
         setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440")));
     }
-
+    
     public int getIn_in_sl_mop() {
         return in_in_sl_mop;
     }
-
+    
     public void setIn_in_sl_mop(int in_in_sl_mop) {
         this.in_in_sl_mop = in_in_sl_mop;
     }
-
+    
     public int getIn_outsl_mop() {
         return in_outsl_mop;
     }
-
+    
     public void setIn_outsl_mop(int in_outsl_mop) {
         this.in_outsl_mop = in_outsl_mop;
     }
-
+    
     public int getIn_id_order_spec() {
         return in_id_order_spec;
     }
-
+    
     public void setIn_id_order_spec(int in_id_order_spec) {
         this.in_id_order_spec = in_id_order_spec;
     }
-
+    
     public int getIn_id_order_doc() {
         return in_id_order_doc;
     }
-
+    
     public void setIn_id_order_doc(int in_id_order_doc) {
         this.in_id_order_doc = in_id_order_doc;
     }
-
+    
     public String getIn_DATE() {
         return in_DATE;
     }
-
+    
     public void setIn_DATE(String in_DATE) {
         this.in_DATE = in_DATE;
     }
-
+    
     public double getIn_exchange_rate() {
         return in_exchange_rate;
     }
-
+    
     public void setIn_exchange_rate(double in_exchange_rate) {
         this.in_exchange_rate = in_exchange_rate;
     }
-
+    
     public double getIn_sum_sl_mop() {
         return in_sum_sl_mop;
     }
-
+    
     public void setIn_sum_sl_mop(double in_sum_sl_mop) {
         this.in_sum_sl_mop = in_sum_sl_mop;
     }
-
+    
     public double getIn_sum_os_val_sl_mop() {
         return in_sum_os_val_sl_mop;
     }
-
+    
     public void setIn_sum_os_val_sl_mop(double in_sum_os_val_sl_mop) {
         this.in_sum_os_val_sl_mop = in_sum_os_val_sl_mop;
     }
-
+    
     public int getIn_id_sdtn() {
         return in_id_sdtn;
     }
-
+    
     public void setIn_id_sdtn(int in_id_sdtn) {
         this.in_id_sdtn = in_id_sdtn;
     }
