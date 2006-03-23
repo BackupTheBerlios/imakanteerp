@@ -46,8 +46,8 @@ public class casaOp  extends dbObject {
     private int CasaEnd = 0;
     private int ContragentBegin = 0;
     private int ContragentEnd = 0;
-    private String DateBegin = "";
-    private String DateEnd = "";
+    private String DateBegin = "0000/00/00";
+    private String DateEnd = "0000/00/00";
     private Connection conn;
     
     
@@ -64,7 +64,7 @@ public class casaOp  extends dbObject {
     protected void prepareCstm() {
         try {
             
-            setCstm(getConn().prepareCall("{call sl_procedure_case_in(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
+            setCstm(getConn().prepareCall("{call sl_procedure_case_in(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
             
         } catch (SQLException sqle) {sqle.printStackTrace();}
     }
@@ -73,20 +73,21 @@ public class casaOp  extends dbObject {
         try {
             
             
-            getCstm().setInt("comprator", getComprator());
-            getCstm().setInt("in_id", getId());
+            getCstm().setInt("comprator", getComprator());   
+            getCstm().setInt("in_id", getId());              
             getCstm().setInt("in_number_sl_mop", getCode());
+            getCstm().setInt("in_in_sl_mop",in_in_sl_mop);
             getCstm().setInt("in_outsl_mop", in_outsl_mop);
             getCstm().setInt("in_id_order_spec", in_id_order_spec);
-            getCstm().setInt("in_id_order_spec_type", in_id_order_spec_type);
             getCstm().setInt("in_id_order_doc", in_id_order_doc);
             getCstm().setString("in_date_is", in_DATE);
             getCstm().setInt("in_id_n_money", in_id_n_money);
+            getCstm().setDouble("in_exchange_rate", in_exchange_rate);
             getCstm().setDouble("in_sum_sl_mop", in_sum_sl_mop);
             getCstm().setDouble("in_sum_os_val_sl_mop", in_sum_os_val_sl_mop);
             getCstm().setInt("in_user_id", in_user_id);
             getCstm().setInt("in_id_sdtn", getIn_id_sdtn());
-            getCstm().setString("in_comments", getComment());
+            getCstm().setString("in_comment_sl_mop", getComment());
             getCstm().setInt("in_casaBegin", CasaBegin);
             getCstm().setInt("in_casaEnd", CasaEnd);
             getCstm().setInt("in_contragentBegin", ContragentBegin);

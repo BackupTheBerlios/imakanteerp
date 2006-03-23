@@ -277,6 +277,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         kasaMenu.setText("\u041a\u0410\u0421\u0410");
         kasaMenu_order.setText("\u041e\u0440\u0434\u0435\u0440\u0438");
         orderMenu_prih.setText("\u041f\u0440\u0438\u0445\u043e\u0434\u043d\u0438");
+        orderMenu_prih.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderMenu_prihActionPerformed(evt);
+            }
+        });
+
         kasaMenu_order.add(orderMenu_prih);
 
         orderMenu_razh.setText("\u0420\u0430\u0437\u0445\u043e\u0434\u043d\u0438");
@@ -651,6 +657,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-448)/2, 757, 448);
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void orderMenu_prihActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderMenu_prihActionPerformed
+        this.loadKassss();
+    }//GEN-LAST:event_orderMenu_prihActionPerformed
     
     private void jMenuItem9DTURActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9DTURActionPerformed
         loadDTUR();
@@ -1160,22 +1170,30 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     /*
      *
      */
+    //
+    private void loadKassss(){
+        imakante.sales.FrmCaseOperation cs = new imakante.sales.FrmCaseOperation("prihod", this, 1, 1);
+        desktopPane.add(cs);
+        cs.setVisible(true);
+    }
+    
+    
+    
     
     
     private void loadLevelImport(){
         if (!this.getOrderArea().isEmpty()){
-        imakante.sales.levelDialog level = new imakante.sales.levelDialog(this, true, 1, this.getOrderArea());
-      //  desktopPane.add(level);
-        level.setVisible(true); }
-        else{System.out.println("Empty hash");};
-        
+            imakante.sales.levelDialog level = new imakante.sales.levelDialog(this, true, 1, this.getOrderArea());
+            //  desktopPane.add(level);
+            level.setVisible(true); } else{System.out.println("Empty hash");};
+            
     }
     
     //PRODUCTS
     
     private void loadFrmProducts() {
         if(!isIsStartFrmProduct()) {
-            iFrmProduct = new nom.FrmProduct("\u041d\u041e\u041c\u0415\u041d\u041a\u041b\u0410\u0422\u0423\u0420\u0410 \u0421\u0422\u041e\u041a\u0418",0,0);
+            iFrmProduct = new nom.FrmProduct("\u041d\u041e\u041c\u0415\u041d\u041a\u041b\u0410\u0422\u0423\u0420\u0410 \u0421\u0422\u041e\u041a\u0418",0, this,0);
             desktopPane.add(iFrmProduct);
             try {
                 iFrmProduct.setMaximum(true);
