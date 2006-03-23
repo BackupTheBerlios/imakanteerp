@@ -432,27 +432,27 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     private  imakante.com.CustomTable table;
     public static final String Names[] =
     {
-        "id",
-        "number",
-        "id_casa",
-        "code_casa",
-        "id_contragent",
-        "name_contragent",
-        "number_df",
-        "id_df",
-        "id_order_doc",
-        "name_n_incoms",
-        "id_n_money",
-        "cod_n_money",
-        "date_is",
-        "exchange_rate",
-        "sum_sl_mop",
-        "sum_os_val",
-        "user_id",
-        "name_id",
-        "id_sdtn",
-        "name_sdtn",
-        "comment"
+        "id",                 // Row N - 0. (H) - Hidden
+        "number",             //         1. (V) - Visible
+        "id_casa",            //         2. (H)
+        "code_casa",          //         3. (V)
+        "id_contragent",      //         4. (H)
+        "name_contragent",    //         5. (V)
+        "number_df",          //         6. (V)
+        "id_df",              //         7. (H) 
+        "id_order_doc",       //         8. (H)
+        "name_n_incoms",      //         9. (V)
+        "id_n_money",         //        10. (H)
+        "cod_n_money",        //        11. (V)
+        "date_is",            //        12. (V)
+        "exchange_rate",      //        13. (V)
+        "sum_sl_mop",         //        14. (V)
+        "sum_os_val",         //        15. (V)
+        "user_id",            //        16. (H)
+        "name_id",            //        17. (V)
+        "id_sdtn",            //        18. (H)
+        "name_sdtn",          //        19. (V)
+        "comment"             //        20. (V) 
     };
     
     private  imakante.com.CustomTableModel model1;
