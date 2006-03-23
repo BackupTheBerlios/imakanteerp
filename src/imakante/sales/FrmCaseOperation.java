@@ -430,6 +430,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     private  imakante.sales.casaOp internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
+    
     public static final String Names[] =
     {
         "id",                 // Row N - 0. (H) - Hidden
