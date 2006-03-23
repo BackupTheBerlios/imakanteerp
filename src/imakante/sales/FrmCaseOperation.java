@@ -894,15 +894,87 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         
         setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
         setCode((Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434\u043e\u0432\u0435")));
-        in_in_sl_mop = (Integer) table.getValueAt(getRow(), getColumnIndex("id_casa"));
-        in_outsl_mop = (Integer) table.getValueAt(getRow(), getColumnIndex("id_contragent"));
-        in_id_order_spec = (Integer) table.getValueAt(getRow(), getColumnIndex("id_df"));
-        in_id_order_doc = (Integer) table.getValueAt(getRow(), getColumnIndex("id_order_doc"));
-        in_DATE = (String)table.getValueAt(getRow(), getColumnIndex("date_is"));
-        in_exchange_rate = (Double)table.getValueAt(getRow(), getColumnIndex("exchange_rate"));
-        in_sum_sl_mop = (Double)table.getValueAt(getRow(), getColumnIndex("sum_sl_mop"));
-        in_sum_os_val_sl_mop = (Double)table.getValueAt(getRow(), getColumnIndex("sum_os_val"));
-        in_id_sdtn = (Integer) table.getValueAt(getRow(), getColumnIndex("id_sdtn"));
+        setIn_in_sl_mop((Integer) table.getValueAt(getRow(), getColumnIndex("id_casa")));
+        setIn_outsl_mop((Integer) table.getValueAt(getRow(), getColumnIndex("id_contragent")));
+        setIn_id_order_spec((Integer) table.getValueAt(getRow(), getColumnIndex("id_df")));
+        setIn_id_order_doc((Integer) table.getValueAt(getRow(), getColumnIndex("id_order_doc")));
+        setIn_DATE((String)table.getValueAt(getRow(), getColumnIndex("date_is")));
+        setIn_exchange_rate((Double)table.getValueAt(getRow(), getColumnIndex("exchange_rate")));
+        setIn_sum_sl_mop((Double)table.getValueAt(getRow(), getColumnIndex("sum_sl_mop")));
+        setIn_sum_os_val_sl_mop((Double)table.getValueAt(getRow(), getColumnIndex("sum_os_val")));
+        setIn_id_sdtn((Integer) table.getValueAt(getRow(), getColumnIndex("id_sdtn")));
         setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440")));
+    }
+
+    public int getIn_in_sl_mop() {
+        return in_in_sl_mop;
+    }
+
+    public void setIn_in_sl_mop(int in_in_sl_mop) {
+        this.in_in_sl_mop = in_in_sl_mop;
+    }
+
+    public int getIn_outsl_mop() {
+        return in_outsl_mop;
+    }
+
+    public void setIn_outsl_mop(int in_outsl_mop) {
+        this.in_outsl_mop = in_outsl_mop;
+    }
+
+    public int getIn_id_order_spec() {
+        return in_id_order_spec;
+    }
+
+    public void setIn_id_order_spec(int in_id_order_spec) {
+        this.in_id_order_spec = in_id_order_spec;
+    }
+
+    public int getIn_id_order_doc() {
+        return in_id_order_doc;
+    }
+
+    public void setIn_id_order_doc(int in_id_order_doc) {
+        this.in_id_order_doc = in_id_order_doc;
+    }
+
+    public String getIn_DATE() {
+        return in_DATE;
+    }
+
+    public void setIn_DATE(String in_DATE) {
+        this.in_DATE = in_DATE;
+    }
+
+    public double getIn_exchange_rate() {
+        return in_exchange_rate;
+    }
+
+    public void setIn_exchange_rate(double in_exchange_rate) {
+        this.in_exchange_rate = in_exchange_rate;
+    }
+
+    public double getIn_sum_sl_mop() {
+        return in_sum_sl_mop;
+    }
+
+    public void setIn_sum_sl_mop(double in_sum_sl_mop) {
+        this.in_sum_sl_mop = in_sum_sl_mop;
+    }
+
+    public double getIn_sum_os_val_sl_mop() {
+        return in_sum_os_val_sl_mop;
+    }
+
+    public void setIn_sum_os_val_sl_mop(double in_sum_os_val_sl_mop) {
+        this.in_sum_os_val_sl_mop = in_sum_os_val_sl_mop;
+    }
+
+    public int getIn_id_sdtn() {
+        return in_id_sdtn;
+    }
+
+    public void setIn_id_sdtn(int in_id_sdtn) {
+        this.in_id_sdtn = in_id_sdtn;
     }
 }
