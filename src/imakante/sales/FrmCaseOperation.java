@@ -397,7 +397,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     
     //--------------- My Variables
     private int level = 1;
-    private int sdtn = 0;
+    private int sdtn = 1;
     
     private int id = 0; // imena ot tablicata
     private int code = 0;
@@ -438,22 +438,23 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         "id_casa",            //         2. (H)
         "code_casa",          //         3. (V)
         "id_contragent",      //         4. (H)
-        "name_contragent",    //         5. (V)
-        "number_df",          //         6. (V)
-        "id_df",              //         7. (H) 
-        "id_order_doc",       //         8. (H)
-        "name_n_incoms",      //         9. (V)
-        "id_n_money",         //        10. (H)
-        "cod_n_money",        //        11. (V)
-        "date_is",            //        12. (V)
-        "exchange_rate",      //        13. (V)
-        "sum_sl_mop",         //        14. (V)
-        "sum_os_val",         //        15. (V)
-        "user_id",            //        16. (H)
-        "name_id",            //        17. (V)
-        "id_sdtn",            //        18. (H)
-        "name_sdtn",          //        19. (V)
-        "comment"             //        20. (V) 
+        "code_contragent",     //         5. (V)
+        "name_contragent",    //         6. (V)
+        "number_df",          //         7. (V)
+        "id_df",              //         8. (H) 
+        "id_order_doc",       //         9. (H)
+        "name_n_incoms",      //        10. (V)
+        "id_n_money",         //        11. (H)
+        "cod_n_money",        //        12. (V)
+        "date_is",            //        13. (V)
+        "exchange_rate",      //        14. (V)
+        "sum_sl_mop",         //        15. (V)
+        "sum_os_val",         //        16. (V)
+        "user_id",            //        17. (H)
+        "name_id",            //        18. (V)
+        "id_sdtn",            //        19. (H)
+        "name_sdtn",          //        20. (V)
+        "comment"             //        21. (V) 
     };
     
     private  imakante.com.CustomTableModel model1;
