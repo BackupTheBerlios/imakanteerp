@@ -430,7 +430,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     private  imakante.sales.casaOp internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
-    public static final String Names[] = 
+    public static final String Names[] =
     {
         "id",
         "number",
@@ -452,8 +452,8 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         "name_id",
         "id_sdtn",
         "name_sdtn",
-        "comment"                
-};
+        "comment"
+    };
     
     private  imakante.com.CustomTableModel model1;
     private  imakante.com.CustomTable table1;
@@ -891,10 +891,18 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         
     }
     private void setAllVariables(){
+        
         setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
-        
         setCode((Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434\u043e\u0432\u0435")));
-        
+        in_in_sl_mop = (Integer) table.getValueAt(getRow(), getColumnIndex("id_casa"));
+        in_outsl_mop = (Integer) table.getValueAt(getRow(), getColumnIndex("id_contragent"));
+        in_id_order_spec = (Integer) table.getValueAt(getRow(), getColumnIndex("id_df"));
+        in_id_order_doc = (Integer) table.getValueAt(getRow(), getColumnIndex("id_order_doc"));
+        in_DATE = (String)table.getValueAt(getRow(), getColumnIndex("date_is"));
+        in_exchange_rate = (Double)table.getValueAt(getRow(), getColumnIndex("exchange_rate"));
+        in_sum_sl_mop = (Double)table.getValueAt(getRow(), getColumnIndex("sum_sl_mop"));
+        in_sum_os_val_sl_mop = (Double)table.getValueAt(getRow(), getColumnIndex("sum_os_val"));
+        in_id_sdtn = (Integer) table.getValueAt(getRow(), getColumnIndex("id_sdtn"));
         setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440")));
     }
 }
