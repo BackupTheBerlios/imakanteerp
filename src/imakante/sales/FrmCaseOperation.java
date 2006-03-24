@@ -403,9 +403,9 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     private String contragent_name = "";
     private int in_in_sl_mop = 0;
     private int in_outsl_mop = 0;
-    private int in_id_order_spec = 0 ;
+    private int in_id_order_spec = -1 ;
     private int in_id_order_spec_type = 1;
-    private int in_id_order_doc = 0;
+    private int in_id_order_doc = -1;
     private String in_DATE;
     private int in_id_n_money = 1;
     private double in_exchange_rate = 1;
@@ -452,7 +452,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         "name_id",            //        18. (V)
         "id_sdtn",            //        19. (H)
         "name_sdtn",          //        20. (V)
-        "comment"             //        21. (V)
+        "\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440"             //        21. (V)
     };
     
     private  imakante.com.CustomTableModel model1;
@@ -929,7 +929,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         setIn_outsl_mop((Integer) table.getValueAt(getRow(), getColumnIndex("id_contragent")));
         setIn_id_order_spec((Integer) table.getValueAt(getRow(), getColumnIndex("id_df")));
         setIn_id_order_doc((Integer) table.getValueAt(getRow(), getColumnIndex("id_order_doc")));
-        setIn_DATE((String)table.getValueAt(getRow(), getColumnIndex("date_is")));
+        setIn_DATE((String)table.getValueAt(getRow(), getColumnIndex("date_is")).toString());
         setIn_exchange_rate((Double)table.getValueAt(getRow(), getColumnIndex("exchange_rate")));
         setIn_sum_sl_mop((Double)table.getValueAt(getRow(), getColumnIndex("sum_sl_mop")));
         setIn_sum_os_val_sl_mop((Double)table.getValueAt(getRow(), getColumnIndex("sum_os_val")));
