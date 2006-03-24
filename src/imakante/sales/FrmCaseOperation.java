@@ -432,18 +432,18 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     public static final String Names[] =
     {
         "id",                 // Row N - 0. (H) - Hidden
-        "number",             //         1. (V) - Visible
+        "\u043d\u043e\u043c\u0435\u0440",             //         1. (V) - Visible
         "id_casa",            //         2. (H)
-        "code_casa",          //         3. (V)
+        "\u043a\u043e\u0434 \u043a\u0430\u0441\u0430",          //         3. (V)
         "id_contragent",      //         4. (H)
-        "code_contragent",     //         5. (V)
-        "name_contragent",    //         6. (V)
-        "number_df",          //         7. (V)
+        "\u043a\u043e\u0434 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442",     //         5. (V)
+        "\u0438\u043c\u0435 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442",    //         6. (V)
+        "\u0441\u0432\u044a\u0440\u0437\u0430\u043d \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442",          //         7. (V)
         "id_df",              //         8. (H)
         "id_order_doc",       //         9. (H)
-        "name_n_incoms",      //        10. (V)
+        "\u0432\u0438\u0434 \u043f\u0440\u0438\u0445\u043e\u0434",      //        10. (V)
         "id_n_money",         //        11. (H)
-        "cod_n_money",        //        12. (V)
+        "\u043f\u0430\u0440\u0438\u0447\u0435\u043d \u043a\u043e\u0434",        //        12. (V)
         "date_is",            //        13. (V)
         "exchange_rate",      //        14. (V)
         "sum_sl_mop",         //        15. (V)
@@ -847,7 +847,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         setAllVariables();
         setAtBegining(false);
         setAtEnd(true);
-        nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
+        imakante.sales.aeCaseOp ae_Casa = new imakante.sales.aeCaseOp(this, true);
         ae_Casa.setVisible(true);
         
         refreshTable();
@@ -866,7 +866,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
                 setAtEnd(false);
             }
             setAllVariables();
-            nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
+            imakante.sales.aeCaseOp ae_Casa = new imakante.sales.aeCaseOp(this, true);
             ae_Casa.setVisible(true);
         } else {  }
     }
