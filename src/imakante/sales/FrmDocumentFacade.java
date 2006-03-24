@@ -18,10 +18,10 @@ import java.util.*;
 public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame implements WindowListener
 {
 
-    public FrmDocumentFacade(String title, int user, int level, int pricelist, int doctype,int storagedocdacade,boolean makeDocByInputData,HashMap dataIn, ArrayList dataOut) // TEST   imakante.com.vcomponents.iFrame frame,
+    public FrmDocumentFacade(String title, int user, int level, int pricelist, int doctype,int storagedocdacade,boolean makeDocByInputData,HashMap dataIn, ArrayList dataOut,imakante.com.vcomponents.iFrame frame) // TEST   ,
     {
         super(title);
-       // myframe = frame; 
+        myframe = frame; 
        this.dataInput = dataIn;
        this.dataOutput = dataOut;
        this.userEditForm = user;
@@ -344,13 +344,13 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+  /*  public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 int user = 2;
                 int level =1;
                 int pricelist =1;
-                int doctype =5;
+                int doctype =1;
                 int storage =1;
                 boolean makedoc = false;
                 HashMap INdata = null;
@@ -365,7 +365,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
                 
             }
         });
-    }
+    }*/
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -490,7 +490,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
 private void prepareConn() //TEST
     {
       // samo za testovate ------------
-      try
+     /* try
          {
           Class.forName("com.mysql.jdbc.Driver");
            
@@ -502,15 +502,15 @@ private void prepareConn() //TEST
          {
              e.printStackTrace();
          }
-      
-     /*  try
+      */
+       try
        {
             setConn(myframe.getConn());
        }
        catch(Exception e)
        {
        e.printStackTrace();
-       }*/
+       }
   }
 private void constructGroupDB() //OK 
     {
@@ -1323,9 +1323,11 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
                          setTelObekt(" ");
                          
                          setID_Deliver((Integer) table.getValueAt(getRow(), getColumnIndex("delivere_df")));        
-                         setID_Distributor((Integer) table.getValueAt(getRow(), getColumnIndex("distributor_df")));  
-                         setDistributorDocFacade((String)table.getValueAt(getRow(),getColumnIndex("Код на дистрибутор"))); 
-                         setDeliverDocFacade((String)table.getValueAt(getRow(),getColumnIndex("Код на доставчик"))); 
+                         setID_Distributor((Integer) table.getValueAt(getRow(), getColumnIndex("distributor_df")));
+                         code = (Integer)table.getValueAt(getRow(),getColumnIndex("Код на дистрибутор"));
+                         setDistributorDocFacade(String.valueOf(code));
+                         code =(Integer)table.getValueAt(getRow(),getColumnIndex("Код на доставчик"));
+                         setDeliverDocFacade(String.valueOf(code)); 
                          
                          d1 = (java.sql.Date) table.getValueAt(getRow(),getColumnIndex("Дата на доставяне"));
                          setDeliverDate(d1.toString());

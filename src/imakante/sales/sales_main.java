@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import nom.FrmProduct;
+import java.util.*;
 
 //>>>>>>> 1.24
 
@@ -226,9 +227,21 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         docMenu_fak.setText("\u0424\u0430\u043a\u0442\u0443\u0440\u0438");
         fakMenu_dan.setText("\u0414\u0430\u043d\u044a\u0447\u043d\u0438");
+        fakMenu_dan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fakMenu_danActionPerformed(evt);
+            }
+        });
+
         docMenu_fak.add(fakMenu_dan);
 
         fakMenu_opr.setText("\u041e\u043f\u0440\u043e\u0441\u0442\u0435\u043d\u0438");
+        fakMenu_opr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fakMenu_oprActionPerformed(evt);
+            }
+        });
+
         docMenu_fak.add(fakMenu_opr);
 
         docMenu.add(docMenu_fak);
@@ -238,6 +251,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         docMenu_razp.add(razpMenu_pol);
 
         razpMenu_prehv.setText("\u041f\u0440\u0435\u0445\u0432\u044a\u0440\u043b\u044f\u043d\u0435");
+        razpMenu_prehv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                razpMenu_prehvActionPerformed(evt);
+            }
+        });
+
         docMenu_razp.add(razpMenu_prehv);
 
         docMenu.add(docMenu_razp);
@@ -270,6 +289,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         docMenu.add(docMenu_porach);
 
         docMenu_offer.setText("\u041e\u0444\u0435\u0440\u0442\u0438");
+        docMenu_offer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                docMenu_offerActionPerformed(evt);
+            }
+        });
+
         docMenu.add(docMenu_offer);
 
         menuBar.add(docMenu);
@@ -657,6 +682,67 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-448)/2, 757, 448);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void docMenu_offerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docMenu_offerActionPerformed
+// TODO add your handling code here:
+        int user = 2;
+        int level = 1;
+        int pricelist = 1;
+        int doctype = aeDocumentFacade.PROFORMA_FAKTURA;
+        int storagedocdacade = 1;
+        loadFrmDocFacade("\u041f\u0420\u041e\u0424\u041e\u0420\u041c\u0410 \u0424\u0410\u041a\u0422\u0423\u0420\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );    
+    }//GEN-LAST:event_docMenu_offerActionPerformed
+
+    private void razpMenu_prehvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_razpMenu_prehvActionPerformed
+// TODO add your handling code here:
+        int user = 2;
+        int level = 1;
+        int pricelist = 1;
+        int doctype = aeDocumentFacade.STOKOVA_RAZPISKA;
+        int storagedocdacade = 1;
+        loadFrmDocFacade("\u0421\u0422\u041e\u041a\u041e\u0412\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );   
+       
+    }//GEN-LAST:event_razpMenu_prehvActionPerformed
+
+    private void fakMenu_oprActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fakMenu_oprActionPerformed
+// TODO add your handling code here:
+        int user = 2;
+        int level = 1;
+        int pricelist = 1;
+        int doctype = aeDocumentFacade.FAKTURI;
+        int storagedocdacade = 1;
+            
+        if(isMakeDocByInputData)
+        {
+          dataIn = null;
+          dataOut = null;
+          loadFrmDocFacade("\u0424\u0410\u041a\u0422\u0423\u0420\u0410", user, level, pricelist, doctype, storagedocdacade, isMakeDocByInputData, dataIn, dataOut );   
+        }
+        else
+        {
+         loadFrmDocFacade("\u0424\u0410\u041a\u0422\u0423\u0420\u0410", user, level, pricelist, doctype, storagedocdacade, isMakeDocByInputData, dataIn, dataOut );
+        }
+    }//GEN-LAST:event_fakMenu_oprActionPerformed
+
+    private void fakMenu_danActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fakMenu_danActionPerformed
+// TODO add your handling code here:
+        int user = 2;
+        int level = 1;
+        int pricelist = 1;
+        int doctype = aeDocumentFacade.FAKTURI;
+        int storagedocdacade = 1;
+            
+        if(isMakeDocByInputData)
+        {
+          dataIn = null;
+          dataOut = null;
+          loadFrmDocFacade("\u0424\u0410\u041a\u0422\u0423\u0420\u0410", user, level, pricelist, doctype, storagedocdacade, isMakeDocByInputData, dataIn, dataOut );   
+        }
+        else
+        {
+         loadFrmDocFacade("\u0424\u0410\u041a\u0422\u0423\u0420\u0410", user, level, pricelist, doctype, storagedocdacade, isMakeDocByInputData, dataIn, dataOut );
+        }
+    }//GEN-LAST:event_fakMenu_danActionPerformed
     
     private void orderMenu_prihActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderMenu_prihActionPerformed
         this.loadKassss();
@@ -954,6 +1040,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private static boolean isStartFrmProduct = false;
     
     private boolean levelActivate = false;
+    public  boolean isMakeDocByInputData=false;    //   \
+    public  static  HashMap dataIn;                //    > I/O ot eaDocumentFacade
+    public  static  ArrayList dataOut;             //   /
+    private FrmDocumentFacade frmDocumentFacadeDialog;
+    
     private int currentLevel = 1;
     
     private static LinkedHashMap OrderArea = new LinkedHashMap();
@@ -1418,5 +1509,25 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     
     public  void setFaktArea(LinkedHashMap FaktArea) {
         this.FaktArea = FaktArea;
+    }
+    private void loadFrmDocFacade(String title, int user, int level, int pricelist, int doctype,int storagedocdacade,boolean makeDocByInputData, HashMap dataIn, ArrayList dataOut)
+    {
+        try
+        {
+            frmDocumentFacadeDialog = new FrmDocumentFacade(title, user, level, pricelist, doctype, storagedocdacade, isMakeDocByInputData, dataIn, dataOut,this);
+            desktopPane.add(frmDocumentFacadeDialog);
+            try
+              {
+               frmDocumentFacadeDialog.setMaximum(true);
+               
+              } 
+            catch(java.beans.PropertyVetoException pvex) {}
+            
+        }
+        catch(Exception e)
+        {
+            
+        }
+       frmDocumentFacadeDialog.setVisible(true)  ;
     }
 }

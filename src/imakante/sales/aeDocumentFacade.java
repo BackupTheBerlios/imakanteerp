@@ -1,6 +1,8 @@
 
 package imakante.sales;
 
+import imakante.com.vcomponents.iDialog;
+import imakante.com.vcomponents.iFrame;
 import imakante.com.vcomponents.iInternalFrame;
 import java.awt.AWTEvent;
 import java.awt.Event;
@@ -39,6 +41,7 @@ import java.awt.AWTException;
 import java.lang.Math;
 import javax.swing.border.*;
 import java.math.*;
+import org.netbeans.lib.awtextra.AbsoluteLayout;
 
 public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 {
@@ -143,7 +146,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jLabel2 = new javax.swing.JLabel();
         jLabelDocType = new javax.swing.JLabel();
         jTextFieldNomerDoc = new javax.swing.JTextField();
-        jTextFieldDateDoc = new javax.swing.JTextField();
+        jXDateDocument = new org.jdesktop.swingx.JXDatePicker();
         jPanelContragent = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -178,14 +181,14 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jLabel17 = new javax.swing.JLabel();
         jTextFieldDeliver = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        jTextFieldDateDeliver = new javax.swing.JTextField();
+        jXDateDeliver = new org.jdesktop.swingx.JXDatePicker();
         jPanelDocLine = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanelPrice = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jComboBoxVidPla6tane = new javax.swing.JComboBox();
         jLabel20 = new javax.swing.JLabel();
-        jTextFieldPayDate = new javax.swing.JTextField();
+        jXDatePay = new org.jdesktop.swingx.JXDatePicker();
         jPanel5 = new javax.swing.JPanel();
         jLabelDDSOsnovaText = new javax.swing.JLabel();
         jLabelAllDDSText = new javax.swing.JLabel();
@@ -225,12 +228,12 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jLabel27 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
         jPanelCreateFacturi = new javax.swing.JPanel();
         jCheckBox1 = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
         jButtonClose = new javax.swing.JButton();
+        jXDateCurs = new org.jdesktop.swingx.JXDatePicker();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -295,7 +298,9 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jTextFieldNomerDoc.setInputVerifier(new imakante.com.InputIntegerVerifier());
 
-        jTextFieldDateDoc.setInputVerifier(new imakante.com.InputDateVerifier());
+        jXDateDocument.setFont(new java.awt.Font("Times New Roman", 0, 12));
+        jXDateDocument.setMinimumSize(new java.awt.Dimension(127, 20));
+        jXDateDocument.setPreferredSize(new java.awt.Dimension(127, 20));
 
         org.jdesktop.layout.GroupLayout jPanelHeadLayout = new org.jdesktop.layout.GroupLayout(jPanelHead);
         jPanelHead.setLayout(jPanelHeadLayout);
@@ -308,27 +313,31 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     .add(jLabel1))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanelHeadLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jTextFieldDateDoc, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 120, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jPanelHeadLayout.createSequentialGroup()
                         .add(jTextFieldNomerDoc, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 120, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 8, Short.MAX_VALUE)
-                        .add(jLabelDocType))))
+                        .add(jLabelDocType))
+                    .add(jPanelHeadLayout.createSequentialGroup()
+                        .add(jXDateDocument, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(258, 258, 258))))
         );
         jPanelHeadLayout.setVerticalGroup(
             jPanelHeadLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelHeadLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanelHeadLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jTextFieldNomerDoc, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel1))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelHeadLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelHeadLayout.createSequentialGroup()
+                .add(jPanelHeadLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanelHeadLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(jPanelHeadLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel1)
+                            .add(jTextFieldNomerDoc, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED))
+                    .add(jPanelHeadLayout.createSequentialGroup()
+                        .add(jLabelDocType, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(14, 14, 14)))
+                .add(jPanelHeadLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel2)
-                    .add(jTextFieldDateDoc, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jXDateDocument, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
-            .add(jPanelHeadLayout.createSequentialGroup()
-                .add(jLabelDocType, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(36, 36, 36))
         );
         jPanel2.add(jPanelHead, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 490, 60));
 
@@ -600,19 +609,11 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jPanel4.add(jTextFieldDeliver);
 
-        jLabel18.setText("\u0414\u0430\u0442\u0430 \u043d\u0430 \u0434\u043e\u0441\u0442.:");
+        jLabel18.setText("\u0414\u0430\u0442\u0430 :");
         jPanel4.add(jLabel18);
 
-        jTextFieldDateDeliver.setMinimumSize(new java.awt.Dimension(80, 20));
-        jTextFieldDateDeliver.setPreferredSize(new java.awt.Dimension(70, 20));
-        jTextFieldDateDeliver.setInputVerifier(new imakante.com.InputDateVerifier());
-        jTextFieldDateDeliver.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextFieldDateDeliverFocusLost(evt);
-            }
-        });
-
-        jPanel4.add(jTextFieldDateDeliver);
+        jXDateDeliver.setPreferredSize(new java.awt.Dimension(100, 24));
+        jPanel4.add(jXDateDeliver);
 
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 430, 60));
 
@@ -637,9 +638,6 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jLabel20.setText("\u0414\u0430\u0442\u0430:");
 
-        jTextFieldPayDate.setPreferredSize(new java.awt.Dimension(70, 20));
-        jTextFieldPayDate.setInputVerifier(new imakante.com.InputDateVerifier());
-
         org.jdesktop.layout.GroupLayout jPanelPriceLayout = new org.jdesktop.layout.GroupLayout(jPanelPrice);
         jPanelPrice.setLayout(jPanelPriceLayout);
         jPanelPriceLayout.setHorizontalGroup(
@@ -652,19 +650,20 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel20)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextFieldPayDate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(43, 43, 43))
+                .add(jXDatePay, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 113, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanelPriceLayout.setVerticalGroup(
             jPanelPriceLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanelPriceLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanelPriceLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel19)
-                    .add(jLabel20)
-                    .add(jComboBoxVidPla6tane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jTextFieldPayDate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .add(jPanelPriceLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jXDatePay, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jPanelPriceLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(jLabel19)
+                        .add(jLabel20)
+                        .add(jComboBoxVidPla6tane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel2.add(jPanelPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 340, 60));
 
@@ -975,19 +974,6 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 770, 670));
 
-        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField1FocusLost(evt);
-            }
-        });
-        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextField1MouseClicked(evt);
-            }
-        });
-
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 680, 100, -1));
-
         jLabel24.setText("\u0414\u0430\u0442\u0430 \u043d\u0430 \u043a\u0443\u0440\u0441:");
         getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 660, -1, -1));
 
@@ -1027,30 +1013,10 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         getContentPane().add(jButtonClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 690, -1, -1));
 
+        getContentPane().add(jXDateCurs, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 680, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-// TODO add your handling code here:
-       imakante.com.dateManipulation dateManip = new imakante.com.dateManipulation();
-       String dateCurs = dateManip.convertDate(jTextField1.getText());
-        
-    //   arrayRate =  myParent.getCountriesT().getRateByDate(dateCurs);
-        
-       rate = 1;
-        
-    }//GEN-LAST:event_jTextField1FocusLost
-
-    private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
-// TODO add your handling code here:
-        if(evt.getClickCount()==2)
-        {
-            //dialog za izbora na kurs na valutata
-          
-            
-        }
-        
-    }//GEN-LAST:event_jTextField1MouseClicked
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
 // TODO add your handling code here:
@@ -1161,7 +1127,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
 // TODO add your handling code here:
-        System.exit(-1);
+    //    System.exit(-1);
     }//GEN-LAST:event_formWindowClosed
     
     private void jScrollPane2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane2MouseClicked
@@ -1169,17 +1135,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         
         
     }//GEN-LAST:event_jScrollPane2MouseClicked
-    
-    private void jTextFieldDateDeliverFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldDateDeliverFocusLost
-// Date deliver ditributor
-        if(jTextFieldDateDeliver.getText().length()>0) {
-            imakante.com.dateManipulation newdate = new imakante.com.dateManipulation();
-            String newDateDistr = newdate.convertDate(jTextFieldDateDeliver.getText());
-            myParent.setDeliverDate(newDateDistr);
-        }
         
-    }//GEN-LAST:event_jTextFieldDateDeliverFocusLost
-    
     private void jTextFieldDeliverKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDeliverKeyPressed
 // TODO add your handling code here:
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7) {
@@ -1715,7 +1671,6 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextFieldAddress;
@@ -1726,8 +1681,6 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private javax.swing.JTextField jTextFieldContrMOL;
     private javax.swing.JTextField jTextFieldContrName;
     private javax.swing.JTextField jTextFieldDanNomer;
-    private javax.swing.JTextField jTextFieldDateDeliver;
-    private javax.swing.JTextField jTextFieldDateDoc;
     private javax.swing.JTextField jTextFieldDeliver;
     private javax.swing.JTextField jTextFieldDistr;
     private javax.swing.JTextField jTextFieldNomerDoc;
@@ -1735,11 +1688,14 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private javax.swing.JTextField jTextFieldObektName;
     private javax.swing.JTextField jTextFieldObektNo;
     private javax.swing.JTextField jTextFieldObektTel;
-    private javax.swing.JTextField jTextFieldPayDate;
     private javax.swing.JTextField jTextFieldProsro4vane;
     private javax.swing.JTextField jTextFieldUserEdit;
     private javax.swing.JTextField jTextFieldUserLastEdit;
     private javax.swing.JTextField jTextFieldZadylveniq;
+    private org.jdesktop.swingx.JXDatePicker jXDateCurs;
+    private org.jdesktop.swingx.JXDatePicker jXDateDeliver;
+    private org.jdesktop.swingx.JXDatePicker jXDateDocument;
+    private org.jdesktop.swingx.JXDatePicker jXDatePay;
     // End of variables declaration//GEN-END:variables
     //--------------- My Variables
 // input parametrs
@@ -1801,12 +1757,13 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     {
         if(isNew) {
             
-            String strDate = new String();
-            strDate = String.valueOf(nowDate.getDate());
-            strDate += "/" + String.valueOf(nowDate.getMonth());
-            strDate += "/" + String.valueOf(nowDate.getYear()+1900);
-            jTextFieldDateDoc.setText(strDate);
+          //  String strDate = new String();
+          //  strDate = String.valueOf(nowDate.getDate());
+         //   strDate += "/" + String.valueOf(nowDate.getMonth());
+         //   strDate += "/" + String.valueOf(nowDate.getYear()+1900);
+        //    jTextFieldDateDoc.setText(strDate);
              
+            
             jTextFieldNomerDoc.setText(myParent.getNumberDocFacade());
             
         } else {
@@ -1816,29 +1773,42 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             selectDocumentTypeToView(DocFacadeType);
             isDocFacadeCreate = false;
             jComboBoxVidPla6tane.setSelectedIndex(myParent.getDescriptipnPay());
-            jTextFieldPayDate.setText(myParent.getPayingDate());
+            String newDate = checkAndConvertSQLFormat(myParent.getPayingDate());
+            int dateInt[] = getDateAsInt(newDate);
+            Date date = new Date(dateInt[2]-1900,dateInt[1],dateInt[0]);
+            jXDatePay.setDate(date);
+          //  jTextFieldPayDate.setText(myParent.getPayingDate());
+             newDate = checkAndConvertSQLFormat(myParent.getDateDocFacade());
+            dateInt = getDateAsInt(newDate);
+            date = new Date(dateInt[2]-1900,dateInt[1],dateInt[0]);
+            jXDateDocument.setDate(date);
+             newDate = checkAndConvertSQLFormat(myParent.getPayingDate());
+            dateInt = getDateAsInt(newDate);
+            date = new Date(dateInt[2]-1900,dateInt[1],dateInt[0]);
+            jXDatePay.setDate(date);
+            
               switch(DocFacadeType)
                  {
                      case FAKTURI :
                      {
                          
                          jTextFieldNomerDoc.setText(myParent.getNumberDocFacade());
-                         jTextFieldDateDoc.setText(myParent.getDateDocFacade());
+                     //    jTextFieldDateDoc.setText(myParent.getDateDocFacade());
                          repainContragentData(myParent.getID_Contragent());
                          repainUserEdit(myParent.getUserDocFacade(),true);
                          repainUserEdit(myParent.getUserDocFacade(),false);
-                         jTextFieldPayDate.setText(myParent.getPayingDate());
+                    //     jTextFieldPayDate.setText(myParent.getPayingDate());
                          //jComboBoxVidPla6tane.setSelectedIndex(myParent.get) //vid pla6tane
                          break;
                      }
                      case PROFORMA_FAKTURA :
                      {
                          jTextFieldNomerDoc.setText(myParent.getNumberDocFacade());
-                         jTextFieldDateDoc.setText(myParent.getDateDocFacade());
+                    //     jTextFieldDateDoc.setText(myParent.getDateDocFacade());
                          repainContragentData(myParent.getID_Contragent());
                          repainUserEdit(myParent.getUserDocFacade(),true);
                          repainUserEdit(myParent.getUserDocFacade(),false);
-                         jTextFieldPayDate.setText(myParent.getPayingDate());
+                  //       jTextFieldPayDate.setText(myParent.getPayingDate());
                          jTextFieldDeliver.setText(myParent.getDeliverDocFacade());
                          jTextFieldDistr.setText(myParent.getDistributorDocFacade());
                           //jTextFieldDateDeliver.setText(myParent.getD) // data na deliver
@@ -1848,24 +1818,24 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                      case STOKOVA_RAZPISKA :
                      {
                          jTextFieldNomerDoc.setText(myParent.getNumberDocFacade());
-                         jTextFieldDateDoc.setText(myParent.getDateDocFacade());
+                   //      jTextFieldDateDoc.setText(myParent.getDateDocFacade());
                          repainObektData(myParent.getID_Obekt());
                          repainContragentData(myParent.getID_Contragent());
                          repainDistDeliv(myParent.getDistributorDocFacade(),myParent.getDeliverDocFacade(),myParent.getDeliverDate());
                          repainUserEdit(myParent.getUserDocFacade(),true);
                          repainUserEdit(myParent.getUserDocFacade(),false);
-                         jTextFieldPayDate.setText(myParent.getPayingDate());
+                   //      jTextFieldPayDate.setText(myParent.getPayingDate());
                          break;
                      }
                    case KONSGNACIONEN_PROTOKOL :
                      {
                          jTextFieldNomerDoc.setText(myParent.getNumberDocFacade());
-                         jTextFieldDateDoc.setText(myParent.getDateDocFacade());
+                  //       jTextFieldDateDoc.setText(myParent.getDateDocFacade());
                          repainObektData(myParent.getID_Obekt());
                          repainContragentData(myParent.getID_Contragent());
                          repainUserEdit(myParent.getUserDocFacade(),true);
                           repainUserEdit(myParent.getUserDocFacade(),false);
-                         jTextFieldPayDate.setText(myParent.getPayingDate());
+                 //        jTextFieldPayDate.setText(myParent.getPayingDate());
                          break;
                      }
 
@@ -3266,8 +3236,19 @@ private int[] calculatePriceList(int startpricelist)
              imakante.com.dateManipulation dateManip = new imakante.com.dateManipulation();
              
              String dateDeliver = dateManip.convertDate("01.01.2000");
-             String payingDate = dateManip.convertDate(jTextFieldPayDate.getText());
-             String docFacadeDate = dateManip.convertDate(jTextFieldDateDoc.getText());
+             
+             String strDate;
+             strDate = String.valueOf(jXDatePay.getDate().getDate());
+             strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth());
+             strDate += "/" + String.valueOf(jXDatePay.getDate().getYear()+1900);
+             String payingDate = dateManip.convertDate(strDate);
+             
+             strDate = " ";
+             strDate = String.valueOf(jXDateDocument.getDate().getDate());
+             strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth());
+             strDate += "/" + String.valueOf(jXDateDocument.getDate().getYear()+1900);
+             String docFacadeDate = dateManip.convertDate(strDate);
+             
              int numberDoc = Integer.parseInt(myParent.getNumberDocFacade());
              myParent.getCountriesT().updateRow(id_df,contragent_out,contragent_in,obekt_out,
                      obekt_in,myParent.getID_Distributor(),myParent.getID_Deliver(),jComboBoxVidPla6tane.getSelectedIndex(),
@@ -3302,8 +3283,20 @@ private int[] calculatePriceList(int startpricelist)
              imakante.com.dateManipulation dateManip = new imakante.com.dateManipulation();
              
              String dateDeliver = dateManip.convertDate("01.01.2000");
-             String payingDate = dateManip.convertDate(jTextFieldPayDate.getText());
-             String docFacadeDate = dateManip.convertDate(jTextFieldDateDoc.getText());
+             String strDate;
+             strDate = String.valueOf(jXDatePay.getDate().getDate());
+             strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth());
+             strDate += "/" + String.valueOf(jXDatePay.getDate().getYear()+1900);
+             String payingDate = dateManip.convertDate(strDate);
+             
+             strDate = " ";
+             strDate = String.valueOf(jXDateDocument.getDate().getDate());
+             strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth());
+             strDate += "/" + String.valueOf(jXDateDocument.getDate().getYear()+1900);
+             String docFacadeDate = dateManip.convertDate(strDate);
+             
+             
+             
              int numberDoc = Integer.parseInt(myParent.getNumberDocFacade());
              myParent.getCountriesT().updateRow(id_df,contragent_out,contragent_in,obekt_out,
                      obekt_in,myParent.getID_Distributor(),myParent.getID_Deliver(),jComboBoxVidPla6tane.getSelectedIndex(),
@@ -3338,12 +3331,32 @@ private int[] calculatePriceList(int startpricelist)
              
             imakante.com.dateManipulation dateManip = new imakante.com.dateManipulation();
              
-             String dateDeliver = dateManip.convertDate(jTextFieldDateDeliver.getText());
-             String payingDate = dateManip.convertDate(jTextFieldPayDate.getText());
-             String docFacadeDate = dateManip.convertDate(jTextFieldDateDoc.getText());
-              myParent.getCountriesT().updateRow(id_df,contragent_out,contragent_in,obekt_out,
+             
+             
+             String strDate;
+            
+             strDate = String.valueOf(jXDateDeliver.getDate().getDate());
+             strDate += "/" + String.valueOf(jXDateDeliver.getDate().getMonth());
+             strDate += "/" + String.valueOf(jXDateDeliver.getDate().getYear()+1900);
+             String dateDeliver = dateManip.convertDate(strDate);
+             
+             strDate = " ";
+             strDate = String.valueOf(jXDatePay.getDate().getDate());
+             strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth());
+             strDate += "/" + String.valueOf(jXDatePay.getDate().getYear()+1900);
+             String payingDate = dateManip.convertDate(strDate);
+             
+             strDate = " ";
+             strDate = String.valueOf(jXDateDocument.getDate().getDate());
+             strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth());
+             strDate += "/" + String.valueOf(jXDateDocument.getDate().getYear()+1900);
+             String docFacadeDate = dateManip.convertDate(strDate);
+             
+             
+             int numberDoc = Integer.parseInt(myParent.getNumberDocFacade());
+             myParent.getCountriesT().updateRow(id_df,contragent_out,contragent_in,obekt_out,
                      obekt_in,myParent.getID_Distributor(),myParent.getID_Deliver(),jComboBoxVidPla6tane.getSelectedIndex(),
-                     Integer.parseInt(myParent.getNumberDocFacade()),userEdit,userLastEdit,
+                     numberDoc,userEdit,userLastEdit,
                      facturaConnection,payingOrder,zaqvkaConnection,docFacadeLevel,docFacadeStorage,docFacadeType,
                      docFacadeTotal,docFacadeAllDDS,docFacadeCondition,docFacadeDate,docFacadeCommnet,dateDeliver,payingDate,1);
              break;
@@ -3374,12 +3387,31 @@ private int[] calculatePriceList(int startpricelist)
              
             imakante.com.dateManipulation dateManip = new imakante.com.dateManipulation();
              
-             String dateDeliver = dateManip.convertDate(jTextFieldDateDeliver.getText());
-             String payingDate = dateManip.convertDate(jTextFieldPayDate.getText());
-             String docFacadeDate = dateManip.convertDate(jTextFieldDateDoc.getText());
-              myParent.getCountriesT().updateRow(id_df,contragent_out,contragent_in,obekt_out,
+             
+             String strDate;
+            
+             strDate = String.valueOf(jXDateDeliver.getDate().getDate());
+             strDate += "/" + String.valueOf(jXDateDeliver.getDate().getMonth());
+             strDate += "/" + String.valueOf(jXDateDeliver.getDate().getYear()+1900);
+             String dateDeliver = dateManip.convertDate(strDate);
+             
+             strDate = " ";
+             strDate = String.valueOf(jXDatePay.getDate().getDate());
+             strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth());
+             strDate += "/" + String.valueOf(jXDatePay.getDate().getYear()+1900);
+             String payingDate = dateManip.convertDate(strDate);
+             
+             strDate = " ";
+             strDate = String.valueOf(jXDateDocument.getDate().getDate());
+             strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth());
+             strDate += "/" + String.valueOf(jXDateDocument.getDate().getYear()+1900);
+             String docFacadeDate = dateManip.convertDate(strDate);
+             
+             
+             int numberDoc = Integer.parseInt(myParent.getNumberDocFacade());
+             myParent.getCountriesT().updateRow(id_df,contragent_out,contragent_in,obekt_out,
                      obekt_in,myParent.getID_Distributor(),myParent.getID_Deliver(),jComboBoxVidPla6tane.getSelectedIndex(),
-                     Integer.parseInt(myParent.getNumberDocFacade()),userEdit,userLastEdit,
+                     numberDoc,userEdit,userLastEdit,
                      facturaConnection,payingOrder,zaqvkaConnection,docFacadeLevel,docFacadeStorage,docFacadeType,
                      docFacadeTotal,docFacadeAllDDS,docFacadeCondition,docFacadeDate,docFacadeCommnet,dateDeliver,payingDate,1);
              break;
@@ -3398,10 +3430,18 @@ private int[] calculatePriceList(int startpricelist)
               break;
           }
      }
-   
+   if(myParent.getDocFacadeType()==NAREZDANE_ZA_PREHVYRQNE)
+   {
+         
+   }
+   else 
+   if(myParent.getDocFacadeType()==PRIEMATELNA_RAZPISKA)
+   {
+        emptyReturnet(isNew);
+   }
+   else
    if(myParent.getDocFacadeType()!=PROFORMA_FAKTURA)
-    
-       emptyPreservation(isNew);
+              emptyPreservation(isNew);
    
      
    
@@ -3427,7 +3467,7 @@ private void emptyPreservation(boolean isnew)
    {
     if(rows.size()>0)
     {
-       int newNumberProduct;
+        int newNumberProduct;
         int oldNumberProduct;
         boolean intoDB = false;
      for(int i=0; i < maxRow; i++)
@@ -3477,6 +3517,76 @@ private void emptyPreservation(boolean isnew)
     }
    }
 }
+private void emptyReturnet(boolean isnew)
+{
+   int id_dl; 
+   int maxRow = jTable1.getRowCount();
+   int nal;
+   if(isnew)
+   {
+   for(int i=0; i < maxRow; i++)
+   {
+       id_dl =(Integer) jTable1.getValueAt(i,12);
+       nal = (Integer)jTable1.getValueAt(i,4);
+       myParent.getCountriesT().emptyReturnProducts(id_dl,nal);
+   }
+   }
+   else
+   {
+    if(rows.size()>0)
+    {
+        int newNumberProduct;
+        int oldNumberProduct;
+        boolean intoDB = false;
+     for(int i=0; i < maxRow; i++)
+       {
+         id_dl =(Integer) jTable1.getValueAt(i,12);
+         newNumberProduct = (Integer)jTable1.getValueAt(i,4); 
+          intoDB = false;
+          for(int j=0; j < rows.size();j++)  
+          {
+            
+             docLineArray d = (docLineArray) rows.get(j);
+             oldNumberProduct = d.getNumberOfProduct();
+      
+             if(id_dl == d.getID_DocLine())
+             {
+                 if(newNumberProduct > oldNumberProduct)
+                   {
+                     myParent.getCountriesT().emptyReturnProducts(id_dl,(newNumberProduct-oldNumberProduct));
+                 
+                   }
+                 else
+                 {
+                    
+                    myParent.getCountriesT().emptyPreservation(id_dl,(oldNumberProduct-newNumberProduct));
+                 }  
+                intoDB = true;
+             }
+          }
+          if(!intoDB)
+          {
+             myParent.getCountriesT().emptyPreservation(id_dl,newNumberProduct); 
+            
+          }
+            
+            
+          
+   
+       }  
+    }
+    else
+    {
+       for(int i=0; i < maxRow; i++)
+        {
+           id_dl =(Integer) jTable1.getValueAt(i,12);
+           nal = (Integer)jTable1.getValueAt(i,4);
+           myParent.getCountriesT().emptyReturnProducts(id_dl,nal);
+       } 
+    }
+   }
+}
+        
  private void selectDocumentTypeToView(int typeDoc)
  {
       switch(typeDoc)
@@ -3758,7 +3868,11 @@ private void repainDistDeliv(String dist,String devil,String date)
 {
     jTextFieldDeliver.setText(devil);
     jTextFieldDistr.setText(dist);
-    jTextFieldDateDeliver.setText(date);
+    String newDate = checkAndConvertSQLFormat(date);
+    int dateInt[] = getDateAsInt(newDate);
+    Date date1 = new Date(dateInt[2]-1900,dateInt[1],dateInt[0]);
+    jXDateDeliver.setDate(date1);
+    
 }
 private double getRate(String valuta)
 {
@@ -3768,6 +3882,48 @@ private double getRate(String valuta)
     
     return rate;
 }
+ public  int[] getDateAsInt(String in) 
+ {
+     int date[] = new int[3];
+     int lenght = in.length();
+     char ch[] = in.toCharArray();
+     String day = String.copyValueOf(ch,0,2); // 
+     int dayInt = Integer.parseInt(day);
+     String month = String.copyValueOf(ch,3,2);
+     int monthInt = Integer.parseInt(month);
+     String year = String.copyValueOf(ch,6,4);
+     int yearInt = Integer.parseInt(year);
+     date[0]= dayInt;
+     date[1]= monthInt;
+     date[2]= yearInt;
+     return date;
+ }
+ private  String checkAndConvertSQLFormat(String in)
+ {
+     String newDate = in;
+     char ch[] = in.toCharArray();
+     int length = in.length();
+     int bufLength=0;
+     for(int i=0; i < length;i++)
+     {
+         if(ch[i]==45 || ch[i]==46 || ch[i]==47 )
+         {
+             if(i==4) // SQL format
+             {
+                 newDate = in.substring(length-2,length);
+                 newDate +="/";
+                 newDate +=in.substring(length-5,length-3); 
+                 newDate +="/";
+                 newDate +=in.substring(0,4); 
+                 break;
+             }
+         }
+     }
+     
+     
+     
+     return newDate;
+ }
 }// end class
 
 

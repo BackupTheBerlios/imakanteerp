@@ -26,11 +26,17 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x414;&#x430;&#x43d;&#x44a;&#x447;&#x43d;&#x438;"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fakMenu_danActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="fakMenu_opr">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x41e;&#x43f;&#x440;&#x43e;&#x441;&#x442;&#x435;&#x43d;&#x438;"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fakMenu_oprActionPerformed"/>
+                  </Events>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -48,6 +54,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x41f;&#x440;&#x435;&#x445;&#x432;&#x44a;&#x440;&#x43b;&#x44f;&#x43d;&#x435;"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="razpMenu_prehvActionPerformed"/>
+                  </Events>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -104,6 +113,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x41e;&#x444;&#x435;&#x440;&#x442;&#x438;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="docMenu_offerActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
