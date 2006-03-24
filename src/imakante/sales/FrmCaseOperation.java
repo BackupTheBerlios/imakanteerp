@@ -14,6 +14,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         prepareConn();     // zapazva connection
         constructObject(); // inicializira class otgovarq6t za vryzkata s DB
         initTable();
+        isEmpty();
         initComponents();
     }
     
@@ -539,6 +540,18 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         try {
             table.setEditingRow(0);
         } catch(Exception ex) {  }
+    }
+    
+    private void isEmpty() {
+        if (getMaxRow() < 1) {
+            jButtonEdit.setEnabled(false);
+            jButtonPrint.setEnabled(false);
+            jButtonPrnReport.setEnabled(false);
+            jButtonDel.setEnabled(false);
+            jButtonRefresh.setEnabled(false);
+            jButtonDeleteAll.setEnabled(false);
+            jButtonSearch.setEnabled(false);
+        }
     }
     
     public void windowOpened(java.awt.event.WindowEvent e) {
