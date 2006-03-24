@@ -178,7 +178,7 @@ public class casaOp  extends dbObject {
         setComprator(6);
         String return_str=new String("");
         int oldId =getId();
-        ResultSet oldRs = rs;
+        ResultSet oldRs = getRs();
         String strIndexConnOfId = new String("");
         ArrayList in = new ArrayList();
         Iterator it = null;
@@ -192,15 +192,15 @@ public class casaOp  extends dbObject {
             setRs(getCstm().executeQuery());
             
             
-            while(rs.next()) {
-                Gropes.put(new Integer(rs.getInt("id_n_casa")),new String(rs.getString("code_n_casa")));
-                in.add(new Integer(rs.getInt("id_n_casa")));
+            while(getRs().next()) {
+                Gropes.put(new Integer(getRs().getInt("id_n_casa")),new String(getRs().getString("code_n_casa")));
+                in.add(new Integer(getRs().getInt("id_n_casa")));
                 i++;
             }
         } catch(Exception e) {
             e.printStackTrace();
         }
-        rs = oldRs;
+        setRs(oldRs);
         setId(oldId);
         indexConnOfId = new int[i];
         it = in.iterator();
@@ -230,7 +230,7 @@ public class casaOp  extends dbObject {
         setComprator(11);
         String return_str=new String("");
         int oldId = getId();
-        ResultSet oldRs = rs;
+        ResultSet oldRs = getRs();
         String strIndexConnOfId = new String("");
         ArrayList in = new ArrayList();
         Iterator it = null;
@@ -244,15 +244,15 @@ public class casaOp  extends dbObject {
             setRs(getCstm().executeQuery());
             
             
-            while(rs.next()) {
-                Gropes.put(new Integer(rs.getInt("id_n_money")),new String(rs.getString("code_lat_n_money")));
-                in.add(new Integer(rs.getInt("id_n_money")));
+            while(getRs().next()) {
+                Gropes.put(new Integer(getRs().getInt("id_n_money")),new String(getRs().getString("cod_lat_n_money")));
+                in.add(new Integer(getRs().getInt("id_n_money")));
                 i++;
             }
         } catch(Exception e) {
             e.printStackTrace();
         }
-        rs = oldRs;
+        setRs(oldRs);
         setId(oldId);
         indexMoney = new int[i];
         it = in.iterator();
@@ -284,7 +284,7 @@ public class casaOp  extends dbObject {
         setComprator(12);
         String return_str=new String("");
         int oldId = getId();
-        ResultSet oldRs = rs;
+        ResultSet oldRs = getRs();
         String strIndexConnOfId = new String("");
         ArrayList in = new ArrayList();
         Iterator it = null;
@@ -298,15 +298,15 @@ public class casaOp  extends dbObject {
             setRs(getCstm().executeQuery());
             
             
-            while(rs.next()) {
-                Gropes.put(new Integer(rs.getInt("id_n_incoms")),new String(rs.getString("name_n_incoms")));
-                in.add(new Integer(rs.getInt("id_n_incoms")));
+            while(getRs().next()) {
+                Gropes.put(new Integer(getRs().getInt("id_n_incoms")),new String(getRs().getString("name_n_incoms")));
+                in.add(new Integer(getRs().getInt("id_n_incoms")));
                 i++;
             }
         } catch(Exception e) {
             e.printStackTrace();
         }
-        rs = oldRs;
+        setRs(oldRs);
         setId(oldId);
         indexDoc = new int[i];
         it = in.iterator();
