@@ -1008,4 +1008,12 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     public void setIn_id_sdtn(int in_id_sdtn) {
         this.in_id_sdtn = in_id_sdtn;
     }
+
+    public int getIn_id_n_money() {
+        return in_id_n_money;
+    }
+
+    public void setIn_id_n_money(int in_id_n_money) {
+        this.in_id_n_money = in_id_n_money;
+    }
 }
