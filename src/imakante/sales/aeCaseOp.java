@@ -7,11 +7,14 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     
     public aeCaseOp(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
         super(frame, modal);
+        System.out.println("tuk sym!");
         this.myParent = (imakante.sales.FrmCaseOperation) frame;
         initComponents();
         getNavigationState();
         jButtonUndo.setEnabled(false);
         initComboCR();          // CR = CashRegister - kasa
+        initComboM();
+        initComboD();
         this.setResizable(false);
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         repaintComp();
@@ -583,7 +586,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
 //            myParent.getInternalObject().updateRow(myParent.getId(), myParent.getIDG(),myParent.getCod(),
 //                    myParent.getNames(), myParent.getComment());
         myParent.refreshTable();
-        myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
+        myParent.getTable().changeSelection(myParent.getRow(), 2, false, false);
         jButtonUndo.setEnabled(true);
     }
     
@@ -625,20 +628,26 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     private void repaintComp() {
         jTextField1.setText("" + myParent.getCode());
         jTextArea1.setText(myParent.getComment());
+        jComboCR.setSelectedIndex(getNewCashRegIndex(myParent.getIn_in_sl_mop()));
+        jComboM.setSelectedIndex(getNewCurrencyIndex(myParent.getIn_id_n_money()));
+        jComboD.setSelectedIndex(getNewDocumentIndex(myParent.getIn_id_order_doc()));
+        
     }
     
     private void initComboCR() {
         namesCR = myParent.getInternalObject().getCasa();
-        for(int i = 0; i < namesCR.length; i++) {
-            jComboCR.addItem(new String(namesCR[i]));
-            
+        if (namesCR != null) {
+            for(int i = 0; i < namesCR.length; i++) {
+                jComboCR.addItem(new String(namesCR[i]));
+            }
+            if(selectedCashReg != 0) {
+                selectedCashReg = getNewCashRegIndex(selectedCashReg);
+                jComboCR.setSelectedIndex(selectedCashReg);
+            }
         }
-        
-        if(selectedCashReg != 0) {
-            
-            selectedCashReg = getNewCashRegIndex(selectedCashReg);
-            
-            jComboCR.setSelectedIndex(selectedCashReg);
+        if (namesCR == null) {
+            jComboCR.addItem("ERROR!");
+            this.jButtonSave.setEnabled(false);
         }
         
     }
@@ -656,18 +665,19 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     
     private void initComboM() {
         namesM = myParent.getInternalObject().getMoney();
-        for(int i = 0; i < namesM.length; i++) {
-            jComboM.addItem(new String(namesM[i]));
-            
+        if (namesM != null) {
+            for(int i = 0; i < namesM.length; i++) {
+                jComboM.addItem(new String(namesM[i]));
+            }
+            if(selectedCurrency != 0) {
+                selectedCurrency = getNewCurrencyIndex(selectedCurrency);
+                jComboM.setSelectedIndex(selectedCurrency);
+            }
         }
-        
-        if(selectedCurrency != 0) {
-            
-            selectedCurrency = getNewCurrencyIndex(selectedCurrency);
-            
-            jComboM.setSelectedIndex(selectedCurrency);
+        if(namesM == null){
+            jComboM.addItem("ERROR!");
+            this.jButtonSave.setEnabled(false);
         }
-        
     }
     
     private int getNewCurrencyIndex(int oldindex) {
@@ -683,18 +693,19 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     
     private void initComboD() {
         namesD = myParent.getInternalObject().getDoc();
-        for(int i = 0; i < namesD.length; i++) {
-            jComboD.addItem(new String(namesD[i]));
-            
+        if (namesD != null) {
+            for(int i = 0; i < namesD.length; i++) {
+                jComboD.addItem(new String(namesD[i]));
+            }
+            if(selectedCurrency != 0) {
+                selectedDocument = getNewDocumentIndex(selectedDocument);
+                jComboD.setSelectedIndex(selectedDocument);
+            }
         }
-        
-        if(selectedCurrency != 0) {
-            
-            selectedDocument = getNewDocumentIndex(selectedDocument);
-            
-            jComboD.setSelectedIndex(selectedDocument);
+        if (namesD == null) {
+            jComboD.addItem("ERROR!");
+            this.jButtonSave.setEnabled(false);
         }
-        
     }
     
     private int getNewDocumentIndex(int oldindex) {
