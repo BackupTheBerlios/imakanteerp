@@ -10,6 +10,7 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
         constructObject();
         initTable();
         initComponents();
+        isEmpty();
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -37,7 +38,7 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("\u0422\u0438\u043f\u043e\u0432\u0435 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438");
+        setTitle("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0430: \u0422\u0438\u043f\u043e\u0432\u0435 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
         jpTop.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         org.jdesktop.layout.GroupLayout jpTopLayout = new org.jdesktop.layout.GroupLayout(jpTop);
@@ -64,6 +65,7 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
         jpControls.add(jlCode);
 
         jtfCode.setPreferredSize(new java.awt.Dimension(80, 20));
+        jtfCode.setInputVerifier(new imakante.com.InputIntegerVerifier());
         jtfCode.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jtfCodeFocusGained(evt);
@@ -313,6 +315,8 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
         jtfCode.setText("");
         jtfDocName.setText("");
         jspData.repaint();
+        jtfCode.setText("");
+        jtfDocName.setText("");
     }
     
     private void deleteRecord() {
@@ -396,6 +400,18 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
         try {
             table.setEditingRow(0);
         } catch(Exception ex) {  }
+    }
+    
+    private void isEmpty() {
+        if (getTable().getRowCount() < 1) {
+            jbEdit.setEnabled(false);
+            jbPrint.setEnabled(false);
+            jbPrintRep.setEnabled(false);
+            jbDel.setEnabled(false);
+            jbAll.setEnabled(false);
+            jbDropData.setEnabled(false);
+            jbSearch.setEnabled(false);
+        }
     }
     
     public void mTableBegining() {

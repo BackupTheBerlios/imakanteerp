@@ -14,8 +14,8 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         prepareConn();     // zapazva connection
         constructObject(); // inicializira class otgovarq6t za vryzkata s DB
         initTable();
-//        isEmpty();
         initComponents();
+        isEmpty();
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -535,36 +535,25 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
             HideColumns(getColumnIndex("id_n_money"));
             HideColumns(getColumnIndex("user_id"));
             HideColumns(getColumnIndex("id_sdtn"));
-            int rc = table.getRowCount();
-//            if (rc < 1) {
-//            jButtonEdit.setEnabled(false);
-//            jButtonPrint.setEnabled(false);
-//            }
         } catch(Exception e) { e.printStackTrace(); }
         table.requestFocus();
         try {
             table.setEditingRow(0);
         } catch(Exception ex) {  }
     }
-//    
-//    private void isEmpty() {
-//        if (getTable() == null) {
-//            System.out.println("table <- tuka nema nikoi!!!");
-//        } else {
-//        int rc = getTable().getRowCount();
-//        System.out.println("rc = " + rc);
-//        if (rc < 1) {
-//            jButtonEdit.setEnabled(false);
-//            jButtonPrint.setEnabled(false);
-//            jButtonPrnReport.setEnabled(false);
-//            jButtonDel.setEnabled(false);
-//            jButtonRefresh.setEnabled(false);
-//            jButtonDeleteAll.setEnabled(false);
-//            jButtonSearch.setEnabled(false);
-//        }
-//        }
-//    }
-//    
+    
+    private void isEmpty() {
+        if (getTable().getRowCount() < 1) {
+            jButtonEdit.setEnabled(false);
+            jButtonPrint.setEnabled(false);
+            jButtonPrnReport.setEnabled(false);
+            jButtonDel.setEnabled(false);
+            jButtonRefresh.setEnabled(false);
+            jButtonDeleteAll.setEnabled(false);
+            jButtonSearch.setEnabled(false);
+        }
+    }
+    
     public void windowOpened(java.awt.event.WindowEvent e) {
     }
     public void windowClosing(java.awt.event.WindowEvent e) {

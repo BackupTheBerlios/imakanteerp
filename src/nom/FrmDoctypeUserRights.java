@@ -10,6 +10,7 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
         constructObject();
         initTable();
         initComponents();
+        isEmpty();
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -53,6 +54,12 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
         jPanel4.add(jLabel2);
 
         jTextCod.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextCod.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextCodKeyPressed(evt);
+            }
+        });
+
         jPanel4.add(jTextCod);
 
         jButtonSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Search.png")));
@@ -153,6 +160,10 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextCodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextCodKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); }
+    }//GEN-LAST:event_jTextCodKeyPressed
     
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
         printTable();
@@ -250,6 +261,18 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
         try {
             table.setEditingRow(0);
         } catch(Exception ex) {  }
+    }
+    
+    private void isEmpty() {
+        if (getTable().getRowCount() < 1) {
+            jButtonEdit.setEnabled(false);
+            jButtonPrint.setEnabled(false);
+            jButtonPrnReport.setEnabled(false);
+            jButtonDel.setEnabled(false);
+            jButtonRefresh.setEnabled(false);
+            jButtonDeleteAll.setEnabled(false);
+            jButtonSearch.setEnabled(false);
+        }
     }
     
     public void windowOpened(java.awt.event.WindowEvent e) {
@@ -457,6 +480,7 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
         HideColumns(getColumnIndex("id_sdtn"));
         jScrollPane1.getViewport().add(table);
         jScrollPane1.repaint();
+        jTextCod.setText("");
     }
     
     private void newRecord() {
