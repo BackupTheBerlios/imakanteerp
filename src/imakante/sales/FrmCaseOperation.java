@@ -924,7 +924,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     private void setAllVariables(){
         
         setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
-        setCode((Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434\u043e\u0432\u0435")));
+        setCode((Integer) table.getValueAt(getRow(), getColumnIndex("\u043d\u043e\u043c\u0435\u0440")));
         setIn_in_sl_mop((Integer) table.getValueAt(getRow(), getColumnIndex("id_casa")));
         setIn_outsl_mop((Integer) table.getValueAt(getRow(), getColumnIndex("id_contragent")));
         setIn_id_order_spec((Integer) table.getValueAt(getRow(), getColumnIndex("id_df")));

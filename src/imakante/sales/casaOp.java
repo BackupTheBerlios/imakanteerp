@@ -245,7 +245,7 @@ public class casaOp  extends dbObject {
             
             
             while(rs.next()) {
-                Gropes.put(new Integer(rs.getInt("id_n_money")),new String(rs.getString("code_n_money")));
+                Gropes.put(new Integer(rs.getInt("id_n_money")),new String(rs.getString("code_lat_n_money")));
                 in.add(new Integer(rs.getInt("id_n_money")));
                 i++;
             }

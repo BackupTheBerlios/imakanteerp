@@ -48,9 +48,9 @@ public class moneyDB  extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    public void insertRow(String in_code_bg, String in_cod_lat, String in_name, String in_comment) {
+    public void insertRow(int in_code_bg, String in_cod_lat, String in_name, String in_comment) {
         setComprator(1);
-        this.setCodeBG(in_code_bg);
+        this.setCode(in_code_bg);
         this.setCodeLat(in_cod_lat);
         this.setName(in_name);
         this.setComment(in_comment);
@@ -60,10 +60,10 @@ public class moneyDB  extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    public void updateRow(int in_id, String in_code_bg, String in_cod_lat, String in_name, String in_comment) {
+    public void updateRow(int in_id, int in_code_bg, String in_cod_lat, String in_name, String in_comment) {
         setComprator(2);
         this.setId(in_id);
-        this.setCodeBG(in_code_bg);
+        this.setCode(in_code_bg);
         this.setCodeLat(in_cod_lat);
         this.setName(in_name);
         this.setComment(in_comment);
