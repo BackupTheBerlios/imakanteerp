@@ -929,7 +929,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         setIn_outsl_mop((Integer) table.getValueAt(getRow(), getColumnIndex("id_contragent")));
         setIn_id_order_spec((Integer) table.getValueAt(getRow(), getColumnIndex("id_df")));
         setIn_id_order_doc((Integer) table.getValueAt(getRow(), getColumnIndex("id_order_doc")));
-        setIn_DATE((String)table.getValueAt(getRow(), getColumnIndex("\u0414\u0430\u0442\u0430 \u0438\u0437\u0434\u0430\u0432\u0430\u043d\u0435)).toString());
+        setIn_DATE((String)table.getValueAt(getRow(), getColumnIndex("\u0414\u0430\u0442\u0430 \u0438\u0437\u0434\u0430\u0432\u0430\u043d\u0435")).toString());
         setIn_exchange_rate((Double)table.getValueAt(getRow(), getColumnIndex("\u043a\u0443\u0440\u0441")));
         setIn_sum_sl_mop((Double)table.getValueAt(getRow(), getColumnIndex("sum_sl_mop")));
         setIn_sum_os_val_sl_mop((Double)table.getValueAt(getRow(), getColumnIndex("sum_os_val")));
