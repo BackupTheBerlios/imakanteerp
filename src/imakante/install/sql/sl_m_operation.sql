@@ -33,9 +33,9 @@ CREATE TABLE `sl_m_operation` (
   `id_order_doc` int(11) default NULL COMMENT 'vida na prihoden/razhoden',
   `date_is` date default NULL COMMENT 'data na izdavane',
   `id_n_money` int(11) default NULL COMMENT 'id valuta na izdavane',
-  `exchange_rate` double default '1' COMMENT 'stoinost na exchange',
-  `sum_sl_mop` double default NULL COMMENT 'suma po dokumenta',
-  `sum_os_val_sl_mop` double default NULL COMMENT 'suma v osnovna valuta',
+  `exchange_rate` double(7,4) default '1.0000' COMMENT 'stoinost na exchange',
+  `sum_sl_mop` double(7,4) default NULL COMMENT 'suma po dokumenta',
+  `sum_os_val_sl_mop` double(7,4) default NULL COMMENT 'suma v osnovna valuta',
   `user_id` int(11) default NULL COMMENT 'id potrebitel izdal dokumenta',
   `id_sdtn` int(11) default NULL COMMENT 'id na kochana s dokumenti',
   `comment_sl_mop` varchar(250) default NULL,
@@ -47,6 +47,13 @@ CREATE TABLE `sl_m_operation` (
 # Dumping data for table sl_m_operation
 #
 
+INSERT INTO `sl_m_operation` VALUES (1,1,1,1,1,3,1,1,1,'2006-02-01',1,1,100,100,3,1,NULL,1);
+INSERT INTO `sl_m_operation` VALUES (2,2,0,1,2,3,0,1,0,NULL,1,1,0,0,3,1,NULL,1);
+INSERT INTO `sl_m_operation` VALUES (3,3,0,1,14,3,0,1,0,NULL,1,1,0,0,3,1,NULL,1);
+INSERT INTO `sl_m_operation` VALUES (4,4,0,1,15,3,0,1,0,NULL,1,1,0,0,3,1,NULL,1);
+INSERT INTO `sl_m_operation` VALUES (5,5,0,1,16,3,0,1,0,NULL,1,1,0,0,3,1,NULL,1);
+INSERT INTO `sl_m_operation` VALUES (6,6,0,1,133,3,0,1,0,NULL,1,1,0,0,3,1,NULL,1);
+INSERT INTO `sl_m_operation` VALUES (7,7,0,1,155,3,0,1,0,NULL,1,1,0,0,3,1,NULL,1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
