@@ -3,6 +3,7 @@ package imakante.sales;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
@@ -16,6 +17,11 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         initTable();
         initComponents();
         isEmpty();
+        currDate = new java.util.Date();
+        in_DATE = formatter.getDateInstance().format(currDate);
+        System.out.println(in_DATE); 
+                
+        this.internalObject.setIn_DATE(in_DATE);
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -396,12 +402,14 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     //--------------- My Variables
     private int level = 1;
     private int sdtn = 1;
+    private java.util.Date currDate;
+    private Calendar m_calendar = Calendar.getInstance();
     
     private int id = 0; // imena ot tablicata
     private int code = 0;
     private int contragent_id = 0;
     private String contragent_name = "";
-    private int in_in_sl_mop = 0;
+    private int in_in_sl_mop = 1;
     private int in_outsl_mop = 0;
     private int in_id_order_spec = -1 ;
     private int in_id_order_spec_type = 1;
@@ -409,8 +417,8 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     private String in_DATE;
     private int in_id_n_money = 1;
     private double in_exchange_rate = 1;
-    private double in_sum_sl_mop;
-    private double in_sum_os_val_sl_mop;
+    private double in_sum_sl_mop = 0;
+    private double in_sum_os_val_sl_mop = 0;
     private int in_user_id = imakante.com.NewMain.getUserId();
     private int in_id_sdtn = 1;
     private String  comment = "";
@@ -468,7 +476,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
             + "`n_casa`.`code_n_casa`, `n_casa`.`name_n_casa`"
             + "FROM `n_casa` WHERE `n_casa`.`code_n_casa` LIKE  '%";
     
-    SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     
     //---------------END My Variables
     

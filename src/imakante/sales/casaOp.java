@@ -27,16 +27,16 @@ public class casaOp  extends dbObject {
     
 //              IN in_id INT(11),
 //              IN in_number_sl_mop INT(11), code go zamenia v obekta
-    private     int in_in_sl_mop=0;
+    private     int in_in_sl_mop=1;
     private     int in_outsl_mop=0;
     private     int in_id_order_spec = 0 ;
     private     int in_id_order_spec_type= 1;
-    private     int in_id_order_doc = 0;
+    private     int in_id_order_doc = 1;
     private     String in_DATE;
     private     int in_id_n_money=1;
     private     double in_exchange_rate = 1;
-    private     double in_sum_sl_mop;
-    private     double in_sum_os_val_sl_mop;
+    private     double in_sum_sl_mop = 0;
+    private     double in_sum_os_val_sl_mop = 0;
     private     int in_user_id  = imakante.com.NewMain.getUserId();
     private     int in_id_sdtn  = 1;
 //              IN in_comment_sl_mop VARCHAR(250)) comment
@@ -46,8 +46,8 @@ public class casaOp  extends dbObject {
     private int CasaEnd = 0;
     private int ContragentBegin = 0;
     private int ContragentEnd = 0;
-    private String DateBegin = "0000/00/00";
-    private String DateEnd = "0000/00/00";
+    private String DateBegin = "0000-00-00";
+    private String DateEnd = "0000-00-00";
     private Connection conn;
     
     
@@ -80,7 +80,7 @@ public class casaOp  extends dbObject {
             getCstm().setInt("in_outsl_mop", in_outsl_mop);
             getCstm().setInt("in_id_order_spec", in_id_order_spec);
             getCstm().setInt("in_id_order_doc", in_id_order_doc);
-            getCstm().setString("in_date_is", in_DATE);
+            getCstm().setString("in_date_is", getIn_DATE());
             getCstm().setInt("in_id_n_money", in_id_n_money);
             getCstm().setDouble("in_exchange_rate", in_exchange_rate);
             getCstm().setDouble("in_sum_sl_mop", in_sum_sl_mop);
@@ -136,7 +136,7 @@ public class casaOp  extends dbObject {
         this.in_id_order_spec = in_id_order_spec;
         this.in_id_order_spec_type = in_id_order_spec_type;
         this.in_id_order_doc = in_id_order_doc;
-        this.in_DATE = in_DATE;
+        this.setIn_DATE(in_DATE);
         this.in_id_n_money = in_id_n_money;
         this.in_exchange_rate = in_exchange_rate;
         this.in_sum_sl_mop = in_sum_sl_mop;
@@ -345,6 +345,14 @@ public class casaOp  extends dbObject {
 
     public void setIn_id_sdtn(int in_id_sdtn) {
         this.in_id_sdtn = in_id_sdtn;
+    }
+
+    public String getIn_DATE() {
+        return in_DATE;
+    }
+
+    public void setIn_DATE(String in_DATE) {
+        this.in_DATE = in_DATE;
     }
     
     
