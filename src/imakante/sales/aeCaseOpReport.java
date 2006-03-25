@@ -109,7 +109,7 @@ public class aeCaseOpReport extends imakante.com.vcomponents.iDialog {
             jp = net.sf.jasperreports.engine.JasperFillManager.fillReport(
                     new java.io.FileInputStream(new java.io.File(getClass().getResource(jasperFile).toURI())), hm, conn);
             jrv = new net.sf.jasperreports.view.JRViewer(jp);
-            this.jScrollPane1.add(jrv);
+            
         } catch (java.io.FileNotFoundException fnfex) { fnfex.printStackTrace();
         } catch (java.net.URISyntaxException urisex) { urisex.printStackTrace();
         } catch (net.sf.jasperreports.engine.JRException jrex) { jrex.printStackTrace(); }

@@ -206,8 +206,12 @@ public class aeTypeObject extends imakante.com.vcomponents.iDialog {
         oldCod = myParent.getCod();
         oldCodLat = myParent.getCodLat();
         oldName = myParent.getNames();
-        
-        myParent.setCod(jTextField1.getText());
+        try {
+            
+            myParent.setCod(Integer.parseInt(jTextField1.getText()));
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+        }
         myParent.setNames(jTextField3.getText());
         myParent.setComment(jTextArea1.getText());
         myParent.getInternalObject().updateRow(myParent.getId(), myParent.getCod(),
@@ -320,7 +324,7 @@ public class aeTypeObject extends imakante.com.vcomponents.iDialog {
     // End of variables declaration//GEN-END:variables
     //--------------- My Variables
     private nom.FrmMoney myParent;
-    private String oldCod = "";
+    private int oldCod = 0;
     private String oldCodLat = "";
     private String oldName = "";
     
@@ -345,7 +349,7 @@ public class aeTypeObject extends imakante.com.vcomponents.iDialog {
     }
     private void repaintComp() //OK
     {
-        jTextField1.setText(myParent.getCod());
+        jTextField1.setText("" + myParent.getCod());
         jTextField3.setText(myParent.getNames());
         jTextArea1.setText(myParent.getComment());
         jTextField1.repaint();

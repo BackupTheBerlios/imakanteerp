@@ -221,8 +221,12 @@ public class aeMoney extends imakante.com.vcomponents.iDialog {
         oldCod = myParent.getCod();
         oldCodLat = myParent.getCodLat();
         oldName = myParent.getNames();
-        
-        myParent.setCod(jTextField1.getText());
+        try {
+            
+            myParent.setCod(Integer.parseInt(jTextField1.getText()));
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+        }
         myParent.setCodLat(jTextField2.getText());
         myParent.setNames(jTextField3.getText());
         myParent.setComment(jTextArea1.getText());
@@ -338,7 +342,7 @@ public class aeMoney extends imakante.com.vcomponents.iDialog {
     // End of variables declaration//GEN-END:variables
     //--------------- My Variables
     private nom.FrmMoney myParent;
-    private String oldCod = "";
+    private int oldCod = 0;
     private String oldCodLat = "";
     private String oldName = "";
     
@@ -363,7 +367,7 @@ public class aeMoney extends imakante.com.vcomponents.iDialog {
     }
     private void repaintComp() //OK
     {
-        jTextField1.setText(myParent.getCod());
+        jTextField1.setText(""+myParent.getCod());
         jTextField2.setText(myParent.getCodLat());
         jTextField3.setText(myParent.getNames());
         jTextArea1.setText(myParent.getComment());
