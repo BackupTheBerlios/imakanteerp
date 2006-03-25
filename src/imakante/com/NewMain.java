@@ -355,7 +355,7 @@ public class NewMain extends javax.swing.JFrame {
     private static imakante.com.paramFirm ParamFirm;
     
     public static void setParamFirm(){
-        ParamFirm = new imakante.com.paramFirm();
+        setParamFirm(new imakante.com.paramFirm());
     }
     
     public static void setActiveModules(boolean[] aActiveModules) {
@@ -498,6 +498,14 @@ public class NewMain extends javax.swing.JFrame {
     
     public static void setUserName(String aUserName) {
         userName = aUserName;
+    }
+
+    public static imakante.com.paramFirm getParamFirm() {
+        return ParamFirm;
+    }
+
+    public static void setParamFirm(imakante.com.paramFirm aParamFirm) {
+        ParamFirm = aParamFirm;
     }
     
 }// end class

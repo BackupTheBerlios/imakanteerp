@@ -1,7 +1,7 @@
 
 package imakante.sales;
 
-import imakante.com.InputIntegerVerifier;
+import java.util.HashMap;
 
 public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     
@@ -620,16 +620,16 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     // PRINT
     private void printHash(){
     hm = new HashMap();
-    hm.put("namefirm",imakante.com.NewMain.);
-    hm.put("nomer",);
-    hm.put("data_iz",);
-    hm.put("sumalv",);
-    hm.put("suma",);
-    hm.put("slovom",);
-    hm.put("vnositel",);
-    hm.put("casa",);
-    hm.put("valuta",);
-    hm.put("casier",);
+   // hm.put("namefirm", imakante.com.NewMain.getParamFirm().getName());
+    hm.put("nomer", this.jTextField1.getText());
+    hm.put("data_iz", "");
+    hm.put("sumalv", this.jTextField4.getText());
+    hm.put("suma",this.jTextField3.getText());
+    hm.put("slovom","");
+    hm.put("vnositel",this.jLabel14.getText());
+    hm.put("casa",this.jComboD.getSelectedItem().toString());
+    hm.put("valuta",this.jComboM.getSelectedItem().toString());
+    hm.put("casier",this.jTextField5.getText());
     
     }
     private void loadReport() {

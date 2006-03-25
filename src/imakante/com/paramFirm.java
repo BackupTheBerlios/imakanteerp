@@ -34,7 +34,7 @@ public class paramFirm {
             "`ls_sluj`.`name_firm` AS `name`, " +
             "`ls_sluj`.`dan_nom` AS `dan`, " +
             "`ls_sluj`.`bul` AS `bul`, " +
-            "`ls_sluj`.`address` AS `adsress`, " +
+            "`ls_sluj`.`address` AS `address`, " +
             "`ls_sluj`.`nam_boss` AS `boss`, " +
             "`ls_sluj`.`nam_acc` AS `acc`, " +
             "`ls_sluj`.`nkid` AS `nkid`, " +

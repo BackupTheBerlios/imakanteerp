@@ -1,7 +1,7 @@
 ﻿DELIMITER $$
 
-DROP PROCEDURE IF EXISTS nom_procedure_money $$
-CREATE PROCEDURE nom_procedure_money (IN in_id INT(6), IN comprator INT(6), IN in_code INT(11), IN in_cod_lat VARCHAR(6), IN in_name VARCHAR(50), IN in_comments VARCHAR(255))
+DROP PROCEDURE IF EXISTS `mida`.`nom_procedure_money` $$
+CREATE PROCEDURE `nom_procedure_money`(IN in_id INT(6), IN comprator INT(6), IN in_code INT(6), IN in_cod_lat VARCHAR(6), IN in_name VARCHAR(50), IN in_comments VARCHAR(255))
 BEGIN        
      IF (comprator = 0) THEN
         SELECT id_n_money, cod_n_money, cod_lat_n_money,name_n_money, comments_n_money FROM n_money ;

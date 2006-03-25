@@ -37,11 +37,11 @@ BEGIN
             n_contragent.code_contragent,
             n_contragent.name_n_contragent,
             sl_document_facade.number_df,
-            sl_document_facade.id_df,
+            sl_m_operation.id_order_spec,
             sl_m_operation.id_order_doc,
             n_incoms.name_n_incoms,
             sl_m_operation.id_n_money,
-            `n_money`.`cod_n_money`,
+            `n_money`.`cod_lat_n_money`,
             `sl_m_operation`.`date_is`,
             `sl_m_operation`.`exchange_rate`,
             `sl_m_operation`.`sum_sl_mop`,
@@ -141,11 +141,11 @@ BEGIN
             n_contragent.code_contragent,
             n_contragent.name_n_contragent,
             sl_document_facade.number_df,
-            sl_document_facade.id_df,
+            sl_m_operation.id_order_spec,
             sl_m_operation.id_order_doc,
             n_incoms.name_n_incoms,
             sl_m_operation.id_n_money,
-            `n_money`.`cod_n_money`,
+            `n_money`.`cod_lat_n_money`,
             `sl_m_operation`.`date_is`,
             `sl_m_operation`.`exchange_rate`,
             `sl_m_operation`.`sum_sl_mop`,
@@ -182,7 +182,7 @@ BEGIN
 
 
         IF (comprator = 7) THEN
-        SELECT MAX(sl_m_operation.id_sl_mop) FROM `n_baccount` n;
+        SELECT MAX(sl_m_operation.id_sl_mop) FROM `sl_m_operation` n;
         END IF;
 
          IF (comprator = 8) THEN
@@ -191,11 +191,11 @@ BEGIN
 
 
           IF (comprator = 11) THEN
-        SELECT n_money.id_n_money, n_money.cod_n_money FROM `n_money`;
+        SELECT n_money.id_n_money, n_money.cod_lat_n_money FROM `n_money`;
         END IF;
 
           IF (comprator = 12) THEN
-        SELECT n_incoms.id_n_incoms, n_incoms.code_n_incoms FROM `n_incoms`;
+        SELECT n_incoms.id_n_incoms, n_incoms.name_n_incoms FROM `n_incoms`;
         END IF;
 
 END $$
