@@ -618,6 +618,20 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     }
     
     // PRINT
+    private void printHash(){
+    hm = new HashMap();
+    hm.put("namefirm",imakante.com.NewMain.);
+    hm.put("nomer",);
+    hm.put("data_iz",);
+    hm.put("sumalv",);
+    hm.put("suma",);
+    hm.put("slovom",);
+    hm.put("vnositel",);
+    hm.put("casa",);
+    hm.put("valuta",);
+    hm.put("casier",);
+    
+    }
     private void loadReport() {
         imakante.sales.aeCaseOpReport cor = new imakante.sales.aeCaseOpReport(this, true, myParent.getConn(), hm, jasperFile);
         cor.setVisible(true);

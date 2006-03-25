@@ -4,7 +4,8 @@ package imakante.com;
 public class paramFirm {
     
     public paramFirm() {
-       
+       constructParam();
+        closeRes();
     }
     
     private  int id;

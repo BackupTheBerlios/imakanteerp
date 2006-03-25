@@ -150,7 +150,7 @@ public class NewMain extends javax.swing.JFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-605)/2, (screenSize.height-389)/2, 605, 389);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jBLSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLSActionPerformed
         loadSalaryMain();
     }//GEN-LAST:event_jBLSActionPerformed
@@ -352,6 +352,11 @@ public class NewMain extends javax.swing.JFrame {
     
     //USER RIGHTS
     private static imakante.com.userRights currentRight;
+    private static imakante.com.paramFirm ParamFirm;
+    
+    public static void setParamFirm(){
+        ParamFirm = new imakante.com.paramFirm();
+    }
     
     public static void setActiveModules(boolean[] aActiveModules) {
         ActiveModules = aActiveModules;
@@ -410,9 +415,9 @@ public class NewMain extends javax.swing.JFrame {
     // Salary's thread
     private void loadSalaryMain() {
         java.awt.EventQueue.invokeLater(new Runnable() {
-           public void run()  {
-               new imakante.salary.salary_main().setVisible(true);
-           }
+            public void run()  {
+                new imakante.salary.salary_main().setVisible(true);
+            }
         });
     }
     
@@ -478,19 +483,19 @@ public class NewMain extends javax.swing.JFrame {
         }
         B_MN = aB_MN;
     }
-
+    
     public static int getUserId() {
         return userId;
     }
-
+    
     public static void setUserId(int aUserId) {
         userId = aUserId;
     }
-
+    
     public static String getUserName() {
         return userName;
     }
-
+    
     public static void setUserName(String aUserName) {
         userName = aUserName;
     }

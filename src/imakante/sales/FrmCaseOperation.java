@@ -326,15 +326,30 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     }//GEN-LAST:event_jXDatePickerBEGINKeyPressed
     
     private void jtfContragentENDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfContragentENDKeyPressed
-// TODO add your handling code here:
+ if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()){
+            processField4();
+        }
+        if(java.awt.event.KeyEvent.VK_ENTER == evt.getKeyCode()){
+            if(jtfContragentEND.getText().equals("")){jtfContragentEND.setText("999999999");jtfContragentEND.transferFocus();}
+        }
     }//GEN-LAST:event_jtfContragentENDKeyPressed
     
     private void jtfContragentBEGINKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfContragentBEGINKeyPressed
-// TODO add your handling code here:
+if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()){
+            processField3();
+        }
+        if(java.awt.event.KeyEvent.VK_ENTER == evt.getKeyCode()){
+            if(jtfContragentBEGIN.getText().equals("")){jtfContragentBEGIN.setText("1");jtfContragentBEGIN.transferFocus();}
+        }
     }//GEN-LAST:event_jtfContragentBEGINKeyPressed
     
     private void jtfCasaENDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCasaENDKeyPressed
-// TODO add your handling code here:
+ if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()){
+            processField2();
+        }
+        if(java.awt.event.KeyEvent.VK_ENTER == evt.getKeyCode()){
+            if(jtfCasaEND.getText().equals("")){jtfCasaEND.setText("999999999");jtfCasaEND.transferFocus();}
+        }
     }//GEN-LAST:event_jtfCasaENDKeyPressed
     
     private void jtfCasaBeginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCasaBeginKeyPressed
