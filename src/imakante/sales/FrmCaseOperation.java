@@ -407,10 +407,10 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     
     private int id = 0; // imena ot tablicata
     private int code = 0;
-    private int contragent_id = 0;
-    private String contragent_name = "";
-    private int in_in_sl_mop = 1;
-    private int in_outsl_mop = 0;
+    private int contragent_cod = 0;  // kod na kontragent
+    private String contragent_name = ""; // name na kontragent
+    private int in_in_sl_mop = 1; //id na kasa
+    private int in_outsl_mop = 0; // id na kontragent
     private int in_id_order_spec = -1 ;
     private int in_id_order_spec_type = 1;
     private int in_id_order_doc = -1;
@@ -420,6 +420,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     private double in_sum_sl_mop = 0;
     private double in_sum_os_val_sl_mop = 0;
     private int in_user_id = imakante.com.NewMain.getUserId();
+    private String user_name = "";
     private int in_id_sdtn = 1;
     private String  comment = "";
     
@@ -454,8 +455,8 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         "\u043f\u0430\u0440\u0438\u0447\u0435\u043d \u043a\u043e\u0434",        //        12. (V)
         "\u0414\u0430\u0442\u0430 \u0438\u0437\u0434\u0430\u0432\u0430\u043d\u0435",            //        13. (V)
         "\u043a\u0443\u0440\u0441",      //        14. (V)
-        "sum_sl_mop",         //        15. (V)
-        "sum_os_val",         //        16. (V)
+        "\u0441\u0443\u043c\u0430",         //        15. (V)
+        "\u0441\u0443\u043c\u0430 \u043e\u0441\u043d\u043e\u0432\u043d\u0430 \u0432\u0430\u043b\u0443\u0442\u0430",         //        16. (V)
         "user_id",            //        17. (H)
         "\u0438\u0437\u0434\u0430\u043b \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430",            //        18. (V)
         "id_sdtn",            //        19. (H)
@@ -704,11 +705,11 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     }
     
     public void setContragent(String Contragent) {
-        this.contragent_name = Contragent;
+        this.setContragent_name(Contragent);
     }
     
     public String getContragent() {
-        return contragent_name;
+        return getContragent_name();
     }
     
     
@@ -935,12 +936,16 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         setCode((Integer) table.getValueAt(getRow(), getColumnIndex("\u043d\u043e\u043c\u0435\u0440")));
         setIn_in_sl_mop((Integer) table.getValueAt(getRow(), getColumnIndex("id_casa")));
         setIn_outsl_mop((Integer) table.getValueAt(getRow(), getColumnIndex("id_contragent")));
+        setContragent_cod((Integer) table.getValueAt(getRow(), getColumnIndex("\u043a\u043e\u0434 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442")));
+        setContragent_name((String)table.getValueAt(getRow(), getColumnIndex( "\u0438\u043c\u0435 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442")));
+      
         setIn_id_order_spec((Integer) table.getValueAt(getRow(), getColumnIndex("id_df")));
         setIn_id_order_doc((Integer) table.getValueAt(getRow(), getColumnIndex("id_order_doc")));
         setIn_DATE((String)table.getValueAt(getRow(), getColumnIndex("\u0414\u0430\u0442\u0430 \u0438\u0437\u0434\u0430\u0432\u0430\u043d\u0435")).toString());
         setIn_exchange_rate((Double)table.getValueAt(getRow(), getColumnIndex("\u043a\u0443\u0440\u0441")));
-        setIn_sum_sl_mop((Double)table.getValueAt(getRow(), getColumnIndex("sum_sl_mop")));
-        setIn_sum_os_val_sl_mop((Double)table.getValueAt(getRow(), getColumnIndex("sum_os_val")));
+        setIn_sum_sl_mop((Double)table.getValueAt(getRow(), getColumnIndex("\u0441\u0443\u043c\u0430")));
+        setIn_sum_os_val_sl_mop((Double)table.getValueAt(getRow(), getColumnIndex("\u0441\u0443\u043c\u0430 \u043e\u0441\u043d\u043e\u0432\u043d\u0430 \u0432\u0430\u043b\u0443\u0442\u0430")));
+        setUser_name((String)table.getValueAt(getRow(), getColumnIndex("\u0438\u0437\u0434\u0430\u043b \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430")));
         setIn_id_sdtn((Integer) table.getValueAt(getRow(), getColumnIndex("id_sdtn")));
         setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440")));
     }
@@ -1023,5 +1028,29 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
 
     public void setIn_id_n_money(int in_id_n_money) {
         this.in_id_n_money = in_id_n_money;
+    }
+
+    public int getContragent_cod() {
+        return contragent_cod;
+    }
+
+    public void setContragent_cod(int contragent_cod) {
+        this.contragent_cod = contragent_cod;
+    }
+
+    public String getContragent_name() {
+        return contragent_name;
+    }
+
+    public void setContragent_name(String contragent_name) {
+        this.contragent_name = contragent_name;
+    }
+
+    public String getUser_name() {
+        return user_name;
+    }
+
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
 }
