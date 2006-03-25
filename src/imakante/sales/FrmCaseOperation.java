@@ -22,6 +22,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         System.out.println(in_DATE); 
                 
         this.internalObject.setIn_DATE(in_DATE);
+        prepareStm();
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -337,7 +338,12 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     }//GEN-LAST:event_jtfCasaENDKeyPressed
     
     private void jtfCasaBeginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCasaBeginKeyPressed
-// TODO add your handling code here:
+ if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()){
+            processField1();
+        }
+        if(java.awt.event.KeyEvent.VK_ENTER == evt.getKeyCode()){
+            if(jtfCasaBegin.getText().equals("")){jtfCasaBegin.setText("1");jtfCasaBegin.transferFocus();}
+        }
     }//GEN-LAST:event_jtfCasaBeginKeyPressed
     
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
@@ -508,7 +514,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         }
         try {
             model1 = new imakante.com.CustomTableModel(getConn(), rs, names);
-            table1 = new imakante.com.CustomTable(model);
+            table1 = new imakante.com.CustomTable(model1);
             
         } catch(Exception e) { e.printStackTrace(); }
         
@@ -520,7 +526,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     private void constructDialod(String str, int rCompNumber, String[] names){
         this.CompNumber = rCompNumber;
         initTableD(str, names );
-        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table);
+        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table1);
         td.setVisible(true);
         
     }
