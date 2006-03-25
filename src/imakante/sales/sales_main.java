@@ -1263,7 +1263,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
      */
     //
     private void loadKassss(){
-        imakante.sales.FrmCaseOperation cs = new imakante.sales.FrmCaseOperation("prihod", this, 1, 1);
+        imakante.sales.FrmCaseOperation cs = new imakante.sales.FrmCaseOperation("\u041f\u0420\u0418\u0425\u041e\u0414\u041d\u0418 \u041e\u0420\u0414\u0415\u0420\u0418", this, 1, 1);
         desktopPane.add(cs);
         cs.setVisible(true);
     }

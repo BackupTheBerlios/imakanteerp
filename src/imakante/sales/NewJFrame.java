@@ -27,14 +27,14 @@ public class NewJFrame extends javax.swing.JFrame {
         jToggleButton1 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        jToggleButton1.setText("\u0441\u0443\u043c\u0430 \u043e\u0441\u043d\u043e\u0432\u043d\u0430 \u0432\u0430\u043b\u0443\u0442\u0430");
+        jToggleButton1.setText("\u041f\u0420\u0418\u0425\u041e\u0414\u041d\u0418 \u041e\u0420\u0414\u0415\u0420\u0418");
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(136, Short.MAX_VALUE)
+                .addContainerGap(142, Short.MAX_VALUE)
                 .add(jToggleButton1)
                 .add(137, 137, 137))
         );

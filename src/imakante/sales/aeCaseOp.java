@@ -243,12 +243,14 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         jLabel9.setText("\u0421\u0443\u043c\u0430 \u043e\u0441\u043d. \u0432\u0430\u043b\u0443\u0442\u0430:");
 
         jTextField4.setBackground(new java.awt.Color(204, 204, 204));
+        jTextField4.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jTextField4.setEnabled(false);
         jTextField4.setInputVerifier(new imakante.com.InputDoubleVerifier());
 
         jLabel10.setText("\u0418\u0437\u0434\u0430\u043b:");
 
         jTextField5.setBackground(new java.awt.Color(204, 204, 204));
+        jTextField5.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jTextField5.setEnabled(false);
 
         jLabel11.setText("\u0421\u0432\u044a\u0440\u0437\u0430\u043d \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442:");
@@ -268,6 +270,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
 
         jLabel15.setText("\u041a\u0443\u0440\u0441:");
 
+        jTextField7.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jTextField7.setEnabled(false);
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
@@ -646,10 +649,11 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         jTextField3.setText(""+ myParent.getIn_sum_sl_mop());
         jTextField4.setText(""+ myParent.getIn_sum_os_val_sl_mop());
         jTextField7.setText(""+ myParent.getIn_exchange_rate());
-        jTextField5.setText(""+ myParent.);
+        jTextField5.setText(""+ myParent.getUser_name());
         jComboCR.setSelectedIndex(getNewCashRegIndex(myParent.getIn_in_sl_mop()));
         jComboM.setSelectedIndex(getNewCurrencyIndex(myParent.getIn_id_n_money()));
         jComboD.setSelectedIndex(getNewDocumentIndex(myParent.getIn_id_order_doc()));
+        jTextArea1.setText(myParent.getComment());
         
     }
     
