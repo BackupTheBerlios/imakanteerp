@@ -449,6 +449,7 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
     
     //SAVE
     private void saveRecord() {
+        oldIDG = myParent.getIDG();
         oldCode = myParent.getCode();
         oldEGN = myParent.getEGN();
         oldNLK = myParent.getNLK();
