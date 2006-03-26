@@ -20,7 +20,6 @@ public class aeCaseOpReport extends imakante.com.vcomponents.iDialog {
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -28,11 +27,9 @@ public class aeCaseOpReport extends imakante.com.vcomponents.iDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("\u041e\u0442\u0447\u0435\u0442 \u0437\u0430 \u043a\u0430\u0441\u043e\u0432\u0430 \u043e\u043f\u0435\u0440\u0430\u0446\u0438\u044f");
         setLocationByPlatform(true);
-        setUndecorated(true);
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Printer.png")));
         jButton1.setText("\u041f\u0435\u0447\u0430\u0442");
@@ -93,7 +90,6 @@ public class aeCaseOpReport extends imakante.com.vcomponents.iDialog {
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
     
     private imakante.com.vcomponents.iDialog myParent;

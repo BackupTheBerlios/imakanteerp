@@ -1,6 +1,7 @@
 
 package imakante.sales;
 
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 
 public class aeCaseOp extends imakante.com.vcomponents.iDialog {
@@ -581,6 +582,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     private String[] namesCR;
     private String[] namesM;
     private String[] namesD;
+    SimpleDateFormat formatterP = new SimpleDateFormat("dd-MM-yyyy");
     
     //---------------END My Variables
     
@@ -619,20 +621,24 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     
     // PRINT
     private void printHash(){
-    hm = new HashMap();
-   // hm.put("namefirm", imakante.com.NewMain.getParamFirm().getName());
-    hm.put("nomer", this.jTextField1.getText());
-    hm.put("data_iz", "");
-    hm.put("sumalv", this.jTextField4.getText());
-    hm.put("suma",this.jTextField3.getText());
-    hm.put("slovom","");
-    hm.put("vnositel",this.jLabel14.getText());
-    hm.put("casa",this.jComboD.getSelectedItem().toString());
-    hm.put("valuta",this.jComboM.getSelectedItem().toString());
-    hm.put("casier",this.jTextField5.getText());
-    
+        hm = new HashMap();
+        imakante.com.priceToString prcT = new imakante.com.priceToString();
+        double d = Double.parseDouble(jTextField3.getText());
+        prcT.setValue(d);
+        prcT.ConstString();
+        hm.put("nomer", this.jTextField1.getText());
+        hm.put("data_iz", (String)formatterP.format(this.jXDatePicker1.getDate()));
+        hm.put("sumalv", this.jTextField4.getText());
+        hm.put("suma",this.jTextField3.getText());
+        hm.put("slovom","" + prcT.getEndString());
+        hm.put("vnositel",this.jLabel14.getText());
+        hm.put("casa",this.jComboCR.getSelectedItem().toString());
+        hm.put("valuta",this.jComboM.getSelectedItem().toString());
+        hm.put("casier",this.jTextField5.getText());
+        
     }
     private void loadReport() {
+        printHash();
         imakante.sales.aeCaseOpReport cor = new imakante.sales.aeCaseOpReport(this, true, myParent.getConn(), hm, jasperFile);
         cor.setVisible(true);
     }
