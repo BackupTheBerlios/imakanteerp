@@ -32,6 +32,7 @@
 	<parameter name="slovom" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="vnositel" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="casier" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="vnosnomer" isForPrompting="false" class="java.lang.String"/>
 	<queryString><![CDATA[SELECT name_firm From ls_sluj]]></queryString>
 
 	<field name="name_firm" class="java.lang.String"/>
@@ -118,7 +119,7 @@
 						isPrintWhenDetailOverflows="false"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
-						<font fontName="Tahoma" pdfFontName="Helvetica" size="12" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
+						<font fontName="Tahoma" pdfFontName="Helvetica" size="12" isBold="true" isItalic="true" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{name_firm}]]></textFieldExpression>
 				</textField>
@@ -261,7 +262,7 @@
 					<reportElement
 						mode="Transparent"
 						x="304"
-						y="6"
+						y="7"
 						width="111"
 						height="16"
 						forecolor="#000000"
@@ -551,9 +552,9 @@
 					<reportElement
 						mode="Transparent"
 						x="9"
-						y="137"
+						y="139"
 						width="45"
-						height="16"
+						height="12"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
 						key="staticText-11"
@@ -592,9 +593,9 @@
 					<reportElement
 						mode="Transparent"
 						x="333"
-						y="142"
+						y="139"
 						width="45"
-						height="16"
+						height="12"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
 						key="staticText-12"
@@ -674,9 +675,9 @@
 					<reportElement
 						mode="Transparent"
 						x="82"
-						y="71"
+						y="70"
 						width="66"
-						height="12"
+						height="16"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
 						key="textField"
@@ -688,7 +689,7 @@
 						isPrintWhenDetailOverflows="false"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
-						<font fontName="Arial" pdfFontName="Helvetica" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
+						<font fontName="Tahoma" pdfFontName="Helvetica" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{sumalv}]]></textFieldExpression>
 				</textField>
@@ -696,9 +697,9 @@
 					<reportElement
 						mode="Transparent"
 						x="246"
-						y="71"
+						y="70"
 						width="66"
-						height="12"
+						height="16"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
 						key="textField"
@@ -710,7 +711,7 @@
 						isPrintWhenDetailOverflows="false"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
-						<font fontName="Arial" pdfFontName="Helvetica" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
+						<font fontName="Tahoma" pdfFontName="Helvetica" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{slovom}]]></textFieldExpression>
 				</textField>
@@ -720,7 +721,7 @@
 						x="94"
 						y="99"
 						width="428"
-						height="12"
+						height="16"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
 						key="textField"
@@ -732,7 +733,7 @@
 						isPrintWhenDetailOverflows="false"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
-						<font fontName="Arial" pdfFontName="Helvetica" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
+						<font fontName="Tahoma" pdfFontName="Helvetica" size="10" isBold="true" isItalic="true" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{vnositel}]]></textFieldExpression>
 				</textField>
@@ -740,9 +741,9 @@
 					<reportElement
 						mode="Transparent"
 						x="472"
-						y="9"
+						y="7"
 						width="49"
-						height="12"
+						height="16"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
 						key="textField"
@@ -754,7 +755,7 @@
 						isPrintWhenDetailOverflows="false"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
-						<font fontName="Arial" pdfFontName="Helvetica" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
+						<font fontName="Tahoma" pdfFontName="Helvetica" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{casa}]]></textFieldExpression>
 				</textField>
@@ -762,9 +763,9 @@
 					<reportElement
 						mode="Transparent"
 						x="212"
-						y="39"
+						y="38"
 						width="66"
-						height="12"
+						height="16"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
 						key="textField"
@@ -776,7 +777,7 @@
 						isPrintWhenDetailOverflows="false"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
-						<font fontName="Arial" pdfFontName="Helvetica" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
+						<font fontName="Tahoma" pdfFontName="Helvetica" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{valuta}]]></textFieldExpression>
 				</textField>
@@ -798,7 +799,7 @@
 						isPrintWhenDetailOverflows="false"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
-						<font fontName="Arial" pdfFontName="Helvetica" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
+						<font fontName="Tahoma" pdfFontName="Helvetica" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{casier}]]></textFieldExpression>
 				</textField>
@@ -806,9 +807,9 @@
 					<reportElement
 						mode="Transparent"
 						x="96"
-						y="9"
+						y="7"
 						width="66"
-						height="12"
+						height="16"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
 						key="textField"
@@ -820,7 +821,7 @@
 						isPrintWhenDetailOverflows="false"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
-						<font fontName="Arial" pdfFontName="Helvetica" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
+						<font fontName="Tahoma" pdfFontName="Helvetica" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{nomer}]]></textFieldExpression>
 				</textField>

@@ -4,6 +4,7 @@ package imakante.sales;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 
 public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
@@ -19,8 +20,8 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         isEmpty();
         currDate = new java.util.Date();
         in_DATE = formatter.getDateInstance().format(currDate);
-        System.out.println(in_DATE); 
-                
+        System.out.println(in_DATE);
+        
         this.internalObject.setIn_DATE(in_DATE);
         prepareStm();
     }
@@ -326,7 +327,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     }//GEN-LAST:event_jXDatePickerBEGINKeyPressed
     
     private void jtfContragentENDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfContragentENDKeyPressed
- if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()){
+        if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()){
             processField4();
         }
         if(java.awt.event.KeyEvent.VK_ENTER == evt.getKeyCode()){
@@ -335,7 +336,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     }//GEN-LAST:event_jtfContragentENDKeyPressed
     
     private void jtfContragentBEGINKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfContragentBEGINKeyPressed
-if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()){
+        if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()){
             processField3();
         }
         if(java.awt.event.KeyEvent.VK_ENTER == evt.getKeyCode()){
@@ -344,7 +345,7 @@ if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()){
     }//GEN-LAST:event_jtfContragentBEGINKeyPressed
     
     private void jtfCasaENDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCasaENDKeyPressed
- if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()){
+        if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()){
             processField2();
         }
         if(java.awt.event.KeyEvent.VK_ENTER == evt.getKeyCode()){
@@ -353,7 +354,7 @@ if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()){
     }//GEN-LAST:event_jtfCasaENDKeyPressed
     
     private void jtfCasaBeginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCasaBeginKeyPressed
- if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()){
+        if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()){
             processField1();
         }
         if(java.awt.event.KeyEvent.VK_ENTER == evt.getKeyCode()){
@@ -431,12 +432,14 @@ if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()){
     private int contragent_cod = 0;  // kod na kontragent
     private String contragent_name = ""; // name na kontragent
     private int in_in_sl_mop = 1; //id na kasa
+    private int in_code_casa = 1; // cod na kasa
     private int in_outsl_mop = 0; // id na kontragent
     private int in_id_order_spec = -1 ;
     private int in_id_order_spec_type = 1;
     private int in_id_order_doc = -1;
     private String in_DATE;
     private int in_id_n_money = 1;
+    private String in_code_lat = "BGN";
     private double in_exchange_rate = 1;
     private double in_sum_sl_mop = 0;
     private double in_sum_os_val_sl_mop = 0;
@@ -499,6 +502,8 @@ if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()){
             + "FROM `n_casa` WHERE `n_casa`.`code_n_casa` LIKE  '%";
     
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+    
+    private String jasperFile = "/imakante/sales/jasper/inorder.jasper";
     
     //---------------END My Variables
     
@@ -583,7 +588,16 @@ if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()){
             jButtonSearch.setEnabled(false);
         }
     }
-    
+    private void setButtonEnabled(){
+        jButtonEdit.setEnabled(true);
+        jButtonPrint.setEnabled(true);
+        jButtonPrnReport.setEnabled(true);
+        jButtonDel.setEnabled(true);
+        jButtonRefresh.setEnabled(true);
+        jButtonDeleteAll.setEnabled(true);
+        jButtonSearch.setEnabled(true);
+        
+    }
     public void windowOpened(java.awt.event.WindowEvent e) {
     }
     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -877,10 +891,10 @@ if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()){
         setAllVariables();
         setAtBegining(false);
         setAtEnd(true);
-        imakante.sales.aeCaseOp ae_Casa = new imakante.sales.aeCaseOp(this, true);
+        imakante.sales.aeCaseOp ae_Casa = new imakante.sales.aeCaseOp(this, false);
         ae_Casa.setVisible(true);
-        
         refreshTable();
+        setButtonEnabled();
     }
     
     private void editRecord() {
@@ -896,7 +910,7 @@ if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()){
                 setAtEnd(false);
             }
             setAllVariables();
-            imakante.sales.aeCaseOp ae_Casa = new imakante.sales.aeCaseOp(this, true);
+            imakante.sales.aeCaseOp ae_Casa = new imakante.sales.aeCaseOp(this, false);
             ae_Casa.setVisible(true);
         } else {  }
     }
@@ -908,6 +922,7 @@ if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()){
             internalObject.deleteRow(getId());
             refreshTable();
         }
+        isEmpty();
     }
     
     public java.sql.Connection getConn() {
@@ -956,13 +971,18 @@ if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()){
         setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
         setCode((Integer) table.getValueAt(getRow(), getColumnIndex("\u043d\u043e\u043c\u0435\u0440")));
         setIn_in_sl_mop((Integer) table.getValueAt(getRow(), getColumnIndex("id_casa")));
+        in_code_casa= (Integer) table.getValueAt(getRow(), getColumnIndex( "\u043a\u043e\u0434 \u043a\u0430\u0441\u0430"));
         setIn_outsl_mop((Integer) table.getValueAt(getRow(), getColumnIndex("id_contragent")));
+        
         setContragent_cod((Integer) table.getValueAt(getRow(), getColumnIndex("\u043a\u043e\u0434 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442")));
         setContragent_name((String)table.getValueAt(getRow(), getColumnIndex( "\u0438\u043c\u0435 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442")));
-      
+        
         setIn_id_order_spec((Integer) table.getValueAt(getRow(), getColumnIndex("id_df")));
         setIn_id_order_doc((Integer) table.getValueAt(getRow(), getColumnIndex("id_order_doc")));
         setIn_DATE((String)table.getValueAt(getRow(), getColumnIndex("\u0414\u0430\u0442\u0430 \u0438\u0437\u0434\u0430\u0432\u0430\u043d\u0435")).toString());
+       
+        setIn_id_n_money((Integer) table.getValueAt(getRow(), getColumnIndex("id_n_money")));
+        in_code_lat = (String)table.getValueAt(getRow(), getColumnIndex("\u043f\u0430\u0440\u0438\u0447\u0435\u043d \u043a\u043e\u0434"));
         setIn_exchange_rate((Double)table.getValueAt(getRow(), getColumnIndex("\u043a\u0443\u0440\u0441")));
         setIn_sum_sl_mop((Double)table.getValueAt(getRow(), getColumnIndex("\u0441\u0443\u043c\u0430")));
         setIn_sum_os_val_sl_mop((Double)table.getValueAt(getRow(), getColumnIndex("\u0441\u0443\u043c\u0430 \u043e\u0441\u043d\u043e\u0432\u043d\u0430 \u0432\u0430\u043b\u0443\u0442\u0430")));
@@ -1042,36 +1062,58 @@ if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()){
     public void setIn_id_sdtn(int in_id_sdtn) {
         this.in_id_sdtn = in_id_sdtn;
     }
-
+    
     public int getIn_id_n_money() {
         return in_id_n_money;
     }
-
+    
     public void setIn_id_n_money(int in_id_n_money) {
         this.in_id_n_money = in_id_n_money;
     }
-
+    
     public int getContragent_cod() {
         return contragent_cod;
     }
-
+    
     public void setContragent_cod(int contragent_cod) {
         this.contragent_cod = contragent_cod;
     }
-
+    
     public String getContragent_name() {
         return contragent_name;
     }
-
+    
     public void setContragent_name(String contragent_name) {
         this.contragent_name = contragent_name;
     }
-
+    
     public String getUser_name() {
         return user_name;
     }
-
+    
     public void setUser_name(String user_name) {
         this.user_name = user_name;
     }
+    
+    public void loadReport() {
+        setAllVariables();
+        HashMap hm = new HashMap();
+        imakante.com.priceToString prcT = new imakante.com.priceToString();
+        double d = this.getIn_sum_sl_mop();
+        prcT.setValue(d);
+        prcT.ConstString();
+        hm.put("nomer", this.getCode());
+        hm.put("data_iz", this.getIn_DATE());
+        hm.put("sumalv", this.getIn_sum_os_val_sl_mop());
+        hm.put("suma",this.getIn_sum_sl_mop());
+        hm.put("slovom","" + prcT.getEndString());
+        hm.put("vnosnomer", this.contragent_cod);
+        hm.put("vnositel", this.getContragent_name());
+        hm.put("casa",in_code_casa);
+        hm.put("valuta", in_code_lat);
+        hm.put("casier", this.getUser_name());
+        imakante.sales.aeCaseOpReport cor = new imakante.sales.aeCaseOpReport(this, true, getConn(), hm, jasperFile);
+        cor.setVisible(true);
+    }
+    
 }

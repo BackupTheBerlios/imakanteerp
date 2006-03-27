@@ -32,7 +32,12 @@ public class iDialog extends javax.swing.JDialog implements java.io.Serializable
         this.setMyDialog(dialog);
         this.file = FileName;
     }
-    
+    public iDialog(imakante.com.vcomponents.iInternalFrame Iframe, boolean modal, String FileName) {
+        super();
+        this.setModal(modal);
+        setMyFrame(Iframe);
+        this.file = FileName;
+    }
     private imakante.com.vcomponents.iFrame myFrame;
     private imakante.com.vcomponents.iInternalFrame myIFrame;
     private imakante.com.vcomponents.iDialog myDialog;

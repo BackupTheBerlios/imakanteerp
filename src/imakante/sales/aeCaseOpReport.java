@@ -3,10 +3,10 @@ package imakante.sales;
 
 public class aeCaseOpReport extends imakante.com.vcomponents.iDialog {
     
-    public aeCaseOpReport(imakante.com.vcomponents.iDialog parent, boolean modal, java.sql.Connection conn,
+    public aeCaseOpReport(imakante.com.vcomponents.iInternalFrame parent, boolean modal, java.sql.Connection conn,
             java.util.HashMap hm, String jasperFile) {
         super(parent, modal, jasperFile);
-        this.myParent = (imakante.sales.aeCaseOp) parent;
+        this.myParent = parent;
         this.conn = conn;
         this.hm = hm;
         this.jasperFile = jasperFile;
@@ -92,7 +92,7 @@ public class aeCaseOpReport extends imakante.com.vcomponents.iDialog {
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
     
-    private imakante.com.vcomponents.iDialog myParent;
+    private imakante.com.vcomponents.iInternalFrame myParent;
     private net.sf.jasperreports.engine.JasperReport jr;
     private net.sf.jasperreports.engine.JasperPrint jp;
     private net.sf.jasperreports.view.JRViewer jrv;
