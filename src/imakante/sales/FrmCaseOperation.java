@@ -363,7 +363,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     }//GEN-LAST:event_jtfCasaBeginKeyPressed
     
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
-        printTable();
+      loadReport();
     }//GEN-LAST:event_jButtonPrintActionPerformed
     
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
@@ -1102,14 +1102,14 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         double d = this.getIn_sum_sl_mop();
         prcT.setValue(d);
         prcT.ConstString();
-        hm.put("nomer", this.getCode());
+        hm.put("nomer","" + this.getCode());
         hm.put("data_iz", this.getIn_DATE());
-        hm.put("sumalv", this.getIn_sum_os_val_sl_mop());
-        hm.put("suma",this.getIn_sum_sl_mop());
+        hm.put("sumalv", "" + this.getIn_sum_os_val_sl_mop());
+        hm.put("suma","" + this.getIn_sum_sl_mop());
         hm.put("slovom","" + prcT.getEndString());
-        hm.put("vnosnomer", this.contragent_cod);
-        hm.put("vnositel", this.getContragent_name());
-        hm.put("casa",in_code_casa);
+        hm.put("vnosnomer","" +  this.contragent_cod);
+        hm.put("vnositel", "" + this.getContragent_name());
+        hm.put("casa","" + in_code_casa);
         hm.put("valuta", in_code_lat);
         hm.put("casier", this.getUser_name());
         imakante.sales.aeCaseOpReport cor = new imakante.sales.aeCaseOpReport(this, true, getConn(), hm, jasperFile);
