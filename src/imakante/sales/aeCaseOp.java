@@ -1,7 +1,10 @@
 
 package imakante.sales;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 
 public class aeCaseOp extends imakante.com.vcomponents.iDialog {
@@ -581,7 +584,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     private String[] namesM;
     private String[] namesD;
     SimpleDateFormat formatterP = new SimpleDateFormat("dd-MM-yyyy");
-    
+    SimpleDateFormat formatterG = new SimpleDateFormat("yyyy-MM-dd");
     //---------------END My Variables
     
     //---------------START My Methods
@@ -604,8 +607,10 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         try {
             myParent.setCode(Integer.parseInt(jTextField1.getText()));
             myParent.setContragent_cod(Integer.parseInt(jTextField2.getText()));
-            myParent.setIn_id_order_spec(Integer.parseInt(jTextField6.getText()));
+            if(jTextField6.getText().equals("")){myParent.setIn_id_order_spec(-1);}
+            else{myParent.setIn_id_order_spec(Integer.parseInt(jTextField6.getText()));}
         } catch (NumberFormatException nfex) { nfex.printStackTrace(); }
+        
         myParent.setIn_in_sl_mop(myParent.getInternalObject().getIndexConnOfId()[jComboCR.getSelectedIndex()]);
         myParent.setIn_DATE((String)formatterP.format(this.jXDatePicker1.getDate()));
         myParent.setIn_id_order_doc(myParent.getInternalObject().getIndexDoc()[jComboD.getSelectedIndex()]);
@@ -616,6 +621,16 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         myParent.setIn_sum_os_val_sl_mop(Double.parseDouble(jTextField4.getText()));
         myParent.setIn_exchange_rate(Double.parseDouble(jTextField7.getText()));
         myParent.setUser_name(jTextField5.getText());
+        
+        myParent.getInternalObject().updateRow(
+                myParent.getId(),myParent.getCode(),myParent.getIn_in_sl_mop(),
+                myParent.getIn_outsl_mop(), myParent.getIn_id_order_spec(), 1,
+                myParent.getIn_id_order_doc(), myParent.getIn_DATE(),
+                myParent.getIn_id_n_money(), myParent.getIn_exchange_rate(),
+                myParent.getIn_sum_sl_mop(), myParent.getIn_sum_os_val_sl_mop(),
+                myParent.getIn_id_sdtn(), myParent.getComment()
+                );
+        
         myParent.refreshTable();
         myParent.getTable().changeSelection(myParent.getRow(), 2, false, false);
         jButtonUndo.setEnabled(true);
@@ -691,11 +706,16 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         jTextField4.setText(""+ myParent.getIn_sum_os_val_sl_mop());
         jTextField7.setText(""+ myParent.getIn_exchange_rate());
         jTextField5.setText(""+ myParent.getUser_name());
+        try {
+            this.jXDatePicker1.setDate((Date)formatterG.parse(myParent.getIn_DATE()));
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
         jComboCR.setSelectedIndex(getNewCashRegIndex(myParent.getIn_in_sl_mop()));
         jComboM.setSelectedIndex(getNewCurrencyIndex(myParent.getIn_id_n_money()));
         jComboD.setSelectedIndex(getNewDocumentIndex(myParent.getIn_id_order_doc()));
         jTextArea1.setText(myParent.getComment());
-//        jXDatePicker1.setDate((java.util.Date)formatterP.format(Date));
+
     }
     
     private void initComboCR() {

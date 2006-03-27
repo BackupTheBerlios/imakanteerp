@@ -19,9 +19,9 @@ public class casaOp  extends dbObject {
     private int indexMoney[] = null; // masiv valuti
     private int indexDoc[] = null; // vid doc prihodni orderi
     
-    private java.sql.ResultSet rs;
-    private java.sql.Statement stmt;
-    private java.sql.CallableStatement cstm;
+  //  private java.sql.ResultSet rs;
+   // private java.sql.Statement stmt;
+  //  private java.sql.CallableStatement cstm;
     
     private int level = 1;
     
@@ -95,7 +95,7 @@ public class casaOp  extends dbObject {
             getCstm().setString("in_data_begin", DateBegin);
             getCstm().setString("in_data_end", DateEnd);
             getCstm().setInt("in_level", getLevel());
-            
+            System.out.println("FROM REG PARAM");
         } catch(java.sql.SQLException sqle) {
             sqle.printStackTrace();
         }
@@ -145,11 +145,11 @@ public class casaOp  extends dbObject {
         setComment(in_comment);
         try {
             registerParameters();
-            cstm.execute();
+            getCstm().execute();
         } catch(java.sql.SQLException sqle) {
             sqle.printStackTrace();
         }
-        
+        System.out.println("FROM UPDATE");
         
     }
     
