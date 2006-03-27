@@ -31,7 +31,6 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         jButtonUndo = new javax.swing.JButton();
         jbPrint = new javax.swing.JButton();
         jButtonClose = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jButtonToBegin = new javax.swing.JButton();
@@ -131,15 +130,6 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         });
 
         jPanel1.add(jButtonClose);
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jPanel1.add(jButton1);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.SOUTH);
 
@@ -403,11 +393,6 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-544)/2, (screenSize.height-420)/2, 544, 420);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
- myParent.setIn_DATE((String)formatterP.format(this.jXDatePicker1.getDate()));
- System.out.println("data " + myParent.getIn_DATE());
-    }//GEN-LAST:event_jButton1ActionPerformed
     
     private void jbPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPrintActionPerformed
         loadReport();
@@ -538,7 +523,6 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButtonToBeginActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonClose;
     private javax.swing.JButton jButtonOneRowM;
     private javax.swing.JButton jButtonOneRowP;
@@ -674,7 +658,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     // PRINT
   
     private void loadReport() {
-       
+        myParent.loadReport();
     }
     
     private void getNavigationState() {

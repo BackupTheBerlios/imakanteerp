@@ -9,7 +9,7 @@ CREATE PROCEDURE `sl_procedure_case_in`(
               IN in_outsl_mop INT(11),
               IN in_id_order_spec INT(11),
               IN in_id_order_doc INT(11),
-              IN in_date_is DATE,
+              IN in_date_is VARCHAR(10),
               IN in_id_n_money INT(11),
               IN in_exchange_rate DOUBLE(11,4),
               IN in_sum_sl_mop DOUBLE(11,4),
@@ -124,7 +124,7 @@ BEGIN
                                       `sl_m_operation`.`user_id`= in_user_id,
                                       `sl_m_operation`.`id_sdtn`= in_id_sdtn,
                                       `sl_m_operation`.`comment_sl_mop` = in_comment_sl_mop
-        WHERE `n_casa`.id_n_casa = in_id;
+        WHERE sl_m_operation.id_sl_mop = in_id;
      END IF;
 
      IF (comprator = 3) THEN

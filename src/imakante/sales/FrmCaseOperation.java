@@ -1107,11 +1107,15 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         hm.put("sumalv", "" + this.getIn_sum_os_val_sl_mop());
         hm.put("suma","" + this.getIn_sum_sl_mop());
         hm.put("slovom","" + prcT.getEndString());
+        System.out.println(" dd " +  prcT.getEndString());
         hm.put("vnosnomer","" +  this.contragent_cod);
+        System.out.println("" +  this.contragent_cod);
         hm.put("vnositel", "" + this.getContragent_name());
+        System.out.println(" kasa " + in_code_casa );
         hm.put("casa","" + in_code_casa);
         hm.put("valuta", in_code_lat);
         hm.put("casier", this.getUser_name());
+        System.out.println(" kasier " + this.getUser_name());
         imakante.sales.aeCaseOpReport cor = new imakante.sales.aeCaseOpReport(this, true, getConn(), hm, jasperFile);
         cor.setVisible(true);
     }
