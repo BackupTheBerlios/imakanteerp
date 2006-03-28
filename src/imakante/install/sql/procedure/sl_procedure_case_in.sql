@@ -166,7 +166,7 @@ BEGIN
             LEFT Join `sl_doc_type_num` ON `sl_doc_type_num`.`id_sdtn` = `sl_m_operation`.`id_sdtn`
             WHERE
              sl_m_operation.in_sl_mop = ANY (SELECT n_casa.id_n_casa FROM n_casa WHERE n_casa.code_n_casa BETWEEN in_casaBegin AND in_casaEnd ) AND
-             sl_m_operation.out_sl_mop = ANY (SELECT n_contragent.id_n_contragent FROM n_contragent WHERE n_contragent.code_n_contragent BETWEEN in_contragentBegin AND in_contragenEND ) AND
+             sl_m_operation.out_sl_mop = ANY (SELECT n_contragent.id_contragent FROM n_contragent WHERE n_contragent.code_contragent BETWEEN in_contragentBegin AND in_contragentEnd ) AND
              `sl_m_operation`.`date_is` BETWEEN  in_data_begin AND in_data_end AND
             `sl_m_operation`.`in_type_sl_mop` = 1 AND
             `sl_m_operation`.`out_type_sl_mop` = 3 AND
