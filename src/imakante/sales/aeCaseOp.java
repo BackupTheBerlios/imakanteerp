@@ -237,6 +237,9 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField3FocusGained(evt);
             }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField3FocusLost(evt);
+            }
         });
 
         jLabel4.setText("\u0421\u0443\u043c\u0430:");
@@ -393,6 +396,10 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-544)/2, (screenSize.height-420)/2, 544, 420);
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
+        revalidateSums();
+    }//GEN-LAST:event_jTextField3FocusLost
     
     private void jbPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPrintActionPerformed
         loadReport();
@@ -591,6 +598,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     
     //SAVE
     private void saveRecord() {
+        this.revalidateSums();
         NumDocument = myParent.getCode();
         Contragent = myParent.getContragent_cod();
         selectedCashRegister = myParent.getIn_in_sl_mop();
@@ -607,8 +615,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         try {
             myParent.setCode(Integer.parseInt(jTextField1.getText()));
             myParent.setContragent_cod(Integer.parseInt(jTextField2.getText()));
-            if(jTextField6.getText().equals("")){myParent.setIn_id_order_spec(-1);}
-            else{myParent.setIn_id_order_spec(Integer.parseInt(jTextField6.getText()));}
+            if(jTextField6.getText().equals("")){myParent.setIn_id_order_spec(-1);} else{myParent.setIn_id_order_spec(Integer.parseInt(jTextField6.getText()));}
         } catch (NumberFormatException nfex) { nfex.printStackTrace(); }
         
         myParent.setIn_in_sl_mop(myParent.getInternalObject().getIndexConnOfId()[jComboCR.getSelectedIndex()]);
@@ -619,7 +626,8 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         myParent.setComment(jTextArea1.getText());
         myParent.setContragent_name(jLabel14.getText());
         myParent.setIn_sum_os_val_sl_mop(Double.parseDouble(jTextField4.getText()));
-        myParent.setIn_exchange_rate(Double.parseDouble(jTextField7.getText()));
+        
+        myParent.setIn_sum_os_val_sl_mop(Double.parseDouble(jTextField4.getText()));
         myParent.setUser_name(jTextField5.getText());
         
         myParent.getInternalObject().updateRow(
@@ -656,7 +664,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     }
     
     // PRINT
-  
+    
     private void loadReport() {
         myParent.loadReport();
     }
@@ -697,7 +705,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         jComboM.setSelectedIndex(getNewCurrencyIndex(myParent.getIn_id_n_money()));
         jComboD.setSelectedIndex(getNewDocumentIndex(myParent.getIn_id_order_doc()));
         jTextArea1.setText(myParent.getComment());
-
+        
     }
     
     private void initComboCR() {
@@ -784,5 +792,23 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         }
         return newindex;
     }
-    
+    private void revalidateSums(){
+        double exch = 1;
+        double sum = 1;
+        double sumos = 1;
+        
+        try {
+            exch = Double.parseDouble(this.jTextField7.getText());
+        } catch (NumberFormatException ex) {
+            
+            ex.printStackTrace();
+        }
+        try {
+            sum = Double.parseDouble(this.jTextField3.getText());
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+        }
+        sumos = exch*sum;
+        this.jTextField4.setText(""+sumos);
+    }
 }// end class
