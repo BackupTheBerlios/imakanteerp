@@ -212,7 +212,7 @@ BEGIN
 
     IF (in_comprator = 35) THEN
       INSERT INTO mida.n_product_consigment(id_pm,parcel_pc,dateofexpire_pc)
-       VALUES(in_id_pm,"000001",null);
+       VALUES(in_id_pm,"000001",(select CURDATE()));
 
     END IF;
 
