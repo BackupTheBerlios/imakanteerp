@@ -561,16 +561,16 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         try {
             rs = stm.executeQuery("SELECT id_sdtn FROM n_doc_type_user_rights WHERE id_ndtur = " + ndtur);
             while(rs.next()){
-                sdtn = rs.getInt("id_sdtn ");
+                sdtn = rs.getInt("id_sdtn");
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
             sdtn =1;
         }
         try {
-            rs = stm.executeQuery("SELECT area_nuber_sdtn FROM sl_doc_type_num WHERE id_sdtn = " + sdtn);
+            rs = stm.executeQuery("SELECT area_number_sdtn FROM sl_doc_type_num WHERE id_sdtn = " + sdtn);
             while(rs.next()){
-                sdtn = rs.getInt("id_sdtn ");
+                sdtn = rs.getInt("area_number_sdtn");
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

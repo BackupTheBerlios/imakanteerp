@@ -1249,6 +1249,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             while(rs.next()){
                 
                 casaInContrArea.put(rs.getInt("id_ndtur"),new String(rs.getString("area_number_sdtn")));;
+                System.out.println(" adsds" + rs.getString("area_number_sdtn"));
             }
             rs = stm.executeQuery(
                     StrQ + "'702'"
@@ -1256,6 +1257,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             while(rs.next()){
                 
                 casaOutContrArea.put(rs.getInt("id_ndtur"),new String(rs.getString("area_number_sdtn")));;
+                System.out.println(" adsds" + rs.getString("area_number_sdtn"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -1281,7 +1283,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     //
      private void loadLevelKasi(){
         if (!this.casaInContrArea.isEmpty()){
-            imakante.sales.levelDialog level = new imakante.sales.levelDialog(this, true, 701, this.getOrderArea());
+            imakante.sales.levelDialog level = new imakante.sales.levelDialog(this, true, 701, casaInContrArea);
             //  desktopPane.add(level);
             level.setVisible(true); } else{System.out.println("Empty hash");};
             

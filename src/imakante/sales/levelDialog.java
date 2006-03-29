@@ -28,7 +28,7 @@ public class levelDialog extends javax.swing.JDialog {
         jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setUndecorated(true);
+        setLocationByPlatform(true);
         jLabel1.setText("\u041d\u0418\u0412\u041e:");
 
         jLabel2.setText("\u041f\u0410\u0420\u041e\u041b\u0410:");
