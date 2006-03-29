@@ -8,11 +8,11 @@ import java.util.HashMap;
 
 public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
-    public FrmCaseOperation(String title,imakante.com.vcomponents.iFrame frame,int level, int sdtn) {
+    public FrmCaseOperation(String title,imakante.com.vcomponents.iFrame frame,int level, int ndtur) {
         super(title);
         myframe = frame;
         this.level = level;
-        this.sdtn = sdtn;
+        this.ndtur = ndtur;
         prepareConn();     // zapazva connection
         constructObject(); // inicializira class otgovarq6t za vryzkata s DB
         initTable();
@@ -423,6 +423,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     
     //--------------- My Variables
     private int level = 1;
+    private int ndtur = 1;
     private int sdtn = 1;
     private java.util.Date currDate;
     private Calendar m_calendar = Calendar.getInstance();
@@ -552,6 +553,18 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     }
     
     private void constructObject() {
+        if(stm == null){
+        prepareStm();
+            try {
+                rs = stm.executeQuery("SELECT id_sdtn FROM n_doc_type_user_rights WHERE id_ndtur = " + ndtur);
+                while(rs.next()){
+                sdtn = rs.getInt("id_sdtn ");
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                sdtn =1;
+            }
+        }
         try {
             internalObject = new imakante.sales.casaOp(conn, this.level, this.sdtn);
         } catch(Exception e) { e.printStackTrace(); }
