@@ -185,14 +185,16 @@ public class selectDataOfDocFacade   extends imakante.com.vcomponents.iDialog
                        if(isDistributor) // true  - ditributor
                        {
                          int ID = (Integer)table.getValueAt(row,getColumnIndex("id_ls_n_person"));
-                         codeDistributorDeliver = (String)table.getValueAt(row,getColumnIndex(columnName[1])); 
+                         int codeD = (Integer)table.getValueAt(row,getColumnIndex(columnName[1]));
+                         codeDistributorDeliver = String.valueOf(codeD); 
                          myParent.setID_Distributor(ID);
                          myParent.setDistributorDocFacade(codeDistributorDeliver);
                        }
                        else // false deliver
                        {
                          int ID = (Integer)table.getValueAt(row,getColumnIndex("id_ls_n_person"));
-                         codeDistributorDeliver = (String)table.getValueAt(row,getColumnIndex(columnName[1]));
+                         int codeD = (Integer)table.getValueAt(row,getColumnIndex(columnName[1]));
+                         codeDistributorDeliver = String.valueOf(codeD);
                          myParent.setID_Deliver(ID);
                          myParent. setDeliverDocFacade(codeDistributorDeliver);   
                        }
