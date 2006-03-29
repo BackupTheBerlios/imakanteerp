@@ -24,7 +24,7 @@ public class casaOp  extends dbObject {
   //  private java.sql.CallableStatement cstm;
     
     private int level = 1;
-    
+    private     int in_id_sdtn  = 1;
 //              IN in_id INT(11),
 //              IN in_number_sl_mop INT(11), code go zamenia v obekta
     private     int in_in_sl_mop=1;
@@ -38,7 +38,7 @@ public class casaOp  extends dbObject {
     private     double in_sum_sl_mop = 0;
     private     double in_sum_os_val_sl_mop = 0;
     private     int in_user_id  = imakante.com.NewMain.getUserId();
-    private     int in_id_sdtn  = 1;
+    
 //              IN in_comment_sl_mop VARCHAR(250)) comment
 //
     // SEARCH VARIABLES

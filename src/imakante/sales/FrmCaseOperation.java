@@ -555,7 +555,9 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     private void constructObject() {
         if(stm == null){
         prepareStm();
-            try {
+           
+        }
+         try {
                 rs = stm.executeQuery("SELECT id_sdtn FROM n_doc_type_user_rights WHERE id_ndtur = " + ndtur);
                 while(rs.next()){
                 sdtn = rs.getInt("id_sdtn ");
@@ -564,7 +566,6 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
                 ex.printStackTrace();
                 sdtn =1;
             }
-        }
         try {
             internalObject = new imakante.sales.casaOp(conn, this.level, this.sdtn);
         } catch(Exception e) { e.printStackTrace(); }
