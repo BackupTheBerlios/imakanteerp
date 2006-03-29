@@ -89,7 +89,7 @@ BEGIN
                in_in_sl_mop,
                1,
                in_outsl_mop,
-               3,
+               4,
                in_id_order_spec,
                1,
                in_id_order_doc,
@@ -110,7 +110,7 @@ BEGIN
                                       sl_m_operation.in_sl_mop = in_in_sl_mop,
                                       sl_m_operation.in_type_sl_mop = 1,
                                       sl_m_operation.out_sl_mop = in_outsl_mop,
-                                      sl_m_operation.out_type_sl_mop = 3,
+                                      sl_m_operation.out_type_sl_mop = 4,
                                       sl_m_operation.id_order_spec = in_id_order_spec,
                                       sl_m_operation.id_order_spec_type = 1,
                                       sl_m_operation.id_order_doc = in_id_order_doc,
@@ -167,7 +167,7 @@ BEGIN
             sl_m_operation.out_sl_mop = ANY (SELECT ls_n_person.id_ls_n_person FROM ls_n_person WHERE ls_n_person.code_ls_n_person BETWEEN in_personBegin AND in_personEnd ) AND
             sl_m_operation.date_is BETWEEN  in_data_begin AND in_data_end AND
             sl_m_operation.in_type_sl_mop = 1 AND
-            sl_m_operation.out_type_sl_mop = 3 AND
+            sl_m_operation.out_type_sl_mop = 4 AND
             sl_m_operation.id_sdtn = in_id_sdtn AND
             sl_m_operation.levelx = in_level;
 
