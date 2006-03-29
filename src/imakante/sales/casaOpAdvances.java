@@ -51,7 +51,7 @@ public class casaOpAdvances  extends imakante.com.dbObject {
     protected void prepareCstm() {
         try {
             
-            setCstm(getConn().prepareCall("{call sl_procedure_case_in(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
+            setCstm(getConn().prepareCall("{call sl_procedure_case_advances(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
             
         } catch (java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }

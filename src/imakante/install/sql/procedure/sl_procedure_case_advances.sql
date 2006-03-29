@@ -1,7 +1,7 @@
 DELIMITER $$
 
-DROP PROCEDURE IF EXISTS sl_procedure_case_in_advances $$
-CREATE PROCEDURE sl_procedure_case_in_advances (
+DROP PROCEDURE IF EXISTS sl_procedure_case_advances $$
+CREATE PROCEDURE sl_procedure_case_advances (
               IN comprator INT(6),
               IN in_id INT(11),
               IN in_number_sl_mop INT(11),
