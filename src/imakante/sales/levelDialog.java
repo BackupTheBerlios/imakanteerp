@@ -191,7 +191,7 @@ public class levelDialog extends javax.swing.JDialog {
         switch (modul){
             
             case 1:frame.loadImport();
-            
+            case 701: frame.loadKassss(getLevel(), getKey());
             default:;break;
         }
         

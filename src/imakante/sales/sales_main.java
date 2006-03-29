@@ -745,7 +745,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_fakMenu_danActionPerformed
     
     private void orderMenu_prihActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderMenu_prihActionPerformed
-        this.loadKassss();
+       loadLevelKasi();
     }//GEN-LAST:event_orderMenu_prihActionPerformed
     
     private void jMenuItem9DTURActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9DTURActionPerformed
@@ -1047,8 +1047,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     
     private int currentLevel = 1;
     
-    private static LinkedHashMap OrderArea = new LinkedHashMap();
-    private static LinkedHashMap FaktArea = new LinkedHashMap();
+    private static LinkedHashMap OrderArea = new LinkedHashMap(); //stokovi
+    private static LinkedHashMap FaktArea = new LinkedHashMap(); // fakturi
+    
+    private static LinkedHashMap casaInContrArea = new LinkedHashMap(); // prihodni orderi kasa kontragent
+    private static LinkedHashMap casaOutContrArea = new LinkedHashMap(); //razhodni orderi kasa kontragent
+    
     
     private void loadLevelDialog(int ModuleCode, LinkedHashMap hash){
         levelDialog lDialog = new levelDialog(this, true, ModuleCode, hash);
@@ -1239,7 +1243,20 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
                 
                 getFaktArea().put(rs.getInt("id_ndtur"),new String(rs.getString("area_number_sdtn")));;
             }
-            
+            rs = stm.executeQuery(
+                    StrQ + "'701'"
+                    );
+            while(rs.next()){
+                
+                casaInContrArea.put(rs.getInt("id_ndtur"),new String(rs.getString("area_number_sdtn")));;
+            }
+            rs = stm.executeQuery(
+                    StrQ + "'702'"
+                    );
+            while(rs.next()){
+                
+                casaOutContrArea.put(rs.getInt("id_ndtur"),new String(rs.getString("area_number_sdtn")));;
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -1262,8 +1279,16 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
      *
      */
     //
-    private void loadKassss(){
-        imakante.sales.FrmCaseOperation cs = new imakante.sales.FrmCaseOperation("\u041f\u0420\u0418\u0425\u041e\u0414\u041d\u0418 \u041e\u0420\u0414\u0415\u0420\u0418", this, 1, 1);
+     private void loadLevelKasi(){
+        if (!this.casaInContrArea.isEmpty()){
+            imakante.sales.levelDialog level = new imakante.sales.levelDialog(this, true, 701, this.getOrderArea());
+            //  desktopPane.add(level);
+            level.setVisible(true); } else{System.out.println("Empty hash");};
+            
+    }
+    
+    public void loadKassss(int l, int ndt){
+        imakante.sales.FrmCaseOperation cs = new imakante.sales.FrmCaseOperation("\u041f\u0420\u0418\u0425\u041e\u0414\u041d\u0418 \u041e\u0420\u0414\u0415\u0420\u0418", this, l, ndt);
         desktopPane.add(cs);
         cs.setVisible(true);
     }
