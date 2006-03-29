@@ -3876,10 +3876,10 @@ private void repainDistDeliv(String dist,String devil,String date)
 }
 private double getRate(String valuta)
 {
-    double rate =0;
-    
-    rate =(Double) arrayRate.get(valuta);
-    
+    double rate =1;
+//    
+//    rate =(Double) arrayRate.get(valuta);
+//    
     return rate;
 }
  public  int[] getDateAsInt(String in) 
