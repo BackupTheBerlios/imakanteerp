@@ -1145,6 +1145,8 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         imakante.sales.aeCaseOpReport cor = new imakante.sales.aeCaseOpReport(this, true, getConn(), hm, jasperFile);
         cor.setVisible(true);
     }
+    
+    
     private String fillZero(int Inp){
         String p = "0000000";
         p = String.valueOf(Inp);

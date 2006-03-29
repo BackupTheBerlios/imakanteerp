@@ -1727,7 +1727,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private boolean isDocFacadeCreate = false;
     private boolean isCheckOne = false;
     private HashMap  rows=null;
-    private double rate = 0;
+    private double rate = 1; //VALUTA
     private HashMap arrayRate = new HashMap();
 //----------------------------------------
     
