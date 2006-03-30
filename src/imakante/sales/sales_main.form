@@ -141,6 +141,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x420;&#x430;&#x437;&#x445;&#x43e;&#x434;&#x43d;&#x438;"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="orderMenu_razhActionPerformed"/>
+                  </Events>
                 </MenuItem>
               </SubComponents>
             </Menu>

@@ -312,6 +312,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         kasaMenu_order.add(orderMenu_prih);
 
         orderMenu_razh.setText("\u0420\u0430\u0437\u0445\u043e\u0434\u043d\u0438");
+        orderMenu_razh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderMenu_razhActionPerformed(evt);
+            }
+        });
+
         kasaMenu_order.add(orderMenu_razh);
 
         kasaMenu.add(kasaMenu_order);
@@ -692,6 +698,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-448)/2, 757, 448);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void orderMenu_razhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderMenu_razhActionPerformed
+   this.loadLeveCasiOut();
+    }//GEN-LAST:event_orderMenu_razhActionPerformed
 
     private void kasaMenu_advActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kasaMenu_advActionPerformed
         int level = 1;
@@ -1309,13 +1319,27 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             
     }
     
+    
     public void loadKassss(int l, int ndt){
         imakante.sales.FrmCaseOperation cs = new imakante.sales.FrmCaseOperation("\u041f\u0420\u0418\u0425\u041e\u0414\u041d\u0418 \u041e\u0420\u0414\u0415\u0420\u0418", this, l, ndt);
         desktopPane.add(cs);
         cs.setVisible(true);
     }
     
+     private void loadLeveCasiOut(){
+        if (!this.casaOutContrArea.isEmpty()){
+            imakante.sales.levelDialog level = new imakante.sales.levelDialog(this, true, 702, casaOutContrArea);
+            //  desktopPane.add(level);
+            level.setVisible(true); } else{System.out.println("Empty hash");};
+            
+    }
     
+    
+    public void loadCasaOut(int l, int ndt){
+        imakante.sales.FrmCaseOperationOut cs = new imakante.sales.FrmCaseOperationOut("Разходни касови ордери", this, l, ndt);
+        desktopPane.add(cs);
+        cs.setVisible(true);
+    }
     
     
     
