@@ -505,7 +505,7 @@ public class FrmCaseOperationOut extends  imakante.com.vcomponents.iInternalFram
     
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     
-    private String jasperFile = "/imakante/sales/jasper/inorder.jasper";
+    private String jasperFile = "/imakante/sales/jasper/outorder.jasper";
     
     //---------------END My Variables
     
