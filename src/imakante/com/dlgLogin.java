@@ -17,7 +17,7 @@ public class dlgLogin extends javax.swing.JDialog {
     
     private String sMsgTitle;
     private Properties prop = new Properties();
-
+    
     private ResultSet rs;
     /** Creates new form dlgLogin */
     public dlgLogin(java.awt.Frame parent, boolean modal) {
@@ -71,7 +71,7 @@ public class dlgLogin extends javax.swing.JDialog {
         }
     }
     
-  
+    
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         jPanel1 = new javax.swing.JPanel();
@@ -247,31 +247,37 @@ public class dlgLogin extends javax.swing.JDialog {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-374)/2, (screenSize.height-239)/2, 374, 239);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jPassFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPassFieldKeyPressed
-// TODO add your handling code here:
+        if(java.awt.event.KeyEvent.VK_ENTER== evt.getKeyCode()){
+            jPassField.transferFocus();
+        }
     }//GEN-LAST:event_jPassFieldKeyPressed
-
+    
     private void jUserTxtFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jUserTxtFieldKeyPressed
-// TODO add your handling code here:
+        if(java.awt.event.KeyEvent.VK_ENTER== evt.getKeyCode()){
+            jUserTxtField.transferFocus();
+        }
     }//GEN-LAST:event_jUserTxtFieldKeyPressed
-
+    
     private void jLabelComboKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabelComboKeyPressed
-// TODO add your handling code here:
+        if(java.awt.event.KeyEvent.VK_ENTER== evt.getKeyCode()){
+            jLabelCombo.transferFocus();
+        }
     }//GEN-LAST:event_jLabelComboKeyPressed
-
+    
     private void jPassFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPassFieldActionPerformed
 // TODO add your handling code here:
     }//GEN-LAST:event_jPassFieldActionPerformed
-
+    
     private void jUserTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUserTxtFieldActionPerformed
 // TODO add your handling code here:
     }//GEN-LAST:event_jUserTxtFieldActionPerformed
-
+    
     private void jLabelComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLabelComboActionPerformed
 // TODO add your handling code here:
     }//GEN-LAST:event_jLabelComboActionPerformed
-
+    
     private void jLoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginBtnActionPerformed
         String DBDriver;
         String DBSource;
@@ -286,9 +292,9 @@ public class dlgLogin extends javax.swing.JDialog {
             if (nIndex != -1) {
                 // Prepare connection info
                 sKey = "Driver"+String.valueOf(nIndex+1);
-                DBDriver = prop.getProperty(sKey);    
+                DBDriver = prop.getProperty(sKey);
                 sKey = "URL"+String.valueOf(nIndex+1);
-                DBSource = prop.getProperty(sKey);    
+                DBSource = prop.getProperty(sKey);
                 DBUserName = jUserTxtField.getText();
                 DBPassword = new String(jPassField.getPassword());
                 // Login
@@ -300,13 +306,13 @@ public class dlgLogin extends javax.swing.JDialog {
                 NewMain.setPassword(DBPassword);
                 stm = dbConn.createStatement();
                 rs = stm.executeQuery("SELECT id_um, name_um FROM user_master WHERE acc_user = '"+ DBUserName+"'");
-                    while(rs.next()){
+                while(rs.next()){
                     userId = rs.getInt("id_um");
                     NewMain.setUserId(userId);
                     userName = rs.getString("name_um");
                     NewMain.setUserName(userName);
-                    }
-               NewMain.setParamFirm();
+                }
+                NewMain.setParamFirm();
             } else {
                 JOptionPane.showMessageDialog(null,"Моля изберете фирма и опитайте отново !",sMsgTitle,JOptionPane.WARNING_MESSAGE);
             }
@@ -317,11 +323,14 @@ public class dlgLogin extends javax.swing.JDialog {
             System.err.println("SQLException: " + e.getMessage());
             JOptionPane.showMessageDialog(null,"Възникна проблем при опита за връзка с базата.",sMsgTitle,JOptionPane.WARNING_MESSAGE);
             e.printStackTrace();
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null,"Възникна проблем при опита за връзка с базата.",sMsgTitle,JOptionPane.WARNING_MESSAGE);
+            this.jUserTxtField.requestFocus();
         }
         // Close dialog
-                this.dispose();
+        this.dispose();
     }//GEN-LAST:event_jLoginBtnActionPerformed
-
+    
     private void jCancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCancelBtnActionPerformed
         this.dispose();
     }//GEN-LAST:event_jCancelBtnActionPerformed
