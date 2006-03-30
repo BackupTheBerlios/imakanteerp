@@ -172,7 +172,10 @@ public class NewMain extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
     
     private void jBSalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalesActionPerformed
-        loadSalesMain();
+        if(this.getConnection()==null){
+        loginDialog();
+        }else{
+        loadSalesMain();}
     }//GEN-LAST:event_jBSalesActionPerformed
     
     

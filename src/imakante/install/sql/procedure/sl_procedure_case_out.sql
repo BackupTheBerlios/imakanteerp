@@ -1,4 +1,4 @@
-﻿ DELIMITER $$
+﻿DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `mida`.`sl_procedure_case_out` $$
 CREATE PROCEDURE `sl_procedure_case_out`(
@@ -86,10 +86,10 @@ BEGIN
                                       `sl_m_operation`.`id_sdtn`,
                                       `sl_m_operation`.`comment_sl_mop`)
         VALUES(in_number_sl_mop,
-               in_in_sl_mop,
-               1,
                in_outsl_mop,
                3,
+               in_in_sl_mop,
+               1,
                in_id_order_spec,
                1,
                in_id_order_doc,
@@ -107,9 +107,9 @@ BEGIN
      IF (comprator = 2) THEN
         UPDATE `sl_m_operation` SET
                                       `sl_m_operation`.`number_sl_mop` =  in_number_sl_mop,
-                                      `sl_m_operation`.`in_sl_mop` = in_in_sl_mop,
+                                      `sl_m_operation`.`in_sl_mop` = in_outsl_mop,
                                       `sl_m_operation`.`in_type_sl_mop` = 3,
-                                      `sl_m_operation`.`out_sl_mop` = in_outsl_mop,
+                                      `sl_m_operation`.`out_sl_mop` = in_in_sl_mop,
                                       `sl_m_operation`.`out_type_sl_mop` = 1,
                                       `sl_m_operation`.`id_order_spec` = in_id_order_spec,
                                       `sl_m_operation`.`id_order_spec_type` = 1,

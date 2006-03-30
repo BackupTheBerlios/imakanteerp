@@ -54,11 +54,11 @@ public class priceToString {
          stot = p.substring(valString.length()+1,valString.length()+3) + " ст.";
         }
         if(p.length()==valString.length()+2){
-         stot = p.substring(valString.length()+1,valString.length()+2) + "0 ст.";
+         stot = p.substring(valString.length()+1,valString.length()+2) + " 0 ст.";
         } 
         
         if(p.length()<=valString.length()+1){
-         stot =  "0 ст.";
+         stot =  " 0 ст.";
         }  
         if (valString.length()==6){
             int  l = Integer.parseInt(valString.substring(1,3));
