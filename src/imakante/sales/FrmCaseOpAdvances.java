@@ -3,7 +3,7 @@ package imakante.sales;
 
 public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
-    public FrmCaseOpAdvances(String title,imakante.com.vcomponents.iFrame frame,int level, int ndtur) {
+    public FrmCaseOpAdvances(String title, imakante.com.vcomponents.iFrame frame, int level, int ndtur) {
         super(title);
         myframe = frame;
         this.level = level;
@@ -100,8 +100,10 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11));
         jLabel4.setText("\u041e\u0422");
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11));
         jLabel5.setText("\u0414\u041e");
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -145,44 +147,44 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
                 .add(151, 151, 151)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel4Layout.createSequentialGroup()
-                        .add(jLabel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 16, Short.MAX_VALUE)
+                        .add(jLabel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .add(65, 65, 65)
                         .add(jLabel6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
                     .add(jPanel4Layout.createSequentialGroup()
-                        .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE)
+                        .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 16, Short.MAX_VALUE)
                         .add(67, 67, 67)
                         .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)))
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel4Layout.createSequentialGroup()
                         .add(5, 5, 5)
-                        .add(jtfCasaBegin, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE))
+                        .add(jtfCasaBegin, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE))
                     .add(jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jtfCasaEND, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)))
+                        .add(jtfCasaEND, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)))
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel4Layout.createSequentialGroup()
                         .add(5, 5, 5)
-                        .add(jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                        .add(jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                         .add(5, 5, 5)
-                        .add(jtfContragentBEGIN, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE))
+                        .add(jtfContragentBEGIN, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE))
                     .add(jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jLabel7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                        .add(jLabel7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jtfContragentEND, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)))
+                        .add(jtfContragentEND, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel4Layout.createSequentialGroup()
                         .add(jLabel8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jXDatePickerEND, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 129, Short.MAX_VALUE))
+                        .add(jXDatePickerEND, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
                     .add(jPanel4Layout.createSequentialGroup()
                         .add(jLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jXDatePickerBEGIN, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 128, Short.MAX_VALUE)))
                 .add(17, 17, 17)
-                .add(jButtonSearch, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 95, Short.MAX_VALUE)
-                .add(129, 129, 129))
+                .add(jButtonSearch)
+                .add(127, 127, 127))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -218,12 +220,12 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
                             .add(jtfCasaEND, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(jLabel7)
                             .add(jtfContragentEND, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jLabel8)))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(jButtonSearch)
-                        .add(17, 17, 17)))
+                            .add(jLabel8))))
                 .addContainerGap())
+            .add(jPanel4Layout.createSequentialGroup()
+                .add(25, 25, 25)
+                .add(jButtonSearch)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
@@ -460,7 +462,7 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
     private  java.sql.Connection conn;
     private  java.sql.Statement stm;
     private  java.sql.ResultSet rs;
-    private  imakante.sales.casaOp internalObject;
+    private  imakante.sales.casaOpAdvances internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
     
@@ -470,7 +472,7 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
         "\u043d\u043e\u043c\u0435\u0440",             //         1. (V) - Visible
         "id_casa",            //         2. (H)
         "\u043a\u043e\u0434 \u043a\u0430\u0441\u0430",          //         3. (V)
-        "id_contragent",      //         4. (H)
+        "id_person",      //         4. (H)
         "\u041a\u043e\u0434 \u043d\u0430 \u041c\u041e\u041b",     //         5. (V)
         "\u0418\u043c\u0435 \u043d\u0430 \u041c\u041e\u041b",    //         6. (V)
         "\u0441\u0432\u044a\u0440\u0437\u0430\u043d \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442",          //         7. (V)
@@ -496,16 +498,16 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
     private  int CompNumber = 0;
     
     private String strContragent = "SELECT "
-            + "`n_contragent`.`code_contragent`, `n_contragent`.`name_n_contragent`"
-            + "FROM `n_contragent` WHERE `n_contragent`.`code_contragent` LIKE  '%";
+            + "ls_n_person.code_ls_n_person, ls_n_person.name_ls_n_person"
+            + "FROM ls_n_person WHERE ls_n_person.code_ls_n_person LIKE '%";
     
     private String strCasa =  "SELECT "
-            + "`n_casa`.`code_n_casa`, `n_casa`.`name_n_casa`"
-            + "FROM `n_casa` WHERE `n_casa`.`code_n_casa` LIKE  '%";
+            + "n_casa.code_n_casa, n_casa.name_n_casa "
+            + "FROM n_casa WHERE n_casa.code_n_casa LIKE  '%";
     
     java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd");
     
-    private String jasperFile = "/imakante/sales/jasper/inorder.jasper";
+    private String jasperFile = "/imakante/sales/jasper/advancesorder.jasper";
     
     //---------------END My Variables
     
@@ -561,14 +563,14 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
         try {
             rs = stm.executeQuery("SELECT id_sdtn FROM n_doc_type_user_rights WHERE id_ndtur = " + ndtur);
             while(rs.next()){
-                sdtn = rs.getInt("id_sdtn ");
+                sdtn = rs.getInt("id_sdtn");
             }
         } catch (java.sql.SQLException ex) {
             ex.printStackTrace();
             sdtn =1;
         }
         try {
-            internalObject = new imakante.sales.casaOp(conn, this.level, this.sdtn);
+            internalObject = new imakante.sales.casaOpAdvances(conn, this.level, this.sdtn);
         } catch(Exception e) { e.printStackTrace(); }
     }
     
@@ -579,7 +581,7 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
             table = new imakante.com.CustomTable(model);
             HideColumns(getColumnIndex("id"));
             HideColumns(getColumnIndex("id_casa"));
-            HideColumns(getColumnIndex("id_contragent"));
+            HideColumns(getColumnIndex("id_person"));
             HideColumns(getColumnIndex("id_df"));
             HideColumns(getColumnIndex("id_order_doc"));
             HideColumns(getColumnIndex("id_n_money"));
@@ -664,28 +666,28 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
     
     private void processField4() {
         if(this.jtfContragentBEGIN.getText()==""){this.jtfContragentBEGIN.setText("0");}
-        String newString = strContragent + this.jtfContragentEND.getText() + "%' AND `n_contragent`.`code_contragent` >= " + this.jtfContragentBEGIN.getText() + ";";
+        String newString = strContragent + this.jtfContragentEND.getText() + "%' AND ls_n_person.code_ls_n_person` >= " + this.jtfContragentBEGIN.getText() + ";";
         constructDialod(newString, 4, Names);
     }
     public void setIntTransfer(int intTransfer) {
         this.intTransfer = intTransfer;
-        if (CompNumber == 0){}
-        if(CompNumber == 1){
-            this.jtfCasaBegin.setText(""+this.intTransfer);}
-        if(CompNumber == 2){
-            this.jtfCasaEND.setText(""+this.intTransfer);}
-        if(CompNumber == 3){
-            this.jtfContragentBEGIN.setText(""+this.intTransfer);}
-        if(CompNumber == 4){
-            this.jtfContragentEND.setText(""+this.intTransfer);}
+        if (CompNumber == 0) {}
+        if(CompNumber == 1) {
+            this.jtfCasaBegin.setText("" + this.intTransfer); }
+        if(CompNumber == 2) {
+            this.jtfCasaEND.setText("" + this.intTransfer); }
+        if(CompNumber == 3) {
+            this.jtfContragentBEGIN.setText("" + this.intTransfer); }
+        if(CompNumber == 4) {
+            this.jtfContragentEND.setText("" + this.intTransfer); }
         
     }
     
-    public imakante.sales.casaOp getInternalObject() {
+    public imakante.sales.casaOpAdvances getInternalObject() {
         return internalObject;
     }
     
-    public void setInternalObject(imakante.sales.casaOp val) {
+    public void setInternalObject(imakante.sales.casaOpAdvances val) {
         this.internalObject = val;
     }
     
@@ -780,7 +782,7 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
         setRow(getMaxRow());
         try{
             setAllVariables();
-            table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
+            table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
             System.out.println("problem");
@@ -870,7 +872,7 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
             table = new imakante.com.CustomTable(model);
             HideColumns(getColumnIndex("id"));
             HideColumns(getColumnIndex("id_casa"));
-            HideColumns(getColumnIndex("id_contragent"));
+            HideColumns(getColumnIndex("id_person"));
             HideColumns(getColumnIndex("id_df"));
             HideColumns(getColumnIndex("id_order_doc"));
             HideColumns(getColumnIndex("id_n_money"));
@@ -888,7 +890,7 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
         table = new imakante.com.CustomTable(model);
         HideColumns(getColumnIndex("id"));
         HideColumns(getColumnIndex("id_casa"));
-        HideColumns(getColumnIndex("id_contragent"));
+        HideColumns(getColumnIndex("id_person"));
         HideColumns(getColumnIndex("id_df"));
         HideColumns(getColumnIndex("id_order_doc"));
         HideColumns(getColumnIndex("id_n_money"));
@@ -906,8 +908,8 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
         setAllVariables();
         setAtBegining(false);
         setAtEnd(true);
-        imakante.sales.aeCaseOp ae_Casa = new imakante.sales.aeCaseOp(this, false);
-        ae_Casa.setVisible(true);
+        imakante.sales.aeCaseOpAdvances ae_Adva = new imakante.sales.aeCaseOpAdvances(this, false);
+        ae_Adva.setVisible(true);
         refreshTable();
         setButtonEnabled();
     }
@@ -925,8 +927,8 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
                 setAtEnd(false);
             }
             setAllVariables();
-            imakante.sales.aeCaseOp ae_Casa = new imakante.sales.aeCaseOp(this, false);
-            ae_Casa.setVisible(true);
+            imakante.sales.aeCaseOpAdvances ae_Adva = new imakante.sales.aeCaseOpAdvances(this, false);
+            ae_Adva.setVisible(true);
         } else {  }
     }
     
@@ -987,7 +989,7 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
         setCode((Integer) table.getValueAt(getRow(), getColumnIndex("\u043d\u043e\u043c\u0435\u0440")));
         setIn_in_sl_mop((Integer) table.getValueAt(getRow(), getColumnIndex("id_casa")));
         in_code_casa = (Integer) table.getValueAt(getRow(), getColumnIndex( "\u043a\u043e\u0434 \u043a\u0430\u0441\u0430"));
-        setIn_outsl_mop((Integer) table.getValueAt(getRow(), getColumnIndex("id_contragent")));
+        setIn_outsl_mop((Integer) table.getValueAt(getRow(), getColumnIndex("id_person")));
         
         setContragent_cod((Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434 \u043d\u0430 \u041c\u041e\u041b")));
         setContragent_name((String)table.getValueAt(getRow(), getColumnIndex( "\u0418\u043c\u0435 \u043d\u0430 \u041c\u041e\u041b")));

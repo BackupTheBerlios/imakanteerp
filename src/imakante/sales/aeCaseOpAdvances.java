@@ -1,14 +1,11 @@
 
 package imakante.sales;
 
-import java.util.Date;
-import java.util.HashMap;
-
 public class aeCaseOpAdvances extends imakante.com.vcomponents.iDialog {
     
     public aeCaseOpAdvances(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
         super(frame, modal);
-        this.myParent = (imakante.sales.FrmCaseOperation) frame;
+        this.myParent = (imakante.sales.FrmCaseOpAdvances) frame;
         initComponents();
         getNavigationState();
         jButtonUndo.setEnabled(false);
@@ -567,8 +564,8 @@ public class aeCaseOpAdvances extends imakante.com.vcomponents.iDialog {
     private javax.swing.JButton jbPrint;
     // End of variables declaration//GEN-END:variables
     //--------------- My Variables
-    private imakante.sales.FrmCaseOperation myParent;
-    private String jasperFile = "/imakante/sales/jasper/inorder.jasper";
+    private imakante.sales.FrmCaseOpAdvances myParent;
+    private String jasperFile = "/imakante/sales/jasper/advancesorder.jasper";
     private java.util.HashMap hm = null;
     private int NumDocument = 0;            // igrae rolqta na Code - getCode() ot dbObject
     private int Contragent = 0;
@@ -693,7 +690,7 @@ public class aeCaseOpAdvances extends imakante.com.vcomponents.iDialog {
         jTextField7.setText(""+ myParent.getIn_exchange_rate());
         jTextField5.setText(""+ myParent.getUser_name());
         try {
-            this.jXDatePicker1.setDate((Date)formatterG.parse(myParent.getIn_DATE()));
+            this.jXDatePicker1.setDate((java.util.Date)formatterG.parse(myParent.getIn_DATE()));
         } catch (java.text.ParseException ex) { ex.printStackTrace(); }
         jComboCR.setSelectedIndex(getNewCashRegIndex(myParent.getIn_in_sl_mop()));
         jComboM.setSelectedIndex(getNewCurrencyIndex(myParent.getIn_id_n_money()));
@@ -786,23 +783,18 @@ public class aeCaseOpAdvances extends imakante.com.vcomponents.iDialog {
         }
         return newindex;
     }
-    private void revalidateSums(){
+    
+    private void revalidateSums() {
         double exch = 1;
         double sum = 1;
         double sumos = 1;
-        
         try {
             exch = Double.parseDouble(this.jTextField7.getText());
-        } catch (NumberFormatException ex) {
-            
-            ex.printStackTrace();
-        }
+        } catch (NumberFormatException ex) { ex.printStackTrace(); }
         try {
             sum = Double.parseDouble(this.jTextField3.getText());
-        } catch (NumberFormatException ex) {
-            ex.printStackTrace();
-        }
-        sumos = exch*sum;
-        this.jTextField4.setText(""+sumos);
+        } catch (NumberFormatException ex) { ex.printStackTrace(); }
+        sumos = exch * sum;
+        this.jTextField4.setText("" + sumos);
     }
 }// end class

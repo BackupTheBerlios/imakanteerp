@@ -94,12 +94,12 @@
                       <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="1">
-                              <Component id="jLabel5" pref="16" max="32767" attributes="0"/>
+                              <Component id="jLabel5" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="65" max="-2" attributes="1"/>
                               <Component id="jLabel6" pref="28" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel4" pref="14" max="32767" attributes="0"/>
+                              <Component id="jLabel4" pref="16" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="67" max="-2" attributes="1"/>
                               <Component id="jLabel2" pref="28" max="32767" attributes="0"/>
                           </Group>
@@ -107,25 +107,25 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="5" max="-2" attributes="1"/>
-                              <Component id="jtfCasaBegin" pref="86" max="32767" attributes="0"/>
+                              <Component id="jtfCasaBegin" pref="83" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="1">
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="jtfCasaEND" pref="87" max="32767" attributes="0"/>
+                              <Component id="jtfCasaEND" pref="84" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                              <Component id="jLabel3" pref="37" max="32767" attributes="0"/>
+                              <Component id="jLabel3" pref="36" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="5" max="-2" attributes="1"/>
-                              <Component id="jtfContragentBEGIN" pref="78" max="32767" attributes="0"/>
+                              <Component id="jtfContragentBEGIN" pref="76" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="1">
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel7" pref="37" max="32767" attributes="0"/>
+                              <Component id="jLabel7" pref="36" max="32767" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="jtfContragentEND" pref="80" max="32767" attributes="0"/>
+                              <Component id="jtfContragentEND" pref="78" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -142,8 +142,8 @@
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                      <Component id="jButtonSearch" pref="95" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
+                      <Component id="jButtonSearch" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -192,13 +192,13 @@
                                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="14" max="-2" attributes="0"/>
-                              <Component id="jButtonSearch" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="jButtonSearch" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="27" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -256,11 +256,17 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="&#x41e;&#x422;"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="&#x414;&#x41e;"/>
               </Properties>
             </Component>
