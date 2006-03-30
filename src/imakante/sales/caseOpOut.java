@@ -295,8 +295,8 @@ public class caseOpOut  extends dbObject {
             
             
             while(getRs().next()) {
-                Gropes.put(new Integer(getRs().getInt("id_n_incoms")),new String(getRs().getString("name_n_incoms")));
-                in.add(new Integer(getRs().getInt("id_n_incoms")));
+                Gropes.put(new Integer(getRs().getInt("id_n_expens")),new String(getRs().getString("name_n_expens")));
+                in.add(new Integer(getRs().getInt("id_n_expens")));
                 i++;
             }
         } catch(Exception e) {

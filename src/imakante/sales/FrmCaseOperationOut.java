@@ -570,7 +570,7 @@ public class FrmCaseOperationOut extends  imakante.com.vcomponents.iInternalFram
         try {
             rs = stm.executeQuery("SELECT area_number_sdtn FROM sl_doc_type_num WHERE id_sdtn = " + sdtn);
             while(rs.next()){
-                sdtn = rs.getInt("area_number_sdtn");
+                area = "" + rs.getInt("area_number_sdtn");
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

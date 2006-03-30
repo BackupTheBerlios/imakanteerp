@@ -11,7 +11,7 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
     
     public aeCaseOpOut(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
         super(frame, modal);
-        this.myParent = (imakante.sales.FrmCaseOperation) frame;
+        this.myParent = (imakante.sales.FrmCaseOperationOut) frame;
         initComponents();
         getNavigationState();
         jButtonUndo.setEnabled(false);
@@ -637,8 +637,8 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
     private javax.swing.JButton jbPrint;
     // End of variables declaration//GEN-END:variables
     //--------------- My Variables
-    private imakante.sales.FrmCaseOperation myParent;
-    private String jasperFile = "/imakante/sales/jasper/inorder.jasper";
+    private imakante.sales.FrmCaseOperationOut myParent;
+   
     private java.util.HashMap hm = null;
     private int NumDocument = 0;            // igrae rolqta na Code - getCode() ot dbObject
     private int Contragent = 0;
