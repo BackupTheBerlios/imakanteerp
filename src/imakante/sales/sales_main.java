@@ -90,6 +90,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         kasaMenu_order = new javax.swing.JMenu();
         orderMenu_prih = new javax.swing.JMenuItem();
         orderMenu_razh = new javax.swing.JMenuItem();
+        kasaMenu_adv = new javax.swing.JMenuItem();
         kasaMenu_nal = new javax.swing.JMenuItem();
         kasaMenu_dvi = new javax.swing.JMenuItem();
         kasaMenu_opis = new javax.swing.JMenuItem();
@@ -314,6 +315,15 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         kasaMenu_order.add(orderMenu_razh);
 
         kasaMenu.add(kasaMenu_order);
+
+        kasaMenu_adv.setText("\u0410\u0432\u0430\u043d\u0441\u0438");
+        kasaMenu_adv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kasaMenu_advActionPerformed(evt);
+            }
+        });
+
+        kasaMenu.add(kasaMenu_adv);
 
         kasaMenu_nal.setText("\u041d\u0430\u043b\u0438\u0447\u043d\u043e\u0441\u0442 \u0432 \u043a\u0430\u0441\u0438");
         kasaMenu.add(kasaMenu_nal);
@@ -683,8 +693,13 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         setBounds((screenSize.width-757)/2, (screenSize.height-448)/2, 757, 448);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void kasaMenu_advActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kasaMenu_advActionPerformed
+        int level = 1;
+        int ndtur = 3;
+        loadAdvances(level, ndtur);
+    }//GEN-LAST:event_kasaMenu_advActionPerformed
+
     private void docMenu_offerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docMenu_offerActionPerformed
-// TODO add your handling code here:
         int user = 2;
         int level = 1;
         int pricelist = 1;
@@ -694,7 +709,6 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_docMenu_offerActionPerformed
 
     private void razpMenu_prehvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_razpMenu_prehvActionPerformed
-// TODO add your handling code here:
         int user = 2;
         int level = 1;
         int pricelist = 1;
@@ -705,7 +719,6 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_razpMenu_prehvActionPerformed
 
     private void fakMenu_oprActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fakMenu_oprActionPerformed
-// TODO add your handling code here:
         int user = 2;
         int level = 1;
         int pricelist = 1;
@@ -725,7 +738,6 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_fakMenu_oprActionPerformed
 
     private void fakMenu_danActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fakMenu_danActionPerformed
-// TODO add your handling code here:
         int user = 2;
         int level = 1;
         int pricelist = 1;
@@ -945,6 +957,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenu kasaMenu;
+    private javax.swing.JMenuItem kasaMenu_adv;
     private javax.swing.JMenuItem kasaMenu_dvi;
     private javax.swing.JMenuItem kasaMenu_nal;
     private javax.swing.JMenuItem kasaMenu_opis;
@@ -1281,7 +1294,14 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
      *
      */
     //
-     private void loadLevelKasi(){
+     
+    private void loadAdvances(int l, int ndt) {
+        imakante.sales.FrmCaseOpAdvances adv = new imakante.sales.FrmCaseOpAdvances("\u0410\u0432\u0430\u043d\u0441\u043e\u0432\u0438 \u043f\u043b\u0430\u0449\u0430\u043d\u0438\u044f \u043a\u044a\u043c \u041c\u041e\u041b", this, l, ndt);
+        desktopPane.add(adv);
+        adv.setVisible(true);
+    }
+    
+    private void loadLevelKasi(){
         if (!this.casaInContrArea.isEmpty()){
             imakante.sales.levelDialog level = new imakante.sales.levelDialog(this, true, 701, casaInContrArea);
             //  desktopPane.add(level);

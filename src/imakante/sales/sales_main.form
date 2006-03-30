@@ -144,6 +144,14 @@
                 </MenuItem>
               </SubComponents>
             </Menu>
+            <MenuItem class="javax.swing.JMenuItem" name="kasaMenu_adv">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x410;&#x432;&#x430;&#x43d;&#x441;&#x438;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kasaMenu_advActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="kasaMenu_nal">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x41d;&#x430;&#x43b;&#x438;&#x447;&#x43d;&#x43e;&#x441;&#x442; &#x432; &#x43a;&#x430;&#x441;&#x438;"/>
