@@ -221,12 +221,23 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
 
         jLabel3.setText("\u041a\u0430\u0441\u0430:");
 
+        jComboCR.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboCRKeyPressed(evt);
+            }
+        });
+
         jLabel6.setText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442:");
 
         jTextField2.setInputVerifier(new imakante.com.InputIntegerVerifier());
         jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField2FocusGained(evt);
+            }
+        });
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField2KeyPressed(evt);
             }
         });
 
@@ -240,10 +251,27 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
                 jTextField3FocusLost(evt);
             }
         });
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField3KeyPressed(evt);
+            }
+        });
 
         jLabel4.setText("\u0421\u0443\u043c\u0430:");
 
+        jComboM.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboMKeyPressed(evt);
+            }
+        });
+
         jLabel7.setText("\u0412\u0430\u043b\u0443\u0442\u0430:");
+
+        jXDatePicker1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jXDatePicker1KeyPressed(evt);
+            }
+        });
 
         jLabel8.setText("\u0414\u0430\u0442\u0430:");
 
@@ -268,8 +296,19 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
                 jTextField6FocusGained(evt);
             }
         });
+        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField6KeyPressed(evt);
+            }
+        });
 
         jLabel12.setText("\u0412\u0438\u0434 \u043e\u0440\u0434\u0435\u0440:");
+
+        jComboD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboDKeyPressed(evt);
+            }
+        });
 
         jLabel13.setText("\u0418\u043c\u0435 \u043d\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0430:");
 
@@ -395,6 +434,34 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-544)/2, (screenSize.height-420)/2, 544, 420);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboMKeyPressed
+if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jComboM.transferFocus();}
+    }//GEN-LAST:event_jComboMKeyPressed
+
+    private void jTextField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyPressed
+if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jTextField3.transferFocus();}
+    }//GEN-LAST:event_jTextField3KeyPressed
+
+    private void jComboDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboDKeyPressed
+if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jComboD.transferFocus();}
+    }//GEN-LAST:event_jComboDKeyPressed
+
+    private void jTextField6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyPressed
+if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jTextField6.transferFocus();}
+    }//GEN-LAST:event_jTextField6KeyPressed
+
+    private void jXDatePicker1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jXDatePicker1KeyPressed
+if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jXDatePicker1.transferFocus();}
+    }//GEN-LAST:event_jXDatePicker1KeyPressed
+
+    private void jComboCRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboCRKeyPressed
+ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jComboCR.transferFocus();}
+    }//GEN-LAST:event_jComboCRKeyPressed
+
+    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
+ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jTextField2.transferFocus();}
+    }//GEN-LAST:event_jTextField2KeyPressed
     
     private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
         revalidateSums();
