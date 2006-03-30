@@ -565,7 +565,7 @@ public class aeCaseOpAdvances extends imakante.com.vcomponents.iDialog {
     // End of variables declaration//GEN-END:variables
     //--------------- My Variables
     private imakante.sales.FrmCaseOpAdvances myParent;
-    private String jasperFile = "/imakante/sales/jasper/advancesorder.jasper";
+    private String jasperFile = "/imakante/sales/jasper/avans.jasper";
     private java.util.HashMap hm = null;
     private int NumDocument = 0;            // igrae rolqta na Code - getCode() ot dbObject
     private int Contragent = 0;
