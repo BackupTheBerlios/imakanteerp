@@ -916,7 +916,7 @@ public class FrmCaseOperationOut extends  imakante.com.vcomponents.iInternalFram
         setAllVariables();
         setAtBegining(false);
         setAtEnd(true);
-        imakante.sales.aeCaseOp ae_Casa = new imakante.sales.aeCaseOp(this, false);
+        imakante.sales.aeCaseOpOut ae_Casa = new imakante.sales.aeCaseOpOut(this, false);
         ae_Casa.setVisible(true);
         refreshTable();
         setButtonEnabled();
@@ -935,7 +935,7 @@ public class FrmCaseOperationOut extends  imakante.com.vcomponents.iInternalFram
                 setAtEnd(false);
             }
             setAllVariables();
-            imakante.sales.aeCaseOp ae_Casa = new imakante.sales.aeCaseOp(this, false);
+            imakante.sales.aeCaseOpOut ae_Casa = new imakante.sales.aeCaseOpOut(this, false);
             ae_Casa.setVisible(true);
         } else {  }
     }
