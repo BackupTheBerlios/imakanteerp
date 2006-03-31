@@ -901,8 +901,8 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         } catch (NumberFormatException ex) {
             ex.printStackTrace();
         }
-        this.jLabel4.setText(myParent.getHName());
-        this.jPanel2.revalidate();
+        this.jLabel14.setText(myParent.getHName());
+        
         
     }
 }// end class
