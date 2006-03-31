@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
+import javax.swing.JOptionPane;
 
 public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
@@ -464,6 +465,10 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
     
+    private int hInt =0;
+    private int hCode = 0;
+    private String hName = "";
+    
     public static final String Names[] =
     {
         "id",                 // Row N - 0. (H) - Hidden
@@ -688,9 +693,44 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
             this.jtfContragentBEGIN.setText(""+this.intTransfer);}
         if(CompNumber == 4){
             this.jtfContragentEND.setText(""+this.intTransfer);}
+        if(CompNumber == 99){
+           this.setHCode(this.intTransfer);
+        }
         
     }
     
+    public void intContrDialog(int CodDialod){
+        
+        String newString = strContragent + this.jtfContragentEND.getText() + "%' AND `n_contragent`.`code_contragent` >= " + CodDialod + ";";
+        constructDialod(newString, 99, Names);
+        
+        
+    }
+    
+    public void getCodFromQu(int CodDialog){
+        setHInt(0);
+        setHCode(0);
+        setHName("");
+        String str = "SELECT n_contragent.id_n_contragent, "
+                + "`n_contragent`.`code_contragent`, `n_contragent`.`name_n_contragent`"
+                + "FROM `n_contragent` WHERE `n_contragent`.`code_contragent` = ";
+        
+        if(stm==null){
+            this.prepareStm();}else{}
+        try {
+            rs = stm.executeQuery(str + CodDialog);
+            while(rs.next()){
+                setHInt(rs.getInt("id_n_contragent"));
+                setHCode(rs.getInt("code.contragent"));
+                setHName(rs.getString("name_n_contragent"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        if(getHInt()==0 || getHCode()==0){
+        JOptionPane.showMessageDialog(null,"Няма контрагент с такъв код!","ИМАКАНТЕ",JOptionPane.ERROR_MESSAGE);
+        }
+    }
     public imakante.sales.casaOp getInternalObject() {
         return internalObject;
     }
@@ -1151,9 +1191,33 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         String p = "0000000";
         p = String.valueOf(Inp);
         for(int i = 0; i < p.length(); i++){
-        p = "0" + p;        
+            p = "0" + p;
         }
         
         return p;
+    }
+
+    public int getHInt() {
+        return hInt;
+    }
+
+    public void setHInt(int hInt) {
+        this.hInt = hInt;
+    }
+
+    public int getHCode() {
+        return hCode;
+    }
+
+    public void setHCode(int hCode) {
+        this.hCode = hCode;
+    }
+
+    public String getHName() {
+        return hName;
+    }
+
+    public void setHName(String hName) {
+        this.hName = hName;
     }
 }
