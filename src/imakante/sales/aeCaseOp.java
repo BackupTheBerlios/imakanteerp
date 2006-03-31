@@ -902,7 +902,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
             ex.printStackTrace();
         }
         this.jLabel4.setText(myParent.getHName());
-        this.jLabel4.revalidate();
+        this.jPanel2.revalidate();
         
     }
 }// end class
