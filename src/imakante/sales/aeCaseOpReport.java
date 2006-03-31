@@ -15,7 +15,7 @@ public class aeCaseOpReport extends imakante.com.vcomponents.iDialog {
             setJReport();
         } catch (java.io.FileNotFoundException fnfex) { fnfex.printStackTrace(); }
         this.jPanel1.add(jrv);
-        
+        System.out.println(" krai ot jasper dialog");
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
