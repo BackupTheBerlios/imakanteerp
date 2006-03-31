@@ -694,7 +694,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         if(CompNumber == 4){
             this.jtfContragentEND.setText(""+this.intTransfer);}
         if(CompNumber == 99){
-           this.setHCode(this.intTransfer);
+           this.hCode = this.intTransfer;
         }
         
     }
@@ -708,9 +708,9 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     }
     
     public void getCodFromQu(int CodDialog){
-        setHInt(0);
-        setHCode(0);
-        setHName("");
+        hInt  = 0;
+        hCode = 0;
+        hName = "";
         String str = "SELECT n_contragent.id_n_contragent, "
                 + "`n_contragent`.`code_contragent`, `n_contragent`.`name_n_contragent`"
                 + "FROM `n_contragent` WHERE `n_contragent`.`code_contragent` = ";
@@ -720,14 +720,14 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         try {
             rs = stm.executeQuery(str + CodDialog);
             while(rs.next()){
-                setHInt(rs.getInt("id_n_contragent"));
-                setHCode(rs.getInt("code.contragent"));
-                setHName(rs.getString("name_n_contragent"));
+                hInt = rs.getInt("id_n_contragent");
+                hCode =rs.getInt("code.contragent");
+                hName = rs.getString("name_n_contragent");
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        if(getHInt()==0 || getHCode()==0){
+        if(hInt==0 || hCode==0){
         JOptionPane.showMessageDialog(null,"Няма контрагент с такъв код!","ИМАКАНТЕ",JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -1195,29 +1195,5 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         }
         
         return p;
-    }
-
-    public int getHInt() {
-        return hInt;
-    }
-
-    public void setHInt(int hInt) {
-        this.hInt = hInt;
-    }
-
-    public int getHCode() {
-        return hCode;
-    }
-
-    public void setHCode(int hCode) {
-        this.hCode = hCode;
-    }
-
-    public String getHName() {
-        return hName;
-    }
-
-    public void setHName(String hName) {
-        this.hName = hName;
     }
 }
