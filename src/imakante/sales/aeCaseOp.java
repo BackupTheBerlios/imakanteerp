@@ -434,33 +434,44 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-544)/2, (screenSize.height-420)/2, 544, 420);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jComboMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboMKeyPressed
-if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jComboM.transferFocus();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jComboM.transferFocus();}
     }//GEN-LAST:event_jComboMKeyPressed
-
+    
     private void jTextField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyPressed
-if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jTextField3.transferFocus();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jTextField3.transferFocus();}
     }//GEN-LAST:event_jTextField3KeyPressed
-
+    
     private void jComboDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboDKeyPressed
-if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jComboD.transferFocus();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jComboD.transferFocus();}
     }//GEN-LAST:event_jComboDKeyPressed
-
+    
     private void jTextField6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyPressed
-if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jTextField6.transferFocus();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jTextField6.transferFocus();}
     }//GEN-LAST:event_jTextField6KeyPressed
-
+    
     private void jXDatePicker1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jXDatePicker1KeyPressed
-if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jXDatePicker1.transferFocus();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jXDatePicker1.transferFocus();}
     }//GEN-LAST:event_jXDatePicker1KeyPressed
-
+    
     private void jComboCRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboCRKeyPressed
- if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jComboCR.transferFocus();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jComboCR.transferFocus();}
     }//GEN-LAST:event_jComboCRKeyPressed
-
+    
     private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
- if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jTextField2.transferFocus();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            revalidateContragent();
+            this.jLabel4.setText(myParent.getHName());
+            this.jLabel4.revalidate();
+            jTextField2.transferFocus();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7){
+            try {
+                myParent.intContrDialog(Integer.parseInt(jTextField2.getText()));
+            } catch (NumberFormatException ex) {
+                ex.printStackTrace();
+            }
+        }
     }//GEN-LAST:event_jTextField2KeyPressed
     
     private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
@@ -664,6 +675,8 @@ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jXDatePicker1.transfe
     
     //SAVE
     private void saveRecord() {
+        revalidateContragent();
+        myParent.setIn_outsl_mop(myParent.getHInt()); 
         this.revalidateSums();
         NumDocument = myParent.getCode();
         Contragent = myParent.getContragent_cod();
@@ -876,5 +889,20 @@ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jXDatePicker1.transfe
         }
         sumos = exch*sum;
         this.jTextField4.setText(""+sumos);
+    }
+    
+    public void revalidateFText(){
+        jTextField2.setText(""+myParent.getHCode());
+    }
+    
+    private void revalidateContragent(){
+        try {
+            myParent.getCodFromQu(Integer.parseInt(jTextField2.getText()));
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+        }
+        this.jLabel4.setText(myParent.getHName());
+        this.jLabel4.revalidate();
+        
     }
 }// end class
