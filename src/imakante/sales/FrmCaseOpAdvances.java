@@ -990,9 +990,15 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
         setCode((Integer) table.getValueAt(getRow(), getColumnIndex("\u043d\u043e\u043c\u0435\u0440")));
         setIn_in_sl_mop((Integer) table.getValueAt(getRow(), getColumnIndex("id_casa")));
         in_code_casa = (Integer) table.getValueAt(getRow(), getColumnIndex( "\u043a\u043e\u0434 \u043a\u0430\u0441\u0430"));
+        try {
         setIn_outsl_mop((Integer) table.getValueAt(getRow(), getColumnIndex("id_person")));
         setContragent_cod((Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434 \u043d\u0430 \u041c\u041e\u041b")));
         setContragent_name((String)table.getValueAt(getRow(), getColumnIndex( "\u0418\u043c\u0435 \u043d\u0430 \u041c\u041e\u041b")));
+        } catch(Exception e) {
+            setIn_outsl_mop(0);
+            setContragent_cod(0);
+            setContragent_name("");
+        }
         
         setIn_id_order_spec((Integer) table.getValueAt(getRow(), getColumnIndex("id_df")));
         setIn_id_order_doc((Integer) table.getValueAt(getRow(), getColumnIndex("id_order_doc")));

@@ -107,11 +107,11 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="5" max="-2" attributes="1"/>
-                              <Component id="jtfCasaBegin" pref="83" max="32767" attributes="0"/>
+                              <Component id="jtfCasaBegin" pref="82" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="1">
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="jtfCasaEND" pref="84" max="32767" attributes="0"/>
+                              <Component id="jtfCasaEND" pref="83" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -119,13 +119,13 @@
                               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                               <Component id="jLabel3" pref="36" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="5" max="-2" attributes="1"/>
-                              <Component id="jtfContragentBEGIN" pref="76" max="32767" attributes="0"/>
+                              <Component id="jtfContragentBEGIN" pref="75" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="1">
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel7" pref="36" max="32767" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="jtfContragentEND" pref="78" max="32767" attributes="0"/>
+                              <Component id="jtfContragentEND" pref="77" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
