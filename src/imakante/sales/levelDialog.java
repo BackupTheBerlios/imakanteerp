@@ -188,13 +188,10 @@ public class levelDialog extends javax.swing.JDialog {
     //opisanie na formite koito she badat kontrolirani
     
     private void close(){
-        switch (modul){
-            
-            case 1:frame.loadImport();
-            case 701: frame.loadKassss(getLevel(), getKey());
-            case 702: frame.loadCasaOut(getLevel(), getKey());
-            default:;break;
-        }
+        if (modul==1){frame.loadImport();}
+        if (modul==701){frame.loadKassss(getLevel(), getKey());}
+        if (modul==701){frame.loadCasaOut(getLevel(), getKey());}    
+         
         
         this.dispose();
     }
