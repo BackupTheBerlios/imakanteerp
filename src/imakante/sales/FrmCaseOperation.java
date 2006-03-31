@@ -724,7 +724,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
             rs = stm.executeQuery(str + CodDialog);
             while(rs.next()){
                 setHInt(rs.getInt("id_contragent"));
-                setHCode(rs.getInt("code.contragent"));
+                setHCode(rs.getInt("code_contragent"));
                 setHName(rs.getString("name_n_contragent"));
             }
         } catch (SQLException ex) {
