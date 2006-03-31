@@ -318,15 +318,15 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButtonSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonSearchKeyPressed
-// TODO add your handling code here:
+        
     }//GEN-LAST:event_jButtonSearchKeyPressed
     
     private void jXDatePickerENDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jXDatePickerENDKeyPressed
-// TODO add your handling code here:
+        
     }//GEN-LAST:event_jXDatePickerENDKeyPressed
     
     private void jXDatePickerBEGINKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jXDatePickerBEGINKeyPressed
-// TODO add your handling code here:
+        
     }//GEN-LAST:event_jXDatePickerBEGINKeyPressed
     
     private void jtfContragentENDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfContragentENDKeyPressed
@@ -334,7 +334,8 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
             processField4();
         }
         if(java.awt.event.KeyEvent.VK_ENTER == evt.getKeyCode()){
-            if(jtfContragentEND.getText().equals("")){jtfContragentEND.setText("999999999");jtfContragentEND.transferFocus();}
+            if(jtfContragentEND.getText().equals("")){jtfContragentEND.setText("999999999");
+            jtfContragentEND.transferFocus();}
         }
     }//GEN-LAST:event_jtfContragentENDKeyPressed
     
@@ -433,11 +434,11 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
     
     private int id = 0; // imena ot tablicata
     private int code = 0;
-    private int contragent_cod = 0;  // kod na kontragent
-    private String contragent_name = ""; // name na kontragent
+    private int contragent_cod = 0;  // kod na MOL
+    private String contragent_name = ""; // name na MOL
     private int in_in_sl_mop = 1; //id na kasa
     private int in_code_casa = 1; // cod na kasa
-    private int in_outsl_mop = 0; // id na kontragent
+    private int in_outsl_mop = 0; // id na MOL
     private int in_id_order_spec = -1 ;
     private int in_id_order_spec_type = 1;
     private int in_id_order_doc = -1;
@@ -990,7 +991,6 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
         setIn_in_sl_mop((Integer) table.getValueAt(getRow(), getColumnIndex("id_casa")));
         in_code_casa = (Integer) table.getValueAt(getRow(), getColumnIndex( "\u043a\u043e\u0434 \u043a\u0430\u0441\u0430"));
         setIn_outsl_mop((Integer) table.getValueAt(getRow(), getColumnIndex("id_person")));
-        
         setContragent_cod((Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434 \u043d\u0430 \u041c\u041e\u041b")));
         setContragent_name((String)table.getValueAt(getRow(), getColumnIndex( "\u0418\u043c\u0435 \u043d\u0430 \u041c\u041e\u041b")));
         

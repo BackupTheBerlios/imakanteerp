@@ -62,7 +62,7 @@ BEGIN
             LEFT Join sl_doc_type_num ON sl_doc_type_num.id_sdtn = sl_m_operation.id_sdtn
             WHERE
             sl_m_operation.in_type_sl_mop = 1 AND
-            sl_m_operation.out_type_sl_mop = 3 AND
+            sl_m_operation.out_type_sl_mop = 4 AND
             sl_m_operation.id_sdtn = in_id_sdtn AND
             sl_m_operation.levelx = in_level;
 
