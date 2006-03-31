@@ -189,8 +189,10 @@ public class levelDialog extends javax.swing.JDialog {
     
     private void close(){
         if (modul==1){frame.loadImport();}
-        if (modul==701){frame.loadKassss(getLevel(), getKey());}
-        if (modul==701){frame.loadCasaOut(getLevel(), getKey());}    
+        if (modul==701){frame.loadKassss(getLevel(), getKey());
+        System.out.println("701");}
+        if (modul==702){frame.loadCasaOut(getLevel(), getKey());
+        System.out.println("702");}    
          
         
         this.dispose();
