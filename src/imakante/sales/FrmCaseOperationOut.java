@@ -1148,12 +1148,16 @@ public class FrmCaseOperationOut extends  imakante.com.vcomponents.iInternalFram
     
     
     private String fillZero(int Inp){
+       
         String p = "0000000";
+        String EndString = "";
         p = String.valueOf(Inp);
-        for(int i = 0; i < p.length(); i++){
-            p = "0" + p;
+        int k = 7 - p.length();
+        for(int i = 0 ; i < k; i++){
+         
+            EndString = "0" + EndString;
         }
         
-        return p;
+        return EndString;
     }
 }
