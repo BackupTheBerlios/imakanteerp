@@ -16,7 +16,6 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
         currDate = new java.util.Date();
         in_DATE = formatter.getDateInstance().format(currDate);
         System.out.println(in_DATE);
-        
         this.internalObject.setIn_DATE(in_DATE);
         prepareStm();
     }
@@ -157,27 +156,27 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel4Layout.createSequentialGroup()
                         .add(5, 5, 5)
-                        .add(jtfCasaBegin, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE))
+                        .add(jtfCasaBegin, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE))
                     .add(jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jtfCasaEND, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)))
+                        .add(jtfCasaEND, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)))
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel4Layout.createSequentialGroup()
                         .add(5, 5, 5)
                         .add(jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                         .add(5, 5, 5)
-                        .add(jtfContragentBEGIN, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE))
+                        .add(jtfContragentBEGIN, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE))
                     .add(jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jLabel7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jtfContragentEND, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)))
+                        .add(jtfContragentEND, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel4Layout.createSequentialGroup()
                         .add(jLabel8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jXDatePickerEND, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
+                        .add(jXDatePickerEND, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 129, Short.MAX_VALUE))
                     .add(jPanel4Layout.createSequentialGroup()
                         .add(jLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -438,7 +437,7 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
     private String contragent_name = ""; // name na MOL
     private int in_in_sl_mop = 1; //id na kasa
     private int in_code_casa = 1; // cod na kasa
-    private int in_outsl_mop = 0; // id na MOL
+    private int in_outsl_mop = 1; // id na MOL
     private int in_id_order_spec = -1 ;
     private int in_id_order_spec_type = 1;
     private int in_id_order_doc = -1;
@@ -467,29 +466,32 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
     
+    private int hInt =0;
+    private int hCode = 0;
+    private String hName = "";
     public static final String Names[] =
     {
         "id",                 // Row N - 0. (H) - Hidden
-        "\u043d\u043e\u043c\u0435\u0440",             //         1. (V) - Visible
+        "\u041d\u043e\u043c\u0435\u0440",             //         1. (V) - Visible
         "id_casa",            //         2. (H)
-        "\u043a\u043e\u0434 \u043a\u0430\u0441\u0430",          //         3. (V)
+        "\u041a\u043e\u0434 \u043a\u0430\u0441\u0430",          //         3. (V)
         "id_person",      //         4. (H)
         "\u041a\u043e\u0434 \u043d\u0430 \u041c\u041e\u041b",     //         5. (V)
         "\u0418\u043c\u0435 \u043d\u0430 \u041c\u041e\u041b",    //         6. (V)
-        "\u0441\u0432\u044a\u0440\u0437\u0430\u043d \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442",          //         7. (V)
+        "\u0421\u0432\u044a\u0440\u0437\u0430\u043d \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442",          //         7. (V)
         "id_df",              //         8. (H)
         "id_order_doc",       //         9. (H)
-        "\u0432\u0438\u0434 \u043f\u0440\u0438\u0445\u043e\u0434",      //        10. (V)
+        "\u0412\u0438\u0434 \u043f\u0440\u0438\u0445\u043e\u0434",      //        10. (V)
         "id_n_money",         //        11. (H)
-        "\u043f\u0430\u0440\u0438\u0447\u0435\u043d \u043a\u043e\u0434",        //        12. (V)
+        "\u041f\u0430\u0440\u0438\u0447\u0435\u043d \u043a\u043e\u0434",        //        12. (V)
         "\u0414\u0430\u0442\u0430 \u0438\u0437\u0434\u0430\u0432\u0430\u043d\u0435",            //        13. (V)
-        "\u043a\u0443\u0440\u0441",      //        14. (V)
-        "\u0441\u0443\u043c\u0430",         //        15. (V)
-        "\u0441\u0443\u043c\u0430 \u043e\u0441\u043d\u043e\u0432\u043d\u0430 \u0432\u0430\u043b\u0443\u0442\u0430",         //        16. (V)
+        "\u041a\u0443\u0440\u0441",      //        14. (V)
+        "\u0421\u0443\u043c\u0430",         //        15. (V)
+        "\u0421\u0443\u043c\u0430 \u043e\u0441\u043d\u043e\u0432\u043d\u0430 \u0432\u0430\u043b\u0443\u0442\u0430",         //        16. (V)
         "user_id",            //        17. (H)
-        "\u0438\u0437\u0434\u0430\u043b \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430",            //        18. (V)
+        "\u0418\u0437\u0434\u0430\u043b \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430",            //        18. (V)
         "id_sdtn",            //        19. (H)
-        "name_sdtn",          //        20. (V)
+        "\u041a\u043e\u0447\u0430\u043d",          //        20. (V)
         "\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440"             //        21. (V)
     };
     
@@ -499,7 +501,7 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
     private  int CompNumber = 0;
     
     private String strContragent = "SELECT "
-            + "ls_n_person.code_ls_n_person, ls_n_person.name_ls_n_person"
+            + "ls_n_person.code_ls_n_person, ls_n_person.name_ls_n_person "
             + "FROM ls_n_person WHERE ls_n_person.code_ls_n_person LIKE '%";
     
     private String strCasa =  "SELECT "
@@ -525,41 +527,32 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
     private void prepareStm(){
         try {
             stm = conn.createStatement();
-        } catch (java.sql.SQLException ex) {
-            ex.printStackTrace();
-        }
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
-    
     
     private void initTableD(String str , String[] names) {
         try {
             rs = stm.executeQuery(str);
-        } catch (java.sql.SQLException ex) {
-            ex.printStackTrace();
-        }
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
         try {
             model1 = new imakante.com.CustomTableModel(getConn(), rs, names);
             table1 = new imakante.com.CustomTable(model1);
-            
         } catch(Exception e) { e.printStackTrace(); }
-        
         try {
-            table.setEditingRow(0);
+            table1.setEditingRow(0);
         } catch(Exception ex) {  }
     }
     
     private void constructDialod(String str, int rCompNumber, String[] names){
         this.CompNumber = rCompNumber;
-        initTableD(str, names );
+        initTableD(str, names);
         imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table1);
         td.setVisible(true);
-        
     }
     
     private void constructObject() {
         if(stm == null){
             prepareStm();
-            
         }
         try {
             rs = stm.executeQuery("SELECT id_sdtn FROM n_doc_type_user_rights WHERE id_ndtur = " + ndtur);
@@ -568,7 +561,7 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
             }
         } catch (java.sql.SQLException ex) {
             ex.printStackTrace();
-            sdtn =1;
+            sdtn = 1;
         }
         try {
             internalObject = new imakante.sales.casaOpAdvances(conn, this.level, this.sdtn);
@@ -734,9 +727,9 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
     private int  getMaxRow() {
         int i = 0;
         i  = table.getRowCount() - 1;
-        
         return i;
     }
+    
     public  int getRow() {
         return row;
     }
@@ -764,8 +757,6 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
     public String getContragent() {
         return getContragent_name();
     }
-    
-    
     
     public void setComment(String Comment) {
         this.comment = Comment;
@@ -903,13 +894,14 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
     
     private void newRecord() {
         internalObject.insertRow((internalObject.getMaxCod() + 1));
+        System.out.println("maxCode:" + internalObject.getMaxCod());
         refreshTable();
         setRow(getMaxRow());
         table.changeSelection(getRow(), 2, false, false);
         setAllVariables();
         setAtBegining(false);
         setAtEnd(true);
-        imakante.sales.aeCaseOpAdvances ae_Adva = new imakante.sales.aeCaseOpAdvances(this, false);
+        imakante.sales.aeCaseOpAdvances ae_Adva = new imakante.sales.aeCaseOpAdvances(this, true);
         ae_Adva.setVisible(true);
         refreshTable();
         setButtonEnabled();
@@ -928,7 +920,7 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
                 setAtEnd(false);
             }
             setAllVariables();
-            imakante.sales.aeCaseOpAdvances ae_Adva = new imakante.sales.aeCaseOpAdvances(this, false);
+            imakante.sales.aeCaseOpAdvances ae_Adva = new imakante.sales.aeCaseOpAdvances(this, true);
             ae_Adva.setVisible(true);
         } else {  }
     }
@@ -987,9 +979,9 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
     private void setAllVariables(){
         
         setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
-        setCode((Integer) table.getValueAt(getRow(), getColumnIndex("\u043d\u043e\u043c\u0435\u0440")));
+        setCode((Integer) table.getValueAt(getRow(), getColumnIndex("\u041d\u043e\u043c\u0435\u0440")));
         setIn_in_sl_mop((Integer) table.getValueAt(getRow(), getColumnIndex("id_casa")));
-        in_code_casa = (Integer) table.getValueAt(getRow(), getColumnIndex( "\u043a\u043e\u0434 \u043a\u0430\u0441\u0430"));
+        in_code_casa = (Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434 \u043a\u0430\u0441\u0430"));
         try {
         setIn_outsl_mop((Integer) table.getValueAt(getRow(), getColumnIndex("id_person")));
         setContragent_cod((Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434 \u043d\u0430 \u041c\u041e\u041b")));
@@ -1005,11 +997,11 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
         setIn_DATE((String)table.getValueAt(getRow(), getColumnIndex("\u0414\u0430\u0442\u0430 \u0438\u0437\u0434\u0430\u0432\u0430\u043d\u0435")).toString());
         
         setIn_id_n_money((Integer) table.getValueAt(getRow(), getColumnIndex("id_n_money")));
-        in_code_lat = (String)table.getValueAt(getRow(), getColumnIndex("\u043f\u0430\u0440\u0438\u0447\u0435\u043d \u043a\u043e\u0434"));
-        setIn_exchange_rate((Double)table.getValueAt(getRow(), getColumnIndex("\u043a\u0443\u0440\u0441")));
-        setIn_sum_sl_mop((Double)table.getValueAt(getRow(), getColumnIndex("\u0441\u0443\u043c\u0430")));
-        setIn_sum_os_val_sl_mop((Double)table.getValueAt(getRow(), getColumnIndex("\u0441\u0443\u043c\u0430 \u043e\u0441\u043d\u043e\u0432\u043d\u0430 \u0432\u0430\u043b\u0443\u0442\u0430")));
-        setUser_name((String)table.getValueAt(getRow(), getColumnIndex("\u0438\u0437\u0434\u0430\u043b \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430")));
+        in_code_lat = (String)table.getValueAt(getRow(), getColumnIndex("\u041f\u0430\u0440\u0438\u0447\u0435\u043d \u043a\u043e\u0434"));
+        setIn_exchange_rate((Double)table.getValueAt(getRow(), getColumnIndex("\u041a\u0443\u0440\u0441")));
+        setIn_sum_sl_mop((Double)table.getValueAt(getRow(), getColumnIndex("\u0421\u0443\u043c\u0430")));
+        setIn_sum_os_val_sl_mop((Double)table.getValueAt(getRow(), getColumnIndex("\u0421\u0443\u043c\u0430 \u043e\u0441\u043d\u043e\u0432\u043d\u0430 \u0432\u0430\u043b\u0443\u0442\u0430")));
+        setUser_name((String)table.getValueAt(getRow(), getColumnIndex("\u0418\u0437\u0434\u0430\u043b \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430")));
         setIn_id_sdtn((Integer) table.getValueAt(getRow(), getColumnIndex("id_sdtn")));
         setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440")));
     }
@@ -1143,4 +1135,56 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
         cor.setVisible(true);
     }
     
+    public void intContrDialog(int CodDialod) {
+        String newString = strContragent + this.jtfContragentEND.getText() + "%' AND ls_n_person.code_ls_n_person >= " + CodDialod + ";";
+        constructDialod(newString, 99, Names);
+    }
+    
+    public void getCodFromQu(int CodDialog){
+        setHInt(0);
+        setHCode(0);
+        setHName("");
+        String str = "SELECT ls_n_person.id_ls_n_person, "
+                + "ls_n_person.code_ls_n_person, ls_n_person.name_ls_n_person"
+                + "FROM ls_n_person WHERE ls_n_person.code_ls_n_person = '";
+        if(stm == null){
+            this.prepareStm();
+        } else {  }
+        try {
+            rs = stm.executeQuery(str + CodDialog + "';");
+            while(rs.next()){
+                setHInt(rs.getInt("id_ls_n_person"));
+                setHCode(rs.getInt("code_ls_n_person"));
+                setHName(rs.getString("name_ls_n_person"));
+            }
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
+        if(getHInt()==0 || getHCode()==0){
+            javax.swing.JOptionPane.showMessageDialog(null, "\u041d\u044f\u043c\u0430 \u041c\u041e\u041b \u0441 \u0442\u0430\u043a\u044a\u0432 \u043a\u043e\u0434!",
+                    "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public int getHInt() {
+        return hInt;
+    }
+    
+    public void setHInt(int hInt) {
+        this.hInt = hInt;
+    }
+    
+    public int getHCode() {
+        return hCode;
+    }
+    
+    public void setHCode(int hCode) {
+        this.hCode = hCode;
+    }
+    
+    public String getHName() {
+        return hName;
+    }
+    
+    public void setHName(String hName) {
+        this.hName = hName;
+    }
 }

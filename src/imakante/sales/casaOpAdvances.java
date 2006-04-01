@@ -15,10 +15,10 @@ public class casaOpAdvances  extends imakante.com.dbObject {
     private     int in_id_sdtn  = 1;
 //              IN in_id INT(11),
 //              IN in_number_sl_mop INT(11), code go zamenia v obekta
-    private     int in_in_sl_mop=1;
-    private     int in_outsl_mop=0;
+    private     int in_in_sl_mop = 1;
+    private     int in_outsl_mop = 0;
     private     int in_id_order_spec = 0 ;
-    private     int in_id_order_spec_type= 1;
+    private     int in_id_order_spec_type = 1;
     private     int in_id_order_doc = 1;
     private     String in_DATE;
     private     int in_id_n_money=1;
@@ -37,29 +37,23 @@ public class casaOpAdvances  extends imakante.com.dbObject {
     private String DateBegin = "0000-00-00";
     private String DateEnd = "0000-00-00";
     private java.sql.Connection conn;
-    
     //-------------END MyVariables
     
-    /** Creates a new instance of kasiDB */
     public casaOpAdvances(java.sql.Connection conn, int level, int sdtn) {
         super(conn);
         this.setLevel(level);
         this.setIn_id_sdtn(sdtn);
         prepareCstm();
-        
     }
+    
     protected void prepareCstm() {
         try {
-            
             setCstm(getConn().prepareCall("{call sl_procedure_case_advances(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
-            
         } catch (java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
-    protected void registerParameters() //OK
-    {
+    
+    protected void registerParameters() {
         try {
-            
-            
             getCstm().setInt("comprator", getComprator());
             getCstm().setInt("in_id", getId());
             getCstm().setInt("in_number_sl_mop", getCode());
@@ -132,8 +126,7 @@ public class casaOpAdvances  extends imakante.com.dbObject {
     }
     
     public java.sql.ResultSet searchRecords( int casaBegin, int casaEnd, int contragentBegin,
-            int contragentEnd, String data_begin, String data_end) //   comprator = 5;
-    {
+            int contragentEnd, String data_begin, String data_end) {
         setComprator(5);
         CasaBegin = casaBegin;
         CasaEnd = casaEnd;
@@ -190,15 +183,11 @@ public class casaOpAdvances  extends imakante.com.dbObject {
         return splitNamesG;
     }
     
-    
-    
-    public int[] getIndexConnOfId() //OK
-    {
+    public int[] getIndexConnOfId() {
         return indexConnOfId;
     }
     
-    public String[] getMoney() //test comprator = 6;
-    {
+    public String[] getMoney() {
         setComprator(11);
         String return_str=new String("");
         int oldId = getId();
@@ -206,29 +195,21 @@ public class casaOpAdvances  extends imakante.com.dbObject {
         String strIndexConnOfId = new String("");
         java.util.ArrayList in = new java.util.ArrayList();
         java.util.Iterator it = null;
-        // nova ideq porodena ot fakta 4e pri razdelqneto na stringa i
-        //ako imeto na ednata kletka ima intervali no se polu4ava gre6ka
         java.util.HashMap Gropes = new java.util.HashMap();
         int i = 0;
-        
         try {
             registerParameters();
             setRs(getCstm().executeQuery());
-            
-            
             while(getRs().next()) {
                 Gropes.put(new Integer(getRs().getInt("id_n_money")),new String(getRs().getString("cod_lat_n_money")));
                 in.add(new Integer(getRs().getInt("id_n_money")));
                 i++;
             }
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+        } catch(Exception e) { e.printStackTrace(); }
         setRs(oldRs);
         setId(oldId);
         indexMoney = new int[i];
         it = in.iterator();
-        
         splitNamesM = new String[i];
         i=0;
         while(it.hasNext()) {
@@ -236,21 +217,14 @@ public class casaOpAdvances  extends imakante.com.dbObject {
             splitNamesM[i] = (String) Gropes.get(indexMoney[i]);
             i++;
         }
-        
         return splitNamesM;
     }
     
-    
-    
-    public int[] getIndexMoney() //OK
-    {
+    public int[] getIndexMoney() {
         return indexMoney;
     }
     
-    
-    
-    public String[] getDoc() //test comprator = 6;
-    {
+    public String[] getDoc() {
         setComprator(12);
         String return_str=new String("");
         int oldId = getId();
@@ -258,29 +232,21 @@ public class casaOpAdvances  extends imakante.com.dbObject {
         String strIndexConnOfId = new String("");
         java.util.ArrayList in = new java.util.ArrayList();
         java.util.Iterator it = null;
-        // nova ideq porodena ot fakta 4e pri razdelqneto na stringa i
-        //ako imeto na ednata kletka ima intervali no se polu4ava gre6ka
         java.util.HashMap Gropes = new java.util.HashMap();
         int i = 0;
-        
         try {
             registerParameters();
             setRs(getCstm().executeQuery());
-            
-            
             while(getRs().next()) {
                 Gropes.put(new Integer(getRs().getInt("id_n_incoms")),new String(getRs().getString("name_n_incoms")));
                 in.add(new Integer(getRs().getInt("id_n_incoms")));
                 i++;
             }
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+        } catch(Exception e) { e.printStackTrace(); }
         setRs(oldRs);
         setId(oldId);
         indexDoc = new int[i];
         it = in.iterator();
-        
         splitNamesD = new String[i];
         i=0;
         while(it.hasNext()) {
@@ -294,10 +260,7 @@ public class casaOpAdvances  extends imakante.com.dbObject {
         return splitNamesD;
     }
     
-    
-    
-    public int[] getIndexDoc() //OK
-    {
+    public int[] getIndexDoc() {
         return indexDoc;
     }
     

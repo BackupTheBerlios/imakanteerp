@@ -223,6 +223,11 @@ public class aeCaseOpAdvances extends imakante.com.vcomponents.iDialog {
                 jTextField2FocusGained(evt);
             }
         });
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField2KeyPressed(evt);
+            }
+        });
 
         jTextField3.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextField3.setInputVerifier(new imakante.com.InputDoubleVerifier());
@@ -389,6 +394,19 @@ public class aeCaseOpAdvances extends imakante.com.vcomponents.iDialog {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-544)/2, (screenSize.height-420)/2, 544, 420);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            revalidateContragent();
+            this.jLabel4.setText(myParent.getHName());
+            this.jLabel4.revalidate();
+            jTextField2.transferFocus();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7){
+            try {
+                myParent.intContrDialog(Integer.parseInt(jTextField2.getText()));
+            } catch (NumberFormatException ex) { ex.printStackTrace(); }
+        }
+    }//GEN-LAST:event_jTextField2KeyPressed
     
     private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
         revalidateSums();
@@ -797,4 +815,12 @@ public class aeCaseOpAdvances extends imakante.com.vcomponents.iDialog {
         sumos = exch * sum;
         this.jTextField4.setText("" + sumos);
     }
+    
+    private void revalidateContragent(){
+        try {
+            myParent.getCodFromQu(Integer.parseInt(jTextField2.getText()));
+        } catch (NumberFormatException ex) { ex.printStackTrace(); }
+        this.jLabel14.setText(myParent.getHName());
+    }
+    
 }// end class
