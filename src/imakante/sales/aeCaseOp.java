@@ -20,6 +20,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         initComboD();
         this.setResizable(false);
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        dFields(myParent.isIsNew());
         repaintComp();
     }
     
@@ -903,6 +904,20 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         }
         this.jLabel14.setText(myParent.getHName());
         
+        
+    }
+    
+    private void dFields(boolean isNew){
+        if(isNew=false || myParent.getLevelPermition() < 2 ){
+        this.jTextField1.setEnabled(false);
+        this.jTextField2.setEnabled(false);
+        this.jTextField3.setEnabled(false);
+        this.jTextField6.setEnabled(false);
+        this.jComboCR.setEnabled(false);
+        this.jComboD.setEnabled(false);
+        this.jComboM.setEnabled(false);
+        this.jXDatePicker1.setEnabled(false);
+        }
         
     }
 }// end class
