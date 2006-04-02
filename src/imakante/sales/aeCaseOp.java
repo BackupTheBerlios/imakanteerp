@@ -1,6 +1,7 @@
 
 package imakante.sales;
 
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -921,7 +922,17 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         
     }
     private void getExchangeRateFromDB(){
+    int money = this.jComboM.getSelectedIndex();
     
+        try {
+            myParent.setRs(myParent.getStm().executeQuery("SELECT value_sl_exchange_rate FROM sl_exchange_rate WHERE date_sl_exchange_rate = MAX(date_sl_exchange_rate) AND id_n_money = " + money));
+        while(myParent.getRs().next()){
+        
+        }
+        } 
+        catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     
     
     }
