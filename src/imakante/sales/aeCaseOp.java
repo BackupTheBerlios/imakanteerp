@@ -925,7 +925,8 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         int money = this.jComboM.getSelectedIndex();
         
         try {
-            myParent.setRs(myParent.getStm().executeQuery("SELECT value_sl_exchange_rate FROM sl_exchange_rate WHERE date_sl_exchange_rate = MAX(date_sl_exchange_rate) AND id_n_money = " + money));
+            myParent.setRs(myParent.getStm().executeQuery("SELECT s.value_sl_exchange_rate FROM sl_exchange_rate s" +
+                    "WHERE id_sl_exchange_rate = (SELECT MAX(id_sl_exchange_rate) FROM sl_exchange_rate WHERE id_n_money = "+ money + " );"));
             while(myParent.getRs().next()){
                 this.jTextField7.setText(""+ myParent.getRs().getDouble("value_sl_exchange_rate"));
                 revalidateSums();
