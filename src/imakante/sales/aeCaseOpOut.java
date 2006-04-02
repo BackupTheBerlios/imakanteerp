@@ -709,7 +709,7 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
         myParent.setIn_in_sl_mop(myParent.getInternalObject().getIndexConnOfId()[jComboCR.getSelectedIndex()]);
         myParent.setIn_DATE((String)formatterG.format(this.jXDatePicker1.getDate()));
         myParent.setIn_id_order_doc(myParent.getInternalObject().getIndexDoc()[jComboD.getSelectedIndex()]);
-        myParent.setIn_exchange_rate(Double.parseDouble(jTextField3.getText()));
+        myParent.setIn_exchange_rate(Double.parseDouble(jTextField7.getText()));
         myParent.setIn_sum_sl_mop(Double.parseDouble(jTextField3.getText()));
         myParent.setIn_id_n_money(myParent.getInternalObject().getIndexMoney()[jComboM.getSelectedIndex()]);
         myParent.setComment(jTextArea1.getText());

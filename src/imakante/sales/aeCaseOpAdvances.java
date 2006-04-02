@@ -402,11 +402,11 @@ public class aeCaseOpAdvances extends imakante.com.vcomponents.iDialog {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-544)/2, (screenSize.height-420)/2, 544, 420);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jComboMFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboMFocusLost
- getExchangeRateFromDB();
+        getExchangeRateFromDB();
     }//GEN-LAST:event_jComboMFocusLost
-
+    
     private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
             revalidateContragent();
@@ -621,6 +621,8 @@ public class aeCaseOpAdvances extends imakante.com.vcomponents.iDialog {
     
     //SAVE
     private void saveRecord() {
+        revalidateContragent();
+        myParent.setIn_outsl_mop(myParent.getHInt());
         this.revalidateSums();
         NumDocument = myParent.getCode();
         Contragent = myParent.getContragent_cod();
@@ -646,7 +648,7 @@ public class aeCaseOpAdvances extends imakante.com.vcomponents.iDialog {
         myParent.setIn_id_order_doc(myParent.getInternalObject().getIndexDoc()[jComboD.getSelectedIndex()]);
         myParent.setIn_sum_sl_mop(Double.parseDouble(jTextField3.getText()));
         myParent.setIn_id_n_money(myParent.getInternalObject().getIndexMoney()[jComboM.getSelectedIndex()]);
-        myParent.setIn_exchange_rate(Double.parseDouble(jTextField3.getText()));
+        myParent.setIn_exchange_rate(Double.parseDouble(jTextField7.getText()));
         myParent.setComment(jTextArea1.getText());
         myParent.setContragent_name(jLabel14.getText());
         myParent.setIn_sum_os_val_sl_mop(Double.parseDouble(jTextField4.getText()));
@@ -836,7 +838,7 @@ public class aeCaseOpAdvances extends imakante.com.vcomponents.iDialog {
         this.jLabel14.setText(myParent.getHName());
     }
     
-     
+    
     public void revalidateFText(){
         jTextField2.setText(""+myParent.getHCode());
     }
