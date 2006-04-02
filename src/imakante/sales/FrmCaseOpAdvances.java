@@ -428,6 +428,7 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
     private int level = 1;
     private int ndtur = 1;
     private int sdtn = 1;
+    private String area = "000";
     private java.util.Date currDate;
     private java.util.Calendar m_calendar = java.util.Calendar.getInstance();
     
@@ -469,6 +470,10 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
     private int hInt =0;
     private int hCode = 0;
     private String hName = "";
+    
+    private boolean isNew = false;
+    private int levelPermition = 1;
+    
     public static final String Names[] =
     {
         "id",                 // Row N - 0. (H) - Hidden
@@ -511,6 +516,8 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
     java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd");
     
     private String jasperFile = "/imakante/sales/jasper/avans.jasper";
+
+    private aeCaseOpAdvances ae_Adva;
     
     //---------------END My Variables
     
@@ -893,21 +900,23 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
     }
     
     private void newRecord() {
+        setIsNew(true);
         internalObject.insertRow((internalObject.getMaxCod() + 1));
-        System.out.println("maxCode:" + internalObject.getMaxCod());
         refreshTable();
         setRow(getMaxRow());
         table.changeSelection(getRow(), 2, false, false);
         setAllVariables();
         setAtBegining(false);
         setAtEnd(true);
-        imakante.sales.aeCaseOpAdvances ae_Adva = new imakante.sales.aeCaseOpAdvances(this, true);
+        ae_Adva = new imakante.sales.aeCaseOpAdvances(this, true);
         ae_Adva.setVisible(true);
         refreshTable();
         setButtonEnabled();
     }
     
     private void editRecord() {
+        if(this.getLevelPermition()<3){
+        setIsNew(false);}
         if (table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());
             
@@ -920,19 +929,20 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
                 setAtEnd(false);
             }
             setAllVariables();
-            imakante.sales.aeCaseOpAdvances ae_Adva = new imakante.sales.aeCaseOpAdvances(this, true);
+            ae_Adva = new imakante.sales.aeCaseOpAdvances(this, true);
             ae_Adva.setVisible(true);
         } else {  }
     }
     
     private void delRecord(){
+         if(this.getLevelPermition()>2){
         if(table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());
             setId((Integer)table.getValueAt(getRow(),0));
             internalObject.deleteRow(getId());
             refreshTable();
         }
-        isEmpty();
+        isEmpty();}
     }
     
     public java.sql.Connection getConn() {
@@ -1117,7 +1127,7 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
         double d = this.getIn_sum_sl_mop();
         prcT.setValue(d);
         prcT.ConstString();
-        hm.put("nomer","" + this.getCode());
+        hm.put("nomer",area + fillZero(this.getCode()));
         hm.put("data_iz", this.getIn_DATE());
         hm.put("sumalv", "" + this.getIn_sum_os_val_sl_mop());
         hm.put("suma","" + this.getIn_sum_sl_mop());
@@ -1134,7 +1144,19 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
         imakante.sales.aeCaseOpReport cor = new imakante.sales.aeCaseOpReport(this, true, getConn(), hm, jasperFile);
         cor.setVisible(true);
     }
-    
+      private String fillZero(int Inp){
+        
+        String p = "0000000";
+        String EndString = "";
+        p = String.valueOf(Inp);
+        int k = 7 - p.length();
+        for(int i = 0 ; i < k; i++){
+            
+            EndString = "0" + EndString;
+        }
+        
+        return EndString;
+    }
     public void intContrDialog(int CodDialod) {
         String newString = strContragent + this.jtfContragentEND.getText() + "%' AND ls_n_person.code_ls_n_person >= " + CodDialod + ";";
         constructDialod(newString, 99, Names);
@@ -1186,5 +1208,37 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
     
     public void setHName(String hName) {
         this.hName = hName;
+    }
+    
+     public int getLevelPermition() {
+        return levelPermition;
+    }
+
+    public void setLevelPermition(int levelPermition) {
+        this.levelPermition = levelPermition;
+    }
+
+    public boolean isIsNew() {
+        return isNew;
+    }
+
+    public void setIsNew(boolean isNew) {
+        this.isNew = isNew;
+    }
+
+    public java.sql.ResultSet getRs() {
+        return rs;
+    }
+
+    public void setRs(java.sql.ResultSet rs) {
+        this.rs = rs;
+    }
+
+    public java.sql.Statement getStm() {
+        return stm;
+    }
+
+    public void setStm(java.sql.Statement stm) {
+        this.stm = stm;
     }
 }

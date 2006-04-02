@@ -1,6 +1,8 @@
 
 package imakante.sales;
 
+import java.sql.SQLException;
+
 public class aeCaseOpAdvances extends imakante.com.vcomponents.iDialog {
     
     public aeCaseOpAdvances(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
