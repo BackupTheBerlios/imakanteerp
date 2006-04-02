@@ -1,15 +1,9 @@
 
 package imakante.sales;
 
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.HashMap;
-import javax.swing.JOptionPane;
-
 public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
-    public FrmCaseOperation(String title,imakante.com.vcomponents.iFrame frame,int level, int ndtur) {
+    public FrmCaseOperation(String title, imakante.com.vcomponents.iFrame frame, int level, int ndtur) {
         super(title);
         myframe = frame;
         this.level = level;
@@ -22,7 +16,6 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         currDate = new java.util.Date();
         in_DATE = formatter.getDateInstance().format(currDate);
         System.out.println(in_DATE);
-        
         this.internalObject.setIn_DATE(in_DATE);
         prepareStm();
     }
@@ -316,15 +309,15 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButtonSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonSearchKeyPressed
-// TODO add your handling code here:
+        
     }//GEN-LAST:event_jButtonSearchKeyPressed
     
     private void jXDatePickerENDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jXDatePickerENDKeyPressed
-// TODO add your handling code here:
+        
     }//GEN-LAST:event_jXDatePickerENDKeyPressed
     
     private void jXDatePickerBEGINKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jXDatePickerBEGINKeyPressed
-// TODO add your handling code here:
+        
     }//GEN-LAST:event_jXDatePickerBEGINKeyPressed
     
     private void jtfContragentENDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfContragentENDKeyPressed
@@ -423,14 +416,12 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     // End of variables declaration//GEN-END:variables
     
     //--------------- My Variables
-    
-    
     private int level = 1;
     private int ndtur = 1;
     private int sdtn = 1;
     private String area = "000";
     private java.util.Date currDate;
-    private Calendar m_calendar = Calendar.getInstance();
+    private java.util.Calendar m_calendar = java.util.Calendar.getInstance();
     
     private int id = 0; // imena ot tablicata
     private int code = 0;
@@ -514,7 +505,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
             + "`n_casa`.`code_n_casa`, `n_casa`.`name_n_casa`"
             + "FROM `n_casa` WHERE `n_casa`.`code_n_casa` LIKE  '%";
     
-    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+    java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd");
     
     private String jasperFile = "/imakante/sales/jasper/inorder.jasper";
     
@@ -530,44 +521,35 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         } catch(Exception e) { e.printStackTrace(); }
     }
     
-    private void prepareStm(){
+    private void prepareStm() {
         try {
             setStm(conn.createStatement());
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
-    
     
     private void initTableD(String str , String[] names) {
         try {
             setRs(getStm().executeQuery(str));
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
         try {
             model1 = new imakante.com.CustomTableModel(getConn(), getRs(), names);
             table1 = new imakante.com.CustomTable(model1);
-            
         } catch(Exception e) { e.printStackTrace(); }
-        
         try {
             table.setEditingRow(0);
         } catch(Exception ex) {  }
     }
     
-    private void constructDialod(String str, int rCompNumber, String[] names){
+    private void constructDialod(String str, int rCompNumber, String[] names) {
         this.CompNumber = rCompNumber;
-        initTableD(str, names );
+        initTableD(str, names);
         imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table1);
         td.setVisible(true);
-        
     }
     
     private void constructObject() {
         if(getStm() == null){
             prepareStm();
-            
         }
         try {
             setRs(getStm().executeQuery("SELECT id_sdtn, rights_ndtur FROM n_doc_type_user_rights WHERE id_ndtur = " + ndtur));
@@ -575,26 +557,25 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
                 sdtn = getRs().getInt("id_sdtn");
                 setLevelPermition(getRs().getInt("rights_ndtur"));
             }
-        } catch (SQLException ex) {
+        } catch (java.sql.SQLException ex) {
             ex.printStackTrace();
-            sdtn =1;
+            sdtn = 1;
         }
         try {
             setRs(getStm().executeQuery("SELECT area_number_sdtn FROM sl_doc_type_num WHERE id_sdtn = " + sdtn));
             while(getRs().next()){
                 area = "" +  getRs().getInt("area_number_sdtn");
             }
-        } catch (SQLException ex) {
+        } catch (java.sql.SQLException ex) {
             ex.printStackTrace();
-            sdtn =1;
+            sdtn = 1;
         }
-        
         try {
             internalObject = new imakante.sales.casaOp(conn, this.level, this.sdtn);
         } catch(Exception e) { e.printStackTrace(); }
     }
     
-    private void initTable() {  //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
+    private void initTable() {
         try {
             setRs(internalObject.getTable());
             model = new imakante.com.CustomTableModel(getConn(), getRs(), Names);
@@ -625,7 +606,8 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
             jButtonSearch.setEnabled(false);
         }
     }
-    private void setButtonEnabled(){
+    
+    private void setButtonEnabled() {
         jButtonEdit.setEnabled(true);
         jButtonPrint.setEnabled(true);
         jButtonPrnReport.setEnabled(true);
@@ -633,8 +615,8 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         jButtonRefresh.setEnabled(true);
         jButtonDeleteAll.setEnabled(true);
         jButtonSearch.setEnabled(true);
-        
     }
+    
     public void windowOpened(java.awt.event.WindowEvent e) {
     }
     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -658,11 +640,10 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     private void processField1() {
         String newString = strCasa + this.jtfCasaBegin.getText() + "%'";
         constructDialod(newString, 1, Names);
-        
     }
     
     private void processField2() {
-        if(this.jtfCasaBegin.getText()==""){this.jtfCasaBegin.setText("0");}
+        if (this.jtfCasaBegin.getText() == "") { this.jtfCasaBegin.setText("0"); }
         String newString = strCasa + this.jtfCasaEND.getText() + "%' AND `n_casa`.`code_n_casa` >= " + this.jtfCasaBegin.getText() + ";";
         constructDialod(newString, 2, Names);
     }
@@ -678,53 +659,50 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
 //        String newString = strProduct + this.jTextField6.getText() + "%' AND `rep_comm_nal`.`code_pm` >= " + this.jTextField5.getText() + ";";
 //        constructDialod(newString, 6, Names);
 //    }
+    
     private void processField3() {
         String newString = strContragent + this.jtfContragentBEGIN.getText() + "%'";
         constructDialod(newString, 3, Names);
-        
     }
     
     private void processField4() {
-        if(this.jtfContragentBEGIN.getText()==""){this.jtfContragentBEGIN.setText("0");}
+        if (this.jtfContragentBEGIN.getText() == "") { this.jtfContragentBEGIN.setText("0"); }
         String newString = strContragent + this.jtfContragentEND.getText() + "%' AND `n_contragent`.`code_contragent` >= " + this.jtfContragentBEGIN.getText() + ";";
         constructDialod(newString, 4, Names);
     }
+    
     public void setIntTransfer(int intTransfer) {
         this.intTransfer = intTransfer;
-        if (CompNumber == 0){}
-        if(CompNumber == 1){
-            this.jtfCasaBegin.setText(""+this.intTransfer);}
-        if(CompNumber == 2){
-            this.jtfCasaEND.setText(""+this.intTransfer);}
-        if(CompNumber == 3){
-            this.jtfContragentBEGIN.setText(""+this.intTransfer);}
-        if(CompNumber == 4){
-            this.jtfContragentEND.setText(""+this.intTransfer);}
-        if(CompNumber == 99){
+        if (CompNumber == 0) {  }
+        if(CompNumber == 1) {
+            this.jtfCasaBegin.setText("" + this.intTransfer); }
+        if(CompNumber == 2) {
+            this.jtfCasaEND.setText("" + this.intTransfer); }
+        if(CompNumber == 3) {
+            this.jtfContragentBEGIN.setText("" + this.intTransfer); }
+        if(CompNumber == 4) {
+            this.jtfContragentEND.setText("" + this.intTransfer); }
+        if(CompNumber == 99) {
             this.setHCode(this.intTransfer);
             ae_Casa.revalidateFText();
         }
-        
     }
     
-    public void intContrDialog(int CodDialod){
-        
+    public void intContrDialog(int CodDialod) {
         String newString = strContragent + this.jtfContragentEND.getText() + "%' AND `n_contragent`.`code_contragent` >= " + CodDialod + ";";
         constructDialod(newString, 99, Names);
-        
-        
     }
     
-    public void getCodFromQu(int CodDialog){
+    public void getCodFromQu(int CodDialog) {
         setHInt(0);
         setHCode(0);
         setHName("");
         String str = "SELECT n_contragent.id_contragent, "
                 + "`n_contragent`.`code_contragent`, `n_contragent`.`name_n_contragent`"
                 + "FROM `n_contragent` WHERE `n_contragent`.`code_contragent` = ";
-        
-        if(getStm()==null){
-            this.prepareStm();}else{}
+        if(getStm() == null){
+            this.prepareStm();
+        } else {  }
         try {
             setRs(getStm().executeQuery(str + CodDialog));
             while(getRs().next()){
@@ -732,13 +710,13 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
                 setHCode(getRs().getInt("code_contragent"));
                 setHName(getRs().getString("name_n_contragent"));
             }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        if(getHInt()==0 || getHCode()==0){
-            JOptionPane.showMessageDialog(null,"Няма контрагент с такъв код!","ИМАКАНТЕ",JOptionPane.ERROR_MESSAGE);
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
+        if (getHInt() == 0 || getHCode() == 0) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Няма контрагент с такъв код!", 
+                    "ИМАКАНТЕ", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
     }
+    
     public imakante.sales.casaOp getInternalObject() {
         return internalObject;
     }
@@ -770,6 +748,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     public void setMyframe(imakante.com.vcomponents.iFrame val) {
         this.myframe = val;
     }
+    
     public  boolean isAtBegining() {
         return atBegining;
     }
@@ -789,9 +768,9 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     private int  getMaxRow() {
         int i = 0;
         i  = table.getRowCount() - 1;
-        
         return i;
     }
+    
     public  int getRow() {
         return row;
     }
@@ -820,8 +799,6 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         return getContragent_name();
     }
     
-    
-    
     public void setComment(String Comment) {
         this.comment = Comment;
     }
@@ -838,10 +815,9 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         setRow(getMaxRow());
         try{
             setAllVariables();
-            table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
+            table.changeSelection(getRow(), 2, false, false);
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
-            System.out.println("problem");
         }
         setAtBegining(false);
         setAtEnd(true);
@@ -856,10 +832,9 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
             setAtBegining(false);
             try {
                 setAllVariables();
-                table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
+                table.changeSelection(getRow(), 2, false, false);
             } catch(ArrayIndexOutOfBoundsException aioobe) {
                 setRow(getRow() - 1);
-                System.out.println("problem");
             }
             if(getRow() == getMaxRow()) {
                 setAtEnd(true);
@@ -876,13 +851,12 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
             setAtEnd(false);
             try {
                 setAllVariables();
-                table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
+                table.changeSelection(getRow(), 2, false, false);
             } catch(ArrayIndexOutOfBoundsException aioobe) {
                 setRow(getRow() + 1);
-                System.out.println("problem");
             }
         }
-        if(getRow() == 0){
+        if(getRow() == 0) {
             setAtBegining(true);
         }
         System.out.println("mOneRowMinus()" + getRow() + "      " + getMaxRow());
@@ -892,10 +866,9 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         setRow(0);
         try {
             setAllVariables();
-            table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
+            table.changeSelection(getRow(), 2, false, false);
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
-            System.out.println("problem");
         }
         setAtBegining(true);
         setAtEnd(false);
@@ -919,10 +892,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
                         Integer.parseInt(jtfContragentEND.getText()),
                         (String)formatter.format(this.jXDatePickerBEGIN.getDate()),
                         (String)formatter.format(this.jXDatePickerEND.getDate())));
-            } catch (NumberFormatException ex) {
-                ex.printStackTrace();
-                
-            }
+            } catch (NumberFormatException ex) { ex.printStackTrace(); }
             jScrollPane1.remove(table);
             model = new imakante.com.CustomTableModel(getConn(), getRs(), Names);
             table = new imakante.com.CustomTable(model);
@@ -973,14 +943,14 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     
     private void editRecord() {
         if(this.getLevelPermition()<3){
-        setIsNew(false);}
+            setIsNew(false);}
         if (table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());
-            if(getRow()==0){          //manage button state of ae form
+            if(getRow()==0) {
                 setAtBegining(true);
-            } else if(getRow()==getMaxRow()){
+            } else if(getRow()==getMaxRow()) {
                 setAtEnd(true);
-            }else{
+            } else {
                 setAtBegining(false);
                 setAtEnd(false);
             }
@@ -991,14 +961,14 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     }
     
     private void delRecord(){
-        if(this.getLevelPermition()>2){
-        if(table.getSelectedRow() != -1) {
-            setRow(table.getSelectedRow());
-            setId((Integer)table.getValueAt(getRow(),0));
-            internalObject.deleteRow(getId());
-            refreshTable();
-        }
-        isEmpty();}
+        if(this.getLevelPermition() > 2) {
+            if(table.getSelectedRow() != -1) {
+                setRow(table.getSelectedRow());
+                setId((Integer)table.getValueAt(getRow(),0));
+                internalObject.deleteRow(getId());
+                refreshTable();
+            }
+            isEmpty(); }
     }
     
     public java.sql.Connection getConn() {
@@ -1022,8 +992,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         internalObject.close();
     }
     
-    private int getColumnIndex(String in) //test
-    {
+    private int getColumnIndex(String in) {
         int count = table.getColumnCount();
         for(int i=0; i < count; i++) {
             if(table.getColumnName(i).equals(in)) return i;
@@ -1031,67 +1000,45 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         return 0;
     }
     
-    
-    
     private void HideColumns(int col) {
         int iColumn = col;
-        // set column width
         table.getColumnModel().getColumn(iColumn).setMaxWidth(0);
         table.getColumnModel().getColumn(iColumn).setMinWidth(0);
         table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
         table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
-        
     }
-    private void setAllVariables(){
-        
+    
+    private void setAllVariables() {
         setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
-        
-        
         setCode((Integer) table.getValueAt(getRow(), getColumnIndex("\u043d\u043e\u043c\u0435\u0440")));
-        
-        
         setIn_in_sl_mop((Integer) table.getValueAt(getRow(), getColumnIndex("id_casa")));
-        
-        
         in_code_casa= (Integer) table.getValueAt(getRow(), getColumnIndex( "\u043a\u043e\u0434 \u043a\u0430\u0441\u0430"));
-        
         try{
             setIn_outsl_mop((Integer) table.getValueAt(getRow(), getColumnIndex("id_contragent")));
-        }catch(Exception e){
+        } catch(Exception e) {
             setIn_outsl_mop(-1);
         }
         try{
             setContragent_cod((Integer) table.getValueAt(getRow(), getColumnIndex("\u043a\u043e\u0434 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442")));
-        }catch(Exception e){
+        } catch(Exception e) {
             setContragent_cod(0);
         }
         try{
             setContragent_name((String)table.getValueAt(getRow(), getColumnIndex( "\u0438\u043c\u0435 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442")));
-        }catch(Exception e){
+        } catch(Exception e) {
             setContragent_name("");
         }
         setIn_id_order_spec((Integer) table.getValueAt(getRow(), getColumnIndex("id_df")));
-        
         setIn_id_order_doc((Integer) table.getValueAt(getRow(), getColumnIndex("id_order_doc")));
-        
         setIn_DATE((String)table.getValueAt(getRow(), getColumnIndex("\u0414\u0430\u0442\u0430 \u0438\u0437\u0434\u0430\u0432\u0430\u043d\u0435")).toString());
-        
         setIn_id_n_money((Integer) table.getValueAt(getRow(), getColumnIndex("id_n_money")));
-        
         in_code_lat = (String)table.getValueAt(getRow(), getColumnIndex("\u043f\u0430\u0440\u0438\u0447\u0435\u043d \u043a\u043e\u0434"));
-        
         setIn_exchange_rate((Double)table.getValueAt(getRow(), getColumnIndex("\u043a\u0443\u0440\u0441")));
-        
         setIn_sum_sl_mop((Double)table.getValueAt(getRow(), getColumnIndex("\u0441\u0443\u043c\u0430")));
-        
         setIn_sum_os_val_sl_mop((Double)table.getValueAt(getRow(), getColumnIndex("\u0441\u0443\u043c\u0430 \u043e\u0441\u043d\u043e\u0432\u043d\u0430 \u0432\u0430\u043b\u0443\u0442\u0430")));
-        
         setUser_name((String)table.getValueAt(getRow(), getColumnIndex("\u0438\u0437\u0434\u0430\u043b \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430")));
-        
         setIn_id_sdtn((Integer) table.getValueAt(getRow(), getColumnIndex("id_sdtn")));
-        
         setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440")));
-        
     }
     
     public int getIn_in_sl_mop() {
@@ -1199,57 +1146,37 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     }
     
     public void loadReport() {
-        
         setAllVariables();
-        
-        HashMap hm = new HashMap();
+        java.util.HashMap hm = new java.util.HashMap();
         imakante.com.priceToString prcT = new imakante.com.priceToString();
         double d = this.getIn_sum_sl_mop();
         prcT.setValue(d);
         prcT.ConstString();
-        
         hm.put("nomer",area + fillZero(this.getCode()));
-        
         hm.put("data_iz", this.getIn_DATE());
-        
         hm.put("sumalv", "" + this.getIn_sum_os_val_sl_mop());
-        
-        hm.put("suma","" + this.getIn_sum_sl_mop());
-        
-        hm.put("slovom","" + prcT.getEndString());
-        
-        hm.put("vnosnomer","" +  this.contragent_cod);
-        
+        hm.put("suma", "" + this.getIn_sum_sl_mop());
+        hm.put("slovom", "" + prcT.getEndString());
+        hm.put("vnosnomer", "" +  this.contragent_cod);
         System.out.println("" +  this.contragent_cod);
-        
         hm.put("vnositel", "" + this.getContragent_name());
-        
         System.out.println(" kasa " + in_code_casa );
-        
-        hm.put("casa","" + in_code_casa);
-        
+        hm.put("casa", "" + in_code_casa);
         hm.put("valuta", in_code_lat);
-        
         hm.put("casier", this.getUser_name());
-        
         System.out.println(" kasier " + this.getUser_name());
-        
         imakante.sales.aeCaseOpReport cor = new imakante.sales.aeCaseOpReport(this, true, getConn(), hm, jasperFile);
         cor.setVisible(true);
     }
     
-    
-    private String fillZero(int Inp){
-        
+    private String fillZero(int Inp) {
         String p = "0000000";
         String EndString = "";
         p = String.valueOf(Inp);
         int k = 7 - p.length();
-        for(int i = 0 ; i < k; i++){
-            
+        for(int i = 0 ; i < k; i++) {
             EndString = "0" + EndString;
         }
-        
         return EndString;
     }
     
@@ -1276,35 +1203,35 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     public void setHName(String hName) {
         this.hName = hName;
     }
-
+    
     public int getLevelPermition() {
         return levelPermition;
     }
-
+    
     public void setLevelPermition(int levelPermition) {
         this.levelPermition = levelPermition;
     }
-
+    
     public boolean isIsNew() {
         return isNew;
     }
-
+    
     public void setIsNew(boolean isNew) {
         this.isNew = isNew;
     }
-
+    
     public java.sql.ResultSet getRs() {
         return rs;
     }
-
+    
     public void setRs(java.sql.ResultSet rs) {
         this.rs = rs;
     }
-
+    
     public java.sql.Statement getStm() {
         return stm;
     }
-
+    
     public void setStm(java.sql.Statement stm) {
         this.stm = stm;
     }
