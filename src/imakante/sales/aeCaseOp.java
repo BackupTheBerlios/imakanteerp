@@ -464,8 +464,8 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
             revalidateContragent();
-            this.jLabel4.setText(myParent.getHName());
-            this.jLabel4.revalidate();
+            this.jLabel14.setText(myParent.getHName());
+            this.jLabel14.revalidate();
             jTextField2.transferFocus();}
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7){
             try {
@@ -921,22 +921,25 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         }
         
     }
-    private void getExchangeRateFromDB(){
-        int money = this.jComboM.getSelectedIndex();
-        
-        try {
-            myParent.setRs(myParent.getStm().executeQuery("SELECT s.value_sl_exchange_rate FROM sl_exchange_rate s" +
-                    "WHERE id_sl_exchange_rate = (SELECT MAX(id_sl_exchange_rate) FROM sl_exchange_rate WHERE id_n_money = " + money + " );"));
-            while(myParent.getRs().next()){
-                this.jTextField7.setText(""+ myParent.getRs().getDouble("value_sl_exchange_rate"));
-                revalidateSums();
+   private void getExchangeRateFromDB(){
+        int money = this.jComboM.getSelectedIndex() + 1;
+        if(money>1){
+            try {
+                myParent.setRs(myParent.getStm().executeQuery("SELECT s.value_sl_exchange_rate FROM sl_exchange_rate s " +
+                        "WHERE id_sl_exchange_rate = (SELECT MAX(id_sl_exchange_rate) FROM sl_exchange_rate WHERE id_n_money = " + money + " );"));
+                while(myParent.getRs().next()){
+                    this.jTextField7.setText(""+ myParent.getRs().getDouble("value_sl_exchange_rate"));
+                    revalidateSums();
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
             }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+        }
+        if(money==1){
+            this.jTextField7.setText("1");
+            revalidateSums();
         }
         
-        
     }
-    
     
 }// end class
