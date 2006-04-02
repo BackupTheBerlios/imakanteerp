@@ -19,6 +19,7 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
         initComboD();
         this.setResizable(false);
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        dFields(myParent.isIsNew());
         repaintComp();
     }
     
@@ -443,7 +444,18 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jTextField3KeyPressed
     
     private void jComboDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboDKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jComboD.transferFocus();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            revalidateContragent();
+            this.jLabel4.setText(myParent.getHName());
+            this.jLabel4.revalidate();
+            jTextField2.transferFocus();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7){
+            try {
+                myParent.intContrDialog(Integer.parseInt(jTextField2.getText()));
+            } catch (NumberFormatException ex) {
+                ex.printStackTrace();
+            }
+        }
     }//GEN-LAST:event_jComboDKeyPressed
     
     private void jTextField6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyPressed
@@ -663,6 +675,8 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
     
     //SAVE
     private void saveRecord() {
+        revalidateContragent();
+        myParent.setIn_outsl_mop(myParent.getHInt());
         this.revalidateSums();
         NumDocument = myParent.getCode();
         Contragent = myParent.getContragent_cod();
