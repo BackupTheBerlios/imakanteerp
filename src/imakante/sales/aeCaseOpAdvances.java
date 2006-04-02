@@ -646,6 +646,7 @@ public class aeCaseOpAdvances extends imakante.com.vcomponents.iDialog {
         myParent.setIn_id_order_doc(myParent.getInternalObject().getIndexDoc()[jComboD.getSelectedIndex()]);
         myParent.setIn_sum_sl_mop(Double.parseDouble(jTextField3.getText()));
         myParent.setIn_id_n_money(myParent.getInternalObject().getIndexMoney()[jComboM.getSelectedIndex()]);
+        myParent.setIn_exchange_rate(Double.parseDouble(jTextField3.getText()));
         myParent.setComment(jTextArea1.getText());
         myParent.setContragent_name(jLabel14.getText());
         myParent.setIn_sum_os_val_sl_mop(Double.parseDouble(jTextField4.getText()));
@@ -833,6 +834,11 @@ public class aeCaseOpAdvances extends imakante.com.vcomponents.iDialog {
             myParent.getCodFromQu(Integer.parseInt(jTextField2.getText()));
         } catch (NumberFormatException ex) { ex.printStackTrace(); }
         this.jLabel14.setText(myParent.getHName());
+    }
+    
+     
+    public void revalidateFText(){
+        jTextField2.setText(""+myParent.getHCode());
     }
     
     private void dFields(boolean isNew){

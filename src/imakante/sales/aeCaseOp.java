@@ -693,15 +693,19 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         PrimaryCurrencyValue = myParent.getIn_sum_os_val_sl_mop();
         ExchangeRate = myParent.getIn_exchange_rate();
         UserMaster = myParent.getUser_name();
+        
         try {
             myParent.setCode(Integer.parseInt(jTextField1.getText()));
             myParent.setContragent_cod(Integer.parseInt(jTextField2.getText()));
-            if(jTextField6.getText().equals("")){myParent.setIn_id_order_spec(-1);} else{myParent.setIn_id_order_spec(Integer.parseInt(jTextField6.getText()));}
+            if(jTextField6.getText().equals("")){
+                myParent.setIn_id_order_spec(-1);
+            } else{myParent.setIn_id_order_spec(Integer.parseInt(jTextField6.getText()));}
         } catch (NumberFormatException nfex) { nfex.printStackTrace(); }
         
         myParent.setIn_in_sl_mop(myParent.getInternalObject().getIndexConnOfId()[jComboCR.getSelectedIndex()]);
         myParent.setIn_DATE((String)formatterG.format(this.jXDatePicker1.getDate()));
         myParent.setIn_id_order_doc(myParent.getInternalObject().getIndexDoc()[jComboD.getSelectedIndex()]);
+        myParent.setIn_exchange_rate(Double.parseDouble(jTextField3.getText()));
         myParent.setIn_sum_sl_mop(Double.parseDouble(jTextField3.getText()));
         myParent.setIn_id_n_money(myParent.getInternalObject().getIndexMoney()[jComboM.getSelectedIndex()]);
         myParent.setComment(jTextArea1.getText());
@@ -921,7 +925,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         }
         
     }
-   private void getExchangeRateFromDB(){
+    private void getExchangeRateFromDB(){
         int money = this.jComboM.getSelectedIndex() + 1;
         if(money>1){
             try {

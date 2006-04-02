@@ -670,17 +670,21 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
         String newString = strContragent + this.jtfContragentEND.getText() + "%' AND ls_n_person.code_ls_n_person` >= " + this.jtfContragentBEGIN.getText() + ";";
         constructDialod(newString, 4, Names);
     }
-    public void setIntTransfer(int intTransfer) {
+     public void setIntTransfer(int intTransfer) {
         this.intTransfer = intTransfer;
-        if (CompNumber == 0) {}
-        if(CompNumber == 1) {
-            this.jtfCasaBegin.setText("" + this.intTransfer); }
-        if(CompNumber == 2) {
-            this.jtfCasaEND.setText("" + this.intTransfer); }
-        if(CompNumber == 3) {
-            this.jtfContragentBEGIN.setText("" + this.intTransfer); }
-        if(CompNumber == 4) {
-            this.jtfContragentEND.setText("" + this.intTransfer); }
+        if (CompNumber == 0){}
+        if(CompNumber == 1){
+            this.jtfCasaBegin.setText(""+this.intTransfer);}
+        if(CompNumber == 2){
+            this.jtfCasaEND.setText(""+this.intTransfer);}
+        if(CompNumber == 3){
+            this.jtfContragentBEGIN.setText(""+this.intTransfer);}
+        if(CompNumber == 4){
+            this.jtfContragentEND.setText(""+this.intTransfer);}
+        if(CompNumber == 99){
+            this.setHCode(this.intTransfer);
+            ae_Adva.revalidateFText();
+        }
         
     }
     
@@ -1167,13 +1171,13 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
         setHCode(0);
         setHName("");
         String str = "SELECT ls_n_person.id_ls_n_person, "
-                + "ls_n_person.code_ls_n_person, ls_n_person.name_ls_n_person"
-                + "FROM ls_n_person WHERE ls_n_person.code_ls_n_person = '";
+                + "ls_n_person.code_ls_n_person, ls_n_person.name_ls_n_person "
+                + "FROM ls_n_person WHERE ls_n_person.code_ls_n_person = ";
         if(stm == null){
             this.prepareStm();
         } else {  }
         try {
-            rs = stm.executeQuery(str + CodDialog + "';");
+            rs = stm.executeQuery(str + CodDialog);
             while(rs.next()){
                 setHInt(rs.getInt("id_ls_n_person"));
                 setHCode(rs.getInt("code_ls_n_person"));
