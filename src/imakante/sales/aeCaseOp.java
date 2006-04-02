@@ -920,4 +920,11 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         }
         
     }
+    private void getExchangeRateFromDB(){
+    
+    
+    
+    }
+    
+    
 }// end class
