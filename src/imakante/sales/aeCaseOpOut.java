@@ -444,18 +444,7 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jTextField3KeyPressed
     
     private void jComboDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboDKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
-            revalidateContragent();
-            this.jLabel4.setText(myParent.getHName());
-            this.jLabel4.revalidate();
-            jTextField2.transferFocus();}
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7){
-            try {
-                myParent.intContrDialog(Integer.parseInt(jTextField2.getText()));
-            } catch (NumberFormatException ex) {
-                ex.printStackTrace();
-            }
-        }
+         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jComboD.transferFocus();}
     }//GEN-LAST:event_jComboDKeyPressed
     
     private void jTextField6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyPressed
@@ -471,7 +460,18 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jComboCRKeyPressed
     
     private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jTextField2.transferFocus();}
+       if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            revalidateContragent();
+            this.jLabel4.setText(myParent.getHName());
+            this.jLabel4.revalidate();
+            jTextField2.transferFocus();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7){
+            try {
+                myParent.intContrDialog(Integer.parseInt(jTextField2.getText()));
+            } catch (NumberFormatException ex) {
+                ex.printStackTrace();
+            }
+        }
     }//GEN-LAST:event_jTextField2KeyPressed
     
     private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
