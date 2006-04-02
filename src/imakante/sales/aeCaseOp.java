@@ -926,7 +926,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         
         try {
             myParent.setRs(myParent.getStm().executeQuery("SELECT s.value_sl_exchange_rate FROM sl_exchange_rate s" +
-                    "WHERE id_sl_exchange_rate = (SELECT MAX(id_sl_exchange_rate) FROM sl_exchange_rate WHERE id_n_money = "+ money + " );"));
+                    "WHERE id_sl_exchange_rate = (SELECT MAX(id_sl_exchange_rate) FROM sl_exchange_rate WHERE id_n_money = " + money + " );"));
             while(myParent.getRs().next()){
                 this.jTextField7.setText(""+ myParent.getRs().getDouble("value_sl_exchange_rate"));
                 revalidateSums();
