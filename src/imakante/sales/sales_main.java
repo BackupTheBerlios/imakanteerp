@@ -90,9 +90,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         kasaMenu_order = new javax.swing.JMenu();
         orderMenu_prih = new javax.swing.JMenuItem();
         orderMenu_razh = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
         kasaMenu_adv = new javax.swing.JMenuItem();
-        kasaMenu_nal = new javax.swing.JMenuItem();
         kasaMenu_dvi = new javax.swing.JMenuItem();
+        kasaMenu_nal = new javax.swing.JMenuItem();
         kasaMenu_opis = new javax.swing.JMenuItem();
         nomMenu = new javax.swing.JMenu();
         nomMenu_stock = new javax.swing.JMenu();
@@ -322,6 +325,15 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         kasaMenu.add(kasaMenu_order);
 
+        jMenu1.setText("\u041f\u043e\u0434\u043e\u0442\u0447\u0435\u0442\u043d\u0438 \u043b\u0438\u0446\u0430");
+        jMenuItem9.setText("\u0410\u0432\u0430\u043d\u0441");
+        jMenu1.add(jMenuItem9);
+
+        jMenuItem10.setText("\u0410\u0432\u0430\u043d\u0441\u043e\u0432 \u043e\u0442\u0447\u0435\u0442");
+        jMenu1.add(jMenuItem10);
+
+        kasaMenu.add(jMenu1);
+
         kasaMenu_adv.setText("\u0410\u0432\u0430\u043d\u0441\u0438");
         kasaMenu_adv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -331,11 +343,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         kasaMenu.add(kasaMenu_adv);
 
+        kasaMenu_dvi.setText("\u0414\u0432\u0438\u0436\u0435\u043d\u0438\u0435 \u043c\u0435\u0436\u0434\u0443 \u043a\u0430\u0441\u0438");
+        kasaMenu.add(kasaMenu_dvi);
+
         kasaMenu_nal.setText("\u041d\u0430\u043b\u0438\u0447\u043d\u043e\u0441\u0442 \u0432 \u043a\u0430\u0441\u0438");
         kasaMenu.add(kasaMenu_nal);
-
-        kasaMenu_dvi.setText("\u0414\u0432\u0438\u0436\u0435\u043d\u0438\u0435");
-        kasaMenu.add(kasaMenu_dvi);
 
         kasaMenu_opis.setText("\u041e\u043f\u0438\u0441 \u043d\u0430 \u043a\u043e\u043f\u044e\u0440\u0438");
         kasaMenu.add(kasaMenu_opis);
@@ -696,7 +708,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         setJMenuBar(menuBar);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-757)/2, (screenSize.height-448)/2, 757, 448);
+        setBounds((screenSize.width-757)/2, (screenSize.height-487)/2, 757, 487);
     }// </editor-fold>//GEN-END:initComponents
     
     private void orderMenu_razhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderMenu_razhActionPerformed
@@ -947,7 +959,9 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
@@ -955,6 +969,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenuItem jMenuItem9DTUR;
     private javax.swing.JMenu jMenuTransfer;
     private javax.swing.JSeparator jSeparator3;

@@ -928,6 +928,7 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
         }
         
     }
+    
     private void getExchangeRateFromDB(){
         int money = this.jComboM.getSelectedIndex() + 1;
         if(money>1){

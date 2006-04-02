@@ -242,6 +242,12 @@ public class aeCaseOpAdvances extends imakante.com.vcomponents.iDialog {
 
         jLabel4.setText("\u0421\u0443\u043c\u0430:");
 
+        jComboM.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jComboMFocusLost(evt);
+            }
+        });
+
         jLabel7.setText("\u0412\u0430\u043b\u0443\u0442\u0430:");
 
         jLabel8.setText("\u0414\u0430\u0442\u0430:");
@@ -366,7 +372,7 @@ public class aeCaseOpAdvances extends imakante.com.vcomponents.iDialog {
                             .add(jTextField6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.BASELINE, jComboM, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.BASELINE, jComboM, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.BASELINE, jLabel7)
                     .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                         .add(jLabel4)
@@ -385,7 +391,7 @@ public class aeCaseOpAdvances extends imakante.com.vcomponents.iDialog {
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel5)
                     .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 78, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -395,11 +401,15 @@ public class aeCaseOpAdvances extends imakante.com.vcomponents.iDialog {
         setBounds((screenSize.width-544)/2, (screenSize.height-420)/2, 544, 420);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jComboMFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboMFocusLost
+ getExchangeRateFromDB();
+    }//GEN-LAST:event_jComboMFocusLost
+
     private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
             revalidateContragent();
-            this.jLabel4.setText(myParent.getHName());
-            this.jLabel4.revalidate();
+            this.jLabel14.setText(myParent.getHName());
+            this.jLabel14.revalidate();
             jTextField2.transferFocus();}
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7){
             try {
@@ -823,4 +833,38 @@ public class aeCaseOpAdvances extends imakante.com.vcomponents.iDialog {
         this.jLabel14.setText(myParent.getHName());
     }
     
+    private void dFields(boolean isNew){
+        if(isNew=false || myParent.getLevelPermition() < 2 ){
+            this.jTextField1.setEnabled(false);
+            this.jTextField2.setEnabled(false);
+            this.jTextField3.setEnabled(false);
+            this.jTextField6.setEnabled(false);
+            this.jComboCR.setEnabled(false);
+            this.jComboD.setEnabled(false);
+            this.jComboM.setEnabled(false);
+            this.jXDatePicker1.setEnabled(false);
+        }
+        
+    }
+    
+    private void getExchangeRateFromDB(){
+        int money = this.jComboM.getSelectedIndex() + 1;
+        if(money>1){
+            try {
+                myParent.setRs(myParent.getStm().executeQuery("SELECT s.value_sl_exchange_rate FROM sl_exchange_rate s " +
+                        "WHERE id_sl_exchange_rate = (SELECT MAX(id_sl_exchange_rate) FROM sl_exchange_rate WHERE id_n_money = " + money + " );"));
+                while(myParent.getRs().next()){
+                    this.jTextField7.setText(""+ myParent.getRs().getDouble("value_sl_exchange_rate"));
+                    revalidateSums();
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        if(money==1){
+            this.jTextField7.setText("1");
+            revalidateSums();
+        }
+        
+    }
 }// end class
