@@ -1,4 +1,4 @@
-# MySQL-Front 3.2  (Build 13.0)
+# MySQL-Front 3.2  (Build 13.8)
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -480,6 +480,7 @@ CREATE TABLE `ls_sluj` (
 # Dumping data for table ls_sluj
 #
 
+INSERT INTO `ls_sluj` VALUES (1,'PRIMERNA OOD','115555555','48866566','asdljsadnlsd','sdsddssds','sasdadssd','115','46666666','25-02-2555',NULL,NULL,NULL,NULL,NULL);
 
 #
 # Table structure for table ls_vid_osiguren
@@ -539,9 +540,8 @@ INSERT INTO `n_casa` VALUES (1,13,2,'Каса Разнос Нестле','');
 INSERT INTO `n_casa` VALUES (2,13,3,'РАЗНОС КРАФТ','');
 INSERT INTO `n_casa` VALUES (3,12,4,'ЦЕНТРАЛНА','');
 INSERT INTO `n_casa` VALUES (4,13,5,'KASA 2','');
-INSERT INTO `n_casa` VALUES (5,0,6,'','');
-INSERT INTO `n_casa` VALUES (6,0,7,'','');
-INSERT INTO `n_casa` VALUES (7,0,8,'','');
+INSERT INTO `n_casa` VALUES (5,12,6,'Каса Ина 7','по банкови плоащания');
+INSERT INTO `n_casa` VALUES (6,13,7,'Разнос 003','');
 
 #
 # Table structure for table n_contragent
@@ -3856,6 +3856,10 @@ INSERT INTO `n_doc_type_user_rights` VALUES (1,1,1,3);
 INSERT INTO `n_doc_type_user_rights` VALUES (2,3,9,3);
 INSERT INTO `n_doc_type_user_rights` VALUES (3,4,5,3);
 INSERT INTO `n_doc_type_user_rights` VALUES (5,1,8,3);
+INSERT INTO `n_doc_type_user_rights` VALUES (6,3,10,3);
+INSERT INTO `n_doc_type_user_rights` VALUES (7,3,11,3);
+INSERT INTO `n_doc_type_user_rights` VALUES (8,3,12,3);
+INSERT INTO `n_doc_type_user_rights` VALUES (9,3,13,3);
 
 #
 # Table structure for table n_expens
@@ -3913,8 +3917,9 @@ INSERT INTO `n_group` VALUES (18,4,0,'',0);
 INSERT INTO `n_group` VALUES (19,0,308,'Електродвигател',2);
 INSERT INTO `n_group` VALUES (20,0,502,'Багер',1);
 INSERT INTO `n_group` VALUES (21,0,750,'Бормашина',2);
-INSERT INTO `n_group` VALUES (22,2,1005,'Kontragent',2);
+INSERT INTO `n_group` VALUES (22,2,1005,'Контрагент 1',2);
 INSERT INTO `n_group` VALUES (23,0,97,'Цифрова камера',6);
+INSERT INTO `n_group` VALUES (24,2,295,'Доставчик7',3);
 
 #
 # Table structure for table n_incoms
@@ -3933,6 +3938,7 @@ CREATE TABLE `n_incoms` (
 # Dumping data for table n_incoms
 #
 
+INSERT INTO `n_incoms` VALUES (1,10,5,'Приход от основна дейност',NULL);
 INSERT INTO `n_incoms` VALUES (2,10,1,'Prihod 1','');
 INSERT INTO `n_incoms` VALUES (3,11,2,'Prihod 2','');
 
@@ -9441,8 +9447,8 @@ CREATE TABLE `n_product_consigment` (
 # Dumping data for table n_product_consigment
 #
 
-INSERT INTO `n_product_consigment` VALUES (1,36,125,'2000-01-01',0,0,0,0);
-INSERT INTO `n_product_consigment` VALUES (2,35,8758,'2000-01-01',0,0,0,0);
+INSERT INTO `n_product_consigment` VALUES (1,36,125,'2000-01-01',0,2,2,4);
+INSERT INTO `n_product_consigment` VALUES (2,35,8758,'2000-01-01',0,2,2,4);
 INSERT INTO `n_product_consigment` VALUES (3,49,98700,'2006-03-31',333022589,2,2,4);
 INSERT INTO `n_product_consigment` VALUES (55,49,987,'2006-02-21',333,3,2,3);
 INSERT INTO `n_product_consigment` VALUES (56,49,89,'2006-02-19',333,3,2,4);
@@ -9655,6 +9661,7 @@ CREATE TABLE `n_storage` (
 INSERT INTO `n_storage` VALUES (1,12,1,'Centralen','');
 INSERT INTO `n_storage` VALUES (2,13,7713,'Разносен 1','');
 INSERT INTO `n_storage` VALUES (3,0,7714,'','');
+INSERT INTO `n_storage` VALUES (4,0,7715,'','');
 
 #
 # Table structure for table n_type_bacc
@@ -9696,6 +9703,8 @@ INSERT INTO `n_type_doc` VALUES (4,4000,'Опр. фактура','Опростена Фактура');
 INSERT INTO `n_type_doc` VALUES (5,3010,'Касова бележка','КБ');
 INSERT INTO `n_type_doc` VALUES (6,4265,'Трудов договор','ТрДог');
 INSERT INTO `n_type_doc` VALUES (7,6615,'Протокол','Прот');
+INSERT INTO `n_type_doc` VALUES (10,701,'Приходен ордер','Приходен Ордер');
+INSERT INTO `n_type_doc` VALUES (11,702,'Разходен Ордер','Разходен ордер');
 
 #
 # Table structure for table sl_contragent_obekt
@@ -9795,6 +9804,10 @@ INSERT INTO `sl_doc_type_num` VALUES (6,1,7,'Стокова разписка кам  склад 1');
 INSERT INTO `sl_doc_type_num` VALUES (7,6,7,'');
 INSERT INTO `sl_doc_type_num` VALUES (8,1,8,'Стокова разписка склад 2');
 INSERT INTO `sl_doc_type_num` VALUES (9,7,9,'Консгнационен протокол');
+INSERT INTO `sl_doc_type_num` VALUES (10,10,101,'Приходни ордери първа каса');
+INSERT INTO `sl_doc_type_num` VALUES (11,10,102,'Проходни ордери втора каса');
+INSERT INTO `sl_doc_type_num` VALUES (12,10,100,'Проходни ордери Централна каса');
+INSERT INTO `sl_doc_type_num` VALUES (13,11,100,'Разходни ордери Централна каса');
 
 #
 # Table structure for table sl_document_facade
@@ -9836,42 +9849,44 @@ CREATE TABLE `sl_document_facade` (
 # Dumping data for table sl_document_facade
 #
 
-INSERT INTO `sl_document_facade` VALUES (66,0,1,0,22222234,1,'0',0,0,0,2,2,'2003-06-02','HH:00:SS',5,1,0,0,1,0,'1997-01-01','2002-06-02','1',1,0,1,29);
-INSERT INTO `sl_document_facade` VALUES (68,0,1,0,22222235,1,'0',2,720,120,2,2,'2006-02-05','HH:00:SS',2,1,0,0,0,0,'1997-01-01','2003-12-10','',1,0,1,4);
-INSERT INTO `sl_document_facade` VALUES (69,0,2,0,22222236,1,'0',0,0,0,2,2,'0006-02-05','HH:00:SS',1,1,0,0,3,0,'1997-01-01','2006-04-05','',1,0,1,27);
-INSERT INTO `sl_document_facade` VALUES (70,0,1,0,22222237,1,'0',2,2796.54,266.09,2,2,'2006-02-06','HH:00:SS',2,5,0,0,1,0,'1997-01-01','2006-02-06','',1,0,1,4);
-INSERT INTO `sl_document_facade` VALUES (71,0,0,0,22222238,2,'0',2,1200,200,2,2,'2006-02-06','HH:00:SS',0,0,0,0,0,0,'2000-01-01','2006-04-06','',1,0,1,4);
-INSERT INTO `sl_document_facade` VALUES (72,0,0,0,22222239,3,'0',2,4800,800,2,2,'2006-02-06','HH:00:SS',0,0,0,0,0,0,'2000-01-01','2006-04-05','',1,0,1,3);
-INSERT INTO `sl_document_facade` VALUES (73,0,0,0,22222240,5,'1',0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
-INSERT INTO `sl_document_facade` VALUES (74,0,0,0,22222241,5,'1',0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
-INSERT INTO `sl_document_facade` VALUES (75,0,0,0,22222242,5,'1',0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
-INSERT INTO `sl_document_facade` VALUES (76,0,0,0,22222243,5,NULL,0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
-INSERT INTO `sl_document_facade` VALUES (77,0,0,0,22222244,5,NULL,0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
-INSERT INTO `sl_document_facade` VALUES (78,0,0,0,22222245,5,'1',0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
-INSERT INTO `sl_document_facade` VALUES (79,0,0,0,22222246,5,NULL,0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
-INSERT INTO `sl_document_facade` VALUES (80,0,0,0,22222247,5,NULL,0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
-INSERT INTO `sl_document_facade` VALUES (81,0,0,0,22222248,5,NULL,0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
-INSERT INTO `sl_document_facade` VALUES (82,0,0,0,22222249,5,NULL,0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
-INSERT INTO `sl_document_facade` VALUES (83,0,0,0,22222250,5,'1',0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
-INSERT INTO `sl_document_facade` VALUES (84,0,0,0,22222251,5,NULL,0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
-INSERT INTO `sl_document_facade` VALUES (85,0,0,0,22222252,5,NULL,0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
-INSERT INTO `sl_document_facade` VALUES (86,0,0,0,22222253,5,NULL,0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
-INSERT INTO `sl_document_facade` VALUES (87,0,0,0,22222254,5,NULL,0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
-INSERT INTO `sl_document_facade` VALUES (88,0,0,0,22222255,5,NULL,0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
-INSERT INTO `sl_document_facade` VALUES (89,0,0,0,22222256,5,'1',0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
-INSERT INTO `sl_document_facade` VALUES (90,0,0,0,22222257,5,'1',0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
-INSERT INTO `sl_document_facade` VALUES (91,0,0,0,22222258,5,NULL,0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
-INSERT INTO `sl_document_facade` VALUES (92,0,0,0,22222259,5,NULL,0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
-INSERT INTO `sl_document_facade` VALUES (93,0,0,0,22222260,5,'1',0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
-INSERT INTO `sl_document_facade` VALUES (94,0,0,0,22222261,5,NULL,0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
-INSERT INTO `sl_document_facade` VALUES (95,0,0,0,22222262,5,NULL,0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
-INSERT INTO `sl_document_facade` VALUES (96,0,0,0,22222263,5,NULL,0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
-INSERT INTO `sl_document_facade` VALUES (97,0,0,0,22222264,5,'1',0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
-INSERT INTO `sl_document_facade` VALUES (98,0,0,0,22222265,5,'1',0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
-INSERT INTO `sl_document_facade` VALUES (99,0,0,0,22222266,5,'1',0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
-INSERT INTO `sl_document_facade` VALUES (100,0,0,0,22222267,5,'1',0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
-INSERT INTO `sl_document_facade` VALUES (101,0,0,0,22222268,5,'1',0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
-INSERT INTO `sl_document_facade` VALUES (102,0,0,0,1,5,'1',0,0,0,0,0,NULL,'HH:00:SS',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (66,0,1,0,22222234,1,'0',0,0,0,2,2,'2003-06-02','00:00:04',5,1,0,0,1,0,'1997-01-01','2002-06-02','1',1,0,1,29);
+INSERT INTO `sl_document_facade` VALUES (68,0,1,0,22222235,1,'0',2,720,120,2,2,'2006-02-05','00:00:00',2,1,0,0,0,0,'1997-01-01','2003-12-10','',1,0,1,4);
+INSERT INTO `sl_document_facade` VALUES (69,0,2,0,22222236,1,'0',0,0,0,2,2,'0006-02-05','00:00:00',1,1,0,0,3,0,'1997-01-01','2006-04-05','',1,0,1,27);
+INSERT INTO `sl_document_facade` VALUES (70,0,1,0,22222237,1,'0',2,2796.54,266.09,2,2,'2006-02-06','00:00:00',2,5,0,0,1,0,'1997-01-01','2006-02-06','',1,0,1,4);
+INSERT INTO `sl_document_facade` VALUES (71,0,0,0,22222238,2,'0',2,1200,200,2,2,'2006-02-06','00:00:00',0,0,0,0,0,0,'2000-01-01','2006-04-06','',1,0,1,4);
+INSERT INTO `sl_document_facade` VALUES (72,0,0,0,22222239,3,'0',2,4800,800,2,2,'2006-02-06','00:00:00',0,0,0,0,0,0,'2000-01-01','2006-04-05','',1,0,1,3);
+INSERT INTO `sl_document_facade` VALUES (73,0,0,0,22222240,5,'1',0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (74,0,0,0,22222241,5,'1',0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (75,0,0,0,22222242,5,'1',0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (76,0,0,0,22222243,5,NULL,0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (77,0,0,0,22222244,5,NULL,0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (78,0,0,0,22222245,5,'1',0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (79,0,0,0,22222246,5,NULL,0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (80,0,0,0,22222247,5,NULL,0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (81,0,0,0,22222248,5,NULL,0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (82,0,0,0,22222249,5,NULL,0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (83,0,0,0,22222250,5,'1',0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (84,0,0,0,22222251,5,NULL,0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (85,0,0,0,22222252,5,NULL,0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (86,0,0,0,22222253,5,NULL,0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (87,0,0,0,22222254,5,NULL,0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (88,0,0,0,22222255,5,NULL,0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (89,0,0,0,22222256,5,'1',0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (90,0,0,0,22222257,5,'1',0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (91,0,0,0,22222258,5,NULL,0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (92,0,0,0,22222259,5,NULL,0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (93,0,0,0,22222260,5,'1',0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (94,0,0,0,22222261,5,NULL,0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (95,0,0,0,22222262,5,NULL,0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (96,0,0,0,22222263,5,NULL,0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (97,0,0,0,22222264,5,'1',0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (98,0,0,0,22222265,5,'1',0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (99,0,0,0,22222266,5,'1',0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (100,0,0,0,22222267,5,'1',0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (101,0,0,0,22222268,5,'1',0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (102,0,0,0,1,5,'1',0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (103,0,0,0,1,2,'1',0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
+INSERT INTO `sl_document_facade` VALUES (105,0,0,0,1,1,'1',0,0,0,0,0,NULL,'00:00:00',0,0,0,0,0,0,NULL,NULL,NULL,1,0,1,0);
 
 #
 # Table structure for table sl_document_lines
@@ -9902,9 +9917,25 @@ INSERT INTO `sl_document_lines` VALUES (106,3,2,100,5,3,20,300,63,1);
 INSERT INTO `sl_document_lines` VALUES (107,3,2,100,5,6,20,600,66,1);
 INSERT INTO `sl_document_lines` VALUES (108,3,2,100,5,4,20,400,69,1);
 INSERT INTO `sl_document_lines` VALUES (109,3,2,100,5,10,20,1000,70,1);
-INSERT INTO `sl_document_lines` VALUES (110,1,2,110.15,2,3,20,330.45,70,1);
+INSERT INTO `sl_document_lines` VALUES (110,0,0,0,0,3,20,330.45,70,1);
 INSERT INTO `sl_document_lines` VALUES (111,3,2,100,5,10,20,1000,71,1);
 INSERT INTO `sl_document_lines` VALUES (112,3,2,100,5,40,20,4000,72,1);
+INSERT INTO `sl_document_lines` VALUES (113,0,0,0,0,0,0,0,70,1);
+INSERT INTO `sl_document_lines` VALUES (114,0,0,0,0,0,0,0,104,1);
+INSERT INTO `sl_document_lines` VALUES (115,0,0,0,0,0,0,0,69,1);
+INSERT INTO `sl_document_lines` VALUES (116,0,0,0,0,5,0,0,69,1);
+INSERT INTO `sl_document_lines` VALUES (118,1,2,0,2,10,0,0,104,1);
+INSERT INTO `sl_document_lines` VALUES (119,1,2,0,2,25,0,0,104,1);
+INSERT INTO `sl_document_lines` VALUES (120,3,2,2,5,0,0,0,104,1);
+INSERT INTO `sl_document_lines` VALUES (121,1,2,0,2,25,0,0,104,1);
+INSERT INTO `sl_document_lines` VALUES (123,1,2,0,2,11,0,0,104,1);
+INSERT INTO `sl_document_lines` VALUES (124,1,2,0,2,0,0,0,104,1);
+INSERT INTO `sl_document_lines` VALUES (125,1,2,0,2,0,0,0,104,1);
+INSERT INTO `sl_document_lines` VALUES (134,1,2,2,2,0,0,0,104,1);
+INSERT INTO `sl_document_lines` VALUES (135,1,2,2,2,100,20,200,104,1);
+INSERT INTO `sl_document_lines` VALUES (140,1,2,2,2,55,20,110,104,1);
+INSERT INTO `sl_document_lines` VALUES (141,1,2,2,2,45,20,90,104,1);
+INSERT INTO `sl_document_lines` VALUES (142,1,2,2,2,45,20,90,104,1);
 
 #
 # Table structure for table sl_exchange_rate
@@ -9922,7 +9953,7 @@ CREATE TABLE `sl_exchange_rate` (
 # Dumping data for table sl_exchange_rate
 #
 
-INSERT INTO `sl_exchange_rate` VALUES (0,'2000-04-05',1,1);
+INSERT INTO `sl_exchange_rate` VALUES (1,'2000-04-05',1,1);
 INSERT INTO `sl_exchange_rate` VALUES (2,'2006-04-05',2,1.63);
 INSERT INTO `sl_exchange_rate` VALUES (3,'2006-04-05',3,1.95);
 INSERT INTO `sl_exchange_rate` VALUES (5,'2006-04-06',2,1.64);
@@ -9934,7 +9965,7 @@ INSERT INTO `sl_exchange_rate` VALUES (6,'2006-04-06',3,1.96);
 
 CREATE TABLE `sl_m_operation` (
   `id_sl_mop` int(11) unsigned NOT NULL auto_increment,
-  `number_sl_mop` int(11) default NULL COMMENT 'nomer na dokumenta',
+  `number_sl_mop` int(7) unsigned zerofill default NULL COMMENT 'nomer na dokumenta',
   `in_sl_mop` int(11) default NULL COMMENT 'id na obekta v koito vlizat parite',
   `in_type_sl_mop` int(11) default NULL COMMENT 'tipa na obekta v koito vlizat parite',
   `out_sl_mop` int(11) default NULL COMMENT 'id na obekta ot koito izlizat parite',
@@ -9942,11 +9973,11 @@ CREATE TABLE `sl_m_operation` (
   `id_order_spec` int(11) default NULL COMMENT 'id na svarzani dokumenti',
   `id_order_spec_type` int(11) default NULL COMMENT 'tip na svarzani dokumenti',
   `id_order_doc` int(11) default NULL COMMENT 'vida na prihoden/razhoden',
-  `date_is` date default NULL COMMENT 'data na izdavane',
+  `date_is` date default NULL COMMENT 'data na operaciqta',
   `id_n_money` int(11) default NULL COMMENT 'id valuta na izdavane',
-  `exchange_rate` double default '1' COMMENT 'stoinost na exchange',
-  `sum_sl_mop` double default NULL COMMENT 'suma po dokumenta',
-  `sum_os_val_sl_mop` double default NULL COMMENT 'suma v osnovna valuta',
+  `exchange_rate` double(11,4) default '1.0000' COMMENT 'obmenen kurs',
+  `sum_sl_mop` double(11,4) default NULL COMMENT 'suma po dokumenta',
+  `sum_os_val_sl_mop` double(11,4) default NULL COMMENT 'suma v osnovna valuta',
   `user_id` int(11) default NULL COMMENT 'id potrebitel izdal dokumenta',
   `id_sdtn` int(11) default NULL COMMENT 'id na kochana s dokumenti',
   `comment_sl_mop` varchar(250) default NULL,
@@ -9958,6 +9989,22 @@ CREATE TABLE `sl_m_operation` (
 # Dumping data for table sl_m_operation
 #
 
+INSERT INTO `sl_m_operation` VALUES (28,1,1,1,25,3,-1,1,1,'2006-03-29',1,1,250,250,3,1,'',1);
+INSERT INTO `sl_m_operation` VALUES (29,1,2,1,35,3,0,1,1,'2006-03-30',1,1,218,218,3,5,NULL,1);
+INSERT INTO `sl_m_operation` VALUES (32,1,25,3,1,1,0,1,1,'2006-03-30',1,1,0,0,3,100,NULL,1);
+INSERT INTO `sl_m_operation` VALUES (33,2,35,3,1,1,0,1,1,'2006-03-30',1,1,0,0,3,100,NULL,1);
+INSERT INTO `sl_m_operation` VALUES (34,1,1,3,3,1,-1,1,3,'2006-03-30',1,1,254,254,3,13,'',1);
+INSERT INTO `sl_m_operation` VALUES (47,82,0,3,6,1,1444,1,4,'2005-11-08',3,1,15.36,15.36,3,13,'Кабърчетата',1);
+INSERT INTO `sl_m_operation` VALUES (61,1,5,1,30,3,4752,1,3,'2006-04-11',1,1,17652.44,17652.44,3,10,'',1);
+INSERT INTO `sl_m_operation` VALUES (62,4,1,1,0,4,0,1,1,'2006-04-01',1,1,0,0,3,5,NULL,1);
+INSERT INTO `sl_m_operation` VALUES (68,5,1,1,0,4,0,1,1,'2006-04-01',1,1,0,0,3,5,NULL,1);
+INSERT INTO `sl_m_operation` VALUES (69,6,1,1,0,4,0,1,1,'2006-04-01',1,1,0,0,3,5,NULL,1);
+INSERT INTO `sl_m_operation` VALUES (73,10,1,1,0,4,0,1,1,'2006-04-01',1,1,0,0,3,5,NULL,1);
+INSERT INTO `sl_m_operation` VALUES (76,2,1,1,1938,3,-1,1,1,'2006-04-01',1,1,0,0,3,10,'',1);
+INSERT INTO `sl_m_operation` VALUES (77,13,1,1,0,4,0,1,1,'2006-04-01',1,1,0,0,3,5,NULL,1);
+INSERT INTO `sl_m_operation` VALUES (78,14,1,1,0,4,0,1,1,'2006-04-01',1,1,0,0,3,5,NULL,1);
+INSERT INTO `sl_m_operation` VALUES (79,15,1,1,0,4,0,1,1,'2006-04-01',1,1,0,0,3,5,NULL,1);
+INSERT INTO `sl_m_operation` VALUES (80,16,1,1,0,4,0,1,1,'2006-04-01',1,1,0,0,3,5,NULL,1);
 
 #
 # Table structure for table sl_n_obekt
@@ -10002,7 +10049,7 @@ CREATE TABLE `sl_nalichnosti` (
 
 INSERT INTO `sl_nalichnosti` VALUES (1,1,1,0,152,0,0);
 INSERT INTO `sl_nalichnosti` VALUES (2,1,2,0,135,0,0);
-INSERT INTO `sl_nalichnosti` VALUES (3,2,1,1,97,0,0);
+INSERT INTO `sl_nalichnosti` VALUES (3,2,1,1,100,0,0);
 INSERT INTO `sl_nalichnosti` VALUES (4,2,3,1,60,0,0);
 
 #
@@ -10488,7 +10535,8 @@ END IF;
 
 IF (comprator = 20) THEN
    IF (in_docFacadeType = 0) THEN
-     SELECT pc.id_pc,n.id_pm, n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
+     SELECT pc.id_pc,pc.parcel_pc, pc.id_pp, pc.id_ppp, pc.id_pf,
+     n.id_pm, n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
      pc.parcel_pc, pc.dateofexpire_pc ,
      s.id_nal, s.id_n_storage,s.level, s.quant_nal, s.quant_rezerv_nal,
      st.id_n_storage, st.code_n_storage, st.name_n_storage, st.comments_n_storage
@@ -10498,7 +10546,8 @@ IF (comprator = 20) THEN
      WHERE n.code_pm LIKE CONCAT('%',in_docFacadeComment,'%') AND n.flag_pm = in_id_obekt_in AND  s.level= in_id_df;
    END IF;
    IF (in_docFacadeType = 1) THEN
-       SELECT n.id_pm, n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
+       SELECT n.id_pm,pc.parcel_pc, pc.id_pp, pc.id_ppp, pc.id_pf,
+       n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
        pc.id_pc,pc.parcel_pc, pc.dateofexpire_pc ,
        s.id_nal, s.id_n_storage,s.level, s.quant_nal, s.quant_rezerv_nal,
        st.id_n_storage, st.code_n_storage, st.name_n_storage, st.comments_n_storage
@@ -10508,7 +10557,8 @@ IF (comprator = 20) THEN
        WHERE n.code_pm LIKE CONCAT(in_docFacadeComment,'%') AND n.flag_pm = in_id_obekt_in AND  s.level= in_id_df;
    END IF;
    IF (in_docFacadeType = 2) THEN
-       SELECT n.id_pm, n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
+       SELECT n.id_pm,pc.parcel_pc, pc.id_pp, pc.id_ppp, pc.id_pf,
+       n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
        pc.id_pc,pc.parcel_pc, pc.dateofexpire_pc ,
        s.id_nal, s.id_n_storage,s.level, s.quant_nal, s.quant_rezerv_nal,
        st.id_n_storage, st.code_n_storage, st.name_n_storage, st.comments_n_storage
@@ -10952,7 +11002,7 @@ BEGIN
      END IF;
 
      IF (comprator = 1) THEN
-        INSERT INTO n_type_doc (code_ntd, name_ntd, name_print_ntd) VALUES(in_code, in_name, in_print_name);
+        INSERT INTO n_type_doc (code_ntd, name_ntd, name_print_ntd) VALUES (in_code, in_name, in_print_name);
      END IF;
 
      IF (comprator = 2) THEN
@@ -10969,8 +11019,13 @@ BEGIN
      END IF;
 
      IF (comprator = 5) THEN
-        SELECT n.id_ntd, n.code_ntd, n.name_ntd, n.name_print_ntd FROM n_type_doc n WHERE n.code_ntd LIKE CONCAT('%',in_code,'%') AND
-        n.name_ntd LIKE CONCAT('%',in_name,'%');
+        IF (in_code = -1) THEN
+            SELECT n.id_ntd, n.code_ntd, n.name_ntd, n.name_print_ntd FROM n_type_doc n WHERE n.name_ntd LIKE CONCAT('%',in_name,'%');
+        END IF;
+        IF (in_code > -1 ) THEN
+            SELECT n.id_ntd, n.code_ntd, n.name_ntd, n.name_print_ntd FROM n_type_doc n WHERE n.code_ntd LIKE CONCAT('%',in_code,'%') AND
+                n.name_ntd LIKE CONCAT('%',in_name,'%');
+        END IF;
      END IF;
 
      IF (comprator = 7) THEN
@@ -10978,7 +11033,7 @@ BEGIN
      END IF;
 
      IF (comprator = 8) THEN
-        SELECT MAX(n.code_ntd) AS code FROM `n_type_doc` n;
+        SELECT MAX(n.code_ntd) AS code FROM n_type_doc n;
      END IF;
 
      IF (comprator = 9) THEN
@@ -11139,7 +11194,7 @@ END;
 # Source for procedure nom_procedure_money
 #
 
-CREATE PROCEDURE `nom_procedure_money`(IN in_id INT(6), IN comprator INT(6), IN in_code VARCHAR(5), IN in_cod_lat VARCHAR(6), IN in_name VARCHAR(50), IN in_comments VARCHAR(255))
+CREATE PROCEDURE `nom_procedure_money`(IN in_id INT(6), IN comprator INT(6), IN in_code INT(6), IN in_cod_lat VARCHAR(6), IN in_name VARCHAR(50), IN in_comments VARCHAR(255))
 BEGIN        
      IF (comprator = 0) THEN
         SELECT id_n_money, cod_n_money, cod_lat_n_money,name_n_money, comments_n_money FROM n_money ;
@@ -11544,7 +11599,7 @@ BEGIN
 
     IF (in_comprator = 35) THEN
       INSERT INTO mida.n_product_consigment(id_pm,parcel_pc,dateofexpire_pc)
-       VALUES(in_id_pm,"000001",null);
+       VALUES(in_id_pm,"000001",(select CURDATE()));
 
     END IF;
 
@@ -11693,6 +11748,207 @@ BEGIN
 END;
 
 #
+# Source for procedure sl_procedure_case_advances
+#
+
+CREATE PROCEDURE `sl_procedure_case_advances`(
+              IN comprator INT(6),
+              IN in_id INT(11),
+              IN in_number_sl_mop INT(11),
+              IN in_in_sl_mop INT(11),
+              IN in_outsl_mop INT(11),
+              IN in_id_order_spec INT(11),
+              IN in_id_order_doc INT(11),
+              IN in_date_is VARCHAR(10),
+              IN in_id_n_money INT(11),
+              IN in_exchange_rate DOUBLE(11,4),
+              IN in_sum_sl_mop DOUBLE(11,4),
+              IN in_sum_os_val_sl_mop DOUBLE(11,4),
+              IN in_user_id INT(11),
+              IN in_id_sdtn INT(11),
+              IN in_comment_sl_mop VARCHAR(250),
+              IN in_casaBegin INT(11),
+              IN in_casaEnd INT(11),
+              IN in_personBegin INT(11),
+              IN in_personEnd INT(11),
+              IN in_data_begin DATE,
+              IN in_data_end DATE,
+              IN in_level INT(11)
+              )
+BEGIN
+
+   IF (comprator = 0) THEN
+            SELECT
+            sl_m_operation.id_sl_mop,
+            sl_m_operation.number_sl_mop,
+            n_casa.id_n_casa,
+            n_casa.code_n_casa,
+            sl_m_operation.in_sl_mop,
+            ls_n_person.code_ls_n_person,
+            ls_n_person.name_ls_n_person,
+            sl_document_facade.number_df,
+            sl_m_operation.id_order_spec,
+            sl_m_operation.id_order_doc,
+            n_incoms.name_n_incoms,
+            sl_m_operation.id_n_money,
+            n_money.cod_lat_n_money,
+            sl_m_operation.date_is,
+            sl_m_operation.exchange_rate,
+            sl_m_operation.sum_sl_mop,
+            sl_m_operation.sum_os_val_sl_mop,
+            sl_m_operation.user_id,
+            user_master.name_um,
+            sl_m_operation.id_sdtn,
+            sl_doc_type_num.name_sdtn,
+            sl_m_operation.comment_sl_mop
+            FROM
+            sl_m_operation
+            LEFT Join n_casa ON n_casa.id_n_casa = sl_m_operation.in_sl_mop
+            LEFT Join ls_n_person ON ls_n_person.id_ls_n_person = sl_m_operation.out_sl_mop
+            LEFT Join sl_document_facade ON sl_document_facade.id_df = sl_m_operation.id_order_spec
+            LEFT Join n_money ON n_money.id_n_money = sl_m_operation.id_n_money
+            LEFT Join n_incoms ON n_incoms.id_n_incoms = sl_m_operation.id_order_doc
+            LEFT Join user_master ON user_master.id_um = sl_m_operation.user_id
+            LEFT Join sl_doc_type_num ON sl_doc_type_num.id_sdtn = sl_m_operation.id_sdtn
+            WHERE
+            sl_m_operation.in_type_sl_mop = 1 AND
+            sl_m_operation.out_type_sl_mop = 4 AND
+            sl_m_operation.id_sdtn = in_id_sdtn AND
+            sl_m_operation.levelx = in_level;
+
+     END IF;
+
+     IF (comprator = 1) THEN
+        INSERT INTO sl_m_operation(   sl_m_operation.number_sl_mop,
+                                      sl_m_operation.in_sl_mop,
+                                      sl_m_operation.in_type_sl_mop,
+                                      sl_m_operation.out_sl_mop,
+                                      sl_m_operation.out_type_sl_mop,
+                                      sl_m_operation.id_order_spec,
+                                      sl_m_operation.id_order_spec_type,
+                                      sl_m_operation.id_order_doc,
+                                      sl_m_operation.date_is,
+                                      sl_m_operation.id_n_money,
+                                      sl_m_operation.exchange_rate,
+                                      sl_m_operation.sum_sl_mop,
+                                      sl_m_operation.sum_os_val_sl_mop,
+                                      sl_m_operation.user_id,
+                                      sl_m_operation.id_sdtn,
+                                      sl_m_operation.comment_sl_mop)
+        VALUES(in_number_sl_mop,
+               in_in_sl_mop,
+               1,
+               in_outsl_mop,
+               4,
+               in_id_order_spec,
+               1,
+               in_id_order_doc,
+               in_date_is,
+               in_id_n_money,
+               in_exchange_rate,
+               in_sum_sl_mop,
+               in_sum_os_val_sl_mop,
+               in_user_id,
+               in_id_sdtn,
+               in_comment_sl_mop
+             );
+     END IF;
+
+     IF (comprator = 2) THEN
+        UPDATE sl_m_operation SET
+                                      sl_m_operation.number_sl_mop =  in_number_sl_mop,
+                                      sl_m_operation.in_sl_mop = in_in_sl_mop,
+                                      sl_m_operation.in_type_sl_mop = 1,
+                                      sl_m_operation.out_sl_mop = in_outsl_mop,
+                                      sl_m_operation.out_type_sl_mop = 4,
+                                      sl_m_operation.id_order_spec = in_id_order_spec,
+                                      sl_m_operation.id_order_spec_type = 1,
+                                      sl_m_operation.id_order_doc = in_id_order_doc,
+                                      sl_m_operation.date_is = in_date_is,
+                                      sl_m_operation.id_n_money = in_id_n_money,
+                                      sl_m_operation.exchange_rate = in_exchange_rate,
+                                      sl_m_operation.sum_sl_mop = in_sum_sl_mop,
+                                      sl_m_operation.sum_os_val_sl_mop = in_sum_os_val_sl_mop,
+                                      sl_m_operation.user_id = in_user_id,
+                                      sl_m_operation.id_sdtn = in_id_sdtn,
+                                      sl_m_operation.comment_sl_mop = in_comment_sl_mop
+        WHERE sl_m_operation.id_sl_mop = in_id;
+     END IF;
+
+     IF (comprator = 3) THEN
+        DELETE FROM sl_m_operation  WHERE  sl_m_operation.id_sl_mop = in_id;
+     END IF;
+
+      IF (comprator = 5) THEN
+            SELECT
+            sl_m_operation.id_sl_mop,
+            sl_m_operation.number_sl_mop,
+            n_casa.id_n_casa,
+            n_casa.code_n_casa,
+            ls_n_person.id_ls_n_person,
+            ls_n_person.code_ls_n_person,
+            ls_n_person.name_ls_n_person,
+            sl_document_facade.number_df,
+            sl_m_operation.id_order_spec,
+            sl_m_operation.id_order_doc,
+            n_incoms.name_n_incoms,
+            sl_m_operation.id_n_money,
+            n_money.cod_lat_n_money,
+            sl_m_operation.date_is,
+            sl_m_operation.exchange_rate,
+            sl_m_operation.sum_sl_mop,
+            sl_m_operation.sum_os_val_sl_mop,
+            sl_m_operation.user_id,
+            user_master.name_um,
+            sl_m_operation.id_sdtn,
+            sl_doc_type_num.name_sdtn,
+            sl_m_operation.comment_sl_mop
+            FROM
+            sl_m_operation
+            LEFT Join n_casa ON n_casa.id_n_casa = sl_m_operation.in_sl_mop
+            LEFT Join ls_n_person ON ls_n_person.id_ls_n_person = sl_m_operation.out_sl_mop
+            LEFT Join sl_document_facade ON sl_document_facade.id_df = sl_m_operation.id_order_spec
+            LEFT Join n_money ON n_money.id_n_money = sl_m_operation.id_n_money
+            LEFT Join n_incoms ON n_incoms.id_n_incoms = sl_m_operation.id_order_doc
+            LEFT Join user_master ON user_master.id_um = sl_m_operation.user_id
+            LEFT Join sl_doc_type_num ON sl_doc_type_num.id_sdtn = sl_m_operation.id_sdtn
+            WHERE
+            sl_m_operation.in_sl_mop = ANY (SELECT n_casa.id_n_casa FROM n_casa WHERE n_casa.code_n_casa BETWEEN in_casaBegin AND in_casaEnd ) AND
+            sl_m_operation.out_sl_mop = ANY (SELECT ls_n_person.id_ls_n_person FROM ls_n_person WHERE ls_n_person.code_ls_n_person BETWEEN in_personBegin AND in_personEnd ) AND
+            sl_m_operation.date_is BETWEEN  in_data_begin AND in_data_end AND
+            sl_m_operation.in_type_sl_mop = 1 AND
+            sl_m_operation.out_type_sl_mop = 4 AND
+            sl_m_operation.id_sdtn = in_id_sdtn AND
+            sl_m_operation.levelx = in_level;
+
+       END IF;
+
+
+         IF (comprator = 6) THEN
+        SELECT n_casa.id_n_casa, n_casa.code_n_casa FROM n_casa;
+        END IF;
+
+
+        IF (comprator = 7) THEN
+        SELECT MAX(sl_m_operation.id_sl_mop) FROM sl_m_operation n;
+        END IF;
+
+         IF (comprator = 8) THEN
+        SELECT MAX(sl_m_operation.number_sl_mop) FROM sl_m_operation  WHERE sl_m_operation.id_sdtn = in_id_sdtn AND sl_m_operation.levelx = in_level;
+        END IF;
+
+
+          IF (comprator = 11) THEN
+        SELECT n_money.id_n_money, n_money.cod_lat_n_money FROM n_money;
+        END IF;
+
+          IF (comprator = 12) THEN
+        SELECT n_incoms.id_n_incoms, n_incoms.name_n_incoms FROM n_incoms;
+        END IF;
+
+END;
+
+#
 # Source for procedure sl_procedure_case_in
 #
 
@@ -11704,7 +11960,7 @@ CREATE PROCEDURE `sl_procedure_case_in`(
               IN in_outsl_mop INT(11),
               IN in_id_order_spec INT(11),
               IN in_id_order_doc INT(11),
-              IN in_date_is DATE,
+              IN in_date_is VARCHAR(10),
               IN in_id_n_money INT(11),
               IN in_exchange_rate DOUBLE(11,4),
               IN in_sum_sl_mop DOUBLE(11,4),
@@ -11732,11 +11988,11 @@ BEGIN
             n_contragent.code_contragent,
             n_contragent.name_n_contragent,
             sl_document_facade.number_df,
-            sl_document_facade.id_df,
+            sl_m_operation.id_order_spec,
             sl_m_operation.id_order_doc,
             n_incoms.name_n_incoms,
             sl_m_operation.id_n_money,
-            `n_money`.`cod_n_money`,
+            `n_money`.`cod_lat_n_money`,
             `sl_m_operation`.`date_is`,
             `sl_m_operation`.`exchange_rate`,
             `sl_m_operation`.`sum_sl_mop`,
@@ -11748,17 +12004,18 @@ BEGIN
             `sl_m_operation`.`comment_sl_mop`
             FROM
             `sl_m_operation`
-            Inner Join `n_casa` ON `n_casa`.`id_n_casa` = `sl_m_operation`.`in_sl_mop`
-            Inner Join `n_contragent` ON `n_contragent`.`id_contragent` = `sl_m_operation`.`out_sl_mop`
-            Inner Join `sl_document_facade` ON `sl_document_facade`.`id_df` = `sl_m_operation`.`id_order_spec`
-            Inner Join `n_money` ON `n_money`.`id_n_money` = `sl_m_operation`.`id_n_money`
-            Inner Join `n_incoms` ON `n_incoms`.`id_n_incoms` = `sl_m_operation`.`id_order_doc`
-            Inner Join `user_master` ON `user_master`.`id_um` = `sl_m_operation`.`user_id`
-            Inner Join `sl_doc_type_num` ON `sl_doc_type_num`.`id_sdtn` = `sl_m_operation`.`id_sdtn`
+            LEFT Join `n_casa` ON `n_casa`.`id_n_casa` = `sl_m_operation`.`in_sl_mop`
+            LEFT Join `n_contragent` ON `n_contragent`.`id_contragent` = `sl_m_operation`.`out_sl_mop`
+            LEFT Join `sl_document_facade` ON `sl_document_facade`.`id_df` = `sl_m_operation`.`id_order_spec`
+            LEFT Join `n_money` ON `n_money`.`id_n_money` = `sl_m_operation`.`id_n_money`
+            LEFT Join `n_incoms` ON `n_incoms`.`id_n_incoms` = `sl_m_operation`.`id_order_doc`
+            LEFT Join `user_master` ON `user_master`.`id_um` = `sl_m_operation`.`user_id`
+            LEFT Join `sl_doc_type_num` ON `sl_doc_type_num`.`id_sdtn` = `sl_m_operation`.`id_sdtn`
             WHERE
             `sl_m_operation`.`in_type_sl_mop` = 1 AND
             `sl_m_operation`.`out_type_sl_mop` = 3 AND
-            `sl_m_operation`.`id_sdtn` = in_id_sdtn;
+            `sl_m_operation`.`id_sdtn` = in_id_sdtn AND
+            `sl_m_operation`.`levelx` = in_level;
 
      END IF;
 
@@ -11818,13 +12075,282 @@ BEGIN
                                       `sl_m_operation`.`user_id`= in_user_id,
                                       `sl_m_operation`.`id_sdtn`= in_id_sdtn,
                                       `sl_m_operation`.`comment_sl_mop` = in_comment_sl_mop
-        WHERE `n_casa`.id_n_casa = in_id;
+        WHERE sl_m_operation.id_sl_mop = in_id;
      END IF;
 
      IF (comprator = 3) THEN
         DELETE FROM `sl_m_operation`  WHERE  sl_m_operation.id_sl_mop = in_id;
      END IF;
-     
+
+      IF (comprator = 5) THEN
+            SELECT
+            sl_m_operation.id_sl_mop,
+            sl_m_operation.number_sl_mop,
+            n_casa.id_n_casa,
+            n_casa.code_n_casa,
+            n_contragent.id_contragent,
+            n_contragent.code_contragent,
+            n_contragent.name_n_contragent,
+            sl_document_facade.number_df,
+            sl_m_operation.id_order_spec,
+            sl_m_operation.id_order_doc,
+            n_incoms.name_n_incoms,
+            sl_m_operation.id_n_money,
+            `n_money`.`cod_lat_n_money`,
+            `sl_m_operation`.`date_is`,
+            `sl_m_operation`.`exchange_rate`,
+            `sl_m_operation`.`sum_sl_mop`,
+            `sl_m_operation`.`sum_os_val_sl_mop`,
+            `sl_m_operation`.`user_id`,
+            `user_master`.`name_um`,
+            `sl_m_operation`.`id_sdtn`,
+            `sl_doc_type_num`.`name_sdtn`,
+            `sl_m_operation`.`comment_sl_mop`
+            FROM
+            `sl_m_operation`
+            LEFT Join `n_casa` ON `n_casa`.`id_n_casa` = `sl_m_operation`.`in_sl_mop`
+            LEFT Join `n_contragent` ON `n_contragent`.`id_contragent` = `sl_m_operation`.`out_sl_mop`
+            LEFT Join `sl_document_facade` ON `sl_document_facade`.`id_df` = `sl_m_operation`.`id_order_spec`
+            LEFT Join `n_money` ON `n_money`.`id_n_money` = `sl_m_operation`.`id_n_money`
+            LEFT Join `n_incoms` ON `n_incoms`.`id_n_incoms` = `sl_m_operation`.`id_order_doc`
+            LEFT Join `user_master` ON `user_master`.`id_um` = `sl_m_operation`.`user_id`
+            LEFT Join `sl_doc_type_num` ON `sl_doc_type_num`.`id_sdtn` = `sl_m_operation`.`id_sdtn`
+            WHERE
+             sl_m_operation.in_sl_mop = ANY (SELECT n_casa.id_n_casa FROM n_casa WHERE n_casa.code_n_casa BETWEEN in_casaBegin AND in_casaEnd ) AND
+             sl_m_operation.out_sl_mop = ANY (SELECT n_contragent.id_contragent FROM n_contragent WHERE n_contragent.code_contragent BETWEEN in_contragentBegin AND in_contragentEnd ) AND
+             `sl_m_operation`.`date_is` BETWEEN  in_data_begin AND in_data_end AND
+            `sl_m_operation`.`in_type_sl_mop` = 1 AND
+            `sl_m_operation`.`out_type_sl_mop` = 3 AND
+            `sl_m_operation`.`id_sdtn` = in_id_sdtn AND
+            `sl_m_operation`.`levelx` = in_level;
+
+       END IF;
+
+
+         IF (comprator = 6) THEN
+        SELECT n_casa.id_n_casa, n_casa.code_n_casa FROM `n_casa`;
+        END IF;
+
+
+        IF (comprator = 7) THEN
+        SELECT MAX(sl_m_operation.id_sl_mop) FROM `sl_m_operation` n;
+        END IF;
+
+         IF (comprator = 8) THEN
+        SELECT MAX(sl_m_operation.number_sl_mop) FROM sl_m_operation  WHERE sl_m_operation.id_sdtn = in_id_sdtn AND sl_m_operation.levelx = in_level;
+        END IF;
+
+
+          IF (comprator = 11) THEN
+        SELECT n_money.id_n_money, n_money.cod_lat_n_money FROM `n_money`;
+        END IF;
+
+          IF (comprator = 12) THEN
+        SELECT n_incoms.id_n_incoms, n_incoms.name_n_incoms FROM `n_incoms`;
+        END IF;
+
+END;
+
+#
+# Source for procedure sl_procedure_case_out
+#
+
+CREATE PROCEDURE `sl_procedure_case_out`(
+              IN comprator INT(6),
+              IN in_id INT(11),
+              IN in_number_sl_mop INT(11),
+              IN in_in_sl_mop INT(11),
+              IN in_outsl_mop INT(11),
+              IN in_id_order_spec INT(11),
+              IN in_id_order_doc INT(11),
+              IN in_date_is VARCHAR(10),
+              IN in_id_n_money INT(11),
+              IN in_exchange_rate DOUBLE(11,4),
+              IN in_sum_sl_mop DOUBLE(11,4),
+              IN in_sum_os_val_sl_mop DOUBLE(11,4),
+              IN in_user_id INT(11),
+              IN in_id_sdtn INT(11),
+              IN in_comment_sl_mop VARCHAR(250),
+              IN in_casaBegin INT(11),
+              IN in_casaEnd INT(11),
+              IN in_contragentBegin INT(11),
+              IN in_contragentEnd INT(11),
+              IN in_data_begin DATE,
+              IN in_data_end DATE,
+              IN in_level INT(11)
+              )
+BEGIN
+
+   IF (comprator = 0) THEN
+            SELECT
+            sl_m_operation.id_sl_mop,
+            sl_m_operation.number_sl_mop,
+            n_casa.id_n_casa,
+            n_casa.code_n_casa,
+            n_contragent.id_contragent,
+            n_contragent.code_contragent,
+            n_contragent.name_n_contragent,
+            sl_document_facade.number_df,
+            sl_m_operation.id_order_spec,
+            sl_m_operation.id_order_doc,
+            n_expens.name_n_expens,
+            sl_m_operation.id_n_money,
+            `n_money`.`cod_lat_n_money`,
+            `sl_m_operation`.`date_is`,
+            `sl_m_operation`.`exchange_rate`,
+            `sl_m_operation`.`sum_sl_mop`,
+            `sl_m_operation`.`sum_os_val_sl_mop`,
+            `sl_m_operation`.`user_id`,
+            `user_master`.`name_um`,
+            `sl_m_operation`.`id_sdtn`,
+            `sl_doc_type_num`.`name_sdtn`,
+            `sl_m_operation`.`comment_sl_mop`
+            FROM
+            `sl_m_operation`
+            LEFT Join `n_casa` ON `n_casa`.`id_n_casa` = `sl_m_operation`.`out_sl_mop`
+            LEFT Join `n_contragent` ON `n_contragent`.`id_contragent` = `sl_m_operation`.`in_sl_mop`
+            LEFT Join `sl_document_facade` ON `sl_document_facade`.`id_df` = `sl_m_operation`.`id_order_spec`
+            LEFT Join `n_money` ON `n_money`.`id_n_money` = `sl_m_operation`.`id_n_money`
+            LEFT Join `n_expens` ON `n_expens`.`id_n_expens` = `sl_m_operation`.`id_order_doc`
+            LEFT Join `user_master` ON `user_master`.`id_um` = `sl_m_operation`.`user_id`
+            LEFT Join `sl_doc_type_num` ON `sl_doc_type_num`.`id_sdtn` = `sl_m_operation`.`id_sdtn`
+            WHERE
+            `sl_m_operation`.`in_type_sl_mop` = 3 AND
+            `sl_m_operation`.`out_type_sl_mop` = 1 AND
+            `sl_m_operation`.`id_sdtn` = in_id_sdtn AND
+            `sl_m_operation`.`levelx` = in_level;
+
+     END IF;
+
+     IF (comprator = 1) THEN
+        INSERT INTO `sl_m_operation`( `sl_m_operation`.`number_sl_mop`,
+                                      `sl_m_operation`.`in_sl_mop`,
+                                      `sl_m_operation`.`in_type_sl_mop`,
+                                      `sl_m_operation`.`out_sl_mop`,
+                                      `sl_m_operation`.`out_type_sl_mop`,
+                                      `sl_m_operation`.`id_order_spec`,
+                                      `sl_m_operation`.`id_order_spec_type`,
+                                      `sl_m_operation`.`id_order_doc`,
+                                      `sl_m_operation`.`date_is`,
+                                      `sl_m_operation`.`id_n_money`,
+                                      `sl_m_operation`.`exchange_rate`,
+                                      `sl_m_operation`.`sum_sl_mop`,
+                                      `sl_m_operation`.`sum_os_val_sl_mop`,
+                                      `sl_m_operation`.`user_id`,
+                                      `sl_m_operation`.`id_sdtn`,
+                                      `sl_m_operation`.`comment_sl_mop`)
+        VALUES(in_number_sl_mop,
+               in_outsl_mop,
+               3,
+               in_in_sl_mop,
+               1,
+               in_id_order_spec,
+               1,
+               in_id_order_doc,
+               in_date_is,
+               in_id_n_money,
+               in_exchange_rate,
+               in_sum_sl_mop,
+               in_sum_os_val_sl_mop,
+               in_user_id,
+               in_id_sdtn,
+               in_comment_sl_mop
+             );
+     END IF;
+
+     IF (comprator = 2) THEN
+        UPDATE `sl_m_operation` SET
+                                      `sl_m_operation`.`number_sl_mop` =  in_number_sl_mop,
+                                      `sl_m_operation`.`in_sl_mop` = in_outsl_mop,
+                                      `sl_m_operation`.`in_type_sl_mop` = 3,
+                                      `sl_m_operation`.`out_sl_mop` = in_in_sl_mop,
+                                      `sl_m_operation`.`out_type_sl_mop` = 1,
+                                      `sl_m_operation`.`id_order_spec` = in_id_order_spec,
+                                      `sl_m_operation`.`id_order_spec_type` = 1,
+                                      `sl_m_operation`.`id_order_doc` = in_id_order_doc,
+                                      `sl_m_operation`.`date_is` = in_date_is,
+                                      `sl_m_operation`.`id_n_money` = in_id_n_money,
+
+                                      `sl_m_operation`.`exchange_rate` = in_exchange_rate,
+
+                                      `sl_m_operation`.`sum_sl_mop` = in_sum_sl_mop,
+                                      `sl_m_operation`.`sum_os_val_sl_mop`= in_sum_os_val_sl_mop,
+                                      `sl_m_operation`.`user_id`= in_user_id,
+                                      `sl_m_operation`.`id_sdtn`= in_id_sdtn,
+                                      `sl_m_operation`.`comment_sl_mop` = in_comment_sl_mop
+        WHERE sl_m_operation.id_sl_mop = in_id;
+     END IF;
+
+     IF (comprator = 3) THEN
+        DELETE FROM `sl_m_operation`  WHERE  sl_m_operation.id_sl_mop = in_id;
+     END IF;
+
+      IF (comprator = 5) THEN
+            SELECT
+            sl_m_operation.id_sl_mop,
+            sl_m_operation.number_sl_mop,
+            n_casa.id_n_casa,
+            n_casa.code_n_casa,
+            n_contragent.id_contragent,
+            n_contragent.code_contragent,
+            n_contragent.name_n_contragent,
+            sl_document_facade.number_df,
+            sl_m_operation.id_order_spec,
+            sl_m_operation.id_order_doc,
+            n_expens.name_n_expens,
+            sl_m_operation.id_n_money,
+            `n_money`.`cod_lat_n_money`,
+            `sl_m_operation`.`date_is`,
+            `sl_m_operation`.`exchange_rate`,
+            `sl_m_operation`.`sum_sl_mop`,
+            `sl_m_operation`.`sum_os_val_sl_mop`,
+            `sl_m_operation`.`user_id`,
+            `user_master`.`name_um`,
+            `sl_m_operation`.`id_sdtn`,
+            `sl_doc_type_num`.`name_sdtn`,
+            `sl_m_operation`.`comment_sl_mop`
+            FROM
+            `sl_m_operation`
+            LEFT Join `n_casa` ON `n_casa`.`id_n_casa` = `sl_m_operation`.`out_sl_mop`
+            LEFT Join `n_contragent` ON `n_contragent`.`id_contragent` = `sl_m_operation`.`in_sl_mop`
+            LEFT Join `sl_document_facade` ON `sl_document_facade`.`id_df` = `sl_m_operation`.`id_order_spec`
+            LEFT Join `n_money` ON `n_money`.`id_n_money` = `sl_m_operation`.`id_n_money`
+            LEFT Join `n_expens` ON `n_expens`.`id_n_expens` = `sl_m_operation`.`id_order_doc`
+            LEFT Join `user_master` ON `user_master`.`id_um` = `sl_m_operation`.`user_id`
+            LEFT Join `sl_doc_type_num` ON `sl_doc_type_num`.`id_sdtn` = `sl_m_operation`.`id_sdtn`
+            WHERE
+             sl_m_operation.out_sl_mop= ANY (SELECT n_casa.id_n_casa FROM n_casa WHERE n_casa.code_n_casa BETWEEN in_casaBegin AND in_casaEnd ) AND
+             sl_m_operation.in_sl_mop = ANY (SELECT n_contragent.id_contragent FROM n_contragent WHERE n_contragent.code_contragent BETWEEN in_contragentBegin AND in_contragentEnd ) AND
+             `sl_m_operation`.`date_is` BETWEEN  in_data_begin AND in_data_end AND
+            `sl_m_operation`.`in_type_sl_mop` = 3 AND
+            `sl_m_operation`.`out_type_sl_mop` = 1 AND
+            `sl_m_operation`.`id_sdtn` = in_id_sdtn AND
+            `sl_m_operation`.`levelx` = in_level;
+
+       END IF;
+
+
+         IF (comprator = 6) THEN
+        SELECT n_casa.id_n_casa, n_casa.code_n_casa FROM `n_casa`;
+        END IF;
+
+
+        IF (comprator = 7) THEN
+        SELECT MAX(sl_m_operation.id_sl_mop) FROM `sl_m_operation` n;
+        END IF;
+
+         IF (comprator = 8) THEN
+        SELECT MAX(sl_m_operation.number_sl_mop) FROM sl_m_operation  WHERE sl_m_operation.id_sdtn = in_id_sdtn AND sl_m_operation.levelx = in_level;
+        END IF;
+
+
+          IF (comprator = 11) THEN
+        SELECT n_money.id_n_money, n_money.cod_lat_n_money FROM `n_money`;
+        END IF;
+
+          IF (comprator = 12) THEN
+        SELECT n_expens.id_n_expens, n_expens.name_n_expens FROM `n_expens`;
+        END IF;
 
 END;
 
