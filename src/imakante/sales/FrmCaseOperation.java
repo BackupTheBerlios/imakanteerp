@@ -532,7 +532,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     
     private void prepareStm(){
         try {
-            stm = conn.createStatement();
+            setStm(conn.createStatement());
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -541,12 +541,12 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     
     private void initTableD(String str , String[] names) {
         try {
-            rs = stm.executeQuery(str);
+            setRs(getStm().executeQuery(str));
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         try {
-            model1 = new imakante.com.CustomTableModel(getConn(), rs, names);
+            model1 = new imakante.com.CustomTableModel(getConn(), getRs(), names);
             table1 = new imakante.com.CustomTable(model1);
             
         } catch(Exception e) { e.printStackTrace(); }
@@ -565,24 +565,24 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     }
     
     private void constructObject() {
-        if(stm == null){
+        if(getStm() == null){
             prepareStm();
             
         }
         try {
-            rs = stm.executeQuery("SELECT id_sdtn, rights_ndtur FROM n_doc_type_user_rights WHERE id_ndtur = " + ndtur);
-            while(rs.next()){
-                sdtn = rs.getInt("id_sdtn");
-                setLevelPermition(rs.getInt("rights_ndtur"));
+            setRs(getStm().executeQuery("SELECT id_sdtn, rights_ndtur FROM n_doc_type_user_rights WHERE id_ndtur = " + ndtur));
+            while(getRs().next()){
+                sdtn = getRs().getInt("id_sdtn");
+                setLevelPermition(getRs().getInt("rights_ndtur"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
             sdtn =1;
         }
         try {
-            rs = stm.executeQuery("SELECT area_number_sdtn FROM sl_doc_type_num WHERE id_sdtn = " + sdtn);
-            while(rs.next()){
-                area = "" +  rs.getInt("area_number_sdtn");
+            setRs(getStm().executeQuery("SELECT area_number_sdtn FROM sl_doc_type_num WHERE id_sdtn = " + sdtn));
+            while(getRs().next()){
+                area = "" +  getRs().getInt("area_number_sdtn");
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -596,8 +596,8 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     
     private void initTable() {  //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
         try {
-            rs = internalObject.getTable();
-            model = new imakante.com.CustomTableModel(getConn(), rs, Names);
+            setRs(internalObject.getTable());
+            model = new imakante.com.CustomTableModel(getConn(), getRs(), Names);
             table = new imakante.com.CustomTable(model);
             HideColumns(getColumnIndex("id"));
             HideColumns(getColumnIndex("id_casa"));
@@ -723,14 +723,14 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
                 + "`n_contragent`.`code_contragent`, `n_contragent`.`name_n_contragent`"
                 + "FROM `n_contragent` WHERE `n_contragent`.`code_contragent` = ";
         
-        if(stm==null){
+        if(getStm()==null){
             this.prepareStm();}else{}
         try {
-            rs = stm.executeQuery(str + CodDialog);
-            while(rs.next()){
-                setHInt(rs.getInt("id_contragent"));
-                setHCode(rs.getInt("code_contragent"));
-                setHName(rs.getString("name_n_contragent"));
+            setRs(getStm().executeQuery(str + CodDialog));
+            while(getRs().next()){
+                setHInt(getRs().getInt("id_contragent"));
+                setHCode(getRs().getInt("code_contragent"));
+                setHName(getRs().getString("name_n_contragent"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -913,18 +913,18 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     private void searchRecords() {
         try {
             try {
-                rs = internalObject.searchRecords(Integer.parseInt(jtfCasaBegin.getText()),
+                setRs(internalObject.searchRecords(Integer.parseInt(jtfCasaBegin.getText()),
                         Integer.parseInt(jtfCasaEND.getText()),
                         Integer.parseInt(jtfContragentBEGIN.getText()),
                         Integer.parseInt(jtfContragentEND.getText()),
                         (String)formatter.format(this.jXDatePickerBEGIN.getDate()),
-                        (String)formatter.format(this.jXDatePickerEND.getDate()));
+                        (String)formatter.format(this.jXDatePickerEND.getDate())));
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
                 
             }
             jScrollPane1.remove(table);
-            model = new imakante.com.CustomTableModel(getConn(), rs, Names);
+            model = new imakante.com.CustomTableModel(getConn(), getRs(), Names);
             table = new imakante.com.CustomTable(model);
             HideColumns(getColumnIndex("id"));
             HideColumns(getColumnIndex("id_casa"));
@@ -941,8 +941,8 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     
     protected  void refreshTable() {
         jScrollPane1.remove(table);
-        rs = internalObject.getTable();
-        model = new imakante.com.CustomTableModel(getConn(), rs, Names);
+        setRs(internalObject.getTable());
+        model = new imakante.com.CustomTableModel(getConn(), getRs(), Names);
         table = new imakante.com.CustomTable(model);
         HideColumns(getColumnIndex("id"));
         HideColumns(getColumnIndex("id_casa"));
@@ -1015,9 +1015,9 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     
     protected void closeResource() {
         try{
-            rs.close();
+            getRs().close();
         } catch(java.sql.SQLException sqle) {  }
-        rs = null;
+        setRs(null);
         internalObject.close();
     }
     
@@ -1290,5 +1290,21 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
 
     public void setIsNew(boolean isNew) {
         this.isNew = isNew;
+    }
+
+    public java.sql.ResultSet getRs() {
+        return rs;
+    }
+
+    public void setRs(java.sql.ResultSet rs) {
+        this.rs = rs;
+    }
+
+    public java.sql.Statement getStm() {
+        return stm;
+    }
+
+    public void setStm(java.sql.Statement stm) {
+        this.stm = stm;
     }
 }

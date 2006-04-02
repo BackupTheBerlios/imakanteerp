@@ -678,7 +678,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     //SAVE
     private void saveRecord() {
         revalidateContragent();
-        myParent.setIn_outsl_mop(myParent.getHInt()); 
+        myParent.setIn_outsl_mop(myParent.getHInt());
         this.revalidateSums();
         NumDocument = myParent.getCode();
         Contragent = myParent.getContragent_cod();
@@ -910,31 +910,31 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     
     private void dFields(boolean isNew){
         if(isNew=false || myParent.getLevelPermition() < 2 ){
-        this.jTextField1.setEnabled(false);
-        this.jTextField2.setEnabled(false);
-        this.jTextField3.setEnabled(false);
-        this.jTextField6.setEnabled(false);
-        this.jComboCR.setEnabled(false);
-        this.jComboD.setEnabled(false);
-        this.jComboM.setEnabled(false);
-        this.jXDatePicker1.setEnabled(false);
+            this.jTextField1.setEnabled(false);
+            this.jTextField2.setEnabled(false);
+            this.jTextField3.setEnabled(false);
+            this.jTextField6.setEnabled(false);
+            this.jComboCR.setEnabled(false);
+            this.jComboD.setEnabled(false);
+            this.jComboM.setEnabled(false);
+            this.jXDatePicker1.setEnabled(false);
         }
         
     }
     private void getExchangeRateFromDB(){
-    int money = this.jComboM.getSelectedIndex();
-    
+        int money = this.jComboM.getSelectedIndex();
+        
         try {
             myParent.setRs(myParent.getStm().executeQuery("SELECT value_sl_exchange_rate FROM sl_exchange_rate WHERE date_sl_exchange_rate = MAX(date_sl_exchange_rate) AND id_n_money = " + money));
-        while(myParent.getRs().next()){
-        
-        }
-        } 
-        catch (SQLException ex) {
+            while(myParent.getRs().next()){
+                this.jTextField7.setText(""+ myParent.getRs().getDouble("value_sl_exchange_rate"));
+                revalidateSums();
+            }
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
-    
-    
+        
+        
     }
     
     
