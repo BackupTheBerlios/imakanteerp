@@ -991,13 +991,14 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     }
     
     private void delRecord(){
+        if(this.getLevelPermition()>2){
         if(table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());
             setId((Integer)table.getValueAt(getRow(),0));
             internalObject.deleteRow(getId());
             refreshTable();
         }
-        isEmpty();
+        isEmpty();}
     }
     
     public java.sql.Connection getConn() {

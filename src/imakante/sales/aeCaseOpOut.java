@@ -1,11 +1,10 @@
 
 package imakante.sales;
 
-import java.text.DateFormat;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 
 public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
     
@@ -876,5 +875,50 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
         }
         sumos = exch*sum;
         this.jTextField4.setText(""+sumos);
+    }
+    
+     public void revalidateFText(){
+        jTextField2.setText(""+myParent.getHCode());
+    }
+    
+    private void revalidateContragent(){
+        try {
+            myParent.getCodFromQu(Integer.parseInt(jTextField2.getText()));
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+        }
+        this.jLabel14.setText(myParent.getHName());
+        
+        
+    }
+    
+    private void dFields(boolean isNew){
+        if(isNew=false || myParent.getLevelPermition() < 2 ){
+            this.jTextField1.setEnabled(false);
+            this.jTextField2.setEnabled(false);
+            this.jTextField3.setEnabled(false);
+            this.jTextField6.setEnabled(false);
+            this.jComboCR.setEnabled(false);
+            this.jComboD.setEnabled(false);
+            this.jComboM.setEnabled(false);
+            this.jXDatePicker1.setEnabled(false);
+        }
+        
+    }
+    private void getExchangeRateFromDB(){
+        int money = this.jComboM.getSelectedIndex();
+        
+        try {
+            myParent.setRs(myParent.getStm().executeQuery("SELECT s.value_sl_exchange_rate FROM sl_exchange_rate s" +
+                    "WHERE id_sl_exchange_rate = (SELECT MAX(id_sl_exchange_rate) FROM sl_exchange_rate WHERE id_n_money = " + money + " );"));
+            while(myParent.getRs().next()){
+                this.jTextField7.setText(""+ myParent.getRs().getDouble("value_sl_exchange_rate"));
+                revalidateSums();
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        
     }
 }// end class
