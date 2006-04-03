@@ -1,7 +1,7 @@
-DELIMITER $$
+﻿DELIMITER $$
 
-DROP PROCEDURE IF EXISTS sl_procedure_case_advances $$
-CREATE PROCEDURE sl_procedure_case_advances (
+DROP PROCEDURE IF EXISTS `mida`.`sl_procedure_case_advances` $$
+CREATE PROCEDURE `sl_procedure_case_advances`(
               IN comprator INT(6),
               IN in_id INT(11),
               IN in_number_sl_mop INT(11),
@@ -33,7 +33,7 @@ BEGIN
             sl_m_operation.number_sl_mop,
             n_casa.id_n_casa,
             n_casa.code_n_casa,
-            ls_n_person.id_ls_n_person,
+            sl_m_operation.out_sl_mop,
             ls_n_person.code_ls_n_person,
             ls_n_person.name_ls_n_person,
             sl_document_facade.number_df,
