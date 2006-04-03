@@ -1368,7 +1368,7 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
                      case aeDocumentFacade.KONSGNACIONEN_PROTOKOL :
                      {
                           setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
-                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контарегнта2"))); //1
+                         
                          setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат2"))); //2
                          setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер2")));  //3
                          setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контарегнта2")));   //4
@@ -1376,7 +1376,7 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
                          setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента1"))); //6
                          setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ2"))) ;
                          int code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента2"));
-                         setCodeContragent(String.valueOf(code));
+                         setCodeContragent(String.valueOf(code));                                                      //1
                          setID_Obekt((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df")));       
                               
                          setCodeObekt((String)table.getValueAt(getRow(), getColumnIndex("Код на обекта2")));
@@ -1399,7 +1399,36 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
                          }
                      case aeDocumentFacade.PRIEMATELNA_RAZPISKA :
                          {
-                           break;
+                          setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("in_contragent_df"))); //0
+                          setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента1"))); //4
+                          setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат1"))); //2
+                          setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер1")));  //3
+                          
+                          setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес на контрагента1"))); //5
+                          setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента1"))); //6
+                          setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ1"))) ;
+                          int code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента1"));
+                          setCodeContragent(String.valueOf(code));                                                            //1
+                         
+                        /*  setID_Obekt((Integer) table.getValueAt(getRow(), getColumnIndex("out_obekt_df")));       
+                          setCodeObekt((String)table.getValueAt(getRow(), getColumnIndex("Код на обекта2")));
+                          setNameObekt((String) table.getValueAt(getRow(), getColumnIndex("Име на обекта2")));
+                          setAddressObekt((String) table.getValueAt(getRow(), getColumnIndex("Адрес на обекта2")));
+                          setTelObekt(" ");
+                         */
+                          setID_Deliver((Integer) table.getValueAt(getRow(), getColumnIndex("delivere_df")));        
+                          setID_Distributor((Integer) table.getValueAt(getRow(), getColumnIndex("distributor_df")));
+                          code = (Integer)table.getValueAt(getRow(),getColumnIndex("Код на дистрибутор"));
+                          setDistributorDocFacade(String.valueOf(code));
+                          code =(Integer)table.getValueAt(getRow(),getColumnIndex("Код на доставчик"));
+                          setDeliverDocFacade(String.valueOf(code)); 
+                         
+                          d1 = (java.sql.Date) table.getValueAt(getRow(),getColumnIndex("Дата на доставяне"));
+                          setDeliverDate(d1.toString());
+                          System.out.println(String.valueOf(getID_Deliver()));
+                          System.out.println(String.valueOf(getID_Distributor()));  
+                             
+                          break;
                          }
                  }
         
