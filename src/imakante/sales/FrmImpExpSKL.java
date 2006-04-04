@@ -316,7 +316,7 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
                     viddei = str.substring(103, 237);  //9
                     
                     
-                    ((MyTableModel)table.getModel()).insertRow(model.getRowCount(), new Object[]{"0","0","0","0","0","0","0","0","0","0"});
+                   ((MyTableModel)table.getModel()).insertRow(model.getRowCount(), new Object[]{"0","0","0","0","0","0","0","0","0","0"});
                     this.table.setValueAt(row +1,row,0);
                     this.table.setValueAt(dann,row,1);
                     this.table.setValueAt(nomst,row,2);
@@ -343,10 +343,10 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
     
     public class MyTableModel extends DefaultTableModel {
         private String[] Names =  new String [] {
-            "1", "2", "3", "4", "5", "6","7", "8","9","10","11","12"};
+            "1", "2", "3", "4", "5", "6","7", "8","9","10"};
         
         public int getColumnCount() {
-            return 12;
+            return 10;
         }
         public String getColumnName(int col) {
             return Names[col];
@@ -359,9 +359,6 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
     private void writeFile(){
 //       
         String Line="";
-        
-        
-//
         try {
             
             BufferedWriter out = new BufferedWriter(new java.io.OutputStreamWriter(new FileOutputStream("c:/rabotna/prodagbi.txt"),"Cp866"));
@@ -379,7 +376,7 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
                     Line = Line + table.getValueAt(j,6);                                  //data
                     Line = Line +  fullString((String)table.getValueAt(j,7),9, false)+ " "; // IN
                     Line = Line + fullString((String)table.getValueAt(j,8), 50,true) + " "; //ime na firmata SKL1
-                    Line = Line + table.getValueAt(j,9);
+                  
                 }
                 if(j==k-1){
                     Line = Line + "9999999";
@@ -389,7 +386,9 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
                     Line = Line + "          ";
                     Line = Line + fullString((String)table.getValueAt(j,8), 50,true) + " "; //ime na firmata SKL1
                 }
-               
+
+                Line = Line + (String)table.getValueAt(j,9);
+
                 System.out.println(Line);
                Line = Line + "\r" + "\n";
                 j++;
