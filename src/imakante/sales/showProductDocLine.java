@@ -8,10 +8,10 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
 {
     
     /** Creates new form showNameOfMOL_OSO */
-    public showProductDocLine (imakante.com.vcomponents.iInternalFrame myframe, boolean modal, java.sql.ResultSet rs, java.sql.Connection conn)
+    public showProductDocLine (imakante.com.vcomponents.iInternalFrame myframe, boolean modal, java.sql.ResultSet rs, java.sql.Connection conn,boolean isProductIN)
     {
         super(myframe, modal);
-       
+        isPRODUKTIN = isProductIN;
         myParent = (FrmDocumentFacade)  myframe;
         this.rs = rs;
         model = new imakante.com.CustomTableModel(conn,rs, columnName);
@@ -23,21 +23,22 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
             {
               if(java.awt.event.KeyEvent.VK_ENTER == e.getKeyCode())
                 {
-                 int row = table.getSelectedRow();
-                 int ID = (Integer)table.getValueAt(row,getColumnIndex("id_pm"));
+                   int row = table.getSelectedRow();
+                   int ID = (Integer)table.getValueAt(row,getColumnIndex("id_pm"));
                               
                   myParent.setID_Product(ID);
                   myParent.setID_PC((Integer)table.getValueAt(row,getColumnIndex("id_pc")));
                   myParent.setNameProduct((String)table.getValueAt(row,getColumnIndex("name_pm")));
                   myParent.setCodeProduct((Integer)table.getValueAt(row,getColumnIndex("code_pm")));
                   myParent.setStorageOUTProduct((Integer)table.getValueAt(row,getColumnIndex("id_n_storage")));
-                  myParent.setID_PP((Integer)table.getValueAt(row,getColumnIndex("id_pp")));
+                  if((Integer)table.getValueAt(row,getColumnIndex("pc.parcel_pc"))>1)
+                  myParent.setID_PP((Integer)table.getValueAt(row,getColumnIndex("pc.id_pp")));
+                  else  myParent.setID_PP((Integer)table.getValueAt(row,getColumnIndex("n.id_pp")));
                   pricelist = myParent.getCountriesT().getPriceListByID(myParent.getID_PP());
                   myParent.setWorkPriceListProduct(pricelist);
-                  
-                  
-                  
-                  myParent.setBrojProduct((Integer)table.getValueAt(row,getColumnIndex("quant_nal"))-(Integer)table.getValueAt(row,getColumnIndex("quant_rezerv_nal")));
+                  if(isPRODUKTIN) // produkta se vkarva v sklada                 
+                     myParent.setBrojProduct(0);
+                  else  myParent.setBrojProduct((Integer)table.getValueAt(row,getColumnIndex("quant_nal"))-(Integer)table.getValueAt(row,getColumnIndex("quant_rezerv_nal")));
                   myParent.setID_PD((Integer)table.getValueAt(row,getColumnIndex("id_pd")));
                   productDescription = myParent.getCountriesT().getProductDescriptionByID(myParent.getID_PD());
                   productDescription[0][0] = myParent.getCountriesT().getProductDescriptionNameID(Integer.parseInt(productDescription[0][0]));
@@ -46,11 +47,15 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
                   
                   myParent.setProductDescription(productDescription);
                   myParent.setProcentProduct((Double)table.getValueAt(row,getColumnIndex("max_pop_pm")));
-                  myParent.setID_PF((Integer)table.getValueAt(row,getColumnIndex("id_pf")));
+                  
+                  if((Integer)table.getValueAt(row,getColumnIndex("pc.parcel_pc"))>1)
+                  myParent.setID_PF((Integer)table.getValueAt(row,getColumnIndex("pc.id_pf")));
+                  else myParent.setID_PF((Integer)table.getValueAt(row,getColumnIndex("n.id_pf")));
                   productFee = myParent.getCountriesT().getProductFeeByID(myParent.getID_PF());
                   myParent.setProductFee(productFee);
-                 
+                  
                   myParent.setIsSelectProduct(true);
+                  
                  close();
                 }
             }
@@ -93,9 +98,10 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
     private  java.sql.ResultSet rs;
     private FrmDocumentFacade myParent;
    private String columnName[] = null;
-   private double pricelist[] = new double[4];
+   private double pricelist[] = new double[5];
    private String productDescription[][] =new String[3][2];
    private double productFee[]  = new double[3];
+   private boolean isPRODUKTIN;
     
     public void close()
     {
