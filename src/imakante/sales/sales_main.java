@@ -252,6 +252,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         docMenu_razp.setText("\u0420\u0430\u0437\u043f\u0438\u0441\u043a\u0438");
         razpMenu_pol.setText("\u041f\u043e\u043b\u0443\u0447\u0430\u0432\u0430\u043d\u0435");
+        razpMenu_pol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                razpMenu_polActionPerformed(evt);
+            }
+        });
+
         docMenu_razp.add(razpMenu_pol);
 
         razpMenu_prehv.setText("\u041f\u0440\u0435\u0445\u0432\u044a\u0440\u043b\u044f\u043d\u0435");
@@ -266,6 +272,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         docMenu.add(docMenu_razp);
 
         docMenu_nar.setText("\u041d\u0430\u0440\u0435\u0436\u0434\u0430\u043d\u0435");
+        docMenu_nar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                docMenu_narActionPerformed(evt);
+            }
+        });
+
         docMenu.add(docMenu_nar);
 
         docMenu_prot.setText("\u041f\u0440\u043e\u0442\u043e\u043a\u043e\u043b\u0438");
@@ -710,6 +722,26 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-487)/2, 757, 487);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void docMenu_narActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docMenu_narActionPerformed
+// TODO add your handling code here:
+      int user = 2;
+      int level = 1;
+      int pricelist = 1;
+      int doctype = aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE;
+      int storagedocdacade = 1;
+      loadFrmDocFacade("\u041d\u0410\u0420\u0415\u0416\u0414\u0410\u041d\u0415 \u0417\u0410 \u041f\u0420\u0415\u0425\u0412\u042a\u0420\u041b\u042f\u041d\u0415", user, level, pricelist, doctype, storagedocdacade, false, null, null );  
+    }//GEN-LAST:event_docMenu_narActionPerformed
+
+    private void razpMenu_polActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_razpMenu_polActionPerformed
+// TODO add your handling code here:
+     int user = 2;
+        int level = 1;
+        int pricelist = 1;
+        int doctype = aeDocumentFacade.PRIEMATELNA_RAZPISKA;
+        int storagedocdacade = 1;
+        loadFrmDocFacade("\u041f\u0420\u0418\u0415\u041c\u0410\u0422\u0415\u041b\u041d\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );      
+    }//GEN-LAST:event_razpMenu_polActionPerformed
     
     private void orderMenu_razhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderMenu_razhActionPerformed
         this.loadLeveCasiOut();

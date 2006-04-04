@@ -29,7 +29,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
        this.priceList = pricelist;
        this.docType = doctype;
        this.storageDocFacade= storagedocdacade;
-       
+       setStorageOUTProduct(storageDocFacade);
         prepareConn();     // zapazva connection
         constructGroupDB(); // inicializira class otgovarq6t za vryzkata s DB
         checkForMakeDoc(makeDocByInputData);
@@ -423,6 +423,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
    private int idDistributor;
    private int idDeliver;
    private int storageDocFacade;
+   private int storageDocFacadeIN; //zapazva skalda kym kolto 6te se prehvyrlqt stoka
    private int idProduct;
    private int idProductConsignment;
    private int idProductDescription;
@@ -466,7 +467,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
  "out_obekt_df", "Име на обекта2", "Адрес на обекта2", "Код на обекта2", "Тип на документа", "Номер на документа", "Състояние", "Склад", "Общо", "ДДС",
  "Потребител", "Потребител-последна редакция", "Дата на документа", "time_edition_df", "distributor_df", "Код на дистрибутор", "delivere_df", "Код на доставчик",
  "faktura_connection_df", "zaiavka_connection_df", "Вид плащане", "paying_order_df", "Дата на доставяне", "Дата на плащане", "Коментар", 
-"flag_finish_df", "id_rep", "level_df"};
+"flag_finish_df", "id_rep", "level_df","Склад (към)"};
    
    
     private  boolean atBegining=false;
@@ -777,6 +778,14 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
     public int getID_DocFacade() 
     {
         return idDocFacade;
+    }
+    public void setINStorageDocFacade(int  in) 
+    {
+        this.storageDocFacadeIN = in;
+    }
+    public int getINStorageDocFacade() 
+    {
+        return storageDocFacadeIN;
     }
     public void setID_Contragent(int  id) 
     {
@@ -1363,7 +1372,8 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
                          
                          d1 = (java.sql.Date) table.getValueAt(getRow(),getColumnIndex("Дата на доставяне"));
                          setDeliverDate(d1.toString());*/
-                         
+                        
+                         setINStorageDocFacade((Integer) table.getValueAt(getRow(), getColumnIndex("Склад (към)"))); 
                          break;
                      }
                      case aeDocumentFacade.KONSGNACIONEN_PROTOKOL :

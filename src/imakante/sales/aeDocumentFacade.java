@@ -238,7 +238,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jButton3 = new javax.swing.JButton();
         jPanelStorageINOUT = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldStorageFROM = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
         jTextFieldStorageTO = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
@@ -330,7 +330,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 .add(jPanelHeadLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanelHeadLayout.createSequentialGroup()
                         .add(jTextFieldNomerDoc, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 120, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 46, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 49, Short.MAX_VALUE)
                         .add(jLabelDocType))
                     .add(jPanelHeadLayout.createSequentialGroup()
                         .add(jXDateDocument, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -955,15 +955,15 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanelStorageINOUT.add(jLabel26, gridBagConstraints);
 
-        jTextField2.setEditable(false);
-        jTextField2.setFont(new java.awt.Font("Tahoma", 1, 11));
-        jTextField2.setPreferredSize(new java.awt.Dimension(40, 20));
+        jTextFieldStorageFROM.setEditable(false);
+        jTextFieldStorageFROM.setFont(new java.awt.Font("Tahoma", 1, 11));
+        jTextFieldStorageFROM.setPreferredSize(new java.awt.Dimension(40, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanelStorageINOUT.add(jTextField2, gridBagConstraints);
+        jPanelStorageINOUT.add(jTextFieldStorageFROM, gridBagConstraints);
 
         jLabel27.setText("\u041a\u042a\u041c:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -1711,7 +1711,6 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextFieldAddress;
     private javax.swing.JTextField jTextFieldBulstat;
     private javax.swing.JTextField jTextFieldComment;
@@ -1728,6 +1727,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private javax.swing.JTextField jTextFieldObektNo;
     private javax.swing.JTextField jTextFieldObektTel;
     private javax.swing.JTextField jTextFieldProsro4vane;
+    private javax.swing.JTextField jTextFieldStorageFROM;
     private javax.swing.JTextField jTextFieldStorageTO;
     private javax.swing.JTextField jTextFieldUserEdit;
     private javax.swing.JTextField jTextFieldUserLastEdit;
@@ -1806,7 +1806,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
          //   strDate += "/" + String.valueOf(nowDate.getYear()+1900);
         //    jTextFieldDateDoc.setText(strDate);
              
-            
+           if(myParent.getDocFacadeType()==NAREZDANE_ZA_PREHVYRQNE)
+                  jTextFieldStorageFROM.setText(String.valueOf(myParent.getStorageOUTProduct()));
             jTextFieldNomerDoc.setText(myParent.getNumberDocFacade());
             
         } else {
@@ -1885,7 +1886,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                    case NAREZDANE_ZA_PREHVYRQNE:
                       {
                           jTextFieldNomerDoc.setText(myParent.getNumberDocFacade());
-                          
+                          jTextFieldStorageTO.setText(String.valueOf(myParent.getINStorageDocFacade()));
+                          jTextFieldStorageFROM.setText(String.valueOf(myParent.getStorageOUTProduct()));
                           repainUserEdit(myParent.getUserDocFacade(),true);
                           repainUserEdit(myParent.getUserDocFacade(),false);
                           break;
