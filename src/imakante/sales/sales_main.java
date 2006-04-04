@@ -789,7 +789,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_jMenuItem8ActionPerformed
     
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        this.loadLevelImport();
+         loadImport();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
     
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
@@ -1353,10 +1353,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     
     
     private void loadLevelImport(){
-        if (!this.getOrderArea().isEmpty()){
-            imakante.sales.levelDialog level = new imakante.sales.levelDialog(this, true, 1, this.getOrderArea());
-            //  desktopPane.add(level);
-            level.setVisible(true); } else{System.out.println("Empty hash");};
+        
             
     }
     

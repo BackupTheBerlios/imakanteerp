@@ -536,7 +536,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
             table1 = new imakante.com.CustomTable(model1);
         } catch(Exception e) { e.printStackTrace(); }
         try {
-            table.setEditingRow(0);
+            table1.setEditingRow(0);
         } catch(Exception ex) {  }
     }
     
