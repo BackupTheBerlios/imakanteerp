@@ -449,7 +449,7 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
             l_etiket = l_etiket + zzd + pzd +  otp + "\n";
             System.out.println(l_etiket);
             String to = pathFiles+etiket;
-            BufferedWriter out = new BufferedWriter(new java.io.OutputStreamWriter(new FileOutputStream("c:/install/ETIKET.TXT"),this.jTextField2.getText()));
+            BufferedWriter out = new BufferedWriter(new java.io.OutputStreamWriter(new FileOutputStream("c:/install/ETIKET.TXT"),"Cp866"));
             out.write(l_etiket);
             
             out.close();
@@ -472,7 +472,7 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
 //        
         try {
             
-            BufferedWriter out = new BufferedWriter(new java.io.OutputStreamWriter(new FileOutputStream("c:/rabotna2/p.txt"),this.jTextField2.getText()));
+            BufferedWriter out = new BufferedWriter(new java.io.OutputStreamWriter(new FileOutputStream("c:/rabotna2/p.txt"),"Cp866"));
             int j = 0;
             int k = table.getRowCount();
             while(j<k){
@@ -494,7 +494,7 @@ public class importFrmSklB extends javax.swing.JInternalFrame {
 //                
                 Line = Line + table.getValueAt(j,4);
                 Line = Line + fullString((String)table.getValueAt(j,5), 50,true);
-                Line = Line + "\n";
+                Line = Line + "\r" +"\n";
                 j++;
                 out.write(Line);
                 
