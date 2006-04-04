@@ -6,7 +6,7 @@ CREATE PROCEDURE `ls_procedure_document_facade`(IN comprator TINYINT,           
                                                 IN in_docFacadeUser INT(11),         IN in_docFacadeUserLastEdit INT(11),IN in_id_facturaConnection INT(11), IN in_id_payingOrder INT(11),   IN in_id_zaqvkaConnection INT(11),
                                                 IN in_docFacadeLevel INT(11),        IN in_docFacadeStorage INT(11),     IN in_docFacadeType INT (3),        IN in_docFacadeAllDDS DOUBLE,   IN in_docFacadeTotal DOUBLE,
                                                 IN in_docFacadeCondition VARCHAR(11),IN in_docFacadeDate VARCHAR(10),    IN in_docFacadeComment VARCHAR(250),IN in_dateDeliver VARCHAR(10),  IN in_payingDate VARCHAR(10),
-                                                IN in_docFacadeFlagFinish INT (3),   IN in_priceOne DOUBLE,              IN in_climbDown DOUBLE )
+                                                IN in_docFacadeFlagFinish INT (3),   IN in_priceOne DOUBLE,              IN in_climbDown DOUBLE,             IN in_in_store_df INT(11)  )
 BEGIN
 
 IF (comprator = 0) THEN
@@ -22,7 +22,7 @@ IF (comprator = 0) THEN
          s.total_df, s.dds_df, s.user_df, s.user_last_df, s.date_edition_df, s.time_edition_df, s.distributor_df,p_dist.code_ls_n_person AS dist,
          s.delivere_df,p_deliv.code_ls_n_person AS deliv,
          s.faktura_connection_df, s.zaiavka_connection_df, s.description_pay_df, s.paying_order_df, s.date_deliver_df,
-         s.date_pay_df, s.comments_df, s.flag_finish_df, s.id_rep, s.level_df
+         s.date_pay_df, s.comments_df, s.flag_finish_df, s.id_rep, s.level_df , s.in_store_df
          FROM mida.sl_document_facade s
          LEFT JOIN mida.n_obekt obkt_in ON s.in_obekt_df=obkt_in.id_n_obekt
          LEFT JOIN mida.n_obekt obkt_out ON s.out_obekt_df=obkt_out.id_n_obekt
@@ -43,11 +43,11 @@ IF (comprator = 1) THEN
          INSERT INTO mida.sl_document_facade(in_contragent_df, out_obekt_df, in_obekt_df, number_df, type_df, condition_df,
          out_store_df, total_df, dds_df, user_df, user_last_df, date_edition_df, distributor_df, delivere_df,
          faktura_connection_df, zaiavka_connection_df, description_pay_df, paying_order_df, date_deliver_df, date_pay_df,
-         comments_df, flag_finish_df,  level_df, out_contragent_df)
+         comments_df, flag_finish_df,  level_df, out_contragent_df,in_store_df)
          VALUES(in_id_contragent_in,in_id_obekt_out,in_id_obekt_in,in_docFacadeNumber,in_docFacadeType,in_docFacadeCondition,
            in_docFacadeStorage,in_docFacadeTotal,in_docFacadeAllDDS,in_docFacadeUser,in_docFacadeUserLastEdit, in_docFacadeDate,in_id_distributor,
            in_id_deliver,in_id_facturaConnection,in_id_zaqvkaConnection, in_descriptionPaying,in_id_payingOrder,in_dateDeliver,in_payingDate,
-           in_docFacadeComment,in_docFacadeFlagFinish, in_docFacadeLevel,in_id_contragent_out);
+           in_docFacadeComment,in_docFacadeFlagFinish, in_docFacadeLevel,in_id_contragent_out,in_in_store_df);
      END IF;
 
 IF (comprator = 2) THEN
@@ -77,7 +77,8 @@ IF (comprator = 2) THEN
         s.flag_finish_df = in_docFacadeFlagFinish,
 
         s.level_df = in_docFacadeLevel,
-        s.out_contragent_df =in_id_contragent_out
+        s.out_contragent_df =in_id_contragent_out,
+        s.in_store_df = in_in_store_df
         WHERE s.id_df = in_id_df;
 
      END IF;
@@ -96,7 +97,7 @@ IF (comprator = 4) THEN
          s.total_df, s.dds_df, s.user_df, s.user_last_df, s.date_edition_df, s.time_edition_df, s.distributor_df,p_dist.code_ls_n_person AS dist,
          s.delivere_df,p_deliv.code_ls_n_person AS devliv,
          s.faktura_connection_df, s.zaiavka_connection_df, s.description_pay_df, s.paying_order_df, s.date_deliver_df,
-         s.date_pay_df, s.comments_df, s.flag_finish_df, s.id_rep, s.level_df, s.out_contragent_df
+         s.date_pay_df, s.comments_df, s.flag_finish_df, s.id_rep, s.level_df, s.out_contragent_df, s.in_store_df
          FROM mida.sl_document_facade s LEFT JOIN mida.n_obekt obkt_in ON s.in_obekt_df=obkt_in.id_sno
          LEFT JOIN mida.ls_n_person p_deliv ON p_deliv.id_ls_n_person=s.delivere_df
          LEFT JOIN mida.ls_n_person p_dist ON p_dist.id_ls_n_person=s.distributor_df

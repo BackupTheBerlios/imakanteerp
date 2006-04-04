@@ -320,7 +320,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
         number++;
         setNumberDocFacade(String.valueOf(number));
        getCountriesT().insertRow(0,0,0,0,0,0,0,number,0,0,0,0,0,
-               getDocFacadeLevel(),0,getDocFacadeType(),0,0,null,null,null,null,null,1);
+               getDocFacadeLevel(),0,getDocFacadeType(),0,0,null,null,null,null,null,1,0);
        setID_DocFacade(getCountriesT().getMaxId());
        
        
@@ -1339,7 +1339,7 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
                      case aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE :
 
                      {  
-                         setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
+                        /* setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
                          setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контарегнта2"))); //1
                          setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат2"))); //2
                          setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер2")));  //3
@@ -1362,7 +1362,8 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
                          setDeliverDocFacade((String)table.getValueAt(getRow(),getColumnIndex("Код на доставчик"))); 
                          
                          d1 = (java.sql.Date) table.getValueAt(getRow(),getColumnIndex("Дата на доставяне"));
-                         setDeliverDate(d1.toString());
+                         setDeliverDate(d1.toString());*/
+                         
                          break;
                      }
                      case aeDocumentFacade.KONSGNACIONEN_PROTOKOL :
@@ -1491,7 +1492,7 @@ private void checkForMakeDoc(boolean makeDoc)
       int number = getCountriesT().getDocNumberLast( getUserEditFortm(), getDocFacadeLevel());
       number++;
       getCountriesT().insertRow(0,0,0,0,0,0,0,number,0,0,0,0,0,
-                      getDocFacadeLevel(),0,getDocFacadeType(),0,0,null,null,null,null,null,1);
+                      getDocFacadeLevel(),0,getDocFacadeType(),0,0,null,null,null,null,null,1,0);
        maxID_df = getCountriesT().getMaxId();
      
         

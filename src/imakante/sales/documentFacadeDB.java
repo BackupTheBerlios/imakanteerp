@@ -42,7 +42,7 @@
  *comprator= 40: cancellationDocFacade()
  *comprator= 41: getIDPMByIDPC()
  *comprator= 42: updateConnectionID()
- *comprator= 43:
+ *comprator= 43: getCurentRate()
  *comprator= 44:
  *comprator= 45:
  *comprator= 46:
@@ -56,6 +56,7 @@
 
 package imakante.sales;
 
+import java.util.*;
 public class documentFacadeDB  extends imakante.com.dbObject {
     //-------------START MyVariables
    private java.sql.Connection conn;
@@ -75,7 +76,8 @@ public class documentFacadeDB  extends imakante.com.dbObject {
     private double climbDown=0;
     private int userDocFacade;
     private String docFacadeDate;
-    private int storageDocFacade;
+    private int storageDocFacade; //zapazva teku6tiq sklad
+    private int storageDocFacadeIN; // zapazva sklada kym koito 6te prehvyrqme stokata
     private int idDistributor;
     private int idDeliver;
     private int idFakturaConnection;
@@ -103,7 +105,7 @@ public class documentFacadeDB  extends imakante.com.dbObject {
     {
         try {
             
-            setCstm(getConn().prepareCall("{call mida.ls_procedure_document_facade(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
+            setCstm(getConn().prepareCall("{call mida.ls_procedure_document_facade(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
        
             
         } catch(java.sql.SQLException sqle) {sqle.printStackTrace();}
@@ -158,7 +160,8 @@ public class documentFacadeDB  extends imakante.com.dbObject {
             getCstm().setInt("in_docFacadeLevel", getLevelDocFacade());          
             getCstm().setInt("in_docFacadeStorage", getStorageDocFacade());      
             getCstm().setInt("in_docFacadeType", getDocFacadeType()); 
-            getCstm().setInt("in_docFacadeFlagFinish", getDocFacadeFlagFinish()); 
+            getCstm().setInt("in_docFacadeFlagFinish", getDocFacadeFlagFinish());
+            getCstm().setInt("in_in_store_df", getINStorageDocFacade()); 
             getCstm().setDouble("in_docFacadeAllDDS",getAllDDSPaingDocFacade());       
             getCstm().setDouble("in_docFacadeTotal",getTotalPayingDocFacade());
             getCstm().setDouble("in_priceOne",getPriceOne());
@@ -169,8 +172,9 @@ public class documentFacadeDB  extends imakante.com.dbObject {
             getCstm().setString("in_dateDeliver", getDateDeliver());  
             getCstm().setString("in_payingDate", getPayingDate()); 
             
+            
                     
-            //26
+            //27
             
             
             
@@ -194,7 +198,7 @@ public class documentFacadeDB  extends imakante.com.dbObject {
             int in_id_facturaConnection, int in_id_payingOrder, int in_id_zaqvkaConnection, int in_docFacadeLevel, //14
             int in_docFacadeStorage, int in_docFacadeType, double in_docFacadeTotal, double in_docFacadeAllDDS,
             String in_docFacadeCondition, String in_docFacadeDate, String in_docFacadeCommnet,
-            String in_dateDeliver, String in_payingDate,int in_docFacadeFlagFinish)
+            String in_dateDeliver, String in_payingDate,int in_docFacadeFlagFinish,int in_in_store_df)
       {
         setComprator(1);
         setID_Contragent_IN(in_id_contragent_in);
@@ -221,6 +225,7 @@ public class documentFacadeDB  extends imakante.com.dbObject {
         setDateDeliver(in_dateDeliver);
         setPayingDate(in_payingDate);
         setDocFacadeFlagFinish(in_docFacadeFlagFinish);
+        setINStorageDocFacade(in_in_store_df);
         
         
         try
@@ -240,7 +245,7 @@ public class documentFacadeDB  extends imakante.com.dbObject {
             int in_id_facturaConnection, int in_id_payingOrder, int in_id_zaqvkaConnection, int in_docFacadeLevel,
             int in_docFacadeStorage, int in_docFacadeType, double in_docFacadeTotal, double in_docFacadeAllDDS,
             String in_docFacadeCondition, String in_docFacadeDate, String in_docFacadeCommnet,
-            String in_dateDeliver, String in_payingDate,int in_docFacadeFlagFinish) 
+            String in_dateDeliver, String in_payingDate,int in_docFacadeFlagFinish,int in_in_store_df) 
     {
         setComprator(2);
         setID_DocFacade(in_id_df);
@@ -268,6 +273,7 @@ public class documentFacadeDB  extends imakante.com.dbObject {
         setDateDeliver(in_dateDeliver);
         setPayingDate(in_payingDate);
         setDocFacadeFlagFinish(in_docFacadeFlagFinish);
+        setINStorageDocFacade(in_in_store_df);
         
         try
         {
@@ -574,7 +580,14 @@ public int getStorageDocFacade()
 {
     return storageDocFacade;
 }
-
+public void setINStorageDocFacade(int in)
+{
+    this.storageDocFacadeIN = in;
+}
+public int getINStorageDocFacade()
+{
+    return storageDocFacadeIN;
+}
 public void setLevelDocFacade(int in)
 {
     this.levelDocFacade = in;
@@ -968,7 +981,7 @@ public java.sql.ResultSet getTableProductInfo(String in , int sqlselect,int leve
 }
 public double[] getPriceListByID(int in_id_pp)
 {
-    double pricelist[] = new double[4];
+    double pricelist[] = new double[5];
    int oldIntValue = getID_Obekt_IN();
    setID_Obekt_IN(in_id_pp);
      this.setComprator(21);
@@ -978,11 +991,12 @@ public double[] getPriceListByID(int in_id_pp)
             setRs(getCstm().executeQuery());
             while(getRs().next())
             {
-              pricelist[0] = getRs().getDouble("price1_pp");
-              pricelist[1] = getRs().getDouble("price2_pp");
-              pricelist[2] = getRs().getDouble("price3_pp");
+              pricelist[0] = getRs().getDouble("price1_pp");  //   \
+              pricelist[1] = getRs().getDouble("price2_pp");  //    > cenova lista
+              pricelist[2] = getRs().getDouble("price3_pp");  //   /
               Integer  curs = (Integer) getRs().getInt("id_sl_curs");
               pricelist[3] =curs.doubleValue();
+              pricelist[4] =  getRs().getDouble("price3_pp");  // dostavna cena
             }
                
         }
@@ -1585,6 +1599,36 @@ public void updateConnectionID(int in_oldDocID, int in_faktura_connection_df,int
        setID_Obekt_OUT(oldID_obekt_out);
        setID_Obekt_IN(oldID_obekt_in);
  
+}
+public HashMap getCurentRate(String dateSQLFormat)
+{
+    HashMap rate = new HashMap();
+    
+    String oldComment = getCommentDocFacade();
+    setCommentDocFacade(dateSQLFormat);
+    setComprator(43);
+     try
+        {
+            registerParameters();
+            setRs(getCstm().executeQuery());
+            while(getRs().next())
+            {
+                
+             String key = getRs().getString("cod_lat_n_money");
+             
+             double c_rate = getRs().getDouble("value_sl_exchange_rate");
+             rate.put(key,c_rate);
+           
+            }
+            
+               
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }         
+     
+     return rate;
 }
 // <-----------------------
 }// end class
