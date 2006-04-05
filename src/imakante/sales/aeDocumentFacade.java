@@ -134,8 +134,12 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
          strDate += "/" + String.valueOf(jXDateCurs.getDate().getYear()+1900);
          String DateSQLFormat = dateManip.convertDate(strDate);
         arrayRate = myParent.getCountriesT().getCurentRate(DateSQLFormat);
-        if(arrayRate.size()<=0) jLabelInfoCurs.setVisible(true);
-        else jLabelInfoCurs.setVisible(false);
+        if(arrayRate.size()<2) jLabelInfoCurs.setVisible(true);
+        else 
+        {
+            jLabelInfoCurs.setVisible(false);
+            rate=1;
+        }
         repaintComp();
         
     }
@@ -1049,12 +1053,17 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
          imakante.com.dateManipulation dateManip = new imakante.com.dateManipulation();
          String strDate;
          strDate = String.valueOf(jXDateCurs.getDate().getDate());
-         strDate += "/" + String.valueOf(jXDateCurs.getDate().getMonth());
+         strDate += "/" + String.valueOf(jXDateCurs.getDate().getMonth()+1);
          strDate += "/" + String.valueOf(jXDateCurs.getDate().getYear()+1900);
          String DateSQLFormat = dateManip.convertDate(strDate);
+         System.out.println("DATA -->>>" + DateSQLFormat);
         arrayRate = myParent.getCountriesT().getCurentRate(DateSQLFormat);
-        if(arrayRate.size()<=0) jLabelInfoCurs.setVisible(true);
-        else jLabelInfoCurs.setVisible(false);;
+        if(arrayRate.size()<2) jLabelInfoCurs.setVisible(true);
+        else
+        {
+            jLabelInfoCurs.setVisible(false);;
+            rate=1;
+        }
     }//GEN-LAST:event_jXDateCursActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
@@ -1902,6 +1911,10 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                         repainContragentData(myParent.getID_Contragent());
                         repainUserEdit(myParent.getUserDocFacade(),true);
                         repainUserEdit(myParent.getUserDocFacade(),false);
+                        newDate = checkAndConvertSQLFormat(myParent.getDeliverDate());
+                        dateInt = getDateAsInt(newDate);
+                        date = new Date(dateInt[2]-1900,dateInt[1],dateInt[0]);
+                        jXDateDeliver.setDate(date);
                         jTextFieldDeliver.setText(myParent.getDeliverDocFacade());
                         jTextFieldDistr.setText(myParent.getDistributorDocFacade());
                           break;
@@ -3047,13 +3060,13 @@ private int[] calculatePriceList(int startpricelist)
              
              String strDate;
              strDate = String.valueOf(jXDatePay.getDate().getDate());
-             strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth());
+             strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth()+1);
              strDate += "/" + String.valueOf(jXDatePay.getDate().getYear()+1900);
              String payingDate = dateManip.convertDate(strDate);
              
              strDate = " ";
              strDate = String.valueOf(jXDateDocument.getDate().getDate());
-             strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth());
+             strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth()+1);
              strDate += "/" + String.valueOf(jXDateDocument.getDate().getYear()+1900);
              String docFacadeDate = dateManip.convertDate(strDate);
              
@@ -3094,13 +3107,13 @@ private int[] calculatePriceList(int startpricelist)
              String dateDeliver = dateManip.convertDate("01.01.2000");
              String strDate;
              strDate = String.valueOf(jXDatePay.getDate().getDate());
-             strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth());
+             strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth()+1);
              strDate += "/" + String.valueOf(jXDatePay.getDate().getYear()+1900);
              String payingDate = dateManip.convertDate(strDate);
              
              strDate = " ";
              strDate = String.valueOf(jXDateDocument.getDate().getDate());
-             strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth());
+             strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth()+1);
              strDate += "/" + String.valueOf(jXDateDocument.getDate().getYear()+1900);
              String docFacadeDate = dateManip.convertDate(strDate);
              
@@ -3146,19 +3159,19 @@ private int[] calculatePriceList(int startpricelist)
              String strDate;
             
              strDate = String.valueOf(jXDateDeliver.getDate().getDate());
-             strDate += "/" + String.valueOf(jXDateDeliver.getDate().getMonth());
+             strDate += "/" + String.valueOf(jXDateDeliver.getDate().getMonth()+1);
              strDate += "/" + String.valueOf(jXDateDeliver.getDate().getYear()+1900);
              String dateDeliver = dateManip.convertDate(strDate);
              
              strDate = " ";
              strDate = String.valueOf(jXDatePay.getDate().getDate());
-             strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth());
+             strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth()+1);
              strDate += "/" + String.valueOf(jXDatePay.getDate().getYear()+1900);
              String payingDate = dateManip.convertDate(strDate);
              
              strDate = " ";
              strDate = String.valueOf(jXDateDocument.getDate().getDate());
-             strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth());
+             strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth()+1);
              strDate += "/" + String.valueOf(jXDateDocument.getDate().getYear()+1900);
              String docFacadeDate = dateManip.convertDate(strDate);
              
@@ -3202,19 +3215,19 @@ private int[] calculatePriceList(int startpricelist)
              String strDate;
             
              strDate = String.valueOf(jXDateDeliver.getDate().getDate());
-             strDate += "/" + String.valueOf(jXDateDeliver.getDate().getMonth());
+             strDate += "/" + String.valueOf(jXDateDeliver.getDate().getMonth()+1);
              strDate += "/" + String.valueOf(jXDateDeliver.getDate().getYear()+1900);
              String dateDeliver = dateManip.convertDate(strDate);
              
              strDate = " ";
              strDate = String.valueOf(jXDatePay.getDate().getDate());
-             strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth());
+             strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth()+1);
              strDate += "/" + String.valueOf(jXDatePay.getDate().getYear()+1900);
              String payingDate = dateManip.convertDate(strDate);
              
              strDate = " ";
              strDate = String.valueOf(jXDateDocument.getDate().getDate());
-             strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth());
+             strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth()+1);
              strDate += "/" + String.valueOf(jXDateDocument.getDate().getYear()+1900);
              String docFacadeDate = dateManip.convertDate(strDate);
              
@@ -3259,19 +3272,19 @@ private int[] calculatePriceList(int startpricelist)
              String strDate;
             
              strDate = String.valueOf(jXDateDeliver.getDate().getDate());
-             strDate += "/" + String.valueOf(jXDateDeliver.getDate().getMonth());
+             strDate += "/" + String.valueOf(jXDateDeliver.getDate().getMonth()+1);
              strDate += "/" + String.valueOf(jXDateDeliver.getDate().getYear()+1900);
              String dateDeliver = dateManip.convertDate(strDate);
              
              strDate = " ";
              strDate = String.valueOf(jXDatePay.getDate().getDate());
-             strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth());
+             strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth()+1);
              strDate += "/" + String.valueOf(jXDatePay.getDate().getYear()+1900);
              String payingDate = dateManip.convertDate(strDate);
              
              strDate = " ";
              strDate = String.valueOf(jXDateDocument.getDate().getDate());
-             strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth());
+             strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth()+1);
              strDate += "/" + String.valueOf(jXDateDocument.getDate().getYear()+1900);
              String docFacadeDate = dateManip.convertDate(strDate);
              
@@ -3319,22 +3332,22 @@ private int[] calculatePriceList(int startpricelist)
              String strDate;
             
              strDate = String.valueOf(jXDateDeliver.getDate().getDate());
-             strDate += "/" + String.valueOf(jXDateDeliver.getDate().getMonth());
+             strDate += "/" + String.valueOf(jXDateDeliver.getDate().getMonth()+1);
              strDate += "/" + String.valueOf(jXDateDeliver.getDate().getYear()+1900);
              String dateDeliver = dateManip.convertDate(strDate);
-             
+             System.out.println("dateDeliver :"+dateDeliver);
              strDate = " ";
              strDate = String.valueOf(jXDatePay.getDate().getDate());
-             strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth());
+             strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth()+1);
              strDate += "/" + String.valueOf(jXDatePay.getDate().getYear()+1900);
              String payingDate = dateManip.convertDate(strDate);
-             
+             System.out.println("payingDate :"+payingDate);
              strDate = " ";
              strDate = String.valueOf(jXDateDocument.getDate().getDate());
-             strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth());
+             strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth()+1);
              strDate += "/" + String.valueOf(jXDateDocument.getDate().getYear()+1900);
              String docFacadeDate = dateManip.convertDate(strDate);
-             
+             System.out.println("docFacadeDate :"+docFacadeDate);
              
              int numberDoc = Integer.parseInt(myParent.getNumberDocFacade());
              myParent.getCountriesT().updateRow(id_df,contragent_out,contragent_in,obekt_out,
@@ -3818,9 +3831,8 @@ private void repainDistDeliv(String dist,String devil,String date)
 }
 private double getRate(String valuta)
 {
-    double rate =0;
-    
-    rate =(Double) arrayRate.get(valuta);
+    double rate =1;
+    if(arrayRate.size()>0) rate =(Double) arrayRate.get(valuta);
     
     return rate;
 }
@@ -3846,11 +3858,13 @@ private double getRate(String valuta)
      char ch[] = in.toCharArray();
      int length = in.length();
      int bufLength=0;
+     int  countS = 0;
      for(int i=0; i < length;i++)
      {
          if(ch[i]==45 || ch[i]==46 || ch[i]==47 )
          {
-             if(i==4) // SQL format
+             countS++;
+             if(i==4 && countS==1) // SQL format
              {
                  newDate = in.substring(length-2,length);
                  newDate +="/";
@@ -3877,6 +3891,7 @@ private double getRate(String valuta)
         try
           {
             Robot robot = new Robot();
+
 
             robot.keyPress(KeyEvent.VK_ENTER);
            } 

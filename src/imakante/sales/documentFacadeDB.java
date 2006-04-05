@@ -1603,7 +1603,7 @@ public void updateConnectionID(int in_oldDocID, int in_faktura_connection_df,int
 public HashMap getCurentRate(String dateSQLFormat)
 {
     HashMap rate = new HashMap();
-    
+    rate.put(new String("BGL"),new Double(1));
     String oldComment = getCommentDocFacade();
     setCommentDocFacade(dateSQLFormat);
     setComprator(43);

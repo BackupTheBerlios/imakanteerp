@@ -874,7 +874,7 @@ public String getDeliverDate()
 public void setDeliverDate(String in)
 {
     this.deliverDate=in;
-    //setDeliverDocFacade(in);
+    setDeliverDocFacade(in);
 }
 public void setDescriptipnPay(int  paying)
 {
@@ -1276,7 +1276,7 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
         setUserDocFacade((Integer) table.getValueAt(getRow(), getColumnIndex("Потребител"))) ;             //5
         setuserLastEditDocFacade((Integer) table.getValueAt(getRow(), getColumnIndex("Потребител-последна редакция")));     //6
         setCommenatDocFacade((String) table.getValueAt(getRow(), getColumnIndex("Коментар")));              //7
-        BigDecimal big1 = (BigDecimal) table.getValueAt(getRow(), getColumnIndex("Общо"));
+         BigDecimal big1 = (BigDecimal) table.getValueAt(getRow(), getColumnIndex("Общо"));
         setTotalPayingDocFacade(big1.doubleValue());                                                       //8
         big1 = (BigDecimal) table.getValueAt(getRow(), getColumnIndex("ДДС"));
         setAllDDSPaingDocFacade(big1.doubleValue());                                                      //9

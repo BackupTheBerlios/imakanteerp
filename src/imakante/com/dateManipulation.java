@@ -5,7 +5,10 @@ public class dateManipulation {
     
     public static String convertDate(String str){ // obrasha formata na data po iziskvaniata na MySQL
         String converted_str = "0000-00-00";
-        
+       if(!checkAndConvertSQLFormat(str).equals(str)) 
+       {
+            return str;
+       }
         if(str.length()==10){
             try{
                 converted_str = str.substring(6, 10) + "-" +str.substring(3, 5) + "-" + str.substring(0, 2);
@@ -30,7 +33,7 @@ public class dateManipulation {
         
         if(str.length()==8){
             try{
-                converted_str = str.substring(6, 8) + "-" +str.substring(3, 5) + "-" + str.substring(0, 2);
+                converted_str = str.substring(4, 8) + "-" +str.substring(2, 3) + "-" + str.substring(0, 1);
             }catch(IndexOutOfBoundsException ioobe){converted_str = ""; return converted_str;}
             return converted_str;
         }
@@ -265,5 +268,48 @@ public class dateManipulation {
         
         
     }
-    
+static   public int[] getExpireDateAsInt(String expireDate) 
+ {
+     int date[] = new int[3];
+     int lenght = expireDate.length();
+     char ch[] = expireDate.toCharArray();
+     String day = String.copyValueOf(ch,0,2); // 
+     int dayInt = Integer.parseInt(day);
+     String month = String.copyValueOf(ch,3,2);
+     int monthInt = Integer.parseInt(month);
+     String year = String.copyValueOf(ch,6,4);
+     int yearInt = Integer.parseInt(year);
+     date[0]= dayInt;
+     date[1]= monthInt;
+     date[2]= yearInt;
+     return date;
+ }
+static private String checkAndConvertSQLFormat(String in)
+ {
+     String newDate = in;
+     char ch[] = in.toCharArray();
+     int length = in.length();
+     int bufLength=0;
+     int countS=0;
+     for(int i=0; i < length;i++)
+     {
+         if(ch[i]==45 || ch[i]==46 || ch[i]==47 )
+         {
+             countS++;
+             if(i==4 && countS==1 ) // SQL format
+             {
+                 newDate = in.substring(length-2,length);
+                 newDate +="/";
+                 newDate +=in.substring(length-5,length-3); 
+                 newDate +="/";
+                 newDate +=in.substring(0,4); 
+                 break;
+             }
+         }
+     }
+     
+     
+     
+     return newDate;
+ }  
 }
