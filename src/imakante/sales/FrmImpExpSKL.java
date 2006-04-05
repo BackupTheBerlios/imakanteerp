@@ -263,7 +263,7 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
     private java.sql.Connection connection;
     private java.sql.Statement stm;
     private java.sql.ResultSet rs;
-    private String QString = "SELECT name_n_contragent, bul_n_contragent FROM n_contragent WHERE n_contragent.dan_n_contragent LIKE ";
+    private String QString = "SELECT name_n_contragent, bul_n_contragent FROM n_contragent WHERE n_contragent.dan_n_contragent = '";
     
     //FILE related
     private java.io.File file;
@@ -299,8 +299,12 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
     private String fullString(String inString, int in_int, boolean reverce){
         String str = "";
         int f = 0;
+       if (inString.equals(null)){
+       inString = "";
+       }
+            System.out.println("String lenght" + inString.length());
+       
         
-        System.out.println("String lenght" + inString.length());
         if(reverce){
             if (inString.length()> in_int){
                 str = inString.substring(0,in_int);
@@ -499,8 +503,23 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
                     this.table.setValueAt(ime,row,8);
                     this.table.setValueAt(viddei,row,9);
                     try {
-                        rs = stm.executeQuery(QString + dan_kli);
+                        rs = stm.executeQuery(QString + dan_kli +"';");
                         while(rs.next()){
+                            String nm_contr = "";
+                            String bullstd = "";
+                            try {
+                                nm_contr = rs.getString("name_n_contragent");
+                            } catch (SQLException ex) {
+                                nm_contr = "err name";
+                                ex.printStackTrace();
+                            }
+                            try {
+                                bullstd = rs.getString("bul_n_contragent");
+                            } catch (SQLException ex) {
+                                bullstd = "err bull";
+                                ex.printStackTrace();
+                            }
+                          
                             this.table.setValueAt((rs.getString("name_n_contragent")),row,10);
                             this.table.setValueAt((rs.getString("bul_n_contragent")),row,11);
                         }
@@ -599,9 +618,14 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
                     Line = Line + fullZeroString((String)table.getValueAt(j,0).toString(),7, false); //
                     Line = Line +"04";                                                    //vid operatsia
                     Line  = Line + (String)table.getValueAt(j,5);                         // nomer faktura
-                    Line = Line + table.getValueAt(j,6);                                  //data
-                    Line = Line +  fullString((String)table.getValueAt(j,11),9, false)+ " "; // IN
-                    Line = Line + fullString((String)table.getValueAt(j,8), 50,true) + " "; //ime na firmata SKL1
+                    Line = Line + table.getValueAt(j,6);
+                    try {
+                        Line = Line +  fullString((String)table.getValueAt(j,11).toString(),9, false)+ " "; // IN
+                    } catch (Exception e){
+                        e.printStackTrace();
+                         Line = Line +  fullString("111111111",9, false)+ " ";
+                    } // IN
+                    Line = Line + fullString((String)table.getValueAt(j,8).toString(), 50,true) + " "; //ime na firmata SKL1
                     
                 }
                 if(j==k-1){
@@ -610,7 +634,7 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
                     Line  = Line + (String)table.getValueAt(j,5);
                     Line = Line + table.getValueAt(j,6);
                     Line = Line + "          ";
-                    Line = Line + fullString((String)table.getValueAt(j,8), 50,true) + " "; //ime na firmata SKL1
+                    Line = Line + fullString((String)table.getValueAt(j,8).toString(), 50,true) + " "; //ime na firmata SKL1
                 }
                 
                 Line = Line + (String)table.getValueAt(j,9);
