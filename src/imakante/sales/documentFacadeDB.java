@@ -43,9 +43,10 @@
  *comprator= 41: getIDPMByIDPC()
  *comprator= 42: updateConnectionID()
  *comprator= 43: getCurentRate()
- *comprator= 44:
- *comprator= 45:
- *comprator= 46:
+ *comprator= 44: searchForNamlichnost()
+ *comprator= 45: insertProductNal()
+ *comprator= 46: getMaxNalID()
+ *comprator= 47: increaseProductNal()
  *
  *
  *
@@ -929,11 +930,13 @@ public String[] getObektDataByID(int idObekt)
    setUserDocFacade(oldIntValue);
     return ObektData;
 }
-public java.sql.ResultSet getTableProductInfo(String in , int sqlselect,int level, int flag)
+public java.sql.ResultSet getTableProductInfo(String in , int sqlselect,int level, int flag, int storageID)
 { 
     java.sql.ResultSet rs1 = null;
     int oldIntValue = getDocFacadeType();
+    int oldStrorage = getStorageDocFacade();
     setDocFacadeType(sqlselect);
+    setStorageDocFacade(storageID);
     String oldvalues = getCommentDocFacade();
     setCommentDocFacade(in);  
     int oldID_df = getID_DocFacade();
@@ -976,6 +979,7 @@ public java.sql.ResultSet getTableProductInfo(String in , int sqlselect,int leve
         setDocFacadeType(oldIntValue);
         setID_DocFacade(oldID_df);
         setID_Obekt_IN(oldID_obekt_in);
+        setStorageDocFacade(oldStrorage);
         return rs1;
     
 }
@@ -1629,6 +1633,155 @@ public HashMap getCurentRate(String dateSQLFormat)
         }         
      
      return rate;
+}
+public  int searchForNamlichnost(int in_id_pc,int in_id_storage)
+ {
+   int isHaveNalichnost=0;
+   int oldIDpc = getID_Obekt_IN();
+   setID_Obekt_IN(in_id_pc);
+   int oldStorage = getStorageDocFacade();
+   setStorageDocFacade(in_id_storage);
+   setComprator(44);  
+     try
+        {
+            registerParameters();
+            setRs(getCstm().executeQuery());
+            while(getRs().next())
+            {
+                
+              isHaveNalichnost=getRs().getInt("id_nal");
+           
+            }
+            
+               
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }       
+   setStorageDocFacade(oldStorage)  ;
+   setID_Obekt_IN(oldIDpc);
+   return isHaveNalichnost;
+ }
+public int insertProductNal()
+{
+    int maxId = 0;
+     setComprator(45);  
+     try
+        {
+            registerParameters();
+            getCstm().execute();
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+     setComprator(46); 
+     try
+        {
+            registerParameters();
+            setRs(getCstm().executeQuery());
+            while(getRs().next())
+            {
+                
+             maxId=getRs().getInt("id");
+           
+            }
+            
+               
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }       
+    
+    return maxId;
+}
+public void increaseProductNal(int in_id_nal,int nal,int storageTo,int in_id_pc,int level)
+{
+    int oldID_Obekt_in = getID_Obekt_IN();
+    int oldID_Obekt_out = getID_Obekt_OUT();
+    int oldStorage = getStorageDocFacade();
+    int oldID_DF = getID_DocFacade();
+    int oldLevel = getLevelDocFacade();
+    setLevelDocFacade(level);
+    setID_DocFacade(in_id_pc);
+    setStorageDocFacade(storageTo);
+    setID_Obekt_IN(in_id_nal);
+    setID_Obekt_OUT(nal);
+     setComprator(47);  
+     try
+        {
+            registerParameters();
+            getCstm().execute();
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+    setID_Obekt_IN(oldID_Obekt_in) ;
+    setID_Obekt_OUT(oldID_Obekt_out);
+    setStorageDocFacade(oldStorage);
+    setID_DocFacade(oldID_DF);
+    setLevelDocFacade(oldLevel);
+}
+public docLineArray getRowDocLine(int id_dl)
+{
+   
+     int oldId_DF = getID_DocFacade();
+     setID_DocFacade(id_dl);
+     setComprator(48);
+     docLineArray data=null;
+     java.sql.ResultSet rs12 =null;
+     int key = 0;
+     try
+        {
+            registerParameters();
+            rs12 = getCstm().executeQuery();
+            while(rs12.next())
+            {
+              int numerOfDisBaund[] = new int[3];
+              int v1 = (Integer) rs12.getInt("v1");
+              int v2 = (Integer) rs12.getInt("v2");
+              int v3 = (Integer) rs12.getInt("v3");
+              numerOfDisBaund[0] = v1;
+              numerOfDisBaund[1] = v2;
+              numerOfDisBaund[2] = v3;
+             
+                
+              data = new docLineArray();
+              data.setID_PC((Integer)rs12.getInt("id_pc"));
+              data.setID_DocLine(rs12.getInt("id_dl"));
+              data.setNumerOfDisBand(numerOfDisBaund);
+              data.setCodeOfProduct((Integer)rs12.getInt("code_pm"));
+              data.setDDS((Double)rs12.getDouble("dds_dl"));
+              data.setNameOfProduct((String)rs12.getString("name_pm"));
+              data.setNumberOfProduct((Integer)rs12.getInt("numbers_piece_dl"));
+               
+              data.setPriceList((Integer)rs12.getInt("price_list_dl"));
+              data.setPricePiece((Double)rs12.getDouble("singly_price_dl"));
+              data.setPriceTotal((Double)rs12.getDouble("totalall_dl"));
+              data.setRateReduction((Double)rs12.getDouble("climb_down_dl"));
+              data.setStorageOut((Integer)rs12.getInt("id_n_storage"));
+              String nameOfDisBaund[]= new String[3];
+              
+              nameOfDisBaund[0] = rs12.getString("m1");
+              nameOfDisBaund[1] = rs12.getString("m2");
+              nameOfDisBaund[2] = rs12.getString("m3");
+              data.setNameOfDisBand(nameOfDisBaund);
+                           
+            }
+               
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }       
+     
+     
+     
+    setID_DocFacade(oldId_DF);
+    return data;
 }
 // <-----------------------
 }// end class

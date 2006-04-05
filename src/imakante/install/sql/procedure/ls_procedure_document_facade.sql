@@ -427,7 +427,8 @@ IF (comprator = 20) THEN
      FROM mida.n_product_main n LEFT JOIN mida.n_product_consigment pc ON pc.id_pm = n.id_pm
      LEFT JOIN mida.sl_nalichnosti s ON pc.id_pc = s.id_pc
      LEFT JOIN mida.n_storage st ON st.id_n_storage = s.id_n_storage
-     WHERE n.code_pm LIKE CONCAT('%',in_docFacadeComment,'%') AND n.flag_pm = in_id_obekt_in AND  s.level= in_id_df;
+     WHERE n.code_pm LIKE CONCAT('%',in_docFacadeComment,'%') AND n.flag_pm = in_id_obekt_in AND  s.level= in_id_df
+     AND s.id_n_storage=in_docFacadeStorage;
    END IF;
    IF (in_docFacadeType = 1) THEN
        SELECT n.id_pm,pc.parcel_pc, pc.id_pp, pc.id_ppp, pc.id_pf,
@@ -438,7 +439,8 @@ IF (comprator = 20) THEN
        FROM mida.n_product_main n LEFT JOIN mida.n_product_consigment pc ON pc.id_pm = n.id_pm
        LEFT JOIN mida.sl_nalichnosti s ON pc.id_pc = s.id_pc
        LEFT JOIN mida.n_storage st ON st.id_n_storage = s.id_n_storage
-       WHERE n.code_pm LIKE CONCAT(in_docFacadeComment,'%') AND n.flag_pm = in_id_obekt_in AND  s.level= in_id_df;
+       WHERE n.code_pm LIKE CONCAT(in_docFacadeComment,'%') AND n.flag_pm = in_id_obekt_in AND  s.level= in_id_df
+       AND s.id_n_storage=in_docFacadeStorage;
    END IF;
    IF (in_docFacadeType = 2) THEN
        SELECT n.id_pm,pc.parcel_pc, pc.id_pp, pc.id_ppp, pc.id_pf,
@@ -449,7 +451,8 @@ IF (comprator = 20) THEN
        FROM mida.n_product_main n LEFT JOIN mida.n_product_consigment pc ON pc.id_pm = n.id_pm
        LEFT JOIN mida.sl_nalichnosti s ON pc.id_pc = s.id_pc
        LEFT JOIN mida.n_storage st ON st.id_n_storage = s.id_n_storage
-       WHERE n.code_pm LIKE CONCAT('%',in_docFacadeComment) AND n.flag_pm = in_id_obekt_in AND  s.level= in_id_df;
+       WHERE n.code_pm LIKE CONCAT('%',in_docFacadeComment) AND n.flag_pm = in_id_obekt_in AND  s.level= in_id_df
+       AND s.id_n_storage=in_docFacadeStorage;
    END IF;
 END IF;
 IF (comprator = 21) THEN
@@ -624,7 +627,49 @@ IF (comprator = 43) THEN
      WHERE s.date_sl_exchange_rate = in_docFacadeComment;
 END IF;
 
+IF (comprator = 44) THEN
+    SELECT id_nal FROM sl_nalichnosti s
+    WHERE id_n_storage= in_docFacadeStorage
+    AND id_pc = in_id_obekt_in;
+END IF;
 
+IF (comprator = 45) THEN
+    INSERT INTO sl_nalichnosti(id_n_storage,id_pc,level,quant_nal,quant_rezerv_nal,return_rezerv_nal)
+    VALUES(in_docFacadeStorage,in_id_obekt_in,0,0,0,0);
+END IF;
+
+IF (comprator = 46) THEN
+    SELECT MAX(id_nal) as id FROM sl_nalichnosti s;
+END IF;
+
+IF (comprator = 47) THEN
+   UPDATE mida.sl_nalichnosti s SET s.quant_nal=(quant_nal+in_id_obekt_out),
+   s.id_n_storage = in_docFacadeStorage,
+   s.id_pc = in_id_df,
+   s.level = in_docFacadeLevel
+   WHERE id_nal= in_id_obekt_in;
+END IF;
+IF (comprator = 48) THEN
+     SELECT s.id_dl, s.id_pc, s.id_n_storage, s.singly_price_dl, s.climb_down_dl, s.numbers_piece_dl, s.dds_dl, s.totalall_dl, s.id_df, s.price_list_dl,
+ n.id_pc, n.id_pm, n.parcel_pc, n.dateofexpire_pc,
+ pm.id_pm, pm.id_pd, pm.id_n_group, pm.id_ppp, pm.id_pp, pm.id_pf, pm.name_pm, pm.fname_pm, pm.sname_pm, pm.cname_pm,
+ pm.cod1_pm, pm.cod2_pm, pm.barcod_pm, pm.max_pop_pm, pm.expertsheet_pm, pm.flag_pm, pm.min_pm, pm.code_pm,
+ pd.id_pd, pd.m1_pd, pd.v1_pd as v1, pd.m2_pd, pd.v2_pd as v2, pd.m3_pd, pd.v3_pd as v3,
+ pp.id_pp, pp.id_sl_curs, pp.price1_pp, pp.price2_pp, pp.price3_pp, pp.price0_pp,
+ pf.id_pf, pf.dds_pf, pf.excise_pf, pf.other_pf,
+ st.id_n_storage, st.id_n_group, st.code_n_storage, st.name_n_storage, st.comments_n_storage,
+ pam1.sname_pam as m1, pam2.sname_pam as m2, pam3.sname_pam as m3
+    FROM mida.sl_document_lines s LEFT JOIN mida.n_product_consigment n ON s.id_pc = n.id_pc
+    LEFT JOIN mida.n_product_main pm ON pm.id_pm=n.id_pm
+    LEFT JOIN  mida.n_product_price pp   ON pm.id_pp=pp.id_pp
+    LEFT JOIN  mida.n_product_description pd   ON pm.id_pd=pd.id_pd
+    LEFT JOIN  mida.n_product_fee pf   ON pm.id_pf=pf.id_pf
+    LEFT JOIN  mida.n_storage st   ON st.id_n_storage = s.id_n_storage
+    LEFT JOIN  mida.n_product_all_measure pam1 ON pam1.id_pam = pd.m1_pd
+    LEFT JOIN  mida.n_product_all_measure pam2 ON pam2.id_pam = pd.m2_pd
+    LEFT JOIN  mida.n_product_all_measure pam3 ON pam3.id_pam = pd.m3_pd
+    WHERE id_dl = in_id_df;
+END IF;
 
 
 END $$
