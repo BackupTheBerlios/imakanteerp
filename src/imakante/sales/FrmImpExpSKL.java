@@ -35,6 +35,8 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
         jButton3 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
 
         setClosable(true);
@@ -75,18 +77,17 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel2Layout.createSequentialGroup()
-                .add(jButton4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 99, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .add(jPanel2Layout.createSequentialGroup()
                 .add(jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                 .add(19, 19, 19)
-                .add(jButton2)
-                .add(42, 42, 42))
+                .add(jButton2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 113, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .add(jPanel2Layout.createSequentialGroup()
-                .add(jLabel1)
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jButton4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel2)
-                .add(42, 42, 42))
+                .add(68, 68, 68))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -125,6 +126,11 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel3.setText("\u0418\u043c\u0435 \u043d\u0430 \u0437\u0430\u0440\u0435\u0434\u0435\u043d\u0438\u044f \u0444\u0430\u0439\u043b:");
+
+        jLabel4.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel4.setText("\u043d\u044f\u043c\u0430 \u0437\u0430\u0440\u0435\u0434\u0435\u043d");
+
         org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -132,11 +138,16 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
             .add(jPanel3Layout.createSequentialGroup()
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel3Layout.createSequentialGroup()
-                        .add(jButton3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 125, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(jButton3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                         .add(14, 14, 14)
-                        .add(jButton6))
-                    .add(jButton7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 99, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(125, 125, 125))
+                        .add(jButton6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))
+                    .add(jPanel3Layout.createSequentialGroup()
+                        .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, jButton7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel4)))
+                .add(79, 79, 79))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -144,7 +155,11 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jButton3)
                     .add(jButton6))
-                .add(35, 35, 35)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel3)
+                    .add(jLabel4))
+                .add(15, 15, 15)
                 .add(jButton7)
                 .addContainerGap(41, Short.MAX_VALUE))
         );
@@ -158,7 +173,7 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE))
+                .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -192,7 +207,7 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 30, Short.MAX_VALUE)
                 .add(jButton5)
                 .addContainerGap())
         );
@@ -238,6 +253,8 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -246,7 +263,7 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
     private java.sql.Connection connection;
     private java.sql.Statement stm;
     private java.sql.ResultSet rs;
-    private String QString = "SELECT n_contragent.name_n_contragent, n_contragent.bul_n_contragent FROM n_contragent WHERE n_contragent.dan_n_contragent LIKE ";
+    private String QString = "SELECT name_n_contragent, bul_n_contragent FROM n_contragent WHERE n_contragent.dan_n_contragent LIKE ";
     
     //FILE related
     private java.io.File file;
@@ -481,6 +498,15 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
                     this.table.setValueAt(dan_kli,row,7);
                     this.table.setValueAt(ime,row,8);
                     this.table.setValueAt(viddei,row,9);
+                    try {
+                        rs = stm.executeQuery(QString + dan_kli);
+                        while(rs.next()){
+                        this.table.setValueAt((rs.getString("name_n_contragent")),row,10);
+                        this.table.setValueAt((rs.getString("bul_n_contragent")),row,11);
+                        }
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
                     System.out.println("nomer na red = "+row);
                     
                     row++;
@@ -495,10 +521,10 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
     
     public class MyTableModel extends DefaultTableModel {
         private String[] Names =  new String [] {
-            "1", "2", "3", "4", "5", "6","7", "8","9","10"};
+            "1", "2", "3", "4", "5", "6","7", "8","9","10","11","12"};
         
         public int getColumnCount() {
-            return 10;
+            return 12;
         }
         public String getColumnName(int col) {
             return Names[col];
@@ -561,7 +587,7 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
         String Line="";
         try {
             
-            BufferedWriter out = new BufferedWriter(new java.io.OutputStreamWriter(new FileOutputStream("c:/rabotna/prodagbi.txt"),"Cp866"));
+            BufferedWriter out = new BufferedWriter(new java.io.OutputStreamWriter(new FileOutputStream("c:/rabotna2/prodagbi.txt"),"Cp866"));
             int j = 0;
             int k = table.getRowCount();
             while(j<k){
@@ -574,7 +600,7 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
                     Line = Line +"04";                                                    //vid operatsia
                     Line  = Line + (String)table.getValueAt(j,5);                         // nomer faktura
                     Line = Line + table.getValueAt(j,6);                                  //data
-                    Line = Line +  fullString((String)table.getValueAt(j,7),9, false)+ " "; // IN
+                    Line = Line +  fullString((String)table.getValueAt(j,11),9, false)+ " "; // IN
                     Line = Line + fullString((String)table.getValueAt(j,8), 50,true) + " "; //ime na firmata SKL1
                     
                 }
