@@ -213,17 +213,17 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-// TODO add your handling code here:
+        this.writeFileIns();
     }//GEN-LAST:event_jButton7ActionPerformed
-
+    
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-// TODO add your handling code here:
+        this.proccessIs();
     }//GEN-LAST:event_jButton6ActionPerformed
-
+    
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-// TODO add your handling code here:
+        openFile_Dialog();
     }//GEN-LAST:event_jButton3ActionPerformed
     
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -445,9 +445,9 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
         } catch (NumberFormatException ex) {
             ex.printStackTrace();
         }
-    }   
-        
-   private void proccessIs(){
+    }
+    
+    private void proccessIs(){
         try {
             //   BufferedWriter out = new BufferedWriter(new java.io.OutputStreamWriter(new FileOutputStream("c:/install/ETIKET.TXT"),this.jTextField2.getText()));
             in = new BufferedReader(new java.io.InputStreamReader(new java.io.FileInputStream(file),"Cp866"));
@@ -501,8 +501,8 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
                     try {
                         rs = stm.executeQuery(QString + dan_kli);
                         while(rs.next()){
-                        this.table.setValueAt((rs.getString("name_n_contragent")),row,10);
-                        this.table.setValueAt((rs.getString("bul_n_contragent")),row,11);
+                            this.table.setValueAt((rs.getString("name_n_contragent")),row,10);
+                            this.table.setValueAt((rs.getString("bul_n_contragent")),row,11);
                         }
                     } catch (SQLException ex) {
                         ex.printStackTrace();
@@ -516,7 +516,7 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
         } catch (NumberFormatException ex) {
             ex.printStackTrace();
         }
-         
+        
     }
     
     public class MyTableModel extends DefaultTableModel {
@@ -582,7 +582,7 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
         }
         
     }
-     private void writeFileIns(){
+    private void writeFileIns(){
 //
         String Line="";
         try {
