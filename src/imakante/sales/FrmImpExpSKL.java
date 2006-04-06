@@ -31,6 +31,8 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
         jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
@@ -72,6 +74,20 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
         jLabel2.setForeground(new java.awt.Color(255, 0, 0));
         jLabel2.setText("\u043d\u044f\u043c\u0430 \u0437\u0430\u0440\u0435\u0434\u0435\u043d");
 
+        jButton8.setText("ed t");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        jButton9.setText("end");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -88,6 +104,11 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel2)
                 .add(68, 68, 68))
+            .add(jPanel2Layout.createSequentialGroup()
+                .add(jButton8)
+                .add(36, 36, 36)
+                .add(jButton9)
+                .add(107, 107, 107))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -101,7 +122,10 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
                     .add(jLabel2))
                 .add(15, 15, 15)
                 .add(jButton4)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 18, Short.MAX_VALUE)
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jButton8)
+                    .add(jButton9)))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("\u0418\u043d\u0441\u0430\u0439\u0434"));
@@ -207,19 +231,27 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 34, Short.MAX_VALUE)
                 .add(jButton5)
                 .addContainerGap())
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        this.writeF();
+    }//GEN-LAST:event_jButton9ActionPerformed
+    
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        this.procc1();
+    }//GEN-LAST:event_jButton8ActionPerformed
+    
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         this.writeFileIns();
     }//GEN-LAST:event_jButton7ActionPerformed
     
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        this.proccessIs();
+        this.proccessFi();
     }//GEN-LAST:event_jButton6ActionPerformed
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -251,6 +283,8 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -299,11 +333,12 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
     private String fullString(String inString, int in_int, boolean reverce){
         String str = "";
         int f = 0;
-       if (inString.equals(null)){
-       inString = "";
-       }
-            System.out.println("String lenght" + inString.length());
-       
+        if (inString.equals(null)){
+            System.out.println("stringa e null");
+            inString = "";
+        }
+        System.out.println("String lenght" + inString.length());
+        
         
         if(reverce){
             if (inString.length()> in_int){
@@ -412,7 +447,7 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
             String dan_kli =""; //danachen na klienta;
             String ime = ""; //klient ime
             String viddei = ""; //viddeinost
-            
+            String ssss = ""; //parite
             while (str != null) {
                 
                 str = in.readLine();
@@ -425,14 +460,14 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
                     nomfak = str.substring(22,32);     //5
                     data_d = str.substring(32,42);     //6
                     dan_kli = str.substring(42,52);    //7
-                    ime = str.substring(52,103);       //8
-                    viddei = str.substring(103, 237);  //9
-                    
+                    ime = str.substring(52,102);       //8
+                    viddei = str.substring(104, 134);  //9
+                    ssss = str.substring(134, 237); //10
                     
                     ((MyTableModel)table.getModel()).insertRow(model.getRowCount(), new Object[]{"0","0","0","0","0","0","0","0","0","0"});
-                    this.table.setValueAt(row +1,row,0);
-                    this.table.setValueAt(dann,row,1);
-                    this.table.setValueAt(nomst,row,2);
+                    this.table.setValueAt(row +1,row,0);  //0
+                    this.table.setValueAt(dann,row,1);    //1
+                    this.table.setValueAt(nomst,row,2);   //2
                     this.table.setValueAt(nomd,row,3);
                     this.table.setValueAt(vid,row,4);
                     this.table.setValueAt(nomfak,row,5);
@@ -440,6 +475,7 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
                     this.table.setValueAt(dan_kli,row,7);
                     this.table.setValueAt(ime,row,8);
                     this.table.setValueAt(viddei,row,9);
+                    this.table.setValueAt(ssss, row,10);
                     System.out.println("nomer na red = "+row);
                     
                     row++;
@@ -450,8 +486,7 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
     }
-    
-    private void proccessIs(){
+    private void proccessFi(){
         try {
             //   BufferedWriter out = new BufferedWriter(new java.io.OutputStreamWriter(new FileOutputStream("c:/install/ETIKET.TXT"),this.jTextField2.getText()));
             in = new BufferedReader(new java.io.InputStreamReader(new java.io.FileInputStream(file),"Cp866"));
@@ -474,7 +509,7 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
             String dan_kli =""; //danachen na klienta;
             String ime = ""; //klient ime
             String viddei = ""; //viddeinost
-            
+            String ssss = ""; //parite
             while (str != null) {
                 
                 str = in.readLine();
@@ -487,14 +522,14 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
                     nomfak = str.substring(22,32);     //5
                     data_d = str.substring(32,42);     //6
                     dan_kli = str.substring(42,52);    //7
-                    ime = str.substring(52,103);       //8
-                    viddei = str.substring(103, 237);  //9
-                    
+                    ime = str.substring(52,102);       //8
+                    viddei = str.substring(104, 134);  //9
+                    ssss = str.substring(134, 237); //10
                     
                     ((MyTableModel)table.getModel()).insertRow(model.getRowCount(), new Object[]{"0","0","0","0","0","0","0","0","0","0"});
-                    this.table.setValueAt(row +1,row,0);
-                    this.table.setValueAt(dann,row,1);
-                    this.table.setValueAt(nomst,row,2);
+                    this.table.setValueAt(row +1,row,0);  //0
+                    this.table.setValueAt(dann,row,1);    //1
+                    this.table.setValueAt(nomst,row,2);   //2
                     this.table.setValueAt(nomd,row,3);
                     this.table.setValueAt(vid,row,4);
                     this.table.setValueAt(nomfak,row,5);
@@ -502,30 +537,49 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
                     this.table.setValueAt(dan_kli,row,7);
                     this.table.setValueAt(ime,row,8);
                     this.table.setValueAt(viddei,row,9);
-                    try {
-                        rs = stm.executeQuery(QString + dan_kli +"';");
-                        while(rs.next()){
-                            String nm_contr = "";
-                            String bullstd = "";
-                            try {
-                                nm_contr = rs.getString("name_n_contragent");
-                            } catch (SQLException ex) {
-                                nm_contr = "err name";
-                                ex.printStackTrace();
-                            }
-                            try {
-                                bullstd = rs.getString("bul_n_contragent");
-                            } catch (SQLException ex) {
-                                bullstd = "err bull";
-                                ex.printStackTrace();
-                            }
-                          
-                            this.table.setValueAt((rs.getString("name_n_contragent")),row,10);
-                            this.table.setValueAt((rs.getString("bul_n_contragent")),row,11);
-                        }
-                    } catch (SQLException ex) {
-                        ex.printStackTrace();
-                    }
+                    this.table.setValueAt(ssss, row,10);
+                    System.out.println("nomer na red = "+row);
+                    
+                    row++;
+                }
+            }
+        } catch (IOException e) { e.printStackTrace();
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+        }
+    }
+    private void procc1(){
+        try {
+            //   BufferedWriter out = new BufferedWriter(new java.io.OutputStreamWriter(new FileOutputStream("c:/install/ETIKET.TXT"),this.jTextField2.getText()));
+            in = new BufferedReader(new java.io.InputStreamReader(new java.io.FileInputStream(file),"Cp866"));
+            //   in = new BufferedReader(new FileReader(file));
+            String str = "NACHALO";
+            String cod="";
+            String data ="";
+            String NDR = "";
+            
+            String sum ="";
+            String dds ="";
+            
+            int  row = 0;
+            String dann = ""; //danachen nomer
+            String nomst=""; // nomer stantsia
+            
+            
+            while (str != null) {
+                
+                str = in.readLine();
+                if(str != null){
+                    System.out.println("Stringa e s daljina = "+str.length());
+                    dann = str.substring(0,10);        //1
+                    nomst = str.substring(14, 237);     //2
+                    
+                    
+                    
+                    ((MyTableModel)table.getModel()).insertRow(model.getRowCount(), new Object[]{"0","0","0","0","0","0","0","0","0","0"});
+                    this.table.setValueAt(row +1,row,0);
+                    this.table.setValueAt(dann,row,1);
+                     this.table.setValueAt(nomst,row,2);
                     System.out.println("nomer na red = "+row);
                     
                     row++;
@@ -551,8 +605,6 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
         
         
     }
-    
-    
     private void writeFile(){
 //
         String Line="";
@@ -564,15 +616,18 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
             while(j<k){
                 
                 Line ="";
-                Line = Line + fullString((String)table.getValueAt(j,1).toString(),10,true); //bul
+                System.out.println(" bol =  " +(String)table.getValueAt(j,1));
+                Line = Line + (String)table.getValueAt(j,1);
+                //fullString((String)table.getValueAt(j,1),10,true); bul
                 Line= Line + (String)table.getValueAt(j,2).toString();
                 if(j<k-1){
                     Line = Line + fullZeroString((String)table.getValueAt(j,0).toString(),7, false); //
-                    Line = Line +"04";                                                    //vid operatsia
+                    Line = Line +(String)table.getValueAt(j,4).toString();                                                    //vid operatsia
                     Line  = Line + (String)table.getValueAt(j,5);                         // nomer faktura
                     Line = Line + table.getValueAt(j,6);                                  //data
                     Line = Line +  fullString((String)table.getValueAt(j,7),9, false)+ " "; // IN
-                    Line = Line + fullString((String)table.getValueAt(j,8), 50,true) + " "; //ime na firmata SKL1
+                    String namef = (String)table.getValueAt(j,8).toString();
+                    Line = Line + fullString(namef,50,true) + " "; //ime na firmata SKL1
                     
                 }
                 if(j==k-1){
@@ -584,7 +639,39 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
                     Line = Line + fullString((String)table.getValueAt(j,8), 50,true) + " "; //ime na firmata SKL1
                 }
                 
-                Line = Line + (String)table.getValueAt(j,9);
+                Line = Line + (String)table.getValueAt(j,9) + " ";
+                Line = Line + (String)table.getValueAt(j,10);
+                
+                System.out.println(Line);
+                Line = Line + "\r" + "\n";
+                j++;
+                out.write(Line);
+                
+            }
+            
+            out.close();
+        }catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            
+        } catch (IOException e) { e.printStackTrace();
+        }
+        
+    }
+    
+    private void writeF(){
+//
+        String Line="";
+        try {
+            
+            BufferedWriter out = new BufferedWriter(new java.io.OutputStreamWriter(new FileOutputStream("c:/rabotna/prodagbi.txt"),"Cp866"));
+            int j = 0;
+            int k = table.getRowCount();
+            while(j<k){
+                
+                Line ="";
+                System.out.println(" bol =  " +(String)table.getValueAt(j,1));
+                Line = Line + (String)table.getValueAt(j,1) + "     "+(String)table.getValueAt(j,2);
+                
                 
                 System.out.println(Line);
                 Line = Line + "\r" + "\n";
@@ -623,7 +710,7 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
                         Line = Line +  fullString((String)table.getValueAt(j,11).toString(),9, false)+ " "; // IN
                     } catch (Exception e){
                         e.printStackTrace();
-                         Line = Line +  fullString("111111111",9, false)+ " ";
+                        Line = Line +  fullString("111111111",9, false)+ " ";
                     } // IN
                     Line = Line + fullString((String)table.getValueAt(j,8).toString(), 50,true) + " "; //ime na firmata SKL1
                     
