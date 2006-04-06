@@ -1208,8 +1208,9 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         hm.put("contragentEnd", coE);
         hm.put("dataBegin", dB);
         hm.put("dataEnd", dE);
-        hm.put("in_levelx", "" + this.getLevelPermition());
+        hm.put("in_levelx", "" + this.level);
         hm.put("id_sdtn", "" + this.getIn_id_sdtn());
+        System.out.println("  ime " +  this.getUser_name());
         System.out.println("Kasa B: " + hm.get("casaBegin") + "  <-  " + caB);
         System.out.println("Kasa E: " + hm.get("casaEnd") + "  <-  " + caE);
         System.out.println("Kontragent B: " + hm.get("contragentBegin") + "  <-  " + coB);
