@@ -477,7 +477,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     private int in_id_order_doc = -1;
     private String in_DATE;
     private int in_id_n_money = 1;
-    private String in_code_lat = "BGL";
+    private String in_code_lat = "BGN";
     private double in_exchange_rate = 1;
     private double in_sum_sl_mop = 0;
     private double in_sum_os_val_sl_mop = 0;
