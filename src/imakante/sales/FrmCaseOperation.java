@@ -15,7 +15,6 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         isEmpty();
         currDate = new java.util.Date();
         in_DATE = formatter.getDateInstance().format(currDate);
-        System.out.println(in_DATE);
         this.internalObject.setIn_DATE(in_DATE);
         prepareStm();
     }
@@ -356,7 +355,10 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
             processField4();
         }
         if(java.awt.event.KeyEvent.VK_ENTER == evt.getKeyCode()){
-            if(jtfContragentEND.getText().equals("")){jtfContragentEND.setText("999999999");jtfContragentEND.transferFocus();}
+            if(jtfContragentEND.getText().equals("")) {
+                jtfContragentEND.setText("999999999");
+                jtfContragentEND.transferFocus();
+            }
         }
     }//GEN-LAST:event_jtfContragentENDKeyPressed
     
@@ -365,7 +367,10 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
             processField3();
         }
         if(java.awt.event.KeyEvent.VK_ENTER == evt.getKeyCode()){
-            if(jtfContragentBEGIN.getText().equals("")){jtfContragentBEGIN.setText("1");jtfContragentBEGIN.transferFocus();}
+            if(jtfContragentBEGIN.getText().equals("")) {
+                jtfContragentBEGIN.setText("1");
+                jtfContragentBEGIN.transferFocus();
+            }
         }
     }//GEN-LAST:event_jtfContragentBEGINKeyPressed
     
@@ -374,7 +379,10 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
             processField2();
         }
         if(java.awt.event.KeyEvent.VK_ENTER == evt.getKeyCode()){
-            if(jtfCasaEND.getText().equals("")){jtfCasaEND.setText("999999999");jtfCasaEND.transferFocus();}
+            if(jtfCasaEND.getText().equals("")) {
+                jtfCasaEND.setText("999999999");
+                jtfCasaEND.transferFocus();
+            }
         }
     }//GEN-LAST:event_jtfCasaENDKeyPressed
     
@@ -383,7 +391,10 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
             processField1();
         }
         if(java.awt.event.KeyEvent.VK_ENTER == evt.getKeyCode()){
-            if(jtfCasaBegin.getText().equals("")){jtfCasaBegin.setText("1");jtfCasaBegin.transferFocus();}
+            if(jtfCasaBegin.getText().equals("")) {
+                jtfCasaBegin.setText("1");
+                jtfCasaBegin.transferFocus();
+            }
         }
     }//GEN-LAST:event_jtfCasaBeginKeyPressed
     
@@ -500,24 +511,24 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     public static final String Names[] =
     {
         "id",                 // Row N - 0. (H) - Hidden
-        "\u043d\u043e\u043c\u0435\u0440",             //         1. (V) - Visible
+        "\u041d\u043e\u043c\u0435\u0440",             //         1. (V) - Visible
         "id_casa",            //         2. (H)
-        "\u043a\u043e\u0434 \u043a\u0430\u0441\u0430",          //         3. (V)
+        "\u041a\u043e\u0434 \u043a\u0430\u0441\u0430",          //         3. (V)
         "id_contragent",      //         4. (H)
-        "\u043a\u043e\u0434 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442",     //         5. (V)
-        "\u0438\u043c\u0435 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442",    //         6. (V)
-        "\u0441\u0432\u044a\u0440\u0437\u0430\u043d \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442",          //         7. (V)
+        "\u041a\u043e\u0434 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442",     //         5. (V)
+        "\u0418\u043c\u0435 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442",    //         6. (V)
+        "\u0421\u0432\u044a\u0440\u0437\u0430\u043d \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442",          //         7. (V)
         "id_df",              //         8. (H)
         "id_order_doc",       //         9. (H)
-        "\u0432\u0438\u0434 \u043f\u0440\u0438\u0445\u043e\u0434",      //        10. (V)
+        "\u0412\u0438\u0434 \u043f\u0440\u0438\u0445\u043e\u0434",      //        10. (V)
         "id_n_money",         //        11. (H)
-        "\u043f\u0430\u0440\u0438\u0447\u0435\u043d \u043a\u043e\u0434",        //        12. (V)
+        "\u041f\u0430\u0440\u0438\u0447\u0435\u043d \u043a\u043e\u0434",        //        12. (V)
         "\u0414\u0430\u0442\u0430 \u0438\u0437\u0434\u0430\u0432\u0430\u043d\u0435",            //        13. (V)
-        "\u043a\u0443\u0440\u0441",      //        14. (V)
-        "\u0441\u0443\u043c\u0430",         //        15. (V)
-        "\u0441\u0443\u043c\u0430 \u043e\u0441\u043d\u043e\u0432\u043d\u0430 \u0432\u0430\u043b\u0443\u0442\u0430",         //        16. (V)
+        "\u041a\u0443\u0440\u0441",      //        14. (V)
+        "\u0421\u0443\u043c\u0430",         //        15. (V)
+        "\u0421\u0443\u043c\u0430 \u043e\u0441\u043d\u043e\u0432\u043d\u0430 \u0432\u0430\u043b\u0443\u0442\u0430",         //        16. (V)
         "user_id",            //        17. (H)
-        "\u0438\u0437\u0434\u0430\u043b \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430",            //        18. (V)
+        "\u0418\u0437\u0434\u0430\u043b \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430",            //        18. (V)
         "id_sdtn",            //        19. (H)
         "name_sdtn",          //        20. (V)
         "\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440"             //        21. (V)
@@ -746,8 +757,8 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
             }
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
         if (getHInt() == 0 || getHCode() == 0) {
-            javax.swing.JOptionPane.showMessageDialog(null, "Няма контрагент с такъв код!", 
-                    "ИМАКАНТЕ", javax.swing.JOptionPane.ERROR_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(null, "\u041d\u044f\u043c\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442 \u0441 \u0442\u0430\u043a\u044a\u0432 \u043a\u043e\u0434!", 
+                    "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -1195,28 +1206,15 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     public void loadOtchetPrihodi() {
         setAllVariables();
         java.util.HashMap hm = new java.util.HashMap();
-        String caB = (jtfCasaBegin.getText().equals("") ? "0" : jtfCasaBegin.getText());
-        String caE = (jtfCasaEND.getText().equals("") ? "999999" : jtfCasaEND.getText());
-        String coB = (jtfContragentBEGIN.getText().equals("") ? "0" : jtfContragentBEGIN.getText());
-        String coE = (jtfContragentEND.getText().equals("") ? "999999" : jtfContragentEND.getText());
-        String dB = (dBstate ? (String)formatter.format(this.jXDatePickerBEGIN.getDate()) : "2000-01-01");
-        String dE = (dEstate ? (String)formatter.format(this.jXDatePickerEND.getDate()) : "2099-01-01");
         hm.put("izdal", this.getUser_name());
-        hm.put("casaBegin", caB);
-        hm.put("casaEnd", caE);
-        hm.put("contragentBegin", coB);
-        hm.put("contragentEnd", coE);
-        hm.put("dataBegin", dB);
-        hm.put("dataEnd", dE);
+        hm.put("casaBegin", (jtfCasaBegin.getText().equals("") ? "0" : jtfCasaBegin.getText()));
+        hm.put("casaEnd", (jtfCasaEND.getText().equals("") ? "999999" : jtfCasaEND.getText()));
+        hm.put("contragentBegin", (jtfContragentBEGIN.getText().equals("") ? "0" : jtfContragentBEGIN.getText()));
+        hm.put("contragentEnd", (jtfContragentEND.getText().equals("") ? "999999" : jtfContragentEND.getText()));
+        hm.put("dataBegin", (dBstate ? (String)formatter.format(this.jXDatePickerBEGIN.getDate()) : "2000-01-01"));
+        hm.put("dataEnd", (dEstate ? (String)formatter.format(this.jXDatePickerEND.getDate()) : "2099-01-01"));
         hm.put("in_levelx", "" + this.level);
         hm.put("id_sdtn", "" + this.getIn_id_sdtn());
-        System.out.println("  ime " +  this.getUser_name());
-        System.out.println("Kasa B: " + hm.get("casaBegin") + "  <-  " + caB);
-        System.out.println("Kasa E: " + hm.get("casaEnd") + "  <-  " + caE);
-        System.out.println("Kontragent B: " + hm.get("contragentBegin") + "  <-  " + coB);
-        System.out.println("Kontragent E: " + hm.get("contragentEnd") + "  <-  " + coE);
-        System.out.println("Data B: " + hm.get("dataBegin") + "  <-  " + dB);
-        System.out.println("Data E: " + hm.get("dataEnd") + "  <-  " + dE);
         imakante.sales.aeCaseOpReport cop = new imakante.sales.aeCaseOpReport(this, true, getConn(), hm, otchetPrihodi);
         cop.setVisible(true);
     }
