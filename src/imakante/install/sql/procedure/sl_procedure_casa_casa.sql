@@ -188,7 +188,7 @@ BEGIN
         END IF;
 
         IF (comprator = 9) THEN
-            SELECT n_casa.code_n_casa, n_casa.name_n_casa FROM n_casa WHERE n_casa.id_n_casa != in_in_sl_mop;
+            SELECT n_casa.id_n_casa, n_casa.code_n_casa, n_casa.name_n_casa FROM n_casa WHERE n_casa.id_n_casa != in_in_sl_mop;
         END IF;
 
           IF (comprator = 11) THEN

@@ -192,7 +192,7 @@ public class casa2casaOp  extends imakante.com.dbObject {
             registerParameters();
             setRs(getCstm().executeQuery());
             while(getRs().next()) {
-                CRs.put(new Integer(getRs().getInt("id_n_casa")),new String(getRs().getString("code_n_casa")));
+                CRs.put(new Integer(getRs().getInt("id_n_casa")), new String(getRs().getString("code_n_casa")));
                 in.add(new Integer(getRs().getInt("id_n_casa")));
                 i++;
             }

@@ -90,10 +90,9 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         kasaMenu_order = new javax.swing.JMenu();
         orderMenu_prih = new javax.swing.JMenuItem();
         orderMenu_razh = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        kasaMenu_adv = new javax.swing.JMenuItem();
+        kasaMOLMenu = new javax.swing.JMenu();
+        kasaAvansMenu = new javax.swing.JMenuItem();
+        kasaAvansOt4etMenu = new javax.swing.JMenuItem();
         kasaMenu_dvi = new javax.swing.JMenuItem();
         kasaMenu_nal = new javax.swing.JMenuItem();
         kasaMenu_opis = new javax.swing.JMenuItem();
@@ -337,25 +336,34 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         kasaMenu.add(kasaMenu_order);
 
-        jMenu1.setText("\u041f\u043e\u0434\u043e\u0442\u0447\u0435\u0442\u043d\u0438 \u043b\u0438\u0446\u0430");
-        jMenuItem9.setText("\u0410\u0432\u0430\u043d\u0441");
-        jMenu1.add(jMenuItem9);
-
-        jMenuItem10.setText("\u0410\u0432\u0430\u043d\u0441\u043e\u0432 \u043e\u0442\u0447\u0435\u0442");
-        jMenu1.add(jMenuItem10);
-
-        kasaMenu.add(jMenu1);
-
-        kasaMenu_adv.setText("\u0410\u0432\u0430\u043d\u0441\u0438");
-        kasaMenu_adv.addActionListener(new java.awt.event.ActionListener() {
+        kasaMOLMenu.setText("\u041f\u043e\u0434\u043e\u0442\u0447\u0435\u0442\u043d\u0438 \u043b\u0438\u0446\u0430");
+        kasaAvansMenu.setText("\u0410\u0432\u0430\u043d\u0441");
+        kasaAvansMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kasaMenu_advActionPerformed(evt);
+                kasaAvansMenuActionPerformed(evt);
             }
         });
 
-        kasaMenu.add(kasaMenu_adv);
+        kasaMOLMenu.add(kasaAvansMenu);
+
+        kasaAvansOt4etMenu.setText("\u0410\u0432\u0430\u043d\u0441\u043e\u0432 \u043e\u0442\u0447\u0435\u0442");
+        kasaAvansOt4etMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kasaAvansOt4etMenuActionPerformed(evt);
+            }
+        });
+
+        kasaMOLMenu.add(kasaAvansOt4etMenu);
+
+        kasaMenu.add(kasaMOLMenu);
 
         kasaMenu_dvi.setText("\u0414\u0432\u0438\u0436\u0435\u043d\u0438\u0435 \u043c\u0435\u0436\u0434\u0443 \u043a\u0430\u0441\u0438");
+        kasaMenu_dvi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kasaMenu_dviActionPerformed(evt);
+            }
+        });
+
         kasaMenu.add(kasaMenu_dvi);
 
         kasaMenu_nal.setText("\u041d\u0430\u043b\u0438\u0447\u043d\u043e\u0441\u0442 \u0432 \u043a\u0430\u0441\u0438");
@@ -723,8 +731,19 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         setBounds((screenSize.width-757)/2, (screenSize.height-487)/2, 757, 487);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void kasaMenu_dviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kasaMenu_dviActionPerformed
+        this.loadLevelC2C();
+    }//GEN-LAST:event_kasaMenu_dviActionPerformed
+
+    private void kasaAvansOt4etMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kasaAvansOt4etMenuActionPerformed
+        
+    }//GEN-LAST:event_kasaAvansOt4etMenuActionPerformed
+
+    private void kasaAvansMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kasaAvansMenuActionPerformed
+        this.loadLevelAdveances();
+    }//GEN-LAST:event_kasaAvansMenuActionPerformed
+
     private void docMenu_narActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docMenu_narActionPerformed
-// TODO add your handling code here:
       int user = 2;
       int level = 1;
       int pricelist = 1;
@@ -734,7 +753,6 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_docMenu_narActionPerformed
 
     private void razpMenu_polActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_razpMenu_polActionPerformed
-// TODO add your handling code here:
      int user = 2;
         int level = 1;
         int pricelist = 1;
@@ -746,13 +764,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private void orderMenu_razhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderMenu_razhActionPerformed
         this.loadLeveCasiOut();
     }//GEN-LAST:event_orderMenu_razhActionPerformed
-    
-    private void kasaMenu_advActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kasaMenu_advActionPerformed
-        int level = 1;
-        int ndtur = 3;
-        loadAdvances(level, ndtur);
-    }//GEN-LAST:event_kasaMenu_advActionPerformed
-    
+        
     private void docMenu_offerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docMenu_offerActionPerformed
         int user = 2;
         int level = 1;
@@ -769,7 +781,6 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         int doctype = aeDocumentFacade.STOKOVA_RAZPISKA;
         int storagedocdacade = 1;
         loadFrmDocFacade("\u0421\u0422\u041e\u041a\u041e\u0412\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );
-        
     }//GEN-LAST:event_razpMenu_prehvActionPerformed
     
     private void fakMenu_oprActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fakMenu_oprActionPerformed
@@ -991,9 +1002,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
@@ -1001,14 +1010,15 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenuItem jMenuItem9DTUR;
     private javax.swing.JMenu jMenuTransfer;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JMenuItem kasaAvansMenu;
+    private javax.swing.JMenuItem kasaAvansOt4etMenu;
+    private javax.swing.JMenu kasaMOLMenu;
     private javax.swing.JMenu kasaMenu;
-    private javax.swing.JMenuItem kasaMenu_adv;
     private javax.swing.JMenuItem kasaMenu_dvi;
     private javax.swing.JMenuItem kasaMenu_nal;
     private javax.swing.JMenuItem kasaMenu_opis;
@@ -1115,8 +1125,9 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private static LinkedHashMap FaktArea = new LinkedHashMap(); // fakturi
     
     private static LinkedHashMap casaInContrArea = new LinkedHashMap(); // prihodni orderi kasa kontragent
-    private static LinkedHashMap casaOutContrArea = new LinkedHashMap(); //razhodni orderi kasa kontragent
-    
+    private static LinkedHashMap casaOutContrArea = new LinkedHashMap(); // razhodni orderi kasa kontragent
+    private static LinkedHashMap casaAdvances = new LinkedHashMap();    // avansi kym podot4etni lica
+    private static LinkedHashMap casa2casa = new LinkedHashMap();       // dvijenie mejdu kasite
     
     private void loadLevelDialog(int ModuleCode, LinkedHashMap hash){
         levelDialog lDialog = new levelDialog(this, true, ModuleCode, hash);
@@ -1275,53 +1286,44 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     //METHODS FOR LOADING USER RIGHTS FOR AREA DOCUMENTS
     
     private void loadRightsArea(){
-        String StrQ = "SELECT " +
-                "`n_doc_type_user_rights`.`id_ndtur`, " +
-                "`sl_doc_type_num`.`area_number_sdtn` " +
-                "FROM " +
-                "`n_doc_type_user_rights` " +
-                "Inner Join `sl_doc_type_num` ON `sl_doc_type_num`.`id_sdtn` = `n_doc_type_user_rights`.`id_sdtn` " +
-                "Inner Join `n_type_doc` ON `n_type_doc`.`id_ntd` = `sl_doc_type_num`.`id_ntd` " +
-                " WHERE " +
-                "`n_doc_type_user_rights`.`id_um` = " +
-                imakante.com.NewMain.getUserId() +
-                " AND " +
-                "`n_type_doc`.`code_ntd` =";
+        String StrQ = "SELECT n_doc_type_user_rights.id_ndtur, sl_doc_type_num.area_number_sdtn " +
+                "FROM n_doc_type_user_rights " +
+                "Inner Join sl_doc_type_num ON sl_doc_type_num.id_sdtn = n_doc_type_user_rights.id_sdtn " +
+                "Inner Join n_type_doc ON n_type_doc.id_ntd = sl_doc_type_num.id_ntd " +
+                "WHERE n_doc_type_user_rights.id_um = " + imakante.com.NewMain.getUserId() +
+                " AND n_type_doc.code_ntd = ";
         
         try {
             int i = 0;
             stm = this.dbConn.createStatement();
-            rs = stm.executeQuery(
-                    StrQ + "'1'"
-                    );
-            while(rs.next()){
-                
+            rs = stm.executeQuery(StrQ + "'1'");
+            while(rs.next()) {
                 getOrderArea().put(rs.getInt("id_ndtur"),new String(rs.getString("area_number_sdtn")));
-                
             }
             i = 0;
-            rs = stm.executeQuery(
-                    StrQ + "'4'"
-                    );
-            while(rs.next()){
-                
-                getFaktArea().put(rs.getInt("id_ndtur"),new String(rs.getString("area_number_sdtn")));;
+            rs = stm.executeQuery(StrQ + "'4'");
+            while(rs.next()) {
+                getFaktArea().put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
             }
-            rs = stm.executeQuery(
-                    StrQ + "'701'"
-                    );
-            while(rs.next()){
-                
-                casaInContrArea.put(rs.getInt("id_ndtur"),new String(rs.getString("area_number_sdtn")));;
+            rs = stm.executeQuery(StrQ + "'701'");
+            while(rs.next()) {
+                casaInContrArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
                 System.out.println(" adsds" + rs.getString("area_number_sdtn"));
             }
-            rs = stm.executeQuery(
-                    StrQ + "'702'"
-                    );
-            while(rs.next()){
-                
-                casaOutContrArea.put(rs.getInt("id_ndtur"),new String(rs.getString("area_number_sdtn")));;
+            rs = stm.executeQuery(StrQ + "'702'");
+            while(rs.next()) {
+                casaOutContrArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
                 System.out.println(" adsds" + rs.getString("area_number_sdtn"));
+            }
+            rs = stm.executeQuery(StrQ + "'703'");
+            while(rs.next()) {
+                casaAdvances.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
+                System.out.println("703: " + rs.getString("area_number_sdtn"));
+            }
+            rs = stm.executeQuery(StrQ + "'704'");
+            while(rs.next()) {
+                casa2casa.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
+                System.out.println("704: " + rs.getString("area_number_sdtn"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -1336,8 +1338,6 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        
-        
     }
     
     //METHODS FOR LOAD FORMS
@@ -1345,9 +1345,9 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
      *
      */
     //
-    
     private void loadAdvances(int l, int ndt) {
-        imakante.sales.FrmCaseOpAdvances adv = new imakante.sales.FrmCaseOpAdvances("\u0410\u0432\u0430\u043d\u0441\u043e\u0432\u0438 \u043f\u043b\u0430\u0449\u0430\u043d\u0438\u044f \u043a\u044a\u043c \u041c\u041e\u041b", this, l, ndt);
+        
+        imakante.sales.FrmCaseOpAdvances adv = new imakante.sales.FrmCaseOpAdvances("\u0410\u0432\u0430\u043d\u0441\u043e\u0432\u0438 \u043f\u043b\u0430\u0449\u0430\u043d\u0438\u044f \u043a\u044a\u043c \u041c\u041e\u041b", this, 703, ndt);
         desktopPane.add(adv);
         adv.setVisible(true);
     }
@@ -1356,41 +1356,51 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         if (!this.casaInContrArea.isEmpty()){
             imakante.sales.levelDialog level = new imakante.sales.levelDialog(this, true, 701, casaInContrArea);
             //  desktopPane.add(level);
-            level.setVisible(true); } else{System.out.println("Empty hash");};
-            
+            level.setVisible(true);
+        } else { System.out.println("Empty hash"); };
     }
     
-    
-    public void loadKassss(int l, int ndt){
+    public void loadKassss(int l, int ndt) {
         imakante.sales.FrmCaseOperation cs = new imakante.sales.FrmCaseOperation("\u041f\u0420\u0418\u0425\u041e\u0414\u041d\u0418 \u041e\u0420\u0414\u0415\u0420\u0418", this, l, ndt);
         desktopPane.add(cs);
         cs.setVisible(true);
     }
     
     private void loadLeveCasiOut(){
-        if (!this.casaOutContrArea.isEmpty()){
+        if (!this.casaOutContrArea.isEmpty()) {
             imakante.sales.levelDialog level = new imakante.sales.levelDialog(this, true, 702, casaOutContrArea);
             //  desktopPane.add(level);
-            level.setVisible(true); } else{System.out.println("Empty hash");};
-            
+            level.setVisible(true);
+        } else { System.out.println("Empty hash"); };
     }
     
+    private void loadLevelAdveances() {
+        if (!this.casaAdvances.isEmpty()) {
+            imakante.sales.levelDialog level = new imakante.sales.levelDialog(this, true, 703, casaAdvances);
+            // desktopPane.add(level);
+            level.setVisible(true);
+        } else { System.out.println("Empty hash!"); }
+    }
+    
+    private void loadLevelC2C() {
+        if (!this.casa2casa.isEmpty()) {
+            imakante.sales.levelDialog level = new imakante.sales.levelDialog(this, true, 704, casa2casa);
+            // desktopPane.add(level);
+            level.setVisible(true);
+        } else { System.out.println("Empty hash!"); }
+    }
     
     public void loadCasaOut(int l, int ndt){
-        imakante.sales.FrmCaseOperationOut cso = new imakante.sales.FrmCaseOperationOut("Разходни касови ордери", this, l, ndt);
+        imakante.sales.FrmCaseOperationOut cso = new imakante.sales.FrmCaseOperationOut("\u0420\u0430\u0437\u0445\u043e\u0434\u043d\u0438 \u043a\u0430\u0441\u043e\u0432\u0438 \u043e\u0440\u0434\u0435\u0440\u0438", this, l, ndt);
         desktopPane.add(cso);
         cso.setVisible(true);
     }
     
-    
-    
     private void loadLevelImport(){
         
-            
     }
     
     //PRODUCTS
-    
     private void loadFrmProducts() {
         if(!isIsStartFrmProduct()) {
             iFrmProduct = new nom.FrmProduct("\u041d\u041e\u041c\u0415\u041d\u041a\u041b\u0410\u0422\u0423\u0420\u0410 \u0421\u0422\u041e\u041a\u0418",0, this,0);
@@ -1626,7 +1636,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             try {
                 frmDocumentFacadeDialog.setMaximum(true);
                 
-            } catch(java.beans.PropertyVetoException pvex) {}
+            } catch(java.beans.PropertyVetoException pvex) {  }
             
         } catch(Exception e) {
             

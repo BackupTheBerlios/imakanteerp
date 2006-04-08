@@ -5,7 +5,7 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
     
     public aeC2COp(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
         super(frame, modal);
-        this.myParent = (imakante.sales.FrmCaseOperation) frame;
+        this.myParent = (imakante.sales.FrmC2COperation) frame;
         initComponents();
         getNavigationState();
         jButtonUndo.setEnabled(false);
@@ -451,7 +451,7 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
     private void jComboCRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboCRKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jComboCR.transferFocus();}
     }//GEN-LAST:event_jComboCRKeyPressed
-        
+    
     private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
         revalidateSums();
     }//GEN-LAST:event_jTextField3FocusLost
@@ -467,7 +467,7 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
         jTextField1.selectAll();
     }//GEN-LAST:event_jTextField1FocusGained
-        
+    
     private void jTextField6FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusGained
         jTextField6.selectAll();
     }//GEN-LAST:event_jTextField6FocusGained
@@ -622,7 +622,7 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
     private javax.swing.JButton jbPrint;
     // End of variables declaration//GEN-END:variables
     //--------------- My Variables
-    private imakante.sales.FrmCaseOperation myParent;
+    private imakante.sales.FrmC2COperation myParent;
     private String jasperFile = "/imakante/sales/jasper/cr2cr_order.jasper";
     private java.util.HashMap hm = null;
     private int NumDocument = 0;            // igrae rolqta na Code - getCode() ot dbObject
@@ -654,7 +654,7 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
         myParent.setIn_outsl_mop(myParent.getHInt());
         this.revalidateSums();
         NumDocument = myParent.getCode();
-        Contragent = myParent.getContragent_cod();
+        selectedCR2 = myParent.getContragent_cod();
         selectedCashRegister = myParent.getIn_in_sl_mop();
         Date = myParent.getIn_DATE();
         BoundDocument = myParent.getIn_id_order_spec();
@@ -668,11 +668,11 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
         UserMaster = myParent.getUser_name();
         try {
             myParent.setCode(Integer.parseInt(jTextField1.getText()));
-            myParent.setContragent_cod(Integer.parseInt(jTextField2.getText()));
             if(jTextField6.getText().equals("")) {
                 myParent.setIn_id_order_spec(-1);
             } else{myParent.setIn_id_order_spec(Integer.parseInt(jTextField6.getText()));}
         } catch (NumberFormatException nfex) { nfex.printStackTrace(); }
+        myParent.setContragent_cod(myParent.getInternalObject().getExcludedCRs()[jComboCR2.getSelectedIndex()]);
         myParent.setIn_in_sl_mop(myParent.getInternalObject().getIndexConnOfId()[jComboCR.getSelectedIndex()]);
         myParent.setIn_DATE((String)formatterG.format(this.jXDatePicker1.getDate()));
         myParent.setIn_id_order_doc(myParent.getInternalObject().getIndexDoc()[jComboD.getSelectedIndex()]);
@@ -700,7 +700,7 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
     //UNDO
     private void undoCorr() {
         myParent.setCode(NumDocument);
-        myParent.setContragent_cod(Contragent);
+        myParent.setContragent_cod(selectedCR2);
         myParent.setIn_in_sl_mop(selectedCashRegister);
         myParent.setIn_DATE(Date);
         myParent.setIn_id_order_spec(BoundDocument);
@@ -742,7 +742,7 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
     
     private void repaintComp() {
         jTextField1.setText("" + myParent.getCode());
-        jComboCR2.setSelectedIndex();
+        jComboCR2.setSelectedIndex(getNewCashReg2Index(myParent.getContragent_cod()));
         jLabel14.setText(myParent.getContragent_name());
         jTextField3.setText(""+ myParent.getIn_sum_sl_mop());
         jTextField4.setText(""+ myParent.getIn_sum_os_val_sl_mop());
@@ -882,14 +882,14 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
         sumos = exch * sum;
         this.jTextField4.setText("" + sumos);
     }
-    
-    public void revalidateFText() {
-        jTextField2.setText("" + myParent.getHCode());
-    }
-    
+//    
+//    public void revalidateFText() {
+//        jTextField2.setText("" + myParent.getHCode());
+//    }
+//    
     private void revalidateContragent() {
         try {
-            myParent.getCodFromQu(Integer.parseInt(jTextField2.getText()));
+            myParent.getCodFromQu(myParent.getInternalObject().getExcludedCRs()[jComboCR2.getSelectedIndex()]);
         } catch (NumberFormatException ex) { ex.printStackTrace(); }
         this.jLabel14.setText(myParent.getHName());
     }
