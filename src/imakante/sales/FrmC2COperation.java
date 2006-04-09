@@ -712,7 +712,7 @@ public class FrmC2COperation extends  imakante.com.vcomponents.iInternalFrame im
     
     private void processField4() {
         if (this.jtfContragentBEGIN.getText().equals("")) { this.jtfContragentBEGIN.setText("0"); }
-        String newString = strCasa + this.jtfContragentEND.getText() + "%' AND n_contragent.code_contragent >= " + this.jtfContragentBEGIN.getText() + ";";
+        String newString = strCasa + this.jtfContragentEND.getText() + "%' AND n_casa.code_n_casa >= " + this.jtfContragentBEGIN.getText() + ";";
         constructDialod(newString, 4, Names);
     }
     
