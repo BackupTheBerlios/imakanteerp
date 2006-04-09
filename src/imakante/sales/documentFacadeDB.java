@@ -290,13 +290,15 @@ public class documentFacadeDB  extends imakante.com.dbObject {
     }
  public void deleteRow(int in_id_df) //OK
     {
+     int oldID_DF = getID_DocFacade();
+     setID_DocFacade(in_id_df);
         setComprator(3);
        
         try{
             registerParameters();
             getCstm().execute();
         }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
-        
+     setID_DocFacade(oldID_DF)   ;
     }
  public java.sql.ResultSet getRow(int in_id_df) //OK
     {
@@ -1000,7 +1002,7 @@ public double[] getPriceListByID(int in_id_pp)
               pricelist[2] = getRs().getDouble("price3_pp");  //   /
               Integer  curs = (Integer) getRs().getInt("id_sl_curs");
               pricelist[3] =curs.doubleValue();
-              pricelist[4] =  getRs().getDouble("price3_pp");  // dostavna cena
+              pricelist[4] =  getRs().getDouble("price0_pp");  // dostavna cena
             }
                
         }

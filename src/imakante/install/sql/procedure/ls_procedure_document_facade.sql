@@ -419,7 +419,7 @@ END IF;
 
 IF (comprator = 20) THEN
    IF (in_docFacadeType = 0) THEN
-     SELECT pc.id_pc,pc.parcel_pc, pc.id_pp, pc.id_ppp, pc.id_pf,
+     SELECT pc.id_pc, pc.id_pp as pc_id_pp, pc.id_ppp as pc_id_ppp, pc.id_pf as pc_id_pf,
      n.id_pm, n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
      pc.parcel_pc, pc.dateofexpire_pc ,
      s.id_nal, s.id_n_storage,s.level, s.quant_nal, s.quant_rezerv_nal,
@@ -431,9 +431,9 @@ IF (comprator = 20) THEN
      AND s.id_n_storage=in_docFacadeStorage;
    END IF;
    IF (in_docFacadeType = 1) THEN
-       SELECT n.id_pm,pc.parcel_pc, pc.id_pp, pc.id_ppp, pc.id_pf,
+       SELECT n.id_pm,pc.parcel_pc, pc.id_pp  as pc_id_pp, pc.id_ppp as pc_id_ppp, pc.id_pf as pc_id_pf,
        n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
-       pc.id_pc,pc.parcel_pc, pc.dateofexpire_pc ,
+       pc.id_pc, pc.dateofexpire_pc ,
        s.id_nal, s.id_n_storage,s.level, s.quant_nal, s.quant_rezerv_nal,
        st.id_n_storage, st.code_n_storage, st.name_n_storage, st.comments_n_storage
        FROM mida.n_product_main n LEFT JOIN mida.n_product_consigment pc ON pc.id_pm = n.id_pm
@@ -443,9 +443,9 @@ IF (comprator = 20) THEN
        AND s.id_n_storage=in_docFacadeStorage;
    END IF;
    IF (in_docFacadeType = 2) THEN
-       SELECT n.id_pm,pc.parcel_pc, pc.id_pp, pc.id_ppp, pc.id_pf,
+       SELECT n.id_pm,pc.parcel_pc, pc.id_pp as pc_id_pp, pc.id_ppp as pc_id_ppp, pc.id_pf as pc_id_pf,
        n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
-       pc.id_pc,pc.parcel_pc, pc.dateofexpire_pc ,
+       pc.id_pc,pc.dateofexpire_pc ,
        s.id_nal, s.id_n_storage,s.level, s.quant_nal, s.quant_rezerv_nal,
        st.id_n_storage, st.code_n_storage, st.name_n_storage, st.comments_n_storage
        FROM mida.n_product_main n LEFT JOIN mida.n_product_consigment pc ON pc.id_pm = n.id_pm

@@ -874,7 +874,7 @@ public String getDeliverDate()
 public void setDeliverDate(String in)
 {
     this.deliverDate=in;
-    setDeliverDocFacade(in);
+  //  setDeliverDocFacade(in);
 }
 public void setDescriptipnPay(int  paying)
 {
@@ -1215,7 +1215,7 @@ public int getID_PC()
    {
         jScrollPane1.remove(table);
         rs = countriesT.getTable(getDocFacadeLevel(),getUserEditFortm(),getDocFacadeType());
-        model = new imakante.com.CustomTableModel(conn, rs, null);
+        model = new imakante.com.CustomTableModel(conn, rs, nameColumnsDocFacade);
         table = new imakante.com.CustomTable(model);
         jScrollPane1.getViewport().add(table);
         jScrollPane1.repaint();
@@ -1265,7 +1265,8 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
         setID_DocFacade((Integer) table.getValueAt(getRow(), getColumnIndex("id_df")));                   //0
         int tmp = (Integer) table.getValueAt(getRow(), getColumnIndex("Номер на документа"));   
         setNumberDocFacade(String.valueOf(tmp));                                                          //1
-        java.sql.Date d1= (java.sql.Date) table.getValueAt(getRow(),getColumnIndex("Дата на документа"));
+       
+        java.sql.Date d1 = (java.sql.Date) table.getValueAt(getRow(),getColumnIndex("Дата на документа"));
         setDateDocFacade(d1.toString());                                                                  //2
         d1= (java.sql.Date) table.getValueAt(getRow(),getColumnIndex("Дата на плащане"));
         setPayingDate(d1.toString());                                                                     //4
@@ -1438,7 +1439,7 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
                           setDeliverDate(d1.toString());
                           System.out.println(String.valueOf(getID_Deliver()));
                           System.out.println(String.valueOf(getID_Distributor()));  
-                             
+                          
                           break;
                          }
                  }

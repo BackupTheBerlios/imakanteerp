@@ -217,7 +217,9 @@ public class selectDataOfDocFacade   extends imakante.com.vcomponents.iDialog
         int x = (((dim.width)-(this.getSize().width))/2);
         int y = (((dim.height)-(this.getSize().height))/2);
         this.setLocation(x, y);
+        this.setSize(400,400);
         setVisible(true);
+        
         
     }
     

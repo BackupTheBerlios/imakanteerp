@@ -1,6 +1,7 @@
 
 package imakante.sales;
 
+import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import imakante.sales.FrmDocumentFacade;
@@ -17,6 +18,16 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
         model = new imakante.com.CustomTableModel(conn,rs, columnName);
         table = new imakante.com.CustomTable(model);
         HideColumns(getColumnIndex("id_ls_n_person"));
+        HideColumns(getColumnIndex("id_pm"));
+        HideColumns(getColumnIndex("id_pc"));
+        HideColumns(getColumnIndex("pc_id_pp"));
+        HideColumns(getColumnIndex("pc_id_pf"));
+        HideColumns(getColumnIndex("pc_id_ppp"));
+        HideColumns(getColumnIndex("id_pp"));
+        HideColumns(getColumnIndex("id_ppp"));
+        HideColumns(getColumnIndex("id_pd"));
+        HideColumns(getColumnIndex("level"));
+        
         table.addKeyListener(new KeyListener()
         {
             public void keyPressed(KeyEvent e)
@@ -31,9 +42,9 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
                   myParent.setNameProduct((String)table.getValueAt(row,getColumnIndex("name_pm")));
                   myParent.setCodeProduct((Integer)table.getValueAt(row,getColumnIndex("code_pm")));
                   myParent.setStorageOUTProduct((Integer)table.getValueAt(row,getColumnIndex("id_n_storage")));
-                  if((Integer)table.getValueAt(row,getColumnIndex("pc.parcel_pc"))>1)
-                  myParent.setID_PP((Integer)table.getValueAt(row,getColumnIndex("pc.id_pp")));
-                  else  myParent.setID_PP((Integer)table.getValueAt(row,getColumnIndex("n.id_pp")));
+                  if((Integer)table.getValueAt(row,getColumnIndex("parcel_pc"))>1)
+                  myParent.setID_PP((Integer)table.getValueAt(row,getColumnIndex("pc_id_pp")));
+                  else  myParent.setID_PP((Integer)table.getValueAt(row,getColumnIndex("id_pp")));
                   pricelist = myParent.getCountriesT().getPriceListByID(myParent.getID_PP());
                   myParent.setWorkPriceListProduct(pricelist);
                   if(isPRODUKTIN) // produkta se vkarva v sklada                 
@@ -48,9 +59,9 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
                   myParent.setProductDescription(productDescription);
                   myParent.setProcentProduct((Double)table.getValueAt(row,getColumnIndex("max_pop_pm")));
                   
-                  if((Integer)table.getValueAt(row,getColumnIndex("pc.parcel_pc"))>1)
-                  myParent.setID_PF((Integer)table.getValueAt(row,getColumnIndex("pc.id_pf")));
-                  else myParent.setID_PF((Integer)table.getValueAt(row,getColumnIndex("n.id_pf")));
+                  if((Integer)table.getValueAt(row,getColumnIndex("parcel_pc"))>1)
+                  myParent.setID_PF((Integer)table.getValueAt(row,getColumnIndex("pc_id_pf")));
+                  else myParent.setID_PF((Integer)table.getValueAt(row,getColumnIndex("id_pf")));
                   productFee = myParent.getCountriesT().getProductFeeByID(myParent.getID_PF());
                   myParent.setProductFee(productFee);
                   
@@ -71,6 +82,7 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
         int x = (((dim.width)-(this.getSize().width))/2);
         int y = (((dim.height)-(this.getSize().height))/2);
         this.setLocation(x, y);
+        this.setSize(600,600);
         
     }
     
@@ -107,7 +119,7 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
     {
         this.dispose();
     } 
-      private int getColumnIndex(String in) //test
+private int getColumnIndex(String in) //test
  {
      int count = table.getColumnCount();
      for(int i=0; i < count; i++)
