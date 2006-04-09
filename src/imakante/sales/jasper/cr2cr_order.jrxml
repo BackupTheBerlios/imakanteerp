@@ -2,7 +2,7 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="untitled_report_1"
+		 name="cr2cr_order"
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
@@ -35,7 +35,7 @@
 	<parameter name="vnosnomer" isForPrompting="false" class="java.lang.String"/>
 	<queryString><![CDATA[SELECT name_firm From ls_sluj]]></queryString>
 
-	<field name="name_firm" class="java.lang.String"/>
+	<field name="name_casa2" class="java.lang.String"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -64,9 +64,9 @@
 				<staticText>
 					<reportElement
 						mode="Transparent"
-						x="96"
+						x="9"
 						y="9"
-						width="118"
+						width="262"
 						height="16"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
@@ -81,7 +81,7 @@
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Helvetica" size="12" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
-				<text><![CDATA[ПР�?ХОДЕН ОРДЕР]]></text>
+				<text><![CDATA[ОРДЕР ЗА МЕЖДУКАСОВО ПРЕХВЪРЛЯНЕ]]></text>
 				</staticText>
 				<line direction="TopDown">
 					<reportElement
@@ -104,9 +104,9 @@
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
-						x="217"
+						x="274"
 						y="9"
-						width="298"
+						width="251"
 						height="16"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
@@ -121,7 +121,7 @@
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Helvetica" size="12" isBold="true" isItalic="true" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{name_firm}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{name_casa2}]]></textFieldExpression>
 				</textField>
 			</band>
 		</title>

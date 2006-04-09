@@ -2,7 +2,7 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="classic"
+		 name="report_cr2cr"
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
@@ -95,9 +95,9 @@ ORDER BY date_is]]></queryString>
 	<field name="number_sl_mop" class="java.lang.Integer"/>
 	<field name="id_n_casa" class="java.lang.Integer"/>
 	<field name="code_n_casa" class="java.lang.Integer"/>
-	<field name="id_contragent" class="java.lang.Integer"/>
-	<field name="code_contragent" class="java.lang.Integer"/>
-	<field name="name_n_contragent" class="java.lang.String"/>
+	<field name="id_n_casa" class="java.lang.Integer"/>
+	<field name="code_n_casa" class="java.lang.Integer"/>
+	<field name="name_n_casa" class="java.lang.String"/>
 	<field name="number_df" class="java.lang.Integer"/>
 	<field name="id_order_spec" class="java.lang.Integer"/>
 	<field name="id_order_doc" class="java.lang.Integer"/>
@@ -125,25 +125,7 @@ ORDER BY date_is]]></queryString>
 			</band>
 			</groupHeader>
 			<groupFooter>
-			<band height="10"  isSplitAllowed="true" >
-				<line direction="BottomUp">
-					<reportElement
-						mode="Opaque"
-						x="1"
-						y="4"
-						width="534"
-						height="0"
-						forecolor="#000000"
-						backcolor="#FFFFFF"
-						key="line"
-						stretchType="NoStretch"
-						positionType="FixRelativeToTop"
-						isPrintRepeatedValues="true"
-						isRemoveLineWhenBlank="false"
-						isPrintInFirstWholeBand="false"
-						isPrintWhenDetailOverflows="false"/>
-					<graphicElement stretchType="NoStretch" pen="Thin" fill="Solid" />
-				</line>
+			<band height="7"  isSplitAllowed="true" >
 			</band>
 			</groupFooter>
 		</group>
@@ -152,13 +134,13 @@ ORDER BY date_is]]></queryString>
 			</band>
 		</background>
 		<title>
-			<band height="64"  isSplitAllowed="true" >
+			<band height="79"  isSplitAllowed="true" >
 				<rectangle radius="5" >
 					<reportElement
 						mode="Opaque"
 						x="2"
-						y="27"
-						width="286"
+						y="50"
+						width="267"
 						height="20"
 						forecolor="#FFFFFF"
 						backcolor="#CCCCCC"
@@ -176,8 +158,8 @@ ORDER BY date_is]]></queryString>
 						mode="Transparent"
 						x="1"
 						y="5"
-						width="215"
-						height="19"
+						width="208"
+						height="36"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
 						key="staticText"
@@ -191,13 +173,13 @@ ORDER BY date_is]]></queryString>
 					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Helvetica" size="14" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
-				<text><![CDATA[Справка приходни ордери]]></text>
+				<text><![CDATA[Справка за междукасово движение]]></text>
 				</staticText>
 				<line direction="TopDown">
 					<reportElement
 						mode="Opaque"
 						x="0"
-						y="61"
+						y="78"
 						width="534"
 						height="0"
 						forecolor="#808080"
@@ -233,9 +215,9 @@ ORDER BY date_is]]></queryString>
 					<reportElement
 						mode="Transparent"
 						x="7"
-						y="30"
-						width="58"
-						height="15"
+						y="54"
+						width="59"
+						height="12"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
 						key="staticText-1"
@@ -249,13 +231,13 @@ ORDER BY date_is]]></queryString>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Helvetica" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
-				<text><![CDATA[�?зготвил:]]></text>
+				<text><![CDATA[ Изготвил:]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
 						mode="Transparent"
-						x="227"
-						y="7"
+						x="211"
+						y="8"
 						width="66"
 						height="15"
 						forecolor="#000000"
@@ -268,7 +250,7 @@ ORDER BY date_is]]></queryString>
 						isPrintInFirstWholeBand="false"
 						isPrintWhenDetailOverflows="false"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+					<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Helvetica" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[параметри:]]></text>
@@ -276,9 +258,9 @@ ORDER BY date_is]]></queryString>
 				<staticText>
 					<reportElement
 						mode="Transparent"
-						x="297"
+						x="284"
 						y="8"
-						width="88"
+						width="101"
 						height="15"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
@@ -293,12 +275,12 @@ ORDER BY date_is]]></queryString>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Helvetica" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
-				<text><![CDATA[каси                 от]]></text>
+				<text><![CDATA[каси                        от]]></text>
 				</staticText>
 				<line direction="TopDown">
 					<reportElement
 						mode="Opaque"
-						x="294"
+						x="280"
 						y="7"
 						width="0"
 						height="50"
@@ -316,9 +298,9 @@ ORDER BY date_is]]></queryString>
 				<staticText>
 					<reportElement
 						mode="Transparent"
-						x="298"
+						x="284"
 						y="24"
-						width="85"
+						width="101"
 						height="15"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
@@ -333,14 +315,14 @@ ORDER BY date_is]]></queryString>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Helvetica" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
-				<text><![CDATA[контрагенти  от]]></text>
+				<text><![CDATA[насрещни каси    от]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
 						mode="Transparent"
-						x="299"
+						x="285"
 						y="43"
-						width="85"
+						width="101"
 						height="15"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
@@ -355,14 +337,14 @@ ORDER BY date_is]]></queryString>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Helvetica" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
-				<text><![CDATA[дати                от]]></text>
+				<text><![CDATA[дати                       от]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
 						x="69"
-						y="31"
-						width="213"
+						y="54"
+						width="194"
 						height="12"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
@@ -514,7 +496,7 @@ ORDER BY date_is]]></queryString>
 			</band>
 		</title>
 		<pageHeader>
-			<band height="9"  isSplitAllowed="true" >
+			<band height="6"  isSplitAllowed="true" >
 			</band>
 		</pageHeader>
 		<columnHeader>
@@ -619,7 +601,7 @@ ORDER BY date_is]]></queryString>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Helvetica" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
-				<text><![CDATA[име]]></text>
+				<text><![CDATA[насрещна каса]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
@@ -734,7 +716,7 @@ ORDER BY date_is]]></queryString>
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="20"  isSplitAllowed="true" >
+			<band height="24"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
@@ -799,7 +781,7 @@ ORDER BY date_is]]></queryString>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Helvetica" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{name_n_contragent}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{name_n_casa}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -914,7 +896,25 @@ ORDER BY date_is]]></queryString>
 			</band>
 		</detail>
 		<columnFooter>
-			<band height="20"  isSplitAllowed="true" >
+			<band height="24"  isSplitAllowed="true" >
+				<line direction="BottomUp">
+					<reportElement
+						mode="Opaque"
+						x="1"
+						y="3"
+						width="534"
+						height="0"
+						forecolor="#000000"
+						backcolor="#FFFFFF"
+						key="line"
+						stretchType="NoStretch"
+						positionType="FixRelativeToTop"
+						isPrintRepeatedValues="true"
+						isRemoveLineWhenBlank="false"
+						isPrintInFirstWholeBand="false"
+						isPrintWhenDetailOverflows="false"/>
+					<graphicElement stretchType="NoStretch" pen="Thin" fill="Solid" />
+				</line>
 				<textField isStretchWithOverflow="false" pattern="¤ #,##0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
@@ -941,7 +941,7 @@ ORDER BY date_is]]></queryString>
 					<reportElement
 						mode="Transparent"
 						x="30"
-						y="3"
+						y="7"
 						width="61"
 						height="14"
 						forecolor="#000000"
@@ -957,13 +957,13 @@ ORDER BY date_is]]></queryString>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Helvetica" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
-				<text><![CDATA[Брой записи]]></text>
+				<text><![CDATA[Брой записи:]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
 						x="96"
-						y="6"
+						y="7"
 						width="66"
 						height="12"
 						forecolor="#000000"
@@ -984,12 +984,12 @@ ORDER BY date_is]]></queryString>
 			</band>
 		</columnFooter>
 		<pageFooter>
-			<band height="27"  isSplitAllowed="true" >
+			<band height="25"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
 						x="325"
-						y="4"
+						y="5"
 						width="174"
 						height="19"
 						forecolor="#000000"
@@ -1033,7 +1033,7 @@ ORDER BY date_is]]></queryString>
 					<reportElement
 						mode="Opaque"
 						x="0"
-						y="3"
+						y="2"
 						width="535"
 						height="0"
 						forecolor="#000000"
@@ -1051,7 +1051,7 @@ ORDER BY date_is]]></queryString>
 					<reportElement
 						mode="Transparent"
 						x="92"
-						y="4"
+						y="5"
 						width="197"
 						height="17"
 						forecolor="#000000"
@@ -1072,8 +1072,8 @@ ORDER BY date_is]]></queryString>
 				<staticText>
 					<reportElement
 						mode="Transparent"
-						x="1"
-						y="4"
+						x="2"
+						y="5"
 						width="85"
 						height="17"
 						forecolor="#000000"
@@ -1089,7 +1089,7 @@ ORDER BY date_is]]></queryString>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Helvetica" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
-				<text><![CDATA[дата на печат]]></text>
+				<text><![CDATA[дата на печат:]]></text>
 				</staticText>
 			</band>
 		</pageFooter>
