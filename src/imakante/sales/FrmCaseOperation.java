@@ -1047,21 +1047,21 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     
     private void setAllVariables() {
         setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
-        setCode((Integer) table.getValueAt(getRow(), getColumnIndex("\u043d\u043e\u043c\u0435\u0440")));
+        setCode((Integer) table.getValueAt(getRow(), getColumnIndex("\u041d\u043e\u043c\u0435\u0440")));
         setIn_in_sl_mop((Integer) table.getValueAt(getRow(), getColumnIndex("id_casa")));
-        in_code_casa= (Integer) table.getValueAt(getRow(), getColumnIndex( "\u043a\u043e\u0434 \u043a\u0430\u0441\u0430"));
+        in_code_casa= (Integer) table.getValueAt(getRow(), getColumnIndex( "\u041a\u043e\u0434 \u043a\u0430\u0441\u0430"));
         try{
             setIn_outsl_mop((Integer) table.getValueAt(getRow(), getColumnIndex("id_contragent")));
         } catch(Exception e) {
             setIn_outsl_mop(-1);
         }
         try{
-            setContragent_cod((Integer) table.getValueAt(getRow(), getColumnIndex("\u043a\u043e\u0434 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442")));
+            setContragent_cod((Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442")));
         } catch(Exception e) {
             setContragent_cod(0);
         }
         try{
-            setContragent_name((String)table.getValueAt(getRow(), getColumnIndex( "\u0438\u043c\u0435 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442")));
+            setContragent_name((String)table.getValueAt(getRow(), getColumnIndex( "\u0418\u043c\u0435 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442")));
         } catch(Exception e) {
             setContragent_name("");
         }
@@ -1069,11 +1069,11 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         setIn_id_order_doc((Integer) table.getValueAt(getRow(), getColumnIndex("id_order_doc")));
         setIn_DATE((String)table.getValueAt(getRow(), getColumnIndex("\u0414\u0430\u0442\u0430 \u0438\u0437\u0434\u0430\u0432\u0430\u043d\u0435")).toString());
         setIn_id_n_money((Integer) table.getValueAt(getRow(), getColumnIndex("id_n_money")));
-        in_code_lat = (String)table.getValueAt(getRow(), getColumnIndex("\u043f\u0430\u0440\u0438\u0447\u0435\u043d \u043a\u043e\u0434"));
-        setIn_exchange_rate((Double)table.getValueAt(getRow(), getColumnIndex("\u043a\u0443\u0440\u0441")));
-        setIn_sum_sl_mop((Double)table.getValueAt(getRow(), getColumnIndex("\u0441\u0443\u043c\u0430")));
-        setIn_sum_os_val_sl_mop((Double)table.getValueAt(getRow(), getColumnIndex("\u0441\u0443\u043c\u0430 \u043e\u0441\u043d\u043e\u0432\u043d\u0430 \u0432\u0430\u043b\u0443\u0442\u0430")));
-        setUser_name((String)table.getValueAt(getRow(), getColumnIndex("\u0438\u0437\u0434\u0430\u043b \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430")));
+        in_code_lat = (String)table.getValueAt(getRow(), getColumnIndex("\u041f\u0430\u0440\u0438\u0447\u0435\u043d \u043a\u043e\u0434"));
+        setIn_exchange_rate((Double)table.getValueAt(getRow(), getColumnIndex("\u041a\u0443\u0440\u0441")));
+        setIn_sum_sl_mop((Double)table.getValueAt(getRow(), getColumnIndex("\u0421\u0443\u043c\u0430")));
+        setIn_sum_os_val_sl_mop((Double)table.getValueAt(getRow(), getColumnIndex("\u0421\u0443\u043c\u0430 \u043e\u0441\u043d\u043e\u0432\u043d\u0430 \u0432\u0430\u043b\u0443\u0442\u0430")));
+        setUser_name((String)table.getValueAt(getRow(), getColumnIndex("\u0418\u0437\u0434\u0430\u043b \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430")));
         setIn_id_sdtn((Integer) table.getValueAt(getRow(), getColumnIndex("id_sdtn")));
         setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440")));
     }

@@ -471,17 +471,22 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jComboCRKeyPressed
     
     private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
             revalidateContragent();
             this.jLabel14.setText(myParent.getHName());
             this.jLabel14.revalidate();
-            jTextField2.transferFocus();}
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7){
+            jTextField2.transferFocus();
+        }
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) {
             try {
                 myParent.intContrDialog(Integer.parseInt(jTextField2.getText()));
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
             }
+            revalidateContragent();
+            this.jLabel14.setText(myParent.getHName());
+            this.jLabel14.revalidate();
+            jTextField2.transferFocus();
         }
     }//GEN-LAST:event_jTextField2KeyPressed
     
