@@ -132,7 +132,7 @@ public class FrmNalCasa extends imakante.com.vcomponents.iInternalFrame implemen
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-454)/2, (screenSize.height-133)/2, 454, 133);
     }// </editor-fold>//GEN-END:initComponents
-                    
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         fillBlanck();
         processReport();
@@ -196,19 +196,13 @@ public class FrmNalCasa extends imakante.com.vcomponents.iInternalFrame implemen
     private  int CompNumber = 0;
     
     private String strCasa = "SELECT "
-            + "`rep_comm_nal`.`code_contragent`, `rep_comm_nal`.`name_n_contragent`"
-            + "FROM `rep_comm_nal` WHERE `rep_comm_nal`.`code_contragent` LIKE  '%";
+            + "`n_casa`.`code_casa`, `n_casa`.`name_n_casa`"
+            + "FROM `n_casa` WHERE `n_casa`.`code_n_casa` LIKE  '%";
     
-    private String strProduct = "SELECT "
-            + "`rep_comm_nal`.`code_pm`, `rep_comm_nal`.`name_pm`"
-            + "FROM `rep_comm_nal` WHERE `rep_comm_nal`.`code_pm` LIKE  '%";
-    
-    private String strStore = "SELECT "
-            + "`rep_comm_nal`.`code_n_storage`, `rep_comm_nal`.`name_n_storage`"
-            + "FROM `rep_comm_nal` WHERE `rep_comm_nal`.`code_n_storage` LIKE  '%";
+   
     
     private String[] NamesQ= {"kasa", "prihod", "razhod"};
-    private String qu =  "";    
+    private String qu =  "";
     private int levelx = 1;
     private String beginCasa = "0";
     private String endCasa = "999999999";
@@ -216,13 +210,13 @@ public class FrmNalCasa extends imakante.com.vcomponents.iInternalFrame implemen
     
     //METHODS
     private void constString(){
-     qu =   " SELECT distinct code_n_casa AS casa "
-          + " IFNULL(@prihod := (SELECT rep_casa_nal.suma FROM rep_casa_nal WHERE code_n_casa = casa AND rep_casa_nal.in_type_sl_mop = 1 AND levelx = '" + levelx +"'), 0) AS prihod, "
-          + " IFNULL(@razhod :=(SELECT rep_casa_nal.suma FROM rep_casa_nal WHERE code_n_casa = casa AND rep_casa_nal.out_type_sl_mop = 1 AND levelx = '" + levelx +"'), 0) AS razhod,"
-          + " (IFNULL(@prihod, 0)- IFNULL(@razhod, 0)) AS nalichni "
-          + " FROM rep_casa_nal " 
-          + " WHERE casa BETWEEN '" + beginCasa + " AND '" + endCasa +"'"    
-          + " GROUP BY casa";  
+        qu =   " SELECT distinct code_n_casa AS casa, "
+                + " IFNULL(@prihod := (SELECT rep_casa_nal.suma FROM rep_casa_nal WHERE code_n_casa = casa AND rep_casa_nal.in_type_sl_mop = 1 AND rep_casa_nal.levelx = " + levelx +"), 0) AS prihod, "
+                + " IFNULL(@razhod :=(SELECT rep_casa_nal.suma FROM rep_casa_nal WHERE code_n_casa = casa AND rep_casa_nal.out_type_sl_mop = 1 AND rep_casa_nal.levelx = " + levelx +"), 0) AS razhod, "
+                + " (IFNULL(@prihod, 0)- IFNULL(@razhod, 0)) AS nalichni "
+                + " FROM rep_casa_nal "
+                + " WHERE code_n_casa BETWEEN " + beginCasa + " AND " + endCasa 
+                + " GROUP BY casa";
     }
     private void prepareConn() {
         try{
@@ -247,7 +241,7 @@ public class FrmNalCasa extends imakante.com.vcomponents.iInternalFrame implemen
             ex.printStackTrace();
         }
         try {
-            model = new imakante.com.CustomTableModel(getConn(), rs, names);
+            model = new imakante.com.CustomTableModel(getConn(), rs, null);
             table = new imakante.com.CustomTable(model);
             
         } catch(Exception e) { e.printStackTrace(); }
@@ -332,20 +326,20 @@ public class FrmNalCasa extends imakante.com.vcomponents.iInternalFrame implemen
     }
     
     private void processField1() {
-        String newString = strStore + this.jTextField1.getText() + "%'";
+        String newString = strCasa + this.jTextField1.getText() + "%'";
         constructDialod(newString, 1, Names);
         
     }
     
     private void processField2() {
         if(this.jTextField1.getText()==""){this.jTextField1.setText("0");}
-        String newString = strStore + this.jTextField2.getText() + "%' AND `rep_comm_nal`.`code_n_storage` >= " + this.jTextField1.getText() + ";";
+        String newString = strCasa + this.jTextField2.getText() + "%' AND `n_casa`.`code_n_casa` >= " + this.jTextField1.getText() + ";";
         constructDialod(newString, 2, Names);
     }
-   
+    
     
     private void processReport(){
-
+        constString();
         try{
             initTable(qu, NamesQ);
             imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table,
@@ -362,7 +356,7 @@ public class FrmNalCasa extends imakante.com.vcomponents.iInternalFrame implemen
     private void fillBlanck(){
         if(jTextField1.getText()==""){jTextField1.setText("1");}
         if(jTextField2.getText()==""){jTextField2.setText("999999999");}
-       
+        
     }
     
 }

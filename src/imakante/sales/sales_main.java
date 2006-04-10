@@ -367,6 +367,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         kasaMenu.add(kasaMenu_dvi);
 
         kasaMenu_nal.setText("\u041d\u0430\u043b\u0438\u0447\u043d\u043e\u0441\u0442 \u0432 \u043a\u0430\u0441\u0438");
+        kasaMenu_nal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kasaMenu_nalActionPerformed(evt);
+            }
+        });
+
         kasaMenu.add(kasaMenu_nal);
 
         kasaMenu_opis.setText("\u041e\u043f\u0438\u0441 \u043d\u0430 \u043a\u043e\u043f\u044e\u0440\u0438");
@@ -730,41 +736,45 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-487)/2, 757, 487);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void kasaMenu_nalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kasaMenu_nalActionPerformed
+        loadCasaM();
+    }//GEN-LAST:event_kasaMenu_nalActionPerformed
+    
     private void kasaMenu_dviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kasaMenu_dviActionPerformed
         this.loadLevelC2C();
     }//GEN-LAST:event_kasaMenu_dviActionPerformed
-
+    
     private void kasaAvansOt4etMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kasaAvansOt4etMenuActionPerformed
         
     }//GEN-LAST:event_kasaAvansOt4etMenuActionPerformed
-
+    
     private void kasaAvansMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kasaAvansMenuActionPerformed
         this.loadLevelAdveances();
     }//GEN-LAST:event_kasaAvansMenuActionPerformed
-
+    
     private void docMenu_narActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docMenu_narActionPerformed
-      int user = 2;
-      int level = 1;
-      int pricelist = 1;
-      int doctype = aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE;
-      int storagedocdacade = 1;
-      loadFrmDocFacade("\u041d\u0410\u0420\u0415\u0416\u0414\u0410\u041d\u0415 \u0417\u0410 \u041f\u0420\u0415\u0425\u0412\u042a\u0420\u041b\u042f\u041d\u0415", user, level, pricelist, doctype, storagedocdacade, false, null, null );  
+        int user = 2;
+        int level = 1;
+        int pricelist = 1;
+        int doctype = aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE;
+        int storagedocdacade = 1;
+        loadFrmDocFacade("\u041d\u0410\u0420\u0415\u0416\u0414\u0410\u041d\u0415 \u0417\u0410 \u041f\u0420\u0415\u0425\u0412\u042a\u0420\u041b\u042f\u041d\u0415", user, level, pricelist, doctype, storagedocdacade, false, null, null );
     }//GEN-LAST:event_docMenu_narActionPerformed
-
+    
     private void razpMenu_polActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_razpMenu_polActionPerformed
-     int user = 2;
+        int user = 2;
         int level = 1;
         int pricelist = 1;
         int doctype = aeDocumentFacade.PRIEMATELNA_RAZPISKA;
         int storagedocdacade = 1;
-        loadFrmDocFacade("\u041f\u0420\u0418\u0415\u041c\u0410\u0422\u0415\u041b\u041d\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );      
+        loadFrmDocFacade("\u041f\u0420\u0418\u0415\u041c\u0410\u0422\u0415\u041b\u041d\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );
     }//GEN-LAST:event_razpMenu_polActionPerformed
     
     private void orderMenu_razhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderMenu_razhActionPerformed
         this.loadLeveCasiOut();
     }//GEN-LAST:event_orderMenu_razhActionPerformed
-        
+    
     private void docMenu_offerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docMenu_offerActionPerformed
         int user = 2;
         int level = 1;
@@ -832,7 +842,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_jMenuItem8ActionPerformed
     
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-         loadImport();
+        loadImport();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
     
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
@@ -911,9 +921,6 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         imakante.com.NewMain.setB_SL(false);
         this.dispose();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
-    //<<<<<<< sales_main.java
-    
-//=======
     
     private void kontragentiMenu_KontrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kontragentiMenu_KontrActionPerformed
         loadFrmContragent();
@@ -1401,6 +1408,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         imakante.sales.FrmC2COperation c2c = new imakante.sales.FrmC2COperation("\u0414\u0432\u0438\u0436\u0435\u043d\u0438\u0435 \u043c\u0435\u0436\u0434\u0443 \u043a\u0430\u0441\u0438\u0442\u0435", this, l, ndt);
         desktopPane.add(c2c);
         c2c.setVisible(true);
+    }
+    private void loadCasaM(){
+        imakante.sales.FrmNalCasa nalcasa = new imakante.sales.FrmNalCasa("Kasovo dvijenie", this, 1);
+        desktopPane.add(nalcasa);
+        nalcasa.setVisible(true);
     }
     
     private void loadLevelImport(){
