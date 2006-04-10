@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class FrmNalCasa extends imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
-    public FrmNalCasa(String title,imakante.com.vcomponents.iFrame frame) {
+    public FrmNalCasa(String title,imakante.com.vcomponents.iFrame frame, int levelx) {
         super(title);
         myframe = frame;
         prepareConn();     // zapazva connection
@@ -207,31 +207,23 @@ public class FrmNalCasa extends imakante.com.vcomponents.iInternalFrame implemen
             + "`rep_comm_nal`.`code_n_storage`, `rep_comm_nal`.`name_n_storage`"
             + "FROM `rep_comm_nal` WHERE `rep_comm_nal`.`code_n_storage` LIKE  '%";
     
-    private String[] NamesQ= {"\u041a\u043e\u0434 \u043d\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442",
-    "\u0418\u043c\u0435 \u043d\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442",
-    "\u041a\u043e\u0434 \u043d\u0430 \u043f\u0440\u043e\u0434\u0443\u043a\u0442",
-    "\u0418\u043c\u0435 \u043d\u0430 \u043f\u0440\u043e\u0434\u0443\u043a\u0442",
-    "\u041d\u0430\u043b\u0438\u0447\u043d\u043e\u0441\u0442",
-    "\u041a\u043e\u0434 \u043d\u0430 \u0441\u043a\u043b\u0430\u0434",
-    "\u0418\u043c\u0435 \u043d\u0430 \u0441\u043a\u043b\u0430\u0434"};
-    private String qu =   "SELECT "
-            + "`rep_comm_nal`.`code_contragent`, "
-            + "`rep_comm_nal`.`name_n_contragent`, "
-            + "`rep_comm_nal`.`code_pm`, "
-            + "`rep_comm_nal`.`name_pm`, "
-            + "`rep_comm_nal`.`quant_nal`, "
-            + "`rep_comm_nal`.`code_n_storage`, "
-            + "`rep_comm_nal`.`name_n_storage` "
-            + " FROM "
-            + " `rep_comm_nal` ";
-    
-    
-    
-    
+    private String[] NamesQ= {"kasa", "prihod", "razhod"};
+    private String qu =  "";    
+    private int levelx = 1;
+    private String beginCasa = "0";
+    private String endCasa = "999999999";
     
     
     //METHODS
-    
+    private void constString(){
+     qu =   "SELECT distinct code_n_casa AS casa "
+          + " IFNULL(@prihod := (SELECT rep_casa_nal.suma FROM rep_casa_nal WHERE code_n_casa = casa AND rep_casa_nal.in_type_sl_mop = 1 AND levelx = '" + levelx +"'), 0) AS prihod, "
+          + " IFNULL(@razhod :=(SELECT rep_casa_nal.suma FROM rep_casa_nal WHERE code_n_casa = casa AND rep_casa_nal.out_type_sl_mop = 1 AND levelx = '" + levelx +"'), 0) AS razhod,"
+          + " (IFNULL(@prihod, 0)- IFNULL(@razhod, 0)) AS nalichni "
+          + " FROM rep_casa_nal " 
+          + " WHERE casa BETWEEN '" + beginCasa + " AND '" + endCasa +"'"    
+          + " GROUP BY casa";  
+    }
     private void prepareConn() {
         try{
             conn =  myframe.getConn();
