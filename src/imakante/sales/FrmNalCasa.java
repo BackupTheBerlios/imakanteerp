@@ -216,7 +216,7 @@ public class FrmNalCasa extends imakante.com.vcomponents.iInternalFrame implemen
     
     //METHODS
     private void constString(){
-     qu =   "SELECT distinct code_n_casa AS casa "
+     qu =   " SELECT distinct code_n_casa AS casa "
           + " IFNULL(@prihod := (SELECT rep_casa_nal.suma FROM rep_casa_nal WHERE code_n_casa = casa AND rep_casa_nal.in_type_sl_mop = 1 AND levelx = '" + levelx +"'), 0) AS prihod, "
           + " IFNULL(@razhod :=(SELECT rep_casa_nal.suma FROM rep_casa_nal WHERE code_n_casa = casa AND rep_casa_nal.out_type_sl_mop = 1 AND levelx = '" + levelx +"'), 0) AS razhod,"
           + " (IFNULL(@prihod, 0)- IFNULL(@razhod, 0)) AS nalichni "
