@@ -345,28 +345,18 @@ public class FrmNalCasa extends imakante.com.vcomponents.iInternalFrame implemen
    
     
     private void processReport(){
-//        String newString="";
-//        try {
-//            newString = qu + " WHERE `rep_comm_nal`.`code_contragent` BETWEEN '" +
-//                    (Integer.parseInt(this.jTextField5.getText())-1) + "' AND '" + (Integer.parseInt(this.jTextField6.getText())+1) +
-//                    "' AND " + " `rep_comm_nal`.`code_pm` BETWEEN '" + (Integer.parseInt(this.jTextField3.getText())-1) +
-//                    "' AND '" + (Integer.parseInt(this.jTextField4.getText())+1) + "' AND " + " `rep_comm_nal`.`code_n_storage` BETWEEN '" +
-//                    (Integer.parseInt(this.jTextField1.getText())-1) + "' AND '" + (Integer.parseInt(this.jTextField2.getText())+1) + "'; ";
-//        } catch (NumberFormatException ex) {
-//            ex.printStackTrace();
-//        }
-//        //Create Dialog with print
-//        try{
-//            initTable(newString, NamesQ);
-//            imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table,
-//                    myframe.getConn(), hm, "/imakante/sales/jasper/nal_simp_01.jasper");
-//            td.setVisible(true);
-//        } catch (Exception  ex){
-//            ex.printStackTrace();
-//            constructDialod(newString, 0, NamesQ);
-//            System.out.println("Ne moga da nameria faila  ");
-//        }
-//        
+
+        try{
+            initTable(qu, NamesQ);
+            imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table,
+                    myframe.getConn(), hm, "/imakante/sales/jasper/nal_simp_01.jasper");
+            td.setVisible(true);
+        } catch (Exception  ex){
+            ex.printStackTrace();
+            constructDialod(qu, 0, NamesQ);
+            System.out.println("Ne moga da nameria faila  ");
+        }
+        
     }
     
     private void fillBlanck(){
