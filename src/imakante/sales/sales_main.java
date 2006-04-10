@@ -1114,7 +1114,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private static boolean isStartFrmProduct = false;
     
     private boolean levelActivate = false;
-    public  boolean isMakeDocByInputData=false;    //   \
+    public  boolean isMakeDocByInputData = false;    //   \
     public  static  HashMap dataIn;                //    > I/O ot eaDocumentFacade
     public  static  ArrayList dataOut;             //   /
     private FrmDocumentFacade frmDocumentFacadeDialog;
@@ -1134,12 +1134,14 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         lDialog.setVisible(true);
     }
     
-    private void loadConn(){
+    private void loadConn() {
         dbConn = imakante.com.NewMain.getConnection();
     }
-    private void loadProba(){
+    
+    private void loadProba() {
         
     }
+    
     private java.sql.Connection makeConn(String dbDriver,String dbURL,String dbUser, String dbPass) throws java.sql.SQLException {
         
         String DBDriver = dbDriver;
@@ -1344,14 +1346,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     /*
      *
      */
-    //
-    private void loadAdvances(int l, int ndt) {
-        
-        imakante.sales.FrmCaseOpAdvances adv = new imakante.sales.FrmCaseOpAdvances("\u0410\u0432\u0430\u043d\u0441\u043e\u0432\u0438 \u043f\u043b\u0430\u0449\u0430\u043d\u0438\u044f \u043a\u044a\u043c \u041c\u041e\u041b", this, 703, ndt);
-        desktopPane.add(adv);
-        adv.setVisible(true);
-    }
-    
+    // Prihodni kasowi peracii
     private void loadLevelKasi(){
         if (!this.casaInContrArea.isEmpty()){
             imakante.sales.levelDialog level = new imakante.sales.levelDialog(this, true, 701, casaInContrArea);
@@ -1365,7 +1360,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         desktopPane.add(cs);
         cs.setVisible(true);
     }
-    
+    // Razhodni kasowi operacii
     private void loadLeveCasiOut(){
         if (!this.casaOutContrArea.isEmpty()) {
             imakante.sales.levelDialog level = new imakante.sales.levelDialog(this, true, 702, casaOutContrArea);
@@ -1374,6 +1369,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         } else { System.out.println("Empty hash"); };
     }
     
+    public void loadCasaOut(int l, int ndt){
+        imakante.sales.FrmCaseOperationOut cso = new imakante.sales.FrmCaseOperationOut("\u0420\u0430\u0437\u0445\u043e\u0434\u043d\u0438 \u043a\u0430\u0441\u043e\u0432\u0438 \u043e\u0440\u0434\u0435\u0440\u0438", this, l, ndt);
+        desktopPane.add(cso);
+        cso.setVisible(true);
+    }
+    // Awansowi pla6taniq kym podot4etni lica (MOL)
     private void loadLevelAdveances() {
         if (!this.casaAdvances.isEmpty()) {
             imakante.sales.levelDialog level = new imakante.sales.levelDialog(this, true, 703, casaAdvances);
@@ -1382,6 +1383,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         } else { System.out.println("Empty hash!"); }
     }
     
+    public void loadAdvances(int l, int ndt) {
+        imakante.sales.FrmCaseOpAdvances adv = new imakante.sales.FrmCaseOpAdvances("\u0410\u0432\u0430\u043d\u0441\u043e\u0432\u0438 \u043f\u043b\u0430\u0449\u0430\u043d\u0438\u044f \u043a\u044a\u043c \u041c\u041e\u041b", this, l, ndt);
+        desktopPane.add(adv);
+        adv.setVisible(true);
+    }
+    // Dwijenie mejdu kasite
     private void loadLevelC2C() {
         if (!this.casa2casa.isEmpty()) {
             imakante.sales.levelDialog level = new imakante.sales.levelDialog(this, true, 704, casa2casa);
@@ -1390,10 +1397,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         } else { System.out.println("Empty hash!"); }
     }
     
-    public void loadCasaOut(int l, int ndt){
-        imakante.sales.FrmCaseOperationOut cso = new imakante.sales.FrmCaseOperationOut("\u0420\u0430\u0437\u0445\u043e\u0434\u043d\u0438 \u043a\u0430\u0441\u043e\u0432\u0438 \u043e\u0440\u0434\u0435\u0440\u0438", this, l, ndt);
-        desktopPane.add(cso);
-        cso.setVisible(true);
+    public void loadC2C(int l, int ndt) {
+        imakante.sales.FrmC2COperation c2c = new imakante.sales.FrmC2COperation("\u0414\u0432\u0438\u0436\u0435\u043d\u0438\u0435 \u043c\u0435\u0436\u0434\u0443 \u043a\u0430\u0441\u0438\u0442\u0435", this, l, ndt);
+        desktopPane.add(c2c);
+        c2c.setVisible(true);
     }
     
     private void loadLevelImport(){

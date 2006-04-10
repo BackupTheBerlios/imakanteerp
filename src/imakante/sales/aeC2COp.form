@@ -130,11 +130,11 @@
                               <Component id="jTextField5" alignment="0" pref="407" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jTextField4" alignment="0" pref="170" max="32767" attributes="0"/>
-                                      <Component id="jTextField3" alignment="1" pref="170" max="32767" attributes="0"/>
-                                      <Component id="jTextField1" alignment="0" pref="170" max="32767" attributes="2"/>
-                                      <Component id="jComboCR" alignment="0" pref="170" max="32767" attributes="2"/>
-                                      <Component id="jTextField6" alignment="1" pref="170" max="32767" attributes="0"/>
+                                      <Component id="jTextField4" alignment="0" pref="158" max="32767" attributes="0"/>
+                                      <Component id="jTextField1" alignment="0" pref="158" max="32767" attributes="2"/>
+                                      <Component id="jTextField6" alignment="0" pref="158" max="32767" attributes="0"/>
+                                      <Component id="jComboCR" alignment="0" pref="158" max="32767" attributes="2"/>
+                                      <Component id="jTextField3" alignment="0" pref="158" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
@@ -146,11 +146,11 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jTextField7" pref="172" max="32767" attributes="0"/>
-                                      <Component id="jXDatePicker1" pref="172" max="32767" attributes="2"/>
-                                      <Component id="jComboM" alignment="0" pref="172" max="32767" attributes="2"/>
-                                      <Component id="jComboD" pref="172" max="32767" attributes="0"/>
-                                      <Component id="jComboCR2" alignment="0" pref="172" max="32767" attributes="0"/>
+                                      <Component id="jTextField7" pref="160" max="32767" attributes="0"/>
+                                      <Component id="jXDatePicker1" pref="160" max="32767" attributes="2"/>
+                                      <Component id="jComboM" alignment="0" pref="160" max="32767" attributes="2"/>
+                                      <Component id="jComboD" pref="160" max="32767" attributes="0"/>
+                                      <Component id="jComboCR2" alignment="0" pref="160" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -217,7 +217,7 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jComboM" alignment="3" pref="19" max="32767" attributes="0"/>
+                      <Component id="jComboM" alignment="3" pref="20" max="32767" attributes="0"/>
                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -367,12 +367,13 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jComboCRFocusLost"/>
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jComboCRKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&#x41a;&#x430;&#x441;&#x430; 2:"/>
+            <Property name="text" type="java.lang.String" value="&#x41d;&#x430;&#x441;&#x440;&#x435;&#x449;&#x43d;&#x430; &#x43a;&#x430;&#x441;&#x430;:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField3">
@@ -514,6 +515,9 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jComboCR2FocusLost"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

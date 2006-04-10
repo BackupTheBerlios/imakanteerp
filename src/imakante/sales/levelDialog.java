@@ -1,18 +1,13 @@
 
 package imakante.sales;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-
 public class levelDialog extends javax.swing.JDialog {
     
-    /** Creates new form levelDialog */
-    public levelDialog(imakante.sales.sales_main parent, boolean modal, int ModuleCode, LinkedHashMap area) {
+    public levelDialog(imakante.sales.sales_main parent, boolean modal, int ModuleCode, java.util.LinkedHashMap area) {
         super(parent, modal);
         frame = parent;
         modul = ModuleCode;
-        hash = new LinkedHashMap(area);
+        hash = new java.util.LinkedHashMap(area);
         initComponents();
         constructComboNames();
         writeH();
@@ -101,15 +96,14 @@ public class levelDialog extends javax.swing.JDialog {
             if (checkPass()){
                 outLevel = getLevel();
                 outIndex = getKey();
-            }else{
+            } else {
                 outLevel = 1;
                 outIndex = getKey();
             }
             close();
         }
-        if ( evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE){
+        if ( evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) {
             this.dispose();
-            
         }
     }//GEN-LAST:event_jPasswordField1KeyPressed
     
@@ -134,41 +128,36 @@ public class levelDialog extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
     private imakante.sales.sales_main frame;
-    private LinkedHashMap hash;
-    private int modul= 0;
+    private java.util.LinkedHashMap hash;
+    private int modul = 0;
     private String namesCombo[];
     private int selectComboBoxItem;
-    private int i= 0;
+    private int i = 0;
     
     private int outLevel = 1;
     private int outIndex = 1;
     
-    private ArrayList in;
+    private java.util.ArrayList in;
     
-    private void writeH(){
-        
-        System.out.println(new ArrayList(hash.entrySet()));
+    private void writeH() {
+        System.out.println(new java.util.ArrayList(hash.entrySet()));
     }
     
     private void constructComboNames(){
-        in = new ArrayList(hash.keySet());
-        for (Iterator it =hash.keySet().iterator(); it.hasNext(); ) {
+        in = new java.util.ArrayList(hash.keySet());
+        for (java.util.Iterator it = hash.keySet().iterator(); it.hasNext(); ) {
             Object key = it.next();
             in.add(key);
             Object value = hash.get(key);
             jComboBox1.addItem(value);
-            
         }
-        
     }
     
-    private int getLevel(){
+    private int getLevel() {
         int level = 1;
         try {
             level = Integer.parseInt(this.jTextField1.getText());
-        } catch (NumberFormatException ex) {
-            ex.printStackTrace();
-        }
+        } catch (NumberFormatException ex) { ex.printStackTrace(); }
         return level;
     }
     
@@ -176,24 +165,23 @@ public class levelDialog extends javax.swing.JDialog {
         int d = 1;
         d = (Integer)in.get(jComboBox1.getSelectedIndex());
         return d;
-        
     }
+    
     private boolean checkPass(){
         String pss = new String(this.jPasswordField1.getPassword());
-        if(pss.equals(imakante.com.NewMain.getPassword())){
+        if(pss.equals(imakante.com.NewMain.getPassword())) {
             return true;
-        }else{return false;}
+        } else { return false; }
     }
     
     //opisanie na formite koito she badat kontrolirani
-    
     private void close(){
-        if (modul==1){frame.loadImport();}
-        if (modul==701){frame.loadKassss(getLevel(), getKey());
-        System.out.println("701");}
-        if (modul==702){frame.loadCasaOut(getLevel(), getKey());
-        System.out.println("702");}    
-         
+        if (modul == 1) { frame.loadImport(); }
+        if (modul == 701) { frame.loadKassss(getLevel(), getKey()); }
+        if (modul == 702) { frame.loadCasaOut(getLevel(), getKey()); }
+        if (modul == 703) { frame.loadAdvances(getLevel(), getKey()); }
+        if (modul == 704) { frame.loadC2C(getLevel(), getKey()); }
+        
         
         this.dispose();
     }

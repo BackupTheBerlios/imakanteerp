@@ -22,7 +22,7 @@ public class casa2casaOp  extends imakante.com.dbObject {
 //              IN in_id INT(11),
 //              IN in_number_sl_mop INT(11), code go zamenia v obekta
     private     int in_in_sl_mop = 1;
-    private     int in_outsl_mop = 0;
+    private     int in_outsl_mop = 1;
     private     int in_id_order_spec = 0 ;
     private     int in_id_order_spec_type = 1;
     private     int in_id_order_doc = 1;
@@ -64,7 +64,7 @@ public class casa2casaOp  extends imakante.com.dbObject {
             getCstm().setInt("comprator", getComprator());
             getCstm().setInt("in_id", getId());
             getCstm().setInt("in_number_sl_mop", getCode());
-            getCstm().setInt("in_in_sl_mop",in_in_sl_mop);
+            getCstm().setInt("in_in_sl_mop", in_in_sl_mop);
             getCstm().setInt("in_outsl_mop", in_outsl_mop);
             getCstm().setInt("in_id_order_spec", in_id_order_spec);
             getCstm().setInt("in_id_order_doc", in_id_order_doc);
@@ -181,6 +181,7 @@ public class casa2casaOp  extends imakante.com.dbObject {
     }
     
     public String[] getOtherCRs() {
+        
         setComprator(9);
         int oldId = getId();
         java.sql.ResultSet oldRs = getRs();
