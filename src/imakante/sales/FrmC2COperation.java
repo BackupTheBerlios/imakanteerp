@@ -746,7 +746,7 @@ public class FrmC2COperation extends  imakante.com.vcomponents.iInternalFrame im
         setHCode(0);
         setHName("");
         String str = "SELECT n_casa.id_n_casa, n_casa.code_n_casa, n_casa.name_n_casa"
-                + "FROM n_casa WHERE n_casa.code_n_casa = ";
+                + "FROM n_casa WHERE n_casa.id_n_casa = ";
         if(getStm() == null){
             this.prepareStm();
         } else {  }
