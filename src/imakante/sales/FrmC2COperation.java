@@ -745,7 +745,7 @@ public class FrmC2COperation extends  imakante.com.vcomponents.iInternalFrame im
         setHInt(0);
         setHCode(0);
         setHName("");
-        String str = "SELECT n_casa.id_n_casa, n_casa.code_n_casa, n_casa.name_n_casa"
+        String str = "SELECT n_casa.id_n_casa, n_casa.code_n_casa, n_casa.name_n_casa "
                 + "FROM n_casa WHERE n_casa.id_n_casa = ";
         if(getStm() == null){
             this.prepareStm();
@@ -753,7 +753,7 @@ public class FrmC2COperation extends  imakante.com.vcomponents.iInternalFrame im
         try {
             setRs(getStm().executeQuery(str + CodDialog));
             while(getRs().next()) {
-                setHInt(getRs().getInt("id_casa"));
+                setHInt(getRs().getInt("id_n_casa"));
                 setHCode(getRs().getInt("code_n_casa"));
                 setHName(getRs().getString("name_n_casa"));
             }
