@@ -46,6 +46,11 @@ public class FrmNalCasa extends imakante.com.vcomponents.iInternalFrame implemen
 
         jLabel2.setText("\u0434\u043e:");
 
+        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField2FocusLost(evt);
+            }
+        });
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField2KeyPressed(evt);
@@ -133,6 +138,10 @@ public class FrmNalCasa extends imakante.com.vcomponents.iInternalFrame implemen
         setBounds((screenSize.width-454)/2, (screenSize.height-133)/2, 454, 133);
     }// </editor-fold>//GEN-END:initComponents
     
+    private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
+      checkValue();
+    }//GEN-LAST:event_jTextField2FocusLost
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         fillBlanck();
         processReport();
@@ -209,6 +218,26 @@ public class FrmNalCasa extends imakante.com.vcomponents.iInternalFrame implemen
     
     
     //METHODS
+    private void checkValue(){
+        int i = 0;
+        int j = 0;
+        try {
+            i = Integer.parseInt(this.jTextField1.getText());
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+            jTextField1.setText("0");
+        }
+        try {
+            i = Integer.parseInt(this.jTextField2.getText());
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+            jTextField2.setText("999999999");
+        }
+        if(i>j){
+         jTextField1.setText("0");   
+         jTextField2.setText("999999999");
+        }
+    }
     private void constString(){
         qu =   " SELECT distinct code_n_casa AS casa, "
                 + " IFNULL(@prihod := (SELECT rep_casa_nal.suma FROM rep_casa_nal WHERE code_n_casa = casa AND rep_casa_nal.in_type_sl_mop = 1 AND rep_casa_nal.levelx = " + levelx +"), 0) AS prihod, "
