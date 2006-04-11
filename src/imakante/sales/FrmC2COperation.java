@@ -517,10 +517,10 @@ public class FrmC2COperation extends  imakante.com.vcomponents.iInternalFrame im
         "id",                 // Row N - 0. (H) - Hidden
         "\u041d\u043e\u043c\u0435\u0440",             //         1. (V) - Visible
         "id_casa",            //         2. (H)
-        "\u041a\u043e\u0434 \u043a\u0430\u0441\u0430 1",          //         3. (V)
+        "\u041a\u043e\u0434 \u041a\u0430\u0441\u0430",          //         3. (V)
         "id_casa2",      //         4. (H)
-        "\u041a\u043e\u0434 \u043a\u0430\u0441\u0430 2",     //         5. (V)
-        "\u0418\u043c\u0435 \u043a\u0430\u0441\u0430 2",    //         6. (V)
+        "\u041a\u043e\u0434 \u041d\u0430\u0441\u0440\u0435\u0449\u043d\u0430 \u043a\u0430\u0441\u0430",     //         5. (V)
+        "\u0418\u043c\u0435 \u041d\u0430\u0441\u0440\u0435\u0449\u043d\u0430 \u043a\u0430\u0441\u0430",    //         6. (V)
         "\u0421\u0432\u044a\u0440\u0437\u0430\u043d \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442",          //         7. (V)
         "id_df",              //         8. (H)
         "id_order_doc",       //         9. (H)
@@ -1053,19 +1053,19 @@ public class FrmC2COperation extends  imakante.com.vcomponents.iInternalFrame im
         setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
         setCode((Integer) table.getValueAt(getRow(), getColumnIndex("\u041d\u043e\u043c\u0435\u0440")));
         setIn_in_sl_mop((Integer) table.getValueAt(getRow(), getColumnIndex("id_casa")));
-        in_code_casa = (Integer) table.getValueAt(getRow(), getColumnIndex( "\u041a\u043e\u0434 \u043a\u0430\u0441\u0430"));
+        in_code_casa = (Integer) table.getValueAt(getRow(), getColumnIndex( "\u041a\u043e\u0434 \u041a\u0430\u0441\u0430"));
         try{
             setIn_outsl_mop((Integer) table.getValueAt(getRow(), getColumnIndex("id_casa2")));
         } catch(Exception e) {
             setIn_outsl_mop(-12);
         }
         try{
-            setContragent_cod((Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434 \u043a\u0430\u0441\u0430 2")));
+            setContragent_cod((Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434 \u041d\u0430\u0441\u0440\u0435\u0449\u043d\u0430 \u043a\u0430\u0441\u0430")));
         } catch(Exception e) {
             setContragent_cod(0);
         }
         try{
-            setContragent_name((String)table.getValueAt(getRow(), getColumnIndex( "\u0418\u043c\u0435 \u043a\u0430\u0441\u0430 2")));
+            setContragent_name((String)table.getValueAt(getRow(), getColumnIndex( "\u0418\u043c\u0435 \u041d\u0430\u0441\u0440\u0435\u0449\u043d\u0430 \u043a\u0430\u0441\u0430")));
         } catch(Exception e) {
             setContragent_name("");
         }

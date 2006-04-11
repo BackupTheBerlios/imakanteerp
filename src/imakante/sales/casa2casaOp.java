@@ -181,8 +181,7 @@ public class casa2casaOp  extends imakante.com.dbObject {
     }
     
     public String[] getOtherCRs() {
-        
-        setComprator(9);
+        setComprator(6);
         int oldId = getId();
         java.sql.ResultSet oldRs = getRs();
         java.util.ArrayList in = new java.util.ArrayList();

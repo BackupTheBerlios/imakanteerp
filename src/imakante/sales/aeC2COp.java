@@ -437,6 +437,7 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
         
     private void jComboCR2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboCR2FocusLost
         AreEqual();
+        revalidateContragent();
     }//GEN-LAST:event_jComboCR2FocusLost
 
     private void jComboCRFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboCRFocusLost
@@ -669,6 +670,7 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
     
     //SAVE
     private void saveRecord() {
+        AreEqual();
         revalidateContragent();
         myParent.setIn_outsl_mop(myParent.getHInt());
         this.revalidateSums();
