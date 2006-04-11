@@ -18,7 +18,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="142" max="32767" attributes="0"/>
+              <EmptySpace pref="200" max="32767" attributes="0"/>
               <Component id="jToggleButton1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
           </Group>
@@ -37,7 +37,7 @@
   <SubComponents>
     <Component class="javax.swing.JToggleButton" name="jToggleButton1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#x41f;&#x420;&#x418;&#x425;&#x41e;&#x414;&#x41d;&#x418; &#x41e;&#x420;&#x414;&#x415;&#x420;&#x418;"/>
+        <Property name="text" type="java.lang.String" value="&#x43d;&#x430;&#x43b;&#x438;&#x447;&#x43d;&#x438;"/>
       </Properties>
     </Component>
   </SubComponents>

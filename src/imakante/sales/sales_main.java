@@ -1410,7 +1410,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         c2c.setVisible(true);
     }
     private void loadCasaM(){
-        imakante.sales.FrmNalCasa nalcasa = new imakante.sales.FrmNalCasa("Kasovo dvijenie", this, 1);
+        imakante.sales.FrmNalCasa nalcasa = new imakante.sales.FrmNalCasa("\u041d\u0410\u041b\u0418\u0427\u041d\u041e\u0421\u0422 \u041a\u0410\u0421\u0418", this, 1);
         desktopPane.add(nalcasa);
         nalcasa.setVisible(true);
     }
