@@ -376,6 +376,7 @@ public class FrmNalCasa extends imakante.com.vcomponents.iInternalFrame implemen
     
     
     private void processReport(){
+        checkValue();
         casaBegin = this.jTextField1.getText();
         casaEnd = this.jTextField2.getText();
         constString();
