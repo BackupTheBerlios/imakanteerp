@@ -730,10 +730,10 @@ public class FrmC2COperation extends  imakante.com.vcomponents.iInternalFrame im
             this.jtfContragentBEGIN.setText("" + this.intTransfer); }
         if(CompNumber == 4) {
             this.jtfContragentEND.setText("" + this.intTransfer); }
-//        if(CompNumber == 99) {
-//            this.setHCode(this.intTransfer);
-//            ae_Casa.revalidateFText();
-//        }
+        if(CompNumber == 99) {
+            this.setHCode(this.intTransfer);
+            ae_Casa.revalidateFText();
+        }
     }
     
     public void intContrDialog(int CodDialod) {

@@ -127,14 +127,14 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jTextField5" alignment="0" pref="407" max="32767" attributes="0"/>
+                              <Component id="jTextField5" alignment="0" pref="388" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jTextField4" alignment="0" pref="158" max="32767" attributes="0"/>
-                                      <Component id="jTextField1" alignment="0" pref="158" max="32767" attributes="2"/>
-                                      <Component id="jTextField6" alignment="0" pref="158" max="32767" attributes="0"/>
-                                      <Component id="jComboCR" alignment="0" pref="158" max="32767" attributes="2"/>
-                                      <Component id="jTextField3" alignment="0" pref="158" max="32767" attributes="0"/>
+                                      <Component id="jTextField4" alignment="0" pref="148" max="32767" attributes="0"/>
+                                      <Component id="jTextField1" alignment="0" pref="148" max="32767" attributes="2"/>
+                                      <Component id="jTextField6" alignment="0" pref="148" max="32767" attributes="0"/>
+                                      <Component id="jComboCR" alignment="0" pref="148" max="32767" attributes="2"/>
+                                      <Component id="jTextField3" alignment="0" pref="148" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
@@ -146,16 +146,16 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jTextField7" pref="160" max="32767" attributes="0"/>
-                                      <Component id="jXDatePicker1" pref="160" max="32767" attributes="2"/>
-                                      <Component id="jComboM" alignment="0" pref="160" max="32767" attributes="2"/>
-                                      <Component id="jComboD" pref="160" max="32767" attributes="0"/>
-                                      <Component id="jComboCR2" alignment="0" pref="160" max="32767" attributes="0"/>
+                                      <Component id="jTextField7" pref="151" max="32767" attributes="0"/>
+                                      <Component id="jXDatePicker1" pref="151" max="32767" attributes="2"/>
+                                      <Component id="jComboM" alignment="0" pref="151" max="32767" attributes="2"/>
+                                      <Component id="jComboD" pref="151" max="32767" attributes="0"/>
+                                      <Component id="jComboCR2" alignment="0" pref="151" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jScrollPane1" pref="407" max="32767" attributes="2"/>
+                                  <Component id="jScrollPane1" pref="388" max="32767" attributes="2"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -488,7 +488,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel13">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&#x418;&#x43c;&#x435; &#x43d;&#x430; &#x41a;&#x430;&#x441;&#x430; 2:"/>
+            <Property name="text" type="java.lang.String" value="&#x418;&#x43c;&#x435; &#x43d;&#x430; &#x41d;&#x430;&#x441;&#x440;&#x435;&#x449;&#x43d;&#x430; &#x43a;&#x430;&#x441;&#x430;:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel14">

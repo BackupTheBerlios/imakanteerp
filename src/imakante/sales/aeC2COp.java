@@ -304,7 +304,7 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
             }
         });
 
-        jLabel13.setText("\u0418\u043c\u0435 \u043d\u0430 \u041a\u0430\u0441\u0430 2:");
+        jLabel13.setText("\u0418\u043c\u0435 \u043d\u0430 \u041d\u0430\u0441\u0440\u0435\u0449\u043d\u0430 \u043a\u0430\u0441\u0430:");
 
         jLabel14.setText("\u043d\u0435\u0437\u0430\u0434\u0430\u0434\u0435\u043d\u043e");
 
@@ -338,14 +338,14 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
                             .add(jLabel13))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jTextField5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
+                            .add(jTextField5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(jTextField4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-                                    .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-                                    .add(jTextField6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-                                    .add(jComboCR, 0, 158, Short.MAX_VALUE)
-                                    .add(jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))
+                                    .add(jTextField4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                                    .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                                    .add(jTextField6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                                    .add(jComboCR, 0, 148, Short.MAX_VALUE)
+                                    .add(jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                                     .add(jLabel8)
@@ -355,14 +355,14 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
                                     .add(jLabel7))
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(jTextField7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                                    .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                                    .add(jComboM, 0, 160, Short.MAX_VALUE)
-                                    .add(jComboD, 0, 160, Short.MAX_VALUE)
-                                    .add(jComboCR2, 0, 160, Short.MAX_VALUE)))
+                                    .add(jTextField7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                                    .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                                    .add(jComboM, 0, 151, Short.MAX_VALUE)
+                                    .add(jComboD, 0, 151, Short.MAX_VALUE)
+                                    .add(jComboCR2, 0, 151, Short.MAX_VALUE)))
                             .add(jLabel14)
                             .add(jPanel2Layout.createSequentialGroup()
-                                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
+                                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)))
                         .addContainerGap())
                     .add(jPanel2Layout.createSequentialGroup()
@@ -434,13 +434,13 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-544)/2, (screenSize.height-420)/2, 544, 420);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jComboCR2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboCR2FocusLost
         
+    private void jComboCR2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboCR2FocusLost
+        AreEqual();
     }//GEN-LAST:event_jComboCR2FocusLost
 
     private void jComboCRFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboCRFocusLost
-        
+        AreEqual();
     }//GEN-LAST:event_jComboCRFocusLost
     
     private void jComboMFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboMFocusLost
@@ -903,11 +903,11 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
         sumos = exch * sum;
         this.jTextField4.setText("" + sumos);
     }
-//    
-//    public void revalidateFText() {
-//        jTextField2.setText("" + myParent.getHCode());
-//    }
-//    
+    
+    public void revalidateFText() {
+        jComboCR2.setSelectedItem(myParent.getHCode());
+    }
+    
     private void revalidateContragent() {
         try {
             myParent.getCodFromQu(myParent.getInternalObject().getExcludedCRs()[jComboCR2.getSelectedIndex()]);
@@ -943,6 +943,20 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
         if(money == 1) {
             this.jTextField7.setText("1");
             revalidateSums();
+        }
+    }
+
+    private void AreEqual() {
+        int c1 = jComboCR.getSelectedIndex();
+        int c2 = jComboCR2.getSelectedIndex();
+        if (c1 == c2) {
+            javax.swing.JOptionPane.showMessageDialog(null,
+                    "\u041d\u0435 \u043c\u043e\u0436\u0435 \u041a\u0430\u0441\u0430\u0442\u0430 \u0434\u0430 \u0435 \u0441\u044a\u0449\u0430\u0442\u0430 " +
+                    "\u043a\u0430\u0442\u043e \u041d\u0430\u0441\u0440\u0435\u0449\u043d\u0430\u0442\u0430 \u043a\u0430\u0441\u0430!" +
+                    " \u0418\u0437\u0431\u0435\u0440\u0435\u0442\u0435 \u0434\u0440\u0443\u0433\u0430 \u041a\u0430\u0441\u0430!",
+                    "\u041d\u0415\u0421\u042a\u0412\u041c\u0415\u0421\u0422\u0418\u041c\u0418 \u0421\u0422\u041e\u0419\u041d\u041e\u0421\u0422\u0418!",
+                    javax.swing.JOptionPane.ERROR_MESSAGE);
+            jComboCR.requestFocus();
         }
     }
     
