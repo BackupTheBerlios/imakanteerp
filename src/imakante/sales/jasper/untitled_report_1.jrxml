@@ -886,9 +886,9 @@
 				<staticText>
 					<reportElement
 						mode="Transparent"
-						x="72"
+						x="50"
 						y="5"
-						width="55"
+						width="77"
 						height="13"
 						forecolor="#000000"
 						backcolor="#FFFFFF"

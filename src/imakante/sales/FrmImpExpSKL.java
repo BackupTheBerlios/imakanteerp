@@ -297,7 +297,7 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
     private java.sql.Connection connection;
     private java.sql.Statement stm;
     private java.sql.ResultSet rs;
-    private String QString = "SELECT name_n_contragent, bul_n_contragent FROM n_contragent WHERE n_contragent.dan_n_contragent = '";
+    private String QString = "SELECT name_n_contragent, bul_n_contragent FROM n_contragent WHERE n_contragent.dan_n_contragent = ";
     
     //FILE related
     private java.io.File file;
@@ -369,6 +369,9 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
                 str = inString;
             }
         }
+        if (inString.length() == in_int){
+                str = inString;
+            }
         return str;
     }
     private String fullZeroString(String inString, int in_int, boolean reverce){
@@ -523,7 +526,7 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
                     data_d = str.substring(32,42);     //6
                     dan_kli = str.substring(42,52);    //7
                     ime = str.substring(52,102);       //8
-                    viddei = str.substring(104, 134);  //9
+                    viddei = str.substring(103, 134);  //9
                     ssss = str.substring(134, 237); //10
                     
                     ((MyTableModel)table.getModel()).insertRow(model.getRowCount(), new Object[]{"0","0","0","0","0","0","0","0","0","0"});
@@ -538,6 +541,19 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
                     this.table.setValueAt(ime,row,8);
                     this.table.setValueAt(viddei,row,9);
                     this.table.setValueAt(ssss, row,10);
+                    try {
+                        
+                        stm = connection.createStatement();
+                        rs = stm.executeQuery(QString + dan_kli);
+                        while(rs.next()){
+                         this.table.setValueAt(rs.getString("bul_n_contragent"),row,11);
+                        }
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                        this.table.setValueAt("1111111111",row,11);
+                    }
+                    
+                    
                     System.out.println("nomer na red = "+row);
                     
                     row++;
@@ -713,6 +729,7 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
                         Line = Line +  fullString("111111111",9, false)+ " ";
                     } // IN
                     Line = Line + fullString((String)table.getValueAt(j,8).toString(), 50,true) + " "; //ime na firmata SKL1
+                    System.out.println((String)table.getValueAt(j,8));
                     
                 }
                 if(j==k-1){
@@ -725,7 +742,7 @@ public class FrmImpExpSKL extends javax.swing.JInternalFrame {
                 }
                 
                 Line = Line + (String)table.getValueAt(j,9);
-                
+                Line = Line + (String)table.getValueAt(j,10);
                 System.out.println(Line);
                 Line = Line + "\r" + "\n";
                 j++;

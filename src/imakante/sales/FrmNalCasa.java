@@ -228,7 +228,7 @@ public class FrmNalCasa extends imakante.com.vcomponents.iInternalFrame implemen
             jTextField1.setText("0");
         }
         try {
-            i = Integer.parseInt(this.jTextField2.getText());
+            j = Integer.parseInt(this.jTextField2.getText());
         } catch (NumberFormatException ex) {
             ex.printStackTrace();
             jTextField2.setText("999999999");
@@ -239,9 +239,9 @@ public class FrmNalCasa extends imakante.com.vcomponents.iInternalFrame implemen
         }
     }
     private void constString(){
-        qu =   " SELECT distinct code_n_casa AS casa, "
-                + " IFNULL(@prihod := (SELECT rep_casa_nal.suma FROM rep_casa_nal WHERE code_n_casa = casa AND rep_casa_nal.in_type_sl_mop = 1 AND rep_casa_nal.levelx = " + levelx +"), 0) AS prihod, "
-                + " IFNULL(@razhod :=(SELECT rep_casa_nal.suma FROM rep_casa_nal WHERE code_n_casa = casa AND rep_casa_nal.out_type_sl_mop = 1 AND rep_casa_nal.levelx = " + levelx +"), 0) AS razhod, "
+        qu =    " SELECT distinct code_n_casa AS casa, "
+                + " IFNULL(@prihod :=(SELECT DISTINCT rep_casa_nal.suma FROM rep_casa_nal WHERE code_n_casa = casa AND rep_casa_nal.in_type_sl_mop = 1 AND rep_casa_nal.levelx = " + levelx +" GROUP BY casa), 0) AS prihod, "
+                + " IFNULL(@razhod :=(SELECT DISTINCT rep_casa_nal.suma FROM rep_casa_nal WHERE code_n_casa = casa AND rep_casa_nal.out_type_sl_mop = 1 AND rep_casa_nal.levelx = " + levelx +" GROUP BY casa), 0) AS razhod, "
                 + " (IFNULL(@prihod, 0)- IFNULL(@razhod, 0)) AS nalichni "
                 + " FROM rep_casa_nal "
                 + " WHERE code_n_casa BETWEEN " + casaBegin + " AND " + casaEnd
