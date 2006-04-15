@@ -18,7 +18,7 @@ public class FrmGroup extends imakante.com.vcomponents.iInternalFrame implements
         initComponents();
         jComboBoxAnLevel.addItem("-----------------");
         splitNamesOfAnLevel = getInternalObject().getAnLevelName();
-        for(int i=0; i < splitNamesOfAnLevel.length; i++) {
+        for(int i = 0; i < splitNamesOfAnLevel.length; i++) {
             jComboBoxAnLevel.addItem(new String(splitNamesOfAnLevel[i]));
         }
     }
@@ -34,7 +34,7 @@ public class FrmGroup extends imakante.com.vcomponents.iInternalFrame implements
         jTextName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jComboBoxAnLevel = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
+        jButtonSearch = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jButtonNew = new javax.swing.JButton();
@@ -84,12 +84,35 @@ public class FrmGroup extends imakante.com.vcomponents.iInternalFrame implements
         jPanel4.add(jLabel1);
 
         jTextCod.setPreferredSize(new java.awt.Dimension(45, 20));
+        jTextCod.setInputVerifier(new imakante.com.InputIntegerVerifier());
+        jTextCod.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextCodFocusGained(evt);
+            }
+        });
+        jTextCod.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextCodKeyPressed(evt);
+            }
+        });
+
         jPanel4.add(jTextCod);
 
         jLabel2.setText("\u0418\u043c\u0435:");
         jPanel4.add(jLabel2);
 
         jTextName.setPreferredSize(new java.awt.Dimension(100, 20));
+        jTextName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextNameFocusGained(evt);
+            }
+        });
+        jTextName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextNameKeyPressed(evt);
+            }
+        });
+
         jPanel4.add(jTextName);
 
         jLabel3.setText("\u0410\u043d\u0430\u043b\u0438\u0442\u0438\u0447\u043d\u0438 \u043d\u0438\u0432\u0430:");
@@ -98,15 +121,15 @@ public class FrmGroup extends imakante.com.vcomponents.iInternalFrame implements
         jComboBoxAnLevel.setPreferredSize(new java.awt.Dimension(100, 20));
         jPanel4.add(jComboBoxAnLevel);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Search.png")));
-        jButton1.setText("\u0422\u044a\u0440\u0441\u0435\u043d\u0435");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Search.png")));
+        jButtonSearch.setText("\u0422\u044a\u0440\u0441\u0435\u043d\u0435");
+        jButtonSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonSearchActionPerformed(evt);
             }
         });
 
-        jPanel4.add(jButton1);
+        jPanel4.add(jButtonSearch);
 
         jPanel1.add(jPanel4, java.awt.BorderLayout.SOUTH);
 
@@ -197,6 +220,22 @@ public class FrmGroup extends imakante.com.vcomponents.iInternalFrame implements
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
+    private void jTextCodFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextCodFocusGained
+        jTextCod.selectAll();
+    }//GEN-LAST:event_jTextCodFocusGained
+    
+    private void jTextCodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextCodKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); }
+    }//GEN-LAST:event_jTextCodKeyPressed
+    
+    private void jTextNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextNameFocusGained
+        jTextName.selectAll();
+    }//GEN-LAST:event_jTextNameFocusGained
+    
+    private void jTextNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNameKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); }
+    }//GEN-LAST:event_jTextNameKeyPressed
+    
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
         imakante.sales.sales_main tmp =  (imakante.sales.sales_main) myframe;
         tmp.isStartFrmGroup[getNom()] = false; // flag dali da se startira FrmGroup ot sales_main
@@ -216,26 +255,9 @@ public class FrmGroup extends imakante.com.vcomponents.iInternalFrame implements
         unload();
     }//GEN-LAST:event_jButtonCloseActionPerformed
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            int searchCod = Integer.parseInt(jTextCod.getText());
-            String searchName = jTextName.getText();
-         /* int searchAnLevel=0;
-        if(jTextAnLevel.getText().length()>0)
-         {
-         searchAnLevel = Integer.parseInt(jTextAnLevel.getText());
-         }*/
-            int searchAnLevel = jComboBoxAnLevel.getSelectedIndex();
-            rs = internalObject.searchRecords(getNom(), searchCod, searchName, searchAnLevel);
-            jScrollPane1.remove(table);
-            model = new imakante.com.CustomTableModel(conn, rs, columnsNames);
-            table = new imakante.com.CustomTable(model);
-            jScrollPane1.getViewport().add(table);
-            HideColumns(getColumnIndex("id_n_group"));
-            HideColumns(getColumnIndex("id_al"));
-            jScrollPane1.repaint();
-        } catch(Exception e) { e.printStackTrace(); }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
+        searchRecords();
+    }//GEN-LAST:event_jButtonSearchActionPerformed
     
     private void jButtonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshActionPerformed
         refreshTable();
@@ -268,7 +290,6 @@ public class FrmGroup extends imakante.com.vcomponents.iInternalFrame implements
     }//GEN-LAST:event_jButtonNewActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonClose;
     private javax.swing.JButton jButtonDel;
     private javax.swing.JButton jButtonDeleteAll;
@@ -277,6 +298,7 @@ public class FrmGroup extends imakante.com.vcomponents.iInternalFrame implements
     private javax.swing.JButton jButtonPrint;
     private javax.swing.JButton jButtonPrnReport;
     private javax.swing.JButton jButtonRefresh;
+    private javax.swing.JButton jButtonSearch;
     private javax.swing.JComboBox jComboBoxAnLevel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -551,7 +573,28 @@ public class FrmGroup extends imakante.com.vcomponents.iInternalFrame implements
         jScrollPane1.getViewport().add(table);
         HideColumns(getColumnIndex("id_n_group"));
         HideColumns(getColumnIndex("id_al"));
+        jTextName.setText("");
+        jTextCod.setText("");
         jScrollPane1.repaint();
+    }
+    
+    private void searchRecords() {
+        try {
+            try {
+                if (jTextCod.getText().equals("")) {
+                    rs = internalObject.searchRecords(getNom(), -1, jTextName.getText(), jComboBoxAnLevel.getSelectedIndex());
+                } else {
+                    rs = internalObject.searchRecords(getNom(), Integer.parseInt(jTextCod.getText()), jTextName.getText(), jComboBoxAnLevel.getSelectedIndex());
+                }
+            } catch (NumberFormatException nfex) { nfex.printStackTrace(); jTextCod.requestFocus(); }
+            jScrollPane1.remove(table);
+            model = new imakante.com.CustomTableModel(conn, rs, columnsNames);
+            table = new imakante.com.CustomTable(model);
+            jScrollPane1.getViewport().add(table);
+            HideColumns(getColumnIndex("id_n_group"));
+            HideColumns(getColumnIndex("id_al"));
+            jScrollPane1.repaint();
+        } catch(Exception e) { e.printStackTrace(); }
     }
     
     private int getColumnIndex(String in) {

@@ -27,8 +27,6 @@ public class aeGroup extends imakante.com.vcomponents.iDialog {
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
-
         jPanel1 = new javax.swing.JPanel();
         jButtonSave = new javax.swing.JButton();
         jButtonUndo = new javax.swing.JButton();
@@ -47,6 +45,7 @@ public class aeGroup extends imakante.com.vcomponents.iDialog {
         jButtonToEnd = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         jPanel1.setPreferredSize(new java.awt.Dimension(263, 33));
         jButtonSave.setText("\u0421\u044a\u0445\u0440\u0430\u043d\u0438");
         jButtonSave.addActionListener(new java.awt.event.ActionListener() {
@@ -145,14 +144,12 @@ public class aeGroup extends imakante.com.vcomponents.iDialog {
                         .add(9, 9, 9)
                         .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jTextCod, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 108, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jComboAnLevel, 0, 286, Short.MAX_VALUE)
+                            .add(jComboAnLevel, 0, 288, Short.MAX_VALUE)
                             .add(jPanel2Layout.createSequentialGroup()
-                                .add(jTextName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)))
-                        .addContainerGap())
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 340, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                                .add(jTextName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED))))
+                    .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 340, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -169,13 +166,14 @@ public class aeGroup extends imakante.com.vcomponents.iDialog {
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel3)
                     .add(jComboAnLevel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(19, 19, 19)
-                .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 82, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(35, 35, 35))
+                .add(22, 22, 22)
+                .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                .add(19, 19, 19))
         );
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
-        pack();
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-374)/2, (screenSize.height-284)/2, 374, 284);
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButtonUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUndoActionPerformed
