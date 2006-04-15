@@ -23,7 +23,7 @@ BEGIN
 
      END IF;
      IF (comprator = 5) THEN
-           IF (in_alid != 0 AND in_code > -1) THEN
+          IF (in_alid != 0 AND in_code > -1) THEN
              SELECT n.id_n_group,  n.cod_n_group, n.name_n_group, n.id_al, anlevel.name_al  FROM `n_group` n, anlevel  WHERE n.cod_n_group LIKE CONCAT('%',in_code,'%') AND
              n.name_n_group LIKE CONCAT('%',in_name,'%') AND n.id_al LIKE CONCAT('%',in_alid,'%') AND n.nom_n_group = in_nom AND anlevel.id_al = n.id_al;
           END IF;
@@ -34,11 +34,11 @@ BEGIN
           IF (in_alid != 0 AND in_code = -1) THEN
             SELECT n.id_n_group,  n.cod_n_group, n.name_n_group, n.id_al, anlevel.name_al  FROM `n_group` n, anlevel  WHERE n.name_n_group LIKE CONCAT('%',in_name,'%') AND 
             n.id_al LIKE CONCAT('%',in_alid,'%') AND n.nom_n_group = in_nom AND anlevel.id_al = n.id_al;
-          END;
+          END IF;
           IF (in_alid = 0 AND in_code = -1) THEN
             SELECT n.id_n_group,  n.cod_n_group, n.name_n_group, n.id_al,anlevel.name_al  FROM `n_group` n,anlevel  WHERE n.name_n_group LIKE CONCAT('%',in_name,'%') AND 
             n.nom_n_group = in_nom AND anlevel.id_al = n.id_al;
-          END;
+          END IF;
      END IF;
 
      IF (comprator = 6) THEN
