@@ -39,6 +39,9 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
+        setMinimumSize(new java.awt.Dimension(890, 470));
+        setPreferredSize(new java.awt.Dimension(892, 470));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -53,12 +56,34 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
         jPanel4.add(jLabel2);
 
         jTextCod.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextCod.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextCodFocusGained(evt);
+            }
+        });
+        jTextCod.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextCodKeyPressed(evt);
+            }
+        });
+
         jPanel4.add(jTextCod);
 
         jLabel3.setText("\u0418\u043c\u0435:");
         jPanel4.add(jLabel3);
 
         jTextName.setPreferredSize(new java.awt.Dimension(160, 20));
+        jTextName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextNameFocusGained(evt);
+            }
+        });
+        jTextName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextNameKeyPressed(evt);
+            }
+        });
+
         jPanel4.add(jTextName);
 
         jButtonSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Search.png")));
@@ -80,7 +105,7 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 821, Short.MAX_VALUE)
+            .add(0, 881, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -120,7 +145,7 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
 
         jPanel3.add(jButtonPrint);
 
-        jButtonPrnReport.setText("\u041f\u0435\u0447\u0430\u0442 \u0440\u0435\u043f\u043e\u0440\u0442");
+        jButtonPrnReport.setText("\u041f\u0435\u0447\u0430\u0442 \u043e\u0442\u0447\u0435\u0442");
         jPanel3.add(jButtonPrnReport);
 
         jButtonDel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Delete 2.png")));
@@ -158,8 +183,24 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
         getContentPane().add(jPanel3, java.awt.BorderLayout.SOUTH);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-835)/2, (screenSize.height-470)/2, 835, 470);
+        setBounds((screenSize.width-891)/2, (screenSize.height-470)/2, 891, 470);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextCodFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextCodFocusGained
+        jTextCod.selectAll();
+    }//GEN-LAST:event_jTextCodFocusGained
+
+    private void jTextCodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextCodKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); }
+    }//GEN-LAST:event_jTextCodKeyPressed
+
+    private void jTextNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextNameFocusGained
+        jTextName.selectAll();
+    }//GEN-LAST:event_jTextNameFocusGained
+
+    private void jTextNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNameKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); }
+    }//GEN-LAST:event_jTextNameKeyPressed
     
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
         printTable();
@@ -227,7 +268,7 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
     private  nom.storageDB internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
-    public static final String Names[] = {"id", "id_group",
+    public static final String Names[] = {"id", "id_n_group",
     "\u0413\u0440\u0443\u043f\u0438",
     "\u041a\u043e\u0434\u043e\u0432\u0435",
     "\u0418\u043c\u0435",
@@ -256,7 +297,7 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
             model = new imakante.com.CustomTableModel(getConn(), rs,Names);
             table = new imakante.com.CustomTable(model);
             HideColumns(getColumnIndex("id"));
-            HideColumns(getColumnIndex("id_group"));
+            HideColumns(getColumnIndex("id_n_group"));
         } catch(Exception e) { e.printStackTrace(); }
         table.requestFocus();
         try {
@@ -450,7 +491,9 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
         model = new imakante.com.CustomTableModel(getConn(), rs, Names);
         table = new imakante.com.CustomTable(model);
         HideColumns(getColumnIndex("id"));
-        HideColumns(getColumnIndex("id_group"));
+        HideColumns(getColumnIndex("id_n_group"));
+        jTextCod.setText("");
+        jTextName.setText("");
         jScrollPane1.getViewport().add(table);
         jScrollPane1.repaint();
     }
@@ -496,16 +539,17 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
     private void searchRecords() {
         try {
             try {
-                rs = internalObject.searchRecords(Integer.parseInt(jTextCod.getText()), jTextName.getText());
-            } catch (NumberFormatException ex) {
-                ex.printStackTrace();
-                jTextCod.requestFocus();
-            }
+                if (jTextCod.getText().equals("")) {
+                    rs = internalObject.searchRecords(-1, jTextName.getText());
+                } else {
+                    rs = internalObject.searchRecords(Integer.parseInt(jTextCod.getText()), jTextName.getText());
+                }
+            } catch (NumberFormatException ex) { ex.printStackTrace(); jTextCod.requestFocus(); }
             jScrollPane1.remove(table);
-            model = new imakante.com.CustomTableModel(getConn(), rs, null);
+            model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
             HideColumns(getColumnIndex("id"));
-            HideColumns(getColumnIndex("id_group"));
+            HideColumns(getColumnIndex("id_n_group"));
             jScrollPane1.getViewport().add(table);
             jScrollPane1.repaint();
         } catch(Exception e) { e.printStackTrace(); }
@@ -538,7 +582,6 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
     
     private void HideColumns(int col) {
         int iColumn = col;
-// set column width
         table.getColumnModel().getColumn(iColumn).setMaxWidth(0);
         table.getColumnModel().getColumn(iColumn).setMinWidth(0);
         table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
@@ -547,9 +590,9 @@ public class FrmStorage extends  imakante.com.vcomponents.iInternalFrame impleme
     
     private void setAllVariables(){
         setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
-        setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("id_group")));
+        setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("id_n_group")));
         setCod((Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434\u043e\u0432\u0435")));
-        setNames((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435\u043d\u0430")));
+        setNames((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435")));
         setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440")));
     }
     
