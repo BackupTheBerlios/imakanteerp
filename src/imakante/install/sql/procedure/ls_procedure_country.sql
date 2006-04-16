@@ -8,12 +8,11 @@ BEGIN
      END IF;
 
      IF (comprator = 1) THEN
-        INSERT INTO n_country (code_n_country, name_n_country) VALUES(in_code,in_name);
+        INSERT INTO n_country (code_n_country, name_n_country) VALUES(in_code, in_name);
      END IF;
 
      IF (comprator = 2) THEN
-        UPDATE n_country SET code_n_country = in_code, name_n_country = in_name
-           WHERE n_country.id = in_id;
+        UPDATE n_country SET code_n_country = in_code, name_n_country = in_name WHERE n_country.id = in_id;
      END IF;
 
      IF (comprator = 3) THEN
@@ -22,16 +21,16 @@ BEGIN
 
      IF (comprator = 4) THEN
         SELECT n.code_n_country, n.name_n_country FROM n_country n WHERE n.id_n_country = in_id;
-
      END IF;
 
      IF (comprator = 5) THEN
-        IF (comprator = -1)
-        SELECT n.id_n_country, n.code_n_country, n.name_n_country FROM n_country n WHERE n.name_n_country LIKE CONCAT('%',in_name,'%');
+        IF (in_code = -1)
+        SELECT n.id_n_country, n.code_n_country, n.name_n_country FROM n_country n
+            WHERE n.name_n_country LIKE CONCAT('%',in_name,'%');
         END IF;
-        IF (comprator > -1)
-        SELECT n.id_n_country, n.code_n_country, n.name_n_country FROM n_country n WHERE n.code_n_country LIKE CONCAT('%',in_code,'%') AND
-        n.name_n_country LIKE CONCAT('%',in_name,'%');
+        IF (in_code > -1)
+        SELECT n.id_n_country, n.code_n_country, n.name_n_country FROM n_country n
+            WHERE n.code_n_country LIKE CONCAT('%',in_code,'%') AND n.name_n_country LIKE CONCAT('%',in_name,'%');
         END IF;
      END IF;
 

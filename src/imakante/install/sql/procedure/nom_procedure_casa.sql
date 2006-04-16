@@ -19,14 +19,18 @@ BEGIN
         DELETE FROM n_casa  WHERE id_n_casa = in_id;
      END IF;
 
-
      IF (comprator = 5) THEN
-        SELECT n.id_n_casa, n.id_n_group, ng.name_n_group, n.code_n_casa, n.name_n_casa,
-                   n.comments_n_casa FROM n_casa n LEFT OUTER JOIN n_group ng ON ng.id_n_group = n.id_n_group
-                   WHERE n.code_n_casa LIKE CONCAT('%',in_code,'%') AND  n.code_n_casa LIKE CONCAT('%',in_name,'%');
-
+        IF (in_code = -1) THEN
+            SELECT n.id_n_casa, n.id_n_group, ng.name_n_group, n.code_n_casa, n.name_n_casa, n.comments_n_casa 
+                   FROM n_casa n LEFT OUTER JOIN n_group ng ON ng.id_n_group = n.id_n_group
+                   WHERE n.name_n_casa LIKE CONCAT('%',in_name,'%');
+        END IF;
+        IF (in_code > -1) THEN
+            SELECT n.id_n_casa, n.id_n_group, ng.name_n_group, n.code_n_casa, n.name_n_casa, n.comments_n_casa
+                   FROM n_casa n LEFT OUTER JOIN n_group ng ON ng.id_n_group = n.id_n_group
+                   WHERE n.code_n_casa LIKE CONCAT('%',in_code,'%') AND  n.name_n_casa LIKE CONCAT('%',in_name,'%');
+        END IF;
      END IF;
-
 
      IF (comprator = 6) THEN
         SELECT n.id_n_group, n.name_n_group FROM n_group n
