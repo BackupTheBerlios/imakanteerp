@@ -371,6 +371,11 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         });
 
         jTextFieldZadylveniq.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextFieldZadylveniq.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldZadylveniqKeyPressed(evt);
+            }
+        });
 
         jTextFieldConNom.setPreferredSize(new java.awt.Dimension(80, 20));
         jTextFieldConNom.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -395,6 +400,11 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         });
 
         jTextFieldProsro4vane.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextFieldProsro4vane.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldProsro4vaneKeyPressed(evt);
+            }
+        });
 
         jLabel15.setText("\u041c\u041e\u041b \u0438\u043c\u0435:");
 
@@ -1019,6 +1029,18 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextFieldProsro4vaneKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldProsro4vaneKeyPressed
+if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER){
+            jTextFieldProsro4vane.transferFocus();
+        }
+    }//GEN-LAST:event_jTextFieldProsro4vaneKeyPressed
+    
+    private void jTextFieldZadylveniqKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldZadylveniqKeyPressed
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER){
+            jTextFieldZadylveniq.transferFocus();
+        }
+    }//GEN-LAST:event_jTextFieldZadylveniqKeyPressed
     
     private void jTextFieldNomerDocKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNomerDocKeyPressed
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER){
@@ -1225,6 +1247,9 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_TEL,false);
             repainObektData(myParent.getID_Obekt());
         }
+         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9){
+         jTextFieldObektTel.transferFocus();
+         }
     }//GEN-LAST:event_jTextFieldObektTelKeyPressed
     
     private void jTextFieldObektAddressKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldObektAddressKeyPressed
@@ -1273,6 +1298,9 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_NAME,false);
             repainObektData(myParent.getID_Obekt());
         }
+         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER){
+         jTextFieldObektName.transferFocus();
+         }
     }//GEN-LAST:event_jTextFieldObektNameKeyPressed
     
     private void jTextFieldObektNoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldObektNoKeyPressed
@@ -1296,6 +1324,9 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_NO,false);
             repainObektData(myParent.getID_Obekt());
+        }
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER){
+        jTextFieldObektNo.transferFocus();
         }
     }//GEN-LAST:event_jTextFieldObektNoKeyPressed
     
@@ -1321,6 +1352,9 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_TEL,false);
             repainContragentData(myParent.getID_Contragent());
         }
+         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER) {
+         jTextFieldContTel.transferFocus();
+         }
     }//GEN-LAST:event_jTextFieldContTelKeyPressed
     
     private void jTextFieldContrMOLKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldContrMOLKeyPressed
@@ -1344,6 +1378,9 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_MOL,false);
             repainContragentData(myParent.getID_Contragent());
+        }
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER) {
+            jTextFieldContrMOL.transferFocus();
         }
     }//GEN-LAST:event_jTextFieldContrMOLKeyPressed
     
@@ -1369,10 +1406,13 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_ADDRESS,false);
             repainContragentData(myParent.getID_Contragent());
         }
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER){
+            jTextFieldAddress.transferFocus();
+        }
     }//GEN-LAST:event_jTextFieldAddressKeyPressed
     
     private void jTextFieldContrNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldContrNameKeyPressed
-// TODO add your handling code here:
+        
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableIncludeTextContragent(jTextFieldContrName.getText(),CONTARGENT_NAME);
             Connection conn1 = myParent.getCountriesT().getConn();
@@ -1392,6 +1432,9 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_NAME,false);
             repainContragentData(myParent.getID_Contragent());
+        }
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER){
+            jTextFieldContrName.transferFocus();
         }
     }//GEN-LAST:event_jTextFieldContrNameKeyPressed
     
@@ -1417,10 +1460,13 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_DAN_NO,false);
             repainContragentData(myParent.getID_Contragent());
         }
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER){
+            jTextFieldDanNomer.transferFocus();
+        }
     }//GEN-LAST:event_jTextFieldDanNomerKeyPressed
     
     private void jTextFieldBulstatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBulstatKeyPressed
-// TODO add your handling code here:
+        
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F7) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableIncludeTextContragent(jTextFieldBulstat.getText(),CONTARGENT_BULSTAT);
             Connection conn1 = myParent.getCountriesT().getConn();
@@ -1440,6 +1486,9 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_BULSTAT,false);
             repainContragentData(myParent.getID_Contragent());
+        }
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER){
+            jTextFieldBulstat.transferFocus();
         }
     }//GEN-LAST:event_jTextFieldBulstatKeyPressed
     
