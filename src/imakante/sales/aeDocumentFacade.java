@@ -77,7 +77,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     
     public static int tetstcount =0;
     
-    
+   
     
     /** Creates new form aeGroup */
     public aeDocumentFacade(imakante.com.vcomponents.iInternalFrame frame, boolean modal, boolean isnew,
@@ -96,6 +96,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         jTable1.setModel(new docLineTableModel());
+        
         jScrollPane2.getViewport().add(jTable1);
         jScrollPane2.repaint();
         setInputLisener();
@@ -161,6 +162,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jLabelDocType = new javax.swing.JLabel();
         jTextFieldNomerDoc = new javax.swing.JTextField();
         jXDateDocument = new org.jdesktop.swingx.JXDatePicker();
+        jLabel24 = new javax.swing.JLabel();
+        jXDateCurs = new org.jdesktop.swingx.JXDatePicker();
         jPanelContragent = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -242,12 +245,10 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jLabel27 = new javax.swing.JLabel();
         jTextFieldStorageTO = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
         jPanelCreateFacturi = new javax.swing.JPanel();
         jCheckBox1 = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
         jButtonClose = new javax.swing.JButton();
-        jXDateCurs = new org.jdesktop.swingx.JXDatePicker();
         jLabelInfoCurs = new javax.swing.JLabel();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -301,7 +302,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jPanel3.add(jButtonToEnd);
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 250, 60));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 250, 70));
 
         jPanelHead.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -314,7 +315,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jLabelDocType.setFont(new java.awt.Font("Tahoma", 1, 16));
         jLabelDocType.setText("\u041f\u0420\u0418\u0415\u041c\u0410\u0422\u0415\u041b\u041d\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410");
-        jPanelHead.add(jLabelDocType, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, -1, -1));
+        jPanelHead.add(jLabelDocType, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
 
         jTextFieldNomerDoc.setInputVerifier(new imakante.com.InputIntegerVerifier());
         jTextFieldNomerDoc.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -330,7 +331,18 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jXDateDocument.setPreferredSize(new java.awt.Dimension(127, 20));
         jPanelHead.add(jXDateDocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, -1));
 
-        jPanel2.add(jPanelHead, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 490, 60));
+        jLabel24.setText("\u0414\u0430\u0442\u0430 \u043d\u0430 \u043a\u0443\u0440\u0441:");
+        jPanelHead.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, -1));
+
+        jXDateCurs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jXDateCursActionPerformed(evt);
+            }
+        });
+
+        jPanelHead.add(jXDateCurs, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, -1, -1));
+
+        jPanel2.add(jPanelHead, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 490, 70));
 
         jPanelContragent.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel3.setText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442 No:");
@@ -400,11 +412,6 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         });
 
         jTextFieldProsro4vane.setPreferredSize(new java.awt.Dimension(80, 20));
-        jTextFieldProsro4vane.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextFieldProsro4vaneKeyPressed(evt);
-            }
-        });
 
         jLabel15.setText("\u041c\u041e\u041b \u0438\u043c\u0435:");
 
@@ -495,7 +502,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     .add(jTextFieldContTel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel2.add(jPanelContragent, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 730, 120));
+        jPanel2.add(jPanelContragent, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 730, 120));
 
         jPanelObekt.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel11.setText("\u041e\u0431\u0435\u043a\u0442 No:");
@@ -580,7 +587,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                             .add(jLabel12))))
                 .add(59, 59, 59))
         );
-        jPanel2.add(jPanelObekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 730, 70));
+        jPanel2.add(jPanelObekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 730, 70));
 
         jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 2, 11));
 
@@ -616,7 +623,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jXDateDeliver.setPreferredSize(new java.awt.Dimension(100, 24));
         jPanel4.add(jXDateDeliver);
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 430, 60));
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 430, 60));
 
         jPanelDocLine.setLayout(new javax.swing.BoxLayout(jPanelDocLine, javax.swing.BoxLayout.X_AXIS));
 
@@ -629,7 +636,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jPanelDocLine.add(jScrollPane2);
 
-        jPanel2.add(jPanelDocLine, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 730, 200));
+        jPanel2.add(jPanelDocLine, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 730, 170));
 
         jPanelPrice.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel19.setText("\u0412\u0438\u0434 \u043f\u043b\u0430\u0449\u0430\u043d\u0435:");
@@ -666,7 +673,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                         .add(jComboBoxVidPla6tane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
-        jPanel2.add(jPanelPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 340, 60));
+        jPanel2.add(jPanelPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, 340, 60));
 
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabelDDSOsnovaText.setText("\u0414\u0430\u043d\u044a\u0447\u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0430:");
@@ -719,7 +726,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     .add(jLabelDDSOsnova))
                 .add(21, 21, 21))
         );
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 530, 390, 60));
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 510, 390, 60));
 
         jButtonCreateDocFacade.setText("\u0421\u044a\u0437\u0434\u0430\u0432\u0430\u043d\u0435 \u043d\u0430 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442");
         jButtonCreateDocFacade.addActionListener(new java.awt.event.ActionListener() {
@@ -728,7 +735,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             }
         });
 
-        jPanel2.add(jButtonCreateDocFacade, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 640, -1, -1));
+        jPanel2.add(jButtonCreateDocFacade, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 620, -1, -1));
 
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel30.setText("\u041d\u0430\u043b\u0438\u0447\u043d\u0438:");
@@ -820,7 +827,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 .addContainerGap())
             .add(jPanelPriceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
         );
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 270, 300, 60));
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 280, 300, 60));
 
         jSplitPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jSplitPane1.setDividerLocation(0);
@@ -892,7 +899,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         );
         jSplitPane1.setRightComponent(jPanelUser);
 
-        jPanel2.add(jSplitPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, 730, 50));
+        jPanel2.add(jSplitPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, 730, 50));
 
         jButton2.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435 \u043d\u0430 \u043b\u0438\u043d\u0438\u044f");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -901,7 +908,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             }
         });
 
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 150, -1));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 620, 150, -1));
 
         jButtonAnulirane.setText("\u0410\u043d\u0443\u043b\u0438\u0440\u0430\u043d\u0435");
         jButtonAnulirane.addActionListener(new java.awt.event.ActionListener() {
@@ -910,7 +917,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             }
         });
 
-        jPanel2.add(jButtonAnulirane, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 640, -1, -1));
+        jPanel2.add(jButtonAnulirane, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 620, -1, -1));
 
         jButtonDellDocFadade.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435 \u043d\u0430 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442");
         jButtonDellDocFadade.addActionListener(new java.awt.event.ActionListener() {
@@ -919,7 +926,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             }
         });
 
-        jPanel2.add(jButtonDellDocFadade, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 640, -1, -1));
+        jPanel2.add(jButtonDellDocFadade, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 620, -1, -1));
 
         jButton3.setText("\u0414\u043e\u0431\u0430\u0432\u044f\u043d\u0435 \u043d\u0430 \u043b\u0438\u043d\u0438\u044f");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -928,7 +935,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             }
         });
 
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 640, -1, -1));
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 620, -1, -1));
 
         jPanelStorageINOUT.setLayout(new java.awt.GridBagLayout());
 
@@ -974,10 +981,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jPanel2.add(jPanelStorageINOUT, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 300, 50));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 770, 670));
-
-        jLabel24.setText("\u0414\u0430\u0442\u0430 \u043d\u0430 \u043a\u0443\u0440\u0441:");
-        getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 660, -1, -1));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 770, 650));
 
         jPanelCreateFacturi.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
 
@@ -1002,7 +1006,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jPanelCreateFacturi.add(jButton1);
 
-        getContentPane().add(jPanelCreateFacturi, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 650, 420, 50));
+        getContentPane().add(jPanelCreateFacturi, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 630, 420, 50));
 
         jButtonClose.setFont(new java.awt.Font("Tahoma", 1, 11));
         jButtonClose.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
@@ -1013,28 +1017,14 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             }
         });
 
-        getContentPane().add(jButtonClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 690, -1, -1));
-
-        jXDateCurs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jXDateCursActionPerformed(evt);
-            }
-        });
-
-        getContentPane().add(jXDateCurs, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 680, -1, -1));
+        getContentPane().add(jButtonClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 640, -1, -1));
 
         jLabelInfoCurs.setForeground(new java.awt.Color(255, 0, 51));
         jLabelInfoCurs.setText("\u041d\u0435 \u0435 \u0438\u0437\u0431\u0440\u0430\u043d\u0430 \u043f\u043e\u0434\u0445\u043e\u0434\u044f\u0449\u0430 \u0434\u0430\u0442\u0430!");
-        getContentPane().add(jLabelInfoCurs, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 710, -1, -1));
+        getContentPane().add(jLabelInfoCurs, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 640, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextFieldProsro4vaneKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldProsro4vaneKeyPressed
-if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER){
-            jTextFieldProsro4vane.transferFocus();
-        }
-    }//GEN-LAST:event_jTextFieldProsro4vaneKeyPressed
     
     private void jTextFieldZadylveniqKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldZadylveniqKeyPressed
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER){
@@ -3862,6 +3852,9 @@ if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER){
             }
         }
     }
+    
+   
+    
 }// end class
 
 
