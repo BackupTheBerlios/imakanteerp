@@ -24,11 +24,11 @@ BEGIN
      END IF;
 
      IF (comprator = 5) THEN
-        IF (in_code = -1)
+        IF (in_code = -1) THEN
         SELECT n.id_n_country, n.code_n_country, n.name_n_country FROM n_country n
             WHERE n.name_n_country LIKE CONCAT('%',in_name,'%');
         END IF;
-        IF (in_code > -1)
+        IF (in_code > -1) THEN
         SELECT n.id_n_country, n.code_n_country, n.name_n_country FROM n_country n
             WHERE n.code_n_country LIKE CONCAT('%',in_code,'%') AND n.name_n_country LIKE CONCAT('%',in_name,'%');
         END IF;
