@@ -96,6 +96,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         jTable1.setModel(new docLineTableModel());
+        jTable1.setRowSelectionAllowed(false); // zabranqvame selekciqta na celiq red
+        jTable1.setCellSelectionEnabled(true);
         
         jScrollPane2.getViewport().add(jTable1);
         jScrollPane2.repaint();
@@ -132,7 +134,11 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         strDate += "/" + String.valueOf(jXDateCurs.getDate().getYear()+1900);
         String DateSQLFormat = dateManip.convertDate(strDate);
         arrayRate = myParent.getCountriesT().getCurentRate(DateSQLFormat);
-        if(arrayRate.size()<2) jLabelInfoCurs.setVisible(true);
+        if(arrayRate.size()<2)
+        {
+            if(myParent.getDocFacadeType()!=NAREZDANE_ZA_PREHVYRQNE)
+            jLabelInfoCurs.setVisible(true);
+        }
         else {
             jLabelInfoCurs.setVisible(false);
             rate=1;
@@ -1048,7 +1054,11 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         String DateSQLFormat = dateManip.convertDate(strDate);
         System.out.println("DATA -->>>" + DateSQLFormat);
         arrayRate = myParent.getCountriesT().getCurentRate(DateSQLFormat);
-        if(arrayRate.size()<2) jLabelInfoCurs.setVisible(true);
+        if(arrayRate.size()<2)
+        {
+            
+            jLabelInfoCurs.setVisible(true);
+        }
         else {
             jLabelInfoCurs.setVisible(false);;
             rate=1;
@@ -2620,10 +2630,18 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                         
                         
                     }
-                    
+                    if(columnSelect == 2 || columnSelect == 1 || columnSelect == 3 || columnSelect == 4 || columnSelect == 5
+                            || columnSelect == 6 || columnSelect == 7 || columnSelect == 8)
+                    {
+                        if(!myParent.getIsSelectProduct()) // ako ne e minal prez formata za izbor na produkt
+                        {
+                           jTable1.changeSelection(jTable1.getSelectedRow(),0,false,false);
+                           System.out.println("Return to begin DocLine");
+                        }
+                    }
                     if(columnSelect == 3)   // cenova lista ---------------------------------------------
                     {
-                        
+                     
                         int pp = (Integer)  jTable1.getValueAt(rowSelect,columnSelect);
                         double p[] = new double[3];
                         if(!isProductIN)
@@ -2662,7 +2680,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     }
                     if(columnSelect == 4)   // broiki ot produkta ---------------------------------------------
                     {
-                        
+                      
                         int br = (Integer) jTable1.getValueAt(rowSelect,columnSelect) ;
                         br = java.lang.Math.abs(br);
                         if(isProductIN) {
@@ -2677,6 +2695,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                             jTable1.setValueAt(calculateProductDescription(br,productDescription_2,productDescription_3)[2],jTable1.getSelectedRow(),7);
                             jTable1.setValueAt(calculateTotalPrice(myParent.getPriceOneProduct(),br),jTable1.getSelectedRow(),11);
                             }
+                    
                         
                     }
                     if(columnSelect == 5)   // razfasovka 1 ---------------------------------------------
@@ -3408,12 +3427,17 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             }
             case NAREZDANE_ZA_PREHVYRQNE:
             {
+                rate=1;
                 jLabelDocType.setText("\u041d\u0410\u0420\u0415\u0416\u0414\u0410\u041d\u0415 \u0417\u0410 \u041f\u0420\u0415\u0425\u0412\u042a\u0420\u041b\u042f\u041d\u0415");
                 jPanelObekt.setVisible(false);
                 jPanelContragent.setVisible(false);
                 jPanel4.setVisible(false);
                 jPanelCreateFacturi.setVisible(false);
-                
+                jXDateCurs.setVisible(false);
+               
+                jLabelInfoCurs.setVisible(false);
+                jLabel24.setVisible(false);
+                 rate=1;
                 
                 break;
             }
