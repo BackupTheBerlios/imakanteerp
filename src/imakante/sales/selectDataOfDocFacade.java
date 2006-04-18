@@ -45,17 +45,20 @@ public class selectDataOfDocFacade   extends imakante.com.vcomponents.iDialog
                                       "id_nm","Телефон на контрагента","Fax на контрагента","Email на контрагента",
                                       "Web на контрагента", "id_mol","МОЛ на контрагента"};
                         columnName = columnNameContragent;
+                        this.setTitle("К О Н Т Р А Г Е Н Т");
                      }
         
          if(sqlselect == OBEKT_ADDRESS | sqlselect == OBEKT_NAME | sqlselect == OBEKT_NO | sqlselect == OBEKT_TEL)
                     {
                          String columnNameObekt[] = {"id_n_obekt","Код","Име на обекта","Адрес на обекта","id_ls_n_person","Телефон на обекта"}; // da se napi6at imenata na kolonite
                          columnName = columnNameObekt;
+                         this.setTitle("О Б Е К Т");
                     }
          if(sqlselect == DISTRIBUTOR_DELIVER)
                    {
                         String columnNameDistDeliver[] = {"id_ls_n_person","Код","ЕГН","НЛК","Име","Коментар"}; // da se napi6at imenata ba kolonite
                         columnName = columnNameDistDeliver;
+                         this.setTitle("ДИСТРИБУТОР/ДОСТАВЧИК");
                    }
         model = new imakante.com.CustomTableModel(conn,rs, columnName);
         table = new imakante.com.CustomTable(model);
