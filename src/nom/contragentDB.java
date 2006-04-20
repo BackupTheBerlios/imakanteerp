@@ -3,7 +3,7 @@ package nom;
 
 public class contragentDB extends imakante.com.dbObject {
     
-    private java.sql.Connection conn;
+   
     private int id_nm, id_mol, id_oso, flag;
     private String bull, dan, tel, fax, email, web;
     
@@ -50,7 +50,7 @@ public class contragentDB extends imakante.com.dbObject {
             int in_id_oso) {
         setComprator(1);
         setCode(in_cod);
-        this.setName(in_name);
+        setName(in_name);
         this.bull = in_bul;
         this.dan = in_dan;
         this.setAddress(in_address);
@@ -346,12 +346,12 @@ public class contragentDB extends imakante.com.dbObject {
         int oldIn_od = getId();
         setId(in_id_contragent_old);
         setComprator(17);
-        java.sql.ResultSet rs1= null;
+       
         try {
             registerParameters();
-            rs1 = getCstm().executeQuery();
-            while(rs1.next()) {
-                arrayIdOnProduct.add(new Integer(rs1.getInt("id_pm")));
+            setRs(getCstm().executeQuery());
+            while(getRs().next()) {
+                arrayIdOnProduct.add(new Integer(getRs().getInt("id_pm")));
             }
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
         return arrayIdOnProduct;
