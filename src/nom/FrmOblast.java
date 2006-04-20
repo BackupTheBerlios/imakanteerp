@@ -1,7 +1,5 @@
 
-
 package nom;
-
 
 import java.awt.event.WindowListener;
 import java.awt.print.PrinterException;
@@ -257,12 +255,7 @@ public class FrmOblast extends  imakante.com.vcomponents.iInternalFrame implemen
     }//GEN-LAST:event_jButtonRefreshActionPerformed
     
     private void jButtonDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDelActionPerformed
-        if(table.getSelectedRow() != -1) {
-            setRow(table.getSelectedRow());
-            setId((Integer)table.getValueAt(getRow(),0));
-            countriesT.deleteRow(getId());
-            refreshTable();
-        }
+        delRecord();
     }//GEN-LAST:event_jButtonDelActionPerformed
     
     private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
@@ -636,5 +629,14 @@ public class FrmOblast extends  imakante.com.vcomponents.iInternalFrame implemen
         } catch(java.sql.SQLException sqle) {  }
         rs = null;
         countriesT.close();
+    }
+
+    private void delRecord() {
+        if(table.getSelectedRow() != -1) {
+            setRow(table.getSelectedRow());
+            setAllVariables();
+            countriesT.deleteRow(getId());
+            refreshTable();
+        }
     }
 }// end class

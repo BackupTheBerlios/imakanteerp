@@ -184,13 +184,7 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
     }//GEN-LAST:event_jButtonRefreshActionPerformed
     
     private void jButtonDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDelActionPerformed
-        if(table.getSelectedRow() != -1) {
-            setRow(table.getSelectedRow());
-            setId((Integer)table.getValueAt(getRow(),0));
-            internalObject.deleteRow(getId());
-            refreshTable();
-        }
-        
+        delRecord();
     }//GEN-LAST:event_jButtonDelActionPerformed
     
     private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
@@ -601,6 +595,15 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
         setCodLat((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434 \u041b\u0430\u0442\u0438\u043d\u0438\u0446\u0430")));
         setNames((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435\u043d\u0430")));
         setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440")));
+    }
+
+    private void delRecord() {
+        if(table.getSelectedRow() != -1) {
+            setRow(table.getSelectedRow());
+            setAllVariables();
+            internalObject.deleteRow(getId());
+            refreshTable();
+        }
     }
     
     

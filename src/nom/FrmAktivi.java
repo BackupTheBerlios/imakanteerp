@@ -211,7 +211,7 @@ public class FrmAktivi extends  imakante.com.vcomponents.iInternalFrame implemen
 // TODO add your handling code here:
         if(table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());
-            setId((Integer)table.getValueAt(getRow(),0));
+            setAllVariables();
             countriesT.deleteRow(getId());
             refreshTable();
         }
@@ -585,6 +585,10 @@ public class FrmAktivi extends  imakante.com.vcomponents.iInternalFrame implemen
         table = new imakante.com.CustomTable(model);
         jScrollPane1.getViewport().add(table);
         jScrollPane1.repaint();
+        
+    }
+    
+    private void setAllVariables() {
         
     }
 }// end class

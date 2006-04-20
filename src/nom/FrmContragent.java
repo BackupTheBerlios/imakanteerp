@@ -283,7 +283,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         if(table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());
-            setId((Integer)table.getValueAt(getRow(),0));
+            setAllVariable();
             getContragentDB().deleteRow(getId());
             refreshTable();
         }

@@ -1,7 +1,5 @@
 
-
 package nom;
-
 
 import java.awt.event.WindowListener;
 import java.awt.print.PrinterException;
@@ -219,25 +217,15 @@ catch(Exception e)
     }//GEN-LAST:event_jButton1ActionPerformed
     
     private void jButtonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshActionPerformed
-// TODO add your handling code here:
         refreshTable();
     }//GEN-LAST:event_jButtonRefreshActionPerformed
     
     private void jButtonDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDelActionPerformed
-// TODO add your handling code here:
-        if(table.getSelectedRow() != -1)
-{
-            setRow(table.getSelectedRow());
-            setId((Integer)table.getValueAt(getRow(),0));
-            countriesT.deleteRow(getId());
-            refreshTable();
-        }
-        
+        delRecord();
     }//GEN-LAST:event_jButtonDelActionPerformed
     
     private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
-// TODO add your handling code here:
-        
+       
         if (table.getSelectedRow() != -1)
 {
             
@@ -641,5 +629,18 @@ catch(ArrayIndexOutOfBoundsException aioobe)
         jScrollPane1.getViewport().add(table);
         jScrollPane1.repaint();
         
+    }
+
+    private void delRecord() {
+        if(table.getSelectedRow() != -1) {
+            setRow(table.getSelectedRow());
+            setAllVariables();
+            countriesT.deleteRow(getId());
+            refreshTable();
+        }
+    }
+
+    private void setAllVariables() {
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 }// end class

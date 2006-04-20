@@ -322,7 +322,7 @@ public class FrmDoctype extends imakante.com.vcomponents.iInternalFrame implemen
     private void deleteRecord() {
         if(table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());
-            setId((Integer)table.getValueAt(getRow(),0));
+            setAllVariables();
             doctypeObject.deleteRow(getId());
             refreshTable();
         }

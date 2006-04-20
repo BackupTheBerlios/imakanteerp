@@ -264,12 +264,7 @@ public class FrmGroup extends imakante.com.vcomponents.iInternalFrame implements
     }//GEN-LAST:event_jButtonRefreshActionPerformed
     
     private void jButtonDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDelActionPerformed
-        if(table.getSelectedRow() != -1) {
-            setRow(table.getSelectedRow());
-            setId((Integer)table.getValueAt(getRow(),0));
-            internalObject.deleteRow(getId());
-            refreshTable();
-        }
+        delRecord();
     }//GEN-LAST:event_jButtonDelActionPerformed
     
     private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
@@ -632,6 +627,15 @@ public class FrmGroup extends imakante.com.vcomponents.iInternalFrame implements
         } catch(java.sql.SQLException sqle) {  }
         rs = null;
         internalObject.close();
+    }
+
+    private void delRecord() {
+        if(table.getSelectedRow() != -1) {
+            setRow(table.getSelectedRow());
+            setAllVariables();
+            internalObject.deleteRow(getId());
+            refreshTable();
+        }
     }
     
 }// end class

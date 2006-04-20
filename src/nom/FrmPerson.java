@@ -37,9 +37,10 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0438 \u041b\u0438\u0446\u0430");
+        setTitle("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0430 \u041b\u0438\u0446\u0430");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
@@ -278,12 +279,12 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     // End of variables declaration//GEN-END:variables
     
     //--------------- My Variables
-    private int id=0; // imena ot tablicata
-    private int EGNe_groupe =0; // imena ot tablicata
-    private int Code= 0;
+    private int id = 0; // imena ot tablicata
+    private int id_group = 0; // imena ot tablicata
+    private int Code = 0;
     private String EGN = "";
     private String NLK = "";
-    private String name,comment; // imena ot tablicata
+    private String name, comment; // imena ot tablicata
     private String namesG[]; //imena na grupi
     private int selectComboBoxItem;
     private  boolean atBegining=false;
@@ -296,9 +297,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     private  nom.dbPerson internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
-    public static final String Names[] = {
-        "id",
-        "id_group",
+    public static final String Names[] = { "id", "id_group",
         "\u0413\u0440\u0443\u043f\u0430 \u043b\u0438\u0446\u0430",
         "\u041a\u043e\u0434",
         "\u0415\u0413\u041d",
@@ -316,7 +315,6 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
             }
         } catch(Exception e) { e.printStackTrace(); }
     }
-    
     
     private void constructObject() {
         try {
@@ -419,12 +417,20 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
         return id;
     }
     
+    public int getCode() {
+        return Code;
+    }
+    
+    public void setCode(int Code) {
+        this.Code = Code;
+    }
+    
     public void setIDG(int Gr) {
-        this.EGNe_groupe = Gr;
+        this.id_group = Gr;
     }
     
     public int getIDG() {
-        return EGNe_groupe;
+        return id_group;
     }
     
     public void setEGN(String EGN) {
@@ -600,7 +606,7 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     private void delRecord(){
         if(table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());
-            setId((Integer)table.getValueAt(getRow(),0));
+            setAllVariables();
             internalObject.deleteRow(getId());
             refreshTable();
         }
@@ -614,6 +620,32 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
         this.conn = conn;
     }
     
+    private int getColumnIndex(String in) {
+        int count = table.getColumnCount();
+        for(int i=0; i < count; i++) {
+            if(table.getColumnName(i).equals(in)) return i;
+        }
+        return 0;
+    }
+    
+    private void HideColumns(int col) {
+        int iColumn = col;
+        table.getColumnModel().getColumn(iColumn).setMaxWidth(0);
+        table.getColumnModel().getColumn(iColumn).setMinWidth(0);
+        table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
+        table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
+    }
+    
+    private void setAllVariables() {
+        setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
+        setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("id_group")));
+        setCode((Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434")));
+        setEGN((String) table.getValueAt(getRow(), getColumnIndex("\u0415\u0413\u041d")));
+        setNLK((String) table.getValueAt(getRow(), getColumnIndex("\u041d\u041b\u041a")));
+        setNames((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435\u043d\u0430")));
+        setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440\u0438")));
+    }
+    
     private void unload() {
         closeResource();
         this.dispose();
@@ -625,42 +657,5 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
         } catch(java.sql.SQLException sqle) {  }
         rs = null;
         internalObject.close();
-    }
-    private int getColumnIndex(String in) //test
-    {
-        int count = table.getColumnCount();
-        for(int i=0; i < count; i++) {
-            if(table.getColumnName(i).equals(in)) return i;
-        }
-        return 0;
-    }
-    
-    
-    
-    private void HideColumns(int col) {
-        int iColumn = col;
-// set column width
-        table.getColumnModel().getColumn(iColumn).setMaxWidth(0);
-        table.getColumnModel().getColumn(iColumn).setMinWidth(0);
-        table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
-        table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
-        
-    }
-    private void setAllVariables(){
-        setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
-        setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("id_group")));
-        setCode((Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434")));
-        setEGN((String) table.getValueAt(getRow(), getColumnIndex("\u0415\u0413\u041d")));
-        setNLK((String) table.getValueAt(getRow(), getColumnIndex("\u041d\u041b\u041a")));
-        setNames((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435\u043d\u0430")));
-        setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440\u0438")));
-    }
-    
-    public int getCode() {
-        return Code;
-    }
-    
-    public void setCode(int Code) {
-        this.Code = Code;
     }
 }

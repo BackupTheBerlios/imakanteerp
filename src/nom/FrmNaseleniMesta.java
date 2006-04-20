@@ -1,7 +1,5 @@
 
-
 package nom;
-
 
 import java.awt.event.WindowListener;
 import java.awt.print.PrinterException;
@@ -259,12 +257,7 @@ public class FrmNaseleniMesta extends  imakante.com.vcomponents.iInternalFrame i
     }//GEN-LAST:event_jButtonRefreshActionPerformed
     
     private void jButtonDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDelActionPerformed
-        if(table.getSelectedRow() != -1) {
-            setRow(table.getSelectedRow());
-            setId((Integer)table.getValueAt(getRow(),0));
-            countriesT.deleteRow(getId());
-            refreshTable();
-        }
+        delRedord();
     }//GEN-LAST:event_jButtonDelActionPerformed
     
     private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
@@ -653,5 +646,14 @@ public class FrmNaseleniMesta extends  imakante.com.vcomponents.iInternalFrame i
         } catch(java.sql.SQLException sqle) {  }
         rs = null;
         countriesT.close();
+    }
+
+    private void delRedord() {
+        if(table.getSelectedRow() != -1) {
+            setRow(table.getSelectedRow());
+            setAllVariable();
+            countriesT.deleteRow(getId());
+            refreshTable();
+        }
     }
 }// end class

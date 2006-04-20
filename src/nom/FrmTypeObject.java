@@ -1,3 +1,4 @@
+
 package nom;
 
 import imakante.com.CustomTable;
@@ -15,9 +16,7 @@ public class FrmTypeObject extends  imakante.com.vcomponents.iInternalFrame impl
         constructObject(); // inicializira class otgovarq6t za vryzkata s DB
         initTable();
         initComponents();
-        
     }
-    
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -160,8 +159,6 @@ public class FrmTypeObject extends  imakante.com.vcomponents.iInternalFrame impl
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
-// TODO add your handling code here:
-        
         try {
             java.text.MessageFormat headerFormat = new java.text.MessageFormat("Group");
             java.text.MessageFormat footerFormat = new java.text.MessageFormat("Page. "+"- {0} -"+" IMAKANTE' ");
@@ -179,7 +176,7 @@ public class FrmTypeObject extends  imakante.com.vcomponents.iInternalFrame impl
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         try {
-        //    rs = internalObject.searchRecords(jTextCod.getText(),jTextName.getText());
+            //    rs = internalObject.searchRecords(jTextCod.getText(),jTextName.getText());
             jScrollPane1.remove(table);
             model = new imakante.com.CustomTableModel(getConn(), rs, null);
             table = new imakante.com.CustomTable(model);
@@ -192,19 +189,11 @@ public class FrmTypeObject extends  imakante.com.vcomponents.iInternalFrame impl
     }//GEN-LAST:event_jButton1ActionPerformed
     
     private void jButtonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshActionPerformed
-// TODO add your handling code here:
         refreshTable();
     }//GEN-LAST:event_jButtonRefreshActionPerformed
     
     private void jButtonDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDelActionPerformed
-// TODO add your handling code here:
-        if(table.getSelectedRow() != -1) {
-            setRow(table.getSelectedRow());
-            setId((Integer)table.getValueAt(getRow(),0));
-            internalObject.deleteRow(getId());
-            refreshTable();
-        }
-        
+        delRecord();
     }//GEN-LAST:event_jButtonDelActionPerformed
     
     private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
@@ -237,7 +226,7 @@ public class FrmTypeObject extends  imakante.com.vcomponents.iInternalFrame impl
         setCod("");
         setNames("");
         setComment("");
-       // internalObject.insertRow(getCod(),getNames(),getComment());
+        // internalObject.insertRow(getCod(),getNames(),getComment());
         setId(internalObject.getMaxId());
         nom.aeTypeObject TypeObject = new nom.aeTypeObject(this, true);
         TypeObject.setVisible(true);
@@ -567,28 +556,34 @@ public class FrmTypeObject extends  imakante.com.vcomponents.iInternalFrame impl
         this.conn = conn;
     }
     
-    private void executeHide(){
-    
-    
+    private void executeHide() {
+        
     }
     
     
-    private void executeUnhide(){
-    
-    
-    
+    private void executeUnhide() {
+        
     }
-    
-    //Method for hiding column
     
     private void HideColumns(int col) {
         int iColumn = col;
-        // set column width
         table.getColumnModel().getColumn(iColumn).setMaxWidth(0);
         table.getColumnModel().getColumn(iColumn).setMinWidth(0);
         table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
         table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
-        
+    }
+
+    private void delRecord() {
+        if(table.getSelectedRow() != -1) {
+            setRow(table.getSelectedRow());
+            setAllVariables();
+            internalObject.deleteRow(getId());
+            refreshTable();
+        }
+    }
+
+    private void setAllVariables() {
+        throw new UnsupportedOperationException("Not yet implemented");
     }
     
 }// end class

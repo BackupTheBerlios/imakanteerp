@@ -12,7 +12,7 @@ BEGIN
      END IF;
 
      IF (comprator = 2) THEN
-        UPDATE n_country SET code_n_country = in_code, name_n_country = in_name WHERE n_country.id = in_id;
+        UPDATE n_country SET code_n_country = in_code, name_n_country = in_name WHERE n_country.id_n_country = in_id;
      END IF;
 
      IF (comprator = 3) THEN

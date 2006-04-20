@@ -513,7 +513,7 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
     private void delRecord(){
         if(table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());
-            setId((Integer)table.getValueAt(getRow(),0));
+            setAllVariables();
             internalObject.deleteRow(getId());
             refreshTable();
         }

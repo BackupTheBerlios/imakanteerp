@@ -263,7 +263,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     private void deleteRecord() {
         if(table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());
-            setId((Integer)table.getValueAt(getRow(),0));
+            setAllVariables();
             internalObject.deleteRow(getId());
             refreshTable();
         }

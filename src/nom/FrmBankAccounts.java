@@ -533,7 +533,7 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
     private void delRecord(){
         if(table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());
-            setId((Integer)table.getValueAt(getRow(),0));
+            setAllVariables();
             internalObject.deleteRow(getId());
             refreshTable();
         }
