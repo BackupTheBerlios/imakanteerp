@@ -14,7 +14,7 @@ public abstract class dbObject extends imakante.com.imakanteObject implements db
     private int comprator = 1;
     private int id = 0;
     private int id_groupe = 0;
-    private int code = 0;
+    private int code;
     private String name;
     private String baccount;
     private String address;
@@ -124,13 +124,11 @@ public abstract class dbObject extends imakante.com.imakanteObject implements db
         return getRs();
     }
     
-    public int getCode() {
-        return code;
-    }
+ 
     
     public void insertRow(int in_code, int in_id_groupe) {
         setComprator(1);
-        this.code = in_code;
+        setCode(in_code);
         this.name = "";
         this.id_groupe = in_id_groupe;
         this.comment = "";
@@ -190,10 +188,16 @@ public abstract class dbObject extends imakante.com.imakanteObject implements db
         this.stmt = stm;
     }
     
-    public void setCode(int anid) {
-        this.code = anid;
-    }
+  
     
     protected abstract void registerParameters();
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
     
 }

@@ -1,7 +1,7 @@
 ﻿DELIMITER $$
 
 DROP PROCEDURE IF EXISTS nom_procedure_contragent $$
-CREATE PROCEDURE nom_procedure_contragent (IN comprator TINYINT,  IN in_id INT(10),      IN in_code INT(11),     IN in_name VARCHAR(45),
+CREATE PROCEDURE nom_procedure_contragent (IN comprator INT(6),  IN in_id INT(10),      IN in_code INT(11),     IN in_name VARCHAR(45),
                                             IN in_bul VARCHAR(13), IN in_dan VARCHAR(11), IN in_address VARCHAR(35), IN in_id_nm INT(10),
                                             IN in_tel VARCHAR(12), IN in_fax VARCHAR(12), IN in_email VARCHAR(20),   IN in_web VARCHAR(20),
                                             IN in_id_mol INT(10),  IN in_id_oso INT(10),  IN in_flag TINYINT)
@@ -50,6 +50,10 @@ BEGIN
 
      IF (comprator = 7) THEN
         SELECT MAX(n.id_contragent) AS id FROM `n_contragent` n;
+     END IF;
+
+     IF (comprator = 8) THEN
+        SELECT MAX(n.code_contragent) AS id FROM `n_contragent` n;
      END IF;
 
      IF (comprator = 10) THEN

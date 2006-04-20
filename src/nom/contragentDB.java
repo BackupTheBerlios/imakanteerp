@@ -49,7 +49,7 @@ public class contragentDB extends imakante.com.dbObject {
             String in_fax, String in_email, String in_web, int in_id_mol,
             int in_id_oso) {
         setComprator(1);
-        this.setCode(in_cod);
+        setCode(in_cod);
         this.setName(in_name);
         this.bull = in_bul;
         this.dan = in_dan;
@@ -138,15 +138,7 @@ public class contragentDB extends imakante.com.dbObject {
         return getRs();
     }
     
-    public java.sql.ResultSet getTable() {
-        this.setComprator(0);
-        try{
-            registerParameters();
-            setRs(getCstm().executeQuery());
-        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
-        System.out.println("ot getTable()");
-        return getRs();
-    }
+   
     
     public String getAddressName(int id_nm) {
         String adres = new String("");
@@ -213,7 +205,7 @@ public class contragentDB extends imakante.com.dbObject {
         try {
             getCstm().setInt("comprator", getComprator()); // izbor na SQL zaqwka
             getCstm().setInt("in_id", getId());
-            getCstm().setInt("in_cod", getCode());
+            getCstm().setInt("in_code", getCode());
             getCstm().setString("in_name", getName());
             getCstm().setString("in_bul",getBulstat());
             getCstm().setString("in_dan",getDanNomer());
@@ -230,18 +222,7 @@ public class contragentDB extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    public int getMaxId() {
-        setComprator(7);
-        int return_int = -1;
-        try {
-            registerParameters();
-            setRs(getCstm().executeQuery());
-            while(getRs().next()) {
-                return_int = getRs().getInt(1);
-            }
-        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
-        return return_int;
-    }
+  
     
     public void setBulstat(String bul) {
         this.bull = bull;
@@ -323,19 +304,7 @@ public class contragentDB extends imakante.com.dbObject {
         return flag;
     }
     
-    public int getMaxCod() {
-        int maxcod = -1;
-        this.setComprator(14);
-        try {
-            registerParameters();
-            setRs(getCstm().executeQuery());
-            while(getRs().next()) {
-                maxcod = getRs().getInt("code");
-            }
-        } catch(Exception sqle) { sqle.printStackTrace(); }
-        System.out.println("ot contragentDB.getMaxCod()");
-        return maxcod;
-    }
+  
     
     public void updateIDProductContragent(int in_id_contragent_old, int in_id_contragent_new, int in_flag) {
         java.util.ArrayList arrayID = getIDProductContragent(in_id_contragent_old, 0) ;
@@ -388,12 +357,5 @@ public class contragentDB extends imakante.com.dbObject {
         return arrayIdOnProduct;
     }
     
-    public java.sql.Connection getConn() {
-        return conn;
-    }
-    
-    public void setConn(java.sql.Connection conn) {
-        this.conn = conn;
-    }
     
 }// end class
