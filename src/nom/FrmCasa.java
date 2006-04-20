@@ -561,7 +561,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     private void delRecord(){
         if(table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());
-            setId((Integer)table.getValueAt(getRow(),0));
+            setAllVariables();
             internalObject.deleteRow(getId());
             refreshTable();
         }
