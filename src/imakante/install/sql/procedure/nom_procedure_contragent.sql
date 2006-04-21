@@ -1,7 +1,7 @@
 ﻿DELIMITER $$
 
-DROP PROCEDURE IF EXISTS nom_procedure_contragent $$
-CREATE PROCEDURE nom_procedure_contragent (IN comprator INT(6),  IN in_id INT(10),      IN in_code INT(11),     IN in_name VARCHAR(45),
+DROP PROCEDURE IF EXISTS `mida`.`nom_procedure_contragent` $$
+CREATE PROCEDURE `nom_procedure_contragent`(IN comprator TINYINT,  IN in_id INT(10),      IN in_code INT(11),     IN in_name VARCHAR(45),
                                             IN in_bul VARCHAR(13), IN in_dan VARCHAR(11), IN in_address VARCHAR(35), IN in_id_nm INT(10),
                                             IN in_tel VARCHAR(12), IN in_fax VARCHAR(12), IN in_email VARCHAR(20),   IN in_web VARCHAR(20),
                                             IN in_id_mol INT(10),  IN in_id_oso INT(10),  IN in_flag TINYINT)
@@ -53,8 +53,9 @@ BEGIN
      END IF;
 
      IF (comprator = 8) THEN
-        SELECT MAX(n.code_contragent) AS id FROM `n_contragent` n;
+        SELECT MAX(n.code_contragent) AS code FROM `n_contragent` n;
      END IF;
+
 
      IF (comprator = 10) THEN
         SELECT nm.name_n_nm  FROM `n_nm` nm WHERE nm.id_n_nm = in_id_nm;
@@ -85,21 +86,10 @@ BEGIN
         FROM `n_contragent` c where c.flag_n_contragent = in_flag;
      END IF;
 
-      IF (comprator = 15) THEN
-          UPDATE mida.sl_contragent_product s SET
-          flag_scp = in_flag
-          WHERE id_contragent = in_id;
-    END IF;
-     IF (comprator = 16) THEN
-         INSERT INTO mida.sl_contragent_product(id_contragent,id_pm,flag_scp)
-         VALUES(in_id,in_id_oso,in_flag);
-    END IF;
-    IF (comprator = 17) THEN
-        SELECT s.id_contragent, s.id_pm, s.flag_scp
-        FROM mida.sl_contragent_product s
-        WHERE id_contragent = in_id AND flag_scp=in_flag;
-    END IF;
-
+     IF (comprator = 17) THEN
+        SELECT  sl_contragent_product.id_pm
+        FROM sl_contragent_product where sl_contragent_product.id_contragent = in_id AND sl_contragent_product.flag_scp = in_flag;
+     END IF;
 
 END $$
 
