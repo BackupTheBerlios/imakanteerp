@@ -476,8 +476,7 @@ public class FrmCountry extends  imakante.com.vcomponents.iInternalFrame impleme
             jScrollPane1.remove(table);
             model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
-            HideColumns(0);
-          
+            HideColumns(getColumnIndex("id"));
             jScrollPane1.getViewport().add(table);
             jScrollPane1.repaint();
         } catch(Exception e) { e.printStackTrace(); }
@@ -488,8 +487,7 @@ public class FrmCountry extends  imakante.com.vcomponents.iInternalFrame impleme
         rs = internalObject.getTable();
         model = new imakante.com.CustomTableModel(getConn(), rs, Names);
         table = new imakante.com.CustomTable(model);
-        HideColumns(0);
-        
+        HideColumns(getColumnIndex("id"));
         jScrollPane1.getViewport().add(table);
         jScrollPane1.repaint();
     }
@@ -498,21 +496,20 @@ public class FrmCountry extends  imakante.com.vcomponents.iInternalFrame impleme
         setId(internalObject.getMaxId());
         setCod(internalObject.getMaxCode() + 1);
         internalObject.insertRow(getCod(),"");
-        nom.aeCountry ae_Casa = new nom.aeCountry(this, true);
-        ae_Casa.setVisible(true);
+        nom.aeCountry ae_Country = new nom.aeCountry(this, true);
+        ae_Country.setVisible(true);
         refreshTable();
     }
     
     private void editRecord() {
         if (table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());
-            
-            if(getRow()==0){          //manage button state of ae form
+            if(getRow() == 0) {          //manage button state of ae form
                 setAtBegining(true);
             }
-            else if(getRow()==getMaxRow()){
+            else if(getRow()==getMaxRow()) {
                 setAtEnd(true);
-            }else{
+            } else {
                 setAtBegining(false);
                 setAtEnd(false);
             }
@@ -542,7 +539,7 @@ public class FrmCountry extends  imakante.com.vcomponents.iInternalFrame impleme
     private int getColumnIndex(String in) //test
     {
         int count = table.getColumnCount();
-        for(int i=0; i < count; i++) {
+        for(int i = 0; i < count; i++) {
             if(table.getColumnName(i).equals(in)) return i;
         }
         return 0;
@@ -556,11 +553,11 @@ public class FrmCountry extends  imakante.com.vcomponents.iInternalFrame impleme
         table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
     }
     
-    private void setAllVariables(){
+    private void setAllVariables() {
         setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
         setCod((Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434")));
         setNames((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435")));
-        }
+    }
     
     private void unload() {
         closeResource();

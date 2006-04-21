@@ -9,7 +9,7 @@ public class aeCountry extends imakante.com.vcomponents.iDialog {
         initComponents();
         getNavigationState();
         jButtonUndo.setEnabled(false);
-       
+        
         this.setResizable(false);
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         repaintComp();
@@ -148,11 +148,6 @@ public class aeCountry extends imakante.com.vcomponents.iDialog {
         jLabel4.setText("\u0418\u043c\u0435:");
 
         jTextField1.setInputVerifier(new imakante.com.InputIntegerVerifier());
-        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField1FocusLost(evt);
-            }
-        });
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField1KeyPressed(evt);
@@ -207,10 +202,6 @@ public class aeCountry extends imakante.com.vcomponents.iDialog {
         setBounds((screenSize.width-342)/2, (screenSize.height-234)/2, 342, 234);
     }// </editor-fold>//GEN-END:initComponents
     
-    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        cfFocus();
-    }//GEN-LAST:event_jTextField1FocusLost
-    
     private void jButtonCloseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonCloseKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonClose.doClick();}
     }//GEN-LAST:event_jButtonCloseKeyPressed
@@ -242,9 +233,9 @@ public class aeCountry extends imakante.com.vcomponents.iDialog {
     private void jTextField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyPressed
         
     }//GEN-LAST:event_jTextField3KeyPressed
-        
+    
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ cfFocus(); }
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ ; }
     }//GEN-LAST:event_jTextField1KeyPressed
     
     private void jButtonUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUndoActionPerformed
@@ -315,14 +306,6 @@ public class aeCountry extends imakante.com.vcomponents.iDialog {
         repaintComp();
     }//GEN-LAST:event_jButtonToBeginActionPerformed
     
-    private void cfFocus() {
-        if(cFields()) {
-            jTextField1.transferFocus();
-        } else {
-            jTextField1.requestFocus();
-        }
-    }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonClose;
     private javax.swing.JButton jButtonOneRowM;
@@ -345,53 +328,28 @@ public class aeCountry extends imakante.com.vcomponents.iDialog {
     
     private int oldCod = 0;
     private String oldName = "";
-   
+    
     //---------------END My Variables
     
     //---------------START My Methods
     
-    //Proverka na poletata
-    private boolean cFields() { // V sluchaia samo na edno pole dali e integer
-        boolean check  = true;     // v bazata
-        int i = 0;
-        try {
-            i = Integer.parseInt(jTextField1.getText()); // proverka za int
-            jTextField1.setBackground(new java.awt.Color(255,255,255));
-        } catch (NumberFormatException nfex) {
-            check = false;
-            jTextField1.setBackground(new java.awt.Color(255,204,204));
-            nfex.printStackTrace();
-        }
-        return check;
-    }
-    
     //SAVE
     private void saveRecord() {
-        if(cFields()){
-           
-            oldCod = myParent.getCod();
-         
-            try {
-                myParent.setCod(Integer.parseInt(jTextField1.getText()));
-            } catch (NumberFormatException nfex) {
-                nfex.printStackTrace();
-            }
-            myParent.setNames(jTextField3.getText());
-            
-            
-            myParent.getInternalObject().updateRow(myParent.getId(),myParent.getCod(),
-                    myParent.getNames());
-            myParent.refreshTable();
-            myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
-            jButtonUndo.setEnabled(true);}
+        oldCod = myParent.getCod();
+        try {
+            myParent.setCod(Integer.parseInt(jTextField1.getText()));
+        } catch (NumberFormatException nfex) { nfex.printStackTrace(); }
+        myParent.setNames(jTextField3.getText());
+        myParent.getInternalObject().updateRow(myParent.getId(), myParent.getCod(), myParent.getNames());
+        myParent.refreshTable();
+        myParent.getTable().changeSelection(myParent.getRow(), 2, false, false);
+        jButtonUndo.setEnabled(true);
     }
     
     //UNDO
     private void undoCorr() {
-       
         myParent.setCod(oldCod);
         myParent.setNames(oldName);
-       
         repaintComp();
         jButtonUndo.setEnabled(false);
     }
@@ -406,22 +364,18 @@ public class aeCountry extends imakante.com.vcomponents.iDialog {
             jButtonOneRowM.setEnabled(false);
             jButtonToBegin.repaint();
             jButtonOneRowM.repaint();
-            
         }
         if(myParent.isAtEnd()) {
             jButtonToEnd.setEnabled(false);
             jButtonOneRowP.setEnabled(false);
             jButtonToEnd.repaint();
             jButtonOneRowP.repaint();
-            
         }
     }
     
     private void repaintComp() {
-        jTextField1.setText(""+myParent.getCod());
+        jTextField1.setText("" + myParent.getCod());
         jTextField3.setText(myParent.getNames());
-       
     }
     
-  
- }// end class
+}// end class
