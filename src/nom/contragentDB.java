@@ -191,6 +191,8 @@ public class contragentDB extends imakante.com.dbObject {
         }
         this.setComprator(13);
         try {
+            System.out.println(" id mol  " + this.getID_MOL() );
+            System.out.println(" id oso  " + this.getID_OSO() );
             registerParameters();
             setRs(getCstm().executeQuery());
             while(getRs().next()) {

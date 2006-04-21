@@ -27,11 +27,14 @@ public class showNameOfMOL_OSO extends imakante.com.vcomponents.iDialog
                 
                  if(MOL_OSO) // ako e true to se otnasq za MOL
                  {
+                     
                   myParent.setID_MOL(ID);
+                  myParent.getContragentDB().setID_MOL(ID);
                  }
                  else // ako e false to se otnasq za OSO
                  {
                    myParent.setID_OSO(ID);
+                   myParent.getContragentDB().setID_OSO(ID);
                  }
                  close();
                 }
@@ -47,6 +50,7 @@ public class showNameOfMOL_OSO extends imakante.com.vcomponents.iDialog
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         int x = (((dim.width)-(this.getSize().width))/2);
         int y = (((dim.height)-(this.getSize().height))/2);
+        this.setTitle("Списък Лица");
         this.setLocation(x, y);
         setVisible(true);
     }
