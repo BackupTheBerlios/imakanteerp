@@ -2633,7 +2633,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     if(columnSelect == 2 || columnSelect == 1 || columnSelect == 3 || columnSelect == 4 || columnSelect == 5
                             || columnSelect == 6 || columnSelect == 7 || columnSelect == 8)
                     {
-                        if(!myParent.getIsSelectProduct()) // ako ne e minal prez formata za izbor na produkt
+                        if(!isSetDataInTable) // ako ne e minal prez formata za izbor na produkt
                         {
                            jTable1.changeSelection(jTable1.getSelectedRow(),0,false,false);
                            System.out.println("Return to begin DocLine");
@@ -3768,8 +3768,9 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 // rate select
                     rate = getRate(jLabelValuta.getText()); //?????
                     
-                    jTable1.setValueAt(myParent.getBrojProduct(),jTable1.getSelectedRow(),4); //????
-                    jLabelAllBrojProduct.setText(String.valueOf(myParent.getBrojProduct())); //????
+                  //  jTable1.setValueAt(myParent.getBrojProduct(),jTable1.getSelectedRow(),4); // v tablicata se pokazvat maksimalniq broi produkti
+                    jTable1.setValueAt(0,jTable1.getSelectedRow(),4); // 
+                    jLabelAllBrojProduct.setText(String.valueOf(myParent.getBrojProduct())); //
                 }
                 
                 
