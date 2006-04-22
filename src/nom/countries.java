@@ -10,13 +10,18 @@ public class countries extends imakante.com.dbObject {
         prepareCstm();
     }
     
+    public void prepareCstm() {
+        try {
+            setCstm(getConn().prepareCall("{call ls_procedure_country(?,?,?,?)}"));
+        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
+    }
+    
     public java.sql.ResultSet getTable() {
         this.setComprator(0);
         try {
             registerParameters();
             setRs(getCstm().executeQuery());
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
-        System.out.println("ot getTable()");
         return getRs();
     }
     
@@ -52,7 +57,6 @@ public class countries extends imakante.com.dbObject {
 //                setName(getRs().getString("name"));
 //            }
 //        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
-//        
 //    }
 //    
     public java.sql.ResultSet searchRecords(int in_code, String in_name) {
@@ -85,35 +89,28 @@ public class countries extends imakante.com.dbObject {
         try {
             registerParameters();
             setRs(getCstm().executeQuery());
-            while(getRs().next()){
+            while(getRs().next()) {
                 i = getRs().getInt("id");
             }
-        }catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
         return i;
     }
     
     
-    public void deleteALL(){
+    public void deleteALL() {
         setComprator(8);
         try{
             registerParameters();
-            getCstm().execute();} catch(java.sql.SQLException sqle){sqle.printStackTrace();}
+            getCstm().execute();
+        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    public void registerParameters(){
-        try{
-            
+    public void registerParameters() {
+        try {
             getCstm().setInt("in_id", getId());
             getCstm().setInt("comprator", getComprator());
             getCstm().setInt("in_code", getCode());
             getCstm().setString("in_name", getName());
-            System.out.println("ot registerparameter");
-        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
-    }
-    
-    public void prepareCstm() {
-        try {
-            setCstm(getConn().prepareCall("{call ls_procedure_country(?,?,?,?)}"));
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     

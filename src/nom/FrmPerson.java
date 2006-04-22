@@ -42,6 +42,8 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
         setResizable(true);
         setTitle("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0430 \u041b\u0438\u0446\u0430");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
+        setMinimumSize(new java.awt.Dimension(890, 470));
+        setPreferredSize(new java.awt.Dimension(900, 480));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());

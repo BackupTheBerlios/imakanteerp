@@ -38,7 +38,10 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0430 \u041a\u0430\u0441\u0438");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
+        setMinimumSize(new java.awt.Dimension(895, 400));
+        setPreferredSize(new java.awt.Dimension(900, 450));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -542,13 +545,12 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
     private void editRecord() {
         if (table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());
-            
-            if(getRow()==0){          //manage button state of ae form
+            if(getRow() == 0) {          //manage button state of ae form
                 setAtBegining(true);
             }
-             else if(getRow()==getMaxRow()){
+             else if(getRow() == getMaxRow()) {
                 setAtEnd(true);
-            }else{
+            } else {
                 setAtBegining(false);
                 setAtEnd(false);
             }

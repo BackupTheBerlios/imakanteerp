@@ -335,9 +335,9 @@ public class FrmCountry extends  imakante.com.vcomponents.iInternalFrame impleme
     private int  getMaxRow() {
         int i = 0;
         i  = table.getRowCount() - 1;
-        
         return i;
     }
+    
     public  int getRow() {
         return row;
     }
@@ -493,9 +493,13 @@ public class FrmCountry extends  imakante.com.vcomponents.iInternalFrame impleme
     }
     
     private void newRecord() {
-        setId(internalObject.getMaxId());
-        setCod(internalObject.getMaxCode() + 1);
-        internalObject.insertRow(getCod(),"");
+        internalObject.insertRow((internalObject.getMaxCode() + 1), "");
+        refreshTable();
+        setRow(getMaxRow());
+        table.changeSelection(getRow(), 2, false, false);
+        setAllVariables();
+        setAtBegining(false);
+        setAtEnd(true);
         nom.aeCountry ae_Country = new nom.aeCountry(this, true);
         ae_Country.setVisible(true);
         refreshTable();
