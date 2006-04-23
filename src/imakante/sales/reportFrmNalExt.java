@@ -46,9 +46,11 @@ public class reportFrmNalExt extends javax.swing.JInternalFrame {
         jLabel12 = new javax.swing.JLabel();
         jComboBox12 = new javax.swing.JComboBox();
         jRadioButton2 = new javax.swing.JRadioButton();
+        jTextField6 = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         jMainPane.setAutoscrolls(true);
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("\u0421\u043a\u043b\u0430\u0434\u043e\u0432\u0435"));
@@ -67,8 +69,8 @@ public class reportFrmNalExt extends javax.swing.JInternalFrame {
             .add(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
-                    .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+                    .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
+                    .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(jLabel1)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -76,7 +78,7 @@ public class reportFrmNalExt extends javax.swing.JInternalFrame {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jLabel2)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jComboBox2, 0, 159, Short.MAX_VALUE))
+                        .add(jComboBox2, 0, 144, Short.MAX_VALUE))
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(jLabel3)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -84,7 +86,7 @@ public class reportFrmNalExt extends javax.swing.JInternalFrame {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jLabel4)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jComboBox4, 0, 162, Short.MAX_VALUE)))
+                        .add(jComboBox4, 0, 147, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -124,8 +126,8 @@ public class reportFrmNalExt extends javax.swing.JInternalFrame {
             .add(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
-                    .add(jTextField4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+                    .add(jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
+                    .add(jTextField4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
                     .add(jPanel2Layout.createSequentialGroup()
                         .add(jLabel5)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -133,7 +135,7 @@ public class reportFrmNalExt extends javax.swing.JInternalFrame {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jLabel6)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jComboBox6, 0, 160, Short.MAX_VALUE))
+                        .add(jComboBox6, 0, 145, Short.MAX_VALUE))
                     .add(jPanel2Layout.createSequentialGroup()
                         .add(jLabel7)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -141,7 +143,7 @@ public class reportFrmNalExt extends javax.swing.JInternalFrame {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jLabel8)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jComboBox8, 0, 161, Short.MAX_VALUE)))
+                        .add(jComboBox8, 0, 146, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -190,11 +192,11 @@ public class reportFrmNalExt extends javax.swing.JInternalFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
                         .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jTextField5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+                            .add(jTextField5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
                             .add(jPanel3Layout.createSequentialGroup()
                                 .add(jLabel9)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -202,7 +204,7 @@ public class reportFrmNalExt extends javax.swing.JInternalFrame {
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(jLabel10)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(jComboBox10, 0, 161, Short.MAX_VALUE))
+                                .add(jComboBox10, 0, 146, Short.MAX_VALUE))
                             .add(jPanel3Layout.createSequentialGroup()
                                 .add(jLabel11)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -210,13 +212,16 @@ public class reportFrmNalExt extends javax.swing.JInternalFrame {
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(jLabel12)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(jComboBox12, 0, 161, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .add(jComboBox12, 0, 146, Short.MAX_VALUE))))
+                    .add(jPanel3Layout.createSequentialGroup()
+                        .add(143, 143, 143)
                         .add(jRadioButton1)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jRadioButton2)
-                        .add(143, 143, 143))))
+                        .add(jRadioButton2))
+                    .add(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(jTextField6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -235,21 +240,28 @@ public class reportFrmNalExt extends javax.swing.JInternalFrame {
                     .add(jLabel12)
                     .add(jComboBox12, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jTextField6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 12, Short.MAX_VALUE)
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jRadioButton2)
-                    .add(jRadioButton1)))
+                    .add(jRadioButton1)
+                    .add(jRadioButton2)))
         );
 
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jButton1.setText("\u0413\u0435\u043d\u0435\u0440\u0438\u0440\u0430\u0439");
 
         jButton2.setText("\u041e\u0442\u043a\u0430\u0437");
+
+        jButton3.setText("\u0417\u0430\u043f\u0430\u0437\u0438 \u043e\u0431\u0440\u0430\u0437\u0435\u0446");
 
         org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(254, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jButton3)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 117, Short.MAX_VALUE)
                 .add(jButton1)
                 .add(15, 15, 15)
                 .add(jButton2)
@@ -257,26 +269,24 @@ public class reportFrmNalExt extends javax.swing.JInternalFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jButton1)
-                    .add(jButton2))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                .add(jButton1)
+                .add(jButton2)
+                .add(jButton3))
         );
 
         org.jdesktop.layout.GroupLayout jMainPaneLayout = new org.jdesktop.layout.GroupLayout(jMainPane);
         jMainPane.setLayout(jMainPaneLayout);
         jMainPaneLayout.setHorizontalGroup(
             jMainPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jMainPaneLayout.createSequentialGroup()
+            .add(jMainPaneLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(jMainPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jMainPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(72, 72, 72))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jMainPaneLayout.setVerticalGroup(
             jMainPaneLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -289,7 +299,7 @@ public class reportFrmNalExt extends javax.swing.JInternalFrame {
                 .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(66, 66, 66))
+                .add(57, 57, 57))
         );
         getContentPane().add(jMainPane, java.awt.BorderLayout.CENTER);
 
@@ -301,6 +311,7 @@ public class reportFrmNalExt extends javax.swing.JInternalFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox10;
     private javax.swing.JComboBox jComboBox11;
@@ -337,6 +348,7 @@ public class reportFrmNalExt extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
     
     
