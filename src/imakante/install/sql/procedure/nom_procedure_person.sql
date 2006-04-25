@@ -5,7 +5,7 @@ CREATE PROCEDURE nom_procedure_person (IN comprator TINYINT, IN in_id INT(11), I
 BEGIN
      IF (comprator = 0) THEN
           SELECT n.id_ls_n_person, n.id_n_group, ng.name_n_group, n.code_ls_n_person, n.egn_ls_n_person, n.nlk_ls_n_person, n.name_ls_n_person,
-                   n.comment_ls_n_person FROM ls_n_person n LEFT OUTER JOIN n_group ng ON ng.id_n_group = n.id_n_group;
+                   n.comment_ls_n_person FROM ls_n_person n LEFT OUTER JOIN n_group ng ON ng.id_n_group = n.id_n_group ORDER BY n.id_ls_n_person ASC;
      END IF;
 
      IF (comprator = 1) THEN
@@ -25,18 +25,19 @@ BEGIN
         IF (in_code = -1) THEN
         SELECT n.id_ls_n_person, n.id_n_group, ng.name_n_group, n.code_ls_n_person, n.egn_ls_n_person, n.nlk_ls_n_person, n.name_ls_n_person,
                    n.comment_ls_n_person FROM ls_n_person n LEFT OUTER JOIN n_group ng ON ng.id_n_group = n.id_n_group
-                   WHERE  n.egn_ls_n_person LIKE CONCAT('%',in_egn,'%') AND n.name_ls_n_person LIKE CONCAT('%',in_name,'%');
+                   WHERE  n.egn_ls_n_person LIKE CONCAT('%',in_egn,'%') AND n.name_ls_n_person LIKE CONCAT('%',in_name,'%')
+                    ORDER BY n.id_ls_n_person ASC;
         END IF;
         IF (in_code > -1 ) THEN
         SELECT n.id_ls_n_person, n.id_n_group, ng.name_n_group, n.code_ls_n_person, n.egn_ls_n_person, n.nlk_ls_n_person, n.name_ls_n_person,
                    n.comment_ls_n_person FROM ls_n_person n LEFT OUTER JOIN n_group ng ON ng.id_n_group = n.id_n_group
-                   WHERE n.code_ls_n_person LIKE CONCAT('%',in_code,'%') AND n.egn_ls_n_person LIKE CONCAT('%',in_egn,'%') AND n.name_ls_n_person LIKE CONCAT('%',in_name,'%');
+                   WHERE n.code_ls_n_person LIKE CONCAT('%',in_code,'%') AND n.egn_ls_n_person LIKE CONCAT('%',in_egn,'%') AND n.name_ls_n_person LIKE CONCAT('%',in_name,'%')
+                    ORDER BY n.id_ls_n_person ASC;
         END IF;
      END IF;
 
      IF (comprator = 6) THEN
-        SELECT n.id_n_group, n.name_n_group FROM n_group n
-                              WHERE n.nom_n_group = 3;
+        SELECT n.id_n_group, n.name_n_group FROM n_group n WHERE n.nom_n_group = 3;
      END IF;
 
      IF (comprator = 7) THEN

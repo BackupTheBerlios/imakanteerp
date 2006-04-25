@@ -5,7 +5,7 @@ CREATE PROCEDURE nom_procedure_oblast (IN comprator TINYINT, IN in_id INT(11), I
 BEGIN
      IF (comprator = 0) THEN
         SELECT n.id_n_oblast, n.name_n_oblast, n.id_n_country, c.name_n_country
-        FROM `n_oblast` n, `n_country` c WHERE n.id_n_country = c.id_n_country;
+        FROM n_oblast n, n_country c WHERE n.id_n_country = c.id_n_country ORDER BY n.id_n_oblast ASC;
      END IF;
      IF (comprator = 1) THEN
         INSERT INTO `n_oblast`( name_n_oblast, id_n_country) VALUES(in_name, in_id_country);
@@ -24,11 +24,10 @@ BEGIN
      END IF;
 
      IF (comprator = 5) THEN
-          SELECT n.id_n_oblast,  n.name_n_oblast, n.id_n_country,c.name_n_country  FROM `n_oblast` n, `n_country` c WHERE n.name_n_oblast LIKE CONCAT('%',in_name,'%')
-           AND c.name_n_country LIKE CONCAT('%',in_country,'%') AND c.id_n_country = n.id_n_country;
-
+        SELECT n.id_n_oblast, n.name_n_oblast, n.id_n_country,c.name_n_country  FROM `n_oblast` n, `n_country` c 
+            WHERE n.name_n_oblast LIKE CONCAT('%',in_name,'%') AND c.name_n_country LIKE CONCAT('%',in_country,'%') AND c.id_n_country = n.id_n_country
+            ORDER BY n.id_n_oblast ASC;
      END IF;
-
 
      IF (comprator = 6) THEN
         SELECT id_n_country, code_n_country, name_n_country FROM n_country n ORDER BY name_n_country;

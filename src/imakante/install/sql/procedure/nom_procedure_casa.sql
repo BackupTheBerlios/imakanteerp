@@ -5,7 +5,7 @@ CREATE PROCEDURE nom_procedure_casa(IN comprator TINYINT, IN in_id INT(11),IN in
 BEGIN
      IF (comprator = 0) THEN
           SELECT n.id_n_casa, n.id_n_group, ng.name_n_group, n.code_n_casa, n.name_n_casa,
-                   n.comments_n_casa FROM n_casa n LEFT OUTER JOIN n_group ng ON ng.id_n_group = n.id_n_group;
+                 n.comments_n_casa FROM n_casa n LEFT OUTER JOIN n_group ng ON ng.id_n_group = n.id_n_group ORDER BY n.id_n_casa ASC;
      END IF;
      IF (comprator = 1) THEN
         INSERT INTO n_casa( id_n_group, code_n_casa, name_n_casa, comments_n_casa) VALUES(in_id_groupe, in_code, in_name, in_comments);
@@ -23,18 +23,18 @@ BEGIN
         IF (in_code = -1) THEN
             SELECT n.id_n_casa, n.id_n_group, ng.name_n_group, n.code_n_casa, n.name_n_casa, n.comments_n_casa 
                    FROM n_casa n LEFT OUTER JOIN n_group ng ON ng.id_n_group = n.id_n_group
-                   WHERE n.name_n_casa LIKE CONCAT('%',in_name,'%');
+                   WHERE n.name_n_casa LIKE CONCAT('%',in_name,'%') ORDER BY n.id_n_casa ASC;
         END IF;
         IF (in_code > -1) THEN
             SELECT n.id_n_casa, n.id_n_group, ng.name_n_group, n.code_n_casa, n.name_n_casa, n.comments_n_casa
                    FROM n_casa n LEFT OUTER JOIN n_group ng ON ng.id_n_group = n.id_n_group
-                   WHERE n.code_n_casa LIKE CONCAT('%',in_code,'%') AND  n.name_n_casa LIKE CONCAT('%',in_name,'%');
+                   WHERE n.code_n_casa LIKE CONCAT('%',in_code,'%') AND  n.name_n_casa LIKE CONCAT('%',in_name,'%')
+                   ORDER BY n.id_n_casa ASC;
         END IF;
      END IF;
 
      IF (comprator = 6) THEN
-        SELECT n.id_n_group, n.name_n_group FROM n_group n
-                              WHERE n.nom_n_group = 5;
+        SELECT n.id_n_group, n.name_n_group FROM n_group n WHERE n.nom_n_group = 5;
      END IF;
 
      IF (comprator = 7) THEN
@@ -47,8 +47,7 @@ BEGIN
 
 
      IF (comprator = 9) THEN
-        SELECT MAX(n.id_n_group) AS id_n_group FROM n_group n
-                              WHERE n.nom_n_group = 5;
+        SELECT MAX(n.id_n_group) AS id_n_group FROM n_group n WHERE n.nom_n_group = 5;
      END IF;
 
 END $$

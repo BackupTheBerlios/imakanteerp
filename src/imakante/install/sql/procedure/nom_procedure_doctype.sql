@@ -4,7 +4,7 @@ DROP PROCEDURE IF EXISTS nom_procedure_doctype $$
 CREATE PROCEDURE nom_procedure_doctype (IN in_id INT(6), IN comprator TINYINT, IN in_code INT(10), IN in_name VARCHAR(50), IN in_print_name VARCHAR(50))
 BEGIN
      IF (comprator = 0) THEN
-        SELECT n.id_ntd, n.code_ntd, n.name_ntd, n.name_print_ntd FROM n_type_doc n;
+        SELECT n.id_ntd, n.code_ntd, n.name_ntd, n.name_print_ntd FROM n_type_doc n ORDER BY n.id_ntd ASC;
      END IF;
 
      IF (comprator = 1) THEN
@@ -26,11 +26,12 @@ BEGIN
 
      IF (comprator = 5) THEN
         IF (in_code = -1) THEN
-            SELECT n.id_ntd, n.code_ntd, n.name_ntd, n.name_print_ntd FROM n_type_doc n WHERE n.name_ntd LIKE CONCAT('%',in_name,'%');
+            SELECT n.id_ntd, n.code_ntd, n.name_ntd, n.name_print_ntd FROM n_type_doc n 
+                WHERE n.name_ntd LIKE CONCAT('%',in_name,'%') ORDER BY n.id_ntd ASC;
         END IF;
         IF (in_code > -1 ) THEN
-            SELECT n.id_ntd, n.code_ntd, n.name_ntd, n.name_print_ntd FROM n_type_doc n WHERE n.code_ntd LIKE CONCAT('%',in_code,'%') AND
-                n.name_ntd LIKE CONCAT('%',in_name,'%');
+            SELECT n.id_ntd, n.code_ntd, n.name_ntd, n.name_print_ntd FROM n_type_doc n 
+                WHERE n.code_ntd LIKE CONCAT('%',in_code,'%') AND n.name_ntd LIKE CONCAT('%',in_name,'%') ORDER BY n.id_ntd ASC;
         END IF;
      END IF;
 

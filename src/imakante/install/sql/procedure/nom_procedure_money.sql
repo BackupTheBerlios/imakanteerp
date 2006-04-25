@@ -4,7 +4,7 @@ DROP PROCEDURE IF EXISTS `mida`.`nom_procedure_money` $$
 CREATE PROCEDURE `nom_procedure_money`(IN in_id INT(6), IN comprator INT(6), IN in_code INT(6), IN in_cod_lat VARCHAR(6), IN in_name VARCHAR(50), IN in_comments VARCHAR(255))
 BEGIN        
      IF (comprator = 0) THEN
-        SELECT id_n_money, cod_n_money, cod_lat_n_money,name_n_money, comments_n_money FROM n_money ;
+        SELECT n.id_n_money, n.cod_n_money, n.cod_lat_n_money, n.name_n_money, n.comments_n_money FROM n_money n ORDER BY n.id_n_money ASC;
      END IF;
 
      IF (comprator = 1) THEN
@@ -26,8 +26,15 @@ BEGIN
      END IF;
 
      IF (comprator = 5) THEN
-        SELECT n.id_n_money, n.cod_n_money, n.cod_lat_n_money, n.name_n_money FROM n_money n WHERE n.code_n_money LIKE CONCAT('%',in_code,'%') AND
-        n.cod_lat_n_money LIKE CONCAT('%',in_cod_lat,'%') AND n.name_n_money LIKE CONCAT('%',in_name,'%');
+        IF (in_code = -1) THEN
+            SELECT n.id_n_money, n.cod_n_money, n.cod_lat_n_money, n.name_n_money FROM n_money n 
+                WHERE n.cod_lat_n_money LIKE CONCAT('%',in_cod_lat,'%') AND n.name_n_money LIKE CONCAT('%',in_name,'%')
+                ORDER BY n.id_n_money ASC;
+        END IF;
+        IF (in_code > -1) THEN
+            SELECT n.id_n_money, n.cod_n_money, n.cod_lat_n_money, n.name_n_money FROM n_money n WHERE n.code_n_money LIKE CONCAT('%',in_code,'%') AND
+                n.cod_lat_n_money LIKE CONCAT('%',in_cod_lat,'%') AND n.name_n_money LIKE CONCAT('%',in_name,'%') ORDER BY n.id_n_money ASC;
+        END IF;
      END IF;
 
      IF (comprator = 6) THEN

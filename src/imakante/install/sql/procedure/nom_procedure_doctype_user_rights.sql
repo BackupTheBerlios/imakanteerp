@@ -6,7 +6,8 @@ BEGIN
      IF (comprator = 0) THEN
           SELECT n.id_ndtur, n.id_um, um.name_um, n.id_sdtn, dtn.area_number_sdtn, dtn.name_sdtn, n.rights_ndtur FROM n_doc_type_user_rights n
             LEFT OUTER JOIN user_master um ON um.id_um = n.id_um
-            LEFT OUTER JOIN sl_doc_type_num dtn ON dtn.id_sdtn = n.id_sdtn;
+            LEFT OUTER JOIN sl_doc_type_num dtn ON dtn.id_sdtn = n.id_sdtn
+            ORDER BY n.id_ndtur ASC;
      END IF;
      IF (comprator = 1) THEN
         INSERT INTO n_doc_type_user_rights (id_um, id_sdtn, rights_ndtur) VALUES (in_id_um, in_id_sdtn, in_rights);
@@ -28,7 +29,7 @@ BEGIN
         SELECT n.id_ndtur, n.id_um, um.name_um, n.id_sdtn, dtn.area_number_sdtn, dtn.name_sdtn, n.rights_ndtur FROM n_doc_type_user_rights n
             LEFT OUTER JOIN user_master um ON um.id_um = n.id_um
             LEFT OUTER JOIN sl_doc_type_num dtn ON dtn.id_sdtn = n.id_sdtn
-            WHERE n.rights_ndtur LIKE CONCAT('%',in_rights,'%');
+            WHERE n.rights_ndtur LIKE CONCAT('%',in_rights,'%') ORDER BY n.id_ndtur ASC;
      END IF;
      IF (comprator = 6) THEN
         SELECT um.id_um, um.name_um FROM user_master um;

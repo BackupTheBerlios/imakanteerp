@@ -5,7 +5,7 @@ CREATE PROCEDURE sl_procedure_exchange_rate (IN comprator TINYINT, IN in_id INT(
 BEGIN
      IF (comprator = 0) THEN
         SELECT n.id_sl_exchange_rate, n.date_sl_exchange_rate, n.id_n_money, nm.cod_n_money, n.value_sl_exchange_rate
-            FROM sl_exchange_rate n LEFT OUTER JOIN n_money nm ON nm.id_n_money = n.id_n_money;
+            FROM sl_exchange_rate n LEFT OUTER JOIN n_money nm ON nm.id_n_money = n.id_n_money ORDER BY n.id_sl_exchange_rate ASC;
      END IF;
 
      IF (comprator = 1) THEN
@@ -27,8 +27,9 @@ BEGIN
 
      IF (comprator = 5) THEN
         SELECT n.id_sl_exchange_rate, n.datesl_exchange_rate, n.id_n_money, nm.cod_n_money, n.valuesl_exchange_rate
-                   FROM sl_exchange_rate n LEFT OUTER JOIN n_money nm ON nm.id_n_money = n.id_n_money
-                   WHERE n.date_sl_exchange_rate LIKE CONCAT('%',in_date,'%') AND  nm.cod_n_money LIKE CONCAT('%',in_code_money,'%');
+                FROM sl_exchange_rate n LEFT OUTER JOIN n_money nm ON nm.id_n_money = n.id_n_money
+                WHERE n.date_sl_exchange_rate LIKE CONCAT('%',in_date,'%') AND  nm.cod_n_money LIKE CONCAT('%',in_code_money,'%')
+                ORDER BY n.id_sl_exchange_rate ASC;
      END IF;
 
      IF (comprator = 6) THEN
