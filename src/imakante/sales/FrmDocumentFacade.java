@@ -462,8 +462,8 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
    
    
    private  String nameColumnsDocFacade[] = {"id_df", "in_contragent_df", "Код на контрагента1", "Булстат1", "Данъчен номер1", "Име на контрагента1",
-   "Адрес на контрагента1", "МОЛ1","Телефон на контрагента1", "out_contragent_df",
- "Код на контрагента2", "Булстат2", "Данъчен номер2", "Име на контарегнта2", "Адрес2", "МОЛ2","Телефон на контрагента2", "in_obekt_df", "Име на обекта1", "Адрес на обекта1", "Код на обекта1",
+   "Адрес1", "МОЛ1","Телефон на контрагента1", "out_contragent_df",
+ "Код на контрагента2", "Булстат2", "Данъчен номер2", "Име на контрагента2", "Адрес2", "МОЛ2","Телефон на контрагента2", "in_obekt_df", "Име на обекта1", "Адрес на обекта1", "Код на обекта1",
  "out_obekt_df", "Име на обекта2", "Адрес на обекта2", "Код на обекта2", "Тип на документа", "Номер на документа", "Състояние", "Склад", "Общо", "ДДС",
  "Потребител", "Потребител-последна редакция", "Дата на документа", "time_edition_df", "distributor_df", "Код на дистрибутор", "delivere_df", "Код на доставчик",
  "faktura_connection_df", "zaiavka_connection_df", "Вид плащане", "paying_order_df", "Дата на доставяне", "Дата на плащане", "Коментар", 
@@ -554,12 +554,10 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
         {
         
         }
-     /* // dokato se provejdat testovete
-       HideColumns(getColumnIndex("id_df"));
-       HideColumns(getColumnIndex("id_contragent"));
-       HideColumns(getColumnIndex("id_n_obekt"));
-       HideColumns(getColumnIndex("ls_n_person_deliv"));
-       HideColumns(getColumnIndex("ls_n_person_dist"));*/
+     
+         hideCommonColumns();
+         hideDocimentTypeColumns(docType);
+         moveDocimentTypeColumns(docType);
   }
     
  public void windowOpened(java.awt.event.WindowEvent e)
@@ -1287,12 +1285,12 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
                      case aeDocumentFacade.FAKTURI :
                      {
                          setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
-                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контарегнта2"))); //1
+                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2"))); //1
                          setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат2"))); //2
                          setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер2")));  //3
-                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контарегнта2")));   //4
+                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2")));   //4
                          setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес2"))); //5
-                         setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента1"))); //6
+                         setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента2"))); //6
                          setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ2"))) ;
                          int code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента2"));
                          setCodeContragent(String.valueOf(code));
@@ -1302,7 +1300,7 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
                      case aeDocumentFacade.PROFORMA_FAKTURA :
                      {
                          setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
-                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контарегнта2"))); //1
+                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2"))); //1
                          setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат2"))); //2
                          setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер2")));  //3
                          setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контарегнта2")));   //4
@@ -1316,10 +1314,10 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
                      case aeDocumentFacade.STOKOVA_RAZPISKA :
                      {
                          setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
-                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контарегнта2"))); //1
+                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2"))); //1
                          setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат2"))); //2
                          setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер2")));  //3
-                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контарегнта2")));   //4
+                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2")));   //4
                          setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес2"))); //5
                          setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента1"))); //6
                          setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ2"))) ;
@@ -1383,7 +1381,7 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
                          
                          setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат2"))); //2
                          setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер2")));  //3
-                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контарегнта2")));   //4
+                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2")));   //4
                          setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес2"))); //5
                          setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента1"))); //6
                          setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ2"))) ;
@@ -1527,4 +1525,119 @@ private void checkForMakeDoc(boolean makeDoc)
       
     }
 }
+private void hideCommonColumns()
+ {
+       HideColumns(getColumnIndex("id_df"));
+       HideColumns(getColumnIndex("out_obekt_df"));
+       HideColumns(getColumnIndex("in_obekt_df"));
+       
+       HideColumns(getColumnIndex("distributor_df"));
+       HideColumns(getColumnIndex("delivere_df"));
+       HideColumns(getColumnIndex("time_edition_df"));
+       HideColumns(getColumnIndex("faktura_connection_df"));
+       HideColumns(getColumnIndex("zaiavka_connection_df"));
+       HideColumns(getColumnIndex("flag_finish_df"));
+       HideColumns(getColumnIndex("level_df"));
+       HideColumns(getColumnIndex("id_rep"));
+       HideColumns(getColumnIndex("paying_order_df"));
+        HideColumns(getColumnIndex("Тип на документа"));
+       
+       HideColumns(getColumnIndex("out_contragent_df"));
+       HideColumns(getColumnIndex("in_contragent_df"));
+ }      
+private void hideDocimentTypeColumns(int doctype)
+{
+    switch(doctype)
+    {
+        case aeDocumentFacade.FAKTURI:
+        {
+            HideColumns(getColumnIndex("Име на контрагента1"));
+            HideColumns(getColumnIndex("Булстат1"));
+            HideColumns(getColumnIndex("Данъчен номер1"));
+            HideColumns(getColumnIndex("Име на контарегнта1"));
+            HideColumns(getColumnIndex("Адрес1"));
+            HideColumns(getColumnIndex("Телефон на контрагента1"));
+            HideColumns(getColumnIndex("Код на контрагента1"));
+            HideColumns(getColumnIndex("МОЛ1"));
+
+            HideColumns(getColumnIndex("Код на обекта1"));
+            HideColumns(getColumnIndex("Код на обекта2"));
+            HideColumns(getColumnIndex("Име на обекта1"));
+            HideColumns(getColumnIndex("Име на обекта2"));
+            HideColumns(getColumnIndex("Адрес на обекта1"));
+            HideColumns(getColumnIndex("Адрес на обекта2"));
+            
+             HideColumns(getColumnIndex("Код на дистрибутор"));
+             HideColumns(getColumnIndex("Код на доставчик"));
+             HideColumns(getColumnIndex("Дата на доставяне"));
+             HideColumns(getColumnIndex("Склад (към)"));
+             //  da se dobqvet o6te 3 koloni za syotvetstviqta
+             HideColumns(getColumnIndex("Потребител")); // pokazva id nomera ot tablicata ls_person
+             HideColumns(getColumnIndex("Потребител-последна редакция")); // pokazva id nomera ot tablicata ls_person
+             HideColumns(getColumnIndex("Вид плащане")); // pokazwa nomera na pla6taneto 1-broi,2.banka ....
+            
+            break;
+        }
+        case aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE:
+        {
+            break;
+        }
+        case aeDocumentFacade.KONSGNACIONEN_PROTOKOL:
+        {
+            break;
+        }
+        case aeDocumentFacade.PREDAVATELNA_RAZPISKA:
+        {
+            break;
+        }
+        case aeDocumentFacade.PRIEMATELNA_RAZPISKA:
+        {
+            break;
+        }
+        case aeDocumentFacade.STOKOVA_RAZPISKA:
+        {
+            break;
+        }
+        
+    }
+    
+    
+}  
+private void moveDocimentTypeColumns(int doctype)
+{
+    switch(doctype)
+    {
+        case aeDocumentFacade.FAKTURI:
+        {
+            table.moveColumn(getColumnIndex("Номер на документа"),0);
+            table.moveColumn(getColumnIndex("Дата на документа"),1);
+            
+            
+            break;
+        }
+        case aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE:
+        {
+            break;
+        }
+        case aeDocumentFacade.KONSGNACIONEN_PROTOKOL:
+        {
+            break;
+        }
+        case aeDocumentFacade.PREDAVATELNA_RAZPISKA:
+        {
+            break;
+        }
+        case aeDocumentFacade.PRIEMATELNA_RAZPISKA:
+        {
+            break;
+        }
+        case aeDocumentFacade.STOKOVA_RAZPISKA:
+        {
+            break;
+        }
+        
+    }
+    
+    
+}       
 }// end class
