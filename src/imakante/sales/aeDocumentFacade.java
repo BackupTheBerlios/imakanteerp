@@ -116,10 +116,12 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         getNavigatiionState();
         
         this.setResizable(false);
+        this.setSize(740,740);
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         int x = (((dim.width)-(this.getSize().width))/2);
         int y = (((dim.height)-(this.getSize().height))/2);
         this.setLocation(x, y);
+       
         
         if(isNew) {
             nowDate = new Date();
@@ -143,6 +145,9 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             jLabelInfoCurs.setVisible(false);
             rate=1;
         }
+        
+        
+       
         repaintComp();
         
     }
@@ -251,22 +256,24 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jLabel27 = new javax.swing.JLabel();
         jTextFieldStorageTO = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
+        jLabelInfoCurs = new javax.swing.JLabel();
+        jButtonClose = new javax.swing.JButton();
         jPanelCreateFacturi = new javax.swing.JPanel();
         jCheckBox1 = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
-        jButtonClose = new javax.swing.JButton();
-        jLabelInfoCurs = new javax.swing.JLabel();
 
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
             }
         });
 
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getAccessibleContext().setAccessibleParent(null);
+        jPanel2.setLayout(null);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setPreferredSize(new java.awt.Dimension(400, 300));
@@ -308,7 +315,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jPanel3.add(jButtonToEnd);
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 250, 70));
+        jPanel2.add(jPanel3);
+        jPanel3.setBounds(490, 0, 240, 70);
 
         jPanelHead.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -348,252 +356,309 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jPanelHead.add(jXDateCurs, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, -1, -1));
 
-        jPanel2.add(jPanelHead, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 490, 70));
+        jPanel2.add(jPanelHead);
+        jPanelHead.setBounds(0, 0, 490, 70);
+
+        jPanelContragent.setLayout(new java.awt.GridBagLayout());
 
         jPanelContragent.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel3.setText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442 No:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 20, 5, 5);
+        jPanelContragent.add(jLabel3, gridBagConstraints);
 
         jLabel4.setText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442 \u0438\u043c\u0435:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 20, 5, 5);
+        jPanelContragent.add(jLabel4, gridBagConstraints);
 
         jLabel5.setText("\u0411\u0443\u043b\u0441\u0442\u0430\u0442:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 20, 5, 5);
+        jPanelContragent.add(jLabel5, gridBagConstraints);
 
         jLabel6.setText("\u0414\u0430\u043d.No:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 20, 5, 5);
+        jPanelContragent.add(jLabel6, gridBagConstraints);
 
         jLabel7.setText("\u0437\u0430\u0434\u044a\u043b\u0436\u0435\u043d\u0438\u044f:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 20, 5, 5);
+        jPanelContragent.add(jLabel7, gridBagConstraints);
 
         jLabel8.setText("\u0410\u0434\u0440\u0435\u0441:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 20, 5, 5);
+        jPanelContragent.add(jLabel8, gridBagConstraints);
 
         jLabel9.setText("\u0422\u0435\u043b:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 20, 5, 5);
+        jPanelContragent.add(jLabel9, gridBagConstraints);
 
         jLabel10.setText("\u041f\u0440\u043e\u0441\u0440\u043e\u0447\u0432\u0430\u043d\u0435:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 20, 5, 5);
+        jPanelContragent.add(jLabel10, gridBagConstraints);
 
-        jTextFieldContrName.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextFieldContrName.setMinimumSize(new java.awt.Dimension(150, 20));
+        jTextFieldContrName.setPreferredSize(new java.awt.Dimension(150, 20));
         jTextFieldContrName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldContrNameKeyPressed(evt);
             }
         });
 
-        jTextFieldBulstat.setPreferredSize(new java.awt.Dimension(80, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 5, 5, 5);
+        jPanelContragent.add(jTextFieldContrName, gridBagConstraints);
+
+        jTextFieldBulstat.setMinimumSize(new java.awt.Dimension(150, 20));
+        jTextFieldBulstat.setPreferredSize(new java.awt.Dimension(150, 20));
         jTextFieldBulstat.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldBulstatKeyPressed(evt);
             }
         });
 
-        jTextFieldDanNomer.setPreferredSize(new java.awt.Dimension(80, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 5);
+        jPanelContragent.add(jTextFieldBulstat, gridBagConstraints);
+
+        jTextFieldDanNomer.setMinimumSize(new java.awt.Dimension(150, 20));
+        jTextFieldDanNomer.setPreferredSize(new java.awt.Dimension(150, 20));
         jTextFieldDanNomer.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldDanNomerKeyPressed(evt);
             }
         });
 
-        jTextFieldZadylveniq.setPreferredSize(new java.awt.Dimension(80, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 5);
+        jPanelContragent.add(jTextFieldDanNomer, gridBagConstraints);
+
+        jTextFieldZadylveniq.setMinimumSize(new java.awt.Dimension(150, 20));
+        jTextFieldZadylveniq.setPreferredSize(new java.awt.Dimension(150, 20));
         jTextFieldZadylveniq.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldZadylveniqKeyPressed(evt);
             }
         });
 
-        jTextFieldConNom.setPreferredSize(new java.awt.Dimension(80, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 5);
+        jPanelContragent.add(jTextFieldZadylveniq, gridBagConstraints);
+
+        jTextFieldConNom.setMinimumSize(new java.awt.Dimension(150, 20));
+        jTextFieldConNom.setPreferredSize(new java.awt.Dimension(150, 20));
         jTextFieldConNom.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldConNomKeyPressed(evt);
             }
         });
 
-        jTextFieldAddress.setPreferredSize(new java.awt.Dimension(80, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 5, 5, 5);
+        jPanelContragent.add(jTextFieldConNom, gridBagConstraints);
+
+        jTextFieldAddress.setMinimumSize(new java.awt.Dimension(150, 20));
+        jTextFieldAddress.setPreferredSize(new java.awt.Dimension(150, 20));
         jTextFieldAddress.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldAddressKeyPressed(evt);
             }
         });
 
-        jTextFieldContTel.setMinimumSize(new java.awt.Dimension(80, 20));
-        jTextFieldContTel.setPreferredSize(new java.awt.Dimension(80, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 5);
+        jPanelContragent.add(jTextFieldAddress, gridBagConstraints);
+
+        jTextFieldContTel.setMinimumSize(new java.awt.Dimension(120, 20));
+        jTextFieldContTel.setPreferredSize(new java.awt.Dimension(120, 20));
         jTextFieldContTel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldContTelKeyPressed(evt);
             }
         });
 
-        jTextFieldProsro4vane.setPreferredSize(new java.awt.Dimension(80, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 20);
+        jPanelContragent.add(jTextFieldContTel, gridBagConstraints);
+
+        jTextFieldProsro4vane.setMinimumSize(new java.awt.Dimension(150, 20));
+        jTextFieldProsro4vane.setPreferredSize(new java.awt.Dimension(150, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 5);
+        jPanelContragent.add(jTextFieldProsro4vane, gridBagConstraints);
 
         jLabel15.setText("\u041c\u041e\u041b \u0438\u043c\u0435:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 20, 5, 5);
+        jPanelContragent.add(jLabel15, gridBagConstraints);
 
-        jTextFieldContrMOL.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextFieldContrMOL.setMinimumSize(new java.awt.Dimension(150, 20));
+        jTextFieldContrMOL.setPreferredSize(new java.awt.Dimension(150, 20));
         jTextFieldContrMOL.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldContrMOLKeyPressed(evt);
             }
         });
 
-        org.jdesktop.layout.GroupLayout jPanelContragentLayout = new org.jdesktop.layout.GroupLayout(jPanelContragent);
-        jPanelContragent.setLayout(jPanelContragentLayout);
-        jPanelContragentLayout.setHorizontalGroup(
-            jPanelContragentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelContragentLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanelContragentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jLabel3)
-                    .add(jPanelContragentLayout.createSequentialGroup()
-                        .add(jPanelContragentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(jLabel6)
-                            .add(jLabel5)
-                            .add(jLabel7))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelContragentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(jPanelContragentLayout.createSequentialGroup()
-                        .add(jTextFieldConNom, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(12, 12, 12)
-                        .add(jLabel4))
-                    .add(jPanelContragentLayout.createSequentialGroup()
-                        .add(jTextFieldBulstat, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(jLabel8))
-                    .add(jPanelContragentLayout.createSequentialGroup()
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jPanelContragentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jPanelContragentLayout.createSequentialGroup()
-                                .add(jTextFieldZadylveniq, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 27, Short.MAX_VALUE)
-                                .add(jLabel10))
-                            .add(jPanelContragentLayout.createSequentialGroup()
-                                .add(jTextFieldDanNomer, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 49, Short.MAX_VALUE)
-                                .add(jLabel15)))))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelContragentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanelContragentLayout.createSequentialGroup()
-                        .add(jTextFieldProsro4vane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jLabel9)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jTextFieldContTel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(jPanelContragentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                        .add(org.jdesktop.layout.GroupLayout.LEADING, jTextFieldContrName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(org.jdesktop.layout.GroupLayout.LEADING, jTextFieldAddress, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(org.jdesktop.layout.GroupLayout.LEADING, jTextFieldContrMOL, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)))
-                .add(21, 21, 21))
-        );
-        jPanelContragentLayout.setVerticalGroup(
-            jPanelContragentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelContragentLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanelContragentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel3)
-                    .add(jTextFieldConNom, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel4)
-                    .add(jTextFieldContrName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelContragentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel5)
-                    .add(jTextFieldBulstat, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel8)
-                    .add(jTextFieldAddress, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelContragentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel6)
-                    .add(jTextFieldDanNomer, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel15)
-                    .add(jTextFieldContrMOL, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelContragentLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel7)
-                    .add(jTextFieldZadylveniq, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel10)
-                    .add(jTextFieldProsro4vane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel9)
-                    .add(jTextFieldContTel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2.add(jPanelContragent, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 730, 120));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 5);
+        jPanelContragent.add(jTextFieldContrMOL, gridBagConstraints);
+
+        jPanel2.add(jPanelContragent);
+        jPanelContragent.setBounds(0, 70, 730, 120);
+
+        jPanelObekt.setLayout(new java.awt.GridBagLayout());
 
         jPanelObekt.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel11.setText("\u041e\u0431\u0435\u043a\u0442 No:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 20, 5, 5);
+        jPanelObekt.add(jLabel11, gridBagConstraints);
 
         jLabel12.setText("\u0422\u0435\u043b.:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 20, 10, 5);
+        jPanelObekt.add(jLabel12, gridBagConstraints);
 
         jLabel13.setText("\u0418\u043c\u0435:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 20, 10, 5);
+        jPanelObekt.add(jLabel13, gridBagConstraints);
 
         jLabel14.setText("\u0410\u0434\u0440\u0435\u0441:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 20, 5, 5);
+        jPanelObekt.add(jLabel14, gridBagConstraints);
 
-        jTextFieldObektNo.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextFieldObektNo.setMinimumSize(new java.awt.Dimension(120, 20));
+        jTextFieldObektNo.setPreferredSize(new java.awt.Dimension(120, 20));
         jTextFieldObektNo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldObektNoKeyPressed(evt);
             }
         });
 
-        jTextFieldObektName.setPreferredSize(new java.awt.Dimension(80, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 5, 5, 5);
+        jPanelObekt.add(jTextFieldObektNo, gridBagConstraints);
+
+        jTextFieldObektName.setMinimumSize(new java.awt.Dimension(150, 20));
+        jTextFieldObektName.setPreferredSize(new java.awt.Dimension(350, 20));
         jTextFieldObektName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldObektNameKeyPressed(evt);
             }
         });
 
-        jTextFieldObektTel.setPreferredSize(new java.awt.Dimension(80, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 10, 5);
+        jPanelObekt.add(jTextFieldObektName, gridBagConstraints);
+
+        jTextFieldObektTel.setMinimumSize(new java.awt.Dimension(120, 20));
+        jTextFieldObektTel.setPreferredSize(new java.awt.Dimension(120, 20));
         jTextFieldObektTel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldObektTelKeyPressed(evt);
             }
         });
 
-        jTextFieldObektAddress.setPreferredSize(new java.awt.Dimension(80, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 10, 20);
+        jPanelObekt.add(jTextFieldObektTel, gridBagConstraints);
+
+        jTextFieldObektAddress.setMinimumSize(new java.awt.Dimension(150, 20));
+        jTextFieldObektAddress.setPreferredSize(new java.awt.Dimension(350, 20));
         jTextFieldObektAddress.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldObektAddressKeyPressed(evt);
             }
         });
 
-        org.jdesktop.layout.GroupLayout jPanelObektLayout = new org.jdesktop.layout.GroupLayout(jPanelObekt);
-        jPanelObekt.setLayout(jPanelObektLayout);
-        jPanelObektLayout.setHorizontalGroup(
-            jPanelObektLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelObektLayout.createSequentialGroup()
-                .add(39, 39, 39)
-                .add(jPanelObektLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jLabel11)
-                    .add(jLabel12))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelObektLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jTextFieldObektNo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jTextFieldObektTel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 133, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(62, 62, 62)
-                .add(jPanelObektLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel13)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel14))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelObektLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jTextFieldObektAddress, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
-                    .add(jTextFieldObektName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanelObektLayout.setVerticalGroup(
-            jPanelObektLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelObektLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanelObektLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanelObektLayout.createSequentialGroup()
-                        .add(jPanelObektLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jLabel13)
-                            .add(jTextFieldObektName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jPanelObektLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jLabel14)
-                            .add(jTextFieldObektAddress, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                    .add(jPanelObektLayout.createSequentialGroup()
-                        .add(jPanelObektLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jLabel11)
-                            .add(jTextFieldObektNo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jPanelObektLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jTextFieldObektTel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jLabel12))))
-                .add(59, 59, 59))
-        );
-        jPanel2.add(jPanelObekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 730, 70));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 5, 5, 20);
+        jPanelObekt.add(jTextFieldObektAddress, gridBagConstraints);
+
+        jPanel2.add(jPanelObekt);
+        jPanelObekt.setBounds(0, 190, 730, 70);
 
         jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 2, 11));
 
@@ -629,7 +694,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jXDateDeliver.setPreferredSize(new java.awt.Dimension(100, 24));
         jPanel4.add(jXDateDeliver);
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 430, 60));
+        jPanel2.add(jPanel4);
+        jPanel4.setBounds(0, 260, 430, 60);
 
         jPanelDocLine.setLayout(new javax.swing.BoxLayout(jPanelDocLine, javax.swing.BoxLayout.X_AXIS));
 
@@ -642,97 +708,52 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jPanelDocLine.add(jScrollPane2);
 
-        jPanel2.add(jPanelDocLine, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 730, 170));
+        jPanel2.add(jPanelDocLine);
+        jPanelDocLine.setBounds(0, 320, 730, 190);
+
+        jPanelPrice.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 15));
 
         jPanelPrice.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel19.setText("\u0412\u0438\u0434 \u043f\u043b\u0430\u0449\u0430\u043d\u0435:");
+        jPanelPrice.add(jLabel19);
 
         jComboBoxVidPla6tane.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "\u041e\u0422\u041b\u041e\u0416\u0415\u041d\u041e", "\u0411\u0420\u041e\u0419", "\u0411\u0410\u041d\u041a\u0410", "\u0427\u0410\u0421\u0422\u0418\u0427\u041d\u041e" }));
         jComboBoxVidPla6tane.setPreferredSize(new java.awt.Dimension(100, 20));
+        jPanelPrice.add(jComboBoxVidPla6tane);
 
         jLabel20.setText("\u0414\u0430\u0442\u0430:");
+        jPanelPrice.add(jLabel20);
 
-        org.jdesktop.layout.GroupLayout jPanelPriceLayout = new org.jdesktop.layout.GroupLayout(jPanelPrice);
-        jPanelPrice.setLayout(jPanelPriceLayout);
-        jPanelPriceLayout.setHorizontalGroup(
-            jPanelPriceLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelPriceLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(jLabel19)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jComboBoxVidPla6tane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel20)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jXDatePay, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 113, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanelPriceLayout.setVerticalGroup(
-            jPanelPriceLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelPriceLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanelPriceLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jXDatePay, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jPanelPriceLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                        .add(jLabel19)
-                        .add(jLabel20)
-                        .add(jComboBoxVidPla6tane, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
-        );
-        jPanel2.add(jPanelPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, 340, 60));
+        jPanelPrice.add(jXDatePay);
+
+        jPanel2.add(jPanelPrice);
+        jPanelPrice.setBounds(0, 510, 360, 60);
+
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabelDDSOsnovaText.setText("\u0414\u0430\u043d\u044a\u0447\u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0430:");
+        jPanel5.add(jLabelDDSOsnovaText, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
         jLabelAllDDSText.setText("\u0414\u0414\u0421:");
+        jPanel5.add(jLabelAllDDSText, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, -1));
 
         jLabelDDSOsnova.setText("0.0");
+        jPanel5.add(jLabelDDSOsnova, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
 
         jLabelAllDDS.setText("0.0");
+        jPanel5.add(jLabelAllDDS, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
 
         jLabel28.setFont(new java.awt.Font("Tahoma", 1, 11));
         jLabel28.setText("\u041e\u0411\u0429\u041e");
+        jPanel5.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
 
         jLabelAllTotal.setFont(new java.awt.Font("Tahoma", 1, 11));
         jLabelAllTotal.setText("0.0");
+        jPanel5.add(jLabelAllTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, -1, -1));
 
-        org.jdesktop.layout.GroupLayout jPanel5Layout = new org.jdesktop.layout.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel5Layout.createSequentialGroup()
-                .add(10, 10, 10)
-                .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jLabelDDSOsnovaText)
-                    .add(jLabelAllDDSText))
-                .add(46, 46, 46)
-                .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabelDDSOsnova)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabelAllDDS))
-                .add(39, 39, 39)
-                .add(jLabel28)
-                .add(14, 14, 14)
-                .add(jLabelAllTotal, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 64, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(75, 75, 75))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel5Layout.createSequentialGroup()
-                .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabelAllDDSText)
-                    .add(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jLabel28)
-                            .add(jLabelAllDDS)
-                            .add(jLabelAllTotal))))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabelDDSOsnovaText)
-                    .add(jLabelDDSOsnova))
-                .add(21, 21, 21))
-        );
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 510, 390, 60));
+        jPanel2.add(jPanel5);
+        jPanel5.setBounds(357, 510, 370, 60);
 
         jButtonCreateDocFacade.setText("\u0421\u044a\u0437\u0434\u0430\u0432\u0430\u043d\u0435 \u043d\u0430 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442");
         jButtonCreateDocFacade.addActionListener(new java.awt.event.ActionListener() {
@@ -741,14 +762,20 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             }
         });
 
-        jPanel2.add(jButtonCreateDocFacade, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 620, -1, -1));
+        jPanel2.add(jButtonCreateDocFacade);
+        jButtonCreateDocFacade.setBounds(580, 620, 150, 23);
+
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel30.setText("\u041d\u0430\u043b\u0438\u0447\u043d\u0438:");
+        jPanel6.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabelAllBrojProduct.setText("00");
+        jPanel6.add(jLabelAllBrojProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
 
         jLabel32.setText("000");
+        jPanel6.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, -1));
 
         jPanelPriceList.setLayout(new java.awt.GridBagLayout());
 
@@ -807,33 +834,10 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 5);
         jPanelPriceList.add(jSeparator1, gridBagConstraints);
 
-        org.jdesktop.layout.GroupLayout jPanel6Layout = new org.jdesktop.layout.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jPanel6Layout.createSequentialGroup()
-                        .add(jLabel30)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jLabelAllBrojProduct))
-                    .add(jLabel32))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanelPriceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel6Layout.createSequentialGroup()
-                .add(jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel30)
-                    .add(jLabelAllBrojProduct))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 17, Short.MAX_VALUE)
-                .add(jLabel32)
-                .addContainerGap())
-            .add(jPanelPriceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
-        );
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 280, 300, 60));
+        jPanel6.add(jPanelPriceList, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 190, 60));
+
+        jPanel2.add(jPanel6);
+        jPanel6.setBounds(430, 260, 300, 60);
 
         jSplitPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jSplitPane1.setDividerLocation(0);
@@ -905,7 +909,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         );
         jSplitPane1.setRightComponent(jPanelUser);
 
-        jPanel2.add(jSplitPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, 730, 50));
+        jPanel2.add(jSplitPane1);
+        jSplitPane1.setBounds(0, 570, 730, 50);
 
         jButton2.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435 \u043d\u0430 \u043b\u0438\u043d\u0438\u044f");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -914,7 +919,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             }
         });
 
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 620, 150, -1));
+        jPanel2.add(jButton2);
+        jButton2.setBounds(10, 620, 150, 23);
 
         jButtonAnulirane.setText("\u0410\u043d\u0443\u043b\u0438\u0440\u0430\u043d\u0435");
         jButtonAnulirane.addActionListener(new java.awt.event.ActionListener() {
@@ -923,7 +929,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             }
         });
 
-        jPanel2.add(jButtonAnulirane, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 620, -1, -1));
+        jPanel2.add(jButtonAnulirane);
+        jButtonAnulirane.setBounds(330, 620, 87, 23);
 
         jButtonDellDocFadade.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435 \u043d\u0430 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442");
         jButtonDellDocFadade.addActionListener(new java.awt.event.ActionListener() {
@@ -932,7 +939,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             }
         });
 
-        jPanel2.add(jButtonDellDocFadade, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 620, -1, -1));
+        jPanel2.add(jButtonDellDocFadade);
+        jButtonDellDocFadade.setBounds(420, 620, 153, 23);
 
         jButton3.setText("\u0414\u043e\u0431\u0430\u0432\u044f\u043d\u0435 \u043d\u0430 \u043b\u0438\u043d\u0438\u044f");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -941,7 +949,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             }
         });
 
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 620, -1, -1));
+        jPanel2.add(jButton3);
+        jButton3.setBounds(160, 620, 131, 23);
 
         jPanelStorageINOUT.setLayout(new java.awt.GridBagLayout());
 
@@ -985,9 +994,25 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jLabel29.setText("\u0421\u043a\u043b\u0430\u0434\u043e\u0432\u0435:");
         jPanelStorageINOUT.add(jLabel29, new java.awt.GridBagConstraints());
 
-        jPanel2.add(jPanelStorageINOUT, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 300, 50));
+        jPanel2.add(jPanelStorageINOUT);
+        jPanelStorageINOUT.setBounds(0, 70, 300, 50);
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 770, 650));
+        jLabelInfoCurs.setForeground(new java.awt.Color(255, 0, 51));
+        jLabelInfoCurs.setText("\u041d\u0435 \u0435 \u0438\u0437\u0431\u0440\u0430\u043d\u0430 \u043f\u043e\u0434\u0445\u043e\u0434\u044f\u0449\u0430 \u0434\u0430\u0442\u0430!");
+        jPanel2.add(jLabelInfoCurs);
+        jLabelInfoCurs.setBounds(560, 680, 160, 14);
+
+        jButtonClose.setFont(new java.awt.Font("Tahoma", 1, 11));
+        jButtonClose.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
+        jButtonClose.setPreferredSize(new java.awt.Dimension(100, 23));
+        jButtonClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCloseActionPerformed(evt);
+            }
+        });
+
+        jPanel2.add(jButtonClose);
+        jButtonClose.setBounds(10, 680, 100, 23);
 
         jPanelCreateFacturi.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
 
@@ -1012,22 +1037,11 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jPanelCreateFacturi.add(jButton1);
 
-        getContentPane().add(jPanelCreateFacturi, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 630, 420, 50));
+        jPanel2.add(jPanelCreateFacturi);
+        jPanelCreateFacturi.setBounds(170, 650, 343, 53);
 
-        jButtonClose.setFont(new java.awt.Font("Tahoma", 1, 11));
-        jButtonClose.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
-        jButtonClose.setPreferredSize(new java.awt.Dimension(100, 23));
-        jButtonClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCloseActionPerformed(evt);
-            }
-        });
-
-        getContentPane().add(jButtonClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 640, -1, -1));
-
-        jLabelInfoCurs.setForeground(new java.awt.Color(255, 0, 51));
-        jLabelInfoCurs.setText("\u041d\u0435 \u0435 \u0438\u0437\u0431\u0440\u0430\u043d\u0430 \u043f\u043e\u0434\u0445\u043e\u0434\u044f\u0449\u0430 \u0434\u0430\u0442\u0430!");
-        getContentPane().add(jLabelInfoCurs, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 640, -1, -1));
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(0, 0, 730, 710);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -3398,6 +3412,16 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 jPanel4.setVisible(false);
                 jPanelCreateFacturi.setVisible(false);
                 jPanelStorageINOUT.setVisible(false);
+                Point p = jPanel6.getLocation();
+                p.y = jPanelContragent.getLocation().y+jPanelContragent.getSize().height;
+                jPanel6.setLocation(p);
+                // promqna na polozenieto na jPanelDocLini i razmera mu
+                p = jPanelDocLine.getLocation();
+                p.y = jPanel6.getLocation().y+jPanel6.getSize().height;
+                jPanelDocLine.setLocation(p);
+                int deltaH = jPanelPrice.getLocation().y - (p.y+jPanelDocLine.getSize().height); // razlikata s koqto trqbva da se uveli4i jPanelDocLine
+                jPanelDocLine.setSize(jPanelDocLine.getSize().width,(jPanelDocLine.getSize().height+deltaH));
+                
                 break;
                 
             }
@@ -3408,6 +3432,16 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 jPanel4.setVisible(false);
                 jPanelCreateFacturi.setVisible(false);
                 jPanelStorageINOUT.setVisible(false);
+                
+                Point p = jPanel6.getLocation();
+                p.y = jPanelContragent.getLocation().y+jPanelContragent.getSize().height;
+                jPanel6.setLocation(p);
+                // promqna na polozenieto na jPanelDocLini i razmera mu
+                p = jPanelDocLine.getLocation();
+                p.y = jPanel6.getLocation().y+jPanel6.getSize().height;
+                jPanelDocLine.setLocation(p);
+                int deltaH = jPanelPrice.getLocation().y - (p.y+jPanelDocLine.getSize().height); // razlikata s koqto trqbva da se uveli4i jPanelDocLine
+                jPanelDocLine.setSize(jPanelDocLine.getSize().width,(jPanelDocLine.getSize().height+deltaH));
                 break;
             }
             case STOKOVA_RAZPISKA :
@@ -3438,7 +3472,18 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 jLabelInfoCurs.setVisible(false);
                 jLabel24.setVisible(false);
                  rate=1;
-                
+                jPanelStorageINOUT.setSize(jPanelStorageINOUT.getSize().width,jPanel6.getSize().height);
+                Point p = jPanel6.getLocation();
+                p.y = jPanelHead.getLocation().y+jPanelHead.getSize().height;
+                jPanel6.setLocation(p);
+                // promqna na polozenieto na jPanelDocLini i razmera mu
+                p = jPanelDocLine.getLocation();
+                p.y = jPanel6.getLocation().y+jPanel6.getSize().height;
+                jPanelDocLine.setLocation(p);
+                int deltaH = jPanelPrice.getLocation().y - (p.y+jPanelDocLine.getSize().height); // razlikata s koqto trqbva da se uveli4i jPanelDocLine
+                jPanelDocLine.setSize(jPanelDocLine.getSize().width,(jPanelDocLine.getSize().height+deltaH));
+                 
+                 
                 break;
             }
             case PREDAVATELNA_RAZPISKA :
@@ -3451,6 +3496,17 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 jPanelObekt.setVisible(false);
                 jPanelCreateFacturi.setVisible(false);
                 jPanelStorageINOUT.setVisible(false);
+                Point p = jPanel6.getLocation();
+                p.y = jPanelContragent.getLocation().y+jPanelContragent.getSize().height;
+                jPanel6.setLocation(p);
+                p.x=jPanel4.getLocation().x;
+                jPanel4.setLocation(p);
+                // promqna na polozenieto na jPanelDocLini i razmera mu
+                p = jPanelDocLine.getLocation();
+                p.y = jPanel6.getLocation().y+jPanel6.getSize().height;
+                jPanelDocLine.setLocation(p);
+                int deltaH = jPanelPrice.getLocation().y - (p.y+jPanelDocLine.getSize().height); // razlikata s koqto trqbva da se uveli4i jPanelDocLine
+                jPanelDocLine.setSize(jPanelDocLine.getSize().width,(jPanelDocLine.getSize().height+deltaH));
                 break;
             }
             
