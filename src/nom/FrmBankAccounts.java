@@ -38,7 +38,10 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0430 \u0431\u0430\u043d\u043a\u043e\u0432\u0438 \u0441\u043c\u0435\u0442\u043a\u0438");
+        setTitle("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0430 \u0411\u0430\u043d\u043a\u043e\u0432\u0438 \u0441\u043c\u0435\u0442\u043a\u0438");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
+        setMinimumSize(new java.awt.Dimension(885, 400));
+        setPreferredSize(new java.awt.Dimension(900, 420));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -53,14 +56,37 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
         jPanel4.add(jLabel2);
 
         jTextCod.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextCod.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextCodFocusGained(evt);
+            }
+        });
+        jTextCod.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextCodKeyPressed(evt);
+            }
+        });
+
         jPanel4.add(jTextCod);
 
         jLabel3.setText("\u0418\u043c\u0435:");
         jPanel4.add(jLabel3);
 
         jTextName.setPreferredSize(new java.awt.Dimension(160, 20));
+        jTextName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextNameFocusGained(evt);
+            }
+        });
+        jTextName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextNameKeyPressed(evt);
+            }
+        });
+
         jPanel4.add(jTextName);
 
+        jButtonSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Search.png")));
         jButtonSearch.setText("\u0422\u044a\u0440\u0441\u0435\u043d\u0435");
         jButtonSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,7 +105,7 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 821, Short.MAX_VALUE)
+            .add(0, 874, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -89,6 +115,7 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel3.setPreferredSize(new java.awt.Dimension(801, 37));
+        jButtonNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Add 2.png")));
         jButtonNew.setText("\u041d\u043e\u0432");
         jButtonNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,6 +125,7 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
 
         jPanel3.add(jButtonNew);
 
+        jButtonEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Report Edit 2.png")));
         jButtonEdit.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f");
         jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,6 +135,7 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
 
         jPanel3.add(jButtonEdit);
 
+        jButtonPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Printer.png")));
         jButtonPrint.setText("\u041f\u0435\u0447\u0430\u0442");
         jButtonPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,9 +145,10 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
 
         jPanel3.add(jButtonPrint);
 
-        jButtonPrnReport.setText("\u041f\u0435\u0447\u0430\u0442 \u0440\u0435\u043f\u043e\u0440\u0442");
+        jButtonPrnReport.setText("\u041f\u0435\u0447\u0430\u0442 \u043e\u0442\u0447\u0435\u0442");
         jPanel3.add(jButtonPrnReport);
 
+        jButtonDel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Delete 2.png")));
         jButtonDel.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
         jButtonDel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,6 +158,7 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
 
         jPanel3.add(jButtonDel);
 
+        jButtonRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Refresh 3.png")));
         jButtonRefresh.setText("\u0412\u0441\u0438\u0447\u043a\u0438 \u0437\u0430\u043f\u0438\u0441\u0438");
         jButtonRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,8 +183,24 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
         getContentPane().add(jPanel3, java.awt.BorderLayout.SOUTH);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-835)/2, (screenSize.height-518)/2, 835, 518);
+        setBounds((screenSize.width-884)/2, (screenSize.height-518)/2, 884, 518);
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void jTextCodFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextCodFocusGained
+        jTextCod.selectAll();
+    }//GEN-LAST:event_jTextCodFocusGained
+    
+    private void jTextNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextNameFocusGained
+        jTextName.selectAll();
+    }//GEN-LAST:event_jTextNameFocusGained
+    
+    private void jTextCodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextCodKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextCod.setText(""); }
+    }//GEN-LAST:event_jTextCodKeyPressed
+    
+    private void jTextNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNameKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextName.setText(""); }
+    }//GEN-LAST:event_jTextNameKeyPressed
     
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
         printTable();
@@ -224,12 +271,16 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
     public static final String Names[] = {
-    "id",
-    "id_group",
-    "\u0418\u043c\u0435 \u0433\u0440\u0443\u043f\u0438",
-    "\u041a\u043e\u0434\u043e\u0432\u0435",
-    "\u0418\u043c\u0435\u043d\u0430",
-    "\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440"};
+        "id",
+        "id_group",
+        "\u0413\u0440\u0443\u043f\u0430",
+        "\u041a\u043e\u0434 \u043d\u0430 \u0431\u0430\u043d\u043a\u0430",
+        "\u0418\u043c\u0435 \u043d\u0430 \u0431\u0430\u043d\u043a\u0430",
+        "\u0411\u0430\u043d\u043a\u043e\u0432\u0430 \u0441\u043c\u0435\u0442\u043a\u0430",
+        "\u0410\u0434\u0440\u0435\u0441 \u043d\u0430 \u0431\u0430\u043d\u043a\u0430",
+        "id_type_account",
+        "\u0422\u0438\u043f \u043d\u0430 \u0441\u043c\u0435\u0442\u043a\u0430\u0442\u0430",
+        "\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440"};
     //---------------END My Variables
     
     //---------------START Methods
@@ -254,8 +305,9 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
             rs = internalObject.getTable();
             model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
-            HideColumns(0);
-            HideColumns(1);
+            HideColumns(getColumnIndex("id"));
+            HideColumns(getColumnIndex("id_group"));
+            HideColumns(getColumnIndex("id_type_account"));
         } catch(Exception e) { e.printStackTrace(); }
         table.requestFocus();
         try {
@@ -487,8 +539,9 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
             jScrollPane1.remove(table);
             model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
-            HideColumns(0);
-            HideColumns(1);
+            HideColumns(getColumnIndex("id"));
+            HideColumns(getColumnIndex("id_group"));
+            HideColumns(getColumnIndex("id_type_account"));
             jScrollPane1.getViewport().add(table);
             jScrollPane1.repaint();
         } catch(Exception e) { e.printStackTrace(); }
@@ -499,8 +552,9 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
         rs = internalObject.getTable();
         model = new imakante.com.CustomTableModel(getConn(), rs, Names);
         table = new imakante.com.CustomTable(model);
-        HideColumns(0);
-        HideColumns(1);
+        HideColumns(getColumnIndex("id"));
+        HideColumns(getColumnIndex("id_group"));
+        HideColumns(getColumnIndex("id_type_account"));
         jScrollPane1.getViewport().add(table);
         jScrollPane1.repaint();
     }
@@ -560,8 +614,7 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
         internalObject.close();
     }
     
-    private int getColumnIndex(String in) //test
-    {
+    private int getColumnIndex(String in) {
         int count = table.getColumnCount();
         for(int i=0; i < count; i++) {
             if(table.getColumnName(i).equals(in)) return i;
@@ -569,24 +622,22 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
         return 0;
     }
     
-    
-    
     private void HideColumns(int col) {
         int iColumn = col;
-// set column width
         table.getColumnModel().getColumn(iColumn).setMaxWidth(0);
         table.getColumnModel().getColumn(iColumn).setMinWidth(0);
         table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
         table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
-        
     }
+    
     private void setAllVariables(){
         setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
         setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("id_group")));
-        setCod((Integer) table.getValueAt(getRow(), getColumnIndex("cod")));
-        setNames((String) table.getValueAt(getRow(), getColumnIndex("name")));
-     //   setAcc((String) table.getValueAt(getRow(), getColumnIndex("acc")));
-     //   setVidAcc((Integer) table.getValueAt(getRow(), getColumnIndex("va")));
-        setComment((String) table.getValueAt(getRow(), getColumnIndex("comm")));
+        setCod((Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434 \u043d\u0430 \u0431\u0430\u043d\u043a\u0430")));
+        setNames((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435 \u043d\u0430 \u0431\u0430\u043d\u043a\u0430")));
+        setBankAccount((String) table.getValueAt(getRow(), getColumnIndex("\u0411\u0430\u043d\u043a\u043e\u0432\u0430 \u0441\u043c\u0435\u0442\u043a\u0430")));
+        setAddress((String) table.getValueAt(getRow(), getColumnIndex("\u0410\u0434\u0440\u0435\u0441 \u043d\u0430 \u0431\u0430\u043d\u043a\u0430")));
+        setTypeBankAccount((Integer) table.getValueAt(getRow(), getColumnIndex("id_type_account")));
+        setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440")));
     }
 }
