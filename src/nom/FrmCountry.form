@@ -101,6 +101,10 @@
                   <Dimension value="[80, 20]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextCodFocusGained"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextCodKeyPressed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTextCod.setInputVerifier(new imakante.com.InputIntegerVerifier());"/>
               </AuxValues>
@@ -116,6 +120,10 @@
                   <Dimension value="[160, 20]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextNameFocusGained"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextNameKeyPressed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonSearch">
               <Properties>

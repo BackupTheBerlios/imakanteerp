@@ -219,14 +219,17 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
 
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); }
+        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextField1.setText(""); }
     }//GEN-LAST:event_jTextField1KeyPressed
 
     private void jTextEGNKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextEGNKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); }
+        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextEGN.setText(""); }
     }//GEN-LAST:event_jTextEGNKeyPressed
 
     private void jTextNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNameKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); }
+        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextName.setText(""); }
     }//GEN-LAST:event_jTextNameKeyPressed
     
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed

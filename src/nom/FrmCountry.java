@@ -57,12 +57,34 @@ public class FrmCountry extends  imakante.com.vcomponents.iInternalFrame impleme
 
         jTextCod.setPreferredSize(new java.awt.Dimension(80, 20));
         jTextCod.setInputVerifier(new imakante.com.InputIntegerVerifier());
+        jTextCod.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextCodFocusGained(evt);
+            }
+        });
+        jTextCod.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextCodKeyPressed(evt);
+            }
+        });
+
         jPanel4.add(jTextCod);
 
         jLabel3.setText("\u0418\u043c\u0435:");
         jPanel4.add(jLabel3);
 
         jTextName.setPreferredSize(new java.awt.Dimension(160, 20));
+        jTextName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextNameFocusGained(evt);
+            }
+        });
+        jTextName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextNameKeyPressed(evt);
+            }
+        });
+
         jPanel4.add(jTextName);
 
         jButtonSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Search.png")));
@@ -164,6 +186,24 @@ public class FrmCountry extends  imakante.com.vcomponents.iInternalFrame impleme
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-895)/2, (screenSize.height-470)/2, 895, 470);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextCodFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextCodFocusGained
+        jTextCod.selectAll();
+    }//GEN-LAST:event_jTextCodFocusGained
+
+    private void jTextCodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextCodKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); }
+        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextCod.setText(""); }
+    }//GEN-LAST:event_jTextCodKeyPressed
+
+    private void jTextNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextNameFocusGained
+        jTextName.selectAll();
+    }//GEN-LAST:event_jTextNameFocusGained
+
+    private void jTextNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNameKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); }
+        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextName.setText(""); }
+    }//GEN-LAST:event_jTextNameKeyPressed
     
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
         printTable();
@@ -489,6 +529,8 @@ public class FrmCountry extends  imakante.com.vcomponents.iInternalFrame impleme
         table = new imakante.com.CustomTable(model);
         HideColumns(getColumnIndex("id"));
         jScrollPane1.getViewport().add(table);
+        jTextCod.setText("");
+        jTextName.setText("");
         jScrollPane1.repaint();
     }
     

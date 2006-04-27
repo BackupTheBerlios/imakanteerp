@@ -17,7 +17,7 @@ public class dbBankAccount extends imakante.com.dbObject {
     
     protected void prepareCstm() {
         try {
-            setCstm(getConn().prepareCall("call nom_pocedure_baccount(?,?,?,?,?,?,?,?,?)"));
+            setCstm(getConn().prepareCall("{call nom_procedure_baccount(?,?,?,?,?,?,?,?,?)}"));
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
@@ -31,7 +31,7 @@ public class dbBankAccount extends imakante.com.dbObject {
             getCstm().setString("in_account", getBankAccountNumber());
             getCstm().setString("in_address", getAddress());
             getCstm().setInt("in_id_tacc", getTypeBankAccount());
-            getCstm().setString("in_comments", getComment());
+            getCstm().setString("in_comment", getComment());
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
