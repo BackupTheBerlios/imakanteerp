@@ -5,7 +5,7 @@ CREATE PROCEDURE ls_procedure_group (IN in_id INT(6), IN in_nom TINYINT, IN comp
 BEGIN
      IF (comprator = 0) THEN
         SELECT n.id_n_group, n.cod_n_group, n.name_n_group, n.id_al, anlevel.name_al  FROM `n_group` n, anlevel 
-            WHERE nom_n_group = in_nom AND anlevel.id_al = n.id_al ORDER BY n.id_group ASC;
+            WHERE nom_n_group = in_nom AND anlevel.id_al = n.id_al ORDER BY n.id_n_group ASC;
      END IF;
      IF (comprator = 1) THEN
         INSERT INTO `n_group`(nom_n_group, cod_n_group, name_n_group, id_al) VALUES(in_nom, in_code, in_name, in_alid);
@@ -26,19 +26,19 @@ BEGIN
      IF (comprator = 5) THEN
           IF (in_alid != 0 AND in_code > -1) THEN
              SELECT n.id_n_group,  n.cod_n_group, n.name_n_group, n.id_al, anlevel.name_al  FROM `n_group` n, anlevel  WHERE n.cod_n_group LIKE CONCAT('%',in_code,'%') AND
-             n.name_n_group LIKE CONCAT('%',in_name,'%') AND n.id_al LIKE CONCAT('%',in_alid,'%') AND n.nom_n_group = in_nom AND anlevel.id_al = n.id_al ORDER BY n.id_group ASC;
+             n.name_n_group LIKE CONCAT('%',in_name,'%') AND n.id_al LIKE CONCAT('%',in_alid,'%') AND n.nom_n_group = in_nom AND anlevel.id_al = n.id_al ORDER BY n.id_n_group ASC;
           END IF;
           IF (in_alid = 0 AND in_code > -1) THEN
              SELECT n.id_n_group,  n.cod_n_group, n.name_n_group, n.id_al,anlevel.name_al  FROM `n_group` n,anlevel  WHERE n.cod_n_group LIKE CONCAT('%',in_code,'%') AND
-             n.name_n_group LIKE CONCAT('%',in_name,'%') AND n.nom_n_group = in_nom AND anlevel.id_al = n.id_al ORDER BY n.id_group ASC;
+             n.name_n_group LIKE CONCAT('%',in_name,'%') AND n.nom_n_group = in_nom AND anlevel.id_al = n.id_al ORDER BY n.id_n_group ASC;
           END IF;
           IF (in_alid != 0 AND in_code = -1) THEN
             SELECT n.id_n_group,  n.cod_n_group, n.name_n_group, n.id_al, anlevel.name_al  FROM `n_group` n, anlevel  WHERE n.name_n_group LIKE CONCAT('%',in_name,'%') AND 
-            n.id_al LIKE CONCAT('%',in_alid,'%') AND n.nom_n_group = in_nom AND anlevel.id_al = n.id_al ORDER BY n.id_group ASC;
+            n.id_al LIKE CONCAT('%',in_alid,'%') AND n.nom_n_group = in_nom AND anlevel.id_al = n.id_al ORDER BY n.id_n_group ASC;
           END IF;
           IF (in_alid = 0 AND in_code = -1) THEN
             SELECT n.id_n_group,  n.cod_n_group, n.name_n_group, n.id_al,anlevel.name_al  FROM `n_group` n,anlevel  WHERE n.name_n_group LIKE CONCAT('%',in_name,'%') AND 
-            n.nom_n_group = in_nom AND anlevel.id_al = n.id_al ORDER BY n.id_group ASC;
+            n.nom_n_group = in_nom AND anlevel.id_al = n.id_al ORDER BY n.id_n_group ASC;
           END IF;
      END IF;
 
