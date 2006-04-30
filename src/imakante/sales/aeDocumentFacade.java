@@ -272,7 +272,6 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             }
         });
 
-        getAccessibleContext().setAccessibleParent(null);
         jPanel2.setLayout(null);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -332,6 +331,11 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanelHead.add(jLabelDocType, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
 
         jTextFieldNomerDoc.setInputVerifier(new imakante.com.InputIntegerVerifier());
+        jTextFieldNomerDoc.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldNomerDocFocusLost(evt);
+            }
+        });
         jTextFieldNomerDoc.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldNomerDocKeyPressed(evt);
@@ -1045,6 +1049,11 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextFieldNomerDocFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNomerDocFocusLost
+
+        myParent.setNumberDocFacade(jTextFieldNomerDoc.getText());
+    }//GEN-LAST:event_jTextFieldNomerDocFocusLost
     
     private void jTextFieldZadylveniqKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldZadylveniqKeyPressed
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER){
@@ -1169,6 +1178,9 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     
     private void jButtonCreateDocFacadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCreateDocFacadeActionPerformed
 // TODO add your handling code here:
+        sales_main.isMakeDocByInputData=false;
+        sales_main.dataIn=null;
+        sales_main.dataOut=null;
         int id_df = myParent.getID_DocFacade();
         createDocument(id_df,myParent.getDocFacadeType(),0);
         isDocFacadeCreate = true;
@@ -1553,7 +1565,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             deleteDocFacade(myParent.getDocFacadeType(),Integer.parseInt(myParent.getNumberDocFacade()),myParent.getDocFacadeLevel());
         } else {
             if(!isDocFacadeCreate)
-                if(rows.size()>0) {
+                if(rows.size()>0) 
+                {
                 int id_dl;
                 docLineArray d=null;
                 
@@ -1583,6 +1596,22 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     }
                 }
                 }
+             if(sales_main.isMakeDocByInputData)
+             {
+                int rCount = jTable1.getRowCount();
+                for(int i=0; i< rCount;i++)
+                {
+                   int id_dl_ =(Integer) jTable1.getValueAt(i,12);
+                   myParent.getCountriesT().deleteDocLine(id_dl_);
+                }
+                myParent.getCountriesT().deleteRow(myParent.getID_DocFacade());
+                sales_main.isMakeDocByInputData=false;
+                sales_main.dataIn=null;
+                sales_main.dataOut=null;
+                myParent.refreshTable();
+             }
+          
+            
         }
         this.dispose();
     }//GEN-LAST:event_jButtonCloseActionPerformed
@@ -3650,13 +3679,19 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             
         }
         // stage 3
-        // zapis v HashMap namira6t se v salesMain
+        // zapis na  HashMap i ArrayList namira6ti se v salesMain
         // i ustanovqvane na makeDocByInputData=true;
         // proverka dali ima dokumenti za iskarvane(faktura) predi da se opiname da otvorim FrmDocLiune za (stokova razpiska)
         
+        // format na HashMap_a ==> put(<poreden_nomer>,<docLineArray>)
         //zatwarqne na formata
         
-        
+        sales_main.dataIn = data1;
+        sales_main.dataOut= myParent.getArrayOfID_DF();
+        sales_main.isMakeDocByInputData = true;
+        System.out.println("end create HashMap");
+        this.dispose();
+        myParent.closeFrm();
         
     }
     private HashMap addLineByID_PC(HashMap in1,HashMap in2) {
