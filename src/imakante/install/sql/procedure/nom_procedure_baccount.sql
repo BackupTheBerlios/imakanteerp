@@ -58,10 +58,10 @@ BEGIN
         SELECT MAX(ntb.id_ntbacc) AS id_ntbacc FROM n_type_bacc ntb;
      END IF;
      IF (comprator = 10) THEN
-        SELECT ng.id_n_group, ng.name_n_group FROM n_group ng WHERE n.nom_n_group = 6;
+        SELECT ng.id_n_group, ng.name_n_group FROM n_group ng WHERE ng.nom_n_group = 6;
      END IF;
      IF (comprator = 11) THEN
-        SELECT MAX(ng.id_n_group) AS id_n_group FROM n_group ng WHERE n.nom_n_group = 6;
+        SELECT MAX(ng.id_n_group) AS id_n_group FROM n_group ng WHERE ng.nom_n_group = 6;
      END IF;
 END $$
 
