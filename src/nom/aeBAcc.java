@@ -444,16 +444,17 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
         oldComment = myParent.getComment();
         try {
             myParent.setCod(Integer.parseInt(jTextField1.getText()));
-        } catch (NumberFormatException nfex) {
-            nfex.printStackTrace();
-        }
-        myParent.setNames(jTextField3.getText());
-        myParent.setComment(jTextArea1.getText());
+        } catch (NumberFormatException nfex) { nfex.printStackTrace(); }
         myParent.setIDG(myParent.getInternalObject().getIndexConnOfId()[jComboG.getSelectedIndex()]);
+        myParent.setNames(jTextField3.getText());
+        myParent.setBankAccount(jTextField2.getText());
+        myParent.setAddress(jTextField4.getText());
+        myParent.setTypeBankAccount(myParent.getInternalObject().getIndexOfTypes()[jComboT.getSelectedIndex()]);
+        myParent.setComment(jTextArea1.getText());
         myParent.getInternalObject().updateRow(myParent.getId(), myParent.getIDG(), myParent.getCod(), myParent.getNames(),
                 myParent.getBankAccount(), myParent.getAddress(), myParent.getTypeBankAccount(), myParent.getComment());
         myParent.refreshTable();
-        myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
+        myParent.getTable().changeSelection(myParent.getRow(), 2, false, false);
         jButtonUndo.setEnabled(true);
     }
     
@@ -483,15 +484,18 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
     }
     
     private void repaintComp() {
-        jTextField1.setText(""+myParent.getCod());
-        jTextField3.setText(myParent.getNames());
-        jTextArea1.setText(myParent.getComment());
         jComboG.setSelectedIndex(getNewComboBoxIndex(myParent.getIDG()));
+        jTextField1.setText("" + myParent.getCod());
+        jTextField3.setText(myParent.getNames());
+        jTextField2.setText(myParent.getBankAccount());
+        jTextField4.setText(myParent.getAddress());
+        jComboT.setSelectedIndex(getNewTypeAccComboIndex(myParent.getTypeBankAccount()));
+        jTextArea1.setText(myParent.getComment());
     }
     
     private void initCombo() {
         namesG = myParent.getInternalObject().getBankAccountGroup();
-        for(int i=0; i<namesG.length; i++) {
+        for(int i = 0; i < namesG.length; i++) {
             jComboG.addItem(new String(namesG[i]));
         }
         if(selectComboBoxItem != 0) {
@@ -501,9 +505,9 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
     }
     
     private int getNewComboBoxIndex(int oldindex) {
-        int newindex= 0;
-        for(int i=0; i<myParent.getInternalObject().getIndexConnOfId().length; i++) {
-            if(myParent.getInternalObject().getIndexConnOfId()[i]==oldindex) {
+        int newindex = 0;
+        for(int i = 0; i < myParent.getInternalObject().getIndexConnOfId().length; i++) {
+            if(myParent.getInternalObject().getIndexConnOfId()[i] == oldindex) {
                 newindex = i;
                 break;
             }
@@ -513,7 +517,7 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
     
     private void initTypeAccountCombo() {
         namesT = myParent.getInternalObject().getTypeBankAccounts();
-        for(int i=0; i<namesT.length; i++) {
+        for(int i = 0; i < namesT.length; i++) {
             jComboT.addItem(new String(namesT[i]));
         }
         if(selectComboTItem != 0) {
@@ -524,8 +528,8 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
     
     private int getNewTypeAccComboIndex(int originalTAIndex) {
         int newIndex = 0;
-        for(int i=0; i<myParent.getInternalObject().getIndexOfTypes().length; i++) {
-            if(myParent.getInternalObject().getIndexOfTypes()[i]==originalTAIndex) {
+        for(int i = 0; i < myParent.getInternalObject().getIndexOfTypes().length; i++) {
+            if(myParent.getInternalObject().getIndexOfTypes()[i] == originalTAIndex) {
                 newIndex = i;
                 break;
             }

@@ -262,7 +262,7 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
     private String name, baccount, address, comment;
     private String namesG[];
     private int selectComboBoxItem;
-    private  boolean atBegining=false;
+    private  boolean atBegining = false;
     private  boolean atEnd = false;
     private int row;
     
@@ -290,8 +290,7 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
     private void prepareConn() {
         try{
             conn =  myframe.getConn();
-            if(conn==null){System.out.println("conn problem");
-            }
+            if(conn==null) { System.out.println("conn problem"); }
         } catch(Exception e) { e.printStackTrace(); }
     }
     
@@ -364,6 +363,7 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
     public void setMyframe(imakante.com.vcomponents.iFrame val) {
         this.myframe = val;
     }
+    
     public  boolean isAtBegining() {
         return atBegining;
     }
@@ -383,9 +383,9 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
     private int  getMaxRow() {
         int i = 0;
         i  = table.getRowCount() - 1;
-        
         return i;
     }
+    
     public  int getRow() {
         return row;
     }
@@ -462,7 +462,7 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
         setRow(getMaxRow());
         try{
             setAllVariables();
-            table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
+            table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
             System.out.println("problem");
@@ -498,7 +498,7 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
             setAtEnd(false);
             try {
                 setAllVariables();
-                table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
+                table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
             } catch(ArrayIndexOutOfBoundsException aioobe) {
                 setRow(getRow() + 1);
                 System.out.println("problem");
@@ -513,7 +513,7 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
         setRow(0);
         try {
             setAllVariables();
-            table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
+            table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
             System.out.println("problem");
@@ -524,7 +524,7 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
     
     private void printTable() {
         try {
-            java.text.MessageFormat headerFormat = new java.text.MessageFormat("Casa");
+            java.text.MessageFormat headerFormat = new java.text.MessageFormat("Bank Accounts");
             java.text.MessageFormat footerFormat = new java.text.MessageFormat("Page. " + "- {0} -" + " IMAKANTE' ");
             table.print(javax.swing.JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
         } catch(java.awt.print.PrinterException e) { e.printStackTrace(); }
@@ -533,11 +533,12 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
     private void searchRecords() {
         try {
             try {
-                rs = internalObject.searchRecords(Integer.parseInt(jTextCod.getText()),jTextName.getText());
-            } catch (NumberFormatException ex) {
-                ex.printStackTrace();
-                jTextCod.requestFocus();
-            }
+                if (jTextCod.getText().equals("")) {
+                    rs = internalObject.searchRecords(-1, jTextName.getText());
+                } else {
+                    rs = internalObject.searchRecords(Integer.parseInt(jTextCod.getText()), jTextName.getText());
+                }
+            } catch (NumberFormatException ex) { ex.printStackTrace(); jTextCod.requestFocus(); }
             jScrollPane1.remove(table);
             model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
@@ -562,27 +563,30 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
     }
     
     private void newRecord() {
-        setId(internalObject.getMaxId());
-        setIDG(internalObject.getMaxGrID());
-        setCod(internalObject.getMaxCod()+1);
-        internalObject.insertRow(getCod(), getIDG());
-        nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
-        ae_Casa.setVisible(true);
+        internalObject.insertRow((internalObject.getMaxCod() + 1), getIDG(), getTypeBankAccount());
+        refreshTable();
+        setRow(getMaxRow());
+        table.changeSelection(getRow(), 2, false, false);
+        setAllVariables();
+        setAtBegining(false);
+        setAtEnd(true);
+        nom.aeBAcc ae_BankAcc = new nom.aeBAcc(this, true);
+        ae_BankAcc.setVisible(true);
         refreshTable();
     }
     
     private void editRecord() {
         if (table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());
-            if(getRow()==0){          //manage button state of ae form
+            if(getRow() == 0){          //manage button state of ae form
                 setAtBegining(true);
             }
-            if(getRow()==getMaxRow()){
+            if(getRow() == getMaxRow()){
                 setAtEnd(true);
             }
             setAllVariables();
-            nom.aeCasa ae_Casa = new nom.aeCasa(this, true);
-            ae_Casa.setVisible(true);
+            nom.aeBAcc ae_BankAcc = new nom.aeBAcc(this, true);
+            ae_BankAcc.setVisible(true);
         } else {  }
     }
     

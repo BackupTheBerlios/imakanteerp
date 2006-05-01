@@ -43,12 +43,14 @@ public class dbBankAccount extends imakante.com.dbObject {
         this.id_type = TypeBAccount;
     }
     
-    public void insertRow(int in_code, int in_id_group) {
+    public void insertRow(int in_code, int in_id_group, int in_id_tacc) {
         setComprator(1);
         this.setCode(in_code);
         this.setIDGr(in_id_group);
         this.setName("");
-        
+        this.setBankAccountNumber("");
+        this.setAddress("");
+        this.setTypeBankAccount(in_id_tacc);
         this.setComment("");
         try {
             registerParameters();
@@ -65,14 +67,14 @@ public class dbBankAccount extends imakante.com.dbObject {
         this.setName(in_name);
         this.setBankAccountNumber(in_account);
         this.setAddress(in_address);
-        this.id_type = in_id_tacc;
+        this.setTypeBankAccount(in_id_tacc);
         this.setComment(in_comment);
         try {
             registerParameters();
             getCstm().execute();
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
-//    
+//
 //    public java.sql.ResultSet getRow(int in_id) {
 //        setComprator(4);
 //        setId(in_id);
@@ -91,7 +93,7 @@ public class dbBankAccount extends imakante.com.dbObject {
 //        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
 //        return getRs();
 //    }
-//    
+//
     public java.sql.ResultSet searchRecords(int in_code, String in_name) {
         setComprator(5);
         this.setCode(in_code);
@@ -105,49 +107,48 @@ public class dbBankAccount extends imakante.com.dbObject {
     
     public String[] getTypeBankAccounts() {
         setComprator(6);
-        String resultStr = new String("");
-        int originalId = getId(), i = 0;
+        int originalId = getId();
         java.sql.ResultSet originalRS = getRs();
         java.util.ArrayList list = new java.util.ArrayList();
         java.util.Iterator iterator = null;
         java.util.HashMap Types = new java.util.HashMap();
+        int j = 0;
         try {
             registerParameters();
             setRs(getCstm().executeQuery());
             while(getRs().next()) {
                 Types.put(new Integer(getRs().getInt("id_tbacc")), new String(getRs().getString("name_tbacc")));
                 list.add(new Integer(getRs().getInt("id_tbacc")));
-                i++;
+                j++;
             }
         } catch(Exception e) { e.printStackTrace(); }
         setRs(originalRS);
         setId(originalId);
-        indexOfTypes = new int[i];
+        indexOfTypes = new int[j];
         iterator = list.iterator();
-        splitTypes = new String[i];
-        i = 0;
+        splitTypes = new String[j];
+        j = 0;
         while(iterator.hasNext()) {
-            indexOfTypes[i] = (Integer) iterator.next();
-            splitTypes[i] = (String) Types.get(indexOfTypes[i]);
-            i++;
+            indexOfTypes[j] = (Integer) iterator.next();
+            splitTypes[j] = (String) Types.get(indexOfTypes[j]);
+            j++;
         }
         return splitTypes;
     }
     
     public String[] getBankAccountGroup() {
         setComprator(10);
-        String return_str = new String("");
         int oldId = getId();
         java.sql.ResultSet oldRs = getRs();
         java.util.ArrayList in = new java.util.ArrayList();
         java.util.Iterator it = null;
-        java.util.HashMap Groupes = new java.util.HashMap();
+        java.util.HashMap Groups = new java.util.HashMap();
         int i = 0;
         try {
             registerParameters();
             setRs(getCstm().executeQuery());
             while(getRs().next()) {
-                Groupes.put(new Integer(getRs().getInt("id_n_group")), new String(getRs().getString("name_n_group")));
+                Groups.put(new Integer(getRs().getInt("id_n_group")), new String(getRs().getString("name_n_group")));
                 in.add(new Integer(getRs().getInt("id_n_group")));
                 i++;
             }
@@ -160,12 +161,12 @@ public class dbBankAccount extends imakante.com.dbObject {
         i = 0;
         while(it.hasNext()) {
             indexConnOfId[i] = (Integer) it.next();
-            splitNamesG[i] = (String) Groupes.get(indexConnOfId[i]);
+            splitNamesG[i] = (String) Groups.get(indexConnOfId[i]);
             i++;
         }
         return splitNamesG;
     }
-    
+
     public int getMaxGrID() {
         setComprator(11);
         int return_int = -1;
@@ -178,7 +179,7 @@ public class dbBankAccount extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
         return return_int;
     }
-    
+
     public int[] getIndexOfTypes() {
         return indexOfTypes;
     }
