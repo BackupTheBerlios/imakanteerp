@@ -1705,14 +1705,21 @@ private void moveDocimentTypeColumns(int doctype)
         }
         case aeDocumentFacade.PREDAVATELNA_RAZPISKA:
         {
+            table.moveColumn(getColumnIndex("Номер на документа"),0);
+            table.moveColumn(getColumnIndex("Дата на документа"),1);
+            
             break;
         }
         case aeDocumentFacade.PRIEMATELNA_RAZPISKA:
         {
+            table.moveColumn(getColumnIndex("Номер на документа"),0);
+            table.moveColumn(getColumnIndex("Дата на документа"),1);
             break;
         }
         case aeDocumentFacade.STOKOVA_RAZPISKA:
         {
+            table.moveColumn(getColumnIndex("Номер на документа"),0);
+            table.moveColumn(getColumnIndex("Дата на документа"),1);
             break;
         }
         case aeDocumentFacade.PROFORMA_FAKTURA:

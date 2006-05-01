@@ -132,10 +132,12 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         imakante.com.dateManipulation dateManip = new imakante.com.dateManipulation();
         String strDate;
         strDate = String.valueOf(jXDateCurs.getDate().getDate());
-        strDate += "/" + String.valueOf(jXDateCurs.getDate().getMonth());
+        strDate += "/" + String.valueOf(jXDateCurs.getDate().getMonth()+1);
         strDate += "/" + String.valueOf(jXDateCurs.getDate().getYear()+1900);
         String DateSQLFormat = dateManip.convertDate(strDate);
+        System.out.println("DateSQLFormat"+DateSQLFormat);
         arrayRate = myParent.getCountriesT().getCurentRate(DateSQLFormat);
+       
         if(arrayRate.size()<2)
         {
             if(myParent.getDocFacadeType()!=NAREZDANE_ZA_PREHVYRQNE)
@@ -1090,6 +1092,11 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
 // TODO add your handling code here:
+    // proverka za ve4e syzdadena faktura ot tazi stokova razpiska
+    int tmpInt = myParent.getCountriesT().getStatusConnection(0,myParent.getID_DocFacade());
+  // ??????  if(tmpInt == 0) // ne e syzdavana faktura
+    { 
+        
         if(jCheckBox1.isSelected()) {
             myParent.getArrayOfID_DF().add((Integer)myParent.getID_DocFacade());
             isCheckOne = true;
@@ -1107,6 +1114,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             } else isCheckOne=false;
             
         }
+     }   
     }//GEN-LAST:event_jCheckBox1ActionPerformed
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -2045,6 +2053,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             }
             
             jTable1.repaint();
+            jCheckBox1.setSelected(false);
             
         }
         
@@ -2267,8 +2276,11 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                             ddsOsnova += (Double) jTable1.getValueAt(rowSelect,11);
                             jLabelDDSOsnova.setText(doubleRoundToString(4,ddsOsnova));
                             double allTotal = Double.parseDouble(jLabelAllTotal.getText());
-                            allTotal += alldds+ddsOsnova;
+                            allTotal = alldds+ddsOsnova;
                             jLabelAllTotal.setText(doubleRoundToString(4,allTotal));
+                            System.out.println("Общо = "+ allTotal + "::"+doubleRoundToString(4,allTotal));
+                            System.out.println("ДДС = "+ alldds + "::"+doubleRoundToString(4,alldds));
+                            System.out.println("База = "+ ddsOsnova + "::" + doubleRoundToString(4,ddsOsnova));
                             
                             if(jTable1.getSelectedRow()==(jTable1.getRowCount() - 1)) // pri polovfenie 4e reda e posleden
                             {

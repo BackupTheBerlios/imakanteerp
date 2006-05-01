@@ -47,7 +47,8 @@
  *comprator= 45: insertProductNal()
  *comprator= 46: getMaxNalID()
  *comprator= 47: increaseProductNal()
- *
+ *comprator= 48: getRowDocLine()
+ *comprator= 49: getStatusConnection()
  *
  *
  *
@@ -1784,6 +1785,40 @@ public docLineArray getRowDocLine(int id_dl)
      
     setID_DocFacade(oldId_DF);
     return data;
+}
+
+public int  getStatusConnection(int checkConn, int in_id_df)
+{
+    /*****************************
+    *checkConn = 
+    * 0 : faktura_connection
+    * 1 : zaqvka_connection      
+    *
+    *
+    ****************        */
+    int return_value=0;
+    int oldID_DF = getID_DocFacade();
+    int oldID_Obekt_in = getID_Obekt_IN();
+    setID_Obekt_IN(checkConn);
+    setID_DocFacade(in_id_df);
+    setComprator(49);
+    java.sql.ResultSet rs12 =null;
+    try
+        {
+            registerParameters();
+            rs12 = getCstm().executeQuery();
+            while(rs12.next())
+            {
+            return_value =(Integer) rs12.getInt(1);
+            }  
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }       
+    setID_DocFacade(oldID_DF) ;
+    setID_Obekt_IN(oldID_Obekt_in);
+   return return_value;
 }
 // <-----------------------
 }// end class
