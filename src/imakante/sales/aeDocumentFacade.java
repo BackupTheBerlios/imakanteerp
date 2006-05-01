@@ -1892,16 +1892,16 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             jComboBoxVidPla6tane.setSelectedIndex(myParent.getDescriptipnPay());
             String newDate = checkAndConvertSQLFormat(myParent.getPayingDate());
             int dateInt[] = getDateAsInt(newDate);
-            Date date = new Date(dateInt[2]-1900,dateInt[1],dateInt[0]);
+            Date date = new Date(dateInt[2]-1900,dateInt[1]-1,dateInt[0]);
             jXDatePay.setDate(date);
             //  jTextFieldPayDate.setText(myParent.getPayingDate());
             newDate = checkAndConvertSQLFormat(myParent.getDateDocFacade());
             dateInt = getDateAsInt(newDate);
-            date = new Date(dateInt[2]-1900,dateInt[1],dateInt[0]);
+            date = new Date(dateInt[2]-1900,dateInt[1]-1,dateInt[0]);
             jXDateDocument.setDate(date);
             newDate = checkAndConvertSQLFormat(myParent.getPayingDate());
             dateInt = getDateAsInt(newDate);
-            date = new Date(dateInt[2]-1900,dateInt[1],dateInt[0]);
+            date = new Date(dateInt[2]-1900,dateInt[1]-1,dateInt[0]);
             jXDatePay.setDate(date);
             
             switch(DocFacadeType) {
@@ -3000,7 +3000,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 
                 String strDate;
                 strDate = String.valueOf(jXDatePay.getDate().getDate());
-                strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth());
+                strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth()+1); // 
                 strDate += "/" + String.valueOf(jXDatePay.getDate().getYear()+1900);
                 String payingDate = dateManip.convertDate(strDate);
                 
@@ -3047,7 +3047,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 String dateDeliver = dateManip.convertDate("01.01.2000");
                 String strDate;
                 strDate = String.valueOf(jXDatePay.getDate().getDate());
-                strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth());
+                strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth()+1);
                 strDate += "/" + String.valueOf(jXDatePay.getDate().getYear()+1900);
                 String payingDate = dateManip.convertDate(strDate);
                 
@@ -3099,7 +3099,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 String strDate;
                 
                 strDate = String.valueOf(jXDateDeliver.getDate().getDate());
-                strDate += "/" + String.valueOf(jXDateDeliver.getDate().getMonth());
+                strDate += "/" + String.valueOf(jXDateDeliver.getDate().getMonth()+1);
                 strDate += "/" + String.valueOf(jXDateDeliver.getDate().getYear()+1900);
                 String dateDeliver = dateManip.convertDate(strDate);
                 
@@ -3155,19 +3155,19 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 String strDate;
                 
                 strDate = String.valueOf(jXDateDeliver.getDate().getDate());
-                strDate += "/" + String.valueOf(jXDateDeliver.getDate().getMonth());
+                strDate += "/" + String.valueOf(jXDateDeliver.getDate().getMonth()+1);
                 strDate += "/" + String.valueOf(jXDateDeliver.getDate().getYear()+1900);
                 String dateDeliver = dateManip.convertDate(strDate);
                 
                 strDate = " ";
                 strDate = String.valueOf(jXDatePay.getDate().getDate());
-                strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth());
+                strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth()+1);
                 strDate += "/" + String.valueOf(jXDatePay.getDate().getYear()+1900);
                 String payingDate = dateManip.convertDate(strDate);
                 
                 strDate = " ";
                 strDate = String.valueOf(jXDateDocument.getDate().getDate());
-                strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth());
+                strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth()+1);
                 strDate += "/" + String.valueOf(jXDateDocument.getDate().getYear()+1900);
                 String docFacadeDate = dateManip.convertDate(strDate);
                 
@@ -3212,19 +3212,19 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 String strDate;
                 
                 strDate = String.valueOf(jXDateDeliver.getDate().getDate());
-                strDate += "/" + String.valueOf(jXDateDeliver.getDate().getMonth());
+                strDate += "/" + String.valueOf(jXDateDeliver.getDate().getMonth()+1);
                 strDate += "/" + String.valueOf(jXDateDeliver.getDate().getYear()+1900);
                 String dateDeliver = dateManip.convertDate(strDate);
                 
                 strDate = " ";
                 strDate = String.valueOf(jXDatePay.getDate().getDate());
-                strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth());
+                strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth()+1);
                 strDate += "/" + String.valueOf(jXDatePay.getDate().getYear()+1900);
                 String payingDate = dateManip.convertDate(strDate);
                 
                 strDate = " ";
                 strDate = String.valueOf(jXDateDocument.getDate().getDate());
-                strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth());
+                strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth()+1);
                 strDate += "/" + String.valueOf(jXDateDocument.getDate().getYear()+1900);
                 String docFacadeDate = dateManip.convertDate(strDate);
                 
@@ -3272,19 +3272,19 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 String strDate;
                 
                 strDate = String.valueOf(jXDateDeliver.getDate().getDate());
-                strDate += "/" + String.valueOf(jXDateDeliver.getDate().getMonth());
+                strDate += "/" + String.valueOf(jXDateDeliver.getDate().getMonth()+1);
                 strDate += "/" + String.valueOf(jXDateDeliver.getDate().getYear()+1900);
                 String dateDeliver = dateManip.convertDate(strDate);
                 System.out.println("dateDeliver :"+dateDeliver);
                 strDate = " ";
                 strDate = String.valueOf(jXDatePay.getDate().getDate());
-                strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth());
+                strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth()+1);
                 strDate += "/" + String.valueOf(jXDatePay.getDate().getYear()+1900);
                 String payingDate = dateManip.convertDate(strDate);
                 System.out.println("payingDate :"+payingDate);
                 strDate = " ";
                 strDate = String.valueOf(jXDateDocument.getDate().getDate());
-                strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth());
+                strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth()+1);
                 strDate += "/" + String.valueOf(jXDateDocument.getDate().getYear()+1900);
                 String docFacadeDate = dateManip.convertDate(strDate);
                 System.out.println("docFacadeDate :"+docFacadeDate);
