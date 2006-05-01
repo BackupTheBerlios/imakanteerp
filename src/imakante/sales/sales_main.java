@@ -799,8 +799,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         int pricelist = 1;
         int doctype = aeDocumentFacade.FAKTURI;
         int storagedocdacade = 1;
+        System.out.println("Create opr. Fak");
+        System.out.println(isMakeDocByInputData);
         
-        if(isMakeDocByInputData) {
+        if(!isMakeDocByInputData) {
             dataIn = null;
             dataOut = null;
             loadFrmDocFacade("\u0424\u0410\u041a\u0422\u0423\u0420\u0410", user, level, pricelist, doctype, storagedocdacade, isMakeDocByInputData, dataIn, dataOut );
@@ -815,8 +817,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         int pricelist = 1;
         int doctype = aeDocumentFacade.FAKTURI;
         int storagedocdacade = 1;
+        System.out.println("Create opr. Fak");
+        System.out.println(isMakeDocByInputData);
         
-        if(isMakeDocByInputData) {
+        if(!isMakeDocByInputData) {
             dataIn = null;
             dataOut = null;
             loadFrmDocFacade("\u0424\u0410\u041a\u0422\u0423\u0420\u0410", user, level, pricelist, doctype, storagedocdacade, isMakeDocByInputData, dataIn, dataOut );
@@ -1121,7 +1125,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private static boolean isStartFrmProduct = false;
     
     private boolean levelActivate = false;
-    public  boolean isMakeDocByInputData = false;    //   \
+    public  static boolean isMakeDocByInputData = false;    //   \
     public  static  HashMap dataIn;                //    > I/O ot eaDocumentFacade
     public  static  ArrayList dataOut;             //   /
     private FrmDocumentFacade frmDocumentFacadeDialog;
@@ -1130,6 +1134,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     
     private static LinkedHashMap OrderArea = new LinkedHashMap(); //stokovi
     private static LinkedHashMap FaktArea = new LinkedHashMap(); // fakturi
+    
+   
     
     private static LinkedHashMap casaInContrArea = new LinkedHashMap(); // prihodni orderi kasa kontragent
     private static LinkedHashMap casaOutContrArea = new LinkedHashMap(); // razhodni orderi kasa kontragent
