@@ -5,7 +5,7 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
     
     public aeCasa(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
         super(frame, modal);
-        this.myParent = (nom.FrmBankAccounts) frame;
+        this.myParent = (nom.FrmCasa) frame;
         initComponents();
         getNavigationState();
         jButtonUndo.setEnabled(false);
@@ -368,7 +368,7 @@ public class aeCasa extends imakante.com.vcomponents.iDialog {
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
     //--------------- My Variables
-    private nom.FrmBankAccounts myParent;
+    private nom.FrmCasa myParent;
     private int oldIDG = 0;
     private int oldCod = 0;
     private String oldName = "";
