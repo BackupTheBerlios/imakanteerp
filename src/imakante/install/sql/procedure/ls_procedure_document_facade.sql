@@ -443,7 +443,8 @@ IF (comprator = 20) THEN
      FROM mida.n_product_main n LEFT JOIN mida.n_product_consigment pc ON pc.id_pm = n.id_pm
      LEFT JOIN mida.sl_nalichnosti s ON pc.id_pc = s.id_pc
      LEFT JOIN mida.n_storage st ON st.id_n_storage = s.id_n_storage
-     WHERE n.code_pm LIKE CONCAT('%',in_docFacadeComment,'%') AND n.flag_pm = in_id_obekt_in AND  s.level= in_id_df;
+     WHERE n.code_pm LIKE CONCAT('%',in_docFacadeComment,'%') AND n.flag_pm = in_id_obekt_in AND  s.level= in_id_df
+     GROUP BY id_n_storage;
    END IF;
    IF (in_docFacadeType = 1) THEN
        SELECT n.id_pm,pc.parcel_pc, pc.id_pp  as pc_id_pp, pc.id_ppp as pc_id_ppp, pc.id_pf as pc_id_pf,
@@ -454,7 +455,8 @@ IF (comprator = 20) THEN
        FROM mida.n_product_main n LEFT JOIN mida.n_product_consigment pc ON pc.id_pm = n.id_pm
        LEFT JOIN mida.sl_nalichnosti s ON pc.id_pc = s.id_pc
        LEFT JOIN mida.n_storage st ON st.id_n_storage = s.id_n_storage
-       WHERE n.code_pm LIKE CONCAT(in_docFacadeComment,'%') AND n.flag_pm = in_id_obekt_in AND  s.level= in_id_df;
+       WHERE n.code_pm LIKE CONCAT(in_docFacadeComment,'%') AND n.flag_pm = in_id_obekt_in AND  s.level= in_id_df
+       GROUP BY id_n_storage;
 
    END IF;
    IF (in_docFacadeType = 2) THEN
@@ -466,7 +468,8 @@ IF (comprator = 20) THEN
        FROM mida.n_product_main n LEFT JOIN mida.n_product_consigment pc ON pc.id_pm = n.id_pm
        LEFT JOIN mida.sl_nalichnosti s ON pc.id_pc = s.id_pc
        LEFT JOIN mida.n_storage st ON st.id_n_storage = s.id_n_storage
-       WHERE n.code_pm LIKE CONCAT('%',in_docFacadeComment) AND n.flag_pm = in_id_obekt_in AND  s.level= in_id_df;
+       WHERE n.code_pm LIKE CONCAT('%',in_docFacadeComment) AND n.flag_pm = in_id_obekt_in AND  s.level= in_id_df
+       GROUP BY id_n_storage;
    END IF;
 END IF;
 IF (comprator = 21) THEN
@@ -488,9 +491,14 @@ IF (comprator = 24) THEN
 END IF;
 
 IF (comprator = 25) THEN
-    SELECT * FROM mida.sl_nalichnosti s LEFT JOIN mida.n_product_consigment n ON n.id_pc=s.id_pc
-    LEFT JOIN mida.n_product_main pm ON pm.id_pm = n.id_pm
-    WHERE n.id_pc =in_id_obekt_in AND pm.flag_pm = in_id_df;
+    #----------------------------old---------------------------------------------------------
+    #SELECT * FROM mida.sl_nalichnosti s LEFT JOIN mida.n_product_consigment n ON n.id_pc=s.id_pc
+    #LEFT JOIN mida.n_product_main pm ON pm.id_pm = n.id_pm
+    #WHERE n.id_pc =in_id_obekt_in AND pm.flag_pm = in_id_df;
+    #---------------------------------end------------------------------------------------------
+    SELECT * FROM sl_nalichnosti s
+    WHERE s.id_pc = in_id_obekt_in   AND s.id_n_storage= in_docFacadeStorage AND s.level=in_id_df;
+
 END IF;
 
 IF (comprator = 26) THEN
@@ -696,6 +704,12 @@ IF (comprator = 49) THEN
           WHERE id_df = in_id_df;
        END IF;
 END IF;
+
+IF (comprator = 50) THEN
+    SELECT s.id_n_storage, s.id_pc FROM sl_document_lines s
+    WHERE s.id_dl = in_id_df;
+END IF;
+
 END $$
 
 DELIMITER ;

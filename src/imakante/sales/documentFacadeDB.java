@@ -49,7 +49,7 @@
  *comprator= 47: increaseProductNal()
  *comprator= 48: getRowDocLine()
  *comprator= 49: getStatusConnection()
- *
+ *comprator= 50: getStorageAndParcelByID()
  *
  *
  *
@@ -91,6 +91,10 @@ public class documentFacadeDB  extends imakante.com.dbObject {
     private int userLastEdit ;
     private String commentDocFacade;
     private int docFacadeFlagFinish;
+    
+    private final int LEVEL_1 = 1;  // master
+    private final int LEVEL_2 = 2;  // real
+    private final int LEVEL_3 = 3;  // fakturno
    // private int idrep; //??????? 
     //-------------END MyVariables
     
@@ -947,19 +951,19 @@ public java.sql.ResultSet getTableProductInfo(String in , int sqlselect,int leve
     int levelForNali4nost = 0;
     switch(level)
     {
-        case 2 :
+        case LEVEL_2 :
         {
-           levelForNali4nost =1;
+           levelForNali4nost =0; // realno nivo
             break;
         }
-        case 3 :
+        case LEVEL_3 :
         {
-            levelForNali4nost =0;
+            levelForNali4nost =1; // fakturno nivo
             break;
         }
-        case 1 :
+        case LEVEL_1 :
         {
-            levelForNali4nost =1;
+            levelForNali4nost =0;  // Master nivo -6te se raboti s nivo "2", no pri promqna na koli4estvata 6te se orazi i v nivo "3"
             break;
         }
     }
@@ -1098,16 +1102,36 @@ public double[] getPriceListByID(int in_id_pp)
        setID_Obekt_IN(oldIntValue);
        return des;
    }
- public int getAllProductWithOutLevel(int in_id_pc, int flag)
+ public int getAllProductWithOutLevel(int in_id_pc, int flag_level,int storage)
  {
       int allProduct =0;
       int oldIntValue = getID_Obekt_IN();
       int oldID_df = getID_DocFacade();
-     
-       setID_Obekt_IN(in_id_pc);
-       setID_DocFacade(flag);
+      int oldStorage = getStorageDocFacade();
+      setID_Obekt_IN(in_id_pc);
       
-       setComprator(25);
+      setStorageDocFacade(storage);
+      setComprator(25);
+      int newLevel=0;
+      switch(flag_level)
+      {
+          case  LEVEL_1:
+          {
+              newLevel=1; // 6te se vzemat i danni za  nivo "3""
+              break;
+          }
+          case  LEVEL_2:
+          {
+              newLevel=0; // danni za nivo "2"
+              break;
+          }
+          case  LEVEL_3:
+          {
+              newLevel=1; // danni za nivo "3"
+              break;
+          }
+      }
+      setID_DocFacade(newLevel);
        try
         {
             registerParameters();
@@ -1115,7 +1139,7 @@ public double[] getPriceListByID(int in_id_pp)
             
             while(getRs().next())
             {
-                allProduct += getRs().getInt("quant_nal"); 
+                allProduct = getRs().getInt("quant_nal"); 
                 
             }
         }
@@ -1126,6 +1150,7 @@ public double[] getPriceListByID(int in_id_pp)
       
        setID_Obekt_IN(oldIntValue);
        setID_DocFacade(oldID_df);
+       setStorageDocFacade(storage);
        return allProduct;
  }
  
@@ -1168,15 +1193,17 @@ public double[] getPriceListByID(int in_id_pp)
        setID_Deliver(oldID_Deliver);
  }
  
- public int checkForEnoughProducts(int in_id_pc, int in_id_starage)
+ public int checkForEnoughProducts(int in_id_pc, int in_id_starage,int level)
  {
      int enoughProduct = 0;
      int maxNumber = 0;
      setComprator(27);
      int oldID_DF = getID_DocFacade();
      int oldID_Obekt_in = getID_Obekt_IN();
+     int oldLevel = getLevelDocFacade();
      setID_Obekt_IN(in_id_starage);
      setID_DocFacade(in_id_pc);
+     setLevelDocFacade(level);
     
      try
         {
@@ -1196,22 +1223,54 @@ public double[] getPriceListByID(int in_id_pp)
   
      setID_Obekt_IN(oldID_Obekt_in);
      setID_DocFacade(oldID_DF);
+     setLevelDocFacade(oldLevel);
      enoughProduct = maxNumber - enoughProduct;
      return enoughProduct;
  }
- public void preserveProducts(int in_id_pc, int in_id_storage, int number)
+ public void preserveProducts(int in_id_pc, int in_id_storage, int number,int level)
  {
      int oldID_obekt_in = getID_Obekt_IN();
      int oldID_obekt_out = getID_Obekt_OUT();
      int oldID_contragent_in = getID_Contragent_IN();
+     int oldLevel = getLevelDocFacade();
      setComprator(28);
       setID_Obekt_IN(in_id_pc);
       setID_Obekt_OUT(in_id_storage);
        setID_Contragent_IN(number);
-     try
+       int levelForNali4nost = 0;
+       boolean isLevelOne=false;
+       switch(level)
+       {
+            case  LEVEL_1:
+          {
+              levelForNali4nost=0; 
+              isLevelOne = true;
+              break;
+          }
+          case  LEVEL_2:
+          {
+              levelForNali4nost=0; 
+              break;
+          }
+          case  LEVEL_3:
+          {
+              levelForNali4nost=1; 
+              break;
+          }
+       }
+       setLevelDocFacade(levelForNali4nost);
+      try
         {
+           
             registerParameters();
             getCstm().execute();
+            if(isLevelOne)
+              {
+                levelForNali4nost=1;
+                setLevelDocFacade(levelForNali4nost);
+                registerParameters();
+                getCstm().execute();
+              }
         }
         catch(java.sql.SQLException sqle)
         {
@@ -1224,7 +1283,7 @@ public double[] getPriceListByID(int in_id_pp)
      setID_Contragent_IN(oldID_contragent_in);
        setID_Obekt_OUT(oldID_obekt_out);
        setID_Obekt_IN(oldID_obekt_in);
-     
+     setLevelDocFacade(oldLevel);
  }
  public String getValutaByID(int in_id_curs)
  {
@@ -1251,7 +1310,39 @@ public double[] getPriceListByID(int in_id_pp)
      setID_Obekt_IN(oldID_obekt_in); 
      return valuta;
  }
-public void emptyPreservation(int id_dl, int nal)
+public void emptyPreservation(int id_dl, int nal,int level)
+{
+   int levelForNali4nost = 0;
+   boolean isLevelOne=false;
+   switch(level)
+       {
+            case  LEVEL_1:
+          {
+              
+              emptyPreservation(id_dl,nal);
+              levelForNali4nost=1;
+              int storage=0;
+              int id_pc = 0;
+              int tmp[] = getStorageAndParcelByID(id_dl); 
+              storage = tmp[0];
+              id_pc = tmp[1];
+              int id_nal_tmp = searchForNamlichnost(id_pc,storage,levelForNali4nost);
+              emptyPreservation(id_nal_tmp,nal);
+              break;
+          }
+          case  LEVEL_2:
+          {
+              emptyPreservation(id_dl,nal); 
+              break;
+          }
+          case  LEVEL_3:
+          {
+              emptyPreservation(id_dl,nal); 
+              break;
+          }
+       }
+}
+private void emptyPreservation(int id_dl, int nal)
 {
     int oldId_DF = getID_DocFacade();
     int oldID_Obekt_in = getID_Obekt_IN();
@@ -1272,7 +1363,39 @@ public void emptyPreservation(int id_dl, int nal)
     setID_Obekt_IN(oldID_Obekt_in);
     setID_DocFacade(oldId_DF);
 }
-public void clearPreservation(int id_dl, int nal)
+public void clearPreservation(int id_dl, int nal,int level)
+{
+    int levelForNali4nost = 0;
+   boolean isLevelOne=false;
+   switch(level)
+       {
+            case  LEVEL_1:
+          {
+              
+              clearPreservation(id_dl,nal);
+              levelForNali4nost=1;
+              int storage=0;
+              int id_pc = 0;
+              int tmp[] = getStorageAndParcelByID(id_dl); 
+              storage = tmp[0];
+              id_pc = tmp[1];
+              int id_nal_tmp = searchForNamlichnost(id_pc,storage,levelForNali4nost);
+              clearPreservation(id_nal_tmp,nal);
+              break;
+          }
+          case  LEVEL_2:
+          {
+              clearPreservation(id_dl,nal); 
+              break;
+          }
+          case  LEVEL_3:
+          {
+              clearPreservation(id_dl,nal); 
+              break;
+          }
+       }
+}
+private void clearPreservation(int id_dl, int nal)
 {
     int oldId_DF = getID_DocFacade();
     int oldID_Obekt_in = getID_Obekt_IN();
@@ -1470,19 +1593,49 @@ public void  deleteRow(int type,int numberDocFadade, int level)
    setID_DocFacade(oldID_df);
     
  }
- public void returnProducts(int in_id_pc, int in_id_storage, int number)
+ public void returnProducts(int in_id_pc, int in_id_storage, int number,int level)
  {
      int oldID_obekt_in = getID_Obekt_IN();
      int oldID_obekt_out = getID_Obekt_OUT();
      int oldID_contragent_in = getID_Contragent_IN();
+     int oldLevel = getLevelDocFacade();
      setComprator(37);
       setID_Obekt_IN(in_id_pc);
       setID_Obekt_OUT(in_id_storage);
        setID_Contragent_IN(number);
+     int levelForNali4nost = 0;
+       boolean isLevelOne=false;
+       switch(level)
+       {
+            case  LEVEL_1:
+          {
+              levelForNali4nost=0; 
+              isLevelOne = true;
+              break;
+          }
+          case  LEVEL_2:
+          {
+              levelForNali4nost=0; 
+              break;
+          }
+          case  LEVEL_3:
+          {
+              levelForNali4nost=1; 
+              break;
+          }
+       }
+       setLevelDocFacade(levelForNali4nost);  
      try
         {
             registerParameters();
             getCstm().execute();
+            if(isLevelOne)
+            {
+              levelForNali4nost=1;
+              setLevelDocFacade(levelForNali4nost);
+              registerParameters();
+              getCstm().execute();
+            }
         }
         catch(java.sql.SQLException sqle)
         {
@@ -1495,9 +1648,41 @@ public void  deleteRow(int type,int numberDocFadade, int level)
      setID_Contragent_IN(oldID_contragent_in);
        setID_Obekt_OUT(oldID_obekt_out);
        setID_Obekt_IN(oldID_obekt_in);
-     
+     setLevelDocFacade(oldLevel);
  }
- public void clearReturnProducts(int id_dl, int nal)
+ public void clearReturnProducts(int id_dl, int nal,int level)
+{
+   int levelForNali4nost = 0;
+   boolean isLevelOne=false;
+   switch(level)
+       {
+            case  LEVEL_1:
+          {
+              
+              clearReturnProducts(id_dl,nal);
+              levelForNali4nost=1;
+              int storage=0;
+              int id_pc = 0;
+              int tmp[] = getStorageAndParcelByID(id_dl); 
+              storage = tmp[0];
+              id_pc = tmp[1];
+              int id_nal_tmp = searchForNamlichnost(id_pc,storage,levelForNali4nost);
+              clearReturnProducts(id_nal_tmp,nal);
+              break;
+          }
+          case  LEVEL_2:
+          {
+              clearReturnProducts(id_dl,nal); 
+              break;
+          }
+          case  LEVEL_3:
+          {
+              clearReturnProducts(id_dl,nal); 
+              break;
+          }
+       }
+}
+ private void clearReturnProducts(int id_dl, int nal)
 {
     int oldId_DF = getID_DocFacade();
     int oldID_Obekt_in = getID_Obekt_IN();
@@ -1517,8 +1702,40 @@ public void  deleteRow(int type,int numberDocFadade, int level)
        
     setID_Obekt_IN(oldID_Obekt_in);
     setID_DocFacade(oldId_DF);
+} 
+public void emptyReturnProducts(int id_dl, int nal,int level)
+{
+  int levelForNali4nost = 0;
+   boolean isLevelOne=false;
+   switch(level)
+       {
+            case  LEVEL_1:
+          {
+              
+              emptyReturnProducts(id_dl,nal);
+              levelForNali4nost=1;
+              int storage=0;
+              int id_pc = 0;
+              int tmp[] = getStorageAndParcelByID(id_dl); 
+              storage = tmp[0];
+              id_pc = tmp[1];
+              int id_nal_tmp = searchForNamlichnost(id_pc,storage,levelForNali4nost);
+              emptyReturnProducts(id_nal_tmp,nal);
+              break;
+          }
+          case  LEVEL_2:
+          {
+              emptyReturnProducts(id_dl,nal); 
+              break;
+          }
+          case  LEVEL_3:
+          {
+              emptyReturnProducts(id_dl,nal); 
+              break;
+          }
+       }  
 }
-public void emptyReturnProducts(int id_dl, int nal)
+private void emptyReturnProducts(int id_dl, int nal)
 {
     int oldId_DF = getID_DocFacade();
     int oldID_Obekt_in = getID_Obekt_IN();
@@ -1539,7 +1756,6 @@ public void emptyReturnProducts(int id_dl, int nal)
     setID_Obekt_IN(oldID_Obekt_in);
     setID_DocFacade(oldId_DF);
 }
-
 public void cancellationDocFacade(int id_df)
 {
     int oldID_DF = getID_DocFacade();
@@ -1637,7 +1853,7 @@ public HashMap getCurentRate(String dateSQLFormat)
      
      return rate;
 }
-public  int searchForNamlichnost(int in_id_pc,int in_id_storage)
+public  int searchForNamlichnost(int in_id_pc,int in_id_storage,int level)
  {
    int isHaveNalichnost=0;
    int oldIDpc = getID_Obekt_IN();
@@ -1645,6 +1861,10 @@ public  int searchForNamlichnost(int in_id_pc,int in_id_storage)
    int oldStorage = getStorageDocFacade();
    setStorageDocFacade(in_id_storage);
    setComprator(44);  
+    int oldLevel = getLevelDocFacade();
+    int levelForNali4nost = level;
+   
+  setLevelDocFacade(levelForNali4nost);  
      try
         {
             registerParameters();
@@ -1664,6 +1884,7 @@ public  int searchForNamlichnost(int in_id_pc,int in_id_storage)
         }       
    setStorageDocFacade(oldStorage)  ;
    setID_Obekt_IN(oldIDpc);
+   setLevelDocFacade(oldLevel);
    return isHaveNalichnost;
  }
 public int insertProductNal()
@@ -1819,6 +2040,30 @@ public int  getStatusConnection(int checkConn, int in_id_df)
     setID_DocFacade(oldID_DF) ;
     setID_Obekt_IN(oldID_Obekt_in);
    return return_value;
+}
+private int[] getStorageAndParcelByID(int in_id_dl)
+{
+    int data[] = new int[2];
+    int oldID_DF = getID_DocFacade();
+    setID_DocFacade(in_id_dl);
+    java.sql.ResultSet rs12 =null;
+     setComprator(50);
+    try
+        {
+            registerParameters();
+            rs12 = getCstm().executeQuery();
+            while(rs12.next())
+            {
+             data[0] = rs12.getInt("id_n_storage") ;
+             data[1] = rs12.getInt("id_pc") ;      
+            }  
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+    setID_DocFacade(oldID_DF) ;
+    return data;
 }
 // <-----------------------
 }// end class

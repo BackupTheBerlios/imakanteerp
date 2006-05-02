@@ -1176,8 +1176,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             int storage = (Integer) jTable1.getValueAt(jTable1.getSelectedRow(),2);
             int nal = (Integer) jTable1.getValueAt(jTable1.getSelectedRow(),4);
             
-            myParent.getCountriesT().returnProducts(id_pc,storage,nal);
-            myParent.getCountriesT().emptyReturnProducts(id_dl,nal);
+            myParent.getCountriesT().returnProducts(id_pc,storage,nal,myParent.getDocFacadeLevel());
+            myParent.getCountriesT().emptyReturnProducts(id_dl,nal,myParent.getDocFacadeLevel());
             myParent.getCountriesT().deleteDocLine(id_dl)   ;
             ((docLineTableModel)jTable1.getModel()).removeRow(jTable1.getSelectedRow());
             
@@ -2298,7 +2298,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                 int prList =(Integer)jTable1.getValueAt(rowSelect,3);
                                 double dds =(Double)jTable1.getValueAt(rowSelect,10);
                                 double total = (Double)jTable1.getValueAt(rowSelect,11);
-                                int tmpProductNumbers = myParent.getCountriesT().checkForEnoughProducts(myParent.getID_PC(),myParent.getStorageOUTProduct());
+                            //    int tmpProductNumbers = myParent.getCountriesT().checkForEnoughProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),myParent.getDocFacadeLevel());
                                 if(true) {
 // PRIEMATELNA_RAZPISKA - IN produkt
                                     if(myParent.getDocFacadeType()==PRIEMATELNA_RAZPISKA) {
@@ -2310,7 +2310,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                             jTable1.setValueAt(maxID_DocLine,rowSelect,12);
                                             //vry5tane na prodikta v tablicata s nali4nosti
                                             
-                                            myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn);
+                                            myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,myParent.getDocFacadeLevel());
                                         } else {
                                             
                                             int id_dl = (Integer) jTable1.getValueAt(rowSelect,12);
@@ -2326,10 +2326,10 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                                 
                                             }
                                             if(newNumberProduct > oldNumberProduct) {
-                                                myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(newNumberProduct-oldNumberProduct));
+                                                myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(newNumberProduct-oldNumberProduct),myParent.getDocFacadeLevel());
                                             } else {
                                                 
-                                                myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(oldNumberProduct-newNumberProduct ));
+                                                myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(oldNumberProduct-newNumberProduct ),myParent.getDocFacadeLevel());
                                             }
                                             if(oldNumberProduct>0) {
                                                 myParent.getCountriesT().updateDocLine(id_dl,myParent.getID_DocFacade(),myParent.getID_PC(),
@@ -2346,7 +2346,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                             
                                         }
                                     }
-                                    
+                                
                                     else
 //NAREZDANE_ZA_PREHVYRQNE
                                         if(myParent.getDocFacadeType()==NAREZDANE_ZA_PREHVYRQNE) {
@@ -2366,11 +2366,12 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                                 }
                                                 
                                             }
-                                            if(newNumberProduct<tmpProductNumbers) {
+                                            if(true) //newNumberProduct<tmpProductNumbers
+                                            {
                                                 if(newNumberProduct > oldNumberProduct  ) {
-                                                    myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(newNumberProduct - oldNumberProduct));
+                                                    myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(newNumberProduct - oldNumberProduct),myParent.getDocFacadeLevel());
                                                 }else {
-                                                    myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(oldNumberProduct-newNumberProduct ));
+                                                    myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(oldNumberProduct-newNumberProduct ),myParent.getDocFacadeLevel());
                                                 }
                                                 
                                                 if(oldNumberProduct>0) {
@@ -2400,7 +2401,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                             int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
                                             jTable1.setValueAt(maxID_DocLine,rowSelect,12);
                                             //zapazvane na prodikta v tablicata s nali4nosti
-                                            myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn);
+                                            myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,myParent.getDocFacadeLevel());
                                         }
                                         } else
 //!PROFORMA_FAKTURA
@@ -2421,11 +2422,12 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                                 }
                                                 
                                             }
-                                            if(newNumberProduct<tmpProductNumbers) {
+                                            if(true) //newNumberProduct<tmpProductNumbers
+                                            {
                                                 if(newNumberProduct > oldNumberProduct  ) {
-                                                    myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(newNumberProduct - oldNumberProduct));
+                                                    myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(newNumberProduct - oldNumberProduct),myParent.getDocFacadeLevel());
                                                 }else {
-                                                    myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(oldNumberProduct-newNumberProduct ));
+                                                    myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(oldNumberProduct-newNumberProduct ),myParent.getDocFacadeLevel());
                                                 }
                                                 
                                                 if(oldNumberProduct>0) {
@@ -2455,7 +2457,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                             int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
                                             jTable1.setValueAt(maxID_DocLine,rowSelect,12);
                                             //zapazvane na prodikta v tablicata s nali4nosti
-                                            myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn);
+                                            myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,myParent.getDocFacadeLevel());
                                         }
                                             }
 // ==POFORMA_FAKTURA
@@ -2487,7 +2489,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                     
                                 }
                                 isSetDataInTable = false;
-                                
+                             
                             }
                             if(jTable1.getSelectedRow()!=(jTable1.getRowCount() - 1)) // pri polovenie 4e reda ne e posleden
                             {
@@ -2506,7 +2508,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                 int prList =(Integer)jTable1.getValueAt(rowSelect,3);
                                 double dds =(Double)jTable1.getValueAt(rowSelect,10);
                                 double total = (Double)jTable1.getValueAt(rowSelect,11);
-                                int tmp = myParent.getCountriesT().checkForEnoughProducts(myParent.getID_PC(),myParent.getStorageOUTProduct());
+                            //    int tmp = myParent.getCountriesT().checkForEnoughProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),myParent.getDocFacadeLevel());
                                 if(true) //nn<=tmp
                                 {
 // PRIEMATELNA_RAZPISKA - IN produkt
@@ -2518,7 +2520,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                             int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
                                             jTable1.setValueAt(maxID_DocLine,rowSelect,12);
                                             //vry5tane na prodikta v tablicata s nali4nosti
-                                            myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn);
+                                            myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,myParent.getDocFacadeLevel());
                                         } else {
                                             int id_dl = (Integer) jTable1.getValueAt(rowSelect,12);
                                             int newNumberProduct = nn;
@@ -2533,10 +2535,10 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                                 
                                             }
                                             if(newNumberProduct > oldNumberProduct) {
-                                                myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(newNumberProduct-oldNumberProduct));
+                                                myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(newNumberProduct-oldNumberProduct),myParent.getDocFacadeLevel());
                                             } else {
                                                 
-                                                myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(oldNumberProduct-newNumberProduct ));
+                                                myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(oldNumberProduct-newNumberProduct ),myParent.getDocFacadeLevel());
                                             }
                                             if(oldNumberProduct>0) {
                                                 myParent.getCountriesT().updateDocLine(id_dl,myParent.getID_DocFacade(),myParent.getID_PC(),
@@ -2577,31 +2579,43 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                                 }
                                                 
                                             }
-                                            int tmpProductNumbers = myParent.getCountriesT().checkForEnoughProducts(myParent.getID_PC(),myParent.getStorageOUTProduct());
-                                            if(newNumberProduct<tmpProductNumbers) {
-                                                if(newNumberProduct > oldNumberProduct) {
-                                                    myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(newNumberProduct - oldNumberProduct));
-                                                }else {
-                                                    myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(oldNumberProduct-newNumberProduct ));
+                                       //     int tmpProductNumbers = myParent.getCountriesT().checkForEnoughProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),myParent.getDocFacadeLevel());
+                                            if(true) //newNumberProduct<tmpProductNumbers
+                                            {
+                                                if(newNumberProduct > oldNumberProduct)
+                                                {
+                                                 myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(newNumberProduct - oldNumberProduct),myParent.getDocFacadeLevel());
                                                 }
+                                                else {
+                                                       myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(oldNumberProduct-newNumberProduct ),myParent.getDocFacadeLevel());
+                                                     }
                                                 
-                                                myParent.getCountriesT().updateDocLine(id_dl,myParent.getID_DocFacade(),myParent.getID_PC(),
-                                                        myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
-                                                        myParent.getProcentProduct(),newNumberProduct,dds,total,prList);
-                                            } else {
-                                                myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
-                                                        myParent.getProcentProduct(),nn,dds,total,prList);
+                                                if(oldNumberProduct>0)
+                                                  { 
+                                                    myParent.getCountriesT().updateDocLine(id_dl,myParent.getID_DocFacade(),myParent.getID_PC(),
+                                                    myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
+                                                    myParent.getProcentProduct(),newNumberProduct,dds,total,prList);
+                                                  }
+                                                  else
+                                                     {
+                                                      myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
+                                                                             myParent.getProcentProduct(),nn,dds,total,prList);
                                                 
-                                                int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
-                                                jTable1.setValueAt(maxID_DocLine,rowSelect,12);
-                                                //zapazvane na prodikta v tablicata s nali4nosti
-                                                myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn);
-                                            }
+                                                      int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
+                                                      jTable1.setValueAt(maxID_DocLine,rowSelect,12);
+                                                      //zapazvane na prodikta v tablicata s nali4nosti
+                                                      myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,myParent.getDocFacadeLevel());
+                                                  }
                                         } else {
-                                            ((docLineTableModel) jTable1.getModel()).removeRow(rowSelect) ;
-                                            ((docLineTableModel)jTable1.getModel()).addRow(new docLineArray());
-                                        }
+                                               ((docLineTableModel) jTable1.getModel()).removeRow(rowSelect) ;
+                                               ((docLineTableModel)jTable1.getModel()).addRow(new docLineArray());
+                                               }
+                                       } // end   if(!isNew)  
+                                       else //ako dokumenta e nov
+                                            {
+                                        
                                             }
+                                            } //  end  if(myParent.getDocFacadeType()!=PROFORMA_FAKTURA)
 //==  POFORMA_FAKTURA
                                             else // ako dokumenta e POFORMA_FAKTURA
                                             {
@@ -2649,7 +2663,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     }
                 }
                 
-                
+                   
                 
                 if(e.getKeyCode()==KeyEvent.VK_F7) {
 // =============START=================
@@ -2666,7 +2680,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     processKeyPress(myParent.getDocFacadeType(),F9_KEY);
                 }
             }
-            public void keyReleased(KeyEvent e) {
+ public void keyReleased(KeyEvent e) {
                 columnSelect = jTable1.getSelectedColumn()-1;
                 rowSelect = jTable1.getSelectedRow();
                 
@@ -2863,7 +2877,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 
                 
             }
-            public void keyTyped(KeyEvent e) {
+ public void keyTyped(KeyEvent e)
+            {
                 
                 
             }
@@ -3329,7 +3344,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 if(myParent.getDocFacadeType()==NAREZDANE_ZA_PREHVYRQNE) {
                     moveProductFStTSt(id_dl,nal);
                 }
-                myParent.getCountriesT().emptyPreservation(id_dl,nal);
+                myParent.getCountriesT().emptyPreservation(id_dl,nal,myParent.getDocFacadeLevel());
             }
         } else {
             if(rows.size()>0) {
@@ -3351,14 +3366,14 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                     moveProductFStTSt(id_dl,(newNumberProduct-oldNumberProduct));
                                 }
                                 
-                                myParent.getCountriesT().emptyPreservation(id_dl,(newNumberProduct-oldNumberProduct));
+                                myParent.getCountriesT().emptyPreservation(id_dl,(newNumberProduct-oldNumberProduct),myParent.getDocFacadeLevel());
                                 
                             } else {
                                 if(myParent.getDocFacadeType()==NAREZDANE_ZA_PREHVYRQNE) {
                                     moveProductFStTSt(id_dl,-(newNumberProduct-oldNumberProduct));
                                 }
                                 
-                                myParent.getCountriesT().emptyReturnProducts(id_dl,(oldNumberProduct-newNumberProduct));
+                                myParent.getCountriesT().emptyReturnProducts(id_dl,(oldNumberProduct-newNumberProduct),myParent.getDocFacadeLevel());
                             }
                             intoDB = true;
                         }
@@ -3368,7 +3383,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                             moveProductFStTSt(id_dl,newNumberProduct);
                         }
                         
-                        myParent.getCountriesT().emptyPreservation(id_dl,newNumberProduct);
+                        myParent.getCountriesT().emptyPreservation(id_dl,newNumberProduct,myParent.getDocFacadeLevel());
                         
                     }
                     
@@ -3383,7 +3398,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     if(myParent.getDocFacadeType()==NAREZDANE_ZA_PREHVYRQNE) {
                         moveProductFStTSt(id_dl,nal);
                     } else
-                        myParent.getCountriesT().emptyPreservation(id_dl,nal);
+                        myParent.getCountriesT().emptyPreservation(id_dl,nal,myParent.getDocFacadeLevel());
                 }
             }
         }
@@ -3396,7 +3411,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             for(int i=0; i < maxRow; i++) {
                 id_dl =(Integer) jTable1.getValueAt(i,12);
                 nal = (Integer)jTable1.getValueAt(i,4);
-                myParent.getCountriesT().emptyReturnProducts(id_dl,nal);
+                myParent.getCountriesT().emptyReturnProducts(id_dl,nal,myParent.getDocFacadeLevel());
             }
         } else {
             if(rows.size()>0) {
@@ -3414,18 +3429,18 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                         
                         if(id_dl == d.getID_DocLine()) {
                             if(newNumberProduct > oldNumberProduct) {
-                                myParent.getCountriesT().emptyReturnProducts(id_dl,(newNumberProduct-oldNumberProduct));
+                                myParent.getCountriesT().emptyReturnProducts(id_dl,(newNumberProduct-oldNumberProduct),myParent.getDocFacadeLevel());
                                 
                             } else {
                                 
-                                myParent.getCountriesT().emptyPreservation(id_dl,(oldNumberProduct-newNumberProduct));
+                                myParent.getCountriesT().emptyPreservation(id_dl,(oldNumberProduct-newNumberProduct),myParent.getDocFacadeLevel());
                             }
                             intoDB = true;
                         }
                     }
                     if(!intoDB) // reda ne sy6testvuva v Bazata
                     {
-                        myParent.getCountriesT().emptyReturnProducts(id_dl,newNumberProduct);
+                        myParent.getCountriesT().emptyReturnProducts(id_dl,newNumberProduct,myParent.getDocFacadeLevel());
                         
                     }
                     
@@ -3437,7 +3452,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 for(int i=0; i < maxRow; i++) {
                     id_dl =(Integer) jTable1.getValueAt(i,12);
                     nal = (Integer)jTable1.getValueAt(i,4);
-                    myParent.getCountriesT().emptyReturnProducts(id_dl,nal);
+                    myParent.getCountriesT().emptyReturnProducts(id_dl,nal,myParent.getDocFacadeLevel());
                 }
             }
         }
@@ -3580,10 +3595,10 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             if(myParent.getDocFacadeType()==PRIEMATELNA_RAZPISKA) {
                 
                 if(newNumberProduct > oldNumberProduct) {
-                    myParent.getCountriesT().clearReturnProducts(id_dl,(oldNumberProduct-newNumberProduct));
+                    myParent.getCountriesT().clearReturnProducts(id_dl,(oldNumberProduct-newNumberProduct),myParent.getDocFacadeLevel());
                 } else {
                     
-                    myParent.getCountriesT().clearPreservation(id_dl,(newNumberProduct-oldNumberProduct));
+                    myParent.getCountriesT().clearPreservation(id_dl,(newNumberProduct-oldNumberProduct),myParent.getDocFacadeLevel());
                 }
                 if(alsoInBD) myParent.getCountriesT().deleteDocLine(id_dl);
                 
@@ -3591,18 +3606,18 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 
                 if(myParent.getDocFacadeType()!=PROFORMA_FAKTURA)
                     if(newNumberProduct > oldNumberProduct) {
-                myParent.getCountriesT().clearPreservation(id_dl,(newNumberProduct-oldNumberProduct));
+                myParent.getCountriesT().clearPreservation(id_dl,(newNumberProduct-oldNumberProduct),myParent.getDocFacadeLevel());
                     } else {
-                myParent.getCountriesT().clearReturnProducts(id_dl,(oldNumberProduct-newNumberProduct));
+                myParent.getCountriesT().clearReturnProducts(id_dl,(oldNumberProduct-newNumberProduct),myParent.getDocFacadeLevel());
                     }
             if(alsoInBD) myParent.getCountriesT().deleteDocLine(id_dl);
         } else // ako e NOV dokumenta
         {
             if(myParent.getDocFacadeType()==PRIEMATELNA_RAZPISKA) {
-                myParent.getCountriesT().clearReturnProducts(id_dl,nal);
+                myParent.getCountriesT().clearReturnProducts(id_dl,nal,myParent.getDocFacadeLevel());
             } else
                 if(myParent.getDocFacadeType()!=PROFORMA_FAKTURA)
-                    myParent.getCountriesT().clearPreservation(id_dl,nal);
+                    myParent.getCountriesT().clearPreservation(id_dl,nal,myParent.getDocFacadeLevel());
             
             if(alsoInBD) myParent.getCountriesT().deleteDocLine(id_dl);
         }
@@ -3846,7 +3861,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             
             if(myParent.getIsSelectProduct()) {
                 
-                jLabel32.setText(String.valueOf(myParent.getCountriesT().getAllProductWithOutLevel(myParent.getID_PC(),0)));
+                jLabel32.setText(String.valueOf(myParent.getCountriesT().getAllProductWithOutLevel(myParent.getID_PC(),
+                             myParent.getDocFacadeLevel(),myParent.getStorageOUTProduct())));
                 jTable1.setValueAt(myParent.getCodeProduct(),jTable1.getSelectedRow(),0);
                 jTable1.setValueAt(myParent.getNameProduct(),jTable1.getSelectedRow(),1);
                 jTable1.setValueAt(myParent.getStorageOUTProduct(),jTable1.getSelectedRow(),2);
@@ -3933,50 +3949,73 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             System.out.print("jTable1.getSelectedColumn: ");
             System.out.println(jTable1.getSelectedColumn());
             System.out.println("----------------<3>-------F7-----------");
-        } else {
+        }
+        else 
+        {
             //show meseage za valuta
         }
     }
     private boolean checkInOutProduct(int doctype) // false - OUT ot skalda; true -  IN v skalda
     {
-        if(doctype == PRIEMATELNA_RAZPISKA ) {
+        if(doctype == PRIEMATELNA_RAZPISKA )
+        {
             return true;
         }
         return false;
     }
     
     
-    private void  moveProductFStTSt(int in_id_dl,int nal) {
-        if(in_id_dl!=0) {
+    private void  moveProductFStTSt(int in_id_dl,int nal)
+    {
+        if(in_id_dl!=0)
+        {
             docLineArray data = new docLineArray();
             data =  myParent.getCountriesT().getRowDocLine(in_id_dl) ;
             int id_pc = data.getID_PC();
             int storageFROM = data.getStorageOut();
             int storageTO = Integer.parseInt(jTextFieldStorageTO.getText());
-            int id_nal = myParent.getCountriesT().searchForNamlichnost(id_pc,storageTO);
+            int id_nal = myParent.getCountriesT().searchForNamlichnost(id_pc,storageTO,myParent.getDocFacadeLevel());
             int levelForNali4nost=0;
-            switch(myParent.getDocFacadeLevel()) {
+            boolean isLevelOne=false;
+            switch(myParent.getDocFacadeLevel())
+            {
                 case 2 :
-                {
-                    levelForNali4nost =1;
-                    break;
-                }
-                case 3 :
                 {
                     levelForNali4nost =0;
                     break;
                 }
-                case 1 :
+                case 3 :
                 {
                     levelForNali4nost =1;
                     break;
                 }
+                case 1 :
+                {
+                    levelForNali4nost =0;
+                    isLevelOne=true;
+                    break;
+                }
             }
-            if(id_nal>0) {
+            if(id_nal>0)
+            {
                 myParent.getCountriesT().increaseProductNal(id_nal,nal,storageTO,id_pc,levelForNali4nost);
-            } else {
+                if(isLevelOne) 
+                {
+                  levelForNali4nost = 1;
+                  int id_nal_tmp = myParent.getCountriesT().searchForNamlichnost(id_pc,storageTO,levelForNali4nost);
+                  myParent.getCountriesT().increaseProductNal(id_nal_tmp,nal,storageTO,id_pc,levelForNali4nost);
+                }
+                
+            } else
+            {
                 id_nal =  myParent.getCountriesT().insertProductNal();
                 myParent.getCountriesT().increaseProductNal(id_nal,nal,storageTO,id_pc,levelForNali4nost);
+                if(isLevelOne)
+                {
+                  id_nal =  myParent.getCountriesT().insertProductNal();
+                  levelForNali4nost = 1;
+                  myParent.getCountriesT().increaseProductNal(id_nal,nal,storageTO,id_pc,levelForNali4nost); 
+                }
             }
         }
     }
