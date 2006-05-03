@@ -1319,35 +1319,32 @@ public void emptyPreservation(int id_dl, int nal,int level)
             case  LEVEL_1:
           {
               
-              emptyPreservation(id_dl,nal);
+              emptyPreservationA(id_dl,nal,levelForNali4nost);
               levelForNali4nost=1;
-              int storage=0;
-              int id_pc = 0;
-              int tmp[] = getStorageAndParcelByID(id_dl); 
-              storage = tmp[0];
-              id_pc = tmp[1];
-              int id_nal_tmp = searchForNamlichnost(id_pc,storage,levelForNali4nost);
-              emptyPreservation(id_nal_tmp,nal);
+              emptyPreservationA(id_dl,nal,levelForNali4nost);
               break;
           }
           case  LEVEL_2:
           {
-              emptyPreservation(id_dl,nal); 
+               levelForNali4nost=0;
+              emptyPreservationA(id_dl,nal,levelForNali4nost); 
               break;
           }
           case  LEVEL_3:
           {
-              emptyPreservation(id_dl,nal); 
+               levelForNali4nost=1;
+              emptyPreservationA(id_dl,nal,levelForNali4nost); 
               break;
           }
        }
 }
-private void emptyPreservation(int id_dl, int nal)
+private void emptyPreservationA(int id_dl, int nal,int level)
 {
     int oldId_DF = getID_DocFacade();
     int oldID_Obekt_in = getID_Obekt_IN();
     setID_Obekt_IN(nal);
-    
+    int oldLevel = getLevelDocFacade();
+    setLevelDocFacade(level);
     setID_DocFacade(id_dl);
      setComprator(30);
      try
@@ -1362,6 +1359,7 @@ private void emptyPreservation(int id_dl, int nal)
        
     setID_Obekt_IN(oldID_Obekt_in);
     setID_DocFacade(oldId_DF);
+    setLevelDocFacade(oldLevel);
 }
 public void clearPreservation(int id_dl, int nal,int level)
 {
@@ -1372,35 +1370,32 @@ public void clearPreservation(int id_dl, int nal,int level)
             case  LEVEL_1:
           {
               
-              clearPreservation(id_dl,nal);
+              clearPreservationA(id_dl,nal,levelForNali4nost);
               levelForNali4nost=1;
-              int storage=0;
-              int id_pc = 0;
-              int tmp[] = getStorageAndParcelByID(id_dl); 
-              storage = tmp[0];
-              id_pc = tmp[1];
-              int id_nal_tmp = searchForNamlichnost(id_pc,storage,levelForNali4nost);
-              clearPreservation(id_nal_tmp,nal);
+              clearPreservationA(id_dl,nal,levelForNali4nost);
               break;
           }
           case  LEVEL_2:
           {
-              clearPreservation(id_dl,nal); 
+              levelForNali4nost=0;
+              clearPreservationA(id_dl,nal,levelForNali4nost); 
               break;
           }
           case  LEVEL_3:
           {
-              clearPreservation(id_dl,nal); 
+              levelForNali4nost=1;
+              clearPreservationA(id_dl,nal,levelForNali4nost); 
               break;
           }
        }
 }
-private void clearPreservation(int id_dl, int nal)
+private void clearPreservationA(int id_dl, int nal,int level)
 {
     int oldId_DF = getID_DocFacade();
     int oldID_Obekt_in = getID_Obekt_IN();
     setID_Obekt_IN(nal);
-    
+    int oldLevel = getLevelDocFacade();
+    setLevelDocFacade(level);
     setID_DocFacade(id_dl);
      setComprator(36);
      try
@@ -1415,6 +1410,7 @@ private void clearPreservation(int id_dl, int nal)
        
     setID_Obekt_IN(oldID_Obekt_in);
     setID_DocFacade(oldId_DF);
+    setLevelDocFacade(level);
 }
 
 public java.util.HashMap getDocLine(int id_df) {
@@ -1659,35 +1655,30 @@ public void  deleteRow(int type,int numberDocFadade, int level)
             case  LEVEL_1:
           {
               
-              clearReturnProducts(id_dl,nal);
+              clearReturnProductsA(id_dl,nal,levelForNali4nost);
               levelForNali4nost=1;
-              int storage=0;
-              int id_pc = 0;
-              int tmp[] = getStorageAndParcelByID(id_dl); 
-              storage = tmp[0];
-              id_pc = tmp[1];
-              int id_nal_tmp = searchForNamlichnost(id_pc,storage,levelForNali4nost);
-              clearReturnProducts(id_nal_tmp,nal);
+              clearReturnProductsA(id_dl,nal,levelForNali4nost);
               break;
           }
           case  LEVEL_2:
           {
-              clearReturnProducts(id_dl,nal); 
+              clearReturnProductsA(id_dl,nal,levelForNali4nost); 
               break;
           }
           case  LEVEL_3:
           {
-              clearReturnProducts(id_dl,nal); 
+              clearReturnProductsA(id_dl,nal,levelForNali4nost); 
               break;
           }
        }
 }
- private void clearReturnProducts(int id_dl, int nal)
+ private void clearReturnProductsA(int id_dl, int nal,int level)
 {
     int oldId_DF = getID_DocFacade();
     int oldID_Obekt_in = getID_Obekt_IN();
     setID_Obekt_IN(nal);
-    
+    int oldLevel = getLevelDocFacade();
+    setLevelDocFacade(level);
     setID_DocFacade(id_dl);
      setComprator(38);
      try
@@ -1702,6 +1693,7 @@ public void  deleteRow(int type,int numberDocFadade, int level)
        
     setID_Obekt_IN(oldID_Obekt_in);
     setID_DocFacade(oldId_DF);
+    setLevelDocFacade(level);
 } 
 public void emptyReturnProducts(int id_dl, int nal,int level)
 {
@@ -1712,34 +1704,32 @@ public void emptyReturnProducts(int id_dl, int nal,int level)
             case  LEVEL_1:
           {
               
-              emptyReturnProducts(id_dl,nal);
+              emptyReturnProductsA(id_dl,nal,levelForNali4nost);
               levelForNali4nost=1;
-              int storage=0;
-              int id_pc = 0;
-              int tmp[] = getStorageAndParcelByID(id_dl); 
-              storage = tmp[0];
-              id_pc = tmp[1];
-              int id_nal_tmp = searchForNamlichnost(id_pc,storage,levelForNali4nost);
-              emptyReturnProducts(id_nal_tmp,nal);
+              emptyReturnProductsA(id_dl,nal,levelForNali4nost);
               break;
           }
           case  LEVEL_2:
           {
-              emptyReturnProducts(id_dl,nal); 
+              levelForNali4nost=0;
+              emptyReturnProductsA(id_dl,nal,0); 
               break;
           }
           case  LEVEL_3:
           {
-              emptyReturnProducts(id_dl,nal); 
+              levelForNali4nost=1;
+              emptyReturnProducts(id_dl,nal,1); 
               break;
           }
        }  
 }
-private void emptyReturnProducts(int id_dl, int nal)
+private void emptyReturnProductsA(int id_dl, int nal,int level)
 {
     int oldId_DF = getID_DocFacade();
     int oldID_Obekt_in = getID_Obekt_IN();
     setID_Obekt_IN(nal);
+    int oldLevel =getLevelDocFacade();
+    setLevelDocFacade(level);
     
     setID_DocFacade(id_dl);
      setComprator(39);
@@ -1755,6 +1745,7 @@ private void emptyReturnProducts(int id_dl, int nal)
        
     setID_Obekt_IN(oldID_Obekt_in);
     setID_DocFacade(oldId_DF);
+    setLevelDocFacade(oldLevel);
 }
 public void cancellationDocFacade(int id_df)
 {
@@ -2065,5 +2056,6 @@ private int[] getStorageAndParcelByID(int in_id_dl)
     setID_DocFacade(oldID_DF) ;
     return data;
 }
+
 // <-----------------------
 }// end class

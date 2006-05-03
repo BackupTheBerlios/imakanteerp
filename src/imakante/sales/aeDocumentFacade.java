@@ -2309,8 +2309,78 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                             int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
                                             jTable1.setValueAt(maxID_DocLine,rowSelect,12);
                                             //vry5tane na prodikta v tablicata s nali4nosti
-                                            
-                                            myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,myParent.getDocFacadeLevel());
+//===========================================
+                                             int levelForNali4nost=0;
+                                             int emulateLevel=2;
+            boolean isLevelOne=false;
+            switch(myParent.getDocFacadeLevel())
+            {
+                case 2 :
+                {
+                    levelForNali4nost =0;
+                    emulateLevel=2;
+                    break;
+                }
+                case 3 :
+                {
+                    levelForNali4nost =1;
+                    emulateLevel=3;
+                    break;
+                }
+                case 1 :
+                {
+                    levelForNali4nost =0;
+                    emulateLevel=2;
+                    isLevelOne=true;
+                    break;
+                }
+            }
+            int id_nal = myParent.getCountriesT().searchForNamlichnost(myParent.getID_PC(),myParent.getStorageOUTProduct(),levelForNali4nost);
+            if(id_nal>0)
+            {
+                 myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,emulateLevel);
+                if(isLevelOne) 
+                {
+                  levelForNali4nost = 1;
+                  emulateLevel=3;
+                  int id_nal_tmp = myParent.getCountriesT().searchForNamlichnost(myParent.getID_PC(),myParent.getStorageOUTProduct(),levelForNali4nost);
+                  if(id_nal_tmp>0)
+                  {
+                       myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,emulateLevel);
+                  }
+                  else
+                  {
+                     id_nal =  myParent.getCountriesT().insertProductNal();
+                     myParent.getCountriesT().increaseProductNal(id_nal,0,myParent.getStorageOUTProduct(),myParent.getID_PC(),levelForNali4nost);  
+                     myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,emulateLevel);
+                  }
+                }
+                
+            } else
+            {
+                id_nal =  myParent.getCountriesT().insertProductNal();
+                myParent.getCountriesT().increaseProductNal(id_nal,0,myParent.getStorageOUTProduct(),myParent.getID_PC(),levelForNali4nost);  
+                myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,emulateLevel);
+                if(isLevelOne)
+                {
+                  levelForNali4nost = 1;
+                  emulateLevel=3;
+                  int id_nal_tmp = myParent.getCountriesT().searchForNamlichnost(myParent.getID_PC(),myParent.getStorageOUTProduct(),levelForNali4nost); 
+                  if(id_nal_tmp>0)
+                  {
+                      myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,emulateLevel);  
+                  }
+                  else
+                  {
+                    id_nal =  myParent.getCountriesT().insertProductNal();
+                    myParent.getCountriesT().increaseProductNal(id_nal,0,myParent.getStorageOUTProduct(),myParent.getID_PC(),levelForNali4nost);  
+                    myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,emulateLevel);   
+                  }
+                }
+                  
+                }
+//==========================================                                            
+                                         
                                         } else {
                                             
                                             int id_dl = (Integer) jTable1.getValueAt(rowSelect,12);
@@ -2520,7 +2590,80 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                             int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
                                             jTable1.setValueAt(maxID_DocLine,rowSelect,12);
                                             //vry5tane na prodikta v tablicata s nali4nosti
-                                            myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,myParent.getDocFacadeLevel());
+ //=================================
+           
+            int levelForNali4nost=0;
+            int emulateLevel=2;
+            boolean isLevelOne=false;
+            switch(myParent.getDocFacadeLevel())
+            {
+                case 2 :
+                {
+                    levelForNali4nost =0;
+                    emulateLevel=2;
+                    break;
+                }
+                case 3 :
+                {
+                    levelForNali4nost =1;
+                    emulateLevel=3;
+                    break;
+                }
+                case 1 :
+                {
+                    levelForNali4nost =0;
+                    isLevelOne=true;
+                    emulateLevel=2;
+                    break;
+                }
+            }
+            int id_nal = myParent.getCountriesT().searchForNamlichnost(myParent.getID_PC(),myParent.getStorageOUTProduct(),levelForNali4nost);
+            if(id_nal>0)
+            {
+                myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,emulateLevel);
+                if(isLevelOne) 
+                {
+                  levelForNali4nost = 1;
+                  emulateLevel=3;
+                  int id_nal_tmp = myParent.getCountriesT().searchForNamlichnost(myParent.getID_PC(),myParent.getStorageOUTProduct(),levelForNali4nost);
+                  if(id_nal_tmp>0)
+                  {
+                       myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,emulateLevel);
+                  }
+                  else
+                  {
+                     id_nal =  myParent.getCountriesT().insertProductNal();
+                     myParent.getCountriesT().increaseProductNal(id_nal,0,myParent.getStorageOUTProduct(),myParent.getID_PC(),levelForNali4nost);  
+                     myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,emulateLevel);
+                  }
+                }
+                
+            } else
+            {
+                id_nal =  myParent.getCountriesT().insertProductNal();
+                myParent.getCountriesT().increaseProductNal(id_nal,0,myParent.getStorageOUTProduct(),myParent.getID_PC(),levelForNali4nost);  
+                myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,emulateLevel);
+                if(isLevelOne)
+                {
+                  levelForNali4nost = 1;
+                  emulateLevel=3;
+                  int id_nal_tmp = myParent.getCountriesT().searchForNamlichnost(myParent.getID_PC(),myParent.getStorageOUTProduct(),levelForNali4nost); 
+                  if(id_nal_tmp>0)
+                  {
+                    // myParent.getCountriesT().increaseProductNal(id_nal_tmp,0,myParent.getStorageOUTProduct(),myParent.getID_PC(),levelForNali4nost);  
+                      myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,emulateLevel);
+                  }
+                  else
+                  {
+                    id_nal =  myParent.getCountriesT().insertProductNal();
+                    myParent.getCountriesT().increaseProductNal(id_nal,0,myParent.getStorageOUTProduct(),myParent.getID_PC(),levelForNali4nost);  
+                    myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,emulateLevel);   
+                  }
+                }
+                  
+                }
+ //=================================
+                                           
                                         } else {
                                             int id_dl = (Integer) jTable1.getValueAt(rowSelect,12);
                                             int newNumberProduct = nn;
@@ -3322,6 +3465,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         } else
             if(myParent.getDocFacadeType()==PRIEMATELNA_RAZPISKA) {
             emptyReturnet(isNew);
+            
             } else
                 if(myParent.getDocFacadeType()!=PROFORMA_FAKTURA)
                     emptyPreservation(isNew);
@@ -3846,7 +3990,15 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             } catch (AWTException e12){}
             
             System.out.println("str :::"+str);
-            java.sql.ResultSet rs1 = myParent.getCountriesT().getTableProductInfo(str,firstCenterLast,myParent.getDocFacadeLevel(),0,myParent.getStorageOUTProduct());
+            java.sql.ResultSet rs1 =null;
+            if(docType==PRIEMATELNA_RAZPISKA)
+            {
+                rs1 = myParent.getCountriesT().getTableProductInfo(str,3,myParent.getDocFacadeLevel(),0,myParent.getStorageOUTProduct());
+            }
+            else
+            {
+               rs1 = myParent.getCountriesT().getTableProductInfo(str,firstCenterLast,myParent.getDocFacadeLevel(),0,myParent.getStorageOUTProduct()); 
+            }
             Connection conn1 = myParent.getCountriesT().getConn();
             
             showProductDocLine dialog = new showProductDocLine(myParent,true,rs1,conn1,isProductIN);
@@ -3865,7 +4017,9 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                              myParent.getDocFacadeLevel(),myParent.getStorageOUTProduct())));
                 jTable1.setValueAt(myParent.getCodeProduct(),jTable1.getSelectedRow(),0);
                 jTable1.setValueAt(myParent.getNameProduct(),jTable1.getSelectedRow(),1);
+                
                 jTable1.setValueAt(myParent.getStorageOUTProduct(),jTable1.getSelectedRow(),2);
+                
                 if(isProductIN) {
                     jTable1.setValueAt(0,jTable1.getSelectedRow(),3);
                     jLabelPricelist_1.setText("\u0426\u0435\u043d\u0430 1");
@@ -3974,7 +4128,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             int id_pc = data.getID_PC();
             int storageFROM = data.getStorageOut();
             int storageTO = Integer.parseInt(jTextFieldStorageTO.getText());
-            int id_nal = myParent.getCountriesT().searchForNamlichnost(id_pc,storageTO,myParent.getDocFacadeLevel());
+           
             int levelForNali4nost=0;
             boolean isLevelOne=false;
             switch(myParent.getDocFacadeLevel())
@@ -3996,6 +4150,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     break;
                 }
             }
+            int id_nal = myParent.getCountriesT().searchForNamlichnost(id_pc,storageTO,levelForNali4nost);
             if(id_nal>0)
             {
                 myParent.getCountriesT().increaseProductNal(id_nal,nal,storageTO,id_pc,levelForNali4nost);
@@ -4003,7 +4158,15 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 {
                   levelForNali4nost = 1;
                   int id_nal_tmp = myParent.getCountriesT().searchForNamlichnost(id_pc,storageTO,levelForNali4nost);
-                  myParent.getCountriesT().increaseProductNal(id_nal_tmp,nal,storageTO,id_pc,levelForNali4nost);
+                  if(id_nal_tmp>0)
+                  {
+                      myParent.getCountriesT().increaseProductNal(id_nal_tmp,nal,storageTO,id_pc,levelForNali4nost);
+                  }
+                  else
+                  {
+                     id_nal =  myParent.getCountriesT().insertProductNal();
+                    myParent.getCountriesT().increaseProductNal(id_nal,nal,storageTO,id_pc,levelForNali4nost);
+                  }
                 }
                 
             } else
@@ -4012,14 +4175,24 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 myParent.getCountriesT().increaseProductNal(id_nal,nal,storageTO,id_pc,levelForNali4nost);
                 if(isLevelOne)
                 {
-                  id_nal =  myParent.getCountriesT().insertProductNal();
                   levelForNali4nost = 1;
-                  myParent.getCountriesT().increaseProductNal(id_nal,nal,storageTO,id_pc,levelForNali4nost); 
+                  int id_nal_tmp = myParent.getCountriesT().searchForNamlichnost(id_pc,storageTO,levelForNali4nost); 
+                  if(id_nal_tmp>0)
+                  {
+                     myParent.getCountriesT().increaseProductNal(id_nal_tmp,nal,storageTO,id_pc,levelForNali4nost);  
+                  }
+                  else
+                  {
+                    id_nal =  myParent.getCountriesT().insertProductNal();
+                    myParent.getCountriesT().increaseProductNal(id_nal,nal,storageTO,id_pc,levelForNali4nost);   
+                  }
+                }
+                  
                 }
             }
         }
-    }
     
+
    
     
 }// end class

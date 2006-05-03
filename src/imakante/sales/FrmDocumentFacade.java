@@ -1436,7 +1436,7 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
                           setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат1"))); //2
                           setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер1")));  //3
                           
-                          setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес на контрагента1"))); //5
+                          setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес1"))); //5
                           setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента1"))); //6
                           setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ1"))) ;
                           int code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента1"));

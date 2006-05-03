@@ -435,9 +435,9 @@ END IF;
 
 IF (comprator = 20) THEN
    IF (in_docFacadeType = 0) THEN
-     SELECT pc.id_pc, pc.id_pp as pc_id_pp, pc.id_ppp as pc_id_ppp, pc.id_pf as pc_id_pf,
-     n.id_pm, n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
-     pc.parcel_pc, pc.dateofexpire_pc ,
+     SELECT n.id_pm,pc.parcel_pc,  pc.id_pp as pc_id_pp, pc.id_ppp as pc_id_ppp, pc.id_pf as pc_id_pf,
+      n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
+      pc.id_pc, pc.dateofexpire_pc ,
      s.id_nal, s.id_n_storage,s.level, s.quant_nal, s.quant_rezerv_nal,
      st.code_n_storage, st.name_n_storage, st.comments_n_storage
      FROM mida.n_product_main n LEFT JOIN mida.n_product_consigment pc ON pc.id_pm = n.id_pm
@@ -470,6 +470,17 @@ IF (comprator = 20) THEN
        LEFT JOIN mida.n_storage st ON st.id_n_storage = s.id_n_storage
        WHERE n.code_pm LIKE CONCAT('%',in_docFacadeComment) AND n.flag_pm = in_id_obekt_in AND  s.level= in_id_df
        GROUP BY id_n_storage;
+   END IF;
+   IF (in_docFacadeType = 3) THEN
+       SELECT n.id_pm,pc.parcel_pc, pc.id_pp as pc_id_pp, pc.id_ppp as pc_id_ppp, pc.id_pf as pc_id_pf,
+       n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
+       pc.id_pc,pc.dateofexpire_pc ,
+       @s.id_nal:=0 as id_nal, @s.id_n_storage:=0 as id_n_storage ,@s.level:=0 as level, @s.quant_nal:=0 as quant_nal,
+       @s.quant_rezerv_nal:=0 as quant_rezerv_nal,
+       @st.code_n_storage:=0 as code_n_storage, @st.name_n_storage:="" as name_n_storage,
+       @st.comments_n_storage:="" as comments_n_storage
+       FROM mida.n_product_main n LEFT JOIN mida.n_product_consigment pc ON pc.id_pm = n.id_pm
+       WHERE n.code_pm LIKE CONCAT('%',in_docFacadeComment) AND n.flag_pm = in_id_obekt_in;
    END IF;
 END IF;
 IF (comprator = 21) THEN
@@ -514,7 +525,7 @@ END IF;
 IF (comprator = 28) THEN
      UPDATE mida.sl_nalichnosti s SET
      s.quant_rezerv_nal = quant_rezerv_nal + in_id_contragent_in
-     WHERE id_pc = in_id_obekt_in AND id_n_storage = in_id_obekt_out ;
+     WHERE id_pc = in_id_obekt_in AND id_n_storage = in_id_obekt_out AND level=in_docFacadeLevel;
 
 END IF;
 IF (comprator = 29) THEN
@@ -530,7 +541,8 @@ IF (comprator = 30) THEN
                        WHERE dl.id_dl = in_id_df)
             AND id_pc IN
                      (SELECT  dl.id_pc FROM mida.sl_document_lines dl
-                       WHERE dl.id_dl = in_id_df);
+                       WHERE dl.id_dl = in_id_df)
+            AND level=in_docFacadeLevel;
 
 END IF;
 
@@ -594,14 +606,15 @@ IF (comprator = 36) THEN
                        WHERE dl.id_dl = in_id_df)
             AND id_pc IN
                      (SELECT  dl.id_pc FROM mida.sl_document_lines dl
-                       WHERE dl.id_dl = in_id_df);
+                       WHERE dl.id_dl = in_id_df)
+           AND level=in_docFacadeLevel;
 
 END IF;
 
 IF (comprator = 37) THEN
      UPDATE mida.sl_nalichnosti s SET
      s.return_rezerv_nal = return_rezerv_nal + in_id_contragent_in
-     WHERE id_pc = in_id_obekt_in AND id_n_storage = in_id_obekt_out ;
+     WHERE id_pc = in_id_obekt_in AND id_n_storage = in_id_obekt_out AND s.level= in_docFacadeLevel;
 
 END IF;
 
@@ -613,7 +626,8 @@ IF (comprator = 38) THEN
                        WHERE dl.id_dl = in_id_df)
             AND id_pc IN
                      (SELECT  dl.id_pc FROM mida.sl_document_lines dl
-                       WHERE dl.id_dl = in_id_df);
+                       WHERE dl.id_dl = in_id_df)
+            AND s.level=in_docFacadeLevel;
 END IF;
 
 IF (comprator = 39) THEN
@@ -624,7 +638,8 @@ IF (comprator = 39) THEN
                        WHERE dl.id_dl = in_id_df)
             AND id_pc IN
                      (SELECT  dl.id_pc FROM mida.sl_document_lines dl
-                       WHERE dl.id_dl = in_id_df);
+                       WHERE dl.id_dl = in_id_df)
+            AND s.level=in_docFacadeLevel;
 
 END IF;
 
@@ -652,7 +667,7 @@ END IF;
 IF (comprator = 44) THEN
     SELECT id_nal FROM sl_nalichnosti s
     WHERE id_n_storage= in_docFacadeStorage
-    AND id_pc = in_id_obekt_in;
+    AND id_pc = in_id_obekt_in AND level=in_docFacadeLevel;
 END IF;
 
 IF (comprator = 45) THEN

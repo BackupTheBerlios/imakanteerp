@@ -34,6 +34,16 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
         HideColumns(getColumnIndex("level"));
         HideColumns(getColumnIndex("id_df"));
         HideColumns(getColumnIndex("id_nal"));
+        
+        if(myParent.getDocFacadeType()==aeDocumentFacade.PRIEMATELNA_RAZPISKA)
+        {
+           HideColumns(getColumnIndex("Номер склад"));
+           HideColumns(getColumnIndex("Име на склада"));
+           HideColumns(getColumnIndex("Наличност"));
+           
+              
+              
+        }
        // premestvane na kolonite
         table.moveColumn(getColumnIndex("Номер склад"),0);
         table.moveColumn(getColumnIndex("Име на склада"),1);
@@ -53,7 +63,14 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
                   myParent.setID_PC((Integer)table.getValueAt(row,getColumnIndex("id_pc")));
                   myParent.setNameProduct((String)table.getValueAt(row,getColumnIndex("Фактурно име")));
                   myParent.setCodeProduct((Integer)table.getValueAt(row,getColumnIndex("Код на продукта")));
+                  if(myParent.getDocFacadeType()==aeDocumentFacade.PRIEMATELNA_RAZPISKA)
+                  {
+                    // myParent.setStorageOUTProduct(0); 
+                  }
+                  else
+                  {
                   myParent.setStorageOUTProduct((Integer)table.getValueAt(row,getColumnIndex("Номер склад")));
+                  }
                   if((Integer)table.getValueAt(row,getColumnIndex("Партида"))>1)
                   myParent.setID_PP((Integer)table.getValueAt(row,getColumnIndex("pc_id_pp")));
                   else  myParent.setID_PP((Integer)table.getValueAt(row,getColumnIndex("id_pp")));
@@ -137,7 +154,7 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
    *comments_n_storage = Коментар-склад
    *quant_rezerv_nal = Запазено количество
    */
-   private String columnName[] = {"id_pc","pc_id_pp","pc_id_ppp","pc_id_pf","id_pm","id_pd", "id_ppp","id_pp","id_df","Име на продукта","Фактурно име","Съкратено име","Име на съответ.","Мах % на отстъпка","Код на продукта","Партида","Годност",
+   private String columnName[] = {"id_pm","Партида","pc_id_pp","pc_id_ppp","pc_id_pf","id_pd", "id_ppp","id_pp","id_df","Име на продукта","Фактурно име","Съкратено име","Име на съответ.","Мах % на отстъпка","Код на продукта","id_pc","Годност",
                                   "id_nal", "Номер склад","level", "Наличност","Запазено количество","Код на склада","Име на склада","Коментар-склад"};
    private double pricelist[] = new double[5];
    private String productDescription[][] =new String[3][2];
