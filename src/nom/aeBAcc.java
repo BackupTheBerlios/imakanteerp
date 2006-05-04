@@ -10,6 +10,7 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
         getNavigationState();
         jButtonUndo.setEnabled(false);
         initCombo();
+        initTypeAccountCombo();
         this.setResizable(false);
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         repaintComp();
