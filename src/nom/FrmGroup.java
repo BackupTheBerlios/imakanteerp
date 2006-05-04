@@ -226,6 +226,7 @@ public class FrmGroup extends imakante.com.vcomponents.iInternalFrame implements
     
     private void jTextCodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextCodKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); }
+        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextCod.setText(""); }
     }//GEN-LAST:event_jTextCodKeyPressed
     
     private void jTextNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextNameFocusGained
@@ -234,10 +235,11 @@ public class FrmGroup extends imakante.com.vcomponents.iInternalFrame implements
     
     private void jTextNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNameKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); }
+        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextName.setText(""); }
     }//GEN-LAST:event_jTextNameKeyPressed
     
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
-        imakante.sales.sales_main tmp =  (imakante.sales.sales_main) myframe;
+        imakante.sales.sales_main tmp = (imakante.sales.sales_main) myframe;
         tmp.isStartFrmGroup[getNom()] = false; // flag dali da se startira FrmGroup ot sales_main
     }//GEN-LAST:event_formInternalFrameClosed
     
@@ -576,10 +578,17 @@ public class FrmGroup extends imakante.com.vcomponents.iInternalFrame implements
     private void searchRecords() {
         try {
             try {
+                int alIndex = jComboBoxAnLevel.getSelectedIndex();
+                String alName = null;
+                if (alIndex == 0) {
+                    alName = "";
+                } else if (alIndex > 0) {
+                    alName = (String) jComboBoxAnLevel.getSelectedItem();
+                }
                 if (jTextCod.getText().equals("")) {
-                    rs = internalObject.searchRecords(getNom(), -1, jTextName.getText(), jComboBoxAnLevel.getSelectedIndex());
+                    rs = internalObject.searchRecords(getNom(), -1, jTextName.getText(), alIndex, alName);
                 } else {
-                    rs = internalObject.searchRecords(getNom(), Integer.parseInt(jTextCod.getText()), jTextName.getText(), jComboBoxAnLevel.getSelectedIndex());
+                    rs = internalObject.searchRecords(getNom(), Integer.parseInt(jTextCod.getText()), jTextName.getText(), alIndex, alName);
                 }
             } catch (NumberFormatException nfex) { nfex.printStackTrace(); jTextCod.requestFocus(); }
             jScrollPane1.remove(table);
@@ -602,7 +611,6 @@ public class FrmGroup extends imakante.com.vcomponents.iInternalFrame implements
     
     private void HideColumns(int col) {
         int iColumn = col;
-// set column width
         table.getColumnModel().getColumn(iColumn).setMaxWidth(0);
         table.getColumnModel().getColumn(iColumn).setMinWidth(0);
         table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);

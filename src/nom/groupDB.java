@@ -7,6 +7,7 @@ public class groupDB  extends imakante.com.dbObject {
     private int indexConnOfId[] = null;
     private int nom = 0;
     private int alId = 0; // vryzkata kym tablicata za analitu4nite niva
+    private String alName = "";
     private java.sql.Connection conn;
     //-------------END MyVariables
     
@@ -19,7 +20,7 @@ public class groupDB  extends imakante.com.dbObject {
     //-------SART MyFunction
     public void prepareCstm() {
         try {
-            setCstm(getConn().prepareCall("{call ls_procedure_group(?,?,?,?,?,?)}"));
+            setCstm(getConn().prepareCall("{call ls_procedure_group(?,?,?,?,?,?,?)}"));
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
@@ -36,10 +37,11 @@ public class groupDB  extends imakante.com.dbObject {
         try {
             getCstm().setInt("in_id", getId());
             getCstm().setInt("in_nom", getNom()); // za suotvetnata grupa
+            getCstm().setInt("comprator", getComprator());
             getCstm().setInt("in_code", getCode());
             getCstm().setString("in_name", getName());
             getCstm().setInt("in_alid", getAnID());
-            getCstm().setInt("comprator", getComprator());
+            getCstm().setString("in_alname", getALName());
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
@@ -52,10 +54,10 @@ public class groupDB  extends imakante.com.dbObject {
     
     public void insertRow(int in_nom, int in_code, String in_name, int alID) {
         setComprator(1);
-        this.nom = in_nom;
+        this.setNom(in_nom);
         this.setCode(in_code);
         this.setName(in_name);
-        this.alId = alID;
+        this.setAnID(alID);
         try {
             registerParameters();
             getCstm().execute();
@@ -65,10 +67,10 @@ public class groupDB  extends imakante.com.dbObject {
     public void updateRow(int in_id, int in_nom, int in_code, String in_name, int alID) {
         setComprator(2);
         this.setId(in_id);
-        this.nom = in_nom;
+        this.setNom(in_nom);
         this.setCode(in_code);
         this.setName(in_name);
-        this.alId = alID;
+        this.setAnID(alID);
         try {
             registerParameters();
             getCstm().execute();
@@ -91,12 +93,12 @@ public class groupDB  extends imakante.com.dbObject {
 //        return getRs();
 //    }
 //    
-    public java.sql.ResultSet searchRecords(int in_nom, int in_code, String in_name, int alID) {
+    public java.sql.ResultSet searchRecords(int in_nom, int in_code, String in_name, int alID, String alName) {
         setComprator(5);
-        this.nom = in_nom;
+        this.setNom(in_nom);
         this.setCode(in_code);
         this.setName(in_name);
-        this.alId = alID;
+        this.setAnID(alID);
         try {
             registerParameters();
             setRs(getCstm().executeQuery());
@@ -131,6 +133,14 @@ public class groupDB  extends imakante.com.dbObject {
     
     public int getAnID() {
         return alId;
+    }
+    
+    public String getALName() {
+        return alName;
+    }
+
+    public void setALName(String alName) {
+        this.alName = alName;
     }
     
     public String[] getAnLevelName() {
@@ -179,5 +189,5 @@ public class groupDB  extends imakante.com.dbObject {
     public void setConn(java.sql.Connection conn) {
         this.conn = conn;
     }
-    
+
 }// end class
