@@ -3,9 +3,7 @@ s.id_pc,
 n_product_consigment.id_pm, n_product_main.name_pm,
 n_product_consigment.parcel_pc, n_product_consigment.dateofexpire_pc,
 sl_contragent_product.id_contragent, n_contragent.code_contragent,
-
 n_contragent.name_n_contragent,
-
 s.level, s.quant_nal,
 @tsena0 := s.quant_nal*n_product_price.price0_pp AS TSENA0,
 @tsena1 := s.quant_nal*n_product_price.price1_pp AS TSENA1,
@@ -14,7 +12,6 @@ s.level, s.quant_nal,
 @miarka3 := (s.quant_nal DIV n_product_description.v3_pd) AS m3,
 @miarka2 := ((s.quant_nal - (@miarka3*n_product_description.v3_pd)) DIV n_product_description.v2_pd) AS m2,
 (s.quant_nal - @miarka3*n_product_description.v3_pd - @miarka2*n_product_description.v2_pd ) AS OSTATAK
- 
 FROM sl_nalichnosti s
 JOIN 
 n_storage ON n_storage.id_n_storage = s.id_n_storage
