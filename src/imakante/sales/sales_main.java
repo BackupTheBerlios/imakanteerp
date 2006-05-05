@@ -628,6 +628,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         sprMenu.add(balansMenu);
 
         spravkiMenu_doc.setText("\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438");
+        spravkiMenu_doc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                spravkiMenu_docActionPerformed(evt);
+            }
+        });
+
         sprMenu.add(spravkiMenu_doc);
 
         menuBar.add(sprMenu);
@@ -736,6 +742,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-487)/2, 757, 487);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void spravkiMenu_docActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spravkiMenu_docActionPerformed
+        loadReportDocs();
+    }//GEN-LAST:event_spravkiMenu_docActionPerformed
     
     private void kasaMenu_nalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kasaMenu_nalActionPerformed
         loadCasaM();
@@ -1634,9 +1644,15 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }
     
     private void loadReportNal() {
-        imakante.sales.reportFrmNal repNal = new imakante.sales.reportFrmNal("nalichnost", this);
+        imakante.sales.reportFrmNal repNal = new imakante.sales.reportFrmNal("\u0421\u043f\u0440\u0430\u0432\u043a\u0430 \u041d\u0430\u043b\u0438\u0447\u043d\u043e\u0441\u0442\u0438", this);
         desktopPane.add(repNal);
         repNal.setVisible(true);
+    }
+    
+    private void loadReportDocs() {
+        imakante.sales.reportFrmDocs repDox = new imakante.sales.reportFrmDocs("\u0421\u043f\u0440\u0430\u0432\u043a\u0430 \u0437\u0430 \u0418\u0437\u0434\u0430\u0434\u0435\u043d\u0438 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438", this);
+        desktopPane.add(repDox);
+        repDox.setVisible(true);
     }
     
     public static LinkedHashMap getOrderArea() {
