@@ -1034,6 +1034,19 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     private java.sql.Statement stm;
     private java.sql.ResultSet rs;
     
+    private  int intTransfer;
+    private  int CompNumber = 0;
+    private String[] Names = { "\u041a\u041e\u0414", "\u0418\u041c\u0415" };
+    private String[] NamesQ = {  };
+    
+    private String strStore;
+    private String strClient;
+    private String strProduct;
+    private String strSupplier;
+    private String strDistributor;
+    private String strOperator;
+    private String strSpeditor;
+    
     public void windowOpened(WindowEvent e) {
     }
     public void windowClosing(WindowEvent e) {
@@ -1061,7 +1074,27 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             stm = conn.createStatement();
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
-
+    
+    private void initTable(String str , String[] names) {
+        try {
+            rs = stm.executeQuery(str);
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
+        try {
+            model = new imakante.com.CustomTableModel(getConn(), rs, names);
+            table = new imakante.com.CustomTable(model);
+        } catch(Exception e) { e.printStackTrace(); }
+        try {
+            table.setEditingRow(0);
+        } catch(Exception ex) { ex.printStackTrace(); }
+    }
+    
+    private void constructDialod(String str, int rCompNumber, String[] names) {
+        this.CompNumber = rCompNumber;
+        initTable(str, names);
+        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table);
+        td.setVisible(true);
+    }
+    
     private void fillBlanck() {
         if(jTextField1.getText() == "") jTextField1.setText("1");
         if(jTextField2.getText() == "") jTextField2.setText("999999999");
@@ -1084,59 +1117,100 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     }
 
     private void processField1() {
-        
+        String newString = strStore + this.jTextField1.getText() + "%'";
+        constructDialod(newString, 1, Names);
     }
 
     private void processField2() {
-        
+        if(this.jTextField1.getText() == "") this.jTextField1.setText("0");
+        String newString = strStore + this.jTextField2.getText() + "%' AND ........... >= " + this.jTextField1.getText() + ";";
+        constructDialod(newString, 2, Names);
     }
 
     private void processField3() {
-        
+        String newString = strClient + this.jTextField3.getText() + "%'";
+        constructDialod(newString, 3, Names);
     }
 
     private void processField4() {
-        
+        if(this.jTextField3.getText() == "") this.jTextField3.setText("0");
+        String newString = strClient + this.jTextField4.getText() + "%' AND ........... >= " + this.jTextField3.getText() + ";";
+        constructDialod(newString, 4, Names);
     }
 
     private void processField5() {
-        
+        String newString = strProduct + this.jTextField5.getText() + "%'";
+        constructDialod(newString, 5, Names);
     }
 
     private void processField6() {
-        
+        if(this.jTextField5.getText() == "") this.jTextField5.setText("0");
+        String newString = strProduct + this.jTextField6.getText() + "%' AND ........... >= " + this.jTextField5.getText() + ";";
+        constructDialod(newString, 6, Names);
     }
 
     private void processField7() {
-        
+        String newString = strSupplier + this.jTextField7.getText() + "%'";
+        constructDialod(newString, 7, Names);
     }
 
     private void processField8() {
-        
+        if(this.jTextField7.getText() == "") this.jTextField7.setText("0");
+        String newString = strSupplier + this.jTextField8.getText() + "%' AND ........... >= " + this.jTextField7.getText() + ";";
+        constructDialod(newString, 8, Names);
     }
 
     private void processField9() {
-        
+        String newString = strDistributor + this.jTextField9.getText() + "%'";
+        constructDialod(newString, 9, Names);
     }
 
     private void processField10() {
-        
+        if(this.jTextField9.getText() == "") this.jTextField9.setText("0");
+        String newString = strDistributor + this.jTextField10.getText() + "%' AND .......... >= " + this.jTextField9.getText() + ";";
+        constructDialod(newString, 10, Names);
     }
 
     private void processField11() {
-        
+        String newString = strOperator + this.jTextField11.getText() + "%'";
+        constructDialod(newString, 11, Names);
     }
 
     private void processField12() {
-        
+        if(this.jTextField11.getText() == "") this.jTextField11.setText("0");
+        String newString = strOperator + this.jTextField12.getText() + "%' AND .......... >= " + this.jTextField11.getText() + ";";
+        constructDialod(newString, 12, Names);
     }
 
     private void processField13() {
-        
+        String newString = strSpeditor + this.jTextField13.getText() + "%'";
+        constructDialod(newString, 13, Names);
     }
 
     private void processField14() {
-        
+        if(this.jTextField13.getText() == "") this.jTextField13.setText("0");
+        String newString = strSpeditor + this.jTextField14.getText() + "%' AND .......... >= " + this.jTextField13.getText() + ";";
+        constructDialod(newString, 14, Names);
+    }
+    
+    public String[] getNames() {
+        return Names;
+    }
+    
+    public void setNames(String[] Names) {
+        this.Names = Names;
+    }
+    
+    public int getIntTransfer() {
+        return intTransfer;
+    }
+    
+    public java.sql.Connection getConn() {
+        return conn;
+    }
+    
+    public void setConn(java.sql.Connection conn) {
+        this.conn = conn;
     }
     
 }
