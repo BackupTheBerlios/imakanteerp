@@ -738,7 +738,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
                     .add(jButton1))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        pack();
+        setBounds(100, 50, 673, 560);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
@@ -1037,15 +1037,19 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     private  int intTransfer;
     private  int CompNumber = 0;
     private String[] Names = { "\u041a\u041e\u0414", "\u0418\u041c\u0415" };
-    private String[] NamesQ = {  };
+    private String[] NamesQ = { "id_dl", "id_pc", "\u041f\u0430\u0440\u0442\u0438\u0434\u0430", 
+    "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
     
-    private String strStore;
-    private String strClient;
-    private String strProduct;
-    private String strSupplier;
-    private String strDistributor;
-    private String strOperator;
-    private String strSpeditor;
+    private String strStore = "SELECT view_rep_documents.code_n_storage";
+    private String strClient = "SELECT view_rep_documents.";
+    private String strProduct = "SELECT view_rep_documents.";
+    private String strSupplier = "SELECT view_rep_documents.";
+    private String strDistributor = "SELECT view_rep_documents.";
+    private String strOperator = "SELECT view_rep_documents.";
+    private String strSpeditor = "SELECT view_rep_documents.";
+    private String qu = "SELECT ";
+    
+    private java.util.HashMap hm = null;
     
     public void windowOpened(WindowEvent e) {
     }
@@ -1113,7 +1117,23 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     }
 
     private void processReport() {
-        
+        String newString = "";
+        try {
+            newString = qu + "";
+            
+            
+            
+        } catch (NumberFormatException ex) { ex.printStackTrace(); }
+        try {
+            initTable(newString, NamesQ);
+            imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table,
+                    myFrame.getConn(), hm, "/imakante/sales/jasper/.jasper");
+            td.setVisible(true);
+        } catch (Exception  ex) {
+            ex.printStackTrace();
+            constructDialod(newString, 0, NamesQ);
+            System.out.println("I CAN NOT FIND THE FILE SPECIFIED!");
+        }
     }
 
     private void processField1() {
@@ -1123,7 +1143,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
 
     private void processField2() {
         if(this.jTextField1.getText() == "") this.jTextField1.setText("0");
-        String newString = strStore + this.jTextField2.getText() + "%' AND ........... >= " + this.jTextField1.getText() + ";";
+        String newString = strStore + this.jTextField2.getText() + "%' AND view_rep_documents.code_n_storage >= " + this.jTextField1.getText() + ";";
         constructDialod(newString, 2, Names);
     }
 
@@ -1134,7 +1154,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
 
     private void processField4() {
         if(this.jTextField3.getText() == "") this.jTextField3.setText("0");
-        String newString = strClient + this.jTextField4.getText() + "%' AND ........... >= " + this.jTextField3.getText() + ";";
+        String newString = strClient + this.jTextField4.getText() + "%' AND view_rep_documents. >= " + this.jTextField3.getText() + ";";
         constructDialod(newString, 4, Names);
     }
 
@@ -1145,7 +1165,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
 
     private void processField6() {
         if(this.jTextField5.getText() == "") this.jTextField5.setText("0");
-        String newString = strProduct + this.jTextField6.getText() + "%' AND ........... >= " + this.jTextField5.getText() + ";";
+        String newString = strProduct + this.jTextField6.getText() + "%' AND view_rep_documents. >= " + this.jTextField5.getText() + ";";
         constructDialod(newString, 6, Names);
     }
 
@@ -1156,7 +1176,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
 
     private void processField8() {
         if(this.jTextField7.getText() == "") this.jTextField7.setText("0");
-        String newString = strSupplier + this.jTextField8.getText() + "%' AND ........... >= " + this.jTextField7.getText() + ";";
+        String newString = strSupplier + this.jTextField8.getText() + "%' AND view_rep_documents. >= " + this.jTextField7.getText() + ";";
         constructDialod(newString, 8, Names);
     }
 
@@ -1167,7 +1187,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
 
     private void processField10() {
         if(this.jTextField9.getText() == "") this.jTextField9.setText("0");
-        String newString = strDistributor + this.jTextField10.getText() + "%' AND .......... >= " + this.jTextField9.getText() + ";";
+        String newString = strDistributor + this.jTextField10.getText() + "%' AND view_rep_documents. >= " + this.jTextField9.getText() + ";";
         constructDialod(newString, 10, Names);
     }
 
@@ -1178,7 +1198,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
 
     private void processField12() {
         if(this.jTextField11.getText() == "") this.jTextField11.setText("0");
-        String newString = strOperator + this.jTextField12.getText() + "%' AND .......... >= " + this.jTextField11.getText() + ";";
+        String newString = strOperator + this.jTextField12.getText() + "%' AND view_rep_documents. >= " + this.jTextField11.getText() + ";";
         constructDialod(newString, 12, Names);
     }
 
@@ -1189,7 +1209,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
 
     private void processField14() {
         if(this.jTextField13.getText() == "") this.jTextField13.setText("0");
-        String newString = strSpeditor + this.jTextField14.getText() + "%' AND .......... >= " + this.jTextField13.getText() + ";";
+        String newString = strSpeditor + this.jTextField14.getText() + "%' AND view_rep_documents. >= " + this.jTextField13.getText() + ";";
         constructDialod(newString, 14, Names);
     }
     
