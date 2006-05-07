@@ -604,13 +604,11 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         newString = newString
                 + "SUM(rep_comm_nal.quant_nal), "
                 + "SUM(rep_comm_nal.miarka3), "
-                + "SUM(rep_comm_nal.miarka2) "
-                + "SUM(rep_comm_nal.ostatak)"
-                + "SUM(rep_comm_nal.TSENA0)"
-                + "SUM(rep_comm_nal.TSENA2)"
-                + "SUM(rep_comm_nal.TSENA3)"
-                + "rep_comm_nal.code_contragent"
-                + "rep_comm_nal.name_n_contragent"
+                + "SUM(rep_comm_nal.miarka2), "
+                + "SUM(rep_comm_nal.ostatak), "
+                + "SUM(rep_comm_nal.TSENA0), "
+                + "SUM(rep_comm_nal.TSENA2), "
+                + "SUM(rep_comm_nal.TSENA3), "
                 + " FROM "
                 + " `rep_comm_nal` ";
         
@@ -624,6 +622,8 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         } catch (NumberFormatException ex) {
             ex.printStackTrace();
         }
+         newString = newString + " GROUP BY con ORDER BY rep_comm_nal.code_pm ASC";
+        
         //Create Dialog with print
         try{
             initTable(newString, NamesQ);
