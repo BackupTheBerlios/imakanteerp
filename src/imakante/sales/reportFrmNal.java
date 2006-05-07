@@ -410,27 +410,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
     "\u0418\u043c\u0435 \u043d\u0430 \u0441\u043a\u043b\u0430\u0434"};
     
     private String qu =   "SELECT DISTINCT CONCAT(1";
-    private String body= ") AS con "
-            + "rep_comm_nal.code_n_storage, "
-            + "rep_comm_nal.code_pm, "
-            + "rep_comm_nal.name_pm, "
-            + "rep_comm_nal.barcod_pm, "
-            + "SUM(rep_comm_nal.quant_nal), "
-            + "SUM(rep_comm_nal.miarka3), "
-            + "SUM(rep_comm_nal.miarka2) "
-            + "SUM(rep_comm_nal.ostatak)"
-            + "SUM(rep_comm_nal.TSENA0)"
-            + "SUM(rep_comm_nal.TSENA2)"
-            + "SUM(rep_comm_nal.TSENA3)"
-            + "rep_comm_nal.code_contragent"
-            + "rep_comm_nal.name_n_contragent"
-            + " FROM "
-            + " `rep_comm_nal` ";
-    
-    
-    
-    
-    
+   
     
     //METHODS
     
@@ -587,13 +567,13 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         String newString=qu;
         if (this.jCheckBox4.isSelected()==false){
             if (this.jCheckBox1.isSelected()){
-                newString = newString + ",rep_comm_nal.code_n_storage";
+                newString = newString + ",rep_comm_nal.code_n_storage ";
             }
             if (this.jCheckBox2.isSelected()){
-                newString = newString + ",rep_comm_nal.code_contragent";
+                newString = newString + ",rep_comm_nal.code_contragent ";
             }
             if (this.jCheckBox2.isSelected()){
-                newString = newString + ",rep_comm_nal.id_pm";
+                newString = newString + ",rep_comm_nal.id_pm ";
             }
         }
         newString = newString + ") AS con ";
@@ -606,15 +586,34 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         
         if (this.jCheckBox2.isSelected()==false){
             newString = newString
-                    + "rep_comm_nal.code_contragent"
-                    + "rep_comm_nal.name_n_contragent";
+                    + "rep_comm_nal.code_contragent, "
+                    + "rep_comm_nal.name_n_contragent, ";
         }
         
-        if (this.jCheckBox2.isSelected()==false){
+        if (this.jCheckBox3.isSelected()==false){
+            
             newString = newString
-                    + "rep_comm_nal.code_contragent"
-                    + "rep_comm_nal.name_n_contragent";
+                    + "rep_comm_nal.code_pm, "
+                    + "rep_comm_nal.name_pm, "
+                    + "rep_comm_nal.barcod_pm, ";
+            if(this.jCheckBox4.isSelected()){
+                newString = newString
+                        + "rep_comm_nal.parcel_pc, ";
+            }
         }
+        newString = newString
+                + "SUM(rep_comm_nal.quant_nal), "
+                + "SUM(rep_comm_nal.miarka3), "
+                + "SUM(rep_comm_nal.miarka2) "
+                + "SUM(rep_comm_nal.ostatak)"
+                + "SUM(rep_comm_nal.TSENA0)"
+                + "SUM(rep_comm_nal.TSENA2)"
+                + "SUM(rep_comm_nal.TSENA3)"
+                + "rep_comm_nal.code_contragent"
+                + "rep_comm_nal.name_n_contragent"
+                + " FROM "
+                + " `rep_comm_nal` ";
+        
         
         try {
             newString = newString + " WHERE `rep_comm_nal`.`code_contragent` BETWEEN '" +
