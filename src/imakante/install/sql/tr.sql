@@ -4,7 +4,7 @@
 FROM sl_document_facade
 inner JOIN  n_contragent ON
 n_contragent.id_contragent = sl_document_facade.out_contragent_df
-WHERE level_df = 1
+WHERE level_df = 1 AND type_df = 1 AND type_df = 7
  
 GROUP by code_contragent)
 UNION
@@ -13,6 +13,6 @@ UNION
 FROM sl_document_facade
 inner JOIN  n_contragent ON
 n_contragent.id_contragent = sl_document_facade.in_contragent_df
-WHERE level_df = 1
+WHERE level_df = 1 AND type_df = 6
 GROUP by code_contragent
 )
