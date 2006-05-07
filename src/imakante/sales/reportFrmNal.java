@@ -408,14 +408,20 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
     "\u041d\u0430\u043b\u0438\u0447\u043d\u043e\u0441\u0442", 
     "\u041a\u043e\u0434 \u043d\u0430 \u0441\u043a\u043b\u0430\u0434", 
     "\u0418\u043c\u0435 \u043d\u0430 \u0441\u043a\u043b\u0430\u0434"};
-    private String qu =   "SELECT "
-            + "`rep_comm_nal`.`code_contragent`, "
-            + "`rep_comm_nal`.`name_n_contragent`, "
-            + "`rep_comm_nal`.`code_pm`, "
-            + "`rep_comm_nal`.`name_pm`, "
-            + "`rep_comm_nal`.`quant_nal`, "
-            + "`rep_comm_nal`.`code_n_storage`, "
-            + "`rep_comm_nal`.`name_n_storage` "
+    private String qu =   "DISTINCT CONCAT(1,rep_comm_nal.id_pm,rep_comm_nal.code_n_storage,rep_comm_nal.code_contragent) AS con "
+            + "rep_comm_nal.code_n_storage, "
+            + "rep_comm_nal.code_pm, "
+            + "rep_comm_nal.name_pm, "
+            + "rep_comm_nal.barcod_pm, "
+            + "SUM(rep_comm_nal.quant_nal), "
+            + "SUM(rep_comm_nal.miarka3), "
+            + "SUM(rep_comm_nal.miarka2) "
+            + "SUM(rep_comm_nal.ostatak)"
+            + "SUM(rep_comm_nal.TSENA0)"
+            + "SUM(rep_comm_nal.TSENA2)"
+            + "SUM(rep_comm_nal.TSENA3)"
+            + "rep_comm_nal.code_contragent"
+            + "rep_comm_nal.name_n_contragent"
             + " FROM "
             + " `rep_comm_nal` ";
     
