@@ -432,7 +432,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
     private  int CompNumber = 0;
     
     private String strContragent = "SELECT "
-            + "`rep_comm_nal`.`code_contragent`, `rep_comm_nal`.`name_n_contragent`"
+            + "`rep_comm_nal`.`code_contragent`"
             + "FROM `rep_comm_nal` WHERE `rep_comm_nal`.`code_contragent` LIKE  '%";
     
     private String strProduct = "SELECT "
@@ -445,7 +445,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
     
     private String[] NamesQ= {"con"};
     private List namesQ = new ArrayList();
-    private String qu =   "SELECT DISTINCT CONCAT(rep_comm_nal.level ";
+    private String qu =   "SELECT ";
     
     
     //METHODS
@@ -603,7 +603,12 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
     private void processReport(){
         String newString=qu;
         namesQ.add("con ");
-        if (this.jCheckBox4.isSelected()==false){
+        if (this.jCheckBox4.isSelected()){
+            if(this.jCheckBox1.isSelected() ||
+                    this.jCheckBox2.isSelected() ||
+                    this.jCheckBox3.isSelected()){
+                newString = newString + " DISTINCT CONCAT(rep_comm_nal.level ) AS con ";
+            }
             if (this.jCheckBox1.isSelected()){
                 newString = newString + ",rep_comm_nal.code_n_storage ";
                 
@@ -617,8 +622,9 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
                 newString = newString + ",rep_comm_nal.id_pm ";
                 
             }
+             newString = newString + ") AS con ";
         }
-        newString = newString + ") AS con ";
+        
         
         if (this.jCheckBox1.isSelected()==false){
             newString = newString
@@ -688,11 +694,16 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
             newString = newString + " AND rep_comm_nal.level = 1";
         }
         
+        if(this.jCheckBox1.isSelected() ||
+                this.jCheckBox2.isSelected() ||
+                this.jCheckBox3.isSelected()){
+            newString = newString + " GROUP BY con ";
+        }
         newString = newString + "  GROUP BY con ORDER BY rep_comm_nal.code_pm ASC";
         
         //  String[] Names = (String[]) namesQ.toArray();
         //Create Dialog with print
-        
+        System.out.println(newString);
         try{
             initTable(newString, null);
             imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table,
