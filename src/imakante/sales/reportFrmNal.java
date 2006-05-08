@@ -2,8 +2,9 @@
 package imakante.sales;
 
 import java.awt.event.WindowEvent;
-import java.net.MalformedURLException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
@@ -72,6 +73,11 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         jCheckBox1.setToolTipText("\u041f\u0440\u0438 \u0438\u0437\u0431\u0440\u0430\u043d\u0430 \u043e\u043f\u0446\u0438\u044f \u0432 \u0441\u043f\u0440\u0430\u0432\u043a\u0430\u0442\u0430 \u043d\u0435 \u0441\u0435 \u0432\u0437\u0438\u043c\u0430\u0442 \u043f\u0440\u0435\u0434\u0432\u0438\u0434 \u0441\u043a\u043b\u0430\u0434\u043e\u0432\u0435\u0442\u0435");
         jCheckBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox1.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCheckBox1KeyPressed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -87,7 +93,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
                 .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 152, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(19, 19, 19)
                 .add(jCheckBox1)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -120,6 +126,11 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         jCheckBox2.setToolTipText("\u041f\u0440\u0438 \u0438\u0437\u0431\u0440\u0430\u043d\u0430 \u043e\u043f\u0446\u0438\u044f \u0432 \u0441\u043f\u0440\u0430\u0432\u043a\u0430\u0442\u0430 \u043d\u0435 \u0441\u0435 \u0438\u043c\u0430 \u0432 \u043f\u0440\u0435\u0434\u0432\u0438\u0434 \u0434\u043e\u0441\u0442\u0430\u0432\u0447\u0438\u043a\u0430 \u043d\u0430 \u0430\u0440\u0442\u0438\u043a\u0443\u043b\u0430");
         jCheckBox2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox2.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCheckBox2KeyPressed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -135,7 +146,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
                 .add(jTextField4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 152, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(20, 20, 20)
                 .add(jCheckBox2)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -170,10 +181,10 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jButton3)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 209, Short.MAX_VALUE)
+                .add(233, 233, 233)
                 .add(jButton1)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jButton3)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jButton2)
                 .addContainerGap())
@@ -181,8 +192,8 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                .add(jButton1)
                 .add(jButton2)
+                .add(jButton1)
                 .add(jButton3))
         );
 
@@ -206,12 +217,22 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         jCheckBox3.setText("\u041e\u0431\u043e\u0431\u0449\u0435\u043d\u0438");
         jCheckBox3.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox3.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCheckBox3KeyPressed(evt);
+            }
+        });
 
         jCheckBox4.setSelected(true);
         jCheckBox4.setText("\u0410\u0440\u0442\u0438\u043a\u0443\u043b\u0438 \u043f\u043e \u043f\u0430\u0440\u0442\u0438\u0434\u0438");
         jCheckBox4.setToolTipText("\u041f\u0440\u0438 \u0438\u0437\u0431\u0440\u0430\u043d\u0430 \u043e\u043f\u0446\u0438\u044f \u0432 \u0441\u043f\u0440\u0430\u0432\u043a\u0430\u0442\u0430 \u0441\u0435 \u043f\u043e\u0434\u0430\u0432\u0430\u0442 \u0430\u0440\u0442\u0438\u043a\u0443\u043b\u0438\u0442\u0435 \u043f\u043e \u043f\u0430\u0440\u0442\u0438\u0434\u0430");
         jCheckBox4.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox4.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCheckBox4KeyPressed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -230,7 +251,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
                         .add(jTextField6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 153, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(22, 22, 22)
                         .add(jCheckBox3)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -275,6 +296,27 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-578)/2, (screenSize.height-236)/2, 578, 236);
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void jCheckBox4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox4KeyPressed
+// TODO add your handling code here:
+        jCheckBox4.transferFocus();
+    }//GEN-LAST:event_jCheckBox4KeyPressed
+    
+    private void jCheckBox3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox3KeyPressed
+// TODO add your handling code here:
+        jCheckBox3.transferFocus();
+    }//GEN-LAST:event_jCheckBox3KeyPressed
+    
+    private void jCheckBox2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox2KeyPressed
+// TODO add your handling code here:
+        jCheckBox2.transferFocus();
+    }//GEN-LAST:event_jCheckBox2KeyPressed
+    
+    private void jCheckBox1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox1KeyPressed
+        if(java.awt.event.KeyEvent.VK_ENTER == evt.getKeyCode()){
+            jCheckBox1.transferFocus();
+        }
+    }//GEN-LAST:event_jCheckBox1KeyPressed
     
     private void jTextField6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyPressed
         if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()){
@@ -402,9 +444,9 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
             + "FROM `rep_comm_nal` WHERE `rep_comm_nal`.`code_n_storage` LIKE  '%";
     
     private String[] NamesQ= {"con"};
-    
+    private List namesQ = new ArrayList();
     private String qu =   "SELECT DISTINCT CONCAT(rep_comm_nal.level ";
-   
+    
     
     //METHODS
     
@@ -431,7 +473,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
             ex.printStackTrace();
         }
         try {
-            model = new imakante.com.CustomTableModel(getConn(), rs, names);
+            model = new imakante.com.CustomTableModel(getConn(), rs, null);
             table = new imakante.com.CustomTable(model);
             
         } catch(Exception e) { e.printStackTrace(); }
@@ -454,6 +496,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
     
     private int getColumnIndex(String in) //test
     {
+        
         int count = table.getColumnCount();
         for(int i=0; i < count; i++) {
             if(table.getColumnName(i).equals(in)) return i;
@@ -559,84 +602,105 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
     
     private void processReport(){
         String newString=qu;
+        namesQ.add("con ");
         if (this.jCheckBox4.isSelected()==false){
             if (this.jCheckBox1.isSelected()){
                 newString = newString + ",rep_comm_nal.code_n_storage ";
-             
+                
+                
             }
             if (this.jCheckBox2.isSelected()){
                 newString = newString + ",rep_comm_nal.code_contragent ";
+                namesQ.add("Код контрагент");
             }
             if (this.jCheckBox2.isSelected()){
                 newString = newString + ",rep_comm_nal.id_pm ";
+                
             }
         }
         newString = newString + ") AS con ";
         
         if (this.jCheckBox1.isSelected()==false){
             newString = newString
-                    + "rep_comm_nal.code_n_storage, ";
-            
+                    + ",rep_comm_nal.code_n_storage ";
+            namesQ.add("Код склад");
         }
         
         if (this.jCheckBox2.isSelected()==false){
             newString = newString
-                    + "rep_comm_nal.code_contragent, "
-                    + "rep_comm_nal.name_n_contragent, ";
+                    + ",rep_comm_nal.code_contragent "
+                    + ",rep_comm_nal.name_n_contragent ";
+            namesQ.add("Код контрагент");
+            namesQ.add("Име контрагент");
         }
         
         if (this.jCheckBox3.isSelected()==false){
             
             newString = newString
-                    + "rep_comm_nal.code_pm, "
-                    + "rep_comm_nal.name_pm, "
-                    + "rep_comm_nal.barcod_pm, ";
+                    + ",rep_comm_nal.code_pm "
+                    + ",rep_comm_nal.name_pm "
+                    + ",rep_comm_nal.barcod_pm ";
+            
+            namesQ.add("Код продукт");
+            namesQ.add("Име продукт");
+            namesQ.add("Баркод контрагент");
+            
+            
             if(this.jCheckBox4.isSelected()){
                 newString = newString
-                        + "rep_comm_nal.parcel_pc, ";
+                        + ",rep_comm_nal.parcel_pc ";
+                
+                namesQ.add("Код партида");
             }
         }
         newString = newString
-                + "SUM(rep_comm_nal.quant_nal), "
+                + ",SUM(rep_comm_nal.quant_nal), "
                 + "SUM(rep_comm_nal.miarka3), "
                 + "SUM(rep_comm_nal.miarka2), "
                 + "SUM(rep_comm_nal.ostatak), "
                 + "SUM(rep_comm_nal.TSENA0), "
                 + "SUM(rep_comm_nal.TSENA2), "
-                + "SUM(rep_comm_nal.TSENA3), "
+                + "SUM(rep_comm_nal.TSENA3) "
                 + " FROM "
                 + " `rep_comm_nal` ";
-        
-        
+        namesQ.add("Налично количество");
+        namesQ.add("Опаковка 3");
+        namesQ.add("Опаковка 2");
+        namesQ.add("Остатък");
+        namesQ.add("Стойност по дост.");
+        namesQ.add("Стойност по листа 1");
+        namesQ.add("Стойност по листа 2");
         try {
             newString = newString + " WHERE `rep_comm_nal`.`code_contragent` BETWEEN '" +
                     (Integer.parseInt(this.jTextField5.getText())-1) + "' AND '" + (Integer.parseInt(this.jTextField6.getText())+1) +
                     "' AND " + " `rep_comm_nal`.`code_pm` BETWEEN '" + (Integer.parseInt(this.jTextField3.getText())-1) +
                     "' AND '" + (Integer.parseInt(this.jTextField4.getText())+1) + "' AND " + " `rep_comm_nal`.`code_n_storage` BETWEEN '" +
-                    (Integer.parseInt(this.jTextField1.getText())-1) + "' AND '" + (Integer.parseInt(this.jTextField2.getText())+1) + "'; ";
+                    (Integer.parseInt(this.jTextField1.getText())-1) + "' AND '" + (Integer.parseInt(this.jTextField2.getText())+1) + "' ";
         } catch (NumberFormatException ex) {
             ex.printStackTrace();
         }
         
         if(levelx==3){
-         newString = newString + " AND rep_comm_nal.level = 0";
+            newString = newString + " AND rep_comm_nal.level = 0";
         }
         
         if(levelx==2){
-         newString = newString + " AND rep_comm_nal.level = 1";
+            newString = newString + " AND rep_comm_nal.level = 1";
         }
         
-         newString = newString + "  GROUP BY con ORDER BY rep_comm_nal.code_pm ASC";
+        newString = newString + "  GROUP BY con ORDER BY rep_comm_nal.code_pm ASC";
         
+        //  String[] Names = (String[]) namesQ.toArray();
         //Create Dialog with print
+        
         try{
-            initTable(newString, NamesQ);
+            initTable(newString, null);
             imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table,
                     myframe.getConn(), hm, "/imakante/sales/jasper/nal_simp_01.jasper");
             td.setVisible(true);
         } catch (Exception  ex){
             ex.printStackTrace();
-            constructDialod(newString, 0, NamesQ);
+            constructDialod(newString, 0, null);
             System.out.println("Ne moga da nameria faila  ");
         }
         
