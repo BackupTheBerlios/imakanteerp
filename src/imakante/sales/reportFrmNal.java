@@ -607,7 +607,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
             if(this.jCheckBox1.isSelected() ||
                     this.jCheckBox2.isSelected() ||
                     this.jCheckBox3.isSelected()){
-                newString = newString + " DISTINCT CONCAT(rep_comm_nal.level ) AS con ";
+                newString = newString + " DISTINCT CONCAT(rep_comm_nal.level ";
             }
             if (this.jCheckBox1.isSelected()){
                 newString = newString + ",rep_comm_nal.code_n_storage ";
@@ -622,28 +622,38 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
                 newString = newString + ",rep_comm_nal.id_pm ";
                 
             }
-             newString = newString + ") AS con ";
+            if(this.jCheckBox1.isSelected() ||
+                    this.jCheckBox2.isSelected() ||
+                    this.jCheckBox3.isSelected()){
+                newString = newString + ") AS con, ";
+            }
+            
         }
         
         
         if (this.jCheckBox1.isSelected()==false){
             newString = newString
-                    + ",rep_comm_nal.code_n_storage ";
+                    + "rep_comm_nal.code_n_storage ";
             namesQ.add("Код склад");
         }
         
         if (this.jCheckBox2.isSelected()==false){
+            if (this.jCheckBox1.isSelected()==false){
+                newString = newString + ",";
+            }
             newString = newString
-                    + ",rep_comm_nal.code_contragent "
+                    +  "rep_comm_nal.code_contragent "
                     + ",rep_comm_nal.name_n_contragent ";
             namesQ.add("Код контрагент");
             namesQ.add("Име контрагент");
         }
         
         if (this.jCheckBox3.isSelected()==false){
-            
+            if (this.jCheckBox1.isSelected()==false && this.jCheckBox2.isSelected()==false){
+                newString = newString + ",";
+            }
             newString = newString
-                    + ",rep_comm_nal.code_pm "
+                    + "rep_comm_nal.code_pm "
                     + ",rep_comm_nal.name_pm "
                     + ",rep_comm_nal.barcod_pm ";
             
@@ -698,8 +708,10 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
                 this.jCheckBox2.isSelected() ||
                 this.jCheckBox3.isSelected()){
             newString = newString + " GROUP BY con ";
+        }else{
+            newString = newString + " GROUP BY rep_comm_nal.parcel_pc ";
         }
-        newString = newString + "  GROUP BY con ORDER BY rep_comm_nal.code_pm ASC";
+        newString = newString + "  ORDER BY rep_comm_nal.code_pm ASC";
         
         //  String[] Names = (String[]) namesQ.toArray();
         //Create Dialog with print
