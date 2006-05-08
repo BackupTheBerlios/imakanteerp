@@ -380,7 +380,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
     private java.net.URL url=null;
     
     private java.util.HashMap hm = null;
-    
+    private int levelx = 3;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
     private String idFCodeContr = "0";
@@ -403,7 +403,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
     
     private String[] NamesQ= {};
     
-    private String qu =   "SELECT DISTINCT CONCAT(1";
+    private String qu =   "SELECT DISTINCT CONCAT(rep_comm_nal.level ";
    
     
     //METHODS
@@ -616,7 +616,16 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         } catch (NumberFormatException ex) {
             ex.printStackTrace();
         }
-         newString = newString + " GROUP BY con ORDER BY rep_comm_nal.code_pm ASC";
+        
+        if(levelx==3){
+         newString = newString + " AND rep_comm_nal.level = 0";
+        }
+        
+        if(levelx==2){
+         newString = newString + " AND rep_comm_nal.level = 1";
+        }
+        
+         newString = newString + "  GROUP BY con ORDER BY rep_comm_nal.code_pm ASC";
         
         //Create Dialog with print
         try{
