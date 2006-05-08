@@ -747,7 +747,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         setJMenuBar(menuBar);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-757)/2, (screenSize.height-487)/2, 757, 487);
+        setBounds((screenSize.width-757)/2, (screenSize.height-458)/2, 757, 458);
     }// </editor-fold>//GEN-END:initComponents
 
     private void spravkiMenu_docActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spravkiMenu_docActionPerformed

@@ -401,7 +401,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
             + "`rep_comm_nal`.`code_n_storage`, `rep_comm_nal`.`name_n_storage`"
             + "FROM `rep_comm_nal` WHERE `rep_comm_nal`.`code_n_storage` LIKE  '%";
     
-    private String[] NamesQ= {};
+    private String[] NamesQ= {"con"};
     
     private String qu =   "SELECT DISTINCT CONCAT(rep_comm_nal.level ";
    
@@ -562,6 +562,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         if (this.jCheckBox4.isSelected()==false){
             if (this.jCheckBox1.isSelected()){
                 newString = newString + ",rep_comm_nal.code_n_storage ";
+             
             }
             if (this.jCheckBox2.isSelected()){
                 newString = newString + ",rep_comm_nal.code_contragent ";
