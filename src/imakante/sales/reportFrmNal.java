@@ -401,13 +401,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
             + "`rep_comm_nal`.`code_n_storage`, `rep_comm_nal`.`name_n_storage`"
             + "FROM `rep_comm_nal` WHERE `rep_comm_nal`.`code_n_storage` LIKE  '%";
     
-    private String[] NamesQ= {"\u041a\u043e\u0434 \u043d\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442",
-    "\u0418\u043c\u0435 \u043d\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442",
-    "\u041a\u043e\u0434 \u043d\u0430 \u043f\u0440\u043e\u0434\u0443\u043a\u0442",
-    "\u0418\u043c\u0435 \u043d\u0430 \u043f\u0440\u043e\u0434\u0443\u043a\u0442",
-    "\u041d\u0430\u043b\u0438\u0447\u043d\u043e\u0441\u0442",
-    "\u041a\u043e\u0434 \u043d\u0430 \u0441\u043a\u043b\u0430\u0434",
-    "\u0418\u043c\u0435 \u043d\u0430 \u0441\u043a\u043b\u0430\u0434"};
+    private String[] NamesQ= {};
     
     private String qu =   "SELECT DISTINCT CONCAT(1";
    
