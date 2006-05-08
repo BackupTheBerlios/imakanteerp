@@ -649,7 +649,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         }
         
         if (this.jCheckBox3.isSelected()==false){
-            if (this.jCheckBox1.isSelected()==false && this.jCheckBox2.isSelected()==false){
+            if (this.jCheckBox1.isSelected()==false || this.jCheckBox2.isSelected()==false){
                 newString = newString + ",";
             }
             newString = newString
