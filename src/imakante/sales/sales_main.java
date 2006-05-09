@@ -835,9 +835,9 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         int user = 2;
         int level = 1;
         int pricelist = 1;
-        int doctype = aeDocumentFacade.PROFORMA_FAKTURA;
+        int doctype = aeDocumentFacade.OFERTA;
         int storagedocdacade = 1;
-        loadFrmDocFacade("\u041f\u0420\u041e\u0424\u041e\u0420\u041c\u0410 \u0424\u0410\u041a\u0422\u0423\u0420\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );
+        loadFrmDocFacade("\u041e\u0424\u0415\u0420\u0422\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );
     }//GEN-LAST:event_docMenu_offerActionPerformed
     
     private void razpMenu_prehvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_razpMenu_prehvActionPerformed
@@ -851,9 +851,9 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     
     private void fakMenu_oprActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fakMenu_oprActionPerformed
         int user = 2;
-        int level = 1;
+        int level = 2;
         int pricelist = 1;
-        int doctype = aeDocumentFacade.FAKTURI;
+        int doctype = aeDocumentFacade.FAKTURA_OPROSTENA;
         int storagedocdacade = 1;
         System.out.println("Create opr. Fak");
         System.out.println(isMakeDocByInputData);
@@ -871,9 +871,9 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         int user = 2;
         int level = 1;
         int pricelist = 1;
-        int doctype = aeDocumentFacade.FAKTURI;
+        int doctype = aeDocumentFacade.FAKTURA_DANACHNA;
         int storagedocdacade = 1;
-        System.out.println("Create opr. Fak");
+        System.out.println("Create DAN. Fak");
         System.out.println(isMakeDocByInputData);
         
         if(!isMakeDocByInputData) {
