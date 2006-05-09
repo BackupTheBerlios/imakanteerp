@@ -101,7 +101,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         jCheckBox4.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox4.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox5.setText("\u041f\u0440\u043e\u0442\u043e\u043a\u043e\u043b\u0438 \u043e\u0442 \u0440\u0435\u0432\u0438\u0437\u0438\u0438");
+        jCheckBox5.setText("\u041f\u0440\u043e\u0434\u0430\u0436\u0431\u0438");
         jCheckBox5.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox5.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
@@ -129,7 +129,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         jCheckBox11.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox11.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jCheckBox12.setText("\u041e\u0444\u0435\u0440\u0442\u0438");
+        jCheckBox12.setText("\u041f\u0440\u043e\u0442\u043e\u043a\u043e\u043b \u043e\u0442 \u0440\u0435\u0432\u0438\u0437\u0438\u0438");
         jCheckBox12.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox12.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
@@ -158,7 +158,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
                     .add(jCheckBox12)
                     .add(jCheckBox8)
                     .add(jCheckBox4))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
