@@ -591,7 +591,7 @@ public class FrmC2COperation extends  imakante.com.vcomponents.iInternalFrame im
     private void constructDialod(String str, int rCompNumber, String[] names) {
         this.CompNumber = rCompNumber;
         initTableD(str, names);
-        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table1);
+        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table1,"\u041a\u0430\u0441\u0430\u043e\u0432\u0438 \u043e\u043f\u0435\u0440\u0430\u0446\u0438\u0438", "");
         td.setVisible(true);
     }
     

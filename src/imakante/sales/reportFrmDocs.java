@@ -1095,7 +1095,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     private void constructDialod(String str, int rCompNumber, String[] names) {
         this.CompNumber = rCompNumber;
         initTable(str, names);
-        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table);
+        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table, "\u0418\u0437\u0431\u043e\u0440", "");
         td.setVisible(true);
     }
     
@@ -1127,7 +1127,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         try {
             initTable(newString, NamesQ);
             imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table,
-                    myFrame.getConn(), hm, "/imakante/sales/jasper/.jasper");
+                    myFrame.getConn(), hm, "/imakante/sales/jasper/.jasper", "\u0421\u043f\u0440\u0430\u0432\u043a\u0430 \u0438\u0437\u0434\u0430\u0434\u0435\u043d\u0438 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438", "");
             td.setVisible(true);
         } catch (Exception  ex) {
             ex.printStackTrace();

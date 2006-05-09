@@ -139,7 +139,7 @@ public class FrmNalCasa extends imakante.com.vcomponents.iInternalFrame implemen
     }// </editor-fold>//GEN-END:initComponents
     
     private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
-      checkValue();
+        checkValue();
     }//GEN-LAST:event_jTextField2FocusLost
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -234,8 +234,8 @@ public class FrmNalCasa extends imakante.com.vcomponents.iInternalFrame implemen
             jTextField2.setText("999999999");
         }
         if(i>j){
-         jTextField1.setText("0");   
-         jTextField2.setText("999999999");
+            jTextField1.setText("0");
+            jTextField2.setText("999999999");
         }
     }
     private void constString(){
@@ -291,7 +291,7 @@ public class FrmNalCasa extends imakante.com.vcomponents.iInternalFrame implemen
     private void constructDialod(String str, int rCompNumber, String[] names){
         this.CompNumber = rCompNumber;
         initTable(str, names );
-        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table);
+        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table, "\u0418\u0437\u0431\u043e\u0440", "");
         td.setVisible(true);
         
     }
@@ -384,7 +384,7 @@ public class FrmNalCasa extends imakante.com.vcomponents.iInternalFrame implemen
         try{
             initTable(qu, NamesQ);
             imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table,
-                    myframe.getConn(), hm, "/imakante/sales/jasper/nal_casi_simpl.jasper");
+                    myframe.getConn(), hm, "/imakante/sales/jasper/nal_casi_simpl.jasper", "\u041a\u0430\u0441\u043e\u0432\u0438 \u041d\u0430\u043b\u0438\u0447\u043d\u043e\u0441\u0442\u0438", "");
             td.setVisible(true);
         } catch (Exception  ex){
             ex.printStackTrace();

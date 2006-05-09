@@ -557,7 +557,7 @@ public class FrmCaseOperationOut extends  imakante.com.vcomponents.iInternalFram
     private void constructDialod(String str, int rCompNumber, String[] names){
         this.CompNumber = rCompNumber;
         initTableD(str, names );
-        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table1);
+        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table1, "", "");
         td.setVisible(true);
         
     }
