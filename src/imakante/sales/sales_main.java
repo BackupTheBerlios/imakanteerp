@@ -132,10 +132,17 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         nomALevel = new javax.swing.JMenuItem();
         sprMenu = new javax.swing.JMenu();
         spravkiMenu_nal = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem14 = new javax.swing.JMenuItem();
         balansMenu = new javax.swing.JMenu();
         balansMenu_stock = new javax.swing.JMenuItem();
         balansMenu_kol = new javax.swing.JMenuItem();
         spravkiMenu_doc = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JSeparator();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
+        jSeparator5 = new javax.swing.JSeparator();
+        jMenuItem13 = new javax.swing.JMenuItem();
         sluMenu = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -620,6 +627,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         sprMenu.add(spravkiMenu_nal);
 
+        jMenuItem10.setText("\u0421\u0442\u043e\u0439\u043d\u043e\u0441\u0442\u0435\u043d \u0431\u0430\u043b\u0430\u043d\u0441");
+        sprMenu.add(jMenuItem10);
+
+        jMenuItem14.setText("\u041f\u0440\u043e\u0434\u0430\u0436\u0431\u0438");
+        sprMenu.add(jMenuItem14);
+
         balansMenu.setText("\u0411\u0430\u043b\u0430\u043d\u0441\u0438");
         balansMenu_stock.setText("\u0421\u0442\u043e\u043a\u043e\u0432");
         balansMenu.add(balansMenu_stock);
@@ -637,6 +650,19 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         });
 
         sprMenu.add(spravkiMenu_doc);
+
+        sprMenu.add(jSeparator2);
+
+        jMenuItem11.setText("\u0420\u0430\u0437\u043f\u043b\u0430\u0449\u0430\u043d\u0435 \u043d\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
+        sprMenu.add(jMenuItem11);
+
+        jMenuItem12.setText("\u0417\u0430\u0434\u044a\u043b\u0436\u0435\u043d\u0438\u044f");
+        sprMenu.add(jMenuItem12);
+
+        sprMenu.add(jSeparator5);
+
+        jMenuItem13.setText("\u0414\u043d\u0435\u0432\u043d\u0438\u0446\u0438 \u0414\u0414\u0421");
+        sprMenu.add(jMenuItem13);
 
         menuBar.add(sprMenu);
 
@@ -1031,6 +1057,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
@@ -1042,8 +1073,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenuItem jMenuItem9DTUR;
     private javax.swing.JMenu jMenuTransfer;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenuItem kasaAvansMenu;
     private javax.swing.JMenuItem kasaAvansOt4etMenu;
