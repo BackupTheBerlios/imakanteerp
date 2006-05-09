@@ -15,9 +15,25 @@ import javax.swing.*;
 import java.text.MessageFormat;
 import java.util.*;
 
+/**
+ *Component for DOCUMENT 
+ */
+
 public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame implements WindowListener
 {
-
+ /**
+  *Constructs a default FrmDocumentFacade that is initialized with :
+  *
+  *@param title Title of Document;
+  *@param user User, the one that input/insert data of current dokument
+  *@param level Chose a level with we have to work
+  *@param pricelist Chose price list
+  *@param doctype Chose Document type, see {@link imakante.sales.aeDocumentFacade#OFERTA  Constant Field Values}
+  *@param storagedocdacade Chose  a storage with we have to work
+  *@param makeDocByInputData Boolean parameter, true - have build Document from dataIn and dataOut
+  *@param frame Parent frame
+  *
+  */
     public FrmDocumentFacade(String title, int user, int level, int pricelist, int doctype,int storagedocdacade,boolean makeDocByInputData,HashMap dataIn, ArrayList dataOut,imakante.com.vcomponents.iFrame frame) // TEST   ,
     {
         super(title);
@@ -1319,13 +1335,52 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
                          catch(Exception ex){};
                          break;
                      }
+                     case aeDocumentFacade.FAKTURA_DANACHNA :
+                     {
+                         setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
+                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2"))); //1
+                         setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат2"))); //2
+                         setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер2")));  //3
+                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2")));   //4
+                         setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес2"))); //5
+                         setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента2"))); //6
+                         setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ2"))) ;
+                         try
+                         {
+                         int code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента2"));
+                         setCodeContragent(String.valueOf(code));
+                         }
+                         catch(Exception ex){};
+                         break;
+                     }
+                     case aeDocumentFacade.FAKTURA_OPROSTENA :
+                     {
+                         setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
+                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2"))); //1
+                         setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат2"))); //2
+                         setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер2")));  //3
+                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2")));   //4
+                         setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес2"))); //5
+                         setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента2"))); //6
+                         setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ2"))) ;
+                         try
+                         {
+                         int code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента2"));
+                         setCodeContragent(String.valueOf(code));
+                         }
+                         catch(Exception ex){};
+                         break;
+                     }
+                     
+                     
+                     
                      case aeDocumentFacade.PROFORMA_FAKTURA :
                      {
                          setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
                          setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2"))); //1
                          setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат2"))); //2
                          setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер2")));  //3
-                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контарегнта2")));   //4
+                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2")));   //4
                          setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес2"))); //5
                          setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента1"))); //6
                          setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ2"))) ;
@@ -1333,6 +1388,28 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
                          setCodeContragent(String.valueOf(code));
                          break;
                      }
+                     case aeDocumentFacade.OFERTA :
+                        {
+                         
+                         setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
+                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2"))); //1
+                         setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат2"))); //2
+                         setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер2")));  //3
+                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2")));   //4
+                         setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес2"))); //5
+                         setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента1"))); //6
+                         setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ2"))) ;
+                         int code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента2"));
+                         setCodeContragent(String.valueOf(code));
+
+                         break;
+                        } 
+                    case aeDocumentFacade.BRAK :
+                        {
+
+
+                          break;
+                        }
                      case aeDocumentFacade.STOKOVA_RAZPISKA :
                      {
                          setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
@@ -1596,6 +1673,32 @@ private void hideDocimentTypeColumns(int doctype)
             
             break;
         }
+        case aeDocumentFacade.FAKTURA_DANACHNA:
+        {
+           // skrivane na koloni  na kontragent s index "1" nakraq
+            hideDocimentTypeColumns_Contragent(IN); 
+            hideDocimentTypeColumns_Obekt(IN);
+            hideDocimentTypeColumns_Obekt(OUT);
+            hideDocimentTypeColumns_DevDistr();
+                       
+            HideColumns(getColumnIndex("Склад (към)"));
+          
+            
+            break;
+        }
+        case aeDocumentFacade.FAKTURA_OPROSTENA:
+        {
+           // skrivane na koloni  na kontragent s index "1" nakraq
+            hideDocimentTypeColumns_Contragent(IN); 
+            hideDocimentTypeColumns_Obekt(IN);
+            hideDocimentTypeColumns_Obekt(OUT);
+            hideDocimentTypeColumns_DevDistr();
+                       
+            HideColumns(getColumnIndex("Склад (към)"));
+          
+            
+            break;
+        }
         case aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE:
         {
           // skrivane na koloni  na kontragent s index "1" nakraq
@@ -1646,6 +1749,23 @@ private void hideDocimentTypeColumns(int doctype)
             
             break;
         }
+       case aeDocumentFacade.OFERTA :
+        {
+           hideDocimentTypeColumns_Contragent(IN); 
+           hideDocimentTypeColumns_Obekt(IN);
+           hideDocimentTypeColumns_Obekt(OUT);
+           hideDocimentTypeColumns_DevDistr();
+            
+           HideColumns(getColumnIndex("Склад (към)"));     
+                
+         break;
+        } 
+       case aeDocumentFacade.BRAK :
+       {
+               
+                
+          break;
+        }
         case aeDocumentFacade.STOKOVA_RAZPISKA:
         {
            // skrivane na koloni  na kontragent s index "1" nakraq
@@ -1690,6 +1810,22 @@ private void moveDocimentTypeColumns(int doctype)
             
             break;
         }
+         case aeDocumentFacade.FAKTURA_DANACHNA:
+        {
+            table.moveColumn(getColumnIndex("Номер на документа"),0);
+            table.moveColumn(getColumnIndex("Дата на документа"),1);
+            
+            
+            break;
+        }
+          case aeDocumentFacade.FAKTURA_OPROSTENA:
+        {
+            table.moveColumn(getColumnIndex("Номер на документа"),0);
+            table.moveColumn(getColumnIndex("Дата на документа"),1);
+            
+            
+            break;
+        }
         case aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE:
         {
             table.moveColumn(getColumnIndex("Номер на документа"),0);
@@ -1715,6 +1851,19 @@ private void moveDocimentTypeColumns(int doctype)
             table.moveColumn(getColumnIndex("Номер на документа"),0);
             table.moveColumn(getColumnIndex("Дата на документа"),1);
             break;
+        }
+         case aeDocumentFacade.OFERTA :
+        {
+          table.moveColumn(getColumnIndex("Номер на документа"),0);
+          table.moveColumn(getColumnIndex("Дата на документа"),1);     
+                
+         break;
+        } 
+       case aeDocumentFacade.BRAK :
+       {
+               
+                
+          break;
         }
         case aeDocumentFacade.STOKOVA_RAZPISKA:
         {

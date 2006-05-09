@@ -140,7 +140,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="16" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="&#x41f;&#x420;&#x418;&#x415;&#x41c;&#x410;&#x422;&#x415;&#x41b;&#x41d;&#x410; &#x420;&#x410;&#x417;&#x41f;&#x418;&#x421;&#x41a;&#x410;"/>
+                <Property name="text" type="java.lang.String" value="&#x41e;&#x424;&#x415;&#x420;&#x422;&#x410;"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

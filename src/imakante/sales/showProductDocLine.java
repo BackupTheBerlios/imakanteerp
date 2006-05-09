@@ -15,7 +15,7 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
         isPRODUKTIN = isProductIN;
         myParent = (FrmDocumentFacade)  myframe;
         this.rs = rs;
-        
+        this.setTitle("\u0418\u0437\u0431\u043e\u0440 \u043d\u0430 \u043f\u0440\u043e\u0434\u0443\u043a\u0442");
        // columnName=null;
         model = new imakante.com.CustomTableModel(conn,rs, columnName);
         table = new imakante.com.CustomTable(model);

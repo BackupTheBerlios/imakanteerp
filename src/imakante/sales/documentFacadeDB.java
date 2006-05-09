@@ -50,7 +50,7 @@
  *comprator= 48: getRowDocLine()
  *comprator= 49: getStatusConnection()
  *comprator= 50: getStorageAndParcelByID()
- *
+ *comprator= 51: getLastCurentDate();
  *
  *
  *
@@ -2056,6 +2056,28 @@ private int[] getStorageAndParcelByID(int in_id_dl)
     setID_DocFacade(oldID_DF) ;
     return data;
 }
-
+/**
+ *Vzemane na poslednata data ot bazata koqto e vyvedena za cursovete 
+ */
+public String getLastCurentDate()
+{
+    setComprator(51);
+    String lastDate = new String();
+    java.sql.ResultSet rs12 =null;
+    try
+        {
+            registerParameters();
+            rs12 = getCstm().executeQuery();
+            while(rs12.next())
+            {
+            lastDate =(String) rs12.getString("lastDate");
+            }  
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        } 
+    return lastDate;
+}
 // <-----------------------
 }// end class
