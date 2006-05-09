@@ -61,12 +61,13 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private void initComponents() {
         desktopPane = new javax.swing.JDesktopPane();
         jToolBar1 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jComboBox1 = new javax.swing.JComboBox();
         menuBar = new javax.swing.JMenuBar();
         docMenu = new javax.swing.JMenu();
         docMenu_prod = new javax.swing.JMenuItem();
@@ -178,15 +179,6 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         getContentPane().add(desktopPane, java.awt.BorderLayout.CENTER);
 
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\REA\\src\\midass\\openfile.gif"));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jToolBar1.add(jButton1);
-
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Objects 2_large_ps.png")));
         jButton6.setToolTipText("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0430 \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u0438");
         jButton6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Objects 2_large.png")));
@@ -229,6 +221,27 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jButton3.setToolTipText("\u041f\u043e\u043c\u043e\u0449");
         jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Help File.png")));
         jToolBar1.add(jButton3);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setToolTipText("\u041f\u0440\u0435\u0434\u0435\u0444\u0438\u043d\u0438\u0440\u0430\u043d\u0438 \u0441\u043f\u0440\u0430\u0432\u043a\u0438");
+
+        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(352, Short.MAX_VALUE)
+                .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 179, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jToolBar1.add(jPanel1);
 
         getContentPane().add(jToolBar1, java.awt.BorderLayout.NORTH);
 
@@ -1013,13 +1026,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private void sluMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sluMenuActionPerformed
         
     }//GEN-LAST:event_sluMenuActionPerformed
-    
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try{
-            loadKlienti();
-        } catch (java.sql.SQLException sql1) {}
-    }//GEN-LAST:event_jButton1ActionPerformed
-    
+        
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
         
     }//GEN-LAST:event_aboutMenuItemActionPerformed
@@ -1050,12 +1057,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenuItem fakMenu_dan;
     private javax.swing.JMenuItem fakMenu_opr;
     private javax.swing.JMenu helpMenu;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
@@ -1072,6 +1079,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenuItem jMenuItem9DTUR;
     private javax.swing.JMenu jMenuTransfer;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
