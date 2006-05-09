@@ -16,6 +16,7 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
         super(frame, modal, table);
         this.myParent = (imakante.com.vcomponents.iInternalFrame) frame;
         this.InternalTable = table;
+        this.interTitle = Title;
         initComponents();
         InternalTable.addKeyListener(new KeyListener() {
             public void keyPressed(KeyEvent e) {
@@ -29,6 +30,7 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
             public void keyTyped(KeyEvent e) {
             }
         });
+        this.setTitle(interTitle);
     }
     public tableDialog(imakante.com.vcomponents.iInternalFrame frame, boolean modal, imakante.com.CustomTable table,
             java.sql.Connection conn, java.util.HashMap hm, String filejasper, String Title, String Header ) {
@@ -140,7 +142,7 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
     private imakante.com.vcomponents.iInternalFrame myParent;
-    
+    private String interTitle;
     private java.sql.Connection conn = null;
     private String fileJasper = null;
     private java.util.HashMap hm = null;
