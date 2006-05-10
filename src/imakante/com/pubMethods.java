@@ -1,12 +1,27 @@
 
 package imakante.com;
 
-import java.awt.*;
-import java.sql.*;
-import java.util.*;
-import java.io.*;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
 import java.awt.PrintJob;
-import javax.swing.*;
+import java.awt.Toolkit;
+import java.io.EOFException;
+import java.io.LineNumberReader;
+import java.io.StringReader;
+import java.lang.reflect.Array;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Hashtable;
+import java.util.Properties;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+
+
 
 public class pubMethods {
     public static int makeInt(String str){
@@ -18,14 +33,14 @@ public class pubMethods {
         return i;
     }
     public static double makeDouble(String str){
-       double i = 0;
+        double i = 0;
         try{
-             i = Double.parseDouble(str);
+            i = Double.parseDouble(str);
         }catch(NumberFormatException nfe){return i;}
         
         return i;
-    
-    
+        
+        
     }
     public static boolean isInteger(String str){
         
@@ -294,5 +309,35 @@ public class pubMethods {
             
         }
         return lString;
+    }
+    public static String arrayToString(Object array) {
+        if (array == null) {
+            return "[NULL]";
+        } else {
+            Object obj = null;
+            if (array instanceof Hashtable) {
+                array = ((Hashtable)array).entrySet().toArray();
+            } else if (array instanceof HashSet) {
+                array = ((HashSet)array).toArray();
+            } else if (array instanceof Collection) {
+                array = ((Collection)array).toArray();
+            }
+            int length = Array.getLength(array);
+            int lastItem = length - 1;
+            StringBuffer sb = new StringBuffer("[");
+            for (int i = 0; i < length; i++) {
+                obj = Array.get(array, i);
+                if (obj != null) {
+                    sb.append(obj);
+                } else {
+                    sb.append("[NULL]");
+                }
+                if (i < lastItem) {
+                    sb.append(", ");
+                }
+            }
+            sb.append("]");
+            return sb.toString();
+        }
     }
 }
