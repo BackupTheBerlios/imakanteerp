@@ -310,6 +310,7 @@ public class pubMethods {
         }
         return lString;
     }
+    
     public static String arrayToString(Object array) {
         if (array == null) {
             return "[NULL]";
