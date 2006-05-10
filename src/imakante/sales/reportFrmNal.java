@@ -445,6 +445,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
     
     private String[] NamesQ= {"con"};
     private List namesQ = new ArrayList();
+    private int nubColums = 0;
     private String qu =   "SELECT ";
     
     
@@ -606,7 +607,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         
         
         newString = newString + " DISTINCT CONCAT(rep_comm_nal.level ";
-        
+        this.nubColums = nubColums + 1;
         if (this.jCheckBox1.isSelected()==false){
             newString = newString + ",rep_comm_nal.code_n_storage ";
             
@@ -629,6 +630,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
             newString = newString
                     + ",rep_comm_nal.code_n_storage ";
             namesQ.add("Код склад");
+            this.nubColums = nubColums + 1;
         }
         
         if (this.jCheckBox2.isSelected()==false){
@@ -637,7 +639,9 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
                     +  ",rep_comm_nal.code_contragent "
                     + ",rep_comm_nal.name_n_contragent ";
             namesQ.add("Код контрагент");
+            this.nubColums = nubColums + 1;
             namesQ.add("Име контрагент");
+            this.nubColums = nubColums + 1;
         }
         
         if (this.jCheckBox3.isSelected()==false){
@@ -648,8 +652,11 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
                     + ",rep_comm_nal.barcod_pm ";
             
             namesQ.add("Код продукт");
+            this.nubColums = nubColums + 1;
             namesQ.add("Име продукт");
+            this.nubColums = nubColums + 1;
             namesQ.add("Баркод контрагент");
+            this.nubColums = nubColums + 1;
             
             
             if(this.jCheckBox4.isSelected()){
@@ -657,6 +664,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
                         + ",rep_comm_nal.parcel_pc ";
                 
                 namesQ.add("Код партида");
+                this.nubColums = nubColums + 1;
             }
         }
         newString = newString
@@ -676,6 +684,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         namesQ.add("Стойност по дост.");
         namesQ.add("Стойност по листа 1");
         namesQ.add("Стойност по листа 2");
+        this.nubColums = nubColums + 7;
         try {
             newString = newString + " WHERE `rep_comm_nal`.`code_contragent` BETWEEN '" +
                     (Integer.parseInt(this.jTextField5.getText())-1) + "' AND '" + (Integer.parseInt(this.jTextField6.getText())+1) +
@@ -703,7 +712,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
 //        }
         newString = newString + " GROUP BY con ORDER BY rep_comm_nal.code_pm ASC";
         
-        //  String[] Names = (String[]) namesQ.toArray();
+         String[] Names = (String[]) namesQ.toArray(new String[this.nubColums]);
         //Create Dialog with print
         System.out.println(newString);
         try{
@@ -713,7 +722,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
             td.setVisible(true);
         } catch (Exception  ex){
             ex.printStackTrace();
-            constructDialod(newString, 0, null);
+            constructDialod(newString, 0, Names);
             System.out.println("Ne moga da nameria faila  ");
         }
         
