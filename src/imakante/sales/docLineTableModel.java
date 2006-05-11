@@ -347,11 +347,11 @@ public class docLineTableModel extends AbstractTableModel implements Serializabl
             {
                  canEdit [columnIndex] = true;
             }
-            public void disableCellEditable(int columnIndex)
+public void disableCellEditable(int columnIndex)
             {
               canEdit [columnIndex] = false;
             }
-           public void setDefaultCellEditable()
+public void setDefaultCellEditable()
            {
               boolean canEdit1[] = new boolean [] {
                 false, false, false, false,false, false, false, false, false, false, false, false};
