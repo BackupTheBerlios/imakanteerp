@@ -1173,6 +1173,7 @@ public class productDB extends imakante.com.dbObject {
     }
     public void setNewConsigment(int in_id_pm) {
         int oldid_pm = id_pm;
+        id_pm=in_id_pm;
         setComprator(35);
         try {
             registerParameters();
