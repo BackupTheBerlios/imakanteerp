@@ -32,9 +32,9 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
         jCheckBox13 = new javax.swing.JCheckBox();
+        jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
+        jXDatePicker2 = new org.jdesktop.swingx.JXDatePicker();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -79,6 +79,13 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         jCheckBox19 = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jTextField15 = new javax.swing.JTextField();
+        jTextField16 = new javax.swing.JTextField();
+        jCheckBox20 = new javax.swing.JCheckBox();
 
         setClosable(true);
         setIconifiable(true);
@@ -185,37 +192,11 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        jLabel1.setText("\u0421\u041a\u041b\u0410\u0414");
+        jLabel1.setText("\u0414\u0410\u0422\u0410");
 
         jLabel2.setText("\u043e\u0442:");
 
         jLabel3.setText("\u0434\u043e:");
-
-        jTextField1.setMinimumSize(new java.awt.Dimension(80, 20));
-        jTextField1.setPreferredSize(new java.awt.Dimension(120, 20));
-        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField1FocusGained(evt);
-            }
-        });
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField1KeyPressed(evt);
-            }
-        });
-
-        jTextField2.setMinimumSize(new java.awt.Dimension(80, 20));
-        jTextField2.setPreferredSize(new java.awt.Dimension(120, 20));
-        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField2FocusGained(evt);
-            }
-        });
-        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField2KeyPressed(evt);
-            }
-        });
 
         jCheckBox13.setText("\u041e\u0431\u043e\u0431\u0449\u0435\u043d\u0438");
         jCheckBox13.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -226,36 +207,37 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel2Layout.createSequentialGroup()
-                .add(54, 54, 54)
+                .add(55, 55, 55)
                 .add(jLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
-                .add(22, 22, 22)
+                .add(21, 21, 21)
                 .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 16, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                .add(38, 38, 38)
+                .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(26, 26, 26)
                 .add(jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                .add(29, 29, 29)
+                .add(jXDatePicker2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(16, 16, 16)
                 .add(jCheckBox13, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(74, 74, 74))
+                .add(75, 75, 75))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel1)
-                    .add(jLabel2)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jCheckBox13)
                     .add(jLabel3)
-                    .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jCheckBox13))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(jLabel2)
+                        .add(jLabel1))
+                    .add(jXDatePicker2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        jLabel4.setText("\u041a\u041b\u0418\u0415\u041d\u0422");
+        jLabel4.setText("\u0421\u041a\u041b\u0410\u0414");
 
         jLabel5.setText("\u043e\u0442:");
 
@@ -308,7 +290,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
                 .add(jTextField4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                 .add(29, 29, 29)
                 .add(jCheckBox14, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(74, 74, 74))
+                .add(78, 78, 78))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -325,7 +307,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        jLabel7.setText("\u0421\u0422\u041e\u041a\u0410");
+        jLabel7.setText("\u041a\u041b\u0418\u0415\u041d\u0422");
 
         jLabel8.setText("\u043e\u0442:");
 
@@ -378,7 +360,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
                 .add(jTextField6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                 .add(29, 29, 29)
                 .add(jCheckBox15, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(74, 74, 74))
+                .add(78, 78, 78))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -395,7 +377,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         );
 
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        jLabel10.setText("\u0414\u041e\u0421\u0422\u0410\u0412\u0427\u0418\u041a");
+        jLabel10.setText("\u0421\u0422\u041e\u041a\u0410");
 
         jLabel11.setText("\u043e\u0442:");
 
@@ -448,7 +430,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
                 .add(jTextField8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                 .add(29, 29, 29)
                 .add(jCheckBox16, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(74, 74, 74))
+                .add(78, 78, 78))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -465,7 +447,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         );
 
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        jLabel13.setText("\u0414\u0418\u0421\u0422\u0420\u0418\u0411\u0423\u0422\u041e\u0420");
+        jLabel13.setText("\u0414\u041e\u0421\u0422\u0410\u0412\u0427\u0418\u041a");
 
         jLabel14.setText("\u043e\u0442:");
 
@@ -518,7 +500,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
                 .add(jTextField10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                 .add(29, 29, 29)
                 .add(jCheckBox17, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(74, 74, 74))
+                .add(78, 78, 78))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -535,7 +517,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         );
 
         jPanel7.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        jLabel16.setText("\u041e\u041f\u0415\u0420\u0410\u0422\u041e\u0420");
+        jLabel16.setText("\u0414\u0418\u0421\u0422\u0420\u0418\u0411\u0423\u0422\u041e\u0420");
 
         jLabel17.setText("\u043e\u0442:");
 
@@ -588,7 +570,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
                 .add(jTextField12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                 .add(29, 29, 29)
                 .add(jCheckBox18, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(74, 74, 74))
+                .add(78, 78, 78))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -605,7 +587,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         );
 
         jPanel8.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        jLabel19.setText("\u0421\u041f\u0415\u0414\u0418\u0422\u041e\u0420");
+        jLabel19.setText("\u041e\u041f\u0415\u0420\u0410\u0422\u041e\u0420");
 
         jLabel20.setText("\u043e\u0442:");
 
@@ -658,7 +640,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
                 .add(jTextField14, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                 .add(29, 29, 29)
                 .add(jCheckBox19, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(74, 74, 74))
+                .add(78, 78, 78))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -671,7 +653,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
                     .add(jTextField13, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jTextField14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jCheckBox19))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11));
@@ -689,24 +671,95 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             }
         });
 
+        jPanel9.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        jLabel22.setText("\u0421\u041f\u0415\u0414\u0418\u0422\u041e\u0420");
+
+        jLabel23.setText("\u043e\u0442:");
+
+        jLabel24.setText("\u0434\u043e:");
+
+        jTextField15.setMinimumSize(new java.awt.Dimension(80, 20));
+        jTextField15.setPreferredSize(new java.awt.Dimension(120, 20));
+        jTextField15.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField15FocusGained(evt);
+            }
+        });
+        jTextField15.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField15KeyPressed(evt);
+            }
+        });
+
+        jTextField16.setMinimumSize(new java.awt.Dimension(80, 20));
+        jTextField16.setPreferredSize(new java.awt.Dimension(120, 20));
+        jTextField16.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField16FocusGained(evt);
+            }
+        });
+        jTextField16.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField16KeyPressed(evt);
+            }
+        });
+
+        jCheckBox20.setText("\u041e\u0431\u043e\u0431\u0449\u0435\u043d\u0438");
+        jCheckBox20.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox20.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        org.jdesktop.layout.GroupLayout jPanel9Layout = new org.jdesktop.layout.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel9Layout.createSequentialGroup()
+                .add(54, 54, 54)
+                .add(jLabel22, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                .add(22, 22, 22)
+                .add(jLabel23, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 16, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jTextField15, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                .add(38, 38, 38)
+                .add(jLabel24, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jTextField16, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                .add(29, 29, 29)
+                .add(jCheckBox20, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(78, 78, 78))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel22)
+                    .add(jLabel23)
+                    .add(jLabel24)
+                    .add(jTextField15, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jTextField16, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jCheckBox20))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jPanel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jPanel6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jPanel7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jPanel8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(layout.createSequentialGroup()
                         .add(jButton1)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(9, 9, 9)
                         .add(jButton2)))
                 .addContainerGap())
         );
@@ -733,21 +786,45 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel9, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jButton2)
-                    .add(jButton1))
+                    .add(jButton1)
+                    .add(jButton2))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        setBounds(100, 50, 673, 560);
+        setBounds(100, 50, 673, 620);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
-        jTextField1.selectAll();
-    }//GEN-LAST:event_jTextField1FocusGained
+    private void jTextField16KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField16KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) jTextField16.setText("");
+        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            if (jTextField16.getText().equals("")) {
+                jTextField16.setText("999999999");
+                jTextField16.transferFocus();
+            } else jTextField16.transferFocus();
+        }
+        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField16();
+    }//GEN-LAST:event_jTextField16KeyPressed
 
-    private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
-        jTextField2.selectAll();
-    }//GEN-LAST:event_jTextField2FocusGained
+    private void jTextField16FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField16FocusGained
+        jTextField16.selectAll();
+    }//GEN-LAST:event_jTextField16FocusGained
+
+    private void jTextField15KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField15KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) jTextField15.setText("");
+        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            if (jTextField15.getText().equals("")) {
+                jTextField15.setText("1");
+                jTextField15.transferFocus();
+            } else jTextField15.transferFocus();
+        }
+        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField15();
+    }//GEN-LAST:event_jTextField15KeyPressed
+
+    private void jTextField15FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField15FocusGained
+        jTextField15.selectAll();
+    }//GEN-LAST:event_jTextField15FocusGained
 
     private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
         jTextField3.selectAll();
@@ -796,28 +873,6 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     private void jTextField14FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField14FocusGained
         jTextField14.selectAll();
     }//GEN-LAST:event_jTextField14FocusGained
-
-    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) jTextField1.setText("");
-        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
-            if (jTextField1.getText().equals("")) {
-                jTextField1.setText("1");
-                jTextField1.transferFocus();
-            } else jTextField1.transferFocus();
-        }
-        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField1();
-    }//GEN-LAST:event_jTextField1KeyPressed
-
-    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) jTextField2.setText("");
-        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
-            if (jTextField2.getText().equals("")) {
-                jTextField2.setText("999999999");
-                jTextField2.transferFocus();
-            } else jTextField2.transferFocus();
-        }
-        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField2();
-    }//GEN-LAST:event_jTextField2KeyPressed
 
     private void jTextField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) jTextField3.setText("");
@@ -975,6 +1030,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     private javax.swing.JCheckBox jCheckBox18;
     private javax.swing.JCheckBox jCheckBox19;
     private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox20;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JCheckBox jCheckBox5;
@@ -996,6 +1052,9 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1011,13 +1070,14 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField15;
+    private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
@@ -1025,6 +1085,8 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
+    private org.jdesktop.swingx.JXDatePicker jXDatePicker2;
     // End of variables declaration//GEN-END:variables
     
     private imakante.com.vcomponents.iFrame myFrame;
@@ -1100,8 +1162,8 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     }
     
     private void fillBlanck() {
-        if(jTextField1.getText() == "") jTextField1.setText("1");
-        if(jTextField2.getText() == "") jTextField2.setText("999999999");
+        if(jTextField15.getText() == "") jTextField15.setText("1");
+        if(jTextField16.getText() == "") jTextField16.setText("999999999");
         if(jTextField3.getText() == "") jTextField3.setText("1");
         if(jTextField4.getText() == "") jTextField4.setText("999999999");
         if(jTextField5.getText() == "") jTextField5.setText("1");
@@ -1134,17 +1196,6 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             constructDialod(newString, 0, NamesQ);
             System.out.println("I CAN NOT FIND THE FILE SPECIFIED!");
         }
-    }
-
-    private void processField1() {
-        String newString = strStore + this.jTextField1.getText() + "%'";
-        constructDialod(newString, 1, Names);
-    }
-
-    private void processField2() {
-        if(this.jTextField1.getText() == "") this.jTextField1.setText("0");
-        String newString = strStore + this.jTextField2.getText() + "%' AND view_rep_documents.code_n_storage >= " + this.jTextField1.getText() + ";";
-        constructDialod(newString, 2, Names);
     }
 
     private void processField3() {
@@ -1213,6 +1264,17 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         constructDialod(newString, 14, Names);
     }
     
+    private void processField15() {
+        String newString = strStore + this.jTextField15.getText() + "%'";
+        constructDialod(newString, 15, Names);
+    }
+
+    private void processField16() {
+        if(this.jTextField15.getText() == "") this.jTextField15.setText("0");
+        String newString = strStore + this.jTextField16.getText() + "%' AND view_rep_documents.code_n_storage >= " + this.jTextField15.getText() + ";";
+        constructDialod(newString, 16, Names);
+    }
+
     public String[] getNames() {
         return Names;
     }
