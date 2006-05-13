@@ -86,10 +86,31 @@ BEGIN
         FROM `n_contragent` c where c.flag_n_contragent = in_flag;
      END IF;
 
-     IF (comprator = 17) THEN
-        SELECT  sl_contragent_product.id_pm
-        FROM sl_contragent_product where sl_contragent_product.id_contragent = in_id AND sl_contragent_product.flag_scp = in_flag;
-     END IF;
+  IF (comprator = 15) THEN
+          UPDATE mida.sl_contragent_product s SET
+          flag_scp = in_flag
+          WHERE id_contragent = in_id;
+    END IF;
+
+     IF (comprator = 16) THEN
+         INSERT INTO mida.sl_contragent_product(id_contragent,id_pm,flag_scp)
+         VALUES(in_id,in_id_oso,in_flag);
+    END IF;
+
+    IF (comprator = 17) THEN
+        SELECT s.id_contragent, s.id_pm, s.flag_scp
+        FROM mida.sl_contragent_product s
+        WHERE id_contragent = in_id AND flag_scp=in_flag;
+    END IF;
+
+
+
+
+
+#     IF (comprator = 17) THEN
+#        SELECT  sl_contragent_product.id_pm
+#        FROM sl_contragent_product where sl_contragent_product.id_contragent = in_id AND sl_contragent_product.flag_scp = in_flag;
+#     END IF;
 
 END $$
 
