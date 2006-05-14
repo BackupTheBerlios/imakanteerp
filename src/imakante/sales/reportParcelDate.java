@@ -282,7 +282,7 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-496)/2, (screenSize.height-276)/2, 496, 276);
     }// </editor-fold>//GEN-END:initComponents
-                    
+    
     private void jTextField6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyPressed
         if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()){
             processField6();
@@ -570,73 +570,33 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
     
     private void processReport(){
         String newString=qu;
-        namesQ.add("con ");
-        
-        
+        namesQ.add("Номератор");
         newString = newString + " DISTINCT CONCAT(rep_comm_nal.level ";
         this.nubColums = nubColums + 1;
-        
-            newString = newString + ",rep_comm_nal.code_n_storage ";
-            
-        
-        
-            newString = newString + ",rep_comm_nal.code_contragent ";
-            namesQ.add("Код контрагент");
-       
-       
-            newString = newString + ",rep_comm_nal.code_pm ";
-            
-       
-       
-            newString = newString + ",rep_comm_nal.parcel_pc ";
-            
-        
+        newString = newString + ",rep_comm_nal.code_n_storage ";
+        newString = newString + ",rep_comm_nal.code_pm ";
+        newString = newString + ",rep_comm_nal.parcel_pc ";
         newString = newString + ") AS con ";
-        
-        
-            newString = newString
-                    + ",rep_comm_nal.code_n_storage ";
-            namesQ.add("Код склад");
-            this.nubColums = nubColums + 1;
-      
-        
-        
-            
-            newString = newString
-                    +  ",rep_comm_nal.code_contragent "
-                    + ",rep_comm_nal.name_n_contragent ";
-            namesQ.add("Код контрагент");
-            this.nubColums = nubColums + 1;
-            namesQ.add("Име контрагент");
-            this.nubColums = nubColums + 1;
-        
-        
-        
-            
-            newString = newString
-                    + ",rep_comm_nal.code_pm "
-                    + ",rep_comm_nal.name_pm "
-                    + ",rep_comm_nal.barcod_pm ";
-            
-            namesQ.add("Код продукт");
-            this.nubColums = nubColums + 1;
-            namesQ.add("Име продукт");
-            this.nubColums = nubColums + 1;
-            namesQ.add("Баркод контрагент");
-            this.nubColums = nubColums + 1;
-            
-            
-          
-                newString = newString
-                        + ",rep_comm_nal.parcel_pc "
-                        +" rep_comm_nal.dateofexpire_pc";
-                
-                
-                namesQ.add("Код партида");
-                namesQ.add("Дата годност");
-                this.nubColums = nubColums + 1;
-           
-      
+        newString = newString
+                + ",rep_comm_nal.code_n_storage ";
+        namesQ.add("Код склад");
+        this.nubColums = nubColums + 1;
+        newString = newString
+                + ",rep_comm_nal.code_pm "
+                + ",rep_comm_nal.name_pm "
+                + ",rep_comm_nal.barcod_pm ";
+        namesQ.add("Код продукт");
+        this.nubColums = nubColums + 1;
+        namesQ.add("Име продукт");
+        this.nubColums = nubColums + 1;
+        namesQ.add("Баркод контрагент");
+        this.nubColums = nubColums + 1;
+        newString = newString
+                + ",rep_comm_nal.parcel_pc "
+                +" rep_comm_nal.dateofexpire_pc";
+        namesQ.add("Код партида");
+        namesQ.add("Дата годност");
+        this.nubColums = nubColums + 1;
         newString = newString
                 + ",SUM(rep_comm_nal.quant_nal), "
                 + "SUM(rep_comm_nal.miarka3), "
@@ -675,23 +635,16 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
             newString = newString + " AND rep_comm_nal.level = 1";
         }
         
-//        if(this.jCheckBox1.isSelected() ||
-//                this.jCheckBox2.isSelected() ||
-//                this.jCheckBox3.isSelected()){
-//            newString = newString + " GROUP BY con ";
-//        }else{
-//            newString = newString + " GROUP BY rep_comm_nal.parcel_pc ";
-//        }
         newString = newString + " GROUP BY con ORDER BY rep_comm_nal.code_pm ASC";
         
         String[] Names = (String[]) namesQ.toArray(new String[this.nubColums]);
         //Create Dialog with print
         System.out.println(newString);
         
-       
-            fileName="/imakante/sales/jasper/nal_simp_01.jasper";
         
-       
+        fileName="/imakante/sales/jasper/nal_simp_01.jasper";
+        
+        
         
         try{
             initTable(newString, Names);
