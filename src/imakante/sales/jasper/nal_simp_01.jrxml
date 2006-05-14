@@ -42,7 +42,7 @@
 		<defaultValueExpression ><![CDATA["9999999999"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="levelx" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["0"]]></defaultValueExpression>
+		<defaultValueExpression ><![CDATA["0,1"]]></defaultValueExpression>
 	</parameter>
 	<queryString><![CDATA[SELECT  DISTINCT CONCAT(rep_comm_nal.level ,
 rep_comm_nal.code_n_storage ,rep_comm_nal.code_pm ,
@@ -55,8 +55,9 @@ WHERE
 `rep_comm_nal`.`code_contragent` BETWEEN $P{otkontragent} AND $P{dokontragent}
 AND  `rep_comm_nal`.`code_pm` BETWEEN $P{otprodukt} AND $P{doprodukt}
 AND  `rep_comm_nal`.`code_n_storage` BETWEEN $P{otsklad} AND $P{dosklad}
-AND rep_comm_nal.level = $P{levelx} GROUP BY con ORDER BY rep_comm_nal.code_pm ASC
-]]></queryString>
+AND  `rep_comm_nal`.level IN($P{levelx})
+
+GROUP BY con ORDER BY rep_comm_nal.code_pm ASC]]></queryString>
 
 	<field name="con" class="java.lang.String"/>
 	<field name="code_n_storage" class="java.lang.Integer"/>
