@@ -701,6 +701,11 @@
                 <Property name="text" type="java.lang.String" value="&#x420;&#x435;&#x434;&#x430;&#x43a;&#x446;&#x438;&#x44f; &#x43f;&#x43e; &#x442;&#x430;&#x431;&#x43b;&#x438;&#x446;&#x438;"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem32">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x411;&#x438;&#x439;&#x43d; &#x434;&#x435;&#x43f;&#x43b;&#x43e;&#x435;&#x440;"/>
+              </Properties>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="helpMenu">
