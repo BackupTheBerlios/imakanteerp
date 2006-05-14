@@ -41,9 +41,9 @@ public class NewMain extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 102));
+        jPanel1.setBackground(new java.awt.Color(94, 124, 170));
         jLabel1.setBackground(new java.awt.Color(0, 0, 153));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_l2.png")));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakantebeta.png")));
         jLabel1.setText("jLabel1");
 
         jBSales.setText("\u0421\u041a\u041b\u0410\u0414");
@@ -104,7 +104,7 @@ public class NewMain extends javax.swing.JFrame {
                     .add(jBACC)
                     .add(jBMN)
                     .add(jbExit))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         jMenu1.setText("\u041f\u0420\u041e\u0413\u0420\u0410\u041c\u0410");
@@ -142,10 +142,10 @@ public class NewMain extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 334, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+            .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 334, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-605)/2, (screenSize.height-389)/2, 605, 389);
