@@ -219,7 +219,7 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
                 .add(jLabel6))
         );
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("\u0421\u0440\u043e\u043a\u043e\u0432\u0435 \u043d\u0430 \u0433\u043e\u0434\u043d\u043e\u0441\u0442"));
 
         jLabel7.setText("\u041e\u0442");
 
@@ -232,9 +232,9 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
             .add(jPanel5Layout.createSequentialGroup()
                 .add(46, 46, 46)
                 .add(jLabel7)
-                .add(17, 17, 17)
+                .add(29, 29, 29)
                 .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(16, 16, 16)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel8)
                 .add(15, 15, 15)
                 .add(jXDatePicker2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -246,9 +246,9 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel7)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel8)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jXDatePicker2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jXDatePicker2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
         );
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
@@ -281,7 +281,7 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-496)/2, (screenSize.height-276)/2, 496, 276);
+        setBounds((screenSize.width-496)/2, (screenSize.height-287)/2, 496, 287);
     }// </editor-fold>//GEN-END:initComponents
     
     private void jTextField6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyPressed
