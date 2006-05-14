@@ -3,6 +3,7 @@ package imakante.sales;
 
 import java.awt.event.WindowEvent;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -397,7 +398,7 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
     private String[] Names= { "\u041a\u041e\u0414", "\u0418\u041c\u0415"};
     private  int intTransfer;
     private  int CompNumber = 0;
-    
+   SimpleDateFormat formatterG = new SimpleDateFormat("yyyy-MM-dd");
     private String strContragent = "SELECT "
             + "`rep_comm_nal`.`code_contragent`"
             + "FROM `rep_comm_nal` WHERE `rep_comm_nal`.`code_contragent` LIKE  '%";
@@ -618,7 +619,9 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
                     (Integer.parseInt(this.jTextField5.getText())-1) + "' AND '" + (Integer.parseInt(this.jTextField6.getText())+1) +
                     "' AND " + " `rep_comm_nal`.`code_pm` BETWEEN '" + (Integer.parseInt(this.jTextField3.getText())-1) +
                     "' AND '" + (Integer.parseInt(this.jTextField4.getText())+1) + "' AND " + " `rep_comm_nal`.`code_n_storage` BETWEEN '" +
-                    (Integer.parseInt(this.jTextField1.getText())-1) + "' AND '" + (Integer.parseInt(this.jTextField2.getText())+1) + "' ";
+                    (Integer.parseInt(this.jTextField1.getText())-1) + "' AND '" + (Integer.parseInt(this.jTextField2.getText())+1) + "' "
+                    + " AND rep_comm_nal.dateofexpire_pc BETWEEN " +(String)formatterG.format(this.jXDatePicker1.getDate()) +  " AND  "
+                    + (String)formatterG.format(this.jXDatePicker2.getDate());
         } catch (NumberFormatException ex) {
             ex.printStackTrace();
         }
