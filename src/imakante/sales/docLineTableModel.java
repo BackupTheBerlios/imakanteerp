@@ -41,7 +41,7 @@ public class docLineTableModel extends AbstractTableModel implements Serializabl
     private final int RATIO_OF_DISBAUND_0  = 21;
     private final int RATIO_OF_DISBAUND_1  = 22;
     private final int RATIO_OF_DISBAUND_2  = 23;
-    private final int IS_FINISH_ROW        = 24;
+    private final int IS_ROW_CAN_EDIT        = 24;
     
     
     
@@ -56,7 +56,7 @@ public class docLineTableModel extends AbstractTableModel implements Serializabl
                 "Ценова листа","Брои продукти", "Р-ка основна", "Разфасовка 1",
                 "Разфасовка 2", "Ед. цена", "Процент отстъпка",
                 "ДДС", "Общо линия","id_dl","r1","r2","r3","id_pc","price0","price1","price2","price3",
-                "rate_of_disbaund_0","rate_of_disbaund_1","rate_of_disbaund_2","isFinishRow"};
+                "rate_of_disbaund_0","rate_of_disbaund_1","rate_of_disbaund_2","isRowCanEdit"};
     private int rowsCount=0;
     private int columnsCound=0;
         // Types of the columns.
@@ -300,10 +300,10 @@ public class docLineTableModel extends AbstractTableModel implements Serializabl
                  dd.setRatioOfDisBand(ii);
                   break;
               }
-            case IS_FINISH_ROW :
+            case IS_ROW_CAN_EDIT :
               {
                  boolean ii = (Boolean) value;
-                 dd.setIsFinishRow(ii);
+                 dd.setIsRowCanEdit(ii);
                   break;
               } 
           }
@@ -482,10 +482,10 @@ public class docLineTableModel extends AbstractTableModel implements Serializabl
                       value = ii[2];
                   break;
               }
-             case IS_FINISH_ROW :
+             case IS_ROW_CAN_EDIT :
               {
                  boolean ii = false;
-                 ii = dd.getIsFinishRow();
+                 ii = dd.getIsRowCanEdit();
                  value = ii;
                   break;
               } 

@@ -332,9 +332,21 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         docMenu_prot.add(protMenu_rev);
 
         protMenu_brak.setText("\u0411\u0440\u0430\u043a");
+        protMenu_brak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                protMenu_brakActionPerformed(evt);
+            }
+        });
+
         docMenu_prot.add(protMenu_brak);
 
         protMenu_lipsa.setText("\u041b\u0438\u043f\u0441\u0430");
+        protMenu_lipsa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                protMenu_lipsaActionPerformed(evt);
+            }
+        });
+
         docMenu_prot.add(protMenu_lipsa);
 
         protMenu_preo.setText("\u041f\u0440\u0435\u043e\u0446\u0435\u043d\u043a\u0430");
@@ -887,6 +899,26 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-458)/2, 757, 458);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void protMenu_lipsaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_protMenu_lipsaActionPerformed
+// TODO add your handling code here:
+        int user = 2;
+        int level = 1;
+        int pricelist = 1;
+        int doctype = aeDocumentFacade.PROTOKOL_LIPSA;
+        int storagedocdacade = 1;
+        loadFrmDocFacade("\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u041b\u0418\u041f\u0421\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );
+    }//GEN-LAST:event_protMenu_lipsaActionPerformed
+
+    private void protMenu_brakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_protMenu_brakActionPerformed
+// TODO add your handling code here:
+        int user = 2;
+        int level = 1;
+        int pricelist = 1;
+        int doctype = aeDocumentFacade.BRAK;
+        int storagedocdacade = 1;
+        loadFrmDocFacade("\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u0411\u0420\u0410\u041a", user, level, pricelist, doctype, storagedocdacade, false, null, null );
+    }//GEN-LAST:event_protMenu_brakActionPerformed
 
     private void spravkiMenu_docActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spravkiMenu_docActionPerformed
         loadReportDocs();

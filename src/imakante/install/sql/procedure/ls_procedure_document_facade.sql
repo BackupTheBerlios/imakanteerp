@@ -444,7 +444,7 @@ IF (comprator = 20) THEN
      LEFT JOIN mida.sl_nalichnosti s ON pc.id_pc = s.id_pc
      LEFT JOIN mida.n_storage st ON st.id_n_storage = s.id_n_storage
      WHERE n.code_pm LIKE CONCAT('%',in_docFacadeComment,'%') AND n.flag_pm = in_id_obekt_in AND  s.level= in_id_df
-     ORDER BY id_n_storage;
+     ORDER BY id_n_storage,  n.code_pm;
    END IF;
    IF (in_docFacadeType = 1) THEN
        SELECT n.id_pm,pc.parcel_pc, pc.id_pp  as pc_id_pp, pc.id_ppp as pc_id_ppp, pc.id_pf as pc_id_pf,
@@ -456,7 +456,7 @@ IF (comprator = 20) THEN
        LEFT JOIN mida.sl_nalichnosti s ON pc.id_pc = s.id_pc
        LEFT JOIN mida.n_storage st ON st.id_n_storage = s.id_n_storage
        WHERE n.code_pm LIKE CONCAT(in_docFacadeComment,'%') AND n.flag_pm = in_id_obekt_in AND  s.level= in_id_df
-       ORDER BY id_n_storage;
+       ORDER BY id_n_storage, n.code_pm;
 
    END IF;
    IF (in_docFacadeType = 2) THEN
@@ -469,7 +469,7 @@ IF (comprator = 20) THEN
        LEFT JOIN mida.sl_nalichnosti s ON pc.id_pc = s.id_pc
        LEFT JOIN mida.n_storage st ON st.id_n_storage = s.id_n_storage
        WHERE n.code_pm LIKE CONCAT('%',in_docFacadeComment) AND n.flag_pm = in_id_obekt_in AND  s.level= in_id_df
-       ORDER BY id_n_storage;
+       ORDER BY id_n_storage, n.code_pm;
    END IF;
    IF (in_docFacadeType = 3) THEN
        SELECT n.id_pm,pc.parcel_pc, pc.id_pp as pc_id_pp, pc.id_ppp as pc_id_ppp, pc.id_pf as pc_id_pf,
@@ -724,8 +724,15 @@ IF (comprator = 50) THEN
     SELECT s.id_n_storage, s.id_pc FROM sl_document_lines s
     WHERE s.id_dl = in_id_df;
 END IF;
+
 IF (comprator = 51) THEN
     SELECT MAX(s.date_sl_exchange_rate) as lastDate FROM sl_exchange_rate s;
+END IF;
+
+IF (comprator = 52) THEN
+     SELECT n.id_pm, n.parcel_pc, n.id_pp, n.id_ppp, n.id_pf,
+      pm.id_ppp as pm_id_ppp, pm.id_pp as pm_id_pp, pm.id_pf as pm_id_pf FROM n_product_consigment n LEFT JOIN n_product_main pm ON pm.id_pm=n.id_pm
+    WhERE n.id_pc = in_id_df;
 END IF;
 
 END $$

@@ -1415,6 +1415,12 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
 
                           break;
                         }
+                     case aeDocumentFacade.PROTOKOL_LIPSA :
+                        {
+
+
+                          break;
+                        }
                      case aeDocumentFacade.STOKOVA_RAZPISKA :
                      {
                          setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
@@ -1767,7 +1773,22 @@ private void hideDocimentTypeColumns(int doctype)
         } 
        case aeDocumentFacade.BRAK :
        {
-               
+         hideDocimentTypeColumns_Contragent(IN); 
+         hideDocimentTypeColumns_Contragent(OUT); 
+         hideDocimentTypeColumns_Obekt(IN);
+         hideDocimentTypeColumns_Obekt(OUT);
+         hideDocimentTypeColumns_DevDistr();  
+        
+                
+          break;
+        }
+        case aeDocumentFacade.PROTOKOL_LIPSA :
+       {
+          hideDocimentTypeColumns_Contragent(IN); 
+         hideDocimentTypeColumns_Contragent(OUT); 
+         hideDocimentTypeColumns_Obekt(IN);
+         hideDocimentTypeColumns_Obekt(OUT);
+         hideDocimentTypeColumns_DevDistr();       
                 
           break;
         }
@@ -1866,7 +1887,15 @@ private void moveDocimentTypeColumns(int doctype)
         } 
        case aeDocumentFacade.BRAK :
        {
-               
+          table.moveColumn(getColumnIndex("Номер на документа"),0);
+          table.moveColumn(getColumnIndex("Дата на документа"),1);     
+                
+          break;
+        }
+        case aeDocumentFacade.PROTOKOL_LIPSA :
+       {
+          table.moveColumn(getColumnIndex("Номер на документа"),0);
+          table.moveColumn(getColumnIndex("Дата на документа"),1);    
                 
           break;
         }

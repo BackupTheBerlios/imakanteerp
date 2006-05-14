@@ -20,6 +20,7 @@ public class docLineArray
     private int numerOfDisBaund[] = new int[3];   // broiki zavisi6i ot koeficientite
     private int ratioOfDisBaund[] = new int[3];   // koeficienti za razfasovkite
     private boolean isFinishRow = false;
+    private boolean isRowCanEdit = true;
     private double[] priceOfList = new double[4];
     
  public docLineArray()
@@ -182,6 +183,10 @@ public boolean getIsFinishRow()
 {
     return isFinishRow;
 }
+public boolean getIsRowCanEdit()
+{
+    return isRowCanEdit;
+}
 public int getID_PC()
 {
     return id_pc;
@@ -198,6 +203,10 @@ public void setID_PC(int id)
 public void setIsFinishRow(boolean is)
 {
     isFinishRow = is;
+}
+public void setIsRowCanEdit(boolean is)
+{
+    isRowCanEdit = is;
 }
 public void setID_DocLine(int in_id_dl)
 {

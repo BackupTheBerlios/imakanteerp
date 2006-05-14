@@ -351,7 +351,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanelHead.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
 
         jLabelDocType.setFont(new java.awt.Font("Tahoma", 1, 16));
-        jLabelDocType.setText("\u041e\u0424\u0415\u0420\u0422\u0410");
+        jLabelDocType.setText("\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u041b\u0418\u041f\u0421\u0410");
         jPanelHead.add(jLabelDocType, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
 
         jTextFieldNomerDoc.setInputVerifier(new imakante.com.InputIntegerVerifier());
@@ -1996,7 +1996,17 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 } 
                case BRAK :
                 {
-               
+                  jTextFieldNomerDoc.setText(myParent.getNumberDocFacade());  
+                  repainUserEdit(myParent.getUserDocFacade(),true);
+                  repainUserEdit(myParent.getUserDocFacade(),false);
+                
+                  break;
+                }
+               case PROTOKOL_LIPSA :
+                {
+                  jTextFieldNomerDoc.setText(myParent.getNumberDocFacade());
+                  repainUserEdit(myParent.getUserDocFacade(),true);
+                  repainUserEdit(myParent.getUserDocFacade(),false);
                 
                   break;
                 }
@@ -2097,27 +2107,9 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                      jTable1.setValueAt(new Integer(dd.getRatioOfDisBand()[0]),i,21); 
                      jTable1.setValueAt(new Integer(dd.getRatioOfDisBand()[1]),i,22); 
                      jTable1.setValueAt(new Integer(dd.getRatioOfDisBand()[2]),i,23); 
-                    
+                     jTable1.setValueAt(new Boolean(false),i,24); 
                 }
-               isProductIN = checkInOutProduct(myParent.getDocFacadeType());
-               if(isProductIN)
-                 {
-                  ((docLineTableModel) jTable1.getModel()).enableCellEditable(4);
-                  ((docLineTableModel) jTable1.getModel()).enableCellEditable(5);
-                  ((docLineTableModel) jTable1.getModel()).enableCellEditable(6);
-                  ((docLineTableModel) jTable1.getModel()).enableCellEditable(7);
-                 }
-               else {
-                            
-                     ((docLineTableModel) jTable1.getModel()).enableCellEditable(3);
-                     ((docLineTableModel) jTable1.getModel()).enableCellEditable(4);
-                     ((docLineTableModel) jTable1.getModel()).enableCellEditable(5);
-                     ((docLineTableModel) jTable1.getModel()).enableCellEditable(6);
-                     ((docLineTableModel) jTable1.getModel()).enableCellEditable(7);
-                     ((docLineTableModel) jTable1.getModel()).enableCellEditable(8);
-                     ((docLineTableModel) jTable1.getModel()).enableCellEditable(9);
-                        }
-               calculateTotalPriceForDocument();
+               
                
                 
                 
@@ -2136,7 +2128,26 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
          jButtonToEnd.setEnabled(true);  
         
          getNavigatiionState();
-            
+         isProductIN = checkInOutProduct(myParent.getDocFacadeType());
+               if(isProductIN)
+                 {
+                  ((docLineTableModel) jTable1.getModel()).disableCellEditable(0);
+                  ((docLineTableModel) jTable1.getModel()).enableCellEditable(4);
+                  ((docLineTableModel) jTable1.getModel()).enableCellEditable(5);
+                  ((docLineTableModel) jTable1.getModel()).enableCellEditable(6);
+                  ((docLineTableModel) jTable1.getModel()).enableCellEditable(7);
+                 }
+               else {
+                     ((docLineTableModel) jTable1.getModel()).disableCellEditable(0);       
+                     ((docLineTableModel) jTable1.getModel()).enableCellEditable(3);
+                     ((docLineTableModel) jTable1.getModel()).enableCellEditable(4);
+                     ((docLineTableModel) jTable1.getModel()).enableCellEditable(5);
+                     ((docLineTableModel) jTable1.getModel()).enableCellEditable(6);
+                     ((docLineTableModel) jTable1.getModel()).enableCellEditable(7);
+                     ((docLineTableModel) jTable1.getModel()).enableCellEditable(8);
+                     ((docLineTableModel) jTable1.getModel()).enableCellEditable(9);
+                        }
+               calculateTotalPriceForDocument();   
         } // END dokumenta se redaktira
      if(myParent.getDocFacadeType()==OFERTA)
        {
@@ -2211,7 +2222,9 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private void setInputLisener() {
         
         jTable1.addFocusListener(new FocusListener() {
-            public void focusGained(FocusEvent e) {
+            public void focusGained(FocusEvent e) 
+            {
+                if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
                 ((docLineTableModel) jTable1.getModel()).enableCellEditable(0);
             }
             public void focusLost(FocusEvent e) {
@@ -2224,7 +2237,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 changeColumnName(5,(String)jTable1.getValueAt(rowSelect,13),jTable1);
                 changeColumnName(6,(String)jTable1.getValueAt(rowSelect,14),jTable1);
                 changeColumnName(7,(String)jTable1.getValueAt(rowSelect,15),jTable1);
-           if(!isNew)     
+           if((Integer)jTable1.getValueAt(rowSelect,0)>0 & (Integer)jTable1.getValueAt(rowSelect,2)>0 &
+               (Integer)jTable1.getValueAt(rowSelect,4)>0  )     
            {    
           // set data for rowSelect docLine
              myParent.setID_PC((Integer)jTable1.getValueAt(rowSelect,16));
@@ -2897,19 +2911,19 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 
                 if(e.getKeyCode()==KeyEvent.VK_F7) {
 
-                    if(!(Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
+                    if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
                     processKeyPress(myParent.getDocFacadeType(),F7_KEY);
                     
 
                 }
                 
                 if(e.getKeyCode()==KeyEvent.VK_F8) {
-                    if(!(Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
+                    if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
                     processKeyPress(myParent.getDocFacadeType(),F8_KEY);
                 }
                 
                 if(e.getKeyCode()==KeyEvent.VK_F9) {
-                    if(!(Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
+                    if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
                     processKeyPress(myParent.getDocFacadeType(),F9_KEY);
                 }
             }
@@ -2930,7 +2944,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                             }
                             catch(Exception ex){}
                             if(str.equals("0")) str="";
-                            if(!(Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
+                            if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
                             processKeyPress(myParent.getDocFacadeType(),F7_KEY);
                             
                             
@@ -3482,7 +3496,102 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             } 
             case BRAK :
             {
-               
+               int contragent_in = 0;
+                int contragent_out = 0;
+                int obekt_in = 0;
+                int obekt_out = 0;
+                
+                int facturaConnection=0;
+                int payingOrder = 0;
+                int zaqvkaConnection = 0;
+                
+                int docFacadeLevel = myParent.getDocFacadeLevel();
+                int docFacadeStorage = myParent.getStorageOUTProduct();
+                int docFacadeStorageTO = 0;
+                int docFacadeType = myParent.getDocFacadeType();
+                double docFacadeTotal = Double.parseDouble(jLabelAllTotal.getText());
+                double docFacadeAllDDS = Double.parseDouble(jLabelAllDDS.getText());
+                
+                int userEdit =  myParent.getUserEditFortm();
+                int userLastEdit = userEdit;
+                if(myParent.getUserEditFortm()!=0) userLastEdit =  myParent.getUserEditFortm();
+                String docFacadeCondition = "0";
+                String docFacadeCommnet = jTextFieldComment.getText();
+                
+                imakante.com.dateManipulation dateManip = new imakante.com.dateManipulation();
+                
+                String dateDeliver = dateManip.convertDate("01.01.2000");
+                String strDate;
+                strDate = String.valueOf(jXDatePay.getDate().getDate());
+                strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth()+1);
+                strDate += "/" + String.valueOf(jXDatePay.getDate().getYear()+1900);
+                String payingDate = dateManip.convertDate(strDate);
+                
+                strDate = " ";
+                strDate = String.valueOf(jXDateDocument.getDate().getDate());
+                strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth());
+                strDate += "/" + String.valueOf(jXDateDocument.getDate().getYear()+1900);
+                String docFacadeDate = dateManip.convertDate(strDate);
+                
+                
+                
+                int numberDoc = Integer.parseInt(myParent.getNumberDocFacade());
+                myParent.getCountriesT().updateRow(id_df,contragent_out,contragent_in,obekt_out,
+                        obekt_in,myParent.getID_Distributor(),myParent.getID_Deliver(),jComboBoxVidPla6tane.getSelectedIndex(),
+                        numberDoc,userEdit,userLastEdit,
+                        facturaConnection,payingOrder,zaqvkaConnection,docFacadeLevel,docFacadeStorage,docFacadeType,
+                        docFacadeTotal,docFacadeAllDDS,docFacadeCondition,docFacadeDate,docFacadeCommnet,dateDeliver,payingDate,1,docFacadeStorageTO);
+                
+                break;
+            }
+            case PROTOKOL_LIPSA :
+            {
+               int contragent_in = 0;
+                int contragent_out = 0;
+                int obekt_in = 0;
+                int obekt_out = 0;
+                
+                int facturaConnection=0;
+                int payingOrder = 0;
+                int zaqvkaConnection = 0;
+                
+                int docFacadeLevel = myParent.getDocFacadeLevel();
+                int docFacadeStorage = myParent.getStorageOUTProduct();
+                int docFacadeStorageTO = 0;
+                int docFacadeType = myParent.getDocFacadeType();
+                double docFacadeTotal = Double.parseDouble(jLabelAllTotal.getText());
+                double docFacadeAllDDS = Double.parseDouble(jLabelAllDDS.getText());
+                
+                int userEdit =  myParent.getUserEditFortm();
+                int userLastEdit = userEdit;
+                if(myParent.getUserEditFortm()!=0) userLastEdit =  myParent.getUserEditFortm();
+                String docFacadeCondition = "0";
+                String docFacadeCommnet = jTextFieldComment.getText();
+                
+                imakante.com.dateManipulation dateManip = new imakante.com.dateManipulation();
+                
+                String dateDeliver = dateManip.convertDate("01.01.2000");
+                String strDate;
+                strDate = String.valueOf(jXDatePay.getDate().getDate());
+                strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth()+1);
+                strDate += "/" + String.valueOf(jXDatePay.getDate().getYear()+1900);
+                String payingDate = dateManip.convertDate(strDate);
+                
+                strDate = " ";
+                strDate = String.valueOf(jXDateDocument.getDate().getDate());
+                strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth());
+                strDate += "/" + String.valueOf(jXDateDocument.getDate().getYear()+1900);
+                String docFacadeDate = dateManip.convertDate(strDate);
+                
+                
+                
+                int numberDoc = Integer.parseInt(myParent.getNumberDocFacade());
+                myParent.getCountriesT().updateRow(id_df,contragent_out,contragent_in,obekt_out,
+                        obekt_in,myParent.getID_Distributor(),myParent.getID_Deliver(),jComboBoxVidPla6tane.getSelectedIndex(),
+                        numberDoc,userEdit,userLastEdit,
+                        facturaConnection,payingOrder,zaqvkaConnection,docFacadeLevel,docFacadeStorage,docFacadeType,
+                        docFacadeTotal,docFacadeAllDDS,docFacadeCondition,docFacadeDate,docFacadeCommnet,dateDeliver,payingDate,1,docFacadeStorageTO);
+                
                 
                 break;
             }
@@ -3978,6 +4087,46 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             case BRAK :
             {
                
+                this.setTitle("\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u0411\u0420\u0410\u041a");
+                jLabelDocType.setText("\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u0411\u0420\u0410\u041a");
+                jPanelObekt.setVisible(false);
+                jPanel4.setVisible(false);
+                jPanelCreateFacturi.setVisible(false);
+                jPanelStorageINOUT.setVisible(false);
+                jPanelContragent.setVisible(false);
+                
+                Point p = jPanelHead.getLocation();
+                p.y = jPanelHead.getLocation().y+jPanelHead.getSize().height;
+                jPanel6.setLocation(p);
+                // promqna na polozenieto na jPanelDocLini i razmera mu
+                p = jPanelDocLine.getLocation();
+                p.y = jPanel6.getLocation().y+jPanel6.getSize().height;
+                jPanelDocLine.setLocation(p);
+                int deltaH = jPanelPrice.getLocation().y - (p.y+jPanelDocLine.getSize().height); // razlikata s koqto trqbva da se uveli4i jPanelDocLine
+                jPanelDocLine.setSize(jPanelDocLine.getSize().width,(jPanelDocLine.getSize().height+deltaH));
+                
+                break;
+            }
+            case PROTOKOL_LIPSA :
+            {
+               
+                this.setTitle("\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u041b\u0418\u041f\u0421\u0410");
+                jLabelDocType.setText("\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u041b\u0418\u041f\u0421\u0410");
+                jPanelObekt.setVisible(false);
+                jPanel4.setVisible(false);
+                jPanelCreateFacturi.setVisible(false);
+                jPanelStorageINOUT.setVisible(false);
+                jPanelContragent.setVisible(false);
+                
+                Point p = jPanelHead.getLocation();
+                p.y = jPanelHead.getLocation().y+jPanelHead.getSize().height;
+                jPanel6.setLocation(p);
+                // promqna na polozenieto na jPanelDocLini i razmera mu
+                p = jPanelDocLine.getLocation();
+                p.y = jPanel6.getLocation().y+jPanel6.getSize().height;
+                jPanelDocLine.setLocation(p);
+                int deltaH = jPanelPrice.getLocation().y - (p.y+jPanelDocLine.getSize().height); // razlikata s koqto trqbva da se uveli4i jPanelDocLine
+                jPanelDocLine.setSize(jPanelDocLine.getSize().width,(jPanelDocLine.getSize().height+deltaH));
                 
                 break;
             }
@@ -4329,7 +4478,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 
                 robot.keyPress(KeyEvent.VK_ENTER);
             } catch (AWTException e12){}
-            
+            if(str.equals("0") || str==null) str="";
             System.out.println("str :::"+str);
             java.sql.ResultSet rs1 =null;
             
