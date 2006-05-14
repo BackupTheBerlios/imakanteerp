@@ -706,6 +706,13 @@
                 <Property name="text" type="java.lang.String" value="&#x411;&#x438;&#x439;&#x43d; &#x434;&#x435;&#x43f;&#x43b;&#x43e;&#x435;&#x440;"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JSeparator" name="jSeparator10">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem33">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x412;&#x438;&#x437;&#x443;&#x430;&#x43b;&#x435;&#x43d; &#x432;&#x438;&#x434; &#x43d;&#x430; &#x43f;&#x440;&#x43e;&#x433;&#x440;&#x430;&#x43c;&#x430;&#x442;&#x430;"/>
+              </Properties>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="helpMenu">
