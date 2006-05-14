@@ -16,9 +16,11 @@ public class docLineArray
     private double DDS;
     private int id_dl;
     private int id_pc;
-    private String nameOfDisBaund[]= new String[3];
-    private int numerOfDisBaund[] = new int[3];
+    private String nameOfDisBaund[]= new String[3]; // imenata na razfasovkite
+    private int numerOfDisBaund[] = new int[3];   // broiki zavisi6i ot koeficientite
+    private int ratioOfDisBaund[] = new int[3];   // koeficienti za razfasovkite
     private boolean isFinishRow = false;
+    private double[] priceOfList = new double[4];
     
  public docLineArray()
     {
@@ -37,12 +39,20 @@ public class docLineArray
         numerOfDisBaund[0] = 0; 
         numerOfDisBaund[1] = 0;     
         numerOfDisBaund[2] = 0;         
-                
+        priceOfList[0] = 0;
+        priceOfList[1] = 0;
+        priceOfList[2] = 0;
+        priceOfList[3] = 0;
+        ratioOfDisBaund[0] = 0; 
+        ratioOfDisBaund[1] = 0;     
+        ratioOfDisBaund[2] = 0;  
+        
     }
     
     public docLineArray(int codeOfProduct,String nameOfProduct,int storageOut,int priceList,
                        int numberOfProduct, double pricePiece,double rateReduction ,double priceTotal,double DDS,
-                       String nameOfDisBand[],int numerOfDisBand[],int in_id_dl)
+                       String nameOfDisBand[],int numerOfDisBand[],int in_id_dl,
+                       int id_pc, double price0,double price1,double price2,double price3, int ratioOfDisBand[])
     {
          this.codeOfProduct   = codeOfProduct;
          this.nameOfProduct   = nameOfProduct;     
@@ -56,7 +66,12 @@ public class docLineArray
          this.nameOfDisBaund = nameOfDisBand;
          this.numerOfDisBaund = numerOfDisBand; 
          this.id_dl = in_id_dl;
-      
+         this.id_pc = id_pc;
+         this.priceOfList[0] = price0;
+         this.priceOfList[1] = price1;
+         this.priceOfList[2] = price2;
+         this.priceOfList[3] = price3;
+         this.ratioOfDisBaund = ratioOfDisBand;
     }
     
      public docLineArray(docLineArray in)
@@ -72,13 +87,17 @@ public class docLineArray
          this.rateReduction   =in.getRateReduction();
          this.nameOfDisBaund = in.getNameOfDisBand();
          this.numerOfDisBaund = in.getNumerOfDisBand(); 
-         this.id_dl = in.getID_DocLine(); ;
+         this.id_dl = in.getID_DocLine(); 
+         this.id_pc = in.getID_PC();
+         this.priceOfList = in.getPriceOfList();
+         this.ratioOfDisBaund = in.getRatioOfDisBand();
     }
     
     
     public void setALLData(int codeOfProduct,String nameOfProduct,int storageOut,int priceList,
                        int numberOfProduct, double pricePiece,double rateReduction,double priceTotal,double DDS,
-                       String nameOfDisBand[],int numerOfDisBand[], int in_id_dl)
+                       String nameOfDisBand[],int numerOfDisBand[], int in_id_dl,
+                       int id_pc, double price0,double price1,double price2,double price3,  int ratioOfDisBand[])
     {
          this.codeOfProduct   = codeOfProduct;
          this.nameOfProduct   = nameOfProduct;     
@@ -92,11 +111,20 @@ public class docLineArray
          this.nameOfDisBaund = nameOfDisBand;
          this.numerOfDisBaund = numerOfDisBand;   
          this.id_dl = in_id_dl;
+         this.id_pc = id_pc;
+         this.priceOfList[0] = price0;
+         this.priceOfList[1] = price1;
+         this.priceOfList[2] = price2;
+         this.priceOfList[3] = price3;
+         this.ratioOfDisBaund = ratioOfDisBand;
     }
   
     
  // get metods
-    
+public double[] getPriceOfList()
+{
+    return priceOfList;
+}
  public int getCodeOfProduct()
    {
       return codeOfProduct;
@@ -137,9 +165,14 @@ public String[] getNameOfDisBand ()
 {
     return nameOfDisBaund;
 }
+
 public  int[] getNumerOfDisBand()
 {
     return numerOfDisBaund;
+}
+public  int[] getRatioOfDisBand()
+{
+    return ratioOfDisBaund;
 }
 public int getID_DocLine()
 {
@@ -153,7 +186,11 @@ public int getID_PC()
 {
     return id_pc;
 }
- //set metods   
+ //set metods 
+public void setPriceOfList(double[] in)
+{
+    priceOfList = in;
+}
 public void setID_PC(int id)
 {
     id_pc=id;
@@ -211,5 +248,8 @@ public void setNumerOfDisBand(int[] in)
 {
      numerOfDisBaund=in;
 }       
-    
+public void setRatioOfDisBand(int[] in)
+{
+     ratioOfDisBaund=in;
+}       
 }

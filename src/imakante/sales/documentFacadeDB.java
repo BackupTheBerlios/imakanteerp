@@ -51,6 +51,7 @@
  *comprator= 49: getStatusConnection()
  *comprator= 50: getStorageAndParcelByID()
  *comprator= 51: getLastCurentDate();
+ *comprator= 52: getFromConsigmentIDInfo();
  *
  *
  *
@@ -2078,6 +2079,46 @@ public String getLastCurentDate()
             sqle.printStackTrace();
         } 
     return lastDate;
+}
+/**
+ *Vemane na "id stoinostite" ot tablicata za partidite "n_product_consigment";
+ * Notes:"id stoinostite" - id_tata na tablicite s koito e svyrzana tablicata za partidite :"n_product_consigment"
+ *
+ *@param in_id_pc - id_pc ot tablicata za partidi: "n_product_consigment"
+ */
+public int[] getFromConsigmentIDInfo(int in_id_pc)
+{
+    int return_value[]= new int[8];
+    
+   
+    
+    int oldId_DF = getID_DocFacade();
+    setID_DocFacade(in_id_pc);
+    setComprator(52);
+    java.sql.ResultSet rs12 =null;
+    try
+        {
+            registerParameters();
+            rs12 = getCstm().executeQuery();
+            while(rs12.next())
+            {
+                return_value[0] = rs12.getInt("id_pm");
+                return_value[1] = rs12.getInt("id_pp");
+                return_value[2] = rs12.getInt("id_ppp");
+                return_value[3] = rs12.getInt("id_pf");        
+                return_value[4] = rs12.getInt("pm_id_pp");
+                return_value[5] = rs12.getInt("pm_id_ppp");
+                return_value[6] = rs12.getInt("pm_id_pf");
+                return_value[7] = rs12.getInt("parcel_pc");
+            
+            }  
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        } 
+    
+    return return_value;
 }
 // <-----------------------
 }// end class

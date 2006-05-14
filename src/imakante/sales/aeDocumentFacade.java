@@ -114,7 +114,21 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jTable1.setInputMap(0,im);
         calculateWidthColumn(jTable1);
         
-        
+        if(isNew)
+        {
+           jButtonOneRowM.setEnabled(false) ;
+           jButtonOneRowP.setEnabled(false);
+           jButtonToBegin.setEnabled(false);
+           jButtonToEnd.setEnabled(false);
+           
+        }
+        else
+        {
+         jButtonOneRowM.setEnabled(true) ;
+         jButtonOneRowP.setEnabled(true);
+         jButtonToBegin.setEnabled(true);
+         jButtonToEnd.setEnabled(true);  
+        }
         getNavigatiionState();
         
         this.setResizable(false);
@@ -156,7 +170,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             rate=1;
         }
         
-        
+       
        
         repaintComp();
         
@@ -1853,6 +1867,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private double rate = 0;
     private HashMap arrayRate = new HashMap();
     private Double curs;
+    private ArrayList editRows = new ArrayList();
     
 //----------------------------------------
     
@@ -2050,11 +2065,11 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             if(countRow>0) {
                 for(int i=0;i < countRow; i++) {
                     docLineArray dd =(docLineArray) rows.get(i);
+                    dd.setRatioOfDisBand(dd.getNumerOfDisBand());
                     ((docLineTableModel)jTable1.getModel()).addRow(dd);
                     productDescription_1 = dd.getNumerOfDisBand()[0];
                     productDescription_2 = dd.getNumerOfDisBand()[1];
                     productDescription_3 = dd.getNumerOfDisBand()[2];
-                   
                     
                     // changeColumnName(5,dd.getNameOfDisBand()[0],jTable1);
                     // changeColumnName(6,dd.getNameOfDisBand()[1],jTable1);
@@ -2063,6 +2078,25 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     jTable1.setValueAt(calculateProductDescription(dd.getNumberOfProduct(),productDescription_2,productDescription_3)[0],i,5);
                     jTable1.setValueAt(calculateProductDescription(dd.getNumberOfProduct(),productDescription_2,productDescription_3)[1],i,6);
                     jTable1.setValueAt(calculateProductDescription(dd.getNumberOfProduct(),productDescription_2,productDescription_3)[2],i,7); //jTable1.getRowCount()
+                   
+                    int tmpInfo[] = myParent.getCountriesT().getFromConsigmentIDInfo(dd.getID_PC());
+                     double tmpPrList[] = new double[8];
+                    if(tmpInfo[7]>1)
+                    {
+                        tmpPrList = myParent.getCountriesT().getPriceListByID(tmpInfo[1]);
+                    }
+                    else
+                    {
+                        tmpPrList = myParent.getCountriesT().getPriceListByID(tmpInfo[4]);
+                    }
+                    jTable1.setValueAt(new Double(tmpPrList[4]),i,17);  // dostavna cena
+                    jTable1.setValueAt(new Double(tmpPrList[0]),i,18);  //  \
+                    jTable1.setValueAt(new Double(tmpPrList[1]),i,19);  //   > cenova lista
+                    jTable1.setValueAt(new Double(tmpPrList[2]),i,20);  //  /
+                    
+                     jTable1.setValueAt(new Integer(dd.getRatioOfDisBand()[0]),i,21); 
+                     jTable1.setValueAt(new Integer(dd.getRatioOfDisBand()[1]),i,22); 
+                     jTable1.setValueAt(new Integer(dd.getRatioOfDisBand()[2]),i,23); 
                     
                 }
                isProductIN = checkInOutProduct(myParent.getDocFacadeType());
@@ -2083,41 +2117,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                      ((docLineTableModel) jTable1.getModel()).enableCellEditable(8);
                      ((docLineTableModel) jTable1.getModel()).enableCellEditable(9);
                         }
-                // presmqtane
-                
-                    
-                double ddds = 0;
-                double singePrice =0;
-                double totalPriceLine = 0;
-                int numberPiece = 0;
-                int countRows = jTable1.getRowCount();
-                
-                double totalAllPrice = 0;
-                double ddsOsnovaAll =0;
-                double ddsPriceAll = 0;
-                
-                
-                
-                
-                
-                for(int i=0; i < countRows; i++) {
-                    ddds = (Double)jTable1.getValueAt(i,10);
-                    //  singePrice = (Double)jTable1.getValueAt(i,8);
-                    totalPriceLine = (Double) jTable1.getValueAt(i,11);
-                    //  numberPiece = (Integer) jTable1.getValueAt(i,4);
-                    
-                    
-                    ddsOsnovaAll += totalPriceLine;
-                    ddsPriceAll += (totalPriceLine*ddds/100);
-                    
-                    
-                    
-                }
-                
-                jLabelAllTotal.setText(doubleRoundToString(4,ddsOsnovaAll+ddsPriceAll));
-                jLabelDDSOsnova.setText(doubleRoundToString(4,ddsOsnovaAll));
-                jLabelAllDDS.setText(doubleRoundToString(4,ddsPriceAll));
-                
+               calculateTotalPriceForDocument();
+               
                 
                 
                 
@@ -2128,8 +2129,15 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             
             jTable1.repaint();
             jCheckBox1.setSelected(false);
+        
+         jButtonOneRowM.setEnabled(true) ;
+         jButtonOneRowP.setEnabled(true);
+         jButtonToBegin.setEnabled(true);
+         jButtonToEnd.setEnabled(true);  
+        
+         getNavigatiionState();
             
-        }
+        } // END dokumenta se redaktira
      if(myParent.getDocFacadeType()==OFERTA)
        {
          HideColumns(4); // skrivane na broj produkt
@@ -2138,7 +2146,11 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
          HideColumns(7); // skrivane na razfasovka 3
          HideColumns(11); // skrivane na ob6to
        }   
-                       
+       for(int i=12 ; i<25;i++)
+           {
+            HideColumns(i); 
+           } 
+        
     }
     
     private void repainContragentData(int idcontragent) {
@@ -2212,6 +2224,44 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 changeColumnName(5,(String)jTable1.getValueAt(rowSelect,13),jTable1);
                 changeColumnName(6,(String)jTable1.getValueAt(rowSelect,14),jTable1);
                 changeColumnName(7,(String)jTable1.getValueAt(rowSelect,15),jTable1);
+           if(!isNew)     
+           {    
+          // set data for rowSelect docLine
+             myParent.setID_PC((Integer)jTable1.getValueAt(rowSelect,16));
+             myParent.setPriceList((Integer)jTable1.getValueAt(rowSelect,3));
+             double tmpPrList[] = new double[5];
+             tmpPrList[0]= (Double)jTable1.getValueAt(rowSelect,18);
+             tmpPrList[1]=(Double)jTable1.getValueAt(rowSelect,19);
+             tmpPrList[2]=(Double)jTable1.getValueAt(rowSelect,20);
+             tmpPrList[3]=1.0;
+             tmpPrList[4]=(Double)jTable1.getValueAt(rowSelect,17); // dostavna cena
+             myParent.setWorkPriceListProduct(tmpPrList);
+             myParent.setBrojProduct((Integer)jTable1.getValueAt(rowSelect,4));
+             
+             productDescription_1 = (Integer)jTable1.getValueAt(rowSelect,21); 
+             productDescription_2 = (Integer)jTable1.getValueAt(rowSelect,22);
+             productDescription_3 = (Integer)jTable1.getValueAt(rowSelect,23);
+             myParent.setPriceOneProduct(((Double)jTable1.getValueAt(rowSelect,8)));
+             isProductIN = checkInOutProduct(myParent.getDocFacadeType());
+             if(isProductIN) {
+                    jLabel32.setText("0");
+                    jLabelPricelist_1.setText("\u0426\u0435\u043d\u0430 1");
+                    jLabelPricelist_2.setText("\u0426\u0435\u043d\u0430 2");
+                    jLabelPrice_1.setText("");
+                    jLabelPrice_2.setText("");
+             }
+             else
+            {
+                jLabelPricelist_1.setText("\u0426\u0435\u043d\u0430 "+String.valueOf(calculatePriceList(myParent.getPriceList())[0])); //????
+                jLabelPricelist_2.setText("\u0426\u0435\u043d\u0430 "+String.valueOf(calculatePriceList(myParent.getPriceList())[1])); //???
+
+                jLabelPrice_1.setText(String.valueOf(myParent.getWorkPriceListProduct()[calculatePriceList(myParent.getPriceList())[0]-1])); //???
+                jLabelPrice_2.setText(String.valueOf(myParent.getWorkPriceListProduct()[calculatePriceList(myParent.getPriceList())[1]-1]));  //???
+                Double curs = myParent.getWorkPriceListProduct()[3];  //????
+                jLabelValuta.setText(myParent.getCountriesT().getValutaByID(curs.intValue()));    
+                }
+            calculateWidthColumn(jTable1); 
+            }
             }
             public void mouseEntered(MouseEvent e) {
             }
@@ -2364,17 +2414,19 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                         if( !isFinishRow) {
                             double alldds = Double.parseDouble(jLabelAllDDS.getText());
                             alldds += (Double) jTable1.getValueAt(rowSelect,11)*(Double) jTable1.getValueAt(rowSelect,10)/100;
-                            jLabelAllDDS.setText(doubleRoundToString(4,alldds));
+                         //   jLabelAllDDS.setText(doubleRoundToString(4,alldds));
                             double ddsOsnova = Double.parseDouble(jLabelDDSOsnova.getText());
                             ddsOsnova += (Double) jTable1.getValueAt(rowSelect,11);
-                            jLabelDDSOsnova.setText(doubleRoundToString(4,ddsOsnova));
+                       //     jLabelDDSOsnova.setText(doubleRoundToString(4,ddsOsnova));
                             double allTotal = Double.parseDouble(jLabelAllTotal.getText());
                             allTotal = alldds+ddsOsnova;
-                            jLabelAllTotal.setText(doubleRoundToString(4,allTotal));
+                      //      jLabelAllTotal.setText(doubleRoundToString(4,allTotal));
+                            
                             System.out.println("Общо = "+ allTotal + "::"+doubleRoundToString(4,allTotal));
                             System.out.println("ДДС = "+ alldds + "::"+doubleRoundToString(4,alldds));
                             System.out.println("База = "+ ddsOsnova + "::" + doubleRoundToString(4,ddsOsnova));
-                            
+                            calculateTotalPriceForDocument();
+                            jTable1.setValueAt(true,jTable1.getSelectedRow(),24);
                             if(jTable1.getSelectedRow()==(jTable1.getRowCount() - 1)) // pri polovfenie 4e reda e posleden
                             {
                                 int i = 0;
@@ -2844,17 +2896,20 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                    
                 
                 if(e.getKeyCode()==KeyEvent.VK_F7) {
-// =============START=================
+
+                    if(!(Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
                     processKeyPress(myParent.getDocFacadeType(),F7_KEY);
                     
-// ================STOP==============
+
                 }
                 
                 if(e.getKeyCode()==KeyEvent.VK_F8) {
+                    if(!(Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
                     processKeyPress(myParent.getDocFacadeType(),F8_KEY);
                 }
                 
                 if(e.getKeyCode()==KeyEvent.VK_F9) {
+                    if(!(Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
                     processKeyPress(myParent.getDocFacadeType(),F9_KEY);
                 }
             }
@@ -2867,9 +2922,15 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                         isFinishRow = false;
                         System.out.println("keyReleased    == = ==    0000");
                         
-                        if(!isSetDataInTable&&rate!=0) {
+                        if(!isSetDataInTable&&rate!=0)
+                        {
+                            try
+                            {
                             str = String.valueOf(jTable1.getValueAt(rowSelect,columnSelect));
+                            }
+                            catch(Exception ex){}
                             if(str.equals("0")) str="";
+                            if(!(Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
                             processKeyPress(myParent.getDocFacadeType(),F7_KEY);
                             
                             
@@ -2892,6 +2953,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                         int pp = (Integer)  jTable1.getValueAt(rowSelect,columnSelect);
                         double p[] = new double[3];
                         if(!isProductIN)
+                        {
                             if(pp>=1 && pp <=3) {
                             System.out.println("---------->"+String.valueOf(jTable1.getValueAt(rowSelect,columnSelect)));
                             p = myParent.getWorkPriceListProduct();
@@ -2917,7 +2979,12 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                             
                             
                             }
-                        
+                        }
+                        else // produkta se vkarva v sklada, negovata cenova lista zadylzitelno trqbva da byde "0",
+                             // t.e. dostavna cena
+                        {
+                            jTable1.setValueAt(0,rowSelect,columnSelect);
+                        }
                        /* ((docLineTableModel) jTable1.getModel()).disableCellEditable(3);
                         ((docLineTableModel) jTable1.getModel()).enableCellEditable(4);*/
                         
@@ -2936,7 +3003,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                             jTable1.setValueAt(calculateProductDescription(br,productDescription_2,productDescription_3)[2],jTable1.getSelectedRow(),7);
                             jTable1.setValueAt(calculateTotalPrice(myParent.getPriceOneProduct(),br),jTable1.getSelectedRow(),11);
                         } else
-                            if(br <= myParent.getBrojProduct()) {
+                            if(true) // br <= myParent.getBrojProduct()
+                            {
                             jTable1.setValueAt(calculateProductDescription(br,productDescription_2,productDescription_3)[0],jTable1.getSelectedRow(),5);
                             jTable1.setValueAt(calculateProductDescription(br,productDescription_2,productDescription_3)[1],jTable1.getSelectedRow(),6);
                             jTable1.setValueAt(calculateProductDescription(br,productDescription_2,productDescription_3)[2],jTable1.getSelectedRow(),7);
@@ -2959,7 +3027,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 //rate-------> jTable1.setValueAt(calculateTotalPrice(myParent.getPriceOneProduct()*rate,br+tmp),jTable1.getSelectedRow(),11);
                                 jTable1.setValueAt(calculateTotalPrice(myParent.getPriceOneProduct(),br+tmp),jTable1.getSelectedRow(),11);
                             } else
-                                if((br+tmp)<=myParent.getBrojProduct()) {
+                                if(true) // (br+tmp)<=myParent.getBrojProduct()
+                                {
                                 jTable1.setValueAt(new Integer(br+tmp),rowSelect,4);
                                 //rate------->
                                 jTable1.setValueAt(calculateTotalPrice(myParent.getPriceOneProduct()*rate,br+tmp),jTable1.getSelectedRow(),11);
@@ -2981,7 +3050,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                 //rate ------> jTable1.setValueAt(calculateTotalPrice(myParent.getPriceOneProduct()*rate,br+tmp),jTable1.getSelectedRow(),11);
                                 jTable1.setValueAt(calculateTotalPrice(myParent.getPriceOneProduct(),br+tmp),jTable1.getSelectedRow(),11);
                             } else
-                                if((br+tmp)<=myParent.getBrojProduct()) {
+                                if(true) // (br+tmp)<=myParent.getBrojProduct()
+                                {
                                 jTable1.setValueAt(new Integer(br+tmp),rowSelect,4);
                                 //rate ------>
                                 jTable1.setValueAt(calculateTotalPrice(myParent.getPriceOneProduct()*rate,br+tmp),jTable1.getSelectedRow(),11);
@@ -3004,7 +3074,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 //rate ----->jTable1.setValueAt(calculateTotalPrice(myParent.getPriceOneProduct()*rate,br+tmp),jTable1.getSelectedRow(),11);
                             jTable1.setValueAt(calculateTotalPrice(myParent.getPriceOneProduct(),br+tmp),jTable1.getSelectedRow(),11);
                         } else
-                            if((br+tmp)<=myParent.getBrojProduct()) {
+                            if(true) // (br+tmp)<=myParent.getBrojProduct()
+                            {
                             jTable1.setValueAt(new Integer(br+tmp),rowSelect,4);
 //rate ----->
                             jTable1.setValueAt(calculateTotalPrice(myParent.getPriceOneProduct()*rate,br+tmp),jTable1.getSelectedRow(),11);
@@ -4261,6 +4332,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             
             System.out.println("str :::"+str);
             java.sql.ResultSet rs1 =null;
+            
             if(docType==PRIEMATELNA_RAZPISKA)
             {
               //  rs1 = myParent.getCountriesT().getTableProductInfo(str,3,myParent.getDocFacadeLevel(),0,myParent.getStorageOUTProduct());
@@ -4302,6 +4374,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     jTable1.setValueAt(myParent.getBrojProduct(),jTable1.getSelectedRow(),4);
                 } else // ot sklada navyn;
                 {
+                    
                     jTable1.setValueAt(myParent.getPriceList(),jTable1.getSelectedRow(),3); // ????????
                     jLabelPricelist_1.setText("\u0426\u0435\u043d\u0430 "+String.valueOf(calculatePriceList(myParent.getPriceList())[0])); //????
                     jLabelPricelist_2.setText("\u0426\u0435\u043d\u0430 "+String.valueOf(calculatePriceList(myParent.getPriceList())[1])); //???
@@ -4627,6 +4700,36 @@ private int getColumnIndex(String in) //test
     jTable1.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
     jTable1.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
 
+ }
+ /**
+  *
+  */
+ private void calculateTotalPriceForDocument()
+ {
+         
+  double ddds = 0;
+  double singePrice =0;
+  double totalPriceLine = 0;
+  int numberPiece = 0;
+  int countRows = jTable1.getRowCount();
+               
+  double totalAllPrice = 0;
+  double ddsOsnovaAll =0;
+  double ddsPriceAll = 0;
+               
+  for(int i=0; i < countRows; i++) 
+     {
+      ddds = (Double)jTable1.getValueAt(i,10);
+  //  singePrice = (Double)jTable1.getValueAt(i,8);
+      totalPriceLine = (Double) jTable1.getValueAt(i,11);
+  //  numberPiece = (Integer) jTable1.getValueAt(i,4);
+      ddsOsnovaAll += totalPriceLine;
+      ddsPriceAll += (totalPriceLine*ddds/100);
+     }
+                
+  jLabelAllTotal.setText(doubleRoundToString(4,ddsOsnovaAll+ddsPriceAll));
+  jLabelDDSOsnova.setText(doubleRoundToString(4,ddsOsnovaAll));
+  jLabelAllDDS.setText(doubleRoundToString(4,ddsPriceAll));
  }
 }// end class
 

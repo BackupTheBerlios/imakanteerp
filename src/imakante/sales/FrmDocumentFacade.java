@@ -312,7 +312,8 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
 
     private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
 // TODO add your handling code here:
-        
+        setAtBegining(false);
+        setAtEnd(false);
         if (table.getSelectedRow() != -1) 
         { 
             
@@ -1033,6 +1034,10 @@ public double[] getProductFee()
 public int getPriceList()
 {
    return priceList;
+}
+public void setPriceList(int in)
+{
+   priceList = in;
 }
 public void setBrojProduct(int in)
 {

@@ -32,21 +32,31 @@ public class docLineTableModel extends AbstractTableModel implements Serializabl
     private final int NUMBER_OF_DISBAUND_2= 7;
     private final int ID_DOCLINE          = 12;
    
+    private final int ID_PC               = 16;
+    private final int PRICE_0             = 17;
+    private final int PRICE_1             = 18;
+    private final int PRICE_2             = 19;
+    private final int PRICE_3             = 20;
     
+    private final int RATIO_OF_DISBAUND_0  = 21;
+    private final int RATIO_OF_DISBAUND_1  = 22;
+    private final int RATIO_OF_DISBAUND_2  = 23;
+    private final int IS_FINISH_ROW        = 24;
     
     
     
     private ArrayList rows = new ArrayList();
     private docLineArray docLine = null;
     private boolean[] canEdit = new boolean [] {
-                          false, false, false,false, false, false, false,
-                          false, false, false, false, false, false, false, false, false};
+                          false, false, false, false, false, false, false, false, false, false, false, false,
+                          false, false, false, false, false, false, false, false, false, false, false, false, false};
     
     private String[] colNames =  new String [] {
                 "Номер продукт", "Име на продукт", "Номер склад", 
                 "Ценова листа","Брои продукти", "Р-ка основна", "Разфасовка 1",
                 "Разфасовка 2", "Ед. цена", "Процент отстъпка",
-                "ДДС", "Общо линия","id_dl","r1","r2","r3"};
+                "ДДС", "Общо линия","id_dl","r1","r2","r3","id_pc","price0","price1","price2","price3",
+                "rate_of_disbaund_0","rate_of_disbaund_1","rate_of_disbaund_2","isFinishRow"};
     private int rowsCount=0;
     private int columnsCound=0;
         // Types of the columns.
@@ -55,7 +65,9 @@ public class docLineTableModel extends AbstractTableModel implements Serializabl
                 java.lang.Integer.class, java.lang.Integer.class,java.lang.Integer.class, java.lang.Integer.class,
                 java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class,
                 java.lang.Double.class, java.lang.Double.class,java.lang.Integer.class,java.lang.String.class,
-                java.lang.String.class,java.lang.String.class};
+                java.lang.String.class,java.lang.String.class,java.lang.Integer.class,java.lang.Double.class,
+                java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,
+                java.lang.Integer.class,java.lang.Integer.class,java.lang.Integer.class,java.lang.Boolean.class};
         
         
     public docLineTableModel()
@@ -67,12 +79,13 @@ public class docLineTableModel extends AbstractTableModel implements Serializabl
     }
      public docLineTableModel(int codeOfProduct,String nameOfProduct,int storageOut,int priceList,
                        int numberOfProduct, double pricePiece,double rateReduction,double priceTotal,double DDS,
-                       String nameOfDisBaund[],int numerOfDisBaund[], int in_id_dl)
+                       String nameOfDisBaund[],int numerOfDisBaund[], int in_id_dl,
+                       int id_pc, double price0,double price1,double price2,double price3,int ratioOfDisBand[])
     {
        
         docLine = new docLineArray( codeOfProduct, nameOfProduct, storageOut, priceList,
                         numberOfProduct,  pricePiece,rateReduction ,priceTotal, DDS,
-                        nameOfDisBaund, numerOfDisBaund,in_id_dl);
+                        nameOfDisBaund, numerOfDisBaund,in_id_dl,id_pc,price0,price1,price2,price3,ratioOfDisBand);
         rows.add(docLine);
         rowsCount++;
     }
@@ -213,6 +226,86 @@ public class docLineTableModel extends AbstractTableModel implements Serializabl
                   dd.setID_DocLine(ii);
                   break;
               }
+              //========
+         case ID_PC :
+              {
+                  int ii = (Integer) value;
+                  dd.setID_PC(ii);
+                  break;
+              }
+         case PRICE_0 :
+              {
+                  double  ii[] = new double[4];
+                  ii[0] = (Double)value;
+                  ii[1] = dd.getPriceOfList()[1];
+                  ii[2] = dd.getPriceOfList()[2];
+                  ii[3] = dd.getPriceOfList()[3];
+                  dd.setPriceOfList(ii);
+                  break;
+              }
+          case PRICE_1 :
+              {
+                  double  ii[] = new double[4];
+                  ii[1] = (Double)value;
+                  ii[0] = dd.getPriceOfList()[0];
+                  ii[2] = dd.getPriceOfList()[2];
+                  ii[3] = dd.getPriceOfList()[3];
+                  dd.setPriceOfList(ii);
+                  break;
+              }
+          case PRICE_2 :
+              {
+                 double  ii[] = new double[4];
+                 ii[2] = (Double)value;
+                 ii[0] = dd.getPriceOfList()[0];
+                 ii[1] = dd.getPriceOfList()[1];
+                 ii[3] = dd.getPriceOfList()[3];
+                  dd.setPriceOfList(ii);
+                  break;
+              }
+          case PRICE_3 :
+              {
+                 double  ii[] = new double[4];
+                 ii[3] = (Double)value;
+                 ii[0] = dd.getPriceOfList()[0];
+                 ii[1] = dd.getPriceOfList()[1];
+                 ii[2] = dd.getPriceOfList()[2];
+                 dd.setPriceOfList(ii);
+                  break;
+              }
+           case RATIO_OF_DISBAUND_0 :
+              {
+                 int ii[] = new int[3];
+                 ii[0] = (Integer)value;
+                 ii[1] = dd.getRatioOfDisBand()[1];
+                 ii[2] = dd.getRatioOfDisBand()[2];
+                 dd.setRatioOfDisBand(ii);
+                  break;
+              }
+            case RATIO_OF_DISBAUND_1 :
+              {
+                 int ii[] = new int[3];
+                 ii[1] = (Integer)value;
+                 ii[0] = dd.getRatioOfDisBand()[0];
+                 ii[2] = dd.getRatioOfDisBand()[2];
+                 dd.setRatioOfDisBand(ii);
+                  break;
+              }
+             case RATIO_OF_DISBAUND_2 :
+              {
+                 int ii[] = new int[3];
+                 ii[2] = (Integer)value;
+                 ii[0] = dd.getRatioOfDisBand()[0];
+                 ii[1] = dd.getRatioOfDisBand()[1];
+                 dd.setRatioOfDisBand(ii);
+                  break;
+              }
+            case IS_FINISH_ROW :
+              {
+                 boolean ii = (Boolean) value;
+                 dd.setIsFinishRow(ii);
+                  break;
+              } 
           }
           
      fireTableCellUpdated(row, col);   
@@ -332,6 +425,70 @@ public class docLineTableModel extends AbstractTableModel implements Serializabl
                   value = ii;
                   break;
               }
+                  //========
+         case ID_PC :
+              {
+                  int ii = dd.getID_PC();
+                  value = ii;
+                  
+                  break;
+              }
+         case PRICE_0 :
+              {
+                  double  ii[] = new double[4];
+                  ii = dd.getPriceOfList();
+                  value = ii[0];
+                  break;
+              }
+          case PRICE_1 :
+              {
+                   double  ii[] = new double[4];
+                  ii = dd.getPriceOfList();
+                  value = ii[1];
+                  break;
+              }
+          case PRICE_2 :
+              {
+                 double  ii[] = new double[4];
+                 ii = dd.getPriceOfList();
+                 value = ii[2];
+                  break;
+              }
+          case PRICE_3 :
+              {
+                  double  ii[] = new double[4];
+                  ii = dd.getPriceOfList();
+                  value = ii[3];
+                  break;
+              }
+          case RATIO_OF_DISBAUND_0 :
+              {
+                  int ii[] = new int[3];
+                     ii =   dd.getRatioOfDisBand();
+                      value = ii[0];
+                  break;
+              }
+            case RATIO_OF_DISBAUND_1 :
+              {
+                  int ii[] = new int[3];
+                     ii =   dd.getRatioOfDisBand();
+                      value = ii[1];
+                  break;
+              }
+             case RATIO_OF_DISBAUND_2 :
+              {
+                  int ii[] = new int[3];
+                     ii =   dd.getRatioOfDisBand();
+                      value = ii[2];
+                  break;
+              }
+             case IS_FINISH_ROW :
+              {
+                 boolean ii = false;
+                 ii = dd.getIsFinishRow();
+                 value = ii;
+                  break;
+              } 
           }  
       return value;  
    }
@@ -354,7 +511,8 @@ public void disableCellEditable(int columnIndex)
 public void setDefaultCellEditable()
            {
               boolean canEdit1[] = new boolean [] {
-                false, false, false, false,false, false, false, false, false, false, false, false};
+                          false, false, false, false, false, false, false, false, false, false, false, false,
+                          false, false, false, false, false, false, false, false, false, false, false, false, false};
               canEdit = canEdit1;
            }
  
@@ -368,12 +526,13 @@ public void setDefaultCellEditable()
  }
 public void addRow(int codeOfProduct,String nameOfProduct,int storageOut,int priceList,
                        int numberOfProduct, double pricePiece,double rateReduction,double priceTotal,double DDS,
-                       String nameOfDisBaund[],int numerOfDisBaund[],int in_id_dl)
+                       String nameOfDisBaund[],int numerOfDisBaund[],int in_id_dl,
+                       int id_pc, double price0,double price1,double price2,double price3, int ratioOfDisBand[])
     {
         
         docLine = new docLineArray( codeOfProduct, nameOfProduct, storageOut, priceList,
                         numberOfProduct,  pricePiece,rateReduction ,priceTotal, DDS,
-                        nameOfDisBaund, numerOfDisBaund,in_id_dl);
+                        nameOfDisBaund, numerOfDisBaund,in_id_dl,id_pc,price0,price1,price2,price3,ratioOfDisBand);
         rows.add(docLine);
         rowsCount++;
         fireTableDataChanged();
