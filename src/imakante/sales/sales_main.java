@@ -147,6 +147,9 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jMenuItem13 = new javax.swing.JMenuItem();
         jSeparator6 = new javax.swing.JSeparator();
         jMenuItem16 = new javax.swing.JMenuItem();
+        jSeparator7 = new javax.swing.JSeparator();
+        jMenuItem17 = new javax.swing.JMenuItem();
+        jMenuItem18 = new javax.swing.JMenuItem();
         sluMenu = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -688,6 +691,14 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jMenuItem16.setText("\u0422\u044a\u0440\u0436\u0438\u0449\u0435\u043d \u0434\u043d\u0435\u0432\u043d\u0438\u043a");
         sprMenu.add(jMenuItem16);
 
+        sprMenu.add(jSeparator7);
+
+        jMenuItem17.setText("\u0413\u0435\u043d\u0435\u0440\u0438\u0440\u0430\u043d\u0435 \u043d\u0430 \u0441\u043d\u0438\u043c\u043a\u0430 \u043d\u0430\u043b\u0438\u0447\u043d\u043e\u0441\u0442");
+        sprMenu.add(jMenuItem17);
+
+        jMenuItem18.setText("\u041d\u0430\u043b\u0438\u0447\u043d\u043e\u0441\u0442 \u043f\u043e \u0441\u043d\u0438\u043c\u043a\u0430");
+        sprMenu.add(jMenuItem18);
+
         menuBar.add(sprMenu);
 
         sluMenu.setText("\u0421\u041b\u0423\u0416\u0415\u0411\u041d\u0418");
@@ -1082,6 +1093,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
+    private javax.swing.JMenuItem jMenuItem17;
+    private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
@@ -1099,6 +1112,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenuItem kasaAvansMenu;
     private javax.swing.JMenuItem kasaAvansOt4etMenu;
