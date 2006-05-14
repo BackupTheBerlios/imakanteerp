@@ -604,8 +604,6 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
                 + "SUM(rep_comm_nal.ostatak), "
                 + "SUM(rep_comm_nal.TSENA0), "
                 + "SUM(rep_comm_nal.TSENA1), "
-                + "SUM(rep_comm_nal.TSENA2), "
-                + "SUM(rep_comm_nal.TSENA3) "
                 + " FROM "
                 + " `rep_comm_nal` ";
         namesQ.add("Налично количество");
@@ -614,8 +612,6 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
         namesQ.add("Остатък");
         namesQ.add("Стойност по дост.");
         namesQ.add("Стойност по листа 1");
-        namesQ.add("Стойност по листа 2");
-        namesQ.add("Стойност по листа 3");
         this.nubColums = nubColums + 7;
         try {
             newString = newString + " WHERE `rep_comm_nal`.`code_contragent` BETWEEN '" +
