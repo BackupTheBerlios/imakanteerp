@@ -123,7 +123,7 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
                 .add(jLabel4)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jTextField4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 152, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -163,7 +163,7 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
                 .add(jButton1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jButton4)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 10, Short.MAX_VALUE)
                 .add(jButton3)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jButton2)
@@ -207,7 +207,7 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
                 .add(jLabel6)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jTextField6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 153, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -237,7 +237,7 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
                 .add(jLabel8)
                 .add(15, 15, 15)
                 .add(jXDatePicker2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -280,7 +280,7 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-492)/2, (screenSize.height-276)/2, 492, 276);
+        setBounds((screenSize.width-496)/2, (screenSize.height-276)/2, 496, 276);
     }// </editor-fold>//GEN-END:initComponents
                     
     private void jTextField6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyPressed
@@ -575,32 +575,32 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
         
         newString = newString + " DISTINCT CONCAT(rep_comm_nal.level ";
         this.nubColums = nubColums + 1;
-        if (this.jCheckBox1.isSelected()==false){
+        
             newString = newString + ",rep_comm_nal.code_n_storage ";
             
-        }
-        if (this.jCheckBox2.isSelected()==false){
+        
+        
             newString = newString + ",rep_comm_nal.code_contragent ";
             namesQ.add("Код контрагент");
-        }
-        if (this.jCheckBox3.isSelected()==false){
+       
+       
             newString = newString + ",rep_comm_nal.code_pm ";
             
-        }
-        if (this.jCheckBox4.isSelected()){
+       
+       
             newString = newString + ",rep_comm_nal.parcel_pc ";
             
-        }
+        
         newString = newString + ") AS con ";
         
-        if (this.jCheckBox1.isSelected()==false){
+        
             newString = newString
                     + ",rep_comm_nal.code_n_storage ";
             namesQ.add("Код склад");
             this.nubColums = nubColums + 1;
-        }
+      
         
-        if (this.jCheckBox2.isSelected()==false){
+        
             
             newString = newString
                     +  ",rep_comm_nal.code_contragent "
@@ -609,9 +609,9 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
             this.nubColums = nubColums + 1;
             namesQ.add("Име контрагент");
             this.nubColums = nubColums + 1;
-        }
         
-        if (this.jCheckBox3.isSelected()==false){
+        
+        
             
             newString = newString
                     + ",rep_comm_nal.code_pm "
@@ -626,14 +626,14 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
             this.nubColums = nubColums + 1;
             
             
-            if(this.jCheckBox4.isSelected()){
+          
                 newString = newString
                         + ",rep_comm_nal.parcel_pc ";
                 
                 namesQ.add("Код партида");
                 this.nubColums = nubColums + 1;
-            }
-        }
+           
+      
         newString = newString
                 + ",SUM(rep_comm_nal.quant_nal), "
                 + "SUM(rep_comm_nal.miarka3), "
@@ -685,24 +685,11 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
         //Create Dialog with print
         System.out.println(newString);
         
-        if(this.jCheckBox1.isSelected() && this.jCheckBox4.isSelected()){
-            
-        }
-        if(this.jCheckBox2.isSelected() && this.jCheckBox4.isSelected()){
+       
             fileName="/imakante/sales/jasper/nal_simp_01.jasper";
-        }
-        if(this.jCheckBox3.isSelected() && this.jCheckBox4.isSelected()){
-            
-        }
-        if(this.jCheckBox1.isSelected() && this.jCheckBox4.isSelected()==false){
-            
-        }
-        if(this.jCheckBox2.isSelected() && this.jCheckBox4.isSelected()==false){
-            
-        }
-        if(this.jCheckBox3.isSelected() && this.jCheckBox4.isSelected()==false){
-            
-        }
+        
+       
+        
         try{
             initTable(newString, Names);
             imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table,
