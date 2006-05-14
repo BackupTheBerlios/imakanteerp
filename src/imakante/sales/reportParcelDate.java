@@ -628,9 +628,12 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
             
           
                 newString = newString
-                        + ",rep_comm_nal.parcel_pc ";
+                        + ",rep_comm_nal.parcel_pc "
+                        +" rep_comm_nal.dateofexpire_pc";
+                
                 
                 namesQ.add("Код партида");
+                namesQ.add("Дата годност");
                 this.nubColums = nubColums + 1;
            
       
