@@ -1,16 +1,16 @@
 
 package imakante.sales;
 
-import java.awt.event.WindowEvent;
-
 public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
-    public reportFrmDocs(String title, imakante.com.vcomponents.iFrame parentFrame) {
+    public reportFrmDocs(String title, imakante.com.vcomponents.iFrame parentFrame, int levelx) {
         super(title);
         myFrame = parentFrame;
+        this.levelx = levelx;
         prepareConn();
         prepareStm();
         initComponents();
+        this.jLabel25.setText("" + this.levelx);
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -86,6 +86,9 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         jTextField15 = new javax.swing.JTextField();
         jTextField16 = new javax.swing.JTextField();
         jCheckBox20 = new javax.swing.JCheckBox();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jLabel25 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -95,50 +98,110 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         jCheckBox1.setText("\u0414\u0430\u043d\u044a\u0447\u043d\u0438 \u0444\u0430\u043a\u0442\u0443\u0440\u0438");
         jCheckBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox1.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCheckBox1KeyPressed(evt);
+            }
+        });
 
         jCheckBox2.setText("\u041e\u043f\u0440\u043e\u0441\u0442\u0435\u043d\u0438 \u0444\u0430\u043a\u0442\u0443\u0440\u0438");
         jCheckBox2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox2.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCheckBox2KeyPressed(evt);
+            }
+        });
 
         jCheckBox3.setText("\u0420\u0430\u0437\u043f\u0438\u0441\u043a\u0438 \u043f\u043e \u043f\u043e\u043b\u0443\u0447\u0430\u0432\u0430\u043d\u0435");
         jCheckBox3.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox3.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCheckBox3KeyPressed(evt);
+            }
+        });
 
         jCheckBox4.setText("\u0420\u0430\u0437\u043f\u0438\u0441\u043a\u0438 \u043f\u043e \u043f\u0440\u0435\u0445\u0432\u044a\u0440\u043b\u044f\u043d\u0435");
         jCheckBox4.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox4.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCheckBox4KeyPressed(evt);
+            }
+        });
 
         jCheckBox5.setText("\u041f\u0440\u043e\u0434\u0430\u0436\u0431\u0438");
         jCheckBox5.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox5.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCheckBox5KeyPressed(evt);
+            }
+        });
 
         jCheckBox6.setText("\u041f\u0440\u043e\u0442\u043e\u043a\u043e\u043b\u0438 \u0437\u0430 \u0431\u0440\u0430\u043a");
         jCheckBox6.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox6.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCheckBox6KeyPressed(evt);
+            }
+        });
 
         jCheckBox7.setText("\u041f\u0440\u043e\u0442\u043e\u043a\u043e\u043b\u0438 \u0437\u0430 \u043b\u0438\u043f\u0441\u0438");
         jCheckBox7.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox7.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCheckBox7KeyPressed(evt);
+            }
+        });
 
         jCheckBox8.setText("\u041f\u0440\u043e\u0442\u043e\u043a\u043e\u043b\u0438 \u0437\u0430 \u043f\u0440\u0435\u043e\u0446\u0435\u043d\u043a\u0430");
         jCheckBox8.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox8.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCheckBox8KeyPressed(evt);
+            }
+        });
 
         jCheckBox9.setText("\u041d\u0430\u0440\u0435\u0436\u0434\u0430\u043d\u0438\u044f");
         jCheckBox9.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox9.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCheckBox9KeyPressed(evt);
+            }
+        });
 
         jCheckBox10.setText("\u0412\u044a\u0442\u0440\u0435\u0448\u043d\u0438 \u043f\u043e\u0440\u044a\u0447\u043a\u0438");
         jCheckBox10.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox10.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox10.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCheckBox10KeyPressed(evt);
+            }
+        });
 
         jCheckBox11.setText("\u0412\u044a\u043d\u0448\u043d\u0438 \u043f\u043e\u0440\u044a\u0447\u043a\u0438");
         jCheckBox11.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox11.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox11.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCheckBox11KeyPressed(evt);
+            }
+        });
 
         jCheckBox12.setText("\u041f\u0440\u043e\u0442\u043e\u043a\u043e\u043b \u043e\u0442 \u0440\u0435\u0432\u0438\u0437\u0438\u0438");
         jCheckBox12.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox12.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox12.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCheckBox12KeyPressed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -165,7 +228,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
                     .add(jCheckBox12)
                     .add(jCheckBox8)
                     .add(jCheckBox4))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -201,6 +264,11 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         jCheckBox13.setText("\u041e\u0431\u043e\u0431\u0449\u0435\u043d\u0438");
         jCheckBox13.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox13.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox13.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCheckBox13KeyPressed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -272,6 +340,11 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         jCheckBox14.setText("\u041e\u0431\u043e\u0431\u0449\u0435\u043d\u0438");
         jCheckBox14.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox14.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox14.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCheckBox14KeyPressed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -279,15 +352,15 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel3Layout.createSequentialGroup()
                 .add(54, 54, 54)
-                .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
                 .add(22, 22, 22)
                 .add(jLabel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 16, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                .add(jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                 .add(38, 38, 38)
                 .add(jLabel6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                .add(jTextField4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
                 .add(29, 29, 29)
                 .add(jCheckBox14, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(78, 78, 78))
@@ -342,6 +415,11 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         jCheckBox15.setText("\u041e\u0431\u043e\u0431\u0449\u0435\u043d\u0438");
         jCheckBox15.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox15.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox15.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCheckBox15KeyPressed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -349,15 +427,15 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel4Layout.createSequentialGroup()
                 .add(54, 54, 54)
-                .add(jLabel7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                .add(jLabel7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
                 .add(22, 22, 22)
                 .add(jLabel8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 16, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                .add(jTextField5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                 .add(38, 38, 38)
                 .add(jLabel9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                .add(jTextField6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
                 .add(29, 29, 29)
                 .add(jCheckBox15, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(78, 78, 78))
@@ -412,6 +490,11 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         jCheckBox16.setText("\u041e\u0431\u043e\u0431\u0449\u0435\u043d\u0438");
         jCheckBox16.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox16.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox16.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCheckBox16KeyPressed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel5Layout = new org.jdesktop.layout.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -419,15 +502,15 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel5Layout.createSequentialGroup()
                 .add(54, 54, 54)
-                .add(jLabel10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                .add(jLabel10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
                 .add(22, 22, 22)
                 .add(jLabel11, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 16, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                .add(jTextField7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                 .add(38, 38, 38)
                 .add(jLabel12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                .add(jTextField8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
                 .add(29, 29, 29)
                 .add(jCheckBox16, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(78, 78, 78))
@@ -482,6 +565,11 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         jCheckBox17.setText("\u041e\u0431\u043e\u0431\u0449\u0435\u043d\u0438");
         jCheckBox17.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox17.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox17.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCheckBox17KeyPressed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel6Layout = new org.jdesktop.layout.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -489,15 +577,15 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel6Layout.createSequentialGroup()
                 .add(54, 54, 54)
-                .add(jLabel13, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                .add(jLabel13, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
                 .add(22, 22, 22)
                 .add(jLabel14, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 16, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                .add(jTextField9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                 .add(38, 38, 38)
                 .add(jLabel15, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                .add(jTextField10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
                 .add(29, 29, 29)
                 .add(jCheckBox17, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(78, 78, 78))
@@ -552,6 +640,11 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         jCheckBox18.setText("\u041e\u0431\u043e\u0431\u0449\u0435\u043d\u0438");
         jCheckBox18.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox18.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox18.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCheckBox18KeyPressed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel7Layout = new org.jdesktop.layout.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -563,11 +656,11 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
                 .add(22, 22, 22)
                 .add(jLabel17, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 16, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField11, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                .add(jTextField11, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
                 .add(38, 38, 38)
                 .add(jLabel18, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                .add(jTextField12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
                 .add(29, 29, 29)
                 .add(jCheckBox18, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(78, 78, 78))
@@ -622,6 +715,11 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         jCheckBox19.setText("\u041e\u0431\u043e\u0431\u0449\u0435\u043d\u0438");
         jCheckBox19.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox19.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox19.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCheckBox19KeyPressed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel8Layout = new org.jdesktop.layout.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -629,15 +727,15 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             jPanel8Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel8Layout.createSequentialGroup()
                 .add(54, 54, 54)
-                .add(jLabel19, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                .add(jLabel19, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
                 .add(22, 22, 22)
                 .add(jLabel20, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 16, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField13, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                .add(jTextField13, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                 .add(38, 38, 38)
                 .add(jLabel21, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField14, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                .add(jTextField14, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
                 .add(29, 29, 29)
                 .add(jCheckBox19, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(78, 78, 78))
@@ -707,6 +805,11 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         jCheckBox20.setText("\u041e\u0431\u043e\u0431\u0449\u0435\u043d\u0438");
         jCheckBox20.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox20.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox20.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCheckBox20KeyPressed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel9Layout = new org.jdesktop.layout.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -714,15 +817,15 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel9Layout.createSequentialGroup()
                 .add(54, 54, 54)
-                .add(jLabel22, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                .add(jLabel22, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
                 .add(22, 22, 22)
                 .add(jLabel23, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 16, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField15, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                .add(jTextField15, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                 .add(38, 38, 38)
                 .add(jLabel24, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField16, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                .add(jTextField16, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
                 .add(29, 29, 29)
                 .add(jCheckBox20, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(78, 78, 78))
@@ -741,6 +844,20 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jButton3.setText("\u0417\u0430\u043f\u0430\u0437\u0438 \u0441\u043f\u0440\u0430\u0432\u043a\u0430");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("\u0420\u0435\u0434\u0430\u043a\u0442\u043e\u0440 \u043d\u0430 \u0441\u043f\u0440\u0430\u0432\u043a\u0438");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -758,8 +875,14 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(layout.createSequentialGroup()
+                        .add(jLabel25)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 187, Short.MAX_VALUE)
                         .add(jButton1)
-                        .add(9, 9, 9)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jButton3)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jButton4)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jButton2)))
                 .addContainerGap())
         );
@@ -789,12 +912,103 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
                 .add(jPanel9, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jButton2)
                     .add(jButton1)
-                    .add(jButton2))
+                    .add(jButton3)
+                    .add(jButton4)
+                    .add(jLabel25))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         setBounds(100, 50, 673, 620);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jCheckBox1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox1KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jCheckBox1.transferFocus(); }
+    }//GEN-LAST:event_jCheckBox1KeyPressed
+
+    private void jCheckBox2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox2KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jCheckBox2.transferFocus(); }
+    }//GEN-LAST:event_jCheckBox2KeyPressed
+
+    private void jCheckBox3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox3KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jCheckBox3.transferFocus(); }
+    }//GEN-LAST:event_jCheckBox3KeyPressed
+
+    private void jCheckBox4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox4KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jCheckBox4.transferFocus(); }
+    }//GEN-LAST:event_jCheckBox4KeyPressed
+
+    private void jCheckBox5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox5KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jCheckBox5.transferFocus(); }
+    }//GEN-LAST:event_jCheckBox5KeyPressed
+
+    private void jCheckBox6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox6KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jCheckBox6.transferFocus(); }
+    }//GEN-LAST:event_jCheckBox6KeyPressed
+
+    private void jCheckBox7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox7KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jCheckBox7.transferFocus(); }
+    }//GEN-LAST:event_jCheckBox7KeyPressed
+
+    private void jCheckBox8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox8KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jCheckBox8.transferFocus(); }
+    }//GEN-LAST:event_jCheckBox8KeyPressed
+
+    private void jCheckBox9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox9KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jCheckBox9.transferFocus(); }
+    }//GEN-LAST:event_jCheckBox9KeyPressed
+
+    private void jCheckBox10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox10KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jCheckBox10.transferFocus(); }
+    }//GEN-LAST:event_jCheckBox10KeyPressed
+
+    private void jCheckBox11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox11KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jCheckBox11.transferFocus(); }
+    }//GEN-LAST:event_jCheckBox11KeyPressed
+
+    private void jCheckBox12KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox12KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jCheckBox12.transferFocus(); }
+    }//GEN-LAST:event_jCheckBox12KeyPressed
+
+    private void jCheckBox20KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox20KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jCheckBox20.transferFocus(); }
+    }//GEN-LAST:event_jCheckBox20KeyPressed
+
+    private void jCheckBox19KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox19KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jCheckBox19.transferFocus(); }
+    }//GEN-LAST:event_jCheckBox19KeyPressed
+
+    private void jCheckBox18KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox18KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jCheckBox18.transferFocus(); }
+    }//GEN-LAST:event_jCheckBox18KeyPressed
+
+    private void jCheckBox17KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox17KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jCheckBox17.transferFocus(); }
+    }//GEN-LAST:event_jCheckBox17KeyPressed
+
+    private void jCheckBox16KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox16KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jCheckBox16.transferFocus(); }
+    }//GEN-LAST:event_jCheckBox16KeyPressed
+
+    private void jCheckBox15KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox15KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jCheckBox15.transferFocus(); }
+    }//GEN-LAST:event_jCheckBox15KeyPressed
+
+    private void jCheckBox14KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox14KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jCheckBox14.transferFocus(); }
+    }//GEN-LAST:event_jCheckBox14KeyPressed
+
+    private void jCheckBox13KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox13KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jCheckBox13.transferFocus(); }
+    }//GEN-LAST:event_jCheckBox13KeyPressed
 
     private void jTextField16KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField16KeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) jTextField16.setText("");
@@ -1018,6 +1232,8 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox10;
     private javax.swing.JCheckBox jCheckBox11;
@@ -1055,6 +1271,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1095,37 +1312,44 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     private java.sql.Connection conn;
     private java.sql.Statement stm;
     private java.sql.ResultSet rs;
-    
+    private int levelx = 3;
     private  int intTransfer;
     private  int CompNumber = 0;
     private String[] Names = { "\u041a\u041e\u0414", "\u0418\u041c\u0415" };
-    private String[] NamesQ = { "id_dl", "id_pc", "\u041f\u0430\u0440\u0442\u0438\u0434\u0430", 
-    "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" };
+    private String[] NamesQ = { "con" };
+    java.text.SimpleDateFormat formatterG = new java.text.SimpleDateFormat("yyyy-MM-dd");
     
-    private String strStore = "SELECT view_rep_documents.code_n_storage";
-    private String strClient = "SELECT view_rep_documents.";
-    private String strProduct = "SELECT view_rep_documents.";
-    private String strSupplier = "SELECT view_rep_documents.";
-    private String strDistributor = "SELECT view_rep_documents.";
-    private String strOperator = "SELECT view_rep_documents.";
-    private String strSpeditor = "SELECT view_rep_documents.";
+    private String strStore = "SELECT rep_documents.code_store, rep_documents.name_store " +
+            "FROM rep_documents WHERE rep_documents.code_store LIKE '%";
+    private String strClient = "SELECT rep_documents.code_client, rep_documents.name_client " +
+            "FROM rep_documents WHERE rep_documents.code_client LIKE '%";
+    private String strProduct = "SELECT rep_documents.code_product, rep_documents.name_product " +
+            "FROM rep_documents WHERE rep_documents.code_product LIKE '%";
+    private String strSupplier = "SELECT rep_documents.code_dostavchik, rep_documents.name_dostavchik " +
+            "FROM rep_documents WHERE rep_documents.code_dostavchik LIKE '%";
+    private String strDistributor = "SELECT rep_documents.code_distributor, rep_documents.name_distributor " +
+            "FROM rep_documents WHERE rep_documents.code_distributor LIKE '%";
+    private String strOperator = "SELECT rep_documents.code_operator, name_operator " +
+            "FROM rep_documents WHERE rep_documents.code_operator LIKE '%";
+    private String strSpeditor = "SELECT rep_documents.code_speditor, rep_documents.name_speditor " +
+            "FROM rep_documents WHERE rep_documents.code_speditor LIKE '%";
     private String qu = "SELECT ";
-    
+    private String reportFile = "/imakante/sales/jasper/repDox.jasper";
     private java.util.HashMap hm = null;
     
-    public void windowOpened(WindowEvent e) {
+    public void windowOpened(java.awt.event.WindowEvent e) {
     }
-    public void windowClosing(WindowEvent e) {
+    public void windowClosing(java.awt.event.WindowEvent e) {
     }
-    public void windowClosed(WindowEvent e) {
+    public void windowClosed(java.awt.event.WindowEvent e) {
     }
-    public void windowIconified(WindowEvent e) {
+    public void windowIconified(java.awt.event.WindowEvent e) {
     }
-    public void windowDeiconified(WindowEvent e) {
+    public void windowDeiconified(java.awt.event.WindowEvent e) {
     }
-    public void windowActivated(WindowEvent e) {
+    public void windowActivated(java.awt.event.WindowEvent e) {
     }
-    public void windowDeactivated(WindowEvent e) {
+    public void windowDeactivated(java.awt.event.WindowEvent e) {
     }
 
     private void prepareConn() {
@@ -1162,8 +1386,6 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     }
     
     private void fillBlanck() {
-        if(jTextField15.getText() == "") jTextField15.setText("1");
-        if(jTextField16.getText() == "") jTextField16.setText("999999999");
         if(jTextField3.getText() == "") jTextField3.setText("1");
         if(jTextField4.getText() == "") jTextField4.setText("999999999");
         if(jTextField5.getText() == "") jTextField5.setText("1");
@@ -1176,6 +1398,8 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         if(jTextField12.getText() == "") jTextField12.setText("999999999");
         if(jTextField13.getText() == "") jTextField13.setText("1");
         if(jTextField14.getText() == "") jTextField14.setText("999999999");
+        if(jTextField15.getText() == "") jTextField15.setText("1");
+        if(jTextField16.getText() == "") jTextField16.setText("999999999");
     }
 
     private void processReport() {
@@ -1189,7 +1413,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         try {
             initTable(newString, NamesQ);
             imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table,
-                    myFrame.getConn(), hm, "/imakante/sales/jasper/.jasper", "\u0421\u043f\u0440\u0430\u0432\u043a\u0430 \u0438\u0437\u0434\u0430\u0434\u0435\u043d\u0438 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438", "");
+                    myFrame.getConn(), hm, reportFile, "\u0421\u043f\u0440\u0430\u0432\u043a\u0430 \u0438\u0437\u0434\u0430\u0434\u0435\u043d\u0438 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438", "");
             td.setVisible(true);
         } catch (Exception  ex) {
             ex.printStackTrace();
@@ -1199,79 +1423,79 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     }
 
     private void processField3() {
-        String newString = strClient + this.jTextField3.getText() + "%'";
+        String newString = strStore + this.jTextField3.getText() + "%'";
         constructDialod(newString, 3, Names);
     }
 
     private void processField4() {
         if(this.jTextField3.getText() == "") this.jTextField3.setText("0");
-        String newString = strClient + this.jTextField4.getText() + "%' AND view_rep_documents. >= " + this.jTextField3.getText() + ";";
+        String newString = strStore + this.jTextField4.getText() + "%' AND rep_documents.code_store >= " + this.jTextField3.getText() + ";";
         constructDialod(newString, 4, Names);
     }
 
     private void processField5() {
-        String newString = strProduct + this.jTextField5.getText() + "%'";
+        String newString = strClient + this.jTextField5.getText() + "%'";
         constructDialod(newString, 5, Names);
     }
 
     private void processField6() {
         if(this.jTextField5.getText() == "") this.jTextField5.setText("0");
-        String newString = strProduct + this.jTextField6.getText() + "%' AND view_rep_documents. >= " + this.jTextField5.getText() + ";";
+        String newString = strClient + this.jTextField6.getText() + "%' AND rep_documents.code_client >= " + this.jTextField5.getText() + ";";
         constructDialod(newString, 6, Names);
     }
 
     private void processField7() {
-        String newString = strSupplier + this.jTextField7.getText() + "%'";
+        String newString = strProduct + this.jTextField7.getText() + "%'";
         constructDialod(newString, 7, Names);
     }
 
     private void processField8() {
         if(this.jTextField7.getText() == "") this.jTextField7.setText("0");
-        String newString = strSupplier + this.jTextField8.getText() + "%' AND view_rep_documents. >= " + this.jTextField7.getText() + ";";
+        String newString = strProduct + this.jTextField8.getText() + "%' AND rep_documents.code_product >= " + this.jTextField7.getText() + ";";
         constructDialod(newString, 8, Names);
     }
 
     private void processField9() {
-        String newString = strDistributor + this.jTextField9.getText() + "%'";
+        String newString = strSupplier + this.jTextField9.getText() + "%'";
         constructDialod(newString, 9, Names);
     }
 
     private void processField10() {
         if(this.jTextField9.getText() == "") this.jTextField9.setText("0");
-        String newString = strDistributor + this.jTextField10.getText() + "%' AND view_rep_documents. >= " + this.jTextField9.getText() + ";";
+        String newString = strSupplier + this.jTextField10.getText() + "%' AND rep_documents.code_dostavchik >= " + this.jTextField9.getText() + ";";
         constructDialod(newString, 10, Names);
     }
 
     private void processField11() {
-        String newString = strOperator + this.jTextField11.getText() + "%'";
+        String newString = strDistributor + this.jTextField11.getText() + "%'";
         constructDialod(newString, 11, Names);
     }
 
     private void processField12() {
         if(this.jTextField11.getText() == "") this.jTextField11.setText("0");
-        String newString = strOperator + this.jTextField12.getText() + "%' AND view_rep_documents. >= " + this.jTextField11.getText() + ";";
+        String newString = strDistributor + this.jTextField12.getText() + "%' AND rep_documents.code_distributor >= " + this.jTextField11.getText() + ";";
         constructDialod(newString, 12, Names);
     }
 
     private void processField13() {
-        String newString = strSpeditor + this.jTextField13.getText() + "%'";
+        String newString = strOperator + this.jTextField13.getText() + "%'";
         constructDialod(newString, 13, Names);
     }
 
     private void processField14() {
         if(this.jTextField13.getText() == "") this.jTextField13.setText("0");
-        String newString = strSpeditor + this.jTextField14.getText() + "%' AND view_rep_documents. >= " + this.jTextField13.getText() + ";";
+        String newString = strOperator + this.jTextField14.getText() + "%' AND rep_documents.code_operator >= " + this.jTextField13.getText() + ";";
         constructDialod(newString, 14, Names);
     }
     
     private void processField15() {
-        String newString = strStore + this.jTextField15.getText() + "%'";
+        String newString = strSpeditor + this.jTextField15.getText() + "%'";
         constructDialod(newString, 15, Names);
     }
 
     private void processField16() {
         if(this.jTextField15.getText() == "") this.jTextField15.setText("0");
-        String newString = strStore + this.jTextField16.getText() + "%' AND view_rep_documents.code_n_storage >= " + this.jTextField15.getText() + ";";
+        String newString = strSpeditor + this.jTextField16.getText() + "%' AND rep_documents.code_speditor >= " + this.jTextField15.getText() + ";";
         constructDialod(newString, 16, Names);
     }
 

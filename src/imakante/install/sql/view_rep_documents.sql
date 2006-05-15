@@ -2,8 +2,8 @@ CREATE VIEW rep_documents AS (
 SELECT 
     d.id_dl,
     d.id_pc, pc.parcel_pc,
-    pc.id_pm, pm.name_pm,
-    d.id_n_storage, s.code_n_storage, s.name_n_storage,
+    pc.id_pm, pm.code_pm AS code_product, pm.name_pm AS name_product,
+    d.id_n_storage, s.code_n_storage AS code_store, s.name_n_storage AS name_store,
     d.singly_price_dl,
     d.climb_down_dl,
     d.numbers_piece_dl,
@@ -14,7 +14,7 @@ SELECT
     df.out_contragent_df, octr.code_contragent AS code_client, octr.name_n_contragent AS name_client,
     df.total_df,
     df.dds_df,
-    df.user_df, person1.code_ls_n_person AS code_oerator, person1.name_ls_n_person AS name_operator,
+    df.user_df, person1.code_ls_n_person AS code_operator, person1.name_ls_n_person AS name_operator,
     df.distributor_df, person2.code_ls_n_person AS code_distributor, person2.name_ls_n_person AS name_distributor,
     df.delivere_df, person3.code_ls_n_person AS code_speditor, person3.name_ls_n_person AS name_speditor,
     d.price_list_dl
