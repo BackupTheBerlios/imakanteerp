@@ -672,6 +672,7 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
         if(jTextField5.getText()==""){jTextField5.setText("1");}
         if(jTextField6.getText()==""){jTextField6.setText("999999999");}
     }
+    
     private java.util.HashMap constructHash(){
         java.util.HashMap hmap = new java.util.HashMap();
         hmap.put("otsklad",jTextField1.getText());
