@@ -1041,7 +1041,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_jMenuItem6ActionPerformed
     
     private void spravkiMenu_nalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spravkiMenu_nalActionPerformed
-        loadReportNal();
+       loadReportNalLevel();
     }//GEN-LAST:event_spravkiMenu_nalActionPerformed
     
     private void moneyMenu_outActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moneyMenu_outActionPerformed
