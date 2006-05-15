@@ -899,7 +899,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-458)/2, 757, 458);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void protMenu_lipsaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_protMenu_lipsaActionPerformed
 // TODO add your handling code here:
         int user = 2;
@@ -909,7 +909,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         int storagedocdacade = 1;
         loadFrmDocFacade("\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u041b\u0418\u041f\u0421\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );
     }//GEN-LAST:event_protMenu_lipsaActionPerformed
-
+    
     private void protMenu_brakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_protMenu_brakActionPerformed
 // TODO add your handling code here:
         int user = 2;
@@ -919,7 +919,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         int storagedocdacade = 1;
         loadFrmDocFacade("\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u0411\u0420\u0410\u041a", user, level, pricelist, doctype, storagedocdacade, false, null, null );
     }//GEN-LAST:event_protMenu_brakActionPerformed
-
+    
     private void spravkiMenu_docActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spravkiMenu_docActionPerformed
         loadReportDocs();
     }//GEN-LAST:event_spravkiMenu_docActionPerformed
@@ -1157,7 +1157,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private void sluMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sluMenuActionPerformed
         
     }//GEN-LAST:event_sluMenuActionPerformed
-        
+    
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
         
     }//GEN-LAST:event_aboutMenuItemActionPerformed
@@ -1352,7 +1352,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private static LinkedHashMap OrderArea = new LinkedHashMap(); //stokovi
     private static LinkedHashMap FaktArea = new LinkedHashMap(); // fakturi
     
-   
+    
     
     private static LinkedHashMap casaInContrArea = new LinkedHashMap(); // prihodni orderi kasa kontragent
     private static LinkedHashMap casaOutContrArea = new LinkedHashMap(); // razhodni orderi kasa kontragent
@@ -1737,6 +1737,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         }
         Income.setVisible(true);
     }
+    // tipove razhodi
     private void loadExpens() {
         nom.FrmExpens Expens = new nom.FrmExpens("\u041a\u0443\u0440\u0441\u043e\u0432\u0435 \u043d\u0430 \u0432\u0430\u043b\u0443\u0442\u0438", this);
         desktopPane.add(Expens);
@@ -1850,10 +1851,27 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         isStartFrmProduct = bool;
     }
     
-    private void loadReportNal() {
-        imakante.sales.reportFrmNal repNal = new imakante.sales.reportFrmNal("\u0421\u043f\u0440\u0430\u0432\u043a\u0430 \u041d\u0430\u043b\u0438\u0447\u043d\u043e\u0441\u0442\u0438", this);
+    
+    public void loadReportNal(int i) {
+        imakante.sales.reportFrmNal repNal = new imakante.sales.reportFrmNal("\u0421\u043f\u0440\u0430\u0432\u043a\u0430 \u041d\u0430\u043b\u0438\u0447\u043d\u043e\u0441\u0442\u0438", this, i);
         desktopPane.add(repNal);
         repNal.setVisible(true);
+    }
+    private void loadReportNalLevel(){
+        imakante.sales.levelDialogSecond levDSec = new imakante.sales.levelDialogSecond(this, true,9001);
+        desktopPane.add(levDSec);
+        levDSec.setVisible(true);
+    }
+    public void loadReportParcelDate(int i) {
+        imakante.sales.reportParcelDate repNal = new imakante.sales.reportParcelDate("\u0421\u043f\u0440\u0430\u0432\u043a\u0430 \u041d\u0430\u043b\u0438\u0447\u043d\u043e\u0441\u0442\u0438", this, i);
+        desktopPane.add(repNal);
+        repNal.setVisible(true);
+    }
+    
+    public void loadReportParcelDateLevel(){
+        imakante.sales.levelDialogSecond levDSec = new imakante.sales.levelDialogSecond(this, true,9002);
+        desktopPane.add(levDSec);
+        levDSec.setVisible(true); 
     }
     
     private void loadReportDocs() {

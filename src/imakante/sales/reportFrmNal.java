@@ -9,12 +9,14 @@ import java.util.List;
 
 public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
-    public reportFrmNal(String title,imakante.com.vcomponents.iFrame frame) {
+    public reportFrmNal(String title,imakante.com.vcomponents.iFrame frame, int levelx) {
         super(title);
         myframe = frame;
+        this.levelx = levelx;
         prepareConn();     // zapazva connection
         prepareStm();
         initComponents();
+        this.jLabel7.setText(""+this.levelx);
     }
     
     
@@ -37,6 +39,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
@@ -184,11 +187,12 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel3Layout.createSequentialGroup()
-                .add(64, 64, 64)
+                .add(jLabel7)
+                .add(30, 30, 30)
                 .add(jButton1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jButton4)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 40, Short.MAX_VALUE)
                 .add(jButton3)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jButton2)
@@ -200,7 +204,8 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
                 .add(jButton2)
                 .add(jButton1)
                 .add(jButton3)
-                .add(jButton4))
+                .add(jButton4)
+                .add(jLabel7))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -304,17 +309,17 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
     }// </editor-fold>//GEN-END:initComponents
     
     private void jCheckBox4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox4KeyPressed
-// TODO add your handling code here:
+
         jCheckBox4.transferFocus();
     }//GEN-LAST:event_jCheckBox4KeyPressed
     
     private void jCheckBox3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox3KeyPressed
-// TODO add your handling code here:
+
         jCheckBox3.transferFocus();
     }//GEN-LAST:event_jCheckBox3KeyPressed
     
     private void jCheckBox2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox2KeyPressed
-// TODO add your handling code here:
+
         jCheckBox2.transferFocus();
     }//GEN-LAST:event_jCheckBox2KeyPressed
     
@@ -408,6 +413,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
