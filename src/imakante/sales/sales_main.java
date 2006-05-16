@@ -679,6 +679,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         sprMenu.add(spravkiMenu_nal);
 
         jMenuItem15.setText("\u041f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 \u0441\u0440\u043e\u043a\u043e\u0432\u0435 \u0433\u043e\u0434\u043d\u043e\u0441\u0442");
+        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem15ActionPerformed(evt);
+            }
+        });
+
         sprMenu.add(jMenuItem15);
 
         jMenuItem10.setText("\u041e\u0441\u0442\u043e\u0439\u043d\u043e\u0441\u0442\u044f\u0432\u0430\u043d\u0435 \u043d\u0430 \u0441\u0442\u043e\u043a\u043e\u0432\u043e \u0434\u0432\u0438\u0436\u0435\u043d\u0438\u0435");
@@ -899,6 +905,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-458)/2, 757, 458);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
+
+    }//GEN-LAST:event_jMenuItem15ActionPerformed
     
     private void protMenu_lipsaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_protMenu_lipsaActionPerformed
 // TODO add your handling code here:
@@ -921,7 +931,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_protMenu_brakActionPerformed
     
     private void spravkiMenu_docActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spravkiMenu_docActionPerformed
-        loadReportDocs();
+        loadReportDocsLevel();
     }//GEN-LAST:event_spravkiMenu_docActionPerformed
     
     private void kasaMenu_nalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kasaMenu_nalActionPerformed
@@ -1868,16 +1878,21 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         repNal.setVisible(true);
     }
     
-    public void loadReportParcelDateLevel(){
+    private void loadReportParcelDateLevel(){
         imakante.sales.levelDialogSecond levDSec = new imakante.sales.levelDialogSecond(this, true,9002);
         desktopPane.add(levDSec);
         levDSec.setVisible(true); 
     }
     
-    private void loadReportDocs() {
-        imakante.sales.reportFrmDocs repDox = new imakante.sales.reportFrmDocs("\u0421\u043f\u0440\u0430\u0432\u043a\u0430 \u0437\u0430 \u0418\u0437\u0434\u0430\u0434\u0435\u043d\u0438 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438", this);
+    public void loadReportDocs(int i) {
+        imakante.sales.reportFrmDocs repDox = new imakante.sales.reportFrmDocs("\u0421\u043f\u0440\u0430\u0432\u043a\u0430 \u0437\u0430 \u0418\u0437\u0434\u0430\u0434\u0435\u043d\u0438 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438", this,i);
         desktopPane.add(repDox);
         repDox.setVisible(true);
+    }
+     private void loadReportDocsLevel() {
+        imakante.sales.levelDialogSecond levDSec = new imakante.sales.levelDialogSecond(this, true,9050);
+        desktopPane.add(levDSec);
+        levDSec.setVisible(true); 
     }
     
     public static LinkedHashMap getOrderArea() {
