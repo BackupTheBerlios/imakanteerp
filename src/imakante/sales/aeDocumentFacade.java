@@ -1213,7 +1213,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         sales_main.dataIn=null;
         sales_main.dataOut=null;
         int id_df = myParent.getID_DocFacade();
-      //  checkForDiffWithOutSaveInDB();
+        checkForDiffWithOutSaveInDB();
         createDocument(id_df,myParent.getDocFacadeType(),0);
         isDocFacadeCreate = true;
         

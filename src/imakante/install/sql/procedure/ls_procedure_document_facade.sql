@@ -565,7 +565,7 @@ n.id_pc, n.id_pm, n.parcel_pc, n.dateofexpire_pc,
     LEFT JOIN  mida.n_product_all_measure pam1 ON pam1.id_pam = pd.m1_pd
     LEFT JOIN  mida.n_product_all_measure pam2 ON pam2.id_pam = pd.m2_pd
     LEFT JOIN  mida.n_product_all_measure pam3 ON pam3.id_pam = pd.m3_pd
-    WHERE id_df = in_id_df;
+    WHERE id_df = in_id_df ORDER BY s.id_dl;
 END IF;
 
 IF (comprator = 32) THEN
