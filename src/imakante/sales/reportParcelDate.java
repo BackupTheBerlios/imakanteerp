@@ -681,6 +681,9 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
             newString = newString + " AND rep_comm_nal.level = 1";
         }
         
+        if(levelx==1){
+            newString = newString + " AND rep_comm_nal.level IN(0,1)";
+        }
         newString = newString + " GROUP BY con ORDER BY rep_comm_nal.code_pm ASC";
         
         String[] Names = (String[]) namesQ.toArray(new String[this.nubColums]);
@@ -718,10 +721,11 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
         java.util.HashMap hmap = new java.util.HashMap();
         hmap.put("otsklad",jTextField1.getText());
         hmap.put("dosklad",jTextField2.getText());
-        hmap.put("otprodukt",jTextField3.getText());
+        hmap.put("otkontragent",jTextField3.getText());
         hmap.put("dokontragent",jTextField4.getText());
         hmap.put("otprodukt",jTextField5.getText());
         hmap.put("doprodukt",jTextField6.getText());
+        hmap.put("pechatot",imakante.com.NewMain.getUserName());
         hmap.put("otdate",(String)formatterG.format(this.jXDatePicker1.getDate()));
         hmap.put("dodate",(String)formatterG.format(this.jXDatePicker2.getDate()));
         if(levelx==3){
@@ -729,6 +733,9 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
         }
         if(levelx==2){
             hmap.put("levex","1");
+        }
+        if(levelx==1){
+            hmap.put("levex","0,1");
         }
         return hmap;
     }

@@ -717,14 +717,9 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         if(levelx==2){
             newString = newString + " AND rep_comm_nal.level = 1";
         }
-        
-//        if(this.jCheckBox1.isSelected() ||
-//                this.jCheckBox2.isSelected() ||
-//                this.jCheckBox3.isSelected()){
-//            newString = newString + " GROUP BY con ";
-//        }else{
-//            newString = newString + " GROUP BY rep_comm_nal.parcel_pc ";
-//        }
+        if(levelx==1){
+            newString = newString + " AND rep_comm_nal.level IN(0,1)";
+        }
         newString = newString + " GROUP BY con ORDER BY rep_comm_nal.code_pm ASC";
         
         String[] Names = (String[]) namesQ.toArray(new String[this.nubColums]);
@@ -783,6 +778,9 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         }
         if(levelx==2){
             hmap.put("levex","1");
+        }
+        if(levelx==1){
+            hmap.put("levex","0,1");
         }
         return hmap;
     }
