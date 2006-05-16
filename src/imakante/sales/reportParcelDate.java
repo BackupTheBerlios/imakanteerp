@@ -600,17 +600,17 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
         this.nubColums = nubColums + 1;
         newString = newString
                 + ",rep_comm_nal.parcel_pc "
-                +" rep_comm_nal.dateofexpire_pc";
+                +" ,rep_comm_nal.dateofexpire_pc ";
         namesQ.add("Код партида");
         namesQ.add("Дата годност");
         this.nubColums = nubColums + 1;
         newString = newString
-                + ",SUM(rep_comm_nal.quant_nal), "
+                + " ,SUM(rep_comm_nal.quant_nal), "
                 + "SUM(rep_comm_nal.miarka3), "
                 + "SUM(rep_comm_nal.miarka2), "
                 + "SUM(rep_comm_nal.ostatak), "
                 + "SUM(rep_comm_nal.TSENA0), "
-                + "SUM(rep_comm_nal.TSENA1), "
+                + "SUM(rep_comm_nal.TSENA1) "
                 + " FROM "
                 + " `rep_comm_nal` ";
         namesQ.add("Налично количество");
@@ -626,8 +626,8 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
                     "' AND " + " `rep_comm_nal`.`code_pm` BETWEEN '" + (Integer.parseInt(this.jTextField3.getText())-1) +
                     "' AND '" + (Integer.parseInt(this.jTextField4.getText())+1) + "' AND " + " `rep_comm_nal`.`code_n_storage` BETWEEN '" +
                     (Integer.parseInt(this.jTextField1.getText())-1) + "' AND '" + (Integer.parseInt(this.jTextField2.getText())+1) + "' "
-                    + " AND rep_comm_nal.dateofexpire_pc BETWEEN " +(String)formatterG.format(this.jXDatePicker1.getDate()) +  " AND  "
-                    + (String)formatterG.format(this.jXDatePicker2.getDate());
+                    + " AND rep_comm_nal.dateofexpire_pc BETWEEN '" +(String)formatterG.format(this.jXDatePicker1.getDate()) +  "' AND  '"
+                    + (String)formatterG.format(this.jXDatePicker2.getDate()) + "'";
         } catch (NumberFormatException ex) {
             ex.printStackTrace();
         }

@@ -905,9 +905,9 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-458)/2, 757, 458);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
-
+        this.loadReportParcelDateLevel();
     }//GEN-LAST:event_jMenuItem15ActionPerformed
     
     private void protMenu_lipsaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_protMenu_lipsaActionPerformed
@@ -1051,7 +1051,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_jMenuItem6ActionPerformed
     
     private void spravkiMenu_nalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spravkiMenu_nalActionPerformed
-       loadReportNalLevel();
+        loadReportNalLevel();
     }//GEN-LAST:event_spravkiMenu_nalActionPerformed
     
     private void moneyMenu_outActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moneyMenu_outActionPerformed
@@ -1869,7 +1869,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }
     private void loadReportNalLevel(){
         imakante.sales.levelDialogSecond levDSec = new imakante.sales.levelDialogSecond(this, true,9001);
-        desktopPane.add(levDSec);
+        
         levDSec.setVisible(true);
     }
     public void loadReportParcelDate(int i) {
@@ -1880,8 +1880,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     
     private void loadReportParcelDateLevel(){
         imakante.sales.levelDialogSecond levDSec = new imakante.sales.levelDialogSecond(this, true,9002);
-        desktopPane.add(levDSec);
-        levDSec.setVisible(true); 
+        
+        levDSec.setVisible(true);
     }
     
     public void loadReportDocs(int i) {
@@ -1889,10 +1889,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         desktopPane.add(repDox);
         repDox.setVisible(true);
     }
-     private void loadReportDocsLevel() {
+    private void loadReportDocsLevel() {
         imakante.sales.levelDialogSecond levDSec = new imakante.sales.levelDialogSecond(this, true,9050);
-        desktopPane.add(levDSec);
-        levDSec.setVisible(true); 
+        
+        levDSec.setVisible(true);
     }
     
     public static LinkedHashMap getOrderArea() {
