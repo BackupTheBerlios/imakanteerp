@@ -50,9 +50,27 @@
 	<parameter name="pechatot" isForPrompting="false" class="java.lang.String">
 		<defaultValueExpression ><![CDATA["IMAKANTE ERP"]]></defaultValueExpression>
 	</parameter>
-	<queryString><![CDATA[SELECT  DISTINCT CONCAT(rep_comm_nal.level ,rep_comm_nal.code_n_storage ,rep_comm_nal.code_pm ,rep_comm_nal.parcel_pc ) AS con ,rep_comm_nal.code_n_storage ,rep_comm_nal.code_pm ,rep_comm_nal.name_pm ,rep_comm_nal.barcod_pm ,rep_comm_nal.parcel_pc  ,rep_comm_nal.dateofexpire_pc  ,SUM(rep_comm_nal.quant_nal), SUM(rep_comm_nal.miarka3), SUM(rep_comm_nal.miarka2), SUM(rep_comm_nal.ostatak), SUM(rep_comm_nal.TSENA0), SUM(rep_comm_nal.TSENA1)  FROM  `rep_comm_nal`  WHERE `rep_comm_nal`.`code_contragent` BETWEEN '0' AND '1000000000' AND  `rep_comm_nal`.`code_pm` BETWEEN '0' AND '1000000000' AND  `rep_comm_nal`.`code_n_storage` BETWEEN '0' AND '1000000000'  AND rep_comm_nal.dateofexpire_pc BETWEEN '2006-05-01' AND  '2006-05-16' GROUP BY con ORDER BY rep_comm_nal.code_pm ASC
+	<parameter name="sortirano" isForPrompting="false" class="java.lang.String">
+		<defaultValueExpression ><![CDATA["ORDER BY rep_comm_nal.code_pm ASC"]]></defaultValueExpression>
+	</parameter>
+	<queryString><![CDATA[SELECT  DISTINCT CONCAT(rep_comm_nal.level ,
+rep_comm_nal.code_n_storage ,rep_comm_nal.code_pm ,
+rep_comm_nal.parcel_pc ) AS con ,
+rep_comm_nal.code_n_storage ,rep_comm_nal.code_pm ,
+rep_comm_nal.name_pm ,rep_comm_nal.barcod_pm ,
+rep_comm_nal.parcel_pc  ,rep_comm_nal.dateofexpire_pc  ,
+SUM(rep_comm_nal.quant_nal), SUM(rep_comm_nal.miarka3), 
+SUM(rep_comm_nal.miarka2), SUM(rep_comm_nal.ostatak), 
+SUM(rep_comm_nal.TSENA0), SUM(rep_comm_nal.TSENA1) 
+ FROM  
+`rep_comm_nal`  WHERE `rep_comm_nal`.`code_contragent` BETWEEN $P{otkontragent} AND $P{dokontragent}
+ AND  `rep_comm_nal`.`code_pm` BETWEEN $P{otprodukt} AND $P{doprodukt}
+ AND  `rep_comm_nal`.`code_n_storage` BETWEEN $P{otsklad} AND $P{dosklad}
+  AND rep_comm_nal.dateofexpire_pc BETWEEN $P{otdata} AND  $P{dodata} 
+GROUP BY con ORDER BY rep_comm_nal.code_pm ASC
 ]]></queryString>
 
+	<field name="con" class="java.lang.String"/>
 	<field name="code_n_storage" class="java.lang.Integer"/>
 	<field name="code_pm" class="java.lang.Integer"/>
 	<field name="name_pm" class="java.lang.String"/>
