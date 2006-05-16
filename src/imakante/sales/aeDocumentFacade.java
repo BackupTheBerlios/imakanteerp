@@ -2231,8 +2231,13 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jTable1.addFocusListener(new FocusListener() {
             public void focusGained(FocusEvent e) 
             {
+                try
+                {
                 if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
                 ((docLineTableModel) jTable1.getModel()).enableCellEditable(0);
+                System.out.println("focusGained");
+                }
+                catch(Exception ex){System.out.println("Error focusGained");};
             }
             public void focusLost(FocusEvent e) {
             }
