@@ -1511,6 +1511,25 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         return intTransfer;
     }
     
+    public void setIntTransfer(int intTransfer) {
+        this.intTransfer = intTransfer;
+        if (CompNumber == 0) {  }
+        if (CompNumber == 3) jTextField3.setText("" + this.intTransfer);
+        if (CompNumber == 4) jTextField4.setText("" + this.intTransfer);
+        if (CompNumber == 5) jTextField5.setText("" + this.intTransfer);
+        if (CompNumber == 6) jTextField6.setText("" + this.intTransfer);
+        if (CompNumber == 7) jTextField7.setText("" + this.intTransfer);
+        if (CompNumber == 8) jTextField8.setText("" + this.intTransfer);
+        if (CompNumber == 9) jTextField9.setText("" + this.intTransfer);
+        if (CompNumber == 10) jTextField10.setText("" + this.intTransfer);
+        if (CompNumber == 11) jTextField11.setText("" + this.intTransfer);
+        if (CompNumber == 12) jTextField12.setText("" + this.intTransfer);
+        if (CompNumber == 13) jTextField13.setText("" + this.intTransfer);
+        if (CompNumber == 14) jTextField14.setText("" + this.intTransfer);
+        if (CompNumber == 15) jTextField15.setText("" + this.intTransfer);
+        if (CompNumber == 16) jTextField16.setText("" + this.intTransfer);
+    }
+    
     public java.sql.Connection getConn() {
         return conn;
     }
