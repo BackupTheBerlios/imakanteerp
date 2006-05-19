@@ -1476,5 +1476,18 @@ public class reportFrmSalesN extends imakante.com.vcomponents.iInternalFrame imp
     public void setConn(java.sql.Connection conn) {
         this.conn = conn;
     }
-    
+       private java.util.HashMap constructHash(){
+        java.util.HashMap hmap = new java.util.HashMap();
+       
+        if(levelx==3){
+            hmap.put("levex","0");
+        }
+        if(levelx==2){
+            hmap.put("levex","1");
+        }
+        if(levelx==1){
+            hmap.put("levex","0,1");
+        }
+        return hmap;
+    }
 }
