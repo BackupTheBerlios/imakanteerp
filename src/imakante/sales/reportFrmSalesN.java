@@ -1179,6 +1179,8 @@ public class reportFrmSalesN extends imakante.com.vcomponents.iInternalFrame imp
     private java.util.HashMap hm = null;
     private int nubColums = 0;
     private List namesQ = new ArrayList();
+
+    private String fileName = "";
     
     public void windowOpened(java.awt.event.WindowEvent e) {
     }
@@ -1371,7 +1373,7 @@ public class reportFrmSalesN extends imakante.com.vcomponents.iInternalFrame imp
         try{
             initTable(newString, Names);
             imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table,
-                    myframe.getConn(), constructHash(), fileName, "\u0421\u043f\u0440\u0430\u0432\u043a\u0430 \u043d\u0430\u043b\u0438\u0447\u043d\u043e\u0441\u0442", "");
+                    myFrame.getConn(), constructHash(), fileName, "\u0421\u043f\u0440\u0430\u0432\u043a\u0430 \u043d\u0430\u043b\u0438\u0447\u043d\u043e\u0441\u0442", "");
             td.setVisible(true);
         } catch (Exception  ex){
             ex.printStackTrace();
