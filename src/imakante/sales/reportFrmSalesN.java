@@ -1331,7 +1331,7 @@ public class reportFrmSalesN extends imakante.com.vcomponents.iInternalFrame imp
                     (Integer.parseInt(this.jTextField5.getText())-1) + "' AND '" + (Integer.parseInt(this.jTextField6.getText())+1) +
                     "' AND " + " `rep_documents`.`code_pm` BETWEEN '" + (Integer.parseInt(this.jTextField3.getText())-1) +
                     "' AND '" + (Integer.parseInt(this.jTextField4.getText())+1) + "' AND " + " `rep_documents`.`code_n_storage` BETWEEN '" +
-                    (Integer.parseInt(this.jTextField1.getText())-1) + "' AND '" + (Integer.parseInt(this.jTextField2.getText())+1) + "' ";
+                     "' ";
         } catch (NumberFormatException ex) {
             ex.printStackTrace();
         }
