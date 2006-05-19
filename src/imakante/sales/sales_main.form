@@ -485,6 +485,11 @@
                 <Property name="text" type="java.lang.String" value="&#x41f;&#x440;&#x43e;&#x434;&#x430;&#x436;&#x431;&#x438;"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem34">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x41f;&#x440;&#x43e;&#x434;&#x443;&#x43a;&#x442;&#x43e;&#x432;&#x430; &#x440;&#x435;&#x43d;&#x442;&#x430;&#x431;&#x438;&#x43b;&#x43d;&#x43e;&#x441;&#x442;"/>
+              </Properties>
+            </MenuItem>
             <Menu class="javax.swing.JMenu" name="balansMenu">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x411;&#x430;&#x43b;&#x430;&#x43d;&#x441;&#x438;"/>
