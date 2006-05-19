@@ -627,7 +627,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         }
         if (this.jCheckBox2.isSelected()==false){
             newString = newString + ",rep_comm_nal.code_contragent ";
-            namesQ.add("Код контрагент");
+          
         }
         if (this.jCheckBox3.isSelected()==false){
             newString = newString + ",rep_comm_nal.code_pm ";
@@ -685,9 +685,13 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
                 + "SUM(rep_comm_nal.miarka3), "
                 + "SUM(rep_comm_nal.miarka2), "
                 + "SUM(rep_comm_nal.ostatak), "
+                 + "rep_comm_nal.price0_pp, "
                 + "SUM(rep_comm_nal.TSENA0), "
+                 + "rep_comm_nal.price1_pp, "
                 + "SUM(rep_comm_nal.TSENA1), "
+                + "rep_comm_nal.price2_pp, "
                 + "SUM(rep_comm_nal.TSENA2), "
+                 + "rep_comm_nal.price3_pp, "
                 + "SUM(rep_comm_nal.TSENA3) "
                 + " FROM "
                 + " `rep_comm_nal` ";
@@ -695,9 +699,13 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         namesQ.add("Опаковка 3");
         namesQ.add("Опаковка 2");
         namesQ.add("Остатък");
+        namesQ.add("дост. цена");
         namesQ.add("Стойност по дост.");
+        namesQ.add("първа цена");
         namesQ.add("Стойност по листа 1");
+         namesQ.add("втора цена");
         namesQ.add("Стойност по листа 2");
+           namesQ.add("трета цена");
         namesQ.add("Стойност по листа 3");
         this.nubColums = nubColums + 7;
         try {
@@ -739,7 +747,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
             
         }
         if(this.jCheckBox2.isSelected() && this.jCheckBox4.isSelected()==false){
-            
+            fileName="/imakante/sales/jasper/nal_simp_02.jasper";
         }
         if(this.jCheckBox3.isSelected() && this.jCheckBox4.isSelected()==false){
             
