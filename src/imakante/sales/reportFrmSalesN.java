@@ -1350,24 +1350,24 @@ public class reportFrmSalesN extends imakante.com.vcomponents.iInternalFrame imp
         //Create Dialog with print
         System.out.println(newString);
         
-        if(this.jCheckBox1.isSelected() && this.jCheckBox4.isSelected()){
-            
-        }
-        if(this.jCheckBox2.isSelected() && this.jCheckBox4.isSelected()){
-            fileName="/imakante/sales/jasper/nal_simp_01.jasper";
-        }
-        if(this.jCheckBox3.isSelected() && this.jCheckBox4.isSelected()){
-            
-        }
-        if(this.jCheckBox1.isSelected() && this.jCheckBox4.isSelected()==false){
-            
-        }
-        if(this.jCheckBox2.isSelected() && this.jCheckBox4.isSelected()==false){
-            
-        }
-        if(this.jCheckBox3.isSelected() && this.jCheckBox4.isSelected()==false){
-            
-        }
+//        if(this.jCheckBox1.isSelected() && this.jCheckBox4.isSelected()){
+//            
+//        }
+//        if(this.jCheckBox2.isSelected() && this.jCheckBox4.isSelected()){
+//            fileName="/imakante/sales/jasper/nal_simp_01.jasper";
+//        }
+//        if(this.jCheckBox3.isSelected() && this.jCheckBox4.isSelected()){
+//            
+//        }
+//        if(this.jCheckBox1.isSelected() && this.jCheckBox4.isSelected()==false){
+//            
+//        }
+//        if(this.jCheckBox2.isSelected() && this.jCheckBox4.isSelected()==false){
+//            
+//        }
+//        if(this.jCheckBox3.isSelected() && this.jCheckBox4.isSelected()==false){
+//            
+//        }
         try{
             initTable(newString, Names);
             imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table,
