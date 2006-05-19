@@ -707,7 +707,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         namesQ.add("Стойност по листа 2");
            namesQ.add("трета цена");
         namesQ.add("Стойност по листа 3");
-        this.nubColums = nubColums + 7;
+        this.nubColums = nubColums + 10;
         try {
             newString = newString + " WHERE `rep_comm_nal`.`code_contragent` BETWEEN '" +
                     (Integer.parseInt(this.jTextField5.getText())-1) + "' AND '" + (Integer.parseInt(this.jTextField6.getText())+1) +
