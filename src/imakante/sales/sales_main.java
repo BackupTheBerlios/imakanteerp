@@ -136,6 +136,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
+        jMenuItem35 = new javax.swing.JMenuItem();
+        jMenuItem36 = new javax.swing.JMenuItem();
         jMenuItem34 = new javax.swing.JMenuItem();
         balansMenu = new javax.swing.JMenu();
         balansMenu_stock = new javax.swing.JMenuItem();
@@ -694,7 +696,13 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jMenuItem14.setText("\u041f\u0440\u043e\u0434\u0430\u0436\u0431\u0438");
         sprMenu.add(jMenuItem14);
 
-        jMenuItem34.setText("\u041f\u0440\u043e\u0434\u0443\u043a\u0442\u043e\u0432\u0430 \u0440\u0435\u043d\u0442\u0430\u0431\u0438\u043b\u043d\u043e\u0441\u0442");
+        jMenuItem35.setText("\u0421\u0442\u043e\u043a\u0438 \u043c\u0438\u043d\u0438\u043c\u0430\u043b\u043d\u0438 \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u0430");
+        sprMenu.add(jMenuItem35);
+
+        jMenuItem36.setText("\u0420\u0435\u0430\u043b\u0438\u0437\u0438\u0440\u0430\u043d\u0430 \u0440\u0435\u043d\u0442\u0430\u0431\u0438\u043b\u043d\u043e\u0441\u0442");
+        sprMenu.add(jMenuItem36);
+
+        jMenuItem34.setText("\u0417\u0430\u043b\u043e\u0436\u0435\u043d\u0430 \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u043e\u0432\u0430 \u0440\u0435\u043d\u0442\u0430\u0431\u0438\u043b\u043d\u043e\u0441\u0442");
         sprMenu.add(jMenuItem34);
 
         balansMenu.setText("\u0411\u0430\u043b\u0430\u043d\u0441\u0438");
@@ -1238,6 +1246,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenuItem jMenuItem32;
     private javax.swing.JMenuItem jMenuItem33;
     private javax.swing.JMenuItem jMenuItem34;
+    private javax.swing.JMenuItem jMenuItem35;
+    private javax.swing.JMenuItem jMenuItem36;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
