@@ -16,6 +16,7 @@ SELECT
     d.id_df,
     df.number_df,
     df.type_df,
+    df.date_edition_df,
     df.in_contragent_df, ictr.code_contragent AS code_dostavchik, ictr.name_n_contragent AS name_dostavchik,
     df.out_contragent_df, octr.code_contragent AS code_client, octr.name_n_contragent AS name_client,
     df.total_df,
