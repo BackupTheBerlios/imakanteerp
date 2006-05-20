@@ -1179,7 +1179,7 @@ public class reportFrmSalesN extends imakante.com.vcomponents.iInternalFrame imp
     private java.util.HashMap hm = null;
     private int nubColums = 0;
     private List namesQ = new ArrayList();
-
+    
     private String fileName = "";
     
     public void windowOpened(java.awt.event.WindowEvent e) {
@@ -1315,7 +1315,7 @@ public class reportFrmSalesN extends imakante.com.vcomponents.iInternalFrame imp
         }
         newString = newString
                 + ",SUM(rep_documents.quant_nal), "
-               
+                
                 + "SUM(rep_documents.TSENA0), "
                 + "SUM(rep_documents.TSENA1), "
                 + "SUM(rep_documents.TSENA2), "
@@ -1333,7 +1333,7 @@ public class reportFrmSalesN extends imakante.com.vcomponents.iInternalFrame imp
                     (Integer.parseInt(this.jTextField5.getText())-1) + "' AND '" + (Integer.parseInt(this.jTextField6.getText())+1) +
                     "' AND " + " `rep_documents`.`code_pm` BETWEEN '" + (Integer.parseInt(this.jTextField3.getText())-1) +
                     "' AND '" + (Integer.parseInt(this.jTextField4.getText())+1) + "' AND " + " `rep_documents`.`code_n_storage` BETWEEN '" +
-                     "' ";
+                    "' ";
         } catch (NumberFormatException ex) {
             ex.printStackTrace();
         }
@@ -1353,22 +1353,22 @@ public class reportFrmSalesN extends imakante.com.vcomponents.iInternalFrame imp
         System.out.println(newString);
         
 //        if(this.jCheckBox1.isSelected() && this.jCheckBox4.isSelected()){
-//            
+//
 //        }
 //        if(this.jCheckBox2.isSelected() && this.jCheckBox4.isSelected()){
 //            fileName="/imakante/sales/jasper/nal_simp_01.jasper";
 //        }
 //        if(this.jCheckBox3.isSelected() && this.jCheckBox4.isSelected()){
-//            
+//
 //        }
 //        if(this.jCheckBox1.isSelected() && this.jCheckBox4.isSelected()==false){
-//            
+//
 //        }
 //        if(this.jCheckBox2.isSelected() && this.jCheckBox4.isSelected()==false){
-//            
+//
 //        }
 //        if(this.jCheckBox3.isSelected() && this.jCheckBox4.isSelected()==false){
-//            
+//
 //        }
         try{
             initTable(newString, Names);
@@ -1478,9 +1478,9 @@ public class reportFrmSalesN extends imakante.com.vcomponents.iInternalFrame imp
     public void setConn(java.sql.Connection conn) {
         this.conn = conn;
     }
-       private java.util.HashMap constructHash(){
+    private java.util.HashMap constructHash(){
         java.util.HashMap hmap = new java.util.HashMap();
-       
+        
         if(levelx==3){
             hmap.put("levex","0");
         }
@@ -1492,4 +1492,6 @@ public class reportFrmSalesN extends imakante.com.vcomponents.iInternalFrame imp
         }
         return hmap;
     }
+    
+    
 }
