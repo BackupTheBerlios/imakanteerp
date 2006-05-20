@@ -327,7 +327,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
-        
+     imakante.sales.sales_main.setIsStartFrmProduct(false);   
     }//GEN-LAST:event_formInternalFrameClosed
     
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
@@ -445,6 +445,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
 // TODO add your handling code here:
+        imakante.sales.sales_main.setIsStartFrmProduct(false);
         this.dispose();
     }//GEN-LAST:event_jButtonCloseActionPerformed
     
@@ -649,6 +650,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     public void windowClosing(java.awt.event.WindowEvent e) // colose frame`s windows
     {
         imakante.sales.sales_main.setIsStartFrmProduct(false);
+        
         this.dispose();
     }
     
