@@ -1392,20 +1392,20 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     }
     
     private void fillBlanck() {
-        if(jTextField3.getText() == "") jTextField3.setText("1");
-        if(jTextField4.getText() == "") jTextField4.setText("999999999");
-        if(jTextField5.getText() == "") jTextField5.setText("1");
-        if(jTextField6.getText() == "") jTextField6.setText("999999999");
-        if(jTextField7.getText() == "") jTextField7.setText("1");
-        if(jTextField8.getText() == "") jTextField8.setText("999999999");
-        if(jTextField9.getText() == "") jTextField9.setText("1");
-        if(jTextField10.getText() == "") jTextField10.setText("999999999");
-        if(jTextField11.getText() == "") jTextField11.setText("1");
-        if(jTextField12.getText() == "") jTextField12.setText("999999999");
-        if(jTextField13.getText() == "") jTextField13.setText("1");
-        if(jTextField14.getText() == "") jTextField14.setText("999999999");
-        if(jTextField15.getText() == "") jTextField15.setText("1");
-        if(jTextField16.getText() == "") jTextField16.setText("999999999");
+        if(jTextField3.getText().equals("")) jTextField3.setText("1");
+        if(jTextField4.getText().equals("")) jTextField4.setText("999999999");
+        if(jTextField5.getText().equals("")) jTextField5.setText("1");
+        if(jTextField6.getText().equals("")) jTextField6.setText("999999999");
+        if(jTextField7.getText().equals("")) jTextField7.setText("1");
+        if(jTextField8.getText().equals("")) jTextField8.setText("999999999");
+        if(jTextField9.getText().equals("")) jTextField9.setText("1");
+        if(jTextField10.getText().equals("")) jTextField10.setText("999999999");
+        if(jTextField11.getText().equals("")) jTextField11.setText("1");
+        if(jTextField12.getText().equals("")) jTextField12.setText("999999999");
+        if(jTextField13.getText().equals("")) jTextField13.setText("1");
+        if(jTextField14.getText().equals("")) jTextField14.setText("999999999");
+        if(jTextField15.getText().equals("")) jTextField15.setText("1");
+        if(jTextField16.getText().equals("")) jTextField16.setText("999999999");
     }
     
     private void processReport() {

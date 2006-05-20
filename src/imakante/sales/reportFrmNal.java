@@ -766,12 +766,12 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
     }
     
     private void fillBlanck(){
-        if(jTextField1.getText()==""){jTextField1.setText("1");}
-        if(jTextField2.getText()==""){jTextField2.setText("999999999");}
-        if(jTextField3.getText()==""){jTextField3.setText("1");}
-        if(jTextField4.getText()==""){jTextField4.setText("999999999");}
-        if(jTextField5.getText()==""){jTextField5.setText("1");}
-        if(jTextField6.getText()==""){jTextField6.setText("999999999");}
+        if(jTextField1.getText().equals("")){jTextField1.setText("1");}
+        if(jTextField2.getText().equals("")){jTextField2.setText("999999999");}
+        if(jTextField3.getText().equals("")){jTextField3.setText("1");}
+        if(jTextField4.getText().equals("")){jTextField4.setText("999999999");}
+        if(jTextField5.getText().equals("")){jTextField5.setText("1");}
+        if(jTextField6.getText().equals("")){jTextField6.setText("999999999");}
     }
     private java.util.HashMap constructHash(){
         java.util.HashMap hmap = new java.util.HashMap();
