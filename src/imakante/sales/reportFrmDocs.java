@@ -1330,7 +1330,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     private String strSpeditor = "SELECT rep_documents.code_speditor, rep_documents.name_speditor " +
             "FROM rep_documents WHERE rep_documents.code_speditor LIKE '%";
     private String qu = "SELECT ";
-    private String reportFile = "/imakante/sales/jasper/repDox.jasper";
+    private String reportFile = "/imakante/sales/jasper/nal_simp_01.jasper";
     private java.util.HashMap hm = null;
     
     public void windowOpened(java.awt.event.WindowEvent e) {
@@ -1413,14 +1413,14 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         newString = newString + " DISTINCT CONCAT(rep_documents.level_df";
         namesQ.add("\u041D\u043E\u043C\u0435\u0440\u0430\u0442\u043E\u0440");
         this.nubColums = nubColums + 1;
-        if (!this.jCheckBox13.isSelected()) newString = newString + ", rep_documents.date_edition_df";
-        if (!this.jCheckBox14.isSelected()) newString = newString + ", rep_documents.code_store";
-        if (!this.jCheckBox15.isSelected()) newString = newString + ", rep_documents.code_client";
-        if (!this.jCheckBox16.isSelected()) newString = newString + ", rep_documents.code_product";
-        if (!this.jCheckBox17.isSelected()) newString = newString + ", rep_documents.code_dostavchik";
-        if (!this.jCheckBox18.isSelected()) newString = newString + ", rep_documents.code_distributor";
-        if (!this.jCheckBox19.isSelected()) newString = newString + ", rep_documents.code_operator";
-        if (!this.jCheckBox20.isSelected()) newString = newString + ", rep_documents.code_speditor";
+        if (!this.jCheckBox13.isSelected()) newString = newString + ", IFNULL(rep_documents.date_edition_df,0)";
+        if (!this.jCheckBox14.isSelected()) newString = newString + ", IFNULL(rep_documents.code_store,0)";
+        if (!this.jCheckBox15.isSelected()) newString = newString + ", IFNULL(rep_documents.code_client,0)";
+        if (!this.jCheckBox16.isSelected()) newString = newString + ", IFNULL(rep_documents.code_product,0)";
+        if (!this.jCheckBox17.isSelected()) newString = newString + ", IFNULL(rep_documents.code_dostavchik,0)";
+        if (!this.jCheckBox18.isSelected()) newString = newString + ", IFNULL(rep_documents.code_distributor,0)";
+        if (!this.jCheckBox19.isSelected()) newString = newString + ", IFNULL(rep_documents.code_operator,0)";
+        if (!this.jCheckBox20.isSelected()) newString = newString + ", IFNULL(rep_documents.code_speditor,0)";
         newString = newString + ") AS con ";
         if (!this.jCheckBox13.isSelected()) {
             newString = newString + ", rep_documents.date_edition_df"; // ?  date_deliver_df ili date_pay_df ili druga  ?
@@ -1484,14 +1484,14 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         namesQ.add("\u0421\u0443\u043C\u0430 \u0441 \u0414\u0414\u0421");
         namesQ.add("\u0414\u0430\u0442\u0430 \u043D\u0430 \u043F\u043B\u0430\u0449\u0430\u043D\u0435");
         this.nubColums =+ 3;
-        String typeDoc = " rep_documents.type_df IN(";
-        if (this.jCheckBox1.isSelected()) typeDoc = typeDoc + "202, ";
-        if (this.jCheckBox2.isSelected()) typeDoc = typeDoc + "201, ";
-        if (this.jCheckBox3.isSelected()) typeDoc = typeDoc + "600, ";
-        if (this.jCheckBox4.isSelected()) typeDoc = typeDoc + "700, ";
-        if (this.jCheckBox5.isSelected()) typeDoc = typeDoc + "100, ";
-        if (this.jCheckBox6.isSelected()) typeDoc = typeDoc + "800, ";
-        if (this.jCheckBox7.isSelected()) typeDoc = typeDoc + "900, ";
+        String typeDoc = " rep_documents.type_df IN(000";
+        if (this.jCheckBox1.isSelected()) typeDoc = typeDoc + ",202 ";
+        if (this.jCheckBox2.isSelected()) typeDoc = typeDoc + ",201 ";
+        if (this.jCheckBox3.isSelected()) typeDoc = typeDoc + ",600 ";
+        if (this.jCheckBox4.isSelected()) typeDoc = typeDoc + ",700 ";
+        if (this.jCheckBox5.isSelected()) typeDoc = typeDoc + ",100 ";
+        if (this.jCheckBox6.isSelected()) typeDoc = typeDoc + ",800 ";
+        if (this.jCheckBox7.isSelected()) typeDoc = typeDoc + ",900 ";
         if (this.jCheckBox8.isSelected()) typeDoc = typeDoc + "";
         if (this.jCheckBox9.isSelected()) typeDoc = typeDoc + "";
         if (this.jCheckBox10.isSelected()) typeDoc = typeDoc + "";
@@ -1500,22 +1500,22 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         typeDoc = typeDoc + ")";
         try {
             newString = newString + " WHERE " + typeDoc +
-                    "rep_documents.date_edition_df BETWEEN '" + (String)formatterG.format(this.jXDatePicker1.getDate()) +
+                    "  AND rep_documents.date_edition_df BETWEEN '" + (String)formatterG.format(this.jXDatePicker1.getDate()) +
                     "' AND '" + (String)formatterG.format(this.jXDatePicker2.getDate()) +
-                    "' AND rep_documents.code_store BETWEEN '" + (Integer.parseInt(jTextField3.getText()) + 1) +
-                    "' AND '" + (Integer.parseInt(jTextField4.getText()) - 1) +
-                    "' AND rep_documents.code_client BETWEEN '" + (Integer.parseInt(jTextField5.getText()) + 1) +
-                    "' AND '" + (Integer.parseInt(jTextField6.getText()) - 1) +
-                    "' AND rep_documents.code_product BETWEEN '" + (Integer.parseInt(jTextField7.getText()) + 1) +
-                    "' AND '" + (Integer.parseInt(jTextField8.getText()) - 1) +
-                    "' AND rep_documents.code_dostavchik BETWEEN '" + (Integer.parseInt(jTextField9.getText()) + 1) +
-                    "' AND '" + (Integer.parseInt(jTextField10.getText()) - 1) +
-                    "' AND rep_documents.code_distributor BETWEEN '" + (Integer.parseInt(jTextField11.getText()) + 1) +
-                    "' AND '" + (Integer.parseInt(jTextField12.getText()) - 1) +
-                    "' AND rep_documents.code_operator BETWEEN '" + (Integer.parseInt(jTextField13.getText()) + 1) +
-                    "' AND '" + (Integer.parseInt(jTextField14.getText()) - 1) +
-                    "' AND rep_documents.code_speditor BETWEEN '" + (Integer.parseInt(jTextField15.getText()) + 1) +
-                    "' AND '" + (Integer.parseInt(jTextField16.getText()) - 1) + "' ";
+                    "' AND rep_documents.code_store BETWEEN '" + (Integer.parseInt(jTextField3.getText()) - 1) +
+                    "' AND '" + (Integer.parseInt(jTextField4.getText()) + 1) +
+                    "' AND rep_documents.code_client BETWEEN '" + (Integer.parseInt(jTextField5.getText()) - 1) +
+                    "' AND '" + (Integer.parseInt(jTextField6.getText()) + 1) +
+                    "' AND rep_documents.code_product BETWEEN '" + (Integer.parseInt(jTextField7.getText()) - 1) +
+                    "' AND '" + (Integer.parseInt(jTextField8.getText()) + 1) +
+                    "' AND rep_documents.code_dostavchik BETWEEN '" + (Integer.parseInt(jTextField9.getText()) - 1) +
+                    "' AND '" + (Integer.parseInt(jTextField10.getText()) + 1) +
+                    "' AND rep_documents.code_distributor BETWEEN '" + (Integer.parseInt(jTextField11.getText()) - 1) +
+                    "' AND '" + (Integer.parseInt(jTextField12.getText()) + 1) +
+                    "' AND rep_documents.code_operator BETWEEN '" + (Integer.parseInt(jTextField13.getText()) - 1) +
+                    "' AND '" + (Integer.parseInt(jTextField14.getText()) + 1) +
+                    "' AND rep_documents.code_speditor BETWEEN '" + (Integer.parseInt(jTextField15.getText()) - 1) +
+                    "' AND '" + (Integer.parseInt(jTextField16.getText()) + 1) + "' ";
         } catch (NumberFormatException ex) { ex.printStackTrace(); }
         if(levelx == 3) newString = newString + " AND rep_documents.level_df = 0";
         if(levelx == 2) newString = newString + " AND rep_documents.level_df = 1";

@@ -42,7 +42,7 @@
                   <Component id="jPanel9" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="183" max="32767" attributes="0"/>
+                      <EmptySpace pref="187" max="32767" attributes="0"/>
                       <Component id="jButton1" linkSize="1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton3" min="-2" max="-2" attributes="0"/>
@@ -132,7 +132,7 @@
                       <Component id="jCheckBox8" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jCheckBox4" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="44" max="32767" attributes="0"/>
+                  <EmptySpace pref="40" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -463,15 +463,15 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                  <Component id="jLabel4" pref="72" max="32767" attributes="0"/>
+                  <Component id="jLabel4" pref="71" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="jLabel5" pref="20" max="32767" attributes="0"/>
+                  <Component id="jLabel5" pref="19" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField3" pref="118" max="32767" attributes="0"/>
+                  <Component id="jTextField3" pref="117" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   <Component id="jLabel6" pref="17" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField4" pref="116" max="32767" attributes="0"/>
+                  <Component id="jTextField4" pref="115" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="jCheckBox14" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
@@ -571,15 +571,15 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                  <Component id="jLabel7" pref="72" max="32767" attributes="0"/>
+                  <Component id="jLabel7" pref="71" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="jLabel8" pref="20" max="32767" attributes="0"/>
+                  <Component id="jLabel8" pref="19" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField5" pref="118" max="32767" attributes="0"/>
+                  <Component id="jTextField5" pref="117" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   <Component id="jLabel9" pref="17" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField6" pref="116" max="32767" attributes="0"/>
+                  <Component id="jTextField6" pref="115" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="jCheckBox15" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
@@ -679,15 +679,15 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                  <Component id="jLabel10" pref="72" max="32767" attributes="0"/>
+                  <Component id="jLabel10" pref="71" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="jLabel11" pref="20" max="32767" attributes="0"/>
+                  <Component id="jLabel11" pref="19" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField7" pref="118" max="32767" attributes="0"/>
+                  <Component id="jTextField7" pref="117" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   <Component id="jLabel12" pref="17" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField8" pref="116" max="32767" attributes="0"/>
+                  <Component id="jTextField8" pref="115" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="jCheckBox16" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
@@ -787,15 +787,15 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                  <Component id="jLabel13" pref="72" max="32767" attributes="0"/>
+                  <Component id="jLabel13" pref="71" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="jLabel14" pref="20" max="32767" attributes="0"/>
+                  <Component id="jLabel14" pref="19" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField9" pref="118" max="32767" attributes="0"/>
+                  <Component id="jTextField9" pref="117" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   <Component id="jLabel15" pref="17" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField10" pref="116" max="32767" attributes="0"/>
+                  <Component id="jTextField10" pref="115" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="jCheckBox17" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
@@ -897,13 +897,13 @@
                   <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                   <Component id="jLabel16" pref="74" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="jLabel17" pref="20" max="32767" attributes="0"/>
+                  <Component id="jLabel17" pref="19" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField11" pref="116" max="32767" attributes="0"/>
+                  <Component id="jTextField11" pref="115" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   <Component id="jLabel18" pref="17" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField12" pref="116" max="32767" attributes="0"/>
+                  <Component id="jTextField12" pref="114" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="jCheckBox18" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
@@ -1003,15 +1003,15 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                  <Component id="jLabel19" pref="72" max="32767" attributes="0"/>
+                  <Component id="jLabel19" pref="71" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="jLabel20" pref="20" max="32767" attributes="0"/>
+                  <Component id="jLabel20" pref="19" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField13" pref="118" max="32767" attributes="0"/>
+                  <Component id="jTextField13" pref="117" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   <Component id="jLabel21" pref="17" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField14" pref="116" max="32767" attributes="0"/>
+                  <Component id="jTextField14" pref="115" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="jCheckBox19" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
@@ -1130,15 +1130,15 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                  <Component id="jLabel22" pref="72" max="32767" attributes="0"/>
+                  <Component id="jLabel22" pref="71" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="jLabel23" pref="20" max="32767" attributes="0"/>
+                  <Component id="jLabel23" pref="19" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField15" pref="118" max="32767" attributes="0"/>
+                  <Component id="jTextField15" pref="117" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   <Component id="jLabel24" pref="17" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField16" pref="116" max="32767" attributes="0"/>
+                  <Component id="jTextField16" pref="115" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="jCheckBox20" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
