@@ -836,7 +836,11 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
                             myParent.getCNamePM(),myParent.getMax_POP(),myParent.getFlag(),
                             myParent.getExpertSheet(),myParent.getBarCod(),myParent.getCod1(),
                             myParent.getCod2(),myParent.getMinProduct(),myParent.getCodePM());
+                    
+                    
                     int maxId_pm = myParent.getCountriesT().getMaxId();
+                    
+                    
                     myParent.getCountriesT().setNewConsigment(maxId_pm); // syzdavane na nova partida s nomer 0001;
                     if(jTextFieldContragent.getText().length() > 0)
                         myParent.getCountriesT().setIDProductContragent(maxId_pm,myParent.getId_Contragent(),0);
@@ -1070,12 +1074,15 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         
         
         isNewInputContragent = true;
+        if(myParent.getId_PM()>0)
+        {
         myParent.setId_Contragent(myParent.getCountriesT().getContragentID(myParent.getId_PM(),0));
         
         if(myParent.getId_Contragent() != 0) {
             isNewInputContragent = false; // flag opredelq6t dali za tozi produkt imame vkaran kontragent ili ne
             String contragent = myParent.getCountriesT().getProductContragent(myParent.getId_Contragent());
             jTextFieldContragent.setText(contragent);
+        }
         }
         
     }

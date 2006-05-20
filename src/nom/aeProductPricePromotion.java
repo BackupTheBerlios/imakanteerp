@@ -3,6 +3,7 @@ package nom;
 
 import imakante.com.vcomponents.iInternalFrame;
 import javax.swing.JOptionPane;
+import java.util.Date;
 public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog 
 {
     
@@ -44,8 +45,8 @@ public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextFieldPromoPrice = new javax.swing.JTextField();
-        jTextFieldDataStart = new javax.swing.JTextField();
-        jTextFieldDateStop = new javax.swing.JTextField();
+        jXDatePickerStart = new org.jdesktop.swingx.JXDatePicker();
+        jXDatePickerStop = new org.jdesktop.swingx.JXDatePicker();
 
         jTextField1.setText("jTextField1");
 
@@ -113,72 +114,22 @@ public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog
         gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 20);
         jPanel2.add(jTextFieldPromoPrice, gridBagConstraints);
 
-        jTextFieldDataStart.setPreferredSize(new java.awt.Dimension(80, 20));
-        jTextFieldDataStart.setInputVerifier(new imakante.com.InputDateVerifier());
-        jTextFieldDataStart.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextFieldDataStartFocusLost(evt);
-            }
-        });
-        jTextFieldDataStart.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextFieldDataStartKeyPressed(evt);
-            }
-        });
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel2.add(jTextFieldDataStart, gridBagConstraints);
-
-        jTextFieldDateStop.setPreferredSize(new java.awt.Dimension(80, 20));
-        jTextFieldDateStop.setInputVerifier(new imakante.com.InputDateVerifier());
-        jTextFieldDateStop.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextFieldDateStopFocusLost(evt);
-            }
-        });
-        jTextFieldDateStop.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextFieldDateStopKeyPressed(evt);
-            }
-        });
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
+        jPanel2.add(jXDatePickerStart, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel2.add(jTextFieldDateStop, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
+        jPanel2.add(jXDatePickerStop, gridBagConstraints);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextFieldDateStopFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldDateStopFocusLost
-// TODO add your handling code here:
-        
-    }//GEN-LAST:event_jTextFieldDateStopFocusLost
-
-    private void jTextFieldDateStopKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDateStopKeyPressed
-// TODO add your handling code here:
-       
-    }//GEN-LAST:event_jTextFieldDateStopKeyPressed
-
-    private void jTextFieldDataStartFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldDataStartFocusLost
-// TODO add your handling code here:
-       
-        
-    }//GEN-LAST:event_jTextFieldDataStartFocusLost
-
-    private void jTextFieldDataStartKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDataStartKeyPressed
-// TODO add your handling code here:
-       
-        
-    }//GEN-LAST:event_jTextFieldDataStartKeyPressed
 
     private void jTextFieldPromoPriceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPromoPriceKeyPressed
 // TODO add your handling code here:
@@ -194,9 +145,19 @@ public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog
         try
         {
             promo = Double.parseDouble(jTextFieldPromoPrice.getText());
-            dateStart = jTextFieldDataStart.getText();
-            dateStop = jTextFieldDateStop.getText();
             imakante.com.dateManipulation newdate = new imakante.com.dateManipulation();
+           // dateStart = jTextFieldDataStart.getText();
+           // dateStop = jTextFieldDateStop.getText();
+            
+             dateStart = String.valueOf(jXDatePickerStart.getDate().getDate());
+             dateStart += "/" + String.valueOf(jXDatePickerStart.getDate().getMonth()+1); // 
+             dateStart += "/" + String.valueOf(jXDatePickerStart.getDate().getYear()+1900);
+                    
+             dateStop = String.valueOf(jXDatePickerStop.getDate().getDate());
+             dateStop += "/" + String.valueOf(jXDatePickerStop.getDate().getMonth()+1); // 
+             dateStop += "/" + String.valueOf(jXDatePickerStop.getDate().getYear()+1900);
+                           
+            
             String newDateStart = newdate.convertDate(dateStart);
             String newDateStop =  newdate.convertDate(dateStop);
             if(isNew)
@@ -248,9 +209,9 @@ public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextFieldDataStart;
-    private javax.swing.JTextField jTextFieldDateStop;
     private javax.swing.JTextField jTextFieldPromoPrice;
+    private org.jdesktop.swingx.JXDatePicker jXDatePickerStart;
+    private org.jdesktop.swingx.JXDatePicker jXDatePickerStop;
     // End of variables declaration//GEN-END:variables
  //--------------- My Variables
     private nom.FrmProduct myParent;
@@ -267,12 +228,62 @@ private void getPrices()
 {
     String prices[] = myParent.getCountriesT().getProductPromotionPrice(id_price);
     jTextFieldPromoPrice.setText(prices[0]);
-    jTextFieldDataStart.setText(prices[1]);
-    jTextFieldDateStop.setText(prices[2]);
+  //  jTextFieldDataStart.setText(prices[1]);
+  //  jTextFieldDateStop.setText(prices[2]);
+    
+     String newDate = checkAndConvertSQLFormat(prices[1]);
+     int dateInt[] = getDateAsInt(newDate);
+     Date date = new Date(dateInt[2]-1900,dateInt[1]-1,dateInt[0]);
+     jXDatePickerStart.setDate(date);
+     
+     newDate = checkAndConvertSQLFormat(prices[2]);
+     dateInt = getDateAsInt(newDate);
+     date = new Date(dateInt[2]-1900,dateInt[1]-1,dateInt[0]);
+     jXDatePickerStop.setDate(date);
     
 }
 private void showMessage()
 {
      JOptionPane.showMessageDialog(this,"\u041c\u043e\u043b\u044f, \u0432\u044a\u0432\u0435\u0434\u0435\u0442\u0435 \u043a\u043e\u0440\u0435\u043a\u043d\u043e \u0434\u0430\u043d\u043d\u0438\u0442\u0435");
 }
+  private  int[] getDateAsInt(String in) {
+        int date[] = new int[3];
+        int lenght = in.length();
+        char ch[] = in.toCharArray();
+        String day = String.copyValueOf(ch,0,2); //
+        int dayInt = Integer.parseInt(day);
+        String month = String.copyValueOf(ch,3,2);
+        int monthInt = Integer.parseInt(month);
+        String year = String.copyValueOf(ch,6,4);
+        int yearInt = Integer.parseInt(year);
+        date[0]= dayInt;
+        date[1]= monthInt;
+        date[2]= yearInt;
+        return date;
+    }
+    private  String checkAndConvertSQLFormat(String in) {
+        String newDate = in;
+        char ch[] = in.toCharArray();
+        int length = in.length();
+        int bufLength=0;
+        int  countS = 0;
+        for(int i=0; i < length;i++) {
+            if(ch[i]==45 || ch[i]==46 || ch[i]==47 ) {
+                countS++;
+                if(i==4 && countS==1) // SQL format
+                {
+                    newDate = in.substring(length-2,length);
+                    newDate +="/";
+                    newDate +=in.substring(length-5,length-3);
+                    newDate +="/";
+                    newDate +=in.substring(0,4);
+                    break;
+                }
+            }
+        }
+        
+        
+        
+        return newDate;
+    }
 }// end class
