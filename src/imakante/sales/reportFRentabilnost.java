@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class reportStockOut extends imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
+public class reportFRentabilnost extends imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
-    public reportStockOut(String title,imakante.com.vcomponents.iFrame frame, int levelx) {
+    public reportFRentabilnost(String title,imakante.com.vcomponents.iFrame frame, int levelx) {
         super(title);
         myframe = frame;
         this.levelx = levelx;
@@ -46,7 +46,7 @@ public class reportStockOut extends imakante.com.vcomponents.iInternalFrame impl
 
         setClosable(true);
         setIconifiable(true);
-        setTitle("\u0421\u043f\u0440\u0430\u0432\u043a\u0430 \u0441\u0442\u043e\u043a\u0438 \u043f\u043e\u0434 \u043c\u0438\u043d\u0438\u043c\u0430\u043b\u0435\u043d \u043f\u0440\u0430\u0433");
+        setTitle("\u0421\u043f\u0440\u0430\u0432\u043a\u0430 \u0437\u0430\u043b\u043e\u0436\u0435\u043d\u0430 \u0440\u0435\u043d\u0442\u0430\u0431\u0438\u043b\u043d\u043e\u0441\u0442");
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jLabel1.setText("\u0421\u043a\u043b\u0430\u0434          \u043e\u0442:");
 
@@ -248,7 +248,7 @@ public class reportStockOut extends imakante.com.vcomponents.iInternalFrame impl
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-546)/2, (screenSize.height-220)/2, 546, 220);
     }// </editor-fold>//GEN-END:initComponents
-    
+                    
     private void jTextField6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyPressed
         if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()){
             processField6();
@@ -537,34 +537,46 @@ public class reportStockOut extends imakante.com.vcomponents.iInternalFrame impl
         
         newString = newString + " DISTINCT CONCAT(rep_comm_nal.level ,rep_comm_nal.code_n_storage ,rep_comm_nal.code_pm ) AS con ";
         this.nubColums = nubColums + 1;
-        
+      
+            newString = newString
+                    + ",rep_comm_nal.code_n_storage ";
+            namesQ.add("Код склад");
+            this.nubColums = nubColums + 1;
+            newString = newString
+                    + ",rep_comm_nal.code_pm "
+                    + ",rep_comm_nal.name_pm ";
+            namesQ.add("Код продукт");
+            this.nubColums = nubColums + 1;
+            namesQ.add("Име продукт");
         newString = newString
-                + ",rep_comm_nal.code_n_storage ";
-        namesQ.add("Код склад");
-        this.nubColums = nubColums + 1;
-        newString = newString
-                + ",rep_comm_nal.code_pm "
-                + ",rep_comm_nal.name_pm ";
-        namesQ.add("Код продукт");
-        this.nubColums = nubColums + 1;
-        namesQ.add("Име продукт");
-        newString = newString
-                + ",SUM(rep_comm_nal.quant_nal) as kolichestvo, "
+                + ",SUM(rep_comm_nal.quant_nal), "
                 + "SUM(rep_comm_nal.miarka3), "
                 + "SUM(rep_comm_nal.miarka2), "
                 + "SUM(rep_comm_nal.ostatak), "
-              
-                + "n_product_main.min_pm, "
-                + "(kolichestvo - n_product_main.min_pm) AS rez"
+                + "n_product_main.max_pop_pm, "
+                + "rep_comm_nal.price0_pp, as ts0, "
+                + "SUM(rep_comm_nal.TSENA0), "
+                + "rep_comm_nal.price1_pp as ts1р"
+                + "SUM(rep_comm_nal.TSENA1) , "
+                + "rep_comm_nal.price2_pp as ts2р"
+                + "SUM(rep_comm_nal.TSENA2), "
+                + "rep_comm_nal.price3_pp as ts2, "
+                + "SUM(rep_comm_nal.TSENA3) "
                 + " FROM "
                 + " `rep_comm_nal` JOIN n_product_main on rep_comm_nal.id_pm = n_product_main.id_pm";
         namesQ.add("Налично количество");
         namesQ.add("Опаковка 3");
         namesQ.add("Опаковка 2");
         namesQ.add("Остатък");
-        namesQ.add("Праг");
-        
-        this.nubColums = nubColums + 5;
+        namesQ.add("дост. цена");
+        namesQ.add("Стойност по дост.");
+        namesQ.add("първа цена");
+        namesQ.add("Стойност по листа 1");
+        namesQ.add("втора цена");
+        namesQ.add("Стойност по листа 2");
+        namesQ.add("трета цена");
+        namesQ.add("Стойност по листа 3");
+        this.nubColums = nubColums + 10;
         try {
             newString = newString + " WHERE `rep_comm_nal`.`code_contragent` BETWEEN '" +
                     (Integer.parseInt(this.jTextField5.getText())-1) + "' AND '" + (Integer.parseInt(this.jTextField6.getText())+1) +
@@ -583,15 +595,15 @@ public class reportStockOut extends imakante.com.vcomponents.iInternalFrame impl
         if(levelx==1){
             newString = newString + " AND rep_comm_nal.level IN(0,1)";
         }
-        newString = newString + " GROUP BY con ORDER BY rez DSC";
+        newString = newString + " GROUP BY con ORDER BY rep_comm_nal.code_pm ASC";
         
         String[] Names = (String[]) namesQ.toArray(new String[this.nubColums]);
         //Create Dialog with print
         System.out.println(newString);
         
-        
-        fileName="/imakante/sales/jasper/nal_simp_01.jasper";
-        
+       
+            fileName="/imakante/sales/jasper/nal_simp_01.jasper";
+     
         try{
             initTable(newString, Names);
             imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table,
@@ -602,7 +614,7 @@ public class reportStockOut extends imakante.com.vcomponents.iInternalFrame impl
             constructDialod(newString, 0, Names);
             System.out.println("Ne moga da nameria faila  ");
         }
-        
+       
     }
     
     private void fillBlanck(){
