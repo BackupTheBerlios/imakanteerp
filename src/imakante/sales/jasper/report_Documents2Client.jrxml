@@ -2,7 +2,7 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="report_Documents"
+		 name="report_Documents2Client"
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
@@ -81,7 +81,7 @@ IFNULL(rep_documents.code_operator, 0), IFNULL(rep_documents.code_speditor, 0))
 AS con, rep_documents.number_df, 
 rep_documents.type_df , rep_documents.date_edition_df, 
 rep_documents.code_store,
-rep_documents.code_dostavchik,
+rep_documents.code_client,
 rep_documents.code_distributor,
 rep_documents.code_operator,
 rep_documents.code_speditor,
@@ -103,7 +103,7 @@ GROUP BY con ORDER BY rep_documents.date_edition_df ASC]]></queryString>
 	<field name="type_df" class="java.lang.Long"/>
 	<field name="date_edition_df" class="java.lang.String"/>
 	<field name="code_store" class="java.lang.Long"/>
-	<field name="code_dostavchik" class="java.lang.Long"/>
+	<field name="code_client" class="java.lang.Long"/>
 	<field name="code_distributor" class="java.lang.Long"/>
 	<field name="code_operator" class="java.lang.Long"/>
 	<field name="code_speditor" class="java.lang.Long"/>
@@ -758,7 +758,7 @@ GROUP BY con ORDER BY rep_documents.date_edition_df ASC]]></queryString>
 					<textElement textAlignment="Center">
 						<font fontName="Tahoma" size="8"/>
 					</textElement>
-				<text><![CDATA[контрагент]]></text>
+				<text><![CDATA[клиент]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
@@ -908,7 +908,7 @@ GROUP BY con ORDER BY rep_documents.date_edition_df ASC]]></queryString>
 					<textElement>
 						<font fontName="Tahoma" size="8"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Field}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{code_client}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -918,7 +918,7 @@ GROUP BY con ORDER BY rep_documents.date_edition_df ASC]]></queryString>
 						height="16"
 						key="textField-23"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
+					<textElement textAlignment="Right">
 						<font fontName="Tahoma" size="8"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{total_df}]]></textFieldExpression>
@@ -931,7 +931,7 @@ GROUP BY con ORDER BY rep_documents.date_edition_df ASC]]></queryString>
 						height="16"
 						key="textField-24"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
+					<textElement textAlignment="Right">
 						<font fontName="Tahoma" size="8"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{dds_df}]]></textFieldExpression>
