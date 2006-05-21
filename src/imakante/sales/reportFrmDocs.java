@@ -1208,7 +1208,6 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     }//GEN-LAST:event_jTextField14KeyPressed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (!namesQ.isEmpty()) namesQ.clear();
         if (anyBoxChecked()) {
             fillBlanck();
             processReport();
@@ -1310,10 +1309,8 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     private int levelx = 3;
     private int intTransfer;
     private int CompNumber = 0;
-    private int nubColums = 0;
     private String[] Names = { "\u041a\u041e\u0414", "\u0418\u041c\u0415" };
     private String[] NamesQ = { "\u041D\u043E\u043C\u0435\u0440\u0430\u0442\u043E\u0440" };
-    private java.util.List namesQ = new java.util.ArrayList();
     java.text.SimpleDateFormat formatterG = new java.text.SimpleDateFormat("yyyy-MM-dd");
     
     private String strStore = "SELECT rep_documents.code_store, rep_documents.name_store " +
@@ -1412,8 +1409,10 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     private void processReport() {
         String newString = qu;
         newString = newString + " DISTINCT CONCAT(rep_documents.level_df";
+        java.util.List namesQ = new java.util.ArrayList();
         namesQ.add("\u041D\u043E\u043C\u0435\u0440\u0430\u0442\u043E\u0440");
-        this.nubColums = nubColums + 1;
+        int nubColums = 0;
+        nubColums = nubColums + 1;
         if (!this.jCheckBox13.isSelected()) newString = newString + ", IFNULL(rep_documents.date_edition_df, 0)";
         if (!this.jCheckBox14.isSelected()) newString = newString + ", IFNULL(rep_documents.code_store, 0)";
         if (!this.jCheckBox15.isSelected()) newString = newString + ", IFNULL(rep_documents.code_client, 0)";
@@ -1426,56 +1425,56 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         if (!this.jCheckBox13.isSelected()) {
             newString = newString + ", rep_documents.date_edition_df";
             namesQ.add("\u0414\u0430\u0442\u0430");
-            this.nubColums =+ 1;
+            nubColums =+ 1;
         }
         if (!this.jCheckBox14.isSelected()) {
             newString = newString + ", rep_documents.code_store, rep_documents.name_store";
             namesQ.add("\u041A\u043E\u0434 \u0441\u043A\u043B\u0430\u0434");
-            this.nubColums =+ 1;
+            nubColums =+ 1;
             namesQ.add("\u0418\u043C\u0435 \u0441\u043A\u043B\u0430\u0434");
-            this.nubColums =+ 1;
+            nubColums =+ 1;
         }
         if (!this.jCheckBox15.isSelected()) {
             newString = newString + ", rep_documents.code_client, rep_documents.name_client";
             namesQ.add("\u041A\u043E\u0434 \u043A\u043B\u0438\u0435\u043D\u0442");
-            this.nubColums =+ 1;
+            nubColums =+ 1;
             namesQ.add("\u0418\u043C\u0435 \u043A\u043B\u0438\u0435\u043D\u0442");
-            this.nubColums =+ 1;
+            nubColums =+ 1;
         }
         if (!this.jCheckBox16.isSelected()) {
             newString = newString + ", rep_documents.code_product, rep_documents.name_product";
             namesQ.add("\u041A\u043E\u0434 \u043F\u0440\u043E\u0434\u0443\u043A\u0442");
-            this.nubColums =+ 1;
+            nubColums =+ 1;
             namesQ.add("\u0418\u043C\u0435 \u043F\u0440\u043E\u0434\u0443\u043A\u0442");
-            this.nubColums =+ 1;
+            nubColums =+ 1;
         }
         if (!this.jCheckBox17.isSelected()) {
             newString = newString + ", rep_documents.code_dostavchik, rep_documents.name_dostavchik";
             namesQ.add("\u041A\u043E\u0434 \u0434\u043E\u0441\u0442\u0430\u0432\u0447\u0438\u043A");
-            this.nubColums =+ 1;
+            nubColums =+ 1;
             namesQ.add("\u0418\u043C\u0435 \u0434\u043E\u0441\u0442\u0430\u0432\u0447\u0438\u043A");
-            this.nubColums =+ 1;
+            nubColums =+ 1;
         }
         if (!this.jCheckBox18.isSelected()) {
             newString = newString + ", rep_documents.code_distributor, rep_documents.name_distributor";
             namesQ.add("\u041A\u043E\u0434 \u0434\u0438\u0441\u0442\u0440\u0438\u0431\u0443\u0442\u043E\u0440");
-            this.nubColums =+ 1;
+            nubColums =+ 1;
             namesQ.add("\u0418\u043C\u0435 \u0434\u0438\u0441\u0442\u0440\u0438\u0431\u0443\u0442\u043E\u0440");
-            this.nubColums =+ 1;
+            nubColums =+ 1;
         }
         if (!this.jCheckBox19.isSelected()) {
             newString = newString + ", rep_documents.code_operator, rep_documents.name_operator";
             namesQ.add("\u041A\u043E\u0434 \u043E\u043F\u0435\u0440\u0430\u0442\u043E\u0440");
-            this.nubColums =+ 1;
+            nubColums =+ 1;
             namesQ.add("\u0418\u043C\u0435 \u043E\u043F\u0435\u0440\u0430\u0442\u043E\u0440");
-            this.nubColums =+ 1;
+            nubColums =+ 1;
         }
         if (!this.jCheckBox20.isSelected()) {
             newString = newString + ", rep_documents.code_speditor, rep_documents.name_speditor";
             namesQ.add("\u041A\u043E\u0434 \u0441\u043F\u0435\u0434\u0438\u0442\u043E\u0440");
-            this.nubColums =+ 1;
+            nubColums =+ 1;
             namesQ.add("\u0418\u043C\u0435 \u0441\u043F\u0435\u0434\u0438\u0442\u043E\u0440");
-            this.nubColums =+ 1;
+            nubColums =+ 1;
         }
         newString = newString + ", rep_documents.total_df, " +
                 "rep_documents.dds_df, " +
@@ -1484,7 +1483,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         namesQ.add("\u0421\u0443\u043C\u0430 \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442");
         namesQ.add("\u0421\u0443\u043C\u0430 \u0441 \u0414\u0414\u0421");
         namesQ.add("\u0414\u0430\u0442\u0430 \u043D\u0430 \u043F\u043B\u0430\u0449\u0430\u043D\u0435");
-        this.nubColums =+ 3;
+        nubColums =+ 3;
         String typeDoc = " rep_documents.type_df IN(000";
         if (this.jCheckBox1.isSelected()) typeDoc = typeDoc + ", 202";
         if (this.jCheckBox2.isSelected()) typeDoc = typeDoc + ", 201";
@@ -1522,7 +1521,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         if(levelx == 2) newString = newString + " AND rep_documents.level_df = 1";
         if(levelx == 1) newString = newString + " AND rep_documents.level_df IN(0,1)";
         newString = newString + " GROUP BY con ORDER BY rep_documents.type_df ASC";
-        String[] Names = (String[]) namesQ.toArray(new String[this.nubColums]);
+        String[] Names = (String[]) namesQ.toArray(new String[nubColums]);
         System.out.println(newString);
         try {
             initTable(newString, Names);
