@@ -367,7 +367,7 @@ public class reportStockOut extends imakante.com.vcomponents.iInternalFrame impl
     private  int CompNumber = 0;
     
     private String strContragent = "SELECT "
-            + "`rep_comm_nal`.`code_contragent`"
+            + "`rep_comm_nal`.`code_contragent` , `rep_comm_nal`.`name_n_contragent` "
             + "FROM `rep_comm_nal` WHERE `rep_comm_nal`.`code_contragent` LIKE  '%";
     
     private String strProduct = "SELECT "
@@ -377,7 +377,6 @@ public class reportStockOut extends imakante.com.vcomponents.iInternalFrame impl
     private String strStore = "SELECT "
             + "`rep_comm_nal`.`code_n_storage`, `rep_comm_nal`.`name_n_storage`"
             + "FROM `rep_comm_nal` WHERE `rep_comm_nal`.`code_n_storage` LIKE  '%";
-    
     private String[] NamesQ= {"con"};
     private List namesQ = new ArrayList();
     private int nubColums = 0;

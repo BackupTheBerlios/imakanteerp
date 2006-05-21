@@ -38,7 +38,7 @@
 	<parameter name="firmaname" isForPrompting="false" class="java.lang.String">
 		<defaultValueExpression ><![CDATA[""]]></defaultValueExpression>
 	</parameter>
-	<parameter name="id_dok" isForPrompting="false" class="java.lang.String">
+	<parameter name="id_dok" isForPrompting="true" class="java.lang.String">
 		<defaultValueExpression ><![CDATA[""]]></defaultValueExpression>
 	</parameter>
 	<queryString><![CDATA[SELECT
