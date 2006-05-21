@@ -579,7 +579,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
     protected  void refreshTable() {
         jScrollPane1.remove(table);
         rs = getContragentDB().getTable();
-        model = new imakante.com.CustomTableModel(conn, rs, null);
+        model = new imakante.com.CustomTableModel(conn, rs, columnName);
         table = new imakante.com.CustomTable(model);
         jScrollPane1.getViewport().add(table);
         HideColumns(getColumnIndex("id_contragent"));
@@ -587,6 +587,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
         HideColumns(getColumnIndex("id_mol"));
         HideColumns(getColumnIndex("id_oso"));
         jScrollPane1.repaint();
+        
     }
     
     public  void mTableEnd() {

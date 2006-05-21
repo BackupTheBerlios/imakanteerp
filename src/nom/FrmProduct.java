@@ -628,7 +628,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
         } catch(Exception ex) {
             
         }
-        // HideColumns(getColumnIndex("id_pm"));
+        HideColumns(getColumnIndex("id_pm"));
         HideColumns(getColumnIndex("id_pp"));
         HideColumns(getColumnIndex("id_ppp"));
         HideColumns(getColumnIndex("id_pd"));

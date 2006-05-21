@@ -587,7 +587,11 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         } catch(Exception e) {
             e.printStackTrace();
         }
-        repaintComp();
+     if(myParent.getId_PF()!=0) {
+            String  fee[] = myParent.getCountriesT().getProdictFee(myParent.getId_PF());
+            jTextFieldFee.setText(fee[0]);
+        } else jTextFieldFee.setText(myParent.getViewFee());
+      //  repaintComp();
     }//GEN-LAST:event_jTextFieldFeeKeyPressed
     
     private void jTextFieldContragentFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldContragentFocusLost
@@ -637,7 +641,11 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         } catch(Exception e) {
             e.printStackTrace();
         }
-        repaintComp();
+    if(myParent.getId_PF()!=0) {
+            String  fee[] = myParent.getCountriesT().getProdictFee(myParent.getId_PF());
+            jTextFieldFee.setText(fee[0]);
+        } else jTextFieldFee.setText(myParent.getViewFee());
+       // repaintComp();
     }//GEN-LAST:event_jTextFieldFeeMousePressed
     
     private void jTextFieldPromoPricesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPromoPricesFocusLost
@@ -660,7 +668,11 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         } catch(Exception e) {
             e.printStackTrace();
         }
-        repaintComp();
+       if (myParent.getId_PPP()!=0) {
+            String promotion_price[] = myParent.getCountriesT().getProductPromotionPrice(myParent.getId_PPP());
+            jTextFieldPromoPrices.setText(promotion_price[0]);
+        } else jTextFieldPromoPrices.setText(myParent.getViewPromoPrice());
+     //   repaintComp();
     }//GEN-LAST:event_jTextFieldPromoPricesMousePressed
     
     private void jTextFieldPriceFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPriceFocusLost
@@ -685,8 +697,11 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         } catch(Exception e) {
             e.printStackTrace();
         }
-        
-        repaintComp();
+        if (myParent.getId_PP()!=0) {
+          String price[] = myParent.getCountriesT().getProductPrice(myParent.getId_PP());
+          jTextFieldPrice.setText(price[0]);
+        } else jTextFieldPrice.setText(myParent.getViewPrice()); 
+     //   repaintComp();
     }//GEN-LAST:event_jTextFieldPriceKeyPressed
     
     private void jTextFieldPriceMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldPriceMousePressed
@@ -699,7 +714,11 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         } catch(Exception e) {
             e.printStackTrace();
         }
-        repaintComp();
+      if (myParent.getId_PP()!=0) {
+          String price[] = myParent.getCountriesT().getProductPrice(myParent.getId_PP());
+          jTextFieldPrice.setText(price[0]);
+        } else jTextFieldPrice.setText(myParent.getViewPrice());
+       // repaintComp();
     }//GEN-LAST:event_jTextFieldPriceMousePressed
     
     //
@@ -789,8 +808,11 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         } catch(Exception e) {
             e.printStackTrace();
         }
-        
-        repaintComp();
+    if (myParent.getId_PPP()!=0) {
+            String promotion_price[] = myParent.getCountriesT().getProductPromotionPrice(myParent.getId_PPP());
+            jTextFieldPromoPrices.setText(promotion_price[0]);
+        } else jTextFieldPromoPrices.setText(myParent.getViewPromoPrice());    
+     //   repaintComp();
     }//GEN-LAST:event_jTextFieldPromoPricesKeyPressed
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
