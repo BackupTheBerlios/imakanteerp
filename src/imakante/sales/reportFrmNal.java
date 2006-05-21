@@ -309,17 +309,17 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
     }// </editor-fold>//GEN-END:initComponents
     
     private void jCheckBox4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox4KeyPressed
-
+        
         jCheckBox4.transferFocus();
     }//GEN-LAST:event_jCheckBox4KeyPressed
     
     private void jCheckBox3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox3KeyPressed
-
+        
         jCheckBox3.transferFocus();
     }//GEN-LAST:event_jCheckBox3KeyPressed
     
     private void jCheckBox2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox2KeyPressed
-
+        
         jCheckBox2.transferFocus();
     }//GEN-LAST:event_jCheckBox2KeyPressed
     
@@ -627,7 +627,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         }
         if (this.jCheckBox2.isSelected()==false){
             newString = newString + ",rep_comm_nal.code_contragent ";
-          
+            
         }
         if (this.jCheckBox3.isSelected()==false){
             newString = newString + ",rep_comm_nal.code_pm ";
@@ -642,7 +642,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         if (this.jCheckBox1.isSelected()==false){
             newString = newString
                     + ",rep_comm_nal.code_n_storage ";
-            namesQ.add("Код склад");
+            namesQ.add("\u041A\u043E\u0434 \u0441\u043A\u043B\u0430\u0434");
             this.nubColums = nubColums + 1;
         }
         
@@ -651,9 +651,9 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
             newString = newString
                     +  ",rep_comm_nal.code_contragent "
                     + ",rep_comm_nal.name_n_contragent ";
-            namesQ.add("Код контрагент");
+            namesQ.add("\u041A\u043E\u0434 \u043A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442");
             this.nubColums = nubColums + 1;
-            namesQ.add("Име контрагент");
+            namesQ.add("\u0418\u043C\u0435 \u043A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442");
             this.nubColums = nubColums + 1;
         }
         
@@ -664,11 +664,11 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
                     + ",rep_comm_nal.name_pm "
                     + ",rep_comm_nal.barcod_pm ";
             
-            namesQ.add("Код продукт");
+            namesQ.add("\u041A\u043E\u0434 \u043F\u0440\u043E\u0434\u0443\u043A\u0442");
             this.nubColums = nubColums + 1;
-            namesQ.add("Име продукт");
+            namesQ.add("\u0418\u043C\u0435 \u043F\u0440\u043E\u0434\u0443\u043A\u0442");
             this.nubColums = nubColums + 1;
-            namesQ.add("Баркод контрагент");
+            namesQ.add("\u0411\u0430\u0440\u043A\u043E\u0434");
             this.nubColums = nubColums + 1;
             
             
@@ -676,7 +676,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
                 newString = newString
                         + ",rep_comm_nal.parcel_pc ";
                 
-                namesQ.add("Код партида");
+                namesQ.add("\u043F\u0430\u0440\u0442\u0438\u0434\u0430");
                 this.nubColums = nubColums + 1;
             }
         }
@@ -685,28 +685,28 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
                 + "SUM(rep_comm_nal.miarka3), "
                 + "SUM(rep_comm_nal.miarka2), "
                 + "SUM(rep_comm_nal.ostatak), "
-                 + "rep_comm_nal.price0_pp, "
+                + "rep_comm_nal.price0_pp, "
                 + "SUM(rep_comm_nal.TSENA0), "
-                 + "rep_comm_nal.price1_pp, "
+                + "rep_comm_nal.price1_pp, "
                 + "SUM(rep_comm_nal.TSENA1), "
                 + "rep_comm_nal.price2_pp, "
                 + "SUM(rep_comm_nal.TSENA2), "
-                 + "rep_comm_nal.price3_pp, "
+                + "rep_comm_nal.price3_pp, "
                 + "SUM(rep_comm_nal.TSENA3) "
                 + " FROM "
                 + " `rep_comm_nal` ";
-        namesQ.add("Налично количество");
-        namesQ.add("Опаковка 3");
-        namesQ.add("Опаковка 2");
-        namesQ.add("Остатък");
-        namesQ.add("дост. цена");
-        namesQ.add("Стойност по дост.");
-        namesQ.add("първа цена");
-        namesQ.add("Стойност по листа 1");
-         namesQ.add("втора цена");
-        namesQ.add("Стойност по листа 2");
-           namesQ.add("трета цена");
-        namesQ.add("Стойност по листа 3");
+        namesQ.add("\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E");
+        namesQ.add("\u041E\u043F\u0430\u043A\u043E\u0432\u043A\u0430 3");
+        namesQ.add("\u041E\u043F\u0430\u043A\u043E\u0432\u043A\u0430 2");
+        namesQ.add("\u041E\u0441\u0442\u0430\u0442\u044A\u043A");
+        namesQ.add("\u0414\u043E\u0441\u0442\u0430\u0432\u043D\u0430 \u0446\u0435\u043D\u0430");
+        namesQ.add("\u0421\u0442\u043E\u0439\u043D\u043E\u0441\u0442 \u0434\u043E\u0441\u0442\u0430\u0432\u043D\u0430");
+        namesQ.add("\u041F\u044A\u0440\u0432\u0430 \u0446\u0435\u043D\u0430");
+        namesQ.add("\u0421\u0442\u043E\u0439\u043D\u043E\u0441\u0442 \u043F\u043E \u043B\u0438\u0441\u0442\u0430 1");
+        namesQ.add("\u0412\u0442\u043E\u0440\u0430 \u0446\u0435\u043D\u0430");
+        namesQ.add("\u0421\u0442\u043E\u0439\u043D\u043E\u0441\u0442 \u043F\u043E \u043B\u0438\u0441\u0442\u0430 2");
+        namesQ.add("\u0422\u0440\u0435\u0442\u0430 \u0446\u0435\u043D\u0430");
+        namesQ.add("\u0421\u0442\u043E\u0439\u043D\u043E\u0441\u0442 \u043F\u043E \u043B\u0438\u0441\u0442\u0430 3");
         this.nubColums = nubColums + 10;
         try {
             newString = newString + " WHERE `rep_comm_nal`.`code_contragent` BETWEEN '" +
@@ -744,7 +744,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
             
         }
         if(this.jCheckBox1.isSelected() && this.jCheckBox4.isSelected()==false){
-             fileName="/imakante/sales/jasper/nal_simp_03.jasper";
+            fileName="/imakante/sales/jasper/nal_simp_03.jasper";
         }
         if(this.jCheckBox2.isSelected() && this.jCheckBox4.isSelected()==false){
             fileName="/imakante/sales/jasper/nal_simp_02.jasper";
