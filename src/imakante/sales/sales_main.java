@@ -1825,7 +1825,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     
     // TYPE DOCUMENTS & NUMBERING
     private void loadTypeDocuments(){
-        nom.FrmDoctype DocType = new nom.FrmDoctype("tipove dokumenti", this);
+        nom.FrmDoctype DocType = new nom.FrmDoctype("\u0422\u0438\u043F\u043E\u0432\u0435 \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0438", this);
         desktopPane.add(DocType);
         try {
             DocType.setMaximum(true);
@@ -1834,7 +1834,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }
     
     private void loadDTUR() {
-        nom.FrmDoctypeUserRights DTUR = new nom.FrmDoctypeUserRights("prawa wyrhu kochani", this);
+        nom.FrmDoctypeUserRights DTUR = new nom.FrmDoctypeUserRights("\u041F\u0440\u0430\u0432\u0430 \u0432\u044A\u0440\u0445\u0443 \u043A\u043E\u0447\u0430\u043D\u0438", this);
         desktopPane.add(DTUR);
         try {
             DTUR.setMaximum(true);
@@ -1845,7 +1845,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }
     
     private void loadNumDocuments() {
-        imakante.sales.FrmNumDoc DocNums = new imakante.sales.FrmNumDoc("nomeracii na dokumenti", this);
+        imakante.sales.FrmNumDoc DocNums = new imakante.sales.FrmNumDoc("\u0422\u0438\u043F\u043E\u0432\u0435 \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0438\u041D\u043E\u043C\u0435\u0440\u0430\u0446\u0438\u044F ", this);
         desktopPane.add(DocNums);
         try {
             DocNums.setMaximum(true);
@@ -1899,6 +1899,16 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         levDSec.setVisible(true);
     }
     
+     public void loadReportStockOut(int i) {
+        imakante.sales.reportParcelDate stockOut = new imakante.sales.reportParcelDate("\u041C\u0438\u043D\u0438\u043C\u0430\u043B\u043D\u0438 \u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u0430", this, i);
+        desktopPane.add(stockOut);
+        stockOut.setVisible(true);
+    }
+    
+    private void loadReportStockOutLevel(){
+        imakante.sales.levelDialogSecond levDSec = new imakante.sales.levelDialogSecond(this, true,9003);
+        levDSec.setVisible(true);
+    }        
     public void loadReportDocs(int i) {
         imakante.sales.reportFrmDocs repDox = new imakante.sales.reportFrmDocs("\u0421\u043f\u0440\u0430\u0432\u043a\u0430 \u0437\u0430 \u0418\u0437\u0434\u0430\u0434\u0435\u043d\u0438 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438", this,i);
         desktopPane.add(repDox);
