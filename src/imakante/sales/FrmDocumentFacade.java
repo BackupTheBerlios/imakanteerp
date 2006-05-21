@@ -172,7 +172,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 825, Short.MAX_VALUE)
+            .add(0, 821, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -210,6 +210,12 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
         jPanel3.add(jButtonPrint);
 
         jButtonPrnReport.setText("\u041f\u0435\u0447\u0430\u0442 \u0440\u0435\u043f\u043e\u0440\u0442");
+        jButtonPrnReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPrnReportActionPerformed(evt);
+            }
+        });
+
         jPanel3.add(jButtonPrnReport);
 
         jButtonDel.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
@@ -246,6 +252,11 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonPrnReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrnReportActionPerformed
+// TODO add your handling code here:
+        loadPrintReportJasper(getDocFacadeType());
+    }//GEN-LAST:event_jButtonPrnReportActionPerformed
 
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
 // TODO add your handling code here:
@@ -487,7 +498,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
     private int docFacadeFlagFinish;
     
     private ArrayList arrayOfID_DF = new ArrayList();
-
+    private imakante.com.vcomponents.tableDialog printReportDialog;
    
    
    private  String nameColumnsDocFacade[] = {"id_df", "in_contragent_df", "Код на контрагента1", "Булстат1", "Данъчен номер1", "Име на контрагента1",
@@ -1976,4 +1987,61 @@ public void closeFrm()
 {
     this.jButtonClose.doClick();
 }
+private void loadPrintReportJasper(int docType)
+{
+    switch(docType)
+    {
+        case aeDocumentFacade.OFERTA:
+        {
+            break;
+        }
+        case aeDocumentFacade.FAKTURA_DANACHNA:
+        {
+            HashMap parameterHashMap = new HashMap();
+            parameterHashMap.put(new String("naredil"),new String("Иван Кацаров"));
+            parameterHashMap.put(new String("firmaime"),new String("firmata na Ivan"));
+            parameterHashMap.put(new String("firma_oso"),new String("Иван Кацаров"));
+            parameterHashMap.put(new String("firma_mol"),new String("Иван Кацаров"));
+            parameterHashMap.put(new String("firma_dan_No"),new String("15288954552"));
+            parameterHashMap.put(new String("firma_address"),new String("Пловдив ул.Иглика 6"));
+            parameterHashMap.put(new String("PriceToString"),new String("осем и осем ст."));
+            
+          
+            printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,table,conn,parameterHashMap,
+                    "/imakante/sales/jasper/","\u0414\u0410\u041d\u042a\u0427\u041d\u0410 \u0424\u0410\u041a\u0422\u0423\u0420\u0410",
+                    "\u0414\u0410\u041d\u042a\u0427\u041d\u0410 \u0424\u0410\u041a\u0422\u0423\u0420\u0410");
+            printReportDialog.setVisible(true);
+            break;
+        }
+        case aeDocumentFacade.FAKTURA_OPROSTENA:
+        {
+            break;
+        }
+        case aeDocumentFacade.PREDAVATELNA_RAZPISKA:
+        {
+            break;
+        }
+        case aeDocumentFacade.PRIEMATELNA_RAZPISKA:
+        {
+            break;
+        }
+        case aeDocumentFacade.PROFORMA_FAKTURA:
+        {
+            break;
+        }
+        case aeDocumentFacade.PROTOKOL_LIPSA:
+        {
+            break;
+        }
+        case aeDocumentFacade.BRAK:
+        {
+            break;
+        }
+        case aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE:
+        {
+            break;
+        }
+    }
+}
+
 }// end class

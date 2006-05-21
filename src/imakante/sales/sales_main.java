@@ -934,7 +934,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     
     private void protMenu_lipsaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_protMenu_lipsaActionPerformed
 // TODO add your handling code here:
-       levelDialog1 = new levelDialog(this,true,4,getOrderArea());
+       levelDialog1 = new levelDialog(this,true,4,lipsaArea);
        levelDialog1.setVisible(true);
         int user = userID_ndtur; //2;
         int level = levelForWork;// 1;
@@ -946,7 +946,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     
     private void protMenu_brakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_protMenu_brakActionPerformed
 // TODO add your handling code here:
-       levelDialog1 = new levelDialog(this,true,4,getOrderArea());
+       levelDialog1 = new levelDialog(this,true,4,brakArea);
        levelDialog1.setVisible(true);
         int user = userID_ndtur; //2;
         int level = levelForWork;// 1;
@@ -977,7 +977,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_kasaAvansMenuActionPerformed
     
     private void docMenu_narActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docMenu_narActionPerformed
-       levelDialog1 = new levelDialog(this,true,4,getOrderArea());
+       levelDialog1 = new levelDialog(this,true,4,narezdaneZaPrehvylqneArea);
        levelDialog1.setVisible(true);
         int user = userID_ndtur; //2;
         int level = levelForWork;// 1;
@@ -988,7 +988,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_docMenu_narActionPerformed
     
     private void razpMenu_polActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_razpMenu_polActionPerformed
-         levelDialog1 = new levelDialog(this,true,4,getOrderArea());
+         levelDialog1 = new levelDialog(this,true,4,priematelnaRazpiskaArea);
        levelDialog1.setVisible(true);
         int user = userID_ndtur; //2;
         int level = levelForWork;// 1;
@@ -1003,7 +1003,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_orderMenu_razhActionPerformed
     
     private void docMenu_offerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docMenu_offerActionPerformed
-        levelDialog1 = new levelDialog(this,true,4,getOrderArea());
+        levelDialog1 = new levelDialog(this,true,4,ofertaArea);
        levelDialog1.setVisible(true);
         int user = userID_ndtur; //2;
         int level = levelForWork;// 1;
@@ -1014,7 +1014,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_docMenu_offerActionPerformed
     
     private void razpMenu_prehvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_razpMenu_prehvActionPerformed
-         levelDialog1 = new levelDialog(this,true,4,getOrderArea());
+         levelDialog1 = new levelDialog(this,true,4,stokavaRazpiskaArea);
        levelDialog1.setVisible(true);
         int user = userID_ndtur; //2;
         int level = levelForWork;// 1;
@@ -1025,7 +1025,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_razpMenu_prehvActionPerformed
     
     private void fakMenu_oprActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fakMenu_oprActionPerformed
-       levelDialog1 = new levelDialog(this,true,4,getOrderArea());
+       levelDialog1 = new levelDialog(this,true,4,oprFaktArea);
        levelDialog1.setVisible(true);
         int user = userID_ndtur; //2;
         int level = levelForWork;// 1;
@@ -1045,7 +1045,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_fakMenu_oprActionPerformed
     
     private void fakMenu_danActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fakMenu_danActionPerformed
-       levelDialog1 = new levelDialog(this,true,4,getOrderArea());
+       levelDialog1 = new levelDialog(this,true,4,danFaktArea);
        levelDialog1.setVisible(true);
         int user = userID_ndtur; //2;
         int level = levelForWork;// 1;
@@ -1403,6 +1403,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     
     private static LinkedHashMap OrderArea = new LinkedHashMap(); //stokovi
     private static LinkedHashMap FaktArea = new LinkedHashMap(); // fakturi
+    private static LinkedHashMap oprFaktArea = new LinkedHashMap(); // oprostena fakturi
+    private static LinkedHashMap danFaktArea = new LinkedHashMap(); // dany4na fakturi
     private static LinkedHashMap brakArea = new LinkedHashMap();  // BRAK; 
     private static LinkedHashMap lipsaArea = new LinkedHashMap();  // LIPSA; 
     private static LinkedHashMap ofertaArea = new LinkedHashMap();  // OFERTA; 
@@ -1621,42 +1623,52 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
                 System.out.println("704: " + rs.getString("area_number_sdtn"));
             }
             //=========
-        /*    rs = stm.executeQuery(StrQ + "''"); // BRAK
+            rs = stm.executeQuery(StrQ + "'5000'"); // BRAK
             while(rs.next()) {
                 brakArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
                 System.out.println("BRAK: " + rs.getString("area_number_sdtn"));
             }
-            rs = stm.executeQuery(StrQ + "''"); // LIPSA
+            rs = stm.executeQuery(StrQ + "'6000'"); // LIPSA
             while(rs.next()) {
                 lipsaArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
                 System.out.println("LIPSA: " + rs.getString("area_number_sdtn"));
             }
-            rs = stm.executeQuery(StrQ + "''"); // OFERTA
+            rs = stm.executeQuery(StrQ + "'9000'"); // OFERTA
             while(rs.next()) {
                 ofertaArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
                 System.out.println("OFERTA: " + rs.getString("area_number_sdtn"));
             }
-            rs = stm.executeQuery(StrQ + "''"); // PROFORMA_FAKTURA
+            rs = stm.executeQuery(StrQ + "'10'"); // PROFORMA_FAKTURA
             while(rs.next()) {
                 proFormaArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
                 System.out.println("PROFORMA_FAKTURA: " + rs.getString("area_number_sdtn"));
             }
-             rs = stm.executeQuery(StrQ + "''"); // NAREZDANE_ZA_PREHVYRQNE
+             rs = stm.executeQuery(StrQ + "'7000'"); // NAREZDANE_ZA_PREHVYRQNE
             while(rs.next()) {
                 narezdaneZaPrehvylqneArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
                 System.out.println("NAREZDANE_ZA_PREHVYRQNE: " + rs.getString("area_number_sdtn"));
             }
-             rs = stm.executeQuery(StrQ + "''"); // STOKOVA_RAZPISKA
+             rs = stm.executeQuery(StrQ + "'1'"); // STOKOVA_RAZPISKA
             while(rs.next()) {
                 stokavaRazpiskaArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
                 System.out.println("STOKOVA_RAZPISKA: " + rs.getString("area_number_sdtn"));
             }
             
-             rs = stm.executeQuery(StrQ + "''"); // PRIEMATELNA_RAZPISKA
+             rs = stm.executeQuery(StrQ + "'8000'"); // PRIEMATELNA_RAZPISKA
             while(rs.next()) {
                 priematelnaRazpiskaArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
                 System.out.println("PRIEMATELNA_RAZPISKA: " + rs.getString("area_number_sdtn"));
-            }*/
+            }
+           rs = stm.executeQuery(StrQ + "'4001'"); // dany4na faktura
+            while(rs.next()) {
+                danFaktArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
+                System.out.println("PRIEMATELNA_RAZPISKA: " + rs.getString("area_number_sdtn"));
+            }
+           rs = stm.executeQuery(StrQ + "'4000'"); // oprostena faktura
+            while(rs.next()) {
+                oprFaktArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
+                System.out.println("PRIEMATELNA_RAZPISKA: " + rs.getString("area_number_sdtn"));
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

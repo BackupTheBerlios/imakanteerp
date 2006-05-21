@@ -26,6 +26,12 @@ public class levelDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocationByPlatform(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
+
         jLabel1.setText("\u041d\u0418\u0412\u041e:");
 
         jLabel2.setText("\u041f\u0410\u0420\u041e\u041b\u0410:");
@@ -93,6 +99,11 @@ public class levelDialog extends javax.swing.JDialog {
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+// TODO add your handling code here:
+        
+    }//GEN-LAST:event_formWindowClosed
     
     private void jPasswordField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyPressed
         if ( evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
