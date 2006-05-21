@@ -364,7 +364,13 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         fillBlanck();
-        processReport();
+        if(checkFieldsInt()){
+            processReport();}else {
+            javax.swing.JOptionPane.showMessageDialog(null,
+                   "\u041D\u0435\u043A\u043E\u0440\u0435\u043A\u0442\u043D\u0430 \u0441\u0442\u043E\u0439\u043D\u043E\u0441\u0442",
+                    "\u0413\u0420\u0415\u0428\u041A\u0410 \u0412 \u0417\u0410\u042F\u0412\u041A\u0410\u0422\u0410!",
+                    javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
     
     private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
@@ -738,5 +744,57 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
             hmap.put("levex","0,1");
         }
         return hmap;
+    }
+    private boolean checkFieldsInt(){
+        boolean check = false;
+        try {
+            
+            int i = Integer.parseInt(jTextField1.getText());
+            check = true;
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+        try {
+            
+            int i = Integer.parseInt(jTextField2.getText());
+            check = true;
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+        try {
+            
+            int i = Integer.parseInt(jTextField3.getText());
+            check = true;
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+        try {
+            
+            int i = Integer.parseInt(jTextField4.getText());
+            check = true;
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+        try {
+            
+            int i = Integer.parseInt(jTextField5.getText());
+            check = true;
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+        try {
+            
+            int i = Integer.parseInt(jTextField6.getText());
+            check = true;
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+        return check;
     }
 }
