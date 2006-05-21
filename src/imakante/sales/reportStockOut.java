@@ -540,30 +540,31 @@ public class reportStockOut extends imakante.com.vcomponents.iInternalFrame impl
         
         newString = newString
                 + ",rep_comm_nal.code_n_storage ";
-        namesQ.add("Код склад");
+        namesQ.add("\u041A\u043E\u0434 \u0441\u043A\u043B\u0430\u0434");
         this.nubColums = nubColums + 1;
         newString = newString
                 + ",rep_comm_nal.code_pm "
                 + ",rep_comm_nal.name_pm ";
-        namesQ.add("Код продукт");
-        this.nubColums = nubColums + 1;
-        namesQ.add("Име продукт");
+        namesQ.add("\u041A\u043E\u0434 \u043F\u0440\u043E\u0434\u0443\u043A\u0442");
+        this.nubColums = nubColums + 2;
+        namesQ.add("\u0418\u043C\u0435 \u043F\u0440\u043E\u0434\u0443\u043A\u0442");
         newString = newString
                 + ",SUM(rep_comm_nal.quant_nal) as kolichestvo, "
                 + "SUM(rep_comm_nal.miarka3), "
                 + "SUM(rep_comm_nal.miarka2), "
                 + "SUM(rep_comm_nal.ostatak), "
                 + "n_product_main.min_pm, "
-                + "(kolichestvo - n_product_main.min_pm) AS rez"
+                + "(SUM(rep_comm_nal.quant_nal) - n_product_main.min_pm) AS rez"
                 + " FROM "
                 + " `rep_comm_nal` JOIN n_product_main on rep_comm_nal.id_pm = n_product_main.id_pm";
-        namesQ.add("Налично количество");
-        namesQ.add("Опаковка 3");
-        namesQ.add("Опаковка 2");
-        namesQ.add("Остатък");
-        namesQ.add("Праг");
+        namesQ.add("\u041D\u0430\u043B\u0438\u0447\u043D\u043E \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E");
+        namesQ.add("\u041E\u043F\u0430\u043A\u043E\u0432\u043A\u0430 3");
+        namesQ.add("\u041E\u043F\u0430\u043A\u043E\u0432\u043A\u0430 2");
+        namesQ.add("\u041E\u0441\u0442\u0430\u0442\u044A\u043A");        
+        namesQ.add("\u041F\u0440\u0430\u0433");
+        namesQ.add("\u0420\u0430\u0437\u043B\u0438\u043A\u0430");
         
-        this.nubColums = nubColums + 5;
+        this.nubColums = nubColums + 6;
         try {
             newString = newString + " WHERE `rep_comm_nal`.`code_contragent` BETWEEN '" +
                     (Integer.parseInt(this.jTextField5.getText())-1) + "' AND '" + (Integer.parseInt(this.jTextField6.getText())+1) +
@@ -582,7 +583,7 @@ public class reportStockOut extends imakante.com.vcomponents.iInternalFrame impl
         if(levelx==1){
             newString = newString + " AND rep_comm_nal.level IN(0,1)";
         }
-        newString = newString + " GROUP BY con ORDER BY rez DSC";
+        newString = newString + " GROUP BY con ORDER BY rez DESC";
         
         String[] Names = (String[]) namesQ.toArray(new String[this.nubColums]);
         //Create Dialog with print
@@ -614,9 +615,9 @@ public class reportStockOut extends imakante.com.vcomponents.iInternalFrame impl
     }
     private java.util.HashMap constructHash(){
         java.util.HashMap hmap = new java.util.HashMap();
-        hmap.put("otsklad",jTextField1.getText());
+       hmap.put("otsklad",jTextField1.getText());
         hmap.put("dosklad",jTextField2.getText());
-        hmap.put("otprodukt",jTextField3.getText());
+        hmap.put("otkontragent",jTextField3.getText());
         hmap.put("dokontragent",jTextField4.getText());
         hmap.put("otprodukt",jTextField5.getText());
         hmap.put("doprodukt",jTextField6.getText());

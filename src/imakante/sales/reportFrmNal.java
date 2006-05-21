@@ -775,7 +775,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         java.util.HashMap hmap = new java.util.HashMap();
         hmap.put("otsklad",jTextField1.getText());
         hmap.put("dosklad",jTextField2.getText());
-        hmap.put("otprodukt",jTextField3.getText());
+        hmap.put("otkontragent",jTextField3.getText());
         hmap.put("dokontragent",jTextField4.getText());
         hmap.put("otprodukt",jTextField5.getText());
         hmap.put("doprodukt",jTextField6.getText());
