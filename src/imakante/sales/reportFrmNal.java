@@ -445,7 +445,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
     private  int CompNumber = 0;
     
     private String strContragent = "SELECT "
-            + "`rep_comm_nal`.`code_contragent`"
+            + "`rep_comm_nal`.`code_contragent` , `rep_comm_nal`.`name_n_contragent` "
             + "FROM `rep_comm_nal` WHERE `rep_comm_nal`.`code_contragent` LIKE  '%";
     
     private String strProduct = "SELECT "
@@ -616,7 +616,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
     
     private void processReport(){
         String newString=qu;
-        namesQ = null;
+       // namesQ = "";
         nubColums = 0;
         namesQ.add("con ");
         newString = newString + " DISTINCT CONCAT(rep_comm_nal.level ";
