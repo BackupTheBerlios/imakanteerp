@@ -60,6 +60,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     final private static int F7_KEY = 0;
     final private static int F8_KEY = 1;
     final private static int F9_KEY = 2;
+    final private static int SEARCH_BY_CODE = 1;
+    final private static int SEARCH_BY_NAME = 2;
     
     
     //DOKUMENTI
@@ -1144,6 +1146,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         isSetDataInTable = false; // za noviq red , zadylzitelno trqbva da mine prez formata za izbor na produkt
         ((docLineTableModel) jTable1.getModel()).addRow(new docLineArray());
         ((docLineTableModel) jTable1.getModel()).enableCellEditable(0);
+        // za pozvolqvane na tyrsene na produkt ot ime
+        ((docLineTableModel) jTable1.getModel()).enableCellEditable(1);
         
     }//GEN-LAST:event_jButton3ActionPerformed
     
@@ -2235,6 +2239,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 {
                 if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
                 ((docLineTableModel) jTable1.getModel()).enableCellEditable(0);
+                // za tyrsene po ime
+                ((docLineTableModel) jTable1.getModel()).enableCellEditable(1);
                 System.out.println("focusGained");
                 }
                 catch(Exception ex){System.out.println("Error focusGained");};
@@ -2325,8 +2331,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 
                 
                 
-                if(e.getKeyCode()>=48 && e.getKeyCode()<=57) str += e.getKeyChar();
-                
+            //    if(e.getKeyCode()>=48 && e.getKeyCode()<=57) str += e.getKeyChar(); // samo 4isla
+                  if(true) str += e.getKeyChar(); // vsiki znaci
                 
                 if(!isTyped) {
                     Object value = jTable1.getCellEditor(rowSelect,columnSelect).getCellEditorValue();
@@ -2465,6 +2471,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                 System.out.println();
                                 
                                 ((docLineTableModel) jTable1.getModel()).enableCellEditable(0);
+                                //za tyrsene po ime
+                                ((docLineTableModel) jTable1.getModel()).enableCellEditable(1);
                                 // Save DocLine into DATABASE
                                 int nn = (Integer)jTable1.getValueAt(rowSelect,4);
                                 int prList =(Integer)jTable1.getValueAt(rowSelect,3);
@@ -2924,24 +2932,52 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 
                    
                 
-                if(e.getKeyCode()==KeyEvent.VK_F7) {
+             if(e.getKeyCode()==KeyEvent.VK_F7) {
 
+                    columnSelect = jTable1.getSelectedColumn();
+                    if(columnSelect==0)
+                    {
                     if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
-                    processKeyPress(myParent.getDocFacadeType(),F7_KEY);
-                    
+                    processKeyPress(myParent.getDocFacadeType(),F7_KEY,SEARCH_BY_CODE);
+                    }
+                    if(columnSelect==1)
+                    {
+                    if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
+                    processKeyPress(myParent.getDocFacadeType(),F7_KEY,SEARCH_BY_NAME);
+                    }
 
                 }
                 
                 if(e.getKeyCode()==KeyEvent.VK_F8) {
+                   
+                    columnSelect = jTable1.getSelectedColumn();
+                    if(columnSelect==0)
+                    {
                     if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
-                    processKeyPress(myParent.getDocFacadeType(),F8_KEY);
+                    processKeyPress(myParent.getDocFacadeType(),F8_KEY,SEARCH_BY_CODE);
+                    }
+                    if(columnSelect==1)
+                    {
+                    if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
+                    processKeyPress(myParent.getDocFacadeType(),F8_KEY,SEARCH_BY_NAME);
+                    }
                 }
                 
                 if(e.getKeyCode()==KeyEvent.VK_F9) {
+                    
+                    columnSelect = jTable1.getSelectedColumn();
+                    if(columnSelect==0)
+                    {
                     if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
-                    processKeyPress(myParent.getDocFacadeType(),F9_KEY);
-                }
+                    processKeyPress(myParent.getDocFacadeType(),F9_KEY,SEARCH_BY_CODE);
+                    }
+                    if(columnSelect==1)
+                    {
+                    if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
+                    processKeyPress(myParent.getDocFacadeType(),F9_KEY,SEARCH_BY_NAME);
+                    }
             }
+            } // end keyPressed
  public void keyReleased(KeyEvent e) {
                 columnSelect = jTable1.getSelectedColumn()-1;
                 rowSelect = jTable1.getSelectedRow();
@@ -2960,15 +2996,35 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                             catch(Exception ex){}
                             if(str.equals("0")) str="";
                             if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
-                            processKeyPress(myParent.getDocFacadeType(),F7_KEY);
+                            processKeyPress(myParent.getDocFacadeType(),F7_KEY,SEARCH_BY_CODE);
                             
                             
                         }
                         
                         
                     }
-                    if(columnSelect == 2 || columnSelect == 1 || columnSelect == 3 || columnSelect == 4 || columnSelect == 5
-                            || columnSelect == 6 || columnSelect == 7 || columnSelect == 8)
+                    if(columnSelect == 1)
+                    {
+                      isFinishRow = false;
+                        System.out.println("keyReleased    == = ==    0000");
+                        
+                        if(!isSetDataInTable&&rate!=0)
+                        {
+                            try
+                            {
+                            str = String.valueOf(jTable1.getValueAt(rowSelect,columnSelect));
+                            }
+                            catch(Exception ex){}
+                            if(str.equals("0")) str="";
+                            if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
+                            processKeyPress(myParent.getDocFacadeType(),F7_KEY,SEARCH_BY_NAME);
+                            
+                            
+                        }  
+                    }
+                    
+                    if(columnSelect == 2 || columnSelect == 3 || columnSelect == 4 || columnSelect == 5
+                            || columnSelect == 6 || columnSelect == 7 || columnSelect == 8 || columnSelect == 9 || columnSelect == 10)
                     {
                        if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24)) 
                         if(!isSetDataInTable) // ako ne e minal prez formata za izbor na produkt
@@ -3302,7 +3358,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 
                 strDate = " ";
                 strDate = String.valueOf(jXDateDocument.getDate().getDate());
-                strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth());
+                strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth()+1);
                 strDate += "/" + String.valueOf(jXDateDocument.getDate().getYear()+1900);
                 String docFacadeDate = dateManip.convertDate(strDate);
                 
@@ -3350,7 +3406,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 
                 strDate = " ";
                 strDate = String.valueOf(jXDateDocument.getDate().getDate());
-                strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth());
+                strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth()+1);
                 strDate += "/" + String.valueOf(jXDateDocument.getDate().getYear()+1900);
                 String docFacadeDate = dateManip.convertDate(strDate);
                 
@@ -3398,7 +3454,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 
                 strDate = " ";
                 strDate = String.valueOf(jXDateDocument.getDate().getDate());
-                strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth());
+                strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth()+1);
                 strDate += "/" + String.valueOf(jXDateDocument.getDate().getYear()+1900);
                 String docFacadeDate = dateManip.convertDate(strDate);
                 
@@ -3445,7 +3501,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 
                 strDate = " ";
                 strDate = String.valueOf(jXDateDocument.getDate().getDate());
-                strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth());
+                strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth()+1);
                 strDate += "/" + String.valueOf(jXDateDocument.getDate().getYear()+1900);
                 String docFacadeDate = dateManip.convertDate(strDate);
                 
@@ -3494,7 +3550,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 
                 strDate = " ";
                 strDate = String.valueOf(jXDateDocument.getDate().getDate());
-                strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth());
+                strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth()+1);
                 strDate += "/" + String.valueOf(jXDateDocument.getDate().getYear()+1900);
                 String docFacadeDate = dateManip.convertDate(strDate);
                 
@@ -3545,7 +3601,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 
                 strDate = " ";
                 strDate = String.valueOf(jXDateDocument.getDate().getDate());
-                strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth());
+                strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth()+1);
                 strDate += "/" + String.valueOf(jXDateDocument.getDate().getYear()+1900);
                 String docFacadeDate = dateManip.convertDate(strDate);
                 
@@ -3595,7 +3651,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 
                 strDate = " ";
                 strDate = String.valueOf(jXDateDocument.getDate().getDate());
-                strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth());
+                strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth()+1);
                 strDate += "/" + String.valueOf(jXDateDocument.getDate().getYear()+1900);
                 String docFacadeDate = dateManip.convertDate(strDate);
                 
@@ -3649,13 +3705,13 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 
                 strDate = " ";
                 strDate = String.valueOf(jXDatePay.getDate().getDate());
-                strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth());
+                strDate += "/" + String.valueOf(jXDatePay.getDate().getMonth()+1);
                 strDate += "/" + String.valueOf(jXDatePay.getDate().getYear()+1900);
                 String payingDate = dateManip.convertDate(strDate);
                 
                 strDate = " ";
                 strDate = String.valueOf(jXDateDocument.getDate().getDate());
-                strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth());
+                strDate += "/" + String.valueOf(jXDateDocument.getDate().getMonth()+1);
                 strDate += "/" + String.valueOf(jXDateDocument.getDate().getYear()+1900);
                 String docFacadeDate = dateManip.convertDate(strDate);
                 
@@ -4482,7 +4538,11 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         
         return newDate;
     }
-    private void processKeyPress(int docType,int firstCenterLast) {
+    private void processKeyPress(int docType,int firstCenterLast, int searchBy)
+    {
+        // searchBy :
+        //  1: tyrsene po kod na produkta
+        //  2: tyrsene po ime na produkta
         //firstCenterLast -> F7 key - center; F8 key - first; F9 key - last
         isProductIN = checkInOutProduct(docType);
        
@@ -4501,11 +4561,28 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             if(docType==PRIEMATELNA_RAZPISKA)
             {
               //  rs1 = myParent.getCountriesT().getTableProductInfo(str,3,myParent.getDocFacadeLevel(),0,myParent.getStorageOUTProduct());
+                if(searchBy==SEARCH_BY_CODE)
+                {
                  rs1 = myParent.getCountriesT().getTableProductInfo(str,3,0,0,myParent.getStorageOUTProduct());
+                }
+                if(searchBy==SEARCH_BY_NAME)
+                {
+                  rs1 = myParent.getCountriesT().getTableProductInfo(str,7,0,0,myParent.getStorageOUTProduct());  
+                }
             }
             else
             {
-               rs1 = myParent.getCountriesT().getTableProductInfo(str,firstCenterLast,myParent.getDocFacadeLevel(),0,myParent.getStorageOUTProduct()); 
+              if(searchBy==SEARCH_BY_CODE)
+                {  
+                 rs1 = myParent.getCountriesT().getTableProductInfo(str,firstCenterLast,myParent.getDocFacadeLevel(),0,myParent.getStorageOUTProduct()); 
+                }
+               if(searchBy==SEARCH_BY_NAME)
+                {
+                  //firstCenterLast+4 - izbirame podhodq6tata SQl zaqvka
+                  // viz procedurata
+                  rs1 = myParent.getCountriesT().getTableProductInfo(str,firstCenterLast+4,myParent.getDocFacadeLevel(),0,myParent.getStorageOUTProduct());  
+                }
+              
             }
             Connection conn1 = myParent.getCountriesT().getConn();
             

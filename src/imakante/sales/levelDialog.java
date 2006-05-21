@@ -1,6 +1,8 @@
 
 package imakante.sales;
 
+import java.util.Iterator;
+
 public class levelDialog extends javax.swing.JDialog {
     
     public levelDialog(imakante.sales.sales_main parent, boolean modal, int ModuleCode, java.util.LinkedHashMap area) {
@@ -29,6 +31,7 @@ public class levelDialog extends javax.swing.JDialog {
         jLabel2.setText("\u041f\u0410\u0420\u041e\u041b\u0410:");
 
         jTextField1.setInputVerifier(new imakante.com.InputIntegerVerifier(3));
+        jTextField1.setInputVerifier(new imakante.com.InputIntegerVerifier());
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -95,16 +98,23 @@ public class levelDialog extends javax.swing.JDialog {
         if ( evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
             if (checkPass()){
                 outLevel = getLevel();
+                sales_main.levelForWork = getLevel();
+                sales_main.userID_ndtur = getKey();
                 outIndex = getKey();
             } else {
                 outLevel = 1;
                 outIndex = getKey();
+                sales_main.levelForWork = 1;
+                sales_main.userID_ndtur = getKey();
             }
             close();
         }
         if ( evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) {
             this.dispose();
         }
+//==============================================
+//    toSystemString();
+//    this.dispose();
     }//GEN-LAST:event_jPasswordField1KeyPressed
     
     private void jComboBox1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox1KeyPressed
@@ -138,14 +148,18 @@ public class levelDialog extends javax.swing.JDialog {
     private int outIndex = 1;
     
     private java.util.ArrayList in;
+    private java.util.ArrayList connGetKeyAndIdUser = new java.util.ArrayList();
     
     private void writeH() {
         System.out.println(new java.util.ArrayList(hash.entrySet()));
     }
     
-    private void constructComboNames(){
-        in = new java.util.ArrayList(hash.keySet());
-        for (java.util.Iterator it = hash.keySet().iterator(); it.hasNext(); ) {
+    private void constructComboNames()
+    {
+        jComboBox1.removeAllItems();
+     //   in = new java.util.ArrayList(hash.keySet());
+         in = new java.util.ArrayList();
+         for (java.util.Iterator it = hash.keySet().iterator(); it.hasNext(); ) {
             Object key = it.next();
             in.add(key);
             Object value = hash.get(key);
@@ -158,15 +172,16 @@ public class levelDialog extends javax.swing.JDialog {
         try {
             level = Integer.parseInt(this.jTextField1.getText());
         } catch (NumberFormatException ex) { ex.printStackTrace(); }
+        if(level <=0 || level >= 4) level = 1;
         return level;
     }
     
-    private int getKey(){
+    private int getKey(){ 
         int d = 1;
         d = (Integer)in.get(jComboBox1.getSelectedIndex());
         return d;
     }
-    
+
     private boolean checkPass(){
         String pss = new String(this.jPasswordField1.getPassword());
         if(pss.equals(imakante.com.NewMain.getPassword())) {
@@ -176,7 +191,7 @@ public class levelDialog extends javax.swing.JDialog {
     
     //opisanie na formite koito she badat kontrolirani
     private void close(){
-        if (modul == 1) { frame.loadImport(); }
+        if (modul == 1)   { frame.loadImport(); }
         if (modul == 701) { frame.loadKassss(getLevel(), getKey()); }
         if (modul == 702) { frame.loadCasaOut(getLevel(), getKey()); }
         if (modul == 703) { frame.loadAdvances(getLevel(), getKey()); }
@@ -185,4 +200,19 @@ public class levelDialog extends javax.swing.JDialog {
         
         this.dispose();
     }
-}
+ private void toSystemString()
+ {
+     Iterator it = in.iterator();
+     System.out.println("|================================================|"); //50
+     System.out.println("|=======KEY==============|========VALUE==========|"); //50
+     System.out.println("|================================================|"); //50
+     while(it.hasNext())
+     {
+         int key =(Integer) it.next();
+         System.out.print("| Keys = "+key + "            |");
+         System.out.println("Values = "+ hash.get(key));
+         System.out.println("|================================================|"); //50
+     }
+     
+ }
+} // end class

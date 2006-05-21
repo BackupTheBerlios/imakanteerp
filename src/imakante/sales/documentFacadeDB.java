@@ -837,7 +837,7 @@ public int getDocNumberLast(int iduser, int level)
 {
     int lastNumber = 0;
     int oldId_obekt_in  = getID_Obekt_IN();
-    setID_Obekt_IN(level);
+    setID_Obekt_IN(level); 
      int oldIntValue = getUserDocFacade();
      setUserDocFacade(iduser);
      this.setComprator(6);
