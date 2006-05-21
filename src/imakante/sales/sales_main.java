@@ -1900,7 +1900,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }
     
      public void loadReportStockOut(int i) {
-        imakante.sales.reportParcelDate stockOut = new imakante.sales.reportParcelDate("\u041C\u0438\u043D\u0438\u043C\u0430\u043B\u043D\u0438 \u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u0430", this, i);
+        imakante.sales.reportStockOut stockOut = new imakante.sales.reportStockOut("\u041C\u0438\u043D\u0438\u043C\u0430\u043B\u043D\u0438 \u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u0430", this, i);
         desktopPane.add(stockOut);
         stockOut.setVisible(true);
     }

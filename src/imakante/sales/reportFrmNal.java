@@ -670,8 +670,6 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
             this.nubColums = nubColums + 1;
             namesQ.add("\u0411\u0430\u0440\u043A\u043E\u0434");
             this.nubColums = nubColums + 1;
-            
-            
             if(this.jCheckBox4.isSelected()){
                 newString = newString
                         + ",rep_comm_nal.parcel_pc ";
