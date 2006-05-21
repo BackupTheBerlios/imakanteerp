@@ -1328,7 +1328,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     private String strSpeditor = "SELECT rep_documents.code_speditor, rep_documents.name_speditor " +
             "FROM rep_documents WHERE rep_documents.code_speditor LIKE '%";
     private String qu = "SELECT ";
-    private String reportFile = "/imakante/sales/jasper/nal_simp_01.jasper";
+    private String reportFile = "/imakante/sales/jasper/report_Documents2Client.jasper";
     private java.util.HashMap hm = null;
     
     public void windowOpened(java.awt.event.WindowEvent e) {
@@ -1412,7 +1412,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         java.util.List namesQ = new java.util.ArrayList();
         namesQ.add("\u041D\u043E\u043C\u0435\u0440\u0430\u0442\u043E\u0440");
         int nubColums = 0;
-        nubColums = nubColums + 1;
+        nubColums =+ 1;
         if (!this.jCheckBox13.isSelected()) newString = newString + ", IFNULL(rep_documents.date_edition_df, 0)";
         if (!this.jCheckBox14.isSelected()) newString = newString + ", IFNULL(rep_documents.code_store, 0)";
         if (!this.jCheckBox15.isSelected()) newString = newString + ", IFNULL(rep_documents.code_client, 0)";
@@ -1421,7 +1421,10 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         if (!this.jCheckBox18.isSelected()) newString = newString + ", IFNULL(rep_documents.code_distributor, 0)";
         if (!this.jCheckBox19.isSelected()) newString = newString + ", IFNULL(rep_documents.code_operator, 0)";
         if (!this.jCheckBox20.isSelected()) newString = newString + ", IFNULL(rep_documents.code_speditor, 0)";
-        newString = newString + ") AS con ";
+        newString = newString + ") AS con, rep_documents.number_df, rep_documents.type_df";
+        namesQ.add("\u041D\u043E\u043C\u0435\u0440 \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442");
+        namesQ.add("\u0422\u0438\u043F \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442");
+        nubColums =+ 2;
         if (!this.jCheckBox13.isSelected()) {
             newString = newString + ", rep_documents.date_edition_df";
             namesQ.add("\u0414\u0430\u0442\u0430");
@@ -1476,12 +1479,10 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             namesQ.add("\u0418\u043C\u0435 \u0441\u043F\u0435\u0434\u0438\u0442\u043E\u0440");
             nubColums =+ 1;
         }
-        newString = newString + ", rep_documents.total_df, " +
-                "rep_documents.dds_df, " +
-                "date_pay_df " +
+        newString = newString + ", rep_documents.total_df, rep_documents.dds_df, rep_documents.date_pay_df " +
                 "FROM rep_documents";
         namesQ.add("\u0421\u0443\u043C\u0430 \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442");
-        namesQ.add("\u0421\u0443\u043C\u0430 \u0441 \u0414\u0414\u0421");
+        namesQ.add("\u0421\u0443\u043C\u0430 \u043D\u0430 \u0414\u0414\u0421");
         namesQ.add("\u0414\u0430\u0442\u0430 \u043D\u0430 \u043F\u043B\u0430\u0449\u0430\u043D\u0435");
         nubColums =+ 3;
         String typeDoc = " rep_documents.type_df IN(000";
@@ -1520,7 +1521,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         if(levelx == 3) newString = newString + " AND rep_documents.level_df = 0";
         if(levelx == 2) newString = newString + " AND rep_documents.level_df = 1";
         if(levelx == 1) newString = newString + " AND rep_documents.level_df IN(0,1)";
-        newString = newString + " GROUP BY con ORDER BY rep_documents.type_df ASC";
+        newString = newString + " GROUP BY con ORDER BY rep_documents.date_edition_df ASC";
         String[] Names = (String[]) namesQ.toArray(new String[nubColums]);
         System.out.println(newString);
         try {

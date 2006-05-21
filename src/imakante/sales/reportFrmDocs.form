@@ -42,7 +42,7 @@
                   <Component id="jPanel9" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="187" max="32767" attributes="0"/>
+                      <EmptySpace pref="183" max="32767" attributes="0"/>
                       <Component id="jButton1" linkSize="1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton3" min="-2" max="-2" attributes="0"/>
@@ -132,7 +132,7 @@
                       <Component id="jCheckBox8" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jCheckBox4" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="40" max="32767" attributes="0"/>
+                  <EmptySpace pref="44" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -469,7 +469,7 @@
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="jTextField3" pref="117" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                  <Component id="jLabel6" pref="17" max="32767" attributes="0"/>
+                  <Component id="jLabel6" pref="21" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="jTextField4" pref="115" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
@@ -577,7 +577,7 @@
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="jTextField5" pref="117" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                  <Component id="jLabel9" pref="17" max="32767" attributes="0"/>
+                  <Component id="jLabel9" pref="21" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="jTextField6" pref="115" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
@@ -685,7 +685,7 @@
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="jTextField7" pref="117" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                  <Component id="jLabel12" pref="17" max="32767" attributes="0"/>
+                  <Component id="jLabel12" pref="21" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="jTextField8" pref="115" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
@@ -793,7 +793,7 @@
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="jTextField9" pref="117" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                  <Component id="jLabel15" pref="17" max="32767" attributes="0"/>
+                  <Component id="jLabel15" pref="21" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="jTextField10" pref="115" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
@@ -901,7 +901,7 @@
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="jTextField11" pref="115" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                  <Component id="jLabel18" pref="17" max="32767" attributes="0"/>
+                  <Component id="jLabel18" pref="21" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="jTextField12" pref="114" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
@@ -1009,7 +1009,7 @@
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="jTextField13" pref="117" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                  <Component id="jLabel21" pref="17" max="32767" attributes="0"/>
+                  <Component id="jLabel21" pref="21" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="jTextField14" pref="115" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
@@ -1136,7 +1136,7 @@
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="jTextField15" pref="117" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                  <Component id="jLabel24" pref="17" max="32767" attributes="0"/>
+                  <Component id="jLabel24" pref="21" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="jTextField16" pref="115" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
