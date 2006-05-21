@@ -697,6 +697,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         sprMenu.add(jMenuItem14);
 
         jMenuItem35.setText("\u0421\u0442\u043e\u043a\u0438 \u043c\u0438\u043d\u0438\u043c\u0430\u043b\u043d\u0438 \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u0430");
+        jMenuItem35.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem35ActionPerformed(evt);
+            }
+        });
+
         sprMenu.add(jMenuItem35);
 
         jMenuItem36.setText("\u0420\u0435\u0430\u043b\u0438\u0437\u0438\u0440\u0430\u043d\u0430 \u0440\u0435\u043d\u0442\u0430\u0431\u0438\u043b\u043d\u043e\u0441\u0442");
@@ -917,6 +923,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-458)/2, 757, 458);
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void jMenuItem35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem35ActionPerformed
+        this.loadReportStockOutLevel();
+    }//GEN-LAST:event_jMenuItem35ActionPerformed
     
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
         this.loadReportParcelDateLevel();
@@ -1899,7 +1909,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         levDSec.setVisible(true);
     }
     
-     public void loadReportStockOut(int i) {
+    public void loadReportStockOut(int i) {
         imakante.sales.reportStockOut stockOut = new imakante.sales.reportStockOut("\u041C\u0438\u043D\u0438\u043C\u0430\u043B\u043D\u0438 \u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u0430", this, i);
         desktopPane.add(stockOut);
         stockOut.setVisible(true);
@@ -1908,7 +1918,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private void loadReportStockOutLevel(){
         imakante.sales.levelDialogSecond levDSec = new imakante.sales.levelDialogSecond(this, true,9003);
         levDSec.setVisible(true);
-    }        
+    }
     public void loadReportDocs(int i) {
         imakante.sales.reportFrmDocs repDox = new imakante.sales.reportFrmDocs("\u0421\u043f\u0440\u0430\u0432\u043a\u0430 \u0437\u0430 \u0418\u0437\u0434\u0430\u0434\u0435\u043d\u0438 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438", this,i);
         desktopPane.add(repDox);

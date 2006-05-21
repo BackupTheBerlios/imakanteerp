@@ -616,9 +616,9 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
     
     private void processReport(){
         String newString=qu;
+        namesQ = null;
+        nubColums = 0;
         namesQ.add("con ");
-        
-        
         newString = newString + " DISTINCT CONCAT(rep_comm_nal.level ";
         this.nubColums = nubColums + 1;
         if (this.jCheckBox1.isSelected()==false){
