@@ -553,7 +553,6 @@ public class reportStockOut extends imakante.com.vcomponents.iInternalFrame impl
                 + "SUM(rep_comm_nal.miarka3), "
                 + "SUM(rep_comm_nal.miarka2), "
                 + "SUM(rep_comm_nal.ostatak), "
-              
                 + "n_product_main.min_pm, "
                 + "(kolichestvo - n_product_main.min_pm) AS rez"
                 + " FROM "
