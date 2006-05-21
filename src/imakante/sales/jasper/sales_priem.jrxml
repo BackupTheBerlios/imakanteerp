@@ -38,6 +38,9 @@
 	<parameter name="firmaname" isForPrompting="false" class="java.lang.String">
 		<defaultValueExpression ><![CDATA[""]]></defaultValueExpression>
 	</parameter>
+	<parameter name="id_dok" isForPrompting="false" class="java.lang.String">
+		<defaultValueExpression ><![CDATA[""]]></defaultValueExpression>
+	</parameter>
 	<queryString><![CDATA[SELECT
 rep_documents.id_pc,
 code_product,
@@ -51,8 +54,10 @@ singly_price_dl,
 (numbers_piece_dl*singly_price_dl) as suma
 
 FROM 
-rep_documents]]></queryString>
+rep_documents
+WHERE rep_documents.id_df = $P{id_dok}]]></queryString>
 
+	<field name="id_pc" class="java.lang.Integer"/>
 	<field name="code_product" class="java.lang.Integer"/>
 	<field name="name_product" class="java.lang.String"/>
 	<field name="parcel_pc" class="java.lang.Integer"/>
