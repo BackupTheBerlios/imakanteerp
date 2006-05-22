@@ -247,7 +247,7 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
                 .add(jLabel8)
                 .add(15, 15, 15)
                 .add(jXDatePicker2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -261,11 +261,13 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
         );
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("\u0421\u043e\u0440\u0442\u0438\u0440\u0430\u043d\u043e \u043f\u043e"));
+        buttonGroup1.add(jRadioButton1);
         jRadioButton1.setSelected(true);
         jRadioButton1.setText("\u043f\u043e \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u0438");
         jRadioButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jRadioButton1.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
+        buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("\u043f\u043e \u0434\u0430\u0442\u0438");
         jRadioButton2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jRadioButton2.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -695,11 +697,10 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
         //Create Dialog with print
         System.out.println(newString);
         
-        
-        fileName="/imakante/sales/jasper/report_parcel_date.jasper";
-        
-        
-        
+        if(this.jRadioButton1.isSelected()){
+        fileName="/imakante/sales/jasper/report_parcel_date.jasper";}
+         if(this.jRadioButton2.isSelected()){
+        fileName="/imakante/sales/jasper/report_parcel_date_sdate.jasper";}
         try{
             initTable(newString, Names);
             imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table,
@@ -710,10 +711,8 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
             constructDialod(newString, 0, Names);
             System.out.println("Ne moga da nameria faila  ");
         }
-        
     }
-    
-    private void fillBlanck(){
+        private void fillBlanck(){
         if(jTextField1.getText()==""){jTextField1.setText("1");}
         if(jTextField2.getText()==""){jTextField2.setText("999999999");}
         if(jTextField3.getText()==""){jTextField3.setText("1");}
