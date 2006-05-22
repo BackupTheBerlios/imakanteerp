@@ -1198,7 +1198,7 @@ public class productDB extends imakante.com.dbObject {
     int oldID_pm = getId_PM();
     setId_PM(in_id_pm);
     ArrayList partidaNomer = new ArrayList();
-    infoConsigment iPartida = new infoConsigment(0,in_id_pm,0,0,"2000-01-01",0);
+    infoConsigment iPartida = new infoConsigment(0,in_id_pm,0,0,"2000-01-01",0,"");
     
     partidaNomer.add((infoConsigment)iPartida);
     try
@@ -1214,7 +1214,8 @@ public class productDB extends imakante.com.dbObject {
          int nomer = getRs().getInt("parcel_pc");
          java.sql.Date date = getRs().getDate("dateofexpire_pc");
          String strDate = date.toString();
-         partidaNomer.add(new infoConsigment(id_pc,in_id_pm,nomer,com,strDate,barcod));
+         String exp_list = getRs().getString("exp_list_pc");
+         partidaNomer.add(new infoConsigment(id_pc,in_id_pm,nomer,com,strDate,barcod,exp_list));
          com++;
       }
     }
@@ -1255,7 +1256,7 @@ public class productDB extends imakante.com.dbObject {
         
      return idNumbers;
   }
- public int insertConsigment(int in_id_pp,int in_id_ppp,int in_id_pf,int in_id_pm,int in_nomer,String in_date,int barcod) 
+ public int insertConsigment(int in_id_pp,int in_id_ppp,int in_id_pf,int in_id_pm,int in_nomer,String in_date,int barcod,String in_exp_list) 
  {
     int oldid_pm = id_pm;
     int oldid_pp = id_pp;
@@ -1272,6 +1273,8 @@ public class productDB extends imakante.com.dbObject {
     id_pd = in_nomer;
     sname_pm = in_date;
     barcod_pm = barcod;
+    String OldExpertsheet_pm = expertsheet_pm;
+    expertsheet_pm = in_exp_list;
     try
     {
             registerParameters();
@@ -1308,14 +1311,16 @@ public class productDB extends imakante.com.dbObject {
         id_pd = oldid_pd;
         sname_pm = oldsname;
         barcod_pm = oldbarcod;
+        expertsheet_pm=OldExpertsheet_pm;
         return maxID;
  }
- public void updateConsigment(int in_id_pc,int in_id_pp,int in_id_ppp,int in_id_pf,int in_id_pm,int in_nomer,String in_date,int barcod) 
+ public void updateConsigment(int in_id_pc,int in_id_pp,int in_id_ppp,int in_id_pf,int in_id_pm,int in_nomer,String in_date,int barcod,String in_exp_list) 
  {
     int oldid_pp = id_pp;
     int oldid_ppp = id_ppp;
     int oldid_pf = id_pf;
     int oldid_pd = id_pd;
+    String oldExp_list = expertsheet_pm;
     String oldsname = sname_pm;
     int oldbarcod = barcod_pm;
     int oldid_pm = id_pm;
@@ -1329,6 +1334,8 @@ public class productDB extends imakante.com.dbObject {
     id_pd = in_nomer;
     sname_pm = in_date;
     barcod_pm = barcod;
+    expertsheet_pm = in_exp_list;
+    
     try
     {
             registerParameters();
@@ -1346,6 +1353,7 @@ public class productDB extends imakante.com.dbObject {
         id_pd = oldid_pd;
         sname_pm = oldsname;
         barcod_pm = oldbarcod;
+        expertsheet_pm = oldExp_list;
  }
 
   public  void deleteConsigment(int in_id_pc)

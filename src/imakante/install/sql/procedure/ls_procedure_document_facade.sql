@@ -434,6 +434,7 @@ IF (comprator = 19) THEN
 END IF;
 
 IF (comprator = 20) THEN
+# za tyrsene po cod na produkta i tatisnat F7
    IF (in_docFacadeType = 0) THEN
      SELECT n.id_pm,pc.parcel_pc,  pc.id_pp as pc_id_pp, pc.id_ppp as pc_id_ppp, pc.id_pf as pc_id_pf,
       n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
@@ -446,6 +447,7 @@ IF (comprator = 20) THEN
      WHERE n.code_pm LIKE CONCAT('%',in_docFacadeComment,'%') AND n.flag_pm = in_id_obekt_in AND  s.level= in_id_df
      ORDER BY id_n_storage,  n.code_pm;
    END IF;
+# za tyrsene po cod na produkta i tatisnat F8
    IF (in_docFacadeType = 1) THEN
        SELECT n.id_pm,pc.parcel_pc, pc.id_pp  as pc_id_pp, pc.id_ppp as pc_id_ppp, pc.id_pf as pc_id_pf,
        n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
@@ -459,6 +461,7 @@ IF (comprator = 20) THEN
        ORDER BY id_n_storage, n.code_pm;
 
    END IF;
+ # za tyrsene po cod na produkta i tatisnat F9
    IF (in_docFacadeType = 2) THEN
        SELECT n.id_pm,pc.parcel_pc, pc.id_pp as pc_id_pp, pc.id_ppp as pc_id_ppp, pc.id_pf as pc_id_pf,
        n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
@@ -471,6 +474,7 @@ IF (comprator = 20) THEN
        WHERE n.code_pm LIKE CONCAT('%',in_docFacadeComment) AND n.flag_pm = in_id_obekt_in AND  s.level= in_id_df
        ORDER BY id_n_storage, n.code_pm;
    END IF;
+# za priemane na stoka
    IF (in_docFacadeType = 3) THEN
        SELECT n.id_pm,pc.parcel_pc, pc.id_pp as pc_id_pp, pc.id_ppp as pc_id_ppp, pc.id_pf as pc_id_pf,
        n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
@@ -482,6 +486,58 @@ IF (comprator = 20) THEN
        FROM mida.n_product_main n LEFT JOIN mida.n_product_consigment pc ON pc.id_pm = n.id_pm
        WHERE n.code_pm LIKE CONCAT('%',in_docFacadeComment) AND n.flag_pm = in_id_obekt_in;
    END IF;
+# za tyrsene po ime i tatisnat F7
+   IF (in_docFacadeType = 4) THEN
+       SELECT n.id_pm,pc.parcel_pc, pc.id_pp as pc_id_pp, pc.id_ppp as pc_id_ppp, pc.id_pf as pc_id_pf,
+       n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
+       pc.id_pc,pc.dateofexpire_pc ,
+       s.id_nal, s.id_n_storage,s.level, s.quant_nal, s.quant_rezerv_nal,
+       st.code_n_storage, st.name_n_storage, st.comments_n_storage
+       FROM mida.n_product_main n LEFT JOIN mida.n_product_consigment pc ON pc.id_pm = n.id_pm
+       LEFT JOIN mida.sl_nalichnosti s ON pc.id_pc = s.id_pc
+       LEFT JOIN mida.n_storage st ON st.id_n_storage = s.id_n_storage
+       WHERE n.name_pm LIKE CONCAT('%',in_docFacadeComment,'%') AND n.flag_pm = in_id_obekt_in AND  s.level= in_id_df
+       ORDER BY id_n_storage, n.name_pm;
+   END IF;
+# za tyrsene po ime i tatisnat F8
+   IF (in_docFacadeType = 5) THEN
+       SELECT n.id_pm,pc.parcel_pc, pc.id_pp as pc_id_pp, pc.id_ppp as pc_id_ppp, pc.id_pf as pc_id_pf,
+       n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
+       pc.id_pc,pc.dateofexpire_pc ,
+       s.id_nal, s.id_n_storage,s.level, s.quant_nal, s.quant_rezerv_nal,
+       st.code_n_storage, st.name_n_storage, st.comments_n_storage
+       FROM mida.n_product_main n LEFT JOIN mida.n_product_consigment pc ON pc.id_pm = n.id_pm
+       LEFT JOIN mida.sl_nalichnosti s ON pc.id_pc = s.id_pc
+       LEFT JOIN mida.n_storage st ON st.id_n_storage = s.id_n_storage
+       WHERE n.name_pm LIKE CONCAT(in_docFacadeComment,'%') AND n.flag_pm = in_id_obekt_in AND  s.level= in_id_df
+       ORDER BY id_n_storage, n.name_pm;
+   END IF;
+# za tyrsene po ime i tatisnat F9
+   IF (in_docFacadeType = 6) THEN
+       SELECT n.id_pm,pc.parcel_pc, pc.id_pp as pc_id_pp, pc.id_ppp as pc_id_ppp, pc.id_pf as pc_id_pf,
+       n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
+       pc.id_pc,pc.dateofexpire_pc ,
+       s.id_nal, s.id_n_storage,s.level, s.quant_nal, s.quant_rezerv_nal,
+       st.code_n_storage, st.name_n_storage, st.comments_n_storage
+       FROM mida.n_product_main n LEFT JOIN mida.n_product_consigment pc ON pc.id_pm = n.id_pm
+       LEFT JOIN mida.sl_nalichnosti s ON pc.id_pc = s.id_pc
+       LEFT JOIN mida.n_storage st ON st.id_n_storage = s.id_n_storage
+       WHERE n.name_pm LIKE CONCAT('%',in_docFacadeComment) AND n.flag_pm = in_id_obekt_in AND  s.level= in_id_df
+       ORDER BY id_n_storage, n.name_pm;
+   END IF;
+# za priemane na stoka  i tyrsene po ime
+   IF (in_docFacadeType = 7) THEN
+       SELECT n.id_pm,pc.parcel_pc, pc.id_pp as pc_id_pp, pc.id_ppp as pc_id_ppp, pc.id_pf as pc_id_pf,
+       n.id_pd, n.id_ppp, n.id_pp, n.id_pf, n.name_pm, n.fname_pm, n.sname_pm, n.cname_pm, n.max_pop_pm,n.code_pm,
+       pc.id_pc,pc.dateofexpire_pc ,
+       @s.id_nal:=0 as id_nal, @s.id_n_storage:=0 as id_n_storage ,@s.level:=0 as level, @s.quant_nal:=0 as quant_nal,
+       @s.quant_rezerv_nal:=0 as quant_rezerv_nal,
+       @st.code_n_storage:=0 as code_n_storage, @st.name_n_storage:="" as name_n_storage,
+       @st.comments_n_storage:="" as comments_n_storage
+       FROM mida.n_product_main n LEFT JOIN mida.n_product_consigment pc ON pc.id_pm = n.id_pm
+       WHERE n.name_pm LIKE CONCAT('%',in_docFacadeComment) AND n.flag_pm = in_id_obekt_in;
+   END IF;
+
 END IF;
 IF (comprator = 21) THEN
    SELECT n.price1_pp, n.price2_pp, n.price3_pp, n.price0_pp,n.id_sl_curs FROM mida.n_product_price n

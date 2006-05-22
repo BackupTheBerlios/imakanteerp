@@ -183,7 +183,8 @@ public class contragentDB extends imakante.com.dbObject {
     
     public String getNameWithID(int id_nam,boolean mol_oso) {   //ok izvli4ane na imenata na MOL
         String nam = new String("");
-        if(mol_oso) {   // ako e true izvli4ame stoinost za MOLthis.id_mol = id_nam;
+        if(mol_oso) {   // ako e true izvli4ame stoinost za MOL
+            this.id_mol = id_nam;
             this.id_oso = -1;
         } else {    // ako e fause izvli4ame stoinost za OSO;
             this.id_oso = id_nam;

@@ -49,7 +49,8 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
         table.moveColumn(getColumnIndex("Код на продукта"),1);
         table.moveColumn(getColumnIndex("Име на склада"),2);
         table.moveColumn(getColumnIndex("Наличност"),3);
-        
+        table.moveColumn(getColumnIndex("Партида"),4);
+        table.moveColumn(getColumnIndex("Годност"),5);
         
         table.addKeyListener(new KeyListener()
         {

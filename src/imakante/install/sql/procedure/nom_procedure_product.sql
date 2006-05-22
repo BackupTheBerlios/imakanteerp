@@ -14,7 +14,7 @@ BEGIN
          pf.other_pf, pd.id_pd, pd.m1_pd, pd.v1_pd, pd.m2_pd, pd.v2_pd, pd.m3_pd, pd.v3_pd,min_pm
         FROM n_product_main n LEFT JOIN n_product_price pp ON pp.id_pp = n.id_pp LEFT JOIN sl_curs  ON  pp.id_sl_curs = sl_curs.id_sl_curs LEFT JOIN n_money money ON money.id_n_money = sl_curs.id_sl_curs LEFT JOIN n_product_fee pf ON pf.id_pf = n.id_pf LEFT JOIN
          n_product_description pd ON pd.id_pd = n.id_pd LEFT JOIN n_product_promotion_price ppp ON ppp.id_ppp = n.id_ppp LEFT JOIN n_group g
-         ON g.id_n_group = n.id_n_group WHERE n.flag_pm = in_flag_pm ORDER BY n.name_pm;
+         ON g.id_n_group = n.id_n_group WHERE n.flag_pm = in_flag_pm ORDER BY n.name_pm, n.id_pm;
      END IF;
      IF (in_comprator = 1) THEN
         INSERT INTO n_product_main(id_n_group,id_ppp,id_pp, id_pf,name_pm, fname_pm, sname_pm,cname_pm,cod1_pm,
@@ -217,7 +217,7 @@ BEGIN
     END IF;
 
     IF (in_comprator = 36) THEN
-         SELECT n.id_pc, n.parcel_pc, n.dateofexpire_pc, n.barcod_pc, n.id_pp, n.id_ppp, n.id_pf
+         SELECT n.id_pc, n.parcel_pc, n.dateofexpire_pc, n.barcod_pc, n.id_pp, n.id_ppp, n.id_pf, n.exp_list_pc
          FROM n_product_consigment n
          WHERE id_pm =in_id_pm ;
 
@@ -229,8 +229,8 @@ BEGIN
     END IF;
     
     IF (in_comprator = 38) THEN
-         INSERT INTO mida.n_product_consigment( id_pm, parcel_pc, dateofexpire_pc, barcod_pc, id_pp, id_ppp, id_pf)
-         VALUES(in_id_pm, in_id_pd, in_sname_pm, in_barcod_pm, in_id_pp, in_id_ppp, in_id_pf);
+         INSERT INTO mida.n_product_consigment( id_pm, parcel_pc, dateofexpire_pc, barcod_pc, id_pp, id_ppp, id_pf,exp_list_pc)
+         VALUES(in_id_pm, in_id_pd, in_sname_pm, in_barcod_pm, in_id_pp, in_id_ppp, in_id_pf,in_expertsheet_pm);
 
     END IF;
     IF (in_comprator = 39) THEN
@@ -240,7 +240,8 @@ BEGIN
         n.barcod_pc = in_barcod_pm,
         n.id_pp = in_id_pp,
         n.id_ppp = in_id_ppp,
-        n.id_pf = in_id_pf
+        n.id_pf = in_id_pf,
+        n.exp_list_pc = in_expertsheet_pm
         WHERE n.id_pc=in_id_n_group;
    END IF;
 

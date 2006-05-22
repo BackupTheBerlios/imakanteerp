@@ -9,9 +9,10 @@ public class infoConsigment
    private int connection=0;
    private String expireDate; // na6 format
    private int barCod=0;
+   private String expert_list;
     
     
-    public infoConsigment(int in_id_pc,int in_id_pm,int p,int con,String date,int barcod)
+    public infoConsigment(int in_id_pc,int in_id_pm,int p,int con,String date,int barcod,String exp_list)
     {
         this.id_pc = in_id_pc;
         this.id_pm = in_id_pm;
@@ -19,6 +20,7 @@ public class infoConsigment
         this.connection = con;
         this.expireDate = checkAndConvertSQLFormat(date);
         this.barCod = barcod;
+        this.expert_list=exp_list;
     }
  
 public int getBarCod()
@@ -32,6 +34,10 @@ public int getBarCod()
  public String getExpireDateSQL() // vry6ta stoinosta v SQl ski format
  {
      return expireDate;
+ }
+ public String getExpertList() // 
+ {
+     return expert_list;
  }  
  public int getId_PC()
  {
@@ -69,6 +75,11 @@ public int getBarCod()
  {
      
      this.expireDate= checkAndConvertSQLFormat(in);
+ }
+  public void setExpertList(String in)
+ {
+     
+     this.expert_list=in;
  }
    public void setBarCod(int in)
  {

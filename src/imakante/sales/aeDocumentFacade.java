@@ -1148,6 +1148,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         ((docLineTableModel) jTable1.getModel()).enableCellEditable(0);
         // za pozvolqvane na tyrsene na produkt ot ime
         ((docLineTableModel) jTable1.getModel()).enableCellEditable(1);
+        str=" ";
         
     }//GEN-LAST:event_jButton3ActionPerformed
     
@@ -2361,7 +2362,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     //     System.out.println(" >>>>>>>>>>>.. "+ff.getText());
                     
                     isTyped = false;
-                    
+                    str=" ";
                 }
                 
                 if(e.getKeyCode()== KeyEvent.VK_ENTER) {
@@ -2934,45 +2935,120 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 
              if(e.getKeyCode()==KeyEvent.VK_F7) {
 
+                   
+                    
                     columnSelect = jTable1.getSelectedColumn();
                     if(columnSelect==0)
                     {
-                    if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
-                    processKeyPress(myParent.getDocFacadeType(),F7_KEY,SEARCH_BY_CODE);
-                    }
-                    if(columnSelect==1)
-                    {
-                    if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
-                    processKeyPress(myParent.getDocFacadeType(),F7_KEY,SEARCH_BY_NAME);
+                         if(str.equals("0") || str==null || str.equals("\uffff")  ) {str="";}
+                         else
+                         {
+                            String tmpStr = new String();
+                           
+                             byte by[] = str.getBytes();
+                            
+                            
+                             for(int i=0 ; i< by.length;i++)
+                             {
+                                
+                                if(by[i]>=48 && by[i]<=57)
+                                {
+                                   String b1 = String.valueOf((char)by[i]);
+                                   tmpStr += b1;
+                                }
+                             }
+                            str=" ";
+                            
+                            str = tmpStr;
+                         
+                         }
+                        if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
+                        {
+                              processKeyPress(myParent.getDocFacadeType(),F7_KEY,SEARCH_BY_CODE);
+                              
+                        }
+                       
+                        }
+                        if(columnSelect==1)
+                        {
+                        if(str.equals("0") || str==null || str.equals("\uffff")  ) {str="";}
+                        if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
+                        processKeyPress(myParent.getDocFacadeType(),F7_KEY,SEARCH_BY_NAME);
                     }
 
                 }
                 
                 if(e.getKeyCode()==KeyEvent.VK_F8) {
-                   
+                   if(str.equals("0")|| str==null) str="";
                     columnSelect = jTable1.getSelectedColumn();
                     if(columnSelect==0)
                     {
+                        if(str.equals("0") || str==null || str.equals("\uffff")  ) {str="";}
+                         else
+                         {
+                            String tmpStr = new String();
+                            
+                             byte by[] = str.getBytes();
+                            
+                            
+                             for(int i=0 ; i< by.length;i++)
+                             {
+                                
+                                if(by[i]>=48 && by[i]<=57)
+                                {
+                                   String b1 = String.valueOf((char)by[i]);
+                                   tmpStr += b1;
+                                }
+                             }
+                            str=" ";
+                            
+                            str = tmpStr;
+                          
+                         }
                     if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
                     processKeyPress(myParent.getDocFacadeType(),F8_KEY,SEARCH_BY_CODE);
                     }
                     if(columnSelect==1)
                     {
+                    if(str.equals("0") || str==null || str.equals("\uffff")  ) {str="";}
                     if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
                     processKeyPress(myParent.getDocFacadeType(),F8_KEY,SEARCH_BY_NAME);
                     }
                 }
                 
                 if(e.getKeyCode()==KeyEvent.VK_F9) {
-                    
+                    if(str.equals("0")|| str==null) str="";
                     columnSelect = jTable1.getSelectedColumn();
                     if(columnSelect==0)
                     {
+                        if(str.equals("0") || str==null || str.equals("\uffff")  ) {str="";}
+                         else
+                         {
+                            String tmpStr = new String();
+                           
+                             byte by[] = str.getBytes();
+                            
+                            
+                             for(int i=0 ; i< by.length;i++)
+                             {
+                                
+                                if(by[i]>=48 && by[i]<=57)
+                                {
+                                   String b1 = String.valueOf((char)by[i]);
+                                   tmpStr += b1;
+                                }
+                             }
+                            str=" ";
+                            
+                            str = tmpStr;
+                          
+                         }
                     if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
                     processKeyPress(myParent.getDocFacadeType(),F9_KEY,SEARCH_BY_CODE);
                     }
                     if(columnSelect==1)
                     {
+                     if(str.equals("0") || str==null || str.equals("\uffff")  ) {str="";}
                     if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
                     processKeyPress(myParent.getDocFacadeType(),F9_KEY,SEARCH_BY_NAME);
                     }
