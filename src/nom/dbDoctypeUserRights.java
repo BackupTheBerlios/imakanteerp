@@ -35,8 +35,8 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
     
     public void insertRow(int in_id_um) {
         setComprator(1);
-        this.id_usermaster = in_id_um;
-        this.rights = 3;
+        this.setUserMaster(in_id_um);
+        this.setRights(3);
         try {
             registerParameters();
             getCstm().execute();
@@ -46,9 +46,9 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
     public void updateRow(int in_id, int in_id_um, int in_sdtn, int in_rights) {
         setComprator(2);
         this.setId(in_id);
-        this.id_usermaster = in_id_um;
-        this.doctypeNum = in_sdtn;
-        this.rights = in_rights;
+        this.setUserMaster(in_id_um);
+        this.setDoctypeNum(in_sdtn);
+        this.setRights(in_rights);
         try {
             registerParameters();
             getCstm().execute();
@@ -80,7 +80,7 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
     
     public java.sql.ResultSet searchRecords(int in_rights) {
         setComprator(5);
-        this.rights = in_rights;
+        this.setRights(in_rights);
         try {
             registerParameters();
             setRs(getCstm().executeQuery());
@@ -156,7 +156,7 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
         return id_usermaster;
     }
     
-    public void setUsermaster(int UserMaster) {
+    public void setUserMaster(int UserMaster) {
         this.id_usermaster = UserMaster;
     }
     
