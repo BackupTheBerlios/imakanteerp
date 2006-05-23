@@ -6,8 +6,7 @@ public class dbNumDoc extends imakante.com.dbObject {
     private String splitNamesG[];
     private int indexConnOfId[] = null;
     private int narea = 0;
-    private String name;
-    private String comment = "";
+    private String name = "";
     private java.sql.Connection conn;
     
     public dbNumDoc(java.sql.Connection conn) {
@@ -50,7 +49,7 @@ public class dbNumDoc extends imakante.com.dbObject {
     public void insertRow(int in_area, int in_id_doctype) {
         setComprator(1);
         this.setIDGr(in_id_doctype);
-        this.narea = in_area;
+        this.setNArea(in_area);
         this.setName("");
         try {
             registerParameters();
@@ -62,7 +61,8 @@ public class dbNumDoc extends imakante.com.dbObject {
         setComprator(2);
         this.setId(in_id);
         this.setIDGr(in_id_doctype);
-        this.narea = in_area;
+        this.setNArea(in_area);
+        System.out.println("Areata e: " + this.getNArea());
         this.setName(in_name);
         try {
             registerParameters();
@@ -87,7 +87,7 @@ public class dbNumDoc extends imakante.com.dbObject {
             setRs(getCstm().executeQuery());
             while(getRs().next()) {
                 setIDGr(getRs().getInt("id_doctype"));
-                narea = getRs().getInt("code");
+                setNArea(getRs().getInt("code"));
                 setName(getRs().getString("name"));
             }
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
@@ -96,7 +96,7 @@ public class dbNumDoc extends imakante.com.dbObject {
     
     public java.sql.ResultSet searchRecords(int in_area, String in_name) {
         setComprator(5);
-        this.narea = in_area;
+        this.setNArea(in_area);
         this.setName(in_name);
         try {
             registerParameters();
@@ -129,13 +129,29 @@ public class dbNumDoc extends imakante.com.dbObject {
         indexConnOfId = new int[i];
         it = in.iterator();
         splitNamesG = new String[i];
-        i=0;
+        i = 0;
         while(it.hasNext()) {
             indexConnOfId[i] = (Integer) it.next();
             splitNamesG[i] = (String) Doctypes.get(indexConnOfId[i]);
             i++;
         }
         return splitNamesG;
+    }
+    
+    public boolean keyAlreadyTaken(int Num, String docType) {
+        int num = Num;
+        String doc = docType;
+        java.sql.ResultSet res = getTable();
+        java.util.HashMap keys = new java.util.HashMap();
+        java.util.Vector pair = new java.util.Vector();
+        pair.add(1, num);
+        pair.add(2, doc);
+        try {
+            while (res.next()) keys.put(new Integer(getRs().getInt("area_number_sdtn")), new String(getRs().getString("name_sdtn")));
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
+        boolean present = keys.entrySet().contains(pair);
+        if (present) return true;
+        return false;
     }
     
     public int getMaxId() {
@@ -164,7 +180,7 @@ public class dbNumDoc extends imakante.com.dbObject {
         return return_int;
     }
     
-   public int getMaxGrID() {
+    public int getMaxGrID() {
         setComprator(9);
         int return_int = -1;
         try {
@@ -187,5 +203,13 @@ public class dbNumDoc extends imakante.com.dbObject {
     
     public void setConn(java.sql.Connection conn) {
         this.conn = conn;
+    }
+    
+    public int getNArea() {
+        return narea;
+    }
+    
+    public void setNArea(int narea) {
+        this.narea = narea;
     }
 }

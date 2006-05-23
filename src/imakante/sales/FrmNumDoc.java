@@ -53,7 +53,7 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel4.setPreferredSize(new java.awt.Dimension(448, 37));
-        jLabel2.setText("\u041a\u043e\u0434:");
+        jLabel2.setText("\u041d\u043e\u043c\u0435\u0440:");
         jPanel4.add(jLabel2);
 
         jTextCod.setPreferredSize(new java.awt.Dimension(80, 20));
@@ -71,7 +71,7 @@ public class FrmNumDoc extends  imakante.com.vcomponents.iInternalFrame implemen
 
         jPanel4.add(jTextCod);
 
-        jLabel3.setText("\u0418\u043c\u0435:");
+        jLabel3.setText("\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442:");
         jPanel4.add(jLabel3);
 
         jTextName.setPreferredSize(new java.awt.Dimension(160, 20));
