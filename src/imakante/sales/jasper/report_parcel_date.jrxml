@@ -68,8 +68,7 @@ SUM(rep_comm_nal.TSENA0), SUM(rep_comm_nal.TSENA1)
  AND  `rep_comm_nal`.`code_n_storage` BETWEEN $P{otsklad} AND $P{dosklad}
  AND rep_comm_nal.dateofexpire_pc BETWEEN $P{otdata} AND  $P{dodata} 
 AND  `rep_comm_nal`.level IN($P{levelx})
-GROUP BY con ORDER BY rep_comm_nal.code_pm ASC
-]]></queryString>
+GROUP BY con ORDER BY rep_comm_nal.code_pm ASC]]></queryString>
 
 	<field name="con" class="java.lang.String"/>
 	<field name="code_n_storage" class="java.lang.Integer"/>
@@ -111,7 +110,7 @@ GROUP BY con ORDER BY rep_comm_nal.code_pm ASC
 					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Times-Roman" size="14" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="CP1252" isStrikeThrough="false" />
 					</textElement>
-				<text><![CDATA[СПРВКА СРОКОВЕ ГОДНОСТ]]></text>
+				<text><![CDATA[СПРАВКА СРОКОВЕ ГОДНОСТ]]></text>
 				</staticText>
 				<line direction="TopDown">
 					<reportElement
