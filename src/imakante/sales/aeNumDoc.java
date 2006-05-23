@@ -287,7 +287,7 @@ public class aeNumDoc extends imakante.com.vcomponents.iDialog {
             javax.swing.JOptionPane.showMessageDialog(null,
                     "\u0422\u043E\u0437\u0438 \u041D\u043E\u043C\u0435\u0440\u0430\u0442\u043E\u0440 \u0432\u0435\u0447\u0435 \u0435 \u0437\u0430\u0435\u0442 \u0437\u0430 \u0441\u044A\u043E\u0442\u0432\u0435\u0442\u043D\u0438\u044F \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0435\u043D \u0442\u0438\u043F!",
                     "\u0412\u041D\u0418\u041C\u0410\u041D\u0418\u0415!", javax.swing.JOptionPane.ERROR_MESSAGE);
-        } else { saveRecord(); }
+        } else saveRecord();
     }//GEN-LAST:event_jButtonSaveActionPerformed
     
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed

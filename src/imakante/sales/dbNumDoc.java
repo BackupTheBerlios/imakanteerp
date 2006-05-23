@@ -25,7 +25,7 @@ public class dbNumDoc extends imakante.com.dbObject {
             getCstm().setInt("comprator", getComprator());
             getCstm().setInt("in_id", getId());
             getCstm().setInt("in_id_doctype", getIDGr());
-            getCstm().setInt("in_area", getCode());
+            getCstm().setInt("in_area", getNArea());
             getCstm().setString("in_name", getName());
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
@@ -62,7 +62,6 @@ public class dbNumDoc extends imakante.com.dbObject {
         this.setId(in_id);
         this.setIDGr(in_id_doctype);
         this.setNArea(in_area);
-        System.out.println("Areata e: " + this.getNArea());
         this.setName(in_name);
         try {
             registerParameters();
@@ -144,8 +143,8 @@ public class dbNumDoc extends imakante.com.dbObject {
         java.sql.ResultSet res = getTable();
         java.util.HashMap keys = new java.util.HashMap();
         java.util.Vector pair = new java.util.Vector();
-        pair.add(1, num);
-        pair.add(2, doc);
+        pair.add(0, num);
+        pair.add(1, doc);
         try {
             while (res.next()) keys.put(new Integer(getRs().getInt("area_number_sdtn")), new String(getRs().getString("name_sdtn")));
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
