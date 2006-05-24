@@ -80,13 +80,13 @@ IFNULL(rep_documents.code_product, 0), IFNULL(rep_documents.code_distributor, 0)
 IFNULL(rep_documents.code_operator, 0), IFNULL(rep_documents.code_speditor, 0)) 
 AS con, rep_documents.number_df, 
 rep_documents.type_df , rep_documents.date_edition_df, 
-rep_documents.totalall_dl, rep_documents.dds_dl, 
+(rep_documents.totalall_dl + (rep_documents.totalall_dl*rep_documents.dds_dl)/100) AS full_price,
+rep_documents.code_client, rep_documents.name_client, 
 rep_documents.code_store,
-rep_documents.code_client,
-rep_documents.name_client,
 rep_documents.code_distributor,
 rep_documents.code_operator,
 rep_documents.code_speditor,
+((rep_documents.totalall_dl*rep_documents.dds_dl)/100) AS dds,
 rep_documents.total_df, rep_documents.dds_df, 
 rep_documents.code_product,
 rep_documents.name_product
@@ -106,36 +106,30 @@ GROUP BY con ORDER BY rep_documents.code_product ASC]]></queryString>
 	<field name="number_df" class="java.lang.String"/>
 	<field name="type_df" class="java.lang.String"/>
 	<field name="date_edition_df" class="java.lang.String"/>
-	<field name="totalall_dl" class="java.lang.Double"/>
-	<field name="dds_dl" class="java.lang.Double"/>
-	<field name="code_store" class="java.lang.String"/>
+	<field name="full_price" class="java.lang.Double"/>
 	<field name="code_client" class="java.lang.String"/>
 	<field name="name_client" class="java.lang.String"/>
+	<field name="code_store" class="java.lang.String"/>
 	<field name="code_distributor" class="java.lang.String"/>
 	<field name="code_operator" class="java.lang.String"/>
 	<field name="code_speditor" class="java.lang.String"/>
+	<field name="dds" class="java.lang.Double"/>
 	<field name="total_df" class="java.math.BigDecimal"/>
 	<field name="dds_df" class="java.math.BigDecimal"/>
 	<field name="code_product" class="java.lang.String"/>
 	<field name="name_product" class="java.lang.String"/>
 
-	<variable name="EXP_1" class="java.math.BigDecimal" resetType="Report" calculation="Sum">
-		<variableExpression><![CDATA[$F{total_df}]]></variableExpression>
+	<variable name="SUM_full_price_1" class="java.lang.Double" resetType="Group" resetGroup="client" calculation="Sum">
+		<variableExpression><![CDATA[$F{full_price}]]></variableExpression>
 	</variable>
-	<variable name="EXP_2" class="java.math.BigDecimal" resetType="Report" calculation="Sum">
-		<variableExpression><![CDATA[$F{dds_df}]]></variableExpression>
+	<variable name="SUM_dds_1" class="java.lang.Double" resetType="Group" resetGroup="client" calculation="Sum">
+		<variableExpression><![CDATA[$F{dds}]]></variableExpression>
 	</variable>
-	<variable name="SUM_totalall_dl_1" class="java.lang.Double" resetType="Group" resetGroup="client" calculation="Sum">
-		<variableExpression><![CDATA[$F{totalall_dl}]]></variableExpression>
+	<variable name="SUM_full_price_2" class="java.lang.Double" resetType="Report" calculation="Sum">
+		<variableExpression><![CDATA[$F{full_price}]]></variableExpression>
 	</variable>
-	<variable name="SUM_dds_dl_1" class="java.lang.Double" resetType="Group" resetGroup="client" calculation="Sum">
-		<variableExpression><![CDATA[$F{dds_dl}]]></variableExpression>
-	</variable>
-	<variable name="SUM_total_df_1" class="java.math.BigDecimal" resetType="Report" calculation="Sum">
-		<variableExpression><![CDATA[$F{total_df}]]></variableExpression>
-	</variable>
-	<variable name="SUM_EXP_1_1" class="java.math.BigDecimal" resetType="Report" calculation="Sum">
-		<variableExpression><![CDATA[$V{EXP_1}]]></variableExpression>
+	<variable name="SUM_dds_2" class="java.lang.Double" resetType="Report" calculation="Sum">
+		<variableExpression><![CDATA[$F{dds}]]></variableExpression>
 	</variable>
 
 		<group  name="client" >
@@ -225,29 +219,29 @@ GROUP BY con ORDER BY rep_documents.code_product ASC]]></queryString>
 				</line>
 				<textField isStretchWithOverflow="false" pattern="###0.00;-###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="213"
+						x="212"
 						y="4"
-						width="52"
+						width="50"
 						height="12"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Right">
 						<font fontName="Tahoma" size="8"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.Double"><![CDATA[$V{SUM_totalall_dl_1}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.Double"><![CDATA[$V{SUM_full_price_1}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="###0.00;-###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="267"
+						x="265"
 						y="4"
-						width="37"
+						width="36"
 						height="12"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Right">
 						<font fontName="Tahoma" size="8"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.Double"><![CDATA[$V{SUM_dds_dl_1}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.Double"><![CDATA[$V{SUM_dds_1}]]></textFieldExpression>
 				</textField>
 			</band>
 			</groupFooter>
@@ -1049,7 +1043,7 @@ GROUP BY con ORDER BY rep_documents.code_product ASC]]></queryString>
 				<staticText>
 					<reportElement
 						mode="Transparent"
-						x="215"
+						x="213"
 						y="4"
 						width="50"
 						height="16"
@@ -1065,7 +1059,7 @@ GROUP BY con ORDER BY rep_documents.code_product ASC]]></queryString>
 				<staticText>
 					<reportElement
 						mode="Transparent"
-						x="268"
+						x="265"
 						y="4"
 						width="37"
 						height="16"
@@ -1081,7 +1075,7 @@ GROUP BY con ORDER BY rep_documents.code_product ASC]]></queryString>
 				<staticText>
 					<reportElement
 						mode="Transparent"
-						x="307"
+						x="304"
 						y="4"
 						width="45"
 						height="16"
@@ -1097,7 +1091,7 @@ GROUP BY con ORDER BY rep_documents.code_product ASC]]></queryString>
 				<staticText>
 					<reportElement
 						mode="Transparent"
-						x="354"
+						x="351"
 						y="4"
 						width="55"
 						height="16"
@@ -1113,7 +1107,7 @@ GROUP BY con ORDER BY rep_documents.code_product ASC]]></queryString>
 				<staticText>
 					<reportElement
 						mode="Transparent"
-						x="411"
+						x="408"
 						y="4"
 						width="40"
 						height="16"
@@ -1129,7 +1123,7 @@ GROUP BY con ORDER BY rep_documents.code_product ASC]]></queryString>
 				<staticText>
 					<reportElement
 						mode="Transparent"
-						x="453"
+						x="450"
 						y="4"
 						width="41"
 						height="16"
@@ -1225,7 +1219,7 @@ GROUP BY con ORDER BY rep_documents.code_product ASC]]></queryString>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
-						x="86"
+						x="85"
 						y="0"
 						width="34"
 						height="12"
@@ -1241,7 +1235,7 @@ GROUP BY con ORDER BY rep_documents.code_product ASC]]></queryString>
 				<textField isStretchWithOverflow="false" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
-						x="215"
+						x="212"
 						y="0"
 						width="50"
 						height="12"
@@ -1252,12 +1246,12 @@ GROUP BY con ORDER BY rep_documents.code_product ASC]]></queryString>
 					<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Helvetica" size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
-				<textFieldExpression   class="java.lang.Double"><![CDATA[$F{totalall_dl}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.Double"><![CDATA[$F{full_price}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="#,##0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
-						x="267"
+						x="264"
 						y="0"
 						width="37"
 						height="12"
@@ -1268,12 +1262,12 @@ GROUP BY con ORDER BY rep_documents.code_product ASC]]></queryString>
 					<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Helvetica" size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
-				<textFieldExpression   class="java.lang.Double"><![CDATA[$F{dds_dl}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.Double"><![CDATA[$F{dds}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
-						x="306"
+						x="303"
 						y="0"
 						width="45"
 						height="12"
@@ -1289,7 +1283,7 @@ GROUP BY con ORDER BY rep_documents.code_product ASC]]></queryString>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
-						x="354"
+						x="350"
 						y="0"
 						width="55"
 						height="12"
@@ -1305,7 +1299,7 @@ GROUP BY con ORDER BY rep_documents.code_product ASC]]></queryString>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
-						x="413"
+						x="407"
 						y="0"
 						width="40"
 						height="12"
@@ -1321,7 +1315,7 @@ GROUP BY con ORDER BY rep_documents.code_product ASC]]></queryString>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
-						x="456"
+						x="449"
 						y="0"
 						width="37"
 						height="12"
@@ -1353,7 +1347,7 @@ GROUP BY con ORDER BY rep_documents.code_product ASC]]></queryString>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
-						x="123"
+						x="121"
 						y="0"
 						width="89"
 						height="12"
@@ -1454,9 +1448,9 @@ GROUP BY con ORDER BY rep_documents.code_product ASC]]></queryString>
 					<reportElement
 						mode="Transparent"
 						x="93"
-						y="7"
+						y="6"
 						width="58"
-						height="10"
+						height="13"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
 						key="staticText-37"/>
@@ -1466,34 +1460,31 @@ GROUP BY con ORDER BY rep_documents.code_product ASC]]></queryString>
 					</textElement>
 				<text><![CDATA[ ОБЩО]]></text>
 				</staticText>
-				<textField isStretchWithOverflow="false" pattern="#,##0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						mode="Transparent"
-						x="267"
-						y="7"
-						width="40"
-						height="10"
-						forecolor="#000000"
-						backcolor="#FFFFFF"
-						key="textField"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
-						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" size="8" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
-					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$V{EXP_2}]]></textFieldExpression>
-				</textField>
 				<textField isStretchWithOverflow="false" pattern="###0.00;-###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="213"
-						y="7"
-						width="52"
-						height="10"
+						y="6"
+						width="50"
+						height="13"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Right">
-						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
+						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$V{SUM_EXP_1_1}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.Double"><![CDATA[$V{SUM_full_price_2}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="###0.00;-###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="265"
+						y="6"
+						width="37"
+						height="13"
+						key="textField"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right">
+						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Double"><![CDATA[$V{SUM_dds_2}]]></textFieldExpression>
 				</textField>
 			</band>
 		</summary>
