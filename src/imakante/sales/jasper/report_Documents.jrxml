@@ -99,16 +99,16 @@ AND rep_documents.level_df IN(0,1)
 GROUP BY con ORDER BY rep_documents.date_edition_df ASC]]></queryString>
 
 	<field name="con" class="java.lang.String"/>
-	<field name="number_df" class="java.lang.Integer"/>
-	<field name="type_df" class="java.lang.Integer"/>
+	<field name="number_df" class="java.lang.String"/>
+	<field name="type_df" class="java.lang.String"/>
 	<field name="date_edition_df" class="java.lang.String"/>
 	<field name="code_store" class="java.lang.String"/>
-	<field name="code_dostavchik" class="java.lang.Integer"/>
-	<field name="code_distributor" class="java.lang.Integer"/>
-	<field name="code_operator" class="java.lang.Integer"/>
-	<field name="code_speditor" class="java.lang.Integer"/>
-	<field name="total_df" class="java.lang.Double"/>
-	<field name="dds_df" class="java.lang.Double"/>
+	<field name="code_dostavchik" class="java.lang.String"/>
+	<field name="code_distributor" class="java.lang.String"/>
+	<field name="code_operator" class="java.lang.String"/>
+	<field name="code_speditor" class="java.lang.String"/>
+	<field name="total_df" class="java.math.BigDecimal"/>
+	<field name="dds_df" class="java.math.BigDecimal"/>
 
 	<variable name="SUM_total_df_1" class="java.math.BigDecimal" resetType="Report" calculation="Sum">
 		<variableExpression><![CDATA[$F{total_df}]]></variableExpression>
@@ -392,7 +392,7 @@ GROUP BY con ORDER BY rep_documents.date_edition_df ASC]]></queryString>
 						height="11"
 						key="textField-1"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
+					<textElement textAlignment="Center">
 						<font fontName="Tahoma" size="8"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{otdata}]]></textFieldExpression>
@@ -600,7 +600,7 @@ GROUP BY con ORDER BY rep_documents.date_edition_df ASC]]></queryString>
 						height="11"
 						key="textField-9"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
+					<textElement textAlignment="Center">
 						<font fontName="Tahoma" size="8"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{dodata}]]></textFieldExpression>
@@ -789,7 +789,7 @@ GROUP BY con ORDER BY rep_documents.date_edition_df ASC]]></queryString>
 						forecolor="#FFFFFF"
 						key="staticText-31"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Center">
+					<textElement textAlignment="Right">
 						<font fontName="Tahoma" size="8"/>
 					</textElement>
 				<text><![CDATA[ДДС]]></text>
@@ -916,7 +916,7 @@ GROUP BY con ORDER BY rep_documents.date_edition_df ASC]]></queryString>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{code_dostavchik}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+				<textField isStretchWithOverflow="false" pattern="###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="177"
 						y="0"
@@ -927,9 +927,9 @@ GROUP BY con ORDER BY rep_documents.date_edition_df ASC]]></queryString>
 					<textElement textAlignment="Right">
 						<font fontName="Tahoma" size="8"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{total_df}]]></textFieldExpression>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{total_df}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+				<textField isStretchWithOverflow="false" pattern="###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="228"
 						y="0"
@@ -940,7 +940,7 @@ GROUP BY con ORDER BY rep_documents.date_edition_df ASC]]></queryString>
 					<textElement textAlignment="Right">
 						<font fontName="Tahoma" size="8"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{dds_df}]]></textFieldExpression>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{dds_df}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
