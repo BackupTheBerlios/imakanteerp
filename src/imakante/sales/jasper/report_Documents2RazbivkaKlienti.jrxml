@@ -212,7 +212,7 @@ GROUP BY con ORDER BY rep_documents.code_product ASC]]></queryString>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Helvetica" size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
-				<text><![CDATA[ ОБЩО ПРОДУКТ]]></text>
+				<text><![CDATA[ ОБЩО ЗА КЛИЕНТА]]></text>
 				</staticText>
 				<line direction="TopDown">
 					<reportElement
@@ -1073,7 +1073,7 @@ GROUP BY con ORDER BY rep_documents.code_product ASC]]></queryString>
 						backcolor="#FFFFFF"
 						key="staticText-31"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+					<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Helvetica" size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[ДДС]]></text>
