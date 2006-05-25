@@ -146,7 +146,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Helvetica" size="8" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
-				<text><![CDATA[ОТ ДОСТАВЧИК:]]></text>
+				<text><![CDATA[ОТ ДОСТАВЧ�?К:]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
@@ -178,7 +178,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Helvetica" size="8" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
-				<text><![CDATA[ДАТА НА ИЗДАВАНЕ:]]></text>
+				<text><![CDATA[ДАТА НА �?ЗДАВАНЕ:]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -268,7 +268,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 					<textElement>
 						<font size="11" isBold="true"/>
 					</textElement>
-				<text><![CDATA[ПРИЕМАТЕЛНА РАЗПИСКА №]]></text>
+				<text><![CDATA[ПР�?ЕМАТЕЛНА РАЗП�?СКА №]]></text>
 				</staticText>
 			</band>
 		</title>
