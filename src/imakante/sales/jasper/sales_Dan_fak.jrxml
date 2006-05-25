@@ -2,7 +2,7 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="sales_priem"
+		 name="sales_Dan_fak"
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
@@ -129,6 +129,9 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 	</variable>
 	<variable name="DDS_SUM" class="java.lang.Double" resetType="Report" calculation="Sum">
 		<variableExpression><![CDATA[$F{dds_osnova}]]></variableExpression>
+	</variable>
+	<variable name="TotalPriceWithDDS" class="java.lang.Double" resetType="Report" calculation="Sum">
+		<variableExpression><![CDATA[$F{totalPrice}]]></variableExpression>
 	</variable>
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -549,7 +552,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 					<textElement>
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{octr_mol_name}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{firma_mol}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -1014,7 +1017,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 					<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Helvetica" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
-				<textFieldExpression   class="java.lang.Double"><![CDATA[$F{totalPrice}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.Double"><![CDATA[$V{TotalPriceWithDDS}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement

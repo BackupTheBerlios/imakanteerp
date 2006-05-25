@@ -1941,7 +1941,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             dateInt = getDateAsInt(newDate);
             date = new Date(dateInt[2]-1900,dateInt[1]-1,dateInt[0]);
             jXDatePay.setDate(date);
-            
+            jTextFieldComment.setText(myParent.getCommenatDocFacade());
             switch(DocFacadeType) {
                 case FAKTURI :
                 {

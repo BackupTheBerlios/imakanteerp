@@ -526,7 +526,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
     private String User="imakante";  // vremenna promenliva za test
     private String Pass="imakante";  // vremenna promenliva za test
     private String Url = "jdbc:mysql://www.katsarov.net:3307/mida";  // vremenna promenliva za test
-    
+    private  imakante.com.priceToString pts = new priceToString();
     
     private final int IN =1; // za skrivane na kolonite
     private final int OUT=2; // za skrivane na kolonite
@@ -1997,6 +1997,15 @@ private void loadPrintReportJasper(int docType)
     {
         case aeDocumentFacade.OFERTA:
         {
+            HashMap parameterHashMap = new HashMap();
+            parameterHashMap.put(new String("izdadenaot"),new String("Иван Кацаров"));
+            parameterHashMap.put(new String("firmaname"),new String("firmata na Ivan"));
+            parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
+          
+            printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,table,conn,parameterHashMap,
+                    "/imakante/sales/jasper/sales_offer.jasper","\u041e\u0424\u0415\u0420\u0422\u0410",
+                    "\u041e\u0424\u0415\u0420\u0422\u0410");
+            printReportDialog.setVisible(true);
             break;
         }
         case aeDocumentFacade.FAKTURA_DANACHNA:
@@ -2008,7 +2017,9 @@ private void loadPrintReportJasper(int docType)
             parameterHashMap.put(new String("firma_mol"),new String("Иван Кацаров"));
             parameterHashMap.put(new String("firma_dan_No"),new String("15288954552"));
             parameterHashMap.put(new String("firma_address"),new String("Пловдив ул.Иглика 6"));
-            parameterHashMap.put(new String("PriceToString"),new String("осем и осем ст."));
+            
+            String priceToStr = PriceToString(id_doc,true);
+            parameterHashMap.put(new String("PriceToString"),priceToStr);
             
             parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
           
@@ -2027,7 +2038,9 @@ private void loadPrintReportJasper(int docType)
             parameterHashMap.put(new String("firma_mol"),new String("Иван Кацаров"));
             parameterHashMap.put(new String("firma_dan_No"),new String("15288954552"));
             parameterHashMap.put(new String("firma_address"),new String("Пловдив ул.Иглика 6"));
-            parameterHashMap.put(new String("PriceToString"),new String("осем и осем ст."));
+            
+            String priceToStr = PriceToString(id_doc,false);
+            parameterHashMap.put(new String("PriceToString"),priceToStr);
             
             parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
           
@@ -2037,12 +2050,26 @@ private void loadPrintReportJasper(int docType)
             printReportDialog.setVisible(true);
             break;
         }
-        case aeDocumentFacade.PREDAVATELNA_RAZPISKA:
+        case aeDocumentFacade.STOKOVA_RAZPISKA:
+            
         {
             break;
         }
         case aeDocumentFacade.PRIEMATELNA_RAZPISKA:
         {
+            HashMap parameterHashMap = new HashMap();
+            parameterHashMap.put(new String("naredil"),new String("Иван Кацаров"));
+            parameterHashMap.put(new String("firmaname"),new String("firmata na Ivan"));
+            String priceToStr = PriceToString(id_doc,false);
+            parameterHashMap.put(new String("PriceToString"),priceToStr);
+            
+            parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
+          
+            printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,table,conn,parameterHashMap,
+                    "/imakante/sales/jasper/sales_priem.jasper","\u041f\u0420\u0418\u0415\u041c\u0410\u0422\u0415\u041b\u041d\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410",
+                    "\u041f\u0420\u0418\u0415\u041c\u0410\u0422\u0415\u041b\u041d\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410");
+            printReportDialog.setVisible(true);
+            
             break;
         }
         case aeDocumentFacade.PROFORMA_FAKTURA:
@@ -2051,17 +2078,92 @@ private void loadPrintReportJasper(int docType)
         }
         case aeDocumentFacade.PROTOKOL_LIPSA:
         {
+            HashMap parameterHashMap = new HashMap();
+            parameterHashMap.put(new String("naredil"),new String("Иван Кацаров"));
+            parameterHashMap.put(new String("firmaname"),new String("firmata na Ivan"));
+            String priceToStr = PriceToString(id_doc,false);
+            parameterHashMap.put(new String("PriceToString"),priceToStr);
+            
+            parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
+          
+            printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,table,conn,parameterHashMap,
+                    "/imakante/sales/jasper/sales_lipsa.jasper","\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u041b\u0418\u041f\u0421\u0410",
+                    "\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u041b\u0418\u041f\u0421\u0410");
+            printReportDialog.setVisible(true);
             break;
         }
         case aeDocumentFacade.BRAK:
         {
+            HashMap parameterHashMap = new HashMap();
+            parameterHashMap.put(new String("naredil"),new String("Иван Кацаров"));
+            parameterHashMap.put(new String("firmaname"),new String("firmata na Ivan"));
+            String priceToStr = PriceToString(id_doc,false);
+            parameterHashMap.put(new String("PriceToString"),priceToStr);
+            
+            parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
+          
+            printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,table,conn,parameterHashMap,
+                    "/imakante/sales/jasper/sales_brak.jasper","\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u0411\u0420\u0410\u041a",
+                    "\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u0411\u0420\u0410\u041a");
+            printReportDialog.setVisible(true);
             break;
         }
         case aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE:
         {
+            HashMap parameterHashMap = new HashMap();
+            parameterHashMap.put(new String("naredil"),new String("Иван Кацаров"));
+            parameterHashMap.put(new String("firmaname"),new String("firmata na Ivan"));
+            String priceToStr = PriceToString(id_doc,false);
+            parameterHashMap.put(new String("PriceToString"),priceToStr);
+            
+            parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
+          
+            printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,table,conn,parameterHashMap,
+                    "/imakante/sales/jasper/sales_nar_prehv.jasper","\u041d\u0410\u0420\u0415\u0416\u0414\u0410\u041d\u0415 \u0417\u0410 \u041f\u0420\u0415\u0425\u0412\u042a\u0420\u041b\u042f\u041d\u0415",
+                    "\u041d\u0410\u0420\u0415\u0416\u0414\u0410\u041d\u0415 \u0417\u0410 \u041f\u0420\u0415\u0425\u0412\u042a\u0420\u041b\u042f\u041d\u0415");
+            printReportDialog.setVisible(true);
             break;
         }
     }
 }
-
+private String PriceToString( int id_doc, boolean withDDS)
+{
+    String StringPrice=new String();
+    String SQL = new String();
+    double price=0;
+    if(withDDS)
+    {
+        SQL = "Select total_df as totall" +
+                 " FROM rep_documents_ivan " +
+                 " WHERE id_df="+id_doc+";"; 
+    }
+    else
+    {
+       SQL = "Select (total_df-dds_df) as totall " +
+                 " FROM rep_documents_ivan " +
+                 " WHERE id_df="+id_doc+";";
+    }
+    java.sql.ResultSet rs13 = null;
+    
+    try
+    {
+       rs13 = myframe.getConn().createStatement().executeQuery(SQL);
+        
+       while(rs13.next())
+       {
+          price = rs13.getDouble("totall");
+          break;
+       }
+      
+        
+    }
+    catch(Exception r)
+    {};
+    System.out.println("Price to String ="+price);
+    pts.setValue(price);
+    pts.ConstString();
+    StringPrice=pts.getEndString();
+    
+    return StringPrice;
+}
 }// end class

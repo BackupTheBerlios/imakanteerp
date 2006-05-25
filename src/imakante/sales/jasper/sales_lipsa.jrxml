@@ -2,7 +2,7 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="sales_brak"
+		 name="sales_lipsa"
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
@@ -118,9 +118,9 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 				<staticText>
 					<reportElement
 						mode="Transparent"
-						x="1"
+						x="2"
 						y="7"
-						width="152"
+						width="167"
 						height="20"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
@@ -129,7 +129,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Times-Roman" pdfFontName="Times-Roman" size="14" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="CP1252" isStrikeThrough="false" />
 					</textElement>
-				<text><![CDATA[ПРОТОКОЛ ЗА БРАК]]></text>
+				<text><![CDATA[ПРОТОКОЛ ЗА ЛИПСА]]></text>
 				</staticText>
 				<line direction="TopDown">
 					<reportElement
@@ -249,8 +249,8 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 				</textField>
 				<staticText>
 					<reportElement
-						x="155"
-						y="8"
+						x="172"
+						y="10"
 						width="14"
 						height="14"
 						key="staticText-10"/>
@@ -262,9 +262,9 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="171"
-						y="8"
-						width="69"
+						x="188"
+						y="10"
+						width="61"
 						height="15"
 						key="textField-3"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>

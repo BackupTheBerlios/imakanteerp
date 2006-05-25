@@ -1633,17 +1633,17 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
                 System.out.println("704: " + rs.getString("area_number_sdtn"));
             }
             //=========
-            rs = stm.executeQuery(StrQ + "'5000'"); // BRAK
+            rs = stm.executeQuery(StrQ + "'800'"); // BRAK
             while(rs.next()) {
                 brakArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
                 System.out.println("BRAK: " + rs.getString("area_number_sdtn"));
             }
-            rs = stm.executeQuery(StrQ + "'6000'"); // LIPSA
+            rs = stm.executeQuery(StrQ + "'900'"); // LIPSA
             while(rs.next()) {
                 lipsaArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
                 System.out.println("LIPSA: " + rs.getString("area_number_sdtn"));
             }
-            rs = stm.executeQuery(StrQ + "'9000'"); // OFERTA
+            rs = stm.executeQuery(StrQ + "'1000'"); // OFERTA
             while(rs.next()) {
                 ofertaArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
                 System.out.println("OFERTA: " + rs.getString("area_number_sdtn"));
@@ -1653,12 +1653,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
                 proFormaArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
                 System.out.println("PROFORMA_FAKTURA: " + rs.getString("area_number_sdtn"));
             }
-             rs = stm.executeQuery(StrQ + "'7000'"); // NAREZDANE_ZA_PREHVYRQNE
+             rs = stm.executeQuery(StrQ + "'500'"); // NAREZDANE_ZA_PREHVYRQNE
             while(rs.next()) {
                 narezdaneZaPrehvylqneArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
                 System.out.println("NAREZDANE_ZA_PREHVYRQNE: " + rs.getString("area_number_sdtn"));
             }
-             rs = stm.executeQuery(StrQ + "'1'"); // STOKOVA_RAZPISKA
+             rs = stm.executeQuery(StrQ + "'100'"); // STOKOVA_RAZPISKA
             while(rs.next()) {
                 stokavaRazpiskaArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
                 System.out.println("STOKOVA_RAZPISKA: " + rs.getString("area_number_sdtn"));
@@ -1669,12 +1669,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
                 priematelnaRazpiskaArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
                 System.out.println("PRIEMATELNA_RAZPISKA: " + rs.getString("area_number_sdtn"));
             }
-           rs = stm.executeQuery(StrQ + "'4001'"); // dany4na faktura
+           rs = stm.executeQuery(StrQ + "'202'"); // dany4na faktura
             while(rs.next()) {
                 danFaktArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
                 System.out.println("PRIEMATELNA_RAZPISKA: " + rs.getString("area_number_sdtn"));
             }
-           rs = stm.executeQuery(StrQ + "'4000'"); // oprostena faktura
+           rs = stm.executeQuery(StrQ + "'201'"); // oprostena faktura
             while(rs.next()) {
                 oprFaktArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
                 System.out.println("PRIEMATELNA_RAZPISKA: " + rs.getString("area_number_sdtn"));
