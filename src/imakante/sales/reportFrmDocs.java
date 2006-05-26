@@ -1413,38 +1413,31 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         namesQ.add("\u041D\u043E\u043C\u0435\u0440\u0430\u0442\u043E\u0440");
         int nubColums = 0;
         nubColums =+ 1;
-        if (!this.jCheckBox13.isSelected()) {
-            newString = newString + ", IFNULL(rep_documents.date_edition_df, 0)";
+        if (this.jCheckBox13.isSelected()) 
             this.setReportFile("/imakante/sales/jasper/report_Documents.jasper");
-        }
-        if (!this.jCheckBox14.isSelected()) {
-            newString = newString + ", IFNULL(rep_documents.code_store, 0)";
+        else if (this.jCheckBox14.isSelected()) 
             this.setReportFile("/imakante/sales/jasper/report_Documents.jasper");
-        }
-        if (!this.jCheckBox15.isSelected()) {
-            newString = newString + ", IFNULL(rep_documents.code_client, 0)";
+        else if (this.jCheckBox15.isSelected()) 
+            this.setReportFile("/imakante/sales/jasper/report_Documents2RazbivkaKlienti.jasper");
+        else if (this.jCheckBox16.isSelected()) 
+            this.setReportFile("/imakante/sales/jasper/report_Documents2RazbivkaProd.jasper");
+        else if (this.jCheckBox17.isSelected()) 
             this.setReportFile("/imakante/sales/jasper/report_Documents.jasper");
-        }
-        if (!this.jCheckBox16.isSelected()) {
-            newString = newString + ", IFNULL(rep_documents.code_product, 0)";
+        else if (this.jCheckBox18.isSelected()) 
+            this.setReportFile("/imakante/sales/jasper/report_Documents2RazbivkaDistributor.jasper");
+        else if (this.jCheckBox19.isSelected()) 
+            this.setReportFile("/imakante/sales/jasper/report_Documents2RazbivkaOperator.jasper");
+        else if (this.jCheckBox20.isSelected()) 
             this.setReportFile("/imakante/sales/jasper/report_Documents.jasper");
-        }
-        if (!this.jCheckBox17.isSelected()) {
-            newString = newString + ", IFNULL(rep_documents.code_dostavchik, 0)";
-            this.setReportFile("/imakante/sales/jasper/report_Documents.jasper");
-        }
-        if (!this.jCheckBox18.isSelected()) {
-            newString = newString + ", IFNULL(rep_documents.code_distributor, 0)";
-            this.setReportFile("/imakante/sales/jasper/report_Documents.jasper");
-        }
-        if (!this.jCheckBox19.isSelected()) {
-            newString = newString + ", IFNULL(rep_documents.code_operator, 0)";
-            this.setReportFile("/imakante/sales/jasper/report_Documents.jasper");
-        }
-        if (!this.jCheckBox20.isSelected()) {
-            newString = newString + ", IFNULL(rep_documents.code_speditor, 0)";
-            this.setReportFile("/imakante/sales/jasper/report_Documents.jasper");
-        }
+        else this.setReportFile("/imakante/sales/jasper/report_Documents.jasper");
+        if (!this.jCheckBox13.isSelected()) newString = newString + ", IFNULL(rep_documents.date_edition_df, 0)";
+        if (!this.jCheckBox14.isSelected()) newString = newString + ", IFNULL(rep_documents.code_store, 0)";
+        if (!this.jCheckBox15.isSelected()) newString = newString + ", IFNULL(rep_documents.code_client, 0)";
+        if (!this.jCheckBox16.isSelected()) newString = newString + ", IFNULL(rep_documents.code_product, 0)";
+        if (!this.jCheckBox17.isSelected()) newString = newString + ", IFNULL(rep_documents.code_dostavchik, 0)";
+        if (!this.jCheckBox18.isSelected()) newString = newString + ", IFNULL(rep_documents.code_distributor, 0)";
+        if (!this.jCheckBox19.isSelected()) newString = newString + ", IFNULL(rep_documents.code_operator, 0)";
+        if (!this.jCheckBox20.isSelected()) newString = newString + ", IFNULL(rep_documents.code_speditor, 0)";
         newString = newString + ") AS con, rep_documents.number_df, rep_documents.type_df";
         namesQ.add("\u041D\u043E\u043C\u0435\u0440 \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442");
         namesQ.add("\u0422\u0438\u043F \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442");
