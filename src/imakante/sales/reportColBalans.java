@@ -614,7 +614,7 @@ public class reportColBalans extends imakante.com.vcomponents.iInternalFrame imp
                 + " as kolichestvo, SUM(rep_comm_nal.miarka3), SUM(rep_comm_nal.miarka2), SUM(rep_comm_nal.ostatak), "
                 + " IFNULL((SELECT SUM(rep_documents.numbers_piece_dl) "
                 + " FROM rep_documents "
-                + " WHERE rep_documents.code_product = rep_comm_nal.code_pm AND"
+                + " WHERE rep_documents.code_product = rep_comm_nal.code_pm AND "
                 +  "rep_documents.date_edition_df BETWEEN '"
                 + (String)formatterG.format(this.jXDatePicker1.getDate())
                 + "' AND '"
@@ -674,7 +674,7 @@ public class reportColBalans extends imakante.com.vcomponents.iInternalFrame imp
                 + "),0) AS priemane, "
                 + " IFNULL((SELECT SUM(rep_documents.numbers_piece_dl) "
                 + " FROM rep_documents "
-                + " WHERE rep_documents.code_product = rep_comm_nal.code_pm AND"
+                + " WHERE rep_documents.code_product = rep_comm_nal.code_pm AND "
                 + " rep_documents.date_edition_df BETWEEN '"
                 + (String)formatterG.format(this.jXDatePicker1.getDate())
                 + "' AND '"
@@ -726,7 +726,22 @@ public class reportColBalans extends imakante.com.vcomponents.iInternalFrame imp
                 + " GROUP BY con ORDER BY rep_comm_nal.code_n_storage DESC ";
         
         
-        
+        nubColums = 16;
+        namesQ.add("Код склад");
+        namesQ.add("Код продукт");
+        namesQ.add("Име продукт");
+        namesQ.add("Количество");
+        namesQ.add("Мярка 3");
+        namesQ.add("Мярка 2");
+        namesQ.add("Остатък");
+        namesQ.add("Продажби");
+        namesQ.add("Опр. Фактури");
+        namesQ.add("Дан. Фактури");
+        namesQ.add("Нареждания");
+        namesQ.add("Приемателни");
+        namesQ.add("Прехвърляне");
+        namesQ.add("Брак");
+        namesQ.add("Липса");
         String[] Names = (String[]) namesQ.toArray(new String[this.nubColums]);
         //Create Dialog with print
         System.out.println(newString);
