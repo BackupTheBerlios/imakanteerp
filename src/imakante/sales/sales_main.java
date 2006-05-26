@@ -722,6 +722,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         balansMenu.add(balansMenu_stock);
 
         balansMenu_kol.setText("\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u0435\u043d");
+        balansMenu_kol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                balansMenu_kolActionPerformed(evt);
+            }
+        });
+
         balansMenu.add(balansMenu_kol);
 
         sprMenu.add(balansMenu);
@@ -929,9 +935,13 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-458)/2, 757, 458);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void balansMenu_kolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_balansMenu_kolActionPerformed
+        this.loadReportKolBalanceLevel();
+    }//GEN-LAST:event_balansMenu_kolActionPerformed
+    
     private void jMenuItem36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem36ActionPerformed
-       this.loadReportFRentabilnostLevel();
+        this.loadReportFRentabilnostLevel();
     }//GEN-LAST:event_jMenuItem36ActionPerformed
     
     private void jMenuItem35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem35ActionPerformed
@@ -944,8 +954,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     
     private void protMenu_lipsaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_protMenu_lipsaActionPerformed
 // TODO add your handling code here:
-       levelDialog1 = new levelDialog(this,true,4,lipsaArea);
-       levelDialog1.setVisible(true);
+        levelDialog1 = new levelDialog(this,true,4,lipsaArea);
+        levelDialog1.setVisible(true);
         int user = userID_ndtur; //2;
         int level = levelForWork;// 1;
         int pricelist = 1;
@@ -956,8 +966,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     
     private void protMenu_brakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_protMenu_brakActionPerformed
 // TODO add your handling code here:
-       levelDialog1 = new levelDialog(this,true,4,brakArea);
-       levelDialog1.setVisible(true);
+        levelDialog1 = new levelDialog(this,true,4,brakArea);
+        levelDialog1.setVisible(true);
         int user = userID_ndtur; //2;
         int level = levelForWork;// 1;
         int pricelist = 1;
@@ -987,8 +997,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_kasaAvansMenuActionPerformed
     
     private void docMenu_narActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docMenu_narActionPerformed
-       levelDialog1 = new levelDialog(this,true,4,narezdaneZaPrehvylqneArea);
-       levelDialog1.setVisible(true);
+        levelDialog1 = new levelDialog(this,true,4,narezdaneZaPrehvylqneArea);
+        levelDialog1.setVisible(true);
         int user = userID_ndtur; //2;
         int level = levelForWork;// 1;
         int pricelist = 1;
@@ -998,8 +1008,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_docMenu_narActionPerformed
     
     private void razpMenu_polActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_razpMenu_polActionPerformed
-         levelDialog1 = new levelDialog(this,true,4,priematelnaRazpiskaArea);
-       levelDialog1.setVisible(true);
+        levelDialog1 = new levelDialog(this,true,4,priematelnaRazpiskaArea);
+        levelDialog1.setVisible(true);
         int user = userID_ndtur; //2;
         int level = levelForWork;// 1;
         int pricelist = 1;
@@ -1014,7 +1024,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     
     private void docMenu_offerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docMenu_offerActionPerformed
         levelDialog1 = new levelDialog(this,true,4,ofertaArea);
-       levelDialog1.setVisible(true);
+        levelDialog1.setVisible(true);
         int user = userID_ndtur; //2;
         int level = levelForWork;// 1;
         int pricelist = 1;
@@ -1024,8 +1034,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_docMenu_offerActionPerformed
     
     private void razpMenu_prehvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_razpMenu_prehvActionPerformed
-         levelDialog1 = new levelDialog(this,true,4,stokavaRazpiskaArea);
-       levelDialog1.setVisible(true);
+        levelDialog1 = new levelDialog(this,true,4,stokavaRazpiskaArea);
+        levelDialog1.setVisible(true);
         int user = userID_ndtur; //2;
         int level = levelForWork;// 1;
         int pricelist = 1;
@@ -1035,8 +1045,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_razpMenu_prehvActionPerformed
     
     private void fakMenu_oprActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fakMenu_oprActionPerformed
-       levelDialog1 = new levelDialog(this,true,4,oprFaktArea);
-       levelDialog1.setVisible(true);
+        levelDialog1 = new levelDialog(this,true,4,oprFaktArea);
+        levelDialog1.setVisible(true);
         int user = userID_ndtur; //2;
         int level = levelForWork;// 1;
         int pricelist = 1;
@@ -1055,8 +1065,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_fakMenu_oprActionPerformed
     
     private void fakMenu_danActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fakMenu_danActionPerformed
-       levelDialog1 = new levelDialog(this,true,4,danFaktArea);
-       levelDialog1.setVisible(true);
+        levelDialog1 = new levelDialog(this,true,4,danFaktArea);
+        levelDialog1.setVisible(true);
         int user = userID_ndtur; //2;
         int level = levelForWork;// 1;
         int pricelist = 1;
@@ -1409,17 +1419,17 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     public  static  ArrayList dataOut;             //   /
     private FrmDocumentFacade frmDocumentFacadeDialog;
     
-   // private int currentLevel = 1;
+    // private int currentLevel = 1;
     
     private static LinkedHashMap OrderArea = new LinkedHashMap(); //stokovi
     private static LinkedHashMap FaktArea = new LinkedHashMap(); // fakturi
     private static LinkedHashMap oprFaktArea = new LinkedHashMap(); // oprostena fakturi
     private static LinkedHashMap danFaktArea = new LinkedHashMap(); // dany4na fakturi
-    private static LinkedHashMap brakArea = new LinkedHashMap();  // BRAK; 
-    private static LinkedHashMap lipsaArea = new LinkedHashMap();  // LIPSA; 
-    private static LinkedHashMap ofertaArea = new LinkedHashMap();  // OFERTA; 
+    private static LinkedHashMap brakArea = new LinkedHashMap();  // BRAK;
+    private static LinkedHashMap lipsaArea = new LinkedHashMap();  // LIPSA;
+    private static LinkedHashMap ofertaArea = new LinkedHashMap();  // OFERTA;
     private static LinkedHashMap proFormaArea = new LinkedHashMap();  // PROFORMA_FAKTURA;
-    private static LinkedHashMap narezdaneZaPrehvylqneArea = new LinkedHashMap();  //NAREZDANE_ZA_PREHVYRQNE; 
+    private static LinkedHashMap narezdaneZaPrehvylqneArea = new LinkedHashMap();  //NAREZDANE_ZA_PREHVYRQNE;
     private static LinkedHashMap stokavaRazpiskaArea = new LinkedHashMap();  // STOKOVA_RAZPISKA;
     private static LinkedHashMap priematelnaRazpiskaArea = new LinkedHashMap();  // PRIEMATELNA_RAZPISKA;
     
@@ -1428,12 +1438,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private static LinkedHashMap casaOutContrArea = new LinkedHashMap(); // razhodni orderi kasa kontragent
     private static LinkedHashMap casaAdvances = new LinkedHashMap();    // avansi kym podot4etni lica
     private static LinkedHashMap casa2casa = new LinkedHashMap();       // dvijenie mejdu kasite
-   
+    
     
     
     public static int userID_ndtur  =0; // id na usera , koeto e ravno na id_ndtur
-    public static int levelForWork = 0; // rabotno nivo 
-   
+    public static int levelForWork = 0; // rabotno nivo
+    
     private void loadLevelDialog(int ModuleCode, LinkedHashMap hash){
         levelDialog lDialog = new levelDialog(this, true, ModuleCode, hash);
         lDialog.setVisible(true);
@@ -1653,28 +1663,28 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
                 proFormaArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
                 System.out.println("PROFORMA_FAKTURA: " + rs.getString("area_number_sdtn"));
             }
-             rs = stm.executeQuery(StrQ + "'500'"); // NAREZDANE_ZA_PREHVYRQNE
+            rs = stm.executeQuery(StrQ + "'500'"); // NAREZDANE_ZA_PREHVYRQNE
             while(rs.next()) {
                 narezdaneZaPrehvylqneArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
                 System.out.println("NAREZDANE_ZA_PREHVYRQNE: " + rs.getString("area_number_sdtn"));
             }
-             rs = stm.executeQuery(StrQ + "'100'"); // STOKOVA_RAZPISKA
+            rs = stm.executeQuery(StrQ + "'100'"); // STOKOVA_RAZPISKA
             while(rs.next()) {
                 stokavaRazpiskaArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
                 System.out.println("STOKOVA_RAZPISKA: " + rs.getString("area_number_sdtn"));
             }
             
-             rs = stm.executeQuery(StrQ + "'8000'"); // PRIEMATELNA_RAZPISKA
+            rs = stm.executeQuery(StrQ + "'8000'"); // PRIEMATELNA_RAZPISKA
             while(rs.next()) {
                 priematelnaRazpiskaArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
                 System.out.println("PRIEMATELNA_RAZPISKA: " + rs.getString("area_number_sdtn"));
             }
-           rs = stm.executeQuery(StrQ + "'202'"); // dany4na faktura
+            rs = stm.executeQuery(StrQ + "'202'"); // dany4na faktura
             while(rs.next()) {
                 danFaktArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
                 System.out.println("PRIEMATELNA_RAZPISKA: " + rs.getString("area_number_sdtn"));
             }
-           rs = stm.executeQuery(StrQ + "'201'"); // oprostena faktura
+            rs = stm.executeQuery(StrQ + "'201'"); // oprostena faktura
             while(rs.next()) {
                 oprFaktArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
                 System.out.println("PRIEMATELNA_RAZPISKA: " + rs.getString("area_number_sdtn"));
@@ -1767,7 +1777,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     //PRODUCTS
     private void loadFrmProducts() {
         if(!isIsStartFrmProduct()) {
-             setIsStartFrmProduct(true);
+            setIsStartFrmProduct(true);
             iFrmProduct = new nom.FrmProduct("\u041d\u041e\u041c\u0415\u041d\u041a\u041b\u0410\u0422\u0423\u0420\u0410 \u0421\u0422\u041e\u041a\u0418",0, this,0);
             desktopPane.add(iFrmProduct);
             try {
@@ -1996,7 +2006,16 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         
         levDSec.setVisible(true);
     }
-    
+    public void loadReportKolBalance(int i) {
+        imakante.sales.reportColBalans repNal = new imakante.sales.reportColBalans("\u0421\u043f\u0440\u0430\u0432\u043a\u0430 \u041d\u0430\u043b\u0438\u0447\u043d\u043e\u0441\u0442\u0438", this, i);
+        desktopPane.add(repNal);
+        repNal.setVisible(true);
+    }
+    private void loadReportKolBalanceLevel(){
+        imakante.sales.levelDialogSecond levDSec = new imakante.sales.levelDialogSecond(this, true,9010);
+        
+        levDSec.setVisible(true);
+    }
     public void loadReportStockOut(int i) {
         imakante.sales.reportStockOut stockOut = new imakante.sales.reportStockOut("\u041C\u0438\u043D\u0438\u043C\u0430\u043B\u043D\u0438 \u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u0430", this, i);
         desktopPane.add(stockOut);
@@ -2007,7 +2026,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         imakante.sales.levelDialogSecond levDSec = new imakante.sales.levelDialogSecond(this, true,9003);
         levDSec.setVisible(true);
     }
-     public void loadReportFRentabilnost(int i) {
+    public void loadReportFRentabilnost(int i) {
         imakante.sales.reportFRentabilnost rentabilnost = new imakante.sales.reportFRentabilnost("Справка заложена рентабилност", this, i);
         desktopPane.add(rentabilnost);
         rentabilnost.setVisible(true);

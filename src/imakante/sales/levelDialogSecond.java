@@ -132,6 +132,7 @@ public class levelDialogSecond extends javax.swing.JDialog {
         if (modul == 9002) { frame.loadReportParcelDate(this.getLevel());}
         if (modul == 9003) { frame.loadReportStockOut(this.getLevel());}
         if (modul == 9004) { frame.loadReportFRentabilnost(this.getLevel());}
+        if (modul == 9010) { frame.loadReportKolBalance(this.getLevel());}
         if (modul == 9050) { frame.loadReportDocs(this.getLevel());}
         this.dispose();
     }
