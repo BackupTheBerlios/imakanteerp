@@ -1328,7 +1328,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     private String strSpeditor = "SELECT rep_documents.code_speditor, rep_documents.name_speditor " +
             "FROM rep_documents WHERE rep_documents.code_speditor LIKE '%";
     private String qu = "SELECT ";
-    private String reportFile = "/imakante/sales/jasper/report_Documents2Client.jasper";
+    private String reportFile = null;
     private java.util.HashMap hm = null;
     
     public void windowOpened(java.awt.event.WindowEvent e) {
@@ -1413,14 +1413,38 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         namesQ.add("\u041D\u043E\u043C\u0435\u0440\u0430\u0442\u043E\u0440");
         int nubColums = 0;
         nubColums =+ 1;
-        if (!this.jCheckBox13.isSelected()) newString = newString + ", IFNULL(rep_documents.date_edition_df, 0)";
-        if (!this.jCheckBox14.isSelected()) newString = newString + ", IFNULL(rep_documents.code_store, 0)";
-        if (!this.jCheckBox15.isSelected()) newString = newString + ", IFNULL(rep_documents.code_client, 0)";
-        if (!this.jCheckBox16.isSelected()) newString = newString + ", IFNULL(rep_documents.code_product, 0)";
-        if (!this.jCheckBox17.isSelected()) newString = newString + ", IFNULL(rep_documents.code_dostavchik, 0)";
-        if (!this.jCheckBox18.isSelected()) newString = newString + ", IFNULL(rep_documents.code_distributor, 0)";
-        if (!this.jCheckBox19.isSelected()) newString = newString + ", IFNULL(rep_documents.code_operator, 0)";
-        if (!this.jCheckBox20.isSelected()) newString = newString + ", IFNULL(rep_documents.code_speditor, 0)";
+        if (!this.jCheckBox13.isSelected()) {
+            newString = newString + ", IFNULL(rep_documents.date_edition_df, 0)";
+            this.setReportFile("/imakante/sales/jasper/report_Documents.jasper");
+        }
+        if (!this.jCheckBox14.isSelected()) {
+            newString = newString + ", IFNULL(rep_documents.code_store, 0)";
+            this.setReportFile("/imakante/sales/jasper/report_Documents.jasper");
+        }
+        if (!this.jCheckBox15.isSelected()) {
+            newString = newString + ", IFNULL(rep_documents.code_client, 0)";
+            this.setReportFile("/imakante/sales/jasper/report_Documents.jasper");
+        }
+        if (!this.jCheckBox16.isSelected()) {
+            newString = newString + ", IFNULL(rep_documents.code_product, 0)";
+            this.setReportFile("/imakante/sales/jasper/report_Documents.jasper");
+        }
+        if (!this.jCheckBox17.isSelected()) {
+            newString = newString + ", IFNULL(rep_documents.code_dostavchik, 0)";
+            this.setReportFile("/imakante/sales/jasper/report_Documents.jasper");
+        }
+        if (!this.jCheckBox18.isSelected()) {
+            newString = newString + ", IFNULL(rep_documents.code_distributor, 0)";
+            this.setReportFile("/imakante/sales/jasper/report_Documents.jasper");
+        }
+        if (!this.jCheckBox19.isSelected()) {
+            newString = newString + ", IFNULL(rep_documents.code_operator, 0)";
+            this.setReportFile("/imakante/sales/jasper/report_Documents.jasper");
+        }
+        if (!this.jCheckBox20.isSelected()) {
+            newString = newString + ", IFNULL(rep_documents.code_speditor, 0)";
+            this.setReportFile("/imakante/sales/jasper/report_Documents.jasper");
+        }
         newString = newString + ") AS con, rep_documents.number_df, rep_documents.type_df";
         namesQ.add("\u041D\u043E\u043C\u0435\u0440 \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442");
         namesQ.add("\u0422\u0438\u043F \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442");
@@ -1527,7 +1551,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         try {
             initTable(newString, Names);
             imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table,
-                    myFrame.getConn(), hm, reportFile, "\u0421\u043f\u0440\u0430\u0432\u043a\u0430 \u0438\u0437\u0434\u0430\u0434\u0435\u043d\u0438 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438", "");
+                    myFrame.getConn(), hm, getReportFile(), "\u0421\u043f\u0440\u0430\u0432\u043a\u0430 \u0438\u0437\u0434\u0430\u0434\u0435\u043d\u0438 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438", "");
             td.setVisible(true);
         } catch (Exception  ex) {
             ex.printStackTrace();
@@ -1650,6 +1674,14 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     
     public void setConn(java.sql.Connection conn) {
         this.conn = conn;
+    }
+
+    public String getReportFile() {
+        return reportFile;
+    }
+
+    public void setReportFile(String reportFile) {
+        this.reportFile = reportFile;
     }
 
 }
