@@ -35,7 +35,7 @@
 	<parameter name="vnosnomer" isForPrompting="false" class="java.lang.String"/>
 	<queryString><![CDATA[SELECT name_firm From ls_sluj]]></queryString>
 
-	<field name="name_casa2" class="java.lang.String"/>
+	<field name="name_firm" class="java.lang.String"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -97,7 +97,7 @@
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Helvetica" size="12" isBold="true" isItalic="true" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{name_casa2}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{name_firm}]]></textFieldExpression>
 				</textField>
 			</band>
 		</title>
