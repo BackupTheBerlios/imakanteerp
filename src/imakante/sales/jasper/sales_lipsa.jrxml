@@ -129,7 +129,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Times-Roman" pdfFontName="Times-Roman" size="14" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="CP1252" isStrikeThrough="false" />
 					</textElement>
-				<text><![CDATA[ПРОТОКОЛ ЗА Л�?ПСА]]></text>
+				<text><![CDATA[ПРОТОКОЛ ЗА ЛИПСА]]></text>
 				</staticText>
 				<line direction="TopDown">
 					<reportElement
@@ -197,7 +197,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Helvetica" size="8" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
-				<text><![CDATA[ДАТА НА �?ЗДАВАНЕ:]]></text>
+				<text><![CDATA[ДАТА НА ИЗДАВАНЕ:]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
