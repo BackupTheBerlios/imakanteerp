@@ -581,12 +581,23 @@ public class reportColBalans extends imakante.com.vcomponents.iInternalFrame imp
         String newString = strContragent + this.jTextField4.getText() + "%' AND `rep_comm_nal`.`code_contragent` >= " + this.jTextField3.getText() + ";";
         constructDialod(newString, 4, Names);
     }
+    private int parseTextField(javax.swing.JTextField JTfield){
+        try {
+            
+            return Integer.parseInt(JTfield.getText());
+        } catch (NumberFormatException ex) {
+            
+            ex.printStackTrace();
+            return 0;
+        }
+    }
     
     private void processReport(){
         String levelX = "";
         String newString=qu;
         namesQ.add("Номератор");
-         if(levelx==3){
+        
+        if(levelx==3){
             levelX = "(0)";
         }
         
@@ -595,132 +606,132 @@ public class reportColBalans extends imakante.com.vcomponents.iInternalFrame imp
         }
         
         if(levelx==1){
-           levelX = "(0,1)";
+            levelX = "(0,1)";
         }
         
-       newString = newString + " SELECT  DISTINCT CONCAT(rep_comm_nal.level ,rep_comm_nal.code_n_storage ,rep_comm_nal.code_pm )"
-                             + " AS con ,rep_comm_nal.code_n_storage ,rep_comm_nal.code_pm ,rep_comm_nal.name_pm ,SUM(rep_comm_nal.quant_nal)"
-                             + " as kolichestvo, SUM(rep_comm_nal.miarka3), SUM(rep_comm_nal.miarka2), SUM(rep_comm_nal.ostatak), "
-                             + " IFNULL((SELECT SUM(rep_documents.numbers_piece_dl) "
-                             + " FROM rep_documents "
-                             + " WHERE rep_documents.code_product = rep_comm_nal.code_pm AND"
-                             +  "rep_documents.date_edition_df BETWEEN '"
-                             + (String)formatterG.format(this.jXDatePicker1.getDate())
-                             + "' AND '"
-                             +(String)formatterG.format(this.jXDatePicker2.getDate())
-                             + "' AND rep_documents.type_df = 100 "
-                             + " AND rep_documents.code_store = rep_comm_nal.code_n_storage AND rep_documents.level_df IN"
-                             + levelX
-                             + " GROUP BY rep_documents.code_product "
-                             + "),0) AS podajba, "
-                             + "IFNULL((SELECT SUM(rep_documents.numbers_piece_dl) "
-                             + " FROM rep_documents "
-                             + " WHERE rep_documents.code_product = rep_comm_nal.code_pm AND "
-                             + " rep_documents.date_edition_df BETWEEN '"
-                             + (String)formatterG.format(this.jXDatePicker1.getDate())
-                             + "' AND '"
-                             + (String)formatterG.format(this.jXDatePicker2.getDate())
-                             + "' AND rep_documents.type_df = 201"
-                             + " AND rep_documents.code_store = rep_comm_nal.code_n_storage AND rep_documents.level_df IN"
-                             +levelX
-                             + " GROUP BY rep_documents.code_product"
-                             + "),0) AS fakop,"
-                             + " IFNULL((SELECT SUM(rep_documents.numbers_piece_dl) "
-                             + " FROM rep_documents "
-                             + " WHERE rep_documents.code_product = rep_comm_nal.code_pm AND "
-                             + " rep_documents.date_edition_df BETWEEN '"
-                             + (String)formatterG.format(this.jXDatePicker1.getDate())
-                             + "' AND '"
-                             +(String)formatterG.format(this.jXDatePicker2.getDate())
-                             + "' AND rep_documents.type_df = 202 "
-                             + " AND rep_documents.code_store = rep_comm_nal.code_n_storage AND rep_documents.level_df IN"
-                             +levelX
-                             + " GROUP BY rep_documents.code_product "
-                             + "),0) AS fakdan, "
-                             + "IFNULL((SELECT SUM(rep_documents.numbers_piece_dl) "
-                             + "FROM rep_documents "
-                             + "WHERE rep_documents.code_product = rep_comm_nal.code_pm AND "
-                             + "rep_documents.date_edition_df BETWEEN '"
-                             + (String)formatterG.format(this.jXDatePicker1.getDate())
-                             + "' AND '"
-                             + (String)formatterG.format(this.jXDatePicker2.getDate())
-                             + "' AND rep_documents.type_df = 500 "
-                             +" AND rep_documents.code_store = rep_comm_nal.code_n_storage AND rep_documents.level_df IN"
-                             + levelX 
-                             + " GROUP BY rep_documents.code_product "
-                             + " ),0) AS narejd, "
-                             + "IFNULL((SELECT SUM(rep_documents.numbers_piece_dl) "
-                             + " FROM rep_documents "
-                             + " WHERE rep_documents.code_product = rep_comm_nal.code_pm AND "
-                             + " rep_documents.date_edition_df BETWEEN '"
-                             +  (String)formatterG.format(this.jXDatePicker1.getDate()) 
-                             + "' AND '" 
-                             + (String)formatterG.format(this.jXDatePicker2.getDate())
-                             + "' AND rep_documents.type_df = 600 "
-                             +" AND rep_documents.code_store = rep_comm_nal.code_n_storage AND rep_documents.level_df IN"
-                             + levelX
-                             + " GROUP BY rep_documents.code_product"
-                             + "),0) AS priemane, "
-                             + " IFNULL((SELECT SUM(rep_documents.numbers_piece_dl) "
-                             + " FROM rep_documents " 
-                             + " WHERE rep_documents.code_product = rep_comm_nal.code_pm AND"
-                             + " rep_documents.date_edition_df BETWEEN '"
-                             + (String)formatterG.format(this.jXDatePicker1.getDate())
-                             + "' AND '"
-                             + (String)formatterG.format(this.jXDatePicker2.getDate())
-                             + "' AND rep_documents.type_df = 700 "
-                             + " AND rep_documents.code_store = rep_comm_nal.code_n_storage AND rep_documents.level_df IN"
-                             + levelX
-                             + " GROUP BY rep_documents.code_product "
-                             + " ),0) AS nprehv, "
-                             + " IFNULL((SELECT SUM(rep_documents.numbers_piece_dl) "
-                             + " FROM rep_documents " 
-                             + " WHERE rep_documents.code_product = rep_comm_nal.code_pm AND "
-                             + " rep_documents.date_edition_df BETWEEN '"
-                             + (String)formatterG.format(this.jXDatePicker1.getDate())
-                             + "' AND '"
-                             +(String)formatterG.format(this.jXDatePicker2.getDate())
-                             + "' AND rep_documents.type_df = 800"
-                             + " AND rep_documents.code_store = rep_comm_nal.code_n_storage AND rep_documents.level_df IN"
-                             + levelX
-                             + " GROUP BY rep_documents.code_product "
-                             + "),0) AS brak, "
-                             + " IFNULL((SELECT SUM(rep_documents.numbers_piece_dl) "
-                             + " FROM rep_documents "
-                             + " WHERE rep_documents.code_product = rep_comm_nal.code_pm AND "
-                             + " rep_documents.date_edition_df BETWEEN '"
-                             + (String)formatterG.format(this.jXDatePicker1.getDate())
-                             + "' AND '"
-                             + (String)formatterG.format(this.jXDatePicker2.getDate())
-                             + "' AND rep_documents.type_df = 900"
-                             + " AND rep_documents.code_store = rep_comm_nal.code_n_storage AND rep_documents.level_df IN"
-                             + levelX
-                             + " GROUP BY rep_documents.code_product "
-                             + "),0) AS lipsa"
-                             + " FROM  `rep_comm_nal` JOIN n_product_main on rep_comm_nal.id_pm = n_product_main.id_pm "
-                             + " WHERE `rep_comm_nal`.`code_contragent` BETWEEN '"
-                             + 0
-                             +"' AND '"
-                             +1000000000
-                             + "' AND  `rep_comm_nal`.`code_pm` BETWEEN '"
-                             + 0
-                             + "' AND '"
-                             +1000000000
-                             +"' AND  `rep_comm_nal`.`code_n_storage` BETWEEN '"
-                             +0
-                             + "' AND '"
-                             +1000000000
-                             +"'AND rep_comm_nal.level IN"
-                             +levelX
-                             + " GROUP BY con ORDER BY rep_comm_nal.code_n_storage DESC ";
-
-      
+        newString = newString + " SELECT  DISTINCT CONCAT(rep_comm_nal.level ,rep_comm_nal.code_n_storage ,rep_comm_nal.code_pm )"
+                + " AS con ,rep_comm_nal.code_n_storage ,rep_comm_nal.code_pm ,rep_comm_nal.name_pm ,SUM(rep_comm_nal.quant_nal)"
+                + " as kolichestvo, SUM(rep_comm_nal.miarka3), SUM(rep_comm_nal.miarka2), SUM(rep_comm_nal.ostatak), "
+                + " IFNULL((SELECT SUM(rep_documents.numbers_piece_dl) "
+                + " FROM rep_documents "
+                + " WHERE rep_documents.code_product = rep_comm_nal.code_pm AND"
+                +  "rep_documents.date_edition_df BETWEEN '"
+                + (String)formatterG.format(this.jXDatePicker1.getDate())
+                + "' AND '"
+                +(String)formatterG.format(this.jXDatePicker2.getDate())
+                + "' AND rep_documents.type_df = 100 "
+                + " AND rep_documents.code_store = rep_comm_nal.code_n_storage AND rep_documents.level_df IN"
+                + levelX
+                + " GROUP BY rep_documents.code_product "
+                + "),0) AS podajba, "
+                + "IFNULL((SELECT SUM(rep_documents.numbers_piece_dl) "
+                + " FROM rep_documents "
+                + " WHERE rep_documents.code_product = rep_comm_nal.code_pm AND "
+                + " rep_documents.date_edition_df BETWEEN '"
+                + (String)formatterG.format(this.jXDatePicker1.getDate())
+                + "' AND '"
+                + (String)formatterG.format(this.jXDatePicker2.getDate())
+                + "' AND rep_documents.type_df = 201"
+                + " AND rep_documents.code_store = rep_comm_nal.code_n_storage AND rep_documents.level_df IN"
+                +levelX
+                + " GROUP BY rep_documents.code_product"
+                + "),0) AS fakop,"
+                + " IFNULL((SELECT SUM(rep_documents.numbers_piece_dl) "
+                + " FROM rep_documents "
+                + " WHERE rep_documents.code_product = rep_comm_nal.code_pm AND "
+                + " rep_documents.date_edition_df BETWEEN '"
+                + (String)formatterG.format(this.jXDatePicker1.getDate())
+                + "' AND '"
+                +(String)formatterG.format(this.jXDatePicker2.getDate())
+                + "' AND rep_documents.type_df = 202 "
+                + " AND rep_documents.code_store = rep_comm_nal.code_n_storage AND rep_documents.level_df IN"
+                +levelX
+                + " GROUP BY rep_documents.code_product "
+                + "),0) AS fakdan, "
+                + "IFNULL((SELECT SUM(rep_documents.numbers_piece_dl) "
+                + "FROM rep_documents "
+                + "WHERE rep_documents.code_product = rep_comm_nal.code_pm AND "
+                + "rep_documents.date_edition_df BETWEEN '"
+                + (String)formatterG.format(this.jXDatePicker1.getDate())
+                + "' AND '"
+                + (String)formatterG.format(this.jXDatePicker2.getDate())
+                + "' AND rep_documents.type_df = 500 "
+                +" AND rep_documents.code_store = rep_comm_nal.code_n_storage AND rep_documents.level_df IN"
+                + levelX
+                + " GROUP BY rep_documents.code_product "
+                + " ),0) AS narejd, "
+                + "IFNULL((SELECT SUM(rep_documents.numbers_piece_dl) "
+                + " FROM rep_documents "
+                + " WHERE rep_documents.code_product = rep_comm_nal.code_pm AND "
+                + " rep_documents.date_edition_df BETWEEN '"
+                +  (String)formatterG.format(this.jXDatePicker1.getDate())
+                + "' AND '"
+                + (String)formatterG.format(this.jXDatePicker2.getDate())
+                + "' AND rep_documents.type_df = 600 "
+                +" AND rep_documents.code_store = rep_comm_nal.code_n_storage AND rep_documents.level_df IN"
+                + levelX
+                + " GROUP BY rep_documents.code_product"
+                + "),0) AS priemane, "
+                + " IFNULL((SELECT SUM(rep_documents.numbers_piece_dl) "
+                + " FROM rep_documents "
+                + " WHERE rep_documents.code_product = rep_comm_nal.code_pm AND"
+                + " rep_documents.date_edition_df BETWEEN '"
+                + (String)formatterG.format(this.jXDatePicker1.getDate())
+                + "' AND '"
+                + (String)formatterG.format(this.jXDatePicker2.getDate())
+                + "' AND rep_documents.type_df = 700 "
+                + " AND rep_documents.code_store = rep_comm_nal.code_n_storage AND rep_documents.level_df IN"
+                + levelX
+                + " GROUP BY rep_documents.code_product "
+                + " ),0) AS nprehv, "
+                + " IFNULL((SELECT SUM(rep_documents.numbers_piece_dl) "
+                + " FROM rep_documents "
+                + " WHERE rep_documents.code_product = rep_comm_nal.code_pm AND "
+                + " rep_documents.date_edition_df BETWEEN '"
+                + (String)formatterG.format(this.jXDatePicker1.getDate())
+                + "' AND '"
+                +(String)formatterG.format(this.jXDatePicker2.getDate())
+                + "' AND rep_documents.type_df = 800"
+                + " AND rep_documents.code_store = rep_comm_nal.code_n_storage AND rep_documents.level_df IN"
+                + levelX
+                + " GROUP BY rep_documents.code_product "
+                + "),0) AS brak, "
+                + " IFNULL((SELECT SUM(rep_documents.numbers_piece_dl) "
+                + " FROM rep_documents "
+                + " WHERE rep_documents.code_product = rep_comm_nal.code_pm AND "
+                + " rep_documents.date_edition_df BETWEEN '"
+                + (String)formatterG.format(this.jXDatePicker1.getDate())
+                + "' AND '"
+                + (String)formatterG.format(this.jXDatePicker2.getDate())
+                + "' AND rep_documents.type_df = 900"
+                + " AND rep_documents.code_store = rep_comm_nal.code_n_storage AND rep_documents.level_df IN"
+                + levelX
+                + " GROUP BY rep_documents.code_product "
+                + "),0) AS lipsa"
+                + " FROM  `rep_comm_nal` JOIN n_product_main on rep_comm_nal.id_pm = n_product_main.id_pm "
+                + " WHERE `rep_comm_nal`.`code_contragent` BETWEEN '"
+                + (parseTextField(this.jTextField3)-1)
+                +"' AND '"
+                +(parseTextField(this.jTextField4)+1)
+                + "' AND  `rep_comm_nal`.`code_pm` BETWEEN '"
+                + (parseTextField(this.jTextField5)-1)
+                + "' AND '"
+                +(parseTextField(this.jTextField6)+1)
+                +"' AND  `rep_comm_nal`.`code_n_storage` BETWEEN '"
+                +(parseTextField(this.jTextField1)-1)
+                + "' AND '"
+                +(parseTextField(this.jTextField2)+1)
+                +"'AND rep_comm_nal.level IN"
+                +levelX
+                + " GROUP BY con ORDER BY rep_comm_nal.code_n_storage DESC ";
+        
+        
         
         String[] Names = (String[]) namesQ.toArray(new String[this.nubColums]);
         //Create Dialog with print
         System.out.println(newString);
         
-      
+        
         try{
             initTable(newString, Names);
             imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table,
