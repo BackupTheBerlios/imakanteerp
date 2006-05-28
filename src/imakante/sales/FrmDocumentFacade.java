@@ -2051,8 +2051,24 @@ private void loadPrintReportJasper(int docType)
             break;
         }
         case aeDocumentFacade.STOKOVA_RAZPISKA:
-            
         {
+            HashMap parameterHashMap = new HashMap();
+            parameterHashMap.put(new String("naredil"),new String("Иван Кацаров"));
+            parameterHashMap.put(new String("firmaname"),new String("firmata na Ivan"));
+            parameterHashMap.put(new String("firma_oso"),new String("Иван Кацаров"));
+            parameterHashMap.put(new String("firma_mol"),new String("Иван Кацаров"));
+            parameterHashMap.put(new String("firma_dan_No"),new String("15288954552"));
+            parameterHashMap.put(new String("firma_address"),new String("Пловдив ул.Иглика 6"));
+            
+            String priceToStr = PriceToString(id_doc,false);
+            parameterHashMap.put(new String("PriceToString"),priceToStr);
+            
+            parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
+          
+            printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,table,conn,parameterHashMap,
+                    "/imakante/sales/jasper/sales_stokova.jasper","\u0421\u0422\u041e\u041a\u041e\u0412\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410",
+                    "\u0421\u0422\u041e\u041a\u041e\u0412\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410");
+            printReportDialog.setVisible(true);
             break;
         }
         case aeDocumentFacade.PRIEMATELNA_RAZPISKA:
