@@ -298,15 +298,21 @@ static private String checkAndConvertSQLFormat(String in)
              countS++;
              if(i==4 && countS==1 ) // SQL format
              {
-                 newDate = in.substring(length-2,length);
+                  newDate = in.substring(length-2,length);
+                    int newLength=length;
+                    String newIn=in;
                     char d_ch[] = newDate.toCharArray();
                     if(d_ch[0]==45 || d_ch[0]==46 || d_ch[0]==47 )
                     {
                         d_ch[0] = '0';
                         newDate =String.valueOf(d_ch);
+                        newIn = in.substring(0,length-1);
+                        newIn += newDate;
+                        newLength = newIn.length();
                     }
                     newDate +="/";
-                    String m_newDate =in.substring(length-5,length-3);
+                    
+                    String m_newDate =newIn.substring(newLength-5,newLength-3);
                     char m_ch[] = m_newDate.toCharArray();
                     
                     if(m_ch[0]==45 || m_ch[0]==46 || m_ch[0]==47 )

@@ -169,7 +169,7 @@ public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog
             else
               {
                  // myParent.getCountriesT().updateProductPromotionPrice(myParent.getId_PPP(),promo,dateStart,dateStop);
-                   myParent.setProductPromotionPrice(promo,newDateStart,newDateStart);
+                   myParent.setProductPromotionPrice(promo,newDateStart,newDateStop);
                    jButtonClose.doClick();
               }
         }
@@ -226,7 +226,15 @@ public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog
 
 private void getPrices()
 {
-    String prices[] = myParent.getCountriesT().getProductPromotionPrice(id_price);
+    String prices[];
+    if(id_price>0)
+    {
+     prices = myParent.getCountriesT().getProductPromotionPrice(id_price);
+    }
+    else
+    {
+       prices = myParent.getProductPromotionPrice(); 
+    }
     jTextFieldPromoPrice.setText(prices[0]);
   //  jTextFieldDataStart.setText(prices[1]);
   //  jTextFieldDateStop.setText(prices[2]);
@@ -265,6 +273,7 @@ private void showMessage()
         String newDate = in;
         char ch[] = in.toCharArray();
         int length = in.length();
+        
         int bufLength=0;
         int  countS = 0;
         for(int i=0; i < length;i++) {
@@ -272,9 +281,30 @@ private void showMessage()
                 countS++;
                 if(i==4 && countS==1) // SQL format
                 {
+                    
                     newDate = in.substring(length-2,length);
+                    int newLength=length;
+                    String newIn=in;
+                    char d_ch[] = newDate.toCharArray();
+                    if(d_ch[0]==45 || d_ch[0]==46 || d_ch[0]==47 )
+                    {
+                        d_ch[0] = '0';
+                        newDate =String.valueOf(d_ch);
+                        newIn = in.substring(0,length-1);
+                        newIn += newDate;
+                        newLength = newIn.length();
+                    }
                     newDate +="/";
-                    newDate +=in.substring(length-5,length-3);
+                    
+                    String m_newDate =newIn.substring(newLength-5,newLength-3);
+                    char m_ch[] = m_newDate.toCharArray();
+                    
+                    if(m_ch[0]==45 || m_ch[0]==46 || m_ch[0]==47 )
+                    {
+                        m_ch[0] = '0';
+                        m_newDate =String.valueOf(m_ch);
+                    }
+                    newDate +=m_newDate;
                     newDate +="/";
                     newDate +=in.substring(0,4);
                     break;
