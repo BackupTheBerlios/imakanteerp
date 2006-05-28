@@ -173,10 +173,21 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
                 jTextArea1FocusGained(evt);
             }
         });
+        jTextArea1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextArea1KeyPressed(evt);
+            }
+        });
 
         jScrollPane1.setViewportView(jTextArea1);
 
         jLabel3.setText("\u0413\u0440\u0443\u043f\u0430:");
+
+        jComboG.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboGKeyPressed(evt);
+            }
+        });
 
         jLabel6.setText("\u041d\u041b\u041a:");
 
@@ -187,6 +198,11 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
                 jTextField1FocusGained(evt);
             }
         });
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
+        });
 
         jTextField2.setToolTipText("\u041d\u043e\u043c\u0435\u0440 \u043d\u0430 \u043b\u0438\u0447\u043d\u0430 \u043a\u0430\u0440\u0442\u0430.");
         jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -194,10 +210,20 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
                 jTextField2FocusGained(evt);
             }
         });
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField2KeyPressed(evt);
+            }
+        });
 
         jTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField3FocusGained(evt);
+            }
+        });
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField3KeyPressed(evt);
             }
         });
 
@@ -208,6 +234,11 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
         jTextField4.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField4FocusGained(evt);
+            }
+        });
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField4KeyPressed(evt);
             }
         });
 
@@ -304,13 +335,37 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-370)/2, (screenSize.height-386)/2, 370, 386);
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void jTextArea1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyPressed
 
+    }//GEN-LAST:event_jTextArea1KeyPressed
+    
+    private void jTextField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyPressed
+if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){jButtonSave.grabFocus();}
+    }//GEN-LAST:event_jTextField3KeyPressed
+    
+    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
+if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){jTextField3.grabFocus();}
+    }//GEN-LAST:event_jTextField2KeyPressed
+    
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){jTextField2.grabFocus();}
+    }//GEN-LAST:event_jTextField1KeyPressed
+    
+    private void jTextField4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){jTextField1.grabFocus();}
+    }//GEN-LAST:event_jTextField4KeyPressed
+    
+    private void jComboGKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboGKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jComboG.transferFocus();}
+    }//GEN-LAST:event_jComboGKeyPressed
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-   this.cFields();
+        this.cFields();
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    this.jTextField4.setText("" + getMaxCod());
+        this.jTextField4.setText("" + getMaxCod());
     }//GEN-LAST:event_jButton1ActionPerformed
     
     private void jTextArea1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea1FocusGained
