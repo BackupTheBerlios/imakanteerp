@@ -1004,6 +1004,16 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
         this.isTypedPrice = true;
         
     }
+   public String[] getNewPrice()
+   {
+      String newpr[] = new String[5];
+       newpr[0] = String.valueOf(price0);
+       newpr[1] = String.valueOf(price1);
+       newpr[2] = String.valueOf(price2);
+       newpr[3] = String.valueOf(price3);
+       newpr[4] = String.valueOf(id_curs);
+       return newpr;
+   }
     public void setProductFee(double dds, double akcizi, double other) {
         this.dds = dds;
         this.akcizi =akcizi;
@@ -1011,11 +1021,28 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
         this.isTypedFee = true;
         
     }
+    public String[] getProductFee()
+    {
+        String ppf[] = new String[3];
+        ppf[0] = String.valueOf(dds);
+        ppf[1] = String.valueOf(akcizi);
+        ppf[2] = String.valueOf(other);
+        return ppf;
+    }
     public void setProductPromotionPrice(double promoprice, String start, String stop) {
         this.promoprice = promoprice;
         this.start = start;
         this.stop = stop;
         this.isTypedPromoPrice = true;
+    }
+    public String[] getProductPromotionPrice()
+    {
+        String newPPP1[] = new String[3];
+        newPPP1[0] = String.valueOf(promoprice);
+        newPPP1[1] = start;
+        newPPP1[2] = stop;
+        
+        return newPPP1;
     }
     public int saveProductPromotionPriceToDB() {
         

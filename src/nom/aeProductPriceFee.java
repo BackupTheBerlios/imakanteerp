@@ -258,7 +258,15 @@ public class aeProductPriceFee extends imakante.com.vcomponents.iDialog
 
 private void getAllFee()
 {
-    String fee[] = myParent.getCountriesT().getProdictFee(id_fee);
+    String fee[];
+    if(id_fee>0)
+    {
+     fee = myParent.getCountriesT().getProdictFee(id_fee);
+    }
+    else
+    {
+        fee = myParent.getProductFee();
+    }
     jTextFieldDDS.setText(fee[0]);
     jTextFieldAkcizi.setText(fee[1]);
     jTextFieldOther.setText(fee[2]);

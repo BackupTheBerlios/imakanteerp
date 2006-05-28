@@ -580,8 +580,16 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
     private void jTextFieldFeeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFeeKeyPressed
 // TODO add your handling code here:
         try {
-          ProductPriceFeeDialog =  new aeProductPriceFee(myParent,true,myParent.getId_PF(),isNew);
-          ProductPriceFeeDialog.setVisible(true);
+         if(isNew && !myParent.isTypedFee)
+            {
+               ProductPriceFeeDialog =  new aeProductPriceFee(myParent,true,myParent.getId_PF(),true);
+              ProductPriceFeeDialog.setVisible(true); 
+            }
+            else
+            {
+              ProductPriceFeeDialog =  new aeProductPriceFee(myParent,true,myParent.getId_PF(),false);
+              ProductPriceFeeDialog.setVisible(true); 
+            }
             
             
         } catch(Exception e) {
@@ -635,8 +643,17 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
     private void jTextFieldFeeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldFeeMousePressed
 // TODO add your handling code here:
         try {
-           ProductPriceFeeDialog =  new aeProductPriceFee(myParent,true,myParent.getId_PF(),isNew);
-           ProductPriceFeeDialog.setVisible(true); 
+            if(isNew && !myParent.isTypedFee)
+            {
+               ProductPriceFeeDialog =  new aeProductPriceFee(myParent,true,myParent.getId_PF(),true);
+              ProductPriceFeeDialog.setVisible(true); 
+            }
+            else
+            {
+              ProductPriceFeeDialog =  new aeProductPriceFee(myParent,true,myParent.getId_PF(),false);
+              ProductPriceFeeDialog.setVisible(true); 
+            }
+          
             
         } catch(Exception e) {
             e.printStackTrace();
@@ -661,9 +678,16 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
     private void jTextFieldPromoPricesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldPromoPricesMousePressed
 // TODO add your handling code here:
         try {
-            promoDialog = new aeProductPricePromotion(myParent,true,myParent.getId_PPP(),isNew);
-            promoDialog.setVisible(true);
-            
+            if(isNew && !myParent.isTypedPromoPrice)
+            {
+               promoDialog = new aeProductPricePromotion(myParent,true,myParent.getId_PPP(),true);
+               promoDialog.setVisible(true);
+            }
+            else
+            {
+               promoDialog = new aeProductPricePromotion(myParent,true,myParent.getId_PPP(),false);
+               promoDialog.setVisible(true); 
+            }
             
         } catch(Exception e) {
             e.printStackTrace();
@@ -687,11 +711,19 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
     
     private void jTextFieldPriceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPriceKeyPressed
 // TODO add your handling code here:
-        
-        
+            
         try {
-          ProductPriceDialog =  new aeProductPrice(myParent,true,myParent.getId_PP(),isNew);
-          ProductPriceDialog.setVisible(true);
+           if(isNew && !myParent.isTypedPrice)
+            {
+             ProductPriceDialog =  new aeProductPrice(myParent,true,myParent.getId_PP(),true);
+             ProductPriceDialog.setVisible(true);
+            
+            }
+            else
+            {
+             ProductPriceDialog =  new aeProductPrice(myParent,true,myParent.getId_PP(),false);
+             ProductPriceDialog.setVisible(true);  
+            }
             
             
         } catch(Exception e) {
@@ -706,10 +738,19 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
     
     private void jTextFieldPriceMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldPriceMousePressed
 // TODO add your handling code here:
+     
         try {
-          ProductPriceDialog =  new aeProductPrice(myParent,true,myParent.getId_PP(),isNew);
-          ProductPriceDialog.setVisible(true);
+            if(isNew && !myParent.isTypedPrice)
+            {
+             ProductPriceDialog =  new aeProductPrice(myParent,true,myParent.getId_PP(),true);
+             ProductPriceDialog.setVisible(true);
             
+            }
+            else
+            {
+             ProductPriceDialog =  new aeProductPrice(myParent,true,myParent.getId_PP(),false);
+             ProductPriceDialog.setVisible(true);  
+            }
             
         } catch(Exception e) {
             e.printStackTrace();
@@ -800,9 +841,18 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
     
     private void jTextFieldPromoPricesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPromoPricesKeyPressed
 // TODO add your handling code here:
+       
         try {
-           ProductPricePromotionDialog = new aeProductPricePromotion(myParent,true,myParent.getId_PPP(),isNew);
-           ProductPricePromotionDialog.setVisible(true);
+           if(isNew && !myParent.isTypedPromoPrice)
+            {
+               promoDialog = new aeProductPricePromotion(myParent,true,myParent.getId_PPP(),true);
+               promoDialog.setVisible(true);
+            }
+            else
+            {
+               promoDialog = new aeProductPricePromotion(myParent,true,myParent.getId_PPP(),false);
+               promoDialog.setVisible(true); 
+            }
             
             
         } catch(Exception e) {
@@ -1012,6 +1062,8 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
     private aeProductPrice ProductPriceDialog;
     private aeProductPricePromotion ProductPricePromotionDialog;
     boolean isNew; // za opredelqne dali zapisa e 4isto nov, t.e dali ne sy6testva b bazata
+    
+    
     //---------------END My Variables
 //---------------START MyFunction
     private void getNavigatiionState() // ok
