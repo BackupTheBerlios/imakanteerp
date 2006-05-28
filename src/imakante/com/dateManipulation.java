@@ -299,10 +299,24 @@ static private String checkAndConvertSQLFormat(String in)
              if(i==4 && countS==1 ) // SQL format
              {
                  newDate = in.substring(length-2,length);
-                 newDate +="/";
-                 newDate +=in.substring(length-5,length-3); 
-                 newDate +="/";
-                 newDate +=in.substring(0,4); 
+                    char d_ch[] = newDate.toCharArray();
+                    if(d_ch[0]==45 || d_ch[0]==46 || d_ch[0]==47 )
+                    {
+                        d_ch[0] = '0';
+                        newDate =String.valueOf(d_ch);
+                    }
+                    newDate +="/";
+                    String m_newDate =in.substring(length-5,length-3);
+                    char m_ch[] = m_newDate.toCharArray();
+                    
+                    if(m_ch[0]==45 || m_ch[0]==46 || m_ch[0]==47 )
+                    {
+                        m_ch[0] = '0';
+                        m_newDate =String.valueOf(m_ch);
+                    }
+                    newDate +=m_newDate;
+                    newDate +="/";
+                    newDate +=in.substring(0,4);
                  break;
              }
          }
