@@ -11,7 +11,7 @@ public class InputEGNVerifier extends javax.swing.InputVerifier {
         boolean checkSymbol = false;
         javax.swing.JTextField tf = (javax.swing.JTextField) input;
         String EGN = tf.getText();
-        if (EGNChecker.ValidEGN(EGN)) {
+        if (imakante.com.EGNChecker.ValidEGN(EGN)) {
             checkSymbol = true;
         } else {
             checkSymbol = false;

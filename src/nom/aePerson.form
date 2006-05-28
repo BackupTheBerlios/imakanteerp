@@ -44,6 +44,7 @@
         <Component class="javax.swing.JButton" name="jButtonSave">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x421;&#x44a;&#x445;&#x440;&#x430;&#x43d;&#x438;"/>
+            <Property name="toolTipText" type="java.lang.String" value="&#x421;&#x44a;&#x445;&#x440;&#x430;&#x43d;&#x44f;&#x432;&#x430; &#x43d;&#x430;&#x43f;&#x440;&#x430;&#x432;&#x435;&#x43d;&#x438;&#x442;&#x435; &#x43f;&#x440;&#x43e;&#x43c;&#x435;&#x43d;&#x438;"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSaveActionPerformed"/>
@@ -53,6 +54,7 @@
         <Component class="javax.swing.JButton" name="jButtonUndo">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x41f;&#x440;&#x435;&#x434;&#x438;&#x448;&#x43d;&#x438;"/>
+            <Property name="toolTipText" type="java.lang.String" value="&#x412;&#x440;&#x44a;&#x449;&#x430; &#x43f;&#x440;&#x43e;&#x43c;&#x435;&#x43d;&#x438;&#x442;&#x435; &#x43a;&#x43e;&#x438;&#x442;&#x43e; &#x441;&#x430; &#x43d;&#x430;&#x43f;&#x440;&#x430;&#x432;&#x435;&#x43d;&#x438; &#x434;&#x43e; &#x43f;&#x440;&#x435;&#x434;&#x438;&#x448;&#x43d;&#x43e; &#x441;&#x44a;&#x441;&#x442;&#x43e;&#x44f;&#x43d;&#x438;&#x435;"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonUndoActionPerformed"/>
@@ -62,6 +64,7 @@
         <Component class="javax.swing.JButton" name="jButtonClose">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x417;&#x430;&#x442;&#x432;&#x43e;&#x440;&#x438;"/>
+            <Property name="toolTipText" type="java.lang.String" value="&#x417;&#x430;&#x442;&#x432;&#x430;&#x440;&#x44f; &#x444;&#x43e;&#x440;&#x43c;&#x430;&#x442;&#x430;. &#x412;&#x441;&#x438;&#x447;&#x43a;&#x438; &#x43d;&#x435;&#x441;&#x44a;&#x445;&#x440;&#x430;&#x43d;&#x435;&#x43d;&#x438; &#x43f;&#x440;&#x43e;&#x43c;&#x435;&#x43d;&#x438; &#x43d;&#x435; &#x441;&#x435; &#x437;&#x430;&#x43f;&#x438;&#x441;&#x432;&#x430;&#x442;."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCloseActionPerformed"/>
@@ -99,28 +102,32 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel5" alignment="0" pref="73" max="32767" attributes="0"/>
-                              <Component id="jLabel4" alignment="0" pref="73" max="32767" attributes="0"/>
+                              <Component id="jLabel5" alignment="0" pref="63" max="32767" attributes="0"/>
+                              <Component id="jLabel4" alignment="0" pref="63" max="32767" attributes="0"/>
                               <Component id="jLabel6" alignment="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="jLabel2" alignment="0" pref="73" max="32767" attributes="2"/>
-                              <Component id="jLabel7" alignment="0" pref="73" max="32767" attributes="0"/>
+                              <Component id="jLabel2" alignment="0" pref="63" max="32767" attributes="2"/>
+                              <Component id="jLabel7" alignment="0" pref="63" max="32767" attributes="0"/>
                               <Component id="jLabel3" alignment="0" min="-2" pref="46" max="-2" attributes="2"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane1" alignment="1" min="-2" pref="261" max="-2" attributes="2"/>
-                              <Group type="102" alignment="0" attributes="0">
+                              <Component id="jScrollPane1" min="-2" pref="261" max="-2" attributes="2"/>
+                              <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="jTextField4" alignment="0" pref="124" max="32767" attributes="2"/>
                                       <Component id="jTextField1" alignment="0" pref="124" max="32767" attributes="2"/>
                                       <Component id="jTextField2" alignment="0" min="-2" pref="124" max="-2" attributes="2"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jButton2" max="32767" attributes="1"/>
+                                      <Component id="jButton1" alignment="0" pref="121" max="32767" attributes="1"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jTextField3" alignment="1" min="-2" pref="261" max="-2" attributes="2"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jComboG" pref="213" max="32767" attributes="0"/>
-                                  <EmptySpace min="48" pref="48" max="48" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jComboG" alignment="0" max="32767" attributes="1"/>
+                                  <Component id="jTextField3" alignment="0" pref="261" max="32767" attributes="3"/>
                               </Group>
                           </Group>
                       </Group>
@@ -134,18 +141,20 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jComboG" alignment="3" max="32767" attributes="0"/>
                       <Component id="jLabel3" alignment="3" max="32767" attributes="0"/>
+                      <Component id="jComboG" alignment="3" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jTextField4" alignment="3" max="32767" attributes="0"/>
                       <Component id="jLabel7" alignment="3" max="32767" attributes="0"/>
+                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jTextField1" alignment="3" max="32767" attributes="0"/>
                       <Component id="jLabel2" alignment="3" max="32767" attributes="0"/>
+                      <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -154,19 +163,21 @@
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextField3" alignment="3" max="32767" attributes="0"/>
                       <Component id="jLabel4" alignment="3" max="32767" attributes="0"/>
+                      <Component id="jTextField3" alignment="3" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane1" pref="64" max="32767" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Component id="jLabel5" max="32767" attributes="0"/>
-                          <EmptySpace min="50" pref="50" max="50" attributes="0"/>
+                          <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="jScrollPane1" pref="72" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                  <Component id="jPanel3" pref="79" max="32767" attributes="0"/>
+                  <Component id="jPanel3" pref="77" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -196,6 +207,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/images/Navigation First 2.png"/>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="&#x41f;&#x44a;&#x440;&#x432;&#x438; &#x437;&#x430;&#x43f;&#x438;&#x441; &#x432; &#x441;&#x43f;&#x438;&#x441;&#x44a;&#x43a;&#x430;."/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonToBeginActionPerformed"/>
@@ -207,6 +219,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/images/Navigation Left 2.png"/>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="&#x415;&#x434;&#x438;&#x43d; &#x437;&#x430;&#x43f;&#x438;&#x441; &#x43d;&#x430;&#x437;&#x430;&#x434;"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonOneRowMActionPerformed"/>
@@ -218,6 +231,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/images/Navigation Right 2.png"/>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="&#x415;&#x434;&#x438;&#x43d; &#x437;&#x430;&#x43f;&#x438;&#x441; &#x43d;&#x430;&#x43f;&#x440;&#x435;&#x434;."/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonToEndActionPerformed"/>
@@ -229,6 +243,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/images/Navigation Last 2.png"/>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="&#x41f;&#x43e;&#x441;&#x43b;&#x435;&#x434;&#x435;&#x43d; &#x437;&#x430;&#x43f;&#x438;&#x441; &#x432; &#x441;&#x43f;&#x438;&#x441;&#x44a;&#x43a;&#x430;"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonOneRowPActionPerformed"/>
@@ -288,14 +303,20 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField1">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="&#x415;&#x413;&#x41d; &#x43d;&#x430; &#x43b;&#x438;&#x446;&#x435;&#x442;&#x43e;"/>
+          </Properties>
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextField1FocusGained"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTextField1.setInputVerifier(new imakante.com.InputEGNVerifier());"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="//jTextField1.setInputVerifier(new imakante.com.InputEGNVerifier());"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField2">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="&#x41d;&#x43e;&#x43c;&#x435;&#x440; &#x43d;&#x430; &#x43b;&#x438;&#x447;&#x43d;&#x430; &#x43a;&#x430;&#x440;&#x442;&#x430;."/>
+          </Properties>
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextField2FocusGained"/>
           </Events>
@@ -311,12 +332,33 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField4">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="&#x41f;&#x440;&#x43e;&#x433;&#x440;&#x430;&#x43c;&#x430;&#x442;&#x430; &#x440;&#x430;&#x437;&#x440;&#x435;&#x448;&#x430;&#x432;&#x430; &#x438;&#x437;&#x43f;&#x43e;&#x43b;&#x437;&#x432;&#x430;&#x43d;&#x435;&#x442;&#x43e; &#x43d;&#x430; &#x435;&#x434;&#x438;&#x43d; &#x43a;&#x43e;&#x434; &#x437;&#x430; &#x43d;&#x44f;&#x43a;&#x43e;&#x43b;&#x43a;&#x43e; &#x43b;&#x438;&#x446;&#x430;, &#x442;&#x43e;&#x432;&#x430; &#x43e;&#x431;&#x430;&#x447;&#x435; &#x43d;&#x435; &#x435; &#x43f;&#x440;&#x435;&#x43f;&#x43e;&#x440;&#x44a;&#x447;&#x438;&#x442;&#x435;&#x43b;&#x43d;&#x430; &#x43f;&#x440;&#x430;&#x43a;&#x442;&#x438;&#x43a;&#x430;."/>
+          </Properties>
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextField4FocusGained"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTextField4.setInputVerifier(new imakante.com.InputIntegerVerifier());"/>
           </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#x41f;&#x440;&#x435;&#x434;&#x43b;&#x43e;&#x436;&#x438; &#x43a;&#x43e;&#x434;"/>
+            <Property name="toolTipText" type="java.lang.String" value="&#x41f;&#x440;&#x435;&#x434;&#x43b;&#x430;&#x433;&#x430; &#x438; &#x43f;&#x43e;&#x43f;&#x44a;&#x43b;&#x432;&#x430; &#x441;&#x43b;&#x435;&#x434;&#x432;&#x430;&#x449;&#x438;&#x44f; &#x43f;&#x43e; &#x440;&#x435;&#x434; &#x43d;&#x430;&#x439;-&#x432;&#x438;&#x441;&#x43e;&#x43a; &#x43a;&#x43e;&#x434;."/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#x41f;&#x440;&#x43e;&#x432;&#x435;&#x440;&#x43a;&#x430; &#x415;&#x413;&#x41d;"/>
+            <Property name="toolTipText" type="java.lang.String" value="&#x41f;&#x440;&#x43e;&#x432;&#x435;&#x440;&#x43a;&#x430; &#x43d;&#x430; &#x415;&#x413;&#x41d; &#x437;&#x430; &#x43a;&#x43e;&#x440;&#x435;&#x43a;&#x442;&#x43d;&#x43e;&#x441;&#x442;."/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

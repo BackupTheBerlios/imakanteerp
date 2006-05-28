@@ -579,7 +579,8 @@ public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implemen
     }
     
     private void newRecord() {
-        internalObject.insertRow(0, 0);
+        int maxCode = internalObject.getMaxCod();
+        internalObject.insertRow(0, maxCode + 1);
         refreshTable();
         setRow(getMaxRow());
         table.changeSelection(getRow(), 2, false, false);

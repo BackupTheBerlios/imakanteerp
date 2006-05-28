@@ -35,7 +35,7 @@ public class dbPerson extends imakante.com.dbObject {
             getCstm().setString("in_comment", getComment());
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
- 
+    
     public void insertRow(int in_id_group, int in_code) {
         setComprator(1);
         this.setIDGr(in_id_group);
@@ -89,7 +89,21 @@ public class dbPerson extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
         return actInt;
     }
-    
+    public void checkCode(int in_code){
+        String message = "";
+        setComprator(21);
+        this.setCode(in_code);
+        try {
+            registerParameters();
+            setRs(getCstm().executeQuery());
+            while(getRs().next()) {
+             message = message + getRs().getInt("code_ls_n_person") + " " 
+                     + getRs().getInt("egn_ls_n_person") + " "
+                     + getRs().getInt("nlk_ls_n_person") + " "
+                     + getRs().getString("name_ls_n_person ");  
+            }
+        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
+    }
     public void setEGN(String EGN) {
         this.egn = EGN;
     }

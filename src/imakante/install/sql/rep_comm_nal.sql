@@ -1,5 +1,6 @@
 ﻿CREATE VIEW `mida`.`rep_comm_nal` AS
 SELECT s.id_n_storage, n_storage.code_n_storage,
+n_storage.name_n_storage,
 s.id_pc,
 n_product_consigment.id_pm,
 n_product_main.code_pm,

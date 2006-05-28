@@ -751,16 +751,16 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
             
         }
         if(this.jCheckBox2.isSelected() && this.jCheckBox4.isSelected()){
-            fileName="/imakante/sales/jasper/nal_simp_01.jasper";
+            fileName="/reports/nal_simp_01.jasper";
         }
         if(this.jCheckBox3.isSelected() && this.jCheckBox4.isSelected()){
             
         }
         if(this.jCheckBox1.isSelected() && this.jCheckBox4.isSelected()==false){
-            fileName="/imakante/sales/jasper/nal_simp_03.jasper";
+            fileName="/reports/nal_simp_03.jasper";
         }
         if(this.jCheckBox2.isSelected() && this.jCheckBox4.isSelected()==false){
-            fileName="/imakante/sales/jasper/nal_simp_02.jasper";
+            fileName="/reports/nal_simp_02.jasper";
         }
         if(this.jCheckBox3.isSelected() && this.jCheckBox4.isSelected()==false){
             
