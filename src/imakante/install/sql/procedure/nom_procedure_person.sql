@@ -1,7 +1,7 @@
 ﻿DELIMITER $$
 
-DROP PROCEDURE IF EXISTS nom_procedure_person $$
-CREATE PROCEDURE nom_procedure_person (IN comprator TINYINT, IN in_id INT(11), IN in_id_group INT(11), IN in_code INT(11), IN in_egn VARCHAR(10), IN in_nomlk VARCHAR(9), IN in_name VARCHAR(45), IN in_comment VARCHAR(250) )
+DROP PROCEDURE IF EXISTS `mida`.`nom_procedure_person` $$
+CREATE PROCEDURE `nom_procedure_person`(IN comprator TINYINT, IN in_id INT(11), IN in_id_group INT(11), IN in_code INT(11), IN in_egn VARCHAR(10), IN in_nomlk VARCHAR(9), IN in_name VARCHAR(45), IN in_comment VARCHAR(250) )
 BEGIN
      IF (comprator = 0) THEN
           SELECT n.id_ls_n_person, n.id_n_group, ng.name_n_group, n.code_ls_n_person, n.egn_ls_n_person, n.nlk_ls_n_person, n.name_ls_n_person,
@@ -50,6 +50,13 @@ BEGIN
 
      IF (comprator = 9) THEN
         SELECT MAX(n.id_n_group) AS id_n_group FROM n_group n WHERE n.nom_n_group = 3;
+
+     END IF;
+
+     IF (comprator = 21) THEN
+        SELECT n.code_ls_n_person  AS code_ls_n_person, n.egn_ls_n_person, n.nlk_ls_n_person, n.name_ls_n_person FROM ls_n_person n
+        WHERE code_ls_n_person = in_code;
+
      END IF;
 
 END $$
