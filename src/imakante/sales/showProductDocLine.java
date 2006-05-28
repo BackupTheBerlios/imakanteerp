@@ -92,7 +92,11 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
                   
                   if((Integer)table.getValueAt(row,getColumnIndex("Партида"))>1)
                   myParent.setID_PF((Integer)table.getValueAt(row,getColumnIndex("pc_id_pf")));
-                  else myParent.setID_PF((Integer)table.getValueAt(row,getColumnIndex("id_pf")));
+                  else 
+                  {
+                      Long tmoLong = (Long)table.getValueAt(row,getColumnIndex("id_pf"));
+                      myParent.setID_PF(tmoLong.intValue());
+                  }
                   productFee = myParent.getCountriesT().getProductFeeByID(myParent.getID_PF());
                   myParent.setProductFee(productFee);
                   
