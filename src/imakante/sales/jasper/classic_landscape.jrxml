@@ -2,7 +2,7 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="report_ColBAlance"
+		 name="classic_landscape"
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
@@ -23,31 +23,31 @@
 	<import value="net.sf.jasperreports.engine.*" />
 	<import value="net.sf.jasperreports.engine.data.*" />
 
-	<parameter name="otsklad" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["0"]]></defaultValueExpression>
-	</parameter>
-	<parameter name="dosklad" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["99999999"]]></defaultValueExpression>
-	</parameter>
-	<parameter name="otkontragent" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["0"]]></defaultValueExpression>
-	</parameter>
-	<parameter name="dokontragent" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["999999999"]]></defaultValueExpression>
-	</parameter>
-	<parameter name="otprodukt" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["0"]]></defaultValueExpression>
-	</parameter>
-	<parameter name="doprodukt" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["999999999"]]></defaultValueExpression>
-	</parameter>
-	<parameter name="levex" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["(0)"]]></defaultValueExpression>
-	</parameter>
 	<parameter name="otdate" isForPrompting="true" class="java.lang.String">
 		<defaultValueExpression ><![CDATA[""]]></defaultValueExpression>
 	</parameter>
 	<parameter name="dodate" isForPrompting="true" class="java.lang.String">
+		<defaultValueExpression ><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="otsklad" isForPrompting="true" class="java.lang.String">
+		<defaultValueExpression ><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dosklad" isForPrompting="true" class="java.lang.String">
+		<defaultValueExpression ><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="otkontragent" isForPrompting="true" class="java.lang.String">
+		<defaultValueExpression ><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dokontragent" isForPrompting="true" class="java.lang.String">
+		<defaultValueExpression ><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="otprodukt" isForPrompting="true" class="java.lang.String">
+		<defaultValueExpression ><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="doprodukt" isForPrompting="true" class="java.lang.String">
+		<defaultValueExpression ><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="levex" isForPrompting="true" class="java.lang.String">
 		<defaultValueExpression ><![CDATA[""]]></defaultValueExpression>
 	</parameter>
 	<queryString><![CDATA[SELECT  DISTINCT CONCAT(rep_comm_nal.level ,rep_comm_nal.code_n_storage ,rep_comm_nal.code_pm ) AS con ,
@@ -56,62 +56,68 @@ SUM(rep_comm_nal.quant_nal) as kolichestvo, SUM(rep_comm_nal.miarka3),
 SUM(rep_comm_nal.miarka2), SUM(rep_comm_nal.ostatak), 
  IFNULL((SELECT SUM(rep_documents.numbers_piece_dl)  FROM rep_documents 
  WHERE rep_documents.code_product = rep_comm_nal.code_pm AND rep_documents.date_edition_df 
-BETWEEN $P{otdate} AND $P{dodate} AND
+BETWEEN ($P{otdate}) AND ($P{dodate}) AND
  rep_documents.type_df = 100  AND 
-rep_documents.code_store = rep_comm_nal.code_n_storage AND rep_documents.level_df IN($P{levex}) GROUP BY rep_documents.code_product ),0) AS podajba, 
-IFNULL((SELECT SUM(rep_documents.numbers_piece_dl)  FROM rep_documents  WHERE rep_documents.code_product = rep_comm_nal.code_pm AND 
+rep_documents.code_store = rep_comm_nal.code_n_storage AND rep_documents.level_df IN(($P{levex}))
+ GROUP BY rep_documents.code_product ),0) AS podajba, 
+ 
+IFNULL((SELECT SUM(rep_documents.numbers_piece_dl) 
+ FROM rep_documents  WHERE rep_documents.code_product = rep_comm_nal.code_pm AND 
  rep_documents.date_edition_df BETWEEN ($P{otdate}) AND ($P{dodate}) AND
- rep_documents.type_df = 201 AND rep_documents.code_store = rep_comm_nal.code_n_storage
- AND rep_documents.level_df IN($P{levex}) 
+ rep_documents.type_df = 201 
+ AND rep_documents.code_store = rep_comm_nal.code_n_storage
+ AND rep_documents.level_df IN(($P{levex})) 
 GROUP BY rep_documents.code_product),0) AS fakop, 
 IFNULL((SELECT SUM(rep_documents.numbers_piece_dl)  
-FROM rep_documents  WHERE rep_documents.code_product = rep_comm_nal.code_pm AND 
- rep_documents.date_edition_df BETWEEN ($P{otdate}) AND 
+FROM rep_documents  WHERE rep_documents.code_product = rep_comm_nal.code_pm 
+AND  rep_documents.date_edition_df BETWEEN ($P{otdate}) AND 
 ($P{dodate}) AND rep_documents.type_df = 202  
 AND rep_documents.code_store = rep_comm_nal.code_n_storage AND 
-rep_documents.level_df IN($P{levex}) GROUP BY rep_documents.code_product ),0) AS fakdan, 
+rep_documents.level_df IN(($P{levex}))
+GROUP BY rep_documents.code_product ),0) AS fakdan, 
 IFNULL((SELECT SUM(rep_documents.numbers_piece_dl) 
 FROM rep_documents WHERE rep_documents.code_product = rep_comm_nal.code_pm AND 
 rep_documents.date_edition_df BETWEEN ($P{otdate}) AND ($P{dodate}) 
 AND rep_documents.type_df = 500  AND rep_documents.code_store = rep_comm_nal.code_n_storage AND 
-rep_documents.level_df IN($P{levex}) 
+rep_documents.level_df IN(($P{levex})) 
 GROUP BY rep_documents.code_product  ),0) AS narejd,
  IFNULL((SELECT SUM(rep_documents.numbers_piece_dl)  FROM rep_documents 
  WHERE rep_documents.code_product = rep_comm_nal.code_pm 
 AND  rep_documents.date_edition_df BETWEEN ($P{otdate}) AND 
 ($P{dodate}) AND rep_documents.type_df = 600  
 AND rep_documents.code_store = rep_comm_nal.code_n_storage 
-AND rep_documents.level_df IN($P{levex}) 
+AND rep_documents.level_df IN(($P{levex})) 
 GROUP BY rep_documents.code_product),0) AS priemane, 
  IFNULL((SELECT SUM(rep_documents.numbers_piece_dl)  FROM rep_documents 
  WHERE rep_documents.code_product = rep_comm_nal.code_pm 
-AND  rep_documents.date_edition_df BETWEEN $P{otdate} AND
-$P{dodate} AND rep_documents.type_df = 700 
+AND  rep_documents.date_edition_df BETWEEN ($P{otdate}) AND
+($P{dodate}) AND rep_documents.type_df = 700 
  AND rep_documents.code_store = rep_comm_nal.code_n_storage 
-AND rep_documents.level_df IN($P{levex}) 
+AND rep_documents.level_df IN(($P{levex})) 
 GROUP BY rep_documents.code_product  ),0) AS nprehv,
   IFNULL((SELECT SUM(rep_documents.numbers_piece_dl)
   FROM rep_documents  
 WHERE rep_documents.code_product = rep_comm_nal.code_pm 
-AND  rep_documents.date_edition_df BETWEEN $P{otdate}
- AND $P{dodate} AND rep_documents.type_df = 800 
+AND  rep_documents.date_edition_df BETWEEN ($P{otdate})
+ AND ($P{dodate}) AND rep_documents.type_df = 800 
 AND rep_documents.code_store = rep_comm_nal.code_n_storage 
-AND rep_documents.level_df IN($P{levex})
+AND rep_documents.level_df IN(($P{levex}))
  GROUP BY rep_documents.code_product ),0) AS brak,
   IFNULL((SELECT SUM(rep_documents.numbers_piece_dl) 
  FROM rep_documents  WHERE rep_documents.code_product = rep_comm_nal.code_pm 
-AND  rep_documents.date_edition_df BETWEEN $P{otdate}
- AND $P{dodate} AND rep_documents.type_df = 900
+AND  rep_documents.date_edition_df BETWEEN ($P{otdate})
+ AND ($P{dodate}) AND rep_documents.type_df = 900
  AND rep_documents.code_store = rep_comm_nal.code_n_storage
- AND rep_documents.level_df IN($P{levex})
+ AND rep_documents.level_df IN(($P{levex}))
  GROUP BY rep_documents.code_product ),0) AS lipsa FROM 
  `rep_comm_nal` 
-JOIN n_product_main on rep_comm_nal.id_pm = n_product_main.id_pm  WHERE `rep_comm_nal`.`code_contragent`
+JOIN n_product_main on rep_comm_nal.id_pm = n_product_main.id_pm  
+WHERE `rep_comm_nal`.`code_contragent`
  BETWEEN $P{otkontragent} AND $P{dokontragent} AND `rep_comm_nal`.`code_pm` BETWEEN $P{otprodukt}
  AND $P{doprodukt}
  AND  `rep_comm_nal`.`code_n_storage` BETWEEN $P{otsklad}
 AND $P{dosklad}
-AND `rep_comm_nal`.level IN($P{levex}) GROUP BY con ORDER BY rep_comm_nal.code_n_storage DESC]]></queryString>
+AND `rep_comm_nal`.level IN(($P{levex})) GROUP BY con ORDER BY rep_comm_nal.code_n_storage DESC]]></queryString>
 
 	<field name="con" class="java.lang.String"/>
 	<field name="code_n_storage" class="java.lang.Long"/>
@@ -125,7 +131,7 @@ AND `rep_comm_nal`.level IN($P{levex}) GROUP BY con ORDER BY rep_comm_nal.code_n
 	<field name="fakop" class="java.math.BigDecimal"/>
 	<field name="fakdan" class="java.math.BigDecimal"/>
 	<field name="narejd" class="java.math.BigDecimal"/>
-	<field name="priemane" class="java.lang.Integer"/>
+	<field name="priemane" class="java.math.BigDecimal"/>
 	<field name="nprehv" class="java.math.BigDecimal"/>
 	<field name="brak" class="java.math.BigDecimal"/>
 	<field name="lipsa" class="java.math.BigDecimal"/>
@@ -134,54 +140,54 @@ AND `rep_comm_nal`.level IN($P{levex}) GROUP BY con ORDER BY rep_comm_nal.code_n
 		<group  name="code_n_storage" >
 			<groupExpression><![CDATA[$F{code_n_storage}]]></groupExpression>
 			<groupHeader>
-			<band height="17"  isSplitAllowed="true" >
+			<band height="20"  isSplitAllowed="true" >
 				<rectangle radius="0" >
 					<reportElement
 						x="0"
 						y="0"
 						width="782"
-						height="17"
+						height="20"
 						forecolor="#8080FF"
-						backcolor="#CCCCCC"
+						backcolor="#999999"
 						key="rectangle"/>
 					<graphicElement stretchType="NoStretch"/>
 				</rectangle>
 				<staticText>
 					<reportElement
-						x="3"
+						x="49"
 						y="2"
-						width="96"
-						height="15"
+						width="65"
+						height="17"
 						forecolor="#FFFFFF"
 						key="staticText"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="10"/>
+						<font fontName="Tahoma" size="12"/>
 					</textElement>
-				<text><![CDATA[Склад]]></text>
+				<text><![CDATA[код склад]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="102"
+						x="116"
 						y="2"
-						width="161"
-						height="15"
+						width="98"
+						height="17"
 						forecolor="#FFFFFF"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="10"/>
+						<font fontName="Tahoma" size="12"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.Long"><![CDATA[$F{code_n_storage}]]></textFieldExpression>
 				</textField>
 			</band>
 			</groupHeader>
 			<groupFooter>
-			<band height="4"  isSplitAllowed="true" >
+			<band height="10"  isSplitAllowed="true" >
 				<line direction="BottomUp">
 					<reportElement
 						x="1"
-						y="1"
+						y="4"
 						width="781"
 						height="0"
 						forecolor="#000000"
@@ -197,20 +203,7 @@ AND `rep_comm_nal`.level IN($P{levex}) GROUP BY con ORDER BY rep_comm_nal.code_n
 			</band>
 		</background>
 		<title>
-			<band height="50"  isSplitAllowed="true" >
-				<staticText>
-					<reportElement
-						x="3"
-						y="6"
-						width="374"
-						height="29"
-						key="staticText"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Center">
-						<font pdfFontName="Helvetica-Bold" size="18" isBold="true"/>
-					</textElement>
-				<text><![CDATA[КОЛИЧЕСТВЕН БАЛАНС]]></text>
-				</staticText>
+			<band height="56"  isSplitAllowed="true" >
 				<line direction="TopDown">
 					<reportElement
 						x="0"
@@ -233,10 +226,23 @@ AND `rep_comm_nal`.level IN($P{levex}) GROUP BY con ORDER BY rep_comm_nal.code_n
 						key="line"/>
 					<graphicElement stretchType="NoStretch"/>
 				</line>
+				<staticText>
+					<reportElement
+						x="13"
+						y="16"
+						width="309"
+						height="29"
+						key="staticText-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center">
+						<font pdfFontName="Helvetica-Bold" size="18" isBold="true"/>
+					</textElement>
+				<text><![CDATA[КОЛИЧЕСТВЕН БАЛАНС]]></text>
+				</staticText>
 				<rectangle>
 					<reportElement
-						x="381"
-						y="6"
+						x="363"
+						y="7"
 						width="397"
 						height="39"
 						backcolor="#CCCCCC"
@@ -245,21 +251,8 @@ AND `rep_comm_nal`.level IN($P{levex}) GROUP BY con ORDER BY rep_comm_nal.code_n
 				</rectangle>
 				<staticText>
 					<reportElement
-						x="385"
-						y="9"
-						width="40"
-						height="13"
-						key="staticText-1"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font fontName="Tahoma"/>
-					</textElement>
-				<text><![CDATA[ДАТА:]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="385"
-						y="27"
+						x="368"
+						y="10"
 						width="40"
 						height="13"
 						key="staticText-2"/>
@@ -267,12 +260,38 @@ AND `rep_comm_nal`.level IN($P{levex}) GROUP BY con ORDER BY rep_comm_nal.code_n
 					<textElement>
 						<font fontName="Tahoma"/>
 					</textElement>
-				<text><![CDATA[СКЛАД:]]></text>
+				<text><![CDATA[ДАТА:]]></text>
 				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="411"
+						y="10"
+						width="58"
+						height="13"
+						key="textField-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{otdate}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="475"
+						y="10"
+						width="65"
+						height="13"
+						key="textField-2"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{dodate}]]></textFieldExpression>
+				</textField>
 				<staticText>
 					<reportElement
-						x="560"
-						y="9"
+						x="551"
+						y="10"
 						width="75"
 						height="13"
 						key="staticText-3"/>
@@ -282,91 +301,13 @@ AND `rep_comm_nal`.level IN($P{levex}) GROUP BY con ORDER BY rep_comm_nal.code_n
 					</textElement>
 				<text><![CDATA[КОНТРАГЕНТ:]]></text>
 				</staticText>
-				<staticText>
-					<reportElement
-						x="559"
-						y="27"
-						width="76"
-						height="13"
-						key="staticText-4"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font fontName="Tahoma"/>
-					</textElement>
-				<text><![CDATA[ПРОДУКТ:]]></text>
-				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="433"
-						y="9"
+						x="633"
+						y="10"
 						width="50"
 						height="13"
-						key="textField"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font fontName="Tahoma"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$P{otdate}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="490"
-						y="9"
-						width="50"
-						height="13"
-						key="textField"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font fontName="Tahoma"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$P{dodate}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="4"
-						y="31"
-						width="50"
-						height="13"
-						key="textField"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$P{levex}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="434"
-						y="27"
-						width="50"
-						height="13"
-						key="textField"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font fontName="Tahoma"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$P{otsklad}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="491"
-						y="27"
-						width="50"
-						height="13"
-						key="textField"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font fontName="Tahoma"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$P{dosklad}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="645"
-						y="9"
-						width="50"
-						height="13"
-						key="textField"/>
+						key="textField-3"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
 						<font fontName="Tahoma"/>
@@ -375,24 +316,76 @@ AND `rep_comm_nal`.level IN($P{levex}) GROUP BY con ORDER BY rep_comm_nal.code_n
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="708"
-						y="9"
-						width="50"
+						x="689"
+						y="10"
+						width="65"
 						height="13"
-						key="textField"/>
+						key="textField-4"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
 						<font fontName="Tahoma"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{dokontragent}]]></textFieldExpression>
 				</textField>
+				<staticText>
+					<reportElement
+						x="368"
+						y="29"
+						width="40"
+						height="13"
+						key="staticText-4"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma"/>
+					</textElement>
+				<text><![CDATA[СКЛАД:]]></text>
+				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="645"
-						y="27"
+						x="411"
+						y="29"
+						width="59"
+						height="13"
+						key="textField-5"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{otsklad}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="475"
+						y="29"
+						width="64"
+						height="13"
+						key="textField-6"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{dosklad}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="551"
+						y="29"
+						width="76"
+						height="13"
+						key="staticText-5"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma"/>
+					</textElement>
+				<text><![CDATA[ПРОДУКТ:]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="633"
+						y="29"
 						width="50"
 						height="13"
-						key="textField"/>
+						key="textField-7"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
 						<font fontName="Tahoma"/>
@@ -401,16 +394,29 @@ AND `rep_comm_nal`.level IN($P{levex}) GROUP BY con ORDER BY rep_comm_nal.code_n
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="707"
-						y="27"
-						width="50"
+						x="689"
+						y="29"
+						width="66"
 						height="13"
-						key="textField"/>
+						key="textField-8"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
 						<font fontName="Tahoma"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{doprodukt}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="5"
+						y="28"
+						width="66"
+						height="16"
+						key="textField"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{levex}]]></textFieldExpression>
 				</textField>
 			</band>
 		</title>
@@ -458,206 +464,220 @@ AND `rep_comm_nal`.level IN($P{levex}) GROUP BY con ORDER BY rep_comm_nal.code_n
 					<reportElement
 						x="0"
 						y="0"
-						width="34"
+						width="52"
 						height="17"
 						forecolor="#FFFFFF"
 						key="staticText"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center">
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="10"/>
 					</textElement>
-				<text><![CDATA[код]]></text>
+				<text><![CDATA[iНомер]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="36"
+						x="52"
 						y="0"
-						width="74"
+						width="52"
 						height="17"
 						forecolor="#FFFFFF"
 						key="staticText"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center">
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="10"/>
 					</textElement>
-				<text><![CDATA[име]]></text>
+				<text><![CDATA[Код]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="110"
+						x="104"
 						y="0"
-						width="55"
+						width="52"
 						height="17"
 						forecolor="#FFFFFF"
 						key="staticText"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center">
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="10"/>
 					</textElement>
-				<text><![CDATA[количество]]></text>
+				<text><![CDATA[Име]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="165"
+						x="174"
 						y="0"
-						width="55"
+						width="56"
 						height="17"
 						forecolor="#FFFFFF"
 						key="staticText"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center">
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="10"/>
 					</textElement>
-				<text><![CDATA[SUM(rep_comm_nal.miarka3)]]></text>
+				<text><![CDATA[Количество]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="220"
+						x="232"
 						y="0"
-						width="55"
+						width="42"
 						height="17"
 						forecolor="#FFFFFF"
 						key="staticText"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center">
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="10"/>
 					</textElement>
-				<text><![CDATA[мярка 2]]></text>
+				<text><![CDATA[Мярка 3]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="275"
+						x="276"
 						y="0"
-						width="55"
+						width="47"
 						height="17"
 						forecolor="#FFFFFF"
 						key="staticText"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center">
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="10"/>
+					</textElement>
+				<text><![CDATA[Мярка 2]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="325"
+						y="0"
+						width="52"
+						height="17"
+						forecolor="#FFFFFF"
+						key="staticText"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center">
+						<font fontName="Tahoma" size="10"/>
 					</textElement>
 				<text><![CDATA[остатък]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="330"
+						x="380"
 						y="0"
-						width="55"
+						width="52"
 						height="17"
 						forecolor="#FFFFFF"
 						key="staticText"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center">
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="10"/>
 					</textElement>
 				<text><![CDATA[продажба]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="385"
+						x="435"
 						y="0"
-						width="55"
+						width="52"
 						height="17"
 						forecolor="#FFFFFF"
 						key="staticText"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center">
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="10"/>
 					</textElement>
-				<text><![CDATA[Об. Факт.]]></text>
+				<text><![CDATA[Опр. Факт.]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="440"
+						x="490"
 						y="0"
-						width="55"
+						width="52"
 						height="17"
 						forecolor="#FFFFFF"
 						key="staticText"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center">
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="10"/>
 					</textElement>
-				<text><![CDATA[Дан. Факт.]]></text>
+				<text><![CDATA[Фактура Д]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="495"
+						x="544"
 						y="0"
-						width="55"
+						width="52"
 						height="17"
 						forecolor="#FFFFFF"
 						key="staticText"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center">
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="10"/>
 					</textElement>
-				<text><![CDATA[Нарежд.]]></text>
+				<text><![CDATA[Нареждане]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="550"
+						x="598"
 						y="0"
-						width="55"
+						width="52"
 						height="17"
 						forecolor="#FFFFFF"
 						key="staticText"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center">
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="10"/>
 					</textElement>
 				<text><![CDATA[Приемане]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="605"
+						x="655"
 						y="0"
-						width="55"
+						width="43"
 						height="17"
 						forecolor="#FFFFFF"
 						key="staticText"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center">
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="10"/>
 					</textElement>
-				<text><![CDATA[Прехвърляне]]></text>
+				<text><![CDATA[Прехв.]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="660"
+						x="701"
 						y="0"
-						width="55"
+						width="41"
 						height="17"
 						forecolor="#FFFFFF"
 						key="staticText"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center">
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="10"/>
 					</textElement>
 				<text><![CDATA[Брак]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="715"
+						x="744"
 						y="0"
-						width="55"
+						width="36"
 						height="17"
 						forecolor="#FFFFFF"
 						key="staticText"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center">
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="10"/>
 					</textElement>
 				<text><![CDATA[Липса]]></text>
 				</staticText>
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="15"  isSplitAllowed="true" >
+			<band height="17"  isSplitAllowed="true" >
 				<line direction="TopDown">
 					<reportElement
 						x="0"
-						y="13"
+						y="16"
 						width="782"
 						height="0"
 						forecolor="#808080"
@@ -669,210 +689,211 @@ AND `rep_comm_nal`.level IN($P{levex}) GROUP BY con ORDER BY rep_comm_nal.code_n
 					<reportElement
 						x="0"
 						y="0"
-						width="35"
-						height="11"
+						width="52"
+						height="17"
 						forecolor="#000000"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
+						<font fontName="Tahoma" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{con}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="52"
+						y="0"
+						width="49"
+						height="17"
+						forecolor="#000000"
+						key="textField"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right">
+						<font fontName="Tahoma" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.Long"><![CDATA[$F{code_pm}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="36"
+						x="104"
 						y="0"
-						width="84"
-						height="11"
+						width="76"
+						height="17"
 						forecolor="#000000"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
+						<font fontName="Tahoma" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{name_pm}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="127"
+						x="180"
 						y="0"
-						width="39"
-						height="11"
+						width="49"
+						height="17"
 						forecolor="#000000"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Right">
-						<font fontName="Tahoma" size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
+						<font fontName="Tahoma" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{kolichestvo}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="173"
+						x="234"
 						y="0"
-						width="39"
-						height="11"
+						width="42"
+						height="17"
 						forecolor="#000000"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Right">
-						<font fontName="Tahoma" size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
+						<font fontName="Tahoma" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{SUM(rep_comm_nal.miarka3)}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="232"
+						x="280"
 						y="0"
-						width="39"
-						height="11"
+						width="42"
+						height="17"
 						forecolor="#000000"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Right">
-						<font fontName="Tahoma" size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
+						<font fontName="Tahoma" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{SUM(rep_comm_nal.miarka2)}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="287"
+						x="334"
 						y="0"
-						width="39"
-						height="11"
+						width="42"
+						height="17"
 						forecolor="#000000"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Right">
-						<font fontName="Tahoma" size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
+						<font fontName="Tahoma" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{SUM(rep_comm_nal.ostatak)}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="339"
+						x="389"
 						y="0"
-						width="39"
-						height="11"
+						width="42"
+						height="17"
 						forecolor="#000000"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Right">
-						<font fontName="Tahoma" size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
+						<font fontName="Tahoma" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{podajba}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="396"
+						x="444"
 						y="0"
-						width="39"
-						height="11"
+						width="42"
+						height="17"
 						forecolor="#000000"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Right">
-						<font fontName="Tahoma" size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
+						<font fontName="Tahoma" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{fakop}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="453"
+						x="496"
 						y="0"
-						width="39"
-						height="11"
+						width="42"
+						height="17"
 						forecolor="#000000"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Right">
-						<font fontName="Tahoma" size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
+						<font fontName="Tahoma" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{fakdan}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="505"
+						x="554"
 						y="0"
-						width="39"
-						height="11"
+						width="42"
+						height="17"
 						forecolor="#000000"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Right">
-						<font fontName="Tahoma" size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
+						<font fontName="Tahoma" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{narejd}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="561"
+						x="605"
 						y="0"
-						width="39"
-						height="11"
+						width="42"
+						height="17"
 						forecolor="#000000"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Right">
-						<font fontName="Tahoma" size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
+						<font fontName="Tahoma" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
 					</textElement>
-				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{priemane}]]></textFieldExpression>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{priemane}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="618"
+						x="658"
 						y="0"
-						width="39"
-						height="11"
+						width="42"
+						height="17"
 						forecolor="#000000"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Right">
-						<font fontName="Tahoma" size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
+						<font fontName="Tahoma" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{nprehv}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="670"
+						x="709"
 						y="0"
-						width="39"
-						height="11"
+						width="32"
+						height="17"
 						forecolor="#000000"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Right">
-						<font fontName="Tahoma" size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
+						<font fontName="Tahoma" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{brak}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="725"
+						x="744"
 						y="0"
-						width="39"
-						height="11"
+						width="38"
+						height="17"
 						forecolor="#000000"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Right">
-						<font fontName="Tahoma" size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
+						<font fontName="Tahoma" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{lipsa}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="766"
-						y="1"
-						width="12"
-						height="9"
-						key="textField"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{con}]]></textFieldExpression>
 				</textField>
 			</band>
 		</detail>
@@ -892,9 +913,9 @@ AND `rep_comm_nal`.level IN($P{levex}) GROUP BY con ORDER BY rep_comm_nal.code_n
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Right">
-						<font/>
+						<font fontName="Tahoma"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["Стр" + $V{PAGE_NUMBER} + " от "]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Стр. " + $V{PAGE_NUMBER} + " от "]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Report" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -908,7 +929,7 @@ AND `rep_comm_nal`.level IN($P{levex}) GROUP BY con ORDER BY rep_comm_nal.code_n
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
+						<font fontName="Tahoma" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA["" + $V{PAGE_NUMBER}]]></textFieldExpression>
 				</textField>
@@ -933,7 +954,7 @@ AND `rep_comm_nal`.level IN($P{levex}) GROUP BY con ORDER BY rep_comm_nal.code_n
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font/>
+						<font fontName="Tahoma"/>
 					</textElement>
 				<textFieldExpression   class="java.util.Date"><![CDATA[new Date()]]></textFieldExpression>
 				</textField>

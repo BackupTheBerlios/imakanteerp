@@ -428,7 +428,9 @@ public class reportColBalans extends imakante.com.vcomponents.iInternalFrame imp
     private List namesQ = new ArrayList();
     private int nubColums = 0;
     private String qu =   "";
-    private String fileName="/imakante/sales/jasper/nal_simp_01.jasper";
+    private String fileName="/imakante/sales/jasper/classic_landscape.jasper";
+
+    private String levelD = "";
     
     //METHODS
     
@@ -593,10 +595,21 @@ public class reportColBalans extends imakante.com.vcomponents.iInternalFrame imp
     }
     
     private void processReport(){
+        String levelD = "";
         String levelX = "";
         String newString=qu;
         namesQ.add("Номератор");
+        if(levelx==3){
+            levelD = "(1,3)";
+        }
         
+        if(levelx==2){
+            levelD = "(1,2)";
+        }
+        
+        if(levelx==1){
+            levelD = "(1,2,3)";
+        }
         if(levelx==3){
             levelX = "(0)";
         }
@@ -621,7 +634,7 @@ public class reportColBalans extends imakante.com.vcomponents.iInternalFrame imp
                 +(String)formatterG.format(this.jXDatePicker2.getDate())
                 + "' AND rep_documents.type_df = 100 "
                 + " AND rep_documents.code_store = rep_comm_nal.code_n_storage AND rep_documents.level_df IN"
-                + levelX
+                + levelD
                 + " GROUP BY rep_documents.code_product "
                 + "),0) AS podajba, "
                 + "IFNULL((SELECT SUM(rep_documents.numbers_piece_dl) "
@@ -633,7 +646,7 @@ public class reportColBalans extends imakante.com.vcomponents.iInternalFrame imp
                 + (String)formatterG.format(this.jXDatePicker2.getDate())
                 + "' AND rep_documents.type_df = 201"
                 + " AND rep_documents.code_store = rep_comm_nal.code_n_storage AND rep_documents.level_df IN"
-                +levelX
+                +levelD
                 + " GROUP BY rep_documents.code_product"
                 + "),0) AS fakop,"
                 + " IFNULL((SELECT SUM(rep_documents.numbers_piece_dl) "
@@ -645,7 +658,7 @@ public class reportColBalans extends imakante.com.vcomponents.iInternalFrame imp
                 +(String)formatterG.format(this.jXDatePicker2.getDate())
                 + "' AND rep_documents.type_df = 202 "
                 + " AND rep_documents.code_store = rep_comm_nal.code_n_storage AND rep_documents.level_df IN"
-                +levelX
+                +levelD
                 + " GROUP BY rep_documents.code_product "
                 + "),0) AS fakdan, "
                 + "IFNULL((SELECT SUM(rep_documents.numbers_piece_dl) "
@@ -657,7 +670,7 @@ public class reportColBalans extends imakante.com.vcomponents.iInternalFrame imp
                 + (String)formatterG.format(this.jXDatePicker2.getDate())
                 + "' AND rep_documents.type_df = 500 "
                 +" AND rep_documents.code_store = rep_comm_nal.code_n_storage AND rep_documents.level_df IN"
-                + levelX
+                + levelD
                 + " GROUP BY rep_documents.code_product "
                 + " ),0) AS narejd, "
                 + "IFNULL((SELECT SUM(rep_documents.numbers_piece_dl) "
@@ -669,7 +682,7 @@ public class reportColBalans extends imakante.com.vcomponents.iInternalFrame imp
                 + (String)formatterG.format(this.jXDatePicker2.getDate())
                 + "' AND rep_documents.type_df = 600 "
                 +" AND rep_documents.code_store = rep_comm_nal.code_n_storage AND rep_documents.level_df IN"
-                + levelX
+                + levelD
                 + " GROUP BY rep_documents.code_product"
                 + "),0) AS priemane, "
                 + " IFNULL((SELECT SUM(rep_documents.numbers_piece_dl) "
@@ -681,7 +694,7 @@ public class reportColBalans extends imakante.com.vcomponents.iInternalFrame imp
                 + (String)formatterG.format(this.jXDatePicker2.getDate())
                 + "' AND rep_documents.type_df = 700 "
                 + " AND rep_documents.code_store = rep_comm_nal.code_n_storage AND rep_documents.level_df IN"
-                + levelX
+                + levelD
                 + " GROUP BY rep_documents.code_product "
                 + " ),0) AS nprehv, "
                 + " IFNULL((SELECT SUM(rep_documents.numbers_piece_dl) "
@@ -693,7 +706,7 @@ public class reportColBalans extends imakante.com.vcomponents.iInternalFrame imp
                 +(String)formatterG.format(this.jXDatePicker2.getDate())
                 + "' AND rep_documents.type_df = 800"
                 + " AND rep_documents.code_store = rep_comm_nal.code_n_storage AND rep_documents.level_df IN"
-                + levelX
+                + levelD
                 + " GROUP BY rep_documents.code_product "
                 + "),0) AS brak, "
                 + " IFNULL((SELECT SUM(rep_documents.numbers_piece_dl) "
@@ -705,7 +718,7 @@ public class reportColBalans extends imakante.com.vcomponents.iInternalFrame imp
                 + (String)formatterG.format(this.jXDatePicker2.getDate())
                 + "' AND rep_documents.type_df = 900"
                 + " AND rep_documents.code_store = rep_comm_nal.code_n_storage AND rep_documents.level_df IN"
-                + levelX
+                + levelD
                 + " GROUP BY rep_documents.code_product "
                 + "),0) AS lipsa"
                 + " FROM  `rep_comm_nal` JOIN n_product_main on rep_comm_nal.id_pm = n_product_main.id_pm "
@@ -778,8 +791,9 @@ public class reportColBalans extends imakante.com.vcomponents.iInternalFrame imp
         hmap.put("pechatot",imakante.com.NewMain.getUserName());
         hmap.put("otdate",(String)formatterG.format(this.jXDatePicker1.getDate()));
         hmap.put("dodate",(String)formatterG.format(this.jXDatePicker2.getDate()));
+        hmap.put("leved",levelD);
         if(levelx==3){
-            hmap.put("levex","0");
+            hmap.put("levex","1,3");
         }
         if(levelx==2){
             hmap.put("levex","1");
