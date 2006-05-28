@@ -2080,7 +2080,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             
             jTable1.setModel(new docLineTableModel());
             ((docLineTableModel)jTable1.getModel()).removeRow(0);
-            
+           // 
             rows  = myParent.getCountriesT().getDocLine(myParent.getID_DocFacade());
             int countRow = rows.size();
             
@@ -2433,7 +2433,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     }
                     
                     
-                    if(columnSelect == 7)  // razfasovka 3
+                    if(columnSelect == 7)  
                     {
                         
                        /* ((docLineTableModel) jTable1.getModel()).enableCellEditable(8);
@@ -2442,7 +2442,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                         
                     }
                     
-                    if(columnSelect == 10)  // procent ostypka
+                    if(columnSelect == 10)  
                     {
                         if( !isFinishRow) {
                             double alldds = Double.parseDouble(jLabelAllDDS.getText());
@@ -2460,7 +2460,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                             System.out.println("База = "+ ddsOsnova + "::" + doubleRoundToString(4,ddsOsnova));
                             calculateTotalPriceForDocument();
                             jTable1.setValueAt(true,jTable1.getSelectedRow(),24);
-                            
+                            myParent.setPriceOneProduct((Double) jTable1.getValueAt(rowSelect,8));
+                            myParent.setProcentProduct((Double) jTable1.getValueAt(rowSelect,9));
                             if(jTable1.getSelectedRow()==(jTable1.getRowCount() - 1)) // pri polovfenie 4e reda e posleden
                             {
                                 int i = 0;
@@ -2624,13 +2625,16 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                                 }
                                                 
                                                 if(oldNumberProduct>0) {
-                                                    
+                                                    double newPrice1 = (Double) jTable1.getValueAt(rowSelect,8);
+                                                    double newPP1 = (Double) jTable1.getValueAt(rowSelect,9);
                                                     myParent.getCountriesT().updateDocLine(id_dl,myParent.getID_DocFacade(),myParent.getID_PC(),
-                                                            storageTO,myParent.getPriceOneProduct(),
-                                                            myParent.getProcentProduct(),newNumberProduct,dds,total,prList);
+                                                            storageTO,newPrice1,
+                                                            newPP1,newNumberProduct,dds,total,prList);
                                                 } else {
-                                                    myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),storageTO,myParent.getPriceOneProduct(),
-                                                            myParent.getProcentProduct(),newNumberProduct,dds,total,prList);
+                                                    double newPrice1 = (Double) jTable1.getValueAt(rowSelect,8);
+                                                    double newPP1 = (Double) jTable1.getValueAt(rowSelect,9);
+                                                    myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),storageTO,newPrice1,
+                                                            newPP1,newNumberProduct,dds,total,prList);
                                                     int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
                                                     jTable1.setValueAt(maxID_DocLine,rowSelect,12);
                                                     
@@ -2644,8 +2648,10 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                             }
                                         } else // ako dokumenta e nov
                                         {
-                                            myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),storageTO,myParent.getPriceOneProduct(),
-                                                    myParent.getProcentProduct(),nn,dds,total,prList);
+                                            double newPrice1 = (Double) jTable1.getValueAt(rowSelect,8);
+                                            double newPP1 = (Double) jTable1.getValueAt(rowSelect,9);
+                                            myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),storageTO,newPrice1,
+                                                    newPP1,nn,dds,total,prList);
                                             
                                             int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
                                             jTable1.setValueAt(maxID_DocLine,rowSelect,12);
@@ -2927,7 +2933,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                         int tmpId_dl = (Integer)jTable1.getValueAt(rowSelect,12);
                         checkForSaveInDB.put(new Integer(tmpId_dl),new Boolean(true));
                         
-                        
+                        str="";
                     }
                 }
                 
@@ -3257,7 +3263,16 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                             {
                                
                                 double newPP =100-((newPrice*100)/(myParent.getPriceOneProduct()*rate));
-                                jTable1.setValueAt(new Double(newPP),rowSelect,9);
+                                if(newPP>0)
+                                {
+                                 jTable1.setValueAt(new Double(newPP),rowSelect,9);
+                                 if(newPP==myParent.getProcentProduct())
+                                  jTable1.setValueAt(new Double(0),rowSelect,9);    
+                                }
+                                else
+                                {
+                                  jTable1.setValueAt(new Double(0),rowSelect,9);   
+                                }
                                 
                                 jTable1.setValueAt(calculateTotalPrice(newPrice,br),jTable1.getSelectedRow(),11);
                             } else jTable1.setValueAt(myParent.getPriceOneProduct()*rate,rowSelect,8);
@@ -3266,17 +3281,27 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     }
                     if(columnSelect == 9) // procent
                     {
-                        if(!isProductIN) {
+                        if(!isProductIN)
+                        {
+                           double newPrice1 = (Double)jTable1.getValueAt(rowSelect,8);
+                           if(newPrice1<=myParent.getPriceOneProduct()*rate)
+                           {
+                           
                             double newPP = (Double)jTable1.getValueAt(rowSelect,columnSelect);
                             int br = (Integer) jTable1.getValueAt(rowSelect,4) ;
-                            if(newPP <= myParent.getProcentProduct()) {
+                            if(newPP <= myParent.getProcentProduct()&& newPP>0)
+                            {
                                 double newPrice =(myParent.getPriceOneProduct()*rate)-(newPP/100)*(myParent.getPriceOneProduct()*rate);
                                 jTable1.setValueAt(new Double(newPrice),rowSelect,8);
                                 
                                 jTable1.setValueAt(calculateTotalPrice(newPrice,br),jTable1.getSelectedRow(),11);
                                 
-                            }else jTable1.setValueAt(myParent.getProcentProduct(),rowSelect,9);
-                        }else jTable1.setValueAt(myParent.getProcentProduct(),rowSelect,9);
+                            }
+                            else jTable1.setValueAt(new Double(0),rowSelect,9);
+                           }
+                           else jTable1.setValueAt(new Double(0),rowSelect,9);
+                        }
+                        else jTable1.setValueAt(myParent.getProcentProduct(),rowSelect,9);
                     }
                     
                     

@@ -23,6 +23,8 @@ public class levelDialog extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
         jPasswordField1 = new javax.swing.JPasswordField();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocationByPlatform(true);
@@ -69,6 +71,13 @@ public class levelDialog extends javax.swing.JDialog {
             }
         });
 
+        jLabel4.setText("\u0421\u041a\u041b\u0410\u0414:");
+
+        jTextField2.setFont(new java.awt.Font("Tahoma", 1, 11));
+        jTextField2.setText("1");
+        jTextField2.setPreferredSize(new java.awt.Dimension(17, 17));
+        jTextField2.setInputVerifier(new imakante.com.InputIntegerVerifier());
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -78,13 +87,16 @@ public class levelDialog extends javax.swing.JDialog {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(jLabel1)
                     .add(jLabel3)
-                    .add(jLabel2))
+                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                        .add(jLabel4)
+                        .add(jLabel2)))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                     .add(jPasswordField1)
                     .add(jComboBox1, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
-                .add(34, 34, 34))
+                    .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 35, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(39, 39, 39))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -101,7 +113,11 @@ public class levelDialog extends javax.swing.JDialog {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel2)
                     .add(jPasswordField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 10, Short.MAX_VALUE)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel4)
+                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -112,6 +128,8 @@ public class levelDialog extends javax.swing.JDialog {
                 outIndex = getKey();
                 sales_main.levelForWork = 3;
                 sales_main.userID_ndtur = getKey();
+               
+                frame.numberStorage=Integer.parseInt(jTextField2.getText());
     }//GEN-LAST:event_formWindowClosing
 
     private void formWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeactivated
@@ -131,11 +149,15 @@ public class levelDialog extends javax.swing.JDialog {
                 sales_main.levelForWork = getLevel();
                 sales_main.userID_ndtur = getKey();
                 outIndex = getKey();
+               
+                frame.numberStorage=Integer.parseInt(jTextField2.getText());
             } else {
                 outLevel = 3;
                 outIndex = getKey();
                 sales_main.levelForWork = 3;
                 sales_main.userID_ndtur = getKey();
+                
+                frame.numberStorage=Integer.parseInt(jTextField2.getText());
             }
             close();
         }
@@ -144,6 +166,8 @@ public class levelDialog extends javax.swing.JDialog {
              outIndex = getKey();
              sales_main.levelForWork = 3;
              sales_main.userID_ndtur = getKey();
+            
+                frame.numberStorage=Integer.parseInt(jTextField2.getText());
             this.dispose();
         }
 //==============================================
@@ -168,8 +192,10 @@ public class levelDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
     private imakante.sales.sales_main frame;
     private java.util.LinkedHashMap hash;

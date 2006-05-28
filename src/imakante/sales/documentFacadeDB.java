@@ -1414,7 +1414,8 @@ private void clearPreservationA(int id_dl, int nal,int level)
     setLevelDocFacade(level);
 }
 
-public java.util.HashMap getDocLine(int id_df) {
+public java.util.HashMap getDocLine(int id_df)
+{
    
      int oldId_DF = getID_DocFacade();
     setID_DocFacade(id_df);
@@ -1476,7 +1477,31 @@ public java.util.HashMap getDocLine(int id_df) {
     setID_DocFacade(oldId_DF);
     return rows;
 }
-
+public java.sql.ResultSet getDocLineRS(int id_df)
+{
+   
+    int oldId_DF = getID_DocFacade();
+    setID_DocFacade(id_df);
+    setComprator(31);
+    java.sql.ResultSet rs12 =null;
+     
+     try
+        {
+            registerParameters();
+            rs12 = getCstm().executeQuery();
+           
+               
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }       
+     
+     
+     
+    setID_DocFacade(oldId_DF);
+    return rs12;
+}
  
 public void updateDocLine(int id_dl,int in_id_df,int in_id_pc,int in_id_storage,double priceone,double climbdown,int numberProduct,double dds,double totalall,int pricelist)
  {
