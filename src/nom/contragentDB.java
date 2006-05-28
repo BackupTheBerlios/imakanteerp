@@ -322,6 +322,9 @@ public class contragentDB extends imakante.com.dbObject {
             registerParameters();
             getCstm().execute();
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
+        
+        flag=oldIn_flag;
+        setId(oldIn_od);
     }
     
     private void setIDProductContragent(java.util.ArrayList id_pm, int in_id_contragent_new, int in_flag) {

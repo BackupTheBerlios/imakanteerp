@@ -235,6 +235,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
             jPanel1.add(jTextFieldAddress, gridBagConstraints);
 
             jTextFieldNM.setToolTipText("F7  \u0437\u0430 \u0438\u0437\u0431\u043e\u0440 \u043d\u0430 \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e");
+            jTextFieldNM.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
             jTextFieldNM.setPreferredSize(new java.awt.Dimension(170, 20));
             jTextFieldNM.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -282,6 +283,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
             jPanel1.add(jTextFieldWeb, gridBagConstraints);
 
             jTextFieldMOL.setToolTipText("F7  \u0437\u0430 \u0438\u0437\u0431\u043e\u0440 \u043d\u0430 \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e");
+            jTextFieldMOL.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
             jTextFieldMOL.setPreferredSize(new java.awt.Dimension(170, 20));
             jTextFieldMOL.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -297,6 +299,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
             jPanel1.add(jTextFieldMOL, gridBagConstraints);
 
             jTextFieldOSO.setToolTipText("F7  \u0437\u0430 \u0438\u0437\u0431\u043e\u0440 \u043d\u0430 \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e");
+            jTextFieldOSO.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(51, 51, 51), null));
             jTextFieldOSO.setPreferredSize(new java.awt.Dimension(170, 20));
             jTextFieldOSO.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
