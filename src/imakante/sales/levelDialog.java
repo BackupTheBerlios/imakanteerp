@@ -108,9 +108,9 @@ public class levelDialog extends javax.swing.JDialog {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
 // TODO add your handling code here:
-         outLevel = 1;
+         outLevel = 3;
                 outIndex = getKey();
-                sales_main.levelForWork = 1;
+                sales_main.levelForWork = 3;
                 sales_main.userID_ndtur = getKey();
     }//GEN-LAST:event_formWindowClosing
 
@@ -132,17 +132,17 @@ public class levelDialog extends javax.swing.JDialog {
                 sales_main.userID_ndtur = getKey();
                 outIndex = getKey();
             } else {
-                outLevel = 1;
+                outLevel = 3;
                 outIndex = getKey();
-                sales_main.levelForWork = 1;
+                sales_main.levelForWork = 3;
                 sales_main.userID_ndtur = getKey();
             }
             close();
         }
         if ( evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) {
-             outLevel = 1;
+             outLevel = 3;
              outIndex = getKey();
-             sales_main.levelForWork = 1;
+             sales_main.levelForWork = 3;
              sales_main.userID_ndtur = getKey();
             this.dispose();
         }
@@ -202,7 +202,7 @@ public class levelDialog extends javax.swing.JDialog {
     }
     
     private int getLevel() {
-        int level = 1;
+        int level = 3;
         try {
             level = Integer.parseInt(this.jTextField1.getText());
         } catch (NumberFormatException ex) { ex.printStackTrace(); }
