@@ -544,7 +544,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
-                <Property name="text" type="java.lang.String" value="IBAN &#x43d;&#x430; &#x414;&#x414;&#x426; &#x421;&#x41c;&#x415;&#x422;&#x41a;&#x410;"/>
+                <Property name="text" type="java.lang.String" value="IBAN &#x43d;&#x430; &#x414;&#x414;&#x421; &#x421;&#x41c;&#x415;&#x422;&#x41a;&#x410;"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField5">

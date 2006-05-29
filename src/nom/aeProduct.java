@@ -165,7 +165,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel1.add(jLabelNM, gridBagConstraints);
 
-        jLabelTel.setText("\u0424\u0430\u043a\u0442\u044a\u0440\u043d\u043e \u0438\u043c\u0435:");
+        jLabelTel.setText("\u0424\u0430\u043a\u0442\u0443\u0440\u043d\u043e \u0438\u043c\u0435:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
