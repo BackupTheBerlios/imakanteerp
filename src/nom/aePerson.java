@@ -26,8 +26,8 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
         jPanel3 = new javax.swing.JPanel();
         jButtonToBegin = new javax.swing.JButton();
         jButtonOneRowM = new javax.swing.JButton();
-        jButtonToEnd = new javax.swing.JButton();
         jButtonOneRowP = new javax.swing.JButton();
+        jButtonToEnd = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -130,22 +130,7 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
 
         jPanel3.add(jButtonOneRowM);
 
-        jButtonToEnd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation Right 2.png")));
-        jButtonToEnd.setToolTipText("\u0415\u0434\u0438\u043d \u0437\u0430\u043f\u0438\u0441 \u043d\u0430\u043f\u0440\u0435\u0434.");
-        jButtonToEnd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonToEndActionPerformed(evt);
-            }
-        });
-        jButtonToEnd.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jButtonToEndKeyPressed(evt);
-            }
-        });
-
-        jPanel3.add(jButtonToEnd);
-
-        jButtonOneRowP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation Last 2.png")));
+        jButtonOneRowP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation Right 2.png")));
         jButtonOneRowP.setToolTipText("\u041f\u043e\u0441\u043b\u0435\u0434\u0435\u043d \u0437\u0430\u043f\u0438\u0441 \u0432 \u0441\u043f\u0438\u0441\u044a\u043a\u0430");
         jButtonOneRowP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,6 +145,21 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
 
         jPanel3.add(jButtonOneRowP);
 
+        jButtonToEnd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation Last 2.png")));
+        jButtonToEnd.setToolTipText("\u0415\u0434\u0438\u043d \u0437\u0430\u043f\u0438\u0441 \u043d\u0430\u043f\u0440\u0435\u0434.");
+        jButtonToEnd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonToEndActionPerformed(evt);
+            }
+        });
+        jButtonToEnd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonToEndKeyPressed(evt);
+            }
+        });
+
+        jPanel3.add(jButtonToEnd);
+
         jLabel2.setText("\u0415\u0413\u041d:");
 
         jLabel4.setText("\u0418\u043c\u0435:");
@@ -171,11 +171,6 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
         jTextArea1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextArea1FocusGained(evt);
-            }
-        });
-        jTextArea1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextArea1KeyPressed(evt);
             }
         });
 
@@ -335,21 +330,17 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-370)/2, (screenSize.height-386)/2, 370, 386);
     }// </editor-fold>//GEN-END:initComponents
-    
-    private void jTextArea1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyPressed
-
-    }//GEN-LAST:event_jTextArea1KeyPressed
-    
+        
     private void jTextField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyPressed
-if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){jButtonSave.grabFocus();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){jButtonSave.grabFocus();}
     }//GEN-LAST:event_jTextField3KeyPressed
     
     private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
-if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){jTextField3.grabFocus();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){jTextField3.grabFocus();}
     }//GEN-LAST:event_jTextField2KeyPressed
     
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){jTextField2.grabFocus();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){jTextField2.grabFocus();}
     }//GEN-LAST:event_jTextField1KeyPressed
     
     private void jTextField4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyPressed
@@ -361,7 +352,7 @@ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){jTextField2.grabFocus(
     }//GEN-LAST:event_jComboGKeyPressed
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.cFields();
+        EGNcorrectness();
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -527,13 +518,6 @@ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){jTextField2.grabFocus(
     
     //---------------START My Methods
     
-    //Proverka na poletata
-    private boolean cFields() { // V sluchaia samo na edno pole dali e integer
-        boolean check  = true;     // v bazata
-        check = imakante.com.EGNChecker.ValidEGN(jTextField1.getText());
-        return check;
-    }
-    
     //SAVE
     private void saveRecord() {
         oldIDG = myParent.getIDG();
@@ -597,16 +581,11 @@ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){jTextField2.grabFocus(
         namesG = myParent.getInternalObject().getPersonGroups();
         for(int i=0;i<namesG.length;i++) {
             jComboG.addItem(new String(namesG[i]));
-            
         }
-        
         if(selectComboBoxItem != 0) {
-            
             selectComboBoxItem = getNewComboBoxIndex(selectComboBoxItem);
-            
             jComboG.setSelectedIndex(selectComboBoxItem);
         }
-        
     }
     
     private int getNewComboBoxIndex(int oldindex) {
@@ -619,7 +598,20 @@ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){jTextField2.grabFocus(
         }
         return newindex;
     }
+    
     private int getMaxCod(){
         return myParent.getInternalObject().getMaxCod() + 1;
+    }
+
+    private void EGNcorrectness() {
+        if (imakante.com.EGNChecker.ValidEGN(jTextField1.getText())) {
+            javax.swing.JOptionPane.showMessageDialog(null, 
+                    "\u0412\u044A\u0432\u0435\u0434\u0435\u043D\u043E\u0442\u043E \u0415\u0413\u041D \u0435 \u043A\u043E\u0440\u0435\u043A\u0442\u043D\u043E.", 
+                    "\u0423\u0441\u043F\u0435\u0448\u043D\u0430 \u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0430!", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(null, 
+                    "\u0412\u044A\u0432\u0435\u0434\u0435\u043D\u043E\u0442\u043E \u0415\u0413\u041D \u0435 \u041D\u0415\u0432\u0430\u043B\u0438\u0434\u043D\u043E!!!", 
+                    "\u0413\u0420\u0415\u0428\u041A\u0410!", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
     }
 }// end class
