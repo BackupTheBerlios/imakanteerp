@@ -13,13 +13,9 @@ public class InputCharacterVerifier extends InputVerifier
     }
     public boolean verify(JComponent input) 
     {
-      byte UpRange = 90;
-      byte DownRange = 65;
-      byte UpRange1 = 122;
-      byte DownRange1 = 97;
-      byte UpRangeCyr = -1;
-     
-      byte DownRangeCyr1 = -64;
+      byte UpRange = 57;
+      byte DownRange = 48;
+   
       boolean checkSimbol=false;
       JTextField tf = (JTextField) input;
       int lenth = tf.getText().length();
@@ -30,7 +26,7 @@ public class InputCharacterVerifier extends InputVerifier
       {
       for(int i=0;i < lenth; i++)
          {
-           if(( ch[i]<= UpRange||ch[i]<= UpRange1 || ch[i]<= UpRangeCyr)&&(ch[i] >=DownRange||ch[i] >=DownRange1||ch[i] >=DownRangeCyr1))
+           if(( ch[i]> UpRange)||(ch[i] <DownRange))
              {
               checkSimbol = true;
              }
