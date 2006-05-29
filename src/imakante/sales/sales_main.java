@@ -52,6 +52,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         this.setLocation(0,0);
         imakante.com.NewMain.setB_SL(true);
         loadRightsArea();
+        
     }
     
     public void run(){
