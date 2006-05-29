@@ -36,6 +36,7 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
     public void insertRow(int in_id_um) {
         setComprator(1);
         this.setUserMaster(in_id_um);
+        this.setDoctypeNum(999999);
         this.setRights(3);
         try {
             registerParameters();
@@ -54,15 +55,15 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
             getCstm().execute();
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
-//
-//    public void deleteRow(int in_id) {
-//        comprator = 3;
-//        id = in_id;
-//        try{
-//            registerParameters();
-//            getCstm().execute();
-//        }catch(java.sql.SQLException sqle){ sqle.printStackTrace(); }
-//    }
+
+    public void deleteRow(int in_id) {
+        setComprator(3);
+        this.setId(in_id);
+        try{
+            registerParameters();
+            getCstm().execute();
+        }catch(java.sql.SQLException sqle){ sqle.printStackTrace(); }
+    }
     
 //    public java.sql.ResultSet getRow(int in_id) {
 //        comprator = 4;
