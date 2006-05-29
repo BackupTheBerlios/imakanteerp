@@ -22,7 +22,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
         int x = (((dim.width)-(this.getSize().width))/2);
         int y = (((dim.height)-(this.getSize().height))/2);
         this.setLocation(x, y);
-      //  showNameOfMOL_OSO setMOL = new showNameOfMOL_OSO(myframe,true,myParent.getContragentDB().getTablesWithNames(""),myParent.getContragentDB().getConn(),true); 
+        //  showNameOfMOL_OSO setMOL = new showNameOfMOL_OSO(myframe,true,myParent.getContragentDB().getTablesWithNames(""),myParent.getContragentDB().getConn(),true);
         repaintComp();
     }
     
@@ -196,12 +196,24 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
                 }
             });*/
 
+            jTextFieldCod.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyPressed(java.awt.event.KeyEvent evt) {
+                    jTextFieldCodKeyPressed(evt);
+                }
+            });
+
             gridBagConstraints = new java.awt.GridBagConstraints();
             gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
             gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 5);
             jPanel1.add(jTextFieldCod, gridBagConstraints);
 
             jTextFieldName.setPreferredSize(new java.awt.Dimension(170, 20));
+            jTextFieldName.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyPressed(java.awt.event.KeyEvent evt) {
+                    jTextFieldNameKeyPressed(evt);
+                }
+            });
+
             gridBagConstraints = new java.awt.GridBagConstraints();
             gridBagConstraints.gridx = 1;
             gridBagConstraints.gridy = 1;
@@ -210,6 +222,12 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
             jPanel1.add(jTextFieldName, gridBagConstraints);
 
             jTextFieldDanNomer.setPreferredSize(new java.awt.Dimension(80, 20));
+            jTextFieldDanNomer.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyPressed(java.awt.event.KeyEvent evt) {
+                    jTextFieldDanNomerKeyPressed(evt);
+                }
+            });
+
             gridBagConstraints = new java.awt.GridBagConstraints();
             gridBagConstraints.gridx = 1;
             gridBagConstraints.gridy = 2;
@@ -219,6 +237,12 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
 
             jTextFieldBulstat.setMinimumSize(new java.awt.Dimension(150, 20));
             jTextFieldBulstat.setPreferredSize(new java.awt.Dimension(80, 20));
+            jTextFieldBulstat.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyPressed(java.awt.event.KeyEvent evt) {
+                    jTextFieldBulstatKeyPressed(evt);
+                }
+            });
+
             gridBagConstraints = new java.awt.GridBagConstraints();
             gridBagConstraints.gridx = 3;
             gridBagConstraints.gridy = 2;
@@ -227,6 +251,12 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
             jPanel1.add(jTextFieldBulstat, gridBagConstraints);
 
             jTextFieldAddress.setPreferredSize(new java.awt.Dimension(170, 20));
+            jTextFieldAddress.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyPressed(java.awt.event.KeyEvent evt) {
+                    jTextFieldAddressKeyPressed(evt);
+                }
+            });
+
             gridBagConstraints = new java.awt.GridBagConstraints();
             gridBagConstraints.gridx = 1;
             gridBagConstraints.gridy = 3;
@@ -251,6 +281,12 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
             jPanel1.add(jTextFieldNM, gridBagConstraints);
 
             jTextFieldTel.setPreferredSize(new java.awt.Dimension(170, 20));
+            jTextFieldTel.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyPressed(java.awt.event.KeyEvent evt) {
+                    jTextFieldTelKeyPressed(evt);
+                }
+            });
+
             gridBagConstraints = new java.awt.GridBagConstraints();
             gridBagConstraints.gridx = 1;
             gridBagConstraints.gridy = 4;
@@ -259,6 +295,12 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
             jPanel1.add(jTextFieldTel, gridBagConstraints);
 
             jTextFieldFax.setPreferredSize(new java.awt.Dimension(170, 20));
+            jTextFieldFax.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyPressed(java.awt.event.KeyEvent evt) {
+                    jTextFieldFaxKeyPressed(evt);
+                }
+            });
+
             gridBagConstraints = new java.awt.GridBagConstraints();
             gridBagConstraints.gridx = 3;
             gridBagConstraints.gridy = 4;
@@ -267,6 +309,12 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
             jPanel1.add(jTextFieldFax, gridBagConstraints);
 
             jTextFieldEmail.setPreferredSize(new java.awt.Dimension(170, 20));
+            jTextFieldEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyPressed(java.awt.event.KeyEvent evt) {
+                    jTextFieldEmailKeyPressed(evt);
+                }
+            });
+
             gridBagConstraints = new java.awt.GridBagConstraints();
             gridBagConstraints.gridx = 1;
             gridBagConstraints.gridy = 5;
@@ -275,6 +323,12 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
             jPanel1.add(jTextFieldEmail, gridBagConstraints);
 
             jTextFieldWeb.setPreferredSize(new java.awt.Dimension(170, 20));
+            jTextFieldWeb.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyPressed(java.awt.event.KeyEvent evt) {
+                    jTextFieldWebKeyPressed(evt);
+                }
+            });
+
             gridBagConstraints = new java.awt.GridBagConstraints();
             gridBagConstraints.gridx = 3;
             gridBagConstraints.gridy = 5;
@@ -384,62 +438,114 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
 
             pack();
         }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void jTextFieldWebKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldWebKeyPressed
+        if(java.awt.event.KeyEvent.VK_ENTER== evt.getKeyCode()){
+            jTextFieldWeb.transferFocus();
+        }
+    }//GEN-LAST:event_jTextFieldWebKeyPressed
+    
+    private void jTextFieldEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldEmailKeyPressed
+        if(java.awt.event.KeyEvent.VK_ENTER== evt.getKeyCode()){
+            jTextFieldEmail.transferFocus();
+        }
+    }//GEN-LAST:event_jTextFieldEmailKeyPressed
+    
+    private void jTextFieldFaxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFaxKeyPressed
+        if(java.awt.event.KeyEvent.VK_ENTER== evt.getKeyCode()){
+            jTextFieldFax.transferFocus();
+        }
+    }//GEN-LAST:event_jTextFieldFaxKeyPressed
+    
+    private void jTextFieldTelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTelKeyPressed
+        if(java.awt.event.KeyEvent.VK_ENTER== evt.getKeyCode()){
+            jTextFieldTel.transferFocus();
+        }
+    }//GEN-LAST:event_jTextFieldTelKeyPressed
+    
+    private void jTextFieldAddressKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldAddressKeyPressed
+        if(java.awt.event.KeyEvent.VK_ENTER== evt.getKeyCode()){
+            jTextFieldAddress.transferFocus();
+        }
+    }//GEN-LAST:event_jTextFieldAddressKeyPressed
+    
+    private void jTextFieldBulstatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBulstatKeyPressed
+        if(java.awt.event.KeyEvent.VK_ENTER== evt.getKeyCode()){
+            jTextFieldBulstat.transferFocus();
+        }
+    }//GEN-LAST:event_jTextFieldBulstatKeyPressed
+    
+    private void jTextFieldDanNomerKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDanNomerKeyPressed
+        if(java.awt.event.KeyEvent.VK_ENTER== evt.getKeyCode()){
+            jTextFieldDanNomer.transferFocus();
+        }
+    }//GEN-LAST:event_jTextFieldDanNomerKeyPressed
+    
+    private void jTextFieldNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNameKeyPressed
+        if(java.awt.event.KeyEvent.VK_ENTER== evt.getKeyCode()){
+            jTextFieldName.transferFocus();
+        }
+    }//GEN-LAST:event_jTextFieldNameKeyPressed
+    
+    private void jTextFieldCodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCodKeyPressed
+        if(java.awt.event.KeyEvent.VK_ENTER== evt.getKeyCode()){
+            jTextFieldCod.transferFocus();
+        }
+    }//GEN-LAST:event_jTextFieldCodKeyPressed
+    
     private void jButtonToEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToEndActionPerformed
 // TODO add your handling code here:
-         myParent.mTableEnd();
-         jButtonToEnd.setEnabled(false);
-         jButtonOneRowP.setEnabled(false);
-         jButtonToEnd.repaint();
-         jButtonOneRowP.repaint();
+        myParent.mTableEnd();
+        jButtonToEnd.setEnabled(false);
+        jButtonOneRowP.setEnabled(false);
+        jButtonToEnd.repaint();
+        jButtonOneRowP.repaint();
         
-         
+        
         jButtonToBegin.setEnabled(true);
         jButtonOneRowM.setEnabled(true);
         jButtonToBegin.repaint();
         jButtonOneRowM.repaint();
-      
-       
+        
+        
         repaintComp();
     }//GEN-LAST:event_jButtonToEndActionPerformed
-
+    
     private void jButtonOneRowPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowPActionPerformed
 // TODO add your handling code here:
-         myParent.mOneRowPlus();
-        if(myParent.isAtEnd())
-        {
-         jButtonToEnd.setEnabled(false);
-         jButtonOneRowP.setEnabled(false);
-         jButtonToEnd.repaint();
-         jButtonOneRowP.repaint();
-           
+        myParent.mOneRowPlus();
+        if(myParent.isAtEnd()) {
+            jButtonToEnd.setEnabled(false);
+            jButtonOneRowP.setEnabled(false);
+            jButtonToEnd.repaint();
+            jButtonOneRowP.repaint();
+            
         }
-         
+        
         jButtonToBegin.setEnabled(true);
         jButtonOneRowM.setEnabled(true);
         jButtonToBegin.repaint();
         jButtonOneRowM.repaint();
-        repaintComp();  
+        repaintComp();
     }//GEN-LAST:event_jButtonOneRowPActionPerformed
-
+    
     private void jButtonOneRowMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowMActionPerformed
 // TODO add your handling code here:
-         myParent.mOneRowMinus();
-        if(myParent.isAtBegining())
-        {
-           jButtonToBegin.setEnabled(false);
-        jButtonOneRowM.setEnabled(false);
-        jButtonToBegin.repaint();
-        jButtonOneRowM.repaint();
+        myParent.mOneRowMinus();
+        if(myParent.isAtBegining()) {
+            jButtonToBegin.setEnabled(false);
+            jButtonOneRowM.setEnabled(false);
+            jButtonToBegin.repaint();
+            jButtonOneRowM.repaint();
             
         }
         jButtonToEnd.setEnabled(true);
-         jButtonOneRowP.setEnabled(true);
-         jButtonToEnd.repaint();
-         jButtonOneRowP.repaint();
+        jButtonOneRowP.setEnabled(true);
+        jButtonToEnd.repaint();
+        jButtonOneRowP.repaint();
         repaintComp();
     }//GEN-LAST:event_jButtonOneRowMActionPerformed
-
+    
     private void jButtonToBeginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToBeginActionPerformed
 // TODO add your handling code here:
         myParent.mTableBegining();
@@ -450,90 +556,79 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
         jButtonOneRowM.repaint();
         
         jButtonToEnd.setEnabled(true);
-         jButtonOneRowP.setEnabled(true);
-         jButtonToEnd.repaint();
-         jButtonOneRowP.repaint();
-       
+        jButtonOneRowP.setEnabled(true);
+        jButtonToEnd.repaint();
+        jButtonOneRowP.repaint();
+        
         repaintComp();
     }//GEN-LAST:event_jButtonToBeginActionPerformed
-
+    
     private void jTextFieldOSOKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldOSOKeyPressed
-// TODO add your handling code here:
-         if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode())
-       {
-        if(jTextFieldOSO.getText()=="")
-        {
-        java.sql.ResultSet r1 = myParent.getContragentDB().getTablesWithNames("");
-        java.sql.Connection c1 = myParent.getContragentDB().getConn();
-        showNameOfMOL_OSO setOSO = new showNameOfMOL_OSO(myframe,true,r1,c1,false);
+      
+        if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()) {
+            if(jTextFieldOSO.getText()=="") {
+                java.sql.ResultSet r1 = myParent.getContragentDB().getTablesWithNames("");
+                java.sql.Connection c1 = myParent.getContragentDB().getConn();
+                showNameOfMOL_OSO setOSO = new showNameOfMOL_OSO(myframe,true,r1,c1,false);
+            } else {
+                java.sql.ResultSet r1 = myParent.getContragentDB().getTablesWithNames(jTextFieldOSO.getText());
+                java.sql.Connection c1 = myParent.getContragentDB().getConn();
+                showNameOfMOL_OSO setOSO = new showNameOfMOL_OSO(myframe,true,r1,c1,false);
+            }
+            // repaintComp();
+            if (myParent.getID_OSO()!=-1) {
+                String namOSO = myParent.getContragentDB().getNameWithID(myParent.getID_OSO(),false);
+                jTextFieldOSO.setText(namOSO);
+            }
         }
-        else
-        {
-        java.sql.ResultSet r1 = myParent.getContragentDB().getTablesWithNames(jTextFieldOSO.getText());
-        java.sql.Connection c1 = myParent.getContragentDB().getConn();
-         showNameOfMOL_OSO setOSO = new showNameOfMOL_OSO(myframe,true,r1,c1,false);
+         if(java.awt.event.KeyEvent.VK_ENTER== evt.getKeyCode()){
+            jButton1.grabFocus();
         }
-       // repaintComp();
-        if (myParent.getID_OSO()!=-1)
-           {
-           String namOSO = myParent.getContragentDB().getNameWithID(myParent.getID_OSO(),false);
-           jTextFieldOSO.setText(namOSO);
-           }
-       }  
     }//GEN-LAST:event_jTextFieldOSOKeyPressed
-
+    
     private void jTextFieldMOLKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldMOLKeyPressed
-// TODO add your handling code here:
-       if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode())
-       {
-        if(jTextFieldMOL.getText()==null)
-        {
-        java.sql.ResultSet r1 = myParent.getContragentDB().getTablesWithNames(null);
-        java.sql.Connection c1 = myParent.getContragentDB().getConn();
-        showNameOfMOL_OSO setMOL = new showNameOfMOL_OSO(myframe,true,r1,c1,true);
+       
+        if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()) {
+            if(jTextFieldMOL.getText()==null) {
+                java.sql.ResultSet r1 = myParent.getContragentDB().getTablesWithNames(null);
+                java.sql.Connection c1 = myParent.getContragentDB().getConn();
+                showNameOfMOL_OSO setMOL = new showNameOfMOL_OSO(myframe,true,r1,c1,true);
+            } else {
+                java.sql.ResultSet r1 = myParent.getContragentDB().getTablesWithNames(jTextFieldMOL.getText());
+                java.sql.Connection c1 = myParent.getContragentDB().getConn();
+                showNameOfMOL_OSO setMOL = new showNameOfMOL_OSO(myframe,true,r1,c1,true);
+            }
+            // repaintComp();
+            if(myParent.getID_MOL()!=-1) {
+                String namMOL = myParent.getContragentDB().getNameWithID(myParent.getID_MOL(),true);
+                jTextFieldMOL.setText(namMOL);
+            }
+            
         }
-        else
-        {
-        java.sql.ResultSet r1 = myParent.getContragentDB().getTablesWithNames(jTextFieldMOL.getText());
-        java.sql.Connection c1 = myParent.getContragentDB().getConn();
-         showNameOfMOL_OSO setMOL = new showNameOfMOL_OSO(myframe,true,r1,c1,true); 
+         if(java.awt.event.KeyEvent.VK_ENTER== evt.getKeyCode()){
+            jTextFieldMOL.transferFocus();
         }
-       // repaintComp();
-         if(myParent.getID_MOL()!=-1) 
-           {
-           String namMOL = myParent.getContragentDB().getNameWithID(myParent.getID_MOL(),true);
-           jTextFieldMOL.setText(namMOL);
-           }
-        
-       }  
-        
     }//GEN-LAST:event_jTextFieldMOLKeyPressed
-
+    
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
-
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
         if(isNew) // zapisa NE sy6testvuva v bazata!!
         {
-            if((myParent.getID_NM()==-1) | (myParent.getID_MOL()==-1) | (myParent.getID_OSO()==-1))
-            {
+            if((myParent.getID_NM()==-1) | (myParent.getID_MOL()==-1) | (myParent.getID_OSO()==-1)) {
                 // syob6tenie da se vuvede naseleneto mqsto, MOL i OSO;
-               JOptionPane.showMessageDialog(this, "\u041c\u043e\u043b\u044f \u0432\u044a\u0432\u0435\u0434\u0435\u0442\u0435 \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e, \u041c\u041e\u041b \u0438 \u041e\u0421\u041e");
-               
-            }
-            else
-            {
-               try
-               {
-                myParent.setCod(Integer.parseInt(jTextFieldCod.getText()));
-               }
-               catch(Exception e)
-               {
-                   e.printStackTrace();
-               }
+                JOptionPane.showMessageDialog(this, "\u041c\u043e\u043b\u044f \u0432\u044a\u0432\u0435\u0434\u0435\u0442\u0435 \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e, \u041c\u041e\u041b \u0438 \u041e\u0421\u041e");
+                
+            } else {
+                try {
+                    myParent.setCod(Integer.parseInt(jTextFieldCod.getText()));
+                } catch(Exception e) {
+                    e.printStackTrace();
+                }
                 myParent.setName(jTextFieldName.getText());
                 myParent.setBulstat(jTextFieldBulstat.getText());
                 myParent.setDanNomer(jTextFieldDanNomer.getText());
@@ -543,69 +638,64 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
                 myParent.setEmail(jTextFieldEmail.getText());
                 myParent.setWeb(jTextFieldWeb.getText());
                 myParent.getContragentDB().insertRow(myParent.getCod(),myParent.getName(),
-                                                  myParent.getBulstat(),myParent.getDanNomer(),
-                                                  myParent.getAddress(),myParent.getID_NM(),
-                                                  myParent.getTel(),myParent.getFax(),myParent.getEmail(),
-                                                  myParent.getWeb(),myParent.getID_MOL(),myParent.getID_OSO());
-               
-            }
-        }
-        else  // zapisa  sy6testvuva v bazata!!
-        {
-                try
-                  {
-                    myParent.setCod(Integer.parseInt(jTextFieldCod.getText()));
-                  }
-                catch(Exception e)
-                  {
-                    e.printStackTrace();
-                  }
-                myParent.setName(jTextFieldName.getText());
-                myParent.setBulstat(jTextFieldBulstat.getText());
-                myParent.setDanNomer(jTextFieldDanNomer.getText());
-                myParent.setAddress(jTextFieldAddress.getText());
-                myParent.setTel(jTextFieldTel.getText());
-                myParent.setFax(jTextFieldFax.getText());
-                myParent.setEmail(jTextFieldEmail.getText());
-                myParent.setWeb(jTextFieldWeb.getText());
+                        myParent.getBulstat(),myParent.getDanNomer(),
+                        myParent.getAddress(),myParent.getID_NM(),
+                        myParent.getTel(),myParent.getFax(),myParent.getEmail(),
+                        myParent.getWeb(),myParent.getID_MOL(),myParent.getID_OSO());
                 
-                myParent.getContragentDB().updateRow(myParent.getId(),myParent.getCod(),myParent.getName(),
-                                                  myParent.getBulstat(),myParent.getDanNomer(),
-                                                  myParent.getAddress(),myParent.getID_NM(),
-                                                  myParent.getTel(),myParent.getFax(),myParent.getEmail(),
-                                                  myParent.getWeb(),myParent.getID_MOL(),myParent.getID_OSO());
-                int newIdContragent  = myParent.getContragentDB().getMaxId();
-                myParent.getContragentDB().updateIDProductContragent(myParent.getId(),newIdContragent,1);
+            }
+        } else  // zapisa  sy6testvuva v bazata!!
+        {
+            try {
+                myParent.setCod(Integer.parseInt(jTextFieldCod.getText()));
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+            myParent.setName(jTextFieldName.getText());
+            myParent.setBulstat(jTextFieldBulstat.getText());
+            myParent.setDanNomer(jTextFieldDanNomer.getText());
+            myParent.setAddress(jTextFieldAddress.getText());
+            myParent.setTel(jTextFieldTel.getText());
+            myParent.setFax(jTextFieldFax.getText());
+            myParent.setEmail(jTextFieldEmail.getText());
+            myParent.setWeb(jTextFieldWeb.getText());
+            
+            myParent.getContragentDB().updateRow(myParent.getId(),myParent.getCod(),myParent.getName(),
+                    myParent.getBulstat(),myParent.getDanNomer(),
+                    myParent.getAddress(),myParent.getID_NM(),
+                    myParent.getTel(),myParent.getFax(),myParent.getEmail(),
+                    myParent.getWeb(),myParent.getID_MOL(),myParent.getID_OSO());
+            int newIdContragent  = myParent.getContragentDB().getMaxId();
+            myParent.getContragentDB().updateIDProductContragent(myParent.getId(),newIdContragent,1);
             
         }
-    //  jButton3.doClick(); // zatvarq se aeContragen
-      myParent.refreshTable();
+        //  jButton3.doClick(); // zatvarq se aeContragen
+        myParent.refreshTable();
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
     private void jTextFieldNMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNMKeyPressed
 // TODO add your handling code here:
- // pri natiskane na F7 6te se izvikva aContragent, za izbor na naseleno mqsto ot bazata danni
-       if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode())
-       {
-        if(jTextFieldNM.getText()==null)
-        {
-        java.sql.ResultSet r1 = myParent.getContragentDB().getTablesAddressName(null);
-        java.sql.Connection c1 = myParent.getContragentDB().getConn();
-        showAddressContragent setNM = new showAddressContragent(myframe,true,r1,c1);
+        // pri natiskane na F7 6te se izvikva aContragent, za izbor na naseleno mqsto ot bazata danni
+       
+        if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()) {
+            if(jTextFieldNM.getText()==null) {
+                java.sql.ResultSet r1 = myParent.getContragentDB().getTablesAddressName(null);
+                java.sql.Connection c1 = myParent.getContragentDB().getConn();
+                showAddressContragent setNM = new showAddressContragent(myframe,true,r1,c1);
+            } else {
+                java.sql.ResultSet r1 = myParent.getContragentDB().getTablesAddressName(jTextFieldNM.getText());
+                java.sql.Connection c1 = myParent.getContragentDB().getConn();
+                showAddressContragent setNM = new showAddressContragent(myframe,true,r1,c1);
+            }
+            // repaintComp();
+            if((myParent.getID_NM()!=-1)) {
+                String adres = myParent.getContragentDB().getAddressName(myParent.getID_NM());
+                jTextFieldNM.setText(adres);
+            }
         }
-        else
-        {
-        java.sql.ResultSet r1 = myParent.getContragentDB().getTablesAddressName(jTextFieldNM.getText());
-        java.sql.Connection c1 = myParent.getContragentDB().getConn();
-        showAddressContragent setNM = new showAddressContragent(myframe,true,r1,c1); 
+          if(java.awt.event.KeyEvent.VK_ENTER== evt.getKeyCode()){
+            jTextFieldNM.transferFocus();
         }
-       // repaintComp();
-        if((myParent.getID_NM()!=-1))
-           {
-           String adres = myParent.getContragentDB().getAddressName(myParent.getID_NM());
-           jTextFieldNM.setText(adres);
-           }
-       }
     }//GEN-LAST:event_jTextFieldNMKeyPressed
     
     /**
@@ -654,91 +744,78 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
     private javax.swing.JTextField jTextFieldTel;
     private javax.swing.JTextField jTextFieldWeb;
     // End of variables declaration//GEN-END:variables
- //--------------- My Variables
-   private FrmContragent myParent;
-   private imakante.com.vcomponents.iInternalFrame myframe;
-   boolean isNew; // za opredelqne dali zapisa e 4isto nov, t.e dali ne sy6testva b bazata
- //---------------END My Variables
-//---------------START MyFunction 
- private void getNavigatiionState() //OK
+    //--------------- My Variables
+    private FrmContragent myParent;
+    private imakante.com.vcomponents.iInternalFrame myframe;
+    boolean isNew; // za opredelqne dali zapisa e 4isto nov, t.e dali ne sy6testva b bazata
+    //---------------END My Variables
+//---------------START MyFunction
+    private void getNavigatiionState() //OK
     {
-    if(myParent.isAtBegining())
-    {
-        jButtonToBegin.setEnabled(false);
-        jButtonOneRowM.setEnabled(false);
-        jButtonToBegin.repaint();
-        jButtonOneRowM.repaint();
+        if(myParent.isAtBegining()) {
+            jButtonToBegin.setEnabled(false);
+            jButtonOneRowM.setEnabled(false);
+            jButtonToBegin.repaint();
+            jButtonOneRowM.repaint();
+        }
+        if(myParent.isAtEnd()) {
+            jButtonToEnd.setEnabled(false);
+            jButtonOneRowP.setEnabled(false);
+            jButtonToEnd.repaint();
+            jButtonOneRowP.repaint();
+        }
     }
-    if(myParent.isAtEnd())
+    private void repaintComp() // ok
     {
-        jButtonToEnd.setEnabled(false);
-        jButtonOneRowP.setEnabled(false);
-         jButtonToEnd.repaint();
-        jButtonOneRowP.repaint();
+        if(!isNew) {
+            jTextFieldAddress.setText(myParent.getAddress());
+            jTextFieldBulstat.setText(myParent.getBulstat());
+            
+            jTextFieldCod.setText(String.valueOf(myParent.getCod()));
+            jTextFieldDanNomer.setText(myParent.getDanNomer());
+            jTextFieldEmail.setText(myParent.getEmail());
+            jTextFieldFax.setText(myParent.getFax());
+            jTextFieldName.setText(myParent.getName());
+            jTextFieldTel.setText(myParent.getTel());
+            jTextFieldWeb.setText(myParent.getWeb());
+        }
+        if(isNew) {
+            int maxcode =  myParent.getContragentDB().getMaxCod();
+            if(maxcode!=-1) {
+                jTextFieldCod.setText(String.valueOf(maxcode+1));
+            }
+        }
+        
+        if((myParent.getID_NM()!=-1)) {
+            String adres = myParent.getContragentDB().getAddressName(myParent.getID_NM());
+            jTextFieldNM.setText(adres);
+        }
+        if(myParent.getID_MOL()!=-1) {
+            String namMOL = myParent.getContragentDB().getNameWithID(myParent.getID_MOL(),true);
+            jTextFieldMOL.setText(namMOL);
+        }
+        if (myParent.getID_OSO()!=-1) {
+            String namOSO = myParent.getContragentDB().getNameWithID(myParent.getID_OSO(),false);
+            jTextFieldOSO.setText(namOSO);
+        }
     }
-}
- private void repaintComp() // ok
-    {
-   if(!isNew)
-   {
-   jTextFieldAddress.setText(myParent.getAddress());
-   jTextFieldBulstat.setText(myParent.getBulstat());
-  
-   jTextFieldCod.setText(String.valueOf(myParent.getCod()));
-   jTextFieldDanNomer.setText(myParent.getDanNomer());
-   jTextFieldEmail.setText(myParent.getEmail());
-   jTextFieldFax.setText(myParent.getFax());
-   jTextFieldName.setText(myParent.getName());
-   jTextFieldTel.setText(myParent.getTel());
-   jTextFieldWeb.setText(myParent.getWeb());
-   }
-  if(isNew)
-  {
-   int maxcode =  myParent.getContragentDB().getMaxCod();
-   if(maxcode!=-1)
-    {
-      jTextFieldCod.setText(String.valueOf(maxcode+1));
-    }
-  }  
-   
-   if((myParent.getID_NM()!=-1))
-   {
-   String adres = myParent.getContragentDB().getAddressName(myParent.getID_NM());
-   jTextFieldNM.setText(adres);
-   }
-   if(myParent.getID_MOL()!=-1) 
-   {
-   String namMOL = myParent.getContragentDB().getNameWithID(myParent.getID_MOL(),true);
-   jTextFieldMOL.setText(namMOL);
-   }
-   if (myParent.getID_OSO()!=-1)
-   {
-   String namOSO = myParent.getContragentDB().getNameWithID(myParent.getID_OSO(),false);
-   jTextFieldOSO.setText(namOSO);
-   }
-} 
- 
+    
 }// end class
 
-class InputIntegerVerifier extends InputVerifier
-{
-         public boolean verify(JComponent input)
-         {
-               byte UpRange = 57;
-               byte DownRange = 48;
-               boolean checkSimbol=false;
-               JTextField tf = (JTextField) input;
-               int lenth = tf.getText().length();
-               byte ch[] = new byte[lenth];
-               tf.getText().getBytes();
-               for(int i=0;i < lenth; i++)
-               {
-                   if((ch[i] <= UpRange)&&(ch[i] >=DownRange))
-                   {
-                       checkSimbol = true;
-                   }
-                   else checkSimbol= false;
-               }
-               return checkSimbol;
-         }
+class InputIntegerVerifier extends InputVerifier {
+    public boolean verify(JComponent input) {
+        byte UpRange = 57;
+        byte DownRange = 48;
+        boolean checkSimbol=false;
+        JTextField tf = (JTextField) input;
+        int lenth = tf.getText().length();
+        byte ch[] = new byte[lenth];
+        tf.getText().getBytes();
+        for(int i=0;i < lenth; i++) {
+            if((ch[i] <= UpRange)&&(ch[i] >=DownRange)) {
+                checkSimbol = true;
+            } else checkSimbol= false;
+        }
+        return checkSimbol;
+    }
 }// end calss InputIntegerVerifier*/
