@@ -49,6 +49,7 @@ public class dlgLogin extends javax.swing.JDialog {
                 sKey = "Name"+String.valueOf(i);
                 s = prop.getProperty(sKey);
                 jLabelCombo.addItem(s);
+                pathRep = "pathrep" + String.valueOf(i); // map key to rep dir 
             }
         } catch (FileNotFoundException e){
             System.err.println("FileNotFoundException: " + e.getMessage());
@@ -295,6 +296,7 @@ public class dlgLogin extends javax.swing.JDialog {
                 DBDriver = prop.getProperty(sKey);
                 sKey = "URL"+String.valueOf(nIndex+1);
                 DBSource = prop.getProperty(sKey);
+                path = prop.getProperty(pathRep);
                 DBUserName = jUserTxtField.getText();
                 DBPassword = new String(jPassField.getPassword());
                 // Login
@@ -305,6 +307,7 @@ public class dlgLogin extends javax.swing.JDialog {
                 NewMain.setUser(DBUserName);
                 NewMain.setPassword(DBPassword);
                 stm = dbConn.createStatement();
+                NewMain.setPathrep(path); // SET static literal in NewMain for path to report directory 
                 rs = stm.executeQuery("SELECT id_um, name_um FROM user_master WHERE acc_user = '"+ DBUserName+"'");
                 while(rs.next()){
                     userId = rs.getInt("id_um");
@@ -328,6 +331,7 @@ public class dlgLogin extends javax.swing.JDialog {
             this.jUserTxtField.requestFocus();
         }
         // Close dialog
+       
         this.dispose();
     }//GEN-LAST:event_jLoginBtnActionPerformed
     
@@ -349,4 +353,6 @@ public class dlgLogin extends javax.swing.JDialog {
     private javax.swing.JTextField jUserTxtField;
     // End of variables declaration//GEN-END:variables
     private  java.sql.Statement stm;
+    private String pathRep=""; // key for report dir
+    private String path=""; // path for report dir
 }

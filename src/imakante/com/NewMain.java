@@ -351,6 +351,7 @@ public class NewMain extends javax.swing.JFrame {
     private static String OS_name;
     private static String user_home;
     private static String user_dir;
+    private static String pathrep;
     
     //USER RIGHTS
     private static imakante.com.userRights currentRight;
@@ -508,6 +509,14 @@ public class NewMain extends javax.swing.JFrame {
 
     public static void setParamFirm(imakante.com.paramFirm aParamFirm) {
         ParamFirm = aParamFirm;
+    }
+
+    public static String getPathrep() {
+        return pathrep;
+    }
+
+    public static void setPathrep(String aPathrep) {
+        pathrep = aPathrep;
     }
     
 }// end class
