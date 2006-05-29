@@ -2,6 +2,7 @@ package imakante.com;
 
 import imakante.sales.sales_main;
 import imakante.salary.salary_main;
+import java.sql.SQLException;
 
 public class NewMain extends javax.swing.JFrame {
     
@@ -155,6 +156,17 @@ public class NewMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jBLSActionPerformed
     
     private void jbExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExitActionPerformed
+        
+       
+        try {
+            if(this.dbConn==null){
+            }else{
+            dbConn.close();
+            dbConn = null;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
         System.exit(0);
     }//GEN-LAST:event_jbExitActionPerformed
     
