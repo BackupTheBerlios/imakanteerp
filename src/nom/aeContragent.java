@@ -23,6 +23,9 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
         int y = (((dim.height)-(this.getSize().height))/2);
         this.setLocation(x, y);
         //  showNameOfMOL_OSO setMOL = new showNameOfMOL_OSO(myframe,true,myParent.getContragentDB().getTablesWithNames(""),myParent.getContragentDB().getConn(),true);
+        //init combo box for currency
+        
+        
         repaintComp();
     }
     
@@ -65,17 +68,21 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
         jButtonToEnd = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldNameBank_R = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldIBAN_R = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTextFieldBIC_R = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        jTextFieldNameBank_D = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        jTextFieldIBAN_D = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        jTextFieldBIC_D = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jComboBoxValutaR = new javax.swing.JComboBox();
+        jLabel8 = new javax.swing.JLabel();
+        jComboBoxValutaD = new javax.swing.JComboBox();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -270,11 +277,35 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
 
             jLabel3.setText("BIC \u043d\u0430 \u0431\u0430\u043d\u043a\u0430\u0442\u0430 \u043f\u043e\u043b\u0443\u0447\u0430\u0442\u0435\u043b \u0440\u0430\u043f\u043b\u0430\u0449\u0430\u043d\u0435");
 
+            jTextFieldBIC_R.setInputVerifier(new imakante.com.InputCharacterVerifier());
+            jTextFieldBIC_R.addFocusListener(new java.awt.event.FocusAdapter() {
+                public void focusLost(java.awt.event.FocusEvent evt) {
+                    jTextFieldBIC_RFocusLost(evt);
+                }
+            });
+
             jLabel4.setText("\u0418\u043c\u0435 \u043d\u0430 \u0411\u0430\u043d\u043a\u0430\u0442\u0430 \u0437\u0430 \u0414\u0414\u0421 \u0441\u043c\u0435\u0442\u043a\u0430");
 
             jLabel5.setText("IBAN \u043d\u0430 \u0414\u0414\u0421 \u0421\u041c\u0415\u0422\u041a\u0410");
 
             jLabel6.setText("BIC \u043d\u0430 \u0431\u0430\u043d\u043a\u0430\u0442\u0430 \u043f\u043e\u043b\u0443\u0447\u0430\u0442\u0435\u043b \u0414\u0414\u0421");
+
+            jTextFieldBIC_D.setInputVerifier(new imakante.com.InputCharacterVerifier());
+            jTextFieldBIC_D.addFocusListener(new java.awt.event.FocusAdapter() {
+                public void focusLost(java.awt.event.FocusEvent evt) {
+                    jTextFieldBIC_DFocusLost(evt);
+                }
+            });
+
+            jLabel7.setText("\u0412\u0430\u043b\u0443\u0442\u0430:");
+
+            jComboBoxValutaR.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "BGL", "EU", "USD" }));
+            jComboBoxValutaR.setPreferredSize(new java.awt.Dimension(55, 19));
+
+            jLabel8.setText("\u0412\u0430\u043b\u0443\u0442\u0430:");
+
+            jComboBoxValutaD.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "BGL", "EU", "USD" }));
+            jComboBoxValutaD.setPreferredSize(new java.awt.Dimension(55, 19));
 
             org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
             jPanel4.setLayout(jPanel4Layout);
@@ -290,40 +321,53 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
                         .add(jLabel2))
                     .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                     .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                        .add(jTextField6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 220, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                            .add(jTextField5)
-                            .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 219, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jTextField2)
-                            .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
-                            .add(jTextField4))))
+                        .add(jPanel4Layout.createSequentialGroup()
+                            .add(jTextFieldBIC_D, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 220, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 13, Short.MAX_VALUE)
+                            .add(jLabel8)
+                            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                            .add(jComboBoxValutaD, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 115, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(jTextFieldIBAN_D, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
+                        .add(jPanel4Layout.createSequentialGroup()
+                            .add(jTextFieldBIC_R, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 219, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 13, Short.MAX_VALUE)
+                            .add(jLabel7)
+                            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                            .add(jComboBoxValutaR, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 116, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(jTextFieldIBAN_R, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
+                        .add(jTextFieldNameBank_R, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
+                        .add(jTextFieldNameBank_D, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)))
             );
             jPanel4Layout.setVerticalGroup(
                 jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                 .add(jPanel4Layout.createSequentialGroup()
                     .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                         .add(jLabel1)
-                        .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(jTextFieldNameBank_R, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                     .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                        .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(jTextFieldIBAN_R, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(jLabel2))
                     .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                     .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                         .add(jLabel3)
-                        .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(jTextFieldBIC_R, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(jComboBoxValutaR, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(jLabel7))
                     .add(18, 18, 18)
                     .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                         .add(jLabel4)
-                        .add(jTextField4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(jTextFieldNameBank_D, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                     .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                         .add(jLabel5)
-                        .add(jTextField5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(jTextFieldIBAN_D, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                     .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                         .add(jLabel6)
-                        .add(jTextField6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(jTextFieldBIC_D, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(jComboBoxValutaD, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(jLabel8))
                     .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
 
@@ -385,7 +429,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
                 .add(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
                     .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(11, Short.MAX_VALUE))
+                    .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
                     .addContainerGap(401, Short.MAX_VALUE)
                     .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -474,6 +518,16 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
             );
             pack();
         }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextFieldBIC_RFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldBIC_RFocusLost
+// TODO add your handling code here:
+     jTextFieldBIC_R.setText(jTextFieldBIC_R.getText().toUpperCase());
+    }//GEN-LAST:event_jTextFieldBIC_RFocusLost
+
+    private void jTextFieldBIC_DFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldBIC_DFocusLost
+// TODO add your handling code here:
+     jTextFieldBIC_D.setText(jTextFieldBIC_D.getText().toUpperCase());
+    }//GEN-LAST:event_jTextFieldBIC_DFocusLost
     
     private void jTextFieldWebKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldWebKeyPressed
         if(java.awt.event.KeyEvent.VK_ENTER== evt.getKeyCode()){
@@ -673,11 +727,32 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
                 myParent.setFax(jTextFieldFax.getText());
                 myParent.setEmail(jTextFieldEmail.getText());
                 myParent.setWeb(jTextFieldWeb.getText());
+                
+                myParent.setNameBank_R(jTextFieldNameBank_R.getText());
+                myParent.setNameBank_D(jTextFieldNameBank_D.getText());
+                
+                myParent.setIBAN_R(jTextFieldIBAN_R.getText());
+                myParent.setIBAN_D(jTextFieldIBAN_D.getText());
+                
+                myParent.setBIC_R(jTextFieldBIC_R.getText());
+                myParent.setBIC_D(jTextFieldBIC_D.getText());
+                
+                myParent.setValuta_R((String)jComboBoxValutaR.getSelectedItem());
+                myParent.setValuta_D((String)jComboBoxValutaD.getSelectedItem());
+                
+                
+                
+            
                 myParent.getContragentDB().insertRow(myParent.getCod(),myParent.getName(),
                         myParent.getBulstat(),myParent.getDanNomer(),
                         myParent.getAddress(),myParent.getID_NM(),
                         myParent.getTel(),myParent.getFax(),myParent.getEmail(),
-                        myParent.getWeb(),myParent.getID_MOL(),myParent.getID_OSO());
+                        myParent.getWeb(),myParent.getID_MOL(),myParent.getID_OSO(),
+                        myParent.getNameBank_R(),myParent.getNameBank_D(),
+                        myParent.getIBAN_D(), myParent.getIBAN_R(),
+                        myParent.getBIC_R(),myParent.getBIC_D(),
+                        myParent.getValita_D(),myParent.getValita_R()
+                        );
                 
             }
         } else  // zapisa  sy6testvuva v bazata!!
@@ -695,18 +770,34 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
             myParent.setFax(jTextFieldFax.getText());
             myParent.setEmail(jTextFieldEmail.getText());
             myParent.setWeb(jTextFieldWeb.getText());
+             myParent.setNameBank_R(jTextFieldNameBank_R.getText());
+                myParent.setNameBank_D(jTextFieldNameBank_D.getText());
+                
+                myParent.setIBAN_R(jTextFieldIBAN_R.getText());
+                myParent.setIBAN_D(jTextFieldIBAN_D.getText());
+                
+                myParent.setBIC_R(jTextFieldBIC_R.getText());
+                myParent.setBIC_D(jTextFieldBIC_D.getText());
+                
+                myParent.setValuta_R((String)jComboBoxValutaR.getSelectedItem());
+                myParent.setValuta_D((String)jComboBoxValutaD.getSelectedItem());
             
             myParent.getContragentDB().updateRow(myParent.getId(),myParent.getCod(),myParent.getName(),
                     myParent.getBulstat(),myParent.getDanNomer(),
                     myParent.getAddress(),myParent.getID_NM(),
                     myParent.getTel(),myParent.getFax(),myParent.getEmail(),
-                    myParent.getWeb(),myParent.getID_MOL(),myParent.getID_OSO());
+                    myParent.getWeb(),myParent.getID_MOL(),myParent.getID_OSO(),
+                    myParent.getNameBank_R(),myParent.getNameBank_D(),
+                    myParent.getIBAN_D(), myParent.getIBAN_R(),
+                    myParent.getBIC_R(),myParent.getBIC_D(),
+                    myParent.getValita_D(),myParent.getValita_R());
             int newIdContragent  = myParent.getContragentDB().getMaxId();
             myParent.getContragentDB().updateIDProductContragent(myParent.getId(),newIdContragent,1);
             
         }
-        //  jButton3.doClick(); // zatvarq se aeContragen
-        myParent.refreshTable();
+        
+       myParent.refreshTable();
+       jButton3.doClick(); // zatvarq se aeContragen
     }//GEN-LAST:event_jButton1ActionPerformed
     
     private void jTextFieldNMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNMKeyPressed
@@ -752,12 +843,16 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
     private javax.swing.JButton jButtonOneRowP;
     private javax.swing.JButton jButtonToBegin;
     private javax.swing.JButton jButtonToEnd;
+    private javax.swing.JComboBox jComboBoxValutaD;
+    private javax.swing.JComboBox jComboBoxValutaR;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabelAddress;
     private javax.swing.JLabel jLabelBulstat;
     private javax.swing.JLabel jLabelCod;
@@ -774,21 +869,21 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextFieldAddress;
+    private javax.swing.JTextField jTextFieldBIC_D;
+    private javax.swing.JTextField jTextFieldBIC_R;
     private javax.swing.JTextField jTextFieldBulstat;
     private javax.swing.JTextField jTextFieldCod;
     private javax.swing.JTextField jTextFieldDanNomer;
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldFax;
+    private javax.swing.JTextField jTextFieldIBAN_D;
+    private javax.swing.JTextField jTextFieldIBAN_R;
     private javax.swing.JTextField jTextFieldMOL;
     private javax.swing.JTextField jTextFieldNM;
     private javax.swing.JTextField jTextFieldName;
+    private javax.swing.JTextField jTextFieldNameBank_D;
+    private javax.swing.JTextField jTextFieldNameBank_R;
     private javax.swing.JTextField jTextFieldOSO;
     private javax.swing.JTextField jTextFieldTel;
     private javax.swing.JTextField jTextFieldWeb;
@@ -827,6 +922,19 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
             jTextFieldName.setText(myParent.getName());
             jTextFieldTel.setText(myParent.getTel());
             jTextFieldWeb.setText(myParent.getWeb());
+            
+            jTextFieldBIC_D.setText(myParent.getBIC_D());
+            jTextFieldBIC_R.setText(myParent.getBIC_R());
+            
+            jTextFieldIBAN_D.setText(myParent.getIBAN_D());
+            jTextFieldIBAN_R.setText(myParent.getIBAN_R());
+            
+            jTextFieldNameBank_D.setText(myParent.getNameBank_D());
+            jTextFieldNameBank_R.setText(myParent.getNameBank_R());
+            
+            jComboBoxValutaD.setSelectedItem((String)myParent.getValita_D());
+            jComboBoxValutaR.setSelectedItem((String)myParent.getValita_R());
+            
         }
         if(isNew) {
             int maxcode =  myParent.getContragentDB().getMaxCod();

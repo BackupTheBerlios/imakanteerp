@@ -9,6 +9,7 @@
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="2"/>
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
@@ -115,7 +116,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="11" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="401" max="32767" attributes="0"/>
@@ -464,14 +465,24 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTextField6" min="-2" pref="220" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jTextField5" max="32767" attributes="1"/>
-                              <Component id="jTextField3" min="-2" pref="219" max="-2" attributes="0"/>
-                              <Component id="jTextField2" max="32767" attributes="1"/>
-                              <Component id="jTextField1" alignment="0" pref="386" max="32767" attributes="1"/>
-                              <Component id="jTextField4" alignment="0" max="32767" attributes="1"/>
+                          <Group type="102" attributes="0">
+                              <Component id="jTextFieldBIC_D" min="-2" pref="220" max="-2" attributes="0"/>
+                              <EmptySpace pref="13" max="32767" attributes="0"/>
+                              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jComboBoxValutaD" min="-2" pref="115" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jTextFieldIBAN_D" pref="392" max="32767" attributes="1"/>
+                          <Group type="102" attributes="1">
+                              <Component id="jTextFieldBIC_R" min="-2" pref="219" max="-2" attributes="0"/>
+                              <EmptySpace pref="13" max="32767" attributes="0"/>
+                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jComboBoxValutaR" min="-2" pref="116" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jTextFieldIBAN_R" pref="392" max="32767" attributes="1"/>
+                          <Component id="jTextFieldNameBank_R" alignment="0" pref="392" max="32767" attributes="1"/>
+                          <Component id="jTextFieldNameBank_D" alignment="0" pref="392" max="32767" attributes="1"/>
                       </Group>
                   </Group>
               </Group>
@@ -481,32 +492,36 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldNameBank_R" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldIBAN_R" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldBIC_R" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jComboBoxValutaR" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldNameBank_D" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldIBAN_D" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldBIC_D" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jComboBoxValutaD" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -519,42 +534,92 @@
                 <Property name="text" type="java.lang.String" value="&#x418;&#x43c;&#x435; &#x43d;&#x430; &#x411;&#x430;&#x43d;&#x43a;&#x430;&#x442;&#x430; &#x437;&#x430; &#x440;&#x430;&#x437;&#x43f;&#x43b;&#x430;&#x449;&#x430;&#x442;&#x435;&#x43b;&#x43d;&#x430; &#x441;&#x43c;&#x435;&#x442;&#x43a;&#x430;"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField1">
+            <Component class="javax.swing.JTextField" name="jTextFieldNameBank_R">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="IBAN &#x43d;&#x430; &#x420;&#x410;&#x417;&#x41f;&#x41b;&#x410;&#x429;&#x410;&#x422;&#x420;&#x415;&#x41b;&#x41d;&#x410; &#x421;&#x41c;&#x415;&#x422;&#x41a;&#x410;"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField2">
+            <Component class="javax.swing.JTextField" name="jTextFieldIBAN_R">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
                 <Property name="text" type="java.lang.String" value="BIC &#x43d;&#x430; &#x431;&#x430;&#x43d;&#x43a;&#x430;&#x442;&#x430; &#x43f;&#x43e;&#x43b;&#x443;&#x447;&#x430;&#x442;&#x435;&#x43b; &#x440;&#x430;&#x43f;&#x43b;&#x430;&#x449;&#x430;&#x43d;&#x435;"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField3">
+            <Component class="javax.swing.JTextField" name="jTextFieldBIC_R">
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextFieldBIC_RFocusLost"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTextFieldBIC_R.setInputVerifier(new imakante.com.InputCharacterVerifier());"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x418;&#x43c;&#x435; &#x43d;&#x430; &#x411;&#x430;&#x43d;&#x43a;&#x430;&#x442;&#x430; &#x437;&#x430; &#x414;&#x414;&#x421; &#x441;&#x43c;&#x435;&#x442;&#x43a;&#x430;"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField4">
+            <Component class="javax.swing.JTextField" name="jTextFieldNameBank_D">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
                 <Property name="text" type="java.lang.String" value="IBAN &#x43d;&#x430; &#x414;&#x414;&#x421; &#x421;&#x41c;&#x415;&#x422;&#x41a;&#x410;"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField5">
+            <Component class="javax.swing.JTextField" name="jTextFieldIBAN_D">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
                 <Property name="text" type="java.lang.String" value="BIC &#x43d;&#x430; &#x431;&#x430;&#x43d;&#x43a;&#x430;&#x442;&#x430; &#x43f;&#x43e;&#x43b;&#x443;&#x447;&#x430;&#x442;&#x435;&#x43b; &#x414;&#x414;&#x421;"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField6">
+            <Component class="javax.swing.JTextField" name="jTextFieldBIC_D">
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextFieldBIC_DFocusLost"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTextFieldBIC_D.setInputVerifier(new imakante.com.InputCharacterVerifier());"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel7">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x412;&#x430;&#x43b;&#x443;&#x442;&#x430;:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jComboBoxValutaR">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="3">
+                    <StringItem index="0" value="BGL"/>
+                    <StringItem index="1" value="EU"/>
+                    <StringItem index="2" value="USD"/>
+                  </StringArray>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[55, 19]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel8">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x412;&#x430;&#x43b;&#x443;&#x442;&#x430;:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jComboBoxValutaD">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="3">
+                    <StringItem index="0" value="BGL"/>
+                    <StringItem index="1" value="EU"/>
+                    <StringItem index="2" value="USD"/>
+                  </StringArray>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[55, 19]"/>
+                </Property>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>

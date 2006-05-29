@@ -6,6 +6,7 @@ public class contragentDB extends imakante.com.dbObject {
    
     private int id_nm, id_mol, id_oso, flag;
     private String bull, dan, tel, fax, email, web;
+    private String nameBank_r,nameBank_d, IBAN_R, IBAN_D,valuta_R,valuta_D,BIC_R,BIC_D;
     
     public contragentDB(java.sql.Connection conn, int flag) {
         super(conn);
@@ -15,7 +16,7 @@ public class contragentDB extends imakante.com.dbObject {
     
     public void prepareCstm() {
         try {
-            setCstm(getConn().prepareCall("{call nom_procedure_contragent(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
+            setCstm(getConn().prepareCall("{call nom_procedure_contragent(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
@@ -47,7 +48,11 @@ public class contragentDB extends imakante.com.dbObject {
     public void insertRow(int in_cod, String in_name, String in_bul,
             String in_dan, String in_address, int in_id_nm, String in_tel,
             String in_fax, String in_email, String in_web, int in_id_mol,
-            int in_id_oso) {
+            int in_id_oso, String in_nameBank_r,String in_nameBank_d,
+            String in_iban_d,String in_iban_r,
+            String in_bic_r,String in_bic_d,
+            String in_valuta_d,String in_valuta_r) 
+    {
         setComprator(1);
         setCode(in_cod);
         setName(in_name);
@@ -61,6 +66,19 @@ public class contragentDB extends imakante.com.dbObject {
         this.web = in_web;
         this.id_mol = in_id_mol;
         this.id_oso = in_id_oso;
+        
+        this.BIC_D = in_bic_d;
+        this.BIC_R = in_bic_r;
+        
+        this.IBAN_D = in_iban_d;
+        this.IBAN_R = in_iban_r;
+        
+        this.nameBank_d = in_nameBank_d;
+        this.nameBank_r = in_nameBank_r;
+        
+        this.valuta_D = in_valuta_d;
+        this.valuta_R = in_valuta_r;
+        
         // this.flag = 0;
         try {
             registerParameters();
@@ -71,7 +89,12 @@ public class contragentDB extends imakante.com.dbObject {
     public void updateRow(int in_id, int in_cod, String in_name, String in_bul,
             String in_dan, String in_address, int in_id_nm, String in_tel,
             String in_fax, String in_email, String in_web, int in_id_mol,
-            int in_id_oso) {
+            int in_id_oso,
+            String in_nameBank_r, String in_nameBank_d,
+            String in_iban_d, String in_iban_r,
+            String in_bic_r, String in_bic_d,
+            String in_valuta_d, String in_valuta_r) 
+    {
         changeFlag(1,in_id);
         // po princip trqbva da izpolzvame comprator = 2, no nie defakto nqma da redaktirame redove,
         // a 6te dobavim nov, kato promenim flaga na stariq zapis ot 0 na 1, a na noviq zapis s flag 0
@@ -91,7 +114,10 @@ public class contragentDB extends imakante.com.dbObject {
         this.id_oso = in_id_oso;*/
         
         insertRow(in_cod,in_name,in_bul,in_dan,in_address,in_id_nm,in_tel,in_fax,in_email,
-                in_web,in_id_mol,in_id_oso);
+                in_web,in_id_mol,in_id_oso,in_nameBank_r, in_nameBank_d,
+             in_iban_d, in_iban_r,
+             in_bic_r, in_bic_d,
+             in_valuta_d,in_valuta_r);
     }
     private void changeFlag(int flag, int id) {
         // smenqme flaga na opredelen red !!!
@@ -115,7 +141,10 @@ public class contragentDB extends imakante.com.dbObject {
     public java.sql.ResultSet searchRecords(int in_cod, String in_name, String in_bul,
             String in_dan, String in_address, int in_id_nm, String in_tel,
             String in_fax, String in_email, String in_web, int in_id_mol,
-            int in_id_oso) {
+            int in_id_oso, String in_nameBank_r,String in_nameBank_d,
+            String in_iban_d,String in_iban_r,
+            String in_bic_r,String in_bic_d,
+            String in_valuta_d,String in_valuta_r) {
         setComprator(5);
         this.setCode(in_cod);
         this.setName(in_name);
@@ -130,7 +159,17 @@ public class contragentDB extends imakante.com.dbObject {
         this.id_mol = in_id_mol;
         this.id_oso = in_id_oso;
         //this.flag = 0;
+        this.BIC_D = in_bic_d;
+        this.BIC_R = in_bic_r;
         
+        this.IBAN_D = in_iban_d;
+        this.IBAN_R = in_iban_r;
+        
+        this.nameBank_d = in_nameBank_d;
+        this.nameBank_r = in_nameBank_r;
+        
+        this.valuta_D = in_valuta_d;
+        this.valuta_R = in_valuta_r;
         try {
             registerParameters();
             setRs(getCstm().executeQuery());
@@ -218,9 +257,24 @@ public class contragentDB extends imakante.com.dbObject {
             getCstm().setString("in_fax",getFax());
             getCstm().setString("in_email",getEmail());
             getCstm().setString("in_web",getWeb());
+            
+            getCstm().setString("in_nameBank_d",getNameBank_D());
+            getCstm().setString("in_nameBank_r",getNameBank_R());
+            
+            getCstm().setString("in_iban_d",getIBAN_D());
+            getCstm().setString("in_iban_r",getIBAN_R());
+            
+            getCstm().setString("in_bic_d",getBIC_D());
+            getCstm().setString("in_bic_r",getBIC_R());
+            
+            getCstm().setString("in_valuta_d",getValita_D());
+            getCstm().setString("in_valuta_r",getValita_R());
+            
             getCstm().setInt("in_id_mol",getID_MOL());
             getCstm().setInt("in_id_oso",getID_OSO());
             getCstm().setInt("in_flag",getFlag());
+            
+            
             System.out.println("ot registerparameter");
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
@@ -306,7 +360,70 @@ public class contragentDB extends imakante.com.dbObject {
     public int getFlag() {
         return flag;
     }
-    
+    public void setNameBank_R(String b)
+    {
+        nameBank_r=b;
+    }
+    public void setNameBank_D(String b)
+    {
+        nameBank_d=b;
+    }
+    public void setIBAN_R(String iban)
+    {
+        IBAN_R=iban;
+    }
+    public void setIBAN_D(String iban)
+    {
+        IBAN_D=iban;
+    }
+    public String getBIC_R()
+    {
+       return BIC_R;
+    }
+     public String getBIC_D()
+    {
+       return BIC_D;
+    }
+    public String getNameBank_R()
+    {
+       return nameBank_r;
+    }
+    public String getNameBank_D()
+    {
+       return  nameBank_d;
+    }
+    public String getIBAN_R()
+    {
+        return IBAN_R;
+    }
+    public String getIBAN_D()
+    {
+       return IBAN_D;
+    }
+    public void setBIC_R(String bic)
+    {
+        BIC_R=bic;
+    }
+     public void setBIC_D(String bic)
+    {
+        BIC_D=bic;
+    }
+   public String getValita_R()
+   {
+       return valuta_R;
+   }
+   public void setValuta_R(String in)
+   {
+       valuta_R=in;
+   }
+   public String getValita_D()
+   {
+       return valuta_D;
+   }
+   public void setValuta_D(String in)
+   {
+       valuta_D=in;
+   } 
   
     
     public void updateIDProductContragent(int in_id_contragent_old, int in_id_contragent_new, int in_flag) {

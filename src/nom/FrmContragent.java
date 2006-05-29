@@ -263,7 +263,11 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
         try {
             rs = getContragentDB().searchRecords(getCod(),getName(),getBulstat(),
                     getDanNomer(),getAddress(),getID_NM(), getTel(),
-                    getFax(),getEmail(),getWeb(),getID_MOL(),getID_OSO());
+                    getFax(),getEmail(),getWeb(),getID_MOL(),getID_OSO(),
+                    getNameBank_R(),getNameBank_D(),
+                    getIBAN_D(), getIBAN_R(),
+                    getBIC_R(),getBIC_D(),
+                    getValita_D(),getValita_R());
             model = new imakante.com.CustomTableModel(conn,rs, null);
             table = new imakante.com.CustomTable(model);
             jScrollPane1.getViewport().add(table);
@@ -322,7 +326,8 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
             if(getRow()==getMaxRow()){
                 setAtEnd(true);
             }
-            setId((Integer) table.getValueAt(getRow(), 0));
+            setAllVariable();
+            /*setId((Integer) table.getValueAt(getRow(), 0));
             setCod((Integer) table.getValueAt(getRow(), 1));
             setName((String) table.getValueAt(getRow(), 2));
             setBulstat((String)table.getValueAt(getRow(),3));
@@ -334,7 +339,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
             setEmail((String) table.getValueAt(getRow(), 13));
             setWeb((String) table.getValueAt(getRow(), 14));
             setID_MOL((Integer) table.getValueAt(getRow(), 15));
-            setID_OSO((Integer) table.getValueAt(getRow(), 17));
+            setID_OSO((Integer) table.getValueAt(getRow(), 17));*/
             try {
                 dialog = new aeContragent(this, true,false);
                 dialog.setVisible(true);
@@ -380,13 +385,24 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
    /* private String columnName[] = {"id_contragent","Код:","Име:","Булстат","Данъчен номер:","Адрес:","id_nm","Населено място","Област",
                          "Код на страната","Държава","Телфон","Факс","E-mail","Web страница","id_mol","МОЛ","id_oso","ОСО","flag_n_contragent"};*/
     private String columnName[] = {"id_contragent","\u041a\u043e\u0434","\u0418\u043c\u0435","\u0411\u0443\u043b\u0441\u0442\u0430\u0442","\u0414\u0430\u043d\u044a\u0447\u0435\u043d \u043d\u043e\u043c\u0435\u0440","\u0410\u0434\u0440\u0435\u0441","id_nm","\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e","\u041e\u0431\u043b\u0430\u0441\u0442",
-    "\u041a\u043e\u0434 \u043d\u0430 \u0441\u0442\u0440\u0430\u043d\u0430\u0442\u0430","\u0414\u044a\u0440\u0436\u0430\u0432\u0430","\u0422\u0435\u043b\u0444\u043e\u043d","\u0424\u0430\u043a\u0441","E-mail","Web \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0430","id_mol","\u041c\u041e\u041b","id_oso","\u041e\u0421\u041e","flag_n_contragent"};
+    "\u041a\u043e\u0434 \u043d\u0430 \u0441\u0442\u0440\u0430\u043d\u0430\u0442\u0430","\u0414\u044a\u0440\u0436\u0430\u0432\u0430","\u0422\u0435\u043b\u0444\u043e\u043d","\u0424\u0430\u043a\u0441","E-mail","Web \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0430","id_mol","\u041c\u041e\u041b","id_oso","\u041e\u0421\u041e","flag_n_contragent",
+    "\u0418\u043C\u0435 \u043D\u0430 \u0411\u0430\u043D\u043A\u0430\u0442\u0430(\u0440.\u0441\u043C\u0435\u0442\u043A\u0430)",
+    "\u0418\u043C\u0435 \u043D\u0430 \u0411\u0430\u043D\u043A\u0430\u0442\u0430(\u0440.\u0441\u043C\u0435\u0442\u043A\u0430\u0430(\u0414\u0414\u0421)",
+    "IBAN(\u0440.\u0441\u043C\u0435\u0442\u043A\u0430)",
+    "IBAN(\u0414\u0414\u0421)",
+    "BIC(\u0414\u0414\u0421)",
+    "BIC(\u0440.\u0441\u043C\u0435\u0442\u043A\u0430)",
+    "\u0412\u0430\u043B\u0443\u0442\u0430(\u0414\u0414\u0421)",
+    "\u0412\u0430\u043B\u0443\u0442\u0430(\u0440.\u0441\u043C\u0435\u0442\u043A\u0430)"};
+    
     private  boolean atBegining=false;
     private  boolean atEnd = false;
     private int row;
     private aeContragent dialog;
     private int cod,id,id_nm,id_mol,id_oso,flag;
     private String name,bull,dan,address,tel,fax,email,web;
+    private String nameBank_r,nameBank_d, IBAN_R, IBAN_D,valuta_R,valuta_D,BIC_R,BIC_D;
+    
     private imakante.com.vcomponents.iFrame myframe;
     private java.sql.Connection conn;
     private java.sql.ResultSet rs;
@@ -419,6 +435,8 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
             HideColumns(getColumnIndex("id_nm"));
             HideColumns(getColumnIndex("id_mol"));
             HideColumns(getColumnIndex("id_oso"));
+            HideColumns(getColumnIndex("flag_n_contragent"));
+            
         } catch(Exception e) { e.printStackTrace(); }
         table.requestFocus();
         try {
@@ -576,6 +594,70 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
         return id_oso;
     }
     
+    public void setNameBank_R(String b)
+    {
+        nameBank_r=b;
+    }
+    public void setNameBank_D(String b)
+    {
+        nameBank_d=b;
+    }
+    public void setIBAN_R(String iban)
+    {
+        IBAN_R=iban;
+    }
+    public void setIBAN_D(String iban)
+    {
+        IBAN_D=iban;
+    }
+    public String getBIC_R()
+    {
+       return BIC_R;
+    }
+     public String getBIC_D()
+    {
+       return BIC_D;
+    }
+    public String getNameBank_R()
+    {
+       return nameBank_r;
+    }
+    public String getNameBank_D()
+    {
+       return  nameBank_d;
+    }
+    public String getIBAN_R()
+    {
+        return IBAN_R;
+    }
+    public String getIBAN_D()
+    {
+       return IBAN_D;
+    }
+    public void setBIC_R(String bic)
+    {
+        BIC_R=bic;
+    }
+     public void setBIC_D(String bic)
+    {
+        BIC_D=bic;
+    }
+   public String getValita_R()
+   {
+       return valuta_R;
+   }
+   public void setValuta_R(String in)
+   {
+       valuta_R=in;
+   }
+   public String getValita_D()
+   {
+       return valuta_D;
+   }
+   public void setValuta_D(String in)
+   {
+       valuta_D=in;
+   }
     protected  void refreshTable() {
         jScrollPane1.remove(table);
         rs = getContragentDB().getTable();
@@ -586,6 +668,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
         HideColumns(getColumnIndex("id_nm"));
         HideColumns(getColumnIndex("id_mol"));
         HideColumns(getColumnIndex("id_oso"));
+        HideColumns(getColumnIndex("flag_n_contragent"));
         jScrollPane1.repaint();
         
     }
@@ -687,6 +770,18 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
         setWeb((String) table.getValueAt(getRow(), getColumnIndex("Web \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0430")));
         setID_MOL((Integer) table.getValueAt(getRow(), getColumnIndex("id_mol")));
         setID_OSO((Integer) table.getValueAt(getRow(), getColumnIndex("id_oso")));
+        
+        setNameBank_R((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043C\u0435 \u043D\u0430 \u0411\u0430\u043D\u043A\u0430\u0442\u0430(\u0440.\u0441\u043C\u0435\u0442\u043A\u0430)"))); //Име на Банката(р.сметка)
+        setNameBank_D((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043C\u0435 \u043D\u0430 \u0411\u0430\u043D\u043A\u0430\u0442\u0430(\u0440.\u0441\u043C\u0435\u0442\u043A\u0430\u0430(\u0414\u0414\u0421)")));
+        
+        setIBAN_R((String) table.getValueAt(getRow(), getColumnIndex("IBAN(\u0440.\u0441\u043C\u0435\u0442\u043A\u0430)")));
+        setIBAN_D((String) table.getValueAt(getRow(), getColumnIndex("IBAN(\u0414\u0414\u0421)")));
+        
+        setBIC_D((String) table.getValueAt(getRow(), getColumnIndex("BIC(\u0414\u0414\u0421)")));
+        setBIC_R((String) table.getValueAt(getRow(), getColumnIndex("BIC(\u0440.\u0441\u043C\u0435\u0442\u043A\u0430)")));
+        
+        setValuta_D((String) table.getValueAt(getRow(), getColumnIndex("\u0412\u0430\u043B\u0443\u0442\u0430(\u0414\u0414\u0421)")));
+        setValuta_R((String) table.getValueAt(getRow(), getColumnIndex("\u0412\u0430\u043B\u0443\u0442\u0430(\u0440.\u0441\u043C\u0435\u0442\u043A\u0430)")));
     }
     
     private void unload() {

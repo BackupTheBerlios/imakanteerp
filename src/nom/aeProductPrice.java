@@ -694,7 +694,14 @@ private void getDataByID()
 {
     String prices[] = new String[4];
     String curs[] = null;
-    prices = myParent.getCountriesT().getProductPrice(id_price);
+    if(id_price>0)
+    {
+     prices = myParent.getCountriesT().getProductPrice(id_price);
+    }
+    else
+    {
+      prices = myParent.getNewPrice();
+    }
     
     jTextDostPrice.setText(prices[0]);
     jTextFieldPrice1.setText(prices[1]);

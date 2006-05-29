@@ -4,19 +4,26 @@ DROP PROCEDURE IF EXISTS `mida`.`nom_procedure_contragent` $$
 CREATE PROCEDURE `nom_procedure_contragent`(IN comprator TINYINT,  IN in_id INT(10),      IN in_code INT(11),     IN in_name VARCHAR(45),
                                             IN in_bul VARCHAR(13), IN in_dan VARCHAR(11), IN in_address VARCHAR(35), IN in_id_nm INT(10),
                                             IN in_tel VARCHAR(12), IN in_fax VARCHAR(12), IN in_email VARCHAR(20),   IN in_web VARCHAR(20),
-                                            IN in_id_mol INT(10),  IN in_id_oso INT(10),  IN in_flag TINYINT)
+                                            IN in_id_mol INT(10),  IN in_id_oso INT(10),  IN in_flag TINYINT,
+                                            IN in_nameBank_r VARCHAR(50) ,IN in_nameBank_d VARCHAR(50) ,
+                                            IN in_iban_r VARCHAR(30) , IN in_iban_d VARCHAR(30) ,
+                                            IN in_bic_r VARCHAR(11) ,IN in_bic_d VARCHAR(11) ,
+                                            IN in_valuta_r VARCHAR(10) , IN in_valuta_d VARCHAR(10) )
 BEGIN
      IF (comprator = 0) THEN
         SELECT c.id_contragent, c.code_contragent, c.name_n_contragent, c.bul_n_contragent, c.dan_n_contragent, c.address_n_contragent, c.id_nm, nm.name_n_nm, obl.name_n_oblast, cont.code_n_country, cont.name_n_country, c.tel_contragent, c.fax_contragent, c.email_contragent, c.web_contragent, c.id_mol,
                 @MOL:=(select name_ls_n_person from `ls_n_person` where id_ls_n_person = id_mol) AS MOL,
-               c.id_oso, @OSO:=(select name_ls_n_person from `ls_n_person` where id_ls_n_person = id_oso) AS OSO, c.flag_n_contragent
+               c.id_oso, @OSO:=(select name_ls_n_person from `ls_n_person` where id_ls_n_person = id_oso) AS OSO, c.flag_n_contragent,
+               c.BANKNAMER, c.BANKNAMED, c.IBANR, c.IBAND, c.BICD, c.BICR, c.VIDVALD, c.VIDVALR
         FROM `n_contragent` c, `n_nm` nm, `n_oblast` obl , `n_country`  cont
         WHERE (c.id_nm = nm.id_n_nm and nm.id_n_oblast = obl.id_n_oblast and obl.id_n_country = cont.id_n_country) and c.flag_n_contragent = in_flag ORDER BY c.code_contragent;
      END IF;
 
      IF (comprator = 1) THEN
-        INSERT INTO `n_contragent`(code_contragent,name_n_contragent,bul_n_contragent,dan_n_contragent,address_n_contragent,id_nm,tel_contragent,fax_contragent,email_contragent,web_contragent,id_mol,id_oso,flag_n_contragent)
-         VALUES(in_code,in_name,in_bul,in_dan,in_address,in_id_nm,in_tel,in_fax,in_email,in_web,in_id_mol,in_id_oso,in_flag);
+        INSERT INTO `n_contragent`(code_contragent,name_n_contragent,bul_n_contragent,dan_n_contragent,address_n_contragent,id_nm,tel_contragent,fax_contragent,email_contragent,web_contragent,id_mol,id_oso,flag_n_contragent,
+                                  BANKNAMER, BANKNAMED, IBANR, IBAND, BICD, BICR, VIDVALD, VIDVALR)
+         VALUES(in_code,in_name,in_bul,in_dan,in_address,in_id_nm,in_tel,in_fax,in_email,in_web,in_id_mol,in_id_oso,in_flag,
+         in_nameBank_r,in_nameBank_d,in_iban_r,in_iban_d,in_bic_d,in_bic_r,in_valuta_d,in_valuta_r);
      END IF;
 
      IF (comprator = 2) THEN
@@ -28,7 +35,8 @@ BEGIN
       IF (in_code != 0) THEN
        SELECT c.id_contragent, c.code_contragent, c.name_n_contragent, c.bul_n_contragent, c.dan_n_contragent, c.address_n_contragent, c.id_nm, nm.name_n_nm, obl.name_n_oblast, cont.code_n_country, cont.name_n_country, c.tel_contragent, c.fax_contragent, c.email_contragent, c.web_contragent, c.id_mol,
                 @MOL:=(select name_ls_n_person from `ls_n_person` where id_ls_n_person = id_mol) AS MOL,
-               c.id_oso, @OSO:=(select name_ls_n_person from `ls_n_person` where id_ls_n_person = id_oso) AS OSO, c.flag_n_contragent
+               c.id_oso, @OSO:=(select name_ls_n_person from `ls_n_person` where id_ls_n_person = id_oso) AS OSO, c.flag_n_contragent,
+               c.BANKNAMER, c.BANKNAMED, c.IBANR, c.IBAND, c.BICD, c.BICR, c.VIDVALD, c.VIDVALR
         FROM `n_contragent` c, `n_nm` nm, `n_oblast` obl , `n_country`  cont
         WHERE (c.id_nm = nm.id_n_nm and nm.id_n_oblast = obl.id_n_oblast and obl.id_n_country = cont.id_n_country and c.flag_n_contragent = in_flag ) AND
               c.code_contragent LIKE CONCAT('%',in_code,'%') AND
@@ -39,7 +47,8 @@ BEGIN
       IF (in_code = 0) THEN
               SELECT c.id_contragent, c.code_contragent, c.name_n_contragent, c.bul_n_contragent, c.dan_n_contragent, c.address_n_contragent, c.id_nm, nm.name_n_nm, obl.name_n_oblast, cont.code_n_country, cont.name_n_country, c.tel_contragent, c.fax_contragent, c.email_contragent, c.web_contragent, c.id_mol,
                 @MOL:=(select name_ls_n_person from `ls_n_person` where id_ls_n_person = id_mol) AS MOL,
-               c.id_oso, @OSO:=(select name_ls_n_person from `ls_n_person` where id_ls_n_person = id_oso) AS OSO, c.flag_n_contragent
+               c.id_oso, @OSO:=(select name_ls_n_person from `ls_n_person` where id_ls_n_person = id_oso) AS OSO, c.flag_n_contragent,
+               c.BANKNAMER, c.BANKNAMED, c.IBANR, c.IBAND, c.BICD, c.BICR, c.VIDVALD, c.VIDVALR
         FROM `n_contragent` c, `n_nm` nm, `n_oblast` obl , `n_country`  cont
         WHERE (c.id_nm = nm.id_n_nm and nm.id_n_oblast = obl.id_n_oblast and obl.id_n_country = cont.id_n_country and c.flag_n_contragent = in_flag )
          AND c.name_n_contragent LIKE CONCAT('%',in_name,'%') AND  c.bul_n_contragent LIKE CONCAT('%',in_bul,'%') AND c.dan_n_contragent LIKE CONCAT('%',in_dan,'%') AND
