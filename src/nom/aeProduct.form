@@ -79,7 +79,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelAddress">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&#x41a;&#x44a;&#x441;&#x43e; &#x438;&#x43c;&#x435;:"/>
+            <Property name="text" type="java.lang.String" value="&#x41a;&#x440;&#x430;&#x442;&#x43a;&#x43e; &#x438;&#x43c;&#x435;:"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">

@@ -339,6 +339,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         jPanel1.add(jTextFieldFee, gridBagConstraints);
 
         jTextFieldPromoPrices.setEditable(false);
+        jTextFieldPromoPrices.setToolTipText("\u0417\u0430\u0434\u044a\u043b\u0436\u0438\u0442\u0435\u043b\u043d\u043e \u043f\u043e\u043b\u0435");
         jTextFieldPromoPrices.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTextFieldPromoPrices.setPreferredSize(new java.awt.Dimension(170, 20));
         jTextFieldPromoPrices.addFocusListener(new java.awt.event.FocusAdapter() {
