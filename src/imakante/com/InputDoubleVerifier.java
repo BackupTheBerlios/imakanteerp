@@ -26,6 +26,7 @@ public class InputDoubleVerifier extends InputVerifier
       int countCommaDot[] = null; // masiv za rzpolovenieto na zapetaqta
       int count = 0; // za broene kolko pyti se sre6ta zapetaq ili to4ka
       int intNumber=0;
+      int countDif=0;
       boolean checkSimbol=false;
       JTextField tf = (JTextField) input;
       int lenth = tf.getText().length();
@@ -67,7 +68,11 @@ public class InputDoubleVerifier extends InputVerifier
                      {
                       checkSimbol = true;
                      }
-                   else checkSimbol= false;
+                   else
+                   {
+                       checkSimbol= false;
+                       countDif++;
+                   }
                  }
              }
              if(intNumber == 0)       // ako nqma zapetaq
@@ -79,7 +84,11 @@ public class InputDoubleVerifier extends InputVerifier
                      {
                       checkSimbol = true;
                      }
-                   else checkSimbol= false;
+                   else
+                   {
+                       checkSimbol= false;
+                       countDif++;
+                   }
                  }
              }
              else
@@ -92,12 +101,16 @@ public class InputDoubleVerifier extends InputVerifier
                      {
                       checkSimbol = true;
                      }
-                   else checkSimbol= false;
+                   else
+                   {
+                       checkSimbol= false;
+                       countDif++;
+                   }
                 }
              }
              
        }
-      
+      if(countDif>0) checkSimbol= false;
        return checkSimbol;
     }
    

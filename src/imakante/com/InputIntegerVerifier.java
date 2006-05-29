@@ -18,9 +18,10 @@ public class InputIntegerVerifier extends InputVerifier
      }
     public boolean verify(JComponent input) 
     {
-      byte UpRange = 57;
+     byte UpRange = 57;
       byte DownRange = 48;
       boolean checkSimbol=false;
+      int count=-1;
       JTextField tf = (JTextField) input;
       int lenth = tf.getText().length();
       byte ch[] = new byte[lenth];
@@ -28,17 +29,23 @@ public class InputIntegerVerifier extends InputVerifier
        if(lenth<=0) return true;
       if(lenth <= maxInt | maxInt==-1)
       {
+          count=0;
       for(int i=0;i < lenth; i++)
          {
            if(( ch[i]<= UpRange)&&(ch[i] >=DownRange))
              {
               checkSimbol = true;
              }
-           else checkSimbol= false;
+           else
+           {
+               checkSimbol= false;
+               count++;
+           }
          }
       }
       else checkSimbol= false;
      
+      if(count>0) checkSimbol= false; 
       return checkSimbol;
     }
    
