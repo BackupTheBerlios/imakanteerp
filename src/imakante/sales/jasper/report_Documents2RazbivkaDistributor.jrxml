@@ -27,25 +27,25 @@
 		<defaultValueExpression ><![CDATA["2000-01-01"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="otsklad" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["0"]]></defaultValueExpression>
+		<defaultValueExpression ><![CDATA["1"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="otklient" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["0"]]></defaultValueExpression>
+		<defaultValueExpression ><![CDATA["1"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="otstoka" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["0"]]></defaultValueExpression>
+		<defaultValueExpression ><![CDATA["1"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="otdostavchik" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["0"]]></defaultValueExpression>
+		<defaultValueExpression ><![CDATA["1"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="otdistributor" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["0"]]></defaultValueExpression>
+		<defaultValueExpression ><![CDATA["1"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="otoperator" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["0"]]></defaultValueExpression>
+		<defaultValueExpression ><![CDATA["1"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="otspeditor" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["0"]]></defaultValueExpression>
+		<defaultValueExpression ><![CDATA["1"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="dodata" isForPrompting="false" class="java.lang.String">
 		<defaultValueExpression ><![CDATA["2079-01-01"]]></defaultValueExpression>
@@ -147,9 +147,9 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 				<staticText>
 					<reportElement
 						mode="Transparent"
-						x="4"
+						x="21"
 						y="6"
-						width="70"
+						width="74"
 						height="10"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
@@ -158,11 +158,11 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Helvetica" size="8" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
-				<text><![CDATA[ДИСТРИБУТОР]]></text>
+				<text><![CDATA[ ДИСТРИБУТОР]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="77"
+						x="97"
 						y="6"
 						width="66"
 						height="10"
@@ -175,9 +175,9 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="146"
+						x="166"
 						y="6"
-						width="225"
+						width="234"
 						height="10"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -219,7 +219,7 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 					<reportElement
 						x="224"
 						y="4"
-						width="50"
+						width="57"
 						height="12"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -230,9 +230,9 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="###0.00;-###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="279"
+						x="283"
 						y="4"
-						width="37"
+						width="43"
 						height="12"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -1009,9 +1009,9 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 				<staticText>
 					<reportElement
 						mode="Transparent"
-						x="56"
+						x="53"
 						y="4"
-						width="31"
+						width="33"
 						height="16"
 						forecolor="#FFFFFF"
 						backcolor="#FFFFFF"
@@ -1025,9 +1025,9 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 				<staticText>
 					<reportElement
 						mode="Transparent"
-						x="92"
+						x="88"
 						y="4"
-						width="36"
+						width="37"
 						height="16"
 						forecolor="#FFFFFF"
 						backcolor="#FFFFFF"
@@ -1041,9 +1041,9 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 				<staticText>
 					<reportElement
 						mode="Transparent"
-						x="225"
+						x="220"
 						y="4"
-						width="50"
+						width="60"
 						height="16"
 						forecolor="#FFFFFF"
 						backcolor="#FFFFFF"
@@ -1057,9 +1057,9 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 				<staticText>
 					<reportElement
 						mode="Transparent"
-						x="280"
+						x="282"
 						y="4"
-						width="37"
+						width="43"
 						height="16"
 						forecolor="#FFFFFF"
 						backcolor="#FFFFFF"
@@ -1073,9 +1073,9 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 				<staticText>
 					<reportElement
 						mode="Transparent"
-						x="322"
+						x="327"
 						y="4"
-						width="45"
+						width="40"
 						height="16"
 						forecolor="#FFFFFF"
 						backcolor="#FFFFFF"
@@ -1123,7 +1123,7 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 						mode="Transparent"
 						x="482"
 						y="4"
-						width="36"
+						width="40"
 						height="16"
 						forecolor="#FFFFFF"
 						backcolor="#FFFFFF"
@@ -1149,9 +1149,9 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 				<staticText>
 					<reportElement
 						mode="Transparent"
-						x="133"
+						x="127"
 						y="4"
-						width="87"
+						width="92"
 						height="16"
 						forecolor="#FFFFFF"
 						backcolor="#FFFFFF"
@@ -1185,9 +1185,9 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
-						x="55"
+						x="52"
 						y="0"
-						width="31"
+						width="35"
 						height="12"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
@@ -1201,9 +1201,9 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
-						x="91"
+						x="89"
 						y="0"
-						width="34"
+						width="36"
 						height="12"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
@@ -1217,9 +1217,9 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 				<textField isStretchWithOverflow="false" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
-						x="224"
+						x="220"
 						y="0"
-						width="50"
+						width="61"
 						height="12"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
@@ -1233,9 +1233,9 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 				<textField isStretchWithOverflow="false" pattern="#,##0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
-						x="279"
+						x="283"
 						y="0"
-						width="37"
+						width="43"
 						height="12"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
@@ -1249,9 +1249,9 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
-						x="321"
+						x="328"
 						y="0"
-						width="45"
+						width="40"
 						height="12"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
@@ -1265,9 +1265,9 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
-						x="371"
+						x="373"
 						y="0"
-						width="60"
+						width="58"
 						height="12"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
@@ -1283,7 +1283,7 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 						mode="Transparent"
 						x="436"
 						y="0"
-						width="37"
+						width="41"
 						height="12"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
@@ -1297,9 +1297,9 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
-						x="478"
+						x="482"
 						y="0"
-						width="35"
+						width="39"
 						height="12"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
@@ -1313,15 +1313,15 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
-						x="130"
+						x="127"
 						y="0"
-						width="89"
+						width="92"
 						height="12"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
 						key="textField-30"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Helvetica" size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{name_product}]]></textFieldExpression>
@@ -1413,9 +1413,9 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 				<staticText>
 					<reportElement
 						mode="Transparent"
-						x="93"
+						x="59"
 						y="7"
-						width="58"
+						width="92"
 						height="10"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
@@ -1428,9 +1428,9 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 				</staticText>
 				<textField isStretchWithOverflow="false" pattern="###0.00;-###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="227"
+						x="214"
 						y="6"
-						width="50"
+						width="67"
 						height="13"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -1441,9 +1441,9 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="###0.00;-###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="283"
+						x="282"
 						y="6"
-						width="33"
+						width="48"
 						height="13"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
