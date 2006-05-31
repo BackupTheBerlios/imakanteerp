@@ -232,7 +232,6 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
         newRecord();
     }//GEN-LAST:event_jButtonNewActionPerformed
     
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonClose;
     private javax.swing.JButton jButtonDel;
@@ -422,11 +421,11 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
         return name;
     }
     
-    public void setBankAccount(String BankAccount) {
+    public void setBankAccount(String BankAccount) {    // IBAN
         this.baccount = BankAccount;
     }
     
-    public String getBankAccount() {
+    public String getBankAccount() {                    // IBAN
         return baccount;
     }
     
