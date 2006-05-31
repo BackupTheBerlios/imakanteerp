@@ -258,7 +258,7 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
     private int code_group = 0;
     private int code = 0;
     private int typeAccount = 0;
-    private String name, baccount, address, comment;
+    private String name, baccount, bic, vidval, address, comment;
     private String namesG[];
     private int selectComboBoxItem;
     private  boolean atBegining = false;
@@ -277,7 +277,9 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
         "\u0413\u0440\u0443\u043f\u0430",
         "\u041a\u043e\u0434 \u043d\u0430 \u0431\u0430\u043d\u043a\u0430",
         "\u0418\u043c\u0435 \u043d\u0430 \u0431\u0430\u043d\u043a\u0430",
-        "\u0411\u0430\u043d\u043a\u043e\u0432\u0430 \u0441\u043c\u0435\u0442\u043a\u0430",
+        "\u0411\u0430\u043d\u043a\u043e\u0432\u0430 \u0441\u043c\u0435\u0442\u043a\u0430 (IBAN)",
+        "\u0411\u0430\u043D\u043A\u043E\u0432 \u043A\u043E\u0434 (BIC)",
+        "\u041A\u043E\u0434 \u043D\u0430 \u0432\u0430\u043B\u0443\u0442\u0430",
         "\u0410\u0434\u0440\u0435\u0441 \u043d\u0430 \u0431\u0430\u043d\u043a\u0430",
         "id_type_account",
         "\u0422\u0438\u043f \u043d\u0430 \u0441\u043c\u0435\u0442\u043a\u0430\u0442\u0430",
@@ -292,7 +294,6 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
             if(conn==null) { System.out.println("conn problem"); }
         } catch(Exception e) { e.printStackTrace(); }
     }
-    
     
     private void constructObject() {
         try {
@@ -429,6 +430,22 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
         return baccount;
     }
     
+    public String getBIC() {
+        return bic;
+    }
+
+    public void setBIC(String bic) {
+        this.bic = bic;
+    }
+
+    public String getVidval() {             // Code Currency - wid waluta, napr. BGN
+        return vidval;
+    }
+
+    public void setVidval(String vidval) {  // Code Currency - wid waluta, napr. BGN
+        this.vidval = vidval;
+    }
+    
     public void setAddress(String Address) {
         this.address = Address;
     }
@@ -462,30 +479,20 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
         try{
             setAllVariables();
             table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
-        } catch(ArrayIndexOutOfBoundsException aioobe) {
-            setRow(getRow() - 1);
-            System.out.println("problem");
-        }
+        } catch(ArrayIndexOutOfBoundsException aioobe) { setRow(getRow() - 1); }
         setAtBegining(false);
         setAtEnd(true);
     }
     
     public void mOneRowPlus() {
         if(getRow() <= getMaxRow()) {
-            if(getRow() < getMaxRow()) {
-                setRow(getRow()+1);
-            }
+            if(getRow() < getMaxRow()) setRow(getRow()+1);
             setAtBegining(false);
             try {
                 setAllVariables();
                 table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
-            } catch(ArrayIndexOutOfBoundsException aioobe) {
-                setRow(getRow() - 1);
-                System.out.println("problem");
-            }
-            if(getRow() == getMaxRow()) {
-                setAtEnd(true);
-            }
+            } catch(ArrayIndexOutOfBoundsException aioobe) { setRow(getRow() - 1); }
+            if(getRow() == getMaxRow()) setAtEnd(true);
         }
     }
     
@@ -498,12 +505,9 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
             try {
                 setAllVariables();
                 table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
-            } catch(ArrayIndexOutOfBoundsException aioobe) {
-                setRow(getRow() + 1);
-                System.out.println("problem");
-            }
+            } catch(ArrayIndexOutOfBoundsException aioobe) { setRow(getRow() + 1); }
         }
-        if(getRow() == 0){
+        if(getRow() == 0) {
             setAtBegining(true);
         }
     }
@@ -513,10 +517,7 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
         try {
             setAllVariables();
             table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
-        } catch(ArrayIndexOutOfBoundsException aioobe) {
-            setRow(getRow() - 1);
-            System.out.println("problem");
-        }
+        } catch(ArrayIndexOutOfBoundsException aioobe) { setRow(getRow() - 1); }
         setAtBegining(true);
         setAtEnd(false);
     }
@@ -640,9 +641,12 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
         setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("id_group")));
         setCod((Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434 \u043d\u0430 \u0431\u0430\u043d\u043a\u0430")));
         setNames((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435 \u043d\u0430 \u0431\u0430\u043d\u043a\u0430")));
-        setBankAccount((String) table.getValueAt(getRow(), getColumnIndex("\u0411\u0430\u043d\u043a\u043e\u0432\u0430 \u0441\u043c\u0435\u0442\u043a\u0430")));
+        setBankAccount((String) table.getValueAt(getRow(), getColumnIndex("\u0411\u0430\u043d\u043a\u043e\u0432\u0430 \u0441\u043c\u0435\u0442\u043a\u0430 (IBAN)")));
+        setBIC((String) table.getValueAt(getRow(), getColumnIndex("\u0411\u0430\u043D\u043A\u043E\u0432 \u043A\u043E\u0434 (BIC)")));
+        setVidval((String) table.getValueAt(getRow(), getColumnIndex("\u041A\u043E\u0434 \u043D\u0430 \u0432\u0430\u043B\u0443\u0442\u0430")));
         setAddress((String) table.getValueAt(getRow(), getColumnIndex("\u0410\u0434\u0440\u0435\u0441 \u043d\u0430 \u0431\u0430\u043d\u043a\u0430")));
         setTypeBankAccount((Integer) table.getValueAt(getRow(), getColumnIndex("id_type_account")));
         setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440")));
     }
+    
 }

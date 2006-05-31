@@ -5,6 +5,7 @@ public class dbBankAccount extends imakante.com.dbObject {
     
     private java.sql.Connection conn;
     private int id_type = 0;
+    private String bic, vidval;
     private String splitNamesG[];
     private String splitTypes[];
     private int indexConnOfId[] = null;
@@ -17,7 +18,7 @@ public class dbBankAccount extends imakante.com.dbObject {
     
     protected void prepareCstm() {
         try {
-            setCstm(getConn().prepareCall("{call nom_procedure_baccount(?,?,?,?,?,?,?,?,?)}"));
+            setCstm(getConn().prepareCall("{call nom_procedure_baccount(?,?,?,?,?,?,?,?,?,?,?)}"));
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
@@ -29,10 +30,28 @@ public class dbBankAccount extends imakante.com.dbObject {
             getCstm().setInt("in_code", getCode());
             getCstm().setString("in_name", getName());
             getCstm().setString("in_account", getBankAccountNumber());
+            getCstm().setString("in_bic", getBIC());
+            getCstm().setString("in_vidval", getVidval());
             getCstm().setString("in_address", getAddress());
             getCstm().setInt("in_id_tacc", getTypeBankAccount());
             getCstm().setString("in_comment", getComment());
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
+    }
+    
+    public String getBIC() {
+        return bic;
+    }
+
+    public void setBIC(String bic) {
+        this.bic = bic;
+    }
+
+    public String getVidval() {             // Code Currency - wid waluta, napr. BGN
+        return vidval;
+    }
+
+    public void setVidval(String vidval) {  // Code Currency - wid waluta, napr. BGN
+        this.vidval = vidval;
     }
     
     private int getTypeBankAccount() {
@@ -49,6 +68,8 @@ public class dbBankAccount extends imakante.com.dbObject {
         this.setIDGr(in_id_group);
         this.setName("");
         this.setBankAccountNumber("");
+        this.setBIC("");
+        this.setVidval("");
         this.setAddress("");
         this.setTypeBankAccount(in_id_tacc);
         this.setComment("");
@@ -58,14 +79,16 @@ public class dbBankAccount extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    public void updateRow(int in_id, int in_id_group, int in_code, String in_name,
-            String in_account, String in_address, int in_id_tacc, String in_comment) {
+    public void updateRow(int in_id, int in_id_group, int in_code, String in_name, String in_account, String in_bic,
+            String in_vidval, String in_address, int in_id_tacc, String in_comment) {
         setComprator(2);
         this.setId(in_id);
         this.setIDGr(in_id_group);
         this.setCode(in_code);
         this.setName(in_name);
         this.setBankAccountNumber(in_account);
+        this.setBIC(in_bic);
+        this.setVidval(in_vidval);
         this.setAddress(in_address);
         this.setTypeBankAccount(in_id_tacc);
         this.setComment(in_comment);
@@ -86,6 +109,8 @@ public class dbBankAccount extends imakante.com.dbObject {
 //                setCode(getRs().getInt("code"));
 //                setName(getRs().getString("name"));
 //                setBankAccountNumber(getRs().getString("baccount"));
+//                setBIC(getRs().getString("bic"));
+//                setVidval(getRs().getString("vidval"));
 //                setAddress(getRs().getString("address"));
 //                id_type = getRs().getInt("id_type");
 //                setComment(getRs().getString("comments"));
