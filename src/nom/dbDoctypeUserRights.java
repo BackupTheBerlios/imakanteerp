@@ -28,16 +28,16 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
             getCstm().setInt("comprator", getComprator());
             getCstm().setInt("in_id", getId());
             getCstm().setInt("in_id_um", getUserMaster());
-            getCstm().setInt("in_id_sdtn", getDoctypeNum());
-            getCstm().setInt("in_rights", getRights());
+            getCstm().setInt("in_id_sdtn", getDoctypeNumber());
+            getCstm().setInt("in_rights", getRight());
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
     public void insertRow(int in_id_um) {
         setComprator(1);
         this.setUserMaster(in_id_um);
-        this.setDoctypeNum(999999);
-        this.setRights(3);
+        this.setDoctypeNumber(999999);
+        this.setRight(3);
         try {
             registerParameters();
             getCstm().execute();
@@ -48,8 +48,8 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
         setComprator(2);
         this.setId(in_id);
         this.setUserMaster(in_id_um);
-        this.setDoctypeNum(in_sdtn);
-        this.setRights(in_rights);
+        this.setDoctypeNumber(in_sdtn);
+        this.setRight(in_rights);
         try {
             registerParameters();
             getCstm().execute();
@@ -81,7 +81,7 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
     
     public java.sql.ResultSet searchRecords(int in_rights) {
         setComprator(5);
-        this.setRights(in_rights);
+        this.setRight(in_rights);
         try {
             registerParameters();
             setRs(getCstm().executeQuery());
@@ -161,19 +161,19 @@ public class dbDoctypeUserRights extends imakante.com.dbObject {
         this.id_usermaster = UserMaster;
     }
     
-    public int getDoctypeNum() {
+    public int getDoctypeNumber() {
         return doctypeNum;
     }
     
-    public void setDoctypeNum(int DoctypeNum) {
+    public void setDoctypeNumber(int DoctypeNum) {
         this.doctypeNum = DoctypeNum;
     }
     
-    public int getRights() {
+    public int getRight() {
         return rights;
     }
     
-    public void setRights(int Rights) {
+    public void setRight(int Rights) {
         this.rights = Rights;
     }
     

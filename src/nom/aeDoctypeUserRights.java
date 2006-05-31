@@ -353,6 +353,10 @@ public class aeDoctypeUserRights extends imakante.com.vcomponents.iDialog {
     }
     
     private void getNavigationState() {
+        jButtonToBegin.setEnabled(true);
+        jButtonOneRowM.setEnabled(true);
+        jButtonToEnd.setEnabled(true);
+        jButtonOneRowP.setEnabled(true);
         if(myParent.isAtBegining()) {
             jButtonToBegin.setEnabled(false);
             jButtonOneRowM.setEnabled(false);
@@ -371,6 +375,9 @@ public class aeDoctypeUserRights extends imakante.com.vcomponents.iDialog {
         jComboU.setSelectedIndex(getNewUComboIndex(myParent.getUserMaster()));
         jComboRB.setSelectedIndex(getNewRBComboIndex(myParent.getDoctypeNumber()));
         jTextField1.setText("" + myParent.getRight());
+        jComboU.repaint();
+        jComboRB.repaint();
+        jTextField1.repaint();
     }
     
     private void initUsersCombo() {
