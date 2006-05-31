@@ -356,7 +356,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
 // TODO add your handling code here:
        setAllVariablesDefault();
         
-      int number=0;
+      long number=0;
       if(getDocFacadeType()!=aeDocumentFacade.FAKTURA_DANACHNA || getDocFacadeType()!=aeDocumentFacade.FAKTURA_OPROSTENA)
       {
         number =  getCountriesT().getDocNumberLast(getUserEditFortm(),getDocFacadeLevel());
@@ -1627,7 +1627,7 @@ private void checkForMakeDoc(boolean makeDoc)
     int maxID_df= 0;
     if(makeDoc)
     {
-      int number = getCountriesT().getDocNumberLast( getUserEditFortm(), getDocFacadeLevel());
+      long number = getCountriesT().getDocNumberLast( getUserEditFortm(), getDocFacadeLevel());
       number++;
       imakante.com.dateManipulation dateManip = new imakante.com.dateManipulation();
       String strDate;

@@ -65,7 +65,7 @@ public class documentFacadeDB  extends imakante.com.dbObject {
    private java.sql.Connection conn;
   
     private int idDocFacade;
-    private int docFacadeNumber;
+    private long docFacadeNumber;
     private int docFacadeType;
     private String conditionDocFacade;
     private int levelDocFacade;
@@ -156,8 +156,11 @@ public class documentFacadeDB  extends imakante.com.dbObject {
             getCstm().setInt("in_id_obekt_in", getID_Obekt_IN());                  
             getCstm().setInt("in_id_distributor", getID_Distributor());            
             getCstm().setInt("in_id_deliver", getID_Deliver());                    
-            getCstm().setInt("in_descriptionPaying", getDescriptionPaying());             
-            getCstm().setInt("in_docFacadeNumber", getNumberDocFacade());          
+            getCstm().setInt("in_descriptionPaying", getDescriptionPaying()); 
+            
+          
+            getCstm().setString("in_docFacadeNumber",String.valueOf(getNumberDocFacade()));  
+            
             getCstm().setInt("in_docFacadeUser", getUserDocFacade());              
             getCstm().setInt("in_docFacadeUserLastEdit", getUserLastEditDocFacade()); 
             getCstm().setInt("comprator", getComprator()); // izbor na SQL zaqwka
@@ -201,7 +204,7 @@ public class documentFacadeDB  extends imakante.com.dbObject {
     }
  public void insertRow(int in_id_contragent_out , int in_id_contragent_in,
             int in_id_obekt_out, int in_id_obekt_in, int in_id_distributor, int in_id_deliver,
-            int in_descriptionPaying, int in_docFacadeNumber, int in_docFacadeUser, int in_docFacadeUserLastEdit,
+            int in_descriptionPaying, long in_docFacadeNumber, int in_docFacadeUser, int in_docFacadeUserLastEdit,
             int in_id_facturaConnection, int in_id_payingOrder, int in_id_zaqvkaConnection, int in_docFacadeLevel, //14
             int in_docFacadeStorage, int in_docFacadeType, double in_docFacadeTotal, double in_docFacadeAllDDS,
             String in_docFacadeCondition, String in_docFacadeDate, String in_docFacadeCommnet,
@@ -248,7 +251,7 @@ public class documentFacadeDB  extends imakante.com.dbObject {
     }
  public void updateRow(int in_id_df, int in_id_contragent_out , int in_id_contragent_in,
             int in_id_obekt_out, int in_id_obekt_in, int in_id_distributor, int in_id_deliver,
-            int in_descriptionPaying, int in_docFacadeNumber, int in_docFacadeUser, int in_docFacadeUserLastEdit,
+            int in_descriptionPaying, long in_docFacadeNumber, int in_docFacadeUser, int in_docFacadeUserLastEdit,
             int in_id_facturaConnection, int in_id_payingOrder, int in_id_zaqvkaConnection, int in_docFacadeLevel,
             int in_docFacadeStorage, int in_docFacadeType, double in_docFacadeTotal, double in_docFacadeAllDDS,
             String in_docFacadeCondition, String in_docFacadeDate, String in_docFacadeCommnet,
@@ -327,7 +330,7 @@ public class documentFacadeDB  extends imakante.com.dbObject {
     }
  public java.sql.ResultSet searchRecords(int in_id_contragent_out , int in_id_contragent_in,
             int in_id_obekt_out, int in_id_obekt_in, int in_id_distributor, int in_id_deliver,
-            int in_descriptionPaying, int in_docFacadeNumber, int in_docFacadeUser, int in_docFacadeUserLastEdit,
+            int in_descriptionPaying, long in_docFacadeNumber, int in_docFacadeUser, int in_docFacadeUserLastEdit,
             int in_id_facturaConnection, int in_id_payingOrder, int in_id_zaqvkaConnection, int in_docFacadeLevel,
             int in_docFacadeStorage, int in_docFacadeType, double in_docFacadeTotal, double in_docFacadeAllDDS,
             String in_docFacadeCondition, String in_docFacadeDate, String in_docFacadeCommnet,
@@ -401,11 +404,11 @@ public class documentFacadeDB  extends imakante.com.dbObject {
     }
     
 //------------------------>
-    public void setNumberDocFacade(int numberDocFacade) 
+    public void setNumberDocFacade(long numberDocFacade) 
     {
         this.docFacadeNumber = numberDocFacade;
     }
-    public int getNumberDocFacade() 
+    public long getNumberDocFacade() 
     {
         return docFacadeNumber;
     }
@@ -833,9 +836,9 @@ public java.sql.ResultSet getTableFinishTextContragent(String in , int sqlselect
     
 }
 
-public int getDocNumberLast(int iduser, int level)
+public long getDocNumberLast(int iduser, int level)
 {
-    int lastNumber = 0;
+    long lastNumber = 0;
     int oldId_obekt_in  = getID_Obekt_IN();
     setID_Obekt_IN(level); 
      int oldIntValue = getUserDocFacade();
@@ -847,7 +850,7 @@ public int getDocNumberLast(int iduser, int level)
             setRs(getCstm().executeQuery());
             while(getRs().next())
             {
-                lastNumber = getRs().getInt("maxNumber");
+                lastNumber = getRs().getLong("maxNumber");
             }
         }
         catch(java.sql.SQLException sqle)
@@ -1590,14 +1593,16 @@ public void updateDocLine(int id_dl,int in_id_df,int in_id_pc,int in_id_storage,
      return maxid;
  }
  
-public void  deleteRow(int type,int numberDocFadade, int level)
+public void  deleteRow(int type,long numberDocFadade, int level)
  {
       setComprator(35);
    int oldID_df = getID_DocFacade();
    int oldID_obekt_in = getID_Obekt_IN();
    int oldID_obekt_out = getID_Obekt_OUT();
+   long oldDN = getNumberDocFacade();
+   setNumberDocFacade(numberDocFadade);
    setID_DocFacade(type);
-   setID_Obekt_IN(numberDocFadade);
+  
    setID_Obekt_OUT(level);
    
    try
@@ -1613,6 +1618,7 @@ public void  deleteRow(int type,int numberDocFadade, int level)
    setID_Obekt_IN(oldID_obekt_in);
    setID_Obekt_OUT(oldID_obekt_out);
    setID_DocFacade(oldID_df);
+   setNumberDocFacade(oldDN);
     
  }
  public void returnProducts(int in_id_pc, int in_id_storage, int number,int level)

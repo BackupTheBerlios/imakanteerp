@@ -1601,7 +1601,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             for(int i=0; i< rowCount; i++) {
                 deleteDocLine(i,withRow,true);
             }
-            deleteDocFacade(myParent.getDocFacadeType(),Integer.parseInt(myParent.getNumberDocFacade()),myParent.getDocFacadeLevel());
+            deleteDocFacade(myParent.getDocFacadeType(),Long.parseLong(myParent.getNumberDocFacade()),myParent.getDocFacadeLevel());
         } else {
             if(!isDocFacadeCreate)
                 if(rows.size()>0) 
@@ -3463,7 +3463,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 strDate += "/" + String.valueOf(jXDateDocument.getDate().getYear()+1900);
                 String docFacadeDate = dateManip.convertDate(strDate);
                 
-                int numberDoc = Integer.parseInt(myParent.getNumberDocFacade());
+               long numberDoc = Long.parseLong(myParent.getNumberDocFacade());
                 myParent.getCountriesT().updateRow(id_df,contragent_out,contragent_in,obekt_out,
                         obekt_in,myParent.getID_Distributor(),myParent.getID_Deliver(),jComboBoxVidPla6tane.getSelectedIndex(),
                         numberDoc,userEdit,userLastEdit,
@@ -3511,7 +3511,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 strDate += "/" + String.valueOf(jXDateDocument.getDate().getYear()+1900);
                 String docFacadeDate = dateManip.convertDate(strDate);
                 
-                int numberDoc = Integer.parseInt(myParent.getNumberDocFacade());
+                 long numberDoc = Long.parseLong(myParent.getNumberDocFacade());
                 myParent.getCountriesT().updateRow(id_df,contragent_out,contragent_in,obekt_out,
                         obekt_in,myParent.getID_Distributor(),myParent.getID_Deliver(),jComboBoxVidPla6tane.getSelectedIndex(),
                         numberDoc,userEdit,userLastEdit,
@@ -3559,7 +3559,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 strDate += "/" + String.valueOf(jXDateDocument.getDate().getYear()+1900);
                 String docFacadeDate = dateManip.convertDate(strDate);
                 
-                int numberDoc = Integer.parseInt(myParent.getNumberDocFacade());
+                long numberDoc = Long.parseLong(myParent.getNumberDocFacade());
                 myParent.getCountriesT().updateRow(id_df,contragent_out,contragent_in,obekt_out,
                         obekt_in,myParent.getID_Distributor(),myParent.getID_Deliver(),jComboBoxVidPla6tane.getSelectedIndex(),
                         numberDoc,userEdit,userLastEdit,
@@ -3608,7 +3608,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 
                 
                 
-                int numberDoc = Integer.parseInt(myParent.getNumberDocFacade());
+                long numberDoc = Long.parseLong(myParent.getNumberDocFacade());
                 myParent.getCountriesT().updateRow(id_df,contragent_out,contragent_in,obekt_out,
                         obekt_in,myParent.getID_Distributor(),myParent.getID_Deliver(),jComboBoxVidPla6tane.getSelectedIndex(),
                         numberDoc,userEdit,userLastEdit,
@@ -3657,7 +3657,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 
                 
                 
-                int numberDoc = Integer.parseInt(myParent.getNumberDocFacade());
+                long numberDoc = Long.parseLong(myParent.getNumberDocFacade());
                 myParent.getCountriesT().updateRow(id_df,contragent_out,contragent_in,obekt_out,
                         obekt_in,myParent.getID_Distributor(),myParent.getID_Deliver(),jComboBoxVidPla6tane.getSelectedIndex(),
                         numberDoc,userEdit,userLastEdit,
@@ -3708,7 +3708,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 
                 
                 
-                int numberDoc = Integer.parseInt(myParent.getNumberDocFacade());
+                 long numberDoc = Long.parseLong(myParent.getNumberDocFacade());
                 myParent.getCountriesT().updateRow(id_df,contragent_out,contragent_in,obekt_out,
                         obekt_in,myParent.getID_Distributor(),myParent.getID_Deliver(),jComboBoxVidPla6tane.getSelectedIndex(),
                         numberDoc,userEdit,userLastEdit,
@@ -3758,7 +3758,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 
                 
                 
-                int numberDoc = Integer.parseInt(myParent.getNumberDocFacade());
+                long numberDoc = Long.parseLong(myParent.getNumberDocFacade());
                 myParent.getCountriesT().updateRow(id_df,contragent_out,contragent_in,obekt_out,
                         obekt_in,myParent.getID_Distributor(),myParent.getID_Deliver(),jComboBoxVidPla6tane.getSelectedIndex(),
                         numberDoc,userEdit,userLastEdit,
@@ -3817,7 +3817,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 String docFacadeDate = dateManip.convertDate(strDate);
                 
                 
-                int numberDoc = Integer.parseInt(myParent.getNumberDocFacade());
+                long numberDoc = Long.parseLong(myParent.getNumberDocFacade());
                 myParent.getCountriesT().updateRow(id_df,contragent_out,contragent_in,obekt_out,
                         obekt_in,myParent.getID_Distributor(),myParent.getID_Deliver(),jComboBoxVidPla6tane.getSelectedIndex(),
                         numberDoc,userEdit,userLastEdit,
@@ -3873,7 +3873,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 String docFacadeDate = dateManip.convertDate(strDate);
                 
                 
-                int numberDoc = Integer.parseInt(myParent.getNumberDocFacade());
+                 long numberDoc = Long.parseLong(myParent.getNumberDocFacade());
                 myParent.getCountriesT().updateRow(id_df,contragent_out,contragent_in,obekt_out,
                         obekt_in,myParent.getID_Distributor(),myParent.getID_Deliver(),jComboBoxVidPla6tane.getSelectedIndex(),
                         numberDoc,userEdit,userLastEdit,
@@ -3930,7 +3930,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 String docFacadeDate = dateManip.convertDate(strDate);
                 
                 
-                int numberDoc = Integer.parseInt(myParent.getNumberDocFacade());
+                 long numberDoc = Long.parseLong(myParent.getNumberDocFacade());
                 myParent.getCountriesT().updateRow(id_df,contragent_out,contragent_in,obekt_out,
                         obekt_in,myParent.getID_Distributor(),myParent.getID_Deliver(),jComboBoxVidPla6tane.getSelectedIndex(),
                         numberDoc,userEdit,userLastEdit,
@@ -3990,7 +3990,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 String docFacadeDate = dateManip.convertDate(strDate);
                 System.out.println("docFacadeDate :"+docFacadeDate);
                 
-                int numberDoc = Integer.parseInt(myParent.getNumberDocFacade());
+                 long numberDoc = Long.parseLong(myParent.getNumberDocFacade());
                 myParent.getCountriesT().updateRow(id_df,contragent_out,contragent_in,obekt_out,
                         obekt_in,myParent.getID_Distributor(),myParent.getID_Deliver(),jComboBoxVidPla6tane.getSelectedIndex(),
                         numberDoc,userEdit,userLastEdit,
@@ -4476,7 +4476,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         r = bd.doubleValue();
         return newDouble.valueOf(r);
     }
-    private void  deleteDocFacade(int type,int numberDocFadade, int level) {
+    private void  deleteDocFacade(int type,long numberDocFadade, int level) {
         myParent.getCountriesT().deleteRow(type,numberDocFadade,level);
     }
     private void cancellationDocFacade(int id_df) {
