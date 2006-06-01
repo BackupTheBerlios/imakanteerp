@@ -86,7 +86,6 @@ rep_documents.code_distributor, rep_documents.name_distributor,
 rep_documents.code_operator,
 rep_documents.code_speditor,
 ((rep_documents.totalall_dl*rep_documents.dds_dl)/100) AS dds, 
-rep_documents.total_df, rep_documents.dds_df, 
 rep_documents.code_product,
 rep_documents.name_product
 FROM rep_documents 
@@ -112,8 +111,6 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 	<field name="code_operator" class="java.lang.String"/>
 	<field name="code_speditor" class="java.lang.String"/>
 	<field name="dds" class="java.lang.Double"/>
-	<field name="total_df" class="java.math.BigDecimal"/>
-	<field name="dds_df" class="java.math.BigDecimal"/>
 	<field name="code_product" class="java.lang.String"/>
 	<field name="name_product" class="java.lang.String"/>
 
@@ -217,9 +214,9 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 				</line>
 				<textField isStretchWithOverflow="false" pattern="###0.00;-###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="224"
+						x="212"
 						y="4"
-						width="57"
+						width="69"
 						height="12"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -1360,7 +1357,7 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Helvetica" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
-				<textFieldExpression   class="java.util.Date"><![CDATA[new Date()]]></textFieldExpression>
+				<textFieldExpression   class="java.util.Date"><![CDATA[ new Date()]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -1416,7 +1413,7 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 						x="59"
 						y="7"
 						width="92"
-						height="10"
+						height="13"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
 						key="staticText-37"/>
@@ -1429,7 +1426,7 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 				<textField isStretchWithOverflow="false" pattern="###0.00;-###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="214"
-						y="6"
+						y="7"
 						width="67"
 						height="13"
 						key="textField"/>
@@ -1442,7 +1439,7 @@ GROUP BY con ORDER BY rep_documents.code_distributor ASC]]></queryString>
 				<textField isStretchWithOverflow="false" pattern="###0.00;-###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="282"
-						y="6"
+						y="7"
 						width="48"
 						height="13"
 						key="textField"/>
