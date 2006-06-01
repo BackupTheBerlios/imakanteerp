@@ -496,9 +496,10 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
     }
     
     private void newRecord() {
-        setId(internalObject.getMaxId());
-        setRight(3);        // 3 - default value - maximum restricted rights
         internalObject.insertRow(getUserMaster());
+        setId(internalObject.getMaxId());
+        setRight(3);        // 3 - default value - maximum unrestricted rights
+        
         nom.aeDoctypeUserRights ae_DTUR= new nom.aeDoctypeUserRights(this, true);
         ae_DTUR.setVisible(true);
         refreshTable();
