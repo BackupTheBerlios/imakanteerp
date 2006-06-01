@@ -31,6 +31,9 @@ public class priceToString {
     
     public void ConstString(){
         String p = "";
+        valString = "";
+        endString = "";
+        stot="";
         p = String.valueOf(getValue());
         System.out.println("value of p " + p);
         System.out.println("lenght p " + p.length());

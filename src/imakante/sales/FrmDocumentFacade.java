@@ -2001,7 +2001,7 @@ private void loadPrintReportJasper(int docType)
     if(rowSelect <0) return;
     int id_doc =(Integer) table.getValueAt(rowSelect,getColumnIndex("id_df"));
     String path = imakante.com.NewMain.getPathrep();
-    System.out.println(path);
+    System.out.println("ID_df="+ id_doc);
     switch(docType)
     {
         case aeDocumentFacade.OFERTA:
@@ -2194,6 +2194,7 @@ private String PriceToString( int id_doc, boolean withDDS)
     catch(Exception r)
     {};
     System.out.println("Price to String ="+price);
+    
     pts.setValue(price);
     pts.ConstString();
     StringPrice=pts.getEndString();
