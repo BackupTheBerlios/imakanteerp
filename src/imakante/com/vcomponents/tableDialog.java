@@ -9,7 +9,9 @@ import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.engine.JasperReport;
+import java.net.URI;
 public class tableDialog extends imakante.com.vcomponents.iDialog {
     
     public tableDialog(imakante.com.vcomponents.iInternalFrame frame, boolean modal, imakante.com.CustomTable table, String Title, String Header ) {
@@ -158,15 +160,23 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
     
     private void prepareJassper() throws FileNotFoundException{
         try {
-            jasperPrint = JasperFillManager.fillReport(new java.io.FileInputStream(new java.io.File((getClass().getResource(fileJasper)).toURI())),
+           
+          //  jasperPrint = JasperFillManager.fillReport(new java.io.FileInputStream(new java.io.File((getClass().getResource(fileJasper)).toURI())),
+         //           hm, conn);
+            
+            URI pathRep = new URI(fileJasper);
+            jasperPrint = JasperFillManager.fillReport(new java.io.FileInputStream(new java.io.File(pathRep)),
                     hm, conn);
             jrv = new net.sf.jasperreports.view.JRViewer(jasperPrint);
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
+            System.out.println("FileNotFoundException");
         } catch (URISyntaxException ex) {
             ex.printStackTrace();
+            System.out.println("URISyntaxException");
         } catch (JRException ex) {
             ex.printStackTrace();
+            System.out.println("JRException");
         }
         
         

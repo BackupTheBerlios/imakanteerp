@@ -2000,7 +2000,8 @@ private void loadPrintReportJasper(int docType)
     int rowSelect = table.getSelectedRow();
     if(rowSelect <0) return;
     int id_doc =(Integer) table.getValueAt(rowSelect,getColumnIndex("id_df"));
-    
+    String path = imakante.com.NewMain.getPathrep();
+    System.out.println(path);
     switch(docType)
     {
         case aeDocumentFacade.OFERTA:
@@ -2013,7 +2014,7 @@ private void loadPrintReportJasper(int docType)
             parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
            
             printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,getDocLineTable(id_doc),conn,parameterHashMap,
-                    "/imakante/sales/jasper/sales_offer.jasper","\u041e\u0424\u0415\u0420\u0422\u0410",
+                    path+"sales_offer.jasper","\u041e\u0424\u0415\u0420\u0422\u0410",
                     "\u041e\u0424\u0415\u0420\u0422\u0410");
             printReportDialog.setVisible(true);
             break;
@@ -2035,7 +2036,7 @@ private void loadPrintReportJasper(int docType)
             parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
           
             printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,getDocLineTable(id_doc),conn,parameterHashMap,
-                    "/imakante/sales/jasper/sales_Dan_fak.jasper","\u0414\u0410\u041d\u042a\u0427\u041d\u0410 \u0424\u0410\u041a\u0422\u0423\u0420\u0410",
+                   path+"sales_Dan_fak.jasper","\u0414\u0410\u041d\u042a\u0427\u041d\u0410 \u0424\u0410\u041a\u0422\u0423\u0420\u0410",
                     "\u0414\u0410\u041d\u042a\u0427\u041d\u0410 \u0424\u0410\u041a\u0422\u0423\u0420\u0410");
             printReportDialog.setVisible(true);
             break;
@@ -2057,7 +2058,7 @@ private void loadPrintReportJasper(int docType)
             parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
           
             printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,getDocLineTable(id_doc),conn,parameterHashMap,
-                    "/imakante/sales/jasper/sales_Opr_fak.jasper","\u041e\u041f\u0420\u041e\u0421\u0422\u0415\u041d\u0410 \u0424\u0410\u041a\u0422\u0423\u0420\u0410",
+                    path+"sales_Opr_fak.jasper","\u041e\u041f\u0420\u041e\u0421\u0422\u0415\u041d\u0410 \u0424\u0410\u041a\u0422\u0423\u0420\u0410",
                     "\u041e\u041f\u0420\u041e\u0421\u0422\u0415\u041d\u0410 \u0424\u0410\u041a\u0422\u0423\u0420\u0410");
             printReportDialog.setVisible(true);
             break;
@@ -2079,7 +2080,7 @@ private void loadPrintReportJasper(int docType)
             parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
           
             printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,getDocLineTable(id_doc),conn,parameterHashMap,
-                    "/imakante/sales/jasper/sales_stokova.jasper","\u0421\u0422\u041e\u041a\u041e\u0412\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410",
+                    path+"sales_stokova.jasper","\u0421\u0422\u041e\u041a\u041e\u0412\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410",
                     "\u0421\u0422\u041e\u041a\u041e\u0412\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410");
             printReportDialog.setVisible(true);
             break;
@@ -2096,7 +2097,7 @@ private void loadPrintReportJasper(int docType)
             parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
           
             printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,getDocLineTable(id_doc),conn,parameterHashMap,
-                    "/imakante/sales/jasper/sales_priem.jasper","\u041f\u0420\u0418\u0415\u041c\u0410\u0422\u0415\u041b\u041d\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410",
+                    path+"sales_priem.jasper","\u041f\u0420\u0418\u0415\u041c\u0410\u0422\u0415\u041b\u041d\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410",
                     "\u041f\u0420\u0418\u0415\u041c\u0410\u0422\u0415\u041b\u041d\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410");
             printReportDialog.setVisible(true);
             
@@ -2118,7 +2119,7 @@ private void loadPrintReportJasper(int docType)
             parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
           
             printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,getDocLineTable(id_doc),conn,parameterHashMap,
-                    "/imakante/sales/jasper/sales_lipsa.jasper","\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u041b\u0418\u041f\u0421\u0410",
+                    path+"sales_lipsa.jasper","\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u041b\u0418\u041f\u0421\u0410",
                     "\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u041b\u0418\u041f\u0421\u0410");
             printReportDialog.setVisible(true);
             break;
@@ -2135,7 +2136,7 @@ private void loadPrintReportJasper(int docType)
             parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
           
             printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,getDocLineTable(id_doc),conn,parameterHashMap,
-                    "/imakante/sales/jasper/sales_brak.jasper","\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u0411\u0420\u0410\u041a",
+                    path+"sales_brak.jasper","\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u0411\u0420\u0410\u041a",
                     "\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u0411\u0420\u0410\u041a");
             printReportDialog.setVisible(true);
             break;
@@ -2152,7 +2153,7 @@ private void loadPrintReportJasper(int docType)
             parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
           
             printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,getDocLineTable(id_doc),conn,parameterHashMap,
-                    "/imakante/sales/jasper/sales_nar_prehv.jasper","\u041d\u0410\u0420\u0415\u0416\u0414\u0410\u041d\u0415 \u0417\u0410 \u041f\u0420\u0415\u0425\u0412\u042a\u0420\u041b\u042f\u041d\u0415",
+                   path+"sales_nar_prehv.jasper","\u041d\u0410\u0420\u0415\u0416\u0414\u0410\u041d\u0415 \u0417\u0410 \u041f\u0420\u0415\u0425\u0412\u042a\u0420\u041b\u042f\u041d\u0415",
                     "\u041d\u0410\u0420\u0415\u0416\u0414\u0410\u041d\u0415 \u0417\u0410 \u041f\u0420\u0415\u0425\u0412\u042a\u0420\u041b\u042f\u041d\u0415");
             printReportDialog.setVisible(true);
             break;
