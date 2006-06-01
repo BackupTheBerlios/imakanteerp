@@ -1320,7 +1320,7 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
     {
     
         setID_DocFacade((Integer) table.getValueAt(getRow(), getColumnIndex("id_df")));                   //0
-        int tmp = (Integer) table.getValueAt(getRow(), getColumnIndex("Номер на документа"));   
+        long tmp = (Long) table.getValueAt(getRow(), getColumnIndex("Номер на документа"));   
         setNumberDocFacade(String.valueOf(tmp));                                                          //1
        
         java.sql.Date d1 = (java.sql.Date) table.getValueAt(getRow(),getColumnIndex("Дата на документа"));
