@@ -1414,22 +1414,22 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         int nubColums = 0;
         nubColums =+ 1;
         if (this.jCheckBox13.isSelected()) 
-            this.setReportFile("/imakante/sales/jasper/report_Documents.jasper");
+            this.setReportFile("report_Documents.jasper");
         else if (this.jCheckBox14.isSelected()) 
-            this.setReportFile("/imakante/sales/jasper/report_Documents2RazbivkaSklad.jasper");
+            this.setReportFile("report_Documents2RazbivkaSklad.jasper");
         else if (this.jCheckBox15.isSelected()) 
-            this.setReportFile("/imakante/sales/jasper/report_Documents2RazbivkaKlienti.jasper");
+            this.setReportFile("report_Documents2RazbivkaKlienti.jasper");
         else if (this.jCheckBox16.isSelected()) 
-            this.setReportFile("/imakante/sales/jasper/report_Documents2RazbivkaProd.jasper");
+            this.setReportFile("report_Documents2RazbivkaProd.jasper");
         else if (this.jCheckBox17.isSelected()) 
-            this.setReportFile("/imakante/sales/jasper/report_Documents.jasper");
+            this.setReportFile("report_Documents.jasper");
         else if (this.jCheckBox18.isSelected()) 
-            this.setReportFile("/imakante/sales/jasper/report_Documents2RazbivkaDistributor.jasper");
+            this.setReportFile("report_Documents2RazbivkaDistributor.jasper");
         else if (this.jCheckBox19.isSelected()) 
-            this.setReportFile("/imakante/sales/jasper/report_Documents2RazbivkaOperator.jasper");
+            this.setReportFile("report_Documents2RazbivkaOperator.jasper");
         else if (this.jCheckBox20.isSelected()) 
-            this.setReportFile("/imakante/sales/jasper/report_Documents.jasper");
-        else this.setReportFile("/imakante/sales/jasper/report_Documents.jasper");
+            this.setReportFile("report_Documents.jasper");
+        else this.setReportFile("report_Documents.jasper");
         if (!this.jCheckBox13.isSelected()) newString = newString + ", IFNULL(rep_documents.date_edition_df, 0)";
         if (!this.jCheckBox14.isSelected()) newString = newString + ", IFNULL(rep_documents.code_store, 0)";
         if (!this.jCheckBox15.isSelected()) newString = newString + ", IFNULL(rep_documents.code_client, 0)";
