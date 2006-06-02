@@ -164,16 +164,14 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
           //  jasperPrint = JasperFillManager.fillReport(new java.io.FileInputStream(new java.io.File((getClass().getResource(fileJasper)).toURI())),
          //           hm, conn);
             
-            URI pathRep = new URI(fileJasper);
+            String pathRep = imakante.com.NewMain.getPathrep()+this.fileJasper;
             jasperPrint = JasperFillManager.fillReport(new java.io.FileInputStream(new java.io.File(pathRep)),
                     hm, conn);
             jrv = new net.sf.jasperreports.view.JRViewer(jasperPrint);
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
             System.out.println("FileNotFoundException");
-        } catch (URISyntaxException ex) {
-            ex.printStackTrace();
-            System.out.println("URISyntaxException");
+        
         } catch (JRException ex) {
             ex.printStackTrace();
             System.out.println("JRException");
