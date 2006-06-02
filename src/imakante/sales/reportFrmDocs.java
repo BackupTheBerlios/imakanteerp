@@ -1416,7 +1416,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         if (this.jCheckBox13.isSelected()) 
             this.setReportFile("/imakante/sales/jasper/report_Documents.jasper");
         else if (this.jCheckBox14.isSelected()) 
-            this.setReportFile("/imakante/sales/jasper/report_Documents.jasper");
+            this.setReportFile("/imakante/sales/jasper/report_Documents2RazbivkaSklad.jasper");
         else if (this.jCheckBox15.isSelected()) 
             this.setReportFile("/imakante/sales/jasper/report_Documents2RazbivkaKlienti.jasper");
         else if (this.jCheckBox16.isSelected()) 
