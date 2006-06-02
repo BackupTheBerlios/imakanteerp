@@ -27,25 +27,25 @@
 		<defaultValueExpression ><![CDATA["2000-01-01"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="otsklad" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["0"]]></defaultValueExpression>
+		<defaultValueExpression ><![CDATA["1"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="otklient" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["0"]]></defaultValueExpression>
+		<defaultValueExpression ><![CDATA["1"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="otstoka" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["0"]]></defaultValueExpression>
+		<defaultValueExpression ><![CDATA["1"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="otdostavchik" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["0"]]></defaultValueExpression>
+		<defaultValueExpression ><![CDATA["1"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="otdistributor" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["0"]]></defaultValueExpression>
+		<defaultValueExpression ><![CDATA["1"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="otoperator" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["0"]]></defaultValueExpression>
+		<defaultValueExpression ><![CDATA["1"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="otspeditor" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["0"]]></defaultValueExpression>
+		<defaultValueExpression ><![CDATA["1"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="dodata" isForPrompting="false" class="java.lang.String">
 		<defaultValueExpression ><![CDATA["2079-01-01"]]></defaultValueExpression>
@@ -89,12 +89,12 @@ rep_documents.total_df, rep_documents.dds_df
 FROM rep_documents 
 WHERE  rep_documents.type_df IN(000, 202, 201, 600, 700, 100, 500, 800, 900)  
 AND rep_documents.date_edition_df BETWEEN $P{otdata} AND $P{dodata} 
-AND rep_documents.code_store BETWEEN $P{otsklad} AND $P{dosklad} 
-AND rep_documents.code_product BETWEEN $P{otstoka} AND $P{dostoka} 
-AND rep_documents.code_dostavchik BETWEEN $P{otdostavchik} AND $P{dodostavchik} 
-AND rep_documents.code_distributor BETWEEN $P{otdistributor} AND $P{dodistributor} 
-AND rep_documents.code_operator BETWEEN $P{otoperator} AND $P{dooperator} 
-AND rep_documents.code_speditor BETWEEN $P{otspeditor} AND $P{dospeditor} 
+AND rep_documents.code_store BETWEEN ($P{otsklad} - 1) AND ($P{dosklad} + 1) 
+AND rep_documents.code_product BETWEEN ($P{otstoka} - 1) AND ($P{dostoka} + 1) 
+AND rep_documents.code_dostavchik BETWEEN ($P{otdostavchik} - 1) AND ($P{dodostavchik} + 1) 
+AND rep_documents.code_distributor BETWEEN ($P{otdistributor} - 1) AND ($P{dodistributor} + 1) 
+AND rep_documents.code_operator BETWEEN ($P{otoperator} - 1) AND ($P{dooperator} + 1) 
+AND rep_documents.code_speditor BETWEEN ($P{otspeditor} - 1) AND ($P{dospeditor} + 1) 
 AND rep_documents.level_df IN(0,1) 
 GROUP BY con ORDER BY rep_documents.date_edition_df ASC]]></queryString>
 
@@ -770,7 +770,7 @@ GROUP BY con ORDER BY rep_documents.date_edition_df ASC]]></queryString>
 					<reportElement
 						x="177"
 						y="4"
-						width="50"
+						width="52"
 						height="16"
 						forecolor="#FFFFFF"
 						key="staticText-30"/>
@@ -782,9 +782,9 @@ GROUP BY con ORDER BY rep_documents.date_edition_df ASC]]></queryString>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="228"
+						x="230"
 						y="4"
-						width="37"
+						width="49"
 						height="16"
 						forecolor="#FFFFFF"
 						key="staticText-31"/>
@@ -792,13 +792,13 @@ GROUP BY con ORDER BY rep_documents.date_edition_df ASC]]></queryString>
 					<textElement textAlignment="Right">
 						<font fontName="Tahoma" size="8"/>
 					</textElement>
-				<text><![CDATA[ДДС]]></text>
+				<text><![CDATA[ДДС ]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="267"
+						x="280"
 						y="4"
-						width="45"
+						width="36"
 						height="16"
 						forecolor="#FFFFFF"
 						key="staticText-32"/>
@@ -810,9 +810,9 @@ GROUP BY con ORDER BY rep_documents.date_edition_df ASC]]></queryString>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="313"
+						x="317"
 						y="4"
-						width="55"
+						width="51"
 						height="16"
 						forecolor="#FFFFFF"
 						key="staticText-33"/>
@@ -876,13 +876,13 @@ GROUP BY con ORDER BY rep_documents.date_edition_df ASC]]></queryString>
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="16"  isSplitAllowed="true" >
+			<band height="12"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="2"
 						y="0"
 						width="55"
-						height="16"
+						height="12"
 						key="textField-20"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Right">
@@ -895,7 +895,7 @@ GROUP BY con ORDER BY rep_documents.date_edition_df ASC]]></queryString>
 						x="58"
 						y="0"
 						width="60"
-						height="16"
+						height="12"
 						key="textField-21"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center">
@@ -908,7 +908,7 @@ GROUP BY con ORDER BY rep_documents.date_edition_df ASC]]></queryString>
 						x="120"
 						y="0"
 						width="55"
-						height="16"
+						height="12"
 						key="textField-22"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center">
@@ -920,8 +920,8 @@ GROUP BY con ORDER BY rep_documents.date_edition_df ASC]]></queryString>
 					<reportElement
 						x="177"
 						y="0"
-						width="50"
-						height="16"
+						width="52"
+						height="12"
 						key="textField-23"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Right">
@@ -931,10 +931,10 @@ GROUP BY con ORDER BY rep_documents.date_edition_df ASC]]></queryString>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="228"
+						x="230"
 						y="0"
-						width="37"
-						height="16"
+						width="49"
+						height="12"
 						key="textField-24"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Right">
@@ -944,10 +944,10 @@ GROUP BY con ORDER BY rep_documents.date_edition_df ASC]]></queryString>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="267"
+						x="280"
 						y="0"
-						width="45"
-						height="16"
+						width="36"
+						height="12"
 						key="textField-25"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center">
@@ -957,10 +957,10 @@ GROUP BY con ORDER BY rep_documents.date_edition_df ASC]]></queryString>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="313"
+						x="317"
 						y="0"
-						width="55"
-						height="16"
+						width="51"
+						height="12"
 						key="textField-26"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center">
@@ -973,7 +973,7 @@ GROUP BY con ORDER BY rep_documents.date_edition_df ASC]]></queryString>
 						x="369"
 						y="0"
 						width="55"
-						height="16"
+						height="12"
 						key="textField-27"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center">
@@ -986,7 +986,7 @@ GROUP BY con ORDER BY rep_documents.date_edition_df ASC]]></queryString>
 						x="424"
 						y="0"
 						width="54"
-						height="16"
+						height="12"
 						key="textField-28"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center">
@@ -999,7 +999,7 @@ GROUP BY con ORDER BY rep_documents.date_edition_df ASC]]></queryString>
 						x="479"
 						y="0"
 						width="52"
-						height="16"
+						height="12"
 						key="textField-29"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center">
@@ -1066,13 +1066,13 @@ GROUP BY con ORDER BY rep_documents.date_edition_df ASC]]></queryString>
 			</band>
 		</pageFooter>
 		<summary>
-			<band height="17"  isSplitAllowed="true" >
+			<band height="19"  isSplitAllowed="true" >
 				<staticText>
 					<reportElement
 						x="119"
 						y="3"
-						width="54"
-						height="12"
+						width="36"
+						height="13"
 						key="staticText-37"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
@@ -1080,31 +1080,35 @@ GROUP BY con ORDER BY rep_documents.date_edition_df ASC]]></queryString>
 					</textElement>
 				<text><![CDATA[ ОБЩО]]></text>
 				</staticText>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+				<textField isStretchWithOverflow="false" pattern="#,##0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="175"
+						mode="Opaque"
+						x="163"
 						y="3"
-						width="53"
-						height="12"
+						width="66"
+						height="13"
+						backcolor="#CCCCFF"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Right">
-						<font/>
+						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" size="9" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$V{SUM_total_df_1}]]></textFieldExpression>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$V{SUM_total_df_1} ]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+				<textField isStretchWithOverflow="false" pattern="#,##0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="229"
+						mode="Opaque"
+						x="231"
 						y="3"
-						width="41"
-						height="12"
+						width="48"
+						height="13"
+						backcolor="#CCCCFF"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Right">
-						<font/>
+						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" size="9" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$V{SUM_dds_df_1}]]></textFieldExpression>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$V{SUM_dds_df_1} ]]></textFieldExpression>
 				</textField>
 				<line direction="TopDown">
 					<reportElement
