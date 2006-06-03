@@ -5,7 +5,7 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
     
     public FrmDoctypeUserRights(String title, imakante.com.vcomponents.iFrame frame) {
         super(title);
-        myframe = frame;
+        myframe =(imakante.sales.sales_main) frame;
         prepareConn();
         constructObject();
         initTable();
@@ -234,7 +234,8 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
     private  boolean atEnd = false;
     private int row;
     
-    private  imakante.com.vcomponents.iFrame myframe;
+    //private  imakante.com.vcomponents.iFrame myframe;
+    private  imakante.sales.sales_main myframe;
     private  java.sql.Connection conn;
     private  java.sql.ResultSet rs;
     private  nom.dbDoctypeUserRights internalObject;
@@ -332,7 +333,7 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
     }
     
     public void setMyframe(imakante.com.vcomponents.iFrame val) {
-        this.myframe = val;
+        this.myframe =(imakante.sales.sales_main) val;
     }
     public  boolean isAtBegining() {
         return atBegining;
@@ -576,4 +577,9 @@ public class FrmDoctypeUserRights extends  imakante.com.vcomponents.iInternalFra
         setDoctypeNumber((Integer) table.getValueAt(getRow(), getColumnIndex("id_sdtn")));
         setRight((Integer) table.getValueAt(getRow(), getColumnIndex("rights_ndtur")));
     }
+ public void initRightsArea()
+ {
+    myframe.loadRightsArea();
+     
+ }
 }

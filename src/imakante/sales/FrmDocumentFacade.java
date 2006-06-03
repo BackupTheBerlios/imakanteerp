@@ -2000,7 +2000,7 @@ private void loadPrintReportJasper(int docType)
     int rowSelect = table.getSelectedRow();
     if(rowSelect <0) return;
     int id_doc =(Integer) table.getValueAt(rowSelect,getColumnIndex("id_df"));
-    String path = imakante.com.NewMain.getPathrep();
+    String path = "";
     System.out.println("ID_df="+ id_doc);
     switch(docType)
     {

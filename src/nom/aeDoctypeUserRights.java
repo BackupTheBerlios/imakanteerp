@@ -341,6 +341,7 @@ public class aeDoctypeUserRights extends imakante.com.vcomponents.iDialog {
         myParent.refreshTable();
         myParent.getTable().changeSelection(myParent.getRow(), 2, false, false);
         jButtonUndo.setEnabled(true);
+        myParent.initRightsArea();
     }
     
     //UNDO

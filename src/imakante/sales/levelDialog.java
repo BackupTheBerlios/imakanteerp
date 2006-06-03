@@ -13,6 +13,11 @@ public class levelDialog extends javax.swing.JDialog {
         initComponents();
         constructComboNames();
         writeH();
+        if(hash.size()<0|| hash==null)
+        {
+            
+            this.dispose();
+        }
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -256,6 +261,10 @@ public class levelDialog extends javax.swing.JDialog {
         if (modul == 702) { frame.loadCasaOut(getLevel(), getKey()); }
         if (modul == 703) { frame.loadAdvances(getLevel(), getKey()); }
         if (modul == 704) { frame.loadC2C(getLevel(), getKey()); }
+        if (modul == 202) { frame.loadDanFac(getKey(),getLevel());}
+                            
+                
+                            
         
         
         this.dispose();

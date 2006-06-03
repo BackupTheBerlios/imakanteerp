@@ -96,6 +96,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         this.isNew = isnew;
         
         initComponents();
+        jLabelLevel.setText(String.valueOf(myParent.getDocFacadeLevel()));
         selectDocumentTypeToView(DocFacadeType);
         jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -201,6 +202,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jXDateDocument = new org.jdesktop.swingx.JXDatePicker();
         jLabel24 = new javax.swing.JLabel();
         jXDateCurs = new org.jdesktop.swingx.JXDatePicker();
+        jLabelLevel = new javax.swing.JLabel();
         jPanelContragent = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -302,7 +304,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setPreferredSize(new java.awt.Dimension(400, 300));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("\u041d\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u044f"));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Навигация"));
         jPanel3.setPreferredSize(new java.awt.Dimension(230, 70));
         jButtonToBegin.setText("<<");
         jButtonToBegin.addActionListener(new java.awt.event.ActionListener() {
@@ -346,14 +348,14 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanelHead.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanelHead.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabel1.setText("\u041d\u043e\u043c\u0435\u0440 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442:");
+        jLabel1.setText("Номер документ:");
         jPanelHead.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jLabel2.setText("\u0414\u0430\u0442\u0430:");
+        jLabel2.setText("Дата:");
         jPanelHead.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
 
         jLabelDocType.setFont(new java.awt.Font("Tahoma", 1, 16));
-        jLabelDocType.setText("\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u041b\u0418\u041f\u0421\u0410");
+        jLabelDocType.setText("ПРОТОКОЛ ЗА ЛИПСА");
         jPanelHead.add(jLabelDocType, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
 
         jTextFieldNomerDoc.setInputVerifier(new imakante.com.InputIntegerVerifier());
@@ -375,7 +377,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jXDateDocument.setPreferredSize(new java.awt.Dimension(127, 20));
         jPanelHead.add(jXDateDocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, -1));
 
-        jLabel24.setText("\u0414\u0430\u0442\u0430 \u043d\u0430 \u043a\u0443\u0440\u0441:");
+        jLabel24.setText("Дата на курс:");
         jPanelHead.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, -1));
 
         jXDateCurs.addActionListener(new java.awt.event.ActionListener() {
@@ -386,19 +388,23 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jPanelHead.add(jXDateCurs, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, -1, -1));
 
+        jLabelLevel.setForeground(new java.awt.Color(255, 51, 51));
+        jLabelLevel.setText("jLabel31");
+        jPanelHead.add(jLabelLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+
         jPanel2.add(jPanelHead);
         jPanelHead.setBounds(0, 0, 490, 70);
 
         jPanelContragent.setLayout(new java.awt.GridBagLayout());
 
         jPanelContragent.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabel3.setText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442 No:");
+        jLabel3.setText("Контрагент No:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(10, 20, 5, 5);
         jPanelContragent.add(jLabel3, gridBagConstraints);
 
-        jLabel4.setText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442 \u0438\u043c\u0435:");
+        jLabel4.setText("Контрагент име:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
@@ -406,7 +412,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         gridBagConstraints.insets = new java.awt.Insets(10, 20, 5, 5);
         jPanelContragent.add(jLabel4, gridBagConstraints);
 
-        jLabel5.setText("\u0411\u0443\u043b\u0441\u0442\u0430\u0442:");
+        jLabel5.setText("Булстат:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -414,7 +420,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         gridBagConstraints.insets = new java.awt.Insets(0, 20, 5, 5);
         jPanelContragent.add(jLabel5, gridBagConstraints);
 
-        jLabel6.setText("\u0414\u0430\u043d.No:");
+        jLabel6.setText("Дан.No:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -422,7 +428,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         gridBagConstraints.insets = new java.awt.Insets(0, 20, 5, 5);
         jPanelContragent.add(jLabel6, gridBagConstraints);
 
-        jLabel7.setText("\u0437\u0430\u0434\u044a\u043b\u0436\u0435\u043d\u0438\u044f:");
+        jLabel7.setText("задължения:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
@@ -430,7 +436,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         gridBagConstraints.insets = new java.awt.Insets(0, 20, 5, 5);
         jPanelContragent.add(jLabel7, gridBagConstraints);
 
-        jLabel8.setText("\u0410\u0434\u0440\u0435\u0441:");
+        jLabel8.setText("Адрес:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -438,7 +444,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         gridBagConstraints.insets = new java.awt.Insets(0, 20, 5, 5);
         jPanelContragent.add(jLabel8, gridBagConstraints);
 
-        jLabel9.setText("\u0422\u0435\u043b:");
+        jLabel9.setText("Тел:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 3;
@@ -446,7 +452,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         gridBagConstraints.insets = new java.awt.Insets(0, 20, 5, 5);
         jPanelContragent.add(jLabel9, gridBagConstraints);
 
-        jLabel10.setText("\u041f\u0440\u043e\u0441\u0440\u043e\u0447\u0432\u0430\u043d\u0435:");
+        jLabel10.setText("Просрочване:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 3;
@@ -568,7 +574,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 5);
         jPanelContragent.add(jTextFieldProsro4vane, gridBagConstraints);
 
-        jLabel15.setText("\u041c\u041e\u041b \u0438\u043c\u0435:");
+        jLabel15.setText("МОЛ име:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
@@ -597,13 +603,13 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanelObekt.setLayout(new java.awt.GridBagLayout());
 
         jPanelObekt.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabel11.setText("\u041e\u0431\u0435\u043a\u0442 No:");
+        jLabel11.setText("Обект No:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(10, 20, 5, 5);
         jPanelObekt.add(jLabel11, gridBagConstraints);
 
-        jLabel12.setText("\u0422\u0435\u043b.:");
+        jLabel12.setText("Тел.:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -611,7 +617,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         gridBagConstraints.insets = new java.awt.Insets(0, 20, 10, 5);
         jPanelObekt.add(jLabel12, gridBagConstraints);
 
-        jLabel13.setText("\u0418\u043c\u0435:");
+        jLabel13.setText("Име:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -619,7 +625,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         gridBagConstraints.insets = new java.awt.Insets(0, 20, 10, 5);
         jPanelObekt.add(jLabel13, gridBagConstraints);
 
-        jLabel14.setText("\u0410\u0434\u0440\u0435\u0441:");
+        jLabel14.setText("Адрес:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
@@ -694,7 +700,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel4.setPreferredSize(new java.awt.Dimension(446, 60));
-        jLabel16.setText("\u0414\u0438\u0441\u0442\u0440.:");
+        jLabel16.setText("Дистр.:");
         jPanel4.add(jLabel16);
 
         jTextFieldDistr.setPreferredSize(new java.awt.Dimension(80, 20));
@@ -706,7 +712,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jPanel4.add(jTextFieldDistr);
 
-        jLabel17.setText("\u0414\u043e\u0441\u0442.:");
+        jLabel17.setText("Дост.:");
         jPanel4.add(jLabel17);
 
         jTextFieldDeliver.setPreferredSize(new java.awt.Dimension(80, 20));
@@ -718,7 +724,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jPanel4.add(jTextFieldDeliver);
 
-        jLabel18.setText("\u0414\u0430\u0442\u0430 :");
+        jLabel18.setText("Дата :");
         jPanel4.add(jLabel18);
 
         jXDateDeliver.setPreferredSize(new java.awt.Dimension(100, 24));
@@ -744,14 +750,14 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanelPrice.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 15));
 
         jPanelPrice.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabel19.setText("\u0412\u0438\u0434 \u043f\u043b\u0430\u0449\u0430\u043d\u0435:");
+        jLabel19.setText("Вид плащане:");
         jPanelPrice.add(jLabel19);
 
         jComboBoxVidPla6tane.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "\u041e\u0422\u041b\u041e\u0416\u0415\u041d\u041e", "\u0411\u0420\u041e\u0419", "\u0411\u0410\u041d\u041a\u0410", "\u0427\u0410\u0421\u0422\u0418\u0427\u041d\u041e" }));
         jComboBoxVidPla6tane.setPreferredSize(new java.awt.Dimension(100, 20));
         jPanelPrice.add(jComboBoxVidPla6tane);
 
-        jLabel20.setText("\u0414\u0430\u0442\u0430:");
+        jLabel20.setText("Дата:");
         jPanelPrice.add(jLabel20);
 
         jPanelPrice.add(jXDatePay);
@@ -762,10 +768,10 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabelDDSOsnovaText.setText("\u0414\u0430\u043d\u044a\u0447\u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0430:");
+        jLabelDDSOsnovaText.setText("Данъчна основа:");
         jPanel5.add(jLabelDDSOsnovaText, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
-        jLabelAllDDSText.setText("\u0414\u0414\u0421:");
+        jLabelAllDDSText.setText("ДДС:");
         jPanel5.add(jLabelAllDDSText, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, -1));
 
         jLabelDDSOsnova.setText("0.0");
@@ -775,7 +781,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanel5.add(jLabelAllDDS, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
 
         jLabel28.setFont(new java.awt.Font("Tahoma", 1, 11));
-        jLabel28.setText("\u041e\u0411\u0429\u041e");
+        jLabel28.setText("ОБЩО");
         jPanel5.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
 
         jLabelAllTotal.setFont(new java.awt.Font("Tahoma", 1, 11));
@@ -785,7 +791,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanel2.add(jPanel5);
         jPanel5.setBounds(357, 510, 370, 60);
 
-        jButtonCreateDocFacade.setText("\u0421\u044a\u0437\u0434\u0430\u0432\u0430\u043d\u0435 \u043d\u0430 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442");
+        jButtonCreateDocFacade.setText("Създаване на документ");
         jButtonCreateDocFacade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCreateDocFacadeActionPerformed(evt);
@@ -798,7 +804,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabel30.setText("\u041d\u0430\u043b\u0438\u0447\u043d\u0438:");
+        jLabel30.setText("Налични:");
         jPanel6.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabelAllBrojProduct.setText("00");
@@ -810,14 +816,14 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanelPriceList.setLayout(new java.awt.GridBagLayout());
 
         jPanelPriceList.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabelPricelist_1.setText("\u0426\u0435\u043d\u0430 1:");
+        jLabelPricelist_1.setText("Цена 1:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 5);
         jPanelPriceList.add(jLabelPricelist_1, gridBagConstraints);
 
-        jLabelPricelist_2.setText("\u0426\u0435\u043d\u0430 2:");
+        jLabelPricelist_2.setText("Цена 2:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -841,14 +847,14 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 5);
         jPanelPriceList.add(jLabelPrice_2, gridBagConstraints);
 
-        jLabel25.setText("\u0412\u0430\u043b\u0443\u0442\u0430:");
+        jLabel25.setText("Валута:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 5);
         jPanelPriceList.add(jLabel25, gridBagConstraints);
 
-        jLabelValuta.setText("\u043b\u0432.");
+        jLabelValuta.setText("лв.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
@@ -876,7 +882,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jSplitPane1.setOneTouchExpandable(true);
         jSplitPane1.setPreferredSize(new java.awt.Dimension(200, 50));
         jPanelComent.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabel23.setText("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440:");
+        jLabel23.setText("Коментар:");
 
         jTextFieldComment.setPreferredSize(new java.awt.Dimension(300, 20));
 
@@ -903,11 +909,11 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jSplitPane1.setLeftComponent(jPanelComent);
 
         jPanelUser.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabel21.setText("\u0418\u0437\u0434\u0430\u043b:");
+        jLabel21.setText("Издал:");
 
         jTextFieldUserEdit.setPreferredSize(new java.awt.Dimension(80, 20));
 
-        jLabel22.setText("\u041f\u043e\u0441\u043b\u0435\u0434\u043d\u0430 \u043f\u0440\u0435\u0440\u0430\u0431\u043e\u0442\u043a\u0430:");
+        jLabel22.setText("Последна преработка:");
 
         jTextFieldUserLastEdit.setPreferredSize(new java.awt.Dimension(100, 20));
 
@@ -942,7 +948,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanel2.add(jSplitPane1);
         jSplitPane1.setBounds(0, 570, 730, 50);
 
-        jButton2.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435 \u043d\u0430 \u043b\u0438\u043d\u0438\u044f");
+        jButton2.setText("Изтриване на линия");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -952,7 +958,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanel2.add(jButton2);
         jButton2.setBounds(10, 620, 150, 23);
 
-        jButtonAnulirane.setText("\u0410\u043d\u0443\u043b\u0438\u0440\u0430\u043d\u0435");
+        jButtonAnulirane.setText("Анулиране");
         jButtonAnulirane.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAnuliraneActionPerformed(evt);
@@ -962,7 +968,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanel2.add(jButtonAnulirane);
         jButtonAnulirane.setBounds(330, 620, 87, 23);
 
-        jButtonDellDocFadade.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435 \u043d\u0430 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442");
+        jButtonDellDocFadade.setText("Изтриване на документ");
         jButtonDellDocFadade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonDellDocFadadeActionPerformed(evt);
@@ -972,7 +978,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanel2.add(jButtonDellDocFadade);
         jButtonDellDocFadade.setBounds(420, 620, 153, 23);
 
-        jButton3.setText("\u0414\u043e\u0431\u0430\u0432\u044f\u043d\u0435 \u043d\u0430 \u043b\u0438\u043d\u0438\u044f");
+        jButton3.setText("Добавяне на линия");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -985,7 +991,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanelStorageINOUT.setLayout(new java.awt.GridBagLayout());
 
         jPanelStorageINOUT.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabel26.setText("\u041e\u0422:");
+        jLabel26.setText("ОТ:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -1003,7 +1009,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanelStorageINOUT.add(jTextFieldStorageFROM, gridBagConstraints);
 
-        jLabel27.setText("\u041a\u042a\u041c:");
+        jLabel27.setText("КЪМ:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -1021,19 +1027,19 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanelStorageINOUT.add(jTextFieldStorageTO, gridBagConstraints);
 
-        jLabel29.setText("\u0421\u043a\u043b\u0430\u0434\u043e\u0432\u0435:");
+        jLabel29.setText("Складове:");
         jPanelStorageINOUT.add(jLabel29, new java.awt.GridBagConstraints());
 
         jPanel2.add(jPanelStorageINOUT);
         jPanelStorageINOUT.setBounds(0, 70, 300, 50);
 
         jLabelInfoCurs.setForeground(new java.awt.Color(255, 0, 51));
-        jLabelInfoCurs.setText("\u041d\u0435 \u0435 \u0438\u0437\u0431\u0440\u0430\u043d\u0430 \u043f\u043e\u0434\u0445\u043e\u0434\u044f\u0449\u0430 \u0434\u0430\u0442\u0430!");
+        jLabelInfoCurs.setText("Не е избрана подходяща дата!");
         jPanel2.add(jLabelInfoCurs);
         jLabelInfoCurs.setBounds(560, 680, 160, 14);
 
         jButtonClose.setFont(new java.awt.Font("Tahoma", 1, 11));
-        jButtonClose.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
+        jButtonClose.setText("Затвори");
         jButtonClose.setPreferredSize(new java.awt.Dimension(100, 23));
         jButtonClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1046,8 +1052,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jPanelCreateFacturi.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
 
-        jPanelCreateFacturi.setBorder(javax.swing.BorderFactory.createTitledBorder("\u0417\u0430 \u0444\u0430\u043a\u0442\u0443\u0440\u0430"));
-        jCheckBox1.setText("\u0417\u0430 \u0441\u044a\u0437\u0434\u0430\u0432\u0430\u043d\u0435 \u043d\u0430 \u0444\u0430\u043a\u0442\u0443\u0440\u0430");
+        jPanelCreateFacturi.setBorder(javax.swing.BorderFactory.createTitledBorder("За фактура"));
+        jCheckBox1.setText("За създаване на фактура");
         jCheckBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox1.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -1058,7 +1064,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jPanelCreateFacturi.add(jCheckBox1);
 
-        jButton1.setText("\u0421\u044a\u0437\u0434\u0430\u0432\u0430\u043d\u0435 \u043d\u0430 \u0444\u0430\u043a\u0442\u0443\u0440\u0430...");
+        jButton1.setText("Създаване на фактура...");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -1796,6 +1802,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private javax.swing.JLabel jLabelDDSOsnovaText;
     private javax.swing.JLabel jLabelDocType;
     private javax.swing.JLabel jLabelInfoCurs;
+    private javax.swing.JLabel jLabelLevel;
     private javax.swing.JLabel jLabelPrice_1;
     private javax.swing.JLabel jLabelPrice_2;
     private javax.swing.JLabel jLabelPricelist_1;
