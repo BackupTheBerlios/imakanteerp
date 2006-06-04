@@ -637,7 +637,7 @@
             <Component class="javax.swing.JTextField" name="jTextFieldIBAN_D">
               <Properties>
                 <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="jTextFieldBIC_R"/>
+                  <ComponentRef name="jTextFieldBIC_D"/>
                 </Property>
               </Properties>
               <Events>
@@ -652,7 +652,7 @@
             <Component class="javax.swing.JTextField" name="jTextFieldBIC_D">
               <Properties>
                 <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="jComboBoxValutaR"/>
+                  <ComponentRef name="jComboBoxValutaD"/>
                 </Property>
               </Properties>
               <Events>

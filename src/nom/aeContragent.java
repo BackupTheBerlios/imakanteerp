@@ -326,7 +326,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
 
             jLabel5.setText("IBAN \u043d\u0430 \u0414\u0414\u0421 \u0421\u041c\u0415\u0422\u041a\u0410");
 
-            jTextFieldIBAN_D.setNextFocusableComponent(jTextFieldBIC_R);
+            jTextFieldIBAN_D.setNextFocusableComponent(jTextFieldBIC_D);
             jTextFieldIBAN_D.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
                     jTextFieldIBAN_DKeyPressed(evt);
@@ -335,7 +335,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
 
             jLabel6.setText("BIC \u043d\u0430 \u0431\u0430\u043d\u043a\u0430\u0442\u0430 \u043f\u043e\u043b\u0443\u0447\u0430\u0442\u0435\u043b \u0414\u0414\u0421");
 
-            jTextFieldBIC_D.setNextFocusableComponent(jComboBoxValutaR);
+            jTextFieldBIC_D.setNextFocusableComponent(jComboBoxValutaD);
             jTextFieldBIC_D.setInputVerifier(new imakante.com.InputCharacterVerifier());
             jTextFieldBIC_D.addFocusListener(new java.awt.event.FocusAdapter() {
                 public void focusLost(java.awt.event.FocusEvent evt) {
@@ -791,7 +791,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
             }
         }
          if(java.awt.event.KeyEvent.VK_ENTER== evt.getKeyCode()){
-            jButton1.grabFocus();
+            jTextFieldOSO.transferFocus();
         }
     }//GEN-LAST:event_jTextFieldOSOKeyPressed
     
@@ -872,7 +872,9 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
                         myParent.getBIC_R(),myParent.getBIC_D(),
                         myParent.getValita_D(),myParent.getValita_R()
                         );
-                
+              JOptionPane.showMessageDialog(this, "\u0423\u0441\u043F\u0435\u0448\u0435\u043D \u0437\u0430\u043F\u0438\u0441"); 
+              myParent.refreshTable();
+             jButton3.doClick();  
             }
         } else  // zapisa  sy6testvuva v bazata!!
         {
@@ -912,11 +914,13 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
                     myParent.getValita_D(),myParent.getValita_R());
             int newIdContragent  = myParent.getContragentDB().getMaxId();
             myParent.getContragentDB().updateIDProductContragent(myParent.getId(),newIdContragent,1);
-            
+            JOptionPane.showMessageDialog(this, "\u0423\u0441\u043F\u0435\u0448\u043D\u0430 \u043F\u0440\u043E\u043C\u044F\u043D\u0430");
+             myParent.refreshTable();
+            jButton3.doClick();
         }
         
-       myParent.refreshTable();
-       jButton3.doClick(); // zatvarq se aeContragen
+      
+      // zatvarq se aeContragen
     }//GEN-LAST:event_jButton1ActionPerformed
     
     private void jTextFieldNMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNMKeyPressed
