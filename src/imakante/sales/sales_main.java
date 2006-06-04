@@ -1079,7 +1079,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private void fakMenu_danActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fakMenu_danActionPerformed
         levelDialog1 = new levelDialog(this,true,202,danFaktArea);
         levelDialog1.setVisible(true);
-      /* int user = userID_ndtur; //2;
+       int user = userID_ndtur; //2;
         int level = levelForWork;// 1;
         int pricelist = 1;
         int doctype = aeDocumentFacade.FAKTURA_DANACHNA;
@@ -1094,8 +1094,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             loadFrmDocFacade("\u0424\u0410\u041a\u0422\u0423\u0420\u0410", user, level, pricelist, doctype, storagedocdacade, isMakeDocByInputData, dataIn, dataOut );
         } else {
             loadFrmDocFacade("\u0424\u0410\u041a\u0422\u0423\u0420\u0410", user, level, pricelist, doctype, storagedocdacade, isMakeDocByInputData, dataIn, dataOut );
-        }*/
-       // this.loadDanFac();
+        }
+      
     }//GEN-LAST:event_fakMenu_danActionPerformed
     
     private void orderMenu_prihActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderMenu_prihActionPerformed
@@ -2098,27 +2098,5 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         frmDocumentFacadeDialog.setVisible(true)  ;
     }
     
- public void loadDanFac(int user1,int level1)
- {
-       // levelDialog1 = new levelDialog(this,true,4,danFaktArea);
-      //  levelDialog1.setVisible(true);
-       // int user = userID_ndtur; //2;
-      //  int level = levelForWork;// 1;
-        int user = user1; //2;
-        int level = level1;// 1;
-        int pricelist = 1;
-        int doctype = aeDocumentFacade.FAKTURA_DANACHNA;
-        int storagedocdacade = numberStorage;
-        System.out.println("Create DAN. Fak");
-        System.out.println(isMakeDocByInputData);
-        
-        if(!isMakeDocByInputData) {
-            dataIn = null;
-            dataOut = null;
-            level=3;
-            loadFrmDocFacade("\u0424\u0410\u041a\u0422\u0423\u0420\u0410", user, level, pricelist, doctype, storagedocdacade, isMakeDocByInputData, dataIn, dataOut );
-        } else {
-            loadFrmDocFacade("\u0424\u0410\u041a\u0422\u0423\u0420\u0410", user, level, pricelist, doctype, storagedocdacade, isMakeDocByInputData, dataIn, dataOut );
-        }
- }
+
 }
