@@ -278,7 +278,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         getContentPane().add(jToolBar1, java.awt.BorderLayout.NORTH);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        jPanel2.setPreferredSize(new java.awt.Dimension(100, 25));
+        jPanel2.setPreferredSize(new java.awt.Dimension(100, 27));
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -287,7 +287,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 21, Short.MAX_VALUE)
+            .add(0, 23, Short.MAX_VALUE)
         );
         getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
 
