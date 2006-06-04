@@ -214,6 +214,12 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         jPanel1.add(jLabelOSO, gridBagConstraints);
 
         jTextFieldName.setPreferredSize(new java.awt.Dimension(170, 20));
+        jTextFieldName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldNameKeyPressed(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -577,6 +583,14 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextFieldNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNameKeyPressed
+ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+     if(jTextFieldCName.getText().equals("")){jTextFieldCName.setText("" + jTextFieldName.getText());}
+     if(jTextFieldSName.getText().equals("")){jTextFieldSName.setText("" + jTextFieldName.getText());}
+     if(jTextFieldFName.getText().equals("")){jTextFieldFName.setText("" + jTextFieldName.getText());}
+     jTextFieldName.transferFocus();} 
+    }//GEN-LAST:event_jTextFieldNameKeyPressed
     
     private void jTextFieldFeeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFeeKeyPressed
 // TODO add your handling code here:
@@ -872,7 +886,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButton3ActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-// TODO add your handling code here:
+//SAVE RECORD
         
         myParent.setId_Group(myParent.getCountriesT().getIndexConnOfId()[jComboBoxGroup.getSelectedIndex()]);
         if(isNew) // zapisa NE sy6testvuva v bazata!!
@@ -979,9 +993,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
     
     private void jTextFieldBarCodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBarCodKeyPressed
-// TODO add your handling code here:
-        // pri natiskane na F7 6te se izvikva aContragent, za izbor na naseleno mqsto ot bazata danni
-        
+ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){jTextFieldBarCod.transferFocus();} 
     }//GEN-LAST:event_jTextFieldBarCodKeyPressed
     
     /**
