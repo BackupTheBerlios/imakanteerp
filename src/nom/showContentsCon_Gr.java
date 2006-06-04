@@ -44,6 +44,7 @@ public class showContentsCon_Gr   extends imakante.com.vcomponents.iDialog {
         int y = (((dim.height)-(this.getSize().height))/2);
         this.setLocation(x, y);
         this.setSize(550,400);
+        this.setTitle("\u041A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442");
         this.table.requestFocus();
         this.table.changeSelection(0,0,false,false);
         

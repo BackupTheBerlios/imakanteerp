@@ -32,8 +32,8 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
             
             jComboBoxValuta.setSelectedIndex(selectComboBoxItem);
         }
-        
-        
+        this.setTitle("\u0414\u043E\u0441\u0442\u0430\u0432\u043D\u0430 \u0438 \u0446\u0435\u043D\u043E\u0432\u0430 \u043B\u0438\u0441\u0442\u0430");
+        jTextDostPrice.requestFocus();
         
     }
     
@@ -137,6 +137,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
         jPanel2.add(jTextDostPrice, gridBagConstraints);
 
         jTextFieldPrice1.setEnabled(false);
+        jTextFieldPrice1.setNextFocusableComponent(jTextFieldPrice2);
         jTextFieldPrice1.setPreferredSize(new java.awt.Dimension(80, 20));
         jTextFieldPrice1.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextFieldPrice1.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -166,6 +167,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
         jPanel2.add(jLabel4, gridBagConstraints);
 
         jTextFieldPrice2.setEnabled(false);
+        jTextFieldPrice2.setNextFocusableComponent(jTextFieldPrice3);
         jTextFieldPrice2.setPreferredSize(new java.awt.Dimension(80, 20));
         jTextFieldPrice2.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextFieldPrice2.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -187,6 +189,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
         jPanel2.add(jTextFieldPrice2, gridBagConstraints);
 
         jTextFieldPrice3.setEnabled(false);
+        jTextFieldPrice3.setNextFocusableComponent(jTextFieldValue);
         jTextFieldPrice3.setPreferredSize(new java.awt.Dimension(80, 20));
         jTextFieldPrice3.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextFieldPrice3.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -229,6 +232,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
         jPanel2.add(jLabel7, gridBagConstraints);
 
         jTextFieldProcent1.setEnabled(false);
+        jTextFieldProcent1.setNextFocusableComponent(jTextFieldProcent2);
         jTextFieldProcent1.setPreferredSize(new java.awt.Dimension(50, 20));
         jTextFieldProcent1.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextFieldProcent1.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -249,6 +253,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
         jPanel2.add(jTextFieldProcent1, gridBagConstraints);
 
         jTextFieldProcent2.setEnabled(false);
+        jTextFieldProcent2.setNextFocusableComponent(jTextFieldProcent3);
         jTextFieldProcent2.setPreferredSize(new java.awt.Dimension(50, 20));
         jTextFieldProcent1.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextFieldProcent2.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -269,6 +274,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
         jPanel2.add(jTextFieldProcent2, gridBagConstraints);
 
         jTextFieldProcent3.setEnabled(false);
+        jTextFieldProcent3.setNextFocusableComponent(jTextFieldValue);
         jTextFieldProcent3.setPreferredSize(new java.awt.Dimension(50, 20));
         jTextFieldProcent1.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextFieldProcent3.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -339,7 +345,13 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
 
         jTextFieldValue.setEditable(false);
         jTextFieldValue.setText("1");
+        jTextFieldValue.setNextFocusableComponent(jButtonSave);
         jTextFieldValue.setPreferredSize(new java.awt.Dimension(100, 20));
+        jTextFieldValue.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldValueKeyPressed(evt);
+            }
+        });
         jTextFieldValue.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jTextFieldValueMousePressed(evt);
@@ -355,6 +367,24 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextFieldValueKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldValueKeyPressed
+// TODO add your handling code here:
+         String curs[] = null;
+        try {
+            java.sql.ResultSet r1 = myParent.getCountriesT().getShowConteinCurs();
+            shContein= new showConteinCurs(myParent,true,r1,myParent.getCountriesT().getConn());
+            id_curs = myParent.getTMPINT();
+            curs = myParent.getCountriesT().getCurs(id_curs);
+            jTextFieldValue.setText(curs[2]);
+            selectComboBoxItem = Integer.parseInt(curs[1]);
+            
+            myParent.setTMPINT(0);
+            jTextFieldValue.transferFocus();
+        } catch(Exception e) {
+            showMessage();
+        }
+    }//GEN-LAST:event_jTextFieldValueKeyPressed
     
     private void jTextFieldValueMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldValueMousePressed
         
@@ -368,6 +398,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
             selectComboBoxItem = Integer.parseInt(curs[1]);
             
             myParent.setTMPINT(0);
+             jTextFieldValue.transferFocus();
         } catch(Exception e) {
             showMessage();
         }

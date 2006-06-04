@@ -41,7 +41,7 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
             jComboBoxDescript3.addItem(new String(splitNameOfColumn1[i]));
             
         }
-       
+        jTextFieldExpertList.requestFocus();
         setInputLisener();
         repaintComp();
         
@@ -248,6 +248,11 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
                 jComboBoxPartidaActionPerformed(evt);
             }
         });
+        jComboBoxPartida.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboBoxPartidaKeyPressed(evt);
+            }
+        });
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
@@ -255,6 +260,7 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
         jPanel1.add(jComboBoxPartida, gridBagConstraints);
 
         jTextFieldBarCod.setText("0000000000");
+        jTextFieldBarCod.setNextFocusableComponent(jButton1);
         jTextFieldBarCod.setPreferredSize(new java.awt.Dimension(170, 20));
         jTextFieldBarCod.setInputVerifier(new imakante.com.InputIntegerVerifier(10));
         jTextFieldBarCod.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -446,7 +452,14 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
         jPanelInfoProdukt.add(jPanelDescription, gridBagConstraints);
 
         jTextFieldExpertList.setMinimumSize(new java.awt.Dimension(150, 20));
+        jTextFieldExpertList.setNextFocusableComponent(jComboBoxPartida);
         jTextFieldExpertList.setPreferredSize(new java.awt.Dimension(100, 20));
+        jTextFieldExpertList.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldExpertListKeyPressed(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
@@ -467,6 +480,22 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jComboBoxPartidaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBoxPartidaKeyPressed
+// TODO add your handling code here:
+        if(evt.getKeyCode()==evt.VK_ENTER)
+        {
+            jComboBoxPartida.transferFocus();
+        }
+    }//GEN-LAST:event_jComboBoxPartidaKeyPressed
+
+    private void jTextFieldExpertListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldExpertListKeyPressed
+// TODO add your handling code here:
+        if(evt.getKeyCode()==evt.VK_ENTER)
+        {
+            jTextFieldExpertList.transferFocus();
+        }
+    }//GEN-LAST:event_jTextFieldExpertListKeyPressed
+
     private void jComboBoxPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPartidaActionPerformed
 // TODO add your handling code here:
        
@@ -476,7 +505,7 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
             repaintComp();
             
         }
-        System.out.println("ddddddddddddddddd " + ctest);
+        System.out.println("ActionPerformed " + ctest);
     }//GEN-LAST:event_jComboBoxPartidaActionPerformed
     
     private void jTextFieldFeeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFeeKeyPressed

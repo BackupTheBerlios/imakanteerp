@@ -49,7 +49,8 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
             jComboBoxDescript3.addItem(new String(splitNameOfColumn1[i]));
             
         }
-        
+        this.setTitle("\u0412\u044A\u0432\u0435\u0436\u0434\u0430\u043D\u0435 \u043D\u0430 \u043F\u0440\u043E\u0434\u0443\u043A\u0442");
+        jComboBoxGroup.requestFocus();
         if(!isNew) repaintComp();
         
     }
@@ -407,6 +408,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         jTextFieldContragent.setEditable(false);
         jTextFieldContragent.setToolTipText("\u0417\u0430\u0434\u044a\u043b\u0436\u0438\u0442\u0435\u043b\u043d\u043e \u043f\u043e\u043b\u0435. \u0418\u0437\u043f\u043e\u043b\u0437\u0432\u0430\u0438\u0442\u0435 \u0434\u0432\u043e\u0435\u043d \u043a\u043b\u0438\u043a \u043d\u0430 \u043c\u0438\u0448\u043a\u0430\u0442\u0430 \u0438\u043b\u0438 \u043a\u043b\u0430\u0432\u0438\u0448\u0430 F7 \u0437\u0430 \u0438\u0437\u0431\u043e\u0440.");
         jTextFieldContragent.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jTextFieldContragent.setNextFocusableComponent(jTextFieldCode);
         jTextFieldContragent.setPreferredSize(new java.awt.Dimension(170, 20));
         jTextFieldContragent.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -693,7 +695,7 @@ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
     private void jComboBoxGroupKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBoxGroupKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
             jTextFieldContragent.requestFocus();
-            showContein(1,true);
+          //  showContein(1,true);
             
         }
     }//GEN-LAST:event_jComboBoxGroupKeyPressed
@@ -1103,7 +1105,7 @@ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
             
         }
         //  jButton3.doClick(); // zatvarq se aeProsuct
-        repaintComp();
+      //  repaintComp();
         myParent.refreshTable();
     }//GEN-LAST:event_jButton1ActionPerformed
     

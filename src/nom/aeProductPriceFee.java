@@ -22,6 +22,8 @@ public class aeProductPriceFee extends imakante.com.vcomponents.iDialog
         int x = (((dim.width)-(this.getSize().width))/2);
         int y = (((dim.height)-(this.getSize().height))/2);
         this.setLocation(x, y);
+        this.setTitle("\u0422\u0430\u043A\u0441\u0438");
+        jTextFieldDDS.requestFocus();
         
     }
    
@@ -106,6 +108,7 @@ public class aeProductPriceFee extends imakante.com.vcomponents.iDialog
         jPanel2.add(jLabel3, gridBagConstraints);
 
         jTextFieldDDS.setText("20.00");
+        jTextFieldDDS.setNextFocusableComponent(jTextFieldAkcizi);
         jTextFieldDDS.setPreferredSize(new java.awt.Dimension(20, 20));
         jTextFieldDDS.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextFieldDDS.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -123,6 +126,7 @@ public class aeProductPriceFee extends imakante.com.vcomponents.iDialog
         jPanel2.add(jTextFieldDDS, gridBagConstraints);
 
         jTextFieldAkcizi.setText("0");
+        jTextFieldAkcizi.setNextFocusableComponent(jTextFieldOther);
         jTextFieldAkcizi.setPreferredSize(new java.awt.Dimension(20, 20));
         jTextFieldAkcizi.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextFieldAkcizi.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -147,6 +151,7 @@ public class aeProductPriceFee extends imakante.com.vcomponents.iDialog
         jPanel2.add(jLabel4, gridBagConstraints);
 
         jTextFieldOther.setText("0");
+        jTextFieldOther.setNextFocusableComponent(jButtonSave);
         jTextFieldOther.setPreferredSize(new java.awt.Dimension(20, 20));
         jTextFieldOther.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextFieldOther.addKeyListener(new java.awt.event.KeyAdapter() {

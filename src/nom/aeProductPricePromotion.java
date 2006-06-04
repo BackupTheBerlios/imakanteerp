@@ -22,8 +22,8 @@ public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog
         int x = (((dim.width)-(this.getSize().width))/2);
         int y = (((dim.height)-(this.getSize().height))/2);
         this.setLocation(x, y);
-        
-        
+        jTextFieldPromoPrice.requestFocus();
+        this.setTitle("\u041F\u0440\u043E\u043C\u043E\u0446\u0438\u043E\u043D\u0430\u043B\u043D\u0430 \u0446\u0435\u043D\u0430");
         
     }
     

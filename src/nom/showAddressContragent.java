@@ -42,6 +42,10 @@ public class showAddressContragent extends imakante.com.vcomponents.iDialog
         int x = (((dim.width)-(this.getSize().width))/2);
         int y = (((dim.height)-(this.getSize().height))/2);
         this.setLocation(x, y);
+        this.setSize(550,400);
+        this.setTitle("\u0410\u0434\u0440\u0435\u0441");
+        this.table.requestFocus();
+        this.table.changeSelection(0,0,false,false);
         setVisible(true);
         
     }
