@@ -136,7 +136,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel4.setPreferredSize(new java.awt.Dimension(448, 37));
-        jLabel1.setText("\u041a\u043e\u0434:");
+        jLabel1.setText("\u041a\u043e\u04341:");
         jPanel4.add(jLabel1);
 
         jTextCod.setPreferredSize(new java.awt.Dimension(45, 20));
@@ -359,11 +359,11 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
       long number=0;
       if(getDocFacadeType()!=aeDocumentFacade.FAKTURA_DANACHNA || getDocFacadeType()!=aeDocumentFacade.FAKTURA_OPROSTENA)
       {
-        number =  getCountriesT().getDocNumberLast(getUserEditFortm(),getDocFacadeLevel());
+        number =  getCountriesT().getDocNumberLast(getUserEditFortm(),getDocFacadeLevel(),getDocFacadeType());
       }
       else
       {
-        number =  getCountriesT().getDocNumberLast(getUserEditFortm(),3);  
+        number =  getCountriesT().getDocNumberLast(getUserEditFortm(),3,getDocFacadeType());  
       }
         number++;
         setNumberDocFacade(String.valueOf(number));
@@ -1627,7 +1627,7 @@ private void checkForMakeDoc(boolean makeDoc)
     int maxID_df= 0;
     if(makeDoc)
     {
-      long number = getCountriesT().getDocNumberLast( getUserEditFortm(), getDocFacadeLevel());
+      long number = getCountriesT().getDocNumberLast( getUserEditFortm(), getDocFacadeLevel(),getDocFacadeType());
       number++;
       imakante.com.dateManipulation dateManip = new imakante.com.dateManipulation();
       String strDate;

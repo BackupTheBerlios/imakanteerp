@@ -2,11 +2,11 @@
 
 DROP PROCEDURE IF EXISTS `mida`.`ls_procedure_document_facade` $$
 CREATE PROCEDURE `ls_procedure_document_facade`(IN comprator TINYINT,                IN in_id_df INT(11),                IN in_id_contragent_in INT(11),     IN in_id_contragent_out INT(11),IN in_id_obekt_out INT(11),
-                                                IN in_id_obekt_in INT(11),           IN in_id_distributor INT(11),       IN in_id_deliver INT(11),           IN in_descriptionPaying INT(3), IN in_docFacadeNumber INT(10),
+                                                IN in_id_obekt_in INT(11),           IN in_id_distributor INT(11),       IN in_id_deliver INT(11),           IN in_descriptionPaying INT(3), IN in_docFacadeNumber BIGINT(10),
                                                 IN in_docFacadeUser INT(11),         IN in_docFacadeUserLastEdit INT(11),IN in_id_facturaConnection INT(11), IN in_id_payingOrder INT(11),   IN in_id_zaqvkaConnection INT(11),
                                                 IN in_docFacadeLevel INT(11),        IN in_docFacadeStorage INT(11),     IN in_docFacadeType INT (3),        IN in_docFacadeAllDDS DOUBLE,   IN in_docFacadeTotal DOUBLE,
                                                 IN in_docFacadeCondition VARCHAR(11),IN in_docFacadeDate VARCHAR(10),    IN in_docFacadeComment VARCHAR(250),IN in_dateDeliver VARCHAR(10),  IN in_payingDate VARCHAR(10),
-                                                IN in_docFacadeFlagFinish INT (3),   IN in_priceOne DOUBLE,              IN in_climbDown DOUBLE,             IN in_in_store_df INT(11)  )
+                                                IN in_docFacadeFlagFinish INT (3),   IN in_priceOne DOUBLE,              IN in_climbDown DOUBLE ,            IN in_in_store_df INT(11) )
 BEGIN
 
 IF (comprator = 0) THEN
@@ -38,8 +38,10 @@ IF (comprator = 0) THEN
          LEFT JOIN user_master um_usr_last ON usr_last.id_um=um_usr_last.id_um
          LEFT JOIN mida.sl_doc_type_num sldtn ON sldtn.id_sdtn=usr_new.id_sdtn
          LEFT JOIN  kind_paying ON  description_pay_df=kind_paying.id_kp
-         WHERE  type_df = in_docFacadeType AND level_df = in_docFacadeLevel
+         WHERE  type_df = in_docFacadeType  AND level_df =  in_docFacadeLevel
          AND condition_df="0" ORDER BY s.number_df ASC;
+
+
 END IF;
 
 IF (comprator = 1) THEN
@@ -131,7 +133,8 @@ END IF;
 IF (comprator = 6) THEN
         SELECT MAX(number_df) AS maxNumber FROM mida.sl_document_facade s, sl_doc_type_num sl, n_doc_type_user_rights ur
         WHERE number_df like CONCAT(sl.area_number_sdtn,'%')
-        AND sl.id_sdtn=  ur.id_sdtn  AND ur.id_ndtur = in_docFacadeUser  AND s.level_df = in_id_obekt_in;
+        AND sl.id_sdtn=  ur.id_sdtn  AND ur.id_ndtur = in_docFacadeUser  AND s.level_df = in_id_obekt_in
+        AND s.type_df = in_docFacadeType;
 END IF;
 
 
@@ -556,7 +559,7 @@ IF (comprator = 20) THEN
        @st.code_n_storage:=0 as code_n_storage, @st.name_n_storage:="" as name_n_storage,
        @st.comments_n_storage:="" as comments_n_storage
        FROM mida.n_product_main n LEFT JOIN mida.n_product_consigment pc ON pc.id_pm = n.id_pm
-       WHERE n.name_pm LIKE CONCAT('%',in_docFacadeComment) AND n.flag_pm = in_id_obekt_in;
+       WHERE n.name_pm LIKE CONCAT('%',in_docFacadeComment,'%') AND n.flag_pm = in_id_obekt_in;
    END IF;
 
 END IF;
@@ -672,7 +675,7 @@ IF (comprator = 35) THEN
   # DELETE FROM mida.sl_document_facade
   # WHERE  type_df = in_id_df AND number_df = in_id_obekt_in AND level_df =in_id_obekt_out;
    UPDATE mida.sl_document_facade s SET s.condition_df ="1"
-   WHERE type_df = in_id_df AND number_df = in_id_obekt_in AND level_df =in_id_obekt_out;
+   WHERE type_df = in_id_df AND number_df = in_docFacadeNumber AND level_df =in_id_obekt_out;
 
 END IF;
 IF (comprator = 36) THEN

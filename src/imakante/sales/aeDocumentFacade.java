@@ -22,6 +22,7 @@ import javax.swing.*;
 import java.util.Date;
 import java.sql.*;
 import java.awt.*;
+import java.awt.KeyboardFocusManager;
 import imakante.sales.FrmDocumentFacade;
 import javax.swing.event.CellEditorListener;
 import javax.swing.event.ChangeEvent;
@@ -173,8 +174,18 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             rate=1;
         }
         
-       
-       
+       if(isNew)
+       {
+           jTextFieldConNom.grabFocus(); 
+       }
+       else
+       {
+          jTable1.changeSelection(0,0,false,false);
+       }
+       if(myParent.getDocFacadeType()==BRAK ||myParent.getDocFacadeType()==PROTOKOL_LIPSA)
+       {
+         TransferFocusDocTypeIsBrak();
+       }
         repaintComp();
         
     }
@@ -304,7 +315,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setPreferredSize(new java.awt.Dimension(400, 300));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Навигация"));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("\u041d\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u044f"));
         jPanel3.setPreferredSize(new java.awt.Dimension(230, 70));
         jButtonToBegin.setText("<<");
         jButtonToBegin.addActionListener(new java.awt.event.ActionListener() {
@@ -348,16 +359,17 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanelHead.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanelHead.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabel1.setText("Номер документ:");
+        jLabel1.setText("\u041d\u043e\u043c\u0435\u0440 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442:");
         jPanelHead.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jLabel2.setText("Дата:");
+        jLabel2.setText("\u0414\u0430\u0442\u0430:");
         jPanelHead.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
 
         jLabelDocType.setFont(new java.awt.Font("Tahoma", 1, 16));
-        jLabelDocType.setText("ПРОТОКОЛ ЗА ЛИПСА");
+        jLabelDocType.setText("\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u041b\u0418\u041f\u0421\u0410");
         jPanelHead.add(jLabelDocType, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
 
+        jTextFieldNomerDoc.setNextFocusableComponent(jTextFieldConNom);
         jTextFieldNomerDoc.setInputVerifier(new imakante.com.InputIntegerVerifier());
         jTextFieldNomerDoc.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -377,7 +389,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jXDateDocument.setPreferredSize(new java.awt.Dimension(127, 20));
         jPanelHead.add(jXDateDocument, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, -1));
 
-        jLabel24.setText("Дата на курс:");
+        jLabel24.setText("\u0414\u0430\u0442\u0430 \u043d\u0430 \u043a\u0443\u0440\u0441:");
         jPanelHead.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, -1));
 
         jXDateCurs.addActionListener(new java.awt.event.ActionListener() {
@@ -398,13 +410,13 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanelContragent.setLayout(new java.awt.GridBagLayout());
 
         jPanelContragent.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabel3.setText("Контрагент No:");
+        jLabel3.setText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442 No:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(10, 20, 5, 5);
         jPanelContragent.add(jLabel3, gridBagConstraints);
 
-        jLabel4.setText("Контрагент име:");
+        jLabel4.setText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442 \u0438\u043c\u0435:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
@@ -412,7 +424,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         gridBagConstraints.insets = new java.awt.Insets(10, 20, 5, 5);
         jPanelContragent.add(jLabel4, gridBagConstraints);
 
-        jLabel5.setText("Булстат:");
+        jLabel5.setText("\u0411\u0443\u043b\u0441\u0442\u0430\u0442:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -420,7 +432,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         gridBagConstraints.insets = new java.awt.Insets(0, 20, 5, 5);
         jPanelContragent.add(jLabel5, gridBagConstraints);
 
-        jLabel6.setText("Дан.No:");
+        jLabel6.setText("\u0414\u0430\u043d.No:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -428,7 +440,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         gridBagConstraints.insets = new java.awt.Insets(0, 20, 5, 5);
         jPanelContragent.add(jLabel6, gridBagConstraints);
 
-        jLabel7.setText("задължения:");
+        jLabel7.setText("\u0437\u0430\u0434\u044a\u043b\u0436\u0435\u043d\u0438\u044f:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
@@ -436,7 +448,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         gridBagConstraints.insets = new java.awt.Insets(0, 20, 5, 5);
         jPanelContragent.add(jLabel7, gridBagConstraints);
 
-        jLabel8.setText("Адрес:");
+        jLabel8.setText("\u0410\u0434\u0440\u0435\u0441:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -444,7 +456,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         gridBagConstraints.insets = new java.awt.Insets(0, 20, 5, 5);
         jPanelContragent.add(jLabel8, gridBagConstraints);
 
-        jLabel9.setText("Тел:");
+        jLabel9.setText("\u0422\u0435\u043b:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 3;
@@ -452,7 +464,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         gridBagConstraints.insets = new java.awt.Insets(0, 20, 5, 5);
         jPanelContragent.add(jLabel9, gridBagConstraints);
 
-        jLabel10.setText("Просрочване:");
+        jLabel10.setText("\u041f\u0440\u043e\u0441\u0440\u043e\u0447\u0432\u0430\u043d\u0435:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 3;
@@ -574,7 +586,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 5);
         jPanelContragent.add(jTextFieldProsro4vane, gridBagConstraints);
 
-        jLabel15.setText("МОЛ име:");
+        jLabel15.setText("\u041c\u041e\u041b \u0438\u043c\u0435:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
@@ -603,13 +615,13 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanelObekt.setLayout(new java.awt.GridBagLayout());
 
         jPanelObekt.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabel11.setText("Обект No:");
+        jLabel11.setText("\u041e\u0431\u0435\u043a\u0442 No:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(10, 20, 5, 5);
         jPanelObekt.add(jLabel11, gridBagConstraints);
 
-        jLabel12.setText("Тел.:");
+        jLabel12.setText("\u0422\u0435\u043b.:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -617,7 +629,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         gridBagConstraints.insets = new java.awt.Insets(0, 20, 10, 5);
         jPanelObekt.add(jLabel12, gridBagConstraints);
 
-        jLabel13.setText("Име:");
+        jLabel13.setText("\u0418\u043c\u0435:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -625,7 +637,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         gridBagConstraints.insets = new java.awt.Insets(0, 20, 10, 5);
         jPanelObekt.add(jLabel13, gridBagConstraints);
 
-        jLabel14.setText("Адрес:");
+        jLabel14.setText("\u0410\u0434\u0440\u0435\u0441:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
@@ -700,7 +712,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel4.setPreferredSize(new java.awt.Dimension(446, 60));
-        jLabel16.setText("Дистр.:");
+        jLabel16.setText("\u0414\u0438\u0441\u0442\u0440.:");
         jPanel4.add(jLabel16);
 
         jTextFieldDistr.setPreferredSize(new java.awt.Dimension(80, 20));
@@ -712,7 +724,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jPanel4.add(jTextFieldDistr);
 
-        jLabel17.setText("Дост.:");
+        jLabel17.setText("\u0414\u043e\u0441\u0442.:");
         jPanel4.add(jLabel17);
 
         jTextFieldDeliver.setPreferredSize(new java.awt.Dimension(80, 20));
@@ -724,7 +736,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jPanel4.add(jTextFieldDeliver);
 
-        jLabel18.setText("Дата :");
+        jLabel18.setText("\u0414\u0430\u0442\u0430 :");
         jPanel4.add(jLabel18);
 
         jXDateDeliver.setPreferredSize(new java.awt.Dimension(100, 24));
@@ -750,14 +762,14 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanelPrice.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 15));
 
         jPanelPrice.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabel19.setText("Вид плащане:");
+        jLabel19.setText("\u0412\u0438\u0434 \u043f\u043b\u0430\u0449\u0430\u043d\u0435:");
         jPanelPrice.add(jLabel19);
 
         jComboBoxVidPla6tane.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "\u041e\u0422\u041b\u041e\u0416\u0415\u041d\u041e", "\u0411\u0420\u041e\u0419", "\u0411\u0410\u041d\u041a\u0410", "\u0427\u0410\u0421\u0422\u0418\u0427\u041d\u041e" }));
         jComboBoxVidPla6tane.setPreferredSize(new java.awt.Dimension(100, 20));
         jPanelPrice.add(jComboBoxVidPla6tane);
 
-        jLabel20.setText("Дата:");
+        jLabel20.setText("\u0414\u0430\u0442\u0430:");
         jPanelPrice.add(jLabel20);
 
         jPanelPrice.add(jXDatePay);
@@ -768,10 +780,10 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabelDDSOsnovaText.setText("Данъчна основа:");
+        jLabelDDSOsnovaText.setText("\u0414\u0430\u043d\u044a\u0447\u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0430:");
         jPanel5.add(jLabelDDSOsnovaText, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
-        jLabelAllDDSText.setText("ДДС:");
+        jLabelAllDDSText.setText("\u0414\u0414\u0421:");
         jPanel5.add(jLabelAllDDSText, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, -1));
 
         jLabelDDSOsnova.setText("0.0");
@@ -781,7 +793,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanel5.add(jLabelAllDDS, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
 
         jLabel28.setFont(new java.awt.Font("Tahoma", 1, 11));
-        jLabel28.setText("ОБЩО");
+        jLabel28.setText("\u041e\u0411\u0429\u041e");
         jPanel5.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
 
         jLabelAllTotal.setFont(new java.awt.Font("Tahoma", 1, 11));
@@ -791,7 +803,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanel2.add(jPanel5);
         jPanel5.setBounds(357, 510, 370, 60);
 
-        jButtonCreateDocFacade.setText("Създаване на документ");
+        jButtonCreateDocFacade.setText("\u0421\u044a\u0437\u0434\u0430\u0432\u0430\u043d\u0435 \u043d\u0430 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442");
+        jButtonCreateDocFacade.setNextFocusableComponent(jButtonClose);
         jButtonCreateDocFacade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCreateDocFacadeActionPerformed(evt);
@@ -804,7 +817,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabel30.setText("Налични:");
+        jLabel30.setText("\u041d\u0430\u043b\u0438\u0447\u043d\u0438:");
         jPanel6.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabelAllBrojProduct.setText("00");
@@ -816,14 +829,14 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanelPriceList.setLayout(new java.awt.GridBagLayout());
 
         jPanelPriceList.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabelPricelist_1.setText("Цена 1:");
+        jLabelPricelist_1.setText("\u0426\u0435\u043d\u0430 1:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 5);
         jPanelPriceList.add(jLabelPricelist_1, gridBagConstraints);
 
-        jLabelPricelist_2.setText("Цена 2:");
+        jLabelPricelist_2.setText("\u0426\u0435\u043d\u0430 2:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -847,14 +860,14 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 5);
         jPanelPriceList.add(jLabelPrice_2, gridBagConstraints);
 
-        jLabel25.setText("Валута:");
+        jLabel25.setText("\u0412\u0430\u043b\u0443\u0442\u0430:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 5);
         jPanelPriceList.add(jLabel25, gridBagConstraints);
 
-        jLabelValuta.setText("лв.");
+        jLabelValuta.setText("\u043b\u0432.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
@@ -882,7 +895,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jSplitPane1.setOneTouchExpandable(true);
         jSplitPane1.setPreferredSize(new java.awt.Dimension(200, 50));
         jPanelComent.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabel23.setText("Коментар:");
+        jLabel23.setText("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440:");
 
         jTextFieldComment.setPreferredSize(new java.awt.Dimension(300, 20));
 
@@ -909,11 +922,11 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jSplitPane1.setLeftComponent(jPanelComent);
 
         jPanelUser.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabel21.setText("Издал:");
+        jLabel21.setText("\u0418\u0437\u0434\u0430\u043b:");
 
         jTextFieldUserEdit.setPreferredSize(new java.awt.Dimension(80, 20));
 
-        jLabel22.setText("Последна преработка:");
+        jLabel22.setText("\u041f\u043e\u0441\u043b\u0435\u0434\u043d\u0430 \u043f\u0440\u0435\u0440\u0430\u0431\u043e\u0442\u043a\u0430:");
 
         jTextFieldUserLastEdit.setPreferredSize(new java.awt.Dimension(100, 20));
 
@@ -948,7 +961,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanel2.add(jSplitPane1);
         jSplitPane1.setBounds(0, 570, 730, 50);
 
-        jButton2.setText("Изтриване на линия");
+        jButton2.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435 \u043d\u0430 \u043b\u0438\u043d\u0438\u044f");
+        jButton2.setNextFocusableComponent(jButton3);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -958,7 +972,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanel2.add(jButton2);
         jButton2.setBounds(10, 620, 150, 23);
 
-        jButtonAnulirane.setText("Анулиране");
+        jButtonAnulirane.setText("\u0410\u043d\u0443\u043b\u0438\u0440\u0430\u043d\u0435");
+        jButtonAnulirane.setNextFocusableComponent(jButtonDellDocFadade);
         jButtonAnulirane.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAnuliraneActionPerformed(evt);
@@ -968,7 +983,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanel2.add(jButtonAnulirane);
         jButtonAnulirane.setBounds(330, 620, 87, 23);
 
-        jButtonDellDocFadade.setText("Изтриване на документ");
+        jButtonDellDocFadade.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435 \u043d\u0430 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442");
+        jButtonDellDocFadade.setNextFocusableComponent(jButtonCreateDocFacade);
         jButtonDellDocFadade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonDellDocFadadeActionPerformed(evt);
@@ -978,7 +994,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanel2.add(jButtonDellDocFadade);
         jButtonDellDocFadade.setBounds(420, 620, 153, 23);
 
-        jButton3.setText("Добавяне на линия");
+        jButton3.setText("\u0414\u043e\u0431\u0430\u0432\u044f\u043d\u0435 \u043d\u0430 \u043b\u0438\u043d\u0438\u044f");
+        jButton3.setNextFocusableComponent(jButtonAnulirane);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -991,7 +1008,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanelStorageINOUT.setLayout(new java.awt.GridBagLayout());
 
         jPanelStorageINOUT.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabel26.setText("ОТ:");
+        jLabel26.setText("\u041e\u0422:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -1009,7 +1026,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanelStorageINOUT.add(jTextFieldStorageFROM, gridBagConstraints);
 
-        jLabel27.setText("КЪМ:");
+        jLabel27.setText("\u041a\u042a\u041c:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -1027,19 +1044,19 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanelStorageINOUT.add(jTextFieldStorageTO, gridBagConstraints);
 
-        jLabel29.setText("Складове:");
+        jLabel29.setText("\u0421\u043a\u043b\u0430\u0434\u043e\u0432\u0435:");
         jPanelStorageINOUT.add(jLabel29, new java.awt.GridBagConstraints());
 
         jPanel2.add(jPanelStorageINOUT);
         jPanelStorageINOUT.setBounds(0, 70, 300, 50);
 
         jLabelInfoCurs.setForeground(new java.awt.Color(255, 0, 51));
-        jLabelInfoCurs.setText("Не е избрана подходяща дата!");
+        jLabelInfoCurs.setText("\u041d\u0435 \u0435 \u0438\u0437\u0431\u0440\u0430\u043d\u0430 \u043f\u043e\u0434\u0445\u043e\u0434\u044f\u0449\u0430 \u0434\u0430\u0442\u0430!");
         jPanel2.add(jLabelInfoCurs);
         jLabelInfoCurs.setBounds(560, 680, 160, 14);
 
         jButtonClose.setFont(new java.awt.Font("Tahoma", 1, 11));
-        jButtonClose.setText("Затвори");
+        jButtonClose.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
         jButtonClose.setPreferredSize(new java.awt.Dimension(100, 23));
         jButtonClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1052,8 +1069,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jPanelCreateFacturi.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
 
-        jPanelCreateFacturi.setBorder(javax.swing.BorderFactory.createTitledBorder("За фактура"));
-        jCheckBox1.setText("За създаване на фактура");
+        jPanelCreateFacturi.setBorder(javax.swing.BorderFactory.createTitledBorder("\u0417\u0430 \u0444\u0430\u043a\u0442\u0443\u0440\u0430"));
+        jCheckBox1.setText("\u0417\u0430 \u0441\u044a\u0437\u0434\u0430\u0432\u0430\u043d\u0435 \u043d\u0430 \u0444\u0430\u043a\u0442\u0443\u0440\u0430");
         jCheckBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox1.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -1064,7 +1081,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 
         jPanelCreateFacturi.add(jCheckBox1);
 
-        jButton1.setText("Създаване на фактура...");
+        jButton1.setText("\u0421\u044a\u0437\u0434\u0430\u0432\u0430\u043d\u0435 \u043d\u0430 \u0444\u0430\u043a\u0442\u0443\u0440\u0430...");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -1154,7 +1171,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         ((docLineTableModel) jTable1.getModel()).enableCellEditable(0);
         // za pozvolqvane na tyrsene na produkt ot ime
         ((docLineTableModel) jTable1.getModel()).enableCellEditable(1);
-        str=" ";
+        str="";
         
     }//GEN-LAST:event_jButton3ActionPerformed
     
@@ -1249,6 +1266,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.DISTRIBUTOR_DELIVER,false);
             jTextFieldDeliver.setText(myParent.getDeliverDocFacade());
             //  repainObektData(myParent.getID_Obekt());
+             TransferFocusFromDeliver();
             
         }
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8) {
@@ -1257,6 +1275,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.DISTRIBUTOR_DELIVER,false);
             jTextFieldDeliver.setText(myParent.getDeliverDocFacade());
             //  repainObektData(myParent.getID_Obekt());
+             TransferFocusFromDeliver();
         }
         
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9) {
@@ -1265,6 +1284,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.DISTRIBUTOR_DELIVER,false);
             jTextFieldDeliver.setText(myParent.getDeliverDocFacade());
             //  repainObektData(myParent.getID_Obekt());
+             TransferFocusFromDeliver();
         }
     }//GEN-LAST:event_jTextFieldDeliverKeyPressed
     
@@ -1276,6 +1296,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.DISTRIBUTOR_DELIVER,true);
             jTextFieldDistr.setText(myParent.getDistributorDocFacade());
             //  repainObektData(myParent.getID_Obekt());
+             TransferFocusFromDitributor();
         }
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableStartTextDistDeliv(jTextFieldDistr.getText(),selectDataOfDocFacade.DISTRIBUTOR);
@@ -1283,6 +1304,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.DISTRIBUTOR_DELIVER,true);
             jTextFieldDistr.setText(myParent.getDistributorDocFacade());
             // repainObektData(myParent.getID_Obekt());
+             TransferFocusFromDitributor();
         }
         
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9) {
@@ -1291,6 +1313,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.DISTRIBUTOR_DELIVER,true);
             jTextFieldDistr.setText(myParent.getDistributorDocFacade());
             //  repainObektData(myParent.getID_Obekt());
+            TransferFocusFromDitributor();
         }
     }//GEN-LAST:event_jTextFieldDistrKeyPressed
     
@@ -1301,6 +1324,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_TEL,false);
             repainObektData(myParent.getID_Obekt());
+             TransferFocusFromObekt();
             
         }
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8) {
@@ -1308,6 +1332,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_TEL,false);
             repainObektData(myParent.getID_Obekt());
+             TransferFocusFromObekt();
         }
         
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9) {
@@ -1315,10 +1340,13 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_TEL,false);
             repainObektData(myParent.getID_Obekt());
+             TransferFocusFromObekt();
         }
          if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9){
          jTextFieldObektTel.transferFocus();
+         
          }
+        
     }//GEN-LAST:event_jTextFieldObektTelKeyPressed
     
     private void jTextFieldObektAddressKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldObektAddressKeyPressed
@@ -1328,6 +1356,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_ADDRESS,false);
             repainObektData(myParent.getID_Obekt());
+             TransferFocusFromObekt();
             
         }
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8) {
@@ -1335,6 +1364,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_ADDRESS,false);
             repainObektData(myParent.getID_Obekt());
+             TransferFocusFromObekt();
         }
         
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9) {
@@ -1342,7 +1372,13 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_ADDRESS,false);
             repainObektData(myParent.getID_Obekt());
+             TransferFocusFromObekt();
         }
+       if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER)
+         {
+         jTextFieldObektName.transferFocus();
+         
+         }
     }//GEN-LAST:event_jTextFieldObektAddressKeyPressed
     
     private void jTextFieldObektNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldObektNameKeyPressed
@@ -1352,6 +1388,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_NAME,false);
             repainObektData(myParent.getID_Obekt());
+             TransferFocusFromObekt();
             
         }
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8) {
@@ -1359,6 +1396,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_NAME,false);
             repainObektData(myParent.getID_Obekt());
+             TransferFocusFromObekt();
         }
         
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9) {
@@ -1366,9 +1404,11 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_NAME,false);
             repainObektData(myParent.getID_Obekt());
+             TransferFocusFromObekt();
         }
          if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER){
          jTextFieldObektName.transferFocus();
+          
          }
     }//GEN-LAST:event_jTextFieldObektNameKeyPressed
     
@@ -1379,13 +1419,14 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_NO,false);
             repainObektData(myParent.getID_Obekt());
-            
+            TransferFocusFromObekt();
         }
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableStartTextObekt(jTextFieldObektNo.getText(),OBEKT_NO);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_NO,false);
             repainObektData(myParent.getID_Obekt());
+            TransferFocusFromObekt();
         }
         
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9) {
@@ -1393,10 +1434,14 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.OBEKT_NO,false);
             repainObektData(myParent.getID_Obekt());
+            TransferFocusFromObekt();
         }
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER){
         jTextFieldObektNo.transferFocus();
         }
+        
+      
+        
     }//GEN-LAST:event_jTextFieldObektNoKeyPressed
     
     private void jTextFieldContTelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldContTelKeyPressed
@@ -1406,6 +1451,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_TEL,false);
             repainContragentData(myParent.getID_Contragent());
+             TransferFocusFromCotragent();
             
         }
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8) {
@@ -1413,6 +1459,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_TEL,false);
             repainContragentData(myParent.getID_Contragent());
+             TransferFocusFromCotragent();
         }
         
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9) {
@@ -1420,10 +1467,19 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_TEL,false);
             repainContragentData(myParent.getID_Contragent());
+             TransferFocusFromCotragent();
         }
-         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER) {
+    /*     if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER) {
          jTextFieldContTel.transferFocus();
          }
+        if(jTextFieldObektNo.isVisible())
+        {
+          jTextFieldObektNo.grabFocus();
+        }
+        else
+        {
+          jTextFieldDistr.grabFocus();
+        }*/
     }//GEN-LAST:event_jTextFieldContTelKeyPressed
     
     private void jTextFieldContrMOLKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldContrMOLKeyPressed
@@ -1433,6 +1489,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_MOL,false);
             repainContragentData(myParent.getID_Contragent());
+          TransferFocusFromCotragent();
             
         }
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8) {
@@ -1440,6 +1497,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_MOL,false);
             repainContragentData(myParent.getID_Contragent());
+           TransferFocusFromCotragent(); 
         }
         
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9) {
@@ -1447,10 +1505,19 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_MOL,false);
             repainContragentData(myParent.getID_Contragent());
+            TransferFocusFromCotragent();
         }
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER) {
+    /*    if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER) {
             jTextFieldContrMOL.transferFocus();
         }
+        if(jTextFieldObektNo.isVisible())
+        {
+          jTextFieldObektNo.grabFocus();
+        }
+        else
+        {
+          jTextFieldDistr.grabFocus();
+        }*/
     }//GEN-LAST:event_jTextFieldContrMOLKeyPressed
     
     private void jTextFieldAddressKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldAddressKeyPressed
@@ -1460,6 +1527,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_ADDRESS,false);
             repainContragentData(myParent.getID_Contragent());
+            TransferFocusFromCotragent();
             
         }
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8) {
@@ -1467,6 +1535,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_ADDRESS,false);
             repainContragentData(myParent.getID_Contragent());
+            TransferFocusFromCotragent();
         }
         
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9) {
@@ -1474,10 +1543,25 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_ADDRESS,false);
             repainContragentData(myParent.getID_Contragent());
+            TransferFocusFromCotragent();
         }
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER){
-            jTextFieldAddress.transferFocus();
-        }
+   /*     if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER){
+            if(jTextFieldBulstat.getText().equals("")){
+                jTextFieldBulstat.grabFocus();
+            } else{
+    //---------------------      
+                if(jPanelObekt.isVisible())
+                    {
+                      jTextFieldObektNo.grabFocus();
+                    }
+                    else
+                    {
+                      jTextFieldDistr.grabFocus();
+                    }
+    //----------------------  
+            }
+        }*/
+        
     }//GEN-LAST:event_jTextFieldAddressKeyPressed
     
     private void jTextFieldContrNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldContrNameKeyPressed
@@ -1487,6 +1571,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_NAME,false);
             repainContragentData(myParent.getID_Contragent());
+            TransferFocusFromCotragent();
             
         }
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8) {
@@ -1494,6 +1579,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_NAME,false);
             repainContragentData(myParent.getID_Contragent());
+            TransferFocusFromCotragent();
         }
         
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9) {
@@ -1501,10 +1587,25 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_NAME,false);
             repainContragentData(myParent.getID_Contragent());
+            TransferFocusFromCotragent();
         }
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER){
-            jTextFieldContrName.transferFocus();
-        }
+   /*     if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER){
+            if(jTextFieldContrName.getText().equals("")){
+                jTextFieldContrName.grabFocus();
+            } else{
+        //---------------------      
+                if(jPanelObekt.isVisible())
+                    {
+                      jTextFieldObektNo.grabFocus();
+                    }
+                    else
+                    {
+                      jTextFieldDistr.grabFocus();
+                    }
+        //----------------------  
+            }
+        }*/
+       
     }//GEN-LAST:event_jTextFieldContrNameKeyPressed
     
     private void jTextFieldDanNomerKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDanNomerKeyPressed
@@ -1514,13 +1615,14 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_DAN_NO,false);
             repainContragentData(myParent.getID_Contragent());
-            
+           TransferFocusFromCotragent();
         }
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableStartTextContragent(jTextFieldDanNomer.getText(),CONTARGENT_DAN_NO);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_DAN_NO,false);
             repainContragentData(myParent.getID_Contragent());
+             TransferFocusFromCotragent();
         }
         
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9) {
@@ -1528,10 +1630,19 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_DAN_NO,false);
             repainContragentData(myParent.getID_Contragent());
+            TransferFocusFromCotragent();
         }
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER){
+  /*      if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER){
             jTextFieldDanNomer.transferFocus();
         }
+        if(jTextFieldObektNo.isVisible())
+        {
+          jTextFieldObektNo.requestFocus();
+        }
+        else
+        {
+          jTextFieldDistr.requestFocus();
+        }*/
     }//GEN-LAST:event_jTextFieldDanNomerKeyPressed
     
     private void jTextFieldBulstatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBulstatKeyPressed
@@ -1541,6 +1652,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_BULSTAT,false);
             repainContragentData(myParent.getID_Contragent());
+            TransferFocusFromCotragent();
             
         }
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8) {
@@ -1548,6 +1660,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_BULSTAT,false);
             repainContragentData(myParent.getID_Contragent());
+            TransferFocusFromCotragent();
         }
         
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9) {
@@ -1555,10 +1668,25 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_BULSTAT,false);
             repainContragentData(myParent.getID_Contragent());
+            TransferFocusFromCotragent();
         }
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER){
-            jTextFieldBulstat.transferFocus();
-        }
+  /*      if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER){
+             if(jTextFieldBulstat.getText().equals("")){
+                jTextFieldBulstat.grabFocus();
+            } else{
+        //---------------------      
+                if(jTextFieldObektNo.isVisible())
+                    {
+                      jTextFieldObektNo.grabFocus();
+                    }
+                    else
+                    {
+                      jTextFieldDistr.grabFocus();
+                    }
+        //----------------------  
+            }
+        }*/
+       
     }//GEN-LAST:event_jTextFieldBulstatKeyPressed
     
     private void jTextFieldConNomKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldConNomKeyPressed
@@ -1570,13 +1698,15 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_NO,false);
             
             repainContragentData(myParent.getID_Contragent());
-            
+            this.requestFocus();
+            TransferFocusFromCotragent();
         }
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F8) {
             java.sql.ResultSet rs1 = myParent.getCountriesT().getTableStartTextContragent(jTextFieldConNom.getText(),CONTARGENT_NO);
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_NO,false);
             repainContragentData(myParent.getID_Contragent());
+            TransferFocusFromCotragent();
         }
         
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_F9) {
@@ -1584,14 +1714,25 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             Connection conn1 = myParent.getCountriesT().getConn();
             dialogSelectData = new imakante.sales.selectDataOfDocFacade(myParent,true,rs1,conn1,selectDataOfDocFacade.CONTARGENT_NO,false);
             repainContragentData(myParent.getID_Contragent());
+            TransferFocusFromCotragent();
         }
-        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER){
+   /*     if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER){
             if(jTextFieldConNom.getText().equals("")){
                 jTextFieldConNom.grabFocus();
             } else{
-                jTextFieldConNom.transferFocus();
+        //---------------------      
+                if(jTextFieldObektNo.isVisible())
+                    {
+                      jTextFieldObektNo.grabFocus();
+                    }
+                    else
+                    {
+                      jTextFieldDistr.grabFocus();
+                    }
+        //----------------------  
             }
-        }
+        }*/
+        
     }//GEN-LAST:event_jTextFieldConNomKeyPressed
     
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
@@ -1877,7 +2018,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private int id_df_NewFaktura = 0;
     private boolean isPressKey = false;
     private boolean isTyped = false;
-    private boolean isSetDataInTable = false;
+    private boolean isSetDataInTable = false; // note: doblira  ((docLineTableModel)jTable1.getModel()).setIsFinishToEnterData();
     private boolean rowSelectedChange = false;
     private boolean isDocFacadeCreate = false;
     private boolean isCheckOne = false;
@@ -2095,7 +2236,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 for(int i=0;i < countRow; i++) {
                     docLineArray dd =(docLineArray) rows.get(i);
                     dd.setRatioOfDisBand(dd.getNumerOfDisBand());
-                    ((docLineTableModel)jTable1.getModel()).addRow(dd);
+                   ((docLineTableModel)jTable1.getModel()).addRow(dd);
                     productDescription_1 = dd.getNumerOfDisBand()[0];
                     productDescription_2 = dd.getNumerOfDisBand()[1];
                     productDescription_3 = dd.getNumerOfDisBand()[2];
@@ -2126,7 +2267,15 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                      jTable1.setValueAt(new Integer(dd.getRatioOfDisBand()[0]),i,21); 
                      jTable1.setValueAt(new Integer(dd.getRatioOfDisBand()[1]),i,22); 
                      jTable1.setValueAt(new Integer(dd.getRatioOfDisBand()[2]),i,23); 
-                     jTable1.setValueAt(new Boolean(false),i,24); 
+                     jTable1.setValueAt(new Boolean(true),i,24);  //  markira reda dali  moze da se redaktira
+                      //  markira reda kato  zavyr6en t.e. dannite sa vyvedeni v kolonite
+                    //((docLineTableModel)jTable1.getModel()).getIsFinishToEnterData(i);
+                     
+                    docLineArray dd1 = ((docLineTableModel)jTable1.getModel()).getRow(i);
+                    boolean ddfsa = dd1.getIsFinishRow();
+                    ((docLineTableModel)jTable1.getModel()).setIsFinishToEnterData(i);
+                     dd1 = ((docLineTableModel)jTable1.getModel()).getRow(i);
+                     ddfsa = dd1.getIsFinishRow();
                 }
                
                
@@ -2239,16 +2388,19 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         return oldName;
     }
     private void setInputLisener() {
-        
+     //   getKeyBoardManager();
         jTable1.addFocusListener(new FocusListener() {
             public void focusGained(FocusEvent e) 
             {
                 try
                 {
-                if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
-                ((docLineTableModel) jTable1.getModel()).enableCellEditable(0);
-                // za tyrsene po ime
-                ((docLineTableModel) jTable1.getModel()).enableCellEditable(1);
+                if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24)&&
+                        !((docLineTableModel)jTable1.getModel()).getIsFinishToEnterData(jTable1.getSelectedRow()))
+                    {
+                    ((docLineTableModel) jTable1.getModel()).enableCellEditable(0);
+                    // za tyrsene po ime
+                    ((docLineTableModel) jTable1.getModel()).enableCellEditable(1);
+                    }
                 System.out.println("focusGained");
                 }
                 catch(Exception ex){System.out.println("Error focusGained");};
@@ -2466,7 +2618,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                             System.out.println("ДДС = "+ alldds + "::"+doubleRoundToString(4,alldds));
                             System.out.println("База = "+ ddsOsnova + "::" + doubleRoundToString(4,ddsOsnova));
                             calculateTotalPriceForDocument();
-                            jTable1.setValueAt(true,jTable1.getSelectedRow(),24);
+                            jTable1.setValueAt(true,jTable1.getSelectedRow(),24); // markirame reda - ve4e ne moze da se redaktira
+                            
                             myParent.setPriceOneProduct((Double) jTable1.getValueAt(rowSelect,8));
                             myParent.setProcentProduct((Double) jTable1.getValueAt(rowSelect,9));
                             if(jTable1.getSelectedRow()==(jTable1.getRowCount() - 1)) // pri polovfenie 4e reda e posleden
@@ -2474,7 +2627,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                 int i = 0;
                                 i = jTable1.getSelectedRow();
                                 ((docLineTableModel)jTable1.getModel()).setDefaultCellEditable();
-                                ((docLineTableModel)jTable1.getModel()).setIsFinish(i);
+                              //  ((docLineTableModel)jTable1.getModel()).setIsFinishToEnterData(i); // markirame reda kato priklu4en s vyvezdaneto
                                 ((docLineTableModel)jTable1.getModel()).addRow(new docLineArray());
                                 jTable1.changeSelection(i+1,-1,false,false);
                                 System.out.println();
@@ -2703,7 +2856,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                 int i = 0;
                                 i = jTable1.getSelectedRow();
                                 //((docLineTableModel)jTable1.getModel()).setDefaultCellEditable();
-                                ((docLineTableModel)jTable1.getModel()).setIsFinish(i);
+                                ((docLineTableModel)jTable1.getModel()).setIsFinishToEnterData(i);
+                                  jTable1.setValueAt(true,jTable1.getSelectedRow(),24); // markirame reda - ve4e ne moze da se redaktira
                                 //((docLineTableModel)jTable1.getModel()).addRow(new docLineArray());
                                 jTable1.changeSelection(i+1,0,false,false);
                                 
@@ -2975,7 +3129,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                             str = tmpStr;
                          
                          }
-                        if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
+                        if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24)&&
+                                 !((docLineTableModel)jTable1.getModel()).getIsFinishToEnterData(jTable1.getSelectedRow()))
                         {
                               processKeyPress(myParent.getDocFacadeType(),F7_KEY,SEARCH_BY_CODE);
                               
@@ -2985,8 +3140,17 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                         if(columnSelect==1)
                         {
                         if(str.equals("0") || str==null || str.equals("\uffff")  ) {str="";}
-                        if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
-                        processKeyPress(myParent.getDocFacadeType(),F7_KEY,SEARCH_BY_NAME);
+                        if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24) &&
+                                !((docLineTableModel)jTable1.getModel()).getIsFinishToEnterData(jTable1.getSelectedRow()))
+                        {
+                           // str=str.substring(0,str.length()-1);
+                           if(str.endsWith("\uffff"))
+                           {
+                               str = str.substring(0,str.length()-1);
+                           }
+                            str = removeCharacter(str);
+                            processKeyPress(myParent.getDocFacadeType(),F7_KEY,SEARCH_BY_NAME);
+                        }
                     }
 
                 }
@@ -3084,7 +3248,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                             }
                             catch(Exception ex){}
                             if(str.equals("0")) str="";
-                            if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
+                            if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24)&&
+                                    !((docLineTableModel)jTable1.getModel()).getIsFinishToEnterData(rowSelect))
                             processKeyPress(myParent.getDocFacadeType(),F7_KEY,SEARCH_BY_CODE);
                             
                             
@@ -3105,8 +3270,13 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                             }
                             catch(Exception ex){}
                             if(str.equals("0")) str="";
-                            if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
-                            processKeyPress(myParent.getDocFacadeType(),F7_KEY,SEARCH_BY_NAME);
+                            if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24)&&
+                                   !((docLineTableModel)jTable1.getModel()).getIsFinishToEnterData(rowSelect))
+                            {
+                                str = str.substring(0,str.length()-1);
+                                processKeyPress(myParent.getDocFacadeType(),F7_KEY,SEARCH_BY_NAME);
+                            }
+                            
                             
                             
                         }  
@@ -4675,15 +4845,20 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         //firstCenterLast -> F7 key - center; F8 key - first; F9 key - last
         isProductIN = checkInOutProduct(docType);
        
-        
+         
         if(rate!=0) {
             try {
                 Robot robot = new Robot();
                 
                 
+
+
+                robot.keyPress(KeyEvent.VK_ENTER);
+
                 robot.keyPress(KeyEvent.VK_ENTER);
             } catch (AWTException e12){}
             if(str.equals("0") || str==null) str="";
+            
             System.out.println("str :::"+str);
             java.sql.ResultSet rs1 =null;
             
@@ -4824,6 +4999,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         {
             //show meseage za valuta
         }
+       ((docLineTableModel)jTable1.getModel()).setIsFinishToEnterData(jTable1.getSelectedRow());
     }
     private boolean checkInOutProduct(int doctype) // false - OUT ot skalda; true -  IN v skalda
     {
@@ -5202,6 +5378,98 @@ private int getColumnIndex(String in) //test
           
             
         }
+ }
+ private KEDispatcher kk; 
+ private void getKeyBoardManager()
+ {
+     
+   java.awt.KeyboardFocusManager kbm = java.awt.KeyboardFocusManager.getCurrentKeyboardFocusManager();
+   kk = new KEDispatcher(kbm);
+   
+ }
+ private class KEDispatcher implements KeyEventDispatcher
+ {
+     private java.awt.KeyboardFocusManager kbm;
+     KEDispatcher(java.awt.KeyboardFocusManager kbm) 
+     {
+         this.kbm = kbm;
+         kbm.addKeyEventDispatcher(this);
+     }
+     public boolean dispatchKeyEvent(KeyEvent e)
+     {
+         
+         if(e.getKeyCode()==KeyEvent.VK_F5)
+         {
+           System.out.println("KEDispatcher + F5")   ;
+           jButtonCreateDocFacade.doClick();
+           return true;
+         }
+         return false;
+     }
+   
+ }
+ private String removeCharacter(String ss)
+ {
+     String ret = new String();
+     int f =0;
+     ret="";
+     f=ss.indexOf("\uffff");
+     while(f!=-1)
+     {
+      
+       if(f>0)
+       {
+        ret += ss.substring(0,f) ;
+        ret += ss.substring(f+1,ss.length());
+       }
+        else
+        {
+         ret += ss.substring(f+1,ss.length()) ;
+        
+        }
+        f=ss.indexOf("\uffff",f+1) ;
+     }
+     
+     return ret;
+ }
+ private void TransferFocusFromCotragent()
+ {
+     
+   if(jPanelObekt.isVisible())
+     {
+      jTextFieldObektNo.grabFocus();
+     }
+      else
+          {
+               if(jPanel4.isVisible())
+               {
+                  jTextFieldDistr.grabFocus();
+               }
+               else
+                  {
+                     jTable1.requestFocus();
+                     jTable1.changeSelection(0,0,false,false);
+                  }
+          }
+    
+ }
+ private void TransferFocusFromObekt()
+ {
+     jTextFieldDistr.requestFocus();
+ }
+ private void TransferFocusFromDitributor()
+ {
+     jTextFieldDeliver.requestFocus();
+ }
+ private void TransferFocusFromDeliver()
+ {
+     jTable1.requestFocus();
+     jTable1.changeSelection(0,0,false,false);
+ }
+ private void TransferFocusDocTypeIsBrak()
+ {
+     jTable1.requestFocus();
+     jTable1.changeSelection(0,0,false,false);
  }
 }// end class
 

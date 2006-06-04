@@ -1,5 +1,3 @@
-
-
 package nom;
 
 import java.awt.event.KeyEvent;
@@ -25,7 +23,8 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
         //  showNameOfMOL_OSO setMOL = new showNameOfMOL_OSO(myframe,true,myParent.getContragentDB().getTablesWithNames(""),myParent.getContragentDB().getConn(),true);
         //init combo box for currency
         
-        
+        this.setTitle("\u0412\u044A\u0432\u0435\u0436\u0434\u0430\u043D\u0435 \u043D\u0430 \u043A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442");
+        jTextFieldCod.requestFocus();
         repaintComp();
     }
     
@@ -115,6 +114,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
         jLabelOSO.setText("\u041e\u0421\u041e:");
 
         jTextFieldCod.setToolTipText("\u041c\u043e\u043b\u044f, \u0432\u044a\u0432\u0435\u0434\u0435\u0442\u0435 \u0441\u0430\u043c\u043e \u0446\u0438\u0444\u0440\u0438");
+        jTextFieldCod.setNextFocusableComponent(jTextFieldName);
         jTextFieldCod.setPreferredSize(new java.awt.Dimension(80, 20));
         jTextFieldCod.setInputVerifier(new imakante.com.InputIntegerVerifier());
         /*jTextFieldCod.setInputVerifier(new InputVerifier()
@@ -148,6 +148,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
                 }
             });
 
+            jTextFieldName.setNextFocusableComponent(jTextFieldDanNomer);
             jTextFieldName.setPreferredSize(new java.awt.Dimension(170, 20));
             jTextFieldName.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -155,6 +156,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
                 }
             });
 
+            jTextFieldDanNomer.setNextFocusableComponent(jTextFieldBulstat);
             jTextFieldDanNomer.setPreferredSize(new java.awt.Dimension(80, 20));
             jTextFieldDanNomer.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -163,6 +165,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
             });
 
             jTextFieldBulstat.setMinimumSize(new java.awt.Dimension(150, 20));
+            jTextFieldBulstat.setNextFocusableComponent(jTextFieldAddress);
             jTextFieldBulstat.setPreferredSize(new java.awt.Dimension(80, 20));
             jTextFieldBulstat.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -170,6 +173,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
                 }
             });
 
+            jTextFieldAddress.setNextFocusableComponent(jTextFieldNM);
             jTextFieldAddress.setPreferredSize(new java.awt.Dimension(170, 20));
             jTextFieldAddress.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -179,6 +183,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
 
             jTextFieldNM.setToolTipText("F7  \u0437\u0430 \u0438\u0437\u0431\u043e\u0440 \u043d\u0430 \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e");
             jTextFieldNM.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
+            jTextFieldNM.setNextFocusableComponent(jTextFieldTel);
             jTextFieldNM.setPreferredSize(new java.awt.Dimension(170, 20));
             jTextFieldNM.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -186,6 +191,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
                 }
             });
 
+            jTextFieldTel.setNextFocusableComponent(jTextFieldFax);
             jTextFieldTel.setPreferredSize(new java.awt.Dimension(170, 20));
             jTextFieldTel.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -193,6 +199,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
                 }
             });
 
+            jTextFieldFax.setNextFocusableComponent(jTextFieldEmail);
             jTextFieldFax.setPreferredSize(new java.awt.Dimension(170, 20));
             jTextFieldFax.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -200,6 +207,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
                 }
             });
 
+            jTextFieldEmail.setNextFocusableComponent(jTextFieldWeb);
             jTextFieldEmail.setPreferredSize(new java.awt.Dimension(170, 20));
             jTextFieldEmail.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -207,6 +215,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
                 }
             });
 
+            jTextFieldWeb.setNextFocusableComponent(jTextFieldMOL);
             jTextFieldWeb.setPreferredSize(new java.awt.Dimension(170, 20));
             jTextFieldWeb.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -216,6 +225,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
 
             jTextFieldMOL.setToolTipText("F7  \u0437\u0430 \u0438\u0437\u0431\u043e\u0440 \u043d\u0430 \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e");
             jTextFieldMOL.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
+            jTextFieldMOL.setNextFocusableComponent(jTextFieldOSO);
             jTextFieldMOL.setPreferredSize(new java.awt.Dimension(170, 20));
             jTextFieldMOL.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -225,6 +235,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
 
             jTextFieldOSO.setToolTipText("F7  \u0437\u0430 \u0438\u0437\u0431\u043e\u0440 \u043d\u0430 \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e");
             jTextFieldOSO.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(51, 51, 51), null));
+            jTextFieldOSO.setNextFocusableComponent(jTextFieldNameBank_R);
             jTextFieldOSO.setPreferredSize(new java.awt.Dimension(170, 20));
             jTextFieldOSO.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -273,39 +284,91 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
             jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("\u0411\u0430\u043d\u043a\u043e\u0432\u0430 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f"));
             jLabel1.setText("\u0418\u043c\u0435 \u043d\u0430 \u0411\u0430\u043d\u043a\u0430\u0442\u0430 \u0437\u0430 \u0440\u0430\u0437\u043f\u043b\u0430\u0449\u0430\u0442\u0435\u043b\u043d\u0430 \u0441\u043c\u0435\u0442\u043a\u0430");
 
+            jTextFieldNameBank_R.setNextFocusableComponent(jTextFieldIBAN_R);
+            jTextFieldNameBank_R.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyPressed(java.awt.event.KeyEvent evt) {
+                    jTextFieldNameBank_RKeyPressed(evt);
+                }
+            });
+
             jLabel2.setText("IBAN \u043d\u0430 \u0420\u0410\u0417\u041f\u041b\u0410\u0429\u0410\u0422\u0420\u0415\u041b\u041d\u0410 \u0421\u041c\u0415\u0422\u041a\u0410");
+
+            jTextFieldIBAN_R.setNextFocusableComponent(jTextFieldBIC_R);
+            jTextFieldIBAN_R.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyPressed(java.awt.event.KeyEvent evt) {
+                    jTextFieldIBAN_RKeyPressed(evt);
+                }
+            });
 
             jLabel3.setText("BIC \u043d\u0430 \u0431\u0430\u043d\u043a\u0430\u0442\u0430 \u043f\u043e\u043b\u0443\u0447\u0430\u0442\u0435\u043b \u0440\u0430\u043f\u043b\u0430\u0449\u0430\u043d\u0435");
 
+            jTextFieldBIC_R.setNextFocusableComponent(jComboBoxValutaR);
             jTextFieldBIC_R.setInputVerifier(new imakante.com.InputCharacterVerifier());
             jTextFieldBIC_R.addFocusListener(new java.awt.event.FocusAdapter() {
                 public void focusLost(java.awt.event.FocusEvent evt) {
                     jTextFieldBIC_RFocusLost(evt);
                 }
             });
+            jTextFieldBIC_R.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyPressed(java.awt.event.KeyEvent evt) {
+                    jTextFieldBIC_RKeyPressed(evt);
+                }
+            });
 
             jLabel4.setText("\u0418\u043c\u0435 \u043d\u0430 \u0411\u0430\u043d\u043a\u0430\u0442\u0430 \u0437\u0430 \u0414\u0414\u0421 \u0441\u043c\u0435\u0442\u043a\u0430");
 
+            jTextFieldNameBank_D.setNextFocusableComponent(jTextFieldIBAN_D);
+            jTextFieldNameBank_D.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyPressed(java.awt.event.KeyEvent evt) {
+                    jTextFieldNameBank_DKeyPressed(evt);
+                }
+            });
+
             jLabel5.setText("IBAN \u043d\u0430 \u0414\u0414\u0421 \u0421\u041c\u0415\u0422\u041a\u0410");
+
+            jTextFieldIBAN_D.setNextFocusableComponent(jTextFieldBIC_R);
+            jTextFieldIBAN_D.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyPressed(java.awt.event.KeyEvent evt) {
+                    jTextFieldIBAN_DKeyPressed(evt);
+                }
+            });
 
             jLabel6.setText("BIC \u043d\u0430 \u0431\u0430\u043d\u043a\u0430\u0442\u0430 \u043f\u043e\u043b\u0443\u0447\u0430\u0442\u0435\u043b \u0414\u0414\u0421");
 
+            jTextFieldBIC_D.setNextFocusableComponent(jComboBoxValutaR);
             jTextFieldBIC_D.setInputVerifier(new imakante.com.InputCharacterVerifier());
             jTextFieldBIC_D.addFocusListener(new java.awt.event.FocusAdapter() {
                 public void focusLost(java.awt.event.FocusEvent evt) {
                     jTextFieldBIC_DFocusLost(evt);
                 }
             });
+            jTextFieldBIC_D.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyPressed(java.awt.event.KeyEvent evt) {
+                    jTextFieldBIC_DKeyPressed(evt);
+                }
+            });
 
             jLabel7.setText("\u0412\u0430\u043b\u0443\u0442\u0430:");
 
             jComboBoxValutaR.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "BGL", "EU", "USD" }));
+            jComboBoxValutaR.setNextFocusableComponent(jTextFieldNameBank_D);
             jComboBoxValutaR.setPreferredSize(new java.awt.Dimension(55, 19));
+            jComboBoxValutaR.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyPressed(java.awt.event.KeyEvent evt) {
+                    jComboBoxValutaRKeyPressed(evt);
+                }
+            });
 
             jLabel8.setText("\u0412\u0430\u043b\u0443\u0442\u0430:");
 
             jComboBoxValutaD.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "BGL", "EU", "USD" }));
+            jComboBoxValutaD.setNextFocusableComponent(jButton1);
             jComboBoxValutaD.setPreferredSize(new java.awt.Dimension(55, 19));
+            jComboBoxValutaD.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyPressed(java.awt.event.KeyEvent evt) {
+                    jComboBoxValutaDKeyPressed(evt);
+                }
+            });
 
             org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
             jPanel4.setLayout(jPanel4Layout);
@@ -518,6 +581,62 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
             );
             pack();
         }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBoxValutaDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBoxValutaDKeyPressed
+// TODO add your handling code here:
+         if(java.awt.event.KeyEvent.VK_ENTER== evt.getKeyCode()){
+            jComboBoxValutaD.transferFocus();
+        }
+    }//GEN-LAST:event_jComboBoxValutaDKeyPressed
+
+    private void jTextFieldBIC_DKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBIC_DKeyPressed
+// TODO add your handling code here:
+         if(java.awt.event.KeyEvent.VK_ENTER== evt.getKeyCode()){
+            jTextFieldBIC_D.transferFocus();
+        }
+    }//GEN-LAST:event_jTextFieldBIC_DKeyPressed
+
+    private void jTextFieldIBAN_DKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldIBAN_DKeyPressed
+// TODO add your handling code here:
+         if(java.awt.event.KeyEvent.VK_ENTER== evt.getKeyCode()){
+            jTextFieldIBAN_D.transferFocus();
+        }
+    }//GEN-LAST:event_jTextFieldIBAN_DKeyPressed
+
+    private void jTextFieldNameBank_DKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNameBank_DKeyPressed
+// TODO add your handling code here:
+         if(java.awt.event.KeyEvent.VK_ENTER== evt.getKeyCode()){
+            jTextFieldNameBank_D.transferFocus();
+        }
+    }//GEN-LAST:event_jTextFieldNameBank_DKeyPressed
+
+    private void jComboBoxValutaRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBoxValutaRKeyPressed
+// TODO add your handling code here:
+         if(java.awt.event.KeyEvent.VK_ENTER== evt.getKeyCode()){
+            jComboBoxValutaR.transferFocus();
+        }
+    }//GEN-LAST:event_jComboBoxValutaRKeyPressed
+
+    private void jTextFieldBIC_RKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBIC_RKeyPressed
+// TODO add your handling code here:
+         if(java.awt.event.KeyEvent.VK_ENTER== evt.getKeyCode()){
+            jTextFieldBIC_R.transferFocus();
+        }
+    }//GEN-LAST:event_jTextFieldBIC_RKeyPressed
+
+    private void jTextFieldIBAN_RKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldIBAN_RKeyPressed
+// TODO add your handling code here:
+         if(java.awt.event.KeyEvent.VK_ENTER== evt.getKeyCode()){
+            jTextFieldIBAN_R.transferFocus();
+        }
+    }//GEN-LAST:event_jTextFieldIBAN_RKeyPressed
+
+    private void jTextFieldNameBank_RKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNameBank_RKeyPressed
+// TODO add your handling code here:
+          if(java.awt.event.KeyEvent.VK_ENTER== evt.getKeyCode()){
+            jTextFieldNameBank_R.transferFocus();
+        }
+    }//GEN-LAST:event_jTextFieldNameBank_RKeyPressed
 
     private void jTextFieldBIC_RFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldBIC_RFocusLost
 // TODO add your handling code here:
