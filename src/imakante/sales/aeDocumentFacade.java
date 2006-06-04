@@ -1245,6 +1245,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         checkForDiffWithOutSaveInDB();
         createDocument(id_df,myParent.getDocFacadeType(),0);
         isDocFacadeCreate = true;
+        JOptionPane.showMessageDialog(this,"\u0423\u0441\u043F\u0435\u0448\u0435\u043D \u0437\u0430\u043F\u0438\u0441");
         
     }//GEN-LAST:event_jButtonCreateDocFacadeActionPerformed
     
@@ -2389,7 +2390,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         return oldName;
     }
     private void setInputLisener() {
-     //   getKeyBoardManager();
+        getKeyBoardManager();
         jTable1.addFocusListener(new FocusListener() {
             public void focusGained(FocusEvent e) 
             {
@@ -5473,7 +5474,7 @@ private int getColumnIndex(String in) //test
          {
            System.out.println("KEDispatcher + F5")   ;
            jButtonCreateDocFacade.doClick();
-           return true;
+           return false;
          }
          return false;
      }
