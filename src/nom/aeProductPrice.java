@@ -4,12 +4,10 @@ package nom;
 import imakante.com.vcomponents.iInternalFrame;
 import javax.swing.JOptionPane;
 import java.math.*;
-public class aeProductPrice extends imakante.com.vcomponents.iDialog 
-{
+public class aeProductPrice extends imakante.com.vcomponents.iDialog {
     
     /** Creates new form aeProductPrice */
-    public aeProductPrice(imakante.com.vcomponents.iInternalFrame frame, boolean modal,int id_price, boolean isnew)
-    {
+    public aeProductPrice(imakante.com.vcomponents.iInternalFrame frame, boolean modal,int id_price, boolean isnew) {
         
         super(frame, modal);
         this.myParent =(FrmProduct) frame;
@@ -23,19 +21,17 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
         int y = (((dim.height)-(this.getSize().height))/2);
         this.setLocation(x, y);
         splitMoney = myParent.getCountriesT().getMoney();
-        for(int i=0;i<splitMoney.length;i++)
-        {
+        for(int i=0;i<splitMoney.length;i++) {
             jComboBoxValuta.addItem(new String(splitMoney[i]));
             
         }
         
-        if(selectComboBoxItem != 0)
-          {
+        if(selectComboBoxItem != 0) {
             
             selectComboBoxItem = getNewComboBoxIndex(selectComboBoxItem);
             
             jComboBoxValuta.setSelectedIndex(selectComboBoxItem);
-          }
+        }
         
         
         
@@ -80,6 +76,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
         jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f \u043d\u0430 \u0446\u0435\u043d\u0438");
         jPanel1.setPreferredSize(new java.awt.Dimension(600, 33));
         jButtonSave.setText("\u0421\u044a\u0445\u0440\u0430\u043d\u0438");
         jButtonSave.addActionListener(new java.awt.event.ActionListener() {
@@ -346,6 +343,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
         jPanel2.add(jLabel12, gridBagConstraints);
 
         jTextFieldValue.setEditable(false);
+        jTextFieldValue.setText("1");
         jTextFieldValue.setPreferredSize(new java.awt.Dimension(100, 20));
         jTextFieldValue.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -362,12 +360,11 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jTextFieldValueMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldValueMousePressed
 // TODO add your handling code here:
         String curs[] = null;
-        try
-        {
+        try {
             java.sql.ResultSet r1 = myParent.getCountriesT().getShowConteinCurs();
             shContein= new showConteinCurs(myParent,true,r1,myParent.getCountriesT().getConn());
             id_curs = myParent.getTMPINT();
@@ -376,163 +373,138 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
             selectComboBoxItem = Integer.parseInt(curs[1]);
             
             myParent.setTMPINT(0);
-        }
-        catch(Exception e)
-        {
+        } catch(Exception e) {
             showMessage();
         }
         
     }//GEN-LAST:event_jTextFieldValueMousePressed
-
+    
     private void jTextFieldProcent3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldProcent3FocusLost
 // TODO add your handling code here:
-       
-       p_p3 = Double.parseDouble(jTextFieldProcent3.getText());
-       p3 = (p_p3/100)*p0 + p0;
-       jTextFieldPrice3.setText( doubleRoundToString(6,p3));  
-       
+        
+        p_p3 = Double.parseDouble(jTextFieldProcent3.getText());
+        p3 = (p_p3/100)*p0 + p0;
+        jTextFieldPrice3.setText( doubleRoundToString(6,p3));
+        
     }//GEN-LAST:event_jTextFieldProcent3FocusLost
-
+    
     private void jTextFieldProcent3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldProcent3KeyPressed
 // TODO add your handling code here:
-       if(evt.getKeyCode()==evt.VK_ENTER)
-        {
-            try
-            {
-               p0 = Double.parseDouble(jTextDostPrice.getText());
-               p_p3 = Double.parseDouble(jTextFieldProcent3.getText());
-               p3 = (p_p3/100)*p0 + p0;
-               jTextFieldPrice3.setText( doubleRoundToString(6,p3));
+        if(evt.getKeyCode()==evt.VK_ENTER) {
+            try {
+                p0 = Double.parseDouble(jTextDostPrice.getText());
+                p_p3 = Double.parseDouble(jTextFieldProcent3.getText());
+                p3 = (p_p3/100)*p0 + p0;
+                jTextFieldPrice3.setText( doubleRoundToString(6,p3));
                 
-            }
-            catch(NumberFormatException e)
-            {
+            } catch(NumberFormatException e) {
                 showMessage();
             }
-         
-        }   
+            
+        }
     }//GEN-LAST:event_jTextFieldProcent3KeyPressed
-
+    
     private void jTextFieldPrice3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice3FocusLost
 // TODO add your handling code here:
-     
-                
-       p0 = Double.parseDouble(jTextDostPrice.getText());
-       p3 = Double.parseDouble(jTextFieldPrice3.getText());
-       if(p3>=p0) p_p3 = (100 * (p3-p0)) / p0; 
-       else showMessage();
-       jTextFieldProcent3.setText( doubleRoundToString(3,p_p3)); 
+        
+        
+        p0 = Double.parseDouble(jTextDostPrice.getText());
+        p3 = Double.parseDouble(jTextFieldPrice3.getText());
+        if(p3>=p0) p_p3 = (100 * (p3-p0)) / p0;
+        else showMessage();
+        jTextFieldProcent3.setText( doubleRoundToString(3,p_p3));
         
     }//GEN-LAST:event_jTextFieldPrice3FocusLost
-
+    
     private void jTextFieldPrice3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPrice3KeyPressed
 // TODO add your handling code here:
-         if(evt.getKeyCode()==evt.VK_ENTER)
-        {
-            try
-            {
+        if(evt.getKeyCode()==evt.VK_ENTER) {
+            try {
                 p3 = Double.parseDouble(jTextFieldPrice3.getText());
-                if (p3 >= p0) p_p3 = (100 * (p3-p0)) / p0; 
+                if (p3 >= p0) p_p3 = (100 * (p3-p0)) / p0;
                 else showMessage();
                 jTextFieldProcent3.setText( doubleRoundToString(3,p_p3));
                 
-            }
-            catch(NumberFormatException e)
-            {
+            } catch(NumberFormatException e) {
                 showMessage();
             }
-         
+            
         }
     }//GEN-LAST:event_jTextFieldPrice3KeyPressed
-
+    
     private void jTextFieldProcent2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldProcent2KeyPressed
 // TODO add your handling code here:
-        if(evt.getKeyCode()==evt.VK_ENTER)
-        {
-            try
-            {
-               p0 = Double.parseDouble(jTextDostPrice.getText());
-               p_p2 = Double.parseDouble(jTextFieldProcent2.getText());
-               p2 = (p_p2/100)*p0 + p0;
-               jTextFieldPrice2.setText( doubleRoundToString(6,p2));
+        if(evt.getKeyCode()==evt.VK_ENTER) {
+            try {
+                p0 = Double.parseDouble(jTextDostPrice.getText());
+                p_p2 = Double.parseDouble(jTextFieldProcent2.getText());
+                p2 = (p_p2/100)*p0 + p0;
+                jTextFieldPrice2.setText( doubleRoundToString(6,p2));
                 
-            }
-            catch(NumberFormatException e)
-            {
+            } catch(NumberFormatException e) {
                 showMessage();
             }
-         
-        } 
+            
+        }
     }//GEN-LAST:event_jTextFieldProcent2KeyPressed
-
+    
     private void jTextFieldProcent2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldProcent2FocusLost
 // TODO add your handling code here:
-        try
-        {
-        p0 = Double.parseDouble(jTextDostPrice.getText());
-        p_p2 = Double.parseDouble(jTextFieldProcent2.getText());
-        p2 = (p_p2/100)*p0 + p0;
-        jTextFieldPrice2.setText( doubleRoundToString(6,p2));
-        }
-        catch(Exception e)
-        {
+        try {
+            p0 = Double.parseDouble(jTextDostPrice.getText());
+            p_p2 = Double.parseDouble(jTextFieldProcent2.getText());
+            p2 = (p_p2/100)*p0 + p0;
+            jTextFieldPrice2.setText( doubleRoundToString(6,p2));
+        } catch(Exception e) {
             showMessage();
         }
     }//GEN-LAST:event_jTextFieldProcent2FocusLost
-
+    
     
     private void jTextFieldPrice2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice2FocusLost
 // TODO add your handling code here:
         
         p0 = Double.parseDouble(jTextDostPrice.getText());
         p2 = Double.parseDouble(jTextFieldPrice2.getText());
-        if(p2 >= p0)  p_p2 = (100 * (p2-p0)) / p0; 
+        if(p2 >= p0)  p_p2 = (100 * (p2-p0)) / p0;
         else showMessage();
         jTextFieldProcent2.setText( doubleRoundToString(3,p_p2));
     }//GEN-LAST:event_jTextFieldPrice2FocusLost
-
+    
     private void jTextFieldPrice2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPrice2KeyPressed
 // TODO add your handling code here:
-       if(evt.getKeyCode()==evt.VK_ENTER)
-        {
-            try
-            {
+        if(evt.getKeyCode()==evt.VK_ENTER) {
+            try {
                 p0 = Double.parseDouble(jTextDostPrice.getText());
                 p2 = Double.parseDouble(jTextFieldPrice2.getText());
-                if(p2 > p0)p_p2 = (100 * (p2-p0)) / p0; 
+                if(p2 > p0)p_p2 = (100 * (p2-p0)) / p0;
                 else showMessage();
                 jTextFieldProcent2.setText( doubleRoundToString(3,p_p2));
                 
+            } catch(NumberFormatException e) {
+                showMessage();
             }
-            catch(NumberFormatException e)
-            {
-               showMessage();
-            }
-         
+            
         }
     }//GEN-LAST:event_jTextFieldPrice2KeyPressed
-
+    
     
     private void jTextFieldProcent1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldProcent1KeyPressed
 // TODO add your handling code here:
-        if(evt.getKeyCode()==evt.VK_ENTER)
-        {
-            try
-            {
-               p0 = Double.parseDouble(jTextDostPrice.getText());
-               p_p1 = Double.parseDouble(jTextFieldProcent1.getText());
-               p1 = (p_p1/100)*p0 + p0;
-               jTextFieldPrice1.setText( doubleRoundToString(6,p1));
+        if(evt.getKeyCode()==evt.VK_ENTER) {
+            try {
+                p0 = Double.parseDouble(jTextDostPrice.getText());
+                p_p1 = Double.parseDouble(jTextFieldProcent1.getText());
+                p1 = (p_p1/100)*p0 + p0;
+                jTextFieldPrice1.setText( doubleRoundToString(6,p1));
                 
+            } catch(NumberFormatException e) {
+                showMessage();
             }
-            catch(NumberFormatException e)
-            {
-               showMessage();
-            }
-         
-        } 
+            
+        }
     }//GEN-LAST:event_jTextFieldProcent1KeyPressed
-
+    
     private void jTextFieldProcent1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldProcent1FocusLost
 // TODO add your handling code here:
         p0 = Double.parseDouble(jTextDostPrice.getText());
@@ -541,98 +513,85 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
         p1 = p1*p0 + p0;
         jTextFieldPrice1.setText( doubleRoundToString(6,p1));
     }//GEN-LAST:event_jTextFieldProcent1FocusLost
-
+    
     private void jTextFieldPrice1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice1FocusLost
 // TODO add your handling code here:
         p0 = Double.parseDouble(jTextDostPrice.getText());
         p1 = Double.parseDouble(jTextFieldPrice1.getText());
-        if(p1 >= p0) p_p1 = (100 * (p1-p0)) / p0; 
+        if(p1 >= p0) p_p1 = (100 * (p1-p0)) / p0;
         else showMessage();
         
         jTextFieldProcent1.setText( doubleRoundToString(3,p_p1));
         
     }//GEN-LAST:event_jTextFieldPrice1FocusLost
-
+    
     private void jTextFieldPrice1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPrice1KeyPressed
 // TODO add your handling code here:
-       
-        if(evt.getKeyCode()==evt.VK_ENTER)
-        {
-            try
-            {
+        
+        if(evt.getKeyCode()==evt.VK_ENTER) {
+            try {
                 p0 = Double.parseDouble(jTextDostPrice.getText());
                 p1 = Double.parseDouble(jTextFieldPrice1.getText());
-                if (p1 >= p0 ) p_p1 = (100 * (p1-p0)) / p0; 
+                if (p1 >= p0 ) p_p1 = (100 * (p1-p0)) / p0;
                 else showMessage();
-               
+                
                 jTextFieldProcent1.setText( doubleRoundToString(3,p_p1));
                 
-            }
-            catch(NumberFormatException e)
-            {
+            } catch(NumberFormatException e) {
                 showMessage();
             }
-         
+            
         }
     }//GEN-LAST:event_jTextFieldPrice1KeyPressed
-
+    
     private void jTextDostPriceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextDostPriceKeyPressed
 // TODO add your handling code here:
-        if(jTextDostPrice.getText().length()>0)
-        {
+        if(jTextDostPrice.getText().length()>0) {
             jTextFieldPrice1.setEnabled(true);
             jTextFieldPrice2.setEnabled(true);
             jTextFieldPrice3.setEnabled(true);
-            jTextFieldProcent3.setEnabled(true); 
-             jTextFieldProcent2.setEnabled(true);
-              jTextFieldProcent1.setEnabled(true);  
+            jTextFieldProcent3.setEnabled(true);
+            jTextFieldProcent2.setEnabled(true);
+            jTextFieldProcent1.setEnabled(true);
             p0 = Double.parseDouble(jTextDostPrice.getText());
+            if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){jTextFieldPrice1.requestFocus();}
         }
     }//GEN-LAST:event_jTextDostPriceKeyPressed
-
+    
     private void jTextDostPriceKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextDostPriceKeyReleased
 // TODO add your handling code here:
     }//GEN-LAST:event_jTextDostPriceKeyReleased
-
+    
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
 // TODO add your handling code here:
-       if(p0==0 && p1==0 && p2==0 && p3==0 && id_curs==0)
-       {
-           showMessage();
-       }
-       else
-       {
-        try
-        {
-        p0 = Double.parseDouble(jTextDostPrice.getText());
-        p1 = Double.parseDouble(jTextFieldPrice1.getText());
-        p2 = Double.parseDouble(jTextFieldPrice2.getText());
-        p3 = Double.parseDouble(jTextFieldPrice3.getText());
-        }
-        catch(Exception e)
-        {
+        if(p0==0 && p1==0 && p2==0 && p3==0 && id_curs==0) {
             showMessage();
-        }
-        if(isNew)
-        {
+        } else {
+            try {
+                p0 = Double.parseDouble(jTextDostPrice.getText());
+                p1 = Double.parseDouble(jTextFieldPrice1.getText());
+                p2 = Double.parseDouble(jTextFieldPrice2.getText());
+                p3 = Double.parseDouble(jTextFieldPrice3.getText());
+            } catch(Exception e) {
+                showMessage();
+            }
+            if(isNew) {
+                
+                // myParent.setId_PP(myParent.getCountriesT().setNewPrice(p0,p1,p2,p3,id_curs));
+                myParent.setNewPrice(p0,p1,p2,p3,id_curs);
+                
+                jButtonClose.doClick();
+            } else {
+                // myParent.getCountriesT().updateProductPrice(id_price,p0,p1,p2,p3,id_curs);
+                myParent.setNewPrice(p0,p1,p2,p3,id_curs);
+                
+                jButtonClose.doClick();
+            }
             
-           // myParent.setId_PP(myParent.getCountriesT().setNewPrice(p0,p1,p2,p3,id_curs));
-            myParent.setNewPrice(p0,p1,p2,p3,id_curs);
-           
-            jButtonClose.doClick();
-        }
-        else
-        {
-           // myParent.getCountriesT().updateProductPrice(id_price,p0,p1,p2,p3,id_curs);
-            myParent.setNewPrice(p0,p1,p2,p3,id_curs);
-            
-            jButtonClose.doClick();
         }
         
-       }
-       
     }//GEN-LAST:event_jButtonSaveActionPerformed
-
+    
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
 // TODO add your handling code here:
         this.dispose();
@@ -677,7 +636,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
     private javax.swing.JTextField jTextFieldProcent3;
     private javax.swing.JTextField jTextFieldValue;
     // End of variables declaration//GEN-END:variables
- //--------------- My Variables
+    //--------------- My Variables
     private nom.FrmProduct myParent;
     private int id_price=0, id_curs=0;
     private double p0=0,p1=0,p2=0,p3=0;
@@ -686,83 +645,75 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog
     private String splitMoney[] = null;
     private int selectComboBoxItem;
     private showConteinCurs shContein;
- //---------------END My Variables
-//---------------START MyFunction 
- 
-
-private void getDataByID()
-{
-    String prices[] = new String[4];
-    String curs[] = null;
-    if(id_price>0)
-    {
-     prices = myParent.getCountriesT().getProductPrice(id_price);
+    //---------------END My Variables
+//---------------START MyFunction
+    
+    
+    private void getDataByID() {
+        String prices[] = new String[4];
+        String curs[] = null;
+        if(id_price>0) {
+            prices = myParent.getCountriesT().getProductPrice(id_price);
+        } else {
+            prices = myParent.getNewPrice();
+        }
+        
+        jTextDostPrice.setText(prices[0]);
+        jTextFieldPrice1.setText(prices[1]);
+        jTextFieldPrice2.setText(prices[2]);
+        jTextFieldPrice3.setText(prices[3]);
+        id_curs = Integer.parseInt(prices[4]);
+        curs = myParent.getCountriesT().getCurs(id_curs);
+        jTextFieldValue.setText(curs[2]);
+        selectComboBoxItem = Integer.parseInt(curs[1]);
+        
+        jTextFieldPrice1.setEnabled(true);
+        jTextFieldPrice2.setEnabled(true);
+        jTextFieldPrice3.setEnabled(true);
+        jTextFieldProcent1.setEnabled(true);
+        jTextFieldProcent2.setEnabled(true);
+        jTextFieldProcent3.setEnabled(true);
+        
+        p0 = Double.parseDouble(jTextDostPrice.getText());
+        
+        p1 = Double.parseDouble(jTextFieldPrice1.getText());
+        
+        p_p1 = (100 * (p1-p0)) / p0;
+        jTextFieldProcent1.setText( doubleRoundToString(3,p_p1));
+        
+        p2 = Double.parseDouble(jTextFieldPrice2.getText());
+        p_p2 = (100 * (p2-p0)) / p0 ;
+        
+        jTextFieldProcent2.setText( doubleRoundToString(3,p_p2));
+        
+        p3 = Double.parseDouble(jTextFieldPrice3.getText());
+        p_p3 = (100 * (p3-p0)) / p0;
+        jTextFieldProcent3.setText( doubleRoundToString(3,p_p3));
+        
+        
+        
     }
-    else
-    {
-      prices = myParent.getNewPrice();
+    private void showMessage() {
+        JOptionPane.showMessageDialog(this,"\u041c\u043e\u043b\u044f, \u0432\u044a\u0432\u0435\u0434\u0435\u0442\u0435 \u043a\u043e\u0440\u0435\u043a\u043d\u043e \u0434\u0430\u043d\u043d\u0438\u0442\u0435");
+        
     }
-    
-    jTextDostPrice.setText(prices[0]);
-    jTextFieldPrice1.setText(prices[1]);
-    jTextFieldPrice2.setText(prices[2]);
-    jTextFieldPrice3.setText(prices[3]);
-    id_curs = Integer.parseInt(prices[4]);
-    curs = myParent.getCountriesT().getCurs(id_curs);
-    jTextFieldValue.setText(curs[2]);
-    selectComboBoxItem = Integer.parseInt(curs[1]);
-    
-    jTextFieldPrice1.setEnabled(true);
-    jTextFieldPrice2.setEnabled(true);
-    jTextFieldPrice3.setEnabled(true);
-    jTextFieldProcent1.setEnabled(true); 
-    jTextFieldProcent2.setEnabled(true); 
-    jTextFieldProcent3.setEnabled(true); 
-    
-     p0 = Double.parseDouble(jTextDostPrice.getText());
-     
-     p1 = Double.parseDouble(jTextFieldPrice1.getText());
-     
-     p_p1 = (100 * (p1-p0)) / p0; 
-     jTextFieldProcent1.setText( doubleRoundToString(3,p_p1)); 
-     
-     p2 = Double.parseDouble(jTextFieldPrice2.getText());
-     p_p2 = (100 * (p2-p0)) / p0 ; 
-     
-     jTextFieldProcent2.setText( doubleRoundToString(3,p_p2));
-     
-     p3 = Double.parseDouble(jTextFieldPrice3.getText());
-     p_p3 = (100 * (p3-p0)) / p0; 
-     jTextFieldProcent3.setText( doubleRoundToString(3,p_p3)); 
-     
-     
-    
-}
-private void showMessage()
-{
-     JOptionPane.showMessageDialog(this,"\u041c\u043e\u043b\u044f, \u0432\u044a\u0432\u0435\u0434\u0435\u0442\u0435 \u043a\u043e\u0440\u0435\u043a\u043d\u043e \u0434\u0430\u043d\u043d\u0438\u0442\u0435");
-     
-}
- private int getNewComboBoxIndex(int oldindex) //OK
-{ 
-    int newindex= 0;
-    for(int i = 0; i < myParent.getCountriesT().getIndexConnOfIdMoney().length; i++)
-       {
-        if(myParent.getCountriesT().getIndexConnOfIdMoney()[i]==oldindex)
-          {
-           newindex = i;
-           break;
-          }
-      }
-    return newindex;
-}
- private String doubleRoundToString(int digit, double indouble)
-{
-    String newDouble = new String();
-    double r = indouble;
-    BigDecimal bd = new BigDecimal(r);
-    bd = bd.setScale(digit,BigDecimal.ROUND_HALF_UP);
-    r = bd.doubleValue();
-    return newDouble.valueOf(r);
-}
+    private int getNewComboBoxIndex(int oldindex) //OK
+    {
+        int newindex= 0;
+        for(int i = 0; i < myParent.getCountriesT().getIndexConnOfIdMoney().length; i++) {
+            if(myParent.getCountriesT().getIndexConnOfIdMoney()[i]==oldindex) {
+                newindex = i;
+                break;
+            }
+        }
+        return newindex;
+    }
+    private String doubleRoundToString(int digit, double indouble) {
+        String newDouble = new String();
+        double r = indouble;
+        BigDecimal bd = new BigDecimal(r);
+        bd = bd.setScale(digit,BigDecimal.ROUND_HALF_UP);
+        r = bd.doubleValue();
+        return newDouble.valueOf(r);
+    }
 }// end class

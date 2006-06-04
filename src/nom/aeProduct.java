@@ -189,7 +189,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 5);
         jPanel1.add(jLabelEmail, gridBagConstraints);
 
-        jLabelWeb.setText("\u0422\u0430\u043a\u0441\u0438:");
+        jLabelWeb.setText("\u0422\u0430\u043a\u0441\u0438 (%):");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 5;
@@ -276,6 +276,12 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         jPanel1.add(jTextFieldFName, gridBagConstraints);
 
         jTextFieldExpertSheet.setPreferredSize(new java.awt.Dimension(170, 20));
+        jTextFieldExpertSheet.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldExpertSheetKeyPressed(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 4;
@@ -313,6 +319,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         jPanel1.add(jTextFieldPrice, gridBagConstraints);
 
         jTextFieldFee.setEditable(false);
+        jTextFieldFee.setText("20.00");
         jTextFieldFee.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTextFieldFee.setPreferredSize(new java.awt.Dimension(170, 20));
         jTextFieldFee.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -376,6 +383,12 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
 
         jTextFieldMaxPOP.setPreferredSize(new java.awt.Dimension(170, 20));
         jTextFieldMaxPOP.setInputVerifier(new imakante.com.InputDoubleVerifier());
+        jTextFieldMaxPOP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldMaxPOPKeyPressed(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 6;
@@ -438,13 +451,26 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         jPanel1.add(jTextFieldCod1, gridBagConstraints);
 
         jComboBoxGroup.setPreferredSize(new java.awt.Dimension(170, 20));
+        jComboBoxGroup.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboBoxGroupKeyPressed(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 5);
         jPanel1.add(jComboBoxGroup, gridBagConstraints);
 
+        jTextFieldMinProduct.setText("1");
         jTextFieldMinProduct.setPreferredSize(new java.awt.Dimension(50, 20));
+        jTextFieldMinProduct.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldMinProductKeyPressed(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 7;
@@ -470,6 +496,12 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
 
         jTextFieldCode.setToolTipText("\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u0430\u0442\u0430 \u043f\u043e\u0437\u0432\u043e\u043b\u044f\u0432\u0430 \u043a\u043e\u0434\u0430 \u043d\u0430 \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u0430 \u0434\u0430 \u0441\u0435 \u0441\u044a\u0441\u0442\u043e\u0438 \u043e\u0442 \u0431\u0443\u043a\u0432\u0438 \u0438 \u0446\u0438\u0444\u0440\u0438, \u043d\u043e \u0438\u0437\u043f\u043e\u043b\u0437\u0432\u0430\u043d\u0435\u0442\u043e \u0441\u0430\u043c\u043e \u043d\u0430 \u0446\u0438\u0444\u0440\u0438  \u0435 \u043f\u0440\u0435\u043f\u043e\u0440\u044a\u0447\u0438\u0442\u0435\u043b\u043d\u043e");
         jTextFieldCode.setPreferredSize(new java.awt.Dimension(170, 20));
+        jTextFieldCode.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldCodeKeyPressed(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -489,9 +521,21 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         jPanelDescription.add(jComboBoxDescript1, new java.awt.GridBagConstraints());
 
         jComboBoxDescript2.setPreferredSize(new java.awt.Dimension(80, 20));
+        jComboBoxDescript2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboBoxDescript2KeyPressed(evt);
+            }
+        });
+
         jPanelDescription.add(jComboBoxDescript2, new java.awt.GridBagConstraints());
 
         jComboBoxDescript3.setPreferredSize(new java.awt.Dimension(80, 20));
+        jComboBoxDescript3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboBoxDescript3KeyPressed(evt);
+            }
+        });
+
         jPanelDescription.add(jComboBoxDescript3, new java.awt.GridBagConstraints());
 
         jTextFieldDescript1.setEditable(false);
@@ -505,6 +549,12 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
 
         jTextFieldDescript2.setAutoscrolls(false);
         jTextFieldDescript2.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextFieldDescript2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldDescript2KeyPressed(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -512,6 +562,12 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
 
         jTextFieldDescript3.setAutoscrolls(false);
         jTextFieldDescript3.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextFieldDescript3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldDescript3KeyPressed(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -586,37 +642,95 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNameKeyPressed
+    private void jTextFieldDescript3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDescript3KeyPressed
+if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            this.jButton1.requestFocus();
+        }
+    }//GEN-LAST:event_jTextFieldDescript3KeyPressed
+
+    private void jTextFieldDescript2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDescript2KeyPressed
+if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            this.jComboBoxDescript3.requestFocus();
+        }
+    }//GEN-LAST:event_jTextFieldDescript2KeyPressed
+
+    private void jComboBoxDescript3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBoxDescript3KeyPressed
+if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            this.jTextFieldDescript3.requestFocus();
+        }
+    }//GEN-LAST:event_jComboBoxDescript3KeyPressed
+
+    private void jComboBoxDescript2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBoxDescript2KeyPressed
+if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            this.jTextFieldDescript2.requestFocus();
+        }
+    }//GEN-LAST:event_jComboBoxDescript2KeyPressed
+
+    private void jTextFieldMinProductKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldMinProductKeyPressed
+if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+           this.jComboBoxDescript1.requestFocus();
+        }
+    }//GEN-LAST:event_jTextFieldMinProductKeyPressed
+
+    private void jTextFieldMaxPOPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldMaxPOPKeyPressed
+if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            jTextFieldPromoPrices.requestFocus();
+        }
+    }//GEN-LAST:event_jTextFieldMaxPOPKeyPressed
+
+    private void jTextFieldExpertSheetKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldExpertSheetKeyPressed
  if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
-     if(jTextFieldCName.getText().equals("")){jTextFieldCName.setText("" + jTextFieldName.getText());}
-     if(jTextFieldSName.getText().equals("")){jTextFieldSName.setText("" + jTextFieldName.getText());}
-     if(jTextFieldFName.getText().equals("")){jTextFieldFName.setText("" + jTextFieldName.getText());}
-     jTextFieldName.transferFocus();} 
+            jTextFieldFee.requestFocus();
+        }
+    }//GEN-LAST:event_jTextFieldExpertSheetKeyPressed
+    
+    private void jTextFieldCodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCodeKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            jTextFieldName.requestFocus();
+        }
+    }//GEN-LAST:event_jTextFieldCodeKeyPressed
+    
+    private void jComboBoxGroupKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBoxGroupKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            jTextFieldContragent.requestFocus();
+            showContein(1,true);
+            
+        }
+    }//GEN-LAST:event_jComboBoxGroupKeyPressed
+    
+    private void jTextFieldNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNameKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            if(jTextFieldCName.getText().equals("")){jTextFieldCName.setText("" + jTextFieldName.getText());}
+            if(jTextFieldSName.getText().equals("")){jTextFieldSName.setText("" + jTextFieldName.getText());}
+            if(jTextFieldFName.getText().equals("")){jTextFieldFName.setText("" + jTextFieldName.getText());}
+            jTextFieldBarCod.requestFocus();}
     }//GEN-LAST:event_jTextFieldNameKeyPressed
     
     private void jTextFieldFeeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFeeKeyPressed
-// TODO add your handling code here:
+
         try {
-         if(isNew && !myParent.isTypedFee)
-            {
-               ProductPriceFeeDialog =  new aeProductPriceFee(myParent,true,myParent.getId_PF(),true);
-              ProductPriceFeeDialog.setVisible(true); 
-            }
-            else
-            {
-              ProductPriceFeeDialog =  new aeProductPriceFee(myParent,true,myParent.getId_PF(),false);
-              ProductPriceFeeDialog.setVisible(true); 
+            if(isNew && !myParent.isTypedFee) {
+                ProductPriceFeeDialog =  new aeProductPriceFee(myParent,true,myParent.getId_PF(),true);
+                ProductPriceFeeDialog.setVisible(true);
+            } else {
+                ProductPriceFeeDialog =  new aeProductPriceFee(myParent,true,myParent.getId_PF(),false);
+                ProductPriceFeeDialog.setVisible(true);
             }
             
             
         } catch(Exception e) {
             e.printStackTrace();
         }
-     if(myParent.getId_PF()!=0) {
+        if(myParent.getId_PF()!=0) {
             String  fee[] = myParent.getCountriesT().getProdictFee(myParent.getId_PF());
             jTextFieldFee.setText(fee[0]);
         } else jTextFieldFee.setText(myParent.getViewFee());
-      //  repaintComp();
+        //  repaintComp();
+         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            jTextFieldPrice.requestFocus();
+        }
+        
+        
     }//GEN-LAST:event_jTextFieldFeeKeyPressed
     
     private void jTextFieldContragentFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldContragentFocusLost
@@ -634,7 +748,9 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_DELETE ) {
             jTextFieldContragent.setText("");
         } else showContein(1,true);
-        
+        if(evt.getKeyCode() ==java.awt.event.KeyEvent.VK_ENTER ){
+            jTextFieldContragent.transferFocus();
+        }
     }//GEN-LAST:event_jTextFieldContragentKeyPressed
     
     private void jTextFieldContragentMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldContragentMousePressed
@@ -660,26 +776,23 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
     private void jTextFieldFeeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldFeeMousePressed
 // TODO add your handling code here:
         try {
-            if(isNew && !myParent.isTypedFee)
-            {
-               ProductPriceFeeDialog =  new aeProductPriceFee(myParent,true,myParent.getId_PF(),true);
-              ProductPriceFeeDialog.setVisible(true); 
+            if(isNew && !myParent.isTypedFee) {
+                ProductPriceFeeDialog =  new aeProductPriceFee(myParent,true,myParent.getId_PF(),true);
+                ProductPriceFeeDialog.setVisible(true);
+            } else {
+                ProductPriceFeeDialog =  new aeProductPriceFee(myParent,true,myParent.getId_PF(),false);
+                ProductPriceFeeDialog.setVisible(true);
             }
-            else
-            {
-              ProductPriceFeeDialog =  new aeProductPriceFee(myParent,true,myParent.getId_PF(),false);
-              ProductPriceFeeDialog.setVisible(true); 
-            }
-          
+            
             
         } catch(Exception e) {
             e.printStackTrace();
         }
-    if(myParent.getId_PF()!=0) {
+        if(myParent.getId_PF()!=0) {
             String  fee[] = myParent.getCountriesT().getProdictFee(myParent.getId_PF());
             jTextFieldFee.setText(fee[0]);
         } else jTextFieldFee.setText(myParent.getViewFee());
-       // repaintComp();
+        // repaintComp();
     }//GEN-LAST:event_jTextFieldFeeMousePressed
     
     private void jTextFieldPromoPricesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPromoPricesFocusLost
@@ -695,25 +808,22 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
     private void jTextFieldPromoPricesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldPromoPricesMousePressed
 // TODO add your handling code here:
         try {
-            if(isNew && !myParent.isTypedPromoPrice)
-            {
-               promoDialog = new aeProductPricePromotion(myParent,true,myParent.getId_PPP(),true);
-               promoDialog.setVisible(true);
-            }
-            else
-            {
-               promoDialog = new aeProductPricePromotion(myParent,true,myParent.getId_PPP(),false);
-               promoDialog.setVisible(true); 
+            if(isNew && !myParent.isTypedPromoPrice) {
+                promoDialog = new aeProductPricePromotion(myParent,true,myParent.getId_PPP(),true);
+                promoDialog.setVisible(true);
+            } else {
+                promoDialog = new aeProductPricePromotion(myParent,true,myParent.getId_PPP(),false);
+                promoDialog.setVisible(true);
             }
             
         } catch(Exception e) {
             e.printStackTrace();
         }
-       if (myParent.getId_PPP()!=0) {
+        if (myParent.getId_PPP()!=0) {
             String promotion_price[] = myParent.getCountriesT().getProductPromotionPrice(myParent.getId_PPP());
             jTextFieldPromoPrices.setText(promotion_price[0]);
         } else jTextFieldPromoPrices.setText(myParent.getViewPromoPrice());
-     //   repaintComp();
+        //   repaintComp();
     }//GEN-LAST:event_jTextFieldPromoPricesMousePressed
     
     private void jTextFieldPriceFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPriceFocusLost
@@ -728,18 +838,15 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
     
     private void jTextFieldPriceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPriceKeyPressed
 // TODO add your handling code here:
-            
+        
         try {
-           if(isNew && !myParent.isTypedPrice)
-            {
-             ProductPriceDialog =  new aeProductPrice(myParent,true,myParent.getId_PP(),true);
-             ProductPriceDialog.setVisible(true);
-            
-            }
-            else
-            {
-             ProductPriceDialog =  new aeProductPrice(myParent,true,myParent.getId_PP(),false);
-             ProductPriceDialog.setVisible(true);  
+            if(isNew && !myParent.isTypedPrice) {
+                ProductPriceDialog =  new aeProductPrice(myParent,true,myParent.getId_PP(),true);
+                ProductPriceDialog.setVisible(true);
+                
+            } else {
+                ProductPriceDialog =  new aeProductPrice(myParent,true,myParent.getId_PP(),false);
+                ProductPriceDialog.setVisible(true);
             }
             
             
@@ -747,36 +854,39 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
             e.printStackTrace();
         }
         if (myParent.getId_PP()!=0) {
-          String price[] = myParent.getCountriesT().getProductPrice(myParent.getId_PP());
-          jTextFieldPrice.setText(price[0]);
-        } else jTextFieldPrice.setText(myParent.getViewPrice()); 
-     //   repaintComp();
+            String price[] = myParent.getCountriesT().getProductPrice(myParent.getId_PP());
+            jTextFieldPrice.setText(price[0]);
+        } else jTextFieldPrice.setText(myParent.getViewPrice());
+        //   repaintComp();
+         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            jTextFieldMaxPOP.requestFocus();
+        }
+        
     }//GEN-LAST:event_jTextFieldPriceKeyPressed
     
     private void jTextFieldPriceMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldPriceMousePressed
 // TODO add your handling code here:
-     
+        
         try {
-            if(isNew && !myParent.isTypedPrice)
-            {
-             ProductPriceDialog =  new aeProductPrice(myParent,true,myParent.getId_PP(),true);
-             ProductPriceDialog.setVisible(true);
-            
-            }
-            else
-            {
-             ProductPriceDialog =  new aeProductPrice(myParent,true,myParent.getId_PP(),false);
-             ProductPriceDialog.setVisible(true);  
+            if(isNew && !myParent.isTypedPrice) {
+                ProductPriceDialog =  new aeProductPrice(myParent,true,myParent.getId_PP(),true);
+                ProductPriceDialog.setVisible(true);
+                
+            } else {
+                ProductPriceDialog =  new aeProductPrice(myParent,true,myParent.getId_PP(),false);
+                ProductPriceDialog.setVisible(true);
             }
             
         } catch(Exception e) {
             e.printStackTrace();
         }
-      if (myParent.getId_PP()!=0) {
-          String price[] = myParent.getCountriesT().getProductPrice(myParent.getId_PP());
-          jTextFieldPrice.setText(price[0]);
+        if (myParent.getId_PP()!=0) {
+            String price[] = myParent.getCountriesT().getProductPrice(myParent.getId_PP());
+            jTextFieldPrice.setText(price[0]);
         } else jTextFieldPrice.setText(myParent.getViewPrice());
-       // repaintComp();
+        // repaintComp();
+         
+        
     }//GEN-LAST:event_jTextFieldPriceMousePressed
     
     //
@@ -858,28 +968,30 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
     
     private void jTextFieldPromoPricesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPromoPricesKeyPressed
 // TODO add your handling code here:
-       
+        
         try {
-           if(isNew && !myParent.isTypedPromoPrice)
-            {
-               promoDialog = new aeProductPricePromotion(myParent,true,myParent.getId_PPP(),true);
-               promoDialog.setVisible(true);
-            }
-            else
-            {
-               promoDialog = new aeProductPricePromotion(myParent,true,myParent.getId_PPP(),false);
-               promoDialog.setVisible(true); 
+            if(isNew && !myParent.isTypedPromoPrice) {
+                promoDialog = new aeProductPricePromotion(myParent,true,myParent.getId_PPP(),true);
+                promoDialog.setVisible(true);
+            } else {
+                promoDialog = new aeProductPricePromotion(myParent,true,myParent.getId_PPP(),false);
+                promoDialog.setVisible(true);
             }
             
             
         } catch(Exception e) {
             e.printStackTrace();
         }
-    if (myParent.getId_PPP()!=0) {
+        if (myParent.getId_PPP()!=0) {
             String promotion_price[] = myParent.getCountriesT().getProductPromotionPrice(myParent.getId_PPP());
             jTextFieldPromoPrices.setText(promotion_price[0]);
-        } else jTextFieldPromoPrices.setText(myParent.getViewPromoPrice());    
-     //   repaintComp();
+        } else jTextFieldPromoPrices.setText(myParent.getViewPromoPrice());
+        //   repaintComp();
+        
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            jTextFieldMinProduct.requestFocus();
+        }
+        
     }//GEN-LAST:event_jTextFieldPromoPricesKeyPressed
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -935,7 +1047,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
                         myParent.getCountriesT().setIDProductContragent(maxId_pm,myParent.getId_Contragent(),0);
                     
                     isNew = false;
-                    
+                    showOKMessage();
                 } else {
                     showMessage();
                     
@@ -983,6 +1095,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
                     } else myParent.getCountriesT().updateIDProductContragent(myParent.getId_PM(),myParent.getId_Contragent(),1);
                     
                 }
+                showOKMessage();
             } else {
                 showMessage();
                 
@@ -995,7 +1108,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
     
     private void jTextFieldBarCodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBarCodKeyPressed
- if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){jTextFieldBarCod.transferFocus();} 
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){jTextFieldExpertSheet.requestFocus();}
     }//GEN-LAST:event_jTextFieldBarCodKeyPressed
     
     /**
@@ -1163,15 +1276,14 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         
         
         isNewInputContragent = true;
-        if(myParent.getId_PM()>0)
-        {
-        myParent.setId_Contragent(myParent.getCountriesT().getContragentID(myParent.getId_PM(),0));
-        
-        if(myParent.getId_Contragent() != 0) {
-            isNewInputContragent = false; // flag opredelq6t dali za tozi produkt imame vkaran kontragent ili ne
-            String contragent = myParent.getCountriesT().getProductContragent(myParent.getId_Contragent());
-            jTextFieldContragent.setText(contragent);
-        }
+        if(myParent.getId_PM()>0) {
+            myParent.setId_Contragent(myParent.getCountriesT().getContragentID(myParent.getId_PM(),0));
+            
+            if(myParent.getId_Contragent() != 0) {
+                isNewInputContragent = false; // flag opredelq6t dali za tozi produkt imame vkaran kontragent ili ne
+                String contragent = myParent.getCountriesT().getProductContragent(myParent.getId_Contragent());
+                jTextFieldContragent.setText(contragent);
+            }
         }
         
     }
@@ -1247,6 +1359,10 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         
         
     }
-    
+    private void showOKMessage() {
+        JOptionPane.showMessageDialog(this,"Записът е коректен!");
+        
+        
+    }
 }// end class
 
