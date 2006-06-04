@@ -154,8 +154,9 @@ public class levelDialog extends javax.swing.JDialog {
                 sales_main.levelForWork = getLevel();
                 sales_main.userID_ndtur = getKey();
                 outIndex = getKey();
-               
                 frame.numberStorage=Integer.parseInt(jTextField2.getText());
+                this.getToolkit().beep();
+                
             } else {
                 outLevel = 3;
                 outIndex = getKey();
