@@ -41,10 +41,11 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
             jComboBoxDescript3.addItem(new String(splitNameOfColumn1[i]));
             
         }
-        jTextFieldExpertList.requestFocus();
+       
         setInputLisener();
         repaintComp();
-        
+        jTextFieldExpertList.requestFocus();
+        jTextFieldBarCod.requestFocus();
     }
     
     /** This method is called from within the constructor to
@@ -127,6 +128,7 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
         jTextFieldPrice.setEditable(false);
         jTextFieldPrice.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTextFieldPrice.setMinimumSize(new java.awt.Dimension(170, 20));
+        jTextFieldPrice.setNextFocusableComponent(jTextFieldPromoPrices);
         jTextFieldPrice.setPreferredSize(new java.awt.Dimension(170, 20));
         jTextFieldPrice.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -157,6 +159,7 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
         jTextFieldFee.setEditable(false);
         jTextFieldFee.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTextFieldFee.setMinimumSize(new java.awt.Dimension(170, 20));
+        jTextFieldFee.setNextFocusableComponent(jTextFieldPrice);
         jTextFieldFee.setPreferredSize(new java.awt.Dimension(170, 20));
         jTextFieldFee.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -190,6 +193,7 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
         jTextFieldPromoPrices.setEditable(false);
         jTextFieldPromoPrices.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTextFieldPromoPrices.setMinimumSize(new java.awt.Dimension(170, 20));
+        jTextFieldPromoPrices.setNextFocusableComponent(jButton1);
         jTextFieldPromoPrices.setPreferredSize(new java.awt.Dimension(170, 20));
         jTextFieldPromoPrices.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -242,6 +246,7 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
         jPanel1.add(jLabel2, gridBagConstraints);
 
         jComboBoxPartida.setEditable(true);
+        jComboBoxPartida.setNextFocusableComponent(jButton1);
         jComboBoxPartida.setPreferredSize(new java.awt.Dimension(170, 20));
         jComboBoxPartida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -260,9 +265,14 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
         jPanel1.add(jComboBoxPartida, gridBagConstraints);
 
         jTextFieldBarCod.setText("0000000000");
-        jTextFieldBarCod.setNextFocusableComponent(jButton1);
+        jTextFieldBarCod.setNextFocusableComponent(jTextFieldExpertList);
         jTextFieldBarCod.setPreferredSize(new java.awt.Dimension(170, 20));
         jTextFieldBarCod.setInputVerifier(new imakante.com.InputIntegerVerifier(10));
+        jTextFieldBarCod.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldBarCodFocusGained(evt);
+            }
+        });
         jTextFieldBarCod.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldBarCodKeyPressed(evt);
@@ -480,11 +490,17 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTextFieldBarCodFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldBarCodFocusGained
+// TODO add your handling code here:
+        jTextFieldBarCod.selectAll();
+    }//GEN-LAST:event_jTextFieldBarCodFocusGained
+
     private void jComboBoxPartidaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBoxPartidaKeyPressed
 // TODO add your handling code here:
         if(evt.getKeyCode()==evt.VK_ENTER)
         {
             jComboBoxPartida.transferFocus();
+           
         }
     }//GEN-LAST:event_jComboBoxPartidaKeyPressed
 
@@ -502,10 +518,12 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
         if(!isNew)
         {
             ctest++;
-            repaintComp();
+          //  repaintComp();
             
         }
         System.out.println("ActionPerformed " + ctest);
+        
+        
     }//GEN-LAST:event_jComboBoxPartidaActionPerformed
     
     private void jTextFieldFeeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFeeKeyPressed
@@ -516,6 +534,10 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
             
         } catch(Exception e) {
             e.printStackTrace();
+        }
+        if(evt.getKeyCode()==evt.VK_ENTER)
+        {
+            jTextFieldFee.transferFocus();
         }
         repaintComp();
     }//GEN-LAST:event_jTextFieldFeeKeyPressed
@@ -593,7 +615,10 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
         } catch(Exception e) {
             e.printStackTrace();
         }
-        
+        if(evt.getKeyCode()==evt.VK_ENTER)
+        {
+             jTextFieldPrice.transferFocus();
+        }
         repaintComp();
     }//GEN-LAST:event_jTextFieldPriceKeyPressed
     
@@ -700,7 +725,10 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
         } catch(Exception e) {
             e.printStackTrace();
         }
-        
+         if(evt.getKeyCode()==evt.VK_ENTER)
+        {
+            jTextFieldPromoPrices.transferFocus();
+        }
         repaintComp();
     }//GEN-LAST:event_jTextFieldPromoPricesKeyPressed
     
@@ -769,6 +797,7 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
          }
        myParent.getCountriesT().updateConsigment(id_pc,id_pp,id_ppp,id_pf,id_pm,partidaNomer,expireDate,barcod,exp_list);
        isNew = false;
+        JOptionPane.showMessageDialog(this,"\u0423\u0441\u043F\u0435\u0448\u0435\u043D \u0437\u0430\u043F\u0438\u0441");
         //  jButton3.doClick(); // zatvarq se aeProsuct
      //   repaintComp();
     
@@ -777,7 +806,10 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
     private void jTextFieldBarCodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBarCodKeyPressed
 // TODO add your handling code here:
         // pri natiskane na F7 6te se izvikva aContragent, za izbor na naseleno mqsto ot bazata danni
-        
+        if(evt.getKeyCode()==evt.VK_ENTER)
+        {
+            jTextFieldBarCod.transferFocus();
+        }
     }//GEN-LAST:event_jTextFieldBarCodKeyPressed
     
     /**
