@@ -1318,7 +1318,9 @@ public  void setAtEnd(boolean aAtEnd)
  }
 private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti na cyrillica 
     {
-    
+    try
+    {
+        setAllVariablesDefault();
         setID_DocFacade((Integer) table.getValueAt(getRow(), getColumnIndex("id_df")));                   //0
         long tmp = (Long) table.getValueAt(getRow(), getColumnIndex("Номер на документа"));   
         setNumberDocFacade(String.valueOf(tmp));                                                          //1
@@ -1546,8 +1548,16 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
                           setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес1"))); //5
                           setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента1"))); //6
                           setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ1"))) ;
-                          int code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента1"));
+                          int code=0;
+                          try
+                          {
+                           code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента1"));
                           setCodeContragent(String.valueOf(code));                                                            //1
+                          }
+                          catch(Exception x)
+                          {
+                              
+                          }
                          
                         /*  setID_Obekt((Integer) table.getValueAt(getRow(), getColumnIndex("out_obekt_df")));       
                           setCodeObekt((String)table.getValueAt(getRow(), getColumnIndex("Код на обекта2")));
@@ -1557,10 +1567,16 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
                          */
                           setID_Deliver((Integer) table.getValueAt(getRow(), getColumnIndex("delivere_df")));        
                           setID_Distributor((Integer) table.getValueAt(getRow(), getColumnIndex("distributor_df")));
-                          code = (Integer)table.getValueAt(getRow(),getColumnIndex("Код на дистрибутор"));
-                          setDistributorDocFacade(String.valueOf(code));
-                          code =(Integer)table.getValueAt(getRow(),getColumnIndex("Код на доставчик"));
-                          setDeliverDocFacade(String.valueOf(code)); 
+                          try
+                          {
+                            code = (Integer)table.getValueAt(getRow(),getColumnIndex("Код на дистрибутор"));
+                            setDistributorDocFacade(String.valueOf(code)); 
+                            code =(Integer)table.getValueAt(getRow(),getColumnIndex("Код на доставчик"));
+                            setDeliverDocFacade(String.valueOf(code)); 
+                          }
+                          catch(Exception x){};
+                          
+                         
                          
                           d1 = (java.sql.Date) table.getValueAt(getRow(),getColumnIndex("Дата на доставяне"));
                           setDeliverDate(d1.toString());
@@ -1572,7 +1588,11 @@ private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti n
                  }
         
         
+    }
+    catch(Exception xx)
+    {
         
+    }
         
         
         
