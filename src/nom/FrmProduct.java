@@ -546,7 +546,8 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     private String name_pm, sname_pm, fname_pm, cname_pm, cod1_pm, cod2_pm;            //         /
     private String expertsheet_pm,code_pm ;
     private double price0,price1,price2,price3,dds,akcizi,other;
-    private int id_curs, id_n_contragent;//        /
+    private int id_curs =1 ; 
+    private int id_n_contragent;//        /
     private double promoprice;
     private String start,  stop;
     private imakante.com.vcomponents.iFrame myframe;
@@ -892,8 +893,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
         setCod1((String)table.getValueAt(getRow(),getColumnIndex("\u041a\u043e\u0434 1")));
         setCod2((String)table.getValueAt(getRow(),getColumnIndex("\u041a\u043e\u0434 2")));
         setMinProduct((Integer) table.getValueAt(getRow(), getColumnIndex("\u041c\u0438\u043d\u0438\u043c\u0430\u043b\u043d\u043e \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e")));
-        int code_pm=(Integer)table.getValueAt(getRow(),getColumnIndex("\u041a\u043e\u0434"));
-        setCodePM(String.valueOf(code_pm));
+        setCodePM((String)table.getValueAt(getRow(),getColumnIndex("\u041a\u043e\u0434")));
         
         
         
