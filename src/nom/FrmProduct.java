@@ -893,7 +893,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
         setCod1((String)table.getValueAt(getRow(),getColumnIndex("\u041a\u043e\u0434 1")));
         setCod2((String)table.getValueAt(getRow(),getColumnIndex("\u041a\u043e\u0434 2")));
         setMinProduct((Integer) table.getValueAt(getRow(), getColumnIndex("\u041c\u0438\u043d\u0438\u043c\u0430\u043b\u043d\u043e \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e")));
-        setCodePM((String)table.getValueAt(getRow(),getColumnIndex("\u041a\u043e\u0434")));
+        setCodePM(String.valueOf(table.getValueAt(getRow(),getColumnIndex("\u041a\u043e\u0434"))));
         
         
         
