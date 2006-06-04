@@ -70,6 +70,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jButton3 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox();
+        jPanel2 = new javax.swing.JPanel();
         menuBar = new javax.swing.JMenuBar();
         docMenu = new javax.swing.JMenu();
         docMenu_prod = new javax.swing.JMenuItem();
@@ -275,6 +276,20 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jToolBar1.add(jPanel1);
 
         getContentPane().add(jToolBar1, java.awt.BorderLayout.NORTH);
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        jPanel2.setPreferredSize(new java.awt.Dimension(100, 25));
+        org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 745, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 21, Short.MAX_VALUE)
+        );
+        getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
 
         programMenu.setFont(menuFont);
         docMenu.setText("\u0414\u041e\u041a\u0423\u041c\u0415\u041d\u0422\u0418");
@@ -724,12 +739,6 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         balansMenu.add(balansMenu_stock);
 
         balansMenu_kol.setText("\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u0435\u043d");
-        balansMenu_kol.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                balansMenu_kolActionPerformed(evt);
-            }
-        });
-
         balansMenu.add(balansMenu_kol);
 
         sprMenu.add(balansMenu);
@@ -1308,6 +1317,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenuItem jMenuItem9DTUR;
     private javax.swing.JMenu jMenuTransfer;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator2;
