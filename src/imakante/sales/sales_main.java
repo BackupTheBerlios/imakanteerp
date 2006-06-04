@@ -90,7 +90,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         porachMenu_in = new javax.swing.JMenuItem();
         porachMenu_out = new javax.swing.JMenuItem();
         docMenu_offer = new javax.swing.JMenuItem();
-        kasaMenu = new javax.swing.JMenu();
+        kasiIbankiMenu = new javax.swing.JMenu();
         kasaMenu_order = new javax.swing.JMenu();
         orderMenu_prih = new javax.swing.JMenuItem();
         orderMenu_razh = new javax.swing.JMenuItem();
@@ -100,6 +100,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         kasaMenu_dvi = new javax.swing.JMenuItem();
         kasaMenu_nal = new javax.swing.JMenuItem();
         kasaMenu_opis = new javax.swing.JMenuItem();
+        jSeparator11 = new javax.swing.JSeparator();
+        bankaMenu_orderi = new javax.swing.JMenuItem();
         nomMenu = new javax.swing.JMenu();
         nomMenu_stock = new javax.swing.JMenu();
         stock_Menu_group_stock = new javax.swing.JMenuItem();
@@ -262,7 +264,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(352, Short.MAX_VALUE)
+                .addContainerGap(325, Short.MAX_VALUE)
                 .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 179, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -394,7 +396,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         menuBar.add(docMenu);
 
-        kasaMenu.setText("\u041a\u0410\u0421\u0410");
+        kasiIbankiMenu.setText("\u041a\u0410\u0421\u0418 \u0438 \u0411\u0410\u041d\u041a\u0418");
         kasaMenu_order.setText("\u041e\u0440\u0434\u0435\u0440\u0438");
         orderMenu_prih.setText("\u041f\u0440\u0438\u0445\u043e\u0434\u043d\u0438");
         orderMenu_prih.addActionListener(new java.awt.event.ActionListener() {
@@ -414,7 +416,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         kasaMenu_order.add(orderMenu_razh);
 
-        kasaMenu.add(kasaMenu_order);
+        kasiIbankiMenu.add(kasaMenu_order);
 
         kasaMOLMenu.setText("\u041f\u043e\u0434\u043e\u0442\u0447\u0435\u0442\u043d\u0438 \u043b\u0438\u0446\u0430");
         kasaAvansMenu.setText("\u0410\u0432\u0430\u043d\u0441");
@@ -435,7 +437,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         kasaMOLMenu.add(kasaAvansOt4etMenu);
 
-        kasaMenu.add(kasaMOLMenu);
+        kasiIbankiMenu.add(kasaMOLMenu);
 
         kasaMenu_dvi.setText("\u0414\u0432\u0438\u0436\u0435\u043d\u0438\u0435 \u043c\u0435\u0436\u0434\u0443 \u043a\u0430\u0441\u0438");
         kasaMenu_dvi.addActionListener(new java.awt.event.ActionListener() {
@@ -444,7 +446,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             }
         });
 
-        kasaMenu.add(kasaMenu_dvi);
+        kasiIbankiMenu.add(kasaMenu_dvi);
 
         kasaMenu_nal.setText("\u041d\u0430\u043b\u0438\u0447\u043d\u043e\u0441\u0442 \u0432 \u043a\u0430\u0441\u0438");
         kasaMenu_nal.addActionListener(new java.awt.event.ActionListener() {
@@ -453,12 +455,23 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             }
         });
 
-        kasaMenu.add(kasaMenu_nal);
+        kasiIbankiMenu.add(kasaMenu_nal);
 
         kasaMenu_opis.setText("\u041e\u043f\u0438\u0441 \u043d\u0430 \u043a\u043e\u043f\u044e\u0440\u0438");
-        kasaMenu.add(kasaMenu_opis);
+        kasiIbankiMenu.add(kasaMenu_opis);
 
-        menuBar.add(kasaMenu);
+        kasiIbankiMenu.add(jSeparator11);
+
+        bankaMenu_orderi.setText("\u0411\u0430\u043d\u043a\u043e\u0432\u0438 \u043d\u0430\u0440\u0435\u0436\u0434\u0430\u043d\u0438\u044f");
+        bankaMenu_orderi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bankaMenu_orderiActionPerformed(evt);
+            }
+        });
+
+        kasiIbankiMenu.add(bankaMenu_orderi);
+
+        menuBar.add(kasiIbankiMenu);
 
         nomMenu.setText("\u041d\u041e\u041c\u0415\u041d\u041a\u041b\u0410\u0422\u0423\u0420\u0418");
         nomMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -946,6 +959,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-458)/2, 757, 458);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bankaMenu_orderiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bankaMenu_orderiActionPerformed
+        this.loadPayingOrdersForm();
+    }//GEN-LAST:event_bankaMenu_orderiActionPerformed
     
     private void balansMenu_kolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_balansMenu_kolActionPerformed
         this.loadReportKolBalanceLevel();
@@ -1257,6 +1274,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenu balansMenu;
     private javax.swing.JMenuItem balansMenu_kol;
     private javax.swing.JMenuItem balansMenu_stock;
+    private javax.swing.JMenuItem bankaMenu_orderi;
     private javax.swing.JMenuItem contentMenuItem;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu docMenu;
@@ -1320,6 +1338,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -1332,11 +1351,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenuItem kasaAvansMenu;
     private javax.swing.JMenuItem kasaAvansOt4etMenu;
     private javax.swing.JMenu kasaMOLMenu;
-    private javax.swing.JMenu kasaMenu;
     private javax.swing.JMenuItem kasaMenu_dvi;
     private javax.swing.JMenuItem kasaMenu_nal;
     private javax.swing.JMenuItem kasaMenu_opis;
     private javax.swing.JMenu kasaMenu_order;
+    private javax.swing.JMenu kasiIbankiMenu;
     private javax.swing.JMenuItem kasiMenu_grupi;
     private javax.swing.JMenuItem kasiMenu_kasi;
     private javax.swing.JMenuItem kontragentiMenu_Kontr;
@@ -1792,6 +1811,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     
     private void loadLevelImport(){
         
+    }
+    
+    private void loadPayingOrdersForm() {
+        imakante.sales.FrmPayingOrders porders = new imakante.sales.FrmPayingOrders("\u041f\u043b\u0430\u0442\u0435\u0436\u043d\u0438 \u041d\u0430\u0440\u0435\u0436\u0434\u0430\u043d\u0438\u044f", this);
+        desktopPane.add(porders);
+        porders.setVisible(true);
     }
     
     //PRODUCTS

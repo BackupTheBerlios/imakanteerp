@@ -131,9 +131,9 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="kasaMenu">
+        <Menu class="javax.swing.JMenu" name="kasiIbankiMenu">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&#x41a;&#x410;&#x421;&#x410;"/>
+            <Property name="text" type="java.lang.String" value="&#x41a;&#x410;&#x421;&#x418; &#x438; &#x411;&#x410;&#x41d;&#x41a;&#x418;"/>
           </Properties>
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="kasaMenu_order">
@@ -202,6 +202,16 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x41e;&#x43f;&#x438;&#x441; &#x43d;&#x430; &#x43a;&#x43e;&#x43f;&#x44e;&#x440;&#x438;"/>
               </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JSeparator" name="jSeparator11">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="bankaMenu_orderi">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x411;&#x430;&#x43d;&#x43a;&#x43e;&#x432;&#x438; &#x43d;&#x430;&#x440;&#x435;&#x436;&#x434;&#x430;&#x43d;&#x438;&#x44f;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bankaMenu_orderiActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -917,7 +927,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="352" max="32767" attributes="0"/>
+                      <EmptySpace pref="325" max="32767" attributes="0"/>
                       <Component id="jComboBox1" min="-2" pref="179" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
