@@ -62,6 +62,8 @@ public class selectDataOfDocFacade   extends imakante.com.vcomponents.iDialog
                    }
         model = new imakante.com.CustomTableModel(conn,rs, columnName);
         table = new imakante.com.CustomTable(model);
+        table.requestFocus();
+        table.changeSelection(0,0,false,false);
          if(sqlselect == CONTARGENT_ADDRESS | sqlselect == CONTARGENT_BULSTAT | sqlselect == CONTARGENT_DAN_NO | 
                          sqlselect == CONTARGENT_MOL | sqlselect == CONTARGENT_NAME | sqlselect == CONTARGENT_NAME | 
                          sqlselect == CONTARGENT_NO | sqlselect == CONTARGENT_TEL)
@@ -222,6 +224,8 @@ public class selectDataOfDocFacade   extends imakante.com.vcomponents.iDialog
         this.setLocation(x, y);
         this.setSize(400,400);
         setVisible(true);
+        table.requestFocus();
+        table.changeSelection(0,0,false,false);
         
         
     }

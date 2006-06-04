@@ -19,8 +19,8 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
        // columnName=null;
         model = new imakante.com.CustomTableModel(conn,rs, columnName);
         table = new imakante.com.CustomTable(model);
-       
-      
+        table.requestFocus();
+        table.changeSelection(0,0,false,false);
         HideColumns(getColumnIndex("id_pm"));
         HideColumns(getColumnIndex("id_pc"));
         HideColumns(getColumnIndex("id_pf"));

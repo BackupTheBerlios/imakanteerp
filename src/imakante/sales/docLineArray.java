@@ -19,8 +19,8 @@ public class docLineArray
     private String nameOfDisBaund[]= new String[3]; // imenata na razfasovkite
     private int numerOfDisBaund[] = new int[3];   // broiki zavisi6i ot koeficientite
     private int ratioOfDisBaund[] = new int[3];   // koeficienti za razfasovkite
-    private boolean isFinishRow = false;
-    private boolean isRowCanEdit = true;
+    private boolean isFinishRow = false; // pokazva dali e priklu4eno s vuvezdaneto na danni na reda t.e vsi4ki poleta sa popylneni
+    private boolean isRowCanEdit = true; // pokazva dali moze da se redaktira reda
     private double[] priceOfList = new double[4];
     
  public docLineArray()

@@ -261,7 +261,7 @@ public class levelDialog extends javax.swing.JDialog {
         if (modul == 702) { frame.loadCasaOut(getLevel(), getKey()); }
         if (modul == 703) { frame.loadAdvances(getLevel(), getKey()); }
         if (modul == 704) { frame.loadC2C(getLevel(), getKey()); }
-        if (modul == 202) { frame.loadDanFac(getKey(),getLevel());}
+       //if (modul == 202) { frame.loadDanFac(getKey(),getLevel());}
                             
                 
                             

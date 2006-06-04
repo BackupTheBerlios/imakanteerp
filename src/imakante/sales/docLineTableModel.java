@@ -496,8 +496,9 @@ public class docLineTableModel extends AbstractTableModel implements Serializabl
  public boolean isCellEditable(int rowIndex, int columnIndex)
  {
      docLineArray dd = (docLineArray) rows.get(rowIndex); 
-     dd.getIsFinishRow();
-     return (canEdit[columnIndex] & !dd.getIsFinishRow());
+    // !dd.getIsFinishRow();
+     dd.getIsRowCanEdit();
+     return (canEdit[columnIndex] & dd.getIsRowCanEdit());
      
  }
  public void enableCellEditable(int columnIndex)
@@ -555,11 +556,20 @@ public void removeRow(int row)
 
 }
 
- public void setIsFinish(int row)
+ public void setIsFinishToEnterData(int row)
  {
     docLineArray dd = (docLineArray) rows.get(row); 
     dd.setIsFinishRow(true);
  }
  
+ public boolean getIsFinishToEnterData(int row)
+ {
+   docLineArray dd = (docLineArray) rows.get(row);  
+   return dd.getIsFinishRow();
+ }
  
+ public docLineArray getRow(int row)
+ {
+   return (docLineArray) rows.get(row);    
+ }
 }

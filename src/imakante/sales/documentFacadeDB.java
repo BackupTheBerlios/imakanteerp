@@ -836,7 +836,7 @@ public java.sql.ResultSet getTableFinishTextContragent(String in , int sqlselect
     
 }
 
-public long getDocNumberLast(int iduser, int level)
+public long getDocNumberLast(int iduser, int level, int doctype)
 {
     long lastNumber = 0;
     int oldId_obekt_in  = getID_Obekt_IN();
@@ -844,6 +844,8 @@ public long getDocNumberLast(int iduser, int level)
      int oldIntValue = getUserDocFacade();
      setUserDocFacade(iduser);
      this.setComprator(6);
+     int oldDoc = getDocFacadeType();
+     setDocFacadeType(doctype);
      try
         {
             registerParameters();
