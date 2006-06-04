@@ -132,7 +132,9 @@ public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldPromoPriceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPromoPriceKeyPressed
-// TODO add your handling code here:
+ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            this.jButtonSave.requestFocus();
+        } 
        
     }//GEN-LAST:event_jTextFieldPromoPriceKeyPressed
 
@@ -175,6 +177,7 @@ public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog
         }
         catch(Exception e)
         {
+           
            showMessage();
         }
      

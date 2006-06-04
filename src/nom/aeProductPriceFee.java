@@ -250,6 +250,7 @@ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
       catch(Exception e)
       {
           showMessage();
+          
       }
       
     
