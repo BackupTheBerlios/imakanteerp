@@ -5379,7 +5379,7 @@ private int getColumnIndex(String in) //test
             
         }
  }
- private KEDispatcher kk; 
+/* private KEDispatcher kk; 
  private void getKeyBoardManager()
  {
      
@@ -5398,16 +5398,44 @@ private int getColumnIndex(String in) //test
      public boolean dispatchKeyEvent(KeyEvent e)
      {
          
-         if(e.getKeyCode()==KeyEvent.VK_F5)
+         if(e.getKeyCode()==KeyEvent.VK_F7)
          {
-           System.out.println("KEDispatcher + F5")   ;
-           jButtonCreateDocFacade.doClick();
-           return true;
+           System.out.println("KEDispatcher + F7")   ;
+           if(chechForJTable())
+                 return true;
          }
          return false;
      }
-   
- }
+    private boolean chechForJTable()
+    {
+        boolean return_value=false;
+      
+       
+       if(jTable1.isFocusOwner())
+       {
+            int row = jTable1.getSelectedRow();
+            int col = jTable1.getSelectedColumn();
+            System.out.println(jTable1.getValueAt(row,col));
+           // processKeyPress(myParent.getDocFacadeType(),F7_KEY,SEARCH_BY_CODE);
+           System.out.println("jTable1 row="+row+"  col="+col);
+           return true;
+       }
+       if(jTable1.getEditorComponent().isFocusOwner()) 
+       {
+          
+          int row = jTable1.getSelectedRow();
+          int col = jTable1.getSelectedColumn();
+          System.out.println("Name="+jTable1.getEditorComponent().getName());
+          System.out.println("toString="+jTable1.getEditorComponent().toString());
+          
+          System.out.println("toString="+jTable1.getCellEditor().toString());
+       //   processKeyPress(myParent.getDocFacadeType(),F7_KEY,SEARCH_BY_CODE);
+          System.out.println("getEditorComponent row="+row+"  col="+col);
+          return  true; 
+       }
+        return return_value;
+    }
+ }*/
  private String removeCharacter(String ss)
  {
      String ret = new String();
