@@ -5,8 +5,12 @@ public class dbPayingOrders extends imakante.com.dbObject {
     
     // --- Custom Members --- //
     private java.sql.Connection conn;
-    private String splitGroupNames[];
-    private int indexConnOfId[] = null;
+    private int idPayingOrderType = 0;
+    private int idBankAccount = 0;
+    private int idContragent = 0;
+    private double amount = 0;
+    private String instant = "0000-00-00 00:00:00";
+    
     
     // --- Constructor --- //
     public dbPayingOrders(java.sql.Connection conn) {
@@ -25,9 +29,11 @@ public class dbPayingOrders extends imakante.com.dbObject {
         try {
             getCstm().setInt("comprator", getComprator());
             getCstm().setInt("in_id", getId());
-            getCstm().setInt("in_id_spt", getIDGr());
-            getCstm().setInt("in_id_nbc", getCode());
-            getCstm().setString("in_instatnt", getName());
+            getCstm().setInt("in_id_spt", getIdPayingOrderType());
+            getCstm().setInt("in_id_nbc", getIdBankAccount());
+            getCstm().setInt("in_id_contragent", getIdContragent());
+            getCstm().setDouble("in_amount", getAmount());
+            getCstm().setString("in_instant", getInstant());
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
@@ -94,43 +100,79 @@ public class dbPayingOrders extends imakante.com.dbObject {
             }
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
-    
-    public String[] getPersonGroups() {
-        setComprator(6);
-        String actStr = new String("");
-        int oldId = getId();
-        java.sql.ResultSet oldRs = getRs();
-        String strIndexConnOfId = new String("");
-        java.util.ArrayList in = new java.util.ArrayList();
-        java.util.Iterator it = null;
-        // nova ideq porodena ot fakta 4e pri razdelqneto na stringa i
-        //ako imeto na ednata kletka ima intervali no se polu4ava gre6ka
-        java.util.HashMap Groups = new java.util.HashMap();
-        int i = 0;
-        try {
-            registerParameters();
-            setRs(getCstm().executeQuery());
-            while(getRs().next()) {
-                Groups.put(new Integer(getRs().getInt("id_n_group")), new String(getRs().getString("name_n_group")));
-                in.add(new Integer(getRs().getInt("id_n_group")));
-                i++;
-            }
-        } catch(Exception e) { e.printStackTrace(); }
-        setRs(oldRs);
-        setId(oldId);
-        indexConnOfId = new int[i];
-        it = in.iterator();
-        splitGroupNames = new String[i];
-        i = 0;
-        while(it.hasNext()) {
-            indexConnOfId[i] = (Integer) it.next();
-            splitGroupNames[i] = (String) Groups.get(indexConnOfId[i]);
-            i++;
-        }
-        return splitGroupNames;
+//    
+//    public String[] getPersonGroups() {
+//        setComprator(6);
+//        String actStr = new String("");
+//        int oldId = getId();
+//        java.sql.ResultSet oldRs = getRs();
+//        String strIndexConnOfId = new String("");
+//        java.util.ArrayList in = new java.util.ArrayList();
+//        java.util.Iterator it = null;
+//        // nova ideq porodena ot fakta 4e pri razdelqneto na stringa i
+//        //ako imeto na ednata kletka ima intervali no se polu4ava gre6ka
+//        java.util.HashMap Groups = new java.util.HashMap();
+//        int i = 0;
+//        try {
+//            registerParameters();
+//            setRs(getCstm().executeQuery());
+//            while(getRs().next()) {
+//                Groups.put(new Integer(getRs().getInt("id_n_group")), new String(getRs().getString("name_n_group")));
+//                in.add(new Integer(getRs().getInt("id_n_group")));
+//                i++;
+//            }
+//        } catch(Exception e) { e.printStackTrace(); }
+//        setRs(oldRs);
+//        setId(oldId);
+//        indexConnOfId = new int[i];
+//        it = in.iterator();
+//        splitGroupNames = new String[i];
+//        i = 0;
+//        while(it.hasNext()) {
+//            indexConnOfId[i] = (Integer) it.next();
+//            splitGroupNames[i] = (String) Groups.get(indexConnOfId[i]);
+//            i++;
+//        }
+//        return splitGroupNames;
+//    }
+//    
+    public int getIdPayingOrderType() {
+        return idPayingOrderType;
     }
-    
-    public int[] getIndexConnOfId() {
-        return indexConnOfId;
+
+    public void setIdPayingOrderType(int idPayingOrderType) {
+        this.idPayingOrderType = idPayingOrderType;
+    }
+
+    public int getIdBankAccount() {
+        return idBankAccount;
+    }
+
+    public void setIdBankAccount(int idBankAccount) {
+        this.idBankAccount = idBankAccount;
+    }
+
+    public int getIdContragent() {
+        return idContragent;
+    }
+
+    public void setIdContragent(int idContragent) {
+        this.idContragent = idContragent;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public String getInstant() {
+        return instant;
+    }
+
+    public void setInstant(String instant) {
+        this.instant = instant;
     }
 }

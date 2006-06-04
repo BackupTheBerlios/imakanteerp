@@ -20,10 +20,14 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextEGN = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextName = new javax.swing.JTextField();
         jButtonSearch = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox();
+        jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jButtonNew = new javax.swing.JButton();
@@ -53,9 +57,8 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel4.setPreferredSize(new java.awt.Dimension(448, 37));
+        jPanel4.setPreferredSize(new java.awt.Dimension(448, 75));
         jLabel1.setText("\u041a\u043e\u0434:");
-        jPanel4.add(jLabel1);
 
         jTextField1.setPreferredSize(new java.awt.Dimension(80, 20));
         jTextField1.setInputVerifier(new imakante.com.InputIntegerVerifier());
@@ -70,41 +73,21 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             }
         });
 
-        jPanel4.add(jTextField1);
+        jLabel2.setText("\u041f\u043e\u043b\u0443\u0447\u0430\u0442\u0435\u043b:");
 
-        jLabel2.setText("\u0415\u0413\u041d:");
-        jPanel4.add(jLabel2);
-
-        jTextEGN.setPreferredSize(new java.awt.Dimension(80, 20));
-        jTextEGN.addFocusListener(new java.awt.event.FocusAdapter() {
+        jTextField2.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextEGNFocusGained(evt);
+                jTextField2FocusGained(evt);
             }
         });
-        jTextEGN.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextEGNKeyPressed(evt);
+                jTextField2KeyPressed(evt);
             }
         });
 
-        jPanel4.add(jTextEGN);
-
-        jLabel3.setText("\u0418\u043c\u0435:");
-        jPanel4.add(jLabel3);
-
-        jTextName.setPreferredSize(new java.awt.Dimension(160, 20));
-        jTextName.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextNameFocusGained(evt);
-            }
-        });
-        jTextName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextNameKeyPressed(evt);
-            }
-        });
-
-        jPanel4.add(jTextName);
+        jLabel3.setText("\u0412\u0430\u043b\u0443\u0442\u0430:");
 
         jButtonSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Search.png")));
         jButtonSearch.setText("\u0422\u044a\u0440\u0441\u0435\u043d\u0435");
@@ -114,8 +97,72 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             }
         });
 
-        jPanel4.add(jButtonSearch);
+        jLabel4.setText("\u041e\u043f\u0435\u0440\u0430\u0446\u0438\u044f:");
 
+        jLabel5.setText("\u0414\u0430\u0442\u0430:");
+
+        org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel4Layout.createSequentialGroup()
+                .add(29, 29, 29)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jLabel2)
+                    .add(jLabel1))
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .add(5, 5, 5)
+                        .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 131, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel3)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 82, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel4)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jComboBox2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 137, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel5)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 27, Short.MAX_VALUE)
+                .add(jButtonSearch)
+                .add(28, 28, 28))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel4Layout.createSequentialGroup()
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .add(jLabel1)
+                                .add(9, 9, 9))
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)))
+                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel2)
+                            .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .add(22, 22, 22)
+                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jButtonSearch)
+                            .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                                    .add(jLabel5)
+                                    .add(jLabel3)
+                                    .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(jLabel4)
+                                    .add(jComboBox2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
         jPanel1.add(jPanel4, java.awt.BorderLayout.SOUTH);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -125,7 +172,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 879, Short.MAX_VALUE)
+            .add(0, 875, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -209,28 +256,19 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         jTextField1.selectAll();
     }//GEN-LAST:event_jTextField1FocusGained
     
-    private void jTextEGNFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextEGNFocusGained
-        jTextEGN.selectAll();
-    }//GEN-LAST:event_jTextEGNFocusGained
-    
-    private void jTextNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextNameFocusGained
-        jTextName.selectAll();
-    }//GEN-LAST:event_jTextNameFocusGained
+    private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
+        jTextField2.selectAll();
+    }//GEN-LAST:event_jTextField2FocusGained
     
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); }
-else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextField1.setText(""); }
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); 
+        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextField1.setText(""); }
     }//GEN-LAST:event_jTextField1KeyPressed
     
-    private void jTextEGNKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextEGNKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); }
-else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextEGN.setText(""); }
-    }//GEN-LAST:event_jTextEGNKeyPressed
-    
-    private void jTextNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNameKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); }
-else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextName.setText(""); }
-    }//GEN-LAST:event_jTextNameKeyPressed
+    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); 
+        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextField2.setText(""); }
+    }//GEN-LAST:event_jTextField2KeyPressed
     
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
         printTable();
@@ -270,17 +308,21 @@ else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextName.setT
     private javax.swing.JButton jButtonPrnReport;
     private javax.swing.JButton jButtonRefresh;
     private javax.swing.JButton jButtonSearch;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextEGN;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextName;
+    private javax.swing.JTextField jTextField2;
+    private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
     // End of variables declaration//GEN-END:variables
     
     //--------------- My Variables
@@ -299,22 +341,22 @@ else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextName.setT
     private  imakante.sales.dbPayingOrders internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
-    public static final String Names[] = { "id", 
-    "id_type_porder",  
-    "\u0422\u0438\u043F \u043D\u0430 \u043E\u043F\u0435\u0440\u0430\u0446\u0438\u044F\u0442\u0430", 
-    "id_bank_account", 
-    "\u0411\u0430\u043D\u043A\u0430 \u043D\u0430 \u041D\u0430\u0440\u0435\u0434\u0438\u0442\u0435\u043B\u044F", 
-    "\u0421\u043C\u0435\u0442\u043A\u0430 (IBAN)", 
-    "id_type_account", 
-    "\u0422\u0438\u043F \u043D\u0430 \u0441\u043C\u0435\u0442\u043A\u0430\u0442\u0430", 
-    "id_contragent", 
-    "\u041F\u043E\u043B\u0443\u0447\u0430\u0442\u0435\u043B", 
-    "\u041A\u043E\u0434", 
-    "\u0411\u0430\u043D\u043A\u0430 \u043F\u043E \u0440\u0430\u0437\u043F\u043B\u0430\u0449\u0430\u043D\u0438\u044F", 
-    "\u0421\u043C\u0435\u0442\u043A\u0430 (IBAN) \u043F\u043E \u0440\u0430\u0437\u043F\u043B\u0430\u0449\u0430\u043D\u0438\u044F", 
-    "\u0411\u0430\u043D\u043A\u0430 \u043F\u043E \u0414\u0414\u0421", 
-    "\u0421\u043C\u0435\u0442\u043A\u0430 (IBAN) \u043F\u043E \u0414\u0414\u0421", 
-    "\u0421\u0443\u043C\u0430", 
+    public static final String Names[] = { "id",
+    "id_type_porder",
+    "\u0422\u0438\u043F \u043D\u0430 \u043E\u043F\u0435\u0440\u0430\u0446\u0438\u044F\u0442\u0430",
+    "id_bank_account",
+    "\u0411\u0430\u043D\u043A\u0430 \u043D\u0430 \u041D\u0430\u0440\u0435\u0434\u0438\u0442\u0435\u043B\u044F",
+    "\u0421\u043C\u0435\u0442\u043A\u0430 (IBAN)",
+    "id_type_account",
+    "\u0422\u0438\u043F \u043D\u0430 \u0441\u043C\u0435\u0442\u043A\u0430\u0442\u0430",
+    "id_contragent",
+    "\u041F\u043E\u043B\u0443\u0447\u0430\u0442\u0435\u043B",
+    "\u041A\u043E\u0434",
+    "\u0411\u0430\u043D\u043A\u0430 \u043F\u043E \u0440\u0430\u0437\u043F\u043B\u0430\u0449\u0430\u043D\u0438\u044F",
+    "\u0421\u043C\u0435\u0442\u043A\u0430 (IBAN) \u043F\u043E \u0440\u0430\u0437\u043F\u043B\u0430\u0449\u0430\u043D\u0438\u044F",
+    "\u0411\u0430\u043D\u043A\u0430 \u043F\u043E \u0414\u0414\u0421",
+    "\u0421\u043C\u0435\u0442\u043A\u0430 (IBAN) \u043F\u043E \u0414\u0414\u0421",
+    "\u0421\u0443\u043C\u0430",
     "\u0418\u0437\u0432\u044A\u0440\u0448\u0435\u043D\u043E \u043D\u0430" };
     //---------------END My Variables
     
@@ -508,21 +550,24 @@ else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextName.setT
     private void searchRecords() {
         try {
             try {
-                if (jTextField1.getText().equals("")) {
-                    rs = internalObject.searchRecords(-1, jTextEGN.getText(), jTextName.getText());
-                } else {
-                    rs = internalObject.searchRecords(Integer.parseInt(jTextField1.getText()), jTextEGN.getText(), jTextName.getText());
-                }
+//                if (jTextField1.getText().equals("")) {
+//                    rs = internalObject.searchRecords(-1, jTextEGN.getText(), jTextName.getText());
+//                } else {
+//                    rs = internalObject.searchRecords(Integer.parseInt(jTextField1.getText()), jTextEGN.getText(), jTextName.getText());
+//                }
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
-                jTextEGN.requestFocus();
+                jTextField2.requestFocus();
             }
             jScrollPane1.remove(table);
             model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
             jScrollPane1.getViewport().add(table);
             HideColumns(getColumnIndex("id"));
-            HideColumns(getColumnIndex("id_group"));
+            HideColumns(getColumnIndex("id_type_porder"));
+            HideColumns(getColumnIndex("id_bank_account"));
+            HideColumns(getColumnIndex("id_type_account"));
+            HideColumns(getColumnIndex("id_contragent"));
             jScrollPane1.repaint();
         } catch(Exception e) { e.printStackTrace(); }
     }
@@ -534,10 +579,12 @@ else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextName.setT
         table = new imakante.com.CustomTable(model);
         jScrollPane1.getViewport().add(table);
         HideColumns(getColumnIndex("id"));
-        HideColumns(getColumnIndex("id_group"));
+        HideColumns(getColumnIndex("id_type_porder"));
+        HideColumns(getColumnIndex("id_bank_account"));
+        HideColumns(getColumnIndex("id_type_account"));
+        HideColumns(getColumnIndex("id_contragent"));
         jTextField1.setText("");
-        jTextEGN.setText("");
-        jTextName.setText("");
+        jTextField2.setText("");
         jScrollPane1.repaint();
     }
     
@@ -550,8 +597,8 @@ else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextName.setT
         setAllVariables();
         setAtBegining(false);
         setAtEnd(true);
-            imakante.sales.aePayingOrders ae_POrder = new imakante.sales.aePayingOrders(this, true);
-            ae_POrder.setVisible(true);
+        imakante.sales.aePayingOrders ae_POrder = new imakante.sales.aePayingOrders(this, true);
+        ae_POrder.setVisible(true);
         refreshTable();
     }
     
@@ -581,14 +628,6 @@ else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextName.setT
         }
     }
     
-    public java.sql.Connection getConn() {
-        return conn;
-    }
-    
-    public void setConn(java.sql.Connection conn) {
-        this.conn = conn;
-    }
-    
     private int getColumnIndex(String in) {
         int count = table.getColumnCount();
         for(int i = 0; i < count; i++) {
@@ -610,6 +649,14 @@ else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextName.setT
         
         
         
+    }
+    
+    public java.sql.Connection getConn() {
+        return conn;
+    }
+    
+    public void setConn(java.sql.Connection conn) {
+        this.conn = conn;
     }
     
     private void unload() {

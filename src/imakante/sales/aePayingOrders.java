@@ -508,7 +508,7 @@ public class aePayingOrders extends imakante.com.vcomponents.iDialog {
     }
     
     private void initCombo() {
-        namesG = myParent.getInternalObject().getPersonGroups();
+//        namesG = myParent.getInternalObject().getPersonGroups();
         for(int i=0;i<namesG.length;i++) {
 //            jComboG.addItem(new String(namesG[i]));
         }
@@ -520,12 +520,12 @@ public class aePayingOrders extends imakante.com.vcomponents.iDialog {
     
     private int getNewComboBoxIndex(int oldindex) {
         int newindex= 0;
-        for(int i = 0; i < myParent.getInternalObject().getIndexConnOfId().length; i++) {
-            if(myParent.getInternalObject().getIndexConnOfId()[i] == oldindex) {
-                newindex = i;
-                break;
-            }
-        }
+//        for(int i = 0; i < myParent.getInternalObject().getIndexConnOfId().length; i++) {
+//            if(myParent.getInternalObject().getIndexConnOfId()[i] == oldindex) {
+//                newindex = i;
+//                break;
+//            }
+//        }
         return newindex;
     }
     
