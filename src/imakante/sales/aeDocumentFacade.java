@@ -4911,17 +4911,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
          
         if(rate!=0) {
        
-          jTable1.grabFocus();
+          //jTable1.grabFocus();
          
-            try {
-                Robot robot = new Robot();
-                for(int i=0;i<enterKet;i++)
-                {
-                  robot.keyPress(KeyEvent.VK_ENTER);
-                }
-               
-               
-            } catch (AWTException e12){}
           try
           {
             java.lang.Thread.sleep(500);
@@ -4960,6 +4951,9 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 }
               
             }
+            
+          
+            
             Connection conn1 = myParent.getCountriesT().getConn();
             
             showProductDocLine dialog = new showProductDocLine(myParent,true,rs1,conn1,isProductIN);
@@ -4970,7 +4964,15 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             
             ((docLineTableModel) jTable1.getModel()).enableCellEditable(3);
             
-            
+              try {
+                Robot robot = new Robot();
+                for(int i=0;i<enterKet;i++)
+                {
+                  robot.keyPress(KeyEvent.VK_ENTER);
+                }
+               
+               
+            } catch (AWTException e12){};
             
             if(myParent.getIsSelectProduct()) {
                 
