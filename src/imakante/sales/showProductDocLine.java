@@ -108,7 +108,7 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
                   myParent.setProductFee(productFee);
                   
                   myParent.setIsSelectProduct(true);
-                  
+                  System.out.println("++++++++++Number of produkt ="+myParent.getBrojProduct());
                  close();
                 }
             }

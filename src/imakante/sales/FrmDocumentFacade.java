@@ -368,7 +368,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
         number++;
         setNumberDocFacade(String.valueOf(number));
        getCountriesT().insertRow(0,0,0,0,0,0,0,number,0,0,0,0,0,
-               getDocFacadeLevel(),0,getDocFacadeType(),0,0,null,null,null,null,null,1,0);
+               getDocFacadeLevel(),0,getDocFacadeType(),0,0,"-1",null,null,null,null,1,0);
        setID_DocFacade(getCountriesT().getMaxId());
        
        
@@ -1658,7 +1658,7 @@ private void checkForMakeDoc(boolean makeDoc)
       String DateSQLFormat = dateManip.convertDate(strDate);
       
       getCountriesT().insertRow(0,0,0,0,0,0,0,number,getUserEditFortm(),getUserEditFortm(),0,0,0,
-                      getDocFacadeLevel(),getStorageOUTProduct(),getDocFacadeType(),0,0,"0",DateSQLFormat,"-",DateSQLFormat,DateSQLFormat,1,0);
+                      getDocFacadeLevel(),getStorageOUTProduct(),getDocFacadeType(),0,0,"-1",DateSQLFormat,"-",DateSQLFormat,DateSQLFormat,1,0);
        maxID_df = getCountriesT().getMaxId();
       
        setID_DocFacade(maxID_df) ;

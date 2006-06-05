@@ -1595,7 +1595,7 @@ public void updateDocLine(int id_dl,int in_id_df,int in_id_pc,int in_id_storage,
      return maxid;
  }
  
-public void  deleteRow(int type,long numberDocFadade, int level)
+public void  deleteRow(int type,long numberDocFadade, int level,String condition)
  {
       setComprator(35);
    int oldID_df = getID_DocFacade();
@@ -1604,7 +1604,7 @@ public void  deleteRow(int type,long numberDocFadade, int level)
    long oldDN = getNumberDocFacade();
    setNumberDocFacade(numberDocFadade);
    setID_DocFacade(type);
-  
+   setConditionDocFacade(condition);
    setID_Obekt_OUT(level);
    
    try
@@ -1752,7 +1752,7 @@ public void emptyReturnProducts(int id_dl, int nal,int level)
           case  LEVEL_3:
           {
               levelForNali4nost=1;
-              emptyReturnProducts(id_dl,nal,1); 
+              emptyReturnProductsA(id_dl,nal,1); 
               break;
           }
        }  
@@ -1781,9 +1781,11 @@ private void emptyReturnProductsA(int id_dl, int nal,int level)
     setID_DocFacade(oldId_DF);
     setLevelDocFacade(oldLevel);
 }
-public void cancellationDocFacade(int id_df)
+public void cancellationDocFacade(int id_df,String condition)
 {
     int oldID_DF = getID_DocFacade();
+    String oldCondition = getConditionDocFacade();
+    setConditionDocFacade(condition);
     setComprator(40);
     setID_DocFacade(id_df);
      try

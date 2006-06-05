@@ -134,7 +134,7 @@ IF (comprator = 6) THEN
         SELECT MAX(number_df) AS maxNumber FROM mida.sl_document_facade s, sl_doc_type_num sl, n_doc_type_user_rights ur
         WHERE number_df like CONCAT(sl.area_number_sdtn,'%')
         AND sl.id_sdtn=  ur.id_sdtn  AND ur.id_ndtur = in_docFacadeUser  AND s.level_df = in_id_obekt_in
-        AND s.type_df = in_docFacadeType;
+        AND s.type_df = in_docFacadeType AND s.condition_df!=1;
 END IF;
 
 
@@ -728,10 +728,11 @@ IF (comprator = 34) THEN
 END IF;
 
 IF (comprator = 35) THEN
-  # DELETE FROM mida.sl_document_facade
-  # WHERE  type_df = in_id_df AND number_df = in_id_obekt_in AND level_df =in_id_obekt_out;
-   UPDATE mida.sl_document_facade s SET s.condition_df ="1"
-   WHERE type_df = in_id_df AND number_df = in_docFacadeNumber AND level_df =in_id_obekt_out;
+   DELETE FROM mida.sl_document_facade
+   WHERE  type_df = in_id_df AND number_df = in_docFacadeNumber  AND level_df =in_id_obekt_out
+   AND condition_df = in_docFacadeCondition;
+  # UPDATE mida.sl_document_facade s SET s.condition_df ="1"
+  # WHERE type_df = in_id_df AND number_df = in_docFacadeNumber AND level_df =in_id_obekt_out;
 
 END IF;
 IF (comprator = 36) THEN
@@ -780,7 +781,7 @@ IF (comprator = 39) THEN
 END IF;
 
 IF (comprator = 40) THEN
-    UPDATE mida.sl_document_facade s SET s.condition_df ="2"
+    UPDATE mida.sl_document_facade s SET s.condition_df = in_docFacadeCondition
     WHERE s.id_df = in_id_df;
 END IF;
 

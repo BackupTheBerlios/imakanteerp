@@ -65,6 +65,17 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     final private static int SEARCH_BY_CODE = 1;
     final private static int SEARCH_BY_NAME = 2;
     
+    // Condition of document
+    
+    final private static String ANULIRANE = "2";
+    final private static String IZTRIVANE = "1";
+    final private static String USE_DOCUMENT = "0";
+    final private static String NON_DEFINE = "-1";
+    
+    final private static int BROI_INPUT = 0;
+    final private static int BROI_OUTPUT = 1;
+    final private static int BROI_NON_IO = 2;
+    
     
     //DOKUMENTI
     final public static int STOKOVA_RAZPISKA=100;
@@ -402,7 +413,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanelHead.add(jXDateCurs, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, -1, -1));
 
         jLabelLevel.setForeground(new java.awt.Color(255, 51, 51));
-        jLabelLevel.setText("jLaf1");
+        jLabelLevel.setText("fffd");
         jPanelHead.add(jLabelLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         jPanel2.add(jPanelHead);
@@ -1195,15 +1206,21 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private void jButtonDellDocFadadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDellDocFadadeActionPerformed
 // TODO add your handling code here:
         if(!isNew) {
-            deleteDocFacade(myParent.getID_DocFacade());
+            cancellationDocFacade(myParent.getID_DocFacade(),IZTRIVANE);
+            rollBackNalichnosti();
             myParent.refreshTable();
+           JOptionPane.showMessageDialog(this,"\u0418\u0437\u0442\u0440\u0438\u0442");
         }
     }//GEN-LAST:event_jButtonDellDocFadadeActionPerformed
     
     private void jButtonAnuliraneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnuliraneActionPerformed
 // TODO add your handling code here:
-        cancellationDocFacade(myParent.getID_DocFacade());
+         if(!isNew) {
+        cancellationDocFacade(myParent.getID_DocFacade(),ANULIRANE);
+        rollBackNalichnosti();
         myParent.refreshTable();
+        JOptionPane.showMessageDialog(this,"\u0410\u043D\u0443\u043B\u0438\u0440\u0430\u043D");
+         }
     }//GEN-LAST:event_jButtonAnuliraneActionPerformed
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -1252,6 +1269,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
 // TODO add your handling code here:
         //    System.exit(-1);
+        System.out.println("Close Windows fromm XX");
+       
     }//GEN-LAST:event_formWindowClosed
     
     private void jScrollPane2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane2MouseClicked
@@ -1750,7 +1769,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             for(int i=0; i< rowCount; i++) {
                 deleteDocLine(i,withRow,true);
             }
-            deleteDocFacade(myParent.getDocFacadeType(),Long.parseLong(myParent.getNumberDocFacade()),myParent.getDocFacadeLevel());
+            deleteDocFacade(myParent.getDocFacadeType(),Long.parseLong(myParent.getNumberDocFacade()),myParent.getDocFacadeLevel(),NON_DEFINE);
         } else {
             if(!isDocFacadeCreate)
                 if(rows.size()>0) 
@@ -1784,6 +1803,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     }
                 }
                 }
+            // ako dokumenta "FAKTURI " e izganiriran ot stokovi razpiski i ne izkame da go zapisvame
              if(sales_main.isMakeDocByInputData)
              {
                 int rCount = jTable1.getRowCount();
@@ -1792,7 +1812,9 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                    int id_dl_ =(Integer) jTable1.getValueAt(i,12);
                    myParent.getCountriesT().deleteDocLine(id_dl_);
                 }
-                myParent.getCountriesT().deleteRow(myParent.getID_DocFacade());
+                
+                //myParent.getCountriesT().deleteRow(myParent.getID_DocFacade());
+                deleteDocFacade(myParent.getDocFacadeType(),Long.parseLong(myParent.getNumberDocFacade()),myParent.getDocFacadeLevel(),NON_DEFINE);
                 sales_main.isMakeDocByInputData=false;
                 sales_main.dataIn=null;
                 sales_main.dataOut=null;
@@ -2030,7 +2052,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private HashMap arrayRate = new HashMap();
     private Double curs;
     private ArrayList editRows = new ArrayList();
-    private HashMap checkForSaveInDB = new HashMap();
+    private HashMap checkForSaveInDB = new HashMap(); // zapisva informaciq, 4e reda e zapisan v bazata
 //----------------------------------------
     
     
@@ -2777,7 +2799,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                         }
                                         } else
 //!PROFORMA_FAKTURA ili OFETRA
-                                            if(myParent.getDocFacadeType()!=PROFORMA_FAKTURA || myParent.getDocFacadeType()!=OFERTA) {
+                                            if(myParent.getDocFacadeType()!=PROFORMA_FAKTURA && myParent.getDocFacadeType()!=OFERTA) {
                                         int storageTO = myParent.getStorageOUTProduct();
                                         if(!isNew) {
                                             //vzimane na razlikata ot tablicata za DocLine i redaktiranite broiki ot jTable1
@@ -2839,7 +2861,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                             }
 // ==POFORMA_FAKTURA ili OFERTA
                                             else // ako dokumenta e POFORMA_FAKTURA ili OFERTA
-                                            {
+                                             if(myParent.getDocFacadeType()==PROFORMA_FAKTURA || myParent.getDocFacadeType()==OFERTA){
                                         if(!isNew) {
                                             int id_dl = (Integer) jTable1.getValueAt(rowSelect,12);
                                             int newNumberProduct = nn;
@@ -3008,14 +3030,63 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                     } else
 //NAREZDANE_ZA_PREHVYRQNE
                                         if(myParent.getDocFacadeType()==NAREZDANE_ZA_PREHVYRQNE) {
+                                        int storageTO = myParent.getStorageOUTProduct();
                                         if(isNew) {
+                                             myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),storageTO,myParent.getPriceOneProduct(),
+                                            myParent.getProcentProduct(),nn,dds,total,prList);
                                             
+                                            int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
+                                            jTable1.setValueAt(maxID_DocLine,rowSelect,12);
+                                            //zapazvane na prodikta v tablicata s nali4nosti
+                                            myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,myParent.getDocFacadeLevel());
                                         } else {
+                                             //vzimane na razlikata ot tablicata za DocLine i redaktiranite broiki ot jTable1
+                                            // vry6tane na razlikata ako ima takava ili zapazvane na brojkite
+                                            int id_dl = (Integer) jTable1.getValueAt(rowSelect,12);
+                                            int newNumberProduct = nn;
+                                            docLineArray d =null;
+                                            int oldNumberProduct = 0;
+                                            for(int j=0; j < rows.size();j++) {
+                                                d = (docLineArray) rows.get(j);
+                                                if(id_dl==d.getID_DocLine()) {
+                                                    oldNumberProduct = d.getNumberOfProduct();
+                                                    break;
+                                                }
+                                                
+                                            }
+                                            if(true) //newNumberProduct<tmpProductNumbers
+                                            {
+                                                if(newNumberProduct > oldNumberProduct  ) {
+                                                    myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(newNumberProduct - oldNumberProduct),myParent.getDocFacadeLevel());
+                                                }else {
+                                                    myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(oldNumberProduct-newNumberProduct ),myParent.getDocFacadeLevel());
+                                                }
+                                                
+                                                if(oldNumberProduct>0) {
+                                                    
+                                                    myParent.getCountriesT().updateDocLine(id_dl,myParent.getID_DocFacade(),myParent.getID_PC(),
+                                                            storageTO,myParent.getPriceOneProduct(),
+                                                            myParent.getProcentProduct(),newNumberProduct,dds,total,prList);
+                                                } else {
+                                                    myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),storageTO,myParent.getPriceOneProduct(),
+                                                            myParent.getProcentProduct(),newNumberProduct,dds,total,prList);
+                                                    int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
+                                                    jTable1.setValueAt(maxID_DocLine,rowSelect,12);
+                                                    
+                                                    
+                                                }
+                                            } else // nqma dostaty4ni koli4etvo ot produkta
+                                            {
+                                                ((docLineTableModel) jTable1.getModel()).removeRow(rowSelect) ;
+                                                ((docLineTableModel)jTable1.getModel()).addRow(new docLineArray());
+                                                
+                                            }
                                             
                                         }
                                         } else
 //!PROFORMA_FAKTURA - OUT produkt
-                                            if(myParent.getDocFacadeType()!=PROFORMA_FAKTURA || myParent.getDocFacadeType()!=OFERTA) {
+                                            if(myParent.getDocFacadeType()!=PROFORMA_FAKTURA && myParent.getDocFacadeType()!=OFERTA) {
+                                           int storageTO = myParent.getStorageOUTProduct();
                                         if(!isNew) {
                                             //vzimane na razlikata ot tablicata za DocLine i redaktiranite broiki ot jTable1
                                             // vry6tane na razlikata ako ima takava ili zapazvane na brojkite
@@ -3065,12 +3136,21 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                        } // end   if(!isNew)  
                                        else //ako dokumenta e nov
                                             {
-                                        
+                                              
+                                            double newPrice1 = (Double) jTable1.getValueAt(rowSelect,8);
+                                            double newPP1 = (Double) jTable1.getValueAt(rowSelect,9);
+                                            myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),storageTO,newPrice1,
+                                                    newPP1,nn,dds,total,prList);
+                                            
+                                            int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
+                                            jTable1.setValueAt(maxID_DocLine,rowSelect,12);
+                                            //zapazvane na prodikta v tablicata s nali4nosti
+                                            myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,myParent.getDocFacadeLevel());
                                             }
                                             } //  end  if(myParent.getDocFacadeType()!=PROFORMA_FAKTURA)
 //==  POFORMA_FAKTURA ili OFERTA
                                             else // ako dokumenta e POFORMA_FAKTURA ili OFERTA
-                                            {
+                                            if(myParent.getDocFacadeType()==PROFORMA_FAKTURA || myParent.getDocFacadeType()==OFERTA) {
                                         if(!isNew) {
                                             int id_dl = (Integer) jTable1.getValueAt(rowSelect,12);
                                             int newNumberProduct = nn;
@@ -4701,12 +4781,15 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         r = bd.doubleValue();
         return newDouble.valueOf(r);
     }
-    private void  deleteDocFacade(int type,long numberDocFadade, int level) {
-        myParent.getCountriesT().deleteRow(type,numberDocFadade,level);
+    // iztriva se ot bazata
+    private void  deleteDocFacade(int type,long numberDocFadade, int level,String condition) {
+        myParent.getCountriesT().deleteRow(type,numberDocFadade,level,condition);
     }
-    private void cancellationDocFacade(int id_df) {
-        myParent.getCountriesT().cancellationDocFacade(id_df);
+    private void cancellationDocFacade(int id_df,String condition) {
+        myParent.getCountriesT().cancellationDocFacade(id_df,condition);
     }
+    
+    // markira dokumenta kato iztrit t.e. promena conditon v "1"
     private void  deleteDocFacade(int id_df) {
         myParent.getCountriesT().deleteRow(id_df);
     }
@@ -4887,6 +4970,12 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     }
     private void processKeyPress(int docType,int firstCenterLast, int searchBy,int enterKet)
     {
+        // searchBy :
+        //  1: tyrsene po kod na produkta
+        //  2: tyrsene po ime na produkta
+        //firstCenterLast -> F7 key - center; F8 key - first; F9 key - last
+        isProductIN = checkInOutProduct(docType);
+        
          if(isProductIN) {
                             ((docLineTableModel) jTable1.getModel()).enableCellEditable(4);
                             ((docLineTableModel) jTable1.getModel()).enableCellEditable(5);
@@ -4902,12 +4991,6 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                             ((docLineTableModel) jTable1.getModel()).enableCellEditable(8);
                             ((docLineTableModel) jTable1.getModel()).enableCellEditable(9);
                         }
-        // searchBy :
-        //  1: tyrsene po kod na produkta
-        //  2: tyrsene po ime na produkta
-        //firstCenterLast -> F7 key - center; F8 key - first; F9 key - last
-        isProductIN = checkInOutProduct(docType);
-       
          
         if(rate!=0) {
        
@@ -4982,9 +5065,10 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 jTable1.setValueAt(myParent.getNameProduct(),jTable1.getSelectedRow(),1);
                 
                 jTable1.setValueAt(myParent.getStorageOUTProduct(),jTable1.getSelectedRow(),2);
-                
+                 jLabelAllBrojProduct.setText(String.valueOf(myParent.getBrojProduct())); //
                 if(isProductIN) {
                     jLabel32.setText("0");
+                    jLabelAllBrojProduct.setText("0"); //
                     jTable1.setValueAt(0,jTable1.getSelectedRow(),3);
                     jLabelPricelist_1.setText("\u0426\u0435\u043d\u0430 1");
                     jLabelPricelist_2.setText("\u0426\u0435\u043d\u0430 2");
@@ -5062,18 +5146,19 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 myParent.setIsSelectProduct(false);
                 isSetDataInTable = true;
             }
-            System.out.println("----------------<3>-------F7------------");
+            System.out.println("++----------------<3>-------F7------------");
             System.out.print("jTable1.getSelectedRow: ");
             System.out.println(jTable1.getSelectedRow());
             System.out.print("jTable1.getSelectedColumn: ");
             System.out.println(jTable1.getSelectedColumn());
-            System.out.println("----------------<3>-------F7-----------");
+            System.out.println("++----------------<3>-------F7-----------");
+            ((docLineTableModel)jTable1.getModel()).setIsFinishToEnterData(jTable1.getSelectedRow());
         }
         else 
         {
             //show meseage za valuta
         }
-       ((docLineTableModel)jTable1.getModel()).setIsFinishToEnterData(jTable1.getSelectedRow());
+       
     }
     private boolean checkInOutProduct(int doctype) // false - OUT ot skalda; true -  IN v skalda
     {
@@ -5401,7 +5486,7 @@ private int getColumnIndex(String in) //test
             for(int i=0; i< rowCount; i++) {
                 deleteDocLine(i,withRow,true);
             }
-            deleteDocFacade(myParent.getDocFacadeType(),Integer.parseInt(myParent.getNumberDocFacade()),myParent.getDocFacadeLevel());
+            deleteDocFacade(myParent.getDocFacadeType(),Integer.parseInt(myParent.getNumberDocFacade()),myParent.getDocFacadeLevel(),NON_DEFINE);
         } else {
             if(!isDocFacadeCreate)
                 if(rows.size()>0) 
@@ -5578,6 +5663,103 @@ private int getColumnIndex(String in) //test
       
            
   }
+  // vry6ta nali4nosti v rezultat na iztrivane na dokument ili na anulirane
+ private void rollBackNalichnosti() 
+ {
+   checkForDiffWithOutSaveInDB();
+        
+   int rowCount = jTable1.getRowCount();
+   boolean withRow = false;
+   boolean restDocLine =false;
+   if(!isDocFacadeCreate) // ako dokumenta ne e zapisan 
+   {
+                if(rows.size()>0) 
+                {
+                int id_dl;
+                docLineArray d=null;
+                
+                for(int i=0; i< rowCount; i++) {
+                    restDocLine= false;
+                    for(int j=0; j < rows.size();j++) {
+                        // ako sa ravni vry6tame starite
+                        // ako ne iztrivame docLine
+                        id_dl = (Integer) jTable1.getValueAt(i,12);
+                        d = (docLineArray) rows.get(j);
+                        if(id_dl==d.getID_DocLine()) {
+                            restDocLine = true;
+                            // vry6tane na starite stoinosti
+                            myParent.getCountriesT().updateDocLine(d.getID_DocLine(),myParent.getID_DocFacade(),d.getID_PC(),
+                                    d.getStorageOut(),d.getPricePiece(),d.getRateReduction(),
+                                    d.getNumberOfProduct(),d.getDDS(),d.getPriceTotal(),
+                                    d.getPriceList());
+                            
+                           
+                            break;
+                        }
+                        
+                    }
+                    if(!restDocLine) {
+                       int ttid_dl =(Integer) jTable1.getValueAt(i,12);
+                       myParent.getCountriesT().deleteDocLine(ttid_dl);
+                       ((docLineTableModel)jTable1.getModel()).removeRow(i);
+                    }
+                }
+                }  
+   }
+   else // dokumenta e zapisan predvaritelno
+   {
+       
+   }
+  int IONalichnost = 0;
+  int ddtype = myParent.getDocFacadeType();
+  if(ddtype==FAKTURA_DANACHNA || ddtype==FAKTURA_OPROSTENA || ddtype==STOKOVA_RAZPISKA || 
+          ddtype==BRAK || ddtype==PROTOKOL_LIPSA || ddtype==PREDAVATELNA_RAZPISKA || ddtype==NAREZDANE_ZA_PREHVYRQNE)
+  {
+      IONalichnost = BROI_OUTPUT;
+  }
+  if(ddtype==PRIEMATELNA_RAZPISKA)
+  {
+     IONalichnost = BROI_INPUT;  
+  }
+  if(ddtype==OFERTA || ddtype == PROFORMA_FAKTURA)
+  {
+     IONalichnost = BROI_NON_IO;  
+  }
+  switch(IONalichnost)
+  {
+      case BROI_INPUT:
+      {
+           for(int i=0;i<jTable1.getRowCount();i++)
+          {
+              int id_pc = (Integer)jTable1.getValueAt(i,16);
+              int sttorage = (Integer)jTable1.getValueAt(i,2);
+              int broi = (Integer)jTable1.getValueAt(i,4);
+             // trebva da se inicializira id_pc i storage
+              setNNPreserveProducts(broi);
+          }
+          emptyPreservation(true);
+          break;
+      }
+      case BROI_OUTPUT:
+      {
+         
+          for(int i=0;i<jTable1.getRowCount();i++)
+          {
+              int id_pc = (Integer)jTable1.getValueAt(i,16);
+              int sttorage = (Integer)jTable1.getValueAt(i,2);
+              int broi = (Integer)jTable1.getValueAt(i,4);
+             // trebva da se inicializira id_pc i storage
+              setNNReturnProduct(broi);
+          }
+          emptyReturnet(true);
+          break;
+      }
+      case BROI_NON_IO:
+      {
+          break;
+      }
+  }
+ }
 }// end class
 
 
