@@ -4915,7 +4915,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
          
           try
           {
-            java.lang.Thread.sleep(500);
+            java.lang.Thread.sleep(100);
           }
           catch(Exception df){System.out.println("sleep - error");};
           
@@ -4930,24 +4930,24 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
               //  rs1 = myParent.getCountriesT().getTableProductInfo(str,3,myParent.getDocFacadeLevel(),0,myParent.getStorageOUTProduct());
                 if(searchBy==SEARCH_BY_CODE)
                 {
-                 rs1 = myParent.getCountriesT().getTableProductInfo(str,3,0,0,myParent.getStorageOUTProduct());
+                 rs1 = myParent.getCountriesT().getTableProductInfo(str,firstCenterLast+3,0,0,myParent.getStorageOUTProduct());
                 }
                 if(searchBy==SEARCH_BY_NAME)
                 {
-                  rs1 = myParent.getCountriesT().getTableProductInfo(str,7,0,0,myParent.getStorageOUTProduct());  
+                  rs1 = myParent.getCountriesT().getTableProductInfo(str,firstCenterLast+9,0,0,myParent.getStorageOUTProduct());  
                 }
             }
             else
             {
               if(searchBy==SEARCH_BY_CODE)
                 {  
-                 rs1 = myParent.getCountriesT().getTableProductInfo(str,firstCenterLast,myParent.getDocFacadeLevel(),0,myParent.getStorageOUTProduct()); 
+                 rs1 = myParent.getCountriesT().getTableProductInfo(str,firstCenterLast+0,myParent.getDocFacadeLevel(),0,myParent.getStorageOUTProduct()); 
                 }
                if(searchBy==SEARCH_BY_NAME)
                 {
                   //firstCenterLast+4 - izbirame podhodq6tata SQl zaqvka
                   // viz procedurata
-                  rs1 = myParent.getCountriesT().getTableProductInfo(str,firstCenterLast+4,myParent.getDocFacadeLevel(),0,myParent.getStorageOUTProduct());  
+                  rs1 = myParent.getCountriesT().getTableProductInfo(str,firstCenterLast+6,myParent.getDocFacadeLevel(),0,myParent.getStorageOUTProduct());  
                 }
               
             }
