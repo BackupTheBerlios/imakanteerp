@@ -43,6 +43,26 @@ public class FrmFirmParam extends javax.swing.JDialog {
         jtfAcc = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jtfWeb = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        jTextField7 = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jTextField9 = new javax.swing.JTextField();
+        jTextField10 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -77,6 +97,26 @@ public class FrmFirmParam extends javax.swing.JDialog {
 
         jLabel14.setText("Web:");
 
+        jLabel15.setText("\u0415\u0413\u041d \u0443\u043f\u0440\u0430\u0432\u0438\u0442\u0435\u043b:");
+
+        jLabel16.setText("\u041d\u041b\u041a:");
+
+        jLabel17.setText("\u0411\u0430\u043d\u043a\u0430 \u0440\u0430\u0437\u043f\u043b\u0430\u0449\u0430\u0442\u0435\u043b\u043d\u0430 \u0441\u043c\u0435\u0442\u043a\u0430:");
+
+        jLabel18.setText("IBAN:");
+
+        jLabel19.setText("BIC:");
+
+        jLabel20.setText("\u0411\u0430\u043d\u043a\u0430 \u0414\u0414\u0421 \u0441\u043c\u0435\u0442\u043a\u0430:");
+
+        jLabel21.setText("IBAN:");
+
+        jLabel22.setText("BIC:");
+
+        jLabel23.setText("\u0412\u0430\u043b\u0443\u0442\u0430 \u0440\u0430\u0437\u043f\u043b\u0430\u0449\u0430\u0442\u0435\u043b\u043d\u0430:");
+
+        jLabel24.setText("\u0412\u0430\u043b\u0443\u0442\u0430 \u0414\u0414\u0421:");
+
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -84,6 +124,11 @@ public class FrmFirmParam extends javax.swing.JDialog {
             .add(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jLabel23)
+                    .add(jLabel21)
+                    .add(jLabel20)
+                    .add(jLabel18)
+                    .add(jLabel17)
                     .add(jLabel13)
                     .add(jLabel12)
                     .add(jLabel11)
@@ -92,7 +137,8 @@ public class FrmFirmParam extends javax.swing.JDialog {
                     .add(jLabel6)
                     .add(jLabel4)
                     .add(jLabel2)
-                    .add(jLabel1))
+                    .add(jLabel1)
+                    .add(jLabel15))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
@@ -111,7 +157,7 @@ public class FrmFirmParam extends javax.swing.JDialog {
                             .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                 .add(jtfData_c, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
                                 .add(jtfDan))))
-                    .add(jtfAddress, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
+                    .add(jtfAddress, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE)
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
                             .add(org.jdesktop.layout.GroupLayout.LEADING, jtfNkid)
@@ -124,11 +170,37 @@ public class FrmFirmParam extends javax.swing.JDialog {
                             .add(jLabel14))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jtfEmail, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .add(jtfCode, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .add(jtfWeb, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)))
-                    .add(jtfBoss, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
-                    .add(jtfAcc, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE))
+                            .add(jtfEmail, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                            .add(jtfCode, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                            .add(jtfWeb, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)))
+                    .add(jtfBoss, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE)
+                    .add(jtfAcc, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE)
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 224, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(65, 65, 65)
+                        .add(jLabel16)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
+                    .add(jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE)
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(jTextField4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 225, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(68, 68, 68)
+                        .add(jLabel19)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jTextField5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
+                    .add(jTextField6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE)
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                            .add(jTextField9)
+                            .add(jTextField7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE))
+                        .add(23, 23, 23)
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel22)
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel24))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jTextField10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                            .add(jTextField8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -175,10 +247,42 @@ public class FrmFirmParam extends javax.swing.JDialog {
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel12)
                     .add(jtfBoss, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(7, 7, 7)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel15)
+                    .add(jLabel16)
+                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel13)
                     .add(jtfAcc, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel17)
+                    .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel18)
+                    .add(jTextField4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel19)
+                    .add(jTextField5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel20)
+                    .add(jTextField6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel21)
+                    .add(jTextField7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jTextField8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel22))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel23)
+                    .add(jLabel24)
+                    .add(jTextField9, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jTextField10, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -201,7 +305,7 @@ public class FrmFirmParam extends javax.swing.JDialog {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(531, Short.MAX_VALUE)
+                .addContainerGap(538, Short.MAX_VALUE)
                 .add(jButton1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jButton2)
@@ -220,14 +324,14 @@ public class FrmFirmParam extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .add(jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 10, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
         pack();
@@ -250,7 +354,17 @@ public class FrmFirmParam extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -260,6 +374,16 @@ public class FrmFirmParam extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField jtfAcc;
     private javax.swing.JTextField jtfAddress;
     private javax.swing.JTextField jtfBoss;
@@ -297,7 +421,17 @@ public class FrmFirmParam extends javax.swing.JDialog {
             "`ls_sluj`.`nm` AS `nm`, " +
             "`ls_sluj`.`postcode` AS `code`, " +
             "`ls_sluj`.`email` AS `email`, " +
-            "`ls_sluj`.`web` AS `web` " +
+            "`ls_sluj`.`web` AS `web` ," +
+            "`ls_sluj`.`boss_egn` AS `boss_egn` ," +
+            "`ls_sluj`.`boss_nlk` AS `boss_nlk` ," +
+            "`ls_sluj`.`bankR` AS `bankR` ," +
+            "`ls_sluj`.`ibanR` AS `ibanR` ," +
+            "`ls_sluj`.`bankD` AS `bankD`, " +
+            "`ls_sluj`.`ibanD` AS `ibanD` ," +
+            "`ls_sluj`.`bicD` AS `bicD` ," +
+            "`ls_sluj`.`valr` AS `valr` ," +
+            "`ls_sluj`.`vald` AS `vald` " +
+          
             "FROM "+
             "`ls_sluj`";
     
@@ -323,6 +457,16 @@ public class FrmFirmParam extends javax.swing.JDialog {
                 jtfCode.setText(rs.getString("code"));
                 jtfEmail.setText(rs.getString("email"));
                 jtfWeb.setText(rs.getString("web"));
+                jTextField1.setText(rs.getString("boss_egn"));
+                jTextField2.setText(rs.getString("boss_nlk"));
+                jTextField3.setText(rs.getString("bankR"));
+                jTextField4.setText(rs.getString("ibanR"));
+                jTextField5.setText(rs.getString("bicR"));
+                jTextField6.setText(rs.getString("bankD"));
+                jTextField7.setText(rs.getString("ibanD"));
+                jTextField8.setText(rs.getString("bicD"));
+                jTextField9.setText(rs.getString("valr"));
+                jTextField10.setText(rs.getString("valà"));
             }
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
@@ -347,7 +491,17 @@ public class FrmFirmParam extends javax.swing.JDialog {
                     "`ls_sluj`.nm = " + jtfNm.getText() + ", " +
                     "`ls_sluj`.postcode = " + jtfCode.getText() + ", " +
                     "`ls_sluj`.email = " + jtfEmail.getText() + ", " +
-                    "`ls_sluj`.web = " + jtfWeb.getText() +
+                    "`ls_sluj`.web = " + jtfWeb.getText() + ", " +
+                    "`ls_sluj`.boss_egn = " + jTextField1.getText() +
+                    "`ls_sluj`.boss_nlk = " + jTextField2.getText() +
+                    "`ls_sluj`.bankR = " + jTextField3.getText() +
+                    "`ls_sluj`.ibanR = " + jTextField4.getText() +
+                    "`ls_sluj`.bicR = " + jTextField5.getText() +
+                    "`ls_sluj`.bankD = " + jTextField6.getText() +
+                    "`ls_sluj`.ibanD = " + jTextField7.getText() +
+                    "`ls_sluj`.bicD = " + jTextField8.getText() +
+                    "`ls_sluj`.valr = " + jTextField9.getText() +
+                    "`ls_sluj`.vald = " + jTextField8.getText() +
                     "WHERE `mida`.`ls_sluj`.Id = " + id);
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }

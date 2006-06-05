@@ -549,8 +549,8 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     
     java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd");
     
-    private String jasperFile = "/imakante/sales/jasper/inorder.jasper";
-    private String otchetPrihodi = "/imakante/sales/jasper/report_prih_orders.jasper";
+    private String jasperFile = "inorder.jasper";
+    private String otchetPrihodi = "report_prih_orders.jasper";
     
     private boolean dBstate = false;
     private boolean dEstate = false;
