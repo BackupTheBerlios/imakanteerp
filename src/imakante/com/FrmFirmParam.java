@@ -3,10 +3,10 @@ package imakante.com;
 
 import java.sql.SQLException;
 
-public class FrmFirmParam extends javax.swing.JDialog {
+public class FrmFirmParam extends imakante.com.vcomponents.iDialog {
     
-    public FrmFirmParam(java.awt.Frame parent, boolean modal,java.sql.Connection Connection) {
-        super(parent, modal);
+    public FrmFirmParam(imakante.com.vcomponents.iFrame frame, boolean modal,java.sql.Connection Connection) {
+        super(frame, modal);
         conn = Connection;
         initComponents();
         getParam();

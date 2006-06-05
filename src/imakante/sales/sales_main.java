@@ -264,7 +264,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(325, Short.MAX_VALUE)
+                .addContainerGap(352, Short.MAX_VALUE)
                 .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 179, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -830,6 +830,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         });
 
         jMenuItem3.setText("\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0424\u0438\u0440\u043c\u0430");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+
         sluMenu.add(jMenuItem3);
 
         jMenuItem2.setText("\u041d\u0430\u0441\u0442\u0440\u043e\u0438\u043a\u0430 \u041f\u0440\u043e\u0433\u0440\u0430\u043c\u0430");
@@ -959,6 +965,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-458)/2, 757, 458);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+         loadSlujParam();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void bankaMenu_orderiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bankaMenu_orderiActionPerformed
         this.loadPayingOrdersForm();
@@ -1637,7 +1647,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         }
     }
     //METHODS FOR LOADING USER RIGHTS FOR AREA DOCUMENTS
-    
+    public void loadSlujParam(){
+       imakante.com.FrmFirmParam firm = new imakante.com.FrmFirmParam(this,true,this.getConn());
+        desktopPane.add(firm);
+        firm.setVisible(true);
+    }
     public void loadRightsArea()
     {
         System.out.println("loadRightsArea");
