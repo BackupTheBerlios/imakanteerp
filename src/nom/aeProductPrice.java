@@ -35,12 +35,18 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
         this.setTitle("\u0414\u043E\u0441\u0442\u0430\u0432\u043D\u0430 \u0438 \u0446\u0435\u043D\u043E\u0432\u0430 \u043B\u0438\u0441\u0442\u0430");
         jTextDostPrice.requestFocus();
         
+        try
+        {
+        stDDS =  Integer.parseInt(myParent.getProductFee()[0]);
+        }
+        catch(Exception x1)
+        {
+            stDDS = 20;
+        }
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
-
         jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jButtonSave = new javax.swing.JButton();
@@ -68,10 +74,15 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
         jLabel12 = new javax.swing.JLabel();
         jTextFieldValue = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jTextDostPriceWithDDS = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jTextFieldPrice1WithDDS = new javax.swing.JTextField();
+        jTextFieldPrice2WithDDS = new javax.swing.JTextField();
+        jTextFieldPrice3WithDDS = new javax.swing.JTextField();
 
         jTextField1.setText("jTextField1");
 
@@ -99,14 +110,15 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
         getContentPane().add(jPanel1, java.awt.BorderLayout.SOUTH);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel2.setMinimumSize(new java.awt.Dimension(400, 150));
-        jPanel2.setPreferredSize(new java.awt.Dimension(320, 200));
+        jPanel2.setMinimumSize(new java.awt.Dimension(400, 250));
+        jPanel2.setPreferredSize(new java.awt.Dimension(320, 250));
         jLabel1.setText("\u0414\u043e\u0441\u0442\u0430\u0432\u043d\u0430 \u0446\u0435\u043d\u0430:");
 
         jLabel2.setText("\u0426\u0435\u043d\u0430 1:");
 
         jLabel3.setText("\u0426\u0435\u043d\u0430 2:");
 
+        jTextDostPrice.setNextFocusableComponent(jTextFieldPrice1);
         jTextDostPrice.setPreferredSize(new java.awt.Dimension(80, 20));
         jTextDostPrice.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextDostPrice.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -151,7 +163,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
         });
 
         jTextFieldPrice3.setEnabled(false);
-        jTextFieldPrice3.setNextFocusableComponent(jTextFieldValue);
+        jTextFieldPrice3.setNextFocusableComponent(jButtonSave);
         jTextFieldPrice3.setPreferredSize(new java.awt.Dimension(80, 20));
         jTextFieldPrice3.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextFieldPrice3.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -171,6 +183,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
 
         jLabel7.setText("\u0438\u043b\u0438");
 
+        jTextFieldProcent1.setToolTipText("\u041f\u0440\u043e\u0446\u0435\u043d\u0442 \u0443\u0432\u0435\u043b\u0438\u0447\u0435\u043d\u0438\u0435 \u043e\u0442 \u0434\u043e\u0441\u0442\u0430\u0432\u043d\u0430\u0442\u0430 \u0446\u0435\u043d\u0430");
         jTextFieldProcent1.setEnabled(false);
         jTextFieldProcent1.setNextFocusableComponent(jTextFieldProcent2);
         jTextFieldProcent1.setPreferredSize(new java.awt.Dimension(50, 20));
@@ -186,6 +199,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
             }
         });
 
+        jTextFieldProcent2.setToolTipText("\u041f\u0440\u043e\u0446\u0435\u043d\u0442 \u0443\u0432\u0435\u043b\u0438\u0447\u0435\u043d\u0438\u0435 \u043e\u0442 \u0434\u043e\u0441\u0442\u0430\u0432\u043d\u0430\u0442\u0430 \u0446\u0435\u043d\u0430");
         jTextFieldProcent2.setEnabled(false);
         jTextFieldProcent2.setNextFocusableComponent(jTextFieldProcent3);
         jTextFieldProcent2.setPreferredSize(new java.awt.Dimension(50, 20));
@@ -201,8 +215,9 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
             }
         });
 
+        jTextFieldProcent3.setToolTipText("\u041f\u0440\u043e\u0446\u0435\u043d\u0442 \u0443\u0432\u0435\u043b\u0438\u0447\u0435\u043d\u0438\u0435 \u043e\u0442 \u0434\u043e\u0441\u0442\u0430\u0432\u043d\u0430\u0442\u0430 \u0446\u0435\u043d\u0430");
         jTextFieldProcent3.setEnabled(false);
-        jTextFieldProcent3.setNextFocusableComponent(jTextFieldValue);
+        jTextFieldProcent3.setNextFocusableComponent(jButtonSave);
         jTextFieldProcent3.setPreferredSize(new java.awt.Dimension(50, 20));
         jTextFieldProcent1.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextFieldProcent3.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -244,104 +259,177 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
             }
         });
 
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel13.setForeground(new java.awt.Color(204, 0, 51));
         jLabel13.setText("\u0426\u0435\u043d\u0438 \u0431\u0435\u0437 \u0414\u0414\u0421 \u0438 \u0442\u0430\u043a\u0441\u0438");
 
-        jLabel14.setForeground(new java.awt.Color(0, 0, 153));
-        jLabel14.setText("0.00");
-
-        jLabel15.setForeground(new java.awt.Color(0, 0, 153));
-        jLabel15.setText("0.00");
-
-        jLabel16.setForeground(new java.awt.Color(0, 0, 153));
-        jLabel16.setText("0.00");
-
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel17.setText("\u0426\u0435\u043d\u0438 \u0441 \u0414\u0414\u0421");
+
+        jLabel18.setText("\u0438\u043b\u0438");
+
+        jTextDostPriceWithDDS.setNextFocusableComponent(jTextFieldPrice1WithDDS);
+        jTextDostPriceWithDDS.setInputVerifier(new imakante.com.InputDoubleVerifier());
+        jTextDostPriceWithDDS.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextDostPriceWithDDSFocusLost(evt);
+            }
+        });
+        jTextDostPriceWithDDS.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextDostPriceWithDDSKeyPressed(evt);
+            }
+        });
+
+        jLabel19.setText("\u0438\u043b\u0438");
+
+        jLabel20.setText("\u0438\u043b\u0438");
+
+        jLabel21.setText("\u0438\u043b\u0438");
+
+        jTextFieldPrice1WithDDS.setEnabled(false);
+        jTextFieldPrice1WithDDS.setNextFocusableComponent(jTextFieldPrice2WithDDS);
+        jTextFieldPrice1WithDDS.setInputVerifier(new imakante.com.InputDoubleVerifier());
+        jTextFieldPrice1WithDDS.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldPrice1WithDDSFocusLost(evt);
+            }
+        });
+        jTextFieldPrice1WithDDS.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldPrice1WithDDSKeyPressed(evt);
+            }
+        });
+
+        jTextFieldPrice2WithDDS.setEnabled(false);
+        jTextFieldPrice2WithDDS.setNextFocusableComponent(jTextFieldPrice3WithDDS);
+        jTextFieldPrice2WithDDS.setInputVerifier(new imakante.com.InputDoubleVerifier());
+        jTextFieldPrice2WithDDS.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldPrice2WithDDSFocusLost(evt);
+            }
+        });
+        jTextFieldPrice2WithDDS.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldPrice2WithDDSKeyPressed(evt);
+            }
+        });
+
+        jTextFieldPrice3WithDDS.setEnabled(false);
+        jTextFieldPrice3WithDDS.setNextFocusableComponent(jButtonSave);
+        jTextFieldPrice3WithDDS.setInputVerifier(new imakante.com.InputDoubleVerifier());
+        jTextFieldPrice3WithDDS.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldPrice3WithDDSFocusLost(evt);
+            }
+        });
+        jTextFieldPrice3WithDDS.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldPrice3WithDDSKeyPressed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel2Layout.createSequentialGroup()
-                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel2Layout.createSequentialGroup()
+                                .add(83, 83, 83)
+                                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                                    .add(jLabel8)
+                                    .add(jLabel4))
+                                .add(10, 10, 10)
+                                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                                    .add(jPanel2Layout.createSequentialGroup()
+                                        .add(jTextFieldPrice3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                        .add(36, 36, 36)
+                                        .add(jLabel7))
+                                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .add(jComboBoxValuta, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .add(jLabel9)
+                                        .add(12, 12, 12)))
+                                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(jPanel2Layout.createSequentialGroup()
+                                        .add(31, 31, 31)
+                                        .add(jTextFieldProcent3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                        .add(jLabel10)
+                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 21, Short.MAX_VALUE)
+                                        .add(jLabel21))
+                                    .add(jPanel2Layout.createSequentialGroup()
+                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                        .add(jTextFieldValue, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel2Layout.createSequentialGroup()
+                                .add(84, 84, 84)
+                                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel2Layout.createSequentialGroup()
+                                        .add(jLabel3)
+                                        .add(10, 10, 10)
+                                        .add(jTextFieldPrice2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                        .add(36, 36, 36)
+                                        .add(jLabel6)
+                                        .add(31, 31, 31)
+                                        .add(jTextFieldProcent2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                        .add(jLabel12)
+                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .add(jLabel20))
+                                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel2Layout.createSequentialGroup()
+                                        .add(jLabel2)
+                                        .add(10, 10, 10)
+                                        .add(jTextFieldPrice1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                        .add(36, 36, 36)
+                                        .add(jLabel5)
+                                        .add(31, 31, 31)
+                                        .add(jTextFieldProcent1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                        .add(jLabel11)
+                                        .add(21, 21, 21)
+                                        .add(jLabel19)))))
+                        .add(21, 21, 21))
                     .add(jPanel2Layout.createSequentialGroup()
                         .add(43, 43, 43)
                         .add(jLabel1)
                         .add(10, 10, 10)
-                        .add(jTextDostPrice, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(jPanel2Layout.createSequentialGroup()
-                        .add(196, 196, 196)
-                        .add(jLabel13)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 79, Short.MAX_VALUE)
-                        .add(jLabel17))
-                    .add(jPanel2Layout.createSequentialGroup()
-                        .add(83, 83, 83)
-                        .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(jLabel8)
-                            .add(jLabel4))
-                        .add(10, 10, 10)
-                        .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                            .add(jPanel2Layout.createSequentialGroup()
-                                .add(jTextFieldPrice3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .add(36, 36, 36)
-                                .add(jLabel7))
-                            .add(jPanel2Layout.createSequentialGroup()
-                                .add(jComboBoxValuta, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .add(jLabel9)))
                         .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jPanel2Layout.createSequentialGroup()
-                                .add(31, 31, 31)
-                                .add(jTextFieldProcent3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .add(20, 20, 20)
-                                .add(jLabel10)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 47, Short.MAX_VALUE)
-                                .add(jLabel16))
+                                .add(jTextDostPrice, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 101, Short.MAX_VALUE)
+                                .add(jLabel18)
+                                .add(91, 91, 91))
                             .add(jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(jTextFieldValue, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
-                    .add(jPanel2Layout.createSequentialGroup()
-                        .add(84, 84, 84)
-                        .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                            .add(jPanel2Layout.createSequentialGroup()
-                                .add(jLabel3)
-                                .add(10, 10, 10)
-                                .add(jTextFieldPrice2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .add(36, 36, 36)
-                                .add(jLabel6)
-                                .add(31, 31, 31)
-                                .add(jTextFieldProcent2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .add(20, 20, 20)
-                                .add(jLabel12)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .add(jLabel15))
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel2Layout.createSequentialGroup()
-                                .add(jLabel2)
-                                .add(10, 10, 10)
-                                .add(jTextFieldPrice1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .add(36, 36, 36)
-                                .add(jLabel5)
-                                .add(31, 31, 31)
-                                .add(jTextFieldProcent1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .add(20, 20, 20)
-                                .add(jLabel11)
-                                .add(47, 47, 47)
-                                .add(jLabel14)))))
-                .add(132, 132, 132))
+                                .add(jLabel13)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 146, Short.MAX_VALUE)))))
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                        .add(jTextFieldPrice3WithDDS)
+                        .add(jTextFieldPrice2WithDDS)
+                        .add(jTextDostPriceWithDDS, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                        .add(jTextFieldPrice1WithDDS))
+                    .add(jLabel17))
+                .add(65, 65, 65))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel2Layout.createSequentialGroup()
-                .add(94, 94, 94)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel13)
                     .add(jLabel17, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(35, 35, 35)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel2Layout.createSequentialGroup()
                         .add(3, 3, 3)
                         .add(jLabel1))
-                    .add(jTextDostPrice, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jTextDostPrice, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(jTextDostPriceWithDDS, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(jLabel18)))
                 .add(10, 10, 10)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel2Layout.createSequentialGroup()
@@ -351,12 +439,11 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
                     .add(jPanel2Layout.createSequentialGroup()
                         .add(3, 3, 3)
                         .add(jLabel5))
-                    .add(jTextFieldProcent1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jPanel2Layout.createSequentialGroup()
-                        .add(3, 3, 3)
-                        .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jLabel11)
-                            .add(jLabel14))))
+                    .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(jTextFieldProcent1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(jLabel11)
+                        .add(jLabel19)
+                        .add(jTextFieldPrice1WithDDS, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .add(10, 10, 10)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel2Layout.createSequentialGroup()
@@ -366,12 +453,11 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
                     .add(jPanel2Layout.createSequentialGroup()
                         .add(3, 3, 3)
                         .add(jLabel6))
-                    .add(jTextFieldProcent2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jPanel2Layout.createSequentialGroup()
-                        .add(3, 3, 3)
-                        .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jLabel12)
-                            .add(jLabel15))))
+                    .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(jTextFieldProcent2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(jLabel12)
+                        .add(jLabel20)
+                        .add(jTextFieldPrice2WithDDS, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .add(10, 10, 10)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel2Layout.createSequentialGroup()
@@ -381,24 +467,222 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
                     .add(jPanel2Layout.createSequentialGroup()
                         .add(3, 3, 3)
                         .add(jLabel7))
-                    .add(jTextFieldProcent3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jPanel2Layout.createSequentialGroup()
-                        .add(3, 3, 3)
-                        .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jLabel10)
-                            .add(jLabel16))))
+                    .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(jTextFieldProcent3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(jLabel10)
+                        .add(jLabel21)
+                        .add(jTextFieldPrice3WithDDS, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .add(35, 35, 35)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel8)
                     .add(jComboBoxValuta, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel9)
                     .add(jTextFieldValue, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .add(86, 86, 86))
         );
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextFieldPrice3WithDDSFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice3WithDDSFocusLost
+// TODO add your handling code here:
+     /*    try {
+                p0dds = Double.parseDouble(jTextDostPriceWithDDS.getText());
+                p3dds = Double.parseDouble(jTextFieldPrice3WithDDS.getText());
+                if (p3dds >= p0dds )
+                {
+                    p3 = p3dds/(1+stDDS/100);
+                    p0 = p0dds/(1+stDDS/100);        
+                    p_p3 = (100 * (p3-p0)) / p0;
+                                      
+                }
+                else showMessage();
+                
+                jTextFieldProcent3.setText( doubleRoundToString(3,p_p3));
+                jTextFieldPrice3WithDDS.setBackground(new java.awt.Color(255, 255, 255));
+                jTextFieldPrice3.setText(doubleRoundToString(6,p3));
+                jTextFieldPrice3WithDDS.transferFocus();
+            } catch(NumberFormatException e) {
+                showMessage();
+                jTextFieldPrice3WithDDS.setBackground(new java.awt.Color(255, 204, 204));
+          }*/
+    }//GEN-LAST:event_jTextFieldPrice3WithDDSFocusLost
+
+    private void jTextFieldPrice2WithDDSFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice2WithDDSFocusLost
+// TODO add your handling code here:
+      /*      try {
+                p0dds = Double.parseDouble(jTextDostPriceWithDDS.getText());
+                p2dds = Double.parseDouble(jTextFieldPrice2WithDDS.getText());
+                if (p2dds >= p0dds )
+                {
+                    p2 = p2dds/(1+stDDS/100);
+                    p0 = p0dds/(1+stDDS/100);        
+                    p_p2 = (100 * (p2-p0)) / p0;
+                                      
+                }
+                else showMessage();
+                
+                jTextFieldProcent2.setText( doubleRoundToString(3,p_p2));
+                jTextFieldPrice2WithDDS.setBackground(new java.awt.Color(255, 255, 255));
+                jTextFieldPrice2.setText(doubleRoundToString(6,p2));
+                jTextFieldPrice2WithDDS.transferFocus();
+            } catch(NumberFormatException e) {
+                showMessage();
+                jTextFieldPrice2WithDDS.setBackground(new java.awt.Color(255, 204, 204));
+          }*/
+    }//GEN-LAST:event_jTextFieldPrice2WithDDSFocusLost
+
+    private void jTextFieldPrice3WithDDSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPrice3WithDDSKeyPressed
+// TODO add your handling code here:
+         if(evt.getKeyCode()==evt.VK_ENTER) {
+            try {
+                p0dds = Double.parseDouble(jTextDostPriceWithDDS.getText());
+                p3dds = Double.parseDouble(jTextFieldPrice3WithDDS.getText());
+                if (p3dds >= p0dds )
+                {
+                    p3 = p3dds/(1+stDDS/100);
+                    p0 = p0dds/(1+stDDS/100);        
+                    p_p3 = (100 * (p3-p0)) / p0;
+                                      
+                }
+                else showMessage();
+                
+                jTextFieldProcent3.setText( doubleRoundToString(3,p_p3));
+                jTextFieldPrice3WithDDS.setBackground(new java.awt.Color(255, 255, 255));
+                jTextFieldPrice3.setText(doubleRoundToString(6,p3));
+                jTextFieldPrice3WithDDS.transferFocus();
+            } catch(NumberFormatException e) {
+                showMessage();
+                jTextFieldPrice3WithDDS.setBackground(new java.awt.Color(255, 204, 204));
+          }
+       }
+    }//GEN-LAST:event_jTextFieldPrice3WithDDSKeyPressed
+
+    private void jTextFieldPrice2WithDDSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPrice2WithDDSKeyPressed
+// TODO add your handling code here:
+          if(evt.getKeyCode()==evt.VK_ENTER) {
+            try {
+                p0dds = Double.parseDouble(jTextDostPriceWithDDS.getText());
+                p2dds = Double.parseDouble(jTextFieldPrice2WithDDS.getText());
+                if (p2dds >= p0dds )
+                {
+                    p2 = p2dds/(1+stDDS/100);
+                    p0 = p0dds/(1+stDDS/100);        
+                    p_p2 = (100 * (p2-p0)) / p0;
+                                      
+                }
+                else showMessage();
+                
+                jTextFieldProcent2.setText( doubleRoundToString(3,p_p2));
+                jTextFieldPrice2WithDDS.setBackground(new java.awt.Color(255, 255, 255));
+                jTextFieldPrice2.setText(doubleRoundToString(6,p2));
+                jTextFieldPrice2WithDDS.transferFocus();
+            } catch(NumberFormatException e) {
+                showMessage();
+                jTextFieldPrice2WithDDS.setBackground(new java.awt.Color(255, 204, 204));
+          }
+       }
+    }//GEN-LAST:event_jTextFieldPrice2WithDDSKeyPressed
+
+    private void jTextFieldPrice1WithDDSFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice1WithDDSFocusLost
+// TODO add your handling code here:
+         
+    /*       try {
+                p0dds = Double.parseDouble(jTextDostPriceWithDDS.getText());
+                p1dds = Double.parseDouble(jTextFieldPrice1WithDDS.getText());
+                if (p1dds >= p0dds )
+                {
+                    p1 = p1dds/(1+stDDS/100);
+                    p0 = p0dds/(1+stDDS/100);        
+                    p_p1 = (100 * (p1-p0)) / p0;
+                                      
+                }
+                else showMessage();
+                
+                jTextFieldProcent1.setText( doubleRoundToString(3,p_p1));
+                jTextFieldPrice1WithDDS.setBackground(new java.awt.Color(255, 255, 255));
+                jTextFieldPrice1.setText(doubleRoundToString(6,p1));
+                jTextFieldPrice1WithDDS.transferFocus();
+            } catch(NumberFormatException e) {
+                showMessage();
+                jTextFieldPrice1WithDDS.setBackground(new java.awt.Color(255, 204, 204));
+          }
+       */
+    }//GEN-LAST:event_jTextFieldPrice1WithDDSFocusLost
+
+    private void jTextFieldPrice1WithDDSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPrice1WithDDSKeyPressed
+// TODO add your handling code here:
+       if(evt.getKeyCode()==evt.VK_ENTER) {
+            try {
+                p0dds = Double.parseDouble(jTextDostPriceWithDDS.getText());
+                p1dds = Double.parseDouble(jTextFieldPrice1WithDDS.getText());
+                if (p1dds >= p0dds )
+                {
+                    p1 = p1dds/(1+stDDS/100);
+                    p0 = p0dds/(1+stDDS/100);        
+                    p_p1 = (100 * (p1-p0)) / p0;
+                                      
+                }
+                else showMessage();
+                
+                jTextFieldProcent1.setText( doubleRoundToString(3,p_p1));
+                jTextFieldPrice1WithDDS.setBackground(new java.awt.Color(255, 255, 255));
+                jTextFieldPrice1.setText(doubleRoundToString(6,p1));
+                jTextFieldPrice1WithDDS.transferFocus();
+            } catch(NumberFormatException e) {
+                showMessage();
+                jTextFieldPrice1WithDDS.setBackground(new java.awt.Color(255, 204, 204));
+          }
+       }
+    }//GEN-LAST:event_jTextFieldPrice1WithDDSKeyPressed
+
+    private void jTextDostPriceWithDDSFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextDostPriceWithDDSFocusLost
+// TODO add your handling code here:
+    /*     if(jTextDostPriceWithDDS.getText().length()>0) {
+            jTextFieldPrice1.setEnabled(true);
+            jTextFieldPrice2.setEnabled(true);
+            jTextFieldPrice3.setEnabled(true);
+            jTextFieldProcent3.setEnabled(true);
+            jTextFieldProcent2.setEnabled(true);
+            jTextFieldProcent1.setEnabled(true);
+            
+            jTextFieldPrice1WithDDS.setEditable(true);
+            jTextFieldPrice2WithDDS.setEditable(true);
+            jTextFieldPrice3WithDDS.setEditable(true);
+            p0dds = Double.parseDouble(jTextDostPriceWithDDS.getText());
+            p0 =p0dds/(1+stDDS/100);
+            jTextDostPrice.setText(doubleRoundToString(6,p0));
+                
+               
+            
+        }*/
+    }//GEN-LAST:event_jTextDostPriceWithDDSFocusLost
+
+    private void jTextDostPriceWithDDSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextDostPriceWithDDSKeyPressed
+// TODO add your handling code here:
+         if(jTextDostPriceWithDDS.getText().length()>0) {
+            jTextFieldPrice1.setEnabled(true);
+            jTextFieldPrice2.setEnabled(true);
+            jTextFieldPrice3.setEnabled(true);
+            jTextFieldProcent3.setEnabled(true);
+            jTextFieldProcent2.setEnabled(true);
+            jTextFieldProcent1.setEnabled(true);
+            
+            jTextFieldPrice1WithDDS.setEnabled(true);
+            jTextFieldPrice2WithDDS.setEnabled(true);
+            jTextFieldPrice3WithDDS.setEnabled(true);
+            p0dds = Double.parseDouble(jTextDostPriceWithDDS.getText());
+            if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER)
+            {
+                p0 =p0dds/(1+stDDS/100);
+                
+                jTextDostPrice.setText(doubleRoundToString(6,p0));
+                
+                jTextDostPriceWithDDS.transferFocus();
+            }
+        }
+    }//GEN-LAST:event_jTextDostPriceWithDDSKeyPressed
 
     private void jTextFieldValueKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldValueKeyPressed
 // TODO add your handling code here:
@@ -438,18 +722,20 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jTextFieldValueMousePressed
     
     private void jTextFieldProcent3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldProcent3FocusLost
-        try {
+      /*  try {
             
             p_p3 = Double.parseDouble(jTextFieldProcent3.getText());
             p3 = (p_p3/100)*p0 + p0;
             jTextFieldPrice3.setText( doubleRoundToString(6,p3));
             jTextFieldProcent3.setBackground(new java.awt.Color(255, 255, 255));
+            p3dds = (p3*stDDS/100)+p3;
+            jTextFieldPrice3WithDDS.setText(doubleRoundToString(6,p3dds));
         } catch (NumberFormatException ex) {
             ex.printStackTrace();
             jTextFieldProcent3.setBackground(new java.awt.Color(255, 204, 204));
             showMessage();
         }
-        
+        */
     }//GEN-LAST:event_jTextFieldProcent3FocusLost
     
     private void jTextFieldProcent3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldProcent3KeyPressed
@@ -461,6 +747,8 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
                 p3 = (p_p3/100)*p0 + p0;
                 jTextFieldPrice3.setText( doubleRoundToString(6,p3));
                 jTextFieldProcent3.setBackground(new java.awt.Color(255, 255, 255));
+                p3dds = (p3*stDDS/100)+p3;
+                jTextFieldPrice3WithDDS.setText(doubleRoundToString(6,p3dds));
                 jTextFieldProcent3.transferFocus();
             } catch(NumberFormatException e) {
                 showMessage();
@@ -471,19 +759,25 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jTextFieldProcent3KeyPressed
     
     private void jTextFieldPrice3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice3FocusLost
-        try {
+    /*    try {
             p0 = Double.parseDouble(jTextDostPrice.getText());
             p3 = Double.parseDouble(jTextFieldPrice3.getText());
-            if(p3>=p0) p_p3 = (100 * (p3-p0)) / p0; else showMessage();
+            if(p3>=p0)
+            {
+                p_p3 = (100 * (p3-p0)) / p0;
+                p3dds = (p3*stDDS/100)+p3;
+            }
+            else showMessage();
             jTextFieldProcent3.setText( doubleRoundToString(3,p_p3));
             jTextFieldPrice3.setBackground(new java.awt.Color(255, 255, 255));
+            jTextFieldPrice3WithDDS.setText(doubleRoundToString(6,p3dds));
         } catch (NumberFormatException ex) {
             ex.printStackTrace();
             showMessage();
             jTextFieldPrice3.setBackground(new java.awt.Color(255, 204, 204));
         }
         
-        
+        */
     }//GEN-LAST:event_jTextFieldPrice3FocusLost
     
     private void jTextFieldPrice3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPrice3KeyPressed
@@ -491,10 +785,16 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
         if(evt.getKeyCode()==evt.VK_ENTER) {
             try {
                 p3 = Double.parseDouble(jTextFieldPrice3.getText());
-                if (p3 >= p0) p_p3 = (100 * (p3-p0)) / p0;
+                if (p3 >= p0) 
+                {
+                    p_p3 = (100 * (p3-p0)) / p0;
+                    
+                    p3dds = (p3*stDDS/100)+p3;
+                }
                 else showMessage();
                 jTextFieldProcent3.setText( doubleRoundToString(3,p_p3));
                 jTextFieldPrice3.setBackground(new java.awt.Color(255, 255, 255));
+                jTextFieldPrice3WithDDS.setText(doubleRoundToString(6,p3dds));
                 jTextFieldPrice3.transferFocus();
             } catch(NumberFormatException e) {
                 showMessage();
@@ -513,6 +813,8 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
                 p2 = (p_p2/100)*p0 + p0;
                 jTextFieldPrice2.setText( doubleRoundToString(6,p2));
                 jTextFieldPrice2.setBackground(new java.awt.Color(255, 255, 255));
+                 p2dds = (p2*stDDS/100)+p2;
+                jTextFieldPrice2WithDDS.setText(doubleRoundToString(6,p2dds));
                 jTextFieldProcent2.transferFocus();
             } catch(NumberFormatException e) {
                 showMessage();
@@ -524,35 +826,42 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
     
     private void jTextFieldProcent2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldProcent2FocusLost
 // TODO add your handling code here:
-        try {
+    /*    try {
             p0 = Double.parseDouble(jTextDostPrice.getText());
             p_p2 = Double.parseDouble(jTextFieldProcent2.getText());
             p2 = (p_p2/100)*p0 + p0;
             jTextFieldPrice2.setText( doubleRoundToString(6,p2));
             jTextFieldProcent2.setBackground(new java.awt.Color(255, 255, 255));
+            p2dds = (p2*stDDS/100)+p2;
+            jTextFieldPrice2WithDDS.setText(doubleRoundToString(6,p2dds));
         } catch(Exception e) {
             showMessage();
             jTextFieldProcent2.setBackground(new java.awt.Color(255, 204, 204));
-        }
+        }*/
     }//GEN-LAST:event_jTextFieldProcent2FocusLost
     
     
     private void jTextFieldPrice2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice2FocusLost
-        try {
+  /*      try {
 // TODO add your handling code here:
             
             p0 = Double.parseDouble(jTextDostPrice.getText());
             p2 = Double.parseDouble(jTextFieldPrice2.getText());
-            if(p2 >= p0)  p_p2 = (100 * (p2-p0)) / p0;
+            if(p2 >= p0)
+            {
+                p_p2 = (100 * (p2-p0)) / p0;
+                p2dds = (p2*stDDS/100)+p2;
+            }
             else showMessage();
             jTextFieldProcent2.setText( doubleRoundToString(3,p_p2));
             jTextFieldPrice2.setBackground(new java.awt.Color(255, 255, 255));
+            jTextFieldPrice2WithDDS.setText(doubleRoundToString(6,p2dds));
         } catch (NumberFormatException ex) {
             ex.printStackTrace();
             showMessage();
             jTextFieldPrice2.setBackground(new java.awt.Color(255, 204, 204));
         }
-        
+        */
     }//GEN-LAST:event_jTextFieldPrice2FocusLost
     
     private void jTextFieldPrice2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPrice2KeyPressed
@@ -561,10 +870,16 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
             try {
                 p0 = Double.parseDouble(jTextDostPrice.getText());
                 p2 = Double.parseDouble(jTextFieldPrice2.getText());
-                if(p2 > p0)p_p2 = (100 * (p2-p0)) / p0;
+                if(p2 > p0)
+                {
+                    p_p2 = (100 * (p2-p0)) / p0;
+                    
+                    p2dds = (p2*stDDS/100)+p2;
+                }
                 else showMessage();
                 jTextFieldProcent2.setText( doubleRoundToString(3,p_p2));
                 jTextFieldPrice2.setBackground(new java.awt.Color(255, 255, 255));
+                jTextFieldPrice2WithDDS.setText(doubleRoundToString(6,p2dds));
                 jTextFieldPrice2.transferFocus();
             } catch(NumberFormatException e) {
                 showMessage();
@@ -584,6 +899,9 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
                 p1 = (p_p1/100)*p0 + p0;
                 jTextFieldPrice1.setText( doubleRoundToString(6,p1));
                 jTextFieldProcent1.setBackground(new java.awt.Color(255, 255, 255));
+                
+                p1dds = (p1*stDDS/100)+p1;
+                jTextFieldPrice1WithDDS.setText(doubleRoundToString(6,p1dds));
                 jTextFieldProcent1.transferFocus();
             } catch(NumberFormatException e) {
                 showMessage();
@@ -594,7 +912,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jTextFieldProcent1KeyPressed
     
     private void jTextFieldProcent1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldProcent1FocusLost
-        try {
+     /*   try {
 // TODO add your handling code here:
             p0 = Double.parseDouble(jTextDostPrice.getText());
             p_p1 = Double.parseDouble(jTextFieldProcent1.getText());
@@ -602,29 +920,37 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
             p1 = p1*p0 + p0;
             jTextFieldPrice1.setText( doubleRoundToString(6,p1));
             jTextFieldProcent1.setBackground(new java.awt.Color(255, 255, 255));
+            p1dds = (p1*stDDS/100)+p1;
+            jTextFieldPrice1WithDDS.setText(doubleRoundToString(6,p1dds));
         } catch (NumberFormatException ex) {
             ex.printStackTrace();
             jTextFieldProcent1.setBackground(new java.awt.Color(255, 204, 204));
-        }
+        }*/
     }//GEN-LAST:event_jTextFieldProcent1FocusLost
     
     private void jTextFieldPrice1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice1FocusLost
-        try {
+/*        try {
             
             p0 = Double.parseDouble(jTextDostPrice.getText());
             p1 = Double.parseDouble(jTextFieldPrice1.getText());
-            if(p1 >= p0) p_p1 = (100 * (p1-p0)) / p0;
+            if(p1 >= p0)
+            {
+                p_p1 = (100 * (p1-p0)) / p0;
+                
+                p1dds = (p1*stDDS/100)+p1;
+            }
             else showMessage();
             
             jTextFieldProcent1.setText( doubleRoundToString(3,p_p1));
             jTextFieldProcent1.setBackground(new java.awt.Color(255, 255, 255));
+            jTextFieldPrice1WithDDS.setText(doubleRoundToString(6,p1dds));
         } catch (NumberFormatException ex) {
             ex.printStackTrace();
             showMessage();
             jTextFieldPrice1.setBackground(new java.awt.Color(255, 204, 204));
             jTextFieldPrice1.requestFocus();
         }
-        
+        */
     }//GEN-LAST:event_jTextFieldPrice1FocusLost
     
     private void jTextFieldPrice1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPrice1KeyPressed
@@ -634,11 +960,17 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
             try {
                 p0 = Double.parseDouble(jTextDostPrice.getText());
                 p1 = Double.parseDouble(jTextFieldPrice1.getText());
-                if (p1 >= p0 ) p_p1 = (100 * (p1-p0)) / p0;
+                if (p1 >= p0 )
+                {
+                    p_p1 = (100 * (p1-p0)) / p0;
+                    
+                    p1dds = (p1*stDDS/100)+p1;
+                }
                 else showMessage();
                 
                 jTextFieldProcent1.setText( doubleRoundToString(3,p_p1));
                 jTextFieldPrice1.setBackground(new java.awt.Color(255, 255, 255));
+                jTextFieldPrice1WithDDS.setText(doubleRoundToString(6,p1dds));
                 jTextFieldPrice1.transferFocus();
             } catch(NumberFormatException e) {
                 showMessage();
@@ -657,8 +989,18 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
             jTextFieldProcent3.setEnabled(true);
             jTextFieldProcent2.setEnabled(true);
             jTextFieldProcent1.setEnabled(true);
+            
+            jTextFieldPrice1WithDDS.setEnabled(true);
+            jTextFieldPrice2WithDDS.setEnabled(true);
+            jTextFieldPrice3WithDDS.setEnabled(true);
             p0 = Double.parseDouble(jTextDostPrice.getText());
-            if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){jTextFieldPrice1.requestFocus();}
+            if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER)
+            {
+                p0dds = (p0*stDDS/100)+p0;
+                jTextDostPriceWithDDS.setText(doubleRoundToString(3,p0dds));
+                
+                jTextFieldPrice1.requestFocus();
+            }
         }
     }//GEN-LAST:event_jTextDostPriceKeyPressed
     
@@ -721,11 +1063,12 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -736,10 +1079,14 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextDostPrice;
+    private javax.swing.JTextField jTextDostPriceWithDDS;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextFieldPrice1;
+    private javax.swing.JTextField jTextFieldPrice1WithDDS;
     private javax.swing.JTextField jTextFieldPrice2;
+    private javax.swing.JTextField jTextFieldPrice2WithDDS;
     private javax.swing.JTextField jTextFieldPrice3;
+    private javax.swing.JTextField jTextFieldPrice3WithDDS;
     private javax.swing.JTextField jTextFieldProcent1;
     private javax.swing.JTextField jTextFieldProcent2;
     private javax.swing.JTextField jTextFieldProcent3;
@@ -747,9 +1094,11 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
     // End of variables declaration//GEN-END:variables
     //--------------- My Variables
     private nom.FrmProduct myParent;
-    private int id_price=0, id_curs=0;
+    private int id_price=0, id_curs=1;
     private double p0=0,p1=0,p2=0,p3=0;
     private double p_p1=0,p_p2=0,p_p3=0;
+    private double p0dds=0,p1dds=0,p2dds=0,p3dds=0;
+    private double stDDS = 20;                 // stoinost na dds v %
     private boolean isNew = false;
     private String splitMoney[] = null;
     private int selectComboBoxItem;
