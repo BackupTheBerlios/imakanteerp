@@ -4903,7 +4903,14 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     }
     private double getRate(String valuta) {
         double rate =1;
+        try
+        {
         if(arrayRate.size()>0) rate =(Double) arrayRate.get(valuta);
+        }
+        catch(Exception x)
+        {
+            rate =1;
+        }
         
         return rate;
     }
