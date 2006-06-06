@@ -4,6 +4,7 @@ package nom;
 import imakante.com.vcomponents.iInternalFrame;
 import javax.swing.JOptionPane;
 import java.util.Date;
+import java.math.*;
 public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog 
 {
     
@@ -22,8 +23,17 @@ public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog
         int x = (((dim.width)-(this.getSize().width))/2);
         int y = (((dim.height)-(this.getSize().height))/2);
         this.setLocation(x, y);
+        try
+        {
+        stDDS =  Integer.parseInt(myParent.getProductFee()[0]);
+        }
+        catch(Exception x1)
+        {
+            stDDS = 20;
+        }
         jTextFieldPromoPrice.requestFocus();
         this.setTitle("\u041F\u0440\u043E\u043C\u043E\u0446\u0438\u043E\u043D\u0430\u043B\u043D\u0430 \u0446\u0435\u043D\u0430");
+        
         
     }
     
@@ -47,6 +57,10 @@ public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog
         jTextFieldPromoPrice = new javax.swing.JTextField();
         jXDatePickerStart = new org.jdesktop.swingx.JXDatePicker();
         jXDatePickerStop = new org.jdesktop.swingx.JXDatePicker();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jTextFieldPromoPriceDDS = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
 
@@ -75,17 +89,19 @@ public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel2.setPreferredSize(new java.awt.Dimension(320, 200));
+        jPanel2.setPreferredSize(new java.awt.Dimension(370, 200));
         jLabel1.setText("\u041f\u0440\u043e\u043c\u043e\u0446\u0438\u043e\u043d\u0430\u043b\u043d\u0430 \u0446\u0435\u043d\u0430:");
         gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 20, 5, 5);
+        gridBagConstraints.insets = new java.awt.Insets(10, 20, 5, 5);
         jPanel2.add(jLabel1, gridBagConstraints);
 
         jLabel2.setText("\u041e\u0442 \u0434\u0430\u0442\u0430:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 5);
         jPanel2.add(jLabel2, gridBagConstraints);
@@ -93,11 +109,12 @@ public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog
         jLabel3.setText("\u0414\u043e \u0434\u0430\u0442\u0430:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 5);
         jPanel2.add(jLabel3, gridBagConstraints);
 
+        jTextFieldPromoPrice.setMinimumSize(new java.awt.Dimension(80, 20));
         jTextFieldPromoPrice.setPreferredSize(new java.awt.Dimension(80, 20));
         jTextFieldPromoPrice.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextFieldPromoPrice.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -110,32 +127,90 @@ public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog
         });
 
         gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 20);
+        gridBagConstraints.insets = new java.awt.Insets(10, 5, 5, 10);
         jPanel2.add(jTextFieldPromoPrice, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
         jPanel2.add(jXDatePickerStart, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
         jPanel2.add(jXDatePickerStop, gridBagConstraints);
+
+        jLabel4.setText("\u0431\u0435\u0437 \u0414\u0414\u0421");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 10, 5, 10);
+        jPanel2.add(jLabel4, gridBagConstraints);
+
+        jLabel5.setText("\u0441 \u0414\u0414\u0421");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 10, 5, 10);
+        jPanel2.add(jLabel5, gridBagConstraints);
+
+        jTextFieldPromoPriceDDS.setMinimumSize(new java.awt.Dimension(80, 20));
+        jTextFieldPromoPriceDDS.setNextFocusableComponent(jButtonSave);
+        jTextFieldPromoPriceDDS.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextFieldPromoPriceDDS.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldPromoPriceDDSKeyPressed(evt);
+            }
+        });
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(10, 5, 5, 20);
+        jPanel2.add(jTextFieldPromoPriceDDS, gridBagConstraints);
+
+        jLabel6.setText("\u0438\u043b\u0438");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        jPanel2.add(jLabel6, gridBagConstraints);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTextFieldPromoPriceDDSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPromoPriceDDSKeyPressed
+// TODO add your handling code here:
+         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER)
+            {
+              double p0dds = Double.parseDouble(jTextFieldPromoPriceDDS.getText());
+               double p0 =p0dds/(1+stDDS/100);
+                
+                jTextFieldPromoPrice.setText(doubleRoundToString(6,p0));
+                
+                jTextFieldPromoPriceDDS.transferFocus();
+            }
+    }//GEN-LAST:event_jTextFieldPromoPriceDDSKeyPressed
+
     private void jTextFieldPromoPriceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPromoPriceKeyPressed
- if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
-            this.jButtonSave.requestFocus();
-        } 
-       
+ 
+  if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER)
+            {
+             double  p0 = Double.parseDouble(jTextFieldPromoPrice.getText());
+             double  p0dds = (p0*stDDS/100)+p0;
+             jTextFieldPromoPriceDDS.setText(doubleRoundToString(3,p0dds));
+                
+                this.jButtonSave.requestFocus();
+            }     
     }//GEN-LAST:event_jTextFieldPromoPriceKeyPressed
 
     private void jTextFieldPromoPriceKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPromoPriceKeyReleased
@@ -209,10 +284,14 @@ public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextFieldPromoPrice;
+    private javax.swing.JTextField jTextFieldPromoPriceDDS;
     private org.jdesktop.swingx.JXDatePicker jXDatePickerStart;
     private org.jdesktop.swingx.JXDatePicker jXDatePickerStop;
     // End of variables declaration//GEN-END:variables
@@ -221,7 +300,7 @@ public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog
     private int id_price;
     private double promo;
     private String dateStart, dateStop;
-    
+    private double stDDS=20;
     private boolean isNew = false;
  //---------------END My Variables
 //---------------START MyFunction 
@@ -239,6 +318,10 @@ private void getPrices()
        prices = myParent.getProductPromotionPrice(); 
     }
     jTextFieldPromoPrice.setText(prices[0]);
+    double p = Double.parseDouble(prices[0]);
+    double dds_ = Double.parseDouble(myParent.getProductFee()[0]);
+    double pdds = (p*dds_/100)+p;
+    jTextFieldPromoPriceDDS.setText(doubleRoundToString(6,pdds));
   //  jTextFieldDataStart.setText(prices[1]);
   //  jTextFieldDateStop.setText(prices[2]);
     
@@ -319,4 +402,12 @@ private void showMessage()
         
         return newDate;
     }
+   private String doubleRoundToString(int digit, double indouble) {
+        String newDouble = new String();
+        double r = indouble;
+        BigDecimal bd = new BigDecimal(r);
+        bd = bd.setScale(digit,BigDecimal.ROUND_HALF_UP);
+        r = bd.doubleValue();
+        return newDouble.valueOf(r);
+    }   
 }// end class
