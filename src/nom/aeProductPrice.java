@@ -399,12 +399,10 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
                         .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jPanel2Layout.createSequentialGroup()
                                 .add(jTextDostPrice, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 101, Short.MAX_VALUE)
-                                .add(jLabel18)
-                                .add(91, 91, 91))
-                            .add(jPanel2Layout.createSequentialGroup()
-                                .add(jLabel13)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 146, Short.MAX_VALUE)))))
+                                .add(96, 96, 96)
+                                .add(jLabel18))
+                            .add(jLabel13))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 96, Short.MAX_VALUE)))
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                         .add(jTextFieldPrice3WithDDS)
@@ -1132,6 +1130,10 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
         jTextFieldProcent2.setEnabled(true);
         jTextFieldProcent3.setEnabled(true);
         
+        jTextFieldPrice1WithDDS.setEnabled(true);
+        jTextFieldPrice2WithDDS.setEnabled(true);
+        jTextFieldPrice3WithDDS.setEnabled(true);
+        
         p0 = Double.parseDouble(jTextDostPrice.getText());
         
         p1 = Double.parseDouble(jTextFieldPrice1.getText());
@@ -1148,6 +1150,17 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
         p_p3 = (100 * (p3-p0)) / p0;
         jTextFieldProcent3.setText( doubleRoundToString(3,p_p3));
         
+        p0dds = (p0*stDDS/100)+p0;
+         jTextDostPriceWithDDS.setText(doubleRoundToString(6,p0dds));
+        
+         p1dds = (p1*stDDS/100)+p1;
+         jTextFieldPrice1WithDDS.setText(doubleRoundToString(6,p1dds));
+         
+          p2dds = (p2*stDDS/100)+p2;
+         jTextFieldPrice2WithDDS.setText(doubleRoundToString(6,p2dds));
+         
+          p3dds = (p3*stDDS/100)+p3;
+         jTextFieldPrice3WithDDS.setText(doubleRoundToString(6,p3dds));
         
         
     }
