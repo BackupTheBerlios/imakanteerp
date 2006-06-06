@@ -9,7 +9,8 @@ public class aePayingOrders extends imakante.com.vcomponents.iDialog {
         initComponents();
         getNavigationState();
         jButtonUndo.setEnabled(false);
-        initCombo();
+        initOrderTypesCombo();
+        initOurAccountsCombo();
         this.setResizable(false);
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         repaintComp();
@@ -102,6 +103,7 @@ public class aePayingOrders extends imakante.com.vcomponents.iDialog {
         jPanel3.setPreferredSize(new java.awt.Dimension(230, 70));
         jButtonToBegin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation First 2.png")));
         jButtonToBegin.setToolTipText("\u041f\u044a\u0440\u0432\u0438 \u0437\u0430\u043f\u0438\u0441 \u0432 \u0441\u043f\u0438\u0441\u044a\u043a\u0430.");
+        jButtonToBegin.setEnabled(false);
         jButtonToBegin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonToBeginActionPerformed(evt);
@@ -117,6 +119,7 @@ public class aePayingOrders extends imakante.com.vcomponents.iDialog {
 
         jButtonOneRowM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation Left 2.png")));
         jButtonOneRowM.setToolTipText("\u0415\u0434\u0438\u043d \u0437\u0430\u043f\u0438\u0441 \u043d\u0430\u0437\u0430\u0434");
+        jButtonOneRowM.setEnabled(false);
         jButtonOneRowM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonOneRowMActionPerformed(evt);
@@ -132,6 +135,7 @@ public class aePayingOrders extends imakante.com.vcomponents.iDialog {
 
         jButtonOneRowP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation Right 2.png")));
         jButtonOneRowP.setToolTipText("\u041f\u043e\u0441\u043b\u0435\u0434\u0435\u043d \u0437\u0430\u043f\u0438\u0441 \u0432 \u0441\u043f\u0438\u0441\u044a\u043a\u0430");
+        jButtonOneRowP.setEnabled(false);
         jButtonOneRowP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonOneRowPActionPerformed(evt);
@@ -147,6 +151,7 @@ public class aePayingOrders extends imakante.com.vcomponents.iDialog {
 
         jButtonToEnd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation Last 2.png")));
         jButtonToEnd.setToolTipText("\u0415\u0434\u0438\u043d \u0437\u0430\u043f\u0438\u0441 \u043d\u0430\u043f\u0440\u0435\u0434.");
+        jButtonToEnd.setEnabled(false);
         jButtonToEnd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonToEndActionPerformed(evt);
@@ -210,6 +215,11 @@ public class aePayingOrders extends imakante.com.vcomponents.iDialog {
         jLabel6.setText("\u0412\u0430\u043b\u0443\u0442\u0430:");
 
         jTextField1.setToolTipText("F7 \u0432\u0430\u0434\u0438 \u0441\u043f\u0438\u0441\u044a\u043a \u0437\u0430 \u0438\u0437\u0431\u043e\u0440");
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField1FocusGained(evt);
+            }
+        });
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField1KeyPressed(evt);
@@ -219,6 +229,17 @@ public class aePayingOrders extends imakante.com.vcomponents.iDialog {
         jTextField2.setEditable(false);
 
         jTextField3.setEditable(false);
+
+        jTextField4.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField4FocusGained(evt);
+            }
+        });
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField4KeyPressed(evt);
+            }
+        });
 
         jTextField5.setEditable(false);
 
@@ -300,7 +321,7 @@ public class aePayingOrders extends imakante.com.vcomponents.iDialog {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
+                .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
                 .add(63, 63, 63))
         );
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -309,8 +330,20 @@ public class aePayingOrders extends imakante.com.vcomponents.iDialog {
         setBounds((screenSize.width-648)/2, (screenSize.height-440)/2, 648, 440);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+    private void jTextField4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusGained
+        jTextField4.selectAll();
+    }//GEN-LAST:event_jTextField4FocusGained
+
+    private void jTextField4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyPressed
         
+    }//GEN-LAST:event_jTextField4KeyPressed
+
+    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+        jTextField1.selectAll();
+    }//GEN-LAST:event_jTextField1FocusGained
+
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jTextField1.transferFocus(); }
     }//GEN-LAST:event_jTextField1KeyPressed
                                                     
     private void jButtonCloseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonCloseKeyPressed
@@ -445,8 +478,10 @@ public class aePayingOrders extends imakante.com.vcomponents.iDialog {
     private String oldNLK = "";
     private String oldName = "";
     private String oldComment =  "";
-    private String namesG[];
-    private int selectComboBoxItem;
+    private String namesOrderTypes[];
+    private String namesOurAccounts[];
+    private int selectedOrderType;
+    private int selectedAccount;
     
     //---------------END My Variables
     
@@ -507,30 +542,46 @@ public class aePayingOrders extends imakante.com.vcomponents.iDialog {
 //        jComboG.setSelectedIndex(getNewComboBoxIndex(myParent.getIDG()));
     }
     
-    private void initCombo() {
-//        namesG = myParent.getInternalObject().getPersonGroups();
-        for(int i=0;i<namesG.length;i++) {
-//            jComboG.addItem(new String(namesG[i]));
+    private void initOrderTypesCombo() {
+        namesOrderTypes = myParent.getInternalObject().getTypesOfOreders();
+        for(int i = 0; i < namesOrderTypes.length; i++) {
+            jComboBox1.addItem(new String(namesOrderTypes[i]));
         }
-        if(selectComboBoxItem != 0) {
-            selectComboBoxItem = getNewComboBoxIndex(selectComboBoxItem);
-//            jComboG.setSelectedIndex(selectComboBoxItem);
+        if(selectedOrderType != 0) {
+            selectedOrderType = getNewOTIndex(selectedOrderType);
         }
     }
     
-    private int getNewComboBoxIndex(int oldindex) {
-        int newindex= 0;
-//        for(int i = 0; i < myParent.getInternalObject().getIndexConnOfId().length; i++) {
-//            if(myParent.getInternalObject().getIndexConnOfId()[i] == oldindex) {
-//                newindex = i;
-//                break;
-//            }
-//        }
+    private int getNewOTIndex(int oldindex) {
+        int newindex = 0;
+        for(int i = 0; i < myParent.getInternalObject().getOTIndexes().length; i++) {
+            if(myParent.getInternalObject().getOTIndexes()[i] == oldindex) {
+                newindex = i;
+                break;
+            }
+        }
         return newindex;
     }
     
-    private int getMaxCod(){
-        return myParent.getInternalObject().getMaxCod() + 1;
+    private void initOurAccountsCombo() {
+        namesOurAccounts = myParent.getInternalObject().getOurAccounts();
+        for(int i = 0; i < namesOurAccounts.length; i++) {
+            jComboBox2.addItem(new String(namesOurAccounts[i]));
+        }
+        if(selectedAccount != 0) {
+            selectedAccount = getNewOAIndex(selectedAccount);
+        }
+    }
+    
+    private int getNewOAIndex(int oldindex) {
+        int newindex = 0;
+        for(int i = 0; i < myParent.getInternalObject().getOAIndexes().length; i++) {
+            if(myParent.getInternalObject().getOAIndexes()[i] == oldindex) {
+                newindex = i;
+                break;
+            }
+        }
+        return newindex;
     }
     
 }// end class

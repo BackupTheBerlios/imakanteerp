@@ -6,10 +6,18 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     public FrmPayingOrders(String title,imakante.com.vcomponents.iFrame frame) {
         super(title);
         myframe = frame;
-        prepareConn();     // zapazva connection
-        constructObject(); // inicializira class otgovarq6t za vryzkata s DB
+        prepareConn();
+        constructObject();
         initTable();
         initComponents();
+        jComboBox1.addItem("--------------");
+        Currencies = getInternalObject().getAvailableCurrencies();
+        for(int i = 0; i < Currencies.length; i++)
+            jComboBox1.addItem(new String(Currencies[i]));
+        jComboBox2.addItem("------------------------");
+        OrderTypes = getInternalObject().getTypesOfOreders();
+        for(int i = 0; i < OrderTypes.length; i++) 
+            jComboBox2.addItem(new String(OrderTypes[i]));
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -28,6 +36,8 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         jLabel5 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox();
         jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
+        jLabel6 = new javax.swing.JLabel();
+        jXDatePicker2 = new org.jdesktop.swingx.JXDatePicker();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jButtonNew = new javax.swing.JButton();
@@ -99,69 +109,86 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
 
         jLabel4.setText("\u041e\u043f\u0435\u0440\u0430\u0446\u0438\u044f:");
 
-        jLabel5.setText("\u0414\u0430\u0442\u0430:");
+        jLabel5.setText("\u041e\u0442 \u0434\u0430\u0442\u0430:");
+
+        jLabel6.setText("\u0414\u043e \u0434\u0430\u0442\u0430:");
 
         org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel4Layout.createSequentialGroup()
-                .add(29, 29, 29)
-                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jLabel2)
-                    .add(jLabel1))
-                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
+                .add(62, 62, 62)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .add(jLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(35, 35, 35))
+                    .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel4Layout.createSequentialGroup()
                         .add(5, 5, 5)
-                        .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 131, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))
                     .add(jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)))
+                .add(29, 29, 29)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .add(jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(14, 14, 14)))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel3)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jComboBox2, 0, 137, Short.MAX_VALUE)
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .add(55, 55, 55)
+                        .add(jComboBox1, 0, 82, Short.MAX_VALUE)))
+                .add(39, 39, 39)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jLabel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jLabel6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 82, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel4)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jComboBox2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 137, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel5)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 27, Short.MAX_VALUE)
-                .add(jButtonSearch)
-                .add(28, 28, 28))
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jXDatePicker2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(49, 49, 49)
+                .add(jButtonSearch, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(30, 30, 30))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel4Layout.createSequentialGroup()
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel4Layout.createSequentialGroup()
+                        .add(26, 26, 26)
+                        .add(jButtonSearch))
+                    .add(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
-                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .add(jLabel1)
-                                .add(9, 9, 9))
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)))
+                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel1)
+                            .add(jLabel3)
+                            .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel5))
+                        .add(8, 8, 8)
                         .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(jLabel2)
-                            .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                    .add(jPanel4Layout.createSequentialGroup()
-                        .add(22, 22, 22)
-                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jButtonSearch)
-                            .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                                    .add(jLabel5)
-                                    .add(jLabel3)
-                                    .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                    .add(jLabel4)
-                                    .add(jComboBox2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                                .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(14, Short.MAX_VALUE))
+                            .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jXDatePicker2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(38, Short.MAX_VALUE)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(jComboBox2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(jLabel6))
+                    .add(jLabel4))
+                .addContainerGap())
         );
         jPanel1.add(jPanel4, java.awt.BorderLayout.SOUTH);
 
@@ -172,7 +199,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 875, Short.MAX_VALUE)
+            .add(0, 879, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -194,6 +221,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
 
         jButtonEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Report Edit 2.png")));
         jButtonEdit.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f");
+        jButtonEdit.setEnabled(false);
         jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEditActionPerformed(evt);
@@ -217,6 +245,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
 
         jButtonDel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Delete 2.png")));
         jButtonDel.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
+        jButtonDel.setEnabled(false);
         jButtonDel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonDelActionPerformed(evt);
@@ -291,7 +320,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     }//GEN-LAST:event_jButtonDelActionPerformed
     
     private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
-        editRecord();
+//        editRecord();
     }//GEN-LAST:event_jButtonEditActionPerformed
     
     private void jButtonNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewActionPerformed
@@ -315,6 +344,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -323,15 +353,34 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
+    private org.jdesktop.swingx.JXDatePicker jXDatePicker2;
     // End of variables declaration//GEN-END:variables
     
     //--------------- My Variables
     private int id = 0;
+    private int idOrderType = 0;
+    private String OrderType = "";
+    private int idBankAccount = 0;
+    private String BankName = "";
+    private String OurIBAN = "";
+    private int idTypeAccount = 0;
+    private String TypeAccount = "";
+    private int idContragent = 0;
+    private String NameContragent = "";
+    private int CodeContragent = 0;
+    private String BankR = "";
+    private String IBANR = "";
+    private String CurrencyR = "";
+    private String BankVAT = "";
+    private String IBANVAT = "";
+    private String CurrencyVAT = "";
+    private double amount = 0.00;
+    private String instant = "0000-00-00 00:00:00";
     
+    private String Currencies[];
+    private String OrderTypes[];
     
-    
-    
-    private  boolean atBegining=false;
+    private  boolean atBegining = false;
     private  boolean atEnd = false;
     private int row;
     
@@ -341,22 +390,24 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     private  imakante.sales.dbPayingOrders internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
-    public static final String Names[] = { "id",
-    "id_type_porder",
-    "\u0422\u0438\u043F \u043D\u0430 \u043E\u043F\u0435\u0440\u0430\u0446\u0438\u044F\u0442\u0430",
-    "id_bank_account",
-    "\u0411\u0430\u043D\u043A\u0430 \u043D\u0430 \u041D\u0430\u0440\u0435\u0434\u0438\u0442\u0435\u043B\u044F",
-    "\u0421\u043C\u0435\u0442\u043A\u0430 (IBAN)",
-    "id_type_account",
-    "\u0422\u0438\u043F \u043D\u0430 \u0441\u043C\u0435\u0442\u043A\u0430\u0442\u0430",
-    "id_contragent",
-    "\u041F\u043E\u043B\u0443\u0447\u0430\u0442\u0435\u043B",
-    "\u041A\u043E\u0434",
-    "\u0411\u0430\u043D\u043A\u0430 \u043F\u043E \u0440\u0430\u0437\u043F\u043B\u0430\u0449\u0430\u043D\u0438\u044F",
-    "\u0421\u043C\u0435\u0442\u043A\u0430 (IBAN) \u043F\u043E \u0440\u0430\u0437\u043F\u043B\u0430\u0449\u0430\u043D\u0438\u044F",
-    "\u0411\u0430\u043D\u043A\u0430 \u043F\u043E \u0414\u0414\u0421",
-    "\u0421\u043C\u0435\u0442\u043A\u0430 (IBAN) \u043F\u043E \u0414\u0414\u0421",
-    "\u0421\u0443\u043C\u0430",
+    public static final String Names[] = { "id", 
+    "id_type_porder", 
+    "\u0422\u0438\u043F \u043D\u0430 \u043E\u043F\u0435\u0440\u0430\u0446\u0438\u044F\u0442\u0430", 
+    "id_bank_account", 
+    "\u0411\u0430\u043D\u043A\u0430 \u043D\u0430 \u041D\u0430\u0440\u0435\u0434\u0438\u0442\u0435\u043B\u044F", 
+    "\u0421\u043C\u0435\u0442\u043A\u0430 (IBAN)", 
+    "id_type_account", 
+    "\u0422\u0438\u043F \u043D\u0430 \u0441\u043C\u0435\u0442\u043A\u0430\u0442\u0430", 
+    "id_contragent", 
+    "\u041F\u043E\u043B\u0443\u0447\u0430\u0442\u0435\u043B", 
+    "\u041A\u043E\u0434", 
+    "\u0411\u0430\u043D\u043A\u0430 \u043F\u043E \u0440\u0430\u0437\u043F\u043B\u0430\u0449\u0430\u043D\u0438\u044F", 
+    "\u0421\u043C\u0435\u0442\u043A\u0430 (IBAN) \u043F\u043E \u0440\u0430\u0437\u043F\u043B\u0430\u0449\u0430\u043D\u0438\u044F", 
+    "\u0412\u0430\u043B\u0443\u0442\u0430 \u043F\u043E \u0440\u0430\u0437\u043F\u043B\u0430\u0449\u0430\u043D\u0435", 
+    "\u0411\u0430\u043D\u043A\u0430 \u043F\u043E \u0414\u0414\u0421", 
+    "\u0421\u043C\u0435\u0442\u043A\u0430 (IBAN) \u043F\u043E \u0414\u0414\u0421", 
+    "\u0412\u0430\u043B\u0443\u0442\u0430 \u043F\u043E \u0414\u0414\u0421", 
+    "\u0421\u0443\u043C\u0430", 
     "\u0418\u0437\u0432\u044A\u0440\u0448\u0435\u043D\u043E \u043D\u0430" };
     //---------------END My Variables
     
@@ -473,7 +524,149 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         return id;
     }
     
-    
+    public int getIdOrderType() {
+        return idOrderType;
+    }
+
+    public void setIdOrderType(int idOrderType) {
+        this.idOrderType = idOrderType;
+    }
+
+    public String getOrderType() {
+        return OrderType;
+    }
+
+    public void setOrderType(String OrderType) {
+        this.OrderType = OrderType;
+    }
+
+    public int getIdBankAccount() {
+        return idBankAccount;
+    }
+
+    public void setIdBankAccount(int idBankAccount) {
+        this.idBankAccount = idBankAccount;
+    }
+
+    public String getBankName() {
+        return BankName;
+    }
+
+    public void setBankName(String BankName) {
+        this.BankName = BankName;
+    }
+
+    public String getOurIBAN() {
+        return OurIBAN;
+    }
+
+    public void setOurIBAN(String OurIBAN) {
+        this.OurIBAN = OurIBAN;
+    }
+
+    public int getIdTypeAccount() {
+        return idTypeAccount;
+    }
+
+    public void setIdTypeAccount(int idTypeAccount) {
+        this.idTypeAccount = idTypeAccount;
+    }
+
+    public String getTypeAccount() {
+        return TypeAccount;
+    }
+
+    public void setTypeAccount(String TypeAccount) {
+        this.TypeAccount = TypeAccount;
+    }
+
+    public int getIdContragent() {
+        return idContragent;
+    }
+
+    public void setIdContragent(int idContragent) {
+        this.idContragent = idContragent;
+    }
+
+    public String getNameContragent() {
+        return NameContragent;
+    }
+
+    public void setNameContragent(String NameContragent) {
+        this.NameContragent = NameContragent;
+    }
+
+    public int getCodeContragent() {
+        return CodeContragent;
+    }
+
+    public void setCodeContragent(int CodeContragent) {
+        this.CodeContragent = CodeContragent;
+    }
+
+    public String getBankR() {
+        return BankR;
+    }
+
+    public void setBankR(String BankR) {
+        this.BankR = BankR;
+    }
+
+    public String getIBANR() {
+        return IBANR;
+    }
+
+    public void setIBANR(String IBANR) {
+        this.IBANR = IBANR;
+    }
+
+    public String getCurrencyR() {
+        return CurrencyR;
+    }
+
+    public void setCurrencyR(String CurrencyR) {
+        this.CurrencyR = CurrencyR;
+    }
+
+    public String getBankVAT() {
+        return BankVAT;
+    }
+
+    public void setBankVAT(String BankVAT) {
+        this.BankVAT = BankVAT;
+    }
+
+    public String getIBANVAT() {
+        return IBANVAT;
+    }
+
+    public void setIBANVAT(String IBANVAT) {
+        this.IBANVAT = IBANVAT;
+    }
+
+    public String getCurrencyVAT() {
+        return CurrencyVAT;
+    }
+
+    public void setCurrencyVAT(String CurrencyVAT) {
+        this.CurrencyVAT = CurrencyVAT;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public String getInstant() {
+        return instant;
+    }
+
+    public void setInstant(String instant) {
+        this.instant = instant;
+    }
     
     public  void setRow(int val) {
         row = val;
@@ -585,12 +778,13 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         HideColumns(getColumnIndex("id_contragent"));
         jTextField1.setText("");
         jTextField2.setText("");
+        jComboBox1.setSelectedIndex(0);
+        jComboBox2.setSelectedIndex(0);
         jScrollPane1.repaint();
     }
     
     private void newRecord() {
-        int maxCode = internalObject.getMaxCod();
-        internalObject.insertRow(0, maxCode + 1);
+        internalObject.insertRow();
         refreshTable();
         setRow(getMaxRow());
         table.changeSelection(getRow(), 2, false, false);
@@ -602,22 +796,22 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         refreshTable();
     }
     
-    private void editRecord() {
-        if (table.getSelectedRow() != -1) {
-            setRow(table.getSelectedRow());
-            if(getRow() == 0) {          //manage button state of ae form
-                setAtBegining(true);
-            } else if(getRow() == getMaxRow()){
-                setAtEnd(true);
-            } else {
-                setAtBegining(false);
-                setAtEnd(false);
-            }
-            setAllVariables();
-            imakante.sales.aePayingOrders ae_POrder = new imakante.sales.aePayingOrders(this, true);
-            ae_POrder.setVisible(true);
-        } else {  }
-    }
+//    private void editRecord() {
+//        if (table.getSelectedRow() != -1) {
+//            setRow(table.getSelectedRow());
+//            if(getRow() == 0) {
+//                setAtBegining(true);
+//            } else if(getRow() == getMaxRow()){
+//                setAtEnd(true);
+//            } else {
+//                setAtBegining(false);
+//                setAtEnd(false);
+//            }
+//            setAllVariables();
+//            imakante.sales.aePayingOrders ae_POrder = new imakante.sales.aePayingOrders(this, true);
+//            ae_POrder.setVisible(true);
+//        } else {  }
+//    }
     
     private void delRecord(){
         if(table.getSelectedRow() != -1) {
@@ -646,9 +840,13 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     
     private void setAllVariables() {
         setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
-        
-        
-        
+        setIdOrderType((Integer) table.getValueAt(getRow(), getColumnIndex("id_type_porder")));
+        setIdBankAccount((Integer) table.getValueAt(getRow(), getColumnIndex("id_bank_account")));
+        setIdContragent((Integer) table.getValueAt(getRow(), getColumnIndex("id_contragent")));
+        java.math.BigDecimal bd2d = (java.math.BigDecimal) table.getValueAt(getRow(), getColumnIndex("\u0421\u0443\u043C\u0430"));
+        setAmount(bd2d.doubleValue());
+        java.sql.Timestamp tst = (java.sql.Timestamp) table.getValueAt(getRow(), getColumnIndex("\u0418\u0437\u0432\u044A\u0440\u0448\u0435\u043D\u043E \u043D\u0430"));
+        setInstant(tst.toString());
     }
     
     public java.sql.Connection getConn() {
@@ -671,4 +869,5 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         rs = null;
         internalObject.close();
     }
+    
 }

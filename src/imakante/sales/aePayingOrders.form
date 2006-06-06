@@ -158,6 +158,7 @@
                   <Image iconType="3" name="/images/Navigation First 2.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="&#x41f;&#x44a;&#x440;&#x432;&#x438; &#x437;&#x430;&#x43f;&#x438;&#x441; &#x432; &#x441;&#x43f;&#x438;&#x441;&#x44a;&#x43a;&#x430;."/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonToBeginActionPerformed"/>
@@ -170,6 +171,7 @@
                   <Image iconType="3" name="/images/Navigation Left 2.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="&#x415;&#x434;&#x438;&#x43d; &#x437;&#x430;&#x43f;&#x438;&#x441; &#x43d;&#x430;&#x437;&#x430;&#x434;"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonOneRowMActionPerformed"/>
@@ -182,6 +184,7 @@
                   <Image iconType="3" name="/images/Navigation Right 2.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="&#x41f;&#x43e;&#x441;&#x43b;&#x435;&#x434;&#x435;&#x43d; &#x437;&#x430;&#x43f;&#x438;&#x441; &#x432; &#x441;&#x43f;&#x438;&#x441;&#x44a;&#x43a;&#x430;"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonOneRowPActionPerformed"/>
@@ -194,6 +197,7 @@
                   <Image iconType="3" name="/images/Navigation Last 2.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="&#x415;&#x434;&#x438;&#x43d; &#x437;&#x430;&#x43f;&#x438;&#x441; &#x43d;&#x430;&#x43f;&#x440;&#x435;&#x434;."/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonToEndActionPerformed"/>
@@ -396,6 +400,7 @@
                 <Property name="toolTipText" type="java.lang.String" value="F7 &#x432;&#x430;&#x434;&#x438; &#x441;&#x43f;&#x438;&#x441;&#x44a;&#x43a; &#x437;&#x430; &#x438;&#x437;&#x431;&#x43e;&#x440;"/>
               </Properties>
               <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextField1FocusGained"/>
                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField1KeyPressed"/>
               </Events>
             </Component>
@@ -410,6 +415,10 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField4">
+              <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextField4FocusGained"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField4KeyPressed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField5">
               <Properties>

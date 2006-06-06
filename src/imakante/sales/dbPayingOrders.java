@@ -5,6 +5,10 @@ public class dbPayingOrders extends imakante.com.dbObject {
     
     // --- Custom Members --- //
     private java.sql.Connection conn;
+    private String OrderTypes[];
+    private int[] OTIndexes = null;
+    private String OurAccounts[];
+    private int[] OAIndexes = null;
     private int idPayingOrderType = 0;
     private int idBankAccount = 0;
     private int idContragent = 0;
@@ -21,7 +25,7 @@ public class dbPayingOrders extends imakante.com.dbObject {
     // --- Custom Methods --- //
     public void prepareCstm(){
         try {
-            setCstm(getConn().prepareCall("{call sl_procedure_paying_orders(?,?,?,?,?,?,?)}"));
+            setCstm(getConn().prepareCall("{call sl_procedure_paying_orders(?,?,?,?,?,?,?,?,?)}"));
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
@@ -32,30 +36,28 @@ public class dbPayingOrders extends imakante.com.dbObject {
             getCstm().setInt("in_id_spt", getIdPayingOrderType());
             getCstm().setInt("in_id_nbc", getIdBankAccount());
             getCstm().setInt("in_id_contragent", getIdContragent());
+            getCstm().setInt("in_code", getCode());
+            getCstm().setString("in_name", getName());
             getCstm().setDouble("in_amount", getAmount());
             getCstm().setString("in_instant", getInstant());
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    public void insertRow(int in_id_group, int in_code) {
+    public void insertRow() {
         setComprator(1);
-        this.setIDGr(in_id_group);
-        this.setCode(in_code);
-        this.setName("");
-        this.setComment("");
         try {
             registerParameters();
             getCstm().execute();
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    public void updateRow(int in_id, int in_id_group, int in_code, String in_egn, String in_nomlk, String in_name, String in_comment) {
+    public void updateRow(int in_id, int in_id_spt, int in_id_nbc, int in_id_contragent, double in_amount) {
         setComprator(2);
         this.setId(in_id);
-        this.setIDGr(in_id_group);
-        this.setCode(in_code);
-        this.setName(in_name);
-        this.setComment(in_comment);
+        this.setIdPayingOrderType(in_id_spt);
+        this.setIdBankAccount(in_id_nbc);
+        this.setIdContragent(in_id_contragent);
+        this.setAmount(in_amount);
         try {
             registerParameters();
             getCstm().execute();
@@ -73,36 +75,38 @@ public class dbPayingOrders extends imakante.com.dbObject {
         return getRs();
     }
     
-    public int getMaxGrID() {
-        setComprator(9);
-        int actInt = -1;
-        try {
-            registerParameters();
-            setRs(getCstm().executeQuery());
-            while(getRs().next()) {
-                actInt = getRs().getInt(1);
-            }
-        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
-        return actInt;
+    public String[] getTypesOfOreders() {
+        setComprator(6);
+        String[] typesOrders = { "boo!", "boo again!" };
+        
+        
+        return typesOrders;
     }
-    public void checkCode(int in_code){
-        String message = "";
-        setComprator(21);
-        this.setCode(in_code);
-        try {
-            registerParameters();
-            setRs(getCstm().executeQuery());
-            while(getRs().next()) {
-                message = message + getRs().getInt("code_ls_n_person") + " "
-                        + getRs().getInt("egn_ls_n_person") + " "
-                        + getRs().getInt("nlk_ls_n_person") + " "
-                        + getRs().getString("name_ls_n_person ");
-            }
-        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
+    
+    public int[] getOTIndexes() {
+        return OTIndexes;
     }
-//    
+    
+    public String[] getAvailableCurrencies() {
+        String[] currencies = { "BGN", "EUR", "USD", "CHF", "GBP", "GRD", "JPY" };
+        
+        
+        return currencies;
+    }
+    
+    public String[] getOurAccounts() {
+        String[] accounts = { "Po razpla6taniq", "po DDS" };
+        
+        
+        return accounts;
+    }
+    
+    public int[] getOAIndexes() {
+        return OAIndexes;
+    }
+    
 //    public String[] getPersonGroups() {
-//        setComprator(6);
+//        setComprator(?);
 //        String actStr = new String("");
 //        int oldId = getId();
 //        java.sql.ResultSet oldRs = getRs();
@@ -135,7 +139,7 @@ public class dbPayingOrders extends imakante.com.dbObject {
 //        }
 //        return splitGroupNames;
 //    }
-//    
+    
     public int getIdPayingOrderType() {
         return idPayingOrderType;
     }
