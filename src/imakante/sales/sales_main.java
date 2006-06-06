@@ -1648,9 +1648,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }
     //METHODS FOR LOADING USER RIGHTS FOR AREA DOCUMENTS
     public void loadSlujParam(){
-       imakante.com.FrmFirmParam firm = new imakante.com.FrmFirmParam(this,true,this.getConn());
-        desktopPane.add(firm);
-        firm.setVisible(true);
+       imakante.com.FrmFirmParam firmparam = new imakante.com.FrmFirmParam(this,true,this.getConn());
+      
+       // desktopPane.add(firmparam);
+        firmparam.setVisible(true);
     }
     public void loadRightsArea()
     {

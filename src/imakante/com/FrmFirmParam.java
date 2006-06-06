@@ -3,10 +3,11 @@ package imakante.com;
 
 import java.sql.SQLException;
 
-public class FrmFirmParam extends imakante.com.vcomponents.iDialog {
+public class FrmFirmParam extends javax.swing.JDialog  {
     
-    public FrmFirmParam(imakante.com.vcomponents.iFrame frame, boolean modal,java.sql.Connection Connection) {
-        super(frame, modal);
+    public FrmFirmParam(imakante.sales.sales_main parent, boolean modal,java.sql.Connection Connection) {
+        super(parent, modal);
+        frame = parent;
         conn = Connection;
         initComponents();
         getParam();
@@ -68,6 +69,7 @@ public class FrmFirmParam extends imakante.com.vcomponents.iDialog {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("\u0424\u0438\u0440\u043c\u0435\u043d\u0438 \u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438");
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u0424\u0438\u0440\u043c\u0435\u043d\u0438 \u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438"));
         jLabel1.setText("\u0418\u043c\u0435 \u043d\u0430 \u0444\u0438\u0440\u043c\u0430\u0442\u0430:");
 
@@ -334,7 +336,8 @@ public class FrmFirmParam extends imakante.com.vcomponents.iDialog {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
-        pack();
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-684)/2, (screenSize.height-447)/2, 684, 447);
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -399,7 +402,7 @@ public class FrmFirmParam extends imakante.com.vcomponents.iDialog {
     private javax.swing.JTextField jtfTel;
     private javax.swing.JTextField jtfWeb;
     // End of variables declaration//GEN-END:variables
-    
+    private imakante.sales.sales_main frame;
     private java.sql.Connection conn;
     private java.sql.Statement stm;
     private java.sql.ResultSet rs;
@@ -411,7 +414,7 @@ public class FrmFirmParam extends imakante.com.vcomponents.iDialog {
             "`ls_sluj`.`name_firm` AS `name`, " +
             "`ls_sluj`.`dan_nom` AS `dan`, " +
             "`ls_sluj`.`bul` AS `bul`, " +
-            "`ls_sluj`.`address` AS `adsress`, " +
+            "`ls_sluj`.`address` AS `address`, " +
             "`ls_sluj`.`nam_boss` AS `boss`, " +
             "`ls_sluj`.`nam_acc` AS `acc`, " +
             "`ls_sluj`.`nkid` AS `nkid`, " +
@@ -426,12 +429,13 @@ public class FrmFirmParam extends imakante.com.vcomponents.iDialog {
             "`ls_sluj`.`boss_nlk` AS `boss_nlk` ," +
             "`ls_sluj`.`bankR` AS `bankR` ," +
             "`ls_sluj`.`ibanR` AS `ibanR` ," +
+            "`ls_sluj`.`bicR` AS `bicR` ," +
             "`ls_sluj`.`bankD` AS `bankD`, " +
             "`ls_sluj`.`ibanD` AS `ibanD` ," +
             "`ls_sluj`.`bicD` AS `bicD` ," +
             "`ls_sluj`.`valr` AS `valr` ," +
             "`ls_sluj`.`vald` AS `vald` " +
-          
+            
             "FROM "+
             "`ls_sluj`";
     
@@ -466,7 +470,7 @@ public class FrmFirmParam extends imakante.com.vcomponents.iDialog {
                 jTextField7.setText(rs.getString("ibanD"));
                 jTextField8.setText(rs.getString("bicD"));
                 jTextField9.setText(rs.getString("valr"));
-                jTextField10.setText(rs.getString("valà"));
+                jTextField10.setText(rs.getString("vald"));
             }
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
