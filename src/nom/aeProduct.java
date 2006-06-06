@@ -276,6 +276,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel1.add(jTextFieldFName, gridBagConstraints);
 
+        jTextFieldExpertSheet.setNextFocusableComponent(jTextFieldPrice);
         jTextFieldExpertSheet.setPreferredSize(new java.awt.Dimension(170, 20));
         jTextFieldExpertSheet.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -695,7 +696,7 @@ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
 
     private void jTextFieldExpertSheetKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldExpertSheetKeyPressed
  if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
-            jTextFieldFee.requestFocus();
+            jTextFieldExpertSheet.transferFocus();
         }
     }//GEN-LAST:event_jTextFieldExpertSheetKeyPressed
     
@@ -839,6 +840,7 @@ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
             jTextFieldPromoPrices.setText(promotion_price[0]);
         } else jTextFieldPromoPrices.setText(myParent.getViewPromoPrice());
         //   repaintComp();
+       
     }//GEN-LAST:event_jTextFieldPromoPricesMousePressed
     
     private void jTextFieldPriceFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPriceFocusLost
@@ -868,9 +870,17 @@ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
         } catch(Exception e) {
             e.printStackTrace();
         }
-        if (myParent.getId_PP()!=0) {
+       if (myParent.getId_PP()!=0) {
             String price[] = myParent.getCountriesT().getProductPrice(myParent.getId_PP());
-            jTextFieldPrice.setText(price[0]);
+            double p0 = Double.parseDouble(price[0]);
+            double dds_ = 20;
+            if(myParent.getId_PF()!=0)
+            {
+             dds_ = Double.parseDouble(myParent.getCountriesT().getProdictFee(myParent.getId_PF())[0]);
+            }
+           
+            double p0dds = (p0*dds_/100)+p0;
+            jTextFieldPrice.setText(price[0]+"\u0431\u0435\u0437 \u0414\u0414\u0421, "+p0dds+"\u0441 \u0414\u0414\u0421");
         } else jTextFieldPrice.setText(myParent.getViewPrice());
         //   repaintComp();
          if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
@@ -897,7 +907,15 @@ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
         }
         if (myParent.getId_PP()!=0) {
             String price[] = myParent.getCountriesT().getProductPrice(myParent.getId_PP());
-            jTextFieldPrice.setText(price[0]);
+            double p0 = Double.parseDouble(price[0]);
+            double dds_ = 20;
+            if(myParent.getId_PF()!=0)
+            {
+             dds_ = Double.parseDouble(myParent.getCountriesT().getProdictFee(myParent.getId_PF())[0]);
+            }
+           
+            double p0dds = (p0*dds_/100)+p0;
+            jTextFieldPrice.setText(price[0]+"\u0431\u0435\u0437 \u0414\u0414\u0421, "+p0dds+"\u0441 \u0414\u0414\u0421");
         } else jTextFieldPrice.setText(myParent.getViewPrice());
         // repaintComp();
          

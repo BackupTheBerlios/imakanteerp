@@ -545,7 +545,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     private double max_pop_pm;
     private String name_pm, sname_pm, fname_pm, cname_pm, cod1_pm, cod2_pm;            //         /
     private String expertsheet_pm,code_pm ;
-    private double price0,price1,price2,price3,dds,akcizi,other;
+    private double price0=0,price1=0,price2=0,price3=0,dds=20,akcizi=0,other=0;
     private int id_curs =1 ; 
     private int id_n_contragent;//        /
     private double promoprice;
@@ -1065,14 +1065,18 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
         getCountriesT().updateProductPrice(id_pp,price0,price1,price2,price3,id_curs);
     }
     public String getViewPrice() {
-        return String.valueOf(price0);
+        double p0dds = (price0*dds/100)+price0;
+        String d = "\u0431\u0435\u0437 \u0414\u0414\u0421, "+p0dds+"\u0441 \u0414\u0414\u0421";
+        return String.valueOf(price0)+d;
     }
     
     public String getViewFee() {
         return String.valueOf(dds);
     }
     public String getViewPromoPrice() {
-        return String.valueOf(promoprice);
+         double prom = (promoprice*dds/100)+promoprice;
+        String d = "\u0431\u0435\u0437 \u0414\u0414\u0421, "+prom+"\u0441 \u0414\u0414\u0421";
+        return String.valueOf(promoprice)+d;
     }
     public void setGroup(int in) {
         this.group = in;
