@@ -61,7 +61,7 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         }
-        pack();
+        this.setSize(800,600);
     }
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {

@@ -496,8 +496,9 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 5);
         jPanel1.add(jLabel4, gridBagConstraints);
 
-        jTextFieldCode.setToolTipText("\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u0430\u0442\u0430 \u043f\u043e\u0437\u0432\u043e\u043b\u044f\u0432\u0430 \u043a\u043e\u0434\u0430 \u043d\u0430 \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u0430 \u0434\u0430 \u0441\u0435 \u0441\u044a\u0441\u0442\u043e\u0438 \u043e\u0442 \u0431\u0443\u043a\u0432\u0438 \u0438 \u0446\u0438\u0444\u0440\u0438, \u043d\u043e \u0438\u0437\u043f\u043e\u043b\u0437\u0432\u0430\u043d\u0435\u0442\u043e \u0441\u0430\u043c\u043e \u043d\u0430 \u0446\u0438\u0444\u0440\u0438  \u0435 \u043f\u0440\u0435\u043f\u043e\u0440\u044a\u0447\u0438\u0442\u0435\u043b\u043d\u043e");
+        jTextFieldCode.setToolTipText("\u041a\u043e\u0434\u0430 \u0435 \u0441\u044a\u0441\u0442\u0430\u0432\u0435\u043d \u0441\u0430\u043c\u043e \u043e\u0442 \u0446\u0438\u0444\u0440\u0438.");
         jTextFieldCode.setPreferredSize(new java.awt.Dimension(170, 20));
+        jTextFieldCode.setInputVerifier(new imakante.com.InputIntegerVerifier());
         jTextFieldCode.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldCodeKeyPressed(evt);
@@ -520,6 +521,12 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         jPanelDescription.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "\u0420\u0430\u0437\u0444\u0430\u0441\u043e\u0432\u043a\u0430", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
         jPanelDescription.setPreferredSize(new java.awt.Dimension(350, 70));
         jComboBoxDescript1.setPreferredSize(new java.awt.Dimension(80, 20));
+        jComboBoxDescript1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboBoxDescript1KeyPressed(evt);
+            }
+        });
+
         jPanelDescription.add(jComboBoxDescript1, new java.awt.GridBagConstraints());
 
         jComboBoxDescript2.setPreferredSize(new java.awt.Dimension(80, 20));
@@ -643,6 +650,12 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBoxDescript1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBoxDescript1KeyPressed
+if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            this.jComboBoxDescript2.requestFocus();
+        }
+    }//GEN-LAST:event_jComboBoxDescript1KeyPressed
 
     private void jTextFieldDescript3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDescript3KeyPressed
 if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){

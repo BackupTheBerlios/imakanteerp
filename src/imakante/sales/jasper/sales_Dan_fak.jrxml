@@ -138,7 +138,19 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 			</band>
 		</background>
 		<title>
-			<band height="132"  isSplitAllowed="true" >
+			<band height="151"  isSplitAllowed="true" >
+				<rectangle radius="0" >
+					<reportElement
+						mode="Opaque"
+						x="1"
+						y="43"
+						width="206"
+						height="104"
+						forecolor="#000000"
+						backcolor="#CCCCCC"
+						key="rectangle-2"/>
+					<graphicElement stretchType="NoStretch" pen="Thin" fill="Solid" />
+				</rectangle>
 				<staticText>
 					<reportElement
 						mode="Transparent"
@@ -153,14 +165,14 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Times-Roman" pdfFontName="Times-Roman" size="14" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="CP1252" isStrikeThrough="false" />
 					</textElement>
-				<text><![CDATA[ДАНЪЧНА ФАКТУРА]]></text>
+				<text><![CDATA[ДАНЪЧНА ФАКТУРА - ОРИГИНАЛ]]></text>
 				</staticText>
 				<line direction="TopDown">
 					<reportElement
 						mode="Opaque"
-						x="2"
-						y="130"
-						width="534"
+						x="0"
+						y="149"
+						width="535"
 						height="0"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
@@ -185,7 +197,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 						x="326"
 						y="43"
 						width="206"
-						height="84"
+						height="104"
 						forecolor="#000000"
 						backcolor="#CCCCCC"
 						key="rectangle-1"/>
@@ -194,24 +206,8 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 				<staticText>
 					<reportElement
 						mode="Transparent"
-						x="212"
-						y="104"
-						width="43"
-						height="14"
-						forecolor="#000000"
-						backcolor="#FFFFFF"
-						key="staticText-4"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
-						<font fontName="Tahoma" pdfFontName="Helvetica" size="8" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
-					</textElement>
-				<text><![CDATA[от склад:]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						mode="Transparent"
-						x="221"
-						y="68"
+						x="219"
+						y="91"
 						width="92"
 						height="14"
 						forecolor="#000000"
@@ -219,31 +215,15 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 						key="staticText-6"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" lineSpacing="Single">
-						<font fontName="Tahoma" pdfFontName="Helvetica" size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
+						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" size="8" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
 				<text><![CDATA[ДАТА НА ИЗДАВАНЕ:]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
-						x="256"
-						y="104"
-						width="66"
-						height="14"
-						forecolor="#000000"
-						backcolor="#FFFFFF"
-						key="textField"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
-						<font fontName="Tahoma" pdfFontName="Helvetica" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
-					</textElement>
-				<textFieldExpression   class="java.lang.Long"><![CDATA[$F{id_n_storage}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						mode="Transparent"
-						x="218"
-						y="84"
+						x="216"
+						y="110"
 						width="98"
 						height="14"
 						forecolor="#000000"
@@ -255,15 +235,6 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{date_edition_df}]]></textFieldExpression>
 				</textField>
-				<line direction="TopDown">
-					<reportElement
-						x="325"
-						y="40"
-						width="0"
-						height="88"
-						key="line-4"/>
-					<graphicElement stretchType="NoStretch"/>
-				</line>
 				<staticText>
 					<reportElement
 						x="404"
@@ -273,19 +244,10 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 						key="staticText-8"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font/>
+						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
 				<text><![CDATA[Доставчик]]></text>
 				</staticText>
-				<line direction="TopDown">
-					<reportElement
-						x="210"
-						y="40"
-						width="0"
-						height="88"
-						key="line-5"/>
-					<graphicElement stretchType="NoStretch"/>
-				</line>
 				<line direction="TopDown">
 					<reportElement
 						mode="Opaque"
@@ -302,12 +264,12 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 					<reportElement
 						x="33"
 						y="24"
-						width="56"
+						width="72"
 						height="13"
 						key="staticText-9"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font/>
+						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
 				<text><![CDATA[Получател]]></text>
 				</staticText>
@@ -329,46 +291,46 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 						key="staticText-10"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font/>
+						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
 				<text><![CDATA[Информация]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="46"
-						y="46"
+						y="45"
 						width="149"
 						height="17"
 						key="textField-3"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left">
-						<font/>
+						<font fontName="Tahoma"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{name_client}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement
-						x="213"
-						y="46"
+						x="211"
+						y="65"
 						width="21"
 						height="18"
 						key="staticText-11"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font size="14"/>
+						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
 					</textElement>
 				<text><![CDATA[№]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="234"
-						y="46"
+						x="235"
+						y="65"
 						width="87"
 						height="19"
 						key="textField-4"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font size="12" isBold="true"/>
+						<font fontName="Tahoma" size="12" isBold="true"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.Long"><![CDATA[$F{number_df}]]></textFieldExpression>
 				</textField>
@@ -381,7 +343,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 						key="textField-8"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font/>
+						<font fontName="Tahoma"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{octr_address}]]></textFieldExpression>
 				</textField>
@@ -394,7 +356,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 						key="textField-9"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font/>
+						<font fontName="Tahoma"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{octr_mol_name}]]></textFieldExpression>
 				</textField>
@@ -407,124 +369,124 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 						key="textField-10"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font/>
+						<font fontName="Tahoma"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{octr_dan_nomer}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement
-						x="2"
+						x="7"
 						y="45"
 						width="36"
 						height="16"
 						key="staticText-19"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left">
-						<font/>
+						<font fontName="Tahoma"/>
 					</textElement>
 				<text><![CDATA[Фирма:]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="2"
+						x="7"
 						y="66"
 						width="35"
 						height="17"
 						key="staticText-20"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left">
-						<font/>
+						<font fontName="Tahoma"/>
 					</textElement>
 				<text><![CDATA[Адрес:]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="2"
+						x="7"
 						y="88"
 						width="34"
 						height="14"
 						key="staticText-21"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left">
-						<font/>
+						<font fontName="Tahoma"/>
 					</textElement>
 				<text><![CDATA[МОЛ:]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="2"
+						x="7"
 						y="107"
 						width="34"
 						height="18"
 						key="staticText-22"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left">
-						<font/>
+						<font fontName="Tahoma"/>
 					</textElement>
 				<text><![CDATA[Дан.№]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
 						x="330"
-						y="46"
+						y="45"
 						width="36"
 						height="16"
 						key="staticText-29"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left">
-						<font/>
+						<font fontName="Tahoma"/>
 					</textElement>
 				<text><![CDATA[Фирма:]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
 						x="330"
-						y="67"
+						y="66"
 						width="35"
 						height="17"
 						key="staticText-30"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left">
-						<font/>
+						<font fontName="Tahoma"/>
 					</textElement>
 				<text><![CDATA[Адрес:]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
 						x="330"
-						y="89"
+						y="88"
 						width="34"
 						height="14"
 						key="staticText-31"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left">
-						<font/>
+						<font fontName="Tahoma"/>
 					</textElement>
 				<text><![CDATA[МОЛ:]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
 						x="330"
-						y="108"
+						y="107"
 						width="34"
 						height="18"
 						key="staticText-32"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left">
-						<font/>
+						<font fontName="Tahoma"/>
 					</textElement>
 				<text><![CDATA[Дан.№]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="372"
-						y="46"
+						y="45"
 						width="149"
 						height="17"
 						key="textField-17"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left">
-						<font/>
+						<font fontName="Tahoma"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{firmaname}]]></textFieldExpression>
 				</textField>
@@ -537,7 +499,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 						key="textField-18"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font/>
+						<font fontName="Tahoma"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{firma_address}]]></textFieldExpression>
 				</textField>
@@ -550,7 +512,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 						key="textField-19"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font/>
+						<font fontName="Tahoma"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{firma_mol}]]></textFieldExpression>
 				</textField>
@@ -563,10 +525,36 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 						key="textField-20"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font/>
+						<font fontName="Tahoma"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{firma_dan_No}]]></textFieldExpression>
 				</textField>
+				<staticText>
+					<reportElement
+						x="7"
+						y="127"
+						width="34"
+						height="18"
+						key="staticText-33"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left">
+						<font fontName="Tahoma"/>
+					</textElement>
+				<text><![CDATA[ЕИК]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="330"
+						y="128"
+						width="34"
+						height="18"
+						key="staticText-34"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left">
+						<font fontName="Tahoma"/>
+					</textElement>
+				<text><![CDATA[ЕИК]]></text>
+				</staticText>
 			</band>
 		</title>
 		<pageHeader>
@@ -798,7 +786,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 						backcolor="#FFFFFF"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+					<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Times-Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="CP1252" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.Long"><![CDATA[$F{code_product}]]></textFieldExpression>
@@ -830,7 +818,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 						backcolor="#FFFFFF"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+					<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Times-Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="CP1252" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{parcel_pc}]]></textFieldExpression>
@@ -838,15 +826,15 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
-						x="210"
+						x="217"
 						y="1"
-						width="59"
+						width="45"
 						height="15"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+					<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Times-Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="CP1252" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.Long"><![CDATA[$F{numbers_piece_dl}]]></textFieldExpression>
@@ -910,7 +898,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 						backcolor="#FFFFFF"
 						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+					<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Times-Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="CP1252" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.Double"><![CDATA[$F{singly_price_dl}]]></textFieldExpression>
@@ -1007,7 +995,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 					<reportElement
 						mode="Transparent"
 						x="445"
-						y="56"
+						y="52"
 						width="88"
 						height="14"
 						forecolor="#000000"
@@ -1067,7 +1055,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 					<reportElement
 						mode="Transparent"
 						x="399"
-						y="56"
+						y="52"
 						width="44"
 						height="14"
 						forecolor="#000000"
@@ -1094,26 +1082,26 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 				<staticText>
 					<reportElement
 						x="0"
-						y="56"
+						y="51"
 						width="90"
 						height="16"
 						key="staticText-12"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font/>
+						<font fontName="Tahoma"/>
 					</textElement>
 				<text><![CDATA[Сума за плащане:]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="91"
-						y="57"
+						y="51"
 						width="274"
-						height="13"
+						height="16"
 						key="textField-5"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font/>
+						<font fontName="Tahoma"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[($P{PriceToString})]]></textFieldExpression>
 				</textField>
@@ -1181,7 +1169,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 						key="textField-6"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font isBold="true"/>
+						<font fontName="Tahoma" isBold="true"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{vid_plashtane}]]></textFieldExpression>
 				</textField>
@@ -1340,7 +1328,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 					<reportElement
 						x="2"
 						y="82"
-						width="112"
+						width="104"
 						height="18"
 						key="staticText-25"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -1352,10 +1340,10 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
-						x="116"
-						y="85"
+						x="107"
+						y="82"
 						width="77"
-						height="14"
+						height="18"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
 						key="textField-14"/>
