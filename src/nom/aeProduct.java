@@ -837,7 +837,16 @@ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
         }
         if (myParent.getId_PPP()!=0) {
             String promotion_price[] = myParent.getCountriesT().getProductPromotionPrice(myParent.getId_PPP());
-            jTextFieldPromoPrices.setText(promotion_price[0]);
+             double p0 = Double.parseDouble(promotion_price[0]);
+            double dds_ = 20;
+            if(myParent.getId_PF()!=0)
+            {
+             dds_ = Double.parseDouble(myParent.getCountriesT().getProdictFee(myParent.getId_PF())[0]);
+            }
+           
+            double p0dds = (p0*dds_/100)+p0;
+            jTextFieldPromoPrices.setText(promotion_price[0]+"\u0431\u0435\u0437 \u0414\u0414\u0421, "+p0dds+"\u0441 \u0414\u0414\u0421");
+           
         } else jTextFieldPromoPrices.setText(myParent.getViewPromoPrice());
         //   repaintComp();
        
@@ -1017,7 +1026,15 @@ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
         }
         if (myParent.getId_PPP()!=0) {
             String promotion_price[] = myParent.getCountriesT().getProductPromotionPrice(myParent.getId_PPP());
-            jTextFieldPromoPrices.setText(promotion_price[0]);
+            double p0 = Double.parseDouble(promotion_price[0]);
+            double dds_ = 20;
+            if(myParent.getId_PF()!=0)
+            {
+             dds_ = Double.parseDouble(myParent.getCountriesT().getProdictFee(myParent.getId_PF())[0]);
+            }
+           
+            double p0dds = (p0*dds_/100)+p0;
+            jTextFieldPromoPrices.setText(promotion_price[0]+"\u0431\u0435\u0437 \u0414\u0414\u0421, "+p0dds+"\u0441 \u0414\u0414\u0421");
         } else jTextFieldPromoPrices.setText(myParent.getViewPromoPrice());
         //   repaintComp();
         
