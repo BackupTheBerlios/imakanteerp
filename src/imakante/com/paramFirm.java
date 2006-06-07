@@ -23,6 +23,7 @@ public class paramFirm {
     private String boss;
     private String acc;
     private String web;
+    private String bankname_D,iban_D,bic_D,valuta_D,bankname_R,iban_R,bic_R,valuta_R;
     
     private java.sql.Connection conn;
     private java.sql.Statement stm;
@@ -45,6 +46,17 @@ public class paramFirm {
             "`ls_sluj`.`postcode` AS `code`, " +
             "`ls_sluj`.`email` AS `email`, " +
             "`ls_sluj`.`web` AS `web` " +
+            
+            "`ls_sluj`.`bankD` AS `bankbank_D` " +
+            "`ls_sluj`.`bankR` AS `bankbank_R` " +
+            "`ls_sluj`.`bicR` AS `bic_R` " +
+            "`ls_sluj`.`bicD` AS `bic_D` " +
+            "`ls_sluj`.`ibanD` AS `iban_D` " +
+            "`ls_sluj`.`ibanR` AS `iban_R` " +
+            "`ls_sluj`.`valr` AS `valuta_R` " +
+            "`ls_sluj`.`vald` AS `valuta_D` " +
+            
+            
             "FROM "+
             "`ls_sluj`";
     
@@ -73,6 +85,16 @@ public class paramFirm {
                 setCode(rs.getString("code"));
                 setEmail(rs.getString("email"));
                 setWeb(rs.getString("web"));
+                setBankName_D(rs.getString("bankbank_D"));
+                setIBAN_D(rs.getString("iban_D"));
+                setBIC_D(rs.getString("bic_D"));
+                setValuta_D(rs.getString("valuta_D"));
+                setBankName_R(rs.getString("bankbank_R"));
+                setIBAN_R(rs.getString("iban_R"));
+                setBIC_R(rs.getString("bic_R"));
+                setValuta_R(rs.getString("valuta_R"));
+               
+                
             }
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
@@ -206,4 +228,71 @@ public class paramFirm {
         this.acc = acc;
     }
     
+   public void setBankName_D(String in) 
+   {
+       bankname_D = in;
+   }
+   public void setIBAN_D(String in)
+   {
+       iban_D = in;
+   }
+   public void setBIC_D(String in)
+   {
+       bic_D = in;
+   }
+   public void setValuta_D(String in)
+   {
+       valuta_D = in;
+   }
+   
+    public void setBankName_R(String in) 
+   {
+       bankname_R = in;
+   }
+   public void setIBAN_R(String in)
+   {
+       iban_R = in;
+   }
+   public void setBIC_R(String in)
+   {
+       bic_R = in;
+   }
+   public void setValuta_R(String in)
+   {
+       valuta_R = in;
+   }
+   
+   public String getBankName_D()
+   {
+       return bankname_D;
+   }
+   public String getIBAN_D()
+   {
+       return iban_D;
+   }
+   public String getBIC_D()
+   {
+       return bic_D;
+   }
+   public String getValuta_D()
+   {
+       return valuta_D;
+   }
+  public String getBankName_R()
+   {
+       return bankname_R;
+   }
+   public String getIBAN_R()
+   {
+       return iban_R;
+   }
+   public String getBIC_R()
+   {
+       return bic_R;
+   }
+   public String getValuta_R()
+   {
+       return valuta_R;
+   } 
+   
 }
