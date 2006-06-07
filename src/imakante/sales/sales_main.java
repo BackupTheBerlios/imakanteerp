@@ -1113,11 +1113,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         int storagedocdacade = numberStorage;
         System.out.println("Create DAN. Fak");
         System.out.println(isMakeDocByInputData);
-        
+        level=3;
         if(!isMakeDocByInputData) {
             dataIn = null;
             dataOut = null;
-            level=3;
+            
             loadFrmDocFacade("\u0424\u0410\u041a\u0422\u0423\u0420\u0410", user, level, pricelist, doctype, storagedocdacade, isMakeDocByInputData, dataIn, dataOut );
         } else {
             loadFrmDocFacade("\u0424\u0410\u041a\u0422\u0423\u0420\u0410", user, level, pricelist, doctype, storagedocdacade, isMakeDocByInputData, dataIn, dataOut );

@@ -255,7 +255,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
 
     private void jButtonPrnReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrnReportActionPerformed
 // TODO add your handling code here:
-        loadPrintReportJasper(getDocFacadeType());
+        loadPrintReportJasper(getDocFacadeType(),-1,table.getSelectedRow());
     }//GEN-LAST:event_jButtonPrnReportActionPerformed
 
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
@@ -1658,7 +1658,7 @@ private void checkForMakeDoc(boolean makeDoc)
       String DateSQLFormat = dateManip.convertDate(strDate);
       
       getCountriesT().insertRow(0,0,0,0,0,0,0,number,getUserEditFortm(),getUserEditFortm(),0,0,0,
-                      getDocFacadeLevel(),getStorageOUTProduct(),getDocFacadeType(),0,0,"-1",DateSQLFormat,"-",DateSQLFormat,DateSQLFormat,1,0);
+                      getDocFacadeLevel(),getStorageOUTProduct(),getDocFacadeType(),0,0,"0",DateSQLFormat,"-",DateSQLFormat,DateSQLFormat,1,0);
        maxID_df = getCountriesT().getMaxId();
       
        setID_DocFacade(maxID_df) ;
@@ -2015,11 +2015,20 @@ public void closeFrm()
 {
     this.jButtonClose.doClick();
 }
-private void loadPrintReportJasper(int docType)
+public void loadPrintReportJasper(int docType,int in_id_df,int sellRow)
 {
-    int rowSelect = table.getSelectedRow();
+    int rowSelect = sellRow;
+     int id_doc=0;
+    if(in_id_df==-1)
+    {
     if(rowSelect <0) return;
-    int id_doc =(Integer) table.getValueAt(rowSelect,getColumnIndex("id_df"));
+    id_doc =(Integer) table.getValueAt(rowSelect,getColumnIndex("id_df"));
+    }
+    else
+    {
+        
+        id_doc = in_id_df;
+    }
     String path = "";
     System.out.println("ID_df="+ id_doc);
     switch(docType)
@@ -2043,12 +2052,23 @@ private void loadPrintReportJasper(int docType)
         {
             HashMap parameterHashMap = new HashMap();
             imakante.com.paramFirm paramFrm1 = new imakante.com.paramFirm();
-            parameterHashMap.put(new String("naredil"),(String)table.getValueAt(rowSelect,getColumnIndex("Потребител")));
+            String uuser = (String)table.getValueAt(rowSelect,getColumnIndex("Потребител"));
+            parameterHashMap.put(new String("naredil"),uuser);
             parameterHashMap.put(new String("firmaname"),paramFrm1.getName());
             parameterHashMap.put(new String("firma_oso"),paramFrm1.getBoss());
             parameterHashMap.put(new String("firma_mol"),paramFrm1.getBoss());
             parameterHashMap.put(new String("firma_dan_No"),paramFrm1.getDan());
             parameterHashMap.put(new String("firma_address"),paramFrm1.getAddress());
+            
+            parameterHashMap.put(new String("firma_IBAN_D"),paramFrm1.getIBAN_D());
+            parameterHashMap.put(new String("firma_IBAN_R"),paramFrm1.getIBAN_R());
+            parameterHashMap.put(new String("firma_BIC_R"),paramFrm1.getBIC_R());
+            parameterHashMap.put(new String("firma_BIC_D"),paramFrm1.getBIC_D());
+            
+            parameterHashMap.put(new String("firma_banknameD"),paramFrm1.getBankName_D());
+            parameterHashMap.put(new String("firma_banknameR"),paramFrm1.getBankName_R());
+            parameterHashMap.put(new String("firma_bul_No"),paramFrm1.getIN());
+            
             
             String priceToStr = PriceToString(id_doc,true);
             parameterHashMap.put(new String("PriceToString"),priceToStr);
@@ -2314,5 +2334,17 @@ private String PriceToString( int id_doc, boolean withDDS)
     t.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
     t.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
 
+ }
+ public int getSelectedRow()
+ {
+     return table.getSelectedRow();
+ }
+ public void setSelectedRow(int row)
+ {
+     table.changeSelection(row,0,false,false);
+ }
+ public int getTableMaxRow()
+ {
+     return table.getRowCount();
  }
 }// end class

@@ -168,7 +168,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         strDate += "/" + String.valueOf(jXDateCurs.getDate().getMonth()+1);
         strDate += "/" + String.valueOf(jXDateCurs.getDate().getYear()+1900);
         String DateSQLFormat = dateManip.convertDate(strDate);
-        System.out.println("DateSQLFormat"+DateSQLFormat);
+        System.out.println("DateSQLFormat "+DateSQLFormat);
         DateSQLFormat = myParent.getCountriesT().getLastCurentDate();
         strDate = checkAndConvertSQLFormat(DateSQLFormat);
         int dateInt[] = getDateAsInt(strDate);
@@ -312,6 +312,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanelCreateFacturi = new javax.swing.JPanel();
         jCheckBox1 = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
+        jButtonPrint = new javax.swing.JButton();
 
         getContentPane().setLayout(null);
 
@@ -1105,11 +1106,91 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanel2.add(jPanelCreateFacturi);
         jPanelCreateFacturi.setBounds(170, 650, 343, 53);
 
+        jButtonPrint.setText("\u041f\u0435\u0447\u0430\u0442");
+        jButtonPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPrintActionPerformed(evt);
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jPanel2.add(jButtonPrint);
+        jButtonPrint.setBounds(580, 650, 140, 23);
+
         getContentPane().add(jPanel2);
         jPanel2.setBounds(0, 0, 730, 710);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
+// TODO add your handling code here:
+        if(isDocFacadeCreate)
+        {
+           myParent.loadPrintReportJasper(myParent.getDocFacadeType(),myParent.getID_DocFacade(),myParent.getSelectedRow());
+        }
+        else
+        {
+ //============================         
+          checkForDiffWithOutSaveInDB();
+        
+        int rowCount = jTable1.getRowCount();
+        boolean withRow = false;
+        boolean restDocLine =false;
+        
+        if(isNew)
+        {
+            
+          
+        } else
+            {
+            if(true)
+                if(rows.size()>0) 
+                {
+                int id_dl;
+                docLineArray d=null;
+                
+                for(int i=0; i< rowCount; i++)
+                {
+                    restDocLine= false;
+                    for(int j=0; j < rows.size();j++)
+                    {
+                        // ako sa ravni vry6tame starite
+                        // ako ne iztrivame docLine
+                        id_dl = (Integer) jTable1.getValueAt(i,12);
+                        d = (docLineArray) rows.get(j);
+                        if(id_dl==d.getID_DocLine()) 
+                        {
+                            restDocLine = true;
+                            // vry6tane na starite stoinosti
+                            myParent.getCountriesT().updateDocLine(d.getID_DocLine(),myParent.getID_DocFacade(),d.getID_PC(),
+                                    d.getStorageOut(),d.getPricePiece(),d.getRateReduction(),
+                                    d.getNumberOfProduct(),d.getDDS(),d.getPriceTotal(),
+                                    d.getPriceList());
+                            
+                            deleteDocLine(i,withRow,false);
+                            break;
+                        }
+                        
+                    }
+                    if(!restDocLine)
+                    {
+                        deleteDocLine(i,withRow,true);
+                        
+                    }
+                }
+            }
+           myParent.loadPrintReportJasper(myParent.getDocFacadeType(),myParent.getID_DocFacade(),myParent.getSelectedRow());  
+        }
+ //==============================  
+       
+        }    
+        
+    }//GEN-LAST:event_jButtonPrintActionPerformed
 
     private void jTextFieldNomerDocFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNomerDocFocusLost
 
@@ -1261,8 +1342,12 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         int id_df = myParent.getID_DocFacade();
         checkForDiffWithOutSaveInDB();
         createDocument(id_df,myParent.getDocFacadeType(),0);
-        isDocFacadeCreate = true;
+        
+        
         JOptionPane.showMessageDialog(this,"\u0423\u0441\u043F\u0435\u0448\u0435\u043D \u0437\u0430\u043F\u0438\u0441");
+        int maxrowtable = myParent.getTableMaxRow();
+        myParent.setSelectedRow(maxrowtable-1);
+        isDocFacadeCreate = true;
         
     }//GEN-LAST:event_jButtonCreateDocFacadeActionPerformed
     
@@ -1814,7 +1899,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 }
                 
                 //myParent.getCountriesT().deleteRow(myParent.getID_DocFacade());
-                deleteDocFacade(myParent.getDocFacadeType(),Long.parseLong(myParent.getNumberDocFacade()),myParent.getDocFacadeLevel(),NON_DEFINE);
+                deleteDocFacade(myParent.getDocFacadeType(),Long.parseLong(myParent.getNumberDocFacade()),myParent.getDocFacadeLevel(),USE_DOCUMENT);
                 sales_main.isMakeDocByInputData=false;
                 sales_main.dataIn=null;
                 sales_main.dataOut=null;
@@ -1924,6 +2009,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private javax.swing.JButton jButtonDellDocFadade;
     private javax.swing.JButton jButtonOneRowM;
     private javax.swing.JButton jButtonOneRowP;
+    private javax.swing.JButton jButtonPrint;
     private javax.swing.JButton jButtonToBegin;
     private javax.swing.JButton jButtonToEnd;
     private javax.swing.JCheckBox jCheckBox1;
