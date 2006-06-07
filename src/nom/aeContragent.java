@@ -93,7 +93,7 @@ public class aeContragent extends imakante.com.vcomponents.iDialog {
 
         jLabelName.setText("\u0418\u043c\u0435:");
 
-        jLabelBulstat.setText("\u0411\u0443\u043b\u0441\u0442\u0430\u0442:");
+        jLabelBulstat.setText("\u0415\u0418\u041a:");
 
         jLabelDanNomer.setText("\u0414\u0430\u043d.\u2116");
 

@@ -195,7 +195,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelBulstat">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&#x411;&#x443;&#x43b;&#x441;&#x442;&#x430;&#x442;:"/>
+            <Property name="text" type="java.lang.String" value="&#x415;&#x418;&#x41a;:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelDanNomer">

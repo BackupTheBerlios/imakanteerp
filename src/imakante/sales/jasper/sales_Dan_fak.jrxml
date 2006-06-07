@@ -1076,6 +1076,22 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 						key="line"/>
 					<graphicElement stretchType="NoStretch" pen="2Point" fill="Solid" />
 				</line>
+				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Transparent"
+						x="4"
+						y="11"
+						width="64"
+						height="19"
+						forecolor="#000000"
+						backcolor="#FFFFFF"
+						key="textField-31"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+						<font fontName="Times-Roman" pdfFontName="Times-Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="CP1252" isStrikeThrough="false" />
+					</textElement>
+				<textFieldExpression   class="java.util.Date"><![CDATA[new Date()]]></textFieldExpression>
+				</textField>
 			</band>
 		</pageFooter>
 		<summary>
@@ -1265,7 +1281,7 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 				<staticText>
 					<reportElement
 						x="367"
-						y="175"
+						y="177"
 						width="41"
 						height="13"
 						key="staticText-14"/>
@@ -1278,7 +1294,7 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 				<staticText>
 					<reportElement
 						x="411"
-						y="175"
+						y="176"
 						width="116"
 						height="14"
 						key="staticText-15"/>
@@ -1304,7 +1320,7 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 				<staticText>
 					<reportElement
 						x="55"
-						y="177"
+						y="176"
 						width="116"
 						height="14"
 						key="staticText-17"/>
@@ -1604,7 +1620,7 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 				<staticText>
 					<reportElement
 						x="200"
-						y="190"
+						y="191"
 						width="31"
 						height="14"
 						key="staticText-39"/>
@@ -1617,7 +1633,7 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 				<staticText>
 					<reportElement
 						x="200"
-						y="209"
+						y="210"
 						width="29"
 						height="14"
 						key="staticText-40"/>
@@ -1630,7 +1646,7 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 				<staticText>
 					<reportElement
 						x="200"
-						y="226"
+						y="229"
 						width="26"
 						height="14"
 						key="staticText-41"/>
@@ -1643,7 +1659,7 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="234"
-						y="226"
+						y="227"
 						width="122"
 						height="14"
 						key="textField-28"/>
@@ -1656,7 +1672,7 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="234"
-						y="209"
+						y="210"
 						width="123"
 						height="14"
 						key="textField-29"/>
@@ -1669,7 +1685,7 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="234"
-						y="190"
+						y="191"
 						width="123"
 						height="14"
 						key="textField-30"/>

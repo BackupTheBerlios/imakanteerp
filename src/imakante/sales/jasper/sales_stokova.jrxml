@@ -61,6 +61,27 @@
 	<parameter name="firma_address" isForPrompting="false" class="java.lang.String">
 		<defaultValueExpression ><![CDATA[""]]></defaultValueExpression>
 	</parameter>
+	<parameter name="firma_banknameD" isForPrompting="false" class="java.lang.String">
+		<defaultValueExpression ><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="firma_banknameR" isForPrompting="false" class="java.lang.String">
+		<defaultValueExpression ><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="firma_IBAN_D" isForPrompting="false" class="java.lang.String">
+		<defaultValueExpression ><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="firma_IBAN_R" isForPrompting="false" class="java.lang.String">
+		<defaultValueExpression ><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="firma_BIC_D" isForPrompting="false" class="java.lang.String">
+		<defaultValueExpression ><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="firma_BIC_R" isForPrompting="false" class="java.lang.String">
+		<defaultValueExpression ><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="firma_bul_No" isForPrompting="false" class="java.lang.String">
+		<defaultValueExpression ><![CDATA[""]]></defaultValueExpression>
+	</parameter>
 	<queryString><![CDATA[SELECT
 number_df,
 date_edition_df,
@@ -68,7 +89,7 @@ date_deliver_df,
 date_pay_df,
 vid_plashtane,
 id_n_storage,
-rep_documents_ivan.id_pc,
+rep_documents_new.id_pc,
 code_product,
 name_product,
 parcel_pc,
@@ -84,15 +105,33 @@ octr_address,
 octr_dan_nomer,
 octr_mol_name,
 octr_oso_name,
+octr_banknamer,
+octr_banknamed,
+octr_bicd,
+octr_bicr,
+octr_vidvalr,
+octr_vidvald,
+octr_iband,
+octr_ibanr,
+octr_bul_nomer,
 # ==============  in_contragent
 name_dostavchik,
 ictr_address,
 ictr_dan_nomer,
 ictr_mol_name,
-ictr_oso_name
+ictr_oso_name,
+ictr_banknamer,
+ictr_banknamed,
+ictr_bicd,
+ictr_bicr,
+ictr_vidvalr,
+ictr_vidvald,
+ictr_iband,
+ictr_ibanr,
+ictr_bul_nomer
 FROM 
-rep_documents_ivan
-WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
+rep_documents_new
+WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 
 	<field name="number_df" class="java.lang.Long"/>
 	<field name="date_edition_df" class="java.lang.String"/>
@@ -115,11 +154,29 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 	<field name="octr_dan_nomer" class="java.lang.String"/>
 	<field name="octr_mol_name" class="java.lang.String"/>
 	<field name="octr_oso_name" class="java.lang.String"/>
+	<field name="octr_banknamer" class="java.lang.String"/>
+	<field name="octr_banknamed" class="java.lang.String"/>
+	<field name="octr_bicd" class="java.lang.String"/>
+	<field name="octr_bicr" class="java.lang.String"/>
+	<field name="octr_vidvalr" class="java.lang.String"/>
+	<field name="octr_vidvald" class="java.lang.String"/>
+	<field name="octr_iband" class="java.lang.String"/>
+	<field name="octr_ibanr" class="java.lang.String"/>
+	<field name="octr_bul_nomer" class="java.lang.String"/>
 	<field name="name_dostavchik" class="java.lang.String"/>
 	<field name="ictr_address" class="java.lang.String"/>
 	<field name="ictr_dan_nomer" class="java.lang.String"/>
 	<field name="ictr_mol_name" class="java.lang.String"/>
 	<field name="ictr_oso_name" class="java.lang.String"/>
+	<field name="ictr_banknamer" class="java.lang.String"/>
+	<field name="ictr_banknamed" class="java.lang.String"/>
+	<field name="ictr_bicd" class="java.lang.String"/>
+	<field name="ictr_bicr" class="java.lang.String"/>
+	<field name="ictr_vidvalr" class="java.lang.String"/>
+	<field name="ictr_vidvald" class="java.lang.String"/>
+	<field name="ictr_iband" class="java.lang.String"/>
+	<field name="ictr_ibanr" class="java.lang.String"/>
+	<field name="ictr_bul_nomer" class="java.lang.String"/>
 
 	<variable name="EXP_1" class="java.lang.Double" resetType="Report" calculation="Sum">
 		<variableExpression><![CDATA[$F{suma}]]></variableExpression>
@@ -129,7 +186,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 			</band>
 		</background>
 		<title>
-			<band height="132"  isSplitAllowed="true" >
+			<band height="170"  isSplitAllowed="true" >
 				<staticText>
 					<reportElement
 						mode="Transparent"
@@ -149,8 +206,8 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 				<line direction="TopDown">
 					<reportElement
 						mode="Opaque"
-						x="2"
-						y="130"
+						x="0"
+						y="161"
 						width="534"
 						height="0"
 						forecolor="#000000"
@@ -176,7 +233,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 						x="326"
 						y="43"
 						width="206"
-						height="84"
+						height="117"
 						forecolor="#000000"
 						backcolor="#CCCCCC"
 						key="rectangle-1"/>
@@ -186,7 +243,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 					<reportElement
 						mode="Transparent"
 						x="212"
-						y="104"
+						y="134"
 						width="43"
 						height="14"
 						forecolor="#000000"
@@ -218,7 +275,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 					<reportElement
 						mode="Transparent"
 						x="256"
-						y="104"
+						y="134"
 						width="66"
 						height="14"
 						forecolor="#000000"
@@ -251,7 +308,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 						x="325"
 						y="40"
 						width="0"
-						height="88"
+						height="120"
 						key="line-4"/>
 					<graphicElement stretchType="NoStretch"/>
 				</line>
@@ -273,7 +330,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 						x="210"
 						y="40"
 						width="0"
-						height="88"
+						height="118"
 						key="line-5"/>
 					<graphicElement stretchType="NoStretch"/>
 				</line>
@@ -327,9 +384,9 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="46"
-						y="46"
+						y="45"
 						width="149"
-						height="17"
+						height="14"
 						key="textField-3"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left">
@@ -366,9 +423,9 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="46"
-						y="66"
+						y="69"
 						width="149"
-						height="16"
+						height="14"
 						key="textField-8"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
@@ -379,9 +436,9 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="46"
-						y="87"
+						y="93"
 						width="149"
-						height="16"
+						height="14"
 						key="textField-9"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
@@ -392,9 +449,9 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="46"
-						y="108"
+						y="117"
 						width="149"
-						height="16"
+						height="14"
 						key="textField-10"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
@@ -404,10 +461,10 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 				</textField>
 				<staticText>
 					<reportElement
-						x="2"
+						x="5"
 						y="45"
-						width="36"
-						height="16"
+						width="35"
+						height="14"
 						key="staticText-19"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left">
@@ -417,10 +474,10 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="2"
-						y="66"
+						x="5"
+						y="69"
 						width="35"
-						height="17"
+						height="14"
 						key="staticText-20"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left">
@@ -430,9 +487,9 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="2"
-						y="88"
-						width="34"
+						x="5"
+						y="93"
+						width="35"
 						height="14"
 						key="staticText-21"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -443,10 +500,10 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="2"
-						y="107"
-						width="34"
-						height="18"
+						x="5"
+						y="117"
+						width="35"
+						height="14"
 						key="staticText-22"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left">
@@ -456,10 +513,10 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="329"
+						x="330"
 						y="45"
 						width="36"
-						height="16"
+						height="14"
 						key="staticText-25"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left">
@@ -469,10 +526,10 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="329"
-						y="66"
+						x="330"
+						y="69"
 						width="35"
-						height="17"
+						height="14"
 						key="staticText-26"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left">
@@ -482,8 +539,8 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="329"
-						y="88"
+						x="330"
+						y="93"
 						width="34"
 						height="14"
 						key="staticText-27"/>
@@ -495,10 +552,10 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="329"
-						y="107"
+						x="330"
+						y="117"
 						width="34"
-						height="18"
+						height="14"
 						key="staticText-28"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left">
@@ -509,9 +566,9 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="371"
-						y="107"
+						y="117"
 						width="149"
-						height="16"
+						height="14"
 						key="textField-13"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
@@ -522,9 +579,9 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="371"
-						y="86"
+						y="93"
 						width="149"
-						height="16"
+						height="14"
 						key="textField-14"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
@@ -535,9 +592,9 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="371"
-						y="65"
+						y="69"
 						width="149"
-						height="16"
+						height="14"
 						key="textField-15"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
@@ -550,13 +607,65 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 						x="371"
 						y="45"
 						width="149"
-						height="17"
+						height="14"
 						key="textField-16"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Left">
 						<font/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{firmaname}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="46"
+						y="141"
+						width="149"
+						height="14"
+						key="textField-18"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{octr_bul_nomer}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="5"
+						y="141"
+						width="35"
+						height="14"
+						key="staticText-31"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left">
+						<font fontName="Tahoma"/>
+					</textElement>
+				<text><![CDATA[ЕИК]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="330"
+						y="141"
+						width="34"
+						height="14"
+						key="staticText-32"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left">
+						<font fontName="Tahoma"/>
+					</textElement>
+				<text><![CDATA[ЕИК]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="372"
+						y="141"
+						width="149"
+						height="14"
+						key="textField-19"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{firma_bul_No}]]></textFieldExpression>
 				</textField>
 			</band>
 		</title>
@@ -977,7 +1086,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 			</band>
 		</pageFooter>
 		<summary>
-			<band height="118"  isSplitAllowed="true" >
+			<band height="200"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
@@ -1083,7 +1192,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 					<reportElement
 						x="98"
 						y="6"
-						width="274"
+						width="299"
 						height="13"
 						key="textField-5"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -1107,8 +1216,8 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 				<line direction="TopDown">
 					<reportElement
 						mode="Opaque"
-						x="1"
-						y="114"
+						x="0"
+						y="196"
 						width="534"
 						height="0"
 						forecolor="#000000"
@@ -1121,7 +1230,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 						x="196"
 						y="28"
 						width="0"
-						height="85"
+						height="168"
 						key="line-10"/>
 					<graphicElement stretchType="NoStretch"/>
 				</line>
@@ -1130,7 +1239,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 						x="361"
 						y="29"
 						width="0"
-						height="84"
+						height="168"
 						key="line-11"/>
 					<graphicElement stretchType="NoStretch"/>
 				</line>
@@ -1162,8 +1271,8 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 				</textField>
 				<staticText>
 					<reportElement
-						x="364"
-						y="78"
+						x="374"
+						y="122"
 						width="41"
 						height="13"
 						key="staticText-14"/>
@@ -1175,8 +1284,8 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="407"
-						y="77"
+						x="419"
+						y="122"
 						width="116"
 						height="14"
 						key="staticText-15"/>
@@ -1188,8 +1297,8 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="3"
-						y="95"
+						x="11"
+						y="122"
 						width="41"
 						height="13"
 						key="staticText-16"/>
@@ -1201,8 +1310,8 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="49"
-						y="94"
+						x="57"
+						y="122"
 						width="116"
 						height="14"
 						key="staticText-17"/>
@@ -1324,8 +1433,8 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 				</textField>
 				<staticText>
 					<reportElement
-						x="364"
-						y="95"
+						x="389"
+						y="169"
 						width="41"
 						height="13"
 						key="staticText-30"/>
@@ -1335,6 +1444,188 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 					</textElement>
 				<text><![CDATA[Печат:]]></text>
 				</staticText>
+				<staticText>
+					<reportElement
+						x="199"
+						y="52"
+						width="152"
+						height="16"
+						key="staticText-33"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Разплащателна сметка:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="199"
+						y="67"
+						width="31"
+						height="14"
+						key="staticText-34"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Банка:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="199"
+						y="86"
+						width="29"
+						height="14"
+						key="staticText-35"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[IBAN:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="199"
+						y="105"
+						width="26"
+						height="14"
+						key="staticText-36"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[BIC:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="198"
+						y="124"
+						width="152"
+						height="16"
+						key="staticText-37"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[ДДС сметка:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="198"
+						y="139"
+						width="31"
+						height="14"
+						key="staticText-38"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Банка:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="198"
+						y="158"
+						width="29"
+						height="14"
+						key="staticText-39"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[IBAN:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="198"
+						y="177"
+						width="26"
+						height="14"
+						key="staticText-40"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[BIC:]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="232"
+						y="177"
+						width="122"
+						height="14"
+						key="textField-20"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{firma_BIC_D}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="232"
+						y="158"
+						width="123"
+						height="14"
+						key="textField-21"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{firma_IBAN_D}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="232"
+						y="139"
+						width="123"
+						height="14"
+						key="textField-22"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{firma_banknameD}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="232"
+						y="105"
+						width="122"
+						height="14"
+						key="textField-23"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{firma_BIC_R}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="232"
+						y="86"
+						width="123"
+						height="14"
+						key="textField-24"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{firma_IBAN_R}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="232"
+						y="67"
+						width="123"
+						height="14"
+						key="textField-25"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{firma_banknameR}]]></textFieldExpression>
+				</textField>
 			</band>
 		</summary>
 </jasperReport>
