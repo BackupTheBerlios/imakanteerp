@@ -2114,6 +2114,16 @@ public void loadPrintReportJasper(int docType,int in_id_df,int sellRow)
             parameterHashMap.put(new String("firma_dan_No"),paramFrm1.getDan());
             parameterHashMap.put(new String("firma_address"),paramFrm1.getAddress());
             
+            
+            parameterHashMap.put(new String("firma_IBAN_D"),paramFrm1.getIBAN_D());
+            parameterHashMap.put(new String("firma_IBAN_R"),paramFrm1.getIBAN_R());
+            parameterHashMap.put(new String("firma_BIC_R"),paramFrm1.getBIC_R());
+            parameterHashMap.put(new String("firma_BIC_D"),paramFrm1.getBIC_D());
+            
+            parameterHashMap.put(new String("firma_banknameD"),paramFrm1.getBankName_D());
+            parameterHashMap.put(new String("firma_banknameR"),paramFrm1.getBankName_R());
+            parameterHashMap.put(new String("firma_bul_No"),paramFrm1.getIN());
+            
             String priceToStr = PriceToString(id_doc,false);
             parameterHashMap.put(new String("PriceToString"),priceToStr);
             
