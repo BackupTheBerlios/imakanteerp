@@ -1340,9 +1340,16 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         sales_main.dataIn=null;
         sales_main.dataOut=null;
         int id_df = myParent.getID_DocFacade();
+        boolean tmpIsNew = isNew;
         checkForDiffWithOutSaveInDB();
+     //   clearAllVariables();
         createDocument(id_df,myParent.getDocFacadeType(),0);
-        
+        if(tmpIsNew)
+        {
+            myParent.setRow(myParent.getTableMaxRow()-1);
+        }
+        myParent.setAllVariables();
+        repaintComp();
         
         JOptionPane.showMessageDialog(this,"\u0423\u0441\u043F\u0435\u0448\u0435\u043D \u0437\u0430\u043F\u0438\u0441");
         int maxrowtable = myParent.getTableMaxRow();
@@ -4401,19 +4408,21 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             emptyReturnet(isNew);
             
             } else
-                if(myParent.getDocFacadeType()!=PROFORMA_FAKTURA || myParent.getDocFacadeType()!=OFERTA)
+                if(myParent.getDocFacadeType()!=PROFORMA_FAKTURA && myParent.getDocFacadeType()!=OFERTA)
                     emptyPreservation(isNew);
         
         
         
         isNew = false; // ve4e dokumenta ne se vodi kato "nov"
         myParent.refreshTable();
+       
+       
     }
     
     private void emptyPreservation(boolean isnew) {
-        int id_dl;
+        int id_dl = 0;
         int maxRow = jTable1.getRowCount();
-        int nal;
+        int nal = 0;
         if(isnew) {
             for(int i=0; i < maxRow; i++) {
                 id_dl =(Integer) jTable1.getValueAt(i,12);
@@ -5852,6 +5861,15 @@ private int getColumnIndex(String in) //test
           break;
       }
   }
+ }
+ private void clearAllVariables()
+ {
+     columnSelect = 0;
+     rowSelect = 0;
+     productDescription_1= 0 ;
+     productDescription_2 = 0;
+     productDescription_3 = 0;
+     id_df_NewFaktura = 0; 
  }
 }// end class
 

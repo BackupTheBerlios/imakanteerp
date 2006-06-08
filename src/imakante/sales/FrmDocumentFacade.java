@@ -1316,7 +1316,7 @@ public  void setAtEnd(boolean aAtEnd)
     table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
 
  }
-private void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti na cyrillica 
+public void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti na cyrillica 
     {
     try
     {
