@@ -44,6 +44,7 @@ import javax.swing.border.*;
 import java.math.*;
 import java.lang.Thread;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
+import javax.swing.table.*;
 
 public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 {
@@ -116,7 +117,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jTable1.setModel(new docLineTableModel());
         jTable1.setRowSelectionAllowed(false); // zabranqvame selekciqta na celiq red
         jTable1.setCellSelectionEnabled(true);
-        
+        TableColumn tm = jTable1.getColumnModel().getColumn(4);
+        tm.setCellRenderer(new ColorColumnRenderer(Color.lightGray, Color.blue));
         jScrollPane2.getViewport().add(jTable1);
         jScrollPane2.repaint();
         setInputLisener();
@@ -414,7 +416,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanelHead.add(jXDateCurs, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, -1, -1));
 
         jLabelLevel.setForeground(new java.awt.Color(255, 51, 51));
-        jLabelLevel.setText("fffd");
+        jLabelLevel.setText("koko");
         jPanelHead.add(jLabelLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         jPanel2.add(jPanelHead);
@@ -1350,10 +1352,10 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         }
         myParent.setAllVariables();
         repaintComp();
-        
+        myParent.setSelectedRow(myParent.getRow());
         JOptionPane.showMessageDialog(this,"\u0423\u0441\u043F\u0435\u0448\u0435\u043D \u0437\u0430\u043F\u0438\u0441");
-        int maxrowtable = myParent.getTableMaxRow();
-        myParent.setSelectedRow(maxrowtable-1);
+      //  int maxrowtable = myParent.getTableMaxRow();
+      //  myParent.setSelectedRow(maxrowtable-1);
         isDocFacadeCreate = true;
         
     }//GEN-LAST:event_jButtonCreateDocFacadeActionPerformed
@@ -5076,6 +5078,16 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         //  1: tyrsene po kod na produkta
         //  2: tyrsene po ime na produkta
         //firstCenterLast -> F7 key - center; F8 key - first; F9 key - last
+        
+         try
+              {
+                Robot robot = new Robot();
+                robot.keyPress(KeyEvent.VK_ENTER);
+                
+               
+               
+            } catch (AWTException e12){};
+        
         isProductIN = checkInOutProduct(docType);
         
          if(isProductIN) {
@@ -5149,16 +5161,9 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             
             ((docLineTableModel) jTable1.getModel()).enableCellEditable(3);
             
-              try {
-                Robot robot = new Robot();
-                for(int i=0;i<enterKet;i++)
-                {
-                  robot.keyPress(KeyEvent.VK_ENTER);
-                }
-               
-               
-            } catch (AWTException e12){};
+             
             
+            jTable1.changeSelection(jTable1.getSelectedRow(),4,false,false);
             if(myParent.getIsSelectProduct()) {
                 
                 jLabel32.setText(String.valueOf(myParent.getCountriesT().getAllProductWithOutLevel(myParent.getID_PC(),
@@ -5871,6 +5876,29 @@ private int getColumnIndex(String in) //test
      productDescription_3 = 0;
      id_df_NewFaktura = 0; 
  }
+private  class ColorColumnRenderer extends DefaultTableCellRenderer 
+{
+   Color bkgndColor, fgndColor;
+ 	
+   public ColorColumnRenderer(Color bkgnd, Color foregnd) {
+      super(); 
+      bkgndColor = bkgnd;
+      fgndColor = foregnd;
+   }
+  	
+   public Component getTableCellRendererComponent
+	    (JTable table, Object value, boolean isSelected,
+	     boolean hasFocus, int row, int column) 
+   {
+      Component cell = super.getTableCellRendererComponent
+         (table, value, isSelected, hasFocus, row, column);
+ 
+      cell.setBackground( bkgndColor );
+      cell.setForeground( fgndColor );
+     
+      return cell;
+   }
+}
 }// end class
 
 
