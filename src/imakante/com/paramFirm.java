@@ -45,15 +45,15 @@ public class paramFirm {
             "`ls_sluj`.`nm` AS `nm`, " +
             "`ls_sluj`.`postcode` AS `code`, " +
             "`ls_sluj`.`email` AS `email`, " +
-            "`ls_sluj`.`web` AS `web` " +
+            "`ls_sluj`.`web` AS `web`, " +
             
-            "`ls_sluj`.`bankD` AS `bankbank_D` " +
-            "`ls_sluj`.`bankR` AS `bankbank_R` " +
-            "`ls_sluj`.`bicR` AS `bic_R` " +
-            "`ls_sluj`.`bicD` AS `bic_D` " +
-            "`ls_sluj`.`ibanD` AS `iban_D` " +
-            "`ls_sluj`.`ibanR` AS `iban_R` " +
-            "`ls_sluj`.`valr` AS `valuta_R` " +
+            "`ls_sluj`.`bankD` AS `bankbank_D`, " +
+            "`ls_sluj`.`bankR` AS `bankbank_R`, " +
+            "`ls_sluj`.`bicR` AS `bic_R`, " +
+            "`ls_sluj`.`bicD` AS `bic_D` ," +
+            "`ls_sluj`.`ibanD` AS `iban_D`, " +
+            "`ls_sluj`.`ibanR` AS `iban_R`, " +
+            "`ls_sluj`.`valr` AS `valuta_R`, " +
             "`ls_sluj`.`vald` AS `valuta_D` " +
             
             
