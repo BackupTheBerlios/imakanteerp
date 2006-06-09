@@ -50,6 +50,8 @@ public class FrmOblast extends  imakante.com.vcomponents.iInternalFrame implemen
         setMaximizable(true);
         setResizable(true);
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
+        setMinimumSize(new java.awt.Dimension(900, 320));
+        setPreferredSize(new java.awt.Dimension(910, 500));
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }
@@ -131,7 +133,7 @@ public class FrmOblast extends  imakante.com.vcomponents.iInternalFrame implemen
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 936, Short.MAX_VALUE)
+            .add(0, 932, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -217,7 +219,8 @@ public class FrmOblast extends  imakante.com.vcomponents.iInternalFrame implemen
     }//GEN-LAST:event_jTextFieldOblastFocusGained
 
     private void jTextFieldOblastKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldOblastKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButton1.doClick(); searchRecords(); }
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButton1.doClick(); searchRecords(); 
+        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextFieldOblast.setText(""); }
     }//GEN-LAST:event_jTextFieldOblastKeyPressed
 
     private void jTextFieldCountryFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldCountryFocusGained
@@ -225,7 +228,8 @@ public class FrmOblast extends  imakante.com.vcomponents.iInternalFrame implemen
     }//GEN-LAST:event_jTextFieldCountryFocusGained
 
     private void jTextFieldCountryKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCountryKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButton1.doClick(); searchRecords(); }
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButton1.doClick(); searchRecords(); 
+        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextFieldCountry.setText(""); }
     }//GEN-LAST:event_jTextFieldCountryKeyPressed
     
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
