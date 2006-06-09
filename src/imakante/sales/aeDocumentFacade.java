@@ -2737,8 +2737,10 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     
                     if(columnSelect == 10)  
                     {
+                        System.out.println("columnSelect == 10");
                         if( !isFinishRow) {
                             str="";
+                            System.out.println("Start save data in DB");
                             double alldds = Double.parseDouble(jLabelAllDDS.getText());
                             alldds += (Double) jTable1.getValueAt(rowSelect,11)*(Double) jTable1.getValueAt(rowSelect,10)/100;
                          //   jLabelAllDDS.setText(doubleRoundToString(4,alldds));
@@ -2760,12 +2762,13 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                             if(jTable1.getSelectedRow()==(jTable1.getRowCount() - 1)) // pri polovfenie 4e reda e posleden
                             {
                                 int i = 0;
+                                System.out.println("IF ROW IS LAST");
                                 i = jTable1.getSelectedRow();
                                 ((docLineTableModel)jTable1.getModel()).setDefaultCellEditable();
                               //  ((docLineTableModel)jTable1.getModel()).setIsFinishToEnterData(i); // markirame reda kato priklu4en s vyvezdaneto
                                 ((docLineTableModel)jTable1.getModel()).addRow(new docLineArray());
                                 jTable1.changeSelection(i+1,-1,false,false);
-                                System.out.println();
+                                System.out.println("changeSelection");
                                 
                                 ((docLineTableModel) jTable1.getModel()).enableCellEditable(0);
                                 //za tyrsene po ime
@@ -2989,6 +2992,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                             {
                                 
                                 int i = 0;
+                                System.out.println("IF ROW IS`N LAST!!");
                                 i = jTable1.getSelectedRow();
                                 //((docLineTableModel)jTable1.getModel()).setDefaultCellEditable();
                                 ((docLineTableModel)jTable1.getModel()).setIsFinishToEnterData(i);
@@ -2996,7 +3000,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                 //((docLineTableModel)jTable1.getModel()).addRow(new docLineArray());
                                 jTable1.changeSelection(i+1,0,false,false);
                                 
-                                System.out.println();
+                                System.out.println("changeSelection");
                                 
                                 //((docLineTableModel) jTable1.getModel()).enableCellEditable(0);
                                 // Save DocLine into DATABASE
@@ -3288,6 +3292,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                         checkForSaveInDB.put(new Integer(tmpId_dl),new Boolean(true));
                         
                         str="";
+                        System.out.println("End procedure to save in DB");
+                        
                     }
                 }
                 
@@ -3325,6 +3331,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                         if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24)&&
                                  !((docLineTableModel)jTable1.getModel()).getIsFinishToEnterData(jTable1.getSelectedRow()))
                         {
+                               isFinishRow = false;
                               processKeyPress(myParent.getDocFacadeType(),F7_KEY,SEARCH_BY_CODE,4);
                               
                         }
@@ -3343,6 +3350,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                            }
                             str = removeCharacter(str);
                             System.out.println("befor processKeyPress"+str);
+                              isFinishRow = false;
                             processKeyPress(myParent.getDocFacadeType(),F7_KEY,SEARCH_BY_NAME,3);
                         }
                     }
@@ -3378,7 +3386,12 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                          }
                     if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24) &&
                                  !((docLineTableModel)jTable1.getModel()).getIsFinishToEnterData(jTable1.getSelectedRow()))
-                    processKeyPress(myParent.getDocFacadeType(),F8_KEY,SEARCH_BY_CODE,4);
+                    {
+                       isFinishRow = false;     
+                       processKeyPress(myParent.getDocFacadeType(),F8_KEY,SEARCH_BY_CODE,4);     
+                    }
+                        
+                    
                     }
                     if(columnSelect==1)
                     {
@@ -3390,6 +3403,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                             str = str.substring(0,str.length()-1);
                         }
                         str = removeCharacter(str);
+                        isFinishRow = false;
                         processKeyPress(myParent.getDocFacadeType(),F8_KEY,SEARCH_BY_NAME,3);
                     }
                     }
@@ -3424,7 +3438,12 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                          }
                     if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24)&&
                                  !((docLineTableModel)jTable1.getModel()).getIsFinishToEnterData(jTable1.getSelectedRow()))
-                    processKeyPress(myParent.getDocFacadeType(),F9_KEY,SEARCH_BY_CODE,4);
+                    {
+                             isFinishRow = false;
+                            processKeyPress(myParent.getDocFacadeType(),F9_KEY,SEARCH_BY_CODE,4);
+                           
+                    }
+                   
                     }
                     if(columnSelect==1)
                     {
@@ -3437,7 +3456,9 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                str = str.substring(0,str.length()-1);
                            }
                             str = removeCharacter(str);
+                            isFinishRow = false;
                        processKeyPress(myParent.getDocFacadeType(),F9_KEY,SEARCH_BY_NAME,3);
+                       
                     }
                     
                     }
@@ -5079,14 +5100,14 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         //  2: tyrsene po ime na produkta
         //firstCenterLast -> F7 key - center; F8 key - first; F9 key - last
         
-         try
+     /*    try
               {
                 Robot robot = new Robot();
                 robot.keyPress(KeyEvent.VK_ENTER);
                 
                
                
-            } catch (AWTException e12){};
+            } catch (AWTException e12){};*/
         
         isProductIN = checkInOutProduct(docType);
         
