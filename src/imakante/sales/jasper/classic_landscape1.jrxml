@@ -102,8 +102,7 @@ AND rep_documents.level_df IN(1, 2, 3) GROUP BY rep_documents.code_product ),0) 
  WHERE `rep_comm_nal`.`code_contragent` BETWEEN '0' AND '1000000000' AND 
  `rep_comm_nal`.`code_pm` BETWEEN '0' AND '1000000000' AND  `rep_comm_nal`.`code_n_storage`
  BETWEEN '0' AND '1000000000'AND rep_comm_nal.level IN($P{levex}) GROUP BY con 
-ORDER BY rep_comm_nal.code_n_storage ASC 
-]]></queryString>
+ORDER BY rep_comm_nal.code_n_storage ASC]]></queryString>
 
 	<field name="con" class="java.lang.String"/>
 	<field name="code_n_storage" class="java.lang.Long"/>
