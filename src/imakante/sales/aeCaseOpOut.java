@@ -477,9 +477,11 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7){
             try {
                 myParent.intContrDialog(Integer.parseInt(jTextField2.getText()));
-            } catch (NumberFormatException ex) {
-                ex.printStackTrace();
-            }
+            } catch (NumberFormatException ex) { ex.printStackTrace(); }
+            revalidateContragent();
+            this.jLabel14.setText(myParent.getHName());
+            this.jLabel14.revalidate();
+            jTextField2.transferFocus();
         }
     }//GEN-LAST:event_jTextField2KeyPressed
     
@@ -492,7 +494,7 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jbPrintActionPerformed
     
     private void jbPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbPrintKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jbPrint.doClick();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) jbPrint.doClick();
     }//GEN-LAST:event_jbPrintKeyPressed
     
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
@@ -548,7 +550,7 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jTextField1KeyPressed
     
     private void jButtonUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUndoActionPerformed
-        undoCorr(); //vraja predishnite stoinosti
+        undoCorr();
     }//GEN-LAST:event_jButtonUndoActionPerformed
     
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed

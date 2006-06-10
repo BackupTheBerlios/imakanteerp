@@ -19,6 +19,7 @@
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="2"/>
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
@@ -46,14 +47,14 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jPanel4" alignment="0" pref="878" max="32767" attributes="0"/>
-              <Component id="jScrollPane1" alignment="0" pref="878" max="32767" attributes="0"/>
+              <Component id="jPanel4" alignment="0" pref="882" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" alignment="0" pref="882" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <Component id="jScrollPane1" pref="305" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" pref="314" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel4" min="-2" pref="81" max="-2" attributes="0"/>
               </Group>
@@ -107,11 +108,11 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="5" max="-2" attributes="1"/>
-                              <Component id="jtfCasaBegin" pref="81" max="32767" attributes="0"/>
+                              <Component id="jtfCasaBegin" pref="83" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="1">
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="jtfCasaEND" pref="82" max="32767" attributes="0"/>
+                              <Component id="jtfCasaEND" pref="84" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">

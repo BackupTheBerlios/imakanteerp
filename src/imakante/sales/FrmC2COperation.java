@@ -553,8 +553,8 @@ public class FrmC2COperation extends  imakante.com.vcomponents.iInternalFrame im
     
     java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd");
     
-    private String jasperFile = "/imakante/sales/jasper/cr2cr_order.jasper";
-    private String otchetPrihodi = "/imakante/sales/jasper/report_cr2cr.jasper";
+    private String jasperFile = "cr2cr_order.jasper";
+    private String otchetPrihodi = "report_cr2cr.jasper";
     
     private boolean dBstate = false;
     private boolean dEstate = false;

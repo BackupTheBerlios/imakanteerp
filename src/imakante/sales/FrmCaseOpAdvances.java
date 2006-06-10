@@ -444,7 +444,7 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
     private int in_id_order_doc = -1;
     private String in_DATE;
     private int in_id_n_money = 1;
-    private String in_code_lat = "BGL";
+    private String in_code_lat = "BGN";
     private double in_exchange_rate = 1;
     private double in_sum_sl_mop = 0;
     private double in_sum_os_val_sl_mop = 0;
@@ -515,7 +515,7 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
     
     java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd");
     
-    private String jasperFile = "/imakante/sales/jasper/avans.jasper";
+    private String jasperFile = "avans.jasper";
 
     private aeCaseOpAdvances ae_Adva;
     

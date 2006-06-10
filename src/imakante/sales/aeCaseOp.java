@@ -480,9 +480,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) {
             try {
                 myParent.intContrDialog(Integer.parseInt(jTextField2.getText()));
-            } catch (NumberFormatException ex) {
-                ex.printStackTrace();
-            }
+            } catch (NumberFormatException ex) { ex.printStackTrace(); }
             revalidateContragent();
             this.jLabel14.setText(myParent.getHName());
             this.jLabel14.revalidate();

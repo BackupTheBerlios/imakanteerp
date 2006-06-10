@@ -19,6 +19,7 @@
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="2"/>
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
@@ -94,12 +95,12 @@
                       <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="1">
-                              <Component id="jLabel5" pref="22" max="32767" attributes="0"/>
+                              <Component id="jLabel5" pref="21" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="65" max="-2" attributes="1"/>
                               <Component id="jLabel6" pref="34" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel4" pref="20" max="32767" attributes="0"/>
+                              <Component id="jLabel4" pref="19" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="67" max="-2" attributes="1"/>
                               <Component id="jLabel2" pref="34" max="32767" attributes="0"/>
                           </Group>
@@ -107,11 +108,11 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="5" max="-2" attributes="1"/>
-                              <Component id="jtfCasaBegin" pref="72" max="32767" attributes="0"/>
+                              <Component id="jtfCasaBegin" pref="71" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="1">
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="jtfCasaEND" pref="73" max="32767" attributes="0"/>
+                              <Component id="jtfCasaEND" pref="72" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -127,8 +128,8 @@
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jtfContragentBEGIN" alignment="1" pref="75" max="32767" attributes="0"/>
-                          <Component id="jtfContragentEND" alignment="1" pref="75" max="32767" attributes="0"/>
+                          <Component id="jtfContragentBEGIN" alignment="1" pref="74" max="32767" attributes="0"/>
+                          <Component id="jtfContragentEND" alignment="1" pref="74" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
