@@ -15,7 +15,6 @@ public class aeCaseOpReport extends imakante.com.vcomponents.iDialog {
             setJReport();
         } catch (java.io.FileNotFoundException fnfex) { fnfex.printStackTrace(); }
         this.jPanel1.add(jrv);
-        System.out.println(" krai ot jasper dialog");
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -83,7 +82,11 @@ public class aeCaseOpReport extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void printJReport() {
-        
+//        try {
+//            java.text.MessageFormat headerFormat = new java.text.MessageFormat("Casa");
+//            java.text.MessageFormat footerFormat = new java.text.MessageFormat("Page. " + "- {0} -" + " IMAKANTE' ");
+//            InternalTable.print(javax.swing.JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
+//        } catch(java.awt.print.PrinterException e) { e.printStackTrace(); }
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -103,12 +106,11 @@ public class aeCaseOpReport extends imakante.com.vcomponents.iDialog {
     
     private void setJReport() throws java.io.FileNotFoundException {
         try {
-            jp = net.sf.jasperreports.engine.JasperFillManager.fillReport(
-                    new java.io.FileInputStream(new java.io.File(getClass().getResource(getJasperFile()).toURI())), getHash(), getConn());
+            String pathRep = imakante.com.NewMain.getPathrep() + this.getJasperFile();
+            jp = net.sf.jasperreports.engine.JasperFillManager.fillReport(new java.io.FileInputStream(new java.io.File(pathRep)),
+                    getHash(), getConn());
             jrv = new net.sf.jasperreports.view.JRViewer(jp);
-            
         } catch (java.io.FileNotFoundException fnfex) { fnfex.printStackTrace();
-        } catch (java.net.URISyntaxException urisex) { urisex.printStackTrace();
         } catch (net.sf.jasperreports.engine.JRException jrex) { jrex.printStackTrace(); }
     }
 

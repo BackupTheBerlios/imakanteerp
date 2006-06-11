@@ -495,7 +495,7 @@ public class FrmCaseOperationOut extends  imakante.com.vcomponents.iInternalFram
         "user_id",            //        17. (H)
         "\u0438\u0437\u0434\u0430\u043b \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430",            //        18. (V)
         "id_sdtn",            //        19. (H)
-        "name_sdtn",          //        20. (V)
+        "\u041A\u043E\u0447\u0430\u043D",          //        20. (V)
         "\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440"             //        21. (V)
     };
     
