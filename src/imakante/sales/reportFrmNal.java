@@ -761,22 +761,28 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         System.out.println(newString);
         
         if(this.jCheckBox1.isSelected() && this.jCheckBox4.isSelected()){
-            
+            if(jCheckBox5.isSelected()){
+             fileName="nal_simp_01.jasper";}else{fileName="nal_simp_01DDS.jasper";}
         }
         if(this.jCheckBox2.isSelected() && this.jCheckBox4.isSelected()){
-            fileName="nal_simp_01.jasper";
+            if(jCheckBox5.isSelected()){
+             fileName="nal_simp_01.jasper";}else{fileName="nal_simp_01DDS.jasper";}
         }
         if(this.jCheckBox3.isSelected() && this.jCheckBox4.isSelected()){
-            
+            if(jCheckBox5.isSelected()){
+             fileName="nal_simp_01.jasper";}else{fileName="nal_simp_01DDS.jasper";}
         }
         if(this.jCheckBox1.isSelected() && this.jCheckBox4.isSelected()==false){
-            fileName="nal_simp_03.jasper";
+             if(jCheckBox5.isSelected()){
+            fileName="nal_simp_03.jasper";}else{fileName="nal_simp_03DDS.jasper";}
         }
         if(this.jCheckBox2.isSelected() && this.jCheckBox4.isSelected()==false){
-            fileName="nal_simp_02.jasper";
+            if(jCheckBox5.isSelected()){
+            fileName="nal_simp_02.jasper";}else{fileName="nal_simp_02DDS.jasper";}
         }
         if(this.jCheckBox3.isSelected() && this.jCheckBox4.isSelected()==false){
-            
+               if(jCheckBox5.isSelected()){
+            fileName="nal_simp_03.jasper";}else{fileName="nal_simp_03DDS.jasper";}
         }
         try{
             initTable(newString, Names);
