@@ -7,9 +7,9 @@ public class aeCaseOpReport extends imakante.com.vcomponents.iDialog {
             java.util.HashMap hm, String jasperFile) {
         super(parent, modal, jasperFile);
         this.myParent = parent;
-        this.conn = conn;
-        this.hm = hm;
-        this.jasperFile = jasperFile;
+        this.setConn(conn);
+        this.setHash(hm);
+        this.setJasperFile(jasperFile);
         initComponents();
         try {
             setJReport();
@@ -104,11 +104,35 @@ public class aeCaseOpReport extends imakante.com.vcomponents.iDialog {
     private void setJReport() throws java.io.FileNotFoundException {
         try {
             jp = net.sf.jasperreports.engine.JasperFillManager.fillReport(
-                    new java.io.FileInputStream(new java.io.File(getClass().getResource(jasperFile).toURI())), hm, conn);
+                    new java.io.FileInputStream(new java.io.File(getClass().getResource(getJasperFile()).toURI())), getHash(), getConn());
             jrv = new net.sf.jasperreports.view.JRViewer(jp);
             
         } catch (java.io.FileNotFoundException fnfex) { fnfex.printStackTrace();
         } catch (java.net.URISyntaxException urisex) { urisex.printStackTrace();
         } catch (net.sf.jasperreports.engine.JRException jrex) { jrex.printStackTrace(); }
+    }
+
+    public String getJasperFile() {
+        return jasperFile;
+    }
+
+    public void setJasperFile(String jasperFile) {
+        this.jasperFile = jasperFile;
+    }
+
+    public java.util.HashMap getHash() {
+        return hm;
+    }
+
+    public void setHash(java.util.HashMap hm) {
+        this.hm = hm;
+    }
+
+    public java.sql.Connection getConn() {
+        return conn;
+    }
+
+    public void setConn(java.sql.Connection conn) {
+        this.conn = conn;
     }
 }
