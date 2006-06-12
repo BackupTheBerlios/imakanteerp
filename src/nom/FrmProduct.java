@@ -430,6 +430,22 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
         setExpertSheet("");
         setFlag(0);
         setId_Group(0);
+        isTypedPrice = false;
+        isTypedFee = false;
+        isTypedPromoPrice = false;
+        
+         price0 = 0;
+         price1 = 0;
+         price2 = 0;
+         price3 = 0;
+         dds = 20;
+         akcizi=0;
+         other=0;
+         promoprice = 0;
+         start = "2006-01-01";
+         stop =  "2006-01-01";       
+        
+        
         
         try {
             dialog = new aeProduct(this, true,true,0);
@@ -451,6 +467,9 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     
     private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
 // TODO add your handling code here:
+        isTypedPrice = false;
+        isTypedFee = false;
+        isTypedPromoPrice = false;
         if (table.getSelectedRow() != -1) {
             
             setRow(table.getSelectedRow());
@@ -539,7 +558,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     private int row;
     private  aeProduct dialog;
     private  aeConsigment consigment;
-    private int id_pm,id_n_group,id_ppp, id_pp,id_pf,id_pd,flag_pm,id_contragent;              //       \
+    private int id_pm=1,id_n_group=0,id_ppp=1, id_pp=1,id_pf=1,id_pd=1,flag_pm,id_contragent;              //       \
     private int barcod_pm;
     private int min_pm;                                                   //         >
     private double max_pop_pm;
@@ -549,7 +568,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     private int id_curs =1 ; 
     private int id_n_contragent;//        /
     private double promoprice;
-    private String start,  stop;
+    private String start = "2006-01-01",  stop = "2006-01-01";
     private imakante.com.vcomponents.iFrame myframe;
     private java.sql.Connection conn;
     private  java.sql.ResultSet rs;

@@ -253,6 +253,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel1.add(jTextFieldSName, gridBagConstraints);
 
+        jTextFieldBarCod.setText("000000");
         jTextFieldBarCod.setPreferredSize(new java.awt.Dimension(170, 20));
         jTextFieldBarCod.setInputVerifier(new imakante.com.InputIntegerVerifier(10));
         jTextFieldBarCod.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -383,6 +384,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel1.add(jTextFieldPromoPrices, gridBagConstraints);
 
+        jTextFieldMaxPOP.setText("0");
         jTextFieldMaxPOP.setPreferredSize(new java.awt.Dimension(170, 20));
         jTextFieldMaxPOP.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextFieldMaxPOP.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -741,7 +743,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         } catch(Exception e) {
             e.printStackTrace();
         }
-        if(myParent.getId_PF()!=0) {
+        if(myParent.getId_PF()!=0  && !myParent.isTypedFee) {
             String  fee[] = myParent.getCountriesT().getProdictFee(myParent.getId_PF());
             jTextFieldFee.setText(fee[0]);
         } else jTextFieldFee.setText(myParent.getViewFee());
@@ -808,7 +810,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         } catch(Exception e) {
             e.printStackTrace();
         }
-        if(myParent.getId_PF()!=0) {
+        if(myParent.getId_PF()!=0  && !myParent.isTypedFee) {
             String  fee[] = myParent.getCountriesT().getProdictFee(myParent.getId_PF());
             jTextFieldFee.setText(fee[0]);
         } else jTextFieldFee.setText(myParent.getViewFee());
@@ -839,7 +841,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         } catch(Exception e) {
             e.printStackTrace();
         }
-        if (myParent.getId_PPP()!=0) {
+        if (myParent.getId_PPP()!=0 && !myParent.isTypedPromoPrice) {
             String promotion_price[] = myParent.getCountriesT().getProductPromotionPrice(myParent.getId_PPP());
             double p0 = Double.parseDouble(promotion_price[0]);
             double dds_ = 20;
@@ -869,20 +871,23 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
 // TODO add your handling code here:
         
         try {
-            if(isNew && !myParent.isTypedPrice) {
-                ProductPriceDialog =  new aeProductPrice(myParent,true,myParent.getId_PP(),true);
-                ProductPriceDialog.setVisible(true);
-                
-            } else {
-                ProductPriceDialog =  new aeProductPrice(myParent,true,myParent.getId_PP(),false);
-                ProductPriceDialog.setVisible(true);
-            }
+            if(isNew && !myParent.isTypedPrice) 
+            {
+              ProductPriceDialog =  new aeProductPrice(myParent,true,myParent.getId_PP(),true);
+              ProductPriceDialog.setVisible(true);  
+               
+            } else 
+                 {
+                  ProductPriceDialog =  new aeProductPrice(myParent,true,myParent.getId_PP(),false);
+                  ProductPriceDialog.setVisible(true);  
+                 }
             
             
         } catch(Exception e) {
             e.printStackTrace();
         }
-        if (myParent.getId_PP()!=0) {
+        if (myParent.getId_PP()!=0 && !myParent.isTypedPrice) 
+        {
             String price[] = myParent.getCountriesT().getProductPrice(myParent.getId_PP());
             double p0 = Double.parseDouble(price[0]);
             double dds_ = 20;
@@ -916,7 +921,8 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         } catch(Exception e) {
             e.printStackTrace();
         }
-        if (myParent.getId_PP()!=0) {
+        if (myParent.getId_PP()!=0 && !myParent.isTypedPrice)
+        {
             String price[] = myParent.getCountriesT().getProductPrice(myParent.getId_PP());
             double p0 = Double.parseDouble(price[0]);
             double dds_ = 20;
@@ -1025,7 +1031,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         } catch(Exception e) {
             e.printStackTrace();
         }
-        if (myParent.getId_PPP()!=0) {
+        if (myParent.getId_PPP()!=0 && !myParent.isTypedPromoPrice) {
             String promotion_price[] = myParent.getCountriesT().getProductPromotionPrice(myParent.getId_PPP());
             double p0 = Double.parseDouble(promotion_price[0]);
             double dds_ = 20;
@@ -1058,6 +1064,8 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
             
             int v1,v2,v3,m1,m2,m3;
             v1 = 1;
+            try
+            {
             v2 = Integer.parseInt(jTextFieldDescript2.getText());
             v3 = Integer.parseInt(jTextFieldDescript3.getText());
             m1 = myParent.getCountriesT().getIndexConnOfIdColumn()[jComboBoxDescript1.getSelectedIndex()];
@@ -1066,18 +1074,42 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
             
             
             myParent.setId_PD( myParent.getCountriesT().setProductDescriptionColumn(v1,v2,v3,m1,m2,m3));
+            }
+            catch(Exception xx){myParent.setId_PD(1);};
             if(myParent.isTypedFee) myParent.setId_PF(myParent.saveProductFeeToDB());
             if(myParent.isTypedPromoPrice) myParent.setId_PPP(myParent.saveProductPromotionPriceToDB());
             if(myParent.isTypedPrice) myParent.setId_PP(myParent.saveNewPriceToDb());
             myParent.isTypedFee = false;
             myParent.isTypedPromoPrice = false;
             myParent.isTypedPrice = false;
-            if((myParent.getId_Group()==-1) | (myParent.getId_PF()==-1) |
-                    (myParent.getId_PD()==-1) | (myParent.getId_PP()==-1) | (myParent.getId_PPP()==-1)) {
-                // syob6tenie da se vuvede naseleneto mqsto, MOL i OSO;
-                showMessage();
+            if(myParent.getId_Group()<1)
+              {
+                myParent.setId_Group(1);
+              }
+              if(myParent.getId_PF()<1)
+                {
+                  myParent.setId_PF(1);
+                }
+                if(myParent.getId_PD()<1)
+                  {
+                    myParent.setId_PD(1);
+                  } 
+                  if(myParent.getId_PP()<1)
+                    {
+                      myParent.setId_PP(1);
+                    }  
+                    if(myParent.getId_PPP()<1)
+                      {
+                       myParent.setId_PPP(1);
+                      }
+                    
                 
-            } else {
+                   
+                
+                
+                
+          
+             {
                 
                 if(setAllVariables()) {
                     
@@ -1116,9 +1148,44 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
                 m3 = myParent.getCountriesT().getIndexConnOfIdColumn()[jComboBoxDescript3.getSelectedIndex()];
                 myParent.getCountriesT().updateProductDescriprionColumn(myParent.getId_PD(),v1,v2,v3,m1,m2,m3);
                 
-                if(myParent.isTypedPrice) myParent.updateNewPriceToDb();
-                if(myParent.isTypedFee) myParent.updateProductFeeToDB();
-                if(myParent.isTypedPromoPrice) myParent.updateProductPromotionPriceToDB();
+                if(myParent.isTypedPrice ) 
+                 {
+                   if(myParent.getId_PP()>1)
+                   {
+                     myParent.updateNewPriceToDb();  
+                   }
+                   else
+                   {
+                     myParent.setId_PP(myParent.saveNewPriceToDb());
+                   }
+                 }
+                  
+                if(myParent.isTypedFee)
+                {
+                    if( myParent.getId_PF()>1)
+                    {
+                       myParent.updateProductFeeToDB();  
+                    }
+                    else
+                    {
+                       myParent.setId_PF(myParent.saveProductFeeToDB());
+                    }
+                } 
+                    
+                    
+                   
+                if(myParent.isTypedPromoPrice)
+                {
+                  if(myParent.getId_PPP()>1)  
+                  {
+                     myParent.updateProductPromotionPriceToDB();   
+                  }
+                  else
+                  {
+                     myParent.setId_PPP(myParent.saveProductPromotionPriceToDB()); 
+                  }
+                }  
+                   
                 myParent.isTypedPrice = false;
                 myParent.isTypedFee = false;
                 myParent.isTypedPromoPrice = false;
@@ -1397,8 +1464,8 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
             // showMessage();
             isOk = false;
         }
-        if( (myParent.getId_PF() ==0) | (myParent.getId_Group()==0) | (myParent.getId_PP()==0) |
-                (myParent.getId_PPP() ==0) | (myParent.getId_PD()==0)) {
+        if( (myParent.getId_PF() ==0) || (myParent.getId_Group()==0) || (myParent.getId_PP()==0) ||
+                (myParent.getId_PPP() ==0) || (myParent.getId_PD()==0)) {
             isOk = false;
         }
         return isOk;

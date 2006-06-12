@@ -89,6 +89,7 @@ public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.setMinimumSize(new java.awt.Dimension(414, 200));
         jPanel2.setPreferredSize(new java.awt.Dimension(370, 200));
         jLabel1.setText("\u041f\u0440\u043e\u043c\u043e\u0446\u0438\u043e\u043d\u0430\u043b\u043d\u0430 \u0446\u0435\u043d\u0430:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -309,7 +310,7 @@ public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog
 private void getPrices()
 {
     String prices[];
-    if(id_price>0)
+    if(id_price>0 && !myParent.isTypedPromoPrice)
     {
      prices = myParent.getCountriesT().getProductPromotionPrice(id_price);
     }

@@ -1091,7 +1091,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
     private void getDataByID() {
         String prices[] = new String[4];
         String curs[] = null;
-        if(id_price>0) {
+        if(id_price>0 && !myParent.isTypedPrice) {
             prices = myParent.getCountriesT().getProductPrice(id_price);
         } else {
             prices = myParent.getNewPrice();

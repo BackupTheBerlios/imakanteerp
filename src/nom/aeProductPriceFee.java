@@ -308,7 +308,7 @@ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
 private void getAllFee()
 {
     String fee[];
-    if(id_fee>0)
+    if(id_fee>0 && !myParent.isTypedFee)
     {
      fee = myParent.getCountriesT().getProdictFee(id_fee);
     }
