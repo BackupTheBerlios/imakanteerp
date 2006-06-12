@@ -35,12 +35,9 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
         this.setTitle("\u0414\u043E\u0441\u0442\u0430\u0432\u043D\u0430 \u0438 \u0446\u0435\u043D\u043E\u0432\u0430 \u043B\u0438\u0441\u0442\u0430");
         jTextDostPrice.requestFocus();
         
-        try
-        {
-        stDDS =  Integer.parseInt(myParent.getProductFee()[0]);
-        }
-        catch(Exception x1)
-        {
+        try {
+            stDDS =  Integer.parseInt(myParent.getProductFee()[0]);
+        } catch(Exception x1) {
             stDDS = 20;
         }
     }
@@ -482,7 +479,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jTextFieldPrice3WithDDSFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice3WithDDSFocusLost
 // TODO add your handling code here:
      /*    try {
@@ -491,12 +488,12 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
                 if (p3dds >= p0dds )
                 {
                     p3 = p3dds/(1+stDDS/100);
-                    p0 = p0dds/(1+stDDS/100);        
+                    p0 = p0dds/(1+stDDS/100);
                     p_p3 = (100 * (p3-p0)) / p0;
-                                      
+      
                 }
                 else showMessage();
-                
+      
                 jTextFieldProcent3.setText( doubleRoundToString(3,p_p3));
                 jTextFieldPrice3WithDDS.setBackground(new java.awt.Color(255, 255, 255));
                 jTextFieldPrice3.setText(doubleRoundToString(6,p3));
@@ -506,7 +503,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
                 jTextFieldPrice3WithDDS.setBackground(new java.awt.Color(255, 204, 204));
           }*/
     }//GEN-LAST:event_jTextFieldPrice3WithDDSFocusLost
-
+    
     private void jTextFieldPrice2WithDDSFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice2WithDDSFocusLost
 // TODO add your handling code here:
       /*      try {
@@ -515,12 +512,12 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
                 if (p2dds >= p0dds )
                 {
                     p2 = p2dds/(1+stDDS/100);
-                    p0 = p0dds/(1+stDDS/100);        
+                    p0 = p0dds/(1+stDDS/100);
                     p_p2 = (100 * (p2-p0)) / p0;
-                                      
+       
                 }
                 else showMessage();
-                
+       
                 jTextFieldProcent2.setText( doubleRoundToString(3,p_p2));
                 jTextFieldPrice2WithDDS.setBackground(new java.awt.Color(255, 255, 255));
                 jTextFieldPrice2.setText(doubleRoundToString(6,p2));
@@ -530,21 +527,19 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
                 jTextFieldPrice2WithDDS.setBackground(new java.awt.Color(255, 204, 204));
           }*/
     }//GEN-LAST:event_jTextFieldPrice2WithDDSFocusLost
-
+    
     private void jTextFieldPrice3WithDDSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPrice3WithDDSKeyPressed
 // TODO add your handling code here:
-         if(evt.getKeyCode()==evt.VK_ENTER) {
+        if(evt.getKeyCode()==evt.VK_ENTER) {
             try {
                 p0dds = Double.parseDouble(jTextDostPriceWithDDS.getText());
                 p3dds = Double.parseDouble(jTextFieldPrice3WithDDS.getText());
-                if (p3dds >= p0dds )
-                {
+                if (p3dds >= p0dds ) {
                     p3 = p3dds/(1+stDDS/100);
-                    p0 = p0dds/(1+stDDS/100);        
+                    p0 = p0dds/(1+stDDS/100);
                     p_p3 = (100 * (p3-p0)) / p0;
-                                      
-                }
-                else showMessage();
+                    
+                } else showMessage();
                 
                 jTextFieldProcent3.setText( doubleRoundToString(3,p_p3));
                 jTextFieldPrice3WithDDS.setBackground(new java.awt.Color(255, 255, 255));
@@ -553,24 +548,22 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
             } catch(NumberFormatException e) {
                 showMessage();
                 jTextFieldPrice3WithDDS.setBackground(new java.awt.Color(255, 204, 204));
-          }
-       }
+            }
+        }
     }//GEN-LAST:event_jTextFieldPrice3WithDDSKeyPressed
-
+    
     private void jTextFieldPrice2WithDDSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPrice2WithDDSKeyPressed
 // TODO add your handling code here:
-          if(evt.getKeyCode()==evt.VK_ENTER) {
+        if(evt.getKeyCode()==evt.VK_ENTER) {
             try {
                 p0dds = Double.parseDouble(jTextDostPriceWithDDS.getText());
                 p2dds = Double.parseDouble(jTextFieldPrice2WithDDS.getText());
-                if (p2dds >= p0dds )
-                {
+                if (p2dds >= p0dds ) {
                     p2 = p2dds/(1+stDDS/100);
-                    p0 = p0dds/(1+stDDS/100);        
+                    p0 = p0dds/(1+stDDS/100);
                     p_p2 = (100 * (p2-p0)) / p0;
-                                      
-                }
-                else showMessage();
+                    
+                } else showMessage();
                 
                 jTextFieldProcent2.setText( doubleRoundToString(3,p_p2));
                 jTextFieldPrice2WithDDS.setBackground(new java.awt.Color(255, 255, 255));
@@ -579,25 +572,25 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
             } catch(NumberFormatException e) {
                 showMessage();
                 jTextFieldPrice2WithDDS.setBackground(new java.awt.Color(255, 204, 204));
-          }
-       }
+            }
+        }
     }//GEN-LAST:event_jTextFieldPrice2WithDDSKeyPressed
-
+    
     private void jTextFieldPrice1WithDDSFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice1WithDDSFocusLost
 // TODO add your handling code here:
-         
+        
     /*       try {
                 p0dds = Double.parseDouble(jTextDostPriceWithDDS.getText());
                 p1dds = Double.parseDouble(jTextFieldPrice1WithDDS.getText());
                 if (p1dds >= p0dds )
                 {
                     p1 = p1dds/(1+stDDS/100);
-                    p0 = p0dds/(1+stDDS/100);        
+                    p0 = p0dds/(1+stDDS/100);
                     p_p1 = (100 * (p1-p0)) / p0;
-                                      
+     
                 }
                 else showMessage();
-                
+     
                 jTextFieldProcent1.setText( doubleRoundToString(3,p_p1));
                 jTextFieldPrice1WithDDS.setBackground(new java.awt.Color(255, 255, 255));
                 jTextFieldPrice1.setText(doubleRoundToString(6,p1));
@@ -606,35 +599,33 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
                 showMessage();
                 jTextFieldPrice1WithDDS.setBackground(new java.awt.Color(255, 204, 204));
           }
-       */
+     */
     }//GEN-LAST:event_jTextFieldPrice1WithDDSFocusLost
-
+    
     private void jTextFieldPrice1WithDDSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPrice1WithDDSKeyPressed
 // TODO add your handling code here:
-       if(evt.getKeyCode()==evt.VK_ENTER) {
+        if(evt.getKeyCode()==evt.VK_ENTER) {
             try {
                 p0dds = Double.parseDouble(jTextDostPriceWithDDS.getText());
                 p1dds = Double.parseDouble(jTextFieldPrice1WithDDS.getText());
-                if (p1dds >= p0dds )
-                {
+                if (p1dds >= p0dds ) {
                     p1 = p1dds/(1+stDDS/100);
-                    p0 = p0dds/(1+stDDS/100);        
+                    p0 = p0dds/(1+stDDS/100);
                     p_p1 = (100 * (p1-p0)) / p0;
-                                      
-                }
-                else showMessage();
+                    
+                } else showMessage();
                 
                 jTextFieldProcent1.setText( doubleRoundToString(3,p_p1));
                 jTextFieldPrice1WithDDS.setBackground(new java.awt.Color(255, 255, 255));
                 jTextFieldPrice1.setText(doubleRoundToString(6,p1));
-                jTextFieldPrice1WithDDS.transferFocus();
+                this.jTextFieldProcent1.requestFocus();
             } catch(NumberFormatException e) {
                 showMessage();
                 jTextFieldPrice1WithDDS.setBackground(new java.awt.Color(255, 204, 204));
-          }
-       }
+            }
+        }
     }//GEN-LAST:event_jTextFieldPrice1WithDDSKeyPressed
-
+    
     private void jTextDostPriceWithDDSFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextDostPriceWithDDSFocusLost
 // TODO add your handling code here:
     /*     if(jTextDostPriceWithDDS.getText().length()>0) {
@@ -644,22 +635,22 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
             jTextFieldProcent3.setEnabled(true);
             jTextFieldProcent2.setEnabled(true);
             jTextFieldProcent1.setEnabled(true);
-            
+     
             jTextFieldPrice1WithDDS.setEditable(true);
             jTextFieldPrice2WithDDS.setEditable(true);
             jTextFieldPrice3WithDDS.setEditable(true);
             p0dds = Double.parseDouble(jTextDostPriceWithDDS.getText());
             p0 =p0dds/(1+stDDS/100);
             jTextDostPrice.setText(doubleRoundToString(6,p0));
-                
-               
-            
+     
+     
+     
         }*/
     }//GEN-LAST:event_jTextDostPriceWithDDSFocusLost
-
+    
     private void jTextDostPriceWithDDSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextDostPriceWithDDSKeyPressed
 // TODO add your handling code here:
-         if(jTextDostPriceWithDDS.getText().length()>0) {
+        if(jTextDostPriceWithDDS.getText().length()>0) {
             jTextFieldPrice1.setEnabled(true);
             jTextFieldPrice2.setEnabled(true);
             jTextFieldPrice3.setEnabled(true);
@@ -671,8 +662,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
             jTextFieldPrice2WithDDS.setEnabled(true);
             jTextFieldPrice3WithDDS.setEnabled(true);
             p0dds = Double.parseDouble(jTextDostPriceWithDDS.getText());
-            if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER)
-            {
+            if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
                 p0 =p0dds/(1+stDDS/100);
                 
                 jTextDostPrice.setText(doubleRoundToString(6,p0));
@@ -681,10 +671,10 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
             }
         }
     }//GEN-LAST:event_jTextDostPriceWithDDSKeyPressed
-
+    
     private void jTextFieldValueKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldValueKeyPressed
 // TODO add your handling code here:
-         String curs[] = null;
+        String curs[] = null;
         try {
             java.sql.ResultSet r1 = myParent.getCountriesT().getShowConteinCurs();
             shContein= new showConteinCurs(myParent,true,r1,myParent.getCountriesT().getConn());
@@ -712,7 +702,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
             selectComboBoxItem = Integer.parseInt(curs[1]);
             
             myParent.setTMPINT(0);
-             jTextFieldValue.transferFocus();
+            jTextFieldValue.transferFocus();
         } catch(Exception e) {
             showMessage();
         }
@@ -721,7 +711,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
     
     private void jTextFieldProcent3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldProcent3FocusLost
       /*  try {
-            
+       
             p_p3 = Double.parseDouble(jTextFieldProcent3.getText());
             p3 = (p_p3/100)*p0 + p0;
             jTextFieldPrice3.setText( doubleRoundToString(6,p3));
@@ -733,7 +723,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
             jTextFieldProcent3.setBackground(new java.awt.Color(255, 204, 204));
             showMessage();
         }
-        */
+       */
     }//GEN-LAST:event_jTextFieldProcent3FocusLost
     
     private void jTextFieldProcent3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldProcent3KeyPressed
@@ -747,7 +737,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
                 jTextFieldProcent3.setBackground(new java.awt.Color(255, 255, 255));
                 p3dds = (p3*stDDS/100)+p3;
                 jTextFieldPrice3WithDDS.setText(doubleRoundToString(6,p3dds));
-                jTextFieldProcent3.transferFocus();
+                this.jTextFieldValue.requestFocus();
             } catch(NumberFormatException e) {
                 showMessage();
                 jTextFieldProcent3.setBackground(new java.awt.Color(255, 204, 204));
@@ -774,8 +764,8 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
             showMessage();
             jTextFieldPrice3.setBackground(new java.awt.Color(255, 204, 204));
         }
-        
-        */
+     
+     */
     }//GEN-LAST:event_jTextFieldPrice3FocusLost
     
     private void jTextFieldPrice3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPrice3KeyPressed
@@ -783,13 +773,11 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
         if(evt.getKeyCode()==evt.VK_ENTER) {
             try {
                 p3 = Double.parseDouble(jTextFieldPrice3.getText());
-                if (p3 >= p0) 
-                {
+                if (p3 >= p0) {
                     p_p3 = (100 * (p3-p0)) / p0;
                     
                     p3dds = (p3*stDDS/100)+p3;
-                }
-                else showMessage();
+                } else showMessage();
                 jTextFieldProcent3.setText( doubleRoundToString(3,p_p3));
                 jTextFieldPrice3.setBackground(new java.awt.Color(255, 255, 255));
                 jTextFieldPrice3WithDDS.setText(doubleRoundToString(6,p3dds));
@@ -811,9 +799,9 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
                 p2 = (p_p2/100)*p0 + p0;
                 jTextFieldPrice2.setText( doubleRoundToString(6,p2));
                 jTextFieldPrice2.setBackground(new java.awt.Color(255, 255, 255));
-                 p2dds = (p2*stDDS/100)+p2;
+                p2dds = (p2*stDDS/100)+p2;
                 jTextFieldPrice2WithDDS.setText(doubleRoundToString(6,p2dds));
-                jTextFieldProcent2.transferFocus();
+                jTextFieldProcent3.requestFocus();
             } catch(NumberFormatException e) {
                 showMessage();
                 jTextFieldPrice2.setBackground(new java.awt.Color(255, 204, 204));
@@ -842,7 +830,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
     private void jTextFieldPrice2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice2FocusLost
   /*      try {
 // TODO add your handling code here:
-            
+   
             p0 = Double.parseDouble(jTextDostPrice.getText());
             p2 = Double.parseDouble(jTextFieldPrice2.getText());
             if(p2 >= p0)
@@ -859,7 +847,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
             showMessage();
             jTextFieldPrice2.setBackground(new java.awt.Color(255, 204, 204));
         }
-        */
+   */
     }//GEN-LAST:event_jTextFieldPrice2FocusLost
     
     private void jTextFieldPrice2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPrice2KeyPressed
@@ -868,13 +856,11 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
             try {
                 p0 = Double.parseDouble(jTextDostPrice.getText());
                 p2 = Double.parseDouble(jTextFieldPrice2.getText());
-                if(p2 > p0)
-                {
+                if(p2 > p0) {
                     p_p2 = (100 * (p2-p0)) / p0;
                     
                     p2dds = (p2*stDDS/100)+p2;
-                }
-                else showMessage();
+                } else showMessage();
                 jTextFieldProcent2.setText( doubleRoundToString(3,p_p2));
                 jTextFieldPrice2.setBackground(new java.awt.Color(255, 255, 255));
                 jTextFieldPrice2WithDDS.setText(doubleRoundToString(6,p2dds));
@@ -900,7 +886,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
                 
                 p1dds = (p1*stDDS/100)+p1;
                 jTextFieldPrice1WithDDS.setText(doubleRoundToString(6,p1dds));
-                jTextFieldProcent1.transferFocus();
+                jTextFieldProcent2.requestFocus();
             } catch(NumberFormatException e) {
                 showMessage();
                 jTextFieldProcent1.setBackground(new java.awt.Color(255, 204, 204));
@@ -928,17 +914,17 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
     
     private void jTextFieldPrice1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice1FocusLost
 /*        try {
-            
+ 
             p0 = Double.parseDouble(jTextDostPrice.getText());
             p1 = Double.parseDouble(jTextFieldPrice1.getText());
             if(p1 >= p0)
             {
                 p_p1 = (100 * (p1-p0)) / p0;
-                
+ 
                 p1dds = (p1*stDDS/100)+p1;
             }
             else showMessage();
-            
+ 
             jTextFieldProcent1.setText( doubleRoundToString(3,p_p1));
             jTextFieldProcent1.setBackground(new java.awt.Color(255, 255, 255));
             jTextFieldPrice1WithDDS.setText(doubleRoundToString(6,p1dds));
@@ -948,7 +934,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
             jTextFieldPrice1.setBackground(new java.awt.Color(255, 204, 204));
             jTextFieldPrice1.requestFocus();
         }
-        */
+ */
     }//GEN-LAST:event_jTextFieldPrice1FocusLost
     
     private void jTextFieldPrice1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPrice1KeyPressed
@@ -958,13 +944,11 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
             try {
                 p0 = Double.parseDouble(jTextDostPrice.getText());
                 p1 = Double.parseDouble(jTextFieldPrice1.getText());
-                if (p1 >= p0 )
-                {
+                if (p1 >= p0 ) {
                     p_p1 = (100 * (p1-p0)) / p0;
                     
                     p1dds = (p1*stDDS/100)+p1;
-                }
-                else showMessage();
+                } else showMessage();
                 
                 jTextFieldProcent1.setText( doubleRoundToString(3,p_p1));
                 jTextFieldPrice1.setBackground(new java.awt.Color(255, 255, 255));
@@ -992,12 +976,11 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
             jTextFieldPrice2WithDDS.setEnabled(true);
             jTextFieldPrice3WithDDS.setEnabled(true);
             p0 = Double.parseDouble(jTextDostPrice.getText());
-            if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER)
-            {
+            if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
                 p0dds = (p0*stDDS/100)+p0;
                 jTextDostPriceWithDDS.setText(doubleRoundToString(3,p0dds));
                 
-                jTextFieldPrice1.requestFocus();
+                this.jTextFieldPrice1WithDDS.requestFocus();
             }
         }
     }//GEN-LAST:event_jTextDostPriceKeyPressed
@@ -1151,16 +1134,16 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
         jTextFieldProcent3.setText( doubleRoundToString(3,p_p3));
         
         p0dds = (p0*stDDS/100)+p0;
-         jTextDostPriceWithDDS.setText(doubleRoundToString(6,p0dds));
+        jTextDostPriceWithDDS.setText(doubleRoundToString(6,p0dds));
         
-         p1dds = (p1*stDDS/100)+p1;
-         jTextFieldPrice1WithDDS.setText(doubleRoundToString(6,p1dds));
-         
-          p2dds = (p2*stDDS/100)+p2;
-         jTextFieldPrice2WithDDS.setText(doubleRoundToString(6,p2dds));
-         
-          p3dds = (p3*stDDS/100)+p3;
-         jTextFieldPrice3WithDDS.setText(doubleRoundToString(6,p3dds));
+        p1dds = (p1*stDDS/100)+p1;
+        jTextFieldPrice1WithDDS.setText(doubleRoundToString(6,p1dds));
+        
+        p2dds = (p2*stDDS/100)+p2;
+        jTextFieldPrice2WithDDS.setText(doubleRoundToString(6,p2dds));
+        
+        p3dds = (p3*stDDS/100)+p3;
+        jTextFieldPrice3WithDDS.setText(doubleRoundToString(6,p3dds));
         
         
     }
