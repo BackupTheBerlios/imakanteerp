@@ -80,6 +80,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         docMenu_razp = new javax.swing.JMenu();
         razpMenu_pol = new javax.swing.JMenuItem();
         razpMenu_prehv = new javax.swing.JMenuItem();
+        razMenu_vryst = new javax.swing.JMenuItem();
         docMenu_nar = new javax.swing.JMenuItem();
         docMenu_prot = new javax.swing.JMenu();
         protMenu_rev = new javax.swing.JMenuItem();
@@ -296,6 +297,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         programMenu.setFont(menuFont);
         docMenu.setText("\u0414\u041e\u041a\u0423\u041c\u0415\u041d\u0422\u0418");
         docMenu_prod.setText("\u041f\u0440\u043e\u0434\u0430\u0436\u0431\u0438");
+        docMenu_prod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                docMenu_prodActionPerformed(evt);
+            }
+        });
+
         docMenu.add(docMenu_prod);
 
         docMenu_fak.setText("\u0424\u0430\u043a\u0442\u0443\u0440\u0438");
@@ -337,6 +344,15 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         });
 
         docMenu_razp.add(razpMenu_prehv);
+
+        razMenu_vryst.setText("\u0412\u0440\u044a\u0449\u0430\u043d\u0435");
+        razMenu_vryst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                razMenu_vrystActionPerformed(evt);
+            }
+        });
+
+        docMenu_razp.add(razMenu_vryst);
 
         docMenu.add(docMenu_razp);
 
@@ -966,6 +982,30 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         setBounds((screenSize.width-757)/2, (screenSize.height-458)/2, 757, 458);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void razMenu_vrystActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_razMenu_vrystActionPerformed
+// TODO add your handling code here:
+        levelDialog1 = new levelDialog(this,true,4,stokavaRazpiskaArea);
+        levelDialog1.setVisible(true);
+        int user = userID_ndtur; //2;
+        int level = levelForWork;// 1;
+        int pricelist = 1;
+        int doctype = aeDocumentFacade.RAZPISKA_ZA_VRYSHTANE;
+        int storagedocdacade = numberStorage;
+        loadFrmDocFacade("\u0420\u0430\u0437\u043F\u0438\u0441\u043A\u0430 \u0437\u0430 \u0432\u0440\u044A\u0449\u0430\u043D\u0435", user, level, pricelist, doctype, storagedocdacade, false, null, null );
+    }//GEN-LAST:event_razMenu_vrystActionPerformed
+
+    private void docMenu_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docMenu_prodActionPerformed
+// TODO add your handling code here:
+        levelDialog1 = new levelDialog(this,true,4,stokavaRazpiskaArea);
+        levelDialog1.setVisible(true);
+        int user = userID_ndtur; //2;
+        int level = levelForWork;// 1;
+        int pricelist = 1;
+        int doctype = aeDocumentFacade.STOKOVA_RAZPISKA;
+        int storagedocdacade = numberStorage;
+        loadFrmDocFacade("\u0421\u0422\u041e\u041a\u041e\u0412\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );
+    }//GEN-LAST:event_docMenu_prodActionPerformed
+
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
          loadSlujParam();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
@@ -1072,14 +1112,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_docMenu_offerActionPerformed
     
     private void razpMenu_prehvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_razpMenu_prehvActionPerformed
-        levelDialog1 = new levelDialog(this,true,4,stokavaRazpiskaArea);
-        levelDialog1.setVisible(true);
-        int user = userID_ndtur; //2;
-        int level = levelForWork;// 1;
-        int pricelist = 1;
-        int doctype = aeDocumentFacade.STOKOVA_RAZPISKA;
-        int storagedocdacade = numberStorage;
-        loadFrmDocFacade("\u0421\u0422\u041e\u041a\u041e\u0412\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );
+       
     }//GEN-LAST:event_razpMenu_prehvActionPerformed
     
     private void fakMenu_oprActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fakMenu_oprActionPerformed
@@ -1405,6 +1438,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenuItem protMenu_lipsa;
     private javax.swing.JMenuItem protMenu_preo;
     private javax.swing.JMenuItem protMenu_rev;
+    private javax.swing.JMenuItem razMenu_vryst;
     private javax.swing.JMenuItem razpMenu_pol;
     private javax.swing.JMenuItem razpMenu_prehv;
     private javax.swing.JMenu sluMenu;
@@ -1476,6 +1510,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private static LinkedHashMap narezdaneZaPrehvylqneArea = new LinkedHashMap();  //NAREZDANE_ZA_PREHVYRQNE;
     private static LinkedHashMap stokavaRazpiskaArea = new LinkedHashMap();  // STOKOVA_RAZPISKA;
     private static LinkedHashMap priematelnaRazpiskaArea = new LinkedHashMap();  // PRIEMATELNA_RAZPISKA;
+    
+    private static LinkedHashMap razpiskaVryshtane = new LinkedHashMap();  // RAZPISKA_ZA_VRYSHTANE;
     
     public static int numberStorage=1;
     
@@ -1727,7 +1763,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
                 stokavaRazpiskaArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
                 System.out.println("STOKOVA_RAZPISKA: " + rs.getString("area_number_sdtn"));
             }
-            
+            rs = stm.executeQuery(StrQ + "'1100'"); // RAZPISKA_ZA_VRYSHTANE
+            while(rs.next()) {
+                razpiskaVryshtane.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
+                System.out.println("RAZPISKA_ZA_VRYSHTANE: " + rs.getString("area_number_sdtn"));
+            }
             rs = stm.executeQuery(StrQ + "'600'"); // PRIEMATELNA_RAZPISKA
             while(rs.next()) {
                 priematelnaRazpiskaArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
@@ -1736,12 +1776,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             rs = stm.executeQuery(StrQ + "'202'"); // dany4na faktura
             while(rs.next()) {
                 danFaktArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
-                System.out.println("PRIEMATELNA_RAZPISKA: " + rs.getString("area_number_sdtn"));
+                System.out.println("FAKTURA - DANYCHNA: " + rs.getString("area_number_sdtn"));
             }
             rs = stm.executeQuery(StrQ + "'201'"); // oprostena faktura
             while(rs.next()) {
                 oprFaktArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
-                System.out.println("PRIEMATELNA_RAZPISKA: " + rs.getString("area_number_sdtn"));
+                System.out.println("FAKTURA - OPROSTENA: " + rs.getString("area_number_sdtn"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

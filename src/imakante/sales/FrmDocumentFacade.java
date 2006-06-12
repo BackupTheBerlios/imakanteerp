@@ -1585,6 +1585,53 @@ public void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti na
                           
                           break;
                          }
+                      case aeDocumentFacade.RAZPISKA_ZA_VRYSHTANE :
+                         {
+                          setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("in_contragent_df"))); //0
+                          setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента1"))); //4
+                          setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат1"))); //2
+                          setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер1")));  //3
+                          
+                          setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес1"))); //5
+                          setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента1"))); //6
+                          setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ1"))) ;
+                          int code=0;
+                          try
+                          {
+                           code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента1"));
+                          setCodeContragent(String.valueOf(code));                                                            //1
+                          }
+                          catch(Exception x)
+                          {
+                              
+                          }
+                         
+                        /*  setID_Obekt((Integer) table.getValueAt(getRow(), getColumnIndex("out_obekt_df")));       
+                          setCodeObekt((String)table.getValueAt(getRow(), getColumnIndex("Код на обекта2")));
+                          setNameObekt((String) table.getValueAt(getRow(), getColumnIndex("Име на обекта2")));
+                          setAddressObekt((String) table.getValueAt(getRow(), getColumnIndex("Адрес на обекта2")));
+                          setTelObekt(" ");
+                         */
+                          setID_Deliver((Integer) table.getValueAt(getRow(), getColumnIndex("delivere_df")));        
+                          setID_Distributor((Integer) table.getValueAt(getRow(), getColumnIndex("distributor_df")));
+                          try
+                          {
+                            code = (Integer)table.getValueAt(getRow(),getColumnIndex("Код на дистрибутор"));
+                            setDistributorDocFacade(String.valueOf(code)); 
+                            code =(Integer)table.getValueAt(getRow(),getColumnIndex("Код на доставчик"));
+                            setDeliverDocFacade(String.valueOf(code)); 
+                          }
+                          catch(Exception x){};
+                          
+                         
+                         
+                          d1 = (java.sql.Date) table.getValueAt(getRow(),getColumnIndex("Дата на доставяне"));
+                          setDeliverDate(d1.toString());
+                          System.out.println(String.valueOf(getID_Deliver()));
+                          System.out.println(String.valueOf(getID_Distributor()));  
+                          
+                          break;
+                         }
                  }
         
         
@@ -1799,6 +1846,18 @@ private void hideDocimentTypeColumns(int doctype)
             
             break;
         }
+       case aeDocumentFacade.RAZPISKA_ZA_VRYSHTANE:
+        {
+            // skrivane na koloni  na kontragent s index "2" nakraq
+            hideDocimentTypeColumns_Contragent(OUT); 
+            
+            hideDocimentTypeColumns_Obekt(IN);
+            hideDocimentTypeColumns_Obekt(OUT);
+                  
+            HideColumns(getColumnIndex("Склад (към)"));
+            
+            break;
+        }
        case aeDocumentFacade.OFERTA :
         {
            hideDocimentTypeColumns_Contragent(IN); 
@@ -1917,6 +1976,12 @@ private void moveDocimentTypeColumns(int doctype)
             table.moveColumn(getColumnIndex("Дата на документа"),1);
             break;
         }
+        case aeDocumentFacade.RAZPISKA_ZA_VRYSHTANE:
+        {
+            table.moveColumn(getColumnIndex("Номер на документа"),0);
+            table.moveColumn(getColumnIndex("Дата на документа"),1);
+            break;
+        } 
          case aeDocumentFacade.OFERTA :
         {
           table.moveColumn(getColumnIndex("Номер на документа"),0);
@@ -2149,6 +2214,24 @@ public void loadPrintReportJasper(int docType,int in_id_df,int sellRow)
             printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,getDocLineTable(id_doc),conn,parameterHashMap,
                     path+"sales_priem.jasper","\u041f\u0420\u0418\u0415\u041c\u0410\u0422\u0415\u041b\u041d\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410",
                     "\u041f\u0420\u0418\u0415\u041c\u0410\u0422\u0415\u041b\u041d\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410");
+            printReportDialog.setVisible(true);
+            
+            break;
+        }
+        case aeDocumentFacade.RAZPISKA_ZA_VRYSHTANE:
+        {
+            HashMap parameterHashMap = new HashMap();
+            imakante.com.paramFirm paramFrm1 = new imakante.com.paramFirm();
+            parameterHashMap.put(new String("naredil"),(String)table.getValueAt(rowSelect,getColumnIndex("Потребител")));
+            parameterHashMap.put(new String("firmaname"),paramFrm1.getName());
+            String priceToStr = PriceToString(id_doc,false);
+            parameterHashMap.put(new String("PriceToString"),priceToStr);
+            
+            parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
+          
+            printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,getDocLineTable(id_doc),conn,parameterHashMap,
+                    path+"sales_priem.jasper","\u0420\u0430\u0437\u043F\u0438\u0441\u043A\u0430 \u0437\u0430 \u0432\u0440\u044A\u0449\u0430\u043D\u0435",
+                    "\u0420\u0430\u0437\u043F\u0438\u0441\u043A\u0430 \u0437\u0430 \u0432\u0440\u044A\u0449\u0430\u043D\u0435");
             printReportDialog.setVisible(true);
             
             break;
