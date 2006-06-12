@@ -431,6 +431,19 @@ GROUP BY con ORDER BY rep_comm_nal.code_pm ASC]]></queryString>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{dokontragent}]]></textFieldExpression>
 				</textField>
+				<staticText>
+					<reportElement
+						x="23"
+						y="26"
+						width="71"
+						height="12"
+						key="staticText-8"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma"/>
+					</textElement>
+				<text><![CDATA[цени без ДДС]]></text>
+				</staticText>
 			</band>
 		</title>
 		<pageHeader>
