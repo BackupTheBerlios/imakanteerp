@@ -651,51 +651,51 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jComboBoxDescript1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBoxDescript1KeyPressed
-if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
             this.jComboBoxDescript2.requestFocus();
         }
     }//GEN-LAST:event_jComboBoxDescript1KeyPressed
-
+    
     private void jTextFieldDescript3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDescript3KeyPressed
-if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
             this.jButton1.requestFocus();
         }
     }//GEN-LAST:event_jTextFieldDescript3KeyPressed
-
+    
     private void jTextFieldDescript2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDescript2KeyPressed
-if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
             this.jComboBoxDescript3.requestFocus();
         }
     }//GEN-LAST:event_jTextFieldDescript2KeyPressed
-
+    
     private void jComboBoxDescript3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBoxDescript3KeyPressed
-if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
             this.jTextFieldDescript3.requestFocus();
         }
     }//GEN-LAST:event_jComboBoxDescript3KeyPressed
-
+    
     private void jComboBoxDescript2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBoxDescript2KeyPressed
-if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
             this.jTextFieldDescript2.requestFocus();
         }
     }//GEN-LAST:event_jComboBoxDescript2KeyPressed
-
+    
     private void jTextFieldMinProductKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldMinProductKeyPressed
-if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
-           this.jComboBoxDescript1.requestFocus();
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            this.jComboBoxDescript1.requestFocus();
         }
     }//GEN-LAST:event_jTextFieldMinProductKeyPressed
-
+    
     private void jTextFieldMaxPOPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldMaxPOPKeyPressed
-if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
             jTextFieldPromoPrices.requestFocus();
         }
     }//GEN-LAST:event_jTextFieldMaxPOPKeyPressed
-
+    
     private void jTextFieldExpertSheetKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldExpertSheetKeyPressed
- if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
             jTextFieldExpertSheet.transferFocus();
         }
     }//GEN-LAST:event_jTextFieldExpertSheetKeyPressed
@@ -709,7 +709,7 @@ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
     private void jComboBoxGroupKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBoxGroupKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
             jTextFieldContragent.requestFocus();
-          //  showContein(1,true);
+            //  showContein(1,true);
             
         }
     }//GEN-LAST:event_jComboBoxGroupKeyPressed
@@ -719,11 +719,15 @@ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
             if(jTextFieldCName.getText().equals("")){jTextFieldCName.setText("" + jTextFieldName.getText());}
             if(jTextFieldSName.getText().equals("")){jTextFieldSName.setText("" + jTextFieldName.getText());}
             if(jTextFieldFName.getText().equals("")){jTextFieldFName.setText("" + jTextFieldName.getText());}
+            jTextFieldName.revalidate();
+            jTextFieldCName.revalidate();
+            jTextFieldSName.revalidate();
+            jTextFieldFName.getText();
             jTextFieldBarCod.requestFocus();}
     }//GEN-LAST:event_jTextFieldNameKeyPressed
     
     private void jTextFieldFeeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFeeKeyPressed
-
+        
         try {
             if(isNew && !myParent.isTypedFee) {
                 ProductPriceFeeDialog =  new aeProductPriceFee(myParent,true,myParent.getId_PF(),true);
@@ -742,7 +746,7 @@ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
             jTextFieldFee.setText(fee[0]);
         } else jTextFieldFee.setText(myParent.getViewFee());
         //  repaintComp();
-         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
             jTextFieldPrice.requestFocus();
         }
         
@@ -837,19 +841,18 @@ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
         }
         if (myParent.getId_PPP()!=0) {
             String promotion_price[] = myParent.getCountriesT().getProductPromotionPrice(myParent.getId_PPP());
-             double p0 = Double.parseDouble(promotion_price[0]);
+            double p0 = Double.parseDouble(promotion_price[0]);
             double dds_ = 20;
-            if(myParent.getId_PF()!=0)
-            {
-             dds_ = Double.parseDouble(myParent.getCountriesT().getProdictFee(myParent.getId_PF())[0]);
+            if(myParent.getId_PF()!=0) {
+                dds_ = Double.parseDouble(myParent.getCountriesT().getProdictFee(myParent.getId_PF())[0]);
             }
-           
+            
             double p0dds = (p0*dds_/100)+p0;
             jTextFieldPromoPrices.setText(promotion_price[0]+"\u0431\u0435\u0437 \u0414\u0414\u0421, "+p0dds+"\u0441 \u0414\u0414\u0421");
-           
+            
         } else jTextFieldPromoPrices.setText(myParent.getViewPromoPrice());
         //   repaintComp();
-       
+        
     }//GEN-LAST:event_jTextFieldPromoPricesMousePressed
     
     private void jTextFieldPriceFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPriceFocusLost
@@ -879,20 +882,19 @@ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
         } catch(Exception e) {
             e.printStackTrace();
         }
-       if (myParent.getId_PP()!=0) {
+        if (myParent.getId_PP()!=0) {
             String price[] = myParent.getCountriesT().getProductPrice(myParent.getId_PP());
             double p0 = Double.parseDouble(price[0]);
             double dds_ = 20;
-            if(myParent.getId_PF()!=0)
-            {
-             dds_ = Double.parseDouble(myParent.getCountriesT().getProdictFee(myParent.getId_PF())[0]);
+            if(myParent.getId_PF()!=0) {
+                dds_ = Double.parseDouble(myParent.getCountriesT().getProdictFee(myParent.getId_PF())[0]);
             }
-           
+            
             double p0dds = (p0*dds_/100)+p0;
             jTextFieldPrice.setText(price[0]+"\u0431\u0435\u0437 \u0414\u0414\u0421, "+p0dds+"\u0441 \u0414\u0414\u0421");
         } else jTextFieldPrice.setText(myParent.getViewPrice());
         //   repaintComp();
-         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
             jTextFieldMaxPOP.requestFocus();
         }
         
@@ -918,16 +920,15 @@ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
             String price[] = myParent.getCountriesT().getProductPrice(myParent.getId_PP());
             double p0 = Double.parseDouble(price[0]);
             double dds_ = 20;
-            if(myParent.getId_PF()!=0)
-            {
-             dds_ = Double.parseDouble(myParent.getCountriesT().getProdictFee(myParent.getId_PF())[0]);
+            if(myParent.getId_PF()!=0) {
+                dds_ = Double.parseDouble(myParent.getCountriesT().getProdictFee(myParent.getId_PF())[0]);
             }
-           
+            
             double p0dds = (p0*dds_/100)+p0;
             jTextFieldPrice.setText(price[0]+"\u0431\u0435\u0437 \u0414\u0414\u0421, "+p0dds+"\u0441 \u0414\u0414\u0421");
         } else jTextFieldPrice.setText(myParent.getViewPrice());
         // repaintComp();
-         
+        
         
     }//GEN-LAST:event_jTextFieldPriceMousePressed
     
@@ -1028,11 +1029,10 @@ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
             String promotion_price[] = myParent.getCountriesT().getProductPromotionPrice(myParent.getId_PPP());
             double p0 = Double.parseDouble(promotion_price[0]);
             double dds_ = 20;
-            if(myParent.getId_PF()!=0)
-            {
-             dds_ = Double.parseDouble(myParent.getCountriesT().getProdictFee(myParent.getId_PF())[0]);
+            if(myParent.getId_PF()!=0) {
+                dds_ = Double.parseDouble(myParent.getCountriesT().getProdictFee(myParent.getId_PF())[0]);
             }
-           
+            
             double p0dds = (p0*dds_/100)+p0;
             jTextFieldPromoPrices.setText(promotion_price[0]+"\u0431\u0435\u0437 \u0414\u0414\u0421, "+p0dds+"\u0441 \u0414\u0414\u0421");
         } else jTextFieldPromoPrices.setText(myParent.getViewPromoPrice());
@@ -1153,7 +1153,7 @@ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
             
         }
         //  jButton3.doClick(); // zatvarq se aeProsuct
-      //  repaintComp();
+        //  repaintComp();
         myParent.refreshTable();
     }//GEN-LAST:event_jButton1ActionPerformed
     
