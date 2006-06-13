@@ -1125,6 +1125,7 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
     }
     
     public void loadReport() {
+        setRow(getTable().getSelectedRow());
         setAllVariables();
         java.util.HashMap hm = new java.util.HashMap();
         imakante.com.priceToString prcT = new imakante.com.priceToString();
@@ -1148,19 +1149,20 @@ public class FrmCaseOpAdvances extends  imakante.com.vcomponents.iInternalFrame 
         imakante.sales.aeCaseOpReport cor = new imakante.sales.aeCaseOpReport(this, true, getConn(), hm, jasperFile);
         cor.setVisible(true);
     }
+    
       private String fillZero(int Inp){
         
         String p = "0000000";
         String EndString = "";
         p = String.valueOf(Inp);
         int k = 7 - p.length();
-        for(int i = 0 ; i < k; i++){
-            
+        for(int i = 1; i < k; i++) {
             EndString = "0" + EndString;
         }
-        
+        EndString = EndString + p;
         return EndString;
     }
+      
     public void intContrDialog(int CodDialod) {
         String newString = strContragent + this.jtfContragentEND.getText() + "%' AND ls_n_person.code_ls_n_person >= " + CodDialod + ";";
         constructDialod(newString, 99, Names);

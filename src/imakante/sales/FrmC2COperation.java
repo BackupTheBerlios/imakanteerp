@@ -1187,6 +1187,7 @@ public class FrmC2COperation extends  imakante.com.vcomponents.iInternalFrame im
     }
     
     public void loadReport() {
+        setRow(getTable().getSelectedRow());
         setAllVariables();
         java.util.HashMap hm = new java.util.HashMap();
         imakante.com.priceToString prcT = new imakante.com.priceToString();
@@ -1208,6 +1209,7 @@ public class FrmC2COperation extends  imakante.com.vcomponents.iInternalFrame im
     }
     
     public void loadOtchetPrihodi() {
+        setRow(getTable().getSelectedRow());
         setAllVariables();
         java.util.HashMap hm = new java.util.HashMap();
         hm.put("izdal", this.getUser_name());
@@ -1228,9 +1230,10 @@ public class FrmC2COperation extends  imakante.com.vcomponents.iInternalFrame im
         String EndString = "";
         p = String.valueOf(Inp);
         int k = 7 - p.length();
-        for(int i = 0; i < k; i++) {
+        for(int i = 1; i < k; i++) {
             EndString = "0" + EndString;
         }
+        EndString = EndString + p;
         return EndString;
     }
     

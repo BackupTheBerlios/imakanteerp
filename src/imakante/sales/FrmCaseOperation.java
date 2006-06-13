@@ -1183,7 +1183,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     }
     
     public void loadReport() {
-        setRow(table.getSelectedRow());
+        setRow(getTable().getSelectedRow());
         setAllVariables();
         java.util.HashMap hm = new java.util.HashMap();
         imakante.com.priceToString prcT = new imakante.com.priceToString();
@@ -1205,7 +1205,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     }
     
     public void loadOtchetPrihodi() {
-        setRow(table.getSelectedRow());
+        setRow(getTable().getSelectedRow());
         setAllVariables();
         java.util.HashMap hm = new java.util.HashMap();
         hm.put("izdal", this.getUser_name());
@@ -1225,8 +1225,6 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         String p = "0000000";
         String EndString = "";
         p = String.valueOf(Inp);
-        System.out.println(" code " + p);
-        System.out.println(" code " + Inp);
         int k = 7 - p.length();
         for(int i = 1; i < k; i++) {
             EndString = "0" + EndString;

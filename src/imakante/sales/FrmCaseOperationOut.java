@@ -1198,6 +1198,7 @@ public class FrmCaseOperationOut extends  imakante.com.vcomponents.iInternalFram
     }
     
     public void loadReport() {
+        setRow(getTable().getSelectedRow());
         setAllVariables();
         HashMap hm = new HashMap();
         imakante.com.priceToString prcT = new imakante.com.priceToString();
@@ -1223,20 +1224,19 @@ public class FrmCaseOperationOut extends  imakante.com.vcomponents.iInternalFram
         cor.setVisible(true);
     }
     
-    
     private String fillZero(int Inp){
         
         String p = "0000000";
         String EndString = "";
         p = String.valueOf(Inp);
         int k = 7 - p.length();
-        for(int i = 0 ; i < k; i++){
-            
+        for(int i = 1; i < k; i++) {
             EndString = "0" + EndString;
         }
-        
+        EndString = EndString + p;
         return EndString;
     }
+    
     public int getHInt() {
         return hInt;
     }

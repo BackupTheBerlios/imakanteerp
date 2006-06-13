@@ -307,7 +307,7 @@ public class FrmFirmParam extends javax.swing.JDialog  {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(538, Short.MAX_VALUE)
+                .addContainerGap(530, Short.MAX_VALUE)
                 .add(jButton1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jButton2)
@@ -327,7 +327,7 @@ public class FrmFirmParam extends javax.swing.JDialog  {
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -337,7 +337,7 @@ public class FrmFirmParam extends javax.swing.JDialog  {
                 .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-684)/2, (screenSize.height-447)/2, 684, 447);
+        setBounds((screenSize.width-684)/2, (screenSize.height-481)/2, 684, 481);
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -481,31 +481,31 @@ public class FrmFirmParam extends javax.swing.JDialog  {
             stm = conn.createStatement();
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
         try {
-            rs = stm.executeQuery("UPDATE `mida`.`ls_sluj` SET " +
-                    "`ls_sluj`.name_firm = " + jtfName.getText() + ", " +
-                    "`ls_sluj`.dan_nom = " + jtfDan.getText() + ", " +
-                    "`ls_sluj`.bul = " + jtfBul.getText() + ", " +
-                    "`ls_sluj`.address = " + jtfAddress.getText() + ", " +
-                    "`ls_sluj`.nam_boss = " + jtfBoss.getText() + ", " +
-                    "`ls_sluj`.nam_acc = " + jtfAcc.getText() + ", " +
-                    "`ls_sluj`.nkid = " + jtfNkid.getText() + ", " +
-                    "`ls_sluj`.telefon = " + jtfTel.getText() + ", " +
-                    "`ls_sluj`.data_reg_dds = " + jtfData_r.getText() + ", " +
-                    "`ls_sluj`.data_c = " + jtfData_c.getText() + ", " +
-                    "`ls_sluj`.nm = " + jtfNm.getText() + ", " +
-                    "`ls_sluj`.postcode = " + jtfCode.getText() + ", " +
-                    "`ls_sluj`.email = " + jtfEmail.getText() + ", " +
-                    "`ls_sluj`.web = " + jtfWeb.getText() + ", " +
-                    "`ls_sluj`.boss_egn = " + jTextField1.getText() +
-                    "`ls_sluj`.boss_nlk = " + jTextField2.getText() +
-                    "`ls_sluj`.bankR = " + jTextField3.getText() +
-                    "`ls_sluj`.ibanR = " + jTextField4.getText() +
-                    "`ls_sluj`.bicR = " + jTextField5.getText() +
-                    "`ls_sluj`.bankD = " + jTextField6.getText() +
-                    "`ls_sluj`.ibanD = " + jTextField7.getText() +
-                    "`ls_sluj`.bicD = " + jTextField8.getText() +
-                    "`ls_sluj`.valr = " + jTextField9.getText() +
-                    "`ls_sluj`.vald = " + jTextField8.getText() +
+            stm.execute("UPDATE `mida`.`ls_sluj` SET " +
+                    "`ls_sluj`.name_firm = '" + jtfName.getText() + "', " +
+                    "`ls_sluj`.dan_nom = '" + jtfDan.getText() + "', " +
+                    "`ls_sluj`.bul = '" + jtfBul.getText() + "', " +
+                    "`ls_sluj`.address = '" + jtfAddress.getText() + "', " +
+                    "`ls_sluj`.nam_boss = '" + jtfBoss.getText() + "', " +
+                    "`ls_sluj`.nam_acc = '" + jtfAcc.getText() + "', " +
+                    "`ls_sluj`.nkid = '" + jtfNkid.getText() + "', " +
+                    "`ls_sluj`.telefon = '" + jtfTel.getText() + "', " +
+                    "`ls_sluj`.data_reg_dds = '" + jtfData_r.getText() + "', " +
+                    "`ls_sluj`.data_c = '" + jtfData_c.getText() + "', " +
+                    "`ls_sluj`.nm = '" + jtfNm.getText() + "', " +
+                    "`ls_sluj`.postcode = '" + jtfCode.getText() + "', " +
+                    "`ls_sluj`.email = '" + jtfEmail.getText() + "', " +
+                    "`ls_sluj`.web = '" + jtfWeb.getText() + "', " +
+                    "`ls_sluj`.boss_egn = '" + jTextField1.getText() + "', " +
+                    "`ls_sluj`.boss_nlk = '" + jTextField2.getText() + "', " +
+                    "`ls_sluj`.bankR = '" + jTextField3.getText() + "', " +
+                    "`ls_sluj`.ibanR ='" + jTextField4.getText() + "', " +
+                    "`ls_sluj`.bicR = '" + jTextField5.getText() + "', " +
+                    "`ls_sluj`.bankD = '" + jTextField6.getText() + "', " +
+                    "`ls_sluj`.ibanD = '" + jTextField7.getText() + "', " +
+                    "`ls_sluj`.bicD = '" + jTextField8.getText() + "', " +
+                    "`ls_sluj`.valr = '" + jTextField9.getText() + "', " +
+                    "`ls_sluj`.vald = '" + jTextField8.getText() + "' " +
                     "WHERE `mida`.`ls_sluj`.Id = " + id);
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
