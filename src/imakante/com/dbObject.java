@@ -14,11 +14,11 @@ public abstract class dbObject extends imakante.com.imakanteObject implements db
     private int comprator = 1;
     private int id = 0;
     private int id_groupe = 0;
-    private int code;
-    private String name;
-    private String baccount;
-    private String address;
-    private String comment;
+    private int code = 0;
+    private String name = "";
+    private String baccount = "";
+    private String address = "";
+    private String comment = "";
     
     public java.sql.Connection getConn() {
         return conn;

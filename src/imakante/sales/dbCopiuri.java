@@ -39,6 +39,7 @@ public class dbCopiuri extends imakante.com.dbObject {
     public void registerParameters() {
         try {
             getCstm().setInt("comprator", getComprator());
+             getCstm().setInt("in_id_um", getUserID());
             getCstm().setString("in_name_um", getName());
             getCstm().setInt("in_paper_100", getPaper100());
             getCstm().setInt("in_paper_50", getPaper50());
