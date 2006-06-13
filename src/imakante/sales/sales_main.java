@@ -994,7 +994,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
     private void razMenu_vrystActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_razMenu_vrystActionPerformed
 // TODO add your handling code here:
-        levelDialog1 = new levelDialog(this,true,4,stokavaRazpiskaArea);
+        levelDialog1 = new levelDialog(this,true,4,razpiskaVryshtane);
         levelDialog1.setVisible(true);
         int user = userID_ndtur; //2;
         int level = levelForWork;// 1;

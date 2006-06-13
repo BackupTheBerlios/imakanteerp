@@ -4858,8 +4858,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             }
             case RAZPISKA_ZA_VRYSHTANE:
             {
-                this.setTitle("\u0420\u0430\u0437\u043F\u0438\u0441\u043A\u0430 \u0437\u0430 \u0432\u0440\u044A\u0449\u0430\u043D\u0435");
-                jLabelDocType.setText("\u0420\u0430\u0437\u043F\u0438\u0441\u043A\u0430 \u0437\u0430 \u0432\u0440\u044A\u0449\u0430\u043D\u0435");
+                this.setTitle("\u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410 \u0417\u0410 \u0412\u0420\u042a\u0429\u0410\u041d\u0415");
+                jLabelDocType.setText("\u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410 \u0417\u0410 \u0412\u0420\u042a\u0429\u0410\u041d\u0415");
                 jPanelObekt.setVisible(false);
                 jPanelCreateFacturi.setVisible(false);
                 jPanelStorageINOUT.setVisible(false);
