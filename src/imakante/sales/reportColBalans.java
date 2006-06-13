@@ -603,26 +603,22 @@ public class reportColBalans extends imakante.com.vcomponents.iInternalFrame imp
         namesQ.add("Номератор");
         if(levelx==3){
             levelD = "1, 3";
+             levelX = "0";
+             fileName="repColBAlance0.jasper";
         }
         
         if(levelx==2){
             levelD = "1, 2";
+             levelX = "1";
+             fileName="repColBAlance1.jasper";
         }
         
         if(levelx==1){
             levelD = "1, 2, 3";
+             levelX = "0, 1";
+             fileName="repColBAlance01.jasper";
         }
-        if(levelx==3){
-            levelX = "0";
-        }
-        
-        if(levelx==2){
-            levelX = "1";
-        }
-        
-        if(levelx==1){
-            levelX = "0, 1";
-        }
+       
         
         newString = newString + " SELECT  DISTINCT CONCAT(rep_comm_nal.level ,rep_comm_nal.code_n_storage ,rep_comm_nal.code_pm )"
                 + " AS con ,rep_comm_nal.code_n_storage ,rep_comm_nal.code_pm ,rep_comm_nal.name_pm ,SUM(rep_comm_nal.quant_nal)"
