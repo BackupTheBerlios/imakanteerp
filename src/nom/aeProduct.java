@@ -529,6 +529,14 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
 
         jComboBoxGroup.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jComboBoxGroup.setPreferredSize(new java.awt.Dimension(170, 20));
+        jComboBoxGroup.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jComboBoxGroupFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jComboBoxGroupFocusLost(evt);
+            }
+        });
         jComboBoxGroup.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jComboBoxGroupKeyPressed(evt);
@@ -616,6 +624,14 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         jPanelDescription.setPreferredSize(new java.awt.Dimension(350, 70));
         jComboBoxDescript1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jComboBoxDescript1.setPreferredSize(new java.awt.Dimension(80, 20));
+        jComboBoxDescript1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jComboBoxDescript1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jComboBoxDescript1FocusLost(evt);
+            }
+        });
         jComboBoxDescript1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jComboBoxDescript1KeyPressed(evt);
@@ -626,6 +642,14 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
 
         jComboBoxDescript2.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jComboBoxDescript2.setPreferredSize(new java.awt.Dimension(80, 20));
+        jComboBoxDescript2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jComboBoxDescript2FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jComboBoxDescript2FocusLost(evt);
+            }
+        });
         jComboBoxDescript2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jComboBoxDescript2KeyPressed(evt);
@@ -636,6 +660,14 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
 
         jComboBoxDescript3.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jComboBoxDescript3.setPreferredSize(new java.awt.Dimension(80, 20));
+        jComboBoxDescript3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jComboBoxDescript3FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jComboBoxDescript3FocusLost(evt);
+            }
+        });
         jComboBoxDescript3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jComboBoxDescript3KeyPressed(evt);
@@ -766,6 +798,38 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBoxDescript3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxDescript3FocusLost
+fLost(jComboBoxDescript3);
+    }//GEN-LAST:event_jComboBoxDescript3FocusLost
+
+    private void jComboBoxDescript3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxDescript3FocusGained
+fGain(jComboBoxDescript3);
+    }//GEN-LAST:event_jComboBoxDescript3FocusGained
+
+    private void jComboBoxDescript2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxDescript2FocusLost
+fLost(jComboBoxDescript2);
+    }//GEN-LAST:event_jComboBoxDescript2FocusLost
+
+    private void jComboBoxDescript2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxDescript2FocusGained
+fGain(jComboBoxDescript2);
+    }//GEN-LAST:event_jComboBoxDescript2FocusGained
+
+    private void jComboBoxDescript1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxDescript1FocusLost
+fLost(jComboBoxDescript1);
+    }//GEN-LAST:event_jComboBoxDescript1FocusLost
+
+    private void jComboBoxDescript1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxDescript1FocusGained
+fGain(jComboBoxDescript1);
+    }//GEN-LAST:event_jComboBoxDescript1FocusGained
+
+    private void jComboBoxGroupFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxGroupFocusLost
+fLost(jComboBoxGroup);
+    }//GEN-LAST:event_jComboBoxGroupFocusLost
+
+    private void jComboBoxGroupFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxGroupFocusGained
+fGain(jComboBoxGroup);
+    }//GEN-LAST:event_jComboBoxGroupFocusGained
     
     private void jTextFieldDescript3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldDescript3FocusLost
         fLost(jTextFieldDescript3);
@@ -1659,14 +1723,14 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         JOptionPane.showMessageDialog(this,"\u0417\u0430\u043F\u0438\u0441\u044A\u0442 \u0435 \u043A\u043E\u0440\u0435\u043A\u0442\u0435\u043D");
         
     }
-    private void fGain(javax.swing.JTextField jtf){
+    private void fGain(javax.swing.JComponent jtf){
         jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 0, 51), null));
     }
     
-    private void fLost(javax.swing.JTextField jtf){
+    private void fLost(javax.swing.JComponent jtf){
         jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 255, 255), null));
     }
-    
+   
     
 }// end class
 

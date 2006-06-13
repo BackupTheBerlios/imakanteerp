@@ -4,12 +4,10 @@ package nom;
 import imakante.com.vcomponents.iInternalFrame;
 import javax.swing.JOptionPane;
 import java.math.*;
-public class aeProductPriceFee extends imakante.com.vcomponents.iDialog 
-{
+public class aeProductPriceFee extends imakante.com.vcomponents.iDialog {
     
     /** Creates new form aeProductPriceFee */
-    public aeProductPriceFee(imakante.com.vcomponents.iInternalFrame frame, boolean modal,int id_fee, boolean isnew)
-    {
+    public aeProductPriceFee(imakante.com.vcomponents.iInternalFrame frame, boolean modal,int id_fee, boolean isnew) {
         
         super(frame, modal);
         this.myParent =(FrmProduct) frame;
@@ -26,8 +24,8 @@ public class aeProductPriceFee extends imakante.com.vcomponents.iDialog
         jTextFieldDDS.requestFocus();
         
     }
-   
-   
+    
+    
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
@@ -111,6 +109,14 @@ public class aeProductPriceFee extends imakante.com.vcomponents.iDialog
         jTextFieldDDS.setNextFocusableComponent(jTextFieldAkcizi);
         jTextFieldDDS.setPreferredSize(new java.awt.Dimension(20, 20));
         jTextFieldDDS.setInputVerifier(new imakante.com.InputDoubleVerifier());
+        jTextFieldDDS.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldDDSFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldDDSFocusLost(evt);
+            }
+        });
         jTextFieldDDS.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldDDSKeyPressed(evt);
@@ -129,6 +135,14 @@ public class aeProductPriceFee extends imakante.com.vcomponents.iDialog
         jTextFieldAkcizi.setNextFocusableComponent(jTextFieldOther);
         jTextFieldAkcizi.setPreferredSize(new java.awt.Dimension(20, 20));
         jTextFieldAkcizi.setInputVerifier(new imakante.com.InputDoubleVerifier());
+        jTextFieldAkcizi.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldAkciziFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldAkciziFocusLost(evt);
+            }
+        });
         jTextFieldAkcizi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldAkciziKeyPressed(evt);
@@ -154,6 +168,14 @@ public class aeProductPriceFee extends imakante.com.vcomponents.iDialog
         jTextFieldOther.setNextFocusableComponent(jButtonSave);
         jTextFieldOther.setPreferredSize(new java.awt.Dimension(20, 20));
         jTextFieldOther.setInputVerifier(new imakante.com.InputDoubleVerifier());
+        jTextFieldOther.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldOtherFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldOtherFocusLost(evt);
+            }
+        });
         jTextFieldOther.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldOtherKeyPressed(evt);
@@ -204,64 +226,82 @@ public class aeProductPriceFee extends imakante.com.vcomponents.iDialog
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void jTextFieldOtherFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldOtherFocusLost
+        fLost(jTextFieldOther);
+    }//GEN-LAST:event_jTextFieldOtherFocusLost
+    
+    private void jTextFieldOtherFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldOtherFocusGained
+        fGain(jTextFieldOther);
+    }//GEN-LAST:event_jTextFieldOtherFocusGained
+    
+    private void jTextFieldAkciziFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldAkciziFocusLost
+        fLost(jTextFieldAkcizi);
+    }//GEN-LAST:event_jTextFieldAkciziFocusLost
+    
+    private void jTextFieldAkciziFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldAkciziFocusGained
+        fGain(jTextFieldAkcizi);
+    }//GEN-LAST:event_jTextFieldAkciziFocusGained
+    
+    private void jTextFieldDDSFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldDDSFocusLost
+        fLost(jTextFieldDDS);
+    }//GEN-LAST:event_jTextFieldDDSFocusLost
+    
+    private void jTextFieldDDSFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldDDSFocusGained
+        fGain(jTextFieldDDS);
+    }//GEN-LAST:event_jTextFieldDDSFocusGained
+    
     private void jButtonSaveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonSaveKeyPressed
-if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
             this.jButtonSave.doClick();
         }
     }//GEN-LAST:event_jButtonSaveKeyPressed
-
+    
     private void jTextFieldOtherKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldOtherKeyPressed
-if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
             this.jTextFieldOther.transferFocus();
         }
     }//GEN-LAST:event_jTextFieldOtherKeyPressed
-
+    
     private void jTextFieldAkciziKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldAkciziKeyPressed
-if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
             this.jTextFieldAkcizi.transferFocus();
         }
     }//GEN-LAST:event_jTextFieldAkciziKeyPressed
-
+    
     private void jTextFieldDDSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDDSKeyPressed
-if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
             this.jTextFieldDDS.transferFocus();
         }
     }//GEN-LAST:event_jTextFieldDDSKeyPressed
-
+    
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
 // TODO add your handling code here:
-      try
-      {
-         dds = Double.parseDouble(jTextFieldDDS.getText());
-      //   dds = doubleRound(6,dds);
-         akcizi = Double.parseDouble(jTextFieldAkcizi.getText());
-      //   akcizi = doubleRound(6,akcizi);
-         other = Double.parseDouble(jTextFieldOther.getText());
-      //   otther = doubleRound(6,other);
-         if(isNew)
-           {
-             //myParent.setId_PF(myParent.getCountriesT().setProductFee(dds,akcizi,other));
-             myParent.setProductFee(dds,akcizi,other);
-             jButtonClose.doClick();
-           }
-       else
-           {
-             // myParent.getCountriesT().updateProductFee(id_fee,dds,akcizi,other);
-              myParent.setProductFee(dds,akcizi,other);
-              jButtonClose.doClick();
-           }
-      }
-      catch(Exception e)
-      {
-          showMessage();
-          
-      }
-      
-    
+        try {
+            dds = Double.parseDouble(jTextFieldDDS.getText());
+            //   dds = doubleRound(6,dds);
+            akcizi = Double.parseDouble(jTextFieldAkcizi.getText());
+            //   akcizi = doubleRound(6,akcizi);
+            other = Double.parseDouble(jTextFieldOther.getText());
+            //   otther = doubleRound(6,other);
+            if(isNew) {
+                //myParent.setId_PF(myParent.getCountriesT().setProductFee(dds,akcizi,other));
+                myParent.setProductFee(dds,akcizi,other);
+                jButtonClose.doClick();
+            } else {
+                // myParent.getCountriesT().updateProductFee(id_fee,dds,akcizi,other);
+                myParent.setProductFee(dds,akcizi,other);
+                jButtonClose.doClick();
+            }
+        } catch(Exception e) {
+            showMessage();
+            
+        }
+        
+        
         
     }//GEN-LAST:event_jButtonSaveActionPerformed
-
+    
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
 // TODO add your handling code here:
         this.dispose();
@@ -296,42 +336,45 @@ if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
     private javax.swing.JTextField jTextFieldDDS;
     private javax.swing.JTextField jTextFieldOther;
     // End of variables declaration//GEN-END:variables
- //--------------- My Variables
+    //--------------- My Variables
     private nom.FrmProduct myParent;
     private int id_fee;
     private double dds,akcizi,other;
     private boolean isNew = false;
- //---------------END My Variables
-//---------------START MyFunction 
- 
-
-private void getAllFee()
-{
-    String fee[];
-    if(id_fee>0 && !myParent.isTypedFee)
-    {
-     fee = myParent.getCountriesT().getProdictFee(id_fee);
-    }
-    else
-    {
-        fee = myParent.getProductFee();
-    }
-    jTextFieldDDS.setText(fee[0]);
-    jTextFieldAkcizi.setText(fee[1]);
-    jTextFieldOther.setText(fee[2]);
+    //---------------END My Variables
+//---------------START MyFunction
     
-}
-private void showMessage()
-{
-     JOptionPane.showMessageDialog(this,"\u041c\u043e\u043b\u044f, \u0432\u044a\u0432\u0435\u0434\u0435\u0442\u0435 \u043a\u043e\u0440\u0435\u043a\u043d\u043e \u0434\u0430\u043d\u043d\u0438\u0442\u0435");
-}
- private double doubleRound(int digit, double indouble)
-{
-    String newDouble = new String();
-    double r = indouble;
-    BigDecimal bd = new BigDecimal(r);
-    bd = bd.setScale(digit,BigDecimal.ROUND_HALF_UP);
-    r = bd.doubleValue();
-    return r;
-}
+    
+    private void getAllFee() {
+        String fee[];
+        if(id_fee>0 && !myParent.isTypedFee) {
+            fee = myParent.getCountriesT().getProdictFee(id_fee);
+        } else {
+            fee = myParent.getProductFee();
+        }
+        jTextFieldDDS.setText(fee[0]);
+        jTextFieldAkcizi.setText(fee[1]);
+        jTextFieldOther.setText(fee[2]);
+        
+    }
+    private void showMessage() {
+        JOptionPane.showMessageDialog(this,"\u041c\u043e\u043b\u044f, \u0432\u044a\u0432\u0435\u0434\u0435\u0442\u0435 \u043a\u043e\u0440\u0435\u043a\u043d\u043e \u0434\u0430\u043d\u043d\u0438\u0442\u0435");
+    }
+    private double doubleRound(int digit, double indouble) {
+        String newDouble = new String();
+        double r = indouble;
+        BigDecimal bd = new BigDecimal(r);
+        bd = bd.setScale(digit,BigDecimal.ROUND_HALF_UP);
+        r = bd.doubleValue();
+        return r;
+    }
+    private void fGain(javax.swing.JComponent jtf){
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 0, 51), null));
+    }
+    
+    private void fLost(javax.swing.JComponent jtf){
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 255, 255), null));
+    }
+    
+    
 }// end class

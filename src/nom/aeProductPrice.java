@@ -115,9 +115,18 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
 
         jLabel3.setText("\u0426\u0435\u043d\u0430 2:");
 
+        jTextDostPrice.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextDostPrice.setNextFocusableComponent(jTextFieldPrice1);
         jTextDostPrice.setPreferredSize(new java.awt.Dimension(80, 20));
         jTextDostPrice.setInputVerifier(new imakante.com.InputDoubleVerifier());
+        jTextDostPrice.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextDostPriceFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextDostPriceFocusLost(evt);
+            }
+        });
         jTextDostPrice.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextDostPriceKeyPressed(evt);
@@ -127,11 +136,15 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
             }
         });
 
+        jTextFieldPrice1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldPrice1.setEnabled(false);
         jTextFieldPrice1.setNextFocusableComponent(jTextFieldPrice2);
         jTextFieldPrice1.setPreferredSize(new java.awt.Dimension(80, 20));
         jTextFieldPrice1.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextFieldPrice1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldPrice1FocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextFieldPrice1FocusLost(evt);
             }
@@ -144,11 +157,15 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
 
         jLabel4.setText("\u0426\u0435\u043d\u0430 3:");
 
+        jTextFieldPrice2.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldPrice2.setEnabled(false);
         jTextFieldPrice2.setNextFocusableComponent(jTextFieldPrice3);
         jTextFieldPrice2.setPreferredSize(new java.awt.Dimension(80, 20));
         jTextFieldPrice2.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextFieldPrice2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldPrice2FocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextFieldPrice2FocusLost(evt);
             }
@@ -159,11 +176,15 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
             }
         });
 
+        jTextFieldPrice3.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldPrice3.setEnabled(false);
         jTextFieldPrice3.setNextFocusableComponent(jButtonSave);
         jTextFieldPrice3.setPreferredSize(new java.awt.Dimension(80, 20));
         jTextFieldPrice3.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextFieldPrice3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldPrice3FocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextFieldPrice3FocusLost(evt);
             }
@@ -181,11 +202,15 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
         jLabel7.setText("\u0438\u043b\u0438");
 
         jTextFieldProcent1.setToolTipText("\u041f\u0440\u043e\u0446\u0435\u043d\u0442 \u0443\u0432\u0435\u043b\u0438\u0447\u0435\u043d\u0438\u0435 \u043e\u0442 \u0434\u043e\u0441\u0442\u0430\u0432\u043d\u0430\u0442\u0430 \u0446\u0435\u043d\u0430");
+        jTextFieldProcent1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldProcent1.setEnabled(false);
         jTextFieldProcent1.setNextFocusableComponent(jTextFieldProcent2);
         jTextFieldProcent1.setPreferredSize(new java.awt.Dimension(50, 20));
         jTextFieldProcent1.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextFieldProcent1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldProcent1FocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextFieldProcent1FocusLost(evt);
             }
@@ -197,11 +222,15 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
         });
 
         jTextFieldProcent2.setToolTipText("\u041f\u0440\u043e\u0446\u0435\u043d\u0442 \u0443\u0432\u0435\u043b\u0438\u0447\u0435\u043d\u0438\u0435 \u043e\u0442 \u0434\u043e\u0441\u0442\u0430\u0432\u043d\u0430\u0442\u0430 \u0446\u0435\u043d\u0430");
+        jTextFieldProcent2.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldProcent2.setEnabled(false);
         jTextFieldProcent2.setNextFocusableComponent(jTextFieldProcent3);
         jTextFieldProcent2.setPreferredSize(new java.awt.Dimension(50, 20));
         jTextFieldProcent1.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextFieldProcent2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldProcent2FocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextFieldProcent2FocusLost(evt);
             }
@@ -213,11 +242,15 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
         });
 
         jTextFieldProcent3.setToolTipText("\u041f\u0440\u043e\u0446\u0435\u043d\u0442 \u0443\u0432\u0435\u043b\u0438\u0447\u0435\u043d\u0438\u0435 \u043e\u0442 \u0434\u043e\u0441\u0442\u0430\u0432\u043d\u0430\u0442\u0430 \u0446\u0435\u043d\u0430");
+        jTextFieldProcent3.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldProcent3.setEnabled(false);
         jTextFieldProcent3.setNextFocusableComponent(jButtonSave);
         jTextFieldProcent3.setPreferredSize(new java.awt.Dimension(50, 20));
         jTextFieldProcent1.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextFieldProcent3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldProcent3FocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextFieldProcent3FocusLost(evt);
             }
@@ -243,8 +276,17 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
 
         jTextFieldValue.setEditable(false);
         jTextFieldValue.setText("1");
+        jTextFieldValue.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldValue.setNextFocusableComponent(jButtonSave);
         jTextFieldValue.setPreferredSize(new java.awt.Dimension(100, 20));
+        jTextFieldValue.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldValueFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldValueFocusLost(evt);
+            }
+        });
         jTextFieldValue.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldValueKeyPressed(evt);
@@ -265,9 +307,13 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
 
         jLabel18.setText("\u0438\u043b\u0438");
 
+        jTextDostPriceWithDDS.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextDostPriceWithDDS.setNextFocusableComponent(jTextFieldPrice1WithDDS);
         jTextDostPriceWithDDS.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextDostPriceWithDDS.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextDostPriceWithDDSFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextDostPriceWithDDSFocusLost(evt);
             }
@@ -284,10 +330,14 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
 
         jLabel21.setText("\u0438\u043b\u0438");
 
+        jTextFieldPrice1WithDDS.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldPrice1WithDDS.setEnabled(false);
         jTextFieldPrice1WithDDS.setNextFocusableComponent(jTextFieldPrice2WithDDS);
         jTextFieldPrice1WithDDS.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextFieldPrice1WithDDS.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldPrice1WithDDSFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextFieldPrice1WithDDSFocusLost(evt);
             }
@@ -298,10 +348,14 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
             }
         });
 
+        jTextFieldPrice2WithDDS.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldPrice2WithDDS.setEnabled(false);
         jTextFieldPrice2WithDDS.setNextFocusableComponent(jTextFieldPrice3WithDDS);
         jTextFieldPrice2WithDDS.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextFieldPrice2WithDDS.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldPrice2WithDDSFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextFieldPrice2WithDDSFocusLost(evt);
             }
@@ -312,10 +366,14 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
             }
         });
 
+        jTextFieldPrice3WithDDS.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldPrice3WithDDS.setEnabled(false);
         jTextFieldPrice3WithDDS.setNextFocusableComponent(jButtonSave);
         jTextFieldPrice3WithDDS.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextFieldPrice3WithDDS.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldPrice3WithDDSFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextFieldPrice3WithDDSFocusLost(evt);
             }
@@ -479,8 +537,65 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextFieldValueFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldValueFocusLost
+fLost(jTextFieldValue);
+    }//GEN-LAST:event_jTextFieldValueFocusLost
+
+    private void jTextFieldValueFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldValueFocusGained
+fGain(jTextFieldValue);
+    }//GEN-LAST:event_jTextFieldValueFocusGained
+
+    private void jTextFieldPrice3WithDDSFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice3WithDDSFocusGained
+fGain(jTextFieldPrice3);
+    }//GEN-LAST:event_jTextFieldPrice3WithDDSFocusGained
+
+    private void jTextFieldProcent3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldProcent3FocusGained
+fGain(jTextFieldProcent3);
+    }//GEN-LAST:event_jTextFieldProcent3FocusGained
+
+    private void jTextFieldPrice3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice3FocusGained
+fGain(jTextFieldPrice3);
+    }//GEN-LAST:event_jTextFieldPrice3FocusGained
+
+    private void jTextFieldPrice2WithDDSFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice2WithDDSFocusGained
+fGain(jTextFieldPrice2);
+    }//GEN-LAST:event_jTextFieldPrice2WithDDSFocusGained
+
+    private void jTextFieldProcent2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldProcent2FocusGained
+fGain(jTextFieldProcent2);
+    }//GEN-LAST:event_jTextFieldProcent2FocusGained
+
+    private void jTextFieldPrice2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice2FocusGained
+fGain(jTextFieldPrice2);
+    }//GEN-LAST:event_jTextFieldPrice2FocusGained
+
+    private void jTextFieldPrice1WithDDSFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice1WithDDSFocusGained
+fGain(jTextFieldPrice1);
+    }//GEN-LAST:event_jTextFieldPrice1WithDDSFocusGained
+
+    private void jTextFieldProcent1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldProcent1FocusGained
+fGain(jTextFieldProcent1);
+    }//GEN-LAST:event_jTextFieldProcent1FocusGained
+
+    private void jTextFieldPrice1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice1FocusGained
+fGain(jTextFieldPrice1);
+    }//GEN-LAST:event_jTextFieldPrice1FocusGained
+
+    private void jTextDostPriceWithDDSFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextDostPriceWithDDSFocusGained
+fGain(jTextDostPriceWithDDS);
+    }//GEN-LAST:event_jTextDostPriceWithDDSFocusGained
+
+    private void jTextDostPriceFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextDostPriceFocusLost
+fLost(jTextDostPrice);
+    }//GEN-LAST:event_jTextDostPriceFocusLost
+
+    private void jTextDostPriceFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextDostPriceFocusGained
+fGain(jTextDostPrice);
+    }//GEN-LAST:event_jTextDostPriceFocusGained
     
     private void jTextFieldPrice3WithDDSFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice3WithDDSFocusLost
+fLost(jTextFieldPrice3WithDDS);
 // TODO add your handling code here:
      /*    try {
                 p0dds = Double.parseDouble(jTextDostPriceWithDDS.getText());
@@ -505,6 +620,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jTextFieldPrice3WithDDSFocusLost
     
     private void jTextFieldPrice2WithDDSFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice2WithDDSFocusLost
+fLost(jTextFieldPrice2WithDDS);
 // TODO add your handling code here:
       /*      try {
                 p0dds = Double.parseDouble(jTextDostPriceWithDDS.getText());
@@ -577,6 +693,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jTextFieldPrice2WithDDSKeyPressed
     
     private void jTextFieldPrice1WithDDSFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice1WithDDSFocusLost
+fLost(jTextFieldPrice1WithDDS);
 // TODO add your handling code here:
         
     /*       try {
@@ -627,7 +744,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jTextFieldPrice1WithDDSKeyPressed
     
     private void jTextDostPriceWithDDSFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextDostPriceWithDDSFocusLost
-// TODO add your handling code here:
+fLost(jTextDostPriceWithDDS);
     /*     if(jTextDostPriceWithDDS.getText().length()>0) {
             jTextFieldPrice1.setEnabled(true);
             jTextFieldPrice2.setEnabled(true);
@@ -710,7 +827,8 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jTextFieldValueMousePressed
     
     private void jTextFieldProcent3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldProcent3FocusLost
-      /*  try {
+fLost(jTextFieldProcent3);
+        /*  try {
        
             p_p3 = Double.parseDouble(jTextFieldProcent3.getText());
             p3 = (p_p3/100)*p0 + p0;
@@ -747,7 +865,8 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jTextFieldProcent3KeyPressed
     
     private void jTextFieldPrice3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice3FocusLost
-    /*    try {
+fLost(jTextFieldPrice3);
+        /*    try {
             p0 = Double.parseDouble(jTextDostPrice.getText());
             p3 = Double.parseDouble(jTextFieldPrice3.getText());
             if(p3>=p0)
@@ -811,6 +930,7 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jTextFieldProcent2KeyPressed
     
     private void jTextFieldProcent2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldProcent2FocusLost
+fLost(jTextFieldProcent2);
 // TODO add your handling code here:
     /*    try {
             p0 = Double.parseDouble(jTextDostPrice.getText());
@@ -828,7 +948,8 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
     
     
     private void jTextFieldPrice2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice2FocusLost
-  /*      try {
+fLost(jTextFieldPrice2);
+        /*      try {
 // TODO add your handling code here:
    
             p0 = Double.parseDouble(jTextDostPrice.getText());
@@ -896,7 +1017,8 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jTextFieldProcent1KeyPressed
     
     private void jTextFieldProcent1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldProcent1FocusLost
-     /*   try {
+fLost(jTextFieldProcent1);
+        /*   try {
 // TODO add your handling code here:
             p0 = Double.parseDouble(jTextDostPrice.getText());
             p_p1 = Double.parseDouble(jTextFieldProcent1.getText());
@@ -913,7 +1035,8 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jTextFieldProcent1FocusLost
     
     private void jTextFieldPrice1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice1FocusLost
-/*        try {
+fLost(jTextFieldPrice1);
+        /*        try {
  
             p0 = Double.parseDouble(jTextDostPrice.getText());
             p1 = Double.parseDouble(jTextFieldPrice1.getText());
@@ -1170,4 +1293,13 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
         r = bd.doubleValue();
         return newDouble.valueOf(r);
     }
+    
+       private void fGain(javax.swing.JComponent jtf){
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 0, 51), null));
+    }
+    
+    private void fLost(javax.swing.JComponent jtf){
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 255, 255), null));
+    }
+   
 }// end class
