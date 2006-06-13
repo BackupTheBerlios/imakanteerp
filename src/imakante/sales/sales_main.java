@@ -474,6 +474,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         kasiIbankiMenu.add(kasaMenu_nal);
 
         kasaMenu_opis.setText("\u041e\u043f\u0438\u0441 \u043d\u0430 \u043a\u043e\u043f\u044e\u0440\u0438");
+        kasaMenu_opis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kasaMenu_opisActionPerformed(evt);
+            }
+        });
+
         kasiIbankiMenu.add(kasaMenu_opis);
 
         kasiIbankiMenu.add(jSeparator11);
@@ -981,6 +987,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-458)/2, 757, 458);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void kasaMenu_opisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kasaMenu_opisActionPerformed
+    loadCopiuri();
+    }//GEN-LAST:event_kasaMenu_opisActionPerformed
 
     private void razMenu_vrystActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_razMenu_vrystActionPerformed
 // TODO add your handling code here:
@@ -2176,6 +2186,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             
         }
         frmDocumentFacadeDialog.setVisible(true)  ;
+    }
+
+    private void loadCopiuri() {
+      imakante.sales.FrmCopiuri frmCop = new imakante.sales.FrmCopiuri("\u041f\u0430\u0440\u0438\u0447\u043d\u0438 \u043e\u043f\u0438\u0441\u0438 ",this);
+      desktopPane.add(frmCop);
+      frmCop.setVisible(true);
     }
     
 
