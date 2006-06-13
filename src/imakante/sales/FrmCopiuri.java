@@ -234,13 +234,34 @@ else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextName.setT
     private  imakante.sales.dbCopiuri internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
-    public static final String Names[] = { "id", "id_group",
-    "\u0413\u0440\u0443\u043f\u0430 \u043b\u0438\u0446\u0430",
-    "\u041a\u043e\u0434",
-    "\u0415\u0413\u041d",
-    "\u041d\u041b\u041a",
-    "\u0418\u043c\u0435\u043d\u0430",
-    "\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440\u0438"};
+    public static final String Names[] = { "id", "id_user",
+    "\u041F\u043E\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043B", "\u0412\u0440\u0435\u043C\u0435",
+    "\u0411\u0440\u043E\u0439 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 100 \u043B\u0432", 
+    "\u0421\u0443\u043C\u0430 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 100 \u043B\u0432",
+    "\u0411\u0440\u043E\u0439 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 50 \u043B\u0432", 
+    "\u0421\u0443\u043C\u0430 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 50 \u043B\u0432",
+    "\u0411\u0440\u043E\u0439 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 20 \u043B\u0432", 
+    "\u0421\u0443\u043C\u0430 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 20 \u043B\u0432",
+    "\u0411\u0440\u043E\u0439 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 10 \u043B\u0432", 
+    "\u0421\u0443\u043C\u0430 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 10 \u043B\u0432",
+    "\u0411\u0440\u043E\u0439 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 5 \u043B\u0432", 
+    "\u0421\u0443\u043C\u0430 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 5 \u043B\u0432",
+    "\u0411\u0440\u043E\u0439 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 2 \u043B\u0432", 
+    "\u0421\u0443\u043C\u0430 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 2 \u043B\u0432",
+    "\u0411\u0440\u043E\u0439 \u043C\u043E\u043D\u0435\u0442\u0438 1 \u043B\u0432", 
+    "\u0421\u0443\u043C\u0430 \u043C\u043E\u043D\u0435\u0442\u0438 1 \u043B\u0432",
+    "\u0411\u0440\u043E\u0439 \u043C\u043E\u043D\u0435\u0442\u0438 50 \u0441\u0442", 
+    "\u0421\u0443\u043C\u0430 \u043C\u043E\u043D\u0435\u0442\u0438 50 \u0441\u0442",
+    "\u0411\u0440\u043E\u0439 \u043C\u043E\u043D\u0435\u0442\u0438 20 \u0441\u0442", 
+    "\u0421\u0443\u043C\u0430 \u043C\u043E\u043D\u0435\u0442\u0438 20 \u0441\u0442",
+    "\u0411\u0440\u043E\u0439 \u043C\u043E\u043D\u0435\u0442\u0438 10 \u0441\u0442", 
+    "\u0421\u0443\u043C\u0430 \u043C\u043E\u043D\u0435\u0442\u0438 10 \u0441\u0442",
+    "\u0411\u0440\u043E\u0439 \u043C\u043E\u043D\u0435\u0442\u0438 5 \u0441\u0442", 
+    "\u0421\u0443\u043C\u0430 \u043C\u043E\u043D\u0435\u0442\u0438 5 \u0441\u0442",
+    "\u0411\u0440\u043E\u0439 \u043C\u043E\u043D\u0435\u0442\u0438 2 \u0441\u0442", 
+    "\u0421\u0443\u043C\u0430 \u043C\u043E\u043D\u0435\u0442\u0438 2 \u0441\u0442",
+    "\u0411\u0440\u043E\u0439 \u043C\u043E\u043D\u0435\u0442\u0438 1 \u0441\u0442", 
+    "\u0421\u0443\u043C\u0430 \u043C\u043E\u043D\u0435\u0442\u0438 1 \u0441\u0442" };
     //---------------END My Variables
     
     //---------------START Methods
@@ -265,7 +286,7 @@ else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextName.setT
             model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
             HideColumns(getColumnIndex("id"));
-            HideColumns(getColumnIndex("id_group"));
+            HideColumns(getColumnIndex("id_user"));
         } catch(Exception e) { e.printStackTrace(); }
         table.requestFocus();
         try {
@@ -482,7 +503,7 @@ else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextName.setT
             table = new imakante.com.CustomTable(model);
             jScrollPane1.getViewport().add(table);
             HideColumns(getColumnIndex("id"));
-            HideColumns(getColumnIndex("id_group"));
+            HideColumns(getColumnIndex("id_user"));
             jScrollPane1.repaint();
         } catch(Exception e) { e.printStackTrace(); }
     }
@@ -494,7 +515,7 @@ else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextName.setT
         table = new imakante.com.CustomTable(model);
         jScrollPane1.getViewport().add(table);
         HideColumns(getColumnIndex("id"));
-        HideColumns(getColumnIndex("id_group"));
+        HideColumns(getColumnIndex("id_user"));
         jTextName.setText("");
         jScrollPane1.repaint();
     }

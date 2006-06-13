@@ -62,6 +62,8 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
         jLabel27 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("\u041f\u0430\u0440\u0438\u0447\u0435\u043d \u043e\u043f\u0438\u0441");
+        setResizable(false);
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u0411\u0430\u043d\u043a\u043d\u043e\u0442\u0438"));
         jLabel1.setText("100");
 
@@ -582,7 +584,8 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
                 .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        pack();
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-420)/2, (screenSize.height-404)/2, 420, 404);
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -599,132 +602,132 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
     
     private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
         fGain(jTextField2);
-        calculateValues(jTextField2, jLabel15, 100);
+        jTextField2.selectAll();
     }//GEN-LAST:event_jTextField2FocusGained
     
     private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
         flost(jTextField2);
-        jTextField2.selectAll();
+        calculateValues(jTextField2, jLabel15, 50);
     }//GEN-LAST:event_jTextField2FocusLost
     
     private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
         fGain(jTextField3);
-        calculateValues(jTextField3, jLabel16, 100);
+        jTextField3.selectAll();
     }//GEN-LAST:event_jTextField3FocusGained
     
     private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
         flost(jTextField3);
-        jTextField3.selectAll();
+        calculateValues(jTextField3, jLabel16, 20);
     }//GEN-LAST:event_jTextField3FocusLost
     
     private void jTextField4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusGained
         fGain(jTextField4);
-        calculateValues(jTextField4, jLabel17, 100);
+        jTextField4.selectAll();
     }//GEN-LAST:event_jTextField4FocusGained
     
     private void jTextField4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusLost
         flost(jTextField4);
-        jTextField4.selectAll();
+        calculateValues(jTextField4, jLabel17, 10);
     }//GEN-LAST:event_jTextField4FocusLost
     
     private void jTextField5FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField5FocusGained
         fGain(jTextField5);
-        calculateValues(jTextField5, jLabel18, 100);
+        jTextField5.selectAll();
     }//GEN-LAST:event_jTextField5FocusGained
     
     private void jTextField5FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField5FocusLost
         flost(jTextField5);
-        jTextField5.selectAll();
+        calculateValues(jTextField5, jLabel18, 5);
     }//GEN-LAST:event_jTextField5FocusLost
     
     private void jTextField6FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusGained
         fGain(jTextField6);
-        calculateValues(jTextField6, jLabel19, 100);
+        jTextField6.selectAll();
     }//GEN-LAST:event_jTextField6FocusGained
     
     private void jTextField6FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusLost
         flost(jTextField6);
-        jTextField6.selectAll();
+        calculateValues(jTextField6, jLabel19, 2);
     }//GEN-LAST:event_jTextField6FocusLost
     
     private void jTextField7FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField7FocusGained
         fGain(jTextField7);
-        calculateValues(jTextField7, jLabel20, 100);
+        jTextField7.selectAll();
     }//GEN-LAST:event_jTextField7FocusGained
     
     private void jTextField7FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField7FocusLost
         flost(jTextField7);
-        jTextField7.selectAll();
+        calculateValues(jTextField7, jLabel20, 1);
     }//GEN-LAST:event_jTextField7FocusLost
     
     private void jTextField8FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField8FocusGained
         fGain(jTextField8);
-        calculateValues(jTextField8, jLabel21, 100);
+        jTextField8.selectAll();
     }//GEN-LAST:event_jTextField8FocusGained
     
     private void jTextField8FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField8FocusLost
         flost(jTextField8);
-        jTextField8.selectAll();
+        calculateValues(jTextField8, jLabel21, 0.50);
     }//GEN-LAST:event_jTextField8FocusLost
     
     private void jTextField9FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField9FocusGained
         fGain(jTextField9);
-        calculateValues(jTextField9, jLabel22, 100);
+        jTextField9.selectAll();
     }//GEN-LAST:event_jTextField9FocusGained
     
     private void jTextField9FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField9FocusLost
         flost(jTextField9);
-        jTextField9.selectAll();
+        calculateValues(jTextField9, jLabel22, 0.20);
     }//GEN-LAST:event_jTextField9FocusLost
     
     private void jTextField10FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField10FocusGained
         fGain(jTextField10);
-        calculateValues(jTextField10, jLabel23, 100);
+        jTextField10.selectAll();
     }//GEN-LAST:event_jTextField10FocusGained
     
     private void jTextField10FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField10FocusLost
         flost(jTextField10);
-        jTextField10.selectAll();
+        calculateValues(jTextField10, jLabel23, 0.10);
     }//GEN-LAST:event_jTextField10FocusLost
     
     private void jTextField11FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField11FocusGained
         fGain(jTextField11);
-        calculateValues(jTextField11, jLabel24, 100);
+        jTextField11.selectAll();
     }//GEN-LAST:event_jTextField11FocusGained
     
     private void jTextField11FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField11FocusLost
         flost(jTextField11);
-        jTextField11.selectAll();
+        calculateValues(jTextField11, jLabel24, 0.05);
     }//GEN-LAST:event_jTextField11FocusLost
     
     private void jTextField12FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField12FocusGained
         fGain(jTextField12);
-        calculateValues(jTextField12, jLabel25, 100);
+        jTextField12.selectAll();
     }//GEN-LAST:event_jTextField12FocusGained
     
     private void jTextField12FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField12FocusLost
         flost(jTextField12);
-        jTextField12.selectAll();
+        calculateValues(jTextField12, jLabel25, 0.02);
     }//GEN-LAST:event_jTextField12FocusLost
     
     private void jTextField13FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField13FocusGained
         fGain(jTextField13);
-        calculateValues(jTextField13, jLabel26, 100);
+        jTextField13.selectAll();
     }//GEN-LAST:event_jTextField13FocusGained
     
     private void jTextField13FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField13FocusLost
         flost(jTextField13);
-        jTextField13.selectAll();
+        calculateValues(jTextField13, jLabel26, 0.01);
     }//GEN-LAST:event_jTextField13FocusLost
     
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
         flost(jTextField1);
-        jTextField1.selectAll();
+        calculateValues(jTextField1, jLabel14, 100);
     }//GEN-LAST:event_jTextField1FocusLost
     
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
         fGain(jTextField1);
-        calculateValues(jTextField1, jLabel14, 100);
+        jTextField1.selectAll();
     }//GEN-LAST:event_jTextField1FocusGained
     
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
@@ -782,18 +785,17 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
+    
     private imakante.sales.FrmCopiuri myframe;
-    private double sum_paper=0, sum_moneti=0, sum_total=0;
+    private double sum_paper = 0, sum_moneti = 0, sum_total = 0;
+    
     private void calculateValues(javax.swing.JTextField tf, javax.swing.JLabel lab, double val) {
         double sum = 0;
         double sum_old = 0;
         try {
             sum_old = Double.parseDouble(lab.getText());
-        } catch (NumberFormatException ex) {
-            ex.printStackTrace();
-        }
-        if(val>1){sum_paper=sum_paper - sum_old;} else {sum_moneti=sum_moneti-sum_old;}
-        
+        } catch (NumberFormatException ex) { ex.printStackTrace(); }
+        if (val > 1) sum_paper = sum_paper - sum_old; else sum_moneti = sum_moneti - sum_old;
         try {
             sum = Double.parseDouble(tf.getText()) * val;
         } catch (NumberFormatException ex) {
@@ -801,12 +803,11 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
             ex.printStackTrace();
         }
         lab.setText("" + sum);
-        if(val>1){sum_paper=sum_paper +sum;} else {sum_moneti=sum_moneti + sum;}
+        if (val > 1) sum_paper = sum_paper +sum; else sum_moneti = sum_moneti + sum;
         sum_total = sum_moneti  + sum_paper;
-        jLabel27.setText(""+sum_total);
-        jLabel28.setText(""+sum_moneti);
-        jLabel29.setText(""+sum_paper);
-        
+        jLabel27.setText("" + sum_total);
+        jLabel28.setText("" + sum_moneti);
+        jLabel29.setText("" + sum_paper);
     }
     
     private void fGain(javax.swing.JTextField jtf){
@@ -820,6 +821,7 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
     private void saveRecord() {
         
         myframe.getInternalObject().insertRow(
+                imakante.com.NewMain.getUserId(),
                 Integer.parseInt(jTextField1.getText()),
                 Integer.parseInt(jTextField2.getText()),
                 Integer.parseInt(jTextField3.getText()),

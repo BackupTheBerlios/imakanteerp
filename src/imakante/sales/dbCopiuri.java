@@ -39,7 +39,7 @@ public class dbCopiuri extends imakante.com.dbObject {
     public void registerParameters() {
         try {
             getCstm().setInt("comprator", getComprator());
-             getCstm().setInt("in_id_um", getUserID());
+            getCstm().setInt("in_id_um", getUserID());
             getCstm().setString("in_name_um", getName());
             getCstm().setInt("in_paper_100", getPaper100());
             getCstm().setInt("in_paper_50", getPaper50());
@@ -59,7 +59,7 @@ public class dbCopiuri extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    public void insertRow(int in_paper_100, int in_paper_50, int in_paper_20,
+    public void insertRow(int userID, int in_paper_100, int in_paper_50, int in_paper_20,
             int in_paper_10, int in_paper_5, int in_paper_2, int in_metal_1,
             int in_metal_050, int in_metal_020, int in_metal_010, int in_metal_005,
             int in_metal_002, int in_metal_001) {

@@ -35,11 +35,10 @@ BEGIN
               ORDER by id_sc ASC;
   END IF;
   IF (comprator = 1) then
-  INSERT INTO sl_copiuri(id_um, paper_100, paper_50, paper_20, paper_10, paper_5,
-                  paper_2, metal_1, metal_050, metal_020, metal_010, metal_010,
-                   metal_005, metal_002,metal_001) VALUES( in_id_um, in_paper_100, in_paper_50,
-                    in_paper_20, in_paper_10, in_paper_5, in_paper_2, in_metal_1, in_metal_050,
-                     in_metal_020, in_metal_010, in_metal_005, in_metal_002, in_metal_001);
+  INSERT INTO sl_copiuri(id_um, paper_100, paper_50, paper_20, paper_10, paper_5, paper_2, 
+                        metal_1, metal_050, metal_020, metal_010, metal_005, metal_002, metal_001) 
+                  VALUES(in_id_um, in_paper_100, in_paper_50, in_paper_20, in_paper_10, in_paper_5, in_paper_2, 
+                        in_metal_1, in_metal_050, in_metal_020, in_metal_010, in_metal_005, in_metal_002, in_metal_001);
   end if;
   IF (comprator =  5) then
 
