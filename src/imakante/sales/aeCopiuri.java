@@ -3,7 +3,7 @@ package imakante.sales;
 
 public class aeCopiuri extends imakante.com.vcomponents.iDialog {
     
-    public aeCopiuri(imakante.com.vcomponents.iFrame parent, boolean modal) {
+    public aeCopiuri(imakante.com.vcomponents.iInternalFrame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }

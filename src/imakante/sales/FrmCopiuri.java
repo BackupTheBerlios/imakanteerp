@@ -500,7 +500,7 @@ else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextName.setT
     }
     
     private void newRecord() {
-        imakante.sales.aeCopiur ae_Cop = new imakante.sales.aeCopiur(this, true);
+        imakante.sales.aeCopiuri ae_Cop = new imakante.sales.aeCopiuri(this, true);
         ae_Cop.setVisible(true);
     }
     
