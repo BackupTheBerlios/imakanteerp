@@ -6,9 +6,9 @@ public class dbCopiuri extends imakante.com.dbObject {
     // --- Custom Members --- //
     private java.sql.Connection conn;
     private int userID = 0;
-    private String userName = null;
-    private String dateBegin = null;
-    private String dateEnd = null;
+    private String userName = "";
+    private String dateBegin = "";
+    private String dateEnd = "";
     private int paper100 = 0;
     private int paper50 = 0;
     private int paper20 = 0;
@@ -32,14 +32,14 @@ public class dbCopiuri extends imakante.com.dbObject {
     // --- Custom Methods --- //
     public void prepareCstm(){
         try {
-            setCstm(getConn().prepareCall("{call sl_procedure_copiuri(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
+            setCstm(getConn().prepareCall("{call sl_procedure_copiuri(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
     public void registerParameters() {
         try {
             getCstm().setInt("comprator", getComprator());
-            getCstm().setString("in_name", getName());
+            getCstm().setString("in_name_um", getName());
             getCstm().setInt("in_paper_100", getPaper100());
             getCstm().setInt("in_paper_50", getPaper50());
             getCstm().setInt("in_paper_20", getPaper20());
