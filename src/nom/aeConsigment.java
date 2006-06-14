@@ -31,7 +31,7 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
         int y = (((dim.height)-(this.getSize().height))/2);
         this.setLocation(x, y);
         
-         // ------------Popylvane na colonite za opisanie
+        // ------------Popylvane na colonite za opisanie
         splitNameOfColumn1 = myParent.getCountriesT().getProductDescriptionColumn();
         
         for(int i=0;i<splitNameOfColumn1.length;i++) {
@@ -41,7 +41,7 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
             jComboBoxDescript3.addItem(new String(splitNameOfColumn1[i]));
             
         }
-       
+        
         setInputLisener();
         repaintComp();
         jTextFieldExpertList.requestFocus();
@@ -126,7 +126,7 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
         jPanel1.add(jLabelMOL, gridBagConstraints);
 
         jTextFieldPrice.setEditable(false);
-        jTextFieldPrice.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jTextFieldPrice.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldPrice.setMinimumSize(new java.awt.Dimension(170, 20));
         jTextFieldPrice.setNextFocusableComponent(jTextFieldPromoPrices);
         jTextFieldPrice.setPreferredSize(new java.awt.Dimension(170, 20));
@@ -157,7 +157,7 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
         jPanel1.add(jTextFieldPrice, gridBagConstraints);
 
         jTextFieldFee.setEditable(false);
-        jTextFieldFee.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jTextFieldFee.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldFee.setMinimumSize(new java.awt.Dimension(170, 20));
         jTextFieldFee.setNextFocusableComponent(jTextFieldPrice);
         jTextFieldFee.setPreferredSize(new java.awt.Dimension(170, 20));
@@ -191,7 +191,7 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
         jPanel1.add(jTextFieldFee, gridBagConstraints);
 
         jTextFieldPromoPrices.setEditable(false);
-        jTextFieldPromoPrices.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jTextFieldPromoPrices.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldPromoPrices.setMinimumSize(new java.awt.Dimension(170, 20));
         jTextFieldPromoPrices.setNextFocusableComponent(jButton1);
         jTextFieldPromoPrices.setPreferredSize(new java.awt.Dimension(170, 20));
@@ -253,6 +253,14 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
                 jComboBoxPartidaActionPerformed(evt);
             }
         });
+        jComboBoxPartida.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jComboBoxPartidaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jComboBoxPartidaFocusLost(evt);
+            }
+        });
         jComboBoxPartida.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jComboBoxPartidaKeyPressed(evt);
@@ -265,12 +273,16 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
         jPanel1.add(jComboBoxPartida, gridBagConstraints);
 
         jTextFieldBarCod.setText("0000000000");
+        jTextFieldBarCod.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldBarCod.setNextFocusableComponent(jTextFieldExpertList);
         jTextFieldBarCod.setPreferredSize(new java.awt.Dimension(170, 20));
         jTextFieldBarCod.setInputVerifier(new imakante.com.InputIntegerVerifier(10));
         jTextFieldBarCod.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextFieldBarCodFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldBarCodFocusLost(evt);
             }
         });
         jTextFieldBarCod.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -323,8 +335,18 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
         jPanelInfoProdukt.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f \u0437\u0430 \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u0430:", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
         jPanelInfoProdukt.setPreferredSize(new java.awt.Dimension(700, 100));
         jTextFieldCode.setEditable(false);
+        jTextFieldCode.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldCode.setOpaque(false);
         jTextFieldCode.setPreferredSize(new java.awt.Dimension(170, 20));
+        jTextFieldCode.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldCodeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldCodeFocusLost(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -344,8 +366,18 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
 
         jTextFieldName.setBackground(new java.awt.Color(235, 235, 200));
         jTextFieldName.setEditable(false);
+        jTextFieldName.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldName.setOpaque(false);
         jTextFieldName.setPreferredSize(new java.awt.Dimension(170, 20));
+        jTextFieldName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldNameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldNameFocusLost(evt);
+            }
+        });
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -415,40 +447,100 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
         jPanelDescription.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "\u0420\u0430\u0437\u0444\u0430\u0441\u043e\u0432\u043a\u0430", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
         jPanelDescription.setMinimumSize(new java.awt.Dimension(250, 60));
         jPanelDescription.setPreferredSize(new java.awt.Dimension(300, 80));
+        jComboBoxDescript1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jComboBoxDescript1.setEnabled(false);
         jComboBoxDescript1.setPreferredSize(new java.awt.Dimension(90, 20));
+        jComboBoxDescript1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jComboBoxDescript1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jComboBoxDescript1FocusLost(evt);
+            }
+        });
+
         jPanelDescription.add(jComboBoxDescript1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 80, 18));
 
         jComboBoxDescript2.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jComboBoxDescript2.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jComboBoxDescript2.setEnabled(false);
         jComboBoxDescript2.setPreferredSize(new java.awt.Dimension(90, 20));
+        jComboBoxDescript2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jComboBoxDescript2FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jComboBoxDescript2FocusLost(evt);
+            }
+        });
+
         jPanelDescription.add(jComboBoxDescript2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 70, 18));
 
+        jComboBoxDescript3.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jComboBoxDescript3.setEnabled(false);
         jComboBoxDescript3.setPreferredSize(new java.awt.Dimension(90, 20));
+        jComboBoxDescript3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jComboBoxDescript3FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jComboBoxDescript3FocusLost(evt);
+            }
+        });
+
         jPanelDescription.add(jComboBoxDescript3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 70, 18));
 
         jTextFieldDescript1.setEditable(false);
         jTextFieldDescript1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextFieldDescript1.setText("1");
         jTextFieldDescript1.setAutoscrolls(false);
+        jTextFieldDescript1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldDescript1.setOpaque(false);
         jTextFieldDescript1.setPreferredSize(new java.awt.Dimension(90, 20));
+        jTextFieldDescript1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldDescript1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldDescript1FocusLost(evt);
+            }
+        });
+
         jPanelDescription.add(jTextFieldDescript1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 80, 19));
 
         jTextFieldDescript2.setBackground(new java.awt.Color(235, 235, 200));
         jTextFieldDescript2.setEditable(false);
         jTextFieldDescript2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextFieldDescript2.setAutoscrolls(false);
+        jTextFieldDescript2.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldDescript2.setOpaque(false);
         jTextFieldDescript2.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextFieldDescript2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldDescript2FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldDescript2FocusLost(evt);
+            }
+        });
+
         jPanelDescription.add(jTextFieldDescript2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 70, 19));
 
         jTextFieldDescript3.setEditable(false);
         jTextFieldDescript3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextFieldDescript3.setAutoscrolls(false);
+        jTextFieldDescript3.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldDescript3.setOpaque(false);
         jTextFieldDescript3.setPreferredSize(new java.awt.Dimension(80, 20));
+        jTextFieldDescript3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldDescript3FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldDescript3FocusLost(evt);
+            }
+        });
+
         jPanelDescription.add(jTextFieldDescript3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 70, 19));
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -461,9 +553,18 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanelInfoProdukt.add(jPanelDescription, gridBagConstraints);
 
+        jTextFieldExpertList.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldExpertList.setMinimumSize(new java.awt.Dimension(150, 20));
         jTextFieldExpertList.setNextFocusableComponent(jComboBoxPartida);
         jTextFieldExpertList.setPreferredSize(new java.awt.Dimension(100, 20));
+        jTextFieldExpertList.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldExpertListFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldExpertListFocusLost(evt);
+            }
+        });
         jTextFieldExpertList.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldExpertListKeyPressed(evt);
@@ -489,36 +590,117 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void jTextFieldBarCodFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldBarCodFocusLost
+        fLost(jTextFieldBarCod);
+    }//GEN-LAST:event_jTextFieldBarCodFocusLost
+    
+    private void jComboBoxPartidaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxPartidaFocusLost
+        fLost(jComboBoxPartida);
+    }//GEN-LAST:event_jComboBoxPartidaFocusLost
+    
+    private void jComboBoxPartidaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxPartidaFocusGained
+        fGain(jComboBoxPartida);
+    }//GEN-LAST:event_jComboBoxPartidaFocusGained
+    
+    private void jTextFieldDescript3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldDescript3FocusLost
+        fLost(jTextFieldDescript3);
+    }//GEN-LAST:event_jTextFieldDescript3FocusLost
+    
+    private void jTextFieldDescript3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldDescript3FocusGained
+        fGain(jTextFieldDescript3);
+    }//GEN-LAST:event_jTextFieldDescript3FocusGained
+    
+    private void jTextFieldDescript2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldDescript2FocusLost
+        fLost(jTextFieldDescript2);
+    }//GEN-LAST:event_jTextFieldDescript2FocusLost
+    
+    private void jTextFieldDescript2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldDescript2FocusGained
+        fGain(jTextFieldDescript2);
+    }//GEN-LAST:event_jTextFieldDescript2FocusGained
+    
+    private void jTextFieldDescript1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldDescript1FocusLost
+        fLost(jTextFieldDescript1);
+    }//GEN-LAST:event_jTextFieldDescript1FocusLost
+    
+    private void jTextFieldDescript1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldDescript1FocusGained
+        fGain(jTextFieldDescript1);
+    }//GEN-LAST:event_jTextFieldDescript1FocusGained
+    
+    private void jComboBoxDescript3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxDescript3FocusLost
+        fLost(jComboBoxDescript3);
+    }//GEN-LAST:event_jComboBoxDescript3FocusLost
+    
+    private void jComboBoxDescript3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxDescript3FocusGained
+        fGain(jComboBoxDescript3);
+    }//GEN-LAST:event_jComboBoxDescript3FocusGained
+    
+    private void jComboBoxDescript2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxDescript2FocusLost
+        fLost(jComboBoxDescript2);
+    }//GEN-LAST:event_jComboBoxDescript2FocusLost
+    
+    private void jComboBoxDescript2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxDescript2FocusGained
+        fGain(jComboBoxDescript2);
+    }//GEN-LAST:event_jComboBoxDescript2FocusGained
+    
+    private void jComboBoxDescript1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxDescript1FocusLost
+        fLost(jComboBoxDescript1);
+    }//GEN-LAST:event_jComboBoxDescript1FocusLost
+    
+    private void jComboBoxDescript1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxDescript1FocusGained
+        fGain(jComboBoxDescript1);
+    }//GEN-LAST:event_jComboBoxDescript1FocusGained
+    
+    private void jTextFieldNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNameFocusLost
+        fLost(jTextFieldName);
+    }//GEN-LAST:event_jTextFieldNameFocusLost
+    
+    private void jTextFieldNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNameFocusGained
+        fGain(jTextFieldName);
+    }//GEN-LAST:event_jTextFieldNameFocusGained
+    
+    private void jTextFieldExpertListFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldExpertListFocusLost
+        fLost(jTextFieldExpertList);
+    }//GEN-LAST:event_jTextFieldExpertListFocusLost
+    
+    private void jTextFieldExpertListFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldExpertListFocusGained
+        fGain(jTextFieldExpertList);
+    }//GEN-LAST:event_jTextFieldExpertListFocusGained
+    
+    private void jTextFieldCodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldCodeFocusLost
+        fLost(jTextFieldCode);
+    }//GEN-LAST:event_jTextFieldCodeFocusLost
+    
+    private void jTextFieldCodeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldCodeFocusGained
+        fGain(jTextFieldCode);
+    }//GEN-LAST:event_jTextFieldCodeFocusGained
+    
     private void jTextFieldBarCodFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldBarCodFocusGained
-// TODO add your handling code here:
+        fGain(jTextFieldBarCod);
         jTextFieldBarCod.selectAll();
     }//GEN-LAST:event_jTextFieldBarCodFocusGained
-
+    
     private void jComboBoxPartidaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBoxPartidaKeyPressed
 // TODO add your handling code here:
-        if(evt.getKeyCode()==evt.VK_ENTER)
-        {
+        if(evt.getKeyCode()==evt.VK_ENTER) {
             jComboBoxPartida.transferFocus();
-           
+            
         }
     }//GEN-LAST:event_jComboBoxPartidaKeyPressed
-
+    
     private void jTextFieldExpertListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldExpertListKeyPressed
 // TODO add your handling code here:
-        if(evt.getKeyCode()==evt.VK_ENTER)
-        {
+        if(evt.getKeyCode()==evt.VK_ENTER) {
             jTextFieldExpertList.transferFocus();
         }
     }//GEN-LAST:event_jTextFieldExpertListKeyPressed
-
+    
     private void jComboBoxPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPartidaActionPerformed
 // TODO add your handling code here:
-       
-        if(!isNew)
-        {
+        
+        if(!isNew) {
             ctest++;
-          //  repaintComp();
+            //  repaintComp();
             
         }
         System.out.println("ActionPerformed " + ctest);
@@ -535,21 +717,18 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
         } catch(Exception e) {
             e.printStackTrace();
         }
-        if(evt.getKeyCode()==evt.VK_ENTER)
-        {
+        if(evt.getKeyCode()==evt.VK_ENTER) {
             jTextFieldFee.transferFocus();
         }
         repaintComp();
     }//GEN-LAST:event_jTextFieldFeeKeyPressed
-                    
+    
     private void jTextFieldFeeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldFeeFocusGained
-// TODO add your handling code here:
-        jTextFieldFee.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
+        fGain(jTextFieldFee);
     }//GEN-LAST:event_jTextFieldFeeFocusGained
     
     private void jTextFieldFeeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldFeeFocusLost
-// TODO add your handling code here:
-        jTextFieldFee.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        fLost(jTextFieldFee);
     }//GEN-LAST:event_jTextFieldFeeFocusLost
     
     private void jTextFieldFeeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFeeKeyReleased
@@ -566,17 +745,15 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
         } catch(Exception e) {
             e.printStackTrace();
         }
-     //   repaintComp();
+        //   repaintComp();
     }//GEN-LAST:event_jTextFieldFeeMousePressed
     
     private void jTextFieldPromoPricesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPromoPricesFocusLost
-// TODO add your handling code here:
-        jTextFieldPromoPrices.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        fLost(jTextFieldPromoPrices);
     }//GEN-LAST:event_jTextFieldPromoPricesFocusLost
     
     private void jTextFieldPromoPricesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPromoPricesFocusGained
-// TODO add your handling code here:
-        jTextFieldPromoPrices.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
+        fGain(jTextFieldPromoPrices);
     }//GEN-LAST:event_jTextFieldPromoPricesFocusGained
     
     private void jTextFieldPromoPricesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldPromoPricesMousePressed
@@ -589,17 +766,15 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
         } catch(Exception e) {
             e.printStackTrace();
         }
-     //   repaintComp();
+        //   repaintComp();
     }//GEN-LAST:event_jTextFieldPromoPricesMousePressed
     
     private void jTextFieldPriceFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPriceFocusLost
-// TODO add your handling code here:
-        jTextFieldPrice.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        fLost(jTextFieldPrice);
     }//GEN-LAST:event_jTextFieldPriceFocusLost
     
     private void jTextFieldPriceFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPriceFocusGained
-// TODO add your handling code here:
-        jTextFieldPrice.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
+        fGain(jTextFieldPrice);
     }//GEN-LAST:event_jTextFieldPriceFocusGained
     
     private void jTextFieldPriceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPriceKeyPressed
@@ -607,17 +782,16 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
         
         
         try {
-           
-              porductPrice =  new nom.aeProductPrice(myParent,true,id_pp,false);
-              porductPrice.setVisible(true);
+            
+            porductPrice =  new nom.aeProductPrice(myParent,true,id_pp,false);
+            porductPrice.setVisible(true);
             
             
         } catch(Exception e) {
             e.printStackTrace();
         }
-        if(evt.getKeyCode()==evt.VK_ENTER)
-        {
-             jTextFieldPrice.transferFocus();
+        if(evt.getKeyCode()==evt.VK_ENTER) {
+            jTextFieldPrice.transferFocus();
         }
         repaintComp();
     }//GEN-LAST:event_jTextFieldPriceKeyPressed
@@ -625,14 +799,14 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
     private void jTextFieldPriceMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldPriceMousePressed
 // TODO add your handling code here:
         try {
-           porductPrice =  new nom.aeProductPrice(myParent,true,id_pp,false);
-           porductPrice.setVisible(true);
+            porductPrice =  new nom.aeProductPrice(myParent,true,id_pp,false);
+            porductPrice.setVisible(true);
             
             
         } catch(Exception e) {
             e.printStackTrace();
         }
-       // repaintComp();
+        // repaintComp();
     }//GEN-LAST:event_jTextFieldPriceMousePressed
     
     //
@@ -725,8 +899,7 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
         } catch(Exception e) {
             e.printStackTrace();
         }
-         if(evt.getKeyCode()==evt.VK_ENTER)
-        {
+        if(evt.getKeyCode()==evt.VK_ENTER) {
             jTextFieldPromoPrices.transferFocus();
         }
         repaintComp();
@@ -734,80 +907,71 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 // TODO add your handling code here:
-        if(isNew)
-        {
-         Iterator it = splitPartidaNomer.iterator();
-         nom.infoConsigment partidi;
-         partidi = (infoConsigment)it.next();
-         myParent.getCountriesT().deleteConsigment(partidi.getId_PC());
+        if(isNew) {
+            Iterator it = splitPartidaNomer.iterator();
+            nom.infoConsigment partidi;
+            partidi = (infoConsigment)it.next();
+            myParent.getCountriesT().deleteConsigment(partidi.getId_PC());
         }
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
-      if(isNew)  
-      {
-          try
-          {
-          String str = (String)jComboBoxPartida.getItemAt(0);
-          if(str.equals("--------------"))
-          {
-              return;
-          }
-          }
-          catch(Exception e){}
-                  
-      }
-      String strDate;
-      int partidaNomer = (Integer)jComboBoxPartida.getSelectedItem();
-      imakante.com.dateManipulation newDate = new imakante.com.dateManipulation();
-      strDate = String.valueOf(jXDatePicker1.getDate().getDate());
-      strDate += "/" + String.valueOf(jXDatePicker1.getDate().getMonth()+1);
-      strDate += "/" + String.valueOf(jXDatePicker1.getDate().getYear()+1900);
-      System.out.println(strDate)  ;
-      String expireDate = newDate.convertDate(strDate);
-      System.out.println(expireDate)  ;
-      int barcod = Integer.parseInt(jTextFieldBarCod.getText());
-      int id_pc = 0;
-      int selItem = jComboBoxPartida.getSelectedIndex();
-      String exp_list = jTextFieldExpertList.getText();
-      Iterator it = splitPartidaNomer.iterator();
-      nom.infoConsigment partidi;
-           
-           while(it.hasNext())
-           {
-              partidi = (nom.infoConsigment) it.next();
-              if(partidi.getConnection()==selItem)
-              {
-                 id_pc = partidi.getId_PC();
-                 partidi.setBarCod(barcod);
-                 break;
-              }
-             
-              
-             
-           }
-      
-          if(myParent.isTypedFee | myParent.isTypedPrice | myParent.isTypedPromoPrice)
-          {
-             if(myParent.isTypedFee)  id_pf = myParent.saveProductFeeToDB();
-             if(myParent.isTypedPrice)  id_pp = myParent.saveNewPriceToDb();          
-             if(myParent.isTypedPromoPrice)  id_ppp = myParent.saveProductPromotionPriceToDB();
-         }
-       myParent.getCountriesT().updateConsigment(id_pc,id_pp,id_ppp,id_pf,id_pm,partidaNomer,expireDate,barcod,exp_list);
-       isNew = false;
+        if(isNew) {
+            try {
+                String str = (String)jComboBoxPartida.getItemAt(0);
+                if(str.equals("--------------")) {
+                    return;
+                }
+            } catch(Exception e){}
+            
+        }
+        String strDate;
+        int partidaNomer = (Integer)jComboBoxPartida.getSelectedItem();
+        imakante.com.dateManipulation newDate = new imakante.com.dateManipulation();
+        strDate = String.valueOf(jXDatePicker1.getDate().getDate());
+        strDate += "/" + String.valueOf(jXDatePicker1.getDate().getMonth()+1);
+        strDate += "/" + String.valueOf(jXDatePicker1.getDate().getYear()+1900);
+        System.out.println(strDate)  ;
+        String expireDate = newDate.convertDate(strDate);
+        System.out.println(expireDate)  ;
+        int barcod = Integer.parseInt(jTextFieldBarCod.getText());
+        int id_pc = 0;
+        int selItem = jComboBoxPartida.getSelectedIndex();
+        String exp_list = jTextFieldExpertList.getText();
+        Iterator it = splitPartidaNomer.iterator();
+        nom.infoConsigment partidi;
+        
+        while(it.hasNext()) {
+            partidi = (nom.infoConsigment) it.next();
+            if(partidi.getConnection()==selItem) {
+                id_pc = partidi.getId_PC();
+                partidi.setBarCod(barcod);
+                break;
+            }
+            
+            
+            
+        }
+        
+        if(myParent.isTypedFee | myParent.isTypedPrice | myParent.isTypedPromoPrice) {
+            if(myParent.isTypedFee)  id_pf = myParent.saveProductFeeToDB();
+            if(myParent.isTypedPrice)  id_pp = myParent.saveNewPriceToDb();
+            if(myParent.isTypedPromoPrice)  id_ppp = myParent.saveProductPromotionPriceToDB();
+        }
+        myParent.getCountriesT().updateConsigment(id_pc,id_pp,id_ppp,id_pf,id_pm,partidaNomer,expireDate,barcod,exp_list);
+        isNew = false;
         JOptionPane.showMessageDialog(this,"\u0423\u0441\u043F\u0435\u0448\u0435\u043D \u0437\u0430\u043F\u0438\u0441");
         //  jButton3.doClick(); // zatvarq se aeProsuct
-     //   repaintComp();
-    
+        //   repaintComp();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
     
     private void jTextFieldBarCodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBarCodKeyPressed
 // TODO add your handling code here:
         // pri natiskane na F7 6te se izvikva aContragent, za izbor na naseleno mqsto ot bazata danni
-        if(evt.getKeyCode()==evt.VK_ENTER)
-        {
+        if(evt.getKeyCode()==evt.VK_ENTER) {
             jTextFieldBarCod.transferFocus();
         }
     }//GEN-LAST:event_jTextFieldBarCodKeyPressed
@@ -900,12 +1064,12 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
     }
     private void repaintComp() // Test
     {
-       
-       id_pm =  myParent.getId_PM();
-       jTextFieldName.setText(myParent.getNamePM());
-     
-       jTextFieldCode.setText(myParent.getCodePM());
-       if((myParent.getId_PD()!=0)) // n_product_description
+        
+        id_pm =  myParent.getId_PM();
+        jTextFieldName.setText(myParent.getNamePM());
+        
+        jTextFieldCode.setText(myParent.getCodePM());
+        if((myParent.getId_PD()!=0)) // n_product_description
         {
             String description[][] = myParent.getCountriesT().getDescription(myParent.getId_PD());
             int newItem = getNewComboBoxColumnIndex(Integer.parseInt(description[0][0]));
@@ -914,158 +1078,136 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
             jComboBoxDescript2.setSelectedIndex(newItem);
             newItem = getNewComboBoxColumnIndex(Integer.parseInt(description[2][0]));
             jComboBoxDescript3.setSelectedIndex(newItem);
-         // jTextFieldDescript1.setText(description[0][1]);
+            // jTextFieldDescript1.setText(description[0][1]);
             jTextFieldDescript2.setText(description[1][1]);
             jTextFieldDescript3.setText(description[2][1]);
-         
+            
         }
-        if(myParent.getId_PF()!=0)
-        {
+        if(myParent.getId_PF()!=0) {
             id_pf = myParent.getId_PF();
             String  fee[] = myParent.getCountriesT().getProdictFee(myParent.getId_PF());
             jTextFieldFee.setText(fee[0]);
-        }
-        else jTextFieldFee.setText(myParent.getViewFee());
-        if (myParent.getId_PP()!=0) 
-        {
-           id_pp = myParent.getId_PP();
+        } else jTextFieldFee.setText(myParent.getViewFee());
+        if (myParent.getId_PP()!=0) {
+            id_pp = myParent.getId_PP();
             String price[] = myParent.getCountriesT().getProductPrice(myParent.getId_PP());
             jTextFieldPrice.setText(price[0]);
-        }
-        else jTextFieldPrice.setText(myParent.getViewPrice());
-        if (myParent.getId_PPP()!=0) 
-        {
-           id_ppp = myParent.getId_PPP();
+        } else jTextFieldPrice.setText(myParent.getViewPrice());
+        if (myParent.getId_PPP()!=0) {
+            id_ppp = myParent.getId_PPP();
             String promotion_price[] = myParent.getCountriesT().getProductPromotionPrice(myParent.getId_PPP());
             jTextFieldPromoPrices.setText(promotion_price[0]);
-        }
-        else jTextFieldPromoPrices.setText(myParent.getViewPromoPrice());
-       
-       
-       
-       
-//------------------------------      
-        if(isNew)
-        {
-           int id_pc =  myParent.getCountriesT().insertConsigment(0,0,0,0,0,"2000-01-01",0,"");
-           jComboBoxPartida.removeAllItems();
-           jComboBoxPartida.addItem(new String("--------------")) ; // za noviq produkt
-          
-           splitPartidaNomer = myParent.getCountriesT().getConsigmentFromIdPM(id_pm);
-           Iterator it = splitPartidaNomer.iterator();
-           nom.infoConsigment partidi;
-           
-           while(it.hasNext())
-           {
-              partidi = (nom.infoConsigment) it.next();
-              if(partidi.getConnection()==0)
-              {
-                 partidi.setId_PC(id_pc);
-              }
-              else
-              {
-                 jComboBoxPartida.addItem(new Integer(partidi.getPartidaNomer())); 
-                 
-              }
-              
-             
-           }
-       
-           jComboBoxPartida.grabFocus();
-           jComboBoxPartida.getEditor().selectAll();
-           
+        } else jTextFieldPromoPrices.setText(myParent.getViewPromoPrice());
+        
+        
+        
+        
+//------------------------------
+        if(isNew) {
+            int id_pc =  myParent.getCountriesT().insertConsigment(0,0,0,0,0,"2000-01-01",0,"");
+            jComboBoxPartida.removeAllItems();
+            jComboBoxPartida.addItem(new String("--------------")) ; // za noviq produkt
+            
+            splitPartidaNomer = myParent.getCountriesT().getConsigmentFromIdPM(id_pm);
+            Iterator it = splitPartidaNomer.iterator();
+            nom.infoConsigment partidi;
+            
+            while(it.hasNext()) {
+                partidi = (nom.infoConsigment) it.next();
+                if(partidi.getConnection()==0) {
+                    partidi.setId_PC(id_pc);
+                } else {
+                    jComboBoxPartida.addItem(new Integer(partidi.getPartidaNomer()));
+                    
+                }
+                
+                
+            }
+            
+            jComboBoxPartida.grabFocus();
+            jComboBoxPartida.getEditor().selectAll();
+            
+            
+        } else {
+            int id_pc =0;
+            int  dateInt[]= new int[3];
+            if(isFirstTimeAppearce) {
+                isFirstTimeAppearce = false;
+                jComboBoxPartida.removeAllItems();
+                splitPartidaNomer = myParent.getCountriesT().getConsigmentFromIdPM(id_pm);
+                splitPartidaNomer.remove(0);
+                Iterator it = splitPartidaNomer.iterator();
+                nom.infoConsigment partidi;
+                
+                while(it.hasNext()) {
+                    partidi = (nom.infoConsigment) it.next();
+                    jComboBoxPartida.addItem(new Integer(partidi.getPartidaNomer()));
+                    partidi.setConnection(partidi.getConnection()-1);
+                    if(partidi.getConnection()==0) {
+                        jComboBoxPartida.setSelectedIndex(0);
+                        dateInt = partidi.getExpireDateAsInt();
+                        id_pc = partidi.getId_PC();
+                        jTextFieldBarCod.setText(String.valueOf(partidi.getBarCod()));
+                        jTextFieldExpertList.setText(String.valueOf(partidi.getExpertList()));
+                    };
+                }
+                System.out.println("ffffff---fffffffffff--ff  " + ctest);
+                
+            } else {
+                int selIndex = jComboBoxPartida.getSelectedIndex();
+                Iterator it = splitPartidaNomer.iterator();
+                nom.infoConsigment partidi;
+                
+                while(it.hasNext()) {
+                    partidi = (nom.infoConsigment) it.next();
+                    if(partidi.getConnection()==selIndex) {
+                        id_pc = partidi.getId_PC();
+                        dateInt = partidi.getExpireDateAsInt();
+                        jTextFieldBarCod.setText(String.valueOf(partidi.getBarCod()));
+                        jTextFieldExpertList.setText(String.valueOf(partidi.getExpertList()));
+                    }
+                }
+                
+            }
+            
+            System.out.println("id_pc : "+ id_pc);
+            Date date = new Date(dateInt[2]-1900,dateInt[1]-1,dateInt[0]);
+            jXDatePicker1.setDate(date);
+            
+            int pricePartida[] = myParent.getCountriesT().getPriceIDs(id_pc);
+            System.out.println("pricePartida[0] " + pricePartida[0] );
+            System.out.println("pricePartida[1] " + pricePartida[1] );
+            System.out.println("pricePartida[2] " + pricePartida[2] );
+            if(pricePartida[0]!=0) {
+                id_pp =pricePartida[0];
+                id_ppp =pricePartida[1];
+                id_pf =pricePartida[2];
+                String  fee[] = myParent.getCountriesT().getProdictFee(id_pf);
+                jTextFieldFee.setText(fee[0]);
+                String price[] = myParent.getCountriesT().getProductPrice(id_pp);
+                jTextFieldPrice.setText(price[0]);
+                String promotion_price[] = myParent.getCountriesT().getProductPromotionPrice(id_ppp);
+                jTextFieldPromoPrices.setText(promotion_price[0]);
+                System.out.println("id_pp " + id_pp);
+                System.out.println("fee " + fee[0]);
+                System.out.println("id_ppp " + id_ppp);
+                System.out.println("price " + price[0]);
+                System.out.println("id_pf " + id_pf);
+                System.out.println("promotion_price " + promotion_price[0]);
+                
+                
+                
+            }
             
         }
-        else  
-        {
-          int id_pc =0;
-          int  dateInt[]= new int[3]; 
-          if(isFirstTimeAppearce)
-          {
-          isFirstTimeAppearce = false;
-          jComboBoxPartida.removeAllItems();
-          splitPartidaNomer = myParent.getCountriesT().getConsigmentFromIdPM(id_pm);
-          splitPartidaNomer.remove(0);
-          Iterator it = splitPartidaNomer.iterator();
-          nom.infoConsigment partidi;
-         
-           while(it.hasNext())
-           {
-              partidi = (nom.infoConsigment) it.next();
-              jComboBoxPartida.addItem(new Integer(partidi.getPartidaNomer())); 
-              partidi.setConnection(partidi.getConnection()-1);
-              if(partidi.getConnection()==0)
-              {
-                  jComboBoxPartida.setSelectedIndex(0);
-                  dateInt = partidi.getExpireDateAsInt();
-                  id_pc = partidi.getId_PC();
-                  jTextFieldBarCod.setText(String.valueOf(partidi.getBarCod()));
-                  jTextFieldExpertList.setText(String.valueOf(partidi.getExpertList()));
-              };
-           }
-          System.out.println("ffffff---fffffffffff--ff  " + ctest);
-          
-          }
-          else
-          {
-           int selIndex = jComboBoxPartida.getSelectedIndex();
-           Iterator it = splitPartidaNomer.iterator();
-           nom.infoConsigment partidi;
-         
-           while(it.hasNext())
-           {
-             partidi = (nom.infoConsigment) it.next();
-             if(partidi.getConnection()==selIndex)
-             {
-                 id_pc = partidi.getId_PC();
-                 dateInt = partidi.getExpireDateAsInt();
-                 jTextFieldBarCod.setText(String.valueOf(partidi.getBarCod()));
-                 jTextFieldExpertList.setText(String.valueOf(partidi.getExpertList()));
-             }
-           }
-           
-          }
-          
-          System.out.println("id_pc : "+ id_pc);
-          Date date = new Date(dateInt[2]-1900,dateInt[1]-1,dateInt[0]);
-          jXDatePicker1.setDate(date);
-
-          int pricePartida[] = myParent.getCountriesT().getPriceIDs(id_pc);
-          System.out.println("pricePartida[0] " + pricePartida[0] );
-           System.out.println("pricePartida[1] " + pricePartida[1] );
-            System.out.println("pricePartida[2] " + pricePartida[2] );
-          if(pricePartida[0]!=0)
-          {
-              id_pp =pricePartida[0];
-              id_ppp =pricePartida[1];
-              id_pf =pricePartida[2];
-              String  fee[] = myParent.getCountriesT().getProdictFee(id_pf);
-              jTextFieldFee.setText(fee[0]);
-              String price[] = myParent.getCountriesT().getProductPrice(id_pp);
-              jTextFieldPrice.setText(price[0]);
-              String promotion_price[] = myParent.getCountriesT().getProductPromotionPrice(id_ppp);
-              jTextFieldPromoPrices.setText(promotion_price[0]);
-              System.out.println("id_pp " + id_pp);
-              System.out.println("fee " + fee[0]);
-              System.out.println("id_ppp " + id_ppp);
-              System.out.println("price " + price[0]);
-              System.out.println("id_pf " + id_pf);
-              System.out.println("promotion_price " + promotion_price[0]);
-              
-              
-              
-          }
-           
-        }
-  
+        
     }
-   
-   
-    private boolean  setAllVariables()
-    {
+    
+    
+    private boolean  setAllVariables() {
         boolean isOk= true;
         
-       
+        
         return isOk;
     }
     
@@ -1074,7 +1216,7 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
         
         
     }
-   private int getNewComboBoxIndex(int oldindex) //OK
+    private int getNewComboBoxIndex(int oldindex) //OK
     {
         int newindex= 0;
         for(int i = 0; i < myParent.getCountriesT().getIndexConnOfId().length; i++) {
@@ -1096,42 +1238,41 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
             }
         }
         return newindex;
-    }  
-  private void setInputLisener()
-  {
-      jComboBoxPartida.getEditor().addActionListener(new ActionListener() {
-          public void actionPerformed(ActionEvent e)
-          {
-             Object ob = jComboBoxPartida.getEditor().getItem();
-            
-             if(!isEarseString)
-             {
-                if(isNew) 
-                {
-                    jComboBoxPartida.removeItem((String)"--------------");
-                    jComboBoxPartida.insertItemAt(new Integer(Integer.parseInt((String)ob)),0);
+    }
+    private void setInputLisener() {
+        jComboBoxPartida.getEditor().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Object ob = jComboBoxPartida.getEditor().getItem();
+                
+                if(!isEarseString) {
+                    if(isNew) {
+                        jComboBoxPartida.removeItem((String)"--------------");
+                        jComboBoxPartida.insertItemAt(new Integer(Integer.parseInt((String)ob)),0);
+                    } else {
+                        jComboBoxPartida.insertItemAt(new Integer((Integer)ob),0);
+                        jComboBoxPartida.removeItemAt(jComboBoxPartida.getSelectedIndex());
+                    }
+                    
+                } else {
+                    jComboBoxPartida.insertItemAt(new Integer((Integer)ob),0);
+                    jComboBoxPartida.removeItemAt(jComboBoxPartida.getSelectedIndex());
                 }
-                else
-                {
-                  jComboBoxPartida.insertItemAt(new Integer((Integer)ob),0);
-                  jComboBoxPartida.removeItemAt(jComboBoxPartida.getSelectedIndex()); 
-                }
-                 
-             }
-             else 
-             {
-                 jComboBoxPartida.insertItemAt(new Integer((Integer)ob),0);
-                 jComboBoxPartida.removeItemAt(jComboBoxPartida.getSelectedIndex());
-             }
-            
-             
-             isEarseString = true;
-            
-             
-             jComboBoxPartida.setSelectedIndex(0);
-             jButton1.grabFocus();
-          }
-      });
-  }
+                
+                
+                isEarseString = true;
+                
+                
+                jComboBoxPartida.setSelectedIndex(0);
+                jButton1.grabFocus();
+            }
+        });
+    }
+    private void fGain(javax.swing.JComponent jtf){
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 0, 51), null));
+    }
+    
+    private void fLost(javax.swing.JComponent jtf){
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 255, 255), null));
+    }
 }// end class
 
