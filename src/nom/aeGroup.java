@@ -53,6 +53,11 @@ public class aeGroup extends imakante.com.vcomponents.iDialog {
                 jButtonSaveActionPerformed(evt);
             }
         });
+        jButtonSave.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonSaveKeyPressed(evt);
+            }
+        });
 
         jPanel1.add(jButtonSave);
 
@@ -84,12 +89,54 @@ public class aeGroup extends imakante.com.vcomponents.iDialog {
 
         jLabel3.setText("\u0410\u043d.\u043d\u0438\u0432\u0430:");
 
+        jTextCod.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextCod.setPreferredSize(new java.awt.Dimension(45, 20));
         jTextCod.setInputVerifier(new imakante.com.InputIntegerVerifier());
+        jTextCod.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextCodFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextCodFocusLost(evt);
+            }
+        });
+        jTextCod.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextCodKeyPressed(evt);
+            }
+        });
 
+        jTextName.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextName.setPreferredSize(new java.awt.Dimension(150, 20));
+        jTextName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextNameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextNameFocusLost(evt);
+            }
+        });
+        jTextName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextNameKeyPressed(evt);
+            }
+        });
 
+        jComboAnLevel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jComboAnLevel.setPreferredSize(new java.awt.Dimension(150, 22));
+        jComboAnLevel.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jComboAnLevelFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jComboAnLevelFocusLost(evt);
+            }
+        });
+        jComboAnLevel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboAnLevelKeyPressed(evt);
+            }
+        });
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u041d\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u044f"));
         jPanel3.setPreferredSize(new java.awt.Dimension(290, 70));
@@ -167,7 +214,7 @@ public class aeGroup extends imakante.com.vcomponents.iDialog {
                     .add(jLabel3)
                     .add(jComboAnLevel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(22, 22, 22)
-                .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
                 .add(19, 19, 19))
         );
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -175,6 +222,54 @@ public class aeGroup extends imakante.com.vcomponents.iDialog {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-374)/2, (screenSize.height-284)/2, 374, 284);
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void jButtonSaveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonSaveKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            jButtonSave.doClick();
+        }
+    }//GEN-LAST:event_jButtonSaveKeyPressed
+    
+    private void jComboAnLevelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboAnLevelKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            jButtonSave.requestFocus();
+        }
+    }//GEN-LAST:event_jComboAnLevelKeyPressed
+    
+    private void jComboAnLevelFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboAnLevelFocusLost
+        fLost(jComboAnLevel);
+    }//GEN-LAST:event_jComboAnLevelFocusLost
+    
+    private void jComboAnLevelFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboAnLevelFocusGained
+        fGain(jComboAnLevel);
+    }//GEN-LAST:event_jComboAnLevelFocusGained
+    
+    private void jTextNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNameKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            jTextName.transferFocus();
+        }
+    }//GEN-LAST:event_jTextNameKeyPressed
+    
+    private void jTextNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextNameFocusLost
+        fLost(jTextName);
+    }//GEN-LAST:event_jTextNameFocusLost
+    
+    private void jTextNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextNameFocusGained
+        fGain(jTextName);
+    }//GEN-LAST:event_jTextNameFocusGained
+    
+    private void jTextCodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextCodKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            jTextCod.transferFocus();
+        }
+    }//GEN-LAST:event_jTextCodKeyPressed
+    
+    private void jTextCodFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextCodFocusLost
+        fLost(jTextCod);
+    }//GEN-LAST:event_jTextCodFocusLost
+    
+    private void jTextCodFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextCodFocusGained
+        fGain(jTextCod);
+    }//GEN-LAST:event_jTextCodFocusGained
     
     private void jButtonUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUndoActionPerformed
         myParent.setNames(oldName);
@@ -320,5 +415,12 @@ public class aeGroup extends imakante.com.vcomponents.iDialog {
             }
         }
         return newindex;
+    }
+    private void fGain(javax.swing.JComponent jtf){
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 0, 51), null));
+    }
+    
+    private void fLost(javax.swing.JComponent jtf){
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 255, 255), null));
     }
 }// end class
