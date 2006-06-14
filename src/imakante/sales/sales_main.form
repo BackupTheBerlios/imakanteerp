@@ -475,6 +475,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x410;&#x43d;&#x430;&#x43b;&#x438;&#x442;&#x438;&#x447;&#x43d;&#x438; &#x43d;&#x438;&#x432;&#x430;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nomALevelActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="nomDisband">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x420;&#x430;&#x437;&#x444;&#x430;&#x441;&#x43e;&#x432;&#x43a;&#x430;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nomDisbandActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

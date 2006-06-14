@@ -137,6 +137,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         nomMenu_con = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JSeparator();
         nomALevel = new javax.swing.JMenuItem();
+        nomDisband = new javax.swing.JMenuItem();
         sprMenu = new javax.swing.JMenu();
         spravkiMenu_nal = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
@@ -719,7 +720,22 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         nomMenu.add(jSeparator4);
 
         nomALevel.setText("\u0410\u043d\u0430\u043b\u0438\u0442\u0438\u0447\u043d\u0438 \u043d\u0438\u0432\u0430");
+        nomALevel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomALevelActionPerformed(evt);
+            }
+        });
+
         nomMenu.add(nomALevel);
+
+        nomDisband.setText("\u0420\u0430\u0437\u0444\u0430\u0441\u043e\u0432\u043a\u0430");
+        nomDisband.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomDisbandActionPerformed(evt);
+            }
+        });
+
+        nomMenu.add(nomDisband);
 
         menuBar.add(nomMenu);
 
@@ -987,6 +1003,16 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-458)/2, 757, 458);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void nomDisbandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomDisbandActionPerformed
+// TODO add your handling code here:
+        loadDisband();
+    }//GEN-LAST:event_nomDisbandActionPerformed
+
+    private void nomALevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomALevelActionPerformed
+// TODO add your handling code here:
+        loadAnLevel();
+    }//GEN-LAST:event_nomALevelActionPerformed
 
     private void kasaMenu_opisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kasaMenu_opisActionPerformed
     loadCopiuri();
@@ -1426,6 +1452,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenuItem moneyMenu_valutes;
     private javax.swing.JMenuItem monyMenu_rates;
     private javax.swing.JMenuItem nomALevel;
+    private javax.swing.JMenuItem nomDisband;
     private javax.swing.JMenu nomMenu;
     private javax.swing.JMenu nomMenu_Aktiv;
     private javax.swing.JMenuItem nomMenu_DocType;
@@ -1492,7 +1519,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private nom.FrmGroup iFormGroup[] = new nom.FrmGroup[MAX_GROUP];
     public boolean isStartFrmGroup[] = new boolean[MAX_GROUP];
     private levelDialog levelDialog1 ;
-    
+    public boolean isStartFrmAnLevel = false;
+    public boolean isStartFrmDisband = false;
     private nom.FrmContragent iFrmContragent;
     public boolean isStartFrmContragent = false; // FLAG dali da se startira FrmContagent,
     //promenq se i ot FrmContragent pri zatvarqne
@@ -2194,5 +2222,27 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
       frmCop.setVisible(true);
     }
     
+private void  loadAnLevel()
+{
+    if(!isStartFrmAnLevel)
+    {
+     isStartFrmAnLevel = true;  
+     nom.FrmAnLevel anLevelD = new nom.FrmAnLevel("\u0410\u043d\u0430\u043b\u0438\u0442\u0438\u0447\u043d\u0438 \u043d\u0438\u0432\u0430",this);
+     desktopPane.add(anLevelD);
+     anLevelD.setVisible(true);
+    }
+}
+private void  loadDisband()
+{
+    
+    if(!isStartFrmDisband)
+    {
+        isStartFrmDisband = true;
+        nom.FrmDisband ddisband = new nom.FrmDisband("\u0420\u0430\u0437\u0444\u0430\u0441\u043e\u0432\u043a\u0430",this);
+        desktopPane.add(ddisband);  
+        ddisband.setVisible(true);
+    }
+    
+}
 
 }
