@@ -936,7 +936,7 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
         System.out.println(strDate)  ;
         String expireDate = newDate.convertDate(strDate);
         System.out.println(expireDate)  ;
-        int barcod = Integer.parseInt(jTextFieldBarCod.getText());
+        String barcod = jTextFieldBarCod.getText();
         int id_pc = 0;
         int selItem = jComboBoxPartida.getSelectedIndex();
         String exp_list = jTextFieldExpertList.getText();
@@ -1104,7 +1104,7 @@ public class aeConsigment extends imakante.com.vcomponents.iDialog {
         
 //------------------------------
         if(isNew) {
-            int id_pc =  myParent.getCountriesT().insertConsigment(0,0,0,0,0,"2000-01-01",0,"");
+            int id_pc =  myParent.getCountriesT().insertConsigment(0,0,0,0,0,"2000-01-01","","");
             jComboBoxPartida.removeAllItems();
             jComboBoxPartida.addItem(new String("--------------")) ; // za noviq produkt
             

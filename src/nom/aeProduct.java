@@ -1,5 +1,4 @@
 
-
 package nom;
 
 import java.awt.event.KeyEvent;
@@ -12,7 +11,6 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.DefaultTableCellRenderer;
 public class aeProduct extends imakante.com.vcomponents.iDialog {
     
-    /** Creates new form aeProduct */
     public aeProduct(imakante.com.vcomponents.iInternalFrame frame, boolean modal, boolean isnew, int selectComboBoxItem)// Test imakante.com.vcomponents.iInternalFrame frame  --- da se dobavi GROUP - nomer
     {
         super(frame, modal);
@@ -1398,12 +1396,13 @@ fGain(jComboBoxGroup);
         } else  // zapisa  sy6testvuva v bazata!!
         {
             if(setAllVariables()) {
-                int v1,v2,v3,m1,m2,m3;
+                int v1,v2,v3,m1,m3;
+                String m2;
                 v1 = 1;
                 v2 = Integer.parseInt(jTextFieldDescript2.getText());
                 v3 = Integer.parseInt(jTextFieldDescript3.getText());
                 m1 = myParent.getCountriesT().getIndexConnOfIdColumn()[jComboBoxDescript1.getSelectedIndex()];
-                m2 = myParent.getCountriesT().getIndexConnOfIdColumn()[jComboBoxDescript2.getSelectedIndex()];
+                m2 = "" + myParent.getCountriesT().getIndexConnOfIdColumn()[jComboBoxDescript2.getSelectedIndex()];
                 m3 = myParent.getCountriesT().getIndexConnOfIdColumn()[jComboBoxDescript3.getSelectedIndex()];
                 myParent.getCountriesT().updateProductDescriprionColumn(myParent.getId_PD(),v1,v2,v3,m1,m2,m3);
                 
@@ -1704,7 +1703,7 @@ fGain(jComboBoxGroup);
         myParent.setCodePM(jTextFieldCode.getText());
         
         try {
-            myParent.setBarCod(Integer.parseInt(jTextFieldBarCod.getText()));
+            myParent.setBarCod(jTextFieldBarCod.getText());
             myParent.setMax_POP(Double.parseDouble(jTextFieldMaxPOP.getText()));
             myParent.setMinProduct(Integer.parseInt(jTextFieldMinProduct.getText()));
         } catch(Exception e) {

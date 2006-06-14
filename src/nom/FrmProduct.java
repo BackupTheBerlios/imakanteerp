@@ -327,7 +327,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
-     imakante.sales.sales_main.setIsStartFrmProduct(false);   
+        imakante.sales.sales_main.setIsStartFrmProduct(false);
     }//GEN-LAST:event_formInternalFrameClosed
     
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
@@ -355,27 +355,15 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
                                           getExpertSheet(),getBarCod(),getCod1(),
                                           getCod2(),getMinProduct());*/
             
-            if(jTextFieldBarkod.getText().length()>0) {
-                rs = countriesT.searchRecords(0,0,0,0,0,0,
-                        jTextFieldName.getText(),
-                        jTextFieldKysoName.getText(),
-                        jTextFieldFacturnoName.getText(),
-                        jTextFieldNameSyotv.getText(),0.0,getFlag(),
-                        jTextFieldExperList.getText(),
-                        Integer.parseInt(jTextFieldBarkod.getText()),
-                        jTextFieldCod1.getText(),
-                        jTextFieldCod2.getText(),0,jTextFieldCode.getText());
-            } else {
-                rs = countriesT.searchRecords(0,0,0,0,0,0,
-                        jTextFieldName.getText(),
-                        jTextFieldKysoName.getText(),
-                        jTextFieldFacturnoName.getText(),
-                        jTextFieldNameSyotv.getText(),0.0,getFlag(),
-                        jTextFieldExperList.getText(),
-                        0,
-                        jTextFieldCod1.getText(),
-                        jTextFieldCod2.getText(),0,jTextFieldCode.getText());
-            }
+            rs = countriesT.searchRecords(0,0,0,0,0,0,
+                    jTextFieldName.getText(),
+                    jTextFieldKysoName.getText(),
+                    jTextFieldFacturnoName.getText(),
+                    jTextFieldNameSyotv.getText(),0.0,getFlag(),
+                    jTextFieldExperList.getText(),
+                    jTextFieldBarkod.getText(),
+                    jTextFieldCod1.getText(),
+                    jTextFieldCod2.getText(),0,jTextFieldCode.getText());
             model = new imakante.com.CustomTableModel(conn,rs, columnsNames);
             table = new imakante.com.CustomTable(model);
             // da se napravqt skriti kolona "id"
@@ -424,7 +412,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
         setFNamePM("");
         setSNamePM("");
         setCNamePM("");
-        setBarCod(0);
+        setBarCod("");
         setCod1("");
         setCod2("");
         setExpertSheet("");
@@ -559,13 +547,13 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     private  aeProduct dialog;
     private  aeConsigment consigment;
     private int id_pm=1,id_n_group=0,id_ppp=1, id_pp=1,id_pf=1,id_pd=1,flag_pm,id_contragent;              //       \
-    private int barcod_pm;
+    private String barcod_pm;
     private int min_pm;                                                   //         >
     private double max_pop_pm;
     private String name_pm, sname_pm, fname_pm, cname_pm, cod1_pm, cod2_pm;            //         /
     private String expertsheet_pm,code_pm ;
     private double price0=0,price1=0,price2=0,price3=0,dds=20,akcizi=0,other=0;
-    private int id_curs =1 ; 
+    private int id_curs =1 ;
     private int id_n_contragent;//        /
     private double promoprice;
     private String start = "2006-01-01",  stop = "2006-01-01";
@@ -820,11 +808,11 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     public String getExpertSheet() {
         return expertsheet_pm;
     }
-    public void setBarCod(int bar) {
+    public void setBarCod(String bar) {
         this.barcod_pm = bar;
         
     }
-    public int getBarCod() {
+    public String getBarCod() {
         return barcod_pm;
     }
     
@@ -903,7 +891,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
         setId_Group((Integer) table.getValueAt(getRow(), getColumnIndex("id_n_group")));
         
         setMax_POP((Double) table.getValueAt(getRow(), getColumnIndex("\u041e\u0442\u0441\u0442\u044a\u043f\u043a\u0430 (\u0432 %)")));
-        setBarCod((Integer) table.getValueAt(getRow(), getColumnIndex("\u0411\u0430\u0440\u043a\u043e\u0434")));
+        setBarCod((String) table.getValueAt(getRow(), getColumnIndex("\u0411\u0430\u0440\u043a\u043e\u0434")));
         setNamePM((String)table.getValueAt(getRow(),getColumnIndex("\u0418\u043c\u0435")));
         setSNamePM((String)table.getValueAt(getRow(),getColumnIndex("\u041a\u044a\u0441\u043e \u0438\u043c\u0435")));
         setFNamePM((String)table.getValueAt(getRow(),getColumnIndex("\u0424\u0430\u043a\u0442\u0443\u0440\u043d\u043e \u0438\u043c\u0435")));
@@ -1023,16 +1011,15 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
         this.isTypedPrice = true;
         
     }
-   public String[] getNewPrice()
-   {
-      String newpr[] = new String[5];
-       newpr[0] = String.valueOf(price0);
-       newpr[1] = String.valueOf(price1);
-       newpr[2] = String.valueOf(price2);
-       newpr[3] = String.valueOf(price3);
-       newpr[4] = String.valueOf(id_curs);
-       return newpr;
-   }
+    public String[] getNewPrice() {
+        String newpr[] = new String[5];
+        newpr[0] = String.valueOf(price0);
+        newpr[1] = String.valueOf(price1);
+        newpr[2] = String.valueOf(price2);
+        newpr[3] = String.valueOf(price3);
+        newpr[4] = String.valueOf(id_curs);
+        return newpr;
+    }
     public void setProductFee(double dds, double akcizi, double other) {
         this.dds = dds;
         this.akcizi =akcizi;
@@ -1040,8 +1027,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
         this.isTypedFee = true;
         
     }
-    public String[] getProductFee()
-    {
+    public String[] getProductFee() {
         String ppf[] = new String[3];
         ppf[0] = String.valueOf(dds);
         ppf[1] = String.valueOf(akcizi);
@@ -1054,8 +1040,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
         this.stop = stop;
         this.isTypedPromoPrice = true;
     }
-    public String[] getProductPromotionPrice()
-    {
+    public String[] getProductPromotionPrice() {
         String newPPP1[] = new String[3];
         newPPP1[0] = String.valueOf(promoprice);
         newPPP1[1] = start;
@@ -1093,7 +1078,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
         return String.valueOf(dds);
     }
     public String getViewPromoPrice() {
-         double prom = (promoprice*dds/100)+promoprice;
+        double prom = (promoprice*dds/100)+promoprice;
         String d = "\u0431\u0435\u0437 \u0414\u0414\u0421, "+prom+"\u0441 \u0414\u0414\u0421";
         return String.valueOf(promoprice)+d;
     }
@@ -1103,7 +1088,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     public int getGroup() {
         return group;
     }
-
+    
     private void delRecord() {
         if(table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());

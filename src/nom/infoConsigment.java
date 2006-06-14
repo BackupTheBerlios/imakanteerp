@@ -5,14 +5,14 @@ public class infoConsigment
 {
    private int id_pc =0;
    private int id_pm =0;
-   private int partidaNomer =0;
-   private int connection=0;
+   private int partidaNomer = 0;
+   private int connection = 0;
    private String expireDate; // na6 format
-   private int barCod=0;
+   private String barCod = "";
    private String expert_list;
     
     
-    public infoConsigment(int in_id_pc,int in_id_pm,int p,int con,String date,int barcod,String exp_list)
+    public infoConsigment(int in_id_pc,int in_id_pm,int p,int con,String date, String barcod,String exp_list)
     {
         this.id_pc = in_id_pc;
         this.id_pm = in_id_pm;
@@ -23,7 +23,7 @@ public class infoConsigment
         this.expert_list=exp_list;
     }
  
-public int getBarCod()
+public String getBarCod()
  {
      return barCod;
  }    
@@ -81,9 +81,9 @@ public int getBarCod()
      
      this.expert_list=in;
  }
-   public void setBarCod(int in)
+   public void setBarCod(String in)
  {
-     this.barCod=in;
+     this.barCod = in;
  }
  public int[] getExpireDateAsInt() 
  {

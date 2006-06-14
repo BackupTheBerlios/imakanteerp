@@ -83,11 +83,10 @@ public class productDB extends imakante.com.dbObject {
     private String splitGroup[] = null;
     private String splitColumn[] = null;
     
-    private int id_pm,id_n_group,id_ppp, id_pp,id_pf,id_pd,flag_pm;            //       \
-    private int barcod_pm;
+    private int id_pm,id_n_group,id_ppp, id_pp,id_pf,id_pd,flag_pm;
     private int min_pm;                                          //        \
     private double max_pop_pm;
-    private String name_pm, sname_pm, fname_pm, cname_pm, cod1_pm, cod2_pm;    //         >
+    private String name_pm, sname_pm, fname_pm, cname_pm, barcod_pm, cod1_pm, cod2_pm;    //         >
     private String expertsheet_pm,code_pm ;                                            //        /
     private double price0_pp,price1_pp,price2_pp,price3_pp;                   //        /
     
@@ -124,7 +123,7 @@ public class productDB extends imakante.com.dbObject {
                 max_pop_pm = getRs().getInt("max_pop_pm");
                 flag_pm = getRs().getInt("flag_pm");
                 expertsheet_pm = getRs().getString("expertsheet_pm");
-                barcod_pm = getRs().getInt("barcod_pm");
+                barcod_pm = getRs().getString("barcod_pm");
                 cod1_pm = getRs().getString("cod1_pm");
                 cod2_pm = getRs().getString("cod2_pm");
                 code_pm = getRs().getString("code_pm");
@@ -137,7 +136,7 @@ public class productDB extends imakante.com.dbObject {
     }
     public void insertRow(int in_id_pm, int in_id_ppp, int in_id_pp, int in_id_pf, int in_id_n_group,
             int in_id_pd, String in_name_pm, String in_sname_pm, String in_fname_pm,
-            String in_cname_pm,double in_max_pop_pm, int in_flag_pm, String in_expertsheet_pm,int in_barcod_pm,
+            String in_cname_pm,double in_max_pop_pm, int in_flag_pm, String in_expertsheet_pm, String in_barcod_pm,
             String in_cod1_pm , String in_cod2_pm, int in_min_pm,String in_code_pm) // ok   setComprator(1;
             
     {
@@ -171,7 +170,7 @@ public class productDB extends imakante.com.dbObject {
     }
     public void updateRow(int in_id_pm, int in_id_ppp, int in_id_pp, int in_id_pf, int in_id_n_group,
             int in_id_pd, String in_name_pm, String in_sname_pm, String in_fname_pm,
-            String in_cname_pm,double in_max_pop_pm, int in_flag_pm, String in_expertsheet_pm,int in_barcod_pm,
+            String in_cname_pm,double in_max_pop_pm, int in_flag_pm, String in_expertsheet_pm, String in_barcod_pm,
             String in_cod1_pm , String in_cod2_pm,int in_min_pm,String in_code_pm) // ok
     {
         
@@ -235,7 +234,7 @@ public class productDB extends imakante.com.dbObject {
     }
     public java.sql.ResultSet searchRecords(int in_id_pm, int in_id_ppp, int in_id_pp, int in_id_pf, int in_id_n_group,
             int in_id_pd, String in_name_pm, String in_sname_pm, String in_fname_pm,
-            String in_cname_pm,double in_max_pop_pm, int in_flag_pm, String in_expertsheet_pm,int in_barcod_pm,
+            String in_cname_pm,double in_max_pop_pm, int in_flag_pm, String in_expertsheet_pm, String in_barcod_pm,
             String in_cod1_pm , String in_cod2_pm,int in_min_pm,String in_code_pm) //- setComprator(5;
     {
         setComprator(5);
@@ -295,7 +294,7 @@ public class productDB extends imakante.com.dbObject {
             getCstm().setInt("in_id_pf", getId_PF());
             getCstm().setInt("in_id_n_group", getId_Group());
             getCstm().setInt("in_id_pd", getId_PD());
-            getCstm().setInt("in_barcod_pm", getBarCod());
+            getCstm().setString("in_barcod_pm", getBarCod());
             
             getCstm().setInt("in_flag_pm", getFlag());
             getCstm().setDouble("in_max_pop_pm", getMax_POP());
@@ -450,12 +449,12 @@ public class productDB extends imakante.com.dbObject {
     {
         return expertsheet_pm;
     }
-    public void setBarCod(int bar) // ok
+    public void setBarCod(String bar) // ok
     {
         this.barcod_pm = bar;
         
     }
-    public int getBarCod() // ok
+    public String getBarCod() // ok
     {
         return barcod_pm;
     }
@@ -1050,11 +1049,11 @@ public class productDB extends imakante.com.dbObject {
         return newID;
         
     }
-    public void updateProductDescriprionColumn(int in_id_pd,int v1,int v2,int v3 ,int m1 ,int m2 , int m3) //test //setComprator(29;   v- values; m -measure
+    public void updateProductDescriprionColumn(int in_id_pd,int v1,int v2,int v3 ,int m1 , String m2 , int m3) //test //setComprator(29;   v- values; m -measure
     {
         
-        int oldid_pm,oldid_pp,oldid_ppp,oldid_pf,oldid_n_group,oldid_pd;
-        int oldbarcod_pm;
+        int oldid_pm, oldid_pp, oldid_ppp, oldid_pf, oldid_n_group, oldid_pd;
+        String oldbarcod_pm;
         setComprator(29);
         oldid_pm = id_pm;
         oldid_pp = id_pp;
@@ -1198,7 +1197,7 @@ public class productDB extends imakante.com.dbObject {
     int oldID_pm = getId_PM();
     setId_PM(in_id_pm);
     ArrayList partidaNomer = new ArrayList();
-    infoConsigment iPartida = new infoConsigment(0,in_id_pm,0,0,"2000-01-01",0,"");
+    infoConsigment iPartida = new infoConsigment(0,in_id_pm,0,0,"2000-01-01","","");
     
     partidaNomer.add((infoConsigment)iPartida);
     try
@@ -1210,7 +1209,7 @@ public class productDB extends imakante.com.dbObject {
       {
         
          int id_pc = getRs().getInt("id_pc");
-         int barcod = getRs().getInt("barcod_pc");
+         String barcod = getRs().getString("barcod_pc");
          int nomer = getRs().getInt("parcel_pc");
          java.sql.Date date = getRs().getDate("dateofexpire_pc");
          String strDate = date.toString();
@@ -1256,7 +1255,7 @@ public class productDB extends imakante.com.dbObject {
         
      return idNumbers;
   }
- public int insertConsigment(int in_id_pp,int in_id_ppp,int in_id_pf,int in_id_pm,int in_nomer,String in_date,int barcod,String in_exp_list) 
+ public int insertConsigment(int in_id_pp,int in_id_ppp,int in_id_pf,int in_id_pm,int in_nomer,String in_date, String barcod,String in_exp_list) 
  {
     int oldid_pm = id_pm;
     int oldid_pp = id_pp;
@@ -1264,7 +1263,7 @@ public class productDB extends imakante.com.dbObject {
     int oldid_pf = id_pf;
     int oldid_pd = id_pd;
     String oldsname = sname_pm;
-    int oldbarcod = barcod_pm;
+    String oldbarcod = barcod_pm;
     setComprator(38);
     id_pm = in_id_pm;
     id_pp = in_id_pp;
@@ -1314,7 +1313,7 @@ public class productDB extends imakante.com.dbObject {
         expertsheet_pm=OldExpertsheet_pm;
         return maxID;
  }
- public void updateConsigment(int in_id_pc,int in_id_pp,int in_id_ppp,int in_id_pf,int in_id_pm,int in_nomer,String in_date,int barcod,String in_exp_list) 
+ public void updateConsigment(int in_id_pc,int in_id_pp,int in_id_ppp,int in_id_pf,int in_id_pm,int in_nomer,String in_date, String barcod,String in_exp_list) 
  {
     int oldid_pp = id_pp;
     int oldid_ppp = id_ppp;
@@ -1322,7 +1321,7 @@ public class productDB extends imakante.com.dbObject {
     int oldid_pd = id_pd;
     String oldExp_list = expertsheet_pm;
     String oldsname = sname_pm;
-    int oldbarcod = barcod_pm;
+    String oldbarcod = barcod_pm;
     int oldid_pm = id_pm;
     int oldn_group = id_n_group;
     setComprator(39);
