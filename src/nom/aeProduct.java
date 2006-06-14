@@ -345,6 +345,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
         jPanel1.add(jTextFieldExpertSheet, gridBagConstraints);
 
+        jTextFieldPrice.setBackground(new java.awt.Color(204, 204, 255));
         jTextFieldPrice.setEditable(false);
         jTextFieldPrice.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldPrice.setPreferredSize(new java.awt.Dimension(170, 20));
@@ -374,6 +375,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel1.add(jTextFieldPrice, gridBagConstraints);
 
+        jTextFieldFee.setBackground(new java.awt.Color(204, 204, 255));
         jTextFieldFee.setEditable(false);
         jTextFieldFee.setText("20.00");
         jTextFieldFee.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -407,6 +409,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
         jPanel1.add(jTextFieldFee, gridBagConstraints);
 
+        jTextFieldPromoPrices.setBackground(new java.awt.Color(204, 204, 255));
         jTextFieldPromoPrices.setEditable(false);
         jTextFieldPromoPrices.setToolTipText("\u0417\u0430\u0434\u044a\u043b\u0436\u0438\u0442\u0435\u043b\u043d\u043e \u043f\u043e\u043b\u0435");
         jTextFieldPromoPrices.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -470,6 +473,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 5);
         jPanel1.add(jLabel1, gridBagConstraints);
 
+        jTextFieldContragent.setBackground(new java.awt.Color(204, 204, 255));
         jTextFieldContragent.setEditable(false);
         jTextFieldContragent.setToolTipText("\u0417\u0430\u0434\u044a\u043b\u0436\u0438\u0442\u0435\u043b\u043d\u043e \u043f\u043e\u043b\u0435. \u0418\u0437\u043f\u043e\u043b\u0437\u0432\u0430\u0438\u0442\u0435 \u0434\u0432\u043e\u0435\u043d \u043a\u043b\u0438\u043a \u043d\u0430 \u043c\u0438\u0448\u043a\u0430\u0442\u0430 \u0438\u043b\u0438 \u043a\u043b\u0430\u0432\u0438\u0448\u0430 F7 \u0437\u0430 \u0438\u0437\u0431\u043e\u0440.");
         jTextFieldContragent.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));

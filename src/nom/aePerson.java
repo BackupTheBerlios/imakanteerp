@@ -168,9 +168,13 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
+        jTextArea1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextArea1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextArea1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextArea1FocusLost(evt);
             }
         });
 
@@ -178,6 +182,15 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
 
         jLabel3.setText("\u0413\u0440\u0443\u043f\u0430:");
 
+        jComboG.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        jComboG.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jComboGFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jComboGFocusLost(evt);
+            }
+        });
         jComboG.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jComboGKeyPressed(evt);
@@ -187,10 +200,14 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
         jLabel6.setText("\u041d\u041b\u041a:");
 
         jTextField1.setToolTipText("\u0415\u0413\u041d \u043d\u0430 \u043b\u0438\u0446\u0435\u0442\u043e");
+        jTextField1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         //jTextField1.setInputVerifier(new imakante.com.InputEGNVerifier());
         jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField1FocusLost(evt);
             }
         });
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -200,9 +217,13 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
         });
 
         jTextField2.setToolTipText("\u041d\u043e\u043c\u0435\u0440 \u043d\u0430 \u043b\u0438\u0447\u043d\u0430 \u043a\u0430\u0440\u0442\u0430.");
+        jTextField2.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField2FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField2FocusLost(evt);
             }
         });
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -211,9 +232,13 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
             }
         });
 
+        jTextField3.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField3FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField3FocusLost(evt);
             }
         });
         jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -225,10 +250,14 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
         jLabel7.setText("\u041a\u043e\u0434:");
 
         jTextField4.setToolTipText("\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u0430\u0442\u0430 \u0440\u0430\u0437\u0440\u0435\u0448\u0430\u0432\u0430 \u0438\u0437\u043f\u043e\u043b\u0437\u0432\u0430\u043d\u0435\u0442\u043e \u043d\u0430 \u0435\u0434\u0438\u043d \u043a\u043e\u0434 \u0437\u0430 \u043d\u044f\u043a\u043e\u043b\u043a\u043e \u043b\u0438\u0446\u0430, \u0442\u043e\u0432\u0430 \u043e\u0431\u0430\u0447\u0435 \u043d\u0435 \u0435 \u043f\u0440\u0435\u043f\u043e\u0440\u044a\u0447\u0438\u0442\u0435\u043b\u043d\u0430 \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0430.");
+        jTextField4.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextField4.setInputVerifier(new imakante.com.InputIntegerVerifier());
         jTextField4.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField4FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField4FocusLost(evt);
             }
         });
         jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -330,6 +359,34 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-370)/2, (screenSize.height-386)/2, 370, 386);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextArea1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea1FocusLost
+fLost(jTextArea1);
+    }//GEN-LAST:event_jTextArea1FocusLost
+
+    private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
+fLost(jTextField3);
+    }//GEN-LAST:event_jTextField3FocusLost
+
+    private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
+fLost(jTextField2);
+    }//GEN-LAST:event_jTextField2FocusLost
+
+    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+fLost(jTextField1);
+    }//GEN-LAST:event_jTextField1FocusLost
+
+    private void jTextField4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusLost
+fLost(jTextField4);
+    }//GEN-LAST:event_jTextField4FocusLost
+
+    private void jComboGFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboGFocusLost
+fLost(jComboG);
+    }//GEN-LAST:event_jComboGFocusLost
+
+    private void jComboGFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboGFocusGained
+  fGain(jComboG);
+    }//GEN-LAST:event_jComboGFocusGained
         
     private void jTextField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){jButtonSave.grabFocus();}
@@ -360,22 +417,27 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
     
     private void jTextArea1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea1FocusGained
+        fGain(jTextArea1);
         jTextArea1.selectAll();
     }//GEN-LAST:event_jTextArea1FocusGained
     
     private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
+        fGain(jTextField3);
         jTextField3.selectAll();
     }//GEN-LAST:event_jTextField3FocusGained
     
     private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
+        fGain(jTextField2);
         jTextField2.selectAll();
     }//GEN-LAST:event_jTextField2FocusGained
     
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+        fGain(jTextField1);
         jTextField1.selectAll();
     }//GEN-LAST:event_jTextField1FocusGained
     
     private void jTextField4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusGained
+        fGain(jTextField4);
         jTextField4.selectAll();
     }//GEN-LAST:event_jTextField4FocusGained
     
@@ -614,4 +676,15 @@ public class aePerson extends imakante.com.vcomponents.iDialog {
                     "\u0413\u0420\u0415\u0428\u041A\u0410!", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+      private void fGain(javax.swing.JComponent jtf){
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 0, 51), null));
+    }
+    
+    private void fLost(javax.swing.JComponent jtf){
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 255, 255), null));
+    }
+    
+    
+    
 }// end class
