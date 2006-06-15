@@ -26,6 +26,8 @@ public class NewMain extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jBLS1 = new javax.swing.JButton();
+        jBLS2 = new javax.swing.JButton();
+        jBLS3 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -51,6 +53,7 @@ public class NewMain extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakantebeta.png")));
         jLabel1.setText("jLabel1");
 
+        jBSales.setFont(new java.awt.Font("Tahoma", 0, 10));
         jBSales.setText("\u0421\u041a\u041b\u0410\u0414");
         jBSales.setMaximumSize(new java.awt.Dimension(115, 23));
         jBSales.setMinimumSize(new java.awt.Dimension(115, 23));
@@ -60,6 +63,7 @@ public class NewMain extends javax.swing.JFrame {
             }
         });
 
+        jBLS.setFont(new java.awt.Font("Tahoma", 0, 10));
         jBLS.setText("\u041b\u0421 \u0418 \u0422\u0420\u0417");
         jBLS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,9 +71,11 @@ public class NewMain extends javax.swing.JFrame {
             }
         });
 
+        jBACC.setFont(new java.awt.Font("Tahoma", 0, 10));
         jBACC.setText("\u0421\u0427\u0415\u0422\u041e\u0412\u041e\u0414\u0421\u0422\u0412\u041e");
         jBACC.setEnabled(false);
 
+        jBMN.setFont(new java.awt.Font("Tahoma", 0, 10));
         jBMN.setText("\u041f\u0420\u041e\u0418\u0417\u0412\u041e\u0414\u0421\u0422\u0412\u041e");
         jBMN.setEnabled(false);
 
@@ -80,14 +86,33 @@ public class NewMain extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 10));
         jButton1.setText("\u041b\u041e\u0413\u0418\u0421\u0422\u0418\u041a\u0410");
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 10));
         jButton2.setText("\u0421\u0422\u0410\u0422\u0418\u0421\u0422\u0418\u041a\u0410");
 
+        jBLS1.setFont(new java.awt.Font("Tahoma", 0, 10));
         jBLS1.setText("\u0410\u0414\u041c\u0418\u041d\u0418\u0421\u0422\u0420\u0410\u0426\u0418\u042f");
         jBLS1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBLS1ActionPerformed(evt);
+            }
+        });
+
+        jBLS2.setFont(new java.awt.Font("Tahoma", 0, 10));
+        jBLS2.setText("\u041b\u0418\u0417\u0418\u041d\u0413");
+        jBLS2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLS2ActionPerformed(evt);
+            }
+        });
+
+        jBLS3.setFont(new java.awt.Font("Tahoma", 0, 10));
+        jBLS3.setText("\u041e\u0421\u041d\u041e\u0412\u041d\u0418 \u0421\u0420\u0415\u0414\u0421\u0422\u0412\u0410");
+        jBLS3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLS3ActionPerformed(evt);
             }
         });
 
@@ -97,29 +122,31 @@ public class NewMain extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
                 .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 598, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(254, Short.MAX_VALUE))
-            .add(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .add(jBSales, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 114, Short.MAX_VALUE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jBLS, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 130, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .add(jBMN)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jBACC, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)))
-                .add(592, 592, 592))
+                .addContainerGap(275, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jButton2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jBLS1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 130, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(118, 118, 118)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(jButton2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 139, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jBLS1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 140, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jBMN, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jBSales, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(jBLS, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                            .add(jBACC, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                            .add(jBLS3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .add(jBLS2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))))
+                .add(69, 69, 69)
                 .add(jbExit)
-                .add(271, 271, 271))
+                .add(310, 310, 310))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -128,17 +155,19 @@ public class NewMain extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jBSales, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jBLS2)
                     .add(jBLS))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jBMN)
-                    .add(jBACC))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 9, Short.MAX_VALUE)
+                    .add(jBACC)
+                    .add(jBLS3)
+                    .add(jBMN))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 13, Short.MAX_VALUE)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jbExit)
                     .add(jButton2)
+                    .add(jBLS1)
                     .add(jButton1)
-                    .add(jBLS1))
+                    .add(jbExit))
                 .addContainerGap())
         );
 
@@ -184,6 +213,14 @@ public class NewMain extends javax.swing.JFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-605)/2, (screenSize.height-431)/2, 605, 431);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBLS3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLS3ActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jBLS3ActionPerformed
+
+    private void jBLS2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLS2ActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jBLS2ActionPerformed
 
     private void jBLS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLS1ActionPerformed
 // TODO add your handling code here:
@@ -362,6 +399,8 @@ public class NewMain extends javax.swing.JFrame {
     private static javax.swing.JButton jBACC;
     private static javax.swing.JButton jBLS;
     private javax.swing.JButton jBLS1;
+    private javax.swing.JButton jBLS2;
+    private javax.swing.JButton jBLS3;
     private static javax.swing.JButton jBMN;
     private static javax.swing.JButton jBSales;
     private javax.swing.JButton jButton1;

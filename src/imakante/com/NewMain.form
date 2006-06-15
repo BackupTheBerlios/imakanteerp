@@ -123,7 +123,9 @@
                   <Component id="jButton2" pref="115" max="32767" attributes="1"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jButton1" pref="129" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" pref="254" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jBLS1" min="-2" pref="130" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
                   <Component id="jbExit" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="271" max="-2" attributes="0"/>
               </Group>
@@ -148,6 +150,7 @@
                       <Component id="jbExit" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jBLS1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -229,6 +232,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x421;&#x422;&#x410;&#x422;&#x418;&#x421;&#x422;&#x418;&#x41a;&#x410;"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jBLS1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#x410;&#x414;&#x41c;&#x418;&#x41d;&#x418;&#x421;&#x422;&#x420;&#x410;&#x426;&#x418;&#x42f;"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBLS1ActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
