@@ -1,12 +1,15 @@
 
 package imakante.sales;
 
+import java.text.NumberFormat;
+
 public class aeCopiuri extends imakante.com.vcomponents.iDialog {
     
     public aeCopiuri(imakante.com.vcomponents.iInternalFrame parent, boolean modal) {
         super(parent, modal);
         myframe = (imakante.sales.FrmCopiuri) parent;
         initComponents();
+        numberFormatter = NumberFormat.getNumberInstance();
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -107,6 +110,11 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
                 jTextField2FocusLost(evt);
             }
         });
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField2KeyPressed(evt);
+            }
+        });
 
         jTextField3.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField3.setText("0");
@@ -118,6 +126,11 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextField3FocusLost(evt);
+            }
+        });
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField3KeyPressed(evt);
             }
         });
 
@@ -133,6 +146,11 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
                 jTextField4FocusLost(evt);
             }
         });
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField4KeyPressed(evt);
+            }
+        });
 
         jTextField5.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField5.setText("0");
@@ -146,6 +164,11 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
                 jTextField5FocusLost(evt);
             }
         });
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField5KeyPressed(evt);
+            }
+        });
 
         jTextField6.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField6.setText("0");
@@ -157,6 +180,11 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextField6FocusLost(evt);
+            }
+        });
+        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField6KeyPressed(evt);
             }
         });
 
@@ -286,6 +314,11 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
                 jTextField7FocusLost(evt);
             }
         });
+        jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField7KeyPressed(evt);
+            }
+        });
 
         jTextField8.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField8.setText("0");
@@ -297,6 +330,11 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextField8FocusLost(evt);
+            }
+        });
+        jTextField8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField8KeyPressed(evt);
             }
         });
 
@@ -312,6 +350,11 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
                 jTextField9FocusLost(evt);
             }
         });
+        jTextField9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField9KeyPressed(evt);
+            }
+        });
 
         jTextField10.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField10.setText("0");
@@ -323,6 +366,11 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextField10FocusLost(evt);
+            }
+        });
+        jTextField10.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField10KeyPressed(evt);
             }
         });
 
@@ -338,6 +386,11 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
                 jTextField11FocusLost(evt);
             }
         });
+        jTextField11.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField11KeyPressed(evt);
+            }
+        });
 
         jTextField12.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField12.setText("0");
@@ -349,6 +402,11 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextField12FocusLost(evt);
+            }
+        });
+        jTextField12.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField12KeyPressed(evt);
             }
         });
 
@@ -364,6 +422,11 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextField13FocusLost(evt);
+            }
+        });
+        jTextField13.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField13KeyPressed(evt);
             }
         });
 
@@ -434,13 +497,13 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
                                 .add(jTextField13)))
                         .add(13, 13, 13)
                         .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel26, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-                            .add(jLabel21, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-                            .add(jLabel22, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-                            .add(jLabel23, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-                            .add(jLabel24, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-                            .add(jLabel25, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-                            .add(jLabel20, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)))
+                            .add(jLabel26, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 73, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel21, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 73, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel22, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 73, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 73, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 73, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 73, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 73, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 117, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -563,21 +626,22 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(layout.createSequentialGroup()
-                        .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                        .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+                            .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                            .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -587,6 +651,54 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-420)/2, (screenSize.height-404)/2, 420, 404);
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void jTextField13KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField13KeyPressed
+        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) jTextField13.transferFocus();
+    }//GEN-LAST:event_jTextField13KeyPressed
+    
+    private void jTextField12KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField12KeyPressed
+        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) jTextField12.transferFocus();
+    }//GEN-LAST:event_jTextField12KeyPressed
+    
+    private void jTextField11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField11KeyPressed
+        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) jTextField11.transferFocus();
+    }//GEN-LAST:event_jTextField11KeyPressed
+    
+    private void jTextField10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField10KeyPressed
+        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) jTextField10.transferFocus();
+    }//GEN-LAST:event_jTextField10KeyPressed
+    
+    private void jTextField9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyPressed
+        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) jTextField9.transferFocus();
+    }//GEN-LAST:event_jTextField9KeyPressed
+    
+    private void jTextField8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyPressed
+        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) jTextField8.transferFocus();
+    }//GEN-LAST:event_jTextField8KeyPressed
+    
+    private void jTextField7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyPressed
+        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) jTextField7.transferFocus();
+    }//GEN-LAST:event_jTextField7KeyPressed
+    
+    private void jTextField6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyPressed
+        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) jTextField6.transferFocus();
+    }//GEN-LAST:event_jTextField6KeyPressed
+    
+    private void jTextField5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyPressed
+        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) jTextField5.transferFocus();
+    }//GEN-LAST:event_jTextField5KeyPressed
+    
+    private void jTextField4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyPressed
+        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) jTextField4.transferFocus();
+    }//GEN-LAST:event_jTextField4KeyPressed
+    
+    private void jTextField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyPressed
+        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) jTextField3.transferFocus();
+    }//GEN-LAST:event_jTextField3KeyPressed
+    
+    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
+        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) jTextField2.transferFocus();
+    }//GEN-LAST:event_jTextField2KeyPressed
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         close();
@@ -788,6 +900,7 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
     
     private imakante.sales.FrmCopiuri myframe;
     private double sum_paper = 0, sum_moneti = 0, sum_total = 0;
+    NumberFormat numberFormatter;
     
     private void calculateValues(javax.swing.JTextField tf, javax.swing.JLabel lab, double val) {
         double sum = 0;
@@ -802,12 +915,12 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
             lab.setText("0");
             ex.printStackTrace();
         }
-        lab.setText("" + sum);
+        lab.setText(numberFormatter.format(sum));
         if (val > 1) sum_paper = sum_paper +sum; else sum_moneti = sum_moneti + sum;
         sum_total = sum_moneti  + sum_paper;
-        jLabel27.setText("" + sum_total);
-        jLabel28.setText("" + sum_moneti);
-        jLabel29.setText("" + sum_paper);
+        jLabel27.setText(numberFormatter.format(sum_total));
+        jLabel28.setText(numberFormatter.format(sum_moneti));
+        jLabel29.setText(numberFormatter.format(sum_paper));
     }
     
     private void fGain(javax.swing.JTextField jtf){
@@ -819,7 +932,6 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
     }
     
     private void saveRecord() {
-        
         myframe.getInternalObject().insertRow(
                 imakante.com.NewMain.getUserId(),
                 Integer.parseInt(jTextField1.getText()),
@@ -836,9 +948,8 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
                 Integer.parseInt(jTextField12.getText()),
                 Integer.parseInt(jTextField13.getText())
                 );
-        
         jButton1.setEnabled(false);
-        
+        myframe.refreshTable();
     }
     
     private void close() {

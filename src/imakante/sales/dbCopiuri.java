@@ -22,11 +22,18 @@ public class dbCopiuri extends imakante.com.dbObject {
     private int metal005 = 0;
     private int metal002 = 0;
     private int metal001 = 0;
+    private String in_DATE = "";
+    private java.util.Date currDate;
+    java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd"); 
     
     // --- Constructor --- //
     public dbCopiuri(java.sql.Connection conn) {
         super(conn);
         prepareCstm();
+        currDate = new java.util.Date();
+        in_DATE = formatter.getDateInstance().format(currDate);
+        this.dateBegin = in_DATE;
+        this.dateEnd = in_DATE;
     }
     
     // --- Custom Methods --- //
@@ -56,6 +63,8 @@ public class dbCopiuri extends imakante.com.dbObject {
             getCstm().setInt("in_metal_001", getMetal001());
             getCstm().setString("dateBegin", getDateBegin());
             getCstm().setString("dateEnd", getDateEnd());
+            System.out.println("Ot regparam: " + getDateBegin());
+            System.out.println("Ot regparam: " + getDateEnd());
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
@@ -114,16 +123,16 @@ public class dbCopiuri extends imakante.com.dbObject {
         return dateBegin;
     }
 
-    public void setDateBegin(String dateBegin) {
-        this.dateBegin = dateBegin;
+    public void setDateBegin(org.jdesktop.swingx.JXDatePicker dateBegin) {
+        this.dateBegin = (String)formatter.format(dateBegin.getDate());
     }
 
     public String getDateEnd() {
         return dateEnd;
     }
 
-    public void setDateEnd(String dateEnd) {
-        this.dateEnd = dateEnd;
+    public void setDateEnd(org.jdesktop.swingx.JXDatePicker dateEnd) {
+        this.dateEnd = (String)formatter.format(dateEnd.getDate());
     }
 
     public int getPaper100() {
@@ -229,5 +238,7 @@ public class dbCopiuri extends imakante.com.dbObject {
     public void setMetal001(int metal001) {
         this.metal001 = metal001;
     }
+
+  
     
 }

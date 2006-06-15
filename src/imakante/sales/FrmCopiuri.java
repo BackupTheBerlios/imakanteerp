@@ -10,6 +10,7 @@ public class FrmCopiuri extends  imakante.com.vcomponents.iInternalFrame impleme
         constructObject(); // inicializira class otgovarq6t za vryzkata s DB
         initTable();
         initComponents();
+        
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -165,14 +166,13 @@ public class FrmCopiuri extends  imakante.com.vcomponents.iInternalFrame impleme
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-563)/2, (screenSize.height-472)/2, 563, 472);
     }// </editor-fold>//GEN-END:initComponents
-            
+    
     private void jTextNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextNameFocusGained
         jTextName.selectAll();
     }//GEN-LAST:event_jTextNameFocusGained
-            
+    
     private void jTextNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNameKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); }
-else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextName.setText(""); }
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextName.setText(""); }
     }//GEN-LAST:event_jTextNameKeyPressed
     
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
@@ -190,7 +190,7 @@ else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextName.setT
     private void jButtonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshActionPerformed
         refreshTable();
     }//GEN-LAST:event_jButtonRefreshActionPerformed
-            
+    
     private void jButtonNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewActionPerformed
         newRecord();
     }//GEN-LAST:event_jButtonNewActionPerformed
@@ -227,40 +227,44 @@ else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextName.setT
     private  boolean atBegining=false;
     private  boolean atEnd = false;
     private int row;
-    
+    private java.util.Date currDate;
+    private java.util.Calendar m_calendar = java.util.Calendar.getInstance();
+    java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd");
     private  imakante.com.vcomponents.iFrame myframe;
     private  java.sql.Connection conn;
     private  java.sql.ResultSet rs;
     private  imakante.sales.dbCopiuri internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
+    
+    private String in_DATE;
     public static final String Names[] = { "id", "id_user",
     "\u041F\u043E\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043B", "\u0412\u0440\u0435\u043C\u0435",
-    "\u0411\u0440\u043E\u0439 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 100 \u043B\u0432", 
+    "\u0411\u0440\u043E\u0439 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 100 \u043B\u0432",
     "\u0421\u0443\u043C\u0430 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 100 \u043B\u0432",
-    "\u0411\u0440\u043E\u0439 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 50 \u043B\u0432", 
+    "\u0411\u0440\u043E\u0439 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 50 \u043B\u0432",
     "\u0421\u0443\u043C\u0430 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 50 \u043B\u0432",
-    "\u0411\u0440\u043E\u0439 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 20 \u043B\u0432", 
+    "\u0411\u0440\u043E\u0439 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 20 \u043B\u0432",
     "\u0421\u0443\u043C\u0430 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 20 \u043B\u0432",
-    "\u0411\u0440\u043E\u0439 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 10 \u043B\u0432", 
+    "\u0411\u0440\u043E\u0439 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 10 \u043B\u0432",
     "\u0421\u0443\u043C\u0430 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 10 \u043B\u0432",
-    "\u0411\u0440\u043E\u0439 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 5 \u043B\u0432", 
+    "\u0411\u0440\u043E\u0439 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 5 \u043B\u0432",
     "\u0421\u0443\u043C\u0430 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 5 \u043B\u0432",
-    "\u0411\u0440\u043E\u0439 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 2 \u043B\u0432", 
+    "\u0411\u0440\u043E\u0439 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 2 \u043B\u0432",
     "\u0421\u0443\u043C\u0430 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 2 \u043B\u0432",
-    "\u0411\u0440\u043E\u0439 \u043C\u043E\u043D\u0435\u0442\u0438 1 \u043B\u0432", 
+    "\u0411\u0440\u043E\u0439 \u043C\u043E\u043D\u0435\u0442\u0438 1 \u043B\u0432",
     "\u0421\u0443\u043C\u0430 \u043C\u043E\u043D\u0435\u0442\u0438 1 \u043B\u0432",
-    "\u0411\u0440\u043E\u0439 \u043C\u043E\u043D\u0435\u0442\u0438 50 \u0441\u0442", 
+    "\u0411\u0440\u043E\u0439 \u043C\u043E\u043D\u0435\u0442\u0438 50 \u0441\u0442",
     "\u0421\u0443\u043C\u0430 \u043C\u043E\u043D\u0435\u0442\u0438 50 \u0441\u0442",
-    "\u0411\u0440\u043E\u0439 \u043C\u043E\u043D\u0435\u0442\u0438 20 \u0441\u0442", 
+    "\u0411\u0440\u043E\u0439 \u043C\u043E\u043D\u0435\u0442\u0438 20 \u0441\u0442",
     "\u0421\u0443\u043C\u0430 \u043C\u043E\u043D\u0435\u0442\u0438 20 \u0441\u0442",
-    "\u0411\u0440\u043E\u0439 \u043C\u043E\u043D\u0435\u0442\u0438 10 \u0441\u0442", 
+    "\u0411\u0440\u043E\u0439 \u043C\u043E\u043D\u0435\u0442\u0438 10 \u0441\u0442",
     "\u0421\u0443\u043C\u0430 \u043C\u043E\u043D\u0435\u0442\u0438 10 \u0441\u0442",
-    "\u0411\u0440\u043E\u0439 \u043C\u043E\u043D\u0435\u0442\u0438 5 \u0441\u0442", 
+    "\u0411\u0440\u043E\u0439 \u043C\u043E\u043D\u0435\u0442\u0438 5 \u0441\u0442",
     "\u0421\u0443\u043C\u0430 \u043C\u043E\u043D\u0435\u0442\u0438 5 \u0441\u0442",
-    "\u0411\u0440\u043E\u0439 \u043C\u043E\u043D\u0435\u0442\u0438 2 \u0441\u0442", 
+    "\u0411\u0440\u043E\u0439 \u043C\u043E\u043D\u0435\u0442\u0438 2 \u0441\u0442",
     "\u0421\u0443\u043C\u0430 \u043C\u043E\u043D\u0435\u0442\u0438 2 \u0441\u0442",
-    "\u0411\u0440\u043E\u0439 \u043C\u043E\u043D\u0435\u0442\u0438 1 \u0441\u0442", 
+    "\u0411\u0440\u043E\u0439 \u043C\u043E\u043D\u0435\u0442\u0438 1 \u0441\u0442",
     "\u0421\u0443\u043C\u0430 \u043C\u043E\u043D\u0435\u0442\u0438 1 \u0441\u0442" };
     //---------------END My Variables
     
@@ -497,7 +501,9 @@ else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextName.setT
     
     private void searchRecords() {
         try {
-           
+            internalObject.setDateBegin(jXDatePicker1);
+            internalObject.setDateEnd(jXDatePicker2);
+            rs = internalObject.searchRecords(jTextName.getText());
             jScrollPane1.remove(table);
             model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
@@ -548,7 +554,7 @@ else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextName.setT
         table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
         table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
     }
-//    
+//
 //    private void setAllVariables() {
 //        setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
 //        setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("id_group")));
@@ -558,7 +564,10 @@ else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextName.setT
 //        setNames((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435\u043d\u0430")));
 //        setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440\u0438")));
 //    }
-//    
+    
+    
+    
+    
     private void unload() {
         closeResource();
         this.dispose();
