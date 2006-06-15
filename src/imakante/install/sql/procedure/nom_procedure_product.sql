@@ -4,7 +4,7 @@ DROP PROCEDURE IF EXISTS `mida`.`nom_procedure_product` $$
 CREATE PROCEDURE `nom_procedure_product`(IN in_comprator TINYINT,    IN in_id_pm INT(11),              IN in_id_ppp INT(11),        IN in_id_pp INT(11),
                                                  IN in_id_pf INT(11),        IN in_id_n_group INT(11),         IN in_id_pd INT(11),         IN in_name_pm VARCHAR(30),
                                                  IN in_sname_pm VARCHAR(30), IN in_fname_pm VARCHAR(30),       IN in_cname_pm VARCHAR(30),  IN in_max_pop_pm DOUBLE,
-                                                 IN in_flag_pm TINYINT,      IN in_expertsheet_pm VARCHAR(45), IN in_barcod_pm INT,  IN in_cod1_pm VARCHAR(20),
+                                                 IN in_flag_pm TINYINT,      IN in_expertsheet_pm VARCHAR(45), IN in_barcod_pm VARCHAR(20),  IN in_cod1_pm VARCHAR(20),
                                                  IN in_cod2_pm VARCHAR(20),  IN in_price0_pp DOUBLE,           IN in_price1_pp DOUBLE,      IN in_price2_pp DOUBLE,
                                                  IN in_price3_pp DOUBLE, IN in_min_pm INT(11), IN in_code_pm VARCHAR(11))
 BEGIN

@@ -276,10 +276,8 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel1.add(jTextFieldSName, gridBagConstraints);
 
-        jTextFieldBarCod.setText("000000");
         jTextFieldBarCod.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldBarCod.setPreferredSize(new java.awt.Dimension(170, 20));
-        jTextFieldBarCod.setInputVerifier(new imakante.com.InputIntegerVerifier(10));
         jTextFieldBarCod.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextFieldBarCodFocusGained(evt);

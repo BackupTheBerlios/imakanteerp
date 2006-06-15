@@ -9,12 +9,16 @@ public class dbPayingOrders extends imakante.com.dbObject {
     private int[] OTIndexes = null;
     private String OurAccounts[];
     private int[] OAIndexes = null;
+    private String Currencies[];
+    private int[] CurrIndexes = null;
     private int idPayingOrderType = 0;
     private int idBankAccount = 0;
     private int idContragent = 0;
     private double amount = 0;
-    private String instant = "0000-00-00 00:00:00";
-    
+    private String osnovanie = "";
+    private String comment = "";
+    private String beginDate = "0000-00-00";
+    private String endDate = "0000-00-00";
     
     // --- Constructor --- //
     public dbPayingOrders(java.sql.Connection conn) {
@@ -25,7 +29,7 @@ public class dbPayingOrders extends imakante.com.dbObject {
     // --- Custom Methods --- //
     public void prepareCstm(){
         try {
-            setCstm(getConn().prepareCall("{call sl_procedure_paying_orders(?,?,?,?,?,?,?,?,?)}"));
+            setCstm(getConn().prepareCall("{call sl_procedure_paying_orders(?,?,?,?,?,?,?,?,?,?,?,?)}"));
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
@@ -39,7 +43,10 @@ public class dbPayingOrders extends imakante.com.dbObject {
             getCstm().setInt("in_code", getCode());
             getCstm().setString("in_name", getName());
             getCstm().setDouble("in_amount", getAmount());
-            getCstm().setString("in_instant", getInstant());
+            getCstm().setString("in_osnovanie", osnovanie);
+            getCstm().setString("in_comment_spo", getComment());
+            getCstm().setString("dateBegin", getBeginDate());
+            getCstm().setString("dateEnd", getEndDate());
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
@@ -77,10 +84,36 @@ public class dbPayingOrders extends imakante.com.dbObject {
     
     public String[] getTypesOfOreders() {
         setComprator(6);
-        String[] typesOrders = { "boo!", "boo again!" };
+//        String[] typesOrders = { "boo!", "boo again!" };
         
+        int oldId = getId();
+        java.sql.ResultSet oldRs = getRs();
+        java.util.ArrayList in = new java.util.ArrayList();
+        java.util.Iterator it = null;
+        java.util.HashMap Groups = new java.util.HashMap();
+        int i = 0;
+        try {
+            registerParameters();
+            setRs(getCstm().executeQuery());
+            while(getRs().next()) {
+                Groups.put(new Integer(getRs().getInt("id_spt")), new String(getRs().getString("type_porder")));
+                in.add(new Integer(getRs().getInt("id_spt")));
+                i++;
+            }
+        } catch(Exception e) { e.printStackTrace(); }
+        setRs(oldRs);
+        setId(oldId);
+        OTIndexes = new int[i];
+        it = in.iterator();
+        OrderTypes = new String[i];
+        i = 0;
+        while(it.hasNext()) {
+            OTIndexes[i] = (Integer) it.next();
+            OrderTypes[i] = (String) Groups.get(OTIndexes[i]);
+            i++;
+        }
         
-        return typesOrders;
+        return OrderTypes;
     }
     
     public int[] getOTIndexes() {
@@ -88,17 +121,70 @@ public class dbPayingOrders extends imakante.com.dbObject {
     }
     
     public String[] getAvailableCurrencies() {
-        String[] currencies = { "BGN", "EUR", "USD", "CHF", "GBP", "GRD", "JPY" };
+        setComprator(11);
+//        String[] currencies = { "BGN" };
         
+        int oldId = getId();
+        java.sql.ResultSet oldRs = getRs();
+        java.util.ArrayList in = new java.util.ArrayList();
+        java.util.Iterator it = null;
+        java.util.HashMap Groups = new java.util.HashMap();
+        int i = 0;
+        try {
+            registerParameters();
+            setRs(getCstm().executeQuery());
+            while(getRs().next()) {
+                Groups.put(new Integer(getRs().getInt("id_n_money")), new String(getRs().getString("cod_lat_n_money")));
+                in.add(new Integer(getRs().getInt("id_n_money")));
+                i++;
+            }
+        } catch(Exception e) { e.printStackTrace(); }
+        setRs(oldRs);
+        setId(oldId);
+        CurrIndexes = new int[i];
+        it = in.iterator();
+        Currencies = new String[i];
+        i = 0;
+        while(it.hasNext()) {
+            CurrIndexes[i] = (Integer) it.next();
+            Currencies[i] = (String) Groups.get(CurrIndexes[i]);
+            i++;
+        }
         
-        return currencies;
+        return Currencies;
     }
     
     public String[] getOurAccounts() {
-        String[] accounts = { "Po razpla6taniq", "po DDS" };
-        
-        
-        return accounts;
+        setComprator(7);
+        int oldId = getId();
+        java.sql.ResultSet oldRs = getRs();
+        java.util.ArrayList in = new java.util.ArrayList();
+        java.util.Iterator it = null;
+        java.util.HashMap Groups = new java.util.HashMap();
+        int i = 0;
+        try {
+            registerParameters();
+            setRs(getCstm().executeQuery());
+            while(getRs().next()) {
+                Groups.put(new Integer(getRs().getInt("id_nbc")), new String(getRs().getString("name_nbc") 
+                + getRs().getString("baccount_nbc")
+                + getRs().getString("name_tbacc")));
+                in.add(new Integer(getRs().getInt("id_nbc")));
+                i++;
+            }
+        } catch(Exception e) { e.printStackTrace(); }
+        setRs(oldRs);
+        setId(oldId);
+        OAIndexes = new int[i];
+        it = in.iterator();
+        OurAccounts = new String[i];
+        i = 0;
+        while(it.hasNext()) {
+            OAIndexes[i] = (Integer) it.next();
+            OurAccounts[i] = (String) Groups.get(OAIndexes[i]);
+            i++;
+        }
+        return OurAccounts;
     }
     
     public int[] getOAIndexes() {
@@ -143,40 +229,57 @@ public class dbPayingOrders extends imakante.com.dbObject {
     public int getIdPayingOrderType() {
         return idPayingOrderType;
     }
-
+    
     public void setIdPayingOrderType(int idPayingOrderType) {
         this.idPayingOrderType = idPayingOrderType;
     }
-
+    
     public int getIdBankAccount() {
         return idBankAccount;
     }
-
+    
     public void setIdBankAccount(int idBankAccount) {
         this.idBankAccount = idBankAccount;
     }
-
+    
     public int getIdContragent() {
         return idContragent;
     }
-
+    
     public void setIdContragent(int idContragent) {
         this.idContragent = idContragent;
     }
-
+    
     public double getAmount() {
         return amount;
     }
-
+    
     public void setAmount(double amount) {
         this.amount = amount;
     }
 
-    public String getInstant() {
-        return instant;
+    public String getOsnovanie() {
+        return osnovanie;
     }
 
-    public void setInstant(String instant) {
-        this.instant = instant;
+    public void setOsnovanie(String osnovanie) {
+        this.osnovanie = osnovanie;
     }
+
+    public String getBeginDate() {
+        return beginDate;
+    }
+
+    public void setBeginDate(String beginDate) {
+        this.beginDate = beginDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+    
 }

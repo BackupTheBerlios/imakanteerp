@@ -14,7 +14,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         Currencies = getInternalObject().getAvailableCurrencies();
         for(int i = 0; i < Currencies.length; i++)
             jComboBox1.addItem(new String(Currencies[i]));
-        jComboBox2.addItem("------------------------");
+        jComboBox2.addItem("-----------------------------");
         OrderTypes = getInternalObject().getTypesOfOreders();
         for(int i = 0; i < OrderTypes.length; i++) 
             jComboBox2.addItem(new String(OrderTypes[i]));
@@ -199,7 +199,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 879, Short.MAX_VALUE)
+            .add(0, 875, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -265,6 +265,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         jPanel3.add(jButtonRefresh);
 
         jButtonDeleteAll.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435 \u043d\u0430 \u0442\u0430\u0431\u043b\u0438\u0446\u0430");
+        jButtonDeleteAll.setEnabled(false);
         jPanel3.add(jButtonDeleteAll);
 
         jButtonClose.setText("\u0417\u0430\u0442\u0432\u0430\u0440\u044f\u043d\u0435");

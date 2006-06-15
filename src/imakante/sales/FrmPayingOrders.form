@@ -294,7 +294,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="879" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="875" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -388,6 +388,7 @@
         <Component class="javax.swing.JButton" name="jButtonDeleteAll">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x418;&#x437;&#x442;&#x440;&#x438;&#x432;&#x430;&#x43d;&#x435; &#x43d;&#x430; &#x442;&#x430;&#x431;&#x43b;&#x438;&#x446;&#x430;"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonClose">
