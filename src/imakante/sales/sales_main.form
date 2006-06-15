@@ -211,7 +211,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="kasaMenu_opis">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#x41e;&#x43f;&#x438;&#x441; &#x43d;&#x430; &#x43a;&#x43e;&#x43f;&#x44e;&#x440;&#x438;"/>
+                <Property name="text" type="java.lang.String" value="&#x41e;&#x43f;&#x438;&#x441;&#x432;&#x430;&#x43d;&#x435; &#x43d;&#x430; &#x43a;&#x443;&#x43f;&#x44e;&#x440;&#x438;"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kasaMenu_opisActionPerformed"/>
@@ -635,7 +635,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem21">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#x41d;&#x430;&#x441;&#x442;&#x440;&#x43e;&#x438;&#x43a;&#x430; &#x43f;&#x430;&#x440;&#x430;&#x43c;&#x435;&#x442;&#x440;&#x438; &#x41f;&#x414;&#x410;"/>
+                <Property name="text" type="java.lang.String" value="&#x41d;&#x430;&#x441;&#x442;&#x440;&#x43e;&#x438;&#x43a;&#x430; &#x43f;&#x430;&#x440;&#x430;&#x43c;&#x435;&#x442;&#x440;&#x438; PDA"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JSeparator" name="jSeparator8">
@@ -955,7 +955,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="352" max="32767" attributes="0"/>
+                      <EmptySpace pref="325" max="32767" attributes="0"/>
                       <Component id="jComboBox1" min="-2" pref="179" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>

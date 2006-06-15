@@ -74,6 +74,16 @@ public class aeDisband extends imakante.com.vcomponents.iDialog {
         jLabel3.setText("\u041a\u044a\u0441\u043e \u0438\u043c\u0435:");
 
         jTextName.setPreferredSize(new java.awt.Dimension(150, 20));
+        jTextName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextNameFocusGained(evt);
+            }
+        });
+        jTextName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextNameKeyPressed(evt);
+            }
+        });
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u041d\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u044f"));
         jPanel3.setPreferredSize(new java.awt.Dimension(290, 70));
@@ -113,6 +123,17 @@ public class aeDisband extends imakante.com.vcomponents.iDialog {
 
         jPanel3.add(jButtonToEnd);
 
+        jTextSName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextSNameFocusGained(evt);
+            }
+        });
+        jTextSName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextSNameKeyPressed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -143,7 +164,7 @@ public class aeDisband extends imakante.com.vcomponents.iDialog {
                     .add(jLabel3)
                     .add(jTextSName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(22, 22, 22)
-                .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+                .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
                 .add(19, 19, 19))
         );
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -151,6 +172,24 @@ public class aeDisband extends imakante.com.vcomponents.iDialog {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-374)/2, (screenSize.height-284)/2, 374, 284);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextNameFocusGained
+        jTextName.selectAll();
+    }//GEN-LAST:event_jTextNameFocusGained
+
+    private void jTextNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNameKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jTextName.transferFocus(); 
+        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextName.setText(""); }
+    }//GEN-LAST:event_jTextNameKeyPressed
+
+    private void jTextSNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextSNameFocusGained
+        jTextSName.selectAll();
+    }//GEN-LAST:event_jTextSNameFocusGained
+
+    private void jTextSNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextSNameKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jTextSName.transferFocus(); 
+        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextSName.setText(""); }
+    }//GEN-LAST:event_jTextSNameKeyPressed
     
     private void jButtonUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUndoActionPerformed
      getUndoData(); 

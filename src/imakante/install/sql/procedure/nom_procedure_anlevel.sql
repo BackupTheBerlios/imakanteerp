@@ -5,7 +5,7 @@ CREATE PROCEDURE `mida`.`nom_procedure_anlevel` (IN in_comprator INT, IN in_id I
 BEGIN
 
  IF (in_comprator = 0 ) THEN
-     SELECT a.id_al,  a.cod_al, a.name_al, a.comment_al FROM anlevel a;
+     SELECT a.id_al,  a.cod_al, a.name_al, a.comment_al FROM anlevel a ORDER BY a.id_al ASC;
 
  END IF;
 
@@ -29,8 +29,10 @@ END IF;
 
 IF (in_comprator = 5 ) THEN
    SELECT a.id_al, a.cod_al, a.name_al, a.comment_al FROM anlevel a
-
-   WHERE cod_al like CONCAT('%',in_code,'%') AND name_al like CONCAT('%',in_name,'%') AND comment_al like CONCAT('%',in_comment,'%');
+   WHERE cod_al LIKE CONCAT('%',in_code,'%') 
+    AND name_al LIKE CONCAT('%',in_name,'%') 
+    AND comment_al LIKE CONCAT('%',in_comment,'%') 
+    ORDER BY a.id_al ASC;
 
 END IF;
 

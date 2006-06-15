@@ -266,7 +266,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(352, Short.MAX_VALUE)
+                .addContainerGap(325, Short.MAX_VALUE)
                 .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 179, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -474,7 +474,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         kasiIbankiMenu.add(kasaMenu_nal);
 
-        kasaMenu_opis.setText("\u041e\u043f\u0438\u0441 \u043d\u0430 \u043a\u043e\u043f\u044e\u0440\u0438");
+        kasaMenu_opis.setText("\u041e\u043f\u0438\u0441\u0432\u0430\u043d\u0435 \u043d\u0430 \u043a\u0443\u043f\u044e\u0440\u0438");
         kasaMenu_opis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kasaMenu_opisActionPerformed(evt);
@@ -844,7 +844,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jMenuItem20.setText("\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f \u043e\u0442 PDA");
         jMenu1.add(jMenuItem20);
 
-        jMenuItem21.setText("\u041d\u0430\u0441\u0442\u0440\u043e\u0438\u043a\u0430 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u041f\u0414\u0410");
+        jMenuItem21.setText("\u041d\u0430\u0441\u0442\u0440\u043e\u0438\u043a\u0430 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 PDA");
         jMenu1.add(jMenuItem21);
 
         jMenu1.add(jSeparator8);

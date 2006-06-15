@@ -1,22 +1,16 @@
 
 package nom;
 
-import javax.print.PrintException;
-
-
 public class FrmDisband extends imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
-    public FrmDisband(String title, imakante.com.vcomponents.iFrame frame) // 
-    {
+    public FrmDisband(String title, imakante.com.vcomponents.iFrame frame) {
         super(title);
         myframe = frame;
-        
-      
         prepareConn();     // zapazva connection
         constructAnLevelDB(); // inicializira class otgovarq6t za vryzkata s DB
         initTable();
         initComponents();
-       
+        
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -46,6 +40,8 @@ public class FrmDisband extends imakante.com.vcomponents.iInternalFrame implemen
         setMaximizable(true);
         setResizable(true);
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
+        setMinimumSize(new java.awt.Dimension(890, 350));
+        setPreferredSize(new java.awt.Dimension(900, 400));
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }
@@ -97,6 +93,17 @@ public class FrmDisband extends imakante.com.vcomponents.iInternalFrame implemen
 
         jTextSName.setMinimumSize(new java.awt.Dimension(150, 20));
         jTextSName.setPreferredSize(new java.awt.Dimension(150, 20));
+        jTextSName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextSNameFocusGained(evt);
+            }
+        });
+        jTextSName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextSNameKeyPressed(evt);
+            }
+        });
+
         jPanel4.add(jTextSName);
 
         jButtonSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Search.png")));
@@ -118,7 +125,7 @@ public class FrmDisband extends imakante.com.vcomponents.iInternalFrame implemen
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 875, Short.MAX_VALUE)
+            .add(0, 879, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -195,23 +202,32 @@ public class FrmDisband extends imakante.com.vcomponents.iInternalFrame implemen
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.SOUTH);
 
-        pack();
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-889)/2, (screenSize.height-319)/2, 889, 319);
     }// </editor-fold>//GEN-END:initComponents
-            
+    
+    private void jTextSNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextSNameFocusGained
+        jTextSName.selectAll();
+    }//GEN-LAST:event_jTextSNameFocusGained
+    
+    private void jTextSNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextSNameKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextSName.setText(""); }
+    }//GEN-LAST:event_jTextSNameKeyPressed
+    
     private void jTextNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextNameFocusGained
-      
+        jTextName.selectAll();
     }//GEN-LAST:event_jTextNameFocusGained
     
     private void jTextNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNameKeyPressed
-       
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextName.setText(""); }
     }//GEN-LAST:event_jTextNameKeyPressed
     
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
-      ((imakante.sales.sales_main)myframe).isStartFrmDisband = false;
+        ((imakante.sales.sales_main)myframe).isStartFrmDisband = false;
     }//GEN-LAST:event_formInternalFrameClosed
     
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
-      
+        
     }//GEN-LAST:event_jButtonPrintActionPerformed
     
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
@@ -235,7 +251,7 @@ public class FrmDisband extends imakante.com.vcomponents.iInternalFrame implemen
     }//GEN-LAST:event_jButtonEditActionPerformed
     
     private void jButtonNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewActionPerformed
-       newRecord();
+        newRecord();
     }//GEN-LAST:event_jButtonNewActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -260,7 +276,7 @@ public class FrmDisband extends imakante.com.vcomponents.iInternalFrame implemen
     // End of variables declaration//GEN-END:variables
     //--------------- My Variables
     private int id = 0;
-   
+    
     private String name;
     private String sname;
     
@@ -274,7 +290,7 @@ public class FrmDisband extends imakante.com.vcomponents.iInternalFrame implemen
     private  disbandDB  internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
-    private String columnsNames[] = {"id_pam","\u0418\u043c\u0435:","\u041a\u044a\u0441\u043e \u0438\u043c\u0435:"};
+    private String columnsNames[] = {"id_pam","\u0418\u043c\u0435","\u041a\u044a\u0441\u043e \u0438\u043c\u0435"};
     //---------------END My Variables
     
     //---------------START MyFunction
@@ -292,12 +308,10 @@ public class FrmDisband extends imakante.com.vcomponents.iInternalFrame implemen
     
     private void initTable() {
         try {
-           
             rs = internalObject.getTable();
-            model = new imakante.com.CustomTableModel(conn,rs, columnsNames);
+            model = new imakante.com.CustomTableModel(conn, rs, columnsNames);
             table = new imakante.com.CustomTable(model);
             HideColumns(getColumnIndex("id_pam"));
-           
         } catch(Exception e) { e.printStackTrace(); }
         table.requestFocus();
         try {
@@ -391,8 +405,8 @@ public class FrmDisband extends imakante.com.vcomponents.iInternalFrame implemen
         return id;
     }
     
-      
-       
+    
+    
     public void setNames(String Name) {
         this.name = Name;
     }
@@ -417,10 +431,9 @@ public class FrmDisband extends imakante.com.vcomponents.iInternalFrame implemen
         setRow(getMaxRow());
         try{
             setAllVariables();
-            table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
+            table.changeSelection(getRow(), 2, false, false);
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
-            System.out.println("problem");
         }
         setAtBegining(false);
         setAtEnd(true);
@@ -434,10 +447,9 @@ public class FrmDisband extends imakante.com.vcomponents.iInternalFrame implemen
             setAtBegining(false);
             try {
                 setAllVariables();
-                table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
+                table.changeSelection(getRow(), 2, false, false);
             } catch(ArrayIndexOutOfBoundsException aioobe) {
                 setRow(getRow() - 1);
-                System.out.println("problem");
             }
             if(getRow() == getMaxRow()) {
                 setAtEnd(true);
@@ -453,11 +465,11 @@ public class FrmDisband extends imakante.com.vcomponents.iInternalFrame implemen
             setAtEnd(false);
             try {
                 setAllVariables();
-                table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
+                table.changeSelection(getRow(), 2, false, false);
             } catch(ArrayIndexOutOfBoundsException aioobe) {
                 setRow(getRow() + 1);
             }
-            System.out.println("problem");}
+        }
         if(getRow() == 0) {
             setAtBegining(true);
         }
@@ -467,10 +479,9 @@ public class FrmDisband extends imakante.com.vcomponents.iInternalFrame implemen
         setRow(0);
         try {
             setAllVariables();
-            table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
+            table.changeSelection(getRow(), 2, false, false);
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
-            System.out.println("problem");
         }
         setAtBegining(true);
         setAtEnd(false);
@@ -495,27 +506,23 @@ public class FrmDisband extends imakante.com.vcomponents.iInternalFrame implemen
             } catch(Exception e) { e.printStackTrace(); }
         } else {  }
     }
-   private void newRecord()
-   {
-       setAllVariableDefault();
-       int maxID =  internalObject.insertRow(0,"","");
-       refreshTable();
-       setId(maxID);
-       try
-        {
-         dialog = new aeDisband(this, true);
-         dialog.setVisible(true);
-         }
-       catch(Exception e) { e.printStackTrace(); }
-   }
+    private void newRecord() {
+        setAllVariableDefault();
+        int maxID =  internalObject.insertRow(0, "", "");
+        refreshTable();
+        setId(maxID);
+        try {
+            dialog = new aeDisband(this, true);
+            dialog.setVisible(true);
+        } catch(Exception e) { e.printStackTrace(); }
+    }
     protected  void refreshTable() {
         jScrollPane1.remove(table);
         rs = internalObject.getTable();
         model = new imakante.com.CustomTableModel(conn, rs, columnsNames);
         table = new imakante.com.CustomTable(model);
         jScrollPane1.getViewport().add(table);
-        HideColumns(getColumnIndex("id_an"));
-       
+        HideColumns(getColumnIndex("id_pam"));
         jTextName.setText("");
         jTextSName.setText("");
         jScrollPane1.repaint();
@@ -523,12 +530,9 @@ public class FrmDisband extends imakante.com.vcomponents.iInternalFrame implemen
     
     private void searchRecords() {
         try {
-            
-              String nname = jTextName.getText();
-              String ssname = jTextSName.getText();
-            
-             rs = internalObject.searchRecords(0,nname,ssname);
-                
+            String nname = jTextName.getText();
+            String ssname = jTextSName.getText();
+            rs = internalObject.searchRecords(0, nname, ssname);
             model = new imakante.com.CustomTableModel(conn, rs, columnsNames);
             table = new imakante.com.CustomTable(model);
             jScrollPane1.getViewport().add(table);
@@ -555,16 +559,16 @@ public class FrmDisband extends imakante.com.vcomponents.iInternalFrame implemen
     
     private void setAllVariables() {
         setId((Integer) table.getValueAt(getRow(), getColumnIndex("id_pam")));
-        setNames((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435:")));
-        setSName((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u044a\u0441\u043e \u0438\u043c\u0435:")));
+        setNames((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435")));
+        setSName((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u044a\u0441\u043e \u0438\u043c\u0435")));
     }
-    private void setAllVariableDefault()
-    {
+    
+    private void setAllVariableDefault() {
         setId(0);
-        
         setNames("");
         setSName("");
     }
+    
     private void unload() {
         ((imakante.sales.sales_main)myframe).isStartFrmDisband = false;
         closeResource();
@@ -578,7 +582,7 @@ public class FrmDisband extends imakante.com.vcomponents.iInternalFrame implemen
         rs = null;
         internalObject.close();
     }
-
+    
     private void delRecord() {
         if(table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());

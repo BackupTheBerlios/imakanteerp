@@ -1,22 +1,16 @@
 
 package nom;
 
-import javax.print.PrintException;
-
-
 public class FrmAnLevel extends imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
-    public FrmAnLevel(String title, imakante.com.vcomponents.iFrame frame) // 
-    {
+    public FrmAnLevel(String title, imakante.com.vcomponents.iFrame frame) {
         super(title);
         myframe = frame;
-        
-      
         prepareConn();     // zapazva connection
         constructAnLevelDB(); // inicializira class otgovarq6t za vryzkata s DB
         initTable();
         initComponents();
-       
+        
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -48,6 +42,8 @@ public class FrmAnLevel extends imakante.com.vcomponents.iInternalFrame implemen
         setMaximizable(true);
         setResizable(true);
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
+        setMinimumSize(new java.awt.Dimension(890, 370));
+        setPreferredSize(new java.awt.Dimension(900, 400));
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }
@@ -118,6 +114,17 @@ public class FrmAnLevel extends imakante.com.vcomponents.iInternalFrame implemen
 
         jTextComment.setMinimumSize(new java.awt.Dimension(150, 20));
         jTextComment.setPreferredSize(new java.awt.Dimension(150, 20));
+        jTextComment.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextCommentFocusGained(evt);
+            }
+        });
+        jTextComment.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextCommentKeyPressed(evt);
+            }
+        });
+
         jPanel4.add(jTextComment);
 
         jButtonSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Search.png")));
@@ -139,7 +146,7 @@ public class FrmAnLevel extends imakante.com.vcomponents.iInternalFrame implemen
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 875, Short.MAX_VALUE)
+            .add(0, 879, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -216,31 +223,43 @@ public class FrmAnLevel extends imakante.com.vcomponents.iInternalFrame implemen
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.SOUTH);
 
-        pack();
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-889)/2, (screenSize.height-319)/2, 889, 319);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextCommentFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextCommentFocusGained
+        jTextComment.selectAll();
+    }//GEN-LAST:event_jTextCommentFocusGained
+
+    private void jTextCommentKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextCommentKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); 
+        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextComment.setText(""); }
+    }//GEN-LAST:event_jTextCommentKeyPressed
     
     private void jTextCodFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextCodFocusGained
-      
+        jTextCod.selectAll();
     }//GEN-LAST:event_jTextCodFocusGained
     
     private void jTextCodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextCodKeyPressed
-       
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); 
+        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextCod.setText(""); }
     }//GEN-LAST:event_jTextCodKeyPressed
     
     private void jTextNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextNameFocusGained
-      
+        jTextName.selectAll();
     }//GEN-LAST:event_jTextNameFocusGained
     
     private void jTextNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNameKeyPressed
-       
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); 
+        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextName.setText(""); }
     }//GEN-LAST:event_jTextNameKeyPressed
     
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
-      ((imakante.sales.sales_main)myframe).isStartFrmAnLevel = false;
+        ((imakante.sales.sales_main)myframe).isStartFrmAnLevel = false;
     }//GEN-LAST:event_formInternalFrameClosed
     
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
-      
+        
     }//GEN-LAST:event_jButtonPrintActionPerformed
     
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
@@ -264,7 +283,7 @@ public class FrmAnLevel extends imakante.com.vcomponents.iInternalFrame implemen
     }//GEN-LAST:event_jButtonEditActionPerformed
     
     private void jButtonNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewActionPerformed
-       newRecord();
+        newRecord();
     }//GEN-LAST:event_jButtonNewActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -305,7 +324,8 @@ public class FrmAnLevel extends imakante.com.vcomponents.iInternalFrame implemen
     private  anLevelDB internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
-    private String columnsNames[] = {"id_an","\u041a\u043e\u0434:","\u0418\u043c\u0435:","\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440:"};
+    private String columnsNames[] = { "id_al",
+    "\u041a\u043e\u0434","\u0418\u043c\u0435","\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440" };
     //---------------END My Variables
     
     //---------------START MyFunction
@@ -323,17 +343,15 @@ public class FrmAnLevel extends imakante.com.vcomponents.iInternalFrame implemen
     
     private void initTable() {
         try {
-           
             rs = internalObject.getTable();
-            model = new imakante.com.CustomTableModel(conn,rs, columnsNames);
+            model = new imakante.com.CustomTableModel(conn, rs, columnsNames);
             table = new imakante.com.CustomTable(model);
-            HideColumns(getColumnIndex("id_an"));
-           
+            HideColumns(getColumnIndex("id_al"));
         } catch(Exception e) { e.printStackTrace(); }
         table.requestFocus();
         try {
             table.setEditingRow(0);
-        } catch(Exception ex) {  }
+        } catch(Exception ex) { ex.printStackTrace(); }
     }
     
     public void windowOpened(java.awt.event.WindowEvent e) {
@@ -422,7 +440,7 @@ public class FrmAnLevel extends imakante.com.vcomponents.iInternalFrame implemen
         return id;
     }
     
-      
+    
     public void setCode(String COD) {
         this.code = COD;
     }
@@ -455,61 +473,42 @@ public class FrmAnLevel extends imakante.com.vcomponents.iInternalFrame implemen
         setRow(getMaxRow());
         try{
             setAllVariables();
-            table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
-        } catch(ArrayIndexOutOfBoundsException aioobe) {
-            setRow(getRow() - 1);
-            System.out.println("problem");
-        }
+            table.changeSelection(getRow(), 2, false, false);
+        } catch(ArrayIndexOutOfBoundsException aioobe) { setRow(getRow() - 1); }
         setAtBegining(false);
         setAtEnd(true);
     }
     
     public void mOneRowPlus() {
         if(getRow() <= getMaxRow()) {
-            if(getRow() < getMaxRow()) {
-                setRow(getRow()+1);
-            }
+            if (getRow() < getMaxRow()) setRow(getRow() + 1);
             setAtBegining(false);
             try {
                 setAllVariables();
-                table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
-            } catch(ArrayIndexOutOfBoundsException aioobe) {
-                setRow(getRow() - 1);
-                System.out.println("problem");
-            }
-            if(getRow() == getMaxRow()) {
-                setAtEnd(true);
-            }
+                table.changeSelection(getRow(), 2, false, false);
+            } catch(ArrayIndexOutOfBoundsException aioobe) { setRow(getRow() - 1); }
+            if(getRow() == getMaxRow()) setAtEnd(true);
         }
     }
     
     public  void mOneRowMinus() {
-        if(getRow() >= 0){
-            if(getRow() > 0){
-                setRow(getRow() - 1);
-            }
+        if(getRow() >= 0) {
+            if (getRow() > 0) setRow(getRow() - 1);
             setAtEnd(false);
             try {
                 setAllVariables();
-                table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
-            } catch(ArrayIndexOutOfBoundsException aioobe) {
-                setRow(getRow() + 1);
-            }
-            System.out.println("problem");}
-        if(getRow() == 0) {
-            setAtBegining(true);
+                table.changeSelection(getRow(), 2, false, false);
+            } catch(ArrayIndexOutOfBoundsException aioobe) { setRow(getRow() + 1); }
         }
+        if(getRow() == 0) setAtBegining(true);
     }
     
     public void mTableBegining() {
         setRow(0);
         try {
             setAllVariables();
-            table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
-        } catch(ArrayIndexOutOfBoundsException aioobe) {
-            setRow(getRow() - 1);
-            System.out.println("problem");
-        }
+            table.changeSelection(getRow(), 2, false, false);
+        } catch(ArrayIndexOutOfBoundsException aioobe) { setRow(getRow() - 1); }
         setAtBegining(true);
         setAtEnd(false);
     }
@@ -533,40 +532,37 @@ public class FrmAnLevel extends imakante.com.vcomponents.iInternalFrame implemen
             } catch(Exception e) { e.printStackTrace(); }
         } else {  }
     }
-   private void newRecord()
-   {
-       setAllVariableDefault();
-       int maxID =  internalObject.insertRow(0,"","","");
-       refreshTable();
-       setId(maxID);
-       try
-        {
-         dialog = new aeAnLevel(this, true);
-         dialog.setVisible(true);
-         }
-       catch(Exception e) { e.printStackTrace(); }
-   }
+    
+    private void newRecord() {
+        setAllVariableDefault();
+        int maxID =  internalObject.insertRow(0, "", "", "");
+        refreshTable();
+        setId(maxID);
+        try {
+            dialog = new aeAnLevel(this, true);
+            dialog.setVisible(true);
+        } catch(Exception e) { e.printStackTrace(); }
+    }
+    
     protected  void refreshTable() {
         jScrollPane1.remove(table);
         rs = internalObject.getTable();
         model = new imakante.com.CustomTableModel(conn, rs, columnsNames);
         table = new imakante.com.CustomTable(model);
         jScrollPane1.getViewport().add(table);
-        HideColumns(getColumnIndex("id_an"));
-       
+        HideColumns(getColumnIndex("id_al"));
         jTextName.setText("");
         jTextCod.setText("");
+        jTextComment.setText("");
         jScrollPane1.repaint();
     }
     
     private void searchRecords() {
         try {
-            
-              String nname = jTextName.getText();
-              String ccoment = jTextComment.getText();
-              String ccode = jTextCod.getText();
-             rs = internalObject.searchRecords(0,ccode,nname,ccoment);
-                
+            String nname = jTextName.getText();
+            String ccoment = jTextComment.getText();
+            String ccode = jTextCod.getText();
+            rs = internalObject.searchRecords(0, ccode, nname, ccoment);
             model = new imakante.com.CustomTableModel(conn, rs, columnsNames);
             table = new imakante.com.CustomTable(model);
             jScrollPane1.getViewport().add(table);
@@ -592,18 +588,19 @@ public class FrmAnLevel extends imakante.com.vcomponents.iInternalFrame implemen
     }
     
     private void setAllVariables() {
-        setId((Integer) table.getValueAt(getRow(), getColumnIndex("id_an")));
-        setCode((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434:")));
-        setNames((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435:")));
-        setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440:")));
+        setId((Integer) table.getValueAt(getRow(), getColumnIndex("id_al")));
+        setCode((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434")));
+        setNames((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435")));
+        setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440")));
     }
-    private void setAllVariableDefault()
-    {
+    
+    private void setAllVariableDefault() {
         setId(0);
         setCode("");
         setNames("");
         setComment("");
     }
+    
     private void unload() {
         ((imakante.sales.sales_main)myframe).isStartFrmAnLevel = false;
         closeResource();
@@ -617,7 +614,7 @@ public class FrmAnLevel extends imakante.com.vcomponents.iInternalFrame implemen
         rs = null;
         internalObject.close();
     }
-
+    
     private void delRecord() {
         if(table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());

@@ -6,7 +6,7 @@ BEGIN
 
 
  IF (in_comprator = 0 ) THEN
-     SELECT n.id_pam, n.name_pam, n.sname_pam FROM n_product_all_measure n;
+     SELECT n.id_pam, n.name_pam, n.sname_pam FROM n_product_all_measure n ORDER BY n.id_pam ASC;
 
  END IF;
 
@@ -29,8 +29,9 @@ END IF;
 
 IF (in_comprator = 5 ) THEN
   SELECT n.id_pam, n.name_pam, n.sname_pam FROM n_product_all_measure n
-
-   WHERE name_pam like CONCAT('%',in_name,'%') AND sname_pam like CONCAT('%',in_sname,'%');
+   WHERE name_pam LIKE CONCAT('%',in_name,'%') 
+    AND sname_pam LIKE CONCAT('%',in_sname,'%') 
+    ORDER BY n.id_pam ASC;
 
 END IF;
 
