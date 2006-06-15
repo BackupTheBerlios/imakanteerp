@@ -43,10 +43,10 @@ public class dbPayingOrders extends imakante.com.dbObject {
             getCstm().setInt("in_code", getCode());
             getCstm().setString("in_name", getName());
             getCstm().setDouble("in_amount", getAmount());
-            getCstm().setString("in_osnovanie", osnovanie);
+            getCstm().setString("in_osnovanie", getOsnovanie());
             getCstm().setString("in_comment_spo", getComment());
-            getCstm().setString("dateBegin", getBeginDate());
-            getCstm().setString("dateEnd", getEndDate());
+            getCstm().setString("beginDate", getBeginDate());
+            getCstm().setString("endDate", getEndDate());
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
@@ -84,8 +84,6 @@ public class dbPayingOrders extends imakante.com.dbObject {
     
     public String[] getTypesOfOreders() {
         setComprator(6);
-//        String[] typesOrders = { "boo!", "boo again!" };
-        
         int oldId = getId();
         java.sql.ResultSet oldRs = getRs();
         java.util.ArrayList in = new java.util.ArrayList();
@@ -112,7 +110,6 @@ public class dbPayingOrders extends imakante.com.dbObject {
             OrderTypes[i] = (String) Groups.get(OTIndexes[i]);
             i++;
         }
-        
         return OrderTypes;
     }
     
@@ -122,8 +119,6 @@ public class dbPayingOrders extends imakante.com.dbObject {
     
     public String[] getAvailableCurrencies() {
         setComprator(11);
-//        String[] currencies = { "BGN" };
-        
         int oldId = getId();
         java.sql.ResultSet oldRs = getRs();
         java.util.ArrayList in = new java.util.ArrayList();
@@ -150,7 +145,6 @@ public class dbPayingOrders extends imakante.com.dbObject {
             Currencies[i] = (String) Groups.get(CurrIndexes[i]);
             i++;
         }
-        
         return Currencies;
     }
     
@@ -166,8 +160,8 @@ public class dbPayingOrders extends imakante.com.dbObject {
             registerParameters();
             setRs(getCstm().executeQuery());
             while(getRs().next()) {
-                Groups.put(new Integer(getRs().getInt("id_nbc")), new String(getRs().getString("name_nbc") 
-                + getRs().getString("baccount_nbc")
+                Groups.put(new Integer(getRs().getInt("id_nbc")), new String(getRs().getString("name_nbc") + " - " 
+                + getRs().getString("account_nbc") + " - " 
                 + getRs().getString("name_tbacc")));
                 in.add(new Integer(getRs().getInt("id_nbc")));
                 i++;
@@ -190,41 +184,6 @@ public class dbPayingOrders extends imakante.com.dbObject {
     public int[] getOAIndexes() {
         return OAIndexes;
     }
-    
-//    public String[] getPersonGroups() {
-//        setComprator(?);
-//        String actStr = new String("");
-//        int oldId = getId();
-//        java.sql.ResultSet oldRs = getRs();
-//        String strIndexConnOfId = new String("");
-//        java.util.ArrayList in = new java.util.ArrayList();
-//        java.util.Iterator it = null;
-//        // nova ideq porodena ot fakta 4e pri razdelqneto na stringa i
-//        //ako imeto na ednata kletka ima intervali no se polu4ava gre6ka
-//        java.util.HashMap Groups = new java.util.HashMap();
-//        int i = 0;
-//        try {
-//            registerParameters();
-//            setRs(getCstm().executeQuery());
-//            while(getRs().next()) {
-//                Groups.put(new Integer(getRs().getInt("id_n_group")), new String(getRs().getString("name_n_group")));
-//                in.add(new Integer(getRs().getInt("id_n_group")));
-//                i++;
-//            }
-//        } catch(Exception e) { e.printStackTrace(); }
-//        setRs(oldRs);
-//        setId(oldId);
-//        indexConnOfId = new int[i];
-//        it = in.iterator();
-//        splitGroupNames = new String[i];
-//        i = 0;
-//        while(it.hasNext()) {
-//            indexConnOfId[i] = (Integer) it.next();
-//            splitGroupNames[i] = (String) Groups.get(indexConnOfId[i]);
-//            i++;
-//        }
-//        return splitGroupNames;
-//    }
     
     public int getIdPayingOrderType() {
         return idPayingOrderType;

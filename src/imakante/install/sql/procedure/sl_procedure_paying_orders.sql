@@ -9,7 +9,7 @@ BEGIN
      IF (comprator = 0) THEN
           SELECT po.id_spo, po.id_spt, pt.type_porder, po.id_nbc, nb.name_nbc, nb.account_nbc, nb.id_tbacc, tb.name_tbacc,
             po.id_contragent, nc.name_n_contragent, nc.code_contragent, nc.BANKNAMER, nc.IBANR, nc.BICR, nc.VIDVALR,
-            nc.BANKNAMED, nc.IBAND, nc.BICD, nc.VIDVALD, po.amount, po.osnovanie, po.comment_spo , po.instant
+            nc.BANKNAMED, nc.IBAND, nc.BICD, nc.VIDVALD, po.amount, po.osnovanie, po.comment_spo , DATE(po.instant)
             FROM sl_paying_orders po
             LEFT OUTER JOIN sl_porder_types pt ON pt.id_spt = po.id_spt
             LEFT OUTER JOIN n_baccount nb ON nb.id_nbc = po.id_nbc
@@ -36,7 +36,7 @@ BEGIN
      IF (comprator = 4) THEN
           SELECT po.id_spo, po.id_spt, pt.type_porder, po.id_nbc, nb.name_nbc, nb.account_nbc, nb.id_tbacc, tb.name_tbacc, 
             po.id_contragent, nc.name_n_contragent, nc.code_contragent, nc.BANKNAMER, nc.IBANR, nc.BICR, nc.VIDVALR,
-            nc.BANKNAMED, nc.IBAND, nc.BICD, nc.VIDVALD, po.amount, po.instant
+            nc.BANKNAMED, nc.IBAND, nc.BICD, nc.VIDVALD, po.amount, DATE(po.instant) 
             FROM sl_paying_orders po 
             LEFT OUTER JOIN sl_porder_types pt ON pt.id_spt = po.id_spt
             LEFT OUTER JOIN n_baccount nb ON nb.id_nbc = po.id_nbc 
@@ -49,7 +49,7 @@ BEGIN
         IF (in_code = -1) THEN
             SELECT po.id_spo, po.id_spt, pt.type_porder, po.id_nbc, nb.name_nbc, nb.account_nbc, nb.id_tbacc, tb.name_tbacc, 
             po.id_contragent, nc.name_n_contragent, nc.code_contragent, nc.BANKNAMER, nc.IBANR, nc.VIDVALR,
-            nc.BANKNAMED, nc.IBAND, nc.VIDVALD, po.amount, po.instant 
+            nc.BANKNAMED, nc.IBAND, nc.VIDVALD, po.amount, DATE(po.instant) 
             FROM sl_paying_orders po 
             LEFT OUTER JOIN sl_porder_types pt ON pt.id_spt = po.id_spt
             LEFT OUTER JOIN n_baccount nb ON nb.id_nbc = po.id_nbc 
@@ -61,13 +61,13 @@ BEGIN
         IF (in_code > -1 ) THEN
             SELECT po.id_spo, po.id_spt, pt.type_porder, po.id_nbc, nb.name_nbc, nb.account_nbc, nb.id_tbacc, tb.name_tbacc, 
             po.id_contragent, nc.name_n_contragent, nc.code_contragent, nc.BANKNAMER, nc.IBANR, nc.VIDVALR,
-            nc.BANKNAMED, nc.IBAND, nc.VIDVALD, po.amount, po.instant 
+            nc.BANKNAMED, nc.IBAND, nc.VIDVALD, po.amount, DATE(po.instant) 
             FROM sl_paying_orders po 
             LEFT OUTER JOIN sl_porder_types pt ON pt.id_spt = po.id_spt
             LEFT OUTER JOIN n_baccount nb ON nb.id_nbc = po.id_nbc 
             LEFT OUTER JOIN n_contragent nc ON nc.id_contragent = po.id_contragent 
             LEFT OUTER JOIN n_type_bacc tb ON tb.id_tbacc = nb.id_tbacc 
-            WHERE nc.code_contragent LIKE CONCAT('%',in_code,'%') AND nc.name_contragent LIKE CONCAT('%',in_name,'%')
+            WHERE nc.code_contragent LIKE CONCAT('%',in_code,'%') AND nc.name_n_contragent LIKE CONCAT('%',in_name,'%')
             ORDER BY po.id_spt ASC;
         END IF;
      END IF;
