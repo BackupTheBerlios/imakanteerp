@@ -144,9 +144,9 @@ public class NewMain extends javax.swing.JFrame {
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                             .add(jBLS3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .add(jBLS2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))))
-                .add(69, 69, 69)
+                .add(108, 108, 108)
                 .add(jbExit)
-                .add(310, 310, 310))
+                .add(271, 271, 271))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -164,10 +164,10 @@ public class NewMain extends javax.swing.JFrame {
                     .add(jBMN))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 13, Short.MAX_VALUE)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jbExit)
                     .add(jButton2)
                     .add(jBLS1)
-                    .add(jButton1)
-                    .add(jbExit))
+                    .add(jButton1))
                 .addContainerGap())
         );
 
