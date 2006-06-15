@@ -25,6 +25,7 @@ public class NewMain extends javax.swing.JFrame {
         jbExit = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jBLS1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -83,6 +84,13 @@ public class NewMain extends javax.swing.JFrame {
 
         jButton2.setText("\u0421\u0422\u0410\u0422\u0418\u0421\u0422\u0418\u041a\u0410");
 
+        jBLS1.setText("\u0410\u0414\u041c\u0418\u041d\u0418\u0421\u0422\u0420\u0410\u0426\u0418\u042f");
+        jBLS1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLS1ActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -107,7 +115,9 @@ public class NewMain extends javax.swing.JFrame {
                 .add(jButton2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                .add(254, 254, 254)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jBLS1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 130, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(118, 118, 118)
                 .add(jbExit)
                 .add(271, 271, 271))
         );
@@ -127,7 +137,8 @@ public class NewMain extends javax.swing.JFrame {
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jbExit)
                     .add(jButton2)
-                    .add(jButton1))
+                    .add(jButton1)
+                    .add(jBLS1))
                 .addContainerGap())
         );
 
@@ -173,6 +184,10 @@ public class NewMain extends javax.swing.JFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-605)/2, (screenSize.height-431)/2, 605, 431);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBLS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLS1ActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jBLS1ActionPerformed
     
     private void jBLSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLSActionPerformed
         loadSalaryMain();
@@ -346,6 +361,7 @@ public class NewMain extends javax.swing.JFrame {
     private org.jdesktop.swingx.tips.DefaultTip defaultTip1;
     private static javax.swing.JButton jBACC;
     private static javax.swing.JButton jBLS;
+    private javax.swing.JButton jBLS1;
     private static javax.swing.JButton jBMN;
     private static javax.swing.JButton jBSales;
     private javax.swing.JButton jButton1;
