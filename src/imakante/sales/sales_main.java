@@ -1027,7 +1027,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         int pricelist = 1;
         int doctype = aeDocumentFacade.RAZPISKA_ZA_VRYSHTANE;
         int storagedocdacade = numberStorage;
+        if(user!=-1  && level!=-1)
+        {
         loadFrmDocFacade("\u0420\u0430\u0437\u043F\u0438\u0441\u043A\u0430 \u0437\u0430 \u0432\u0440\u044A\u0449\u0430\u043D\u0435", user, level, pricelist, doctype, storagedocdacade, false, null, null );
+        }
     }//GEN-LAST:event_razMenu_vrystActionPerformed
 
     private void docMenu_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docMenu_prodActionPerformed
@@ -1039,7 +1042,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         int pricelist = 1;
         int doctype = aeDocumentFacade.STOKOVA_RAZPISKA;
         int storagedocdacade = numberStorage;
+        if(user!=-1  && level!=-1)
+        {
         loadFrmDocFacade("\u0421\u0422\u041e\u041a\u041e\u0412\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );
+        }
     }//GEN-LAST:event_docMenu_prodActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -1075,7 +1081,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         int pricelist = 1;
         int doctype = aeDocumentFacade.PROTOKOL_LIPSA;
         int storagedocdacade = 1;
+        if(user!=-1  && level!=-1)
+        {
         loadFrmDocFacade("\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u041b\u0418\u041f\u0421\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );
+        }
     }//GEN-LAST:event_protMenu_lipsaActionPerformed
     
     private void protMenu_brakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_protMenu_brakActionPerformed
@@ -1087,7 +1096,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         int pricelist = 1;
         int doctype = aeDocumentFacade.BRAK;
         int storagedocdacade = numberStorage;
+        if(user!=-1  && level!=-1)
+        {
         loadFrmDocFacade("\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u0411\u0420\u0410\u041a", user, level, pricelist, doctype, storagedocdacade, false, null, null );
+        }
     }//GEN-LAST:event_protMenu_brakActionPerformed
     
     private void spravkiMenu_docActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spravkiMenu_docActionPerformed
@@ -1118,7 +1130,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         int pricelist = 1;
         int doctype = aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE;
         int storagedocdacade = numberStorage;
+        if(user!=-1  && level!=-1)
+        {
         loadFrmDocFacade("\u041d\u0410\u0420\u0415\u0416\u0414\u0410\u041d\u0415 \u0417\u0410 \u041f\u0420\u0415\u0425\u0412\u042a\u0420\u041b\u042f\u041d\u0415", user, level, pricelist, doctype, storagedocdacade, false, null, null );
+        }
     }//GEN-LAST:event_docMenu_narActionPerformed
     
     private void razpMenu_polActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_razpMenu_polActionPerformed
@@ -1129,7 +1144,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         int pricelist = 1;
         int doctype = aeDocumentFacade.PRIEMATELNA_RAZPISKA;
         int storagedocdacade = numberStorage;
+        if(user!=-1  && level!=-1)
+        {
         loadFrmDocFacade("\u041f\u0420\u0418\u0415\u041c\u0410\u0422\u0415\u041b\u041d\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );
+        }
     }//GEN-LAST:event_razpMenu_polActionPerformed
     
     private void orderMenu_razhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderMenu_razhActionPerformed
@@ -1144,7 +1162,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         int pricelist = 1;
         int doctype = aeDocumentFacade.OFERTA;
         int storagedocdacade = numberStorage;
+        if(user!=-1  && level!=-1)
+        {
         loadFrmDocFacade("\u041e\u0424\u0415\u0420\u0422\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );
+        }
     }//GEN-LAST:event_docMenu_offerActionPerformed
     
     private void razpMenu_prehvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_razpMenu_prehvActionPerformed
@@ -1161,7 +1182,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         int storagedocdacade = numberStorage;
         System.out.println("Create opr. Fak");
         System.out.println(isMakeDocByInputData);
-        
+        if(user!=-1  && level!=-1)
+        {
         if(!isMakeDocByInputData) {
             dataIn = null;
             dataOut = null;
@@ -1170,12 +1192,14 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         } else {
             loadFrmDocFacade("\u0424\u0410\u041a\u0422\u0423\u0420\u0410", user, level, pricelist, doctype, storagedocdacade, isMakeDocByInputData, dataIn, dataOut );
         }
+        }
     }//GEN-LAST:event_fakMenu_oprActionPerformed
     
     private void fakMenu_danActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fakMenu_danActionPerformed
+    
         levelDialog1 = new levelDialog(this,true,202,danFaktArea);
         levelDialog1.setVisible(true);
-       int user = userID_ndtur; //2;
+        int user = userID_ndtur; //2;
         int level = levelForWork;// 1;
         int pricelist = 1;
         int doctype = aeDocumentFacade.FAKTURA_DANACHNA;
@@ -1183,6 +1207,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         System.out.println("Create DAN. Fak");
         System.out.println(isMakeDocByInputData);
         level=3;
+        if(user!=-1  && level!=-1)
+        {
         if(!isMakeDocByInputData) {
             dataIn = null;
             dataOut = null;
@@ -1190,6 +1216,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             loadFrmDocFacade("\u0424\u0410\u041a\u0422\u0423\u0420\u0410", user, level, pricelist, doctype, storagedocdacade, isMakeDocByInputData, dataIn, dataOut );
         } else {
             loadFrmDocFacade("\u0424\u0410\u041a\u0422\u0423\u0420\u0410", user, level, pricelist, doctype, storagedocdacade, isMakeDocByInputData, dataIn, dataOut );
+        }
         }
       
     }//GEN-LAST:event_fakMenu_danActionPerformed
@@ -1356,6 +1383,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenuItem bankaMenu_orderi;
     private javax.swing.JMenuItem contentMenuItem;
     private javax.swing.JDesktopPane desktopPane;
+
     private javax.swing.JMenu docMenu;
     private javax.swing.JMenu docMenu_fak;
     private javax.swing.JMenuItem docMenu_nar;

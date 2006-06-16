@@ -9,15 +9,27 @@ public class levelDialog extends javax.swing.JDialog {
         super(parent, modal);
         frame = parent;
         modul = ModuleCode;
-        hash = new java.util.LinkedHashMap(area);
+        hash = area;
         initComponents();
-        constructComboNames();
-        writeH();
-        if(hash.size()<0|| hash==null)
+        if(area==null)
         {
             
-            this.dispose();
+         sales_main.levelForWork =-1;
+          sales_main.userID_ndtur=-1;
+        }else
+        if(area.size()<1)
+        {
+         sales_main.levelForWork =-1;
+         sales_main.userID_ndtur=-1;
         }
+        else
+        {
+          hash = new java.util.LinkedHashMap(area);
+          constructComboNames();
+          writeH();
+        }
+        
+       
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -96,11 +108,12 @@ public class levelDialog extends javax.swing.JDialog {
                         .add(jLabel4)
                         .add(jLabel2)))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(jPasswordField1)
-                    .add(jComboBox1, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 35, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                        .add(jPasswordField1)
+                        .add(jComboBox1, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
+                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 37, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(39, 39, 39))
         );
         layout.setVerticalGroup(
@@ -129,10 +142,15 @@ public class levelDialog extends javax.swing.JDialog {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
 // TODO add your handling code here:
-         outLevel = 3;
-                outIndex = getKey();
+                outLevel = 3;
+               
                 sales_main.levelForWork = 3;
+                try
+                {
+                outIndex = getKey();
                 sales_main.userID_ndtur = getKey();
+                }
+                catch(Exception xc){sales_main.userID_ndtur =-1;sales_main.levelForWork = -1;};
                
                 frame.numberStorage=Integer.parseInt(jTextField2.getText());
     }//GEN-LAST:event_formWindowClosing
@@ -149,6 +167,7 @@ public class levelDialog extends javax.swing.JDialog {
     
     private void jPasswordField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyPressed
         if ( evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            if(hash==null) return;
             if (checkPass()){
                 outLevel = getLevel();
                 sales_main.levelForWork = getLevel();
@@ -168,6 +187,7 @@ public class levelDialog extends javax.swing.JDialog {
             close();
         }
         if ( evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) {
+             if(hash==null) return;
              outLevel = 3;
              outIndex = getKey();
              sales_main.levelForWork = 3;
@@ -270,6 +290,7 @@ public class levelDialog extends javax.swing.JDialog {
         
         this.dispose();
     }
+ 
  private void toSystemString()
  {
      Iterator it = in.iterator();
