@@ -2238,7 +2238,7 @@ public void loadPrintReportJasper(int docType,int in_id_df,int sellRow)
             parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
           
             printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,getDocLineTable(id_doc),conn,parameterHashMap,
-                    path+"sales_priem.jasper","\u0420\u0430\u0437\u043F\u0438\u0441\u043A\u0430 \u0437\u0430 \u0432\u0440\u044A\u0449\u0430\u043D\u0435",
+                    path+"sales_vrystane.jasper","\u0420\u0430\u0437\u043F\u0438\u0441\u043A\u0430 \u0437\u0430 \u0432\u0440\u044A\u0449\u0430\u043D\u0435",
                     "\u0420\u0430\u0437\u043F\u0438\u0441\u043A\u0430 \u0437\u0430 \u0432\u0440\u044A\u0449\u0430\u043D\u0435");
             printReportDialog.setVisible(true);
             
