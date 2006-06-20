@@ -22,6 +22,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
@@ -39,6 +40,9 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         jLabel6 = new javax.swing.JLabel();
         jXDatePicker2 = new org.jdesktop.swingx.JXDatePicker();
         jPanel2 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
         jPanel3 = new javax.swing.JPanel();
         jButtonNew = new javax.swing.JButton();
         jButtonEdit = new javax.swing.JButton();
@@ -120,9 +124,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(57, Short.MAX_VALUE)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(jPanel4Layout.createSequentialGroup()
-                        .add(jLabel1)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 35, Short.MAX_VALUE))
+                    .add(jLabel1)
                     .add(jLabel2))
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                     .add(jPanel4Layout.createSequentialGroup()
@@ -134,9 +136,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
                 .add(29, 29, 29)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                     .add(jLabel4)
-                    .add(jPanel4Layout.createSequentialGroup()
-                        .add(jLabel3)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 14, Short.MAX_VALUE)))
+                    .add(jLabel3))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(jComboBox2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 161, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -196,16 +196,19 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 879, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 10, Short.MAX_VALUE)
-        );
+        jLabel7.setText("\u041d\u0430\u0440\u0435\u0434\u0438\u0442\u0435\u043b\u0438:   ");
+        jPanel2.add(jLabel7);
+
+        jRadioButton1.setText("\u0424\u0438\u0437\u0438\u0447\u0435\u0441\u043a\u0438 \u043b\u0438\u0446\u0430");
+        jRadioButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jRadioButton1.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel2.add(jRadioButton1);
+
+        jRadioButton2.setText("\u042e\u0440\u0438\u0434\u0438\u0447\u0435\u0441\u043a\u0438 \u043b\u0438\u0446\u0430");
+        jRadioButton2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jRadioButton2.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel2.add(jRadioButton2);
+
         getContentPane().add(jPanel2, java.awt.BorderLayout.NORTH);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -330,6 +333,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     }//GEN-LAST:event_jButtonNewActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButtonClose;
     private javax.swing.JButton jButtonDel;
     private javax.swing.JButton jButtonDeleteAll;
@@ -347,10 +351,13 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
@@ -881,7 +888,15 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
 //            refreshTable();
 //        }
 //    }
-//    
+    
+    public void choosePerson(String Name) {
+        
+    }
+    
+    public void chooseContragent(int ContraCode) {
+        
+    }
+    
     private int getColumnIndex(String in) {
         int count = table.getColumnCount();
         for(int i = 0; i < count; i++) {
