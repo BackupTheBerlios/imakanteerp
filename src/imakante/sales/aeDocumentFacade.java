@@ -5342,6 +5342,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 }
                 
                 myParent.setDDSProduct(myParent.getProductFee()[0]);
+                System.out.println("DDS = "+ myParent.getProductFee()[0] );
                 jTable1.setValueAt(myParent.getDDSProduct(),jTable1.getSelectedRow(),10);
                 if(isProductIN) {
                     jTable1.setValueAt(calculateTotalPrice(myParent.getPriceOneProduct(),myParent.getBrojProduct()),jTable1.getSelectedRow(),11);

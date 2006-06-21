@@ -23,7 +23,7 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
         table.changeSelection(0,0,false,false);
         HideColumns(getColumnIndex("id_pm"));
         HideColumns(getColumnIndex("id_pc"));
-        HideColumns(getColumnIndex("id_pf"));
+       // HideColumns(getColumnIndex("id_pf"));
         HideColumns(getColumnIndex("id_pd"));
         HideColumns(getColumnIndex("pc_id_pp"));
         HideColumns(getColumnIndex("pc_id_pf"));
@@ -91,7 +91,7 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
                   myParent.setProcentProduct((Double)table.getValueAt(row,getColumnIndex("Мах % на отстъпка")));
                   
                   if((Integer)table.getValueAt(row,getColumnIndex("Партида"))>1)
-                  myParent.setID_PF((Integer)table.getValueAt(row,getColumnIndex("pc_id_pf")));
+                  {myParent.setID_PF((Integer)table.getValueAt(row,getColumnIndex("pc_id_pf")));}
                   else 
                   {
                       try
@@ -102,6 +102,7 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
                       catch(Exception ex)
                       {
                            myParent.setID_PF((Integer)table.getValueAt(row,getColumnIndex("id_pf"))); 
+                           
                       }
                   }
                   productFee = myParent.getCountriesT().getProductFeeByID(myParent.getID_PF());
@@ -167,7 +168,7 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
    *comments_n_storage = Коментар-склад
    *quant_rezerv_nal = Запазено количество
    */
-   private String columnName[] = {"id_pm","Партида","pc_id_pp","pc_id_ppp","pc_id_pf","id_pd", "id_ppp","id_pp","id_df","Име на продукта","Фактурно име","Съкратено име","Име на съответ.","Мах % на отстъпка","Код на продукта","id_pc","Годност",
+   private String columnName[] = {"id_pm","Партида","pc_id_pp","pc_id_ppp","pc_id_pf","id_pd", "id_ppp","id_pp","id_pf","Име на продукта","Фактурно име","Съкратено име","Име на съответ.","Мах % на отстъпка","Код на продукта","id_pc","Годност",
                                   "id_nal", "Номер склад","level", "Наличност","Запазено количество","Код на склада","Име на склада","Коментар-склад"};
    private double pricelist[] = new double[5];
    private String productDescription[][] =new String[3][2];

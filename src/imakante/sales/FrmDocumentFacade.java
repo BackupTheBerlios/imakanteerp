@@ -2214,7 +2214,7 @@ public void loadPrintReportJasper(int docType,int in_id_df,int sellRow)
             imakante.com.paramFirm paramFrm1 = new imakante.com.paramFirm();
             parameterHashMap.put(new String("naredil"),(String)table.getValueAt(rowSelect,getColumnIndex("Потребител")));
             parameterHashMap.put(new String("firmaname"),paramFrm1.getName());
-            String priceToStr = PriceToString(id_doc,false);
+            String priceToStr = PriceToString(id_doc,true);
             parameterHashMap.put(new String("PriceToString"),priceToStr);
             
             parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
