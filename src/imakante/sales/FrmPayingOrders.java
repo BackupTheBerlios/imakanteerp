@@ -122,7 +122,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
+                .addContainerGap(52, Short.MAX_VALUE)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                     .add(jLabel1)
                     .add(jLabel2))
@@ -199,12 +199,15 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         jLabel7.setText("\u041d\u0430\u0440\u0435\u0434\u0438\u0442\u0435\u043b\u0438:   ");
         jPanel2.add(jLabel7);
 
-        jRadioButton1.setText("\u0424\u0438\u0437\u0438\u0447\u0435\u0441\u043a\u0438 \u043b\u0438\u0446\u0430");
+        buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setSelected(true);
+        jRadioButton1.setText("\u042e\u0440\u0438\u0434\u0438\u0447\u0435\u0441\u043a\u0438 \u043b\u0438\u0446\u0430");
         jRadioButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jRadioButton1.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jPanel2.add(jRadioButton1);
 
-        jRadioButton2.setText("\u042e\u0440\u0438\u0434\u0438\u0447\u0435\u0441\u043a\u0438 \u043b\u0438\u0446\u0430");
+        buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setText("\u0424\u0438\u0437\u0438\u0447\u0435\u0441\u043a\u0438 \u043b\u0438\u0446\u0430");
         jRadioButton2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jRadioButton2.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jPanel2.add(jRadioButton2);
