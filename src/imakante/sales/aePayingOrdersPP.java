@@ -1,16 +1,15 @@
 
 package imakante.sales;
 
-public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
+public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     
-    public aePayingOrdersJP(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
+    public aePayingOrdersPP(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
         super(frame, modal);
         this.myParent = (imakante.sales.FrmPayingOrders) frame;
         initComponents();
         getNavigationState();
         jButtonUndo.setEnabled(false);
         initOrderTypesCombo();
-        initOurAccountsCombo();
         this.setResizable(false);
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         repaintComp();
@@ -32,8 +31,8 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         jPanel4 = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox();
         jPanel5 = new javax.swing.JPanel();
-        jComboBox2 = new javax.swing.JComboBox();
-        jLabel9 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -53,7 +52,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("\u0418\u0437\u043f\u0438\u0441\u0432\u0430\u043d\u0435 \u043d\u0430 \u041f\u043b\u0430\u0442\u0435\u0436\u043d\u043e \u043d\u0430\u0440\u0435\u0436\u0434\u0430\u043d\u0435");
+        setTitle("\u0418\u0437\u043f\u0438\u0441\u0432\u0430\u043d\u0435 \u043d\u0430 \u0412\u043d\u043e\u0441\u043d\u0430 \u0431\u0435\u043b\u0435\u0436\u043a\u0430");
         jPanel1.setPreferredSize(new java.awt.Dimension(263, 33));
         jButtonSave.setText("\u0421\u044a\u0445\u0440\u0430\u043d\u0438");
         jButtonSave.setToolTipText("\u0421\u044a\u0445\u0440\u0430\u043d\u044f\u0432\u0430 \u043d\u0430\u043f\u0440\u0430\u0432\u0435\u043d\u0438\u0442\u0435 \u043f\u0440\u043e\u043c\u0435\u043d\u0438");
@@ -200,21 +199,28 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
             .add(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u041d\u0430\u0440\u0435\u0434\u0438\u0442\u0435\u043b - \u042e\u0440\u0438\u0434\u0438\u0447\u0435\u0441\u043a\u043e \u043b\u0438\u0446\u0435", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 51, 153)));
-        jComboBox2.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        jComboBox2.addFocusListener(new java.awt.event.FocusAdapter() {
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u041d\u0430\u0440\u0435\u0434\u0438\u0442\u0435\u043b - \u0424\u0438\u0437\u0438\u0447\u0435\u0441\u043a\u043e \u043b\u0438\u0446\u0435", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 51, 153)));
+        jTextField8.setBackground(new java.awt.Color(204, 204, 255));
+        jTextField8.setToolTipText("F7 \u0432\u0430\u0434\u0438 \u0441\u043f\u0438\u0441\u044a\u043a \u0437\u0430 \u0438\u0437\u0431\u043e\u0440");
+        jTextField8.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        jTextField8.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jComboBox2FocusGained(evt);
+                jTextField8FocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jComboBox2FocusLost(evt);
+                jTextField8FocusLost(evt);
+            }
+        });
+        jTextField8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField8KeyPressed(evt);
             }
         });
 
-        jLabel9.setText("\u041e\u0442 \u0441\u043c\u0435\u0442\u043a\u0430:");
+        jLabel10.setText("\u0418\u043c\u0435\u043d\u0430:");
 
         org.jdesktop.layout.GroupLayout jPanel5Layout = new org.jdesktop.layout.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -222,19 +228,19 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jLabel9)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jComboBox2, 0, 571, Short.MAX_VALUE)
+                .add(jLabel10)
+                .add(17, 17, 17)
+                .add(jTextField8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel9)
-                    .add(jComboBox2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(jLabel10)
+                    .add(jTextField8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u041f\u043e\u043b\u0443\u0447\u0430\u0442\u0435\u043b", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 51, 153)));
@@ -400,27 +406,19 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
                 .addContainerGap()
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE))
+                    .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(7, 7, 7)
                 .add(jPanel6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(47, 47, 47))
+                .addContainerGap())
         );
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-699)/2, (screenSize.height-407)/2, 699, 407);
+        setBounds((screenSize.width-699)/2, (screenSize.height-403)/2, 699, 403);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jComboBox2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox2FocusGained
-        
-    }//GEN-LAST:event_jComboBox2FocusGained
-
-    private void jComboBox2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox2FocusLost
-        
-    }//GEN-LAST:event_jComboBox2FocusLost
-    
+                
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
 //          if (evt.getItem() == ) {
 //
@@ -434,7 +432,11 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     private void jComboBox1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox1FocusGained
         
     }//GEN-LAST:event_jComboBox1FocusGained
-            
+    
+    private void jTextField8FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField8FocusLost
+        flost(jTextField8);
+    }//GEN-LAST:event_jTextField8FocusLost
+    
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
         flost(jTextField1);
     }//GEN-LAST:event_jTextField1FocusLost
@@ -458,7 +460,17 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     private void jTextField7FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField7FocusGained
         fGain(jTextField7);
     }//GEN-LAST:event_jTextField7FocusGained
-                        
+        
+    private void jTextField8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jTextField8.transferFocus();
+        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) { getPerson();
+        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextField8.setText(""); }
+    }//GEN-LAST:event_jTextField8KeyPressed
+    
+    private void jTextField8FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField8FocusGained
+        fGain(jTextField8);
+    }//GEN-LAST:event_jTextField8FocusGained
+    
     private void jTextField4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusGained
         fGain(jTextField4);
         jTextField4.selectAll();
@@ -584,8 +596,8 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     private javax.swing.JButton jButtonToEnd;
     private javax.swing.JButton jButtonUndo;
     private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -593,7 +605,6 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -607,6 +618,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
     //--------------- My Variables
     private imakante.sales.FrmPayingOrders myParent;
@@ -701,25 +713,17 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         return newindex;
     }
     
-    private void initOurAccountsCombo() {
-        namesOurAccounts = myParent.getInternalObject().getOurAccounts();
-        for(int i = 0; i < namesOurAccounts.length; i++) {
-            jComboBox2.addItem(new String(namesOurAccounts[i]));
-        }
-        if(selectedAccount != 0) {
-            selectedAccount = getNewOAIndex(selectedAccount);
-        }
+    private void getPerson() {
+        try {
+            myParent.choosePerson(jTextField8.getText());
+        } catch (NumberFormatException ex) { ex.printStackTrace(); }
+        revalidatePerson();
     }
     
-    private int getNewOAIndex(int oldindex) {
-        int newindex = 0;
-        for(int i = 0; i < myParent.getInternalObject().getOAIndexes().length; i++) {
-            if(myParent.getInternalObject().getOAIndexes()[i] == oldindex) {
-                newindex = i;
-                break;
-            }
-        }
-        return newindex;
+    private void revalidatePerson() {
+        
+        
+        
     }
     
     private void getContragent() {

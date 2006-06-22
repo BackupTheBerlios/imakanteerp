@@ -1,20 +1,21 @@
 ﻿DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `mida`.`sl_procedure_paying_orders` $$
-CREATE PROCEDURE `sl_procedure_paying_orders`(IN comprator TINYINT, IN in_id INT(11), IN in_id_spt INT(11), IN in_id_nbc INT(11),
-                                            IN in_id_contragent INT(11), IN in_code INT(11), IN in_name VARCHAR(45), 
+CREATE PROCEDURE `sl_procedure_paying_orders`(IN comprator TINYINT, IN in_id INT(11), IN in_order_person INT(11), IN in_id_spt INT(11), 
+                                            IN in_id_nbc INT(11), IN in_id_contragent INT(11), IN in_code INT(11), IN in_name VARCHAR(45), 
                                             IN in_amount DECIMAL(12,2), IN in_osnovanie VARCHAR(60), IN in_comment_spo VARCHAR(60), 
                                             IN beginDate VARCHAR(15), IN endDate VARCHAR(15))
 BEGIN
      IF (comprator = 0) THEN
-          SELECT po.id_spo, po.id_spt, pt.type_porder, po.id_nbc, nb.name_nbc, nb.account_nbc, nb.id_tbacc, tb.name_tbacc,
+          SELECT po.id_spo, po.ordering_person, po.id_spt, pt.type_porder, po.id_nbc, nb.name_nbc, nb.account_nbc, nb.id_tbacc, tb.name_tbacc,
             po.id_contragent, nc.name_n_contragent, nc.code_contragent, nc.BANKNAMER, nc.IBANR, nc.BICR, nc.VIDVALR,
             nc.BANKNAMED, nc.IBAND, nc.BICD, nc.VIDVALD, po.amount, po.osnovanie, po.comment_spo , DATE(po.instant)
             FROM sl_paying_orders po
             LEFT OUTER JOIN sl_porder_types pt ON pt.id_spt = po.id_spt
             LEFT OUTER JOIN n_baccount nb ON nb.id_nbc = po.id_nbc
             LEFT OUTER JOIN n_contragent nc ON nc.id_contragent = po.id_contragent
-            LEFT OUTER JOIN n_type_bacc tb ON tb.id_tbacc = nb.id_tbacc
+            LEFT OUTER JOIN n_type_bacc tb ON tb.id_tbacc = nb.id_tbacc 
+            WHERE po.ordering_person = 0
             ORDER BY po.id_spo ASC;
      END IF;
 

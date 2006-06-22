@@ -5,6 +5,7 @@ public class dbPayingOrders extends imakante.com.dbObject {
     
     // --- Custom Members --- //
     private java.sql.Connection conn;
+    private int orderingPerson = 0;
     private String OrderTypes[];
     private int[] OTIndexes = null;
     private String OurAccounts[];
@@ -29,7 +30,7 @@ public class dbPayingOrders extends imakante.com.dbObject {
     // --- Custom Methods --- //
     public void prepareCstm(){
         try {
-            setCstm(getConn().prepareCall("{call sl_procedure_paying_orders(?,?,?,?,?,?,?,?,?,?,?,?)}"));
+            setCstm(getConn().prepareCall("{call sl_procedure_paying_orders(?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
@@ -37,6 +38,7 @@ public class dbPayingOrders extends imakante.com.dbObject {
         try {
             getCstm().setInt("comprator", getComprator());
             getCstm().setInt("in_id", getId());
+            getCstm().setInt("in_order_person", getOrderingPerson());
             getCstm().setInt("in_id_spt", getIdPayingOrderType());
             getCstm().setInt("in_id_nbc", getIdBankAccount());
             getCstm().setInt("in_id_contragent", getIdContragent());
@@ -48,6 +50,16 @@ public class dbPayingOrders extends imakante.com.dbObject {
             getCstm().setString("beginDate", getBeginDate());
             getCstm().setString("endDate", getEndDate());
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
+    }
+    
+    public java.sql.ResultSet getTable(int in_orderingPerson) {
+        this.setComprator(0);
+        this.setOrderingPerson(in_orderingPerson);
+        try{
+            registerParameters();
+            setRs(getCstm().executeQuery());
+        } catch (java.sql.SQLException sqle) { sqle.printStackTrace(); }
+        return getRs();
     }
     
     public void insertRow() {
@@ -185,6 +197,14 @@ public class dbPayingOrders extends imakante.com.dbObject {
         return OAIndexes;
     }
     
+    public int getOrderingPerson() {
+        return orderingPerson;
+    }
+
+    public void setOrderingPerson(int orderingPerson) {
+        this.orderingPerson = orderingPerson;
+    }
+    
     public int getIdPayingOrderType() {
         return idPayingOrderType;
     }
@@ -240,5 +260,5 @@ public class dbPayingOrders extends imakante.com.dbObject {
     public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
-    
+
 }
