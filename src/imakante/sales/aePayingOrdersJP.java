@@ -1,9 +1,9 @@
 
 package imakante.sales;
 
-public class aePayingOrders extends imakante.com.vcomponents.iDialog {
+public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     
-    public aePayingOrders(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
+    public aePayingOrdersJP(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
         super(frame, modal);
         this.myParent = (imakante.sales.FrmPayingOrders) frame;
         initComponents();

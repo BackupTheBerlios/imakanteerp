@@ -8,7 +8,8 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         myframe = frame;
         prepareConn();
         constructObject();
-        initTable();
+        initTable();        // Here generally is applied a filter, which divides the main resultset in two base categories:
+                            // 1. Juridical persons (0 in database); 2. Physical persons (1 in database)
         initComponents();
         jComboBox1.addItem("--------------");
         Currencies = getInternalObject().getAvailableCurrencies();
@@ -810,7 +811,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         setAllVariables();
         setAtBegining(false);
         setAtEnd(true);
-        imakante.sales.aePayingOrders ae_POrder = new imakante.sales.aePayingOrders(this, true);
+        imakante.sales.aePayingOrdersJP ae_POrder = new imakante.sales.aePayingOrdersJP(this, true);
         ae_POrder.setVisible(true);
         refreshTable();
     }
