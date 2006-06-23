@@ -1358,12 +1358,6 @@ fGain(jComboBoxGroup);
                 myParent.setId_PPP(1);
             }
             
-            
-            
-            
-            
-            
-            
             {
                 
                 if(setAllVariables()) {
@@ -1385,6 +1379,8 @@ fGain(jComboBoxGroup);
                     
                     isNew = false;
                     showOKMessage();
+                    jButton1.setEnabled(false);
+                    jButton3.grabFocus();
                 } else {
                     showMessage();
                     
