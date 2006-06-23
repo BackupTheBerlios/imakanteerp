@@ -13,6 +13,11 @@ public class iFrame extends javax.swing.JFrame implements java.io.Serializable{
     /** Creates a new instance of iFrame */
     public iFrame(String title) {
         super(title);
+         try {
+            jbInit();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
        // this.setTitle(title);
     }
    private java.sql.Connection conn = null;

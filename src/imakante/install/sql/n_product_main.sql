@@ -1,5 +1,3 @@
-# MySQL-Front 3.2  (Build 13.39)
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -12,19 +10,9 @@
 /*!40103 SET SQL_NOTES='ON' */;
 
 
-# Host: localhost    Database: mida
-# ------------------------------------------------------
-# Server version 5.0.22-community-nt
-
 USE `mida`;
 
 /*!40101 SET NAMES cp1251 */;
-
-#
-# Table structure for table n_product_main
-#
-
-DROP TABLE IF EXISTS `n_product_main`;
 CREATE TABLE `n_product_main` (
   `id_pm` int(11) unsigned NOT NULL auto_increment,
   `id_pd` int(11) unsigned NOT NULL default '0',
@@ -38,12 +26,12 @@ CREATE TABLE `n_product_main` (
   `cname_pm` varchar(50) default NULL,
   `cod1_pm` varchar(20) default NULL,
   `cod2_pm` varchar(20) default NULL,
-  `barcod_pm` int(11) unsigned default NULL,
+  `barcod_pm` varchar(20) default NULL,
   `max_pop_pm` double default NULL,
   `expertsheet_pm` varchar(45) default NULL,
   `flag_pm` int(3) unsigned zerofill NOT NULL default '000',
   `min_pm` int(11) unsigned NOT NULL default '0',
-  `code_pm` varchar(11) NOT NULL default '0',
+  `code_pm` int(11) unsigned NOT NULL default '0',
   PRIMARY KEY  (`id_pm`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
