@@ -505,7 +505,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         });
 
         nomMenu_stock.setText("\u0421\u0442\u043e\u043a\u043e\u0432\u0438");
-        stock_Menu_group_stock.setText("\u0413\u0440\u0443\u043f\u0438");
+        stock_Menu_group_stock.setText("\u0413\u0440\u0443\u043f\u0438 \u0441\u0442\u043e\u043a\u0438");
         stock_Menu_group_stock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stock_Menu_group_stockActionPerformed(evt);
@@ -514,7 +514,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         nomMenu_stock.add(stock_Menu_group_stock);
 
-        stock_Menu_stock.setText("\u0421\u0442\u043e\u043a\u0430");
+        stock_Menu_stock.setText("\u0421\u0442\u043e\u043a\u0438");
         stock_Menu_stock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stock_Menu_stockActionPerformed(evt);
@@ -541,7 +541,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         nomMenu.add(nomMenu_Aktiv);
 
         nomMenu_Kontragenti.setText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
-        kontragentiMenu_groupe.setText("\u0413\u0440\u0443\u043f\u0438");
+        kontragentiMenu_groupe.setText("\u0413\u0440\u0443\u043f\u0438 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
         kontragentiMenu_groupe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kontragentiMenu_groupeActionPerformed(evt);
@@ -692,7 +692,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         nomMenu.add(jSeparator3);
 
         nomMenu_Geo.setText("\u0413\u0435\u043e\u0433\u0440\u0430\u0444\u0441\u043a\u0438");
-        nomMenu_nasm.setText("\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e");
+        nomMenu_nasm.setText("\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u0438 \u043c\u0435\u0441\u0442\u0430");
         nomMenu_nasm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nomMenu_nasmActionPerformed(evt);
@@ -732,7 +732,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         nomMenu.add(nomALevel);
 
-        nomDisband.setText("\u0420\u0430\u0437\u0444\u0430\u0441\u043e\u0432\u043a\u0430");
+        nomDisband.setText("\u0420\u0430\u0437\u0444\u0430\u0441\u043e\u0432\u043a\u0438");
         nomDisband.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nomDisbandActionPerformed(evt);
@@ -753,7 +753,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         sprMenu.add(spravkiMenu_nal);
 
-        jMenuItem15.setText("\u041f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 \u0441\u0440\u043e\u043a\u043e\u0432\u0435 \u0433\u043e\u0434\u043d\u043e\u0441\u0442");
+        jMenuItem15.setText("\u041f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 \u0441\u0440\u043e\u043a\u043e\u0432\u0435 \u043d\u0430 \u0433\u043e\u0434\u043d\u043e\u0441\u0442");
         jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem15ActionPerformed(evt);
@@ -765,10 +765,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jMenuItem14.setText("\u041f\u0440\u043e\u0434\u0430\u0436\u0431\u0438");
         sprMenu.add(jMenuItem14);
 
-        jMenuItem10.setText("\u041f\u0440\u043e\u0444\u0438\u043b \u0421\u0442\u043e\u043a\u0430");
+        jMenuItem10.setText("\u041f\u0440\u043e\u0444\u0438\u043b \u043d\u0430 \u0421\u0442\u043e\u043a\u0430");
         sprMenu.add(jMenuItem10);
 
-        jMenuItem35.setText("\u0421\u0442\u043e\u043a\u0438 \u043c\u0438\u043d\u0438\u043c\u0430\u043b\u043d\u0438 \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u0430");
+        jMenuItem35.setText("\u041c\u0438\u043d\u0438\u043c\u0430\u043b\u043d\u0438 \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u0430 \u043d\u0430 \u0441\u0442\u043e\u043a\u0438");
         jMenuItem35.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem35ActionPerformed(evt);
@@ -809,7 +809,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         sprMenu.add(jSeparator2);
 
-        jMenuItem11.setText("\u0420\u0430\u0437\u043f\u043b\u0430\u0449\u0430\u043d\u0435 \u043d\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
+        jMenuItem11.setText("\u0420\u0430\u0437\u043f\u043b\u0430\u0449\u0430\u043d\u0438\u044f \u043d\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
         sprMenu.add(jMenuItem11);
 
         jMenuItem12.setText("\u0417\u0430\u0434\u044a\u043b\u0436\u0435\u043d\u0438\u044f");
@@ -817,7 +817,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         sprMenu.add(jSeparator5);
 
-        jMenuItem13.setText("\u0414\u043d\u0435\u0432\u043d\u0438\u0446\u0438 \u0414\u0414\u0421");
+        jMenuItem13.setText("\u0414\u0414\u0421 \u0434\u043d\u0435\u0432\u043d\u0438\u0446\u0438");
         sprMenu.add(jMenuItem13);
 
         sprMenu.add(jSeparator6);
@@ -848,18 +848,18 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jMenuItem20.setText("\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f \u043e\u0442 PDA");
         jMenu1.add(jMenuItem20);
 
-        jMenuItem21.setText("\u041d\u0430\u0441\u0442\u0440\u043e\u0438\u043a\u0430 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 PDA");
+        jMenuItem21.setText("\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430 \u043d\u0430 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0437\u0430 PDA");
         jMenu1.add(jMenuItem21);
 
         jMenu1.add(jSeparator8);
 
-        jMenuItem22.setText("\u0418\u043c\u043f\u043e\u0440\u0442 \u043e\u0442\u0434\u0430\u043b\u0435\u0447\u0435\u043d\u0438 \u0441\u0442\u0430\u043d\u0446\u0438\u0438");
+        jMenuItem22.setText("\u0418\u043c\u043f\u043e\u0440\u0442 \u043e\u0442 \u043e\u0442\u0434\u0430\u043b\u0435\u0447\u0435\u043d\u0438 \u0441\u0442\u0430\u043d\u0446\u0438\u0438");
         jMenu1.add(jMenuItem22);
 
-        jMenuItem23.setText("\u0415\u043a\u0441\u043f\u043e\u0440\u0442 \u043e\u0442\u0434\u0430\u043b\u0435\u0447\u0435\u043d\u0438 \u0441\u0442\u0430\u043d\u0446\u0438\u0438");
+        jMenuItem23.setText("\u0415\u043a\u0441\u043f\u043e\u0440\u0442 \u043a\u044a\u043c \u043e\u0442\u0434\u0430\u043b\u0435\u0447\u0435\u043d\u0438 \u0441\u0442\u0430\u043d\u0446\u0438\u0438");
         jMenu1.add(jMenuItem23);
 
-        jMenuItem24.setText("\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u043e\u0442\u0434\u0430\u043b\u0435\u0447\u0435\u043d\u0438 \u0441\u0442\u0430\u043d\u0446\u0438\u0438");
+        jMenuItem24.setText("\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u043d\u0430 \u043e\u0442\u0434\u0430\u043b\u0435\u0447\u0435\u043d\u0438 \u0441\u0442\u0430\u043d\u0446\u0438\u0438");
         jMenu1.add(jMenuItem24);
 
         menuBar.add(jMenu1);
@@ -871,7 +871,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             }
         });
 
-        jMenuItem3.setText("\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u0424\u0438\u0440\u043c\u0430");
+        jMenuItem3.setText("\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043d\u0430 \u0424\u0438\u0440\u043c\u0430");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
@@ -880,7 +880,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         sluMenu.add(jMenuItem3);
 
-        jMenuItem2.setText("\u041d\u0430\u0441\u0442\u0440\u043e\u0438\u043a\u0430 \u041f\u0440\u043e\u0433\u0440\u0430\u043c\u0430");
+        jMenuItem2.setText("\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u043d\u0430 \u041f\u0440\u043e\u0433\u0440\u0430\u043c\u0430\u0442\u0430");
         sluMenu.add(jMenuItem2);
 
         nomMenu_DocType.setText("\u0422\u0438\u043f\u043e\u0432\u0435 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438");
@@ -892,7 +892,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         sluMenu.add(nomMenu_DocType);
 
-        jMenuItem6.setText("\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438 \u043d\u043e\u043c\u0435\u0440\u0430\u0446\u0438\u044f");
+        jMenuItem6.setText("\u041d\u043e\u043c\u0435\u0440\u0430\u0446\u0438\u044f \u043d\u0430 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem6ActionPerformed(evt);
@@ -901,7 +901,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         sluMenu.add(jMenuItem6);
 
-        jMenuItem5.setText("\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b\u0438");
+        jMenuItem5.setText("\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043d\u0430 \u043f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b\u0438");
         sluMenu.add(jMenuItem5);
 
         jMenuItem9DTUR.setText("\u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b\u0441\u043a\u0438 \u043f\u0440\u0430\u0432\u0430 \u0432\u044a\u0440\u0445\u0443 \u043a\u043e\u0447\u0430\u043d\u0438");
@@ -936,12 +936,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         sluMenu.add(jSeparator1);
 
-        jMenuItem9.setText("\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430 \u0440\u0435\u0434\u0430\u043a\u0442\u043e\u0440 \u043d\u0430 \u0441\u043f\u0440\u0430\u0432\u043a\u0438");
+        jMenuItem9.setText("\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u043d\u0430 \u0420\u0435\u0434\u0430\u043a\u0442\u043e\u0440\u0430 \u043d\u0430 \u0441\u043f\u0440\u0430\u0432\u043a\u0438");
         sluMenu.add(jMenuItem9);
 
         sluMenu.add(jSeparator9);
 
-        jMenuItem26.setText("\u0420\u0435\u043f\u043b\u0438\u043a\u0430\u0446\u0438\u044f \u0431\u0430\u0437\u0430");
+        jMenuItem26.setText("\u0420\u0435\u043f\u043b\u0438\u043a\u0430\u0446\u0438\u044f \u043d\u0430 \u0431\u0430\u0437\u0430\u0442\u0430");
         sluMenu.add(jMenuItem26);
 
         jMenuItem29.setText("\u0410\u0440\u0445\u0438\u0432\u0438\u0440\u0430\u043d\u0435 \u043d\u0430 \u0442\u0430\u0431\u043b\u0438\u0446\u0430");
@@ -956,7 +956,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jMenuItem30.setText("\u0414\u044a\u043c\u043f \u043d\u0430 \u0431\u0430\u0437\u0430\u0442\u0430");
         sluMenu.add(jMenuItem30);
 
-        jMenuItem31.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f \u043f\u043e \u0442\u0430\u0431\u043b\u0438\u0446\u0438");
+        jMenuItem31.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u0438 \u043f\u043e \u0442\u0430\u0431\u043b\u0438\u0446\u0438\u0442\u0435");
         sluMenu.add(jMenuItem31);
 
         jMenuItem32.setText("\u0411\u0438\u0439\u043d \u0434\u0435\u043f\u043b\u043e\u0435\u0440");
@@ -964,7 +964,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         sluMenu.add(jSeparator10);
 
-        jMenuItem33.setText("\u0412\u0438\u0437\u0443\u0430\u043b\u0435\u043d \u0432\u0438\u0434 \u043d\u0430 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0430\u0442\u0430");
+        jMenuItem33.setText("\u0412\u044a\u043d\u0448\u043d\u043e\u0441\u0442 \u043d\u0430 \u041f\u0440\u043e\u0433\u0440\u0430\u043c\u0430\u0442\u0430");
         sluMenu.add(jMenuItem33);
 
         menuBar.add(sluMenu);
