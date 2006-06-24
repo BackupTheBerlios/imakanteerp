@@ -418,7 +418,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-699)/2, (screenSize.height-403)/2, 699, 403);
     }// </editor-fold>//GEN-END:initComponents
-                
+    
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
 //          if (evt.getItem() == ) {
 //
@@ -460,7 +460,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     private void jTextField7FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField7FocusGained
         fGain(jTextField7);
     }//GEN-LAST:event_jTextField7FocusGained
-        
+    
     private void jTextField8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jTextField8.transferFocus();
         } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) { getPerson();
@@ -694,9 +694,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     
     private void initOrderTypesCombo() {
         namesOrderTypes = myParent.getInternalObject().getTypesOfOreders();
-        for(int i = 0; i < namesOrderTypes.length; i++) {
-            jComboBox1.addItem(new String(namesOrderTypes[i]));
-        }
+        jComboBox1.addItem(new String(namesOrderTypes[0]));
         if(selectedOrderType != 0) {
             selectedOrderType = getNewOTIndex(selectedOrderType);
         }

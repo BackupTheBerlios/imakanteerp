@@ -61,7 +61,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("\u041f\u043b\u0430\u0442\u0435\u0436\u043d\u0438 \u041d\u0430\u0440\u0435\u0436\u0434\u0430\u043d\u0438\u044f");
+        setTitle("\u041f\u043b\u0430\u0442\u0435\u0436\u043d\u0438 \u043d\u0430\u0440\u0435\u0436\u0434\u0430\u043d\u0438\u044f");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
         setMinimumSize(new java.awt.Dimension(890, 470));
         setPreferredSize(new java.awt.Dimension(900, 480));
@@ -134,10 +134,10 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel4Layout.createSequentialGroup()
                         .add(5, 5, 5)
-                        .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
+                        .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
                     .add(jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)))
+                        .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)))
                 .add(29, 29, 29)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -312,15 +312,15 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     
     private void jRadioButton1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButton1ItemStateChanged
         if (jRadioButton1.isSelected())
-            this.setOrderingPerson(1);
-        else this.setOrderingPerson(0);
+            this.setOrderingPerson(0);
+        else this.setOrderingPerson(1);
         refreshTable();
     }//GEN-LAST:event_jRadioButton1ItemStateChanged
     
     private void jRadioButton2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButton2ItemStateChanged
         if (jRadioButton2.isSelected())
-            this.setOrderingPerson(0);
-        else this.setOrderingPerson(1);
+            this.setOrderingPerson(1);
+        else this.setOrderingPerson(0);
         refreshTable();
     }//GEN-LAST:event_jRadioButton2ItemStateChanged
     
@@ -946,9 +946,9 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             setModel(new imakante.com.CustomTableModel(getConn(), getRs(), NamesJP));
             setTable(new imakante.com.CustomTable(getModel()));
             jScrollPane1.getViewport().add(getTable());
-            if (this.jRadioButton1.isSelected())   // 0 - Juridical Person
+            if (getOrderingPerson() == 0)   // 0 - Juridical Person
                 HideColumnsForJP();
-            if (this.jRadioButton2.isSelected())   // 1 - Physical Person
+            if (getOrderingPerson() == 1)   // 1 - Physical Person
                 HideColumnsForPP();
             jScrollPane1.repaint();
         } catch(Exception e) { e.printStackTrace(); }
@@ -956,19 +956,16 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     
     protected  void refreshTable() {
         jScrollPane1.remove(getTable());
-        if (this.jRadioButton1.isSelected()) {  // 0 - Juridical Person
-            setRs(internalObject.getTable(getOrderingPerson()));
+        if (getOrderingPerson() == 0) {  // 0 - Juridical Person
+            setRs(internalObject.getTable(0));
             setModel(new imakante.com.CustomTableModel(getConn(), getRs(), NamesJP));
             setTable(new imakante.com.CustomTable(getModel()));
             jScrollPane1.getViewport().add(getTable());
             HideColumnsForJP();
         }
-        if (this.jRadioButton2.isSelected()) {  // 1 - Physical Person
-            setRs(internalObject.getTable(getOrderingPerson()));
-            System.out.println("RS: " + getRs().toString());
+        if (getOrderingPerson() == 1) {  // 1 - Physical Person
+            setRs(internalObject.getTable(1));
             setModel(new imakante.com.CustomTableModel(getConn(), getRs(), NamesPP));
-            System.out.println("Model: " + getModel().toString());
-            System.out.println("Names: " + NamesPP.toString());
             setTable(new imakante.com.CustomTable(getModel()));
             jScrollPane1.getViewport().add(getTable());
             HideColumnsForPP();

@@ -682,7 +682,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     
     private void initOrderTypesCombo() {
         namesOrderTypes = myParent.getInternalObject().getTypesOfOreders();
-        for(int i = 0; i < namesOrderTypes.length; i++) {
+        for(int i = 1; i < namesOrderTypes.length; i++) {
             jComboBox1.addItem(new String(namesOrderTypes[i]));
         }
         if(selectedOrderType != 0) {
