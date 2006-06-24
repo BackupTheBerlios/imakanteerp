@@ -14,6 +14,7 @@ public class dbPayingOrders extends imakante.com.dbObject {
     private int[] CurrIndexes = null;
     private int idPayingOrderType = 0;
     private int idBankAccount = 0;
+    private int idPerson = 0;
     private int idContragent = 0;
     private double amount = 0;
     private String osnovanie = "";
@@ -30,7 +31,7 @@ public class dbPayingOrders extends imakante.com.dbObject {
     // --- Custom Methods --- //
     public void prepareCstm(){
         try {
-            setCstm(getConn().prepareCall("{call sl_procedure_paying_orders(?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
+            setCstm(getConn().prepareCall("{call sl_procedure_paying_orders(?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
@@ -41,6 +42,7 @@ public class dbPayingOrders extends imakante.com.dbObject {
             getCstm().setInt("in_order_person", getOrderingPerson());
             getCstm().setInt("in_id_spt", getIdPayingOrderType());
             getCstm().setInt("in_id_nbc", getIdBankAccount());
+            getCstm().setInt("in_id_person", getIdPerson());
             getCstm().setInt("in_id_contragent", getIdContragent());
             getCstm().setInt("in_code", getCode());
             getCstm().setString("in_name", getName());
@@ -221,6 +223,14 @@ public class dbPayingOrders extends imakante.com.dbObject {
         this.idBankAccount = idBankAccount;
     }
     
+    public int getIdPerson() {
+        return idPerson;
+    }
+
+    public void setIdPerson(int idPerson) {
+        this.idPerson = idPerson;
+    }
+
     public int getIdContragent() {
         return idContragent;
     }

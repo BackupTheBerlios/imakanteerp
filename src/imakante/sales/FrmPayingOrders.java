@@ -8,10 +8,11 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         myframe = frame;
         prepareConn();
         constructObject();
-        initTable();        // Here generally is applied a filter, which divides the main resultset in two base categories:
-        // 1. Juridical persons (0 in database); 2. Physical persons (1 in database)
+        /* Here generally is applied a filter, which divides the main resultset in two base categories:
+         * 1. Juridical persons (0 in database); 2. Physical persons (1 in database)
+         */
+        initTable(getOrderingPerson());
         initComponents();
-        this.jRadioButton1.setSelected(true);
         jComboBox1.addItem("--------------");
         Currencies = getInternalObject().getAvailableCurrencies();
         for(int i = 0; i < Currencies.length; i++)
@@ -69,7 +70,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setPreferredSize(new java.awt.Dimension(452, 45));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jScrollPane1.getViewport().add(table);
+        jScrollPane1.getViewport().add(getTable());
         jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -133,10 +134,10 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel4Layout.createSequentialGroup()
                         .add(5, 5, 5)
-                        .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))
+                        .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
                     .add(jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)))
+                        .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)))
                 .add(29, 29, 29)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -313,12 +314,14 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         if (jRadioButton1.isSelected())
             this.setOrderingPerson(1);
         else this.setOrderingPerson(0);
+        refreshTable();
     }//GEN-LAST:event_jRadioButton1ItemStateChanged
     
     private void jRadioButton2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButton2ItemStateChanged
         if (jRadioButton2.isSelected())
             this.setOrderingPerson(0);
         else this.setOrderingPerson(1);
+        refreshTable();
     }//GEN-LAST:event_jRadioButton2ItemStateChanged
     
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
@@ -410,6 +413,8 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     private String OurIBAN = "";
     private int idTypeAccount = 0;
     private String TypeAccount = "";
+    private int idPerson = 0;
+    private String namePerson = "";
     private int idContragent = 0;
     private String NameContragent = "";
     private int CodeContragent = 0;
@@ -440,8 +445,8 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     private java.sql.ResultSet rs;
     private imakante.com.CustomTableModel model;
     private imakante.com.CustomTable table;
-    public static final String Names[] = { "id", 
-    "ordering_person", 
+    public static final String NamesJP[] = { "id",
+    "ordering_person",
     "id_type_porder",
     "\u0422\u0438\u043F \u043D\u0430 \u043E\u043F\u0435\u0440\u0430\u0446\u0438\u044F\u0442\u0430",
     "id_bank_account",
@@ -449,6 +454,27 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     "\u0421\u043C\u0435\u0442\u043A\u0430 (IBAN)",
     "id_type_account",
     "\u0422\u0438\u043F \u043D\u0430 \u0441\u043C\u0435\u0442\u043A\u0430\u0442\u0430",
+    "id_contragent",
+    "\u041F\u043E\u043B\u0443\u0447\u0430\u0442\u0435\u043B",
+    "\u041A\u043E\u0434",
+    "\u0411\u0430\u043D\u043A\u0430 \u043F\u043E \u0440\u0430\u0437\u043F\u043B\u0430\u0449\u0430\u043D\u0438\u044F",
+    "\u0421\u043C\u0435\u0442\u043A\u0430 (IBAN) \u043F\u043E \u0440\u0430\u0437\u043F\u043B\u0430\u0449\u0430\u043D\u0438\u044F",
+    "\u0411\u0430\u043D\u043A\u043E\u0432 \u043A\u043E\u0434 (BIC) - \u0440\u0430\u0437\u043F\u043B\u0430\u0449\u0430\u043D\u0438\u044F",
+    "\u0412\u0430\u043B\u0443\u0442\u0430 \u043F\u043E \u0440\u0430\u0437\u043F\u043B\u0430\u0449\u0430\u043D\u0435",
+    "\u0411\u0430\u043D\u043A\u0430 \u043F\u043E \u0414\u0414\u0421",
+    "\u0421\u043C\u0435\u0442\u043A\u0430 (IBAN) \u043F\u043E \u0414\u0414\u0421",
+    "\u0411\u0430\u043D\u043A\u043E\u0432 \u043A\u043E\u0434 (BIC) - \u0414\u0414\u0421",
+    "\u0412\u0430\u043B\u0443\u0442\u0430 \u043F\u043E \u0414\u0414\u0421",
+    "\u0421\u0443\u043C\u0430",
+    "\u041E\u0441\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+    "\u041F\u043E\u044F\u0441\u043D\u0435\u043D\u0438\u044F",
+    "\u0418\u0437\u0432\u044A\u0440\u0448\u0435\u043D\u043E \u043D\u0430" };
+    public static final String NamesPP[] = { "id",
+    "ordering_person",
+    "id_type_porder",
+    "\u0422\u0438\u043F \u043D\u0430 \u043E\u043F\u0435\u0440\u0430\u0446\u0438\u044F\u0442\u0430",
+    "id_ls_n_person",
+    "\u0418\u043C\u0435",
     "id_contragent",
     "\u041F\u043E\u043B\u0443\u0447\u0430\u0442\u0435\u043B",
     "\u041A\u043E\u0434",
@@ -481,19 +507,25 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         } catch(Exception e) { e.printStackTrace(); }
     }
     
-    private void initTable() {
+    private void initTable(int orderingPerson) {
+        int filter = orderingPerson;
         try {
-            rs = internalObject.getTable(getOrderingPerson());
-            model = new imakante.com.CustomTableModel(getConn(), rs, Names);
-            table = new imakante.com.CustomTable(model);
-            if (this.jRadioButton1.isSelected())   // 0 - Juridical Person
+            if (filter == 0) {  // 0 - Juridical Person
+                setRs(internalObject.getTable(getOrderingPerson()));
+                setModel(new imakante.com.CustomTableModel(getConn(), getRs(), NamesJP));
+                setTable(new imakante.com.CustomTable(getModel()));
                 HideColumnsForJP();
-            if (this.jRadioButton2.isSelected())   // 1 - Physical Person
+            }
+            if (filter == 1) {  // 1 - Physical Person
+                setRs(internalObject.getTable(getOrderingPerson()));
+                setModel(new imakante.com.CustomTableModel(getConn(), getRs(), NamesPP));
+                setTable(new imakante.com.CustomTable(getModel()));
                 HideColumnsForPP();
+            }
         } catch(Exception e) { e.printStackTrace(); }
-        table.requestFocus();
+        getTable().requestFocus();
         try {
-            table.setEditingRow(0);
+            getTable().setEditingRow(0);
         } catch(Exception ex) {  }
     }
     
@@ -510,8 +542,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         HideColumns(getColumnIndex("id"));
         HideColumns(getColumnIndex("ordering_person"));
         HideColumns(getColumnIndex("id_type_porder"));
-        HideColumns(getColumnIndex("id_bank_account"));
-        HideColumns(getColumnIndex("id_type_account"));
+        HideColumns(getColumnIndex("id_ls_n_person"));
         HideColumns(getColumnIndex("id_contragent"));
     }
     
@@ -537,6 +568,14 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     
     public void setInternalObject(imakante.sales.dbPayingOrders val) {
         this.internalObject = val;
+    }
+    
+    public java.sql.ResultSet getRs() {
+        return rs;
+    }
+
+    public void setRs(java.sql.ResultSet rs) {
+        this.rs = rs;
     }
     
     public imakante.com.CustomTableModel getModel() {
@@ -580,7 +619,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     
     private int  getMaxRow() {
         int i = 0;
-        i  = table.getRowCount() - 1;
+        i  = getTable().getRowCount() - 1;
         return i;
     }
     
@@ -658,6 +697,22 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     
     public void setTypeAccount(String TypeAccount) {
         this.TypeAccount = TypeAccount;
+    }
+    
+    public int getIdPerson() {
+        return idPerson;
+    }
+    
+    public void setIdPerson(int idPerson) {
+        this.idPerson = idPerson;
+    }
+    
+    public String getNamePerson() {
+        return namePerson;
+    }
+    
+    public void setNamePerson(String namePerson) {
+        this.namePerson = namePerson;
     }
     
     public int getIdContragent() {
@@ -804,7 +859,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         setRow(getMaxRow());
         try{
             setAllVariables();
-            table.changeSelection(getRow(), 2, false, false);
+            getTable().changeSelection(getRow(), 2, false, false);
         } catch(ArrayIndexOutOfBoundsException aioobe) { setRow(getRow() - 1); }
         setAtBegining(false);
         setAtEnd(true);
@@ -817,7 +872,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             setAtBegining(false);
             try {
                 setAllVariables();
-                table.changeSelection(getRow(), 2, false, false);
+                getTable().changeSelection(getRow(), 2, false, false);
             } catch(ArrayIndexOutOfBoundsException aioobe) { setRow(getRow() - 1); }
             if(getRow() == getMaxRow())
                 setAtEnd(true);
@@ -831,7 +886,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             setAtEnd(false);
             try {
                 setAllVariables();
-                table.changeSelection(getRow(), 2, false, false);
+                getTable().changeSelection(getRow(), 2, false, false);
             } catch(ArrayIndexOutOfBoundsException aioobe) { setRow(getRow() + 1); }
         }
         if(getRow() == 0)
@@ -842,7 +897,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         setRow(0);
         try {
             setAllVariables();
-            table.changeSelection(getRow(), 2, false, false);
+            getTable().changeSelection(getRow(), 2, false, false);
         } catch(ArrayIndexOutOfBoundsException aioobe) { setRow(getRow() - 1); }
         setAtBegining(true);
         setAtEnd(false);
@@ -852,7 +907,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         internalObject.insertRow();
         refreshTable();
         setRow(getMaxRow());
-        table.changeSelection(getRow(), 2, false, false);
+        getTable().changeSelection(getRow(), 2, false, false);
         setAllVariables();
         setAtBegining(false);
         setAtEnd(true);
@@ -871,7 +926,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         try {
             java.text.MessageFormat headerFormat = new java.text.MessageFormat("Platejni Narejdania");
             java.text.MessageFormat footerFormat = new java.text.MessageFormat("Page. " + "- {0} -" + " IMAKANTE' ");
-            table.print(javax.swing.JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
+            getTable().print(javax.swing.JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
         } catch(java.awt.print.PrinterException e) { e.printStackTrace(); }
     }
     
@@ -887,30 +942,37 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
                 ex.printStackTrace();
                 jTextField2.requestFocus();
             }
-            jScrollPane1.remove(table);
-            model = new imakante.com.CustomTableModel(getConn(), rs, Names);
-            table = new imakante.com.CustomTable(model);
-            jScrollPane1.getViewport().add(table);
-            HideColumns(getColumnIndex("id"));
-            HideColumns(getColumnIndex("id_type_porder"));
-            HideColumns(getColumnIndex("id_bank_account"));
-            HideColumns(getColumnIndex("id_type_account"));
-            HideColumns(getColumnIndex("id_contragent"));
+            jScrollPane1.remove(getTable());
+            setModel(new imakante.com.CustomTableModel(getConn(), getRs(), NamesJP));
+            setTable(new imakante.com.CustomTable(getModel()));
+            jScrollPane1.getViewport().add(getTable());
+            if (this.jRadioButton1.isSelected())   // 0 - Juridical Person
+                HideColumnsForJP();
+            if (this.jRadioButton2.isSelected())   // 1 - Physical Person
+                HideColumnsForPP();
             jScrollPane1.repaint();
         } catch(Exception e) { e.printStackTrace(); }
     }
     
     protected  void refreshTable() {
-        jScrollPane1.remove(table);
-        rs = internalObject.getTable();
-        model = new imakante.com.CustomTableModel(getConn(), rs, Names);
-        table = new imakante.com.CustomTable(model);
-        jScrollPane1.getViewport().add(table);
-        HideColumns(getColumnIndex("id"));
-        HideColumns(getColumnIndex("id_type_porder"));
-        HideColumns(getColumnIndex("id_bank_account"));
-        HideColumns(getColumnIndex("id_type_account"));
-        HideColumns(getColumnIndex("id_contragent"));
+        jScrollPane1.remove(getTable());
+        if (this.jRadioButton1.isSelected()) {  // 0 - Juridical Person
+            setRs(internalObject.getTable(getOrderingPerson()));
+            setModel(new imakante.com.CustomTableModel(getConn(), getRs(), NamesJP));
+            setTable(new imakante.com.CustomTable(getModel()));
+            jScrollPane1.getViewport().add(getTable());
+            HideColumnsForJP();
+        }
+        if (this.jRadioButton2.isSelected()) {  // 1 - Physical Person
+            setRs(internalObject.getTable(getOrderingPerson()));
+            System.out.println("RS: " + getRs().toString());
+            setModel(new imakante.com.CustomTableModel(getConn(), getRs(), NamesPP));
+            System.out.println("Model: " + getModel().toString());
+            System.out.println("Names: " + NamesPP.toString());
+            setTable(new imakante.com.CustomTable(getModel()));
+            jScrollPane1.getViewport().add(getTable());
+            HideColumnsForPP();
+        }
         jTextField1.setText("");
         jTextField2.setText("");
         jComboBox1.setSelectedIndex(0);
@@ -953,32 +1015,37 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     }
     
     private int getColumnIndex(String in) {
-        int count = table.getColumnCount();
+        int count = getTable().getColumnCount();
         for(int i = 0; i < count; i++) {
-            if(table.getColumnName(i).equals(in)) return i;
+            if(getTable().getColumnName(i).equals(in)) return i;
         }
         return 0;
     }
     
     private void HideColumns(int col) {
         int iColumn = col;
-        table.getColumnModel().getColumn(iColumn).setMaxWidth(0);
-        table.getColumnModel().getColumn(iColumn).setMinWidth(0);
-        table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
-        table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
+        getTable().getColumnModel().getColumn(iColumn).setMaxWidth(0);
+        getTable().getColumnModel().getColumn(iColumn).setMinWidth(0);
+        getTable().getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
+        getTable().getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
     }
     
     private void setAllVariables() {
-        setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
-        setOrderingPerson((Integer) table.getValueAt(getRow(), getColumnIndex("ordering_person")));
-        setIdOrderType((Integer) table.getValueAt(getRow(), getColumnIndex("id_type_porder")));
-        setIdBankAccount((Integer) table.getValueAt(getRow(), getColumnIndex("id_bank_account")));
-        setIdContragent((Integer) table.getValueAt(getRow(), getColumnIndex("id_contragent")));
-        java.math.BigDecimal bd2d = (java.math.BigDecimal) table.getValueAt(getRow(), getColumnIndex("\u0421\u0443\u043C\u0430"));
+        setId((Integer) getTable().getValueAt(getRow(), getColumnIndex("id")));
+        setOrderingPerson((Integer) getTable().getValueAt(getRow(), getColumnIndex("ordering_person")));
+        setIdOrderType((Integer) getTable().getValueAt(getRow(), getColumnIndex("id_type_porder")));
+        if (getOrderingPerson() == 0) {
+            setIdBankAccount((Integer) getTable().getValueAt(getRow(), getColumnIndex("id_bank_account")));
+        }
+        if (getOrderingPerson() == 1) {
+            setIdPerson((Integer) getTable().getValueAt(getRow(), getColumnIndex("id_ls_n_person")));
+        }
+        setIdContragent((Integer) getTable().getValueAt(getRow(), getColumnIndex("id_contragent")));
+        java.math.BigDecimal bd2d = (java.math.BigDecimal) getTable().getValueAt(getRow(), getColumnIndex("\u0421\u0443\u043C\u0430"));
         setAmount(bd2d.doubleValue());
-        setOsnovanie((String) table.getValueAt(getRow(), getColumnIndex("\u041E\u0441\u043D\u043E\u0432\u0430\u043D\u0438\u0435")));
-        setPoiasnenie((String) table.getValueAt(getRow(), getColumnIndex("\u041F\u043E\u044F\u0441\u043D\u0435\u043D\u0438\u044F")));
-        java.sql.Date inst = (java.sql.Date) table.getValueAt(getRow(), getColumnIndex("\u0418\u0437\u0432\u044A\u0440\u0448\u0435\u043D\u043E \u043D\u0430"));
+        setOsnovanie((String) getTable().getValueAt(getRow(), getColumnIndex("\u041E\u0441\u043D\u043E\u0432\u0430\u043D\u0438\u0435")));
+        setPoiasnenie((String) getTable().getValueAt(getRow(), getColumnIndex("\u041F\u043E\u044F\u0441\u043D\u0435\u043D\u0438\u044F")));
+        java.sql.Date inst = (java.sql.Date) getTable().getValueAt(getRow(), getColumnIndex("\u0418\u0437\u0432\u044A\u0440\u0448\u0435\u043D\u043E \u043D\u0430"));
         setInstant(inst.toString());
     }
     
@@ -997,10 +1064,10 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     
     protected void closeResource() {
         try{
-            rs.close();
+            getRs().close();
         } catch(java.sql.SQLException sqle) {  }
-        rs = null;
+        setRs(null);
         internalObject.close();
     }
-    
+
 }
