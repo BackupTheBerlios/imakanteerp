@@ -842,7 +842,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         menuBar.add(jMenu2);
 
         jMenu1.setText("\u0421\u0418\u041d\u0425\u0420\u041e\u041d\u0418\u0417\u0410\u0426\u0418\u042f");
-        jMenuItem19.setText("\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f \u0437\u0430 PDA");
+        jMenuItem19.setText("\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f \u043a\u044a\u043c PDA");
         jMenu1.add(jMenuItem19);
 
         jMenuItem20.setText("\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f \u043e\u0442 PDA");
