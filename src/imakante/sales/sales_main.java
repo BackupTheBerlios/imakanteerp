@@ -132,6 +132,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         moneyMenu_valutes = new javax.swing.JMenuItem();
         monyMenu_rates = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JSeparator();
+        nomMenu_Geo = new javax.swing.JMenu();
         nomMenu_nasm = new javax.swing.JMenuItem();
         nomMenu_obl = new javax.swing.JMenuItem();
         nomMenu_con = new javax.swing.JMenuItem();
@@ -690,6 +691,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         nomMenu.add(jSeparator3);
 
+        nomMenu_Geo.setText("\u0413\u0435\u043e\u0433\u0440\u0430\u0444\u0441\u043a\u0438");
         nomMenu_nasm.setText("\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e");
         nomMenu_nasm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -697,7 +699,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             }
         });
 
-        nomMenu.add(nomMenu_nasm);
+        nomMenu_Geo.add(nomMenu_nasm);
 
         nomMenu_obl.setText("\u041e\u0431\u043b\u0430\u0441\u0442\u0438");
         nomMenu_obl.addActionListener(new java.awt.event.ActionListener() {
@@ -706,7 +708,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             }
         });
 
-        nomMenu.add(nomMenu_obl);
+        nomMenu_Geo.add(nomMenu_obl);
 
         nomMenu_con.setText("\u0414\u044a\u0440\u0436\u0430\u0432\u0438");
         nomMenu_con.addActionListener(new java.awt.event.ActionListener() {
@@ -715,7 +717,9 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             }
         });
 
-        nomMenu.add(nomMenu_con);
+        nomMenu_Geo.add(nomMenu_con);
+
+        nomMenu.add(nomMenu_Geo);
 
         nomMenu.add(jSeparator4);
 
@@ -1483,6 +1487,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenu nomMenu;
     private javax.swing.JMenu nomMenu_Aktiv;
     private javax.swing.JMenuItem nomMenu_DocType;
+    private javax.swing.JMenu nomMenu_Geo;
     private javax.swing.JMenu nomMenu_Kontragenti;
     private javax.swing.JMenu nomMenu_Litsa;
     private javax.swing.JMenuItem nomMenu_con;
