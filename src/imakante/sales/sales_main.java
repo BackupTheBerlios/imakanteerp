@@ -485,7 +485,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         kasiIbankiMenu.add(jSeparator11);
 
-        bankaMenu_orderi.setText("\u0411\u0430\u043d\u043a\u043e\u0432\u0438 \u043d\u0430\u0440\u0435\u0436\u0434\u0430\u043d\u0438\u044f");
+        bankaMenu_orderi.setText("\u041f\u043b\u0430\u0442\u0435\u0436\u043d\u0438 \u043d\u0430\u0440\u0435\u0436\u0434\u0430\u043d\u0438\u044f");
         bankaMenu_orderi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bankaMenu_orderiActionPerformed(evt);
@@ -1383,7 +1383,6 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenuItem bankaMenu_orderi;
     private javax.swing.JMenuItem contentMenuItem;
     private javax.swing.JDesktopPane desktopPane;
-
     private javax.swing.JMenu docMenu;
     private javax.swing.JMenu docMenu_fak;
     private javax.swing.JMenuItem docMenu_nar;

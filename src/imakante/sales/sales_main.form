@@ -221,7 +221,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="bankaMenu_orderi">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#x411;&#x430;&#x43d;&#x43a;&#x43e;&#x432;&#x438; &#x43d;&#x430;&#x440;&#x435;&#x436;&#x434;&#x430;&#x43d;&#x438;&#x44f;"/>
+                <Property name="text" type="java.lang.String" value="&#x41f;&#x43b;&#x430;&#x442;&#x435;&#x436;&#x43d;&#x438; &#x43d;&#x430;&#x440;&#x435;&#x436;&#x434;&#x430;&#x43d;&#x438;&#x44f;"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bankaMenu_orderiActionPerformed"/>
@@ -955,7 +955,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="352" max="32767" attributes="0"/>
+                      <EmptySpace pref="325" max="32767" attributes="0"/>
                       <Component id="jComboBox1" min="-2" pref="179" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
