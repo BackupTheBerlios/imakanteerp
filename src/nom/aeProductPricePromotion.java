@@ -420,6 +420,7 @@ public class aeProductPricePromotion extends imakante.com.vcomponents.iDialog {
         r = bd.doubleValue();
         return newDouble.valueOf(r);
     }
+    
     private void fGain(javax.swing.JComponent jtf){
         jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 0, 51), null));
     }

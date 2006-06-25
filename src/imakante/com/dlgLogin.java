@@ -83,6 +83,7 @@ public class dlgLogin extends javax.swing.JDialog {
         jLabelCombo = new javax.swing.JComboBox();
         jUserTxtField = new javax.swing.JTextField();
         jPassField = new javax.swing.JPasswordField();
+        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLoginBtn = new javax.swing.JButton();
         jCancelBtn = new javax.swing.JButton();
@@ -143,6 +144,9 @@ public class dlgLogin extends javax.swing.JDialog {
             }
         });
 
+        jButton1.setText("+");
+        jButton1.setToolTipText("\u0414\u043e\u0431\u0430\u0432\u0438 \u0431\u0430\u0437\u0430 \u0434\u0430\u043d\u043d\u0438 \u0437\u0430 \u0424\u0438\u0440\u043c\u0430");
+
         org.jdesktop.layout.GroupLayout jInfoPanelLayout = new org.jdesktop.layout.GroupLayout(jInfoPanel);
         jInfoPanel.setLayout(jInfoPanelLayout);
         jInfoPanelLayout.setHorizontalGroup(
@@ -157,14 +161,17 @@ public class dlgLogin extends javax.swing.JDialog {
                     .add(jUserTxtField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 210, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabelCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 212, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jPassField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 210, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButton1)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jInfoPanelLayout.setVerticalGroup(
             jInfoPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jInfoPanelLayout.createSequentialGroup()
                 .add(jInfoPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabelCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jLabelCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jButton1))
                 .add(18, 18, 18)
                 .add(jInfoPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -203,7 +210,7 @@ public class dlgLogin extends javax.swing.JDialog {
                 .add(jLoginBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 116, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jCancelBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 117, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(54, 54, 54))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -221,7 +228,7 @@ public class dlgLogin extends javax.swing.JDialog {
             .add(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel2, 0, 354, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jInfoPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -246,7 +253,7 @@ public class dlgLogin extends javax.swing.JDialog {
             .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
         );
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-382)/2, (screenSize.height-239)/2, 382, 239);
+        setBounds((screenSize.width-427)/2, (screenSize.height-239)/2, 427, 239);
     }// </editor-fold>//GEN-END:initComponents
     
     private void jPassFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPassFieldKeyPressed
@@ -340,6 +347,7 @@ public class dlgLogin extends javax.swing.JDialog {
     }//GEN-LAST:event_jCancelBtnActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jCancelBtn;
     private javax.swing.JPanel jInfoPanel;
     private javax.swing.JLabel jLabel1;
