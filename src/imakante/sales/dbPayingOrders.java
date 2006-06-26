@@ -6,6 +6,7 @@ public class dbPayingOrders extends imakante.com.dbObject {
     // --- Custom Members --- //
     private java.sql.Connection conn;
     private int orderingPerson = 0;
+    private int selectedOrderType = 1;
     private String OrderTypes[];
     private int[] OTIndexes = null;
     private String OurAccounts[];
@@ -19,6 +20,7 @@ public class dbPayingOrders extends imakante.com.dbObject {
     private double amount = 0;
     private String osnovanie = "";
     private String comment = "";
+    private String selectedOrderTypeName = "";
     private String beginDate = "0000-00-00";
     private String endDate = "0000-00-00";
     
@@ -31,7 +33,7 @@ public class dbPayingOrders extends imakante.com.dbObject {
     // --- Custom Methods --- //
     public void prepareCstm(){
         try {
-            setCstm(getConn().prepareCall("{call sl_procedure_paying_orders(?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
+            setCstm(getConn().prepareCall("{call sl_procedure_paying_orders(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
@@ -49,6 +51,8 @@ public class dbPayingOrders extends imakante.com.dbObject {
             getCstm().setDouble("in_amount", getAmount());
             getCstm().setString("in_osnovanie", getOsnovanie());
             getCstm().setString("in_comment_spo", getComment());
+            getCstm().setInt("in_SOT", getSelectedOrderType());
+            getCstm().setString("in_SOTN", getSelectedOrderTypeName());
             getCstm().setString("beginDate", getBeginDate());
             getCstm().setString("endDate", getEndDate());
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
@@ -102,13 +106,15 @@ public class dbPayingOrders extends imakante.com.dbObject {
         java.sql.ResultSet oldRs = getRs();
         java.util.ArrayList in = new java.util.ArrayList();
         java.util.Iterator it = null;
-        java.util.HashMap Groups = new java.util.HashMap();
+        java.util.HashMap OTs = new java.util.HashMap();
+        java.util.HashMap OTxTA = new java.util.HashMap(); // OrderTypes mapped to Types of Bank Accounts
         int i = 0;
         try {
             registerParameters();
             setRs(getCstm().executeQuery());
             while(getRs().next()) {
-                Groups.put(new Integer(getRs().getInt("id_spt")), new String(getRs().getString("type_porder")));
+                OTs.put(new Integer(getRs().getInt("id_spt")), new String(getRs().getString("type_porder")));
+                OTxTA.put(new Integer(getRs().getInt("id_spt")), new Integer(getRs().getInt("id_tbacc")));
                 in.add(new Integer(getRs().getInt("id_spt")));
                 i++;
             }
@@ -121,7 +127,7 @@ public class dbPayingOrders extends imakante.com.dbObject {
         i = 0;
         while(it.hasNext()) {
             OTIndexes[i] = (Integer) it.next();
-            OrderTypes[i] = (String) Groups.get(OTIndexes[i]);
+            OrderTypes[i] = (String) OTs.get(OTIndexes[i]);
             i++;
         }
         return OrderTypes;
@@ -162,7 +168,8 @@ public class dbPayingOrders extends imakante.com.dbObject {
         return Currencies;
     }
     
-    public String[] getOurAccounts() {
+    public String[] getOurAccounts(int selectedOT) {
+        this.setSelectedOrderType(selectedOT);
         setComprator(7);
         int oldId = getId();
         java.sql.ResultSet oldRs = getRs();
@@ -176,7 +183,7 @@ public class dbPayingOrders extends imakante.com.dbObject {
             while(getRs().next()) {
                 Groups.put(new Integer(getRs().getInt("id_nbc")), new String(getRs().getString("name_nbc") + " - " 
                 + getRs().getString("account_nbc") + " - " 
-                + getRs().getString("name_tbacc")));
+                + getRs().getString("vidval_nbc")));
                 in.add(new Integer(getRs().getInt("id_nbc")));
                 i++;
             }
@@ -199,6 +206,19 @@ public class dbPayingOrders extends imakante.com.dbObject {
         return OAIndexes;
     }
     
+    public int parseOrderTypesCombo(String orderTypeName) {
+        int mappedAccountType = 0;
+        setComprator(13);
+        this.setSelectedOrderTypeName(orderTypeName);
+        try {
+            registerParameters();
+            setRs(getCstm().executeQuery());
+            getRs().next();
+            mappedAccountType = getRs().getInt("id_tbacc");
+        } catch (Exception ex) { ex.printStackTrace(); }
+        return mappedAccountType;
+    }
+    
     public int getOrderingPerson() {
         return orderingPerson;
     }
@@ -207,6 +227,14 @@ public class dbPayingOrders extends imakante.com.dbObject {
         this.orderingPerson = orderingPerson;
     }
     
+    public int getSelectedOrderType() {
+        return selectedOrderType;
+    }
+
+    public void setSelectedOrderType(int selectedOrderType) {
+        this.selectedOrderType = selectedOrderType;
+    }
+
     public int getIdPayingOrderType() {
         return idPayingOrderType;
     }
@@ -269,6 +297,14 @@ public class dbPayingOrders extends imakante.com.dbObject {
 
     public void setEndDate(String endDate) {
         this.endDate = endDate;
+    }
+
+    public String getSelectedOrderTypeName() {
+        return selectedOrderTypeName;
+    }
+
+    public void setSelectedOrderTypeName(String selectedOrderTypeName) {
+        this.selectedOrderTypeName = selectedOrderTypeName;
     }
 
 }

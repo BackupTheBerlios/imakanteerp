@@ -10,7 +10,6 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         getNavigationState();
         jButtonUndo.setEnabled(false);
         initOrderTypesCombo();
-        initOurAccountsCombo();
         this.setResizable(false);
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         repaintComp();
@@ -422,9 +421,8 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jComboBox2FocusLost
     
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
-//          if (evt.getItem() == ) {
-//
-//          }
+        jComboBox2.removeAllItems();
+        initOurAccountsCombo();
     }//GEN-LAST:event_jComboBox1ItemStateChanged
     
     private void jComboBox1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox1FocusLost
@@ -685,8 +683,8 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         for(int i = 1; i < namesOrderTypes.length; i++) {
             jComboBox1.addItem(new String(namesOrderTypes[i]));
         }
-        if(selectedOrderType != 0) {
-            selectedOrderType = getNewOTIndex(selectedOrderType);
+        if(getSelectedOrderType() != 0) {
+            setSelectedOrderType(getNewOTIndex(getSelectedOrderType()));
         }
     }
     
@@ -702,12 +700,15 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }
     
     private void initOurAccountsCombo() {
-        namesOurAccounts = myParent.getInternalObject().getOurAccounts();
+        // Gets the name of the Paying order which gives us the id of the account Type
+        int SOT = myParent.getInternalObject().parseOrderTypesCombo((String) jComboBox1.getSelectedItem());
+        // Accounts here are filtered by their type determined at the previous step
+        namesOurAccounts = myParent.getInternalObject().getOurAccounts(SOT);
         for(int i = 0; i < namesOurAccounts.length; i++) {
             jComboBox2.addItem(new String(namesOurAccounts[i]));
         }
-        if(selectedAccount != 0) {
-            selectedAccount = getNewOAIndex(selectedAccount);
+        if(getSelectedAccount() != 0) {
+            setSelectedAccount(getNewOAIndex(getSelectedAccount()));
         }
     }
     
@@ -741,6 +742,22 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     
     private void flost(javax.swing.JTextField jtf){
         jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 255, 255), null));
+    }
+
+    public int getSelectedOrderType() {
+        return selectedOrderType;
+    }
+
+    public void setSelectedOrderType(int selectedOrderType) {
+        this.selectedOrderType = selectedOrderType;
+    }
+
+    public int getSelectedAccount() {
+        return selectedAccount;
+    }
+
+    public void setSelectedAccount(int selectedAccount) {
+        this.selectedAccount = selectedAccount;
     }
     
 } // end class

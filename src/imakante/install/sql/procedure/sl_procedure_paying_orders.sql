@@ -5,7 +5,7 @@ CREATE PROCEDURE `sl_procedure_paying_orders`(IN comprator TINYINT, IN in_id INT
                                             IN in_id_spt INT(11), IN in_id_nbc INT(11), IN in_id_person INT(11), 
                                             IN in_id_contragent INT(11), IN in_code INT(11), IN in_name VARCHAR(45), 
                                             IN in_amount DECIMAL(12,2), IN in_osnovanie VARCHAR(60), IN in_comment_spo VARCHAR(60), 
-                                            IN beginDate VARCHAR(15), IN endDate VARCHAR(15))
+                                            IN in_SOT INT(11), IN in_SOTN VARCHAR(50), IN beginDate VARCHAR(15), IN endDate VARCHAR(15))
 BEGIN
      IF (comprator = 0) THEN
         IF (in_order_person = 0) THEN
@@ -90,13 +90,12 @@ BEGIN
      END IF;
 
      IF (comprator = 6) THEN
-        SELECT pt.id_spt, pt.type_porder FROM sl_porder_types pt ORDER BY pt.id_spt ASC;
+        SELECT pt.id_spt, pt.type_porder, pt.id_tbacc FROM sl_porder_types pt ORDER BY pt.id_spt ASC;
      END IF;
 
      IF (comprator = 7) THEN
-        SELECT nb.id_nbc, nb.name_nbc, nb.account_nbc,  tb.name_tbacc
-        FROM n_baccount nb 
-        LEFT OUTER JOIN n_type_bacc tb ON tb.id_tbacc = nb.id_tbacc 
+        SELECT nb.id_nbc, nb.name_nbc, nb.account_nbc, nb.vidval_nbc FROM n_baccount nb
+        WHERE nb.id_tbacc = in_SOT 
         ORDER BY nb.id_nbc ASC;
      END IF;
 
@@ -119,7 +118,12 @@ BEGIN
      END IF;
 
      IF (comprator = 12) THEN 
-        SELECT p.id_ls_n_person, p.code_ls_n_person, p.name_ls_n_person, p.egn_ls_n_person FROM ls_n_person p ORDER BY p.id_ls_n_person ASC;
+        SELECT p.id_ls_n_person, p.code_ls_n_person, p.name_ls_n_person, p.egn_ls_n_person FROM ls_n_person p 
+            ORDER BY p.id_ls_n_person ASC;
+     END IF;
+
+     IF (comprator = 13) THEN
+        SELECT ta.id_tbacc FROM sl_porder_types ta WHERE ta.type_porder = in_SOTN;
      END IF;
 END $$
 
