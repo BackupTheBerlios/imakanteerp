@@ -52,16 +52,6 @@
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jButtonSaveKeyPressed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButtonUndo">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="&#x41f;&#x440;&#x435;&#x434;&#x438;&#x448;&#x43d;&#x438;"/>
-            <Property name="toolTipText" type="java.lang.String" value="&#x412;&#x440;&#x44a;&#x449;&#x430; &#x43f;&#x440;&#x43e;&#x43c;&#x435;&#x43d;&#x438;&#x442;&#x435; &#x43a;&#x43e;&#x438;&#x442;&#x43e; &#x441;&#x430; &#x43d;&#x430;&#x43f;&#x440;&#x430;&#x432;&#x435;&#x43d;&#x438; &#x434;&#x43e; &#x43f;&#x440;&#x435;&#x434;&#x438;&#x448;&#x43d;&#x43e; &#x441;&#x44a;&#x441;&#x442;&#x43e;&#x44f;&#x43d;&#x438;&#x435;"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonUndoActionPerformed"/>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jButtonUndoKeyPressed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x41f;&#x435;&#x447;&#x430;&#x442;"/>
@@ -121,7 +111,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jPanel4" max="32767" attributes="0"/>
-                      <Component id="jPanel3" alignment="0" pref="79" max="32767" attributes="0"/>
+                      <Component id="jPanel3" alignment="0" pref="77" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel5" min="-2" max="-2" attributes="0"/>

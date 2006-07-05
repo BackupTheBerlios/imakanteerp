@@ -405,8 +405,8 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     
     //--------------- My Variables
     private int id = 0;
-    private int orderingPerson = 0;
-    private int idOrderType = 0;
+    private int orderingPerson = 0;     // 0 - Juridical Person, 1 - Physical Person
+    private int idOrderType = 0;        // 
     private String OrderType = "";
     private int idBankAccount = 0;
     private String BankName = "";
@@ -924,7 +924,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     
     private void printTable() {
         try {
-            java.text.MessageFormat headerFormat = new java.text.MessageFormat("Platejni Narejdania");
+            java.text.MessageFormat headerFormat = new java.text.MessageFormat("Platejni Narejdania ot Yuridicheski lica");
             java.text.MessageFormat footerFormat = new java.text.MessageFormat("Page. " + "- {0} -" + " IMAKANTE' ");
             getTable().print(javax.swing.JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
         } catch(java.awt.print.PrinterException e) { e.printStackTrace(); }

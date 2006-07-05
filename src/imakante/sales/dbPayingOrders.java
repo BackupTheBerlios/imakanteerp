@@ -76,13 +76,17 @@ public class dbPayingOrders extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    public void updateRow(int in_id, int in_id_spt, int in_id_nbc, int in_id_contragent, double in_amount) {
+    public void updateRow(int in_id, int in_order_person, int in_id_spt, int in_id_nbc, int in_id_contragent, 
+            double in_amount, String in_osnovanie, String in_comment_spo) {
         setComprator(2);
         this.setId(in_id);
+        this.setOrderingPerson(in_order_person);
         this.setIdPayingOrderType(in_id_spt);
         this.setIdBankAccount(in_id_nbc);
         this.setIdContragent(in_id_contragent);
         this.setAmount(in_amount);
+        this.setOsnovanie(in_osnovanie);
+        this.setComment(in_comment_spo);
         try {
             registerParameters();
             getCstm().execute();
@@ -107,14 +111,12 @@ public class dbPayingOrders extends imakante.com.dbObject {
         java.util.ArrayList in = new java.util.ArrayList();
         java.util.Iterator it = null;
         java.util.HashMap OTs = new java.util.HashMap();
-        java.util.HashMap OTxTA = new java.util.HashMap(); // OrderTypes mapped to Types of Bank Accounts
         int i = 0;
         try {
             registerParameters();
             setRs(getCstm().executeQuery());
             while(getRs().next()) {
                 OTs.put(new Integer(getRs().getInt("id_spt")), new String(getRs().getString("type_porder")));
-                OTxTA.put(new Integer(getRs().getInt("id_spt")), new Integer(getRs().getInt("id_tbacc")));
                 in.add(new Integer(getRs().getInt("id_spt")));
                 i++;
             }

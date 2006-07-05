@@ -8,10 +8,9 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         this.myParent = (imakante.sales.FrmPayingOrders) frame;
         initComponents();
         getNavigationState();
-        jButtonUndo.setEnabled(false);
         initOrderTypesCombo();
         this.setResizable(false);
-        java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+//        java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         repaintComp();
     }
     
@@ -20,7 +19,6 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jButtonSave = new javax.swing.JButton();
-        jButtonUndo = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButtonClose = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -69,21 +67,6 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         });
 
         jPanel1.add(jButtonSave);
-
-        jButtonUndo.setText("\u041f\u0440\u0435\u0434\u0438\u0448\u043d\u0438");
-        jButtonUndo.setToolTipText("\u0412\u0440\u044a\u0449\u0430 \u043f\u0440\u043e\u043c\u0435\u043d\u0438\u0442\u0435 \u043a\u043e\u0438\u0442\u043e \u0441\u0430 \u043d\u0430\u043f\u0440\u0430\u0432\u0435\u043d\u0438 \u0434\u043e \u043f\u0440\u0435\u0434\u0438\u0448\u043d\u043e \u0441\u044a\u0441\u0442\u043e\u044f\u043d\u0438\u0435");
-        jButtonUndo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonUndoActionPerformed(evt);
-            }
-        });
-        jButtonUndo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jButtonUndoKeyPressed(evt);
-            }
-        });
-
-        jPanel1.add(jButtonUndo);
 
         jButton1.setText("\u041f\u0435\u0447\u0430\u0442");
         jButton1.setEnabled(false);
@@ -404,7 +387,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
                 .addContainerGap()
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE))
+                    .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -416,11 +399,11 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-699)/2, (screenSize.height-407)/2, 699, 407);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jComboBox2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox2FocusGained
         
     }//GEN-LAST:event_jComboBox2FocusGained
-
+    
     private void jComboBox2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox2FocusLost
         
     }//GEN-LAST:event_jComboBox2FocusLost
@@ -437,7 +420,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     private void jComboBox1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox1FocusGained
         
     }//GEN-LAST:event_jComboBox1FocusGained
-            
+    
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
         flost(jTextField1);
     }//GEN-LAST:event_jTextField1FocusLost
@@ -461,7 +444,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     private void jTextField7FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField7FocusGained
         fGain(jTextField7);
     }//GEN-LAST:event_jTextField7FocusGained
-                        
+    
     private void jTextField4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusGained
         fGain(jTextField4);
         jTextField4.selectAll();
@@ -485,11 +468,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     private void jButtonCloseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonCloseKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonClose.doClick();}
     }//GEN-LAST:event_jButtonCloseKeyPressed
-    
-    private void jButtonUndoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonUndoKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonUndo.doClick();}
-    }//GEN-LAST:event_jButtonUndoKeyPressed
-    
+        
     private void jButtonSaveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonSaveKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonSave.doClick();}
     }//GEN-LAST:event_jButtonSaveKeyPressed
@@ -509,11 +488,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     private void jButtonToBeginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonToBeginKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonToBegin.doClick();}
     }//GEN-LAST:event_jButtonToBeginKeyPressed
-    
-    private void jButtonUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUndoActionPerformed
-        undoCorr(); //vraja predishnite stoinosti
-    }//GEN-LAST:event_jButtonUndoActionPerformed
-    
+        
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         saveRecord();
     }//GEN-LAST:event_jButtonSaveActionPerformed
@@ -586,7 +561,6 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     private javax.swing.JButton jButtonSave;
     private javax.swing.JButton jButtonToBegin;
     private javax.swing.JButton jButtonToEnd;
-    private javax.swing.JButton jButtonUndo;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
@@ -614,12 +588,15 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     // End of variables declaration//GEN-END:variables
     //--------------- My Variables
     private imakante.sales.FrmPayingOrders myParent;
-    private int oldIDG = 1;
-    private int oldCode = 0;
-    private String oldEGN = "";
-    private String oldNLK = "";
-    private String oldName = "";
-    private String oldComment =  "";
+//    private int oldTypeOrder = 1;
+//    private int oldBankAccount = 0;
+//    private int oldCodeContragent = 0;
+//    private String oldNameContragent = "";
+//    private String oldIBAN = "";
+//    private double oldAmount = 0.00;
+//    private String oldCurrency = "";
+//    private String oldReason = "";
+//    private String oldComment =  "";
     private String namesOrderTypes[];
     private String namesOurAccounts[];
     private int selectedOrderType;
@@ -631,35 +608,38 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     
     //SAVE
     private void saveRecord() {
-//        oldIDG = myParent.getIDG();
-//        oldCode = myParent.getCode();
-//        oldEGN = myParent.getEGN();
-//        oldNLK = myParent.getNLK();
-//        oldName = myParent.getNames();
-//        oldComment = myParent.getComment();
+//        oldTypeOrder = myParent.getIdOrderType();
+//        oldBankAccount = myParent.getIdBankAccount();
+//        oldCodeContragent = myParent.getCodeContragent();
+//        oldNameContragent = myParent.getNameContragent();
+//        if (oldTypeOrder == 2) {                                // operacii s Razpla6tatelnite smetki
+//            oldIBAN = myParent.getIBANR();
+//            oldCurrency = myParent.getCurrencyR();
+//        } else if (oldTypeOrder == 3 || oldTypeOrder == 4) {    // operacii sys smetkite po DDS
+//            oldIBAN = myParent.getIBANVAT();
+//            oldCurrency = myParent.getCurrencyVAT();
+//        }
+//        oldAmount = myParent.getAmount();
+//        oldReason = myParent.getOsnovanie();
+//        oldComment = myParent.getPoiasnenie();
+        
         try {
-//            myParent.setCode(Integer.parseInt(jTextField4.getText()));
+            myParent.setAmount(Double.parseDouble(jTextField4.getText()));
         } catch (NumberFormatException nfex) { nfex.printStackTrace(); }
-        
-        
-        
-//        myParent.getInternalObject().updateRow(myParent.getId(), myParent.getIDG(), myParent.getCode(),
-//                myParent.getEGN(), myParent.getNLK(), myParent.getNames(), myParent.getComment());
+            // Tip na platejnoto narejdane: mejdu id-to w tablicata i id-to w komboto ima otmestwane 2 !!!!! :( ????????
+            myParent.setIdOrderType(myParent.getInternalObject().getOTIndexes()[jComboBox1.getSelectedIndex() + 2]);
+        myParent.setIdBankAccount(myParent.getInternalObject().getOAIndexes()[jComboBox2.getSelectedIndex()]);
+//        myParent.setIdContragent();
+        myParent.getInternalObject().updateRow(myParent.getId(),
+                0,  // Juricdical person
+                myParent.getIdOrderType(), 
+                myParent.getIdBankAccount(),
+                myParent.getIdContragent(), 
+                myParent.getAmount(), 
+                myParent.getOsnovanie(), 
+                myParent.getPoiasnenie());
         myParent.refreshTable();
         myParent.getTable().changeSelection(myParent.getRow(), 2, false, false);
-        jButtonUndo.setEnabled(true);
-    }
-    
-    //UNDO
-    private void undoCorr() {
-//        myParent.setIDG(oldIDG);
-//        myParent.setCode(oldCode);
-//        myParent.setEGN(oldEGN);
-//        myParent.setNLK(oldNLK);
-//        myParent.setNames(oldName);
-//        myParent.setComment(oldComment);
-        repaintComp();
-        jButtonUndo.setEnabled(false);
     }
     
     private void getNavigationState() {
@@ -749,19 +729,19 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     private void flost(javax.swing.JTextField jtf){
         jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 255, 255), null));
     }
-
+    
     public int getSelectedOrderType() {
         return selectedOrderType;
     }
-
+    
     public void setSelectedOrderType(int selectedOrderType) {
         this.selectedOrderType = selectedOrderType;
     }
-
+    
     public int getSelectedAccount() {
         return selectedAccount;
     }
-
+    
     public void setSelectedAccount(int selectedAccount) {
         this.selectedAccount = selectedAccount;
     }

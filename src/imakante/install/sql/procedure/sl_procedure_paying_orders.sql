@@ -19,7 +19,7 @@ BEGIN
             LEFT OUTER JOIN n_contragent nc ON nc.id_contragent = po.id_contragent 
             LEFT OUTER JOIN n_type_bacc tb ON tb.id_tbacc = nb.id_tbacc 
             WHERE po.ordering_person = 0 
-            ORDER BY po.id_spo ASC;
+            ORDER BY po.id_spo DESC;
         END IF;
         IF (in_order_person = 1) THEN
           SELECT po.id_spo, po.ordering_person, po.id_spt, pt.type_porder, po.id_ls_n_person, p.name_ls_n_person, 
@@ -30,19 +30,19 @@ BEGIN
             LEFT OUTER JOIN ls_n_person p ON p.id_ls_n_person = po.id_ls_n_person 
             LEFT OUTER JOIN n_contragent nc ON nc.id_contragent = po.id_contragent 
             WHERE po.ordering_person = 1 
-            ORDER BY po.id_spo ASC;
+            ORDER BY po.id_spo DESC;
         END IF;
      END IF;
 
      IF (comprator = 1) THEN
-        INSERT INTO sl_paying_orders (ordering_person, id_spt, id_nbc, id_ls_n_person, id_contragent, amount) 
-                VALUES(in_order_person, in_id_spt, in_id_nbc, in_id_person, in_id_contragent, in_amount);
+        INSERT INTO sl_paying_orders (ordering_person, id_spt, id_nbc, id_ls_n_person, id_contragent, amount, osnovanie, comment_spo) 
+                VALUES(in_order_person, in_id_spt, in_id_nbc, in_id_person, in_id_contragent, in_amount, in_osnovaie, in_comment_spo);
      END IF;
 
      IF (comprator = 2) THEN
         UPDATE sl_paying_orders  
-            SET ordering_person = in_order_person, id_spt = in_id_spt, id_nbc = in_id_nbc, id_ls_n_person = in_id_person, 
-                id_contragent = in_id_contragent, amount = in_amount, instant = CURRENT_TIMESTAMP 
+            SET ordering_person = in_order_person, id_spt = in_id_spt, id_nbc = in_id_nbc, id_ls_n_person = in_id_person, id_contragent = in_id_contragent, 
+                amount = in_amount, osnovanie = in_osnovanie, comment_spo = in_comment_spo, instant = CURRENT_TIMESTAMP 
             WHERE sl_paying_orders.id_spo = in_id;
      END IF;
 
@@ -73,7 +73,7 @@ BEGIN
             LEFT OUTER JOIN n_contragent nc ON nc.id_contragent = po.id_contragent 
             LEFT OUTER JOIN n_type_bacc tb ON tb.id_tbacc = nb.id_tbacc
             WHERE  nc.name_contragent LIKE CONCAT('%',in_name,'%')    
-            ORDER BY po.id_spt ASC;
+            ORDER BY po.id_spt DESC;
         END IF;
         IF (in_code > -1 ) THEN
             SELECT po.id_spo, po.id_spt, pt.type_porder, po.id_nbc, nb.name_nbc, nb.account_nbc, nb.id_tbacc, tb.name_tbacc, 
@@ -85,7 +85,7 @@ BEGIN
             LEFT OUTER JOIN n_contragent nc ON nc.id_contragent = po.id_contragent 
             LEFT OUTER JOIN n_type_bacc tb ON tb.id_tbacc = nb.id_tbacc 
             WHERE nc.code_contragent LIKE CONCAT('%',in_code,'%') AND nc.name_n_contragent LIKE CONCAT('%',in_name,'%')
-            ORDER BY po.id_spt ASC;
+            ORDER BY po.id_spt DESC;
         END IF;
      END IF;
 

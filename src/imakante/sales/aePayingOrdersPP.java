@@ -20,7 +20,6 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jButtonSave = new javax.swing.JButton();
-        jButtonUndo = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButtonClose = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -69,21 +68,6 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         });
 
         jPanel1.add(jButtonSave);
-
-        jButtonUndo.setText("\u041f\u0440\u0435\u0434\u0438\u0448\u043d\u0438");
-        jButtonUndo.setToolTipText("\u0412\u0440\u044a\u0449\u0430 \u043f\u0440\u043e\u043c\u0435\u043d\u0438\u0442\u0435 \u043a\u043e\u0438\u0442\u043e \u0441\u0430 \u043d\u0430\u043f\u0440\u0430\u0432\u0435\u043d\u0438 \u0434\u043e \u043f\u0440\u0435\u0434\u0438\u0448\u043d\u043e \u0441\u044a\u0441\u0442\u043e\u044f\u043d\u0438\u0435");
-        jButtonUndo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonUndoActionPerformed(evt);
-            }
-        });
-        jButtonUndo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jButtonUndoKeyPressed(evt);
-            }
-        });
-
-        jPanel1.add(jButtonUndo);
 
         jButton1.setText("\u041f\u0435\u0447\u0430\u0442");
         jButton1.setEnabled(false);
@@ -204,7 +188,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
             .add(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u041d\u0430\u0440\u0435\u0434\u0438\u0442\u0435\u043b - \u0424\u0438\u0437\u0438\u0447\u0435\u0441\u043a\u043e \u043b\u0438\u0446\u0435", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 51, 153)));
@@ -411,7 +395,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
                 .addContainerGap()
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE))
+                    .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(7, 7, 7)
@@ -499,11 +483,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     private void jButtonCloseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonCloseKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonClose.doClick();}
     }//GEN-LAST:event_jButtonCloseKeyPressed
-    
-    private void jButtonUndoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonUndoKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonUndo.doClick();}
-    }//GEN-LAST:event_jButtonUndoKeyPressed
-    
+        
     private void jButtonSaveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonSaveKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonSave.doClick();}
     }//GEN-LAST:event_jButtonSaveKeyPressed
@@ -523,11 +503,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     private void jButtonToBeginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonToBeginKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonToBegin.doClick();}
     }//GEN-LAST:event_jButtonToBeginKeyPressed
-    
-    private void jButtonUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUndoActionPerformed
-        undoCorr(); //vraja predishnite stoinosti
-    }//GEN-LAST:event_jButtonUndoActionPerformed
-    
+        
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         saveRecord();
     }//GEN-LAST:event_jButtonSaveActionPerformed
@@ -600,7 +576,6 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     private javax.swing.JButton jButtonSave;
     private javax.swing.JButton jButtonToBegin;
     private javax.swing.JButton jButtonToEnd;
-    private javax.swing.JButton jButtonUndo;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
