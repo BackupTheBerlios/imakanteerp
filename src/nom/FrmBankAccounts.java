@@ -258,25 +258,26 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
     private int code_group = 0;
     private int code = 0;
     private int typeAccount = 0;
-    private String name, baccount, bic, vidval, address, comment;
+    private String name, branch, baccount, bic, vidval, address, comment;
     private String namesG[];
     private int selectComboBoxItem;
-    private  boolean atBegining = false;
-    private  boolean atEnd = false;
+    private boolean atBegining = false;
+    private boolean atEnd = false;
     private int row;
     
-    private  imakante.com.vcomponents.iFrame myframe;
-    private  java.sql.Connection conn;
-    private  java.sql.ResultSet rs;
-    private  nom.dbBankAccount internalObject;
-    private  imakante.com.CustomTableModel model;
-    private  imakante.com.CustomTable table;
+    private imakante.com.vcomponents.iFrame myframe;
+    private java.sql.Connection conn;
+    private java.sql.ResultSet rs;
+    private nom.dbBankAccount internalObject;
+    private imakante.com.CustomTableModel model;
+    private imakante.com.CustomTable table;
     public static final String Names[] = {
         "id",
         "id_group",
         "\u0413\u0440\u0443\u043f\u0430",
         "\u041a\u043e\u0434 \u043d\u0430 \u0431\u0430\u043d\u043a\u0430",
         "\u0418\u043c\u0435 \u043d\u0430 \u0431\u0430\u043d\u043a\u0430",
+        "\u041A\u043B\u043E\u043D", 
         "\u0411\u0430\u043d\u043a\u043e\u0432\u0430 \u0441\u043c\u0435\u0442\u043a\u0430 (IBAN)",
         "\u0411\u0430\u043D\u043A\u043E\u0432 \u043A\u043E\u0434 (BIC)",
         "\u041A\u043E\u0434 \u043D\u0430 \u0432\u0430\u043B\u0443\u0442\u0430",
@@ -420,6 +421,14 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
     
     public String getNames() {
         return name;
+    }
+    
+    public void setBranch(String Branch) {
+        this.branch = Branch;
+    }
+    
+    public String getBranch() {
+        return branch;
     }
     
     public void setBankAccount(String BankAccount) {    // IBAN
@@ -641,6 +650,7 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
         setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("id_group")));
         setCod((Integer) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u0434 \u043d\u0430 \u0431\u0430\u043d\u043a\u0430")));
         setNames((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435 \u043d\u0430 \u0431\u0430\u043d\u043a\u0430")));
+        setBranch((String) table.getValueAt(getRow(), getColumnIndex("\u041A\u043B\u043E\u043D")));
         setBankAccount((String) table.getValueAt(getRow(), getColumnIndex("\u0411\u0430\u043d\u043a\u043e\u0432\u0430 \u0441\u043c\u0435\u0442\u043a\u0430 (IBAN)")));
         setBIC((String) table.getValueAt(getRow(), getColumnIndex("\u0411\u0430\u043D\u043A\u043E\u0432 \u043A\u043E\u0434 (BIC)")));
         setVidval((String) table.getValueAt(getRow(), getColumnIndex("\u041A\u043E\u0434 \u043D\u0430 \u0432\u0430\u043B\u0443\u0442\u0430")));

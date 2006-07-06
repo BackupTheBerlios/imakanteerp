@@ -8,7 +8,6 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         this.myParent = (imakante.sales.FrmPayingOrders) frame;
         initComponents();
         getNavigationState();
-        jButtonUndo.setEnabled(false);
         initOrderTypesCombo();
         this.setResizable(false);
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
@@ -636,7 +635,6 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
 //                myParent.getEGN(), myParent.getNLK(), myParent.getNames(), myParent.getComment());
         myParent.refreshTable();
         myParent.getTable().changeSelection(myParent.getRow(), 2, false, false);
-        jButtonUndo.setEnabled(true);
     }
     
     //UNDO
@@ -648,7 +646,6 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
 //        myParent.setNames(oldName);
 //        myParent.setComment(oldComment);
         repaintComp();
-        jButtonUndo.setEnabled(false);
     }
     
     private void getNavigationState() {

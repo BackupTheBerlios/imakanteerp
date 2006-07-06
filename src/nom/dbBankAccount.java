@@ -5,7 +5,7 @@ public class dbBankAccount extends imakante.com.dbObject {
     
     private java.sql.Connection conn;
     private int id_type = 0;
-    private String bic, vidval;
+    private String branch, bic, vidval;
     private String splitNamesG[];
     private String splitTypes[];
     private int indexConnOfId[] = null;
@@ -18,7 +18,7 @@ public class dbBankAccount extends imakante.com.dbObject {
     
     protected void prepareCstm() {
         try {
-            setCstm(getConn().prepareCall("{call nom_procedure_baccount(?,?,?,?,?,?,?,?,?,?,?)}"));
+            setCstm(getConn().prepareCall("{call nom_procedure_baccount(?,?,?,?,?,?,?,?,?,?,?,?)}"));
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
@@ -29,6 +29,7 @@ public class dbBankAccount extends imakante.com.dbObject {
             getCstm().setInt("in_id_group", getIDGr());
             getCstm().setInt("in_code", getCode());
             getCstm().setString("in_name", getName());
+            getCstm().setString("in_branch", getBranch());
             getCstm().setString("in_account", getBankAccountNumber());
             getCstm().setString("in_bic", getBIC());
             getCstm().setString("in_vidval", getVidval());
@@ -36,6 +37,14 @@ public class dbBankAccount extends imakante.com.dbObject {
             getCstm().setInt("in_id_tacc", getTypeBankAccount());
             getCstm().setString("in_comment", getComment());
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
+    }
+    
+    public void setBranch(String Branch) {
+        this.branch = Branch;
+    }
+    
+    public String getBranch() {
+        return branch;
     }
     
     public String getBIC() {
@@ -67,6 +76,7 @@ public class dbBankAccount extends imakante.com.dbObject {
         this.setCode(in_code);
         this.setIDGr(in_id_group);
         this.setName("");
+        this.setBranch("");
         this.setBankAccountNumber("");
         this.setBIC("");
         this.setVidval("");
@@ -79,13 +89,14 @@ public class dbBankAccount extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    public void updateRow(int in_id, int in_id_group, int in_code, String in_name, String in_account, String in_bic,
-            String in_vidval, String in_address, int in_id_tacc, String in_comment) {
+    public void updateRow(int in_id, int in_id_group, int in_code, String in_name, String in_branch, String in_account, 
+            String in_bic, String in_vidval, String in_address, int in_id_tacc, String in_comment) {
         setComprator(2);
         this.setId(in_id);
         this.setIDGr(in_id_group);
         this.setCode(in_code);
         this.setName(in_name);
+        this.setBranch(in_branch);
         this.setBankAccountNumber(in_account);
         this.setBIC(in_bic);
         this.setVidval(in_vidval);
