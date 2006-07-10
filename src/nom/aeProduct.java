@@ -1323,7 +1323,7 @@ fGain(jComboBoxGroup);
         myParent.setId_Group(myParent.getCountriesT().getIndexConnOfId()[jComboBoxGroup.getSelectedIndex()]);
         if(isNew) // zapisa NE sy6testvuva v bazata!!
         {
-            
+         if(setAllVariables()) {
             int v1,v2,v3,m1,m2,m3;
             v1 = 1;
             try {
@@ -1358,7 +1358,7 @@ fGain(jComboBoxGroup);
                 myParent.setId_PPP(1);
             }
             
-            {
+            
                 
                 if(setAllVariables()) {
                     
