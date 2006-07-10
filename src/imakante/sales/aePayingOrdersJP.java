@@ -401,11 +401,11 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }// </editor-fold>//GEN-END:initComponents
     
     private void jComboBox2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox2FocusGained
-        
+        fGain(jComboBox2);
     }//GEN-LAST:event_jComboBox2FocusGained
     
     private void jComboBox2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox2FocusLost
-        
+        fLost(jComboBox2);
     }//GEN-LAST:event_jComboBox2FocusLost
     
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
@@ -414,23 +414,23 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jComboBox1ItemStateChanged
     
     private void jComboBox1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox1FocusLost
-        
+        fLost(jComboBox1);
     }//GEN-LAST:event_jComboBox1FocusLost
     
     private void jComboBox1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox1FocusGained
-        
+        fGain(jComboBox1);
     }//GEN-LAST:event_jComboBox1FocusGained
     
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        flost(jTextField1);
+        fLost(jTextField1);
     }//GEN-LAST:event_jTextField1FocusLost
     
     private void jTextField4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusLost
-        flost(jTextField4);
+        fLost(jTextField4);
     }//GEN-LAST:event_jTextField4FocusLost
     
     private void jTextField6FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusLost
-        flost(jTextField6);
+        fLost(jTextField6);
     }//GEN-LAST:event_jTextField6FocusLost
     
     private void jTextField6FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusGained
@@ -438,7 +438,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jTextField6FocusGained
     
     private void jTextField7FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField7FocusLost
-        flost(jTextField7);
+        fLost(jTextField7);
     }//GEN-LAST:event_jTextField7FocusLost
     
     private void jTextField7FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField7FocusGained
@@ -711,7 +711,11 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     
     private void getContragent() {
         try {
-            myParent.chooseContragent(Integer.parseInt(jTextField1.getText()));
+            if (jTextField1.getText().equals("")) {
+                myParent.chooseContragent(-1);
+            } else {
+                myParent.chooseContragent(Integer.parseInt(jTextField1.getText()));
+            }
         } catch (NumberFormatException ex) { ex.printStackTrace(); }
         revalidateContragent();
     }
@@ -722,11 +726,11 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         
     }
     
-    private void fGain(javax.swing.JTextField jtf){
+    private void fGain(javax.swing.JComponent jtf){
         jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 0, 51), null));
     }
     
-    private void flost(javax.swing.JTextField jtf){
+    private void fLost(javax.swing.JComponent jtf){
         jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 255, 255), null));
     }
     

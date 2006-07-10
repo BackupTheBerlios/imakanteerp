@@ -1,8 +1,8 @@
 ﻿DELIMITER $$
 
-DROP PROCEDURE IF EXISTS `mida`.`sl_procedure_paying_orders` $$
-CREATE PROCEDURE `sl_procedure_paying_orders`(IN comprator TINYINT, IN in_id INT(11), IN in_order_person INT(11), 
-                                            IN in_id_spt INT(11), IN in_id_nbc INT(11), IN in_id_person INT(11), 
+DROP PROCEDURE IF EXISTS sl_procedure_paying_orders $$
+CREATE PROCEDURE sl_procedure_paying_orders(IN comprator TINYINT, IN in_id INT(11), IN in_order_person INT(11), 
+                                            IN in_id_spt INT(11), IN in_id_nbc INT(11), IN in_id_person INT(11), IN in_pname VARCHAR(60), 
                                             IN in_id_contragent INT(11), IN in_code INT(11), IN in_name VARCHAR(45), 
                                             IN in_amount DECIMAL(12,2), IN in_osnovanie VARCHAR(60), IN in_comment_spo VARCHAR(60), 
                                             IN in_SOT INT(11), IN in_SOTN VARCHAR(50), IN beginDate VARCHAR(15), IN endDate VARCHAR(15))
@@ -36,7 +36,7 @@ BEGIN
 
      IF (comprator = 1) THEN
         INSERT INTO sl_paying_orders (ordering_person, id_spt, id_nbc, id_ls_n_person, id_contragent, amount, osnovanie, comment_spo) 
-                VALUES(in_order_person, in_id_spt, in_id_nbc, in_id_person, in_id_contragent, in_amount, in_osnovaie, in_comment_spo);
+                VALUES(in_order_person, in_id_spt, in_id_nbc, in_id_person, in_id_contragent, in_amount, in_osnovanie, in_comment_spo);
      END IF;
 
      IF (comprator = 2) THEN
@@ -84,7 +84,7 @@ BEGIN
             LEFT OUTER JOIN n_baccount nb ON nb.id_nbc = po.id_nbc 
             LEFT OUTER JOIN n_contragent nc ON nc.id_contragent = po.id_contragent 
             LEFT OUTER JOIN n_type_bacc tb ON tb.id_tbacc = nb.id_tbacc 
-            WHERE nc.code_contragent LIKE CONCAT('%',in_code,'%') AND nc.name_n_contragent LIKE CONCAT('%',in_name,'%')
+            WHERE nc.code_contragent LIKE CONCAT('%',in_code,'%') AND nc.name_n_contragent LIKE CONCAT('%',in_name,'%') 
             ORDER BY po.id_spt DESC;
         END IF;
      END IF;
@@ -124,6 +124,38 @@ BEGIN
 
      IF (comprator = 13) THEN
         SELECT ta.id_tbacc FROM sl_porder_types ta WHERE ta.type_porder = in_SOTN;
+     END IF;
+
+
+     IF (comprator = 14) THEN
+        IF (in_code = -1 AND in_SOT = 1) THEN 
+            SELECT cn.id_contragent, cn.code_contragent, cn.name_n_contragent, cn.BANKNAMER, cn.BICR, cn.IBANR, cn.VIDVALR  
+                FROM n_contragent cn
+                ORDER BY cn.id_contragent ASC;
+        END IF;
+        IF (in_code > -1 AND in_SOT = 1) THEN 
+            SELECT cn.id_contragent, cn.code_contragent, cn.name_n_contragent, cn.BANKNAMER, cn.BICR, cn.IBANR, cn.VIDVALR  
+                FROM n_contragent cn
+                WHERE cn.code_contragent LIKE CONCAT('%',in_code,'%') 
+                ORDER BY cn.id_contragent ASC;
+        END IF;
+        IF (in_code = -1 AND in_SOT = 2) THEN 
+            SELECT cn.id_contragent, cn.code_contragent, cn.name_n_contragent, cn.BANKNAMED, cn.BICD, cn.IBAND, cn.VIDVALD  
+                FROM n_contragent cn
+                ORDER BY cn.id_contragent ASC;
+        END IF;
+        IF (in_code > -1 AND in_SOT = 2) THEN 
+            SELECT cn.id_contragent, cn.code_contragent, cn.name_n_contragent, cn.BANKNAMED, cn.BICD, cn.IBAND, cn.VIDVALD  
+                FROM n_contragent cn
+                WHERE cn.code_contragent LIKE CONCAT('%',in_code,'%') 
+                ORDER BY cn.id_contragent ASC;
+        END IF;
+     END IF;
+
+     IF (comprator = 15) THEN
+        SELECT p.id_ls_n_person, p.name_ls_n_person FROM ls_n_person p
+            WHERE p.name_ls_n_person LIKE CONCAT('%',in_pname,'%')
+            ORDER BY p.name_ls_n_person ASC;
      END IF;
 END $$
 

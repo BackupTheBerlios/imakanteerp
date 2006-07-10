@@ -131,8 +131,8 @@
                       </Group>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel5" max="32767" attributes="0"/>
-                          <Component id="jLabel6" max="32767" attributes="0"/>
+                          <Component id="jLabel5" pref="48" max="32767" attributes="0"/>
+                          <Component id="jLabel6" pref="48" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -305,7 +305,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&#x41d;&#x430;&#x440;&#x435;&#x434;&#x438;&#x442;&#x435;&#x43b;&#x438;:   "/>
+            <Property name="text" type="java.lang.String" value="&#x414;&#x43e;&#x43a;&#x443;&#x43c;&#x435;&#x43d;&#x442;&#x438;:   "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jRadioButton1">
@@ -314,7 +314,7 @@
               <ComponentRef name="buttonGroup1"/>
             </Property>
             <Property name="selected" type="boolean" value="true"/>
-            <Property name="text" type="java.lang.String" value="&#x42e;&#x440;&#x438;&#x434;&#x438;&#x447;&#x435;&#x441;&#x43a;&#x438; &#x43b;&#x438;&#x446;&#x430;"/>
+            <Property name="text" type="java.lang.String" value="&#x41f;&#x440;&#x435;&#x432;&#x43e;&#x434;&#x43d;&#x438; &#x43d;&#x430;&#x440;&#x435;&#x436;&#x434;&#x430;&#x43d;&#x438;&#x44f;"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                 <EmptyBorder bottom="0" left="0" right="0" top="0"/>
@@ -333,7 +333,7 @@
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="buttonGroup1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="&#x424;&#x438;&#x437;&#x438;&#x447;&#x435;&#x441;&#x43a;&#x438; &#x43b;&#x438;&#x446;&#x430;"/>
+            <Property name="text" type="java.lang.String" value="&#x412;&#x43d;&#x43e;&#x441;&#x43d;&#x438; &#x431;&#x435;&#x43b;&#x435;&#x436;&#x43a;&#x438;"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                 <EmptyBorder bottom="0" left="0" right="0" top="0"/>

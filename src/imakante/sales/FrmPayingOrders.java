@@ -152,8 +152,8 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
                         .add(jComboBox1, 0, 82, Short.MAX_VALUE)))
                 .add(39, 39, 39)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jLabel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jLabel6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(jLabel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                    .add(jLabel6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -205,12 +205,12 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jLabel7.setText("\u041d\u0430\u0440\u0435\u0434\u0438\u0442\u0435\u043b\u0438:   ");
+        jLabel7.setText("\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438:   ");
         jPanel2.add(jLabel7);
 
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setSelected(true);
-        jRadioButton1.setText("\u042e\u0440\u0438\u0434\u0438\u0447\u0435\u0441\u043a\u0438 \u043b\u0438\u0446\u0430");
+        jRadioButton1.setText("\u041f\u0440\u0435\u0432\u043e\u0434\u043d\u0438 \u043d\u0430\u0440\u0435\u0436\u0434\u0430\u043d\u0438\u044f");
         jRadioButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jRadioButton1.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jRadioButton1.addItemListener(new java.awt.event.ItemListener() {
@@ -222,7 +222,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         jPanel2.add(jRadioButton1);
 
         buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("\u0424\u0438\u0437\u0438\u0447\u0435\u0441\u043a\u0438 \u043b\u0438\u0446\u0430");
+        jRadioButton2.setText("\u0412\u043d\u043e\u0441\u043d\u0438 \u0431\u0435\u043b\u0435\u0436\u043a\u0438");
         jRadioButton2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jRadioButton2.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jRadioButton2.addItemListener(new java.awt.event.ItemListener() {
@@ -406,7 +406,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     //--------------- My Variables
     private int id = 0;
     private int orderingPerson = 0;     // 0 - Juridical Person, 1 - Physical Person
-    private int idOrderType = 0;        // 
+    private int idOrderType = 0;        //
     private String OrderType = "";
     private int idBankAccount = 0;
     private String BankName = "";
@@ -445,6 +445,12 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     private java.sql.ResultSet rs;
     private imakante.com.CustomTableModel model;
     private imakante.com.CustomTable table;
+    private java.sql.ResultSet rsC;
+    private imakante.com.CustomTableModel modelC;
+    private imakante.com.CustomTable tableC;
+    private java.sql.ResultSet rsP;
+    private imakante.com.CustomTableModel modelP;
+    private imakante.com.CustomTable tableP;
     public static final String NamesJP[] = { "id",
     "ordering_person",
     "id_type_porder",
@@ -490,6 +496,10 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     "\u041E\u0441\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
     "\u041F\u043E\u044F\u0441\u043D\u0435\u043D\u0438\u044F",
     "\u0418\u0437\u0432\u044A\u0440\u0448\u0435\u043D\u043E \u043D\u0430" };
+    public static final String NamesC[] = { "id", "\u041A\u043E\u0434", "\u0418\u043C\u0435",
+    "\u0411\u0430\u043D\u043A\u0430", "\u0411\u0430\u043D\u043A\u043E\u0432 \u043A\u043E\u0434",
+    "\u0421\u043C\u0435\u0442\u043A\u0430", "\u0412\u0430\u043B\u0443\u0442\u0430" };
+    public static final String NamesP[] = { "id", "\u0418\u043C\u0435\u043D\u0430" };
     //---------------END My Variables
     
     //---------------START Methods
@@ -573,7 +583,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     public java.sql.ResultSet getRs() {
         return rs;
     }
-
+    
     public void setRs(java.sql.ResultSet rs) {
         this.rs = rs;
     }
@@ -1004,11 +1014,34 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
 //    }
     
     public void choosePerson(String Name) {
-        
+        String name = Name;
+        try {
+            rsP = getInternalObject().getPersonsList(name);
+        } catch (Exception ex) { ex.printStackTrace(); }
+        modelP = new imakante.com.CustomTableModel(getConn(), rsP, NamesP);
+        tableP = new imakante.com.CustomTable(modelP);
+//        try {
+//            tableC.setEditingRow(0);
+//        } catch(Exception ex) { ex.printStackTrace(); }
+        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, tableP, 
+                "\u0421\u043C\u0435\u0442\u043A\u0430\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u043F\u043E\u0434\u043E\u0442\u0447\u0435\u0442\u043D\u043E \u043B\u0438\u0446\u0435", "");
+        td.setVisible(true);
     }
     
-    public void chooseContragent(int ContraCode) {
-        
+    public void chooseContragent(int Code) {
+        int codeContragent = Code;
+        int orderType = getIdOrderType();
+        try {
+            rsC = getInternalObject().getContragentsList(codeContragent, orderType);
+        } catch (Exception ex) { ex.printStackTrace(); }
+        modelC = new imakante.com.CustomTableModel(getConn(), rsC, NamesC);
+        tableC = new imakante.com.CustomTable(modelC);
+//        try {
+//            tableC.setEditingRow(0);
+//        } catch(Exception ex) { ex.printStackTrace(); }
+        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, tableC, 
+                "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u043A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442", "");
+        td.setVisible(true);
     }
     
     private int getColumnIndex(String in) {
@@ -1066,5 +1099,5 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         setRs(null);
         internalObject.close();
     }
-
+    
 }

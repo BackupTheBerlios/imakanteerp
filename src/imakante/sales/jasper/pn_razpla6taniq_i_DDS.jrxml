@@ -2929,6 +2929,32 @@
 					</textElement>
 				<text><![CDATA[ BIC на банката на получателя]]></text>
 				</staticText>
+				<staticText>
+					<reportElement
+						x="60"
+						y="89"
+						width="183"
+						height="16"
+						key="staticText-23"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center">
+						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<text><![CDATA[ПРЕВОДНО НАРЕЖДАНЕ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="90"
+						y="105"
+						width="123"
+						height="10"
+						key="staticText-24"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center">
+						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
+					</textElement>
+				<text><![CDATA[ЗА КРЕДИТЕН ПРЕВОД]]></text>
+				</staticText>
 			</band>
 		</detail>
 		<columnFooter>
@@ -2936,7 +2962,7 @@
 			</band>
 		</columnFooter>
 		<pageFooter>
-			<band height="26"  isSplitAllowed="true" >
+			<band height="16"  isSplitAllowed="true" >
 				<staticText>
 					<reportElement
 						x="1"

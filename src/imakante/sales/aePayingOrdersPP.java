@@ -703,10 +703,13 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }
     
     private void getContragent() {
-//        try {
-//            myParent.chooseContragent(Integer.parseInt(jTextField1.getText()));
-//        } catch (NumberFormatException ex) { ex.printStackTrace(); }
-        
+        try {
+            if (jTextField1.getText().equals("")) {
+                myParent.chooseContragent(-1);
+            } else {
+                myParent.chooseContragent(Integer.parseInt(jTextField1.getText()));
+            }
+        } catch (NumberFormatException ex) { ex.printStackTrace(); }
         revalidateContragent();
     }
     
