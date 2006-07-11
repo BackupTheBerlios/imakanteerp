@@ -58,9 +58,7 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
         this.jButton2.setText("\u0418\u0437\u0433\u043b\u0435\u0434 \u041f\u0440\u0438\u043d\u0442");
         try {
             prepareJassper();
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
-        }
+        } catch (FileNotFoundException ex) { ex.printStackTrace(); }
         this.setSize(800,600);
     }
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -123,11 +121,14 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButton3ActionPerformed
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if (fileJasper == null){myParent.setIntTransfer((Integer)InternalTable.getValueAt(InternalTable.getSelectedRow(),getColumnIndex("cod")));
-        close();} else{
-            if( tableVizible ){
+        if (fileJasper == null) {
+            myParent.setIntTransfer((Integer)InternalTable.getValueAt(InternalTable.getSelectedRow(), getColumnIndex("cod")));
+            close();
+        } else {
+            if(tableVizible) {
                 showJassper();
-            } else { showTable();
+            } else { 
+                showTable();
             }
         }
     }//GEN-LAST:event_jButton2ActionPerformed

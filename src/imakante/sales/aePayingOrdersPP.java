@@ -715,8 +715,6 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     
     private void revalidateContragent() {
         
-        
-        
     }
     
     private void fGain(javax.swing.JTextField jtf){

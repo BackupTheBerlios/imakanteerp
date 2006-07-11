@@ -311,16 +311,24 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     }// </editor-fold>//GEN-END:initComponents
     
     private void jRadioButton1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButton1ItemStateChanged
-        if (jRadioButton1.isSelected())
+        if (jRadioButton1.isSelected()) {
             this.setOrderingPerson(0);
-        else this.setOrderingPerson(1);
+            this.setIdOrderType(1);     // Razpla6taniq
+        } else { 
+            this.setOrderingPerson(1);
+            this.setIdOrderType(2);     // DDS-ta
+        }
         refreshTable();
     }//GEN-LAST:event_jRadioButton1ItemStateChanged
     
     private void jRadioButton2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButton2ItemStateChanged
-        if (jRadioButton2.isSelected())
+        if (jRadioButton2.isSelected()) {
             this.setOrderingPerson(1);
-        else this.setOrderingPerson(0);
+            this.setIdOrderType(2);     // DDS-ta
+        } else { 
+            this.setOrderingPerson(0);
+            this.setIdOrderType(1);     // Razpla6taniq
+        }
         refreshTable();
     }//GEN-LAST:event_jRadioButton2ItemStateChanged
     
@@ -435,6 +443,15 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     
     private String Currencies[];
     private String OrderTypes[];
+    
+    private int idChosenAccount = 0;
+    private int idChosenPerson = 0;
+    private String nameChosenPerson = "";
+    private int idChosenContragent = 0;
+    private int codeChosenContragent = 0;
+    private String nameChosenContragent = "";
+    private String chosenIBAN = "";
+    private String chosenCurrency = "";
     
     private boolean atBegining = false;
     private boolean atEnd = false;
@@ -934,7 +951,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     
     private void printTable() {
         try {
-            java.text.MessageFormat headerFormat = new java.text.MessageFormat("Platejni Narejdania ot Yuridicheski lica");
+            java.text.MessageFormat headerFormat = new java.text.MessageFormat("Platejni Narejdania");
             java.text.MessageFormat footerFormat = new java.text.MessageFormat("Page. " + "- {0} -" + " IMAKANTE' ");
             getTable().print(javax.swing.JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
         } catch(java.awt.print.PrinterException e) { e.printStackTrace(); }
@@ -1052,6 +1069,70 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         return 0;
     }
     
+    public int getIdChosenAccount() {
+        return idChosenAccount;
+    }
+
+    public void setIdChosenAccount(int idChosenAccount) {
+        this.idChosenAccount = idChosenAccount;
+    }
+
+    public int getIdChosenPerson() {
+        return idChosenPerson;
+    }
+
+    public void setIdChosenPerson(int idChosenPerson) {
+        this.idChosenPerson = idChosenPerson;
+    }
+
+    public String getNameChosenPerson() {
+        return nameChosenPerson;
+    }
+
+    public void setNameChosenPerson(String nameChosenPerson) {
+        this.nameChosenPerson = nameChosenPerson;
+    }
+
+    public int getIdChosenContragent() {
+        return idChosenContragent;
+    }
+
+    public void setIdChosenContragent(int idChosenContragent) {
+        this.idChosenContragent = idChosenContragent;
+    }
+
+    public int getCodeChosenContragent() {
+        return codeChosenContragent;
+    }
+
+    public void setCodeChosenContragent(int codeChosenContragent) {
+        this.codeChosenContragent = codeChosenContragent;
+    }
+
+    public String getNameChosenContragent() {
+        return nameChosenContragent;
+    }
+
+    public void setNameChosenContragent(String nameChosenContragent) {
+        this.nameChosenContragent = nameChosenContragent;
+    }
+    
+    public String getChosenIBAN() {
+        return chosenIBAN;
+    }
+
+    public void setChosenIBAN(String chosenIBAN) {
+        this.chosenIBAN = chosenIBAN;
+    }
+
+    public String getChosenCurrency() {
+        return chosenCurrency;
+    }
+
+    public void setChosenCurrency(String chosenCurrency) {
+        this.chosenCurrency = chosenCurrency;
+    }
+    
     private void HideColumns(int col) {
         int iColumn = col;
         getTable().getColumnModel().getColumn(iColumn).setMaxWidth(0);
@@ -1099,5 +1180,5 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         setRs(null);
         internalObject.close();
     }
-    
+
 }

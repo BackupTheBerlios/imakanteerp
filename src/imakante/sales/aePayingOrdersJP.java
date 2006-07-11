@@ -409,6 +409,9 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jComboBox2FocusLost
     
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+        int state = jComboBox1.getSelectedIndex();
+        if (state == 0 || state == 4) myParent.setIdOrderType(1);
+        else if (state == 2 || state == 3) myParent.setIdOrderType(2);
         jComboBox2.removeAllItems();
         initOurAccountsCombo();
     }//GEN-LAST:event_jComboBox1ItemStateChanged
@@ -468,7 +471,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     private void jButtonCloseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonCloseKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonClose.doClick();}
     }//GEN-LAST:event_jButtonCloseKeyPressed
-        
+    
     private void jButtonSaveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonSaveKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonSave.doClick();}
     }//GEN-LAST:event_jButtonSaveKeyPressed
@@ -488,7 +491,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     private void jButtonToBeginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonToBeginKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonToBegin.doClick();}
     }//GEN-LAST:event_jButtonToBeginKeyPressed
-        
+    
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         saveRecord();
     }//GEN-LAST:event_jButtonSaveActionPerformed
@@ -624,19 +627,21 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
 //        oldComment = myParent.getPoiasnenie();
         
         try {
+            myParent.setCodeContragent(Integer.parseInt(jTextField1.getText()));
             myParent.setAmount(Double.parseDouble(jTextField4.getText()));
         } catch (NumberFormatException nfex) { nfex.printStackTrace(); }
-            // Tip na platejnoto narejdane: mejdu id-to w tablicata i id-to w komboto ima otmestwane 2 !!!!! :( ????????
-            myParent.setIdOrderType(myParent.getInternalObject().getOTIndexes()[jComboBox1.getSelectedIndex() + 2]);
+        // Tip na platejnoto narejdane: mejdu id-to w tablicata i id-to w komboto ima otmestwane 2 !!!!! :( ????????
+        myParent.setIdOrderType(myParent.getInternalObject().getOTIndexes()[jComboBox1.getSelectedIndex() + 2]);
         myParent.setIdBankAccount(myParent.getInternalObject().getOAIndexes()[jComboBox2.getSelectedIndex()]);
-//        myParent.setIdContragent();
+        myParent.setOsnovanie(jTextField6.getText());
+        myParent.setPoiasnenie(jTextField7.getText());
         myParent.getInternalObject().updateRow(myParent.getId(),
                 0,  // Juricdical person
-                myParent.getIdOrderType(), 
+                myParent.getIdOrderType(),
                 myParent.getIdBankAccount(),
-                myParent.getIdContragent(), 
-                myParent.getAmount(), 
-                myParent.getOsnovanie(), 
+                myParent.getIdContragent(),
+                myParent.getAmount(),
+                myParent.getOsnovanie(),
                 myParent.getPoiasnenie());
         myParent.refreshTable();
         myParent.getTable().changeSelection(myParent.getRow(), 2, false, false);
@@ -721,9 +726,12 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }
     
     private void revalidateContragent() {
-        
-        
-        
+        try {
+            
+        } catch (Exception ex) { ex.printStackTrace(); }
+        this.jTextField2.setText(myParent.getNameChosenContragent());
+        this.jTextField3.setText(myParent.getChosenIBAN());
+        this.jTextField5.setText(myParent.getChosenCurrency());
     }
     
     private void fGain(javax.swing.JComponent jtf){
