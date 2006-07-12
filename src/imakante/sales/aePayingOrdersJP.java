@@ -727,7 +727,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     
     private void revalidateContragent() {
         try {
-            
+            myParent.validateContragentByCode(Integer.parseInt(jTextField1.getText()));
         } catch (Exception ex) { ex.printStackTrace(); }
         this.jTextField2.setText(myParent.getNameChosenContragent());
         this.jTextField3.setText(myParent.getChosenIBAN());

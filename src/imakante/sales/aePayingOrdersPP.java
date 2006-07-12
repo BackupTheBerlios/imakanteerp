@@ -6,11 +6,12 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     public aePayingOrdersPP(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
         super(frame, modal);
         this.myParent = (imakante.sales.FrmPayingOrders) frame;
+        this.myParent.setIdOrderType(0);
         initComponents();
         getNavigationState();
         initOrderTypesCombo();
         this.setResizable(false);
-        java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+//        java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         repaintComp();
     }
     
@@ -714,7 +715,12 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }
     
     private void revalidateContragent() {
-        
+        try {
+            myParent.validateContragentByCode(Integer.parseInt(jTextField1.getText()));
+        } catch (Exception ex) { ex.printStackTrace(); }
+        this.jTextField2.setText(myParent.getNameChosenContragent());
+        this.jTextField3.setText(myParent.getChosenIBAN());
+        this.jTextField5.setText(myParent.getChosenCurrency());
     }
     
     private void fGain(javax.swing.JTextField jtf){

@@ -24,7 +24,7 @@ BEGIN
         IF (in_order_person = 1) THEN
           SELECT po.id_spo, po.ordering_person, po.id_spt, pt.type_porder, po.id_ls_n_person, p.name_ls_n_person, 
             po.id_contragent, nc.name_n_contragent, nc.code_contragent, nc.BANKNAMER, nc.IBANR, nc.BICR, nc.VIDVALR,
-            nc.BANKNAMED, nc.IBAND, nc.BICD, nc.VIDVALD, po.amount, po.osnovanie, po.comment_spo, DATE(po.instant) 
+            po.amount, po.osnovanie, po.comment_spo, DATE(po.instant) 
             FROM sl_paying_orders po 
             LEFT OUTER JOIN sl_porder_types pt ON pt.id_spt = po.id_spt  
             LEFT OUTER JOIN ls_n_person p ON p.id_ls_n_person = po.id_ls_n_person 
@@ -156,6 +156,24 @@ BEGIN
         SELECT p.id_ls_n_person, p.name_ls_n_person FROM ls_n_person p
             WHERE p.name_ls_n_person LIKE CONCAT('%',in_pname,'%')
             ORDER BY p.name_ls_n_person ASC;
+     END IF;
+
+     IF (comprator = 16) THEN
+        IF (in_SOT = 1) THEN 
+            SELECT cn.id_contragent, cn.code_contragent, cn.name_n_contragent, cn.BANKNAMER, cn.BICR, cn.IBANR, cn.VIDVALR  
+                FROM n_contragent cn
+                WHERE cn.code_contragent = in_code;
+        END IF;
+        IF (in_SOT = 2) THEN 
+            SELECT cn.id_contragent, cn.code_contragent, cn.name_n_contragent, cn.BANKNAMED, cn.BICD, cn.IBAND, cn.VIDVALD  
+                FROM n_contragent cn
+                WHERE cn.code_contragent = in_code;
+        END IF;
+     END IF;
+
+     IF (comprator = 17) THEN
+        SELECT p.id_ls_n_person, p.name_ls_n_person FROM ls_n_person p
+            WHERE p.name_ls_n_person = in_pname;
      END IF;
 END $$
 

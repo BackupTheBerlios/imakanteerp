@@ -314,7 +314,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         if (jRadioButton1.isSelected()) {
             this.setOrderingPerson(0);
             this.setIdOrderType(1);     // Razpla6taniq
-        } else { 
+        } else {
             this.setOrderingPerson(1);
             this.setIdOrderType(2);     // DDS-ta
         }
@@ -325,7 +325,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         if (jRadioButton2.isSelected()) {
             this.setOrderingPerson(1);
             this.setIdOrderType(2);     // DDS-ta
-        } else { 
+        } else {
             this.setOrderingPerson(0);
             this.setIdOrderType(1);     // Razpla6taniq
         }
@@ -1040,13 +1040,17 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
 //        try {
 //            tableC.setEditingRow(0);
 //        } catch(Exception ex) { ex.printStackTrace(); }
-        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, tableP, 
+        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, tableP,
                 "\u0421\u043C\u0435\u0442\u043A\u0430\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u043F\u043E\u0434\u043E\u0442\u0447\u0435\u0442\u043D\u043E \u043B\u0438\u0446\u0435", "");
         td.setVisible(true);
     }
     
-    public void chooseContragent(int Code) {
-        int codeContragent = Code;
+    public void validatePerson() {
+        
+    }
+    
+    public void chooseContragent(int CodeFragment) {
+        int codeContragent = CodeFragment;
         int orderType = getIdOrderType();
         try {
             rsC = getInternalObject().getContragentsList(codeContragent, orderType);
@@ -1056,9 +1060,34 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
 //        try {
 //            tableC.setEditingRow(0);
 //        } catch(Exception ex) { ex.printStackTrace(); }
-        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, tableC, 
+        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, tableC,
                 "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u043A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442", "");
         td.setVisible(true);
+    }
+    
+    public void validateContragentByCode(int codeForChecking) {
+        setIdChosenContragent(0);
+        setNameChosenContragent("");
+        setChosenIBAN("");
+        setChosenCurrency("");
+        getInternalObject().getContragentByCode(codeForChecking, getIdOrderType());
+        try {
+            while (getRs().next()) {
+                setIdChosenContragent(getRs().getInt("id_contragent"));
+                setNameChosenContragent(getRs().getString("name_n_contragent"));
+                if (getIdOrderType() == 1 || getIdOrderType() == 0) {      // 0 e edinstweniqt slu4ai za wnosnite belejki
+                    setChosenIBAN(getRs().getString("IBANR"));
+                    setChosenCurrency(getRs().getString("VIDVALR"));
+                } else if (getIdOrderType() == 2) {
+                    setChosenIBAN(getRs().getString("IBAND"));
+                    setChosenCurrency(getRs().getString("VIDVALD"));
+                }
+            }
+        } catch (java.sql.SQLException sqlex) { sqlex.printStackTrace(); }
+        if (getIdChosenContragent() < 1 || getCodeChosenContragent() < 1) {
+            javax.swing.JOptionPane.showMessageDialog(null, "\u041d\u044f\u043c\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442 \u0441 \u0442\u0430\u043a\u044a\u0432 \u043a\u043e\u0434!", 
+                    "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
     }
     
     private int getColumnIndex(String in) {
@@ -1072,47 +1101,47 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     public int getIdChosenAccount() {
         return idChosenAccount;
     }
-
+    
     public void setIdChosenAccount(int idChosenAccount) {
         this.idChosenAccount = idChosenAccount;
     }
-
+    
     public int getIdChosenPerson() {
         return idChosenPerson;
     }
-
+    
     public void setIdChosenPerson(int idChosenPerson) {
         this.idChosenPerson = idChosenPerson;
     }
-
+    
     public String getNameChosenPerson() {
         return nameChosenPerson;
     }
-
+    
     public void setNameChosenPerson(String nameChosenPerson) {
         this.nameChosenPerson = nameChosenPerson;
     }
-
+    
     public int getIdChosenContragent() {
         return idChosenContragent;
     }
-
+    
     public void setIdChosenContragent(int idChosenContragent) {
         this.idChosenContragent = idChosenContragent;
     }
-
+    
     public int getCodeChosenContragent() {
         return codeChosenContragent;
     }
-
+    
     public void setCodeChosenContragent(int codeChosenContragent) {
         this.codeChosenContragent = codeChosenContragent;
     }
-
+    
     public String getNameChosenContragent() {
         return nameChosenContragent;
     }
-
+    
     public void setNameChosenContragent(String nameChosenContragent) {
         this.nameChosenContragent = nameChosenContragent;
     }
@@ -1120,15 +1149,15 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     public String getChosenIBAN() {
         return chosenIBAN;
     }
-
+    
     public void setChosenIBAN(String chosenIBAN) {
         this.chosenIBAN = chosenIBAN;
     }
-
+    
     public String getChosenCurrency() {
         return chosenCurrency;
     }
-
+    
     public void setChosenCurrency(String chosenCurrency) {
         this.chosenCurrency = chosenCurrency;
     }
@@ -1180,5 +1209,5 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         setRs(null);
         internalObject.close();
     }
-
+    
 }
