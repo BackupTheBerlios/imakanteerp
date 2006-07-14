@@ -444,7 +444,6 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     private String Currencies[];
     private String OrderTypes[];
     
-    private int idChosenAccount = 0;
     private int idChosenPerson = 0;
     private String nameChosenPerson = "";
     private int idChosenContragent = 0;
@@ -1096,14 +1095,6 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             if(getTable().getColumnName(i).equals(in)) return i;
         }
         return 0;
-    }
-    
-    public int getIdChosenAccount() {
-        return idChosenAccount;
-    }
-    
-    public void setIdChosenAccount(int idChosenAccount) {
-        this.idChosenAccount = idChosenAccount;
     }
     
     public int getIdChosenPerson() {

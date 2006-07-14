@@ -631,7 +631,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         } catch (NumberFormatException nfex) { nfex.printStackTrace(); }
         // Tip na platejnoto narejdane: mejdu id-to w tablicata i id-to w komboto ima otmestwane 2 !!!!! :( ????????
         myParent.setIdOrderType(myParent.getInternalObject().getOTIndexes()[jComboBox1.getSelectedIndex() + 2]);
-        myParent.setIdBankAccount(myParent.getIdChosenAccount());
+        myParent.setIdBankAccount(myParent.getInternalObject().getOAIndexes()[jComboBox2.getSelectedIndex()]);
         myParent.setIdContragent(myParent.getIdChosenContragent());
         myParent.setOsnovanie(jTextField6.getText());
         myParent.setPoiasnenie(jTextField7.getText());

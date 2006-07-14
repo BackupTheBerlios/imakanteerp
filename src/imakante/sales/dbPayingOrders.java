@@ -201,6 +201,14 @@ public class dbPayingOrders extends imakante.com.dbObject {
         while(it.hasNext()) {
             OAIndexes[i] = (Integer) it.next();
             OurAccounts[i] = (String) Groups.get(OAIndexes[i]);
+            
+            
+            
+            System.out.println("indeks " + i + ": " +OAIndexes[i]);
+            
+            
+            
+            
             i++;
         }
         return OurAccounts;
