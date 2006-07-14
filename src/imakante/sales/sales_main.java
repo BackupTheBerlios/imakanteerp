@@ -150,7 +150,9 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         balansMenu = new javax.swing.JMenu();
         balansMenu_stock = new javax.swing.JMenuItem();
         balansMenu_kol = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
         spravkiMenu_doc = new javax.swing.JMenuItem();
+        fakturiMenu = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JSeparator();
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
@@ -267,7 +269,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(325, Short.MAX_VALUE)
+                .addContainerGap(352, Short.MAX_VALUE)
                 .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 179, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -798,6 +800,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         sprMenu.add(balansMenu);
 
+        jMenu3.setText("\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438");
         spravkiMenu_doc.setText("\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438");
         spravkiMenu_doc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -805,7 +808,18 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             }
         });
 
-        sprMenu.add(spravkiMenu_doc);
+        jMenu3.add(spravkiMenu_doc);
+
+        fakturiMenu.setText("\u0424\u0430\u043a\u0442\u0443\u0440\u0438");
+        fakturiMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fakturiMenuActionPerformed(evt);
+            }
+        });
+
+        jMenu3.add(fakturiMenu);
+
+        sprMenu.add(jMenu3);
 
         sprMenu.add(jSeparator2);
 
@@ -1007,6 +1021,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-458)/2, 757, 458);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void fakturiMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fakturiMenuActionPerformed
+// TODO add your handling code here:
+        loadFakturiReport();
+    }//GEN-LAST:event_fakturiMenuActionPerformed
 
     private void nomDisbandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomDisbandActionPerformed
 // TODO add your handling code here:
@@ -1397,6 +1416,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenu docMenu_razp;
     private javax.swing.JMenuItem fakMenu_dan;
     private javax.swing.JMenuItem fakMenu_opr;
+    private javax.swing.JMenuItem fakturiMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -1406,6 +1426,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
@@ -1557,6 +1578,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     public boolean isStartFrmContragent = false; // FLAG dali da se startira FrmContagent,
     //promenq se i ot FrmContragent pri zatvarqne
     // na FrmContragent
+    private infoFakturi fakturiRep;
+    
     
     private FrmProduct iFrmProduct;
     private static boolean isStartFrmProduct = false;
@@ -2276,5 +2299,10 @@ private void  loadDisband()
     }
     
 }
-
+private void loadFakturiReport()
+{
+   fakturiRep = new infoFakturi("Справка за издадени фактури",getConn());
+    desktopPane.add(fakturiRep); 
+   fakturiRep.setVisible(true);
+}
 }

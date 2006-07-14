@@ -26,6 +26,7 @@ public class infoFakturi extends imakante.com.vcomponents.iInternalFrame impleme
     {
         super(title);
         initComponents();
+        this.setClosable(true);
         conn = con;
         try
         {
@@ -210,10 +211,10 @@ public class infoFakturi extends imakante.com.vcomponents.iInternalFrame impleme
        registerParam(level,dateStart,dateEnd);
        rs = pStm.executeQuery();
        HashMap parameterHashMap = new HashMap();
-       String path = "";
-       new imakante.com.vcomponents.tableDialog(this,true,getDocLineTable(id_doc),conn,parameterHashMap,
-                   path+"sales_Dan_fak.jasper","\u0414\u0410\u041d\u042a\u0427\u041d\u0410 \u0424\u0410\u041a\u0422\u0423\u0420\u0410",
-                    "\u0414\u0410\u041d\u042a\u0427\u041d\u0410 \u0424\u0410\u041a\u0422\u0423\u0420\u0410");
+      
+       new imakante.com.vcomponents.tableDialog(this,true,getDocLineTable(rs),conn,parameterHashMap,
+                  "infoFaktura.jasper","",
+                    "");
        printReportDialog.setVisible(true);
        
        
@@ -226,68 +227,32 @@ public class infoFakturi extends imakante.com.vcomponents.iInternalFrame impleme
     
     
  }
-private imakante.com.CustomTable getDocLineTable(int id_dok)
+private imakante.com.CustomTable getDocLineTable(java.sql.ResultSet rs12)
  {
     imakante.com.CustomTable t=null;
-    java.sql.ResultSet rs12=null;
     imakante.com.CustomTableModel m=null;
 
-   
-
- 
- 
  
 
-    String nameColumns=null;
+    String nameColumns[]={"s.id_df","s.in_contragent_df","s.out_obekt_df", "s.in_obekt_df","Номер документ","Тип документ",
+            "Състояние", "s.out_store_df","Всичко", "ДДС","Потребител","Потребител последна редакция","Дата на документа", 
+            "s.time_edition_df","Дистрибутор","Доставчик","s.faktura_connection_df","s.zaiavka_connection_df",
+            "Вид плащане","s.paying_order_df","Дата на доставяне","Дата на плащане","Коментар","s.flag_finish_df",
+            "s.id_rep","s.level_df","s.out_contragent_df","s.in_store_df"};
       
      try
         {
            
-            rs12 = countriesT.getDocLineRS(id_dok);
-            m = new imakante.com.CustomTableModel(conn,rs12, nameColumnsDocLine);
+            
+            m = new imakante.com.CustomTableModel(conn,rs12, nameColumns);
             t = new imakante.com.CustomTable(m);
-            HideColumns(getColumnIndex("id_dl",t),t);
-            HideColumns(getColumnIndex("id_pc",t),t);
-            HideColumns(getColumnIndex("id_df",t),t);
-            HideColumns(getColumnIndex("id_pc1",t),t);
-            HideColumns(getColumnIndex("id_pm",t),t);
-            HideColumns(getColumnIndex("pm.id_pm",t),t);
-            HideColumns(getColumnIndex("pm.id_pd",t),t);
-            HideColumns(getColumnIndex("pm.id_n_group",t),t);
-            HideColumns(getColumnIndex("pm.id_ppp",t),t);
-            HideColumns(getColumnIndex("pm.id_pp",t),t);
-            HideColumns(getColumnIndex("pm.id_pf",t),t);
-            HideColumns(getColumnIndex("pm.flag_pm",t),t);
-            HideColumns(getColumnIndex("pm.min_pm",t),t);
-            HideColumns(getColumnIndex("pd.id_pd",t),t);
-            
-            HideColumns(getColumnIndex("d.m1_pd",t),t);
-            HideColumns(getColumnIndex("pd.m2_pd",t),t);
-            HideColumns(getColumnIndex("pd.m3_pd",t),t);
-            HideColumns(getColumnIndex("pp.id_pp",t),t);
-            HideColumns(getColumnIndex("pp.id_sl_curs",t),t);
-            HideColumns(getColumnIndex("pf.id_pf",t),t);
-            HideColumns(getColumnIndex("pf.dds_pf",t),t);
-            HideColumns(getColumnIndex("pf.excise_pf",t),t);
-            HideColumns(getColumnIndex("pf.other_pf",t),t);
-            HideColumns(getColumnIndex("st.id_n_storage",t),t);
-            HideColumns(getColumnIndex("st.id_n_group",t),t);
-            HideColumns(getColumnIndex("st.comments_n_storage",t),t);
-          /*  HideColumns(getColumnIndex("",t),t);
-            HideColumns(getColumnIndex("",t),t);
-            HideColumns(getColumnIndex("",t),t);
-            HideColumns(getColumnIndex("",t),t);
-            HideColumns(getColumnIndex("",t),t);
-            HideColumns(getColumnIndex("",t),t);*/
-            
-                   
-                       
+           
                        
             
         }
        catch(Exception e)
        {
-           e.printStackTrace();
+           JXErrorDialog.showDialog(this,"Error",e);
        }
     
     return t;
