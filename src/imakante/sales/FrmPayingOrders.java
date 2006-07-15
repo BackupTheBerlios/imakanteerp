@@ -1036,9 +1036,9 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         } catch (Exception ex) { ex.printStackTrace(); }
         modelP = new imakante.com.CustomTableModel(getConn(), rsP, NamesP);
         tableP = new imakante.com.CustomTable(modelP);
-//        try {
-//            tableC.setEditingRow(0);
-//        } catch(Exception ex) { ex.printStackTrace(); }
+        try {
+            tableP.setEditingRow(0);
+        } catch(Exception ex) { ex.printStackTrace(); }
         imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, tableP,
                 "\u0421\u043C\u0435\u0442\u043A\u0430\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u043F\u043E\u0434\u043E\u0442\u0447\u0435\u0442\u043D\u043E \u043B\u0438\u0446\u0435", "");
         td.setVisible(true);
@@ -1056,9 +1056,9 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         } catch (Exception ex) { ex.printStackTrace(); }
         modelC = new imakante.com.CustomTableModel(getConn(), rsC, NamesC);
         tableC = new imakante.com.CustomTable(modelC);
-//        try {
-//            tableC.setEditingRow(0);
-//        } catch(Exception ex) { ex.printStackTrace(); }
+        try {
+            tableC.setEditingRow(0);
+        } catch(Exception ex) { ex.printStackTrace(); }
         imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, tableC,
                 "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u043A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442", "");
         td.setVisible(true);
@@ -1074,12 +1074,15 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             while (getRs().next()) {
                 setIdChosenContragent(getRs().getInt("id_contragent"));
                 setNameChosenContragent(getRs().getString("name_n_contragent"));
-                if (getIdOrderType() == 1 || getIdOrderType() == 0) {      // 0 e edinstweniqt slu4ai za wnosnite belejki
+                if (getIdOrderType() == 1) {
                     setChosenIBAN(getRs().getString("IBANR"));
                     setChosenCurrency(getRs().getString("VIDVALR"));
                 } else if (getIdOrderType() == 2) {
                     setChosenIBAN(getRs().getString("IBAND"));
                     setChosenCurrency(getRs().getString("VIDVALD"));
+                } else if (getIdOrderType() == 0) {
+                    setChosenIBAN(getRs().getString("IBANR"));
+                    setChosenCurrency(getRs().getString("VIDVALR"));
                 }
             }
         } catch (java.sql.SQLException sqlex) { sqlex.printStackTrace(); }

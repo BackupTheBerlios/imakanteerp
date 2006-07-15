@@ -20,7 +20,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jButtonSave = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jButtonPrint = new javax.swing.JButton();
         jButtonClose = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -69,9 +69,15 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
 
         jPanel1.add(jButtonSave);
 
-        jButton1.setText("\u041f\u0435\u0447\u0430\u0442");
-        jButton1.setEnabled(false);
-        jPanel1.add(jButton1);
+        jButtonPrint.setText("\u041f\u0435\u0447\u0430\u0442");
+        jButtonPrint.setEnabled(false);
+        jButtonPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPrintActionPerformed(evt);
+            }
+        });
+
+        jPanel1.add(jButtonPrint);
 
         jButtonClose.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
         jButtonClose.setToolTipText("\u0417\u0430\u0442\u0432\u0430\u0440\u044f \u0444\u043e\u0440\u043c\u0430\u0442\u0430. \u0412\u0441\u0438\u0447\u043a\u0438 \u043d\u0435\u0441\u044a\u0445\u0440\u0430\u043d\u0435\u043d\u0438 \u043f\u0440\u043e\u043c\u0435\u043d\u0438 \u043d\u0435 \u0441\u0435 \u0437\u0430\u043f\u0438\u0441\u0432\u0430\u0442.");
@@ -407,6 +413,10 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-699)/2, (screenSize.height-403)/2, 699, 403);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
+
+    }//GEN-LAST:event_jButtonPrintActionPerformed
     
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
 //          if (evt.getItem() == ) {
@@ -423,19 +433,19 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jComboBox1FocusGained
     
     private void jTextField8FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField8FocusLost
-        flost(jTextField8);
+        fLost(jTextField8);
     }//GEN-LAST:event_jTextField8FocusLost
     
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        flost(jTextField1);
+        fLost(jTextField1);
     }//GEN-LAST:event_jTextField1FocusLost
     
     private void jTextField4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusLost
-        flost(jTextField4);
+        fLost(jTextField4);
     }//GEN-LAST:event_jTextField4FocusLost
     
     private void jTextField6FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusLost
-        flost(jTextField6);
+        fLost(jTextField6);
     }//GEN-LAST:event_jTextField6FocusLost
     
     private void jTextField6FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusGained
@@ -443,7 +453,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jTextField6FocusGained
     
     private void jTextField7FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField7FocusLost
-        flost(jTextField7);
+        fLost(jTextField7);
     }//GEN-LAST:event_jTextField7FocusLost
     
     private void jTextField7FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField7FocusGained
@@ -466,7 +476,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jTextField4FocusGained
     
     private void jTextField4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyPressed
-        
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) jTextField4.transferFocus();
     }//GEN-LAST:event_jTextField4KeyPressed
     
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
@@ -481,31 +491,33 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jTextField1KeyPressed
     
     private void jButtonCloseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonCloseKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonClose.doClick();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonClose.doClick(); }
     }//GEN-LAST:event_jButtonCloseKeyPressed
         
     private void jButtonSaveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonSaveKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonSave.doClick();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSave.doClick(); }
     }//GEN-LAST:event_jButtonSaveKeyPressed
     
     private void jButtonToEndKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonToEndKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonToEnd.doClick();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonToEnd.doClick(); }
     }//GEN-LAST:event_jButtonToEndKeyPressed
     
     private void jButtonOneRowPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonOneRowPKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonOneRowP.doClick();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonOneRowP.doClick(); }
     }//GEN-LAST:event_jButtonOneRowPKeyPressed
     
     private void jButtonOneRowMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonOneRowMKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonOneRowM.doClick();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonOneRowM.doClick(); }
     }//GEN-LAST:event_jButtonOneRowMKeyPressed
     
     private void jButtonToBeginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonToBeginKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonToBegin.doClick();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonToBegin.doClick(); }
     }//GEN-LAST:event_jButtonToBeginKeyPressed
         
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         saveRecord();
+        jButtonSave.setEnabled(false);
+        jButtonPrint.setEnabled(true);
     }//GEN-LAST:event_jButtonSaveActionPerformed
     
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
@@ -569,10 +581,10 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButtonToBeginActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonClose;
     private javax.swing.JButton jButtonOneRowM;
     private javax.swing.JButton jButtonOneRowP;
+    private javax.swing.JButton jButtonPrint;
     private javax.swing.JButton jButtonSave;
     private javax.swing.JButton jButtonToBegin;
     private javax.swing.JButton jButtonToEnd;
@@ -723,11 +735,11 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         this.jTextField5.setText(myParent.getChosenCurrency());
     }
     
-    private void fGain(javax.swing.JTextField jtf){
+    private void fGain(javax.swing.JComponent jtf){
         jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 0, 51), null));
     }
     
-    private void flost(javax.swing.JTextField jtf){
+    private void fLost(javax.swing.JComponent jtf){
         jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 255, 255), null));
     }
     

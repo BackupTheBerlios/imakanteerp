@@ -122,7 +122,19 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if (fileJasper == null) {
-            myParent.setIntTransfer((Integer)InternalTable.getValueAt(InternalTable.getSelectedRow(), getColumnIndex("cod")));
+            for(int i = 0; i < InternalTable.getColumnCount(); i++) {
+                if(InternalTable.getColumnName(i).equals("cod")) {
+                    myParent.setIntTransfer((Integer)InternalTable.getValueAt(InternalTable.getSelectedRow(), i));
+                } else if(InternalTable.getColumnName(i).equals("\u041A\u043E\u0434")) {    // "Kod" ili "Код"
+//                    "\u0418\u043C\u0435" Ime ili Име
+//                    "\u0411\u0430\u043D\u043A\u0430" Banka ili Банка
+//                    "\u0411\u0430\u043D\u043A\u043E\u0432 \u043A\u043E\u0434" Bankow kod ili Банков код
+//                    "\u0421\u043C\u0435\u0442\u043A\u0430" Smetka ili Сметка
+//                    "\u0412\u0430\u043B\u0443\u0442\u0430" Waluta ili Валута
+                } else if(InternalTable.getColumnName(i).equals("")) {
+                    
+                } else {  }
+            }
             close();
         } else {
             if(tableVizible) {

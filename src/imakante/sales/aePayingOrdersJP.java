@@ -19,7 +19,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jButtonSave = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jButtonPrint = new javax.swing.JButton();
         jButtonClose = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -68,9 +68,15 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
 
         jPanel1.add(jButtonSave);
 
-        jButton1.setText("\u041f\u0435\u0447\u0430\u0442");
-        jButton1.setEnabled(false);
-        jPanel1.add(jButton1);
+        jButtonPrint.setText("\u041f\u0435\u0447\u0430\u0442");
+        jButtonPrint.setEnabled(false);
+        jButtonPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPrintActionPerformed(evt);
+            }
+        });
+
+        jPanel1.add(jButtonPrint);
 
         jButtonClose.setText("\u0417\u0430\u0442\u0432\u043e\u0440\u0438");
         jButtonClose.setToolTipText("\u0417\u0430\u0442\u0432\u0430\u0440\u044f \u0444\u043e\u0440\u043c\u0430\u0442\u0430. \u0412\u0441\u0438\u0447\u043a\u0438 \u043d\u0435\u0441\u044a\u0445\u0440\u0430\u043d\u0435\u043d\u0438 \u043f\u0440\u043e\u043c\u0435\u043d\u0438 \u043d\u0435 \u0441\u0435 \u0437\u0430\u043f\u0438\u0441\u0432\u0430\u0442.");
@@ -399,6 +405,10 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-699)/2, (screenSize.height-407)/2, 699, 407);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
+        
+    }//GEN-LAST:event_jButtonPrintActionPerformed
     
     private void jComboBox2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox2FocusGained
         fGain(jComboBox2);
@@ -494,6 +504,8 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         saveRecord();
+        jButtonSave.setEnabled(false);
+        jButtonPrint.setEnabled(true);
     }//GEN-LAST:event_jButtonSaveActionPerformed
     
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
@@ -557,10 +569,10 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButtonToBeginActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonClose;
     private javax.swing.JButton jButtonOneRowM;
     private javax.swing.JButton jButtonOneRowP;
+    private javax.swing.JButton jButtonPrint;
     private javax.swing.JButton jButtonSave;
     private javax.swing.JButton jButtonToBegin;
     private javax.swing.JButton jButtonToEnd;
