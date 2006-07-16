@@ -405,7 +405,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-699)/2, (screenSize.height-407)/2, 699, 407);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
         
     }//GEN-LAST:event_jButtonPrintActionPerformed
@@ -741,6 +741,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         try {
             myParent.validateContragentByCode(Integer.parseInt(jTextField1.getText()));
         } catch (Exception ex) { ex.printStackTrace(); }
+        this.jTextField1.setText("" + myParent.getCodeChosenContragent());
         this.jTextField2.setText(myParent.getNameChosenContragent());
         this.jTextField3.setText(myParent.getChosenIBAN());
         this.jTextField5.setText(myParent.getChosenCurrency());

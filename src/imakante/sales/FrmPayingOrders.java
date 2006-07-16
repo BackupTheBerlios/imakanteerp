@@ -1069,7 +1069,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         setNameChosenContragent("");
         setChosenIBAN("");
         setChosenCurrency("");
-        getInternalObject().getContragentByCode(codeForChecking, getIdOrderType());
+        setRs(getInternalObject().getContragentByCode(codeForChecking, getIdOrderType()));
         try {
             while (getRs().next()) {
                 setIdChosenContragent(getRs().getInt("id_contragent"));

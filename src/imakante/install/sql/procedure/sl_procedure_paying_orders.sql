@@ -19,7 +19,7 @@ BEGIN
             LEFT OUTER JOIN n_contragent nc ON nc.id_contragent = po.id_contragent 
             LEFT OUTER JOIN n_type_bacc tb ON tb.id_tbacc = nb.id_tbacc 
             WHERE po.ordering_person = 0 
-            ORDER BY po.id_spo DESC;
+            ORDER BY po.id_spo ASC;
         END IF;
         IF (in_order_person = 1) THEN
           SELECT po.id_spo, po.ordering_person, po.id_spt, pt.type_porder, po.id_ls_n_person, p.name_ls_n_person, 
@@ -30,7 +30,7 @@ BEGIN
             LEFT OUTER JOIN ls_n_person p ON p.id_ls_n_person = po.id_ls_n_person 
             LEFT OUTER JOIN n_contragent nc ON nc.id_contragent = po.id_contragent 
             WHERE po.ordering_person = 1 
-            ORDER BY po.id_spo DESC;
+            ORDER BY po.id_spo ASC;
         END IF;
      END IF;
 
@@ -73,7 +73,7 @@ BEGIN
             LEFT OUTER JOIN n_contragent nc ON nc.id_contragent = po.id_contragent 
             LEFT OUTER JOIN n_type_bacc tb ON tb.id_tbacc = nb.id_tbacc
             WHERE  nc.name_contragent LIKE CONCAT('%',in_name,'%')    
-            ORDER BY po.id_spt DESC;
+            ORDER BY po.id_spt ASC;
         END IF;
         IF (in_code > -1 ) THEN
             SELECT po.id_spo, po.id_spt, pt.type_porder, po.id_nbc, nb.name_nbc, nb.account_nbc, nb.id_tbacc, tb.name_tbacc, 
@@ -85,7 +85,7 @@ BEGIN
             LEFT OUTER JOIN n_contragent nc ON nc.id_contragent = po.id_contragent 
             LEFT OUTER JOIN n_type_bacc tb ON tb.id_tbacc = nb.id_tbacc 
             WHERE nc.code_contragent LIKE CONCAT('%',in_code,'%') AND nc.name_n_contragent LIKE CONCAT('%',in_name,'%') 
-            ORDER BY po.id_spt DESC;
+            ORDER BY po.id_spt ASC;
         END IF;
      END IF;
 

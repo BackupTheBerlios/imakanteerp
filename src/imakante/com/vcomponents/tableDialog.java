@@ -1,17 +1,13 @@
 
 package imakante.com.vcomponents;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.io.FileNotFoundException;
-import java.net.URISyntaxException;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.engine.JasperReport;
-import java.net.URI;
+
 public class tableDialog extends imakante.com.vcomponents.iDialog {
     
     public tableDialog(imakante.com.vcomponents.iInternalFrame frame, boolean modal, imakante.com.CustomTable table, String Title, String Header ) {
@@ -20,20 +16,21 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
         this.InternalTable = table;
         this.interTitle = Title;
         initComponents();
-        InternalTable.addKeyListener(new KeyListener() {
-            public void keyPressed(KeyEvent e) {
+        InternalTable.addKeyListener(new java.awt.event.KeyListener() {
+            public void keyPressed(java.awt.event.KeyEvent e) {
                 if(java.awt.event.KeyEvent.VK_ENTER == e.getKeyCode()) {
                     myParent.setIntTransfer((Integer)InternalTable.getValueAt(InternalTable.getSelectedRow(),getColumnIndex("cod")));
                     close();
                 }
             }
-            public void keyReleased(KeyEvent e) {
+            public void keyReleased(java.awt.event.KeyEvent e) {
             }
-            public void keyTyped(KeyEvent e) {
+            public void keyTyped(java.awt.event.KeyEvent e) {
             }
         });
         this.setTitle(interTitle);
     }
+    
     public tableDialog(imakante.com.vcomponents.iInternalFrame frame, boolean modal, imakante.com.CustomTable table,
             java.sql.Connection conn, java.util.HashMap hm, String filejasper, String Title, String Header ) {
         super(frame, modal, table);
@@ -44,21 +41,21 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
         this.fileJasper = filejasper;
         
         initComponents();
-        InternalTable.addKeyListener(new KeyListener() {
-            public void keyPressed(KeyEvent e) {
+        InternalTable.addKeyListener(new java.awt.event.KeyListener() {
+            public void keyPressed(java.awt.event.KeyEvent e) {
                 if(java.awt.event.KeyEvent.VK_ENTER == e.getKeyCode()) {
                     
                 }
             }
-            public void keyReleased(KeyEvent e) {
+            public void keyReleased(java.awt.event.KeyEvent e) {
             }
-            public void keyTyped(KeyEvent e) {
+            public void keyTyped(java.awt.event.KeyEvent e) {
             }
         });
         this.jButton2.setText("\u0418\u0437\u0433\u043b\u0435\u0434 \u041f\u0440\u0438\u043d\u0442");
         try {
             prepareJassper();
-        } catch (FileNotFoundException ex) { ex.printStackTrace(); }
+        } catch (java.io.FileNotFoundException ex) { ex.printStackTrace(); }
         this.setSize(800,600);
     }
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -121,16 +118,24 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButton3ActionPerformed
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        imakante.sales.FrmPayingOrders pn = (imakante.sales.FrmPayingOrders) myParent;
         if (fileJasper == null) {
             for(int i = 0; i < InternalTable.getColumnCount(); i++) {
                 if(InternalTable.getColumnName(i).equals("cod")) {
                     myParent.setIntTransfer((Integer)InternalTable.getValueAt(InternalTable.getSelectedRow(), i));
                 } else if(InternalTable.getColumnName(i).equals("\u041A\u043E\u0434")) {    // "Kod" ili "Код"
-//                    "\u0418\u043C\u0435" Ime ili Име
-//                    "\u0411\u0430\u043D\u043A\u0430" Banka ili Банка
-//                    "\u0411\u0430\u043D\u043A\u043E\u0432 \u043A\u043E\u0434" Bankow kod ili Банков код
-//                    "\u0421\u043C\u0435\u0442\u043A\u0430" Smetka ili Сметка
-//                    "\u0412\u0430\u043B\u0443\u0442\u0430" Waluta ili Валута
+                    if(InternalTable.getColumnName(i-1).equals("id")) 
+                        pn.setIdContragent((Integer)InternalTable.getValueAt(InternalTable.getSelectedRow(), i-1));
+                    pn.setCodeChosenContragent((Integer)InternalTable.getValueAt(InternalTable.getSelectedRow(), i));
+                    if(InternalTable.getColumnName(i+1).equals("\u0418\u043C\u0435")) 
+                        pn.setNameChosenContragent((String)InternalTable.getValueAt(InternalTable.getSelectedRow(), i+1)); // Ime ili Име
+//                    if(InternalTable.getColumnName(i+1).equals("\u0411\u0430\u043D\u043A\u0430")) 
+//                    "\u0411\u0430\u043D\u043A\u0430"    // Banka ili Банка
+//                    "\u0411\u0430\u043D\u043A\u043E\u0432 \u043A\u043E\u0434" // Bankow kod ili Банков код
+                    if(InternalTable.getColumnName(i+3).equals("\u0421\u043C\u0435\u0442\u043A\u0430")) 
+                        pn.setChosenIBAN((String)InternalTable.getValueAt(InternalTable.getSelectedRow(), i+3)); // Smetka ili Сметка
+                    if(InternalTable.getColumnName(i+4).equals("\u0412\u0430\u043B\u0443\u0442\u0430")) 
+                        pn.setChosenCurrency((String)InternalTable.getValueAt(InternalTable.getSelectedRow(), i+4)); // Waluta ili Валута
                 } else if(InternalTable.getColumnName(i).equals("")) {
                     
                 } else {  }
@@ -139,7 +144,7 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
         } else {
             if(tableVizible) {
                 showJassper();
-            } else { 
+            } else {
                 showTable();
             }
         }
@@ -171,20 +176,20 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
     
     private boolean tableVizible = true;
     
-    private void prepareJassper() throws FileNotFoundException{
+    private void prepareJassper() throws java.io.FileNotFoundException {
         try {
-           
-          //  jasperPrint = JasperFillManager.fillReport(new java.io.FileInputStream(new java.io.File((getClass().getResource(fileJasper)).toURI())),
-         //           hm, conn);
+            
+            //  jasperPrint = JasperFillManager.fillReport(new java.io.FileInputStream(new java.io.File((getClass().getResource(fileJasper)).toURI())),
+            //           hm, conn);
             
             String pathRep = imakante.com.NewMain.getPathrep()+this.fileJasper;
             jasperPrint = JasperFillManager.fillReport(new java.io.FileInputStream(new java.io.File(pathRep)),
                     hm, conn);
             jrv = new net.sf.jasperreports.view.JRViewer(jasperPrint);
-        } catch (FileNotFoundException ex) {
+        } catch (java.io.FileNotFoundException ex) {
             ex.printStackTrace();
             System.out.println("FileNotFoundException");
-        
+            
         } catch (JRException ex) {
             ex.printStackTrace();
             System.out.println("JRException");
@@ -192,7 +197,8 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
         
         
     }
-    private void showJassper(){
+    
+    private void showJassper() {
         tableVizible = false;
         this.jPanel1.removeAll();
         this.jPanel1.add(jrv);
@@ -200,7 +206,8 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
         this.jPanel1.repaint();
         this.jButton2.setText("\u0418\u0437\u0433\u043b\u0435\u0434 \u0422\u0430\u0431\u043b\u0438\u0446\u0430");
     }
-    private void showTable(){
+    
+    private void showTable() {
         tableVizible = true;
         this.jPanel1.removeAll();
         this.jPanel1.add(this.jScrollPane1);
@@ -210,27 +217,24 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
         
     }
     
-    private int getColumnIndex(String in) //test
-    {
+    private int getColumnIndex(String in) {
         int count = InternalTable.getColumnCount();
         for(int i=0; i < count; i++) {
             if(InternalTable.getColumnName(i).equals(in)) return i;
         }
         return 0;
     }
+    
     private void printSimpleTable(){
         try {
             java.text.MessageFormat headerFormat = new java.text.MessageFormat("Casa");
             java.text.MessageFormat footerFormat = new java.text.MessageFormat("Page. " + "- {0} -" + " IMAKANTE' ");
             InternalTable.print(javax.swing.JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
         } catch(java.awt.print.PrinterException e) { e.printStackTrace(); }
-        
-        
     }
+    
     public void close() {
         this.dispose();
     }
-    
-    
     
 }
