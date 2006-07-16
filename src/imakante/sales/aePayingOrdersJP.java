@@ -637,7 +637,6 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
 //        oldAmount = myParent.getAmount();
 //        oldReason = myParent.getOsnovanie();
 //        oldComment = myParent.getPoiasnenie();
-        revalidateContragent();
         try {
             myParent.setAmount(Double.parseDouble(jTextField4.getText()));
         } catch (NumberFormatException nfex) { nfex.printStackTrace(); }
@@ -647,6 +646,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         myParent.setIdContragent(myParent.getIdChosenContragent());
         myParent.setOsnovanie(jTextField6.getText());
         myParent.setPoiasnenie(jTextField7.getText());
+        revalidateContragent();
         myParent.getInternalObject().updateRow(myParent.getId(),
                 0,  // Juricdical person
                 myParent.getIdOrderType(),

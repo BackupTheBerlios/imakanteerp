@@ -1086,7 +1086,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
                 }
             }
         } catch (java.sql.SQLException sqlex) { sqlex.printStackTrace(); }
-        if (getIdChosenContragent() < 1 || getCodeChosenContragent() < 1) {
+        if (getIdChosenContragent() == 0 || getCodeChosenContragent() == 0) {
             javax.swing.JOptionPane.showMessageDialog(null, "\u041d\u044f\u043c\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442 \u0441 \u0442\u0430\u043a\u044a\u0432 \u043a\u043e\u0434!", 
                     "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
