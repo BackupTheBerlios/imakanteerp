@@ -123,10 +123,12 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
             for(int i = 0; i < InternalTable.getColumnCount(); i++) {
                 if(InternalTable.getColumnName(i).equals("cod")) {
                     myParent.setIntTransfer((Integer)InternalTable.getValueAt(InternalTable.getSelectedRow(), i));
+                    
+                // InternalTable on choosing Contragent at PayingOrders
                 } else if(InternalTable.getColumnName(i).equals("\u041A\u043E\u0434")) {    // "Kod" ili "Код"
+                    pn.setCodeChosenContragent((Integer)InternalTable.getValueAt(InternalTable.getSelectedRow(), i));
                     if(InternalTable.getColumnName(i-1).equals("id")) 
                         pn.setIdContragent((Integer)InternalTable.getValueAt(InternalTable.getSelectedRow(), i-1));
-                    pn.setCodeChosenContragent((Integer)InternalTable.getValueAt(InternalTable.getSelectedRow(), i));
                     if(InternalTable.getColumnName(i+1).equals("\u0418\u043C\u0435")) 
                         pn.setNameChosenContragent((String)InternalTable.getValueAt(InternalTable.getSelectedRow(), i+1)); // Ime ili Име
 //                    if(InternalTable.getColumnName(i+1).equals("\u0411\u0430\u043D\u043A\u0430")) 
@@ -136,8 +138,12 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
                         pn.setChosenIBAN((String)InternalTable.getValueAt(InternalTable.getSelectedRow(), i+3)); // Smetka ili Сметка
                     if(InternalTable.getColumnName(i+4).equals("\u0412\u0430\u043B\u0443\u0442\u0430")) 
                         pn.setChosenCurrency((String)InternalTable.getValueAt(InternalTable.getSelectedRow(), i+4)); // Waluta ili Валута
-                } else if(InternalTable.getColumnName(i).equals("")) {
                     
+                // InternalTable on choosing Person at PayingOrders
+                } else if(InternalTable.getColumnName(i).equals("\u0418\u043C\u0435\u043D\u0430")) {
+                    pn.setNameChosenPerson((String)InternalTable.getValueAt(InternalTable.getSelectedRow(), i));
+                    if(InternalTable.getColumnName(i-1).equals("id")) 
+                        pn.setIdChosenPerson((Integer)InternalTable.getValueAt(InternalTable.getSelectedRow(), i-1));
                 } else {  }
             }
             close();
