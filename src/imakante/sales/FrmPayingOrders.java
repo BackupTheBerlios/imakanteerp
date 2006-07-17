@@ -49,8 +49,8 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         jPanel3 = new javax.swing.JPanel();
         jButtonNew = new javax.swing.JButton();
         jButtonEdit = new javax.swing.JButton();
-        jButtonPrint = new javax.swing.JButton();
-        jButtonPrnReport = new javax.swing.JButton();
+        jButtonPrintOrder = new javax.swing.JButton();
+        jButtonPrintTable = new javax.swing.JButton();
         jButtonDel = new javax.swing.JButton();
         jButtonRefresh = new javax.swing.JButton();
         jButtonDeleteAll = new javax.swing.JButton();
@@ -134,10 +134,10 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel4Layout.createSequentialGroup()
                         .add(5, 5, 5)
-                        .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
+                        .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE))
                     .add(jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)))
+                        .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)))
                 .add(29, 29, 29)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -146,20 +146,20 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
                         .add(14, 14, 14)))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jComboBox2, 0, 161, Short.MAX_VALUE)
+                    .add(jComboBox2, 0, 160, Short.MAX_VALUE)
                     .add(jPanel4Layout.createSequentialGroup()
                         .add(79, 79, 79)
-                        .add(jComboBox1, 0, 82, Short.MAX_VALUE)))
+                        .add(jComboBox1, 0, 81, Short.MAX_VALUE)))
                 .add(39, 39, 39)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jLabel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-                    .add(jLabel6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE))
+                    .add(jLabel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                    .add(jLabel6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(jXDatePicker2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .add(30, 30, 30)
-                .add(jButtonSearch, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                .add(jButtonSearch, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
                 .add(30, 30, 30))
         );
         jPanel4Layout.setVerticalGroup(
@@ -258,18 +258,24 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
 
         jPanel3.add(jButtonEdit);
 
-        jButtonPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Printer.png")));
-        jButtonPrint.setText("\u041f\u0435\u0447\u0430\u0442");
-        jButtonPrint.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPrintOrder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Printer.png")));
+        jButtonPrintOrder.setText("\u041f\u0435\u0447\u0430\u0442");
+        jButtonPrintOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPrintActionPerformed(evt);
+                jButtonPrintOrderActionPerformed(evt);
             }
         });
 
-        jPanel3.add(jButtonPrint);
+        jPanel3.add(jButtonPrintOrder);
 
-        jButtonPrnReport.setText("\u041f\u0435\u0447\u0430\u0442 \u043e\u0442\u0447\u0435\u0442");
-        jPanel3.add(jButtonPrnReport);
+        jButtonPrintTable.setText("\u041f\u0435\u0447\u0430\u0442 \u043e\u0442\u0447\u0435\u0442");
+        jButtonPrintTable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPrintTableActionPerformed(evt);
+            }
+        });
+
+        jPanel3.add(jButtonPrintTable);
 
         jButtonDel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Delete 2.png")));
         jButtonDel.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
@@ -309,6 +315,10 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonPrintTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintTableActionPerformed
+        printTable();
+    }//GEN-LAST:event_jButtonPrintTableActionPerformed
     
     private void jRadioButton1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButton1ItemStateChanged
         if (jRadioButton1.isSelected()) {
@@ -350,9 +360,9 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextField2.setText(""); }
     }//GEN-LAST:event_jTextField2KeyPressed
     
-    private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
-        printTable();
-    }//GEN-LAST:event_jButtonPrintActionPerformed
+    private void jButtonPrintOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintOrderActionPerformed
+        printOrder();
+    }//GEN-LAST:event_jButtonPrintOrderActionPerformed
     
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
         unload();
@@ -385,8 +395,8 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     private javax.swing.JButton jButtonDeleteAll;
     private javax.swing.JButton jButtonEdit;
     private javax.swing.JButton jButtonNew;
-    private javax.swing.JButton jButtonPrint;
-    private javax.swing.JButton jButtonPrnReport;
+    private javax.swing.JButton jButtonPrintOrder;
+    private javax.swing.JButton jButtonPrintTable;
     private javax.swing.JButton jButtonRefresh;
     private javax.swing.JButton jButtonSearch;
     private javax.swing.JComboBox jComboBox1;
@@ -948,10 +958,16 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         refreshTable();
     }
     
+    protected void printOrder() {
+        
+    }
+    
     private void printTable() {
         try {
-            java.text.MessageFormat headerFormat = new java.text.MessageFormat("Platejni Narejdania");
-            java.text.MessageFormat footerFormat = new java.text.MessageFormat("Page. " + "- {0} -" + " IMAKANTE' ");
+            java.text.MessageFormat headerFormat = new java.text.MessageFormat("\u041F\u043B\u0430\u0442\u0435\u0436\u043D\u0438" +
+                    " \u041D\u0430\u0440\u0435\u0436\u0434\u0430\u043D\u0438\u044F");
+            java.text.MessageFormat footerFormat = new java.text.MessageFormat("\u0421\u0442\u0440. " + 
+                    "- {0} -" + " \u0418\u041C\u0410\u041A\u0410\u041D\u0422\u0415' ");
             getTable().print(javax.swing.JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
         } catch(java.awt.print.PrinterException e) { e.printStackTrace(); }
     }
@@ -1044,8 +1060,16 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         td.setVisible(true);
     }
     
-    public void validatePerson() {
-        
+    public void validatePersonByName(String nameForChecking) {
+        setIdChosenPerson(0);
+        setNameChosenPerson("");
+        setRs(getInternalObject().getPersonsByName(nameForChecking));
+        try {
+            while (getRs().next()) {
+                setIdChosenPerson(getRs().getInt("id_ls_n_person"));
+                setNameChosenPerson(getRs().getString("name_ls_n_person"));
+            }
+        } catch (java.sql.SQLException sqlex) { sqlex.printStackTrace(); }
     }
     
     public void chooseContragent(int CodeFragment) {

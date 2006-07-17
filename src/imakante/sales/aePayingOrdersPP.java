@@ -6,7 +6,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     public aePayingOrdersPP(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
         super(frame, modal);
         this.myParent = (imakante.sales.FrmPayingOrders) frame;
-        this.myParent.setIdOrderType(0);
+//        this.myParent.setIdOrderType(0);
         initComponents();
         getNavigationState();
         initOrderTypesCombo();
@@ -415,7 +415,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
-
+        myParent.printOrder();
     }//GEN-LAST:event_jButtonPrintActionPerformed
     
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
@@ -433,10 +433,12 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jComboBox1FocusGained
     
     private void jTextField8FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField8FocusLost
+        revalidatePerson();
         fLost(jTextField8);
     }//GEN-LAST:event_jTextField8FocusLost
     
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+        revalidateContragent();
         fLost(jTextField1);
     }//GEN-LAST:event_jTextField1FocusLost
     
@@ -710,8 +712,9 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }
     
     private void revalidatePerson() {
-        
-        
+        try {
+            myParent.validatePersonByName(jTextField8.getText());
+        } catch (Exception ex) { ex.printStackTrace(); }
         
     }
     
@@ -723,7 +726,6 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
                 myParent.chooseContragent(Integer.parseInt(jTextField1.getText()));
             }
         } catch (NumberFormatException ex) { ex.printStackTrace(); }
-        revalidateContragent();
     }
     
     private void revalidateContragent() {

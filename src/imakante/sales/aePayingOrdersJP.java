@@ -407,7 +407,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
-        
+        myParent.printOrder();
     }//GEN-LAST:event_jButtonPrintActionPerformed
     
     private void jComboBox2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox2FocusGained
@@ -435,6 +435,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jComboBox1FocusGained
     
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+        revalidateContragent();
         fLost(jTextField1);
     }//GEN-LAST:event_jTextField1FocusLost
     
@@ -734,7 +735,6 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
                 myParent.chooseContragent(Integer.parseInt(jTextField1.getText()));
             }
         } catch (NumberFormatException ex) { ex.printStackTrace(); }
-        revalidateContragent();
     }
     
     private void revalidateContragent() {
