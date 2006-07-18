@@ -31,7 +31,7 @@
 	<parameter name="BICcontragent" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="BANKcontragent" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="currency" isForPrompting="false" class="java.lang.String"/>
-	<parameter name="amount" isForPrompting="false" class="java.math.BigDecimal"/>
+	<parameter name="amount" isForPrompting="false" class="java.lang.Double"/>
 	<parameter name="reason" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="comment" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="firm" isForPrompting="false" class="java.lang.String"/>
@@ -747,7 +747,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Bottom">
 						<font fontName="Tahoma" size="14"/>
 					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$P{amount}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.Double"><![CDATA[$P{amount}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -1453,7 +1453,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Bottom">
 						<font fontName="Tahoma" size="14"/>
 					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$P{amount}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.Double"><![CDATA[$P{amount}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
