@@ -2,7 +2,7 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="pn_wnosna_belejka"
+		 name="pn_freeform_wnosna_belejka"
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
@@ -23,148 +23,26 @@
 	<import value="net.sf.jasperreports.engine.*" />
 	<import value="net.sf.jasperreports.engine.data.*" />
 
+	<parameter name="bank" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="branch" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="address" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="place" isForPrompting="false" class="java.lang.String">
+		<defaultValueExpression ><![CDATA["ПЛОВДИВ"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="contragent" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="IBAN" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="currency" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="amount" isForPrompting="false" class="java.math.BigDecimal"/>
+	<parameter name="words" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="person" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="reason" isForPrompting="false" class="java.lang.String"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
 			</band>
 		</background>
 		<title>
-			<band height="84"  isSplitAllowed="true" >
-				<staticText>
-					<reportElement
-						x="0"
-						y="3"
-						width="39"
-						height="17"
-						key="staticText-1"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font fontName="Tahoma" size="12"/>
-					</textElement>
-				<text><![CDATA[ До]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="0"
-						y="32"
-						width="39"
-						height="15"
-						key="staticText-2"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font fontName="Tahoma" size="12"/>
-					</textElement>
-				<text><![CDATA[ Клон]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="0"
-						y="56"
-						width="40"
-						height="18"
-						key="staticText-3"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font fontName="Tahoma" size="12"/>
-					</textElement>
-				<text><![CDATA[ Адрес]]></text>
-				</staticText>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="43"
-						y="0"
-						width="232"
-						height="19"
-						key="textField-1"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
-					<textElement>
-						<font fontName="Tahoma" size="14"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Field}]]></textFieldExpression>
-				</textField>
-				<staticText>
-					<reportElement
-						x="146"
-						y="19"
-						width="26"
-						height="10"
-						key="staticText-4"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font fontName="Tahoma" size="8"/>
-					</textElement>
-				<text><![CDATA[ банка]]></text>
-				</staticText>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="43"
-						y="54"
-						width="232"
-						height="21"
-						key="textField-2"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
-					<textElement>
-						<font fontName="Tahoma" size="14"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Field}]]></textFieldExpression>
-				</textField>
-				<line direction="TopDown">
-					<reportElement
-						x="342"
-						y="22"
-						width="192"
-						height="0"
-						key="line-1"/>
-					<graphicElement stretchType="NoStretch"/>
-				</line>
-				<line direction="TopDown">
-					<reportElement
-						x="342"
-						y="70"
-						width="192"
-						height="0"
-						key="line-2"/>
-					<graphicElement stretchType="NoStretch"/>
-				</line>
-				<staticText>
-					<reportElement
-						x="388"
-						y="22"
-						width="100"
-						height="10"
-						key="staticText-6"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font fontName="Tahoma" size="8"/>
-					</textElement>
-				<text><![CDATA[ място и дата на подаване]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="397"
-						y="69"
-						width="82"
-						height="10"
-						key="staticText-7"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement>
-						<font fontName="Tahoma" size="8"/>
-					</textElement>
-				<text><![CDATA[ подпис на вносителя]]></text>
-				</staticText>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="43"
-						y="28"
-						width="232"
-						height="22"
-						key="textField-3"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
-					<textElement>
-						<font fontName="Tahoma" size="14"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Field}]]></textFieldExpression>
-				</textField>
+			<band height="0"  isSplitAllowed="true" >
 			</band>
 		</title>
 		<pageHeader>
@@ -176,11 +54,11 @@
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="228"  isSplitAllowed="true" >
+			<band height="681"  isSplitAllowed="true" >
 				<rectangle radius="5" >
 					<reportElement
 						x="0"
-						y="0"
+						y="102"
 						width="535"
 						height="228"
 						key="rectangle-1"/>
@@ -189,7 +67,7 @@
 				<staticText>
 					<reportElement
 						x="10"
-						y="1"
+						y="103"
 						width="58"
 						height="11"
 						key="staticText-5"/>
@@ -202,7 +80,7 @@
 				<line direction="TopDown">
 					<reportElement
 						x="0"
-						y="32"
+						y="134"
 						width="535"
 						height="0"
 						key="line-3"/>
@@ -211,7 +89,7 @@
 				<line direction="TopDown">
 					<reportElement
 						x="0"
-						y="60"
+						y="162"
 						width="535"
 						height="0"
 						key="line-4"/>
@@ -220,7 +98,7 @@
 				<line direction="TopDown">
 					<reportElement
 						x="0"
-						y="88"
+						y="190"
 						width="535"
 						height="0"
 						key="line-5"/>
@@ -229,7 +107,7 @@
 				<line direction="TopDown">
 					<reportElement
 						x="0"
-						y="116"
+						y="218"
 						width="535"
 						height="0"
 						key="line-6"/>
@@ -238,7 +116,7 @@
 				<line direction="TopDown">
 					<reportElement
 						x="0"
-						y="144"
+						y="246"
 						width="535"
 						height="0"
 						key="line-7"/>
@@ -247,7 +125,7 @@
 				<line direction="TopDown">
 					<reportElement
 						x="0"
-						y="172"
+						y="274"
 						width="535"
 						height="0"
 						key="line-8"/>
@@ -256,7 +134,7 @@
 				<line direction="TopDown">
 					<reportElement
 						x="0"
-						y="201"
+						y="303"
 						width="535"
 						height="0"
 						key="line-9"/>
@@ -265,7 +143,7 @@
 				<staticText>
 					<reportElement
 						x="10"
-						y="33"
+						y="135"
 						width="78"
 						height="11"
 						key="staticText-8"/>
@@ -278,7 +156,7 @@
 				<line direction="TopDown">
 					<reportElement
 						x="445"
-						y="33"
+						y="135"
 						width="0"
 						height="27"
 						key="line-59"/>
@@ -287,7 +165,7 @@
 				<line direction="TopDown">
 					<reportElement
 						x="120"
-						y="89"
+						y="191"
 						width="0"
 						height="28"
 						key="line-97"/>
@@ -296,7 +174,7 @@
 				<line direction="TopDown">
 					<reportElement
 						x="225"
-						y="88"
+						y="190"
 						width="0"
 						height="29"
 						key="line-102"/>
@@ -305,7 +183,7 @@
 				<line direction="TopDown">
 					<reportElement
 						x="286"
-						y="89"
+						y="191"
 						width="0"
 						height="28"
 						key="line-105"/>
@@ -314,7 +192,7 @@
 				<line direction="TopDown">
 					<reportElement
 						x="286"
-						y="201"
+						y="303"
 						width="0"
 						height="27"
 						key="line-132"/>
@@ -323,7 +201,7 @@
 				<staticText>
 					<reportElement
 						x="10"
-						y="62"
+						y="163"
 						width="104"
 						height="11"
 						key="staticText-9"/>
@@ -336,7 +214,7 @@
 				<staticText>
 					<reportElement
 						x="29"
-						y="88"
+						y="190"
 						width="68"
 						height="28"
 						key="staticText-10"/>
@@ -349,7 +227,7 @@
 				<staticText>
 					<reportElement
 						x="120"
-						y="90"
+						y="192"
 						width="104"
 						height="16"
 						key="staticText-11"/>
@@ -362,7 +240,7 @@
 				<staticText>
 					<reportElement
 						x="226"
-						y="88"
+						y="190"
 						width="60"
 						height="12"
 						key="staticText-12"/>
@@ -375,7 +253,7 @@
 				<staticText>
 					<reportElement
 						x="286"
-						y="88"
+						y="190"
 						width="54"
 						height="11"
 						key="staticText-13"/>
@@ -388,7 +266,7 @@
 				<staticText>
 					<reportElement
 						x="10"
-						y="116"
+						y="218"
 						width="30"
 						height="13"
 						key="staticText-14"/>
@@ -401,7 +279,7 @@
 				<staticText>
 					<reportElement
 						x="10"
-						y="144"
+						y="246"
 						width="61"
 						height="10"
 						key="staticText-15"/>
@@ -414,9 +292,9 @@
 				<staticText>
 					<reportElement
 						x="10"
-						y="172"
+						y="274"
 						width="89"
-						height="13"
+						height="10"
 						key="staticText-16"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
@@ -427,7 +305,7 @@
 				<staticText>
 					<reportElement
 						x="10"
-						y="201"
+						y="303"
 						width="89"
 						height="10"
 						key="staticText-17"/>
@@ -440,7 +318,7 @@
 				<staticText>
 					<reportElement
 						x="287"
-						y="202"
+						y="304"
 						width="44"
 						height="11"
 						key="staticText-18"/>
@@ -450,18 +328,834 @@
 					</textElement>
 				<text><![CDATA[ К а с и е р]]></text>
 				</staticText>
-				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+				<staticText>
 					<reportElement
-						x="1"
-						y="2"
-						width="531"
-						height="29"
+						x="146"
+						y="25"
+						width="26"
+						height="10"
+						key="staticText-19"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+				<text><![CDATA[ банка]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="342"
+						y="28"
+						width="192"
+						height="0"
+						key="line-133"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="388"
+						y="28"
+						width="105"
+						height="10"
+						key="staticText-20"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+				<text><![CDATA[ място и дата на подаване]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="342"
+						y="76"
+						width="192"
+						height="0"
+						key="line-134"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="397"
+						y="75"
+						width="88"
+						height="10"
+						key="staticText-21"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+				<text><![CDATA[ подпис на вносителя]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="43"
+						y="6"
+						width="232"
+						height="19"
+						key="textField-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma" size="14"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{bank}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="43"
+						y="34"
+						width="232"
+						height="22"
+						key="textField-2"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma" size="14"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{branch}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="43"
+						y="60"
+						width="232"
+						height="21"
+						key="textField-3"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma" size="14"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{address}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="0"
+						y="62"
+						width="40"
+						height="18"
+						key="staticText-22"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma" size="12"/>
+					</textElement>
+				<text><![CDATA[ Адрес]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="38"
+						width="39"
+						height="15"
+						key="staticText-23"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma" size="12"/>
+					</textElement>
+				<text><![CDATA[ Клон]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="9"
+						width="39"
+						height="17"
+						key="staticText-24"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma" size="12"/>
+					</textElement>
+				<text><![CDATA[ До]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="342"
+						y="6"
+						width="99"
+						height="19"
 						key="textField-4"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement verticalAlignment="Bottom">
-						<font fontName="Monospaced" size="12"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Tahoma" size="12"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Field}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{place}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="dd MMMMM yyyy" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="442"
+						y="6"
+						width="92"
+						height="19"
+						key="textField-5"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="12"/>
+					</textElement>
+				<textFieldExpression   class="java.util.Date"><![CDATA[new Date()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="10"
+						y="110"
+						width="518"
+						height="23"
+						key="textField-6"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Tahoma" size="14"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{contragent}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="10"
+						y="143"
+						width="433"
+						height="17"
+						key="textField-7"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font fontName="Tahoma" size="14"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{IBAN}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="10"
+						y="170"
+						width="328"
+						height="19"
+						key="textField-8"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Tahoma" size="14"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{bank} + " - " ]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="340"
+						y="170"
+						width="189"
+						height="19"
+						key="textField-9"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font fontName="Tahoma" size="14"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{branch}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="10"
+						y="226"
+						width="518"
+						height="18"
+						key="textField-10"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Tahoma" size="14"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{words}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="10"
+						y="255"
+						width="519"
+						height="17"
+						key="textField-11"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Tahoma" size="14"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{person}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="10"
+						y="282"
+						width="519"
+						height="19"
+						key="textField-12"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Tahoma" size="14"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{reason}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="226"
+						y="199"
+						width="59"
+						height="17"
+						key="textField-13"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font fontName="Tahoma" size="14"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{currency}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="287"
+						y="198"
+						width="243"
+						height="18"
+						key="textField-14"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font fontName="Tahoma" size="14"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$P{amount}]]></textFieldExpression>
+				</textField>
+				<rectangle radius="5" >
+					<reportElement
+						x="0"
+						y="451"
+						width="535"
+						height="228"
+						key="rectangle-2"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<staticText>
+					<reportElement
+						x="10"
+						y="452"
+						width="58"
+						height="11"
+						key="staticText-25"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+				<text><![CDATA[ В полза на име]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="0"
+						y="483"
+						width="535"
+						height="0"
+						key="line-135"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="0"
+						y="511"
+						width="535"
+						height="0"
+						key="line-136"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="0"
+						y="539"
+						width="535"
+						height="0"
+						key="line-137"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="0"
+						y="567"
+						width="535"
+						height="0"
+						key="line-138"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="0"
+						y="595"
+						width="535"
+						height="0"
+						key="line-139"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="0"
+						y="623"
+						width="535"
+						height="0"
+						key="line-140"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="0"
+						y="652"
+						width="535"
+						height="0"
+						key="line-141"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="10"
+						y="484"
+						width="78"
+						height="11"
+						key="staticText-26"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+				<text><![CDATA[ IBAN на получателя]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="445"
+						y="484"
+						width="0"
+						height="27"
+						key="line-142"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="120"
+						y="540"
+						width="0"
+						height="28"
+						key="line-143"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="225"
+						y="539"
+						width="0"
+						height="29"
+						key="line-144"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="286"
+						y="540"
+						width="0"
+						height="28"
+						key="line-145"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="286"
+						y="652"
+						width="0"
+						height="27"
+						key="line-146"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="10"
+						y="512"
+						width="104"
+						height="11"
+						key="staticText-27"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+				<text><![CDATA[ При банка - банката, клон]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="29"
+						y="539"
+						width="68"
+						height="28"
+						key="staticText-28"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center">
+						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" size="11" isBold="true"/>
+					</textElement>
+				<text><![CDATA[ВНОСНА БЕЛЕЖКА]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="120"
+						y="541"
+						width="104"
+						height="16"
+						key="staticText-29"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center">
+						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" size="10" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Внесохме в брой]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="226"
+						y="539"
+						width="60"
+						height="12"
+						key="staticText-30"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+				<text><![CDATA[ Вид валута]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="286"
+						y="539"
+						width="54"
+						height="11"
+						key="staticText-31"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+				<text><![CDATA[ Сума]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="10"
+						y="567"
+						width="30"
+						height="13"
+						key="staticText-32"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+				<text><![CDATA[ С думи]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="10"
+						y="595"
+						width="61"
+						height="10"
+						key="staticText-33"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+				<text><![CDATA[ Вносител - име]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="10"
+						y="623"
+						width="89"
+						height="10"
+						key="staticText-34"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+				<text><![CDATA[ Основание за внасяне]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="10"
+						y="652"
+						width="89"
+						height="10"
+						key="staticText-35"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+				<text><![CDATA[ С ч е т о в о д и т е л]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="287"
+						y="653"
+						width="44"
+						height="11"
+						key="staticText-36"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+				<text><![CDATA[ К а с и е р]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="146"
+						y="374"
+						width="26"
+						height="10"
+						key="staticText-37"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+				<text><![CDATA[ банка]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="342"
+						y="377"
+						width="192"
+						height="0"
+						key="line-147"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="388"
+						y="377"
+						width="105"
+						height="10"
+						key="staticText-38"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+				<text><![CDATA[ място и дата на подаване]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="342"
+						y="425"
+						width="192"
+						height="0"
+						key="line-148"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="397"
+						y="424"
+						width="88"
+						height="10"
+						key="staticText-39"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+				<text><![CDATA[ подпис на вносителя]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="43"
+						y="355"
+						width="232"
+						height="19"
+						key="textField-15"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma" size="14"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{bank}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="43"
+						y="383"
+						width="232"
+						height="22"
+						key="textField-16"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma" size="14"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{branch}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="43"
+						y="409"
+						width="232"
+						height="21"
+						key="textField-17"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma" size="14"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{address}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="0"
+						y="411"
+						width="40"
+						height="18"
+						key="staticText-40"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma" size="12"/>
+					</textElement>
+				<text><![CDATA[ Адрес]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="387"
+						width="39"
+						height="15"
+						key="staticText-41"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma" size="12"/>
+					</textElement>
+				<text><![CDATA[ Клон]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="358"
+						width="39"
+						height="17"
+						key="staticText-42"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Tahoma" size="12"/>
+					</textElement>
+				<text><![CDATA[ До]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="342"
+						y="355"
+						width="99"
+						height="19"
+						key="textField-18"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Tahoma" size="12"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{place}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="dd MMMMM yyyy" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="442"
+						y="355"
+						width="92"
+						height="19"
+						key="textField-19"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="12"/>
+					</textElement>
+				<textFieldExpression   class="java.util.Date"><![CDATA[new Date()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="10"
+						y="459"
+						width="518"
+						height="23"
+						key="textField-20"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Tahoma" size="14"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{contragent}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="10"
+						y="492"
+						width="433"
+						height="17"
+						key="textField-21"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font fontName="Tahoma" size="14"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{IBAN}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="10"
+						y="519"
+						width="328"
+						height="19"
+						key="textField-22"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Tahoma" size="14"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{bank} + " - " ]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="340"
+						y="519"
+						width="189"
+						height="19"
+						key="textField-23"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font fontName="Tahoma" size="14"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{branch}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="10"
+						y="575"
+						width="518"
+						height="18"
+						key="textField-24"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Tahoma" size="14"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{words}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="10"
+						y="604"
+						width="519"
+						height="17"
+						key="textField-25"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Tahoma" size="14"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{person}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="10"
+						y="631"
+						width="519"
+						height="19"
+						key="textField-26"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Tahoma" size="14"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{reason}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="226"
+						y="548"
+						width="59"
+						height="17"
+						key="textField-27"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font fontName="Tahoma" size="14"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{currency}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="287"
+						y="547"
+						width="243"
+						height="18"
+						key="textField-28"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font fontName="Tahoma" size="14"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$P{amount}]]></textFieldExpression>
 				</textField>
 			</band>
 		</detail>
