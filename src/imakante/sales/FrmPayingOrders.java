@@ -315,7 +315,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jButtonPrintTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintTableActionPerformed
         printTable();
     }//GEN-LAST:event_jButtonPrintTableActionPerformed
@@ -959,14 +959,55 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     }
     
     protected void printOrder() {
-        
+        setRow(getTable().getSelectedRow());
+        setAllVariables();
+        String jasperFile = "";
+        java.util.HashMap hm = new java.util.HashMap();
+        if (jRadioButton1.isSelected()) {
+            jasperFile = "pn_freeform_razpla6taniq.jasper";
+            hm.put("bank", "“⁄–√Œ¬— ¿ ¡¿Õ ¿");
+            hm.put("branch", "÷≈Õ“–¿À≈Õ");
+            hm.put("address", "”À»÷¿ Œ—¬Œ¡Œ∆ƒ≈Õ»≈ 1");
+            hm.put("contragent", " ŒÕ“–¿√≈Õ“ ≈ŒŒƒ.");
+            hm.put("IBANcontragent", "BG5531GKS15154143878458");
+            hm.put("BICcontragent", "BGGKSYTR");
+            hm.put("BANKcontragent", "BG5531GKS15154143878458");
+            hm.put("currency", "BGN");
+            hm.put("amount", this.getAmount());
+            hm.put("reason", this.getOsnovanie().toUpperCase());
+            hm.put("comment", "œŒﬂ—Õ≈Õ»≈ œŒﬂ—Õ≈Õ»≈");
+            hm.put("firm", "Õ¿ÿ¿ ‘»–Ã¿ ¿ƒ.");
+            hm.put("iban", "BG558531GKS541438715184");
+            hm.put("bic", "KSYBGGTR");
+            
+        } else if (jRadioButton2.isSelected()) {
+            jasperFile = "pn_freeform_wnosna_belejka.jasper";
+            imakante.com.priceToString prcT = new imakante.com.priceToString();
+            double w = this.getAmount();
+            prcT.setValue(w);
+            prcT.ConstString();
+            hm.put("bank", "“⁄–√Œ¬— ¿ ¡¿Õ ¿");
+            hm.put("branch", "÷≈Õ“–¿À≈Õ");
+            hm.put("address", "”À»÷¿ Œ—¬Œ¡Œ∆ƒ≈Õ»≈ 1");
+            hm.put("place", "Ãﬂ—“Œ");
+            hm.put("contragent", " ŒÕ“–¿√≈Õ“ ≈ŒŒƒ.");
+            hm.put("IBAN", "BG5531GKS15154143878458");
+            hm.put("currency", "BGN");
+            hm.put("amount", this.getAmount());
+            hm.put("words", prcT.getEndString().toUpperCase());
+            hm.put("person", " –¿—»Ã»–¿ œ≈“–Œ¬¿");
+            hm.put("reason", this.getOsnovanie().toUpperCase());
+        } else {  }
+        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, getTable(), null, 
+                hm, jasperFile, "", "");
+        td.setVisible(true);
     }
     
     private void printTable() {
         try {
             java.text.MessageFormat headerFormat = new java.text.MessageFormat("\u041F\u043B\u0430\u0442\u0435\u0436\u043D\u0438" +
                     " \u041D\u0430\u0440\u0435\u0436\u0434\u0430\u043D\u0438\u044F");
-            java.text.MessageFormat footerFormat = new java.text.MessageFormat("\u0421\u0442\u0440. " + 
+            java.text.MessageFormat footerFormat = new java.text.MessageFormat("\u0421\u0442\u0440. " +
                     "- {0} -" + " \u0418\u041C\u0410\u041A\u0410\u041D\u0422\u0415' ");
             getTable().print(javax.swing.JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
         } catch(java.awt.print.PrinterException e) { e.printStackTrace(); }
@@ -1111,7 +1152,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             }
         } catch (java.sql.SQLException sqlex) { sqlex.printStackTrace(); }
         if (getIdChosenContragent() == 0 || getCodeChosenContragent() == 0) {
-            javax.swing.JOptionPane.showMessageDialog(null, "\u041d\u044f\u043c\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442 \u0441 \u0442\u0430\u043a\u044a\u0432 \u043a\u043e\u0434!", 
+            javax.swing.JOptionPane.showMessageDialog(null, "\u041d\u044f\u043c\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442 \u0441 \u0442\u0430\u043a\u044a\u0432 \u043a\u043e\u0434!",
                     "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
     }

@@ -634,20 +634,25 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     
     //SAVE
     private void saveRecord() {
-//        oldIDG = myParent.getIDG();
-//        oldCode = myParent.getCode();
-//        oldEGN = myParent.getEGN();
-//        oldNLK = myParent.getNLK();
-//        oldName = myParent.getNames();
-//        oldComment = myParent.getComment();
         try {
-//            myParent.setCode(Integer.parseInt(jTextField4.getText()));
+            myParent.setAmount(Double.parseDouble(jTextField4.getText()));
         } catch (NumberFormatException nfex) { nfex.printStackTrace(); }
-        
-        
-        
-//        myParent.getInternalObject().updateRow(myParent.getId(), myParent.getIDG(), myParent.getCode(),
-//                myParent.getEGN(), myParent.getNLK(), myParent.getNames(), myParent.getComment());
+        // Tip platejnoto narejdane = wnosna belejka - 0
+        myParent.setIdOrderType(0);
+        myParent.setIdPerson(myParent.getIdChosenPerson());
+        myParent.setIdContragent(myParent.getIdChosenContragent());
+        myParent.setOsnovanie(jTextField6.getText());
+        myParent.setPoiasnenie(jTextField7.getText());
+        revalidatePerson();
+        revalidateContragent();
+        myParent.getInternalObject().updateRow(myParent.getId(),
+                0,  // Juricdical person
+                myParent.getIdOrderType(), 
+                myParent.getIdPerson(), 
+                myParent.getIdContragent(), 
+                myParent.getAmount(), 
+                myParent.getOsnovanie(), 
+                myParent.getPoiasnenie());
         myParent.refreshTable();
         myParent.getTable().changeSelection(myParent.getRow(), 2, false, false);
     }
@@ -681,7 +686,6 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     private void repaintComp() {
         
         
-        
 //        jComboG.setSelectedIndex(getNewComboBoxIndex(myParent.getIDG()));
     }
     
@@ -705,17 +709,14 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }
     
     private void getPerson() {
-        try {
-            myParent.choosePerson(jTextField8.getText());
-        } catch (NumberFormatException ex) { ex.printStackTrace(); }
-        revalidatePerson();
+        myParent.choosePerson(jTextField8.getText());
     }
     
     private void revalidatePerson() {
         try {
             myParent.validatePersonByName(jTextField8.getText());
         } catch (Exception ex) { ex.printStackTrace(); }
-        
+        this.jTextField8.setText(myParent.getNameChosenPerson());
     }
     
     private void getContragent() {
@@ -732,6 +733,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         try {
             myParent.validateContragentByCode(Integer.parseInt(jTextField1.getText()));
         } catch (Exception ex) { ex.printStackTrace(); }
+        this.jTextField1.setText("" + myParent.getCodeChosenContragent());
         this.jTextField2.setText(myParent.getNameChosenContragent());
         this.jTextField3.setText(myParent.getChosenIBAN());
         this.jTextField5.setText(myParent.getChosenCurrency());
