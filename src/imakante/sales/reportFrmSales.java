@@ -1,8 +1,4 @@
-/*
- * reportFrmSales.java
- *
- * Created on Сряда, 2006, Март 29, 18:40
- */
+
 
 package imakante.sales;
 

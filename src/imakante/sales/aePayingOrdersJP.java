@@ -618,6 +618,9 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     private int selectedOrderType;
     private int selectedAccount;
     
+    private boolean isFromF7 = false;
+    private boolean isNewRecord = false;
+    
     //---------------END My Variables
     
     //---------------START My Methods
@@ -639,6 +642,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
 //        oldReason = myParent.getOsnovanie();
 //        oldComment = myParent.getPoiasnenie();
         try {
+            
             myParent.setAmount(Double.parseDouble(jTextField4.getText()));
         } catch (NumberFormatException nfex) { nfex.printStackTrace(); }
         // Tip na platejnoto narejdane: mejdu id-to w tablicata i id-to w komboto ima otmestwane 2 !!!!! :( ????????
@@ -732,15 +736,24 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
             if (jTextField1.getText().equals("")) {
                 myParent.chooseContragent(-1);
             } else {
-                myParent.chooseContragent(Integer.parseInt(jTextField1.getText()));
+                myParent.chooseContragent(getSearchCode());
             }
         } catch (NumberFormatException ex) { ex.printStackTrace(); }
     }
-    
-    private void revalidateContragent() {
+    private int getSearchCode(){
+        int i = 0;
         try {
-            myParent.validateContragentByCode(Integer.parseInt(jTextField1.getText()));
-        } catch (Exception ex) { ex.printStackTrace(); }
+            if(jTextField1.getText().equals("")){i = 0;} else{
+                i =  Integer.parseInt(jTextField1.getText());}
+            return i;
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+            i = 0;
+        }
+        return i;
+    }
+    private void revalidateContragent() {
+        myParent.validateContragentByCode(getSearchCode());
         this.jTextField1.setText("" + myParent.getCodeChosenContragent());
         this.jTextField2.setText(myParent.getNameChosenContragent());
         this.jTextField3.setText(myParent.getChosenIBAN());
@@ -771,4 +784,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         this.selectedAccount = selectedAccount;
     }
     
+    public static void changeField(){
+    
+    }
 } // end class

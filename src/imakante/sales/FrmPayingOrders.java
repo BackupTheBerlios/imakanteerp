@@ -451,6 +451,9 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     private String dateBegin = "0000-00-00";
     private String dateEnd = "0000-00-00";
     
+    private int CompNumber = 0;
+    private  int intTransfer;
+    
     private String Currencies[];
     private String OrderTypes[];
     
@@ -477,6 +480,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     private java.sql.ResultSet rsP;
     private imakante.com.CustomTableModel modelP;
     private imakante.com.CustomTable tableP;
+    
     public static final String NamesJP[] = { "id",
     "ordering_person",
     "id_type_porder",
@@ -526,6 +530,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     "\u0411\u0430\u043D\u043A\u0430", "\u0411\u0430\u043D\u043A\u043E\u0432 \u043A\u043E\u0434",
     "\u0421\u043C\u0435\u0442\u043A\u0430", "\u0412\u0430\u043B\u0443\u0442\u0430" };
     public static final String NamesP[] = { "id", "\u0418\u043C\u0435\u043D\u0430" };
+    private imakante.com.vcomponents.tableDialog td;
     //---------------END My Variables
     
     //---------------START Methods
@@ -1096,7 +1101,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         try {
             tableP.setEditingRow(0);
         } catch(Exception ex) { ex.printStackTrace(); }
-        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, tableP,
+        td = new imakante.com.vcomponents.tableDialog(this, true, tableP,
                 "\u0421\u043C\u0435\u0442\u043A\u0430\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u043F\u043E\u0434\u043E\u0442\u0447\u0435\u0442\u043D\u043E \u043B\u0438\u0446\u0435", "");
         td.setVisible(true);
     }
@@ -1124,10 +1129,18 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         try {
             tableC.setEditingRow(0);
         } catch(Exception ex) { ex.printStackTrace(); }
-        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, tableC,
+        td = new imakante.com.vcomponents.tableDialog(this, true, tableC,
                 "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u043A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442", "");
         td.setVisible(true);
     }
+    
+    
+    public void setIntTransfer(int intTransfer) {
+        this.intTransfer = intTransfer;
+        if (CompNumber == 0){}
+       
+    }
+    
     
     public void validateContragentByCode(int codeForChecking) {
         setIdChosenContragent(0);
@@ -1149,6 +1162,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
                     setChosenIBAN(getRs().getString("IBANR"));
                     setChosenCurrency(getRs().getString("VIDVALR"));
                 }
+                System.out.println(" ot vcd " + getIdChosenContragent()+" "+getNameChosenContragent());
             }
         } catch (java.sql.SQLException sqlex) { sqlex.printStackTrace(); }
         if (getIdChosenContragent() == 0 || getCodeChosenContragent() == 0) {
