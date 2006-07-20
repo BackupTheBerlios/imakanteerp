@@ -10,16 +10,17 @@ import net.sf.jasperreports.engine.JasperReport;
 
 public class tableDialog extends imakante.com.vcomponents.iDialog {
     
-    public tableDialog(imakante.com.vcomponents.iInternalFrame frame, boolean modal, imakante.com.CustomTable table, String Title, String Header ) {
+    public tableDialog(imakante.com.vcomponents.iInternalFrame frame, boolean modal, imakante.com.CustomTable table, String Title, String Header, String SearchField ) {
         super(frame, modal, table);
         this.myParent = (imakante.com.vcomponents.iInternalFrame) frame;
         this.InternalTable = table;
         this.interTitle = Title;
+        this.searchField = searchField;
         initComponents();
         InternalTable.addKeyListener(new java.awt.event.KeyListener() {
             public void keyPressed(java.awt.event.KeyEvent e) {
                 if(java.awt.event.KeyEvent.VK_ENTER == e.getKeyCode()) {
-                    myParent.setIntTransfer((Integer)InternalTable.getValueAt(InternalTable.getSelectedRow(),getColumnIndex("cod")));
+                    transferValue();
                     close();
                 }
             }
@@ -173,7 +174,7 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
     private java.sql.Connection conn = null;
     private String fileJasper = null;
     private java.util.HashMap hm = null;
-    
+    private String searchField = "";
     private imakante.com.CustomTable InternalTable;
     
     private net.sf.jasperreports.engine.JasperReport jasperReport;
@@ -182,6 +183,9 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
     
     private boolean tableVizible = true;
     
+    private void transferValue(){
+    
+    }
     private void prepareJassper() throws java.io.FileNotFoundException {
         try {
             
