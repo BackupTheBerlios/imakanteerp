@@ -101,7 +101,6 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         jPanel3.setPreferredSize(new java.awt.Dimension(230, 70));
         jButtonToBegin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation First 2.png")));
         jButtonToBegin.setToolTipText("\u041f\u044a\u0440\u0432\u0438 \u0437\u0430\u043f\u0438\u0441 \u0432 \u0441\u043f\u0438\u0441\u044a\u043a\u0430.");
-        jButtonToBegin.setEnabled(false);
         jButtonToBegin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonToBeginActionPerformed(evt);
@@ -117,7 +116,6 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
 
         jButtonOneRowM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation Left 2.png")));
         jButtonOneRowM.setToolTipText("\u0415\u0434\u0438\u043d \u0437\u0430\u043f\u0438\u0441 \u043d\u0430\u0437\u0430\u0434");
-        jButtonOneRowM.setEnabled(false);
         jButtonOneRowM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonOneRowMActionPerformed(evt);
@@ -133,7 +131,6 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
 
         jButtonOneRowP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation Right 2.png")));
         jButtonOneRowP.setToolTipText("\u041f\u043e\u0441\u043b\u0435\u0434\u0435\u043d \u0437\u0430\u043f\u0438\u0441 \u0432 \u0441\u043f\u0438\u0441\u044a\u043a\u0430");
-        jButtonOneRowP.setEnabled(false);
         jButtonOneRowP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonOneRowPActionPerformed(evt);
@@ -149,7 +146,6 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
 
         jButtonToEnd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation Last 2.png")));
         jButtonToEnd.setToolTipText("\u0415\u0434\u0438\u043d \u0437\u0430\u043f\u0438\u0441 \u043d\u0430\u043f\u0440\u0435\u0434.");
-        jButtonToEnd.setEnabled(false);
         jButtonToEnd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonToEndActionPerformed(evt);
@@ -193,7 +189,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
             .add(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u041d\u0430\u0440\u0435\u0434\u0438\u0442\u0435\u043b - \u042e\u0440\u0438\u0434\u0438\u0447\u0435\u0441\u043a\u043e \u043b\u0438\u0446\u0435", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 51, 153)));
@@ -518,8 +514,12 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         if(myParent.isAtEnd()) {
             jButtonToEnd.setEnabled(false);
             jButtonOneRowP.setEnabled(false);
+            jButtonSave.setEnabled(false);
+            jButtonPrint.setEnabled(true);
             jButtonToEnd.repaint();
             jButtonOneRowP.repaint();
+            jButtonSave.repaint();
+            jButtonPrint.repaint();
         }
         jButtonToBegin.setEnabled(true);
         jButtonOneRowM.setEnabled(true);
@@ -529,6 +529,8 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButtonOneRowPActionPerformed
     // gotoLast
     private void jButtonToEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToEndActionPerformed
+//        jButtonSave.setEnabled(false);
+//        jButtonPrint.setEnabled(true);
         myParent.mTableEnd();
         jButtonToEnd.setEnabled(false);
         jButtonOneRowP.setEnabled(false);
@@ -542,6 +544,8 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButtonToEndActionPerformed
     // gotoPrev
     private void jButtonOneRowMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowMActionPerformed
+        jButtonSave.setEnabled(false);
+        jButtonPrint.setEnabled(true);
         myParent.mOneRowMinus();
         if(myParent.isAtBegining()) {
             jButtonToBegin.setEnabled(false);
@@ -557,6 +561,8 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButtonOneRowMActionPerformed
     // gotoFirst
     private void jButtonToBeginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToBeginActionPerformed
+        jButtonSave.setEnabled(false);
+        jButtonPrint.setEnabled(true);
         myParent.mTableBegining();
         jButtonToBegin.setEnabled(false);
         jButtonOneRowM.setEnabled(false);

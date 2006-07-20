@@ -658,9 +658,9 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         atEnd = aAtEnd;
     }
     
-    private int  getMaxRow() {
+    protected int getMaxRow() {
         int i = 0;
-        i  = getTable().getRowCount() - 1;
+        i = getTable().getRowCount() - 1;
         return i;
     }
     
@@ -1101,9 +1101,9 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         try {
             tableP.setEditingRow(0);
         } catch(Exception ex) { ex.printStackTrace(); }
-        td = new imakante.com.vcomponents.tableDialog(this, true, tableP,
+/*        td = new imakante.com.vcomponents.tableDialog(this, true, tableP,
                 "\u0421\u043C\u0435\u0442\u043A\u0430\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u043F\u043E\u0434\u043E\u0442\u0447\u0435\u0442\u043D\u043E \u043B\u0438\u0446\u0435", "");
-        td.setVisible(true);
+        td.setVisible(true);*/
     }
     
     public void validatePersonByName(String nameForChecking) {
@@ -1129,9 +1129,9 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         try {
             tableC.setEditingRow(0);
         } catch(Exception ex) { ex.printStackTrace(); }
-        td = new imakante.com.vcomponents.tableDialog(this, true, tableC,
+/*        td = new imakante.com.vcomponents.tableDialog(this, true, tableC,
                 "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u043A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442", "");
-        td.setVisible(true);
+        td.setVisible(true);*/
     }
     
     
