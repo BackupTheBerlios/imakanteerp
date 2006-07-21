@@ -245,6 +245,16 @@ public class dbPayingOrders extends imakante.com.dbObject {
         return getRs();
     }
     
+    public java.sql.ResultSet getContragentById(int in_id, int orderType) {
+        setComprator(18);
+        this.setId(in_id);
+        this.setSelectedOrderType(orderType);
+        try {
+            registerParameters();
+            setRs(getCstm().executeQuery());
+        } catch (Exception ex) { ex.printStackTrace(); }
+        return getRs();
+    }
     public java.sql.ResultSet getPersonsList(String PersonName) {
         setComprator(15);
         this.setNamePerson(PersonName);

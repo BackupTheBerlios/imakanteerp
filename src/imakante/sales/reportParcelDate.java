@@ -509,7 +509,7 @@ public class reportParcelDate extends imakante.com.vcomponents.iInternalFrame im
     private void constructDialod(String str, int rCompNumber, String[] names){
         this.CompNumber = rCompNumber;
         initTable(str, names );
-        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table, "\u0418\u0437\u0431\u043e\u0440", "");
+        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table, "\u0418\u0437\u0431\u043e\u0440", "","cod");
         td.setVisible(true);
         
     }

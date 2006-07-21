@@ -431,7 +431,10 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jComboBox1FocusGained
     
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        revalidateContragent();
+        if(this.isFromF7){
+            
+        }else{
+            revalidateContragent();}
         fLost(jTextField1);
     }//GEN-LAST:event_jTextField1FocusLost
     
@@ -472,6 +475,8 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jTextField1.transferFocus();
         } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) { getContragent();
+        this.isFromF7 = true;
+        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_INSERT) { getContragent();
         } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextField1.setText(""); }
     }//GEN-LAST:event_jTextField1KeyPressed
     
@@ -624,7 +629,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     private int selectedOrderType;
     private int selectedAccount;
     
-    private boolean isFromF7 = false;
+    private static boolean isFromF7 = false;
     private boolean isNewRecord = false;
     
     //---------------END My Variables
@@ -647,6 +652,12 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
 //        oldAmount = myParent.getAmount();
 //        oldReason = myParent.getOsnovanie();
 //        oldComment = myParent.getPoiasnenie();
+        
+        //TODO da se napravi proverka  predi tri
+        //sas if)() 
+        //dali double poleto za suma e popalneto 
+        //
+        
         try {
             
             myParent.setAmount(Double.parseDouble(jTextField4.getText()));
@@ -789,8 +800,24 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     public void setSelectedAccount(int selectedAccount) {
         this.selectedAccount = selectedAccount;
     }
-    
-    public static void changeField(){
+    public static void setIsFromF7(){
+    isFromF7 = false;
     
     }
+    public static void changeField(){
+        
+        //TODO vzima stoinostite ot Frm i na tiahna baza
+        //pravi repaint na textovite poleta
+        
+    }
+    
+    private void disableAllFields(){
+    //TODO zabraniava za korektsia vsichki poleta
+    }
+    private void enableAllFieldsIsNew(){
+    //TODO razreshava poletata neobhodimi za novia order
+    
+    }
+    
+    //TODO transfera na fokusa da e pravilen 
 } // end class

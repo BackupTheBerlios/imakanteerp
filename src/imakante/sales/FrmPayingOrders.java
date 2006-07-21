@@ -1,6 +1,8 @@
 
 package imakante.sales;
 
+import java.sql.SQLException;
+
 public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
     public FrmPayingOrders(String title, imakante.com.vcomponents.iFrame frame) {
@@ -531,6 +533,8 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     "\u0421\u043C\u0435\u0442\u043A\u0430", "\u0412\u0430\u043B\u0443\u0442\u0430" };
     public static final String NamesP[] = { "id", "\u0418\u043C\u0435\u043D\u0430" };
     private imakante.com.vcomponents.tableDialog td;
+    private static imakante.sales.aePayingOrdersJP ajp;
+    private static imakante.sales.aePayingOrdersPP app;
     //---------------END My Variables
     
     //---------------START Methods
@@ -953,12 +957,12 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         setAtBegining(false);
         setAtEnd(true);
         if (this.jRadioButton1.isSelected()) {
-            imakante.sales.aePayingOrdersJP ae_POrder = new imakante.sales.aePayingOrdersJP(this, true);
-            ae_POrder.setVisible(true);
+            ajp = new imakante.sales.aePayingOrdersJP(this, true);
+            ajp.setVisible(true);
         }
         if (this.jRadioButton2.isSelected()) {
-            imakante.sales.aePayingOrdersPP ae_POrder = new imakante.sales.aePayingOrdersPP(this, true);
-            ae_POrder.setVisible(true);
+            app = new imakante.sales.aePayingOrdersPP(this, true);
+            app.setVisible(true);
         }
         refreshTable();
     }
@@ -1003,7 +1007,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             hm.put("person", " –¿—»Ã»–¿ œ≈“–Œ¬¿");
             hm.put("reason", this.getOsnovanie().toUpperCase());
         } else {  }
-        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, getTable(), null, 
+        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, getTable(), null,
                 hm, jasperFile, "", "");
         td.setVisible(true);
     }
@@ -1129,16 +1133,26 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         try {
             tableC.setEditingRow(0);
         } catch(Exception ex) { ex.printStackTrace(); }
-/*        td = new imakante.com.vcomponents.tableDialog(this, true, tableC,
-                "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u043A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442", "");
-        td.setVisible(true);*/
+        System.out.println("Ot chooseContragent");
+        this.CompNumber = 0;
+        td = new imakante.com.vcomponents.tableDialog(this, true, tableC,
+                "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u043A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442", "", "\u041A\u043E\u0434");
+        td.setVisible(true);
     }
     
     
     public void setIntTransfer(int intTransfer) {
         this.intTransfer = intTransfer;
-        if (CompNumber == 0){}
-       
+        if (CompNumber == 0){
+            ajp.setIsFromF7(); // tova pravi boolevata stoinost v ae-to da e false
+            
+            // parvi sluchai kogat transferrame kontragent
+            // intTransfer = id na kontragenta
+            // izvikvane kam bazata i rs koito se poluchava da bade obraboten i da se zadadat stoinostite
+            // na lokalnite promenlivi
+            setValuesFromContragentId(intTransfer);
+        }
+        
     }
     
     
@@ -1282,5 +1296,24 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         setRs(null);
         internalObject.close();
     }
+    
+    private void setValuesFromContragentId(int i) {
+        java.sql.ResultSet rs = null;
+        try {
+            rs = this.internalObject.getContragentById(i,this.getIdOrderType());
+            while(rs.next()){
+                // TODO SET na stoinostite za
+                
+                
+            }
+            
+            ajp.changeField();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+    }
+    
+    
     
 }

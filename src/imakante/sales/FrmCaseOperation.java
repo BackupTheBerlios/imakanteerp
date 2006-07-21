@@ -588,7 +588,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     private void constructDialod(String str, int rCompNumber, String[] names) {
         this.CompNumber = rCompNumber;
         initTableD(str, names);
-        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table1,"\u0418\u0437\u0431\u043e\u0440", "");
+        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table1,"\u0418\u0437\u0431\u043e\u0440", "","cod");
         td.setVisible(true);
     }
     
