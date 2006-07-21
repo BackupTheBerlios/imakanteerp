@@ -1297,23 +1297,34 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         internalObject.close();
     }
     
-    private void setValuesFromContragentId(int i) {
-        java.sql.ResultSet rs = null;
+    private void setValuesFromContragentId(int id) {
+        java.sql.ResultSet rsC = null;
         try {
-            rs = this.internalObject.getContragentById(i,this.getIdOrderType());
-            while(rs.next()){
+            rsC = this.internalObject.getContragentById(id, this.getIdOrderType());
+            while(rsC.next()){
                 // TODO SET na stoinostite za
                 
                 
             }
             
             ajp.changeField();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
+            app.changeField();
+        } catch (SQLException ex) { ex.printStackTrace(); }
         
     }
     
-    
+    private void setValuesFromPersonId(int id) {
+        java.sql.ResultSet rsP = null;
+        try {
+            rsP = this.internalObject.getContragentById(id, this.getIdOrderType());
+            while(rsP.next()){
+                // TODO SET na stoinostite za
+                
+                
+            }
+            
+            app.changeField();
+        } catch (SQLException ex) { ex.printStackTrace(); }
+    }
     
 }

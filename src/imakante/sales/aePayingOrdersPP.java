@@ -634,6 +634,9 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     private int selectedOrderType;
     private int selectedAccount;
     
+    private static boolean isFromF7 = false;
+    private boolean isNewRecord = false;
+    
     //---------------END My Variables
     
     //---------------START My Methods
@@ -753,4 +756,33 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 255, 255), null));
     }
     
-} // end class
+    public static void setIsFromF7() {
+        isFromF7 = false;
+    }
+    
+    public static void changeField() {
+        //TODO vzima stoinostite ot Frm i na tiahna baza
+        //pravi repaint na textovite poleta
+        
+    }
+    
+    private void disableAllFields() {
+        jComboBox1.setEnabled(false);
+        jTextField1.setEnabled(false);
+        jTextField4.setEnabled(false);
+        jTextField6.setEnabled(false);
+        jTextField7.setEnabled(false);
+        jTextField8.setEnabled(false);
+    }
+    
+    private void enableAllFieldsIsNew() {
+        jComboBox1.setEnabled(true);
+        jTextField1.setEnabled(true);
+        jTextField4.setEnabled(true);
+        jTextField6.setEnabled(true);
+        jTextField7.setEnabled(true);
+        jTextField8.setEnabled(true);
+    }
+    
+    //TODO transfera na fokusa da e pravilen 
+}

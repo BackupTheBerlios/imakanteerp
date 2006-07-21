@@ -255,6 +255,7 @@ public class dbPayingOrders extends imakante.com.dbObject {
         } catch (Exception ex) { ex.printStackTrace(); }
         return getRs();
     }
+    
     public java.sql.ResultSet getPersonsList(String PersonName) {
         setComprator(15);
         this.setNamePerson(PersonName);
@@ -268,6 +269,16 @@ public class dbPayingOrders extends imakante.com.dbObject {
     public java.sql.ResultSet getPersonsByName(String PersonName) {
         setComprator(17);
         this.setNamePerson(PersonName);
+        try {
+            registerParameters();
+            setRs(getCstm().executeQuery());
+        } catch (Exception ex) { ex.printStackTrace(); }
+        return getRs();
+    }
+    
+    public java.sql.ResultSet getPersonsById(int in_id) {
+        setComprator(19);
+        this.setId(in_id);
         try {
             registerParameters();
             setRs(getCstm().executeQuery());

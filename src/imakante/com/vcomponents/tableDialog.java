@@ -120,7 +120,6 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButton3ActionPerformed
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    
         if (fileJasper == null) {
             transferValue();
             close();
@@ -161,8 +160,8 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
     
     private void transferValue(){
         myParent.setIntTransfer((Integer)InternalTable.getValueAt(InternalTable.getSelectedRow(),getColumnIndex(searchField)));
-        
     }
+    
     private void prepareJassper() throws java.io.FileNotFoundException {
         try {
             

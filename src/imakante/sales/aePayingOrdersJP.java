@@ -615,15 +615,6 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     // End of variables declaration//GEN-END:variables
     //--------------- My Variables
     private imakante.sales.FrmPayingOrders myParent;
-//    private int oldTypeOrder = 1;
-//    private int oldBankAccount = 0;
-//    private int oldCodeContragent = 0;
-//    private String oldNameContragent = "";
-//    private String oldIBAN = "";
-//    private double oldAmount = 0.00;
-//    private String oldCurrency = "";
-//    private String oldReason = "";
-//    private String oldComment =  "";
     private String namesOrderTypes[];
     private String namesOurAccounts[];
     private int selectedOrderType;
@@ -638,20 +629,6 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     
     //SAVE
     private void saveRecord() {
-//        oldTypeOrder = myParent.getIdOrderType();
-//        oldBankAccount = myParent.getIdBankAccount();
-//        oldCodeContragent = myParent.getCodeContragent();
-//        oldNameContragent = myParent.getNameContragent();
-//        if (oldTypeOrder == 2) {                                // operacii s Razpla6tatelnite smetki
-//            oldIBAN = myParent.getIBANR();
-//            oldCurrency = myParent.getCurrencyR();
-//        } else if (oldTypeOrder == 3 || oldTypeOrder == 4) {    // operacii sys smetkite po DDS
-//            oldIBAN = myParent.getIBANVAT();
-//            oldCurrency = myParent.getCurrencyVAT();
-//        }
-//        oldAmount = myParent.getAmount();
-//        oldReason = myParent.getOsnovanie();
-//        oldComment = myParent.getPoiasnenie();
         
         //TODO da se napravi proverka  predi tri
         //sas if)() 
@@ -757,11 +734,15 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
             }
         } catch (NumberFormatException ex) { ex.printStackTrace(); }
     }
+    
     private int getSearchCode(){
         int i = 0;
         try {
-            if(jTextField1.getText().equals("")){i = 0;} else{
-                i =  Integer.parseInt(jTextField1.getText());}
+            if(jTextField1.getText().equals("")) { 
+                i = 0;
+            } else { 
+                i =  Integer.parseInt(jTextField1.getText()); 
+            }
             return i;
         } catch (NumberFormatException ex) {
             ex.printStackTrace();
@@ -769,6 +750,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         }
         return i;
     }
+    
     private void revalidateContragent() {
         myParent.validateContragentByCode(getSearchCode());
         this.jTextField1.setText("" + myParent.getCodeChosenContragent());
@@ -800,24 +782,34 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     public void setSelectedAccount(int selectedAccount) {
         this.selectedAccount = selectedAccount;
     }
-    public static void setIsFromF7(){
-    isFromF7 = false;
     
+    public static void setIsFromF7() {
+        isFromF7 = false;
     }
-    public static void changeField(){
-        
+    
+    public static void changeField() {
         //TODO vzima stoinostite ot Frm i na tiahna baza
         //pravi repaint na textovite poleta
         
     }
     
-    private void disableAllFields(){
-    //TODO zabraniava za korektsia vsichki poleta
+    private void disableAllFields() {
+        jComboBox1.setEnabled(false);
+        jComboBox2.setEnabled(false);
+        jTextField1.setEnabled(false);
+        jTextField4.setEnabled(false);
+        jTextField6.setEnabled(false);
+        jTextField7.setEnabled(false);
     }
-    private void enableAllFieldsIsNew(){
-    //TODO razreshava poletata neobhodimi za novia order
     
+    private void enableAllFieldsIsNew() {
+        jComboBox1.setEnabled(true);
+        jComboBox2.setEnabled(true);
+        jTextField1.setEnabled(true);
+        jTextField4.setEnabled(true);
+        jTextField6.setEnabled(true);
+        jTextField7.setEnabled(true);
     }
     
     //TODO transfera na fokusa da e pravilen 
-} // end class
+}

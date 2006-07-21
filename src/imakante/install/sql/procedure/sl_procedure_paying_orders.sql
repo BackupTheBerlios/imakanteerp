@@ -175,6 +175,24 @@ BEGIN
         SELECT p.id_ls_n_person, p.name_ls_n_person FROM ls_n_person p
             WHERE p.name_ls_n_person = in_pname;
      END IF;
+
+     IF (comprator = 18) THEN
+        IF (in_SOT = 1) THEN 
+            SELECT cn.id_contragent, cn.code_contragent, cn.name_n_contragent, cn.BANKNAMER, cn.BICR, cn.IBANR, cn.VIDVALR  
+                FROM n_contragent cn
+                WHERE cn.id_contragent = in_id;
+        END IF;
+        IF (in_SOT = 2) THEN 
+            SELECT cn.id_contragent, cn.code_contragent, cn.name_n_contragent, cn.BANKNAMED, cn.BICD, cn.IBAND, cn.VIDVALD  
+                FROM n_contragent cn
+                WHERE cn.id_contragent = in_id;
+        END IF;
+     END IF;
+
+     IF (comprator = 19) THEN
+        SELECT p.id_ls_n_person, p.name_ls_n_person FROM ls_n_person p
+            WHERE p.id_ls_n_person = in_id;
+     END IF;
 END $$
 
 DELIMITER ;
