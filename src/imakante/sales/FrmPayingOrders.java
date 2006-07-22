@@ -1112,7 +1112,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         } catch (java.sql.SQLException sqlex) { sqlex.printStackTrace(); }
     }
     
-    private void setValuesFromPersonId(int id) {
+    protected void setValuesFromPersonId(int id) {
         setIdChosenPerson(0);
         setNameChosenPerson("");
         java.sql.ResultSet rsP = null;
@@ -1179,7 +1179,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         }
     }
     
-    private void setValuesFromContragentId(int id) {
+    protected void setValuesFromContragentId(int id) {
         setIdChosenContragent(0);
         setCodeChosenContragent(0);
         setNameChosenContragent("");

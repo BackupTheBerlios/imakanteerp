@@ -509,6 +509,13 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButtonToBeginKeyPressed
         
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
+        if (!areThereEmptyFields())
+            saveRecord();
+        else { 
+            javax.swing.JOptionPane.showMessageDialog(null, "\u041F\u043E\u043B\u0435\u0442\u0430\u0442\u0430 \u0418\u043C\u0435, \u041A\u043E\u0434, \u0421\u0443\u043C\u0430 \u0438 \u041E\u0441\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u0441\u0430 \u0437\u0430\u0434\u044A\u043B\u0436\u0438\u0442\u0435\u043B\u043D\u0438! " +
+                    "\u041C\u043E\u043B\u044F \u0437\u0430\u0434\u0430\u0439\u0442\u0435 \u0441\u0442\u043E\u0439\u043D\u043E\u0441\u0442 \u0437\u0430 \u0432\u0441\u044F\u043A\u043E \u043E\u0442 \u0442\u044F\u0445!",
+                    "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
         saveRecord();
         jButtonSave.setEnabled(false);
         jButtonPrint.setEnabled(true);
@@ -517,15 +524,11 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonCloseActionPerformed
-    
-    // TODO dwijenieto da e pod4ineno na fokusa wyrhu poleto s now zapis
-    // isNewRecord == true -> disableAllFields()
-    // isNewRecord == false -> enableAllFields()
-
     // gotoNext
     private void jButtonOneRowPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowPActionPerformed
         myParent.mOneRowPlus();
         if(myParent.isAtEnd()) {
+            enableAllFieldsIsNew();
             jButtonToEnd.setEnabled(false);
             jButtonOneRowP.setEnabled(false);
             jButtonSave.setEnabled(false);
@@ -543,8 +546,9 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButtonOneRowPActionPerformed
     // gotoLast
     private void jButtonToEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToEndActionPerformed
-//        jButtonSave.setEnabled(false);
-//        jButtonPrint.setEnabled(true);
+        enableAllFieldsIsNew();
+        jButtonSave.setEnabled(false);
+        jButtonPrint.setEnabled(true);
         myParent.mTableEnd();
         jButtonToEnd.setEnabled(false);
         jButtonOneRowP.setEnabled(false);
@@ -558,6 +562,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButtonToEndActionPerformed
     // gotoPrev
     private void jButtonOneRowMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowMActionPerformed
+        disableAllFields();
         jButtonSave.setEnabled(false);
         jButtonPrint.setEnabled(true);
         myParent.mOneRowMinus();
@@ -575,6 +580,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButtonOneRowMActionPerformed
     // gotoFirst
     private void jButtonToBeginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToBeginActionPerformed
+        disableAllFields();
         jButtonSave.setEnabled(false);
         jButtonPrint.setEnabled(true);
         myParent.mTableBegining();
@@ -638,10 +644,6 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     
     //SAVE
     private void saveRecord() {
-        
-        // TODO proverka za prazni poleta: NamePerson, CodeContragent, NameContragent, Amount, Osnovanie
-        
-        
         try {
             myParent.setAmount(Double.parseDouble(jTextField4.getText()));
         } catch (NumberFormatException nfex) { nfex.printStackTrace(); }
@@ -665,15 +667,13 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         myParent.getTable().changeSelection(myParent.getRow(), 2, false, false);
     }
     
-    //UNDO
-    private void undoCorr() {
-//        myParent.setIDG(oldIDG);
-//        myParent.setCode(oldCode);
-//        myParent.setEGN(oldEGN);
-//        myParent.setNLK(oldNLK);
-//        myParent.setNames(oldName);
-//        myParent.setComment(oldComment);
-        repaintComp();
+    private boolean areThereEmptyFields() {
+        if (jTextField1.getText().equals("") ||         // CodeContragent
+                jTextField4.getText().equals("") ||     // Suma
+                jTextField6.getText().equals("") ||     // Osnovanie
+                jTextField8.getText().equals(""))       // NamePerson
+            return true;
+        else return false;
     }
     
     private void getNavigationState() {
@@ -748,7 +748,8 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }
     
     private void revalidateContragent() {
-        myParent.validateContragentByCode(getSearchCode());
+//        myParent.validateContragentByCode(getSearchCode());
+        myParent.setValuesFromContragentId(myParent.getIdChosenContragent());
         this.jTextField1.setText("" + myParent.getCodeChosenContragent());
         this.jTextField2.setText(myParent.getNameChosenContragent());
         this.jTextField3.setText(myParent.getChosenIBAN());

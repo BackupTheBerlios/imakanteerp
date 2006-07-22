@@ -6,6 +6,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     public aePayingOrdersJP(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
         super(frame, modal);
         this.myParent = (imakante.sales.FrmPayingOrders) frame;
+        this.isNewRecord = true;
         initComponents();
         getNavigationState();
         initOrderTypesCombo();
@@ -431,7 +432,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jComboBox1FocusGained
     
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        if(!this.isFromF7) 
+        if(!this.isFromF7)
             revalidateContragent();
         fLost(jTextField1);
     }//GEN-LAST:event_jTextField1FocusLost
@@ -504,7 +505,14 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButtonToBeginKeyPressed
     
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
-        saveRecord();
+        if (!areThereEmptyFields())
+            saveRecord();
+        else { 
+            javax.swing.JOptionPane.showMessageDialog(null, "\u041F\u043E\u043B\u0435\u0442\u0430\u0442\u0430 \u041A\u043E\u0434, \u0421\u0443\u043C\u0430 \u0438 \u041E\u0441\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u0441\u0430 \u0437\u0430\u0434\u044A\u043B\u0436\u0438\u0442\u0435\u043B\u043D\u0438! " +
+                    "\u041C\u043E\u043B\u044F \u0437\u0430\u0434\u0430\u0439\u0442\u0435 \u0441\u0442\u043E\u0439\u043D\u043E\u0441\u0442 \u0437\u0430 \u0432\u0441\u044F\u043A\u043E \u043E\u0442 \u0442\u044F\u0445!",
+                    "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+        this.isNewRecord = false;
         jButtonSave.setEnabled(false);
         jButtonPrint.setEnabled(true);
     }//GEN-LAST:event_jButtonSaveActionPerformed
@@ -512,15 +520,11 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonCloseActionPerformed
-    
-    // TODO dwijenieto da e pod4ineno na fokusa wyrhu poleto s now zapis
-    // isNewRecord == true -> disableAllFields()
-    // isNewRecord == false -> enableAllFields()
-
     // gotoNext
     private void jButtonOneRowPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowPActionPerformed
         myParent.mOneRowPlus();
         if(myParent.isAtEnd()) {
+            enableAllFieldsIsNew();
             jButtonToEnd.setEnabled(false);
             jButtonOneRowP.setEnabled(false);
             jButtonSave.setEnabled(false);
@@ -538,8 +542,9 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButtonOneRowPActionPerformed
     // gotoLast
     private void jButtonToEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToEndActionPerformed
-//        jButtonSave.setEnabled(false);
-//        jButtonPrint.setEnabled(true);
+        enableAllFieldsIsNew();
+        jButtonSave.setEnabled(false);
+        jButtonPrint.setEnabled(true);
         myParent.mTableEnd();
         jButtonToEnd.setEnabled(false);
         jButtonOneRowP.setEnabled(false);
@@ -553,6 +558,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButtonToEndActionPerformed
     // gotoPrev
     private void jButtonOneRowMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowMActionPerformed
+        disableAllFields();
         jButtonSave.setEnabled(false);
         jButtonPrint.setEnabled(true);
         myParent.mOneRowMinus();
@@ -570,6 +576,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButtonOneRowMActionPerformed
     // gotoFirst
     private void jButtonToBeginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToBeginActionPerformed
+        disableAllFields();
         jButtonSave.setEnabled(false);
         jButtonPrint.setEnabled(true);
         myParent.mTableBegining();
@@ -633,12 +640,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     
     //SAVE
     private void saveRecord() {
-        
-        //TODO proverka za prazni poleta: CodeContragent, NameContragent, Amount, Osnovanie
-        //
-        
         try {
-            
             myParent.setAmount(Double.parseDouble(jTextField4.getText()));
         } catch (NumberFormatException nfex) { nfex.printStackTrace(); }
         // Tip na platejnoto narejdane: mejdu id-to w tablicata i id-to w komboto ima otmestwane 2 !!!!! :( ????????
@@ -658,6 +660,14 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
                 myParent.getPoiasnenie());
         myParent.refreshTable();
         myParent.getTable().changeSelection(myParent.getRow(), 2, false, false);
+    }
+    
+    private boolean areThereEmptyFields() {
+        if (jTextField1.getText().equals("") ||         // CodeContragent
+                jTextField4.getText().equals("") ||     // Suma
+                jTextField6.getText().equals(""))       // Osnovanie
+            return true;
+        else return false;
     }
     
     private void getNavigationState() {
@@ -756,12 +766,12 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }
     
     private void fGain(javax.swing.JComponent jtf) {
-        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, 
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED,
                 new java.awt.Color(255, 0, 51), null));
     }
     
     private void fLost(javax.swing.JComponent jtf) {
-        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, 
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED,
                 new java.awt.Color(255, 255, 255), null));
     }
     
