@@ -512,6 +512,11 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonCloseActionPerformed
+    
+    // TODO dwijenieto da e pod4ineno na fokusa wyrhu poleto s now zapis
+    // isNewRecord == true -> disableAllFields()
+    // isNewRecord == false -> enableAllFields()
+
     // gotoNext
     private void jButtonOneRowPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowPActionPerformed
         myParent.mOneRowPlus();
@@ -629,9 +634,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     //SAVE
     private void saveRecord() {
         
-        //TODO da se napravi proverka  predi tri
-        //sas if)()
-        //dali double poleto za suma e popalneto
+        //TODO proverka za prazni poleta: CodeContragent, NameContragent, Amount, Osnovanie
         //
         
         try {
