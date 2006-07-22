@@ -189,7 +189,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
             .add(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u041d\u0430\u0440\u0435\u0434\u0438\u0442\u0435\u043b - \u042e\u0440\u0438\u0434\u0438\u0447\u0435\u0441\u043a\u043e \u043b\u0438\u0446\u0435", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 51, 153)));
@@ -263,7 +263,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
 
         jTextField4.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField4.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        jTextField4.setInputVerifier(new imakante.com.InputDoubleVerifier());
+        jTextField4.setInputVerifier(new imakante.com.InputPriceVerifier());
         jTextField4.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField4FocusGained(evt);
@@ -431,10 +431,8 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jComboBox1FocusGained
     
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        if(this.isFromF7){
-            
-        }else{
-            revalidateContragent();}
+        if(!this.isFromF7) 
+            revalidateContragent();
         fLost(jTextField1);
     }//GEN-LAST:event_jTextField1FocusLost
     
@@ -474,8 +472,9 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jTextField1.transferFocus();
-        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) { getContragent();
-        this.isFromF7 = true;
+        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) {
+            getContragent();
+            this.isFromF7 = true;
         } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_INSERT) { getContragent();
         } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextField1.setText(""); }
     }//GEN-LAST:event_jTextField1KeyPressed
@@ -631,8 +630,8 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     private void saveRecord() {
         
         //TODO da se napravi proverka  predi tri
-        //sas if)() 
-        //dali double poleto za suma e popalneto 
+        //sas if)()
+        //dali double poleto za suma e popalneto
         //
         
         try {
@@ -726,22 +725,16 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }
     
     private void getContragent() {
-        try {
-            if (jTextField1.getText().equals("")) {
-                myParent.chooseContragent(-1);
-            } else {
-                myParent.chooseContragent(getSearchCode());
-            }
-        } catch (NumberFormatException ex) { ex.printStackTrace(); }
+        myParent.chooseContragent(getSearchCode());
     }
     
-    private int getSearchCode(){
+    private int getSearchCode() {
         int i = 0;
         try {
-            if(jTextField1.getText().equals("")) { 
+            if(jTextField1.getText().equals("")) {
                 i = 0;
-            } else { 
-                i =  Integer.parseInt(jTextField1.getText()); 
+            } else {
+                i =  Integer.parseInt(jTextField1.getText());
             }
             return i;
         } catch (NumberFormatException ex) {
@@ -759,12 +752,14 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         this.jTextField5.setText(myParent.getChosenCurrency());
     }
     
-    private void fGain(javax.swing.JComponent jtf){
-        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 0, 51), null));
+    private void fGain(javax.swing.JComponent jtf) {
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, 
+                new java.awt.Color(255, 0, 51), null));
     }
     
-    private void fLost(javax.swing.JComponent jtf){
-        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 255, 255), null));
+    private void fLost(javax.swing.JComponent jtf) {
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, 
+                new java.awt.Color(255, 255, 255), null));
     }
     
     public int getSelectedOrderType() {
@@ -787,10 +782,15 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         isFromF7 = false;
     }
     
-    public static void changeField() {
-        //TODO vzima stoinostite ot Frm i na tiahna baza
-        //pravi repaint na textovite poleta
-        
+    public void changeField() {
+        jTextField1.setText("" + myParent.getCodeChosenContragent());
+        jTextField1.repaint();
+        jTextField2.setText(myParent.getNameChosenContragent());
+        jTextField2.repaint();
+        jTextField3.setText(myParent.getChosenIBAN());
+        jTextField3.repaint();
+        jTextField5.setText(myParent.getChosenCurrency());
+        jTextField5.repaint();
     }
     
     private void disableAllFields() {
@@ -811,5 +811,4 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         jTextField7.setEnabled(true);
     }
     
-    //TODO transfera na fokusa da e pravilen 
 }
