@@ -1287,10 +1287,10 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         setId((Integer) getTable().getValueAt(getRow(), getColumnIndex("id")));
         setOrderingPerson((Integer) getTable().getValueAt(getRow(), getColumnIndex("ordering_person")));
         setIdOrderType((Integer) getTable().getValueAt(getRow(), getColumnIndex("id_type_porder")));
-        if (getOrderingPerson() == 0) {
+        if (jRadioButton1.isSelected()) {
             setIdBankAccount((Integer) getTable().getValueAt(getRow(), getColumnIndex("id_bank_account")));
         }
-        if (getOrderingPerson() == 1) {
+        if (jRadioButton1.isSelected()) {
             setIdPerson((Integer) getTable().getValueAt(getRow(), getColumnIndex("id_ls_n_person")));
         }
         setIdContragent((Integer) getTable().getValueAt(getRow(), getColumnIndex("id_contragent")));

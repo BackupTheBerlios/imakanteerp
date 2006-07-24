@@ -432,7 +432,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jComboBox1FocusGained
     
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        if(!this.isFromF7) 
+        if(!this.isFromF7)
             revalidateContragent();
         fLost(jTextField1);
     }//GEN-LAST:event_jTextField1FocusLost
@@ -508,13 +508,13 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         if (!areThereEmptyFields()) {
             saveRecord();
             this.isNewRecord = false;
-        } else { 
+            jButtonSave.setEnabled(false);
+            jButtonPrint.setEnabled(true);
+        } else {
             javax.swing.JOptionPane.showMessageDialog(null, "\u041F\u043E\u043B\u0435\u0442\u0430\u0442\u0430 \u041A\u043E\u0434, \u0421\u0443\u043C\u0430 \u0438 \u041E\u0441\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u0441\u0430 \u0437\u0430\u0434\u044A\u043B\u0436\u0438\u0442\u0435\u043B\u043D\u0438! " +
                     "\u041C\u043E\u043B\u044F \u0437\u0430\u0434\u0430\u0439\u0442\u0435 \u0441\u0442\u043E\u0439\u043D\u043E\u0441\u0442 \u0437\u0430 \u0432\u0441\u044F\u043A\u043E \u043E\u0442 \u0442\u044F\u0445!",
                     "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
-        jButtonSave.setEnabled(false);
-        jButtonPrint.setEnabled(true);
     }//GEN-LAST:event_jButtonSaveActionPerformed
     
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
@@ -524,7 +524,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     private void jButtonOneRowPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowPActionPerformed
         myParent.mOneRowPlus();
         if(myParent.isAtEnd()) {
-            if (isNewRecord) 
+            if (isNewRecord)
                 enableAllFieldsIsNew();
             jButtonToEnd.setEnabled(false);
             jButtonOneRowP.setEnabled(false);
@@ -543,7 +543,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButtonOneRowPActionPerformed
     // gotoLast
     private void jButtonToEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToEndActionPerformed
-        if (isNewRecord) 
+        if (isNewRecord)
             enableAllFieldsIsNew();
         jButtonSave.setEnabled(false);
         jButtonPrint.setEnabled(true);
