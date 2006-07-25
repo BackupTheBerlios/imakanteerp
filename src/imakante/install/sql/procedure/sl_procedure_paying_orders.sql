@@ -182,7 +182,7 @@ BEGIN
         IF (in_SOT = 1) THEN 
             SELECT cn.id_contragent, cn.code_contragent, cn.name_n_contragent, cn.BANKNAMER, cn.BICR, cn.IBANR, cn.VIDVALR  
                 FROM n_contragent cn
-                WHERE cn.id_contragent = in_id AND nc.flag_n_contragent = 0;
+                WHERE cn.id_contragent = in_id AND cn.flag_n_contragent = 0;
         END IF;
         IF (in_SOT = 2) THEN 
             SELECT cn.id_contragent, cn.code_contragent, cn.name_n_contragent, cn.BANKNAMED, cn.BICD, cn.IBAND, cn.VIDVALD  
