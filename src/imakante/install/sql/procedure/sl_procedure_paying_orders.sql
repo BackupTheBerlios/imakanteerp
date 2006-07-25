@@ -16,9 +16,9 @@ BEGIN
             FROM sl_paying_orders po 
             LEFT OUTER JOIN sl_porder_types pt ON pt.id_spt = po.id_spt 
             LEFT OUTER JOIN n_baccount nb ON nb.id_nbc = po.id_nbc 
-            LEFT OUTER JOIN n_contragent nc ON nc.id_contragent = po.id_contragent 
+            LEFT OUTER JOIN n_contragent nc ON nc.id_contragent = po.id_contragent AND nc.flag_n_contragent = 0  
             LEFT OUTER JOIN n_type_bacc tb ON tb.id_tbacc = nb.id_tbacc 
-            WHERE po.ordering_person = 0  AND nc.flag_n_contragent = 0 
+            WHERE po.ordering_person = 0 
             ORDER BY po.id_spo ASC;
         END IF;
         IF (in_order_person = 1) THEN
@@ -28,8 +28,8 @@ BEGIN
             FROM sl_paying_orders po 
             LEFT OUTER JOIN sl_porder_types pt ON pt.id_spt = po.id_spt  
             LEFT OUTER JOIN ls_n_person p ON p.id_ls_n_person = po.id_ls_n_person 
-            LEFT OUTER JOIN n_contragent nc ON nc.id_contragent = po.id_contragent 
-            WHERE po.ordering_person = 1  AND nc.flag_n_contragent = 0 
+            LEFT OUTER JOIN n_contragent nc ON nc.id_contragent = po.id_contragent AND nc.flag_n_contragent = 0  
+            WHERE po.ordering_person = 1 
             ORDER BY po.id_spo ASC;
         END IF;
      END IF;
@@ -57,9 +57,9 @@ BEGIN
             FROM sl_paying_orders po 
             LEFT OUTER JOIN sl_porder_types pt ON pt.id_spt = po.id_spt
             LEFT OUTER JOIN n_baccount nb ON nb.id_nbc = po.id_nbc 
-            LEFT OUTER JOIN n_contragent nc ON nc.id_contragent = po.id_contragent 
+            LEFT OUTER JOIN n_contragent nc ON nc.id_contragent = po.id_contragent AND nc.flag_n_contragent = 0
             LEFT OUTER JOIN n_type_bacc tb ON tb.id_tbacc = nb.id_tbacc 
-            WHERE po.id_spo = in_id AND nc.flag_n_contragent = 0;
+            WHERE po.id_spo = in_id;
      END IF;
 
      IF (comprator = 5) THEN
@@ -70,9 +70,9 @@ BEGIN
             FROM sl_paying_orders po 
             LEFT OUTER JOIN sl_porder_types pt ON pt.id_spt = po.id_spt
             LEFT OUTER JOIN n_baccount nb ON nb.id_nbc = po.id_nbc 
-            LEFT OUTER JOIN n_contragent nc ON nc.id_contragent = po.id_contragent  
+            LEFT OUTER JOIN n_contragent nc ON nc.id_contragent = po.id_contragent AND nc.flag_n_contragent = 0  
             LEFT OUTER JOIN n_type_bacc tb ON tb.id_tbacc = nb.id_tbacc
-            WHERE  nc.name_contragent LIKE CONCAT('%',in_name,'%') AND nc.flag_n_contragent = 0    
+            WHERE  nc.name_contragent LIKE CONCAT('%',in_name,'%')    
             ORDER BY po.id_spt ASC;
         END IF;
         IF (in_code > -1 ) THEN
@@ -82,10 +82,9 @@ BEGIN
             FROM sl_paying_orders po 
             LEFT OUTER JOIN sl_porder_types pt ON pt.id_spt = po.id_spt
             LEFT OUTER JOIN n_baccount nb ON nb.id_nbc = po.id_nbc 
-            LEFT OUTER JOIN n_contragent nc ON nc.id_contragent = po.id_contragent  
+            LEFT OUTER JOIN n_contragent nc ON nc.id_contragent = po.id_contragent AND nc.flag_n_contragent = 0   
             LEFT OUTER JOIN n_type_bacc tb ON tb.id_tbacc = nb.id_tbacc 
-            WHERE nc.code_contragent LIKE CONCAT('%',in_code,'%') AND nc.name_n_contragent LIKE CONCAT('%',in_name,'%')
-                 AND nc.flag_n_contragent = 0 
+            WHERE nc.code_contragent LIKE CONCAT('%',in_code,'%') AND nc.name_n_contragent LIKE CONCAT('%',in_name,'%') 
             ORDER BY po.id_spt ASC;
         END IF;
      END IF;
@@ -133,24 +132,24 @@ BEGIN
      IF (comprator = 14) THEN
         IF (in_code = -1 AND in_SOT = 1) THEN 
             SELECT cn.id_contragent, cn.code_contragent, cn.name_n_contragent, cn.BANKNAMER, cn.BICR, cn.IBANR, cn.VIDVALR  
-                FROM n_contragent cn WHERE nc.flag_n_contragent = 0 
+                FROM n_contragent cn WHERE cn.flag_n_contragent = 0 
                 ORDER BY cn.id_contragent ASC;
         END IF;
         IF (in_code > -1 AND in_SOT = 1) THEN 
             SELECT cn.id_contragent, cn.code_contragent, cn.name_n_contragent, cn.BANKNAMER, cn.BICR, cn.IBANR, cn.VIDVALR  
                 FROM n_contragent cn
-                WHERE cn.code_contragent LIKE CONCAT('%',in_code,'%') AND nc.flag_n_contragent = 0 
+                WHERE cn.code_contragent LIKE CONCAT('%',in_code,'%') AND cn.flag_n_contragent = 0 
                 ORDER BY cn.id_contragent ASC;
         END IF;
         IF (in_code = -1 AND in_SOT = 2) THEN 
             SELECT cn.id_contragent, cn.code_contragent, cn.name_n_contragent, cn.BANKNAMED, cn.BICD, cn.IBAND, cn.VIDVALD  
-                FROM n_contragent cn WHERE nc.flag_n_contragent = 0 
+                FROM n_contragent cn WHERE cn.flag_n_contragent = 0 
                 ORDER BY cn.id_contragent ASC;
         END IF;
         IF (in_code > -1 AND in_SOT = 2) THEN 
             SELECT cn.id_contragent, cn.code_contragent, cn.name_n_contragent, cn.BANKNAMED, cn.BICD, cn.IBAND, cn.VIDVALD  
                 FROM n_contragent cn
-                WHERE cn.code_contragent LIKE CONCAT('%',in_code,'%') AND nc.flag_n_contragent = 0  
+                WHERE cn.code_contragent LIKE CONCAT('%',in_code,'%') AND cn.flag_n_contragent = 0  
                 ORDER BY cn.id_contragent ASC;
         END IF;
      END IF;
@@ -165,12 +164,12 @@ BEGIN
         IF (in_SOT = 1) THEN 
             SELECT cn.id_contragent, cn.code_contragent, cn.name_n_contragent, cn.BANKNAMER, cn.BICR, cn.IBANR, cn.VIDVALR  
                 FROM n_contragent cn 
-                WHERE cn.code_contragent = in_code AND nc.flag_n_contragent = 0;
+                WHERE cn.code_contragent = in_code AND cn.flag_n_contragent = 0;
         END IF;
         IF (in_SOT = 2) THEN 
             SELECT cn.id_contragent, cn.code_contragent, cn.name_n_contragent, cn.BANKNAMED, cn.BICD, cn.IBAND, cn.VIDVALD  
                 FROM n_contragent cn 
-                WHERE cn.code_contragent = in_code AND nc.flag_n_contragent = 0;
+                WHERE cn.code_contragent = in_code AND cn.flag_n_contragent = 0;
         END IF;
      END IF;
 
@@ -188,7 +187,7 @@ BEGIN
         IF (in_SOT = 2) THEN 
             SELECT cn.id_contragent, cn.code_contragent, cn.name_n_contragent, cn.BANKNAMED, cn.BICD, cn.IBAND, cn.VIDVALD  
                 FROM n_contragent cn
-                WHERE cn.id_contragent = in_id AND nc.flag_n_contragent = 0;
+                WHERE cn.id_contragent = in_id AND cn.flag_n_contragent = 0;
         END IF;
      END IF;
 
