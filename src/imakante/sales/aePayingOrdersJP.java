@@ -651,7 +651,8 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         myParent.setIdContragent(myParent.getIdChosenContragent());
         myParent.setOsnovanie(jTextField6.getText());
         myParent.setPoiasnenie(jTextField7.getText());
-        revalidateContragent();
+        // Posledna prowerka za walidnost na kontragenta
+        myParent.setValuesFromContragentId(myParent.getIdChosenContragent());
         myParent.getInternalObject().updateRow(myParent.getId(),
                 0,  // Juricdical person
                 myParent.getIdOrderType(),
