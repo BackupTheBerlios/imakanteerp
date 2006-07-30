@@ -32,7 +32,7 @@
 	<parameter name="contragent" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="IBAN" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="currency" isForPrompting="false" class="java.lang.String"/>
-	<parameter name="amount" isForPrompting="false" class="java.math.BigDecimal"/>
+	<parameter name="amount" isForPrompting="false" class="java.lang.Double"/>
 	<parameter name="words" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="person" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="reason" isForPrompting="false" class="java.lang.String"/>
@@ -396,7 +396,7 @@
 					<textElement>
 						<font fontName="Tahoma" size="14"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{bank}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{bank}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -409,7 +409,7 @@
 					<textElement>
 						<font fontName="Tahoma" size="14"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{branch}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{branch}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -422,7 +422,7 @@
 					<textElement>
 						<font fontName="Tahoma" size="14"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{address}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{address}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement
@@ -474,7 +474,7 @@
 					<textElement verticalAlignment="Middle">
 						<font fontName="Tahoma" size="12"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{place}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{place}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="dd MMMMM yyyy" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -500,7 +500,7 @@
 					<textElement verticalAlignment="Bottom">
 						<font fontName="Tahoma" size="14"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{contragent}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{contragent}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -526,7 +526,7 @@
 					<textElement verticalAlignment="Bottom">
 						<font fontName="Tahoma" size="14"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{bank} + " - " ]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{bank} + " - "]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -552,7 +552,7 @@
 					<textElement verticalAlignment="Bottom">
 						<font fontName="Tahoma" size="14"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{words}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{words}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -565,7 +565,7 @@
 					<textElement verticalAlignment="Bottom">
 						<font fontName="Tahoma" size="14"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{person}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{person}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -578,7 +578,7 @@
 					<textElement verticalAlignment="Bottom">
 						<font fontName="Tahoma" size="14"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{reason}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{reason}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -604,7 +604,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Bottom">
 						<font fontName="Tahoma" size="14"/>
 					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$P{amount}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.Double"><![CDATA[$P{amount}]]></textFieldExpression>
 				</textField>
 				<rectangle radius="5" >
 					<reportElement
@@ -947,7 +947,7 @@
 					<textElement>
 						<font fontName="Tahoma" size="14"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{bank}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{bank}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -960,7 +960,7 @@
 					<textElement>
 						<font fontName="Tahoma" size="14"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{branch}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{branch}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -973,7 +973,7 @@
 					<textElement>
 						<font fontName="Tahoma" size="14"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{address}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{address}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement
@@ -1025,7 +1025,7 @@
 					<textElement verticalAlignment="Middle">
 						<font fontName="Tahoma" size="12"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{place}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{place}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="dd MMMMM yyyy" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -1051,7 +1051,7 @@
 					<textElement verticalAlignment="Bottom">
 						<font fontName="Tahoma" size="14"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{contragent}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{contragent}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -1077,7 +1077,7 @@
 					<textElement verticalAlignment="Bottom">
 						<font fontName="Tahoma" size="14"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{bank} + " - " ]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{bank} + " - "]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -1103,7 +1103,7 @@
 					<textElement verticalAlignment="Bottom">
 						<font fontName="Tahoma" size="14"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{words}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{words}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -1116,7 +1116,7 @@
 					<textElement verticalAlignment="Bottom">
 						<font fontName="Tahoma" size="14"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{person}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{person}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -1129,7 +1129,7 @@
 					<textElement verticalAlignment="Bottom">
 						<font fontName="Tahoma" size="14"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[ $P{reason}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{reason}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -1155,7 +1155,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Bottom">
 						<font fontName="Tahoma" size="14"/>
 					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$P{amount}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.Double"><![CDATA[$P{amount}]]></textFieldExpression>
 				</textField>
 			</band>
 		</detail>
