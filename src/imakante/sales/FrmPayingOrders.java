@@ -1002,10 +1002,6 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             hm.put("words", prcT.getEndString().toUpperCase());
             hm.put("person", " –¿—»Ã»–¿ œ≈“–Œ¬¿");
             hm.put("reason", this.getOsnovanie().toUpperCase());
-            System.out.println("bank: " + hm.get("bank"));
-            System.out.println("amount: " + hm.get("amount"));
-            System.out.println("words: " + hm.get("words"));
-            System.out.println("reason" + hm.get("reason"));
         } else {  }
         imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, getTable(), null,
                 hm, jasperFile, "", "");
