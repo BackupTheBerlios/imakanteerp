@@ -520,10 +520,6 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     "\u0421\u043C\u0435\u0442\u043A\u0430 (IBAN) \u043F\u043E \u0440\u0430\u0437\u043F\u043B\u0430\u0449\u0430\u043D\u0438\u044F",
     "\u0411\u0430\u043D\u043A\u043E\u0432 \u043A\u043E\u0434 (BIC) - \u0440\u0430\u0437\u043F\u043B\u0430\u0449\u0430\u043D\u0438\u044F",
     "\u0412\u0430\u043B\u0443\u0442\u0430 \u043F\u043E \u0440\u0430\u0437\u043F\u043B\u0430\u0449\u0430\u043D\u0435",
-    "\u0411\u0430\u043D\u043A\u0430 \u043F\u043E \u0414\u0414\u0421",
-    "\u0421\u043C\u0435\u0442\u043A\u0430 (IBAN) \u043F\u043E \u0414\u0414\u0421",
-    "\u0411\u0430\u043D\u043A\u043E\u0432 \u043A\u043E\u0434 (BIC) - \u0414\u0414\u0421",
-    "\u0412\u0430\u043B\u0443\u0442\u0430 \u043F\u043E \u0414\u0414\u0421",
     "\u0421\u0443\u043C\u0430",
     "\u041E\u0441\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
     "\u041F\u043E\u044F\u0441\u043D\u0435\u043D\u0438\u044F",
@@ -1006,6 +1002,10 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             hm.put("words", prcT.getEndString().toUpperCase());
             hm.put("person", " –¿—»Ã»–¿ œ≈“–Œ¬¿");
             hm.put("reason", this.getOsnovanie().toUpperCase());
+            System.out.println("bank: " + hm.get("bank"));
+            System.out.println("amount: " + hm.get("amount"));
+            System.out.println("words: " + hm.get("words"));
+            System.out.println("reason" + hm.get("reason"));
         } else {  }
         imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, getTable(), null,
                 hm, jasperFile, "", "");
