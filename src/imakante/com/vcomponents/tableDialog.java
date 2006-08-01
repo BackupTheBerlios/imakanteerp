@@ -158,8 +158,9 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
     
     private boolean tableVizible = true;
     
-    private void transferValue(){
-        myParent.setIntTransfer((Integer)InternalTable.getValueAt(InternalTable.getSelectedRow(),getColumnIndex(searchField)));
+    private void transferValue() {
+        int selectedRecordId = (Integer)InternalTable.getValueAt(InternalTable.getSelectedRow(), getColumnIndex("id"));
+        myParent.setIntTransfer(selectedRecordId);
     }
     
     private void prepareJassper() throws java.io.FileNotFoundException {

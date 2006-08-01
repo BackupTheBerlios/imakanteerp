@@ -424,13 +424,12 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jTextField8FocusLost
     
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        revalidateContragent();
+        if(!this.isFromF7)
+            revalidateContragent();
         fLost(jTextField1);
     }//GEN-LAST:event_jTextField1FocusLost
     
     private void jTextField4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusLost
-        if(!this.isFromF7)
-            revalidateContragent();
         fLost(jTextField4);
     }//GEN-LAST:event_jTextField4FocusLost
     
