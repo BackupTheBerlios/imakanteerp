@@ -432,7 +432,8 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jComboBox1FocusGained
     
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        if(!this.isFromF7)
+        System.out.println("ID chosen person: " + myParent.getIdChosenContragent());
+        if(!this.isFromF7 && (myParent.getIdChosenContragent() == 0))
             revalidateContragent();
         fLost(jTextField1);
     }//GEN-LAST:event_jTextField1FocusLost

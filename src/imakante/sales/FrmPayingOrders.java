@@ -976,7 +976,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             hm.put("contragent", " ŒÕ“–¿√≈Õ“ ≈ŒŒƒ.");
             hm.put("IBANcontragent", "BG5531GKS15154143878458");
             hm.put("BICcontragent", "BGGKSYTR");
-            hm.put("BANKcontragent", "BG5531GKS15154143878458");
+            hm.put("BANKcontragent", " Œ–œŒ–¿“»¬Õ¿ “⁄–√Œ¬— ¿ ¡¿Õ ¿");
             hm.put("currency", "BGN");
             hm.put("amount", this.getAmount());
             hm.put("reason", this.getOsnovanie().toUpperCase());
@@ -1003,8 +1003,8 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             hm.put("person", " –¿—»Ã»–¿ œ≈“–Œ¬¿");
             hm.put("reason", this.getOsnovanie().toUpperCase());
         } else {  }
-        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, getTable(), null,
-                hm, jasperFile, "", "");
+        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, getTable(), getConn(),
+                hm, jasperFile, "\u0418\u0437\u0433\u043B\u0435\u0434 \u043D\u0430 \u043F\u043B\u0430\u0442\u0435\u0436\u043D\u043E\u0442\u043E \u043D\u0430\u0440\u0435\u0436\u0434\u0430\u043D\u0435", "");
         td.setVisible(true);
     }
     
@@ -1090,7 +1090,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         this.CompNumber = 2;
         td = new imakante.com.vcomponents.tableDialog(this, true, tableP,
                 "\u0421\u043C\u0435\u0442\u043A\u0430\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u043F\u043E\u0434\u043E\u0442\u0447\u0435\u0442\u043D\u043E \u043B\u0438\u0446\u0435",
-                "", "\u0418\u043C\u0435\u043D\u0430");
+                "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u043F\u043E\u0434\u043E\u0442\u0447\u0435\u0442\u043D\u043E \u043B\u0438\u0446\u0435", "\u0418\u043C\u0435\u043D\u0430");
         td.setVisible(true);
     }
     
@@ -1138,7 +1138,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         this.CompNumber = 1;
         td = new imakante.com.vcomponents.tableDialog(this, true, tableC,
                 "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u043A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442",
-                "", "\u041A\u043E\u0434");
+                "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u043A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442", "\u041A\u043E\u0434");
         td.setVisible(true);
     }
     
@@ -1179,10 +1179,6 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     
     protected void setValuesFromContragentId(int id) {
         int idC = getIdChosenContragent();
-//        int codeC = getCodeChosenContragent();
-//        String nameC = getNameChosenContragent();
-//        String ibanC = getChosenIBAN();
-//        String currencyC = getChosenCurrency();
         if (idC != id) {
             java.sql.ResultSet rsC = null;
             try {
@@ -1208,7 +1204,6 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
                     app.changeField();
             } catch (SQLException ex) { ex.printStackTrace(); }
         }
-        
     }
     
     private int getColumnIndex(String in) {

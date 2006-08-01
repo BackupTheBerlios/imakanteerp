@@ -23,20 +23,20 @@
 	<import value="net.sf.jasperreports.engine.*" />
 	<import value="net.sf.jasperreports.engine.data.*" />
 
-	<parameter name="bank" isForPrompting="false" class="java.lang.String"/>
-	<parameter name="branch" isForPrompting="false" class="java.lang.String"/>
-	<parameter name="address" isForPrompting="false" class="java.lang.String"/>
-	<parameter name="contragent" isForPrompting="false" class="java.lang.String"/>
-	<parameter name="IBANcontragent" isForPrompting="false" class="java.lang.String"/>
-	<parameter name="BICcontragent" isForPrompting="false" class="java.lang.String"/>
-	<parameter name="BANKcontragent" isForPrompting="false" class="java.lang.String"/>
-	<parameter name="currency" isForPrompting="false" class="java.lang.String"/>
-	<parameter name="amount" isForPrompting="false" class="java.lang.Double"/>
-	<parameter name="reason" isForPrompting="false" class="java.lang.String"/>
-	<parameter name="comment" isForPrompting="false" class="java.lang.String"/>
-	<parameter name="firm" isForPrompting="false" class="java.lang.String"/>
-	<parameter name="iban" isForPrompting="false" class="java.lang.String"/>
-	<parameter name="bic" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="bank" isForPrompting="true" class="java.lang.String"/>
+	<parameter name="branch" isForPrompting="true" class="java.lang.String"/>
+	<parameter name="address" isForPrompting="true" class="java.lang.String"/>
+	<parameter name="contragent" isForPrompting="true" class="java.lang.String"/>
+	<parameter name="IBANcontragent" isForPrompting="true" class="java.lang.String"/>
+	<parameter name="BICcontragent" isForPrompting="true" class="java.lang.String"/>
+	<parameter name="BANKcontragent" isForPrompting="true" class="java.lang.String"/>
+	<parameter name="currency" isForPrompting="true" class="java.lang.String"/>
+	<parameter name="amount" isForPrompting="true" class="java.lang.Double"/>
+	<parameter name="reason" isForPrompting="true" class="java.lang.String"/>
+	<parameter name="comment" isForPrompting="true" class="java.lang.String"/>
+	<parameter name="firm" isForPrompting="true" class="java.lang.String"/>
+	<parameter name="iban" isForPrompting="true" class="java.lang.String"/>
+	<parameter name="bic" isForPrompting="true" class="java.lang.String"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -615,7 +615,7 @@
 						key="textField-4"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center" verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="12"/>
+						<font fontName="Tahoma" size="14"/>
 					</textElement>
 				<textFieldExpression   class="java.util.Date"><![CDATA[new Date()]]></textFieldExpression>
 				</textField>
@@ -736,7 +736,7 @@
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{currency}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="false" pattern="###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+				<textField isStretchWithOverflow="false" pattern="#,##0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="350"
 						y="192"
@@ -751,9 +751,9 @@
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="366"
+						x="368"
 						y="135"
-						width="118"
+						width="116"
 						height="17"
 						key="textField-15"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -1457,9 +1457,9 @@
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="366"
+						x="367"
 						y="509"
-						width="118"
+						width="117"
 						height="17"
 						key="textField-30"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
