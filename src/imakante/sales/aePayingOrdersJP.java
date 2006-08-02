@@ -456,7 +456,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         fGain(jTextField4);
         jTextField4.selectAll();
     }//GEN-LAST:event_jTextField4FocusGained
-        
+    
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
         fGain(jTextField1);
         jTextField1.selectAll();
@@ -505,6 +505,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
             javax.swing.JOptionPane.showMessageDialog(null, "\u041F\u043E\u043B\u0435\u0442\u0430\u0442\u0430 \u041A\u043E\u0434, \u0421\u0443\u043C\u0430 \u0438 \u041E\u0441\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u0441\u0430 \u0437\u0430\u0434\u044A\u043B\u0436\u0438\u0442\u0435\u043B\u043D\u0438! " +
                     "\u041C\u043E\u043B\u044F \u0437\u0430\u0434\u0430\u0439\u0442\u0435 \u0441\u0442\u043E\u0439\u043D\u043E\u0441\u0442 \u0437\u0430 \u0432\u0441\u044F\u043A\u043E \u043E\u0442 \u0442\u044F\u0445!",
                     "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415", javax.swing.JOptionPane.ERROR_MESSAGE);
+            jTextField6.requestFocus();
         }
     }//GEN-LAST:event_jButtonSaveActionPerformed
     
@@ -824,8 +825,10 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }
     
     private void closeForm() {
-        myParent.getInternalObject().deleteRow(myParent.getId());
-        myParent.resetFields();
+        if (this.isNewRecord) {
+            myParent.getInternalObject().deleteRow(myParent.getId());
+            myParent.resetFields();
+        }
         this.dispose();
     }
     

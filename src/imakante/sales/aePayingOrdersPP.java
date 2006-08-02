@@ -413,15 +413,13 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jComboBox1FocusGained
     
     private void jTextField8FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField8FocusLost
-        System.out.println("ID chosen person: " + myParent.getIdChosenPerson());
-        if(!this.isFromF7 && (myParent.getIdChosenPerson() == 0))
+        if(!this.isFromF7 && (myParent.getIdChosenPerson() != 0))
             revalidatePerson();
         fLost(jTextField8);
     }//GEN-LAST:event_jTextField8FocusLost
     
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        System.out.println("ID chosen contragent: " + myParent.getIdChosenContragent());
-        if(!this.isFromF7 && (myParent.getIdChosenContragent() == 0))
+        if(!this.isFromF7 && (myParent.getIdChosenContragent() != 0))
             revalidateContragent();
         fLost(jTextField1);
     }//GEN-LAST:event_jTextField1FocusLost
@@ -462,7 +460,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         fGain(jTextField4);
         jTextField4.selectAll();
     }//GEN-LAST:event_jTextField4FocusGained
-        
+    
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
         fGain(jTextField1);
         jTextField1.selectAll();
@@ -510,6 +508,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
             javax.swing.JOptionPane.showMessageDialog(null, "\u041F\u043E\u043B\u0435\u0442\u0430\u0442\u0430 \u0418\u043C\u0435, \u041A\u043E\u0434, \u0421\u0443\u043C\u0430 \u0438 \u041E\u0441\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u0441\u0430 \u0437\u0430\u0434\u044A\u043B\u0436\u0438\u0442\u0435\u043B\u043D\u0438! " +
                     "\u041C\u043E\u043B\u044F \u0437\u0430\u0434\u0430\u0439\u0442\u0435 \u0441\u0442\u043E\u0439\u043D\u043E\u0441\u0442 \u0437\u0430 \u0432\u0441\u044F\u043A\u043E \u043E\u0442 \u0442\u044F\u0445!",
                     "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415", javax.swing.JOptionPane.ERROR_MESSAGE);
+            jTextField6.requestFocus();
         }
     }//GEN-LAST:event_jButtonSaveActionPerformed
     
@@ -748,7 +747,6 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     
     private void revalidateContragent() {
         myParent.validateContragentByCode(Integer.parseInt(jTextField1.getText()));
-//        myParent.setValuesFromContragentId(myParent.getIdChosenContragent());
         this.jTextField1.setText("" + myParent.getCodeChosenContragent());
         this.jTextField2.setText(myParent.getNameChosenContragent());
         this.jTextField3.setText(myParent.getChosenIBAN());
@@ -809,8 +807,10 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }
     
     private void closeForm() {
-        myParent.getInternalObject().deleteRow(myParent.getId());
-        myParent.resetFields();
+        if (this.isNewRecord) {
+            myParent.getInternalObject().deleteRow(myParent.getId());
+            myParent.resetFields();
+        }
         this.dispose();
     }
     

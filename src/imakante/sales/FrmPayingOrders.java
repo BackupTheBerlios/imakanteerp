@@ -1004,8 +1004,8 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             hm.put("person", " –¿—»Ã»–¿ œ≈“–Œ¬¿");
             hm.put("reason", this.getOsnovanie().toUpperCase());
         } else {  }
-        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, getTable(), getConn(),
-                hm, jasperFile, "\u0418\u0437\u0433\u043B\u0435\u0434 \u043D\u0430 \u043F\u043B\u0430\u0442\u0435\u0436\u043D\u043E\u0442\u043E \u043D\u0430\u0440\u0435\u0436\u0434\u0430\u043D\u0435", "");
+        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, getTable(), getConn(), hm, jasperFile, 
+                "\u0418\u0437\u0433\u043B\u0435\u0434 \u043D\u0430 \u043F\u043B\u0430\u0442\u0435\u0436\u043D\u043E\u0442\u043E \u043D\u0430\u0440\u0435\u0436\u0434\u0430\u043D\u0435", "");
         td.setVisible(true);
     }
     

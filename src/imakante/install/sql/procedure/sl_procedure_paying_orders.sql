@@ -130,12 +130,12 @@ BEGIN
 
 
      IF (comprator = 14) THEN
-        IF (in_code = -1 AND in_SOT = 1) THEN 
+        IF (in_code = -1 AND (in_SOT = 1 OR in_SOT = 0)) THEN 
             SELECT cn.id_contragent, cn.code_contragent, cn.name_n_contragent, cn.BANKNAMER, cn.BICR, cn.IBANR, cn.VIDVALR  
                 FROM n_contragent cn WHERE cn.flag_n_contragent = 0 
                 ORDER BY cn.id_contragent ASC;
         END IF;
-        IF (in_code > -1 AND in_SOT = 1) THEN 
+        IF (in_code > -1 AND (in_SOT = 1 OR in_SOT = 0)) THEN 
             SELECT cn.id_contragent, cn.code_contragent, cn.name_n_contragent, cn.BANKNAMER, cn.BICR, cn.IBANR, cn.VIDVALR  
                 FROM n_contragent cn
                 WHERE cn.code_contragent LIKE CONCAT('%',in_code,'%') AND cn.flag_n_contragent = 0 
