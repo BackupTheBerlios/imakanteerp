@@ -11,7 +11,6 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         getNavigationState();
         initOrderTypesCombo();
         this.setResizable(false);
-//        java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         repaintComp();
     }
     
@@ -273,11 +272,6 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
                 jTextField4FocusLost(evt);
             }
         });
-        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField4KeyPressed(evt);
-            }
-        });
 
         jTextField5.setEditable(false);
         jTextField5.setFocusable(false);
@@ -462,11 +456,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         fGain(jTextField4);
         jTextField4.selectAll();
     }//GEN-LAST:event_jTextField4FocusGained
-    
-    private void jTextField4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyPressed
         
-    }//GEN-LAST:event_jTextField4KeyPressed
-    
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
         fGain(jTextField1);
         jTextField1.selectAll();
@@ -519,7 +509,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButtonSaveActionPerformed
     
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
-        this.dispose();
+        closeForm();
     }//GEN-LAST:event_jButtonCloseActionPerformed
     // gotoNext
     private void jButtonOneRowPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowPActionPerformed
@@ -690,10 +680,15 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }
     
     private void repaintComp() {
-        
-        
-        
-//        jComboG.setSelectedIndex(getNewComboBoxIndex(myParent.getIDG()));
+        jComboBox1.setSelectedIndex(getNewOTIndex(myParent.getIdOrderType()));
+        jComboBox2.setSelectedIndex(getNewOAIndex(myParent.getIdTypeAccount()));
+        jTextField1.setText("" + myParent.getCodeContragent());
+        jTextField2.setText(myParent.getNameContragent());
+        jTextField3.setText(myParent.getChosenIBAN());
+        jTextField4.setText("" + myParent.getAmount());
+        jTextField5.setText(myParent.getChosenCurrency());
+        jTextField6.setText(myParent.getOsnovanie());
+        jTextField7.setText(myParent.getPoiasnenie());
     }
     
     private void initOrderTypesCombo() {
@@ -762,7 +757,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }
     
     private void revalidateContragent() {
-        myParent.validateContragentByCode(getSearchCode());
+        myParent.validateContragentByCode(Integer.parseInt(jTextField1.getText()));
         this.jTextField1.setText("" + myParent.getCodeChosenContragent());
         this.jTextField2.setText(myParent.getNameChosenContragent());
         this.jTextField3.setText(myParent.getChosenIBAN());
@@ -826,6 +821,12 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         jTextField4.setEnabled(true);
         jTextField6.setEnabled(true);
         jTextField7.setEnabled(true);
+    }
+    
+    private void closeForm() {
+        myParent.getInternalObject().deleteRow(myParent.getId());
+        myParent.resetFields();
+        this.dispose();
     }
     
 }

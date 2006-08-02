@@ -949,6 +949,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         refreshTable();
         setRow(getMaxRow());
         getTable().changeSelection(getRow(), 2, false, false);
+        resetFields();
         setAllVariables();
         setAtBegining(false);
         setAtEnd(true);
@@ -1089,8 +1090,8 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         } catch(Exception ex) { ex.printStackTrace(); }
         this.CompNumber = 2;
         td = new imakante.com.vcomponents.tableDialog(this, true, tableP,
-                "\u0421\u043C\u0435\u0442\u043A\u0430\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u043F\u043E\u0434\u043E\u0442\u0447\u0435\u0442\u043D\u043E \u043B\u0438\u0446\u0435",
-                "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u043F\u043E\u0434\u043E\u0442\u0447\u0435\u0442\u043D\u043E \u043B\u0438\u0446\u0435", "\u0418\u043C\u0435\u043D\u0430");
+                "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u043F\u043E\u0434\u043E\u0442\u0447\u0435\u0442\u043D\u043E \u043B\u0438\u0446\u0435",
+                "", "\u0418\u043C\u0435\u043D\u0430");
         td.setVisible(true);
     }
     
@@ -1110,13 +1111,12 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     
     protected void setValuesFromPersonId(int id) {
         int idP = getIdChosenPerson();
-//        String nameP = getNameChosenPerson();
         if (idP != id) {
             java.sql.ResultSet rsP = null;
             try {
                 rsP = this.internalObject.getPersonById(id);
                 while(rsP.next()){
-                    this.setIdChosenPerson(rs.getInt("id_ls_n_person"));
+                    this.setIdChosenPerson(rsP.getInt("id_ls_n_person"));
                     this.setNameChosenPerson(rsP.getString("name_ls_n_person"));
                 }
                 app.changeField();
@@ -1138,7 +1138,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         this.CompNumber = 1;
         td = new imakante.com.vcomponents.tableDialog(this, true, tableC,
                 "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u043A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442",
-                "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u043A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442", "\u041A\u043E\u0434");
+                "", "\u041A\u043E\u0434");
         td.setVisible(true);
     }
     
@@ -1276,6 +1276,24 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         getTable().getColumnModel().getColumn(iColumn).setMinWidth(0);
         getTable().getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
         getTable().getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
+    }
+    
+    protected void resetFields() {
+        setId(0);
+        if (jRadioButton1.isSelected()) {
+            setOrderingPerson(0);
+            setIdOrderType(1);
+            setIdBankAccount(0);
+        }
+        if (jRadioButton2.isSelected()) {
+            setOrderingPerson(1);
+            setIdOrderType(0);
+            setIdPerson(0);
+        }
+        setIdContragent(0);
+        setAmount(0.00);
+        setOsnovanie("");
+        setPoiasnenie("");
     }
     
     private void setAllVariables() {

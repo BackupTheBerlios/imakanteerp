@@ -95,6 +95,15 @@ public class dbPayingOrders extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
+    public void deleteRow(int in_id) {
+        setComprator(3);
+        this.setId(in_id);
+        try {
+            registerParameters();
+            getCstm().execute();
+        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
+    }
+    
     public java.sql.ResultSet searchRecords(int in_code, String in_egn, String in_name) {
         setComprator(5);
         this.setCode(in_code);
