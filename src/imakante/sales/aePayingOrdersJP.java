@@ -456,7 +456,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jComboBox1FocusGained
     
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        if(this.isFromF7 == false)
+        if (myParent.getIdChosenContragent() > 0)
             revalidateContragent();
         fLost(jTextField1);
     }//GEN-LAST:event_jTextField1FocusLost
@@ -501,27 +501,27 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jTextField1KeyPressed
     
     private void jButtonCloseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonCloseKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonClose.doClick();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonClose.doClick(); }
     }//GEN-LAST:event_jButtonCloseKeyPressed
     
     private void jButtonSaveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonSaveKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonSave.doClick();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSave.doClick(); }
     }//GEN-LAST:event_jButtonSaveKeyPressed
     
     private void jButtonToEndKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonToEndKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonToEnd.doClick();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonToEnd.doClick(); }
     }//GEN-LAST:event_jButtonToEndKeyPressed
     
     private void jButtonOneRowPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonOneRowPKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonOneRowP.doClick();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonOneRowP.doClick(); }
     }//GEN-LAST:event_jButtonOneRowPKeyPressed
     
     private void jButtonOneRowMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonOneRowMKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonOneRowM.doClick();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonOneRowM.doClick(); }
     }//GEN-LAST:event_jButtonOneRowMKeyPressed
     
     private void jButtonToBeginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonToBeginKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jButtonToBegin.doClick();}
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonToBegin.doClick(); }
     }//GEN-LAST:event_jButtonToBeginKeyPressed
     
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
@@ -534,7 +534,6 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
             javax.swing.JOptionPane.showMessageDialog(null, "\u041F\u043E\u043B\u0435\u0442\u0430\u0442\u0430 \u041A\u043E\u0434, \u0421\u0443\u043C\u0430 \u0438 \u041E\u0441\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u0441\u0430 \u0437\u0430\u0434\u044A\u043B\u0436\u0438\u0442\u0435\u043B\u043D\u0438! " +
                     "\u041C\u043E\u043B\u044F \u0437\u0430\u0434\u0430\u0439\u0442\u0435 \u0441\u0442\u043E\u0439\u043D\u043E\u0441\u0442 \u0437\u0430 \u0432\u0441\u044F\u043A\u043E \u043E\u0442 \u0442\u044F\u0445!",
                     "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415", javax.swing.JOptionPane.ERROR_MESSAGE);
-            jTextField6.requestFocus();
         }
     }//GEN-LAST:event_jButtonSaveActionPerformed
     
@@ -647,7 +646,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
-    //--------------- My Variables
+    
     private imakante.sales.FrmPayingOrders myParent;
     private String namesOrderTypes[];
     private String namesOurAccounts[];
@@ -656,10 +655,6 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     
     private static boolean isFromF7 = false;
     private boolean isNewRecord = false;
-    
-    //---------------END My Variables
-    
-    //---------------START My Methods
     
     //SAVE
     private void saveRecord() {
@@ -687,11 +682,16 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }
     
     private boolean areThereEmptyFields() {
-        if (jTextField1.getText().equals("") ||         // CodeContragent
-                jTextField4.getText().equals("") ||     // Suma
-                jTextField6.getText().equals(""))       // Osnovanie
+        if (jTextField1.getText().equals("") || jTextField1.getText().equals("0")) {
+            jTextField1.requestFocus();
             return true;
-        else return false;
+        } else if (jTextField4.getText().equals("") || jTextField4.getText().equals("0.00")) {
+            jTextField4.requestFocus();
+            return true;
+        } else if (jTextField6.getText().equals("")) {
+            jTextField6.requestFocus();
+            return true;
+        } else return false;
     }
     
     private void getNavigationState() {

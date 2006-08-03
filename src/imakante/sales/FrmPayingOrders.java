@@ -1,8 +1,6 @@
 
 package imakante.sales;
 
-import java.sql.SQLException;
-
 public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
     public FrmPayingOrders(String title, imakante.com.vcomponents.iFrame frame) {
@@ -661,9 +659,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     }
     
     protected int getMaxRow() {
-        int i = 0;
-        i = getTable().getRowCount() - 1;
-        return i;
+        return getTable().getRowCount() - 1;
     }
     
     public  int getRow() {
@@ -1119,18 +1115,15 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     }
     
     protected void setValuesFromPersonId(int id) {
-        int idP = getIdChosenPerson();
-        if (idP != id) {
-            java.sql.ResultSet rsP = null;
-            try {
-                rsP = this.internalObject.getPersonById(id);
-                while(rsP.next()){
-                    this.setIdChosenPerson(rsP.getInt("id_ls_n_person"));
-                    this.setNameChosenPerson(rsP.getString("name_ls_n_person"));
-                }
-                app.changeField();
-            } catch (SQLException ex) { ex.printStackTrace(); }
-        }
+        java.sql.ResultSet rsP = null;
+        try {
+            rsP = this.internalObject.getPersonById(id);
+            while(rsP.next()) {
+                this.setIdChosenPerson(rsP.getInt("id_ls_n_person"));
+                this.setNameChosenPerson(rsP.getString("name_ls_n_person"));
+            }
+            app.changeField();
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
     public void chooseContragent(int CodeFragment) {
@@ -1190,11 +1183,11 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     }
     
     protected void setValuesFromContragentId(int id) {
-        int idC = getIdChosenContragent();
-        if (idC != id) {
-            java.sql.ResultSet rsC = null;
-            try {
-                rsC = this.internalObject.getContragentById(id, this.getIdOrderType());
+        java.sql.ResultSet rsC = null;
+        try {
+            rsC = this.internalObject.getContragentById(id, this.getIdOrderType());
+            int i = 1;
+            if (rsC != null) {
                 while(rsC.next()) {
                     this.setIdChosenContragent(rsC.getInt("id_contragent"));
                     this.setCodeChosenContragent(rsC.getInt("code_contragent"));
@@ -1209,13 +1202,15 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
                         setChosenIBAN(rsC.getString("IBANR"));
                         setChosenCurrency(rsC.getString("VIDVALR"));
                     }
+                    System.out.println("i: " + i);
+                    i++;
                 }
-                if (jRadioButton1.isSelected())
-                    ajp.changeField();
-                if (jRadioButton2.isSelected())
-                    app.changeField();
-            } catch (SQLException ex) { ex.printStackTrace(); }
-        }
+            }
+            if (jRadioButton1.isSelected())
+                ajp.changeField();
+            if (jRadioButton2.isSelected())
+                app.changeField();
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
     private int getColumnIndex(String in) {

@@ -443,16 +443,15 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jComboBox1FocusGained
     
     private void jTextField8FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField8FocusLost
-        System.out.println("Ot F7 li e? - " + this.isFromF7);
-        if(this.isFromF7 == false) {
+        System.out.println("Persona e: " + myParent.getIdChosenPerson());
+        if (myParent.getIdChosenPerson() > 0)       // This is true only when this.isFromF7 == true
             revalidatePerson();
-            System.out.println("Revalidirahme 4oweka!");
-    }
         fLost(jTextField8);
     }//GEN-LAST:event_jTextField8FocusLost
     
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        if(this.isFromF7 == false)
+        System.out.println("Kontragenta e: " + myParent.getIdChosenContragent());
+        if (myParent.getIdChosenContragent() > 0)   // This is true only when this.isFromF7 == true
             revalidateContragent();
         fLost(jTextField1);
     }//GEN-LAST:event_jTextField1FocusLost
@@ -541,7 +540,6 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
             javax.swing.JOptionPane.showMessageDialog(null, "\u041F\u043E\u043B\u0435\u0442\u0430\u0442\u0430 \u0418\u043C\u0435, \u041A\u043E\u0434, \u0421\u0443\u043C\u0430 \u0438 \u041E\u0441\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u0441\u0430 \u0437\u0430\u0434\u044A\u043B\u0436\u0438\u0442\u0435\u043B\u043D\u0438! " +
                     "\u041C\u043E\u043B\u044F \u0437\u0430\u0434\u0430\u0439\u0442\u0435 \u0441\u0442\u043E\u0439\u043D\u043E\u0441\u0442 \u0437\u0430 \u0432\u0441\u044F\u043A\u043E \u043E\u0442 \u0442\u044F\u0445!",
                     "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415", javax.swing.JOptionPane.ERROR_MESSAGE);
-            jTextField6.requestFocus();
         }
     }//GEN-LAST:event_jButtonSaveActionPerformed
     
@@ -693,12 +691,19 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }
     
     private boolean areThereEmptyFields() {
-        if (jTextField1.getText().equals("") ||         // CodeContragent
-                jTextField4.getText().equals("") ||     // Suma
-                jTextField6.getText().equals("") ||     // Osnovanie
-                jTextField8.getText().equals(""))       // NamePerson
+        if (jTextField1.getText().equals("") || jTextField1.getText().equals("0")) {
+            jTextField1.requestFocus();
             return true;
-        else return false;
+        } else if (jTextField4.getText().equals("") || jTextField4.getText().equals("0.00")) {
+            jTextField4.requestFocus();
+            return true;
+        } else if (jTextField6.getText().equals("")) {
+            jTextField6.requestFocus();
+            return true;
+        } else if (jTextField8.getText().equals("")) {
+            jTextField8.requestFocus();
+            return true;
+        } else return false;
     }
     
     private void getNavigationState() {
