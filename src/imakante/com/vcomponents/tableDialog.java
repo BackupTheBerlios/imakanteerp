@@ -30,7 +30,6 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
             }
         });
         this.setTitle(interTitle);
-        System.out.println("From TD");
     }
     
     public tableDialog(imakante.com.vcomponents.iInternalFrame frame, boolean modal, imakante.com.CustomTable table,
