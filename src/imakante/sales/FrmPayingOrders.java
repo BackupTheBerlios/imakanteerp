@@ -323,6 +323,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     }//GEN-LAST:event_jButtonPrintTableActionPerformed
     
     private void jRadioButton1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButton1ItemStateChanged
+        resetFields();
         if (jRadioButton1.isSelected()) {
             this.setOrderingPerson(0);
             this.setIdOrderType(1);     // Razpla6taniq
@@ -334,6 +335,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     }//GEN-LAST:event_jRadioButton1ItemStateChanged
     
     private void jRadioButton2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButton2ItemStateChanged
+        resetFields();
         if (jRadioButton2.isSelected()) {
             this.setOrderingPerson(1);
             this.setIdOrderType(2);     // DDS-ta
@@ -949,7 +951,6 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         refreshTable();
         setRow(getMaxRow());
         getTable().changeSelection(getRow(), 2, false, false);
-        resetFields();
         setAllVariables();
         setAtBegining(false);
         setAtEnd(true);
@@ -1004,7 +1005,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             hm.put("person", " –¿—»Ã»–¿ œ≈“–Œ¬¿");
             hm.put("reason", this.getOsnovanie().toUpperCase());
         } else {  }
-        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, getTable(), getConn(), hm, jasperFile, 
+        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, getTable(), getConn(), hm, jasperFile,
                 "\u0418\u0437\u0433\u043B\u0435\u0434 \u043D\u0430 \u043F\u043B\u0430\u0442\u0435\u0436\u043D\u043E\u0442\u043E \u043D\u0430\u0440\u0435\u0436\u0434\u0430\u043D\u0435", "");
         td.setVisible(true);
     }
@@ -1100,13 +1101,21 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         setNameChosenPerson("");
         java.sql.ResultSet rsP = null;
         rsP = getInternalObject().getPersonByName(nameForChecking);
-        try {
-            while (rsP.next()) {
-                setIdChosenPerson(rsP.getInt("id_ls_n_person"));
-                setNameChosenPerson(rsP.getString("name_ls_n_person"));
+        if (rsP != null) {
+            try {
+                while (rsP.next()) {
+                    setIdChosenPerson(rsP.getInt("id_ls_n_person"));
+                    setNameChosenPerson(rsP.getString("name_ls_n_person"));
+                }
+                app.changeField();
+            } catch (java.sql.SQLException sqlex) { sqlex.printStackTrace(); }
+        } else {
+            if (getIdChosenContragent() < 1 || getCodeChosenContragent() < 1) {
+                javax.swing.JOptionPane.showMessageDialog(null,
+                        "\u041d\u044f\u043c\u0430 \u043F\u043E\u0434\u043E\u0442\u0447\u0435\u0442\u043D\u043E \u043B\u0438\u0446\u0435 \u0441 \u0442\u0430\u043a\u044a\u0432 \u043a\u043e\u0434!",
+                        "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415", javax.swing.JOptionPane.ERROR_MESSAGE);
             }
-            app.changeField();
-        } catch (java.sql.SQLException sqlex) { sqlex.printStackTrace(); }
+        }
     }
     
     protected void setValuesFromPersonId(int id) {
@@ -1150,30 +1159,33 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         setChosenCurrency("");
         java.sql.ResultSet rsC = null;
         rsC = getInternalObject().getContragentByCode(codeForChecking, getIdOrderType());
-        try {
-            while (rsC.next()) {
-                setIdChosenContragent(rsC.getInt("id_contragent"));
-                setCodeChosenContragent(rsC.getInt("code_contragent"));
-                setNameChosenContragent(rsC.getString("name_n_contragent"));
-                if (getIdOrderType() == 1) {
-                    setChosenIBAN(rsC.getString("IBANR"));
-                    setChosenCurrency(rsC.getString("VIDVALR"));
-                } else if (getIdOrderType() == 2) {
-                    setChosenIBAN(rsC.getString("IBAND"));
-                    setChosenCurrency(rsC.getString("VIDVALD"));
-                } else if (getIdOrderType() == 0) {
-                    setChosenIBAN(rsC.getString("IBANR"));
-                    setChosenCurrency(rsC.getString("VIDVALR"));
+        if (rsC != null) {
+            try {
+                while (rsC.next()) {
+                    setIdChosenContragent(rsC.getInt("id_contragent"));
+                    setCodeChosenContragent(rsC.getInt("code_contragent"));
+                    setNameChosenContragent(rsC.getString("name_n_contragent"));
+                    if (getIdOrderType() == 1) {
+                        setChosenIBAN(rsC.getString("IBANR"));
+                        setChosenCurrency(rsC.getString("VIDVALR"));
+                    } else if (getIdOrderType() == 2) {
+                        setChosenIBAN(rsC.getString("IBAND"));
+                        setChosenCurrency(rsC.getString("VIDVALD"));
+                    } else if (getIdOrderType() == 0) {
+                        setChosenIBAN(rsC.getString("IBANR"));
+                        setChosenCurrency(rsC.getString("VIDVALR"));
+                    }
                 }
+                if (jRadioButton1.isSelected())
+                    ajp.changeField();
+                if (jRadioButton2.isSelected())
+                    app.changeField();
+            } catch (java.sql.SQLException sqlex) { sqlex.printStackTrace(); }
+        } else {
+            if (getIdChosenContragent() < 1 || getCodeChosenContragent() < 1) {
+                javax.swing.JOptionPane.showMessageDialog(null, "\u041d\u044f\u043c\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442 \u0441 \u0442\u0430\u043a\u044a\u0432 \u043a\u043e\u0434!",
+                        "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415", javax.swing.JOptionPane.ERROR_MESSAGE);
             }
-            if (jRadioButton1.isSelected())
-                ajp.changeField();
-            if (jRadioButton2.isSelected())
-                app.changeField();
-        } catch (java.sql.SQLException sqlex) { sqlex.printStackTrace(); }
-        if (getIdChosenContragent() < 1 || getCodeChosenContragent() < 1) {
-            javax.swing.JOptionPane.showMessageDialog(null, "\u041d\u044f\u043c\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442 \u0441 \u0442\u0430\u043a\u044a\u0432 \u043a\u043e\u0434!",
-                    "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
     }
     

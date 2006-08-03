@@ -272,6 +272,11 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
                 jTextField4FocusLost(evt);
             }
         });
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField4KeyPressed(evt);
+            }
+        });
 
         jTextField5.setEditable(false);
         jTextField5.setFocusable(false);
@@ -287,6 +292,11 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
                 jTextField6FocusLost(evt);
             }
         });
+        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField6KeyPressed(evt);
+            }
+        });
 
         jLabel8.setText("\u041f\u043e\u044f\u0441\u043d\u0435\u043d\u0438\u044f:");
 
@@ -297,6 +307,11 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextField7FocusLost(evt);
+            }
+        });
+        jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField7KeyPressed(evt);
             }
         });
 
@@ -396,6 +411,21 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-699)/2, (screenSize.height-407)/2, 699, 407);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jTextField7.transferFocus();
+        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextField7.setText(""); }
+    }//GEN-LAST:event_jTextField7KeyPressed
+
+    private void jTextField6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jTextField6.transferFocus();
+        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextField6.setText(""); }
+    }//GEN-LAST:event_jTextField6KeyPressed
+
+    private void jTextField4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jTextField4.transferFocus();
+        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextField4.setText(""); }
+    }//GEN-LAST:event_jTextField4KeyPressed
     
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
         myParent.printOrder();
@@ -426,8 +456,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jComboBox1FocusGained
     
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        System.out.println("ID chosen person: " + myParent.getIdChosenContragent());
-        if(!this.isFromF7 && (myParent.getIdChosenContragent() == 0))
+        if(this.isFromF7 == false)
             revalidateContragent();
         fLost(jTextField1);
     }//GEN-LAST:event_jTextField1FocusLost
