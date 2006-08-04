@@ -7,7 +7,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         super(frame, modal);
         this.myParent = (imakante.sales.FrmPayingOrders) frame;
         this.isNewRecord = true;
-        myParent.setIdOrderType(0);
+//        myParent.setIdOrderType(0);
         initComponents();
         getNavigationState();
         initOrderTypesCombo();
@@ -35,14 +35,14 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         jLabel10 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
@@ -232,14 +232,6 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u041f\u043e\u043b\u0443\u0447\u0430\u0442\u0435\u043b", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 51, 153)));
         jLabel2.setText("\u041a\u043e\u0434:");
 
-        jLabel3.setText("\u041f\u043e\u043b\u0443\u0447\u0430\u0442\u0435\u043b:");
-
-        jLabel4.setText("\u0421\u043c\u0435\u0442\u043a\u0430 (IBAN):");
-
-        jLabel5.setText("\u0421\u0443\u043c\u0430:");
-
-        jLabel6.setText("\u0412\u0430\u043b\u0443\u0442\u0430:");
-
         jTextField1.setBackground(new java.awt.Color(204, 204, 255));
         jTextField1.setToolTipText("F7 \u0432\u0430\u0434\u0438 \u0441\u043f\u0438\u0441\u044a\u043a \u0437\u0430 \u0438\u0437\u0431\u043e\u0440");
         jTextField1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -258,11 +250,17 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
             }
         });
 
+        jLabel3.setText("\u041f\u043e\u043b\u0443\u0447\u0430\u0442\u0435\u043b:");
+
         jTextField2.setEditable(false);
         jTextField2.setFocusable(false);
 
+        jLabel4.setText("\u0421\u043c\u0435\u0442\u043a\u0430 (IBAN):");
+
         jTextField3.setEditable(false);
         jTextField3.setFocusable(false);
+
+        jLabel5.setText("\u0421\u0443\u043c\u0430:");
 
         jTextField4.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField4.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -280,6 +278,8 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
                 jTextField4KeyPressed(evt);
             }
         });
+
+        jLabel6.setText("\u0412\u0430\u043b\u0443\u0442\u0430:");
 
         jTextField5.setEditable(false);
         jTextField5.setFocusable(false);
