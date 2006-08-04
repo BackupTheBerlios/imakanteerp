@@ -36,6 +36,11 @@
 	<parameter name="words" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="person" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="reason" isForPrompting="false" class="java.lang.String"/>
+	<queryString><![CDATA[SELECT * FROM n_country]]></queryString>
+
+	<field name="id_n_country" class="java.lang.Integer"/>
+	<field name="code_n_country" class="java.lang.Integer"/>
+	<field name="name_n_country" class="java.lang.String"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >

@@ -2,7 +2,7 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="pn_prewod_razpla6tatelna_smetka"
+		 name="pn_razpla6taniq_i_DDS"
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
@@ -23,6 +23,11 @@
 	<import value="net.sf.jasperreports.engine.*" />
 	<import value="net.sf.jasperreports.engine.data.*" />
 
+	<queryString><![CDATA[SELECT * FROM n_country]]></queryString>
+
+	<field name="id_n_country" class="java.lang.Integer"/>
+	<field name="code_n_country" class="java.lang.Integer"/>
+	<field name="name_n_country" class="java.lang.String"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >

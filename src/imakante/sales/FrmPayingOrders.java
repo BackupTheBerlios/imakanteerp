@@ -962,6 +962,11 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     }
     
     protected void printOrder() {
+        
+        
+        // TODO 
+        // vzimane na stoinostite ot imenata na kolonite i popalvaneto im v hashmapa 
+        
         setRow(getTable().getSelectedRow());
         setAllVariables();
         String jasperFile = "";
