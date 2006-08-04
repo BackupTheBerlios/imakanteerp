@@ -443,16 +443,38 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jComboBox1FocusGained
     
     private void jTextField8FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField8FocusLost
-        System.out.println("Persona e: " + myParent.getIdChosenPerson());
-        if (myParent.getIdChosenPerson() > 0)       // This is true only when this.isFromF7 == true
-            revalidatePerson();
+        if (this.isFromF7) {
+            ;
+        } else {
+            if (myParent.getIdChosenPerson() > 0) {
+                revalidatePerson();     // TODO prowerkata da se prawi po ID na liceto
+            } else {
+                if (jTextField1.getText().equals("0")) {
+                    ;
+                } else {
+                    int nameFragment = Integer.parseInt(jTextField1.getText());
+                    // checkEntry(nameFragment)  ->  comprator = 14 !!!
+                }
+            }
+        }
         fLost(jTextField8);
     }//GEN-LAST:event_jTextField8FocusLost
     
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        System.out.println("Kontragenta e: " + myParent.getIdChosenContragent());
-        if (myParent.getIdChosenContragent() > 0)   // This is true only when this.isFromF7 == true
-            revalidateContragent();
+        if (this.isFromF7) {
+            ;
+        } else {
+            if (myParent.getIdChosenContragent() > 0) {
+                revalidateContragent();     // TODO prowerkata da se prawi po ID na kontragenta
+            } else {
+                if (jTextField1.getText().equals("0")) {
+                    ;
+                } else {
+                    int codeFragment = Integer.parseInt(jTextField1.getText());
+                    // checkEntry(codeFragment)  ->  comprator = 14 !!!
+                }
+            }
+        }
         fLost(jTextField1);
     }//GEN-LAST:event_jTextField1FocusLost
     
@@ -784,6 +806,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }
     
     private void revalidateContragent() {
+        // TODO po koi metod da se rewalidira kontragente - spored koda ili po id-to?
         myParent.validateContragentByCode(Integer.parseInt(jTextField1.getText()));
         this.jTextField1.setText("" + myParent.getCodeChosenContragent());
         this.jTextField2.setText(myParent.getNameChosenContragent());
