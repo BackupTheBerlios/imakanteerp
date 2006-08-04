@@ -29,6 +29,7 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
             public void keyTyped(java.awt.event.KeyEvent e) {
             }
         });
+        this.checkForNullTable();
         this.setTitle(interTitle);
     }
     
@@ -56,7 +57,8 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
         this.jButton2.setText("\u0418\u0437\u0433\u043b\u0435\u0434 \u041f\u0440\u0438\u043d\u0442");
         try {
             prepareJassper();
-        } catch (java.io.FileNotFoundException ex) { ex.printStackTrace(); }
+                    } catch (java.io.FileNotFoundException ex) { ex.printStackTrace(); }
+        this.checkForNullTable();
         this.setSize(800,600);
     }
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -222,5 +224,10 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
     public void close() {
         this.dispose();
     }
-    
+    private void checkForNullTable(){
+        if(this.InternalTable==null){
+            this.jButton2.setVisible(false);
+            showJassper();
+        }
+    }
 }
