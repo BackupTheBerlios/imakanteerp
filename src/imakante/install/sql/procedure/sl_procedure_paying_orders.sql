@@ -94,7 +94,7 @@ BEGIN
      END IF;
 
      IF (comprator = 7) THEN
-        SELECT nb.id_nbc, nb.name_nbc, nb.account_nbc, nb.vidval_nbc FROM n_baccount nb
+        SELECT nb.id_nbc, nb.name_nbc, nb.branch_nbc, nb.address_nbc, nb.account_nbc, nb.bic_nbc, nb.vidval_nbc FROM n_baccount nb
         WHERE nb.id_tbacc = in_SOT 
         ORDER BY nb.id_nbc ASC;
      END IF;
