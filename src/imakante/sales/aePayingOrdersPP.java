@@ -443,17 +443,15 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jComboBox1FocusGained
     
     private void jTextField8FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField8FocusLost
-        if (this.isFromF7) {
-            ;
-        } else {
+        if (this.isFromF7) ;
+        else {
             if (myParent.getIdChosenPerson() > 0) {
-                revalidatePerson();     // TODO prowerkata da se prawi po ID na liceto
+                revalidatePerson();
             } else {
-                if (jTextField1.getText().equals("0")) {
-                    ;
-                } else {
-                    int nameFragment = Integer.parseInt(jTextField1.getText());
-                    // checkEntry(nameFragment)  ->  comprator = 14 !!!
+                if (jTextField8.getText().equals("")) ;
+                else {
+                    String nameFragment = jTextField8.getText();
+                    myParent.choosePerson(nameFragment);
                 }
             }
         }
@@ -461,17 +459,15 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jTextField8FocusLost
     
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        if (this.isFromF7) {
-            ;
-        } else {
+        if (this.isFromF7) ;
+        else {
             if (myParent.getIdChosenContragent() > 0) {
-                revalidateContragent();     // TODO prowerkata da se prawi po ID na kontragenta
+                revalidateContragent();
             } else {
-                if (jTextField1.getText().equals("0")) {
-                    ;
-                } else {
+                if (jTextField1.getText().equals("0")) ;
+                else {
                     int codeFragment = Integer.parseInt(jTextField1.getText());
-                    // checkEntry(codeFragment)  ->  comprator = 14 !!!
+                    myParent.chooseContragent(codeFragment);
                 }
             }
         }
@@ -744,7 +740,8 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }
     
     private void repaintComp() {
-        jComboBox1.setSelectedIndex(getNewOTIndex(myParent.getIdOrderType()));
+//        jComboBox1.setSelectedIndex(getNewOTIndex(myParent.getIdOrderType()));
+        jComboBox1.setSelectedIndex(0); // TODO  ??? kak e prawilno??? 
         jTextField1.setText("" + myParent.getCodeContragent());
         jTextField2.setText(myParent.getNameContragent());
         jTextField3.setText(myParent.getChosenIBAN());
@@ -779,9 +776,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }
     
     private void revalidatePerson() {
-        try {
-            myParent.validatePersonByName(jTextField8.getText());
-        } catch (Exception ex) { ex.printStackTrace(); }
+        myParent.setValuesFromPersonId(myParent.getIdChosenPerson());
         this.jTextField8.setText(myParent.getNameChosenPerson());
     }
     
@@ -806,8 +801,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }
     
     private void revalidateContragent() {
-        // TODO po koi metod da se rewalidira kontragente - spored koda ili po id-to?
-        myParent.validateContragentByCode(Integer.parseInt(jTextField1.getText()));
+        myParent.setValuesFromContragentId(myParent.getIdChosenContragent());
         this.jTextField1.setText("" + myParent.getCodeChosenContragent());
         this.jTextField2.setText(myParent.getNameChosenContragent());
         this.jTextField3.setText(myParent.getChosenIBAN());

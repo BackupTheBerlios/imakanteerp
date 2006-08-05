@@ -456,17 +456,15 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jComboBox1FocusGained
     
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        if (this.isFromF7) {
-            ;
-        } else {
+        if (this.isFromF7) ;
+        else {
             if (myParent.getIdChosenContragent() > 0) {
-                revalidateContragent();     // TODO prowerkata da se prawi po ID na kontragenta
+                revalidateContragent();
             } else {
-                if (jTextField1.getText().equals("0")) {
-                    ;
-                } else {
+                if (jTextField1.getText().equals("0")) ;
+                else {
                     int codeFragment = Integer.parseInt(jTextField1.getText());
-                    // checkEntry(codeFragment)  ->  comprator = 14 !!!
+                    myParent.chooseContragent(codeFragment);
                 }
             }
         }
@@ -798,9 +796,8 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         return i;
     }
     
-    private void revalidateContragent() { // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ne taka!!!!
-        // TODO 
-        myParent.validateContragentByCode(Integer.parseInt(jTextField1.getText()));
+    private void revalidateContragent() { 
+        myParent.setValuesFromContragentId(myParent.getIdChosenContragent());
         this.jTextField1.setText("" + myParent.getCodeChosenContragent());
         this.jTextField2.setText(myParent.getNameChosenContragent());
         this.jTextField3.setText(myParent.getChosenIBAN());

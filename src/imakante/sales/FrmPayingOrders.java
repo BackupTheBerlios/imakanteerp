@@ -464,6 +464,8 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     private int idChosenContragent = 0;
     private int codeChosenContragent = 0;
     private String nameChosenContragent = "";
+    private String chosenBank = "";
+    private String chosenBIC = "";
     private String chosenIBAN = "";
     private String chosenCurrency = "";
     
@@ -964,8 +966,8 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     protected void printOrder() {
         
         
-        // TODO 
-        // vzimane na stoinostite ot imenata na kolonite i popalvaneto im v hashmapa 
+        // TODO
+        // vzimane na stoinostite ot imenata na kolonite i popalvaneto im v hashmapa
         
         setRow(getTable().getSelectedRow());
         setAllVariables();
@@ -973,20 +975,20 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         java.util.HashMap hm = new java.util.HashMap();
         if (jRadioButton1.isSelected()) {
             jasperFile = "pn_freeform_razpla6taniq.jasper";
-            hm.put("bank", "ÒÚÐÃÎÂÑÊÀ ÁÀÍÊÀ");
+            hm.put("bank", this.getBankName().toUpperCase());
             hm.put("branch", "ÖÅÍÒÐÀËÅÍ");
             hm.put("address", "ÓËÈÖÀ ÎÑÂÎÁÎÆÄÅÍÈÅ 1");
-            hm.put("contragent", "ÊÎÍÒÐÀÃÅÍÒ ÅÎÎÄ.");
-            hm.put("IBANcontragent", "BG5531GKS15154143878458");
-            hm.put("BICcontragent", "BGGKSYTR");
-            hm.put("BANKcontragent", "ÊÎÐÏÎÐÀÒÈÂÍÀ ÒÚÐÃÎÂÑÊÀ ÁÀÍÊÀ");
-            hm.put("currency", "BGN");
+            hm.put("contragent", this.getNameChosenContragent().toUpperCase());
+            hm.put("IBANcontragent", this.getChosenIBAN().toUpperCase());
+            hm.put("BICcontragent", this.getChosenBIC().toUpperCase());
+            hm.put("BANKcontragent", this.getChosenBank().toUpperCase());
+            hm.put("currency", this.getChosenCurrency().toUpperCase());
             hm.put("amount", this.getAmount());
             hm.put("reason", this.getOsnovanie().toUpperCase());
-            hm.put("comment", "ÏÎßÑÍÅÍÈÅ ÏÎßÑÍÅÍÈÅ");
-            hm.put("firm", "ÍÀØÀ ÔÈÐÌÀ ÀÄ.");
-            hm.put("iban", "BG558531GKS541438715184");
-            hm.put("bic", "KSYBGGTR");
+            hm.put("comment", this.getPoiasnenie().toUpperCase());
+            hm.put("firm", imakante.com.NewMain.getParamFirm().getName().toUpperCase());
+            hm.put("iban", this.getOurIBAN().toUpperCase());
+            hm.put("bic", this.getChosenBIC().toUpperCase());
             
         } else if (jRadioButton2.isSelected()) {
             jasperFile = "pn_freeform_wnosna_belejka.jasper";
@@ -994,16 +996,16 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             double w = this.getAmount();
             prcT.setValue(w);
             prcT.ConstString();
-            hm.put("bank", "ÒÚÐÃÎÂÑÊÀ ÁÀÍÊÀ");
+            hm.put("bank", this.getBankName().toUpperCase());
             hm.put("branch", "ÖÅÍÒÐÀËÅÍ");
             hm.put("address", "ÓËÈÖÀ ÎÑÂÎÁÎÆÄÅÍÈÅ 1");
             hm.put("place", "ÌßÑÒÎ");
-            hm.put("contragent", "ÊÎÍÒÐÀÃÅÍÒ ÅÎÎÄ.");
-            hm.put("IBAN", "BG5531GKS15154143878458");
-            hm.put("currency", "BGN");
+            hm.put("contragent", this.getNameChosenContragent().toUpperCase());
+            hm.put("IBAN", this.getChosenIBAN().toUpperCase());
+            hm.put("currency", this.getChosenCurrency().toUpperCase());
             hm.put("amount", this.getAmount());
             hm.put("words", prcT.getEndString().toUpperCase());
-            hm.put("person", "ÊÐÀÑÈÌÈÐÀ ÏÅÒÐÎÂÀ");
+            hm.put("person", this.getNameChosenPerson());
             hm.put("reason", this.getOsnovanie().toUpperCase());
         } else {  }
         imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, null, getConn(), hm, jasperFile,
@@ -1084,49 +1086,40 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         String name = NameFragment;
         try {
             rsP = getInternalObject().getPersonsList(name);
-        } catch (Exception ex) { ex.printStackTrace(); }
-        modelP = new imakante.com.CustomTableModel(getConn(), rsP, NamesP);
-        tableP = new imakante.com.CustomTable(modelP);
-        try {
-            tableP.setEditingRow(0);
-        } catch(Exception ex) { ex.printStackTrace(); }
-        this.CompNumber = 2;
-        td = new imakante.com.vcomponents.tableDialog(this, true, tableP,
-                "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u043F\u043E\u0434\u043E\u0442\u0447\u0435\u0442\u043D\u043E \u043B\u0438\u0446\u0435",
-                "", "\u0418\u043C\u0435\u043D\u0430");
-        td.setVisible(true);
-    }
-    
-    public void validatePersonByName(String nameForChecking) {
-        setIdChosenPerson(0);
-        setNameChosenPerson("");
-        java.sql.ResultSet rsP = null;
-        rsP = getInternalObject().getPersonByName(nameForChecking);
-        if (rsP != null) {
-            try {
-                while (rsP.next()) {
-                    setIdChosenPerson(rsP.getInt("id_ls_n_person"));
-                    setNameChosenPerson(rsP.getString("name_ls_n_person"));
-                }
+            int i = 0;
+            while(rsP.next()) i++;  // counts the ROWS in the ResultSet
+            rsP.beforeFirst();
+            if (i > 1) {
+                modelP = new imakante.com.CustomTableModel(getConn(), rsP, NamesP);
+                tableP = new imakante.com.CustomTable(modelP);
+                try {
+                    tableP.setEditingRow(0);
+                } catch(Exception ex) { ex.printStackTrace(); }
+                this.CompNumber = 2;
+                td = new imakante.com.vcomponents.tableDialog(this, true, tableP,
+                        "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u043F\u043E\u0434\u043E\u0442\u0447\u0435\u0442\u043D\u043E \u043B\u0438\u0446\u0435",
+                        "", "\u0418\u043C\u0435\u043D\u0430");
+                td.setVisible(true);
+            } else if (i == 1) {
+                rsP.next();
+                setIdChosenPerson(rsP.getInt("id_ls_n_person"));
+                setNameChosenPerson(rsP.getString("name_ls_n_person"));
                 app.changeField();
-            } catch (java.sql.SQLException sqlex) { sqlex.printStackTrace(); }
-        } else {
-            if (getIdChosenContragent() < 1 || getCodeChosenContragent() < 1) {
+            } else {
                 javax.swing.JOptionPane.showMessageDialog(null,
                         "\u041d\u044f\u043c\u0430 \u043F\u043E\u0434\u043E\u0442\u0447\u0435\u0442\u043D\u043E \u043B\u0438\u0446\u0435 \u0441 \u0442\u0430\u043a\u044a\u0432 \u043a\u043e\u0434!",
                         "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415", javax.swing.JOptionPane.ERROR_MESSAGE);
             }
-        }
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
     protected void setValuesFromPersonId(int id) {
         java.sql.ResultSet rsP = null;
         try {
             rsP = this.internalObject.getPersonById(id);
-            while(rsP.next()) {
-                this.setIdChosenPerson(rsP.getInt("id_ls_n_person"));
-                this.setNameChosenPerson(rsP.getString("name_ls_n_person"));
-            }
+            rsP.next();
+            this.setIdChosenPerson(rsP.getInt("id_ls_n_person"));
+            this.setNameChosenPerson(rsP.getString("name_ls_n_person"));
             app.changeField();
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
@@ -1136,81 +1129,80 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         int orderType = getIdOrderType();
         try {
             rsC = getInternalObject().getContragentsList(codeContragent, orderType);
-        } catch (Exception ex) { ex.printStackTrace(); }
-        modelC = new imakante.com.CustomTableModel(getConn(), rsC, NamesC);
-        tableC = new imakante.com.CustomTable(modelC);
-        try {
-            tableC.setEditingRow(0);
-        } catch(Exception ex) { ex.printStackTrace(); }
-        this.CompNumber = 1;
-        td = new imakante.com.vcomponents.tableDialog(this, true, tableC,
-                "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u043A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442",
-                "", "\u041A\u043E\u0434");
-        td.setVisible(true);
-    }
-    
-    public void validateContragentByCode(int codeForChecking) {
-        setIdChosenContragent(0);
-        setCodeChosenContragent(0);
-        setNameChosenContragent("");
-        setChosenIBAN("");
-        setChosenCurrency("");
-        java.sql.ResultSet rsC = null;
-        rsC = getInternalObject().getContragentByCode(codeForChecking, getIdOrderType());
-        if (rsC != null) {
-            try {
-                while (rsC.next()) {
-                    setIdChosenContragent(rsC.getInt("id_contragent"));
-                    setCodeChosenContragent(rsC.getInt("code_contragent"));
-                    setNameChosenContragent(rsC.getString("name_n_contragent"));
-                    if (getIdOrderType() == 1) {
-                        setChosenIBAN(rsC.getString("IBANR"));
-                        setChosenCurrency(rsC.getString("VIDVALR"));
-                    } else if (getIdOrderType() == 2) {
-                        setChosenIBAN(rsC.getString("IBAND"));
-                        setChosenCurrency(rsC.getString("VIDVALD"));
-                    } else if (getIdOrderType() == 0) {
-                        setChosenIBAN(rsC.getString("IBANR"));
-                        setChosenCurrency(rsC.getString("VIDVALR"));
-                    }
+            int i = 0;
+            while(rsC.next()) i++;  // counts the ROWS in the ResultSet
+            rsC.beforeFirst();
+            if (i > 1) {
+                modelC = new imakante.com.CustomTableModel(getConn(), rsC, NamesC);
+                tableC = new imakante.com.CustomTable(modelC);
+                try {
+                    tableC.setEditingRow(0);
+                } catch(Exception ex) { ex.printStackTrace(); }
+                if (this.jRadioButton1.isSelected())
+                    this.CompNumber = 1;
+                else if (this.jRadioButton1.isSelected())
+                    this.CompNumber = 2;
+                td = new imakante.com.vcomponents.tableDialog(this, true, tableC,
+                        "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u043A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442",
+                        "", "\u041A\u043E\u0434");
+                td.setVisible(true);
+            } else if (i == 1) {
+                rsC.next();
+                setIdChosenContragent(rsC.getInt("id_contragent"));
+                setCodeChosenContragent(rsC.getInt("code_contragent"));
+                setNameChosenContragent(rsC.getString("name_n_contragent"));
+                if (getIdOrderType() == 1) {
+                    setChosenBank(rsC.getString("BANKNAMER"));
+                    setChosenBIC(rsC.getString("BICR"));
+                    setChosenIBAN(rsC.getString("IBANR"));
+                    setChosenCurrency(rsC.getString("VIDVALR"));
+                } else if (getIdOrderType() == 2) {
+                    setChosenBank(rsC.getString("BANKNAMED"));
+                    setChosenBIC(rsC.getString("BICD"));
+                    setChosenIBAN(rsC.getString("IBAND"));
+                    setChosenCurrency(rsC.getString("VIDVALD"));
+                } else if (getIdOrderType() == 0) {
+                    setChosenBank(rsC.getString("BANKNAMER"));
+                    setChosenBIC(rsC.getString("BICR"));
+                    setChosenIBAN(rsC.getString("IBANR"));
+                    setChosenCurrency(rsC.getString("VIDVALR"));
                 }
                 if (jRadioButton1.isSelected())
                     ajp.changeField();
                 if (jRadioButton2.isSelected())
                     app.changeField();
-            } catch (java.sql.SQLException sqlex) { sqlex.printStackTrace(); }
-        } else {
-            if (getIdChosenContragent() < 1 || getCodeChosenContragent() < 1) {
-                javax.swing.JOptionPane.showMessageDialog(null, "\u041d\u044f\u043c\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442 \u0441 \u0442\u0430\u043a\u044a\u0432 \u043a\u043e\u0434!",
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(null,
+                        "\u041d\u044f\u043c\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442 \u0441 \u0442\u0430\u043a\u044a\u0432 \u043a\u043e\u0434!",
                         "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415", javax.swing.JOptionPane.ERROR_MESSAGE);
             }
-        }
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
     protected void setValuesFromContragentId(int id) {
         java.sql.ResultSet rsC = null;
         try {
             rsC = this.internalObject.getContragentById(id, this.getIdOrderType());
-            int i = 1;
-            if (rsC != null) {
-                while(rsC.next()) {
-                    this.setIdChosenContragent(rsC.getInt("id_contragent"));
-                    this.setCodeChosenContragent(rsC.getInt("code_contragent"));
-                    this.setNameChosenContragent(rsC.getString("name_n_contragent"));
-                    if (getIdOrderType() == 1) {
-                        setChosenIBAN(rsC.getString("IBANR"));
-                        setChosenCurrency(rsC.getString("VIDVALR"));
-                    } else if (getIdOrderType() == 2) {
-                        setChosenIBAN(rsC.getString("IBAND"));
-                        setChosenCurrency(rsC.getString("VIDVALD"));
-                    } else if (getIdOrderType() == 0) {
-                        setChosenIBAN(rsC.getString("IBANR"));
-                        setChosenCurrency(rsC.getString("VIDVALR"));
-                    }
-                    System.out.println("i: " + i);
-                    i++;
+            rsC.next();
+            this.setIdChosenContragent(rsC.getInt("id_contragent"));
+            this.setCodeChosenContragent(rsC.getInt("code_contragent"));
+            this.setNameChosenContragent(rsC.getString("name_n_contragent"));
+            if (getIdOrderType() == 1) {
+                    setChosenBank(rsC.getString("BANKNAMER"));
+                    setChosenBIC(rsC.getString("BICR"));
+                    setChosenIBAN(rsC.getString("IBANR"));
+                    setChosenCurrency(rsC.getString("VIDVALR"));
+                } else if (getIdOrderType() == 2) {
+                    setChosenBank(rsC.getString("BANKNAMED"));
+                    setChosenBIC(rsC.getString("BICD"));
+                    setChosenIBAN(rsC.getString("IBAND"));
+                    setChosenCurrency(rsC.getString("VIDVALD"));
+                } else if (getIdOrderType() == 0) {
+                    setChosenBank(rsC.getString("BANKNAMER"));
+                    setChosenBIC(rsC.getString("BICR"));
+                    setChosenIBAN(rsC.getString("IBANR"));
+                    setChosenCurrency(rsC.getString("VIDVALR"));
                 }
-            }
             if (jRadioButton1.isSelected())
                 ajp.changeField();
             if (jRadioButton2.isSelected())
@@ -1266,6 +1258,22 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         this.nameChosenContragent = nameChosenContragent;
     }
     
+    public String getChosenBank() {
+        return chosenBank;
+    }
+    
+    public void setChosenBank(String chosenBank) {
+        this.chosenBank = chosenBank;
+    }
+    
+    public String getChosenBIC() {
+        return chosenBIC;
+    }
+    
+    public void setChosenBIC(String chosenBIC) {
+        this.chosenBIC = chosenBIC;
+    }
+    
     public String getChosenIBAN() {
         return chosenIBAN;
     }
@@ -1306,6 +1314,10 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         setAmount(0.00);
         setOsnovanie("");
         setPoiasnenie("");
+    }
+    
+    private void resetChoices() {
+        
     }
     
     private void setAllVariables() {
