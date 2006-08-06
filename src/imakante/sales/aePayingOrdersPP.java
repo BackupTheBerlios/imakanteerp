@@ -12,6 +12,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         getNavigationState();
         initOrderTypesCombo();
         this.setResizable(false);
+        this.jTextField8.grabFocus();
         repaintComp();
     }
     
