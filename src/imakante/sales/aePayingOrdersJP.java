@@ -440,9 +440,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jComboBox2FocusLost
     
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
-        int state = jComboBox1.getSelectedIndex();
-        if (state == 0 || state == 4) myParent.setIdOrderType(1);
-        else if (state == 2 || state == 3) myParent.setIdOrderType(2);
+        myParent.setIdOrderType(jComboBox1.getSelectedIndex() + 2);
         jComboBox2.removeAllItems();
         initOurAccountsCombo();
     }//GEN-LAST:event_jComboBox1ItemStateChanged
@@ -462,10 +460,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
                 revalidateContragent();
             } else {
                 if (jTextField1.getText().equals("0")) ;
-                else {
-                    int codeFragment = Integer.parseInt(jTextField1.getText());
-                    myParent.chooseContragent(codeFragment);
-                }
+                else myParent.chooseContragent(Integer.parseInt(jTextField1.getText()));
             }
         }
         fLost(jTextField1);
@@ -666,7 +661,6 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     private static boolean isFromF7 = false;
     private boolean isNewRecord = false;
     
-    //SAVE
     private void saveRecord() {
         try {
             myParent.setAmount(Double.parseDouble(jTextField4.getText()));
@@ -683,6 +677,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
                 0,  // Juricdical person
                 myParent.getIdOrderType(),
                 myParent.getIdBankAccount(),
+                myParent.getIdPerson(),
                 myParent.getIdContragent(),
                 myParent.getAmount(),
                 myParent.getOsnovanie(),
@@ -753,8 +748,13 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }
     
     private void initOurAccountsCombo() {
-        // Gets the name of the Paying order which gives us the id of the account Type
+        // Gets the name of the Paying order which gives us the id of the Document Type
         int SOT = myParent.getInternalObject().parseOrderTypesCombo((String) jComboBox1.getSelectedItem());
+        // And the id of the Document type is evaluated to the id of the Account type it belongs
+        if (SOT == 2 || SOT == 5) 
+            SOT = 1;
+        if (SOT == 3 || SOT == 4) 
+            SOT = 2;
         // Accounts here are filtered by their type determined at the previous step
         namesOurAccounts = myParent.getInternalObject().getOurAccounts(SOT);
         for(int i = 0; i < namesOurAccounts.length; i++) {
@@ -783,11 +783,10 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     private int getSearchCode() {
         int i = 0;
         try {
-            if(jTextField1.getText().equals("")) {
+            if(jTextField1.getText().equals("")) 
                 i = 0;
-            } else {
+            else 
                 i =  Integer.parseInt(jTextField1.getText());
-            }
             return i;
         } catch (NumberFormatException ex) {
             ex.printStackTrace();

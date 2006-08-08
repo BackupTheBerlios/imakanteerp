@@ -324,10 +324,10 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         resetFields();
         if (jRadioButton1.isSelected()) {
             this.setOrderingPerson(0);
-            this.setIdOrderType(1);     // Razpla6taniq
+            this.setIdOrderType(2);     // Razpla6taniq
         } else {
             this.setOrderingPerson(1);
-            this.setIdOrderType(2);     // DDS-ta
+            this.setIdOrderType(1);     // DDS-ta
         }
         refreshTable();
     }//GEN-LAST:event_jRadioButton1ItemStateChanged
@@ -336,10 +336,10 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         resetFields();
         if (jRadioButton2.isSelected()) {
             this.setOrderingPerson(1);
-            this.setIdOrderType(2);     // DDS-ta
+            this.setIdOrderType(1);     // DDS-ta
         } else {
             this.setOrderingPerson(0);
-            this.setIdOrderType(1);     // Razpla6taniq
+            this.setIdOrderType(2);     // Razpla6taniq
         }
         refreshTable();
     }//GEN-LAST:event_jRadioButton2ItemStateChanged
@@ -910,7 +910,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     public void mOneRowPlus() {
         if(getRow() <= getMaxRow()) {
             if(getRow() < getMaxRow())
-                setRow(getRow()+1);
+                setRow(getRow() + 1);
             setAtBegining(false);
             try {
                 setAllVariables();
@@ -1025,6 +1025,9 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     }
     
     private void searchRecords() {
+        
+        // TODO working out the search method
+        
         try {
             try {
 //                if (jTextField1.getText().equals("")) {
@@ -1131,11 +1134,9 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     }
     
     public void chooseContragent(int CodeFragment) {
-        int codeContragent = CodeFragment;
-        int orderType = getIdOrderType();
         this.setSearchField("");
         try {
-            rsC = getInternalObject().getContragentsList(codeContragent, orderType);
+            rsC = getInternalObject().getContragentsList(CodeFragment, getIdOrderType());
             int i = 0;
             while(rsC.next()) i++;  // counts the ROWS in the ResultSet
             rsC.beforeFirst();
@@ -1146,9 +1147,9 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
                     tableC.setEditingRow(0);
                 } catch(Exception ex) { ex.printStackTrace(); }
                 this.setSearchField("\u041A\u043E\u0434");
-                if (this.jRadioButton1.isSelected())
+                if (this.jRadioButton1.isSelected()) 
                     this.CompNumber = 1;
-                else if (this.jRadioButton1.isSelected())
+                else if (this.jRadioButton2.isSelected()) 
                     this.CompNumber = 2;
                 td = new imakante.com.vcomponents.tableDialog(this, true, tableC,
                         "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u043A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442",
@@ -1159,17 +1160,17 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
                 setIdChosenContragent(rsC.getInt("id_contragent"));
                 setCodeChosenContragent(rsC.getInt("code_contragent"));
                 setNameChosenContragent(rsC.getString("name_n_contragent"));
-                if (getIdOrderType() == 1) {
+                if (getIdOrderType() == 2 || getIdOrderType() == 5) {   // platejni kym razpl. smetka i Biudjeta
                     setChosenBank(rsC.getString("BANKNAMER"));
                     setChosenBIC(rsC.getString("BICR"));
                     setChosenIBAN(rsC.getString("IBANR"));
                     setChosenCurrency(rsC.getString("VIDVALR"));
-                } else if (getIdOrderType() == 2) {
+                } else if (getIdOrderType() == 3 || getIdOrderType() == 4) {    // platejni po DDS smetki
                     setChosenBank(rsC.getString("BANKNAMED"));
                     setChosenBIC(rsC.getString("BICD"));
                     setChosenIBAN(rsC.getString("IBAND"));
                     setChosenCurrency(rsC.getString("VIDVALD"));
-                } else if (getIdOrderType() == 0) {
+                } else if (getIdOrderType() == 0) {     // wnosni belejki ot fiz. lica - samo w razpl. smetki
                     setChosenBank(rsC.getString("BANKNAMER"));
                     setChosenBIC(rsC.getString("BICR"));
                     setChosenIBAN(rsC.getString("IBANR"));
@@ -1195,17 +1196,17 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             this.setIdChosenContragent(rsC.getInt("id_contragent"));
             this.setCodeChosenContragent(rsC.getInt("code_contragent"));
             this.setNameChosenContragent(rsC.getString("name_n_contragent"));
-            if (getIdOrderType() == 1) {
+            if (getIdOrderType() == 2 || getIdOrderType() == 5) {   // platejni kym razpl. smetka i Biudjeta
                 setChosenBank(rsC.getString("BANKNAMER"));
                 setChosenBIC(rsC.getString("BICR"));
                 setChosenIBAN(rsC.getString("IBANR"));
                 setChosenCurrency(rsC.getString("VIDVALR"));
-            } else if (getIdOrderType() == 2) {
+            } else if (getIdOrderType() == 3 || getIdOrderType() == 4) {    // platejni po DDS smetki
                 setChosenBank(rsC.getString("BANKNAMED"));
                 setChosenBIC(rsC.getString("BICD"));
                 setChosenIBAN(rsC.getString("IBAND"));
                 setChosenCurrency(rsC.getString("VIDVALD"));
-            } else if (getIdOrderType() == 0) {
+            } else if (getIdOrderType() == 0) {     // wnosni belejki ot fiz. lica - samo w razpl. smetki
                 setChosenBank(rsC.getString("BANKNAMER"));
                 setChosenBIC(rsC.getString("BICR"));
                 setChosenIBAN(rsC.getString("IBANR"));
@@ -1317,16 +1318,16 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     protected void resetFields() {
         setId(0);
         if (jRadioButton1.isSelected()) {
-            setOrderingPerson(0);
-            setIdOrderType(1);
-            setIdBankAccount(0);
+            this.setOrderingPerson(0);
+            this.setIdOrderType(2);
+            this.setIdBankAccount(0);
         }
         if (jRadioButton2.isSelected()) {
-            setOrderingPerson(1);
-            setIdOrderType(0);
-            setIdPerson(0);
+            this.setOrderingPerson(1);
+            this.setIdOrderType(1);
+            this.setIdPerson(0);
         }
-        setIdContragent(0);
+        this.setIdContragent(0);
         setAmount(0.00);
         setOsnovanie("");
         setPoiasnenie("");

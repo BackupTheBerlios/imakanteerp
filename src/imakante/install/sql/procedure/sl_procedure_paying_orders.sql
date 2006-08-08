@@ -94,9 +94,18 @@ BEGIN
      END IF;
 
      IF (comprator = 7) THEN
-        SELECT nb.id_nbc, nb.name_nbc, nb.branch_nbc, nb.address_nbc, nb.account_nbc, nb.bic_nbc, nb.vidval_nbc FROM n_baccount nb
-        WHERE nb.id_tbacc = in_SOT 
-        ORDER BY nb.id_nbc ASC;
+        IF (in_SOT = 2 OR in_SOT = 5) THEN 
+            SELECT nb.id_nbc, nb.name_nbc, nb.branch_nbc, nb.address_nbc, nb.account_nbc, nb.bic_nbc, nb.vidval_nbc 
+            FROM n_baccount nb
+            WHERE nb.id_tbacc = 1 
+            ORDER BY nb.id_nbc ASC;
+        END IF;
+        IF (in_SOT = 3 OR in_SOT = 4) THEN 
+            SELECT nb.id_nbc, nb.name_nbc, nb.branch_nbc, nb.address_nbc, nb.account_nbc, nb.bic_nbc, nb.vidval_nbc 
+            FROM n_baccount nb
+            WHERE nb.id_tbacc = 2 
+            ORDER BY nb.id_nbc ASC;
+        END IF;
      END IF;
 
      IF (comprator = 8) THEN
@@ -130,23 +139,23 @@ BEGIN
 
 
      IF (comprator = 14) THEN
-        IF (in_code = -1 AND (in_SOT = 1 OR in_SOT = 0)) THEN 
+        IF (in_code = -1 AND (in_SOT = 1 OR in_SOT = 2 OR in_SOT = 5)) THEN 
             SELECT cn.id_contragent, cn.code_contragent, cn.name_n_contragent, cn.BANKNAMER, cn.BICR, cn.IBANR, cn.VIDVALR  
                 FROM n_contragent cn WHERE cn.flag_n_contragent = 0 
                 ORDER BY cn.id_contragent ASC;
         END IF;
-        IF (in_code > -1 AND (in_SOT = 1 OR in_SOT = 0)) THEN 
+        IF (in_code > -1 AND (in_SOT = 1 OR in_SOT = 2 OR in_SOT = 5)) THEN 
             SELECT cn.id_contragent, cn.code_contragent, cn.name_n_contragent, cn.BANKNAMER, cn.BICR, cn.IBANR, cn.VIDVALR  
                 FROM n_contragent cn
                 WHERE cn.code_contragent LIKE CONCAT('%',in_code,'%') AND cn.flag_n_contragent = 0 
                 ORDER BY cn.id_contragent ASC;
         END IF;
-        IF (in_code = -1 AND in_SOT = 2) THEN 
+        IF (in_code = -1 AND (in_SOT = 3 OR in_SOT = 4)) THEN 
             SELECT cn.id_contragent, cn.code_contragent, cn.name_n_contragent, cn.BANKNAMED, cn.BICD, cn.IBAND, cn.VIDVALD  
                 FROM n_contragent cn WHERE cn.flag_n_contragent = 0 
                 ORDER BY cn.id_contragent ASC;
         END IF;
-        IF (in_code > -1 AND in_SOT = 2) THEN 
+        IF (in_code > -1 AND (in_SOT = 3 OR in_SOT = 4)) THEN 
             SELECT cn.id_contragent, cn.code_contragent, cn.name_n_contragent, cn.BANKNAMED, cn.BICD, cn.IBAND, cn.VIDVALD  
                 FROM n_contragent cn
                 WHERE cn.code_contragent LIKE CONCAT('%',in_code,'%') AND cn.flag_n_contragent = 0  
@@ -161,12 +170,12 @@ BEGIN
      END IF;
 
      IF (comprator = 16) THEN
-        IF (in_SOT = 1) THEN 
+        IF (in_SOT = 1 OR in_SOT = 2 OR in_SOT = 5) THEN 
             SELECT cn.id_contragent, cn.code_contragent, cn.name_n_contragent, cn.BANKNAMER, cn.BICR, cn.IBANR, cn.VIDVALR  
                 FROM n_contragent cn 
                 WHERE cn.code_contragent = in_code AND cn.flag_n_contragent = 0;
         END IF;
-        IF (in_SOT = 2) THEN 
+        IF (in_SOT = 3 OR in_SOT = 4) THEN 
             SELECT cn.id_contragent, cn.code_contragent, cn.name_n_contragent, cn.BANKNAMED, cn.BICD, cn.IBAND, cn.VIDVALD  
                 FROM n_contragent cn 
                 WHERE cn.code_contragent = in_code AND cn.flag_n_contragent = 0;
@@ -179,12 +188,12 @@ BEGIN
      END IF;
 
      IF (comprator = 18) THEN
-        IF (in_SOT = 1) THEN 
+        IF (in_SOT = 1 OR in_SOT = 2 OR in_SOT = 5) THEN 
             SELECT cn.id_contragent, cn.code_contragent, cn.name_n_contragent, cn.BANKNAMER, cn.BICR, cn.IBANR, cn.VIDVALR  
                 FROM n_contragent cn
                 WHERE cn.id_contragent = in_id AND cn.flag_n_contragent = 0;
         END IF;
-        IF (in_SOT = 2) THEN 
+        IF (in_SOT = 3 OR in_SOT = 4) THEN 
             SELECT cn.id_contragent, cn.code_contragent, cn.name_n_contragent, cn.BANKNAMED, cn.BICD, cn.IBAND, cn.VIDVALD  
                 FROM n_contragent cn
                 WHERE cn.id_contragent = in_id AND cn.flag_n_contragent = 0;

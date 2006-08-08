@@ -7,12 +7,12 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         super(frame, modal);
         this.myParent = (imakante.sales.FrmPayingOrders) frame;
         this.isNewRecord = true;
-//        myParent.setIdOrderType(0);
+        myParent.setIdOrderType(1);
         initComponents();
         getNavigationState();
         initOrderTypesCombo();
         this.setResizable(false);
-        this.jTextField8.grabFocus();
+        this.jTextField8.requestFocus();
         repaintComp();
     }
     
@@ -450,10 +450,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
                 revalidatePerson();
             } else {
                 if (jTextField8.getText().equals("")) ;
-                else {
-                    String nameFragment = jTextField8.getText();
-                    myParent.choosePerson(nameFragment);
-                }
+                else myParent.choosePerson(jTextField8.getText());
             }
         }
         fLost(jTextField8);
@@ -466,10 +463,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
                 revalidateContragent();
             } else {
                 if (jTextField1.getText().equals("0")) ;
-                else {
-                    int codeFragment = Integer.parseInt(jTextField1.getText());
-                    myParent.chooseContragent(codeFragment);
-                }
+                else myParent.chooseContragent(Integer.parseInt(jTextField1.getText()));
             }
         }
         fLost(jTextField1);
@@ -671,7 +665,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
-    //--------------- My Variables
+    
     private imakante.sales.FrmPayingOrders myParent;
     private String namesOrderTypes[];
     private int selectedOrderType;
@@ -679,17 +673,12 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     private static boolean isFromF7 = false;
     private boolean isNewRecord = false;
     
-    //---------------END My Variables
-    
-    //---------------START My Methods
-    
-    //SAVE
     private void saveRecord() {
         try {
             myParent.setAmount(Double.parseDouble(jTextField4.getText()));
         } catch (NumberFormatException nfex) { nfex.printStackTrace(); }
-        // Tip platejnoto narejdane = wnosna belejka - 0
-        myParent.setIdOrderType(0);
+        // Tip platejnoto narejdane = wnosna belejka - 1
+        myParent.setIdOrderType(1);
         myParent.setIdPerson(myParent.getIdChosenPerson());
         myParent.setIdContragent(myParent.getIdChosenContragent());
         myParent.setOsnovanie(jTextField6.getText());
@@ -700,6 +689,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         myParent.getInternalObject().updateRow(myParent.getId(),
                 1,  // Physical person
                 myParent.getIdOrderType(),
+                myParent.getIdBankAccount(),
                 myParent.getIdPerson(),
                 myParent.getIdContragent(),
                 myParent.getAmount(),

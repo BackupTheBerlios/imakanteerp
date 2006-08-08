@@ -78,13 +78,14 @@ public class dbPayingOrders extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    public void updateRow(int in_id, int in_order_person, int in_id_spt, int in_id_nbc, int in_id_contragent, 
-            double in_amount, String in_osnovanie, String in_comment_spo) {
+    public void updateRow(int in_id, int in_order_person, int in_id_spt, int in_id_nbc, int in_id_person, 
+            int in_id_contragent, double in_amount, String in_osnovanie, String in_comment_spo) {
         setComprator(2);
         this.setId(in_id);
         this.setOrderingPerson(in_order_person);
         this.setIdPayingOrderType(in_id_spt);
         this.setIdBankAccount(in_id_nbc);
+        this.setIdPerson(in_id_person);
         this.setIdContragent(in_id_contragent);
         this.setAmount(in_amount);
         this.setOsnovanie(in_osnovanie);
