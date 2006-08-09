@@ -1345,17 +1345,18 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         setIdOrderType((Integer) getTable().getValueAt(getRow(), getColumnIndex("id_type_porder")));
         if (jRadioButton1.isSelected()) {
             setIdBankAccount((Integer) getTable().getValueAt(getRow(), getColumnIndex("id_bank_account")));
-            OrderType = (String) getTable().getValueAt(getRow(), getColumnIndex("\u0422\u0438\u043F \u043D\u0430 \u043E\u043F\u0435\u0440\u0430\u0446\u0438\u044F\u0442\u0430"));
-            BankName = (String) getTable().getValueAt(getRow(), getColumnIndex("\u0411\u0430\u043D\u043A\u0430 \u043D\u0430 \u041D\u0430\u0440\u0435\u0434\u0438\u0442\u0435\u043B\u044F"));
-            OurIBAN = (String) getTable().getValueAt(getRow(), getColumnIndex("\u0421\u043C\u0435\u0442\u043A\u0430 (IBAN)"));
-            TypeAccount = (String) getTable().getValueAt(getRow(), getColumnIndex("\u0422\u0438\u043F \u043D\u0430 \u0441\u043C\u0435\u0442\u043A\u0430\u0442\u0430"));
-           // namePerson = (String) getTable().getValueAt(getRow(), getColumnIndex("\u041F\u043E\u043B\u0443\u0447\u0430\u0442\u0435\u043B"));
-            nameChosenContragent = (String) getTable().getValueAt(getRow(), getColumnIndex("\u041F\u043E\u043B\u0443\u0447\u0430\u0442\u0435\u043B"));
+            setOrderType((String) getTable().getValueAt(getRow(), getColumnIndex("\u0422\u0438\u043F \u043D\u0430 \u043E\u043F\u0435\u0440\u0430\u0446\u0438\u044F\u0442\u0430")));
+            setBankName((String) getTable().getValueAt(getRow(), getColumnIndex("\u0411\u0430\u043D\u043A\u0430 \u043D\u0430 \u041D\u0430\u0440\u0435\u0434\u0438\u0442\u0435\u043B\u044F")));
+            setOurIBAN((String) getTable().getValueAt(getRow(), getColumnIndex("\u0421\u043C\u0435\u0442\u043A\u0430 (IBAN)")));
+            setTypeAccount((String) getTable().getValueAt(getRow(), getColumnIndex("\u0422\u0438\u043F \u043D\u0430 \u0441\u043C\u0435\u0442\u043A\u0430\u0442\u0430")));
         }
         if (jRadioButton2.isSelected()) {
             setIdPerson((Integer) getTable().getValueAt(getRow(), getColumnIndex("id_ls_n_person")));
+            setNamePerson((String) getTable().getValueAt(getRow(), getColumnIndex("\u041F\u043E\u043B\u0443\u0447\u0430\u0442\u0435\u043B")));
         }
         setIdContragent((Integer) getTable().getValueAt(getRow(), getColumnIndex("id_contragent")));
+        setNameChosenContragent((String) getTable().getValueAt(getRow(), getColumnIndex("\u041F\u043E\u043B\u0443\u0447\u0430\u0442\u0435\u043B")));
+        setCodeChosenContragent((Integer) getTable().getValueAt(getRow(), getColumnIndex("\u041A\u043E\u0434")));
         java.math.BigDecimal bd2d = (java.math.BigDecimal) getTable().getValueAt(getRow(), getColumnIndex("\u0421\u0443\u043C\u0430"));
         setAmount(bd2d.doubleValue());
         setOsnovanie((String) getTable().getValueAt(getRow(), getColumnIndex("\u041E\u0441\u043D\u043E\u0432\u0430\u043D\u0438\u0435")));
