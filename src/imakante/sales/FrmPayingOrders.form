@@ -106,33 +106,33 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="5" max="-2" attributes="1"/>
-                              <Component id="jTextField1" pref="123" max="32767" attributes="0"/>
+                              <Component id="jTextField1" pref="122" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="1">
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField2" pref="124" max="32767" attributes="0"/>
+                              <Component id="jTextField2" pref="123" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel4" pref="57" max="32767" attributes="0"/>
+                          <Component id="jLabel4" pref="56" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel3" pref="43" max="32767" attributes="0"/>
+                              <Component id="jLabel3" pref="42" max="32767" attributes="0"/>
                               <EmptySpace min="14" pref="14" max="14" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jComboBox2" pref="160" max="32767" attributes="0"/>
+                          <Component id="jComboBox2" pref="159" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="79" pref="79" max="79" attributes="0"/>
-                              <Component id="jComboBox1" pref="81" max="32767" attributes="0"/>
+                              <Component id="jComboBox1" pref="80" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel5" pref="55" max="32767" attributes="0"/>
-                          <Component id="jLabel6" pref="55" max="32767" attributes="0"/>
+                          <Component id="jLabel5" pref="54" max="32767" attributes="0"/>
+                          <Component id="jLabel6" pref="54" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -140,7 +140,7 @@
                           <Component id="jXDatePicker2" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="jButtonSearch" pref="96" max="32767" attributes="0"/>
+                      <Component id="jButtonSearch" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
               </Group>

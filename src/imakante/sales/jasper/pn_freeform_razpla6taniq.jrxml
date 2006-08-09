@@ -497,12 +497,12 @@
 					<reportElement
 						x="43"
 						y="6"
-						width="232"
+						width="271"
 						height="19"
 						key="textField-1"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="13"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{bank}]]></textFieldExpression>
 				</textField>
@@ -523,12 +523,12 @@
 					<reportElement
 						x="43"
 						y="60"
-						width="232"
+						width="271"
 						height="21"
 						key="textField-2"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="13"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{address}]]></textFieldExpression>
 				</textField>
@@ -580,12 +580,12 @@
 					<reportElement
 						x="43"
 						y="36"
-						width="232"
+						width="271"
 						height="20"
 						key="textField-3"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="13"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{branch}]]></textFieldExpression>
 				</textField>
@@ -620,7 +620,7 @@
 						key="textField-4"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center" verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="13"/>
 					</textElement>
 				<textFieldExpression   class="java.util.Date"><![CDATA[new Date()]]></textFieldExpression>
 				</textField>
@@ -633,7 +633,7 @@
 						key="textField-5"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="13"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{contragent}]]></textFieldExpression>
 				</textField>
@@ -646,7 +646,7 @@
 						key="textField-6"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="13"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{IBANcontragent}]]></textFieldExpression>
 				</textField>
@@ -659,7 +659,7 @@
 						key="textField-7"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="13"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{BANKcontragent}]]></textFieldExpression>
 				</textField>
@@ -672,7 +672,7 @@
 						key="textField-8"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="13"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{reason}]]></textFieldExpression>
 				</textField>
@@ -685,7 +685,7 @@
 						key="textField-9"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="13"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{comment}]]></textFieldExpression>
 				</textField>
@@ -698,7 +698,7 @@
 						key="textField-10"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="13"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{firm}]]></textFieldExpression>
 				</textField>
@@ -711,7 +711,7 @@
 						key="textField-11"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="13"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{iban}]]></textFieldExpression>
 				</textField>
@@ -724,7 +724,7 @@
 						key="textField-12"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="13"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{bic}]]></textFieldExpression>
 				</textField>
@@ -737,7 +737,7 @@
 						key="textField-13"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center" verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="13"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{currency}]]></textFieldExpression>
 				</textField>
@@ -750,7 +750,7 @@
 						key="textField-14"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Right" verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="13"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.Double"><![CDATA[$P{amount}]]></textFieldExpression>
 				</textField>
@@ -763,7 +763,7 @@
 						key="textField-15"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="13"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{BICcontragent}]]></textFieldExpression>
 				</textField>
@@ -1203,12 +1203,12 @@
 					<reportElement
 						x="43"
 						y="380"
-						width="232"
+						width="271"
 						height="19"
 						key="textField-16"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="13"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{bank}]]></textFieldExpression>
 				</textField>
@@ -1229,12 +1229,12 @@
 					<reportElement
 						x="43"
 						y="434"
-						width="232"
+						width="271"
 						height="21"
 						key="textField-17"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="13"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{address}]]></textFieldExpression>
 				</textField>
@@ -1286,12 +1286,12 @@
 					<reportElement
 						x="43"
 						y="410"
-						width="232"
+						width="271"
 						height="20"
 						key="textField-18"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="13"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{branch}]]></textFieldExpression>
 				</textField>
@@ -1326,7 +1326,7 @@
 						key="textField-19"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center" verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="12"/>
+						<font fontName="Tahoma" size="13"/>
 					</textElement>
 				<textFieldExpression   class="java.util.Date"><![CDATA[new Date()]]></textFieldExpression>
 				</textField>
@@ -1339,7 +1339,7 @@
 						key="textField-20"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="13"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{contragent}]]></textFieldExpression>
 				</textField>
@@ -1352,7 +1352,7 @@
 						key="textField-21"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="13"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{IBANcontragent}]]></textFieldExpression>
 				</textField>
@@ -1365,7 +1365,7 @@
 						key="textField-22"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="13"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{BANKcontragent}]]></textFieldExpression>
 				</textField>
@@ -1378,7 +1378,7 @@
 						key="textField-23"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="13"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{reason}]]></textFieldExpression>
 				</textField>
@@ -1391,7 +1391,7 @@
 						key="textField-24"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="13"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{comment}]]></textFieldExpression>
 				</textField>
@@ -1404,7 +1404,7 @@
 						key="textField-25"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="13"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{firm}]]></textFieldExpression>
 				</textField>
@@ -1417,7 +1417,7 @@
 						key="textField-26"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="13"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{iban}]]></textFieldExpression>
 				</textField>
@@ -1430,7 +1430,7 @@
 						key="textField-27"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="13"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{bic}]]></textFieldExpression>
 				</textField>
@@ -1456,7 +1456,7 @@
 						key="textField-29"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Right" verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="13"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.Double"><![CDATA[$P{amount}]]></textFieldExpression>
 				</textField>
@@ -1469,7 +1469,7 @@
 						key="textField-30"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="13"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{BICcontragent}]]></textFieldExpression>
 				</textField>

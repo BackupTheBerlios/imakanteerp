@@ -977,9 +977,11 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         if (jRadioButton1.isSelected()) {
             jasperFile = "pn_freeform_razpla6taniq.jasper";
             hm.put("bank", this.getBankName().toUpperCase());
+            System.out.println(" banka" + this.getBankName().toUpperCase());
             hm.put("branch", "÷≈Õ“–¿À≈Õ");
             hm.put("address", "”À»÷¿ Œ—¬Œ¡Œ∆ƒ≈Õ»≈ 1");
             hm.put("contragent", this.getNameChosenContragent().toUpperCase());
+            System.out.println(" contragent " + this.getNameChosenContragent().toUpperCase());
             hm.put("IBANcontragent", this.getChosenIBAN().toUpperCase());
             hm.put("BICcontragent", this.getChosenBIC().toUpperCase());
             hm.put("BANKcontragent", this.getChosenBank().toUpperCase());
@@ -1343,6 +1345,12 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         setIdOrderType((Integer) getTable().getValueAt(getRow(), getColumnIndex("id_type_porder")));
         if (jRadioButton1.isSelected()) {
             setIdBankAccount((Integer) getTable().getValueAt(getRow(), getColumnIndex("id_bank_account")));
+            OrderType = (String) getTable().getValueAt(getRow(), getColumnIndex("\u0422\u0438\u043F \u043D\u0430 \u043E\u043F\u0435\u0440\u0430\u0446\u0438\u044F\u0442\u0430"));
+            BankName = (String) getTable().getValueAt(getRow(), getColumnIndex("\u0411\u0430\u043D\u043A\u0430 \u043D\u0430 \u041D\u0430\u0440\u0435\u0434\u0438\u0442\u0435\u043B\u044F"));
+            OurIBAN = (String) getTable().getValueAt(getRow(), getColumnIndex("\u0421\u043C\u0435\u0442\u043A\u0430 (IBAN)"));
+            TypeAccount = (String) getTable().getValueAt(getRow(), getColumnIndex("\u0422\u0438\u043F \u043D\u0430 \u0441\u043C\u0435\u0442\u043A\u0430\u0442\u0430"));
+           // namePerson = (String) getTable().getValueAt(getRow(), getColumnIndex("\u041F\u043E\u043B\u0443\u0447\u0430\u0442\u0435\u043B"));
+            nameChosenContragent = (String) getTable().getValueAt(getRow(), getColumnIndex("\u041F\u043E\u043B\u0443\u0447\u0430\u0442\u0435\u043B"));
         }
         if (jRadioButton2.isSelected()) {
             setIdPerson((Integer) getTable().getValueAt(getRow(), getColumnIndex("id_ls_n_person")));
