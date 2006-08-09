@@ -43,17 +43,7 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
         this.fileJasper = filejasper;
         
         initComponents();
-        InternalTable.addKeyListener(new java.awt.event.KeyListener() {
-            public void keyPressed(java.awt.event.KeyEvent e) {
-                if(java.awt.event.KeyEvent.VK_ENTER == e.getKeyCode()) {
-                    
-                }
-            }
-            public void keyReleased(java.awt.event.KeyEvent e) {
-            }
-            public void keyTyped(java.awt.event.KeyEvent e) {
-            }
-        });
+        
         this.jButton2.setText("\u0418\u0437\u0433\u043b\u0435\u0434 \u041f\u0440\u0438\u043d\u0442");
         try {
             prepareJassper();
@@ -228,6 +218,21 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
         if(this.InternalTable==null){
             this.jButton2.setVisible(false);
             showJassper();
+        }
+        else{
+        
+        InternalTable.addKeyListener(new java.awt.event.KeyListener() {
+            public void keyPressed(java.awt.event.KeyEvent e) {
+                if(java.awt.event.KeyEvent.VK_ENTER == e.getKeyCode()) {
+                    
+                }
+            }
+            public void keyReleased(java.awt.event.KeyEvent e) {
+            }
+            public void keyTyped(java.awt.event.KeyEvent e) {
+            }
+        });
+        
         }
     }
 }
