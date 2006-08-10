@@ -972,55 +972,86 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         setRow(getTable().getSelectedRow());
         setAllVariables();
         String jasperFile = "";
+        String[] keys;
         java.util.HashMap hm = new java.util.HashMap();
-        imakante.com.CustomTableModel hmmodel;
         imakante.com.CustomTable hm2table;
+        imakante.com.CustomTableModel hmmodel;
         if (jRadioButton1.isSelected()) {
             jasperFile = "pn_freeform_razpla6taniq.jasper";
-            hm.put("bank", this.getBankName().toUpperCase());
-            hm.put("branch", "÷≈Õ“–¿À≈Õ");
-            hm.put("address", "”À»÷¿ Œ—¬Œ¡Œ∆ƒ≈Õ»≈ 1");
-            hm.put("contragent", this.getNameChosenContragent().toUpperCase());
-            hm.put("IBANcontragent", this.getChosenIBAN().toUpperCase());
-            hm.put("BICcontragent", this.getChosenBIC().toUpperCase());
-            hm.put("BANKcontragent", this.getChosenBank().toUpperCase());
-            hm.put("currency", this.getChosenCurrency().toUpperCase());
-            hm.put("amount", this.getAmount());
-            hm.put("reason", this.getOsnovanie().toUpperCase());
-            hm.put("comment", this.getPoiasnenie().toUpperCase());
-            hm.put("firm", imakante.com.NewMain.getParamFirm().getName().toUpperCase());
-            hm.put("iban", this.getOurIBAN().toUpperCase());
-            hm.put("bic", this.getChosenBIC().toUpperCase());
+            keys = new String[14];
+            keys[1] = "bank";
+            hm.put(keys[1], this.getBankName().toUpperCase());
+            keys[2] = "branch";
+            hm.put(keys[2], "÷≈Õ“–¿À≈Õ");
+            keys[3] = "address";
+            hm.put(keys[3], "”À»÷¿ Œ—¬Œ¡Œ∆ƒ≈Õ»≈ 1");
+            keys[4] = "contragent";
+            hm.put(keys[4], this.getNameChosenContragent().toUpperCase());
+            keys[5] = "IBANcontragent";
+            hm.put(keys[5], this.getChosenIBAN().toUpperCase());
+            keys[6] = "BICcontragent";
+            hm.put(keys[6], this.getChosenBIC().toUpperCase());
+            keys[7] = "BANKcontragent";
+            hm.put(keys[7], this.getChosenBank().toUpperCase());
+            keys[8] = "currency";
+            hm.put(keys[8], this.getChosenCurrency().toUpperCase());
+            keys[9] = "amount";
+            hm.put(keys[9], this.getAmount());
+            keys[10] = "reason";
+            hm.put(keys[10], this.getOsnovanie().toUpperCase());
+            keys[11] = "comment";
+            hm.put(keys[11], this.getPoiasnenie().toUpperCase());
+            keys[12] = "firm";
+            hm.put(keys[12], imakante.com.NewMain.getParamFirm().getName().toUpperCase());
+            keys[13] = "iban";
+            hm.put(keys[13], this.getOurIBAN().toUpperCase());
+            keys[14] = "bic";
+            hm.put(keys[14], this.getChosenBIC().toUpperCase());
             
-            // TODO da se dowyr6i!!!!
-//            hmmodel = new imakante.com.CustomTableModel();
-//            hm2table = new imakante.com.CustomTable(hmmodel);
+            
         } else if (jRadioButton2.isSelected()) {
             jasperFile = "pn_freeform_wnosna_belejka.jasper";
+            keys = new String[11];
             imakante.com.priceToString prcT = new imakante.com.priceToString();
             double w = this.getAmount();
             prcT.setValue(w);
             prcT.ConstString();
-            hm.put("bank", this.getBankName().toUpperCase());
-            hm.put("branch", "÷≈Õ“–¿À≈Õ");
-            hm.put("address", "”À»÷¿ Œ—¬Œ¡Œ∆ƒ≈Õ»≈ 1");
-            hm.put("place", "");
-            hm.put("contragent", this.getNameChosenContragent().toUpperCase());
-            hm.put("IBAN", this.getChosenIBAN().toUpperCase());
-            hm.put("currency", this.getChosenCurrency().toUpperCase());
-            hm.put("amount", this.getAmount());
-            hm.put("words", prcT.getEndString().toUpperCase());
-            hm.put("person", this.getNameChosenPerson());
-            hm.put("reason", this.getOsnovanie().toUpperCase());
+            keys[1] = "bank";
+            hm.put(keys[1], this.getBankName().toUpperCase());
+            keys[2] = "branch";
+            hm.put(keys[2], "÷≈Õ“–¿À≈Õ");
+            hm.put(keys[3], "”À»÷¿ Œ—¬Œ¡Œ∆ƒ≈Õ»≈ 1");
+            keys[4] = "place";
+            hm.put(keys[4], "");
+            keys[5] = "contragent";
+            hm.put(keys[5], this.getNameChosenContragent().toUpperCase());
+            keys[6] = "IBAN";
+            hm.put(keys[6], this.getChosenIBAN().toUpperCase());
+            keys[7] = "currency";
+            hm.put(keys[7], this.getChosenCurrency().toUpperCase());
+            keys[8] = "amount";
+            hm.put(keys[8], this.getAmount());
+            keys[9] = "words";
+            hm.put(keys[9], prcT.getEndString().toUpperCase());
+            keys[10] = "person";
+            hm.put(keys[10], this.getNameChosenPerson());
+            keys[11] = "reason";
+            hm.put(keys[11], this.getOsnovanie().toUpperCase());
             
-            
-//            hmmodel = new imakante.com.CustomTableModel();
-//            hm2table = new imakante.com.CustomTable(hmmodel);
-        } else {  }
+        }
+//        hmmodel = new imakante.com.CustomTableModel(getConn(), null, keys);
+//        hm2table = new imakante.com.CustomTable(hmmodel);
 //        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, hm2table, getConn(), hm, jasperFile,
 //                "\u0418\u0437\u0433\u043B\u0435\u0434 \u043D\u0430 \u043F\u043B\u0430\u0442\u0435\u0436\u043D\u043E\u0442\u043E \u043D\u0430\u0440\u0435\u0436\u0434\u0430\u043D\u0435", "");
 //        td.setVisible(true);
     }
+    
+//    private imakante.com.CustomTable HashMap2Table(java.util.HashMap hm, String[] keys) {
+//        imakante.com.CustomTableModel hmmodel;
+//        imakante.com.CustomTable hmtable;
+//        
+//        return hmtable;
+//    }
     
     private void printTable() {
         try {
