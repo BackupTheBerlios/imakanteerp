@@ -475,6 +475,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jTextField6FocusLost
     
     private void jTextField6FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusGained
+        jTextField6.selectAll();
         fGain(jTextField6);
     }//GEN-LAST:event_jTextField6FocusGained
     
@@ -483,6 +484,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jTextField7FocusLost
     
     private void jTextField7FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField7FocusGained
+        jTextField7.selectAll();
         fGain(jTextField7);
     }//GEN-LAST:event_jTextField7FocusGained
     
@@ -549,16 +551,17 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     private void jButtonOneRowPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowPActionPerformed
         myParent.mOneRowPlus();
         if(myParent.isAtEnd()) {
-            if (isNewRecord)
+            if (isNewRecord) {
                 enableAllFieldsIsNew();
-            jButtonToEnd.setEnabled(false);
-            jButtonOneRowP.setEnabled(false);
             jButtonSave.setEnabled(false);
             jButtonPrint.setEnabled(true);
+                jButtonSave.repaint();
+                jButtonPrint.repaint();
+            }
+            jButtonToEnd.setEnabled(false);
+            jButtonOneRowP.setEnabled(false);
             jButtonToEnd.repaint();
             jButtonOneRowP.repaint();
-            jButtonSave.repaint();
-            jButtonPrint.repaint();
         }
         jButtonToBegin.setEnabled(true);
         jButtonOneRowM.setEnabled(true);
@@ -568,10 +571,11 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButtonOneRowPActionPerformed
     // gotoLast
     private void jButtonToEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToEndActionPerformed
-        if (isNewRecord)
+        if (isNewRecord) {
             enableAllFieldsIsNew();
-        jButtonSave.setEnabled(false);
-        jButtonPrint.setEnabled(true);
+            jButtonSave.setEnabled(true);
+            jButtonPrint.setEnabled(false);
+        }
         myParent.mTableEnd();
         jButtonToEnd.setEnabled(false);
         jButtonOneRowP.setEnabled(false);
@@ -657,10 +661,12 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     private String namesOurAccounts[];
     private int selectedOrderType;
     private int selectedAccount;
-    
+    private String buffCodeContragent = "";
+    private String buffAmount = "";
+    private String buffOsnovanie = "";
+    private String buffPoiasnenie = "";
     private static boolean isFromF7 = false;
     private boolean isNewRecord = false;
-    
     private void saveRecord() {
         try {
             myParent.setAmount(Double.parseDouble(jTextField4.getText()));
@@ -715,8 +721,8 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }
     
     private void repaintComp() {
-        jComboBox1.setSelectedIndex(getNewOTIndex(myParent.getIdOrderType()));
-        jComboBox2.setSelectedIndex(getNewOAIndex(myParent.getIdTypeAccount()));
+//        jComboBox1.setSelectedIndex(getNewOTIndex(myParent.getIdOrderType()));
+//        jComboBox2.setSelectedIndex(getNewOAIndex(myParent.getIdTypeAccount()));
         jTextField1.setText("" + myParent.getCodeContragent());
         jTextField2.setText(myParent.getNameContragent());
         jTextField3.setText(myParent.getChosenIBAN());
@@ -750,11 +756,6 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     private void initOurAccountsCombo() {
         // Gets the name of the Paying order which gives us the id of the Document Type
         int SOT = myParent.getInternalObject().parseOrderTypesCombo((String) jComboBox1.getSelectedItem());
-        // And the id of the Document type is evaluated to the id of the Account type it belongs
-        if (SOT == 2 || SOT == 5) 
-            SOT = 1;
-        if (SOT == 3 || SOT == 4) 
-            SOT = 2;
         // Accounts here are filtered by their type determined at the previous step
         namesOurAccounts = myParent.getInternalObject().getOurAccounts(SOT);
         for(int i = 0; i < namesOurAccounts.length; i++) {
@@ -845,6 +846,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     }
     
     private void disableAllFields() {
+        fillBuffers();
         jComboBox1.setEnabled(false);
         jComboBox2.setEnabled(false);
         jTextField1.setEnabled(false);
@@ -860,6 +862,33 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
         jTextField4.setEnabled(true);
         jTextField6.setEnabled(true);
         jTextField7.setEnabled(true);
+        rememberChoices();
+    }
+    
+    private void fillBuffers() {
+        if (jTextField1.getText().equals("") || jTextField1.getText().equals("0")) {
+            buffCodeContragent = jTextField1.getText();
+        } else if (jTextField4.getText().equals("") || jTextField4.getText().equals("0.00")) {
+            buffAmount = jTextField4.getText();
+        } else if (jTextField6.getText().equals("")) {
+            buffOsnovanie = jTextField6.getText();
+        } else if (jTextField7.getText().equals("")) {
+            buffPoiasnenie = jTextField7.getText();
+        }
+    }
+    
+    private void rememberChoices() {
+        jComboBox1.setSelectedIndex(selectedOrderType);
+        jComboBox2.setSelectedIndex(selectedAccount);
+        jTextField1.setText(buffCodeContragent);
+        if (!buffCodeContragent.equals("")) {
+        jTextField2.setText(myParent.getNameChosenContragent());
+        jTextField3.setText(myParent.getChosenIBAN());
+        jTextField5.setText(myParent.getChosenCurrency());
+        }
+        jTextField4.setText(buffAmount);
+        jTextField6.setText(buffOsnovanie);
+        jTextField7.setText(buffPoiasnenie);
     }
     
     private void closeForm() {

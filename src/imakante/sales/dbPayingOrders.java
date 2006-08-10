@@ -221,16 +221,16 @@ public class dbPayingOrders extends imakante.com.dbObject {
     }
     
     public int parseOrderTypesCombo(String orderTypeName) {
-        int mappedAccountType = 0;
+        int mappedOrderTypeIndex = 0;
         setComprator(13);
         this.setSelectedOrderTypeName(orderTypeName);
         try {
             registerParameters();
             setRs(getCstm().executeQuery());
             getRs().next();
-            mappedAccountType = getRs().getInt("id_tbacc");
+            mappedOrderTypeIndex = getRs().getInt("id_spt");
         } catch (Exception ex) { ex.printStackTrace(); }
-        return mappedAccountType;
+        return mappedOrderTypeIndex;
     }
     
     public java.sql.ResultSet getContragentsList(int in_code, int orderType) {

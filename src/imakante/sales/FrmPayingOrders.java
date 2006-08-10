@@ -967,21 +967,20 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     protected void printOrder() {
         
         
-        // TODO
-        // vzimane na stoinostite ot imenata na kolonite i popalvaneto im v hashmapa
+        // TODO vzimane na stoinostite ot imenata na kolonite i popalvaneto im v hashmapa
         
         setRow(getTable().getSelectedRow());
         setAllVariables();
         String jasperFile = "";
         java.util.HashMap hm = new java.util.HashMap();
+        imakante.com.CustomTableModel hmmodel;
+        imakante.com.CustomTable hm2table;
         if (jRadioButton1.isSelected()) {
             jasperFile = "pn_freeform_razpla6taniq.jasper";
             hm.put("bank", this.getBankName().toUpperCase());
-            System.out.println(" banka" + this.getBankName().toUpperCase());
             hm.put("branch", "÷≈Õ“–¿À≈Õ");
             hm.put("address", "”À»÷¿ Œ—¬Œ¡Œ∆ƒ≈Õ»≈ 1");
             hm.put("contragent", this.getNameChosenContragent().toUpperCase());
-            System.out.println(" contragent " + this.getNameChosenContragent().toUpperCase());
             hm.put("IBANcontragent", this.getChosenIBAN().toUpperCase());
             hm.put("BICcontragent", this.getChosenBIC().toUpperCase());
             hm.put("BANKcontragent", this.getChosenBank().toUpperCase());
@@ -993,6 +992,9 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             hm.put("iban", this.getOurIBAN().toUpperCase());
             hm.put("bic", this.getChosenBIC().toUpperCase());
             
+            // TODO da se dowyr6i!!!!
+//            hmmodel = new imakante.com.CustomTableModel();
+//            hm2table = new imakante.com.CustomTable(hmmodel);
         } else if (jRadioButton2.isSelected()) {
             jasperFile = "pn_freeform_wnosna_belejka.jasper";
             imakante.com.priceToString prcT = new imakante.com.priceToString();
@@ -1002,7 +1004,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             hm.put("bank", this.getBankName().toUpperCase());
             hm.put("branch", "÷≈Õ“–¿À≈Õ");
             hm.put("address", "”À»÷¿ Œ—¬Œ¡Œ∆ƒ≈Õ»≈ 1");
-            hm.put("place", "Ãﬂ—“Œ");
+            hm.put("place", "");
             hm.put("contragent", this.getNameChosenContragent().toUpperCase());
             hm.put("IBAN", this.getChosenIBAN().toUpperCase());
             hm.put("currency", this.getChosenCurrency().toUpperCase());
@@ -1010,10 +1012,14 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             hm.put("words", prcT.getEndString().toUpperCase());
             hm.put("person", this.getNameChosenPerson());
             hm.put("reason", this.getOsnovanie().toUpperCase());
+            
+            
+//            hmmodel = new imakante.com.CustomTableModel();
+//            hm2table = new imakante.com.CustomTable(hmmodel);
         } else {  }
-        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, null, getConn(), hm, jasperFile,
-                "\u0418\u0437\u0433\u043B\u0435\u0434 \u043D\u0430 \u043F\u043B\u0430\u0442\u0435\u0436\u043D\u043E\u0442\u043E \u043D\u0430\u0440\u0435\u0436\u0434\u0430\u043D\u0435", "");
-        td.setVisible(true);
+//        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, hm2table, getConn(), hm, jasperFile,
+//                "\u0418\u0437\u0433\u043B\u0435\u0434 \u043D\u0430 \u043F\u043B\u0430\u0442\u0435\u0436\u043D\u043E\u0442\u043E \u043D\u0430\u0440\u0435\u0436\u0434\u0430\u043D\u0435", "");
+//        td.setVisible(true);
     }
     
     private void printTable() {
@@ -1352,11 +1358,11 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         }
         if (jRadioButton2.isSelected()) {
             setIdPerson((Integer) getTable().getValueAt(getRow(), getColumnIndex("id_ls_n_person")));
-            setNamePerson((String) getTable().getValueAt(getRow(), getColumnIndex("\u041F\u043E\u043B\u0443\u0447\u0430\u0442\u0435\u043B")));
+            setNamePerson((String) getTable().getValueAt(getRow(), getColumnIndex("\u0418\u043C\u0435")));
         }
         setIdContragent((Integer) getTable().getValueAt(getRow(), getColumnIndex("id_contragent")));
         setNameChosenContragent((String) getTable().getValueAt(getRow(), getColumnIndex("\u041F\u043E\u043B\u0443\u0447\u0430\u0442\u0435\u043B")));
-        setCodeChosenContragent((Integer) getTable().getValueAt(getRow(), getColumnIndex("\u041A\u043E\u0434")));
+//        setCodeChosenContragent((Integer) getTable().getValueAt(getRow(), getColumnIndex("\u041A\u043E\u0434")));
         java.math.BigDecimal bd2d = (java.math.BigDecimal) getTable().getValueAt(getRow(), getColumnIndex("\u0421\u0443\u043C\u0430"));
         setAmount(bd2d.doubleValue());
         setOsnovanie((String) getTable().getValueAt(getRow(), getColumnIndex("\u041E\u0441\u043D\u043E\u0432\u0430\u043D\u0438\u0435")));

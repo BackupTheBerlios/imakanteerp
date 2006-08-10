@@ -563,16 +563,17 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     private void jButtonOneRowPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowPActionPerformed
         myParent.mOneRowPlus();
         if(myParent.isAtEnd()) {
-            if (isNewRecord)
+            if (isNewRecord) {
                 enableAllFieldsIsNew();
+                jButtonSave.setEnabled(false);
+                jButtonPrint.setEnabled(true);
+                jButtonSave.repaint();
+                jButtonPrint.repaint();
+            }
             jButtonToEnd.setEnabled(false);
             jButtonOneRowP.setEnabled(false);
-            jButtonSave.setEnabled(false);
-            jButtonPrint.setEnabled(true);
             jButtonToEnd.repaint();
             jButtonOneRowP.repaint();
-            jButtonSave.repaint();
-            jButtonPrint.repaint();
         }
         jButtonToBegin.setEnabled(true);
         jButtonOneRowM.setEnabled(true);
@@ -582,10 +583,11 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButtonOneRowPActionPerformed
     // gotoLast
     private void jButtonToEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToEndActionPerformed
-        if (isNewRecord)
+        if (isNewRecord) {
             enableAllFieldsIsNew();
-        jButtonSave.setEnabled(false);
-        jButtonPrint.setEnabled(true);
+            jButtonSave.setEnabled(true);
+            jButtonPrint.setEnabled(false);
+        }
         myParent.mTableEnd();
         jButtonToEnd.setEnabled(false);
         jButtonOneRowP.setEnabled(false);
@@ -669,7 +671,11 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     private imakante.sales.FrmPayingOrders myParent;
     private String namesOrderTypes[];
     private int selectedOrderType;
-    
+    private String buffPerson = "";
+    private String buffCodeContragent = "";
+    private String buffAmount = "";
+    private String buffOsnovanie = "";
+    private String buffPoiasnenie = "";
     private static boolean isFromF7 = false;
     private boolean isNewRecord = false;
     
@@ -732,7 +738,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     
     private void repaintComp() {
 //        jComboBox1.setSelectedIndex(getNewOTIndex(myParent.getIdOrderType()));
-        jComboBox1.setSelectedIndex(0); // TODO  ??? kak e prawilno??? 
+        jComboBox1.setSelectedIndex(0); // TODO  ??? kak e prawilno???
         jTextField1.setText("" + myParent.getCodeContragent());
         jTextField2.setText(myParent.getNameContragent());
         jTextField3.setText(myParent.getChosenIBAN());
@@ -835,6 +841,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     }
     
     private void disableAllFields() {
+        fillBuffers();
         jComboBox1.setEnabled(false);
         jTextField1.setEnabled(false);
         jTextField4.setEnabled(false);
@@ -850,6 +857,35 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         jTextField6.setEnabled(true);
         jTextField7.setEnabled(true);
         jTextField8.setEnabled(true);
+        rememberChoices();
+    }
+    
+    private void fillBuffers() {
+        if (jTextField1.getText().equals("") || jTextField1.getText().equals("0")) {
+            buffCodeContragent = jTextField1.getText();
+        } else if (jTextField4.getText().equals("") || jTextField4.getText().equals("0.00")) {
+            buffAmount = jTextField4.getText();
+        } else if (jTextField6.getText().equals("")) {
+            buffOsnovanie = jTextField6.getText();
+        } else if (jTextField7.getText().equals("")) {
+            buffPoiasnenie = jTextField7.getText();
+        } else if (jTextField8.getText().equals("")) {
+            buffPerson = jTextField8.getText();
+        }
+    }
+    
+    private void rememberChoices() {
+        jComboBox1.setSelectedIndex(selectedOrderType);
+        jTextField1.setText(buffCodeContragent);
+        if (!buffCodeContragent.equals("")) {
+        jTextField2.setText(myParent.getNameChosenContragent());
+        jTextField3.setText(myParent.getChosenIBAN());
+        jTextField5.setText(myParent.getChosenCurrency());
+        }
+        jTextField4.setText(buffAmount);
+        jTextField6.setText(buffOsnovanie);
+        jTextField7.setText(buffPoiasnenie);
+        jTextField8.setText(buffPerson);
     }
     
     private void closeForm() {
