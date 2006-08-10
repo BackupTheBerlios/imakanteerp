@@ -134,7 +134,7 @@ BEGIN
      END IF;
 
      IF (comprator = 13) THEN
-        SELECT ta.id_tbacc FROM sl_porder_types ta WHERE ta.type_porder = in_SOTN;
+        SELECT ta.id_spt FROM sl_porder_types ta WHERE ta.type_porder = in_SOTN;
      END IF;
 
 
