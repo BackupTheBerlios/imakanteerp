@@ -296,6 +296,15 @@ public class dbPayingOrders extends imakante.com.dbObject {
         return getRs();
     }
     
+    public void getBankAccountProperties(int in_id) {
+        setComprator(20);
+        this.setId(in_id);
+        try {
+            registerParameters();
+            setRs(getCstm().executeQuery());
+        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
+    }
+    
     public int getOrderingPerson() {
         return orderingPerson;
     }

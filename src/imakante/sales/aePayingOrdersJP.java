@@ -667,6 +667,7 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     private String buffPoiasnenie = "";
     private static boolean isFromF7 = false;
     private boolean isNewRecord = false;
+    
     private void saveRecord() {
         try {
             myParent.setAmount(Double.parseDouble(jTextField4.getText()));

@@ -487,6 +487,9 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     private String chosenIBAN = "";
     private String chosenCurrency = "";
     
+    private String bankBranch = "";
+    private String bankAddress = "";
+    
     private boolean atBegining = false;
     private boolean atEnd = false;
     private int row;
@@ -987,8 +990,9 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         
         // TODO vzimane na stoinostite ot imenata na kolonite i popalvaneto im v hashmapa
         
-        setRow(getTable().getSelectedRow());
-        setAllVariables();
+//        setRow(getTable().getSelectedRow());
+//        setAllVariables();
+        setReportParameters();
         String jasperFile = "";
         String[] keys;
         java.util.HashMap hm = new java.util.HashMap();
@@ -1073,12 +1077,11 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
 //        td.setVisible(true);
     }
     
-//    private imakante.com.CustomTable HashMap2Table(java.util.HashMap hm, String[] keys) {
-//        imakante.com.CustomTableModel hmmodel;
-//        imakante.com.CustomTable hmtable;
-//        
-//        return hmtable;
-//    }
+    private void setReportParameters() {
+        setRow(getTable().getSelectedRow());
+        setId((Integer) getTable().getValueAt(getRow(), getColumnIndex("id")));
+        
+    }
     
     private void printTable() {
         try {
@@ -1371,6 +1374,22 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     
     public void setChosenCurrency(String chosenCurrency) {
         this.chosenCurrency = chosenCurrency;
+    }
+    
+    public String getBankBranch() {
+        return bankBranch;
+    }
+    
+    public void setBankBranch(String bankBranch) {
+        this.bankBranch = bankBranch;
+    }
+    
+    public String getBankAddress() {
+        return bankAddress;
+    }
+    
+    public void setBankAddress(String bankAddress) {
+        this.bankAddress = bankAddress;
     }
     
     private void HideColumns(int col) {

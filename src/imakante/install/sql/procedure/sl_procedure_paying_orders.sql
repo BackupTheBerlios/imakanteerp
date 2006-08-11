@@ -204,6 +204,12 @@ BEGIN
         SELECT p.id_ls_n_person, p.name_ls_n_person FROM ls_n_person p
             WHERE p.id_ls_n_person = in_id;
      END IF;
+
+     IF (comprator = 20) THEN
+        SELECT nb.id_nbc, nb.name_nbc, nb.branch_nbc, nb.address_nbc, nb.account_nbc, nb.bic_nbc, nb.vidval_nbc 
+            FROM n_baccount nb
+            WHERE nb.id_nbc = in_id;
+     END IF;
 END $$
 
 DELIMITER ;
