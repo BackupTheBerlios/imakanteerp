@@ -1,6 +1,24 @@
 
 package imakante.sales;
 
+import java.io.InputStream;
+import java.io.Reader;
+import java.math.BigDecimal;
+import java.net.URL;
+import java.sql.Array;
+import java.sql.Blob;
+import java.sql.Clob;
+import java.sql.Date;
+import java.sql.Ref;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.SQLWarning;
+import java.sql.Statement;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Map;
+
 public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
     public FrmPayingOrders(String title, imakante.com.vcomponents.iFrame frame) {
@@ -979,34 +997,34 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         if (jRadioButton1.isSelected()) {
             jasperFile = "pn_freeform_razpla6taniq.jasper";
             keys = new String[14];
-            keys[1] = "bank";
-            hm.put(keys[1], this.getBankName().toUpperCase());
-            keys[2] = "branch";
-            hm.put(keys[2], "÷≈Õ“–¿À≈Õ");
-            keys[3] = "address";
-            hm.put(keys[3], "”À»÷¿ Œ—¬Œ¡Œ∆ƒ≈Õ»≈ 1");
-            keys[4] = "contragent";
-            hm.put(keys[4], this.getNameChosenContragent().toUpperCase());
-            keys[5] = "IBANcontragent";
-            hm.put(keys[5], this.getChosenIBAN().toUpperCase());
-            keys[6] = "BICcontragent";
-            hm.put(keys[6], this.getChosenBIC().toUpperCase());
-            keys[7] = "BANKcontragent";
-            hm.put(keys[7], this.getChosenBank().toUpperCase());
-            keys[8] = "currency";
-            hm.put(keys[8], this.getChosenCurrency().toUpperCase());
-            keys[9] = "amount";
-            hm.put(keys[9], this.getAmount());
-            keys[10] = "reason";
-            hm.put(keys[10], this.getOsnovanie().toUpperCase());
-            keys[11] = "comment";
-            hm.put(keys[11], this.getPoiasnenie().toUpperCase());
-            keys[12] = "firm";
-            hm.put(keys[12], imakante.com.NewMain.getParamFirm().getName().toUpperCase());
-            keys[13] = "iban";
-            hm.put(keys[13], this.getOurIBAN().toUpperCase());
-            keys[14] = "bic";
-            hm.put(keys[14], this.getChosenBIC().toUpperCase());
+            keys[0] = "bank";
+            hm.put(keys[0], this.getBankName().toUpperCase());
+            keys[1] = "branch";
+            hm.put(keys[1], "÷≈Õ“–¿À≈Õ");
+            keys[2] = "address";
+            hm.put(keys[2], "”À»÷¿ Œ—¬Œ¡Œ∆ƒ≈Õ»≈ 1");
+            keys[3] = "contragent";
+            hm.put(keys[3], this.getNameChosenContragent().toUpperCase());
+            keys[4] = "IBANcontragent";
+            hm.put(keys[4], this.getChosenIBAN().toUpperCase());
+            keys[5] = "BICcontragent";
+            hm.put(keys[5], this.getChosenBIC().toUpperCase());
+            keys[6] = "BANKcontragent";
+            hm.put(keys[6], this.getChosenBank().toUpperCase());
+            keys[7] = "currency";
+            hm.put(keys[7], this.getChosenCurrency().toUpperCase());
+            keys[8] = "amount";
+            hm.put(keys[8], this.getAmount());
+            keys[9] = "reason";
+            hm.put(keys[9], this.getOsnovanie().toUpperCase());
+            keys[10] = "comment";
+            hm.put(keys[10], this.getPoiasnenie().toUpperCase());
+            keys[11] = "firm";
+            hm.put(keys[11], imakante.com.NewMain.getParamFirm().getName().toUpperCase());
+            keys[12] = "iban";
+            hm.put(keys[12], this.getOurIBAN().toUpperCase());
+            keys[13] = "bic";
+            hm.put(keys[13], this.getChosenBIC().toUpperCase());
             
             
         } else if (jRadioButton2.isSelected()) {
@@ -1016,29 +1034,38 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             double w = this.getAmount();
             prcT.setValue(w);
             prcT.ConstString();
-            keys[1] = "bank";
-            hm.put(keys[1], this.getBankName().toUpperCase());
-            keys[2] = "branch";
-            hm.put(keys[2], "÷≈Õ“–¿À≈Õ");
-            hm.put(keys[3], "”À»÷¿ Œ—¬Œ¡Œ∆ƒ≈Õ»≈ 1");
-            keys[4] = "place";
-            hm.put(keys[4], "");
-            keys[5] = "contragent";
-            hm.put(keys[5], this.getNameChosenContragent().toUpperCase());
-            keys[6] = "IBAN";
-            hm.put(keys[6], this.getChosenIBAN().toUpperCase());
-            keys[7] = "currency";
-            hm.put(keys[7], this.getChosenCurrency().toUpperCase());
-            keys[8] = "amount";
-            hm.put(keys[8], this.getAmount());
-            keys[9] = "words";
-            hm.put(keys[9], prcT.getEndString().toUpperCase());
-            keys[10] = "person";
-            hm.put(keys[10], this.getNameChosenPerson());
-            keys[11] = "reason";
-            hm.put(keys[11], this.getOsnovanie().toUpperCase());
+            keys[0] = "bank";
+            hm.put(keys[0], this.getBankName().toUpperCase());
+            keys[1] = "branch";
+            hm.put(keys[1], "÷≈Õ“–¿À≈Õ");
+            keys[2] = "address";
+            hm.put(keys[2], "”À»÷¿ Œ—¬Œ¡Œ∆ƒ≈Õ»≈ 1");
+            keys[3] = "place";
+            hm.put(keys[3], "");
+            keys[4] = "contragent";
+            hm.put(keys[4], this.getNameChosenContragent().toUpperCase());
+            keys[5] = "IBAN";
+            hm.put(keys[5], this.getChosenIBAN().toUpperCase());
+            keys[6] = "currency";
+            hm.put(keys[6], this.getChosenCurrency().toUpperCase());
+            keys[7] = "amount";
+            hm.put(keys[7], this.getAmount());
+            keys[8] = "words";
+            hm.put(keys[8], prcT.getEndString().toUpperCase());
+            keys[9] = "person";
+            hm.put(keys[9], this.getNameChosenPerson());
+            keys[10] = "reason";
+            hm.put(keys[10], this.getOsnovanie().toUpperCase());
             
+        } else { 
+            keys = null;
+            System.out.println("unable to hadle the HashMap!");
         }
+        
+        imakante.sales.aeCaseOpReport rep = new imakante.sales.aeCaseOpReport(this, true, getConn(), hm, jasperFile);
+        rep.setVisible(true);
+        
+        
 //        hmmodel = new imakante.com.CustomTableModel(getConn(), null, keys);
 //        hm2table = new imakante.com.CustomTable(hmmodel);
 //        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, hm2table, getConn(), hm, jasperFile,
