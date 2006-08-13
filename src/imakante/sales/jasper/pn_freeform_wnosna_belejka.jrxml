@@ -26,7 +26,7 @@
 	<parameter name="bank" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="branch" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="address" isForPrompting="false" class="java.lang.String"/>
-	<parameter name="place" isForPrompting="false" class="java.lang.String">
+	<parameter name="place" isForPrompting="true" class="java.lang.String">
 		<defaultValueExpression ><![CDATA["ПЛОВДИВ"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="contragent" isForPrompting="false" class="java.lang.String"/>

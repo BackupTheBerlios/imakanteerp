@@ -23,20 +23,20 @@
 	<import value="net.sf.jasperreports.engine.*" />
 	<import value="net.sf.jasperreports.engine.data.*" />
 
-	<parameter name="bank" isForPrompting="true" class="java.lang.String"/>
-	<parameter name="branch" isForPrompting="true" class="java.lang.String"/>
-	<parameter name="address" isForPrompting="true" class="java.lang.String"/>
-	<parameter name="contragent" isForPrompting="true" class="java.lang.String"/>
-	<parameter name="IBANcontragent" isForPrompting="true" class="java.lang.String"/>
-	<parameter name="BICcontragent" isForPrompting="true" class="java.lang.String"/>
-	<parameter name="BANKcontragent" isForPrompting="true" class="java.lang.String"/>
-	<parameter name="currency" isForPrompting="true" class="java.lang.String"/>
-	<parameter name="amount" isForPrompting="true" class="java.lang.Double"/>
-	<parameter name="reason" isForPrompting="true" class="java.lang.String"/>
-	<parameter name="comment" isForPrompting="true" class="java.lang.String"/>
-	<parameter name="firm" isForPrompting="true" class="java.lang.String"/>
-	<parameter name="iban" isForPrompting="true" class="java.lang.String"/>
-	<parameter name="bic" isForPrompting="true" class="java.lang.String"/>
+	<parameter name="bank" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="branch" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="address" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="contragent" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="IBANcontragent" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="BICcontragent" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="BANKcontragent" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="currency" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="amount" isForPrompting="false" class="java.lang.Double"/>
+	<parameter name="reason" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="comment" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="firm" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="iban" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="bic" isForPrompting="false" class="java.lang.String"/>
 	<queryString><![CDATA[SELECT * FROM n_country]]></queryString>
 
 	<field name="id_n_country" class="java.lang.Integer"/>
