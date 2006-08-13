@@ -1220,7 +1220,7 @@ public class FrmCaseOperationOut extends  imakante.com.vcomponents.iInternalFram
         hm.put("valuta", in_code_lat);
         hm.put("casier", this.getUser_name());
         System.out.println(" kasier " + this.getUser_name());
-        imakante.sales.aeCaseOpReport cor = new imakante.sales.aeCaseOpReport(this, true, getConn(), hm, jasperFile);
+        imakante.sales.tableDialogLite cor = new imakante.sales.tableDialogLite(this, true, getConn(), hm, jasperFile);
         cor.setVisible(true);
     }
     

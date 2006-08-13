@@ -986,12 +986,6 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     }
     
     protected void printOrder() {
-        
-        
-        // TODO vzimane na stoinostite ot imenata na kolonite i popalvaneto im v hashmapa
-        
-//        setRow(getTable().getSelectedRow());
-//        setAllVariables();
         setReportParameters();
         String jasperFile = "";
         String[] keys;
@@ -1041,9 +1035,9 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             keys[0] = "bank";
             hm.put(keys[0], this.getBankName().toUpperCase());
             keys[1] = "branch";
-            hm.put(keys[1], "÷≈Õ“–¿À≈Õ");
+            hm.put(keys[1], this.getBankBranch().toUpperCase());
             keys[2] = "address";
-            hm.put(keys[2], "”À»÷¿ Œ—¬Œ¡Œ∆ƒ≈Õ»≈ 1");
+            hm.put(keys[2], this.getBankAddress().toUpperCase());
             keys[3] = "place";
             hm.put(keys[3], "");
             keys[4] = "contragent";
@@ -1060,26 +1054,33 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             hm.put(keys[9], this.getNameChosenPerson());
             keys[10] = "reason";
             hm.put(keys[10], this.getOsnovanie().toUpperCase());
-            
-        } else { 
+        } else {
             keys = null;
             System.out.println("unable to hadle the HashMap!");
         }
-        
-        imakante.sales.aeCaseOpReport rep = new imakante.sales.aeCaseOpReport(this, true, getConn(), hm, jasperFile);
+        imakante.sales.tableDialogLite rep = new imakante.sales.tableDialogLite(this, true, getConn(), hm, jasperFile);
         rep.setVisible(true);
         
-        
-//        hmmodel = new imakante.com.CustomTableModel(getConn(), null, keys);
-//        hm2table = new imakante.com.CustomTable(hmmodel);
-//        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, hm2table, getConn(), hm, jasperFile,
+        // TODO Za da raboti dolniqt wariant trqbwa pyrwo da se implementira klasa imakante.com.HashMap2Table(java.util.HashMap hm)
+//        imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, new imakante.com.HashMap2Table(hm), getConn(), hm, jasperFile,
 //                "\u0418\u0437\u0433\u043B\u0435\u0434 \u043D\u0430 \u043F\u043B\u0430\u0442\u0435\u0436\u043D\u043E\u0442\u043E \u043D\u0430\u0440\u0435\u0436\u0434\u0430\u043D\u0435", "");
 //        td.setVisible(true);
     }
     
     private void setReportParameters() {
+        java.sql.ResultSet rsB;
+        imakante.com.CustomTable tableB;
+        imakante.com.CustomTableModel modelB;
+        String[] NamesB = { "bankId", "bankName", "bankBranch", "bankAddress", "bankAccount", "bankBIC", "bankVidval" };
         setRow(getTable().getSelectedRow());
-        setId((Integer) getTable().getValueAt(getRow(), getColumnIndex("id")));
+        setAllVariables();
+        try {
+            rsB = getInternalObject().getBankAccountProperties(getId());
+            modelB = new imakante.com.CustomTableModel(getConn(), rsB, NamesB);
+            tableB = new imakante.com.CustomTable(modelB);
+            setBankBranch((String) tableB.getValueAt(1, getColumnIndex("bankBranch")));
+            setBankAddress((String) tableB.getValueAt(1, getColumnIndex("bankAddress")));
+        } catch(Exception ex) { ex.printStackTrace(); }
         
     }
     
@@ -1216,9 +1217,9 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
                     tableC.setEditingRow(0);
                 } catch(Exception ex) { ex.printStackTrace(); }
                 this.setSearchField("\u041A\u043E\u0434");
-                if (this.jRadioButton1.isSelected()) 
+                if (this.jRadioButton1.isSelected())
                     this.CompNumber = 1;
-                else if (this.jRadioButton2.isSelected()) 
+                else if (this.jRadioButton2.isSelected())
                     this.CompNumber = 2;
                 td = new imakante.com.vcomponents.tableDialog(this, true, tableC,
                         "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u043A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442",
