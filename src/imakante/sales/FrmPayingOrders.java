@@ -998,9 +998,9 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             keys[0] = "bank";
             hm.put(keys[0], this.getBankName().toUpperCase());
             keys[1] = "branch";
-            hm.put(keys[1], "÷≈Õ“–¿À≈Õ");
+            hm.put(keys[1], this.getBankBranch().toUpperCase());
             keys[2] = "address";
-            hm.put(keys[2], "”À»÷¿ Œ—¬Œ¡Œ∆ƒ≈Õ»≈ 1");
+            hm.put(keys[2], this.getBankAddress().toUpperCase());
             keys[3] = "contragent";
             hm.put(keys[3], this.getNameChosenContragent().toUpperCase());
             keys[4] = "IBANcontragent";
@@ -1023,8 +1023,6 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             hm.put(keys[12], this.getOurIBAN().toUpperCase());
             keys[13] = "bic";
             hm.put(keys[13], this.getChosenBIC().toUpperCase());
-            
-            
         } else if (jRadioButton2.isSelected()) {
             jasperFile = "pn_freeform_wnosna_belejka.jasper";
             keys = new String[11];
@@ -1056,9 +1054,9 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             hm.put(keys[10], this.getOsnovanie().toUpperCase());
         } else {
             keys = null;
-            System.out.println("unable to hadle the HashMap!");
+            System.out.println("unable to handle the HashMap!");
         }
-        imakante.com.tableDialogLite rep = new imakante.com.tableDialogLite(this, true, getConn(), hm, jasperFile);
+        imakante.com.tableDialogLite rep = new imakante.com.tableDialogLite(this, false, getConn(), hm, jasperFile);
         rep.setVisible(true);
         
         // TODO Za da raboti dolniqt wariant trqbwa pyrwo da se implementira klasa imakante.com.HashMap2Table(java.util.HashMap hm)
@@ -1075,11 +1073,18 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         setRow(getTable().getSelectedRow());
         setAllVariables();
         try {
-            rsB = getInternalObject().getBankAccountProperties(getId());
+            rsB = getInternalObject().getBankAccountProperties(getIdBankAccount());
             modelB = new imakante.com.CustomTableModel(getConn(), rsB, NamesB);
             tableB = new imakante.com.CustomTable(modelB);
-            setBankBranch((String) tableB.getValueAt(1, getColumnIndex("bankBranch")));
-            setBankAddress((String) tableB.getValueAt(1, getColumnIndex("bankAddress")));
+            if (rsB == null)
+                System.out.println("NQMA RESULTSET BE 4OWEK!!!");
+            else 
+                System.out.println("Teku6tiqt red w ResultSet-a e: " + rsB.getRow());
+            System.out.println("Redowete tuk sa " + tableB.getRowCount());
+            System.out.println(" i e izbran " + tableB.getSelectedRow());
+            System.out.println("ID-to na bankata e " + getIdBankAccount());
+            setBankBranch((String) tableB.getValueAt(0, getColumnIndex("bankBranch")));
+            setBankAddress((String) tableB.getValueAt(0, getColumnIndex("bankAddress")));
         } catch(Exception ex) { ex.printStackTrace(); }
         
     }
