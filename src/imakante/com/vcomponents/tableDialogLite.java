@@ -1,5 +1,7 @@
 
-package imakante.com;
+package imakante.com.vcomponents;
+
+import imakante.com.*;
 
 public class tableDialogLite extends imakante.com.vcomponents.iDialog {
     
