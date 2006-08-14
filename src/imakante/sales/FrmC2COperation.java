@@ -1204,7 +1204,7 @@ public class FrmC2COperation extends  imakante.com.vcomponents.iInternalFrame im
         hm.put("casa", "" + in_code_casa);
         hm.put("valuta", in_code_lat);
         hm.put("casier", this.getUser_name());
-        imakante.com.tableDialogLite cor = new imakante.com.tableDialogLite(this, true, getConn(), hm, jasperFile);
+        imakante.com.vcomponents.tableDialogLite cor = new imakante.com.vcomponents.tableDialogLite(this, true, getConn(), hm, jasperFile);
         cor.setVisible(true);
     }
     
@@ -1221,7 +1221,7 @@ public class FrmC2COperation extends  imakante.com.vcomponents.iInternalFrame im
         hm.put("dataEnd", (dEstate ? (String)formatter.format(this.jXDatePickerEND.getDate()) : "2099-01-01"));
         hm.put("in_levelx", "" + this.level);
         hm.put("id_sdtn", "" + this.getIn_id_sdtn());
-        imakante.com.tableDialogLite cop = new imakante.com.tableDialogLite(this, true, getConn(), hm, otchetPrihodi);
+        imakante.com.vcomponents.tableDialogLite cop = new imakante.com.vcomponents.tableDialogLite(this, true, getConn(), hm, otchetPrihodi);
         cop.setVisible(true);
     }
     

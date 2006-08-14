@@ -1056,7 +1056,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             keys = null;
             System.out.println("unable to handle the HashMap!");
         }
-        imakante.com.tableDialogLite rep = new imakante.com.tableDialogLite(this, false, getConn(), hm, jasperFile);
+        imakante.com.vcomponents.tableDialogLite rep = new imakante.com.vcomponents.tableDialogLite(this, false, getConn(), hm, jasperFile);
         rep.setVisible(true);
         
         // TODO Za da raboti dolniqt wariant trqbwa pyrwo da se implementira klasa imakante.com.HashMap2Table(java.util.HashMap hm)
