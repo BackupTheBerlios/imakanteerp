@@ -11,7 +11,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         initComponents();
         getNavigationState();
         initOrderTypesCombo();
-        initRAccounts();
+        initRAccountsCombo();
         this.setResizable(false);
         this.jTextField8.requestFocus();
         repaintComp();
@@ -177,7 +177,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jComboBox1, 0, 288, Short.MAX_VALUE)
+                .add(jComboBox1, 0, 306, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -217,7 +217,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
                 .addContainerGap()
                 .add(jLabel10)
                 .add(17, 17, 17)
-                .add(jTextField8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
+                .add(jTextField8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -298,7 +298,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12));
         jLabel9.setText(" ");
-        imakante.com.NewMain.getParamFirm().getName().toUpperCase();
+        jLabel9.setText(imakante.com.NewMain.getParamFirm().getName().toUpperCase());
 
         jComboBox2.setToolTipText("\u0420\u0430\u0437\u043f\u043b\u0430\u0449\u0430\u0442\u0435\u043b\u043d\u0438 \u0441\u043c\u0435\u0442\u043a\u0438 \u043d\u0430 \u0444\u0438\u0440\u043c\u0430\u0442\u0430 \u0432 \u043b\u0435\u0432\u0430 \u0438 \u0432\u0430\u043b\u0443\u0442\u0430");
         jComboBox2.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -318,8 +318,8 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
                 .add(jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel6Layout.createSequentialGroup()
                         .add(jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(jComboBox2, 0, 355, Short.MAX_VALUE)
-                            .add(jLabel9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE))
+                            .add(jComboBox2, 0, 397, Short.MAX_VALUE)
+                            .add(jLabel9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE))
                         .add(31, 31, 31)
                         .add(jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                             .add(jLabel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -328,8 +328,8 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
                         .add(jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
                             .add(jTextField5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .add(jTextField4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jTextField7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
-                    .add(jTextField6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jTextField7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
+                    .add(jTextField6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -361,34 +361,34 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
+            .add(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel2Layout.createSequentialGroup()
-                        .add(jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 336, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .add(19, 19, 19))
+                        .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE))
+                    .add(jPanel6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE))
+                    .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+                    .add(jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(7, 7, 7)
                 .add(jPanel6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(29, 29, 29))
+                .add(13, 13, 13))
         );
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-693)/2, (screenSize.height-380)/2, 693, 380);
+        setBounds((screenSize.width-736)/2, (screenSize.height-380)/2, 736, 380);
     }// </editor-fold>//GEN-END:initComponents
     
     private void jTextField7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyPressed
@@ -616,8 +616,10 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     // End of variables declaration//GEN-END:variables
     
     private imakante.sales.FrmPayingOrders myParent;
-    private String namesOrderTypes[];
+    private String[] namesOrderTypes;
     private int selectedOrderType;
+    private String[] namesRAccounts;
+    private int selectedRAccount;
     private String buffPerson = "";
     private String buffCodeContragent = "";
     private String buffAmount = "";
@@ -718,8 +720,24 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         this.jTextField8.setText(myParent.getNameChosenPerson());
     }
     
-    private void initRAccounts() {
-        
+    private void initRAccountsCombo() {
+        namesRAccounts = myParent.getInternalObject().getOurAccounts(1);    // 1 = wnosna belejka -> razpl. smetki
+        for(int i = 0; i < namesRAccounts.length; i++)
+            jComboBox2.addItem(new String(namesRAccounts[i]));
+        if(getSelectedRAccount() != 0) {
+            setSelectedRAccount(getNewRAIndex(getSelectedRAccount()));
+        }
+    }
+    
+    private int getNewRAIndex(int oldindex) {
+        int newindex = 0;
+        for(int i = 0; i < myParent.getInternalObject().getOAIndexes().length; i++) {
+            if(myParent.getInternalObject().getOAIndexes()[i] == oldindex) {
+                newindex = i;
+                break;
+            }
+        }
+        return newindex;
     }
     
     private void fGain(javax.swing.JComponent jtf){
@@ -738,6 +756,14 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     
     public void setSelectedOrderType(int selectedOrderType) {
         this.selectedOrderType = selectedOrderType;
+    }
+    
+    public int getSelectedRAccount() {
+        return selectedRAccount;
+    }
+    
+    public void setSelectedRAccount(int selectedRAccount) {
+        this.selectedRAccount = selectedRAccount;
     }
     
     public static void setIsFromF7() {

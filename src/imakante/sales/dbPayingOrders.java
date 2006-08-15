@@ -11,6 +11,8 @@ public class dbPayingOrders extends imakante.com.dbObject {
     private int[] OTIndexes = null;
     private String OurAccounts[];
     private int[] OAIndexes = null;
+    private String RAccounts[];
+    private int[] RAIndexes = null;
     private String Currencies[];
     private int[] CurrIndexes = null;
     private int idPayingOrderType = 0;
@@ -197,7 +199,7 @@ public class dbPayingOrders extends imakante.com.dbObject {
             while(getRs().next()) {
                 Groups.put(new Integer(getRs().getInt("id_nbc")), new String(getRs().getString("name_nbc") + " - " 
                 + getRs().getString("account_nbc") + " - " 
-                + getRs().getString("vidval_nbc")));
+                + getRs().getString("bic_nbc")));
                 in.add(new Integer(getRs().getInt("id_nbc")));
                 i++;
             }

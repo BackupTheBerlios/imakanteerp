@@ -95,7 +95,7 @@ BEGIN
      END IF;
 
      IF (comprator = 7) THEN
-        IF (in_SOT = 2 OR in_SOT = 5) THEN 
+        IF (in_SOT = 1 OR in_SOT = 2 OR in_SOT = 5) THEN 
             SELECT nb.id_nbc, nb.name_nbc, nb.branch_nbc, nb.address_nbc, nb.account_nbc, nb.bic_nbc, nb.vidval_nbc 
             FROM n_baccount nb
             WHERE nb.id_tbacc = 1 
