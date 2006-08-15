@@ -538,9 +538,9 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     "\u0418\u043C\u0435",
     "id_bank_account",
     "\u0411\u0430\u043D\u043A\u0430",
-    "branch", 
-    "address", 
-    "\u0421\u043C\u0435\u0442\u043A\u0430 (IBAN)", 
+    "branch",
+    "address",
+    "\u0421\u043C\u0435\u0442\u043A\u0430 (IBAN)",
     "\u0411\u0430\u043D\u043A\u043E\u0432 \u043A\u043E\u0434 (BIC)",
     "\u0412\u0430\u043B\u0443\u0442\u0430",
     "id_type_account",
@@ -926,7 +926,10 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     public  void mTableEnd() {
         setRow(getMaxRow());
         try{
-            setAllVariablesJP();
+            if (jRadioButton1.isSelected())
+                setAllVariablesJP();
+            if (jRadioButton2.isSelected())
+                setAllVariablesPP();
             getTable().changeSelection(getRow(), 2, false, false);
         } catch(ArrayIndexOutOfBoundsException aioobe) { setRow(getRow() - 1); }
         setAtBegining(false);
@@ -939,7 +942,10 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
                 setRow(getRow() + 1);
             setAtBegining(false);
             try {
-                setAllVariablesJP();
+                if (jRadioButton1.isSelected())
+                    setAllVariablesJP();
+                if (jRadioButton2.isSelected())
+                    setAllVariablesPP();
                 getTable().changeSelection(getRow(), 2, false, false);
             } catch(ArrayIndexOutOfBoundsException aioobe) { setRow(getRow() - 1); }
             if(getRow() == getMaxRow())
@@ -953,7 +959,10 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
                 setRow(getRow() - 1);
             setAtEnd(false);
             try {
-                setAllVariablesJP();
+                if (jRadioButton1.isSelected())
+                    setAllVariablesJP();
+                if (jRadioButton2.isSelected())
+                    setAllVariablesPP();
                 getTable().changeSelection(getRow(), 2, false, false);
             } catch(ArrayIndexOutOfBoundsException aioobe) { setRow(getRow() + 1); }
         }
@@ -964,7 +973,10 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     public void mTableBegining() {
         setRow(0);
         try {
-            setAllVariablesJP();
+            if (jRadioButton1.isSelected())
+                setAllVariablesJP();
+            if (jRadioButton2.isSelected())
+                setAllVariablesPP();
             getTable().changeSelection(getRow(), 2, false, false);
         } catch(ArrayIndexOutOfBoundsException aioobe) { setRow(getRow() - 1); }
         setAtBegining(true);
@@ -1082,13 +1094,6 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             rsB = getInternalObject().getBankAccountProperties(getIdBankAccount());
             modelB = new imakante.com.CustomTableModel(getConn(), rsB, NamesB);
             tableB = new imakante.com.CustomTable(modelB);
-            if (rsB == null)
-                System.out.println("NQMA RESULTSET BE 4OWEK!!!");
-            else 
-                System.out.println("Teku6tiqt red w ResultSet-a e: " + rsB.getRow());
-            System.out.println("Redowete tuk sa " + tableB.getRowCount());
-            System.out.println(" i e izbran " + tableB.getSelectedRow());
-            System.out.println("ID-to na bankata e " + getIdBankAccount());
             setBankBranch((String) tableB.getValueAt(0, getColumnIndex("bankBranch")));
             setBankAddress((String) tableB.getValueAt(0, getColumnIndex("bankAddress")));
         } catch(Exception ex) { ex.printStackTrace(); }
@@ -1155,6 +1160,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         jScrollPane1.repaint();
     }
     
+    @Override
     public void setIntTransfer(int intTransfer) {
         this.intTransfer = intTransfer;
         if (CompNumber == 1) {
@@ -1436,22 +1442,12 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     
     private void setAllVariablesJP() {
         setId((Integer) getTable().getValueAt(getRow(), getColumnIndex("id")));
-        setOrderingPerson((Integer) getTable().getValueAt(getRow(), getColumnIndex("ordering_person")));
+        setOrderingPerson(0);
+//        setOrderingPerson((Integer) getTable().getValueAt(getRow(), getColumnIndex("ordering_person")));
         setIdOrderType((Integer) getTable().getValueAt(getRow(), getColumnIndex("id_type_porder")));
-        if (jRadioButton1.isSelected()) {
-            setIdBankAccount((Integer) getTable().getValueAt(getRow(), getColumnIndex("id_bank_account")));
-            setOrderType((String) getTable().getValueAt(getRow(), getColumnIndex("\u0422\u0438\u043F \u043D\u0430 \u043E\u043F\u0435\u0440\u0430\u0446\u0438\u044F\u0442\u0430")));
-            setBankName((String) getTable().getValueAt(getRow(), getColumnIndex("\u0411\u0430\u043D\u043A\u0430 \u043D\u0430 \u041D\u0430\u0440\u0435\u0434\u0438\u0442\u0435\u043B\u044F")));
-            setOurIBAN((String) getTable().getValueAt(getRow(), getColumnIndex("\u0421\u043C\u0435\u0442\u043A\u0430 (IBAN)")));
-            setTypeAccount((String) getTable().getValueAt(getRow(), getColumnIndex("\u0422\u0438\u043F \u043D\u0430 \u0441\u043C\u0435\u0442\u043A\u0430\u0442\u0430")));
-        }
-        if (jRadioButton2.isSelected()) {
-            setIdPerson((Integer) getTable().getValueAt(getRow(), getColumnIndex("id_ls_n_person")));
-            setNamePerson((String) getTable().getValueAt(getRow(), getColumnIndex("\u0418\u043C\u0435")));
-        }
+        setIdBankAccount((Integer) getTable().getValueAt(getRow(), getColumnIndex("id_bank_account")));
+        setIdPerson(0);
         setIdContragent((Integer) getTable().getValueAt(getRow(), getColumnIndex("id_contragent")));
-        setNameChosenContragent((String) getTable().getValueAt(getRow(), getColumnIndex("\u041F\u043E\u043B\u0443\u0447\u0430\u0442\u0435\u043B")));
-//        setCodeChosenContragent((Integer) getTable().getValueAt(getRow(), getColumnIndex("\u041A\u043E\u0434")));
         java.math.BigDecimal bd2d = (java.math.BigDecimal) getTable().getValueAt(getRow(), getColumnIndex("\u0421\u0443\u043C\u0430"));
         setAmount(bd2d.doubleValue());
         setOsnovanie((String) getTable().getValueAt(getRow(), getColumnIndex("\u041E\u0441\u043D\u043E\u0432\u0430\u043D\u0438\u0435")));
@@ -1462,9 +1458,13 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     
     private void setAllVariablesPP() {
         setId((Integer) getTable().getValueAt(getRow(), getColumnIndex("id")));
-        setOrderingPerson((Integer) getTable().getValueAt(getRow(), getColumnIndex("ordering_person")));
-        setIdOrderType((Integer) getTable().getValueAt(getRow(), getColumnIndex("id_type_porder")));
-        
+        setOrderingPerson(1);   // wmesto:
+//        setOrderingPerson((Integer) getTable().getValueAt(getRow(), getColumnIndex("ordering_person")));
+        setIdOrderType(1);      // wmesto:
+//        setIdOrderType((Integer) getTable().getValueAt(getRow(), getColumnIndex("id_type_porder")));
+        setIdBankAccount((Integer) getTable().getValueAt(getRow(), getColumnIndex("id_bank_account")));
+        setIdPerson((Integer) getTable().getValueAt(getRow(), getColumnIndex("id_ls_n_person")));
+        setIdContragent(0);
         java.math.BigDecimal bd2d = (java.math.BigDecimal) getTable().getValueAt(getRow(), getColumnIndex("\u0421\u0443\u043C\u0430"));
         setAmount(bd2d.doubleValue());
         setOsnovanie((String) getTable().getValueAt(getRow(), getColumnIndex("\u041E\u0441\u043D\u043E\u0432\u0430\u043D\u0438\u0435")));
