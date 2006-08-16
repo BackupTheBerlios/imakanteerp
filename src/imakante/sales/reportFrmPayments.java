@@ -35,11 +35,26 @@ public class reportFrmPayments extends javax.swing.JInternalFrame {
         jLabel1.setText("\u041a\u043e\u0434:");
 
         jTextField1.setBackground(new java.awt.Color(204, 204, 255));
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField1FocusLost(evt);
+            }
+        });
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
+        });
 
         jLabel2.setText("\u0418\u043c\u0435:");
 
         jTextField2.setEditable(false);
+        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -53,7 +68,7 @@ public class reportFrmPayments extends javax.swing.JInternalFrame {
                 .add(12, 12, 12)
                 .add(jLabel2)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
+                .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -77,7 +92,7 @@ public class reportFrmPayments extends javax.swing.JInternalFrame {
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jComboBox1, 0, 338, Short.MAX_VALUE)
+                .add(jComboBox1, 0, 334, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -167,6 +182,18 @@ public class reportFrmPayments extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+        
+    }//GEN-LAST:event_jTextField1KeyPressed
+
+    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+        
+    }//GEN-LAST:event_jTextField1FocusGained
+
+    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+        
+    }//GEN-LAST:event_jTextField1FocusLost
+
     private void jbExecuteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExecuteActionPerformed
         executeReport();
     }//GEN-LAST:event_jbExecuteActionPerformed
@@ -196,6 +223,16 @@ public class reportFrmPayments extends javax.swing.JInternalFrame {
     
     private void executeReport() {
         
+    }
+    
+    private void fGain(javax.swing.JComponent jtf){
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED,
+                new java.awt.Color(255, 0, 51), null));
+    }
+    
+    private void fLost(javax.swing.JComponent jtf){
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED,
+                new java.awt.Color(255, 255, 255), null));
     }
     
 }

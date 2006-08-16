@@ -1257,7 +1257,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
                     setChosenBIC(rsC.getString("BICD"));
                     setChosenIBAN(rsC.getString("IBAND"));
                     setChosenCurrency(rsC.getString("VIDVALD"));
-                } else if (getIdOrderType() == 0) {     // wnosni belejki ot fiz. lica - samo w razpl. smetki
+                } else if (getIdOrderType() == 1) {     // wnosni belejki ot fiz. lica - samo w razpl. smetki
                     setChosenBank(rsC.getString("BANKNAMER"));
                     setChosenBIC(rsC.getString("BICR"));
                     setChosenIBAN(rsC.getString("IBANR"));
@@ -1293,7 +1293,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
                 setChosenBIC(rsC.getString("BICD"));
                 setChosenIBAN(rsC.getString("IBAND"));
                 setChosenCurrency(rsC.getString("VIDVALD"));
-            } else if (getIdOrderType() == 0) {     // wnosni belejki ot fiz. lica - samo w razpl. smetki
+            } else if (getIdOrderType() == 1) {     // wnosni belejki ot fiz. lica - samo w razpl. smetki
                 setChosenBank(rsC.getString("BANKNAMER"));
                 setChosenBIC(rsC.getString("BICR"));
                 setChosenIBAN(rsC.getString("IBANR"));
@@ -1306,8 +1306,20 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
-    private void setValuesFromBankAccountId() {
-        
+    protected void setValuesFromBankAccountId(int id_nba) {
+        java.sql.ResultSet rsB = null;
+        try {
+            rsB = this.internalObject.getBankAccountProperties(id_nba);
+            rsB.next();
+            this.setIdBankAccount(rsB.getInt("id_nbc"));
+            this.setBankName(rsB.getString("name_nbc"));
+            this.setBankBranch(rsB.getString("branch_nbc"));
+            this.setBankAddress(rsB.getString("address_nbc"));
+            this.setChosenIBAN(rsB.getString("account_nbc"));
+            this.setChosenBIC(rsB.getString("bic_nbc"));
+            this.setChosenCurrency(rsB.getString("vidval_nbc"));
+            app.changeField();
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
     private int getColumnIndex(String in) {
