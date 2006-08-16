@@ -1306,6 +1306,10 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
+    private void setValuesFromBankAccountId() {
+        
+    }
+    
     private int getColumnIndex(String in) {
         int count = getTable().getColumnCount();
         for(int i = 0; i < count; i++) {

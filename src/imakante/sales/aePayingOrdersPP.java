@@ -640,7 +640,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         myParent.setPoiasnenie(jTextField7.getText());
         // Posledni prowerki na Person i Contragent
         myParent.setValuesFromPersonId(myParent.getIdChosenPerson());
-        myParent.setValuesFromContragentId(myParent.getIdChosenContragent());
+        myParent.setValuesFromBankAccountId(myParent.getIdChosenBankAccount());
         myParent.getInternalObject().updateRow(myParent.getId(),
                 1,  // Physical person
                 myParent.getIdOrderType(),      // 1 !!!
