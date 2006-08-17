@@ -300,7 +300,7 @@ public class dbPayingOrders extends imakante.com.dbObject {
     
     public java.sql.ResultSet getBankAccountProperties(int in_id_nbc) {
         setComprator(20);
-        this.setId(in_id_nbc);
+        this.setIdBankAccount(in_id_nbc);
         try {
             registerParameters();
             setRs(getCstm().executeQuery());

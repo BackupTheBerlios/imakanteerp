@@ -29,7 +29,7 @@
 	<parameter name="place" isForPrompting="true" class="java.lang.String">
 		<defaultValueExpression ><![CDATA["ПЛОВДИВ"]]></defaultValueExpression>
 	</parameter>
-	<parameter name="contragent" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="firm" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="IBAN" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="currency" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="amount" isForPrompting="false" class="java.lang.Double"/>
@@ -505,7 +505,7 @@
 					<textElement verticalAlignment="Bottom">
 						<font fontName="Tahoma" size="14"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$P{contragent}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{firm}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -1056,7 +1056,7 @@
 					<textElement verticalAlignment="Bottom">
 						<font fontName="Tahoma" size="14"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$P{contragent}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{firm}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement

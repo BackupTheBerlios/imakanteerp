@@ -1008,8 +1008,6 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         String jasperFile = "";
         String[] keys;
         java.util.HashMap hm = new java.util.HashMap();
-        imakante.com.CustomTable hm2table;
-        imakante.com.CustomTableModel hmmodel;
         if (jRadioButton1.isSelected()) {
             jasperFile = "pn_freeform_razpla6taniq.jasper";
             keys = new String[14];
@@ -1056,8 +1054,8 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             hm.put(keys[2], this.getBankAddress().toUpperCase());
             keys[3] = "place";
             hm.put(keys[3], "");
-            keys[4] = "contragent";
-            hm.put(keys[4], this.getNameChosenContragent().toUpperCase());
+            keys[4] = "firm";
+            hm.put(keys[4], imakante.com.NewMain.getParamFirm().getName().toUpperCase());
             keys[5] = "IBAN";
             hm.put(keys[5], this.getChosenIBAN().toUpperCase());
             keys[6] = "currency";
@@ -1083,6 +1081,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
 //        td.setVisible(true);
     }
     
+    // TODO da se dowyr6i ili da se eliminira!!!
     private void setReportParameters() {
         java.sql.ResultSet rsB;
         imakante.com.CustomTable tableB;
@@ -1212,7 +1211,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     protected void setValuesFromPersonId(int id) {
         java.sql.ResultSet rsP = null;
         try {
-            rsP = this.internalObject.getPersonById(id);
+            rsP = this.getInternalObject().getPersonById(id);
             rsP.next();
             this.setIdChosenPerson(rsP.getInt("id_ls_n_person"));
             this.setNameChosenPerson(rsP.getString("name_ls_n_person"));
@@ -1278,7 +1277,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     protected void setValuesFromContragentId(int id) {
         java.sql.ResultSet rsC = null;
         try {
-            rsC = this.internalObject.getContragentById(id, this.getIdOrderType());
+            rsC = this.getInternalObject().getContragentById(id, this.getIdOrderType());
             rsC.next();
             this.setIdChosenContragent(rsC.getInt("id_contragent"));
             this.setCodeChosenContragent(rsC.getInt("code_contragent"));
@@ -1309,7 +1308,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     protected void setValuesFromBankAccountId(int id_nba) {
         java.sql.ResultSet rsB = null;
         try {
-            rsB = this.internalObject.getBankAccountProperties(id_nba);
+            rsB = this.getInternalObject().getBankAccountProperties(id_nba);
             rsB.next();
             this.setIdBankAccount(rsB.getInt("id_nbc"));
             this.setBankName(rsB.getString("name_nbc"));
