@@ -634,13 +634,14 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         } catch (NumberFormatException nfex) { nfex.printStackTrace(); }
         // Tip platejnoto narejdane = wnosna belejka - 1
         myParent.setIdOrderType(1);
+        myParent.setIdBankAccount(myParent.getInternalObject().getOAIndexes()[jComboBox1.getSelectedIndex()]);
         myParent.setIdPerson(myParent.getIdChosenPerson());
-        myParent.setIdContragent(myParent.getIdChosenContragent());
+        myParent.setIdContragent(0);
         myParent.setOsnovanie(jTextField6.getText());
         myParent.setPoiasnenie(jTextField7.getText());
         // Posledni prowerki na Person i Contragent
         myParent.setValuesFromPersonId(myParent.getIdChosenPerson());
-        myParent.setValuesFromBankAccountId(myParent.getIdChosenBankAccount());
+        myParent.setValuesFromBankAccountId(myParent.getIdBankAccount());
         myParent.getInternalObject().updateRow(myParent.getId(),
                 1,  // Physical person
                 myParent.getIdOrderType(),      // 1 !!!
