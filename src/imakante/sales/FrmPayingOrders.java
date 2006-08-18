@@ -449,6 +449,8 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     private int idBankAccount = 0;
     private String BankName = "";
     private String OurIBAN = "";
+    private String OurBIC = "";
+    private String OurCurrency = "";
     private int idTypeAccount = 0;
     private String TypeAccount = "";
     private int idPerson = 0;
@@ -751,6 +753,22 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         this.OurIBAN = OurIBAN;
     }
     
+    public String getOurBIC() {
+        return OurBIC;
+    }
+    
+    public void setOurBIC(String OurBIC) {
+        this.OurBIC = OurBIC;
+    }
+    
+    public String getOurCurrency() {
+        return OurCurrency;
+    }
+    
+    public void setOurCurrency(String OurCurrency) {
+        this.OurCurrency = OurCurrency;
+    }
+    
     public int getIdTypeAccount() {
         return idTypeAccount;
     }
@@ -1004,11 +1022,12 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     }
     
     protected void printOrder() {
-        setReportParameters();
         String jasperFile = "";
         String[] keys;
         java.util.HashMap hm = new java.util.HashMap();
         if (jRadioButton1.isSelected()) {
+            setRow(getTable().getSelectedRow());
+            setAllVariablesJP();
             jasperFile = "pn_freeform_razpla6taniq.jasper";
             keys = new String[14];
             keys[0] = "bank";
@@ -1038,8 +1057,10 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             keys[12] = "iban";
             hm.put(keys[12], this.getOurIBAN().toUpperCase());
             keys[13] = "bic";
-            hm.put(keys[13], this.getChosenBIC().toUpperCase());
+            hm.put(keys[13], this.getOurBIC().toUpperCase());
         } else if (jRadioButton2.isSelected()) {
+            setRow(getTable().getSelectedRow());
+            setAllVariablesPP();
             jasperFile = "pn_freeform_wnosna_belejka.jasper";
             keys = new String[11];
             imakante.com.priceToString prcT = new imakante.com.priceToString();
@@ -1057,9 +1078,9 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             keys[4] = "firm";
             hm.put(keys[4], imakante.com.NewMain.getParamFirm().getName().toUpperCase());
             keys[5] = "IBAN";
-            hm.put(keys[5], this.getChosenIBAN().toUpperCase());
+            hm.put(keys[5], this.getOurIBAN().toUpperCase());
             keys[6] = "currency";
-            hm.put(keys[6], this.getChosenCurrency().toUpperCase());
+            hm.put(keys[6], this.getOurCurrency().toUpperCase());
             keys[7] = "amount";
             hm.put(keys[7], this.getAmount());
             keys[8] = "words";
@@ -1091,10 +1112,11 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
 //        setAllVariables();
         try {
             rsB = getInternalObject().getBankAccountProperties(getIdBankAccount());
-            modelB = new imakante.com.CustomTableModel(getConn(), rsB, NamesB);
-            tableB = new imakante.com.CustomTable(modelB);
-            setBankBranch((String) tableB.getValueAt(0, getColumnIndex("bankBranch")));
-            setBankAddress((String) tableB.getValueAt(0, getColumnIndex("bankAddress")));
+            rsB.next();
+//            modelB = new imakante.com.CustomTableModel(getConn(), rsB, NamesB);
+//            tableB = new imakante.com.CustomTable(modelB);
+            setBankBranch(rsB.getString("branch_nbc"));
+            setBankAddress(rsB.getString("address_nbc"));
         } catch(Exception ex) { ex.printStackTrace(); }
         
     }
@@ -1215,7 +1237,8 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             rsP.next();
             this.setIdChosenPerson(rsP.getInt("id_ls_n_person"));
             this.setNameChosenPerson(rsP.getString("name_ls_n_person"));
-            app.changeField();
+            if (app != null)
+                app.changeField();
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
@@ -1262,9 +1285,9 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
                     setChosenIBAN(rsC.getString("IBANR"));
                     setChosenCurrency(rsC.getString("VIDVALR"));
                 }
-                if (jRadioButton1.isSelected())
+                if (jRadioButton1.isSelected() && ajp != null)
                     ajp.changeField();
-                if (jRadioButton2.isSelected())
+                if (jRadioButton2.isSelected() && app != null)
                     app.changeField();
             } else {
                 javax.swing.JOptionPane.showMessageDialog(null,
@@ -1298,9 +1321,9 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
                 setChosenIBAN(rsC.getString("IBANR"));
                 setChosenCurrency(rsC.getString("VIDVALR"));
             }
-            if (jRadioButton1.isSelected())
+            if (jRadioButton1.isSelected() && ajp != null)
                 ajp.changeField();
-            if (jRadioButton2.isSelected())
+            if (jRadioButton2.isSelected() && app != null)
                 app.changeField();
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
@@ -1314,10 +1337,13 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
             this.setBankName(rsB.getString("name_nbc"));
             this.setBankBranch(rsB.getString("branch_nbc"));
             this.setBankAddress(rsB.getString("address_nbc"));
-            this.setChosenIBAN(rsB.getString("account_nbc"));
-            this.setChosenBIC(rsB.getString("bic_nbc"));
-            this.setChosenCurrency(rsB.getString("vidval_nbc"));
-            app.changeField();
+            this.setOurIBAN(rsB.getString("account_nbc"));
+            this.setOurBIC(rsB.getString("bic_nbc"));
+            this.setOurCurrency(rsB.getString("vidval_nbc"));
+            if (jRadioButton1.isSelected() && ajp != null)
+                ajp.changeField();
+            if (jRadioButton2.isSelected() && app != null)
+                app.changeField();
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
@@ -1456,6 +1482,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
     }
     
     private void setAllVariablesJP() {
+        // Primary variables section
         setId((Integer) getTable().getValueAt(getRow(), getColumnIndex("id")));
         setOrderingPerson(0);
 //        setOrderingPerson((Integer) getTable().getValueAt(getRow(), getColumnIndex("ordering_person")));
@@ -1469,9 +1496,14 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         setPoiasnenie((String) getTable().getValueAt(getRow(), getColumnIndex("\u041F\u043E\u044F\u0441\u043D\u0435\u043D\u0438\u044F")));
         java.sql.Date inst = (java.sql.Date) getTable().getValueAt(getRow(), getColumnIndex("\u0418\u0437\u0432\u044A\u0440\u0448\u0435\u043D\u043E \u043D\u0430"));
         setInstant(inst.toString());
+        
+        // Derivative variables section
+        setValuesFromBankAccountId(getIdBankAccount());
+        setValuesFromContragentId(getIdContragent());
     }
     
     private void setAllVariablesPP() {
+        // Primary variables section
         setId((Integer) getTable().getValueAt(getRow(), getColumnIndex("id")));
         setOrderingPerson(1);   // wmesto:
 //        setOrderingPerson((Integer) getTable().getValueAt(getRow(), getColumnIndex("ordering_person")));
@@ -1486,6 +1518,10 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         setPoiasnenie((String) getTable().getValueAt(getRow(), getColumnIndex("\u041F\u043E\u044F\u0441\u043D\u0435\u043D\u0438\u044F")));
         java.sql.Date inst = (java.sql.Date) getTable().getValueAt(getRow(), getColumnIndex("\u0418\u0437\u0432\u044A\u0440\u0448\u0435\u043D\u043E \u043D\u0430"));
         setInstant(inst.toString());
+        
+        // Derivative variables section
+        setValuesFromBankAccountId(getIdBankAccount());
+        setValuesFromPersonId(getIdPerson());
     }
     
     public java.sql.Connection getConn() {
