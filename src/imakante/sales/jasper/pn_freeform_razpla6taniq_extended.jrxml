@@ -31,17 +31,16 @@
 	<parameter name="BICcontragent" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="BANKcontragent" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="currency" isForPrompting="false" class="java.lang.String"/>
-	<parameter name="amount" isForPrompting="false" class="java.math.BigDecimal"/>
+	<parameter name="amount" isForPrompting="false" class="java.lang.Double"/>
 	<parameter name="reason" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="comment" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="firm" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="iban" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="bic" isForPrompting="false" class="java.lang.String"/>
-	<queryString><![CDATA[SELECT * FROM n_country]]></queryString>
+	<queryString><![CDATA[SELECT Id, name_firm FROM ls_sluj]]></queryString>
 
-	<field name="id_n_country" class="java.lang.Integer"/>
-	<field name="code_n_country" class="java.lang.Integer"/>
-	<field name="name_n_country" class="java.lang.String"/>
+	<field name="Id" class="java.lang.Integer"/>
+	<field name="name_firm" class="java.lang.String"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -752,7 +751,7 @@
 					<textElement textAlignment="Right" verticalAlignment="Bottom">
 						<font fontName="Tahoma" size="14"/>
 					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$P{amount}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.Double"><![CDATA[$P{amount}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement

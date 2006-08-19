@@ -37,11 +37,10 @@
 	<parameter name="firm" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="iban" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="bic" isForPrompting="false" class="java.lang.String"/>
-	<queryString><![CDATA[SELECT * FROM n_country]]></queryString>
+	<queryString><![CDATA[SELECT Id, name_firm FROM ls_sluj]]></queryString>
 
-	<field name="id_n_country" class="java.lang.Integer"/>
-	<field name="code_n_country" class="java.lang.Integer"/>
-	<field name="name_n_country" class="java.lang.String"/>
+	<field name="Id" class="java.lang.Integer"/>
+	<field name="name_firm" class="java.lang.String"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >

@@ -36,11 +36,10 @@
 	<parameter name="words" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="person" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="reason" isForPrompting="false" class="java.lang.String"/>
-	<queryString><![CDATA[SELECT * FROM n_country]]></queryString>
+	<queryString><![CDATA[SELECT Id, name_firm FROM ls_sluj]]></queryString>
 
-	<field name="id_n_country" class="java.lang.Integer"/>
-	<field name="code_n_country" class="java.lang.Integer"/>
-	<field name="name_n_country" class="java.lang.String"/>
+	<field name="Id" class="java.lang.Integer"/>
+	<field name="name_firm" class="java.lang.String"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -1162,6 +1161,15 @@
 					</textElement>
 				<textFieldExpression   class="java.lang.Double"><![CDATA[$P{amount}]]></textFieldExpression>
 				</textField>
+				<line direction="TopDown">
+					<reportElement
+						x="-29"
+						y="343"
+						width="587"
+						height="0"
+						key="line-149"/>
+					<graphicElement stretchType="NoStretch" pen="Dotted"/>
+				</line>
 			</band>
 		</detail>
 		<columnFooter>

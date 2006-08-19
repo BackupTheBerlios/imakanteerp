@@ -146,6 +146,7 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
     private net.sf.jasperreports.engine.JasperReport jasperReport;
     private net.sf.jasperreports.engine.JasperPrint jasperPrint ;
     private net.sf.jasperreports.view.JRViewer jrv;
+    private net.sf.jasperreports.engine.JasperPrintManager  jpm;
     
     private boolean tableVizible = true;
     
@@ -204,11 +205,10 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
     }
     
     private void printSimpleTable(){
+        jpm = new net.sf.jasperreports.engine.JasperPrintManager();
         try {
-            java.text.MessageFormat headerFormat = new java.text.MessageFormat("Casa");
-            java.text.MessageFormat footerFormat = new java.text.MessageFormat("Page. " + "- {0} -" + " IMAKANTE' ");
-            InternalTable.print(javax.swing.JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
-        } catch(java.awt.print.PrinterException e) { e.printStackTrace(); }
+            jpm.printReport(jasperPrint, true);
+        } catch (JRException ex) { ex.printStackTrace(); }
     }
     
     public void close() {

@@ -1028,7 +1028,7 @@ public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame im
         if (jRadioButton1.isSelected()) {
             setRow(getTable().getSelectedRow());
             setAllVariablesJP();
-            jasperFile = "pn_freeform_razpla6taniq.jasper";
+            jasperFile = "pn_freeform_razpla6taniq_extended.jasper";
             keys = new String[14];
             keys[0] = "bank";
             hm.put(keys[0], this.getBankName().toUpperCase());
