@@ -2,6 +2,7 @@
 package imakante.com.vcomponents;
 
 import imakante.com.*;
+import net.sf.jasperreports.engine.JRException;
 
 public class tableDialogLite extends imakante.com.vcomponents.iDialog {
     
@@ -74,21 +75,22 @@ public class tableDialogLite extends imakante.com.vcomponents.iDialog {
         );
         setBounds(10, 10, 740, 440);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         printJReport();
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void printJReport() {
-//        try {
-//            java.text.MessageFormat headerFormat = new java.text.MessageFormat("Casa");
-//            java.text.MessageFormat footerFormat = new java.text.MessageFormat("Page. " + "- {0} -" + " IMAKANTE' ");
-//            InternalTable.print(javax.swing.JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
-//        } catch(java.awt.print.PrinterException e) { e.printStackTrace(); }
+        jpm = new net.sf.jasperreports.engine.JasperPrintManager();
+        try {
+            jpm.printReport(jp,true);
+        } catch (JRException ex) {
+            ex.printStackTrace();
+        }
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -102,6 +104,7 @@ public class tableDialogLite extends imakante.com.vcomponents.iDialog {
     private net.sf.jasperreports.engine.JasperReport jr;
     private net.sf.jasperreports.engine.JasperPrint jp;
     private net.sf.jasperreports.view.JRViewer jrv;
+    private net.sf.jasperreports.engine.JasperPrintManager  jpm;
     private String jasperFile = null;
     private java.util.HashMap hm = null;
     private java.sql.Connection conn = null;
@@ -115,27 +118,27 @@ public class tableDialogLite extends imakante.com.vcomponents.iDialog {
         } catch (java.io.FileNotFoundException fnfex) { fnfex.printStackTrace();
         } catch (net.sf.jasperreports.engine.JRException jrex) { jrex.printStackTrace(); }
     }
-
+    
     public String getJasperFile() {
         return jasperFile;
     }
-
+    
     public void setJasperFile(String jasperFile) {
         this.jasperFile = jasperFile;
     }
-
+    
     public java.util.HashMap getHash() {
         return hm;
     }
-
+    
     public void setHash(java.util.HashMap hm) {
         this.hm = hm;
     }
-
+    
     public java.sql.Connection getConn() {
         return conn;
     }
-
+    
     public void setConn(java.sql.Connection conn) {
         this.conn = conn;
     }
