@@ -1,9 +1,5 @@
 package imakante.com;
 
-import imakante.sales.sales_main;
-import imakante.salary.salary_main;
-import java.sql.SQLException;
-
 public class NewMain extends javax.swing.JFrame {
     
     public NewMain() {
@@ -216,15 +212,15 @@ public class NewMain extends javax.swing.JFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-605)/2, (screenSize.height-431)/2, 605, 431);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jBLS3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLS3ActionPerformed
 // TODO add your handling code here:
     }//GEN-LAST:event_jBLS3ActionPerformed
-
+    
     private void jBLS2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLS2ActionPerformed
 // TODO add your handling code here:
     }//GEN-LAST:event_jBLS2ActionPerformed
-
+    
     private void jBLS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLS1ActionPerformed
 // TODO add your handling code here:
     }//GEN-LAST:event_jBLS1ActionPerformed
@@ -234,18 +230,14 @@ public class NewMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jBLSActionPerformed
     
     private void jbExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExitActionPerformed
-        
-       
         try {
-            if(this.dbConn==null){
-            }else{
-            dbConn.close();
-            dbConn = null;
+            if(this.dbConn == null) {
+            } else {
+                dbConn.close();
+                dbConn = null;
             }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        System.exit(0);
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
+        System.exit(1);
     }//GEN-LAST:event_jbExitActionPerformed
     
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -261,11 +253,11 @@ public class NewMain extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
     
     private void jBSalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalesActionPerformed
-        if(this.getConnection()==null){
-        loginDialog();
-        loadSalesMain();
-        }else{
-        loadSalesMain();}
+        if(this.getConnection() == null) {
+            loginDialog();
+            loadSalesMain();
+        } else 
+            loadSalesMain();
     }//GEN-LAST:event_jBSalesActionPerformed
     
     
@@ -292,7 +284,6 @@ public class NewMain extends javax.swing.JFrame {
     
     public static final void setConnection(java.sql.Connection conn) {
         try {
-            
             if (dbConn != null) {
                 System.out.print("parvo zatvariam conn");
                 dbConn.close();
@@ -356,17 +347,15 @@ public class NewMain extends javax.swing.JFrame {
         return true;
     }
     
-    
-    /// GET SYSTEM PROP
-    private void  getSProp(){
-        
+    // GET SYSTEM PROP
+    private void  getSProp() {
         setOS_name(System.getProperty("os.name"));
         setUser_home(System.getProperty("user.home"));
         setUser_dir(System.getProperty("user.dir"));
         
     }
     
-    //// Info related
+    // Info related
     public static final String getMsgTitle() {
         return "Imakante";
     }
@@ -383,15 +372,16 @@ public class NewMain extends javax.swing.JFrame {
     
     public static int getRight(int modul, int rightn){
         int outright = 0;
-        outright = currentRight.getRight(modul,rightn);
+        outright = currentRight.getRight(modul, rightn);
         return outright;
     }
-    //BUTON RELATED
     
+    //BUTON RELATED
     private void disableButtons(){
         
         
     }
+    
     //Create login dialog
     private void loginDialog(){
         imakante.com.dlgLogin login = new imakante.com.dlgLogin(this, true);
@@ -435,7 +425,7 @@ public class NewMain extends javax.swing.JFrame {
     private static boolean B_AC = false;
     private static boolean B_MN = false;
     
-    private static boolean[] ActiveModules = {false,false,false,false};
+    private static boolean[] ActiveModules = {false, false, false, false};
     // Connection related
     private static boolean Connected = false;
     private static java.sql.Connection dbConn = null;
@@ -502,11 +492,9 @@ public class NewMain extends javax.swing.JFrame {
     
     //thread for Sale
     private void loadSalesMain() {
-        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new imakante.sales.sales_main().setVisible(true);
-                
             }
         });
         
@@ -535,26 +523,22 @@ public class NewMain extends javax.swing.JFrame {
     }
     
     public static void setB_SR(boolean aB_SR) {
-        
-        if(aB_SR){
+        if(aB_SR)
             jBLS.setEnabled(false);
-        }else{
+        else
             jBLS.setEnabled(true);
-        }
         B_SR = aB_SR;
     }
     
     public static boolean isB_SL() {
-        
         return B_SL;
     }
     
     public static void setB_SL(boolean aB_SL) {
-        if(aB_SL){
+        if(aB_SL)
             jBSales.setEnabled(false);
-        }else{
+        else
             jBSales.setEnabled(true);
-        }
         B_SL = aB_SL;
     }
     
@@ -563,11 +547,10 @@ public class NewMain extends javax.swing.JFrame {
     }
     
     public static void setB_AC(boolean aB_AC) {
-        if(aB_AC){
+        if(aB_AC)
             jBACC.setEnabled(false);
-        }else{
+        else
             jBACC.setEnabled(true);
-        }
         B_AC = aB_AC;
     }
     
@@ -576,11 +559,10 @@ public class NewMain extends javax.swing.JFrame {
     }
     
     public static void setB_MN(boolean aB_MN) {
-        if(aB_MN){
+        if(aB_MN)
             jBMN.setEnabled(false);
-        }else{
+        else
             jBMN.setEnabled(true);
-        }
         B_MN = aB_MN;
     }
     
@@ -599,19 +581,19 @@ public class NewMain extends javax.swing.JFrame {
     public static void setUserName(String aUserName) {
         userName = aUserName;
     }
-
+    
     public static imakante.com.paramFirm getParamFirm() {
         return ParamFirm;
     }
-
+    
     public static void setParamFirm(imakante.com.paramFirm aParamFirm) {
         ParamFirm = aParamFirm;
     }
-
+    
     public static String getPathrep() {
         return pathrep;
     }
-
+    
     public static void setPathrep(String aPathrep) {
         pathrep = aPathrep;
     }
