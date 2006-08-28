@@ -1,19 +1,18 @@
 
 package imakante.sales;
 
-public class FrmPayingOrders extends  imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
+public class FrmPayingOrders extends imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
     public FrmPayingOrders(String title, imakante.com.vcomponents.iFrame frame) {
         super(title);
         myframe = frame;
         prepareConn();
         constructObject();
-        /* Here generally is applied a filter, which divides the main resultset in two base categories:
+        /* Here generally is applied a filter, which divides the main resultset into two base categories:
          * 1. Juridical persons (0 in database); 2. Physical persons (1 in database)
          */
         initTable(getOrderingPerson());
         initComponents();
-        manageSearchFields();
         jComboBox1.addItem("--------------");
         Currencies = getInternalObject().getAvailableCurrencies();
         for(int i = 0; i < Currencies.length; i++)
