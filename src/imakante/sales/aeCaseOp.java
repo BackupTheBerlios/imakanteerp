@@ -198,11 +198,15 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
 
         jLabel5.setText("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440:");
 
+        jTextField1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextField1.setInputVerifier(new imakante.com.InputIntegerVerifier());
         jTextField1.setInputVerifier(new imakante.com.InputIntegerVerifier());
         jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField1FocusLost(evt);
             }
         });
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -213,9 +217,13 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
+        jTextArea1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextArea1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextArea1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextArea1FocusLost(evt);
             }
         });
 
@@ -223,6 +231,15 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
 
         jLabel3.setText("\u041a\u0430\u0441\u0430:");
 
+        jComboCR.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        jComboCR.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jComboCRFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jComboCRFocusLost(evt);
+            }
+        });
         jComboCR.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jComboCRKeyPressed(evt);
@@ -231,10 +248,16 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
 
         jLabel6.setText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442:");
 
+        jTextField2.setBackground(new java.awt.Color(204, 204, 255));
+        jTextField2.setToolTipText("F7 \u0432\u0430\u0434\u0438 \u0441\u043f\u0438\u0441\u044a\u043a \u0437\u0430 \u0438\u0437\u0431\u043e\u0440");
+        jTextField2.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextField2.setInputVerifier(new imakante.com.InputIntegerVerifier());
         jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField2FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField2FocusLost(evt);
             }
         });
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -243,6 +266,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
             }
         });
 
+        jTextField3.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextField3.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextField3.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -261,7 +285,11 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
 
         jLabel4.setText("\u0421\u0443\u043c\u0430:");
 
+        jComboM.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jComboM.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jComboMFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jComboMFocusLost(evt);
             }
@@ -297,10 +325,14 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
 
         jLabel11.setText("\u0421\u0432\u044a\u0440\u0437\u0430\u043d \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442:");
 
+        jTextField6.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextField6.setInputVerifier(new imakante.com.InputIntegerVerifier());
         jTextField6.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField6FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField6FocusLost(evt);
             }
         });
         jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -311,6 +343,15 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
 
         jLabel12.setText("\u0412\u0438\u0434 \u043e\u0440\u0434\u0435\u0440:");
 
+        jComboD.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        jComboD.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jComboDFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jComboDFocusLost(evt);
+            }
+        });
         jComboD.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jComboDKeyPressed(evt);
@@ -413,7 +454,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
                             .add(jTextField6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.BASELINE, jComboM, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.BASELINE, jComboM, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.BASELINE, jLabel7)
                     .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                         .add(jLabel4)
@@ -441,8 +482,45 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-544)/2, (screenSize.height-420)/2, 544, 420);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextArea1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea1FocusLost
+        fLost(jTextArea1);
+    }//GEN-LAST:event_jTextArea1FocusLost
+
+    private void jComboMFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboMFocusGained
+        fGain(jComboM);
+    }//GEN-LAST:event_jComboMFocusGained
+
+    private void jComboDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboDFocusLost
+        fLost(jComboD);
+    }//GEN-LAST:event_jComboDFocusLost
+
+    private void jComboDFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboDFocusGained
+        fGain(jComboD);
+    }//GEN-LAST:event_jComboDFocusGained
+
+    private void jTextField6FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusLost
+        fLost(jTextField6);
+    }//GEN-LAST:event_jTextField6FocusLost
+
+    private void jComboCRFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboCRFocusLost
+        fLost(jComboCR);
+    }//GEN-LAST:event_jComboCRFocusLost
+
+    private void jComboCRFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboCRFocusGained
+        fGain(jComboCR);
+    }//GEN-LAST:event_jComboCRFocusGained
+
+    private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
+        fLost(jTextField2);
+    }//GEN-LAST:event_jTextField2FocusLost
+
+    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+        fLost(jTextField1);
+    }//GEN-LAST:event_jTextField1FocusLost
     
     private void jComboMFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboMFocusLost
+        fLost(jComboM);
         getExchangeRateFromDB();
     }//GEN-LAST:event_jComboMFocusLost
     
@@ -489,6 +567,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jTextField2KeyPressed
     
     private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
+        fLost(jTextField3);
         revalidateSums();
     }//GEN-LAST:event_jTextField3FocusLost
     
@@ -501,22 +580,27 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jbPrintKeyPressed
     
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+        fGain(jTextField1);
         jTextField1.selectAll();
     }//GEN-LAST:event_jTextField1FocusGained
     
     private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
+        fGain(jTextField2);
         jTextField2.selectAll();
     }//GEN-LAST:event_jTextField2FocusGained
     
     private void jTextField6FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusGained
+        fGain(jTextField6);
         jTextField6.selectAll();
     }//GEN-LAST:event_jTextField6FocusGained
     
     private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
+        fGain(jTextField3);
         jTextField3.selectAll();
     }//GEN-LAST:event_jTextField3FocusGained
     
     private void jTextArea1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea1FocusGained
+        fGain(jTextArea1);
         jTextArea1.selectAll();
     }//GEN-LAST:event_jTextArea1FocusGained
     
@@ -761,7 +845,6 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     }
     
     // PRINT
-    
     private void loadReport() {
         myParent.loadReport();
     }
@@ -795,14 +878,11 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         jTextField5.setText(""+ myParent.getUser_name());
         try {
             this.jXDatePicker1.setDate((Date)formatterG.parse(myParent.getIn_DATE()));
-        } catch (ParseException ex) {
-            ex.printStackTrace();
-        }
+        } catch (ParseException ex) { ex.printStackTrace(); }
         jComboCR.setSelectedIndex(getNewCashRegIndex(myParent.getIn_in_sl_mop()));
         jComboM.setSelectedIndex(getNewCurrencyIndex(myParent.getIn_id_n_money()));
         jComboD.setSelectedIndex(getNewDocumentIndex(myParent.getIn_id_order_doc()));
         jTextArea1.setText(myParent.getComment());
-        
     }
     
     private void initComboCR() {
@@ -820,7 +900,6 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
             jComboCR.addItem("ERROR!");
             this.jButtonSave.setEnabled(false);
         }
-        
     }
     
     private int getNewCashRegIndex(int oldindex) {
@@ -852,7 +931,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     }
     
     private int getNewCurrencyIndex(int oldindex) {
-        int newindex= 0;
+        int newindex = 0;
         for(int i = 0; i < myParent.getInternalObject().getIndexMoney().length; i++) {
             if(myParent.getInternalObject().getIndexMoney()[i] == oldindex) {
                 newindex = i;
@@ -880,52 +959,43 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     }
     
     private int getNewDocumentIndex(int oldindex) {
-        int newindex= 0;
+        int newindex = 0;
         for(int i = 0; i < myParent.getInternalObject().getIndexDoc().length; i++) {
-            if(myParent.getInternalObject().getIndexDoc()[i]==oldindex) {
+            if(myParent.getInternalObject().getIndexDoc()[i] == oldindex) {
                 newindex = i;
                 break;
             }
         }
         return newindex;
     }
+    
     private void revalidateSums(){
         double exch = 1;
         double sum = 1;
         double sumos = 1;
-        
         try {
             exch = Double.parseDouble(this.jTextField7.getText());
-        } catch (NumberFormatException ex) {
-            
-            ex.printStackTrace();
-        }
+        } catch (NumberFormatException ex) { ex.printStackTrace(); }
         try {
             sum = Double.parseDouble(this.jTextField3.getText());
-        } catch (NumberFormatException ex) {
-            ex.printStackTrace();
-        }
+        } catch (NumberFormatException ex) { ex.printStackTrace(); }
         sumos = exch*sum;
-        this.jTextField4.setText(""+sumos);
+        this.jTextField4.setText("" + sumos);
     }
     
     public void revalidateFText(){
-        jTextField2.setText(""+myParent.getHCode());
+        jTextField2.setText("" + myParent.getHCode());
     }
     
     private void revalidateContragent(){
         try {
             myParent.getCodFromQu(Integer.parseInt(jTextField2.getText()));
-        } catch (NumberFormatException ex) {
-            ex.printStackTrace();
-        }
+        } catch (NumberFormatException ex) { ex.printStackTrace(); }
         this.jLabel14.setText(myParent.getHName());
-        
-        
     }
     
     private void dFields(boolean isNew){
-        if(isNew=false || myParent.getLevelPermition() < 2 ){
+        if(isNew == false || myParent.getLevelPermition() < 2 ) {
             this.jTextField1.setEnabled(false);
             this.jTextField2.setEnabled(false);
             this.jTextField3.setEnabled(false);
@@ -935,27 +1005,34 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
             this.jComboM.setEnabled(false);
             this.jXDatePicker1.setEnabled(false);
         }
-        
     }
+    
     private void getExchangeRateFromDB(){
         int money = this.jComboM.getSelectedIndex() + 1;
-        if(money>1){
+        if(money > 1){
             try {
                 myParent.setRs(myParent.getStm().executeQuery("SELECT s.value_sl_exchange_rate FROM sl_exchange_rate s " +
                         "WHERE id_sl_exchange_rate = (SELECT MAX(id_sl_exchange_rate) FROM sl_exchange_rate WHERE id_n_money = " + money + " );"));
                 while(myParent.getRs().next()){
-                    this.jTextField7.setText(""+ myParent.getRs().getDouble("value_sl_exchange_rate"));
+                    this.jTextField7.setText("" + myParent.getRs().getDouble("value_sl_exchange_rate"));
                     revalidateSums();
                 }
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
+            } catch (SQLException ex) { ex.printStackTrace(); }
         }
-        if(money==1){
+        if(money == 1){
             this.jTextField7.setText("1");
             revalidateSums();
         }
-        
+    }
+    
+    private void fGain(javax.swing.JComponent jtf) {
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED,
+                new java.awt.Color(255, 0, 51), null));
+    }
+    
+    private void fLost(javax.swing.JComponent jtf) {
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED,
+                new java.awt.Color(255, 255, 255), null));
     }
     
 }// end class

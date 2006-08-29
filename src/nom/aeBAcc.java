@@ -47,7 +47,7 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
         jLabel9 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        jcbCurrency = new javax.swing.JComboBox();
         jTextField7 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
 
@@ -299,18 +299,13 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
 
         jLabel10.setText("\u041a\u043e\u0434 \u0432\u0430\u043b\u0443\u0442\u0430:");
 
-        jTextField6.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        jTextField6.addFocusListener(new java.awt.event.FocusAdapter() {
+        jcbCurrency.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        jcbCurrency.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField6FocusGained(evt);
+                jcbCurrencyFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField6FocusLost(evt);
-            }
-        });
-        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField6KeyPressed(evt);
+                jcbCurrencyFocusLost(evt);
             }
         });
 
@@ -359,7 +354,7 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
                                     .add(jLabel7))
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(jComboT, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 204, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(jComboT, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 209, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                     .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)))
                             .add(jPanel2Layout.createSequentialGroup()
                                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -373,7 +368,7 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
                                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                     .add(jTextField4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
                                     .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                                        .add(org.jdesktop.layout.GroupLayout.LEADING, jTextField6)
+                                        .add(org.jdesktop.layout.GroupLayout.LEADING, jcbCurrency, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .add(org.jdesktop.layout.GroupLayout.LEADING, jTextField5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE))))
                             .add(jPanel2Layout.createSequentialGroup()
                                 .add(14, 14, 14)
@@ -419,28 +414,36 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel10)
-                    .add(jTextField6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jcbCurrency, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jTextField4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel8))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jComboT, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel7))
+                    .add(jLabel7)
+                    .add(jComboT, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel5))
                 .add(17, 17, 17)
                 .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                .add(33, 33, 33))
+                .add(37, 37, 37))
         );
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-521)/2, (screenSize.height-491)/2, 521, 491);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jcbCurrencyFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jcbCurrencyFocusLost
+        fGain(jcbCurrency);
+    }//GEN-LAST:event_jcbCurrencyFocusLost
+
+    private void jcbCurrencyFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jcbCurrencyFocusGained
+        fGain(jcbCurrency);
+    }//GEN-LAST:event_jcbCurrencyFocusGained
 
     private void jTextField7FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField7FocusGained
         fGain(jTextField7);
@@ -470,11 +473,7 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
     private void jTextField4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusLost
         fLost(jTextField4);
     }//GEN-LAST:event_jTextField4FocusLost
-    
-    private void jTextField6FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusLost
-        fLost(jTextField6);
-    }//GEN-LAST:event_jTextField6FocusLost
-    
+        
     private void jTextField5FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField5FocusLost
         fLost(jTextField5);
     }//GEN-LAST:event_jTextField5FocusLost
@@ -514,12 +513,7 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
         fGain(jTextField5);
         jTextField5.selectAll();
     }//GEN-LAST:event_jTextField5FocusGained
-    
-    private void jTextField6FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusGained
-        fGain(jTextField6);
-        jTextField6.selectAll();
-    }//GEN-LAST:event_jTextField6FocusGained
-    
+        
     private void jTextField4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusGained
         fGain(jTextField4);
         jTextField4.selectAll();
@@ -533,11 +527,7 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
     private void jTextField4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jTextField4.transferFocus(); }
     }//GEN-LAST:event_jTextField4KeyPressed
-    
-    private void jTextField6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jTextField6.transferFocus(); }
-    }//GEN-LAST:event_jTextField6KeyPressed
-    
+        
     private void jTextField5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jTextField5.transferFocus(); }
     }//GEN-LAST:event_jTextField5KeyPressed
@@ -693,8 +683,8 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JComboBox jcbCurrency;
     // End of variables declaration//GEN-END:variables
     //--------------- My Variables
     private nom.FrmBankAccounts myParent;
@@ -730,7 +720,8 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
         myParent.setBranch(jTextField7.getText());
         myParent.setBankAccount(jTextField2.getText());
         myParent.setBIC(jTextField5.getText());
-        myParent.setVidval(jTextField6.getText());
+//        myParent.setVidval(jTextField6.getText());
+        myParent.setVidval(myParent.getInternalObject())
         myParent.setAddress(jTextField4.getText());
         myParent.setTypeBankAccount(myParent.getInternalObject().getIndexOfTypes()[jComboT.getSelectedIndex()]);
         myParent.setComment(jTextArea1.getText());

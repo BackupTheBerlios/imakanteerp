@@ -1,15 +1,7 @@
 
-
 package imakante.sales;
 
-import com.mysql.jdbc.ResultSetMetaData;
-import imakante.com.*;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-
-public class casaOp  extends dbObject {
+public class casaOp  extends imakante.com.dbObject {
     //-------------START MyVariables
     private String splitNamesG[]; //kasi
     private String splitNamesM[]; //Money
@@ -18,10 +10,6 @@ public class casaOp  extends dbObject {
     private int indexConnOfId[] = null; // masiv prave6t vryzkata mejdu indexite na ComboBox_a i "ID" na tablicata za kasi
     private int indexMoney[] = null; // masiv valuti
     private int indexDoc[] = null; // vid doc prihodni orderi
-    
-  //  private java.sql.ResultSet rs;
-   // private java.sql.Statement stmt;
-  //  private java.sql.CallableStatement cstm;
     
     private int level = 1;
     private     int in_id_sdtn  = 1;
@@ -48,31 +36,25 @@ public class casaOp  extends dbObject {
     private int ContragentEnd = 0;
     private String DateBegin = "0000-00-00";
     private String DateEnd = "0000-00-00";
-    private Connection conn;
+    private java.sql.Connection conn;
     
     
     //-------------END MyVariables
-    
-    /** Creates a new instance of kasiDB */
     public casaOp(java.sql.Connection conn, int level, int sdtn) {
         super(conn);
         this.setLevel(level);
         this.setIn_id_sdtn(sdtn);
         prepareCstm();
-        
     }
+    
     protected void prepareCstm() {
         try {
-            
             setCstm(getConn().prepareCall("{call sl_procedure_case_in(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"));
-            
-        } catch (SQLException sqle) {sqle.printStackTrace();}
+        } catch (java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
-    protected void registerParameters() //OK
-    {
+    
+    protected void registerParameters() {
         try {
-            
-            
             getCstm().setInt("comprator", getComprator());   
             getCstm().setInt("in_id", getId());              
             getCstm().setInt("in_number_sl_mop", getCode());
@@ -96,22 +78,16 @@ public class casaOp  extends dbObject {
             getCstm().setString("in_data_end", DateEnd);
             getCstm().setInt("in_level", getLevel());
             System.out.println("FROM REG PARAM");
-        } catch(java.sql.SQLException sqle) {
-            sqle.printStackTrace();
-        }
-        
+        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
+    
     public void insertRow(int in_code) {
         setComprator(1);
         setCode(in_code);
-        
         registerParameters();
         try {
             getCstm().execute();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
     public void updateRow(int in_id,
@@ -146,16 +122,11 @@ public class casaOp  extends dbObject {
         try {
             registerParameters();
             getCstm().execute();
-        } catch(java.sql.SQLException sqle) {
-            sqle.printStackTrace();
-        }
-        System.out.println("FROM UPDATE");
-        
+        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    public java.sql.ResultSet searchRecords( int casaBegin, int casaEnd, int contragentBegin,
-            int contragentEnd, String data_begin, String data_end) //   comprator = 5;
-    {
+    public java.sql.ResultSet searchRecords(int casaBegin, int casaEnd, int contragentBegin,
+            int contragentEnd, String data_begin, String data_end) {
         setComprator(5);
         CasaBegin = casaBegin;
         CasaEnd = casaEnd;
@@ -165,139 +136,100 @@ public class casaOp  extends dbObject {
         try {
             registerParameters();
             setRs(getCstm().executeQuery());
-        } catch(java.sql.SQLException sqle) {
-            sqle.printStackTrace();
-        }
+        } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
         return getRs();
-        
     }
     
-    
-    public String[] getCasa() //test comprator = 6;
-    {
+    public String[] getCasa() {
         setComprator(6);
-        String return_str=new String("");
         int oldId =getId();
-        ResultSet oldRs = getRs();
+        java.sql.ResultSet oldRs = getRs();
         String strIndexConnOfId = new String("");
-        ArrayList in = new ArrayList();
-        Iterator it = null;
+        java.util.ArrayList in = new java.util.ArrayList();
+        java.util.Iterator it = null;
         // nova ideq porodena ot fakta 4e pri razdelqneto na stringa i
         //ako imeto na ednata kletka ima intervali no se polu4ava gre6ka
-        HashMap Gropes = new HashMap();
+        java.util.HashMap Gropes = new java.util.HashMap();
         int i = 0;
-        
         try {
             registerParameters();
             setRs(getCstm().executeQuery());
-            
-            
             while(getRs().next()) {
                 Gropes.put(new Integer(getRs().getInt("id_n_casa")),new String(getRs().getString("code_n_casa")));
                 in.add(new Integer(getRs().getInt("id_n_casa")));
                 i++;
             }
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+        } catch(Exception e) { e.printStackTrace(); }
         setRs(oldRs);
         setId(oldId);
         indexConnOfId = new int[i];
         it = in.iterator();
-        
         splitNamesG = new String[i];
-        i=0;
+        i = 0;
         while(it.hasNext()) {
-            indexConnOfId[i] =(Integer) it.next();
+            indexConnOfId[i] = (Integer) it.next();
             splitNamesG[i] = (String) Gropes.get(indexConnOfId[i]);
             i++;
         }
-        
-        
-        
         return splitNamesG;
     }
     
-    
-    
-    public int[] getIndexConnOfId() //OK
-    {
+    public int[] getIndexConnOfId() {
         return indexConnOfId;
     }
     
-    public String[] getMoney() //test comprator = 6;
-    {
+    public String[] getMoney() {
         setComprator(11);
-        String return_str=new String("");
         int oldId = getId();
-        ResultSet oldRs = getRs();
+        java.sql.ResultSet oldRs = getRs();
         String strIndexConnOfId = new String("");
-        ArrayList in = new ArrayList();
-        Iterator it = null;
+        java.util.ArrayList in = new java.util.ArrayList();
+        java.util.Iterator it = null;
         // nova ideq porodena ot fakta 4e pri razdelqneto na stringa i
         //ako imeto na ednata kletka ima intervali no se polu4ava gre6ka
-        HashMap Gropes = new HashMap();
+        java.util.HashMap Gropes = new java.util.HashMap();
         int i = 0;
-        
         try {
             registerParameters();
             setRs(getCstm().executeQuery());
-            
-            
             while(getRs().next()) {
                 Gropes.put(new Integer(getRs().getInt("id_n_money")),new String(getRs().getString("cod_lat_n_money")));
                 in.add(new Integer(getRs().getInt("id_n_money")));
                 i++;
             }
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+        } catch(Exception e) { e.printStackTrace(); }
         setRs(oldRs);
         setId(oldId);
         indexMoney = new int[i];
         it = in.iterator();
-        
         splitNamesM = new String[i];
-        i=0;
+        i = 0;
         while(it.hasNext()) {
-            indexMoney[i] =(Integer) it.next();
+            indexMoney[i] = (Integer) it.next();
             splitNamesM[i] = (String) Gropes.get(indexMoney[i]);
             i++;
         }
-        
-        
-        
         return splitNamesM;
     }
     
-    
-    
-    public int[] getIndexMoney() //OK
-    {
+    public int[] getIndexMoney() {
         return indexMoney;
     }
     
-    
-    
-    public String[] getDoc() //test comprator = 6;
-    {
+    public String[] getDoc() {
         setComprator(12);
-        String return_str=new String("");
         int oldId = getId();
-        ResultSet oldRs = getRs();
+        java.sql.ResultSet oldRs = getRs();
         String strIndexConnOfId = new String("");
-        ArrayList in = new ArrayList();
-        Iterator it = null;
+        java.util.ArrayList in = new java.util.ArrayList();
+        java.util.Iterator it = null;
         // nova ideq porodena ot fakta 4e pri razdelqneto na stringa i
         //ako imeto na ednata kletka ima intervali no se polu4ava gre6ka
-        HashMap Gropes = new HashMap();
+        java.util.HashMap Gropes = new java.util.HashMap();
         int i = 0;
-        
         try {
             registerParameters();
             setRs(getCstm().executeQuery());
-            
-            
             while(getRs().next()) {
                 Gropes.put(new Integer(getRs().getInt("id_n_incoms")),new String(getRs().getString("name_n_incoms")));
                 in.add(new Integer(getRs().getInt("id_n_incoms")));
@@ -310,24 +242,17 @@ public class casaOp  extends dbObject {
         setId(oldId);
         indexDoc = new int[i];
         it = in.iterator();
-        
         splitNamesD = new String[i];
-        i=0;
+        i = 0;
         while(it.hasNext()) {
             indexDoc[i] =(Integer) it.next();
             splitNamesD[i] = (String) Gropes.get(indexDoc[i]);
             i++;
         }
-        
-        
-        
         return splitNamesD;
     }
     
-    
-    
-    public int[] getIndexDoc() //OK
-    {
+    public int[] getIndexDoc() {
         return indexDoc;
     }
 
@@ -354,8 +279,5 @@ public class casaOp  extends dbObject {
     public void setIn_DATE(String in_DATE) {
         this.in_DATE = in_DATE;
     }
-    
-    
-    
     
 }// end class

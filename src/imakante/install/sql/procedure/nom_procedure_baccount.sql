@@ -65,6 +65,9 @@ BEGIN
      IF (comprator = 11) THEN
         SELECT MAX(ng.id_n_group) AS id_n_group FROM n_group ng WHERE ng.nom_n_group = 6;
      END IF;
+     IF (comprator = 12) THEN
+        SELECT nm.id_n_money, nm.cod_lat_n_money FROM n_money nm;
+     END IF;
 END $$
 
 DELIMITER ;

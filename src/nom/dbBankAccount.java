@@ -172,6 +172,48 @@ public class dbBankAccount extends imakante.com.dbObject {
         return splitTypes;
     }
     
+    public int[] getIndexConnOfId() {
+        return indexConnOfId;
+    }
+    
+    
+    public String[] getCurrencies() {
+        setComprator(12);
+        int oldId = getId();
+        java.sql.ResultSet oldRs = getRs();
+        String strIndexConnOfId = new String("");
+        java.util.ArrayList in = new java.util.ArrayList();
+        java.util.Iterator it = null;
+        java.util.HashMap Gropes = new java.util.HashMap();
+        int i = 0;
+        try {
+            registerParameters();
+            setRs(getCstm().executeQuery());
+            while(getRs().next()) {
+                Gropes.put(new Integer(getRs().getInt("id_n_money")),new String(getRs().getString("cod_lat_n_money")));
+                in.add(new Integer(getRs().getInt("id_n_money")));
+                i++;
+            }
+        } catch(Exception e) { e.printStackTrace(); }
+        setRs(oldRs);
+        setId(oldId);
+        indexMoney = new int[i];
+        it = in.iterator();
+        splitNamesM = new String[i];
+        i = 0;
+        while(it.hasNext()) {
+            indexMoney[i] = (Integer) it.next();
+            splitNamesM[i] = (String) Gropes.get(indexMoney[i]);
+            i++;
+        }
+        return splitNamesM;
+    }
+    
+    public int[] getCurrencyIndexes() {
+        return indexMoney;
+    }
+    
+    
     public String[] getBankAccountGroup() {
         setComprator(10);
         int oldId = getId();
@@ -202,7 +244,11 @@ public class dbBankAccount extends imakante.com.dbObject {
         }
         return splitNamesG;
     }
-
+    
+    public int[] getIndexOfTypes() {
+        return indexOfTypes;
+    }
+    
     public int getMaxGrID() {
         setComprator(11);
         int return_int = -1;
@@ -215,12 +261,5 @@ public class dbBankAccount extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
         return return_int;
     }
-
-    public int[] getIndexOfTypes() {
-        return indexOfTypes;
-    }
     
-    public int[] getIndexConnOfId() {
-        return indexConnOfId;
-    }
 }
