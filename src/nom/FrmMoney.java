@@ -1,11 +1,5 @@
 package nom;
 
-import imakante.com.CustomTable;
-import imakante.com.CustomTableModel;
-import imakante.com.vcomponents.iFrame;
-import java.awt.print.PrinterException;
-import javax.swing.JTable;
-
 public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
     public FrmMoney(String title,imakante.com.vcomponents.iFrame frame) {
@@ -15,9 +9,7 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
         constructObject(); // inicializira class otgovarq6t za vryzkata s DB
         initTable();
         initComponents();
-        
     }
-    
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -44,8 +36,13 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("\u0412\u0430\u043b\u0443\u0442\u0438");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
+        setMinimumSize(new java.awt.Dimension(900, 360));
+        setPreferredSize(new java.awt.Dimension(900, 360));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -62,18 +59,19 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
         jTextCod.setPreferredSize(new java.awt.Dimension(80, 20));
         jPanel4.add(jTextCod);
 
-        jLabel2.setText("\u041a\u043e\u0434 \u043b\u0430\u0442\u0438\u043d\u0438\u0446\u0430:");
+        jLabel2.setText("\u041a\u043e\u0434 \u043d\u0430 \u043b\u0430\u0442\u0438\u043d\u0438\u0446\u0430:");
         jPanel4.add(jLabel2);
 
         jTextCodLat.setPreferredSize(new java.awt.Dimension(80, 20));
         jPanel4.add(jTextCodLat);
 
-        jLabel3.setText("\u0418\u043c\u0435 \u043d\u0430 \u0412\u0430\u043b\u0443\u0442\u0430\u0442\u0430");
+        jLabel3.setText("\u0418\u043c\u0435:");
         jPanel4.add(jLabel3);
 
         jTextName.setPreferredSize(new java.awt.Dimension(160, 20));
         jPanel4.add(jTextName);
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Search.png")));
         jButton1.setText("\u0422\u044a\u0440\u0441\u0435\u043d\u0435");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,7 +90,7 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 821, Short.MAX_VALUE)
+            .add(0, 896, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -102,6 +100,7 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel3.setPreferredSize(new java.awt.Dimension(801, 37));
+        jButtonNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Add 2.png")));
         jButtonNew.setText("\u041d\u043e\u0432");
         jButtonNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,6 +110,7 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
 
         jPanel3.add(jButtonNew);
 
+        jButtonEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Report Edit 2.png")));
         jButtonEdit.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f");
         jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,6 +120,7 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
 
         jPanel3.add(jButtonEdit);
 
+        jButtonPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Printer.png")));
         jButtonPrint.setText("\u041f\u0435\u0447\u0430\u0442");
         jButtonPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,6 +133,7 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
         jButtonPrnReport.setText("\u041f\u0435\u0447\u0430\u0442 \u0440\u0435\u043f\u043e\u0440\u0442");
         jPanel3.add(jButtonPrnReport);
 
+        jButtonDel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Delete 2.png")));
         jButtonDel.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
         jButtonDel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,6 +143,7 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
 
         jPanel3.add(jButtonDel);
 
+        jButtonRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Refresh 3.png")));
         jButtonRefresh.setText("\u0412\u0441\u0438\u0447\u043a\u0438 \u0437\u0430\u043f\u0438\u0441\u0438");
         jButtonRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,7 +167,8 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.SOUTH);
 
-        pack();
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-906)/2, (screenSize.height-360)/2, 906, 360);
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
@@ -219,11 +223,9 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
     private javax.swing.JTextField jTextName;
     // End of variables declaration//GEN-END:variables
     
-    //--------------- My Variables
-    private int id=0; // imena ot tablicata
-    private int nom=0; // imena ot tablicata
-    private int cod =0;
-    private String codLat,name,comment; // imena ot tablicata
+    private int id = 0;
+    private int cod = 0;
+    private String codLat, name, comment;
     
     private  boolean atBegining=false;
     private  boolean atEnd = false;
@@ -241,60 +243,40 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
     "\u0418\u043c\u0435\u043d\u0430",
     "\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440"};
     
-    //---------------END My Variables
     
-    //---------------START Methods
-    
-    private void prepareConn() //TEST
-    {
+    private void prepareConn() {
         try{
             conn =  myframe.getConn();
-            if(conn==null){System.out.println("conn problem");
+            if(conn == null){System.out.println("conn problem");
             }
-        }catch(Exception e){e.printStackTrace();}
+        } catch(Exception e) { e.printStackTrace(); }
     }
     
-    
-    private void constructObject() //OK
-    {
+    private void constructObject() {
         try {
-            
             internalObject = new nom.moneyDB(conn);
-        } catch(Exception e)
-        
-        {
-            e.printStackTrace();
-        }
-        
+        } catch(Exception e) { e.printStackTrace(); }
     }
-    private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
-    {
+    
+    private void initTable() {
         try {
-            
             rs = internalObject.getTable();
             model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
            HideColumns(0);
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+        } catch(Exception e) { e.printStackTrace(); }
         table.requestFocus();
         try {
             table.setEditingRow(0);
-        } catch(Exception ex) {
-            
-        }
+        } catch(Exception ex) { ex.printStackTrace(); }
     }
     
     public void windowOpened(java.awt.event.WindowEvent e) {
     }
-    public void windowClosing(java.awt.event.WindowEvent e) // colose frame`s windows
-    {
-        
+    public void windowClosing(java.awt.event.WindowEvent e) {
+        unload();
     }
-    
     public void windowClosed(java.awt.event.WindowEvent e) {
-        
     }
     public void windowIconified(java.awt.event.WindowEvent e) {
     }
@@ -303,7 +285,6 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
     public void windowActivated(java.awt.event.WindowEvent e) {
     }
     public void windowDeactivated(java.awt.event.WindowEvent e) {
-        
     }
     
     public nom.moneyDB getInternalObject() //OK
@@ -316,32 +297,32 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
         this.internalObject = val;
     }
     
-    public CustomTableModel getModel()//OK
+    public imakante.com.CustomTableModel getModel()//OK
     {
         return model;
     }
     
-    public void setModel(CustomTableModel val)//OK
+    public void setModel(imakante.com.CustomTableModel val)//OK
     {
         this.model = val;
     }
     
-    public CustomTable getTable()//OK
+    public imakante.com.CustomTable getTable()//OK
     {
         return table;
     }
     
-    public void setTable(CustomTable val) //OK
+    public void setTable(imakante.com.CustomTable val) //OK
     {
         this.table = val;
     }
     
-    public iFrame getMyframe()//OK
+    public imakante.com.vcomponents.iFrame getMyframe()//OK
     {
         return myframe;
     }
     
-    public void setMyframe(iFrame val)//OK
+    public void setMyframe(imakante.com.vcomponents.iFrame val)//OK
     {
         this.myframe = val;
     }
@@ -383,14 +364,6 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
     public int getId() //OK
     {
         return id;
-    }
-    public void setNom(int NOM) //OK
-    {
-        this.nom = NOM;
-    }
-    public int getNom()//OK
-    {
-        return nom;
     }
     public void setCod(int Cod) //OK
     {
@@ -606,5 +579,17 @@ public class FrmMoney extends  imakante.com.vcomponents.iInternalFrame implement
         }
     }
     
+    private void unload() {
+        closeResource();
+        this.dispose();
+    }
     
-}// end class
+    protected void closeResource() {
+        try{
+            rs.close();
+        } catch(java.sql.SQLException sqle) {  }
+        rs = null;
+        internalObject.close();
+    }
+    
+} // end class

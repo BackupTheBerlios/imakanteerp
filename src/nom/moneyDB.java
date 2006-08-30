@@ -3,7 +3,7 @@ package nom;
 
 public class moneyDB  extends imakante.com.dbObject {
     // ------------START Money Variables
-    private String cod_bg = ""; // kod na bg
+    private int code = 0;
     private String cod_lat = "";  //kod na latinitsa (mejdunaroden kod -> Code International -> CodeInt
     private java.sql.Connection conn; // connection
     //-------------END Money  Variables
@@ -34,7 +34,7 @@ public class moneyDB  extends imakante.com.dbObject {
         try {
             getCstm().setInt("in_id", getId());
             getCstm().setInt("comprator", getComprator());
-            getCstm().setString("in_code", getCodeBG());
+            getCstm().setInt("in_code", getCode());
             getCstm().setString("in_cod_lat", getCodeLat());
             getCstm().setString("in_name", getName());
             getCstm().setString("in_comments", getComment());
@@ -48,9 +48,9 @@ public class moneyDB  extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    public void insertRow(int in_code_bg, String in_cod_lat, String in_name, String in_comment) {
+    public void insertRow(int in_code, String in_cod_lat, String in_name, String in_comment) {
         setComprator(1);
-        this.setCode(in_code_bg);
+        this.setCode(in_code);
         this.setCodeLat(in_cod_lat);
         this.setName(in_name);
         this.setComment(in_comment);
@@ -60,10 +60,10 @@ public class moneyDB  extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    public void updateRow(int in_id, int in_code_bg, String in_cod_lat, String in_name, String in_comment) {
+    public void updateRow(int in_id, int in_code, String in_cod_lat, String in_name, String in_comment) {
         setComprator(2);
         this.setId(in_id);
-        this.setCode(in_code_bg);
+        this.setCode(in_code);
         this.setCodeLat(in_cod_lat);
         this.setName(in_name);
         this.setComment(in_comment);
@@ -101,6 +101,7 @@ public class moneyDB  extends imakante.com.dbObject {
         return getRs();
     }
     
+    @Override
     public int getMaxId() {
         setComprator(7);
         int return_int = -1;
@@ -113,15 +114,6 @@ public class moneyDB  extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
         return return_int;
     }
-
-    public String getCodeBG() {
-        return cod_bg;
-    }
-
-    public void setCodeBG(String cod_bg) {
-        this.cod_bg = cod_bg;
-    }
-
     
     public String getCodeLat() {
         return cod_lat;
@@ -130,11 +122,13 @@ public class moneyDB  extends imakante.com.dbObject {
     public void setCodeLat(String cod_lat) {
         this.cod_lat = cod_lat;
     }
-
+    
+    @Override
     public java.sql.Connection getConn() {
         return conn;
     }
-
+    
+    @Override
     public void setConn(java.sql.Connection conn) {
         this.conn = conn;
     }

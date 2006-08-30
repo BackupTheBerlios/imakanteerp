@@ -23,12 +23,13 @@ BEGIN
         END IF;
         IF (in_order_person = 1) THEN
           SELECT po.id_spo, po.ordering_person, po.id_spt, pt.type_porder, po.id_ls_n_person, p.name_ls_n_person, 
-            po.id_nbc, nb.name_nbc, nb.branch_nbc, nb.address_nbc, nb.account_nbc, nb.bic_nbc, nb.vidval_nbc, 
+            po.id_nbc, nb.name_nbc, nb.branch_nbc, nb.address_nbc, nb.account_nbc, nb.bic_nbc, nb.id_n_money, nm.cod_lat_n_money,  
             nb.id_tbacc, tb.name_tbacc, po.amount, po.osnovanie, po.comment_spo, DATE(po.instant) 
             FROM sl_paying_orders po 
             LEFT OUTER JOIN sl_porder_types pt ON pt.id_spt = po.id_spt  
             LEFT OUTER JOIN ls_n_person p ON p.id_ls_n_person = po.id_ls_n_person 
             LEFT OUTER JOIN n_baccount nb ON nb.id_nbc = po.id_nbc 
+            LEFT OUTER JOIN n_money nm ON nm.id_n_money = nb.id_n_money 
             LEFT OUTER JOIN n_type_bacc tb ON tb.id_tbacc = 1 
             WHERE po.ordering_person = 1 
             ORDER BY po.id_spo ASC;
@@ -96,14 +97,16 @@ BEGIN
 
      IF (comprator = 7) THEN
         IF (in_SOT = 1 OR in_SOT = 2 OR in_SOT = 5) THEN 
-            SELECT nb.id_nbc, nb.name_nbc, nb.branch_nbc, nb.address_nbc, nb.account_nbc, nb.bic_nbc, nb.vidval_nbc 
+            SELECT nb.id_nbc, nb.name_nbc, nb.branch_nbc, nb.address_nbc, nb.account_nbc, nb.bic_nbc, nb.id_n_money, nm.cod_lat_n_money  
             FROM n_baccount nb
+            LEFT OUTER JOIN n_money nm ON nm.id_n_money = nb.id_n_money 
             WHERE nb.id_tbacc = 1 
             ORDER BY nb.id_nbc ASC;
         END IF;
         IF (in_SOT = 3 OR in_SOT = 4) THEN 
-            SELECT nb.id_nbc, nb.name_nbc, nb.branch_nbc, nb.address_nbc, nb.account_nbc, nb.bic_nbc, nb.vidval_nbc 
+            SELECT nb.id_nbc, nb.name_nbc, nb.branch_nbc, nb.address_nbc, nb.account_nbc, nb.bic_nbc, nb.id_n_money, nm.cod_lat_n_money 
             FROM n_baccount nb
+            LEFT OUTER JOIN n_money nm ON nm.id_n_money = nb.id_n_money 
             WHERE nb.id_tbacc = 2 
             ORDER BY nb.id_nbc ASC;
         END IF;
@@ -207,8 +210,9 @@ BEGIN
      END IF;
 
      IF (comprator = 20) THEN
-        SELECT nb.id_nbc, nb.name_nbc, nb.branch_nbc, nb.address_nbc, nb.account_nbc, nb.bic_nbc, nb.vidval_nbc 
+        SELECT nb.id_nbc, nb.name_nbc, nb.branch_nbc, nb.address_nbc, nb.account_nbc, nb.bic_nbc, nb.id_n_money, nm.cod_lat_n_money  
             FROM n_baccount nb
+            LEFT OUTER JOIN n_money nm ON nm.id_n_money = nb.id_n_money 
             WHERE nb.id_nbc = in_id_nbc;
      END IF;
 END $$

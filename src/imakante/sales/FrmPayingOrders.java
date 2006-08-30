@@ -535,6 +535,7 @@ public class FrmPayingOrders extends imakante.com.vcomponents.iInternalFrame imp
     "address",
     "\u0421\u043C\u0435\u0442\u043A\u0430 (IBAN)",
     "\u0411\u0430\u043D\u043A\u043E\u0432 \u043A\u043E\u0434 (BIC)",
+    "id_currency", 
     "\u0412\u0430\u043B\u0443\u0442\u0430",
     "id_type_account",
     "\u0422\u0438\u043F \u0441\u043C\u0435\u0442\u043A\u0430",
@@ -606,6 +607,7 @@ public class FrmPayingOrders extends imakante.com.vcomponents.iInternalFrame imp
         HideColumns(getColumnIndex("id_bank_account"));
         HideColumns(getColumnIndex("branch"));
         HideColumns(getColumnIndex("address"));
+        HideColumns(getColumnIndex("id_currency"));
         HideColumns(getColumnIndex("id_type_account"));
     }
     
@@ -1336,7 +1338,7 @@ public class FrmPayingOrders extends imakante.com.vcomponents.iInternalFrame imp
             this.setBankAddress(rsB.getString("address_nbc"));
             this.setOurIBAN(rsB.getString("account_nbc"));
             this.setOurBIC(rsB.getString("bic_nbc"));
-            this.setOurCurrency(rsB.getString("vidval_nbc"));
+            this.setOurCurrency(rsB.getString("cod_lat_n_money"));
             if (jRadioButton1.isSelected() && ajp != null)
                 ajp.changeField();
             if (jRadioButton2.isSelected() && app != null)

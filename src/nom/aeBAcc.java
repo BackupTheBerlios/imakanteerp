@@ -10,6 +10,7 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
         getNavigationState();
         jButtonUndo.setEnabled(false);
         initCombo();
+        initCurrenciesCombo();
         initTypeAccountCombo();
         this.setResizable(false);
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
@@ -330,9 +331,12 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel2Layout.createSequentialGroup()
-                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel2Layout.createSequentialGroup()
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel2Layout.createSequentialGroup()
                         .add(66, 66, 66)
                         .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                             .add(jLabel3)
@@ -344,7 +348,7 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
                             .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
                                 .add(org.jdesktop.layout.GroupLayout.LEADING, jTextField1)
                                 .add(org.jdesktop.layout.GroupLayout.LEADING, jComboG, 0, 211, Short.MAX_VALUE))))
-                    .add(jPanel2Layout.createSequentialGroup()
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jPanel2Layout.createSequentialGroup()
@@ -354,7 +358,9 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
                                     .add(jLabel7))
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(jComboT, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 209, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(jPanel2Layout.createSequentialGroup()
+                                        .add(jComboT, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 209, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 186, Short.MAX_VALUE))
                                     .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)))
                             .add(jPanel2Layout.createSequentialGroup()
                                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -378,10 +384,7 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                     .add(jTextField7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
-                                    .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)))))
-                    .add(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE)))
+                                    .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE))))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -425,16 +428,16 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
                     .add(jComboT, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel5))
+                    .add(jLabel5)
+                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(17, 17, 17)
-                .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                .add(37, 37, 37))
+                .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
+                .addContainerGap())
         );
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-521)/2, (screenSize.height-491)/2, 521, 491);
+        setBounds((screenSize.width-521)/2, (screenSize.height-480)/2, 521, 480);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jcbCurrencyFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jcbCurrencyFocusLost
@@ -698,8 +701,10 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
     private String oldAddress = "";
     private String oldComment =  "";
     private String namesG[];
+    private String namesM[];
     private String namesT[];
     private int selectComboBoxItem;
+    private int selectedCurrency;
     private int selectComboTItem;
     
     //---------------END My Variables
@@ -720,13 +725,12 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
         myParent.setBranch(jTextField7.getText());
         myParent.setBankAccount(jTextField2.getText());
         myParent.setBIC(jTextField5.getText());
-//        myParent.setVidval(jTextField6.getText());
-        myParent.setVidval(myParent.getInternalObject())
+        myParent.setIdValuta(myParent.getInternalObject().getCurrencyIndexes()[jcbCurrency.getSelectedIndex()]);
         myParent.setAddress(jTextField4.getText());
         myParent.setTypeBankAccount(myParent.getInternalObject().getIndexOfTypes()[jComboT.getSelectedIndex()]);
         myParent.setComment(jTextArea1.getText());
         myParent.getInternalObject().updateRow(myParent.getId(), myParent.getIDG(), myParent.getCod(), myParent.getNames(), 
-                myParent.getBranch(), myParent.getBankAccount(), myParent.getBIC(), myParent.getVidval(),
+                myParent.getBranch(), myParent.getBankAccount(), myParent.getBIC(), myParent.getIdValuta(),
                 myParent.getAddress(), myParent.getTypeBankAccount(), myParent.getComment());
         myParent.refreshTable();
         myParent.getTable().changeSelection(myParent.getRow(), 2, false, false);
@@ -770,7 +774,7 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
         jTextField7.setText(myParent.getBranch());
         jTextField2.setText(myParent.getBankAccount());
         jTextField5.setText(myParent.getBIC());
-        jTextField6.setText(myParent.getVidval());
+        jcbCurrency.setSelectedIndex(getNewCurrencyIndex(myParent.getIdValuta()));
         jTextField4.setText(myParent.getAddress());
         jComboT.setSelectedIndex(getNewTypeAccComboIndex(myParent.getTypeBankAccount()));
         jTextArea1.setText(myParent.getComment());
@@ -791,6 +795,34 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
         int newindex = 0;
         for(int i = 0; i < myParent.getInternalObject().getIndexConnOfId().length; i++) {
             if(myParent.getInternalObject().getIndexConnOfId()[i] == oldindex) {
+                newindex = i;
+                break;
+            }
+        }
+        return newindex;
+    }
+    
+    private void initCurrenciesCombo() {
+        namesM = myParent.getInternalObject().getCurrencies();
+        if (namesM != null) {
+            for(int i = 0; i < namesM.length; i++) {
+                jcbCurrency.addItem(new String(namesM[i]));
+            }
+            if(selectedCurrency != 0) {
+                selectedCurrency = getNewCurrencyIndex(selectedCurrency);
+                jcbCurrency.setSelectedIndex(selectedCurrency);
+            }
+        }
+        if(namesM == null){
+            jcbCurrency.addItem("ERROR!");
+            this.jButtonSave.setEnabled(false);
+        }
+    }
+    
+    private int getNewCurrencyIndex(int oldindex) {
+        int newindex = 0;
+        for(int i = 0; i < myParent.getInternalObject().getCurrencyIndexes().length; i++) {
+            if(myParent.getInternalObject().getCurrencyIndexes()[i] == oldindex) {
                 newindex = i;
                 break;
             }

@@ -3,9 +3,7 @@ package nom;
 
 public class aeMoney extends imakante.com.vcomponents.iDialog {
     
-    /** Creates new form aeGroup */
     public aeMoney(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
-        
         super(frame, modal);
         this.myParent =(nom.FrmMoney) frame;
         initComponents();
@@ -16,10 +14,7 @@ public class aeMoney extends imakante.com.vcomponents.iDialog {
         int x = (((dim.width)-(this.getSize().width))/2);
         int y = (((dim.height)-(this.getSize().height))/2);
         this.setLocation(x, y);
-        
-        
         repaintComp();
-        
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -48,6 +43,7 @@ public class aeMoney extends imakante.com.vcomponents.iDialog {
         jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043d\u0430 \u0432\u0430\u043b\u0443\u0442\u0430");
         jPanel1.setPreferredSize(new java.awt.Dimension(263, 33));
         jButtonSave.setText("\u0421\u044a\u0445\u0440\u0430\u043d\u0438");
         jButtonSave.addActionListener(new java.awt.event.ActionListener() {
@@ -82,7 +78,7 @@ public class aeMoney extends imakante.com.vcomponents.iDialog {
         jPanel2.setPreferredSize(new java.awt.Dimension(400, 300));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("\u041d\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u044f"));
         jPanel3.setPreferredSize(new java.awt.Dimension(230, 70));
-        jButtonToBegin.setText("<<");
+        jButtonToBegin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation First 2.png")));
         jButtonToBegin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonToBeginActionPerformed(evt);
@@ -91,7 +87,7 @@ public class aeMoney extends imakante.com.vcomponents.iDialog {
 
         jPanel3.add(jButtonToBegin);
 
-        jButtonOneRowM.setText("<");
+        jButtonOneRowM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation Left 2.png")));
         jButtonOneRowM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonOneRowMActionPerformed(evt);
@@ -100,7 +96,7 @@ public class aeMoney extends imakante.com.vcomponents.iDialog {
 
         jPanel3.add(jButtonOneRowM);
 
-        jButtonOneRowP.setText(">");
+        jButtonOneRowP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation Right 2.png")));
         jButtonOneRowP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonOneRowPActionPerformed(evt);
@@ -109,7 +105,7 @@ public class aeMoney extends imakante.com.vcomponents.iDialog {
 
         jPanel3.add(jButtonOneRowP);
 
-        jButtonToEnd.setText(">>");
+        jButtonToEnd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation Last 2.png")));
         jButtonToEnd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonToEndActionPerformed(evt);
@@ -174,17 +170,26 @@ public class aeMoney extends imakante.com.vcomponents.iDialog {
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jTextArea1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        jTextArea1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextArea1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextArea1FocusLost(evt);
+            }
+        });
+
         jScrollPane1.setViewportView(jTextArea1);
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel2Layout.createSequentialGroup()
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel2Layout.createSequentialGroup()
+                    .add(jPanel2Layout.createSequentialGroup()
                         .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
                             .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
                             .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
@@ -195,9 +200,9 @@ public class aeMoney extends imakante.com.vcomponents.iDialog {
                             .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                                 .add(org.jdesktop.layout.GroupLayout.TRAILING, jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
                                 .add(jTextField2)
-                                .add(org.jdesktop.layout.GroupLayout.TRAILING, jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
+                                .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 109, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                             .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE))))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .add(11, 11, 11))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -218,14 +223,23 @@ public class aeMoney extends imakante.com.vcomponents.iDialog {
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel5)
                     .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 9, Short.MAX_VALUE)
-                .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 83, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
-        pack();
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-394)/2, (screenSize.height-325)/2, 394, 325);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextArea1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea1FocusLost
+        fLost(jTextArea1);
+    }//GEN-LAST:event_jTextArea1FocusLost
+
+    private void jTextArea1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea1FocusGained
+        fGain(jTextArea1);
+    }//GEN-LAST:event_jTextArea1FocusGained
     
     private void jTextField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jTextField3.transferFocus();}
@@ -264,7 +278,6 @@ public class aeMoney extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jTextField1KeyPressed
     
     private void jButtonUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUndoActionPerformed
-// TODO add your handling code here:
         myParent.setCod(oldCod);
         myParent.setCodLat(oldCodLat);
         myParent.setNames(oldName);
@@ -273,31 +286,10 @@ public class aeMoney extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jButtonUndoActionPerformed
     
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
-// TODO add your handling code here:
-        oldCod = myParent.getCod();
-        oldCodLat = myParent.getCodLat();
-        oldName = myParent.getNames();
-        try {
-            
-            myParent.setCod(Integer.parseInt(jTextField1.getText()));
-        } catch (NumberFormatException ex) {
-            ex.printStackTrace();
-        }
-        myParent.setCodLat(jTextField2.getText());
-        myParent.setNames(jTextField3.getText());
-        myParent.setComment(jTextArea1.getText());
-        myParent.getInternalObject().updateRow(myParent.getId(), myParent.getCod(),
-                myParent.getCodLat(),myParent.getNames(),myParent.getComment());
-        myParent.refreshTable();
-        
-        myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
-        jButtonUndo.setEnabled(true);
-        
-        
+        saveRecord();
     }//GEN-LAST:event_jButtonSaveActionPerformed
     
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
-// TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButtonCloseActionPerformed
     
@@ -405,8 +397,27 @@ public class aeMoney extends imakante.com.vcomponents.iDialog {
     //---------------END My Variables
 //---------------START MyFunction
     
-    private void getNavigatiionState() //OK
-    {
+    private void saveRecord() {
+        oldCod = myParent.getCod();
+        oldCodLat = myParent.getCodLat();
+        oldName = myParent.getNames();
+        try {
+            
+            myParent.setCod(Integer.parseInt(jTextField1.getText()));
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+        }
+        myParent.setCodLat(jTextField2.getText());
+        myParent.setNames(jTextField3.getText());
+        myParent.setComment(jTextArea1.getText());
+        myParent.getInternalObject().updateRow(myParent.getId(), myParent.getCod(),
+                myParent.getCodLat(),myParent.getNames(),myParent.getComment());
+        myParent.refreshTable();
+        myParent.getTable().changeSelection(myParent.getRow(),2,false,false);
+        jButtonUndo.setEnabled(true);
+    }
+    
+    private void getNavigatiionState() {
         if(myParent.isAtBegining()) {
             jButtonToBegin.setEnabled(false);
             jButtonOneRowM.setEnabled(false);
@@ -419,16 +430,15 @@ public class aeMoney extends imakante.com.vcomponents.iDialog {
             jButtonToEnd.repaint();
             jButtonOneRowP.repaint();
         }
-        
     }
-    private void repaintComp() //OK
-    {
-        jTextField1.setText(""+myParent.getCod());
+    
+    private void repaintComp() {
+        jTextField1.setText("" + myParent.getCod());
         jTextField2.setText(myParent.getCodLat());
         jTextField3.setText(myParent.getNames());
         jTextArea1.setText(myParent.getComment());
-        
     }
+    
     private void fGain(javax.swing.JComponent jtf){
         jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 0, 51), null));
     }

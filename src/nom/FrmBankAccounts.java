@@ -38,9 +38,9 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0430 \u0411\u0430\u043d\u043a\u043e\u0432\u0438 \u0441\u043c\u0435\u0442\u043a\u0438");
+        setTitle("\u0411\u0430\u043d\u043a\u043e\u0432\u0438 \u0441\u043c\u0435\u0442\u043a\u0438");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
-        setMinimumSize(new java.awt.Dimension(885, 400));
+        setMinimumSize(new java.awt.Dimension(900, 420));
         setPreferredSize(new java.awt.Dimension(900, 420));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
@@ -257,6 +257,7 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
     private int id = 0;
     private int code_group = 0;
     private int code = 0;
+    private int id_valuta = 0;
     private int typeAccount = 0;
     private String name, branch, baccount, bic, vidval, address, comment;
     private String namesG[];
@@ -279,7 +280,8 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
         "\u0418\u043c\u0435 \u043d\u0430 \u0431\u0430\u043d\u043a\u0430",
         "\u041A\u043B\u043E\u043D", 
         "\u0411\u0430\u043d\u043a\u043e\u0432\u0430 \u0441\u043c\u0435\u0442\u043a\u0430 (IBAN)",
-        "\u0411\u0430\u043D\u043A\u043E\u0432 \u043A\u043E\u0434 (BIC)",
+        "\u0411\u0430\u043D\u043A\u043E\u0432 \u043A\u043E\u0434 (BIC)", 
+        "id_valuta", 
         "\u041A\u043E\u0434 \u043D\u0430 \u0432\u0430\u043B\u0443\u0442\u0430",
         "\u0410\u0434\u0440\u0435\u0441 \u043d\u0430 \u0431\u0430\u043d\u043a\u0430",
         "id_type_account",
@@ -309,6 +311,7 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
             table = new imakante.com.CustomTable(model);
             HideColumns(getColumnIndex("id"));
             HideColumns(getColumnIndex("id_group"));
+            HideColumns(getColumnIndex("id_valuta"));
             HideColumns(getColumnIndex("id_type_account"));
         } catch(Exception e) { e.printStackTrace(); }
         table.requestFocus();
@@ -446,12 +449,20 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
     public void setBIC(String bic) {
         this.bic = bic;
     }
-
-    public String getVidval() {             // Code Currency - wid waluta, napr. BGN
+    
+    public int getIdValuta() {
+        return id_valuta;
+    }
+    
+    public void setIdValuta(int id_valuta) {
+        this.id_valuta = id_valuta;
+    }
+    
+    public String getVidval() {
         return vidval;
     }
 
-    public void setVidval(String vidval) {  // Code Currency - wid waluta, napr. BGN
+    public void setVidval(String vidval) {
         this.vidval = vidval;
     }
     
@@ -553,6 +564,7 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
             table = new imakante.com.CustomTable(model);
             HideColumns(getColumnIndex("id"));
             HideColumns(getColumnIndex("id_group"));
+            HideColumns(getColumnIndex("id_valuta"));
             HideColumns(getColumnIndex("id_type_account"));
             jScrollPane1.getViewport().add(table);
             jScrollPane1.repaint();
@@ -566,13 +578,14 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
         table = new imakante.com.CustomTable(model);
         HideColumns(getColumnIndex("id"));
         HideColumns(getColumnIndex("id_group"));
+        HideColumns(getColumnIndex("id_valuta"));
         HideColumns(getColumnIndex("id_type_account"));
         jScrollPane1.getViewport().add(table);
         jScrollPane1.repaint();
     }
     
     private void newRecord() {
-        internalObject.insertRow((internalObject.getMaxCod() + 1), getIDG(), getTypeBankAccount());
+        internalObject.insertRow((internalObject.getMaxCod() + 1), getIDG(), getIdValuta(), getTypeBankAccount());
         refreshTable();
         setRow(getMaxRow());
         table.changeSelection(getRow(), 2, false, false);
@@ -616,22 +629,9 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
         this.conn = conn;
     }
     
-    private void unload() {
-        closeResource();
-        this.dispose();
-    }
-    
-    protected void closeResource() {
-        try{
-            rs.close();
-        } catch(java.sql.SQLException sqle) {  }
-        rs = null;
-        internalObject.close();
-    }
-    
     private int getColumnIndex(String in) {
         int count = table.getColumnCount();
-        for(int i=0; i < count; i++) {
+        for(int i = 0; i < count; i++) {
             if(table.getColumnName(i).equals(in)) return i;
         }
         return 0;
@@ -653,10 +653,23 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
         setBranch((String) table.getValueAt(getRow(), getColumnIndex("\u041A\u043B\u043E\u043D")));
         setBankAccount((String) table.getValueAt(getRow(), getColumnIndex("\u0411\u0430\u043d\u043a\u043e\u0432\u0430 \u0441\u043c\u0435\u0442\u043a\u0430 (IBAN)")));
         setBIC((String) table.getValueAt(getRow(), getColumnIndex("\u0411\u0430\u043D\u043A\u043E\u0432 \u043A\u043E\u0434 (BIC)")));
-        setVidval((String) table.getValueAt(getRow(), getColumnIndex("\u041A\u043E\u0434 \u043D\u0430 \u0432\u0430\u043B\u0443\u0442\u0430")));
+        setIdValuta((Integer) table.getValueAt(getRow(), getColumnIndex("id_valuta")));
         setAddress((String) table.getValueAt(getRow(), getColumnIndex("\u0410\u0434\u0440\u0435\u0441 \u043d\u0430 \u0431\u0430\u043d\u043a\u0430")));
         setTypeBankAccount((Integer) table.getValueAt(getRow(), getColumnIndex("id_type_account")));
         setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440")));
+    }
+    
+    private void unload() {
+        closeResource();
+        this.dispose();
+    }
+    
+    protected void closeResource() {
+        try{
+            rs.close();
+        } catch(java.sql.SQLException sqle) {  }
+        rs = null;
+        internalObject.close();
     }
     
 }
