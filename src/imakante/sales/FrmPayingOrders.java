@@ -63,7 +63,7 @@ public class FrmPayingOrders extends imakante.com.vcomponents.iInternalFrame imp
         setResizable(true);
         setTitle("\u041f\u043b\u0430\u0442\u0435\u0436\u043d\u0438 \u043d\u0430\u0440\u0435\u0436\u0434\u0430\u043d\u0438\u044f");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
-        setMinimumSize(new java.awt.Dimension(890, 470));
+        setMinimumSize(new java.awt.Dimension(900, 480));
         setPreferredSize(new java.awt.Dimension(900, 480));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
@@ -75,6 +75,7 @@ public class FrmPayingOrders extends imakante.com.vcomponents.iInternalFrame imp
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel4.setPreferredSize(new java.awt.Dimension(448, 75));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("\u041a\u043e\u0434:");
 
         jTextField1.setPreferredSize(new java.awt.Dimension(80, 20));
@@ -90,6 +91,7 @@ public class FrmPayingOrders extends imakante.com.vcomponents.iInternalFrame imp
             }
         });
 
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("\u041f\u043e\u043b\u0443\u0447\u0430\u0442\u0435\u043b:");
 
         jTextField2.setPreferredSize(new java.awt.Dimension(80, 20));
@@ -104,6 +106,7 @@ public class FrmPayingOrders extends imakante.com.vcomponents.iInternalFrame imp
             }
         });
 
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("\u0412\u0430\u043b\u0443\u0442\u0430:");
 
         jButtonSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Search.png")));
@@ -114,10 +117,13 @@ public class FrmPayingOrders extends imakante.com.vcomponents.iInternalFrame imp
             }
         });
 
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("\u041e\u043f\u0435\u0440\u0430\u0446\u0438\u044f:");
 
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("\u041e\u0442 \u0434\u0430\u0442\u0430:");
 
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("\u0414\u043e \u0434\u0430\u0442\u0430:");
 
         org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
@@ -126,86 +132,72 @@ public class FrmPayingOrders extends imakante.com.vcomponents.iInternalFrame imp
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                    .add(jPanel4Layout.createSequentialGroup()
-                        .add(jLabel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 113, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED))
-                    .add(jPanel4Layout.createSequentialGroup()
-                        .add(jLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(21, 21, 21)))
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 123, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(24, 24, 24)
-                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jPanel4Layout.createSequentialGroup()
-                        .add(jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-                        .add(18, 18, 18))
-                    .add(jPanel4Layout.createSequentialGroup()
-                        .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)))
-                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jComboBox2, 0, 159, Short.MAX_VALUE)
-                    .add(jPanel4Layout.createSequentialGroup()
-                        .add(79, 79, 79)
-                        .add(jComboBox1, 0, 80, Short.MAX_VALUE)))
-                .add(27, 27, 27)
-                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jLabel6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
-                    .add(jLabel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE))
+                    .add(jLabel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 113, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 44, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 123, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .add(24, 24, 24)
+                        .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE))
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .add(jComboBox2, 0, 159, Short.MAX_VALUE)
+                        .add(27, 27, 27))
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 68, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jLabel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+                    .add(jLabel6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                     .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(jXDatePicker2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .add(31, 31, 31)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 31, Short.MAX_VALUE)
                 .add(jButtonSearch, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(34, 34, 34))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel5)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 33, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(jLabel6)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)))
-                .addContainerGap(13, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(27, Short.MAX_VALUE)
                 .add(jButtonSearch)
                 .add(19, 19, 19))
             .add(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jXDatePicker2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .add(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel4Layout.createSequentialGroup()
-                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jLabel3)
-                            .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .add(27, 27, 27))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 27, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jComboBox2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jLabel4))))
+                .add(38, 38, 38)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jComboBox2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel4)
+                    .add(jLabel6))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .add(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel3)
+                    .add(jLabel1)
                     .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel1))
+                    .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel5))
                 .add(8, 8, 8)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel2))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jXDatePicker2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1.add(jPanel4, java.awt.BorderLayout.SOUTH);
 
@@ -320,7 +312,8 @@ public class FrmPayingOrders extends imakante.com.vcomponents.iInternalFrame imp
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.SOUTH);
 
-        pack();
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-889)/2, (screenSize.height-497)/2, 889, 497);
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButtonPrintTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintTableActionPerformed
@@ -535,7 +528,7 @@ public class FrmPayingOrders extends imakante.com.vcomponents.iInternalFrame imp
     "address",
     "\u0421\u043C\u0435\u0442\u043A\u0430 (IBAN)",
     "\u0411\u0430\u043D\u043A\u043E\u0432 \u043A\u043E\u0434 (BIC)",
-    "id_currency", 
+    "id_currency",
     "\u0412\u0430\u043B\u0443\u0442\u0430",
     "id_type_account",
     "\u0422\u0438\u043F \u0441\u043C\u0435\u0442\u043A\u0430",
@@ -1231,14 +1224,16 @@ public class FrmPayingOrders extends imakante.com.vcomponents.iInternalFrame imp
     
     protected void setValuesFromPersonId(int id) {
         java.sql.ResultSet rsP = null;
-        try {
-            rsP = this.getInternalObject().getPersonById(id);
-            rsP.next();
-            this.setIdChosenPerson(rsP.getInt("id_ls_n_person"));
-            this.setNameChosenPerson(rsP.getString("name_ls_n_person"));
-            if (app != null)
-                app.changeField();
-        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
+        if (id > 0) {
+            try {
+                rsP = this.getInternalObject().getPersonById(id);
+                rsP.next();
+                this.setIdChosenPerson(rsP.getInt("id_ls_n_person"));
+                this.setNameChosenPerson(rsP.getString("name_ls_n_person"));
+                if (app != null)
+                    app.changeField();
+            } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
+        }
     }
     
     public void chooseContragent(int CodeFragment) {

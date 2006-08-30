@@ -19,7 +19,7 @@ BEGIN
      END IF;
      IF (comprator = 2) THEN
         UPDATE n_baccount SET id_n_group = in_id_group, code_nbc = in_code, name_nbc = in_name, branch_nbc = in_branch, account_nbc = in_account,
-        bic_nbc = in_bic, vidval_nbc = in_vidval, address_nbc = in_address, id_tbacc = in_id_tacc, comment_nbc = in_comment 
+        bic_nbc = in_bic, id_n_money = in_id_money, address_nbc = in_address, id_tbacc = in_id_tacc, comment_nbc = in_comment 
         WHERE n_baccount.id_nbc = in_id;
      END IF;
      IF (comprator = 3) THEN

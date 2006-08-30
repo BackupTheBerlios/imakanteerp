@@ -431,17 +431,17 @@ public class aeBAcc extends imakante.com.vcomponents.iDialog {
                     .add(jLabel5)
                     .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(17, 17, 17)
-                .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
+                .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
                 .addContainerGap())
         );
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-521)/2, (screenSize.height-480)/2, 521, 480);
+        setBounds((screenSize.width-521)/2, (screenSize.height-508)/2, 521, 508);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jcbCurrencyFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jcbCurrencyFocusLost
-        fGain(jcbCurrency);
+        fLost(jcbCurrency);
     }//GEN-LAST:event_jcbCurrencyFocusLost
 
     private void jcbCurrencyFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jcbCurrencyFocusGained
