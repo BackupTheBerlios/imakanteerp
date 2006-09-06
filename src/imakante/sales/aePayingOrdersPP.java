@@ -514,8 +514,8 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         if(myParent.isAtEnd()) {
             if (isNewRecord) {
                 enableAllFieldsIsNew();
-                jButtonSave.setEnabled(false);
-                jButtonPrint.setEnabled(true);
+                jButtonSave.setEnabled(true);
+                jButtonPrint.setEnabled(false);
                 jButtonSave.repaint();
                 jButtonPrint.repaint();
             }
@@ -821,6 +821,8 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     
     private void closeForm() {
         if (this.isNewRecord) {
+            myParent.setRow(myParent.getMaxRow());
+            myParent.setId((Integer) myParent.getTable().getValueAt(myParent.getRow(), myParent.getColumnIndex("id")));
             myParent.getInternalObject().deleteRow(myParent.getId());
             myParent.resetFields();
         }

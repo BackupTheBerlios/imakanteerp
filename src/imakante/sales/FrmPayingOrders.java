@@ -13,11 +13,11 @@ public class FrmPayingOrders extends imakante.com.vcomponents.iInternalFrame imp
          */
         initTable(getOrderingPerson());
         initComponents();
-        jComboBox1.addItem("--------------");
+        jComboBox1.addItem("----------");
         Currencies = getInternalObject().getAvailableCurrencies();
         for(int i = 0; i < Currencies.length; i++)
             jComboBox1.addItem(new String(Currencies[i]));
-        jComboBox2.addItem("-------------------------");
+        jComboBox2.addItem("-----------------------------------");
         OrderTypes = getInternalObject().getTypesOfOreders();
         for(int i = 0; i < OrderTypes.length; i++)
             jComboBox2.addItem(new String(OrderTypes[i]));
@@ -1142,11 +1142,15 @@ public class FrmPayingOrders extends imakante.com.vcomponents.iInternalFrame imp
             jLabel1.setVisible(true);
             jTextField1.setVisible(true);
             jLabel2.setText("\u041F\u043E\u043B\u0443\u0447\u0430\u0442\u0435\u043B:");
+            
+            
         }
         if (jRadioButton2.isSelected()) {
             jLabel1.setVisible(false);
             jTextField1.setVisible(false);
             jLabel2.setText("\u041F\u043E\u0434\u043E\u0442\u0447\u0435\u0442\u043D\u043E \u043B\u0438\u0446\u0435:");
+            
+            
         }
     }
     
@@ -1341,7 +1345,7 @@ public class FrmPayingOrders extends imakante.com.vcomponents.iInternalFrame imp
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
-    private int getColumnIndex(String in) {
+    protected int getColumnIndex(String in) {
         int count = getTable().getColumnCount();
         for(int i = 0; i < count; i++) {
             if(getTable().getColumnName(i).equals(in)) return i;
@@ -1492,8 +1496,10 @@ public class FrmPayingOrders extends imakante.com.vcomponents.iInternalFrame imp
         setInstant(inst.toString());
         
         // Derivative variables section
-        setValuesFromBankAccountId(getIdBankAccount());
-        setValuesFromContragentId(getIdContragent());
+        if (getIdBankAccount() > 0)
+            setValuesFromBankAccountId(getIdBankAccount());
+        if (getIdContragent() > 0)
+            setValuesFromContragentId(getIdContragent());
     }
     
     private void setAllVariablesPP() {
