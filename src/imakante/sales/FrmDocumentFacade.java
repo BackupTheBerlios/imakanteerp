@@ -85,12 +85,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextCod = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextName = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextAnLevel = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -135,24 +130,11 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
         jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel4.setPreferredSize(new java.awt.Dimension(448, 37));
-        jLabel1.setText("\u041a\u043e\u04341:");
-        jPanel4.add(jLabel1);
-
-        jTextCod.setPreferredSize(new java.awt.Dimension(45, 20));
-        jPanel4.add(jTextCod);
-
-        jLabel2.setText("\u0418\u043c\u0435:");
-        jPanel4.add(jLabel2);
-
-        jTextName.setPreferredSize(new java.awt.Dimension(100, 20));
-        jPanel4.add(jTextName);
-
-        jLabel3.setText("\u0410\u043d\u0430\u043b\u0438\u0442\u0438\u0447\u043d\u0438 \u043d\u0438\u0432\u0430:");
-        jPanel4.add(jLabel3);
-
-        jTextAnLevel.setPreferredSize(new java.awt.Dimension(45, 20));
-        jPanel4.add(jTextAnLevel);
+        jPanel4.setMinimumSize(new java.awt.Dimension(448, 80));
+        jPanel4.setPreferredSize(new java.awt.Dimension(448, 80));
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator1.setPreferredSize(new java.awt.Dimension(10, 100));
+        jPanel4.add(jSeparator1);
 
         jButton1.setText("\u0422\u044a\u0440\u0441\u0435\u043d\u0435");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -172,7 +154,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 821, Short.MAX_VALUE)
+            .add(0, 1383, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -285,7 +267,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
-        try
+      /*  try
         {
          String searchCod = jTextCod.getText();
          String searchName = jTextName.getText();
@@ -301,7 +283,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
         {
             e.printStackTrace();
         }
-        
+        */
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshActionPerformed
@@ -425,17 +407,12 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
     private javax.swing.JButton jButtonPrint;
     private javax.swing.JButton jButtonPrnReport;
     private javax.swing.JButton jButtonRefresh;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextAnLevel;
-    private javax.swing.JTextField jTextCod;
-    private javax.swing.JTextField jTextName;
+    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
  //--------------- My Variables
   // input parametrs
