@@ -3,6 +3,7 @@ package imakante.sales;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.sql.SQLException;
 import javax.swing.*;
 import imakante.sales.FrmDocumentFacade;
 
@@ -34,7 +35,9 @@ public class selectDataOfDocFacade   extends imakante.com.vcomponents.iDialog
         this.conn = con;
         this.sqlselect = sqlVariant;
         this.isDistributor = dist_deliv;
-       
+         
+        
+        
          if(sqlselect == CONTARGENT_ADDRESS | sqlselect == CONTARGENT_BULSTAT | sqlselect == CONTARGENT_DAN_NO | 
                          sqlselect == CONTARGENT_MOL | sqlselect == CONTARGENT_NAME | sqlselect == CONTARGENT_NAME | 
                          sqlselect == CONTARGENT_NO | sqlselect == CONTARGENT_TEL)
@@ -60,6 +63,9 @@ public class selectDataOfDocFacade   extends imakante.com.vcomponents.iDialog
                         columnName = columnNameDistDeliver;
                          this.setTitle("ƒ»—“–»¡”“Œ–/ƒŒ—“¿¬◊» ");
                    }
+        
+      
+        
         model = new imakante.com.CustomTableModel(conn,rs, columnName);
         table = new imakante.com.CustomTable(model);
         table.requestFocus();
@@ -310,4 +316,5 @@ public class selectDataOfDocFacade   extends imakante.com.vcomponents.iDialog
     table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
 
  }
+
 }
