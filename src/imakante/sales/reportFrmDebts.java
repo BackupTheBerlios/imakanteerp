@@ -26,6 +26,8 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         jbExecute = new javax.swing.JButton();
         jbQuit = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
         setTitle("\u0417\u0410\u0414\u042a\u041b\u0416\u0415\u041d\u0418\u042f");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -67,7 +69,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
                 .add(12, 12, 12)
                 .add(jLabel2)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -136,7 +138,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         );
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        jbExecute.setText("\u0418\u0417\u041f\u042a\u041b\u041d\u0418");
+        jbExecute.setText("\u0413\u0415\u041d\u0415\u0420\u0418\u0420\u0410\u0419");
         jbExecute.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbExecuteActionPerformed(evt);
@@ -163,7 +165,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jTextField1.transferFocus();
         } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) {
             this.isFromF7 = true;
-            getContragent();
+            getContragent(obtainCodeFragment());
         } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextField1.setText(""); }
     }//GEN-LAST:event_jTextField1KeyPressed
 
@@ -204,12 +206,38 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     private imakante.com.vcomponents.iFrame myFrame;
     private static boolean isFromF7 = false;
     
+    private final String totalContragentDebts = 
+            "SELECT id_df, out_contragent_df, total_df, date_edition_df " +
+            "FROM sl_document_facade " +
+            "WHERE out_contragent_df = ";
+    
+    private final String contragentsList = 
+            "SELECT nc.id_contragent, nc.code_contragent, nc.name_n_contragent " +
+            "FROM n_contragent nc" +
+            "WHERE nc.code_contragent LIKE CONCAT('%',";
+    
     private void executeReport() {
         
     }
     
-    private void getContragent() {
+    private void getContragent(int codeFragment) {
+        java.sql.ResultSet rsC;
+        java.sql.Statement stm;
+        imakante.com.CustomTableModel modelC;
+        imakante.com.CustomTable tableC;
         
+    }
+    
+    private int obtainCodeFragment() {
+        int i = 0;
+        try {
+            if(jTextField1.getText().equals(""))
+                i = 0;
+            else
+                i =  Integer.parseInt(jTextField1.getText());
+            return i;
+        } catch (NumberFormatException ex) { i = 0; }
+        return i;
     }
     
     private void fGain(javax.swing.JComponent jtf){
