@@ -1,13 +1,6 @@
 
 package imakante.sales;
 
-import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-
 public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     
     public aeCaseOp(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
@@ -70,7 +63,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438 \u043d\u0430 \u041f\u0440\u0438\u0445\u043e\u0434\u0435\u043d \u043a\u0430\u0441\u043e\u0432 \u043e\u0440\u0434\u0435\u0440");
+        setTitle("\u0418\u0437\u043f\u0438\u0441\u0432\u0430\u043d\u0435 \u043d\u0430 \u041f\u0440\u0438\u0445\u043e\u0434\u0435\u043d \u043a\u0430\u0441\u043e\u0432 \u043e\u0440\u0434\u0435\u0440");
         jPanel1.setPreferredSize(new java.awt.Dimension(263, 33));
         jButtonSave.setText("\u0421\u044a\u0445\u0440\u0430\u043d\u0438");
         jButtonSave.setPreferredSize(new java.awt.Dimension(79, 25));
@@ -435,7 +428,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
                         .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(jLabel3)
                             .add(jLabel8)
-                            .add(jComboCR, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)))
+                            .add(jComboCR)))
                     .add(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -444,7 +437,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
                     .add(jPanel2Layout.createSequentialGroup()
                         .add(7, 7, 7)
                         .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jComboD, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                            .add(jComboD)
                             .add(jLabel12)))
                     .add(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -453,7 +446,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
                             .add(jTextField6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.BASELINE, jComboM, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.BASELINE, jComboM)
                     .add(org.jdesktop.layout.GroupLayout.BASELINE, jLabel7)
                     .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                         .add(jLabel4)
@@ -472,7 +465,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel5)
                     .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 82, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 13, Short.MAX_VALUE)
                 .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 78, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -536,8 +529,11 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jComboDKeyPressed
     
     private void jTextField6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jTextField6.transferFocus(); }
-        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) {
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER)
+            jTextField6.transferFocus();
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) { 
+            
+            // TODO Spisak na swyrzanite dokumenti za izbor na podhodq6tata fasada!!!
             getRelatedDocument();
         }
     }//GEN-LAST:event_jTextField6KeyPressed
@@ -767,8 +763,10 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     private String[] namesCR;
     private String[] namesM;
     private String[] namesD;
-    SimpleDateFormat formatterP = new SimpleDateFormat("dd-MM-yyyy");
-    SimpleDateFormat formatterG = new SimpleDateFormat("yyyy-MM-dd");
+    java.text.SimpleDateFormat formatterP = new java.text.SimpleDateFormat("dd-MM-yyyy");
+    java.text.SimpleDateFormat formatterG = new java.text.SimpleDateFormat("yyyy-MM-dd");
+    
+    
     //---------------END My Variables
     
     //---------------START My Methods
@@ -879,8 +877,8 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         jTextField7.setText(""+ myParent.getIn_exchange_rate());
         jTextField5.setText(""+ myParent.getUser_name());
         try {
-            this.jXDatePicker1.setDate((Date)formatterG.parse(myParent.getIn_DATE()));
-        } catch (ParseException ex) { ex.printStackTrace(); }
+            this.jXDatePicker1.setDate((java.util.Date)formatterG.parse(myParent.getIn_DATE()));
+        } catch (java.text.ParseException ex) { ex.printStackTrace(); }
         jComboCR.setSelectedIndex(getNewCashRegIndex(myParent.getIn_in_sl_mop()));
         jComboM.setSelectedIndex(getNewCurrencyIndex(myParent.getIn_id_n_money()));
         jComboD.setSelectedIndex(getNewDocumentIndex(myParent.getIn_id_order_doc()));
@@ -973,6 +971,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     
     private void getRelatedDocument() {
         System.out.println("Wzima swyrzaniq dokument ot fasadata!");
+        
     }
     
     private void revalidateSums(){
@@ -1023,7 +1022,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
                     this.jTextField7.setText("" + myParent.getRs().getDouble("value_sl_exchange_rate"));
                     revalidateSums();
                 }
-            } catch (SQLException ex) { ex.printStackTrace(); }
+            } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
         }
         if(money == 1){
             this.jTextField7.setText("1");
