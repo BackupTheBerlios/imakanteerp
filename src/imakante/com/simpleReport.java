@@ -2,20 +2,26 @@ package imakante.com;
 
 import imakante.sales.aeDocumentFacade;
 import java.util.*;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.engine.JasperReport;
 
 public class simpleReport extends javax.swing.JFrame {
   
     private int docType;
     private HashMap inputFiltrs;
-   
-   
-    
+    private net.sf.jasperreports.engine.JasperPrint jasperPrint ;
+    private net.sf.jasperreports.view.JRViewer jrv;
+   private java.sql.Connection conn;
     /** Creates new form simpleReport */
-    public simpleReport(HashMap inputfilters,int doctype) 
+    public simpleReport(HashMap inputfilters,int doctype,java.sql.Connection con) 
     {
         docType = doctype;
         inputFiltrs = inputfilters;
-        
+        conn = con;
         initComponents();
         selectDocument(docType);
     }
@@ -65,7 +71,7 @@ public class simpleReport extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new simpleReport(null,1);
+                new simpleReport(null,1,null);
               
             }
         });
@@ -81,10 +87,18 @@ public class simpleReport extends javax.swing.JFrame {
  
  private void selectDocument(int doctype)
  {
+     try
+     {
      switch(doctype)
      {
          case aeDocumentFacade.BRAK:
          {
+             String pathRep = imakante.com.NewMain.getPathrep()+"simpleReportBrak.jasper";
+             System.out.println("Path="+pathRep);
+             jasperPrint = JasperFillManager.fillReport(new java.io.FileInputStream(new java.io.File(pathRep)),
+                    inputFiltrs, conn);
+             jrv = new net.sf.jasperreports.view.JRViewer(jasperPrint);
+            
              break;
          }
          case aeDocumentFacade.FAKTURA_DANACHNA:
@@ -125,7 +139,10 @@ public class simpleReport extends javax.swing.JFrame {
          }
      }// end switch
      
-     
+     }
+     catch(Exception er){};
+     jPanelData.add(jrv);
+     jPanelData.repaint();
  }
  
  
