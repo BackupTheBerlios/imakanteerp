@@ -1,7 +1,7 @@
 
 package imakante.sales;
 
-public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
+public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog implements java.awt.event.WindowListener {
     
     public aePayingOrdersJP(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
         super(frame, modal);
@@ -819,6 +819,22 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog {
     private void fLost(javax.swing.JComponent jtf) {
         jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED,
                 new java.awt.Color(255, 255, 255), null));
+    }
+    
+    public void windowOpened(java.awt.event.WindowEvent e) {
+    }
+    public void windowClosing(java.awt.event.WindowEvent e) {
+        closeForm();
+    }
+    public void windowClosed(java.awt.event.WindowEvent e) {
+    }
+    public void windowIconified(java.awt.event.WindowEvent e) {
+    }
+    public void windowDeiconified(java.awt.event.WindowEvent e) {
+    }
+    public void windowActivated(java.awt.event.WindowEvent e) {
+    }
+    public void windowDeactivated(java.awt.event.WindowEvent e) {
     }
     
     public int getSelectedOrderType() {
