@@ -206,17 +206,22 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     private imakante.com.vcomponents.iFrame myFrame;
     private static boolean isFromF7 = false;
     
-    private final String totalContragentDebts = 
+    private String totalContragentDebts = 
             "SELECT id_df, out_contragent_df, total_df, date_edition_df " +
             "FROM sl_document_facade " +
             "WHERE out_contragent_df = ";
     
-    private final String contragentsList = 
+    private String contragentsList = 
             "SELECT nc.id_contragent, nc.code_contragent, nc.name_n_contragent " +
             "FROM n_contragent nc" +
             "WHERE nc.code_contragent LIKE CONCAT('%',";
     
+    private String contragentById = 
+            "SELECT nc.code_contragent, nc.name_n_contragnt FROM n_contragent nc " +
+            "WHERE nc.id_contragent = ";
+    
     private void executeReport() {
+        totalContragentDebts = totalContragentDebts + jTextField1.getText() + ";";
         
     }
     
