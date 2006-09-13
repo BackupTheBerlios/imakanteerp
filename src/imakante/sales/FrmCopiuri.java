@@ -8,7 +8,6 @@ public class FrmCopiuri extends  imakante.com.vcomponents.iInternalFrame impleme
         myframe = frame;
         prepareConn();
         constructObject();
-        
         initTable();
         initComponents();
     }
@@ -272,19 +271,16 @@ public class FrmCopiuri extends  imakante.com.vcomponents.iInternalFrame impleme
     // End of variables declaration//GEN-END:variables
     
     //--------------- My Variables
-    private  boolean atBegining = false;
-    private  boolean atEnd = false;
+    private boolean atBegining = false;
+    private boolean atEnd = false;
     private int row;
-    private java.util.Date currDate;
-    java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd");
-    private  imakante.com.vcomponents.iFrame myframe;
-    private  java.sql.Connection conn;
-    private  java.sql.ResultSet rs;
-    private  imakante.sales.dbCopiuri internalObject;
-    private  imakante.com.CustomTableModel model;
-    private  imakante.com.CustomTable table;
+    private imakante.com.vcomponents.iFrame myframe;
+    private java.sql.Connection conn;
+    private java.sql.ResultSet rs;
+    private imakante.sales.dbCopiuri internalObject;
+    private imakante.com.CustomTableModel model;
+    private imakante.com.CustomTable table;
     
-    private String in_DATE;
     public static final String Names[] = { "id", "id_user",
     "\u041F\u043E\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043B", "\u0412\u0440\u0435\u043C\u0435",
     "\u0411\u0440\u043E\u0439 \u0431\u0430\u043D\u043A\u043D\u043E\u0442\u0438 100 \u043B\u0432",
@@ -316,7 +312,6 @@ public class FrmCopiuri extends  imakante.com.vcomponents.iInternalFrame impleme
     //---------------END My Variables
     
     //---------------START Methods
-    
     private void prepareConn() {
         try{
             conn =  myframe.getConn();
@@ -332,8 +327,6 @@ public class FrmCopiuri extends  imakante.com.vcomponents.iInternalFrame impleme
     
     private void initTable() { 
         try {
-//            internalObject.setDateBegin(jXDatePicker1);
-//            internalObject.setDateEnd(jXDatePicker2);
             rs = internalObject.getTable();
             model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
@@ -425,12 +418,10 @@ public class FrmCopiuri extends  imakante.com.vcomponents.iInternalFrame impleme
     
     public  void mTableEnd() {
         setRow(getMaxRow());
-        try{
+        try {
 //            setAllVariables();
             table.changeSelection(getRow(), 2, false, false);
-        } catch(ArrayIndexOutOfBoundsException aioobe) {
-            setRow(getRow() - 1);
-        }
+        } catch(ArrayIndexOutOfBoundsException aioobe) { setRow(getRow() - 1); }
         setAtBegining(false);
         setAtEnd(true);
     }
@@ -444,12 +435,9 @@ public class FrmCopiuri extends  imakante.com.vcomponents.iInternalFrame impleme
             try {
 //                setAllVariables();
                 table.changeSelection(getRow(), 2, false, false);
-            } catch(ArrayIndexOutOfBoundsException aioobe) {
-                setRow(getRow() - 1);
-            }
-            if(getRow() == getMaxRow()) {
+            } catch(ArrayIndexOutOfBoundsException aioobe) { setRow(getRow() - 1); }
+            if(getRow() == getMaxRow())
                 setAtEnd(true);
-            }
         }
     }
     
@@ -462,13 +450,10 @@ public class FrmCopiuri extends  imakante.com.vcomponents.iInternalFrame impleme
             try {
 //                setAllVariables();
                 table.changeSelection(getRow(), 2, false, false);
-            } catch(ArrayIndexOutOfBoundsException aioobe) {
-                setRow(getRow() + 1);
-            }
+            } catch(ArrayIndexOutOfBoundsException aioobe) { setRow(getRow() + 1); }
         }
-        if(getRow() == 0){
+        if(getRow() == 0)
             setAtBegining(true);
-        }
     }
     
     public void mTableBegining() {
@@ -476,9 +461,7 @@ public class FrmCopiuri extends  imakante.com.vcomponents.iInternalFrame impleme
         try {
 //            setAllVariables();
             table.changeSelection(getRow(), 2, false, false);
-        } catch(ArrayIndexOutOfBoundsException aioobe) {
-            setRow(getRow() - 1);
-        }
+        } catch(ArrayIndexOutOfBoundsException aioobe) { setRow(getRow() - 1); }
         setAtBegining(true);
         setAtEnd(false);
     }
@@ -533,7 +516,7 @@ public class FrmCopiuri extends  imakante.com.vcomponents.iInternalFrame impleme
     
     private int getColumnIndex(String in) {
         int count = table.getColumnCount();
-        for(int i=0; i < count; i++) {
+        for(int i = 0; i < count; i++) {
             if(table.getColumnName(i).equals(in)) return i;
         }
         return 0;

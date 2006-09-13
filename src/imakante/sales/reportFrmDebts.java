@@ -165,7 +165,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jTextField1.transferFocus();
         } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) {
             this.isFromF7 = true;
-            getContragent(obtainCodeFragment());
+            getContragent();
         } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextField1.setText(""); }
     }//GEN-LAST:event_jTextField1KeyPressed
 
@@ -184,7 +184,6 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     private void jbExecuteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExecuteActionPerformed
         executeReport();
     }//GEN-LAST:event_jbExecuteActionPerformed
-    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -205,6 +204,14 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     
     private imakante.com.vcomponents.iFrame myFrame;
     private static boolean isFromF7 = false;
+    java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd");
+    private org.jdesktop.swingx.JXDatePicker dp = new org.jdesktop.swingx.JXDatePicker();
+    private String in_DATE = (String)formatter.format(dp.getDate());
+    private int idContragent = 0;
+    private int codeContragent = 0;
+    private String nameContragent = "";
+    private String startOfReriod = "";
+    private String endOfPeriod = "";
     
     private String totalContragentDebts = 
             "SELECT id_df, out_contragent_df, total_df, date_edition_df " +
@@ -213,23 +220,32 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     
     private String contragentsList = 
             "SELECT nc.id_contragent, nc.code_contragent, nc.name_n_contragent " +
-            "FROM n_contragent nc" +
+            "FROM n_contragent nc " +
             "WHERE nc.code_contragent LIKE CONCAT('%',";
     
     private String contragentById = 
             "SELECT nc.code_contragent, nc.name_n_contragnt FROM n_contragent nc " +
             "WHERE nc.id_contragent = ";
     
+    private String previousDebts = 
+            "SELECT " +
+            "FROM " +
+            "WHERE id_contragent = ";
+    
     private void executeReport() {
-        totalContragentDebts = totalContragentDebts + jTextField1.getText() + ";";
+        getContragent();
+        String debtsQuery = totalContragentDebts + getIdContragent() + 
+                "AND (date_edition_df BETWEEN " + getStartOfReriod() + " AND " + getEndOfPeriod() + ");";
         
     }
     
-    private void getContragent(int codeFragment) {
+    private void getContragent() {
+        String contragents = contragentsList + obtainCodeFragment() + ",'%');";
         java.sql.ResultSet rsC;
         java.sql.Statement stm;
         imakante.com.CustomTableModel modelC;
         imakante.com.CustomTable tableC;
+        
         
     }
     
@@ -253,6 +269,46 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     private void fLost(javax.swing.JComponent jtf){
         jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED,
                 new java.awt.Color(255, 255, 255), null));
+    }
+
+    public int getIdContragent() {
+        return idContragent;
+    }
+
+    public void setIdContragent(int idContragent) {
+        this.idContragent = idContragent;
+    }
+
+    public int getCodeContragent() {
+        return codeContragent;
+    }
+
+    public void setCodeContragent(int codeContragent) {
+        this.codeContragent = codeContragent;
+    }
+
+    public String getNameContragent() {
+        return nameContragent;
+    }
+
+    public void setNameContragent(String nameContragent) {
+        this.nameContragent = nameContragent;
+    }
+
+    public String getStartOfReriod() {
+        return startOfReriod;
+    }
+
+    public void setStartOfReriod(org.jdesktop.swingx.JXDatePicker startOfReriod) {
+        this.startOfReriod = (String)formatter.format(startOfReriod.getDate());
+    }
+
+    public String getEndOfPeriod() {
+        return endOfPeriod;
+    }
+
+    public void setEndOfPeriod(org.jdesktop.swingx.JXDatePicker endOfPeriod) {
+        this.endOfPeriod = (String)formatter.format(endOfPeriod.getDate());
     }
     
 }
