@@ -154,8 +154,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         spravkiMenu_doc = new javax.swing.JMenuItem();
         fakturiMenu = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JSeparator();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
+        spravkiMenu_razpla6taniq = new javax.swing.JMenuItem();
+        spravkiMenu_zadyljeniq = new javax.swing.JMenuItem();
         jSeparator5 = new javax.swing.JSeparator();
         jMenuItem13 = new javax.swing.JMenuItem();
         jSeparator6 = new javax.swing.JSeparator();
@@ -822,11 +822,23 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         sprMenu.add(jSeparator2);
 
-        jMenuItem11.setText("\u0420\u0430\u0437\u043f\u043b\u0430\u0449\u0430\u043d\u0438\u044f \u043d\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
-        sprMenu.add(jMenuItem11);
+        spravkiMenu_razpla6taniq.setText("\u0420\u0430\u0437\u043f\u043b\u0430\u0449\u0430\u043d\u0438\u044f \u043d\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
+        spravkiMenu_razpla6taniq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                spravkiMenu_razpla6taniqActionPerformed(evt);
+            }
+        });
 
-        jMenuItem12.setText("\u0417\u0430\u0434\u044a\u043b\u0436\u0435\u043d\u0438\u044f");
-        sprMenu.add(jMenuItem12);
+        sprMenu.add(spravkiMenu_razpla6taniq);
+
+        spravkiMenu_zadyljeniq.setText("\u0417\u0430\u0434\u044a\u043b\u0436\u0435\u043d\u0438\u044f");
+        spravkiMenu_zadyljeniq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                spravkiMenu_zadyljeniqActionPerformed(evt);
+            }
+        });
+
+        sprMenu.add(spravkiMenu_zadyljeniq);
 
         sprMenu.add(jSeparator5);
 
@@ -1021,53 +1033,52 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         setBounds((screenSize.width-757)/2, (screenSize.height-458)/2, 757, 458);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void spravkiMenu_razpla6taniqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spravkiMenu_razpla6taniqActionPerformed
+        loadPaymentsReport();
+    }//GEN-LAST:event_spravkiMenu_razpla6taniqActionPerformed
+
+    private void spravkiMenu_zadyljeniqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spravkiMenu_zadyljeniqActionPerformed
+        loadDebtsReport_forms();
+    }//GEN-LAST:event_spravkiMenu_zadyljeniqActionPerformed
+
     private void fakturiMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fakturiMenuActionPerformed
-// TODO add your handling code here:
         loadFakturiReport();
     }//GEN-LAST:event_fakturiMenuActionPerformed
 
     private void nomDisbandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomDisbandActionPerformed
-// TODO add your handling code here:
         loadDisband();
     }//GEN-LAST:event_nomDisbandActionPerformed
 
     private void nomALevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomALevelActionPerformed
-// TODO add your handling code here:
-        loadAnLevel();
+       loadAnLevel();
     }//GEN-LAST:event_nomALevelActionPerformed
 
     private void kasaMenu_opisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kasaMenu_opisActionPerformed
-    loadCopiuri();
+        loadCopiuri();
     }//GEN-LAST:event_kasaMenu_opisActionPerformed
 
     private void razMenu_vrystActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_razMenu_vrystActionPerformed
-// TODO add your handling code here:
-        levelDialog1 = new levelDialog(this,true,4,razpiskaVryshtane);
+        levelDialog1 = new levelDialog(this, true, 4, razpiskaVryshtane);
         levelDialog1.setVisible(true);
         int user = userID_ndtur; //2;
         int level = levelForWork;// 1;
         int pricelist = 1;
         int doctype = aeDocumentFacade.RAZPISKA_ZA_VRYSHTANE;
         int storagedocdacade = numberStorage;
-        if(user!=-1  && level!=-1)
-        {
-        loadFrmDocFacade("\u0420\u0430\u0437\u043F\u0438\u0441\u043A\u0430 \u0437\u0430 \u0432\u0440\u044A\u0449\u0430\u043D\u0435", user, level, pricelist, doctype, storagedocdacade, false, null, null );
-        }
+        if(user != -1 && level != -1)
+            loadFrmDocFacade("\u0420\u0430\u0437\u043F\u0438\u0441\u043A\u0430 \u0437\u0430 \u0432\u0440\u044A\u0449\u0430\u043D\u0435", user, level, pricelist, doctype, storagedocdacade, false, null, null );
     }//GEN-LAST:event_razMenu_vrystActionPerformed
 
     private void docMenu_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docMenu_prodActionPerformed
-// TODO add your handling code here:
-        levelDialog1 = new levelDialog(this,true,4,stokavaRazpiskaArea);
+        levelDialog1 = new levelDialog(this, true, 4, stokavaRazpiskaArea);
         levelDialog1.setVisible(true);
         int user = userID_ndtur; //2;
         int level = levelForWork;// 1;
         int pricelist = 1;
         int doctype = aeDocumentFacade.STOKOVA_RAZPISKA;
         int storagedocdacade = numberStorage;
-        if(user!=-1  && level!=-1)
-        {
-        loadFrmDocFacade("\u0421\u0422\u041e\u041a\u041e\u0412\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );
-        }
+        if(user != -1  && level != -1)
+            loadFrmDocFacade("\u0421\u0422\u041e\u041a\u041e\u0412\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );
     }//GEN-LAST:event_docMenu_prodActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -1095,7 +1106,6 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_jMenuItem15ActionPerformed
     
     private void protMenu_lipsaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_protMenu_lipsaActionPerformed
-// TODO add your handling code here:
         levelDialog1 = new levelDialog(this,true,4,lipsaArea);
         levelDialog1.setVisible(true);
         int user = userID_ndtur; //2;
@@ -1110,7 +1120,6 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_protMenu_lipsaActionPerformed
     
     private void protMenu_brakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_protMenu_brakActionPerformed
-// TODO add your handling code here:
         levelDialog1 = new levelDialog(this,true,4,brakArea);
         levelDialog1.setVisible(true);
         int user = userID_ndtur; //2;
@@ -1428,8 +1437,6 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
@@ -1534,6 +1541,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenu sprMenu;
     private javax.swing.JMenuItem spravkiMenu_doc;
     private javax.swing.JMenuItem spravkiMenu_nal;
+    private javax.swing.JMenuItem spravkiMenu_razpla6taniq;
+    private javax.swing.JMenuItem spravkiMenu_zadyljeniq;
     private javax.swing.JMenuItem stock_Menu_group_stock;
     private javax.swing.JMenuItem stock_Menu_stock;
     // End of variables declaration//GEN-END:variables
@@ -2238,6 +2247,15 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         imakante.sales.levelDialogSecond levDSec = new imakante.sales.levelDialogSecond(this, true,9050);
         
         levDSec.setVisible(true);
+    }
+    
+    private void loadPaymentsReport() {
+        // TODO za dowyr6wane - implementirane na sprawkata
+    }
+    
+    private void loadDebtsReport_forms() {
+        imakante.sales.FormChooser fchooser = new imakante.sales.FormChooser(this, true, desktopPane);
+        fchooser.setVisible(true);
     }
     
     public static LinkedHashMap getOrderArea() {
