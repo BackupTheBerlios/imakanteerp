@@ -1,7 +1,7 @@
 
 package imakante.sales;
 
-public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog implements java.awt.event.WindowListener {
+public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     
     public aePayingOrdersPP(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
         super(frame, modal);
@@ -48,6 +48,12 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog implement
         jLabel9 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox();
 
+        if (this.isNewRecord) {
+            myParent.setRow(myParent.getMaxRow());
+            myParent.setId((Integer) myParent.getTable().getValueAt(myParent.getRow(), myParent.getColumnIndex("id")));
+            myParent.getInternalObject().deleteRow(myParent.getId());
+            myParent.resetFields();
+        }
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("\u0418\u0437\u043f\u0438\u0441\u0432\u0430\u043d\u0435 \u043d\u0430 \u0412\u043d\u043e\u0441\u043d\u0430 \u0431\u0435\u043b\u0435\u0436\u043a\u0430");
         jPanel1.setPreferredSize(new java.awt.Dimension(263, 33));
@@ -745,22 +751,6 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog implement
     private void fLost(javax.swing.JComponent jtf){
         jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED,
                 new java.awt.Color(255, 255, 255), null));
-    }
-    
-    public void windowOpened(java.awt.event.WindowEvent e) {
-    }
-    public void windowClosing(java.awt.event.WindowEvent e) {
-        closeForm();
-    }
-    public void windowClosed(java.awt.event.WindowEvent e) {
-    }
-    public void windowIconified(java.awt.event.WindowEvent e) {
-    }
-    public void windowDeiconified(java.awt.event.WindowEvent e) {
-    }
-    public void windowActivated(java.awt.event.WindowEvent e) {
-    }
-    public void windowDeactivated(java.awt.event.WindowEvent e) {
     }
     
     public int getSelectedOrderType() {

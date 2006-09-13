@@ -1144,7 +1144,7 @@ public class FrmPayingOrders extends imakante.com.vcomponents.iInternalFrame imp
             jLabel2.setText("\u041F\u043E\u043B\u0443\u0447\u0430\u0442\u0435\u043B:");
             
             
-            jComboBox2.addItem("-----------------------------------");
+            jComboBox2.addItem("--------------------------");
             OrderTypes = getInternalObject().getTypesOfOreders();
             for(int i = 0; i < OrderTypes.length; i++)
                 jComboBox2.addItem(new String(OrderTypes[i]));
