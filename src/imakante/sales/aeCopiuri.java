@@ -1,15 +1,13 @@
 
 package imakante.sales;
 
-import java.text.NumberFormat;
-
 public class aeCopiuri extends imakante.com.vcomponents.iDialog {
     
     public aeCopiuri(imakante.com.vcomponents.iInternalFrame parent, boolean modal) {
         super(parent, modal);
         myframe = (imakante.sales.FrmCopiuri) parent;
         initComponents();
-        numberFormatter = NumberFormat.getNumberInstance();
+        numberFormatter = java.text.NumberFormat.getNumberInstance();
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -67,7 +65,7 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("\u041f\u0430\u0440\u0438\u0447\u0435\u043d \u043e\u043f\u0438\u0441");
         setResizable(false);
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u0411\u0430\u043d\u043a\u043d\u043e\u0442\u0438"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u0411\u0410\u041d\u041a\u041d\u041e\u0422\u0418", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(0, 51, 153)));
         jLabel1.setText("100");
 
         jLabel2.setText("50");
@@ -289,7 +287,7 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
                 .addContainerGap())
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u041c\u043e\u043d\u0435\u0442\u0438"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u041c\u041e\u041d\u0415\u0422\u0418", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(0, 51, 153)));
         jLabel7.setText("1.00");
 
         jLabel8.setText("0.50");
@@ -545,26 +543,26 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
                     .add(jLabel13)
                     .add(jTextField13, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel26))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 17, Short.MAX_VALUE)
                 .add(jLabel28)
                 .addContainerGap())
         );
 
-        jButton1.setText("\u0421\u044a\u0445\u0440\u0430\u043d\u0438");
+        jButton1.setText("\u0421\u042a\u0425\u0420\u0410\u041d\u0418");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("\u041e\u0442\u043a\u0430\u0437");
+        jButton2.setText("\u0417\u0410\u0422\u0412\u041e\u0420\u0418");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jButton3.setText("\u041f\u0435\u0447\u0430\u0442");
+        jButton3.setText("\u041f\u0415\u0427\u0410\u0422");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -576,7 +574,7 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(127, Short.MAX_VALUE)
+                .addContainerGap(95, Short.MAX_VALUE)
                 .add(jButton1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jButton3)
@@ -585,7 +583,7 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
                 .add(36, 36, 36))
         );
 
-        jPanel3Layout.linkSize(new java.awt.Component[] {jButton1, jButton2}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+        jPanel3Layout.linkSize(new java.awt.Component[] {jButton1, jButton2, jButton3}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
 
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -598,7 +596,7 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u041e\u0431\u0449\u0430 \u0441\u0443\u043c\u0430"));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u041e\u0411\u0429\u0410 \u0421\u0423\u041c\u0410", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(0, 51, 153)));
         jLabel27.setFont(new java.awt.Font("Tahoma", 1, 12));
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel27.setText("0");
@@ -646,10 +644,10 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
                 .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-420)/2, (screenSize.height-404)/2, 420, 404);
+        setBounds((screenSize.width-420)/2, (screenSize.height-400)/2, 420, 400);
     }// </editor-fold>//GEN-END:initComponents
     
     private void jTextField13KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField13KeyPressed
@@ -899,8 +897,8 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
     // End of variables declaration//GEN-END:variables
     
     private imakante.sales.FrmCopiuri myframe;
-    private double sum_paper = 0, sum_moneti = 0, sum_total = 0;
-    NumberFormat numberFormatter;
+    private double sum_paper = 0, sum_metal = 0, sum_total = 0;
+    java.text.NumberFormat numberFormatter;
     
     private void calculateValues(javax.swing.JTextField tf, javax.swing.JLabel lab, double val) {
         double sum = 0;
@@ -908,7 +906,7 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
         try {
             sum_old = Double.parseDouble(lab.getText());
         } catch (NumberFormatException ex) { ex.printStackTrace(); }
-        if (val > 1) sum_paper = sum_paper - sum_old; else sum_moneti = sum_moneti - sum_old;
+        if (val > 1) sum_paper = sum_paper - sum_old; else sum_metal = sum_metal - sum_old;
         try {
             sum = Double.parseDouble(tf.getText()) * val;
         } catch (NumberFormatException ex) {
@@ -916,10 +914,10 @@ public class aeCopiuri extends imakante.com.vcomponents.iDialog {
             ex.printStackTrace();
         }
         lab.setText(numberFormatter.format(sum));
-        if (val > 1) sum_paper = sum_paper +sum; else sum_moneti = sum_moneti + sum;
-        sum_total = sum_moneti  + sum_paper;
+        if (val > 1) sum_paper = sum_paper +sum; else sum_metal = sum_metal + sum;
+        sum_total = sum_metal  + sum_paper;
         jLabel27.setText(numberFormatter.format(sum_total));
-        jLabel28.setText(numberFormatter.format(sum_moneti));
+        jLabel28.setText(numberFormatter.format(sum_metal));
         jLabel29.setText(numberFormatter.format(sum_paper));
     }
     

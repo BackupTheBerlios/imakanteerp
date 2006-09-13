@@ -16,7 +16,6 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog implement
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
-        jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jButtonSave = new javax.swing.JButton();
         jButtonPrint = new javax.swing.JButton();
@@ -47,8 +46,6 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog implement
         jTextField6 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
-
-        jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("\u0418\u0437\u043f\u0438\u0441\u0432\u0430\u043d\u0435 \u043d\u0430 \u041f\u043b\u0430\u0442\u0435\u0436\u043d\u043e \u043d\u0430\u0440\u0435\u0436\u0434\u0430\u043d\u0435");
@@ -632,7 +629,6 @@ public class aePayingOrdersJP extends imakante.com.vcomponents.iDialog implement
     private javax.swing.JButton jButtonToEnd;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

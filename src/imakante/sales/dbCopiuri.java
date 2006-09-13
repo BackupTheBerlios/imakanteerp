@@ -47,7 +47,7 @@ public class dbCopiuri extends imakante.com.dbObject {
         try {
             getCstm().setInt("comprator", getComprator());
             getCstm().setInt("in_id_um", getUserID());
-            getCstm().setString("in_name_um", getName());
+            getCstm().setString("in_name_um", getUserName());
             getCstm().setInt("in_paper_100", getPaper100());
             getCstm().setInt("in_paper_50", getPaper50());
             getCstm().setInt("in_paper_20", getPaper20());
@@ -93,9 +93,9 @@ public class dbCopiuri extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    public java.sql.ResultSet searchRecords(String name) {
+    public java.sql.ResultSet searchRecords(String userName) {
         setComprator(5);
-        this.setUserName(name);
+        this.setUserName(userName);
         try {
             registerParameters();
             setRs(getCstm().executeQuery());

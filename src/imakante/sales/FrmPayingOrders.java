@@ -14,7 +14,7 @@ public class FrmPayingOrders extends imakante.com.vcomponents.iInternalFrame imp
         initTable(getOrderingPerson());
         initComponents();
         
-        // TODO Po-4isto e, ako komboto e spisyk na wsi4ki nali4ni w tablicata waluti (izpolzwanite), otkolkoto 
+        // TODO Po-4isto e, ako komboto e spisyk na wsi4ki nali4ni w tablicata waluti (izpolzwanite), otkolkoto
         // na wsi4ki nali4ni w bazata danni waluti (n_money)
         jComboBox1.addItem("----------");
         Currencies = getInternalObject().getAvailableCurrencies();
@@ -1144,10 +1144,10 @@ public class FrmPayingOrders extends imakante.com.vcomponents.iInternalFrame imp
             jLabel2.setText("\u041F\u043E\u043B\u0443\u0447\u0430\u0442\u0435\u043B:");
             
             
-        jComboBox2.addItem("-----------------------------------");
-        OrderTypes = getInternalObject().getTypesOfOreders();
-        for(int i = 0; i < OrderTypes.length; i++)
-            jComboBox2.addItem(new String(OrderTypes[i]));
+            jComboBox2.addItem("-----------------------------------");
+            OrderTypes = getInternalObject().getTypesOfOreders();
+            for(int i = 0; i < OrderTypes.length; i++)
+                jComboBox2.addItem(new String(OrderTypes[i]));
             
         }
         if (jRadioButton2.isSelected()) {
@@ -1156,11 +1156,11 @@ public class FrmPayingOrders extends imakante.com.vcomponents.iInternalFrame imp
             jLabel2.setText("\u041F\u043E\u0434\u043E\u0442\u0447\u0435\u0442\u043D\u043E \u043B\u0438\u0446\u0435:");
             
             
-        jComboBox2.addItem("-----------------------------------");
-        OrderTypes = getInternalObject().getTypesOfOreders();
-        for(int i = 0; i < OrderTypes.length; i++)
-            jComboBox2.addItem(new String(OrderTypes[i]));
-        
+            jComboBox2.addItem("-----------------------------------");
+            OrderTypes = getInternalObject().getTypesOfOreders();
+            for(int i = 0; i < OrderTypes.length; i++)
+                jComboBox2.addItem(new String(OrderTypes[i]));
+            
         }
     }
     
@@ -1530,8 +1530,10 @@ public class FrmPayingOrders extends imakante.com.vcomponents.iInternalFrame imp
         setInstant(inst.toString());
         
         // Derivative variables section
-        setValuesFromBankAccountId(getIdBankAccount());
-        setValuesFromPersonId(getIdPerson());
+        if (getIdBankAccount() > 0)
+            setValuesFromBankAccountId(getIdBankAccount());
+        if (getIdPerson() > 0)
+            setValuesFromPersonId(getIdPerson());
     }
     
     public java.sql.Connection getConn() {

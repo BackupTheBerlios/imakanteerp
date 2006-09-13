@@ -3,14 +3,14 @@ package imakante.sales;
 
 public class FrmCopiuri extends  imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
-    public FrmCopiuri(String title,imakante.com.vcomponents.iFrame frame) {
+    public FrmCopiuri(String title, imakante.com.vcomponents.iFrame frame) {
         super(title);
         myframe = frame;
-        prepareConn();     // zapazva connection
-        constructObject(); // inicializira class otgovarq6t za vryzkata s DB
+        prepareConn();
+        constructObject();
+        
         initTable();
         initComponents();
-        
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -38,9 +38,9 @@ public class FrmCopiuri extends  imakante.com.vcomponents.iInternalFrame impleme
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("\u041f\u0430\u0440\u0438\u0447\u043d\u0438 \u043e\u043f\u0438\u0441\u0438 ");
+        setTitle("\u041f\u0410\u0420\u0418\u0427\u041d\u0418 \u041e\u041f\u0418\u0421\u0418");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
-        setMinimumSize(new java.awt.Dimension(550, 470));
+        setMinimumSize(new java.awt.Dimension(560, 480));
         setPreferredSize(new java.awt.Dimension(560, 480));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
@@ -83,35 +83,64 @@ public class FrmCopiuri extends  imakante.com.vcomponents.iInternalFrame impleme
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u0414\u0410\u0422\u0410", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(0, 51, 153)));
+        jXDatePicker1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jXDatePicker1ActionPerformed(evt);
+            }
+        });
+        jXDatePicker1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jXDatePicker1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jXDatePicker1FocusLost(evt);
+            }
+        });
 
-        jLabel1.setText("\u041e\u0442 \u0434\u0430\u0442\u0430:");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel1.setText("\u041eT:");
 
-        jLabel2.setText("\u0414\u043e \u0434\u0430\u0442\u0430:");
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText("\u0414\u041e:");
+
+        jXDatePicker2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jXDatePicker2ActionPerformed(evt);
+            }
+        });
+        jXDatePicker2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jXDatePicker2FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jXDatePicker2FocusLost(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel2Layout.createSequentialGroup()
-                .add(70, 70, 70)
-                .add(jLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
-                .add(13, 13, 13)
-                .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-                .add(35, 35, 35)
-                .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+                .add(95, 95, 95)
+                .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 30, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 127, Short.MAX_VALUE)
+                .add(26, 26, 26)
+                .add(jLabel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 29, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jXDatePicker2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(81, 81, 81))
+                .add(101, 101, 101))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jXDatePicker2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel2)
                     .add(jLabel1)
+                    .add(jXDatePicker2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -166,13 +195,40 @@ public class FrmCopiuri extends  imakante.com.vcomponents.iInternalFrame impleme
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-563)/2, (screenSize.height-472)/2, 563, 472);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jXDatePicker2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXDatePicker2ActionPerformed
+        
+    }//GEN-LAST:event_jXDatePicker2ActionPerformed
+
+    private void jXDatePicker2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jXDatePicker2FocusGained
+        
+    }//GEN-LAST:event_jXDatePicker2FocusGained
+
+    private void jXDatePicker2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jXDatePicker2FocusLost
+        
+    }//GEN-LAST:event_jXDatePicker2FocusLost
+
+    private void jXDatePicker1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXDatePicker1ActionPerformed
+        
+    }//GEN-LAST:event_jXDatePicker1ActionPerformed
+
+    private void jXDatePicker1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jXDatePicker1FocusGained
+        
+    }//GEN-LAST:event_jXDatePicker1FocusGained
+
+    private void jXDatePicker1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jXDatePicker1FocusLost
+        
+    }//GEN-LAST:event_jXDatePicker1FocusLost
     
     private void jTextNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextNameFocusGained
         jTextName.selectAll();
     }//GEN-LAST:event_jTextNameFocusGained
     
     private void jTextNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNameKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSearch.doClick(); searchRecords(); } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextName.setText(""); }
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { 
+            jButtonSearch.doClick(); 
+            searchRecords(); 
+        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextName.setText(""); }
     }//GEN-LAST:event_jTextNameKeyPressed
     
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
@@ -216,19 +272,10 @@ public class FrmCopiuri extends  imakante.com.vcomponents.iInternalFrame impleme
     // End of variables declaration//GEN-END:variables
     
     //--------------- My Variables
-    private int id = 0; // imena ot tablicata
-    private int id_group = 0; // imena ot tablicata
-    private int Code = 0;
-    private String EGN = "";
-    private String NLK = "";
-    private String name, comment; // imena ot tablicata
-    private String namesG[]; //imena na grupi
-    private int selectComboBoxItem;
-    private  boolean atBegining=false;
+    private  boolean atBegining = false;
     private  boolean atEnd = false;
     private int row;
     private java.util.Date currDate;
-    private java.util.Calendar m_calendar = java.util.Calendar.getInstance();
     java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd");
     private  imakante.com.vcomponents.iFrame myframe;
     private  java.sql.Connection conn;
@@ -273,8 +320,7 @@ public class FrmCopiuri extends  imakante.com.vcomponents.iInternalFrame impleme
     private void prepareConn() {
         try{
             conn =  myframe.getConn();
-            if(conn==null){System.out.println("conn problem");
-            }
+            if(conn == null) { System.out.println("CAN NOT ESTABLISH CONNECTION!"); }
         } catch(Exception e) { e.printStackTrace(); }
     }
     
@@ -284,8 +330,10 @@ public class FrmCopiuri extends  imakante.com.vcomponents.iInternalFrame impleme
         } catch(Exception e) { e.printStackTrace(); }
     }
     
-    private void initTable() {  //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
+    private void initTable() { 
         try {
+//            internalObject.setDateBegin(jXDatePicker1);
+//            internalObject.setDateEnd(jXDatePicker2);
             rs = internalObject.getTable();
             model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
@@ -369,62 +417,6 @@ public class FrmCopiuri extends  imakante.com.vcomponents.iInternalFrame impleme
     
     public  int getRow() {
         return row;
-    }
-    
-    public void setId(int ID) {
-        this.id = ID;
-    }
-    
-    public int getId() {
-        return id;
-    }
-    
-    public int getCode() {
-        return Code;
-    }
-    
-    public void setCode(int Code) {
-        this.Code = Code;
-    }
-    
-    public void setIDG(int Gr) {
-        this.id_group = Gr;
-    }
-    
-    public int getIDG() {
-        return id_group;
-    }
-    
-    public void setEGN(String EGN) {
-        this.EGN = EGN;
-    }
-    
-    public String getEGN() {
-        return EGN;
-    }
-    
-    public void setNLK(String NLK) {
-        this.NLK = NLK;
-    }
-    
-    public String getNLK() {
-        return NLK;
-    }
-    
-    public void setNames(String Name) {
-        this.name = Name;
-    }
-    
-    public String getNames() {
-        return name;
-    }
-    
-    public void setComment(String Comment) {
-        this.comment = Comment;
-    }
-    
-    public String getComment() {
-        return comment;
     }
     
     public  void setRow(int val) {
@@ -554,7 +546,7 @@ public class FrmCopiuri extends  imakante.com.vcomponents.iInternalFrame impleme
         table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
         table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
     }
-//
+
 //    private void setAllVariables() {
 //        setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
 //        setIDG((Integer) table.getValueAt(getRow(), getColumnIndex("id_group")));
@@ -564,9 +556,6 @@ public class FrmCopiuri extends  imakante.com.vcomponents.iInternalFrame impleme
 //        setNames((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043c\u0435\u043d\u0430")));
 //        setComment((String) table.getValueAt(getRow(), getColumnIndex("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440\u0438")));
 //    }
-    
-    
-    
     
     private void unload() {
         closeResource();
