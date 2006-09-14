@@ -248,8 +248,16 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         java.sql.ResultSet rsC;
         imakante.com.CustomTableModel modelC;
         imakante.com.CustomTable tableC;
-        
-        
+        String[] names = { "id", "\u041A\u043E\u0434", "\u0418\u043C\u0435" };
+        try {
+            rsC = getStm().executeQuery(contragents);
+            modelC = new imakante.com.CustomTableModel(getConn(), rsC, names);
+            tableC = new imakante.com.CustomTable(modelC);
+            tableC.setEditingRow(0);
+            imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, 
+                    tableC, "", "", "");
+            td.setVisible(true);
+        } catch(java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
     private int obtainCodeFragment() {
@@ -266,15 +274,15 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     
     private void prepareConn() {
         try{
-            setConn(myframe.getConn());
-            if(conn == null){System.out.println("conn problem");
-            }
+            setConn(myFrame.getConn());
+            if(getConn() == null) 
+                System.out.println("CAN NOT ESTABLISH CONNECTION!");
         } catch(Exception e) { e.printStackTrace(); }
     }
     
     private void prepareStm() {
         try {
-            setStm(conn.createStatement());
+            setStm(getConn().createStatement());
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
