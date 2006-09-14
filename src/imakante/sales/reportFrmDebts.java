@@ -203,6 +203,8 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     // End of variables declaration//GEN-END:variables
     
     private imakante.com.vcomponents.iFrame myFrame;
+    private  java.sql.Connection conn;
+    private  java.sql.Statement stm;
     private static boolean isFromF7 = false;
     java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd");
     private org.jdesktop.swingx.JXDatePicker dp = new org.jdesktop.swingx.JXDatePicker();
@@ -221,28 +223,29 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     private String contragentsList = 
             "SELECT nc.id_contragent, nc.code_contragent, nc.name_n_contragent " +
             "FROM n_contragent nc " +
-            "WHERE nc.code_contragent LIKE CONCAT('%',";
+            "WHERE nc.code_contragent LIKE '%";
     
     private String contragentById = 
             "SELECT nc.code_contragent, nc.name_n_contragnt FROM n_contragent nc " +
             "WHERE nc.id_contragent = ";
     
     private String previousDebts = 
-            "SELECT " +
-            "FROM " +
-            "WHERE id_contragent = ";
+            "SELECT id_df, out_contragent_df, total_df, date_edition_df " +
+            "FROM sl_document_facade " +
+            "WHERE out_contragent_df = ";
     
     private void executeReport() {
         getContragent();
+        setStartOfReriod(jXDatePicker1);
+        setEndOfPeriod(jXDatePicker2);
         String debtsQuery = totalContragentDebts + getIdContragent() + 
-                "AND (date_edition_df BETWEEN " + getStartOfReriod() + " AND " + getEndOfPeriod() + ");";
+                "AND date_edition_df BETWEEN (" + getStartOfReriod() + " AND " + getEndOfPeriod() + ");";
         
     }
     
     private void getContragent() {
-        String contragents = contragentsList + obtainCodeFragment() + ",'%');";
+        String contragents = contragentsList + obtainCodeFragment() + "%';";
         java.sql.ResultSet rsC;
-        java.sql.Statement stm;
         imakante.com.CustomTableModel modelC;
         imakante.com.CustomTable tableC;
         
@@ -259,6 +262,20 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
             return i;
         } catch (NumberFormatException ex) { i = 0; }
         return i;
+    }
+    
+    private void prepareConn() {
+        try{
+            setConn(myframe.getConn());
+            if(conn == null){System.out.println("conn problem");
+            }
+        } catch(Exception e) { e.printStackTrace(); }
+    }
+    
+    private void prepareStm() {
+        try {
+            setStm(conn.createStatement());
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
     private void fGain(javax.swing.JComponent jtf){
@@ -309,6 +326,22 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
 
     public void setEndOfPeriod(org.jdesktop.swingx.JXDatePicker endOfPeriod) {
         this.endOfPeriod = (String)formatter.format(endOfPeriod.getDate());
+    }
+
+    public java.sql.Connection getConn() {
+        return conn;
+    }
+
+    public void setConn(java.sql.Connection conn) {
+        this.conn = conn;
+    }
+
+    public java.sql.Statement getStm() {
+        return stm;
+    }
+
+    public void setStm(java.sql.Statement stm) {
+        this.stm = stm;
     }
     
 }
