@@ -6,6 +6,8 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     public reportFrmDebts(String title, imakante.com.vcomponents.iFrame frame) {
         super(title);
         myFrame = frame;
+        prepareConn();
+        prepareStm();
         initComponents();
     }
     
@@ -174,6 +176,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     }//GEN-LAST:event_jTextField1FocusLost
 
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+        jTextField1.selectAll();
         fGain(jTextField1);
     }//GEN-LAST:event_jTextField1FocusGained
 
@@ -250,13 +253,17 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         imakante.com.CustomTable tableC;
         String[] names = { "id", "\u041A\u043E\u0434", "\u0418\u043C\u0435" };
         try {
+            System.out.println("Zaqwkata e: " + contragents);
             rsC = getStm().executeQuery(contragents);
             modelC = new imakante.com.CustomTableModel(getConn(), rsC, names);
             tableC = new imakante.com.CustomTable(modelC);
+            HideColumns(tableC, getColumnIndex(tableC, "id"));
             tableC.setEditingRow(0);
-            imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, 
-                    tableC, "", "", "");
+            imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, tableC, 
+                    "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u041A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442", 
+                    "", "\u041A\u043E\u0434");
             td.setVisible(true);
+            
         } catch(java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
@@ -350,6 +357,22 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
 
     public void setStm(java.sql.Statement stm) {
         this.stm = stm;
+    }
+    
+    private int getColumnIndex(imakante.com.CustomTable tab, String in) {
+        int count = tab.getColumnCount();
+        for(int i = 0; i < count; i++) {
+            if(tab.getColumnName(i).equals(in)) 
+                return i;
+        }
+        return 0;
+    }
+    
+    private void HideColumns(imakante.com.CustomTable tab, int col) {
+        tab.getColumnModel().getColumn(col).setMaxWidth(0);
+        tab.getColumnModel().getColumn(col).setMinWidth(0);
+        tab.getTableHeader().getColumnModel().getColumn(col).setMaxWidth(0);
+        tab.getTableHeader().getColumnModel().getColumn(col).setMinWidth(0);
     }
     
 }
