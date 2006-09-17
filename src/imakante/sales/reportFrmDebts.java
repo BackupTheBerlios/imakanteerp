@@ -71,7 +71,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
                 .add(12, 12, 12)
                 .add(jLabel2)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -100,7 +100,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
                 .add(jLabel3)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 29, Short.MAX_VALUE)
                 .add(jLabel4)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jXDatePicker2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -136,7 +136,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
                 .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -160,9 +160,9 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
 
-        pack();
+        setBounds(50, 20, 393, 239);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jTextField1.transferFocus();
         } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) {
@@ -170,20 +170,20 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
             getContragent();
         } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextField1.setText(""); }
     }//GEN-LAST:event_jTextField1KeyPressed
-
+    
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
         fLost(jTextField1);
     }//GEN-LAST:event_jTextField1FocusLost
-
+    
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
         jTextField1.selectAll();
         fGain(jTextField1);
     }//GEN-LAST:event_jTextField1FocusGained
-
+    
     private void jbQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbQuitActionPerformed
         this.dispose();
     }//GEN-LAST:event_jbQuitActionPerformed
-
+    
     private void jbExecuteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExecuteActionPerformed
         executeReport();
     }//GEN-LAST:event_jbExecuteActionPerformed
@@ -217,32 +217,53 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     private String nameContragent = "";
     private String startOfReriod = "";
     private String endOfPeriod = "";
+    private int IDTransfer = 0;
     
-    private String totalContragentDebts = 
+    private String totalContragentDebts =
             "SELECT id_df, out_contragent_df, total_df, date_edition_df " +
             "FROM sl_document_facade " +
             "WHERE out_contragent_df = ";
     
-    private String contragentsList = 
+    private String contragentsList =
             "SELECT nc.id_contragent, nc.code_contragent, nc.name_n_contragent " +
             "FROM n_contragent nc " +
             "WHERE nc.code_contragent LIKE '%";
     
-    private String contragentById = 
-            "SELECT nc.code_contragent, nc.name_n_contragnt FROM n_contragent nc " +
+    private String contragentById =
+            "SELECT nc.code_contragent, nc.name_n_contragent FROM n_contragent nc " +
             "WHERE nc.id_contragent = ";
     
-    private String previousDebts = 
+    private String previousDebts =
             "SELECT id_df, out_contragent_df, total_df, date_edition_df " +
             "FROM sl_document_facade " +
             "WHERE out_contragent_df = ";
     
     private void executeReport() {
-        getContragent();
-        setStartOfReriod(jXDatePicker1);
-        setEndOfPeriod(jXDatePicker2);
-        String debtsQuery = totalContragentDebts + getIdContragent() + 
-                "AND date_edition_df BETWEEN (" + getStartOfReriod() + " AND " + getEndOfPeriod() + ");";
+        java.sql.ResultSet rsD;
+        imakante.com.CustomTableModel modelD;
+        imakante.com.CustomTable tableD;
+        String[] names = { "id", "1", "2", "3" };
+        if (getIdContragent() > 0) {
+            setStartOfReriod(jXDatePicker1);
+            setEndOfPeriod(jXDatePicker2);
+            String debtsQuery = totalContragentDebts + getIdContragent() +
+                    " AND date_edition_df BETWEEN ('" + getStartOfReriod() + "' AND '" + getEndOfPeriod() + "');";
+            System.out.println("Zaqwkata e: " + debtsQuery);
+            try {
+                rsD = getStm().executeQuery(debtsQuery);
+                modelD = new imakante.com.CustomTableModel(getConn(), rsD, names);
+                tableD = new imakante.com.CustomTable(modelD);
+                HideColumns(tableD, getColumnIndex(tableD, "id"));
+                tableD.setEditingRow(0);
+                imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, tableD,
+                        "\u0417\u0434\u044A\u043B\u0436\u0435\u043D\u0438\u044F \u043D\u0430 " + getNameContragent().toUpperCase(),
+                        "", null);
+                td.setVisible(true);
+                
+            } catch(java.sql.SQLException ex) { ex.printStackTrace(); }
+        } else {
+            getContragent();
+        }
         
     }
     
@@ -253,14 +274,13 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         imakante.com.CustomTable tableC;
         String[] names = { "id", "\u041A\u043E\u0434", "\u0418\u043C\u0435" };
         try {
-            System.out.println("Zaqwkata e: " + contragents);
             rsC = getStm().executeQuery(contragents);
             modelC = new imakante.com.CustomTableModel(getConn(), rsC, names);
             tableC = new imakante.com.CustomTable(modelC);
             HideColumns(tableC, getColumnIndex(tableC, "id"));
             tableC.setEditingRow(0);
-            imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, tableC, 
-                    "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u041A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442", 
+            imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, tableC,
+                    "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u041A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442",
                     "", "\u041A\u043E\u0434");
             td.setVisible(true);
             
@@ -279,10 +299,29 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         return i;
     }
     
+    private void getContragentByID(int ID) {
+        String contragent = contragentById + ID + ";";
+        try {
+            java.sql.ResultSet rsC = getStm().executeQuery(contragent);
+            rsC.next();
+            setIdContragent(ID);
+            setCodeContragent(rsC.getInt("code_contragent"));
+            setNameContragent(rsC.getString("name_n_contragent"));
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
+        jTextField1.setText("" + getCodeContragent());
+        jTextField2.setText(getNameContragent());
+    }
+    
+    @Override
+    public void setIntTransfer(int idTransfer) {
+        this.IDTransfer = idTransfer;
+        getContragentByID(IDTransfer);
+    }
+    
     private void prepareConn() {
-        try{
+        try {
             setConn(myFrame.getConn());
-            if(getConn() == null) 
+            if(getConn() == null)
                 System.out.println("CAN NOT ESTABLISH CONNECTION!");
         } catch(Exception e) { e.printStackTrace(); }
     }
@@ -302,59 +341,59 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED,
                 new java.awt.Color(255, 255, 255), null));
     }
-
+    
     public int getIdContragent() {
         return idContragent;
     }
-
+    
     public void setIdContragent(int idContragent) {
         this.idContragent = idContragent;
     }
-
+    
     public int getCodeContragent() {
         return codeContragent;
     }
-
+    
     public void setCodeContragent(int codeContragent) {
         this.codeContragent = codeContragent;
     }
-
+    
     public String getNameContragent() {
         return nameContragent;
     }
-
+    
     public void setNameContragent(String nameContragent) {
         this.nameContragent = nameContragent;
     }
-
+    
     public String getStartOfReriod() {
         return startOfReriod;
     }
-
+    
     public void setStartOfReriod(org.jdesktop.swingx.JXDatePicker startOfReriod) {
         this.startOfReriod = (String)formatter.format(startOfReriod.getDate());
     }
-
+    
     public String getEndOfPeriod() {
         return endOfPeriod;
     }
-
+    
     public void setEndOfPeriod(org.jdesktop.swingx.JXDatePicker endOfPeriod) {
         this.endOfPeriod = (String)formatter.format(endOfPeriod.getDate());
     }
-
+    
     public java.sql.Connection getConn() {
         return conn;
     }
-
+    
     public void setConn(java.sql.Connection conn) {
         this.conn = conn;
     }
-
+    
     public java.sql.Statement getStm() {
         return stm;
     }
-
+    
     public void setStm(java.sql.Statement stm) {
         this.stm = stm;
     }
@@ -362,7 +401,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     private int getColumnIndex(imakante.com.CustomTable tab, String in) {
         int count = tab.getColumnCount();
         for(int i = 0; i < count; i++) {
-            if(tab.getColumnName(i).equals(in)) 
+            if(tab.getColumnName(i).equals(in))
                 return i;
         }
         return 0;
