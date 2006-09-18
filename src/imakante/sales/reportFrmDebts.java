@@ -247,7 +247,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
             setStartOfReriod(jXDatePicker1);
             setEndOfPeriod(jXDatePicker2);
             String debtsQuery = totalContragentDebts + getIdContragent() +
-                    " AND date_edition_df BETWEEN ('" + getStartOfReriod() + "' AND '" + getEndOfPeriod() + "');";
+                    " AND date_edition_df BETWEEN '" + getStartOfReriod() + "' AND '" + getEndOfPeriod() + "';";
             System.out.println("Zaqwkata e: " + debtsQuery);
             try {
                 rsD = getStm().executeQuery(debtsQuery);
