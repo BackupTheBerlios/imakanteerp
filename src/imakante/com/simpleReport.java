@@ -2,12 +2,18 @@ package imakante.com;
 
 import imakante.sales.aeDocumentFacade;
 import java.util.*;
+import javax.swing.JTable;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.engine.JasperReport;
+import java.io.*; 
+import org.jdom.*; 
+import org.jdom.input.*; 
+import org.jdom.output.*;
+
 
 public class simpleReport extends javax.swing.JFrame {
   
@@ -15,7 +21,9 @@ public class simpleReport extends javax.swing.JFrame {
     private HashMap inputFiltrs;
     private net.sf.jasperreports.engine.JasperPrint jasperPrint ;
     private net.sf.jasperreports.view.JRViewer jrv;
-   private java.sql.Connection conn;
+    private java.sql.Connection conn;
+    private Document doc;
+    private Element root;
     /** Creates new form simpleReport */
     public simpleReport(HashMap inputfilters,int doctype,java.sql.Connection con) 
     {
@@ -146,4 +154,399 @@ public class simpleReport extends javax.swing.JFrame {
  }
  
  
+ class textField {
+    
+    private String textFieldExpression_text;
+    
+    private int reportElement_X; 
+    
+    private int reportElement_Y; 
+    
+    private int reportElement_width; 
+    
+    private int reportElement_height;
+    
+    private String box_topBorder;
+    private String box_topBorderColor;
+    private String box_leftBorder;
+    private String box_leftBorderColor;
+    private String box_rightBorder;
+    private String box_rightBorderColor;
+    private String box_bottomBorder;
+    private String box_bottomBorderColor;
+    
+    private int textElement_font_size;
+    private String textElement_font_fontName;
+    private boolean textElement_font_italic;
+    private boolean textElement_font_boild;
+    
+    private String classType;
+    private String textFieldParameterExpression;
+    
+    
+   
+    
+    private String horizontalAligment;
+    
+    private String verticalAligment;
+    
+   
+    public  textField(String text)   
+    {
+      textFieldExpression_text=new String(text);  
+    }
+    public textField(String text,int posX,int posY,int width,int height)
+    {
+       textFieldExpression_text=new String(text);  
+       reportElement_width = width;
+       reportElement_height = height;
+       reportElement_X = posX;
+       reportElement_Y = posY;
+       
+    }
+ public void setTextElement_font_size(byte size)   
+ {
+      textElement_font_size = size;
+ }
+ 
+ public void setTextElement_font_fontName(String in) 
+ {
+     textElement_font_fontName = in;  
+ }
+ 
+ public void setTextElement_font_italic(boolean in) 
+ {
+     textElement_font_italic = in;
+ }
+ 
+ public void setTextElement_font_boild(boolean in) 
+ {
+     textElement_font_boild = in;
+ }
+ 
+ public void setBox_topBorder(String in) 
+ {
+     box_topBorder = in;
+ }
+
+ public void setBox_bottomBorder(String in)
+ {
+     box_bottomBorder = in;
+ }
+
+ public void setBox_rightBorder(String  in)
+ {
+    box_rightBorder = in;
+ }
+ 
+ public void setBox_leftBorder(String in)
+ {
+    box_leftBorder = in;
+ }
+  
+ public int getTextElement_font_size()   
+ {
+       return textElement_font_size;
+ }
+ 
+ public String getTextElement_font_fontName() 
+ {
+     return textElement_font_fontName;  
+ }
+ 
+ public Boolean getTextElement_font_italic() 
+ {
+     return textElement_font_italic ;
+ }
+ 
+ public boolean getTextElement_font_boild() 
+ {
+     return textElement_font_boild;
+ }
+
+ public String getBox_topBorder()
+ {
+     if(box_topBorder!=null)
+        return box_topBorder ;
+     box_topBorder="none";
+     return box_topBorder ;
+ }
+ 
+ public String getBox_bottomBorder()
+ {
+     if(box_bottomBorder!=null)
+     return box_bottomBorder;
+     box_bottomBorder="none";
+     return box_bottomBorder;
+ }
+ 
+ public String getBox_rightBorder()
+ {
+     if(box_rightBorder!=null)
+    return box_rightBorder;
+     box_rightBorder = "none";
+    return box_rightBorder;
+ }
+ 
+ public String  getBox_leftBorder()
+ {
+     if(box_leftBorder!=null)
+    return box_leftBorder;
+     box_leftBorder="none";
+     return box_leftBorder;
+ }
+ public String getTextFieldExpression_text()
+ {
+     return textFieldExpression_text;
+ }
+
+ public int getWidth()
+ {
+     return reportElement_width;
+ }
+ public int getHeight()
+ {
+     return reportElement_height;
+ }
+ public void setHeight(int h)
+ {
+     reportElement_height = h;
+ }
+ public void setWidth(int w)
+ {
+     reportElement_width=w;
+ }
+
+ public void setPosirionX(int x)
+ {
+    reportElement_X=x; 
+ }
+
+ public void setPositionY(int y)
+ {
+     reportElement_Y=y;
+ }
+ 
+ public int getPositionY()
+ {
+     return reportElement_Y;
+ }
+ 
+ public int getPositionX()
+ {
+     return reportElement_X;
+ }
+ 
+
+ public void setHorizontalAligment(String h_al)
+ {
+     horizontalAligment= h_al;
+ }
+ public void setVerticalAligment(String v_al)
+ {
+     verticalAligment=v_al;
+ }
+ public String getVerticalAligment()
+ {
+     return verticalAligment;
+ }
+ public String getHorizontalAligment()
+ {
+     return  horizontalAligment;
+ }
+ 
+public void setFieldParameterExpression(String in)
+{
+    textFieldParameterExpression = in;
 }
+public String getFieldParameterExpression()
+{
+    return textFieldParameterExpression;
+}
+public void setClassType(String in)
+{
+    classType = in;
+}
+public String getClassType()
+{
+    return classType;
+}
+}// end textFilend
+ 
+ public Element readJasperXML(String jrxmpName)
+ {
+     SAXBuilder builder = new SAXBuilder("org.apache.xerces.parsers.SAXParser");
+     try {
+         doc = builder.build(jrxmpName);
+     } catch(IOException ioex) {} catch(org.jdom.JDOMException jex){};
+     
+     root = doc.getRootElement();
+     
+   return root;  
+    
+ }
+  
+ public boolean setTitleXML(String title) 
+ {
+     boolean return_value = false;
+     Element title_root = root.getChild("title");
+     Element band = title_root.getChild("band");
+     List elements = band.getChildren();
+     Iterator it = elements.iterator();
+     while(it.hasNext())
+      {
+         Element el = (Element) it.next();
+         if(el.getName().equals("staticText"))
+         {
+            Element text = el.getChild("text");
+            text.setText(title);
+            return_value = true;
+            
+         }
+     }
+   return return_value;  
+ }
+ public void setColumnNamesXML(textField[] col)
+ {
+     Element title_root = root.getChild("columnHeader");
+     Element band = title_root.getChild("band");
+     
+    for(int i=0; i<col.length;i++)
+    {
+         Element stText = new Element("staticText");
+         Element repElement = new Element("reportElement");
+         repElement.setAttribute("mode","Transparent");
+         repElement.setAttribute("x",String.valueOf(col[i].getPositionX()));
+         repElement.setAttribute("y",String.valueOf(col[i].getPositionY()));
+         repElement.setAttribute("width",String.valueOf(col[i].getWidth()));
+         repElement.setAttribute("height",String.valueOf(col[i].getHeight()));
+         repElement.setAttribute("forecolor","#FFFFFF");
+         repElement.setAttribute("backcolor","#FFFFFF");
+         repElement.setAttribute("key","element-90");
+
+         Element box = new Element("box");
+         box.setAttribute("topBorder",col[i].getBox_topBorder());
+         box.setAttribute("topBorderColor","#000000");
+         box.setAttribute("leftBorder",col[i].getBox_leftBorder());
+         box.setAttribute("leftBorderColor","#000000");
+         box.setAttribute("rightBorder",col[i].getBox_rightBorder());
+         box.setAttribute("rightBorderColor","#000000");
+         box.setAttribute("bottomBorder",col[i].getBox_bottomBorder());
+         box.setAttribute("bottomBorderColor","#000000");
+        
+         Element textElement = new Element("textElement");
+         textElement.setAttribute("textAlignment",col[i].getHorizontalAligment());
+         textElement.setAttribute("verticalAlignment",col[i].getVerticalAligment());
+         textElement.setAttribute("rotation","none");
+         textElement.setAttribute("lineSpacing","Single");
+         
+         Element font = new Element("font");
+         font.setAttribute("fontName",col[i].getTextElement_font_fontName());         
+         font.setAttribute("pdfFontName","Times-Roman");         
+         font.setAttribute("size",String.valueOf(col[i].getTextElement_font_size()));
+         font.setAttribute("isBold",String.valueOf(col[i].getTextElement_font_boild()));
+         font.setAttribute("isItalic",String.valueOf(col[i].getTextElement_font_italic()));
+         font.setAttribute("isUnderline","false");
+         font.setAttribute("isPdfEmbedded","false");
+         font.setAttribute("pdfEncoding","Cp1251");
+         font.setAttribute("isStrikeThrough","false");
+         
+         Element text = new Element("text");
+         text.setText(col[i].getTextFieldExpression_text());
+         
+         stText.addContent(repElement);
+         stText.addContent(box);
+         textElement.addContent(font);
+         stText.addContent(textElement);
+         stText.addContent(text);
+         band.addContent(stText);
+         
+    }
+     
+     
+ }
+ public void setDetailsXML(textField[] col)
+ {
+     Element title_root = root.getChild("detail");
+     Element band = title_root.getChild("band");
+     
+    for(int i=0; i<col.length;i++)
+    {
+         Element txField = new Element("textField");
+         txField.setAttribute("isStretchWithOverflow","true");
+         txField.setAttribute("pattern","");
+         txField.setAttribute("isBlankWhenNull","true");
+         txField.setAttribute("evaluationTime","Now");
+         txField.setAttribute("hyperlinkType","None");
+         txField.setAttribute("hyperlinkTarget","Self");
+         
+         Element repElement = new Element("reportElement");
+         repElement.setAttribute("mode","Transparent");
+         repElement.setAttribute("x",String.valueOf(col[i].getPositionX()));
+         repElement.setAttribute("y",String.valueOf(col[i].getPositionY()));
+         repElement.setAttribute("width",String.valueOf(col[i].getWidth()));
+         repElement.setAttribute("height",String.valueOf(col[i].getHeight()));
+         repElement.setAttribute("forecolor","#000000");
+         repElement.setAttribute("backcolor","#FFFFFF");
+         repElement.setAttribute("key","textField");
+
+         Element box = new Element("box");
+         box.setAttribute("topBorder",col[i].getBox_topBorder());
+         box.setAttribute("topBorderColor","#000000");
+         box.setAttribute("leftBorder",col[i].getBox_leftBorder());
+         box.setAttribute("leftBorderColor","#000000");
+         box.setAttribute("rightBorder",col[i].getBox_rightBorder());
+         box.setAttribute("rightBorderColor","#000000");
+         box.setAttribute("bottomBorder",col[i].getBox_bottomBorder());
+         box.setAttribute("bottomBorderColor","#000000");
+        
+         Element textElement = new Element("textElement");
+         textElement.setAttribute("textAlignment",col[i].getHorizontalAligment());
+         textElement.setAttribute("verticalAlignment",col[i].getVerticalAligment());
+         textElement.setAttribute("rotation","none");
+         textElement.setAttribute("lineSpacing","Single");
+         
+         Element font = new Element("font");
+         font.setAttribute("fontName",col[i].getTextElement_font_fontName());         
+         font.setAttribute("pdfFontName","Times-Roman");         
+         font.setAttribute("size",String.valueOf(col[i].getTextElement_font_size()));
+         font.setAttribute("isBold",String.valueOf(col[i].getTextElement_font_boild()));
+         font.setAttribute("isItalic",String.valueOf(col[i].getTextElement_font_italic()));
+         font.setAttribute("isUnderline","false");
+         font.setAttribute("isPdfEmbedded","false");
+         font.setAttribute("pdfEncoding","Cp1251");
+         font.setAttribute("isStrikeThrough","false");
+         
+         Element textFieldExpression = new Element("textFieldExpression");
+         textFieldExpression.setAttribute("class",col[i].getClassType());
+         textFieldExpression.setText(col[i].getFieldParameterExpression());
+         
+         txField.addContent(repElement);
+         txField.addContent(box);
+         textElement.addContent(font);
+         txField.addContent(textElement);
+         txField.addContent(textFieldExpression);
+         band.addContent(txField);
+         
+    }
+     
+     
+ }
+public boolean saveToFileXML(String filename) 
+{
+    boolean return_value= false;
+    try
+       {
+            
+          FileOutputStream f1  = new FileOutputStream(filename);
+          Writer out = new BufferedWriter(new OutputStreamWriter(f1,"UTF-8"));
+          XMLOutputter outXML = new XMLOutputter(); 
+          outXML.output(root,out);
+          out.flush();
+          out.close();
+          return_value = true;
+       }
+       catch(Exception ex){System.out.println("ERRORR"); return_value = false;};
+   return return_value;
+}
+}// ens sinpleReport
