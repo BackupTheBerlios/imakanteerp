@@ -242,7 +242,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         java.sql.ResultSet rsD;
         imakante.com.CustomTableModel modelD;
         imakante.com.CustomTable tableD;
-        String[] names = { "id", "1", "2", "3" };
+        String[] names = { "id", "code", "money", "from date" };
         if (getIdContragent() > 0) {
             setStartOfReriod(jXDatePicker1);
             setEndOfPeriod(jXDatePicker2);
@@ -255,9 +255,12 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
                 tableD = new imakante.com.CustomTable(modelD);
                 HideColumns(tableD, getColumnIndex(tableD, "id"));
                 tableD.setEditingRow(0);
-                imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, tableD,
-                        "\u0417\u0434\u044A\u043B\u0436\u0435\u043D\u0438\u044F \u043D\u0430 " + getNameContragent().toUpperCase(),
-                        "", null);
+//                imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, tableD,
+//                        "\u0417\u0434\u044A\u043B\u0436\u0435\u043D\u0438\u044F \u043D\u0430 " + getNameContragent().toUpperCase(),
+//                        "", null);
+                imakante.com.vcomponents.periodicaDialog td = new imakante.com.vcomponents.periodicaDialog(this, true, 
+                        tableD, getConn(), null, null, 
+                        "\u0417\u0434\u044A\u043B\u0436\u0435\u043D\u0438\u044F \u043D\u0430 " + getNameContragent().toUpperCase());
                 td.setVisible(true);
                 
             } catch(java.sql.SQLException ex) { ex.printStackTrace(); }

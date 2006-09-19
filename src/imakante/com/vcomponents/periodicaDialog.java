@@ -13,6 +13,7 @@ public class periodicaDialog extends imakante.com.vcomponents.iDialog {
         this.hm = hm;
         this.jasperFile = jasperFile;
         initComponents();
+        this.setTitle(title);
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -124,31 +125,28 @@ public class periodicaDialog extends imakante.com.vcomponents.iDialog {
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jpDataPanes, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jpButtons, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jpDataPanes, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jpButtons, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jpDataPanes, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
+                .add(jpDataPanes, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jpButtons, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        pack();
+        setBounds(100, 40, 613, 441);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbPaneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPaneActionPerformed
-        if (isTableView())
-            showTable();
-        else 
-            showReport();
+        checkContent();
     }//GEN-LAST:event_jbPaneActionPerformed
 
     private void jbPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPrintActionPerformed
-        
+        printReport();
     }//GEN-LAST:event_jbPrintActionPerformed
 
     private void jbQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbQuitActionPerformed
@@ -180,20 +178,57 @@ public class periodicaDialog extends imakante.com.vcomponents.iDialog {
     private String jasperFile = null;
     private String title;
     
+    private net.sf.jasperreports.engine.JasperReport jr;
+    private net.sf.jasperreports.engine.JasperPrint jp ;
+    private net.sf.jasperreports.view.JRViewer jrv;
+    private net.sf.jasperreports.engine.JasperPrintManager jpm;
+    
     private boolean tableView = true;
     
+    private void checkContent() {
+        if (isTableView())
+            showTable();
+        else 
+            showReport();
+    }
+    
     private void showTable() {
-        // TODO Statement for previous period
-        
-        // TODO Table for current period
-        
-        // TODO Statement for netxt period
-        
-        // TODO Buttons readyness
+//        setTableView(true);
+        this.jpDataPanes.removeAll();
+        this.jpDataPanes.add(jpPrevious, java.awt.BorderLayout.NORTH);
+        this.jpDataPanes.add(jpCurrent, java.awt.BorderLayout.CENTER);
+        this.jpDataPanes.add(jpNext, java.awt.BorderLayout.SOUTH);
+        this.jbPrint.setEnabled(false);
+        this.jbPane.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Report Edit 2.png")));
+        this.jbPane.setText("\u041E\u0422\u0427\u0415\u0422");  // OTCHET
     }
     
     private void showReport() {
-        
+//        setTableView(false);
+        this.jpDataPanes.removeAll();
+        this.jpDataPanes.add(jrv);
+        this.jpDataPanes.revalidate();
+        this.jpDataPanes.repaint();
+        this.jbPrint.setEnabled(true);
+        this.jbPane.setIcon(null);
+        this.jbPane.setText("\u0422\u0410\u0411\u041B\u0418\u0426\u0410");  // TABLICA
+    }
+    
+    private void constructReport() {
+        try {
+            String pathRep = imakante.com.NewMain.getPathrep() + this.jasperFile;
+            jp = net.sf.jasperreports.engine.JasperFillManager.fillReport(
+                    new java.io.FileInputStream(new java.io.File(pathRep)), hm, conn);
+            jrv = new net.sf.jasperreports.view.JRViewer(jp);
+        } catch (java.io.FileNotFoundException ex) { ex.printStackTrace();
+        } catch (net.sf.jasperreports.engine.JRException ex) { ex.printStackTrace(); }
+    }
+    
+    private void printReport() {
+        jpm = new net.sf.jasperreports.engine.JasperPrintManager();
+        try {
+            jpm.printReport(jp, true);
+        } catch (net.sf.jasperreports.engine.JRException ex) { ex.printStackTrace(); }
     }
     
     public boolean isTableView() {
