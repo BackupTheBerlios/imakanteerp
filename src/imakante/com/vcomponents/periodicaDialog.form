@@ -26,8 +26,8 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jpDataPanes" alignment="1" pref="593" max="32767" attributes="0"/>
-                  <Component id="jpButtons" alignment="1" pref="593" max="32767" attributes="0"/>
+                  <Component id="jpDataPanes" alignment="1" pref="585" max="32767" attributes="0"/>
+                  <Component id="jpButtons" alignment="1" pref="585" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -37,7 +37,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jpDataPanes" pref="378" max="32767" attributes="0"/>
+              <Component id="jpDataPanes" pref="351" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jpButtons" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -165,6 +165,8 @@
             <Component class="javax.swing.JTextField" name="jTextField1">
               <Properties>
                 <Property name="columns" type="int" value="15"/>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
@@ -249,6 +251,8 @@
             <Component class="javax.swing.JTextField" name="jTextField2">
               <Properties>
                 <Property name="columns" type="int" value="15"/>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">

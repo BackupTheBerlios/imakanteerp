@@ -6,14 +6,15 @@ public class periodicaDialog extends imakante.com.vcomponents.iDialog {
     public periodicaDialog(imakante.com.vcomponents.iInternalFrame parent, boolean modal, imakante.com.CustomTable table, 
             java.sql.Connection conn, java.util.HashMap hm, String jasperFile, String title) {
         super(parent, modal, table);
+        this.setTitle(title);
         this.myParent = parent;
         this.table = table;
-        setTableView(true);
         this.conn = conn;
         this.hm = hm;
         this.jasperFile = jasperFile;
         initComponents();
-        this.setTitle(title);
+        setTableView(true);
+        checkContent();
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -89,6 +90,8 @@ public class periodicaDialog extends imakante.com.vcomponents.iDialog {
         jpPrevious.add(jLabel1);
 
         jTextField1.setColumns(15);
+        jTextField1.setEditable(false);
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jpPrevious.add(jTextField1);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11));
@@ -111,6 +114,8 @@ public class periodicaDialog extends imakante.com.vcomponents.iDialog {
         jpNext.add(jLabel2);
 
         jTextField2.setColumns(15);
+        jTextField2.setEditable(false);
+        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jpNext.add(jTextField2);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11));
@@ -125,15 +130,15 @@ public class periodicaDialog extends imakante.com.vcomponents.iDialog {
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jpDataPanes, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jpButtons, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jpDataPanes, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jpButtons, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jpDataPanes, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
+                .add(jpDataPanes, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jpButtons, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())

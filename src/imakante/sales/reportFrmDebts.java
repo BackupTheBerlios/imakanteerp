@@ -215,12 +215,12 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     private int idContragent = 0;
     private int codeContragent = 0;
     private String nameContragent = "";
-    private String startOfReriod = "";
+    private String startOfPeriod = "";
     private String endOfPeriod = "";
     private int IDTransfer = 0;
     
     private String totalContragentDebts =
-            "SELECT id_df, out_contragent_df, total_df, date_edition_df " +
+            "SELECT id_df, total_df, date_edition_df " +
             "FROM sl_document_facade " +
             "WHERE out_contragent_df = ";
     
@@ -242,24 +242,30 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         java.sql.ResultSet rsD;
         imakante.com.CustomTableModel modelD;
         imakante.com.CustomTable tableD;
-        String[] names = { "id", "code", "money", "from date" };
+        String[] names = { "id", "money", "from date" };
+        java.util.HashMap hm = new java.util.HashMap();
+        String jasperFile = "contragent_debts";
         if (getIdContragent() > 0) {
-            setStartOfReriod(jXDatePicker1);
+            setStartOfPeriod(jXDatePicker1);
             setEndOfPeriod(jXDatePicker2);
             String debtsQuery = totalContragentDebts + getIdContragent() +
-                    " AND date_edition_df BETWEEN '" + getStartOfReriod() + "' AND '" + getEndOfPeriod() + "';";
+                    " AND date_edition_df BETWEEN '" + getStartOfPeriod() + "' AND '" + getEndOfPeriod() + "';";
             System.out.println("Zaqwkata e: " + debtsQuery);
+            hm.put("contragent", getNameContragent());
+            hm.put("startPeriod", getStartOfPeriod());
+            hm.put("endPeriod", getEndOfPeriod());
+            hm.put("debt", 0.00);
+            hm.put("previousTotal", 0.00);
+            hm.put("initialDate", "2000-10-29");
+            
             try {
                 rsD = getStm().executeQuery(debtsQuery);
                 modelD = new imakante.com.CustomTableModel(getConn(), rsD, names);
                 tableD = new imakante.com.CustomTable(modelD);
                 HideColumns(tableD, getColumnIndex(tableD, "id"));
                 tableD.setEditingRow(0);
-//                imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, tableD,
-//                        "\u0417\u0434\u044A\u043B\u0436\u0435\u043D\u0438\u044F \u043D\u0430 " + getNameContragent().toUpperCase(),
-//                        "", null);
                 imakante.com.vcomponents.periodicaDialog td = new imakante.com.vcomponents.periodicaDialog(this, true, 
-                        tableD, getConn(), null, null, 
+                        tableD, getConn(), hm, jasperFile, 
                         "\u0417\u0434\u044A\u043B\u0436\u0435\u043D\u0438\u044F \u043D\u0430 " + getNameContragent().toUpperCase());
                 td.setVisible(true);
                 
@@ -369,12 +375,12 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         this.nameContragent = nameContragent;
     }
     
-    public String getStartOfReriod() {
-        return startOfReriod;
+    public String getStartOfPeriod() {
+        return startOfPeriod;
     }
     
-    public void setStartOfReriod(org.jdesktop.swingx.JXDatePicker startOfReriod) {
-        this.startOfReriod = (String)formatter.format(startOfReriod.getDate());
+    public void setStartOfPeriod(org.jdesktop.swingx.JXDatePicker startOfPeriod) {
+        this.startOfPeriod = (String)formatter.format(startOfPeriod.getDate());
     }
     
     public String getEndOfPeriod() {
