@@ -244,7 +244,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         imakante.com.CustomTable tableD;
         String[] names = { "id", "money", "from date" };
         java.util.HashMap hm = new java.util.HashMap();
-        String jasperFile = "contragent_debts";
+        String jasperFile = "contragent_debts.jasper";
         if (getIdContragent() > 0) {
             setStartOfPeriod(jXDatePicker1);
             setEndOfPeriod(jXDatePicker2);
@@ -266,7 +266,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
                 tableD.setEditingRow(0);
                 imakante.com.vcomponents.periodicaDialog td = new imakante.com.vcomponents.periodicaDialog(this, true, 
                         tableD, getConn(), hm, jasperFile, 
-                        "\u0417\u0434\u044A\u043B\u0436\u0435\u043D\u0438\u044F \u043D\u0430 " + getNameContragent().toUpperCase());
+                        "\u0417\u0434\u044A\u043B\u0436\u0435\u043D\u0438\u044F \u043D\u0430 " + getNameContragent().toUpperCase(), null);
                 td.setVisible(true);
                 
             } catch(java.sql.SQLException ex) { ex.printStackTrace(); }

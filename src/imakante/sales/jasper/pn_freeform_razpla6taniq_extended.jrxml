@@ -80,7 +80,7 @@
 						key="staticText-5"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ Платете на - име на получателя]]></text>
 				</staticText>
@@ -157,7 +157,7 @@
 						key="staticText-8"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ IBAN на получателя]]></text>
 				</staticText>
@@ -270,7 +270,7 @@
 						key="staticText-9"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ При банка - име на банката на получателя]]></text>
 				</staticText>
@@ -284,7 +284,7 @@
 						key="staticText-10"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ Основание за превода - информация за получателя]]></text>
 				</staticText>
@@ -298,7 +298,7 @@
 						key="staticText-11"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ Общи пояснения]]></text>
 				</staticText>
@@ -312,7 +312,7 @@
 						key="staticText-12"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ Наредител - име]]></text>
 				</staticText>
@@ -326,7 +326,7 @@
 						key="staticText-13"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ IBAN на наредителя]]></text>
 				</staticText>
@@ -340,7 +340,7 @@
 						key="staticText-14"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ Платежна система]]></text>
 				</staticText>
@@ -354,7 +354,7 @@
 						key="staticText-15"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ Такси *]]></text>
 				</staticText>
@@ -368,7 +368,7 @@
 						key="staticText-16"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ Дата за изпълнение]]></text>
 				</staticText>
@@ -382,7 +382,7 @@
 						key="staticText-17"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ BIC на банката на наредителя]]></text>
 				</staticText>
@@ -396,7 +396,7 @@
 						key="staticText-18"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ Вид валута]]></text>
 				</staticText>
@@ -410,7 +410,7 @@
 						key="staticText-19"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ Сума]]></text>
 				</staticText>
@@ -424,7 +424,7 @@
 						key="staticText-20"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ BIC на банката на получателя]]></text>
 				</staticText>
@@ -437,7 +437,7 @@
 						key="staticText-23"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center">
-						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" size="12" isBold="true" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ПРЕВОДНО НАРЕЖДАНЕ]]></text>
 				</staticText>
@@ -450,7 +450,7 @@
 						key="staticText-24"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center">
-						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
+						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" size="8" isBold="true" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ЗА КРЕДИТЕН ПРЕВОД]]></text>
 				</staticText>
@@ -463,7 +463,7 @@
 						key="staticText-25"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" pdfFontName="Helvetica" size="9" isBold="false"/>
+						<font fontName="Tahoma" pdfFontName="Helvetica" size="9" isBold="false" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ * Такси: 1 - за сметка на наредителя; 2 - споделена; 3 - за сметка на получателя]]></text>
 				</staticText>
@@ -476,7 +476,7 @@
 						key="staticText-26"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="12"/>
+						<font fontName="Tahoma" size="12" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ До]]></text>
 				</staticText>
@@ -489,7 +489,7 @@
 						key="staticText-27"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="12"/>
+						<font fontName="Tahoma" size="12" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ Клон]]></text>
 				</staticText>
@@ -502,7 +502,7 @@
 						key="staticText-28"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="12"/>
+						<font fontName="Tahoma" size="12" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ Адрес]]></text>
 				</staticText>
@@ -515,7 +515,7 @@
 						key="textField-1"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="14" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{bank}]]></textFieldExpression>
 				</textField>
@@ -529,7 +529,7 @@
 						key="staticText-29"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ банка]]></text>
 				</staticText>
@@ -542,7 +542,7 @@
 						key="textField-2"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="14" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{address}]]></textFieldExpression>
 				</textField>
@@ -574,7 +574,7 @@
 						key="staticText-30"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ уникален регистрационен номер]]></text>
 				</staticText>
@@ -588,7 +588,7 @@
 						key="staticText-31"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ подпис на вносителя]]></text>
 				</staticText>
@@ -601,7 +601,7 @@
 						key="textField-3"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="Thin" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="14" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{branch}]]></textFieldExpression>
 				</textField>
@@ -624,7 +624,7 @@
 						key="staticText-32"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ дата на предаване]]></text>
 				</staticText>
@@ -637,7 +637,7 @@
 						key="textField-4"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center" verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="12"/>
+						<font fontName="Tahoma" size="12" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<textFieldExpression   class="java.util.Date"><![CDATA[new Date()]]></textFieldExpression>
 				</textField>
@@ -650,7 +650,7 @@
 						key="textField-5"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="14" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{contragent}]]></textFieldExpression>
 				</textField>
@@ -663,7 +663,7 @@
 						key="textField-6"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="14" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{IBANcontragent}]]></textFieldExpression>
 				</textField>
@@ -676,7 +676,7 @@
 						key="textField-7"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="14" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{BANKcontragent}]]></textFieldExpression>
 				</textField>
@@ -689,7 +689,7 @@
 						key="textField-8"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="14" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{reason}]]></textFieldExpression>
 				</textField>
@@ -702,7 +702,7 @@
 						key="textField-9"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="14" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{comment}]]></textFieldExpression>
 				</textField>
@@ -715,7 +715,7 @@
 						key="textField-10"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="14" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{firm}]]></textFieldExpression>
 				</textField>
@@ -728,7 +728,7 @@
 						key="textField-11"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="14" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{iban}]]></textFieldExpression>
 				</textField>
@@ -741,7 +741,7 @@
 						key="textField-12"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="14" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{bic}]]></textFieldExpression>
 				</textField>
@@ -754,7 +754,7 @@
 						key="textField-13"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center" verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="14" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{currency}]]></textFieldExpression>
 				</textField>
@@ -767,7 +767,7 @@
 						key="textField-14"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Right" verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="14" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.Double"><![CDATA[$P{amount}]]></textFieldExpression>
 				</textField>
@@ -780,7 +780,7 @@
 						key="textField-15"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="14"/>
+						<font fontName="Tahoma" size="14" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{BICcontragent}]]></textFieldExpression>
 				</textField>
@@ -793,7 +793,7 @@
 						key="staticText-33"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center">
-						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
+						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" size="8" isBold="true" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[Попълва се при преводи към чужбина и между местни и чуждестранни лица в страната, на стойност равна или 
 надвишаваща сумата по чл. 2, ал. 1, т. 1 от Наредба № 27 на БНБ за статистиката на платежния баланс]]></text>
@@ -818,7 +818,7 @@
 						key="staticText-34"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ Данни за наредителя]]></text>
 				</staticText>
@@ -832,7 +832,7 @@
 						key="staticText-35"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ Държава на наредителя]]></text>
 				</staticText>
@@ -846,7 +846,7 @@
 						key="staticText-36"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ Адрес на наредителя]]></text>
 				</staticText>
@@ -878,7 +878,7 @@
 						key="staticText-37"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ местно лице]]></text>
 				</staticText>
@@ -892,7 +892,7 @@
 						key="staticText-38"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ чуждестранно лице]]></text>
 				</staticText>
@@ -942,7 +942,7 @@
 						key="staticText-39"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ Данни за получателя]]></text>
 				</staticText>
@@ -956,7 +956,7 @@
 						key="staticText-40"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ Държава на получателя]]></text>
 				</staticText>
@@ -970,7 +970,7 @@
 						key="staticText-41"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ Адрес на получателя]]></text>
 				</staticText>
@@ -993,7 +993,7 @@
 						key="staticText-42"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ местно лице]]></text>
 				</staticText>
@@ -1016,7 +1016,7 @@
 						key="staticText-43"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Bottom">
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ чуждестранно лице]]></text>
 				</staticText>
@@ -1039,7 +1039,7 @@
 						key="staticText-44"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ Описание на икономическата същност на превода]]></text>
 				</staticText>
@@ -1062,7 +1062,7 @@
 						key="staticText-45"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ Номер на БНБ]]></text>
 				</staticText>
@@ -1076,7 +1076,7 @@
 						key="staticText-46"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" size="8"/>
+						<font fontName="Tahoma" size="8" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ При превод на средства във връзка с вече предоставени от или на чуждестранно лице]]></text>
 				</staticText>
@@ -1089,7 +1089,7 @@
 						key="staticText-47"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement>
-						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
+						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" size="8" isBold="true" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<text><![CDATA[ Известно ми е, че за посочването на неверни данни нося отговорност по чл. 313 от Наказателния кодекс]]></text>
 				</staticText>

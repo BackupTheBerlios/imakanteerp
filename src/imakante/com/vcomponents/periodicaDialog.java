@@ -4,7 +4,7 @@ package imakante.com.vcomponents;
 public class periodicaDialog extends imakante.com.vcomponents.iDialog {
     
     public periodicaDialog(imakante.com.vcomponents.iInternalFrame parent, boolean modal, imakante.com.CustomTable table, 
-            java.sql.Connection conn, java.util.HashMap hm, String jasperFile, String title) {
+            java.sql.Connection conn, java.util.HashMap hm, String jasperFile, String title, String head) {
         super(parent, modal, table);
         this.setTitle(title);
         this.myParent = parent;
@@ -14,7 +14,7 @@ public class periodicaDialog extends imakante.com.vcomponents.iDialog {
         this.jasperFile = jasperFile;
         initComponents();
         setTableView(true);
-        checkContent();
+        switchContent();
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -103,6 +103,7 @@ public class periodicaDialog extends imakante.com.vcomponents.iDialog {
 
         jpCurrent.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u0422\u044a\u0440\u0441\u0435\u043d \u043f\u0435\u0440\u0438\u043e\u0434", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(0, 51, 153)));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        jScrollPane1.getViewport().add(table);
         jpCurrent.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         jpDataPanes.add(jpCurrent, java.awt.BorderLayout.CENTER);
@@ -138,7 +139,7 @@ public class periodicaDialog extends imakante.com.vcomponents.iDialog {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jpDataPanes, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
+                .add(jpDataPanes, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jpButtons, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -147,7 +148,7 @@ public class periodicaDialog extends imakante.com.vcomponents.iDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbPaneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPaneActionPerformed
-        checkContent();
+        switchContent();
     }//GEN-LAST:event_jbPaneActionPerformed
 
     private void jbPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPrintActionPerformed
@@ -190,11 +191,12 @@ public class periodicaDialog extends imakante.com.vcomponents.iDialog {
     
     private boolean tableView = true;
     
-    private void checkContent() {
-        if (isTableView())
+    private void switchContent() {
+        if (isTableView() == true)
             showTable();
-        else 
+        else
             showReport();
+        setTableView(!isTableView());
     }
     
     private void showTable() {
@@ -210,6 +212,7 @@ public class periodicaDialog extends imakante.com.vcomponents.iDialog {
     
     private void showReport() {
 //        setTableView(false);
+        constructReport();
         this.jpDataPanes.removeAll();
         this.jpDataPanes.add(jrv);
         this.jpDataPanes.revalidate();
