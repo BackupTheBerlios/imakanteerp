@@ -247,7 +247,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
 
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
 // TODO add your handling code here:
-        
+     /*   
         try
         {
         MessageFormat headerFormat = new MessageFormat("Group");
@@ -257,7 +257,11 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
         catch(PrinterException e)
         {
             e.printStackTrace();
-        }
+        }*/
+    loadSimpleReport();
+        
+        
+        
     }//GEN-LAST:event_jButtonPrintActionPerformed
 
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
@@ -484,7 +488,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
     
     private ArrayList arrayOfID_DF = new ArrayList();
     private imakante.com.vcomponents.tableDialog printReportDialog;
-   
+    private imakante.com.simpleReport simpReport;
    
    private  String nameColumnsDocFacade[] = {"id_df", "in_contragent_df", "Код на контрагента1", "Булстат1", "Данъчен номер1", "Име на контрагента1",
    "Адрес1", "МОЛ1","Телефон на контрагента1", "out_contragent_df",
@@ -591,7 +595,7 @@ private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
         {
         
         }
-     
+        System.out.println("nameColumnsDocFacade = "+nameColumnsDocFacade.length);
          hideCommonColumns();
          hideDocimentTypeColumns(docType);
          moveDocimentTypeColumns(docType);
@@ -1729,7 +1733,7 @@ private void hideCommonColumns()
        HideColumns(getColumnIndex("level_df"));
        HideColumns(getColumnIndex("id_rep"));
        HideColumns(getColumnIndex("paying_order_df"));
-        HideColumns(getColumnIndex("Тип на документа"));
+       HideColumns(getColumnIndex("Тип на документа"));
        
        HideColumns(getColumnIndex("out_contragent_df"));
        HideColumns(getColumnIndex("in_contragent_df"));
@@ -2435,4 +2439,19 @@ private String PriceToString( int id_doc, boolean withDDS)
  {
      return table.getRowCount();
  }
+ private void  loadSimpleReport() 
+ {
+    try
+    {
+        //HashMap inputfilters,int doctype,java.sql.Connection con, imakante.com.CustomTable t,String path
+        simpReport = new simpleReport(null,getDocFacadeType(),myframe.getConn(),table,imakante.com.NewMain.getPathrep());
+        simpReport.setVisible(true);
+        
+    }
+    catch(Exception ex){System.out.println("Error from loadSimpleReport");};
+     
+     
+     
+ }
+ 
 }// end class
