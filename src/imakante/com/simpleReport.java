@@ -1,6 +1,6 @@
 package imakante.com;
 
-import ZoeloeSoft.projects.JFontChooser.JFontChooser;
+
 import com.lowagie.text.Font;
 import com.lowagie.text.pdf.TextField;
 import imakante.sales.aeDocumentFacade;
@@ -15,9 +15,11 @@ import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.engine.JasperReport;
 import java.io.*; 
+import net.sf.jasperreports.view.JasperViewer;
 import org.jdom.*; 
 import org.jdom.input.*; 
 import org.jdom.output.*;
@@ -101,6 +103,7 @@ public class simpleReport extends javax.swing.JFrame {
       //  selectDocument(docType);
         System.out.println("nameColumnBG="+nameColumnsBG.length);
         System.out.println("nameColumnEN="+nameColumnsEN.length); 
+        viewSimpleReport(path+defaultFiletoSave,path);
     }
     
     /** This method is called from within the constructor to
@@ -285,7 +288,6 @@ public class simpleReport extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setResizable(false);
         jPanelControl.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 15));
 
         jPanelControl.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -1832,5 +1834,18 @@ private void readClassTypeFromXML()
      
     
 }
-
+private void viewSimpleReport(String filename,String path)
+{
+    try
+    {
+    net.sf.jasperreports.engine.JasperCompileManager.compileReportToFile(filename,path+"tmpsimple.jasper");
+    jasperPrint = JasperFillManager.fillReport(new java.io.FileInputStream(new java.io.File(path+"tmpsimple.jasper")),
+                    inputFiltrs, conn);
+    jrv = new net.sf.jasperreports.view.JRViewer(jasperPrint);
+    jPanelData.add(jrv);
+    jPanelControl.revalidate();
+    jPanelData.repaint();
+    }
+    catch(Exception ds){System.out.println("Error viewSimpleReport");};
+}
 }// ens sinpleReport
