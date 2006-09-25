@@ -242,7 +242,9 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         java.sql.ResultSet rsD;
         imakante.com.CustomTableModel modelD;
         imakante.com.CustomTable tableD;
-        String[] names = { "id", "money", "from date" };
+        String[] names = { "id", 
+        "\u0421\u0442\u043E\u0439\u043D\u043E\u0441\u0442", 
+        "\u041E\u0442 \u0434\u0430\u0442\u0430" };
         java.util.HashMap hm = new java.util.HashMap();
         String jasperFile = "contragent_debts.jasper";
         if (getIdContragent() > 0) {
