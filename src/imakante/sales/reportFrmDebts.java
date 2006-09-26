@@ -211,7 +211,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     private static boolean isFromF7 = false;
     java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd");
     private org.jdesktop.swingx.JXDatePicker dp = new org.jdesktop.swingx.JXDatePicker();
-    private String in_DATE = (String)formatter.format(dp.getDate());
+    private String TODAY = (String)formatter.format(dp.getDate());
     private int idContragent = 0;
     private int codeContragent = 0;
     private String nameContragent = "";
@@ -219,8 +219,18 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     private String endOfPeriod = "";
     private int IDTransfer = 0;
     
-    private String totalContragentDebts =
+    private String contragentDebts =
             "SELECT id_df, total_df, date_edition_df " +
+            "FROM sl_document_facade " +
+            "WHERE out_contragent_df = ";
+    
+    private String sumContragentDebts =
+            "SELECT SUM(total_df) AS suma " +
+            "FROM sl_document_facade " +
+            "WHERE out_contragent_df = ";
+    
+    private String initialDate =
+            "SELECT MIN(date_edition_df) AS data " +
             "FROM sl_document_facade " +
             "WHERE out_contragent_df = ";
     
@@ -233,45 +243,66 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
             "SELECT nc.code_contragent, nc.name_n_contragent FROM n_contragent nc " +
             "WHERE nc.id_contragent = ";
     
-    private String previousDebts =
-            "SELECT id_df, out_contragent_df, total_df, date_edition_df " +
-            "FROM sl_document_facade " +
-            "WHERE out_contragent_df = ";
-    
     private void executeReport() {
         java.sql.ResultSet rsD;
         imakante.com.CustomTableModel modelD;
         imakante.com.CustomTable tableD;
-        String[] names = { "id", 
-        "\u0421\u0442\u043E\u0439\u043D\u043E\u0441\u0442", 
+        String[] names = { "id",
+        "\u0421\u0442\u043E\u0439\u043D\u043E\u0441\u0442",
         "\u041E\u0442 \u0434\u0430\u0442\u0430" };
+        java.sql.ResultSet pDebts, nDebts, iniDate, sumDebt;
         java.util.HashMap hm = new java.util.HashMap();
         String jasperFile = "contragent_debts.jasper";
         if (getIdContragent() > 0) {
-            setStartOfPeriod(jXDatePicker1);
-            setEndOfPeriod(jXDatePicker2);
-            String debtsQuery = totalContragentDebts + getIdContragent() +
-                    " AND date_edition_df BETWEEN '" + getStartOfPeriod() + "' AND '" + getEndOfPeriod() + "';";
-            System.out.println("Zaqwkata e: " + debtsQuery);
-            hm.put("contragent", getNameContragent());
-            hm.put("startPeriod", getStartOfPeriod());
-            hm.put("endPeriod", getEndOfPeriod());
-            hm.put("debt", 0.00);
-            hm.put("previousTotal", 0.00);
-            hm.put("initialDate", "2000-10-29");
-            
-            try {
-                rsD = getStm().executeQuery(debtsQuery);
-                modelD = new imakante.com.CustomTableModel(getConn(), rsD, names);
-                tableD = new imakante.com.CustomTable(modelD);
-                HideColumns(tableD, getColumnIndex(tableD, "id"));
-                tableD.setEditingRow(0);
-                imakante.com.vcomponents.periodicaDialog td = new imakante.com.vcomponents.periodicaDialog(this, true, 
-                        tableD, getConn(), hm, jasperFile, 
-                        "\u0417\u0434\u044A\u043B\u0436\u0435\u043D\u0438\u044F \u043D\u0430 " + getNameContragent().toUpperCase(), null);
-                td.setVisible(true);
-                
-            } catch(java.sql.SQLException ex) { ex.printStackTrace(); }
+            if (jXDatePicker1.getDateInMillis() <= jXDatePicker2.getDateInMillis()) {
+                setStartOfPeriod(jXDatePicker1);
+                setEndOfPeriod(jXDatePicker2);
+                String previousDebtsQuery = sumContragentDebts + getIdContragent() + 
+                        " AND date_edition_df < '" + getStartOfPeriod() + "';";
+                String debts4PeriodQuery = contragentDebts + getIdContragent() +
+                        " AND date_edition_df BETWEEN '" + getStartOfPeriod() + "' AND '" + getEndOfPeriod() + "';";
+                String nextDebtsQuery = sumContragentDebts + getIdContragent() + 
+                        " AND date_edition_df > '" + getEndOfPeriod() + "';";
+                String iniDateQuery = initialDate + getIdContragent() + ";";
+                String sumDebtQuery = sumContragentDebts + getIdContragent() + ";";
+                hm.put("idContragent", getIdContragent());
+                hm.put("contragent", getNameContragent());
+                hm.put("startPeriod", getStartOfPeriod());
+                hm.put("endPeriod", getEndOfPeriod());
+                try {
+                    rsD = getStm().executeQuery(debts4PeriodQuery);
+                    modelD = new imakante.com.CustomTableModel(getConn(), rsD, names);
+                    tableD = new imakante.com.CustomTable(modelD);
+                    HideColumns(tableD, getColumnIndex(tableD, "id"));
+                    // "NIAMA ZADYLJENIA"
+                    String[] bord = { "\u041D\u042F\u041C\u0410 \u0417\u0410\u0414\u042A\u041B\u0416\u0415\u041D\u0418\u042F", 
+                    "\u041D\u042F\u041C\u0410 \u0417\u0410\u0414\u042A\u041B\u0416\u0415\u041D\u0418\u042F" };
+                    pDebts = getStm().executeQuery(previousDebtsQuery);
+                    pDebts.next();
+                    if (pDebts.getDouble("suma") > 0.00)
+                        bord[0] = "" + pDebts.getDouble("suma");
+                    hm.put("previousTotal", pDebts.getDouble("suma"));
+                    nDebts = getStm().executeQuery(nextDebtsQuery);
+                    nDebts.next();
+                    if (nDebts.getDouble("suma") > 0.00) // 1 - first record of resultset
+                        bord[1] = "" + nDebts.getDouble("suma");
+                    hm.put("nextTotal", nDebts.getDouble("suma"));
+                    sumDebt = getStm().executeQuery(sumDebtQuery);
+                    sumDebt.next();
+                    hm.put("GrandTotal", sumDebt.getDouble("suma"));
+                    iniDate = getStm().executeQuery(iniDateQuery);
+                    iniDate.next();
+                    hm.put("initialDate", iniDate.getDate("data").toString());
+                    imakante.com.vcomponents.periodicaDialog td = new imakante.com.vcomponents.periodicaDialog(this, true,
+                            tableD, getConn(), hm, jasperFile,
+                            "\u0417\u0434\u044A\u043B\u0436\u0435\u043D\u0438\u044F \u043D\u0430 " + getNameContragent().toUpperCase(), bord);
+                    td.setVisible(true);
+                } catch(java.sql.SQLException ex) { ex.printStackTrace(); }
+            } else {
+                // Nekorekten izbor na period!
+                imakante.com.MessagePane.Error("\u041D\u0435\u043A\u043E\u0435\u0440\u043A\u0442\u0435\u043D " +
+                        "\u0438\u0437\u0431\u043E\u0440 \u043D\u0430 \u043F\u0435\u0440\u0438\u043E\u0434!");
+            }
         } else {
             getContragent();
         }

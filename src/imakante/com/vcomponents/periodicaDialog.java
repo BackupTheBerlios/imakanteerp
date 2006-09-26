@@ -4,9 +4,11 @@ package imakante.com.vcomponents;
 public class periodicaDialog extends imakante.com.vcomponents.iDialog {
     
     public periodicaDialog(imakante.com.vcomponents.iInternalFrame parent, boolean modal, imakante.com.CustomTable table, 
-            java.sql.Connection conn, java.util.HashMap hm, String jasperFile, String title, String head) {
+            java.sql.Connection conn, java.util.HashMap hm, String jasperFile, String title, String[] periodBorder) {
         super(parent, modal, table);
         this.setTitle(title);
+        this.pBorder = periodBorder[0];
+        this.nBorder = periodBorder[1];
         this.myParent = parent;
         this.table = table;
         this.conn = conn;
@@ -111,7 +113,7 @@ public class periodicaDialog extends imakante.com.vcomponents.iDialog {
         jpNext.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u0420\u0435\u0437\u044e\u043c\u0435 \u043d\u0430 \u0441\u043b\u0435\u0434\u0432\u0430\u0449 \u043f\u0435\u0440\u0438\u043e\u0434", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 51, 153)));
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("\u0421\u0442\u043e\u0439\u043d\u043e\u0441\u0442 \u0437\u0430 \u0441\u043b\u0435\u0434\u0432\u0430\u0449\u0438\u044f \u043f\u0435\u0440\u0438\u043e\u0434 (\u0434\u043e \u0434\u043d\u0435\u0441):");
+        jLabel2.setText("\u0421\u0442\u043e\u0439\u043d\u043e\u0441\u0442 \u0437\u0430 \u0441\u043b\u0435\u0434\u0432\u0430\u0449\u0438\u044f \u043f\u0435\u0440\u0438\u043e\u0434:");
         jpNext.add(jLabel2);
 
         jTextField2.setColumns(15);
@@ -139,7 +141,7 @@ public class periodicaDialog extends imakante.com.vcomponents.iDialog {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jpDataPanes, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
+                .add(jpDataPanes, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jpButtons, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -182,7 +184,7 @@ public class periodicaDialog extends imakante.com.vcomponents.iDialog {
     private java.sql.Connection conn = null;
     private java.util.HashMap hm = null;
     private String jasperFile = null;
-    private String title;
+    private String title, pBorder, nBorder;
     
     private net.sf.jasperreports.engine.JasperReport jr;
     private net.sf.jasperreports.engine.JasperPrint jp ;
@@ -203,8 +205,10 @@ public class periodicaDialog extends imakante.com.vcomponents.iDialog {
 //        setTableView(true);
         this.jpDataPanes.removeAll();
         this.jpDataPanes.add(jpPrevious, java.awt.BorderLayout.NORTH);
+        this.jTextField1.setText(pBorder);
         this.jpDataPanes.add(jpCurrent, java.awt.BorderLayout.CENTER);
         this.jpDataPanes.add(jpNext, java.awt.BorderLayout.SOUTH);
+        this.jTextField2.setText(nBorder);
         this.jbPrint.setEnabled(false);
         this.jbPane.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Report Edit 2.png")));
         this.jbPane.setText("\u041E\u0422\u0427\u0415\u0422");  // OTCHET
