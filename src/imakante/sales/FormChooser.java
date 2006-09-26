@@ -127,6 +127,7 @@ public class FormChooser extends javax.swing.JDialog {
         // TODO da se implementira forma s ednowremenna wyzmojnost za tyrsene po kod i ime na kontragenta
         // TODO da se implementira funkcionalnost AutoComplete za tyrse6tite tekstowi poleta
         System.out.println("Formata s nowiqt tip funkcionalnost se razrabotwa!");
+        imakante.com.MessagePane.NotYetImplemented();
     }
     
 }

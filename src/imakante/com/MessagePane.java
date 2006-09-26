@@ -15,6 +15,18 @@ public class MessagePane {
     }
     
     // custom Warning Message pane
+    public static final void NotYetImplemented() { // message = "Tazi funkcia e w proces na razrabotka"
+        javax.swing.JOptionPane.showMessageDialog(null, "\u0422\u0430\u0437\u0438 \u0444\u0443\u043D\u043A\u0446\u0438\u044F \u0435 \u0432 " +
+                "\u043F\u0440\u043E\u0446\u0435\u0441 \u043D\u0430 \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0430!", 
+                "\u0418\u041C\u0410\u041A\u0410\u041D\u0422\u0415", // IMAKANTE
+                javax.swing.JOptionPane.WARNING_MESSAGE);
+    }
+    
+    public static final void NotYetImplemented(String message) {
+        javax.swing.JOptionPane.showMessageDialog(null, message, 
+                "\u0418\u041C\u0410\u041A\u0410\u041D\u0422\u0415", // IMAKANTE
+                javax.swing.JOptionPane.WARNING_MESSAGE);
+    }
     
     // custom Info panes
     
