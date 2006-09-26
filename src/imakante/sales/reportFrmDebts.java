@@ -100,7 +100,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
                 .add(jLabel3)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 35, Short.MAX_VALUE)
                 .add(jLabel4)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jXDatePicker2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -140,6 +140,8 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         );
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
+        jbExecute.setFont(new java.awt.Font("Tahoma", 1, 11));
+        jbExecute.setForeground(new java.awt.Color(0, 51, 153));
         jbExecute.setText("\u0413\u0415\u041d\u0415\u0420\u0418\u0420\u0410\u0419");
         jbExecute.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,6 +151,8 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
 
         jPanel2.add(jbExecute);
 
+        jbQuit.setFont(new java.awt.Font("Tahoma", 1, 11));
+        jbQuit.setForeground(new java.awt.Color(0, 51, 153));
         jbQuit.setText("\u0417\u0410\u0422\u0412\u041e\u0420\u0418");
         jbQuit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
