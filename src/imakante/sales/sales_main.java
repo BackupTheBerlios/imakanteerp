@@ -2250,11 +2250,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }
     
     private void loadPaymentsReport() {
-        // TODO za dowyr6wane - implementirane na sprawkata
+        imakante.sales.FormChooser fchooser = new imakante.sales.FormChooser(this, true, "reportFrmPayments", desktopPane);
+        fchooser.setVisible(true);
     }
     
     private void loadDebtsReport_forms() {
-        imakante.sales.FormChooser fchooser = new imakante.sales.FormChooser(this, true, desktopPane);
+        imakante.sales.FormChooser fchooser = new imakante.sales.FormChooser(this, true, "reportFrmDebts", desktopPane);
         fchooser.setVisible(true);
     }
     

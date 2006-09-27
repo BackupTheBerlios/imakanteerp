@@ -3,10 +3,11 @@ package imakante.sales;
 
 public class FormChooser extends javax.swing.JDialog {
     
-    public FormChooser(imakante.com.vcomponents.iFrame parent, boolean modal, javax.swing.JDesktopPane pane) {
+    public FormChooser(imakante.com.vcomponents.iFrame parent, boolean modal, String form, javax.swing.JDesktopPane pane) {
         super(parent, modal);
         myParent = parent;
         myDesk = pane;
+        chosenForm = form;
         initComponents();
     }
     
@@ -116,11 +117,21 @@ public class FormChooser extends javax.swing.JDialog {
     
     private imakante.com.vcomponents.iFrame myParent;
     private javax.swing.JDesktopPane myDesk;
+    private String chosenForm;
     
     private void loadOldForm() {
-        imakante.sales.reportFrmDebts debts = new imakante.sales.reportFrmDebts("\u0417\u0410\u0414\u042a\u041b\u0416\u0415\u041d\u0418\u042f", myParent);
-        myDesk.add(debts);
-        debts.setVisible(true);
+        if (chosenForm.equals("reportFrmDebts")) {
+            imakante.sales.reportFrmDebts debts = 
+                    new imakante.sales.reportFrmDebts("\u0417\u0410\u0414\u042a\u041b\u0416\u0415\u041d\u0418\u042f", myParent);
+            myDesk.add(debts);
+            debts.setVisible(true);
+        }
+        if (chosenForm.equals("reportFrmPayments")) {
+            imakante.sales.reportFrmPayments payments = 
+                    new imakante.sales.reportFrmPayments("\u0420\u0410\u0417\u041f\u041b\u0410\u0429\u0410\u041d\u0418\u042f", myParent);
+            myDesk.add(payments);
+            payments.setVisible(true);
+        }
     }
     
     private void loadNewForm() {
