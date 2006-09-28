@@ -154,8 +154,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         spravkiMenu_doc = new javax.swing.JMenuItem();
         fakturiMenu = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JSeparator();
-        spravkiMenu_razpla6taniq = new javax.swing.JMenuItem();
-        spravkiMenu_zadyljeniq = new javax.swing.JMenuItem();
+        jmPayments = new javax.swing.JMenu();
+        jmiReportContragentPayments = new javax.swing.JMenuItem();
+        jmiReportContragentGroupsPayments = new javax.swing.JMenuItem();
+        jmDebts = new javax.swing.JMenu();
+        jmiReportContragentDebts = new javax.swing.JMenuItem();
+        jmiReportContragentGroupsDebts = new javax.swing.JMenuItem();
         jSeparator5 = new javax.swing.JSeparator();
         jMenuItem13 = new javax.swing.JMenuItem();
         jSeparator6 = new javax.swing.JSeparator();
@@ -268,7 +272,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(325, Short.MAX_VALUE)
+                .addContainerGap(352, Short.MAX_VALUE)
                 .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 179, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -822,23 +826,48 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         sprMenu.add(jSeparator2);
 
-        spravkiMenu_razpla6taniq.setText("\u0420\u0430\u0437\u043f\u043b\u0430\u0449\u0430\u043d\u0438\u044f \u043d\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
-        spravkiMenu_razpla6taniq.addActionListener(new java.awt.event.ActionListener() {
+        jmPayments.setText("\u0420\u0430\u0437\u043f\u043b\u0430\u0449\u0430\u043d\u0438\u044f");
+        jmiReportContragentPayments.setText("\u041f\u043e \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
+        jmiReportContragentPayments.setActionCommand("\u041f\u043e \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
+        jmiReportContragentPayments.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                spravkiMenu_razpla6taniqActionPerformed(evt);
+                jmiReportContragentPaymentsActionPerformed(evt);
             }
         });
 
-        sprMenu.add(spravkiMenu_razpla6taniq);
+        jmPayments.add(jmiReportContragentPayments);
 
-        spravkiMenu_zadyljeniq.setText("\u0417\u0430\u0434\u044a\u043b\u0436\u0435\u043d\u0438\u044f");
-        spravkiMenu_zadyljeniq.addActionListener(new java.awt.event.ActionListener() {
+        jmiReportContragentGroupsPayments.setText("\u041f\u043e \u0433\u0440\u0443\u043f\u0438 \u043e\u0442 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
+        jmiReportContragentGroupsPayments.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                spravkiMenu_zadyljeniqActionPerformed(evt);
+                jmiReportContragentGroupsPaymentsActionPerformed(evt);
             }
         });
 
-        sprMenu.add(spravkiMenu_zadyljeniq);
+        jmPayments.add(jmiReportContragentGroupsPayments);
+
+        sprMenu.add(jmPayments);
+
+        jmDebts.setText("\u0417\u0430\u0434\u044a\u043b\u0436\u0435\u043d\u0438\u044f");
+        jmiReportContragentDebts.setText("\u041f\u043e \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
+        jmiReportContragentDebts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiReportContragentDebtsActionPerformed(evt);
+            }
+        });
+
+        jmDebts.add(jmiReportContragentDebts);
+
+        jmiReportContragentGroupsDebts.setText("\u041f\u043e \u0433\u0440\u0443\u043f\u0438 \u043e\u0442 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
+        jmiReportContragentGroupsDebts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiReportContragentGroupsDebtsActionPerformed(evt);
+            }
+        });
+
+        jmDebts.add(jmiReportContragentGroupsDebts);
+
+        sprMenu.add(jmDebts);
 
         sprMenu.add(jSeparator5);
 
@@ -1033,13 +1062,21 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         setBounds((screenSize.width-757)/2, (screenSize.height-458)/2, 757, 458);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void spravkiMenu_razpla6taniqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spravkiMenu_razpla6taniqActionPerformed
-        loadPaymentsReportLevel();
-    }//GEN-LAST:event_spravkiMenu_razpla6taniqActionPerformed
+    private void jmiReportContragentGroupsPaymentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiReportContragentGroupsPaymentsActionPerformed
+        loadGroupPaymentsReportLevel();
+    }//GEN-LAST:event_jmiReportContragentGroupsPaymentsActionPerformed
 
-    private void spravkiMenu_zadyljeniqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spravkiMenu_zadyljeniqActionPerformed
+    private void jmiReportContragentGroupsDebtsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiReportContragentGroupsDebtsActionPerformed
+        loadGroupDebtsReportLevel();
+    }//GEN-LAST:event_jmiReportContragentGroupsDebtsActionPerformed
+
+    private void jmiReportContragentPaymentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiReportContragentPaymentsActionPerformed
+        loadPaymentsReportLevel();
+    }//GEN-LAST:event_jmiReportContragentPaymentsActionPerformed
+
+    private void jmiReportContragentDebtsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiReportContragentDebtsActionPerformed
         loadDebtsReportLevel();
-    }//GEN-LAST:event_spravkiMenu_zadyljeniqActionPerformed
+    }//GEN-LAST:event_jmiReportContragentDebtsActionPerformed
 
     private void fakturiMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fakturiMenuActionPerformed
         loadFakturiReport();
@@ -1485,6 +1522,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JMenu jmDebts;
+    private javax.swing.JMenu jmPayments;
+    private javax.swing.JMenuItem jmiReportContragentDebts;
+    private javax.swing.JMenuItem jmiReportContragentGroupsDebts;
+    private javax.swing.JMenuItem jmiReportContragentGroupsPayments;
+    private javax.swing.JMenuItem jmiReportContragentPayments;
     private javax.swing.JMenuItem kasaAvansMenu;
     private javax.swing.JMenuItem kasaAvansOt4etMenu;
     private javax.swing.JMenu kasaMOLMenu;
@@ -1541,8 +1584,6 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenu sprMenu;
     private javax.swing.JMenuItem spravkiMenu_doc;
     private javax.swing.JMenuItem spravkiMenu_nal;
-    private javax.swing.JMenuItem spravkiMenu_razpla6taniq;
-    private javax.swing.JMenuItem spravkiMenu_zadyljeniq;
     private javax.swing.JMenuItem stock_Menu_group_stock;
     private javax.swing.JMenuItem stock_Menu_stock;
     // End of variables declaration//GEN-END:variables
@@ -2244,28 +2285,51 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         repDox.setVisible(true);
     }
     private void loadReportDocsLevel() {
-        imakante.sales.levelDialogSimple levDSec = new imakante.sales.levelDialogSimple(this, true,9050);
-        
+        imakante.sales.levelDialogSimple levDSec = new imakante.sales.levelDialogSimple(this, true, 9050);
         levDSec.setVisible(true);
     }
     
-    public void loadPaymentsReport_forms(int i) {
-        imakante.sales.FormChooser fchooser = new imakante.sales.FormChooser(this, true, "reportFrmPayments", desktopPane, i);
-        fchooser.setVisible(true);
+    public void loadPaymentsReport(int i) {
+        imakante.sales.reportFrmPayments payments = new imakante.sales.reportFrmPayments("\u0420\u0410\u0417\u041f\u041b\u0410\u0429\u0410\u041d\u0418\u042f \u041d\u0410 \u041a\u041e\u041d\u0422\u0420\u0410\u0413\u0415\u041d\u0422", this, i);
+        desktopPane.add(payments);
+        payments.setVisible(true);
     }
     
     private void loadPaymentsReportLevel() {
+        imakante.sales.levelDialogSimple levDSec = new imakante.sales.levelDialogSimple(this, true, 9060);
+        levDSec.setVisible(true);
+    }
+    
+    public void loadGroupPaymentsReport(int i) {
+        imakante.sales.reportFrmGroupPayments GRpayments = new imakante.sales.reportFrmGroupPayments("\u0420\u0410\u0417\u041f\u041b\u0410\u0429\u0410\u041d\u0418\u042f \u041d\u0410 \u0413\u0420\u0423\u041f\u0410 \u041e\u0422 \u041a\u041e\u041d\u0422\u0420\u0410\u0413\u0415\u041d\u0422\u0418", this, i);
+        desktopPane.add(GRpayments);
+        GRpayments.setVisible(true);
+    }
+    
+    private void loadGroupPaymentsReportLevel() {
         imakante.sales.levelDialogSimple levDSec = new imakante.sales.levelDialogSimple(this, true, 9061);
         levDSec.setVisible(true);
     }
     
-    public void loadDebtsReport_forms(int i) {
-        imakante.sales.FormChooser fchooser = new imakante.sales.FormChooser(this, true, "reportFrmDebts", desktopPane, i);
-        fchooser.setVisible(true);
+    public void loadDebtsReport(int i) {
+        imakante.sales.reportFrmDebts debts = new imakante.sales.reportFrmDebts("\u0417\u0410\u0414\u042a\u041b\u0416\u0415\u041d\u0418\u042f \u041d\u0410 \u041a\u041e\u041d\u0422\u0420\u0410\u0413\u0415\u041d\u0422", this, i);
+        desktopPane.add(debts);
+        debts.setVisible(true);
     }
     
     private void loadDebtsReportLevel() {
         imakante.sales.levelDialogSimple levDSec = new imakante.sales.levelDialogSimple(this, true, 9062);
+        levDSec.setVisible(true);
+    }
+    
+    public void loadGroupDebtsReport(int i) {
+        imakante.sales.reportFrmGroupDebts GRdebts = new imakante.sales.reportFrmGroupDebts("\u0417\u0410\u0414\u042a\u041b\u0416\u0415\u041d\u0418\u042f \u041d\u0410 \u0413\u0420\u0423\u041f\u0410 \u041e\u0422 \u041a\u041e\u041d\u0422\u0420\u0410\u0413\u0415\u041d\u0422\u0418", this, i);
+        desktopPane.add(GRdebts);
+        GRdebts.setVisible(true);
+    }
+    
+    private void loadGroupDebtsReportLevel() {
+        imakante.sales.levelDialogSimple levDSec = new imakante.sales.levelDialogSimple(this, true, 9063);
         levDSec.setVisible(true);
     }
     

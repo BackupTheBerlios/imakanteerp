@@ -18,7 +18,9 @@ public class levelDialogSimple extends javax.swing.JDialog {
         jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("\u0418\u0437\u0431\u043e\u0440 \u043d\u0430 \u043d\u0438\u0432\u043e");
         setLocationByPlatform(true);
+        setResizable(false);
         jLabel1.setText("\u041d\u0418\u0412\u041e:");
 
         jLabel2.setText("\u041f\u0410\u0420\u041e\u041b\u0410:");
@@ -120,9 +122,10 @@ public class levelDialogSimple extends javax.swing.JDialog {
     
     private boolean checkPass(){
         String pss = new String(this.jPasswordField1.getPassword());
-        if(pss.equals(imakante.com.NewMain.getPassword())) {
+        if(pss.equals(imakante.com.NewMain.getPassword())) 
             return true;
-        } else { return false; }
+        else 
+            return false;
     }
     
     //opisanie na formite koito she badat kontrolirani
@@ -134,8 +137,10 @@ public class levelDialogSimple extends javax.swing.JDialog {
         if (modul == 9004) { frame.loadReportFRentabilnost(this.getLevel()); }
         if (modul == 9010) { frame.loadReportKolBalance(this.getLevel()); }
         if (modul == 9050) { frame.loadReportDocs(this.getLevel()); }
-        if (modul == 9061) { frame.loadPaymentsReport_forms(this.getLevel()); }
-        if (modul == 9062) { frame.loadDebtsReport_forms(this.getLevel()); }
+        if (modul == 9060) { frame.loadPaymentsReport(this.getLevel()); }
+        if (modul == 9061) { frame.loadGroupPaymentsReport(this.getLevel()); }
+        if (modul == 9062) { frame.loadDebtsReport(this.getLevel()); }
+        if (modul == 9063) { frame.loadGroupDebtsReport(this.getLevel()); }
         this.dispose();
     }
 }

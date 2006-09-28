@@ -590,22 +590,53 @@
             </Menu>
             <MenuItem class="javax.swing.JSeparator" name="jSeparator2">
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="spravkiMenu_razpla6taniq">
+            <Menu class="javax.swing.JMenu" name="jmPayments">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#x420;&#x430;&#x437;&#x43f;&#x43b;&#x430;&#x449;&#x430;&#x43d;&#x438;&#x44f; &#x43d;&#x430; &#x43a;&#x43e;&#x43d;&#x442;&#x440;&#x430;&#x433;&#x435;&#x43d;&#x442;&#x438;"/>
+                <Property name="text" type="java.lang.String" value="&#x420;&#x430;&#x437;&#x43f;&#x43b;&#x430;&#x449;&#x430;&#x43d;&#x438;&#x44f;"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="spravkiMenu_razpla6taniqActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="spravkiMenu_zadyljeniq">
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiReportContragentPayments">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="&#x41f;&#x43e; &#x43a;&#x43e;&#x43d;&#x442;&#x440;&#x430;&#x433;&#x435;&#x43d;&#x442;&#x438;"/>
+                    <Property name="actionCommand" type="java.lang.String" value="&#x41f;&#x43e; &#x43a;&#x43e;&#x43d;&#x442;&#x440;&#x430;&#x433;&#x435;&#x43d;&#x442;&#x438;"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiReportContragentPaymentsActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiReportContragentGroupsPayments">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="&#x41f;&#x43e; &#x433;&#x440;&#x443;&#x43f;&#x438; &#x43e;&#x442; &#x43a;&#x43e;&#x43d;&#x442;&#x440;&#x430;&#x433;&#x435;&#x43d;&#x442;&#x438;"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiReportContragentGroupsPaymentsActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="jmDebts">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x417;&#x430;&#x434;&#x44a;&#x43b;&#x436;&#x435;&#x43d;&#x438;&#x44f;"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="spravkiMenu_zadyljeniqActionPerformed"/>
-              </Events>
-            </MenuItem>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiReportContragentDebts">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="&#x41f;&#x43e; &#x43a;&#x43e;&#x43d;&#x442;&#x440;&#x430;&#x433;&#x435;&#x43d;&#x442;&#x438;"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiReportContragentDebtsActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiReportContragentGroupsDebts">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="&#x41f;&#x43e; &#x433;&#x440;&#x443;&#x43f;&#x438; &#x43e;&#x442; &#x43a;&#x43e;&#x43d;&#x442;&#x440;&#x430;&#x433;&#x435;&#x43d;&#x442;&#x438;"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiReportContragentGroupsDebtsActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
             <MenuItem class="javax.swing.JSeparator" name="jSeparator5">
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem13">
@@ -983,7 +1014,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="325" max="32767" attributes="0"/>
+                      <EmptySpace pref="352" max="32767" attributes="0"/>
                       <Component id="jComboBox1" min="-2" pref="179" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
