@@ -3,9 +3,13 @@ package imakante.sales;
 
 public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
     
-    public reportFrmPayments(String title, imakante.com.vcomponents.iFrame frame) {
+    public reportFrmPayments(String title, imakante.com.vcomponents.iFrame frame, int levelx) {
         super(title);
         myFrame = frame;
+        this.levelx = levelx;
+        this.jlLevelx.setText("" + this.levelx);
+        prepareConn();
+        prepareStm();
         initComponents();
     }
     
@@ -27,6 +31,7 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jbExecute = new javax.swing.JButton();
         jbQuit = new javax.swing.JButton();
+        jlLevelx = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -186,7 +191,9 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
 
-        pack();
+        getContentPane().add(jlLevelx, java.awt.BorderLayout.NORTH);
+
+        setBounds(70, 40, 400, 306);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
@@ -230,6 +237,7 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
     private org.jdesktop.swingx.JXDatePicker jXDatePicker2;
     private javax.swing.JButton jbExecute;
     private javax.swing.JButton jbQuit;
+    private javax.swing.JLabel jlLevelx;
     // End of variables declaration//GEN-END:variables
     
     private imakante.com.vcomponents.iFrame myFrame;
@@ -245,6 +253,14 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
     private String startOfPeriod = "";
     private String endOfPeriod = "";
     private int IDTransfer = 0;
+    private int levelx = 3;
+    
+    private String paymentsView = "SELECT id_df AS ID, number_df AS NOMER, type_df AS TIP, " +
+            "total_df AS SUMA, date_edition_df AS 'DATA NA ZADYLJENIE', faktura_connection_df AS FAKTURA, " +
+            "description_pay_df AS 'TIP RAZPLA6TANE', paying_order_df AS 'PRIHODEN KASOV ORDER', " +
+            "date_pay_df AS 'DATA NA PLA6TANE', out_contragent_df AS 'KLIENT' " +
+            "FROM sl_document_facade " +
+            "WHERE total_df > 0";
     
     private String contragentsList =
             "SELECT nc.id_contragent, nc.code_contragent, nc.name_n_contragent " +

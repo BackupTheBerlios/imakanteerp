@@ -128,12 +128,14 @@ public class levelDialogSecond extends javax.swing.JDialog {
     //opisanie na formite koito she badat kontrolirani
     private void close(){
         if (modul == 1) { frame.loadImport(); }
-        if (modul == 9001) { frame.loadReportNal(this.getLevel());}
-        if (modul == 9002) { frame.loadReportParcelDate(this.getLevel());}
-        if (modul == 9003) { frame.loadReportStockOut(this.getLevel());}
-        if (modul == 9004) { frame.loadReportFRentabilnost(this.getLevel());}
-        if (modul == 9010) { frame.loadReportKolBalance(this.getLevel());}
-        if (modul == 9050) { frame.loadReportDocs(this.getLevel());}
+        if (modul == 9001) { frame.loadReportNal(this.getLevel()); }
+        if (modul == 9002) { frame.loadReportParcelDate(this.getLevel()); }
+        if (modul == 9003) { frame.loadReportStockOut(this.getLevel()); }
+        if (modul == 9004) { frame.loadReportFRentabilnost(this.getLevel()); }
+        if (modul == 9010) { frame.loadReportKolBalance(this.getLevel()); }
+        if (modul == 9050) { frame.loadReportDocs(this.getLevel()); }
+        if (modul == 9061) { frame.loadPaymentsReport_forms(this.getLevel()); }
+        if (modul == 9062) { frame.loadDebtsReport_forms(this.getLevel()); }
         this.dispose();
     }
 }

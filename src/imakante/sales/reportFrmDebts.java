@@ -3,9 +3,11 @@ package imakante.sales;
 
 public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     
-    public reportFrmDebts(String title, imakante.com.vcomponents.iFrame frame) {
+    public reportFrmDebts(String title, imakante.com.vcomponents.iFrame frame, int levelx) {
         super(title);
         myFrame = frame;
+        this.levelx = levelx;
+        this.jlLevelx.setText("" + this.levelx);
         prepareConn();
         prepareStm();
         initComponents();
@@ -27,6 +29,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jbExecute = new javax.swing.JButton();
         jbQuit = new javax.swing.JButton();
+        jlLevelx = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -136,7 +139,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
                 .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -164,7 +167,9 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
 
-        setBounds(50, 20, 393, 239);
+        getContentPane().add(jlLevelx, java.awt.BorderLayout.NORTH);
+
+        setBounds(50, 20, 393, 236);
     }// </editor-fold>//GEN-END:initComponents
     
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
@@ -207,6 +212,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     private org.jdesktop.swingx.JXDatePicker jXDatePicker2;
     private javax.swing.JButton jbExecute;
     private javax.swing.JButton jbQuit;
+    private javax.swing.JLabel jlLevelx;
     // End of variables declaration//GEN-END:variables
     
     private imakante.com.vcomponents.iFrame myFrame;
@@ -222,6 +228,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     private String startOfPeriod = "";
     private String endOfPeriod = "";
     private int IDTransfer = 0;
+    private int levelx = 3;
     
     private String contragentDebts =
             "SELECT id_df, total_df, date_edition_df " +

@@ -1034,11 +1034,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void spravkiMenu_razpla6taniqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spravkiMenu_razpla6taniqActionPerformed
-        loadPaymentsReport();
+        loadPaymentsReportLevel();
     }//GEN-LAST:event_spravkiMenu_razpla6taniqActionPerformed
 
     private void spravkiMenu_zadyljeniqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spravkiMenu_zadyljeniqActionPerformed
-        loadDebtsReport_forms();
+        loadDebtsReportLevel();
     }//GEN-LAST:event_spravkiMenu_zadyljeniqActionPerformed
 
     private void fakturiMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fakturiMenuActionPerformed
@@ -2249,14 +2249,24 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         levDSec.setVisible(true);
     }
     
-    private void loadPaymentsReport() {
-        imakante.sales.FormChooser fchooser = new imakante.sales.FormChooser(this, true, "reportFrmPayments", desktopPane);
+    public void loadPaymentsReport_forms(int i) {
+        imakante.sales.FormChooser fchooser = new imakante.sales.FormChooser(this, true, "reportFrmPayments", desktopPane, i);
         fchooser.setVisible(true);
     }
     
-    private void loadDebtsReport_forms() {
-        imakante.sales.FormChooser fchooser = new imakante.sales.FormChooser(this, true, "reportFrmDebts", desktopPane);
+    private void loadPaymentsReportLevel() {
+        imakante.sales.levelDialogSecond levDSec = new imakante.sales.levelDialogSecond(this, true, 9061);
+        levDSec.setVisible(true);
+    }
+    
+    public void loadDebtsReport_forms(int i) {
+        imakante.sales.FormChooser fchooser = new imakante.sales.FormChooser(this, true, "reportFrmDebts", desktopPane, i);
         fchooser.setVisible(true);
+    }
+    
+    private void loadDebtsReportLevel() {
+        imakante.sales.levelDialogSecond levDSec = new imakante.sales.levelDialogSecond(this, true, 9062);
+        levDSec.setVisible(true);
     }
     
     public static LinkedHashMap getOrderArea() {
