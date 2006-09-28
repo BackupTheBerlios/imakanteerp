@@ -1,9 +1,9 @@
 
 package imakante.sales;
 
-public class levelDialogSecond extends javax.swing.JDialog {
+public class levelDialogSimple extends javax.swing.JDialog {
     
-    public levelDialogSecond(imakante.sales.sales_main parent, boolean modal, int ModuleCode) {
+    public levelDialogSimple(imakante.sales.sales_main parent, boolean modal, int ModuleCode) {
         super(parent, modal);
         frame = parent;
         modul = ModuleCode;

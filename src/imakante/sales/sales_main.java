@@ -2192,7 +2192,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         repNal.setVisible(true);
     }
     private void loadReportNalLevel(){
-        imakante.sales.levelDialogSecond levDSec = new imakante.sales.levelDialogSecond(this, true,9001);
+        imakante.sales.levelDialogSimple levDSec = new imakante.sales.levelDialogSimple(this, true,9001);
         
         levDSec.setVisible(true);
     }
@@ -2203,7 +2203,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }
     
     private void loadReportParcelDateLevel(){
-        imakante.sales.levelDialogSecond levDSec = new imakante.sales.levelDialogSecond(this, true,9002);
+        imakante.sales.levelDialogSimple levDSec = new imakante.sales.levelDialogSimple(this, true,9002);
         
         levDSec.setVisible(true);
     }
@@ -2213,7 +2213,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         repNal.setVisible(true);
     }
     private void loadReportKolBalanceLevel(){
-        imakante.sales.levelDialogSecond levDSec = new imakante.sales.levelDialogSecond(this, true,9010);
+        imakante.sales.levelDialogSimple levDSec = new imakante.sales.levelDialogSimple(this, true,9010);
         
         levDSec.setVisible(true);
     }
@@ -2224,7 +2224,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }
     
     private void loadReportStockOutLevel(){
-        imakante.sales.levelDialogSecond levDSec = new imakante.sales.levelDialogSecond(this, true,9003);
+        imakante.sales.levelDialogSimple levDSec = new imakante.sales.levelDialogSimple(this, true,9003);
         levDSec.setVisible(true);
     }
     public void loadReportFRentabilnost(int i) {
@@ -2234,7 +2234,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }
     
     private void loadReportFRentabilnostLevel(){
-        imakante.sales.levelDialogSecond levDSec = new imakante.sales.levelDialogSecond(this, true,9004);
+        imakante.sales.levelDialogSimple levDSec = new imakante.sales.levelDialogSimple(this, true,9004);
         levDSec.setVisible(true);
     }
     
@@ -2244,7 +2244,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         repDox.setVisible(true);
     }
     private void loadReportDocsLevel() {
-        imakante.sales.levelDialogSecond levDSec = new imakante.sales.levelDialogSecond(this, true,9050);
+        imakante.sales.levelDialogSimple levDSec = new imakante.sales.levelDialogSimple(this, true,9050);
         
         levDSec.setVisible(true);
     }
@@ -2255,7 +2255,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }
     
     private void loadPaymentsReportLevel() {
-        imakante.sales.levelDialogSecond levDSec = new imakante.sales.levelDialogSecond(this, true, 9061);
+        imakante.sales.levelDialogSimple levDSec = new imakante.sales.levelDialogSimple(this, true, 9061);
         levDSec.setVisible(true);
     }
     
@@ -2265,7 +2265,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }
     
     private void loadDebtsReportLevel() {
-        imakante.sales.levelDialogSecond levDSec = new imakante.sales.levelDialogSecond(this, true, 9062);
+        imakante.sales.levelDialogSimple levDSec = new imakante.sales.levelDialogSimple(this, true, 9062);
         levDSec.setVisible(true);
     }
     
