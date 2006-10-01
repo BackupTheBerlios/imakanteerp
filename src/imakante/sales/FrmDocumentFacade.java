@@ -2444,7 +2444,24 @@ private String PriceToString( int id_doc, boolean withDDS)
     try
     {
         //HashMap inputfilters,int doctype,java.sql.Connection con, imakante.com.CustomTable t,String path
-        simpReport = new simpleReport(null,getDocFacadeType(),myframe.getConn(),table,imakante.com.NewMain.getPathrep());
+        HashMap inParam = new HashMap();
+        
+      //  inParam.put("docType",String.valueOf(getDocFacadeType()));
+         
+            HashMap parameterHashMap = new HashMap();
+            imakante.com.paramFirm paramFrm1 = new imakante.com.paramFirm();
+            parameterHashMap.put(new String("naredil"),"œÓÚÂ·ËÚÂÎ");
+            parameterHashMap.put(new String("firmaname"),"Ivan");
+           
+            parameterHashMap.put(new String("PriceToString"),"dva leva");
+            
+            parameterHashMap.put(new String("id_dok"),"243");
+          
+           
+        
+        
+        
+        simpReport = new simpleReport(parameterHashMap,getDocFacadeType(),myframe.getConn(),table,imakante.com.NewMain.getPathrep(),getDocTypeAsString(getDocFacadeType()));
         simpReport.setVisible(true);
         
     }
@@ -2452,6 +2469,89 @@ private String PriceToString( int id_doc, boolean withDDS)
      
      
      
+ }
+ private String getDocTypeAsString(int doctype)
+ {
+     String return_value="";
+     switch(doctype)
+     {
+        case aeDocumentFacade.FAKTURI:
+        {
+          
+            return_value = "‘¿ “”–¿";
+            break;
+        }
+        case aeDocumentFacade.FAKTURA_DANACHNA:
+        {
+           return_value = "‘¿ “”–¿ ƒ¿Õ⁄◊Õ¿";
+            break;
+        }
+        case aeDocumentFacade.FAKTURA_OPROSTENA:
+        {
+           return_value = "‘¿ “”–¿ Œœ–Œ—“≈Õ¿";
+            break;
+        }
+        case aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE:
+        {
+          
+         return_value = "Õ¿–≈∆ƒ¿Õ≈ «¿ œ–≈’¬⁄–ÀﬂÕ≈";
+            break;
+        }
+        case aeDocumentFacade.KONSGNACIONEN_PROTOKOL:
+        {
+           
+          
+            return_value = " ŒÕ—√Õ¿÷»ŒÕÕ≈Õ œ–Œ“» ŒÀ"; 
+            break;
+        }
+        case aeDocumentFacade.PREDAVATELNA_RAZPISKA:
+        {
+            return_value = "œ–≈ƒ¿¬¿“≈ÀÕ¿ –¿«œ»— ¿";
+            break;
+        }
+        case aeDocumentFacade.PRIEMATELNA_RAZPISKA:
+        {
+          
+            return_value = "œ–»≈Ã¿“≈ÀÕ¿ –¿«œ»— ¿";
+            break;
+        }
+       case aeDocumentFacade.RAZPISKA_ZA_VRYSHTANE:
+        {
+          
+            return_value = "–¿«œ»— ¿ «¿ ¬–⁄Ÿ¿Õ≈";
+            break;
+        }
+       case aeDocumentFacade.OFERTA :
+        {
+        
+             return_value = "Œ‘≈–“¿";   
+         break;
+        } 
+       case aeDocumentFacade.BRAK :
+       {
+        return_value = "œ–Œ“Œ ŒÀ «¿ ¡–¿ ";
+          break;
+        }
+        case aeDocumentFacade.PROTOKOL_LIPSA :
+       {
+         return_value = "œ–Œ“Œ ŒÀ «¿ À»œ—¿";
+          break;
+        }
+        case aeDocumentFacade.STOKOVA_RAZPISKA:
+        {
+           
+         return_value = "—“Œ Œ¬¿ –¿«œ»— ¿";
+            break;
+        }
+        case aeDocumentFacade.PROFORMA_FAKTURA:
+        {
+          
+           return_value = "œ–Œ‘Œ–Ã¿ ‘¿ “”–¿";
+          break;  
+        }
+        
+     }
+     return return_value;
  }
  
 }// end class

@@ -29,6 +29,8 @@ import javax.swing.AbstractListModel;
 
 public class simpleReport extends javax.swing.JFrame {
   
+    private  Thread t;
+    private boolean isFinishAll = false;
     private final int IN =1; 
     private final int OUT=2; 
     private HashMap storeCalssType = new HashMap();
@@ -74,7 +76,8 @@ public class simpleReport extends javax.swing.JFrame {
     "date_deliver_df","date_pay_df","comments_df", "flag_finish_df","id_rep",
     "level_df","in_store_df"};
         
-    
+   private String path; 
+   private String title;
    private  textField colHr[];
    private  textField colDa[];
    private int pageWidth = 530;  //  v pixels
@@ -83,27 +86,53 @@ public class simpleReport extends javax.swing.JFrame {
     private String headerFont[] = {"SanSerif","italic","10"};
     
     /** Creates new form simpleReport */
-    public simpleReport(HashMap inputfilters,int doctype,java.sql.Connection con, imakante.com.CustomTable t,String path) 
+    public simpleReport(HashMap inputfilters,int doctype,java.sql.Connection con, imakante.com.CustomTable t,String path,String title) 
     {
         docType = doctype;
         inputFiltrs = inputfilters;
         conn = con;
         table = t;
+        this.path = path;
+        this.title = title;
         initComponents();
         readJasperXML(path+"simplereport.jrxml");
         readClassTypeFromXML();
         customComponetInit();
         createjTreeForSetup();
         listenerForJtreeSetup();
+   /*     //==================
         buildColumns();
-        setTitleXML("test");
+        setTitleXML(title);
         setColumnNamesXML(colHr);
         setDetailsXML(colDa);
-        saveToFileXML(path+defaultFiletoSave);
+        saveToFileXML(path+defaultFiletoSave);*/
+        //=================
       //  selectDocument(docType);
         System.out.println("nameColumnBG="+nameColumnsBG.length);
         System.out.println("nameColumnEN="+nameColumnsEN.length); 
-        viewSimpleReport(path+defaultFiletoSave,path);
+        engine();
+        
+       
+        
+        int state = this.getExtendedState();
+        state |= this.ICONIFIED;
+        this.setExtendedState(state);
+        java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (((dim.width)-(this.getSize().width))/2);
+        int y = (((dim.height)-(this.getSize().height))/2);
+        this.setLocation(x, y);
+        
+       
+        jDialogProgresBar.setUndecorated(true);
+        jDialogProgresBar.setSize(350,150);
+        x = (((dim.width)-(jDialogProgresBar.getSize().width))/2);
+        y = (((dim.height)-(jDialogProgresBar.getSize().height))/2);
+        jDialogProgresBar.setLocation(x,y);
+        jDialogProgresBar.setVisible(true);
+        startBuild();
+        
+       //  viewSimpleReport(path+defaultFiletoSave,path);
+         
     }
     
     /** This method is called from within the constructor to
@@ -113,6 +142,8 @@ public class simpleReport extends javax.swing.JFrame {
      */
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
+
         jDialogSetup = new javax.swing.JDialog();
         jScrollSetup = new javax.swing.JScrollPane();
         jScrollData = new javax.swing.JScrollPane();
@@ -132,7 +163,27 @@ public class simpleReport extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabelHeaderStatus = new javax.swing.JLabel();
         jPanelHedarBorder = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jComboHeaderTopBorder = new javax.swing.JComboBox();
+        jComboHeadarBottomBorder = new javax.swing.JComboBox();
+        jComboHeaderRightBorder = new javax.swing.JComboBox();
+        jComboHeaderLeftBorder = new javax.swing.JComboBox();
+        jSeparator2 = new javax.swing.JSeparator();
+        jButtonHeaderBorder = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabelHeaderLeft = new javax.swing.JLabel();
+        jLabelHeaderBottom = new javax.swing.JLabel();
+        jLabelHeaderRight = new javax.swing.JLabel();
+        jLabelHeaderTop = new javax.swing.JLabel();
         jPanelTitleFont = new javax.swing.JPanel();
+        jDialogProgresBar = new javax.swing.JDialog();
+        jPanel2 = new javax.swing.JPanel();
+        jButton5 = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JSeparator();
+        jProgressBar1 = new javax.swing.JProgressBar();
         jPanelControl = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jPanelData = new javax.swing.JPanel();
@@ -253,9 +304,9 @@ public class simpleReport extends javax.swing.JFrame {
             .add(jPanelHedarFontLayout.createSequentialGroup()
                 .add(32, 32, 32)
                 .add(jPanelHedarFontLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jScrollPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jScrollPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE))
                 .add(34, 34, 34)
                 .add(jButton4)
                 .add(25, 25, 25)
@@ -266,15 +317,134 @@ public class simpleReport extends javax.swing.JFrame {
                 .add(jLabelHeaderStatus)
                 .add(89, 89, 89))
         );
+        jPanelHedarBorder.setMinimumSize(new java.awt.Dimension(350, 450));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 100, Short.MAX_VALUE)
+        );
+
+        jComboHeaderTopBorder.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "None", "Thin", "1Piont", "2Piont", "3Piont", "4Piont", "Dotted" }));
+
+        jComboHeadarBottomBorder.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "None", "Thin", "1Point", "2Point", "3Point", "4Point", "Dotted" }));
+
+        jComboHeaderRightBorder.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "None", "Thin", "1Point", "2Point", "3Point", "4Point", "Dotted" }));
+
+        jComboHeaderLeftBorder.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "None", "Thin", "1Point", "2Point", "3Point", "4Point", "Dotted" }));
+
+        jButtonHeaderBorder.setText("OK");
+        jButtonHeaderBorder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonHeaderBorderActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("\u041b\u044f\u0432 \u0440\u044a\u0431:");
+
+        jLabel3.setText("\u0414\u043e\u043b\u0435\u043d \u0440\u044a\u0431:");
+
+        jLabel4.setText("\u0414\u044f\u0441\u0435\u043d \u0440\u044a\u0431:");
+
+        jLabel5.setText("\u0413\u043e\u0440\u0435\u043d \u0440\u044a\u0431:");
+
+        jLabelHeaderLeft.setText("None");
+
+        jLabelHeaderBottom.setText("None");
+
+        jLabelHeaderRight.setText("None");
+
+        jLabelHeaderTop.setText("None");
+
         org.jdesktop.layout.GroupLayout jPanelHedarBorderLayout = new org.jdesktop.layout.GroupLayout(jPanelHedarBorder);
         jPanelHedarBorder.setLayout(jPanelHedarBorderLayout);
         jPanelHedarBorderLayout.setHorizontalGroup(
             jPanelHedarBorderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 100, Short.MAX_VALUE)
+            .add(jPanelHedarBorderLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanelHedarBorderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanelHedarBorderLayout.createSequentialGroup()
+                        .add(jPanelHedarBorderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(jSeparator2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
+                            .add(jPanelHedarBorderLayout.createSequentialGroup()
+                                .add(jComboHeaderLeftBorder, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 98, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(jPanelHedarBorderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                                    .add(org.jdesktop.layout.GroupLayout.LEADING, jComboHeadarBottomBorder, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .add(org.jdesktop.layout.GroupLayout.LEADING, jComboHeaderTopBorder, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(jComboHeaderRightBorder, 0, 108, Short.MAX_VALUE)))
+                        .add(18, 18, 18))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelHedarBorderLayout.createSequentialGroup()
+                        .add(jButtonHeaderBorder, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 72, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(48, 48, 48))
+                    .add(jPanelHedarBorderLayout.createSequentialGroup()
+                        .add(jLabel4)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabelHeaderRight)
+                        .addContainerGap(252, Short.MAX_VALUE))
+                    .add(jPanelHedarBorderLayout.createSequentialGroup()
+                        .add(jLabel5)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabelHeaderTop)
+                        .addContainerGap())
+                    .add(jPanelHedarBorderLayout.createSequentialGroup()
+                        .add(jPanelHedarBorderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, jPanelHedarBorderLayout.createSequentialGroup()
+                                .add(jLabel3)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .add(jLabelHeaderBottom))
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, jPanelHedarBorderLayout.createSequentialGroup()
+                                .add(jLabel2)
+                                .add(14, 14, 14)
+                                .add(jLabelHeaderLeft)))
+                        .addContainerGap(251, Short.MAX_VALUE))))
         );
         jPanelHedarBorderLayout.setVerticalGroup(
             jPanelHedarBorderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 100, Short.MAX_VALUE)
+            .add(jPanelHedarBorderLayout.createSequentialGroup()
+                .add(jPanelHedarBorderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanelHedarBorderLayout.createSequentialGroup()
+                        .add(43, 43, 43)
+                        .add(jComboHeaderTopBorder, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(22, 22, 22)
+                        .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(16, 16, 16)
+                        .add(jComboHeadarBottomBorder, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jPanelHedarBorderLayout.createSequentialGroup()
+                        .add(129, 129, 129)
+                        .add(jComboHeaderRightBorder, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jPanelHedarBorderLayout.createSequentialGroup()
+                        .add(129, 129, 129)
+                        .add(jComboHeaderLeftBorder, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .add(24, 24, 24)
+                .add(jSeparator2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 10, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(16, 16, 16)
+                .add(jButtonHeaderBorder)
+                .add(14, 14, 14)
+                .add(jPanelHedarBorderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel2)
+                    .add(jLabelHeaderLeft))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanelHedarBorderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel3)
+                    .add(jLabelHeaderBottom))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanelHedarBorderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel4)
+                    .add(jLabelHeaderRight))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanelHedarBorderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel5)
+                    .add(jLabelHeaderTop))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         org.jdesktop.layout.GroupLayout jPanelTitleFontLayout = new org.jdesktop.layout.GroupLayout(jPanelTitleFont);
         jPanelTitleFont.setLayout(jPanelTitleFontLayout);
@@ -286,13 +456,55 @@ public class simpleReport extends javax.swing.JFrame {
             jPanelTitleFontLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(0, 136, Short.MAX_VALUE)
         );
+        jDialogProgresBar.setResizable(false);
+        jPanel2.setLayout(new java.awt.GridBagLayout());
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.setMinimumSize(new java.awt.Dimension(300, 100));
+        jPanel2.setPreferredSize(new java.awt.Dimension(300, 100));
+        jButton5.setText("\u041e\u0442\u043a\u0430\u0437");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 10, 10);
+        jPanel2.add(jButton5, gridBagConstraints);
+
+        jSeparator3.setMinimumSize(new java.awt.Dimension(350, 1));
+        jSeparator3.setPreferredSize(new java.awt.Dimension(350, 10));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(5, 1, 5, 1);
+        jPanel2.add(jSeparator3, gridBagConstraints);
+
+        jProgressBar1.setMinimumSize(new java.awt.Dimension(320, 30));
+        jProgressBar1.setPreferredSize(new java.awt.Dimension(320, 30));
+        jProgressBar1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jProgressBar1StateChanged(evt);
+            }
+        });
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPanel2.add(jProgressBar1, gridBagConstraints);
+
+        jDialogProgresBar.getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        jPanelControl.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 15));
-
+        setResizable(false);
         jPanelControl.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanelControl.setMinimumSize(new java.awt.Dimension(600, 50));
-        jPanelControl.setPreferredSize(new java.awt.Dimension(600, 50));
+        jPanelControl.setMaximumSize(new java.awt.Dimension(750, 40));
+        jPanelControl.setMinimumSize(new java.awt.Dimension(750, 40));
+        jPanelControl.setPreferredSize(new java.awt.Dimension(750, 40));
         jButton1.setText("\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -304,23 +516,46 @@ public class simpleReport extends javax.swing.JFrame {
 
         getContentPane().add(jPanelControl, java.awt.BorderLayout.CENTER);
 
+        jPanelData.setLayout(new java.awt.BorderLayout());
+
         jPanelData.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanelData.setMinimumSize(new java.awt.Dimension(650, 400));
-        jPanelData.setPreferredSize(new java.awt.Dimension(600, 400));
-        org.jdesktop.layout.GroupLayout jPanelDataLayout = new org.jdesktop.layout.GroupLayout(jPanelData);
-        jPanelData.setLayout(jPanelDataLayout);
-        jPanelDataLayout.setHorizontalGroup(
-            jPanelDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 646, Short.MAX_VALUE)
-        );
-        jPanelDataLayout.setVerticalGroup(
-            jPanelDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 396, Short.MAX_VALUE)
-        );
+        jPanelData.setMaximumSize(new java.awt.Dimension(750, 500));
+        jPanelData.setMinimumSize(new java.awt.Dimension(750, 500));
+        jPanelData.setPreferredSize(new java.awt.Dimension(750, 500));
         getContentPane().add(jPanelData, java.awt.BorderLayout.NORTH);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonHeaderBorderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHeaderBorderActionPerformed
+// TODO add your handling code here:
+        jLabelHeaderBottom.setText((String)jComboHeadarBottomBorder.getSelectedItem());
+        jLabelHeaderLeft.setText((String)jComboHeaderLeftBorder.getSelectedItem());
+        jLabelHeaderRight.setText((String)jComboHeaderRightBorder.getSelectedItem());
+        jLabelHeaderTop.setText((String)jComboHeaderTopBorder.getSelectedItem());
+        
+        
+    }//GEN-LAST:event_jButtonHeaderBorderActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+// TODO add your handling code here:
+        stopBuild();
+        jDialogProgresBar.setVisible(false);
+       
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jProgressBar1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jProgressBar1StateChanged
+// TODO add your handling code here:
+       if(jProgressBar1.getValue()==100)
+       {
+         jDialogProgresBar.setVisible(false);
+         viewSimpleReport(path+defaultFiletoSave,path);
+          int state = this.getExtendedState();
+          state &= ~this.ICONIFIED;
+          this.setExtendedState(state);
+       }
+        
+    }//GEN-LAST:event_jProgressBar1StateChanged
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 // TODO add your handling code here:
@@ -353,12 +588,29 @@ public class simpleReport extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButtonHeaderBorder;
+    private javax.swing.JComboBox jComboHeadarBottomBorder;
+    private javax.swing.JComboBox jComboHeaderLeftBorder;
+    private javax.swing.JComboBox jComboHeaderRightBorder;
+    private javax.swing.JComboBox jComboHeaderTopBorder;
+    private javax.swing.JDialog jDialogProgresBar;
     private javax.swing.JDialog jDialogSetup;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabelHeaderBottom;
+    private javax.swing.JLabel jLabelHeaderLeft;
+    private javax.swing.JLabel jLabelHeaderRight;
     private javax.swing.JLabel jLabelHeaderStatus;
+    private javax.swing.JLabel jLabelHeaderTop;
     private javax.swing.JList jListHeaderFontName;
     private javax.swing.JList jListHeaderFontSize;
     private javax.swing.JList jListHeaderFontStyle;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelControl;
     private javax.swing.JPanel jPanelData;
     private javax.swing.JPanel jPanelDataBorder;
@@ -366,12 +618,15 @@ public class simpleReport extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelHedarBorder;
     private javax.swing.JPanel jPanelHedarFont;
     private javax.swing.JPanel jPanelTitleFont;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollData;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollSetup;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     // End of variables declaration//GEN-END:variables
 
 
@@ -882,6 +1137,12 @@ private void createjTreeForSetup()
  DefaultMutableTreeNode category = null;
  DefaultMutableTreeNode setUpComponent = null;
 
+category = new DefaultMutableTreeNode("Страница");
+setUpComponent = new DefaultMutableTreeNode("Страница");
+category.add(setUpComponent);
+top.add(category);
+ 
+ 
 // add zaglavie
 category = new DefaultMutableTreeNode("Заглавие");
 setUpComponent = new DefaultMutableTreeNode("Шрифт");
@@ -915,34 +1176,7 @@ jScrollSetup.setViewportView(jTreeSetup);
 }
 private void listenerForJtreeSetup()
 {
-  /*  jTreeSetup.addMouseListener(new MouseListener() {
-        public void mouseClicked(MouseEvent e) 
-        {
-            if(e.getClickCount()==2)
-            {
-                jTreeSetup.get
-                
-                
-                
-                
-                
-            }
-        }
-        public void mouseEntered(MouseEvent e)
-        {
-        }
-        public void mouseExited(MouseEvent e)
-        {
-        }
-        public void mousePressed(MouseEvent e)
-        {
-        }
-        public void mouseReleased(MouseEvent e)
-        {
-        }
-    });
-          */  
-           
+  
    jTreeSetup.addTreeSelectionListener(new TreeSelectionListener() {
      public void valueChanged(TreeSelectionEvent e) 
        {
@@ -976,8 +1210,10 @@ private void listenerForJtreeSetup()
              {
                 DefaultMutableTreeNode parentNode = (DefaultMutableTreeNode) node.getParent();
                 String parentName = (String) parentNode.getUserObject();
-                if(parentName.equals("Имена на колони")) {
-                    
+                if(parentName.equals("Имена на колони"))
+                {
+                   jScrollData.setViewportView(jPanelHedarBorder);
+                   jScrollData.repaint();  
                 }
                 if(parentName.equals("Данни на колоните")) {
                    jScrollData.setViewportView(jPanelDataBorder);
@@ -1838,14 +2074,65 @@ private void viewSimpleReport(String filename,String path)
 {
     try
     {
-    net.sf.jasperreports.engine.JasperCompileManager.compileReportToFile(filename,path+"tmpsimple.jasper");
-    jasperPrint = JasperFillManager.fillReport(new java.io.FileInputStream(new java.io.File(path+"tmpsimple.jasper")),
-                    inputFiltrs, conn);
+  //  net.sf.jasperreports.engine.JasperCompileManager.compileReportToFile(path+"sales_lipsa.jrxml",path+"tmpsimple.jasper");
+  //  JasperDesign jasperDesign = JRXmlLoader.load(path+"sales_lipsa.jrxml");
+    
+   JasperReport  jasperReport = JasperCompileManager.compileReport(path+defaultFiletoSave);
+   jasperPrint = JasperFillManager.fillReport(jasperReport,inputFiltrs,conn);
+  // jasperPrint = JasperFillManager.fillReport(new java.io.FileInputStream(new java.io.File(path+"sales_lipsa.jasper")),
+ //                   inputFiltrs, conn);
+    if(jasperPrint == null) System.out.println("Error viewSimpleReport");
+    jrv =null;
     jrv = new net.sf.jasperreports.view.JRViewer(jasperPrint);
+    if(jrv == null) System.out.println("Error viewSimpleReport, jrv =null");
+    jPanelData.removeAll();
     jPanelData.add(jrv);
+    jrv.repaint();
+    jrv.setVisible(true);
     jPanelControl.revalidate();
     jPanelData.repaint();
+    jPanelData.setVisible(true);
     }
     catch(Exception ds){System.out.println("Error viewSimpleReport");};
+ 
 }
+private void initProgresBar()
+{
+    jProgressBar1.setMinimum(0);
+    jProgressBar1.setMaximum(100);
+    
+}
+private void engine()
+{
+    t = new Thread(new Runnable() {
+        public void run() 
+        {
+            buildColumns();   // 10 %
+           jProgressBar1.setValue(10);
+            setTitleXML(title);   // 10%
+           jProgressBar1.setValue(jProgressBar1.getValue()+10);
+            setColumnNamesXML(colHr); //30%
+           jProgressBar1.setValue(jProgressBar1.getValue()+30);
+            setDetailsXML(colDa);     // 30#
+            jProgressBar1.setValue(jProgressBar1.getValue()+30);
+            saveToFileXML(path+defaultFiletoSave); // 20 %
+            jProgressBar1.setValue(jProgressBar1.getValue()+20);
+            isFinishAll = true;
+        }
+    });
+    
+    
+}
+
+private void startBuild()
+{
+    
+   t.start();
+ 
+}
+private void stopBuild()
+{
+    t.interrupt();
+}
+
 }// ens sinpleReport
