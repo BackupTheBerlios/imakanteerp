@@ -63,7 +63,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
                 .addContainerGap()
                 .add(jLabel1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -90,7 +90,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
                 .add(jLabel3)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 22, Short.MAX_VALUE)
                 .add(jLabel4)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jXDatePicker2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -133,7 +133,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
                 .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jlLevelx)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -237,8 +237,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     
     private String contragentsList =
             "SELECT nc.id_contragent, nc.code_contragent, nc.name_n_contragent " +
-            "FROM n_contragent nc " +
-            "WHERE nc.code_contragent LIKE '%";
+            "FROM n_contragent nc ";
     
     private String contragentById =
             "SELECT nc.code_contragent, nc.name_n_contragent FROM n_contragent nc " +
@@ -294,8 +293,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
                     iniDate = getStm().executeQuery(iniDateQuery);
                     iniDate.next();
                     hm.put("initialDate", iniDate.getDate("data").toString());
-                    imakante.com.vcomponents.periodicaDialog td = new imakante.com.vcomponents.periodicaDialog(this, true,
-                            tableD, getConn(), hm, jasperFile,
+                    imakante.com.vcomponents.periodicaDialog td = new imakante.com.vcomponents.periodicaDialog(this, true, tableD, getConn(), hm, jasperFile,
                             "\u0417\u0434\u044A\u043B\u0436\u0435\u043D\u0438\u044F \u043D\u0430 " + getNameContragent().toUpperCase(), bord);
                     td.setVisible(true);
                 } catch(java.sql.SQLException ex) { ex.printStackTrace(); }
@@ -311,7 +309,12 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     }
     
     private void getContragent() {
-        String contragents = contragentsList + obtainCodeFragment() + "%';";
+        String filter;
+        if (obtainInputType()) 
+            filter = "WHERE nc.code_contragent LIKE '%";
+        else 
+            filter = "WHERE nc.name_n_contragent LIKE '%";
+        String contragents = contragentsList + filter + jTextField1.getText() + "%';";
         java.sql.ResultSet rsC;
         imakante.com.CustomTableModel modelC;
         imakante.com.CustomTable tableC;
@@ -330,16 +333,12 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         } catch(java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
-    private int obtainCodeFragment() {
+    private boolean obtainInputType() {
         int i = 0;
         try {
-            if(jTextField1.getText().equals(""))
-                i = 0;
-            else
-                i =  Integer.parseInt(jTextField1.getText());
-            return i;
-        } catch (NumberFormatException ex) { i = 0; }
-        return i;
+            i =  Integer.parseInt(jTextField1.getText());
+        } catch (NumberFormatException ex) { return false; }
+        return true;
     }
     
     private void getContragentByID(int ID) {
@@ -351,7 +350,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
             setCodeContragent(rsC.getInt("code_contragent"));
             setNameContragent(rsC.getString("name_n_contragent"));
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
-        jTextField1.setText("" + getCodeContragent());
+        jTextField1.setText("" + getCodeContragent() + " - " + getNameContragent());
     }
     
     @Override

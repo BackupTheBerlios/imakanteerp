@@ -19,8 +19,6 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox();
         jPanel5 = new javax.swing.JPanel();
@@ -39,7 +37,7 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 51, 153)));
-        jLabel1.setText("\u041a\u043e\u0434:");
+        jLabel1.setText("\u041a\u043e\u0434 - \u0418\u043c\u0435:");
 
         jTextField1.setBackground(new java.awt.Color(204, 204, 255));
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -59,11 +57,6 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
             }
         });
 
-        jLabel2.setText("\u0418\u043c\u0435:");
-
-        jTextField2.setEditable(false);
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
         org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -72,11 +65,7 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
                 .addContainerGap()
                 .add(jLabel1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 67, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(12, 12, 12)
-                .add(jLabel2)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -85,8 +74,6 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
                 .addContainerGap()
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel1)
-                    .add(jLabel2)
-                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -100,7 +87,7 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jComboBox1, 0, 334, Short.MAX_VALUE)
+                .add(jComboBox1, 0, 338, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -124,7 +111,7 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
                 .add(jLabel3)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 36, Short.MAX_VALUE)
                 .add(jLabel4)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jXDatePicker2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -166,7 +153,7 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
                 .add(jPanel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jlLevelx)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -196,7 +183,7 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
 
         setBounds(70, 40, 400, 319);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jTextField1.transferFocus();
         } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) {
@@ -204,19 +191,20 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
             getContragent();
         } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextField1.setText(""); }
     }//GEN-LAST:event_jTextField1KeyPressed
-
+    
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+        jTextField1.selectAll();
         fGain(jTextField1);
     }//GEN-LAST:event_jTextField1FocusGained
-
+    
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
         fLost(jTextField1);
     }//GEN-LAST:event_jTextField1FocusLost
-
+    
     private void jbExecuteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExecuteActionPerformed
         executeReport();
     }//GEN-LAST:event_jbExecuteActionPerformed
-
+    
     private void jbQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbQuitActionPerformed
         this.dispose();
     }//GEN-LAST:event_jbQuitActionPerformed
@@ -224,7 +212,6 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
@@ -233,7 +220,6 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
     private org.jdesktop.swingx.JXDatePicker jXDatePicker2;
     private javax.swing.JButton jbExecute;
@@ -265,8 +251,7 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
     
     private String contragentsList =
             "SELECT nc.id_contragent, nc.code_contragent, nc.name_n_contragent " +
-            "FROM n_contragent nc " +
-            "WHERE nc.code_contragent LIKE '%";
+            "FROM n_contragent nc ";
     
     private String contragentById =
             "SELECT nc.code_contragent, nc.name_n_contragent FROM n_contragent nc " +
@@ -277,7 +262,12 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
     }
     
     private void getContragent() {
-        String contragents = contragentsList + obtainCodeFragment() + "%';";
+        String filter;
+        if (obtainInputType()) 
+            filter = "WHERE nc.code_contragent LIKE '%";
+        else 
+            filter = "WHERE nc.name_n_contragent LIKE '%";
+        String contragents = contragentsList + filter + jTextField1.getText() + "%';";
         java.sql.ResultSet rsC;
         imakante.com.CustomTableModel modelC;
         imakante.com.CustomTable tableC;
@@ -296,16 +286,12 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
         } catch(java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
-    private int obtainCodeFragment() {
+    private boolean obtainInputType() {
         int i = 0;
         try {
-            if(jTextField1.getText().equals(""))
-                i = 0;
-            else
-                i =  Integer.parseInt(jTextField1.getText());
-            return i;
-        } catch (NumberFormatException ex) { i = 0; }
-        return i;
+            i =  Integer.parseInt(jTextField1.getText());
+        } catch (NumberFormatException ex) { return false; }
+        return true;
     }
     
     private void getContragentByID(int ID) {
@@ -317,8 +303,7 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
             setCodeContragent(rsC.getInt("code_contragent"));
             setNameContragent(rsC.getString("name_n_contragent"));
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
-        jTextField1.setText("" + getCodeContragent());
-        jTextField2.setText(getNameContragent());
+        jTextField1.setText("" + getCodeContragent() + " - " + getNameContragent());
     }
     
     @Override
