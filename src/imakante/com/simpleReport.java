@@ -95,8 +95,11 @@ public class simpleReport extends javax.swing.JFrame {
         this.path = path;
         this.title = title;
         initComponents();
-        readJasperXML(path+"simplereport.jrxml");
-        readClassTypeFromXML();
+        
+        int state = this.getExtendedState();
+        state |= this.ICONIFIED;
+        this.setExtendedState(state);
+              
         customComponetInit();
         createjTreeForSetup();
         listenerForJtreeSetup();
@@ -114,9 +117,7 @@ public class simpleReport extends javax.swing.JFrame {
         
        
         
-        int state = this.getExtendedState();
-        state |= this.ICONIFIED;
-        this.setExtendedState(state);
+       
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         int x = (((dim.width)-(this.getSize().width))/2);
         int y = (((dim.height)-(this.getSize().height))/2);
@@ -548,8 +549,8 @@ public class simpleReport extends javax.swing.JFrame {
 // TODO add your handling code here:
        if(jProgressBar1.getValue()==100)
        {
-         jDialogProgresBar.setVisible(false);
-         viewSimpleReport(path+defaultFiletoSave,path);
+         
+          jDialogProgresBar.setVisible(false);
           int state = this.getExtendedState();
           state &= ~this.ICONIFIED;
           this.setExtendedState(state);
@@ -569,7 +570,11 @@ public class simpleReport extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
         jDialogSetup.setSize(500,500);
-        jDialogSetup.setVisible(true);
+        java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (((dim.width)-( jDialogSetup.getSize().width))/2);
+        int y = (((dim.height)-( jDialogSetup.getSize().height))/2);
+       jDialogSetup.setLocation(x, y);
+       jDialogSetup.setVisible(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
     
@@ -2087,11 +2092,9 @@ private void viewSimpleReport(String filename,String path)
     if(jrv == null) System.out.println("Error viewSimpleReport, jrv =null");
     jPanelData.removeAll();
     jPanelData.add(jrv);
-    jrv.repaint();
-    jrv.setVisible(true);
     jPanelControl.revalidate();
     jPanelData.repaint();
-    jPanelData.setVisible(true);
+   
     }
     catch(Exception ds){System.out.println("Error viewSimpleReport");};
  
@@ -2107,17 +2110,23 @@ private void engine()
     t = new Thread(new Runnable() {
         public void run() 
         {
-            buildColumns();   // 10 %
-           jProgressBar1.setValue(10);
-            setTitleXML(title);   // 10%
-           jProgressBar1.setValue(jProgressBar1.getValue()+10);
-            setColumnNamesXML(colHr); //30%
-           jProgressBar1.setValue(jProgressBar1.getValue()+30);
-            setDetailsXML(colDa);     // 30#
-            jProgressBar1.setValue(jProgressBar1.getValue()+30);
-            saveToFileXML(path+defaultFiletoSave); // 20 %
-            jProgressBar1.setValue(jProgressBar1.getValue()+20);
+               readJasperXML(path+"simplereport.jrxml");
+          jProgressBar1.setValue(3);
+              readClassTypeFromXML();
+          jProgressBar1.setValue(jProgressBar1.getValue()+5);
+              buildColumns();   
+          jProgressBar1.setValue(jProgressBar1.getValue()+10);
+              setTitleXML(title);   
+          jProgressBar1.setValue(jProgressBar1.getValue()+2);
+              setColumnNamesXML(colHr); 
+          jProgressBar1.setValue(jProgressBar1.getValue()+30);
+               setDetailsXML(colDa);    
+          jProgressBar1.setValue(jProgressBar1.getValue()+30);
+               saveToFileXML(path+defaultFiletoSave); 
+          jProgressBar1.setValue(jProgressBar1.getValue()+19);
+            viewSimpleReport(path+defaultFiletoSave,path);
             isFinishAll = true;
+          jProgressBar1.setValue(jProgressBar1.getValue()+1);
         }
     });
     
