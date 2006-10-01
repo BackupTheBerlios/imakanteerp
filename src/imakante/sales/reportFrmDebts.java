@@ -173,6 +173,10 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     }//GEN-LAST:event_jTextField1KeyPressed
     
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+        if (getIdContragent() <= 0)
+            getContragent();
+        else 
+            getContragentByID(getIdContragent());
         fLost(jTextField1);
     }//GEN-LAST:event_jTextField1FocusLost
     
