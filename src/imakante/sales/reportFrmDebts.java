@@ -216,6 +216,8 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd");
     private org.jdesktop.swingx.JXDatePicker dp = new org.jdesktop.swingx.JXDatePicker();
     private String TODAY = (String)formatter.format(dp.getDate());
+    private int buffCode = 0;
+    private String buffName = "";
     private int idContragent = 0;
     private int codeContragent = 0;
     private String nameContragent = "";
@@ -340,7 +342,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     private boolean obtainInputType() {
         int i = 0;
         try {
-            i =  Integer.parseInt(jTextField1.getText());
+            i = Integer.parseInt(jTextField1.getText());
         } catch (NumberFormatException ex) { return false; }
         return true;
     }
@@ -353,6 +355,8 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
             setIdContragent(ID);
             setCodeContragent(rsC.getInt("code_contragent"));
             setNameContragent(rsC.getString("name_n_contragent"));
+            buffCode = getCodeContragent();
+            buffName = getNameContragent();
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
         jTextField1.setText("" + getCodeContragent() + " - " + getNameContragent());
     }
@@ -361,6 +365,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     public void setIntTransfer(int idTransfer) {
         this.IDTransfer = idTransfer;
         getContragentByID(IDTransfer);
+        this.isFromF7 = false;
     }
     
     private void prepareConn() {
