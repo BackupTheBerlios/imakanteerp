@@ -63,7 +63,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
                 .addContainerGap()
                 .add(jLabel1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -90,7 +90,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
                 .add(jLabel3)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 22, Short.MAX_VALUE)
                 .add(jLabel4)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jXDatePicker2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -132,8 +132,9 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
                 .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 20, Short.MAX_VALUE)
-                .add(jlLevelx))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 8, Short.MAX_VALUE)
+                .add(jlLevelx)
+                .addContainerGap())
         );
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -161,23 +162,22 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
 
-        setBounds(50, 20, 386, 247);
+        setBounds(50, 20, 386, 237);
     }// </editor-fold>//GEN-END:initComponents
     
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jTextField1.transferFocus();
         } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) {
             this.isFromF7 = true;
-            foo();
 //            getContragent();
         } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextField1.setText(""); }
     }//GEN-LAST:event_jTextField1KeyPressed
     
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        foo();
+        manageKeyEvents();
 //        if (getIdContragent() <= 0)
 //            getContragent();
-//        else 
+//        else
 //            getContragentByID(getIdContragent());
         fLost(jTextField1);
     }//GEN-LAST:event_jTextField1FocusLost
@@ -192,7 +192,10 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     }//GEN-LAST:event_jbQuitActionPerformed
     
     private void jbExecuteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExecuteActionPerformed
-        executeReport();
+        if (this.jTextField1.getText().equals(""))
+            imakante.com.MessagePane.MissingData();
+        else
+            executeReport();
     }//GEN-LAST:event_jbExecuteActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -265,11 +268,11 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
             if (jXDatePicker1.getDateInMillis() <= jXDatePicker2.getDateInMillis()) {
                 setStartOfPeriod(jXDatePicker1);
                 setEndOfPeriod(jXDatePicker2);
-                String previousDebtsQuery = sumContragentDebts + getIdContragent() + 
+                String previousDebtsQuery = sumContragentDebts + getIdContragent() +
                         " AND date_edition_df < '" + getStartOfPeriod() + "';";
                 String debts4PeriodQuery = contragentDebts + getIdContragent() +
                         " AND date_edition_df BETWEEN '" + getStartOfPeriod() + "' AND '" + getEndOfPeriod() + "';";
-                String nextDebtsQuery = sumContragentDebts + getIdContragent() + 
+                String nextDebtsQuery = sumContragentDebts + getIdContragent() +
                         " AND date_edition_df > '" + getEndOfPeriod() + "';";
                 String iniDateQuery = initialDate + getIdContragent() + ";";
                 String sumDebtQuery = sumContragentDebts + getIdContragent() + ";";
@@ -283,7 +286,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
                     tableD = new imakante.com.CustomTable(modelD);
                     HideColumns(tableD, getColumnIndex(tableD, "id"));
                     // "NIAMA ZADYLJENIA"
-                    String[] bord = { "\u041D\u042F\u041C\u0410 \u0417\u0410\u0414\u042A\u041B\u0416\u0415\u041D\u0418\u042F", 
+                    String[] bord = { "\u041D\u042F\u041C\u0410 \u0417\u0410\u0414\u042A\u041B\u0416\u0415\u041D\u0418\u042F",
                     "\u041D\u042F\u041C\u0410 \u0417\u0410\u0414\u042A\u041B\u0416\u0415\u041D\u0418\u042F" };
                     pDebts = getStm().executeQuery(previousDebtsQuery);
                     pDebts.next();
@@ -318,9 +321,9 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     
     private void getContragent() {
         String filter;
-        if (obtainInputType()) 
+        if (obtainInputType())
             filter = "WHERE nc.code_contragent LIKE '%";
-        else 
+        else
             filter = "WHERE nc.name_n_contragent LIKE '%";
         String contragents = contragentsList + filter + jTextField1.getText() + "%';";
         java.sql.ResultSet rsC;
@@ -363,8 +366,53 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         jTextField1.setText("" + getCodeContragent() + " - " + getNameContragent());
     }
     
-    private void foo() {
-        
+    private void manageKeyEvents() {
+        String entry = this.jTextField1.getText();
+        // dali fokusa se gubi zaradi wikane na tableDialog ili zaradi transfer
+        if (this.isFromF7) {
+            
+            System.out.println("Natisnat e F7!");
+            getContragent();
+            
+        } else {
+            
+            System.out.println("Natisnat e Enter ili Tab!");
+            // dali tekstowoto pole e prazno pri zaguba na fokusa
+            if (entry.equals("")) {
+                
+                System.out.println("Tekstowoto pole e prazno!");
+                // dali ima predi6ni stoinosti w bufera
+                if (this.buffCode == 0 || this.buffName.equals("")) {
+                    
+                    System.out.println("Bufera na koda i/ili imeto e prazen!");
+                    // Propuska swobodno fokusa da premine kym sledwa6tiq komponent
+                    
+                } else {
+                    
+                    System.out.println("Bufera na koda i/ili imeto ima stoinost ot predi6en izbor w sesiqta!");
+                    // jTextField1.setText("" + getCodeContragent() + " - " + getNameContragent());
+                    
+                }
+                
+            } else {
+                
+                System.out.println("Tekstowoto pole NE e prazno!");
+                // dali ima predi6ni stoinosti w bufera
+                if ((buffCode > 0 && entry.contains("" + buffCode)) || (!buffName.equals("") && entry.contains(buffName))) {
+                    
+                    System.out.println("Bufera na koda i/ili imeto ima stoinost ot predi6en izbor w sesiqta!");
+                    jTextField1.setText("" + getCodeContragent() + " - " + getNameContragent());
+                    
+                } else {
+                    
+                    System.out.println("Neizwestno entry!");
+                    getContragent();
+                    
+                }
+                
+            }
+            
+        }
     }
     
     @Override
