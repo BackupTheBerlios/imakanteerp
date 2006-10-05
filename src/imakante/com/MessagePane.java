@@ -28,6 +28,12 @@ public class MessagePane {
                 javax.swing.JOptionPane.WARNING_MESSAGE);
     }
     
+    public static final void MissingData() {    // message = "Ima nepopylneni poleta!"
+        javax.swing.JOptionPane.showMessageDialog(null, "\u0418\u043C\u0430 \u043D\u0435\u043F\u043E\u043F\u044A\u043B\u043D\u0435\u043D\u0438 " +
+                "\u043F\u043E\u043B\u0435\u0442\u0430!", "\u0418\u041C\u0410\u041A\u0410\u041D\u0422\u0415", // IMAKANTE
+                javax.swing.JOptionPane.WARNING_MESSAGE);
+    }
+    
     // custom Info panes
     
 }
