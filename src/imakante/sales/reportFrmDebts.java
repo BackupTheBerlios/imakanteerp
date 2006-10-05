@@ -169,16 +169,13 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jTextField1.transferFocus();
         } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) {
             this.isFromF7 = true;
-//            getContragent();
+            manageKeyEvents();
         } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextField1.setText(""); }
     }//GEN-LAST:event_jTextField1KeyPressed
     
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        manageKeyEvents();
-//        if (getIdContragent() <= 0)
-//            getContragent();
-//        else
-//            getContragentByID(getIdContragent());
+        if (!isFromF7)  // wika metoda samo, ako fokusa e izguben NE zaradi F7, za dane go izpylnqwa 2 pyti!
+            manageKeyEvents();
         fLost(jTextField1);
     }//GEN-LAST:event_jTextField1FocusLost
     
@@ -370,48 +367,24 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         String entry = this.jTextField1.getText();
         // dali fokusa se gubi zaradi wikane na tableDialog ili zaradi transfer
         if (this.isFromF7) {
-            
-            System.out.println("Natisnat e F7!");
             getContragent();
-            
         } else {
-            
-            System.out.println("Natisnat e Enter ili Tab!");
             // dali tekstowoto pole e prazno pri zaguba na fokusa
             if (entry.equals("")) {
-                
-                System.out.println("Tekstowoto pole e prazno!");
                 // dali ima predi6ni stoinosti w bufera
                 if (this.buffCode == 0 || this.buffName.equals("")) {
-                    
-                    System.out.println("Bufera na koda i/ili imeto e prazen!");
                     // Propuska swobodno fokusa da premine kym sledwa6tiq komponent
-                    
                 } else {
-                    
-                    System.out.println("Bufera na koda i/ili imeto ima stoinost ot predi6en izbor w sesiqta!");
                     // jTextField1.setText("" + getCodeContragent() + " - " + getNameContragent());
-                    
                 }
-                
             } else {
-                
-                System.out.println("Tekstowoto pole NE e prazno!");
                 // dali ima predi6ni stoinosti w bufera
                 if ((buffCode > 0 && entry.contains("" + buffCode)) || (!buffName.equals("") && entry.contains(buffName))) {
-                    
-                    System.out.println("Bufera na koda i/ili imeto ima stoinost ot predi6en izbor w sesiqta!");
                     jTextField1.setText("" + getCodeContragent() + " - " + getNameContragent());
-                    
                 } else {
-                    
-                    System.out.println("Neizwestno entry!");
                     getContragent();
-                    
                 }
-                
             }
-            
         }
     }
     
