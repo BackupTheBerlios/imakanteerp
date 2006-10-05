@@ -88,6 +88,10 @@ public class simpleReport extends javax.swing.JFrame {
    private String defaultFiletoSave = "tmpSimpleReport.jrxml";
     // zapazvane na izbraniq font za Header
     private String headerFont[] = {"SanSerif","italic","10"};
+    private String titleFont[] = {"SanSerif","italic","10"};
+    private String dataFont[] = {"SanSerif","italic","10"};
+    private String A4Page[] ={"Portrait","595","842"};
+    private String columnRemove[];
     
     /** Creates new form simpleReport */
     public simpleReport(HashMap inputfilters,int doctype,java.sql.Connection con, imakante.com.CustomTable t,String path,String title) 
@@ -135,6 +139,7 @@ public class simpleReport extends javax.swing.JFrame {
         y = (((dim.height)-(jDialogProgresBar.getSize().height))/2);
         jDialogProgresBar.setLocation(x,y);
         jDialogProgresBar.setVisible(true);
+        
         startBuild();
         
        //  viewSimpleReport(path+defaultFiletoSave,path);
@@ -174,7 +179,7 @@ public class simpleReport extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabelDataBottom = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabelDataLeft1 = new javax.swing.JLabel();
+        jLabelDataLeft = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabelDataRight = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -192,7 +197,6 @@ public class simpleReport extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabelHeaderStatus = new javax.swing.JLabel();
         jPanelHedarBorder = new javax.swing.JPanel();
-        jComboHeaderTopBorder = new javax.swing.JComboBox();
         jComboHeadarBottomBorder = new javax.swing.JComboBox();
         jComboHeaderRightBorder = new javax.swing.JComboBox();
         jComboHeaderLeftBorder = new javax.swing.JComboBox();
@@ -207,6 +211,7 @@ public class simpleReport extends javax.swing.JFrame {
         jLabelHeaderRight = new javax.swing.JLabel();
         jLabelHeaderTop = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        jComboHeaderTopBorder = new javax.swing.JComboBox();
         jPanelTitleFont = new javax.swing.JPanel();
         jButton7 = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
@@ -226,6 +231,12 @@ public class simpleReport extends javax.swing.JFrame {
         jPanelHeaderColumnNames = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTableHeaderColName = new javax.swing.JTable();
+        jPanelPageSetup = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jRadioLandscape = new javax.swing.JRadioButton();
+        jRadioPortrait = new javax.swing.JRadioButton();
+        jComboBox1 = new javax.swing.JComboBox();
         jPanelControl = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jPanelData = new javax.swing.JPanel();
@@ -234,6 +245,12 @@ public class simpleReport extends javax.swing.JFrame {
 
         jDialogSetup.setModal(true);
         jDialogSetup.setResizable(false);
+        jDialogSetup.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowDeactivated(java.awt.event.WindowEvent evt) {
+                jDialogSetupWindowDeactivated(evt);
+            }
+        });
+
         jScrollSetup.setBackground(new java.awt.Color(255, 255, 255));
         jScrollSetup.setMinimumSize(new java.awt.Dimension(150, 500));
         jScrollSetup.setPreferredSize(new java.awt.Dimension(150, 500));
@@ -278,48 +295,44 @@ public class simpleReport extends javax.swing.JFrame {
         jPanelDataFontLayout.setHorizontalGroup(
             jPanelDataFontLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanelDataFontLayout.createSequentialGroup()
+                .addContainerGap()
                 .add(jPanelDataFontLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanelDataFontLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jLabel10)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 153, Short.MAX_VALUE)
-                        .add(jButton6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 88, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(jPanelDataFontLayout.createSequentialGroup()
-                        .addContainerGap()
                         .add(jScrollPane5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 202, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(19, 19, 19)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jScrollPane6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jScrollPane7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 32, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 22, Short.MAX_VALUE))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelDataFontLayout.createSequentialGroup()
-                        .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(jSeparator5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 340, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(35, 35, 35))
                     .add(jPanelDataFontLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jLabelDataStatus)))
-                .addContainerGap())
+                        .add(jPanelDataFontLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                            .add(jPanelDataFontLayout.createSequentialGroup()
+                                .add(jLabel10)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .add(jButton6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 96, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, jSeparator5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 305, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(35, Short.MAX_VALUE))
+                    .add(jPanelDataFontLayout.createSequentialGroup()
+                        .add(jLabelDataStatus)
+                        .addContainerGap(302, Short.MAX_VALUE))))
         );
         jPanelDataFontLayout.setVerticalGroup(
             jPanelDataFontLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanelDataFontLayout.createSequentialGroup()
-                .add(37, 37, 37)
+                .add(24, 24, 24)
                 .add(jPanelDataFontLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jScrollPane6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 184, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jScrollPane5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 184, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jScrollPane7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 184, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jScrollPane6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 184, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(23, 23, 23)
+                    .add(jScrollPane7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 184, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jSeparator5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 10, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(jPanelDataFontLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanelDataFontLayout.createSequentialGroup()
-                        .add(23, 23, 23)
-                        .add(jLabel10))
-                    .add(jPanelDataFontLayout.createSequentialGroup()
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jButton6)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanelDataFontLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jButton6)
+                    .add(jLabel10))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabelDataStatus)
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(176, Short.MAX_VALUE))
         );
         jPanelDataBorder.setMinimumSize(new java.awt.Dimension(350, 450));
         jPanelDataBorder.setPreferredSize(new java.awt.Dimension(350, 450));
@@ -356,7 +369,7 @@ public class simpleReport extends javax.swing.JFrame {
 
         jLabel7.setText("\u041b\u044f\u0432 \u0440\u044a\u0431:");
 
-        jLabelDataLeft1.setText("None");
+        jLabelDataLeft.setText("None");
 
         jLabel8.setText("\u0414\u044f\u0441\u0435\u043d \u0440\u044a\u0431:");
 
@@ -389,7 +402,7 @@ public class simpleReport extends javax.swing.JFrame {
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanelDataBorderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabelDataLeft1)
+                            .add(jLabelDataLeft)
                             .add(jLabelDataBottom)
                             .add(jLabelDataTop)
                             .add(jLabelDataRight)))
@@ -432,7 +445,8 @@ public class simpleReport extends javax.swing.JFrame {
                         .add(107, 107, 107)
                         .add(jComboDataRightBorder, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .add(18, 18, 18)
-                .add(jSeparator4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 10, Short.MAX_VALUE)
+                .add(jSeparator4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 4, Short.MAX_VALUE)
+                .add(6, 6, 6)
                 .add(jPanelDataBorderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanelDataBorderLayout.createSequentialGroup()
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -441,7 +455,7 @@ public class simpleReport extends javax.swing.JFrame {
                         .add(65, 65, 65)
                         .add(jPanelDataBorderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(jLabel7)
-                            .add(jLabelDataLeft1))
+                            .add(jLabelDataLeft))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanelDataBorderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(jLabel6)
@@ -458,6 +472,7 @@ public class simpleReport extends javax.swing.JFrame {
         );
         jPanelHedarFont.setMinimumSize(new java.awt.Dimension(350, 450));
         jPanelHedarFont.setPreferredSize(new java.awt.Dimension(350, 450));
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(60, 200));
         jListHeaderFontStyle.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "plain", "bold", "italic", "bold + italic" };
             public int getSize() { return strings.length; }
@@ -467,6 +482,7 @@ public class simpleReport extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(jListHeaderFontName);
 
+        jScrollPane3.setPreferredSize(new java.awt.Dimension(30, 200));
         jListHeaderFontSize.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "8", "10", "12", "14", "16", "18", "20", "22" };
             public int getSize() { return strings.length; }
@@ -491,50 +507,49 @@ public class simpleReport extends javax.swing.JFrame {
         jPanelHedarFontLayout.setHorizontalGroup(
             jPanelHedarFontLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanelHedarFontLayout.createSequentialGroup()
-                .add(jPanelHedarFontLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jPanelHedarFontLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jButton4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 88, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanelHedarFontLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 202, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(10, 10, 10)
-                        .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(17, 17, 17)
-                        .add(jScrollPane3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 32, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
-            .add(jPanelHedarFontLayout.createSequentialGroup()
-                .addContainerGap()
                 .add(jPanelHedarFontLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jSeparator1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
                     .add(jPanelHedarFontLayout.createSequentialGroup()
-                        .add(10, 10, 10)
+                        .addContainerGap()
                         .add(jPanelHedarFontLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabelHeaderStatus)
-                            .add(jLabel1))
-                        .add(231, 231, 231))))
+                            .add(jSeparator1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelHedarFontLayout.createSequentialGroup()
+                                .add(jLabel1)
+                                .add(110, 110, 110)
+                                .add(jButton4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 93, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                            .add(jPanelHedarFontLayout.createSequentialGroup()
+                                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 195, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 11, Short.MAX_VALUE)
+                                .add(jScrollPane3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                    .add(jPanelHedarFontLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(jLabelHeaderStatus)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanelHedarFontLayout.setVerticalGroup(
             jPanelHedarFontLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanelHedarFontLayout.createSequentialGroup()
-                .add(32, 32, 32)
-                .add(jPanelHedarFontLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jScrollPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE))
-                .add(34, 34, 34)
-                .add(jButton4)
-                .add(25, 25, 25)
+                .add(jPanelHedarFontLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jPanelHedarFontLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(jScrollPane3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanelHedarFontLayout.createSequentialGroup()
+                        .add(20, 20, 20)
+                        .add(jPanelHedarFontLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 209, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE))))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jSeparator1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 10, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel1)
-                .add(18, 18, 18)
+                .add(jPanelHedarFontLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jButton4)
+                    .add(jLabel1))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabelHeaderStatus)
-                .add(89, 89, 89))
+                .add(155, 155, 155))
         );
         jPanelHedarBorder.setMinimumSize(new java.awt.Dimension(370, 450));
-        jComboHeaderTopBorder.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "None", "Thin", "1Piont", "2Piont", "3Piont", "4Piont", "Dotted" }));
-
         jComboHeadarBottomBorder.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "None", "Thin", "1Point", "2Point", "3Point", "4Point", "Dotted" }));
 
         jComboHeaderRightBorder.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "None", "Thin", "1Point", "2Point", "3Point", "4Point", "Dotted" }));
@@ -570,12 +585,14 @@ public class simpleReport extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 122, Short.MAX_VALUE)
+            .add(0, 96, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 78, Short.MAX_VALUE)
+            .add(0, 79, Short.MAX_VALUE)
         );
+
+        jComboHeaderTopBorder.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "None", "Thin", "1Piont", "2Piont", "3Piont", "4Piont", "Dotted" }));
 
         org.jdesktop.layout.GroupLayout jPanelHedarBorderLayout = new org.jdesktop.layout.GroupLayout(jPanelHedarBorder);
         jPanelHedarBorder.setLayout(jPanelHedarBorderLayout);
@@ -584,22 +601,6 @@ public class simpleReport extends javax.swing.JFrame {
             .add(jPanelHedarBorderLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanelHedarBorderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanelHedarBorderLayout.createSequentialGroup()
-                        .add(jPanelHedarBorderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(jSeparator2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, jPanelHedarBorderLayout.createSequentialGroup()
-                                .add(jComboHeaderLeftBorder, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 98, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(jPanelHedarBorderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                                    .add(org.jdesktop.layout.GroupLayout.LEADING, jComboHeaderTopBorder, 0, 126, Short.MAX_VALUE)
-                                    .add(org.jdesktop.layout.GroupLayout.LEADING, jComboHeadarBottomBorder, 0, 126, Short.MAX_VALUE)
-                                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(jComboHeaderRightBorder, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 106, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                        .add(18, 18, 18))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelHedarBorderLayout.createSequentialGroup()
-                        .add(jButtonHeaderBorder, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 72, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(48, 48, 48))
                     .add(jPanelHedarBorderLayout.createSequentialGroup()
                         .add(jPanelHedarBorderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
                             .add(org.jdesktop.layout.GroupLayout.LEADING, jPanelHedarBorderLayout.createSequentialGroup()
@@ -618,30 +619,48 @@ public class simpleReport extends javax.swing.JFrame {
                     .add(jPanelHedarBorderLayout.createSequentialGroup()
                         .add(jLabel5)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jLabelHeaderTop))))
+                        .add(jLabelHeaderTop))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelHedarBorderLayout.createSequentialGroup()
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jComboHeaderLeftBorder, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 98, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jPanelHedarBorderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .add(jComboHeadarBottomBorder, 0, 100, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jComboHeaderTopBorder, 0, 100, Short.MAX_VALUE))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jComboHeaderRightBorder, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 106, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(44, 44, 44))
+                    .add(jPanelHedarBorderLayout.createSequentialGroup()
+                        .add(jSeparator2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
+                        .add(44, 44, 44))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelHedarBorderLayout.createSequentialGroup()
+                        .add(jButtonHeaderBorder, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 98, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(48, 48, 48))))
         );
         jPanelHedarBorderLayout.setVerticalGroup(
             jPanelHedarBorderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanelHedarBorderLayout.createSequentialGroup()
                 .add(jPanelHedarBorderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                     .add(jPanelHedarBorderLayout.createSequentialGroup()
-                        .add(43, 43, 43)
+                        .add(50, 50, 50)
                         .add(jComboHeaderTopBorder, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(15, 15, 15)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jComboHeadarBottomBorder, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(24, 24, 24))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelHedarBorderLayout.createSequentialGroup()
-                        .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(jComboHeaderRightBorder, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(86, 86, 86))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED))
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelHedarBorderLayout.createSequentialGroup()
                         .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .add(jComboHeaderLeftBorder, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(85, 85, 85)))
+                        .add(61, 61, 61))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelHedarBorderLayout.createSequentialGroup()
+                        .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(jComboHeaderRightBorder, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(66, 66, 66)))
+                .add(10, 10, 10)
                 .add(jSeparator2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 10, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(16, 16, 16)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jButtonHeaderBorder)
                 .add(14, 14, 14)
                 .add(jPanelHedarBorderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
@@ -659,7 +678,7 @@ public class simpleReport extends javax.swing.JFrame {
                 .add(jPanelHedarBorderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel5)
                     .add(jLabelHeaderTop))
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
         jPanelTitleFont.setMinimumSize(new java.awt.Dimension(360, 450));
         jButton7.setText("OK");
@@ -695,27 +714,26 @@ public class simpleReport extends javax.swing.JFrame {
         jPanelTitleFontLayout.setHorizontalGroup(
             jPanelTitleFontLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanelTitleFontLayout.createSequentialGroup()
+                .addContainerGap()
                 .add(jPanelTitleFontLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanelTitleFontLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jScrollPane8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 202, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(jPanelTitleFontLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jPanelTitleFontLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                        .add(jPanelTitleFontLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jScrollPane8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 202, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(jPanelTitleFontLayout.createSequentialGroup()
+                                .add(208, 208, 208)
                                 .add(jScrollPane9, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .add(22, 22, 22)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(jScrollPane10, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 32, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                            .add(jSeparator6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 340, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jButton7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 88, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jSeparator6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 305, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(45, Short.MAX_VALUE))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelTitleFontLayout.createSequentialGroup()
+                        .add(jLabel11)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 112, Short.MAX_VALUE)
+                        .add(jButton7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 88, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(51, 51, 51))
                     .add(jPanelTitleFontLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jLabel11))
-                    .add(jPanelTitleFontLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jLabelTitleStatus)))
-                .addContainerGap())
+                        .add(jLabelTitleStatus)
+                        .addContainerGap(312, Short.MAX_VALUE))))
         );
         jPanelTitleFontLayout.setVerticalGroup(
             jPanelTitleFontLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -723,20 +741,17 @@ public class simpleReport extends javax.swing.JFrame {
                 .add(21, 21, 21)
                 .add(jPanelTitleFontLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(jScrollPane8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 184, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jScrollPane10, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 184, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jScrollPane9, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 184, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jScrollPane9, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 184, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jScrollPane10, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 184, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(26, 26, 26)
                 .add(jSeparator6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 10, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(0, 0, 0)
                 .add(jPanelTitleFontLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanelTitleFontLayout.createSequentialGroup()
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jButton7))
-                    .add(jPanelTitleFontLayout.createSequentialGroup()
-                        .add(31, 31, 31)
-                        .add(jLabel11)))
-                .add(15, 15, 15)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel11)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButton7))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabelTitleStatus)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
         jDialogProgresBar.setResizable(false);
         jPanel2.setLayout(new java.awt.GridBagLayout());
@@ -813,6 +828,92 @@ public class simpleReport extends javax.swing.JFrame {
 
         jPanelHeaderColumnNames.add(jScrollPane4, java.awt.BorderLayout.CENTER);
 
+        jPanelPageSetup.setMinimumSize(new java.awt.Dimension(350, 450));
+        jPanelPageSetup.setPreferredSize(new java.awt.Dimension(350, 450));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, new java.awt.Color(0, 0, 0)));
+        jPanel1.setMinimumSize(new java.awt.Dimension(100, 50));
+        jPanel1.setPreferredSize(new java.awt.Dimension(100, 50));
+        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 96, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 46, Short.MAX_VALUE)
+        );
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, new java.awt.Color(0, 0, 0)));
+        jPanel5.setMinimumSize(new java.awt.Dimension(50, 100));
+        jPanel5.setPreferredSize(new java.awt.Dimension(50, 100));
+        org.jdesktop.layout.GroupLayout jPanel5Layout = new org.jdesktop.layout.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 54, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 82, Short.MAX_VALUE)
+        );
+
+        jRadioLandscape.setText("Landscape");
+        jRadioLandscape.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jRadioLandscape.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jRadioLandscape.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioLandscapeActionPerformed(evt);
+            }
+        });
+
+        jRadioPortrait.setText("Portrait");
+        jRadioPortrait.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jRadioPortrait.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jRadioPortrait.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioPortraitActionPerformed(evt);
+            }
+        });
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A4" }));
+
+        org.jdesktop.layout.GroupLayout jPanelPageSetupLayout = new org.jdesktop.layout.GroupLayout(jPanelPageSetup);
+        jPanelPageSetup.setLayout(jPanelPageSetupLayout);
+        jPanelPageSetupLayout.setHorizontalGroup(
+            jPanelPageSetupLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelPageSetupLayout.createSequentialGroup()
+                .add(36, 36, 36)
+                .add(jPanelPageSetupLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jComboBox1, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanelPageSetupLayout.createSequentialGroup()
+                        .add(jRadioPortrait)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(jRadioLandscape))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanelPageSetupLayout.createSequentialGroup()
+                        .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(60, 60, 60)
+                        .add(jPanel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 58, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(96, Short.MAX_VALUE))
+        );
+        jPanelPageSetupLayout.setVerticalGroup(
+            jPanelPageSetupLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelPageSetupLayout.createSequentialGroup()
+                .add(40, 40, 40)
+                .add(jPanelPageSetupLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jPanel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 86, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(17, 17, 17)
+                .add(jPanelPageSetupLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jRadioPortrait)
+                    .add(jRadioLandscape))
+                .add(47, 47, 47)
+                .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(223, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         jPanelControl.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -841,16 +942,97 @@ public class simpleReport extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jDialogSetupWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_jDialogSetupWindowDeactivated
+// TODO add your handling code here:
+   String strTmp="";    
+   boolean isOneCol=false;
+   columnRemove = null;
+  for(int i=0;i<jTableHeaderColName.getRowCount();i++)
+  {
+      boolean tmp = (Boolean) jTableHeaderColName.getValueAt(i,1);
+      if(!tmp)
+      {
+         strTmp += (String) jTableHeaderColName.getValueAt(i,0) + ":";
+         isOneCol = true;
+      }
+  }
+
+   if(isOneCol)
+    columnRemove = strTmp.split(":");
+   
+   if(jRadioLandscape.isSelected())
+   {
+       A4Page[0] = "Portrait";
+       A4Page[1] = "595";
+       A4Page[2] = "842";
+       pageWidth = 595;
+   }
+   if(jRadioPortrait.isSelected())
+   {
+       A4Page[0] = "Landscape";
+       A4Page[1] = "842";
+       A4Page[2] = "595"; 
+       pageWidth = 842;
+   }
+   int state = this.getExtendedState();
+   state |= this.ICONIFIED;
+   this.setExtendedState(state);
+   
+   jProgressBar1.setValue(0);
+   jDialogProgresBar.setVisible(true);
+   engine();
+   startBuild();
+
+    }//GEN-LAST:event_jDialogSetupWindowDeactivated
+
+    private void jRadioLandscapeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioLandscapeActionPerformed
+// TODO add your handling code here:
+        
+        if(jRadioLandscape.isSelected())
+        {
+            jRadioPortrait.setSelected(false);
+        }
+        else
+        {
+             jRadioPortrait.setSelected(true);
+        }
+    }//GEN-LAST:event_jRadioLandscapeActionPerformed
+
+    private void jRadioPortraitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioPortraitActionPerformed
+// TODO add your handling code here:
+        if(jRadioPortrait.isSelected())
+        {
+            jRadioLandscape.setSelected(false);
+        }
+        else
+        {
+            jRadioLandscape.setSelected(true);
+        }
+        
+    }//GEN-LAST:event_jRadioPortraitActionPerformed
+
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
 // TODO add your handling code here:
+       titleFont[0] = (String)jListTitleFontName.getSelectedValue(); 
+       titleFont[1] = (String)jListTitleFontStyle.getSelectedValue(); 
+       titleFont[2] = (String)jListTitleFontSize.getSelectedValue();  
+       jLabelDataStatus.setText(titleFont[0]+", "+titleFont[1]+", "+titleFont[2]);  
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
 // TODO add your handling code here:
+       dataFont[0] = (String)jListDataFontName.getSelectedValue(); 
+       dataFont[1] = (String)jListDataFontStyle.getSelectedValue(); 
+       dataFont[2] = (String)jListDataFontSize.getSelectedValue();  
+       jLabelDataStatus.setText(dataFont[0]+", "+dataFont[1]+", "+dataFont[2]);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButtonDataBorderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDataBorderActionPerformed
 // TODO add your handling code here:
+     jLabelDataBottom.setText((String)jComboDataBottomBorder.getSelectedItem());
+        jLabelDataLeft.setText((String)jComboDataLeftBorder.getSelectedItem());
+        jLabelDataRight.setText((String)jComboDataRightBorder.getSelectedItem());
+        jLabelDataTop.setText((String)jComboDataTopBorder.getSelectedItem());    
     }//GEN-LAST:event_jButtonDataBorderActionPerformed
 
     private void jButtonHeaderBorderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHeaderBorderActionPerformed
@@ -921,6 +1103,7 @@ public class simpleReport extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButtonDataBorder;
     private javax.swing.JButton jButtonHeaderBorder;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboDataBottomBorder;
     private javax.swing.JComboBox jComboDataLeftBorder;
     private javax.swing.JComboBox jComboDataRightBorder;
@@ -943,7 +1126,7 @@ public class simpleReport extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelDataBottom;
-    private javax.swing.JLabel jLabelDataLeft1;
+    private javax.swing.JLabel jLabelDataLeft;
     private javax.swing.JLabel jLabelDataRight;
     private javax.swing.JLabel jLabelDataStatus;
     private javax.swing.JLabel jLabelDataTop;
@@ -962,9 +1145,11 @@ public class simpleReport extends javax.swing.JFrame {
     private javax.swing.JList jListTitleFontName;
     private javax.swing.JList jListTitleFontSize;
     private javax.swing.JList jListTitleFontStyle;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanelControl;
     private javax.swing.JPanel jPanelData;
     private javax.swing.JPanel jPanelDataBorder;
@@ -972,8 +1157,11 @@ public class simpleReport extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelHeaderColumnNames;
     private javax.swing.JPanel jPanelHedarBorder;
     private javax.swing.JPanel jPanelHedarFont;
+    private javax.swing.JPanel jPanelPageSetup;
     private javax.swing.JPanel jPanelTitleFont;
     private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JRadioButton jRadioLandscape;
+    private javax.swing.JRadioButton jRadioPortrait;
     private javax.swing.JScrollPane jScrollData;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
@@ -1144,7 +1332,7 @@ public class simpleReport extends javax.swing.JFrame {
       horizontalAligment = "Center";
       verticalAligment = "Top";   
     }
- public void setTextElement_font_size(byte size)   
+ public void setTextElement_font_size(int size)   
  {
       textElement_font_size = size;
  }
@@ -1571,8 +1759,13 @@ private void listenerForJtreeSetup()
                    jScrollData.repaint(); 
                 }
                 if(parentName.equals("Данни на колоните")) {
-                  
+                   jLabelDataStatus.setText(dataFont[0]+", "+dataFont[1]+", "+dataFont[2]) ;
                    jScrollData.setViewportView(jPanelDataFont);
+                   jScrollData.repaint();
+                }
+               if(parentName.equals("Заглавие")) {
+                   jLabelTitleStatus.setText(titleFont[0]+", "+titleFont[1]+", "+titleFont[2]) ;
+                   jScrollData.setViewportView(jPanelTitleFont);
                    jScrollData.repaint();
                 }
              }
@@ -1603,6 +1796,19 @@ private void listenerForJtreeSetup()
                      jScrollData.repaint();
                  }
             }
+            
+            if(userNode.equals("Страница")) 
+            { 
+                 DefaultMutableTreeNode parentNode = (DefaultMutableTreeNode) node.getParent();
+                 String parentName = (String) parentNode.getUserObject();
+                 
+                 if(parentName.equals("Страница")) {
+                    
+                     jScrollData.setViewportView(jPanelPageSetup);
+                     jScrollData.repaint();
+                 }
+            } 
+             
              
          }
          
@@ -1662,11 +1868,12 @@ private void customComponetInit()
    fonts = ge.getAllFonts();
    myListModel listHeaderFontName = new myListModel();
    jListHeaderFontName.setModel(listHeaderFontName);
-  
+   jListTitleFontName.setModel(listHeaderFontName);
+   jListDataFontName.setModel(listHeaderFontName);
    for(int i=0 ; i < fonts.length;i++)
    {
        listHeaderFontName.setElement(fonts[i].getFontName());
-      
+       
    }
    
     
@@ -1676,12 +1883,14 @@ private void customComponetInit()
 private void buildColumns()
 {
  int colCount = getColCountWithoutHides(docType);
+ if(columnRemove != null)
+ colCount -= columnRemove.length;
  int index=0;
  System.out.println("colCount = "+ colCount);
  colHr = new textField[colCount];
  colDa = new textField[colCount];
  String colNameBG;
-  String columnClass;
+ String columnClass;
  int colWidth = pageWidth/colCount;
  
  for(int i=0;i< table.getColumnCount(); i++) 
@@ -1689,7 +1898,7 @@ private void buildColumns()
      colNameBG = table.getColumnName(i);
      columnClass = (String) storeCalssType.get(colNameBG);
     
-     if(!checkForHideColumn(colNameBG,docType)) 
+     if(!checkForHideColumn(colNameBG,docType) && !checkForRemoveColumn(colNameBG)) 
      {
         
        /*  if(i>46)
@@ -1716,6 +1925,37 @@ private void buildColumns()
          colHr[index].setPositionY(0);
          colHr[index].setWidth(colWidth);
          colHr[index].setHeight(15);
+         colHr[index].setTextElement_font_fontName(headerFont[0]);
+         colHr[index].setTextElement_font_size(Integer.parseInt(headerFont[2]));
+         if(headerFont[1].equals("italic"))
+         {
+          colHr[index].setTextElement_font_italic(true);  
+         }
+         if(headerFont[1].equals("bold"))
+         {
+           colHr[index].setTextElement_font_boild(true); 
+           
+         }
+         if(headerFont[1].equals("plain"))
+         {
+             colHr[index].setTextElement_font_italic(false);
+            colHr[index].setTextElement_font_boild(false);
+         }
+         
+         if( headerFont[1].startsWith("+",4))
+         {
+            colHr[index].setTextElement_font_italic(true);
+            colHr[index].setTextElement_font_boild(true); 
+             
+         }
+         
+         colHr[index].setBox_topBorder(jLabelHeaderTop.getText());
+         colHr[index].setBox_bottomBorder(jLabelHeaderBottom.getText());
+         colHr[index].setBox_leftBorder(jLabelHeaderLeft.getText());
+         colHr[index].setBox_rightBorder(jLabelHeaderRight.getText());
+         
+        
+         
          //================================================================================
          colDa[index] = new textField(nameColumnsEN[getNameColumnsEN(colNameBG)]);
          colDa[index].setFieldParameterExpression(getNameColumnsENASField(getNameColumnsEN(colNameBG)));
@@ -1728,6 +1968,37 @@ private void buildColumns()
          colDa[index].setPositionY(0);
          colDa[index].setWidth(colWidth);
          colDa[index].setHeight(15);
+         colDa[index].setTextElement_font_fontName(dataFont[0]);
+         colDa[index].setTextElement_font_size(Integer.parseInt(dataFont[2]));
+        
+         if(dataFont[1].equals("italic"))
+         {
+          colDa[index].setTextElement_font_italic(true);  
+         }
+         if(dataFont[1].equals("bold"))
+         {
+           colDa[index].setTextElement_font_boild(true); 
+           
+         }
+         if(dataFont[1].equals("plain"))
+         {
+           colDa[index].setTextElement_font_boild(false); 
+            colDa[index].setTextElement_font_italic(false);
+         }
+         
+         if( dataFont[1].startsWith("+",4))
+         {
+            colDa[index].setTextElement_font_italic(true);
+            colDa[index].setTextElement_font_boild(true); 
+             
+         }
+         
+         colDa[index].setBox_topBorder(jLabelDataTop.getText());
+         colDa[index].setBox_bottomBorder(jLabelDataBottom.getText());
+         colDa[index].setBox_leftBorder(jLabelDataLeft.getText());
+         colDa[index].setBox_rightBorder(jLabelDataRight.getText());
+
+         
          index++;
          
      }
@@ -1745,60 +2016,25 @@ private int getColCountWithoutHides(int doctype)
     {
         case aeDocumentFacade.FAKTURI:
         {
-           // skrivane na koloni  na kontragent s index "1" nakraq
-         //   maxCount-=8 --------- 8
-        //    maxCount-=3; ------------- 3
-        //    maxCount-=3; ------------- 3
-        //    maxCount-=3; --------------- 3
-                       
-         //   HideColumns(getColumnIndex("Склад (към)")); -----------1
-          
-            maxCount -=18;  
+         
+            maxCount -=17;  
             break;
         }
         case aeDocumentFacade.FAKTURA_DANACHNA:
         {
-           // skrivane na koloni  na kontragent s index "1" nakraq
-          //  maxCount-=8 ------ 8
-         //   maxCount-=3; ----------- 3
-         //   maxCount-=3;----------- 3
-        //    maxCount-=3; ---------- 3
-                       
-         //   HideColumns(getColumnIndex("Склад (към)")); ---1
-          
+                     
             maxCount -=17;   
             break;
         }
         case aeDocumentFacade.FAKTURA_OPROSTENA:
         {
-            // skrivane na koloni  na kontragent s index "1" nakraq
-            //   maxCount-=8 ------- 8
-            //   maxCount-=3; ------------ 3
-            //   maxCount-=3; ----------- 3
-            //    maxCount-=3; 
-            
-            //    HideColumns(getColumnIndex("Склад (към)"));
-
-            maxCount -=18;   
+           
+            maxCount -=17;   
             break;
         }
         case aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE:
         {
-          // skrivane na koloni  na kontragent s index "1" nakraq
-          //  maxCount-=8 -------- 8
-          // skrivane na koloni  na kontragent s index "2" nakraq
-          // maxCount-=8  ------ 8 
-           
-          //  maxCount-=3; ---------- 3
-          //  maxCount-=3; ----------3
-          //  maxCount-=3;-----------3
-            
-            
-           //  HideColumns(getColumnIndex("Вид плащане")); ----1
-          //  HideColumns(getColumnIndex("ДДС")); ------------1
-          //   HideColumns(getColumnIndex("Общо"));------------1
-          //   HideColumns(getColumnIndex("Дата на плащане"));-1
-             
+          
            
            maxCount -=29;  
             break;
@@ -1868,7 +2104,7 @@ private int getColCountWithoutHides(int doctype)
            maxCount-=8;
            maxCount-=3;
            maxCount-=3;
-           maxCount-=3;      
+           maxCount-=1;      
                 
           break;
         }
@@ -2487,7 +2723,7 @@ private void engine()
     t = new Thread(new Runnable() {
         public void run() 
         {
-              
+           
                readJasperXML(path+"simplereport.jrxml");
           jProgressBar1.setValue(3);
               readClassTypeFromXML();
@@ -2500,6 +2736,7 @@ private void engine()
           jProgressBar1.setValue(jProgressBar1.getValue()+25);
                setDetailsXML(colDa);    
           jProgressBar1.setValue(jProgressBar1.getValue()+25);
+               setPageXML();
                saveToFileXML(path+defaultFiletoSave); 
           jProgressBar1.setValue(jProgressBar1.getValue()+18);
             viewSimpleReport(path+defaultFiletoSave,path);
@@ -2527,18 +2764,63 @@ private void initColumnForCustomSetup()
 {
     Object ob[] = new Object[2];
   
-   
+   if(jTableHeaderColName.getRowCount()<1)
+   {
    for(int i=0;i<colHr.length;i++) 
    {
       
        ob[0] = new String(colHr[i].getTextFieldExpression_text());
        ob[1] = new Boolean(true);
        ((DefaultTableModel)jTableHeaderColName.getModel()).addRow(ob);
+       
+       
    
    }
+   }
+  
     jTableHeaderColName.getColumnModel().getColumn(0).setMaxWidth(250);
     jTableHeaderColName.getColumnModel().getColumn(0).setMinWidth(250);
     jTableHeaderColName.getColumnModel().getColumn(1).setMaxWidth(100);
     jTableHeaderColName.getColumnModel().getColumn(1).setMinWidth(100);
+}
+private boolean searchCells(String in)
+{
+    boolean return_value=false;
+    for(int i=0;i<jTableHeaderColName.getRowCount();i++)
+    {
+        String sstr = (String)jTableHeaderColName.getValueAt(i,0);
+        if(sstr.equals(in))
+        {
+           return_value = true;
+           break;
+        }
+    }
+ return return_value;
+}
+private void setPageXML()
+{
+   root.setAttribute("orientation",A4Page[0]);
+   root.setAttribute("pageWidth",A4Page[1]);
+   root.setAttribute("pageHeight",A4Page[2]);
+}
+private boolean checkForRemoveColumn(String in)
+{
+    boolean return_value = false;
+    if(columnRemove==null)
+        return false;
+    for(int i=0;i<columnRemove.length;i++)
+    {
+        if(columnRemove[i].equals(in))
+        {
+           return_value = true;
+           break;
+        }
+    }
+    
+    return return_value;
+}
+private void restartBuild()
+{
+   
 }
 }// ens sinpleReport
