@@ -474,39 +474,39 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-544)/2, (screenSize.height-444)/2, 544, 444);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jTextArea1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea1FocusLost
         fLost(jTextArea1);
     }//GEN-LAST:event_jTextArea1FocusLost
-
+    
     private void jComboMFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboMFocusGained
         fGain(jComboM);
     }//GEN-LAST:event_jComboMFocusGained
-
+    
     private void jComboDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboDFocusLost
         fLost(jComboD);
     }//GEN-LAST:event_jComboDFocusLost
-
+    
     private void jComboDFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboDFocusGained
         fGain(jComboD);
     }//GEN-LAST:event_jComboDFocusGained
-
+    
     private void jTextField6FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusLost
         fLost(jTextField6);
     }//GEN-LAST:event_jTextField6FocusLost
-
+    
     private void jComboCRFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboCRFocusLost
         fLost(jComboCR);
     }//GEN-LAST:event_jComboCRFocusLost
-
+    
     private void jComboCRFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboCRFocusGained
         fGain(jComboCR);
     }//GEN-LAST:event_jComboCRFocusGained
-
+    
     private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
         fLost(jTextField2);
     }//GEN-LAST:event_jTextField2FocusLost
-
+    
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
         fLost(jTextField1);
     }//GEN-LAST:event_jTextField1FocusLost
@@ -531,11 +531,11 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     private void jTextField6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER)
             jTextField6.transferFocus();
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) { 
+        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) {
             
             // TODO Spisak na swyrzanite dokumenti za izbor na podhodq6tata fasada!!!
             getRelatedDocument();
-        }
+        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextField6.setText(""); }
     }//GEN-LAST:event_jTextField6KeyPressed
     
     private void jXDatePicker1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jXDatePicker1KeyPressed
@@ -765,6 +765,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     private String[] namesD;
     java.text.SimpleDateFormat formatterP = new java.text.SimpleDateFormat("dd-MM-yyyy");
     java.text.SimpleDateFormat formatterG = new java.text.SimpleDateFormat("yyyy-MM-dd");
+    private static boolean isFromF7 = false;
     
     
     //---------------END My Variables
@@ -1027,6 +1028,34 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         if(money == 1){
             this.jTextField7.setText("1");
             revalidateSums();
+        }
+    }
+    
+    private void manageKeyEvents(javax.swing.JTextField jtf) {
+        String entry = jtf.getText();
+        if (jtf.equals(this.jTextField2)) {
+            if (this.isFromF7) {
+                // TODO kakwo se slu4wa kogato e natisnat F7?
+//                getContragent();
+            } else {
+                if (entry.equals("")) {
+                    // TODO kakwo stawa kogato poleto e prazno? (Enter/Tab)
+//                    if (this.buffCode == 0 || this.buffName.equals("")) {
+//                        
+//                    } else {
+//                        // jtf.setText("" + getCodeContragent() + " - " + getNameContragent());
+//                    }
+                } else {
+                    // TODO kakwo stawa kogato imame ne6to wywedeno w poleto? (Enter/Tab)
+//                    if ((buffCode > 0 && entry.contains("" + buffCode)) || (!buffName.equals("") && entry.contains(buffName))) {
+//                        jtf.setText("" + getCodeContragent() + " - " + getNameContragent());
+//                    } else {
+//                        getContragent();
+//                    }
+                }
+            }
+        } else if (jtf.equals(this.jTextField6)) {
+            // TODO kakwo se slu4wa pri natiskane na klawi6ite w poleto za swyrzani dokumenti???
         }
     }
     

@@ -169,13 +169,13 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jTextField1.transferFocus();
         } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) {
             this.isFromF7 = true;
-            manageKeyEvents();
+            manageKeyEvents(this.jTextField1);
         } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextField1.setText(""); }
     }//GEN-LAST:event_jTextField1KeyPressed
     
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
         if (!isFromF7)  // wika metoda samo, ako fokusa e izguben NE zaradi F7, za dane go izpylnqwa 2 pyti!
-            manageKeyEvents();
+            manageKeyEvents(this.jTextField1);
         fLost(jTextField1);
     }//GEN-LAST:event_jTextField1FocusLost
     
@@ -363,8 +363,8 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         jTextField1.setText("" + getCodeContragent() + " - " + getNameContragent());
     }
     
-    private void manageKeyEvents() {
-        String entry = this.jTextField1.getText();
+    private void manageKeyEvents(javax.swing.JTextField jtf) {
+        String entry = jtf.getText();
         // dali fokusa se gubi zaradi wikane na tableDialog ili zaradi transfer
         if (this.isFromF7) {
             getContragent();
@@ -375,12 +375,12 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
                 if (this.buffCode == 0 || this.buffName.equals("")) {
                     // Propuska swobodno fokusa da premine kym sledwa6tiq komponent
                 } else {
-                    // jTextField1.setText("" + getCodeContragent() + " - " + getNameContragent());
+                    // jtf.setText("" + getCodeContragent() + " - " + getNameContragent());
                 }
             } else {
                 // dali ima predi6ni stoinosti w bufera
                 if ((buffCode > 0 && entry.contains("" + buffCode)) || (!buffName.equals("") && entry.contains(buffName))) {
-                    jTextField1.setText("" + getCodeContragent() + " - " + getNameContragent());
+                    jtf.setText("" + getCodeContragent() + " - " + getNameContragent());
                 } else {
                     getContragent();
                 }
