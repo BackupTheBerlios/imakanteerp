@@ -2,18 +2,18 @@
 
 CREATE VIEW rep_contra_debts_and_payments AS
 SELECT d.id_df AS 'id',
-    td.name_ntd AS 'Tip dokument',
+    td.name_ntd AS 'dokumentType',
     d.type_df AS 'refCodeNTD',
-    d.number_df AS 'Nomer dokument',
+    d.number_df AS 'dokumentNumber',
     d.out_contragent_df AS 'refNC', 
     nc.code_contragent AS 'codeContragent', 
-    nc.name_n_contragent AS 'Kontragent', 
-    d.total_df AS 'suma', 
-    d.date_edition_df AS 'ot data', 
+    nc.name_n_contragent AS 'Contragent', 
+    d.total_df AS 'Suma', 
+    d.date_edition_df AS 'data', 
     d.description_pay_df AS 'refKP', 
-    kp.name_kp AS 'Razpla6tane', 
-    d.paying_order_df AS 'Prihoden order', 
-    d.date_pay_df AS 'Pay Day', 
+    kp.name_kp AS 'typePayment', 
+    d.paying_order_df AS 'incomeOrder', 
+    d.date_pay_df AS 'termOfPayment', 
     
     d.level_df AS 'LEVEL'
     FROM sl_document_facade d 

@@ -449,9 +449,8 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
                     .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                         .add(jLabel4)
                         .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                        .add(jComboM)
-                        .add(jLabel7)))
+                    .add(org.jdesktop.layout.GroupLayout.BASELINE, jComboM)
+                    .add(org.jdesktop.layout.GroupLayout.BASELINE, jLabel7))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel9)
@@ -466,7 +465,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel5)
                     .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 82, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 78, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -493,6 +492,8 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jComboDFocusGained
     
     private void jTextField6FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusLost
+        if (!isFromF7)
+            manageKeyEvents(jTextField6);
         fLost(jTextField6);
     }//GEN-LAST:event_jTextField6FocusLost
     
@@ -505,6 +506,8 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jComboCRFocusGained
     
     private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
+        if (!isFromF7)
+            manageKeyEvents(jTextField2);
         fLost(jTextField2);
     }//GEN-LAST:event_jTextField2FocusLost
     
@@ -533,9 +536,8 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER)
             jTextField6.transferFocus();
         else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) {
-            
-            // TODO Spisak na swyrzanite dokumenti za izbor na podhodq6tata fasada!!!
-            getRelatedDocument();
+            this.isFromF7 = true;
+            manageKeyEvents(this.jTextField6);
         } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextField6.setText(""); }
     }//GEN-LAST:event_jTextField6KeyPressed
     
@@ -548,20 +550,11 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jComboCRKeyPressed
     
     private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
-            revalidateContragent();
-            this.jLabel14.setText(myParent.getHName());
-            this.jLabel14.revalidate();
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER)
             jTextField2.transferFocus();
-        }
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) {
-            try {
-                myParent.intContrDialog(Integer.parseInt(jTextField2.getText()));
-            } catch (NumberFormatException ex) { ex.printStackTrace(); }
-            revalidateContragent();
-            this.jLabel14.setText(myParent.getHName());
-            this.jLabel14.revalidate();
-            jTextField2.transferFocus();
+            this.isFromF7 = true;
+            manageKeyEvents(this.jTextField6);
         }
     }//GEN-LAST:event_jTextField2KeyPressed
     
@@ -994,6 +987,12 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         jTextField2.setText("" + myParent.getHCode());
     }
     
+    private void getContragent() {
+        try {
+            myParent.intContrDialog(Integer.parseInt(jTextField2.getText()));
+        } catch (NumberFormatException ex) { ex.printStackTrace(); }
+    }
+    
     private void revalidateContragent(){
         try {
             myParent.getCodFromQu(Integer.parseInt(jTextField2.getText()));
@@ -1034,7 +1033,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     
     private void manageKeyEvents(javax.swing.JTextField jtf) {
         String entry = jtf.getText();
-        if (jtf.equals(this.jTextField2)) {
+        if (jtf.equals(this.jTextField2)) { // Izbor na KONTRAGENT
             if (this.isFromF7) {
                 // TODO kakwo se slu4wa kogato e natisnat F7?
 //                getContragent();
@@ -1042,7 +1041,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
                 if (entry.equals("")) {
                     // TODO kakwo stawa kogato poleto e prazno? (Enter/Tab)
 //                    if (this.buffCode == 0 || this.buffName.equals("")) {
-//                        
+//
 //                    } else {
 //                        // jtf.setText("" + getCodeContragent() + " - " + getNameContragent());
 //                    }
@@ -1055,8 +1054,29 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
 //                    }
                 }
             }
-        } else if (jtf.equals(this.jTextField6)) {
-            // TODO kakwo se slu4wa pri natiskane na klawi6ite w poleto za swyrzani dokumenti???
+            this.jLabel14.setText(myParent.getHName());
+            this.jLabel14.revalidate();
+            jTextField2.transferFocus();
+        } else if (jtf.equals(this.jTextField6)) {  // Izbor na SWYRZAN DOKUMENT
+            if (this.isFromF7) {
+                getRelatedDocument();
+            } else {
+                if (entry.equals("")) {
+                    // TODO kakwo stawa kogato poleto e prazno? (Enter/Tab)
+//                    if (this.buffCode == 0 || this.buffName.equals("")) {
+//
+//                    } else {
+//                        // jtf.setText("" + getCodeContragent() + " - " + getNameContragent());
+//                    }
+                } else {
+                    // TODO kakwo stawa kogato imame ne6to wywedeno w poleto? (Enter/Tab)
+//                    if ((buffCode > 0 && entry.contains("" + buffCode)) || (!buffName.equals("") && entry.contains(buffName))) {
+//                        jtf.setText("" + getCodeContragent() + " - " + getNameContragent());
+//                    } else {
+//                        getContragent();
+//                    }
+                }
+            }
         }
     }
     
@@ -1068,6 +1088,10 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     private void fLost(javax.swing.JComponent jtf) {
         jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED,
                 new java.awt.Color(255, 255, 255), null));
+    }
+    
+    public static void setIsFromF7() {
+        isFromF7 = false;
     }
     
 }// end class

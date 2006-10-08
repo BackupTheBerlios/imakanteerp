@@ -54,14 +54,14 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jPanel4" alignment="0" pref="882" max="32767" attributes="0"/>
-              <Component id="jScrollPane1" alignment="0" pref="882" max="32767" attributes="0"/>
+              <Component id="jPanel4" alignment="0" pref="878" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" alignment="0" pref="878" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <Component id="jScrollPane1" pref="301" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" pref="292" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel4" min="-2" pref="94" max="-2" attributes="0"/>
               </Group>
@@ -99,7 +99,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="1">
                               <Component id="jLabel5" max="32767" attributes="0"/>
@@ -112,25 +112,25 @@
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel2" alignment="0" pref="60" max="32767" attributes="0"/>
-                          <Component id="jtfCasaBEGIN" alignment="1" pref="60" max="32767" attributes="0"/>
-                          <Component id="jtfCasaEND" alignment="1" pref="60" max="32767" attributes="0"/>
+                          <Component id="jLabel2" alignment="0" pref="80" max="32767" attributes="0"/>
+                          <Component id="jtfCasaBEGIN" alignment="1" pref="80" max="32767" attributes="0"/>
+                          <Component id="jtfCasaEND" alignment="1" pref="80" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel3" pref="227" max="32767" attributes="0"/>
-                          <Component id="jtfContragentBEGIN" alignment="1" pref="227" max="32767" attributes="0"/>
-                          <Component id="jtfContragentEND" alignment="1" pref="227" max="32767" attributes="0"/>
+                          <Component id="jLabel3" pref="80" max="32767" attributes="0"/>
+                          <Component id="jtfContragentBEGIN" alignment="1" pref="80" max="32767" attributes="0"/>
+                          <Component id="jtfContragentEND" alignment="1" pref="80" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jXDatePickerEND" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jXDatePickerEND" alignment="0" pref="132" max="32767" attributes="0"/>
                           <Component id="jLabel1" alignment="0" pref="132" max="32767" attributes="0"/>
-                          <Component id="jXDatePickerBEGIN" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jXDatePickerBEGIN" alignment="0" pref="132" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                       <Component id="jButtonSearch" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -201,9 +201,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jtfCasaBEGIN">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="cc" red="cc" type="rgb"/>
-                </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -229,9 +226,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jtfContragentBEGIN">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="cc" red="cc" type="rgb"/>
-                </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -285,9 +279,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jtfCasaEND">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="cc" red="cc" type="rgb"/>
-                </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -303,9 +294,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jtfContragentEND">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="cc" red="cc" type="rgb"/>
-                </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">

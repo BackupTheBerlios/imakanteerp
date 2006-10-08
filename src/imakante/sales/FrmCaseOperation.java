@@ -66,7 +66,6 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         jLabel2.setText("\u041a\u0430\u0441\u0438:");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
-        jtfCasaBEGIN.setBackground(new java.awt.Color(204, 204, 255));
         jtfCasaBEGIN.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jtfCasaBEGIN.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jtfCasaBEGIN.setPreferredSize(new java.awt.Dimension(80, 20));
@@ -88,7 +87,6 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         jLabel3.setText("\u041a\u043b\u0438\u0435\u043d\u0442\u0438:");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
-        jtfContragentBEGIN.setBackground(new java.awt.Color(204, 204, 255));
         jtfContragentBEGIN.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jtfContragentBEGIN.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jtfContragentBEGIN.setPreferredSize(new java.awt.Dimension(80, 20));
@@ -129,7 +127,6 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11));
         jLabel5.setText("\u0414\u041e");
 
-        jtfCasaEND.setBackground(new java.awt.Color(204, 204, 255));
         jtfCasaEND.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jtfCasaEND.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jtfCasaEND.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -146,7 +143,6 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
             }
         });
 
-        jtfContragentEND.setBackground(new java.awt.Color(204, 204, 255));
         jtfContragentEND.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jtfContragentEND.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jtfContragentEND.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -190,7 +186,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel4Layout.createSequentialGroup()
-                .add(45, 45, 45)
+                .add(127, 127, 127)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel4Layout.createSequentialGroup()
                         .add(jLabel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -200,22 +196,22 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
                         .add(95, 95, 95)))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jtfCasaBEGIN, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jtfCasaEND, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE))
+                    .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jtfCasaBEGIN, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jtfCasaEND, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
                 .add(49, 49, 49)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jtfContragentBEGIN, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jtfContragentEND, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE))
+                    .add(jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jtfContragentBEGIN, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jtfContragentEND, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
                 .add(34, 34, 34)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jXDatePickerEND, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jXDatePickerEND, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
                     .add(jLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-                    .add(jXDatePickerBEGIN, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(jXDatePickerBEGIN, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
                 .add(17, 17, 17)
                 .add(jButtonSearch)
-                .add(106, 106, 106))
+                .add(149, 149, 149))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -262,13 +258,13 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 882, Short.MAX_VALUE)
-            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 882, Short.MAX_VALUE)
+            .add(jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 878, Short.MAX_VALUE)
+            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 878, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 94, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
@@ -748,18 +744,6 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         constructDialod(newString, 2, Names);
     }
     
-//    private void processField5() {
-//        String newString =strProduct + this.jTextField5.getText() + "%'";
-//        constructDialod(newString, 5, Names);
-//
-//    }
-//
-//    private void processField6() {
-//        if(this.jTextField5.getText()==""){this.jTextField5.setText("0");}
-//        String newString = strProduct + this.jTextField6.getText() + "%' AND `rep_comm_nal`.`code_pm` >= " + this.jTextField5.getText() + ";";
-//        constructDialod(newString, 6, Names);
-//    }
-    
     private void processField3() {
         String newString = strContragent + this.jtfContragentBEGIN.getText() + "%'";
         constructDialod(newString, 3, Names);
@@ -771,6 +755,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         constructDialod(newString, 4, Names);
     }
     
+    @Override
     public void setIntTransfer(int intTransfer) {
         this.intTransfer = intTransfer;
         if (CompNumber == 0) {  }
@@ -785,6 +770,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         if(CompNumber == 99) {
             this.setHCode(this.intTransfer);
             ae_Casa.revalidateFText();
+            ae_Casa.setIsFromF7();
         }
     }
     

@@ -189,7 +189,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     }//GEN-LAST:event_jbQuitActionPerformed
     
     private void jbExecuteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExecuteActionPerformed
-        if (this.jTextField1.getText().equals(""))
+        if (this.jTextField1.getText().equals("") || !this.jTextField1.getText().startsWith("" + buffCode))
             imakante.com.MessagePane.MissingData();
         else
             executeReport();
@@ -239,7 +239,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
             "WHERE out_contragent_df = ";
     
     private String initialDate =
-            "SELECT MIN(date_edition_df) AS data " +
+            "SELECT IFNULL(MIN(date_edition_df), '0000-00-00') AS data " +
             "FROM sl_document_facade " +
             "WHERE out_contragent_df = ";
     
@@ -300,7 +300,10 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
                     hm.put("GrandTotal", sumDebt.getDouble("suma"));
                     iniDate = getStm().executeQuery(iniDateQuery);
                     iniDate.next();
-                    hm.put("initialDate", iniDate.getDate("data").toString());
+                    if (iniDate.getString("data").equals("0000-00-00")) 
+                        hm.put("initialDate", "\u043D\u044F\u043C\u0430 \u0434\u0430\u043D\u043D\u0438");   // niama danni
+                    else 
+                        hm.put("initialDate", iniDate.getDate("data").toString());
                     imakante.com.vcomponents.periodicaDialog td = new imakante.com.vcomponents.periodicaDialog(this, true, tableD, getConn(), hm, jasperFile,
                             "\u0417\u0434\u044A\u043B\u0436\u0435\u043D\u0438\u044F \u043D\u0430 " + getNameContragent().toUpperCase(), bord);
                     td.setVisible(true);
