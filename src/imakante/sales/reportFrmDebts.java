@@ -409,12 +409,12 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
-    private void fGain(javax.swing.JComponent jtf){
+    private void fGain(javax.swing.JComponent jtf) {
         jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED,
                 new java.awt.Color(255, 0, 51), null));
     }
     
-    private void fLost(javax.swing.JComponent jtf){
+    private void fLost(javax.swing.JComponent jtf) {
         jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED,
                 new java.awt.Color(255, 255, 255), null));
     }
