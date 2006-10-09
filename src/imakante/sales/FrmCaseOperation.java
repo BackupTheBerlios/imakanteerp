@@ -551,9 +551,9 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
     
-    private int hInt =0;
-    private int hCode = 0;
-    private String hName = "";
+//    private int hInt =0;
+//    private int hCode = 0;
+//    private String hName = "";
     
     private boolean isNew = false;
     private int levelPermition = 1;
@@ -729,6 +729,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     public void windowDeactivated(java.awt.event.WindowEvent e) {
     }
     
+    @Override
     public int getIntTransfer() {
         return intTransfer;
     }
@@ -767,43 +768,43 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
             this.jtfContragentBEGIN.setText("" + this.intTransfer); }
         if(CompNumber == 4) {
             this.jtfContragentEND.setText("" + this.intTransfer); }
-        if(CompNumber == 99) {
-            this.setHCode(this.intTransfer);
-            ae_Casa.revalidateFText();
-            ae_Casa.setIsFromF7();
-        }
+//        if(CompNumber == 99) {
+//            this.setHCode(this.intTransfer);
+//            ae_Casa.revalidateFText();
+//            ae_Casa.setIsFromF7();
+//        }
     }
-    
-    public void intContrDialog(int insertedCode) {
-        String newString = strContragent + insertedCode + ",'%');";
-//        String newString = strContragent + this.jtfContragentEND.getText() + "%' AND `n_contragent`.`code_contragent` >= " + CodDialod + ";";
-        constructDialod(newString, 99, names);
-    }
-    
-    public void getCodFromQu(int CodDialog) {
-        setHInt(0);
-        setHCode(0);
-        setHName("");
-        String str = "SELECT n_contragent.id_contragent, "
-                + "`n_contragent`.`code_contragent`, `n_contragent`.`name_n_contragent`"
-                + "FROM `n_contragent` WHERE `n_contragent`.`code_contragent` = ";
-        if(getStm() == null){
-            this.prepareStm();
-        } else {  }
-        try {
-            setRs(getStm().executeQuery(str + CodDialog));
-            while(getRs().next()){
-                setHInt(getRs().getInt("id_contragent"));
-                setHCode(getRs().getInt("code_contragent"));
-                setHName(getRs().getString("name_n_contragent"));
-            }
-        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
-        if (getHInt() == 0 || getHCode() == 0) {
-            javax.swing.JOptionPane.showMessageDialog(null, "\u041d\u044f\u043c\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442 \u0441 \u0442\u0430\u043a\u044a\u0432 \u043a\u043e\u0434!", 
-                    "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415", javax.swing.JOptionPane.ERROR_MESSAGE);
-        }
-    }
-    
+//    
+//    public void intContrDialog(int insertedCode) {
+//        String newString = strContragent + insertedCode + ",'%');";
+////        String newString = strContragent + this.jtfContragentEND.getText() + "%' AND `n_contragent`.`code_contragent` >= " + CodDialod + ";";
+//        constructDialod(newString, 99, names);
+//    }
+//    
+//    public void getCodFromQu(int CodDialog) {
+//        setHInt(0);
+//        setHCode(0);
+//        setHName("");
+//        String str = "SELECT n_contragent.id_contragent, "
+//                + "`n_contragent`.`code_contragent`, `n_contragent`.`name_n_contragent`"
+//                + "FROM `n_contragent` WHERE `n_contragent`.`code_contragent` = ";
+//        if(getStm() == null){
+//            this.prepareStm();
+//        } else {  }
+//        try {
+//            setRs(getStm().executeQuery(str + CodDialog));
+//            while(getRs().next()){
+//                setHInt(getRs().getInt("id_contragent"));
+//                setHCode(getRs().getInt("code_contragent"));
+//                setHName(getRs().getString("name_n_contragent"));
+//            }
+//        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
+//        if (getHInt() == 0 || getHCode() == 0) {
+//            javax.swing.JOptionPane.showMessageDialog(null, "\u041d\u044f\u043c\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442 \u0441 \u0442\u0430\u043a\u044a\u0432 \u043a\u043e\u0434!", 
+//                    "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415", javax.swing.JOptionPane.ERROR_MESSAGE);
+//        }
+//    }
+//    
     public imakante.sales.casaOp getInternalObject() {
         return internalObject;
     }
@@ -1274,31 +1275,31 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         EndString =  EndString + p;
         return EndString;
     }
-    
-    public int getHInt() {
-        return hInt;
-    }
-    
-    public void setHInt(int hInt) {
-        this.hInt = hInt;
-    }
-    
-    public int getHCode() {
-        return hCode;
-    }
-    
-    public void setHCode(int hCode) {
-        this.hCode = hCode;
-    }
-    
-    public String getHName() {
-        return hName;
-    }
-    
-    public void setHName(String hName) {
-        this.hName = hName;
-    }
-    
+//    
+//    public int getHInt() {
+//        return hInt;
+//    }
+//    
+//    public void setHInt(int hInt) {
+//        this.hInt = hInt;
+//    }
+//    
+//    public int getHCode() {
+//        return hCode;
+//    }
+//    
+//    public void setHCode(int hCode) {
+//        this.hCode = hCode;
+//    }
+//    
+//    public String getHName() {
+//        return hName;
+//    }
+//    
+//    public void setHName(String hName) {
+//        this.hName = hName;
+//    }
+//    
     public int getLevelPermition() {
         return levelPermition;
     }

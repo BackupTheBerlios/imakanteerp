@@ -321,7 +321,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     
     private void getContragent() {
         String filter;
-        if (obtainInputType())
+        if (obtainInputType(this.jTextField1))
             filter = "WHERE nc.code_contragent LIKE '%";
         else
             filter = "WHERE nc.name_n_contragent LIKE '%";
@@ -344,10 +344,10 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         } catch(java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
-    private boolean obtainInputType() {
+    private boolean obtainInputType(javax.swing.JTextField jtf) {
         int i = 0;
         try {
-            i = Integer.parseInt(jTextField1.getText());
+            i = Integer.parseInt(jtf.getText());
         } catch (NumberFormatException ex) { return false; }
         return true;
     }

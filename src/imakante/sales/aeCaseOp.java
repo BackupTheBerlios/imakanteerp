@@ -745,7 +745,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     private int Contragent = 0;
     private int selectedCashRegister;
     private String Date = "";
-    private int BoundDocument = 0;
+    private int RelatedDocument = 0;
     private int selectedDocument;
     private double AmountMoney = 0.00;
     private int selectedCurrency;
@@ -761,6 +761,39 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     java.text.SimpleDateFormat formatterG = new java.text.SimpleDateFormat("yyyy-MM-dd");
     private static boolean isFromF7 = false;
     
+    private int buffCodeC = 0;
+    private String buffNameC = "";
+    private int idContragent = 0;
+    private int codeContragent = 0;
+    private String nameContragent = "";
+    
+    private int buffNumRD = 0;
+    private String buffNameRD = "";
+    private int idRelatedDocument = 0;
+    private int numberRelatedDocument = 0;
+    private String nameRelatedDocument = "";
+    
+    private String contragentsList =
+            "SELECT nc.id_contragent, nc.code_contragent, nc.name_n_contragent " +
+            "FROM n_contragent nc ";
+    
+    private String contragentById =
+            "SELECT nc.code_contragent, nc.name_n_contragent FROM n_contragent nc " +
+            "WHERE nc.id_contragent = ";
+    
+    private String relatedDocumentsList = 
+            "SELECT d.id_df AS id, " +
+            "td.name_ntd AS Document, " +
+            "d.number_df AS ofNumber, " +
+            "d.date_edition_df AS fromDate, " +
+            "d.total_df AS Due, " +
+            "IFNULL(@LIQ:=(SELECT SUM(sum_os_val_sl_mop) FROM sl_m_operation WHERE id_order_spec = d.id_df), 0) AS Liquidated, " +
+            "IFNULL((d.total_df - @LIQ), 0) AS Remainder, " +
+            "d.date_pay_df AS Term, " +
+            "DATEDIFF(CURRENT_DATE, d.date_pay_df) AS Overdue " +
+            "FROM sl_document_facade d " +
+            "JOIN n_type_doc td ON td.code_ntd = d.type_df " +
+            "WHERE d.out_contragent_df = ";
     
     //---------------END My Variables
     
@@ -768,14 +801,13 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     
     //SAVE
     private void saveRecord() {
-        revalidateContragent();
-        myParent.setIn_outsl_mop(myParent.getHInt());
+        myParent.setIn_outsl_mop(getIdContragent());
         this.revalidateSums();
         NumDocument = myParent.getCode();
         Contragent = myParent.getContragent_cod();
         selectedCashRegister = myParent.getIn_in_sl_mop();
         Date = myParent.getIn_DATE();
-        BoundDocument = myParent.getIn_id_order_spec();
+        RelatedDocument = myParent.getIn_id_order_spec();
         selectedDocument = myParent.getIn_id_order_doc();
         AmountMoney = myParent.getIn_sum_sl_mop();
         selectedCurrency = myParent.getIn_id_n_money();
@@ -788,9 +820,10 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         try {
             myParent.setCode(Integer.parseInt(jTextField1.getText()));
             myParent.setContragent_cod(Integer.parseInt(jTextField2.getText()));
-            if(jTextField6.getText().equals("")){
+            if(jTextField6.getText().equals(""))
                 myParent.setIn_id_order_spec(-1);
-            } else{myParent.setIn_id_order_spec(Integer.parseInt(jTextField6.getText()));}
+            else 
+                myParent.setIn_id_order_spec(getIdRelatedDocument());
         } catch (NumberFormatException nfex) { nfex.printStackTrace(); }
         
         myParent.setIn_in_sl_mop(myParent.getInternalObject().getIndexConnOfId()[jComboCR.getSelectedIndex()]);
@@ -826,7 +859,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         myParent.setContragent_cod(Contragent);
         myParent.setIn_in_sl_mop(selectedCashRegister);
         myParent.setIn_DATE(Date);
-        myParent.setIn_id_order_spec(BoundDocument);
+        myParent.setIn_id_order_spec(RelatedDocument);
         myParent.setIn_id_order_doc(selectedDocument);
         myParent.setIn_sum_sl_mop(AmountMoney);
         myParent.setIn_id_n_money(selectedCurrency);
@@ -965,8 +998,31 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     }
     
     private void getRelatedDocument() {
-        System.out.println("Wzima swyrzaniq dokument ot fasadata!");
-        
+        String relatedDocuments = relatedDocumentsList + getIdContragent() + ";";
+        java.sql.ResultSet rsRD;
+        imakante.com.CustomTableModel modelRD;
+        imakante.com.CustomTable tableRD;
+        String[] names = { "id", 
+            "\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442", 
+            "\u041D\u043E\u043C\u0435\u0440",
+            "\u041E\u0442 \u0434\u0430\u0442\u0430",
+            "\u0414\u044A\u043B\u0436\u0438\u043C\u043E", 
+            "\u0418\u0437\u043F\u043B\u0430\u0442\u0435\u043D\u043E",
+            "\u041E\u0441\u0442\u0430\u0442\u044A\u043A",
+            "\u0421\u0440\u043E\u043A", 
+            "\u041F\u0440\u043E\u0441\u0440\u043E\u0447\u0435\u043D\u043E (\u0434\u043D\u0438)" };
+        try {
+            rsRD = myParent.getStm().executeQuery(relatedDocuments);
+            modelRD = new imakante.com.CustomTableModel(myParent.getConn(), rsRD, names);
+            tableRD = new imakante.com.CustomTable(modelRD);
+            HideColumns(tableRD, getColumnIndex(tableRD, "id"));
+            tableRD.setEditingRow(0);
+            imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(myParent, true, tableRD,
+                    "\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0438 \u0441\u044A\u0441 " +
+                    "\u0437\u0430\u0434\u044A\u043B\u0436\u0435\u043D\u0438\u044F \u043D\u0430 " + getNameContragent().toUpperCase(),
+                    "", "\u041D\u043E\u043C\u0435\u0440");
+            td.setVisible(true);
+        } catch(java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
     private void revalidateSums(){
@@ -979,25 +1035,66 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         try {
             sum = Double.parseDouble(this.jTextField3.getText());
         } catch (NumberFormatException ex) { ex.printStackTrace(); }
-        sumos = exch*sum;
+        sumos = exch * sum;
         this.jTextField4.setText("" + sumos);
     }
-    
-    public void revalidateFText(){
-        jTextField2.setText("" + myParent.getHCode());
-    }
-    
+//    
+//    public void revalidateFText(){
+//        jTextField2.setText("" + myParent.getHCode());
+//    }
+//    
     private void getContragent() {
+        String filter;
+        if (obtainInputType(this.jTextField2))
+            filter = "WHERE nc.code_contragent LIKE '%";
+        else
+            filter = "WHERE nc.name_n_contragent LIKE '%";
+        String contragents = contragentsList + filter + jTextField1.getText() + "%';";
+        java.sql.ResultSet rsC;
+        imakante.com.CustomTableModel modelC;
+        imakante.com.CustomTable tableC;
+        String[] names = { "id", "\u041A\u043E\u0434", "\u0418\u043C\u0435" };
         try {
-            myParent.intContrDialog(Integer.parseInt(jTextField2.getText()));
-        } catch (NumberFormatException ex) { ex.printStackTrace(); }
+            rsC = myParent.getStm().executeQuery(contragents);
+            modelC = new imakante.com.CustomTableModel(myParent.getConn(), rsC, names);
+            tableC = new imakante.com.CustomTable(modelC);
+            HideColumns(tableC, getColumnIndex(tableC, "id"));
+            tableC.setEditingRow(0);
+            imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(myParent, true, tableC,
+                    "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u041A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442",
+                    "", "\u041A\u043E\u0434");
+            td.setVisible(true);
+        } catch(java.sql.SQLException ex) { ex.printStackTrace(); }
+        
+//        try {
+//            myParent.intContrDialog(Integer.parseInt(jTextField2.getText()));
+//        } catch (NumberFormatException ex) { ex.printStackTrace(); }
     }
     
-    private void revalidateContragent(){
+    private boolean obtainInputType(javax.swing.JTextField jtf) {
+        int i = 0;
         try {
-            myParent.getCodFromQu(Integer.parseInt(jTextField2.getText()));
-        } catch (NumberFormatException ex) { ex.printStackTrace(); }
-        this.jLabel14.setText(myParent.getHName());
+            i = Integer.parseInt(jtf.getText());
+        } catch (NumberFormatException ex) { return false; }
+        return true;
+    }
+    
+    private void getContragentByID(int ID) {
+        String contragent = contragentById + ID + ";";
+        try {
+            java.sql.ResultSet rsC = myParent.getStm().executeQuery(contragent);
+            rsC.next();
+            setIdContragent(ID);
+            setCodeContragent(rsC.getInt("code_contragent"));
+            setNameContragent(rsC.getString("name_n_contragent"));
+            buffCodeC = getCodeContragent();
+            buffNameC = getNameContragent();
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
+        jTextField2.setText("" + getCodeContragent() + " - " + getNameContragent());
+//        try {
+//            myParent.getCodFromQu(Integer.parseInt(jTextField2.getText()));
+//        } catch (NumberFormatException ex) { ex.printStackTrace(); }
+//        this.jLabel14.setText(myParent.getHName());
     }
     
     private void dFields(boolean isNew){
@@ -1054,7 +1151,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
 //                    }
                 }
             }
-            this.jLabel14.setText(myParent.getHName());
+            this.jLabel14.setText(getNameContragent());
             this.jLabel14.revalidate();
             jTextField2.transferFocus();
         } else if (jtf.equals(this.jTextField6)) {  // Izbor na SWYRZAN DOKUMENT
@@ -1080,6 +1177,22 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         }
     }
     
+    private int getColumnIndex(imakante.com.CustomTable tab, String in) {
+        int count = tab.getColumnCount();
+        for(int i = 0; i < count; i++) {
+            if(tab.getColumnName(i).equals(in))
+                return i;
+        }
+        return 0;
+    }
+    
+    private void HideColumns(imakante.com.CustomTable tab, int col) {
+        tab.getColumnModel().getColumn(col).setMaxWidth(0);
+        tab.getColumnModel().getColumn(col).setMinWidth(0);
+        tab.getTableHeader().getColumnModel().getColumn(col).setMaxWidth(0);
+        tab.getTableHeader().getColumnModel().getColumn(col).setMinWidth(0);
+    }
+    
     private void fGain(javax.swing.JComponent jtf) {
         jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED,
                 new java.awt.Color(255, 0, 51), null));
@@ -1092,6 +1205,54 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     
     public static void setIsFromF7() {
         isFromF7 = false;
+    }
+
+    public int getIdContragent() {
+        return idContragent;
+    }
+
+    public void setIdContragent(int idContragent) {
+        this.idContragent = idContragent;
+    }
+
+    public int getCodeContragent() {
+        return codeContragent;
+    }
+
+    public void setCodeContragent(int codeContragent) {
+        this.codeContragent = codeContragent;
+    }
+
+    public String getNameContragent() {
+        return nameContragent;
+    }
+
+    public void setNameContragent(String nameContragent) {
+        this.nameContragent = nameContragent;
+    }
+
+    public int getIdRelatedDocument() {
+        return idRelatedDocument;
+    }
+
+    public void setIdRelatedDocument(int idRelatedDocument) {
+        this.idRelatedDocument = idRelatedDocument;
+    }
+
+    public int getNumberRelatedDocument() {
+        return numberRelatedDocument;
+    }
+
+    public void setNumberRelatedDocument(int numberRelatedDocument) {
+        this.numberRelatedDocument = numberRelatedDocument;
+    }
+
+    public String getNameRelatedDocument() {
+        return nameRelatedDocument;
+    }
+
+    public void setNameRelatedDocument(String nameRelatedDocument) {
+        this.nameRelatedDocument = nameRelatedDocument;
     }
     
 }// end class
