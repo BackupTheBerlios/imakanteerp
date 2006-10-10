@@ -217,7 +217,6 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     private static boolean isFromF7 = false;
     java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd");
     private org.jdesktop.swingx.JXDatePicker dp = new org.jdesktop.swingx.JXDatePicker();
-    private String TODAY = (String)formatter.format(dp.getDate());
     private int buffCode = 0;
     private String buffName = "";
     private int idContragent = 0;
@@ -229,9 +228,18 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     private int levelx = 3;
     
     private String contragentDebts =
-            "SELECT id_df, total_df, date_edition_df " +
-            "FROM sl_document_facade " +
-            "WHERE out_contragent_df = ";
+            "SELECT d.id_df AS id, " +
+            "td.name_ntd AS Document, " +
+            "d.number_df AS ofNumber, " +
+            "d.date_edition_df AS fromDate, " +
+            "d.total_df AS Due, " +
+            "IFNULL(@LIQ:=(SELECT SUM(sum_os_val_sl_mop) FROM sl_m_operation WHERE id_order_spec = d.id_df), 0) AS Liquidated, " +
+            "IFNULL((d.total_df - @LIQ), 0) AS Remainder, " +
+            "d.date_pay_df AS Term, " +
+            "DATEDIFF(CURRENT_DATE, d.date_pay_df) AS Overdue " +
+            "FROM sl_document_facade d " +
+            "JOIN n_type_doc td ON td.code_ntd = d.type_df " +
+            "WHERE d.out_contragent_df = ";
     
     private String sumContragentDebts =
             "SELECT SUM(total_df) AS suma " +
@@ -256,8 +264,14 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         imakante.com.CustomTableModel modelD;
         imakante.com.CustomTable tableD;
         String[] names = { "id",
-        "\u0421\u0442\u043E\u0439\u043D\u043E\u0441\u0442",
-        "\u041E\u0442 \u0434\u0430\u0442\u0430" };
+        "\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442",
+        "\u041D\u043E\u043C\u0435\u0440",
+        "\u041E\u0442 \u0434\u0430\u0442\u0430",
+        "\u0414\u044A\u043B\u0436\u0438\u043C\u043E",
+        "\u0418\u0437\u043F\u043B\u0430\u0442\u0435\u043D\u043E",
+        "\u041E\u0441\u0442\u0430\u0442\u044A\u043A",
+        "\u0421\u0440\u043E\u043A",
+        "\u041F\u0440\u043E\u0441\u0440\u043E\u0447\u0435\u043D\u043E (\u0434\u043D\u0438)" };
         java.sql.ResultSet pDebts, nDebts, iniDate, sumDebt;
         java.util.HashMap hm = new java.util.HashMap();
         String jasperFile = "contragent_debts.jasper";
@@ -266,13 +280,14 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
                 setStartOfPeriod(jXDatePicker1);
                 setEndOfPeriod(jXDatePicker2);
                 String previousDebtsQuery = sumContragentDebts + getIdContragent() +
-                        " AND date_edition_df < '" + getStartOfPeriod() + "';";
+                        " AND date_edition_df < '" + getStartOfPeriod() + "' AND level_df = " + this.levelx + ";";
                 String debts4PeriodQuery = contragentDebts + getIdContragent() +
-                        " AND date_edition_df BETWEEN '" + getStartOfPeriod() + "' AND '" + getEndOfPeriod() + "';";
+                        " AND date_edition_df BETWEEN '" + getStartOfPeriod() + "' AND '" + getEndOfPeriod() + "'" +
+                        " AND d.level_df = " + this.levelx + ";";
                 String nextDebtsQuery = sumContragentDebts + getIdContragent() +
-                        " AND date_edition_df > '" + getEndOfPeriod() + "';";
-                String iniDateQuery = initialDate + getIdContragent() + ";";
-                String sumDebtQuery = sumContragentDebts + getIdContragent() + ";";
+                        " AND date_edition_df > '" + getEndOfPeriod() + "' AND level_df = " + this.levelx + ";";
+                String iniDateQuery = initialDate + getIdContragent() + " AND level_df = " + this.levelx + ";";
+                String sumDebtQuery = sumContragentDebts + getIdContragent() + " AND level_df = " + this.levelx + ";";
                 hm.put("idContragent", getIdContragent());
                 hm.put("contragent", getNameContragent());
                 hm.put("startPeriod", getStartOfPeriod());
@@ -300,9 +315,9 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
                     hm.put("GrandTotal", sumDebt.getDouble("suma"));
                     iniDate = getStm().executeQuery(iniDateQuery);
                     iniDate.next();
-                    if (iniDate.getString("data").equals("0000-00-00")) 
+                    if (iniDate.getString("data").equals("0000-00-00"))
                         hm.put("initialDate", "\u043D\u044F\u043C\u0430 \u0434\u0430\u043D\u043D\u0438");   // niama danni
-                    else 
+                    else
                         hm.put("initialDate", iniDate.getDate("data").toString());
                     imakante.com.vcomponents.periodicaDialog td = new imakante.com.vcomponents.periodicaDialog(this, true, tableD, getConn(), hm, jasperFile,
                             "\u0417\u0434\u044A\u043B\u0436\u0435\u043D\u0438\u044F \u043D\u0430 " + getNameContragent().toUpperCase(), bord);
@@ -344,14 +359,6 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         } catch(java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
-    private boolean obtainInputType(javax.swing.JTextField jtf) {
-        int i = 0;
-        try {
-            i = Integer.parseInt(jtf.getText());
-        } catch (NumberFormatException ex) { return false; }
-        return true;
-    }
-    
     private void getContragentByID(int ID) {
         String contragent = contragentById + ID + ";";
         try {
@@ -364,6 +371,14 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
             buffName = getNameContragent();
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
         jTextField1.setText("" + getCodeContragent() + " - " + getNameContragent());
+    }
+    
+    private boolean obtainInputType(javax.swing.JTextField jtf) {
+        int i = 0;
+        try {
+            i = Integer.parseInt(jtf.getText());
+        } catch (NumberFormatException ex) { return false; }
+        return true;
     }
     
     private void manageKeyEvents(javax.swing.JTextField jtf) {

@@ -164,20 +164,10 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
                 jXDatePickerBEGINActionPerformed(evt);
             }
         });
-        jXDatePickerBEGIN.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jXDatePickerBEGINKeyPressed(evt);
-            }
-        });
 
         jXDatePickerEND.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jXDatePickerENDActionPerformed(evt);
-            }
-        });
-        jXDatePickerEND.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jXDatePickerENDKeyPressed(evt);
             }
         });
 
@@ -201,9 +191,9 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jtfCasaEND, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
                 .add(49, 49, 49)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jtfContragentBEGIN, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jtfContragentEND, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
+                    .add(jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jtfContragentBEGIN, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jtfContragentEND, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE))
                 .add(34, 34, 34)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jXDatePickerEND, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
@@ -258,13 +248,13 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 878, Short.MAX_VALUE)
-            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 878, Short.MAX_VALUE)
+            .add(jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 882, Short.MAX_VALUE)
+            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 882, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 94, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
@@ -394,21 +384,13 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     }//GEN-LAST:event_jButtonPrnReportActionPerformed
     
     private void jButtonSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonSearchKeyPressed
-        
+        if(java.awt.event.KeyEvent.VK_ENTER == evt.getKeyCode()) 
+            jButtonSearch.doClick();
     }//GEN-LAST:event_jButtonSearchKeyPressed
-    
-    private void jXDatePickerENDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jXDatePickerENDKeyPressed
-        
-    }//GEN-LAST:event_jXDatePickerENDKeyPressed
-    
-    private void jXDatePickerBEGINKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jXDatePickerBEGINKeyPressed
-        
-    }//GEN-LAST:event_jXDatePickerBEGINKeyPressed
-    
+            
     private void jtfContragentENDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfContragentENDKeyPressed
-        if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()){
+        if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode())
             processField4();
-        }
         if(java.awt.event.KeyEvent.VK_ENTER == evt.getKeyCode()){
             if(jtfContragentEND.getText().equals("")) {
                 jtfContragentEND.setText("999999999");
@@ -418,9 +400,8 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     }//GEN-LAST:event_jtfContragentENDKeyPressed
     
     private void jtfContragentBEGINKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfContragentBEGINKeyPressed
-        if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()){
-            processField3();
-        }
+        if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode())
+
         if(java.awt.event.KeyEvent.VK_ENTER == evt.getKeyCode()){
             if(jtfContragentBEGIN.getText().equals("")) {
                 jtfContragentBEGIN.setText("1");
@@ -430,9 +411,8 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     }//GEN-LAST:event_jtfContragentBEGINKeyPressed
     
     private void jtfCasaENDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCasaENDKeyPressed
-        if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()){
+        if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode())
             processField2();
-        }
         if(java.awt.event.KeyEvent.VK_ENTER == evt.getKeyCode()){
             if(jtfCasaEND.getText().equals("")) {
                 jtfCasaEND.setText("999999999");
@@ -442,9 +422,8 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     }//GEN-LAST:event_jtfCasaENDKeyPressed
     
     private void jtfCasaBEGINKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCasaBEGINKeyPressed
-        if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode()){
+        if(java.awt.event.KeyEvent.VK_F7== evt.getKeyCode())
             processField1();
-        }
         if(java.awt.event.KeyEvent.VK_ENTER == evt.getKeyCode()){
             if(jtfCasaBEGIN.getText().equals("")) {
                 jtfCasaBEGIN.setText("1");
@@ -588,7 +567,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     private  imakante.com.CustomTableModel model1;
     private  imakante.com.CustomTable table1;
     private  int intTransfer;
-    private  int CompNumber = 0;
+    protected  int CompNumber = 0;
     
     private String strContragent = "SELECT "
             + "`n_contragent`.`code_contragent`, `n_contragent`.`name_n_contragent`"
@@ -760,21 +739,29 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     public void setIntTransfer(int intTransfer) {
         this.intTransfer = intTransfer;
         if (CompNumber == 0) {  }
-        if(CompNumber == 1) {
-            this.jtfCasaBEGIN.setText("" + this.intTransfer); }
-        if(CompNumber == 2) {
-            this.jtfCasaEND.setText("" + this.intTransfer); }
-        if(CompNumber == 3) {
-            this.jtfContragentBEGIN.setText("" + this.intTransfer); }
-        if(CompNumber == 4) {
-            this.jtfContragentEND.setText("" + this.intTransfer); }
+        if (CompNumber == 1) 
+            this.jtfCasaBEGIN.setText("" + this.intTransfer);
+        if (CompNumber == 2) 
+            this.jtfCasaEND.setText("" + this.intTransfer);
+        if (CompNumber == 3) 
+            this.jtfContragentBEGIN.setText("" + this.intTransfer);
+        if (CompNumber == 4) 
+            this.jtfContragentEND.setText("" + this.intTransfer);
+        if (CompNumber == 100) {
+            ae_Casa.getContragentByID(this.intTransfer);
+            ae_Casa.setIsFromF7();
+        }
+        if (CompNumber == 101) {
+            ae_Casa.getRelatedDocumentByID(this.intTransfer);
+            ae_Casa.setIsFromF7();
+        }
 //        if(CompNumber == 99) {
 //            this.setHCode(this.intTransfer);
 //            ae_Casa.revalidateFText();
 //            ae_Casa.setIsFromF7();
 //        }
     }
-//    
+    
 //    public void intContrDialog(int insertedCode) {
 //        String newString = strContragent + insertedCode + ",'%');";
 ////        String newString = strContragent + this.jtfContragentEND.getText() + "%' AND `n_contragent`.`code_contragent` >= " + CodDialod + ";";

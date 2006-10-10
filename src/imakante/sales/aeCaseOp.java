@@ -449,8 +449,9 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
                     .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                         .add(jLabel4)
                         .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(org.jdesktop.layout.GroupLayout.BASELINE, jComboM)
-                    .add(org.jdesktop.layout.GroupLayout.BASELINE, jLabel7))
+                    .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(jComboM, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                        .add(jLabel7)))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel9)
@@ -465,7 +466,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel5)
                     .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 82, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 15, Short.MAX_VALUE)
                 .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 78, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -554,7 +555,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
             jTextField2.transferFocus();
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) {
             this.isFromF7 = true;
-            manageKeyEvents(this.jTextField6);
+            manageKeyEvents(this.jTextField2);
         }
     }//GEN-LAST:event_jTextField2KeyPressed
     
@@ -795,6 +796,12 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
             "JOIN n_type_doc td ON td.code_ntd = d.type_df " +
             "WHERE d.out_contragent_df = ";
     
+    private String relatedDocumentById = 
+            "SELECT d.id_df, td.name_ntd, d.number_df " +
+            "FROM sl_document_facade d " +
+            "JOIN n_type_doc td ON td.code_ntd = d.type_df " +
+            "WHERE d.id_df = ";
+    
     //---------------END My Variables
     
     //---------------START My Methods
@@ -997,7 +1004,47 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         return newindex;
     }
     
+    private void getContragent() {
+        myParent.CompNumber = 100;
+        String filter;
+        if (obtainInputType(this.jTextField2))
+            filter = "WHERE nc.code_contragent LIKE '%";
+        else
+            filter = "WHERE nc.name_n_contragent LIKE '%";
+        String contragents = contragentsList + filter + jTextField1.getText() + "%';";
+        java.sql.ResultSet rsC;
+        imakante.com.CustomTableModel modelC;
+        imakante.com.CustomTable tableC;
+        String[] names = { "id", "\u041A\u043E\u0434", "\u0418\u043C\u0435" };
+        try {
+            rsC = myParent.getStm().executeQuery(contragents);
+            modelC = new imakante.com.CustomTableModel(myParent.getConn(), rsC, names);
+            tableC = new imakante.com.CustomTable(modelC);
+            HideColumns(tableC, getColumnIndex(tableC, "id"));
+            tableC.setEditingRow(0);
+            imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(myParent, true, tableC,
+                    "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u041A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442",
+                    "", "\u041A\u043E\u0434");
+            td.setVisible(true);
+        } catch(java.sql.SQLException ex) { ex.printStackTrace(); }
+    }
+    
+    protected void getContragentByID(int ID) {
+        String contragent = contragentById + ID + ";";
+        try {
+            java.sql.ResultSet rsC = myParent.getStm().executeQuery(contragent);
+            rsC.next();
+            setIdContragent(ID);
+            setCodeContragent(rsC.getInt("code_contragent"));
+            setNameContragent(rsC.getString("name_n_contragent"));
+            buffCodeC = getCodeContragent();
+            buffNameC = getNameContragent();
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
+        jTextField2.setText("" + getCodeContragent() + " - " + getNameContragent());
+    }
+    
     private void getRelatedDocument() {
+        myParent.CompNumber = 101;
         String relatedDocuments = relatedDocumentsList + getIdContragent() + ";";
         java.sql.ResultSet rsRD;
         imakante.com.CustomTableModel modelRD;
@@ -1025,50 +1072,18 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         } catch(java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
-    private void revalidateSums(){
-        double exch = 1;
-        double sum = 1;
-        double sumos = 1;
+    protected void getRelatedDocumentByID(int ID) {
+        String relDoc = relatedDocumentById + ID + ";";
         try {
-            exch = Double.parseDouble(this.jTextField7.getText());
-        } catch (NumberFormatException ex) { ex.printStackTrace(); }
-        try {
-            sum = Double.parseDouble(this.jTextField3.getText());
-        } catch (NumberFormatException ex) { ex.printStackTrace(); }
-        sumos = exch * sum;
-        this.jTextField4.setText("" + sumos);
-    }
-//    
-//    public void revalidateFText(){
-//        jTextField2.setText("" + myParent.getHCode());
-//    }
-//    
-    private void getContragent() {
-        String filter;
-        if (obtainInputType(this.jTextField2))
-            filter = "WHERE nc.code_contragent LIKE '%";
-        else
-            filter = "WHERE nc.name_n_contragent LIKE '%";
-        String contragents = contragentsList + filter + jTextField1.getText() + "%';";
-        java.sql.ResultSet rsC;
-        imakante.com.CustomTableModel modelC;
-        imakante.com.CustomTable tableC;
-        String[] names = { "id", "\u041A\u043E\u0434", "\u0418\u043C\u0435" };
-        try {
-            rsC = myParent.getStm().executeQuery(contragents);
-            modelC = new imakante.com.CustomTableModel(myParent.getConn(), rsC, names);
-            tableC = new imakante.com.CustomTable(modelC);
-            HideColumns(tableC, getColumnIndex(tableC, "id"));
-            tableC.setEditingRow(0);
-            imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(myParent, true, tableC,
-                    "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u041A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442",
-                    "", "\u041A\u043E\u0434");
-            td.setVisible(true);
-        } catch(java.sql.SQLException ex) { ex.printStackTrace(); }
-        
-//        try {
-//            myParent.intContrDialog(Integer.parseInt(jTextField2.getText()));
-//        } catch (NumberFormatException ex) { ex.printStackTrace(); }
+            java.sql.ResultSet rsRD = myParent.getStm().executeQuery(relDoc);
+            rsRD.next();
+            setIdRelatedDocument(ID);
+            setNameRelatedDocument(rsRD.getString("name_n_contragent"));
+            setNumberRelatedDocument(rsRD.getInt("code_contragent"));
+            buffNameRD = getNameRelatedDocument();
+            buffNumRD = getNumberRelatedDocument();
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
+        jTextField6.setText(getNameRelatedDocument() + ": " + getNumberRelatedDocument());
     }
     
     private boolean obtainInputType(javax.swing.JTextField jtf) {
@@ -1077,24 +1092,6 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
             i = Integer.parseInt(jtf.getText());
         } catch (NumberFormatException ex) { return false; }
         return true;
-    }
-    
-    private void getContragentByID(int ID) {
-        String contragent = contragentById + ID + ";";
-        try {
-            java.sql.ResultSet rsC = myParent.getStm().executeQuery(contragent);
-            rsC.next();
-            setIdContragent(ID);
-            setCodeContragent(rsC.getInt("code_contragent"));
-            setNameContragent(rsC.getString("name_n_contragent"));
-            buffCodeC = getCodeContragent();
-            buffNameC = getNameContragent();
-        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
-        jTextField2.setText("" + getCodeContragent() + " - " + getNameContragent());
-//        try {
-//            myParent.getCodFromQu(Integer.parseInt(jTextField2.getText()));
-//        } catch (NumberFormatException ex) { ex.printStackTrace(); }
-//        this.jLabel14.setText(myParent.getHName());
     }
     
     private void dFields(boolean isNew){
@@ -1108,6 +1105,20 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
             this.jComboM.setEnabled(false);
             this.jXDatePicker1.setEnabled(false);
         }
+    }
+    
+    private void revalidateSums(){
+        double exch = 1;
+        double sum = 1;
+        double sumos = 1;
+        try {
+            exch = Double.parseDouble(this.jTextField7.getText());
+        } catch (NumberFormatException ex) { ex.printStackTrace(); }
+        try {
+            sum = Double.parseDouble(this.jTextField3.getText());
+        } catch (NumberFormatException ex) { ex.printStackTrace(); }
+        sumos = exch * sum;
+        this.jTextField4.setText("" + sumos);
     }
     
     private void getExchangeRateFromDB(){
@@ -1132,23 +1143,20 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
         String entry = jtf.getText();
         if (jtf.equals(this.jTextField2)) { // Izbor na KONTRAGENT
             if (this.isFromF7) {
-                // TODO kakwo se slu4wa kogato e natisnat F7?
-//                getContragent();
+                getContragent();
             } else {
                 if (entry.equals("")) {
-                    // TODO kakwo stawa kogato poleto e prazno? (Enter/Tab)
-//                    if (this.buffCode == 0 || this.buffName.equals("")) {
-//
-//                    } else {
-//                        // jtf.setText("" + getCodeContragent() + " - " + getNameContragent());
-//                    }
-                } else {
-                    // TODO kakwo stawa kogato imame ne6to wywedeno w poleto? (Enter/Tab)
-//                    if ((buffCode > 0 && entry.contains("" + buffCode)) || (!buffName.equals("") && entry.contains(buffName))) {
+                    if (this.buffCodeC == 0 || this.buffNameC.equals("")) {
+
+                    } else {
 //                        jtf.setText("" + getCodeContragent() + " - " + getNameContragent());
-//                    } else {
-//                        getContragent();
-//                    }
+                    }
+                } else {
+                    if ((buffCodeC > 0 && entry.contains("" + buffCodeC)) || (!buffNameC.equals("") && entry.contains(buffNameC))) {
+                        jtf.setText("" + getCodeContragent() + " - " + getNameContragent());
+                    } else {
+                        getContragent();
+                    }
                 }
             }
             this.jLabel14.setText(getNameContragent());
@@ -1159,21 +1167,16 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
                 getRelatedDocument();
             } else {
                 if (entry.equals("")) {
-                    // TODO kakwo stawa kogato poleto e prazno? (Enter/Tab)
-//                    if (this.buffCode == 0 || this.buffName.equals("")) {
-//
-//                    } else {
-//                        // jtf.setText("" + getCodeContragent() + " - " + getNameContragent());
-//                    }
+//                    myParent.setIn_id_order_spec(-1);
                 } else {
-                    // TODO kakwo stawa kogato imame ne6to wywedeno w poleto? (Enter/Tab)
-//                    if ((buffCode > 0 && entry.contains("" + buffCode)) || (!buffName.equals("") && entry.contains(buffName))) {
-//                        jtf.setText("" + getCodeContragent() + " - " + getNameContragent());
-//                    } else {
-//                        getContragent();
-//                    }
+                    if ((entry.contains(buffNameRD) && entry.contains("" + buffNumRD)) || (!buffNameRD.equals("") && entry.contains(buffNameRD))) {
+                        jtf.setText(getNameRelatedDocument() + ": " + getNumberRelatedDocument());
+                    } else {
+                        getRelatedDocument();
+                    }
                 }
             }
+            jTextField6.transferFocus();
         }
     }
     

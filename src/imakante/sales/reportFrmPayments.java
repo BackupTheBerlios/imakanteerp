@@ -192,7 +192,7 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jTextField1.transferFocus();
         } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) {
             this.isFromF7 = true;
-            getContragent();
+            manageKeyEvents(this.jTextField1);
         } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextField1.setText(""); }
     }//GEN-LAST:event_jTextField1KeyPressed
     
@@ -202,11 +202,16 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
     }//GEN-LAST:event_jTextField1FocusGained
     
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+        if (!isFromF7) 
+            manageKeyEvents(this.jTextField1);
         fLost(jTextField1);
     }//GEN-LAST:event_jTextField1FocusLost
     
     private void jbExecuteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExecuteActionPerformed
-        executeReport();
+        if (this.jTextField1.getText().equals("") || !this.jTextField1.getText().startsWith("" + buffCode))
+            imakante.com.MessagePane.MissingData();
+        else
+            executeReport();
     }//GEN-LAST:event_jbExecuteActionPerformed
     
     private void jbQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbQuitActionPerformed
@@ -237,7 +242,8 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
     private static boolean isFromF7 = false;
     java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd");
     private org.jdesktop.swingx.JXDatePicker dp = new org.jdesktop.swingx.JXDatePicker();
-    private String TODAY = (String)formatter.format(dp.getDate());
+    private int buffCode = 0;
+    private String buffName = "";
     private int idContragent = 0;
     private int codeContragent = 0;
     private String nameContragent = "";
@@ -267,7 +273,7 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
     
     private void getContragent() {
         String filter;
-        if (obtainInputType()) 
+        if (obtainInputType(this.jTextField1)) 
             filter = "WHERE nc.code_contragent LIKE '%";
         else 
             filter = "WHERE nc.name_n_contragent LIKE '%";
@@ -290,14 +296,6 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
         } catch(java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
-    private boolean obtainInputType() {
-        int i = 0;
-        try {
-            i =  Integer.parseInt(jTextField1.getText());
-        } catch (NumberFormatException ex) { return false; }
-        return true;
-    }
-    
     private void getContragentByID(int ID) {
         String contragent = contragentById + ID + ";";
         try {
@@ -308,6 +306,35 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
             setNameContragent(rsC.getString("name_n_contragent"));
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
         jTextField1.setText("" + getCodeContragent() + " - " + getNameContragent());
+    }
+    
+    private boolean obtainInputType(javax.swing.JTextField jtf) {
+        int i = 0;
+        try {
+            i = Integer.parseInt(jtf.getText());
+        } catch (NumberFormatException ex) { return false; }
+        return true;
+    }
+    
+    private void manageKeyEvents(javax.swing.JTextField jtf) {
+        String entry = jtf.getText();
+        if (this.isFromF7) {
+            getContragent();
+        } else {
+            if (entry.equals("")) {
+                if (this.buffCode == 0 || this.buffName.equals("")) {
+                    
+                } else {
+                    // jtf.setText("" + getCodeContragent() + " - " + getNameContragent());
+                }
+            } else {
+                if ((buffCode > 0 && entry.contains("" + buffCode)) || (!buffName.equals("") && entry.contains(buffName))) {
+                    jtf.setText("" + getCodeContragent() + " - " + getNameContragent());
+                } else {
+                    getContragent();
+                }
+            }
+        }
     }
     
     @Override
