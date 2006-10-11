@@ -755,11 +755,6 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
             ae_Casa.getRelatedDocumentByID(this.intTransfer);
             ae_Casa.setIsFromF7();
         }
-//        if(CompNumber == 99) {
-//            this.setHCode(this.intTransfer);
-//            ae_Casa.revalidateFText();
-//            ae_Casa.setIsFromF7();
-//        }
     }
     
 //    public void intContrDialog(int insertedCode) {
@@ -791,7 +786,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
 //                    "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415", javax.swing.JOptionPane.ERROR_MESSAGE);
 //        }
 //    }
-//    
+    
     public imakante.sales.casaOp getInternalObject() {
         return internalObject;
     }
