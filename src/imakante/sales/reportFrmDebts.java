@@ -233,8 +233,8 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
             "d.number_df AS ofNumber, " +
             "d.date_edition_df AS fromDate, " +
             "d.total_df AS Due, " +
-            "IFNULL(@LIQ:=(SELECT SUM(sum_os_val_sl_mop) FROM sl_m_operation WHERE id_order_spec = d.id_df), 0) AS Liquidated, " +
-            "IFNULL((d.total_df - @LIQ), 0) AS Remainder, " +
+            "IFNULL(@LIQ:=(SELECT SUM(sum_os_val_sl_mop) FROM sl_m_operation WHERE id_order_spec = d.id_df), 0.00) AS Liquidated, " +
+            "IFNULL((d.total_df - @LIQ), 0.00) AS Remainder, " +
             "d.date_pay_df AS Term, " +
             "DATEDIFF(CURRENT_DATE, d.date_pay_df) AS Overdue " +
             "FROM sl_document_facade d " +
@@ -275,19 +275,22 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         java.sql.ResultSet pDebts, nDebts, iniDate, sumDebt;
         java.util.HashMap hm = new java.util.HashMap();
         String jasperFile = "contragent_debts.jasper";
+        String level = "";
         if (getIdContragent() > 0) {
             if (jXDatePicker1.getDateInMillis() <= jXDatePicker2.getDateInMillis()) {
                 setStartOfPeriod(jXDatePicker1);
                 setEndOfPeriod(jXDatePicker2);
+                if (levelx == 3) level = " AND level_df = 003;";
+                if (levelx == 2) level = " AND level_df = 002;";
+                if (levelx == 1) level = " AND level_df IN(001, 002, 003);";
                 String previousDebtsQuery = sumContragentDebts + getIdContragent() +
-                        " AND date_edition_df < '" + getStartOfPeriod() + "' AND level_df = " + this.levelx + ";";
+                        " AND date_edition_df < '" + getStartOfPeriod() +  "'" + level;
                 String debts4PeriodQuery = contragentDebts + getIdContragent() +
-                        " AND date_edition_df BETWEEN '" + getStartOfPeriod() + "' AND '" + getEndOfPeriod() + "'" +
-                        " AND d.level_df = " + this.levelx + ";";
+                        " AND date_edition_df BETWEEN '" + getStartOfPeriod() + "' AND '" + getEndOfPeriod() + "'" + level;
                 String nextDebtsQuery = sumContragentDebts + getIdContragent() +
-                        " AND date_edition_df > '" + getEndOfPeriod() + "' AND level_df = " + this.levelx + ";";
-                String iniDateQuery = initialDate + getIdContragent() + " AND level_df = " + this.levelx + ";";
-                String sumDebtQuery = sumContragentDebts + getIdContragent() + " AND level_df = " + this.levelx + ";";
+                        " AND date_edition_df > '" + getEndOfPeriod() +  "'" + level;
+                String iniDateQuery = initialDate + getIdContragent() + level;
+                String sumDebtQuery = sumContragentDebts + getIdContragent() + level;
                 hm.put("idContragent", getIdContragent());
                 hm.put("contragent", getNameContragent());
                 hm.put("startPeriod", getStartOfPeriod());

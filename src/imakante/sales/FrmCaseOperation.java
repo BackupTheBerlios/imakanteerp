@@ -489,7 +489,7 @@ public class FrmCaseOperation extends  imakante.com.vcomponents.iInternalFrame i
     // End of variables declaration//GEN-END:variables
     
     //--------------- My Variables
-    private int level = 1;
+    protected int level = 1;
     private int ndtur = 1;
     private int sdtn = 1;
     private String area = "000";

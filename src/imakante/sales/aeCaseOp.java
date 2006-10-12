@@ -772,7 +772,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
             "SELECT nc.code_contragent, nc.name_n_contragent FROM n_contragent nc " +
             "WHERE nc.id_contragent = ";
     
-    private String relatedDocumentsList = 
+    private String relatedDocumentsList =
             "SELECT d.id_df AS id, " +
             "td.name_ntd AS Document, " +
             "d.number_df AS ofNumber, " +
@@ -786,7 +786,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
             "JOIN n_type_doc td ON td.code_ntd = d.type_df " +
             "WHERE d.out_contragent_df = ";
     
-    private String relatedDocumentById = 
+    private String relatedDocumentById =
             "SELECT d.id_df, td.name_ntd, d.number_df " +
             "FROM sl_document_facade d " +
             "JOIN n_type_doc td ON td.code_ntd = d.type_df " +
@@ -819,7 +819,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
             myParent.setContragent_cod(Integer.parseInt(jTextField2.getText()));
             if(jTextField6.getText().equals(""))
                 myParent.setIn_id_order_spec(-1);
-            else 
+            else
                 myParent.setIn_id_order_spec(getIdRelatedDocument());
         } catch (NumberFormatException nfex) { nfex.printStackTrace(); }
         
@@ -1033,19 +1033,23 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     
     private void getRelatedDocument() {
         myParent.CompNumber = 101;
-        String relatedDocuments = relatedDocumentsList + getIdContragent() + ";";
+        String level = "";
+        if (myParent.level == 3) level = " AND level_df = 003;";
+        if (myParent.level == 2) level = " AND level_df = 002;";
+        if (myParent.level == 1) level = " AND level_df IN(001, 002, 003);";
+        String relatedDocuments = relatedDocumentsList + getIdContragent() + level;
         java.sql.ResultSet rsRD;
         imakante.com.CustomTableModel modelRD;
         imakante.com.CustomTable tableRD;
-        String[] names = { "id", 
-            "\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442", 
-            "\u041D\u043E\u043C\u0435\u0440",
-            "\u041E\u0442 \u0434\u0430\u0442\u0430",
-            "\u0414\u044A\u043B\u0436\u0438\u043C\u043E", 
-            "\u0418\u0437\u043F\u043B\u0430\u0442\u0435\u043D\u043E",
-            "\u041E\u0441\u0442\u0430\u0442\u044A\u043A",
-            "\u0421\u0440\u043E\u043A", 
-            "\u041F\u0440\u043E\u0441\u0440\u043E\u0447\u0435\u043D\u043E (\u0434\u043D\u0438)" };
+        String[] names = { "id",
+        "\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442",
+        "\u041D\u043E\u043C\u0435\u0440",
+        "\u041E\u0442 \u0434\u0430\u0442\u0430",
+        "\u0414\u044A\u043B\u0436\u0438\u043C\u043E",
+        "\u0418\u0437\u043F\u043B\u0430\u0442\u0435\u043D\u043E",
+        "\u041E\u0441\u0442\u0430\u0442\u044A\u043A",
+        "\u0421\u0440\u043E\u043A",
+        "\u041F\u0440\u043E\u0441\u0440\u043E\u0447\u0435\u043D\u043E (\u0434\u043D\u0438)" };
         try {
             rsRD = myParent.getStm().executeQuery(relatedDocuments);
             modelRD = new imakante.com.CustomTableModel(myParent.getConn(), rsRD, names);
@@ -1135,7 +1139,7 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
             } else {
                 if (entry.equals("")) {
                     if (this.buffCodeC == 0 || this.buffNameC.equals("")) {
-
+                        
                     } else {
 //                        jtf.setText("" + getCodeContragent() + " - " + getNameContragent());
                     }
@@ -1195,51 +1199,51 @@ public class aeCaseOp extends imakante.com.vcomponents.iDialog {
     public static void setIsFromF7() {
         isFromF7 = false;
     }
-
+    
     public int getIdContragent() {
         return idContragent;
     }
-
+    
     public void setIdContragent(int idContragent) {
         this.idContragent = idContragent;
     }
-
+    
     public int getCodeContragent() {
         return codeContragent;
     }
-
+    
     public void setCodeContragent(int codeContragent) {
         this.codeContragent = codeContragent;
     }
-
+    
     public String getNameContragent() {
         return nameContragent;
     }
-
+    
     public void setNameContragent(String nameContragent) {
         this.nameContragent = nameContragent;
     }
-
+    
     public int getIdRelatedDocument() {
         return idRelatedDocument;
     }
-
+    
     public void setIdRelatedDocument(int idRelatedDocument) {
         this.idRelatedDocument = idRelatedDocument;
     }
-
+    
     public int getNumberRelatedDocument() {
         return numberRelatedDocument;
     }
-
+    
     public void setNumberRelatedDocument(int numberRelatedDocument) {
         this.numberRelatedDocument = numberRelatedDocument;
     }
-
+    
     public String getNameRelatedDocument() {
         return nameRelatedDocument;
     }
-
+    
     public void setNameRelatedDocument(String nameRelatedDocument) {
         this.nameRelatedDocument = nameRelatedDocument;
     }
