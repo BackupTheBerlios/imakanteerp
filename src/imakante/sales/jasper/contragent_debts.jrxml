@@ -32,6 +32,7 @@
 	<parameter name="nextTotal" isForPrompting="false" class="java.lang.Double"/>
 	<parameter name="GrandTotal" isForPrompting="false" class="java.lang.Double"/>
 	<parameter name="idContragent" isForPrompting="true" class="java.lang.Integer"/>
+	<parameter name="level" isForPrompting="false" class="java.lang.String"/>
 	<queryString><![CDATA[SELECT d.id_df AS id, 
 td.name_print_ntd AS Document, 
 d.number_df AS ofNumber, 
@@ -43,7 +44,8 @@ d.date_pay_df AS Term,
 DATEDIFF(CURRENT_DATE, d.date_pay_df) AS Overdue 
 FROM sl_document_facade d 
 JOIN n_type_doc td ON td.code_ntd = d.type_df 
-WHERE d.out_contragent_df = $P{idContragent};]]></queryString>
+WHERE d.out_contragent_df = $P{idContragent}
+AND $P{level};]]></queryString>
 
 	<field name="id" class="java.lang.Integer"/>
 	<field name="Document" class="java.lang.String"/>
@@ -150,7 +152,7 @@ WHERE d.out_contragent_df = $P{idContragent};]]></queryString>
 					<reportElement
 						x="220"
 						y="0"
-						width="57"
+						width="60"
 						height="25"
 						key="staticText-2"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -207,7 +209,7 @@ WHERE d.out_contragent_df = $P{idContragent};]]></queryString>
 					<reportElement
 						x="281"
 						y="0"
-						width="59"
+						width="66"
 						height="25"
 						key="staticText-6"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -218,7 +220,7 @@ WHERE d.out_contragent_df = $P{idContragent};]]></queryString>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="342"
+						x="348"
 						y="0"
 						width="57"
 						height="25"
@@ -231,7 +233,7 @@ WHERE d.out_contragent_df = $P{idContragent};]]></queryString>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="404"
+						x="406"
 						y="0"
 						width="81"
 						height="25"
@@ -276,7 +278,7 @@ WHERE d.out_contragent_df = $P{idContragent};]]></queryString>
 					<reportElement
 						x="281"
 						y="0"
-						width="59"
+						width="66"
 						height="18"
 						key="textField-7"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -300,7 +302,7 @@ WHERE d.out_contragent_df = $P{idContragent};]]></queryString>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="dd MMMMM yyyy" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="404"
+						x="406"
 						y="0"
 						width="81"
 						height="18"
@@ -326,7 +328,7 @@ WHERE d.out_contragent_df = $P{idContragent};]]></queryString>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="###0.00;-###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="342"
+						x="348"
 						y="0"
 						width="57"
 						height="18"
@@ -341,7 +343,7 @@ WHERE d.out_contragent_df = $P{idContragent};]]></queryString>
 					<reportElement
 						x="220"
 						y="0"
-						width="57"
+						width="60"
 						height="18"
 						key="textField-15"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>

@@ -243,13 +243,13 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
     
     private String sumContragentDebts =
             "SELECT SUM(total_df) AS suma " +
-            "FROM sl_document_facade " +
-            "WHERE out_contragent_df = ";
+            "FROM sl_document_facade d " +
+            "WHERE d.out_contragent_df = ";
     
     private String initialDate =
             "SELECT IFNULL(MIN(date_edition_df), '0000-00-00') AS data " +
-            "FROM sl_document_facade " +
-            "WHERE out_contragent_df = ";
+            "FROM sl_document_facade d " +
+            "WHERE d.out_contragent_df = ";
     
     private String contragentsList =
             "SELECT nc.id_contragent, nc.code_contragent, nc.name_n_contragent " +
@@ -280,17 +280,18 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
             if (jXDatePicker1.getDateInMillis() <= jXDatePicker2.getDateInMillis()) {
                 setStartOfPeriod(jXDatePicker1);
                 setEndOfPeriod(jXDatePicker2);
-                if (levelx == 3) level = " AND level_df = 003;";
-                if (levelx == 2) level = " AND level_df = 002;";
-                if (levelx == 1) level = " AND level_df IN(001, 002, 003);";
+                if (levelx == 3) level = "d.level_df = 003";
+                if (levelx == 2) level = "d.level_df = 002";
+                if (levelx == 1) level = "d.level_df IN(001, 002, 003)";
+                hm.put("level", level);
                 String previousDebtsQuery = sumContragentDebts + getIdContragent() +
-                        " AND date_edition_df < '" + getStartOfPeriod() +  "'" + level;
+                        " AND date_edition_df < '" + getStartOfPeriod() +  "' AND " + level + ";";
                 String debts4PeriodQuery = contragentDebts + getIdContragent() +
-                        " AND date_edition_df BETWEEN '" + getStartOfPeriod() + "' AND '" + getEndOfPeriod() + "'" + level;
+                        " AND date_edition_df BETWEEN '" + getStartOfPeriod() + "' AND '" + getEndOfPeriod() + "' AND " + level + ";";
                 String nextDebtsQuery = sumContragentDebts + getIdContragent() +
-                        " AND date_edition_df > '" + getEndOfPeriod() +  "'" + level;
-                String iniDateQuery = initialDate + getIdContragent() + level;
-                String sumDebtQuery = sumContragentDebts + getIdContragent() + level;
+                        " AND date_edition_df > '" + getEndOfPeriod() +  "' AND " + level + ";";
+                String iniDateQuery = initialDate + getIdContragent() + " AND " + level + ";";
+                String sumDebtQuery = sumContragentDebts + getIdContragent() + " AND " + level + ";";
                 hm.put("idContragent", getIdContragent());
                 hm.put("contragent", getNameContragent());
                 hm.put("startPeriod", getStartOfPeriod());
