@@ -30,15 +30,16 @@ import java.awt.GraphicsEnvironment;
 import javax.swing.AbstractListModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.data.JRTableModelDataSource;
 
 public class simpleReport extends javax.swing.JFrame {
   
     private  Thread t;
     private boolean isFinishAll = false;
-    private final int IN =1; 
-    private final int OUT=2; 
     private HashMap storeCalssType = new HashMap();
-    private int docType;
+    private HashMap viewColumnsBGEN;
+    private String blankJasperFile;
     private HashMap inputFiltrs;
     private net.sf.jasperreports.engine.JasperPrint jasperPrint ;
     private net.sf.jasperreports.view.JRViewer jrv;
@@ -85,7 +86,7 @@ public class simpleReport extends javax.swing.JFrame {
    private  textField colHr[];
    private  textField colDa[];
    private int pageWidth = 530;  //  v pixels
-   private String defaultFiletoSave = "tmpSimpleReport.jrxml";
+   private String defaultFiletoSave = "tmp";
     // zapazvane na izbraniq font za Header
     private String headerFont[] = {"SanSerif","italic","10"};
     private String titleFont[] = {"SanSerif","italic","10"};
@@ -94,9 +95,11 @@ public class simpleReport extends javax.swing.JFrame {
     private String columnRemove[];
     
     /** Creates new form simpleReport */
-    public simpleReport(HashMap inputfilters,int doctype,java.sql.Connection con, imakante.com.CustomTable t,String path,String title) 
+    public simpleReport(HashMap inputfilters,java.sql.Connection con, imakante.com.CustomTable t,String path,String title,HashMap viewColumnsBGEN,String blankJasperFile) 
     {
-        docType = doctype;
+        this.blankJasperFile = blankJasperFile;
+        this.viewColumnsBGEN = viewColumnsBGEN;
+        defaultFiletoSave += blankJasperFile;
         inputFiltrs = inputfilters;
         conn = con;
         table = t;
@@ -122,6 +125,7 @@ public class simpleReport extends javax.swing.JFrame {
       //  selectDocument(docType);
         System.out.println("nameColumnBG="+nameColumnsBG.length);
         System.out.println("nameColumnEN="+nameColumnsEN.length); 
+       
         engine();
         
        
@@ -1511,11 +1515,19 @@ public String toString()
  
  public Element readJasperXML(String jrxmpName)
  {
-     SAXBuilder builder = new SAXBuilder("org.apache.xerces.parsers.SAXParser");
-     try {
-         doc = builder.build(jrxmpName);
-     } catch(IOException ioex) {} catch(org.jdom.JDOMException jex){};
-     
+      SAXBuilder builder = new SAXBuilder("org.apache.xerces.parsers.SAXParser");
+    
+     try
+     {
+          doc = builder.build(jrxmpName);
+     } catch(IOException ioex) {ioex.printStackTrace();} catch(org.jdom.JDOMException jex){jex.printStackTrace();};
+    
+     if(doc==null)
+     {
+        System.out.println("Error can`t read file:"+jrxmpName) ;
+        
+     }
+     else
      root = doc.getRootElement();
      
    return root;  
@@ -1654,7 +1666,9 @@ public String toString()
          font.setAttribute("isStrikeThrough","false");
          
          Element textFieldExpression = new Element("textFieldExpression");
+           System.out.println(":"+i);
          textFieldExpression.setAttribute("class",col[i].getClassType());
+       
          textFieldExpression.setText(col[i].getFieldParameterExpression());
          
          txField.addContent(repElement);
@@ -1882,7 +1896,7 @@ private void customComponetInit()
 
 private void buildColumns()
 {
- int colCount = getColCountWithoutHides(docType);
+ int colCount = getColCountWithoutHides();
  if(columnRemove != null)
  colCount -= columnRemove.length;
  int index=0;
@@ -1898,7 +1912,7 @@ private void buildColumns()
      colNameBG = table.getColumnName(i);
      columnClass = (String) storeCalssType.get(colNameBG);
     
-     if(!checkForHideColumn(colNameBG,docType) && !checkForRemoveColumn(colNameBG)) 
+     if(!checkForHideColumn(colNameBG) && !checkForRemoveColumn(colNameBG)) 
      {
         
        /*  if(i>46)
@@ -1957,9 +1971,10 @@ private void buildColumns()
         
          
          //================================================================================
-         colDa[index] = new textField(nameColumnsEN[getNameColumnsEN(colNameBG)]);
+         colDa[index] = new textField((String)viewColumnsBGEN.get(colNameBG));
+         
          colDa[index].setFieldParameterExpression(getNameColumnsENASField(getNameColumnsEN(colNameBG)));
-         columnClass = (String) storeCalssType.get(nameColumnsEN[getNameColumnsEN(colNameBG)]);
+         columnClass = (String) storeCalssType.get((String)viewColumnsBGEN.get(colNameBG));
          colDa[index].setClassType(columnClass);
          
          if(index==0)
@@ -2006,663 +2021,35 @@ private void buildColumns()
  }
 }
 
-private int getColCountWithoutHides(int doctype)
+private int getColCountWithoutHides()
 {
-  int maxCount = table.getColumnCount();
-  
-  maxCount -=18;   // FrmDocumentFacade.hideCommonColumns ()
-  
-    switch(doctype)
-    {
-        case aeDocumentFacade.FAKTURI:
-        {
-         
-            maxCount -=17;  
-            break;
-        }
-        case aeDocumentFacade.FAKTURA_DANACHNA:
-        {
-                     
-            maxCount -=17;   
-            break;
-        }
-        case aeDocumentFacade.FAKTURA_OPROSTENA:
-        {
-           
-            maxCount -=17;   
-            break;
-        }
-        case aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE:
-        {
-          
-           
-           maxCount -=29;  
-            break;
-        }
-        case aeDocumentFacade.KONSGNACIONEN_PROTOKOL:
-        {
-           // skrivane na koloni  na kontragent s index "1" nakraq
-           maxCount-=8;
-           // skrivane na koloni  na kontragent s index "1" nakraq
-           maxCount-=3;
-           
-           maxCount-=3;
-           maxCount-=1;
-         
-             
-            break;
-        }
-        case aeDocumentFacade.PREDAVATELNA_RAZPISKA:
-        {
-            break;
-        }
-        case aeDocumentFacade.PRIEMATELNA_RAZPISKA:
-        {
-           
-            maxCount-=8 ;
-            maxCount-=3;
-            maxCount-=3;
-            maxCount-=1;
-            
-            break;
-        }
-       case aeDocumentFacade.RAZPISKA_ZA_VRYSHTANE:
-        {
-           
-           maxCount-=8 ;
-           maxCount-=3;
-           maxCount-=3;
-           maxCount-=1;
-            
-            break;
-        }
-       case aeDocumentFacade.OFERTA :
-        {
-           maxCount-=8 ;
-           maxCount-=3;
-           maxCount-=3;
-           maxCount-=3;
-            
-           maxCount-=1;   
-                
-         break;
-        } 
-       case aeDocumentFacade.BRAK :
-       {
-         maxCount-=8 ;
-         maxCount-=8 ;
-         maxCount-=3;
-         maxCount-=3;
-         maxCount-=1;  
-        
-                
-          break;
-        }
-        case aeDocumentFacade.PROTOKOL_LIPSA :
-       {
-           maxCount-=8 ;
-           maxCount-=8;
-           maxCount-=3;
-           maxCount-=3;
-           maxCount-=1;      
-                
-          break;
-        }
-        case aeDocumentFacade.STOKOVA_RAZPISKA:
-        {
-
-           maxCount-=8 ;
-           maxCount-=3;
-           maxCount-=1;
-            
-            break;
-        }
-        case aeDocumentFacade.PROFORMA_FAKTURA:
-        {
-          // skrivane na koloni  na kontragent s index "1" nakraq
-            maxCount-=8;
-            
-            maxCount-=3;
-            maxCount-=3;
-            maxCount-=3;
-            
-            maxCount-=1;
-           
-          break;  
-        }
-        
-    }
-    
-    
- return maxCount;   
+  int maxCount =0;
+  Set tmp = viewColumnsBGEN.keySet();
+  maxCount = tmp.size();
+  return maxCount;   
 }
 
-private boolean checkForHideColumn(String colbg,int doctype)
+private boolean checkForHideColumn(String colbg)
 {
     boolean return_value=false;
-    if(colbg.equals("id_df")) {
-        return return_value=true;
-        
-    }
-    if(colbg.equals("out_obekt_df")) {
-        return return_value=true;
-        
-    }
-    if(colbg.equals("in_obekt_df")) {
-        return return_value=true;
-        
-    }
-    if(colbg.equals("distributor_df")) {
-        return return_value=true;
-        
-    }
-    if(colbg.equals("delivere_df")) {
-        return return_value=true;
-        
-    }
-    if(colbg.equals("time_edition_df")) {
-        return return_value=true;
-        
-    }
-    if(colbg.equals("faktura_connection_df")) {
-        return return_value=true;
-        
-    }
-    if(colbg.equals("zaiavka_connection_df")) {
-        return return_value=true;
-        
-    }
-    if(colbg.equals("flag_finish_df")) {
-        return return_value=true;
-        
-    }
-    if(colbg.equals("level_df")) {
-        return return_value=true;
-        
-    }
+    String tmpS =(String) viewColumnsBGEN.get(colbg);
     
-    if(colbg.equals("id_rep")) {
-        return return_value=true;
-        
-    }
-    
-    if(colbg.equals("paying_order_df")) {
-        return return_value=true;
-        
-    }
-    if(colbg.equals("Тип на документа")) {
-        return return_value=true;
-        
-    }
-    
-    if(colbg.equals("out_contragent_df")) {
-        return return_value=true;
-        
-    }
-    if(colbg.equals("in_contragent_df")) {
-        return return_value=true;
-        
-    }
-    
-    if(colbg.equals("ПотребителIndex")) {
-        return return_value=true;
-        
-    }
-    
-    if(colbg.equals("Потребител-последна редакцияIndex")) {
-        return return_value=true;
-        
-    }
-    
-    if(colbg.equals("Вид плащанеIndex")) {
-        return return_value=true;
-        
-    }
-        
-     switch(doctype)
-    {
-        case aeDocumentFacade.FAKTURI:
-        {
-           // skrivane na koloni  na kontragent s index "1" nakraq
-            if( DocimentTypeColumns_Contragent(colbg,IN) ||
-                    DocimentTypeColumns_Obekt(colbg,IN) ||
-                    DocimentTypeColumns_Obekt(colbg,OUT) ||
-                    DocimentTypeColumns_DevDistr(colbg) ) {
-                return_value=true;
-                break;
-            }
-            
-         //  HideColumns(getColumnIndex("Склад (към)"));
-             if(colbg.equals("Склад (към)"))
-            {
-               return_value=true; 
-               break;
-            }  
-            
-           
-          
-            
-            break;
-        }
-        case aeDocumentFacade.FAKTURA_DANACHNA:
-        {
-           // skrivane na koloni  na kontragent s index "1" nakraq
-            if(  DocimentTypeColumns_Contragent(colbg,IN) ||
-                    DocimentTypeColumns_Obekt(colbg,IN) ||
-                    DocimentTypeColumns_Obekt(colbg,OUT) ||
-                    DocimentTypeColumns_DevDistr(colbg)) {
-                return_value=true;
-                break;
-            }
-                       
-           //  HideColumns(getColumnIndex("Склад (към)"));
-             if(colbg.equals("Склад (към)"))
-            {
-               return_value=true; 
-               break;
-            }  
-          
-            
-            break;
-        }
-        case aeDocumentFacade.FAKTURA_OPROSTENA:
-        {
-           // skrivane na koloni  na kontragent s index "1" nakraq
-            if( DocimentTypeColumns_Contragent(colbg,IN) ||
-                    DocimentTypeColumns_Obekt(colbg,IN) ||
-                    DocimentTypeColumns_Obekt(colbg,OUT)||
-                    DocimentTypeColumns_DevDistr(colbg)) {
-                return_value=true;
-                break;
-            }
-                       
-            //  HideColumns(getColumnIndex("Склад (към)"));
-             if(colbg.equals("Склад (към)"))
-            {
-               return_value=true; 
-               break;
-            }  
-          
-            
-            break;
-        }
-        case aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE:
-        {
-          
-          if( DocimentTypeColumns_Contragent(colbg,IN)||
-            DocimentTypeColumns_Contragent(colbg,OUT)||
-            DocimentTypeColumns_Obekt(colbg,IN)||
-            DocimentTypeColumns_Obekt(colbg,OUT)||
-            DocimentTypeColumns_DevDistr(colbg))
-          {
-             return_value=true; 
-               break; 
-          }
-            
-            
-            // HideColumns(getColumnIndex("Вид плащане"));
-               if(colbg.equals("Вид плащане"))
-            {
-               return_value=true; 
-               break;
-            }  
-          
-           //  HideColumns(getColumnIndex("ДДС"));
-            if(colbg.equals("ДДС")) {
-              return_value=true;
-              break;
-            }
-            // HideColumns(getColumnIndex("Общо"));
-             if(colbg.equals("Общо")) {
-              return_value=true;
-              break;
-            }
-             
-            // HideColumns(getColumnIndex("Дата на плащане"));
-             
-           if(colbg.equals("Дата на плащане")) {
-              return_value=true;
-              break;
-           }
-             
-           
-            break;
-        }
-        case aeDocumentFacade.KONSGNACIONEN_PROTOKOL:
-        {
-           
-           if( DocimentTypeColumns_Contragent(colbg,IN)||
-            DocimentTypeColumns_Obekt(colbg,IN)||
-            DocimentTypeColumns_DevDistr(colbg))
-           {
-              return_value=true;
-              break; 
-           }
-           
-         //  HideColumns(getColumnIndex("Склад (към)"));
-             if(colbg.equals("Склад (към)"))
-            {
-               return_value=true; 
-               break;
-            }  
-          
-             
-            break;
-        }
-        case aeDocumentFacade.PREDAVATELNA_RAZPISKA:
-        {
-            break;
-        }
-        case aeDocumentFacade.PRIEMATELNA_RAZPISKA:
-        {
-            // skrivane na koloni  na kontragent s index "2" nakraq
-           if(DocimentTypeColumns_Contragent(colbg,OUT)||
-           DocimentTypeColumns_Obekt(colbg,IN)||
-           DocimentTypeColumns_Obekt(colbg,OUT))
-           {
-              return_value=true; 
-               break; 
-           }
-                  
-            //  HideColumns(getColumnIndex("Склад (към)"));
-             if(colbg.equals("Склад (към)"))
-            {
-               return_value=true; 
-               break;
-            }  
-          
-            break;
-        }
-       case aeDocumentFacade.RAZPISKA_ZA_VRYSHTANE:
-        {
-            // skrivane na koloni  na kontragent s index "2" nakraq
-          if(DocimentTypeColumns_Contragent(colbg,OUT)||
-           DocimentTypeColumns_Obekt(colbg,IN)||
-           DocimentTypeColumns_Obekt(colbg,OUT))
-          {
-            return_value=true; 
-               break;  
-          }
-                  
-            //  HideColumns(getColumnIndex("Склад (към)"));
-             if(colbg.equals("Склад (към)"))
-            {
-               return_value=true; 
-               break;
-            }  
-            
-            break;
-        }
-       case aeDocumentFacade.OFERTA :
-        {
-         if( DocimentTypeColumns_Contragent(colbg,IN)||
-          DocimentTypeColumns_Obekt(colbg,IN)||
-          DocimentTypeColumns_Obekt(colbg,OUT)||
-          DocimentTypeColumns_DevDistr(colbg))
-         {
-           return_value=true; 
-               break;  
-         }
-            
-          //  HideColumns(getColumnIndex("Склад (към)"));
-             if(colbg.equals("Склад (към)"))
-            {
-               return_value=true; 
-               break;
-            }  
-              
-                
-         break;
-        } 
-       case aeDocumentFacade.BRAK :
-       {
-        if( DocimentTypeColumns_Contragent(colbg,IN)||
-        DocimentTypeColumns_Contragent(colbg,OUT)||
-        DocimentTypeColumns_Obekt(colbg,IN)||
-        DocimentTypeColumns_Obekt(colbg,OUT)||
-        DocimentTypeColumns_DevDistr(colbg))
-        {
-          return_value=true; 
-          break; 
-        }
-        
-                
-          break;
-        }
-        case aeDocumentFacade.PROTOKOL_LIPSA :
-       {
-          if(DocimentTypeColumns_Contragent(colbg,IN)||
-        DocimentTypeColumns_Contragent(colbg,OUT)||
-        DocimentTypeColumns_Obekt(colbg,IN)||
-        DocimentTypeColumns_Obekt(colbg,OUT)||
-        DocimentTypeColumns_DevDistr(colbg))
-          {
-              return_value=true; 
-               break;
-          }
-                
-          break;
-        }
-        case aeDocumentFacade.STOKOVA_RAZPISKA:
-        {
-           
-          if( DocimentTypeColumns_Contragent(colbg,IN)||
-            DocimentTypeColumns_Obekt(colbg,IN))
-          {
-              return_value=true; 
-               break;
-          }
-           
-            
-            
-             //  HideColumns(getColumnIndex("Склад (към)"));
-             if(colbg.equals("Склад (към)"))
-            {
-               return_value=true; 
-               break;
-            }  
-            
-            break;
-        }
-        case aeDocumentFacade.PROFORMA_FAKTURA:
-        {
-          if(DocimentTypeColumns_Contragent(colbg,IN)||
-
-           DocimentTypeColumns_Obekt(colbg,IN)||
-           DocimentTypeColumns_Obekt(colbg,OUT)||
-           DocimentTypeColumns_DevDistr(colbg))
-          {
-              return_value=true; 
-               break;
-          }
-            
-              //  HideColumns(getColumnIndex("Склад (към)"));
-             if(colbg.equals("Склад (към)"))
-            {
-               return_value=true; 
-               break;
-            }  
-           
-          break;  
-        }
-        
-    }
-    
-    
-    
-    
-    
-    return return_value;
-    
-}// end  checkForHideColumn
-
-private boolean DocimentTypeColumns_Contragent(String colbg,int in)
-{
-    boolean return_value=false;
-   switch (in)
-    {
-        case IN:
-        {
-           if(colbg.equals("Име на контрагента1"))
-            {
-               return_value=true; 
-               break;
-            } 
-             if(colbg.equals("Булстат1"))
-            {
-               return_value=true; 
-               break;
-            } 
-             if(colbg.equals("Данъчен номер1"))
-            {
-               return_value=true; 
-               break;
-            } 
-             if(colbg.equals("Адрес1"))
-            {
-               return_value=true; 
-               break;
-            } 
-             if(colbg.equals("Телефон на контрагента1"))
-            {
-               return_value=true; 
-               break;
-            } 
-             if(colbg.equals("Код на контрагента1"))
-            {
-               return_value=true; 
-               break;
-            } 
-             if(colbg.equals("МОЛ1"))
-            {
-               return_value=true; 
-               break;
-            } 
-           break;
-        }
-        case OUT:
-        {
-           if(colbg.equals("Име на контрагента2"))
-            {
-               return_value=true; 
-               break;
-            } 
-             if(colbg.equals("Булстат2"))
-            {
-               return_value=true; 
-               break;
-            } 
-             if(colbg.equals("Данъчен номер2"))
-            {
-               return_value=true; 
-               break;
-            } 
-             if(colbg.equals("Адрес2"))
-            {
-               return_value=true; 
-               break;
-            } 
-             if(colbg.equals("Телефон на контрагента2"))
-            {
-               return_value=true; 
-               break;
-            } 
-             if(colbg.equals("Код на контрагента2"))
-            {
-               return_value=true; 
-               break;
-            } 
-             if(colbg.equals("МОЛ2"))
-            {
-               return_value=true; 
-               break;
-            } 
-           break;
-        }
-    }  
-   return return_value;
-}
-
-private boolean DocimentTypeColumns_Obekt(String colbg,int in)
-{
-   boolean return_value=false;
-   switch (in)
-    {
-        case IN:
-        {
-            if(colbg.equals("Код на обекта1")) {
-                return_value=true;
-                break;
-            }
-            if(colbg.equals("Име на обекта1")) {
-                return_value=true;
-                break;
-            }
-            if(colbg.equals("Адрес на обекта1")) {
-                return_value=true;
-                break;
-            }
-
-           break;
-        }
-        case OUT:
-        {
-            if(colbg.equals("Код на обекта2")) {
-                return_value=true;
-                break;
-            }
-            if(colbg.equals("Име на обекта2")) {
-                return_value=true;
-                break;
-            }
-            if(colbg.equals("Адрес на обекта2")) {
-                return_value=true;
-                break;
-            } 
-           break;
-        }
-    }  
-   return return_value;   
-    
-    
-}
-
-private boolean DocimentTypeColumns_DevDistr(String colbg)
-{
-  boolean return_value=false;
-   if(colbg.equals("Код на дистрибутор")) {
-      return_value=true;
-      
-   }
-  if(colbg.equals("Код на доставчик")) {
-      return_value=true;
-      
-  }
-  if(colbg.equals("Дата на доставяне")) {
-      return_value=true;
-      
-  }
-return return_value;
-}
-
-
-private int getNameColumnsEN(String namebg)
-{
-    int return_value=-1;
-    for(int i=0;i<nameColumnsBG.length;i++)
-    {
-        if(nameColumnsBG[i].equals(namebg))
-        {
-            return_value=i;
-            break;
-        }
-    }
+    //proverqvame dali colonata e v spisaka na kolonite koito mogat da se vizdat v reporta
+    if(tmpS == null) return_value=true;
     return return_value;
 }
-private String getNameColumnsENASField(int index)
+
+
+private String getNameColumnsEN(String namebg)
+{
+    String return_value="";
+    return_value= (String) viewColumnsBGEN.get(namebg);
+    return return_value;
+}
+private String getNameColumnsENASField(String nameen)
 {
     String return_value="$F{";
-    return_value+=nameColumnsEN[index]+"}";
+    return_value+=nameen+"}";
     return return_value;
 }
 private void readClassTypeFromXML()
@@ -2692,13 +2079,11 @@ private void viewSimpleReport(String filename,String path)
 {
     try
     {
-  //  net.sf.jasperreports.engine.JasperCompileManager.compileReportToFile(path+"sales_lipsa.jrxml",path+"tmpsimple.jasper");
-  //  JasperDesign jasperDesign = JRXmlLoader.load(path+"sales_lipsa.jrxml");
+  
     
    JasperReport  jasperReport = JasperCompileManager.compileReport(path+defaultFiletoSave);
    jasperPrint = JasperFillManager.fillReport(jasperReport,inputFiltrs,conn);
-  // jasperPrint = JasperFillManager.fillReport(new java.io.FileInputStream(new java.io.File(path+"sales_lipsa.jasper")),
- //                   inputFiltrs, conn);
+  
     if(jasperPrint == null) System.out.println("Error viewSimpleReport");
     jrv =null;
     jrv = new net.sf.jasperreports.view.JRViewer(jasperPrint);
@@ -2724,7 +2109,7 @@ private void engine()
         public void run() 
         {
            
-               readJasperXML(path+"simplereport.jrxml");
+               readJasperXML(path+blankJasperFile);
           jProgressBar1.setValue(3);
               readClassTypeFromXML();
           jProgressBar1.setValue(jProgressBar1.getValue()+5);

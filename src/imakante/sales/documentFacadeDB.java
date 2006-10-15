@@ -373,6 +373,29 @@ public class documentFacadeDB  extends imakante.com.dbObject {
         return getRs();
         
     }
+  public java.sql.ResultSet searchRecords( int in_descriptionPaying, String in_docFacadeNumber, 
+            int in_docFacadeLevel, int in_docFacadeType, String in_docFacadeDateOt, String in_docFacadeDateDo)
+    {
+        setComprator(5);
+        setDescriptionPaying(in_descriptionPaying);
+        setCommentDocFacade(in_docFacadeNumber);
+        setLevelDocFacade(in_docFacadeLevel);
+        setDocFacadeType(in_docFacadeType);
+        
+        setDateDocFacade(in_docFacadeDateOt);
+        setPayingDate(in_docFacadeDateDo);
+        try
+        {
+            registerParameters();
+            setRs(getCstm().executeQuery());
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+        return getRs();
+        
+    }
     public java.sql.Connection getConn() //OK
     {
         return conn;

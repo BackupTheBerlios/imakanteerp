@@ -26,6 +26,12 @@
 	<parameter name="docType" isForPrompting="false" class="java.lang.String">
 		<defaultValueExpression ><![CDATA["1"]]></defaultValueExpression>
 	</parameter>
+	<parameter name="firmaName" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="docLevel" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="docNumber" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="docPay" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="docDateOt" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="docDateDo" isForPrompting="false" class="java.lang.String"/>
 	<queryString><![CDATA[SELECT
          s.id_df,
          s.in_contragent_df,contr_in.code_contragent as contr_in_code_contragent , contr_in.bul_n_contragent as contr_in_bul_n_contragent,
@@ -61,8 +67,10 @@
          LEFT JOIN user_master um_usr_last ON usr_last.id_um=um_usr_last.id_um
          LEFT JOIN mida.sl_doc_type_num sldtn ON sldtn.id_sdtn=usr_new.id_sdtn
          LEFT JOIN  kind_paying ON  description_pay_df=kind_paying.id_kp
-         WHERE  type_df = $P{docType}  AND level_df in (1,2,3)
-         AND condition_df="0" ORDER BY s.number_df ASC;]]></queryString>
+         WHERE  type_df = $P{docType}  AND level_df = $P{docLevel} AND description_pay_df = $P{docPay}
+         AND number_df like concat('%',$P{docNumber},'%')  AND condition_df="0"
+         AND date_edition_df   between  $P{docDateOt} and  $P{docDateDo}  ORDER BY s.number_df ASC; 
+         ]]></queryString>
 
 	<field name="id_df" class="java.lang.Long"/>
 	<field name="in_contragent_df" class="java.lang.Long"/>
@@ -137,19 +145,19 @@
 					</textElement>
 				<text><![CDATA[Заглавие за документа]]></text>
 				</staticText>
-				<staticText>
+				<textField isStretchWithOverflow="false" pattern="dd/MM/yyyy" isBlankWhenNull="false" evaluationTime="Report" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="243"
-						y="40"
-						width="78"
-						height="16"
-						key="staticText-2"/>
+						x="230"
+						y="42"
+						width="117"
+						height="19"
+						key="textField"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Center">
+					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font/>
 					</textElement>
-				<text><![CDATA[дата]]></text>
-				</staticText>
+				<textFieldExpression   class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
 			</band>
 		</title>
 		<pageHeader>
@@ -178,6 +186,32 @@
 		</lastPageFooter>
 		<summary>
 			<band height="50"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="354"
+						y="6"
+						width="178"
+						height="18"
+						key="textField-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{firmaName}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="304"
+						y="6"
+						width="48"
+						height="15"
+						key="staticText-2"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Фирма:]]></text>
+				</staticText>
 			</band>
 		</summary>
 </jasperReport>
