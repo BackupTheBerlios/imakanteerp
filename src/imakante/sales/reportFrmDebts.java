@@ -280,24 +280,25 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
             if (jXDatePicker1.getDateInMillis() <= jXDatePicker2.getDateInMillis()) {
                 setStartOfPeriod(jXDatePicker1);
                 setEndOfPeriod(jXDatePicker2);
-                if (levelx == 3) level = "d.level_df = 003";
-                if (levelx == 2) level = "d.level_df = 002";
-                if (levelx == 1) level = "d.level_df IN(001, 002, 003)";
+                if (levelx == 3) level = "003";
+                if (levelx == 2) level = "002";
+                if (levelx == 1) level = "003 OR d.level_df = 002 OR d.level_df = 001";
                 hm.put("level", level);
                 String previousDebtsQuery = sumContragentDebts + getIdContragent() +
-                        " AND date_edition_df < '" + getStartOfPeriod() +  "' AND " + level + ";";
+                        " AND date_edition_df < '" + getStartOfPeriod() +  "' AND (d.level_df = " + level + ");";
                 String debts4PeriodQuery = contragentDebts + getIdContragent() +
-                        " AND date_edition_df BETWEEN '" + getStartOfPeriod() + "' AND '" + getEndOfPeriod() + "' AND " + level + ";";
+                        " AND date_edition_df BETWEEN '" + getStartOfPeriod() + "' AND '" + getEndOfPeriod() + "' AND (d.level_df = " + level + ");";
                 String nextDebtsQuery = sumContragentDebts + getIdContragent() +
-                        " AND date_edition_df > '" + getEndOfPeriod() +  "' AND " + level + ";";
-                String iniDateQuery = initialDate + getIdContragent() + " AND " + level + ";";
-                String sumDebtQuery = sumContragentDebts + getIdContragent() + " AND " + level + ";";
+                        " AND date_edition_df > '" + getEndOfPeriod() +  "' AND (d.level_df = " + level + ");";
+                String iniDateQuery = initialDate + getIdContragent() + " AND (d.level_df = " + level + ");";
+                String sumDebtQuery = sumContragentDebts + getIdContragent() + " AND (d.level_df = " + level + ");";
                 hm.put("idContragent", getIdContragent());
                 hm.put("contragent", getNameContragent());
                 hm.put("startPeriod", getStartOfPeriod());
                 hm.put("endPeriod", getEndOfPeriod());
                 try {
                     rsD = getStm().executeQuery(debts4PeriodQuery);
+                    System.out.println("Za perioda: " + debts4PeriodQuery);
                     modelD = new imakante.com.CustomTableModel(getConn(), rsD, names);
                     tableD = new imakante.com.CustomTable(modelD);
                     HideColumns(tableD, getColumnIndex(tableD, "id"));

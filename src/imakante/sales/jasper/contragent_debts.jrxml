@@ -31,7 +31,7 @@
 	<parameter name="initialDate" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="nextTotal" isForPrompting="false" class="java.lang.Double"/>
 	<parameter name="GrandTotal" isForPrompting="false" class="java.lang.Double"/>
-	<parameter name="idContragent" isForPrompting="true" class="java.lang.Integer"/>
+	<parameter name="idContragent" isForPrompting="false" class="java.lang.Integer"/>
 	<parameter name="level" isForPrompting="false" class="java.lang.String"/>
 	<queryString><![CDATA[SELECT d.id_df AS id, 
 td.name_print_ntd AS Document, 
@@ -44,8 +44,9 @@ d.date_pay_df AS Term,
 DATEDIFF(CURRENT_DATE, d.date_pay_df) AS Overdue 
 FROM sl_document_facade d 
 JOIN n_type_doc td ON td.code_ntd = d.type_df 
-WHERE d.out_contragent_df = $P{idContragent}
-AND $P{level};]]></queryString>
+WHERE d.out_contragent_df = $P{idContragent} 
+AND d.date_edition_df BETWEEN $P{startPeriod} AND $P{endPeriod} 
+AND (d.level_df = $P{level});]]></queryString>
 
 	<field name="id" class="java.lang.Integer"/>
 	<field name="Document" class="java.lang.String"/>
@@ -321,7 +322,7 @@ AND $P{level};]]></queryString>
 						height="18"
 						key="textField-13"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
+					<textElement textAlignment="Left" verticalAlignment="Middle">
 						<font fontName="Tahoma" size="9" pdfEncoding ="Cp1251"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Document}]]></textFieldExpression>
