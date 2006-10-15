@@ -17,6 +17,7 @@ public class periodicaDialog extends imakante.com.vcomponents.iDialog {
         initComponents();
         setTableView(true);
         switchContent();
+        constructReport();
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -212,14 +213,14 @@ public class periodicaDialog extends imakante.com.vcomponents.iDialog {
         this.jbPrint.setEnabled(false);
         this.jbPane.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Report Edit 2.png")));
         this.jbPane.setText("\u041E\u0422\u0427\u0415\u0422");  // OTCHET
+        jpDataPanes.repaint();
     }
     
     private void showReport() {
 //        setTableView(false);
-        constructReport();
+       
         this.jpDataPanes.removeAll();
         this.jpDataPanes.add(jrv);
-        this.jpDataPanes.revalidate();
         this.jpDataPanes.repaint();
         this.jbPrint.setEnabled(true);
         this.jbPane.setIcon(null);

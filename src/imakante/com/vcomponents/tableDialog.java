@@ -184,6 +184,7 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
         this.jPanel1.revalidate();
         this.jPanel1.repaint();
         this.jButton2.setText("\u0418\u0437\u0433\u043b\u0435\u0434 \u0422\u0430\u0431\u043b\u0438\u0446\u0430");
+        
     }
     
     private void showTable() {
@@ -193,7 +194,7 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
         this.jPanel1.revalidate();
         this.jPanel1.repaint();
         this.jButton2.setText("\u0418\u0437\u0433\u043b\u0435\u0434 \u041f\u0440\u0438\u043d\u0442");
-        
+       
     }
     
     private int getColumnIndex(String in) {
