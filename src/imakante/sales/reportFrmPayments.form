@@ -178,7 +178,11 @@
             <Component class="javax.swing.JComboBox" name="jComboBox1">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="0"/>
+                  <StringArray count="3">
+                    <StringItem index="0" value="&#x412; &#x411;&#x420;&#x41e;&#x419; - &#x43f;&#x43e; &#x41f;&#x440;&#x438;&#x445;&#x43e;&#x434;&#x43d;&#x438; &#x43a;&#x430;&#x441;&#x43e;&#x432;&#x438; &#x43e;&#x440;&#x434;&#x435;&#x440;&#x438;"/>
+                    <StringItem index="1" value="&#x411;&#x410;&#x41d;&#x41a;&#x410; - &#x43f;&#x43e; &#x411;&#x430;&#x43d;&#x43a;&#x43e;&#x432;&#x438; &#x43d;&#x430;&#x440;&#x435;&#x436;&#x434;&#x430;&#x43d;&#x438;&#x44f;"/>
+                    <StringItem index="2" value="&#x427;&#x410;&#x421;&#x422;&#x418;&#x427;&#x41d;&#x41e; - &#x421;&#x43c;&#x435;&#x441;&#x435;&#x43d;&#x430; &#x441;&#x445;&#x435;&#x43c;&#x430;"/>
+                  </StringArray>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -211,7 +215,7 @@
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jXDatePicker1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="36" max="32767" attributes="0"/>
+                      <EmptySpace pref="42" max="32767" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jXDatePicker2" min="-2" max="-2" attributes="0"/>

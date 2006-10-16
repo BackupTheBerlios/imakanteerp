@@ -65,7 +65,7 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
                 .addContainerGap()
                 .add(jLabel1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
+                .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -79,6 +79,7 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u0412\u0438\u0434 \u0440\u0430\u0437\u043f\u043b\u0430\u0449\u0430\u043d\u0435", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 51, 153)));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "\u0412 \u0411\u0420\u041e\u0419 - \u043f\u043e \u041f\u0440\u0438\u0445\u043e\u0434\u043d\u0438 \u043a\u0430\u0441\u043e\u0432\u0438 \u043e\u0440\u0434\u0435\u0440\u0438", "\u0411\u0410\u041d\u041a\u0410 - \u043f\u043e \u0411\u0430\u043d\u043a\u043e\u0432\u0438 \u043d\u0430\u0440\u0435\u0436\u0434\u0430\u043d\u0438\u044f", "\u0427\u0410\u0421\u0422\u0418\u0427\u041d\u041e - \u0421\u043c\u0435\u0441\u0435\u043d\u0430 \u0441\u0445\u0435\u043c\u0430" }));
         jComboBox1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
         org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
@@ -87,7 +88,7 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jComboBox1, 0, 334, Short.MAX_VALUE)
+                .add(jComboBox1, 0, 338, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -156,7 +157,7 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
                 .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 30, Short.MAX_VALUE)
                 .add(jlLevelx))
         );
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -252,20 +253,41 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
     private int IDTransfer = 0;
     private int levelx = 3;
     
-    private String paymentsView = "SELECT id_df AS ID, number_df AS NOMER, type_df AS TIP, " +
-            "total_df AS SUMA, date_edition_df AS 'DATA NA ZADYLJENIE', faktura_connection_df AS FAKTURA, " +
-            "description_pay_df AS 'TIP RAZPLA6TANE', paying_order_df AS 'PRIHODEN KASOV ORDER', " +
-            "date_pay_df AS 'DATA NA PLA6TANE', out_contragent_df AS 'KLIENT' " +
+    private String paymentsView = 
+            "SELECT id_df AS ID, " +
+            "number_df AS NOMER, " +
+            "type_df AS TIP, " +
+            "total_df AS SUMA, " +
+            "date_edition_df AS 'DATA NA ZADYLJENIE', " +
+            "faktura_connection_df AS FAKTURA, " +
+            "description_pay_df AS 'TIP RAZPLA6TANE', " +
+            "paying_order_df AS 'PRIHODEN KASOV ORDER', " +
+            "date_pay_df AS 'DATA NA PLA6TANE', " +
+            "out_contragent_df AS 'KLIENT' " +
             "FROM sl_document_facade " +
             "WHERE total_df > 0";
     
+    private String paymentsByCROrders = 
+            "SELECT " +
+            "FROM sl_m_operation " +
+            "WHERE ";
+    
+    private String paymentsByBankOrders = 
+            "SELECT " +
+            "FROM " +
+            "WHERE ";
+    
     private String contragentsList =
-            "SELECT nc.id_contragent, nc.code_contragent, nc.name_n_contragent " +
+            "SELECT nc.id_contragent, nc.code_contragent, nc.name_n_contragent, nc.flag_n_contragent " +
             "FROM n_contragent nc ";
     
     private String contragentById =
             "SELECT nc.code_contragent, nc.name_n_contragent FROM n_contragent nc " +
             "WHERE nc.id_contragent = ";
+    
+    private String contragentByCode =
+            "SELECT nc.id_contragent, nc.name_n_contragent, nc.flag_n_contragent FROM n_contragent nc " +
+            "WHERE nc.code_contragent = ";
     
     private void executeReport() {
         

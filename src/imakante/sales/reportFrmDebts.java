@@ -252,12 +252,16 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
             "WHERE d.out_contragent_df = ";
     
     private String contragentsList =
-            "SELECT nc.id_contragent, nc.code_contragent, nc.name_n_contragent " +
+            "SELECT nc.id_contragent, nc.code_contragent, nc.name_n_contragent, nc.flag_n_contragent " +
             "FROM n_contragent nc ";
     
     private String contragentById =
             "SELECT nc.code_contragent, nc.name_n_contragent FROM n_contragent nc " +
             "WHERE nc.id_contragent = ";
+    
+    private String contragentByCode =
+            "SELECT nc.id_contragent, nc.name_n_contragent, nc.flag_n_contragent FROM n_contragent nc " +
+            "WHERE nc.code_contragent = ";
     
     private void executeReport() {
         java.sql.ResultSet rsD;
