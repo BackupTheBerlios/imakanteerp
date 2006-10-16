@@ -61,6 +61,9 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
             }
         });
         jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField1FocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextField1FocusLost(evt);
             }
@@ -73,6 +76,14 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
 
         jLabel2.setText("\u0434\u043e:");
 
+        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField2FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField2FocusLost(evt);
+            }
+        });
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField2KeyPressed(evt);
@@ -103,7 +114,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
                 .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 152, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(19, 19, 19)
                 .add(jCheckBox1)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -118,6 +129,14 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jLabel3.setText("\u0414\u043e\u0441\u0442\u0430\u0432\u0447\u0438\u043a  \u043e\u0442:");
 
+        jTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField3FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField3FocusLost(evt);
+            }
+        });
         jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField3KeyPressed(evt);
@@ -126,6 +145,14 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
 
         jLabel4.setText("\u0434\u043e:");
 
+        jTextField4.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField4FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField4FocusLost(evt);
+            }
+        });
         jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField4KeyPressed(evt);
@@ -156,7 +183,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
                 .add(jTextField4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 152, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(20, 20, 20)
                 .add(jCheckBox2)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -217,6 +244,14 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jLabel5.setText("\u0410\u0440\u0442\u0438\u043a\u0443\u043b\u0438    \u043e\u0442:");
 
+        jTextField5.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField5FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField5FocusLost(evt);
+            }
+        });
         jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField5KeyPressed(evt);
@@ -225,6 +260,14 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
 
         jLabel6.setText("\u0434\u043e:");
 
+        jTextField6.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField6FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField6FocusLost(evt);
+            }
+        });
         jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField6KeyPressed(evt);
@@ -245,6 +288,11 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         jCheckBox4.setToolTipText("\u041f\u0440\u0438 \u0438\u0437\u0431\u0440\u0430\u043d\u0430 \u043e\u043f\u0446\u0438\u044f \u0432 \u0441\u043f\u0440\u0430\u0432\u043a\u0430\u0442\u0430 \u0441\u0435 \u043f\u043e\u0434\u0430\u0432\u0430\u0442 \u0430\u0440\u0442\u0438\u043a\u0443\u043b\u0438\u0442\u0435 \u043f\u043e \u043f\u0430\u0440\u0442\u0438\u0434\u0430");
         jCheckBox4.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox4.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox4ActionPerformed(evt);
+            }
+        });
         jCheckBox4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jCheckBox4KeyPressed(evt);
@@ -254,6 +302,11 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         jCheckBox5.setText("\u0426\u0435\u043d\u0438 \u0431\u0435\u0437 \u0414\u0414\u0421");
         jCheckBox5.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox5.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCheckBox5KeyPressed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -277,7 +330,7 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
                     .add(jPanel4Layout.createSequentialGroup()
                         .add(10, 10, 10)
                         .add(jCheckBox5)))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -319,14 +372,66 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
                 .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 52, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-546)/2, (screenSize.height-236)/2, 546, 236);
     }// </editor-fold>//GEN-END:initComponents
     
+    private void jTextField6FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusLost
+        fLost(jTextField6);
+    }//GEN-LAST:event_jTextField6FocusLost
+    
+    private void jTextField6FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusGained
+        fGain(jTextField6);
+    }//GEN-LAST:event_jTextField6FocusGained
+    
+    private void jTextField5FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField5FocusLost
+        fLost(jTextField5);
+    }//GEN-LAST:event_jTextField5FocusLost
+    
+    private void jTextField5FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField5FocusGained
+        fGain(jTextField5);
+    }//GEN-LAST:event_jTextField5FocusGained
+    
+    private void jTextField4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusLost
+        fLost(jTextField4);
+    }//GEN-LAST:event_jTextField4FocusLost
+    
+    private void jTextField4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusGained
+        fGain(jTextField4);
+    }//GEN-LAST:event_jTextField4FocusGained
+    
+    private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
+        fLost(jTextField3);
+    }//GEN-LAST:event_jTextField3FocusLost
+    
+    private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
+        fGain(jTextField3);
+    }//GEN-LAST:event_jTextField3FocusGained
+    
+    private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
+        fLost(jTextField2);
+    }//GEN-LAST:event_jTextField2FocusLost
+    
+    private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
+        fGain(jTextField2);
+    }//GEN-LAST:event_jTextField2FocusGained
+    
+    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+        fGain(jTextField1);
+    }//GEN-LAST:event_jTextField1FocusGained
+    
+    private void jCheckBox5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox5KeyPressed
+        jCheckBox5.transferFocus();
+    }//GEN-LAST:event_jCheckBox5KeyPressed
+    
+    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox4ActionPerformed
+    
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        
+        fLost(jTextField1);
     }//GEN-LAST:event_jTextField1FocusLost
     
     private void jCheckBox4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox4KeyPressed
@@ -391,10 +496,10 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         if(checkFieldsInt()){
             processReport();}else {
             javax.swing.JOptionPane.showMessageDialog(null,
-                   "\u041D\u0435\u043A\u043E\u0440\u0435\u043A\u0442\u043D\u0430 \u0441\u0442\u043E\u0439\u043D\u043E\u0441\u0442",
+                    "\u041D\u0435\u043A\u043E\u0440\u0435\u043A\u0442\u043D\u0430 \u0441\u0442\u043E\u0439\u043D\u043E\u0441\u0442",
                     "\u0413\u0420\u0415\u0428\u041A\u0410 \u0412 \u0417\u0410\u042F\u0412\u041A\u0410\u0422\u0410!",
                     javax.swing.JOptionPane.ERROR_MESSAGE);
-        }
+            }
     }//GEN-LAST:event_jButton1ActionPerformed
     
     private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
@@ -736,9 +841,9 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         this.nubColums = nubColums + 10;
         try {
             newString = newString + " WHERE `rep_comm_nal`.`code_contragent` BETWEEN '" +
-                    (Integer.parseInt(this.jTextField5.getText())-1) + "' AND '" + (Integer.parseInt(this.jTextField6.getText())+1) +
-                    "' AND " + " `rep_comm_nal`.`code_pm` BETWEEN '" + (Integer.parseInt(this.jTextField3.getText())-1) +
-                    "' AND '" + (Integer.parseInt(this.jTextField4.getText())+1) + "' AND " + " `rep_comm_nal`.`code_n_storage` BETWEEN '" +
+                    (Integer.parseInt(this.jTextField3.getText())-1) + "' AND '" + (Integer.parseInt(this.jTextField4.getText())+1) +
+                    "' AND " + " `rep_comm_nal`.`code_pm` BETWEEN '" + (Integer.parseInt(this.jTextField5.getText())-1) +
+                    "' AND '" + (Integer.parseInt(this.jTextField6.getText())+1) + "' AND " + " `rep_comm_nal`.`code_n_storage` BETWEEN '" +
                     (Integer.parseInt(this.jTextField1.getText())-1) + "' AND '" + (Integer.parseInt(this.jTextField2.getText())+1) + "' ";
         } catch (NumberFormatException ex) {
             ex.printStackTrace();
@@ -762,27 +867,27 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         
         if(this.jCheckBox1.isSelected() && this.jCheckBox4.isSelected()){
             if(jCheckBox5.isSelected()){
-             fileName="nal_simp_01.jasper";}else{fileName="nal_simp_01DDS.jasper";}
+                fileName="nal_simp_01.jasper";}else{fileName="nal_simp_01DDS.jasper";}
         }
         if(this.jCheckBox2.isSelected() && this.jCheckBox4.isSelected()){
             if(jCheckBox5.isSelected()){
-             fileName="nal_simp_01.jasper";}else{fileName="nal_simp_01DDS.jasper";}
+                fileName="nal_simp_01.jasper";}else{fileName="nal_simp_01DDS.jasper";}
         }
         if(this.jCheckBox3.isSelected() && this.jCheckBox4.isSelected()){
             if(jCheckBox5.isSelected()){
-             fileName="nal_simp_01.jasper";}else{fileName="nal_simp_01DDS.jasper";}
+                fileName="nal_simp_01.jasper";}else{fileName="nal_simp_01DDS.jasper";}
         }
         if(this.jCheckBox1.isSelected() && this.jCheckBox4.isSelected()==false){
-             if(jCheckBox5.isSelected()){
-            fileName="nal_simp_03.jasper";}else{fileName="nal_simp_03DDS.jasper";}
+            if(jCheckBox5.isSelected()){
+                fileName="nal_simp_03.jasper";}else{fileName="nal_simp_03DDS.jasper";}
         }
         if(this.jCheckBox2.isSelected() && this.jCheckBox4.isSelected()==false){
             if(jCheckBox5.isSelected()){
-            fileName="nal_simp_02.jasper";}else{fileName="nal_simp_02DDS.jasper";}
+                fileName="nal_simp_02.jasper";}else{fileName="nal_simp_02DDS.jasper";}
         }
         if(this.jCheckBox3.isSelected() && this.jCheckBox4.isSelected()==false){
-               if(jCheckBox5.isSelected()){
-            fileName="nal_simp_03.jasper";}else{fileName="nal_simp_03DDS.jasper";}
+            if(jCheckBox5.isSelected()){
+                fileName="nal_simp_03.jasper";}else{fileName="nal_simp_03DDS.jasper";}
         }
         try{
             initTable(newString, Names);
@@ -877,5 +982,13 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
             return false;
         }
         return check;
+    }
+    
+    private void fGain(javax.swing.JComponent jtf){
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 0, 51), null));
+    }
+    
+    private void fLost(javax.swing.JComponent jtf){
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 255, 255), null));
     }
 }
