@@ -922,12 +922,15 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         hmap.put("doprodukt",jTextField6.getText());
         if(levelx==3){
             hmap.put("levex","0");
+            hmap.put("levey","");
         }
         if(levelx==2){
-            hmap.put("levex","1");
+            hmap.put("levex","");
+            hmap.put("levey","1");
         }
         if(levelx==1){
-            hmap.put("levex","0,1");
+            hmap.put("levex","0");
+            hmap.put("levey","1");
         }
         return hmap;
     }
