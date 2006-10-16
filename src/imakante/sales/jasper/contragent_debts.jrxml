@@ -24,15 +24,15 @@
 	<import value="net.sf.jasperreports.engine.data.*" />
 
 	<parameter name="contragent" isForPrompting="false" class="java.lang.String"/>
-	<parameter name="startPeriod" isForPrompting="false" class="java.lang.String"/>
-	<parameter name="endPeriod" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="startPeriod" isForPrompting="true" class="java.lang.String"/>
+	<parameter name="endPeriod" isForPrompting="true" class="java.lang.String"/>
 	<parameter name="debt" isForPrompting="false" class="java.lang.Double"/>
 	<parameter name="previousTotal" isForPrompting="false" class="java.lang.Double"/>
 	<parameter name="initialDate" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="nextTotal" isForPrompting="false" class="java.lang.Double"/>
 	<parameter name="GrandTotal" isForPrompting="false" class="java.lang.Double"/>
-	<parameter name="idContragent" isForPrompting="false" class="java.lang.Integer"/>
-	<parameter name="level" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="idContragent" isForPrompting="true" class="java.lang.Integer"/>
+	<parameter name="level" isForPrompting="true" class="java.lang.String"/>
 	<queryString><![CDATA[SELECT d.id_df AS id, 
 td.name_print_ntd AS Document, 
 d.number_df AS ofNumber, 
@@ -290,9 +290,9 @@ AND (d.level_df = $P{level});]]></queryString>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="488"
+						x="493"
 						y="0"
-						width="47"
+						width="42"
 						height="18"
 						key="textField-11"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -303,7 +303,7 @@ AND (d.level_df = $P{level});]]></queryString>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="dd MMMMM yyyy" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="406"
+						x="411"
 						y="0"
 						width="81"
 						height="18"
