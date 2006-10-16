@@ -41,12 +41,17 @@
 	<parameter name="doprodukt" isForPrompting="false" class="java.lang.String">
 		<defaultValueExpression ><![CDATA["9999999999"]]></defaultValueExpression>
 	</parameter>
-	<parameter name="levelx" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["0,1"]]></defaultValueExpression>
+	<parameter name="levelx" isForPrompting="true" class="java.lang.String">
+		<defaultValueExpression ><![CDATA["000"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="levely" isForPrompting="true" class="java.lang.String">
+		<defaultValueExpression ><![CDATA["001"]]></defaultValueExpression>
 	</parameter>
 	<queryString><![CDATA[SELECT  DISTINCT CONCAT(rep_comm_nal.level ,
 rep_comm_nal.code_n_storage ,rep_comm_nal.code_pm ,
-rep_comm_nal.parcel_pc ) AS con ,rep_comm_nal.code_n_storage ,rep_comm_nal.code_pm ,
+rep_comm_nal.parcel_pc ) AS con ,
+rep_comm_nal.level lvl,
+rep_comm_nal.code_n_storage ,rep_comm_nal.code_pm ,
 rep_comm_nal.name_pm ,rep_comm_nal.barcod_pm ,rep_comm_nal.parcel_pc ,
 SUM(rep_comm_nal.quant_nal), SUM(rep_comm_nal.miarka3), SUM(rep_comm_nal.miarka2),
 SUM(rep_comm_nal.ostatak), SUM(rep_comm_nal.TSENA0), SUM(rep_comm_nal.TSENA1),
@@ -55,16 +60,17 @@ WHERE
 `rep_comm_nal`.`code_contragent` BETWEEN $P{otkontragent} AND $P{dokontragent}
 AND  `rep_comm_nal`.`code_pm` BETWEEN $P{otprodukt} AND $P{doprodukt}
 AND  `rep_comm_nal`.`code_n_storage` BETWEEN $P{otsklad} AND $P{dosklad}
-AND  `rep_comm_nal`.level IN($P{levelx})
-
+AND  (`rep_comm_nal`.level = $P{levelx}
+or   `rep_comm_nal`.level = $P{levely})
 GROUP BY con ORDER BY rep_comm_nal.code_pm ASC]]></queryString>
 
 	<field name="con" class="java.lang.String"/>
+	<field name="lvl" class="java.lang.Integer"/>
 	<field name="code_n_storage" class="java.lang.Integer"/>
 	<field name="code_pm" class="java.lang.Integer"/>
 	<field name="name_pm" class="java.lang.String"/>
-	<field name="barcod_pm" class="java.lang.Integer"/>
-	<field name="parcel_pc" class="java.lang.Integer"/>
+	<field name="barcod_pm" class="java.lang.String"/>
+	<field name="parcel_pc" class="java.lang.String"/>
 	<field name="SUM(rep_comm_nal.quant_nal)" class="java.lang.Integer"/>
 	<field name="SUM(rep_comm_nal.miarka3)" class="java.lang.Integer"/>
 	<field name="SUM(rep_comm_nal.miarka2)" class="java.lang.Integer"/>
@@ -790,9 +796,9 @@ GROUP BY con ORDER BY rep_comm_nal.code_pm ASC]]></queryString>
 				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
-						x="1"
+						x="21"
 						y="1"
-						width="31"
+						width="11"
 						height="15"
 						forecolor="#000000"
 						backcolor="#FFFFFF"
@@ -942,6 +948,20 @@ GROUP BY con ORDER BY rep_comm_nal.code_pm ASC]]></queryString>
 						<font fontName="Tahoma" pdfFontName="Times-Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="CP1252" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{name_pm}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="3"
+						y="2"
+						width="31"
+						height="9"
+						forecolor="#FFFFFF"
+						key="textField"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font size="5"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{lvl}]]></textFieldExpression>
 				</textField>
 			</band>
 		</detail>
