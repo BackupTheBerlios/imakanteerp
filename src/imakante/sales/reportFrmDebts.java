@@ -284,10 +284,24 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
             if (jXDatePicker1.getDateInMillis() <= jXDatePicker2.getDateInMillis()) {
                 setStartOfPeriod(jXDatePicker1);
                 setEndOfPeriod(jXDatePicker2);
-                if (levelx == 3) level = "003";
-                if (levelx == 2) level = "002";
-                if (levelx == 1) level = "003 OR d.level_df = 002 OR d.level_df = 001";
-                hm.put("level", level);
+                if (levelx == 3) {
+                    level = "003";
+                    hm.put("levelBoth", "");
+                    hm.put("levelReal", "");
+                    hm.put("levelVirtual", level);
+                }
+                if (levelx == 2) {
+                    level = "002";
+                    hm.put("levelBoth", "");
+                    hm.put("levelReal", level);
+                    hm.put("levelVirtual", "");
+                }
+                if (levelx == 1) {
+                    level = "003 OR d.level_df = 002 OR d.level_df = 001";
+                    hm.put("levelBoth", "001");
+                    hm.put("levelReal", "002");
+                    hm.put("levelVirtual", "003");
+                }
                 String previousDebtsQuery = sumContragentDebts + getIdContragent() +
                         " AND date_edition_df < '" + getStartOfPeriod() +  "' AND (d.level_df = " + level + ");";
                 String debts4PeriodQuery = contragentDebts + getIdContragent() +
@@ -353,12 +367,13 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         java.sql.ResultSet rsC;
         imakante.com.CustomTableModel modelC;
         imakante.com.CustomTable tableC;
-        String[] names = { "id", "\u041A\u043E\u0434", "\u0418\u043C\u0435" };
+        String[] names = { "id", "\u041A\u043E\u0434", "\u0418\u043C\u0435", "flag" };
         try {
             rsC = getStm().executeQuery(contragents);
             modelC = new imakante.com.CustomTableModel(getConn(), rsC, names);
             tableC = new imakante.com.CustomTable(modelC);
             HideColumns(tableC, getColumnIndex(tableC, "id"));
+            HideColumns(tableC, getColumnIndex(tableC, "flag"));
             tableC.setEditingRow(0);
             imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, tableC,
                     "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u041A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442",
