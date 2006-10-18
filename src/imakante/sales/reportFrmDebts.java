@@ -397,6 +397,20 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         jTextField1.setText("" + getCodeContragent() + " - " + getNameContragent());
     }
     
+    private void getContragentShadow(int CODE) {    // past activities on the contragent - history
+        String contragentProfile = contragentByCode + CODE + ";";   // full history = past + present
+        String contragentShadow = contragentByCode + CODE + " AND nc.flag_n_contragent = 1;";    // only past history
+        try {
+            java.sql.ResultSet rsP = getStm().executeQuery(contragentProfile);
+            rsP.next();
+//            setIdContragent(ID);
+//            setCodeContragent(rsC.getInt("code_contragent"));
+//            setNameContragent(rsC.getString("name_n_contragent"));
+            java.sql.ResultSet rsS = getStm().executeQuery(contragentShadow);
+            rsS.next();
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
+    }
+    
     private boolean obtainInputType(javax.swing.JTextField jtf) {
         int i = 0;
         try {
