@@ -31,7 +31,7 @@
 	<parameter name="initialDate" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="nextTotal" isForPrompting="false" class="java.lang.Double"/>
 	<parameter name="GrandTotal" isForPrompting="false" class="java.lang.Double"/>
-	<parameter name="idContragent" isForPrompting="true" class="java.lang.Integer"/>
+	<parameter name="codeContragent" isForPrompting="true" class="java.lang.Integer"/>
 	<parameter name="levelBoth" isForPrompting="true" class="java.lang.String"/>
 	<parameter name="levelReal" isForPrompting="true" class="java.lang.String"/>
 	<parameter name="levelVirtual" isForPrompting="true" class="java.lang.String"/>
@@ -46,9 +46,11 @@ d.date_pay_df AS Term,
 DATEDIFF(CURRENT_DATE, d.date_pay_df) AS Overdue 
 FROM sl_document_facade d 
 JOIN n_type_doc td ON td.code_ntd = d.type_df 
-WHERE d.out_contragent_df = $P{idContragent} 
+JOIN n_contragent nc ON nc.id_contragent = d.out_contragent_df
+WHERE nc.code_contragent = $P{codeContragent} 
 AND d.date_edition_df BETWEEN $P{startPeriod} AND $P{endPeriod} 
-AND (d.level_df = $P{levelBoth} OR d.level_df = $P{levelReal} OR d.level_df = $P{levelVirtual});]]></queryString>
+AND (d.level_df = $P{levelBoth} OR d.level_df = $P{levelReal} OR d.level_df = $P{levelVirtual})
+ORDER BY d.date_edition_df;]]></queryString>
 
 	<field name="id" class="java.lang.Integer"/>
 	<field name="Document" class="java.lang.String"/>

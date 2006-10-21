@@ -239,17 +239,20 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
             "DATEDIFF(CURRENT_DATE, d.date_pay_df) AS Overdue " +
             "FROM sl_document_facade d " +
             "JOIN n_type_doc td ON td.code_ntd = d.type_df " +
-            "WHERE d.out_contragent_df = ";
+            "JOIN n_contragent nc ON nc.id_contragent = d.out_contragent_df " +
+            "WHERE nc.code_contragent = ";
     
     private String sumContragentDebts =
             "SELECT SUM(total_df) AS suma " +
             "FROM sl_document_facade d " +
-            "WHERE d.out_contragent_df = ";
+            "JOIN n_contragent nc ON nc.id_contragent = d.out_contragent_df " +
+            "WHERE nc.code_contragent = ";
     
     private String initialDate =
             "SELECT IFNULL(MIN(date_edition_df), '0000-00-00') AS data " +
             "FROM sl_document_facade d " +
-            "WHERE d.out_contragent_df = ";
+            "JOIN n_contragent nc ON nc.id_contragent = d.out_contragent_df " +
+            "WHERE nc.code_contragent = ";
     
     private String contragentsList =
             "SELECT nc.id_contragent, nc.code_contragent, nc.name_n_contragent, nc.flag_n_contragent " +
@@ -302,15 +305,16 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
                     hm.put("levelReal", "002");
                     hm.put("levelVirtual", "003");
                 }
-                String previousDebtsQuery = sumContragentDebts + getIdContragent() +
+                String previousDebtsQuery = sumContragentDebts + getCodeContragent() +
                         " AND date_edition_df < '" + getStartOfPeriod() +  "' AND (d.level_df = " + level + ");";
-                String debts4PeriodQuery = contragentDebts + getIdContragent() +
-                        " AND date_edition_df BETWEEN '" + getStartOfPeriod() + "' AND '" + getEndOfPeriod() + "' AND (d.level_df = " + level + ");";
-                String nextDebtsQuery = sumContragentDebts + getIdContragent() +
+                String debts4PeriodQuery = contragentDebts + getCodeContragent() +
+                        " AND date_edition_df BETWEEN '" + getStartOfPeriod() + "' AND '" + getEndOfPeriod() + "' AND (d.level_df = " + level + ")" +
+                        "ORDER BY d.date_edition_df;";
+                String nextDebtsQuery = sumContragentDebts + getCodeContragent() +
                         " AND date_edition_df > '" + getEndOfPeriod() +  "' AND (d.level_df = " + level + ");";
-                String iniDateQuery = initialDate + getIdContragent() + " AND (d.level_df = " + level + ");";
-                String sumDebtQuery = sumContragentDebts + getIdContragent() + " AND (d.level_df = " + level + ");";
-                hm.put("idContragent", getIdContragent());
+                String iniDateQuery = initialDate + getCodeContragent() + " AND (d.level_df = " + level + ");";
+                String sumDebtQuery = sumContragentDebts + getCodeContragent() + " AND (d.level_df = " + level + ");";
+                hm.put("codeContragent", getCodeContragent());
                 hm.put("contragent", getNameContragent());
                 hm.put("startPeriod", getStartOfPeriod());
                 hm.put("endPeriod", getEndOfPeriod());
@@ -363,7 +367,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
             filter = "WHERE nc.code_contragent LIKE '%";
         else
             filter = "WHERE nc.name_n_contragent LIKE '%";
-        String contragents = contragentsList + filter + jTextField1.getText() + "%';";
+        String contragents = contragentsList + filter + jTextField1.getText() + "%' AND nc.flag_n_contragent = 0;";
         java.sql.ResultSet rsC;
         imakante.com.CustomTableModel modelC;
         imakante.com.CustomTable tableC;
