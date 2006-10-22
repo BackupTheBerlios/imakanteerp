@@ -2,7 +2,7 @@
 package nom;
 
 import javax.print.PrintException;
-
+import java.util.HashMap;
 
 public class FrmGroup extends imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
@@ -244,13 +244,14 @@ public class FrmGroup extends imakante.com.vcomponents.iInternalFrame implements
     }//GEN-LAST:event_formInternalFrameClosed
     
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
-        try {
+       /* try {
             java.text.MessageFormat headerFormat = new java.text.MessageFormat("Group");
             java.text.MessageFormat footerFormat = new java.text.MessageFormat("Page. "+"- {0} -"+" IMAKANTE' ");
             table.print(javax.swing.JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
         } catch(java.awt.print.PrinterException e) {
             e.printStackTrace();
-        }
+        }*/
+        loadSimpleReport();
     }//GEN-LAST:event_jButtonPrintActionPerformed
     
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
@@ -327,6 +328,12 @@ public class FrmGroup extends imakante.com.vcomponents.iInternalFrame implements
     private  imakante.com.CustomTable table;
     private String columnsNames[] = {"id_n_group","\u041a\u043e\u0434","\u0418\u043c\u0435",
     "id_al", "\u0410\u043d\u0430\u043b\u0438\u0442\u0438\u0447\u043d\u0438 \u043d\u0438\u0432\u0430"};
+    private imakante.com.simpleReport simpReport;
+    private String simplereportFile = "smp_rep_group.jrxml";
+    private String columnsNamesEN[] = {"id_n_group","cod_n_group","name_n_group",
+    "id_al", "name_al"};
+   
+  
     //---------------END My Variables
     
     //---------------START MyFunction
@@ -645,5 +652,73 @@ public class FrmGroup extends imakante.com.vcomponents.iInternalFrame implements
             refreshTable();
         }
     }
+ private void loadSimpleReport()
+ {
+     HashMap parameterHashMap = new HashMap();
+     imakante.com.paramFirm paramFrm1 = new imakante.com.paramFirm();
+     parameterHashMap.put(new String("firmaName"),paramFrm1.getName());
+     
+     parameterHashMap.put(new String("in_code"),jTextCod.getText());
+     parameterHashMap.put(new String("in_name"),jTextName.getText());
+     if(jComboBoxAnLevel.getSelectedIndex()==0)
+       parameterHashMap.put(new String("in_alname"),"");
+     else
+     parameterHashMap.put(new String("in_alname"),(String)jComboBoxAnLevel.getSelectedItem());
+     
+     parameterHashMap.put(new String("in_nom"),String.valueOf(getNom()));
+     
+     
+     
+     
+     simpReport = new imakante.com.simpleReport(parameterHashMap,myframe.getConn(),table,imakante.com.NewMain.getPathrep(),this.getTitle(),createViewColumnsBGEN(),simplereportFile);
+     simpReport.setVisible(true);
+ }
+private HashMap  createViewColumnsBGEN()
+{
+    HashMap return_value = new HashMap();
     
+    for(int i=0 ; i < table.getColumnCount();i++)
+     {
+         
+         String colnameBG =new String(table.getModel().getColumnName(i));
+         
+         if(!checkForHideColumn(colnameBG))
+         {
+           String colnameEN = new String(getColumnNameEN(colnameBG));
+           return_value.put(colnameBG,colnameEN) ;  
+         }
+         
+     } 
+    
+    
+    return return_value;
+}
+private boolean checkForHideColumn(String in_bg)
+{
+    boolean return_value = false;
+    if(in_bg.equals("id_n_group"))
+    {
+        return_value = true;
+    }
+    if(in_bg.equals("id_al"))
+    {
+        return_value = true;
+    }
+  return   return_value;
+}
+private String getColumnNameEN(String colbg)
+{
+    String return_value="";
+    
+    for(int i=0;i<columnsNames.length;i++)
+    {
+        if(columnsNames[i].equals(colbg))
+        {
+            return_value = columnsNamesEN[i];
+            break;
+        }
+    }
+    
+    return return_value;
+}
 }// end class

@@ -67,7 +67,7 @@
          LEFT JOIN user_master um_usr_last ON usr_last.id_um=um_usr_last.id_um
          LEFT JOIN mida.sl_doc_type_num sldtn ON sldtn.id_sdtn=usr_new.id_sdtn
          LEFT JOIN  kind_paying ON  description_pay_df=kind_paying.id_kp
-         WHERE  type_df = $P{docType}  AND level_df = $P{docLevel} AND description_pay_df = $P{docPay}
+         WHERE  type_df = $P{docType}  AND level_df = $P{docLevel} AND description_pay_df like concat('%',$P{docPay}) 
          AND number_df like concat('%',$P{docNumber},'%')  AND condition_df="0"
          AND date_edition_df   between  $P{docDateOt} and  $P{docDateDo}  ORDER BY s.number_df ASC; 
          ]]></queryString>

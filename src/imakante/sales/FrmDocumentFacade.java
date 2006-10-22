@@ -161,7 +161,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
         jLabel5.setText("\u0412\u0438\u0434 \u043f\u043b\u0430\u0449\u0430\u043d\u0435:");
         jPanel4.add(jLabel5);
 
-        jComboBoxPay.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "\u041e\u0422\u041b\u041e\u0416\u0415\u041d\u041e", "\u0411\u0420\u041e\u0419", "\u0411\u0410\u041d\u041a\u0410", "\u0427\u0410\u0421\u0422\u0418\u0427\u041d\u041e" }));
+        jComboBoxPay.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--------------", "\u041e\u0422\u041b\u041e\u0416\u0415\u041d\u041e", "\u0411\u0420\u041e\u0419", "\u0411\u0410\u041d\u041a\u0410", "\u0427\u0410\u0421\u0422\u0418\u0427\u041d\u041e" }));
         jPanel4.add(jComboBoxPay);
 
         jButtonSearch.setText("\u0422\u044a\u0440\u0441\u0435\u043d\u0435");
@@ -2526,12 +2526,21 @@ private String PriceToString( int id_doc, boolean withDDS)
             }
             
             int IDpay= jComboBoxPay.getSelectedIndex()+1;
+            String IDpay_str;
+            if(jComboBoxPay.getSelectedIndex()==0)
+            {
+                IDpay_str = "";
+            }
+            else
+            {
+                IDpay_str = String.valueOf(IDpay);
+            }
             
             
             parameterHashMap.put(new String("docDateOt"),dateOt);
             parameterHashMap.put(new String("docDateDo"),dateDo);
             parameterHashMap.put(new String("docNumber"),searchNomer);
-            parameterHashMap.put(new String("docPay"),String.valueOf(IDpay));
+            parameterHashMap.put(new String("docPay"),IDpay_str);
            
         
         

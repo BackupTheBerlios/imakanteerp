@@ -93,6 +93,11 @@ public class simpleReport extends javax.swing.JFrame {
     private String dataFont[] = {"SanSerif","italic","10"};
     private String A4Page[] ={"Portrait","595","842"};
     private String columnRemove[];
+    private String headerTextH="Center";
+    private String headerTextV="Top"; 
+    private String dataTextH = "Left";
+    private String dataTextV = "Top";
+    
     
     /** Creates new form simpleReport */
     public simpleReport(HashMap inputfilters,java.sql.Connection con, imakante.com.CustomTable t,String path,String title,HashMap viewColumnsBGEN,String blankJasperFile) 
@@ -235,12 +240,34 @@ public class simpleReport extends javax.swing.JFrame {
         jPanelHeaderColumnNames = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTableHeaderColName = new javax.swing.JTable();
+        jPanel6 = new javax.swing.JPanel();
+        jSlider1 = new javax.swing.JSlider();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabelTreeOstatyk = new javax.swing.JLabel();
         jPanelPageSetup = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jRadioLandscape = new javax.swing.JRadioButton();
         jRadioPortrait = new javax.swing.JRadioButton();
         jComboBox1 = new javax.swing.JComboBox();
+        jPanelHedarText = new javax.swing.JPanel();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        jListHedarText = new javax.swing.JList();
+        jLabel13 = new javax.swing.JLabel();
+        jSeparator8 = new javax.swing.JSeparator();
+        jButton3 = new javax.swing.JButton();
+        jLabelHedarTextH = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jPanelDataText = new javax.swing.JPanel();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        jListDataText = new javax.swing.JList();
+        jLabel12 = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
+        jButton2 = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        jLabelDataTextH = new javax.swing.JLabel();
         jPanelControl = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jPanelData = new javax.swing.JPanel();
@@ -805,19 +832,20 @@ public class simpleReport extends javax.swing.JFrame {
         jPanelHeaderColumnNames.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanelHeaderColumnNames.setMinimumSize(new java.awt.Dimension(350, 450));
         jPanelHeaderColumnNames.setPreferredSize(new java.awt.Dimension(350, 450));
+        jScrollPane4.setPreferredSize(new java.awt.Dimension(200, 200));
         jTableHeaderColName.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Име на колоната", "Печатане на колона ?"
+                "Име на колоната", "Печатане на колона ?", "Ширина на колона"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Boolean.class
+                java.lang.String.class, java.lang.Boolean.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true
+                false, true, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -828,9 +856,42 @@ public class simpleReport extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableHeaderColName.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jScrollPane4.setViewportView(jTableHeaderColName);
 
         jPanelHeaderColumnNames.add(jScrollPane4, java.awt.BorderLayout.CENTER);
+
+        jPanel6.setLayout(new java.awt.GridBagLayout());
+
+        jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel6.setMinimumSize(new java.awt.Dimension(100, 50));
+        jPanel6.setPreferredSize(new java.awt.Dimension(100, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        jPanel6.add(jSlider1, gridBagConstraints);
+
+        jLabel15.setText("\u041c\u0438\u043d");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        jPanel6.add(jLabel15, gridBagConstraints);
+
+        jLabel17.setText("\u041c\u0430\u043a\u0441.");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        jPanel6.add(jLabel17, gridBagConstraints);
+
+        jLabel18.setText("\u041e\u0441\u0442\u0430\u0442\u044a\u043a:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(0, 20, 0, 0);
+        jPanel6.add(jLabel18, gridBagConstraints);
+
+        jLabelTreeOstatyk.setText("jLabel19");
+        jPanel6.add(jLabelTreeOstatyk, new java.awt.GridBagConstraints());
+
+        jPanelHeaderColumnNames.add(jPanel6, java.awt.BorderLayout.SOUTH);
 
         jPanelPageSetup.setMinimumSize(new java.awt.Dimension(350, 450));
         jPanelPageSetup.setPreferredSize(new java.awt.Dimension(350, 450));
@@ -917,6 +978,142 @@ public class simpleReport extends javax.swing.JFrame {
                 .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(223, Short.MAX_VALUE))
         );
+        jPanelHedarText.setMinimumSize(new java.awt.Dimension(350, 450));
+        jPanelHedarText.setPreferredSize(new java.awt.Dimension(350, 450));
+        jListHedarText.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "\u041b\u044f\u0432\u043e", "\u0426\u0435\u043d\u0442\u044a\u0440", "\u0414\u044f\u0441\u043d\u043e" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane11.setViewportView(jListHedarText);
+
+        jLabel13.setText("\u0425\u043e\u0440\u0438\u0437\u043e\u043d\u0442\u0430\u043b\u043d\u043e \u0440\u0430\u0437\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0435:");
+
+        jButton3.setText("OK");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jLabelHedarTextH.setText("jLabel15");
+
+        jLabel16.setText("\u0422\u0435\u043a\u0443\u0449\u0430 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430:");
+
+        org.jdesktop.layout.GroupLayout jPanelHedarTextLayout = new org.jdesktop.layout.GroupLayout(jPanelHedarText);
+        jPanelHedarText.setLayout(jPanelHedarTextLayout);
+        jPanelHedarTextLayout.setHorizontalGroup(
+            jPanelHedarTextLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelHedarTextLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel13)
+                .add(56, 56, 56)
+                .add(jScrollPane11, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 71, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(62, Short.MAX_VALUE))
+            .add(jPanelHedarTextLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jSeparator8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 303, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelHedarTextLayout.createSequentialGroup()
+                .addContainerGap(217, Short.MAX_VALUE)
+                .add(jButton3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 77, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(56, 56, 56))
+            .add(jPanelHedarTextLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel16)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabelHedarTextH)
+                .addContainerGap(195, Short.MAX_VALUE))
+        );
+        jPanelHedarTextLayout.setVerticalGroup(
+            jPanelHedarTextLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelHedarTextLayout.createSequentialGroup()
+                .add(jPanelHedarTextLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanelHedarTextLayout.createSequentialGroup()
+                        .add(24, 24, 24)
+                        .add(jLabel13))
+                    .add(jPanelHedarTextLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(jScrollPane11, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 101, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .add(98, 98, 98)
+                .add(jSeparator8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 10, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jPanelHedarTextLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanelHedarTextLayout.createSequentialGroup()
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jButton3))
+                    .add(jPanelHedarTextLayout.createSequentialGroup()
+                        .add(56, 56, 56)
+                        .add(jPanelHedarTextLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel16)
+                            .add(jLabelHedarTextH))))
+                .addContainerGap(160, Short.MAX_VALUE))
+        );
+        jPanelDataText.setMinimumSize(new java.awt.Dimension(350, 450));
+        jPanelDataText.setPreferredSize(new java.awt.Dimension(350, 450));
+        jListDataText.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "\u041b\u044f\u0432\u043e", "\u0426\u0435\u043d\u0442\u044a\u0440", "\u0414\u044f\u0441\u043d\u043e" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane12.setViewportView(jListDataText);
+
+        jLabel12.setText("\u0425\u043e\u0440\u0438\u0437\u043e\u043d\u0442\u0430\u043b\u043d\u043e \u0440\u0430\u0437\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0435:");
+
+        jButton2.setText("\u041e\u041a");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setText("\u0422\u0435\u043a\u0443\u0449\u0430 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430:");
+
+        jLabelDataTextH.setText("jLabel15");
+
+        org.jdesktop.layout.GroupLayout jPanelDataTextLayout = new org.jdesktop.layout.GroupLayout(jPanelDataText);
+        jPanelDataText.setLayout(jPanelDataTextLayout);
+        jPanelDataTextLayout.setHorizontalGroup(
+            jPanelDataTextLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelDataTextLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanelDataTextLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanelDataTextLayout.createSequentialGroup()
+                        .add(jSeparator7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 316, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .add(jPanelDataTextLayout.createSequentialGroup()
+                        .add(jLabel12)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 61, Short.MAX_VALUE)
+                        .add(jScrollPane12, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 68, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(60, 60, 60))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelDataTextLayout.createSequentialGroup()
+                        .add(jButton2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 75, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(47, 47, 47))
+                    .add(jPanelDataTextLayout.createSequentialGroup()
+                        .add(jLabel14)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabelDataTextH)
+                        .addContainerGap(195, Short.MAX_VALUE))))
+        );
+        jPanelDataTextLayout.setVerticalGroup(
+            jPanelDataTextLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelDataTextLayout.createSequentialGroup()
+                .add(jPanelDataTextLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanelDataTextLayout.createSequentialGroup()
+                        .add(22, 22, 22)
+                        .add(jLabel12))
+                    .add(jPanelDataTextLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(jScrollPane12, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 102, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .add(96, 96, 96)
+                .add(jSeparator7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 10, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButton2)
+                .add(39, 39, 39)
+                .add(jPanelDataTextLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel14)
+                    .add(jLabelDataTextH))
+                .addContainerGap(149, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -946,8 +1143,50 @@ public class simpleReport extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jDialogSetupWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_jDialogSetupWindowDeactivated
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 // TODO add your handling code here:
+        String tmp  = (String )jListDataText.getSelectedValue();
+        jLabelDataTextH.setText(tmp);
+        if(tmp.equals("Ляво"))
+        {
+            tmp = "Left";
+        }
+         if(tmp.equals("Център"))
+        {
+            tmp = "Center";
+        }
+         if(tmp.equals("Дясно"))
+        {
+            tmp = "Right";
+        }
+      
+       dataTextH = tmp;
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+// TODO add your handling code here:
+        String tmp = (String)jListHedarText.getSelectedValue();
+         jLabelHedarTextH.setText(tmp);
+        if(tmp.equals("Ляво"))
+        {
+            tmp = "Left";
+        }
+         if(tmp.equals("Център"))
+        {
+            tmp = "Center";
+        }
+         if(tmp.equals("Дясно"))
+        {
+            tmp = "Right";
+        }
+     
+        headerTextH = tmp;
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jDialogSetupWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_jDialogSetupWindowDeactivated
+// add new setup 
    String strTmp="";    
    boolean isOneCol=false;
    columnRemove = null;
@@ -978,6 +1217,9 @@ public class simpleReport extends javax.swing.JFrame {
        A4Page[2] = "595"; 
        pageWidth = 842;
    }
+   
+   
+   
    int state = this.getExtendedState();
    state |= this.ICONIFIED;
    this.setExtendedState(state);
@@ -1084,8 +1326,8 @@ public class simpleReport extends javax.swing.JFrame {
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         int x = (((dim.width)-( jDialogSetup.getSize().width))/2);
         int y = (((dim.height)-( jDialogSetup.getSize().height))/2);
-       jDialogSetup.setLocation(x, y);
-       jDialogSetup.setVisible(true);
+        jDialogSetup.setLocation(x, y);
+        jDialogSetup.setVisible(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
     
@@ -1101,6 +1343,8 @@ public class simpleReport extends javax.swing.JFrame {
     */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -1121,6 +1365,13 @@ public class simpleReport extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1133,19 +1384,24 @@ public class simpleReport extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelDataLeft;
     private javax.swing.JLabel jLabelDataRight;
     private javax.swing.JLabel jLabelDataStatus;
+    private javax.swing.JLabel jLabelDataTextH;
     private javax.swing.JLabel jLabelDataTop;
     private javax.swing.JLabel jLabelHeaderBottom;
     private javax.swing.JLabel jLabelHeaderLeft;
     private javax.swing.JLabel jLabelHeaderRight;
     private javax.swing.JLabel jLabelHeaderStatus;
     private javax.swing.JLabel jLabelHeaderTop;
+    private javax.swing.JLabel jLabelHedarTextH;
     private javax.swing.JLabel jLabelTitleStatus;
+    private javax.swing.JLabel jLabelTreeOstatyk;
     private javax.swing.JList jListDataFontName;
     private javax.swing.JList jListDataFontSize;
     private javax.swing.JList jListDataFontStyle;
+    private javax.swing.JList jListDataText;
     private javax.swing.JList jListHeaderFontName;
     private javax.swing.JList jListHeaderFontSize;
     private javax.swing.JList jListHeaderFontStyle;
+    private javax.swing.JList jListHedarText;
     private javax.swing.JList jListTitleFontName;
     private javax.swing.JList jListTitleFontSize;
     private javax.swing.JList jListTitleFontStyle;
@@ -1154,13 +1410,16 @@ public class simpleReport extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanelControl;
     private javax.swing.JPanel jPanelData;
     private javax.swing.JPanel jPanelDataBorder;
     private javax.swing.JPanel jPanelDataFont;
+    private javax.swing.JPanel jPanelDataText;
     private javax.swing.JPanel jPanelHeaderColumnNames;
     private javax.swing.JPanel jPanelHedarBorder;
     private javax.swing.JPanel jPanelHedarFont;
+    private javax.swing.JPanel jPanelHedarText;
     private javax.swing.JPanel jPanelPageSetup;
     private javax.swing.JPanel jPanelTitleFont;
     private javax.swing.JProgressBar jProgressBar1;
@@ -1169,6 +1428,8 @@ public class simpleReport extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollData;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1184,6 +1445,9 @@ public class simpleReport extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSlider jSlider1;
     private javax.swing.JTable jTableHeaderColName;
     // End of variables declaration//GEN-END:variables
 
@@ -1253,7 +1517,7 @@ public class simpleReport extends javax.swing.JFrame {
  class textField {
     
     private String textFieldExpression_text;
-    
+   
     private int reportElement_X; 
     
     private int reportElement_Y; 
@@ -1275,7 +1539,7 @@ public class simpleReport extends javax.swing.JFrame {
     private String textElement_font_fontName;
     private boolean textElement_font_italic;
     private boolean textElement_font_boild;
-    
+       
     private String classType;
     private String textFieldParameterExpression;
     
@@ -1307,7 +1571,7 @@ public class simpleReport extends javax.swing.JFrame {
       
       horizontalAligment = "Center";
     
-          verticalAligment = "Top"; 
+      verticalAligment = "Top"; 
       
       
       
@@ -1726,6 +1990,8 @@ setUpComponent = new DefaultMutableTreeNode("Шрифт");
 category.add(setUpComponent);
 setUpComponent = new DefaultMutableTreeNode("Бордер");
 category.add(setUpComponent);
+setUpComponent = new DefaultMutableTreeNode("Текст");
+category.add(setUpComponent);
 top.add(category);
 
 // add column data
@@ -1733,6 +1999,8 @@ category = new DefaultMutableTreeNode("Данни на колоните");
 setUpComponent = new DefaultMutableTreeNode("Шрифт");
 category.add(setUpComponent);
 setUpComponent = new DefaultMutableTreeNode("Бордер");
+category.add(setUpComponent);
+setUpComponent = new DefaultMutableTreeNode("Текст");
 category.add(setUpComponent);
 top.add(category);
 
@@ -1822,6 +2090,26 @@ private void listenerForJtreeSetup()
                      jScrollData.repaint();
                  }
             } 
+             if(userNode.equals("Текст")) 
+            { 
+                 DefaultMutableTreeNode parentNode = (DefaultMutableTreeNode) node.getParent();
+                 String parentName = (String) parentNode.getUserObject();
+                 
+                 if(parentName.equals("Имена на колони"))
+                {
+                  
+                   jScrollData.setViewportView(jPanelHedarText);
+                   jLabelHedarTextH.setText("Център");
+                   jScrollData.repaint();  
+                }
+                if(parentName.equals("Данни на колоните")) {
+                  
+                   jScrollData.setViewportView(jPanelDataText);
+                   jLabelDataTextH.setText("Ляво");
+                   jScrollData.repaint(); 
+                }
+            } 
+             
              
              
          }
@@ -1967,10 +2255,12 @@ private void buildColumns()
          colHr[index].setBox_bottomBorder(jLabelHeaderBottom.getText());
          colHr[index].setBox_leftBorder(jLabelHeaderLeft.getText());
          colHr[index].setBox_rightBorder(jLabelHeaderRight.getText());
+         colHr[index].setVerticalAligment(headerTextV);
+         colHr[index].setHorizontalAligment(headerTextH);
          
         
          
-         //================================================================================
+ //================================================================================================================
          colDa[index] = new textField((String)viewColumnsBGEN.get(colNameBG));
          
          colDa[index].setFieldParameterExpression(getNameColumnsENASField(getNameColumnsEN(colNameBG)));
@@ -2012,7 +2302,8 @@ private void buildColumns()
          colDa[index].setBox_bottomBorder(jLabelDataBottom.getText());
          colDa[index].setBox_leftBorder(jLabelDataLeft.getText());
          colDa[index].setBox_rightBorder(jLabelDataRight.getText());
-
+         colDa[index].setVerticalAligment(dataTextV);
+         colDa[index].setHorizontalAligment(dataTextH);
          
          index++;
          
@@ -2147,7 +2438,7 @@ private void stopBuild()
 }
 private void initColumnForCustomSetup()
 {
-    Object ob[] = new Object[2];
+    Object ob[] = new Object[3];
   
    if(jTableHeaderColName.getRowCount()<1)
    {
@@ -2156,6 +2447,7 @@ private void initColumnForCustomSetup()
       
        ob[0] = new String(colHr[i].getTextFieldExpression_text());
        ob[1] = new Boolean(true);
+       ob[2] = new Integer(colHr[i].getWidth());
        ((DefaultTableModel)jTableHeaderColName.getModel()).addRow(ob);
        
        
