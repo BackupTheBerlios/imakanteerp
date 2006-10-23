@@ -36,13 +36,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private final static int ID_MONEY = 6;
     
     
-    
-    
     public sales_main() {
         super();
         loadConn();
         initComponents();
-        this.setTitle("\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415 - \u0421\u041a\u041b\u0410\u0414\u041e\u0412 \u041c\u041e\u0414\u0423\u041b    \u0432\u0435\u0440\u0441\u0438\u044f 0.5.6");
+        this.setTitle("\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415 - \u0421\u041a\u041b\u0410\u0414\u041e\u0412 \u041c\u041e\u0414\u0423\u041b    \u0432\u0435\u0440\u0441\u0438\u044f 0.7.2");
         //  loadPaneForm();
         // this.setVisible(true);
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
@@ -52,7 +50,9 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         this.setLocation(0,0);
         imakante.com.NewMain.setB_SL(true);
         loadRightsArea();
-        
+        try {
+            this.jlUserStatus.setText("\u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b: " + this.getConn().getMetaData().getUserName());
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
     public void run(){
@@ -71,6 +71,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jPanel1 = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox();
         jPanel2 = new javax.swing.JPanel();
+        jlUserStatus = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         docMenu = new javax.swing.JMenu();
         docMenu_prod = new javax.swing.JMenuItem();
@@ -197,6 +198,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jMenuItem30 = new javax.swing.JMenuItem();
         jMenuItem31 = new javax.swing.JMenuItem();
         jMenuItem32 = new javax.swing.JMenuItem();
+        jmiShellComands = new javax.swing.JMenuItem();
         jSeparator10 = new javax.swing.JSeparator();
         jMenuItem33 = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
@@ -289,15 +291,21 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jPanel2.setPreferredSize(new java.awt.Dimension(100, 27));
+        jlUserStatus.setForeground(new java.awt.Color(102, 102, 102));
+        jlUserStatus.setText("\u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b: ");
+
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 745, Short.MAX_VALUE)
+            .add(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jlUserStatus, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 297, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(438, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 23, Short.MAX_VALUE)
+            .add(jlUserStatus, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
         );
         getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
 
@@ -828,7 +836,6 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         jmPayments.setText("\u0420\u0430\u0437\u043f\u043b\u0430\u0449\u0430\u043d\u0438\u044f");
         jmiReportContragentPayments.setText("\u041f\u043e \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
-        jmiReportContragentPayments.setActionCommand("\u041f\u043e \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
         jmiReportContragentPayments.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmiReportContragentPaymentsActionPerformed(evt);
@@ -1016,6 +1023,15 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jMenuItem32.setText("\u0411\u0438\u0439\u043d \u0434\u0435\u043f\u043b\u043e\u0435\u0440");
         sluMenu.add(jMenuItem32);
 
+        jmiShellComands.setText("\u041a\u043e\u043c\u0430\u043d\u0434\u0438 \u043a\u044a\u043c \u0414\u0411 \u041e\u0431\u0432\u0438\u0432\u043a\u0430\u0442\u0430");
+        jmiShellComands.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiShellComandsActionPerformed(evt);
+            }
+        });
+
+        sluMenu.add(jmiShellComands);
+
         sluMenu.add(jSeparator10);
 
         jMenuItem33.setText("\u0412\u044a\u043d\u0448\u043d\u043e\u0441\u0442 \u043d\u0430 \u041f\u0440\u043e\u0433\u0440\u0430\u043c\u0430\u0442\u0430");
@@ -1059,41 +1075,45 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         setJMenuBar(menuBar);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-757)/2, (screenSize.height-458)/2, 757, 458);
+        setBounds((screenSize.width-757)/2, (screenSize.height-463)/2, 757, 463);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void jmiShellComandsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiShellComandsActionPerformed
+        loadDBShellDialog();
+    }//GEN-LAST:event_jmiShellComandsActionPerformed
+    
     private void jmiReportContragentGroupsPaymentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiReportContragentGroupsPaymentsActionPerformed
         loadGroupPaymentsReportLevel();
     }//GEN-LAST:event_jmiReportContragentGroupsPaymentsActionPerformed
-
+    
     private void jmiReportContragentGroupsDebtsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiReportContragentGroupsDebtsActionPerformed
         loadGroupDebtsReportLevel();
     }//GEN-LAST:event_jmiReportContragentGroupsDebtsActionPerformed
-
+    
     private void jmiReportContragentPaymentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiReportContragentPaymentsActionPerformed
         loadPaymentsReportLevel();
     }//GEN-LAST:event_jmiReportContragentPaymentsActionPerformed
-
+    
     private void jmiReportContragentDebtsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiReportContragentDebtsActionPerformed
         loadDebtsReportLevel();
     }//GEN-LAST:event_jmiReportContragentDebtsActionPerformed
-
+    
     private void fakturiMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fakturiMenuActionPerformed
         loadFakturiReport();
     }//GEN-LAST:event_fakturiMenuActionPerformed
-
+    
     private void nomDisbandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomDisbandActionPerformed
         loadDisband();
     }//GEN-LAST:event_nomDisbandActionPerformed
-
+    
     private void nomALevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomALevelActionPerformed
-       loadAnLevel();
+        loadAnLevel();
     }//GEN-LAST:event_nomALevelActionPerformed
-
+    
     private void kasaMenu_opisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kasaMenu_opisActionPerformed
         loadCopiuri();
     }//GEN-LAST:event_kasaMenu_opisActionPerformed
-
+    
     private void razMenu_vrystActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_razMenu_vrystActionPerformed
         levelDialog1 = new levelDialog(this, true, 4, razpiskaVryshtane);
         levelDialog1.setVisible(true);
@@ -1105,7 +1125,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         if(user != -1 && level != -1)
             loadFrmDocFacade("\u0420\u0430\u0437\u043F\u0438\u0441\u043A\u0430 \u0437\u0430 \u0432\u0440\u044A\u0449\u0430\u043D\u0435", user, level, pricelist, doctype, storagedocdacade, false, null, null );
     }//GEN-LAST:event_razMenu_vrystActionPerformed
-
+    
     private void docMenu_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docMenu_prodActionPerformed
         levelDialog1 = new levelDialog(this, true, 4, stokavaRazpiskaArea);
         levelDialog1.setVisible(true);
@@ -1117,11 +1137,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         if(user != -1  && level != -1)
             loadFrmDocFacade("\u0421\u0422\u041e\u041a\u041e\u0412\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );
     }//GEN-LAST:event_docMenu_prodActionPerformed
-
+    
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-         loadSlujParam();
+        loadSlujParam();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
-
+    
     private void bankaMenu_orderiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bankaMenu_orderiActionPerformed
         this.loadPayingOrdersForm();
     }//GEN-LAST:event_bankaMenu_orderiActionPerformed
@@ -1150,9 +1170,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         int pricelist = 1;
         int doctype = aeDocumentFacade.PROTOKOL_LIPSA;
         int storagedocdacade = 1;
-        if(user!=-1  && level!=-1)
-        {
-        loadFrmDocFacade("\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u041b\u0418\u041f\u0421\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );
+        if(user!=-1  && level!=-1) {
+            loadFrmDocFacade("\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u041b\u0418\u041f\u0421\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );
         }
     }//GEN-LAST:event_protMenu_lipsaActionPerformed
     
@@ -1164,9 +1183,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         int pricelist = 1;
         int doctype = aeDocumentFacade.BRAK;
         int storagedocdacade = numberStorage;
-        if(user!=-1  && level!=-1)
-        {
-        loadFrmDocFacade("\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u0411\u0420\u0410\u041a", user, level, pricelist, doctype, storagedocdacade, false, null, null );
+        if(user!=-1  && level!=-1) {
+            loadFrmDocFacade("\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u0411\u0420\u0410\u041a", user, level, pricelist, doctype, storagedocdacade, false, null, null );
         }
     }//GEN-LAST:event_protMenu_brakActionPerformed
     
@@ -1198,9 +1216,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         int pricelist = 1;
         int doctype = aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE;
         int storagedocdacade = numberStorage;
-        if(user!=-1  && level!=-1)
-        {
-        loadFrmDocFacade("\u041d\u0410\u0420\u0415\u0416\u0414\u0410\u041d\u0415 \u0417\u0410 \u041f\u0420\u0415\u0425\u0412\u042a\u0420\u041b\u042f\u041d\u0415", user, level, pricelist, doctype, storagedocdacade, false, null, null );
+        if(user!=-1  && level!=-1) {
+            loadFrmDocFacade("\u041d\u0410\u0420\u0415\u0416\u0414\u0410\u041d\u0415 \u0417\u0410 \u041f\u0420\u0415\u0425\u0412\u042a\u0420\u041b\u042f\u041d\u0415", user, level, pricelist, doctype, storagedocdacade, false, null, null );
         }
     }//GEN-LAST:event_docMenu_narActionPerformed
     
@@ -1212,9 +1229,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         int pricelist = 1;
         int doctype = aeDocumentFacade.PRIEMATELNA_RAZPISKA;
         int storagedocdacade = numberStorage;
-        if(user!=-1  && level!=-1)
-        {
-        loadFrmDocFacade("\u041f\u0420\u0418\u0415\u041c\u0410\u0422\u0415\u041b\u041d\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );
+        if(user!=-1  && level!=-1) {
+            loadFrmDocFacade("\u041f\u0420\u0418\u0415\u041c\u0410\u0422\u0415\u041b\u041d\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );
         }
     }//GEN-LAST:event_razpMenu_polActionPerformed
     
@@ -1230,14 +1246,13 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         int pricelist = 1;
         int doctype = aeDocumentFacade.OFERTA;
         int storagedocdacade = numberStorage;
-        if(user!=-1  && level!=-1)
-        {
-        loadFrmDocFacade("\u041e\u0424\u0415\u0420\u0422\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );
+        if(user!=-1  && level!=-1) {
+            loadFrmDocFacade("\u041e\u0424\u0415\u0420\u0422\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );
         }
     }//GEN-LAST:event_docMenu_offerActionPerformed
     
     private void razpMenu_prehvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_razpMenu_prehvActionPerformed
-       
+        
     }//GEN-LAST:event_razpMenu_prehvActionPerformed
     
     private void fakMenu_oprActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fakMenu_oprActionPerformed
@@ -1250,21 +1265,20 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         int storagedocdacade = numberStorage;
         System.out.println("Create opr. Fak");
         System.out.println(isMakeDocByInputData);
-        if(user!=-1  && level!=-1)
-        {
-        if(!isMakeDocByInputData) {
-            dataIn = null;
-            dataOut = null;
-            level=3;
-            loadFrmDocFacade("\u0424\u0410\u041a\u0422\u0423\u0420\u0410", user, level, pricelist, doctype, storagedocdacade, isMakeDocByInputData, dataIn, dataOut );
-        } else {
-            loadFrmDocFacade("\u0424\u0410\u041a\u0422\u0423\u0420\u0410", user, level, pricelist, doctype, storagedocdacade, isMakeDocByInputData, dataIn, dataOut );
-        }
+        if(user!=-1  && level!=-1) {
+            if(!isMakeDocByInputData) {
+                dataIn = null;
+                dataOut = null;
+                level=3;
+                loadFrmDocFacade("\u0424\u0410\u041a\u0422\u0423\u0420\u0410", user, level, pricelist, doctype, storagedocdacade, isMakeDocByInputData, dataIn, dataOut );
+            } else {
+                loadFrmDocFacade("\u0424\u0410\u041a\u0422\u0423\u0420\u0410", user, level, pricelist, doctype, storagedocdacade, isMakeDocByInputData, dataIn, dataOut );
+            }
         }
     }//GEN-LAST:event_fakMenu_oprActionPerformed
     
     private void fakMenu_danActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fakMenu_danActionPerformed
-    
+        
         levelDialog1 = new levelDialog(this,true,202,danFaktArea);
         levelDialog1.setVisible(true);
         int user = userID_ndtur; //2;
@@ -1275,18 +1289,17 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         System.out.println("Create DAN. Fak");
         System.out.println(isMakeDocByInputData);
         level=3;
-        if(user!=-1  && level!=-1)
-        {
-        if(!isMakeDocByInputData) {
-            dataIn = null;
-            dataOut = null;
-            
-            loadFrmDocFacade("\u0424\u0410\u041a\u0422\u0423\u0420\u0410", user, level, pricelist, doctype, storagedocdacade, isMakeDocByInputData, dataIn, dataOut );
-        } else {
-            loadFrmDocFacade("\u0424\u0410\u041a\u0422\u0423\u0420\u0410", user, level, pricelist, doctype, storagedocdacade, isMakeDocByInputData, dataIn, dataOut );
+        if(user!=-1  && level!=-1) {
+            if(!isMakeDocByInputData) {
+                dataIn = null;
+                dataOut = null;
+                
+                loadFrmDocFacade("\u0424\u0410\u041a\u0422\u0423\u0420\u0410", user, level, pricelist, doctype, storagedocdacade, isMakeDocByInputData, dataIn, dataOut );
+            } else {
+                loadFrmDocFacade("\u0424\u0410\u041a\u0422\u0423\u0420\u0410", user, level, pricelist, doctype, storagedocdacade, isMakeDocByInputData, dataIn, dataOut );
+            }
         }
-        }
-      
+        
     }//GEN-LAST:event_fakMenu_danActionPerformed
     
     private void orderMenu_prihActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderMenu_prihActionPerformed
@@ -1522,12 +1535,14 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JLabel jlUserStatus;
     private javax.swing.JMenu jmDebts;
     private javax.swing.JMenu jmPayments;
     private javax.swing.JMenuItem jmiReportContragentDebts;
     private javax.swing.JMenuItem jmiReportContragentGroupsDebts;
     private javax.swing.JMenuItem jmiReportContragentGroupsPayments;
     private javax.swing.JMenuItem jmiReportContragentPayments;
+    private javax.swing.JMenuItem jmiShellComands;
     private javax.swing.JMenuItem kasaAvansMenu;
     private javax.swing.JMenuItem kasaAvansOt4etMenu;
     private javax.swing.JMenu kasaMOLMenu;
@@ -1826,13 +1841,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }
     //METHODS FOR LOADING USER RIGHTS FOR AREA DOCUMENTS
     public void loadSlujParam(){
-       imakante.com.FrmFirmParam firmparam = new imakante.com.FrmFirmParam(this,true,this.getConn());
-      
-       // desktopPane.add(firmparam);
+        imakante.com.FrmFirmParam firmparam = new imakante.com.FrmFirmParam(this,true,this.getConn());
+        
+        // desktopPane.add(firmparam);
         firmparam.setVisible(true);
     }
-    public void loadRightsArea()
-    {
+    public void loadRightsArea() {
         System.out.println("loadRightsArea");
         System.out.println("User"+imakante.com.NewMain.getUserId());
         String StrQ = "SELECT n_doc_type_user_rights.id_ndtur, sl_doc_type_num.area_number_sdtn " +
@@ -2217,6 +2231,17 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         imp.setVisible(true);
     }
     
+    private void loadDBShellDialog() {
+        String user = "";
+        try {
+            user = this.getConn().getMetaData().getUserName();
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
+        if (user.startsWith("root") || user.startsWith("imakante")) {
+            imakante.com.SQLQueryFetcher shell = new imakante.com.SQLQueryFetcher(this, true);
+            shell.setVisible(true);
+        }
+    }
+    
 // ENCAPS METHODS FORM CONTROL
     public static boolean isIsStartFrmProduct() {
         return isStartFrmProduct;
@@ -2362,39 +2387,34 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         }
         frmDocumentFacadeDialog.setVisible(true)  ;
     }
-
+    
     private void loadCopiuri() {
-      imakante.sales.FrmCopiuri frmCop = new imakante.sales.FrmCopiuri("\u041f\u0430\u0440\u0438\u0447\u043d\u0438 \u043e\u043f\u0438\u0441\u0438 ",this);
-      desktopPane.add(frmCop);
-      frmCop.setVisible(true);
+        imakante.sales.FrmCopiuri frmCop = new imakante.sales.FrmCopiuri("\u041f\u0430\u0440\u0438\u0447\u043d\u0438 \u043e\u043f\u0438\u0441\u0438 ",this);
+        desktopPane.add(frmCop);
+        frmCop.setVisible(true);
     }
     
-private void  loadAnLevel()
-{
-    if(!isStartFrmAnLevel)
-    {
-     isStartFrmAnLevel = true;  
-     nom.FrmAnLevel anLevelD = new nom.FrmAnLevel("\u0410\u043d\u0430\u043b\u0438\u0442\u0438\u0447\u043d\u0438 \u043d\u0438\u0432\u0430",this);
-     desktopPane.add(anLevelD);
-     anLevelD.setVisible(true);
+    private void  loadAnLevel() {
+        if(!isStartFrmAnLevel) {
+            isStartFrmAnLevel = true;
+            nom.FrmAnLevel anLevelD = new nom.FrmAnLevel("\u0410\u043d\u0430\u043b\u0438\u0442\u0438\u0447\u043d\u0438 \u043d\u0438\u0432\u0430",this);
+            desktopPane.add(anLevelD);
+            anLevelD.setVisible(true);
+        }
     }
-}
-private void  loadDisband()
-{
-    
-    if(!isStartFrmDisband)
-    {
-        isStartFrmDisband = true;
-        nom.FrmDisband ddisband = new nom.FrmDisband("\u0420\u0430\u0437\u0444\u0430\u0441\u043e\u0432\u043a\u0430",this);
-        desktopPane.add(ddisband);  
-        ddisband.setVisible(true);
+    private void  loadDisband() {
+        
+        if(!isStartFrmDisband) {
+            isStartFrmDisband = true;
+            nom.FrmDisband ddisband = new nom.FrmDisband("\u0420\u0430\u0437\u0444\u0430\u0441\u043e\u0432\u043a\u0430",this);
+            desktopPane.add(ddisband);
+            ddisband.setVisible(true);
+        }
+        
     }
-    
-}
-private void loadFakturiReport()
-{
-   fakturiRep = new infoFakturi("Справка за издадени фактури",getConn());
-    desktopPane.add(fakturiRep); 
-   fakturiRep.setVisible(true);
-}
+    private void loadFakturiReport() {
+        fakturiRep = new infoFakturi("Справка за издадени фактури",getConn());
+        desktopPane.add(fakturiRep);
+        fakturiRep.setVisible(true);
+    }
 }
