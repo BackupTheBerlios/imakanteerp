@@ -58,7 +58,9 @@ public class SQLQueryFetcher extends imakante.com.vcomponents.iDialog  {
         jTextArea1.setColumns(20);
         jTextArea1.setEditable(false);
         jTextArea1.setFont(new java.awt.Font("Courier", 0, 11));
+        jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
+        jTextArea1.setWrapStyleWord(true);
         jTextArea1.setFocusable(false);
         jScrollPane1.setViewportView(jTextArea1);
 
@@ -114,25 +116,25 @@ public class SQLQueryFetcher extends imakante.com.vcomponents.iDialog  {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-560)/2, (screenSize.height-317)/2, 560, 317);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jtfQueryFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfQueryFocusGained
         jtfQuery.selectAll();
     }//GEN-LAST:event_jtfQueryFocusGained
-
+    
     private void jtfQueryFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfQueryFocusLost
         
     }//GEN-LAST:event_jtfQueryFocusLost
-
+    
     private void jtfQueryKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfQueryKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) 
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER)
             jtfQuery.transferFocus();
     }//GEN-LAST:event_jtfQueryKeyPressed
-
+    
     private void jbExecuteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbExecuteKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) 
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER)
             jbExecute.doClick();
     }//GEN-LAST:event_jbExecuteKeyPressed
-
+    
     private void jbExecuteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExecuteActionPerformed
         executeIt();
     }//GEN-LAST:event_jbExecuteActionPerformed
@@ -154,10 +156,19 @@ public class SQLQueryFetcher extends imakante.com.vcomponents.iDialog  {
     private String QUERY = "";
     
     private void executeIt() {
+        String RESPONSE = "";
         this.setQUERY(this.jtfQuery.getText());
         try {
-            this.getStm().execute(this.getQUERY());
-            this.jTextArea1.setText(getStm().getWarnings().toString());
+            if (!this.getStm().execute(this.getQUERY())) {   // Affected Rows Count
+                int rowsCount = getStm().getUpdateCount();
+                // Broi promeneni redowe
+                RESPONSE = RESPONSE + "---\n\u0411\u0440\u043E\u0439 \u043F\u0440\u043E\u043C\u0435\u043D\u0435\u043D\u0438 \u0440\u0435\u0434\u043E\u0432\u0435:\n" + rowsCount + "\n";
+                if (getStm().getWarnings() != null) // PREDUPREJDENIA
+                    RESPONSE = RESPONSE + "---\n\u041F\u0420\u0415\u0414\u0423\u041F\u0420\u0415\u0416\u0414\u0415\u041D\u0418\u042F:\n" + getStm().getWarnings() + "\n";
+            } else {    // ResultSet returned
+                
+            }
+            this.jTextArea1.setText(RESPONSE);
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
