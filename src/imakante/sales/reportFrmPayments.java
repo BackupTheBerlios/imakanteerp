@@ -248,6 +248,7 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
     private int idContragent = 0;
     private int codeContragent = 0;
     private String nameContragent = "";
+    private int paymentType = 0;
     private String startOfPeriod = "";
     private String endOfPeriod = "";
     private int IDTransfer = 0;
@@ -290,6 +291,22 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
             "WHERE nc.code_contragent = ";
     
     private void executeReport() {
+        java.sql.ResultSet rsP;
+        imakante.com.CustomTableModel modelP;
+        imakante.com.CustomTable tableP;
+        String[] names = { "id", 
+        "" };
+        java.sql.ResultSet pPayments, nPayments, iniDate, sumDebt;
+        java.util.HashMap hm = new java.util.HashMap();
+        String jasperFile = "contragent_payments.jasper";
+        String level = "";
+        if (getIdContragent() > 0) {
+            
+        }
+        
+        
+        
+        
         
     }
     
@@ -303,18 +320,18 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
         java.sql.ResultSet rsC;
         imakante.com.CustomTableModel modelC;
         imakante.com.CustomTable tableC;
-        String[] names = { "id", "\u041A\u043E\u0434", "\u0418\u043C\u0435" };
+        String[] names = { "id", "\u041A\u043E\u0434", "\u0418\u043C\u0435", "flag" };
         try {
             rsC = getStm().executeQuery(contragents);
             modelC = new imakante.com.CustomTableModel(getConn(), rsC, names);
             tableC = new imakante.com.CustomTable(modelC);
             HideColumns(tableC, getColumnIndex(tableC, "id"));
+            HideColumns(tableC, getColumnIndex(tableC, "flag"));
             tableC.setEditingRow(0);
             imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, tableC,
                     "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u041A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442",
                     "", "\u041A\u043E\u0434");
             td.setVisible(true);
-            
         } catch(java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
@@ -326,6 +343,8 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
             setIdContragent(ID);
             setCodeContragent(rsC.getInt("code_contragent"));
             setNameContragent(rsC.getString("name_n_contragent"));
+            buffCode = getCodeContragent();
+            buffName = getNameContragent();
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
         jTextField1.setText("" + getCodeContragent() + " - " + getNameContragent());
     }

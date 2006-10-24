@@ -355,10 +355,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
                 imakante.com.MessagePane.Error("\u041D\u0435\u043A\u043E\u0435\u0440\u043A\u0442\u0435\u043D " +
                         "\u0438\u0437\u0431\u043E\u0440 \u043D\u0430 \u043F\u0435\u0440\u0438\u043E\u0434!");
             }
-        } else {
-            getContragent();
-        }
-        
+        } else { getContragent(); }
     }
     
     private void getContragent() {
@@ -383,7 +380,6 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
                     "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u041A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442",
                     "", "\u041A\u043E\u0434");
             td.setVisible(true);
-            
         } catch(java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
@@ -399,20 +395,6 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
             buffName = getNameContragent();
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
         jTextField1.setText("" + getCodeContragent() + " - " + getNameContragent());
-    }
-    
-    private void getContragentShadow(int CODE) {    // past activities on the contragent - history
-        String contragentProfile = contragentByCode + CODE + ";";   // full history = past + present
-        String contragentShadow = contragentByCode + CODE + " AND nc.flag_n_contragent = 1;";    // only past history
-        try {
-            java.sql.ResultSet rsP = getStm().executeQuery(contragentProfile);
-            rsP.next();
-//            setIdContragent(ID);
-//            setCodeContragent(rsC.getInt("code_contragent"));
-//            setNameContragent(rsC.getString("name_n_contragent"));
-            java.sql.ResultSet rsS = getStm().executeQuery(contragentShadow);
-            rsS.next();
-        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
     private boolean obtainInputType(javax.swing.JTextField jtf) {

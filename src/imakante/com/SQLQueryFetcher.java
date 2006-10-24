@@ -162,11 +162,14 @@ public class SQLQueryFetcher extends imakante.com.vcomponents.iDialog  {
             if (!this.getStm().execute(this.getQUERY())) {   // Affected Rows Count
                 int rowsCount = getStm().getUpdateCount();
                 // Broi promeneni redowe
-                RESPONSE = RESPONSE + "---\n\u0411\u0440\u043E\u0439 \u043F\u0440\u043E\u043C\u0435\u043D\u0435\u043D\u0438 \u0440\u0435\u0434\u043E\u0432\u0435:\n" + rowsCount + "\n";
+                RESPONSE = RESPONSE + "---\n\u0411\u0440\u043E\u0439 \u043F\u0440\u043E\u043C\u0435\u043D\u0435\u043D\u0438 " +
+                        "\u0440\u0435\u0434\u043E\u0432\u0435:\n" + rowsCount + "\n";
                 if (getStm().getWarnings() != null) // PREDUPREJDENIA
-                    RESPONSE = RESPONSE + "---\n\u041F\u0420\u0415\u0414\u0423\u041F\u0420\u0415\u0416\u0414\u0415\u041D\u0418\u042F:\n" + getStm().getWarnings() + "\n";
+                    RESPONSE = RESPONSE + "---\n\u041F\u0420\u0415\u0414\u0423\u041F\u0420\u0415\u0416\u0414\u0415\u041D\u0418\u042F:\n" + 
+                            getStm().getWarnings() + "\n";
             } else {    // ResultSet returned
-                
+                RESPONSE = RESPONSE + "---\n\u0417\u0430\u044F\u0432\u043A\u0430\u0442\u0430 \u0432\u044A\u0440\u043D\u0430 " +
+                        "\u0441\u043B\u0435\u0434\u043D\u0438\u044F \u043E\u0431\u0435\u043A\u0442:\n" + getStm().getResultSet().toString();
             }
             this.jTextArea1.setText(RESPONSE);
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
