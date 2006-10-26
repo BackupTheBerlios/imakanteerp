@@ -80,6 +80,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setPreferredSize(new java.awt.Dimension(650, 227));
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }
@@ -103,7 +104,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 1133, Short.MAX_VALUE)
+            .add(0, 923, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -118,61 +119,52 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
         jPanel2.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel4.setPreferredSize(new java.awt.Dimension(801, 60));
+        jPanel4.setPreferredSize(new java.awt.Dimension(650, 98));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("\u041a\u043e\u0434:");
-        jPanel4.add(jLabel9);
 
         jTextFieldCode.setPreferredSize(new java.awt.Dimension(50, 20));
-        jPanel4.add(jTextFieldCode);
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("\u0418\u043c\u0435:");
-        jPanel4.add(jLabel1);
 
         jTextFieldName.setPreferredSize(new java.awt.Dimension(200, 20));
-        jPanel4.add(jTextFieldName);
 
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("\u0418\u043c\u0435 \u043d\u0430 \u0441\u044a\u043e\u0442\u0432.:");
-        jPanel4.add(jLabel2);
 
         jTextFieldNameSyotv.setPreferredSize(new java.awt.Dimension(170, 20));
-        jPanel4.add(jTextFieldNameSyotv);
 
-        jLabel3.setText("\u041a\u044a\u0441\u043e \u0438\u043c\u0435");
-        jPanel4.add(jLabel3);
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel3.setText("\u041a\u044a\u0441\u043e \u0438\u043c\u0435:");
 
         jTextFieldKysoName.setPreferredSize(new java.awt.Dimension(100, 20));
-        jPanel4.add(jTextFieldKysoName);
 
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("\u0424\u0430\u043a\u0442\u0443\u0440\u043d\u043e \u0438\u043c\u0435:");
-        jPanel4.add(jLabel4);
 
         jTextFieldFacturnoName.setPreferredSize(new java.awt.Dimension(100, 20));
-        jPanel4.add(jTextFieldFacturnoName);
 
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("\u041a\u043e\u0434 1:");
-        jPanel4.add(jLabel5);
 
         jTextFieldCod1.setPreferredSize(new java.awt.Dimension(50, 20));
-        jPanel4.add(jTextFieldCod1);
 
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("\u041a\u043e\u0434 2:");
-        jPanel4.add(jLabel6);
 
         jTextFieldCod2.setPreferredSize(new java.awt.Dimension(50, 20));
-        jPanel4.add(jTextFieldCod2);
 
-        jLabel7.setText("\u0411\u0430\u0440\u043a\u0434:");
-        jPanel4.add(jLabel7);
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel7.setText("\u0411\u0430\u0440\u043a\u043e\u0434:");
 
         jTextFieldBarkod.setPreferredSize(new java.awt.Dimension(100, 20));
         jTextFieldBarkod.setInputVerifier(new imakante.com.InputIntegerVerifier());
-        jPanel4.add(jTextFieldBarkod);
 
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("\u0415\u043a\u0441\u043f\u0435\u0440\u0442\u0435\u043d \u043b\u0438\u0441\u0442:");
-        jPanel4.add(jLabel8);
 
         jTextFieldExperList.setPreferredSize(new java.awt.Dimension(150, 20));
-        jPanel4.add(jTextFieldExperList);
 
         jButton1.setText("\u0422\u044a\u0440\u0441\u0435\u043d\u0435");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -181,22 +173,112 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
             }
         });
 
-        jPanel4.add(jButton1);
+        org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel4Layout.createSequentialGroup()
+                .add(124, 124, 124)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel6)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel4Layout.createSequentialGroup()
+                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jLabel9)
+                            .add(jLabel5))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jTextFieldCode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jTextFieldCod1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jTextFieldCod2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                .add(34, 34, 34)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 43, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jTextFieldName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 147, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                        .add(jPanel4Layout.createSequentialGroup()
+                            .add(jLabel7)
+                            .add(0, 0, 0)
+                            .add(jTextFieldBarkod, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(jPanel4Layout.createSequentialGroup()
+                            .add(jLabel3)
+                            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                            .add(jTextFieldKysoName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED))))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jLabel2)
+                    .add(jLabel4)
+                    .add(jLabel8))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(jTextFieldNameSyotv, 0, 0, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jTextFieldFacturnoName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jTextFieldExperList, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(22, 22, 22)
+                .add(jButton1)
+                .add(757, 757, 757))
+        );
 
+        jPanel4Layout.linkSize(new java.awt.Component[] {jLabel2, jLabel4, jLabel8}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
+        jPanel4Layout.linkSize(new java.awt.Component[] {jLabel5, jLabel6, jLabel9}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
+        jPanel4Layout.linkSize(new java.awt.Component[] {jLabel1, jLabel3, jLabel7}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel2)
+                            .add(jTextFieldNameSyotv, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel1)
+                            .add(jTextFieldName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(6, 6, 6)
+                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel4)
+                            .add(jTextFieldFacturnoName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel3)
+                            .add(jTextFieldKysoName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jButton1))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                                .add(jLabel7)
+                                .add(jTextFieldBarkod, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                            .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                                .add(jTextFieldExperList, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .add(jLabel8))))
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel9)
+                            .add(jTextFieldCode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(6, 6, 6)
+                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jTextFieldCod1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel5))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel6)
+                            .add(jTextFieldCod2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
         jPanel2.add(jPanel4, java.awt.BorderLayout.SOUTH);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel3.setPreferredSize(new java.awt.Dimension(801, 37));
+        jPanel3.setPreferredSize(new java.awt.Dimension(801, 75));
         jButtonNew.setText("\u041d\u043e\u0432 \u043f\u0440\u043e\u0434\u0443\u043a\u0442");
         jButtonNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonNewActionPerformed(evt);
             }
         });
-
-        jPanel3.add(jButtonNew);
 
         jButtonEdit.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f \u043d\u0430 \u043f\u0440\u043e\u0434\u0443\u043a\u0442");
         jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -205,16 +287,12 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
             }
         });
 
-        jPanel3.add(jButtonEdit);
-
         jButton2.setText("\u041d\u043e\u0432\u0430 \u043f\u0430\u0440\u0442\u0438\u0434\u0430");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-
-        jPanel3.add(jButton2);
 
         jButton3.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f \u043d\u0430 \u043f\u0430\u0440\u0442\u0438\u0434\u0430");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -223,8 +301,6 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
             }
         });
 
-        jPanel3.add(jButton3);
-
         jButtonPrint.setText("\u041f\u0435\u0447\u0430\u0442");
         jButtonPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -232,10 +308,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
             }
         });
 
-        jPanel3.add(jButtonPrint);
-
-        jButtonPrintReport.setText("\u041f\u0435\u0447\u0430\u0442 \u0440\u0435\u043f\u043e\u0440\u0442");
-        jPanel3.add(jButtonPrintReport);
+        jButtonPrintReport.setText("\u041f\u0435\u0447\u0430\u0442 \u043e\u0442\u0447\u0435\u0442");
 
         jButtonDelete.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
         jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -244,8 +317,6 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
             }
         });
 
-        jPanel3.add(jButtonDelete);
-
         jButtonRefresh.setText("\u0412\u0441\u0438\u0447\u043a\u0438 \u0437\u0430\u043f\u0438\u0441\u0438");
         jButtonRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -253,10 +324,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
             }
         });
 
-        jPanel3.add(jButtonRefresh);
-
         jButtonDeleteAll.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435 \u043d\u0430 \u0442\u0430\u0431\u043b\u0438\u0446\u0430");
-        jPanel3.add(jButtonDeleteAll);
 
         jButtonClose.setText("\u0417\u0430\u0442\u0432\u0430\u0440\u044f\u043d\u0435");
         jButtonClose.addActionListener(new java.awt.event.ActionListener() {
@@ -265,11 +333,69 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
             }
         });
 
-        jPanel3.add(jButtonClose);
+        org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel3Layout.createSequentialGroup()
+                .add(138, 138, 138)
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jButton2)
+                    .add(jButtonNew))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel3Layout.createSequentialGroup()
+                        .add(jButtonEdit)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jButtonPrint)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jButtonDelete)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jButtonRefresh))
+                    .add(jPanel3Layout.createSequentialGroup()
+                        .add(jButton3)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jButtonPrintReport)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jButtonDeleteAll)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jButtonClose)))
+                .addContainerGap(166, Short.MAX_VALUE))
+        );
 
+        jPanel3Layout.linkSize(new java.awt.Component[] {jButton3, jButtonEdit}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
+        jPanel3Layout.linkSize(new java.awt.Component[] {jButtonDelete, jButtonDeleteAll}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
+        jPanel3Layout.linkSize(new java.awt.Component[] {jButton2, jButtonNew}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
+        jPanel3Layout.linkSize(new java.awt.Component[] {jButtonPrint, jButtonPrintReport}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
+        jPanel3Layout.linkSize(new java.awt.Component[] {jButtonClose, jButtonRefresh}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jButtonNew)
+                    .add(jButtonEdit)
+                    .add(jButtonPrint)
+                    .add(jButtonDelete)
+                    .add(jButtonRefresh))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jButton2)
+                    .add(jButton3)
+                    .add(jButtonPrintReport)
+                    .add(jButtonDeleteAll)
+                    .add(jButtonClose))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
         getContentPane().add(jPanel3, java.awt.BorderLayout.SOUTH);
 
-        pack();
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-937)/2, (screenSize.height-520)/2, 937, 520);
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
