@@ -22,6 +22,7 @@ import javax.swing.table.*;
 import java.awt.Component;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.HashMap;
 
 public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implements WindowListener {
     
@@ -331,13 +332,15 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     }//GEN-LAST:event_formInternalFrameClosed
     
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
-        try {
+     /*  try {
             MessageFormat headerFormat = new MessageFormat("Contragent");
             MessageFormat footerFormat = new MessageFormat("Page. "+"- {0} -"+" IMAKANTE' ");
             table.print(JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat);
         } catch(PrinterException e) {
             e.printStackTrace();
-        }
+        }*/
+        
+        loadSimpleReport();
         
     }//GEN-LAST:event_jButtonPrintActionPerformed
     
@@ -568,7 +571,8 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     private String User="imakante";  // vremenna promenliva za test
     private String Pass="imakante";  // vremenna promenliva za test
     private String Url = "jdbc:mysql://www.katsarov.net:3307/mida";  // vremenna promenliva za test
-    
+    private imakante.com.simpleReport simpReport;
+    private String simplereportFile = "smp_rep_produkt.jrxml";
    /* private String columnsNames[] ={"Код","id_pm","id_n_group","id_ppp","id_pp","id_pf","Име:","Фактурно име:","Късо име:","Име на съответствия:","Код 1:","Код 2:","Баркод:","Отстъпка (в %):",
                                   "Експертен лист:","flag_pm","id_sl_curs","Доставна цена:","Валута:","Стойност в лева"  ,"Цена 1:", "Цена 2:", "Цена 3:","ДДС:","Акцизи:","Др. такси:","id_pd",
                                   "m1_pd","v1_pd","m2_pd","v2_pd","m3_pd","v3_pd","Минимално количество:","Доставна цена с ДДС"};*/
@@ -579,6 +583,12 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     "\u0414\u043e\u0441\u0442\u0430\u0432\u043d\u0430 \u0446\u0435\u043d\u0430","\u0412\u0430\u043b\u0443\u0442\u0430","\u0421\u0442\u043e\u0439\u043d\u043e\u0441\u0442 \u0432 \u043b\u0435\u0432\u0430",
     "\u0426\u0435\u043d\u0430 1","\u0426\u0435\u043d\u0430 2","\u0426\u0435\u043d\u0430 3","\u0414\u0414\u0421","\u0410\u043a\u0446\u0438\u0437\u0438","\u0414\u0440. \u0442\u0430\u043a\u0441\u0438",
     "id_pd","m1_pd","v1_pd","m2_pd","v2_pd","m3_pd","v3_pd","\u041c\u0438\u043d\u0438\u043c\u0430\u043b\u043d\u043e \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e","\u0414\u043E\u0441\u0442\u0430\u0432\u043D\u0430 \u0446\u0435\u043D\u0430 \u0441 \u0414\u0414\u0421"};
+    
+    private String columnsNamesEN[] ={"code_pm","id_pm","id_n_group","id_ppp","id_pp","id_pf","name_pm","fname_pm","sname_pm","cname_pm","cod1_pm","cod2_pm","barcod_pm","max_pop_pm",
+                                  "expertsheet_pm","flag_pm","id_sl_curs","price0_pp","cod_lat_n_money","lv"  ,"price1_pp", "price2_pp", "price3_pp","dds_pf","excise_pf","other_pf","id_pd",
+                                  "m1_pd","v1_pd","m2_pd","v2_pd","m3_pd","v3_pd","min_pm","dost_prive_sDDS"};
+    
+   
 //---------------END My Variables
     //---------------START MyFunction
     
@@ -1095,5 +1105,125 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
             refreshTable();
         }
     }
+ private void loadSimpleReport()
+ {
+      HashMap parameterHashMap = new HashMap();
+     imakante.com.paramFirm paramFrm1 = new imakante.com.paramFirm();
+     parameterHashMap.put(new String("firmaName"),paramFrm1.getName());
+     
     
+     parameterHashMap.put(new String("in_code"),jTextFieldCode.getText());
+     parameterHashMap.put(new String("in_kode1"),jTextFieldCod1.getText());
+     parameterHashMap.put(new String("in_kode2"),jTextFieldCod2.getText());
+     parameterHashMap.put(new String("in_name"),jTextFieldName.getText());
+     parameterHashMap.put(new String("in_sname"),jTextFieldKysoName.getText());
+     parameterHashMap.put(new String("in_cname"),jTextFieldNameSyotv.getText());
+     parameterHashMap.put(new String("in_fname"),jTextFieldFacturnoName.getText());
+     parameterHashMap.put(new String("in_barcod"),jTextFieldBarkod.getText());
+     parameterHashMap.put(new String("in_exlist"),jTextFieldExperList.getText());
+     
+      parameterHashMap.put(new String("in_flag"),String.valueOf(flag_pm));
+      
+      
+     simpReport = new imakante.com.simpleReport(parameterHashMap,myframe.getConn(),table,imakante.com.NewMain.getPathrep(),this.getTitle(),createViewColumnsBGEN(),simplereportFile);
+     simpReport.setVisible(true);
+ }
+ private HashMap  createViewColumnsBGEN()
+{
+    HashMap return_value = new HashMap();
+    
+    for(int i=0 ; i < table.getColumnCount();i++)
+     {
+         
+         String colnameBG =new String(table.getModel().getColumnName(i));
+         
+         if(!checkForHideColumn(colnameBG))
+         {
+           String colnameEN = new String(getColumnNameEN(colnameBG));
+           return_value.put(colnameBG,colnameEN) ;  
+         }
+         
+     } 
+    
+    
+    return return_value;
+}
+private boolean checkForHideColumn(String in_bg)
+{
+    boolean return_value = false;
+    
+   if(in_bg.equals("id_pm"))
+    {
+        return_value = true;
+    }
+    if(in_bg.equals("id_pp"))
+    {
+        return_value = true;
+    }if(in_bg.equals("id_ppp"))
+    {
+        return_value = true;
+    }
+    if(in_bg.equals("id_pd"))
+    {
+        return_value = true;
+    }if(in_bg.equals("id_pf"))
+    {
+        return_value = true;
+    }
+    if(in_bg.equals("m1_pd"))
+    {
+        return_value = true;
+    }
+     
+    if(in_bg.equals("m2_pd"))
+    {
+        return_value = true;
+    }
+    if(in_bg.equals("m3_pd"))
+    {
+        return_value = true;
+    }
+    if(in_bg.equals("v1_pd"))
+    {
+        return_value = true;
+    }
+    if(in_bg.equals("v2_pd"))
+    {
+        return_value = true;
+    }
+    if(in_bg.equals("v3_pd"))
+    {
+        return_value = true;
+    }
+    
+    if(in_bg.equals("flag_pm"))
+    {
+        return_value = true;
+    }
+    if(in_bg.equals("id_sl_curs"))
+    {
+        return_value = true;
+    }
+    if(in_bg.equals("id_n_group"))
+    {
+        return_value = true;
+    }
+   
+  return   return_value;
+}
+private String getColumnNameEN(String colbg)
+{
+    String return_value="";
+    
+    for(int i=0;i<columnsNames.length;i++)
+    {
+        if(columnsNames[i].equals(colbg))
+        {
+            return_value = columnsNamesEN[i];
+            break;
+        }
+    }
+    
+    return return_value;
+}
 }// end class

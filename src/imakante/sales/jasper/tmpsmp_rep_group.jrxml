@@ -1,0 +1,104 @@
+<jasperReport name="smp_rep_group" columnCount="1" printOrder="Vertical" orientation="Portrait" pageWidth="595" pageHeight="842" columnWidth="535" columnSpacing="0" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20" whenNoDataType="NoPages" isTitleNewPage="false" isSummaryNewPage="false" language="java" isFloatColumnFooter="false" whenResourceMissingType="Null" isIgnorePagination="false">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<parameter name="firmaName" isForPrompting="false" class="java.lang.String" />
+	<parameter name="in_code" isForPrompting="false" class="java.lang.String">
+		<defaultValueExpression><![CDATA["0"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="in_name" isForPrompting="false" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="in_alname" isForPrompting="false" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="in_nom" isForPrompting="false" class="java.lang.String">
+		<defaultValueExpression><![CDATA["0"]]></defaultValueExpression>
+	</parameter>
+	<queryString language="sql"><![CDATA[SELECT n.id_n_group, n.cod_n_group, n.name_n_group, n.id_al as n_id_al, anlevel.name_al
+FROM `n_group` n, anlevel
+WHERE n.cod_n_group LIKE CONCAT('%',$P{in_code},'%')
+AND n.name_n_group LIKE CONCAT('%',$P{in_name},'%')
+AND anlevel.name_al LIKE CONCAT('%',$P{in_alname},'%')
+AND n.nom_n_group = $P{in_nom}
+AND anlevel.id_al = n.id_al
+ORDER BY n.id_n_group ASC;]]></queryString>
+
+	<field name="id_n_group" class="java.lang.Integer" />
+	<field name="cod_n_group" class="java.lang.Integer" />
+	<field name="name_n_group" class="java.lang.String" />
+	<field name="n_id_al" class="java.lang.Integer" />
+	<field name="name_al" class="java.lang.String" />
+
+		<background>
+			<band height="0" isSplitAllowed="true">
+			</band>
+		</background>
+		<title>
+			<band height="84" isSplitAllowed="true">
+				<staticText>
+					<reportElement x="114" y="8" width="328" height="24" key="staticText-1" positionType="FixRelativeToTop" stretchType="NoStretch" isPrintRepeatedValues="true" isRemoveLineWhenBlank="false" isPrintInFirstWholeBand="false" isPrintWhenDetailOverflows="false" />
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" />
+					<textElement textAlignment="Center">
+						<font fontName="SansSerif" pdfFontName="Helvetica" size="18" isBold="false" isItalic="false" />
+					</textElement>
+				<text>ГРУПА СТОКИ</text>
+				</staticText>
+				<textField isStretchWithOverflow="false" pattern="dd/MM/yyyy" isBlankWhenNull="false" evaluationTime="Report" hyperlinkType="None" hyperlinkTarget="Self" bookmarkLevel="0">
+					<reportElement x="230" y="42" width="117" height="19" key="textField" positionType="FixRelativeToTop" stretchType="NoStretch" isPrintRepeatedValues="true" isRemoveLineWhenBlank="false" isPrintInFirstWholeBand="false" isPrintWhenDetailOverflows="false" />
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" />
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font />
+					</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</band>
+		</title>
+		<pageHeader>
+			<band height="50" isSplitAllowed="true">
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="18" isSplitAllowed="true">
+			<staticText><reportElement mode="Transparent" x="1" y="0" width="176" height="15" forecolor="#000000" backcolor="#FFFFFF" key="element-90" /><box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" /><textElement textAlignment="Center" verticalAlignment="Top" rotation="None" lineSpacing="Single"><font fontName="SanSerif" pdfFontName="Times-Roman" size="10" isBold="false" isItalic="true" isUnderline="false" isPdfEmbedded="false" pdfEncoding="Cp1251" isStrikeThrough="false" /></textElement><text>Код</text></staticText><staticText><reportElement mode="Transparent" x="177" y="0" width="176" height="15" forecolor="#000000" backcolor="#FFFFFF" key="element-90" /><box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" /><textElement textAlignment="Center" verticalAlignment="Top" rotation="None" lineSpacing="Single"><font fontName="SanSerif" pdfFontName="Times-Roman" size="10" isBold="false" isItalic="true" isUnderline="false" isPdfEmbedded="false" pdfEncoding="Cp1251" isStrikeThrough="false" /></textElement><text>Име</text></staticText><staticText><reportElement mode="Transparent" x="353" y="0" width="176" height="15" forecolor="#000000" backcolor="#FFFFFF" key="element-90" /><box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" /><textElement textAlignment="Center" verticalAlignment="Top" rotation="None" lineSpacing="Single"><font fontName="SanSerif" pdfFontName="Times-Roman" size="10" isBold="false" isItalic="true" isUnderline="false" isPdfEmbedded="false" pdfEncoding="Cp1251" isStrikeThrough="false" /></textElement><text>Аналитични нива</text></staticText></band>
+		</columnHeader>
+		<detail>
+			<band height="15" isSplitAllowed="true">
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None" hyperlinkTarget="Self"><reportElement mode="Transparent" x="1" y="0" width="176" height="15" forecolor="#000000" backcolor="#FFFFFF" key="textField" /><box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" /><textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single"><font fontName="SanSerif" pdfFontName="Times-Roman" size="10" isBold="false" isItalic="true" isUnderline="false" isPdfEmbedded="false" pdfEncoding="Cp1251" isStrikeThrough="false" /></textElement><textFieldExpression class="java.lang.Integer">$F{cod_n_group}</textFieldExpression></textField><textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None" hyperlinkTarget="Self"><reportElement mode="Transparent" x="177" y="0" width="176" height="15" forecolor="#000000" backcolor="#FFFFFF" key="textField" /><box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" /><textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single"><font fontName="SanSerif" pdfFontName="Times-Roman" size="10" isBold="false" isItalic="true" isUnderline="false" isPdfEmbedded="false" pdfEncoding="Cp1251" isStrikeThrough="false" /></textElement><textFieldExpression class="java.lang.String">$F{name_n_group}</textFieldExpression></textField><textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None" hyperlinkTarget="Self"><reportElement mode="Transparent" x="353" y="0" width="176" height="15" forecolor="#000000" backcolor="#FFFFFF" key="textField" /><box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" /><textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single"><font fontName="SanSerif" pdfFontName="Times-Roman" size="10" isBold="false" isItalic="true" isUnderline="false" isPdfEmbedded="false" pdfEncoding="Cp1251" isStrikeThrough="false" /></textElement><textFieldExpression class="java.lang.String">$F{name_al}</textFieldExpression></textField></band>
+		</detail>
+		<columnFooter>
+			<band height="30" isSplitAllowed="true">
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="50" isSplitAllowed="true">
+			</band>
+		</pageFooter>
+		<lastPageFooter>
+			<band height="50" isSplitAllowed="true">
+			</band>
+		</lastPageFooter>
+		<summary>
+			<band height="50" isSplitAllowed="true">
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None" hyperlinkTarget="Self" bookmarkLevel="0">
+					<reportElement x="354" y="6" width="178" height="18" key="textField-1" positionType="FixRelativeToTop" stretchType="NoStretch" isPrintRepeatedValues="true" isRemoveLineWhenBlank="false" isPrintInFirstWholeBand="false" isPrintWhenDetailOverflows="false" />
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" />
+					<textElement>
+						<font />
+					</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{firmaName}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="304" y="6" width="48" height="15" key="staticText-2" positionType="FixRelativeToTop" stretchType="NoStretch" isPrintRepeatedValues="true" isRemoveLineWhenBlank="false" isPrintInFirstWholeBand="false" isPrintWhenDetailOverflows="false" />
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000" />
+					<textElement>
+						<font />
+					</textElement>
+				<text><![CDATA[Фирма:]]></text>
+				</staticText>
+			</band>
+		</summary>
+</jasperReport>
