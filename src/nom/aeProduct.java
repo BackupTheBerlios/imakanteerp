@@ -1323,7 +1323,7 @@ fGain(jComboBoxGroup);
         myParent.setId_Group(myParent.getCountriesT().getIndexConnOfId()[jComboBoxGroup.getSelectedIndex()]);
         if(isNew) // zapisa NE sy6testvuva v bazata!!
         {
-         if(setAllVariables()) {
+         if(true) {  // be6e  if(setAllVariables()), no ne za6to sym go slozil ??????
             int v1,v2,v3,m1,m2,m3;
             v1 = 1;
             try {
@@ -1384,9 +1384,12 @@ fGain(jComboBoxGroup);
                 } else {
                     showMessage();
                     
-                }
+                } // end if(setAllVariables());
                 
-            }
+            } else {
+             showMessage();
+             
+            } // end if(setAllVariables());
         } else  // zapisa  sy6testvuva v bazata!!
         {
             if(setAllVariables()) {
