@@ -1,4 +1,6 @@
-DROP PROCEDURE IF EXISTS ls_procedure_branch
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS ls_procedure_branch $$
 CREATE PROCEDURE ls_procedure_branch (IN in_id INT(6), IN comprator TINYINT, IN in_code INT(6), IN in_name VARCHAR(30))
 BEGIN
      IF (comprator = 0) THEN
@@ -39,4 +41,6 @@ BEGIN
        DELETE FROM ls_otdeli;
      END IF;
 
-END
+END $$
+
+DELIMITER ;
