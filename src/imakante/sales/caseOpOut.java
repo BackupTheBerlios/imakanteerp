@@ -2,7 +2,7 @@
 
 package imakante.sales;
 
-import com.mysql.jdbc.ResultSetMetaData;
+
 import imakante.com.*;
 import java.sql.*;
 import java.util.ArrayList;
