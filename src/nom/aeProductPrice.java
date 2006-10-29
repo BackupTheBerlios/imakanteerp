@@ -116,7 +116,6 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
         jLabel3.setText("\u0426\u0435\u043d\u0430 2:");
 
         jTextDostPrice.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        jTextDostPrice.setNextFocusableComponent(jTextFieldPrice1);
         jTextDostPrice.setPreferredSize(new java.awt.Dimension(80, 20));
         jTextDostPrice.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextDostPrice.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -130,9 +129,6 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
         jTextDostPrice.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextDostPriceKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextDostPriceKeyReleased(evt);
             }
         });
 
@@ -1017,7 +1013,7 @@ fLost(jTextFieldPrice2);
     }//GEN-LAST:event_jTextFieldProcent1KeyPressed
     
     private void jTextFieldProcent1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldProcent1FocusLost
-fLost(jTextFieldProcent1);
+        fLost(jTextFieldProcent1);
         /*   try {
 // TODO add your handling code here:
             p0 = Double.parseDouble(jTextDostPrice.getText());
@@ -1035,7 +1031,7 @@ fLost(jTextFieldProcent1);
     }//GEN-LAST:event_jTextFieldProcent1FocusLost
     
     private void jTextFieldPrice1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice1FocusLost
-fLost(jTextFieldPrice1);
+        fLost(jTextFieldPrice1);
         /*        try {
  
             p0 = Double.parseDouble(jTextDostPrice.getText());
@@ -1061,18 +1057,14 @@ fLost(jTextFieldPrice1);
     }//GEN-LAST:event_jTextFieldPrice1FocusLost
     
     private void jTextFieldPrice1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPrice1KeyPressed
-// TODO add your handling code here:
-        
-        if(evt.getKeyCode()==evt.VK_ENTER) {
+        if(evt.getKeyCode() == evt.VK_ENTER) {
             try {
                 p0 = Double.parseDouble(jTextDostPrice.getText());
                 p1 = Double.parseDouble(jTextFieldPrice1.getText());
                 if (p1 >= p0 ) {
                     p_p1 = (100 * (p1-p0)) / p0;
-                    
-                    p1dds = (p1*stDDS/100)+p1;
+                    p1dds = (p1*stDDS/100) + p1;
                 } else showMessage();
-                
                 jTextFieldProcent1.setText( doubleRoundToString(3,p_p1));
                 jTextFieldPrice1.setBackground(new java.awt.Color(255, 255, 255));
                 jTextFieldPrice1WithDDS.setText(doubleRoundToString(6,p1dds));
@@ -1086,7 +1078,6 @@ fLost(jTextFieldPrice1);
     }//GEN-LAST:event_jTextFieldPrice1KeyPressed
     
     private void jTextDostPriceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextDostPriceKeyPressed
-// TODO add your handling code here:
         if(jTextDostPrice.getText().length()>0) {
             jTextFieldPrice1.setEnabled(true);
             jTextFieldPrice2.setEnabled(true);
@@ -1094,7 +1085,6 @@ fLost(jTextFieldPrice1);
             jTextFieldProcent3.setEnabled(true);
             jTextFieldProcent2.setEnabled(true);
             jTextFieldProcent1.setEnabled(true);
-            
             jTextFieldPrice1WithDDS.setEnabled(true);
             jTextFieldPrice2WithDDS.setEnabled(true);
             jTextFieldPrice3WithDDS.setEnabled(true);
@@ -1102,18 +1092,12 @@ fLost(jTextFieldPrice1);
             if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
                 p0dds = (p0*stDDS/100)+p0;
                 jTextDostPriceWithDDS.setText(doubleRoundToString(3,p0dds));
-                
-                this.jTextFieldPrice1WithDDS.requestFocus();
+                this.jTextFieldPrice1.requestFocus();
             }
         }
     }//GEN-LAST:event_jTextDostPriceKeyPressed
-    
-    private void jTextDostPriceKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextDostPriceKeyReleased
-// TODO add your handling code here:
-    }//GEN-LAST:event_jTextDostPriceKeyReleased
-    
+        
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
-// TODO add your handling code here:
         if(p0==0 && p1==0 && p2==0 && p3==0 && id_curs==0) {
             showMessage();
         } else {
@@ -1122,41 +1106,22 @@ fLost(jTextFieldPrice1);
                 p1 = Double.parseDouble(jTextFieldPrice1.getText());
                 p2 = Double.parseDouble(jTextFieldPrice2.getText());
                 p3 = Double.parseDouble(jTextFieldPrice3.getText());
-            } catch(Exception e) {
-                showMessage();
-            }
+            } catch(Exception e) { showMessage(); }
             if(isNew) {
-                
                 // myParent.setId_PP(myParent.getCountriesT().setNewPrice(p0,p1,p2,p3,id_curs));
                 myParent.setNewPrice(p0,p1,p2,p3,id_curs);
-                
                 jButtonClose.doClick();
             } else {
                 // myParent.getCountriesT().updateProductPrice(id_price,p0,p1,p2,p3,id_curs);
                 myParent.setNewPrice(p0,p1,p2,p3,id_curs);
-                
                 jButtonClose.doClick();
             }
-            
         }
-        
     }//GEN-LAST:event_jButtonSaveActionPerformed
     
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
-// TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButtonCloseActionPerformed
-    
-    /**
-     * @param args the command line arguments
-     */
-  /*  public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                //new aeProductPrice(new javax.swing.JFrame(), true).setVisible(true);
-            }
-        });
-    }*/
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonClose;

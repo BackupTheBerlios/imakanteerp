@@ -798,37 +798,37 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jComboBoxDescript3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxDescript3FocusLost
-fLost(jComboBoxDescript3);
+        fLost(jComboBoxDescript3);
     }//GEN-LAST:event_jComboBoxDescript3FocusLost
-
+    
     private void jComboBoxDescript3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxDescript3FocusGained
-fGain(jComboBoxDescript3);
+        fGain(jComboBoxDescript3);
     }//GEN-LAST:event_jComboBoxDescript3FocusGained
-
+    
     private void jComboBoxDescript2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxDescript2FocusLost
-fLost(jComboBoxDescript2);
+        fLost(jComboBoxDescript2);
     }//GEN-LAST:event_jComboBoxDescript2FocusLost
-
+    
     private void jComboBoxDescript2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxDescript2FocusGained
-fGain(jComboBoxDescript2);
+        fGain(jComboBoxDescript2);
     }//GEN-LAST:event_jComboBoxDescript2FocusGained
-
+    
     private void jComboBoxDescript1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxDescript1FocusLost
-fLost(jComboBoxDescript1);
+        fLost(jComboBoxDescript1);
     }//GEN-LAST:event_jComboBoxDescript1FocusLost
-
+    
     private void jComboBoxDescript1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxDescript1FocusGained
-fGain(jComboBoxDescript1);
+        fGain(jComboBoxDescript1);
     }//GEN-LAST:event_jComboBoxDescript1FocusGained
-
+    
     private void jComboBoxGroupFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxGroupFocusLost
-fLost(jComboBoxGroup);
+        fLost(jComboBoxGroup);
     }//GEN-LAST:event_jComboBoxGroupFocusLost
-
+    
     private void jComboBoxGroupFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxGroupFocusGained
-fGain(jComboBoxGroup);
+        fGain(jComboBoxGroup);
     }//GEN-LAST:event_jComboBoxGroupFocusGained
     
     private void jTextFieldDescript3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldDescript3FocusLost
@@ -1134,94 +1134,31 @@ fGain(jComboBoxGroup);
     }//GEN-LAST:event_jTextFieldPriceFocusGained
     
     private void jTextFieldPriceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPriceKeyPressed
-// TODO add your handling code here:
-        
-        try {
-            if(isNew && !myParent.isTypedPrice) {
-                ProductPriceDialog =  new aeProductPrice(myParent,true,myParent.getId_PP(),true);
-                ProductPriceDialog.setVisible(true);
-                
-            } else {
-                ProductPriceDialog =  new aeProductPrice(myParent,true,myParent.getId_PP(),false);
-                ProductPriceDialog.setVisible(true);
-            }
-            
-            
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-        if (myParent.getId_PP()!=0 && !myParent.isTypedPrice) {
-            String price[] = myParent.getCountriesT().getProductPrice(myParent.getId_PP());
-            double p0 = Double.parseDouble(price[0]);
-            double dds_ = 20;
-            if(myParent.getId_PF()!=0) {
-                dds_ = Double.parseDouble(myParent.getCountriesT().getProdictFee(myParent.getId_PF())[0]);
-            }
-            
-            double p0dds = (p0*dds_/100)+p0;
-            jTextFieldPrice.setText(price[0]+"\u0431\u0435\u0437 \u0414\u0414\u0421, "+p0dds+"\u0441 \u0414\u0414\u0421");
-        } else jTextFieldPrice.setText(myParent.getViewPrice());
-        //   repaintComp();
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+        managePrices();
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER)
             jTextFieldMaxPOP.requestFocus();
-        }
-        
     }//GEN-LAST:event_jTextFieldPriceKeyPressed
     
     private void jTextFieldPriceMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldPriceMousePressed
-// TODO add your handling code here:
-        
-        try {
-            if(isNew && !myParent.isTypedPrice) {
-                ProductPriceDialog =  new aeProductPrice(myParent,true,myParent.getId_PP(),true);
-                ProductPriceDialog.setVisible(true);
-                
-            } else {
-                ProductPriceDialog =  new aeProductPrice(myParent,true,myParent.getId_PP(),false);
-                ProductPriceDialog.setVisible(true);
-            }
-            
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-        if (myParent.getId_PP()!=0 && !myParent.isTypedPrice) {
-            String price[] = myParent.getCountriesT().getProductPrice(myParent.getId_PP());
-            double p0 = Double.parseDouble(price[0]);
-            double dds_ = 20;
-            if(myParent.getId_PF()!=0) {
-                dds_ = Double.parseDouble(myParent.getCountriesT().getProdictFee(myParent.getId_PF())[0]);
-            }
-            
-            double p0dds = (p0*dds_/100)+p0;
-            jTextFieldPrice.setText(price[0]+"\u0431\u0435\u0437 \u0414\u0414\u0421, "+p0dds+"\u0441 \u0414\u0414\u0421");
-        } else jTextFieldPrice.setText(myParent.getViewPrice());
-        // repaintComp();
-        
-        
+        managePrices();
     }//GEN-LAST:event_jTextFieldPriceMousePressed
     
-    //
     private void jButtonToEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToEndActionPerformed
-// TODO add your handling code here:
         isNew = false;
         myParent.mTableEnd();
         jButtonToEnd.setEnabled(false);
         jButtonOneRowP.setEnabled(false);
         jButtonToEnd.repaint();
         jButtonOneRowP.repaint();
-        
-        
         jButtonToBegin.setEnabled(true);
         jButtonOneRowM.setEnabled(true);
         jButtonToBegin.repaint();
         jButtonOneRowM.repaint();
-        
         System.out.println(String.valueOf(myParent.getId_Group()));
         repaintComp();
     }//GEN-LAST:event_jButtonToEndActionPerformed
     
     private void jButtonOneRowPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowPActionPerformed
-// TODO add your handling code here:
         isNew = false;
         myParent.mOneRowPlus();
         if(myParent.isAtEnd()) {
@@ -1229,9 +1166,7 @@ fGain(jComboBoxGroup);
             jButtonOneRowP.setEnabled(false);
             jButtonToEnd.repaint();
             jButtonOneRowP.repaint();
-            
         }
-        
         jButtonToBegin.setEnabled(true);
         jButtonOneRowM.setEnabled(true);
         jButtonToBegin.repaint();
@@ -1241,7 +1176,6 @@ fGain(jComboBoxGroup);
     }//GEN-LAST:event_jButtonOneRowPActionPerformed
     
     private void jButtonOneRowMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowMActionPerformed
-// TODO add your handling code here:
         isNew = false;
         myParent.mOneRowMinus();
         if(myParent.isAtBegining()) {
@@ -1249,7 +1183,6 @@ fGain(jComboBoxGroup);
             jButtonOneRowM.setEnabled(false);
             jButtonToBegin.repaint();
             jButtonOneRowM.repaint();
-            
         }
         jButtonToEnd.setEnabled(true);
         jButtonOneRowP.setEnabled(true);
@@ -1260,15 +1193,12 @@ fGain(jComboBoxGroup);
     }//GEN-LAST:event_jButtonOneRowMActionPerformed
     
     private void jButtonToBeginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonToBeginActionPerformed
-// TODO add your handling code here:
         isNew = false;
         myParent.mTableBegining();
-        
         jButtonToBegin.setEnabled(false);
         jButtonOneRowM.setEnabled(false);
         jButtonToBegin.repaint();
         jButtonOneRowM.repaint();
-        
         jButtonToEnd.setEnabled(true);
         jButtonOneRowP.setEnabled(true);
         jButtonToEnd.repaint();
@@ -1278,42 +1208,30 @@ fGain(jComboBoxGroup);
     }//GEN-LAST:event_jButtonToBeginActionPerformed
     
     private void jTextFieldPromoPricesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPromoPricesKeyPressed
-// TODO add your handling code here:
-        
         try {
             if(isNew && !myParent.isTypedPromoPrice) {
-                promoDialog = new aeProductPricePromotion(myParent,true,myParent.getId_PPP(),true);
+                promoDialog = new aeProductPricePromotion(myParent,true,myParent.getId_PPP(), true);
                 promoDialog.setVisible(true);
             } else {
-                promoDialog = new aeProductPricePromotion(myParent,true,myParent.getId_PPP(),false);
+                promoDialog = new aeProductPricePromotion(myParent,true,myParent.getId_PPP(), false);
                 promoDialog.setVisible(true);
             }
-            
-            
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+        } catch(Exception e) { e.printStackTrace(); }
         if (myParent.getId_PPP()!=0 && !myParent.isTypedPromoPrice) {
             String promotion_price[] = myParent.getCountriesT().getProductPromotionPrice(myParent.getId_PPP());
             double p0 = Double.parseDouble(promotion_price[0]);
             double dds_ = 20;
-            if(myParent.getId_PF()!=0) {
+            if(myParent.getId_PF()!=0)
                 dds_ = Double.parseDouble(myParent.getCountriesT().getProdictFee(myParent.getId_PF())[0]);
-            }
-            
-            double p0dds = (p0*dds_/100)+p0;
-            jTextFieldPromoPrices.setText(promotion_price[0]+"\u0431\u0435\u0437 \u0414\u0414\u0421, "+p0dds+"\u0441 \u0414\u0414\u0421");
+            double p0dds = (p0*dds_/100) + p0;
+            jTextFieldPromoPrices.setText(promotion_price[0] + "\u0431\u0435\u0437 \u0414\u0414\u0421, " + p0dds + "\u0441 \u0414\u0414\u0421");
         } else jTextFieldPromoPrices.setText(myParent.getViewPromoPrice());
         //   repaintComp();
-        
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER)
             jTextFieldMinProduct.requestFocus();
-        }
-        
     }//GEN-LAST:event_jTextFieldPromoPricesKeyPressed
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-// TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
     
@@ -1323,42 +1241,42 @@ fGain(jComboBoxGroup);
         myParent.setId_Group(myParent.getCountriesT().getIndexConnOfId()[jComboBoxGroup.getSelectedIndex()]);
         if(isNew) // zapisa NE sy6testvuva v bazata!!
         {
-         if(true) {  // be6e  if(setAllVariables()), no ne znam za6to sym go slozil ??????
-            int v1,v2,v3,m1,m2,m3;
-            v1 = 1;
-            try {
-                v2 = Integer.parseInt(jTextFieldDescript2.getText());
-                v3 = Integer.parseInt(jTextFieldDescript3.getText());
-                m1 = myParent.getCountriesT().getIndexConnOfIdColumn()[jComboBoxDescript1.getSelectedIndex()];
-                m2 = myParent.getCountriesT().getIndexConnOfIdColumn()[jComboBoxDescript2.getSelectedIndex()];
-                m3 = myParent.getCountriesT().getIndexConnOfIdColumn()[jComboBoxDescript3.getSelectedIndex()];
+            if(true) {  // be6e  if(setAllVariables()), no ne znam za6to sym go slozil ??????
+                int v1,v2,v3,m1,m2,m3;
+                v1 = 1;
+                try {
+                    v2 = Integer.parseInt(jTextFieldDescript2.getText());
+                    v3 = Integer.parseInt(jTextFieldDescript3.getText());
+                    m1 = myParent.getCountriesT().getIndexConnOfIdColumn()[jComboBoxDescript1.getSelectedIndex()];
+                    m2 = myParent.getCountriesT().getIndexConnOfIdColumn()[jComboBoxDescript2.getSelectedIndex()];
+                    m3 = myParent.getCountriesT().getIndexConnOfIdColumn()[jComboBoxDescript3.getSelectedIndex()];
+                    
+                    
+                    myParent.setId_PD( myParent.getCountriesT().setProductDescriptionColumn(v1,v2,v3,m1,m2,m3));
+                } catch(Exception xx){myParent.setId_PD(1);};
+                if(myParent.isTypedFee) myParent.setId_PF(myParent.saveProductFeeToDB());
+                if(myParent.isTypedPromoPrice) myParent.setId_PPP(myParent.saveProductPromotionPriceToDB());
+                if(myParent.isTypedPrice) myParent.setId_PP(myParent.saveNewPriceToDb());
+                myParent.isTypedFee = false;
+                myParent.isTypedPromoPrice = false;
+                myParent.isTypedPrice = false;
+                if(myParent.getId_Group()<1) {
+                    myParent.setId_Group(1);
+                }
+                if(myParent.getId_PF()<1) {
+                    myParent.setId_PF(1);
+                }
+                if(myParent.getId_PD()<1) {
+                    myParent.setId_PD(1);
+                }
+                if(myParent.getId_PP()<1) {
+                    myParent.setId_PP(1);
+                }
+                if(myParent.getId_PPP()<1) {
+                    myParent.setId_PPP(1);
+                }
                 
                 
-                myParent.setId_PD( myParent.getCountriesT().setProductDescriptionColumn(v1,v2,v3,m1,m2,m3));
-            } catch(Exception xx){myParent.setId_PD(1);};
-            if(myParent.isTypedFee) myParent.setId_PF(myParent.saveProductFeeToDB());
-            if(myParent.isTypedPromoPrice) myParent.setId_PPP(myParent.saveProductPromotionPriceToDB());
-            if(myParent.isTypedPrice) myParent.setId_PP(myParent.saveNewPriceToDb());
-            myParent.isTypedFee = false;
-            myParent.isTypedPromoPrice = false;
-            myParent.isTypedPrice = false;
-            if(myParent.getId_Group()<1) {
-                myParent.setId_Group(1);
-            }
-            if(myParent.getId_PF()<1) {
-                myParent.setId_PF(1);
-            }
-            if(myParent.getId_PD()<1) {
-                myParent.setId_PD(1);
-            }
-            if(myParent.getId_PP()<1) {
-                myParent.setId_PP(1);
-            }
-            if(myParent.getId_PPP()<1) {
-                myParent.setId_PPP(1);
-            }
-            
-            
                 
                 if(setAllVariables()) {
                     
@@ -1387,8 +1305,8 @@ fGain(jComboBoxGroup);
                 } // end if(setAllVariables());
                 
             } else {
-             showMessage();
-             
+                showMessage();
+                
             } // end if(setAllVariables());
         } else  // zapisa  sy6testvuva v bazata!!
         {
@@ -1470,17 +1388,6 @@ fGain(jComboBoxGroup);
     private void jTextFieldBarCodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBarCodKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){jTextFieldExpertSheet.requestFocus();}
     }//GEN-LAST:event_jTextFieldBarCodKeyPressed
-    
-    /**
-     * @param args the command line arguments
-     */
-   /* public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new aeProduct(new JFrame(),true,true,1).setVisible(true);
-            }
-        });
-    }*/
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -1647,6 +1554,7 @@ fGain(jComboBoxGroup);
         }
         
     }
+    
     private void showContein(int con_gr, boolean isEditalble) // test
     {
         try {
@@ -1663,6 +1571,7 @@ fGain(jComboBoxGroup);
         
         
     }
+    
     private int getNewComboBoxIndex(int oldindex) //OK
     {
         int newindex= 0;
@@ -1686,6 +1595,30 @@ fGain(jComboBoxGroup);
         }
         return newindex;
     }
+    
+    private void managePrices() {
+        try {
+            if(isNew && !myParent.isTypedPrice) {
+                ProductPriceDialog =  new aeProductPrice(myParent,true,myParent.getId_PP(), true);
+                ProductPriceDialog.setVisible(true);
+            } else {
+                ProductPriceDialog =  new aeProductPrice(myParent,true,myParent.getId_PP(), false);
+                ProductPriceDialog.setVisible(true);
+            }
+        } catch(Exception e) { e.printStackTrace(); }
+        if (myParent.getId_PP()!=0 && !myParent.isTypedPrice) {
+            String price[] = myParent.getCountriesT().getProductPrice(myParent.getId_PP());
+            double p0 = Double.parseDouble(price[0]);
+            double dds_ = 20;
+            if(myParent.getId_PF()!=0)
+                dds_ = Double.parseDouble(myParent.getCountriesT().getProdictFee(myParent.getId_PF())[0]);
+            double p0dds = (p0*dds_/100)+p0;
+            jTextFieldPrice.setText(price[0]+"\u0431\u0435\u0437 \u0414\u0414\u0421, "+p0dds+"\u0441 \u0414\u0414\u0421");
+        } else
+            jTextFieldPrice.setText(myParent.getViewPrice());
+        //   repaintComp();
+    }
+    
     private boolean  setAllVariables() {
         boolean isOk= true;
         
@@ -1715,14 +1648,15 @@ fGain(jComboBoxGroup);
     }
     
     private void showMessage() {
-        JOptionPane.showMessageDialog(this,"\u041c\u043e\u043b\u044f, \u0432\u044a\u0432\u0435\u0434\u0435\u0442\u0435 \u043a\u043e\u0440\u0435\u043a\u043d\u043e \u0434\u0430\u043d\u043d\u0438\u0442\u0435");
-        
-        
+        JOptionPane.showMessageDialog(this,"\u041c\u043e\u043b\u044f, \u0432\u044a\u0432\u0435\u0434\u0435\u0442\u0435 " +
+                "\u043a\u043e\u0440\u0435\u043a\u043d\u043e \u0434\u0430\u043d\u043d\u0438\u0442\u0435");
     }
+    
     private void showOKMessage() {
         JOptionPane.showMessageDialog(this,"\u0417\u0430\u043F\u0438\u0441\u044A\u0442 \u0435 \u043A\u043E\u0440\u0435\u043A\u0442\u0435\u043D");
         
     }
+    
     private void fGain(javax.swing.JComponent jtf){
         jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 0, 51), null));
     }
@@ -1730,7 +1664,6 @@ fGain(jComboBoxGroup);
     private void fLost(javax.swing.JComponent jtf){
         jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 255, 255), null));
     }
-   
     
 }// end class
 
