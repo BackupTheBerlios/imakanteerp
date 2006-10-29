@@ -1,8 +1,6 @@
 
 package imakante.sales;
 
-import java.util.Iterator;
-
 public class levelDialog extends javax.swing.JDialog {
     
     public levelDialog(imakante.sales.sales_main parent, boolean modal, int ModuleCode, java.util.LinkedHashMap area) {
@@ -11,25 +9,18 @@ public class levelDialog extends javax.swing.JDialog {
         modul = ModuleCode;
         hash = area;
         initComponents();
-        if(area==null)
-        {
-            
-         sales_main.levelForWork =-1;
-          sales_main.userID_ndtur=-1;
-        }else
-        if(area.size()<1)
-        {
-         sales_main.levelForWork =-1;
-         sales_main.userID_ndtur=-1;
+        if(area == null) {
+            sales_main.levelForWork = -1;
+            sales_main.userID_ndtur = -1;
+        } else {  }
+        if(area.size() < 1) {
+            sales_main.levelForWork = -1;
+            sales_main.userID_ndtur = -1;
+        } else {
+            hash = new java.util.LinkedHashMap(area);
+            constructComboNames();
+            writeH();
         }
-        else
-        {
-          hash = new java.util.LinkedHashMap(area);
-          constructComboNames();
-          writeH();
-        }
-        
-       
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -139,30 +130,25 @@ public class levelDialog extends javax.swing.JDialog {
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-// TODO add your handling code here:
-                outLevel = 3;
-               
-                sales_main.levelForWork = 3;
-                try
-                {
-                outIndex = getKey();
-                sales_main.userID_ndtur = getKey();
-                }
-                catch(Exception xc){sales_main.userID_ndtur =-1;sales_main.levelForWork = -1;};
-               
-                frame.numberStorage=Integer.parseInt(jTextField2.getText());
+        outLevel = 3;
+        sales_main.levelForWork = 3;
+        try {
+            outIndex = getKey();
+            sales_main.userID_ndtur = getKey();
+        } catch(Exception xc) { sales_main.userID_ndtur =-1;sales_main.levelForWork = -1; }
+        frame.numberStorage=Integer.parseInt(jTextField2.getText());
     }//GEN-LAST:event_formWindowClosing
-
+    
     private void formWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeactivated
 // TODO add your handling code here:
-       
+        
     }//GEN-LAST:event_formWindowDeactivated
-
+    
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
 // TODO add your handling code here:
-         
+        
     }//GEN-LAST:event_formWindowClosed
     
     private void jPasswordField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyPressed
@@ -187,13 +173,13 @@ public class levelDialog extends javax.swing.JDialog {
             close();
         }
         if ( evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) {
-             if(hash==null) return;
-             outLevel = 3;
-             outIndex = getKey();
-             sales_main.levelForWork = 3;
-             sales_main.userID_ndtur = getKey();
+            if(hash==null) return;
+            outLevel = 3;
+            outIndex = getKey();
+            sales_main.levelForWork = 3;
+            sales_main.userID_ndtur = getKey();
             
-                frame.numberStorage=Integer.parseInt(jTextField2.getText());
+            frame.numberStorage=Integer.parseInt(jTextField2.getText());
             this.dispose();
         }
 //==============================================
@@ -240,12 +226,11 @@ public class levelDialog extends javax.swing.JDialog {
         System.out.println(new java.util.ArrayList(hash.entrySet()));
     }
     
-    private void constructComboNames()
-    {
+    private void constructComboNames() {
         jComboBox1.removeAllItems();
-     //   in = new java.util.ArrayList(hash.keySet());
-         in = new java.util.ArrayList();
-         for (java.util.Iterator it = hash.keySet().iterator(); it.hasNext(); ) {
+        //   in = new java.util.ArrayList(hash.keySet());
+        in = new java.util.ArrayList();
+        for (java.util.Iterator it = hash.keySet().iterator(); it.hasNext(); ) {
             Object key = it.next();
             in.add(key);
             Object value = hash.get(key);
@@ -262,17 +247,18 @@ public class levelDialog extends javax.swing.JDialog {
         return level;
     }
     
-    private int getKey(){ 
+    private int getKey(){
         int d = 1;
         d = (Integer)in.get(jComboBox1.getSelectedIndex());
         return d;
     }
-
+    
     private boolean checkPass(){
         String pss = new String(this.jPasswordField1.getPassword());
-        if(pss.equals(imakante.com.NewMain.getPassword())) {
+        if(pss.equals(imakante.com.NewMain.getPassword()))
             return true;
-        } else { return false; }
+        else
+            return false;
     }
     
     //opisanie na formite koito she badat kontrolirani
@@ -282,28 +268,22 @@ public class levelDialog extends javax.swing.JDialog {
         if (modul == 702) { frame.loadCasaOut(getLevel(), getKey()); }
         if (modul == 703) { frame.loadAdvances(getLevel(), getKey()); }
         if (modul == 704) { frame.loadC2C(getLevel(), getKey()); }
-       //if (modul == 202) { frame.loadDanFac(getKey(),getLevel());}
-                            
-                
-                            
-        
+        //if (modul == 202) { frame.loadDanFac(getKey(),getLevel());}
         
         this.dispose();
     }
- 
- private void toSystemString()
- {
-     Iterator it = in.iterator();
-     System.out.println("|================================================|"); //50
-     System.out.println("|=======KEY==============|========VALUE==========|"); //50
-     System.out.println("|================================================|"); //50
-     while(it.hasNext())
-     {
-         int key =(Integer) it.next();
-         System.out.print("| Keys = "+key + "            |");
-         System.out.println("Values = "+ hash.get(key));
-         System.out.println("|================================================|"); //50
-     }
-     
- }
+    
+    private void toSystemString() {
+        java.util.Iterator it = in.iterator();
+        System.out.println("|================================================|"); //50
+        System.out.println("|=======KEY==============|========VALUE==========|"); //50
+        System.out.println("|================================================|"); //50
+        while(it.hasNext()) {
+            int key =(Integer) it.next();
+            System.out.print("| Keys = "+key + "            |");
+            System.out.println("Values = "+ hash.get(key));
+            System.out.println("|================================================|"); //50
+        }
+        
+    }
 } // end class

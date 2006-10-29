@@ -1452,8 +1452,6 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         
     }//GEN-LAST:event_nomMenuActionPerformed
     
-    
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem aktiviMenu_Aktivi;
@@ -2239,7 +2237,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         if (user.startsWith("root") || user.startsWith("imakante")) {
             imakante.com.SQLQueryFetcher shell = new imakante.com.SQLQueryFetcher(this, true);
             shell.setVisible(true);
-        }
+        } else 
+            imakante.com.MessagePane.AdminOnly();
     }
     
 // ENCAPS METHODS FORM CONTROL

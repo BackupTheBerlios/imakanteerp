@@ -34,6 +34,13 @@ public class MessagePane {
                 javax.swing.JOptionPane.WARNING_MESSAGE);
     }
     
+    public static final void AdminOnly() {      // message = "Tazi funkciq e samo za administrirane!"
+        javax.swing.JOptionPane.showMessageDialog(null, "\u0422\u0430\u0437\u0438 \u0444\u0443\u043D\u043A\u0446\u0438\u044F \u0435 " +
+                "\u0441\u0430\u043C\u043E \u0437\u0430 \u0430\u0434\u043C\u0438\u043D\u0438\u0441\u0442\u0440\u0438\u0440\u0430\u043D\u0435!", 
+                "\u0418\u041C\u0410\u041A\u0410\u041D\u0422\u0415", // IMAKANTE
+                javax.swing.JOptionPane.WARNING_MESSAGE);
+    }
+    
     // custom Info panes
     
 }
