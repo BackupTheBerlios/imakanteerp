@@ -1,14 +1,9 @@
 
 package nom;
 
-import imakante.com.vcomponents.iInternalFrame;
-import javax.swing.JOptionPane;
-import java.math.*;
 public class aeProductPrice extends imakante.com.vcomponents.iDialog {
     
-    /** Creates new form aeProductPrice */
     public aeProductPrice(imakante.com.vcomponents.iInternalFrame frame, boolean modal,int id_price, boolean isnew) {
-        
         super(frame, modal);
         this.myParent =(FrmProduct) frame;
         this.id_price = id_price;
@@ -23,23 +18,16 @@ public class aeProductPrice extends imakante.com.vcomponents.iDialog {
         splitMoney = myParent.getCountriesT().getMoney();
         for(int i=0;i<splitMoney.length;i++) {
             jComboBoxValuta.addItem(new String(splitMoney[i]));
-            
         }
-        
         if(selectComboBoxItem != 0) {
-            
             selectComboBoxItem = getNewComboBoxIndex(selectComboBoxItem);
-            
             jComboBoxValuta.setSelectedIndex(selectComboBoxItem);
         }
         this.setTitle("\u0414\u043E\u0441\u0442\u0430\u0432\u043D\u0430 \u0438 \u0446\u0435\u043D\u043E\u0432\u0430 \u043B\u0438\u0441\u0442\u0430");
         jTextDostPrice.requestFocus();
-        
         try {
             stDDS =  Integer.parseInt(myParent.getProductFee()[0]);
-        } catch(Exception x1) {
-            stDDS = 20;
-        }
+        } catch(Exception x1) { stDDS = 20; }
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -592,7 +580,6 @@ fGain(jTextDostPrice);
     
     private void jTextFieldPrice3WithDDSFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrice3WithDDSFocusLost
 fLost(jTextFieldPrice3WithDDS);
-// TODO add your handling code here:
      /*    try {
                 p0dds = Double.parseDouble(jTextDostPriceWithDDS.getText());
                 p3dds = Double.parseDouble(jTextFieldPrice3WithDDS.getText());
@@ -1166,7 +1153,7 @@ fLost(jTextFieldPrice2);
     private int id_price=0, id_curs=1;
     private double p0=0,p1=0,p2=0,p3=0;
     private double p_p1=0,p_p2=0,p_p3=0;
-    private double p0dds=0,p1dds=0,p2dds=0,p3dds=0;
+    private double p0dds=0, p1dds=0, p2dds=0, p3dds=0;
     private double stDDS = 20;                 // stoinost na dds v %
     private boolean isNew = false;
     private String splitMoney[] = null;
@@ -1232,15 +1219,14 @@ fLost(jTextFieldPrice2);
         
         p3dds = (p3*stDDS/100)+p3;
         jTextFieldPrice3WithDDS.setText(doubleRoundToString(6,p3dds));
-        
-        
     }
+    
     private void showMessage() {
-        JOptionPane.showMessageDialog(this,"\u041c\u043e\u043b\u044f, \u0432\u044a\u0432\u0435\u0434\u0435\u0442\u0435 \u043a\u043e\u0440\u0435\u043a\u043d\u043e \u0434\u0430\u043d\u043d\u0438\u0442\u0435");
-        
+        javax.swing.JOptionPane.showMessageDialog(this,"\u041c\u043e\u043b\u044f, \u0432\u044a\u0432\u0435\u0434\u0435\u0442\u0435 " +
+                "\u043a\u043e\u0440\u0435\u043a\u043d\u043e \u0434\u0430\u043d\u043d\u0438\u0442\u0435");
     }
-    private int getNewComboBoxIndex(int oldindex) //OK
-    {
+    
+    private int getNewComboBoxIndex(int oldindex) {
         int newindex= 0;
         for(int i = 0; i < myParent.getCountriesT().getIndexConnOfIdMoney().length; i++) {
             if(myParent.getCountriesT().getIndexConnOfIdMoney()[i]==oldindex) {
@@ -1250,11 +1236,12 @@ fLost(jTextFieldPrice2);
         }
         return newindex;
     }
+    
     private String doubleRoundToString(int digit, double indouble) {
         String newDouble = new String();
         double r = indouble;
-        BigDecimal bd = new BigDecimal(r);
-        bd = bd.setScale(digit,BigDecimal.ROUND_HALF_UP);
+        java.math.BigDecimal bd = new java.math.BigDecimal(r);
+        bd = bd.setScale(digit, java.math.BigDecimal.ROUND_HALF_UP);
         r = bd.doubleValue();
         return newDouble.valueOf(r);
     }
