@@ -33,8 +33,15 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
         jbDropData = new javax.swing.JButton();
         jbClose = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
         setTitle("\u041e\u0431\u043c\u0435\u043d\u043d\u0438 \u043a\u0443\u0440\u0441\u043e\u0432\u0435 \u043d\u0430 \u0432\u0430\u043b\u0443\u0442\u0438");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
+        setMaximumSize(new java.awt.Dimension(2400, 1600));
+        setMinimumSize(new java.awt.Dimension(880, 350));
+        setPreferredSize(new java.awt.Dimension(880, 350));
         jpTop.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         org.jdesktop.layout.GroupLayout jpTopLayout = new org.jdesktop.layout.GroupLayout(jpTop);
         jpTop.setLayout(jpTopLayout);
@@ -51,6 +58,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
         jpMiddle.setLayout(new java.awt.BorderLayout());
 
         jpMiddle.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jspData.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jpMiddle.add(jspData, java.awt.BorderLayout.CENTER);
 
         jpSearch.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -225,12 +233,10 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     private void editRecord() {
         if (table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());
-            if(getRow()==0){          //manage button state of ae form
+            if(getRow() == 0)          //manage button state of ae form
                 setAtBegining(true);
-            }
-            if(getRow()==getMaxRow()){
+            if(getRow() == getMaxRow())
                 setAtEnd(true);
-            }
             setAllVariables();
             imakante.sales.aeExchangeRate aeExRates = new imakante.sales.aeExchangeRate(this, true);
             aeExRates.setVisible(true);
@@ -319,20 +325,20 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     public static final String Names[] = {"id", "\u0414\u0430\u0442\u0430",
     "id_currency", "\u0412\u0430\u043b\u0443\u0442\u0430", "\u041a\u0443\u0440\u0441"};
     
-    private int id=0; // imena ot tablicata
+    private int id = 0; // imena ot tablicata
     private String date = null;
     private int idCurrency = 0;
     private Double rate = 0.00;
     private String Currencies[]; //imena na grupi
     private int selectComboBoxItem;
-    private  boolean atBegining=false;
+    private  boolean atBegining = false;
     private  boolean atEnd = false;
     private int row;
     
     private void prepareConn() {
         try{
             conn =  myframe.getConn();
-            if(conn==null){System.out.println("CONNECTION CAN NOT BE ESTABLISHED!!!");
+            if(conn == null){System.out.println("CONNECTION CAN NOT BE ESTABLISHED!!!");
             }
         } catch(Exception e) { e.printStackTrace(); }
     }
@@ -388,6 +394,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     public void setMyframe(imakante.com.vcomponents.iFrame val) {
         this.myframe = val;
     }
+    
     public  boolean isAtBegining() {
         return atBegining;
     }
@@ -405,11 +412,9 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     }
     
     private int  getMaxRow() {
-        int i = 0;
-        i  = table.getRowCount() - 1;
-        
-        return i;
+        return (table.getRowCount() - 1);
     }
+    
     public  int getRow() {
         return row;
     }
@@ -455,27 +460,20 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
         try{
             setAllVariables();
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
-        } catch(ArrayIndexOutOfBoundsException aioobe) {
-            setRow(getRow() - 1);
-            System.out.println("Last Row problem");
-        }
+        } catch(ArrayIndexOutOfBoundsException aioobe) { setRow(getRow() - 1); }
         setAtBegining(false);
         setAtEnd(true);
     }
     
     public void mOneRowPlus() {
         if(getRow() <= getMaxRow()) {
-            if(getRow() < getMaxRow()) {
-                setRow(getRow()+1);
-            }
+            if(getRow() < getMaxRow()) 
+                setRow(getRow() + 1);
             setAtBegining(false);
             try {
                 setAllVariables();
                 table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
-            } catch(ArrayIndexOutOfBoundsException aioobe) {
-                setRow(getRow() - 1);
-                System.out.println("Next Row problem");
-            }
+            } catch(ArrayIndexOutOfBoundsException aioobe) { setRow(getRow() - 1); }
             if(getRow() == getMaxRow()) {
                 setAtEnd(true);
             }
@@ -484,21 +482,16 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     
     public  void mOneRowMinus() {
         if(getRow() >= 0) {
-            if(getRow() > 0) {
+            if(getRow() > 0) 
                 setRow(getRow() - 1);
-            }
             setAtEnd(false);
             try {
                 setAllVariables();
-                table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
-            } catch(ArrayIndexOutOfBoundsException aioobe) {
-                setRow(getRow() + 1);
-                System.out.println("Previous Row problem");
-            }
+                table.changeSelection(getRow(), 2, false, false); // za predvijvane na selektiraniq red nazad
+            } catch(ArrayIndexOutOfBoundsException aioobe) { setRow(getRow() + 1); }
         }
-        if(getRow() == 0){
+        if(getRow() == 0)
             setAtBegining(true);
-        }
     }
     
     public void mTableBegining() {
@@ -508,7 +501,6 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
         } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
-            System.out.println("First Row problem");
         }
         setAtBegining(true);
         setAtEnd(false);

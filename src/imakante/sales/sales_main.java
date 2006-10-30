@@ -1665,11 +1665,9 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private static LinkedHashMap narezdaneZaPrehvylqneArea = new LinkedHashMap();  //NAREZDANE_ZA_PREHVYRQNE;
     private static LinkedHashMap stokavaRazpiskaArea = new LinkedHashMap();  // STOKOVA_RAZPISKA;
     private static LinkedHashMap priematelnaRazpiskaArea = new LinkedHashMap();  // PRIEMATELNA_RAZPISKA;
-    
     private static LinkedHashMap razpiskaVryshtane = new LinkedHashMap();  // RAZPISKA_ZA_VRYSHTANE;
     
-    public static int numberStorage=1;
-    
+    public static int numberStorage = 1;
     
     private static LinkedHashMap casaInContrArea = new LinkedHashMap(); // prihodni orderi kasa kontragent
     private static LinkedHashMap casaOutContrArea = new LinkedHashMap(); // razhodni orderi kasa kontragent
@@ -1678,7 +1676,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     
     
     
-    public static int userID_ndtur  =0; // id na usera , koeto e ravno na id_ndtur
+    public static int userID_ndtur = 0; // id na usera , koeto e ravno na id_ndtur
     public static int levelForWork = 0; // rabotno nivo
     
     private void loadLevelDialog(int ModuleCode, LinkedHashMap hash){
@@ -1812,8 +1810,6 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private void loadGrProduct() {
         
     }
-    
-    
     
     public java.sql.Connection getConn() {
         return getDbConn();
@@ -1962,7 +1958,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             imakante.sales.levelDialog level = new imakante.sales.levelDialog(this, true, 701, casaInContrArea);
             //  desktopPane.add(level);
             level.setVisible(true);
-        } else { System.out.println("Empty hash"); };
+        } else { 
+            System.out.println("Empty hash");
+            imakante.com.MessagePane.MissingBook();
+        }
     }
     
     public void loadKassss(int l, int ndt) {
@@ -1976,7 +1975,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             imakante.sales.levelDialog level = new imakante.sales.levelDialog(this, true, 702, casaOutContrArea);
             //  desktopPane.add(level);
             level.setVisible(true);
-        } else { System.out.println("Empty hash"); };
+        } else { 
+            System.out.println("Empty hash");
+            imakante.com.MessagePane.MissingBook();
+        }
     }
     
     public void loadCasaOut(int l, int ndt){
@@ -1990,7 +1992,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             imakante.sales.levelDialog level = new imakante.sales.levelDialog(this, true, 703, casaAdvances);
             // desktopPane.add(level);
             level.setVisible(true);
-        } else { System.out.println("Empty hash!"); }
+        } else { 
+            System.out.println("Empty hash!");
+            imakante.com.MessagePane.MissingBook();
+        }
     }
     
     public void loadAdvances(int l, int ndt) {
@@ -2004,7 +2009,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             imakante.sales.levelDialog level = new imakante.sales.levelDialog(this, true, 704, casa2casa);
             // desktopPane.add(level);
             level.setVisible(true);
-        } else { System.out.println("Empty hash!"); }
+        } else { 
+            System.out.println("Empty hash!");
+            imakante.com.MessagePane.MissingBook();
+        }
     }
     
     public void loadC2C(int l, int ndt) {
@@ -2135,7 +2143,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         }
         Expens.setVisible(true);
     }
-    //PARICHNI EXCHANGE RATE
+    //PARICHNI - EXCHANGE RATE
     private void loadExRates() {
         imakante.sales.FrmExchangeRate Rates = new imakante.sales.FrmExchangeRate("\u041a\u0443\u0440\u0441\u043e\u0432\u0435 \u043d\u0430 \u0432\u0430\u043b\u0443\u0442\u0438", this);
         desktopPane.add(Rates);

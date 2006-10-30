@@ -24,7 +24,7 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
         jbNext = new javax.swing.JButton();
         jbLast = new javax.swing.JButton();
         jlDate = new javax.swing.JLabel();
-        jtfDate = new javax.swing.JTextField();
+        jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
         jlCurrency = new javax.swing.JLabel();
         jcbCurrency = new javax.swing.JComboBox();
         jlRate = new javax.swing.JLabel();
@@ -37,7 +37,7 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jpData.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jpMovement.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u041d\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u044f"));
-        jbFirst.setText("<<");
+        jbFirst.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation First 2.png")));
         jbFirst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbFirstActionPerformed(evt);
@@ -51,7 +51,7 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
 
         jpMovement.add(jbFirst);
 
-        jbPrevious.setText("<");
+        jbPrevious.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation Left 2.png")));
         jbPrevious.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbPreviousActionPerformed(evt);
@@ -65,7 +65,7 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
 
         jpMovement.add(jbPrevious);
 
-        jbNext.setText(">");
+        jbNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation Right 2.png")));
         jbNext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbNextActionPerformed(evt);
@@ -79,7 +79,7 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
 
         jpMovement.add(jbNext);
 
-        jbLast.setText(">>");
+        jbLast.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation Last 2.png")));
         jbLast.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbLastActionPerformed(evt);
@@ -93,28 +93,29 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
 
         jpMovement.add(jbLast);
 
+        jlDate.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlDate.setText("\u0414\u0430\u0442\u0430:");
 
-        jtfDate.setInputVerifier(new imakante.com.InputDateVerifier());
-        jtfDate.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jtfDateFocusLost(evt);
-            }
-        });
-        jtfDate.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jtfDateKeyPressed(evt);
-            }
-        });
-
+        jlCurrency.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlCurrency.setText("\u0412\u0430\u043b\u0443\u0442\u0430:");
 
-        jcbCurrency.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbCurrency.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jcbCurrencyFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jcbCurrencyFocusLost(evt);
+            }
+        });
 
+        jlRate.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlRate.setText("\u041a\u0443\u0440\u0441:");
 
         jtfRate.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jtfRate.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfRateFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jtfRateFocusLost(evt);
             }
@@ -130,44 +131,43 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
         jpDataLayout.setHorizontalGroup(
             jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jpDataLayout.createSequentialGroup()
-                .add(26, 26, 26)
+                .addContainerGap()
+                .add(jpMovement, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(11, Short.MAX_VALUE))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jpDataLayout.createSequentialGroup()
+                .addContainerGap(46, Short.MAX_VALUE)
                 .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jpDataLayout.createSequentialGroup()
-                        .add(jlRate)
-                        .add(186, 186, 186))
-                    .add(jpDataLayout.createSequentialGroup()
-                        .add(jlCurrency)
-                        .add(175, 175, 175))
-                    .add(jpDataLayout.createSequentialGroup()
-                        .add(jlDate)
-                        .add(36, 36, 36)
-                        .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jcbCurrency, 0, 159, Short.MAX_VALUE)
-                            .add(jtfDate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
-                            .add(jtfRate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jpDataLayout.createSequentialGroup()
-                        .add(jpMovement, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)))
-                .add(39, 39, 39))
+                    .add(jlRate)
+                    .add(jlCurrency)
+                    .add(jlDate))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jcbCurrency, 0, 194, Short.MAX_VALUE)
+                    .add(jtfRate))
+                .add(42, 42, 42))
         );
+
+        jpDataLayout.linkSize(new java.awt.Component[] {jlCurrency, jlDate, jlRate}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
         jpDataLayout.setVerticalGroup(
             jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jpDataLayout.createSequentialGroup()
-                .add(24, 24, 24)
-                .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                .add(29, 29, 29)
+                .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(jlDate)
-                    .add(jtfDate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(20, 20, 20)
                 .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jlCurrency)
                     .add(jcbCurrency, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(22, 22, 22)
-                .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jlRate)
                     .add(jtfRate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(32, 32, 32)
-                .add(jpMovement, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .add(21, 21, 21)
+                .add(jpMovement, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         getContentPane().add(jpData, java.awt.BorderLayout.CENTER);
 
@@ -217,15 +217,19 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    private void jtfDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfDateFocusLost
-//        jtfDate.setInputVerifier(new imakante.com.InputDateVerifier());
-    }//GEN-LAST:event_jtfDateFocusLost
-    
-    private void jtfDateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfDateKeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){  }
-    }//GEN-LAST:event_jtfDateKeyPressed
-    
+
+    private void jtfRateFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfRateFocusGained
+        fGain(jtfRate);
+    }//GEN-LAST:event_jtfRateFocusGained
+
+    private void jcbCurrencyFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jcbCurrencyFocusLost
+        fLost(jcbCurrency);
+    }//GEN-LAST:event_jcbCurrencyFocusLost
+
+    private void jcbCurrencyFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jcbCurrencyFocusGained
+        fGain(jcbCurrency);
+    }//GEN-LAST:event_jcbCurrencyFocusGained
+            
     private void jtfRateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfRateFocusLost
 //        jtfRate.setInputVerifier(new imakante.com.InputDoubleVerifier());
     }//GEN-LAST:event_jtfRateFocusLost
@@ -291,6 +295,7 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jbCloseActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
     private javax.swing.JButton jbClose;
     private javax.swing.JButton jbFirst;
     private javax.swing.JButton jbLast;
@@ -305,7 +310,6 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
     private javax.swing.JPanel jpControls;
     private javax.swing.JPanel jpData;
     private javax.swing.JPanel jpMovement;
-    private javax.swing.JTextField jtfDate;
     private javax.swing.JTextField jtfRate;
     // End of variables declaration//GEN-END:variables
     
@@ -319,11 +323,11 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
     private void saveRecord() {
         oldDate = myParent.getDate();
         oldRate = myParent.getRateValue();
-        try {
-            myParent.setDate(imakante.com.dateManipulation.convertDate(jtfDate.getText()));
-        } catch (NumberFormatException nfex) {
-            nfex.printStackTrace();
-        }
+//        try {
+//            myParent.setDate(imakante.com.dateManipulation.convertDate(jtfDate.getText()));
+//        } catch (NumberFormatException nfex) {
+//            nfex.printStackTrace();
+//        }
         myParent.setIDCurrency(myParent.getInternalObject().getIndexConnOfId()[jcbCurrency.getSelectedIndex()]);
         myParent.setRateValue(Double.parseDouble(jtfRate.getText()));
         myParent.getInternalObject().updateRow(myParent.getId(), myParent.getDate(), myParent.getIDCurrency(), myParent.getRateValue());
@@ -413,14 +417,14 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
     }
     
     private void repaintComp() {
-        jtfDate.setText("" + myParent.getDate());
+//        jtfDate.setText("" + myParent.getDate());
         jcbCurrency.setSelectedIndex(getNewComboBoxIndex(myParent.getIDCurrency()));
         jtfRate.setText(myParent.getRateValue().toString());
     }
     
     private void initCombo() {
         Currencies = myParent.getInternalObject().getCurrencies();
-        for(int i=0; i<Currencies.length; i++) {
+        for(int i = 0; i < Currencies.length; i++) {
             jcbCurrency.addItem(new String(Currencies[i]));
         }
         if(selectComboBoxItem != 0) {
@@ -439,4 +443,15 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
         }
         return newindex;
     }
+    
+    private void fGain(javax.swing.JComponent jtf){
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED,
+                new java.awt.Color(255, 0, 51), null));
+    }
+    
+    private void fLost(javax.swing.JComponent jtf){
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED,
+                new java.awt.Color(255, 255, 255), null));
+    }
+    
 }

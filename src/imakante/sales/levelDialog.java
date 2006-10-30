@@ -1,6 +1,22 @@
 
 package imakante.sales;
 
+import java.math.BigDecimal;
+import java.net.URL;
+import java.sql.Array;
+import java.sql.Blob;
+import java.sql.Clob;
+import java.sql.Date;
+import java.sql.Ref;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.SQLWarning;
+import java.sql.Statement;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Map;
+
 public class levelDialog extends javax.swing.JDialog {
     
     public levelDialog(imakante.sales.sales_main parent, boolean modal, int ModuleCode, java.util.LinkedHashMap area) {
@@ -12,14 +28,16 @@ public class levelDialog extends javax.swing.JDialog {
         if(area == null) {
             sales_main.levelForWork = -1;
             sales_main.userID_ndtur = -1;
-        } else {  }
-        if(area.size() < 1) {
-            sales_main.levelForWork = -1;
-            sales_main.userID_ndtur = -1;
         } else {
-            hash = new java.util.LinkedHashMap(area);
-            constructComboNames();
-            writeH();
+            if(area.size() < 1) {
+                sales_main.levelForWork = -1;
+                sales_main.userID_ndtur = -1;
+            } else {
+                hash = new java.util.LinkedHashMap(area);
+                constructComboNames();
+                constructComboStorages();
+                writeH();
+            }
         }
     }
     
@@ -32,10 +50,11 @@ public class levelDialog extends javax.swing.JDialog {
         jComboBox1 = new javax.swing.JComboBox();
         jPasswordField1 = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jComboBox2 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocationByPlatform(true);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -48,23 +67,21 @@ public class levelDialog extends javax.swing.JDialog {
             }
         });
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("\u041d\u0418\u0412\u041e:");
 
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("\u041f\u0410\u0420\u041e\u041b\u0410:");
 
         jTextField1.setInputVerifier(new imakante.com.InputIntegerVerifier(3));
         jTextField1.setInputVerifier(new imakante.com.InputIntegerVerifier());
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField1KeyPressed(evt);
             }
         });
 
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("\u041a\u041e\u0427\u0410\u041d:");
 
         jComboBox1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -79,53 +96,50 @@ public class levelDialog extends javax.swing.JDialog {
             }
         });
 
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("\u0421\u041a\u041b\u0410\u0414:");
-
-        jTextField2.setFont(new java.awt.Font("Tahoma", 1, 11));
-        jTextField2.setText("1");
-        jTextField2.setPreferredSize(new java.awt.Dimension(17, 17));
-        jTextField2.setInputVerifier(new imakante.com.InputIntegerVerifier());
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(16, 16, 16)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jLabel1)
-                    .add(jLabel3)
-                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                        .add(jLabel4)
-                        .add(jLabel2)))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                        .add(jPasswordField1)
-                        .add(jComboBox1, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
-                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 37, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(39, 39, 39))
+                    .add(jLabel1)
+                    .add(jLabel2)
+                    .add(jLabel4)
+                    .add(jLabel3))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(jComboBox2, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jPasswordField1)
+                    .add(jComboBox1, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
+
+        layout.linkSize(new java.awt.Component[] {jLabel1, jLabel2, jLabel3, jLabel4}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel1)
-                    .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel1))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel3))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel2)
-                    .add(jPasswordField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 10, Short.MAX_VALUE)
+                    .add(jPasswordField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel2))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel4)
-                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jComboBox2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel4))
                 .addContainerGap())
         );
         pack();
@@ -137,49 +151,45 @@ public class levelDialog extends javax.swing.JDialog {
         try {
             outIndex = getKey();
             sales_main.userID_ndtur = getKey();
-        } catch(Exception xc) { sales_main.userID_ndtur =-1;sales_main.levelForWork = -1; }
-        frame.numberStorage=Integer.parseInt(jTextField2.getText());
+        } catch(Exception xc) { sales_main.userID_ndtur = -1; sales_main.levelForWork = -1; }
+        frame.numberStorage = Integer.parseInt(sCodes.get(jComboBox2.getSelectedIndex()).toString());
     }//GEN-LAST:event_formWindowClosing
     
     private void formWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeactivated
-// TODO add your handling code here:
         
     }//GEN-LAST:event_formWindowDeactivated
     
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-// TODO add your handling code here:
         
     }//GEN-LAST:event_formWindowClosed
     
     private void jPasswordField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyPressed
-        if ( evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
-            if(hash==null) return;
-            if (checkPass()){
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            if(hash == null) return;
+            if (checkPass()) {
                 outLevel = getLevel();
                 sales_main.levelForWork = getLevel();
                 sales_main.userID_ndtur = getKey();
                 outIndex = getKey();
-                frame.numberStorage=Integer.parseInt(jTextField2.getText());
+                frame.numberStorage = Integer.parseInt(sCodes.get(jComboBox2.getSelectedIndex()).toString());
                 this.getToolkit().beep();
-                
             } else {
                 outLevel = 3;
                 outIndex = getKey();
                 sales_main.levelForWork = 3;
                 sales_main.userID_ndtur = getKey();
-                
-                frame.numberStorage=Integer.parseInt(jTextField2.getText());
+                frame.numberStorage = Integer.parseInt(sCodes.get(jComboBox2.getSelectedIndex()).toString());
             }
             close();
         }
-        if ( evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) {
-            if(hash==null) return;
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) {
+            if(hash == null)
+                return;
             outLevel = 3;
             outIndex = getKey();
             sales_main.levelForWork = 3;
             sales_main.userID_ndtur = getKey();
-            
-            frame.numberStorage=Integer.parseInt(jTextField2.getText());
+            frame.numberStorage = Integer.parseInt(sCodes.get(jComboBox2.getSelectedIndex()).toString());
             this.dispose();
         }
 //==============================================
@@ -188,28 +198,26 @@ public class levelDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jPasswordField1KeyPressed
     
     private void jComboBox1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox1KeyPressed
-        if ( evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jComboBox1.transferFocus(); }
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jComboBox1.transferFocus(); }
     }//GEN-LAST:event_jComboBox1KeyPressed
     
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-        if ( evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){ jTextField1.transferFocus(); }
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jTextField1.transferFocus(); }
     }//GEN-LAST:event_jTextField1KeyPressed
-    
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        
-    }//GEN-LAST:event_jTextField1ActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
     private imakante.sales.sales_main frame;
+    private  java.sql.Connection conn;
+    private  java.sql.Statement stm;
     private java.util.LinkedHashMap hash;
     private int modul = 0;
     private String namesCombo[];
@@ -219,8 +227,9 @@ public class levelDialog extends javax.swing.JDialog {
     private int outLevel = 1;
     private int outIndex = 1;
     
-    private java.util.ArrayList in;
+    private java.util.ArrayList in, sCodes;
     private java.util.ArrayList connGetKeyAndIdUser = new java.util.ArrayList();
+    private java.sql.ResultSet rs;
     
     private void writeH() {
         System.out.println(new java.util.ArrayList(hash.entrySet()));
@@ -238,12 +247,31 @@ public class levelDialog extends javax.swing.JDialog {
         }
     }
     
+    private void constructComboStorages() {
+        prepareConn();
+        prepareStm();
+        String StoragesList =
+                "SELECT id_n_storage, code_n_storage, name_n_storage FROM n_storage " +
+                "WHERE code_n_storage > 0 " +
+                "ORDER BY code_n_storage;";
+        jComboBox2.removeAllItems();
+        try {
+            rs = getStm().executeQuery(StoragesList);
+            sCodes = new java.util.ArrayList();
+            while (rs.next()) {
+                jComboBox2.addItem(new String(rs.getInt("code_n_storage") + " - " + rs.getString("name_n_storage")));
+                sCodes.add(new Integer(rs.getInt("code_n_storage")));
+            }
+        } catch (SQLException ex) { ex.printStackTrace(); }
+    }
+    
     private int getLevel() {
         int level = 3;
         try {
             level = Integer.parseInt(this.jTextField1.getText());
         } catch (NumberFormatException ex) { ex.printStackTrace(); }
-        if(level <=0 || level >= 4) level = 1;
+        if(level <= 0 || level >= 4)
+            level = 1;
         return level;
     }
     
@@ -280,10 +308,40 @@ public class levelDialog extends javax.swing.JDialog {
         System.out.println("|================================================|"); //50
         while(it.hasNext()) {
             int key =(Integer) it.next();
-            System.out.print("| Keys = "+key + "            |");
-            System.out.println("Values = "+ hash.get(key));
+            System.out.print("| Keys = " + key + "            |");
+            System.out.println("Values = " + hash.get(key));
             System.out.println("|================================================|"); //50
         }
-        
     }
+    
+    private void prepareConn() {
+        try {
+            setConn(frame.getConn());
+            if(getConn() == null)
+                System.out.println("CAN NOT ESTABLISH CONNECTION!");
+        } catch(Exception e) { e.printStackTrace(); }
+    }
+    
+    private void prepareStm() {
+        try {
+            setStm(getConn().createStatement());
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
+    }
+    
+    public java.sql.Connection getConn() {
+        return conn;
+    }
+    
+    public void setConn(java.sql.Connection conn) {
+        this.conn = conn;
+    }
+    
+    public java.sql.Statement getStm() {
+        return stm;
+    }
+    
+    public void setStm(java.sql.Statement stm) {
+        this.stm = stm;
+    }
+    
 } // end class

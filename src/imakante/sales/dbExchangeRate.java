@@ -12,10 +12,10 @@ public class dbExchangeRate extends imakante.com.dbObject {
     
     public dbExchangeRate(java.sql.Connection conn) {
         super(conn);
-        prepareCStm();
+        prepareCstm();
     }
     
-    private void prepareCStm() {
+    protected void prepareCstm() {
         try {
             setCstm(getConn().prepareCall("{call sl_procedure_exchange_rate(?,?,?,?,?)}"));
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
@@ -173,7 +173,6 @@ public class dbExchangeRate extends imakante.com.dbObject {
         java.util.Iterator it = null;
         java.util.HashMap Codes = new java.util.HashMap();
         int i = 0;
-        
         try {
             registerParameters();
             setRs(getCstm().executeQuery());
@@ -200,7 +199,5 @@ public class dbExchangeRate extends imakante.com.dbObject {
     public int[] getIndexConnOfId() {
         return indexConnOfId;
     }
-
-    protected void prepareCstm() {
-    }
+    
 }
