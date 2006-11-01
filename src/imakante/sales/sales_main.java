@@ -1,32 +1,18 @@
-/*
- * ID GROUP:
- * 0:Stoki;
- * 1:Aktivi;
- * 2:Contragent;
- * 3:Lica;
- * 4:Skladowe;
- * 5:Kasa;
- * 6:Pari;
- */
+
 package imakante.sales;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import nom.FrmProduct;
 
-
-//>>>>>>> 1.24
-
-//<<<<<<< sales_main.java
 //public class sales_main extends imakante.com.vcomponents.iFrame implements  java.awt.event.WindowListener, Runnable {
 
 //    public void sales_main(java.sql.Connection con) {
-//=======
 
 public class sales_main extends imakante.com.vcomponents.iFrame {
-    private final static int MAX_GROUP=7; // pokazva maximalniq broj na grupite;
+    
+    private final static int MAX_GROUP = 7; // pokazva maximalniq broj na grupite;
     private final static int ID_STOCK = 0;
     private final static int ID_AKTIVI = 1;
     private final static int ID_CONTRAGENT = 2;
@@ -36,10 +22,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private final static int ID_MONEY = 6;
     
     
-    public sales_main() {
-        super();
+    public sales_main(String title) {
+        super(title);
         loadConn();
         initComponents();
+//        setIconImage(frameIcon);
         this.setTitle("\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415 - \u0421\u041a\u041b\u0410\u0414\u041e\u0412 \u041c\u041e\u0414\u0423\u041b    \u0432\u0435\u0440\u0441\u0438\u044f 0.7.2");
         //  loadPaneForm();
         // this.setVisible(true);
@@ -63,9 +50,9 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private void initComponents() {
         desktopPane = new javax.swing.JDesktopPane();
         jToolBar1 = new javax.swing.JToolBar();
-        jButton6 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -105,21 +92,18 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jSeparator11 = new javax.swing.JSeparator();
         bankaMenu_orderi = new javax.swing.JMenuItem();
         nomMenu = new javax.swing.JMenu();
-        nomMenu_stock = new javax.swing.JMenu();
-        stock_Menu_group_stock = new javax.swing.JMenuItem();
-        stock_Menu_stock = new javax.swing.JMenuItem();
-        nomMenu_Aktiv = new javax.swing.JMenu();
-        aktiviMenu_grupi = new javax.swing.JMenuItem();
-        aktiviMenu_Aktivi = new javax.swing.JMenuItem();
+        nomMenu_Litsa = new javax.swing.JMenu();
+        litsaMenu_groupe_litsa = new javax.swing.JMenuItem();
+        litsaMenu_in = new javax.swing.JMenuItem();
         nomMenu_Kontragenti = new javax.swing.JMenu();
         kontragentiMenu_groupe = new javax.swing.JMenuItem();
         kontragentiMenu_Kontr = new javax.swing.JMenuItem();
         kontragentiMenu_bank = new javax.swing.JMenuItem();
         kontragentiMenu_obekti = new javax.swing.JMenuItem();
         kontragentiMenu_typeobject = new javax.swing.JMenuItem();
-        nomMenu_Litsa = new javax.swing.JMenu();
-        litsaMenu_groupe_litsa = new javax.swing.JMenuItem();
-        litsaMenu_in = new javax.swing.JMenuItem();
+        nomMenu_stock = new javax.swing.JMenu();
+        stock_Menu_group_stock = new javax.swing.JMenuItem();
+        stock_Menu_stock = new javax.swing.JMenuItem();
         nomMenu_object = new javax.swing.JMenu();
         objectMenu_groupe_object = new javax.swing.JMenuItem();
         objectMenu_skl = new javax.swing.JMenuItem();
@@ -132,6 +116,9 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         moneyMenu_out = new javax.swing.JMenuItem();
         moneyMenu_valutes = new javax.swing.JMenuItem();
         monyMenu_rates = new javax.swing.JMenuItem();
+        nomMenu_Aktiv = new javax.swing.JMenu();
+        aktiviMenu_grupi = new javax.swing.JMenuItem();
+        aktiviMenu_Aktivi = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JSeparator();
         nomMenu_Geo = new javax.swing.JMenu();
         nomMenu_nasm = new javax.swing.JMenuItem();
@@ -209,7 +196,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415 \u0422\u044a\u0440\u0433\u043e\u0432\u0441\u043a\u0438 \u043c\u043e\u0434\u0443\u043b");
+        setTitle("\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415   \u041c\u041e\u0414\u0423\u041b: '\u0421\u041a\u041b\u0410\u0414 / \u041f\u0420\u041e\u0414\u0410\u0416\u0411\u0418'");
         setBackground(new java.awt.Color(153, 153, 153));
         setFont(new java.awt.Font("Tahoma", 1, 12));
         setName("frameSale");
@@ -224,16 +211,16 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         getContentPane().add(desktopPane, java.awt.BorderLayout.CENTER);
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Objects 2_large_ps.png")));
-        jButton6.setToolTipText("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0430 \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u0438");
-        jButton6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Objects 2_large.png")));
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Group 4_ps.png")));
+        jButton2.setToolTipText("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0438 \u041b\u0438\u0446\u0430");
+        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Group 4.png")));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
-        jToolBar1.add(jButton6);
+        jToolBar1.add(jButton2);
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Contact_ps.png")));
         jButton5.setToolTipText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
@@ -246,16 +233,16 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         jToolBar1.add(jButton5);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Group 4_ps.png")));
-        jButton2.setToolTipText("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0438 \u041b\u0438\u0446\u0430");
-        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Group 4.png")));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Objects 2_large_ps.png")));
+        jButton6.setToolTipText("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0430 \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u0438");
+        jButton6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Objects 2_large.png")));
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButton6ActionPerformed(evt);
             }
         });
 
-        jToolBar1.add(jButton2);
+        jToolBar1.add(jButton6);
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Download_ps.png")));
         jButton4.setToolTipText("\u041e\u0431\u043d\u043e\u0432\u044f\u0432\u0430\u043d\u0435");
@@ -274,7 +261,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(352, Short.MAX_VALUE)
+                .addContainerGap(325, Short.MAX_VALUE)
                 .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 179, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -517,41 +504,27 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             }
         });
 
-        nomMenu_stock.setText("\u0421\u0442\u043e\u043a\u043e\u0432\u0438");
-        stock_Menu_group_stock.setText("\u0413\u0440\u0443\u043f\u0438 \u0441\u0442\u043e\u043a\u0438");
-        stock_Menu_group_stock.addActionListener(new java.awt.event.ActionListener() {
+        nomMenu_Litsa.setText("\u041b\u0438\u0446\u0430");
+        litsaMenu_groupe_litsa.setText("\u0413\u0440\u0443\u043f\u0438 \u043b\u0438\u0446\u0430");
+        litsaMenu_groupe_litsa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stock_Menu_group_stockActionPerformed(evt);
+                litsaMenu_groupe_litsaActionPerformed(evt);
             }
         });
 
-        nomMenu_stock.add(stock_Menu_group_stock);
+        nomMenu_Litsa.add(litsaMenu_groupe_litsa);
 
-        stock_Menu_stock.setText("\u0421\u0442\u043e\u043a\u0438");
-        stock_Menu_stock.addActionListener(new java.awt.event.ActionListener() {
+        litsaMenu_in.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Group416.png")));
+        litsaMenu_in.setText("\u041b\u0438\u0446\u0430");
+        litsaMenu_in.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stock_Menu_stockActionPerformed(evt);
+                litsaMenu_inActionPerformed(evt);
             }
         });
 
-        nomMenu_stock.add(stock_Menu_stock);
+        nomMenu_Litsa.add(litsaMenu_in);
 
-        nomMenu.add(nomMenu_stock);
-
-        nomMenu_Aktiv.setText("\u0410\u043a\u0442\u0438\u0432\u0438");
-        aktiviMenu_grupi.setText("\u0413\u0440\u0443\u043f\u0438 \u0430\u043a\u0442\u0438\u0432\u0438");
-        aktiviMenu_grupi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aktiviMenu_grupiActionPerformed(evt);
-            }
-        });
-
-        nomMenu_Aktiv.add(aktiviMenu_grupi);
-
-        aktiviMenu_Aktivi.setText("\u0410\u043a\u0442\u0438\u0432\u0438");
-        nomMenu_Aktiv.add(aktiviMenu_Aktivi);
-
-        nomMenu.add(nomMenu_Aktiv);
+        nomMenu.add(nomMenu_Litsa);
 
         nomMenu_Kontragenti.setText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
         kontragentiMenu_groupe.setText("\u0413\u0440\u0443\u043f\u0438 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
@@ -590,27 +563,27 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         nomMenu.add(nomMenu_Kontragenti);
 
-        nomMenu_Litsa.setText("\u041b\u0438\u0446\u0430");
-        litsaMenu_groupe_litsa.setText("\u0413\u0440\u0443\u043f\u0438 \u043b\u0438\u0446\u0430");
-        litsaMenu_groupe_litsa.addActionListener(new java.awt.event.ActionListener() {
+        nomMenu_stock.setText("\u0421\u0442\u043e\u043a\u043e\u0432\u0438");
+        stock_Menu_group_stock.setText("\u0413\u0440\u0443\u043f\u0438 \u0441\u0442\u043e\u043a\u0438");
+        stock_Menu_group_stock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                litsaMenu_groupe_litsaActionPerformed(evt);
+                stock_Menu_group_stockActionPerformed(evt);
             }
         });
 
-        nomMenu_Litsa.add(litsaMenu_groupe_litsa);
+        nomMenu_stock.add(stock_Menu_group_stock);
 
-        litsaMenu_in.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Group416.png")));
-        litsaMenu_in.setText("\u041b\u0438\u0446\u0430");
-        litsaMenu_in.addActionListener(new java.awt.event.ActionListener() {
+        stock_Menu_stock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Objects 2.png")));
+        stock_Menu_stock.setText("\u0421\u0442\u043e\u043a\u0438");
+        stock_Menu_stock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                litsaMenu_inActionPerformed(evt);
+                stock_Menu_stockActionPerformed(evt);
             }
         });
 
-        nomMenu_Litsa.add(litsaMenu_in);
+        nomMenu_stock.add(stock_Menu_stock);
 
-        nomMenu.add(nomMenu_Litsa);
+        nomMenu.add(nomMenu_stock);
 
         nomMenu_object.setText("\u0421\u043a\u043b\u0430\u0434\u043e\u0432\u0435");
         objectMenu_groupe_object.setText("\u0413\u0440\u0443\u043f\u0438 \u0441\u043a\u043b\u0430\u0434\u043e\u0432\u0435");
@@ -701,6 +674,21 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         moneyMenu.add(monyMenu_rates);
 
         nomMenu.add(moneyMenu);
+
+        nomMenu_Aktiv.setText("\u0410\u043a\u0442\u0438\u0432\u0438");
+        aktiviMenu_grupi.setText("\u0413\u0440\u0443\u043f\u0438 \u0430\u043a\u0442\u0438\u0432\u0438");
+        aktiviMenu_grupi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aktiviMenu_grupiActionPerformed(evt);
+            }
+        });
+
+        nomMenu_Aktiv.add(aktiviMenu_grupi);
+
+        aktiviMenu_Aktivi.setText("\u0410\u043a\u0442\u0438\u0432\u0438");
+        nomMenu_Aktiv.add(aktiviMenu_Aktivi);
+
+        nomMenu.add(nomMenu_Aktiv);
 
         nomMenu.add(jSeparator3);
 
@@ -1343,9 +1331,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
     
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        try{
-            loadKlienti();
-        } catch (java.sql.SQLException sql1) {}
+        loadFrmContragent();
     }//GEN-LAST:event_jButton5ActionPerformed
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -1404,31 +1390,31 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }//GEN-LAST:event_kontragentiMenu_KontrActionPerformed
     
     private void moneyMenu_groupeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moneyMenu_groupeActionPerformed
-        loadFrmGroup("\u0413\u0420\u0423\u041f\u0410 \u041f\u0410\u0420\u0418\u0427\u041d\u0418",ID_MONEY);
+        loadFrmGroup("\u0413\u0420\u0423\u041f\u0418 \u041f\u0410\u0420\u0418\u0427\u041d\u0418", ID_MONEY);
     }//GEN-LAST:event_moneyMenu_groupeActionPerformed
     
     private void kasiMenu_grupiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kasiMenu_grupiActionPerformed
-        loadFrmGroup("\u0413\u0420\u0423\u041f\u0410 \u041a\u0410\u0421\u0410",ID_KASA);
+        loadFrmGroup("\u0413\u0420\u0423\u041f\u0418 \u041a\u0410\u0421\u0410",ID_KASA);
     }//GEN-LAST:event_kasiMenu_grupiActionPerformed
     
     private void objectMenu_groupe_objectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_objectMenu_groupe_objectActionPerformed
-        loadFrmGroup("\u0413\u0420\u0423\u041f\u0410 \u0421\u041a\u041b\u0410\u0414\u041e\u0412\u0415",ID_OBJECT);
+        loadFrmGroup("\u0413\u0420\u0423\u041f\u0418 \u0421\u041a\u041b\u0410\u0414\u041e\u0412\u0415", ID_OBJECT);
     }//GEN-LAST:event_objectMenu_groupe_objectActionPerformed
     
     private void litsaMenu_groupe_litsaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_litsaMenu_groupe_litsaActionPerformed
-        loadFrmGroup("\u0413\u0420\u0423\u041f\u0410 \u041b\u0418\u0426\u0410",ID_LICA);
+        loadFrmGroup("\u0413\u0420\u0423\u041f\u0418 \u041b\u0418\u0426\u0410",ID_LICA);
     }//GEN-LAST:event_litsaMenu_groupe_litsaActionPerformed
     
     private void kontragentiMenu_groupeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kontragentiMenu_groupeActionPerformed
-        loadFrmGroup("\u0413\u0420\u0423\u041f\u0410 \u041a\u041e\u041d\u0422\u0420\u0410\u0413\u0415\u041d\u0422",ID_CONTRAGENT);
+        loadFrmGroup("\u0413\u0420\u0423\u041f\u0418 \u041a\u041e\u041d\u0422\u0420\u0410\u0413\u0415\u041d\u0422\u0418", ID_CONTRAGENT);
     }//GEN-LAST:event_kontragentiMenu_groupeActionPerformed
     
     private void aktiviMenu_grupiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aktiviMenu_grupiActionPerformed
-        loadFrmGroup("\u0413\u0420\u0423\u041f\u0410 \u0410\u041a\u0422\u0418\u0412\u0418",ID_AKTIVI);
+        loadFrmGroup("\u0413\u0420\u0423\u041f\u0418 \u0410\u041a\u0422\u0418\u0412\u0418", ID_AKTIVI);
     }//GEN-LAST:event_aktiviMenu_grupiActionPerformed
     
     private void stock_Menu_group_stockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stock_Menu_group_stockActionPerformed
-        loadFrmGroup("\u0413\u0420\u0423\u041f\u0410 \u0421\u0422\u041e\u041a\u0418",ID_STOCK);
+        loadFrmGroup("\u0413\u0420\u0423\u041f\u0418 \u0421\u0422\u041e\u041a\u0418", ID_STOCK);
     }//GEN-LAST:event_stock_Menu_group_stockActionPerformed
     
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -1642,8 +1628,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     // na FrmContragent
     private infoFakturi fakturiRep;
     
-    
-    private FrmProduct iFrmProduct;
+    private nom.FrmProduct iFrmProduct;
     private static boolean isStartFrmProduct = false;
     
     private boolean levelActivate = false;
@@ -1674,10 +1659,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private static LinkedHashMap casaAdvances = new LinkedHashMap();    // avansi kym podot4etni lica
     private static LinkedHashMap casa2casa = new LinkedHashMap();       // dvijenie mejdu kasite
     
-    
-    
     public static int userID_ndtur = 0; // id na usera , koeto e ravno na id_ndtur
     public static int levelForWork = 0; // rabotno nivo
+    
+    java.net.URL frameIcon = sales_main.class.getResource("/images/imakante_ico.png");
     
     private void loadLevelDialog(int ModuleCode, LinkedHashMap hash){
         levelDialog lDialog = new levelDialog(this, true, ModuleCode, hash);
@@ -1735,10 +1720,6 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         setDbDriver(null);
         setDbUser(null);
         setDbPass(null);
-    }
-    
-    private void loadKlienti() throws java.sql.SQLException {
-        
     }
     
     private void lockMessage(){

@@ -6,6 +6,7 @@ public class aeGroup extends imakante.com.vcomponents.iDialog {
     public aeGroup(imakante.com.vcomponents.iInternalFrame frame, boolean modal, int selectComboBoxItem) {
         super(frame, modal);
         this.myParent = (FrmGroup) frame;
+        setTitleOfGroup();
         initComponents();
         getNavigatiionState();
         jButtonUndo.setEnabled(false);
@@ -15,10 +16,10 @@ public class aeGroup extends imakante.com.vcomponents.iDialog {
         int y = (((dim.height)-(this.getSize().height))/2);
         this.setLocation(x, y);
         splitNamesOfAnLevel = myParent.getInternalObject().getAnLevelName();
-        for(int i=0; i<splitNamesOfAnLevel.length; i++) {
+        for (int i = 0; i < splitNamesOfAnLevel.length; i++) {
             jComboAnLevel.addItem(new String(splitNamesOfAnLevel[i]));
         }
-        if(selectComboBoxItem != 0) {
+        if (selectComboBoxItem != 0) {
             selectComboBoxItem = getNewComboBoxIndex(selectComboBoxItem);
             jComboAnLevel.setSelectedIndex(selectComboBoxItem);
         }
@@ -83,11 +84,14 @@ public class aeGroup extends imakante.com.vcomponents.iDialog {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setPreferredSize(new java.awt.Dimension(400, 300));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("\u041a\u043e\u0434:");
 
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("\u0418\u043c\u0435:");
 
-        jLabel3.setText("\u0410\u043d.\u043d\u0438\u0432\u0430:");
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel3.setText("\u0410\u043d\u0430\u043b\u0438\u0442\u0438\u0447\u043d\u043e \u043d\u0438\u0432\u043e:");
 
         jTextCod.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextCod.setPreferredSize(new java.awt.Dimension(45, 20));
@@ -191,13 +195,16 @@ public class aeGroup extends imakante.com.vcomponents.iDialog {
                         .add(9, 9, 9)
                         .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jTextCod, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 108, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jComboAnLevel, 0, 288, Short.MAX_VALUE)
-                            .add(jPanel2Layout.createSequentialGroup()
-                                .add(jTextName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED))))
-                    .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 340, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                            .add(jComboAnLevel, 0, 239, Short.MAX_VALUE)
+                            .add(jTextName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE))
+                        .add(12, 12, 12))
+                    .add(jPanel2Layout.createSequentialGroup()
+                        .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 340, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(12, Short.MAX_VALUE))))
         );
+
+        jPanel2Layout.linkSize(new java.awt.Component[] {jLabel1, jLabel2, jLabel3}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel2Layout.createSequentialGroup()
@@ -213,14 +220,14 @@ public class aeGroup extends imakante.com.vcomponents.iDialog {
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel3)
                     .add(jComboAnLevel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(22, 22, 22)
-                .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                .add(19, 19, 19))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 10, Short.MAX_VALUE)
+                .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 82, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-374)/2, (screenSize.height-284)/2, 374, 284);
+        setBounds((screenSize.width-374)/2, (screenSize.height-272)/2, 374, 272);
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButtonSaveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonSaveKeyPressed
@@ -255,6 +262,7 @@ public class aeGroup extends imakante.com.vcomponents.iDialog {
     
     private void jTextNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextNameFocusGained
         fGain(jTextName);
+        jTextName.selectAll();
     }//GEN-LAST:event_jTextNameFocusGained
     
     private void jTextCodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextCodKeyPressed
@@ -269,6 +277,7 @@ public class aeGroup extends imakante.com.vcomponents.iDialog {
     
     private void jTextCodFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextCodFocusGained
         fGain(jTextCod);
+        jTextCod.selectAll();
     }//GEN-LAST:event_jTextCodFocusGained
     
     private void jButtonUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUndoActionPerformed
@@ -400,8 +409,8 @@ public class aeGroup extends imakante.com.vcomponents.iDialog {
     private void repaintComp() {
         jTextCod.setText("" + myParent.getCode());
         jTextName.setText(myParent.getNames());
-        //jTextCod.repaint();
-        // jTextName.repaint();
+        jTextCod.repaint();
+        jTextName.repaint();
         jComboAnLevel.setSelectedIndex(getNewComboBoxIndex(myParent.getAnID()));
         
     }
@@ -409,13 +418,31 @@ public class aeGroup extends imakante.com.vcomponents.iDialog {
     private int getNewComboBoxIndex(int oldindex) {
         int newindex= 0;
         for(int i = 0; i < myParent.getInternalObject().getIndexConnOfId().length; i++) {
-            if(myParent.getInternalObject().getIndexConnOfId()[i]==oldindex) {
+            if(myParent.getInternalObject().getIndexConnOfId()[i] == oldindex) {
                 newindex = i;
                 break;
             }
         }
         return newindex;
     }
+    
+    private void setTitleOfGroup() {
+        if (myParent.nom == 0)  // Grupa ot stoki / ID_STOCK
+            this.setTitle("\u0413\u0440\u0443\u043F\u0430 \u043E\u0442 \u0441\u0442\u043E\u043A\u0438");
+        else if (myParent.nom == 1)  // Grupa aktiwi / ID_AKTIVI
+            this.setTitle("\u0413\u0440\u0443\u043F\u0430 \u0430\u043A\u0442\u0438\u0432\u0438");
+        else if (myParent.nom == 2)  // Grupa ot kontragenti / ID_CONTRAGENT
+            this.setTitle("\u0413\u0440\u0443\u043F\u0430 \u043E\u0442 \u043A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442\u0438");
+        else if (myParent.nom == 3)  // Grupa ot lica / ID_LICA
+            this.setTitle("\u0413\u0440\u0443\u043F\u0430 \u043E\u0442 \u043B\u0438\u0446\u0430");
+        else if (myParent.nom == 4)  // Grupa skladowe / ID_OBJECT
+            this.setTitle("\u0413\u0440\u0443\u043F\u0430 \u0441\u043A\u043B\u0430\u0434\u043E\u0432\u0435");
+        else if (myParent.nom == 5)  // Grupa ot kasi / ID_KASA
+            this.setTitle("\u0413\u0440\u0443\u043F\u0430 \u043E\u0442 \u043A\u0430\u0441\u0438");
+        else if (myParent.nom == 6)  // Grupa pari4ni / ID_MONEY
+            this.setTitle("\u0413\u0440\u0443\u043F\u0430 \u043F\u0430\u0440\u0438\u0447\u043D\u0438");
+    }
+    
     private void fGain(javax.swing.JComponent jtf){
         jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 0, 51), null));
     }
@@ -423,4 +450,5 @@ public class aeGroup extends imakante.com.vcomponents.iDialog {
     private void fLost(javax.swing.JComponent jtf){
         jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 255, 255), null));
     }
+    
 }// end class

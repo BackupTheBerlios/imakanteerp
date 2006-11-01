@@ -237,46 +237,29 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nomMenuActionPerformed"/>
           </Events>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="nomMenu_stock">
+            <Menu class="javax.swing.JMenu" name="nomMenu_Litsa">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#x421;&#x442;&#x43e;&#x43a;&#x43e;&#x432;&#x438;"/>
+                <Property name="text" type="java.lang.String" value="&#x41b;&#x438;&#x446;&#x430;"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="stock_Menu_group_stock">
+                <MenuItem class="javax.swing.JMenuItem" name="litsaMenu_groupe_litsa">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="&#x413;&#x440;&#x443;&#x43f;&#x438; &#x441;&#x442;&#x43e;&#x43a;&#x438;"/>
+                    <Property name="text" type="java.lang.String" value="&#x413;&#x440;&#x443;&#x43f;&#x438; &#x43b;&#x438;&#x446;&#x430;"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stock_Menu_group_stockActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="litsaMenu_groupe_litsaActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="stock_Menu_stock">
+                <MenuItem class="javax.swing.JMenuItem" name="litsaMenu_in">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="&#x421;&#x442;&#x43e;&#x43a;&#x438;"/>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/images/Group416.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="&#x41b;&#x438;&#x446;&#x430;"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stock_Menu_stockActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="litsaMenu_inActionPerformed"/>
                   </Events>
-                </MenuItem>
-              </SubComponents>
-            </Menu>
-            <Menu class="javax.swing.JMenu" name="nomMenu_Aktiv">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="&#x410;&#x43a;&#x442;&#x438;&#x432;&#x438;"/>
-              </Properties>
-              <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="aktiviMenu_grupi">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="&#x413;&#x440;&#x443;&#x43f;&#x438; &#x430;&#x43a;&#x442;&#x438;&#x432;&#x438;"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="aktiviMenu_grupiActionPerformed"/>
-                  </Events>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="aktiviMenu_Aktivi">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="&#x410;&#x43a;&#x442;&#x438;&#x432;&#x438;"/>
-                  </Properties>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -324,28 +307,28 @@
                 </MenuItem>
               </SubComponents>
             </Menu>
-            <Menu class="javax.swing.JMenu" name="nomMenu_Litsa">
+            <Menu class="javax.swing.JMenu" name="nomMenu_stock">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#x41b;&#x438;&#x446;&#x430;"/>
+                <Property name="text" type="java.lang.String" value="&#x421;&#x442;&#x43e;&#x43a;&#x43e;&#x432;&#x438;"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="litsaMenu_groupe_litsa">
+                <MenuItem class="javax.swing.JMenuItem" name="stock_Menu_group_stock">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="&#x413;&#x440;&#x443;&#x43f;&#x438; &#x43b;&#x438;&#x446;&#x430;"/>
+                    <Property name="text" type="java.lang.String" value="&#x413;&#x440;&#x443;&#x43f;&#x438; &#x441;&#x442;&#x43e;&#x43a;&#x438;"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="litsaMenu_groupe_litsaActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stock_Menu_group_stockActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="litsaMenu_in">
+                <MenuItem class="javax.swing.JMenuItem" name="stock_Menu_stock">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/images/Group416.png"/>
+                      <Image iconType="3" name="/images/Objects 2.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="&#x41b;&#x438;&#x446;&#x430;"/>
+                    <Property name="text" type="java.lang.String" value="&#x421;&#x442;&#x43e;&#x43a;&#x438;"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="litsaMenu_inActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stock_Menu_stockActionPerformed"/>
                   </Events>
                 </MenuItem>
               </SubComponents>
@@ -440,6 +423,26 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="monyMenu_ratesActionPerformed"/>
                   </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="nomMenu_Aktiv">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x410;&#x43a;&#x442;&#x438;&#x432;&#x438;"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="aktiviMenu_grupi">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="&#x413;&#x440;&#x443;&#x43f;&#x438; &#x430;&#x43a;&#x442;&#x438;&#x432;&#x438;"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="aktiviMenu_grupiActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="aktiviMenu_Aktivi">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="&#x410;&#x43a;&#x442;&#x438;&#x432;&#x438;"/>
+                  </Properties>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -903,7 +906,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
-    <Property name="title" type="java.lang.String" value="&#x418;&#x41c;&#x410;&#x41a;&#x410;&#x41d;&#x422;&#x415; &#x422;&#x44a;&#x440;&#x433;&#x43e;&#x432;&#x441;&#x43a;&#x438; &#x43c;&#x43e;&#x434;&#x443;&#x43b;"/>
+    <Property name="title" type="java.lang.String" value="&#x418;&#x41c;&#x410;&#x41a;&#x410;&#x41d;&#x422;&#x415;   &#x41c;&#x41e;&#x414;&#x423;&#x41b;: &apos;&#x421;&#x41a;&#x41b;&#x410;&#x414; / &#x41f;&#x420;&#x41e;&#x414;&#x410;&#x416;&#x411;&#x418;&apos;"/>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="99" green="99" red="99" type="rgb"/>
     </Property>
@@ -951,18 +954,18 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="jButton6">
+        <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Objects 2_large_ps.png"/>
+              <Image iconType="3" name="/images/Group 4_ps.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="&#x41d;&#x43e;&#x43c;&#x435;&#x43d;&#x43a;&#x43b;&#x430;&#x442;&#x443;&#x440;&#x430; &#x43f;&#x440;&#x43e;&#x434;&#x443;&#x43a;&#x442;&#x438;"/>
+            <Property name="toolTipText" type="java.lang.String" value="&#x41d;&#x43e;&#x43c;&#x435;&#x43d;&#x43a;&#x43b;&#x430;&#x442;&#x443;&#x440;&#x438; &#x41b;&#x438;&#x446;&#x430;"/>
             <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Objects 2_large.png"/>
+              <Image iconType="3" name="/images/Group 4.png"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton5">
@@ -979,18 +982,18 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="jButton6">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Group 4_ps.png"/>
+              <Image iconType="3" name="/images/Objects 2_large_ps.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="&#x41d;&#x43e;&#x43c;&#x435;&#x43d;&#x43a;&#x43b;&#x430;&#x442;&#x443;&#x440;&#x438; &#x41b;&#x438;&#x446;&#x430;"/>
+            <Property name="toolTipText" type="java.lang.String" value="&#x41d;&#x43e;&#x43c;&#x435;&#x43d;&#x43a;&#x43b;&#x430;&#x442;&#x443;&#x440;&#x430; &#x43f;&#x440;&#x43e;&#x434;&#x443;&#x43a;&#x442;&#x438;"/>
             <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/Group 4.png"/>
+              <Image iconType="3" name="/images/Objects 2_large.png"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton4">

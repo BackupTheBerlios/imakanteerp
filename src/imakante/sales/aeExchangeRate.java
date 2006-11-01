@@ -35,6 +35,7 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
         jbClose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("\u0412\u0430\u043b\u0443\u0442\u0435\u043d \u043a\u0443\u0440\u0441");
         jpData.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jpMovement.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u041d\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u044f"));
         jbFirst.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Navigation First 2.png")));

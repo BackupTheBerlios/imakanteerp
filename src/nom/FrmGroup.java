@@ -1,16 +1,11 @@
 
 package nom;
 
-import javax.print.PrintException;
-import java.util.HashMap;
-
 public class FrmGroup extends imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
-    public FrmGroup(String title, imakante.com.vcomponents.iFrame frame, int idGroup) // TEST  da se dobavi imakante.com.vcomponents.iFrame frame,
-    {
+    public FrmGroup(String title, imakante.com.vcomponents.iFrame frame, int idGroup) {
         super(title);
         myframe = frame;
-        
         this.nom = idGroup;
         prepareConn();     // zapazva connection
         constructGroupDB(); // inicializira class otgovarq6t za vryzkata s DB
@@ -313,7 +308,7 @@ public class FrmGroup extends imakante.com.vcomponents.iInternalFrame implements
     private String splitNamesOfAnLevel[];
     private int id = 0;
     private int code = 0;
-    private int nom = 0;
+    protected int nom = 0;
     private String name;
     private int alId = 0;
     private  boolean atBegining = false;
@@ -652,73 +647,65 @@ public class FrmGroup extends imakante.com.vcomponents.iInternalFrame implements
             refreshTable();
         }
     }
- private void loadSimpleReport()
- {
-     HashMap parameterHashMap = new HashMap();
-     imakante.com.paramFirm paramFrm1 = new imakante.com.paramFirm();
-     parameterHashMap.put(new String("firmaName"),paramFrm1.getName());
-     
-     parameterHashMap.put(new String("in_code"),jTextCod.getText());
-     parameterHashMap.put(new String("in_name"),jTextName.getText());
-     if(jComboBoxAnLevel.getSelectedIndex()==0)
-       parameterHashMap.put(new String("in_alname"),"");
-     else
-     parameterHashMap.put(new String("in_alname"),(String)jComboBoxAnLevel.getSelectedItem());
-     
-     parameterHashMap.put(new String("in_nom"),String.valueOf(getNom()));
-     
-     
-     
-     
-     simpReport = new imakante.com.simpleReport(parameterHashMap,myframe.getConn(),table,imakante.com.NewMain.getPathrep(),this.getTitle(),createViewColumnsBGEN(),simplereportFile);
-     simpReport.setVisible(true);
- }
-private HashMap  createViewColumnsBGEN()
-{
-    HashMap return_value = new HashMap();
     
-    for(int i=0 ; i < table.getColumnCount();i++)
-     {
-         
-         String colnameBG =new String(table.getModel().getColumnName(i));
-         
-         if(!checkForHideColumn(colnameBG))
-         {
-           String colnameEN = new String(getColumnNameEN(colnameBG));
-           return_value.put(colnameBG,colnameEN) ;  
-         }
-         
-     } 
-    
-    
-    return return_value;
-}
-private boolean checkForHideColumn(String in_bg)
-{
-    boolean return_value = false;
-    if(in_bg.equals("id_n_group"))
-    {
-        return_value = true;
+     private void loadSimpleReport() {
+         java.util.HashMap parameterHashMap = new java.util.HashMap();
+         imakante.com.paramFirm paramFrm1 = new imakante.com.paramFirm();
+         parameterHashMap.put(new String("firmaName"),paramFrm1.getName());
+
+         parameterHashMap.put(new String("in_code"),jTextCod.getText());
+         parameterHashMap.put(new String("in_name"),jTextName.getText());
+         if(jComboBoxAnLevel.getSelectedIndex() == 0)
+           parameterHashMap.put(new String("in_alname"), "");
+         else
+             
+         parameterHashMap.put(new String("in_alname"),(String)jComboBoxAnLevel.getSelectedItem());
+         parameterHashMap.put(new String("in_nom"),String.valueOf(getNom()));
+         simpReport = new imakante.com.simpleReport(parameterHashMap, myframe.getConn(), table, imakante.com.NewMain.getPathrep(), 
+                 this.getTitle(), createViewColumnsBGEN(), simplereportFile);
+         simpReport.setVisible(true);
+     }
+ 
+    private java.util.HashMap  createViewColumnsBGEN() {
+        java.util.HashMap return_value = new java.util.HashMap();
+        for(int i = 0; i < table.getColumnCount(); i++) {
+            String colnameBG =new String(table.getModel().getColumnName(i));
+             if(!checkForHideColumn(colnameBG))
+             {
+               String colnameEN = new String(getColumnNameEN(colnameBG));
+               return_value.put(colnameBG,colnameEN) ;  
+             }
+
+         } 
+        return return_value;
     }
-    if(in_bg.equals("id_al"))
-    {
-        return_value = true;
-    }
-  return   return_value;
-}
-private String getColumnNameEN(String colbg)
-{
-    String return_value="";
-    
-    for(int i=0;i<columnsNames.length;i++)
-    {
-        if(columnsNames[i].equals(colbg))
+
+    private boolean checkForHideColumn(String in_bg) {
+        boolean return_value = false;
+        if(in_bg.equals("id_n_group"))
         {
-            return_value = columnsNamesEN[i];
-            break;
+            return_value = true;
         }
+        if(in_bg.equals("id_al"))
+        {
+            return_value = true;
+        }
+      return   return_value;
     }
     
-    return return_value;
-}
+    private String getColumnNameEN(String colbg) {
+        String return_value = "";
+        
+        for(int i=0;i<columnsNames.length;i++)
+        {
+            if(columnsNames[i].equals(colbg))
+            {
+                return_value = columnsNamesEN[i];
+                break;
+            }
+        }
+        
+        return return_value;
+    }
+    
 }// end class

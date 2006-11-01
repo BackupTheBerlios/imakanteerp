@@ -5,7 +5,7 @@ public class NewMain extends javax.swing.JFrame {
     public NewMain() {
         getSProp();
         //  ConstructRights(); // ??
-        this.setTitle("\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415 - \u0413\u041b\u0410\u0412\u0415\u041d \u041f\u0410\u041d\u0415\u041b     \u0432\u0435\u0440\u0441\u0438\u044f 0.5.6");
+        this.setTitle("\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415 - \u0413\u041b\u0410\u0412\u0415\u041d \u041f\u0410\u041d\u0415\u041b     \u0432\u0435\u0440\u0441\u0438\u044f 0.7.2");
         initComponents();
     }
     
@@ -494,7 +494,8 @@ public class NewMain extends javax.swing.JFrame {
     private void loadSalesMain() {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new imakante.sales.sales_main().setVisible(true);
+                new imakante.sales.sales_main("\u0418\u041C\u0410\u041A\u0410\u041D\u0422\u0415   \u041C\u041E\u0414\u0423\u041B: " +
+                        "'\u0421\u041A\u041B\u0410\u0414 / \u041F\u0420\u041E\u0414\u0410\u0416\u0411\u0418'").setVisible(true);
             }
         });
         
