@@ -24,20 +24,24 @@ public class levelDialog extends javax.swing.JDialog {
         frame = parent;
         modul = ModuleCode;
         hash = area;
-        initComponents();
-        if(area == null) {
+        prepareConn();
+        prepareStm();
+        if(area.size() > 0) {
+            initComponents();
+            hash = new java.util.LinkedHashMap(area);
+            constructComboNames();
+            if (modul < 700) {
+                this.jLabel4.setText("\u0421\u041A\u041B\u0410\u0414:");
+                constructComboStorages();
+            } else {
+                this.jLabel4.setText("\u041A\u0410\u0421\u0410:");
+                constructComboCashRegisters();
+            }
+            writeH();
+        } else {
             sales_main.levelForWork = -1;
             sales_main.userID_ndtur = -1;
-        } else {
-            if(area.size() < 1) {
-                sales_main.levelForWork = -1;
-                sales_main.userID_ndtur = -1;
-            } else {
-                hash = new java.util.LinkedHashMap(area);
-                constructComboNames();
-                constructComboStorages();
-                writeH();
-            }
+            imakante.com.MessagePane.MissingBook();
         }
     }
     
@@ -53,6 +57,7 @@ public class levelDialog extends javax.swing.JDialog {
         jComboBox2 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("\u0418\u0437\u0431\u043e\u0440 \u043d\u0430 \u043d\u0438\u0432\u043e");
         setLocationByPlatform(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -248,8 +253,6 @@ public class levelDialog extends javax.swing.JDialog {
     }
     
     private void constructComboStorages() {
-        prepareConn();
-        prepareStm();
         String StoragesList =
                 "SELECT id_n_storage, code_n_storage, name_n_storage FROM n_storage " +
                 "WHERE code_n_storage > 0 " +
@@ -261,6 +264,22 @@ public class levelDialog extends javax.swing.JDialog {
             while (rs.next()) {
                 jComboBox2.addItem(new String(rs.getInt("code_n_storage") + " - " + rs.getString("name_n_storage")));
                 sCodes.add(new Integer(rs.getInt("code_n_storage")));
+            }
+        } catch (SQLException ex) { ex.printStackTrace(); }
+    }
+    
+    private void constructComboCashRegisters() {
+        String CRsList =
+                "SELECT id_n_casa, code_n_casa, name_n_casa FROM n_casa " +
+                "WHERE code_n_casa > 0 " +
+                "ORDER BY code_n_casa;";
+        jComboBox2.removeAllItems();
+        try {
+            rs = getStm().executeQuery(CRsList);
+            sCodes = new java.util.ArrayList();
+            while (rs.next()) {
+                jComboBox2.addItem(new String(rs.getInt("code_n_casa") + " - " + rs.getString("name_n_casa")));
+                sCodes.add(new Integer(rs.getInt("code_n_casa")));
             }
         } catch (SQLException ex) { ex.printStackTrace(); }
     }

@@ -1,15 +1,6 @@
 
 package imakante.sales;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-
-//public class sales_main extends imakante.com.vcomponents.iFrame implements  java.awt.event.WindowListener, Runnable {
-
-//    public void sales_main(java.sql.Connection con) {
-
 public class sales_main extends imakante.com.vcomponents.iFrame {
     
     private final static int MAX_GROUP = 7; // pokazva maximalniq broj na grupite;
@@ -40,10 +31,6 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         try {
             this.jlUserStatus.setText("\u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b: " + this.getConn().getMetaData().getUserName());
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
-    }
-    
-    public void run(){
-        
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -1633,38 +1620,38 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     
     private boolean levelActivate = false;
     public  static boolean isMakeDocByInputData = false;    //   \
-    public  static  HashMap dataIn;                //    > I/O ot eaDocumentFacade
-    public  static  ArrayList dataOut;             //   /
+    public  static  java.util.HashMap dataIn;                //    > I/O ot eaDocumentFacade
+    public  static  java.util.ArrayList dataOut;             //   /
     private FrmDocumentFacade frmDocumentFacadeDialog;
     
     // private int currentLevel = 1;
     
-    private static LinkedHashMap OrderArea = new LinkedHashMap(); //stokovi
-    private static LinkedHashMap FaktArea = new LinkedHashMap(); // fakturi
-    private static LinkedHashMap oprFaktArea = new LinkedHashMap(); // oprostena fakturi
-    private static LinkedHashMap danFaktArea = new LinkedHashMap(); // dany4na fakturi
-    private static LinkedHashMap brakArea = new LinkedHashMap();  // BRAK;
-    private static LinkedHashMap lipsaArea = new LinkedHashMap();  // LIPSA;
-    private static LinkedHashMap ofertaArea = new LinkedHashMap();  // OFERTA;
-    private static LinkedHashMap proFormaArea = new LinkedHashMap();  // PROFORMA_FAKTURA;
-    private static LinkedHashMap narezdaneZaPrehvylqneArea = new LinkedHashMap();  //NAREZDANE_ZA_PREHVYRQNE;
-    private static LinkedHashMap stokavaRazpiskaArea = new LinkedHashMap();  // STOKOVA_RAZPISKA;
-    private static LinkedHashMap priematelnaRazpiskaArea = new LinkedHashMap();  // PRIEMATELNA_RAZPISKA;
-    private static LinkedHashMap razpiskaVryshtane = new LinkedHashMap();  // RAZPISKA_ZA_VRYSHTANE;
+    private static java.util.LinkedHashMap OrderArea = new java.util.LinkedHashMap(); //stokovi
+    private static java.util.LinkedHashMap FaktArea = new java.util.LinkedHashMap(); // fakturi
+    private static java.util.LinkedHashMap oprFaktArea = new java.util.LinkedHashMap(); // oprostena fakturi
+    private static java.util.LinkedHashMap danFaktArea = new java.util.LinkedHashMap(); // dany4na fakturi
+    private static java.util.LinkedHashMap brakArea = new java.util.LinkedHashMap();  // BRAK;
+    private static java.util.LinkedHashMap lipsaArea = new java.util.LinkedHashMap();  // LIPSA;
+    private static java.util.LinkedHashMap ofertaArea = new java.util.LinkedHashMap();  // OFERTA;
+    private static java.util.LinkedHashMap proFormaArea = new java.util.LinkedHashMap();  // PROFORMA_FAKTURA;
+    private static java.util.LinkedHashMap narezdaneZaPrehvylqneArea = new java.util.LinkedHashMap();  //NAREZDANE_ZA_PREHVYRQNE;
+    private static java.util.LinkedHashMap stokavaRazpiskaArea = new java.util.LinkedHashMap();  // STOKOVA_RAZPISKA;
+    private static java.util.LinkedHashMap priematelnaRazpiskaArea = new java.util.LinkedHashMap();  // PRIEMATELNA_RAZPISKA;
+    private static java.util.LinkedHashMap razpiskaVryshtane = new java.util.LinkedHashMap();  // RAZPISKA_ZA_VRYSHTANE;
     
     public static int numberStorage = 1;
     
-    private static LinkedHashMap casaInContrArea = new LinkedHashMap(); // prihodni orderi kasa kontragent
-    private static LinkedHashMap casaOutContrArea = new LinkedHashMap(); // razhodni orderi kasa kontragent
-    private static LinkedHashMap casaAdvances = new LinkedHashMap();    // avansi kym podot4etni lica
-    private static LinkedHashMap casa2casa = new LinkedHashMap();       // dvijenie mejdu kasite
+    private static java.util.LinkedHashMap casaInContrArea = new java.util.LinkedHashMap(); // prihodni orderi kasa kontragent
+    private static java.util.LinkedHashMap casaOutContrArea = new java.util.LinkedHashMap(); // razhodni orderi kasa kontragent
+    private static java.util.LinkedHashMap casaAdvances = new java.util.LinkedHashMap();    // avansi kym podot4etni lica
+    private static java.util.LinkedHashMap casa2casa = new java.util.LinkedHashMap();       // dvijenie mejdu kasite
     
     public static int userID_ndtur = 0; // id na usera , koeto e ravno na id_ndtur
     public static int levelForWork = 0; // rabotno nivo
     
     java.net.URL frameIcon = sales_main.class.getResource("/images/imakante_ico.png");
     
-    private void loadLevelDialog(int ModuleCode, LinkedHashMap hash){
+    private void loadLevelDialog(int ModuleCode, java.util.LinkedHashMap hash){
         levelDialog lDialog = new levelDialog(this, true, ModuleCode, hash);
         lDialog.setVisible(true);
     }
@@ -1914,19 +1901,13 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
                 oprFaktArea.put(rs.getInt("id_ndtur"), new String(rs.getString("area_number_sdtn")));
                 System.out.println("FAKTURA - OPROSTENA: " + rs.getString("area_number_sdtn"));
             }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
         try {
             rs.close();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
         try {
             stm.close();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
     //METHODS FOR LOAD FORMS
@@ -2346,22 +2327,23 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         levDSec.setVisible(true);
     }
     
-    public static LinkedHashMap getOrderArea() {
+    public static java.util.LinkedHashMap getOrderArea() {
         return OrderArea;
     }
     
-    public  void setOrderArea(LinkedHashMap OrderArea) {
+    public  void setOrderArea(java.util.LinkedHashMap OrderArea) {
         this.OrderArea = OrderArea;
     }
     
-    public static LinkedHashMap getFaktArea() {
+    public static java.util.LinkedHashMap getFaktArea() {
         return FaktArea;
     }
     
-    public  void setFaktArea(LinkedHashMap FaktArea) {
+    public  void setFaktArea(java.util.LinkedHashMap FaktArea) {
         this.FaktArea = FaktArea;
     }
-    private void loadFrmDocFacade(String title, int user, int level, int pricelist, int doctype,int storagedocdacade,boolean makeDocByInputData, HashMap dataIn, ArrayList dataOut) {
+    private void loadFrmDocFacade(String title, int user, int level, int pricelist, int doctype, int storagedocdacade, boolean makeDocByInputData, 
+            java.util.HashMap dataIn, java.util.ArrayList dataOut) {
         try {
             frmDocumentFacadeDialog = new FrmDocumentFacade(title, user, level, pricelist, doctype, storagedocdacade, isMakeDocByInputData, dataIn, dataOut,this);
             desktopPane.add(frmDocumentFacadeDialog);
