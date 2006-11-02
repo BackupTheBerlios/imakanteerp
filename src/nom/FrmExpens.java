@@ -42,9 +42,14 @@ public class FrmExpens extends  imakante.com.vcomponents.iInternalFrame implemen
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0438 \u0440\u0430\u0437\u0445\u043e\u0434\u0438");
+        setTitle("\u0420\u0430\u0437\u0445\u043e\u0434\u0438");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
+        setMaximumSize(new java.awt.Dimension(2000, 1600));
+        setMinimumSize(new java.awt.Dimension(890, 350));
+        setPreferredSize(new java.awt.Dimension(890, 350));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -67,6 +72,7 @@ public class FrmExpens extends  imakante.com.vcomponents.iInternalFrame implemen
         jTextName.setPreferredSize(new java.awt.Dimension(160, 20));
         jPanel4.add(jTextName);
 
+        jButtonSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Search.png")));
         jButtonSearch.setText("\u0422\u044a\u0440\u0441\u0435\u043d\u0435");
         jButtonSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -1798,7 +1798,7 @@ BEGIN
 
      IF (comprator = 6) THEN
         SELECT n.id_n_group, n.name_n_group FROM n_group n
-                              WHERE n.nom_n_group = 5;
+                              WHERE n.nom_n_group = 6;
      END IF;
 
      IF (comprator = 7) THEN
@@ -1812,7 +1812,7 @@ BEGIN
 
      IF (comprator = 9) THEN
         SELECT MAX(n.id_n_group) AS id_n_group FROM n_group n
-                              WHERE n.nom_n_group = 5;
+                              WHERE n.nom_n_group = 6;
      END IF;
 
 END $$
@@ -1859,7 +1859,7 @@ BEGIN
 
      IF (comprator = 6) THEN
         SELECT n.id_n_group, n.name_n_group FROM n_group n
-                              WHERE n.nom_n_group = 5;
+                              WHERE n.nom_n_group = 6;
      END IF;
 
      IF (comprator = 7) THEN
@@ -1873,7 +1873,7 @@ BEGIN
 
      IF (comprator = 9) THEN
         SELECT MAX(n.id_n_group) AS id_n_group FROM n_group n
-                              WHERE n.nom_n_group = 5;
+                              WHERE n.nom_n_group = 6;
      END IF;
 
 END $$

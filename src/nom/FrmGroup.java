@@ -47,6 +47,9 @@ public class FrmGroup extends imakante.com.vcomponents.iInternalFrame implements
         setMaximizable(true);
         setResizable(true);
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
+        setMaximumSize(new java.awt.Dimension(2000, 1600));
+        setMinimumSize(new java.awt.Dimension(900, 400));
+        setPreferredSize(new java.awt.Dimension(900, 400));
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }
@@ -135,7 +138,7 @@ public class FrmGroup extends imakante.com.vcomponents.iInternalFrame implements
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 879, Short.MAX_VALUE)
+            .add(0, 875, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)

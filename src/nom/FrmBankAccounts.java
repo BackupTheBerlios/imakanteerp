@@ -40,6 +40,7 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
         setResizable(true);
         setTitle("\u0411\u0430\u043d\u043a\u043e\u0432\u0438 \u0441\u043c\u0435\u0442\u043a\u0438");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
+        setMaximumSize(new java.awt.Dimension(2000, 1600));
         setMinimumSize(new java.awt.Dimension(900, 420));
         setPreferredSize(new java.awt.Dimension(900, 420));
         jPanel1.setLayout(new java.awt.BorderLayout());
@@ -105,7 +106,7 @@ public class FrmBankAccounts extends  imakante.com.vcomponents.iInternalFrame im
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 874, Short.MAX_VALUE)
+            .add(0, 870, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)

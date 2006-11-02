@@ -41,8 +41,10 @@ public class FrmAnLevel extends imakante.com.vcomponents.iInternalFrame implemen
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("\u0410\u043d\u0430\u043b\u0438\u0442\u0438\u0447\u043d\u0438 \u043d\u0438\u0432\u0430");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
-        setMinimumSize(new java.awt.Dimension(890, 370));
+        setMaximumSize(new java.awt.Dimension(2000, 1600));
+        setMinimumSize(new java.awt.Dimension(900, 400));
         setPreferredSize(new java.awt.Dimension(900, 400));
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
@@ -146,7 +148,7 @@ public class FrmAnLevel extends imakante.com.vcomponents.iInternalFrame implemen
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 879, Short.MAX_VALUE)
+            .add(0, 875, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)

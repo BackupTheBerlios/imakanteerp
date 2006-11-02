@@ -43,129 +43,141 @@ public class FrmAktivi extends  imakante.com.vcomponents.iInternalFrame implemen
         jButtonRefresh = new javax.swing.JButton();
         jButtonDeleteAll = new javax.swing.JButton();
         jButtonClose = new javax.swing.JButton();
-        
+
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("\u0410\u043a\u0442\u0438\u0432\u0438");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
+        setMaximumSize(new java.awt.Dimension(2000, 1600));
+        setMinimumSize(new java.awt.Dimension(890, 350));
+        setPreferredSize(new java.awt.Dimension(890, 350));
         jPanel1.setLayout(new java.awt.BorderLayout());
-        
+
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setPreferredSize(new java.awt.Dimension(452, 45));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jScrollPane1.getViewport().add(table);
         jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
-        
+
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel4.setPreferredSize(new java.awt.Dimension(448, 37));
         jLabel1.setText("\u041a\u043e\u0434:");
         jPanel4.add(jLabel1);
-        
+
         jTextCod.setPreferredSize(new java.awt.Dimension(45, 20));
         jPanel4.add(jTextCod);
-        
+
         jLabel2.setText("\u0418\u043c\u0435:");
         jPanel4.add(jLabel2);
-        
+
         jTextName.setPreferredSize(new java.awt.Dimension(100, 20));
         jPanel4.add(jTextName);
-        
+
         jLabel3.setText("\u0410\u043d\u0430\u043b\u0438\u0442\u0438\u0447\u043d\u0438 \u043d\u0438\u0432\u0430:");
         jPanel4.add(jLabel3);
-        
+
         jTextAnLevel.setPreferredSize(new java.awt.Dimension(45, 20));
         jPanel4.add(jTextAnLevel);
-        
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Search.png")));
         jButton1.setText("\u0422\u044a\u0440\u0441\u0435\u043d\u0435");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        
+
         jPanel4.add(jButton1);
-        
+
         jPanel1.add(jPanel4, java.awt.BorderLayout.SOUTH);
-        
+
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
-        
+
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
-                jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                .add(0, 825, Short.MAX_VALUE)
-                );
+            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 869, Short.MAX_VALUE)
+        );
         jPanel2Layout.setVerticalGroup(
-                jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                .add(0, 10, Short.MAX_VALUE)
-                );
+            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 10, Short.MAX_VALUE)
+        );
         getContentPane().add(jPanel2, java.awt.BorderLayout.NORTH);
-        
+
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel3.setPreferredSize(new java.awt.Dimension(801, 37));
+        jButtonNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Add 2.png")));
         jButtonNew.setText("\u041d\u043e\u0432");
         jButtonNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonNewActionPerformed(evt);
             }
         });
-        
+
         jPanel3.add(jButtonNew);
-        
+
+        jButtonEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Report Edit 2.png")));
         jButtonEdit.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f");
         jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEditActionPerformed(evt);
             }
         });
-        
+
         jPanel3.add(jButtonEdit);
-        
+
+        jButtonPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Printer.png")));
         jButtonPrint.setText("\u041f\u0435\u0447\u0430\u0442");
         jButtonPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPrintActionPerformed(evt);
             }
         });
-        
+
         jPanel3.add(jButtonPrint);
-        
+
         jButtonPrnReport.setText("\u041f\u0435\u0447\u0430\u0442 \u0440\u0435\u043f\u043e\u0440\u0442");
         jPanel3.add(jButtonPrnReport);
-        
+
+        jButtonDel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Delete 2.png")));
         jButtonDel.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
         jButtonDel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonDelActionPerformed(evt);
             }
         });
-        
+
         jPanel3.add(jButtonDel);
-        
+
+        jButtonRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Refresh 3.png")));
         jButtonRefresh.setText("\u0412\u0441\u0438\u0447\u043a\u0438 \u0437\u0430\u043f\u0438\u0441\u0438");
         jButtonRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRefreshActionPerformed(evt);
             }
         });
-        
+
         jPanel3.add(jButtonRefresh);
-        
+
         jButtonDeleteAll.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435 \u043d\u0430 \u0442\u0430\u0431\u043b\u0438\u0446\u0430");
         jPanel3.add(jButtonDeleteAll);
-        
+
         jButtonClose.setText("\u0417\u0430\u0442\u0432\u0430\u0440\u044f\u043d\u0435");
         jButtonClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCloseActionPerformed(evt);
             }
         });
-        
+
         jPanel3.add(jButtonClose);
-        
+
         getContentPane().add(jPanel3, java.awt.BorderLayout.SOUTH);
-        
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
     

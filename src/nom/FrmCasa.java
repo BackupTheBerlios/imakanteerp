@@ -38,9 +38,10 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0430 \u041a\u0430\u0441\u0438");
+        setTitle("\u041a\u0430\u0441\u0438");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
-        setMinimumSize(new java.awt.Dimension(895, 400));
+        setMaximumSize(new java.awt.Dimension(2000, 1600));
+        setMinimumSize(new java.awt.Dimension(900, 450));
         setPreferredSize(new java.awt.Dimension(900, 450));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
@@ -105,7 +106,7 @@ public class FrmCasa extends  imakante.com.vcomponents.iInternalFrame implements
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 884, Short.MAX_VALUE)
+            .add(0, 880, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
