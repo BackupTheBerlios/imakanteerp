@@ -177,6 +177,7 @@ public class levelDialog extends javax.swing.JDialog {
                 sales_main.userID_ndtur = getKey();
                 outIndex = getKey();
                 frame.numberStorage = Integer.parseInt(sCodes.get(jComboBox2.getSelectedIndex()).toString());
+                System.out.println(" ggggg  " + frame.numberStorage);
                 this.getToolkit().beep();
             } else {
                 outLevel = 3;

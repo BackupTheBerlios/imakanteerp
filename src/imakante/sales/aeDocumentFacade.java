@@ -161,14 +161,16 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             
         }
         imakante.com.dateManipulation dateManip = new imakante.com.dateManipulation();
-        String strDate;
+        String strDate = "01-01-2000";
         strDate = String.valueOf(jXDateCurs.getDate().getDate());
         strDate += "/" + String.valueOf(jXDateCurs.getDate().getMonth()+1);
         strDate += "/" + String.valueOf(jXDateCurs.getDate().getYear()+1900);
         String DateSQLFormat = dateManip.convertDate(strDate);
         System.out.println("DateSQLFormat "+DateSQLFormat);
         DateSQLFormat = myParent.getCountriesT().getLastCurentDate();
+        System.out.println("DateSQLFormat 2 "+DateSQLFormat);
         strDate = checkAndConvertSQLFormat(DateSQLFormat);
+        System.out.println("DateSQLFormat 3 "+DateSQLFormat);
         int dateInt[] = getDateAsInt(strDate);
         Date date = new Date(dateInt[2]-1900,dateInt[1]-1,dateInt[0]);
         jXDateCurs.setDate(date);
@@ -5125,6 +5127,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     }
     private  String checkAndConvertSQLFormat(String in) {
         String newDate = in;
+        System.out.println(" data koiato podavam " + in);
         char ch[] = in.toCharArray();
         int length = in.length();
         int bufLength=0;
