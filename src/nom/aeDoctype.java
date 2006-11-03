@@ -134,8 +134,7 @@ public class aeDoctype extends imakante.com.vcomponents.iDialog {
             jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jpDataLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jpMovement, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jpDataLayout.createSequentialGroup()
                         .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                             .add(jlCode)
@@ -145,8 +144,11 @@ public class aeDoctype extends imakante.com.vcomponents.iDialog {
                         .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, jtfName)
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, jtfPrintName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
-                            .add(jtfCode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 113, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(13, Short.MAX_VALUE))
+                            .add(jtfCode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 113, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(13, Short.MAX_VALUE))
+                    .add(jpDataLayout.createSequentialGroup()
+                        .add(jpMovement, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(21, Short.MAX_VALUE))))
         );
         jpDataLayout.setVerticalGroup(
             jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -163,7 +165,7 @@ public class aeDoctype extends imakante.com.vcomponents.iDialog {
                 .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jlPrintName)
                     .add(jtfPrintName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(19, 19, 19)
+                .add(8, 8, 8)
                 .add(jpMovement, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 85, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );

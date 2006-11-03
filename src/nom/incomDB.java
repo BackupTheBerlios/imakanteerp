@@ -14,12 +14,14 @@ public class incomDB  extends imakante.com.dbObject {
     }
     
     //-------SART MyFunction
+    @Override
     public void prepareCstm() {
         try {
             setCstm(getConn().prepareCall("{call nom_procedure_incom(?,?,?,?,?,?)}"));
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
+    @Override
     public java.sql.ResultSet getTable() {
         this.setComprator(0);
         try{
@@ -29,6 +31,7 @@ public class incomDB  extends imakante.com.dbObject {
         return getRs();
     }
     
+    @Override
     public void registerParameters() {
         try {
             getCstm().setInt("comprator", getComprator());
@@ -40,12 +43,14 @@ public class incomDB  extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
+    @Override
     public void prepareRezult() {
         try{
             registerParameters();
             setRs(getCstm().executeQuery());}catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
+    @Override
     public void insertRow(int in_code, int in_id_groupe) {
         setComprator(1);
         this.setCode(in_code);
@@ -98,6 +103,7 @@ public class incomDB  extends imakante.com.dbObject {
         return getRs();
     }
     
+    @Override
     public int getMaxId() {
         setComprator(7);
         int return_int = -1;
@@ -111,6 +117,7 @@ public class incomDB  extends imakante.com.dbObject {
         return return_int;
     }
     
+    @Override
     public int getMaxCod() {
         setComprator(8);
         int return_int = -1;
@@ -174,10 +181,12 @@ public class incomDB  extends imakante.com.dbObject {
         return indexConnOfId;
     }
     
+    @Override
     public java.sql.Connection getConn() {
         return conn;
     }
     
+    @Override
     public void setConn(java.sql.Connection conn) {
         this.conn = conn;
     }

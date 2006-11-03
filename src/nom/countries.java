@@ -10,12 +10,14 @@ public class countries extends imakante.com.dbObject {
         prepareCstm();
     }
     
+    @Override
     public void prepareCstm() {
         try {
             setCstm(getConn().prepareCall("{call ls_procedure_country(?,?,?,?)}"));
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
+    @Override
     public java.sql.ResultSet getTable() {
         this.setComprator(0);
         try {
@@ -83,6 +85,7 @@ public class countries extends imakante.com.dbObject {
         return i;
     }
     
+    @Override
     public int getMaxId() {
         int i = 0;
         setComprator(7);
@@ -105,6 +108,7 @@ public class countries extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
+    @Override
     public void registerParameters() {
         try {
             getCstm().setInt("in_id", getId());
@@ -114,6 +118,7 @@ public class countries extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
+    @Override
     public void prepareRezult(){
         try {
             registerParameters();
@@ -121,10 +126,12 @@ public class countries extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
+    @Override
     public java.sql.Connection getConn() {
         return conn;
     }
     
+    @Override
     public void setConn(java.sql.Connection conn) {
         this.conn = conn;
     }
