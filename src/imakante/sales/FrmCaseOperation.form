@@ -7,9 +7,12 @@
     <Property name="iconifiable" type="boolean" value="true"/>
     <Property name="maximizable" type="boolean" value="true"/>
     <Property name="resizable" type="boolean" value="true"/>
-    <Property name="title" type="java.lang.String" value="&#x41f;&#x420;&#x418;&#x425;&#x41e;&#x414;&#x41d;&#x418; &#x41a;&#x410;&#x421;&#x41e;&#x412;&#x418; &#x41e;&#x420;&#x414;&#x415;&#x420;&#x418;"/>
+    <Property name="title" type="java.lang.String" value="&#x41f;&#x440;&#x438;&#x445;&#x43e;&#x434;&#x43d;&#x438; &#x43a;&#x430;&#x441;&#x43e;&#x432;&#x438; &#x43e;&#x440;&#x434;&#x435;&#x440;&#x438;"/>
     <Property name="frameIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
       <Image iconType="3" name="/images/imakante_ico.png"/>
+    </Property>
+    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[2000, 1600]"/>
     </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[900, 400]"/>
@@ -54,14 +57,14 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jPanel4" alignment="0" pref="882" max="32767" attributes="0"/>
-              <Component id="jScrollPane1" alignment="0" pref="882" max="32767" attributes="0"/>
+              <Component id="jPanel4" alignment="0" pref="878" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" alignment="0" pref="878" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <Component id="jScrollPane1" pref="301" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" pref="282" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel4" min="-2" pref="94" max="-2" attributes="0"/>
               </Group>
@@ -112,9 +115,9 @@
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel2" alignment="0" pref="80" max="32767" attributes="0"/>
-                          <Component id="jtfCasaBEGIN" alignment="1" pref="80" max="32767" attributes="0"/>
-                          <Component id="jtfCasaEND" alignment="1" pref="80" max="32767" attributes="0"/>
+                          <Component id="jLabel2" alignment="0" pref="78" max="32767" attributes="0"/>
+                          <Component id="jtfCasaBEGIN" alignment="1" pref="78" max="32767" attributes="0"/>
+                          <Component id="jtfCasaEND" alignment="1" pref="78" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">

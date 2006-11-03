@@ -38,7 +38,7 @@ public class FrmCountry extends  imakante.com.vcomponents.iInternalFrame impleme
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0430 \u0414\u044a\u0440\u0436\u0430\u0432\u0438");
+        setTitle("\u0414\u044a\u0440\u0436\u0430\u0432\u0438");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
         setMinimumSize(new java.awt.Dimension(895, 400));
         setPreferredSize(new java.awt.Dimension(900, 450));
@@ -106,7 +106,7 @@ public class FrmCountry extends  imakante.com.vcomponents.iInternalFrame impleme
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 885, Short.MAX_VALUE)
+            .add(0, 881, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)

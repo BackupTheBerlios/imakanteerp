@@ -192,6 +192,7 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
 
         jLabel5.setText("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440:");
 
+        jTextField1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextField1.setInputVerifier(new imakante.com.InputIntegerVerifier());
         jTextField1.setInputVerifier(new imakante.com.InputIntegerVerifier());
         jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -207,6 +208,7 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
+        jTextArea1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextArea1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextArea1FocusGained(evt);
@@ -217,6 +219,7 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
 
         jLabel3.setText("\u041a\u0430\u0441\u0430:");
 
+        jComboCR.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jComboCR.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jComboCRFocusLost(evt);
@@ -230,6 +233,7 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
 
         jLabel6.setText("\u041d\u0430\u0441\u0440\u0435\u0449\u043d\u0430 \u043a\u0430\u0441\u0430:");
 
+        jTextField3.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextField3.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextField3.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -248,6 +252,7 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
 
         jLabel4.setText("\u0421\u0443\u043c\u0430:");
 
+        jComboM.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jComboM.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jComboMFocusLost(evt);
@@ -284,7 +289,8 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
 
         jLabel11.setText("\u0421\u0432\u044a\u0440\u0437\u0430\u043d \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442:");
 
-        jTextField6.setInputVerifier(new imakante.com.InputIntegerVerifier());
+        jTextField6.setBackground(new java.awt.Color(204, 204, 255));
+        jTextField6.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextField6.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField6FocusGained(evt);
@@ -298,6 +304,7 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
 
         jLabel12.setText("\u0412\u0438\u0434 \u043e\u0440\u0434\u0435\u0440:");
 
+        jComboD.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jComboD.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jComboDKeyPressed(evt);
@@ -313,6 +320,7 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
         jTextField7.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jTextField7.setEnabled(false);
 
+        jComboCR2.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jComboCR2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jComboCR2FocusLost(evt);
@@ -338,14 +346,14 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
                             .add(jLabel13))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jTextField5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                            .add(jTextField5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(jTextField4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-                                    .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-                                    .add(jTextField6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-                                    .add(jComboCR, 0, 148, Short.MAX_VALUE)
-                                    .add(jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))
+                                    .add(jTextField4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                                    .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                                    .add(jTextField6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                                    .add(jComboCR, 0, 171, Short.MAX_VALUE)
+                                    .add(jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE))
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                                     .add(jLabel8)
@@ -355,19 +363,17 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
                                     .add(jLabel7))
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(jTextField7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
-                                    .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
-                                    .add(jComboM, 0, 151, Short.MAX_VALUE)
-                                    .add(jComboD, 0, 151, Short.MAX_VALUE)
-                                    .add(jComboCR2, 0, 151, Short.MAX_VALUE)))
+                                    .add(jTextField7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                                    .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                                    .add(jComboM, 0, 173, Short.MAX_VALUE)
+                                    .add(jComboD, 0, 173, Short.MAX_VALUE)
+                                    .add(jComboCR2, 0, 173, Short.MAX_VALUE)))
                             .add(jLabel14)
                             .add(jPanel2Layout.createSequentialGroup()
-                                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)))
-                        .addContainerGap())
-                    .add(jPanel2Layout.createSequentialGroup()
-                        .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
-                        .add(10, 10, 10))))
+                                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED))))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -406,11 +412,12 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
                             .add(jTextField6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.BASELINE, jComboM, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.BASELINE, jLabel7)
                     .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                         .add(jLabel4)
-                        .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                        .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(jComboM, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                        .add(jLabel7)))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel9)
@@ -425,14 +432,14 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel5)
                     .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 78, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .add(37, 37, 37))
         );
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-544)/2, (screenSize.height-420)/2, 544, 420);
+        setBounds((screenSize.width-589)/2, (screenSize.height-460)/2, 589, 460);
     }// </editor-fold>//GEN-END:initComponents
         
     private void jComboCR2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboCR2FocusLost
@@ -664,6 +671,34 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
     private String[] namesD;
     java.text.SimpleDateFormat formatterP = new java.text.SimpleDateFormat("dd-MM-yyyy");
     java.text.SimpleDateFormat formatterG = new java.text.SimpleDateFormat("yyyy-MM-dd");
+    private static boolean isFromF7 = false;
+    
+    private int buffNumRD = 0;
+    private String buffNameRD = "";
+    private int idRelatedDocument = 0;
+    private int numberRelatedDocument = 0;
+    private String nameRelatedDocument = "";
+    
+    private String relatedDocumentsList =
+            "SELECT d.id_df AS id, " +
+            "td.name_ntd AS Document, " +
+            "d.number_df AS ofNumber, " +
+            "d.date_edition_df AS fromDate, " +
+            "d.total_df AS Due, " +
+            "IFNULL(@LIQ:=(SELECT SUM(sum_os_val_sl_mop) FROM sl_m_operation WHERE id_order_spec = d.id_df), 0) AS Liquidated, " +
+            "IFNULL((d.total_df - @LIQ), 0) AS Remainder, " +
+            "d.date_pay_df AS Term, " +
+            "DATEDIFF(CURRENT_DATE, d.date_pay_df) AS Overdue " +
+            "FROM sl_document_facade d " +
+            "JOIN n_type_doc td ON td.code_ntd = d.type_df " +
+            "WHERE d.out_contragent_df = ";
+    
+    private String relatedDocumentById =
+            "SELECT d.id_df, td.name_ntd, d.number_df " +
+            "FROM sl_document_facade d " +
+            "JOIN n_type_doc td ON td.code_ntd = d.type_df " +
+            "WHERE d.id_df = ";
+    
     //---------------END My Variables
     
     //---------------START My Methods
@@ -960,6 +995,140 @@ public class aeC2COp extends imakante.com.vcomponents.iDialog {
                     javax.swing.JOptionPane.ERROR_MESSAGE);
             jComboCR.requestFocus();
         }
+    }
+    
+    private void getRelatedDocument() {
+        myParent.CompNumber = 101;
+        String level = "";
+        if (myParent.level == 3) level = " AND level_df = 003;";
+        if (myParent.level == 2) level = " AND level_df = 002;";
+        if (myParent.level == 1) level = " AND level_df IN(001, 002, 003);";
+        String relatedDocuments = relatedDocumentsList + 
+//                getIdContragent() 
+                "id Kasa X"
+                + level;
+        java.sql.ResultSet rsRD;
+        imakante.com.CustomTableModel modelRD;
+        imakante.com.CustomTable tableRD;
+        String[] names = { "id",
+        "\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442",
+        "\u041D\u043E\u043C\u0435\u0440",
+        "\u041E\u0442 \u0434\u0430\u0442\u0430",
+        "\u0414\u044A\u043B\u0436\u0438\u043C\u043E",
+        "\u0418\u0437\u043F\u043B\u0430\u0442\u0435\u043D\u043E",
+        "\u041E\u0441\u0442\u0430\u0442\u044A\u043A",
+        "\u0421\u0440\u043E\u043A",
+        "\u041F\u0440\u043E\u0441\u0440\u043E\u0447\u0435\u043D\u043E (\u0434\u043D\u0438)" };
+        try {
+            rsRD = myParent.getStm().executeQuery(relatedDocuments);
+            modelRD = new imakante.com.CustomTableModel(myParent.getConn(), rsRD, names);
+            tableRD = new imakante.com.CustomTable(modelRD);
+            HideColumns(tableRD, getColumnIndex(tableRD, "id"));
+            tableRD.setEditingRow(0);
+            imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(myParent, true, tableRD,
+                    "\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0438 \u0441\u044A\u0441 " +
+                    "\u0437\u0430\u0434\u044A\u043B\u0436\u0435\u043D\u0438\u044F \u043D\u0430 " + 
+                    // getNameContragent().toUpperCase(),
+                    "KASA X",
+                    "", "\u041D\u043E\u043C\u0435\u0440");
+            td.setVisible(true);
+        } catch(java.sql.SQLException ex) { ex.printStackTrace(); }
+    }
+    
+    protected void getRelatedDocumentByID(int ID) {
+        String relDoc = relatedDocumentById + ID + ";";
+        try {
+            java.sql.ResultSet rsRD = myParent.getStm().executeQuery(relDoc);
+            rsRD.next();
+            setIdRelatedDocument(ID);
+            setNameRelatedDocument(rsRD.getString("name_ntd"));
+            setNumberRelatedDocument(rsRD.getInt("number_df"));
+            buffNameRD = getNameRelatedDocument();
+            buffNumRD = getNumberRelatedDocument();
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
+        jTextField6.setText(getNameRelatedDocument() + ": " + getNumberRelatedDocument());
+    }
+    
+    private boolean obtainInputType(javax.swing.JTextField jtf) {
+        int i = 0;
+        try {
+            i = Integer.parseInt(jtf.getText());
+        } catch (NumberFormatException ex) { return false; }
+        return true;
+    }
+    
+    private void manageKeyEvents(javax.swing.JTextField jtf) {
+        String entry = jtf.getText();
+        if (jtf.equals(this.jTextField6)) {  // Izbor na SWYRZAN DOKUMENT
+            if (this.isFromF7) {
+                getRelatedDocument();
+            } else {
+                if (entry.equals("")) {
+//                    myParent.setIn_id_order_spec(-1);
+                } else {
+                    if ((entry.contains(buffNameRD) && entry.contains("" + buffNumRD)) || (!buffNameRD.equals("") && entry.contains(buffNameRD))) {
+                        jtf.setText(getNameRelatedDocument() + ": " + getNumberRelatedDocument());
+                    } else {
+                        getRelatedDocument();
+                    }
+                }
+            }
+            jTextField6.transferFocus();
+        }
+    }
+    
+    public static void setIsFromF7() {
+        isFromF7 = false;
+    }
+    
+    private int getColumnIndex(imakante.com.CustomTable tab, String in) {
+        int count = tab.getColumnCount();
+        for(int i = 0; i < count; i++) {
+            if(tab.getColumnName(i).equals(in))
+                return i;
+        }
+        return 0;
+    }
+    
+    private void HideColumns(imakante.com.CustomTable tab, int col) {
+        tab.getColumnModel().getColumn(col).setMaxWidth(0);
+        tab.getColumnModel().getColumn(col).setMinWidth(0);
+        tab.getTableHeader().getColumnModel().getColumn(col).setMaxWidth(0);
+        tab.getTableHeader().getColumnModel().getColumn(col).setMinWidth(0);
+    }
+    
+    private void fGain(javax.swing.JComponent jtf) {
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED,
+                new java.awt.Color(255, 0, 51), null));
+    }
+    
+    private void fLost(javax.swing.JComponent jtf) {
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED,
+                new java.awt.Color(255, 255, 255), null));
+    }
+    
+    public int getIdRelatedDocument() {
+        return idRelatedDocument;
+    }
+    
+    public void setIdRelatedDocument(int idRelatedDocument) {
+        this.idRelatedDocument = idRelatedDocument;
+    }
+    
+    public int getNumberRelatedDocument() {
+        return numberRelatedDocument;
+    }
+    
+    public void setNumberRelatedDocument(int numberRelatedDocument) {
+        this.numberRelatedDocument = numberRelatedDocument;
+    }
+    
+    public String getNameRelatedDocument() {
+        return nameRelatedDocument;
+    }
+    
+    public void setNameRelatedDocument(String nameRelatedDocument) {
+        this.nameRelatedDocument = nameRelatedDocument;
     }
     
 }// end class

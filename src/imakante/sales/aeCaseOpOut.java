@@ -55,8 +55,6 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
         jTextField6 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jComboD = new javax.swing.JComboBox();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
 
@@ -187,8 +185,10 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
 
         jPanel3.add(jButtonToEnd);
 
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("\u041d\u043e\u043c\u0435\u0440 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442:");
 
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440:");
 
         jTextField1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -222,6 +222,7 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
 
         jScrollPane1.setViewportView(jTextArea1);
 
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("\u041a\u0430\u0441\u0430:");
 
         jComboCR.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -239,6 +240,7 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
             }
         });
 
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442:");
 
         jTextField2.setBackground(new java.awt.Color(204, 204, 255));
@@ -275,6 +277,7 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
             }
         });
 
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("\u0421\u0443\u043c\u0430:");
 
         jComboM.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -292,6 +295,7 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
             }
         });
 
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("\u0412\u0430\u043b\u0443\u0442\u0430:");
 
         jXDatePicker1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -300,8 +304,10 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
             }
         });
 
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("\u0414\u0430\u0442\u0430:");
 
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("\u0421\u0443\u043c\u0430 \u043e\u0441\u043d. \u0432\u0430\u043b\u0443\u0442\u0430:");
 
         jTextField4.setBackground(new java.awt.Color(204, 204, 204));
@@ -309,12 +315,14 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
         jTextField4.setEnabled(false);
         jTextField4.setInputVerifier(new imakante.com.InputDoubleVerifier());
 
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("\u0418\u0437\u0434\u0430\u043b:");
 
         jTextField5.setBackground(new java.awt.Color(204, 204, 204));
         jTextField5.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jTextField5.setEnabled(false);
 
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel11.setText("\u0421\u0432\u044a\u0440\u0437\u0430\u043d \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442:");
 
         jTextField6.setBackground(new java.awt.Color(204, 204, 255));
@@ -334,6 +342,7 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
             }
         });
 
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel12.setText("\u0412\u0438\u0434 \u043e\u0440\u0434\u0435\u0440:");
 
         jComboD.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -351,10 +360,7 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
             }
         });
 
-        jLabel13.setText("\u0418\u043c\u0435 \u043d\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0430:");
-
-        jLabel14.setText("\u043d\u0435\u0437\u0430\u0434\u0430\u0434\u0435\u043d\u043e");
-
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel15.setText("\u041a\u0443\u0440\u0441:");
 
         jTextField7.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -368,110 +374,112 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
                 .addContainerGap()
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel2Layout.createSequentialGroup()
-                        .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(jLabel4)
+                        .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jLabel11)
-                            .add(jLabel3)
-                            .add(jLabel5)
-                            .add(jLabel10)
-                            .add(jLabel9)
                             .add(jLabel2)
-                            .add(jLabel13))
+                            .add(jLabel10)
+                            .add(jLabel5)
+                            .add(jLabel3)
+                            .add(jLabel9)
+                            .add(jLabel4))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jTextField5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+                            .add(jTextField5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(jTextField4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                                    .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                                    .add(jComboCR, 0, 162, Short.MAX_VALUE)
-                                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jTextField6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                                    .add(jLabel8)
-                                    .add(jLabel15)
-                                    .add(jLabel6)
-                                    .add(jLabel12)
-                                    .add(jLabel7))
+                                    .add(jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                                    .add(org.jdesktop.layout.GroupLayout.LEADING, jTextField6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                                    .add(org.jdesktop.layout.GroupLayout.LEADING, jComboCR, 0, 195, Short.MAX_VALUE)
+                                    .add(org.jdesktop.layout.GroupLayout.LEADING, jTextField4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                                    .add(org.jdesktop.layout.GroupLayout.LEADING, jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE))
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(jTextField7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                                    .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                                    .add(jComboM, 0, 166, Short.MAX_VALUE)
-                                    .add(jComboD, 0, 166, Short.MAX_VALUE)
-                                    .add(jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)))
-                            .add(jLabel14, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-                            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE))
-                        .addContainerGap())
-                    .add(jPanel2Layout.createSequentialGroup()
-                        .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
-                        .add(10, 10, 10))))
+                                    .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                                        .add(jLabel15)
+                                        .add(jLabel6)
+                                        .add(jLabel7))
+                                    .add(jLabel8)
+                                    .add(jLabel12))
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(jComboM, 0, 197, Short.MAX_VALUE)
+                                    .add(jComboD, 0, 197, Short.MAX_VALUE)
+                                    .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                                    .add(jTextField7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jTextField2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)))
+                            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)))
+                    .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE))
+                .addContainerGap())
         );
+
+        jPanel2Layout.linkSize(new java.awt.Component[] {jLabel12, jLabel15, jLabel6, jLabel7, jLabel8}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
+        jPanel2Layout.linkSize(new java.awt.Component[] {jLabel10, jLabel11, jLabel2, jLabel3, jLabel4, jLabel5, jLabel9}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel2)
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE, false)
                     .add(jLabel6)
-                    .add(jTextField2)
-                    .add(jTextField1))
-                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jPanel2Layout.createSequentialGroup()
-                        .add(10, 10, 10)
-                        .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jLabel13)
-                            .add(jLabel14))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jLabel3)
-                            .add(jLabel8)
-                            .add(jComboCR)))
-                    .add(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(3, 3, 3)))
-                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel2Layout.createSequentialGroup()
-                        .add(7, 7, 7)
-                        .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jComboD)
-                            .add(jLabel12)))
-                    .add(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jLabel11)
-                            .add(jTextField6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                    .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel2)
+                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.BASELINE, jComboM)
-                    .add(org.jdesktop.layout.GroupLayout.BASELINE, jLabel7)
+                    .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(jComboCR, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(jLabel3))
+                    .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(jLabel8)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                        .add(org.jdesktop.layout.GroupLayout.LEADING, jTextField6)
+                        .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel2Layout.createSequentialGroup()
+                            .add(8, 8, 8)
+                            .add(jLabel11)))
+                    .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(jLabel12)
+                        .add(jComboD, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                     .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                         .add(jLabel4)
-                        .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                        .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(jLabel7)
+                        .add(jComboM, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel9)
-                    .add(jTextField4)
+                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE, false)
+                    .add(jTextField4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel15)
-                    .add(jTextField7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jTextField7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel9))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel10)
-                    .add(jTextField5))
+                    .add(jTextField5)
+                    .add(jLabel10))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel5)
-                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 79, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 79, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel5))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 78, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .add(35, 35, 35))
         );
+
+        jPanel2Layout.linkSize(new java.awt.Component[] {jComboCR, jXDatePicker1}, org.jdesktop.layout.GroupLayout.VERTICAL);
+
+        jPanel2Layout.linkSize(new java.awt.Component[] {jTextField1, jTextField2}, org.jdesktop.layout.GroupLayout.VERTICAL);
+
+        jPanel2Layout.linkSize(new java.awt.Component[] {jTextField4, jTextField7}, org.jdesktop.layout.GroupLayout.VERTICAL);
+
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-544)/2, (screenSize.height-434)/2, 544, 434);
+        setBounds((screenSize.width-599)/2, (screenSize.height-431)/2, 599, 431);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextArea1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea1FocusLost
@@ -545,20 +553,26 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
     }//GEN-LAST:event_jComboCRKeyPressed
     
     private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
-            revalidateContragent();
-            this.jLabel14.setText(myParent.getHName());
-            this.jLabel14.revalidate();
-            jTextField2.transferFocus();}
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7){
-            try {
-                myParent.intContrDialog(Integer.parseInt(jTextField2.getText()));
-            } catch (NumberFormatException ex) { ex.printStackTrace(); }
-            revalidateContragent();
-            this.jLabel14.setText(myParent.getHName());
-            this.jLabel14.revalidate();
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER)
             jTextField2.transferFocus();
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) {
+            this.isFromF7 = true;
+            manageKeyEvents(this.jTextField2);
         }
+//        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+//            revalidateContragent();
+////            this.jLabel14.setText(myParent.getHName());
+////            this.jLabel14.revalidate();
+//            jTextField2.transferFocus();}
+//        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7){
+//            try {
+//                myParent.intContrDialog(Integer.parseInt(jTextField2.getText()));
+//            } catch (NumberFormatException ex) { ex.printStackTrace(); }
+//            revalidateContragent();
+////            this.jLabel14.setText(myParent.getHName());
+////            this.jLabel14.revalidate();
+//            jTextField2.transferFocus();
+//        }
     }//GEN-LAST:event_jTextField2KeyPressed
     
     private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
@@ -714,8 +728,6 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -762,6 +774,48 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
     private String[] namesD;
     java.text.SimpleDateFormat formatterP = new java.text.SimpleDateFormat("dd-MM-yyyy");
     java.text.SimpleDateFormat formatterG = new java.text.SimpleDateFormat("yyyy-MM-dd");
+    private static boolean isFromF7 = false;
+    
+    private int buffCodeC = 0;
+    private String buffNameC = "";
+    private int idContragent = 0;
+    private int codeContragent = 0;
+    private String nameContragent = "";
+    
+    private int buffNumRD = 0;
+    private String buffNameRD = "";
+    private int idRelatedDocument = 0;
+    private int numberRelatedDocument = 0;
+    private String nameRelatedDocument = "";
+    
+    private String contragentsList =
+            "SELECT nc.id_contragent, nc.code_contragent, nc.name_n_contragent " +
+            "FROM n_contragent nc ";
+    
+    private String contragentById =
+            "SELECT nc.code_contragent, nc.name_n_contragent FROM n_contragent nc " +
+            "WHERE nc.id_contragent = ";
+    
+    private String relatedDocumentsList =
+            "SELECT d.id_df AS id, " +
+            "td.name_ntd AS Document, " +
+            "d.number_df AS ofNumber, " +
+            "d.date_edition_df AS fromDate, " +
+            "d.total_df AS Due, " +
+            "IFNULL(@LIQ:=(SELECT SUM(sum_os_val_sl_mop) FROM sl_m_operation WHERE id_order_spec = d.id_df), 0) AS Liquidated, " +
+            "IFNULL((d.total_df - @LIQ), 0) AS Remainder, " +
+            "d.date_pay_df AS Term, " +
+            "DATEDIFF(CURRENT_DATE, d.date_pay_df) AS Overdue " +
+            "FROM sl_document_facade d " +
+            "JOIN n_type_doc td ON td.code_ntd = d.type_df " +
+            "WHERE d.out_contragent_df = ";
+    
+    private String relatedDocumentById =
+            "SELECT d.id_df, td.name_ntd, d.number_df " +
+            "FROM sl_document_facade d " +
+            "JOIN n_type_doc td ON td.code_ntd = d.type_df " +
+            "WHERE d.id_df = ";
+    
     //---------------END My Variables
     
     //---------------START My Methods
@@ -797,7 +851,7 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
         myParent.setIn_sum_sl_mop(Double.parseDouble(jTextField3.getText()));
         myParent.setIn_id_n_money(myParent.getInternalObject().getIndexMoney()[jComboM.getSelectedIndex()]);
         myParent.setComment(jTextArea1.getText());
-        myParent.setContragent_name(jLabel14.getText());
+//        myParent.setContragent_name(jLabel14.getText());
         myParent.setIn_sum_os_val_sl_mop(Double.parseDouble(jTextField4.getText()));
         
         myParent.setIn_sum_os_val_sl_mop(Double.parseDouble(jTextField4.getText()));
@@ -864,7 +918,7 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
     private void repaintComp() {
         jTextField1.setText("" + myParent.getCode());
         jTextField2.setText("" + myParent.getContragent_cod());
-        jLabel14.setText(myParent.getContragent_name());
+//        jLabel14.setText(myParent.getContragent_name());
         jTextField3.setText(""+ myParent.getIn_sum_sl_mop());
         jTextField4.setText(""+ myParent.getIn_sum_os_val_sl_mop());
         jTextField7.setText(""+ myParent.getIn_exchange_rate());
@@ -963,11 +1017,6 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
         return newindex;
     }
     
-    private void getRelatedDocument() {
-        System.out.println("Wzima swyrzaniq dokument ot fasadata!");
-        // Za dowyr6wane - izbor na swyrzanite dokumenti-fasada za dadeniq kontragent
-    }
-    
     private void revalidateSums(){
         double exch = 1;
         double sum = 1;
@@ -990,7 +1039,7 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
         try {
             myParent.getCodFromQu(Integer.parseInt(jTextField2.getText()));
         } catch (NumberFormatException ex) { ex.printStackTrace(); }
-        this.jLabel14.setText(myParent.getHName());
+//        this.jLabel14.setText(myParent.getHName());
     }
     
     private void dFields(boolean isNew){
@@ -1024,6 +1073,159 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
         }
     }
     
+    private void getContragent() {
+        myParent.CompNumber = 100;
+        String filter;
+        if (obtainInputType(this.jTextField2))
+            filter = "WHERE nc.code_contragent LIKE '%";
+        else
+            filter = "WHERE nc.name_n_contragent LIKE '%";
+        String contragents = contragentsList + filter + jTextField2.getText() + "%';";
+        java.sql.ResultSet rsC;
+        imakante.com.CustomTableModel modelC;
+        imakante.com.CustomTable tableC;
+        String[] names = { "id", "\u041A\u043E\u0434", "\u0418\u043C\u0435" };
+        try {
+            rsC = myParent.getStm().executeQuery(contragents);
+            modelC = new imakante.com.CustomTableModel(myParent.getConn(), rsC, names);
+            tableC = new imakante.com.CustomTable(modelC);
+            HideColumns(tableC, getColumnIndex(tableC, "id"));
+            tableC.setEditingRow(0);
+            imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(myParent, true, tableC,
+                    "\u0418\u0437\u0431\u043E\u0440 \u043D\u0430 \u041A\u043E\u043D\u0442\u0440\u0430\u0433\u0435\u043D\u0442",
+                    "", "\u041A\u043E\u0434");
+            td.setVisible(true);
+        } catch(java.sql.SQLException ex) { ex.printStackTrace(); }
+    }
+    
+    protected void getContragentByID(int ID) {
+        String contragent = contragentById + ID + ";";
+        try {
+            java.sql.ResultSet rsC = myParent.getStm().executeQuery(contragent);
+            rsC.next();
+            setIdContragent(ID);
+            setCodeContragent(rsC.getInt("code_contragent"));
+            setNameContragent(rsC.getString("name_n_contragent"));
+            buffCodeC = getCodeContragent();
+            buffNameC = getNameContragent();
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
+        jTextField2.setText("" + getCodeContragent() + " - " + getNameContragent());
+    }
+    
+    private void getRelatedDocument() {
+        myParent.CompNumber = 101;
+        String level = "";
+        if (myParent.level == 3) level = " AND level_df = 003;";
+        if (myParent.level == 2) level = " AND level_df = 002;";
+        if (myParent.level == 1) level = " AND level_df IN(001, 002, 003);";
+        String relatedDocuments = relatedDocumentsList + getIdContragent() + level;
+        java.sql.ResultSet rsRD;
+        imakante.com.CustomTableModel modelRD;
+        imakante.com.CustomTable tableRD;
+        String[] names = { "id",
+        "\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442",
+        "\u041D\u043E\u043C\u0435\u0440",
+        "\u041E\u0442 \u0434\u0430\u0442\u0430",
+        "\u0414\u044A\u043B\u0436\u0438\u043C\u043E",
+        "\u0418\u0437\u043F\u043B\u0430\u0442\u0435\u043D\u043E",
+        "\u041E\u0441\u0442\u0430\u0442\u044A\u043A",
+        "\u0421\u0440\u043E\u043A",
+        "\u041F\u0440\u043E\u0441\u0440\u043E\u0447\u0435\u043D\u043E (\u0434\u043D\u0438)" };
+        try {
+            rsRD = myParent.getStm().executeQuery(relatedDocuments);
+            modelRD = new imakante.com.CustomTableModel(myParent.getConn(), rsRD, names);
+            tableRD = new imakante.com.CustomTable(modelRD);
+            HideColumns(tableRD, getColumnIndex(tableRD, "id"));
+            tableRD.setEditingRow(0);
+            imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(myParent, true, tableRD,
+                    "\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0438 \u0441\u044A\u0441 " +
+                    "\u0437\u0430\u0434\u044A\u043B\u0436\u0435\u043D\u0438\u044F \u043D\u0430 " + getNameContragent().toUpperCase(),
+                    "", "\u041D\u043E\u043C\u0435\u0440");
+            td.setVisible(true);
+        } catch(java.sql.SQLException ex) { ex.printStackTrace(); }
+    }
+    
+    protected void getRelatedDocumentByID(int ID) {
+        String relDoc = relatedDocumentById + ID + ";";
+        try {
+            java.sql.ResultSet rsRD = myParent.getStm().executeQuery(relDoc);
+            rsRD.next();
+            setIdRelatedDocument(ID);
+            setNameRelatedDocument(rsRD.getString("name_ntd"));
+            setNumberRelatedDocument(rsRD.getInt("number_df"));
+            buffNameRD = getNameRelatedDocument();
+            buffNumRD = getNumberRelatedDocument();
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
+        jTextField6.setText(getNameRelatedDocument() + ": " + getNumberRelatedDocument());
+    }
+    
+    private boolean obtainInputType(javax.swing.JTextField jtf) {
+        int i = 0;
+        try {
+            i = Integer.parseInt(jtf.getText());
+        } catch (NumberFormatException ex) { return false; }
+        return true;
+    }
+    
+    private void manageKeyEvents(javax.swing.JTextField jtf) {
+        String entry = jtf.getText();
+        if (jtf.equals(this.jTextField2)) { // Izbor na KONTRAGENT
+            if (this.isFromF7) {
+                getContragent();
+            } else {
+                if (entry.equals("")) {
+                    if (this.buffCodeC == 0 || this.buffNameC.equals("")) {
+                        
+                    } else {
+//                        jtf.setText("" + getCodeContragent() + " - " + getNameContragent());
+                    }
+                } else {
+                    if ((buffCodeC > 0 && entry.contains("" + buffCodeC)) || (!buffNameC.equals("") && entry.contains(buffNameC))) {
+                        jtf.setText("" + getCodeContragent() + " - " + getNameContragent());
+                    } else {
+                        getContragent();
+                    }
+                }
+            }
+            jTextField2.transferFocus();
+        } else if (jtf.equals(this.jTextField6)) {  // Izbor na SWYRZAN DOKUMENT
+            if (this.isFromF7) {
+                getRelatedDocument();
+            } else {
+                if (entry.equals("")) {
+//                    myParent.setIn_id_order_spec(-1);
+                } else {
+                    if ((entry.contains(buffNameRD) && entry.contains("" + buffNumRD)) || (!buffNameRD.equals("") && entry.contains(buffNameRD))) {
+                        jtf.setText(getNameRelatedDocument() + ": " + getNumberRelatedDocument());
+                    } else {
+                        getRelatedDocument();
+                    }
+                }
+            }
+            jTextField6.transferFocus();
+        }
+    }
+    
+    public static void setIsFromF7() {
+        isFromF7 = false;
+    }
+    
+    private int getColumnIndex(imakante.com.CustomTable tab, String in) {
+        int count = tab.getColumnCount();
+        for(int i = 0; i < count; i++) {
+            if(tab.getColumnName(i).equals(in))
+                return i;
+        }
+        return 0;
+    }
+    
+    private void HideColumns(imakante.com.CustomTable tab, int col) {
+        tab.getColumnModel().getColumn(col).setMaxWidth(0);
+        tab.getColumnModel().getColumn(col).setMinWidth(0);
+        tab.getTableHeader().getColumnModel().getColumn(col).setMaxWidth(0);
+        tab.getTableHeader().getColumnModel().getColumn(col).setMinWidth(0);
+    }
+    
     private void fGain(javax.swing.JComponent jtf) {
         jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED,
                 new java.awt.Color(255, 0, 51), null));
@@ -1032,6 +1234,54 @@ public class aeCaseOpOut extends imakante.com.vcomponents.iDialog {
     private void fLost(javax.swing.JComponent jtf) {
         jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED,
                 new java.awt.Color(255, 255, 255), null));
+    }
+    
+    public int getIdContragent() {
+        return idContragent;
+    }
+    
+    public void setIdContragent(int idContragent) {
+        this.idContragent = idContragent;
+    }
+    
+    public int getCodeContragent() {
+        return codeContragent;
+    }
+    
+    public void setCodeContragent(int codeContragent) {
+        this.codeContragent = codeContragent;
+    }
+    
+    public String getNameContragent() {
+        return nameContragent;
+    }
+    
+    public void setNameContragent(String nameContragent) {
+        this.nameContragent = nameContragent;
+    }
+    
+    public int getIdRelatedDocument() {
+        return idRelatedDocument;
+    }
+    
+    public void setIdRelatedDocument(int idRelatedDocument) {
+        this.idRelatedDocument = idRelatedDocument;
+    }
+    
+    public int getNumberRelatedDocument() {
+        return numberRelatedDocument;
+    }
+    
+    public void setNumberRelatedDocument(int numberRelatedDocument) {
+        this.numberRelatedDocument = numberRelatedDocument;
+    }
+    
+    public String getNameRelatedDocument() {
+        return nameRelatedDocument;
+    }
+    
+    public void setNameRelatedDocument(String nameRelatedDocument) {
+        this.nameRelatedDocument = nameRelatedDocument;
     }
     
 }// end class
