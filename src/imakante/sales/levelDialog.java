@@ -104,6 +104,12 @@ public class levelDialog extends javax.swing.JDialog {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("\u0421\u041a\u041b\u0410\u0414:");
 
+        jComboBox2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboBox2KeyPressed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -127,7 +133,7 @@ public class levelDialog extends javax.swing.JDialog {
                         .add(jLabel2)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPasswordField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)))
-                .add(26, 26, 26))
+                .addContainerGap())
         );
 
         layout.linkSize(new java.awt.Component[] {jLabel1, jLabel2, jLabel3, jLabel4}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
@@ -155,6 +161,10 @@ public class levelDialog extends javax.swing.JDialog {
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBox2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox2KeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jComboBox2.transferFocus(); }
+    }//GEN-LAST:event_jComboBox2KeyPressed
     
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         outLevel = 3;
@@ -162,7 +172,10 @@ public class levelDialog extends javax.swing.JDialog {
         try {
             outIndex = getKey();
             sales_main.userID_ndtur = getKey();
-        } catch(Exception xc) { sales_main.userID_ndtur = -1; sales_main.levelForWork = -1; }
+        } catch(Exception xc) { 
+            sales_main.userID_ndtur = -1; 
+            sales_main.levelForWork = -1; 
+        }
         frame.numberStorage = Integer.parseInt(sCodes.get(jComboBox2.getSelectedIndex()).toString());
     }//GEN-LAST:event_formWindowClosing
     
@@ -183,7 +196,6 @@ public class levelDialog extends javax.swing.JDialog {
                 sales_main.userID_ndtur = getKey();
                 outIndex = getKey();
                 frame.numberStorage = Integer.parseInt(sCodes.get(jComboBox2.getSelectedIndex()).toString());
-                System.out.println(" ggggg  " + frame.numberStorage);
                 this.getToolkit().beep();
             } else {
                 outLevel = 3;
@@ -204,9 +216,6 @@ public class levelDialog extends javax.swing.JDialog {
             frame.numberStorage = Integer.parseInt(sCodes.get(jComboBox2.getSelectedIndex()).toString());
             this.dispose();
         }
-//==============================================
-//    toSystemString();
-//    this.dispose();
     }//GEN-LAST:event_jPasswordField1KeyPressed
     
     private void jComboBox1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox1KeyPressed
