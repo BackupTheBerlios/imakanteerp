@@ -320,6 +320,7 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
     private Double oldRate = 0.00;
     private String Currencies[];
     private int selectComboBoxItem;
+    java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd"); 
     
     private void saveRecord() {
         oldDate = myParent.getDate();
@@ -418,7 +419,12 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
     }
     
     private void repaintComp() {
-//        jtfDate.setText("" + myParent.getDate());
+        
+        // TODO ?????????
+        
+        
+        
+//        jXDatePicker1.setDate(formatter.format(myParent.getDate()));
         jcbCurrency.setSelectedIndex(getNewComboBoxIndex(myParent.getIDCurrency()));
         jtfRate.setText(myParent.getRateValue().toString());
     }

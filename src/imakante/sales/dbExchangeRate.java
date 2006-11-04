@@ -4,15 +4,20 @@ package imakante.sales;
 public class dbExchangeRate extends imakante.com.dbObject {
     
     private int indexConnOfId[] = null;
-    private String date = null;
+    private String ERDate = "";
     private int id_money = 0;
     private Double rate = 0.00;
     private java.sql.Connection conn;
     private String splitCurrencies[];
+    private String in_DATE = "";
+    private org.jdesktop.swingx.JXDatePicker dp;
+    java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd"); 
     
     public dbExchangeRate(java.sql.Connection conn) {
         super(conn);
         prepareCstm();
+        dp = new org.jdesktop.swingx.JXDatePicker();
+        in_DATE = (String)formatter.format(dp.getDate());
     }
     
     protected void prepareCstm() {
@@ -25,7 +30,7 @@ public class dbExchangeRate extends imakante.com.dbObject {
         try {
             getCstm().setInt("comprator", getComprator());
             getCstm().setInt("in_id", getId());
-            getCstm().setString("in_date", getDate());
+            getCstm().setString("in_date", getERDate());
             getCstm().setInt("in_id_money", getIDCurrency());
             getCstm().setDouble("in_value", getRateValue());
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
@@ -49,7 +54,7 @@ public class dbExchangeRate extends imakante.com.dbObject {
     
     public void insertRow(String in_date) {
         setComprator(1);
-        this.date = in_date;
+        this.ERDate = in_date;
         this.id_money = 0;
         this.rate = 0.00;
         try {
@@ -61,7 +66,7 @@ public class dbExchangeRate extends imakante.com.dbObject {
    public void updateRow(int in_id, String in_date, int in_id_money, Double in_value) {
         setComprator(2);
         this.setId(in_id);
-        this.date = in_date;
+//        this.setERDate(in_date);
         this.id_money = in_id_money;
         this.rate = in_value;
         try {
@@ -86,7 +91,7 @@ public class dbExchangeRate extends imakante.com.dbObject {
             registerParameters();
             setRs(getCstm().executeQuery());
             while(getRs().next()) {
-                date = getRs().getDate("date_sl_exchange_rate").toString();
+                ERDate = getRs().getDate("date_sl_exchange_rate").toString();
                 id_money = getRs().getInt("id_n_money");
                 rate = getRs().getDouble("value_sl_exchange_rate");
             }
@@ -94,10 +99,10 @@ public class dbExchangeRate extends imakante.com.dbObject {
         return getRs();
     }
     
-    public java.sql.ResultSet searchRecords(String in_date, int in_id_money) {
+    public java.sql.ResultSet searchRecords(String in_date, String in_id_money) {
         setComprator(5);
-        this.date = in_date;
-        this.id_money = in_id_money;
+//        this.setERDate(in_date);
+//        this.id_money = in_id_money;
         try {
             registerParameters();
             setRs(getCstm().executeQuery());
@@ -126,12 +131,12 @@ public class dbExchangeRate extends imakante.com.dbObject {
         return return_int;
     }
     
-    public String getDate() {
-        return date;
+    public String getERDate() {
+        return ERDate;
     }
     
-    public void setDate(String Date) {
-        this.date = Date;
+    public void setERDate(org.jdesktop.swingx.JXDatePicker ERDate) {
+        this.ERDate = (String)formatter.format(ERDate.getDate());
     }
     
     public int getIDCurrency() {

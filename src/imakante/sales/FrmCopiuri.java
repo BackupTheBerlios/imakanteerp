@@ -37,7 +37,7 @@ public class FrmCopiuri extends  imakante.com.vcomponents.iInternalFrame impleme
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("\u041f\u0410\u0420\u0418\u0427\u041d\u0418 \u041e\u041f\u0418\u0421\u0418");
+        setTitle("\u041f\u0430\u0440\u0438\u0447\u043d\u0438 \u043e\u043f\u0438\u0441\u0438");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
         setMinimumSize(new java.awt.Dimension(560, 480));
         setPreferredSize(new java.awt.Dimension(560, 480));
@@ -83,6 +83,7 @@ public class FrmCopiuri extends  imakante.com.vcomponents.iInternalFrame impleme
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u0414\u0410\u0422\u0410", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(0, 51, 153)));
+        jPanel2.setToolTipText("\u0421\u043b\u0435\u0434 \u0438\u0437\u0431\u043e\u0440 \u043d\u0430 \u0436\u0435\u043b\u0430\u043d\u0438\u044f \u043f\u0435\u0440\u0438\u043e\u0434, \u043d\u0430\u0442\u0438\u0441\u043d\u0435\u0442\u0435 '\u0422\u044a\u0440\u0441\u0435\u043d\u0435'");
         jXDatePicker1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jXDatePicker1ActionPerformed(evt);
@@ -315,7 +316,8 @@ public class FrmCopiuri extends  imakante.com.vcomponents.iInternalFrame impleme
     private void prepareConn() {
         try{
             conn =  myframe.getConn();
-            if(conn == null) { System.out.println("CAN NOT ESTABLISH CONNECTION!"); }
+            if(conn == null) 
+                System.out.println("CAN NOT ESTABLISH CONNECTION!");
         } catch(Exception e) { e.printStackTrace(); }
     }
     

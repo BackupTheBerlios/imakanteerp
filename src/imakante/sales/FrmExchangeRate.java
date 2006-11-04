@@ -10,6 +10,8 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
         constructObject();
         initTable();
         initComponents();
+        dp = new org.jdesktop.swingx.JXDatePicker();
+        in_DATE = (String)formatter.format(dp.getDate());
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -169,7 +171,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jtfCurrencyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCurrencyActionPerformed
         searchRecords();
     }//GEN-LAST:event_jtfCurrencyActionPerformed
@@ -206,18 +208,92 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
         unload();
     }//GEN-LAST:event_jbCloseActionPerformed
     
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
+    private javax.swing.JButton jbClose;
+    private javax.swing.JButton jbDelete;
+    private javax.swing.JButton jbDropData;
+    private javax.swing.JButton jbEdit;
+    private javax.swing.JButton jbNew;
+    private javax.swing.JButton jbPrint;
+    private javax.swing.JButton jbPrintReport;
+    private javax.swing.JButton jbRefresh;
+    private javax.swing.JButton jbSearch;
+    private javax.swing.JLabel jlCurrency;
+    private javax.swing.JLabel jlDate;
+    private javax.swing.JPanel jpBottom;
+    private javax.swing.JPanel jpMiddle;
+    private javax.swing.JPanel jpSearch;
+    private javax.swing.JPanel jpTop;
+    private javax.swing.JScrollPane jspData;
+    private javax.swing.JTextField jtfCurrency;
+    // End of variables declaration//GEN-END:variables
+    
+    private  imakante.com.vcomponents.iFrame myframe;
+    private  java.sql.Connection conn;
+    private  java.sql.ResultSet rs;
+    private  imakante.sales.dbExchangeRate internalObject;
+    private  imakante.com.CustomTableModel model;
+    private  imakante.com.CustomTable table;
+    public static final String Names[] = {"id", "\u0414\u0430\u0442\u0430",
+    "id_n_money", "\u041A\u043E\u0434 \u0432\u0430\u043B\u0443\u0442\u0430", "\u0418\u043C\u0435 \u0432\u0430\u043B\u0443\u0442\u0430",
+    "\u041a\u0443\u0440\u0441"};
+    
+    private int id = 0; // imena ot tablicata
+    private String date = "";
+    private int idCurrency = 0;
+    private Double rate = 0.00;
+    private String Currencies[]; //imena na grupi
+    private int selectComboBoxItem;
+    private  boolean atBegining = false;
+    private  boolean atEnd = false;
+    private int row;
+    
+    private String in_DATE = "";
+    private org.jdesktop.swingx.JXDatePicker dp;
+    java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd"); 
+    
+    private void prepareConn() {
+        try{
+            conn =  myframe.getConn();
+            if(conn == null)
+                System.out.println("CONNECTION CAN NOT BE ESTABLISHED!!!");
+        } catch(Exception e) { e.printStackTrace(); }
+    }
+    
+    private void constructObject() {
+        try {
+            internalObject = new imakante.sales.dbExchangeRate(conn);
+        } catch(Exception e) { e.printStackTrace(); }
+    }
+    
+    private void initTable() {
+        try {
+            rs = internalObject.getTable();
+            model = new imakante.com.CustomTableModel(getConn(), rs, Names);
+            table = new imakante.com.CustomTable(model);
+            HideColumns(getColumnIndex("id"));
+            HideColumns(getColumnIndex("id_n_money"));
+        } catch(Exception e) { e.printStackTrace(); }
+        table.requestFocus();
+        try {
+            table.setEditingRow(0);
+        } catch(Exception ex) {  }
+    }
+    
     private void searchRecords() {
         try {
             try {
-                rs = internalObject.searchRecords(jXDatePicker1.getDate().toString(), Integer.parseInt(jtfCurrency.getText()));
+                rs = internalObject.searchRecords((String)formatter.format(jXDatePicker1.getDate()), jtfCurrency.getText());
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
                 jXDatePicker1.requestFocus();
             }
             jspData.remove(table);
-            model = new imakante.com.CustomTableModel(getConn(), rs, null);
+            model = new imakante.com.CustomTableModel(getConn(), rs, Names);
             table = new imakante.com.CustomTable(model);
-            HideColumns(0);
+            HideColumns(getColumnIndex("id"));
+            HideColumns(getColumnIndex("id_n_money"));
             jspData.getViewport().add(table);
             jspData.repaint();
         } catch(Exception e) { e.printStackTrace(); }
@@ -258,10 +334,10 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     protected void refreshTable() {
         jspData.remove(table);
         rs = internalObject.getTable();
-        model = new imakante.com.CustomTableModel(getConn(), rs, null);
+        model = new imakante.com.CustomTableModel(getConn(), rs, Names);
         table = new imakante.com.CustomTable(model);
-        HideColumns(0);
-        HideColumns(2);
+        HideColumns(getColumnIndex("id"));
+        HideColumns(getColumnIndex("id_n_money"));
         jspData.getViewport().add(table);
         jspData.repaint();
     }
@@ -293,74 +369,6 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     public void windowActivated(java.awt.event.WindowEvent e) {
     }
     public void windowDeactivated(java.awt.event.WindowEvent e) {
-    }
-    
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
-    private javax.swing.JButton jbClose;
-    private javax.swing.JButton jbDelete;
-    private javax.swing.JButton jbDropData;
-    private javax.swing.JButton jbEdit;
-    private javax.swing.JButton jbNew;
-    private javax.swing.JButton jbPrint;
-    private javax.swing.JButton jbPrintReport;
-    private javax.swing.JButton jbRefresh;
-    private javax.swing.JButton jbSearch;
-    private javax.swing.JLabel jlCurrency;
-    private javax.swing.JLabel jlDate;
-    private javax.swing.JPanel jpBottom;
-    private javax.swing.JPanel jpMiddle;
-    private javax.swing.JPanel jpSearch;
-    private javax.swing.JPanel jpTop;
-    private javax.swing.JScrollPane jspData;
-    private javax.swing.JTextField jtfCurrency;
-    // End of variables declaration//GEN-END:variables
-    
-    private  imakante.com.vcomponents.iFrame myframe;
-    private  java.sql.Connection conn;
-    private  java.sql.ResultSet rs;
-    private  imakante.sales.dbExchangeRate internalObject;
-    private  imakante.com.CustomTableModel model;
-    private  imakante.com.CustomTable table;
-    public static final String Names[] = {"id", "\u0414\u0430\u0442\u0430",
-    "id_currency", "\u0412\u0430\u043b\u0443\u0442\u0430", "\u041a\u0443\u0440\u0441"};
-    
-    private int id = 0; // imena ot tablicata
-    private String date = null;
-    private int idCurrency = 0;
-    private Double rate = 0.00;
-    private String Currencies[]; //imena na grupi
-    private int selectComboBoxItem;
-    private  boolean atBegining = false;
-    private  boolean atEnd = false;
-    private int row;
-    
-    private void prepareConn() {
-        try{
-            conn =  myframe.getConn();
-            if(conn == null){System.out.println("CONNECTION CAN NOT BE ESTABLISHED!!!");
-            }
-        } catch(Exception e) { e.printStackTrace(); }
-    }
-    
-    private void constructObject() {
-        try {
-            internalObject = new imakante.sales.dbExchangeRate(conn);
-        } catch(Exception e) { e.printStackTrace(); }
-    }
-    
-    private void initTable() {
-        try {
-            rs = internalObject.getTable();
-            model = new imakante.com.CustomTableModel(getConn(), rs, Names);
-            table = new imakante.com.CustomTable(model);
-            HideColumns(0);
-            HideColumns(2);
-        } catch(Exception e) { e.printStackTrace(); }
-        table.requestFocus();
-        try {
-            table.setEditingRow(0);
-        } catch(Exception ex) {  }
     }
     
     public imakante.sales.dbExchangeRate getInternalObject() {
@@ -435,8 +443,8 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
         return date;
     }
     
-    public void setDate(String Date) {
-        this.date = Date;
+    public void setDate(String date) {
+        this.date = date;
     }
     
     public int getIDCurrency() {
@@ -467,7 +475,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     
     public void mOneRowPlus() {
         if(getRow() <= getMaxRow()) {
-            if(getRow() < getMaxRow()) 
+            if(getRow() < getMaxRow())
                 setRow(getRow() + 1);
             setAtBegining(false);
             try {
@@ -482,7 +490,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     
     public  void mOneRowMinus() {
         if(getRow() >= 0) {
-            if(getRow() > 0) 
+            if(getRow() > 0)
                 setRow(getRow() - 1);
             setAtEnd(false);
             try {
