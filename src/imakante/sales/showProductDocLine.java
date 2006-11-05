@@ -37,7 +37,7 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
         
         if(myParent.getDocFacadeType()==aeDocumentFacade.PRIEMATELNA_RAZPISKA)
         {
-           HideColumns(getColumnIndex("Номер склад"));
+           HideColumns(getColumnIndex("Код на склада"));
            HideColumns(getColumnIndex("Име на склада"));
            HideColumns(getColumnIndex("Наличност"));
            
@@ -45,7 +45,7 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog
               
         }
        // premestvane na kolonite
-        table.moveColumn(getColumnIndex("Номер склад"),0);
+        table.moveColumn(getColumnIndex("Код на склада"),0);
         table.moveColumn(getColumnIndex("Код на продукта"),1);
         table.moveColumn(getColumnIndex("Име на склада"),2);
         table.moveColumn(getColumnIndex("Наличност"),3);
