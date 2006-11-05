@@ -2646,22 +2646,26 @@ class printF
      colWidt = pageWidth/colHr.length-1;
      for(int i=0;i<colHr.length;i++)
      {
-         tmp = "                                                                                            ";
-         tmp = tmp.concat(colHr[i].getTextFieldExpression_text());
+        
+         tmp = colHr[i].getTextFieldExpression_text();
+         tmp = tmp.concat("                                                                                      ");
          tmp ="| "+tmp.substring(0,colWidt);
          row += tmp ;
          
      }
      dataString += row+" | ";
      dataString+= "\n";
+     System.out.println(dataString);
    // data column  
+    
      while(rs.next())
      {
-        
+         row="";
          for(int i=0;i<colDa.length;i++)
          {
-             tmp = "                                                                                            ";
-             tmp = tmp.concat(String.valueOf(rs.getObject(colDa[i].getTextFieldExpression_text())));
+            
+             tmp = String.valueOf(rs.getObject(colDa[i].getTextFieldExpression_text()));
+             tmp = tmp.concat("                                                                                      ");
              tmp ="| "+tmp.substring(0,colWidt);
              row += tmp;
             
@@ -2697,10 +2701,14 @@ class printF
          {
              value = "''";
          }
+         else
+         {
+             value ="'"+value+"'";
+         }
          key = "PP\\x7b"+key+"}";
          return_value=return_value.replaceFirst(key,value);
      }
-     
+     System.out.println(return_value);
      return return_value;
  }
  
