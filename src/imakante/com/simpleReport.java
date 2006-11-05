@@ -1834,7 +1834,8 @@ public String toString()
  public Element readJasperXML(String jrxmpName)
  {
       SAXBuilder builder = new SAXBuilder("org.apache.xerces.parsers.SAXParser");
-    
+      builder.setDTDHandler(null);
+   
      try
      {
           doc = builder.build(jrxmpName);
@@ -2578,10 +2579,11 @@ class printF
     private String space=" ";
    // private double ratioPixelCM=28.346;
     private int ratioPixelCM=28;
-    private int  pageWidth=595*ratioPixelCM;
-    private int	 pageHeight=842*ratioPixelCM;
+    private int  pageWidth=80; // broj simvoli
+    private int	 pageHeight=100;
     private int colWidt;
-    
+    private   Writer out;
+    private FileOutputStream f1;
     
     
     public printF(textField colHr[], textField colDa[], String title,String filetosave,java.sql.Connection con,Element root,HashMap inputfilters)
@@ -2593,7 +2595,7 @@ class printF
         this.con = con;
         this.root = root;
         this.inputfilters = inputfilters;
-       
+        init();
     }
  public printF(textField colHr[], textField colDa[], String title,String filetosave,java.sql.Connection con,String jrxmpName,HashMap inputfilters)
     {
@@ -2617,11 +2619,13 @@ class printF
         } else
             root = doc.getRootElement();
         
+        init();
     }
  private void init()
  {
      try
      {
+   
      Statement st = con.createStatement();
      ResultSet rs = st.executeQuery(getSQL());
      // title
@@ -2629,11 +2633,13 @@ class printF
      {
          dataString+=" ";
      }
-     dataString+=title+"\n";
      
-     dataString+="\n";
-     dataString+="\n";
-     dataString+="\n";
+     dataString+=title+"\n";
+    
+     
+     dataString+= "\n";
+     dataString+= "\n";
+     dataString+= "\n";
      String row="";
      String tmp="";
      // column hedar
@@ -2646,8 +2652,8 @@ class printF
          row += tmp ;
          
      }
-     dataString += row+" |";
-     dataString+="\n";
+     dataString += row+" | ";
+     dataString+= "\n";
    // data column  
      while(rs.next())
      {
@@ -2660,13 +2666,16 @@ class printF
              row += tmp;
             
          }
-         dataString+=row+" |\n";
+         dataString+=row+" | "+ "\n";
          
          
      }
      
      
      // da se clozi funkciqta za futtera
+   System.out.println(dataString);
+     createFile();
+    
      }
      catch(Exception ex){ex.printStackTrace();}
      
@@ -2679,11 +2688,16 @@ class printF
      return_value = queryString.getText();
      Set  set = inputfilters.keySet();
      Iterator it = set.iterator();
+     return_value = return_value.replace('$','P');
      while(it.hasNext())
      {
          String key = (String) it.next();
-         key = "$P{"+key+"}";
          String value = (String) inputfilters.get(key);
+         if(value.length()<1)
+         {
+             value = "''";
+         }
+         key = "PP\\x7b"+key+"}";
          return_value=return_value.replaceFirst(key,value);
      }
      
@@ -2705,6 +2719,7 @@ class printF
      
  }
     
+
 }
 
 }// ens sinpleReport
