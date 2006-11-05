@@ -4,8 +4,12 @@ package imakante.com;
 import com.lowagie.text.Font;
 import com.lowagie.text.pdf.TextField;
 import imakante.sales.aeDocumentFacade;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.*;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JCheckBox;
@@ -97,7 +101,8 @@ public class simpleReport extends javax.swing.JFrame {
     private String headerTextV="Top"; 
     private String dataTextH = "Left";
     private String dataTextV = "Top";
-    
+    private  printF pprintF;
+    private String pathWithFileToSaveForPrintDos;
     
     /** Creates new form simpleReport */
     public simpleReport(HashMap inputfilters,java.sql.Connection con, imakante.com.CustomTable t,String path,String title,HashMap viewColumnsBGEN,String blankJasperFile) 
@@ -148,7 +153,7 @@ public class simpleReport extends javax.swing.JFrame {
         y = (((dim.height)-(jDialogProgresBar.getSize().height))/2);
         jDialogProgresBar.setLocation(x,y);
         jDialogProgresBar.setVisible(true);
-        
+        jButton8.setEnabled(false);
         startBuild();
         
        //  viewSimpleReport(path+defaultFiletoSave,path);
@@ -268,8 +273,10 @@ public class simpleReport extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         jLabelDataTextH = new javax.swing.JLabel();
+        jFileChSaveDos = new javax.swing.JFileChooser();
         jPanelControl = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
         jPanelData = new javax.swing.JPanel();
 
         jDialogSetup.getContentPane().setLayout(new javax.swing.BoxLayout(jDialogSetup.getContentPane(), javax.swing.BoxLayout.X_AXIS));
@@ -1114,6 +1121,11 @@ public class simpleReport extends javax.swing.JFrame {
                     .add(jLabelDataTextH))
                 .addContainerGap(149, Short.MAX_VALUE))
         );
+        jFileChSaveDos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFileChSaveDosActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -1130,6 +1142,15 @@ public class simpleReport extends javax.swing.JFrame {
 
         jPanelControl.add(jButton1);
 
+        jButton8.setText("\u0437\u0430 DOS \u043f\u0435\u0447\u0430\u0442");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        jPanelControl.add(jButton8);
+
         getContentPane().add(jPanelControl, java.awt.BorderLayout.CENTER);
 
         jPanelData.setLayout(new java.awt.BorderLayout());
@@ -1142,6 +1163,37 @@ public class simpleReport extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jFileChSaveDosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChSaveDosActionPerformed
+// TODO add your handling code here:
+        
+    }//GEN-LAST:event_jFileChSaveDosActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+// TODO add your handling code here:
+        setUPFileChooser();
+        jFileChSaveDos.showSaveDialog(this);
+        String fileForDos = jFileChSaveDos.getSelectedFile().getName();
+        System.out.println(fileForDos);
+        pathWithFileToSaveForPrintDos = jFileChSaveDos.getSelectedFile().getAbsolutePath();
+        System.out.println(pathWithFileToSaveForPrintDos);
+        Thread tr=null;
+        if((colDa!=null) && (colHr!=null))
+        {
+             tr = new Thread(new Runnable() {
+                public void run()
+                {
+                  
+                  pprintF = new  printF(colHr, colDa, title, pathWithFileToSaveForPrintDos, conn, root, inputFiltrs);
+    
+                }
+            });
+            
+        }
+        
+      tr.start();
+        
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 // TODO add your handling code here:
@@ -1349,6 +1401,7 @@ public class simpleReport extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButtonDataBorder;
     private javax.swing.JButton jButtonHeaderBorder;
     private javax.swing.JComboBox jComboBox1;
@@ -1362,6 +1415,7 @@ public class simpleReport extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboHeaderTopBorder;
     private javax.swing.JDialog jDialogProgresBar;
     private javax.swing.JDialog jDialogSetup;
+    private javax.swing.JFileChooser jFileChSaveDos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2419,7 +2473,8 @@ private void engine()
             isFinishAll = true;
           jProgressBar1.setValue(jProgressBar1.getValue()+10);
             initColumnForCustomSetup();
-         jProgressBar1.setValue(jProgressBar1.getValue()+2);
+           jProgressBar1.setValue(jProgressBar1.getValue()+2);
+           jButton8.setEnabled(true);
         }
     });
     
@@ -2500,4 +2555,156 @@ private void restartBuild()
 {
    
 }
+private void setUPFileChooser()
+{
+    jFileChSaveDos.setFileHidingEnabled(false);
+    jFileChSaveDos.setFileSelectionMode(javax.swing.JFileChooser.FILES_ONLY);
+}
+//===================================================================
+
+class printF
+{
+    private textField colHr[];
+    private textField colDa[];
+    private String title;
+    private String filetosave;
+    private java.sql.Connection con;
+    private int offsetChar=0;
+    private Element root;
+    private HashMap inputfilters;
+    private Document doc;
+    // za izhodniq tekstov fail
+    private String dataString="";
+    private String space=" ";
+   // private double ratioPixelCM=28.346;
+    private int ratioPixelCM=28;
+    private int  pageWidth=595*ratioPixelCM;
+    private int	 pageHeight=842*ratioPixelCM;
+    private int colWidt;
+    
+    
+    
+    public printF(textField colHr[], textField colDa[], String title,String filetosave,java.sql.Connection con,Element root,HashMap inputfilters)
+    {
+        this.colDa = colDa;
+        this.colHr = colHr;
+        this.title = title;
+        this.filetosave = filetosave;
+        this.con = con;
+        this.root = root;
+        this.inputfilters = inputfilters;
+       
+    }
+ public printF(textField colHr[], textField colDa[], String title,String filetosave,java.sql.Connection con,String jrxmpName,HashMap inputfilters)
+    {
+        this.colDa = colDa;
+        this.colHr = colHr;
+        this.title = title;
+        this.filetosave = filetosave;
+        this.con = con;
+        this.inputfilters = inputfilters;
+        
+ 
+        SAXBuilder builder = new SAXBuilder("org.apache.xerces.parsers.SAXParser");
+        
+        try {
+            doc = builder.build(jrxmpName);
+        } catch(IOException ioex) {ioex.printStackTrace();} catch(org.jdom.JDOMException jex){jex.printStackTrace();};
+        
+        if(doc==null) {
+            System.out.println("Error can`t read file:"+jrxmpName) ;
+            
+        } else
+            root = doc.getRootElement();
+        
+    }
+ private void init()
+ {
+     try
+     {
+     Statement st = con.createStatement();
+     ResultSet rs = st.executeQuery(getSQL());
+     // title
+     for(int i =0 ;i<((pageWidth/2)-(title.length()/2));i++)
+     {
+         dataString+=" ";
+     }
+     dataString+=title+"\n";
+     
+     dataString+="\n";
+     dataString+="\n";
+     dataString+="\n";
+     String row="";
+     String tmp="";
+     // column hedar
+     colWidt = pageWidth/colHr.length-1;
+     for(int i=0;i<colHr.length;i++)
+     {
+         tmp = "                                                                                            ";
+         tmp = tmp.concat(colHr[i].getTextFieldExpression_text());
+         tmp ="| "+tmp.substring(0,colWidt);
+         row += tmp ;
+         
+     }
+     dataString += row+" |";
+     dataString+="\n";
+   // data column  
+     while(rs.next())
+     {
+        
+         for(int i=0;i<colDa.length;i++)
+         {
+             tmp = "                                                                                            ";
+             tmp = tmp.concat(String.valueOf(rs.getObject(colDa[i].getTextFieldExpression_text())));
+             tmp ="| "+tmp.substring(0,colWidt);
+             row += tmp;
+            
+         }
+         dataString+=row+" |\n";
+         
+         
+     }
+     
+     
+     // da se clozi funkciqta za futtera
+     }
+     catch(Exception ex){ex.printStackTrace();}
+     
+ }
+   
+ private String getSQL()
+ {
+     String return_value="";
+     Element queryString = root.getChild("queryString");
+     return_value = queryString.getText();
+     Set  set = inputfilters.keySet();
+     Iterator it = set.iterator();
+     while(it.hasNext())
+     {
+         String key = (String) it.next();
+         key = "$P{"+key+"}";
+         String value = (String) inputfilters.get(key);
+         return_value=return_value.replaceFirst(key,value);
+     }
+     
+     return return_value;
+ }
+ 
+ private void createFile()
+ {
+    try
+    {
+     FileOutputStream f1  = new FileOutputStream(filetosave);
+     Writer out = new BufferedWriter(new OutputStreamWriter(f1,"UTF-8")); 
+     out.write(dataString);
+     out.flush();
+     out.close();
+    }
+    catch(IOException io){io.printStackTrace();};
+     
+     
+ }
+    
+}
+
 }// ens sinpleReport
