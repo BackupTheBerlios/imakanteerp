@@ -45,6 +45,7 @@ public class simpleReport extends javax.swing.JFrame {
     private HashMap viewColumnsBGEN;
     private String blankJasperFile;
     private HashMap inputFiltrs;
+    private HashMap inputFiltrsForDos;
     private net.sf.jasperreports.engine.JasperPrint jasperPrint ;
     private net.sf.jasperreports.view.JRViewer jrv;
     private java.sql.Connection conn;
@@ -111,6 +112,7 @@ public class simpleReport extends javax.swing.JFrame {
         this.viewColumnsBGEN = viewColumnsBGEN;
         defaultFiletoSave += blankJasperFile;
         inputFiltrs = inputfilters;
+        inputFiltrsForDos = new HashMap(inputfilters);
         conn = con;
         table = t;
         this.path = path;
@@ -1184,7 +1186,7 @@ public class simpleReport extends javax.swing.JFrame {
                 public void run()
                 {
                   
-                  pprintF = new  printF(colHr, colDa, title, pathWithFileToSaveForPrintDos, conn, root, inputFiltrs);
+                  pprintF = new  printF(colHr, colDa, title, pathWithFileToSaveForPrintDos, conn, root, inputFiltrsForDos);
     
                 }
             });
@@ -2584,7 +2586,7 @@ class printF
     private int colWidt;
     private   Writer out;
     private FileOutputStream f1;
-    
+    private String SQL=null;
     
     public printF(textField colHr[], textField colDa[], String title,String filetosave,java.sql.Connection con,Element root,HashMap inputfilters)
     {
@@ -2627,7 +2629,9 @@ class printF
      {
    
      Statement st = con.createStatement();
+     
      ResultSet rs = st.executeQuery(getSQL());
+     
      // title
      for(int i =0 ;i<((pageWidth/2)-(title.length()/2));i++)
      {
@@ -2649,11 +2653,18 @@ class printF
         
          tmp = colHr[i].getTextFieldExpression_text();
          tmp = tmp.concat("                                                                                      ");
-         tmp ="| "+tmp.substring(0,colWidt);
+         tmp =" | "+tmp.substring(0,colWidt);
          row += tmp ;
          
      }
      dataString += row+" | ";
+    
+     int cc = row.length()+2;
+     dataString+= "\n";
+     for(int i=0;i<cc;i++)
+     {
+         dataString+="-";
+     }
      dataString+= "\n";
      System.out.println(dataString);
    // data column  
@@ -2666,7 +2677,7 @@ class printF
             
              tmp = String.valueOf(rs.getObject(colDa[i].getTextFieldExpression_text()));
              tmp = tmp.concat("                                                                                      ");
-             tmp ="| "+tmp.substring(0,colWidt);
+             tmp =" | "+tmp.substring(0,colWidt);
              row += tmp;
             
          }
@@ -2697,7 +2708,8 @@ class printF
      {
          String key = (String) it.next();
          String value = (String) inputfilters.get(key);
-         if(value.length()<1)
+         
+         if( value==null && value.length()<1)
          {
              value = "''";
          }
@@ -2707,8 +2719,10 @@ class printF
          }
          key = "PP\\x7b"+key+"}";
          return_value=return_value.replaceFirst(key,value);
+         
      }
      System.out.println(return_value);
+     SQL = return_value;
      return return_value;
  }
  
@@ -2717,7 +2731,7 @@ class printF
     try
     {
      FileOutputStream f1  = new FileOutputStream(filetosave);
-     Writer out = new BufferedWriter(new OutputStreamWriter(f1,"UTF-8")); 
+     Writer out = new BufferedWriter(new OutputStreamWriter(f1,"CP866")); 
      out.write(dataString);
      out.flush();
      out.close();
