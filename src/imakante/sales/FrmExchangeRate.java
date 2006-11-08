@@ -12,6 +12,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
         initComponents();
         dp = new org.jdesktop.swingx.JXDatePicker();
         in_DATE = (String)formatter.format(dp.getDate());
+        date = in_DATE;
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -240,7 +241,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     "\u041a\u0443\u0440\u0441"};
     
     private int id = 0; // imena ot tablicata
-    private String date = "";
+    private String date = "2000-01-01";
     private int idCurrency = 0;
     private Double rate = 0.00;
     private String Currencies[]; //imena na grupi
@@ -277,6 +278,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
         } catch(Exception e) { e.printStackTrace(); }
         table.requestFocus();
         try {
+            refreshTable();
             table.setEditingRow(0);
         } catch(Exception ex) {  }
     }
@@ -533,9 +535,11 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     
     private void setAllVariables(){
         setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
-        setDate((String) table.getValueAt(getRow(), getColumnIndex("\u0414\u0430\u0442\u0430")));
+        java.sql.Date d = (java.sql.Date) table.getValueAt(getRow(), getColumnIndex("\u0414\u0430\u0442\u0430"));
+        setDate(d.toString());
         setIDCurrency((Integer) table.getValueAt(getRow(), getColumnIndex("\u0412\u0430\u043b\u0443\u0442\u0430")));
-        setRateValue((Double) table.getValueAt(getRow(), getColumnIndex("\u041a\u0443\u0440\u0441")));
+        java.math.BigDecimal bd2d = (java.math.BigDecimal) table.getValueAt(getRow(), getColumnIndex("\u041a\u0443\u0440\u0441"));
+        setRateValue(bd2d.doubleValue());
     }
     
     public java.sql.Connection getConn() {
