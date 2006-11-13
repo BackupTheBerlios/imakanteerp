@@ -328,14 +328,17 @@ public class dlgLogin extends javax.swing.JDialog {
             }
         } catch(ClassNotFoundException e)  {
             System.err.println("JDBC Driver: " + e.getMessage());
+            buttonRelease();
         } catch(SQLException e){
             System.err.println("Unable to connect");
             System.err.println("SQLException: " + e.getMessage());
             JOptionPane.showMessageDialog(null,"Възникна проблем при опита за връзка с базата.",sMsgTitle,JOptionPane.WARNING_MESSAGE);
             e.printStackTrace();
+            buttonRelease();
         } catch (Exception e){
             JOptionPane.showMessageDialog(null,"Възникна проблем при опита за връзка с базата.",sMsgTitle,JOptionPane.WARNING_MESSAGE);
             this.jUserTxtField.requestFocus();
+            buttonRelease();
         }
         // Close dialog
        
@@ -363,4 +366,7 @@ public class dlgLogin extends javax.swing.JDialog {
     private  java.sql.Statement stm;
     private String pathRep=""; // key for report dir
     private String path=""; // path for report dir
+    private void buttonRelease(){
+    imakante.com.NewMain.setB_SL(true);   
+        }
 }

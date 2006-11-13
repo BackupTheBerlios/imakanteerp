@@ -346,6 +346,7 @@ public class FrmFirmParam extends javax.swing.JDialog  {
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         changeParam();
+        close();
     }//GEN-LAST:event_jButton1ActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -440,6 +441,7 @@ public class FrmFirmParam extends javax.swing.JDialog  {
             "`ls_sluj`";
     
     private void getParam(){
+        System.out.println("ot get na Slujebni");
         try {
             stm = conn.createStatement();
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
@@ -476,7 +478,7 @@ public class FrmFirmParam extends javax.swing.JDialog  {
     }
     
     private void changeParam() {
-        
+        System.out.println("ot set na Slujebni");
         try {
             stm = conn.createStatement();
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
