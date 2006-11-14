@@ -73,51 +73,267 @@ public class FrmFirmParam extends javax.swing.JDialog  {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u0424\u0438\u0440\u043c\u0435\u043d\u0438 \u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0438"));
         jLabel1.setText("\u0418\u043c\u0435 \u043d\u0430 \u0444\u0438\u0440\u043c\u0430\u0442\u0430:");
 
+        jtfName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfNameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfNameFocusLost(evt);
+            }
+        });
+
         jLabel2.setText("\u0418\u041d:");
+
+        jtfBul.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfBulFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfBulFocusLost(evt);
+            }
+        });
 
         jLabel3.setText("\u0414\u0430\u043d\u044a\u0447\u0435\u043d \u043d\u043e\u043c\u0435\u0440:");
 
+        jtfDan.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfDanFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfDanFocusLost(evt);
+            }
+        });
+
         jLabel4.setText("\u0414\u0430\u0442\u0430 \u0434\u0430\u043d\u044a\u0447\u043d\u0430 \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044f:");
+
+        jtfData_r.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfData_rFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfData_rFocusLost(evt);
+            }
+        });
 
         jLabel5.setText("\u0414\u0430\u0442\u0430 \u043f\u0440\u043e\u043c\u044f\u043d\u0430 \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044f:");
 
+        jtfData_c.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfData_cFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfData_cFocusLost(evt);
+            }
+        });
+
         jLabel6.setText("\u0410\u0434\u0440\u0435\u0441:");
+
+        jtfAddress.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfAddressFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfAddressFocusLost(evt);
+            }
+        });
 
         jLabel7.setText("\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u043e \u043c\u044f\u0441\u0442\u043e:");
 
+        jtfNm.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfNmFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfNmFocusLost(evt);
+            }
+        });
+
         jLabel8.setText("\u041f\u043e\u0449\u0435\u043d\u0441\u043a\u0438 \u043a\u043e\u0434:");
+
+        jtfCode.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfCodeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfCodeFocusLost(evt);
+            }
+        });
 
         jLabel9.setText("T\u0435\u043b\u0435\u0444\u043e\u043d:");
 
+        jtfTel.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfTelFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfTelFocusLost(evt);
+            }
+        });
+
         jLabel10.setText("e-mail:");
+
+        jtfEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfEmailFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfEmailFocusLost(evt);
+            }
+        });
 
         jLabel11.setText("\u041d\u041a\u0418\u0414:");
 
+        jtfNkid.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfNkidFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfNkidFocusLost(evt);
+            }
+        });
+
         jLabel12.setText("\u0418\u043c\u0435 \u0443\u043f\u0440\u0430\u0432\u0438\u0442\u0435\u043b:");
+
+        jtfBoss.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfBossFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfBossFocusLost(evt);
+            }
+        });
 
         jLabel13.setText("\u0418\u043c\u0435 \u0441\u0447\u0435\u0442\u043e\u0432\u043e\u0434\u0438\u0442\u0435\u043b:");
 
+        jtfAcc.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfAccFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfAccFocusLost(evt);
+            }
+        });
+
         jLabel14.setText("Web:");
+
+        jtfWeb.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfWebFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfWebFocusLost(evt);
+            }
+        });
+
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField1FocusLost(evt);
+            }
+        });
 
         jLabel15.setText("\u0415\u0413\u041d \u0443\u043f\u0440\u0430\u0432\u0438\u0442\u0435\u043b:");
 
         jLabel16.setText("\u041d\u041b\u041a:");
 
+        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField2FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField2FocusLost(evt);
+            }
+        });
+
         jLabel17.setText("\u0411\u0430\u043d\u043a\u0430 \u0440\u0430\u0437\u043f\u043b\u0430\u0449\u0430\u0442\u0435\u043b\u043d\u0430 \u0441\u043c\u0435\u0442\u043a\u0430:");
+
+        jTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField3FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField3FocusLost(evt);
+            }
+        });
 
         jLabel18.setText("IBAN:");
 
+        jTextField4.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField4FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField4FocusLost(evt);
+            }
+        });
+
         jLabel19.setText("BIC:");
+
+        jTextField5.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField5FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField5FocusLost(evt);
+            }
+        });
 
         jLabel20.setText("\u0411\u0430\u043d\u043a\u0430 \u0414\u0414\u0421 \u0441\u043c\u0435\u0442\u043a\u0430:");
 
+        jTextField6.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField6FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField6FocusLost(evt);
+            }
+        });
+
         jLabel21.setText("IBAN:");
 
+        jTextField7.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField7FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField7FocusLost(evt);
+            }
+        });
+
         jLabel22.setText("BIC:");
+
+        jTextField8.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField8FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField8FocusLost(evt);
+            }
+        });
 
         jLabel23.setText("\u0412\u0430\u043b\u0443\u0442\u0430 \u0440\u0430\u0437\u043f\u043b\u0430\u0449\u0430\u0442\u0435\u043b\u043d\u0430:");
 
         jLabel24.setText("\u0412\u0430\u043b\u0443\u0442\u0430 \u0414\u0414\u0421:");
+
+        jTextField9.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField9FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField9FocusLost(evt);
+            }
+        });
+
+        jTextField10.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField10FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField10FocusLost(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -340,6 +556,198 @@ public class FrmFirmParam extends javax.swing.JDialog  {
         setBounds((screenSize.width-684)/2, (screenSize.height-481)/2, 684, 481);
     }// </editor-fold>//GEN-END:initComponents
     
+    private void jTextField10FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField10FocusLost
+fLost(jTextField10);
+    }//GEN-LAST:event_jTextField10FocusLost
+    
+    private void jTextField9FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField9FocusLost
+fLost(jTextField9);
+    }//GEN-LAST:event_jTextField9FocusLost
+    
+    private void jTextField8FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField8FocusLost
+fLost(jTextField8);
+    }//GEN-LAST:event_jTextField8FocusLost
+    
+    private void jTextField7FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField7FocusLost
+fLost(jTextField7);
+    }//GEN-LAST:event_jTextField7FocusLost
+    
+    private void jTextField6FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusLost
+fLost(jTextField6);
+    }//GEN-LAST:event_jTextField6FocusLost
+    
+    private void jTextField5FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField5FocusLost
+fLost(jTextField5);
+    }//GEN-LAST:event_jTextField5FocusLost
+    
+    private void jTextField4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusLost
+fLost(jTextField4);
+    }//GEN-LAST:event_jTextField4FocusLost
+    
+    private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
+fLost(jTextField3);
+    }//GEN-LAST:event_jTextField3FocusLost
+    
+    private void jtfAccFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfAccFocusLost
+fLost(jtfAcc);
+    }//GEN-LAST:event_jtfAccFocusLost
+    
+    private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
+fLost(jTextField2);
+    }//GEN-LAST:event_jTextField2FocusLost
+    
+    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+fLost(jTextField1);
+    }//GEN-LAST:event_jTextField1FocusLost
+    
+    private void jtfBossFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfBossFocusLost
+fLost(jtfBoss);
+    }//GEN-LAST:event_jtfBossFocusLost
+    
+    private void jtfWebFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfWebFocusLost
+fLost(jtfWeb);
+    }//GEN-LAST:event_jtfWebFocusLost
+    
+    private void jtfNkidFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfNkidFocusLost
+fLost(jtfNkid);
+    }//GEN-LAST:event_jtfNkidFocusLost
+    
+    private void jtfEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfEmailFocusLost
+fLost(jtfEmail);
+    }//GEN-LAST:event_jtfEmailFocusLost
+    
+    private void jtfTelFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfTelFocusLost
+fLost(jtfTel);
+    }//GEN-LAST:event_jtfTelFocusLost
+    
+    private void jtfCodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfCodeFocusLost
+fLost(jtfCode);
+    }//GEN-LAST:event_jtfCodeFocusLost
+    
+    private void jtfNmFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfNmFocusLost
+fLost(jtfNm);
+    }//GEN-LAST:event_jtfNmFocusLost
+    
+    private void jtfAddressFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfAddressFocusLost
+fLost(jtfAddress);
+    }//GEN-LAST:event_jtfAddressFocusLost
+    
+    private void jtfData_cFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfData_cFocusLost
+fLost(jtfData_c);
+    }//GEN-LAST:event_jtfData_cFocusLost
+    
+    private void jtfData_rFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfData_rFocusLost
+fLost(jtfData_r);
+    }//GEN-LAST:event_jtfData_rFocusLost
+    
+    private void jtfDanFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfDanFocusLost
+fLost(jtfDan);
+    }//GEN-LAST:event_jtfDanFocusLost
+    
+    private void jtfBulFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfBulFocusLost
+    fLost(jtfBul);
+    }//GEN-LAST:event_jtfBulFocusLost
+    
+    private void jtfNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfNameFocusLost
+    fLost(jtfName);
+    }//GEN-LAST:event_jtfNameFocusLost
+    
+    private void jTextField10FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField10FocusGained
+fGain(jTextField10);
+    }//GEN-LAST:event_jTextField10FocusGained
+    
+    private void jTextField9FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField9FocusGained
+fGain(jTextField9);
+    }//GEN-LAST:event_jTextField9FocusGained
+    
+    private void jTextField8FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField8FocusGained
+fGain(jTextField8);
+    }//GEN-LAST:event_jTextField8FocusGained
+    
+    private void jTextField7FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField7FocusGained
+fGain(jTextField7);
+    }//GEN-LAST:event_jTextField7FocusGained
+    
+    private void jTextField6FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusGained
+fGain(jTextField6);
+    }//GEN-LAST:event_jTextField6FocusGained
+    
+    private void jTextField5FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField5FocusGained
+fGain(jTextField5);
+    }//GEN-LAST:event_jTextField5FocusGained
+    
+    private void jTextField4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusGained
+fGain(jTextField4);
+    }//GEN-LAST:event_jTextField4FocusGained
+    
+    private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
+fGain(jTextField3);
+    }//GEN-LAST:event_jTextField3FocusGained
+    
+    private void jtfAccFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfAccFocusGained
+fGain(jtfAcc);
+    }//GEN-LAST:event_jtfAccFocusGained
+    
+    private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
+fGain(jTextField2);
+    }//GEN-LAST:event_jTextField2FocusGained
+    
+    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+fGain(jTextField1);
+    }//GEN-LAST:event_jTextField1FocusGained
+    
+    private void jtfBossFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfBossFocusGained
+fGain(jtfBoss);
+    }//GEN-LAST:event_jtfBossFocusGained
+    
+    private void jtfWebFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfWebFocusGained
+fGain(jtfWeb);
+    }//GEN-LAST:event_jtfWebFocusGained
+    
+    private void jtfNkidFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfNkidFocusGained
+fGain(jtfNkid);
+    }//GEN-LAST:event_jtfNkidFocusGained
+    
+    private void jtfEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfEmailFocusGained
+fGain(jtfEmail);
+    }//GEN-LAST:event_jtfEmailFocusGained
+    
+    private void jtfTelFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfTelFocusGained
+fGain(jtfTel);
+    }//GEN-LAST:event_jtfTelFocusGained
+    
+    private void jtfCodeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfCodeFocusGained
+fGain(jtfCode);
+    }//GEN-LAST:event_jtfCodeFocusGained
+    
+    private void jtfNmFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfNmFocusGained
+fGain(jtfNm);
+    }//GEN-LAST:event_jtfNmFocusGained
+    
+    private void jtfAddressFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfAddressFocusGained
+fGain(jtfAddress);
+    }//GEN-LAST:event_jtfAddressFocusGained
+    
+    private void jtfData_cFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfData_cFocusGained
+fGain(jtfData_c);
+    }//GEN-LAST:event_jtfData_cFocusGained
+    
+    private void jtfData_rFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfData_rFocusGained
+fGain(jtfData_r);
+    }//GEN-LAST:event_jtfData_rFocusGained
+    
+    private void jtfDanFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfDanFocusGained
+fGain(jtfDan);
+    }//GEN-LAST:event_jtfDanFocusGained
+    
+    private void jtfBulFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfBulFocusGained
+        fGain(jtfBul);
+    }//GEN-LAST:event_jtfBulFocusGained
+    
+    private void jtfNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfNameFocusGained
+        fGain(jtfName);
+    }//GEN-LAST:event_jtfNameFocusGained
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         close();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -526,4 +934,11 @@ public class FrmFirmParam extends javax.swing.JDialog  {
         this.dispose();
     }
     
+    private void fGain(javax.swing.JComponent jtf){
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 0, 51), null));
+    }
+    
+    private void fLost(javax.swing.JComponent jtf){
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 255, 255), null));
+    }
 }
