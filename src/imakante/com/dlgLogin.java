@@ -309,6 +309,7 @@ public class dlgLogin extends javax.swing.JDialog {
                 // Login
                 Class.forName(DBDriver);
                 dbConn = DriverManager.getConnection(DBSource, DBUserName, DBPassword);
+                if(dbConn!=null){
                 // Save info to pubMain
                 NewMain.setConnection(dbConn);
                 NewMain.setUser(DBUserName);
@@ -322,23 +323,28 @@ public class dlgLogin extends javax.swing.JDialog {
                     userName = rs.getString("name_um");
                     NewMain.setUserName(userName);
                 }
-                NewMain.setParamFirm();
+                NewMain.setParamFirm();}else{
+                JOptionPane.showMessageDialog(null,"Моля изберете фирма и опитайте отново !",sMsgTitle,JOptionPane.WARNING_MESSAGE);
+                }
             } else {
                 JOptionPane.showMessageDialog(null,"Моля изберете фирма и опитайте отново !",sMsgTitle,JOptionPane.WARNING_MESSAGE);
             }
         } catch(ClassNotFoundException e)  {
-            System.err.println("JDBC Driver: " + e.getMessage());
             buttonRelease();
+            System.err.println("JDBC Driver: " + e.getMessage());
+            
         } catch(SQLException e){
+             buttonRelease();
             System.err.println("Unable to connect");
             System.err.println("SQLException: " + e.getMessage());
             JOptionPane.showMessageDialog(null,"Възникна проблем при опита за връзка с базата.",sMsgTitle,JOptionPane.WARNING_MESSAGE);
             e.printStackTrace();
-            buttonRelease();
+            
         } catch (Exception e){
+            buttonRelease();
             JOptionPane.showMessageDialog(null,"Възникна проблем при опита за връзка с базата.",sMsgTitle,JOptionPane.WARNING_MESSAGE);
             this.jUserTxtField.requestFocus();
-            buttonRelease();
+            
         }
         // Close dialog
        
@@ -347,6 +353,7 @@ public class dlgLogin extends javax.swing.JDialog {
     
     private void jCancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCancelBtnActionPerformed
         this.dispose();
+         buttonRelease();
     }//GEN-LAST:event_jCancelBtnActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -367,6 +374,6 @@ public class dlgLogin extends javax.swing.JDialog {
     private String pathRep=""; // key for report dir
     private String path=""; // path for report dir
     private void buttonRelease(){
-    imakante.com.NewMain.setB_SL(true);   
+    NewMain.setB_SL(false);   
         }
 }
