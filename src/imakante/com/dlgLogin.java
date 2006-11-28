@@ -41,15 +41,23 @@ public class dlgLogin extends javax.swing.JDialog {
             inStream = new FileInputStream(s);
             // Load from stream
             prop.loadFromXML(inStream);
+            System.out.println("Extracted properties: " + prop.toString());
             // Close file
             inStream.close();
             // Fill combo
             n = Integer.valueOf(prop.getProperty("Firms"));
-            for(i=1;i<=n;++i) {
-                sKey = "Name"+String.valueOf(i);
+            for(i = 1; i <= n; ++i) {
+                sKey = "Name" + String.valueOf(i);
                 s = prop.getProperty(sKey);
                 jLabelCombo.addItem(s);
-                pathRep = "pathrep" + String.valueOf(i); // map key to rep dir 
+                path2reports = "path2reports" + String.valueOf(i); // map key to rep dir
+                
+                
+                
+                // TODO da se izwli4at i ostanalite konfiguracionni parametri, koito sa nowi za imakante.xml
+                
+                
+                
             }
         } catch (FileNotFoundException e){
             System.err.println("FileNotFoundException: " + e.getMessage());
@@ -299,33 +307,33 @@ public class dlgLogin extends javax.swing.JDialog {
         try {
             if (nIndex != -1) {
                 // Prepare connection info
-                sKey = "Driver"+String.valueOf(nIndex+1);
+                sKey = "Driver" + String.valueOf(nIndex + 1);
                 DBDriver = prop.getProperty(sKey);
-                sKey = "URL"+String.valueOf(nIndex+1);
+                sKey = "URL" + String.valueOf(nIndex + 1);
                 DBSource = prop.getProperty(sKey);
-                path = prop.getProperty(pathRep);
+                path = prop.getProperty(path2reports);
                 DBUserName = jUserTxtField.getText();
                 DBPassword = new String(jPassField.getPassword());
                 // Login
                 Class.forName(DBDriver);
                 dbConn = DriverManager.getConnection(DBSource, DBUserName, DBPassword);
                 if(dbConn!=null){
-                // Save info to pubMain
-                NewMain.setConnection(dbConn);
-                NewMain.setUser(DBUserName);
-                NewMain.setPassword(DBPassword);
-                stm = dbConn.createStatement();
-                NewMain.setPathrep(path); // SET static literal in NewMain for path to report directory 
-                rs = stm.executeQuery("SELECT id_um, name_um FROM user_master WHERE acc_user = '"+ DBUserName+"'");
-                while(rs.next()){
-                    userId = rs.getInt("id_um");
-                    NewMain.setUserId(userId);
-                    userName = rs.getString("name_um");
-                    NewMain.setUserName(userName);
-                }
-                NewMain.setParamFirm();}else{
-                JOptionPane.showMessageDialog(null,"Моля изберете фирма и опитайте отново !",sMsgTitle,JOptionPane.WARNING_MESSAGE);
-                }
+                    // Save info to pubMain
+                    NewMain.setConnection(dbConn);
+                    NewMain.setUser(DBUserName);
+                    NewMain.setPassword(DBPassword);
+                    stm = dbConn.createStatement();
+                    NewMain.setPathrep(path); // SET static literal in NewMain for path to report directory
+                    rs = stm.executeQuery("SELECT id_um, name_um FROM user_master WHERE acc_user = '"+ DBUserName+"'");
+                    while(rs.next()){
+                        userId = rs.getInt("id_um");
+                        NewMain.setUserId(userId);
+                        userName = rs.getString("name_um");
+                        NewMain.setUserName(userName);
+                    }
+                    NewMain.setParamFirm();}else{
+                    JOptionPane.showMessageDialog(null,"Моля изберете фирма и опитайте отново !",sMsgTitle,JOptionPane.WARNING_MESSAGE);
+                    }
             } else {
                 JOptionPane.showMessageDialog(null,"Моля изберете фирма и опитайте отново !",sMsgTitle,JOptionPane.WARNING_MESSAGE);
             }
@@ -334,7 +342,7 @@ public class dlgLogin extends javax.swing.JDialog {
             System.err.println("JDBC Driver: " + e.getMessage());
             
         } catch(SQLException e){
-             buttonRelease();
+            buttonRelease();
             System.err.println("Unable to connect");
             System.err.println("SQLException: " + e.getMessage());
             JOptionPane.showMessageDialog(null,"Възникна проблем при опита за връзка с базата.",sMsgTitle,JOptionPane.WARNING_MESSAGE);
@@ -347,13 +355,13 @@ public class dlgLogin extends javax.swing.JDialog {
             
         }
         // Close dialog
-       
+        
         this.dispose();
     }//GEN-LAST:event_jLoginBtnActionPerformed
     
     private void jCancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCancelBtnActionPerformed
         this.dispose();
-         buttonRelease();
+        buttonRelease();
     }//GEN-LAST:event_jCancelBtnActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -370,10 +378,12 @@ public class dlgLogin extends javax.swing.JDialog {
     private javax.swing.JPasswordField jPassField;
     private javax.swing.JTextField jUserTxtField;
     // End of variables declaration//GEN-END:variables
+    
     private  java.sql.Statement stm;
-    private String pathRep=""; // key for report dir
-    private String path=""; // path for report dir
-    private void buttonRelease(){
-    NewMain.setB_SL(false);   
-        }
+    private String path2reports = ""; // key for report dir
+    private String path = ""; // path for report dir
+    
+    private void buttonRelease() {
+        NewMain.setB_SL(false);
+    }
 }
