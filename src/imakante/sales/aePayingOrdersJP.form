@@ -429,7 +429,7 @@
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="cc" red="cc" type="rgb"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="F7 &#x432;&#x430;&#x434;&#x438; &#x441;&#x43f;&#x438;&#x441;&#x44a;&#x43a; &#x437;&#x430; &#x438;&#x437;&#x431;&#x43e;&#x440;"/>
+                <Property name="toolTipText" type="java.lang.String" value="F7 &#x432;&#x430;&#x434;&#x438; &#x441;&#x43f;&#x438;&#x441;&#x44a;&#x43a; &#x437;&#x430; &#x438;&#x437;&#x431;&#x43e;&#x440;. &#x422;&#x44a;&#x440;&#x441;&#x435;&#x43d;&#x435;&#x442;&#x43e; &#x435; &#x432;&#x44a;&#x437;&#x43c;&#x43e;&#x436;&#x43d;&#x43e; &#x43f;&#x43e; &#x444;&#x440;&#x430;&#x433;&#x43c;&#x435;&#x43d;&#x442;&#x438; &#x43e;&#x442; &#x41a;&#x41e;&#x414; &#x438;&#x43b;&#x438; &#x418;&#x41c;&#x415; &#x43d;&#x430; &#x41a;&#x43e;&#x43d;&#x442;&#x440;&#x430;&#x433;&#x435;&#x43d;&#x442;&#x430;!"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
                     <EtchetBorder bevelType="0"/>
@@ -441,9 +441,6 @@
                 <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextField1FocusLost"/>
                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField1KeyPressed"/>
               </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTextField1.setInputVerifier(new imakante.com.InputIntegerVerifier());"/>
-              </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField2">
               <Properties>

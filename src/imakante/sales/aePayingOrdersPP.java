@@ -2,7 +2,7 @@
 package imakante.sales;
 
 public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
-    
+
     public aePayingOrdersPP(imakante.com.vcomponents.iInternalFrame frame, boolean modal) {
         super(frame, modal);
         this.myParent = (imakante.sales.FrmPayingOrders) frame;
@@ -16,7 +16,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         this.jTextField8.requestFocus();
         repaintComp();
     }
-    
+
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         jPanel1 = new javax.swing.JPanel();
@@ -48,12 +48,6 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         jLabel9 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox();
 
-        if (this.isNewRecord) {
-            myParent.setRow(myParent.getMaxRow());
-            myParent.setId((Integer) myParent.getTable().getValueAt(myParent.getRow(), myParent.getColumnIndex("id")));
-            myParent.getInternalObject().deleteRow(myParent.getId());
-            myParent.resetFields();
-        }
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("\u0418\u0437\u043f\u0438\u0441\u0432\u0430\u043d\u0435 \u043d\u0430 \u0412\u043d\u043e\u0441\u043d\u0430 \u0431\u0435\u043b\u0435\u0436\u043a\u0430");
         jPanel1.setPreferredSize(new java.awt.Dimension(263, 33));
@@ -393,34 +387,34 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-736)/2, (screenSize.height-380)/2, 736, 380);
     }// </editor-fold>//GEN-END:initComponents
-    
+
     private void jTextField7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jTextField7.transferFocus();
         } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextField7.setText(""); }
     }//GEN-LAST:event_jTextField7KeyPressed
-    
+
     private void jTextField6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jTextField6.transferFocus();
         } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextField6.setText(""); }
     }//GEN-LAST:event_jTextField6KeyPressed
-    
+
     private void jTextField4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jTextField4.transferFocus();
         } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextField4.setText(""); }
     }//GEN-LAST:event_jTextField4KeyPressed
-    
+
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
         myParent.printOrder();
     }//GEN-LAST:event_jButtonPrintActionPerformed
-    
+
     private void jComboBox1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox1FocusLost
         fLost(jComboBox1);
     }//GEN-LAST:event_jComboBox1FocusLost
-    
+
     private void jComboBox1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox1FocusGained
         fGain(jComboBox1);
     }//GEN-LAST:event_jComboBox1FocusGained
-    
+
     private void jTextField8FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField8FocusLost
         if (this.isFromF7) ;
         else {
@@ -433,27 +427,27 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         }
         fLost(jTextField8);
     }//GEN-LAST:event_jTextField8FocusLost
-    
+
     private void jTextField4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusLost
         fLost(jTextField4);
     }//GEN-LAST:event_jTextField4FocusLost
-    
+
     private void jTextField6FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusLost
         fLost(jTextField6);
     }//GEN-LAST:event_jTextField6FocusLost
-    
+
     private void jTextField6FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusGained
         fGain(jTextField6);
     }//GEN-LAST:event_jTextField6FocusGained
-    
+
     private void jTextField7FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField7FocusLost
         fLost(jTextField7);
     }//GEN-LAST:event_jTextField7FocusLost
-    
+
     private void jTextField7FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField7FocusGained
         fGain(jTextField7);
     }//GEN-LAST:event_jTextField7FocusGained
-    
+
     private void jTextField8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jTextField8.transferFocus();
         } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) {
@@ -461,40 +455,40 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
             getPerson();
         } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) { jTextField8.setText(""); }
     }//GEN-LAST:event_jTextField8KeyPressed
-    
+
     private void jTextField8FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField8FocusGained
         fGain(jTextField8);
     }//GEN-LAST:event_jTextField8FocusGained
-    
+
     private void jTextField4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusGained
         fGain(jTextField4);
         jTextField4.selectAll();
     }//GEN-LAST:event_jTextField4FocusGained
-    
+
     private void jButtonCloseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonCloseKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonClose.doClick(); }
     }//GEN-LAST:event_jButtonCloseKeyPressed
-    
+
     private void jButtonSaveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonSaveKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonSave.doClick(); }
     }//GEN-LAST:event_jButtonSaveKeyPressed
-    
+
     private void jButtonToEndKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonToEndKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonToEnd.doClick(); }
     }//GEN-LAST:event_jButtonToEndKeyPressed
-    
+
     private void jButtonOneRowPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonOneRowPKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonOneRowP.doClick(); }
     }//GEN-LAST:event_jButtonOneRowPKeyPressed
-    
+
     private void jButtonOneRowMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonOneRowMKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonOneRowM.doClick(); }
     }//GEN-LAST:event_jButtonOneRowMKeyPressed
-    
+
     private void jButtonToBeginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonToBeginKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jButtonToBegin.doClick(); }
     }//GEN-LAST:event_jButtonToBeginKeyPressed
-    
+
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         if (!areThereEmptyFields()) {
             saveRecord();
@@ -507,7 +501,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
                     "\u0418\u041c\u0410\u041a\u0410\u041d\u0422\u0415", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonSaveActionPerformed
-    
+
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
         closeForm();
     }//GEN-LAST:event_jButtonCloseActionPerformed
@@ -585,7 +579,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         jButtonOneRowP.repaint();
         repaintComp();
     }//GEN-LAST:event_jButtonToBeginActionPerformed
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonClose;
     private javax.swing.JButton jButtonOneRowM;
@@ -616,7 +610,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
-    
+
     private imakante.sales.FrmPayingOrders myParent;
     private String[] namesOrderTypes;
     private int selectedOrderType;
@@ -629,7 +623,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
     private String buffPoiasnenie = "";
     private static boolean isFromF7 = false;
     private boolean isNewRecord = false;
-    
+
     private void saveRecord() {
         try {
             myParent.setAmount(Double.parseDouble(jTextField4.getText()));
@@ -656,7 +650,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         myParent.refreshTable();
         myParent.getTable().changeSelection(myParent.getRow(), 2, false, false);
     }
-    
+
     private boolean areThereEmptyFields() {
         if (jTextField4.getText().equals("") || jTextField4.getText().equals("0.00")) {
             jTextField4.requestFocus();
@@ -669,7 +663,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
             return true;
         } else return false;
     }
-    
+
     private void getNavigationState() {
         if(myParent.isAtBegining()) {
             jButtonToBegin.setEnabled(false);
@@ -684,7 +678,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
             jButtonOneRowP.repaint();
         }
     }
-    
+
     private void repaintComp() {
 //        jComboBox1.setSelectedIndex(getNewOTIndex(myParent.getIdOrderType()));
         jComboBox1.setSelectedIndex(0); // TODO  ??? kak e prawilno???
@@ -694,7 +688,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         jTextField7.setText(myParent.getPoiasnenie());
         jTextField8.setText(myParent.getNamePerson());
     }
-    
+
     private void initOrderTypesCombo() {
         namesOrderTypes = myParent.getInternalObject().getTypesOfOreders();
         jComboBox1.addItem(new String(namesOrderTypes[0]));
@@ -702,7 +696,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
             setSelectedOrderType(getNewOTIndex(getSelectedOrderType()));
         }
     }
-    
+
     private int getNewOTIndex(int oldindex) {
         int newindex = 0;
         for(int i = 0; i < myParent.getInternalObject().getOTIndexes().length; i++) {
@@ -713,16 +707,16 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         }
         return newindex;
     }
-    
+
     private void getPerson() {
         myParent.choosePerson(jTextField8.getText());
     }
-    
+
     private void revalidatePerson() {
         myParent.setValuesFromPersonId(myParent.getIdChosenPerson());
         this.jTextField8.setText(myParent.getNameChosenPerson());
     }
-    
+
     private void initRAccountsCombo() {
         namesRAccounts = myParent.getInternalObject().getOurAccounts(1);    // 1 = wnosna belejka -> razpl. smetki
         for(int i = 0; i < namesRAccounts.length; i++)
@@ -731,7 +725,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
             setSelectedRAccount(getNewRAIndex(getSelectedRAccount()));
         }
     }
-    
+
     private int getNewRAIndex(int oldindex) {
         int newindex = 0;
         for(int i = 0; i < myParent.getInternalObject().getOAIndexes().length; i++) {
@@ -742,44 +736,44 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         }
         return newindex;
     }
-    
+
     private void fGain(javax.swing.JComponent jtf){
         jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED,
                 new java.awt.Color(255, 0, 51), null));
     }
-    
+
     private void fLost(javax.swing.JComponent jtf){
         jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED,
                 new java.awt.Color(255, 255, 255), null));
     }
-    
+
     public int getSelectedOrderType() {
         return selectedOrderType;
     }
-    
+
     public void setSelectedOrderType(int selectedOrderType) {
         this.selectedOrderType = selectedOrderType;
     }
-    
+
     public int getSelectedRAccount() {
         return selectedRAccount;
     }
-    
+
     public void setSelectedRAccount(int selectedRAccount) {
         this.selectedRAccount = selectedRAccount;
     }
-    
+
     public static void setIsFromF7() {
         isFromF7 = false;
     }
-    
+
     public void changeField() {
         jTextField8.setText(myParent.getNameChosenPerson());
         jTextField8.repaint();
         jTextField5.setText(myParent.getChosenCurrency());
         jTextField5.repaint();
     }
-    
+
     private void disableAllFields() {
         fillBuffers();
         jComboBox1.setEnabled(false);
@@ -788,7 +782,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         jTextField7.setEnabled(false);
         jTextField8.setEnabled(false);
     }
-    
+
     private void enableAllFieldsIsNew() {
         jComboBox1.setEnabled(true);
         jTextField4.setEnabled(true);
@@ -797,7 +791,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         jTextField8.setEnabled(true);
         rememberChoices();
     }
-    
+
     private void fillBuffers() {
         if (jTextField4.getText().equals("") || jTextField4.getText().equals("0.00")) {
             buffAmount = jTextField4.getText();
@@ -809,7 +803,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
             buffPerson = jTextField8.getText();
         }
     }
-    
+
     private void rememberChoices() {
         jComboBox1.setSelectedIndex(selectedOrderType);
         if (!buffCodeContragent.equals("")) {
@@ -820,7 +814,7 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         jTextField7.setText(buffPoiasnenie);
         jTextField8.setText(buffPerson);
     }
-    
+
     private void closeForm() {
         if (this.isNewRecord) {
             myParent.setRow(myParent.getMaxRow());
@@ -830,5 +824,5 @@ public class aePayingOrdersPP extends imakante.com.vcomponents.iDialog {
         }
         this.dispose();
     }
-    
+
 }

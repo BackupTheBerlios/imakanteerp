@@ -1468,7 +1468,6 @@ public class FrmPayingOrders extends imakante.com.vcomponents.iInternalFrame imp
     }
     
     protected void resetFields() {
-        setId(0);
         if (jRadioButton1.isSelected()) {
             this.setOrderingPerson(0);
             this.setIdOrderType(2);
