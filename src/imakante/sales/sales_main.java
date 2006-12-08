@@ -40,6 +40,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jButton2 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -199,7 +204,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         getContentPane().add(desktopPane, java.awt.BorderLayout.CENTER);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Group 4_ps.png")));
-        jButton2.setToolTipText("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0438 \u041b\u0438\u0446\u0430");
+        jButton2.setToolTipText("\u041b\u0438\u0446\u0430");
         jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Group 4.png")));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,7 +226,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jToolBar1.add(jButton5);
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Objects 2_large_ps.png")));
-        jButton6.setToolTipText("\u041d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0430 \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u0438");
+        jButton6.setToolTipText("\u041f\u0440\u043e\u0434\u0443\u043a\u0442\u0438");
         jButton6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Objects 2_large.png")));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,6 +235,71 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         });
 
         jToolBar1.add(jButton6);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/basket_put_16.png")));
+        jButton1.setToolTipText("\u041f\u0440\u043e\u0434\u0430\u0436\u0431\u0430 (\u0421\u0442\u043e\u043a\u043e\u0432\u0430 \u0440\u0430\u0437\u043f\u0438\u0441\u043a\u0430)");
+        jButton1.setMaximumSize(new java.awt.Dimension(45, 43));
+        jButton1.setMinimumSize(new java.awt.Dimension(45, 43));
+        jButton1.setPreferredSize(new java.awt.Dimension(45, 43));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jToolBar1.add(jButton1);
+
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sum_16.png")));
+        jButton7.setToolTipText("\u0414\u0430\u043d\u044a\u0447\u043d\u0430 \u0444\u0430\u043a\u0442\u0443\u0440\u0430");
+        jButton7.setMaximumSize(new java.awt.Dimension(45, 43));
+        jButton7.setMinimumSize(new java.awt.Dimension(45, 43));
+        jButton7.setPreferredSize(new java.awt.Dimension(45, 43));
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jToolBar1.add(jButton7);
+
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cart_add_16.png")));
+        jButton8.setToolTipText("\u041f\u0440\u0438\u0435\u043c\u0430\u0442\u0435\u043b\u043d\u0430 \u0440\u0430\u0437\u043f\u0438\u0441\u043a\u0430");
+        jButton8.setMaximumSize(new java.awt.Dimension(45, 43));
+        jButton8.setMinimumSize(new java.awt.Dimension(45, 43));
+        jButton8.setPreferredSize(new java.awt.Dimension(45, 43));
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        jToolBar1.add(jButton8);
+
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cart_go_16.png")));
+        jButton9.setToolTipText("\u041d\u0430\u0440\u0435\u0436\u0434\u0430\u043d\u0435 \u0437\u0430 \u043f\u0440\u0435\u0445\u0432\u044a\u0440\u043b\u044f\u043d\u0435");
+        jButton9.setMaximumSize(new java.awt.Dimension(45, 43));
+        jButton9.setMinimumSize(new java.awt.Dimension(45, 43));
+        jButton9.setPreferredSize(new java.awt.Dimension(45, 43));
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
+        jToolBar1.add(jButton9);
+
+        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rosette_16.png")));
+        jButton10.setToolTipText("\u041e\u0444\u0435\u0440\u0442\u0430");
+        jButton10.setMaximumSize(new java.awt.Dimension(45, 43));
+        jButton10.setMinimumSize(new java.awt.Dimension(45, 43));
+        jButton10.setPreferredSize(new java.awt.Dimension(45, 43));
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+
+        jToolBar1.add(jButton10);
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Download_ps.png")));
         jButton4.setToolTipText("\u041e\u0431\u043d\u043e\u0432\u044f\u0432\u0430\u043d\u0435");
@@ -248,7 +318,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(325, Short.MAX_VALUE)
+                .addContainerGap(100, Short.MAX_VALUE)
                 .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 179, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -1052,6 +1122,80 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-463)/2, 757, 463);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        levelDialog1 = new levelDialog(this, true, 4, stokavaRazpiskaArea);
+        levelDialog1.setVisible(true);
+        int user = userID_ndtur; //2;
+        int level = levelForWork;// 1;
+        int pricelist = 1;
+        int doctype = aeDocumentFacade.STOKOVA_RAZPISKA;
+        int storagedocdacade = numberStorage;
+        if(user != -1  && level != -1)
+            loadFrmDocFacade("\u0421\u0422\u041e\u041a\u041e\u0412\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        levelDialog1 = new levelDialog(this,true,202,danFaktArea);
+        levelDialog1.setVisible(true);
+        int user = userID_ndtur; //2;
+        int level = levelForWork;// 1;
+        int pricelist = 1;
+        int doctype = aeDocumentFacade.FAKTURA_DANACHNA;
+        int storagedocdacade = numberStorage;
+        System.out.println("Create DAN. Fak");
+        System.out.println(isMakeDocByInputData);
+        level=3;
+        if(user!=-1  && level!=-1) {
+            if(!isMakeDocByInputData) {
+                dataIn = null;
+                dataOut = null;
+                
+                loadFrmDocFacade("\u0424\u0410\u041a\u0422\u0423\u0420\u0410", user, level, pricelist, doctype, storagedocdacade, isMakeDocByInputData, dataIn, dataOut );
+            } else {
+                loadFrmDocFacade("\u0424\u0410\u041a\u0422\u0423\u0420\u0410", user, level, pricelist, doctype, storagedocdacade, isMakeDocByInputData, dataIn, dataOut );
+            }
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        levelDialog1 = new levelDialog(this,true,4,priematelnaRazpiskaArea);
+        levelDialog1.setVisible(true);
+        int user = userID_ndtur; //2;
+        int level = levelForWork;// 1;
+        int pricelist = 1;
+        int doctype = aeDocumentFacade.PRIEMATELNA_RAZPISKA;
+        int storagedocdacade = numberStorage;
+        if(user!=-1  && level!=-1) {
+            loadFrmDocFacade("\u041f\u0420\u0418\u0415\u041c\u0410\u0422\u0415\u041b\u041d\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );
+        }
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        levelDialog1 = new levelDialog(this,true,4,narezdaneZaPrehvylqneArea);
+        levelDialog1.setVisible(true);
+        int user = userID_ndtur; //2;
+        int level = levelForWork;// 1;
+        int pricelist = 1;
+        int doctype = aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE;
+        int storagedocdacade = numberStorage;
+        if(user!=-1  && level!=-1) {
+            loadFrmDocFacade("\u041d\u0410\u0420\u0415\u0416\u0414\u0410\u041d\u0415 \u0417\u0410 \u041f\u0420\u0415\u0425\u0412\u042a\u0420\u041b\u042f\u041d\u0415", user, level, pricelist, doctype, storagedocdacade, false, null, null );
+        }
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        levelDialog1 = new levelDialog(this,true,4,ofertaArea);
+        levelDialog1.setVisible(true);
+        int user = userID_ndtur; //2;
+        int level = levelForWork;// 1;
+        int pricelist = 1;
+        int doctype = aeDocumentFacade.OFERTA;
+        int storagedocdacade = numberStorage;
+        if(user!=-1  && level!=-1) {
+            loadFrmDocFacade("\u041e\u0424\u0415\u0420\u0422\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );
+        }
+    }//GEN-LAST:event_jButton10ActionPerformed
     
     private void jmiShellComandsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiShellComandsActionPerformed
         loadDBShellDialog();
@@ -1447,11 +1591,16 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenuItem fakMenu_opr;
     private javax.swing.JMenuItem fakturiMenu;
     private javax.swing.JMenu helpMenu;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
