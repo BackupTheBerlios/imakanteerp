@@ -2,8 +2,12 @@ package imakante.com;
 
 
 import com.lowagie.text.Font;
+import com.lowagie.text.Graphic;
 import com.lowagie.text.pdf.TextField;
 import imakante.sales.aeDocumentFacade;
+import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -12,7 +16,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.*;
 import javax.swing.DefaultCellEditor;
+import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTree;
 import javax.swing.event.TreeSelectionEvent;
@@ -36,7 +42,13 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.data.JRTableModelDataSource;
-
+import java.awt.image.BufferedImage;
+import com.sun.image.codec.jpeg.JPEGImageEncoder;
+import com.sun.image.codec.jpeg.JPEGCodec;
+import javax.imageio.stream.FileImageInputStream;
+import java.awt.Image;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 public class simpleReport extends javax.swing.JFrame {
   
     private  Thread t;
@@ -139,7 +151,7 @@ public class simpleReport extends javax.swing.JFrame {
         System.out.println("nameColumnEN="+nameColumnsEN.length); 
        
         engine();
-        
+        loadQuickReport();
        
         
        
@@ -276,10 +288,13 @@ public class simpleReport extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabelDataTextH = new javax.swing.JLabel();
         jFileChSaveDos = new javax.swing.JFileChooser();
+        jSplitPane1 = new javax.swing.JSplitPane();
+        jPanelData = new javax.swing.JPanel();
+        jXTaskPane = new org.jdesktop.swingx.JXTaskPaneContainer();
         jPanelControl = new javax.swing.JPanel();
+        jButton9 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
-        jPanelData = new javax.swing.JPanel();
 
         jDialogSetup.getContentPane().setLayout(new javax.swing.BoxLayout(jDialogSetup.getContentPane(), javax.swing.BoxLayout.X_AXIS));
 
@@ -1131,10 +1146,38 @@ public class simpleReport extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
+        jSplitPane1.setDividerSize(10);
+        jSplitPane1.setMinimumSize(new java.awt.Dimension(800, 502));
+        jSplitPane1.setOneTouchExpandable(true);
+        jSplitPane1.setPreferredSize(new java.awt.Dimension(800, 502));
+        jPanelData.setLayout(new java.awt.BorderLayout());
+
+        jPanelData.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanelData.setMaximumSize(new java.awt.Dimension(750, 500));
+        jPanelData.setMinimumSize(new java.awt.Dimension(600, 500));
+        jPanelData.setPreferredSize(new java.awt.Dimension(600, 500));
+        jSplitPane1.setLeftComponent(jPanelData);
+
+        jXTaskPane.setAutoscrolls(true);
+        jXTaskPane.setMinimumSize(new java.awt.Dimension(200, 500));
+        jXTaskPane.setPreferredSize(new java.awt.Dimension(200, 500));
+        jSplitPane1.setRightComponent(jXTaskPane);
+
+        getContentPane().add(jSplitPane1, java.awt.BorderLayout.NORTH);
+
         jPanelControl.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanelControl.setMaximumSize(new java.awt.Dimension(750, 40));
         jPanelControl.setMinimumSize(new java.awt.Dimension(750, 40));
         jPanelControl.setPreferredSize(new java.awt.Dimension(750, 40));
+        jButton9.setText("add");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
+        jPanelControl.add(jButton9);
+
         jButton1.setText("\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1155,16 +1198,27 @@ public class simpleReport extends javax.swing.JFrame {
 
         getContentPane().add(jPanelControl, java.awt.BorderLayout.CENTER);
 
-        jPanelData.setLayout(new java.awt.BorderLayout());
-
-        jPanelData.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanelData.setMaximumSize(new java.awt.Dimension(750, 500));
-        jPanelData.setMinimumSize(new java.awt.Dimension(750, 500));
-        jPanelData.setPreferredSize(new java.awt.Dimension(750, 500));
-        getContentPane().add(jPanelData, java.awt.BorderLayout.NORTH);
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+// TODO add your handling code here:
+    Image img  = getImageFromByte(  getImageAsByte(   getImageAsJPG(  getScreenShoot())));
+    JLabel ll = new JLabel(new ImageIcon(img));
+    ll.setVisible(true);
+    jPanelData.add(ll);
+    jPanelData.repaint(); 
+    
+    visualTemplate vs3 = new visualTemplate();
+    
+    vs3.setTitle("Стоки");
+    vs3.addVisualElement(vs3.createVisualElement(img,"Хранителни"));
+    vs3.addVisualElement(vs3.createVisualElement(img,"Нехранителни"));
+    vs3.addVisualElement(vs3.createVisualElement(img,"Лекарства"));
+    vs3.addVisualElement(vs3.createVisualElement(img,"Гуми"));
+    jXTaskPane.add(vs3);
+    this.repaint();
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jFileChSaveDosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChSaveDosActionPerformed
 // TODO add your handling code here:
@@ -1404,6 +1458,7 @@ public class simpleReport extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JButton jButtonDataBorder;
     private javax.swing.JButton jButtonHeaderBorder;
     private javax.swing.JComboBox jComboBox1;
@@ -1504,7 +1559,9 @@ public class simpleReport extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSlider jSlider1;
+    private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTable jTableHeaderColName;
+    private org.jdesktop.swingx.JXTaskPaneContainer jXTaskPane;
     // End of variables declaration//GEN-END:variables
 
 
@@ -2744,4 +2801,120 @@ class printF
 
 }
 
+private void loadQuickReport()
+{
+    visualTemplate vs1 = new visualTemplate();
+    visualTemplate vs2 = new visualTemplate();
+    visualTemplate vs3 = new visualTemplate();
+    visualTemplate vs4 = new visualTemplate();
+    visualTemplate vs5 = new visualTemplate();
+    visualTemplate vs6 = new visualTemplate();
+    visualTemplate vs7 = new visualTemplate();
+    
+    vs1.setTitle("Документи");
+    vs1.addVisualElement(vs1.createVisualElement(null,"Фактури"));
+    vs1.addVisualElement(vs1.createVisualElement(null,"Стокови разписки"));
+    vs1.addVisualElement(vs1.createVisualElement(null,"Приемателен протокол"));
+    
+    
+    vs2.setTitle("Стоки");
+    vs2.addVisualElement(vs2.createVisualElement(null,"Хранителни"));
+    vs2.addVisualElement(vs2.createVisualElement(null,"Нехранителни"));
+   
+    
+    
+    
+    jXTaskPane.add(vs1);
+    jXTaskPane.add(vs2);
+       
+       
+       
+    
+}
+private BufferedImage getScreenShoot()
+{
+    int posX = 0;  //jPanelData.getLocationOnScreen().x;
+    int posY = 0;  //jPanelData.getLocationOnScreen().y;
+    int width = 1024; //jPanelData.getWidth();
+    int height = 768; //jPanelData.getHeight();
+    BufferedImage shot = null;
+    Rectangle reg = new Rectangle(posX,posY,width,height);
+    try {
+             shot =
+                (new Robot()).createScreenCapture(reg);
+ //-------------------------- metod 1 za resaizvane
+            Image tmpImg = shot.getScaledInstance(70,70,Image.SCALE_SMOOTH)  ;
+             shot = new BufferedImage(70,70,BufferedImage.TYPE_INT_RGB);
+             Graphics g=  shot.getGraphics();
+             g.drawImage(tmpImg,0,0,null);
+             g.dispose();
+             
+ //---------------------------metod 2 za resaizvane
+             
+        /*     AffineTransform tx = new AffineTransform();
+             tx.scale((0.07),(0.091));
+             AffineTransformOp op = new AffineTransformOp (tx,AffineTransformOp.TYPE_BILINEAR);
+             BufferedImage newShot = new BufferedImage(70,70,BufferedImage.TYPE_INT_RGB);
+             shot = op.filter(shot,null);
+             */
+            
+           
+    } catch (Exception exc) {
+        exc.printStackTrace();}
+   return shot; 
+}
+
+private String getImageAsJPG( BufferedImage val)
+{
+    OutputStream out = null;
+    try {
+           out = new BufferedOutputStream(new FileOutputStream("tmp.jpg"));
+           JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
+           encoder.encode(val);
+        } catch (Exception exc) 
+        {
+            exc.printStackTrace();
+}
+    finally
+    {
+        try 
+        {
+            if (out != null) 
+             {
+                 out.close();
+             }
+        }
+        catch (Throwable t) {}
+    }
+    return "tmp.jpg";
+}
+private byte[] getImageAsByte(String jpgname)
+{
+    byte return_value[] = null;
+    try
+    {
+      FileImageInputStream input = new FileImageInputStream(new File(jpgname));  
+      ByteArrayOutputStream output = new ByteArrayOutputStream();
+      byte[] buf = new byte[1024];
+      
+      int numBytesRead = 0;
+      while ((numBytesRead = input.read(buf)) != -1) {
+          output.write(buf, 0, numBytesRead);
+      }
+      
+      byte[] data = null;
+      data = output.toByteArray();
+      return_value = data;
+      output.close();
+      input.close(); 
+      
+    }
+    catch(Exception ex){ex.printStackTrace();};
+    
+    return return_value;
+}
+private Image getImageFromByte(byte[] val)
+{
+    return new ImageIcon(val).getImage();
+}
 }// ens sinpleReport
