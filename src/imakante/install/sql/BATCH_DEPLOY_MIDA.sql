@@ -1,9 +1,22 @@
 ﻿
+/* Beginning deployment of mida */ 
+
 SET NAMES utf8;
 
 SET SQL_MODE='';
 
 create database if not exists `mida`;
+
+/* Defining initial users for the mida DB*/
+
+GRANT SELECT, EXECUTE ON *.* TO user1 IDENTIFIED BY 'user1';
+GRANT ALL ON mida.* TO user1 IDENTIFIED BY 'user1';
+GRANT SELECT, EXECUTE ON *.* TO user2 IDENTIFIED BY 'user2';
+GRANT ALL ON mida.* TO user2 IDENTIFIED BY 'user2';
+GRANT SELECT, EXECUTE ON *.* TO user3 IDENTIFIED BY 'user3';
+GRANT ALL ON mida.* TO user3 IDENTIFIED BY 'user3';
+
+/* Beginning deployment of data objects */
 
 USE `mida`;
 
