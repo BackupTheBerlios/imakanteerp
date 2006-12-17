@@ -147,7 +147,7 @@ public class periodicaDialog extends imakante.com.vcomponents.iDialog {
                 .add(jpButtons, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        setBounds(100, 40, 613, 441);
+        setBounds(100, 40, 900, 441);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbPaneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPaneActionPerformed

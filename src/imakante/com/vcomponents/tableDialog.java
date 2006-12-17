@@ -103,7 +103,7 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
 
-        pack();
+        setBounds(100, 80, 900, 436);
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

@@ -41,7 +41,6 @@ public class dlgLogin extends javax.swing.JDialog {
             inStream = new FileInputStream(s);
             // Load from stream
             prop.loadFromXML(inStream);
-            System.out.println("Extracted properties: " + prop.toString());
             // Close file
             inStream.close();
             // Fill combo
