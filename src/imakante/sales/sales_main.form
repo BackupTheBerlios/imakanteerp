@@ -14,6 +14,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="docMenu_prod">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/basket_put_16.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="&#x41f;&#x440;&#x43e;&#x434;&#x430;&#x436;&#x431;&#x438;"/>
               </Properties>
               <Events>
@@ -27,6 +30,9 @@
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="fakMenu_dan">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/images/sum_16.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="&#x414;&#x430;&#x43d;&#x44a;&#x447;&#x43d;&#x438;"/>
                   </Properties>
                   <Events>
@@ -50,6 +56,9 @@
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="razpMenu_pol">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/images/cart_add_16.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="&#x41f;&#x43e;&#x43b;&#x443;&#x447;&#x430;&#x432;&#x430;&#x43d;&#x435;"/>
                   </Properties>
                   <Events>
@@ -76,6 +85,9 @@
             </Menu>
             <MenuItem class="javax.swing.JMenuItem" name="docMenu_nar">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/cart_go_16.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="&#x41d;&#x430;&#x440;&#x435;&#x436;&#x434;&#x430;&#x43d;&#x435;"/>
               </Properties>
               <Events>
@@ -134,6 +146,9 @@
             </Menu>
             <MenuItem class="javax.swing.JMenuItem" name="docMenu_offer">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/rosette_16.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="&#x41e;&#x444;&#x435;&#x440;&#x442;&#x438;"/>
               </Properties>
               <Events>

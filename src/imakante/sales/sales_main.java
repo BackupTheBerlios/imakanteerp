@@ -355,6 +355,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         programMenu.setFont(menuFont);
         docMenu.setText("\u0414\u041e\u041a\u0423\u041c\u0415\u041d\u0422\u0418");
+        docMenu_prod.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/basket_put_16.png")));
         docMenu_prod.setText("\u041f\u0440\u043e\u0434\u0430\u0436\u0431\u0438");
         docMenu_prod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -365,6 +366,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         docMenu.add(docMenu_prod);
 
         docMenu_fak.setText("\u0424\u0430\u043a\u0442\u0443\u0440\u0438");
+        fakMenu_dan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sum_16.png")));
         fakMenu_dan.setText("\u0414\u0430\u043d\u044a\u0447\u043d\u0438");
         fakMenu_dan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -386,6 +388,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         docMenu.add(docMenu_fak);
 
         docMenu_razp.setText("\u0420\u0430\u0437\u043f\u0438\u0441\u043a\u0438");
+        razpMenu_pol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cart_add_16.png")));
         razpMenu_pol.setText("\u041f\u043e\u043b\u0443\u0447\u0430\u0432\u0430\u043d\u0435");
         razpMenu_pol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -415,6 +418,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         docMenu.add(docMenu_razp);
 
+        docMenu_nar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cart_go_16.png")));
         docMenu_nar.setText("\u041d\u0430\u0440\u0435\u0436\u0434\u0430\u043d\u0435");
         docMenu_nar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -460,6 +464,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         docMenu.add(docMenu_porach);
 
+        docMenu_offer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rosette_16.png")));
         docMenu_offer.setText("\u041e\u0444\u0435\u0440\u0442\u0438");
         docMenu_offer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
