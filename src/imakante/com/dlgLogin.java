@@ -58,27 +58,30 @@ public class dlgLogin extends javax.swing.JDialog {
                 
                 
             }
-        } catch (FileNotFoundException e){
-            System.err.println("FileNotFoundException: " + e.getMessage());
-            //ne otkrivam imakante.xml!
-            JOptionPane.showMessageDialog(null,"Не откривам imakante.xml!",sMsgTitle,JOptionPane.ERROR_MESSAGE);
-        } catch (SecurityException e){
-            System.err.println("SecurityException: " + e.getMessage());
-            JOptionPane.showMessageDialog(null,"Нямам право на достъп до imakante.xml !",sMsgTitle,JOptionPane.ERROR_MESSAGE);
-        } catch (InvalidPropertiesFormatException e){
-            System.err.println("InvalidPropertiesFormatException: " + e.getMessage());
-            JOptionPane.showMessageDialog(null,"Некоректен формат !",sMsgTitle,JOptionPane.ERROR_MESSAGE);
-        } catch (IOException e){
-            System.err.println("IOException: " + e.getMessage());
-            JOptionPane.showMessageDialog(null,"Не мога да прочета настройките !",sMsgTitle,JOptionPane.ERROR_MESSAGE);
-        } catch (NullPointerException e){
-            System.err.println("NullPointerException: " + e.getMessage());
-            JOptionPane.showMessageDialog(null,"Не мога да отворя файла !",sMsgTitle,JOptionPane.ERROR_MESSAGE);
-        } catch (Exception e){
-            System.err.println("OtherException: " + e.getMessage());
+        } catch (FileNotFoundException e) {
+            System.err.println("FileNotFoundException: " + e.getMessage()); //ne otkrivam imakante.xml!
+            imakante.com.MessagePane.Error("\u041D\u0435 \u043E\u0442\u043A\u0440\u0438\u0432\u0430\u043C imakante.xml!");
+        } catch (SecurityException e) {
+            System.err.println("SecurityException: " + e.getMessage()); // nqmam prawo na dostyp do imakante.xml!
+            imakante.com.MessagePane.Error("\u041D\u044F\u043C\u0430\u043C \u043F\u0440\u0430\u0432\u043E \u043D\u0430 " +
+                    "\u0434\u043E\u0441\u0442\u044A\u043F \u0434\u043E imakante.xml!");
+        } catch (InvalidPropertiesFormatException e) {
+            System.err.println("InvalidPropertiesFormatException: " + e.getMessage());  // nekorekten fajlow format!
+            imakante.com.MessagePane.Error("\u041D\u0435\u043A\u043E\u0440\u0435\u043A\u0442\u0435\u043D \u0444\u0430\u0439\u043B\u043E\u0432 " +
+                    "\u0444\u043E\u0440\u043C\u0430\u0442!");
+        } catch (IOException e) {
+            System.err.println("IOException: " + e.getMessage());   // Ne moga da pro4eta nastroikite!
+            imakante.com.MessagePane.Error("\u041D\u0435 \u043C\u043E\u0433\u0430 \u0434\u0430 \u043F\u0440\u043E\u0447\u0435\u0442\u0430 " +
+                    "\u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438\u0442\u0435!");
+        } catch (NullPointerException e) {
+            System.err.println("NullPointerException: " + e.getMessage());  // Ne moga da otworq faila!
+            imakante.com.MessagePane.Error("\u041D\u0435 \u043C\u043E\u0433\u0430 \u0434\u0430 \u043E\u0442\u0432\u043E\u0440\u044F " +
+                    "\u0444\u0430\u0439\u043B\u0430!");
+        } catch (Exception e) {
+            System.err.println("OtherException: " + e.getMessage());    // NEIZWESTNA GRE6KA!
+            imakante.com.MessagePane.Error("\u041D\u0415\u0418\u0417\u0412\u0415\u0421\u0422\u041D\u0410 \u0413\u0420\u0415\u0428\u041A\u0410!");
         }
     }
-    
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -104,19 +107,25 @@ public class dlgLogin extends javax.swing.JDialog {
         jPanel1.setBackground(new java.awt.Color(25, 103, 150));
         jInfoPanel.setBackground(new java.awt.Color(43, 136, 193));
         jInfoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(204, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("\u0424\u0438\u0440\u043c\u0430 :");
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(204, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("\u041e\u043f\u0435\u0440\u0430\u0442\u043e\u0440 :");
 
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(204, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("\u041f\u0430\u0440\u043e\u043b\u0430 :");
 
         jLabelCombo.setToolTipText("\u0424\u0438\u0440\u043c\u0438 \u0432 \u0431\u0430\u0437\u0430\u0442\u0430 \u0434\u0430\u043d\u043d\u0438");
-        jLabelCombo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jLabelComboActionPerformed(evt);
+        jLabelCombo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jLabelComboFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jLabelComboFocusLost(evt);
             }
         });
         jLabelCombo.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -126,9 +135,12 @@ public class dlgLogin extends javax.swing.JDialog {
         });
 
         jUserTxtField.setText("imakante");
-        jUserTxtField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jUserTxtFieldActionPerformed(evt);
+        jUserTxtField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jUserTxtFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jUserTxtFieldFocusLost(evt);
             }
         });
         jUserTxtField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -137,9 +149,12 @@ public class dlgLogin extends javax.swing.JDialog {
             }
         });
 
-        jPassField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPassFieldActionPerformed(evt);
+        jPassField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPassFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jPassFieldFocusLost(evt);
             }
         });
         jPassField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -148,93 +163,98 @@ public class dlgLogin extends javax.swing.JDialog {
             }
         });
 
-        jButton1.setText("+");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Add 2.png")));
         jButton1.setToolTipText("\u0414\u043e\u0431\u0430\u0432\u0438 \u0431\u0430\u0437\u0430 \u0434\u0430\u043d\u043d\u0438 \u0437\u0430 \u0424\u0438\u0440\u043c\u0430");
+        jButton1.setMargin(new java.awt.Insets(3, 3, 3, 3));
 
         org.jdesktop.layout.GroupLayout jInfoPanelLayout = new org.jdesktop.layout.GroupLayout(jInfoPanel);
         jInfoPanel.setLayout(jInfoPanelLayout);
         jInfoPanelLayout.setHorizontalGroup(
             jInfoPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jInfoPanelLayout.createSequentialGroup()
-                .add(jInfoPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jLabel3)
+                .addContainerGap()
+                .add(jInfoPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel1)
+                    .add(jLabel3)
                     .add(jLabel2))
-                .add(27, 27, 27)
+                .add(17, 17, 17)
                 .add(jInfoPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(jUserTxtField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 210, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabelCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 212, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jPassField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 210, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 36, Short.MAX_VALUE)
                 .add(jButton1)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap())
         );
+
+        jInfoPanelLayout.linkSize(new java.awt.Component[] {jLabel1, jLabel2, jLabel3}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
+        jInfoPanelLayout.linkSize(new java.awt.Component[] {jLabelCombo, jPassField, jUserTxtField}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
         jInfoPanelLayout.setVerticalGroup(
             jInfoPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jInfoPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .add(jInfoPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabelCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jButton1))
+                    .add(jButton1)
+                    .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(18, 18, 18)
                 .add(jInfoPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jUserTxtField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 22, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jUserTxtField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 22, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(14, 14, 14)
                 .add(jInfoPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jPassField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 22, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                    .add(jPassField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 22, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(43, 137, 194));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jLoginBtn.setText("\u0412\u0445\u043e\u0434");
+        jLoginBtn.setFont(new java.awt.Font("Tahoma", 1, 11));
+        jLoginBtn.setForeground(new java.awt.Color(0, 51, 153));
+        jLoginBtn.setText("\u0412\u0425\u041e\u0414");
         jLoginBtn.setToolTipText("\u0412\u0445\u043e\u0434 \u0432 \u0441\u0438\u0441\u0442\u0435\u043c\u0430\u0442\u0430");
+        jLoginBtn.setMaximumSize(new java.awt.Dimension(80, 23));
+        jLoginBtn.setMinimumSize(new java.awt.Dimension(80, 23));
+        jLoginBtn.setPreferredSize(new java.awt.Dimension(80, 23));
         jLoginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jLoginBtnActionPerformed(evt);
             }
         });
 
-        jCancelBtn.setText("\u041e\u0442\u043a\u0430\u0437");
+        jPanel2.add(jLoginBtn);
+
+        jCancelBtn.setFont(new java.awt.Font("Tahoma", 1, 11));
+        jCancelBtn.setForeground(new java.awt.Color(0, 51, 153));
+        jCancelBtn.setText("\u041e\u0422\u041a\u0410\u0417");
         jCancelBtn.setToolTipText("\u0417\u0430\u0442\u0432\u0430\u0440\u044f \u0434\u0438\u0430\u043b\u043e\u0433\u0430");
+        jCancelBtn.setMaximumSize(new java.awt.Dimension(80, 23));
+        jCancelBtn.setMinimumSize(new java.awt.Dimension(80, 23));
+        jCancelBtn.setPreferredSize(new java.awt.Dimension(80, 23));
         jCancelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCancelBtnActionPerformed(evt);
             }
         });
 
-        org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel2Layout.createSequentialGroup()
-                .add(55, 55, 55)
-                .add(jLoginBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 116, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jCancelBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 117, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(91, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel2Layout.createSequentialGroup()
-                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLoginBtn)
-                    .add(jCancelBtn))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel2.add(jCancelBtn);
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jInfoPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(8, 8, 8)
+                        .add(jInfoPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -243,7 +263,7 @@ public class dlgLogin extends javax.swing.JDialog {
                 .add(jInfoPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .add(10, 10, 10))
         );
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
@@ -254,42 +274,57 @@ public class dlgLogin extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
         );
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-427)/2, (screenSize.height-239)/2, 427, 239);
+        setBounds((screenSize.width-417)/2, (screenSize.height-239)/2, 417, 239);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabelComboFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jLabelComboFocusGained
+        fGain(jLabelCombo);
+    }//GEN-LAST:event_jLabelComboFocusGained
+
+    private void jLabelComboFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jLabelComboFocusLost
+        fLost(jLabelCombo);
+    }//GEN-LAST:event_jLabelComboFocusLost
+
+    private void jUserTxtFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jUserTxtFieldFocusGained
+        jUserTxtField.selectAll();
+        fGain(jUserTxtField);
+    }//GEN-LAST:event_jUserTxtFieldFocusGained
+
+    private void jUserTxtFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jUserTxtFieldFocusLost
+        fLost(jUserTxtField);
+    }//GEN-LAST:event_jUserTxtFieldFocusLost
+
+    private void jPassFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPassFieldFocusGained
+        jPassField.selectAll();
+        fGain(jPassField);
+    }//GEN-LAST:event_jPassFieldFocusGained
+
+    private void jPassFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPassFieldFocusLost
+        fLost(jPassField);
+    }//GEN-LAST:event_jPassFieldFocusLost
     
     private void jPassFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPassFieldKeyPressed
-        if(java.awt.event.KeyEvent.VK_ENTER== evt.getKeyCode()){
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER)
             jPassField.transferFocus();
-        }
+        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE)
+            jPassField.setText("");
     }//GEN-LAST:event_jPassFieldKeyPressed
     
     private void jUserTxtFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jUserTxtFieldKeyPressed
-        if(java.awt.event.KeyEvent.VK_ENTER== evt.getKeyCode()){
+        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER)
             jUserTxtField.transferFocus();
-        }
+        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE)
+            jUserTxtField.setText("");
     }//GEN-LAST:event_jUserTxtFieldKeyPressed
     
     private void jLabelComboKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabelComboKeyPressed
-        if(java.awt.event.KeyEvent.VK_ENTER== evt.getKeyCode()){
+        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER)
             jLabelCombo.transferFocus();
-        }
     }//GEN-LAST:event_jLabelComboKeyPressed
-    
-    private void jPassFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPassFieldActionPerformed
-// TODO add your handling code here:
-    }//GEN-LAST:event_jPassFieldActionPerformed
-    
-    private void jUserTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUserTxtFieldActionPerformed
-// TODO add your handling code here:
-    }//GEN-LAST:event_jUserTxtFieldActionPerformed
-    
-    private void jLabelComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLabelComboActionPerformed
-// TODO add your handling code here:
-    }//GEN-LAST:event_jLabelComboActionPerformed
-    
+                
     private void jLoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginBtnActionPerformed
         String DBDriver;
         String DBSource;
@@ -375,11 +410,22 @@ public class dlgLogin extends javax.swing.JDialog {
     private javax.swing.JTextField jUserTxtField;
     // End of variables declaration//GEN-END:variables
     
-    private  java.sql.Statement stm;
+    private java.sql.Statement stm;
     private String path2reports = ""; // key for report dir
     private String path = ""; // path for report dir
     
     private void buttonRelease() {
         NewMain.setB_SL(false);
     }
+    
+    private void fGain(javax.swing.JComponent jtf) {
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED,
+                new java.awt.Color(255, 0, 51), null));
+    }
+    
+    private void fLost(javax.swing.JComponent jtf) {
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED,
+                new java.awt.Color(255, 255, 255), null));
+    }
+    
 }
