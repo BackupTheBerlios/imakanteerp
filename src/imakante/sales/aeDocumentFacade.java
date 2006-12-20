@@ -2284,7 +2284,11 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             showAllPanels();
             selectDocumentTypeToView(DocFacadeType);
             isDocFacadeCreate = false;
-            jComboBoxVidPla6tane.setSelectedIndex(myParent.getDescriptipnPay());
+            try {
+                jComboBoxVidPla6tane.setSelectedIndex(myParent.getDescriptipnPay());
+            } catch (IllegalArgumentException iae){
+                jComboBoxVidPla6tane.setSelectedIndex(0);
+            }
             String newDate = checkAndConvertSQLFormat(myParent.getPayingDate());
             int dateInt[] = getDateAsInt(newDate);
             Date date = new Date(dateInt[2]-1900,dateInt[1]-1,dateInt[0]);
