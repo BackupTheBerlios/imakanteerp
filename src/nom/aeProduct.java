@@ -90,6 +90,12 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jTextFieldCode = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jTextFieldPromoPrices1 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanelDescription = new javax.swing.JPanel();
         jComboBoxDescript1 = new javax.swing.JComboBox();
@@ -108,104 +114,32 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        jPanel1.setLayout(new java.awt.GridBagLayout());
-
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.setToolTipText("");
+        jPanel1.setToolTipText("\u041f\u043e\u043b\u0435\u0442\u043e \u043d\u0435 \u0435 \u0437\u0430\u0434\u0430\u043b\u0436\u0438\u0442\u0435\u043b\u043d\u043e");
         jPanel1.setPreferredSize(new java.awt.Dimension(650, 270));
         jLabelCod.setText("\u0413\u0440\u0443\u043f\u0430:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 20, 5, 5);
-        jPanel1.add(jLabelCod, gridBagConstraints);
 
         jLabelName.setText("\u0418\u043c\u0435:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 5);
-        jPanel1.add(jLabelName, gridBagConstraints);
 
         jLabelBulstat.setText("\u041a\u043e\u04342");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel1.add(jLabelBulstat, gridBagConstraints);
 
         jLabelDanNomer.setText("\u0418\u043c\u0435 \u043d\u0430 \u0441\u044a\u043e\u0442\u0432.");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 5);
-        jPanel1.add(jLabelDanNomer, gridBagConstraints);
 
         jLabelAddress.setText("\u041a\u0440\u0430\u0442\u043a\u043e \u0438\u043c\u0435:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 5);
-        jPanel1.add(jLabelAddress, gridBagConstraints);
 
         jLabelNM.setText("\u0411\u0430\u0440\u043a\u043e\u0434:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel1.add(jLabelNM, gridBagConstraints);
 
         jLabelTel.setText("\u0424\u0430\u043a\u0442\u0443\u0440\u043d\u043e \u0438\u043c\u0435:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 5);
-        jPanel1.add(jLabelTel, gridBagConstraints);
 
         jLabelFax.setText("\u0415\u043a\u0441\u043f\u0435\u0440\u0442\u0435\u043d \u043b\u0438\u0441\u0442:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel1.add(jLabelFax, gridBagConstraints);
 
         jLabelEmail.setText("\u0426\u0435\u043d\u0430:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 5);
-        jPanel1.add(jLabelEmail, gridBagConstraints);
 
         jLabelWeb.setText("\u0422\u0430\u043a\u0441\u0438 (%):");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel1.add(jLabelWeb, gridBagConstraints);
 
         jLabelMOL.setText("\u041f\u0440\u043e\u043c\u043e. \u0446\u0435\u043d\u0438:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 20, 10, 5);
-        jPanel1.add(jLabelMOL, gridBagConstraints);
 
         jLabelOSO.setText("\u041c\u0430\u0445 % \u043d\u0430 \u043e\u0442\u0441\u0442\u044a\u043f\u043a\u0430:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel1.add(jLabelOSO, gridBagConstraints);
 
         jTextFieldName.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldName.setPreferredSize(new java.awt.Dimension(170, 20));
@@ -223,13 +157,6 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
             }
         });
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel1.add(jTextFieldName, gridBagConstraints);
-
         jTextFieldCName.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldCName.setPreferredSize(new java.awt.Dimension(170, 20));
         jTextFieldCName.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -240,13 +167,6 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
                 jTextFieldCNameFocusLost(evt);
             }
         });
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel1.add(jTextFieldCName, gridBagConstraints);
 
         jTextFieldCod2.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldCod2.setMinimumSize(new java.awt.Dimension(150, 20));
@@ -260,21 +180,8 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
             }
         });
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
-        jPanel1.add(jTextFieldCod2, gridBagConstraints);
-
         jTextFieldSName.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldSName.setPreferredSize(new java.awt.Dimension(170, 20));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel1.add(jTextFieldSName, gridBagConstraints);
 
         jTextFieldBarCod.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldBarCod.setPreferredSize(new java.awt.Dimension(170, 20));
@@ -292,13 +199,6 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
             }
         });
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
-        jPanel1.add(jTextFieldBarCod, gridBagConstraints);
-
         jTextFieldFName.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldFName.setPreferredSize(new java.awt.Dimension(170, 20));
         jTextFieldFName.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -309,13 +209,6 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
                 jTextFieldFNameFocusLost(evt);
             }
         });
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel1.add(jTextFieldFName, gridBagConstraints);
 
         jTextFieldExpertSheet.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldExpertSheet.setNextFocusableComponent(jTextFieldPrice);
@@ -333,13 +226,6 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
                 jTextFieldExpertSheetKeyPressed(evt);
             }
         });
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
-        jPanel1.add(jTextFieldExpertSheet, gridBagConstraints);
 
         jTextFieldPrice.setBackground(new java.awt.Color(204, 204, 255));
         jTextFieldPrice.setEditable(false);
@@ -364,15 +250,9 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
             }
         });
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel1.add(jTextFieldPrice, gridBagConstraints);
-
         jTextFieldFee.setBackground(new java.awt.Color(204, 204, 255));
         jTextFieldFee.setEditable(false);
+        jTextFieldFee.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextFieldFee.setText("20.00");
         jTextFieldFee.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldFee.setPreferredSize(new java.awt.Dimension(170, 20));
@@ -398,13 +278,6 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
             }
         });
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
-        jPanel1.add(jTextFieldFee, gridBagConstraints);
-
         jTextFieldPromoPrices.setBackground(new java.awt.Color(204, 204, 255));
         jTextFieldPromoPrices.setEditable(false);
         jTextFieldPromoPrices.setToolTipText("\u0417\u0430\u0434\u044a\u043b\u0436\u0438\u0442\u0435\u043b\u043d\u043e \u043f\u043e\u043b\u0435");
@@ -429,13 +302,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
             }
         });
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel1.add(jTextFieldPromoPrices, gridBagConstraints);
-
+        jTextFieldMaxPOP.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextFieldMaxPOP.setText("0");
         jTextFieldMaxPOP.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldMaxPOP.setPreferredSize(new java.awt.Dimension(170, 20));
@@ -454,20 +321,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
             }
         });
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
-        jPanel1.add(jTextFieldMaxPOP, gridBagConstraints);
-
         jLabel1.setText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 5);
-        jPanel1.add(jLabel1, gridBagConstraints);
 
         jTextFieldContragent.setBackground(new java.awt.Color(204, 204, 255));
         jTextFieldContragent.setEditable(false);
@@ -494,20 +348,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
             }
         });
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 20);
-        jPanel1.add(jTextFieldContragent, gridBagConstraints);
-
         jLabel2.setText("\u041a\u043e\u04341");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel1.add(jLabel2, gridBagConstraints);
 
         jTextFieldCod1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldCod1.setPreferredSize(new java.awt.Dimension(170, 20));
@@ -519,13 +360,6 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
                 jTextFieldCod1FocusLost(evt);
             }
         });
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 20);
-        jPanel1.add(jTextFieldCod1, gridBagConstraints);
 
         jComboBoxGroup.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jComboBoxGroup.setPreferredSize(new java.awt.Dimension(170, 20));
@@ -543,12 +377,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
             }
         });
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.insets = new java.awt.Insets(20, 5, 5, 5);
-        jPanel1.add(jComboBoxGroup, gridBagConstraints);
-
+        jTextFieldMinProduct.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextFieldMinProduct.setText("1");
         jTextFieldMinProduct.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextFieldMinProduct.setPreferredSize(new java.awt.Dimension(50, 20));
@@ -566,28 +395,9 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
             }
         });
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel1.add(jTextFieldMinProduct, gridBagConstraints);
-
         jLabel3.setText("\u041c\u0438\u043d. \u043a\u043e\u043b.:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel1.add(jLabel3, gridBagConstraints);
 
         jLabel4.setText("\u041a\u043e\u0434:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 20, 5, 5);
-        jPanel1.add(jLabel4, gridBagConstraints);
 
         jTextFieldCode.setToolTipText("\u041a\u043e\u0434\u0430 \u0435 \u0441\u044a\u0441\u0442\u0430\u0432\u0435\u043d \u0441\u0430\u043c\u043e \u043e\u0442 \u0446\u0438\u0444\u0440\u0438.");
         jTextFieldCode.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -607,14 +417,217 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
             }
         });
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel1.add(jTextFieldCode, gridBagConstraints);
+        jLabel5.setText("\u0422\u0435\u0433\u043b\u043e \u0432 \u043a\u0433 ");
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.NORTH);
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTextField1.setText("0");
+
+        jLabel6.setText("\u041c\u0438\u0442\u043d\u0438\u0447\u0435\u0441\u043a\u0438 \u043a\u043e\u0434:");
+
+        jTextFieldPromoPrices1.setBackground(new java.awt.Color(204, 204, 255));
+        jTextFieldPromoPrices1.setEditable(false);
+        jTextFieldPromoPrices1.setToolTipText("\u0417\u0430\u0434\u044a\u043b\u0436\u0438\u0442\u0435\u043b\u043d\u043e \u043f\u043e\u043b\u0435");
+        jTextFieldPromoPrices1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        jTextFieldPromoPrices1.setPreferredSize(new java.awt.Dimension(170, 20));
+        jTextFieldPromoPrices1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldPromoPrices1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldPromoPrices1FocusLost(evt);
+            }
+        });
+        jTextFieldPromoPrices1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldPromoPrices1KeyPressed(evt);
+            }
+        });
+        jTextFieldPromoPrices1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTextFieldPromoPrices1MousePressed(evt);
+            }
+        });
+
+        jLabel7.setText("\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435:");
+
+        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(138, 138, 138)
+                        .add(jLabelCod)
+                        .add(10, 10, 10)
+                        .add(jComboBoxGroup, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(50, 50, 50)
+                        .add(jLabel1)
+                        .add(10, 10, 10)
+                        .add(jTextFieldContragent, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(148, 148, 148)
+                        .add(jLabel4)
+                        .add(10, 10, 10)
+                        .add(jTextFieldCode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(88, 88, 88)
+                        .add(jLabel2)
+                        .add(10, 10, 10)
+                        .add(jTextFieldCod1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(149, 149, 149)
+                        .add(jLabelName)
+                        .add(10, 10, 10)
+                        .add(jTextFieldName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(88, 88, 88)
+                        .add(jLabelBulstat)
+                        .add(10, 10, 10)
+                        .add(jTextFieldCod2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(101, 101, 101)
+                        .add(jLabelDanNomer)
+                        .add(10, 10, 10)
+                        .add(jTextFieldCName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(73, 73, 73)
+                        .add(jLabelNM)
+                        .add(10, 10, 10)
+                        .add(jTextFieldBarCod, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(85, 85, 85)
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(jLabelAddress)
+                            .add(jLabelTel)
+                            .add(jLabelEmail)
+                            .add(jLabel6)
+                            .add(jLabel7)
+                            .add(jLabelMOL))
+                        .add(10, 10, 10)
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jPanel1Layout.createSequentialGroup()
+                                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                                    .add(jTextFieldPromoPrices, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(jTextFieldPromoPrices1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                .add(61, 61, 61)
+                                .add(jLabel3)
+                                .add(10, 10, 10)
+                                .add(jTextFieldMinProduct, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(jLabel5)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(jTextField1))
+                            .add(jLabel8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
+                            .add(jPanel1Layout.createSequentialGroup()
+                                .add(jTextFieldPrice, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .add(10, 10, 10)
+                                .add(jLabelOSO)
+                                .add(10, 10, 10)
+                                .add(jTextFieldMaxPOP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 181, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                            .add(jPanel1Layout.createSequentialGroup()
+                                .add(jTextFieldFName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .add(59, 59, 59)
+                                .add(jLabelWeb)
+                                .add(10, 10, 10)
+                                .add(jTextFieldFee, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .add(jPanel1Layout.createSequentialGroup()
+                                .add(jTextFieldSName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .add(31, 31, 31)
+                                .add(jLabelFax)
+                                .add(10, 10, 10)
+                                .add(jTextFieldExpertSheet, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addContainerGap(86, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(25, 25, 25)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(3, 3, 3)
+                        .add(jLabelCod))
+                    .add(jComboBoxGroup, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(3, 3, 3)
+                        .add(jLabel1))
+                    .add(jTextFieldContragent, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(10, 10, 10)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(3, 3, 3)
+                        .add(jLabel4))
+                    .add(jTextFieldCode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(3, 3, 3)
+                        .add(jLabel2))
+                    .add(jTextFieldCod1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(10, 10, 10)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(3, 3, 3)
+                        .add(jLabelName))
+                    .add(jTextFieldName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(3, 3, 3)
+                        .add(jLabelBulstat))
+                    .add(jTextFieldCod2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(10, 10, 10)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(3, 3, 3)
+                        .add(jLabelDanNomer))
+                    .add(jTextFieldCName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(3, 3, 3)
+                        .add(jLabelNM))
+                    .add(jTextFieldBarCod, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(10, 10, 10)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(jTextFieldSName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(jLabelAddress))
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(3, 3, 3)
+                        .add(jLabelFax))
+                    .add(jTextFieldExpertSheet, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(10, 10, 10)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(jTextFieldFName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(jLabelTel))
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(3, 3, 3)
+                        .add(jLabelWeb))
+                    .add(jTextFieldFee, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(10, 10, 10)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(jTextFieldPrice, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(jLabelEmail))
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(3, 3, 3)
+                        .add(jLabelOSO))
+                    .add(jTextFieldMaxPOP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(10, 10, 10)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(jTextFieldPromoPrices, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(jLabelMOL))
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(3, 3, 3)
+                        .add(jLabel3))
+                    .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(jTextFieldMinProduct, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(jLabel5)
+                        .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .add(9, 9, 9)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel6)
+                    .add(jTextFieldPromoPrices1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel7)
+                    .add(jLabel8))
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel4.setPreferredSize(new java.awt.Dimension(750, 100));
@@ -730,8 +743,6 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
         gridBagConstraints.gridy = 1;
         jPanelDescription.add(jTextFieldDescript3, gridBagConstraints);
 
-        jPanel4.add(jPanelDescription);
-
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("\u041d\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u044f"));
         jPanel3.setPreferredSize(new java.awt.Dimension(230, 70));
         jButtonToBegin.setText("<<");
@@ -770,9 +781,28 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
 
         jPanel3.add(jButtonToEnd);
 
-        jPanel4.add(jPanel3);
-
-        getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
+        org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel4Layout.createSequentialGroup()
+                .add(79, 79, 79)
+                .add(jPanelDescription, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(5, 5, 5)
+                .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel4Layout.createSequentialGroup()
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .add(5, 5, 5)
+                        .add(jPanelDescription, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .add(5, 5, 5)
+                        .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setPreferredSize(new java.awt.Dimension(650, 40));
@@ -794,10 +824,45 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
 
         jPanel2.add(jButton3);
 
-        getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
-
+        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(layout.createSequentialGroup()
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 747, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 747, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 747, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 92, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextFieldPromoPrices1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldPromoPrices1MousePressed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldPromoPrices1MousePressed
+
+    private void jTextFieldPromoPrices1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPromoPrices1KeyPressed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldPromoPrices1KeyPressed
+
+    private void jTextFieldPromoPrices1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPromoPrices1FocusLost
+// TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldPromoPrices1FocusLost
+
+    private void jTextFieldPromoPrices1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPromoPrices1FocusGained
+// TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldPromoPrices1FocusGained
     
     private void jComboBoxDescript3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxDescript3FocusLost
         fLost(jComboBoxDescript3);
@@ -1404,6 +1469,10 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabelAddress;
     private javax.swing.JLabel jLabelBulstat;
     private javax.swing.JLabel jLabelCod;
@@ -1421,6 +1490,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanelDescription;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextFieldBarCod;
     private javax.swing.JTextField jTextFieldCName;
     private javax.swing.JTextField jTextFieldCod1;
@@ -1438,6 +1508,7 @@ public class aeProduct extends imakante.com.vcomponents.iDialog {
     private javax.swing.JTextField jTextFieldName;
     private javax.swing.JTextField jTextFieldPrice;
     private javax.swing.JTextField jTextFieldPromoPrices;
+    private javax.swing.JTextField jTextFieldPromoPrices1;
     private javax.swing.JTextField jTextFieldSName;
     // End of variables declaration//GEN-END:variables
     //--------------- My Variables
