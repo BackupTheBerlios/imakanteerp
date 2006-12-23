@@ -119,6 +119,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jSeparator4 = new javax.swing.JSeparator();
         nomALevel = new javax.swing.JMenuItem();
         nomDisband = new javax.swing.JMenuItem();
+        jSeparator12 = new javax.swing.JSeparator();
+        nomMitProduct = new javax.swing.JMenuItem();
         sprMenu = new javax.swing.JMenu();
         spravkiMenu_nal = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
@@ -803,6 +805,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         });
 
         nomMenu.add(nomDisband);
+
+        nomMenu.add(jSeparator12);
+
+        nomMitProduct.setText("\u041f\u0440\u043e\u0434\u0443\u043a\u0442\u0438 \u0441 \u041c\u0438\u0442\u043d\u0438\u0447\u0435\u0441\u043a\u0438 \u0442\u0430\u0440\u0438\u0444\u0438");
+        nomMenu.add(nomMitProduct);
 
         menuBar.add(nomMenu);
 
@@ -1651,6 +1658,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
+    private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -1706,6 +1714,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenu nomMenu_object;
     private javax.swing.JMenuItem nomMenu_obl;
     private javax.swing.JMenu nomMenu_stock;
+    private javax.swing.JMenuItem nomMitProduct;
     private javax.swing.JMenuItem objectMenu_groupe_object;
     private javax.swing.JMenuItem objectMenu_skl;
     private javax.swing.JMenuItem orderMenu_prih;

@@ -512,6 +512,13 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nomDisbandActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JSeparator" name="jSeparator12">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="nomMitProduct">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x41f;&#x440;&#x43e;&#x434;&#x443;&#x43a;&#x442;&#x438; &#x441; &#x41c;&#x438;&#x442;&#x43d;&#x438;&#x447;&#x435;&#x441;&#x43a;&#x438; &#x442;&#x430;&#x440;&#x438;&#x444;&#x438;"/>
+              </Properties>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="sprMenu">
