@@ -15,6 +15,7 @@ public abstract class dbObject extends imakante.com.imakanteObject implements db
     private int id = 0;
     private int id_groupe = 0;
     private int code = 0;
+    private String code_string = "";
     private String name = "";
     private String baccount = "";
     private String address = "";
@@ -199,5 +200,12 @@ public abstract class dbObject extends imakante.com.imakanteObject implements db
     public void setCode(int code) {
         this.code = code;
     }
+
+    public void setCode(String in_code) {
+        this.code_string = in_code;
+    }
     
+    public String getCodeString(){
+    return code_string;
+    }
 }
