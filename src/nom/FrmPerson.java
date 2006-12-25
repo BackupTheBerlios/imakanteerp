@@ -1,7 +1,7 @@
 
 package nom;
 
-public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener, NewInterface {
+public class FrmPerson extends  imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
     public FrmPerson(String title,imakante.com.vcomponents.iFrame frame) {
         super(title);
