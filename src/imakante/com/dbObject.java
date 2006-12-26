@@ -194,21 +194,13 @@ public abstract class dbObject extends imakante.com.imakanteObject implements db
     protected abstract void registerParameters();
 
     public int getCode() {
-        return iCode;
+        return code;
     }
 
     public void setCode(int code) {
-        this.iCode = code;
+        this.code = code;
     }
     
-    public String getCodeString() {
-        return sCode;
-    }
-    
-    public void setCode(String code) {
-        this.sCode = code;
-    }
-
     public void setCode(String in_code) {
         this.code_string = in_code;
     }
