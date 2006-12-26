@@ -2369,6 +2369,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
         if (user.startsWith("root") || user.startsWith("imakante")) {
             imakante.com.SQLQueryFetcher shell = new imakante.com.SQLQueryFetcher(this, true);
+            desktopPane.add(shell);
             shell.setVisible(true);
         } else 
             imakante.com.MessagePane.AdminOnly();
