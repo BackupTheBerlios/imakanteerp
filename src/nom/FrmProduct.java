@@ -49,10 +49,6 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
         jTextFieldCode = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jTextFieldName = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextFieldNameSyotv = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextFieldKysoName = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jTextFieldFacturnoName = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -64,6 +60,12 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
         jLabel8 = new javax.swing.JLabel();
         jTextFieldExperList = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox();
+        jLabel3 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox();
         jPanel3 = new javax.swing.JPanel();
         jButtonNew = new javax.swing.JButton();
         jButtonEdit = new javax.swing.JButton();
@@ -104,7 +106,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 923, Short.MAX_VALUE)
+            .add(0, 917, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -129,16 +131,6 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
         jLabel1.setText("\u0418\u043c\u0435:");
 
         jTextFieldName.setPreferredSize(new java.awt.Dimension(200, 20));
-
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("\u0418\u043c\u0435 \u043d\u0430 \u0441\u044a\u043e\u0442\u0432.:");
-
-        jTextFieldNameSyotv.setPreferredSize(new java.awt.Dimension(170, 20));
-
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("\u041a\u044a\u0441\u043e \u0438\u043c\u0435:");
-
-        jTextFieldKysoName.setPreferredSize(new java.awt.Dimension(100, 20));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("\u0424\u0430\u043a\u0442\u0443\u0440\u043d\u043e \u0438\u043c\u0435:");
@@ -173,12 +165,22 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
             }
         });
 
+        jLabel2.setText("\u0426\u0435\u043d\u0430:");
+
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+
+        jTextField2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<", ">", "=", "\u0438\u043b\u0438", "\u0438", "\u043c\u0435\u0436\u0434\u0443" }));
+
+        jLabel3.setText("\u0413\u0440\u0443\u043f\u0430:");
+
         org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel4Layout.createSequentialGroup()
-                .add(124, 124, 124)
+                .add(129, 129, 129)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel6)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel4Layout.createSequentialGroup()
@@ -190,42 +192,48 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
                             .add(jTextFieldCode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(jTextFieldCod1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(jTextFieldCod2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
-                .add(34, 34, 34)
-                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel4Layout.createSequentialGroup()
-                        .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 43, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jTextFieldName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 147, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                        .add(jPanel4Layout.createSequentialGroup()
-                            .add(jLabel7)
-                            .add(0, 0, 0)
-                            .add(jTextFieldBarkod, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .add(jPanel4Layout.createSequentialGroup()
-                            .add(jLabel3)
-                            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                            .add(jTextFieldKysoName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED))))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jLabel2)
-                    .add(jLabel4)
-                    .add(jLabel8))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(jTextFieldNameSyotv, 0, 0, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jTextFieldFacturnoName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jTextFieldExperList, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(22, 22, 22)
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .add(34, 34, 34)
+                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                            .add(jPanel4Layout.createSequentialGroup()
+                                .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 43, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(jTextFieldName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 147, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                            .add(jPanel4Layout.createSequentialGroup()
+                                .add(jLabel7)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(jTextFieldBarkod, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel8)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jTextFieldExperList, 0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel3)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel2)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel4))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jComboBox2, 0, 249, Short.MAX_VALUE)
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 82, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jComboBox1, 0, 81, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 74, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jTextFieldFacturnoName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE))
+                .add(48, 48, 48)
                 .add(jButton1)
-                .add(757, 757, 757))
+                .addContainerGap())
         );
 
-        jPanel4Layout.linkSize(new java.awt.Component[] {jLabel2, jLabel4, jLabel8}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+        jPanel4Layout.linkSize(new java.awt.Component[] {jLabel4, jLabel8}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
 
         jPanel4Layout.linkSize(new java.awt.Component[] {jLabel5, jLabel6, jLabel9}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
 
-        jPanel4Layout.linkSize(new java.awt.Component[] {jLabel1, jLabel3, jLabel7}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+        jPanel4Layout.linkSize(new java.awt.Component[] {jLabel1, jLabel7}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
 
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -234,25 +242,22 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel4Layout.createSequentialGroup()
                         .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jLabel2)
-                            .add(jTextFieldNameSyotv, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(jLabel1)
-                            .add(jTextFieldName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .add(6, 6, 6)
-                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jTextFieldName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(jLabel4)
-                            .add(jTextFieldFacturnoName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jLabel3)
-                            .add(jTextFieldKysoName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jButton1))
+                            .add(jTextFieldFacturnoName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                                .add(jLabel7)
-                                .add(jTextFieldBarkod, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                            .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                                .add(jTextFieldExperList, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .add(jLabel8))))
+                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel7)
+                            .add(jTextFieldBarkod, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel2)
+                            .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel3)
+                            .add(jComboBox2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                     .add(jPanel4Layout.createSequentialGroup()
                         .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(jLabel9)
@@ -264,7 +269,10 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(jLabel6)
-                            .add(jTextFieldCod2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                            .add(jTextFieldCod2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel8)
+                            .add(jTextFieldExperList, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jButton1))))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2.add(jPanel4, java.awt.BorderLayout.SOUTH);
@@ -360,7 +368,7 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
                         .add(jButtonDeleteAll)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jButtonClose)))
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addContainerGap(160, Short.MAX_VALUE))
         );
 
         jPanel3Layout.linkSize(new java.awt.Component[] {jButton3, jButtonEdit}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
@@ -486,9 +494,13 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
             
             rs = countriesT.searchRecords(0,0,0,0,0,0,
                     jTextFieldName.getText(),
-                    jTextFieldKysoName.getText(),
+                   // jTextFieldKysoName.getText(),
+                    "",
                     jTextFieldFacturnoName.getText(),
-                    jTextFieldNameSyotv.getText(),0.0,getFlag(),
+                    "",
+                    //jTextFieldNameSyotv.getText(),
+                    0.0,
+                    getFlag(),
                     jTextFieldExperList.getText(),
                     jTextFieldBarkod.getText(),
                     jTextFieldCod1.getText(),
@@ -640,6 +652,8 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     private javax.swing.JButton jButtonPrint;
     private javax.swing.JButton jButtonPrintReport;
     private javax.swing.JButton jButtonRefresh;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -654,15 +668,15 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextFieldBarkod;
     private javax.swing.JTextField jTextFieldCod1;
     private javax.swing.JTextField jTextFieldCod2;
     private javax.swing.JTextField jTextFieldCode;
     private javax.swing.JTextField jTextFieldExperList;
     private javax.swing.JTextField jTextFieldFacturnoName;
-    private javax.swing.JTextField jTextFieldKysoName;
     private javax.swing.JTextField jTextFieldName;
-    private javax.swing.JTextField jTextFieldNameSyotv;
     // End of variables declaration//GEN-END:variables
 //--------------- My Variables
     private String nameOfColumns[];
@@ -1242,8 +1256,8 @@ public class FrmProduct extends imakante.com.vcomponents.iInternalFrame implemen
      parameterHashMap.put(new String("in_kode1"),jTextFieldCod1.getText());
      parameterHashMap.put(new String("in_kode2"),jTextFieldCod2.getText());
      parameterHashMap.put(new String("in_name"),jTextFieldName.getText());
-     parameterHashMap.put(new String("in_sname"),jTextFieldKysoName.getText());
-     parameterHashMap.put(new String("in_cname"),jTextFieldNameSyotv.getText());
+//     parameterHashMap.put(new String("in_sname"),jTextFieldKysoName.getText());
+//     parameterHashMap.put(new String("in_cname"),jTextFieldNameSyotv.getText());
      parameterHashMap.put(new String("in_fname"),jTextFieldFacturnoName.getText());
      parameterHashMap.put(new String("in_barcod"),jTextFieldBarkod.getText());
      parameterHashMap.put(new String("in_exlist"),jTextFieldExperList.getText());
