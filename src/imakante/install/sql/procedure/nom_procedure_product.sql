@@ -1,10 +1,10 @@
 ﻿DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `mida`.`nom_procedure_product` $$
-CREATE PROCEDURE `nom_procedure_product`(IN in_comprator TINYINT,    IN in_id_pm INT(11),              IN in_id_ppp INT(11),        IN in_id_pp INT(11),
-                                                 IN in_id_pf INT(11),        IN in_id_n_group INT(11),         IN in_id_pd INT(11),         IN in_name_pm VARCHAR(30),
-                                                 IN in_sname_pm VARCHAR(30), IN in_fname_pm VARCHAR(30),       IN in_cname_pm VARCHAR(30),  IN in_max_pop_pm DOUBLE,
-                                                 IN in_flag_pm TINYINT,      IN in_expertsheet_pm VARCHAR(45), IN in_barcod_pm VARCHAR(20),  IN in_cod1_pm VARCHAR(20),
+CREATE DEFINER=`root`@`localhost` PROCEDURE `nom_procedure_product`(IN in_comprator TINYINT,    IN in_id_pm INT(11),              IN in_id_ppp INT(11),        IN in_id_pp INT(11),
+                                                 IN in_id_pf INT(11),        IN in_id_n_group INT(11),         IN in_id_pd INT(11),         IN in_name_pm VARCHAR(60),
+                                                 IN in_sname_pm VARCHAR(60), IN in_fname_pm VARCHAR(60),       IN in_cname_pm VARCHAR(60),  IN in_max_pop_pm DOUBLE,
+                                                 IN in_flag_pm TINYINT,      IN in_expertsheet_pm VARCHAR(60), IN in_barcod_pm VARCHAR(20),  IN in_cod1_pm VARCHAR(20),
                                                  IN in_cod2_pm VARCHAR(20),  IN in_price0_pp DOUBLE,           IN in_price1_pp DOUBLE,      IN in_price2_pp DOUBLE,
                                                  IN in_price3_pp DOUBLE, IN in_min_pm INT(11), IN in_code_pm VARCHAR(11))
 BEGIN
@@ -14,7 +14,7 @@ BEGIN
          pf.other_pf, pd.id_pd, pd.m1_pd, pd.v1_pd, pd.m2_pd, pd.v2_pd, pd.m3_pd, pd.v3_pd,min_pm,((pp.price0_pp*pf.dds_pf/100) + pp.price0_pp) as dost_prive_sDDS
         FROM n_product_main n LEFT JOIN n_product_price pp ON pp.id_pp = n.id_pp LEFT JOIN sl_curs  ON  pp.id_sl_curs = sl_curs.id_sl_curs LEFT JOIN n_money money ON money.id_n_money = sl_curs.id_sl_curs LEFT JOIN n_product_fee pf ON pf.id_pf = n.id_pf LEFT JOIN
          n_product_description pd ON pd.id_pd = n.id_pd LEFT JOIN n_product_promotion_price ppp ON ppp.id_ppp = n.id_ppp LEFT JOIN n_group g
-         ON g.id_n_group = n.id_n_group WHERE n.flag_pm = in_flag_pm ORDER BY n.name_pm, n.id_pm;
+         ON g.id_n_group = n.id_n_group WHERE n.flag_pm = in_flag_pm ORDER BY n.code_pm, n.id_pm ASC;
      END IF;
      IF (in_comprator = 1) THEN
         INSERT INTO n_product_main(id_n_group,id_ppp,id_pp, id_pf,name_pm, fname_pm, sname_pm,cname_pm,cod1_pm,
