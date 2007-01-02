@@ -813,17 +813,17 @@ public class reportFrmNal extends imakante.com.vcomponents.iInternalFrame implem
         }
         newString = newString
                 + ",SUM(rep_comm_nal.quant_nal), "
-                + "SUM(rep_comm_nal.miarka3), "
-                + "SUM(rep_comm_nal.miarka2), "
+                + "SUM(rep_comm_nal.miarka3_value), "
+                + "SUM(rep_comm_nal.miarka2_value), "
                 + "SUM(rep_comm_nal.ostatak), "
                 + "rep_comm_nal.price0_pp, "
-                + "SUM(rep_comm_nal.TSENA0), "
+                + "SUM(rep_comm_nal.), "
                 + "rep_comm_nal.price1_pp, "
-                + "SUM(rep_comm_nal.TSENA1), "
+                + "SUM(rep_comm_nal.stock_value1), "
                 + "rep_comm_nal.price2_pp, "
-                + "SUM(rep_comm_nal.TSENA2), "
+                + "SUM(rep_comm_nal.stock_value2), "
                 + "rep_comm_nal.price3_pp, "
-                + "SUM(rep_comm_nal.TSENA3) "
+                + "SUM(rep_comm_nal.stock_value3) "
                 + " FROM "
                 + " `rep_comm_nal` ";
         namesQ.add("\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E");
