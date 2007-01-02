@@ -131,6 +131,7 @@ public class levelDialogSimple extends javax.swing.JDialog {
     //opisanie na formite koito she badat kontrolirani
     private void close(){
         if (modul == 1) { frame.loadImport(); }
+        if (modul == 9000) { frame.loadReportNalSimpl(this.getLevel()); }
         if (modul == 9001) { frame.loadReportNal(this.getLevel()); }
         if (modul == 9002) { frame.loadReportParcelDate(this.getLevel()); }
         if (modul == 9003) { frame.loadReportStockOut(this.getLevel()); }

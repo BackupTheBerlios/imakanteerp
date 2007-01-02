@@ -28,9 +28,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         this.setLocation(0,0);
         imakante.com.NewMain.setB_SL(true);
         loadRightsArea();
-        try {
-            this.jlUserStatus.setText("\u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b: " + this.getConn().getMetaData().getUserName());
-        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
+        this.jlUserStatus.setText("\u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b: " + imakante.com.NewMain.getUserName());
+        
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -51,6 +50,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jComboBox1 = new javax.swing.JComboBox();
         jPanel2 = new javax.swing.JPanel();
         jlUserStatus = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
         menuBar = new javax.swing.JMenuBar();
         docMenu = new javax.swing.JMenu();
         docMenu_prod = new javax.swing.JMenuItem();
@@ -122,7 +125,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jSeparator12 = new javax.swing.JSeparator();
         nomMitProduct = new javax.swing.JMenuItem();
         sprMenu = new javax.swing.JMenu();
+        spravkiMenu_nal_simpl = new javax.swing.JMenuItem();
         spravkiMenu_nal = new javax.swing.JMenuItem();
+        spravkiMenu_nal_ext = new javax.swing.JMenuItem();
+        jSeparator13 = new javax.swing.JSeparator();
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
@@ -340,6 +346,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jlUserStatus.setForeground(new java.awt.Color(102, 102, 102));
         jlUserStatus.setText("\u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b: ");
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Contact16.png")));
+        jLabel1.setText("\u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442");
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Objects 2.png")));
+        jLabel2.setText("\u043f\u0440\u043e\u0434\u0443\u043a\u0442");
+
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -347,11 +359,24 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             .add(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jlUserStatus, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 297, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(438, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel1)
+                .add(1, 1, 1)
+                .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 93, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel2)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 92, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(96, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jlUserStatus, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+            .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                .add(jlUserStatus, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+                .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jLabel1)
+                .add(jLabel2)
+                .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
         getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
 
@@ -814,6 +839,15 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         menuBar.add(nomMenu);
 
         sprMenu.setText("\u0421\u041f\u0420\u0410\u0412\u041a\u0418");
+        spravkiMenu_nal_simpl.setText("\u041d\u0430\u043b\u0438\u0447\u043d\u043e\u0441\u0442 \u043e\u043f\u0440\u043e\u0441\u0442\u0435\u043d\u0430");
+        spravkiMenu_nal_simpl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                spravkiMenu_nal_simplActionPerformed(evt);
+            }
+        });
+
+        sprMenu.add(spravkiMenu_nal_simpl);
+
         spravkiMenu_nal.setText("\u041d\u0430\u043b\u0438\u0447\u043d\u043e\u0441\u0442");
         spravkiMenu_nal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -822,6 +856,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         });
 
         sprMenu.add(spravkiMenu_nal);
+
+        spravkiMenu_nal_ext.setText("\u041d\u0430\u043b\u0438\u0447\u043d\u043e\u0441\u0442 \u0440\u0430\u0437\u0448\u0438\u0440\u0435\u043d\u0430");
+        sprMenu.add(spravkiMenu_nal_ext);
+
+        sprMenu.add(jSeparator13);
 
         jMenuItem15.setText("\u041f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 \u0441\u0440\u043e\u043a\u043e\u0432\u0435 \u043d\u0430 \u0433\u043e\u0434\u043d\u043e\u0441\u0442");
         jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
@@ -1134,7 +1173,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-463)/2, 757, 463);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void spravkiMenu_nal_simplActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spravkiMenu_nal_simplActionPerformed
+        loadReportNalSimplLevel();
+    }//GEN-LAST:event_spravkiMenu_nal_simplActionPerformed
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         levelDialog1 = new levelDialog(this, true, 4, stokavaRazpiskaArea);
         levelDialog1.setVisible(true);
@@ -1146,7 +1189,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         if(user != -1  && level != -1)
             loadFrmDocFacade("\u0421\u0422\u041e\u041a\u041e\u0412\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         levelDialog1 = new levelDialog(this,true,202,danFaktArea);
         levelDialog1.setVisible(true);
@@ -1169,7 +1212,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             }
         }
     }//GEN-LAST:event_jButton7ActionPerformed
-
+    
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         levelDialog1 = new levelDialog(this,true,4,priematelnaRazpiskaArea);
         levelDialog1.setVisible(true);
@@ -1182,7 +1225,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             loadFrmDocFacade("\u041f\u0420\u0418\u0415\u041c\u0410\u0422\u0415\u041b\u041d\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410", user, level, pricelist, doctype, storagedocdacade, false, null, null );
         }
     }//GEN-LAST:event_jButton8ActionPerformed
-
+    
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         levelDialog1 = new levelDialog(this,true,4,narezdaneZaPrehvylqneArea);
         levelDialog1.setVisible(true);
@@ -1195,7 +1238,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             loadFrmDocFacade("\u041d\u0410\u0420\u0415\u0416\u0414\u0410\u041d\u0415 \u0417\u0410 \u041f\u0420\u0415\u0425\u0412\u042a\u0420\u041b\u042f\u041d\u0415", user, level, pricelist, doctype, storagedocdacade, false, null, null );
         }
     }//GEN-LAST:event_jButton9ActionPerformed
-
+    
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         levelDialog1 = new levelDialog(this,true,4,ofertaArea);
         levelDialog1.setVisible(true);
@@ -1614,6 +1657,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -1659,6 +1704,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator12;
+    private javax.swing.JSeparator jSeparator13;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -1667,6 +1713,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel jlUserStatus;
     private javax.swing.JMenu jmDebts;
@@ -1733,6 +1781,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenu sprMenu;
     private javax.swing.JMenuItem spravkiMenu_doc;
     private javax.swing.JMenuItem spravkiMenu_nal;
+    private javax.swing.JMenuItem spravkiMenu_nal_ext;
+    private javax.swing.JMenuItem spravkiMenu_nal_simpl;
     private javax.swing.JMenuItem stock_Menu_group_stock;
     private javax.swing.JMenuItem stock_Menu_stock;
     // End of variables declaration//GEN-END:variables
@@ -2083,7 +2133,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             imakante.sales.levelDialog level = new imakante.sales.levelDialog(this, true, 701, casaInContrArea);
             //  desktopPane.add(level);
             level.setVisible(true);
-        } else { 
+        } else {
             System.out.println("Empty hash");
             imakante.com.MessagePane.MissingBook();
         }
@@ -2100,7 +2150,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             imakante.sales.levelDialog level = new imakante.sales.levelDialog(this, true, 702, casaOutContrArea);
             //  desktopPane.add(level);
             level.setVisible(true);
-        } else { 
+        } else {
             System.out.println("Empty hash");
             imakante.com.MessagePane.MissingBook();
         }
@@ -2117,7 +2167,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             imakante.sales.levelDialog level = new imakante.sales.levelDialog(this, true, 703, casaAdvances);
             // desktopPane.add(level);
             level.setVisible(true);
-        } else { 
+        } else {
             System.out.println("Empty hash!");
             imakante.com.MessagePane.MissingBook();
         }
@@ -2134,7 +2184,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             imakante.sales.levelDialog level = new imakante.sales.levelDialog(this, true, 704, casa2casa);
             // desktopPane.add(level);
             level.setVisible(true);
-        } else { 
+        } else {
             System.out.println("Empty hash!");
             imakante.com.MessagePane.MissingBook();
         }
@@ -2197,6 +2247,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             } catch (java.beans.PropertyVetoException ex) {
                 ex.printStackTrace();
             }
+            
             iFrmContragent.setVisible(true);
             isStartFrmContragent = true;
         }
@@ -2371,7 +2422,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             imakante.com.SQLQueryFetcher shell = new imakante.com.SQLQueryFetcher(this, true);
             desktopPane.add(shell);
             shell.setVisible(true);
-        } else 
+        } else
             imakante.com.MessagePane.AdminOnly();
     }
     
@@ -2384,12 +2435,22 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         isStartFrmProduct = bool;
     }
     
-    
+    private void loadReportNalSimplLevel(){
+        imakante.sales.levelDialogSimple levDSec = new imakante.sales.levelDialogSimple(this, true,9000);
+        
+        levDSec.setVisible(true);
+    }
+    public void loadReportNalSimpl(int i) {
+        imakante.sales.reportFrmNalSimpl repNalSimpl = new imakante.sales.reportFrmNalSimpl("\u0421\u043f\u0440\u0430\u0432\u043a\u0430 \u041d\u0430\u043b\u0438\u0447\u043d\u043e\u0441\u0442\u0438", this, i);
+        desktopPane.add(repNalSimpl);
+        repNalSimpl.setVisible(true);
+    }
     public void loadReportNal(int i) {
         imakante.sales.reportFrmNal repNal = new imakante.sales.reportFrmNal("\u0421\u043f\u0440\u0430\u0432\u043a\u0430 \u041d\u0430\u043b\u0438\u0447\u043d\u043e\u0441\u0442\u0438", this, i);
         desktopPane.add(repNal);
         repNal.setVisible(true);
     }
+    
     private void loadReportNalLevel(){
         imakante.sales.levelDialogSimple levDSec = new imakante.sales.levelDialogSimple(this, true,9001);
         
@@ -2506,7 +2567,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     public  void setFaktArea(java.util.LinkedHashMap FaktArea) {
         this.FaktArea = FaktArea;
     }
-    private void loadFrmDocFacade(String title, int user, int level, int pricelist, int doctype, int storagedocdacade, boolean makeDocByInputData, 
+    private void loadFrmDocFacade(String title, int user, int level, int pricelist, int doctype, int storagedocdacade, boolean makeDocByInputData,
             java.util.HashMap dataIn, java.util.ArrayList dataOut) {
         try {
             frmDocumentFacadeDialog = new FrmDocumentFacade(title, user, level, pricelist, doctype, storagedocdacade, isMakeDocByInputData, dataIn, dataOut,this);

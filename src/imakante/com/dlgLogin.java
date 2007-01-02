@@ -363,6 +363,7 @@ public class dlgLogin extends javax.swing.JDialog {
                         NewMain.setUserId(userId);
                         userName = rs.getString("name_um");
                         NewMain.setUserName(userName);
+                        NewMain.changeUserLable("\u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b: " + userName);
                     }
                     NewMain.setParamFirm();}else{
                     JOptionPane.showMessageDialog(null,"ћол€ изберете фирма и опитайте отново !",sMsgTitle,JOptionPane.WARNING_MESSAGE);

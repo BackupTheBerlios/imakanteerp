@@ -24,6 +24,7 @@ public class NewMain extends javax.swing.JFrame {
         jBLS1 = new javax.swing.JButton();
         jBLS2 = new javax.swing.JButton();
         jBLS3 = new javax.swing.JButton();
+        labelUser = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -112,23 +113,26 @@ public class NewMain extends javax.swing.JFrame {
             }
         });
 
+        labelUser.setForeground(new java.awt.Color(255, 255, 255));
+        labelUser.setText("\u043d\u044f\u043c\u0430 \u0432\u0440\u044a\u0437\u043a\u0430 \u0441 \u0431\u0430\u0437\u0430\u0442\u0430");
+
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
                 .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 598, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(275, Short.MAX_VALUE))
+                .addContainerGap(279, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jBMN, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jBSales, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE))
+                            .add(jBMN, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jBSales, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED))
                     .add(jPanel1Layout.createSequentialGroup()
-                        .add(jButton2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                        .add(jButton2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
                         .add(4, 4, 4)))
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1Layout.createSequentialGroup()
@@ -137,8 +141,8 @@ public class NewMain extends javax.swing.JFrame {
                         .add(jBLS1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 140, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(jBLS, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-                            .add(jBACC, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE))
+                            .add(jBLS, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                            .add(jBACC, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                             .add(jBLS3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -146,6 +150,10 @@ public class NewMain extends javax.swing.JFrame {
                 .add(69, 69, 69)
                 .add(jbExit)
                 .add(310, 310, 310))
+            .add(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(labelUser, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 314, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(553, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -167,6 +175,8 @@ public class NewMain extends javax.swing.JFrame {
                     .add(jButton1)
                     .add(jBLS1)
                     .add(jbExit))
+                .add(8, 8, 8)
+                .add(labelUser)
                 .addContainerGap())
         );
 
@@ -181,6 +191,12 @@ public class NewMain extends javax.swing.JFrame {
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setText("\u0418\u0437\u0445\u043e\u0434 \u043e\u0442 \u0431\u0430\u0437\u0430\u0442\u0430");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+
         jMenu1.add(jMenuItem2);
 
         jMenu1.add(jSeparator1);
@@ -204,14 +220,25 @@ public class NewMain extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+            .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE))
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-605)/2, (screenSize.height-431)/2, 605, 431);
+        setBounds((screenSize.width-605)/2, (screenSize.height-443)/2, 605, 443);
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        try {
+            if(this.dbConn == null) {
+            } else {
+                dbConn.close();
+                dbConn = null;
+            }
+        } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
+        changeUserLable("\u043d\u044f\u043c\u0430 \u0432\u0440\u044a\u0437\u043a\u0430 \u0441 \u0431\u0430\u0437\u0430\u0442\u0430");
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
     
     private void jBLS3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLS3ActionPerformed
 // TODO add your handling code here:
@@ -284,13 +311,11 @@ public class NewMain extends javax.swing.JFrame {
     public static final void setConnection(java.sql.Connection conn) {
         try {
             if (dbConn != null) {
-                System.out.print("parvo zatvariam conn");
                 dbConn.close();
             }
             setDbConn(conn);
             setConnected(true);
         } catch (java.sql.SQLException sqle) {
-            System.err.println("SQLException: " + sqle.getMessage());
             sqle.printStackTrace();
         }
     }
@@ -335,7 +360,6 @@ public class NewMain extends javax.swing.JFrame {
             try {
                 dbConn.close();
             } catch(java.sql.SQLException sqle){
-                System.err.println("SQLException: " + sqle.getMessage());
                 return false;
             }
         }
@@ -391,9 +415,9 @@ public class NewMain extends javax.swing.JFrame {
     private org.jdesktop.swingx.tips.DefaultTip defaultTip1;
     private static javax.swing.JButton jBACC;
     private static javax.swing.JButton jBLS;
-    private javax.swing.JButton jBLS1;
-    private javax.swing.JButton jBLS2;
-    private javax.swing.JButton jBLS3;
+    private static javax.swing.JButton jBLS1;
+    private static javax.swing.JButton jBLS2;
+    private static javax.swing.JButton jBLS3;
     private static javax.swing.JButton jBMN;
     private static javax.swing.JButton jBSales;
     private javax.swing.JButton jButton1;
@@ -407,6 +431,7 @@ public class NewMain extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton jbExit;
+    private static javax.swing.JLabel labelUser;
     // End of variables declaration//GEN-END:variables
     /// Important constants
     // Modules count
@@ -432,6 +457,7 @@ public class NewMain extends javax.swing.JFrame {
     private static String dbPass = null;
     private static int userId = 0;
     private static String userName = null;
+    
     
     //SYSTEM PROP
     private static String OS_name;
@@ -488,7 +514,11 @@ public class NewMain extends javax.swing.JFrame {
     public static void setUser_dir(String aUser_dir) {
         user_dir = aUser_dir;
     }
-    
+    public static void changeUserLable(String Label){
+        labelUser.setText(Label);
+        labelUser.repaint();
+    }
+   
     //thread for Sale
     private void loadSalesMain() {
         java.awt.EventQueue.invokeLater(new Runnable() {
