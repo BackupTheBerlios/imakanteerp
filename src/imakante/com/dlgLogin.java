@@ -50,7 +50,7 @@ public class dlgLogin extends javax.swing.JDialog {
                 s = prop.getProperty(sKey);
                 jLabelCombo.addItem(s);
                 path2reports = "path2reports" + String.valueOf(i); // map key to rep dir
-                
+                System.out.println(" p2p " + path2reports);
                 
                 
                 // TODO da se izwli4at i ostanalite konfiguracionni parametri, koito sa nowi za imakante.xml
@@ -345,6 +345,7 @@ public class dlgLogin extends javax.swing.JDialog {
                 sKey = "URL" + String.valueOf(nIndex + 1);
                 DBSource = prop.getProperty(sKey);
                 path = prop.getProperty(path2reports);
+                System.out.println(" patia e " + path);
                 DBUserName = jUserTxtField.getText();
                 DBPassword = new String(jPassField.getPassword());
                 // Login

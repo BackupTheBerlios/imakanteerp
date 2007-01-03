@@ -2141,7 +2141,7 @@ public void loadPrintReportJasper(int docType,int in_id_df,int sellRow)
         
         id_doc = in_id_df;
     }
-    String path = "";
+    String path ="";
     System.out.println("ID_df="+ id_doc);
     switch(docType)
     {

@@ -1,14 +1,15 @@
 
 package imakante.com;
 
-public class SQLQueryFetcher extends imakante.com.vcomponents.iDialog  {
+public class SQLQueryFetcher extends imakante.com.vcomponents.iInternalFrame  {
     
     public SQLQueryFetcher(imakante.com.vcomponents.iFrame parent, boolean modal) {
-        super(parent, modal);
+        super("");
         myFrame = parent;
         prepareConn();
         prepareStm();
         initComponents();
+        this.setClosable(true);
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -157,6 +158,9 @@ public class SQLQueryFetcher extends imakante.com.vcomponents.iDialog  {
     
     private void executeIt() {
         String RESPONSE = "";
+        CustomTable  ctable;
+        CustomTableModel cmodel;
+        
         this.setQUERY(this.jtfQuery.getText());
         try {
             if (!this.getStm().execute(this.getQUERY())) {   // Affected Rows Count
@@ -172,6 +176,13 @@ public class SQLQueryFetcher extends imakante.com.vcomponents.iDialog  {
                         "\u0441\u043B\u0435\u0434\u043D\u0438\u044F \u043E\u0431\u0435\u043A\u0442:\n" + getStm().getResultSet().toString();
             }
             this.jTextArea1.setText(RESPONSE);
+            java.sql.ResultSet rs = getStm().executeQuery(getQUERY());
+            cmodel = new imakante.com.CustomTableModel(getConn(), rs, null);
+            ctable = new imakante.com.CustomTable(cmodel);
+            imakante.com.vcomponents.tableDialog tDialog = new imakante.com.vcomponents.tableDialog(this, true, ctable, "","", "");
+            tDialog.setVisible(true);
+            
+        //imakante.com.vcomponents.iInternalFrame frame, boolean modal, imakante.com.CustomTable table, String Title, String Header, String SearchField
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
     }
     
