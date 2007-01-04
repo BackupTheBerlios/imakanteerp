@@ -1497,17 +1497,6 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 					</textElement>
 				<text><![CDATA[Разплащателна сметка:]]></text>
 				</staticText>
-				<image  scaleImage="RetainShape" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="214"
-						y="222"
-						width="130"
-						height="19"
-						key="barcode-1"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<graphicElement stretchType="NoStretch" pen="None"/>
-					<imageExpression class="java.awt.Image"><![CDATA[it.businesslogic.ireport.barcode.BcImage.getBarcodeImage(11,$F{number_df},false,false,null,0,0)]]></imageExpression>
-				</image>
 			</band>
 		</summary>
 </jasperReport>
