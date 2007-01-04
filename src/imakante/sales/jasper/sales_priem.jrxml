@@ -477,19 +477,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="19"  isSplitAllowed="true" >
-				<line direction="TopDown">
-					<reportElement
-						mode="Opaque"
-						x="0"
-						y="17"
-						width="535"
-						height="0"
-						forecolor="#808080"
-						backcolor="#FFFFFF"
-						key="line"/>
-					<graphicElement stretchType="NoStretch" pen="Thin" fill="Solid" />
-				</line>
+			<band height="17"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
@@ -602,7 +590,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 					</textElement>
 				<textFieldExpression   class="java.lang.Long"><![CDATA[$F{OSTATAK}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" pattern="###0.00;-###0.00" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+				<textField isStretchWithOverflow="true" pattern="###0.0000;-###0.0000" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
 						x="414"
@@ -618,7 +606,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 					</textElement>
 				<textFieldExpression   class="java.lang.Double"><![CDATA[$F{singly_price_dl}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" pattern="###0.00;-###0.00" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+				<textField isStretchWithOverflow="true" pattern="###0.0000;-###0.0000" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
 						x="466"
@@ -678,7 +666,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 					<reportElement
 						mode="Opaque"
 						x="0"
-						y="1"
+						y="5"
 						width="535"
 						height="0"
 						forecolor="#000000"
@@ -718,7 +706,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 						key="rectangle-2"/>
 					<graphicElement stretchType="NoStretch" pen="Thin" fill="Solid" />
 				</rectangle>
-				<textField isStretchWithOverflow="false" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+				<textField isStretchWithOverflow="false" pattern="#,##0.0000;-#,##0.0000" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
 						x="446"
@@ -908,7 +896,7 @@ WHERE rep_documents_ivan.id_df = $P{id_dok}]]></queryString>
 					</textElement>
 				<text><![CDATA[Основа:]]></text>
 				</staticText>
-				<textField isStretchWithOverflow="false" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+				<textField isStretchWithOverflow="false" pattern="#,##0.0000;-#,##0.0000" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
 						x="446"
