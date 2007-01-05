@@ -2154,7 +2154,7 @@ public void loadPrintReportJasper(int docType,int in_id_df,int sellRow)
             parameterHashMap.put(new String("firmaname"),paramFrm1.getName());
             parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
            
-            printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,getDocLineTable(id_doc),conn,parameterHashMap,
+            printReportDialog = new imakante.com.vcomponents.tableDialog(this,false,getDocLineTable(id_doc),conn,parameterHashMap,
                     path+"sales_offer.jasper","\u041e\u0424\u0415\u0420\u0422\u0410",
                     "\u041e\u0424\u0415\u0420\u0422\u0410");
             printReportDialog.setVisible(true);
@@ -2187,7 +2187,7 @@ public void loadPrintReportJasper(int docType,int in_id_df,int sellRow)
             
             parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
           
-            printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,getDocLineTable(id_doc),conn,parameterHashMap,
+            printReportDialog = new imakante.com.vcomponents.tableDialog(this,false,getDocLineTable(id_doc),conn,parameterHashMap,
                    path+"sales_Dan_fak.jasper","\u0414\u0410\u041d\u042a\u0427\u041d\u0410 \u0424\u0410\u041a\u0422\u0423\u0420\u0410",
                     "\u0414\u0410\u041d\u042a\u0427\u041d\u0410 \u0424\u0410\u041a\u0422\u0423\u0420\u0410");
             printReportDialog.setVisible(true);
@@ -2209,7 +2209,7 @@ public void loadPrintReportJasper(int docType,int in_id_df,int sellRow)
             
             parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
           
-            printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,getDocLineTable(id_doc),conn,parameterHashMap,
+            printReportDialog = new imakante.com.vcomponents.tableDialog(this,false,getDocLineTable(id_doc),conn,parameterHashMap,
                     path+"sales_Opr_fak.jasper","\u041e\u041f\u0420\u041e\u0421\u0422\u0415\u041d\u0410 \u0424\u0410\u041a\u0422\u0423\u0420\u0410",
                     "\u041e\u041f\u0420\u041e\u0421\u0422\u0415\u041d\u0410 \u0424\u0410\u041a\u0422\u0423\u0420\u0410");
             printReportDialog.setVisible(true);
@@ -2241,7 +2241,7 @@ public void loadPrintReportJasper(int docType,int in_id_df,int sellRow)
             
             parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
           
-            printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,getDocLineTable(id_doc),conn,parameterHashMap,
+            printReportDialog = new imakante.com.vcomponents.tableDialog(this,false,getDocLineTable(id_doc),conn,parameterHashMap,
                     path+"sales_stokova.jasper","\u0421\u0422\u041e\u041a\u041e\u0412\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410",
                     "\u0421\u0422\u041e\u041a\u041e\u0412\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410");
             printReportDialog.setVisible(true);
