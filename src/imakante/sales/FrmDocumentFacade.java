@@ -1,7 +1,5 @@
 
-
 package imakante.sales;
-
 
 import java.awt.event.WindowListener;
 import java.awt.print.PrinterException;
@@ -18,58 +16,55 @@ import javax.swing.JFormattedTextField;
 import java.text.SimpleDateFormat;
 
 /**
- *Component for DOCUMENT 
+ * Component for DOCUMENT
  */
 
-public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame implements WindowListener
-{
- /**
-  *Constructs a default FrmDocumentFacade that is initialized with :
-  *
-  *@param title Title of Document;
-  *@param user User, the one that input/insert data of current dokument
-  *@param level Chose a level with we have to work
-  *@param pricelist Chose price list
-  *@param doctype Chose Document type, see {@link imakante.sales.aeDocumentFacade#OFERTA  Constant Field Values}
-  *@param storagedocdacade Chose  a storage with we have to work
-  *@param makeDocByInputData Boolean parameter, true - have build Document from dataIn and dataOut
-  *@param frame Parent frame
-  *
-  */
+public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame implements WindowListener {
+    /**
+     * Constructs a default FrmDocumentFacade that is initialized with :
+     *
+     * @param title Title of Document;
+     * @param user User, the one that input/insert data of current dokument
+     * @param level Chose a level with we have to work
+     * @param pricelist Chose price list
+     * @param doctype Chose Document type, see {@link imakante.sales.aeDocumentFacade#OFERTA  Constant Field Values}
+     * @param storagedocdacade Chose  a storage with we have to work
+     * @param makeDocByInputData Boolean parameter, true - have build Document from dataIn and dataOut
+     * @param frame Parent frame
+     *
+     */
     public FrmDocumentFacade(String title, int user, int level, int pricelist, int doctype,int storagedocdacade,boolean makeDocByInputData,HashMap dataIn, ArrayList dataOut,imakante.com.vcomponents.iFrame frame) // TEST   ,
     {
         super(title);
-        myframe = frame; 
-       this.dataInput = dataIn;
-       this.dataOutput = dataOut;
-       this.userEditForm = user;
-       this.levelDocFacade = level;
-       this.priceList = pricelist;
-       this.docType = doctype;
-       this.storageDocFacade= storagedocdacade;
-       setStorageOUTProduct(storageDocFacade);
+        myframe = frame;
+        this.dataInput = dataIn;
+        this.dataOutput = dataOut;
+        this.userEditForm = user;
+        this.levelDocFacade = level;
+        this.priceList = pricelist;
+        this.docType = doctype;
+        this.storageDocFacade= storagedocdacade;
+        setStorageOUTProduct(storageDocFacade);
         prepareConn();     // zapazva connection
         constructGroupDB(); // inicializira class otgovarq6t za vryzkata s DB
         checkForMakeDoc(makeDocByInputData);
         initTable();
         initComponents();
-       
-        if(makeDocByInputData) // pokazva napravo dokumenta koito trqbva da se izdade 
+        
+        if(makeDocByInputData) // pokazva napravo dokumenta koito trqbva da se izdade
         {
-           System.out.println("Row count="+table.getRowCount()); 
+            System.out.println("Row count="+table.getRowCount());
             refreshTable();
             int rCount = table.getRowCount();
-            for(int i=0; i < rCount;i++)
-            {
+            for(int i=0; i < rCount;i++) {
                 int id = (Integer)table.getValueAt(i,getColumnIndex("id_df"));
-                if(id == getID_DocFacade())
-                {
+                if(id == getID_DocFacade()) {
                     rCount = i;
                     break;
                 }
             }
             table.changeSelection(rCount,2,false,false);
-           jButtonEdit.doClick();
+            jButtonEdit.doClick();
         }
         
         
@@ -88,6 +83,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextFieldNoDoc = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jXDatePickerOt = new org.jdesktop.swingx.JXDatePicker();
         jLabel3 = new javax.swing.JLabel();
@@ -111,6 +107,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }
@@ -148,12 +145,15 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
         jTextFieldNoDoc.setInputVerifier(new imakante.com.InputIntegerVerifier());
         jPanel4.add(jTextFieldNoDoc);
 
-        jLabel2.setText("\u0414\u0430\u0442\u0430 \u043d\u0430 \u0434\u043e\u043a. \u043e\u0442:");
+        jLabel4.setText("\u0414\u0430\u0442\u0430 \u043d\u0430 \u0438\u0437\u0434\u0430\u0432\u0430\u043d\u0435:");
+        jPanel4.add(jLabel4);
+
+        jLabel2.setText("\u043e\u0442");
         jPanel4.add(jLabel2);
 
         jPanel4.add(jXDatePickerOt);
 
-        jLabel3.setText("\u0414\u0430\u0442\u0430 \u043d\u0430 \u0434\u043e\u043a. \u0434\u043e:");
+        jLabel3.setText("\u0434\u043e");
         jPanel4.add(jLabel3);
 
         jPanel4.add(jXDatePickerDo);
@@ -164,6 +164,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
         jComboBoxPay.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--------------", "\u041e\u0422\u041b\u041e\u0416\u0415\u041d\u041e", "\u0411\u0420\u041e\u0419", "\u0411\u0410\u041d\u041a\u0410", "\u0427\u0410\u0421\u0422\u0418\u0427\u041d\u041e" }));
         jPanel4.add(jComboBoxPay);
 
+        jButtonSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Search.png")));
         jButtonSearch.setText("\u0422\u044a\u0440\u0441\u0435\u043d\u0435");
         jButtonSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,7 +183,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 1383, Short.MAX_VALUE)
+            .add(0, 1387, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -192,6 +193,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel3.setPreferredSize(new java.awt.Dimension(801, 37));
+        jButtonNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Add 2.png")));
         jButtonNew.setText("\u041d\u043e\u0432");
         jButtonNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,6 +203,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
 
         jPanel3.add(jButtonNew);
 
+        jButtonEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Report Edit 2.png")));
         jButtonEdit.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f");
         jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,6 +213,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
 
         jPanel3.add(jButtonEdit);
 
+        jButtonPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Printer.png")));
         jButtonPrint.setText("\u041f\u0435\u0447\u0430\u0442");
         jButtonPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -228,6 +232,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
 
         jPanel3.add(jButtonPrnReport);
 
+        jButtonDel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Delete 2.png")));
         jButtonDel.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435");
         jButtonDel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,6 +242,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
 
         jPanel3.add(jButtonDel);
 
+        jButtonRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Refresh 3.png")));
         jButtonRefresh.setText("\u0412\u0441\u0438\u0447\u043a\u0438 \u0437\u0430\u043f\u0438\u0441\u0438");
         jButtonRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -262,20 +268,20 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jButtonPrnReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrnReportActionPerformed
 // TODO add your handling code here:
         loadPrintReportJasper(getDocFacadeType(),-1,table.getSelectedRow());
     }//GEN-LAST:event_jButtonPrnReportActionPerformed
-
+    
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
 // TODO add your handling code here:
-      
+        
     }//GEN-LAST:event_formInternalFrameClosed
-
+    
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
 // TODO add your handling code here:
-     /*   
+     /*
         try
         {
         MessageFormat headerFormat = new MessageFormat("Group");
@@ -286,56 +292,52 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
         {
             e.printStackTrace();
         }*/
-    loadSimpleReport();
+        loadSimpleReport();
         
         
         
     }//GEN-LAST:event_jButtonPrintActionPerformed
-
+    
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
 // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButtonCloseActionPerformed
-
+    
     private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
 // TODO add your handling code here:
-        try
-        {
-         String searchNomer =jTextFieldNoDoc.getText();
-         java.util.Date dd = jXDatePickerOt.getDate();
-         String dateOt =(dd.getYear()+1900)+"/"+(dd.getMonth()+1)+"/"+dd.getDate();
-         dd = jXDatePickerDo.getDate();
-         String dateDo =(dd.getYear()+1900)+"/"+(dd.getMonth()+1)+"/"+dd.getDate();;
-         int IDpay= jComboBoxPay.getSelectedIndex()+1;
-         
-         
-        
-         rs = countriesT.searchRecords(IDpay,searchNomer,getDocFacadeLevel(),getDocFacadeType(),dateOt,dateDo);
-         jScrollPane1.remove(table);
-         model = new imakante.com.CustomTableModel(conn,rs, nameColumnsDocFacade);
-         table = new imakante.com.CustomTable(model);
-         jScrollPane1.getViewport().add(table);
-         jScrollPane1.repaint();
-        
-        }
-        catch(Exception e)
-        {
+        try {
+            String searchNomer =jTextFieldNoDoc.getText();
+            java.util.Date dd = jXDatePickerOt.getDate();
+            String dateOt =(dd.getYear()+1900)+"/"+(dd.getMonth()+1)+"/"+dd.getDate();
+            dd = jXDatePickerDo.getDate();
+            String dateDo =(dd.getYear()+1900)+"/"+(dd.getMonth()+1)+"/"+dd.getDate();;
+            int IDpay= jComboBoxPay.getSelectedIndex()+1;
+            
+            
+            
+            rs = countriesT.searchRecords(IDpay,searchNomer,getDocFacadeLevel(),getDocFacadeType(),dateOt,dateDo);
+            jScrollPane1.remove(table);
+            model = new imakante.com.CustomTableModel(conn,rs, nameColumnsDocFacade);
+            table = new imakante.com.CustomTable(model);
+            jScrollPane1.getViewport().add(table);
+            jScrollPane1.repaint();
+            
+        } catch(Exception e) {
             e.printStackTrace();
         }
         hideDocimentTypeColumns(docType);
         moveDocimentTypeColumns(docType);
         hideCommonColumns();
     }//GEN-LAST:event_jButtonSearchActionPerformed
-
+    
     private void jButtonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshActionPerformed
 // TODO add your handling code here:
         refreshTable();
     }//GEN-LAST:event_jButtonRefreshActionPerformed
-
+    
     private void jButtonDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDelActionPerformed
 // TODO add your handling code here:
-        if(table.getSelectedRow() != -1)
-        {
+        if(table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());
             setID_DocFacade((Integer)table.getValueAt(getRow(),getColumnIndex("id_df")));
             countriesT.deleteRow(getID_DocFacade());
@@ -343,13 +345,12 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
         }
         
     }//GEN-LAST:event_jButtonDelActionPerformed
-
+    
     private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
 // TODO add your handling code here:
         setAtBegining(false);
         setAtEnd(false);
-        if (table.getSelectedRow() != -1) 
-        { 
+        if (table.getSelectedRow() != -1) {
             
             setRow(table.getSelectedRow());
             if(getRow()==0){
@@ -359,14 +360,12 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
                 setAtEnd(true);
             }
             setAllVariables();
-            try 
-            {
-               
+            try {
+                
                 dialog = new aeDocumentFacade(this, true,false,priceList);;
                 dialog.setVisible(true);
                 
-            } catch(Exception e)
-            {
+            } catch(Exception e) {
                 e.printStackTrace();
             }
         }else{
@@ -374,40 +373,34 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
         }
         
     }//GEN-LAST:event_jButtonEditActionPerformed
-
+    
     private void jButtonNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewActionPerformed
 // TODO add your handling code here:
-       setAllVariablesDefault();
+        setAllVariablesDefault();
         
-      long number=0;
-      if(getDocFacadeType()!=aeDocumentFacade.FAKTURA_DANACHNA || getDocFacadeType()!=aeDocumentFacade.FAKTURA_OPROSTENA)
-      {
-        number =  getCountriesT().getDocNumberLast(getUserEditFortm(),getDocFacadeLevel(),getDocFacadeType());
-      }
-      else
-      {
-        number =  getCountriesT().getDocNumberLast(getUserEditFortm(),3,getDocFacadeType());  
-      }
+        long number=0;
+        if(getDocFacadeType()!=aeDocumentFacade.FAKTURA_DANACHNA || getDocFacadeType()!=aeDocumentFacade.FAKTURA_OPROSTENA) {
+            number =  getCountriesT().getDocNumberLast(getUserEditFortm(),getDocFacadeLevel(),getDocFacadeType());
+        } else {
+            number =  getCountriesT().getDocNumberLast(getUserEditFortm(),3,getDocFacadeType());
+        }
         number++;
         setNumberDocFacade(String.valueOf(number));
-       getCountriesT().insertRow(0,0,0,0,0,0,0,number,0,0,0,0,0,
-               getDocFacadeLevel(),0,getDocFacadeType(),0,0,"-1",null,null,null,null,1,0);
-       setID_DocFacade(getCountriesT().getMaxId());
-       
-       
-      //  setID_DocFacade(countriesT.getMaxId());
-    //    refreshTable();
-         try 
-            {
-             if(getID_DocFacade()!=-1)
-             {
+        getCountriesT().insertRow(0,0,0,0,0,0,0,number,0,0,0,0,0,
+                getDocFacadeLevel(),0,getDocFacadeType(),0,0,"-1",null,null,null,null,1,0);
+        setID_DocFacade(getCountriesT().getMaxId());
+        
+        
+        //  setID_DocFacade(countriesT.getMaxId());
+        //    refreshTable();
+        try {
+            if(getID_DocFacade()!=-1) {
                 dialog = new aeDocumentFacade(this, true,true,priceList);;
                 dialog.setVisible(true);
-             }  
-            } catch(Exception e)
-            {
-                e.printStackTrace();
             }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
         
         
     }//GEN-LAST:event_jButtonNewActionPerformed
@@ -425,15 +418,15 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
                 int storage =1;
                 boolean makedoc = false;
                 HashMap INdata = null;
-                ArrayList OUTdata = null;       
-                
-                
+                ArrayList OUTdata = null;
+   
+   
                 FrmDocumentFacade frCN =   new FrmDocumentFacade("ttt",user,level,pricelist,doctype,storage,makedoc,INdata,OUTdata);
                 fr.add(frCN);
                 frCN.setSize(400,400);
                 frCN.setVisible(true);
                 fr.setVisible(true);
-                
+   
             }
         });
     }*/
@@ -452,6 +445,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -462,8 +456,8 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
     private org.jdesktop.swingx.JXDatePicker jXDatePickerDo;
     private org.jdesktop.swingx.JXDatePicker jXDatePickerOt;
     // End of variables declaration//GEN-END:variables
- //--------------- My Variables
-  // input parametrs
+    //--------------- My Variables
+    // input parametrs
     private int userDocFacade=0; // usera ot zapisite ot BD
     private int userEditForm = 0; // usera kojto vyvejda nannite
     private int levelDocFacade = 0;
@@ -471,47 +465,47 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
     private int docType;
     private HashMap dataInput= null;
     private ArrayList dataOutput = null;
-//------------------------------------  
-   private String nameContragent;
-   private String codeContragent;
-   private String bulContragent;
-   private String danContragent;
-   private String addressContragent;
-   private String molContragent;
-   private String telContragent;
-   private String codeObekt;
-   private String nameObekt;
-   private String telObekt;
-   private String addressObekt;
-   private String docFacadeNumber;
-   private String docFacadeDate;
-   private String payingDate;
-   private String deliverDate;
-   private String docFacadeDistributor;
-   private String docFacadeDeliver;
-   
-   private int idDocFacade;
-   private int idContragent;
-   private int idObect;
-   private int idDistributor;
-   private int idDeliver;
-   private int storageDocFacade;
-   private int storageDocFacadeIN; //zapazva skalda kym kolto 6te se prehvyrlqt stoka
-   private int idProduct;
-   private int idProductConsignment;
-   private int idProductDescription;
-   private int idProductPrice;
-   private int idProductFee;
-   private int idCurs;
-   
-   
-   private int descriptionPaying =0;
-   
-   private double allDDSPaing=0;
-   private double totalPaying=0;
-   private int userLastEdit = userEditForm;
-   private String commenatDocFacade;
-   
+//------------------------------------
+    private String nameContragent;
+    private String codeContragent;
+    private String bulContragent;
+    private String danContragent;
+    private String addressContragent;
+    private String molContragent;
+    private String telContragent;
+    private String codeObekt;
+    private String nameObekt;
+    private String telObekt;
+    private String addressObekt;
+    private String docFacadeNumber;
+    private String docFacadeDate;
+    private String payingDate;
+    private String deliverDate;
+    private String docFacadeDistributor;
+    private String docFacadeDeliver;
+    
+    private int idDocFacade;
+    private int idContragent;
+    private int idObect;
+    private int idDistributor;
+    private int idDeliver;
+    private int storageDocFacade;
+    private int storageDocFacadeIN; //zapazva skalda kym kolto 6te se prehvyrlqt stoka
+    private int idProduct;
+    private int idProductConsignment;
+    private int idProductDescription;
+    private int idProductPrice;
+    private int idProductFee;
+    private int idCurs;
+    
+    
+    private int descriptionPaying =0;
+    
+    private double allDDSPaing=0;
+    private double totalPaying=0;
+    private int userLastEdit = userEditForm;
+    private String commenatDocFacade;
+    
     private String numberProduct;
     private String nameProduct;
     private int codeProduct;
@@ -523,7 +517,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
     private int brojProduct;
     private int razfasovka1Produkt;
     private int razfasovka2Produkt;
-     private int razfasovka3Produkt;
+    private int razfasovka3Produkt;
     private double priceOneProduct;
     private double procentProduct;
     private double DDSProduct;   // dds v procenti
@@ -533,25 +527,25 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
     private ArrayList arrayOfID_DF = new ArrayList();
     private imakante.com.vcomponents.tableDialog printReportDialog;
     private imakante.com.simpleReport simpReport;
-   
-   private  String nameColumnsDocFacade[] = {"id_df", "in_contragent_df", "Код на контрагента1", "Булстат1", "Данъчен номер1", "Име на контрагента1",
-   "Адрес1", "МОЛ1","Телефон на контрагента1", "out_contragent_df",
- "Код на контрагента2", "Булстат2", "Данъчен номер2", "Име на контрагента2", "Адрес2", "МОЛ2","Телефон на контрагента2", "in_obekt_df", "Име на обекта1", "Адрес на обекта1", "Код на обекта1",
- "out_obekt_df", "Име на обекта2", "Адрес на обекта2", "Код на обекта2", "Тип на документа", "Номер на документа", "Състояние", "Склад", "Общо", "ДДС",
- "ПотребителIndex","Потребител", "Потребител-последна редакцияIndex","Потребител-последна редакция", "Дата на документа", "time_edition_df", "distributor_df", "Код на дистрибутор", "delivere_df", "Код на доставчик",
- "faktura_connection_df", "zaiavka_connection_df", "Вид плащанеIndex","Вид плащане", "paying_order_df", "Дата на доставяне", "Дата на плащане", "Коментар", 
-"flag_finish_df", "id_rep", "level_df","Склад (към)"};
-   
+    
+    private  String nameColumnsDocFacade[] = {"id_df", "in_contragent_df", "Код на контрагента1", "Булстат1", "Данъчен номер1", "Име на контрагента1",
+    "Адрес1", "МОЛ1","Телефон на контрагента1", "out_contragent_df",
+    "Код на контрагента2", "Булстат2", "Данъчен номер2", "Име на контрагента2", "Адрес2", "МОЛ2","Телефон на контрагента2", "in_obekt_df", "Име на обекта1", "Адрес на обекта1", "Код на обекта1",
+    "out_obekt_df", "Име на обекта2", "Адрес на обекта2", "Код на обекта2", "Тип на документа", "Номер на документа", "Състояние", "Склад", "Общо", "ДДС",
+    "ПотребителIndex","Потребител", "Потребител-последна редакцияIndex","Потребител-последна редакция", "Дата на документа", "time_edition_df", "distributor_df", "Код на дистрибутор", "delivere_df", "Код на доставчик",
+    "faktura_connection_df", "zaiavka_connection_df", "Вид плащанеIndex","Вид плащане", "paying_order_df", "Дата на доставяне", "Дата на плащане", "Коментар",
+    "flag_finish_df", "id_rep", "level_df","Склад (към)"};
+    
 /* private  String nameColumnsDocFacade[] = {"id_df", "in_contragent_df", "\u041a\u043e\u0434 \u043d\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u04301", "\u0411\u0443\u043b\u0441\u0442\u0430\u04421", "\u0414\u0430\u043d\u044a\u0447\u0435\u043d \u043d\u043e\u043c\u0435\u04401", "\u0418\u043c\u0435 \u043d\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u04301",
    "\u0410\u0434\u0440\u0435\u04411", "\u041c\u041e\u041b1","\u0422\u0435\u043b\u0435\u0444\u043e\u043d \u043d\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u04301", "out_contragent_df",
  "\u041a\u043e\u0434 \u043d\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u04302", "\u0411\u0443\u043b\u0441\u0442\u0430\u04422", "\u0414\u0430\u043d\u044a\u0447\u0435\u043d \u043d\u043e\u043c\u0435\u04402", "\u0418\u043c\u0435 \u043d\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u04302", "\u0410\u0434\u0440\u0435\u04412", "\u041c\u041e\u041b2","\u0422\u0435\u043b\u0435\u0444\u043e\u043d \u043d\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u04302", "in_obekt_df", "\u0418\u043c\u0435 \u043d\u0430 \u043e\u0431\u0435\u043a\u0442\u04301", "\u0410\u0434\u0440\u0435\u0441 \u043d\u0430 \u043e\u0431\u0435\u043a\u0442\u04301", "\u041a\u043e\u0434 \u043d\u0430 \u043e\u0431\u0435\u043a\u0442\u04301",
  "out_obekt_df", "\u0418\u043c\u0435 \u043d\u0430 \u043e\u0431\u0435\u043a\u0442\u04302", "\u0410\u0434\u0440\u0435\u0441 \u043d\u0430 \u043e\u0431\u0435\u043a\u0442\u04302", "\u041a\u043e\u0434 \u043d\u0430 \u043e\u0431\u0435\u043a\u0442\u04302", "\u0422\u0438\u043f \u043d\u0430 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430", "\u041d\u043e\u043c\u0435\u0440 \u043d\u0430 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430", "\u0421\u044a\u0441\u0442\u043e\u044f\u043d\u0438\u0435", "\u0421\u043a\u043b\u0430\u0434", "\u041e\u0431\u0449\u043e", "\u0414\u0414\u0421",
  "\u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043bIndex","\u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b", "\u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b-\u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0430 \u0440\u0435\u0434\u0430\u043a\u0446\u0438\u044fIndex","\u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b-\u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0430 \u0440\u0435\u0434\u0430\u043a\u0446\u0438\u044f", "\u0414\u0430\u0442\u0430 \u043d\u0430 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430", "time_edition_df", "distributor_df", "\u041a\u043e\u0434 \u043d\u0430 \u0434\u0438\u0441\u0442\u0440\u0438\u0431\u0443\u0442\u043e\u0440", "delivere_df", "\u041a\u043e\u0434 \u043d\u0430 \u0434\u043e\u0441\u0442\u0430\u0432\u0447\u0438\u043a",
- "faktura_connection_df", "zaiavka_connection_df", "\u0412\u0438\u0434 \u043f\u043b\u0430\u0449\u0430\u043d\u0435Index","\u0412\u0438\u0434 \u043f\u043b\u0430\u0449\u0430\u043d\u0435", "paying_order_df", "\u0414\u0430\u0442\u0430 \u043d\u0430 \u0434\u043e\u0441\u0442\u0430\u0432\u044f\u043d\u0435", "\u0414\u0430\u0442\u0430 \u043d\u0430 \u043f\u043b\u0430\u0449\u0430\u043d\u0435", "\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440", 
+ "faktura_connection_df", "zaiavka_connection_df", "\u0412\u0438\u0434 \u043f\u043b\u0430\u0449\u0430\u043d\u0435Index","\u0412\u0438\u0434 \u043f\u043b\u0430\u0449\u0430\u043d\u0435", "paying_order_df", "\u0414\u0430\u0442\u0430 \u043d\u0430 \u0434\u043e\u0441\u0442\u0430\u0432\u044f\u043d\u0435", "\u0414\u0430\u0442\u0430 \u043d\u0430 \u043f\u043b\u0430\u0449\u0430\u043d\u0435", "\u041a\u043e\u043c\u0435\u043d\u0442\u0430\u0440",
 "flag_finish_df", "id_rep", "level_df","\u0421\u043a\u043b\u0430\u0434 (\u043a\u044a\u043c)"};*/
     
-   
-     private String nameColumnsDocFacadeEN[] ={"id_df","in_contragent_df","contr_in_code_contragent","contr_in_bul_n_contragent","contr_in_dan_n_contragent",
+    
+    private String nameColumnsDocFacadeEN[] ={"id_df","in_contragent_df","contr_in_code_contragent","contr_in_bul_n_contragent","contr_in_dan_n_contragent",
     "contr_in_name_n_contragent","contr_in_address_n_contragent","p_contr_in_name_ls_n_person","contr_in_tel_contragent","out_contragent_df",
     "contr_out_code_contragent","contr_out_bul_n_contragent","contr_out_dan_n_contragent","contr_out_name_n_contragent","ontr_out_address_n_contragent",
     "p_contr_out_name_ls_n_person","contr_out_tel_contragent","in_obekt_df","obkt_in_name_n_obekt","obkt_in_address_n_obekt",
@@ -570,10 +564,10 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
     private aeDocumentFacade dialog;
     private imakante.com.vcomponents.iFrame myframe;
     private java.sql.Connection conn;
-    private  java.sql.ResultSet rs; 
+    private  java.sql.ResultSet rs;
     private documentFacadeDB countriesT;
     private  imakante.com.CustomTableModel model;
-    private  imakante.com.CustomTable table; 
+    private  imakante.com.CustomTable table;
     private java.sql.Connection ccc;  // samo za testvaneto
     private  static JFrame fr = new JFrame("test");
     private String User="imakante";  // vremenna promenliva za test
@@ -583,947 +577,788 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
     
     private final int IN =1; // za skrivane na kolonite
     private final int OUT=2; // za skrivane na kolonite
- //---------------END My Variables
- //---------------START MyFunction
-private void prepareConn() //TEST
+    //---------------END My Variables
+    //---------------START MyFunction
+    private void prepareConn() //TEST
     {
-      // samo za testovate ------------
+        // samo za testovate ------------
      /* try
          {
           Class.forName("com.mysql.jdbc.Driver");
-           
+      
            ccc = DriverManager.getConnection(Url, User, Pass);
            conn = ccc;
-          
+      
          }
          catch(Exception e)
          {
              e.printStackTrace();
          }
       */
-       try
-       {
+        try {
             setConn(myframe.getConn());
-       }
-       catch(Exception e)
-       {
-       e.printStackTrace();
-       }
-  }
-private void constructGroupDB() //OK 
-    {
-        try
-        {
-            
-         countriesT = new documentFacadeDB(conn);
+        } catch(Exception e) {
+            e.printStackTrace();
         }
-        catch(Exception e)
+    }
+    private void constructGroupDB() //OK
+    {
+        try {
+            
+            countriesT = new documentFacadeDB(conn);
+        } catch(Exception e)
         
         {
             e.printStackTrace();
         }
         System.out.println("ot construct object");
     }
-private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
+    private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
     {
-      try
-        {
-           
+        try {
+            
             rs = countriesT.getTable(getDocFacadeLevel(),getUserEditFortm(),getDocFacadeType());
-        //    nameColumnsDocFacade =null;
-        
+            //    nameColumnsDocFacade =null;
+            
             
             model = new imakante.com.CustomTableModel(conn,rs, nameColumnsDocFacade);
             table = new imakante.com.CustomTable(model);
-          
             
+            
+        } catch(Exception e) {
+            e.printStackTrace();
         }
-       catch(Exception e)
-       {
-           e.printStackTrace();
-       }
-       table.requestFocus();
-       try
-        {
-          table.setEditingRow(0);
-       } 
-        catch(Exception ex) 
-        {
-        
+        table.requestFocus();
+        try {
+            table.setEditingRow(0);
+        } catch(Exception ex) {
+            
         }
         System.out.println("nameColumnsDocFacade = "+nameColumnsDocFacade.length);
         
-         hideDocimentTypeColumns(docType);
-         moveDocimentTypeColumns(docType);
-         hideCommonColumns();
-  }
+        hideDocimentTypeColumns(docType);
+        moveDocimentTypeColumns(docType);
+        hideCommonColumns();
+    }
     
- public void windowOpened(java.awt.event.WindowEvent e)
-  {
+    public void windowOpened(java.awt.event.WindowEvent e) {
+        
+    }
+    public void windowClosing(java.awt.event.WindowEvent e) // colose frame`s windows
+    {
+        
+    }
     
-   }
-  public void windowClosing(java.awt.event.WindowEvent e) // colose frame`s windows
-   {
+    public void windowClosed(java.awt.event.WindowEvent e) {
         
-   }
+    }
+    public void windowIconified(java.awt.event.WindowEvent e) {
         
-  public void windowClosed(java.awt.event.WindowEvent e)
-   {
+    }
+    public void windowDeiconified(java.awt.event.WindowEvent e) {
         
-   }
-  public void windowIconified(java.awt.event.WindowEvent e)
-   {
-      
-   }
-  public void windowDeiconified(java.awt.event.WindowEvent e)
-   {
-      
-   }
-  public void windowActivated(java.awt.event.WindowEvent e)
-   {
-      
-   }
-  public void windowDeactivated(java.awt.event.WindowEvent e) 
-   {
-   
-   } 
-  
-  public void setConn(java.sql.Connection con)
-  {
-      this.conn = con;
-  }
-  public documentFacadeDB getCountriesT() //OK
-     {
+    }
+    public void windowActivated(java.awt.event.WindowEvent e) {
+        
+    }
+    public void windowDeactivated(java.awt.event.WindowEvent e) {
+        
+    }
+    
+    public void setConn(java.sql.Connection con) {
+        this.conn = con;
+    }
+    public documentFacadeDB getCountriesT() //OK
+    {
         return countriesT;
     }
     
-  public void setCountriesT(documentFacadeDB val)//OK
-     {
+    public void setCountriesT(documentFacadeDB val)//OK
+    {
         this.countriesT = val;
     }
     
-  public CustomTableModel getModel()//OK
-     {
+    public CustomTableModel getModel()//OK
+    {
         return model;
     }
     
-  public void setModel(CustomTableModel val)//OK
-     {
+    public void setModel(CustomTableModel val)//OK
+    {
         this.model = val;
     }
     
-  public CustomTable getTable()//OK
-     {
+    public CustomTable getTable()//OK
+    {
         return table;
     }
     
-  public void setTable(CustomTable val) //OK
-     {
+    public void setTable(CustomTable val) //OK
+    {
         this.table = val;
     }
     
-  public iFrame getMyframe()//OK
-     {
+    public iFrame getMyframe()//OK
+    {
         return myframe;
     }
     
-  public void setMyframe(iFrame val)//OK
-     {
+    public void setMyframe(iFrame val)//OK
+    {
         this.myframe = val;
     }
- 
-   private int  getMaxRow() 
-   {
+    
+    private int  getMaxRow() {
         int i = 0;
         i  = table.getRowCount() - 1;
         return i;
-   }
-   public ArrayList getArrayOfID_DF()
-   {
-       return arrayOfID_DF;
-   }
-   public void setArrayOfID_DF(ArrayList in)
-   {
-       arrayOfID_DF = in;
-   }
+    }
+    public ArrayList getArrayOfID_DF() {
+        return arrayOfID_DF;
+    }
+    public void setArrayOfID_DF(ArrayList in) {
+        arrayOfID_DF = in;
+    }
 //-------------------------------->
-   public void setNamesContragent(String Name) 
-    {
+    public void setNamesContragent(String Name) {
         this.nameContragent = Name;
     }
-    public String getNamesContragent() 
-    {
+    public String getNamesContragent() {
         return nameContragent;
     }
-   public void setCodeContragent(String code) 
-    {
+    public void setCodeContragent(String code) {
         this.codeContragent = code;
     }
-    public String getCodeContragent() 
-    {
+    public String getCodeContragent() {
         return codeContragent;
     }
-     public void setBulContragent(String bul) 
-    {
+    public void setBulContragent(String bul) {
         this.codeContragent = bul;
     }
-    public String getBulContragent() 
-    {
+    public String getBulContragent() {
         return bulContragent;
     }
-    public void setDanContragent(String dan) 
-    {
+    public void setDanContragent(String dan) {
         this.danContragent = dan;
     }
-    public String getDanContragent() 
-    {
+    public String getDanContragent() {
         return danContragent;
     }
-    public void setAddressContragent(String addres) 
-    {
+    public void setAddressContragent(String addres) {
         this.addressContragent = addres;
     }
-    public String getAddressContragent() 
-    {
+    public String getAddressContragent() {
         return addressContragent;
     }
-     public void setMOLContragent(String mol) 
-    {
+    public void setMOLContragent(String mol) {
         this.molContragent = mol;
     }
-    public String getMOLContragent() 
-    {
+    public String getMOLContragent() {
         return molContragent;
     }
-    public void setTelContragent(String tel) 
-    {
+    public void setTelContragent(String tel) {
         this.telContragent = tel;
     }
-    public String getTelContragent() 
-    {
+    public String getTelContragent() {
         return telContragent;
     }
-    public void setCodeObekt(String code) 
-    {
+    public void setCodeObekt(String code) {
         this.codeObekt = code;
     }
-    public String getCodeObekt() 
-    {
+    public String getCodeObekt() {
         return codeObekt;
     }
-     public void setNameObekt(String name) 
-    {
+    public void setNameObekt(String name) {
         this.nameObekt = name;
     }
-    public String getNameObekt() 
-    {
+    public String getNameObekt() {
         return nameObekt;
     }
-     public void setTelObekt(String tel) 
-    {
+    public void setTelObekt(String tel) {
         this.telObekt = tel;
     }
-    public String getTelObekt() 
-    {
+    public String getTelObekt() {
         return telObekt;
     }
-    public void setAddressObekt(String addres) 
-    {
+    public void setAddressObekt(String addres) {
         this.addressObekt = addres;
     }
-    public String getAddressObekt() 
-    {
+    public String getAddressObekt() {
         return addressObekt;
     }
-     public void setNumberDocFacade(String numberDocFacade) 
-    {
+    public void setNumberDocFacade(String numberDocFacade) {
         this.docFacadeNumber = numberDocFacade;
     }
-    public String getNumberDocFacade() 
-    {
+    public String getNumberDocFacade() {
         return docFacadeNumber;
     }
-    public void setDateDocFacade(String date) 
-    {
+    public void setDateDocFacade(String date) {
         this.docFacadeDate = date;
     }
-    public String getDateDocFacade() 
-    {
+    public String getDateDocFacade() {
         return docFacadeDate;
     }
-     public void setDistributorDocFacade(String dist) 
-    {
+    public void setDistributorDocFacade(String dist) {
         this.docFacadeDistributor = dist;
     }
-    public String getDistributorDocFacade() 
-    {
+    public String getDistributorDocFacade() {
         return docFacadeDistributor ;
     }
-     public void setDeliverDocFacade(String deliv) 
-    {
+    public void setDeliverDocFacade(String deliv) {
         this.docFacadeDeliver = deliv;
     }
-    public String getDeliverDocFacade() 
-    {
+    public String getDeliverDocFacade() {
         return docFacadeDeliver;
-    }   
-   public void setID_DocFacade(int  id) 
-    {
+    }
+    public void setID_DocFacade(int  id) {
         this.idDocFacade = id;
     }
-    public int getID_DocFacade() 
-    {
+    public int getID_DocFacade() {
         return idDocFacade;
     }
-    public void setINStorageDocFacade(int  in) 
-    {
+    public void setINStorageDocFacade(int  in) {
         this.storageDocFacadeIN = in;
     }
-    public int getINStorageDocFacade() 
-    {
+    public int getINStorageDocFacade() {
         return storageDocFacadeIN;
     }
-    public void setID_Contragent(int  id) 
-    {
+    public void setID_Contragent(int  id) {
         this.idContragent = id;
     }
-    public int getID_Contragent() 
-    {
+    public int getID_Contragent() {
         return idContragent;
     }
-     public void setID_Obekt(int  id) 
-    {
+    public void setID_Obekt(int  id) {
         this.idObect = id;
     }
-    public int getID_Obekt() 
-    {
+    public int getID_Obekt() {
         return idObect;
     }
-      public void setID_Curs(int  id) 
-    {
+    public void setID_Curs(int  id) {
         this.idCurs = id;
     }
-    public int getID_Curs() 
-    {
+    public int getID_Curs() {
         return idCurs;
-    }   
+    }
     
-    public void setID_Distributor(int  id) 
-    {
+    public void setID_Distributor(int  id) {
         this.idDistributor = id;
     }
-    public int getID_Distributor() 
-    {
+    public int getID_Distributor() {
         return idDistributor;
     }
-     public void setID_Deliver(int  id) 
-    {
+    public void setID_Deliver(int  id) {
         this.idDeliver = id;
     }
-    public int getID_Deliver() 
-    {
+    public int getID_Deliver() {
         return idDeliver;
-    }   
-   
-public void setDocFacadeType(int in)
-{
-    this.docType = in;
-}
-public int getDocFacadeType()
-{
-    return docType;
-} 
-
-public void setIsSelectProduct(boolean in)
-{
-    this.isSelectProduct = in;
-}
-public boolean getIsSelectProduct()
-{
-    return isSelectProduct;
-} 
-
- public void setContragentData(String in[])
- {
-     setCodeContragent(in[0]);
-     setBulContragent(in[1]);
-     setDanContragent(in[2]);
-     setNamesContragent(in[3]);
-     setAddressContragent(in[4]);
-     setMOLContragent(in[5]);
-     setTelContragent(in[6]);
-     
- }
-  public void setObektData(String in[])
- {  
-      setCodeObekt(in[0]);
-      setTelObekt(in[1]);
-      setNameObekt(in[2]);
-      setAddressObekt(in[3]);
-  }
-   
-public String getDeliverDate()
-{
-    return deliverDate;
-}
-
-public void setDeliverDate(String in)
-{
-    this.deliverDate=in;
-  //  setDeliverDocFacade(in);
-}
-public void setDescriptipnPay(int  paying)
-{
-   this.descriptionPaying = paying;
-}
-public int getDescriptipnPay()
-{
-   return descriptionPaying;
-} 
-public void setPayingDate(String date)
-{
-   this.payingDate = date;
-}
-public String getPayingDate()
-{
-   return payingDate;
-}
-public void setAllDDSPaingDocFacade(double in)  // dds koeto trqbva da se plati
-{
-   this.allDDSPaing = in;
-}
-public double getAllDDSPaingDocFacade()          //  dds koeto trqbva da se plati
-{
-   return allDDSPaing;
-}
-public void setTotalPayingDocFacade(double in) // suma koqto da se plati
-{
-   this.totalPaying = in;
-}
-public double getTotalPayingDocFacade()    // suma koqto da se plati
-{
-   return totalPaying;
-}
-public void setuserLastEditDocFacade(int in)
-{
-   this.userLastEdit= in;
-}
-public int getuserLastEditDocFacade()
-{
-   return userLastEdit;
-}
-public void setUserDocFacade(int in)
-{
-   this.userDocFacade= in;
-}
-public int getUserDocFacade()
-{
-   return userDocFacade;
-}
-public void setDocFacadeFlagFinish(int in)
-{
-    this.docFacadeFlagFinish = in;
-}
-public int getDocFacadeFlagFinish()
-{
-    return docFacadeFlagFinish;
-}
-
-
-public void setCommenatDocFacade(String in)
-{
-   this.commenatDocFacade= in;
-}
-public String getCommenatDocFacade()
-{
-   return commenatDocFacade;
-}
- 
-// -- doc lines
-public void setNumberProduct(String in)
-{
-   this.numberProduct= in;
-}
-public String getNumberProduct()
-{
-   return numberProduct;
-}
-public void setNameProduct(String in)
-{
-   this.nameProduct= in;
-}
-public String getNameProduct()
-{
-   return nameProduct;
-}
-public void setCodeProduct(int in)
-{
-   this.codeProduct= in;
-}
-public int getCodeProduct()
-{
-   return codeProduct;
-}
-public void setStorageOUTProduct(int in)
-{
-   this.storageOUTProduct= in;
-}
-public int getStorageOUTProduct()
-{
-   return storageOUTProduct;
-}
-public void setWorkPriceListProduct(double[] in)
-{
-   this.priceListProduct= in;
-}
-public double[] getWorkPriceListProduct()
-{
-   return priceListProduct;
-}
-public void setProductDescription(String[][] in)
-{
-   this.productDescription= in;
-}
-public String[][] getProductDescription()
-{
-   return productDescription;
-}
-public void setProductFee(double[] in)
-{
-   this.productFee= in;
-}
-public double[] getProductFee()
-{
-   return productFee;
-}
-public int getPriceList()
-{
-   return priceList;
-}
-public void setPriceList(int in)
-{
-   priceList = in;
-}
-public void setBrojProduct(int in)
-{
-   this.brojProduct= in;
-}
-public int getBrojProduct()
-{
-   return brojProduct;
-}
-public void setRazfasovka1Produkt(int in)
-{
-   this.razfasovka1Produkt= in;
-}
-public int getRazfasovka1Produkt()
-{
-   return razfasovka1Produkt;
-}
-public void setRazfasovka2Produkt(int in)
-{
-   this.razfasovka2Produkt= in;
-}
-public int getRazfasovka2Produkt()
-{
-   return razfasovka2Produkt;
-}
-public void setRazfasovka3Produkt(int in)
-{
-   this.razfasovka3Produkt= in;
-}
-public int getRazfasovka3Produkt()
-{
-   return razfasovka3Produkt;
-}
-public void setPriceOneProduct(double in)
-{
-   this.priceOneProduct= in;
-}
-public double getPriceOneProduct()
-{
-   return priceOneProduct;
-}
-public void setProcentProduct(double in)
-{
-   this.procentProduct= in;
-}
-public double getProcentProduct()
-{
-   return procentProduct;
-}
-public void setDDSProduct(double in)
-{
-   this.DDSProduct= in;
-}
-public double getDDSProduct()
-{
-   return DDSProduct;
-}
-
-public void setTotalProduct(double in)
-{
-   this.totalProduct= in;
-}
-public double getTotalProduct()
-{
-   return totalProduct;
-}
-public void setlDocFacadeLevel(int in)
-{
-    this.levelDocFacade = in;
-}
-public int getDocFacadeLevel()
-{
-    return levelDocFacade;
-}
-public int getUserEditFortm()
-{
-    return userEditForm;
-}
-public void setID_Product(int in)
-{
-    idProduct = in;
-}
-public int getID_Product()
-{
-    return idProduct;
-}
-public void setID_PC(int in)
-{
-    idProductConsignment = in;
-}
-public int getID_PC()
-{
-    return idProductConsignment;
-}
- public void setID_PD(int ID) 
+    }
+    
+    public void setDocFacadeType(int in) {
+        this.docType = in;
+    }
+    public int getDocFacadeType() {
+        return docType;
+    }
+    
+    public void setIsSelectProduct(boolean in) {
+        this.isSelectProduct = in;
+    }
+    public boolean getIsSelectProduct() {
+        return isSelectProduct;
+    }
+    
+    public void setContragentData(String in[]) {
+        setCodeContragent(in[0]);
+        setBulContragent(in[1]);
+        setDanContragent(in[2]);
+        setNamesContragent(in[3]);
+        setAddressContragent(in[4]);
+        setMOLContragent(in[5]);
+        setTelContragent(in[6]);
+        
+    }
+    public void setObektData(String in[]) {
+        setCodeObekt(in[0]);
+        setTelObekt(in[1]);
+        setNameObekt(in[2]);
+        setAddressObekt(in[3]);
+    }
+    
+    public String getDeliverDate() {
+        return deliverDate;
+    }
+    
+    public void setDeliverDate(String in) {
+        this.deliverDate=in;
+        //  setDeliverDocFacade(in);
+    }
+    public void setDescriptipnPay(int  paying) {
+        this.descriptionPaying = paying;
+    }
+    public int getDescriptipnPay() {
+        return descriptionPaying;
+    }
+    public void setPayingDate(String date) {
+        this.payingDate = date;
+    }
+    public String getPayingDate() {
+        return payingDate;
+    }
+    public void setAllDDSPaingDocFacade(double in)  // dds koeto trqbva da se plati
     {
+        this.allDDSPaing = in;
+    }
+    public double getAllDDSPaingDocFacade()          //  dds koeto trqbva da se plati
+    {
+        return allDDSPaing;
+    }
+    public void setTotalPayingDocFacade(double in) // suma koqto da se plati
+    {
+        this.totalPaying = in;
+    }
+    public double getTotalPayingDocFacade()    // suma koqto da se plati
+    {
+        return totalPaying;
+    }
+    public void setuserLastEditDocFacade(int in) {
+        this.userLastEdit= in;
+    }
+    public int getuserLastEditDocFacade() {
+        return userLastEdit;
+    }
+    public void setUserDocFacade(int in) {
+        this.userDocFacade= in;
+    }
+    public int getUserDocFacade() {
+        return userDocFacade;
+    }
+    public void setDocFacadeFlagFinish(int in) {
+        this.docFacadeFlagFinish = in;
+    }
+    public int getDocFacadeFlagFinish() {
+        return docFacadeFlagFinish;
+    }
+    
+    
+    public void setCommenatDocFacade(String in) {
+        this.commenatDocFacade= in;
+    }
+    public String getCommenatDocFacade() {
+        return commenatDocFacade;
+    }
+    
+// -- doc lines
+    public void setNumberProduct(String in) {
+        this.numberProduct= in;
+    }
+    public String getNumberProduct() {
+        return numberProduct;
+    }
+    public void setNameProduct(String in) {
+        this.nameProduct= in;
+    }
+    public String getNameProduct() {
+        return nameProduct;
+    }
+    public void setCodeProduct(int in) {
+        this.codeProduct= in;
+    }
+    public int getCodeProduct() {
+        return codeProduct;
+    }
+    public void setStorageOUTProduct(int in) {
+        this.storageOUTProduct= in;
+    }
+    public int getStorageOUTProduct() {
+        return storageOUTProduct;
+    }
+    public void setWorkPriceListProduct(double[] in) {
+        this.priceListProduct= in;
+    }
+    public double[] getWorkPriceListProduct() {
+        return priceListProduct;
+    }
+    public void setProductDescription(String[][] in) {
+        this.productDescription= in;
+    }
+    public String[][] getProductDescription() {
+        return productDescription;
+    }
+    public void setProductFee(double[] in) {
+        this.productFee= in;
+    }
+    public double[] getProductFee() {
+        return productFee;
+    }
+    public int getPriceList() {
+        return priceList;
+    }
+    public void setPriceList(int in) {
+        priceList = in;
+    }
+    public void setBrojProduct(int in) {
+        this.brojProduct= in;
+    }
+    public int getBrojProduct() {
+        return brojProduct;
+    }
+    public void setRazfasovka1Produkt(int in) {
+        this.razfasovka1Produkt= in;
+    }
+    public int getRazfasovka1Produkt() {
+        return razfasovka1Produkt;
+    }
+    public void setRazfasovka2Produkt(int in) {
+        this.razfasovka2Produkt= in;
+    }
+    public int getRazfasovka2Produkt() {
+        return razfasovka2Produkt;
+    }
+    public void setRazfasovka3Produkt(int in) {
+        this.razfasovka3Produkt= in;
+    }
+    public int getRazfasovka3Produkt() {
+        return razfasovka3Produkt;
+    }
+    public void setPriceOneProduct(double in) {
+        this.priceOneProduct= in;
+    }
+    public double getPriceOneProduct() {
+        return priceOneProduct;
+    }
+    public void setProcentProduct(double in) {
+        this.procentProduct= in;
+    }
+    public double getProcentProduct() {
+        return procentProduct;
+    }
+    public void setDDSProduct(double in) {
+        this.DDSProduct= in;
+    }
+    public double getDDSProduct() {
+        return DDSProduct;
+    }
+    
+    public void setTotalProduct(double in) {
+        this.totalProduct= in;
+    }
+    public double getTotalProduct() {
+        return totalProduct;
+    }
+    public void setlDocFacadeLevel(int in) {
+        this.levelDocFacade = in;
+    }
+    public int getDocFacadeLevel() {
+        return levelDocFacade;
+    }
+    public int getUserEditFortm() {
+        return userEditForm;
+    }
+    public void setID_Product(int in) {
+        idProduct = in;
+    }
+    public int getID_Product() {
+        return idProduct;
+    }
+    public void setID_PC(int in) {
+        idProductConsignment = in;
+    }
+    public int getID_PC() {
+        return idProductConsignment;
+    }
+    public void setID_PD(int ID) {
         this.idProductDescription = ID;
     }
- public int getID_PD()  
-    {
+    public int getID_PD() {
         return idProductDescription;
     }
- public void setID_PP(int ID) 
-    {
+    public void setID_PP(int ID) {
         this.idProductPrice = ID;
     }
- public int getID_PP()  
-    {
+    public int getID_PP() {
         return idProductPrice;
     }
- public void setID_PF(int ID) 
-    {
+    public void setID_PF(int ID) {
         this.idProductFee = ID;
     }
- public int getID_PF()  
-    {
+    public int getID_PF() {
         return idProductFee;
     }
-// <--------------------------------------- 
- public  int getRow()
-   {
+// <---------------------------------------
+    public  int getRow() {
         return row;
     }
- public  void setRow(int val) //OK
-   {
+    public  void setRow(int val) //OK
+    {
         row = val;
     }
- public  void mTableEnd() //OK
-   {
+    public  void mTableEnd() //OK
+    {
         setRow(getMaxRow());
         try{
-           setAllVariables();
+            setAllVariables();
             
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
             
-        }
-        catch(ArrayIndexOutOfBoundsException aioobe)
-        {
+        } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
             System.out.println("problem");
         }
         setAtBegining(false);
         setAtEnd(true);
     }
- public void mOneRowPlus() //OK
-   {
-      if(getRow() <= getMaxRow())
-      {
-        if(getRow() < getMaxRow())
-        {
-          setRow(getRow()+1);
-        }
-        setAtBegining(false);
-        try
-        {
-            setAllVariables();
-            
-            table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
-        }
-        catch(ArrayIndexOutOfBoundsException aioobe)
-        {
-            setRow(getRow() - 1);
-            System.out.println("problem");
-        }
-        if(getRow() == getMaxRow())
-        {
+    public void mOneRowPlus() //OK
+    {
+        if(getRow() <= getMaxRow()) {
+            if(getRow() < getMaxRow()) {
+                setRow(getRow()+1);
+            }
+            setAtBegining(false);
+            try {
+                setAllVariables();
+                
+                table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
+            } catch(ArrayIndexOutOfBoundsException aioobe) {
+                setRow(getRow() - 1);
+                System.out.println("problem");
+            }
+            if(getRow() == getMaxRow()) {
                 setAtEnd(true);
+            }
         }
-      }
- }
- public  void mOneRowMinus() //OK
-   {
+    }
+    public  void mOneRowMinus() //OK
+    {
         if(getRow() >= 0){
             if(getRow() > 0){
                 setRow(getRow() - 1);}
             setAtEnd(false);
-            try
-            {
-               setAllVariables();
+            try {
+                setAllVariables();
                 
                 table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
-            }
-            catch(ArrayIndexOutOfBoundsException aioobe)
-            {
+            } catch(ArrayIndexOutOfBoundsException aioobe) {
                 setRow(getRow() + 1);
             }
-                System.out.println("problem");}
-            if(getRow() == 0){
-                setAtBegining(true);
-            }
-        }   
- public void mTableBegining() //OK
-   {
-      setRow(0);
-        try
-        {
+            System.out.println("problem");}
+        if(getRow() == 0){
+            setAtBegining(true);
+        }
+    }
+    public void mTableBegining() //OK
+    {
+        setRow(0);
+        try {
             setAllVariables();
             
             table.changeSelection(getRow(),2,false,false); // za predvijvane na selektiraniq red nazad
-        }
-        catch(ArrayIndexOutOfBoundsException aioobe)
-        {
+        } catch(ArrayIndexOutOfBoundsException aioobe) {
             setRow(getRow() - 1);
             System.out.println("problem");
         }
         setAtBegining(true);
         setAtEnd(false);
- }
- protected  void refreshTable() //OK
-   {
+    }
+    protected  void refreshTable() //OK
+    {
         jScrollPane1.remove(table);
         rs = countriesT.getTable(getDocFacadeLevel(),getUserEditFortm(),getDocFacadeType());
         model = new imakante.com.CustomTableModel(conn, rs, nameColumnsDocFacade);
         table = new imakante.com.CustomTable(model);
         jScrollPane1.getViewport().add(table);
         jScrollPane1.repaint();
-         
-         hideDocimentTypeColumns(docType);
-         moveDocimentTypeColumns(docType);
-         hideCommonColumns();
+        
+        hideDocimentTypeColumns(docType);
+        moveDocimentTypeColumns(docType);
+        hideCommonColumns();
     }
-public  boolean isAtBegining()
-   {
+    public  boolean isAtBegining() {
         return atBegining;
     }
     
-public  void setAtBegining(boolean aAtBegining)
-   {
+    public  void setAtBegining(boolean aAtBegining) {
         atBegining = aAtBegining;
     }
     
-public  boolean isAtEnd()
-   {
+    public  boolean isAtEnd() {
         return atEnd;
     }
     
-public  void setAtEnd(boolean aAtEnd) 
-  {
+    public  void setAtEnd(boolean aAtEnd) {
         atEnd = aAtEnd;
     }
- private int getColumnIndex(String in) //test
- {
-     int count = table.getColumnCount();
-     for(int i=0; i < count; i++)
-     {
-         if(table.getColumnName(i).equals(in)) return i;
-     }
-     return 0;
- }
- private void HideColumns(int col)
- {
-   int iColumn = col;
+    private int getColumnIndex(String in) //test
+    {
+        int count = table.getColumnCount();
+        for(int i=0; i < count; i++) {
+            if(table.getColumnName(i).equals(in)) return i;
+        }
+        return 0;
+    }
+    private void HideColumns(int col) {
+        int iColumn = col;
 // set column width
-    table.getColumnModel().getColumn(iColumn).setMaxWidth(0);
-    table.getColumnModel().getColumn(iColumn).setMinWidth(0);
-    table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
-    table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
-
- }
-public void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti na cyrillica 
-    {
-    try
-    {
-        setAllVariablesDefault();
-        setID_DocFacade((Integer) table.getValueAt(getRow(), getColumnIndex("id_df")));                   //0
-        long tmp = (Long) table.getValueAt(getRow(), getColumnIndex("Номер на документа"));   
-        setNumberDocFacade(String.valueOf(tmp));                                                          //1
-       
-        java.sql.Date d1 = (java.sql.Date) table.getValueAt(getRow(),getColumnIndex("Дата на документа"));
-        setDateDocFacade(d1.toString());                                                                  //2
-        d1= (java.sql.Date) table.getValueAt(getRow(),getColumnIndex("Дата на плащане"));
-        setPayingDate(d1.toString());                                                                     //4
-        Byte b1 = (Byte) table.getValueAt(getRow(), getColumnIndex("Вид плащанеIndex"));
-        setDescriptipnPay(b1.intValue());                                                                 //3
-     
+        table.getColumnModel().getColumn(iColumn).setMaxWidth(0);
+        table.getColumnModel().getColumn(iColumn).setMinWidth(0);
+        table.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
+        table.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
         
-        setUserDocFacade((Integer) table.getValueAt(getRow(), getColumnIndex("ПотребителIndex"))) ;             //5
-        setuserLastEditDocFacade((Integer) table.getValueAt(getRow(), getColumnIndex("Потребител-последна редакцияIndex")));     //6
-        setCommenatDocFacade((String) table.getValueAt(getRow(), getColumnIndex("Коментар")));              //7
-         BigDecimal big1 = (BigDecimal) table.getValueAt(getRow(), getColumnIndex("Общо"));
-        setTotalPayingDocFacade(big1.doubleValue());                                                       //8
-        big1 = (BigDecimal) table.getValueAt(getRow(), getColumnIndex("ДДС"));
-        setAllDDSPaingDocFacade(big1.doubleValue());                                                      //9
-     
-         switch(getDocFacadeType())
-                 {
-                     case aeDocumentFacade.FAKTURI :
-                     {
-                         setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
-                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2"))); //1
-                         setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат2"))); //2
-                         setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер2")));  //3
-                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2")));   //4
-                         setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес2"))); //5
-                         setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента2"))); //6
-                         setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ2"))) ;
-                         try
-                         {
-                         int code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента2"));
-                         setCodeContragent(String.valueOf(code));
-                         }
-                         catch(Exception ex){};
-                         break;
-                     }
-                     case aeDocumentFacade.FAKTURA_DANACHNA :
-                     {
-                         setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
-                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2"))); //1
-                         setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат2"))); //2
-                         setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер2")));  //3
-                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2")));   //4
-                         setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес2"))); //5
-                         setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента2"))); //6
-                         setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ2"))) ;
-                         try
-                         {
-                         int code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента2"));
-                         setCodeContragent(String.valueOf(code));
-                         }
-                         catch(Exception ex){};
-                         break;
-                     }
-                     case aeDocumentFacade.FAKTURA_OPROSTENA :
-                     {
-                         setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
-                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2"))); //1
-                         setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат2"))); //2
-                         setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер2")));  //3
-                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2")));   //4
-                         setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес2"))); //5
-                         setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента2"))); //6
-                         setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ2"))) ;
-                         try
-                         {
-                         int code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента2"));
-                         setCodeContragent(String.valueOf(code));
-                         }
-                         catch(Exception ex){};
-                         break;
-                     }
-                     
-                     
-                     
-                     case aeDocumentFacade.PROFORMA_FAKTURA :
-                     {
-                         setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
-                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2"))); //1
-                         setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат2"))); //2
-                         setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер2")));  //3
-                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2")));   //4
-                         setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес2"))); //5
-                         setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента1"))); //6
-                         setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ2"))) ;
-                         int code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента2"));
-                         setCodeContragent(String.valueOf(code));
-                         break;
-                     }
-                     case aeDocumentFacade.OFERTA :
-                        {
-                         
-                         setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
-                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2"))); //1
-                         setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат2"))); //2
-                         setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер2")));  //3
-                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2")));   //4
-                         setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес2"))); //5
-                         setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента1"))); //6
-                         setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ2"))) ;
-                         int code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента2"));
-                         setCodeContragent(String.valueOf(code));
-
-                         break;
-                        } 
-                    case aeDocumentFacade.BRAK :
-                        {
-
-
-                          break;
-                        }
-                     case aeDocumentFacade.PROTOKOL_LIPSA :
-                        {
-
-
-                          break;
-                        }
-                     case aeDocumentFacade.STOKOVA_RAZPISKA :
-                     {
-                         setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
-                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2"))); //1
-                         setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат2"))); //2
-                         setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер2")));  //3
-                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2")));   //4
-                         setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес2"))); //5
-                         setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента1"))); //6
-                         setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ2"))) ;
-                         int code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента2"));
-                         setCodeContragent(String.valueOf(code));
-                         
-                         setID_Obekt((Integer) table.getValueAt(getRow(), getColumnIndex("out_obekt_df")));       
-                         setCodeObekt((String)table.getValueAt(getRow(), getColumnIndex("Код на обекта2")));
-                         setNameObekt((String) table.getValueAt(getRow(), getColumnIndex("Име на обекта2")));
-                         setAddressObekt((String) table.getValueAt(getRow(), getColumnIndex("Адрес на обекта2")));
-                         setTelObekt(" ");
-                         
-                         setID_Deliver((Integer) table.getValueAt(getRow(), getColumnIndex("delivere_df")));        
-                         setID_Distributor((Integer) table.getValueAt(getRow(), getColumnIndex("distributor_df")));
-                         code = (Integer)table.getValueAt(getRow(),getColumnIndex("Код на дистрибутор"));
-                         setDistributorDocFacade(String.valueOf(code));
-                         code =(Integer)table.getValueAt(getRow(),getColumnIndex("Код на доставчик"));
-                         setDeliverDocFacade(String.valueOf(code)); 
-                         
-                         d1 = (java.sql.Date) table.getValueAt(getRow(),getColumnIndex("Дата на доставяне"));
-                         setDeliverDate(d1.toString());
-                         System.out.println(String.valueOf(getID_Deliver()));
-                         System.out.println(String.valueOf(getID_Distributor()));
-                         
-                         break;
-                     }
-                     case aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE :
-
-                     {  
+    }
+    public void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti na cyrillica
+    {
+        try {
+            setAllVariablesDefault();
+            setID_DocFacade((Integer) table.getValueAt(getRow(), getColumnIndex("id_df")));                   //0
+            long tmp = (Long) table.getValueAt(getRow(), getColumnIndex("Номер на документа"));
+            setNumberDocFacade(String.valueOf(tmp));                                                          //1
+            
+            java.sql.Date d1 = (java.sql.Date) table.getValueAt(getRow(),getColumnIndex("Дата на документа"));
+            setDateDocFacade(d1.toString());                                                                  //2
+            d1= (java.sql.Date) table.getValueAt(getRow(),getColumnIndex("Дата на плащане"));
+            setPayingDate(d1.toString());                                                                     //4
+            Byte b1 = (Byte) table.getValueAt(getRow(), getColumnIndex("Вид плащанеIndex"));
+            setDescriptipnPay(b1.intValue());                                                                 //3
+            
+            
+            setUserDocFacade((Integer) table.getValueAt(getRow(), getColumnIndex("ПотребителIndex"))) ;             //5
+            setuserLastEditDocFacade((Integer) table.getValueAt(getRow(), getColumnIndex("Потребител-последна редакцияIndex")));     //6
+            setCommenatDocFacade((String) table.getValueAt(getRow(), getColumnIndex("Коментар")));              //7
+            BigDecimal big1 = (BigDecimal) table.getValueAt(getRow(), getColumnIndex("Общо"));
+            setTotalPayingDocFacade(big1.doubleValue());                                                       //8
+            big1 = (BigDecimal) table.getValueAt(getRow(), getColumnIndex("ДДС"));
+            setAllDDSPaingDocFacade(big1.doubleValue());                                                      //9
+            
+            switch(getDocFacadeType()) {
+                case aeDocumentFacade.FAKTURI :
+                {
+                    setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
+                    setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2"))); //1
+                    setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат2"))); //2
+                    setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер2")));  //3
+                    setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2")));   //4
+                    setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес2"))); //5
+                    setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента2"))); //6
+                    setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ2"))) ;
+                    try {
+                        int code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента2"));
+                        setCodeContragent(String.valueOf(code));
+                    } catch(Exception ex){};
+                    break;
+                }
+                case aeDocumentFacade.FAKTURA_DANACHNA :
+                {
+                    setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
+                    setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2"))); //1
+                    setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат2"))); //2
+                    setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер2")));  //3
+                    setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2")));   //4
+                    setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес2"))); //5
+                    setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента2"))); //6
+                    setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ2"))) ;
+                    try {
+                        int code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента2"));
+                        setCodeContragent(String.valueOf(code));
+                    } catch(Exception ex){};
+                    break;
+                }
+                case aeDocumentFacade.FAKTURA_OPROSTENA :
+                {
+                    setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
+                    setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2"))); //1
+                    setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат2"))); //2
+                    setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер2")));  //3
+                    setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2")));   //4
+                    setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес2"))); //5
+                    setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента2"))); //6
+                    setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ2"))) ;
+                    try {
+                        int code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента2"));
+                        setCodeContragent(String.valueOf(code));
+                    } catch(Exception ex){};
+                    break;
+                }
+                
+                
+                
+                case aeDocumentFacade.PROFORMA_FAKTURA :
+                {
+                    setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
+                    setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2"))); //1
+                    setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат2"))); //2
+                    setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер2")));  //3
+                    setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2")));   //4
+                    setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес2"))); //5
+                    setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента1"))); //6
+                    setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ2"))) ;
+                    int code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента2"));
+                    setCodeContragent(String.valueOf(code));
+                    break;
+                }
+                case aeDocumentFacade.OFERTA :
+                {
+                    
+                    setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
+                    setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2"))); //1
+                    setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат2"))); //2
+                    setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер2")));  //3
+                    setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2")));   //4
+                    setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес2"))); //5
+                    setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента1"))); //6
+                    setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ2"))) ;
+                    int code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента2"));
+                    setCodeContragent(String.valueOf(code));
+                    
+                    break;
+                }
+                case aeDocumentFacade.BRAK :
+                {
+                    
+                    
+                    break;
+                }
+                case aeDocumentFacade.PROTOKOL_LIPSA :
+                {
+                    
+                    
+                    break;
+                }
+                case aeDocumentFacade.STOKOVA_RAZPISKA :
+                {
+                    setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
+                    setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2"))); //1
+                    setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат2"))); //2
+                    setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер2")));  //3
+                    setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2")));   //4
+                    setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес2"))); //5
+                    setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента1"))); //6
+                    setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ2"))) ;
+                    int code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента2"));
+                    setCodeContragent(String.valueOf(code));
+                    
+                    setID_Obekt((Integer) table.getValueAt(getRow(), getColumnIndex("out_obekt_df")));
+                    setCodeObekt((String)table.getValueAt(getRow(), getColumnIndex("Код на обекта2")));
+                    setNameObekt((String) table.getValueAt(getRow(), getColumnIndex("Име на обекта2")));
+                    setAddressObekt((String) table.getValueAt(getRow(), getColumnIndex("Адрес на обекта2")));
+                    setTelObekt(" ");
+                    
+                    setID_Deliver((Integer) table.getValueAt(getRow(), getColumnIndex("delivere_df")));
+                    setID_Distributor((Integer) table.getValueAt(getRow(), getColumnIndex("distributor_df")));
+                    code = (Integer)table.getValueAt(getRow(),getColumnIndex("Код на дистрибутор"));
+                    setDistributorDocFacade(String.valueOf(code));
+                    code =(Integer)table.getValueAt(getRow(),getColumnIndex("Код на доставчик"));
+                    setDeliverDocFacade(String.valueOf(code));
+                    
+                    d1 = (java.sql.Date) table.getValueAt(getRow(),getColumnIndex("Дата на доставяне"));
+                    setDeliverDate(d1.toString());
+                    System.out.println(String.valueOf(getID_Deliver()));
+                    System.out.println(String.valueOf(getID_Distributor()));
+                    
+                    break;
+                }
+                case aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE :
+                    
+                {
                         /* setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
                          setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контарегнта2"))); //1
                          setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат2"))); //2
@@ -1534,171 +1369,159 @@ public void setAllVariables() // !!!!da se smenat imenata s imena otgovarq6ti na
                          setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ2"))) ;
                          int code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента2"));
                          setCodeContragent(String.valueOf(code));
-                         setID_Obekt((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df")));       
-                             
+                         setID_Obekt((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df")));
+                         
                          setCodeObekt((String)table.getValueAt(getRow(), getColumnIndex("Код на обекта2")));
                          setNameObekt((String) table.getValueAt(getRow(), getColumnIndex("Име на обекта2")));
                          setAddressObekt((String) table.getValueAt(getRow(), getColumnIndex("Адрес на обекта2")));
                          setTelObekt(" ");
                          
-                         setID_Deliver((Integer) table.getValueAt(getRow(), getColumnIndex("ls_n_person_deliv")));        
-                         setID_Distributor((Integer) table.getValueAt(getRow(), getColumnIndex("ls_n_person_dist")));  
-                         setDistributorDocFacade((String)table.getValueAt(getRow(),getColumnIndex("Код на дистрибутор"))); 
-                         setDeliverDocFacade((String)table.getValueAt(getRow(),getColumnIndex("Код на доставчик"))); 
+                         setID_Deliver((Integer) table.getValueAt(getRow(), getColumnIndex("ls_n_person_deliv")));
+                         setID_Distributor((Integer) table.getValueAt(getRow(), getColumnIndex("ls_n_person_dist")));
+                         setDistributorDocFacade((String)table.getValueAt(getRow(),getColumnIndex("Код на дистрибутор")));
+                         setDeliverDocFacade((String)table.getValueAt(getRow(),getColumnIndex("Код на доставчик")));
                          
                          d1 = (java.sql.Date) table.getValueAt(getRow(),getColumnIndex("Дата на доставяне"));
                          setDeliverDate(d1.toString());*/
+                    
+                    setINStorageDocFacade((Integer) table.getValueAt(getRow(), getColumnIndex("Склад (към)")));
+                    break;
+                }
+                case aeDocumentFacade.KONSGNACIONEN_PROTOKOL :
+                {
+                    setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
+                    
+                    setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат2"))); //2
+                    setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер2")));  //3
+                    setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2")));   //4
+                    setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес2"))); //5
+                    setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента1"))); //6
+                    setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ2"))) ;
+                    int code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента2"));
+                    setCodeContragent(String.valueOf(code));                                                      //1
+                    setID_Obekt((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df")));
+                    
+                    setCodeObekt((String)table.getValueAt(getRow(), getColumnIndex("Код на обекта2")));
+                    setNameObekt((String) table.getValueAt(getRow(), getColumnIndex("Име на обекта2")));
+                    setAddressObekt((String) table.getValueAt(getRow(), getColumnIndex("Адрес на обекта2")));
+                    setTelObekt(" ");
+                    
+                    setID_Deliver((Integer) table.getValueAt(getRow(), getColumnIndex("ls_n_person_deliv")));
+                    setID_Distributor((Integer) table.getValueAt(getRow(), getColumnIndex("ls_n_person_dist")));
+                    setDistributorDocFacade((String)table.getValueAt(getRow(),getColumnIndex("Код на дистрибутор")));
+                    setDeliverDocFacade((String)table.getValueAt(getRow(),getColumnIndex("Код на доставчик")));
+                    
+                    d1 = (java.sql.Date) table.getValueAt(getRow(),getColumnIndex("Дата на доставяне"));
+                    setDeliverDate(d1.toString());
+                    break;
+                }
+                case aeDocumentFacade.PREDAVATELNA_RAZPISKA :
+                {
+                    break;
+                }
+                case aeDocumentFacade.PRIEMATELNA_RAZPISKA :
+                {
+                    setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("in_contragent_df"))); //0
+                    setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента1"))); //4
+                    setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат1"))); //2
+                    setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер1")));  //3
+                    
+                    setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес1"))); //5
+                    setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента1"))); //6
+                    setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ1"))) ;
+                    int code=0;
+                    try {
+                        code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента1"));
+                        setCodeContragent(String.valueOf(code));                                                            //1
+                    } catch(Exception x) {
                         
-                         setINStorageDocFacade((Integer) table.getValueAt(getRow(), getColumnIndex("Склад (към)"))); 
-                         break;
-                     }
-                     case aeDocumentFacade.KONSGNACIONEN_PROTOKOL :
-                     {
-                          setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df"))); //0
-                         
-                         setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат2"))); //2
-                         setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер2")));  //3
-                         setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента2")));   //4
-                         setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес2"))); //5
-                         setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента1"))); //6
-                         setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ2"))) ;
-                         int code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента2"));
-                         setCodeContragent(String.valueOf(code));                                                      //1
-                         setID_Obekt((Integer) table.getValueAt(getRow(), getColumnIndex("out_contragent_df")));       
-                              
-                         setCodeObekt((String)table.getValueAt(getRow(), getColumnIndex("Код на обекта2")));
-                         setNameObekt((String) table.getValueAt(getRow(), getColumnIndex("Име на обекта2")));
-                         setAddressObekt((String) table.getValueAt(getRow(), getColumnIndex("Адрес на обекта2")));
-                         setTelObekt(" ");
-                         
-                         setID_Deliver((Integer) table.getValueAt(getRow(), getColumnIndex("ls_n_person_deliv")));        
-                         setID_Distributor((Integer) table.getValueAt(getRow(), getColumnIndex("ls_n_person_dist")));  
-                         setDistributorDocFacade((String)table.getValueAt(getRow(),getColumnIndex("Код на дистрибутор"))); 
-                         setDeliverDocFacade((String)table.getValueAt(getRow(),getColumnIndex("Код на доставчик"))); 
-                         
-                         d1 = (java.sql.Date) table.getValueAt(getRow(),getColumnIndex("Дата на доставяне"));
-                         setDeliverDate(d1.toString());
-                         break;
-                     }
-                     case aeDocumentFacade.PREDAVATELNA_RAZPISKA :
-                         {
-                           break;
-                         }
-                     case aeDocumentFacade.PRIEMATELNA_RAZPISKA :
-                         {
-                          setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("in_contragent_df"))); //0
-                          setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента1"))); //4
-                          setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат1"))); //2
-                          setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер1")));  //3
-                          
-                          setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес1"))); //5
-                          setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента1"))); //6
-                          setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ1"))) ;
-                          int code=0;
-                          try
-                          {
-                           code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента1"));
-                          setCodeContragent(String.valueOf(code));                                                            //1
-                          }
-                          catch(Exception x)
-                          {
-                              
-                          }
-                         
-                        /*  setID_Obekt((Integer) table.getValueAt(getRow(), getColumnIndex("out_obekt_df")));       
+                    }
+                    
+                        /*  setID_Obekt((Integer) table.getValueAt(getRow(), getColumnIndex("out_obekt_df")));
                           setCodeObekt((String)table.getValueAt(getRow(), getColumnIndex("Код на обекта2")));
                           setNameObekt((String) table.getValueAt(getRow(), getColumnIndex("Име на обекта2")));
                           setAddressObekt((String) table.getValueAt(getRow(), getColumnIndex("Адрес на обекта2")));
                           setTelObekt(" ");
                          */
-                          setID_Deliver((Integer) table.getValueAt(getRow(), getColumnIndex("delivere_df")));        
-                          setID_Distributor((Integer) table.getValueAt(getRow(), getColumnIndex("distributor_df")));
-                          try
-                          {
-                            code = (Integer)table.getValueAt(getRow(),getColumnIndex("Код на дистрибутор"));
-                            setDistributorDocFacade(String.valueOf(code)); 
-                            code =(Integer)table.getValueAt(getRow(),getColumnIndex("Код на доставчик"));
-                            setDeliverDocFacade(String.valueOf(code)); 
-                          }
-                          catch(Exception x){};
-                          
-                         
-                         
-                          d1 = (java.sql.Date) table.getValueAt(getRow(),getColumnIndex("Дата на доставяне"));
-                          setDeliverDate(d1.toString());
-                          System.out.println(String.valueOf(getID_Deliver()));
-                          System.out.println(String.valueOf(getID_Distributor()));  
-                          
-                          break;
-                         }
-                      case aeDocumentFacade.RAZPISKA_ZA_VRYSHTANE :
-                         {
-                          setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("in_contragent_df"))); //0
-                          setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента1"))); //4
-                          setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат1"))); //2
-                          setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер1")));  //3
-                          
-                          setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес1"))); //5
-                          setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента1"))); //6
-                          setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ1"))) ;
-                          int code=0;
-                          try
-                          {
-                           code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента1"));
-                          setCodeContragent(String.valueOf(code));                                                            //1
-                          }
-                          catch(Exception x)
-                          {
-                              
-                          }
-                         
-                        /*  setID_Obekt((Integer) table.getValueAt(getRow(), getColumnIndex("out_obekt_df")));       
+                    setID_Deliver((Integer) table.getValueAt(getRow(), getColumnIndex("delivere_df")));
+                    setID_Distributor((Integer) table.getValueAt(getRow(), getColumnIndex("distributor_df")));
+                    try {
+                        code = (Integer)table.getValueAt(getRow(),getColumnIndex("Код на дистрибутор"));
+                        setDistributorDocFacade(String.valueOf(code));
+                        code =(Integer)table.getValueAt(getRow(),getColumnIndex("Код на доставчик"));
+                        setDeliverDocFacade(String.valueOf(code));
+                    } catch(Exception x){};
+                    
+                    
+                    
+                    d1 = (java.sql.Date) table.getValueAt(getRow(),getColumnIndex("Дата на доставяне"));
+                    setDeliverDate(d1.toString());
+                    System.out.println(String.valueOf(getID_Deliver()));
+                    System.out.println(String.valueOf(getID_Distributor()));
+                    
+                    break;
+                }
+                case aeDocumentFacade.RAZPISKA_ZA_VRYSHTANE :
+                {
+                    setID_Contragent((Integer) table.getValueAt(getRow(), getColumnIndex("in_contragent_df"))); //0
+                    setNamesContragent((String) table.getValueAt(getRow(), getColumnIndex("Име на контрагента1"))); //4
+                    setBulContragent((String) table.getValueAt(getRow(), getColumnIndex("Булстат1"))); //2
+                    setDanContragent((String) table.getValueAt(getRow(), getColumnIndex("Данъчен номер1")));  //3
+                    
+                    setAddressContragent((String) table.getValueAt(getRow(), getColumnIndex("Адрес1"))); //5
+                    setTelContragent((String) table.getValueAt(getRow(), getColumnIndex("Телефон на контрагента1"))); //6
+                    setMOLContragent((String) table.getValueAt(getRow(), getColumnIndex("МОЛ1"))) ;
+                    int code=0;
+                    try {
+                        code = (Integer)table.getValueAt(getRow(), getColumnIndex("Код на контрагента1"));
+                        setCodeContragent(String.valueOf(code));                                                            //1
+                    } catch(Exception x) {
+                        
+                    }
+                    
+                        /*  setID_Obekt((Integer) table.getValueAt(getRow(), getColumnIndex("out_obekt_df")));
                           setCodeObekt((String)table.getValueAt(getRow(), getColumnIndex("Код на обекта2")));
                           setNameObekt((String) table.getValueAt(getRow(), getColumnIndex("Име на обекта2")));
                           setAddressObekt((String) table.getValueAt(getRow(), getColumnIndex("Адрес на обекта2")));
                           setTelObekt(" ");
                          */
-                          setID_Deliver((Integer) table.getValueAt(getRow(), getColumnIndex("delivere_df")));        
-                          setID_Distributor((Integer) table.getValueAt(getRow(), getColumnIndex("distributor_df")));
-                          try
-                          {
-                            code = (Integer)table.getValueAt(getRow(),getColumnIndex("Код на дистрибутор"));
-                            setDistributorDocFacade(String.valueOf(code)); 
-                            code =(Integer)table.getValueAt(getRow(),getColumnIndex("Код на доставчик"));
-                            setDeliverDocFacade(String.valueOf(code)); 
-                          }
-                          catch(Exception x){};
-                          
-                         
-                         
-                          d1 = (java.sql.Date) table.getValueAt(getRow(),getColumnIndex("Дата на доставяне"));
-                          setDeliverDate(d1.toString());
-                          System.out.println(String.valueOf(getID_Deliver()));
-                          System.out.println(String.valueOf(getID_Distributor()));  
-                          
-                          break;
-                         }
-                 }
+                    setID_Deliver((Integer) table.getValueAt(getRow(), getColumnIndex("delivere_df")));
+                    setID_Distributor((Integer) table.getValueAt(getRow(), getColumnIndex("distributor_df")));
+                    try {
+                        code = (Integer)table.getValueAt(getRow(),getColumnIndex("Код на дистрибутор"));
+                        setDistributorDocFacade(String.valueOf(code));
+                        code =(Integer)table.getValueAt(getRow(),getColumnIndex("Код на доставчик"));
+                        setDeliverDocFacade(String.valueOf(code));
+                    } catch(Exception x){};
+                    
+                    
+                    
+                    d1 = (java.sql.Date) table.getValueAt(getRow(),getColumnIndex("Дата на доставяне"));
+                    setDeliverDate(d1.toString());
+                    System.out.println(String.valueOf(getID_Deliver()));
+                    System.out.println(String.valueOf(getID_Distributor()));
+                    
+                    break;
+                }
+            }
+            
+            
+        } catch(Exception xx) {
+            
+        }
+        
+        
         
         
     }
-    catch(Exception xx)
-    {
-        
-    }
-        
-        
-        
- 
-    }
-private void setAllVariablesDefault() // !!!!da se smenat imenata s imena otgovarq6ti na cyrillica 
+    private void setAllVariablesDefault() // !!!!da se smenat imenata s imena otgovarq6ti na cyrillica
     {
         setID_DocFacade(0);
         setID_Contragent(0);
         setID_Obekt(0);
         setID_Deliver(0);
         setID_Distributor(0);
-           
+        
         
         setNumberDocFacade("");
         setDateDocFacade("");
@@ -1708,16 +1531,16 @@ private void setAllVariablesDefault() // !!!!da se smenat imenata s imena otgova
         setTelContragent("");
         setBulContragent("");
         setDanContragent("");
-        setMOLContragent(""); 
-        setCodeObekt(""); 
-        setNameObekt(""); 
-        setAddressObekt(""); 
-        setTelObekt(""); 
-        setDistributorDocFacade(""); 
-        setDeliverDocFacade(""); 
-   
+        setMOLContragent("");
+        setCodeObekt("");
+        setNameObekt("");
+        setAddressObekt("");
+        setTelObekt("");
+        setDistributorDocFacade("");
+        setDeliverDocFacade("");
+        
     }
-
+    
 /*public void insertRow()
 {
     countriesT.insertRow()
@@ -1734,664 +1557,633 @@ public void deleteRow()
 {
      countriesT.deleteRow()
 }*/
-
-private void checkForMakeDoc(boolean makeDoc)
-{
-    int maxID_df= 0;
-    if(makeDoc)
-    {
-      long number = getCountriesT().getDocNumberLast( getUserEditFortm(), getDocFacadeLevel(),getDocFacadeType());
-      number++;
-      imakante.com.dateManipulation dateManip = new imakante.com.dateManipulation();
-      String strDate;
-      org.jdesktop.swingx.JXDatePicker tmpD = new org.jdesktop.swingx.JXDatePicker();
-      strDate = String.valueOf(tmpD.getDate().getDate());
-      strDate += "/" + String.valueOf(tmpD.getDate().getMonth());
-      strDate += "/" + String.valueOf(tmpD.getDate().getYear()+1900);
-      String DateSQLFormat = dateManip.convertDate(strDate);
-      
-      getCountriesT().insertRow(0,0,0,0,0,0,0,number,getUserEditFortm(),getUserEditFortm(),0,0,0,
-                      getDocFacadeLevel(),getStorageOUTProduct(),getDocFacadeType(),0,0,"0",DateSQLFormat,"-",DateSQLFormat,DateSQLFormat,1,0);
-       maxID_df = getCountriesT().getMaxId();
-      
-       setID_DocFacade(maxID_df) ;
-       for(int i = 0; i < dataInput.size(); i++)
-         {
-            docLineArray d = (docLineArray) dataInput.get(i);
-            double total = d.getNumberOfProduct()*d.getPricePiece();
-            double dds = total*d.getDDS()/100;
-            getCountriesT().insertDocLine(maxID_df,d.getID_PC(),
-                   d.getStorageOut(),d.getPricePiece(),d.getRateReduction(),d.getNumberOfProduct(),
-                   dds,total,d.getPriceList());
-        
-        }  
-        for(int i=0 ; i < dataOutput.size(); i++)
-        {
-          int id_df =(Integer) dataOutput.get(i);
-          getCountriesT().updateConnectionID(id_df,maxID_df,0);
-          
-        }
-      
-      
-    }
-}
-private void hideCommonColumns()
- {
-       HideColumns(getColumnIndex("id_df"));
-       HideColumns(getColumnIndex("out_obekt_df"));
-       HideColumns(getColumnIndex("in_obekt_df"));
-       
-       HideColumns(getColumnIndex("distributor_df"));
-       HideColumns(getColumnIndex("delivere_df"));
-       HideColumns(getColumnIndex("time_edition_df"));
-       HideColumns(getColumnIndex("faktura_connection_df"));
-       HideColumns(getColumnIndex("zaiavka_connection_df"));
-       HideColumns(getColumnIndex("flag_finish_df"));
-       HideColumns(getColumnIndex("level_df"));
-       HideColumns(getColumnIndex("id_rep"));
-       HideColumns(getColumnIndex("paying_order_df"));
-       HideColumns(getColumnIndex("Тип на документа"));
-       
-       HideColumns(getColumnIndex("out_contragent_df"));
-       HideColumns(getColumnIndex("in_contragent_df"));
-       HideColumns(getColumnIndex("ПотребителIndex")); 
-       HideColumns(getColumnIndex("Потребител-последна редакцияIndex")); 
-       HideColumns(getColumnIndex("Вид плащанеIndex")); 
-       
- }      
-private void hideDocimentTypeColumns(int doctype)
-{
-    switch(doctype)
-    {
-        case aeDocumentFacade.FAKTURI:
-        {
-           // skrivane na koloni  na kontragent s index "1" nakraq
-            hideDocimentTypeColumns_Contragent(IN); 
-            hideDocimentTypeColumns_Obekt(IN);
-            hideDocimentTypeColumns_Obekt(OUT);
-            hideDocimentTypeColumns_DevDistr();
-                       
-            HideColumns(getColumnIndex("Склад (към)"));
-          
-            
-            break;
-        }
-        case aeDocumentFacade.FAKTURA_DANACHNA:
-        {
-           // skrivane na koloni  na kontragent s index "1" nakraq
-            hideDocimentTypeColumns_Contragent(IN); 
-            hideDocimentTypeColumns_Obekt(IN);
-            hideDocimentTypeColumns_Obekt(OUT);
-            hideDocimentTypeColumns_DevDistr();
-                       
-            HideColumns(getColumnIndex("Склад (към)"));
-          
-            
-            break;
-        }
-        case aeDocumentFacade.FAKTURA_OPROSTENA:
-        {
-           // skrivane na koloni  na kontragent s index "1" nakraq
-            hideDocimentTypeColumns_Contragent(IN); 
-            hideDocimentTypeColumns_Obekt(IN);
-            hideDocimentTypeColumns_Obekt(OUT);
-            hideDocimentTypeColumns_DevDistr();
-                       
-            HideColumns(getColumnIndex("Склад (към)"));
-          
-            
-            break;
-        }
-        case aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE:
-        {
-          // skrivane na koloni  na kontragent s index "1" nakraq
-            hideDocimentTypeColumns_Contragent(IN); 
-          // skrivane na koloni  na kontragent s index "2" nakraq
-            hideDocimentTypeColumns_Contragent(OUT);   
-           
-            hideDocimentTypeColumns_Obekt(IN);
-            hideDocimentTypeColumns_Obekt(OUT);
-            hideDocimentTypeColumns_DevDistr();
-            
-            
-             HideColumns(getColumnIndex("Вид плащане"));
-             HideColumns(getColumnIndex("ДДС"));
-             HideColumns(getColumnIndex("Общо"));
-             HideColumns(getColumnIndex("Дата на плащане"));
-             
-           
-           
-            break;
-        }
-        case aeDocumentFacade.KONSGNACIONEN_PROTOKOL:
-        {
-           // skrivane na koloni  na kontragent s index "1" nakraq
-            hideDocimentTypeColumns_Contragent(IN); 
-           // skrivane na koloni  na kontragent s index "1" nakraq
-           hideDocimentTypeColumns_Obekt(IN);
-           
-           hideDocimentTypeColumns_DevDistr();
-           
-             HideColumns(getColumnIndex("Склад (към)"));
-             
-            break;
-        }
-        case aeDocumentFacade.PREDAVATELNA_RAZPISKA:
-        {
-            break;
-        }
-        case aeDocumentFacade.PRIEMATELNA_RAZPISKA:
-        {
-            // skrivane na koloni  na kontragent s index "2" nakraq
-            hideDocimentTypeColumns_Contragent(OUT); 
-            
-            hideDocimentTypeColumns_Obekt(IN);
-            hideDocimentTypeColumns_Obekt(OUT);
-                  
-            HideColumns(getColumnIndex("Склад (към)"));
-            
-            break;
-        }
-       case aeDocumentFacade.RAZPISKA_ZA_VRYSHTANE:
-        {
-            // skrivane na koloni  na kontragent s index "2" nakraq
-            hideDocimentTypeColumns_Contragent(OUT); 
-            
-            hideDocimentTypeColumns_Obekt(IN);
-            hideDocimentTypeColumns_Obekt(OUT);
-                  
-            HideColumns(getColumnIndex("Склад (към)"));
-            
-            break;
-        }
-       case aeDocumentFacade.OFERTA :
-        {
-           hideDocimentTypeColumns_Contragent(IN); 
-           hideDocimentTypeColumns_Obekt(IN);
-           hideDocimentTypeColumns_Obekt(OUT);
-           hideDocimentTypeColumns_DevDistr();
-            
-           HideColumns(getColumnIndex("Склад (към)"));     
-                
-         break;
-        } 
-       case aeDocumentFacade.BRAK :
-       {
-         hideDocimentTypeColumns_Contragent(IN); 
-         hideDocimentTypeColumns_Contragent(OUT); 
-         hideDocimentTypeColumns_Obekt(IN);
-         hideDocimentTypeColumns_Obekt(OUT);
-         hideDocimentTypeColumns_DevDistr();  
-        
-                
-          break;
-        }
-        case aeDocumentFacade.PROTOKOL_LIPSA :
-       {
-          hideDocimentTypeColumns_Contragent(IN); 
-         hideDocimentTypeColumns_Contragent(OUT); 
-         hideDocimentTypeColumns_Obekt(IN);
-         hideDocimentTypeColumns_Obekt(OUT);
-         hideDocimentTypeColumns_DevDistr();       
-                
-          break;
-        }
-        case aeDocumentFacade.STOKOVA_RAZPISKA:
-        {
-           // skrivane na koloni  na kontragent s index "1" nakraq
-            hideDocimentTypeColumns_Contragent(IN); 
-
-             // skrivane na koloni  na kontragent s index "1" nakraq
-           hideDocimentTypeColumns_Obekt(IN);
-           
-            
-            
-             HideColumns(getColumnIndex("Склад (към)"));
-            
-            break;
-        }
-        case aeDocumentFacade.PROFORMA_FAKTURA:
-        {
-          // skrivane na koloni  na kontragent s index "1" nakraq
-            hideDocimentTypeColumns_Contragent(IN); 
-
-            hideDocimentTypeColumns_Obekt(IN);
-            hideDocimentTypeColumns_Obekt(OUT);
-            hideDocimentTypeColumns_DevDistr();
-            
-             HideColumns(getColumnIndex("Склад (към)"));
-           
-          break;  
-        }
-        
-    }
     
-    
-}  
-private void moveDocimentTypeColumns(int doctype)
-{
-    switch(doctype)
-    {
-        case aeDocumentFacade.FAKTURI:
-        {
-            table.moveColumn(getColumnIndex("Номер на документа"),0);
-            table.moveColumn(getColumnIndex("Дата на документа"),1);
+    private void checkForMakeDoc(boolean makeDoc) {
+        int maxID_df= 0;
+        if(makeDoc) {
+            long number = getCountriesT().getDocNumberLast( getUserEditFortm(), getDocFacadeLevel(),getDocFacadeType());
+            number++;
+            imakante.com.dateManipulation dateManip = new imakante.com.dateManipulation();
+            String strDate;
+            org.jdesktop.swingx.JXDatePicker tmpD = new org.jdesktop.swingx.JXDatePicker();
+            strDate = String.valueOf(tmpD.getDate().getDate());
+            strDate += "/" + String.valueOf(tmpD.getDate().getMonth());
+            strDate += "/" + String.valueOf(tmpD.getDate().getYear()+1900);
+            String DateSQLFormat = dateManip.convertDate(strDate);
             
+            getCountriesT().insertRow(0,0,0,0,0,0,0,number,getUserEditFortm(),getUserEditFortm(),0,0,0,
+                    getDocFacadeLevel(),getStorageOUTProduct(),getDocFacadeType(),0,0,"0",DateSQLFormat,"-",DateSQLFormat,DateSQLFormat,1,0);
+            maxID_df = getCountriesT().getMaxId();
             
-            break;
-        }
-         case aeDocumentFacade.FAKTURA_DANACHNA:
-        {
-            table.moveColumn(getColumnIndex("Номер на документа"),0);
-            table.moveColumn(getColumnIndex("Дата на документа"),1);
-            
-            
-            break;
-        }
-          case aeDocumentFacade.FAKTURA_OPROSTENA:
-        {
-            table.moveColumn(getColumnIndex("Номер на документа"),0);
-            table.moveColumn(getColumnIndex("Дата на документа"),1);
-            
-            
-            break;
-        }
-        case aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE:
-        {
-            table.moveColumn(getColumnIndex("Номер на документа"),0);
-            table.moveColumn(getColumnIndex("Дата на документа"),1);
-            table.moveColumn(getColumnIndex("Склад"),2);
-            table.moveColumn(getColumnIndex("Склад (към)"),3);
-          //  table.moveColumn(getColumnIndex("Състояние"),4);
-            break;
-        }
-        case aeDocumentFacade.KONSGNACIONEN_PROTOKOL:
-        {
-            break;
-        }
-        case aeDocumentFacade.PREDAVATELNA_RAZPISKA:
-        {
-            table.moveColumn(getColumnIndex("Номер на документа"),0);
-            table.moveColumn(getColumnIndex("Дата на документа"),1);
-            
-            break;
-        }
-        case aeDocumentFacade.PRIEMATELNA_RAZPISKA:
-        {
-            table.moveColumn(getColumnIndex("Номер на документа"),0);
-            table.moveColumn(getColumnIndex("Дата на документа"),1);
-            break;
-        }
-        case aeDocumentFacade.RAZPISKA_ZA_VRYSHTANE:
-        {
-            table.moveColumn(getColumnIndex("Номер на документа"),0);
-            table.moveColumn(getColumnIndex("Дата на документа"),1);
-            break;
-        } 
-         case aeDocumentFacade.OFERTA :
-        {
-          table.moveColumn(getColumnIndex("Номер на документа"),0);
-          table.moveColumn(getColumnIndex("Дата на документа"),1);     
+            setID_DocFacade(maxID_df) ;
+            for(int i = 0; i < dataInput.size(); i++) {
+                docLineArray d = (docLineArray) dataInput.get(i);
+                double total = d.getNumberOfProduct()*d.getPricePiece();
+                double dds = total*d.getDDS()/100;
+                getCountriesT().insertDocLine(maxID_df,d.getID_PC(),
+                        d.getStorageOut(),d.getPricePiece(),d.getRateReduction(),d.getNumberOfProduct(),
+                        dds,total,d.getPriceList());
                 
-         break;
-        } 
-       case aeDocumentFacade.BRAK :
-       {
-          table.moveColumn(getColumnIndex("Номер на документа"),0);
-          table.moveColumn(getColumnIndex("Дата на документа"),1);     
+            }
+            for(int i=0 ; i < dataOutput.size(); i++) {
+                int id_df =(Integer) dataOutput.get(i);
+                getCountriesT().updateConnectionID(id_df,maxID_df,0);
                 
-          break;
+            }
+            
+            
         }
-        case aeDocumentFacade.PROTOKOL_LIPSA :
-       {
-          table.moveColumn(getColumnIndex("Номер на документа"),0);
-          table.moveColumn(getColumnIndex("Дата на документа"),1);    
+    }
+    private void hideCommonColumns() {
+        HideColumns(getColumnIndex("id_df"));
+        HideColumns(getColumnIndex("out_obekt_df"));
+        HideColumns(getColumnIndex("in_obekt_df"));
+        
+        HideColumns(getColumnIndex("distributor_df"));
+        HideColumns(getColumnIndex("delivere_df"));
+        HideColumns(getColumnIndex("time_edition_df"));
+        HideColumns(getColumnIndex("faktura_connection_df"));
+        HideColumns(getColumnIndex("zaiavka_connection_df"));
+        HideColumns(getColumnIndex("flag_finish_df"));
+        HideColumns(getColumnIndex("level_df"));
+        HideColumns(getColumnIndex("id_rep"));
+        HideColumns(getColumnIndex("paying_order_df"));
+        HideColumns(getColumnIndex("Тип на документа"));
+        
+        HideColumns(getColumnIndex("out_contragent_df"));
+        HideColumns(getColumnIndex("in_contragent_df"));
+        HideColumns(getColumnIndex("ПотребителIndex"));
+        HideColumns(getColumnIndex("Потребител-последна редакцияIndex"));
+        HideColumns(getColumnIndex("Вид плащанеIndex"));
+        
+    }
+    private void hideDocimentTypeColumns(int doctype) {
+        switch(doctype) {
+            case aeDocumentFacade.FAKTURI:
+            {
+                // skrivane na koloni  na kontragent s index "1" nakraq
+                hideDocimentTypeColumns_Contragent(IN);
+                hideDocimentTypeColumns_Obekt(IN);
+                hideDocimentTypeColumns_Obekt(OUT);
+                hideDocimentTypeColumns_DevDistr();
                 
-          break;
-        }
-        case aeDocumentFacade.STOKOVA_RAZPISKA:
-        {
-            table.moveColumn(getColumnIndex("Номер на документа"),0);
-            table.moveColumn(getColumnIndex("Дата на документа"),1);
-            break;
-        }
-        case aeDocumentFacade.PROFORMA_FAKTURA:
-        {
-            table.moveColumn(getColumnIndex("Номер на документа"),0);
-            table.moveColumn(getColumnIndex("Дата на документа"),1);
-            break;
+                HideColumns(getColumnIndex("Склад (към)"));
+                
+                
+                break;
+            }
+            case aeDocumentFacade.FAKTURA_DANACHNA:
+            {
+                // skrivane na koloni  na kontragent s index "1" nakraq
+                hideDocimentTypeColumns_Contragent(IN);
+                hideDocimentTypeColumns_Obekt(IN);
+                hideDocimentTypeColumns_Obekt(OUT);
+                hideDocimentTypeColumns_DevDistr();
+                
+                HideColumns(getColumnIndex("Склад (към)"));
+                
+                
+                break;
+            }
+            case aeDocumentFacade.FAKTURA_OPROSTENA:
+            {
+                // skrivane na koloni  na kontragent s index "1" nakraq
+                hideDocimentTypeColumns_Contragent(IN);
+                hideDocimentTypeColumns_Obekt(IN);
+                hideDocimentTypeColumns_Obekt(OUT);
+                hideDocimentTypeColumns_DevDistr();
+                
+                HideColumns(getColumnIndex("Склад (към)"));
+                
+                
+                break;
+            }
+            case aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE:
+            {
+                // skrivane na koloni  na kontragent s index "1" nakraq
+                hideDocimentTypeColumns_Contragent(IN);
+                // skrivane na koloni  na kontragent s index "2" nakraq
+                hideDocimentTypeColumns_Contragent(OUT);
+                
+                hideDocimentTypeColumns_Obekt(IN);
+                hideDocimentTypeColumns_Obekt(OUT);
+                hideDocimentTypeColumns_DevDistr();
+                
+                
+                HideColumns(getColumnIndex("Вид плащане"));
+                HideColumns(getColumnIndex("ДДС"));
+                HideColumns(getColumnIndex("Общо"));
+                HideColumns(getColumnIndex("Дата на плащане"));
+                
+                
+                
+                break;
+            }
+            case aeDocumentFacade.KONSGNACIONEN_PROTOKOL:
+            {
+                // skrivane na koloni  na kontragent s index "1" nakraq
+                hideDocimentTypeColumns_Contragent(IN);
+                // skrivane na koloni  na kontragent s index "1" nakraq
+                hideDocimentTypeColumns_Obekt(IN);
+                
+                hideDocimentTypeColumns_DevDistr();
+                
+                HideColumns(getColumnIndex("Склад (към)"));
+                
+                break;
+            }
+            case aeDocumentFacade.PREDAVATELNA_RAZPISKA:
+            {
+                break;
+            }
+            case aeDocumentFacade.PRIEMATELNA_RAZPISKA:
+            {
+                // skrivane na koloni  na kontragent s index "2" nakraq
+                hideDocimentTypeColumns_Contragent(OUT);
+                
+                hideDocimentTypeColumns_Obekt(IN);
+                hideDocimentTypeColumns_Obekt(OUT);
+                
+                HideColumns(getColumnIndex("Склад (към)"));
+                
+                break;
+            }
+            case aeDocumentFacade.RAZPISKA_ZA_VRYSHTANE:
+            {
+                // skrivane na koloni  na kontragent s index "2" nakraq
+                hideDocimentTypeColumns_Contragent(OUT);
+                
+                hideDocimentTypeColumns_Obekt(IN);
+                hideDocimentTypeColumns_Obekt(OUT);
+                
+                HideColumns(getColumnIndex("Склад (към)"));
+                
+                break;
+            }
+            case aeDocumentFacade.OFERTA :
+            {
+                hideDocimentTypeColumns_Contragent(IN);
+                hideDocimentTypeColumns_Obekt(IN);
+                hideDocimentTypeColumns_Obekt(OUT);
+                hideDocimentTypeColumns_DevDistr();
+                
+                HideColumns(getColumnIndex("Склад (към)"));
+                
+                break;
+            }
+            case aeDocumentFacade.BRAK :
+            {
+                hideDocimentTypeColumns_Contragent(IN);
+                hideDocimentTypeColumns_Contragent(OUT);
+                hideDocimentTypeColumns_Obekt(IN);
+                hideDocimentTypeColumns_Obekt(OUT);
+                hideDocimentTypeColumns_DevDistr();
+                
+                
+                break;
+            }
+            case aeDocumentFacade.PROTOKOL_LIPSA :
+            {
+                hideDocimentTypeColumns_Contragent(IN);
+                hideDocimentTypeColumns_Contragent(OUT);
+                hideDocimentTypeColumns_Obekt(IN);
+                hideDocimentTypeColumns_Obekt(OUT);
+                hideDocimentTypeColumns_DevDistr();
+                
+                break;
+            }
+            case aeDocumentFacade.STOKOVA_RAZPISKA:
+            {
+                // skrivane na koloni  na kontragent s index "1" nakraq
+                hideDocimentTypeColumns_Contragent(IN);
+                
+                // skrivane na koloni  na kontragent s index "1" nakraq
+                hideDocimentTypeColumns_Obekt(IN);
+                
+                
+                
+                HideColumns(getColumnIndex("Склад (към)"));
+                
+                break;
+            }
+            case aeDocumentFacade.PROFORMA_FAKTURA:
+            {
+                // skrivane na koloni  na kontragent s index "1" nakraq
+                hideDocimentTypeColumns_Contragent(IN);
+                
+                hideDocimentTypeColumns_Obekt(IN);
+                hideDocimentTypeColumns_Obekt(OUT);
+                hideDocimentTypeColumns_DevDistr();
+                
+                HideColumns(getColumnIndex("Склад (към)"));
+                
+                break;
+            }
+            
         }
         
-    }
-    
-  
-   
-}
-private void hideDocimentTypeColumns_Obekt(int in_out)
-{
-    switch (in_out)
-    {
-        case IN:
-        {
-           HideColumns(getColumnIndex("Код на обекта1"));
-           HideColumns(getColumnIndex("Име на обекта1"));
-           HideColumns(getColumnIndex("Адрес на обекта1"));
-           break;
-        }
-        case OUT:
-        {
-           HideColumns(getColumnIndex("Код на обекта2"));
-           HideColumns(getColumnIndex("Име на обекта2"));
-           HideColumns(getColumnIndex("Адрес на обекта2"));
-           break;
-        }
-    }
-}
-private void hideDocimentTypeColumns_Contragent(int in_out)
-{
-   switch (in_out)
-    {
-        case IN:
-        {
-           HideColumns(getColumnIndex("Име на контрагента1"));
-           HideColumns(getColumnIndex("Булстат1"));
-           HideColumns(getColumnIndex("Данъчен номер1"));
-           HideColumns(getColumnIndex("Име на контарегнта1"));
-           HideColumns(getColumnIndex("Адрес1"));
-           HideColumns(getColumnIndex("Телефон на контрагента1"));
-           HideColumns(getColumnIndex("Код на контрагента1"));
-           HideColumns(getColumnIndex("МОЛ1"));
-           break;
-        }
-        case OUT:
-        {
-           HideColumns(getColumnIndex("Име на контрагента2"));
-           HideColumns(getColumnIndex("Булстат2"));
-           HideColumns(getColumnIndex("Данъчен номер2"));
-           HideColumns(getColumnIndex("Име на контарегнта2"));
-           HideColumns(getColumnIndex("Адрес2"));
-           HideColumns(getColumnIndex("Телефон на контрагента2"));
-           HideColumns(getColumnIndex("Код на контрагента2"));
-           HideColumns(getColumnIndex("МОЛ2"));
-           break;
-        }
-    }  
-}
-private void hideDocimentTypeColumns_DevDistr()
-{
-  HideColumns(getColumnIndex("Код на дистрибутор"));
-  HideColumns(getColumnIndex("Код на доставчик"));
-  HideColumns(getColumnIndex("Дата на доставяне"));  
-}
-public void closeFrm()
-{
-    this.jButtonClose.doClick();
-}
-public void loadPrintReportJasper(int docType,int in_id_df,int sellRow)
-{
-    int rowSelect = sellRow;
-     int id_doc=0;
-    if(in_id_df==-1)
-    {
-    if(rowSelect <0) return;
-    id_doc =(Integer) table.getValueAt(rowSelect,getColumnIndex("id_df"));
-    }
-    else
-    {
-        
-        id_doc = in_id_df;
-    }
-    String path ="";
-    System.out.println("ID_df="+ id_doc);
-    switch(docType)
-    {
-        case aeDocumentFacade.OFERTA:
-        {
-            HashMap parameterHashMap = new HashMap();
-            imakante.com.paramFirm paramFrm1 = new imakante.com.paramFirm();
-            
-            parameterHashMap.put(new String("izdadenaot"),(String)table.getValueAt(rowSelect,getColumnIndex("Потребител")));
-            parameterHashMap.put(new String("firmaname"),paramFrm1.getName());
-            parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
-           
-            printReportDialog = new imakante.com.vcomponents.tableDialog(this,false,getDocLineTable(id_doc),conn,parameterHashMap,
-                    path+"sales_offer.jasper","\u041e\u0424\u0415\u0420\u0422\u0410",
-                    "\u041e\u0424\u0415\u0420\u0422\u0410");
-            printReportDialog.setVisible(true);
-            break;
-        }
-        case aeDocumentFacade.FAKTURA_DANACHNA:
-        {
-            HashMap parameterHashMap = new HashMap();
-            imakante.com.paramFirm paramFrm1 = new imakante.com.paramFirm();
-            String uuser = (String)table.getValueAt(rowSelect,getColumnIndex("Потребител"));
-            parameterHashMap.put(new String("naredil"),uuser);
-            parameterHashMap.put(new String("firmaname"),paramFrm1.getName());
-            parameterHashMap.put(new String("firma_oso"),paramFrm1.getBoss());
-            parameterHashMap.put(new String("firma_mol"),paramFrm1.getBoss());
-            parameterHashMap.put(new String("firma_dan_No"),paramFrm1.getDan());
-            parameterHashMap.put(new String("firma_address"),paramFrm1.getAddress());
-            
-            parameterHashMap.put(new String("firma_IBAN_D"),paramFrm1.getIBAN_D());
-            parameterHashMap.put(new String("firma_IBAN_R"),paramFrm1.getIBAN_R());
-            parameterHashMap.put(new String("firma_BIC_R"),paramFrm1.getBIC_R());
-            parameterHashMap.put(new String("firma_BIC_D"),paramFrm1.getBIC_D());
-            
-            parameterHashMap.put(new String("firma_banknameD"),paramFrm1.getBankName_D());
-            parameterHashMap.put(new String("firma_banknameR"),paramFrm1.getBankName_R());
-            parameterHashMap.put(new String("firma_bul_No"),paramFrm1.getIN());
-            
-            
-            String priceToStr = PriceToString(id_doc,true);
-            parameterHashMap.put(new String("PriceToString"),priceToStr);
-            
-            parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
-          
-            printReportDialog = new imakante.com.vcomponents.tableDialog(this,false,getDocLineTable(id_doc),conn,parameterHashMap,
-                   path+"sales_Dan_fak.jasper","\u0414\u0410\u041d\u042a\u0427\u041d\u0410 \u0424\u0410\u041a\u0422\u0423\u0420\u0410",
-                    "\u0414\u0410\u041d\u042a\u0427\u041d\u0410 \u0424\u0410\u041a\u0422\u0423\u0420\u0410");
-            printReportDialog.setVisible(true);
-            break;
-        }
-        case aeDocumentFacade.FAKTURA_OPROSTENA:
-        {
-            HashMap parameterHashMap = new HashMap();
-            imakante.com.paramFirm paramFrm1 = new imakante.com.paramFirm();
-            parameterHashMap.put(new String("naredil"),(String)table.getValueAt(rowSelect,getColumnIndex("Потребител")));
-            parameterHashMap.put(new String("firmaname"),paramFrm1.getName());
-            parameterHashMap.put(new String("firma_oso"),paramFrm1.getBoss());
-            parameterHashMap.put(new String("firma_mol"),paramFrm1.getBoss());
-            parameterHashMap.put(new String("firma_dan_No"),paramFrm1.getDan());
-            parameterHashMap.put(new String("firma_address"),paramFrm1.getAddress());
-            
-            String priceToStr = PriceToString(id_doc,false);
-            parameterHashMap.put(new String("PriceToString"),priceToStr);
-            
-            parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
-          
-            printReportDialog = new imakante.com.vcomponents.tableDialog(this,false,getDocLineTable(id_doc),conn,parameterHashMap,
-                    path+"sales_Opr_fak.jasper","\u041e\u041f\u0420\u041e\u0421\u0422\u0415\u041d\u0410 \u0424\u0410\u041a\u0422\u0423\u0420\u0410",
-                    "\u041e\u041f\u0420\u041e\u0421\u0422\u0415\u041d\u0410 \u0424\u0410\u041a\u0422\u0423\u0420\u0410");
-            printReportDialog.setVisible(true);
-            break;
-        }
-        case aeDocumentFacade.STOKOVA_RAZPISKA:
-        {
-            HashMap parameterHashMap = new HashMap();
-            imakante.com.paramFirm paramFrm1 = new imakante.com.paramFirm();
-            parameterHashMap.put(new String("naredil"),(String)table.getValueAt(rowSelect,getColumnIndex("Потребител")));
-            parameterHashMap.put(new String("firmaname"),paramFrm1.getName());
-            parameterHashMap.put(new String("firma_oso"),paramFrm1.getBoss());
-            parameterHashMap.put(new String("firma_mol"),paramFrm1.getBoss());
-            parameterHashMap.put(new String("firma_dan_No"),paramFrm1.getDan());
-            parameterHashMap.put(new String("firma_address"),paramFrm1.getAddress());
-            
-            
-            parameterHashMap.put(new String("firma_IBAN_D"),paramFrm1.getIBAN_D());
-            parameterHashMap.put(new String("firma_IBAN_R"),paramFrm1.getIBAN_R());
-            parameterHashMap.put(new String("firma_BIC_R"),paramFrm1.getBIC_R());
-            parameterHashMap.put(new String("firma_BIC_D"),paramFrm1.getBIC_D());
-            
-            parameterHashMap.put(new String("firma_banknameD"),paramFrm1.getBankName_D());
-            parameterHashMap.put(new String("firma_banknameR"),paramFrm1.getBankName_R());
-            parameterHashMap.put(new String("firma_bul_No"),paramFrm1.getIN());
-            
-            String priceToStr = PriceToString(id_doc,false);
-            parameterHashMap.put(new String("PriceToString"),priceToStr);
-            
-            parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
-          
-            printReportDialog = new imakante.com.vcomponents.tableDialog(this,false,getDocLineTable(id_doc),conn,parameterHashMap,
-                    path+"sales_stokova.jasper","\u0421\u0422\u041e\u041a\u041e\u0412\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410",
-                    "\u0421\u0422\u041e\u041a\u041e\u0412\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410");
-            printReportDialog.setVisible(true);
-            break;
-        }
-        case aeDocumentFacade.PRIEMATELNA_RAZPISKA:
-        {
-            HashMap parameterHashMap = new HashMap();
-            imakante.com.paramFirm paramFrm1 = new imakante.com.paramFirm();
-            parameterHashMap.put(new String("naredil"),(String)table.getValueAt(rowSelect,getColumnIndex("Потребител")));
-            parameterHashMap.put(new String("firmaname"),paramFrm1.getName());
-            String priceToStr = PriceToString(id_doc,true);
-            parameterHashMap.put(new String("PriceToString"),priceToStr);
-            
-            parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
-          
-            printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,getDocLineTable(id_doc),conn,parameterHashMap,
-                    path+"sales_priem.jasper","\u041f\u0420\u0418\u0415\u041c\u0410\u0422\u0415\u041b\u041d\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410",
-                    "\u041f\u0420\u0418\u0415\u041c\u0410\u0422\u0415\u041b\u041d\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410");
-            printReportDialog.setVisible(true);
-            
-            break;
-        }
-        case aeDocumentFacade.RAZPISKA_ZA_VRYSHTANE:
-        {
-            HashMap parameterHashMap = new HashMap();
-            imakante.com.paramFirm paramFrm1 = new imakante.com.paramFirm();
-            parameterHashMap.put(new String("naredil"),(String)table.getValueAt(rowSelect,getColumnIndex("Потребител")));
-            parameterHashMap.put(new String("firmaname"),paramFrm1.getName());
-            String priceToStr = PriceToString(id_doc,false);
-            parameterHashMap.put(new String("PriceToString"),priceToStr);
-            
-            parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
-          
-            printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,getDocLineTable(id_doc),conn,parameterHashMap,
-                    path+"sales_vrystane.jasper","\u0420\u0430\u0437\u043F\u0438\u0441\u043A\u0430 \u0437\u0430 \u0432\u0440\u044A\u0449\u0430\u043D\u0435",
-                    "\u0420\u0430\u0437\u043F\u0438\u0441\u043A\u0430 \u0437\u0430 \u0432\u0440\u044A\u0449\u0430\u043D\u0435");
-            printReportDialog.setVisible(true);
-            
-            break;
-        }
-        case aeDocumentFacade.PROFORMA_FAKTURA:
-        {
-            break;
-        }
-        case aeDocumentFacade.PROTOKOL_LIPSA:
-        {
-            HashMap parameterHashMap = new HashMap();
-            imakante.com.paramFirm paramFrm1 = new imakante.com.paramFirm();
-            parameterHashMap.put(new String("naredil"),(String)table.getValueAt(rowSelect,getColumnIndex("Потребител")));
-            parameterHashMap.put(new String("firmaname"),paramFrm1.getName());
-            String priceToStr = PriceToString(id_doc,false);
-            parameterHashMap.put(new String("PriceToString"),priceToStr);
-            
-            parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
-          
-            printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,getDocLineTable(id_doc),conn,parameterHashMap,
-                    path+"sales_lipsa.jasper","\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u041b\u0418\u041f\u0421\u0410",
-                    "\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u041b\u0418\u041f\u0421\u0410");
-            printReportDialog.setVisible(true);
-            break;
-        }
-        case aeDocumentFacade.BRAK:
-        {
-            HashMap parameterHashMap = new HashMap();
-            imakante.com.paramFirm paramFrm1 = new imakante.com.paramFirm();
-            parameterHashMap.put(new String("naredil"),(String)table.getValueAt(rowSelect,getColumnIndex("Потребител")));
-            parameterHashMap.put(new String("firmaname"),paramFrm1.getName());
-            String priceToStr = PriceToString(id_doc,false);
-            parameterHashMap.put(new String("PriceToString"),priceToStr);
-            
-            parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
-          
-            printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,getDocLineTable(id_doc),conn,parameterHashMap,
-                    path+"sales_brak.jasper","\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u0411\u0420\u0410\u041a",
-                    "\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u0411\u0420\u0410\u041a");
-            printReportDialog.setVisible(true);
-            break;
-        }
-        case aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE:
-        {
-            HashMap parameterHashMap = new HashMap();
-            imakante.com.paramFirm paramFrm1 = new imakante.com.paramFirm();
-            parameterHashMap.put(new String("naredil"),(String)table.getValueAt(rowSelect,getColumnIndex("Потребител")));
-            parameterHashMap.put(new String("firmaname"),paramFrm1.getName());
-            String priceToStr = PriceToString(id_doc,false);
-            parameterHashMap.put(new String("PriceToString"),priceToStr);
-            
-            parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
-          
-            printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,getDocLineTable(id_doc),conn,parameterHashMap,
-                   path+"sales_nar_prehv.jasper","\u041d\u0410\u0420\u0415\u0416\u0414\u0410\u041d\u0415 \u0417\u0410 \u041f\u0420\u0415\u0425\u0412\u042a\u0420\u041b\u042f\u041d\u0415",
-                    "\u041d\u0410\u0420\u0415\u0416\u0414\u0410\u041d\u0415 \u0417\u0410 \u041f\u0420\u0415\u0425\u0412\u042a\u0420\u041b\u042f\u041d\u0415");
-            printReportDialog.setVisible(true);
-            break;
-        }
-    }
-}
-private String PriceToString( int id_doc, boolean withDDS)
-{
-    String StringPrice=new String();
-    String SQL = new String();
-    double price=0;
-    if(withDDS)
-    {
-        SQL = "Select total_df as totall" +
-                 " FROM rep_documents_ivan " +
-                 " WHERE id_df="+id_doc+";"; 
-    }
-    else
-    {
-       SQL = "Select (total_df-dds_df) as totall " +
-                 " FROM rep_documents_ivan " +
-                 " WHERE id_df="+id_doc+";";
-    }
-    java.sql.ResultSet rs13 = null;
-    
-    try
-    {
-       rs13 = myframe.getConn().createStatement().executeQuery(SQL);
-        
-       while(rs13.next())
-       {
-          price = rs13.getDouble("totall");
-          break;
-       }
-      
         
     }
-    catch(Exception r)
-    {};
-    System.out.println("Price to String ="+price);
-    
-    pts.setValue(price);
-    pts.ConstString();
-    StringPrice=pts.getEndString();
-    
-    return StringPrice;
-}
- private imakante.com.CustomTable getDocLineTable(int id_dok)
- {
-    imakante.com.CustomTable t=null;
-    java.sql.ResultSet rs12=null;
-    imakante.com.CustomTableModel m=null;
-
-   
-
- 
- 
- 
+    private void moveDocimentTypeColumns(int doctype) {
+        switch(doctype) {
+            case aeDocumentFacade.FAKTURI:
+            {
+                table.moveColumn(getColumnIndex("Номер на документа"),0);
+                table.moveColumn(getColumnIndex("Дата на документа"),1);
+                
+                
+                break;
+            }
+            case aeDocumentFacade.FAKTURA_DANACHNA:
+            {
+                table.moveColumn(getColumnIndex("Номер на документа"),0);
+                table.moveColumn(getColumnIndex("Дата на документа"),1);
+                
+                
+                break;
+            }
+            case aeDocumentFacade.FAKTURA_OPROSTENA:
+            {
+                table.moveColumn(getColumnIndex("Номер на документа"),0);
+                table.moveColumn(getColumnIndex("Дата на документа"),1);
+                
+                
+                break;
+            }
+            case aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE:
+            {
+                table.moveColumn(getColumnIndex("Номер на документа"),0);
+                table.moveColumn(getColumnIndex("Дата на документа"),1);
+                table.moveColumn(getColumnIndex("Склад"),2);
+                table.moveColumn(getColumnIndex("Склад (към)"),3);
+                //  table.moveColumn(getColumnIndex("Състояние"),4);
+                break;
+            }
+            case aeDocumentFacade.KONSGNACIONEN_PROTOKOL:
+            {
+                break;
+            }
+            case aeDocumentFacade.PREDAVATELNA_RAZPISKA:
+            {
+                table.moveColumn(getColumnIndex("Номер на документа"),0);
+                table.moveColumn(getColumnIndex("Дата на документа"),1);
+                
+                break;
+            }
+            case aeDocumentFacade.PRIEMATELNA_RAZPISKA:
+            {
+                table.moveColumn(getColumnIndex("Номер на документа"),0);
+                table.moveColumn(getColumnIndex("Дата на документа"),1);
+                break;
+            }
+            case aeDocumentFacade.RAZPISKA_ZA_VRYSHTANE:
+            {
+                table.moveColumn(getColumnIndex("Номер на документа"),0);
+                table.moveColumn(getColumnIndex("Дата на документа"),1);
+                break;
+            }
+            case aeDocumentFacade.OFERTA :
+            {
+                table.moveColumn(getColumnIndex("Номер на документа"),0);
+                table.moveColumn(getColumnIndex("Дата на документа"),1);
+                
+                break;
+            }
+            case aeDocumentFacade.BRAK :
+            {
+                table.moveColumn(getColumnIndex("Номер на документа"),0);
+                table.moveColumn(getColumnIndex("Дата на документа"),1);
+                
+                break;
+            }
+            case aeDocumentFacade.PROTOKOL_LIPSA :
+            {
+                table.moveColumn(getColumnIndex("Номер на документа"),0);
+                table.moveColumn(getColumnIndex("Дата на документа"),1);
+                
+                break;
+            }
+            case aeDocumentFacade.STOKOVA_RAZPISKA:
+            {
+                table.moveColumn(getColumnIndex("Номер на документа"),0);
+                table.moveColumn(getColumnIndex("Дата на документа"),1);
+                break;
+            }
+            case aeDocumentFacade.PROFORMA_FAKTURA:
+            {
+                table.moveColumn(getColumnIndex("Номер на документа"),0);
+                table.moveColumn(getColumnIndex("Дата на документа"),1);
+                break;
+            }
+            
+        }
+        
+        
+        
+    }
+    private void hideDocimentTypeColumns_Obekt(int in_out) {
+        switch (in_out) {
+            case IN:
+            {
+                HideColumns(getColumnIndex("Код на обекта1"));
+                HideColumns(getColumnIndex("Име на обекта1"));
+                HideColumns(getColumnIndex("Адрес на обекта1"));
+                break;
+            }
+            case OUT:
+            {
+                HideColumns(getColumnIndex("Код на обекта2"));
+                HideColumns(getColumnIndex("Име на обекта2"));
+                HideColumns(getColumnIndex("Адрес на обекта2"));
+                break;
+            }
+        }
+    }
+    private void hideDocimentTypeColumns_Contragent(int in_out) {
+        switch (in_out) {
+            case IN:
+            {
+                HideColumns(getColumnIndex("Име на контрагента1"));
+                HideColumns(getColumnIndex("Булстат1"));
+                HideColumns(getColumnIndex("Данъчен номер1"));
+                HideColumns(getColumnIndex("Име на контарегнта1"));
+                HideColumns(getColumnIndex("Адрес1"));
+                HideColumns(getColumnIndex("Телефон на контрагента1"));
+                HideColumns(getColumnIndex("Код на контрагента1"));
+                HideColumns(getColumnIndex("МОЛ1"));
+                break;
+            }
+            case OUT:
+            {
+                HideColumns(getColumnIndex("Име на контрагента2"));
+                HideColumns(getColumnIndex("Булстат2"));
+                HideColumns(getColumnIndex("Данъчен номер2"));
+                HideColumns(getColumnIndex("Име на контарегнта2"));
+                HideColumns(getColumnIndex("Адрес2"));
+                HideColumns(getColumnIndex("Телефон на контрагента2"));
+                HideColumns(getColumnIndex("Код на контрагента2"));
+                HideColumns(getColumnIndex("МОЛ2"));
+                break;
+            }
+        }
+    }
+    private void hideDocimentTypeColumns_DevDistr() {
+        HideColumns(getColumnIndex("Код на дистрибутор"));
+        HideColumns(getColumnIndex("Код на доставчик"));
+        HideColumns(getColumnIndex("Дата на доставяне"));
+    }
+    public void closeFrm() {
+        this.jButtonClose.doClick();
+    }
+    public void loadPrintReportJasper(int docType,int in_id_df,int sellRow) {
+        int rowSelect = sellRow;
+        int id_doc=0;
+        if(in_id_df==-1) {
+            if(rowSelect <0) return;
+            id_doc =(Integer) table.getValueAt(rowSelect,getColumnIndex("id_df"));
+        } else {
+            
+            id_doc = in_id_df;
+        }
+        String path ="";
+        System.out.println("ID_df="+ id_doc);
+        switch(docType) {
+            case aeDocumentFacade.OFERTA:
+            {
+                HashMap parameterHashMap = new HashMap();
+                imakante.com.paramFirm paramFrm1 = new imakante.com.paramFirm();
+                
+                parameterHashMap.put(new String("izdadenaot"),(String)table.getValueAt(rowSelect,getColumnIndex("Потребител")));
+                parameterHashMap.put(new String("firmaname"),paramFrm1.getName());
+                parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
+                
+                printReportDialog = new imakante.com.vcomponents.tableDialog(this,false,getDocLineTable(id_doc),conn,parameterHashMap,
+                        path+"sales_offer.jasper","\u041e\u0424\u0415\u0420\u0422\u0410",
+                        "\u041e\u0424\u0415\u0420\u0422\u0410");
+                printReportDialog.setVisible(true);
+                break;
+            }
+            case aeDocumentFacade.FAKTURA_DANACHNA:
+            {
+                HashMap parameterHashMap = new HashMap();
+                imakante.com.paramFirm paramFrm1 = new imakante.com.paramFirm();
+                String uuser = (String)table.getValueAt(rowSelect,getColumnIndex("Потребител"));
+                parameterHashMap.put(new String("naredil"),uuser);
+                parameterHashMap.put(new String("firmaname"),paramFrm1.getName());
+                parameterHashMap.put(new String("firma_oso"),paramFrm1.getBoss());
+                parameterHashMap.put(new String("firma_mol"),paramFrm1.getBoss());
+                parameterHashMap.put(new String("firma_dan_No"),paramFrm1.getDan());
+                parameterHashMap.put(new String("firma_address"),paramFrm1.getAddress());
+                
+                parameterHashMap.put(new String("firma_IBAN_D"),paramFrm1.getIBAN_D());
+                parameterHashMap.put(new String("firma_IBAN_R"),paramFrm1.getIBAN_R());
+                parameterHashMap.put(new String("firma_BIC_R"),paramFrm1.getBIC_R());
+                parameterHashMap.put(new String("firma_BIC_D"),paramFrm1.getBIC_D());
+                
+                parameterHashMap.put(new String("firma_banknameD"),paramFrm1.getBankName_D());
+                parameterHashMap.put(new String("firma_banknameR"),paramFrm1.getBankName_R());
+                parameterHashMap.put(new String("firma_bul_No"),paramFrm1.getIN());
+                
+                
+                String priceToStr = PriceToString(id_doc,true);
+                parameterHashMap.put(new String("PriceToString"),priceToStr);
+                
+                parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
+                
+                printReportDialog = new imakante.com.vcomponents.tableDialog(this,false,getDocLineTable(id_doc),conn,parameterHashMap,
+                        path+"sales_Dan_fak.jasper","\u0414\u0410\u041d\u042a\u0427\u041d\u0410 \u0424\u0410\u041a\u0422\u0423\u0420\u0410",
+                        "\u0414\u0410\u041d\u042a\u0427\u041d\u0410 \u0424\u0410\u041a\u0422\u0423\u0420\u0410");
+                printReportDialog.setVisible(true);
+                break;
+            }
+            case aeDocumentFacade.FAKTURA_OPROSTENA:
+            {
+                HashMap parameterHashMap = new HashMap();
+                imakante.com.paramFirm paramFrm1 = new imakante.com.paramFirm();
+                parameterHashMap.put(new String("naredil"),(String)table.getValueAt(rowSelect,getColumnIndex("Потребител")));
+                parameterHashMap.put(new String("firmaname"),paramFrm1.getName());
+                parameterHashMap.put(new String("firma_oso"),paramFrm1.getBoss());
+                parameterHashMap.put(new String("firma_mol"),paramFrm1.getBoss());
+                parameterHashMap.put(new String("firma_dan_No"),paramFrm1.getDan());
+                parameterHashMap.put(new String("firma_address"),paramFrm1.getAddress());
+                
+                String priceToStr = PriceToString(id_doc,false);
+                parameterHashMap.put(new String("PriceToString"),priceToStr);
+                
+                parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
+                
+                printReportDialog = new imakante.com.vcomponents.tableDialog(this,false,getDocLineTable(id_doc),conn,parameterHashMap,
+                        path+"sales_Opr_fak.jasper","\u041e\u041f\u0420\u041e\u0421\u0422\u0415\u041d\u0410 \u0424\u0410\u041a\u0422\u0423\u0420\u0410",
+                        "\u041e\u041f\u0420\u041e\u0421\u0422\u0415\u041d\u0410 \u0424\u0410\u041a\u0422\u0423\u0420\u0410");
+                printReportDialog.setVisible(true);
+                break;
+            }
+            case aeDocumentFacade.STOKOVA_RAZPISKA:
+            {
+                HashMap parameterHashMap = new HashMap();
+                imakante.com.paramFirm paramFrm1 = new imakante.com.paramFirm();
+                parameterHashMap.put(new String("naredil"),(String)table.getValueAt(rowSelect,getColumnIndex("Потребител")));
+                parameterHashMap.put(new String("firmaname"),paramFrm1.getName());
+                parameterHashMap.put(new String("firma_oso"),paramFrm1.getBoss());
+                parameterHashMap.put(new String("firma_mol"),paramFrm1.getBoss());
+                parameterHashMap.put(new String("firma_dan_No"),paramFrm1.getDan());
+                parameterHashMap.put(new String("firma_address"),paramFrm1.getAddress());
+                
+                
+                parameterHashMap.put(new String("firma_IBAN_D"),paramFrm1.getIBAN_D());
+                parameterHashMap.put(new String("firma_IBAN_R"),paramFrm1.getIBAN_R());
+                parameterHashMap.put(new String("firma_BIC_R"),paramFrm1.getBIC_R());
+                parameterHashMap.put(new String("firma_BIC_D"),paramFrm1.getBIC_D());
+                
+                parameterHashMap.put(new String("firma_banknameD"),paramFrm1.getBankName_D());
+                parameterHashMap.put(new String("firma_banknameR"),paramFrm1.getBankName_R());
+                parameterHashMap.put(new String("firma_bul_No"),paramFrm1.getIN());
+                
+                String priceToStr = PriceToString(id_doc,false);
+                parameterHashMap.put(new String("PriceToString"),priceToStr);
+                
+                parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
+                
+                printReportDialog = new imakante.com.vcomponents.tableDialog(this,false,getDocLineTable(id_doc),conn,parameterHashMap,
+                        path+"sales_stokova.jasper","\u0421\u0422\u041e\u041a\u041e\u0412\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410",
+                        "\u0421\u0422\u041e\u041a\u041e\u0412\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410");
+                printReportDialog.setVisible(true);
+                break;
+            }
+            case aeDocumentFacade.PRIEMATELNA_RAZPISKA:
+            {
+                HashMap parameterHashMap = new HashMap();
+                imakante.com.paramFirm paramFrm1 = new imakante.com.paramFirm();
+                parameterHashMap.put(new String("naredil"),(String)table.getValueAt(rowSelect,getColumnIndex("Потребител")));
+                parameterHashMap.put(new String("firmaname"),paramFrm1.getName());
+                String priceToStr = PriceToString(id_doc,true);
+                parameterHashMap.put(new String("PriceToString"),priceToStr);
+                
+                parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
+                
+                printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,getDocLineTable(id_doc),conn,parameterHashMap,
+                        path+"sales_priem.jasper","\u041f\u0420\u0418\u0415\u041c\u0410\u0422\u0415\u041b\u041d\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410",
+                        "\u041f\u0420\u0418\u0415\u041c\u0410\u0422\u0415\u041b\u041d\u0410 \u0420\u0410\u0417\u041f\u0418\u0421\u041a\u0410");
+                printReportDialog.setVisible(true);
+                
+                break;
+            }
+            case aeDocumentFacade.RAZPISKA_ZA_VRYSHTANE:
+            {
+                HashMap parameterHashMap = new HashMap();
+                imakante.com.paramFirm paramFrm1 = new imakante.com.paramFirm();
+                parameterHashMap.put(new String("naredil"),(String)table.getValueAt(rowSelect,getColumnIndex("Потребител")));
+                parameterHashMap.put(new String("firmaname"),paramFrm1.getName());
+                String priceToStr = PriceToString(id_doc,false);
+                parameterHashMap.put(new String("PriceToString"),priceToStr);
+                
+                parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
+                
+                printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,getDocLineTable(id_doc),conn,parameterHashMap,
+                        path+"sales_vrystane.jasper","\u0420\u0430\u0437\u043F\u0438\u0441\u043A\u0430 \u0437\u0430 \u0432\u0440\u044A\u0449\u0430\u043D\u0435",
+                        "\u0420\u0430\u0437\u043F\u0438\u0441\u043A\u0430 \u0437\u0430 \u0432\u0440\u044A\u0449\u0430\u043D\u0435");
+                printReportDialog.setVisible(true);
+                
+                break;
+            }
+            case aeDocumentFacade.PROFORMA_FAKTURA:
+            {
+                break;
+            }
+            case aeDocumentFacade.PROTOKOL_LIPSA:
+            {
+                HashMap parameterHashMap = new HashMap();
+                imakante.com.paramFirm paramFrm1 = new imakante.com.paramFirm();
+                parameterHashMap.put(new String("naredil"),(String)table.getValueAt(rowSelect,getColumnIndex("Потребител")));
+                parameterHashMap.put(new String("firmaname"),paramFrm1.getName());
+                String priceToStr = PriceToString(id_doc,false);
+                parameterHashMap.put(new String("PriceToString"),priceToStr);
+                
+                parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
+                
+                printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,getDocLineTable(id_doc),conn,parameterHashMap,
+                        path+"sales_lipsa.jasper","\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u041b\u0418\u041f\u0421\u0410",
+                        "\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u041b\u0418\u041f\u0421\u0410");
+                printReportDialog.setVisible(true);
+                break;
+            }
+            case aeDocumentFacade.BRAK:
+            {
+                HashMap parameterHashMap = new HashMap();
+                imakante.com.paramFirm paramFrm1 = new imakante.com.paramFirm();
+                parameterHashMap.put(new String("naredil"),(String)table.getValueAt(rowSelect,getColumnIndex("Потребител")));
+                parameterHashMap.put(new String("firmaname"),paramFrm1.getName());
+                String priceToStr = PriceToString(id_doc,false);
+                parameterHashMap.put(new String("PriceToString"),priceToStr);
+                
+                parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
+                
+                printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,getDocLineTable(id_doc),conn,parameterHashMap,
+                        path+"sales_brak.jasper","\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u0411\u0420\u0410\u041a",
+                        "\u041f\u0420\u041e\u0422\u041e\u041a\u041e\u041b \u0417\u0410 \u0411\u0420\u0410\u041a");
+                printReportDialog.setVisible(true);
+                break;
+            }
+            case aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE:
+            {
+                HashMap parameterHashMap = new HashMap();
+                imakante.com.paramFirm paramFrm1 = new imakante.com.paramFirm();
+                parameterHashMap.put(new String("naredil"),(String)table.getValueAt(rowSelect,getColumnIndex("Потребител")));
+                parameterHashMap.put(new String("firmaname"),paramFrm1.getName());
+                String priceToStr = PriceToString(id_doc,false);
+                parameterHashMap.put(new String("PriceToString"),priceToStr);
+                
+                parameterHashMap.put(new String("id_dok"),new String(String.valueOf(id_doc)));
+                
+                printReportDialog = new imakante.com.vcomponents.tableDialog(this,true,getDocLineTable(id_doc),conn,parameterHashMap,
+                        path+"sales_nar_prehv.jasper","\u041d\u0410\u0420\u0415\u0416\u0414\u0410\u041d\u0415 \u0417\u0410 \u041f\u0420\u0415\u0425\u0412\u042a\u0420\u041b\u042f\u041d\u0415",
+                        "\u041d\u0410\u0420\u0415\u0416\u0414\u0410\u041d\u0415 \u0417\u0410 \u041f\u0420\u0415\u0425\u0412\u042a\u0420\u041b\u042f\u041d\u0415");
+                printReportDialog.setVisible(true);
+                break;
+            }
+        }
+    }
+    private String PriceToString( int id_doc, boolean withDDS) {
+        String StringPrice=new String();
+        String SQL = new String();
+        double price=0;
+        if(withDDS) {
+            SQL = "Select total_df as totall" +
+                    " FROM rep_documents_ivan " +
+                    " WHERE id_df="+id_doc+";";
+        } else {
+            SQL = "Select (total_df-dds_df) as totall " +
+                    " FROM rep_documents_ivan " +
+                    " WHERE id_df="+id_doc+";";
+        }
+        java.sql.ResultSet rs13 = null;
+        
+        try {
+            rs13 = myframe.getConn().createStatement().executeQuery(SQL);
+            
+            while(rs13.next()) {
+                price = rs13.getDouble("totall");
+                break;
+            }
+            
+            
+        } catch(Exception r) {
+        };
+        System.out.println("Price to String = "+price);
+        
+        pts.setValue(price);
+        pts.ConstString();
+        StringPrice=pts.getEndString();
+        
+        return StringPrice;
+    }
+    private imakante.com.CustomTable getDocLineTable(int id_dok) {
+        imakante.com.CustomTable t=null;
+        java.sql.ResultSet rs12=null;
+        imakante.com.CustomTableModel m=null;
+        
+        
+        
   /*  String nameColumnsDocLine[]={"id_dl","id_pc","Склад","Ед.Цена","Дадена отстъпка(%)","Брой","ДДС(%)",
                                 "Общо","id_df","Ценова листа",
                                  "id_pc1","id_pm","Партида","Годност","pm.id_pm","pm.id_pd","pm.id_n_group","pm.id_ppp",
@@ -2402,20 +2194,19 @@ private String PriceToString( int id_doc, boolean withDDS)
                                "pf.id_pf","pf.dds_pf","pf.excise_pf","pf.other_pf",
                                "st.id_n_storage","st.id_n_group","Код на склада","Име на склада","st.comments_n_storage",
                                "Разфасовка 1","Разфасовка 2","Разфасовка 3"};*/
-    String nameColumnsDocLine[]={"id_dl","id_pc","\u0421\u043a\u043b\u0430\u0434","\u0415\u0434.\u0426\u0435\u043d\u0430","\u0414\u0430\u0434\u0435\u043d\u0430 \u043e\u0442\u0441\u0442\u044a\u043f\u043a\u0430(%)","\u0411\u0440\u043e\u0439","\u0414\u0414\u0421(%)",
-                                "\u041e\u0431\u0449\u043e","id_df","\u0426\u0435\u043d\u043e\u0432\u0430 \u043b\u0438\u0441\u0442\u0430",
-                                 "id_pc1","id_pm","\u041f\u0430\u0440\u0442\u0438\u0434\u0430","\u0413\u043e\u0434\u043d\u043e\u0441\u0442","pm.id_pm","pm.id_pd","pm.id_n_group","pm.id_ppp",
-                               "pm.id_pp","pm.id_pf","\u0418\u043c\u0435 \u043d\u0430 \u043f\u0440\u043e\u0434\u0443\u043a\u0430\u0442\u0430","\u0424\u0430\u043a\u0442\u0443\u0440\u043d\u043e \u0438\u043c\u0435","\u041a\u044a\u0441\u043e \u0438\u043c\u0435","\u0418\u043c\u0435 \u043d\u0430 \u0441\u044a\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0438\u044f\u0442\u0430","\u041a\u043e\u04341","\u041a\u043e\u04342",
-                               "\u0411\u0430\u0440\u043a\u043e\u0434"," \u041c\u0430\u0445 % \u043e\u0442\u0441\u0442\u044a\u043f\u043a\u0430","\u0415\u043a\u0441\u043f\u0435\u0440\u0442\u0435\u043d \u043b\u0438\u0441\u0442","pm.flag_pm","pm.min_pm","\u041a\u043e\u0434 \u043d\u0430 \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u0430m","pd.id_pd",
-                               "d.m1_pd","v1","pd.m2_pd","v2","pd.m3_pd"," v3",
-                               "pp.id_pp","pp.id_sl_curs","\u0426\u0435\u043d\u0438\u0432\u0430 \u043b\u0438\u0441\u0442\u0430 1","\u0426\u0435\u043d\u0438\u0432\u0430 \u043b\u0438\u0441\u0442\u0430 1","\u0426\u0435\u043d\u0438\u0432\u0430 \u043b\u0438\u0441\u0442\u0430 1","\u0414\u043e\u0441\u0442\u0430\u0432\u043d\u0430 \u0446\u0435\u043d\u0430",
-                               "pf.id_pf","pf.dds_pf","pf.excise_pf","pf.other_pf",
-                               "st.id_n_storage","st.id_n_group","\u041a\u043e\u0434 \u043d\u0430 \u0441\u043a\u043b\u0430\u0434\u0430","\u0418\u043c\u0435 \u043d\u0430 \u0441\u043a\u043b\u0430\u0434\u0430","st.comments_n_storage",
-                               "\u0420\u0430\u0437\u0444\u0430\u0441\u043e\u0432\u043a\u0430 1","\u0420\u0430\u0437\u0444\u0430\u0441\u043e\u0432\u043a\u0430 2","\u0420\u0430\u0437\u0444\u0430\u0441\u043e\u0432\u043a\u0430 3"};
-      
-     try
-        {
-           
+        String nameColumnsDocLine[]={"id_dl","id_pc","\u0421\u043a\u043b\u0430\u0434","\u0415\u0434.\u0426\u0435\u043d\u0430","\u0414\u0430\u0434\u0435\u043d\u0430 \u043e\u0442\u0441\u0442\u044a\u043f\u043a\u0430(%)","\u0411\u0440\u043e\u0439","\u0414\u0414\u0421(%)",
+        "\u041e\u0431\u0449\u043e","id_df","\u0426\u0435\u043d\u043e\u0432\u0430 \u043b\u0438\u0441\u0442\u0430",
+        "id_pc1","id_pm","\u041f\u0430\u0440\u0442\u0438\u0434\u0430","\u0413\u043e\u0434\u043d\u043e\u0441\u0442","pm.id_pm","pm.id_pd","pm.id_n_group","pm.id_ppp",
+        "pm.id_pp","pm.id_pf","\u0418\u043c\u0435 \u043d\u0430 \u043f\u0440\u043e\u0434\u0443\u043a\u0430\u0442\u0430","\u0424\u0430\u043a\u0442\u0443\u0440\u043d\u043e \u0438\u043c\u0435","\u041a\u044a\u0441\u043e \u0438\u043c\u0435","\u0418\u043c\u0435 \u043d\u0430 \u0441\u044a\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0438\u044f\u0442\u0430","\u041a\u043e\u04341","\u041a\u043e\u04342",
+        "\u0411\u0430\u0440\u043a\u043e\u0434"," \u041c\u0430\u0445 % \u043e\u0442\u0441\u0442\u044a\u043f\u043a\u0430","\u0415\u043a\u0441\u043f\u0435\u0440\u0442\u0435\u043d \u043b\u0438\u0441\u0442","pm.flag_pm","pm.min_pm","\u041a\u043e\u0434 \u043d\u0430 \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u0430m","pd.id_pd",
+        "d.m1_pd","v1","pd.m2_pd","v2","pd.m3_pd"," v3",
+        "pp.id_pp","pp.id_sl_curs","\u0426\u0435\u043d\u0438\u0432\u0430 \u043b\u0438\u0441\u0442\u0430 1","\u0426\u0435\u043d\u0438\u0432\u0430 \u043b\u0438\u0441\u0442\u0430 1","\u0426\u0435\u043d\u0438\u0432\u0430 \u043b\u0438\u0441\u0442\u0430 1","\u0414\u043e\u0441\u0442\u0430\u0432\u043d\u0430 \u0446\u0435\u043d\u0430",
+        "pf.id_pf","pf.dds_pf","pf.excise_pf","pf.other_pf",
+        "st.id_n_storage","st.id_n_group","\u041a\u043e\u0434 \u043d\u0430 \u0441\u043a\u043b\u0430\u0434\u0430","\u0418\u043c\u0435 \u043d\u0430 \u0441\u043a\u043b\u0430\u0434\u0430","st.comments_n_storage",
+        "\u0420\u0430\u0437\u0444\u0430\u0441\u043e\u0432\u043a\u0430 1","\u0420\u0430\u0437\u0444\u0430\u0441\u043e\u0432\u043a\u0430 2","\u0420\u0430\u0437\u0444\u0430\u0441\u043e\u0432\u043a\u0430 3"};
+        
+        try {
+            
             rs12 = countriesT.getDocLineRS(id_dok);
             m = new imakante.com.CustomTableModel(conn,rs12, nameColumnsDocLine);
             t = new imakante.com.CustomTable(m);
@@ -2453,62 +2244,50 @@ private String PriceToString( int id_doc, boolean withDDS)
             HideColumns(getColumnIndex("",t),t);
             HideColumns(getColumnIndex("",t),t);*/
             
-                   
-                       
-                       
             
+        } catch(Exception e) {
+            e.printStackTrace();
         }
-       catch(Exception e)
-       {
-           e.printStackTrace();
-       }
-    
-    return t;
-             
- }
-  private int getColumnIndex(String in,imakante.com.CustomTable t) //test
- {
-     int count = t.getColumnCount();
-     for(int i=0; i < count; i++)
-     {
-         if(t.getColumnName(i).equals(in)) return i;
-     }
-     return 0;
- }
- private void HideColumns(int col,imakante.com.CustomTable t)
- {
-   int iColumn = col;
-// set column width
-    t.getColumnModel().getColumn(iColumn).setMaxWidth(0);
-    t.getColumnModel().getColumn(iColumn).setMinWidth(0);
-    t.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
-    t.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
-
- }
- public int getSelectedRow()
- {
-     return table.getSelectedRow();
- }
- public void setSelectedRow(int row)
- {
-     table.changeSelection(row,0,false,false);
- }
- public int getTableMaxRow()
- {
-     return table.getRowCount();
- }
- private void  loadSimpleReport() 
- {
-    try
-    {
-        //HashMap inputfilters,int doctype,java.sql.Connection con, imakante.com.CustomTable t,String path
-        HashMap inParam = new HashMap();
         
-      //  inParam.put("docType",String.valueOf(getDocFacadeType()));
-         
+        return t;
+        
+    }
+    private int getColumnIndex(String in,imakante.com.CustomTable t) //test
+    {
+        int count = t.getColumnCount();
+        for(int i=0; i < count; i++) {
+            if(t.getColumnName(i).equals(in)) return i;
+        }
+        return 0;
+    }
+    private void HideColumns(int col,imakante.com.CustomTable t) {
+        int iColumn = col;
+// set column width
+        t.getColumnModel().getColumn(iColumn).setMaxWidth(0);
+        t.getColumnModel().getColumn(iColumn).setMinWidth(0);
+        t.getTableHeader().getColumnModel().getColumn(iColumn).setMaxWidth(0);
+        t.getTableHeader().getColumnModel().getColumn(iColumn).setMinWidth(0);
+        
+    }
+    public int getSelectedRow() {
+        return table.getSelectedRow();
+    }
+    public void setSelectedRow(int row) {
+        table.changeSelection(row,0,false,false);
+    }
+    public int getTableMaxRow() {
+        return table.getRowCount();
+    }
+    private void  loadSimpleReport() {
+        try {
+            //HashMap inputfilters,int doctype,java.sql.Connection con, imakante.com.CustomTable t,String path
+            HashMap inParam = new HashMap();
+            
+            //  inParam.put("docType",String.valueOf(getDocFacadeType()));
+            
             HashMap parameterHashMap = new HashMap();
             imakante.com.paramFirm paramFrm1 = new imakante.com.paramFirm();
-          
+            
             parameterHashMap.put(new String("firmaName"),paramFrm1.getName());
             parameterHashMap.put(new String("docType"),String.valueOf(getDocFacadeType()));
             parameterHashMap.put(new String("docLevel"),String.valueOf(getDocFacadeLevel()));
@@ -2520,19 +2299,15 @@ private String PriceToString( int id_doc, boolean withDDS)
             dd = jXDatePickerDo.getDate();
             String dateDo =(dd.getYear()+1900)+"/"+(dd.getMonth()+1)+"/"+dd.getDate();;
             
-            if(dateOt.equals(dateDo))
-            {
+            if(dateOt.equals(dateDo)) {
                 dateOt="2001/01/01";
             }
             
             int IDpay= jComboBoxPay.getSelectedIndex()+1;
             String IDpay_str;
-            if(jComboBoxPay.getSelectedIndex()==0)
-            {
+            if(jComboBoxPay.getSelectedIndex()==0) {
                 IDpay_str = "";
-            }
-            else
-            {
+            } else {
                 IDpay_str = String.valueOf(IDpay);
             }
             
@@ -2541,114 +2316,110 @@ private String PriceToString( int id_doc, boolean withDDS)
             parameterHashMap.put(new String("docDateDo"),dateDo);
             parameterHashMap.put(new String("docNumber"),searchNomer);
             parameterHashMap.put(new String("docPay"),IDpay_str);
-           
+            
+            
+            
+            
+            simpReport = new simpleReport(parameterHashMap,myframe.getConn(),table,imakante.com.NewMain.getPathrep(),getDocTypeAsString(getDocFacadeType()),createViewColumnsBGEN(),simplereportFile);
+            simpReport.setVisible(true);
+            
+        } catch(Exception ex){System.out.println("Error from loadSimpleReport");};
         
         
-        
-        simpReport = new simpleReport(parameterHashMap,myframe.getConn(),table,imakante.com.NewMain.getPathrep(),getDocTypeAsString(getDocFacadeType()),createViewColumnsBGEN(),simplereportFile);
-        simpReport.setVisible(true);
         
     }
-    catch(Exception ex){System.out.println("Error from loadSimpleReport");};
-     
-     
-     
- }
- private String getDocTypeAsString(int doctype)
- {
-     String return_value="";
-     switch(doctype)
-     {
-        case aeDocumentFacade.FAKTURI:
-        {
-          
-            return_value = "ФАКТУРА";
-            break;
+    private String getDocTypeAsString(int doctype) {
+        String return_value="";
+        switch(doctype) {
+            case aeDocumentFacade.FAKTURI:
+            {
+                
+                return_value = "ФАКТУРА";
+                break;
+            }
+            case aeDocumentFacade.FAKTURA_DANACHNA:
+            {
+                return_value = "ФАКТУРА ДАНЪЧНА";
+                break;
+            }
+            case aeDocumentFacade.FAKTURA_OPROSTENA:
+            {
+                return_value = "ФАКТУРА ОПРОСТЕНА";
+                break;
+            }
+            case aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE:
+            {
+                
+                return_value = "НАРЕЖДАНЕ ЗА ПРЕХВЪРЛЯНЕ";
+                break;
+            }
+            case aeDocumentFacade.KONSGNACIONEN_PROTOKOL:
+            {
+                
+                
+                return_value = "КОНСГНАЦИОННЕН ПРОТИКОЛ";
+                break;
+            }
+            case aeDocumentFacade.PREDAVATELNA_RAZPISKA:
+            {
+                return_value = "ПРЕДАВАТЕЛНА РАЗПИСКА";
+                break;
+            }
+            case aeDocumentFacade.PRIEMATELNA_RAZPISKA:
+            {
+                
+                return_value = "ПРИЕМАТЕЛНА РАЗПИСКА";
+                break;
+            }
+            case aeDocumentFacade.RAZPISKA_ZA_VRYSHTANE:
+            {
+                
+                return_value = "РАЗПИСКА ЗА ВРЪЩАНЕ";
+                break;
+            }
+            case aeDocumentFacade.OFERTA :
+            {
+                
+                return_value = "ОФЕРТА";
+                break;
+            }
+            case aeDocumentFacade.BRAK :
+            {
+                return_value = "ПРОТОКОЛ ЗА БРАК";
+                break;
+            }
+            case aeDocumentFacade.PROTOKOL_LIPSA :
+            {
+                return_value = "ПРОТОКОЛ ЗА ЛИПСА";
+                break;
+            }
+            case aeDocumentFacade.STOKOVA_RAZPISKA:
+            {
+                
+                return_value = "СТОКОВА РАЗПИСКА";
+                break;
+            }
+            case aeDocumentFacade.PROFORMA_FAKTURA:
+            {
+                
+                return_value = "ПРОФОРМА ФАКТУРА";
+                break;
+            }
+            
         }
-        case aeDocumentFacade.FAKTURA_DANACHNA:
-        {
-           return_value = "ФАКТУРА ДАНЪЧНА";
-            break;
-        }
-        case aeDocumentFacade.FAKTURA_OPROSTENA:
-        {
-           return_value = "ФАКТУРА ОПРОСТЕНА";
-            break;
-        }
-        case aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE:
-        {
-          
-         return_value = "НАРЕЖДАНЕ ЗА ПРЕХВЪРЛЯНЕ";
-            break;
-        }
-        case aeDocumentFacade.KONSGNACIONEN_PROTOKOL:
-        {
-           
-          
-            return_value = "КОНСГНАЦИОННЕН ПРОТИКОЛ"; 
-            break;
-        }
-        case aeDocumentFacade.PREDAVATELNA_RAZPISKA:
-        {
-            return_value = "ПРЕДАВАТЕЛНА РАЗПИСКА";
-            break;
-        }
-        case aeDocumentFacade.PRIEMATELNA_RAZPISKA:
-        {
-          
-            return_value = "ПРИЕМАТЕЛНА РАЗПИСКА";
-            break;
-        }
-       case aeDocumentFacade.RAZPISKA_ZA_VRYSHTANE:
-        {
-          
-            return_value = "РАЗПИСКА ЗА ВРЪЩАНЕ";
-            break;
-        }
-       case aeDocumentFacade.OFERTA :
-        {
+        return return_value;
+    }
+    
+    private HashMap createViewColumnsBGEN() {
+        HashMap view = new HashMap();
         
-             return_value = "ОФЕРТА";   
-         break;
-        } 
-       case aeDocumentFacade.BRAK :
-       {
-        return_value = "ПРОТОКОЛ ЗА БРАК";
-          break;
-        }
-        case aeDocumentFacade.PROTOKOL_LIPSA :
-       {
-         return_value = "ПРОТОКОЛ ЗА ЛИПСА";
-          break;
-        }
-        case aeDocumentFacade.STOKOVA_RAZPISKA:
-        {
-           
-         return_value = "СТОКОВА РАЗПИСКА";
-            break;
-        }
-        case aeDocumentFacade.PROFORMA_FAKTURA:
-        {
-          
-           return_value = "ПРОФОРМА ФАКТУРА";
-          break;  
-        }
-        
-     }
-     return return_value;
- }
- 
- private HashMap createViewColumnsBGEN()
- {
-     HashMap view = new HashMap();
-     
    /*  for(int i=0 ; i < table.getColumnCount();i++)
      {
         int maxsizeCol = table.getColumnModel().getColumn(i).getMaxWidth();
         int maxsizeHed = table.getTableHeader().getColumnModel().getColumn(i).getMaxWidth();
         int minsizeCol = table.getColumnModel().getColumn(i).getMinWidth();
         int minsizeHed = table.getTableHeader().getColumnModel().getColumn(i).getMinWidth();
-      
+    
         if(maxsizeCol!=0 && maxsizeHed!=0)
         {
            String colnameBG =new String(table.getModel().getColumnName(i));
@@ -2656,549 +2427,500 @@ private String PriceToString( int id_doc, boolean withDDS)
            view.put(colnameBG,colnameEN) ;
         }
      }*/
-     
-     for(int i=0 ; i < table.getColumnCount();i++)
-     {
-         
-         String colnameBG =new String(table.getModel().getColumnName(i));
-         
-         if(!checkForHideColumn(colnameBG,getDocFacadeType()))
-         {
-           String colnameEN = new String(getColumnNameEN(colnameBG));
-           view.put(colnameBG,colnameEN) ;  
-         }
-         
-     } 
-     
-     
-   
-     return view;
- }
- private String getColumnNameEN(String nameBG)
- {
-     String return_value="";
-     for(int i=0;i<nameColumnsDocFacade.length;i++)
-     {
-       if(nameColumnsDocFacade[i].equals(nameBG))   
-       {
-           return_value = nameColumnsDocFacadeEN[i];
-           break;
-       }
-          
-     }
-     
-     
-     
-     return return_value;
- }
- 
- private boolean checkForHideColumn(String colbg,int doctype)
-{
-    boolean return_value=false;
-    if(colbg.equals("id_df")) {
-        return return_value=true;
         
-    }
-    if(colbg.equals("out_obekt_df")) {
-        return return_value=true;
+        for(int i=0 ; i < table.getColumnCount();i++) {
+            
+            String colnameBG =new String(table.getModel().getColumnName(i));
+            
+            if(!checkForHideColumn(colnameBG,getDocFacadeType())) {
+                String colnameEN = new String(getColumnNameEN(colnameBG));
+                view.put(colnameBG,colnameEN) ;
+            }
+            
+        }
         
-    }
-    if(colbg.equals("in_obekt_df")) {
-        return return_value=true;
-        
-    }
-    if(colbg.equals("distributor_df")) {
-        return return_value=true;
-        
-    }
-    if(colbg.equals("delivere_df")) {
-        return return_value=true;
-        
-    }
-    if(colbg.equals("time_edition_df")) {
-        return return_value=true;
-        
-    }
-    if(colbg.equals("faktura_connection_df")) {
-        return return_value=true;
-        
-    }
-    if(colbg.equals("zaiavka_connection_df")) {
-        return return_value=true;
-        
-    }
-    if(colbg.equals("flag_finish_df")) {
-        return return_value=true;
-        
-    }
-    if(colbg.equals("level_df")) {
-        return return_value=true;
-        
+        return view;
     }
     
-    if(colbg.equals("id_rep")) {
-        return return_value=true;
-        
-    }
-    
-    if(colbg.equals("paying_order_df")) {
-        return return_value=true;
-        
-    }
-    if(colbg.equals("Тип на документа")) {
-        return return_value=true;
-        
-    }
-    
-    if(colbg.equals("out_contragent_df")) {
-        return return_value=true;
-        
-    }
-    if(colbg.equals("in_contragent_df")) {
-        return return_value=true;
-        
-    }
-    
-    if(colbg.equals("ПотребителIndex")) {
-        return return_value=true;
-        
-    }
-    
-    if(colbg.equals("Потребител-последна редакцияIndex")) {
-        return return_value=true;
-        
-    }
-    
-    if(colbg.equals("Вид плащанеIndex")) {
-        return return_value=true;
-        
-    }
-        
-     switch(doctype)
-    {
-        case aeDocumentFacade.FAKTURI:
-        {
-           // skrivane na koloni  na kontragent s index "1" nakraq
-            if( DocimentTypeColumns_Contragent(colbg,IN) ||
-                    DocimentTypeColumns_Obekt(colbg,IN) ||
-                    DocimentTypeColumns_Obekt(colbg,OUT) ||
-                    DocimentTypeColumns_DevDistr(colbg) ) {
-                return_value=true;
+    private String getColumnNameEN(String nameBG) {
+        String return_value="";
+        for(int i=0;i<nameColumnsDocFacade.length;i++) {
+            if(nameColumnsDocFacade[i].equals(nameBG)) {
+                return_value = nameColumnsDocFacadeEN[i];
                 break;
             }
             
-         //  HideColumns(getColumnIndex("Склад (към)"));
-             if(colbg.equals("Склад (към)"))
-            {
-               return_value=true; 
-               break;
-            }  
-            
-           
-          
-            
-            break;
         }
-        case aeDocumentFacade.FAKTURA_DANACHNA:
-        {
-           // skrivane na koloni  na kontragent s index "1" nakraq
-            if(  DocimentTypeColumns_Contragent(colbg,IN) ||
-                    DocimentTypeColumns_Obekt(colbg,IN) ||
-                    DocimentTypeColumns_Obekt(colbg,OUT) ||
-                    DocimentTypeColumns_DevDistr(colbg)) {
-                return_value=true;
-                break;
-            }
-                       
-           //  HideColumns(getColumnIndex("Склад (към)"));
-             if(colbg.equals("Склад (към)"))
-            {
-               return_value=true; 
-               break;
-            }  
-          
+        
+        return return_value;
+    }
+    
+    private boolean checkForHideColumn(String colbg,int doctype) {
+        boolean return_value=false;
+        if(colbg.equals("id_df")) {
+            return return_value=true;
             
-            break;
         }
-        case aeDocumentFacade.FAKTURA_OPROSTENA:
-        {
-           // skrivane na koloni  na kontragent s index "1" nakraq
-            if( DocimentTypeColumns_Contragent(colbg,IN) ||
-                    DocimentTypeColumns_Obekt(colbg,IN) ||
-                    DocimentTypeColumns_Obekt(colbg,OUT)||
-                    DocimentTypeColumns_DevDistr(colbg)) {
-                return_value=true;
-                break;
-            }
-                       
-            //  HideColumns(getColumnIndex("Склад (към)"));
-             if(colbg.equals("Склад (към)"))
-            {
-               return_value=true; 
-               break;
-            }  
-          
+        if(colbg.equals("out_obekt_df")) {
+            return return_value=true;
             
-            break;
         }
-        case aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE:
-        {
-          
-          if( DocimentTypeColumns_Contragent(colbg,IN)||
-            DocimentTypeColumns_Contragent(colbg,OUT)||
-            DocimentTypeColumns_Obekt(colbg,IN)||
-            DocimentTypeColumns_Obekt(colbg,OUT)||
-            DocimentTypeColumns_DevDistr(colbg))
-          {
-             return_value=true; 
-               break; 
-          }
+        if(colbg.equals("in_obekt_df")) {
+            return return_value=true;
             
+        }
+        if(colbg.equals("distributor_df")) {
+            return return_value=true;
             
-            // HideColumns(getColumnIndex("Вид плащане"));
-               if(colbg.equals("Вид плащане"))
-            {
-               return_value=true; 
-               break;
-            }  
-          
-           //  HideColumns(getColumnIndex("ДДС"));
-            if(colbg.equals("ДДС")) {
-              return_value=true;
-              break;
-            }
-            // HideColumns(getColumnIndex("Общо"));
-             if(colbg.equals("Общо")) {
-              return_value=true;
-              break;
-            }
-             
-            // HideColumns(getColumnIndex("Дата на плащане"));
-             
-           if(colbg.equals("Дата на плащане")) {
-              return_value=true;
-              break;
-           }
-             
-           
-            break;
         }
-        case aeDocumentFacade.KONSGNACIONEN_PROTOKOL:
-        {
-           
-           if( DocimentTypeColumns_Contragent(colbg,IN)||
-            DocimentTypeColumns_Obekt(colbg,IN)||
-            DocimentTypeColumns_DevDistr(colbg))
-           {
-              return_value=true;
-              break; 
-           }
-           
-         //  HideColumns(getColumnIndex("Склад (към)"));
-             if(colbg.equals("Склад (към)"))
-            {
-               return_value=true; 
-               break;
-            }  
-          
-             
-            break;
-        }
-        case aeDocumentFacade.PREDAVATELNA_RAZPISKA:
-        {
-            break;
-        }
-        case aeDocumentFacade.PRIEMATELNA_RAZPISKA:
-        {
-            // skrivane na koloni  na kontragent s index "2" nakraq
-           if(DocimentTypeColumns_Contragent(colbg,OUT)||
-           DocimentTypeColumns_Obekt(colbg,IN)||
-           DocimentTypeColumns_Obekt(colbg,OUT))
-           {
-              return_value=true; 
-               break; 
-           }
-                  
-            //  HideColumns(getColumnIndex("Склад (към)"));
-             if(colbg.equals("Склад (към)"))
-            {
-               return_value=true; 
-               break;
-            }  
-          
-            break;
-        }
-       case aeDocumentFacade.RAZPISKA_ZA_VRYSHTANE:
-        {
-            // skrivane na koloni  na kontragent s index "2" nakraq
-          if(DocimentTypeColumns_Contragent(colbg,OUT)||
-           DocimentTypeColumns_Obekt(colbg,IN)||
-           DocimentTypeColumns_Obekt(colbg,OUT))
-          {
-            return_value=true; 
-               break;  
-          }
-                  
-            //  HideColumns(getColumnIndex("Склад (към)"));
-             if(colbg.equals("Склад (към)"))
-            {
-               return_value=true; 
-               break;
-            }  
+        if(colbg.equals("delivere_df")) {
+            return return_value=true;
             
-            break;
         }
-       case aeDocumentFacade.OFERTA :
-        {
-         if( DocimentTypeColumns_Contragent(colbg,IN)||
-          DocimentTypeColumns_Obekt(colbg,IN)||
-          DocimentTypeColumns_Obekt(colbg,OUT)||
-          DocimentTypeColumns_DevDistr(colbg))
-         {
-           return_value=true; 
-               break;  
-         }
+        if(colbg.equals("time_edition_df")) {
+            return return_value=true;
             
-          //  HideColumns(getColumnIndex("Склад (към)"));
-             if(colbg.equals("Склад (към)"))
+        }
+        if(colbg.equals("faktura_connection_df")) {
+            return return_value=true;
+            
+        }
+        if(colbg.equals("zaiavka_connection_df")) {
+            return return_value=true;
+            
+        }
+        if(colbg.equals("flag_finish_df")) {
+            return return_value=true;
+            
+        }
+        if(colbg.equals("level_df")) {
+            return return_value=true;
+            
+        }
+        
+        if(colbg.equals("id_rep")) {
+            return return_value=true;
+            
+        }
+        
+        if(colbg.equals("paying_order_df")) {
+            return return_value=true;
+            
+        }
+        if(colbg.equals("Тип на документа")) {
+            return return_value=true;
+            
+        }
+        
+        if(colbg.equals("out_contragent_df")) {
+            return return_value=true;
+            
+        }
+        if(colbg.equals("in_contragent_df")) {
+            return return_value=true;
+            
+        }
+        
+        if(colbg.equals("ПотребителIndex")) {
+            return return_value=true;
+            
+        }
+        
+        if(colbg.equals("Потребител-последна редакцияIndex")) {
+            return return_value=true;
+            
+        }
+        
+        if(colbg.equals("Вид плащанеIndex")) {
+            return return_value=true;
+            
+        }
+        
+        switch(doctype) {
+            case aeDocumentFacade.FAKTURI:
             {
-               return_value=true; 
-               break;
-            }  
-              
+                // skrivane na koloni  na kontragent s index "1" nakraq
+                if( DocimentTypeColumns_Contragent(colbg,IN) ||
+                        DocimentTypeColumns_Obekt(colbg,IN) ||
+                        DocimentTypeColumns_Obekt(colbg,OUT) ||
+                        DocimentTypeColumns_DevDistr(colbg) ) {
+                    return_value=true;
+                    break;
+                }
                 
-         break;
-        } 
-       case aeDocumentFacade.BRAK :
-       {
-        if( DocimentTypeColumns_Contragent(colbg,IN)||
-        DocimentTypeColumns_Contragent(colbg,OUT)||
-        DocimentTypeColumns_Obekt(colbg,IN)||
-        DocimentTypeColumns_Obekt(colbg,OUT)||
-        DocimentTypeColumns_DevDistr(colbg))
-        {
-          return_value=true; 
-          break; 
+                //  HideColumns(getColumnIndex("Склад (към)"));
+                if(colbg.equals("Склад (към)")) {
+                    return_value=true;
+                    break;
+                }
+                
+                
+                
+                
+                break;
+            }
+            case aeDocumentFacade.FAKTURA_DANACHNA:
+            {
+                // skrivane na koloni  na kontragent s index "1" nakraq
+                if(  DocimentTypeColumns_Contragent(colbg,IN) ||
+                        DocimentTypeColumns_Obekt(colbg,IN) ||
+                        DocimentTypeColumns_Obekt(colbg,OUT) ||
+                        DocimentTypeColumns_DevDistr(colbg)) {
+                    return_value=true;
+                    break;
+                }
+                
+                //  HideColumns(getColumnIndex("Склад (към)"));
+                if(colbg.equals("Склад (към)")) {
+                    return_value=true;
+                    break;
+                }
+                
+                
+                break;
+            }
+            case aeDocumentFacade.FAKTURA_OPROSTENA:
+            {
+                // skrivane na koloni  na kontragent s index "1" nakraq
+                if( DocimentTypeColumns_Contragent(colbg,IN) ||
+                        DocimentTypeColumns_Obekt(colbg,IN) ||
+                        DocimentTypeColumns_Obekt(colbg,OUT)||
+                        DocimentTypeColumns_DevDistr(colbg)) {
+                    return_value=true;
+                    break;
+                }
+                
+                //  HideColumns(getColumnIndex("Склад (към)"));
+                if(colbg.equals("Склад (към)")) {
+                    return_value=true;
+                    break;
+                }
+                
+                
+                break;
+            }
+            case aeDocumentFacade.NAREZDANE_ZA_PREHVYRQNE:
+            {
+                
+                if( DocimentTypeColumns_Contragent(colbg,IN)||
+                        DocimentTypeColumns_Contragent(colbg,OUT)||
+                        DocimentTypeColumns_Obekt(colbg,IN)||
+                        DocimentTypeColumns_Obekt(colbg,OUT)||
+                        DocimentTypeColumns_DevDistr(colbg)) {
+                    return_value=true;
+                    break;
+                }
+                
+                
+                // HideColumns(getColumnIndex("Вид плащане"));
+                if(colbg.equals("Вид плащане")) {
+                    return_value=true;
+                    break;
+                }
+                
+                //  HideColumns(getColumnIndex("ДДС"));
+                if(colbg.equals("ДДС")) {
+                    return_value=true;
+                    break;
+                }
+                // HideColumns(getColumnIndex("Общо"));
+                if(colbg.equals("Общо")) {
+                    return_value=true;
+                    break;
+                }
+                
+                // HideColumns(getColumnIndex("Дата на плащане"));
+                
+                if(colbg.equals("Дата на плащане")) {
+                    return_value=true;
+                    break;
+                }
+                
+                
+                break;
+            }
+            case aeDocumentFacade.KONSGNACIONEN_PROTOKOL:
+            {
+                
+                if( DocimentTypeColumns_Contragent(colbg,IN)||
+                        DocimentTypeColumns_Obekt(colbg,IN)||
+                        DocimentTypeColumns_DevDistr(colbg)) {
+                    return_value=true;
+                    break;
+                }
+                
+                //  HideColumns(getColumnIndex("Склад (към)"));
+                if(colbg.equals("Склад (към)")) {
+                    return_value=true;
+                    break;
+                }
+                
+                
+                break;
+            }
+            case aeDocumentFacade.PREDAVATELNA_RAZPISKA:
+            {
+                break;
+            }
+            case aeDocumentFacade.PRIEMATELNA_RAZPISKA:
+            {
+                // skrivane na koloni  na kontragent s index "2" nakraq
+                if(DocimentTypeColumns_Contragent(colbg,OUT)||
+                        DocimentTypeColumns_Obekt(colbg,IN)||
+                        DocimentTypeColumns_Obekt(colbg,OUT)) {
+                    return_value=true;
+                    break;
+                }
+                
+                //  HideColumns(getColumnIndex("Склад (към)"));
+                if(colbg.equals("Склад (към)")) {
+                    return_value=true;
+                    break;
+                }
+                
+                break;
+            }
+            case aeDocumentFacade.RAZPISKA_ZA_VRYSHTANE:
+            {
+                // skrivane na koloni  na kontragent s index "2" nakraq
+                if(DocimentTypeColumns_Contragent(colbg,OUT)||
+                        DocimentTypeColumns_Obekt(colbg,IN)||
+                        DocimentTypeColumns_Obekt(colbg,OUT)) {
+                    return_value=true;
+                    break;
+                }
+                
+                //  HideColumns(getColumnIndex("Склад (към)"));
+                if(colbg.equals("Склад (към)")) {
+                    return_value=true;
+                    break;
+                }
+                
+                break;
+            }
+            case aeDocumentFacade.OFERTA :
+            {
+                if( DocimentTypeColumns_Contragent(colbg,IN)||
+                        DocimentTypeColumns_Obekt(colbg,IN)||
+                        DocimentTypeColumns_Obekt(colbg,OUT)||
+                        DocimentTypeColumns_DevDistr(colbg)) {
+                    return_value=true;
+                    break;
+                }
+                
+                //  HideColumns(getColumnIndex("Склад (към)"));
+                if(colbg.equals("Склад (към)")) {
+                    return_value=true;
+                    break;
+                }
+                
+                
+                break;
+            }
+            case aeDocumentFacade.BRAK :
+            {
+                if( DocimentTypeColumns_Contragent(colbg,IN)||
+                        DocimentTypeColumns_Contragent(colbg,OUT)||
+                        DocimentTypeColumns_Obekt(colbg,IN)||
+                        DocimentTypeColumns_Obekt(colbg,OUT)||
+                        DocimentTypeColumns_DevDistr(colbg)) {
+                    return_value=true;
+                    break;
+                }
+                
+                
+                break;
+            }
+            case aeDocumentFacade.PROTOKOL_LIPSA :
+            {
+                if(DocimentTypeColumns_Contragent(colbg,IN)||
+                        DocimentTypeColumns_Contragent(colbg,OUT)||
+                        DocimentTypeColumns_Obekt(colbg,IN)||
+                        DocimentTypeColumns_Obekt(colbg,OUT)||
+                        DocimentTypeColumns_DevDistr(colbg)) {
+                    return_value=true;
+                    break;
+                }
+                
+                break;
+            }
+            case aeDocumentFacade.STOKOVA_RAZPISKA:
+            {
+                
+                if( DocimentTypeColumns_Contragent(colbg,IN)||
+                        DocimentTypeColumns_Obekt(colbg,IN)) {
+                    return_value=true;
+                    break;
+                }
+                
+                
+                
+                //  HideColumns(getColumnIndex("Склад (към)"));
+                if(colbg.equals("Склад (към)")) {
+                    return_value=true;
+                    break;
+                }
+                
+                break;
+            }
+            case aeDocumentFacade.PROFORMA_FAKTURA:
+            {
+                if(DocimentTypeColumns_Contragent(colbg,IN)||
+                        
+                        DocimentTypeColumns_Obekt(colbg,IN)||
+                        DocimentTypeColumns_Obekt(colbg,OUT)||
+                        DocimentTypeColumns_DevDistr(colbg)) {
+                    return_value=true;
+                    break;
+                }
+                
+                //  HideColumns(getColumnIndex("Склад (към)"));
+                if(colbg.equals("Склад (към)")) {
+                    return_value=true;
+                    break;
+                }
+                
+                break;
+            }
+            
         }
         
-                
-          break;
-        }
-        case aeDocumentFacade.PROTOKOL_LIPSA :
-       {
-          if(DocimentTypeColumns_Contragent(colbg,IN)||
-        DocimentTypeColumns_Contragent(colbg,OUT)||
-        DocimentTypeColumns_Obekt(colbg,IN)||
-        DocimentTypeColumns_Obekt(colbg,OUT)||
-        DocimentTypeColumns_DevDistr(colbg))
-          {
-              return_value=true; 
-               break;
-          }
-                
-          break;
-        }
-        case aeDocumentFacade.STOKOVA_RAZPISKA:
-        {
-           
-          if( DocimentTypeColumns_Contragent(colbg,IN)||
-            DocimentTypeColumns_Obekt(colbg,IN))
-          {
-              return_value=true; 
-               break;
-          }
-           
-            
-            
-             //  HideColumns(getColumnIndex("Склад (към)"));
-             if(colbg.equals("Склад (към)"))
+        
+        
+        
+        
+        return return_value;
+        
+    }// end  checkForHideColumn
+    
+    
+    private boolean DocimentTypeColumns_Contragent(String colbg,int in) {
+        boolean return_value=false;
+        switch (in) {
+            case IN:
             {
-               return_value=true; 
-               break;
-            }  
-            
-            break;
-        }
-        case aeDocumentFacade.PROFORMA_FAKTURA:
-        {
-          if(DocimentTypeColumns_Contragent(colbg,IN)||
-
-           DocimentTypeColumns_Obekt(colbg,IN)||
-           DocimentTypeColumns_Obekt(colbg,OUT)||
-           DocimentTypeColumns_DevDistr(colbg))
-          {
-              return_value=true; 
-               break;
-          }
-            
-              //  HideColumns(getColumnIndex("Склад (към)"));
-             if(colbg.equals("Склад (към)"))
+                if(colbg.equals("Име на контрагента1")) {
+                    return_value=true;
+                    break;
+                }
+                if(colbg.equals("Булстат1")) {
+                    return_value=true;
+                    break;
+                }
+                if(colbg.equals("Данъчен номер1")) {
+                    return_value=true;
+                    break;
+                }
+                if(colbg.equals("Адрес1")) {
+                    return_value=true;
+                    break;
+                }
+                if(colbg.equals("Телефон на контрагента1")) {
+                    return_value=true;
+                    break;
+                }
+                if(colbg.equals("Код на контрагента1")) {
+                    return_value=true;
+                    break;
+                }
+                if(colbg.equals("МОЛ1")) {
+                    return_value=true;
+                    break;
+                }
+                break;
+            }
+            case OUT:
             {
-               return_value=true; 
-               break;
-            }  
-           
-          break;  
+                if(colbg.equals("Име на контрагента2")) {
+                    return_value=true;
+                    break;
+                }
+                if(colbg.equals("Булстат2")) {
+                    return_value=true;
+                    break;
+                }
+                if(colbg.equals("Данъчен номер2")) {
+                    return_value=true;
+                    break;
+                }
+                if(colbg.equals("Адрес2")) {
+                    return_value=true;
+                    break;
+                }
+                if(colbg.equals("Телефон на контрагента2")) {
+                    return_value=true;
+                    break;
+                }
+                if(colbg.equals("Код на контрагента2")) {
+                    return_value=true;
+                    break;
+                }
+                if(colbg.equals("МОЛ2")) {
+                    return_value=true;
+                    break;
+                }
+                break;
+            }
         }
+        return return_value;
+    }
+    
+    private boolean DocimentTypeColumns_Obekt(String colbg,int in) {
+        boolean return_value=false;
+        switch (in) {
+            case IN:
+            {
+                if(colbg.equals("Код на обекта1")) {
+                    return_value=true;
+                    break;
+                }
+                if(colbg.equals("Име на обекта1")) {
+                    return_value=true;
+                    break;
+                }
+                if(colbg.equals("Адрес на обекта1")) {
+                    return_value=true;
+                    break;
+                }
+                
+                break;
+            }
+            case OUT:
+            {
+                if(colbg.equals("Код на обекта2")) {
+                    return_value=true;
+                    break;
+                }
+                if(colbg.equals("Име на обекта2")) {
+                    return_value=true;
+                    break;
+                }
+                if(colbg.equals("Адрес на обекта2")) {
+                    return_value=true;
+                    break;
+                }
+                break;
+            }
+        }
+        return return_value;
         
     }
     
-    
-    
-    
-    
-    return return_value;
-    
-}// end  checkForHideColumn
- 
-
-private boolean DocimentTypeColumns_Contragent(String colbg,int in)
-{
-    boolean return_value=false;
-   switch (in)
-    {
-        case IN:
-        {
-           if(colbg.equals("Име на контрагента1"))
-            {
-               return_value=true; 
-               break;
-            } 
-             if(colbg.equals("Булстат1"))
-            {
-               return_value=true; 
-               break;
-            } 
-             if(colbg.equals("Данъчен номер1"))
-            {
-               return_value=true; 
-               break;
-            } 
-             if(colbg.equals("Адрес1"))
-            {
-               return_value=true; 
-               break;
-            } 
-             if(colbg.equals("Телефон на контрагента1"))
-            {
-               return_value=true; 
-               break;
-            } 
-             if(colbg.equals("Код на контрагента1"))
-            {
-               return_value=true; 
-               break;
-            } 
-             if(colbg.equals("МОЛ1"))
-            {
-               return_value=true; 
-               break;
-            } 
-           break;
+    private boolean DocimentTypeColumns_DevDistr(String colbg) {
+        boolean return_value = false;
+        if(colbg.equals("\u041A\u043E\u0434 \u043D\u0430 \u0434\u0438\u0441\u0442\u0440\u0438\u0431\u0443\u0442\u043E\u0440")) {    // Kod na distributor
+            return_value=true;
+            
         }
-        case OUT:
-        {
-           if(colbg.equals("Име на контрагента2"))
-            {
-               return_value=true; 
-               break;
-            } 
-             if(colbg.equals("Булстат2"))
-            {
-               return_value=true; 
-               break;
-            } 
-             if(colbg.equals("Данъчен номер2"))
-            {
-               return_value=true; 
-               break;
-            } 
-             if(colbg.equals("Адрес2"))
-            {
-               return_value=true; 
-               break;
-            } 
-             if(colbg.equals("Телефон на контрагента2"))
-            {
-               return_value=true; 
-               break;
-            } 
-             if(colbg.equals("Код на контрагента2"))
-            {
-               return_value=true; 
-               break;
-            } 
-             if(colbg.equals("МОЛ2"))
-            {
-               return_value=true; 
-               break;
-            } 
-           break;
+        if(colbg.equals("\u041A\u043E\u0434 \u043D\u0430 \u0434\u043E\u0441\u0442\u0430\u0432\u0447\u0438\u043A")) {      // Kod na dostav4ik
+            return_value=true;
+            
         }
-    }  
-   return return_value;
-}
-
-private boolean DocimentTypeColumns_Obekt(String colbg,int in)
-{
-   boolean return_value=false;
-   switch (in)
-    {
-        case IN:
-        {
-            if(colbg.equals("Код на обекта1")) {
-                return_value=true;
-                break;
-            }
-            if(colbg.equals("Име на обекта1")) {
-                return_value=true;
-                break;
-            }
-            if(colbg.equals("Адрес на обекта1")) {
-                return_value=true;
-                break;
-            }
-
-           break;
+        if(colbg.equals("\u0414\u0430\u0442\u0430 \u043D\u0430 \u0434\u043E\u0441\u0442\u0430\u0432\u044F\u043D\u0435")) {     // Data na dostawqne
+            return_value=true;
+            
         }
-        case OUT:
-        {
-            if(colbg.equals("Код на обекта2")) {
-                return_value=true;
-                break;
-            }
-            if(colbg.equals("Име на обекта2")) {
-                return_value=true;
-                break;
-            }
-            if(colbg.equals("Адрес на обекта2")) {
-                return_value=true;
-                break;
-            } 
-           break;
-        }
-    }  
-   return return_value;   
+        return return_value;
+    }
     
-    
-}
-
-private boolean DocimentTypeColumns_DevDistr(String colbg)
-{
-  boolean return_value=false;
-   if(colbg.equals("Код на дистрибутор")) {
-      return_value=true;
-      
-   }
-  if(colbg.equals("Код на доставчик")) {
-      return_value=true;
-      
-  }
-  if(colbg.equals("Дата на доставяне")) {
-      return_value=true;
-      
-  }
-return return_value;
-}
-
 }// end class

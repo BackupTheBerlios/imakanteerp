@@ -7,6 +7,9 @@
     <Property name="iconifiable" type="boolean" value="true"/>
     <Property name="maximizable" type="boolean" value="true"/>
     <Property name="resizable" type="boolean" value="true"/>
+    <Property name="frameIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+      <Image iconType="3" name="/images/imakante_ico.png"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -103,16 +106,21 @@
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTextFieldNoDoc.setInputVerifier(new imakante.com.InputIntegerVerifier());"/>
               </AuxValues>
             </Component>
+            <Component class="javax.swing.JLabel" name="jLabel4">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x414;&#x430;&#x442;&#x430; &#x43d;&#x430; &#x438;&#x437;&#x434;&#x430;&#x432;&#x430;&#x43d;&#x435;:"/>
+              </Properties>
+            </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#x414;&#x430;&#x442;&#x430; &#x43d;&#x430; &#x434;&#x43e;&#x43a;. &#x43e;&#x442;:"/>
+                <Property name="text" type="java.lang.String" value="&#x43e;&#x442;"/>
               </Properties>
             </Component>
             <Component class="org.jdesktop.swingx.JXDatePicker" name="jXDatePickerOt">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#x414;&#x430;&#x442;&#x430; &#x43d;&#x430; &#x434;&#x43e;&#x43a;. &#x434;&#x43e;:"/>
+                <Property name="text" type="java.lang.String" value="&#x434;&#x43e;"/>
               </Properties>
             </Component>
             <Component class="org.jdesktop.swingx.JXDatePicker" name="jXDatePickerDo">
@@ -137,6 +145,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButtonSearch">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/Symbol Search.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="&#x422;&#x44a;&#x440;&#x441;&#x435;&#x43d;&#x435;"/>
               </Properties>
               <Events>
@@ -164,7 +175,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="1383" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="1387" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -195,6 +206,9 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="jButtonNew">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/Symbol Add 2.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="&#x41d;&#x43e;&#x432;"/>
           </Properties>
           <Events>
@@ -203,6 +217,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonEdit">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/Report Edit 2.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="&#x420;&#x435;&#x434;&#x430;&#x43a;&#x446;&#x438;&#x44f;"/>
           </Properties>
           <Events>
@@ -211,6 +228,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonPrint">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/Printer.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="&#x41f;&#x435;&#x447;&#x430;&#x442;"/>
           </Properties>
           <Events>
@@ -227,6 +247,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonDel">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/Symbol Delete 2.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="&#x418;&#x437;&#x442;&#x440;&#x438;&#x432;&#x430;&#x43d;&#x435;"/>
           </Properties>
           <Events>
@@ -235,6 +258,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButtonRefresh">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/Symbol Refresh 3.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="&#x412;&#x441;&#x438;&#x447;&#x43a;&#x438; &#x437;&#x430;&#x43f;&#x438;&#x441;&#x438;"/>
           </Properties>
           <Events>
