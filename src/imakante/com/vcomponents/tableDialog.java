@@ -207,9 +207,18 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
     
     private void printSimpleTable(){
         jpm = new net.sf.jasperreports.engine.JasperPrintManager();
-        try {
-            jpm.printReport(jasperPrint, true);
-        } catch (JRException ex) { ex.printStackTrace(); }
+        Thread tr=null;
+        this.setVisible(false);
+            tr = new Thread(new Runnable() {
+                public void run()
+                { try {
+                  jpm.printReport(jasperPrint, true);
+                 } catch (JRException ex) { ex.printStackTrace(); }
+                }
+            });
+            tr.start();
+        this.dispose();
+       
     }
     
     public void close() {

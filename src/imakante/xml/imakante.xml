@@ -7,6 +7,15 @@
 <entry key="Firms">2</entry>
 <entry key="Driver1">com.mysql.jdbc.Driver</entry>
 <entry key="path2reports1">C://WINDOWS/Imakante_reports/Sales/</entry>
+<entry key="ImakanteVersion1">xxx</entry>
+<entry key="ImakanteBuild1">xxx</entry>
+<entry key="CurrentTheme1">xxx</entry>
+<entry key="Language1">xxx</entry>
+<entry key="Localisation1">xxx</entry>
+<entry key="path2templates1">xxx</entry>
+<entry key="path2favorites1">xxx</entry>
+<entry key="path2lib1">xxx</entry>
+<entry key="path2repository1">xxx</entry>
 <entry key="URL2">jdbc:mysql://katsarov.net:3307/mida</entry>
 <entry key="Name2">"KATZAROV" ООД</entry>
 <entry key="Driver2">com.mysql.jdbc.Driver</entry>
