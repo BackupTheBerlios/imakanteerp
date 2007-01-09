@@ -7,9 +7,10 @@ import javax.swing.*;
 import javax.swing.table.*; 
 import java.text.*; 
 import javax.swing.event.EventListenerList;
+import org.jdesktop.swingx.JXTable;
 
 
-public class CustomTable extends JTable
+public class CustomTable extends JXTable
 {
    protected CustomTableModel model = null;
     protected EventListenerList listenerList = new EventListenerList();

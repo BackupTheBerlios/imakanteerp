@@ -183,7 +183,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 1387, Short.MAX_VALUE)
+            .add(0, 1377, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -214,7 +214,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
         jPanel3.add(jButtonEdit);
 
         jButtonPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Printer.png")));
-        jButtonPrint.setText("\u041f\u0435\u0447\u0430\u0442");
+        jButtonPrint.setText("\u041f\u0435\u0447\u0430\u0442 \u0420\u0435\u043f\u043e\u0440\u0442");
         jButtonPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPrintActionPerformed(evt);
@@ -223,7 +223,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
 
         jPanel3.add(jButtonPrint);
 
-        jButtonPrnReport.setText("\u041f\u0435\u0447\u0430\u0442 \u0440\u0435\u043f\u043e\u0440\u0442");
+        jButtonPrnReport.setText("\u041f\u0435\u0447\u0430\u0442 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442");
         jButtonPrnReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPrnReportActionPerformed(evt);

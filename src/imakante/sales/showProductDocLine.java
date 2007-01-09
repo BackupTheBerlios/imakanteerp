@@ -20,7 +20,9 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog {
         // columnName=null;
         model = new imakante.com.CustomTableModel(conn,rs, columnName);
         table = new imakante.com.CustomTable(model);
-       table.setDefaultRenderer(Object.class, new MyTableRenderer());
+        
+        table.setDefaultRenderer(Object.class, new MyTableRenderer());
+        
         table.requestFocus();
         table.changeSelection(0,0,false,false);
         HideColumns(getColumnIndex("id_pm"));
@@ -162,8 +164,12 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog {
    *comments_n_storage = Коментар-склад
    *quant_rezerv_nal = Запазено количество
    */
-    private String columnName[] = {"id_pm","Партида","pc_id_pp","pc_id_ppp","pc_id_pf","id_pd", "id_ppp","id_pp","id_pf","Име на продукта","Фактурно име","Съкратено име","Име на съответ.","Мах % на отстъпка","Код на продукта","id_pc","Годност",
-    "id_nal", "Номер склад","level", "Наличност","Запазено количество","Код на склада","Име на склада","Коментар-склад"};
+    private String columnName[] = {"id_pm","Партида",
+    "pc_id_pp","pc_id_ppp","pc_id_pf","id_pd", "id_ppp","id_pp","id_pf",
+    "Име на продукта","Фактурно име","Съкратено име","Име на съответ.","Мах % на отстъпка","Код на продукта","id_pc","Годност",
+    "id_nal", "Номер склад","level", "Наличност",
+    "Запазено количество","Код на склада","Име на склада",
+    "Коментар-склад"};
     private double pricelist[] = new double[5];
     private String productDescription[][] =new String[3][2];
     private double productFee[]  = new double[3];
@@ -194,6 +200,10 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog {
         public MyTableRenderer(){
             super();
         }
+        public MyTableRenderer(int color_col){
+            super();
+            ccol = color_col;
+        }
         public Component getTableCellRendererComponent(
                 JTable table,
                 Object value,
@@ -202,16 +212,26 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog {
                 int row,
                 int column) {
             if(isSelected){
-                setFont(new java.awt.Font("Tahoma", Font.BOLD, 14));
-                setBackground(new java.awt.Color(153,255,255));
+                setFont(new java.awt.Font("Tahoma", Font.BOLD, 12));
+                setBackground(new java.awt.Color(153,204,255));
             }else{
-                setFont(new java.awt.Font("Tahoma", Font.PLAIN, 14));
+                setFont(new java.awt.Font("Tahoma", Font.PLAIN, 12));
                 setBackground(Color.WHITE);
             }
-            
+           
+//            if(ccol>-1){
+//                try {
+//                    double col_val = Double.parseDouble((String) value);
+//                } catch (NumberFormatException ex) {
+//                    ex.printStackTrace();
+//                }
+//                setForeground(Color.RED);
+//            }
             super.setValue(value);
             return this;
         }
+        double d= 0;
+        int ccol = -1;
         public void setRowFontColorZize(String str, java.awt.Font font, int font_dim){
             
         }
