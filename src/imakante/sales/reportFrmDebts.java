@@ -63,7 +63,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
                 .addContainerGap()
                 .add(jLabel1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -90,7 +90,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
                 .add(jLabel3)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 22, Short.MAX_VALUE)
                 .add(jLabel4)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jXDatePicker2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -132,8 +132,8 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
                 .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 8, Short.MAX_VALUE)
-                .add(jlLevelx)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jlLevelx, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 16, Short.MAX_VALUE)
                 .addContainerGap())
         );
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -162,7 +162,7 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
 
-        setBounds(50, 20, 386, 246);
+        setBounds(50, 20, 386, 251);
     }// </editor-fold>//GEN-END:initComponents
     
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
@@ -271,14 +271,14 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
         imakante.com.CustomTableModel modelD;
         imakante.com.CustomTable tableD;
         String[] names = { "id",
-        "\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442",
-        "\u041D\u043E\u043C\u0435\u0440",
-        "\u041E\u0442 \u0434\u0430\u0442\u0430",
-        "\u0414\u044A\u043B\u0436\u0438\u043C\u043E",
-        "\u0418\u0437\u043F\u043B\u0430\u0442\u0435\u043D\u043E",
-        "\u041E\u0441\u0442\u0430\u0442\u044A\u043A",
-        "\u0421\u0440\u043E\u043A",
-        "\u041F\u0440\u043E\u0441\u0440\u043E\u0447\u0435\u043D\u043E (\u0434\u043D\u0438)" };
+        "\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442",                                     // Dokument
+        "\u041D\u043E\u043C\u0435\u0440",                                                       // Nomer
+        "\u041E\u0442 \u0434\u0430\u0442\u0430",                                                // Ot data
+        "\u0414\u044A\u043B\u0436\u0438\u043C\u043E",                                           // Dyljimo
+        "\u0418\u0437\u043F\u043B\u0430\u0442\u0435\u043D\u043E",                               // Izplateno
+        "\u041E\u0441\u0442\u0430\u0442\u044A\u043A",                                           // Ostatyk
+        "\u0421\u0440\u043E\u043A",                                                             // Srok
+        "\u041F\u0440\u043E\u0441\u0440\u043E\u0447\u0435\u043D\u043E (\u0434\u043D\u0438)" };  // Prosro4eno (dni)
         java.sql.ResultSet pDebts, nDebts, iniDate, sumDebt;
         java.util.HashMap hm = new java.util.HashMap();
         String jasperFile = "contragent_debts.jasper";

@@ -3,6 +3,11 @@ package imakante.sales;
 
 public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
     
+    final private static int DELAYED_PAYMENT = 1;
+    final private static int CASH_PAYMENT = 2;
+    final private static int BANK_PAYMENT = 3;
+    final private static int PARTIAL_PAYMENT = 4;
+    
     public reportFrmPayments(String title, imakante.com.vcomponents.iFrame frame, int levelx) {
         super(title);
         myFrame = frame;
@@ -81,6 +86,11 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u0412\u0438\u0434 \u0440\u0430\u0437\u043f\u043b\u0430\u0449\u0430\u043d\u0435", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 51, 153)));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "\u0412 \u0411\u0420\u041e\u0419 - \u043f\u043e \u041f\u0440\u0438\u0445\u043e\u0434\u043d\u0438 \u043a\u0430\u0441\u043e\u0432\u0438 \u043e\u0440\u0434\u0435\u0440\u0438", "\u0411\u0410\u041d\u041a\u0410 - \u043f\u043e \u0411\u0430\u043d\u043a\u043e\u0432\u0438 \u043d\u0430\u0440\u0435\u0436\u0434\u0430\u043d\u0438\u044f", "\u0427\u0410\u0421\u0422\u0418\u0427\u041d\u041e - \u0421\u043c\u0435\u0441\u0435\u043d\u0430 \u0441\u0445\u0435\u043c\u0430" }));
         jComboBox1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1ItemStateChanged(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -112,7 +122,7 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
                 .add(jLabel3)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 36, Short.MAX_VALUE)
                 .add(jLabel4)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jXDatePicker2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -138,14 +148,16 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel1Layout.createSequentialGroup()
-                        .add(10, 10, 10)
-                        .add(jlLevelx, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 16, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jPanel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .add(jPanel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(20, 20, 20)
+                        .add(jlLevelx, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 16, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -157,8 +169,9 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
                 .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 30, Short.MAX_VALUE)
-                .add(jlLevelx))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jlLevelx, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 12, Short.MAX_VALUE)
+                .addContainerGap())
         );
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -186,8 +199,14 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
 
-        setBounds(70, 40, 400, 313);
+        setBounds(70, 40, 400, 312);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+        // delayed payment = debt, that's why it is excluded from payments list and indexes start at 2
+        int pt = jComboBox1.getSelectedIndex() + 2;
+        this.setPaymentType(pt);
+    }//GEN-LAST:event_jComboBox1ItemStateChanged
     
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jTextField1.transferFocus();
@@ -256,10 +275,10 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
     
     private String paymentsView = 
             "SELECT id_df AS ID, " +
-            "number_df AS NOMER, " +
             "type_df AS TIP, " +
+            "number_df AS NOMER, " +
             "total_df AS SUMA, " +
-            "date_edition_df AS 'DATA NA ZADYLJENIE', " +
+            "date_edition_df AS 'DYLJIMO OT', " +
             "faktura_connection_df AS FAKTURA, " +
             "description_pay_df AS 'TIP RAZPLA6TANE', " +
             "paying_order_df AS 'PRIHODEN KASOV ORDER', " +
@@ -295,19 +314,59 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
         imakante.com.CustomTableModel modelP;
         imakante.com.CustomTable tableP;
         String[] names = { "id", 
+        "\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442", // Dokument
+        "\u041D\u043E\u043C\u0435\u0440", // Nomer
+        "\u0421\u0443\u043C\u0430", // Suma
+        "\u0414\u044A\u043B\u0436\u0438\u043C\u043E \u043E\u0442", // Dyljimo ot
+        "\u0424\u0430\u043A\u0442\u0443\u0440\u0430", // Faktura
+        "", 
         "" };
         java.sql.ResultSet pPayments, nPayments, iniDate, sumDebt;
         java.util.HashMap hm = new java.util.HashMap();
         String jasperFile = "contragent_payments.jasper";
         String level = "";
         if (getIdContragent() > 0) {
-            
-        }
-        
-        
-        
-        
-        
+            if (jXDatePicker1.getDateInMillis() <= jXDatePicker2.getDateInMillis()) {
+                setStartOfPeriod(jXDatePicker1);
+                setEndOfPeriod(jXDatePicker2);
+                if (levelx == 3) {
+                    level = "003";
+                    hm.put("levelBoth", "");
+                    hm.put("levelReal", "");
+                    hm.put("levelVirtual", level);
+                }
+                if (levelx == 2) {
+                    level = "002";
+                    hm.put("levelBoth", "");
+                    hm.put("levelReal", level);
+                    hm.put("levelVirtual", "");
+                }
+                if (levelx == 1) {
+                    level = "003 OR d.level_df = 002 OR d.level_df = 001";
+                    hm.put("levelBoth", "001");
+                    hm.put("levelReal", "002");
+                    hm.put("levelVirtual", "003");
+                }
+                switch (this.getPaymentType()) {
+                    case CASH_PAYMENT: {
+                        System.out.println("Плащане в брой");
+                        
+                    }
+                    case BANK_PAYMENT: {
+                        System.out.println("Плащане по банков път");
+                        
+                    }
+                    case PARTIAL_PAYMENT: {
+                        System.out.println("Частично плащане");
+                        
+                    }
+                }
+            } else {
+                // Nekorekten izbor na period!
+                imakante.com.MessagePane.Error("\u041D\u0435\u043A\u043E\u0435\u0440\u043A\u0442\u0435\u043D " +
+                        "\u0438\u0437\u0431\u043E\u0440 \u043D\u0430 \u043F\u0435\u0440\u0438\u043E\u0434!");
+            }
+        } else { getContragent(); }
     }
     
     private void getContragent() {
@@ -478,6 +537,14 @@ public class reportFrmPayments extends imakante.com.vcomponents.iInternalFrame {
         tab.getColumnModel().getColumn(col).setMinWidth(0);
         tab.getTableHeader().getColumnModel().getColumn(col).setMaxWidth(0);
         tab.getTableHeader().getColumnModel().getColumn(col).setMinWidth(0);
+    }
+
+    public int getPaymentType() {
+        return paymentType;
+    }
+
+    public void setPaymentType(int paymentType) {
+        this.paymentType = paymentType;
     }
     
 }

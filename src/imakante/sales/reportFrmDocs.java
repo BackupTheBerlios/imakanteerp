@@ -17,7 +17,6 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     private void initComponents() {
         jPanel1 = new javax.swing.JPanel();
         jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
         jCheckBox3 = new javax.swing.JCheckBox();
         jCheckBox4 = new javax.swing.JCheckBox();
         jCheckBox5 = new javax.swing.JCheckBox();
@@ -93,24 +92,16 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
 
         setClosable(true);
         setIconifiable(true);
-        setTitle("\u0421\u043f\u0440\u0430\u0432\u043a\u0430 \u0437\u0430 \u0418\u0437\u0434\u0430\u0434\u0435\u043d\u0438 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438");
+        setTitle("\u0418\u0417\u0414\u0410\u0414\u0415\u041d\u0418 \u0414\u041e\u041a\u0423\u041c\u0415\u041d\u0422\u0418");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakante_ico.png")));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u0418\u0437\u0431\u043e\u0440 \u043d\u0430 \u0422\u0438\u043f\u043e\u0432\u0435 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438"));
-        jCheckBox1.setText("\u0414\u0430\u043d\u044a\u0447\u043d\u0438 \u0444\u0430\u043a\u0442\u0443\u0440\u0438");
+        jCheckBox1.setFont(new java.awt.Font("Tahoma", 1, 11));
+        jCheckBox1.setText("\u0424\u0430\u043a\u0442\u0443\u0440\u0438");
         jCheckBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox1.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jCheckBox1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jCheckBox1KeyPressed(evt);
-            }
-        });
-
-        jCheckBox2.setText("\u041e\u043f\u0440\u043e\u0441\u0442\u0435\u043d\u0438 \u0444\u0430\u043a\u0442\u0443\u0440\u0438");
-        jCheckBox2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jCheckBox2.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jCheckBox2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jCheckBox2KeyPressed(evt);
             }
         });
 
@@ -221,28 +212,29 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             .add(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jCheckBox1)
-                    .add(jCheckBox5)
-                    .add(jCheckBox9))
-                .add(23, 23, 23)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jCheckBox2)
                     .add(jCheckBox6)
-                    .add(jCheckBox10))
-                .add(20, 20, 20)
+                    .add(jCheckBox1)
+                    .add(jCheckBox9))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jCheckBox3)
                     .add(jCheckBox7)
-                    .add(jCheckBox11))
-                .add(20, 20, 20)
+                    .add(jCheckBox5)
+                    .add(jCheckBox10))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jCheckBox12)
                     .add(jPanel1Layout.createSequentialGroup()
-                        .add(jCheckBox8)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 18, Short.MAX_VALUE)
-                        .add(jButton5))
-                    .add(jCheckBox4))
-                .addContainerGap())
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jCheckBox3)
+                            .add(jCheckBox8))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jPanel1Layout.createSequentialGroup()
+                                .add(jCheckBox12)
+                                .add(68, 68, 68)
+                                .add(jButton5))
+                            .add(jCheckBox4)))
+                    .add(jCheckBox11))
+                .add(42, 42, 42))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -250,22 +242,21 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
                 .addContainerGap()
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jCheckBox1)
-                    .add(jCheckBox2)
+                    .add(jCheckBox5)
                     .add(jCheckBox3)
                     .add(jCheckBox4))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jCheckBox5)
                     .add(jCheckBox6)
                     .add(jCheckBox7)
                     .add(jCheckBox8)
+                    .add(jCheckBox12)
                     .add(jButton5))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jCheckBox9)
                     .add(jCheckBox10)
-                    .add(jCheckBox11)
-                    .add(jCheckBox12))
+                    .add(jCheckBox11))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -291,9 +282,9 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel2Layout.createSequentialGroup()
                 .add(55, 55, 55)
-                .add(jLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
+                .add(jLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                 .add(21, 21, 21)
-                .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
+                .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(26, 26, 26)
@@ -302,7 +293,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
                 .add(jXDatePicker2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(16, 16, 16)
                 .add(jCheckBox13, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(107, 107, 107))
+                .add(142, 142, 142))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -367,18 +358,18 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel3Layout.createSequentialGroup()
                 .add(54, 54, 54)
-                .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                 .add(22, 22, 22)
-                .add(jLabel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
+                .add(jLabel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+                .add(jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
                 .add(38, 38, 38)
-                .add(jLabel6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                .add(jLabel6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                .add(jTextField4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
                 .add(29, 29, 29)
                 .add(jCheckBox14, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(110, 110, 110))
+                .add(145, 145, 145))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -442,18 +433,18 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel4Layout.createSequentialGroup()
                 .add(54, 54, 54)
-                .add(jLabel7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                .add(jLabel7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                 .add(22, 22, 22)
-                .add(jLabel8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
+                .add(jLabel8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+                .add(jTextField5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
                 .add(38, 38, 38)
-                .add(jLabel9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                .add(jLabel9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                .add(jTextField6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
                 .add(29, 29, 29)
                 .add(jCheckBox15, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(110, 110, 110))
+                .add(145, 145, 145))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -517,18 +508,18 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel5Layout.createSequentialGroup()
                 .add(54, 54, 54)
-                .add(jLabel10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                .add(jLabel10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                 .add(22, 22, 22)
-                .add(jLabel11, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
+                .add(jLabel11, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+                .add(jTextField7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
                 .add(38, 38, 38)
-                .add(jLabel12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                .add(jLabel12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                .add(jTextField8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
                 .add(29, 29, 29)
                 .add(jCheckBox16, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(110, 110, 110))
+                .add(145, 145, 145))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -592,18 +583,18 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel6Layout.createSequentialGroup()
                 .add(54, 54, 54)
-                .add(jLabel13, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                .add(jLabel13, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                 .add(22, 22, 22)
-                .add(jLabel14, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
+                .add(jLabel14, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+                .add(jTextField9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
                 .add(38, 38, 38)
-                .add(jLabel15, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                .add(jLabel15, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                .add(jTextField10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
                 .add(29, 29, 29)
                 .add(jCheckBox17, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(110, 110, 110))
+                .add(145, 145, 145))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -669,16 +660,16 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
                 .add(54, 54, 54)
                 .add(jLabel16, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
                 .add(22, 22, 22)
-                .add(jLabel17, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
+                .add(jLabel17, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField11, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                .add(jTextField11, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
                 .add(38, 38, 38)
-                .add(jLabel18, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                .add(jLabel18, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+                .add(jTextField12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
                 .add(29, 29, 29)
                 .add(jCheckBox18, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(110, 110, 110))
+                .add(145, 145, 145))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -742,18 +733,18 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             jPanel8Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel8Layout.createSequentialGroup()
                 .add(54, 54, 54)
-                .add(jLabel19, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                .add(jLabel19, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                 .add(22, 22, 22)
-                .add(jLabel20, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
+                .add(jLabel20, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField13, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+                .add(jTextField13, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
                 .add(38, 38, 38)
-                .add(jLabel21, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                .add(jLabel21, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField14, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                .add(jTextField14, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
                 .add(29, 29, 29)
                 .add(jCheckBox19, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(110, 110, 110))
+                .add(145, 145, 145))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -832,18 +823,18 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel9Layout.createSequentialGroup()
                 .add(54, 54, 54)
-                .add(jLabel22, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                .add(jLabel22, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                 .add(22, 22, 22)
-                .add(jLabel23, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
+                .add(jLabel23, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField15, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+                .add(jTextField15, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
                 .add(38, 38, 38)
-                .add(jLabel24, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                .add(jLabel24, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField16, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                .add(jTextField16, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
                 .add(29, 29, 29)
                 .add(jCheckBox20, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(110, 110, 110))
+                .add(145, 145, 145))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -880,7 +871,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -891,7 +882,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(layout.createSequentialGroup()
                         .add(jLabel25)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 210, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 206, Short.MAX_VALUE)
                         .add(jButton1)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jButton3)
@@ -932,7 +923,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
                     .add(jButton3)
                     .add(jButton4)
                     .add(jLabel25))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         setBounds(100, 20, 696, 637);
     }// </editor-fold>//GEN-END:initComponents
@@ -952,11 +943,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     private void jCheckBox1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox1KeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jCheckBox1.transferFocus(); }
     }//GEN-LAST:event_jCheckBox1KeyPressed
-    
-    private void jCheckBox2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox2KeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jCheckBox2.transferFocus(); }
-    }//GEN-LAST:event_jCheckBox2KeyPressed
-    
+        
     private void jCheckBox3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox3KeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jCheckBox3.transferFocus(); }
     }//GEN-LAST:event_jCheckBox3KeyPressed
@@ -1258,7 +1245,6 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     private javax.swing.JCheckBox jCheckBox17;
     private javax.swing.JCheckBox jCheckBox18;
     private javax.swing.JCheckBox jCheckBox19;
-    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox20;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
@@ -1399,7 +1385,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     }
     
     private boolean anyBoxChecked() {
-        if (this.jCheckBox1.isSelected() || this.jCheckBox2.isSelected() ||
+        if (this.jCheckBox1.isSelected() || 
                 this.jCheckBox3.isSelected() || this.jCheckBox4.isSelected() ||
                 this.jCheckBox5.isSelected() || this.jCheckBox6.isSelected() ||
                 this.jCheckBox7.isSelected() || this.jCheckBox8.isSelected() ||
@@ -1523,7 +1509,6 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         nubColums =+ 3;
         String typeDoc = " rep_documents.type_df IN(000";
         if (this.jCheckBox1.isSelected()) typeDoc = typeDoc + ", 202";
-        if (this.jCheckBox2.isSelected()) typeDoc = typeDoc + ", 201";
         if (this.jCheckBox3.isSelected()) typeDoc = typeDoc + ", 600";
         if (this.jCheckBox4.isSelected()) typeDoc = typeDoc + ", 700";
         if (this.jCheckBox5.isSelected()) typeDoc = typeDoc + ", 100";
@@ -1576,9 +1561,6 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         if (!this.jCheckBox1.isSelected())
             this.jCheckBox1.setSelected(true);
         else this.jCheckBox1.setSelected(false);
-        if (!this.jCheckBox2.isSelected())
-            this.jCheckBox2.setSelected(true);
-        else this.jCheckBox2.setSelected(false);
         if (!this.jCheckBox3.isSelected())
             this.jCheckBox3.setSelected(true);
         else this.jCheckBox3.setSelected(false);
