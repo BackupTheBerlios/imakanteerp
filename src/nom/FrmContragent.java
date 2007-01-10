@@ -83,7 +83,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 1057, Short.MAX_VALUE)
+            .add(0, 911, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -100,58 +100,40 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel4.setPreferredSize(new java.awt.Dimension(801, 60));
         jLabel1.setText("\u041a\u043e\u0434:");
-        jPanel4.add(jLabel1);
 
         jTextFieldCod.setPreferredSize(new java.awt.Dimension(45, 20));
-        jPanel4.add(jTextFieldCod);
 
         jLabel2.setText("\u0418\u043c\u0435:");
-        jPanel4.add(jLabel2);
 
         jTextFieldName.setPreferredSize(new java.awt.Dimension(200, 20));
-        jPanel4.add(jTextFieldName);
 
-        jLabel3.setText("\u0411\u0443\u043b\u0441\u0442\u0430\u0442:");
-        jPanel4.add(jLabel3);
+        jLabel3.setText("\u0418\u041d:");
 
         jTextFieldBulstat.setPreferredSize(new java.awt.Dimension(90, 20));
-        jPanel4.add(jTextFieldBulstat);
 
         jLabel4.setText("\u0414.\u043d\u043e\u043c\u0435\u0440:");
-        jPanel4.add(jLabel4);
 
         jTextFieldDanNomer.setPreferredSize(new java.awt.Dimension(90, 20));
-        jPanel4.add(jTextFieldDanNomer);
 
         jLabel5.setText("\u0410\u0434\u0440\u0435\u0441:");
-        jPanel4.add(jLabel5);
 
         jTextFieldAddress.setPreferredSize(new java.awt.Dimension(200, 20));
-        jPanel4.add(jTextFieldAddress);
 
         jLabel6.setText("\u0422\u0435\u043b.:");
-        jPanel4.add(jLabel6);
 
         jTextFieldTel.setPreferredSize(new java.awt.Dimension(70, 20));
-        jPanel4.add(jTextFieldTel);
 
         jLabel7.setText("\u0424\u0430\u043a\u0441:");
-        jPanel4.add(jLabel7);
 
         jTextFieldFax.setPreferredSize(new java.awt.Dimension(70, 20));
-        jPanel4.add(jTextFieldFax);
 
         jLabel8.setText("E-mail:");
-        jPanel4.add(jLabel8);
 
         jTextFieldEmail.setPreferredSize(new java.awt.Dimension(150, 20));
-        jPanel4.add(jTextFieldEmail);
 
         jLabel9.setText("Web page:");
-        jPanel4.add(jLabel9);
 
         jTextFieldWeb.setPreferredSize(new java.awt.Dimension(150, 20));
-        jPanel4.add(jTextFieldWeb);
 
         jButton1.setText("\u0422\u044a\u0440\u0441\u0435\u043d\u0435");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -160,8 +142,98 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
             }
         });
 
-        jPanel4.add(jButton1);
-
+        org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jLabel7)
+                    .add(jLabel1))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jTextFieldCod, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jTextFieldFax, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jLabel8)
+                    .add(jLabel2))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(jTextFieldEmail, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jTextFieldName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(11, 11, 11)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jLabel3)
+                    .add(jLabel9))
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .add(5, 5, 5)
+                        .add(jTextFieldBulstat, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jTextFieldWeb, 0, 0, Short.MAX_VALUE)))
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .add(5, 5, 5)
+                        .add(jLabel4))
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .add(4, 4, 4)
+                        .add(jLabel6)))
+                .add(5, 5, 5)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jTextFieldTel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jTextFieldDanNomer, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .add(5, 5, 5)
+                        .add(jLabel5)
+                        .add(5, 5, 5)
+                        .add(jTextFieldAddress, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .add(178, 178, 178)
+                        .add(jButton1))))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel4Layout.createSequentialGroup()
+                .add(5, 5, 5)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(jLabel1)
+                        .add(jTextFieldCod, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .add(3, 3, 3)
+                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel2)
+                            .add(jTextFieldName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel3)))
+                    .add(jTextFieldBulstat, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .add(3, 3, 3)
+                        .add(jLabel4))
+                    .add(jTextFieldDanNomer, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .add(3, 3, 3)
+                        .add(jLabel5))
+                    .add(jTextFieldAddress, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(5, 5, 5)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jButton1)
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .add(1, 1, 1)
+                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel7)
+                            .add(jTextFieldFax, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel8)
+                            .add(jTextFieldEmail, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel9)
+                            .add(jTextFieldWeb, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel6)
+                            .add(jTextFieldTel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                .add(3, 3, 3))
+        );
         jPanel2.add(jPanel4, java.awt.BorderLayout.SOUTH);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -268,7 +340,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
                     getIBAN_D(), getIBAN_R(),
                     getBIC_R(),getBIC_D(),
                     getValita_D(),getValita_R());
-            model = new imakante.com.CustomTableModel(conn,rs, null);
+            model = new imakante.com.CustomTableModel(conn,rs, columnName);
             table = new imakante.com.CustomTable(model);
             jScrollPane1.getViewport().add(table);
             HideColumns(getColumnIndex("id_contragent"));
