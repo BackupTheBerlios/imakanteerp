@@ -200,14 +200,14 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 			</band>
 		</background>
 		<title>
-			<band height="137"  isSplitAllowed="true" >
+			<band height="171"  isSplitAllowed="true" >
 				<rectangle radius="0" >
 					<reportElement
 						mode="Opaque"
 						x="1"
 						y="43"
 						width="206"
-						height="86"
+						height="113"
 						forecolor="#000000"
 						backcolor="#CCCCCC"
 						key="rectangle-2"/>
@@ -247,7 +247,7 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 						x="326"
 						y="43"
 						width="206"
-						height="87"
+						height="114"
 						forecolor="#000000"
 						backcolor="#CCCCCC"
 						key="rectangle-1"/>
@@ -543,7 +543,7 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="403"
-						y="108"
+						y="130"
 						width="111"
 						height="16"
 						key="textField-21"/>
@@ -555,8 +555,8 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="78"
-						y="108"
+						x="77"
+						y="130"
 						width="118"
 						height="16"
 						key="textField-24"/>
@@ -569,12 +569,64 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 				<line direction="TopDown">
 					<reportElement
 						x="1"
-						y="133"
+						y="168"
 						width="532"
 						height="0"
 						key="line-13"/>
 					<graphicElement stretchType="NoStretch"/>
 				</line>
+				<staticText>
+					<reportElement
+						x="8"
+						y="129"
+						width="66"
+						height="18"
+						key="staticText-39"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left">
+						<font fontName="Tahoma"/>
+					</textElement>
+				<text><![CDATA[ИН:]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="78"
+						y="108"
+						width="118"
+						height="18"
+						key="textField"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{octr_dan_nomer}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="331"
+						y="131"
+						width="66"
+						height="14"
+						key="staticText-40"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left">
+						<font fontName="Tahoma"/>
+					</textElement>
+				<text><![CDATA[ИН:]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="404"
+						y="108"
+						width="110"
+						height="15"
+						key="textField"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{firma_dan_No}]]></textFieldExpression>
+				</textField>
 			</band>
 		</title>
 		<pageHeader>
@@ -766,19 +818,7 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 			</band>
 		</columnHeader>
 		<detail>
-			<band height="19"  isSplitAllowed="true" >
-				<line direction="TopDown">
-					<reportElement
-						mode="Opaque"
-						x="0"
-						y="17"
-						width="535"
-						height="0"
-						forecolor="#808080"
-						backcolor="#FFFFFF"
-						key="line"/>
-					<graphicElement stretchType="NoStretch" pen="Thin" fill="Solid" />
-				</line>
+			<band height="17"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
@@ -1129,7 +1169,7 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 				</line>
 				<line direction="TopDown">
 					<reportElement
-						x="196"
+						x="189"
 						y="78"
 						width="0"
 						height="166"
@@ -1147,7 +1187,7 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 				</line>
 				<staticText>
 					<reportElement
-						x="200"
+						x="193"
 						y="82"
 						width="94"
 						height="18"
@@ -1160,7 +1200,7 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="296"
+						x="289"
 						y="84"
 						width="63"
 						height="14"
@@ -1408,7 +1448,7 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 				</textField>
 				<staticText>
 					<reportElement
-						x="201"
+						x="194"
 						y="119"
 						width="31"
 						height="14"
@@ -1421,9 +1461,9 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="234"
+						x="227"
 						y="119"
-						width="123"
+						width="130"
 						height="14"
 						key="textField-25"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -1434,7 +1474,7 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 				</textField>
 				<staticText>
 					<reportElement
-						x="201"
+						x="194"
 						y="138"
 						width="29"
 						height="14"
@@ -1447,9 +1487,9 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="234"
+						x="227"
 						y="138"
-						width="123"
+						width="130"
 						height="14"
 						key="textField-26"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -1460,7 +1500,7 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 				</textField>
 				<staticText>
 					<reportElement
-						x="201"
+						x="194"
 						y="157"
 						width="26"
 						height="14"
@@ -1473,9 +1513,9 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="234"
+						x="227"
 						y="157"
-						width="122"
+						width="130"
 						height="14"
 						key="textField-27"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -1486,8 +1526,8 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 				</textField>
 				<staticText>
 					<reportElement
-						x="201"
-						y="104"
+						x="193"
+						y="103"
 						width="152"
 						height="16"
 						key="staticText-38"/>
