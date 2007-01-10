@@ -101,10 +101,12 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
         jPanel4.setPreferredSize(new java.awt.Dimension(801, 60));
         jLabel1.setText("\u041a\u043e\u0434:");
 
+        jTextFieldCod.setToolTipText("\u0412\u044a\u0432\u0435\u0434\u0435\u0442\u0435 \u0446\u0438\u0444\u0440\u043e\u0432 \u043a\u043e\u0434 \u0438\u043b\u0438 \u0447\u0430\u0441\u0442 \u043e\u0442 \u043d\u0435\u0433\u043e \u043f\u043e \u043a\u043e\u0438\u0442\u043e \u0449\u0435 \u0441\u0435 \u0442\u044a\u0440\u0441\u0438");
         jTextFieldCod.setPreferredSize(new java.awt.Dimension(45, 20));
 
         jLabel2.setText("\u0418\u043c\u0435:");
 
+        jTextFieldName.setToolTipText("\u0412\u044a\u0432\u0435\u0434\u0435\u0442\u0435 \u0438\u043c\u0435 \u0438\u043b\u0438 \u0447\u0430\u0441\u0442 \u043e\u0442 \u0438\u043c\u0435 \u043f\u043e \u043a\u043e\u0435\u0442\u043e \u0449\u0435 \u0441\u0435 \u0442\u044a\u0440\u0441\u0438");
         jTextFieldName.setPreferredSize(new java.awt.Dimension(200, 20));
 
         jLabel3.setText("\u0418\u041d:");
@@ -241,6 +243,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel3.setPreferredSize(new java.awt.Dimension(801, 37));
         jButtonNew.setText("\u041d\u043e\u0432");
+        jButtonNew.setToolTipText("\u0421\u044a\u0437\u0434\u0430\u0432\u0430 \u043d\u043e\u0432 \u0437\u0430\u043f\u0438\u0441 \u0432 \u043d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
         jButtonNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonNewActionPerformed(evt);
@@ -250,6 +253,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
         jPanel3.add(jButtonNew);
 
         jButtonEdit.setText("\u0420\u0435\u0434\u0430\u043a\u0446\u0438\u044f");
+        jButtonEdit.setToolTipText("\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u0430 \u0441\u044a\u0449\u0435\u0441\u0442\u0432\u0443\u0432\u0430\u0449 \u0437\u0430\u043f\u0438\u0441 \u0432 \u043d\u043e\u043c\u0435\u043d\u043a\u043b\u0430\u0442\u0443\u0440\u0430\u0442\u0430 \u043d\u0430 \u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442\u0438");
         jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEditActionPerformed(evt);
@@ -280,6 +284,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
         jPanel3.add(jButtonDelete);
 
         jButtonRefresh.setText("\u0412\u0441\u0438\u0447\u043a\u0438 \u0437\u0430\u043f\u0438\u0441\u0438");
+        jButtonRefresh.setToolTipText("\u041f\u043e\u043a\u0430\u0437\u0432\u0430 \u0432\u0441\u0438\u0447\u043a\u0438\u0442\u0435 \u0437\u0430\u043f\u0438\u0441\u0438");
         jButtonRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRefreshActionPerformed(evt);
@@ -319,6 +324,10 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
     }//GEN-LAST:event_jButtonPrintActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        searchRecord();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void searchRecord() {
         if(jTextFieldCod.getText().length()>0) {
             try {
                 setCod(Integer.parseInt(jTextFieldCod.getText()));
@@ -350,7 +359,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
             jScrollPane1.repaint();
         } catch(Exception e) { e.printStackTrace(); }
         table.requestFocus();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }
     
     private void jButtonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshActionPerformed
         refreshTable();
@@ -366,6 +375,10 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
     }//GEN-LAST:event_jButtonDeleteActionPerformed
     
     private void jButtonNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewActionPerformed
+        newRecord();
+    }//GEN-LAST:event_jButtonNewActionPerformed
+
+    private void newRecord() {
         setCod(-1);
         setName("");
         setBulstat("");
@@ -383,13 +396,17 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
             dialog.setVisible(true);
         } catch(Exception e) { e.printStackTrace(); }
         refreshTable();
-    }//GEN-LAST:event_jButtonNewActionPerformed
+    }
     
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonCloseActionPerformed
     
     private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
+        editRecord();
+    }//GEN-LAST:event_jButtonEditActionPerformed
+
+    private void editRecord() {
         if (table.getSelectedRow() != -1) {
             setRow(table.getSelectedRow());
             if(getRow()==0){
@@ -417,7 +434,7 @@ public class FrmContragent extends imakante.com.vcomponents.iInternalFrame imple
                 dialog.setVisible(true);
             } catch(Exception e) { e.printStackTrace(); }
         } else {  }
-    }//GEN-LAST:event_jButtonEditActionPerformed
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
