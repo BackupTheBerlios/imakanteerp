@@ -39,7 +39,7 @@ public abstract class dboClass {
     
      
     // SELECT
-    private void Select(String q) throws SQLException{
+    public void Select(String q) throws SQLException{
         
         setStatement(getConn().prepareStatement(q));
         setRs(getStatement().executeQuery());
@@ -47,7 +47,7 @@ public abstract class dboClass {
     }
     
     // UPDATE
-    private void Update(String q) throws SQLException{
+    public void Update(String q) throws SQLException{
         setStatement(getConn().prepareStatement(q));
         setFields();
         getStatement().execute();
@@ -56,7 +56,7 @@ public abstract class dboClass {
     }
     
     //DELETE
-    private void Delete(String q) throws SQLException{
+    public void Delete(String q) throws SQLException{
         setStatement(getConn().prepareStatement(q));
         setFields();
         getStatement().execute();

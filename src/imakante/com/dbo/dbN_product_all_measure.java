@@ -7,11 +7,9 @@
 
 package imakante.com.dbo;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class dbN_product_all_measure extends java.lang.Object{
+public class dbN_product_all_measure extends dboClass{
     
     private java.sql.Connection conn;
     private java.sql.PreparedStatement statement;
@@ -38,6 +36,7 @@ public class dbN_product_all_measure extends java.lang.Object{
     
     private String deleteByKey = "delete from n_product_all_measure where id_pam = ?" ;
     
+    //TABLE SPECIFIC
     private String updatesByNam_pam;
     
     private String updatesBySnam_pam;
@@ -51,122 +50,125 @@ public class dbN_product_all_measure extends java.lang.Object{
     
     //Constructor
     
-    public dbN_product_all_measure(java.sql.Connection conn) {
-        conn = conn;
+    public dbN_product_all_measure(java.sql.Connection connection) {
+        super(connection);
         
     }
     
     //init fields
     private void initMainFields() throws SQLException{
-        Select(selectPlain);
-        rsmd = rs.getMetaData();
+        Select(getSelectPlain());
+        setRsmd(getRs().getMetaData());
         
     }
     // SET WITH INTERNAL FIELDS
-    private void setFields() throws SQLException {
-        statement.setLong(1, id_pam);
-        statement.setString(2, name_pam);
-        statement.setString(3, sname_pam);
+    protected void setFields() throws SQLException {
+        getStatement().setLong(1, getId_pam());
+        getStatement().setString(2, getName_pam());
+        getStatement().setString(3, getSname_pam());
     }
     
     //SET WITH EXTERNAL FIELDS
     private void setFields(long a, String b, String c) throws SQLException{
-        id_pam = a;
-        name_pam = b;
-        sname_pam = c;
+        setId_pam(a);
+        setName_pam(b);
+        setSname_pam(c);
         setFields();
     }
     
     
-    // SELECT
-    private void Select(String q) throws SQLException{
-        
-        statement = conn.prepareStatement(q);
-        rs = statement.executeQuery();
-        
-    }
-    
-    public void SelectPlain() throws SQLException{
-        Select(selectPlain);
-    }
-    // SELECT WITH CURENT DB STATUS
-    public void SelectFields() throws SQLException{
-        Select(selectPlainFields);
-        
-    }
-    
-    //COUNT RS
-    public int getAfectedRowCount()throws SQLException{
-        int i = 0;
-        if(!rs.wasNull()){
-            rs.beforeFirst();
-            while(rs.next()){
-                long j = rs.getInt(1);
-                i++;
-            }
-        }
-        return i;
-    }
-    
-    public int getMaxId()throws SQLException{
-        int i = 0;
-        SelectPlain();
-        return i;
-    }
-    
-    //INSERT WITH CURENT DB STATUS
-    public void Insert() throws SQLException{
-        statement = conn.prepareStatement(insertPlainFields);
-        setFields();
-        statement.execute();
-        //  statement.close();
-        
-        
-    }
-    
-    
-// UPDATE
-    private void Update(String q) throws SQLException{
-        statement = conn.prepareStatement(q);
-        setFields();
-        statement.execute();
-        //statement.close();
-        
-    }
-    
-    //UPDATE BY KEY
-    public void UpdateByKey() throws SQLException{
-        Update(updateByKey);
-    }
     
     //SPECIFIC UPDATES
     
     public void UpdateByName_pam() throws SQLException{
-        Update(updatesByNam_pam);
+        Update(getUpdatesByNam_pam());
     }
     public void UpdateBySname_pam() throws SQLException{
-        Update(updatesBySnam_pam);
+        Update(getUpdatesBySnam_pam());
     }
     
-    //DELETE
-    private void Delete(String q) throws SQLException{
-        statement = conn.prepareStatement(q);
-        setFields();
-        statement.execute();
-        // statement.close();
-    }
     
-    //DELETE BY PRIMARY KEY
-    public void DeleteByKey() throws SQLException{
-        Delete(deleteByKey);
-    }
+    
+    
     // SPECIFIC DELETE
     public void DeleteByName_pam() throws SQLException{
-        Delete(deleteByName_pam);
+        Delete(getDeleteByName_pam());
     }
     
     public void DeleteBySname_pam() throws SQLException{
-        Delete(deleteBySname_pam);
+        Delete(getDeleteBySname_pam());
+    }
+    
+    public Long getId_pam() {
+        return id_pam;
+    }
+    
+    public void setId_pam(Long id_pam) {
+        this.id_pam = id_pam;
+    }
+    
+    public String getName_pam() {
+        return name_pam;
+    }
+    
+    public void setName_pam(String name_pam) {
+        this.name_pam = name_pam;
+    }
+    
+    public int getName_pam_size() {
+        return name_pam_size;
+    }
+    
+    public void setName_pam_size(int name_pam_size) {
+        this.name_pam_size = name_pam_size;
+    }
+    
+    public String getSname_pam() {
+        return sname_pam;
+    }
+    
+    public void setSname_pam(String sname_pam) {
+        this.sname_pam = sname_pam;
+    }
+    
+    public int getSname_pam_size() {
+        return sname_pam_size;
+    }
+    
+    public void setSname_pam_size(int sname_pam_size) {
+        this.sname_pam_size = sname_pam_size;
+    }
+    
+    public String getUpdatesByNam_pam() {
+        return updatesByNam_pam;
+    }
+    
+    public void setUpdatesByNam_pam(String updatesByNam_pam) {
+        this.updatesByNam_pam = updatesByNam_pam;
+    }
+    
+    public String getUpdatesBySnam_pam() {
+        return updatesBySnam_pam;
+    }
+    
+    public void setUpdatesBySnam_pam(String updatesBySnam_pam) {
+        this.updatesBySnam_pam = updatesBySnam_pam;
+    }
+    
+    public String getDeleteByName_pam() {
+        return deleteByName_pam;
+    }
+    
+    public void setDeleteByName_pam(String deleteByName_pam) {
+        this.deleteByName_pam = deleteByName_pam;
+    }
+    
+    public String getDeleteBySname_pam() {
+        return deleteBySname_pam;
+    }
+    
+    public void setDeleteBySname_pam(String deleteBySname_pam) {
+        this.deleteBySname_pam = deleteBySname_pam;
     }
     
     
