@@ -20,6 +20,7 @@ public class InputIntegerVerifier extends InputVerifier
     {
      byte UpRange = 57;
       byte DownRange = 48;
+      byte Minus = 45;
       boolean checkSimbol=false;
       int count=-1;
       JTextField tf = (JTextField) input;
@@ -38,14 +39,19 @@ public class InputIntegerVerifier extends InputVerifier
              }
            else
            {
-               checkSimbol= false;
-               count++;
+               if(ch[0]==Minus)checkSimbol = true;
+               else
+               { 
+                   checkSimbol= false;
+                   count++;
+               }
            }
          }
       }
       else checkSimbol= false;
      
       if(count>0) checkSimbol= false; 
+      
       return checkSimbol;
     }
    
