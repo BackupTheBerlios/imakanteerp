@@ -45,6 +45,8 @@ import java.math.*;
 import java.lang.Thread;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
 import javax.swing.table.*;
+import org.omg.SendingContext.RunTime;
+
 
 public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 {
@@ -115,13 +117,15 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         jTable1.setModel(new docLineTableModel());
-        jTable1.setRowSelectionAllowed(false); // zabranqvame selekciqta na celiq red
+    //    jTable1.setRowSelectionAllowed(false); // zabranqvame selekciqta na celiq red
         jTable1.setCellSelectionEnabled(true);
         TableColumn tm = jTable1.getColumnModel().getColumn(4);
         tm.setCellRenderer(new ColorColumnRenderer(Color.lightGray, Color.blue));
         jScrollPane2.getViewport().add(jTable1);
         jScrollPane2.repaint();
-        setInputLisener();
+        
+       
+        setInputLisener(); // for jTable1
         
         InputMap im = jTable1.getInputMap(JTable.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
         KeyStroke tab = KeyStroke.getKeyStroke(KeyEvent.VK_TAB, 0);
@@ -131,7 +135,9 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         im.put(right, "none");
         jTable1.setInputMap(0,im);
         calculateWidthColumn(jTable1);
-        
+        viewCow = jTable1.getColumnCount(); 
+        insertEdit = new JTextField[viewCow];
+        createInsertEditField();
         if(isNew) {
             jButtonOneRowM.setEnabled(false) ;
             jButtonOneRowP.setEnabled(false);
@@ -193,7 +199,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             TransferFocusDocTypeIsBrak();
         }
         repaintComp();
-        
+      
+      setKeyListenerInserEdit();
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -251,6 +258,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jLabel18 = new javax.swing.JLabel();
         jXDateDeliver = new org.jdesktop.swingx.JXDatePicker();
         jPanelDocLine = new javax.swing.JPanel();
+        jScrollEdinInsert = new javax.swing.JScrollPane();
+        jPanelInsertEdit = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanelPrice = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
@@ -759,16 +768,27 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanel2.add(jPanel4);
         jPanel4.setBounds(0, 260, 430, 60);
 
-        jPanelDocLine.setLayout(new javax.swing.BoxLayout(jPanelDocLine, javax.swing.BoxLayout.X_AXIS));
+        jPanelDocLine.setLayout(new java.awt.BorderLayout());
 
         jPanelDocLine.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jScrollEdinInsert.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollEdinInsert.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jScrollEdinInsert.setMinimumSize(new java.awt.Dimension(23, 40));
+        jScrollEdinInsert.setPreferredSize(new java.awt.Dimension(100, 40));
+        jPanelInsertEdit.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 1));
+
+        jScrollEdinInsert.setViewportView(jPanelInsertEdit);
+
+        jPanelDocLine.add(jScrollEdinInsert, java.awt.BorderLayout.SOUTH);
+
+        jScrollPane2.setFocusable(false);
         jScrollPane2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jScrollPane2MouseClicked(evt);
             }
         });
 
-        jPanelDocLine.add(jScrollPane2);
+        jPanelDocLine.add(jScrollPane2, java.awt.BorderLayout.CENTER);
 
         jPanel2.add(jPanelDocLine);
         jPanelDocLine.setBounds(0, 320, 730, 190);
@@ -1009,6 +1029,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jButtonDellDocFadade.setBounds(420, 620, 153, 23);
 
         jButton3.setText("\u0414\u043e\u0431\u0430\u0432\u044f\u043d\u0435 \u043d\u0430 \u043b\u0438\u043d\u0438\u044f");
+        jButton3.setEnabled(false);
         jButton3.setNextFocusableComponent(jButtonAnulirane);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2168,11 +2189,13 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private javax.swing.JPanel jPanelCreateFacturi;
     private javax.swing.JPanel jPanelDocLine;
     private javax.swing.JPanel jPanelHead;
+    private javax.swing.JPanel jPanelInsertEdit;
     private javax.swing.JPanel jPanelObekt;
     private javax.swing.JPanel jPanelPrice;
     private javax.swing.JPanel jPanelPriceList;
     private javax.swing.JPanel jPanelStorageINOUT;
     private javax.swing.JPanel jPanelUser;
+    private javax.swing.JScrollPane jScrollEdinInsert;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSplitPane jSplitPane1;
@@ -2238,6 +2261,12 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private Double curs;
     private ArrayList editRows = new ArrayList();
     private HashMap checkForSaveInDB = new HashMap(); // zapisva informaciq, 4e reda e zapisan v bazata
+    private JTextField insertEdit[] = null;
+    private int viewCow = 12;  // vidimite coloni ot jtable1
+    private boolean isLoadRow = false;
+    private KeyListener key0 = null;
+    private KeyListener key1 = null;
+    private KeyListener key10 = null;
 //----------------------------------------
     
     
@@ -2507,7 +2536,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             
             getNavigatiionState();
             isProductIN = checkInOutProduct(myParent.getDocFacadeType());
-            if(isProductIN) {
+          /*  if(isProductIN) {
                 ((docLineTableModel) jTable1.getModel()).disableCellEditable(0);
                 ((docLineTableModel) jTable1.getModel()).enableCellEditable(4);
                 ((docLineTableModel) jTable1.getModel()).enableCellEditable(5);
@@ -2522,7 +2551,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 ((docLineTableModel) jTable1.getModel()).enableCellEditable(7);
                 ((docLineTableModel) jTable1.getModel()).enableCellEditable(8);
                 ((docLineTableModel) jTable1.getModel()).enableCellEditable(9);
-            }
+            }*/
             calculateTotalPriceForDocument();
         } // END dokumenta se redaktira
         if(myParent.getDocFacadeType()==OFERTA) {
@@ -2535,7 +2564,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         for(int i=12 ; i<25;i++) {
             HideColumns(i);
         }
-        
+      calculateWidthInsertEditFieldALL();  
     }
     
     private void repainContragentData(int idcontragent) {
@@ -2595,22 +2624,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     }
     private void setInputLisener() {
         getKeyBoardManager();
-        jTable1.addFocusListener(new FocusListener() {
-            public void focusGained(FocusEvent e) {
-                try {
-                    if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24)&&
-                            !((docLineTableModel)jTable1.getModel()).getIsFinishToEnterData(jTable1.getSelectedRow())) {
-                        ((docLineTableModel) jTable1.getModel()).enableCellEditable(0);
-                        // za tyrsene po ime
-                        ((docLineTableModel) jTable1.getModel()).enableCellEditable(1);
-                    }
-                    System.out.println("focusGained");
-                } catch(Exception ex){System.out.println("Error focusGained");};
-            }
-            public void focusLost(FocusEvent e) {
-            }
-        });
-        
+            
         jTable1.addMouseListener(new MouseListener() {
             public void mouseClicked(MouseEvent e) {
                 int rowSelect = jTable1.getSelectedRow();
@@ -2652,6 +2666,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                         jLabelValuta.setText(myParent.getCountriesT().getValutaByID(curs.intValue()));
                     }
                     calculateWidthColumn(jTable1);
+                    calculateWidthInsertEditFieldALL();
                 }
             }
             public void mouseEntered(MouseEvent e) {
@@ -2690,871 +2705,17 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 
                 
                 
-                //    if(e.getKeyCode()>=48 && e.getKeyCode()<=57) str += e.getKeyChar(); // samo 4isla
-                if(true) str += e.getKeyChar(); // vsiki znaci
                 
-                if(!isTyped) {
-                    Object value = jTable1.getCellEditor(rowSelect,columnSelect).getCellEditorValue();
-                    Component com = jTable1.getCellEditor(rowSelect,columnSelect).getTableCellEditorComponent(jTable1,value,true,rowSelect,columnSelect);
-                    JTextField ff = (JTextField) com;
-                    ff.setBackground(Color.RED);
-                    ff.selectAll();
-                    System.out.println(" >>>>>>>>>>>.. "+ff.getText());
-                }
-                isTyped = true;
-                System.out.println("===============keyPressed====================");
-                System.out.print("jTable1.getSelectedRow: ");
-                System.out.println(jTable1.getSelectedRow());
-                System.out.print("jTable1.getSelectedColumn: ");
-                System.out.println(jTable1.getSelectedColumn());
-                System.out.println("================keyPressed===================");
+             
                 
-                if(e.getKeyCode()== KeyEvent.VK_DELETE) // selektira teksta v kletkata
-                {
-                    
-                    //   Object value = jTable1.getCellEditor(rowSelect,columnSelect).getCellEditorValue();
-                    
-                    //  Component com = jTable1.getCellEditor(rowSelect,columnSelect).getTableCellEditorComponent(jTable1,value,true,rowSelect,columnSelect);
-                    //    JTextField ff = (JTextField) com;
-                    //    ff.selectAll();
-                    //     System.out.println(" >>>>>>>>>>>.. "+ff.getText());
-                    
-                    isTyped = false;
-                    str=" ";
-                }
-                
-                if(e.getKeyCode()== KeyEvent.VK_ENTER) {
-                    System.out.println("===========KeyEvent.VK_ENTER================");
-                    System.out.print("jTable1.getSelectedRow: ");
-                    System.out.println(rowSelect);
-                    System.out.print("jTable1.getSelectedColumn: ");
-                    System.out.println(columnSelect);
-                    System.out.println("===========KeyEvent.VK_ENTER================");
-                    
-                    if(columnSelect == 0) {
-                        // popylvat se drugite stoinosti na doc line
-                        isFinishRow = false;
-                        
-                        if(isProductIN) {
-                            ((docLineTableModel) jTable1.getModel()).enableCellEditable(4);
-                            ((docLineTableModel) jTable1.getModel()).enableCellEditable(5);
-                            ((docLineTableModel) jTable1.getModel()).enableCellEditable(6);
-                            ((docLineTableModel) jTable1.getModel()).enableCellEditable(7);
-                        } else {
-                            
-                            ((docLineTableModel) jTable1.getModel()).enableCellEditable(3);
-                            ((docLineTableModel) jTable1.getModel()).enableCellEditable(4);
-                            ((docLineTableModel) jTable1.getModel()).enableCellEditable(5);
-                            ((docLineTableModel) jTable1.getModel()).enableCellEditable(6);
-                            ((docLineTableModel) jTable1.getModel()).enableCellEditable(7);
-                            ((docLineTableModel) jTable1.getModel()).enableCellEditable(8);
-                            ((docLineTableModel) jTable1.getModel()).enableCellEditable(9);
-                        }
-                        
-                    }
-                    if(columnSelect == 1)   // ime na produkta
-                    {
-                        isFinishRow = false;
-                        if(isProductIN) {
-                            ((docLineTableModel) jTable1.getModel()).enableCellEditable(4);
-                            ((docLineTableModel) jTable1.getModel()).enableCellEditable(5);
-                            ((docLineTableModel) jTable1.getModel()).enableCellEditable(6);
-                            ((docLineTableModel) jTable1.getModel()).enableCellEditable(7);
-                        } else {
-                            
-                            ((docLineTableModel) jTable1.getModel()).enableCellEditable(3);
-                            ((docLineTableModel) jTable1.getModel()).enableCellEditable(4);
-                            ((docLineTableModel) jTable1.getModel()).enableCellEditable(5);
-                            ((docLineTableModel) jTable1.getModel()).enableCellEditable(6);
-                            ((docLineTableModel) jTable1.getModel()).enableCellEditable(7);
-                            ((docLineTableModel) jTable1.getModel()).enableCellEditable(8);
-                            ((docLineTableModel) jTable1.getModel()).enableCellEditable(9);
-                        }
-                    }
-                    
-                    if(columnSelect == 3)   // cenova lista
-                    {
-                        
-                        
-                      /*  ((docLineTableModel) jTable1.getModel()).enableCellEditable(4);
-                        ((docLineTableModel) jTable1.getModel()).enableCellEditable(5);
-                        ((docLineTableModel) jTable1.getModel()).enableCellEditable(6);
-                        ((docLineTableModel) jTable1.getModel()).enableCellEditable(7);*/
-                        if(myParent.getDocFacadeType()==OFERTA) {
-                            try {
-                                Robot robot = new Robot();
-                                robot.keyPress(KeyEvent.VK_ENTER);
-                                robot.keyPress(KeyEvent.VK_ENTER);
-                                robot.keyPress(KeyEvent.VK_ENTER);
-                                robot.keyPress(KeyEvent.VK_ENTER);
-                            } catch (AWTException e12){}
-                        }
-                        
-                    }
-                    
-                    if(columnSelect == 4)  //
-                    {
-                        
-                        
-                        
-                    }
-                    if(columnSelect == 5)  //
-                    {
-                        
-                        
-                    }
-                    
-                    
-                    if(columnSelect == 7) {
-                        
-                       /* ((docLineTableModel) jTable1.getModel()).enableCellEditable(8);
-                        ((docLineTableModel) jTable1.getModel()).enableCellEditable(9);*/
-                        
-                        
-                    }
-                    
-                    if(columnSelect == 10) {
-                        System.out.println("columnSelect == 10");
-                        if( !isFinishRow) {
-                            str="";
-                            System.out.println("Start save data in DB");
-                            double alldds = Double.parseDouble(jLabelAllDDS.getText());
-                            alldds += (Double) jTable1.getValueAt(rowSelect,11)*(Double) jTable1.getValueAt(rowSelect,10)/100;
-                            //   jLabelAllDDS.setText(doubleRoundToString(4,alldds));
-                            double ddsOsnova = Double.parseDouble(jLabelDDSOsnova.getText());
-                            ddsOsnova += (Double) jTable1.getValueAt(rowSelect,11);
-                            //     jLabelDDSOsnova.setText(doubleRoundToString(4,ddsOsnova));
-                            double allTotal = Double.parseDouble(jLabelAllTotal.getText());
-                            allTotal = alldds+ddsOsnova;
-                            //      jLabelAllTotal.setText(doubleRoundToString(4,allTotal));
-                            
-                            System.out.println("Общо = "+ allTotal + "::"+doubleRoundToString(4,allTotal));
-                            System.out.println("ДДС = "+ alldds + "::"+doubleRoundToString(4,alldds));
-                            System.out.println("База = "+ ddsOsnova + "::" + doubleRoundToString(4,ddsOsnova));
-                            calculateTotalPriceForDocument();
-                            jTable1.setValueAt(true,jTable1.getSelectedRow(),24); // markirame reda - ve4e ne moze da se redaktira
-                            
-                            myParent.setPriceOneProduct((Double) jTable1.getValueAt(rowSelect,8));
-                            myParent.setProcentProduct((Double) jTable1.getValueAt(rowSelect,9));
-                            if(jTable1.getSelectedRow()==(jTable1.getRowCount() - 1)) // pri polovfenie 4e reda e posleden
-                            {
-                                int i = 0;
-                                System.out.println("IF ROW IS LAST");
-                                i = jTable1.getSelectedRow();
-                                ((docLineTableModel)jTable1.getModel()).setDefaultCellEditable();
-                                //  ((docLineTableModel)jTable1.getModel()).setIsFinishToEnterData(i); // markirame reda kato priklu4en s vyvezdaneto
-                                ((docLineTableModel)jTable1.getModel()).addRow(new docLineArray());
-                                jTable1.changeSelection(i+1,-1,false,false);
-                                System.out.println("changeSelection");
-                                
-                                ((docLineTableModel) jTable1.getModel()).enableCellEditable(0);
-                                //za tyrsene po ime
-                                ((docLineTableModel) jTable1.getModel()).enableCellEditable(1);
-                                // Save DocLine into DATABASE
-                                int nn = (Integer)jTable1.getValueAt(rowSelect,4);
-                                int prList =(Integer)jTable1.getValueAt(rowSelect,3);
-                                double dds =(Double)jTable1.getValueAt(rowSelect,10);
-                                double total = (Double)jTable1.getValueAt(rowSelect,11);
-                                //    int tmpProductNumbers = myParent.getCountriesT().checkForEnoughProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),myParent.getDocFacadeLevel());
-                                if(true) {
-// PRIEMATELNA_RAZPISKA - IN produkt
-                                    if(myParent.getDocFacadeType()==PRIEMATELNA_RAZPISKA || myParent.getDocFacadeType()==RAZPISKA_ZA_VRYSHTANE ) {
-                                        if(isNew) {
-                                            myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
-                                                    myParent.getProcentProduct(),nn,dds,total,prList);
-                                            
-                                            int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
-                                            jTable1.setValueAt(maxID_DocLine,rowSelect,12);
-                                            //vry5tane na prodikta v tablicata s nali4nosti
-                                            
-                                            setNNReturnProduct(nn);
-//==========================================
-                                            
-                                        } else {
-                                            
-                                            int id_dl = (Integer) jTable1.getValueAt(rowSelect,12);
-                                            int newNumberProduct = nn;
-                                            docLineArray d =null;
-                                            int oldNumberProduct = 0;
-                                            for(int j=0; j < rows.size();j++) {
-                                                d = (docLineArray) rows.get(j);
-                                                if(id_dl==d.getID_DocLine()) {
-                                                    oldNumberProduct = d.getNumberOfProduct();
-                                                    break;
-                                                }
-                                                
-                                            }
-                                            if(newNumberProduct > oldNumberProduct) {
-                                                
-                                                //    myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(newNumberProduct-oldNumberProduct),myParent.getDocFacadeLevel());
-                                                setNNReturnProduct(newNumberProduct-oldNumberProduct);
-                                                
-                                            } else {
-                                                
-                                                // myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(oldNumberProduct-newNumberProduct ),myParent.getDocFacadeLevel());
-                                                setNNPreserveProducts(oldNumberProduct-newNumberProduct);
-                                            }
-                                            if(oldNumberProduct>0) {
-                                                myParent.getCountriesT().updateDocLine(id_dl,myParent.getID_DocFacade(),myParent.getID_PC(),
-                                                        myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
-                                                        myParent.getProcentProduct(),newNumberProduct,dds,total,prList);
-                                            } else {
-                                                myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
-                                                        myParent.getProcentProduct(),newNumberProduct,dds,total,prList);
-                                                int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
-                                                jTable1.setValueAt(maxID_DocLine,rowSelect,12);
-                                                
-                                                
-                                            }
-                                            
-                                        }
-                                    }
-                                    
-                                    else
-//NAREZDANE_ZA_PREHVYRQNE
-                                        if(myParent.getDocFacadeType()==NAREZDANE_ZA_PREHVYRQNE) {
-                                        int storageTO = myParent.getStorageOUTProduct();
-                                        if(!isNew) {
-                                            //vzimane na razlikata ot tablicata za DocLine i redaktiranite broiki ot jTable1
-                                            // vry6tane na razlikata ako ima takava ili zapazvane na brojkite
-                                            int id_dl = (Integer) jTable1.getValueAt(rowSelect,12);
-                                            int newNumberProduct = nn;
-                                            docLineArray d =null;
-                                            int oldNumberProduct = 0;
-                                            for(int j=0; j < rows.size();j++) {
-                                                d = (docLineArray) rows.get(j);
-                                                if(id_dl==d.getID_DocLine()) {
-                                                    oldNumberProduct = d.getNumberOfProduct();
-                                                    break;
-                                                }
-                                                
-                                            }
-                                            if(true) //newNumberProduct<tmpProductNumbers
-                                            {
-                                                if(newNumberProduct > oldNumberProduct  ) {
-                                                    myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(newNumberProduct - oldNumberProduct),myParent.getDocFacadeLevel());
-                                                }else {
-                                                    myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(oldNumberProduct-newNumberProduct ),myParent.getDocFacadeLevel());
-                                                }
-                                                
-                                                if(oldNumberProduct>0) {
-                                                    
-                                                    myParent.getCountriesT().updateDocLine(id_dl,myParent.getID_DocFacade(),myParent.getID_PC(),
-                                                            storageTO,myParent.getPriceOneProduct(),
-                                                            myParent.getProcentProduct(),newNumberProduct,dds,total,prList);
-                                                } else {
-                                                    myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),storageTO,myParent.getPriceOneProduct(),
-                                                            myParent.getProcentProduct(),newNumberProduct,dds,total,prList);
-                                                    int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
-                                                    jTable1.setValueAt(maxID_DocLine,rowSelect,12);
-                                                    
-                                                    
-                                                }
-                                            } else // nqma dostaty4ni koli4etvo ot produkta
-                                            {
-                                                ((docLineTableModel) jTable1.getModel()).removeRow(rowSelect) ;
-                                                ((docLineTableModel)jTable1.getModel()).addRow(new docLineArray());
-                                                
-                                            }
-                                        } else // ako dokumenta e nov
-                                        {
-                                            myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),storageTO,myParent.getPriceOneProduct(),
-                                                    myParent.getProcentProduct(),nn,dds,total,prList);
-                                            
-                                            int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
-                                            jTable1.setValueAt(maxID_DocLine,rowSelect,12);
-                                            //zapazvane na prodikta v tablicata s nali4nosti
-                                            myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,myParent.getDocFacadeLevel());
-                                        }
-                                        } else
-//!PROFORMA_FAKTURA ili OFETRA
-                                            if(myParent.getDocFacadeType()!=PROFORMA_FAKTURA && myParent.getDocFacadeType()!=OFERTA) {
-                                        int storageTO = myParent.getStorageOUTProduct();
-                                        if(!isNew) {
-                                            //vzimane na razlikata ot tablicata za DocLine i redaktiranite broiki ot jTable1
-                                            // vry6tane na razlikata ako ima takava ili zapazvane na brojkite
-                                            int id_dl = (Integer) jTable1.getValueAt(rowSelect,12);
-                                            int newNumberProduct = nn;
-                                            docLineArray d =null;
-                                            int oldNumberProduct = 0;
-                                            for(int j=0; j < rows.size();j++) {
-                                                d = (docLineArray) rows.get(j);
-                                                if(id_dl==d.getID_DocLine()) {
-                                                    oldNumberProduct = d.getNumberOfProduct();
-                                                    break;
-                                                }
-                                                
-                                            }
-                                            if(true) //newNumberProduct<tmpProductNumbers
-                                            {
-                                                if(newNumberProduct > oldNumberProduct  ) {
-                                                    myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(newNumberProduct - oldNumberProduct),myParent.getDocFacadeLevel());
-                                                }else {
-                                                    myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(oldNumberProduct-newNumberProduct ),myParent.getDocFacadeLevel());
-                                                }
-                                                
-                                                if(oldNumberProduct>0) {
-                                                    double newPrice1 = (Double) jTable1.getValueAt(rowSelect,8);
-                                                    double newPP1 = (Double) jTable1.getValueAt(rowSelect,9);
-                                                    myParent.getCountriesT().updateDocLine(id_dl,myParent.getID_DocFacade(),myParent.getID_PC(),
-                                                            storageTO,newPrice1,
-                                                            newPP1,newNumberProduct,dds,total,prList);
-                                                } else {
-                                                    double newPrice1 = (Double) jTable1.getValueAt(rowSelect,8);
-                                                    double newPP1 = (Double) jTable1.getValueAt(rowSelect,9);
-                                                    myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),storageTO,newPrice1,
-                                                            newPP1,newNumberProduct,dds,total,prList);
-                                                    int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
-                                                    jTable1.setValueAt(maxID_DocLine,rowSelect,12);
-                                                    
-                                                    
-                                                }
-                                            } else // nqma dostaty4ni koli4etvo ot produkta
-                                            {
-                                                ((docLineTableModel) jTable1.getModel()).removeRow(rowSelect) ;
-                                                ((docLineTableModel)jTable1.getModel()).addRow(new docLineArray());
-                                                
-                                            }
-                                        } else // ako dokumenta e nov
-                                        {
-                                            double newPrice1 = (Double) jTable1.getValueAt(rowSelect,8);
-                                            double newPP1 = (Double) jTable1.getValueAt(rowSelect,9);
-                                            myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),storageTO,newPrice1,
-                                                    newPP1,nn,dds,total,prList);
-                                            
-                                            int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
-                                            jTable1.setValueAt(maxID_DocLine,rowSelect,12);
-                                            //zapazvane na prodikta v tablicata s nali4nosti
-                                            myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,myParent.getDocFacadeLevel());
-                                        }
-                                            }
-// ==POFORMA_FAKTURA ili OFERTA
-                                            else // ako dokumenta e POFORMA_FAKTURA ili OFERTA
-                                                if(myParent.getDocFacadeType()==PROFORMA_FAKTURA || myParent.getDocFacadeType()==OFERTA){
-                                        if(!isNew) {
-                                            int id_dl = (Integer) jTable1.getValueAt(rowSelect,12);
-                                            int newNumberProduct = nn;
-                                            docLineArray d = (docLineArray) rows.get(rowSelect);
-                                            
-                                            
-                                            myParent.getCountriesT().updateDocLine(id_dl,myParent.getID_DocFacade(),myParent.getID_PC(),
-                                                    myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
-                                                    myParent.getProcentProduct(),newNumberProduct,dds,total,prList);
-                                        } else {
-                                            myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
-                                                    myParent.getProcentProduct(),nn,dds,total,prList);
-                                            
-                                            int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
-                                            jTable1.setValueAt(maxID_DocLine,rowSelect,12);
-                                        }
-                                                }
-                                    
-                                } else {
-                                    ((docLineTableModel) jTable1.getModel()).removeRow(rowSelect);
-                                    if(rowSelect==0) {
-                                        ((docLineTableModel) jTable1.getModel()).addRow(new docLineArray());
-                                    }
-                                    
-                                }
-                                isSetDataInTable = false;
-                                
-                            }
-                            if(jTable1.getSelectedRow()!=(jTable1.getRowCount() - 1)) // pri polovenie 4e reda ne e posleden
-                            {
-                                
-                                int i = 0;
-                                System.out.println("IF ROW IS`N LAST!!");
-                                i = jTable1.getSelectedRow();
-                                //((docLineTableModel)jTable1.getModel()).setDefaultCellEditable();
-                                ((docLineTableModel)jTable1.getModel()).setIsFinishToEnterData(i);
-                                jTable1.setValueAt(true,jTable1.getSelectedRow(),24); // markirame reda - ve4e ne moze da se redaktira
-                                //((docLineTableModel)jTable1.getModel()).addRow(new docLineArray());
-                                jTable1.changeSelection(i+1,0,false,false);
-                                
-                                System.out.println("changeSelection");
-                                
-                                //((docLineTableModel) jTable1.getModel()).enableCellEditable(0);
-                                // Save DocLine into DATABASE
-                                int nn = (Integer)jTable1.getValueAt(rowSelect,4);
-                                int prList =(Integer)jTable1.getValueAt(rowSelect,3);
-                                double dds =(Double)jTable1.getValueAt(rowSelect,10);
-                                double total = (Double)jTable1.getValueAt(rowSelect,11);
-                                //    int tmp = myParent.getCountriesT().checkForEnoughProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),myParent.getDocFacadeLevel());
-                                if(true) //nn<=tmp
-                                {
-// PRIEMATELNA_RAZPISKA - IN produkt
-                                    if(myParent.getDocFacadeType()==PRIEMATELNA_RAZPISKA || myParent.getDocFacadeType()==RAZPISKA_ZA_VRYSHTANE) {
-                                        if(isNew) {
-                                            myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
-                                                    myParent.getProcentProduct(),nn,dds,total,prList);
-                                            
-                                            int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
-                                            jTable1.setValueAt(maxID_DocLine,rowSelect,12);
-                                            //vry5tane na prodikta v tablicata s nali4nosti
-                                            //=================================
-                                            
-                                            int levelForNali4nost=0;
-                                            int emulateLevel=2;
-                                            boolean isLevelOne=false;
-                                            switch(myParent.getDocFacadeLevel()) {
-                                                case 2 :
-                                                {
-                                                    levelForNali4nost =0;
-                                                    emulateLevel=2;
-                                                    break;
-                                                }
-                                                case 3 :
-                                                {
-                                                    levelForNali4nost =1;
-                                                    emulateLevel=3;
-                                                    break;
-                                                }
-                                                case 1 :
-                                                {
-                                                    levelForNali4nost =0;
-                                                    isLevelOne=true;
-                                                    emulateLevel=2;
-                                                    break;
-                                                }
-                                            }
-                                            int id_nal = myParent.getCountriesT().searchForNamlichnost(myParent.getID_PC(),myParent.getStorageOUTProduct(),levelForNali4nost);
-                                            if(id_nal>0) {
-                                                myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,emulateLevel);
-                                                if(isLevelOne) {
-                                                    levelForNali4nost = 1;
-                                                    emulateLevel=3;
-                                                    int id_nal_tmp = myParent.getCountriesT().searchForNamlichnost(myParent.getID_PC(),myParent.getStorageOUTProduct(),levelForNali4nost);
-                                                    if(id_nal_tmp>0) {
-                                                        myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,emulateLevel);
-                                                    } else {
-                                                        id_nal =  myParent.getCountriesT().insertProductNal();
-                                                        myParent.getCountriesT().increaseProductNal(id_nal,0,myParent.getStorageOUTProduct(),myParent.getID_PC(),levelForNali4nost);
-                                                        myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,emulateLevel);
-                                                    }
-                                                }
-                                                
-                                            } else {
-                                                id_nal =  myParent.getCountriesT().insertProductNal();
-                                                myParent.getCountriesT().increaseProductNal(id_nal,0,myParent.getStorageOUTProduct(),myParent.getID_PC(),levelForNali4nost);
-                                                myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,emulateLevel);
-                                                if(isLevelOne) {
-                                                    levelForNali4nost = 1;
-                                                    emulateLevel=3;
-                                                    int id_nal_tmp = myParent.getCountriesT().searchForNamlichnost(myParent.getID_PC(),myParent.getStorageOUTProduct(),levelForNali4nost);
-                                                    if(id_nal_tmp>0) {
-                                                        // myParent.getCountriesT().increaseProductNal(id_nal_tmp,0,myParent.getStorageOUTProduct(),myParent.getID_PC(),levelForNali4nost);
-                                                        myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,emulateLevel);
-                                                    } else {
-                                                        id_nal =  myParent.getCountriesT().insertProductNal();
-                                                        myParent.getCountriesT().increaseProductNal(id_nal,0,myParent.getStorageOUTProduct(),myParent.getID_PC(),levelForNali4nost);
-                                                        myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,emulateLevel);
-                                                    }
-                                                }
-                                                
-                                            }
-                                            //=================================
-                                            
-                                        } else {
-                                            int id_dl = (Integer) jTable1.getValueAt(rowSelect,12);
-                                            int newNumberProduct = nn;
-                                            docLineArray d =null;
-                                            int oldNumberProduct = 0;
-                                            for(int j=0; j < rows.size();j++) {
-                                                d = (docLineArray) rows.get(j);
-                                                if(id_dl==d.getID_DocLine()) {
-                                                    oldNumberProduct = d.getNumberOfProduct();
-                                                    break;
-                                                }
-                                                
-                                            }
-                                            if(newNumberProduct > oldNumberProduct) {
-                                                myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(newNumberProduct-oldNumberProduct),myParent.getDocFacadeLevel());
-                                            } else {
-                                                
-                                                myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(oldNumberProduct-newNumberProduct ),myParent.getDocFacadeLevel());
-                                            }
-                                            if(oldNumberProduct>0) {
-                                                myParent.getCountriesT().updateDocLine(id_dl,myParent.getID_DocFacade(),myParent.getID_PC(),
-                                                        myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
-                                                        myParent.getProcentProduct(),newNumberProduct,dds,total,prList);
-                                            } else {
-                                                myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
-                                                        myParent.getProcentProduct(),newNumberProduct,dds,total,prList);
-                                                int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
-                                                jTable1.setValueAt(maxID_DocLine,rowSelect,12);
-                                                
-                                                
-                                            }
-                                        }
-                                    } else
-//NAREZDANE_ZA_PREHVYRQNE
-                                        if(myParent.getDocFacadeType()==NAREZDANE_ZA_PREHVYRQNE) {
-                                        int storageTO = myParent.getStorageOUTProduct();
-                                        if(isNew) {
-                                            myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),storageTO,myParent.getPriceOneProduct(),
-                                                    myParent.getProcentProduct(),nn,dds,total,prList);
-                                            
-                                            int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
-                                            jTable1.setValueAt(maxID_DocLine,rowSelect,12);
-                                            //zapazvane na prodikta v tablicata s nali4nosti
-                                            myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,myParent.getDocFacadeLevel());
-                                        } else {
-                                            //vzimane na razlikata ot tablicata za DocLine i redaktiranite broiki ot jTable1
-                                            // vry6tane na razlikata ako ima takava ili zapazvane na brojkite
-                                            int id_dl = (Integer) jTable1.getValueAt(rowSelect,12);
-                                            int newNumberProduct = nn;
-                                            docLineArray d =null;
-                                            int oldNumberProduct = 0;
-                                            for(int j=0; j < rows.size();j++) {
-                                                d = (docLineArray) rows.get(j);
-                                                if(id_dl==d.getID_DocLine()) {
-                                                    oldNumberProduct = d.getNumberOfProduct();
-                                                    break;
-                                                }
-                                                
-                                            }
-                                            if(true) //newNumberProduct<tmpProductNumbers
-                                            {
-                                                if(newNumberProduct > oldNumberProduct  ) {
-                                                    myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(newNumberProduct - oldNumberProduct),myParent.getDocFacadeLevel());
-                                                }else {
-                                                    myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(oldNumberProduct-newNumberProduct ),myParent.getDocFacadeLevel());
-                                                }
-                                                
-                                                if(oldNumberProduct>0) {
-                                                    
-                                                    myParent.getCountriesT().updateDocLine(id_dl,myParent.getID_DocFacade(),myParent.getID_PC(),
-                                                            storageTO,myParent.getPriceOneProduct(),
-                                                            myParent.getProcentProduct(),newNumberProduct,dds,total,prList);
-                                                } else {
-                                                    myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),storageTO,myParent.getPriceOneProduct(),
-                                                            myParent.getProcentProduct(),newNumberProduct,dds,total,prList);
-                                                    int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
-                                                    jTable1.setValueAt(maxID_DocLine,rowSelect,12);
-                                                    
-                                                    
-                                                }
-                                            } else // nqma dostaty4ni koli4etvo ot produkta
-                                            {
-                                                ((docLineTableModel) jTable1.getModel()).removeRow(rowSelect) ;
-                                                ((docLineTableModel)jTable1.getModel()).addRow(new docLineArray());
-                                                
-                                            }
-                                            
-                                        }
-                                        } else
-//!PROFORMA_FAKTURA - OUT produkt
-                                            if(myParent.getDocFacadeType()!=PROFORMA_FAKTURA && myParent.getDocFacadeType()!=OFERTA) {
-                                        int storageTO = myParent.getStorageOUTProduct();
-                                        if(!isNew) {
-                                            //vzimane na razlikata ot tablicata za DocLine i redaktiranite broiki ot jTable1
-                                            // vry6tane na razlikata ako ima takava ili zapazvane na brojkite
-                                            int id_dl = (Integer) jTable1.getValueAt(rowSelect,12);
-                                            int newNumberProduct = nn;
-                                            docLineArray d =null;
-                                            int oldNumberProduct = 0;
-                                            for(int j=0; j < rows.size();j++) {
-                                                d = (docLineArray) rows.get(j);
-                                                if(id_dl==d.getID_DocLine()) {
-                                                    oldNumberProduct = d.getNumberOfProduct();
-                                                    break;
-                                                }
-                                                
-                                            }
-                                            //     int tmpProductNumbers = myParent.getCountriesT().checkForEnoughProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),myParent.getDocFacadeLevel());
-                                            if(true) //newNumberProduct<tmpProductNumbers
-                                            {
-                                                if(newNumberProduct > oldNumberProduct) {
-                                                    myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(newNumberProduct - oldNumberProduct),myParent.getDocFacadeLevel());
-                                                } else {
-                                                    myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(oldNumberProduct-newNumberProduct ),myParent.getDocFacadeLevel());
-                                                }
-                                                
-                                                if(oldNumberProduct>0) {
-                                                    myParent.getCountriesT().updateDocLine(id_dl,myParent.getID_DocFacade(),myParent.getID_PC(),
-                                                            myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
-                                                            myParent.getProcentProduct(),newNumberProduct,dds,total,prList);
-                                                } else {
-                                                    myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
-                                                            myParent.getProcentProduct(),nn,dds,total,prList);
-                                                    
-                                                    int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
-                                                    jTable1.setValueAt(maxID_DocLine,rowSelect,12);
-                                                    //zapazvane na prodikta v tablicata s nali4nosti
-                                                    myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,myParent.getDocFacadeLevel());
-                                                }
-                                            } else {
-                                                ((docLineTableModel) jTable1.getModel()).removeRow(rowSelect) ;
-                                                ((docLineTableModel)jTable1.getModel()).addRow(new docLineArray());
-                                            }
-                                        } // end   if(!isNew)
-                                        else //ako dokumenta e nov
-                                        {
-                                            
-                                            double newPrice1 = (Double) jTable1.getValueAt(rowSelect,8);
-                                            double newPP1 = (Double) jTable1.getValueAt(rowSelect,9);
-                                            myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),storageTO,newPrice1,
-                                                    newPP1,nn,dds,total,prList);
-                                            
-                                            int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
-                                            jTable1.setValueAt(maxID_DocLine,rowSelect,12);
-                                            //zapazvane na prodikta v tablicata s nali4nosti
-                                            myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,myParent.getDocFacadeLevel());
-                                        }
-                                            } //  end  if(myParent.getDocFacadeType()!=PROFORMA_FAKTURA)
-//==  POFORMA_FAKTURA ili OFERTA
-                                            else // ako dokumenta e POFORMA_FAKTURA ili OFERTA
-                                                if(myParent.getDocFacadeType()==PROFORMA_FAKTURA || myParent.getDocFacadeType()==OFERTA) {
-                                        if(!isNew) {
-                                            int id_dl = (Integer) jTable1.getValueAt(rowSelect,12);
-                                            int newNumberProduct = nn;
-                                            docLineArray d = (docLineArray) rows.get(rowSelect);
-                                            
-                                            
-                                            myParent.getCountriesT().updateDocLine(id_dl,myParent.getID_DocFacade(),myParent.getID_PC(),
-                                                    myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
-                                                    myParent.getProcentProduct(),newNumberProduct,dds,total,prList);
-                                        } else {
-                                            myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
-                                                    myParent.getProcentProduct(),nn,dds,total,prList);
-                                            
-                                            int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
-                                            jTable1.setValueAt(maxID_DocLine,rowSelect,12);
-                                        }
-                                                }
-                                    
-                                } else {
-                                    ((docLineTableModel) jTable1.getModel()).removeRow(rowSelect);
-                                    if(rowSelect==0) {
-                                        ((docLineTableModel) jTable1.getModel()).addRow(new docLineArray());
-                                    }
-                                    
-                                }
-                                isSetDataInTable = false;
-                                
-                                
-                                
-                                
-                                
-                            }
-                            
-                            
-                            
-                        }
-                        
-                        isFinishRow = true;
-                        int tmpId_dl = (Integer)jTable1.getValueAt(rowSelect,12);
-                        checkForSaveInDB.put(new Integer(tmpId_dl),new Boolean(true));
-                        
-                        str="";
-                        System.out.println("End procedure to save in DB");
-                        
-                    }
-                }
-                
-                
-                
-                if(e.getKeyCode()==KeyEvent.VK_F7) {
-                    
-                    
-                    
-                    columnSelect = jTable1.getSelectedColumn();
-                    if(columnSelect==0) {
-                        if(str.equals("0") || str==null || str.equals("\uffff")  ) {str="";} else {
-                            String tmpStr = new String();
-                            
-                            byte by[] = str.getBytes();
-                            
-                            
-                            for(int i=0 ; i< by.length;i++) {
-                                
-                                if(by[i]>=48 && by[i]<=57) {
-                                    String b1 = String.valueOf((char)by[i]);
-                                    tmpStr += b1;
-                                }
-                            }
-                            str=" ";
-                            
-                            str = tmpStr;
-                            
-                        }
-                        if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24)&&
-                                !((docLineTableModel)jTable1.getModel()).getIsFinishToEnterData(jTable1.getSelectedRow())) {
-                            isFinishRow = false;
-                            processKeyPress(myParent.getDocFacadeType(),F7_KEY,SEARCH_BY_CODE,4);
-                            
-                        }
-                        
-                    }
-                    if(columnSelect==1) {
-                        if(str.equals("0") || str==null || str.equals("\uffff")  ) {str="";}
-                        if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24) &&
-                                !((docLineTableModel)jTable1.getModel()).getIsFinishToEnterData(jTable1.getSelectedRow())) {
-                            // str=str.substring(0,str.length()-1);
-                            if(str.endsWith("\uffff")) {
-                                str = str.substring(0,str.length()-1);
-                            }
-                            str = removeCharacter(str);
-                            System.out.println("befor processKeyPress"+str);
-                            isFinishRow = false;
-                            processKeyPress(myParent.getDocFacadeType(),F7_KEY,SEARCH_BY_NAME,3);
-                        }
-                    }
-                    
-                }
-                
-                if(e.getKeyCode()==KeyEvent.VK_F8) {
-                    if(str.equals("0")|| str==null) str="";
-                    columnSelect = jTable1.getSelectedColumn();
-                    if(columnSelect==0) {
-                        if(str.equals("0") || str==null || str.equals("\uffff")  ) {str="";} else {
-                            String tmpStr = new String();
-                            
-                            byte by[] = str.getBytes();
-                            
-                            
-                            for(int i=0 ; i< by.length;i++) {
-                                
-                                if(by[i]>=48 && by[i]<=57) {
-                                    String b1 = String.valueOf((char)by[i]);
-                                    tmpStr += b1;
-                                }
-                            }
-                            str=" ";
-                            
-                            str = tmpStr;
-                            
-                        }
-                        if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24) &&
-                                !((docLineTableModel)jTable1.getModel()).getIsFinishToEnterData(jTable1.getSelectedRow())) {
-                            isFinishRow = false;
-                            processKeyPress(myParent.getDocFacadeType(),F8_KEY,SEARCH_BY_CODE,4);
-                        }
-                        
-                        
-                    }
-                    if(columnSelect==1) {
-                        if(str.equals("0") || str==null || str.equals("\uffff")  ) {str="";}
-                        if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24)&&
-                                !((docLineTableModel)jTable1.getModel()).getIsFinishToEnterData(jTable1.getSelectedRow())) {
-                            if(str.endsWith("\uffff")) {
-                                str = str.substring(0,str.length()-1);
-                            }
-                            str = removeCharacter(str);
-                            isFinishRow = false;
-                            processKeyPress(myParent.getDocFacadeType(),F8_KEY,SEARCH_BY_NAME,3);
-                        }
-                    }
-                }
-                
-                if(e.getKeyCode()==KeyEvent.VK_F9) {
-                    if(str.equals("0")|| str==null) str="";
-                    columnSelect = jTable1.getSelectedColumn();
-                    if(columnSelect==0) {
-                        if(str.equals("0") || str==null || str.equals("\uffff")  ) {str="";} else {
-                            String tmpStr = new String();
-                            
-                            byte by[] = str.getBytes();
-                            
-                            
-                            for(int i=0 ; i< by.length;i++) {
-                                
-                                if(by[i]>=48 && by[i]<=57) {
-                                    String b1 = String.valueOf((char)by[i]);
-                                    tmpStr += b1;
-                                }
-                            }
-                            str=" ";
-                            
-                            str = tmpStr;
-                            
-                        }
-                        if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24)&&
-                                !((docLineTableModel)jTable1.getModel()).getIsFinishToEnterData(jTable1.getSelectedRow())) {
-                            isFinishRow = false;
-                            processKeyPress(myParent.getDocFacadeType(),F9_KEY,SEARCH_BY_CODE,4);
-                            
-                        }
-                        
-                    }
-                    if(columnSelect==1) {
-                        if(str.equals("0") || str==null || str.equals("\uffff")  ) {str="";}
-                        if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24)&&
-                                !((docLineTableModel)jTable1.getModel()).getIsFinishToEnterData(jTable1.getSelectedRow())) {
-                            if(str.endsWith("\uffff")) {
-                                str = str.substring(0,str.length()-1);
-                            }
-                            str = removeCharacter(str);
-                            isFinishRow = false;
-                            processKeyPress(myParent.getDocFacadeType(),F9_KEY,SEARCH_BY_NAME,3);
-                            
-                        }
-                        
-                    }
-                }
-            } // end keyPressed
+            }
             public void keyReleased(KeyEvent e) {
                 columnSelect = jTable1.getSelectedColumn()-1;
                 rowSelect = jTable1.getSelectedRow();
                 
                 if(e.getKeyCode()== KeyEvent.VK_ENTER) {
-                    if(columnSelect == 0) {
-                        isFinishRow = false;
-                        System.out.println("keyReleased    == = ==    0000");
-                        
-                        if(!isSetDataInTable&&rate!=0) {
-                            try {
-                                str = String.valueOf(jTable1.getValueAt(rowSelect,columnSelect));
-                            } catch(Exception ex){}
-                            if(str.equals("0")) str="";
-                            if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24)&&
-                                    !((docLineTableModel)jTable1.getModel()).getIsFinishToEnterData(rowSelect))
-                                processKeyPress(myParent.getDocFacadeType(),F7_KEY,SEARCH_BY_CODE,3);
-                            
-                            
-                        }
-                        
-                        
-                    }
-                    if(columnSelect == 1) {
-                        isFinishRow = false;
-                        System.out.println("keyReleased    == = ==    0000");
-                        
-                        if(!isSetDataInTable&&rate!=0) {
-                            try {
-                                str = String.valueOf(jTable1.getValueAt(rowSelect,columnSelect));
-                            } catch(Exception ex) {
-                                str = new String("0");
-                            }
-                            if(str.equals("0")||str.equals("null")) str="";
-                            
-                            if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24)&&
-                                    !((docLineTableModel)jTable1.getModel()).getIsFinishToEnterData(rowSelect)) {
-                                System.out.println("processKeyPress - enter "+ str);
-                                if(str.endsWith("\uffff")) {
-                                    str = str.substring(0,str.length()-1);
-                                }
-                                str = removeCharacter(str);
-                                System.out.println("processKeyPress - enter "+ str);
-                                
-                                
-                                processKeyPress(myParent.getDocFacadeType(),F7_KEY,SEARCH_BY_NAME,2);
-                            }
-                            
-                            
-                            
-                        }
-                    }
-                    
-                    if(columnSelect == 2 || columnSelect == 3 || columnSelect == 4 || columnSelect == 5
-                            || columnSelect == 6 || columnSelect == 7 || columnSelect == 8 || columnSelect == 9 || columnSelect == 10) {
-                        if((Boolean)jTable1.getValueAt(jTable1.getSelectedRow(),24))
-                            if(!isSetDataInTable) // ako ne e minal prez formata za izbor na produkt
-                            {
-                            jTable1.changeSelection(jTable1.getSelectedRow(),0,false,false);
-                            System.out.println("Return to begin DocLine");
-                            }
-                    }
+                
+                   
                     if(columnSelect == 3)   // cenova lista ---------------------------------------------
                     {
                         
@@ -5179,7 +4340,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         //  2: tyrsene po ime na produkta
         //firstCenterLast -> F7 key - center; F8 key - first; F9 key - last
         
-     /*    try
+      /*  try
               {
                 Robot robot = new Robot();
                 robot.keyPress(KeyEvent.VK_ENTER);
@@ -5190,7 +4351,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         
         isProductIN = checkInOutProduct(docType);
         
-        if(isProductIN) {
+/*        if(isProductIN) {
             ((docLineTableModel) jTable1.getModel()).enableCellEditable(4);
             ((docLineTableModel) jTable1.getModel()).enableCellEditable(5);
             ((docLineTableModel) jTable1.getModel()).enableCellEditable(6);
@@ -5205,7 +4366,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             ((docLineTableModel) jTable1.getModel()).enableCellEditable(8);
             ((docLineTableModel) jTable1.getModel()).enableCellEditable(9);
         }
-        
+  */      
         if(rate!=0) {
             
             //jTable1.grabFocus();
@@ -5250,34 +4411,41 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             System.out.print("myParent.getCodeProduct = ");
             System.out.println(myParent.getCodeProduct());
             
-            ((docLineTableModel) jTable1.getModel()).enableCellEditable(3);
+   //         ((docLineTableModel) jTable1.getModel()).enableCellEditable(3);
             
             
             
-            jTable1.changeSelection(jTable1.getSelectedRow(),4,false,false);
+  //          jTable1.changeSelection(jTable1.getSelectedRow(),4,false,false);
+            
+            
             if(myParent.getIsSelectProduct()) {
                 
                 jLabel32.setText(String.valueOf(myParent.getCountriesT().getAllProductWithOutLevel(myParent.getID_PC(),
                         myParent.getDocFacadeLevel(),myParent.getStorageOUTProduct())));
-                jTable1.setValueAt(myParent.getCodeProduct(),jTable1.getSelectedRow(),0);
-                jTable1.setValueAt(myParent.getNameProduct(),jTable1.getSelectedRow(),1);
-                
-                jTable1.setValueAt(myParent.getStorageOUTProduct(),jTable1.getSelectedRow(),2);
+  //              jTable1.setValueAt(myParent.getCodeProduct(),jTable1.getSelectedRow(),0);
+  insertEdit[0].setText(String.valueOf(myParent.getCodeProduct()));
+  //              jTable1.setValueAt(myParent.getNameProduct(),jTable1.getSelectedRow(),1);
+  insertEdit[1].setText(String.valueOf(myParent.getNameProduct()));              
+  //              jTable1.setValueAt(myParent.getStorageOUTProduct(),jTable1.getSelectedRow(),2);
+  insertEdit[2].setText(String.valueOf(myParent.getStorageOUTProduct())); 
                 jLabelAllBrojProduct.setText(String.valueOf(myParent.getBrojProduct())); //
                 if(isProductIN) {
                     jLabel32.setText("0");
                     jLabelAllBrojProduct.setText("0"); //
-                    jTable1.setValueAt(0,jTable1.getSelectedRow(),3);
+  //                  jTable1.setValueAt(0,jTable1.getSelectedRow(),3);
+  insertEdit[3].setText(String.valueOf(0));                                
                     jLabelPricelist_1.setText("\u0426\u0435\u043d\u0430 1");
                     jLabelPricelist_2.setText("\u0426\u0435\u043d\u0430 2");
                     
                     jLabelPrice_1.setText("");
                     jLabelPrice_2.setText("");
-                    jTable1.setValueAt(myParent.getBrojProduct(),jTable1.getSelectedRow(),4);
+ //                   jTable1.setValueAt(myParent.getBrojProduct(),jTable1.getSelectedRow(),4);
+ insertEdit[4].setText(String.valueOf(myParent.getBrojProduct()));
                 } else // ot sklada navyn;
                 {
                     
-                    jTable1.setValueAt(myParent.getPriceList(),jTable1.getSelectedRow(),3); // ????????
+//                    jTable1.setValueAt(myParent.getPriceList(),jTable1.getSelectedRow(),3); // ????????
+insertEdit[3].setText(String.valueOf(myParent.getPriceList()));                    
                     jLabelPricelist_1.setText("\u0426\u0435\u043d\u0430 "+String.valueOf(calculatePriceList(myParent.getPriceList())[0])); //????
                     jLabelPricelist_2.setText("\u0426\u0435\u043d\u0430 "+String.valueOf(calculatePriceList(myParent.getPriceList())[1])); //???
                     
@@ -5289,7 +4457,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     rate = getRate(jLabelValuta.getText()); //?????
                     
                     //  jTable1.setValueAt(myParent.getBrojProduct(),jTable1.getSelectedRow(),4); // v tablicata se pokazvat maksimalniq broi produkti
-                    jTable1.setValueAt(0,jTable1.getSelectedRow(),4); //
+//                    jTable1.setValueAt(0,jTable1.getSelectedRow(),4); //
+insertEdit[4].setText(String.valueOf(0));                    
                     jLabelAllBrojProduct.setText(String.valueOf(myParent.getBrojProduct())); //
                 }
                 
@@ -5306,42 +4475,53 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 changeColumnName(6,myParent.getProductDescription()[1][0],jTable1);
                 changeColumnName(7,myParent.getProductDescription()[2][0],jTable1);
                 
-                jTable1.setValueAt(myParent.getProductDescription()[0][0],jTable1.getSelectedRow(),13);
-                jTable1.setValueAt(myParent.getProductDescription()[1][0],jTable1.getSelectedRow(),14);
-                jTable1.setValueAt(myParent.getProductDescription()[2][0],jTable1.getSelectedRow(),15);
-                
-                jTable1.setValueAt(calculateProductDescription(myParent.getBrojProduct(),productDescription_2,productDescription_3)[0],jTable1.getSelectedRow(),5);
-                jTable1.setValueAt(calculateProductDescription(myParent.getBrojProduct(),productDescription_2,productDescription_3)[1],jTable1.getSelectedRow(),6);
-                jTable1.setValueAt(calculateProductDescription(myParent.getBrojProduct(),productDescription_2,productDescription_3)[2],jTable1.getSelectedRow(),7);
-                
+               // jTable1.setValueAt(myParent.getProductDescription()[0][0],jTable1.getSelectedRow(),13);
+              //  jTable1.setValueAt(myParent.getProductDescription()[1][0],jTable1.getSelectedRow(),14);
+              //  jTable1.setValueAt(myParent.getProductDescription()[2][0],jTable1.getSelectedRow(),15);
+insertEdit[13].setText(String.valueOf(myParent.getProductDescription()[0][0]));
+insertEdit[14].setText(String.valueOf(myParent.getProductDescription()[1][0]));
+insertEdit[15].setText(String.valueOf(myParent.getProductDescription()[2][0]));
+
+               // jTable1.setValueAt(calculateProductDescription(myParent.getBrojProduct(),productDescription_2,productDescription_3)[0],jTable1.getSelectedRow(),5);
+               // jTable1.setValueAt(calculateProductDescription(myParent.getBrojProduct(),productDescription_2,productDescription_3)[1],jTable1.getSelectedRow(),6);
+               // jTable1.setValueAt(calculateProductDescription(myParent.getBrojProduct(),productDescription_2,productDescription_3)[2],jTable1.getSelectedRow(),7);
+insertEdit[5].setText(String.valueOf(calculateProductDescription(myParent.getBrojProduct(),productDescription_2,productDescription_3)[0]));
+insertEdit[6].setText(String.valueOf(calculateProductDescription(myParent.getBrojProduct(),productDescription_2,productDescription_3)[1]));
+insertEdit[7].setText(String.valueOf(calculateProductDescription(myParent.getBrojProduct(),productDescription_2,productDescription_3)[2]));
                 
                 if(isProductIN) {
                     myParent.setPriceOneProduct(myParent.getWorkPriceListProduct()[4]); // dostavna cena
 // rate --->   jTable1.setValueAt(myParent.getPriceOneProduct()*rate,jTable1.getSelectedRow(),8);
-                    jTable1.setValueAt(myParent.getPriceOneProduct(),jTable1.getSelectedRow(),8);
-                    jTable1.setValueAt(0.0,jTable1.getSelectedRow(),9);
+//                    jTable1.setValueAt(myParent.getPriceOneProduct(),jTable1.getSelectedRow(),8);
+insertEdit[8].setText(String.valueOf(myParent.getPriceOneProduct()));                   
+//                    jTable1.setValueAt(0.0,jTable1.getSelectedRow(),9);
+insertEdit[9].setText(String.valueOf(0.0));                      
                     
                 } else  // ot sklada navyn;
                 {
                     myParent.setPriceOneProduct(myParent.getWorkPriceListProduct()[myParent.getPriceList()-1]); //??????
 // rate --->
-                    jTable1.setValueAt(myParent.getPriceOneProduct()*rate,jTable1.getSelectedRow(),8);//????
-                    
-                    jTable1.setValueAt(myParent.getProcentProduct(),jTable1.getSelectedRow(),9);     //??????
-                    
+ //                   jTable1.setValueAt(myParent.getPriceOneProduct()*rate,jTable1.getSelectedRow(),8);//????
+ insertEdit[8].setText(String.valueOf(myParent.getPriceOneProduct()*rate));                      
+ //                   jTable1.setValueAt(myParent.getProcentProduct(),jTable1.getSelectedRow(),9);     //??????
+insertEdit[9].setText(String.valueOf(myParent.getProcentProduct()));                       
                 }
                 
                 myParent.setDDSProduct(myParent.getProductFee()[0]);
                 System.out.println("DDS = "+ myParent.getProductFee()[0] );
-                jTable1.setValueAt(myParent.getDDSProduct(),jTable1.getSelectedRow(),10);
+//                jTable1.setValueAt(myParent.getDDSProduct(),jTable1.getSelectedRow(),10);
+insertEdit[10].setText(String.valueOf(myParent.getDDSProduct()));                  
                 if(isProductIN) {
-                    jTable1.setValueAt(calculateTotalPrice(myParent.getPriceOneProduct(),myParent.getBrojProduct()),jTable1.getSelectedRow(),11);
+//                    jTable1.setValueAt(calculateTotalPrice(myParent.getPriceOneProduct(),myParent.getBrojProduct()),jTable1.getSelectedRow(),11);
+insertEdit[11].setText(String.valueOf(calculateTotalPrice(myParent.getPriceOneProduct(),myParent.getBrojProduct())));     
                 } else {
 // rate ---->
-                    jTable1.setValueAt(calculateTotalPrice(myParent.getPriceOneProduct()*rate,myParent.getBrojProduct()),jTable1.getSelectedRow(),11);
+//                    jTable1.setValueAt(calculateTotalPrice(myParent.getPriceOneProduct()*rate,myParent.getBrojProduct()),jTable1.getSelectedRow(),11);
+insertEdit[11].setText(String.valueOf(calculateTotalPrice(myParent.getPriceOneProduct()*rate,myParent.getBrojProduct())));      
                 }
                 
-                calculateWidthColumn(jTable1);
+//               calculateWidthColumn(jTable1);
+                
                 myParent.setIsSelectProduct(false);
                 isSetDataInTable = true;
             }
@@ -5351,7 +4531,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             System.out.print("jTable1.getSelectedColumn: ");
             System.out.println(jTable1.getSelectedColumn());
             System.out.println("++----------------<3>-------F7-----------");
-            ((docLineTableModel)jTable1.getModel()).setIsFinishToEnterData(jTable1.getSelectedRow());
+ //           ((docLineTableModel)jTable1.getModel()).setIsFinishToEnterData(jTable1.getSelectedRow());
         } else {
             //show meseage za valuta
         }
@@ -6000,9 +5180,548 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         return return_value;
     }
     
+private void createInsertEditField()
+{
+    
+   
+    int len =20;
+    int h = 20;
+    for(int i=0;i<viewCow;i++)
+    {
+        len = jTable1.getColumnModel().getColumn(i).getPreferredWidth();
+        switch (i)
+        {
+            case 0:
+            {
+                insertEdit[0] =new JTextField(); // new org.softsmithy.lib.swing.JIntegerField();
+                insertEdit[0].setInputVerifier(new imakante.com.InputIntegerVerifier());
+                insertEdit[0].setHorizontalAlignment(javax.swing.JTextField.LEFT);
+                break;
+            }
+            case 3:
+            {
+                insertEdit[3] =new JTextField(); // new org.softsmithy.lib.swing.JIntegerField();
+                insertEdit[3].setInputVerifier(new imakante.com.InputIntegerVerifier());
+                insertEdit[3].setHorizontalAlignment(javax.swing.JTextField.LEFT);
+                break;
+            }
+            case 4:
+            {
+                insertEdit[4] =new JTextField(); // new org.softsmithy.lib.swing.JIntegerField();
+                insertEdit[4].setInputVerifier(new imakante.com.InputIntegerVerifier());
+                insertEdit[4].setBackground(Color.GRAY);
+                insertEdit[4].setHorizontalAlignment(javax.swing.JTextField.LEFT);
+                break;
+            }
+            case 5:
+            {
+                insertEdit[5] =new JTextField(); // new org.softsmithy.lib.swing.JIntegerField();
+                insertEdit[5].setInputVerifier(new imakante.com.InputIntegerVerifier());
+                insertEdit[5].setHorizontalAlignment(javax.swing.JTextField.LEFT);
+                break;
+            }
+            case 6:
+            {
+                insertEdit[6] =new JTextField(); // new org.softsmithy.lib.swing.JIntegerField();
+                insertEdit[6].setInputVerifier(new imakante.com.InputIntegerVerifier());
+                insertEdit[6].setHorizontalAlignment(javax.swing.JTextField.LEFT);
+                break;
+            }
+            case 7:
+            {
+                insertEdit[7] =new JTextField(); // new org.softsmithy.lib.swing.JIntegerField();
+                insertEdit[7].setInputVerifier(new imakante.com.InputIntegerVerifier());
+                insertEdit[7].setHorizontalAlignment(javax.swing.JTextField.LEFT);
+                break;
+            }
+            case 8:
+            {
+                insertEdit[8] =new JTextField(); // new org.softsmithy.lib.swing.JIntegerField();
+                insertEdit[8].setInputVerifier(new imakante.com.InputDoubleVerifier());
+                insertEdit[8].setHorizontalAlignment(javax.swing.JTextField.LEFT);
+                break;
+            }
+            case 9:
+            {
+                insertEdit[9] =new JTextField(); // new org.softsmithy.lib.swing.JIntegerField();
+                insertEdit[9].setInputVerifier(new imakante.com.InputDoubleVerifier());
+                insertEdit[9].setHorizontalAlignment(javax.swing.JTextField.LEFT);
+                break;
+            }
+            case 10:
+            {
+                insertEdit[10] =new JTextField(); // new org.softsmithy.lib.swing.JIntegerField();
+                insertEdit[10].setInputVerifier(new imakante.com.InputDoubleVerifier());
+                insertEdit[10].setHorizontalAlignment(javax.swing.JTextField.LEFT);
+                break;
+            }
+            case 11:
+            {
+                insertEdit[11] =new JTextField(); // new org.softsmithy.lib.swing.JIntegerField();
+                insertEdit[11].setInputVerifier(new imakante.com.InputDoubleVerifier());
+                insertEdit[11].setHorizontalAlignment(javax.swing.JTextField.LEFT);
+                break;
+            }
+            default:
+            {
+              insertEdit[i] = new JTextField();  
+              insertEdit[i].setHorizontalAlignment(javax.swing.JTextField.LEFT);
+            }
+        }
+        
+        insertEdit[i].setPreferredSize(new Dimension(len,h));
+        jPanelInsertEdit.add(insertEdit[i]);
+        if(i>11) insertEdit[i].setVisible(false);
+    }
+    
+     insertEdit[11].setEditable(false);
+     insertEdit[11].setBackground(Color.RED);
+    // prihva6tane na scrollbara
+    
+    jScrollEdinInsert.setHorizontalScrollBar(jScrollPane2.getHorizontalScrollBar());
+    
+}
+ 
+private void calculateWidthInsertEditFieldALL()
+{
+    jPanelInsertEdit.removeAll();
+    Runtime.getRuntime().gc();
+    createInsertEditField();
+    int len =20;
+    int h = 20;
+    for(int i=0;i<viewCow;i++)
+    {
+        if(i>11) break;
+       len = jTable1.getColumnModel().getColumn(i).getPreferredWidth(); 
+       insertEdit[i].setMinimumSize(new Dimension(len,h));
+       insertEdit[i].setMaximumSize(new Dimension(999,h));
+       insertEdit[i].setPreferredSize(new Dimension(len,h));
+       
+    }
+    jPanelInsertEdit.repaint();
+    setKeyListenerInserEdit();
+}
+
+private void setKeyListenerInserEdit()
+{
+    if(key0!=null) insertEdit[0].removeKeyListener(key0);
+    if(key1!=null) insertEdit[0].removeKeyListener(key0);
+    if(key10!=null) insertEdit[0].removeKeyListener(key0);
+    KeyListener key0 = new KeyListener()
+    {
+      public void keyPressed(KeyEvent e) {
+          
+          
+            if(e.getKeyCode()==e.VK_F7)
+            {
+                imakante.com.InputIntegerVerifier ii = new  imakante.com.InputIntegerVerifier();
+                if(!ii.verify(insertEdit[0])) return;
+                isFinishRow = false;
+                str = insertEdit[0].getText();
+                clearInsertEditData();
+               
+                processKeyPress(myParent.getDocFacadeType(),F7_KEY,SEARCH_BY_CODE,4);
+               
+            }    
+            if(e.getKeyCode()==e.VK_F8)
+            {
+                imakante.com.InputIntegerVerifier ii = new  imakante.com.InputIntegerVerifier();
+                if(!ii.verify(insertEdit[0])) return;
+                isFinishRow = false;
+                str = insertEdit[0].getText();
+                 clearInsertEditData();
+                processKeyPress(myParent.getDocFacadeType(),F8_KEY,SEARCH_BY_CODE,4);
+            }
+           if(e.getKeyCode()==e.VK_F9)
+            {
+                imakante.com.InputIntegerVerifier ii = new  imakante.com.InputIntegerVerifier();
+                if(!ii.verify(insertEdit[0])) return;
+                isFinishRow = false;
+                str = insertEdit[0].getText();
+                 clearInsertEditData();
+                processKeyPress(myParent.getDocFacadeType(),F9_KEY,SEARCH_BY_CODE,4);
+           }   
+         
+            
+        }
+        public void keyReleased(KeyEvent e) {
+        }
+        public void keyTyped(KeyEvent e) {
+        }  
+    };
+    
+    insertEdit[0].addKeyListener(key0);
+    
+     key1 =  new KeyListener() {
+        public void keyPressed(KeyEvent e) {
+            if(e.getKeyCode()==e.VK_F7)
+            {
+                isFinishRow = false;
+                str = insertEdit[1].getText();
+                clearInsertEditData();
+               
+                processKeyPress(myParent.getDocFacadeType(),F7_KEY,SEARCH_BY_NAME,3);
+               
+            }
+             if(e.getKeyCode()==e.VK_F8)
+            {
+                isFinishRow = false;
+                str = insertEdit[1].getText();
+                clearInsertEditData();
+                processKeyPress(myParent.getDocFacadeType(),F8_KEY,SEARCH_BY_NAME,3);
+            }
+             if(e.getKeyCode()==e.VK_F9)
+            {
+                isFinishRow = false;
+                str = insertEdit[1].getText();
+                clearInsertEditData();
+                processKeyPress(myParent.getDocFacadeType(),F9_KEY,SEARCH_BY_NAME,3);
+                
+            }
+        }
+        public void keyReleased(KeyEvent e) {
+        }
+        public void keyTyped(KeyEvent e) {
+        }
+    };
+     insertEdit[1].addKeyListener(key1);
+     
+     
+     key10 = new KeyListener() {
+        public void keyPressed(KeyEvent e) {
+        }
+        public void keyReleased(KeyEvent e) {
+            
+          if(e.getKeyCode()==e.VK_ENTER)  
+          {
+ //----------------- START---------------
+            System.out.println("START  insertEdit[10].addKeyListener - VK_ENTER"); 
+             if(!isSetDataInTable) return;
+              System.out.println("columnSelect == 10");
+                        if( !isFinishRow) //proverka dali e priklu4ilo vyvezdaneto na reda
+                        {
+                            str="";
+                            System.out.println("Start save data in DB");
+                            double alldds = Double.parseDouble(jLabelAllDDS.getText());
+    //                        alldds += (Double) jTable1.getValueAt(rowSelect,11)*(Double) jTable1.getValueAt(rowSelect,10)/100;
+    alldds += Double.valueOf(insertEdit[11].getText())*Double.valueOf(insertEdit[10].getText())/100;
+                            //   jLabelAllDDS.setText(doubleRoundToString(4,alldds));
+                            double ddsOsnova = Double.parseDouble(jLabelDDSOsnova.getText());
+    //                      ddsOsnova += (Double) jTable1.getValueAt(rowSelect,11);
+    ddsOsnova += Double.valueOf(insertEdit[11].getText());                            
+                            //     jLabelDDSOsnova.setText(doubleRoundToString(4,ddsOsnova));
+                            double allTotal = Double.parseDouble(jLabelAllTotal.getText());
+                            allTotal = alldds+ddsOsnova;
+                            //      jLabelAllTotal.setText(doubleRoundToString(4,allTotal));
+                            
+                            System.out.println("Общо = "+ allTotal + "::"+doubleRoundToString(4,allTotal));
+                            System.out.println("ДДС = "+ alldds + "::"+doubleRoundToString(4,alldds));
+                            System.out.println("База = "+ ddsOsnova + "::" + doubleRoundToString(4,ddsOsnova));
+                            calculateTotalPriceForDocument();
+    //                        jTable1.setValueAt(true,jTable1.getSelectedRow(),24); // markirame reda - ve4e ne moze da se redaktira
+                            
+    //                        myParent.setPriceOneProduct((Double) jTable1.getValueAt(rowSelect,8));
+     myParent.setPriceOneProduct(Double.valueOf(insertEdit[8].getText()));                       
+    //                        myParent.setProcentProduct((Double) jTable1.getValueAt(rowSelect,9));
+     myParent.setProcentProduct(Double.valueOf(insertEdit[9].getText()));
+                            if(true) //jTable1.getSelectedRow()==(jTable1.getRowCount() - 1)   pri polovfenie 4e reda e posleden
+                            {
+  //                              int i = 0;
+                                System.out.println("IF ROW IS LAST");
+  //                              i = jTable1.getSelectedRow();
+  //                              ((docLineTableModel)jTable1.getModel()).setDefaultCellEditable();
+                                //  ((docLineTableModel)jTable1.getModel()).setIsFinishToEnterData(i); // markirame reda kato priklu4en s vyvezdaneto
+  //                              ((docLineTableModel)jTable1.getModel()).addRow(new docLineArray());
+  //                              jTable1.changeSelection(i+1,-1,false,false);
+                                System.out.println("changeSelection");
+                                
+  //                              ((docLineTableModel) jTable1.getModel()).enableCellEditable(0);
+                                //za tyrsene po ime
+ //                               ((docLineTableModel) jTable1.getModel()).enableCellEditable(1);
+                                // Save DocLine into DATABASE
+                                int nn = Integer.valueOf(insertEdit[4].getText());            // (Integer)jTable1.getValueAt(rowSelect,4);
+                                int prList = Integer.valueOf(insertEdit[3].getText());        // (Integer)jTable1.getValueAt(rowSelect,3);
+                                double dds = Double.valueOf(insertEdit[10].getText());                 //  (Double)jTable1.getValueAt(rowSelect,10);
+                                double total =  Double.valueOf(insertEdit[11].getText());             //  (Double)jTable1.getValueAt(rowSelect,11);
+                                //    int tmpProductNumbers = myParent.getCountriesT().checkForEnoughProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),myParent.getDocFacadeLevel());
+                                if(true) {
+// PRIEMATELNA_RAZPISKA - IN produkt
+                                    if(myParent.getDocFacadeType()==PRIEMATELNA_RAZPISKA || myParent.getDocFacadeType()==RAZPISKA_ZA_VRYSHTANE ) {
+                                        if(!isLoadRow) {
+                                            myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
+                                                    myParent.getProcentProduct(),nn,dds,total,prList);
+                                            
+                                            int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
+                                          //  jTable1.setValueAt(maxID_DocLine,rowSelect,12);
+                                            insertEdit[12].setText(String.valueOf(maxID_DocLine));
+                                            //vry5tane na prodikta v tablicata s nali4nosti
+                                            
+                                            setNNReturnProduct(nn);
+
+                                            
+                                        } else {
+                                            
+                                            int id_dl = Integer.valueOf(insertEdit[12].getText());                                    //(Integer) jTable1.getValueAt(rowSelect,12);
+                                            int newNumberProduct = nn;
+                                            docLineArray d =null;
+                                            int oldNumberProduct = 0;
+                                            for(int j=0; j < rows.size();j++) {
+                                                d = (docLineArray) rows.get(j);
+                                                if(id_dl==d.getID_DocLine()) {
+                                                    oldNumberProduct = d.getNumberOfProduct();
+                                                    break;
+                                                }
+                                                
+                                            }
+                                            if(newNumberProduct > oldNumberProduct) {
+                                                
+                                                //    myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(newNumberProduct-oldNumberProduct),myParent.getDocFacadeLevel());
+                                                setNNReturnProduct(newNumberProduct-oldNumberProduct);
+                                                
+                                            } else {
+                                                
+                                                // myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(oldNumberProduct-newNumberProduct ),myParent.getDocFacadeLevel());
+                                                setNNPreserveProducts(oldNumberProduct-newNumberProduct);
+                                            }
+                                            if(oldNumberProduct>0) {
+                                                myParent.getCountriesT().updateDocLine(id_dl,myParent.getID_DocFacade(),myParent.getID_PC(),
+                                                        myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
+                                                        myParent.getProcentProduct(),newNumberProduct,dds,total,prList);
+                                            } else {
+                                                myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
+                                                        myParent.getProcentProduct(),newNumberProduct,dds,total,prList);
+                                                int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
+                                              //  jTable1.setValueAt(maxID_DocLine,rowSelect,12);
+                                                insertEdit[12].setText(String.valueOf(maxID_DocLine));
+                                                
+                                            }
+                                            
+                                        }
+                                    }
+                                    
+                                    else
+//NAREZDANE_ZA_PREHVYRQNE
+                                        if(myParent.getDocFacadeType()==NAREZDANE_ZA_PREHVYRQNE) {
+                                        int storageTO = myParent.getStorageOUTProduct();
+                                        if(isLoadRow) {
+                                            //vzimane na razlikata ot tablicata za DocLine i redaktiranite broiki ot jTable1
+                                            // vry6tane na razlikata ako ima takava ili zapazvane na brojkite
+                                            int id_dl =Integer.valueOf(insertEdit[12].getText());              // (Integer) jTable1.getValueAt(rowSelect,12);
+                                            int newNumberProduct = nn;
+                                            docLineArray d =null;
+                                            int oldNumberProduct = 0;
+                                            for(int j=0; j < rows.size();j++) {
+                                                d = (docLineArray) rows.get(j);
+                                                if(id_dl==d.getID_DocLine()) {
+                                                    oldNumberProduct = d.getNumberOfProduct();
+                                                    break;
+                                                }
+                                                
+                                            }
+                                            if(true) //newNumberProduct<tmpProductNumbers
+                                            {
+                                                if(newNumberProduct > oldNumberProduct  ) {
+                                                    myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(newNumberProduct - oldNumberProduct),myParent.getDocFacadeLevel());
+                                                }else {
+                                                    myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(oldNumberProduct-newNumberProduct ),myParent.getDocFacadeLevel());
+                                                }
+                                                
+                                                if(oldNumberProduct>0) {
+                                                    
+                                                    myParent.getCountriesT().updateDocLine(id_dl,myParent.getID_DocFacade(),myParent.getID_PC(),
+                                                            storageTO,myParent.getPriceOneProduct(),
+                                                            myParent.getProcentProduct(),newNumberProduct,dds,total,prList);
+                                                } else {
+                                                    myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),storageTO,myParent.getPriceOneProduct(),
+                                                            myParent.getProcentProduct(),newNumberProduct,dds,total,prList);
+                                                    int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
+                                                  //  jTable1.setValueAt(maxID_DocLine,rowSelect,12);
+                                                    insertEdit[12].setText(String.valueOf(maxID_DocLine));
+                                                    
+                                                }
+                                            } else // nqma dostaty4ni koli4etvo ot produkta
+                                            {
+                                              //  ((docLineTableModel) jTable1.getModel()).removeRow(rowSelect) ;
+                                              //  ((docLineTableModel)jTable1.getModel()).addRow(new docLineArray());
+                                                
+                                            }
+                                        } else // ako dokumenta e nov
+                                        {
+                                            myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),storageTO,myParent.getPriceOneProduct(),
+                                                    myParent.getProcentProduct(),nn,dds,total,prList);
+                                            
+                                            int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
+                                           // jTable1.setValueAt(maxID_DocLine,rowSelect,12);
+                                            insertEdit[12].setText(String.valueOf(maxID_DocLine));
+                                            //zapazvane na prodikta v tablicata s nali4nosti
+                                            myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,myParent.getDocFacadeLevel());
+                                        }
+                                        } else
+//!PROFORMA_FAKTURA ili OFETRA
+                                            if(myParent.getDocFacadeType()!=PROFORMA_FAKTURA && myParent.getDocFacadeType()!=OFERTA) {
+                                        int storageTO = myParent.getStorageOUTProduct();
+                                        if(isLoadRow) {
+                                            //vzimane na razlikata ot tablicata za DocLine i redaktiranite broiki ot jTable1
+                                            // vry6tane na razlikata ako ima takava ili zapazvane na brojkite
+                                            int id_dl =Integer.valueOf(insertEdit[12].getText());     // (Integer) jTable1.getValueAt(rowSelect,12);
+                                            int newNumberProduct = nn;
+                                            docLineArray d =null;
+                                            int oldNumberProduct = 0;
+                                            for(int j=0; j < rows.size();j++) {
+                                                d = (docLineArray) rows.get(j);
+                                                if(id_dl==d.getID_DocLine()) {
+                                                    oldNumberProduct = d.getNumberOfProduct();
+                                                    break;
+                                                }
+                                                
+                                            }
+                                            if(true) //newNumberProduct<tmpProductNumbers
+                                            {
+                                                if(newNumberProduct > oldNumberProduct  ) {
+                                                    myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(newNumberProduct - oldNumberProduct),myParent.getDocFacadeLevel());
+                                                }else {
+                                                    myParent.getCountriesT().returnProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),(oldNumberProduct-newNumberProduct ),myParent.getDocFacadeLevel());
+                                                }
+                                                
+                                                if(oldNumberProduct>0) {
+                                                    double newPrice1 =Double.valueOf(insertEdit[8].getText());               // (Double) jTable1.getValueAt(rowSelect,8);
+                                                    double newPP1 =Double.valueOf(insertEdit[9].getText());                 // (Double) jTable1.getValueAt(rowSelect,9);
+                                                    myParent.getCountriesT().updateDocLine(id_dl,myParent.getID_DocFacade(),myParent.getID_PC(),
+                                                            storageTO,newPrice1,
+                                                            newPP1,newNumberProduct,dds,total,prList);
+                                                } else {
+                                                    double newPrice1 =Double.valueOf(insertEdit[8].getText());      // (Double) jTable1.getValueAt(rowSelect,8);
+                                                    double newPP1 = Double.valueOf(insertEdit[9].getText());       //(Double) jTable1.getValueAt(rowSelect,9);
+                                                    myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),storageTO,newPrice1,
+                                                            newPP1,newNumberProduct,dds,total,prList);
+                                                    int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
+                                                  //  jTable1.setValueAt(maxID_DocLine,rowSelect,12);
+                                                    insertEdit[12].setText(String.valueOf(maxID_DocLine));
+                                                    
+                                                }
+                                            } else // nqma dostaty4ni koli4etvo ot produkta
+                                            {
+                                             //   ((docLineTableModel) jTable1.getModel()).removeRow(rowSelect) ;
+                                             //   ((docLineTableModel)jTable1.getModel()).addRow(new docLineArray());
+                                                
+                                            }
+                                        } else // ako dokumenta e nov
+                                        {
+                                            double newPrice1 =Double.valueOf(insertEdit[8].getText());        // (Double) jTable1.getValueAt(rowSelect,8);
+                                            double newPP1 =Double.valueOf(insertEdit[9].getText());           // (Double) jTable1.getValueAt(rowSelect,9);
+                                            myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),storageTO,newPrice1,
+                                                    newPP1,nn,dds,total,prList);
+                                            
+                                            int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
+                                          //  jTable1.setValueAt(maxID_DocLine,rowSelect,12);
+                                            insertEdit[12].setText(String.valueOf(maxID_DocLine));
+                                            //zapazvane na prodikta v tablicata s nali4nosti
+                                            myParent.getCountriesT().preserveProducts(myParent.getID_PC(),myParent.getStorageOUTProduct(),nn,myParent.getDocFacadeLevel());
+                                        }
+                                            }
+// ==POFORMA_FAKTURA ili OFERTA
+                                            else // ako dokumenta e POFORMA_FAKTURA ili OFERTA
+                                                if(myParent.getDocFacadeType()==PROFORMA_FAKTURA || myParent.getDocFacadeType()==OFERTA){
+                                        if(isLoadRow) {
+                                            int id_dl =Integer.valueOf(insertEdit[12].getText());                       //(Integer) jTable1.getValueAt(rowSelect,12);
+                                            int newNumberProduct = nn;
+                                            docLineArray d = (docLineArray) rows.get(rowSelect);
+                                            
+                                            
+                                            myParent.getCountriesT().updateDocLine(id_dl,myParent.getID_DocFacade(),myParent.getID_PC(),
+                                                    myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
+                                                    myParent.getProcentProduct(),newNumberProduct,dds,total,prList);
+                                        } else {
+                                            myParent.getCountriesT().insertDocLine(myParent.getID_DocFacade(),myParent.getID_PC(),myParent.getStorageOUTProduct(),myParent.getPriceOneProduct(),
+                                                    myParent.getProcentProduct(),nn,dds,total,prList);
+                                            
+                                            int maxID_DocLine = myParent.getCountriesT().getMaxIdDocLine();
+                                          //  jTable1.setValueAt(maxID_DocLine,rowSelect,12);
+                                            insertEdit[12].setText(String.valueOf(maxID_DocLine));
+                                        }
+                                                }
+                                    
+                                } else {
+                                   // ((docLineTableModel) jTable1.getModel()).removeRow(rowSelect);
+                                    if(rowSelect==0) {
+                                        //((docLineTableModel) jTable1.getModel()).addRow(new docLineArray());
+                                    }
+                                    
+                                }
+                                isSetDataInTable = false;
+                                
+                            }
+                            
+                        }
+                        
+                        isFinishRow = true;
+                        int tmpId_dl =Integer.valueOf(insertEdit[12].getText());                   //(Integer)jTable1.getValueAt(rowSelect,12);
+                        checkForSaveInDB.put(new Integer(tmpId_dl),new Boolean(true));
+                        
+                        str="";
+                       
+                       enterAllDataToTable();
+                       clearInsertEditData();
+                       System.out.println("End procedure to save in DB");
+ //-------------------STOP-----------------                       
+                    } 
+        
+            
+          
+            
+        }
+        public void keyTyped(KeyEvent e) {
+        }
+    };
+     insertEdit[10].addKeyListener(key10);
+   
     
     
     
+}
+
+private void enterAllDataToTable()
+{
+   
+   docLineArray dd = new docLineArray();
+   dd.setCodeOfProduct(Integer.valueOf(insertEdit[0].getText()));
+   dd.setNameOfProduct(insertEdit[1].getText());
+   dd.setStorageOut(Integer.valueOf(insertEdit[2].getText()));
+   dd.setPriceList(Integer.valueOf(insertEdit[3].getText()));
+   dd.setNumberOfProduct(Integer.valueOf(insertEdit[4].getText()));
+   int tmp[] = new int[3];
+   tmp[0] = Integer.valueOf(insertEdit[5].getText());
+   tmp[1] = Integer.valueOf(insertEdit[6].getText());
+   tmp[2] = Integer.valueOf(insertEdit[7].getText());
+   dd.setNumerOfDisBand(tmp);
+   dd.setPricePiece(Double.valueOf(insertEdit[8].getText()));
+   dd.setRateReduction(Double.valueOf(insertEdit[9].getText()));
+   dd.setDDS(Double.valueOf(insertEdit[10].getText()));
+   dd.setPriceTotal(Double.valueOf(insertEdit[11].getText()));
+   dd.setID_DocLine(Integer.valueOf(insertEdit[12].getText()));
+   String strTmp[] = new String[3];
+   strTmp[0] = insertEdit[13].getText();
+   strTmp[1] = insertEdit[14].getText();
+   strTmp[2] = insertEdit[15].getText();
+   dd.setNameOfDisBand(strTmp);
+   ((docLineTableModel) jTable1.getModel()).addRow(dd); 
+}
+
+private void clearInsertEditData()
+{
+    for(int i=0;i<viewCow;i++)
+    {
+        insertEdit[i].setText("");
+    }
+  insertEdit[0].requestFocus();  
+}
+private void calculateRowInsertEdit()
+{
+    double price = Double.valueOf(insertEdit[8].getText());
+    int numberProd = Integer.valueOf(insertEdit[4].getText());
+    double totoal = price*numberProd;
+    insertEdit[11].setText(String.valueOf(totoal));
+}
 }// end class
 
 
