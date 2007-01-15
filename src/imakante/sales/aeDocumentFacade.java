@@ -5305,8 +5305,8 @@ private void calculateWidthInsertEditFieldALL()
 private void setKeyListenerInserEdit()
 {
     if(key0!=null) insertEdit[0].removeKeyListener(key0);
-    if(key1!=null) insertEdit[0].removeKeyListener(key0);
-    if(key10!=null) insertEdit[0].removeKeyListener(key0);
+    if(key1!=null) insertEdit[1].removeKeyListener(key1);
+    if(key10!=null) insertEdit[10].removeKeyListener(key10);
     KeyListener key0 = new KeyListener()
     {
       public void keyPressed(KeyEvent e) {
