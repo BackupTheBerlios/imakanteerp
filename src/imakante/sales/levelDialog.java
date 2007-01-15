@@ -177,6 +177,7 @@ public class levelDialog extends javax.swing.JDialog {
             sales_main.levelForWork = -1; 
         }
         frame.numberStorage = Integer.parseInt(sCodes.get(jComboBox2.getSelectedIndex()).toString());
+        frame.startWith = String.valueOf(jComboBox1.getSelectedItem());
     }//GEN-LAST:event_formWindowClosing
     
     private void formWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeactivated
@@ -196,6 +197,7 @@ public class levelDialog extends javax.swing.JDialog {
                 sales_main.userID_ndtur = getKey();
                 outIndex = getKey();
                 frame.numberStorage = Integer.parseInt(sCodes.get(jComboBox2.getSelectedIndex()).toString());
+                frame.startWith = String.valueOf(jComboBox1.getSelectedItem());
                 this.getToolkit().beep();
             } else {
                 outLevel = 3;
@@ -203,6 +205,7 @@ public class levelDialog extends javax.swing.JDialog {
                 sales_main.levelForWork = 3;
                 sales_main.userID_ndtur = getKey();
                 frame.numberStorage = Integer.parseInt(sCodes.get(jComboBox2.getSelectedIndex()).toString());
+                frame.startWith = String.valueOf(jComboBox1.getSelectedItem());
             }
             close();
         }
@@ -214,6 +217,7 @@ public class levelDialog extends javax.swing.JDialog {
             sales_main.levelForWork = 3;
             sales_main.userID_ndtur = getKey();
             frame.numberStorage = Integer.parseInt(sCodes.get(jComboBox2.getSelectedIndex()).toString());
+            frame.startWith = String.valueOf(jComboBox1.getSelectedItem());
             this.dispose();
         }
     }//GEN-LAST:event_jPasswordField1KeyPressed

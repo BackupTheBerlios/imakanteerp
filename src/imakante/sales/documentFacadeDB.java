@@ -117,7 +117,7 @@ public class documentFacadeDB  extends imakante.com.dbObject {
             
         } catch(java.sql.SQLException sqle) {sqle.printStackTrace();}
     }
- public java.sql.ResultSet getTable(int level, int user,int doctype) //OK
+ public java.sql.ResultSet getTable(int level, int user,int doctype,String startWith,String dateBegin,String dateEnd) //OK
     {
      int oldType = getDocFacadeType();
      int oldUse = getUserDocFacade();
@@ -126,6 +126,9 @@ public class documentFacadeDB  extends imakante.com.dbObject {
      setDocFacadeType(doctype);
      setUserDocFacade(user);
      setLevelDocFacade(level);
+     setCommentDocFacade(startWith);
+     setDateDocFacade(dateBegin);
+     setPayingDate(dateEnd);
         
         this.setComprator(0);
         try{

@@ -1861,6 +1861,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     
     public static int userID_ndtur = 0; // id na usera , koeto e ravno na id_ndtur
     public static int levelForWork = 0; // rabotno nivo
+    public static String startWith = "0"; // startov nomer na ko4ana
     
     java.net.URL frameIcon = sales_main.class.getResource("/images/imakante_ico.png");
     

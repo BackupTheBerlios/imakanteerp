@@ -1,6 +1,7 @@
 
 package imakante.sales;
 
+import imakante.salary.salary_main;
 import java.awt.event.WindowListener;
 import java.awt.print.PrinterException;
 import java.math.BigDecimal;
@@ -69,6 +70,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
         
         
         fr.addWindowListener(this);
+        jTextFieldNoDoc.setText(sales_main.startWith);
     }
     
     /** This method is called from within the constructor to
@@ -616,8 +618,12 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
     private void initTable() //OK  -- !!ima za dovyr6wane - skrivane na koloni!!
     {
         try {
+            java.util.Date d = new java.util.Date();
             
-            rs = countriesT.getTable(getDocFacadeLevel(),getUserEditFortm(),getDocFacadeType());
+            String dateBegin = String.valueOf(d.getYear()+1900)+"-"+String.valueOf(d.getMonth()) + "-" + String.valueOf(d.getDate());
+            String dateEnd = dateBegin;
+            String startWith = sales_main.startWith;
+            rs = countriesT.getTable(getDocFacadeLevel(),getUserEditFortm(),getDocFacadeType(),startWith,dateBegin,dateEnd);
             //    nameColumnsDocFacade =null;
             
             
@@ -1163,7 +1169,11 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
     protected  void refreshTable() //OK
     {
         jScrollPane1.remove(table);
-        rs = countriesT.getTable(getDocFacadeLevel(),getUserEditFortm(),getDocFacadeType());
+        java.util.Date d = new java.util.Date();
+        String dateBegin = String.valueOf(d.getYear()+1900)+"-"+String.valueOf(d.getMonth()) + "-" + String.valueOf(d.getDate());
+        String dateEnd = dateBegin;
+        String startWith = sales_main.startWith;
+        rs = countriesT.getTable(getDocFacadeLevel(),getUserEditFortm(),getDocFacadeType(),startWith,dateBegin,dateEnd);
         model = new imakante.com.CustomTableModel(conn, rs, nameColumnsDocFacade);
         table = new imakante.com.CustomTable(model);
         jScrollPane1.getViewport().add(table);
