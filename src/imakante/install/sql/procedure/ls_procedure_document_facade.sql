@@ -39,7 +39,8 @@ IF (comprator = 0) THEN
          LEFT JOIN mida.sl_doc_type_num sldtn ON sldtn.id_sdtn=usr_new.id_sdtn
          LEFT JOIN  kind_paying ON  description_pay_df=kind_paying.id_kp
          WHERE  type_df = in_docFacadeType  AND level_df =  in_docFacadeLevel
-         AND condition_df="0" ORDER BY s.number_df ASC;
+         AND condition_df="0" AND number_df like concat(in_docFacadeComment,'%')
+         AND date_edition_df   between  in_docFacadeDate and  in_payingDate   ORDER BY s.number_df ASC;
 
 
 END IF;
@@ -645,8 +646,6 @@ IF (comprator = 20) THEN
        FROM mida.n_product_main n LEFT JOIN mida.n_product_consigment pc ON pc.id_pm = n.id_pm
        WHERE n.name_pm LIKE CONCAT('%',in_docFacadeComment) AND n.flag_pm = in_id_obekt_in;
    END IF;
-
-
 
 
 END IF;
