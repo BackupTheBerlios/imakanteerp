@@ -620,7 +620,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
         try {
             java.util.Date d = new java.util.Date();
             
-            String dateBegin = String.valueOf(d.getYear()+1900)+"-"+String.valueOf(d.getMonth()) + "-" + String.valueOf(d.getDate());
+            String dateBegin = String.valueOf(d.getYear()+1900)+"-"+String.valueOf(d.getMonth()+1) + "-" + String.valueOf(d.getDate());
             String dateEnd = dateBegin;
             String startWith = sales_main.startWith;
             rs = countriesT.getTable(getDocFacadeLevel(),getUserEditFortm(),getDocFacadeType(),startWith,dateBegin,dateEnd);
@@ -1170,7 +1170,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
     {
         jScrollPane1.remove(table);
         java.util.Date d = new java.util.Date();
-        String dateBegin = String.valueOf(d.getYear()+1900)+"-"+String.valueOf(d.getMonth()) + "-" + String.valueOf(d.getDate());
+        String dateBegin = String.valueOf(d.getYear()+1900)+"-"+String.valueOf(d.getMonth()+1) + "-" + String.valueOf(d.getDate());
         String dateEnd = dateBegin;
         String startWith = sales_main.startWith;
         rs = countriesT.getTable(getDocFacadeLevel(),getUserEditFortm(),getDocFacadeType(),startWith,dateBegin,dateEnd);
