@@ -52,11 +52,32 @@ public class docLineTableModel extends AbstractTableModel implements Serializabl
                           false, false, false, false, false, false, false, false, false, false, false, false, false};
     
     private String[] colNames =  new String [] {
-                "Номер продукт", "Име на продукт", "Номер склад", 
-                "Ценова листа","Брои продукти", "Р-ка основна", "Разфасовка 1",
-                "Разфасовка 2", "Ед. цена", "Процент отстъпка",
-                "ДДС", "Общо линия","id_dl","r1","r2","r3","id_pc","price0","price1","price2","price3",
-                "rate_of_disbaund_0","rate_of_disbaund_1","rate_of_disbaund_2","isRowCanEdit"};
+                "Номер продукт", //0
+                "Име на продукт", //1
+                "Номер склад",  //2
+                "Ценова листа",  //3
+                "Брои продукти", //4
+                "Р-ка основна",  //5
+                "Разфасовка 1", //6
+                "Разфасовка 2", //7
+                "Ед. цена",  //8
+                "Процент отстъпка", //9
+                "ДДС", //10
+                "Общо линия", //11
+                "id_dl", //12
+                "r1", //13
+                "r2",//14
+                "r3", //15
+                "id_pc", //16
+                "price0", //17
+                "price1",//18
+                "price2",//19
+                "price3",//20
+                "rate_of_disbaund_0", //21
+                "rate_of_disbaund_1", //22
+                "rate_of_disbaund_2", //23
+                "isRowCanEdit" //24
+    };
     private int rowsCount=0;
     private int columnsCound=0;
         // Types of the columns.
@@ -309,6 +330,8 @@ public class docLineTableModel extends AbstractTableModel implements Serializabl
           }
           
      fireTableCellUpdated(row, col);   
+     
+     
     }
 
         

@@ -62,6 +62,7 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog {
         table.moveColumn(getColumnIndex("Наличност"),2);
 //       table.moveColumn(getColumnIndex("Партида"),4);
 //       table.moveColumn(getColumnIndex("Годност"),5);
+        table.getColumnModel().getColumn(getColumnIndex("Име на продукта")).setPreferredWidth(270); 
         
         table.addKeyListener(new KeyListener() {
             public void keyPressed(KeyEvent e) {
@@ -121,7 +122,7 @@ public class showProductDocLine extends imakante.com.vcomponents.iDialog {
         int x = (((dim.width)-(this.getSize().width))/2);
         int y = (((dim.height)-(this.getSize().height))/2);
         this.setLocation(x, y);
-        this.setSize(680,600);
+        this.setSize(700,400);
         
     }
     

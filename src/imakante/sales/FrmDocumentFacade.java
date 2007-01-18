@@ -2290,7 +2290,7 @@ public void deleteRow()
     }
     private void  loadSimpleReport() {
         try {
-            //HashMap inputfilters,int doctype,java.sql.Connection con, imakante.com.CustomTable t,String path
+                //HashMap inputfilters,int doctype,java.sql.Connection con, imakante.com.CustomTable t,String path
             HashMap inParam = new HashMap();
             
             //  inParam.put("docType",String.valueOf(getDocFacadeType()));
