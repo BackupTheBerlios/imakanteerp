@@ -5891,6 +5891,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     
                     if(id_dl>0) {
                         loadJTableToInsertEdit();
+                         isFinishRow = false;
                     }
                     
                 } catch(Exception ex){};
