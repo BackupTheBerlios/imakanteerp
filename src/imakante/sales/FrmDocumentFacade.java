@@ -2180,8 +2180,11 @@ public void deleteRow()
         } catch(Exception r) {
         };
         System.out.println("Price to String = "+price);
-        
-        pts.setValue(price);
+        BigDecimal bd = new BigDecimal(price);
+        double roundPrice = 0;
+        bd = bd.setScale(2,BigDecimal.ROUND_HALF_UP);
+        roundPrice = bd.doubleValue();
+        pts.setValue(roundPrice);
         pts.ConstString();
         StringPrice=pts.getEndString();
         

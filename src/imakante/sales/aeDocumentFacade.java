@@ -5384,7 +5384,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                             insertEdit[4].setText(String.valueOf(new Integer(br+tmp)));
 //rate-------> jTable1.setValueAt(calculateTotalPrice(myParent.getPriceOneProduct()*rate,br+tmp),jTable1.getSelectedRow(),11);
                             //jTable1.setValueAt(calculateTotalPrice(myParent.getPriceOneProduct(),br+tmp),jTable1.getSelectedRow(),11);
-                            insertEdit[11].setText(String.valueOf(calculateTotalPrice(myParent.getPriceOneProduct(),br+tmp)));
+                            insertEdit[11].setText(String.valueOf(calculateTotalPrice(myParent.getPriceOneProduct()*rate,br+tmp)));
                         } else
                             if(true) // (br+tmp)<=myParent.getBrojProduct()
                             {
@@ -5420,15 +5420,15 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                         if(isProductIN) {
                             //jTable1.setValueAt(new Integer(br+tmp),rowSelect,4);
                             insertEdit[4].setText(String.valueOf(new Integer(br+tmp)));
-                            //rate ------> jTable1.setValueAt(calculateTotalPrice(myParent.getPriceOneProduct()*rate,br+tmp),jTable1.getSelectedRow(),11);
-                            jTable1.setValueAt(calculateTotalPrice(myParent.getPriceOneProduct(),br+tmp),jTable1.getSelectedRow(),11);
-                            insertEdit[11].setText(String.valueOf(calculateTotalPrice(myParent.getPriceOneProduct(),br+tmp)));
+          //rate ------> jTable1.setValueAt(calculateTotalPrice(myParent.getPriceOneProduct()*rate,br+tmp),jTable1.getSelectedRow(),11);
+                           // jTable1.setValueAt(calculateTotalPrice(myParent.getPriceOneProduct(),br+tmp),jTable1.getSelectedRow(),11);
+                            insertEdit[11].setText(String.valueOf(calculateTotalPrice(myParent.getPriceOneProduct()*rate,br+tmp)));
                         } else
                             if(true) // (br+tmp)<=myParent.getBrojProduct()
                             {
                             // jTable1.setValueAt(new Integer(br+tmp),rowSelect,4);
                             insertEdit[4].setText(String.valueOf(new Integer(br+tmp)));
-                            //rate ------>
+         //rate ------>
                             //jTable1.setValueAt(calculateTotalPrice(myParent.getPriceOneProduct()*rate,br+tmp),jTable1.getSelectedRow(),11);
                             insertEdit[11].setText(String.valueOf(calculateTotalPrice(myParent.getPriceOneProduct()*rate,br+tmp)));
                             } else   insertEdit[6].setText(String.valueOf(new Integer(oldRz2)));  //jTable1.setValueAt(new Integer(oldRz2),rowSelect,6);
