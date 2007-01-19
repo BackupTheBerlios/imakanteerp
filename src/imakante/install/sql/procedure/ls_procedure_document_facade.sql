@@ -1,7 +1,7 @@
 ﻿DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `mida`.`ls_procedure_document_facade` $$
-CREATE PROCEDURE `ls_procedure_document_facade`(IN comprator TINYINT,                IN in_id_df INT(11),                IN in_id_contragent_in INT(11),     IN in_id_contragent_out INT(11),IN in_id_obekt_out INT(11),
+CREATE PROCEDURE `mida`.`ls_procedure_document_facade`(IN comprator TINYINT,                IN in_id_df INT(11),                IN in_id_contragent_in INT(11),     IN in_id_contragent_out INT(11),IN in_id_obekt_out INT(11),
                                                 IN in_id_obekt_in INT(11),           IN in_id_distributor INT(11),       IN in_id_deliver INT(11),           IN in_descriptionPaying INT(3), IN in_docFacadeNumber BIGINT(10),
                                                 IN in_docFacadeUser INT(11),         IN in_docFacadeUserLastEdit INT(11),IN in_id_facturaConnection INT(11), IN in_id_payingOrder INT(11),   IN in_id_zaqvkaConnection INT(11),
                                                 IN in_docFacadeLevel INT(11),        IN in_docFacadeStorage INT(11),     IN in_docFacadeType INT (3),        IN in_docFacadeAllDDS DOUBLE,   IN in_docFacadeTotal DOUBLE,
@@ -128,7 +128,41 @@ IF (comprator = 4) THEN
 END IF;
 
      IF (comprator = 5) THEN
-      SELECT
+      IF (in_descriptionPaying = 0) THEN
+         SELECT
+         s.id_df,
+         s.in_contragent_df,contr_in.code_contragent, contr_in.bul_n_contragent, contr_in.dan_n_contragent, contr_in.name_n_contragent,
+         contr_in.address_n_contragent, p_contr_in.name_ls_n_person, contr_in.tel_contragent,
+         s.out_contragent_df,contr_out.code_contragent, contr_out.bul_n_contragent,contr_out.dan_n_contragent, contr_out.name_n_contragent,
+         contr_out.address_n_contragent, p_contr_out.name_ls_n_person, contr_out.tel_contragent,
+         s.in_obekt_df, obkt_in.name_n_obekt, obkt_in.address_n_obekt, obkt_in.code_n_obekt,
+         s.out_obekt_df, obkt_out.name_n_obekt, obkt_out.address_n_obekt, obkt_out.code_n_obekt,
+         s.type_df, s.number_df, s.condition_df, s.out_store_df,
+         s.total_df, s.dds_df, s.user_df, um_usr_new.name_um,s.user_last_df, um_usr_last.name_um, s.date_edition_df, s.time_edition_df, s.distributor_df,p_dist.code_ls_n_person AS dist,
+         s.delivere_df,p_deliv.code_ls_n_person AS deliv,
+         s.faktura_connection_df, s.zaiavka_connection_df, s.description_pay_df,name_kp, s.paying_order_df, s.date_deliver_df,
+         s.date_pay_df, s.comments_df, s.flag_finish_df, s.id_rep, s.level_df , s.in_store_df
+         FROM mida.sl_document_facade s
+         LEFT JOIN mida.n_obekt obkt_in ON s.in_obekt_df=obkt_in.id_n_obekt
+         LEFT JOIN mida.n_obekt obkt_out ON s.out_obekt_df=obkt_out.id_n_obekt
+         LEFT JOIN mida.ls_n_person p_deliv ON p_deliv.id_ls_n_person=s.delivere_df
+         LEFT JOIN mida.ls_n_person p_dist ON p_dist.id_ls_n_person=s.distributor_df
+         LEFT JOIN  mida.n_contragent contr_in ON contr_in.id_contragent = s.in_contragent_df
+         LEFT JOIN  mida.n_contragent contr_out ON contr_out.id_contragent = s.out_contragent_df
+         LEFT JOIN  mida.ls_n_person p_contr_in ON contr_in.id_mol = p_contr_in.id_ls_n_person
+         LEFT JOIN  mida.ls_n_person p_contr_out ON contr_out.id_mol = p_contr_out.id_ls_n_person
+         LEFT JOIN mida.n_doc_type_user_rights usr_new ON s.user_df = usr_new.id_ndtur
+         LEFT JOIN user_master um_usr_new ON usr_new.id_um=um_usr_new.id_um
+         LEFT JOIN mida.n_doc_type_user_rights usr_last ON s.user_last_df = usr_last.id_ndtur
+         LEFT JOIN user_master um_usr_last ON usr_last.id_um=um_usr_last.id_um
+         LEFT JOIN mida.sl_doc_type_num sldtn ON sldtn.id_sdtn=usr_new.id_sdtn
+         LEFT JOIN  kind_paying ON  description_pay_df=kind_paying.id_kp
+         WHERE  type_df = in_docFacadeType  AND level_df =  in_docFacadeLevel
+         AND condition_df="0" AND number_df like concat('%',in_docFacadeComment,'%')
+         AND date_edition_df   between  in_docFacadeDate and  in_payingDate   ORDER BY s.number_df ASC;
+       END IF;
+       IF (in_descriptionPaying != 0) THEN
+         SELECT
          s.id_df,
          s.in_contragent_df,contr_in.code_contragent, contr_in.bul_n_contragent, contr_in.dan_n_contragent, contr_in.name_n_contragent,
          contr_in.address_n_contragent, p_contr_in.name_ls_n_person, contr_in.tel_contragent,
@@ -159,6 +193,8 @@ END IF;
          WHERE  type_df = in_docFacadeType  AND level_df =  in_docFacadeLevel
          AND condition_df="0" AND description_pay_df = in_descriptionPaying AND number_df like concat('%',in_docFacadeComment,'%')
          AND date_edition_df   between  in_docFacadeDate and  in_payingDate   ORDER BY s.number_df ASC;
+       END IF;
+
 
      END IF;
 

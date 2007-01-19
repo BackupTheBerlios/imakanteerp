@@ -313,7 +313,7 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
             String dateOt =(dd.getYear()+1900)+"/"+(dd.getMonth()+1)+"/"+dd.getDate();
             dd = jXDatePickerDo.getDate();
             String dateDo =(dd.getYear()+1900)+"/"+(dd.getMonth()+1)+"/"+dd.getDate();;
-            int IDpay= jComboBoxPay.getSelectedIndex()+1;
+            int IDpay= jComboBoxPay.getSelectedIndex();
             
             
             
