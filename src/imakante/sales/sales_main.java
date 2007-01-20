@@ -244,7 +244,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         jToolBar1.add(jButton6);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/basket_put_16.png")));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/basket_put_32.png")));
         jButton1.setToolTipText("\u041f\u0440\u043e\u0434\u0430\u0436\u0431\u0430 (\u0421\u0442\u043e\u043a\u043e\u0432\u0430 \u0440\u0430\u0437\u043f\u0438\u0441\u043a\u0430)");
         jButton1.setMaximumSize(new java.awt.Dimension(45, 43));
         jButton1.setMinimumSize(new java.awt.Dimension(45, 43));
@@ -326,7 +326,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(100, Short.MAX_VALUE)
+                .addContainerGap(127, Short.MAX_VALUE)
                 .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 179, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -346,11 +346,15 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jlUserStatus.setForeground(new java.awt.Color(102, 102, 102));
         jlUserStatus.setText("\u041f\u043e\u0442\u0440\u0435\u0431\u0438\u0442\u0435\u043b: ");
 
+        jTextField1.setToolTipText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442");
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Contact16.png")));
-        jLabel1.setText("\u043a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442");
+        jLabel1.setToolTipText("\u041a\u043e\u043d\u0442\u0440\u0430\u0433\u0435\u043d\u0442");
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Objects 2.png")));
-        jLabel2.setText("\u043f\u0440\u043e\u0434\u0443\u043a\u0442");
+        jLabel2.setToolTipText("\u041f\u0440\u043e\u0434\u0443\u043a\u0442");
+
+        jTextField2.setToolTipText("\u041f\u0440\u043e\u0434\u0443\u043a\u0442");
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -359,24 +363,24 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
             .add(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jlUserStatus, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 297, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 199, Short.MAX_VALUE)
                 .add(jLabel1)
-                .add(1, 1, 1)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 93, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel2)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 92, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                 .add(jlUserStatus, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
-                .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(jLabel1)
+                .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(jLabel2)
-                .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jLabel1))
         );
         getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
 
