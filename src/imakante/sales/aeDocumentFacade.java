@@ -18,6 +18,7 @@ import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.EventObject;
 import java.util.HashMap;
+import java.util.Iterator;
 import javax.swing.*;
 import java.util.Date;
 import java.sql.*;
@@ -1310,10 +1311,11 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             JOptionPane.showMessageDialog(this,"\u0410\u043D\u0443\u043B\u0438\u0440\u0430\u043D");
         }
     }//GEN-LAST:event_jButtonAnuliraneActionPerformed
-    
+    private int removeRow =-1;
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         boolean withRow = true;
         boolean alsoInDb = true;
+       
         if(isNew) {
             
             deleteDocLine(jTable1.getSelectedRow(),withRow,alsoInDb);
@@ -1322,12 +1324,21 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             int id_pc=0;
             for(int i=0; i < rows.size();i++) {
                 docLineArray d = (docLineArray) rows.get(i);
+                if(d==null)
+                {
+                    JOptionPane.showMessageDialog(this,"Не може да бъде изтрит редът");
+                    return;
+                }
                 if(id_dl == d.getID_DocLine()) {
                     id_pc=d.getID_PC();
-                    rows.remove(i);
+                
+                     removeRow = i;
                     break;
                 }
             }
+            
+            rows = reBuildRowsHashMap( rows,removeRow);
+            
             
             int storage = (Integer) jTable1.getValueAt(jTable1.getSelectedRow(),2);
             int nal = (Integer) jTable1.getValueAt(jTable1.getSelectedRow(),4);
@@ -5921,6 +5932,24 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
      myParent.setPriceList(Integer.valueOf( insertEdit[3].getText()));*/
         isLoadRow=true;
     }
+    
+  private HashMap reBuildRowsHashMap(HashMap in,int forRemove)  
+  {
+      HashMap newRows = new HashMap();
+      int key=0;
+      for(int i=0;i<in.size();i++)
+      {
+          if(i!=forRemove)
+          {
+              newRows.put(key,in.get(i));
+              key++;
+          }
+             
+      }
+      
+      return newRows;
+      
+  }
 }// end class
 
 
