@@ -1219,7 +1219,11 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
     {
         try {
             setAllVariablesDefault();
-            setID_DocFacade((Integer) table.getValueAt(getRow(), getColumnIndex("id_df")));                   //0
+            int cow =0;
+            int row =0;
+            row = getRow();
+            cow = getColumnIndex("id_df");
+            setID_DocFacade((Integer) table.getValueAt(row,cow));                   //0
             long tmp = (Long) table.getValueAt(getRow(), getColumnIndex("Номер на документа"));
             setNumberDocFacade(String.valueOf(tmp));                                                          //1
             
@@ -1889,7 +1893,7 @@ public void deleteRow()
         }
         
         
-        
+      
     }
     private void hideDocimentTypeColumns_Obekt(int in_out) {
         switch (in_out) {

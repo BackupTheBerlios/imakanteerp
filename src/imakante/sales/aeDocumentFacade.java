@@ -1331,8 +1331,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 }
                 if(id_dl == d.getID_DocLine()) {
                     id_pc=d.getID_PC();
-                
-                     removeRow = i;
+                    removeRow = i;
                     break;
                 }
             }
@@ -1349,6 +1348,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             ((docLineTableModel)jTable1.getModel()).removeRow(jTable1.getSelectedRow());
             
         }
+      calculateTotalPriceForDocument();
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void jButtonCreateDocFacadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCreateDocFacadeActionPerformed
@@ -2867,6 +2867,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 int docFacadeType = myParent.getDocFacadeType();
                 double docFacadeTotal = Double.parseDouble(jLabelAllTotal.getText());
                 double docFacadeAllDDS = Double.parseDouble(jLabelAllDDS.getText());
+                System.out.println("docFacadeTotal = "+ docFacadeTotal + "   : "+jLabelAllTotal.getText());
+                System.out.println("docFacadeAllDDS = " + docFacadeAllDDS + "   : "+jLabelAllDDS.getText());
                 
                 int userEdit =  myParent.getUserEditFortm();
                 int userLastEdit = userEdit;
@@ -2915,6 +2917,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 int docFacadeType = myParent.getDocFacadeType();
                 double docFacadeTotal = Double.parseDouble(jLabelAllTotal.getText());
                 double docFacadeAllDDS = Double.parseDouble(jLabelAllDDS.getText());
+                System.out.println("docFacadeTotal = "+ docFacadeTotal + "   : "+jLabelAllTotal.getText());
+                System.out.println("docFacadeAllDDS = " + docFacadeAllDDS + "   : "+jLabelAllDDS.getText());
                 
                 int userEdit =  myParent.getUserEditFortm();
                 int userLastEdit = userEdit;
@@ -5838,6 +5842,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     clearInsertEditData();
                     calculateTotalPriceForDocument();
                     jScrollEdinInsert.getHorizontalScrollBar().setValue(jScrollEdinInsert.getHorizontalScrollBar().getMinimum());
+                    insertEdit[0].setEditable(true);
+                    insertEdit[1].setEditable(true);
                     System.out.println("End procedure to save in DB");
                     //-------------------STOP-----------------
                 }
@@ -5904,6 +5910,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     if(id_dl>0) {
                         loadJTableToInsertEdit();
                          isFinishRow = false;
+                         insertEdit[0].setEditable(false);
+                         insertEdit[1].setEditable(false);
                     }
                     
                 } catch(Exception ex){};
