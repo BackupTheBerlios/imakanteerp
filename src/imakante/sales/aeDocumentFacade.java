@@ -1347,12 +1347,13 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         int id_df = myParent.getID_DocFacade();
         boolean tmpIsNew = isNew;
         checkForDiffWithOutSaveInDB();
-        //   clearAllVariables();
+           //clearAllVariables();
         createDocument(id_df,myParent.getDocFacadeType(),0);
         if(tmpIsNew) {
             myParent.setRow(myParent.getTableMaxRow()-1);
+            myParent.setAllVariables();
         }
-        myParent.setAllVariables();
+     
         repaintComp();
         myParent.setSelectedRow(myParent.getRow());
         JOptionPane.showMessageDialog(this,"\u0423\u0441\u043F\u0435\u0448\u0435\u043D \u0437\u0430\u043F\u0438\u0441");
