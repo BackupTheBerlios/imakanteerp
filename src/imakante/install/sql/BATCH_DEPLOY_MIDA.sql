@@ -555,8 +555,8 @@ CREATE TABLE `n_contragent` (
   `id_contragent` int(11) NOT NULL auto_increment,
   `code_contragent` int(11) NOT NULL default '0',
   `name_n_contragent` varchar(45) NOT NULL default 'Няма данни',
-  `bul_n_contragent` varchar(13) NOT NULL default '0000000001',
-  `dan_n_contragent` varchar(11) NOT NULL default '0000000000',
+  `bul_n_contragent` varchar(20) NOT NULL default '0000000001',
+  `dan_n_contragent` varchar(20) NOT NULL default '0000000000',
   `address_n_contragent` varchar(35) NOT NULL default 'Няма данни',
   `id_nm` int(10) unsigned NOT NULL default '0',
   `tel_contragent` varchar(12) NOT NULL default 'Няма данни',
@@ -660,6 +660,19 @@ CREATE TABLE `n_incoms` (
 
 /*Data for the table `n_incoms` */
 
+/*Table structure for table `n_mitprod` */
+
+DROP TABLE IF EXISTS `n_mitprod`;
+
+CREATE TABLE `n_mitprod` (
+  `id_n_mitprod` int(11) NOT NULL auto_increment,
+  `code_n_mitprod` varchar(20) NOT NULL,
+  `name_n_mitprod` varchar(250) NOT NULL,
+  PRIMARY KEY  (`id_n_mitprod`)
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='';
+
+/*Data for the table `n_mitprod` */
+
 /*Table structure for table `n_money` */
 
 DROP TABLE IF EXISTS `n_money`;
@@ -749,9 +762,9 @@ DROP TABLE IF EXISTS `n_product_consigment`;
 CREATE TABLE `n_product_consigment` (
   `id_pc` int(11) unsigned NOT NULL auto_increment COMMENT 'id na partida',
   `id_pm` int(11) default NULL COMMENT 'id na produkt',
-  `parcel_pc` int(11) default NULL COMMENT 'nomer na partida',
+  `parcel_pc` varchar(20) default NULL COMMENT 'nomer na partida',
   `dateofexpire_pc` date default NULL COMMENT 'data na godnost',
-  `barcod_pc` int(11) unsigned zerofill NOT NULL default '00000000000' COMMENT 'barkod',
+  `barcod_pc` varchar(20) unsigned zerofill NOT NULL default '00000000000' COMMENT 'barkod',
   `id_pp` int(11) unsigned NOT NULL default '0' COMMENT 'id na product_price',
   `id_ppp` int(11) unsigned NOT NULL default '0' COMMENT 'id product_promotion price',
   `id_pf` int(11) unsigned NOT NULL default '0' COMMENT 'id_ product fee',
@@ -808,10 +821,10 @@ CREATE TABLE `n_product_main` (
   `id_ppp` int(11) unsigned NOT NULL default '0',
   `id_pp` int(11) unsigned NOT NULL default '0',
   `id_pf` int(11) unsigned NOT NULL default '0',
-  `name_pm` varchar(30) default NULL,
-  `fname_pm` varchar(30) default NULL,
-  `sname_pm` varchar(10) default NULL,
-  `cname_pm` varchar(10) default NULL,
+  `name_pm` varchar(60) default NULL,
+  `fname_pm` varchar(60) default NULL,
+  `sname_pm` varchar(60) default NULL,
+  `cname_pm` varchar(60) default NULL,
   `cod1_pm` varchar(20) default NULL,
   `cod2_pm` varchar(20) default NULL,
   `barcod_pm` varchar(20) default NULL,
@@ -820,12 +833,13 @@ CREATE TABLE `n_product_main` (
   `flag_pm` int(3) unsigned zerofill NOT NULL default '000',
   `min_pm` int(11) unsigned NOT NULL default '0',
   `code_pm` int(11) unsigned NOT NULL default '0',
+  `id_n_mitprod` int(11) unsigned NOT NULL default '0',
   PRIMARY KEY  (`id_pm`)
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 /*Data for the table `n_product_main` */
 
-insert into `n_product_main` (`id_pm`,`id_pd`,`id_n_group`,`id_ppp`,`id_pp`,`id_pf`,`name_pm`,`fname_pm`,`sname_pm`,`cname_pm`,`cod1_pm`,`cod2_pm`,`barcod_pm`,`max_pop_pm`,`expertsheet_pm`,`flag_pm`,`min_pm`,`code_pm`) values (1,1,7,1,1,1,'НЕСТЛЕ НУГА КРЕМ','НЕСТЛЕ НУГА КРЕМ','НЕСТЛЕ НУГ','НЕСТЛЕ НУГ','','','10101010101',5.65,'',000,1,999999);
+insert into `n_product_main` (`id_pm`,`id_pd`,`id_n_group`,`id_ppp`,`id_pp`,`id_pf`,`name_pm`,`fname_pm`,`sname_pm`,`cname_pm`,`cod1_pm`,`cod2_pm`,`barcod_pm`,`max_pop_pm`,`expertsheet_pm`,`flag_pm`,`min_pm`,`code_pm`,`id_n_mitprod`) values (1,1,7,1,1,1,'НЕСТЛЕ НУГА КРЕМ','НЕСТЛЕ НУГА КРЕМ','НЕСТЛЕ НУГ','НЕСТЛЕ НУГ','','','10101010101',5.65,'',000,1,999999,1);
 
 /*Table structure for table `n_product_price` */
 
@@ -852,7 +866,7 @@ DROP TABLE IF EXISTS `n_product_promotion_price`;
 
 CREATE TABLE `n_product_promotion_price` (
   `id_ppp` int(11) NOT NULL auto_increment,
-  `price_ppp` decimal(10,0) default NULL,
+  `price_ppp` decimal(10,5) default NULL,
   `datestart_ppp` date default NULL,
   `datestop_ppp` date default NULL,
   PRIMARY KEY  (`id_ppp`)
