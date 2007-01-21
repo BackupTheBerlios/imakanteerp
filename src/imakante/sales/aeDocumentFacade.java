@@ -5350,7 +5350,9 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         key4 = new KeyListener() {
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode()==e.VK_ENTER || e.getKeyCode()==e.VK_TAB) {
-                    int br =Integer.valueOf(insertEdit[4].getText());   //(Integer) jTable1.getValueAt(rowSelect,columnSelect) ;
+                    int br = 0;
+                    if(insertEdit[4].getText().equals("")){}
+                    else{br =Integer.valueOf(insertEdit[4].getText()); }  //(Integer) jTable1.getValueAt(rowSelect,columnSelect) ;
                     br = java.lang.Math.abs(br);
                     if(isProductIN) {
                         //jTable1.setValueAt(calculateProductDescription(br,productDescription_2,productDescription_3)[0],jTable1.getSelectedRow(),5);
@@ -5389,7 +5391,9 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode()==e.VK_ENTER) {
                     isTyped = false;
-                    int rz1 = Integer.valueOf(String.valueOf( insertEdit[5].getText()))  ;//(Integer) jTable1.getValueAt(rowSelect,columnSelect);
+                    int rzl = 0;
+                    if(insertEdit[5].getText().equals("")){}
+                    else{rz1 = Integer.valueOf(String.valueOf( insertEdit[5].getText()));}  //(Integer) jTable1.getValueAt(rowSelect,columnSelect);
                     rz1 = java.lang.Math.abs(rz1);
                     int br = Integer.valueOf(String.valueOf( insertEdit[4].getText()))  ;      ; //(Integer) jTable1.getValueAt(rowSelect,4) ;
                     int oldRz1 = calculateProductDescription(br,productDescription_2,productDescription_3)[0];
@@ -5426,9 +5430,13 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         key6 = new KeyListener() {
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode()==e.VK_ENTER) {
-                    int rz2 =Integer.valueOf(insertEdit[6].getText());     //(Integer) jTable1.getValueAt(rowSelect,columnSelect);
+                    int rz2 = 0;
+                    if(insertEdit[6].getText().equals("")){}
+                    else{rz2 =Integer.valueOf(insertEdit[6].getText());}     //(Integer) jTable1.getValueAt(rowSelect,columnSelect);
                     rz2 = java.lang.Math.abs(rz2);
-                    int br = Integer.valueOf(insertEdit[4].getText()); //(Integer) jTable1.getValueAt(rowSelect,4) ;
+                    int br = 0;
+                    if(insertEdit[4].getText()){}
+                    else{br = Integer.valueOf(insertEdit[4].getText());} //(Integer) jTable1.getValueAt(rowSelect,4) ;
                     int oldRz2 = calculateProductDescription(br,productDescription_2,productDescription_3)[1];
                     if( rz2 <= productDescription_3 ) {
                         int tmp = (rz2-oldRz2);
@@ -5464,9 +5472,14 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         key7 = new KeyListener() {
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode()==e.VK_ENTER) {
-                    int rz3 = Integer.valueOf(insertEdit[7].getText());     ;//(Integer) jTable1.getValueAt(rowSelect,columnSelect);
+                    int rz3 = 0;
+                    if(insertEdit[7].getText().equals(""))
+                    {}
+                    else{ rz3 = Integer.valueOf(insertEdit[7].getText());  }   ;//(Integer) jTable1.getValueAt(rowSelect,columnSelect);
                     rz3 = java.lang.Math.abs(rz3);
-                    int br = Integer.valueOf(insertEdit[4].getText());  //(Integer) jTable1.getValueAt(rowSelect,4) ;
+                    int br = 0;
+                    if(insertEdit[4].getText().equals("")){}
+                    else{br = Integer.valueOf(insertEdit[4].getText());}  //(Integer) jTable1.getValueAt(rowSelect,4) ;
                     int oldRz3 = calculateProductDescription(br,productDescription_2,productDescription_3)[2];
                     
                     int tmp = (rz3-oldRz3);
@@ -5500,13 +5513,18 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode()==e.VK_ENTER) {
                     if(!isProductIN) {
-                        double newPrice = Double.valueOf(insertEdit[8].getText());    // (Double)jTable1.getValueAt(rowSelect,columnSelect);
-                        int br = Integer.valueOf(insertEdit[4].getText());            //(Integer) jTable1.getValueAt(rowSelect,4) ;
+                        double newPrice = 0;
+                        if(insertEdit[8].getText().equals("")){}
+                        else{newPrice = Double.valueOf(insertEdit[8].getText());}    // (Double)jTable1.getValueAt(rowSelect,columnSelect);
+                        int br =0;
+                        if(insertEdit[4].getText().equals("")){}
+                        else{br = Integer.valueOf(insertEdit[4].getText());}            //(Integer) jTable1.getValueAt(rowSelect,4) ;
                         
                         if(true)    //ograni4eniq v cenata -> naprimer: (newPrice>=myParent.getPriceOneProduct()*rate)
                         {
-                            
-                            double newPP =100-((newPrice*100)/(myParent.getPriceOneProduct()*rate));
+                            double newPP =0;
+                            if(!myParent.getPriceOneProduct()==0){
+                             newPP =100-((newPrice*100)/(myParent.getPriceOneProduct()*rate));} //za da ne se poluchi bezkrainost v sluchai na 0
                             if(newPP>0) {
                                 //jTable1.setValueAt(new Double(newPP),rowSelect,9);
                                 insertEdit[9].setText(String.valueOf(new Double(newPP) ));
@@ -5639,8 +5657,11 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                         
                                     } else {
                                         
-                                        int id_dl = Integer.valueOf(insertEdit[12].getText());                                    //(Integer) jTable1.getValueAt(rowSelect,12);
-                                        int newNumberProduct = nn;
+                                        int id_dl=0;
+                                        if(insertEdit[12].getText().equals("")){
+                                        }else{
+                                        id_dl =Integer.valueOf(insertEdit[12].getText()); }    // (Integer) jTable1.getValueAt(rowSelect,12);
+                                       int newNumberProduct = nn;
                                         docLineArray d =null;
                                         int oldNumberProduct = 0;
                                         for(int j=0; j < rows.size();j++) {
@@ -5684,8 +5705,11 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                     if(isLoadRow) {
                                         //vzimane na razlikata ot tablicata za DocLine i redaktiranite broiki ot jTable1
                                         // vry6tane na razlikata ako ima takava ili zapazvane na brojkite
-                                        int id_dl =Integer.valueOf(insertEdit[12].getText());              // (Integer) jTable1.getValueAt(rowSelect,12);
-                                        int newNumberProduct = nn;
+                                        int id_dl=0;
+                                        if(insertEdit[12].getText().equals("")){
+                                        }else{
+                                        id_dl =Integer.valueOf(insertEdit[12].getText()); }    // (Integer) jTable1.getValueAt(rowSelect,12);
+                                       int newNumberProduct = nn;
                                         docLineArray d =null;
                                         int oldNumberProduct = 0;
                                         for(int j=0; j < rows.size();j++) {
@@ -5741,7 +5765,10 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                                     if(isLoadRow) {
                                         //vzimane na razlikata ot tablicata za DocLine i redaktiranite broiki ot jTable1
                                         // vry6tane na razlikata ako ima takava ili zapazvane na brojkite
-                                        int id_dl =Integer.valueOf(insertEdit[12].getText());     // (Integer) jTable1.getValueAt(rowSelect,12);
+                                        int id_dl=0;
+                                        if(insertEdit[12].getText().equals("")){
+                                        }else{
+                                        id_dl =Integer.valueOf(insertEdit[12].getText()); }    // (Integer) jTable1.getValueAt(rowSelect,12);
                                         int newNumberProduct = nn;
                                         docLineArray d =null;
                                         int oldNumberProduct = 0;
