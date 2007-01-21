@@ -5391,11 +5391,16 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode()==e.VK_ENTER) {
                     isTyped = false;
-                    int rzl = 0;
+                    int rz1 = 0;
                     if(insertEdit[5].getText().equals("")){}
-                    else{rz1 = Integer.valueOf(String.valueOf( insertEdit[5].getText()));}  //(Integer) jTable1.getValueAt(rowSelect,columnSelect);
+                    else{
+                        rz1 = Integer.valueOf(String.valueOf( insertEdit[5].getText()));
+                    }  //(Integer) jTable1.getValueAt(rowSelect,columnSelect);
+                    
                     rz1 = java.lang.Math.abs(rz1);
-                    int br = Integer.valueOf(String.valueOf( insertEdit[4].getText()))  ;      ; //(Integer) jTable1.getValueAt(rowSelect,4) ;
+                    int br = 0;
+                    if( insertEdit[4].getText().equals("")){}
+                    else{ br = Integer.valueOf(String.valueOf( insertEdit[4].getText()))  ; }      //(Integer) jTable1.getValueAt(rowSelect,4) ;
                     int oldRz1 = calculateProductDescription(br,productDescription_2,productDescription_3)[0];
                     if(rz1<=productDescription_2) {
                         int tmp = (rz1-oldRz1);
@@ -5435,7 +5440,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     else{rz2 =Integer.valueOf(insertEdit[6].getText());}     //(Integer) jTable1.getValueAt(rowSelect,columnSelect);
                     rz2 = java.lang.Math.abs(rz2);
                     int br = 0;
-                    if(insertEdit[4].getText()){}
+                    if(insertEdit[4].getText().equals("")){}
                     else{br = Integer.valueOf(insertEdit[4].getText());} //(Integer) jTable1.getValueAt(rowSelect,4) ;
                     int oldRz2 = calculateProductDescription(br,productDescription_2,productDescription_3)[1];
                     if( rz2 <= productDescription_3 ) {
@@ -5523,7 +5528,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                         if(true)    //ograni4eniq v cenata -> naprimer: (newPrice>=myParent.getPriceOneProduct()*rate)
                         {
                             double newPP =0;
-                            if(!myParent.getPriceOneProduct()==0){
+                            if(myParent.getPriceOneProduct()!=0){
                              newPP =100-((newPrice*100)/(myParent.getPriceOneProduct()*rate));} //za da ne se poluchi bezkrainost v sluchai na 0
                             if(newPP>0) {
                                 //jTable1.setValueAt(new Double(newPP),rowSelect,9);
