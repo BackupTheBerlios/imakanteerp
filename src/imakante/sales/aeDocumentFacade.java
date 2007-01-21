@@ -130,6 +130,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         
         setInputLisener(); // for jTable1
         jTablePopUpMenu.add(jTableMenuIntem1);
+        jTablePopUpMenu.add(jTableMenuItem2);
+        jTablePopUpMenu.add(jTableMenuItem3);
         jTable1.setComponentPopupMenu(jTablePopUpMenu);
         setPopupMenuListener();
         InputMap im = jTable1.getInputMap(JTable.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
@@ -2294,7 +2296,9 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private KeyListener key9 = null;
     private KeyListener key10 = null;
     private JPopupMenu   jTablePopUpMenu = new JPopupMenu();
-    private JMenuItem    jTableMenuIntem1 = new JMenuItem("Редакция");
+    private JMenuItem    jTableMenuIntem1 = new JMenuItem("Редакция на ред");
+    private JMenuItem    jTableMenuItem2 = new JMenuItem("Изтриване на ред"); 
+    private JMenuItem    jTableMenuItem3 = new JMenuItem("Продуктова карта");
     private int          selectedjTableRow = -1;
 //----------------------------------------
     

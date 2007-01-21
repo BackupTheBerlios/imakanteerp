@@ -579,6 +579,20 @@ public class FrmDocumentFacade extends  imakante.com.vcomponents.iInternalFrame 
     
     private final int IN =1; // za skrivane na kolonite
     private final int OUT=2; // za skrivane na kolonite
+    
+    //Table menu
+    private JPopupMenu   jTablePopUpMenu = new JPopupMenu();
+    private JMenuItem    jTableMenuItem1 = new JMenuItem("Нов документ");
+    private JMenuItem    jTableMenuItem2 = new JMenuItem("Съдържание на документ");
+    private JMenuItem    jTableMenuItem3 = new JMenuItem("Редакция на документ");
+    private JMenuItem    jTableMenuItem4 = new JMenuItem("Печат на документ");
+    private JMenuItem    jTableMenuItem5 = new JMenuItem("Изтриване на документ");
+    private JMenuItem    jTableMenuItem6 = new JMenuItem("Анулиране на документ");
+    private JMenuItem    jTableMenuItem7 = new JMenuItem("Всички документи на този клиент");
+    private JMenuItem    jTableMenuItem9 = new JMenuItem("Клиентска карта");
+    private JMenuItem    jTableMenuItem10 = new JMenuItem("Задължение на клиент");
+    
+    
     //---------------END My Variables
     //---------------START MyFunction
     private void prepareConn() //TEST
