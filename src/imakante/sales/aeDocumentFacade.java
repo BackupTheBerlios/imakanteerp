@@ -1,55 +1,18 @@
 
 package imakante.sales;
 
-import imakante.com.vcomponents.iDialog;
-import imakante.com.vcomponents.iFrame;
-import imakante.com.vcomponents.iInternalFrame;
-import java.awt.AWTEvent;
-import java.awt.Event;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseAdapter;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
-import java.util.EventObject;
 import java.util.HashMap;
-import java.util.Iterator;
 import javax.swing.*;
 import java.util.Date;
 import java.sql.*;
 import java.awt.*;
-import java.awt.KeyboardFocusManager;
-import imakante.sales.FrmDocumentFacade;
-import javax.swing.event.CellEditorListener;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.event.PopupMenuEvent;
-import javax.swing.event.PopupMenuListener;
-import javax.swing.event.TableColumnModelEvent;
-import javax.swing.event.TableColumnModelListener;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
-import imakante.sales.FrmDocumentFacade;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import java.awt.event.*;
-import java.awt.Robot;
-import java.awt.AWTException;
-import java.lang.Math;
-import javax.swing.border.*;
 import java.math.*;
-import java.lang.Thread;
-import org.netbeans.lib.awtextra.AbsoluteLayout;
 import javax.swing.table.*;
-import org.omg.SendingContext.RunTime;
-
 
 public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
 {
@@ -5242,7 +5205,11 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                     processKeyPress(myParent.getDocFacadeType(),F9_KEY,SEARCH_BY_CODE,4);
                 }
                 if(e.getKeyCode()==e.VK_ENTER) {
-                    insertEdit[0].transferFocus();
+                    if(insertEdit[0].getText().equals("")){
+                   System.out.print('\u0007');
+                    }
+                    else{
+                    insertEdit[0].transferFocus();}
                 }
                 
                 
