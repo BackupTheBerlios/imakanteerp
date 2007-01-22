@@ -23,6 +23,8 @@ CREATE TABLE `anlevel` (
 
 /*Data for the table `anlevel` */
 
+insert into `anlevel` (`id_al`,`cod_al`,`name_al`,`comment_al`) values (1,'001','СТОКА',''),(2,'002','КОНТРАГЕНТИ',''),(3,'003','БАНКИ',''),(4,'004','ВЪТРЕШНИ ОБЕКТИ',''),(5,'005','ПАРИЧНИ',''),(6,'006','ЛИЦА','');
+
 /*Table structure for table `kind_paying` */
 
 DROP TABLE IF EXISTS `kind_paying`;
@@ -310,6 +312,8 @@ CREATE TABLE `ls_n_person` (
 
 /*Data for the table `ls_n_person` */
 
+insert into `ls_n_person` (`id_ls_n_person`,`id_n_group`,`code_ls_n_person`,`egn_ls_n_person`,`nlk_ls_n_person`,`name_ls_n_person`,`comment_ls_n_person`) values (1,4,1,'','','ИВАН ПЕТРОВ','Служител');
+
 /*Table structure for table `ls_otdeli` */
 
 DROP TABLE IF EXISTS `ls_otdeli`;
@@ -530,6 +534,8 @@ CREATE TABLE `n_casa` (
 
 /*Data for the table `n_casa` */
 
+insert into `n_casa` (`id_n_casa`,`id_n_group`,`code_n_casa`,`name_n_casa`,`comments_n_casa`) values (1,10,1,'ЦЕНТРАЛНА','');
+
 /*Table structure for table `n_contragent` */
 
 DROP TABLE IF EXISTS `n_contragent`;
@@ -561,6 +567,8 @@ CREATE TABLE `n_contragent` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='kontragenti';
 
 /*Data for the table `n_contragent` */
+
+insert into `n_contragent` (`id_contragent`,`code_contragent`,`name_n_contragent`,`bul_n_contragent`,`dan_n_contragent`,`address_n_contragent`,`id_nm`,`tel_contragent`,`fax_contragent`,`email_contragent`,`web_contragent`,`id_mol`,`id_oso`,`flag_n_contragent`,`IBANR`,`BICR`,`VIDVALR`,`BANKNAMER`,`IBAND`,`BICD`,`VIDVALD`,`BANKNAMED`) values (1,1,'ПРИМЕРНА ФИРМА ЕООД','12010101','10101010101','ул. Победа 1',575,'+35900000001','','firma@mail.bg','http://www.firma.bg',1,1,0,'','','BGL','','','','BGL','');
 
 /*Table structure for table `n_country` */
 
@@ -594,6 +602,8 @@ CREATE TABLE `n_doc_type_user_rights` (
 
 /*Data for the table `n_doc_type_user_rights` */
 
+insert into `n_doc_type_user_rights` (`id_ndtur`,`id_um`,`id_sdtn`,`rights_ndtur`) values (1,1,1,3),(2,1,4,3),(3,1,7,3),(4,1,10,3),(5,1,13,3),(6,1,14,3),(7,1,15,3),(8,1,18,3),(9,1,21,3),(10,1,24,3),(11,1,27,3),(12,1,28,3),(13,1,29,3),(14,1,30,3),(15,1,31,3),(16,1,32,3),(17,1,33,3),(18,2,2,3),(19,2,5,3),(20,2,8,3),(21,2,11,3),(22,2,13,3),(23,2,14,3),(24,2,16,3),(25,2,19,3),(26,2,22,3),(27,2,25,3),(28,2,27,3),(29,2,28,3),(30,2,29,3),(31,2,30,3),(32,2,31,3),(33,3,3,3),(34,3,6,3),(35,3,9,3),(36,3,12,3),(37,3,13,3),(38,3,14,3),(39,3,17,3),(40,3,20,3),(41,3,23,3),(42,3,26,3),(43,3,27,3),(44,3,31,3);
+
 /*Table structure for table `n_expens` */
 
 DROP TABLE IF EXISTS `n_expens`;
@@ -623,6 +633,8 @@ CREATE TABLE `n_group` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251 COMMENT='vsichki vidove grupi';
 
 /*Data for the table `n_group` */
+
+insert into `n_group` (`id_n_group`,`nom_n_group`,`cod_n_group`,`name_n_group`,`id_al`) values (1,2,1,'ДОСТАВЧИЦИ',2),(2,2,2,'КЛИЕНТИ',2),(3,2,3,'БАНКИ',2),(4,3,1,'ВЪТРЕШНИ',6),(5,3,2,'ВЪНШНИ',6),(6,3,3,'РАЗРАБОТЧИЦИ',6),(7,0,1,'ШОКОЛАДОВИ БОНБОНИ',1),(8,4,1,'СТАЦИОНАРЕН',4),(9,4,2,'РАЗНОСЕН',4),(10,5,1,'СТАЦИОНАРНА',4),(11,5,2,'РАЗНОСНА',4),(12,6,1,'ПРИХОДИ',5),(13,6,2,'РАЗХОДИ',5),(14,6,3,'ВАЛУТИ',5),(15,6,4,'БАНКОВИ СМЕТКИ',5);
 
 /*Table structure for table `n_incoms` */
 
@@ -6169,6 +6181,8 @@ CREATE TABLE `n_product_consigment` (
 
 /*Data for the table `n_product_consigment` */
 
+insert into `n_product_consigment` (`id_pc`,`id_pm`,`parcel_pc`,`dateofexpire_pc`,`barcod_pc`,`id_pp`,`id_ppp`,`id_pf`,`exp_list_pc`) values (1,1,1,'2006-11-01',00000000000,0,0,0,'');
+
 /*Table structure for table `n_product_description` */
 
 DROP TABLE IF EXISTS `n_product_description`;
@@ -6186,6 +6200,8 @@ CREATE TABLE `n_product_description` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 /*Data for the table `n_product_description` */
+
+insert into `n_product_description` (`id_pd`,`m1_pd`,`v1_pd`,`m2_pd`,`v2_pd`,`m3_pd`,`v3_pd`) values (1,1,1,3,10,6,100);
 
 /*Table structure for table `n_product_fee` */
 
@@ -6400,6 +6416,8 @@ CREATE TABLE `sl_contragent_product` (
 
 /*Data for the table `sl_contragent_product` */
 
+insert into `sl_contragent_product` (`id_scp`,`id_contragent`,`id_pm`,`flag_scp`) values (1,1,1,000);
+
 /*Table structure for table `sl_copiuri` */
 
 DROP TABLE IF EXISTS `sl_copiuri`;
@@ -6456,6 +6474,35 @@ CREATE TABLE `sl_doc_type_num` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 /*Data for the table `sl_doc_type_num` */
+
+insert into `sl_doc_type_num` (`id_sdtn`,`id_ntd`,`area_number_sdtn`,`name_sdtn`) values (1,1,101,'СТОКОВА РАЗПИСКА'),(2,1,102,'СТОКОВА РАЗПИСКА'),(3,1,103,'СТОКОВА РАЗПИСКА'),(4,25,111,'ПРИЕМАТЕЛНА РАЗПИСКА'),(5,25,112,'ПРИЕМАТЕЛНА РАЗПИСКА'),(6,25,113,'ПРИЕМАТЕЛНА РАЗПИСКА'),(7,26,121,'ПРЕДАВАТЕЛНА РАЗПИСКА'),(8,26,122,'ПРЕДАВАТЕЛНА РАЗПИСКА'),(9,26,123,'ПРЕДАВАТЕЛНА РАЗПИСКА'),(10,17,201,'ФАКТУРА (Данъчна)'),(11,17,202,'ФАКТУРА (Данъчна)'),(12,17,203,'ФАКТУРА (Данъчна)'),(13,4,204,'ФАКТУРА (Опростена)'),(14,3,205,'ФАКТУРА (Проформа)'),(15,10,301,'ПРИХОДЕН КАСОВ ОРДЕР'),(16,10,302,'ПРИХОДЕН КАСОВ ОРДЕР'),(17,10,303,'ПРИХОДЕН КАСОВ ОРДЕР'),(18,11,304,'РАЗХОДЕН КАСОВ ОРДЕР'),(19,11,305,'РАЗХОДЕН КАСОВ ОРДЕР'),(20,11,306,'РАЗХОДЕН КАСОВ ОРДЕР'),(21,12,307,'ОРДЕР - АВАНС'),(22,12,308,'ОРДЕР - АВАНС'),(23,12,309,'ОРДЕР - АВАНС'),(24,13,310,'ОРДЕР - МЕЖДУКАСОВО ПРЕХВЪРЛЯНЕ'),(25,13,311,'ОРДЕР - МЕЖДУКАСОВО ПРЕХВЪРЛЯНЕ'),(26,13,312,'ОРДЕР - МЕЖДУКАСОВО ПРЕХВЪРЛЯНЕ'),(27,23,401,'ПРИЕМАТЕЛЕН ПРОТОКОЛ'),(28,19,402,'КОНСИГНАЦИОНЕН ПРОТОКОЛ'),(29,20,403,'ПРОТОКОЛ - БРАК'),(30,21,404,'ПРОТОКОЛ - ЛИПСА'),(31,22,405,'НАРЕЖДАНЕ ЗА ПРЕХВЪРЛЯНЕ'),(32,16,501,'ЦЕНОВА ЛИСТА'),(33,24,502,'ОФЕРТА');
+
+/*Trigger structure for table `sl_doc_type_num` */
+
+DELIMITER $$
+
+CREATE TRIGGER `mida`.`trigger_au_dtn`
+AFTER UPDATE ON `mida`.`sl_doc_type_num`
+  FOR EACH ROW
+BEGIN
+#IF NEW.quant_nal  <> OLD.quant_nal  THEN
+
+INSERT INTO sl_document_facade(number_df,type_df,level_df)
+     VALUES (CONCAT(NEW.area_number_sdtn,'0000000'),
+             (SELECT n.code_ntd FROM n_type_doc n WHERE NEW.id_ntd=n.id_ntd),
+             1);
+INSERT INTO sl_document_facade(number_df,type_df,level_df)
+     VALUES (CONCAT(NEW.area_number_sdtn,'0000000'),
+             (SELECT n.code_ntd FROM n_type_doc n WHERE NEW.id_ntd=n.id_ntd),
+             2);
+INSERT INTO sl_document_facade(number_df,type_df,level_df)
+     VALUES (CONCAT(NEW.area_number_sdtn,'0000000'),
+             (SELECT n.code_ntd FROM n_type_doc n WHERE NEW.id_ntd=n.id_ntd),
+             3);
+
+END; $$
+
+DELIMITER ;
 
 /*Table structure for table `sl_document_facade` */
 
@@ -6595,6 +6642,19 @@ CREATE TABLE `sl_nalichnosti` (
 ) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
 
 /*Data for the table `sl_nalichnosti` */
+
+/*Trigger structure for table `sl_nalichnosti` */
+
+delimiter //
+CREATE TRIGGER upd_check AFTER UPDATE ON sl_nalichnosti
+FOR EACH ROW
+BEGIN
+IF NEW.quant_nal  <> OLD.quant_nal  THEN
+INSERT INTO log_action_nalich (id_corect, bupdate, aupdate) VALUES (OLD.id_nal,OLD.quant_nal,NEW.quant_nal)
+;
+END IF;
+END;//
+delimiter;
 
 /*Table structure for table `sl_paying_orders` */
 
