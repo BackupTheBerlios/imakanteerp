@@ -1595,7 +1595,7 @@ public void deleteRow()
             String strDate;
             org.jdesktop.swingx.JXDatePicker tmpD = new org.jdesktop.swingx.JXDatePicker();
             strDate = String.valueOf(tmpD.getDate().getDate());
-            strDate += "/" + String.valueOf(tmpD.getDate().getMonth());
+            strDate += "/" + String.valueOf(tmpD.getDate().getMonth()+1);
             strDate += "/" + String.valueOf(tmpD.getDate().getYear()+1900);
             String DateSQLFormat = dateManip.convertDate(strDate);
             
@@ -1604,20 +1604,53 @@ public void deleteRow()
             maxID_df = getCountriesT().getMaxId();
             
             setID_DocFacade(maxID_df) ;
-            for(int i = 0; i < dataInput.size(); i++) {
-                docLineArray d = (docLineArray) dataInput.get(i);
-                double total = d.getNumberOfProduct()*d.getPricePiece();
-                double dds = total*d.getDDS()/100;
-                getCountriesT().insertDocLine(maxID_df,d.getID_PC(),
-                        d.getStorageOut(),d.getPricePiece(),d.getRateReduction(),d.getNumberOfProduct(),
-                        dds,total,d.getPriceList());
+            try
+            {
                 
-            }
-            for(int i=0 ; i < dataOutput.size(); i++) {
-                int id_df =(Integer) dataOutput.get(i);
-                getCountriesT().updateConnectionID(id_df,maxID_df,0);
                 
+                for(int i = 0; i < dataInput.size(); i++) {
+                    docLineArray d = (docLineArray) dataInput.get(i);
+                    double total = d.getNumberOfProduct()*d.getPricePiece();
+                    double dds = total*d.getDDS()/100;
+                    getCountriesT().insertDocLine(maxID_df,d.getID_PC(),
+                            d.getStorageOut(),d.getPricePiece(),d.getRateReduction(),d.getNumberOfProduct(),
+                            dds,total,d.getPriceList());
+                    
+                }
+                // test dali sme slozili v dataOutput tip "String" ili "Integer"
+                int test =(Integer) dataOutput.get(0);
+                for(int i=0 ; i < dataOutput.size(); i++) {
+                    int id_df =(Integer) dataOutput.get(i);
+                    getCountriesT().updateConnectionID(id_df,maxID_df,0);
+                    
+                }
             }
+            catch(Exception ex)
+            {
+                try {
+                    String tmpS = (String) dataOutput.get(0);
+                    String rmpA[] = tmpS.split("@");
+                    int id_df = Integer.valueOf(rmpA[0]);
+                    boolean isDebit = Boolean.valueOf(rmpA[1]);
+                    int debitKredit = 0;
+                    //isDebit = true -> izbrani e kreditno
+                    //isDebit = false -> izbrani e debitno
+                    if(isDebit)
+                    {
+                       debitKredit = 1; 
+                    }
+                    
+                        
+                    getCountriesT().updateConnectionID_Izvestie(id_df,maxID_df,1,debitKredit);
+                    
+                } catch(Exception eex) {
+                    eex.printStackTrace();
+                }
+            }
+            
+            
+            
+           
             
             
         }
@@ -1994,6 +2027,24 @@ public void deleteRow()
             case aeDocumentFacade.FAKTURA_DANACHNA:
             {
                 HashMap parameterHashMap = new HashMap();
+                String strA[] = checkForIzvestie(id_doc);
+                if( strA[0]!=null && strA[1]!=null)
+                {
+                  parameterHashMap.put(new String("izvestieFacNo"),new String(strA[0]));
+                  parameterHashMap.put(new String("izvestieData"),new String(strA[2]));
+                  try
+                  {
+                      boolean isDebit = Boolean.valueOf(strA[1]);
+                      if(isDebit)
+                      {
+                         parameterHashMap.put(new String("Kredit"),new String("X"));
+                        
+                      }
+                      else parameterHashMap.put(new String("Debit"),new String("X"));
+                  }
+                  catch(Exception xxc){};
+                }
+               
                 imakante.com.paramFirm paramFrm1 = new imakante.com.paramFirm();
                 String uuser = (String)table.getValueAt(rowSelect,getColumnIndex("Потребител"));
                 parameterHashMap.put(new String("naredil"),uuser);
@@ -2954,4 +3005,11 @@ public void deleteRow()
         return return_value;
     }
     
+ private String[] checkForIzvestie(int id_df)
+ {
+     String return_val[] = null;
+     return_val = getCountriesT().chechForIzvestie(id_df);
+     
+     return return_val;
+ }
 }// end class

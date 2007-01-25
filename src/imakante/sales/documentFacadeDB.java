@@ -42,6 +42,7 @@
  *comprator= 40: cancellationDocFacade()
  *comprator= 41: getIDPMByIDPC()
  *comprator= 42: updateConnectionID()
+ *
  *comprator= 43: getCurentRate()
  *comprator= 44: searchForNamlichnost()
  *comprator= 45: insertProductNal()
@@ -52,7 +53,8 @@
  *comprator= 50: getStorageAndParcelByID()
  *comprator= 51: getLastCurentDate();
  *comprator= 52: getFromConsigmentIDInfo();
- *
+ *comprator= 53: chechForIzvestie();
+ *comprator= 54:updateConnectionID_Izvestie();
  *
  *
   */
@@ -1475,7 +1477,8 @@ public java.util.HashMap getDocLine(int id_df)
               data.setID_DocLine(rs12.getInt("id_dl"));
               data.setNumerOfDisBand(numerOfDisBaund);
               data.setCodeOfProduct((Integer)rs12.getInt("code_pm"));
-              data.setDDS((Double)rs12.getDouble("dds_dl"));
+             // data.setDDS((Double)rs12.getDouble("dds_dl"));
+              data.setDDS(20);
               data.setNameOfProduct((String)rs12.getString("name_pm"));
               data.setNumberOfProduct((Integer)rs12.getInt("numbers_piece_dl"));
                
@@ -1876,6 +1879,7 @@ public void updateConnectionID(int in_oldDocID, int in_faktura_connection_df,int
        setID_Obekt_IN(oldID_obekt_in);
  
 }
+
 public HashMap getCurentRate(String dateSQLFormat)
 {
     HashMap rate = new HashMap();
@@ -2180,6 +2184,63 @@ public int[] getFromConsigmentIDInfo(int in_id_pc)
         } 
     
     return return_value;
+}
+public String[] chechForIzvestie(int in_id_df)
+{
+    String return_val[] = new String[3];
+    setComprator(53);
+    int oldId_DF = getID_DocFacade();
+    setID_DocFacade(in_id_df);
+    java.sql.ResultSet rs12 =null;
+    try
+        {
+            registerParameters();
+            rs12 = getCstm().executeQuery();
+            while(rs12.next())
+            {
+               return_val[0]  = String.valueOf(rs12.getObject("number_df"));
+               return_val[1]  = String.valueOf(rs12.getObject("debit_Kredit_df"));
+               return_val[2]  = String.valueOf(rs12.getObject("date_edition_df"));
+            }  
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+            return_val[0] = null;
+            return_val[1] = null;
+             return_val[2] = null;
+        } 
+     
+    return return_val;
+}
+public void updateConnectionID_Izvestie(int in_oldDocID, int in_faktura_connection_df,int in_izvestie_connection_df,int isDebit)
+{
+     //isDebit = true -> izbrani e kreditno
+     //isDebit = false -> izbrani e debitno
+     int oldID_obekt_in = getID_Obekt_IN();
+     int oldID_obekt_out = getID_Obekt_OUT();
+     int oldID_DF = getID_DocFacade();
+     int oldID_Con = getID_Contragent_IN();
+     setComprator(54);
+     setID_Obekt_IN(in_faktura_connection_df);
+     setID_Obekt_OUT(in_izvestie_connection_df);
+     setID_DocFacade(in_oldDocID);
+     setID_Contragent_IN(isDebit);
+     try
+        {
+            registerParameters();
+            getCstm().execute();
+        }
+        catch(java.sql.SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+  
+       setID_DocFacade(oldID_DF);
+       setID_Obekt_OUT(oldID_obekt_out);
+       setID_Obekt_IN(oldID_obekt_in);
+       setID_Contragent_IN(oldID_Con);
+ 
 }
 // <-----------------------
 }// end class

@@ -282,6 +282,11 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jCheckBox1 = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
         jButtonPrint = new javax.swing.JButton();
+        jPanelIzvestie = new javax.swing.JPanel();
+        jPanelIzvestie.setVisible(false);
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
+        jBCreateIzvestie = new javax.swing.JButton();
 
         getContentPane().setLayout(null);
 
@@ -986,7 +991,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         });
 
         jPanel2.add(jButtonAnulirane);
-        jButtonAnulirane.setBounds(330, 620, 87, 23);
+        jButtonAnulirane.setBounds(330, 620, 89, 23);
 
         jButtonDellDocFadade.setText("\u0418\u0437\u0442\u0440\u0438\u0432\u0430\u043d\u0435 \u043d\u0430 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442");
         jButtonDellDocFadade.setNextFocusableComponent(jButtonCreateDocFacade);
@@ -997,7 +1002,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         });
 
         jPanel2.add(jButtonDellDocFadade);
-        jButtonDellDocFadade.setBounds(420, 620, 153, 23);
+        jButtonDellDocFadade.setBounds(420, 620, 155, 23);
 
         jButton3.setText("\u0414\u043e\u0431\u0430\u0432\u044f\u043d\u0435 \u043d\u0430 \u043b\u0438\u043d\u0438\u044f");
         jButton3.setEnabled(false);
@@ -1009,7 +1014,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         });
 
         jPanel2.add(jButton3);
-        jButton3.setBounds(160, 620, 131, 23);
+        jButton3.setBounds(160, 620, 133, 23);
 
         jPanelStorageINOUT.setLayout(new java.awt.GridBagLayout());
 
@@ -1097,7 +1102,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanelCreateFacturi.add(jButton1);
 
         jPanel2.add(jPanelCreateFacturi);
-        jPanelCreateFacturi.setBounds(170, 650, 343, 53);
+        jPanelCreateFacturi.setBounds(170, 650, 341, 49);
 
         jButtonPrint.setText("\u041f\u0435\u0447\u0430\u0442");
         jButtonPrint.addActionListener(new java.awt.event.ActionListener() {
@@ -1110,11 +1115,106 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jPanel2.add(jButtonPrint);
         jButtonPrint.setBounds(580, 650, 140, 23);
 
+        jPanelIzvestie.setLayout(new java.awt.GridBagLayout());
+
+        jPanelIzvestie.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "\u0418\u0437\u0432\u0435\u0441\u0442\u0438\u0435"));
+        jCheckBox2.setText("\u0414\u0435\u0431\u0438\u0442\u043d\u043e.");
+        jCheckBox2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox2.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox2ActionPerformed(evt);
+            }
+        });
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 30);
+        jPanelIzvestie.add(jCheckBox2, gridBagConstraints);
+
+        jCheckBox3.setText("\u041a\u0440\u0435\u0434\u0438\u0442\u043d\u043e.");
+        jCheckBox3.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jCheckBox3.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox3ActionPerformed(evt);
+            }
+        });
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 30);
+        jPanelIzvestie.add(jCheckBox3, gridBagConstraints);
+
+        jBCreateIzvestie.setText("\u0421\u044a\u0437\u0434\u0430\u0432\u0430\u043d\u0435");
+        jBCreateIzvestie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCreateIzvestieActionPerformed(evt);
+            }
+        });
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPanelIzvestie.add(jBCreateIzvestie, gridBagConstraints);
+
+        jPanel2.add(jPanelIzvestie);
+        jPanelIzvestie.setBounds(150, 660, 350, 50);
+
         getContentPane().add(jPanel2);
         jPanel2.setBounds(0, 0, 730, 710);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBCreateIzvestieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCreateIzvestieActionPerformed
+// TODO add your handling code here:
+    boolean tmpBool = false; //jCheckBox2 e izbran tmpBool = false ili jCheckBox3 e izbran tmpBool = true
+    // debitno = jCheckBox2; kreditno = jCheckBox3
+    
+    
+    if(jCheckBox3.isSelected())
+    {
+       tmpBool = true; 
+    }
+        
+     HashMap data1;        
+     data1 = myParent.getCountriesT().getDocLine(myParent.getID_DocFacade());
+    
+     
+     sales_main.dataIn = data1;
+     ArrayList tmp = new ArrayList();
+     tmp.add(new String(String.valueOf(myParent.getID_DocFacade())+"@"+String.valueOf(tmpBool)));
+     sales_main.dataOut = tmp;
+     sales_main.isMakeDocByInputData = true;   
+     this.dispose();
+     myParent.closeFrm();
+    }//GEN-LAST:event_jBCreateIzvestieActionPerformed
+
+    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+// TODO add your handling code here:
+         if(jCheckBox3.isSelected())
+        {
+           jCheckBox2.setSelected(false);
+        }
+         else
+         {
+            jCheckBox2.setSelected(true); 
+         }
+    }//GEN-LAST:event_jCheckBox3ActionPerformed
+
+    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+// TODO add your handling code here:
+        if(jCheckBox2.isSelected())
+        {
+           jCheckBox3.setSelected(false);
+        }
+        else
+        {
+           jCheckBox3.setSelected(true); 
+        }
+        
+        
+    }//GEN-LAST:event_jCheckBox2ActionPerformed
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 // TODO add your handling code here:
@@ -2102,6 +2202,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     }*/
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBCreateIzvestie;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -2115,6 +2216,8 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private javax.swing.JButton jButtonToBegin;
     private javax.swing.JButton jButtonToEnd;
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JComboBox jComboBoxVidPla6tane;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -2172,6 +2275,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private javax.swing.JPanel jPanelDocLine;
     private javax.swing.JPanel jPanelHead;
     private javax.swing.JPanel jPanelInsertEdit;
+    private javax.swing.JPanel jPanelIzvestie;
     private javax.swing.JPanel jPanelObekt;
     private javax.swing.JPanel jPanelPrice;
     private javax.swing.JPanel jPanelPriceList;
@@ -3639,6 +3743,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 jPanel4.setVisible(false);
                 jPanelCreateFacturi.setVisible(false);
                 jPanelStorageINOUT.setVisible(false);
+                jPanelIzvestie.setVisible(true);
                 Point p = jPanel6.getLocation();
                 p.y = jPanelContragent.getLocation().y+jPanelContragent.getSize().height;
                 jPanel6.setLocation(p);
