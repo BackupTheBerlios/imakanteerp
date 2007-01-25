@@ -862,6 +862,7 @@ IF (comprator = 42) THEN
     WHERE s.id_df = in_id_df;
 END IF;
 
+
 IF (comprator = 43) THEN
      SELECT  n.cod_lat_n_money, s.value_sl_exchange_rate FROM mida.sl_exchange_rate s LEFT JOIN mida.n_money n ON n.id_n_money=s.id_n_money
      WHERE s.date_sl_exchange_rate = in_docFacadeComment;
@@ -936,6 +937,18 @@ IF (comprator = 52) THEN
      SELECT n.id_pm, n.parcel_pc, n.id_pp, n.id_ppp, n.id_pf,
       pm.id_ppp as pm_id_ppp, pm.id_pp as pm_id_pp, pm.id_pf as pm_id_pf FROM n_product_consigment n LEFT JOIN n_product_main pm ON pm.id_pm=n.id_pm
     WhERE n.id_pc = in_id_df;
+END IF;
+
+IF (comprator = 53) THEN
+      SELECT in_s.number_df, debit_Kredit_df, date_edition_df FROM sl_document_facade in_s
+      WHERE in_s.faktura_connection_df = in_id_df and in_s.izvestie_connection_df>0 ;
+END IF;
+
+IF (comprator = 54) THEN
+   UPDATE sl_document_facade s SET s.faktura_connection_df = in_id_obekt_in ,
+    s.izvestie_connection_df = in_id_obekt_out,
+    s.debit_Kredit_df = in_id_contragent_in
+    WHERE s.id_df = in_id_df;
 END IF;
 
 END $$

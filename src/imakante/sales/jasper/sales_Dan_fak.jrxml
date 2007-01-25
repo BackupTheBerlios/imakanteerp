@@ -85,6 +85,16 @@
 	<parameter name="firma_BIC_R" isForPrompting="false" class="java.lang.String">
 		<defaultValueExpression ><![CDATA[""]]></defaultValueExpression>
 	</parameter>
+	<parameter name="Debit" isForPrompting="false" class="java.lang.String">
+		<defaultValueExpression ><![CDATA["-"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Kredit" isForPrompting="false" class="java.lang.String">
+		<defaultValueExpression ><![CDATA["-"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="izvestieFacNo" isForPrompting="false" class="java.lang.String">
+		<defaultValueExpression ><![CDATA["- - - - - - - - -"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="izvestieData" isForPrompting="false" class="java.lang.String"/>
 	<queryString><![CDATA[SELECT
 number_df,
 date_edition_df,
@@ -200,7 +210,7 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 			</band>
 		</background>
 		<title>
-			<band height="171"  isSplitAllowed="true" >
+			<band height="176"  isSplitAllowed="true" >
 				<rectangle radius="0" >
 					<reportElement
 						mode="Opaque"
@@ -257,7 +267,7 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 					<reportElement
 						mode="Transparent"
 						x="219"
-						y="91"
+						y="70"
 						width="92"
 						height="14"
 						forecolor="#000000"
@@ -273,7 +283,7 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 					<reportElement
 						mode="Transparent"
 						x="216"
-						y="110"
+						y="87"
 						width="98"
 						height="14"
 						forecolor="#000000"
@@ -348,7 +358,7 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 				<staticText>
 					<reportElement
 						x="211"
-						y="65"
+						y="46"
 						width="21"
 						height="18"
 						key="staticText-11"/>
@@ -361,7 +371,7 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="235"
-						y="65"
+						y="46"
 						width="87"
 						height="19"
 						key="textField-4"/>
@@ -569,7 +579,7 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 				<line direction="TopDown">
 					<reportElement
 						x="1"
-						y="168"
+						y="173"
 						width="532"
 						height="0"
 						key="line-13"/>
@@ -626,6 +636,102 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 						<font/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$P{firma_dan_No}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement
+						x="208"
+						y="107"
+						width="116"
+						height="65"
+						key="rectangle-3"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<staticText>
+					<reportElement
+						x="210"
+						y="109"
+						width="90"
+						height="13"
+						key="staticText-41"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font size="9"/>
+					</textElement>
+				<text><![CDATA[Дебитно известие]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="210"
+						y="125"
+						width="91"
+						height="12"
+						key="staticText-42"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font size="9"/>
+					</textElement>
+				<text><![CDATA[Кредитно известие]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="209"
+						y="142"
+						width="115"
+						height="12"
+						key="staticText-43"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[към фактура:]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="220"
+						y="140"
+						width="82"
+						height="0"
+						key="line-14"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="212"
+						y="156"
+						width="108"
+						height="15"
+						key="textField-32"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["№ "+$P{izvestieFacNo}+"/"+$P{izvestieData}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="306"
+						y="109"
+						width="16"
+						height="13"
+						key="textField-33"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["["+$P{Debit}+"]"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="306"
+						y="125"
+						width="16"
+						height="13"
+						key="textField-34"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["["+$P{Kredit}+"]"]]></textFieldExpression>
 				</textField>
 			</band>
 		</title>
