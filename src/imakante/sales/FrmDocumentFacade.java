@@ -2031,7 +2031,9 @@ public void deleteRow()
                 if( strA[0]!=null && strA[1]!=null)
                 {
                   parameterHashMap.put(new String("izvestieFacNo"),new String(strA[0]));
-                  parameterHashMap.put(new String("izvestieData"),new String(strA[2]));
+                  String tmpDate = strA[2];
+                  tmpDate = checkAndConvertSQLFormat(tmpDate,".");
+                  parameterHashMap.put(new String("izvestieData"),new String(tmpDate));
                   try
                   {
                       boolean isDebit = Boolean.valueOf(strA[1]);
@@ -3012,4 +3014,49 @@ public void deleteRow()
      
      return return_val;
  }
+  private  String checkAndConvertSQLFormat(String in,String difSymbol)
+  {
+        String newDate = in;
+        System.out.println(" data koiato podavam " + in);
+        char ch[] = in.toCharArray();
+        int length = in.length();
+        int bufLength=0;
+        int  countS = 0;
+        for(int i=0; i < length;i++) {
+            if(ch[i]==45 || ch[i]==46 || ch[i]==47 ) {
+                countS++;
+                if(i==4 && countS==1) // SQL format
+                {
+                    newDate = in.substring(length-2,length);
+                    int newLength=length;
+                    String newIn=in;
+                    char d_ch[] = newDate.toCharArray();
+                    if(d_ch[0]==45 || d_ch[0]==46 || d_ch[0]==47 ) {
+                        d_ch[0] = '0';
+                        newDate =String.valueOf(d_ch);
+                        newIn = in.substring(0,length-1);
+                        newIn += newDate;
+                        newLength = newIn.length();
+                    }
+                    newDate +=difSymbol;
+                    
+                    String m_newDate =newIn.substring(newLength-5,newLength-3);
+                    char m_ch[] = m_newDate.toCharArray();
+                    
+                    if(m_ch[0]==45 || m_ch[0]==46 || m_ch[0]==47 ) {
+                        m_ch[0] = '0';
+                        m_newDate =String.valueOf(m_ch);
+                    }
+                    newDate +=m_newDate;
+                    newDate +=difSymbol;
+                    newDate +=in.substring(0,4);
+                    break;
+                }
+            }
+        }
+        
+        
+        
+        return newDate;
+    }
 }// end class

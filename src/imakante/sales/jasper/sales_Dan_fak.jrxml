@@ -94,7 +94,9 @@
 	<parameter name="izvestieFacNo" isForPrompting="false" class="java.lang.String">
 		<defaultValueExpression ><![CDATA["- - - - - - - - -"]]></defaultValueExpression>
 	</parameter>
-	<parameter name="izvestieData" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="izvestieData" isForPrompting="false" class="java.lang.String">
+		<defaultValueExpression ><![CDATA["- - -" ]]></defaultValueExpression>
+	</parameter>
 	<queryString><![CDATA[SELECT
 number_df,
 date_edition_df,
@@ -705,7 +707,7 @@ WHERE rep_documents_new.id_df = $P{id_dok}]]></queryString>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font size="8"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["№ "+$P{izvestieFacNo}+"/"+$P{izvestieData}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA["№ "+$P{izvestieFacNo}+" / "+$P{izvestieData}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
