@@ -2326,7 +2326,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     }
     //PARICHNI - EXCHANGE RATE
     private void loadExRates() {
-        imakante.sales.FrmExchangeRate Rates = new imakante.sales.FrmExchangeRate("\u041a\u0443\u0440\u0441\u043e\u0432\u0435 \u043d\u0430 \u0432\u0430\u043b\u0443\u0442\u0438", this);
+        nom.FrmExchangeRate Rates = new nom.FrmExchangeRate("\u041a\u0443\u0440\u0441\u043e\u0432\u0435 \u043d\u0430 \u0432\u0430\u043b\u0443\u0442\u0438", this);
         desktopPane.add(Rates);
         try {
             Rates.setMaximum(true);

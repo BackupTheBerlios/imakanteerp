@@ -1,5 +1,5 @@
 
-package imakante.sales;
+package nom;
 
 import java.util.Calendar;
 

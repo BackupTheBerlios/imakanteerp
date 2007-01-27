@@ -1,11 +1,11 @@
 
-package imakante.sales;
+package nom;
 
 public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
     
     public aeExchangeRate(imakante.com.vcomponents.iInternalFrame parent, boolean modal) {
         super(parent, modal);
-        this.myParent = (imakante.sales.FrmExchangeRate) parent;
+        this.myParent = (nom.FrmExchangeRate) parent;
         initComponents();
         getNavigationState();
         jbUndo.setEnabled(false);
@@ -316,7 +316,7 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
     private javax.swing.JTextField jtfRate;
     // End of variables declaration//GEN-END:variables
     
-    private imakante.sales.FrmExchangeRate myParent;
+    private nom.FrmExchangeRate myParent;
     private String oldDate = "";
     private int oldIDCurrency = 1;
     private Double oldRate = 0.00;

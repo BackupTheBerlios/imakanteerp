@@ -1,5 +1,5 @@
 
-package imakante.sales;
+package nom;
 
 public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame implements java.awt.event.WindowListener {
     
@@ -233,7 +233,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     private  imakante.com.vcomponents.iFrame myframe;
     private  java.sql.Connection conn;
     private  java.sql.ResultSet rs;
-    private  imakante.sales.dbExchangeRate internalObject;
+    private  nom.dbExchangeRate internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
     public static final String Names[] = {"id", "\u0414\u0430\u0442\u0430",
@@ -264,7 +264,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     
     private void constructObject() {
         try {
-            internalObject = new imakante.sales.dbExchangeRate(conn);
+            internalObject = new nom.dbExchangeRate(conn);
         } catch(Exception e) { e.printStackTrace(); }
     }
     
@@ -303,7 +303,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     
     private void newRecord() {
         setId(internalObject.getMaxId());
-        imakante.sales.aeExchangeRate aeExRates = new imakante.sales.aeExchangeRate(this, true);
+        nom.aeExchangeRate aeExRates = new nom.aeExchangeRate(this, true);
         aeExRates.setVisible(true);
         refreshTable();
     }
@@ -316,7 +316,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
             if(getRow() == getMaxRow())
                 setAtEnd(true);
             setAllVariables();
-            imakante.sales.aeExchangeRate aeExRates = new imakante.sales.aeExchangeRate(this, true);
+            nom.aeExchangeRate aeExRates = new nom.aeExchangeRate(this, true);
             aeExRates.setVisible(true);
         } else {  }
     }
@@ -373,11 +373,11 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     public void windowDeactivated(java.awt.event.WindowEvent e) {
     }
     
-    public imakante.sales.dbExchangeRate getInternalObject() {
+    public nom.dbExchangeRate getInternalObject() {
         return internalObject;
     }
     
-    public void setInternalObject(imakante.sales.dbExchangeRate val) {
+    public void setInternalObject(nom.dbExchangeRate val) {
         this.internalObject = val;
     }
     
