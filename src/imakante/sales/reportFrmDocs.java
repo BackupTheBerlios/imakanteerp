@@ -247,7 +247,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
                 .add(jCheckBox10)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jCheckBox11)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 206, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 257, Short.MAX_VALUE)
                 .add(jButton5)
                 .addContainerGap())
         );
@@ -274,11 +274,11 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+                .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+                .add(jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jXDatePicker2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -344,14 +344,14 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .add(49, 49, 49)
                 .add(jLabel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 17, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 114, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 43, Short.MAX_VALUE)
                 .add(jLabel6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 16, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jTextField4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                .add(jTextField4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 110, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jCheckBox14)
                 .addContainerGap())
@@ -360,11 +360,11 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel3Layout.createSequentialGroup()
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel5)
-                    .add(jLabel6)
                     .add(jCheckBox14)
                     .add(jTextField4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jLabel6)
+                    .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel5))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -416,11 +416,11 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jLabel8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE)
+                .add(jLabel8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jTextField5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 118, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
+                .add(jLabel9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jTextField6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 107, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -487,11 +487,11 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jLabel11, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
+                .add(jLabel11, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jTextField7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 119, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                .add(jLabel12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jTextField8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 102, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(9, 9, 9)
@@ -558,11 +558,11 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jLabel14, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                .add(jLabel14, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jTextField9, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 120, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel15, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                .add(jLabel15, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jTextField10, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 101, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -629,15 +629,15 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             jPanel7Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jLabel17, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                .add(jLabel17, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jTextField11, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 120, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel18, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                .add(jLabel18, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jTextField12, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 101, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jCheckBox18)
+                .add(jCheckBox18, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 71, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -645,10 +645,10 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             .add(jPanel7Layout.createSequentialGroup()
                 .add(jPanel7Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel17)
-                    .add(jCheckBox18)
                     .add(jTextField12, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel18)
-                    .add(jTextField11, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jTextField11, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jCheckBox18, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 18, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -700,11 +700,11 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             jPanel8Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jLabel20, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
+                .add(jLabel20, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jTextField13, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(6, 6, 6)
-                .add(jLabel21, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                .add(jLabel21, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jTextField14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 103, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -786,11 +786,11 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jLabel23, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
+                .add(jLabel23, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jTextField15, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(5, 5, 5)
-                .add(jLabel24, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                .add(jLabel24, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jTextField16, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 104, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -831,25 +831,24 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                        .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(layout.createSequentialGroup()
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                                .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel4, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel3, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .add(jPanel9, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .add(jPanel8, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .add(jPanel7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .add(jPanel6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .add(jPanel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED))
+                        .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(layout.createSequentialGroup()
                         .add(10, 10, 10)
-                        .add(jLabel25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 15, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 90, Short.MAX_VALUE)
+                        .add(jLabel25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 15, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jPanel8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jPanel7, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jPanel6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jPanel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jPanel4, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jPanel3, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(layout.createSequentialGroup()
                         .add(jButton1)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jButton3)
@@ -865,9 +864,8 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(layout.createSequentialGroup()
                         .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -882,17 +880,19 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanel8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jPanel9, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                        .add(jPanel9, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 28, Short.MAX_VALUE)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jButton1)
+                            .add(jButton3)
+                            .add(jButton4)
+                            .add(jButton2)))
+                    .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jButton2)
-                    .add(jLabel25)
-                    .add(jButton4)
-                    .add(jButton3)
-                    .add(jButton1))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .add(jLabel25)
+                .addContainerGap())
         );
-        setBounds(100, 20, 601, 583);
+        setBounds(100, 20, 669, 601);
     }// </editor-fold>//GEN-END:initComponents
     
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -1277,20 +1277,20 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     private String[] NamesQ = { "\u041D\u043E\u043C\u0435\u0440\u0430\u0442\u043E\u0440" };
     java.text.SimpleDateFormat formatterG = new java.text.SimpleDateFormat("yyyy-MM-dd");
     
-    private String strStore = "SELECT rep_documents.code_store, rep_documents.name_store " +
-            "FROM rep_documents WHERE rep_documents.code_store LIKE '%";
-    private String strClient = "SELECT rep_documents.code_client, rep_documents.name_client " +
-            "FROM rep_documents WHERE rep_documents.code_client LIKE '%";
-    private String strProduct = "SELECT rep_documents.code_product, rep_documents.name_product " +
-            "FROM rep_documents WHERE rep_documents.code_product LIKE '%";
-    private String strSupplier = "SELECT rep_documents.code_dostavchik, rep_documents.name_dostavchik " +
-            "FROM rep_documents WHERE rep_documents.code_dostavchik LIKE '%";
-    private String strDistributor = "SELECT rep_documents.code_distributor, rep_documents.name_distributor " +
-            "FROM rep_documents WHERE rep_documents.code_distributor LIKE '%";
-    private String strOperator = "SELECT rep_documents.code_operator, name_operator " +
-            "FROM rep_documents WHERE rep_documents.code_operator LIKE '%";
-    private String strSpeditor = "SELECT rep_documents.code_speditor, rep_documents.name_speditor " +
-            "FROM rep_documents WHERE rep_documents.code_speditor LIKE '%";
+    private String strStore = "SELECT rep_documents_new.code_store, rep_documents_new.name_store " +
+            "FROM rep_documents_new WHERE rep_documents_new.code_store LIKE '%";
+    private String strClient = "SELECT rep_documents_new.code_client, rep_documents_new.name_client " +
+            "FROM rep_documents_new WHERE rep_documents_new.code_client LIKE '%";
+    private String strProduct = "SELECT rep_documents_new.code_product, rep_documents_new.name_product " +
+            "FROM rep_documents_new WHERE rep_documents_new.code_product LIKE '%";
+    private String strSupplier = "SELECT rep_documents_new.code_dostavchik, rep_documents_new.name_dostavchik " +
+            "FROM rep_documents_new WHERE rep_documents_new.code_dostavchik LIKE '%";
+    private String strDistributor = "SELECT rep_documents_new.code_distributor, rep_documents_new.name_distributor " +
+            "FROM rep_documents_new WHERE rep_documents_new.code_distributor LIKE '%";
+    private String strOperator = "SELECT rep_documents_new.code_operator, name_operator " +
+            "FROM rep_documents_new WHERE rep_documents_new.code_operator LIKE '%";
+    private String strSpeditor = "SELECT rep_documents_new.code_speditor, rep_documents_new.name_speditor " +
+            "FROM rep_documents_new WHERE rep_documents_new.code_speditor LIKE '%";
     private String qu = "SELECT ";
     private String reportFile = null;
     private java.util.HashMap hm = null;
@@ -1372,7 +1372,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     
     private void processReport() {
         String newString = qu;
-        newString = newString + " DISTINCT CONCAT(rep_documents.level_df";
+        newString = newString + " DISTINCT CONCAT(rep_documents_new.level_df";
         java.util.List namesQ = new java.util.ArrayList();
         namesQ.add("\u041D\u043E\u043C\u0435\u0440\u0430\u0442\u043E\u0440");
         int nubColums = 0;
@@ -1394,79 +1394,79 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         else if (this.jCheckBox20.isSelected())
             this.setReportFile("report_Documents.jasper");
         else this.setReportFile("report_Documents.jasper");
-        if (!this.jCheckBox13.isSelected()) newString = newString + ", IFNULL(rep_documents.date_edition_df, 0)";
-        if (!this.jCheckBox14.isSelected()) newString = newString + ", IFNULL(rep_documents.code_store, 0)";
-        if (!this.jCheckBox15.isSelected()) newString = newString + ", IFNULL(rep_documents.code_client, 0)";
-        if (!this.jCheckBox16.isSelected()) newString = newString + ", IFNULL(rep_documents.code_product, 0)";
-        if (!this.jCheckBox17.isSelected()) newString = newString + ", IFNULL(rep_documents.code_dostavchik, 0)";
-        if (!this.jCheckBox18.isSelected()) newString = newString + ", IFNULL(rep_documents.code_distributor, 0)";
-        if (!this.jCheckBox19.isSelected()) newString = newString + ", IFNULL(rep_documents.code_operator, 0)";
-        if (!this.jCheckBox20.isSelected()) newString = newString + ", IFNULL(rep_documents.code_speditor, 0)";
-        newString = newString + ") AS con, rep_documents.number_df, rep_documents.type_df";
+        if (!this.jCheckBox13.isSelected()) newString = newString + ", IFNULL(rep_documents_new.date_edition_df, 0)";
+        if (!this.jCheckBox14.isSelected()) newString = newString + ", IFNULL(rep_documents_new.code_store, 0)";
+        if (!this.jCheckBox15.isSelected()) newString = newString + ", IFNULL(rep_documents_new.code_client, 0)";
+        if (!this.jCheckBox16.isSelected()) newString = newString + ", IFNULL(rep_documents_new.code_product, 0)";
+        if (!this.jCheckBox17.isSelected()) newString = newString + ", IFNULL(rep_documents_new.code_dostavchik, 0)";
+        if (!this.jCheckBox18.isSelected()) newString = newString + ", IFNULL(rep_documents_new.code_distributor, 0)";
+        if (!this.jCheckBox19.isSelected()) newString = newString + ", IFNULL(rep_documents_new.code_operator, 0)";
+        if (!this.jCheckBox20.isSelected()) newString = newString + ", IFNULL(rep_documents_new.code_speditor, 0)";
+        newString = newString + ") AS con, rep_documents_new.number_df, rep_documents_new.type_df";
         namesQ.add("\u041D\u043E\u043C\u0435\u0440 \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442");
         namesQ.add("\u0422\u0438\u043F \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442");
         nubColums =+ 2;
         if (!this.jCheckBox13.isSelected()) {
-            newString = newString + ", rep_documents.date_edition_df";
+            newString = newString + ", rep_documents_new.date_edition_df";
             namesQ.add("\u0414\u0430\u0442\u0430");
             nubColums =+ 1;
         }
         if (!this.jCheckBox14.isSelected()) {
-            newString = newString + ", rep_documents.code_store, rep_documents.name_store";
+            newString = newString + ", rep_documents_new.code_store, rep_documents_new.name_store";
             namesQ.add("\u041A\u043E\u0434 \u0441\u043A\u043B\u0430\u0434");
             nubColums =+ 1;
             namesQ.add("\u0418\u043C\u0435 \u0441\u043A\u043B\u0430\u0434");
             nubColums =+ 1;
         }
         if (!this.jCheckBox15.isSelected()) {
-            newString = newString + ", rep_documents.code_client, rep_documents.name_client";
+            newString = newString + ", rep_documents_new.code_client, rep_documents_new.name_client";
             namesQ.add("\u041A\u043E\u0434 \u043A\u043B\u0438\u0435\u043D\u0442");
             nubColums =+ 1;
             namesQ.add("\u0418\u043C\u0435 \u043A\u043B\u0438\u0435\u043D\u0442");
             nubColums =+ 1;
         }
         if (!this.jCheckBox16.isSelected()) {
-            newString = newString + ", rep_documents.code_product, rep_documents.name_product";
+            newString = newString + ", rep_documents_new.code_product, rep_documents_new.name_product";
             namesQ.add("\u041A\u043E\u0434 \u043F\u0440\u043E\u0434\u0443\u043A\u0442");
             nubColums =+ 1;
             namesQ.add("\u0418\u043C\u0435 \u043F\u0440\u043E\u0434\u0443\u043A\u0442");
             nubColums =+ 1;
         }
         if (!this.jCheckBox17.isSelected()) {
-            newString = newString + ", rep_documents.code_dostavchik, rep_documents.name_dostavchik";
+            newString = newString + ", rep_documents_new.code_dostavchik, rep_documents_new.name_dostavchik";
             namesQ.add("\u041A\u043E\u0434 \u0434\u043E\u0441\u0442\u0430\u0432\u0447\u0438\u043A");
             nubColums =+ 1;
             namesQ.add("\u0418\u043C\u0435 \u0434\u043E\u0441\u0442\u0430\u0432\u0447\u0438\u043A");
             nubColums =+ 1;
         }
         if (!this.jCheckBox18.isSelected()) {
-            newString = newString + ", rep_documents.code_distributor, rep_documents.name_distributor";
+            newString = newString + ", rep_documents_new.code_distributor, rep_documents_new.name_distributor";
             namesQ.add("\u041A\u043E\u0434 \u0434\u0438\u0441\u0442\u0440\u0438\u0431\u0443\u0442\u043E\u0440");
             nubColums =+ 1;
             namesQ.add("\u0418\u043C\u0435 \u0434\u0438\u0441\u0442\u0440\u0438\u0431\u0443\u0442\u043E\u0440");
             nubColums =+ 1;
         }
         if (!this.jCheckBox19.isSelected()) {
-            newString = newString + ", rep_documents.code_operator, rep_documents.name_operator";
+            newString = newString + ", rep_documents_new.code_operator, rep_documents_new.name_operator";
             namesQ.add("\u041A\u043E\u0434 \u043E\u043F\u0435\u0440\u0430\u0442\u043E\u0440");
             nubColums =+ 1;
             namesQ.add("\u0418\u043C\u0435 \u043E\u043F\u0435\u0440\u0430\u0442\u043E\u0440");
             nubColums =+ 1;
         }
         if (!this.jCheckBox20.isSelected()) {
-            newString = newString + ", rep_documents.code_speditor, rep_documents.name_speditor";
+            newString = newString + ", rep_documents_new.code_speditor, rep_documents_new.name_speditor";
             namesQ.add("\u041A\u043E\u0434 \u0441\u043F\u0435\u0434\u0438\u0442\u043E\u0440");
             nubColums =+ 1;
             namesQ.add("\u0418\u043C\u0435 \u0441\u043F\u0435\u0434\u0438\u0442\u043E\u0440");
             nubColums =+ 1;
         }
-        newString = newString + ", rep_documents.total_df, rep_documents.dds_df, rep_documents.date_pay_df " +
-                "FROM rep_documents";
+        newString = newString + ", rep_documents_new.total_df, rep_documents_new.dds_df, rep_documents_new.date_pay_df " +
+                "FROM rep_documents_new";
         namesQ.add("\u0421\u0443\u043C\u0430 \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442");
         namesQ.add("\u0421\u0443\u043C\u0430 \u043D\u0430 \u0414\u0414\u0421");
         namesQ.add("\u0414\u0430\u0442\u0430 \u043D\u0430 \u043F\u043B\u0430\u0449\u0430\u043D\u0435");
         nubColums =+ 3;
-        String typeDoc = " rep_documents.type_df IN(000";
+        String typeDoc = " rep_documents_new.type_df IN(000";
         if (this.jCheckBox1.isSelected()) typeDoc = typeDoc + ", 202";
         if (this.jCheckBox3.isSelected()) typeDoc = typeDoc + ", 600";
         if (this.jCheckBox4.isSelected()) typeDoc = typeDoc + ", 700";
@@ -1481,27 +1481,27 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         typeDoc = typeDoc + ")";
         try {
             newString = newString + " WHERE " + typeDoc +
-                    "  AND rep_documents.date_edition_df BETWEEN '" + (String)formatterG.format(this.jXDatePicker1.getDate()) +
+                    "  AND rep_documents_new.date_edition_df BETWEEN '" + (String)formatterG.format(this.jXDatePicker1.getDate()) +
                     "' AND '" + (String)formatterG.format(this.jXDatePicker2.getDate()) +
-                    "' AND rep_documents.code_store BETWEEN '" + (Integer.parseInt(jTextField3.getText()) - 1) +
+                    "' AND rep_documents_new.code_store BETWEEN '" + (Integer.parseInt(jTextField3.getText()) - 1) +
                     "' AND '" + (Integer.parseInt(jTextField4.getText()) + 1) +
-                    "' AND rep_documents.code_client BETWEEN '" + (Integer.parseInt(jTextField5.getText()) - 1) +
+                    "' AND rep_documents_new.code_client BETWEEN '" + (Integer.parseInt(jTextField5.getText()) - 1) +
                     "' AND '" + (Integer.parseInt(jTextField6.getText()) + 1) +
-                    "' AND rep_documents.code_product BETWEEN '" + (Integer.parseInt(jTextField7.getText()) - 1) +
+                    "' AND rep_documents_new.code_product BETWEEN '" + (Integer.parseInt(jTextField7.getText()) - 1) +
                     "' AND '" + (Integer.parseInt(jTextField8.getText()) + 1) +
-                    "' AND rep_documents.code_dostavchik BETWEEN '" + (Integer.parseInt(jTextField9.getText()) - 1) +
+                    "' AND rep_documents_new.code_dostavchik BETWEEN '" + (Integer.parseInt(jTextField9.getText()) - 1) +
                     "' AND '" + (Integer.parseInt(jTextField10.getText()) + 1) +
-                    "' AND rep_documents.code_distributor BETWEEN '" + (Integer.parseInt(jTextField11.getText()) - 1) +
+                    "' AND rep_documents_new.code_distributor BETWEEN '" + (Integer.parseInt(jTextField11.getText()) - 1) +
                     "' AND '" + (Integer.parseInt(jTextField12.getText()) + 1) +
-                    "' AND rep_documents.code_operator BETWEEN '" + (Integer.parseInt(jTextField13.getText()) - 1) +
+                    "' AND rep_documents_new.code_operator BETWEEN '" + (Integer.parseInt(jTextField13.getText()) - 1) +
                     "' AND '" + (Integer.parseInt(jTextField14.getText()) + 1) +
-                    "' AND rep_documents.code_speditor BETWEEN '" + (Integer.parseInt(jTextField15.getText()) - 1) +
+                    "' AND rep_documents_new.code_speditor BETWEEN '" + (Integer.parseInt(jTextField15.getText()) - 1) +
                     "' AND '" + (Integer.parseInt(jTextField16.getText()) + 1) + "' ";
         } catch (NumberFormatException ex) { ex.printStackTrace(); }
-        if(levelx == 3) newString = newString + " AND rep_documents.level_df = 0";
-        if(levelx == 2) newString = newString + " AND rep_documents.level_df = 1";
-        if(levelx == 1) newString = newString + " AND rep_documents.level_df IN(0,1)";
-        newString = newString + " GROUP BY con ORDER BY rep_documents.date_edition_df ASC";
+        if(levelx == 3) newString = newString + " AND rep_documents_new.level_df = 003";
+        if(levelx == 2) newString = newString + " AND rep_documents_new.level_df = 002";
+        if(levelx == 1) newString = newString + " AND rep_documents_new.level_df IN(001,002,003)";
+        newString = newString + " GROUP BY con ORDER BY rep_documents_new.date_edition_df ASC";
         String[] Names = (String[]) namesQ.toArray(new String[nubColums]);
         System.out.println(newString);
         try {
@@ -1559,7 +1559,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     
     private void processField4() {
         if(this.jTextField3.getText() == "") this.jTextField3.setText("0");
-        String newString = strStore + this.jTextField4.getText() + "%' AND rep_documents.code_store >= " + this.jTextField3.getText() + ";";
+        String newString = strStore + this.jTextField4.getText() + "%' AND rep_documents_new.code_store >= " + this.jTextField3.getText() + ";";
         constructDialod(newString, 4, Names);
     }
     
@@ -1570,7 +1570,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     
     private void processField6() {
         if(this.jTextField5.getText() == "") this.jTextField5.setText("0");
-        String newString = strClient + this.jTextField6.getText() + "%' AND rep_documents.code_client >= " + this.jTextField5.getText() + ";";
+        String newString = strClient + this.jTextField6.getText() + "%' AND rep_documents_new.code_client >= " + this.jTextField5.getText() + ";";
         constructDialod(newString, 6, Names);
     }
     
@@ -1581,7 +1581,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     
     private void processField8() {
         if(this.jTextField7.getText() == "") this.jTextField7.setText("0");
-        String newString = strProduct + this.jTextField8.getText() + "%' AND rep_documents.code_product >= " + this.jTextField7.getText() + ";";
+        String newString = strProduct + this.jTextField8.getText() + "%' AND rep_documents_new.code_product >= " + this.jTextField7.getText() + ";";
         constructDialod(newString, 8, Names);
     }
     
@@ -1592,7 +1592,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     
     private void processField10() {
         if(this.jTextField9.getText() == "") this.jTextField9.setText("0");
-        String newString = strSupplier + this.jTextField10.getText() + "%' AND rep_documents.code_dostavchik >= " + this.jTextField9.getText() + ";";
+        String newString = strSupplier + this.jTextField10.getText() + "%' AND rep_documents_new.code_dostavchik >= " + this.jTextField9.getText() + ";";
         constructDialod(newString, 10, Names);
     }
     
@@ -1603,7 +1603,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     
     private void processField12() {
         if(this.jTextField11.getText() == "") this.jTextField11.setText("0");
-        String newString = strDistributor + this.jTextField12.getText() + "%' AND rep_documents.code_distributor >= " + this.jTextField11.getText() + ";";
+        String newString = strDistributor + this.jTextField12.getText() + "%' AND rep_documents_new.code_distributor >= " + this.jTextField11.getText() + ";";
         constructDialod(newString, 12, Names);
     }
     
@@ -1614,7 +1614,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     
     private void processField14() {
         if(this.jTextField13.getText() == "") this.jTextField13.setText("0");
-        String newString = strOperator + this.jTextField14.getText() + "%' AND rep_documents.code_operator >= " + this.jTextField13.getText() + ";";
+        String newString = strOperator + this.jTextField14.getText() + "%' AND rep_documents_new.code_operator >= " + this.jTextField13.getText() + ";";
         constructDialod(newString, 14, Names);
     }
     
@@ -1625,7 +1625,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     
     private void processField16() {
         if(this.jTextField15.getText() == "") this.jTextField15.setText("0");
-        String newString = strSpeditor + this.jTextField16.getText() + "%' AND rep_documents.code_speditor >= " + this.jTextField15.getText() + ";";
+        String newString = strSpeditor + this.jTextField16.getText() + "%' AND rep_documents_new.code_speditor >= " + this.jTextField15.getText() + ";";
         constructDialod(newString, 16, Names);
     }
     
