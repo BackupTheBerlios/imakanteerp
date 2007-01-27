@@ -1,6 +1,8 @@
 
 package imakante.sales;
 
+import java.util.Calendar;
+
 public class dbExchangeRate extends imakante.com.dbObject {
     
     private int indexConnOfId[] = null;
@@ -12,12 +14,15 @@ public class dbExchangeRate extends imakante.com.dbObject {
     private String in_DATE = "";
     private org.jdesktop.swingx.JXDatePicker dp;
     java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd"); 
-    
+    private Calendar now_calendar;
     public dbExchangeRate(java.sql.Connection conn) {
         super(conn);
+        Calendar now_data;
         prepareCstm();
         dp = new org.jdesktop.swingx.JXDatePicker();
+        
         in_DATE = (String)formatter.format(dp.getDate());
+        System.out.println(" data " + in_DATE);
     }
     
     protected void prepareCstm() {
@@ -132,7 +137,7 @@ public class dbExchangeRate extends imakante.com.dbObject {
     }
     
     public String getDate() {
-        return Date;
+        return in_DATE;
     }
     
     public void setDate(String Date) {
@@ -185,6 +190,7 @@ public class dbExchangeRate extends imakante.com.dbObject {
                 Codes.put(new Integer(getRs().getInt("id_n_money")), new String(getRs().getString("cod_lat_n_money") + " - " + 
                         getRs().getString("name_n_money")));
                 in.add(new Integer(getRs().getInt("id_n_money")));
+                System.out.println("sdfsf " +i);
                 i++;
             }
         } catch(Exception e) { e.printStackTrace(); }

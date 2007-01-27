@@ -1,13 +1,11 @@
 ﻿DELIMITER $$
 
-DROP PROCEDURE IF EXISTS sl_procedure_exchange_rate $$
-CREATE PROCEDURE sl_procedure_exchange_rate (IN comprator TINYINT, IN in_id INT(10), IN in_date DATE, IN in_id_money INT(11), IN in_value DECIMAL(10,5))
+DROP PROCEDURE IF EXISTS `mida`.`sl_procedure_exchange_rate` $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sl_procedure_exchange_rate`(IN comprator TINYINT, IN in_id INT(10), IN in_date DATE, IN in_id_money INT(11), IN in_value DECIMAL(10,5))
 BEGIN
      IF (comprator = 0) THEN
-        SELECT n.id_sl_exchange_rate, n.date_sl_exchange_rate, n.id_n_money, nm.cod_lat_n_money, nm.name_n_money, n.value_sl_exchange_rate
-            FROM sl_exchange_rate n 
-            LEFT OUTER JOIN n_money nm ON nm.id_n_money = n.id_n_money 
-            ORDER BY n.id_sl_exchange_rate ASC;
+        SELECT n.id_sl_exchange_rate, n.date_sl_exchange_rate, n.id_n_money, nm.cod_n_money, n.value_sl_exchange_rate
+            FROM sl_exchange_rate n LEFT OUTER JOIN n_money nm ON nm.id_n_money = n.id_n_money ORDER BY n.id_sl_exchange_rate ASC;
      END IF;
 
      IF (comprator = 1) THEN
@@ -35,8 +33,7 @@ BEGIN
      END IF;
 
      IF (comprator = 6) THEN
-        SELECT nm.id_n_money, nm.cod_lat_n_money, nm.name_n_money 
-            FROM n_money nm;
+        SELECT nm.id_n_money, nm.cod_lat_n_money, nm.name_n_money FROM n_money nm WHERE nm.id_n_money = in_id_money;
      END IF;
 
      IF (comprator = 7) THEN
@@ -49,11 +46,6 @@ BEGIN
 
      IF (comprator = 9) THEN
        DELETE FROM sl_exchange_rate;
-     END IF;
-     
-     IF (comprator = 10) THEN
-        SELECT nm.id_n_money, nm.cod_lat_n_money, nm.name_n_money 
-            FROM n_money nm WHERE nm.id_n_money = in_id_money;
      END IF;
 
 END $$
