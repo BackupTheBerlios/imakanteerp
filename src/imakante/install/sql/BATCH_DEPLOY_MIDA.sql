@@ -4733,7 +4733,7 @@ BEGIN
      END IF;
 
      IF (comprator = 6) THEN
-        SELECT nm.id_n_money, nm.cod_n_money FROM n_money nm WHERE nm.id_n_money = in_id_money;
+        SELECT nm.id_n_money, nm.cod_lat_n_money, nm.name_n_money FROM n_money nm WHERE nm.id_n_money = in_id_money;
      END IF;
 
      IF (comprator = 7) THEN
