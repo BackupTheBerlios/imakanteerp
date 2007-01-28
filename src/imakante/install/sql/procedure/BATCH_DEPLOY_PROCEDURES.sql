@@ -3343,18 +3343,17 @@ BEGIN
      END IF;
 
      IF (comprator = 5) THEN
-        IF (in_money LIKE CONCAT('----','%'))
+        IF (in_money LIKE CONCAT('----','%')) THEN
             SELECT n.id_sl_exchange_rate, n.date_sl_exchange_rate, n.id_n_money, nm.cod_lat_n_money, nm.name_n_money, n.valuesl_exchange_rate
                 FROM sl_exchange_rate n LEFT OUTER JOIN n_money nm ON nm.id_n_money = n.id_n_money
                 WHERE n.date_sl_exchange_rate LIKE CONCAT('%',in_date,'%') 
-                ORDER BY n.id_sl_exchange_rate ASC;
-        ELSE
-            SELECT n.id_sl_exchange_rate, n.date_sl_exchange_rate, n.id_n_money, nm.cod_lat_n_money, nm.name_n_money, n.valuesl_exchange_rate
-                FROM sl_exchange_rate n LEFT OUTER JOIN n_money nm ON nm.id_n_money = n.id_n_money
-                WHERE n.date_sl_exchange_rate LIKE CONCAT('%',in_date,'%') 
-                AND CONCAT(nm.cod_lat_n_money,' - ',nm.name_n_money) = in_money
                 ORDER BY n.id_sl_exchange_rate ASC;
         END IF;
+        SELECT n.id_sl_exchange_rate, n.date_sl_exchange_rate, n.id_n_money, nm.cod_lat_n_money, nm.name_n_money, n.valuesl_exchange_rate
+            FROM sl_exchange_rate n LEFT OUTER JOIN n_money nm ON nm.id_n_money = n.id_n_money
+            WHERE n.date_sl_exchange_rate LIKE CONCAT('%',in_date,'%') 
+            AND CONCAT(nm.cod_lat_n_money,' - ',nm.name_n_money) = in_money
+            ORDER BY n.id_sl_exchange_rate ASC;
      END IF;
 
      IF (comprator = 6) THEN
