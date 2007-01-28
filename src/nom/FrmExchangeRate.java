@@ -284,8 +284,10 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     private void initCurrCombo() {
         jcbCurrencies.addItem("---------------");
         Currencies = getInternalObject().getCurrencies();
-        for(int i = 0; i < Currencies.length; i++)
+        System.out.println("dyljinata na masiwa e: " + Currencies.length);
+        for(int i = 0; i < Currencies.length; i++) {
             jcbCurrencies.addItem(new String(Currencies[i]));
+        }
     }
     
     private void searchRecords() {

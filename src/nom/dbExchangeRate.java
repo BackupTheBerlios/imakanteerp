@@ -183,10 +183,8 @@ public class dbExchangeRate extends imakante.com.dbObject {
     
     public String[] getCurrencies() {
         setComprator(6);
-        String return_str = new String("");
         int oldId = getId();
         java.sql.ResultSet oldRs = getRs();
-        String strIndexConnOfId = new String("");
         java.util.ArrayList in = new java.util.ArrayList();
         java.util.Iterator it = null;
         java.util.HashMap Codes = new java.util.HashMap();
