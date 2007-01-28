@@ -10,6 +10,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
         constructObject();
         initTable();
         initComponents();
+        initCurrCombo();
         dp = new org.jdesktop.swingx.JXDatePicker();
         in_DATE = (String)formatter.format(dp.getDate());
         date = in_DATE;
@@ -24,7 +25,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
         jlDate = new javax.swing.JLabel();
         jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
         jlCurrency = new javax.swing.JLabel();
-        jtfCurrency = new javax.swing.JTextField();
+        jcbCurrencies = new javax.swing.JComboBox();
         jbSearch = new javax.swing.JButton();
         jpBottom = new javax.swing.JPanel();
         jbNew = new javax.swing.JButton();
@@ -50,7 +51,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
         jpTop.setLayout(jpTopLayout);
         jpTopLayout.setHorizontalGroup(
             jpTopLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 851, Short.MAX_VALUE)
+            .add(0, 847, Short.MAX_VALUE)
         );
         jpTopLayout.setVerticalGroup(
             jpTopLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -73,14 +74,10 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
         jlCurrency.setText("\u0412\u0430\u043b\u0443\u0442\u0430:");
         jpSearch.add(jlCurrency);
 
-        jtfCurrency.setPreferredSize(new java.awt.Dimension(80, 20));
-        jtfCurrency.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfCurrencyActionPerformed(evt);
-            }
-        });
-
-        jpSearch.add(jtfCurrency);
+        jcbCurrencies.setMaximumSize(new java.awt.Dimension(180, 22));
+        jcbCurrencies.setMinimumSize(new java.awt.Dimension(150, 22));
+        jcbCurrencies.setPreferredSize(new java.awt.Dimension(180, 22));
+        jpSearch.add(jcbCurrencies);
 
         jbSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Symbol Search.png")));
         jbSearch.setText("\u0422\u044a\u0440\u0441\u0435\u043d\u0435");
@@ -173,10 +170,6 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    private void jtfCurrencyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCurrencyActionPerformed
-        searchRecords();
-    }//GEN-LAST:event_jtfCurrencyActionPerformed
-    
     private void jbNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNewActionPerformed
         newRecord();
     }//GEN-LAST:event_jbNewActionPerformed
@@ -220,6 +213,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     private javax.swing.JButton jbPrintReport;
     private javax.swing.JButton jbRefresh;
     private javax.swing.JButton jbSearch;
+    private javax.swing.JComboBox jcbCurrencies;
     private javax.swing.JLabel jlCurrency;
     private javax.swing.JLabel jlDate;
     private javax.swing.JPanel jpBottom;
@@ -227,7 +221,6 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     private javax.swing.JPanel jpSearch;
     private javax.swing.JPanel jpTop;
     private javax.swing.JScrollPane jspData;
-    private javax.swing.JTextField jtfCurrency;
     // End of variables declaration//GEN-END:variables
     
     private  imakante.com.vcomponents.iFrame myframe;
@@ -236,15 +229,20 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     private  nom.dbExchangeRate internalObject;
     private  imakante.com.CustomTableModel model;
     private  imakante.com.CustomTable table;
-    public static final String Names[] = {"id", "\u0414\u0430\u0442\u0430",
-    "id_n_money", "\u041A\u043E\u0434 \u0432\u0430\u043B\u0443\u0442\u0430", "\u0418\u043C\u0435 \u0432\u0430\u043B\u0443\u0442\u0430",
+    public static final String Names[] = {"id",
+    "\u0414\u0430\u0442\u0430",
+    "id_n_money",
+    "\u041A\u043E\u0434 \u0432\u0430\u043B\u0443\u0442\u0430",
+    "\u0418\u043C\u0435 \u0432\u0430\u043B\u0443\u0442\u0430",
     "\u041a\u0443\u0440\u0441"};
     
     private int id = 0; // imena ot tablicata
     private String date = "2000-01-01";
     private int idCurrency = 0;
+    private String codeLatCurrency = "";
+    private String nameCurrency = "";
     private Double rate = 0.00;
-    private String Currencies[]; //imena na grupi
+    private String Currencies[];
     private int selectComboBoxItem;
     private  boolean atBegining = false;
     private  boolean atEnd = false;
@@ -252,7 +250,7 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     
     private String in_DATE = "";
     private org.jdesktop.swingx.JXDatePicker dp;
-    java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd"); 
+    java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd");
     
     private void prepareConn() {
         try{
@@ -283,10 +281,18 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
         } catch(Exception ex) {  }
     }
     
+    private void initCurrCombo() {
+        jcbCurrencies.addItem("---------------");
+        Currencies = getInternalObject().getCurrencies();
+        for(int i = 0; i < Currencies.length; i++)
+            jcbCurrencies.addItem(new String(Currencies[i]));
+    }
+    
     private void searchRecords() {
         try {
             try {
-                rs = internalObject.searchRecords((String)formatter.format(jXDatePicker1.getDate()), jtfCurrency.getText());
+                rs = internalObject.searchRecords((String)formatter.format(jXDatePicker1.getDate()),
+                        (String)jcbCurrencies.getSelectedItem());
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
                 jXDatePicker1.requestFocus();
@@ -457,6 +463,22 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
         this.idCurrency = IDCurrency;
     }
     
+    public String getCodeLatCurrency() {
+        return codeLatCurrency;
+    }
+    
+    public void setCodeLatCurrency(String codeLatCurrency) {
+        this.codeLatCurrency = codeLatCurrency;
+    }
+    
+    public String getNameCurrency() {
+        return nameCurrency;
+    }
+    
+    public void setNameCurrency(String nameCurrency) {
+        this.nameCurrency = nameCurrency;
+    }
+    
     public Double getRateValue() {
         return rate;
     }
@@ -537,7 +559,9 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
         setId((Integer) table.getValueAt(getRow(), getColumnIndex("id")));
         java.sql.Date d = (java.sql.Date) table.getValueAt(getRow(), getColumnIndex("\u0414\u0430\u0442\u0430"));
         setDate(d.toString());
-        setIDCurrency((Integer) table.getValueAt(getRow(), getColumnIndex("\u0412\u0430\u043b\u0443\u0442\u0430")));
+        setIDCurrency((Integer) table.getValueAt(getRow(), getColumnIndex("id_n_money")));
+        setCodeLatCurrency((String) table.getValueAt(getRow(), getColumnIndex("\u041A\u043E\u0434 \u0432\u0430\u043B\u0443\u0442\u0430")));
+        setNameCurrency((String) table.getValueAt(getRow(), getColumnIndex("\u0418\u043C\u0435 \u0432\u0430\u043B\u0443\u0442\u0430")));
         java.math.BigDecimal bd2d = (java.math.BigDecimal) table.getValueAt(getRow(), getColumnIndex("\u041a\u0443\u0440\u0441"));
         setRateValue(bd2d.doubleValue());
     }
@@ -562,4 +586,5 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
         rs = null;
         internalObject.close();
     }
+    
 }
