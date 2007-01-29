@@ -112,6 +112,7 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
         jlRate.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlRate.setText("\u041a\u0443\u0440\u0441:");
 
+        jtfRate.setToolTipText("\u0412\u044a\u0432\u0435\u0434\u0435\u0442\u0435 \u0430\u043a\u0442\u0443\u0430\u043b\u043d\u0438\u044f\u0442 \u043a\u0443\u0440\u0441 \u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u043d\u0430\u0442\u0430 \u0432\u0430\u043b\u0443\u0442\u0430");
         jtfRate.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jtfRate.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -132,7 +133,7 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
         jpDataLayout.setHorizontalGroup(
             jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jpDataLayout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(12, Short.MAX_VALUE)
                 .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jlDate)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jlCurrency, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 60, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)

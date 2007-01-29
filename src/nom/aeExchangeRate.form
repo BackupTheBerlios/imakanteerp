@@ -39,7 +39,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="13" max="32767" attributes="0"/>
+                  <EmptySpace pref="12" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jlDate" linkSize="1" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Component id="jlCurrency" linkSize="1" alignment="1" min="-2" pref="60" max="-2" attributes="0"/>
@@ -179,6 +179,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jtfRate">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="&#x412;&#x44a;&#x432;&#x435;&#x434;&#x435;&#x442;&#x435; &#x430;&#x43a;&#x442;&#x443;&#x430;&#x43b;&#x43d;&#x438;&#x44f;&#x442; &#x43a;&#x443;&#x440;&#x441; &#x43d;&#x430; &#x43e;&#x441;&#x43d;&#x43e;&#x432;&#x43d;&#x430;&#x442;&#x430; &#x432;&#x430;&#x43b;&#x443;&#x442;&#x430;"/>
+          </Properties>
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtfRateFocusGained"/>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtfRateFocusLost"/>

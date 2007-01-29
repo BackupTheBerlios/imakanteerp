@@ -57,10 +57,10 @@ public class dbExchangeRate extends imakante.com.dbObject {
         } catch(java.sql.SQLException sqle) { sqle.printStackTrace(); }
     }
     
-    public void insertRow(String in_date) {
+    public void insertRow(String in_date, int in_id_money) {
         setComprator(1);
         this.setDate(in_date);
-        this.id_money = 0;
+        this.id_money = in_id_money;
         this.rate = 0.00;
         try {
             registerParameters();

@@ -4705,7 +4705,7 @@ CREATE PROCEDURE `sl_procedure_exchange_rate`(IN comprator TINYINT, IN in_id INT
                                             IN in_id_money INT(11), IN in_value DECIMAL(10,5), IN in_money VARCHAR(40))
 BEGIN
      IF (comprator = 0) THEN
-        SELECT n.id_sl_exchange_rate, n.date_sl_exchange_rate, nm.id_n_money, nm.cod_lat_n_money, nm.name_n_money, n.value_sl_exchange_rate
+        SELECT n.id_sl_exchange_rate, n.date_sl_exchange_rate, n.id_n_money, nm.cod_lat_n_money, nm.name_n_money, n.value_sl_exchange_rate
             FROM sl_exchange_rate n LEFT OUTER JOIN n_money nm ON nm.id_n_money = n.id_n_money ORDER BY n.id_sl_exchange_rate ASC;
      END IF;
 
@@ -4723,7 +4723,7 @@ BEGIN
      END IF;
 
      IF (comprator = 4) THEN
-        SELECT n.id_sl_exchange_rate, n.date_sl_exchange_rate, nm.id_n_money, nm.cod_lat_n_money, nm.name_n_money, n.value_sl_exchange_rate
+        SELECT n.id_sl_exchange_rate, n.date_sl_exchange_rate, n.id_n_money, nm.cod_lat_n_money, nm.name_n_money, n.value_sl_exchange_rate
             FROM sl_exchange_rate n LEFT OUTER JOIN n_money nm ON nm.id_n_money = n.id_n_money 
             WHERE n.id_sl_exchange_rate = in_id
             ORDER BY n.id_sl_exchange_rate ASC;

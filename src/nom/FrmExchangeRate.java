@@ -284,7 +284,6 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     private void initCurrCombo() {
         jcbCurrencies.addItem("---------------");
         Currencies = getInternalObject().getCurrencies();
-        System.out.println("dyljinata na masiwa e: " + Currencies.length);
         for(int i = 0; i < Currencies.length; i++) {
             jcbCurrencies.addItem(new String(Currencies[i]));
         }
@@ -310,7 +309,14 @@ public class FrmExchangeRate extends imakante.com.vcomponents.iInternalFrame imp
     }
     
     private void newRecord() {
-        setId(internalObject.getMaxId());
+        internalObject.insertRow(getDate(), getIDCurrency());
+        refreshTable();
+        setRow(getMaxRow());
+        table.changeSelection(getRow(), 2, false, false);
+        setAllVariables();
+        setAtBegining(false);
+        setAtEnd(true);
+//        setId(internalObject.getMaxId());
         nom.aeExchangeRate aeExRates = new nom.aeExchangeRate(this, true);
         aeExRates.setVisible(true);
         refreshTable();
