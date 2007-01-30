@@ -97,9 +97,21 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
         jlDate.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlDate.setText("\u0414\u0430\u0442\u0430:");
 
+        jXDatePicker1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        jXDatePicker1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jXDatePicker1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jXDatePicker1FocusLost(evt);
+            }
+        });
+
         jlCurrency.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlCurrency.setText("\u0412\u0430\u043b\u0443\u0442\u0430:");
 
+        jcbCurrency.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        jcbCurrency.setMinimumSize(new java.awt.Dimension(23, 22));
         jcbCurrency.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jcbCurrencyFocusGained(evt);
@@ -113,6 +125,9 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
         jlRate.setText("\u041a\u0443\u0440\u0441:");
 
         jtfRate.setToolTipText("\u0412\u044a\u0432\u0435\u0434\u0435\u0442\u0435 \u0430\u043a\u0442\u0443\u0430\u043b\u043d\u0438\u044f\u0442 \u043a\u0443\u0440\u0441 \u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u043d\u0430\u0442\u0430 \u0432\u0430\u043b\u0443\u0442\u0430");
+        jtfRate.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        jtfRate.setMinimumSize(new java.awt.Dimension(4, 22));
+        jtfRate.setPreferredSize(new java.awt.Dimension(4, 22));
         jtfRate.setInputVerifier(new imakante.com.InputDoubleVerifier());
         jtfRate.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -134,15 +149,15 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
             jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jpDataLayout.createSequentialGroup()
                 .addContainerGap(12, Short.MAX_VALUE)
-                .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jlDate)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jlCurrency, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 60, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jlRate))
+                .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jlDate)
+                    .add(jlCurrency, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 60, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jlRate))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jcbCurrency, 0, 194, Short.MAX_VALUE)
-                    .add(jtfRate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
+                    .add(jtfRate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                    .add(jXDatePicker1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 132, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(11, 11, 11))
             .add(jpDataLayout.createSequentialGroup()
                 .addContainerGap()
@@ -164,10 +179,10 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
                     .add(jcbCurrency, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jlCurrency))
                 .add(22, 22, 22)
-                .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jlRate)
-                    .add(jtfRate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 7, Short.MAX_VALUE)
+                .add(jpDataLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jtfRate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jlRate))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(jpMovement, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 85, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -218,8 +233,16 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
         getContentPane().add(jpControls, java.awt.BorderLayout.SOUTH);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-328)/2, (screenSize.height-314)/2, 328, 314);
+        setBounds((screenSize.width-328)/2, (screenSize.height-320)/2, 328, 320);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jXDatePicker1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jXDatePicker1FocusGained
+        fGain(jXDatePicker1);
+    }//GEN-LAST:event_jXDatePicker1FocusGained
+
+    private void jXDatePicker1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jXDatePicker1FocusLost
+        fLost(jXDatePicker1);
+    }//GEN-LAST:event_jXDatePicker1FocusLost
     
     private void jtfRateFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfRateFocusGained
         jtfRate.selectAll();
@@ -327,7 +350,9 @@ public class aeExchangeRate extends imakante.com.vcomponents.iDialog {
     
     private void saveRecord() {
         oldDate = myParent.getDate();
+//        oldIDCurrency = ???
         oldRate = myParent.getRateValue();
+        myParent.setDate((String)formatter.format(this.jXDatePicker1.getDate()));
         myParent.setIDCurrency(myParent.getInternalObject().getIndexConnOfId()[jcbCurrency.getSelectedIndex()]);
         myParent.setRateValue(Double.parseDouble(jtfRate.getText()));
         myParent.getInternalObject().updateRow(myParent.getId(), myParent.getDate(), myParent.getIDCurrency(), myParent.getRateValue());

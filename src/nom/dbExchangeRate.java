@@ -18,7 +18,6 @@ public class dbExchangeRate extends imakante.com.dbObject {
     
     public dbExchangeRate(java.sql.Connection conn) {
         super(conn);
-        Calendar now_data;
         prepareCstm();
         dp = new org.jdesktop.swingx.JXDatePicker();
         in_DATE = (String)formatter.format(dp.getDate());
@@ -137,11 +136,12 @@ public class dbExchangeRate extends imakante.com.dbObject {
     }
     
     public String getDate() {
-        return in_DATE;
+        return Date;
     }
     
     public void setDate(String Date) {
-        this.Date = (String)formatter.format(dp.getDate());
+        this.Date = Date;
+//                (String)formatter.format(dp.getDate());
     }
     
     public int getIDCurrency() {

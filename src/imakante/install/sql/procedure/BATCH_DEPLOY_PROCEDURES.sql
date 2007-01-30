@@ -3314,7 +3314,7 @@ DELIMITER ;
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `mida`.`sl_procedure_exchange_rate` $$
-CREATE PROCEDURE `sl_procedure_exchange_rate`(IN comprator TINYINT, IN in_id INT(10), IN in_date DATE, 
+CREATE PROCEDURE `sl_procedure_exchange_rate`(IN comprator TINYINT, IN in_id INT(10), IN in_date VARCHAR(10), 
                                             IN in_id_money INT(11), IN in_value DECIMAL(10,5), IN in_money VARCHAR(40))
 BEGIN
      IF (comprator = 0) THEN
