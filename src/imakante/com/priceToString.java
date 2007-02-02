@@ -63,6 +63,9 @@ public class priceToString {
         if(p.length()<=valString.length()+1){
          stot =  " 0 ст.";
         }  
+        
+        // 6 tsifreni
+        
         if (valString.length()==6){
             int  l = Integer.parseInt(valString.substring(1,3));
             if(!getEndString().equals("") && l == 0){ // v sluchaite koito imame chisla ot predi sto
@@ -74,6 +77,9 @@ public class priceToString {
             }
             valString = valString.substring(1,valString.length());
         }
+        
+        
+        // 5 tsifreni
         if(valString.length()==5){
             
             int k = Integer.parseInt(valString.substring(0,1));
@@ -98,7 +104,7 @@ public class priceToString {
             valString = valString.substring(2,valString.length());
         }
         
-        
+        // 4 tsifreni
         if(valString.length()==4){
             int s = Integer.parseInt(valString.substring(0,1));
             if(s==1){
@@ -109,6 +115,8 @@ public class priceToString {
             }
             valString = valString.substring(1,valString.length());
         }
+        
+        // 3 tsifreni
         if (valString.length()==3){
             int  l = Integer.parseInt(valString.substring(1,3));
 //            if(!getEndString().equals("") && l != 0){      // v sluchaite koito imame chisla ot predi sto
@@ -121,6 +129,10 @@ public class priceToString {
             valString = valString.substring(1,valString.length());
         }
         
+        
+        
+        
+        // 2 tsifreni
         if(valString.length()==2){
             int k = Integer.parseInt(valString.substring(0,1));
             int s = Integer.parseInt(valString.substring(0,2));
@@ -135,8 +147,18 @@ public class priceToString {
                 }
             }
             if(s>0 && s<20 ){
+                if(getEndString().equals("")){
+                setEndString(getEndString()  + primary[s-1]);}
+                else{
                 setEndString(getEndString() + " и " + primary[s-1]);
+                }
             }
+        }
+        
+        
+        if(valString.length()==1 && getEndString().equals("")){
+             int s = Integer.parseInt(valString.substring(0,1));
+        setEndString(getEndString() + primary[s-1]);
         }
        setEndString(getEndString() + " лв. и " + stot);
         System.out.println("    -> " + getEndString());
