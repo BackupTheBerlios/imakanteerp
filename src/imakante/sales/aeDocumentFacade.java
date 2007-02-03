@@ -95,6 +95,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
         jTablePopUpMenu.add(jTableMenuIntem1);
         jTablePopUpMenu.add(jTableMenuItem2);
         jTablePopUpMenu.add(jTableMenuItem3);
+        jTablePopUpMenu.add(jTableMenuItem4);
         jTable1.setComponentPopupMenu(jTablePopUpMenu);
         setPopupMenuListener();
         InputMap im = jTable1.getInputMap(JTable.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
@@ -2054,7 +2055,15 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     }//GEN-LAST:event_jTextFieldConNomKeyPressed
     
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
-        checkForDiffWithOutSaveInDB();
+
+         Object[] options = { "ДА", "НЕ" };
+         int q = JOptionPane.showOptionDialog(null, "Натиснете 'Да' за да излезете", "ВНИМАНИЕ",
+         JOptionPane.YES_NO_OPTION,
+                                    JOptionPane.QUESTION_MESSAGE,
+                  null, options, options[1]);
+         if(q == JOptionPane.YES_OPTION){
+           
+            checkForDiffWithOutSaveInDB();
         
         int rowCount = jTable1.getRowCount();
         boolean withRow = false;
@@ -2116,7 +2125,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
             
             
         }
-        this.dispose();
+        this.dispose();}
     }//GEN-LAST:event_jButtonCloseActionPerformed
     
     private void jButtonOneRowPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOneRowPActionPerformed
@@ -2366,6 +2375,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
     private JMenuItem    jTableMenuIntem1 = new JMenuItem("Редакция на ред");
     private JMenuItem    jTableMenuItem2 = new JMenuItem("Изтриване на ред"); 
     private JMenuItem    jTableMenuItem3 = new JMenuItem("Продуктова карта");
+    private JMenuItem    jTableMenuItem4 = new JMenuItem("Информация ред");
     private int          selectedjTableRow = -1;
 //----------------------------------------
     
@@ -5311,6 +5321,7 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
                 }
                 if(e.getKeyCode()==e.VK_ENTER) {
                     if(insertEdit[0].getText().equals("")){
+                        
                    System.out.print('\u0007');
                     }
                     else{
@@ -6066,6 +6077,19 @@ public class aeDocumentFacade extends imakante.com.vcomponents.iDialog  // test
       return newRows;
       
   }
+  
+  private void constructInfoPane(){
+//      int row1 = 0;
+//  
+//   if (JTable1.getSelectedRow() != -1) {
+//            row1 = JTable1.getSelectedRow();
+//        String stoka = (String)JTable1.getValueAt(row1, getColumnIndex("id"));   
+//        imakante.sales.infoTabPane tab_pane = new imakante.sales.infoTabPane(this, true);
+//        tab_pane.setVisible(true);   
+//        } else {  }
+  }
+  
+  
 }// end class
 
 

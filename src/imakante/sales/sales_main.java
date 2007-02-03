@@ -1,6 +1,8 @@
 
 package imakante.sales;
 
+import java.awt.event.KeyEvent;
+
 public class sales_main extends imakante.com.vcomponents.iFrame {
     
     private final static int MAX_GROUP = 7; // pokazva maximalniq broj na grupite;
