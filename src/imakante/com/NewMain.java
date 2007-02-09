@@ -26,11 +26,13 @@ public class NewMain extends javax.swing.JFrame {
         jBLS3 = new javax.swing.JButton();
         labelUser = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jmMainMenu = new javax.swing.JMenu();
+        jmiLogin = new javax.swing.JMenuItem();
+        jmiLogout = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JSeparator();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        jmLF = new javax.swing.JMenu();
+        jSeparator2 = new javax.swing.JSeparator();
+        jmiExit = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 153));
@@ -48,7 +50,7 @@ public class NewMain extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(47, 90, 145));
         jLabel1.setBackground(new java.awt.Color(0, 0, 153));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imakantebeta.png")));
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("Imakante Screen");
 
         jBSales.setFont(new java.awt.Font("Tahoma", 0, 10));
         jBSales.setText("\u0421\u041a\u041b\u0410\u0414");
@@ -120,29 +122,26 @@ public class NewMain extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 598, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(279, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                     .add(jPanel1Layout.createSequentialGroup()
-                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jBMN, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jBSales, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                            .add(jBMN, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jBSales, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 126, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED))
                     .add(jPanel1Layout.createSequentialGroup()
-                        .add(jButton2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                        .add(jButton2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
                         .add(4, 4, 4)))
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1Layout.createSequentialGroup()
                         .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 139, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jBLS1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 140, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jPanel1Layout.createSequentialGroup()
-                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(jBLS, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-                            .add(jBACC, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE))
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                            .add(jBLS, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                            .add(jBACC, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 143, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                             .add(jBLS3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -153,8 +152,14 @@ public class NewMain extends javax.swing.JFrame {
             .add(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(labelUser, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 314, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(553, Short.MAX_VALUE))
+                .addContainerGap(571, Short.MAX_VALUE))
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 596, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(299, Short.MAX_VALUE))
         );
+
+        jPanel1Layout.linkSize(new java.awt.Component[] {jBACC, jBLS, jBLS1, jBLS2, jBLS3, jBMN, jBSales, jButton1, jButton2}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
+
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
@@ -180,32 +185,38 @@ public class NewMain extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jMenu1.setText("\u041f\u0420\u041e\u0413\u0420\u0410\u041c\u0410");
-        jMenuItem1.setText("\u0412\u0445\u043e\u0434 \u0432 \u0431\u0430\u0437\u0430\u0442\u0430");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jmMainMenu.setText("\u041f\u0420\u041e\u0413\u0420\u0410\u041c\u0410");
+        jmiLogin.setText("\u0412\u0445\u043e\u0434 \u0432 \u0431\u0430\u0437\u0430\u0442\u0430");
+        jmiLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jmiLoginActionPerformed(evt);
             }
         });
 
-        jMenu1.add(jMenuItem1);
+        jmMainMenu.add(jmiLogin);
 
-        jMenuItem2.setText("\u0418\u0437\u0445\u043e\u0434 \u043e\u0442 \u0431\u0430\u0437\u0430\u0442\u0430");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jmiLogout.setText("\u0418\u0437\u0445\u043e\u0434 \u043e\u0442 \u0431\u0430\u0437\u0430\u0442\u0430");
+        jmiLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jmiLogoutActionPerformed(evt);
             }
         });
 
-        jMenu1.add(jMenuItem2);
+        jmMainMenu.add(jmiLogout);
 
-        jMenu1.add(jSeparator1);
+        jmMainMenu.add(jSeparator1);
 
-        jMenuItem3.setFont(new java.awt.Font("Tahoma", 1, 11));
-        jMenuItem3.setText("\u0418\u0417\u0425\u041e\u0414");
-        jMenu1.add(jMenuItem3);
+        new LFManager(this.jmLF);
+        jmLF.setText("\u0412\u044a\u043d\u0448\u0435\u043d \u0432\u0438\u0434 \u043d\u0430 \u041f\u0440\u043e\u0433\u0440\u0430\u043c\u0430\u0442\u0430");
+        jmMainMenu.add(jmLF);
 
-        jMenuBar1.add(jMenu1);
+        jmMainMenu.add(jSeparator2);
+
+        jmiExit.setFont(new java.awt.Font("Tahoma", 1, 11));
+        jmiExit.setText("\u0418\u0417\u0425\u041e\u0414");
+        jmMainMenu.add(jmiExit);
+
+        jMenuBar1.add(jmMainMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -214,22 +225,21 @@ public class NewMain extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(0, 0, 0)
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(47, 47, 47))
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE))
         );
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-605)/2, (screenSize.height-443)/2, 605, 443);
     }// </editor-fold>//GEN-END:initComponents
     
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jmiLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiLogoutActionPerformed
         try {
             if(this.dbConn == null) {
             } else {
@@ -238,7 +248,7 @@ public class NewMain extends javax.swing.JFrame {
             }
         } catch (java.sql.SQLException ex) { ex.printStackTrace(); }
         changeUserLable("\u043d\u044f\u043c\u0430 \u0432\u0440\u044a\u0437\u043a\u0430 \u0441 \u0431\u0430\u0437\u0430\u0442\u0430");
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jmiLogoutActionPerformed
     
     private void jBLS3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLS3ActionPerformed
 // TODO add your handling code here:
@@ -267,9 +277,9 @@ public class NewMain extends javax.swing.JFrame {
         System.exit(1);
     }//GEN-LAST:event_jbExitActionPerformed
     
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jmiLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiLoginActionPerformed
         loginDialog();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jmiLoginActionPerformed
     
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         System.out.println("end NewMain - formWindowClosed ");
@@ -283,14 +293,17 @@ public class NewMain extends javax.swing.JFrame {
         if(this.getConnection() == null) {
             loginDialog();
         } else {
-            loadSalesMain();}
+            loadSalesMain();
+        }
     }//GEN-LAST:event_jBSalesActionPerformed
     
     
     public static void main(String args[]) {
-        String sysLook = javax.swing.UIManager.getSystemLookAndFeelClassName();
-        try{
-            javax.swing.UIManager.setLookAndFeel(sysLook);} catch(Exception ex){ex.printStackTrace();}
+//        String sysLook = javax.swing.UIManager.getSystemLookAndFeelClassName();
+//        try {
+//            javax.swing.UIManager.setLookAndFeel(sysLook);
+//        } catch(Exception ex) { ex.printStackTrace(); }
+        new LFManager();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new NewMain().setVisible(true);
@@ -423,14 +436,16 @@ public class NewMain extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JButton jbExit;
+    private javax.swing.JMenu jmLF;
+    private javax.swing.JMenu jmMainMenu;
+    private javax.swing.JMenuItem jmiExit;
+    private javax.swing.JMenuItem jmiLogin;
+    private javax.swing.JMenuItem jmiLogout;
     private static javax.swing.JLabel labelUser;
     // End of variables declaration//GEN-END:variables
     /// Important constants

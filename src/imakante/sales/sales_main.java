@@ -189,7 +189,8 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         jMenuItem32 = new javax.swing.JMenuItem();
         jmiShellComands = new javax.swing.JMenuItem();
         jSeparator10 = new javax.swing.JSeparator();
-        jMenuItem33 = new javax.swing.JMenuItem();
+        jmLF = new javax.swing.JMenu();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         helpMenu = new javax.swing.JMenu();
         contentMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
@@ -1136,8 +1137,18 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
 
         sluMenu.add(jSeparator10);
 
-        jMenuItem33.setText("\u0412\u044a\u043d\u0448\u043d\u043e\u0441\u0442 \u043d\u0430 \u041f\u0440\u043e\u0433\u0440\u0430\u043c\u0430\u0442\u0430");
-        sluMenu.add(jMenuItem33);
+        new imakante.com.LFManager(this.jmLF);
+        jmLF.setText("\u0412\u044a\u043d\u0448\u0435\u043d \u0432\u0438\u0434 \u043d\u0430 \u041f\u0440\u043e\u0433\u0440\u0430\u043c\u0430\u0442\u0430");
+        jCheckBoxMenuItem1.setText("\u041f\u043e \u043f\u043e\u0434\u0440\u0430\u0437\u0431\u0438\u0440\u0430\u043d\u0435");
+        jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem1ActionPerformed(evt);
+            }
+        });
+
+        jmLF.add(jCheckBoxMenuItem1);
+
+        sluMenu.add(jmLF);
 
         menuBar.add(sluMenu);
 
@@ -1179,6 +1190,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-463)/2, 757, 463);
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
     
     private void spravkiMenu_nal_simplActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spravkiMenu_nal_simplActionPerformed
         loadReportNalSimplLevel();
@@ -1662,6 +1677,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -1692,7 +1708,6 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JMenuItem jMenuItem30;
     private javax.swing.JMenuItem jMenuItem31;
     private javax.swing.JMenuItem jMenuItem32;
-    private javax.swing.JMenuItem jMenuItem33;
     private javax.swing.JMenuItem jMenuItem34;
     private javax.swing.JMenuItem jMenuItem35;
     private javax.swing.JMenuItem jMenuItem36;
@@ -1724,6 +1739,7 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel jlUserStatus;
     private javax.swing.JMenu jmDebts;
+    private javax.swing.JMenu jmLF;
     private javax.swing.JMenu jmPayments;
     private javax.swing.JMenuItem jmiReportContragentDebts;
     private javax.swing.JMenuItem jmiReportContragentGroupsDebts;
