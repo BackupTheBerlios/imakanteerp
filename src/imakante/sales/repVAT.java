@@ -259,7 +259,7 @@ public class repVAT extends javax.swing.JInternalFrame {
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
-            
+    
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         this.writeFileIns();
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -275,7 +275,7 @@ public class repVAT extends javax.swing.JInternalFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
-                
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton3;
@@ -454,32 +454,33 @@ public class repVAT extends javax.swing.JInternalFrame {
         this.jLabel2.setText(file.getName());
     }
     private void testFile(){
-    
+        
     }
     
     private void makeDeklFile(){
         String qur = "";
-        stm = this.connection.createStatement();
-        rs = stm.executeQuery(qur);
-    
+        try {
+            stm = this.connection.createStatement();
+            rs = stm.executeQuery(qur);
+        } catch (SQLException ex) { ex.printStackTrace(); }
     }
     
     private void makePokupFile(){
-    
+        
     }
     
     private void makeProdFile(){
-    
-    
+        
+        
     }
     
     private void makePayProdFile(){
-    
+        
     }
     
     private void makePayPokFile(){
-    
-    
+        
+        
     }
     
     private void proccessF(){
@@ -770,7 +771,13 @@ public class repVAT extends javax.swing.JInternalFrame {
             while(j<k){
                 
                 Line ="";
-                Line = Line + fullString(in_l,10,true); //bul
+                
+                
+                // ?????????????????????
+                Line = Line + fullString("",10,true);
+//                Line = Line + fullString(in_l,10,true); //bul         kakyw e smisylyt na in_l i kyde da se deklarira??????
+                // ?????????????????????
+                
                 Line= Line + (String)table.getValueAt(j,2).toString();
                 if(j<k-1){
                     Line = Line + fullZeroString((String)table.getValueAt(j,0).toString(),7, false); //
