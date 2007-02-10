@@ -49,6 +49,7 @@ public class repVAT extends javax.swing.JInternalFrame {
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jScrollPane1.setViewportView(table);
+        jXTable1 = new org.jdesktop.swingx.JXTable();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel7 = new javax.swing.JPanel();
@@ -120,14 +121,17 @@ public class repVAT extends javax.swing.JInternalFrame {
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "\u0424\u0430\u0439\u043b\u043e\u0432\u0435"));
+        jCheckBox1.setSelected(true);
         jCheckBox1.setText("DEKLAR.TXT");
         jCheckBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox1.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
+        jCheckBox2.setSelected(true);
         jCheckBox2.setText("POKUPKI.TXT");
         jCheckBox2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox2.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
+        jCheckBox3.setSelected(true);
         jCheckBox3.setText("PRODAGBI.TXT");
         jCheckBox3.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox3.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -228,6 +232,16 @@ public class repVAT extends javax.swing.JInternalFrame {
         });
 
         jPanel5.setLayout(new java.awt.BorderLayout());
+
+        jXTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9", "Title 10", "Title 11", "Title 12", "Title 13", "Title 14", "Title 15", "Title 16", "Title 17", "Title 18", "Title 19", "Title 20", "Title 21", "Title 22", "Title 23", "Title 24", "Title 25"
+            }
+        ));
+        jScrollPane1.setViewportView(jXTable1);
 
         jPanel5.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -344,6 +358,7 @@ public class repVAT extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField1;
     private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
     private org.jdesktop.swingx.JXDatePicker jXDatePicker2;
+    private org.jdesktop.swingx.JXTable jXTable1;
     // End of variables declaration//GEN-END:variables
     private java.sql.Connection connection;
     private java.sql.Statement stm;
@@ -359,6 +374,7 @@ public class repVAT extends javax.swing.JInternalFrame {
     //TABLE related
     private  MyTableModel model = new MyTableModel();
     private javax.swing.JTable table = new javax.swing.JTable(model);
+    
     //VAT RELATED
     //DEKLAR RELATED
     private String in_number = "";
