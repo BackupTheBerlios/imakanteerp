@@ -19,10 +19,23 @@ public class InputDoubleVerifier extends javax.swing.InputVerifier {
     public boolean verify(javax.swing.JComponent input) {
         byte UpRange = 57;
         byte DownRange = 48;
+        byte exp_Big_E = 69;
+        byte exp_Lit_E = 101;
         byte comma = 44;
         byte dot = 46;
-        int countCommaDot[] = null; // masiv za rzpolovenieto na zapetaqta
-        int count = 0; // za broene kolko pyti se sre6ta zapetaq ili to4ka
+        byte minus = 45;
+        int countMinus[] = new int[2]; 
+        countMinus[0] = 0; //za broene kolko pyti se sre6ta minusa
+        countMinus[1] = -1; // poziciq 
+       
+        int countDotComma[] = new int[2]; // za broene kolko pyti se sre6ta zapetaq ili to4ka
+        countDotComma[0] = 0; //za broene kolko pyti se sre6ta zapetaq ili to4ka
+        countDotComma[1] = -1; //poziciq na tochkata
+        
+        int countExp[] = new int[2];
+        countExp[0] = 0; // broi vkarane bukvi "e"
+        countExp[1] = -1; // poziciq na "e" v chisloto 
+        
         int intNumber = 0;
         int countDif = 0;
         boolean checkSimbol = false;
@@ -30,58 +43,59 @@ public class InputDoubleVerifier extends javax.swing.InputVerifier {
         int lenth = tf.getText().length();
         byte ch[] = new byte[lenth];
         ch = tf.getText().getBytes();
-        countCommaDot = new int[lenth];
+       
         if (lenth <= 0) return true;
-        for (int i = 0; i < lenth; i++) {
-            if(count > 1)
-                break;
-            if(ch[i] == comma | ch[i] == dot) {
-                countCommaDot[i] = 1;
-                count++;
-            } else
-                countCommaDot[i] = 0;
-        }
-        if (count <= 1) { // ako potrebitelq e vkaral pove4e ot edin pat to4ka ili zapetaq
-            for (int i = 0; i < lenth; i++ ) {
-                if(countCommaDot[i]==1) {
-                    intNumber = i;
-                    break;
-                }
+        int startNo =0; // nachalna poiciq za skanirane
+        if(ch[0]==minus) startNo=1;
+        
+       
+        for(int i =startNo ; i < lenth;i++)
+        {
+            if(countDotComma[0]>1 | countExp[0]>1 | countMinus[0]>1 )
+            {
+               checkSimbol = false;
+               countDif++;
+               break;
             }
-            if(intNumber > 0) {      // predi zapetaq;
-                if ((intNumber - 1) <= maxIntBefore | maxIntBefore == -1)
-                    for (int i = 0; i < intNumber - 1; i++) {
-                    if ((ch[i] <= UpRange) && (ch[i] >= DownRange)) {
-                        checkSimbol = true;
-                    } else {
-                        checkSimbol = false;
-                        countDif++;
-                    }
-                    }
-            }
-            if(intNumber == 0) {      // ako nqma zapetaq
-                if((lenth) <= maxIntBefore | maxIntBefore == -1)
-                    for(int i = 0; i < lenth; i++) {
-                    if((ch[i] <= UpRange) && (ch[i] >= DownRange)) {
-                        checkSimbol = true;
-                    } else {
-                        checkSimbol = false;
-                        countDif++;
-                    }
-                    }
-            } else
-                if(intNumber < lenth) {      // sled zapetaq
-                if((intNumber+1) <= maxIntAffter | maxIntAffter == -1)
-                    for(int i = intNumber + 1; i < lenth; i++) {
-                        if((ch[i] <= UpRange) && (ch[i] >= DownRange)) {
-                            checkSimbol = true;
-                        } else {
-                            checkSimbol = false;
-                            countDif++;
-                        }
-                    }
-                }
             
+            if(!((ch[i] <= UpRange) && (ch[i] >= DownRange)))
+            {
+                checkSimbol = false;
+                countDif++;
+                if(ch[i]==comma | ch[i]==dot) {
+                    countDotComma[0]++;
+                    countDotComma[1] = i;
+                    checkSimbol = true;
+                    countDif--;
+                }
+                if(ch[i]==exp_Big_E | ch[i]==exp_Lit_E) {
+                    countExp[0]++;
+                    countExp[1] = i;
+                    checkSimbol = true;
+                    countDif--;
+                }
+                if(ch[i]==minus) {
+                    countMinus[0]++;
+                    countMinus[1] = i;
+                    checkSimbol = true;
+                    countDif--;
+                }
+            }
+            
+            
+            
+        }
+       
+        if((countDotComma[1] > countExp[1] ) && (countDotComma[1]!=-1 && countExp[1]!=-1 ))
+        {
+           checkSimbol = false; 
+           countDif++;
+        }
+      
+        if( (countExp[1]!=countMinus[1]-1) && (countExp[1]!=-1 && countMinus[1]!=-1))
+        {
+           checkSimbol = false; 
+           countDif++; 
         }
         if(countDif > 0) checkSimbol = false;
         return checkSimbol;
