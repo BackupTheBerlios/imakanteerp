@@ -1,8 +1,10 @@
 
 package imakante.sales;
 
+import imakante.com.imakanteObject;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -48,12 +50,12 @@ public class repVAT extends javax.swing.JInternalFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jScrollPane1.setViewportView(table);
-        jXTable1 = new org.jdesktop.swingx.JXTable();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
+        jPanel8 = new javax.swing.JPanel();
+        jProgressBar1 = new javax.swing.JProgressBar();
 
         setClosable(true);
         setIconifiable(true);
@@ -145,8 +147,18 @@ public class repVAT extends javax.swing.JInternalFrame {
         jCheckBox5.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         jButton1.setText("\u0413\u0435\u043d\u0435\u0440\u0438\u0440\u0430\u0439");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("\u0417\u0430\u043f\u0438\u0448\u0438");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -157,7 +169,7 @@ public class repVAT extends javax.swing.JInternalFrame {
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jCheckBox1)
                     .add(jCheckBox4)
-                    .add(jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
                 .add(26, 26, 26)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                     .add(jCheckBox2)
@@ -233,16 +245,6 @@ public class repVAT extends javax.swing.JInternalFrame {
 
         jPanel5.setLayout(new java.awt.BorderLayout());
 
-        jXTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9", "Title 10", "Title 11", "Title 12", "Title 13", "Title 14", "Title 15", "Title 16", "Title 17", "Title 18", "Title 19", "Title 20", "Title 21", "Title 22", "Title 23", "Title 24", "Title 25"
-            }
-        ));
-        jScrollPane1.setViewportView(jXTable1);
-
         jPanel5.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         jTabbedPane1.addTab("\u041f\u0440\u043e\u0434\u0430\u0436\u0431\u0438", jPanel5);
@@ -264,23 +266,20 @@ public class repVAT extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel1Layout.createSequentialGroup()
-                        .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .add(jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .add(jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
-            .add(jPanel1Layout.createSequentialGroup()
-                .add(284, 284, 284)
-                .add(jButton5)
-                .addContainerGap(301, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .add(jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(284, 284, 284)
+                        .add(jButton5)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -297,18 +296,48 @@ public class repVAT extends javax.swing.JInternalFrame {
                 .add(246, 246, 246))
         );
 
+        org.jdesktop.layout.GroupLayout jPanel8Layout = new org.jdesktop.layout.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jProgressBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel8Layout.createSequentialGroup()
+                .add(jProgressBar1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(jPanel8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 483, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+            .add(layout.createSequentialGroup()
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 483, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jPanel8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(74, 74, 74))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        writeFiles();
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        generateTables();
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         this.writeFileIns();
@@ -351,6 +380,8 @@ public class repVAT extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -358,12 +389,19 @@ public class repVAT extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField1;
     private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
     private org.jdesktop.swingx.JXDatePicker jXDatePicker2;
-    private org.jdesktop.swingx.JXTable jXTable1;
     // End of variables declaration//GEN-END:variables
     private java.sql.Connection connection;
     private java.sql.Statement stm;
     private java.sql.ResultSet rs;
-    private String QString = "SELECT name_n_contragent, bul_n_contragent FROM n_contragent WHERE n_contragent.dan_n_contragent = ";
+    private String QString = "SELECT  `ls_sluj`.`dan_nom`, DATE_FORMAT(`rep_vat_s`.`date_edition_df`, '%Y%m') as period_d, '0' as klon, @num := (@num + 1) as row_number,"
+            + " '01' as vid, `rep_vat_s`.`number_df`, DATE_FORMAT(`rep_vat_s`.`date_edition_df`, '%d/%m/%Y') as data_dok, dan_n_contragent, name_n_contragent,"
+            +" 'продажба' as opis, ROUND(total_df-ROUND(dds_df,2),2) as opv1, ROUND(dds_df,2) as dds1,ROUND(total_df-ROUND(dds_df,2),2) as opv2, ROUND(dds_df,2) as dds2,"
+            +" '0.00' as v1,'0.00' as v2,'0.00' as v3,'0.00' as v4,'0.00' as v5,'0.00' as v6,'0.00' as v7,'0.00' as v8,'0.00' as v9,'0.00' as v10,'0.00' as v11,'0.00' as v12,'0.00' as v13"
+            +" FROM"
+            +" (SELECT @num:=0) r,"
+            +" `ls_sluj` ,"
+            +" `rep_vat_s` " +
+            " WHERE `rep_vat_s`.`number_df` LIKE '";
     
     //FILE related
     private java.io.File file;
@@ -374,13 +412,14 @@ public class repVAT extends javax.swing.JInternalFrame {
     //TABLE related
     private  MyTableModel model = new MyTableModel();
     private javax.swing.JTable table = new javax.swing.JTable(model);
-    
+    private imakante.com.CustomTable table_prod;
+    private imakante.com.CustomTableModel model_prod;
     //VAT RELATED
     //DEKLAR RELATED
     private String in_number = "";
     private String name_firm = "";
     private String dan_period = "200001"; // danachen period
-    private String broi_doc_prod ="0";
+    private String broi_doc_prod ="0.00";
     private String broi_doc_pok = "0";
     private String obsh_razmer_osnova = "0";
     private String nachislen_dds ="0";
@@ -518,11 +557,7 @@ public class repVAT extends javax.swing.JInternalFrame {
     }
     
     private void makeDeklFile(){
-        String qur = "";
-        try {
-            stm = this.connection.createStatement();
-            rs = stm.executeQuery(qur);
-        } catch (SQLException ex) { ex.printStackTrace(); }
+        
     }
     
     private void makePokupFile(){
@@ -530,7 +565,17 @@ public class repVAT extends javax.swing.JInternalFrame {
     }
     
     private void makeProdFile(){
-        
+        String q = this.QString+this.jTextField1.getText()+"%';";
+        System.out.println("string " + q);
+        try {
+            stm = this.connection.createStatement();
+            rs = stm.executeQuery(q);
+        } catch (SQLException ex) { ex.printStackTrace(); }
+        model_prod = new imakante.com.CustomTableModel(this.connection, rs, null);
+        table_prod = new imakante.com.CustomTable(model_prod);
+        jScrollPane1.setViewportView(table_prod);
+        this.jScrollPane1.revalidate();
+        jPanel5.repaint();
         
     }
     
@@ -879,5 +924,71 @@ public class repVAT extends javax.swing.JInternalFrame {
         } catch (IOException e) { e.printStackTrace();
         }
         
+    }
+    
+    private void generateTables() {
+        this.makeProdFile();
+    }
+    
+    private void writeFiles(){
+         jProgressBar1.setMinimum(0);
+         jProgressBar1.setMaximum(table_prod.getRowCount());
+         jProgressBar1.setValue(0);
+        Thread t = new Thread(new Runnable() {
+        public void run() 
+        {
+            
+        BufferedWriter out;
+        String Line = "";
+        try {
+            out = new BufferedWriter(new java.io.OutputStreamWriter(new FileOutputStream("c:/rabotna/prodagbi.txt"),"Cp866"));
+        
+        
+        int j = 0;
+        int k = table_prod.getRowCount();
+        while(j<k){
+            
+            Line ="";
+            
+            Line = Line + fullString((String)table_prod.getValueAt(j,0).toString(),15, true); //1
+            Line = Line + fullString((String)table_prod.getValueAt(j,1).toString(),6, true);  //2
+            Line = Line + fullString((String)table_prod.getValueAt(j,2).toString(),4, false);  //3
+            Line = Line + fullString((String)table_prod.getValueAt(j,3).toString(),15, false); //4
+            Line = Line + fullString((String)table_prod.getValueAt(j,4).toString(),2, true);  //5
+            Line = Line + fullString((String)table_prod.getValueAt(j,5).toString(),20, true); //6
+            Line = Line + fullString((String)table_prod.getValueAt(j,6).toString(),10, true); //7
+            Line = Line + fullString((String)table_prod.getValueAt(j,7).toString(),15, true); //8
+            Line = Line + fullString((String)table_prod.getValueAt(j,8).toString(),50, true); //9
+            Line = Line + fullString((String)table_prod.getValueAt(j,9).toString(),30, true); //10
+            Line = Line + fullString((String)table_prod.getValueAt(j,10).toString(),15, false); //11
+            Line = Line + fullString((String)table_prod.getValueAt(j,11).toString(),15, false); //12
+            Line = Line + fullString((String)table_prod.getValueAt(j,12).toString(),15, false); //13
+            Line = Line + fullString((String)table_prod.getValueAt(j,13).toString(),15, false); //14
+            Line = Line + fullString((String)table_prod.getValueAt(j,14).toString(),15, false); //15
+            Line = Line + fullString((String)table_prod.getValueAt(j,15).toString(),15, false); //16
+            Line = Line + fullString((String)table_prod.getValueAt(j,16).toString(),15, false); //17
+            Line = Line + fullString((String)table_prod.getValueAt(j,17).toString(),15, false); //18
+            Line = Line + fullString((String)table_prod.getValueAt(j,18).toString(),15, false); //19
+            Line = Line + fullString((String)table_prod.getValueAt(j,19).toString(),15, false); //20
+            Line = Line + fullString((String)table_prod.getValueAt(j,20).toString(),15, false); //21
+            Line = Line + fullString((String)table_prod.getValueAt(j,21).toString(),15, false); //22
+            Line = Line + fullString((String)table_prod.getValueAt(j,22).toString(),15, false); //23
+            Line = Line + fullString((String)table_prod.getValueAt(j,23).toString(),15, false); //24
+            Line = Line + fullString((String)table_prod.getValueAt(j,24).toString(),15, false); //25
+            Line = Line + fullString((String)table_prod.getValueAt(j,25).toString(),15, false); //26
+            Line = Line + fullString((String)table_prod.getValueAt(j,26).toString(),15, false); //27
+            
+            Line = Line + "\r" + "\n";
+            j++;
+            out.write(Line);
+            jProgressBar1.setValue(jProgressBar1.getValue()+1);
+        }
+         out.close();
+        }
+        catch(java.io.IOException ex){      
+        }
+        }
+    });
+    t.start();
     }
 }
