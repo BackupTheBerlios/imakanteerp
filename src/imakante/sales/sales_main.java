@@ -982,6 +982,12 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         sprMenu.add(jSeparator5);
 
         jMenuItem13.setText("\u0414\u0414\u0421 \u0434\u043d\u0435\u0432\u043d\u0438\u0446\u0438");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
+
         sprMenu.add(jMenuItem13);
 
         sprMenu.add(jSeparator6);
@@ -1190,6 +1196,10 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-757)/2, (screenSize.height-463)/2, 757, 463);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+loadVATReport();
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
     
     private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
 // TODO add your handling code here:
@@ -2421,7 +2431,11 @@ public class sales_main extends imakante.com.vcomponents.iFrame {
         } catch (java.beans.PropertyVetoException ex) {ex.printStackTrace();}
         DocNums.setVisible(true);
     }
-    
+    public void loadVATReport(){
+    imakante.sales.repVAT vat = new imakante.sales.repVAT();
+    desktopPane.add(vat);
+    vat.setVisible(true);
+    }
     public void  loadImport(){
         
         imakante.sales.importFrmSklB imp = new imakante.sales.importFrmSklB();

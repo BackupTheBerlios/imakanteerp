@@ -1,15 +1,13 @@
 
 package imakante.sales;
 
-import imakante.com.imakanteObject;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
@@ -939,13 +937,15 @@ public class repVAT extends javax.swing.JInternalFrame {
         {
             
         BufferedWriter out;
-        String Line = "";
-        try {
-            out = new BufferedWriter(new java.io.OutputStreamWriter(new FileOutputStream("c:/rabotna/prodagbi.txt"),"Cp866"));
-        
-        
         int j = 0;
         int k = table_prod.getRowCount();
+        String Line = "";
+        double sum_prod=0;
+        try {
+            out = new BufferedWriter(new java.io.OutputStreamWriter(new FileOutputStream("c:/rabotna/PRODAGBI.TXT"),"Cp866"));
+        
+        
+        
         while(j<k){
             
             Line ="";
@@ -977,17 +977,35 @@ public class repVAT extends javax.swing.JInternalFrame {
             Line = Line + fullString((String)table_prod.getValueAt(j,24).toString(),15, false); //25
             Line = Line + fullString((String)table_prod.getValueAt(j,25).toString(),15, false); //26
             Line = Line + fullString((String)table_prod.getValueAt(j,26).toString(),15, false); //27
-            
+             sum_prod = sum_prod + Double.parseDouble((String)table_prod.getValueAt(j,10).toString()); //11
             Line = Line + "\r" + "\n";
             j++;
             out.write(Line);
+            
             jProgressBar1.setValue(jProgressBar1.getValue()+1);
         }
          out.close();
         }
         catch(java.io.IOException ex){      
         }
+        
+        //deklar.txt
+        try {
+            out = new BufferedWriter(new java.io.OutputStreamWriter(new FileOutputStream("c:/rabotna/DEKLAR.TXT"),"Cp866"));
+        String end = (new DecimalFormat("#.00").format(sum_prod));
+        String nd =  end.replace(",",".");
+        out.write(""+j+"   "+ nd+ "   " + sum_prod);
+        out.close();
         }
+        catch(java.io.IOException ex){      
+        }
+        
+        
+        }
+        
+       
+        
+        
     });
     t.start();
     }

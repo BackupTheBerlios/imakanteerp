@@ -682,6 +682,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x414;&#x414;&#x421; &#x434;&#x43d;&#x435;&#x432;&#x43d;&#x438;&#x446;&#x438;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem13ActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JSeparator" name="jSeparator6">
             </MenuItem>
