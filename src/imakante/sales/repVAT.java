@@ -563,7 +563,7 @@ public class repVAT extends javax.swing.JInternalFrame {
     }
     
     private void makeProdFile(){
-        String q = this.QString+this.jTextField1.getText()+"%';";
+        String q = this.QString+this.jTextField1.getText()+"%' AND date_edition_df  BETWEEN '20070101' AND '20070131'; ;";
         System.out.println("string " + q);
         try {
             stm = this.connection.createStatement();
@@ -929,84 +929,124 @@ public class repVAT extends javax.swing.JInternalFrame {
     }
     
     private void writeFiles(){
-         jProgressBar1.setMinimum(0);
-         jProgressBar1.setMaximum(table_prod.getRowCount());
-         jProgressBar1.setValue(0);
+        jProgressBar1.setMinimum(0);
+        jProgressBar1.setMaximum(table_prod.getRowCount());
+        jProgressBar1.setValue(0);
         Thread t = new Thread(new Runnable() {
-        public void run() 
-        {
+            public void run() {
+                
+                BufferedWriter out;
+                int j = 0;
+                int k = table_prod.getRowCount();
+                String Line = "";
+                double sum_prod=0;
+                double sum_dds = 0;
+                try {
+                    out = new BufferedWriter(new java.io.OutputStreamWriter(new FileOutputStream("c:/rabotna/PRODAGBI.TXT"),"Cp866"));
+                    
+                    
+                    
+                    while(j<k){
+                        
+                        Line ="";
+                        
+                        Line = Line + fullString((String)table_prod.getValueAt(j,0).toString(),15, true); //1
+                        Line = Line + fullString((String)table_prod.getValueAt(j,1).toString(),6, true);  //2
+                        Line = Line + fullString((String)table_prod.getValueAt(j,2).toString(),4, false);  //3
+                        Line = Line + fullString((String)table_prod.getValueAt(j,3).toString(),15, false); //4
+                        Line = Line + fullString((String)table_prod.getValueAt(j,4).toString(),2, true);  //5
+                        Line = Line + fullString((String)table_prod.getValueAt(j,5).toString(),20, true); //6
+                        Line = Line + fullString((String)table_prod.getValueAt(j,6).toString(),10, true); //7
+                        Line = Line + fullString((String)table_prod.getValueAt(j,7).toString(),15, true); //8
+                        Line = Line + fullString((String)table_prod.getValueAt(j,8).toString(),50, true); //9
+                        Line = Line + fullString((String)table_prod.getValueAt(j,9).toString(),30, true); //10
+                        Line = Line + fullString((String)table_prod.getValueAt(j,10).toString(),15, false); //11
+                        Line = Line + fullString((String)table_prod.getValueAt(j,11).toString(),15, false); //12
+                        Line = Line + fullString((String)table_prod.getValueAt(j,12).toString(),15, false); //13
+                        Line = Line + fullString((String)table_prod.getValueAt(j,13).toString(),15, false); //14
+                        Line = Line + fullString((String)table_prod.getValueAt(j,14).toString(),15, false); //15
+                        Line = Line + fullString((String)table_prod.getValueAt(j,15).toString(),15, false); //16
+                        Line = Line + fullString((String)table_prod.getValueAt(j,16).toString(),15, false); //17
+                        Line = Line + fullString((String)table_prod.getValueAt(j,17).toString(),15, false); //18
+                        Line = Line + fullString((String)table_prod.getValueAt(j,18).toString(),15, false); //19
+                        Line = Line + fullString((String)table_prod.getValueAt(j,19).toString(),15, false); //20
+                        Line = Line + fullString((String)table_prod.getValueAt(j,20).toString(),15, false); //21
+                        Line = Line + fullString((String)table_prod.getValueAt(j,21).toString(),15, false); //22
+                        Line = Line + fullString((String)table_prod.getValueAt(j,22).toString(),15, false); //23
+                        Line = Line + fullString((String)table_prod.getValueAt(j,23).toString(),15, false); //24
+                        Line = Line + fullString((String)table_prod.getValueAt(j,24).toString(),15, false); //25
+                        Line = Line + fullString((String)table_prod.getValueAt(j,25).toString(),15, false); //26
+                        Line = Line + fullString((String)table_prod.getValueAt(j,26).toString(),15, false); //27
+                        sum_prod = sum_prod + Double.parseDouble((String)table_prod.getValueAt(j,10).toString()); //11
+                        sum_dds = sum_dds + Double.parseDouble((String)table_prod.getValueAt(j,11).toString()); //11
+                        Line = Line + "\r" + "\n";
+                        j++;
+                        out.write(Line);
+                        
+                        jProgressBar1.setValue(jProgressBar1.getValue()+1);
+                    }
+                    out.close();
+                } catch(java.io.IOException ex){
+                }
+                
+                //deklar.txt
+                try {
+                    out = new BufferedWriter(new java.io.OutputStreamWriter(new FileOutputStream("c:/rabotna/DEKLAR.TXT"),"Cp866"));
+                    
+                    String dLine ="";
+                    dLine = dLine + fullString(imakante.com.NewMain.getParamFirm().getDan(),15,true);
+                    dLine = dLine + fullString(imakante.com.NewMain.getParamFirm().getName(),50,true);
+                    dLine = dLine + fullString((String)table_prod.getValueAt(0,1).toString(),6, true);
+                    dLine = dLine + fullString(imakante.com.NewMain.getParamFirm().getAcc(),50,true);
+                    dLine = dLine + fullString(""+j,15,false);
+                    dLine = dLine + fullString("0",15,false);
+                    String end = (new DecimalFormat("#.00").format(sum_prod));
+                    String nd =  end.replace(",",".");
+                    dLine = dLine + fullString(nd,15,false);
+                    String end1 = (new DecimalFormat("#.00").format(sum_dds));
+                    String nd1 =  end1.replace(",",".");
+                    dLine = dLine + fullString(nd1,15,false);
+                    dLine = dLine + fullString(nd,15,false);
+                    dLine = dLine + fullString(nd1,15,false);
+                    dLine = dLine + fullString("0.00",15,false);
+                    dLine = dLine + fullString("0.00",15,false);
+                    dLine = dLine + fullString("0.00",15,false);
+                    dLine = dLine + fullString("0.00",15,false);
+                    dLine = dLine + fullString("0.00",15,false);
+                    dLine = dLine + fullString("0.00",15,false);
+                    dLine = dLine + fullString("0.00",15,false);
+                    dLine = dLine + fullString("0.00",15,false);
+                    dLine = dLine + fullString("0.00",15,false);
+                    dLine = dLine + fullString("0.00",15,false);
+                    dLine = dLine + fullString("0.00",15,false);
+                    dLine = dLine + fullString("0.00",15,false); //pokupki
+                    dLine = dLine + fullString("0.00",15,false);
+                    dLine = dLine + fullString("0.00",15,false);
+                    dLine = dLine + fullString("0.00",15,false);
+                    dLine = dLine + fullString("0.00",15,false);
+                    dLine = dLine + fullString("0.00",15,false);
+                    dLine = dLine + fullString("0.00",4,false);
+                    dLine = dLine + fullString("0.00",15,false);
+                    dLine = dLine + fullString(nd1,15,false);
+                    dLine = dLine + fullString("0.00",15,false);
+                    dLine = dLine + fullString(nd1,15,false);
+                    dLine = dLine + fullString("0.00",15,false);
+                    dLine = dLine + fullString("0.00",15,false);
+                    dLine = dLine + fullString("0.00",15,false);
+                    dLine = dLine + fullString("0.00",15,false);
+                    dLine = dLine + "\r" + "\n";
+                    out.write(dLine);
+                    out.close();
+                } catch(java.io.IOException ex){
+                }
+                
+                
+            }
             
-        BufferedWriter out;
-        int j = 0;
-        int k = table_prod.getRowCount();
-        String Line = "";
-        double sum_prod=0;
-        try {
-            out = new BufferedWriter(new java.io.OutputStreamWriter(new FileOutputStream("c:/rabotna/PRODAGBI.TXT"),"Cp866"));
-        
-        
-        
-        while(j<k){
             
-            Line ="";
             
-            Line = Line + fullString((String)table_prod.getValueAt(j,0).toString(),15, true); //1
-            Line = Line + fullString((String)table_prod.getValueAt(j,1).toString(),6, true);  //2
-            Line = Line + fullString((String)table_prod.getValueAt(j,2).toString(),4, false);  //3
-            Line = Line + fullString((String)table_prod.getValueAt(j,3).toString(),15, false); //4
-            Line = Line + fullString((String)table_prod.getValueAt(j,4).toString(),2, true);  //5
-            Line = Line + fullString((String)table_prod.getValueAt(j,5).toString(),20, true); //6
-            Line = Line + fullString((String)table_prod.getValueAt(j,6).toString(),10, true); //7
-            Line = Line + fullString((String)table_prod.getValueAt(j,7).toString(),15, true); //8
-            Line = Line + fullString((String)table_prod.getValueAt(j,8).toString(),50, true); //9
-            Line = Line + fullString((String)table_prod.getValueAt(j,9).toString(),30, true); //10
-            Line = Line + fullString((String)table_prod.getValueAt(j,10).toString(),15, false); //11
-            Line = Line + fullString((String)table_prod.getValueAt(j,11).toString(),15, false); //12
-            Line = Line + fullString((String)table_prod.getValueAt(j,12).toString(),15, false); //13
-            Line = Line + fullString((String)table_prod.getValueAt(j,13).toString(),15, false); //14
-            Line = Line + fullString((String)table_prod.getValueAt(j,14).toString(),15, false); //15
-            Line = Line + fullString((String)table_prod.getValueAt(j,15).toString(),15, false); //16
-            Line = Line + fullString((String)table_prod.getValueAt(j,16).toString(),15, false); //17
-            Line = Line + fullString((String)table_prod.getValueAt(j,17).toString(),15, false); //18
-            Line = Line + fullString((String)table_prod.getValueAt(j,18).toString(),15, false); //19
-            Line = Line + fullString((String)table_prod.getValueAt(j,19).toString(),15, false); //20
-            Line = Line + fullString((String)table_prod.getValueAt(j,20).toString(),15, false); //21
-            Line = Line + fullString((String)table_prod.getValueAt(j,21).toString(),15, false); //22
-            Line = Line + fullString((String)table_prod.getValueAt(j,22).toString(),15, false); //23
-            Line = Line + fullString((String)table_prod.getValueAt(j,23).toString(),15, false); //24
-            Line = Line + fullString((String)table_prod.getValueAt(j,24).toString(),15, false); //25
-            Line = Line + fullString((String)table_prod.getValueAt(j,25).toString(),15, false); //26
-            Line = Line + fullString((String)table_prod.getValueAt(j,26).toString(),15, false); //27
-             sum_prod = sum_prod + Double.parseDouble((String)table_prod.getValueAt(j,10).toString()); //11
-            Line = Line + "\r" + "\n";
-            j++;
-            out.write(Line);
             
-            jProgressBar1.setValue(jProgressBar1.getValue()+1);
-        }
-         out.close();
-        }
-        catch(java.io.IOException ex){      
-        }
-        
-        //deklar.txt
-        try {
-            out = new BufferedWriter(new java.io.OutputStreamWriter(new FileOutputStream("c:/rabotna/DEKLAR.TXT"),"Cp866"));
-        String end = (new DecimalFormat("#.00").format(sum_prod));
-        String nd =  end.replace(",",".");
-        out.write(""+j+"   "+ nd+ "   " + sum_prod);
-        out.close();
-        }
-        catch(java.io.IOException ex){      
-        }
-        
-        
-        }
-        
-       
-        
-        
-    });
-    t.start();
+        });
+        t.start();
     }
 }
