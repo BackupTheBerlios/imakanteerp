@@ -739,7 +739,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     private void jCheckBox1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox1KeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jCheckBox1.transferFocus(); }
     }//GEN-LAST:event_jCheckBox1KeyPressed
-        
+    
     private void jCheckBox3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox3KeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) { jCheckBox3.transferFocus(); }
     }//GEN-LAST:event_jCheckBox3KeyPressed
@@ -813,13 +813,8 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     }//GEN-LAST:event_jCheckBox13KeyPressed
     
     private void jTextField16KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField16KeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) jTextField16.setText("");
-        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
-            if (jTextField16.getText().equals("")) {
-                jTextField16.setText("999999999");
-                jTextField16.transferFocus();
-            } else jTextField16.transferFocus();
-        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField16();
+        fillToField(evt, jTextField16);
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField16();
     }//GEN-LAST:event_jTextField16KeyPressed
     
     private void jTextField16FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField16FocusGained
@@ -827,13 +822,8 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     }//GEN-LAST:event_jTextField16FocusGained
     
     private void jTextField15KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField15KeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) jTextField15.setText("");
-        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
-            if (jTextField15.getText().equals("")) {
-                jTextField15.setText("1");
-                jTextField15.transferFocus();
-            } else jTextField15.transferFocus();
-        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField15();
+        fillFromField(evt, jTextField15);
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField15();
     }//GEN-LAST:event_jTextField15KeyPressed
     
     private void jTextField15FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField15FocusGained
@@ -889,123 +879,63 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     }//GEN-LAST:event_jTextField14FocusGained
     
     private void jTextField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) jTextField3.setText("");
-        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
-            if (jTextField3.getText().equals("")) {
-                jTextField3.setText("1");
-                jTextField3.transferFocus();
-            } else jTextField3.transferFocus();
-        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField3();
+        fillFromField(evt, jTextField3);
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField3();
     }//GEN-LAST:event_jTextField3KeyPressed
     
     private void jTextField4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) jTextField4.setText("");
-        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
-            if (jTextField4.getText().equals("")) {
-                jTextField4.setText("999999999");
-                jTextField4.transferFocus();
-            } else jTextField4.transferFocus();
-        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField4();
+        fillToField(evt, jTextField4);
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField4();
     }//GEN-LAST:event_jTextField4KeyPressed
     
     private void jTextField5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) jTextField5.setText("");
-        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
-            if (jTextField5.getText().equals("")) {
-                jTextField5.setText("1");
-                jTextField5.transferFocus();
-            } else jTextField5.transferFocus();
-        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField5();
+        fillFromField(evt, jTextField5);
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField5();
     }//GEN-LAST:event_jTextField5KeyPressed
     
     private void jTextField6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) jTextField6.setText("");
-        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
-            if (jTextField6.getText().equals("")) {
-                jTextField6.setText("999999999");
-                jTextField6.transferFocus();
-            } else jTextField6.transferFocus();
-        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField6();
+        fillToField(evt, jTextField6);
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField6();
     }//GEN-LAST:event_jTextField6KeyPressed
     
     private void jTextField7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) jTextField7.setText("");
-        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
-            if (jTextField7.getText().equals("")) {
-                jTextField7.setText("1");
-                jTextField7.transferFocus();
-            } else jTextField7.transferFocus();
-        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField7();
+        fillFromField(evt, jTextField7);
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField7();
     }//GEN-LAST:event_jTextField7KeyPressed
     
     private void jTextField8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) jTextField8.setText("");
-        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
-            if (jTextField8.getText().equals("")) {
-                jTextField8.setText("999999999");
-                jTextField8.transferFocus();
-            } else jTextField8.transferFocus();
-        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField8();
+        fillToField(evt, jTextField8);
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField8();
     }//GEN-LAST:event_jTextField8KeyPressed
     
     private void jTextField9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) jTextField9.setText("");
-        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
-            if (jTextField9.getText().equals("")) {
-                jTextField9.setText("1");
-                jTextField9.transferFocus();
-            } else jTextField9.transferFocus();
-        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField9();
+        fillFromField(evt, jTextField9);
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField9();
     }//GEN-LAST:event_jTextField9KeyPressed
     
     private void jTextField10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField10KeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) jTextField10.setText("");
-        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
-            if (jTextField10.getText().equals("")) {
-                jTextField10.setText("999999999");
-                jTextField10.transferFocus();
-            } else jTextField10.transferFocus();
-        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField10();
+        fillToField(evt, jTextField10);
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField10();
     }//GEN-LAST:event_jTextField10KeyPressed
     
     private void jTextField11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField11KeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) jTextField11.setText("");
-        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
-            if (jTextField11.getText().equals("")) {
-                jTextField11.setText("1");
-                jTextField11.transferFocus();
-            } else jTextField11.transferFocus();
-        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField11();
+        fillFromField(evt, jTextField11);
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField11();
     }//GEN-LAST:event_jTextField11KeyPressed
     
     private void jTextField12KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField12KeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) jTextField12.setText("");
-        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
-            if (jTextField12.getText().equals("")) {
-                jTextField12.setText("999999999");
-                jTextField12.transferFocus();
-            } else jTextField12.transferFocus();
-        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField12();
+        fillToField(evt, jTextField12);
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField12();
     }//GEN-LAST:event_jTextField12KeyPressed
     
     private void jTextField13KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField13KeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) jTextField13.setText("");
-        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
-            if (jTextField13.getText().equals("")) {
-                jTextField13.setText("1");
-                jTextField13.transferFocus();
-            } else jTextField13.transferFocus();
-        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField13();
+        fillFromField(evt, jTextField13);
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField13();
     }//GEN-LAST:event_jTextField13KeyPressed
     
     private void jTextField14KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField14KeyPressed
-        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) jTextField14.setText("");
-        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
-            if (jTextField14.getText().equals("")) {
-                jTextField14.setText("999999999");
-                jTextField14.transferFocus();
-            } else jTextField14.transferFocus();
-        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField14();
+        fillToField(evt, jTextField14);
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F7) processField14();
     }//GEN-LAST:event_jTextField14KeyPressed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -1158,7 +1088,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     }
     
     private boolean anyBoxChecked() {
-        if (this.jCheckBox1.isSelected() || 
+        if (this.jCheckBox1.isSelected() ||
                 this.jCheckBox3.isSelected() || this.jCheckBox4.isSelected() ||
                 this.jCheckBox5.isSelected() || this.jCheckBox6.isSelected() ||
                 this.jCheckBox7.isSelected() || this.jCheckBox8.isSelected() ||
@@ -1327,6 +1257,26 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             ex.printStackTrace();
             constructDialod(newString, 0, Names);
             System.out.println("I CAN NOT FIND THE FILE SPECIFIED!");
+        }
+    }
+    
+    private void fillFromField(java.awt.event.KeyEvent evt, javax.swing.JTextField jtf) {
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) jtf.setText("");
+        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            if (jtf.getText().equals("")) {
+                jtf.setText("1");
+                jtf.transferFocus();
+            } else jtf.transferFocus();
+        }
+    }
+    
+    private void fillToField(java.awt.event.KeyEvent evt, javax.swing.JTextField jtf) {
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) jtf.setText("");
+        else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            if (jtf.getText().equals("")) {
+                jtf.setText("999999999");
+                jtf.transferFocus();
+            } else jtf.transferFocus();
         }
     }
     
