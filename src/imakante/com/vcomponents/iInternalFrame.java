@@ -26,8 +26,10 @@ public class iInternalFrame extends javax.swing.JInternalFrame implements java.i
     private String names;
     private java.sql.Connection conn;
     private int intTransfer;
+    private long longTransfer;
+    private double doubleTransfer;
     static final long serialVersionUID=1;
-  
+    
     public String getIFNames() {
         return names;
     }
@@ -65,15 +67,31 @@ public class iInternalFrame extends javax.swing.JInternalFrame implements java.i
     }
     
     public void insertElement(String value){
-       
+        
     }
-
+    
     public int getIntTransfer() {
         return intTransfer;
     }
-
+    
     public void setIntTransfer(int intTransfer) {
         this.intTransfer = intTransfer;
     }
- 
+    
+    public long getLongTransfer() {
+        return longTransfer;
+    }
+    
+    public void setLongTransfer(long longTransfer) {
+        this.longTransfer = longTransfer;
+    }
+    
+    public double getDoubleTransfer() {
+        return doubleTransfer;
+    }
+    
+    public void setDoubleTransfer(double doubleTransfer) {
+        this.doubleTransfer = doubleTransfer;
+    }
+    
 }

@@ -47,7 +47,7 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
         this.jButton2.setText("\u0418\u0437\u0433\u043b\u0435\u0434 \u041f\u0440\u0438\u043d\u0442");
         try {
             prepareJassper();
-                    } catch (java.io.FileNotFoundException ex) { ex.printStackTrace(); }
+        } catch (java.io.FileNotFoundException ex) { ex.printStackTrace(); }
         this.checkForNullTable();
         this.setSize(800,600);
     }
@@ -150,9 +150,15 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
     
     private boolean tableVizible = true;
     
-    private void transferValue() {
-        int selectedRecordId = (Integer)InternalTable.getValueAt(InternalTable.getSelectedRow(), getColumnIndex("id"));
-        myParent.setIntTransfer(selectedRecordId);
+    private void transferValue() throws java.lang.ClassCastException {
+        try {
+            // !!! towa ne e nai-dobroto re6enie na problema
+            int selectedRecordId = (Integer)InternalTable.getValueAt(InternalTable.getSelectedRow(), getColumnIndex("id"));
+            myParent.setIntTransfer(selectedRecordId);
+        } catch (java.lang.ClassCastException cce) {
+            long selectedRecordId = (Long)InternalTable.getValueAt(InternalTable.getSelectedRow(), getColumnIndex("id"));
+            myParent.setLongTransfer(selectedRecordId);
+        }
     }
     
     private void prepareJassper() throws java.io.FileNotFoundException {
@@ -194,7 +200,7 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
         this.jPanel1.revalidate();
         this.jPanel1.repaint();
         this.jButton2.setText("\u0418\u0437\u0433\u043b\u0435\u0434 \u041f\u0440\u0438\u043d\u0442");
-       
+        
     }
     
     private int getColumnIndex(String in) {
@@ -209,16 +215,16 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
         jpm = new net.sf.jasperreports.engine.JasperPrintManager();
         Thread tr=null;
         this.setVisible(false);
-            tr = new Thread(new Runnable() {
-                public void run()
-                { try {
-                  jpm.printReport(jasperPrint, true);
-                 } catch (JRException ex) { ex.printStackTrace(); }
-                }
-            });
-            tr.start();
+        tr = new Thread(new Runnable() {
+            public void run() {
+                try {
+                    jpm.printReport(jasperPrint, true);
+                } catch (JRException ex) { ex.printStackTrace(); }
+            }
+        });
+        tr.start();
         this.dispose();
-       
+        
     }
     
     public void close() {
@@ -228,21 +234,20 @@ public class tableDialog extends imakante.com.vcomponents.iDialog {
         if(this.InternalTable==null){
             this.jButton2.setVisible(false);
             showJassper();
-        }
-        else{
-        
-        InternalTable.addKeyListener(new java.awt.event.KeyListener() {
-            public void keyPressed(java.awt.event.KeyEvent e) {
-                if(java.awt.event.KeyEvent.VK_ENTER == e.getKeyCode()) {
-                    
+        } else{
+            
+            InternalTable.addKeyListener(new java.awt.event.KeyListener() {
+                public void keyPressed(java.awt.event.KeyEvent e) {
+                    if(java.awt.event.KeyEvent.VK_ENTER == e.getKeyCode()) {
+                        
+                    }
                 }
-            }
-            public void keyReleased(java.awt.event.KeyEvent e) {
-            }
-            public void keyTyped(java.awt.event.KeyEvent e) {
-            }
-        });
-        
+                public void keyReleased(java.awt.event.KeyEvent e) {
+                }
+                public void keyTyped(java.awt.event.KeyEvent e) {
+                }
+            });
+            
         }
     }
 }

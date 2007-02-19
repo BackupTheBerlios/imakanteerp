@@ -294,12 +294,17 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel23.setText("\u0421\u041f\u0415\u0414\u0418\u0422\u041e\u0420");
 
+        jTextField15.setBackground(new java.awt.Color(204, 204, 255));
         jTextField15.setToolTipText("\u041e\u0422");
+        jTextField15.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextField15.setMinimumSize(new java.awt.Dimension(80, 20));
         jTextField15.setPreferredSize(new java.awt.Dimension(120, 20));
         jTextField15.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField15FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField15FocusLost(evt);
             }
         });
         jTextField15.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -308,12 +313,17 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             }
         });
 
+        jTextField13.setBackground(new java.awt.Color(204, 204, 255));
         jTextField13.setToolTipText("\u041e\u0422");
+        jTextField13.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextField13.setMinimumSize(new java.awt.Dimension(80, 20));
         jTextField13.setPreferredSize(new java.awt.Dimension(120, 20));
         jTextField13.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField13FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField13FocusLost(evt);
             }
         });
         jTextField13.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -322,12 +332,17 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             }
         });
 
+        jTextField11.setBackground(new java.awt.Color(204, 204, 255));
         jTextField11.setToolTipText("\u041e\u0422");
+        jTextField11.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextField11.setMinimumSize(new java.awt.Dimension(80, 20));
         jTextField11.setPreferredSize(new java.awt.Dimension(120, 20));
         jTextField11.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField11FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField11FocusLost(evt);
             }
         });
         jTextField11.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -336,12 +351,17 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             }
         });
 
+        jTextField9.setBackground(new java.awt.Color(204, 204, 255));
         jTextField9.setToolTipText("\u041e\u0422");
+        jTextField9.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextField9.setMinimumSize(new java.awt.Dimension(80, 20));
         jTextField9.setPreferredSize(new java.awt.Dimension(120, 20));
         jTextField9.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField9FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField9FocusLost(evt);
             }
         });
         jTextField9.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -350,12 +370,17 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             }
         });
 
+        jTextField7.setBackground(new java.awt.Color(204, 204, 255));
         jTextField7.setToolTipText("\u041e\u0422");
+        jTextField7.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextField7.setMinimumSize(new java.awt.Dimension(80, 20));
         jTextField7.setPreferredSize(new java.awt.Dimension(120, 20));
         jTextField7.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField7FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField7FocusLost(evt);
             }
         });
         jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -364,12 +389,17 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             }
         });
 
+        jTextField5.setBackground(new java.awt.Color(204, 204, 255));
         jTextField5.setToolTipText("\u041e\u0422");
+        jTextField5.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextField5.setMinimumSize(new java.awt.Dimension(80, 20));
         jTextField5.setPreferredSize(new java.awt.Dimension(120, 20));
         jTextField5.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField5FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField5FocusLost(evt);
             }
         });
         jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -378,12 +408,17 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             }
         });
 
+        jTextField3.setBackground(new java.awt.Color(204, 204, 255));
         jTextField3.setToolTipText("\u041e\u0422");
+        jTextField3.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextField3.setMinimumSize(new java.awt.Dimension(80, 20));
         jTextField3.setPreferredSize(new java.awt.Dimension(120, 20));
         jTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField3FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField3FocusLost(evt);
             }
         });
         jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -392,14 +427,20 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             }
         });
 
+        jXDatePicker1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jXDatePicker1.setToolTipText("\u041e\u0422");
 
+        jTextField16.setBackground(new java.awt.Color(204, 204, 255));
         jTextField16.setToolTipText("\u0414\u041e");
+        jTextField16.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextField16.setMinimumSize(new java.awt.Dimension(80, 20));
         jTextField16.setPreferredSize(new java.awt.Dimension(120, 20));
         jTextField16.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField16FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField16FocusLost(evt);
             }
         });
         jTextField16.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -408,12 +449,17 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             }
         });
 
+        jTextField14.setBackground(new java.awt.Color(204, 204, 255));
         jTextField14.setToolTipText("\u0414\u041e");
+        jTextField14.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextField14.setMinimumSize(new java.awt.Dimension(80, 20));
         jTextField14.setPreferredSize(new java.awt.Dimension(120, 20));
         jTextField14.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField14FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField14FocusLost(evt);
             }
         });
         jTextField14.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -422,12 +468,17 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             }
         });
 
+        jTextField12.setBackground(new java.awt.Color(204, 204, 255));
         jTextField12.setToolTipText("\u0414\u041e");
+        jTextField12.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextField12.setMinimumSize(new java.awt.Dimension(80, 20));
         jTextField12.setPreferredSize(new java.awt.Dimension(120, 20));
         jTextField12.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField12FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField12FocusLost(evt);
             }
         });
         jTextField12.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -436,12 +487,17 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             }
         });
 
+        jTextField10.setBackground(new java.awt.Color(204, 204, 255));
         jTextField10.setToolTipText("\u0414\u041e");
+        jTextField10.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextField10.setMinimumSize(new java.awt.Dimension(80, 20));
         jTextField10.setPreferredSize(new java.awt.Dimension(120, 20));
         jTextField10.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField10FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField10FocusLost(evt);
             }
         });
         jTextField10.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -450,12 +506,17 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             }
         });
 
+        jTextField8.setBackground(new java.awt.Color(204, 204, 255));
         jTextField8.setToolTipText("\u0414\u041e");
+        jTextField8.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextField8.setMinimumSize(new java.awt.Dimension(80, 20));
         jTextField8.setPreferredSize(new java.awt.Dimension(120, 20));
         jTextField8.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField8FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField8FocusLost(evt);
             }
         });
         jTextField8.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -464,12 +525,17 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             }
         });
 
+        jTextField6.setBackground(new java.awt.Color(204, 204, 255));
         jTextField6.setToolTipText("\u0414\u041e");
+        jTextField6.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextField6.setMinimumSize(new java.awt.Dimension(80, 20));
         jTextField6.setPreferredSize(new java.awt.Dimension(120, 20));
         jTextField6.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField6FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField6FocusLost(evt);
             }
         });
         jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -478,12 +544,17 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             }
         });
 
+        jTextField4.setBackground(new java.awt.Color(204, 204, 255));
         jTextField4.setToolTipText("\u0414\u041e");
+        jTextField4.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jTextField4.setMinimumSize(new java.awt.Dimension(80, 20));
         jTextField4.setPreferredSize(new java.awt.Dimension(120, 20));
         jTextField4.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField4FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField4FocusLost(evt);
             }
         });
         jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -492,6 +563,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             }
         });
 
+        jXDatePicker2.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jXDatePicker2.setToolTipText("\u0414\u041e");
 
         jCheckBox20.setToolTipText("\u041e\u0411\u041e\u0411\u0429\u0415\u041d\u0418");
@@ -723,6 +795,62 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         );
         setBounds(100, 20, 599, 418);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
+        fLost(jTextField3);
+    }//GEN-LAST:event_jTextField3FocusLost
+
+    private void jTextField4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusLost
+        fLost(jTextField4);
+    }//GEN-LAST:event_jTextField4FocusLost
+
+    private void jTextField5FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField5FocusLost
+        fLost(jTextField5);
+    }//GEN-LAST:event_jTextField5FocusLost
+
+    private void jTextField6FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusLost
+        fLost(jTextField6);
+    }//GEN-LAST:event_jTextField6FocusLost
+
+    private void jTextField7FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField7FocusLost
+        fLost(jTextField7);
+    }//GEN-LAST:event_jTextField7FocusLost
+
+    private void jTextField8FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField8FocusLost
+        fLost(jTextField8);
+    }//GEN-LAST:event_jTextField8FocusLost
+
+    private void jTextField9FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField9FocusLost
+        fLost(jTextField9);
+    }//GEN-LAST:event_jTextField9FocusLost
+
+    private void jTextField10FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField10FocusLost
+        fLost(jTextField10);
+    }//GEN-LAST:event_jTextField10FocusLost
+
+    private void jTextField11FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField11FocusLost
+        fLost(jTextField11);
+    }//GEN-LAST:event_jTextField11FocusLost
+
+    private void jTextField12FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField12FocusLost
+        fLost(jTextField12);
+    }//GEN-LAST:event_jTextField12FocusLost
+
+    private void jTextField13FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField13FocusLost
+        fLost(jTextField13);
+    }//GEN-LAST:event_jTextField13FocusLost
+
+    private void jTextField14FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField14FocusLost
+        fLost(jTextField14);
+    }//GEN-LAST:event_jTextField14FocusLost
+
+    private void jTextField15FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField15FocusLost
+        fLost(jTextField15);
+    }//GEN-LAST:event_jTextField15FocusLost
+
+    private void jTextField16FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField16FocusLost
+        fLost(jTextField16);
+    }//GEN-LAST:event_jTextField16FocusLost
     
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         selectAllTypes();
@@ -818,6 +946,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     }//GEN-LAST:event_jTextField16KeyPressed
     
     private void jTextField16FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField16FocusGained
+        fGain(jTextField16);
         jTextField16.selectAll();
     }//GEN-LAST:event_jTextField16FocusGained
     
@@ -827,54 +956,67 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     }//GEN-LAST:event_jTextField15KeyPressed
     
     private void jTextField15FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField15FocusGained
+        fGain(jTextField15);
         jTextField15.selectAll();
     }//GEN-LAST:event_jTextField15FocusGained
     
     private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
+        fGain(jTextField3);
         jTextField3.selectAll();
     }//GEN-LAST:event_jTextField3FocusGained
     
     private void jTextField4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusGained
+        fGain(jTextField4);
         jTextField4.selectAll();
     }//GEN-LAST:event_jTextField4FocusGained
     
     private void jTextField5FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField5FocusGained
+        fGain(jTextField5);
         jTextField5.selectAll();
     }//GEN-LAST:event_jTextField5FocusGained
     
     private void jTextField6FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusGained
+        fGain(jTextField6);
         jTextField6.selectAll();
     }//GEN-LAST:event_jTextField6FocusGained
     
     private void jTextField7FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField7FocusGained
+        fGain(jTextField7);
         jTextField7.selectAll();
     }//GEN-LAST:event_jTextField7FocusGained
     
     private void jTextField8FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField8FocusGained
+        fGain(jTextField8);
         jTextField8.selectAll();
     }//GEN-LAST:event_jTextField8FocusGained
     
     private void jTextField9FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField9FocusGained
+        fGain(jTextField9);
         jTextField9.selectAll();
     }//GEN-LAST:event_jTextField9FocusGained
     
     private void jTextField10FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField10FocusGained
+        fGain(jTextField10);
         jTextField10.selectAll();
     }//GEN-LAST:event_jTextField10FocusGained
     
     private void jTextField11FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField11FocusGained
+        fGain(jTextField11);
         jTextField11.selectAll();
     }//GEN-LAST:event_jTextField11FocusGained
     
     private void jTextField12FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField12FocusGained
+        fGain(jTextField12);
         jTextField12.selectAll();
     }//GEN-LAST:event_jTextField12FocusGained
     
     private void jTextField13FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField13FocusGained
+        fGain(jTextField13);
         jTextField13.selectAll();
     }//GEN-LAST:event_jTextField13FocusGained
     
     private void jTextField14FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField14FocusGained
+        fGain(jTextField14);
         jTextField14.selectAll();
     }//GEN-LAST:event_jTextField14FocusGained
     
@@ -1016,24 +1158,25 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     private java.sql.ResultSet rs;
     private int levelx = 3;
     private int intTransfer;
+    private long longTransfer;
     private int CompNumber = 0;
     private String[] Names = { "\u041a\u041e\u0414", "\u0418\u041c\u0415" };
     private String[] NamesQ = { "\u041D\u043E\u043C\u0435\u0440\u0430\u0442\u043E\u0440" };
     java.text.SimpleDateFormat formatterG = new java.text.SimpleDateFormat("yyyy-MM-dd");
     
-    private String strStore = "SELECT rep_documents_new.code_store, rep_documents_new.name_store " +
+    private String strStore = "SELECT DISTINCT rep_documents_new.code_store, rep_documents_new.name_store " +
             "FROM rep_documents_new WHERE rep_documents_new.code_store LIKE '%";
-    private String strClient = "SELECT rep_documents_new.code_client, rep_documents_new.name_client " +
+    private String strClient = "SELECT DISTINCT rep_documents_new.code_client, rep_documents_new.name_client " +
             "FROM rep_documents_new WHERE rep_documents_new.code_client LIKE '%";
-    private String strProduct = "SELECT rep_documents_new.code_product, rep_documents_new.name_product " +
+    private String strProduct = "SELECT DISTINCT rep_documents_new.code_product, rep_documents_new.name_product " +
             "FROM rep_documents_new WHERE rep_documents_new.code_product LIKE '%";
-    private String strSupplier = "SELECT rep_documents_new.code_dostavchik, rep_documents_new.name_dostavchik " +
+    private String strSupplier = "SELECT DISTINCT rep_documents_new.code_dostavchik, rep_documents_new.name_dostavchik " +
             "FROM rep_documents_new WHERE rep_documents_new.code_dostavchik LIKE '%";
-    private String strDistributor = "SELECT rep_documents_new.code_distributor, rep_documents_new.name_distributor " +
+    private String strDistributor = "SELECT DISTINCT rep_documents_new.code_distributor, rep_documents_new.name_distributor " +
             "FROM rep_documents_new WHERE rep_documents_new.code_distributor LIKE '%";
-    private String strOperator = "SELECT rep_documents_new.code_operator, name_operator " +
+    private String strOperator = "SELECT DISTINCT rep_documents_new.code_operator, name_operator " +
             "FROM rep_documents_new WHERE rep_documents_new.code_operator LIKE '%";
-    private String strSpeditor = "SELECT rep_documents_new.code_speditor, rep_documents_new.name_speditor " +
+    private String strSpeditor = "SELECT DISTINCT rep_documents_new.code_speditor, rep_documents_new.name_speditor " +
             "FROM rep_documents_new WHERE rep_documents_new.code_speditor LIKE '%";
     private String qu = "SELECT ";
     private String reportFile = null;
@@ -1322,8 +1465,10 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     }
     
     private void processField4() {
-        if(this.jTextField3.getText() == "") this.jTextField3.setText("0");
-        String newString = strStore + this.jTextField4.getText() + "%' AND rep_documents_new.code_store >= " + this.jTextField3.getText() + ";";
+        if(this.jTextField3.getText().equals("")) 
+            this.jTextField3.setText("1");
+        String newString = strStore + this.jTextField4.getText() + "%' AND rep_documents_new.code_store >= " 
+                + this.jTextField3.getText() + " ORDER BY rep_documents_new.code_store ASC;";
         constructDialod(newString, 4, Names);
     }
     
@@ -1333,8 +1478,10 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     }
     
     private void processField6() {
-        if(this.jTextField5.getText() == "") this.jTextField5.setText("0");
-        String newString = strClient + this.jTextField6.getText() + "%' AND rep_documents_new.code_client >= " + this.jTextField5.getText() + ";";
+        if(this.jTextField5.getText().equals("")) 
+            this.jTextField5.setText("1");
+        String newString = strClient + this.jTextField6.getText() + "%' AND rep_documents_new.code_client >= " 
+                + this.jTextField5.getText() + " ORDER BY rep_documents_new.code_client ASC;";
         constructDialod(newString, 6, Names);
     }
     
@@ -1344,8 +1491,10 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     }
     
     private void processField8() {
-        if(this.jTextField7.getText() == "") this.jTextField7.setText("0");
-        String newString = strProduct + this.jTextField8.getText() + "%' AND rep_documents_new.code_product >= " + this.jTextField7.getText() + ";";
+        if(this.jTextField7.getText().equals("")) 
+            this.jTextField7.setText("1");
+        String newString = strProduct + this.jTextField8.getText() + "%' AND rep_documents_new.code_product >= " 
+                + this.jTextField7.getText() + " ORDER BY rep_documents_new.code_product ASC;";
         constructDialod(newString, 8, Names);
     }
     
@@ -1355,8 +1504,10 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     }
     
     private void processField10() {
-        if(this.jTextField9.getText() == "") this.jTextField9.setText("0");
-        String newString = strSupplier + this.jTextField10.getText() + "%' AND rep_documents_new.code_dostavchik >= " + this.jTextField9.getText() + ";";
+        if(this.jTextField9.getText().equals("")) 
+            this.jTextField9.setText("1");
+        String newString = strSupplier + this.jTextField10.getText() + "%' AND rep_documents_new.code_dostavchik >= " 
+                + this.jTextField9.getText() + " ORDER BY rep_documents_new.code_dostavchik ASC;";
         constructDialod(newString, 10, Names);
     }
     
@@ -1366,8 +1517,10 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     }
     
     private void processField12() {
-        if(this.jTextField11.getText() == "") this.jTextField11.setText("0");
-        String newString = strDistributor + this.jTextField12.getText() + "%' AND rep_documents_new.code_distributor >= " + this.jTextField11.getText() + ";";
+        if(this.jTextField11.getText().equals("")) 
+            this.jTextField11.setText("1");
+        String newString = strDistributor + this.jTextField12.getText() + "%' AND rep_documents_new.code_distributor >= " 
+                + this.jTextField11.getText() + " ORDER BY rep_documents_new.code_distributor ASC;";
         constructDialod(newString, 12, Names);
     }
     
@@ -1377,8 +1530,10 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     }
     
     private void processField14() {
-        if(this.jTextField13.getText() == "") this.jTextField13.setText("0");
-        String newString = strOperator + this.jTextField14.getText() + "%' AND rep_documents_new.code_operator >= " + this.jTextField13.getText() + ";";
+        if(this.jTextField13.getText().equals("")) 
+            this.jTextField13.setText("1");
+        String newString = strOperator + this.jTextField14.getText() + "%' AND rep_documents_new.code_operator >= " 
+                + this.jTextField13.getText() + " ORDER BY rep_documents_new.code_operator ASC;";
         constructDialod(newString, 14, Names);
     }
     
@@ -1388,8 +1543,10 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     }
     
     private void processField16() {
-        if(this.jTextField15.getText() == "") this.jTextField15.setText("0");
-        String newString = strSpeditor + this.jTextField16.getText() + "%' AND rep_documents_new.code_speditor >= " + this.jTextField15.getText() + ";";
+        if(this.jTextField15.getText().equals("")) 
+            this.jTextField15.setText("1");
+        String newString = strSpeditor + this.jTextField16.getText() + "%' AND rep_documents_new.code_speditor >= " 
+                + this.jTextField15.getText() + "ORDER BY rep_documents_new.code_speditor ASC;";
         constructDialod(newString, 16, Names);
     }
     
@@ -1424,6 +1581,29 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         if (CompNumber == 16) jTextField16.setText("" + this.intTransfer);
     }
     
+    public long getLongTransfer() {
+        return longTransfer;
+    }
+    
+    public void setLongTransfer(long longTransfer) {
+        this.longTransfer = longTransfer;
+        if (CompNumber == 0) {  }
+        if (CompNumber == 3) jTextField3.setText("" + this.longTransfer);
+        if (CompNumber == 4) jTextField4.setText("" + this.longTransfer);
+        if (CompNumber == 5) jTextField5.setText("" + this.longTransfer);
+        if (CompNumber == 6) jTextField6.setText("" + this.longTransfer);
+        if (CompNumber == 7) jTextField7.setText("" + this.longTransfer);
+        if (CompNumber == 8) jTextField8.setText("" + this.longTransfer);
+        if (CompNumber == 9) jTextField9.setText("" + this.longTransfer);
+        if (CompNumber == 10) jTextField10.setText("" + this.longTransfer);
+        if (CompNumber == 11) jTextField11.setText("" + this.longTransfer);
+        if (CompNumber == 12) jTextField12.setText("" + this.longTransfer);
+        if (CompNumber == 13) jTextField13.setText("" + this.longTransfer);
+        if (CompNumber == 14) jTextField14.setText("" + this.longTransfer);
+        if (CompNumber == 15) jTextField15.setText("" + this.longTransfer);
+        if (CompNumber == 16) jTextField16.setText("" + this.longTransfer);
+    }
+    
     public java.sql.Connection getConn() {
         return conn;
     }
@@ -1438,6 +1618,16 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     
     public void setReportFile(String reportFile) {
         this.reportFile = reportFile;
+    }
+    
+    private void fGain(javax.swing.JComponent jtf) {
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED,
+                new java.awt.Color(255, 0, 51), null));
+    }
+    
+    private void fLost(javax.swing.JComponent jtf) {
+        jtf.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED,
+                new java.awt.Color(255, 255, 255), null));
     }
     
 }
