@@ -1164,20 +1164,20 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     private String[] NamesQ = { "\u041D\u043E\u043C\u0435\u0440\u0430\u0442\u043E\u0440" };
     java.text.SimpleDateFormat formatterG = new java.text.SimpleDateFormat("yyyy-MM-dd");
     
-    private String strStore = "SELECT DISTINCT rep_documents_new.code_store, rep_documents_new.name_store " +
-            "FROM rep_documents_new WHERE rep_documents_new.code_store LIKE '%";
-    private String strClient = "SELECT DISTINCT rep_documents_new.code_client, rep_documents_new.name_client " +
-            "FROM rep_documents_new WHERE rep_documents_new.code_client LIKE '%";
-    private String strProduct = "SELECT DISTINCT rep_documents_new.code_product, rep_documents_new.name_product " +
-            "FROM rep_documents_new WHERE rep_documents_new.code_product LIKE '%";
-    private String strSupplier = "SELECT DISTINCT rep_documents_new.code_dostavchik, rep_documents_new.name_dostavchik " +
-            "FROM rep_documents_new WHERE rep_documents_new.code_dostavchik LIKE '%";
-    private String strDistributor = "SELECT DISTINCT rep_documents_new.code_distributor, rep_documents_new.name_distributor " +
-            "FROM rep_documents_new WHERE rep_documents_new.code_distributor LIKE '%";
-    private String strOperator = "SELECT DISTINCT rep_documents_new.code_operator, name_operator " +
-            "FROM rep_documents_new WHERE rep_documents_new.code_operator LIKE '%";
-    private String strSpeditor = "SELECT DISTINCT rep_documents_new.code_speditor, rep_documents_new.name_speditor " +
-            "FROM rep_documents_new WHERE rep_documents_new.code_speditor LIKE '%";
+    private String strStore = "SELECT DISTINCT r.code_store, r.name_store " +
+            "FROM rep_documents_new r WHERE r.code_store LIKE '%";
+    private String strClient = "SELECT DISTINCT r.code_client, r.name_client " +
+            "FROM rep_documents_new r WHERE r.code_client LIKE '%";
+    private String strProduct = "SELECT DISTINCT r.code_product, r.name_product " +
+            "FROM rep_documents_new r WHERE r.code_product LIKE '%";
+    private String strSupplier = "SELECT DISTINCT r.code_dostavchik, r.name_dostavchik " +
+            "FROM rep_documents_new r WHERE r.code_dostavchik LIKE '%";
+    private String strDistributor = "SELECT DISTINCT r.code_distributor, r.name_distributor " +
+            "FROM rep_documents_new r WHERE r.code_distributor LIKE '%";
+    private String strOperator = "SELECT DISTINCT r.code_operator, name_operator " +
+            "FROM rep_documents_new r WHERE r.code_operator LIKE '%";
+    private String strSpeditor = "SELECT DISTINCT r.code_speditor, r.name_speditor " +
+            "FROM rep_documents_new r WHERE r.code_speditor LIKE '%";
     private String qu = "SELECT ";
     private String reportFile = null;
     private java.util.HashMap hm = null;
@@ -1259,7 +1259,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     
     private void processReport() {
         String newString = qu;
-        newString = newString + " DISTINCT CONCAT(rep_documents_new.level_df";
+        newString = newString + " DISTINCT CONCAT(r.level_df";
         java.util.List namesQ = new java.util.ArrayList();
         namesQ.add("\u041D\u043E\u043C\u0435\u0440\u0430\u0442\u043E\u0440");
         int nubColums = 0;
@@ -1281,79 +1281,79 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         else if (this.jCheckBox20.isSelected())
             this.setReportFile("report_Documents.jasper");
         else this.setReportFile("report_Documents.jasper");
-        if (!this.jCheckBox13.isSelected()) newString = newString + ", IFNULL(rep_documents_new.date_edition_df, 0)";
-        if (!this.jCheckBox14.isSelected()) newString = newString + ", IFNULL(rep_documents_new.code_store, 0)";
-        if (!this.jCheckBox15.isSelected()) newString = newString + ", IFNULL(rep_documents_new.code_client, 0)";
-        if (!this.jCheckBox16.isSelected()) newString = newString + ", IFNULL(rep_documents_new.code_product, 0)";
-        if (!this.jCheckBox17.isSelected()) newString = newString + ", IFNULL(rep_documents_new.code_dostavchik, 0)";
-        if (!this.jCheckBox18.isSelected()) newString = newString + ", IFNULL(rep_documents_new.code_distributor, 0)";
-        if (!this.jCheckBox19.isSelected()) newString = newString + ", IFNULL(rep_documents_new.code_operator, 0)";
-        if (!this.jCheckBox20.isSelected()) newString = newString + ", IFNULL(rep_documents_new.code_speditor, 0)";
-        newString = newString + ") AS con, rep_documents_new.number_df, rep_documents_new.type_df";
+        if (!this.jCheckBox13.isSelected()) newString = newString + ", IFNULL(r.date_edition_df, 0)";
+        if (!this.jCheckBox14.isSelected()) newString = newString + ", IFNULL(r.code_store, 0)";
+        if (!this.jCheckBox15.isSelected()) newString = newString + ", IFNULL(r.code_client, 0)";
+        if (!this.jCheckBox16.isSelected()) newString = newString + ", IFNULL(r.code_product, 0)";
+        if (!this.jCheckBox17.isSelected()) newString = newString + ", IFNULL(r.code_dostavchik, 0)";
+        if (!this.jCheckBox18.isSelected()) newString = newString + ", IFNULL(r.code_distributor, 0)";
+        if (!this.jCheckBox19.isSelected()) newString = newString + ", IFNULL(r.code_operator, 0)";
+        if (!this.jCheckBox20.isSelected()) newString = newString + ", IFNULL(r.code_speditor, 0)";
+        newString = newString + ") AS con, r.number_df, r.type_df";
         namesQ.add("\u041D\u043E\u043C\u0435\u0440 \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442");
         namesQ.add("\u0422\u0438\u043F \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442");
         nubColums =+ 2;
         if (!this.jCheckBox13.isSelected()) {
-            newString = newString + ", rep_documents_new.date_edition_df";
+            newString = newString + ", r.date_edition_df";
             namesQ.add("\u0414\u0430\u0442\u0430");
             nubColums =+ 1;
         }
         if (!this.jCheckBox14.isSelected()) {
-            newString = newString + ", rep_documents_new.code_store, rep_documents_new.name_store";
+            newString = newString + ", r.code_store, r.name_store";
             namesQ.add("\u041A\u043E\u0434 \u0441\u043A\u043B\u0430\u0434");
             nubColums =+ 1;
             namesQ.add("\u0418\u043C\u0435 \u0441\u043A\u043B\u0430\u0434");
             nubColums =+ 1;
         }
         if (!this.jCheckBox15.isSelected()) {
-            newString = newString + ", rep_documents_new.code_client, rep_documents_new.name_client";
+            newString = newString + ", r.code_client, r.name_client";
             namesQ.add("\u041A\u043E\u0434 \u043A\u043B\u0438\u0435\u043D\u0442");
             nubColums =+ 1;
             namesQ.add("\u0418\u043C\u0435 \u043A\u043B\u0438\u0435\u043D\u0442");
             nubColums =+ 1;
         }
         if (!this.jCheckBox16.isSelected()) {
-            newString = newString + ", rep_documents_new.code_product, rep_documents_new.name_product";
+            newString = newString + ", r.code_product, r.name_product";
             namesQ.add("\u041A\u043E\u0434 \u043F\u0440\u043E\u0434\u0443\u043A\u0442");
             nubColums =+ 1;
             namesQ.add("\u0418\u043C\u0435 \u043F\u0440\u043E\u0434\u0443\u043A\u0442");
             nubColums =+ 1;
         }
         if (!this.jCheckBox17.isSelected()) {
-            newString = newString + ", rep_documents_new.code_dostavchik, rep_documents_new.name_dostavchik";
+            newString = newString + ", r.code_dostavchik, r.name_dostavchik";
             namesQ.add("\u041A\u043E\u0434 \u0434\u043E\u0441\u0442\u0430\u0432\u0447\u0438\u043A");
             nubColums =+ 1;
             namesQ.add("\u0418\u043C\u0435 \u0434\u043E\u0441\u0442\u0430\u0432\u0447\u0438\u043A");
             nubColums =+ 1;
         }
         if (!this.jCheckBox18.isSelected()) {
-            newString = newString + ", rep_documents_new.code_distributor, rep_documents_new.name_distributor";
+            newString = newString + ", r.code_distributor, r.name_distributor";
             namesQ.add("\u041A\u043E\u0434 \u0434\u0438\u0441\u0442\u0440\u0438\u0431\u0443\u0442\u043E\u0440");
             nubColums =+ 1;
             namesQ.add("\u0418\u043C\u0435 \u0434\u0438\u0441\u0442\u0440\u0438\u0431\u0443\u0442\u043E\u0440");
             nubColums =+ 1;
         }
         if (!this.jCheckBox19.isSelected()) {
-            newString = newString + ", rep_documents_new.code_operator, rep_documents_new.name_operator";
+            newString = newString + ", r.code_operator, r.name_operator";
             namesQ.add("\u041A\u043E\u0434 \u043E\u043F\u0435\u0440\u0430\u0442\u043E\u0440");
             nubColums =+ 1;
             namesQ.add("\u0418\u043C\u0435 \u043E\u043F\u0435\u0440\u0430\u0442\u043E\u0440");
             nubColums =+ 1;
         }
         if (!this.jCheckBox20.isSelected()) {
-            newString = newString + ", rep_documents_new.code_speditor, rep_documents_new.name_speditor";
+            newString = newString + ", r.code_speditor, r.name_speditor";
             namesQ.add("\u041A\u043E\u0434 \u0441\u043F\u0435\u0434\u0438\u0442\u043E\u0440");
             nubColums =+ 1;
             namesQ.add("\u0418\u043C\u0435 \u0441\u043F\u0435\u0434\u0438\u0442\u043E\u0440");
             nubColums =+ 1;
         }
-        newString = newString + ", rep_documents_new.total_df, rep_documents_new.dds_df, rep_documents_new.date_pay_df " +
-                "FROM rep_documents_new";
+        newString = newString + ", r.total_df, r.dds_df, r.date_pay_df " +
+                "FROM rep_documents_new r";
         namesQ.add("\u0421\u0443\u043C\u0430 \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442");
         namesQ.add("\u0421\u0443\u043C\u0430 \u043D\u0430 \u0414\u0414\u0421");
         namesQ.add("\u0414\u0430\u0442\u0430 \u043D\u0430 \u043F\u043B\u0430\u0449\u0430\u043D\u0435");
         nubColums =+ 3;
-        String typeDoc = " rep_documents_new.type_df IN(000";
+        String typeDoc = " r.type_df IN(000";
         if (this.jCheckBox1.isSelected()) typeDoc = typeDoc + ", 202";
         if (this.jCheckBox3.isSelected()) typeDoc = typeDoc + ", 600";
         if (this.jCheckBox4.isSelected()) typeDoc = typeDoc + ", 700";
@@ -1368,27 +1368,27 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         typeDoc = typeDoc + ")";
         try {
             newString = newString + " WHERE " + typeDoc +
-                    "  AND rep_documents_new.date_edition_df BETWEEN '" + (String)formatterG.format(this.jXDatePicker1.getDate()) +
+                    "  AND r.date_edition_df BETWEEN '" + (String)formatterG.format(this.jXDatePicker1.getDate()) +
                     "' AND '" + (String)formatterG.format(this.jXDatePicker2.getDate()) +
-                    "' AND rep_documents_new.code_store BETWEEN '" + (Integer.parseInt(jTextField3.getText()) - 1) +
+                    "' AND r.code_store BETWEEN '" + (Integer.parseInt(jTextField3.getText()) - 1) +
                     "' AND '" + (Integer.parseInt(jTextField4.getText()) + 1) +
-                    "' AND rep_documents_new.code_client BETWEEN '" + (Integer.parseInt(jTextField5.getText()) - 1) +
+                    "' AND r.code_client BETWEEN '" + (Integer.parseInt(jTextField5.getText()) - 1) +
                     "' AND '" + (Integer.parseInt(jTextField6.getText()) + 1) +
-                    "' AND rep_documents_new.code_product BETWEEN '" + (Integer.parseInt(jTextField7.getText()) - 1) +
+                    "' AND r.code_product BETWEEN '" + (Integer.parseInt(jTextField7.getText()) - 1) +
                     "' AND '" + (Integer.parseInt(jTextField8.getText()) + 1) +
-                    "' AND rep_documents_new.code_dostavchik BETWEEN '" + (Integer.parseInt(jTextField9.getText()) - 1) +
+                    "' AND r.code_dostavchik BETWEEN '" + (Integer.parseInt(jTextField9.getText()) - 1) +
                     "' AND '" + (Integer.parseInt(jTextField10.getText()) + 1) +
-                    "' AND rep_documents_new.code_distributor BETWEEN '" + (Integer.parseInt(jTextField11.getText()) - 1) +
+                    "' AND r.code_distributor BETWEEN '" + (Integer.parseInt(jTextField11.getText()) - 1) +
                     "' AND '" + (Integer.parseInt(jTextField12.getText()) + 1) +
-                    "' AND rep_documents_new.code_operator BETWEEN '" + (Integer.parseInt(jTextField13.getText()) - 1) +
+                    "' AND r.code_operator BETWEEN '" + (Integer.parseInt(jTextField13.getText()) - 1) +
                     "' AND '" + (Integer.parseInt(jTextField14.getText()) + 1) +
-                    "' AND rep_documents_new.code_speditor BETWEEN '" + (Integer.parseInt(jTextField15.getText()) - 1) +
+                    "' AND r.code_speditor BETWEEN '" + (Integer.parseInt(jTextField15.getText()) - 1) +
                     "' AND '" + (Integer.parseInt(jTextField16.getText()) + 1) + "' ";
         } catch (NumberFormatException ex) { ex.printStackTrace(); }
-        if(levelx == 3) newString = newString + " AND rep_documents_new.level_df = 003";
-        if(levelx == 2) newString = newString + " AND rep_documents_new.level_df = 002";
-        if(levelx == 1) newString = newString + " AND rep_documents_new.level_df IN(001,002,003)";
-        newString = newString + " GROUP BY con ORDER BY rep_documents_new.date_edition_df ASC";
+        if(levelx == 3) newString = newString + " AND r.level_df = 003";
+        if(levelx == 2) newString = newString + " AND r.level_df = 002";
+        if(levelx == 1) newString = newString + " AND r.level_df IN(001,002,003)";
+        newString = newString + " GROUP BY con ORDER BY r.date_edition_df ASC";
         String[] Names = (String[]) namesQ.toArray(new String[nubColums]);
         System.out.println(newString);
         try {
@@ -1467,8 +1467,8 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     private void processField4() {
         if(this.jTextField3.getText().equals("")) 
             this.jTextField3.setText("1");
-        String newString = strStore + this.jTextField4.getText() + "%' AND rep_documents_new.code_store >= " 
-                + this.jTextField3.getText() + " ORDER BY rep_documents_new.code_store ASC;";
+        String newString = strStore + this.jTextField4.getText() + "%' AND r.code_store >= " 
+                + this.jTextField3.getText() + " ORDER BY r.code_store ASC;";
         constructDialod(newString, 4, Names);
     }
     
@@ -1480,8 +1480,8 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     private void processField6() {
         if(this.jTextField5.getText().equals("")) 
             this.jTextField5.setText("1");
-        String newString = strClient + this.jTextField6.getText() + "%' AND rep_documents_new.code_client >= " 
-                + this.jTextField5.getText() + " ORDER BY rep_documents_new.code_client ASC;";
+        String newString = strClient + this.jTextField6.getText() + "%' AND r.code_client >= " 
+                + this.jTextField5.getText() + " ORDER BY r.code_client ASC;";
         constructDialod(newString, 6, Names);
     }
     
@@ -1493,8 +1493,8 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     private void processField8() {
         if(this.jTextField7.getText().equals("")) 
             this.jTextField7.setText("1");
-        String newString = strProduct + this.jTextField8.getText() + "%' AND rep_documents_new.code_product >= " 
-                + this.jTextField7.getText() + " ORDER BY rep_documents_new.code_product ASC;";
+        String newString = strProduct + this.jTextField8.getText() + "%' AND r.code_product >= " 
+                + this.jTextField7.getText() + " ORDER BY r.code_product ASC;";
         constructDialod(newString, 8, Names);
     }
     
@@ -1506,8 +1506,8 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     private void processField10() {
         if(this.jTextField9.getText().equals("")) 
             this.jTextField9.setText("1");
-        String newString = strSupplier + this.jTextField10.getText() + "%' AND rep_documents_new.code_dostavchik >= " 
-                + this.jTextField9.getText() + " ORDER BY rep_documents_new.code_dostavchik ASC;";
+        String newString = strSupplier + this.jTextField10.getText() + "%' AND r.code_dostavchik >= " 
+                + this.jTextField9.getText() + " ORDER BY r.code_dostavchik ASC;";
         constructDialod(newString, 10, Names);
     }
     
@@ -1519,8 +1519,8 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     private void processField12() {
         if(this.jTextField11.getText().equals("")) 
             this.jTextField11.setText("1");
-        String newString = strDistributor + this.jTextField12.getText() + "%' AND rep_documents_new.code_distributor >= " 
-                + this.jTextField11.getText() + " ORDER BY rep_documents_new.code_distributor ASC;";
+        String newString = strDistributor + this.jTextField12.getText() + "%' AND r.code_distributor >= " 
+                + this.jTextField11.getText() + " ORDER BY r.code_distributor ASC;";
         constructDialod(newString, 12, Names);
     }
     
@@ -1532,8 +1532,8 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     private void processField14() {
         if(this.jTextField13.getText().equals("")) 
             this.jTextField13.setText("1");
-        String newString = strOperator + this.jTextField14.getText() + "%' AND rep_documents_new.code_operator >= " 
-                + this.jTextField13.getText() + " ORDER BY rep_documents_new.code_operator ASC;";
+        String newString = strOperator + this.jTextField14.getText() + "%' AND r.code_operator >= " 
+                + this.jTextField13.getText() + " ORDER BY r.code_operator ASC;";
         constructDialod(newString, 14, Names);
     }
     
@@ -1545,8 +1545,8 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     private void processField16() {
         if(this.jTextField15.getText().equals("")) 
             this.jTextField15.setText("1");
-        String newString = strSpeditor + this.jTextField16.getText() + "%' AND rep_documents_new.code_speditor >= " 
-                + this.jTextField15.getText() + "ORDER BY rep_documents_new.code_speditor ASC;";
+        String newString = strSpeditor + this.jTextField16.getText() + "%' AND r.code_speditor >= " 
+                + this.jTextField15.getText() + "ORDER BY r.code_speditor ASC;";
         constructDialod(newString, 16, Names);
     }
     
