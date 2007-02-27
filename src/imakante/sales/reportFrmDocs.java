@@ -795,59 +795,59 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         );
         setBounds(100, 20, 599, 418);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
         fLost(jTextField3);
     }//GEN-LAST:event_jTextField3FocusLost
-
+    
     private void jTextField4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusLost
         fLost(jTextField4);
     }//GEN-LAST:event_jTextField4FocusLost
-
+    
     private void jTextField5FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField5FocusLost
         fLost(jTextField5);
     }//GEN-LAST:event_jTextField5FocusLost
-
+    
     private void jTextField6FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusLost
         fLost(jTextField6);
     }//GEN-LAST:event_jTextField6FocusLost
-
+    
     private void jTextField7FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField7FocusLost
         fLost(jTextField7);
     }//GEN-LAST:event_jTextField7FocusLost
-
+    
     private void jTextField8FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField8FocusLost
         fLost(jTextField8);
     }//GEN-LAST:event_jTextField8FocusLost
-
+    
     private void jTextField9FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField9FocusLost
         fLost(jTextField9);
     }//GEN-LAST:event_jTextField9FocusLost
-
+    
     private void jTextField10FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField10FocusLost
         fLost(jTextField10);
     }//GEN-LAST:event_jTextField10FocusLost
-
+    
     private void jTextField11FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField11FocusLost
         fLost(jTextField11);
     }//GEN-LAST:event_jTextField11FocusLost
-
+    
     private void jTextField12FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField12FocusLost
         fLost(jTextField12);
     }//GEN-LAST:event_jTextField12FocusLost
-
+    
     private void jTextField13FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField13FocusLost
         fLost(jTextField13);
     }//GEN-LAST:event_jTextField13FocusLost
-
+    
     private void jTextField14FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField14FocusLost
         fLost(jTextField14);
     }//GEN-LAST:event_jTextField14FocusLost
-
+    
     private void jTextField15FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField15FocusLost
         fLost(jTextField15);
     }//GEN-LAST:event_jTextField15FocusLost
-
+    
     private void jTextField16FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField16FocusLost
         fLost(jTextField16);
     }//GEN-LAST:event_jTextField16FocusLost
@@ -1180,7 +1180,6 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             "FROM rep_documents_new r WHERE r.code_speditor LIKE '%";
     private String qu = "SELECT ";
     private String reportFile = null;
-    private java.util.HashMap hm = null;
     
     public void windowOpened(java.awt.event.WindowEvent e) {
     }
@@ -1261,145 +1260,186 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         String newString = qu;
         newString = newString + " DISTINCT CONCAT(r.level_df";
         java.util.List namesQ = new java.util.ArrayList();
+        java.util.HashMap hm = new java.util.HashMap();
         namesQ.add("\u041D\u043E\u043C\u0435\u0440\u0430\u0442\u043E\u0440");
         int nubColums = 0;
-        nubColums =+ 1;
-        if (this.jCheckBox13.isSelected())
-            this.setReportFile("report_Documents.jasper");
-        else if (this.jCheckBox14.isSelected())
-            this.setReportFile("report_Documents2RazbivkaSklad.jasper");
-        else if (this.jCheckBox15.isSelected())
-            this.setReportFile("report_Documents2RazbivkaKlienti.jasper");
-        else if (this.jCheckBox16.isSelected())
-            this.setReportFile("report_Documents2RazbivkaProd.jasper");
-        else if (this.jCheckBox17.isSelected())
-            this.setReportFile("report_Documents.jasper");
-        else if (this.jCheckBox18.isSelected())
-            this.setReportFile("report_Documents2RazbivkaDistributor.jasper");
-        else if (this.jCheckBox19.isSelected())
-            this.setReportFile("report_Documents2RazbivkaOperator.jasper");
-        else if (this.jCheckBox20.isSelected())
-            this.setReportFile("report_Documents.jasper");
-        else this.setReportFile("report_Documents.jasper");
-        if (!this.jCheckBox13.isSelected()) newString = newString + ", IFNULL(r.date_edition_df, 0)";
-        if (!this.jCheckBox14.isSelected()) newString = newString + ", IFNULL(r.code_store, 0)";
-        if (!this.jCheckBox15.isSelected()) newString = newString + ", IFNULL(r.code_client, 0)";
-        if (!this.jCheckBox16.isSelected()) newString = newString + ", IFNULL(r.code_product, 0)";
-        if (!this.jCheckBox17.isSelected()) newString = newString + ", IFNULL(r.code_dostavchik, 0)";
-        if (!this.jCheckBox18.isSelected()) newString = newString + ", IFNULL(r.code_distributor, 0)";
-        if (!this.jCheckBox19.isSelected()) newString = newString + ", IFNULL(r.code_operator, 0)";
-        if (!this.jCheckBox20.isSelected()) newString = newString + ", IFNULL(r.code_speditor, 0)";
-        newString = newString + ") AS con, r.number_df, r.type_df";
-        namesQ.add("\u041D\u043E\u043C\u0435\u0440 \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442");
-        namesQ.add("\u0422\u0438\u043F \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442");
-        nubColums =+ 2;
-        if (!this.jCheckBox13.isSelected()) {
-            newString = newString + ", r.date_edition_df";
-            namesQ.add("\u0414\u0430\u0442\u0430");
+        if (jXDatePicker1.getDateInMillis() <= jXDatePicker2.getDateInMillis()) {
             nubColums =+ 1;
-        }
-        if (!this.jCheckBox14.isSelected()) {
-            newString = newString + ", r.code_store, r.name_store";
-            namesQ.add("\u041A\u043E\u0434 \u0441\u043A\u043B\u0430\u0434");
-            nubColums =+ 1;
-            namesQ.add("\u0418\u043C\u0435 \u0441\u043A\u043B\u0430\u0434");
-            nubColums =+ 1;
-        }
-        if (!this.jCheckBox15.isSelected()) {
-            newString = newString + ", r.code_client, r.name_client";
-            namesQ.add("\u041A\u043E\u0434 \u043A\u043B\u0438\u0435\u043D\u0442");
-            nubColums =+ 1;
-            namesQ.add("\u0418\u043C\u0435 \u043A\u043B\u0438\u0435\u043D\u0442");
-            nubColums =+ 1;
-        }
-        if (!this.jCheckBox16.isSelected()) {
-            newString = newString + ", r.code_product, r.name_product";
-            namesQ.add("\u041A\u043E\u0434 \u043F\u0440\u043E\u0434\u0443\u043A\u0442");
-            nubColums =+ 1;
-            namesQ.add("\u0418\u043C\u0435 \u043F\u0440\u043E\u0434\u0443\u043A\u0442");
-            nubColums =+ 1;
-        }
-        if (!this.jCheckBox17.isSelected()) {
-            newString = newString + ", r.code_dostavchik, r.name_dostavchik";
-            namesQ.add("\u041A\u043E\u0434 \u0434\u043E\u0441\u0442\u0430\u0432\u0447\u0438\u043A");
-            nubColums =+ 1;
-            namesQ.add("\u0418\u043C\u0435 \u0434\u043E\u0441\u0442\u0430\u0432\u0447\u0438\u043A");
-            nubColums =+ 1;
-        }
-        if (!this.jCheckBox18.isSelected()) {
-            newString = newString + ", r.code_distributor, r.name_distributor";
-            namesQ.add("\u041A\u043E\u0434 \u0434\u0438\u0441\u0442\u0440\u0438\u0431\u0443\u0442\u043E\u0440");
-            nubColums =+ 1;
-            namesQ.add("\u0418\u043C\u0435 \u0434\u0438\u0441\u0442\u0440\u0438\u0431\u0443\u0442\u043E\u0440");
-            nubColums =+ 1;
-        }
-        if (!this.jCheckBox19.isSelected()) {
-            newString = newString + ", r.code_operator, r.name_operator";
-            namesQ.add("\u041A\u043E\u0434 \u043E\u043F\u0435\u0440\u0430\u0442\u043E\u0440");
-            nubColums =+ 1;
-            namesQ.add("\u0418\u043C\u0435 \u043E\u043F\u0435\u0440\u0430\u0442\u043E\u0440");
-            nubColums =+ 1;
-        }
-        if (!this.jCheckBox20.isSelected()) {
-            newString = newString + ", r.code_speditor, r.name_speditor";
-            namesQ.add("\u041A\u043E\u0434 \u0441\u043F\u0435\u0434\u0438\u0442\u043E\u0440");
-            nubColums =+ 1;
-            namesQ.add("\u0418\u043C\u0435 \u0441\u043F\u0435\u0434\u0438\u0442\u043E\u0440");
-            nubColums =+ 1;
-        }
-        newString = newString + ", r.total_df, r.dds_df, r.date_pay_df " +
-                "FROM rep_documents_new r";
-        namesQ.add("\u0421\u0443\u043C\u0430 \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442");
-        namesQ.add("\u0421\u0443\u043C\u0430 \u043D\u0430 \u0414\u0414\u0421");
-        namesQ.add("\u0414\u0430\u0442\u0430 \u043D\u0430 \u043F\u043B\u0430\u0449\u0430\u043D\u0435");
-        nubColums =+ 3;
-        String typeDoc = " r.type_df IN(000";
-        if (this.jCheckBox1.isSelected()) typeDoc = typeDoc + ", 202";
-        if (this.jCheckBox3.isSelected()) typeDoc = typeDoc + ", 600";
-        if (this.jCheckBox4.isSelected()) typeDoc = typeDoc + ", 700";
-        if (this.jCheckBox5.isSelected()) typeDoc = typeDoc + ", 100";
-        if (this.jCheckBox6.isSelected()) typeDoc = typeDoc + ", 800";
-        if (this.jCheckBox7.isSelected()) typeDoc = typeDoc + ", 900";
-        if (this.jCheckBox8.isSelected()) typeDoc = typeDoc + "";
-        if (this.jCheckBox9.isSelected()) typeDoc = typeDoc + ", 500";
-        if (this.jCheckBox10.isSelected()) typeDoc = typeDoc + "";
-        if (this.jCheckBox11.isSelected()) typeDoc = typeDoc + "";
-        if (this.jCheckBox12.isSelected()) typeDoc = typeDoc + "";
-        typeDoc = typeDoc + ")";
-        try {
-            newString = newString + " WHERE " + typeDoc +
-                    "  AND r.date_edition_df BETWEEN '" + (String)formatterG.format(this.jXDatePicker1.getDate()) +
-                    "' AND '" + (String)formatterG.format(this.jXDatePicker2.getDate()) +
-                    "' AND r.code_store BETWEEN '" + (Integer.parseInt(jTextField3.getText()) - 1) +
-                    "' AND '" + (Integer.parseInt(jTextField4.getText()) + 1) +
-                    "' AND r.code_client BETWEEN '" + (Integer.parseInt(jTextField5.getText()) - 1) +
-                    "' AND '" + (Integer.parseInt(jTextField6.getText()) + 1) +
-                    "' AND r.code_product BETWEEN '" + (Integer.parseInt(jTextField7.getText()) - 1) +
-                    "' AND '" + (Integer.parseInt(jTextField8.getText()) + 1) +
-                    "' AND r.code_dostavchik BETWEEN '" + (Integer.parseInt(jTextField9.getText()) - 1) +
-                    "' AND '" + (Integer.parseInt(jTextField10.getText()) + 1) +
-                    "' AND r.code_distributor BETWEEN '" + (Integer.parseInt(jTextField11.getText()) - 1) +
-                    "' AND '" + (Integer.parseInt(jTextField12.getText()) + 1) +
-                    "' AND r.code_operator BETWEEN '" + (Integer.parseInt(jTextField13.getText()) - 1) +
-                    "' AND '" + (Integer.parseInt(jTextField14.getText()) + 1) +
-                    "' AND r.code_speditor BETWEEN '" + (Integer.parseInt(jTextField15.getText()) - 1) +
-                    "' AND '" + (Integer.parseInt(jTextField16.getText()) + 1) + "' ";
-        } catch (NumberFormatException ex) { ex.printStackTrace(); }
-        if(levelx == 3) newString = newString + " AND r.level_df = 003";
-        if(levelx == 2) newString = newString + " AND r.level_df = 002";
-        if(levelx == 1) newString = newString + " AND r.level_df IN(001,002,003)";
-        newString = newString + " GROUP BY con ORDER BY r.date_edition_df ASC";
-        String[] Names = (String[]) namesQ.toArray(new String[nubColums]);
-        System.out.println(newString);
-        try {
-            initTable(newString, Names);
-            imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table,
-                    myFrame.getConn(), hm, getReportFile(), "\u0421\u043f\u0440\u0430\u0432\u043a\u0430 \u0438\u0437\u0434\u0430\u0434\u0435\u043d\u0438 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438", "");
-            td.setVisible(true);
-        } catch (Exception  ex) {
-            ex.printStackTrace();
-            constructDialod(newString, 0, Names);
-            System.out.println("I CAN NOT FIND THE FILE SPECIFIED!");
+            if (this.jCheckBox13.isSelected())
+                this.setReportFile("report_Documents.jasper");
+            else if (this.jCheckBox14.isSelected())
+                this.setReportFile("report_Documents2RazbivkaSklad.jasper");
+            else if (this.jCheckBox15.isSelected())
+                this.setReportFile("report_Documents2RazbivkaKlienti.jasper");
+            else if (this.jCheckBox16.isSelected())
+                this.setReportFile("report_Documents2RazbivkaProd.jasper");
+            else if (this.jCheckBox17.isSelected())
+                this.setReportFile("report_Documents.jasper");
+            else if (this.jCheckBox18.isSelected())
+                this.setReportFile("report_Documents2RazbivkaDistributor.jasper");
+            else if (this.jCheckBox19.isSelected())
+                this.setReportFile("report_Documents2RazbivkaOperator.jasper");
+            else if (this.jCheckBox20.isSelected())
+                this.setReportFile("report_Documents.jasper");
+            else this.setReportFile("report_Documents.jasper");
+            if (!this.jCheckBox13.isSelected()) newString = newString + ", IFNULL(r.date_edition_df, 0)";
+            if (!this.jCheckBox14.isSelected()) newString = newString + ", IFNULL(r.code_store, 0)";
+            if (!this.jCheckBox15.isSelected()) newString = newString + ", IFNULL(r.code_client, 0)";
+            if (!this.jCheckBox16.isSelected()) newString = newString + ", IFNULL(r.code_product, 0)";
+            if (!this.jCheckBox17.isSelected()) newString = newString + ", IFNULL(r.code_dostavchik, 0)";
+            if (!this.jCheckBox18.isSelected()) newString = newString + ", IFNULL(r.code_distributor, 0)";
+            if (!this.jCheckBox19.isSelected()) newString = newString + ", IFNULL(r.code_operator, 0)";
+            if (!this.jCheckBox20.isSelected()) newString = newString + ", IFNULL(r.code_speditor, 0)";
+            newString = newString + ") AS con, r.number_df, r.type_df";
+            namesQ.add("\u041D\u043E\u043C\u0435\u0440 \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442");
+            namesQ.add("\u0422\u0438\u043F \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442");
+            nubColums =+ 2;
+            if (!this.jCheckBox13.isSelected()) {
+                newString = newString + ", r.date_edition_df";
+                namesQ.add("\u0414\u0430\u0442\u0430");
+                nubColums =+ 1;
+            }
+            if (!this.jCheckBox14.isSelected()) {
+                newString = newString + ", r.code_store, r.name_store";
+                namesQ.add("\u041A\u043E\u0434 \u0441\u043A\u043B\u0430\u0434");
+                nubColums =+ 1;
+                namesQ.add("\u0418\u043C\u0435 \u0441\u043A\u043B\u0430\u0434");
+                nubColums =+ 1;
+            }
+            if (!this.jCheckBox15.isSelected()) {
+                newString = newString + ", r.code_client, r.name_client";
+                namesQ.add("\u041A\u043E\u0434 \u043A\u043B\u0438\u0435\u043D\u0442");
+                nubColums =+ 1;
+                namesQ.add("\u0418\u043C\u0435 \u043A\u043B\u0438\u0435\u043D\u0442");
+                nubColums =+ 1;
+            }
+            if (!this.jCheckBox16.isSelected()) {
+                newString = newString + ", r.code_product, r.name_product";
+                namesQ.add("\u041A\u043E\u0434 \u043F\u0440\u043E\u0434\u0443\u043A\u0442");
+                nubColums =+ 1;
+                namesQ.add("\u0418\u043C\u0435 \u043F\u0440\u043E\u0434\u0443\u043A\u0442");
+                nubColums =+ 1;
+            }
+            if (!this.jCheckBox17.isSelected()) {
+                newString = newString + ", r.code_dostavchik, r.name_dostavchik";
+                namesQ.add("\u041A\u043E\u0434 \u0434\u043E\u0441\u0442\u0430\u0432\u0447\u0438\u043A");
+                nubColums =+ 1;
+                namesQ.add("\u0418\u043C\u0435 \u0434\u043E\u0441\u0442\u0430\u0432\u0447\u0438\u043A");
+                nubColums =+ 1;
+            }
+            if (!this.jCheckBox18.isSelected()) {
+                newString = newString + ", r.code_distributor, r.name_distributor";
+                namesQ.add("\u041A\u043E\u0434 \u0434\u0438\u0441\u0442\u0440\u0438\u0431\u0443\u0442\u043E\u0440");
+                nubColums =+ 1;
+                namesQ.add("\u0418\u043C\u0435 \u0434\u0438\u0441\u0442\u0440\u0438\u0431\u0443\u0442\u043E\u0440");
+                nubColums =+ 1;
+            }
+            if (!this.jCheckBox19.isSelected()) {
+                newString = newString + ", r.code_operator, r.name_operator";
+                namesQ.add("\u041A\u043E\u0434 \u043E\u043F\u0435\u0440\u0430\u0442\u043E\u0440");
+                nubColums =+ 1;
+                namesQ.add("\u0418\u043C\u0435 \u043E\u043F\u0435\u0440\u0430\u0442\u043E\u0440");
+                nubColums =+ 1;
+            }
+            if (!this.jCheckBox20.isSelected()) {
+                newString = newString + ", r.code_speditor, r.name_speditor";
+                namesQ.add("\u041A\u043E\u0434 \u0441\u043F\u0435\u0434\u0438\u0442\u043E\u0440");
+                nubColums =+ 1;
+                namesQ.add("\u0418\u043C\u0435 \u0441\u043F\u0435\u0434\u0438\u0442\u043E\u0440");
+                nubColums =+ 1;
+            }
+            newString = newString + ", r.total_df, r.dds_df, r.date_pay_df " +
+                    "FROM rep_documents_new r";
+            namesQ.add("\u0421\u0443\u043C\u0430 \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442");
+            namesQ.add("\u0421\u0443\u043C\u0430 \u043D\u0430 \u0414\u0414\u0421");
+            namesQ.add("\u0414\u0430\u0442\u0430 \u043D\u0430 \u043F\u043B\u0430\u0449\u0430\u043D\u0435");
+            nubColums =+ 3;
+            String typeDoc = " r.type_df IN(000";
+            if (this.jCheckBox1.isSelected()) typeDoc = typeDoc + ", 202";
+            if (this.jCheckBox3.isSelected()) typeDoc = typeDoc + ", 600";
+            if (this.jCheckBox4.isSelected()) typeDoc = typeDoc + ", 700";
+            if (this.jCheckBox5.isSelected()) typeDoc = typeDoc + ", 100";
+            if (this.jCheckBox6.isSelected()) typeDoc = typeDoc + ", 800";
+            if (this.jCheckBox7.isSelected()) typeDoc = typeDoc + ", 900";
+            if (this.jCheckBox8.isSelected()) typeDoc = typeDoc + "";
+            if (this.jCheckBox9.isSelected()) typeDoc = typeDoc + ", 500";
+            if (this.jCheckBox10.isSelected()) typeDoc = typeDoc + "";
+            if (this.jCheckBox11.isSelected()) typeDoc = typeDoc + "";
+            if (this.jCheckBox12.isSelected()) typeDoc = typeDoc + "";
+            typeDoc = typeDoc + ")";
+            try {
+                newString = newString + " WHERE " + typeDoc +
+                        "  AND r.date_edition_df BETWEEN '" + (String)formatterG.format(this.jXDatePicker1.getDate()) +
+                        "' AND '" + (String)formatterG.format(this.jXDatePicker2.getDate()) +
+                        "' AND r.code_store BETWEEN '" + (Integer.parseInt(jTextField3.getText()) - 1) +
+                        "' AND '" + (Integer.parseInt(jTextField4.getText()) + 1) +
+                        "' AND r.code_client BETWEEN '" + (Integer.parseInt(jTextField5.getText()) - 1) +
+                        "' AND '" + (Integer.parseInt(jTextField6.getText()) + 1) +
+                        "' AND r.code_product BETWEEN '" + (Integer.parseInt(jTextField7.getText()) - 1) +
+                        "' AND '" + (Integer.parseInt(jTextField8.getText()) + 1) +
+                        "' AND r.code_dostavchik BETWEEN '" + (Integer.parseInt(jTextField9.getText()) - 1) +
+                        "' AND '" + (Integer.parseInt(jTextField10.getText()) + 1) +
+                        "' AND r.code_distributor BETWEEN '" + (Integer.parseInt(jTextField11.getText()) - 1) +
+                        "' AND '" + (Integer.parseInt(jTextField12.getText()) + 1) +
+                        "' AND r.code_operator BETWEEN '" + (Integer.parseInt(jTextField13.getText()) - 1) +
+                        "' AND '" + (Integer.parseInt(jTextField14.getText()) + 1) +
+                        "' AND r.code_speditor BETWEEN '" + (Integer.parseInt(jTextField15.getText()) - 1) +
+                        "' AND '" + (Integer.parseInt(jTextField16.getText()) + 1) + "' ";
+                
+                hm.put("otdata", (String)formatterG.format(this.jXDatePicker1.getDate()));
+                hm.put("dodata", (String)formatterG.format(this.jXDatePicker2.getDate()));
+                hm.put("otsklad", jTextField3.getText());
+                hm.put("dosklad", jTextField4.getText());
+                hm.put("otklient", jTextField5.getText());
+                hm.put("doklient", jTextField6.getText());
+                hm.put("otstoka", jTextField7.getText());
+                hm.put("dostoka", jTextField8.getText());
+                hm.put("otdostavchik", jTextField9.getText());
+                hm.put("dodostavchik", jTextField10.getText());
+                hm.put("otdistributor", jTextField11.getText());
+                hm.put("dodistributor", jTextField12.getText());
+                hm.put("otoperator", jTextField13.getText());
+                hm.put("dooperator", jTextField14.getText());
+                hm.put("otspeditor", jTextField15.getText());
+                hm.put("dospeditor", jTextField16.getText());
+                
+            } catch (NumberFormatException ex) { ex.printStackTrace(); }
+            String level = "";
+            if(levelx == 3) {
+                level = "003";
+                hm.put("levelBoth", "");
+                hm.put("levelReal", "");
+                hm.put("levelVirtual", level);
+            }
+            if(levelx == 2) {
+                level = "002";
+                hm.put("levelBoth", "");
+                hm.put("levelReal", level);
+                hm.put("levelVirtual", "");
+            }
+            if(levelx == 1) {
+                level = "003 OR r.level_df = 002 OR r.level_df = 001";
+                hm.put("levelBoth", "001");
+                hm.put("levelReal", "002");
+                hm.put("levelVirtual", "003");
+            }
+            newString = newString + " AND (r.level_df = " + level + ") GROUP BY con ORDER BY r.date_edition_df ASC";
+            String[] Names = (String[]) namesQ.toArray(new String[nubColums]);
+            System.out.println(newString);
+            try {
+                initTable(newString, Names);
+                imakante.com.vcomponents.tableDialog td = new imakante.com.vcomponents.tableDialog(this, true, table,
+                        myFrame.getConn(), hm, getReportFile(), "\u0421\u043f\u0440\u0430\u0432\u043a\u0430 \u0438\u0437\u0434\u0430\u0434\u0435\u043d\u0438 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438", "");
+                td.setVisible(true);
+            } catch (Exception  ex) {
+                ex.printStackTrace();
+                constructDialod(newString, 0, Names);
+                System.out.println("I CAN NOT FIND THE FILE SPECIFIED!");
+            }
+        } else {
+            // Nekorekten izbor na period!
+            imakante.com.MessagePane.Error("\u041D\u0435\u043A\u043E\u0435\u0440\u043A\u0442\u0435\u043D " +
+                    "\u0438\u0437\u0431\u043E\u0440 \u043D\u0430 \u043F\u0435\u0440\u0438\u043E\u0434!");
         }
     }
     
@@ -1465,9 +1505,9 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     }
     
     private void processField4() {
-        if(this.jTextField3.getText().equals("")) 
+        if(this.jTextField3.getText().equals(""))
             this.jTextField3.setText("1");
-        String newString = strStore + this.jTextField4.getText() + "%' AND r.code_store >= " 
+        String newString = strStore + this.jTextField4.getText() + "%' AND r.code_store >= "
                 + this.jTextField3.getText() + " ORDER BY r.code_store ASC;";
         constructDialod(newString, 4, Names);
     }
@@ -1478,9 +1518,9 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     }
     
     private void processField6() {
-        if(this.jTextField5.getText().equals("")) 
+        if(this.jTextField5.getText().equals(""))
             this.jTextField5.setText("1");
-        String newString = strClient + this.jTextField6.getText() + "%' AND r.code_client >= " 
+        String newString = strClient + this.jTextField6.getText() + "%' AND r.code_client >= "
                 + this.jTextField5.getText() + " ORDER BY r.code_client ASC;";
         constructDialod(newString, 6, Names);
     }
@@ -1491,9 +1531,9 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     }
     
     private void processField8() {
-        if(this.jTextField7.getText().equals("")) 
+        if(this.jTextField7.getText().equals(""))
             this.jTextField7.setText("1");
-        String newString = strProduct + this.jTextField8.getText() + "%' AND r.code_product >= " 
+        String newString = strProduct + this.jTextField8.getText() + "%' AND r.code_product >= "
                 + this.jTextField7.getText() + " ORDER BY r.code_product ASC;";
         constructDialod(newString, 8, Names);
     }
@@ -1504,9 +1544,9 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     }
     
     private void processField10() {
-        if(this.jTextField9.getText().equals("")) 
+        if(this.jTextField9.getText().equals(""))
             this.jTextField9.setText("1");
-        String newString = strSupplier + this.jTextField10.getText() + "%' AND r.code_dostavchik >= " 
+        String newString = strSupplier + this.jTextField10.getText() + "%' AND r.code_dostavchik >= "
                 + this.jTextField9.getText() + " ORDER BY r.code_dostavchik ASC;";
         constructDialod(newString, 10, Names);
     }
@@ -1517,9 +1557,9 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     }
     
     private void processField12() {
-        if(this.jTextField11.getText().equals("")) 
+        if(this.jTextField11.getText().equals(""))
             this.jTextField11.setText("1");
-        String newString = strDistributor + this.jTextField12.getText() + "%' AND r.code_distributor >= " 
+        String newString = strDistributor + this.jTextField12.getText() + "%' AND r.code_distributor >= "
                 + this.jTextField11.getText() + " ORDER BY r.code_distributor ASC;";
         constructDialod(newString, 12, Names);
     }
@@ -1530,9 +1570,9 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     }
     
     private void processField14() {
-        if(this.jTextField13.getText().equals("")) 
+        if(this.jTextField13.getText().equals(""))
             this.jTextField13.setText("1");
-        String newString = strOperator + this.jTextField14.getText() + "%' AND r.code_operator >= " 
+        String newString = strOperator + this.jTextField14.getText() + "%' AND r.code_operator >= "
                 + this.jTextField13.getText() + " ORDER BY r.code_operator ASC;";
         constructDialod(newString, 14, Names);
     }
@@ -1543,9 +1583,9 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     }
     
     private void processField16() {
-        if(this.jTextField15.getText().equals("")) 
+        if(this.jTextField15.getText().equals(""))
             this.jTextField15.setText("1");
-        String newString = strSpeditor + this.jTextField16.getText() + "%' AND r.code_speditor >= " 
+        String newString = strSpeditor + this.jTextField16.getText() + "%' AND r.code_speditor >= "
                 + this.jTextField15.getText() + "ORDER BY r.code_speditor ASC;";
         constructDialod(newString, 16, Names);
     }

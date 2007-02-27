@@ -72,8 +72,11 @@
 		<defaultValueExpression ><![CDATA["99999999"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="pechatot" isForPrompting="false" class="java.lang.String">
-		<defaultValueExpression ><![CDATA["IMAKANTE ERP"]]></defaultValueExpression>
+		<defaultValueExpression ><![CDATA["ИМАКАНТЕ модул: Склад/Продажби"]]></defaultValueExpression>
 	</parameter>
+	<parameter name="levelBoth" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="levelReal" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="levelVirtual" isForPrompting="false" class="java.lang.String"/>
 	<queryString><![CDATA[SELECT  DISTINCT CONCAT(r.level_df, 
 IFNULL(r.date_edition_df, 0), IFNULL(r.code_store, 0), 
 IFNULL(r.code_client, 0), IFNULL(r.code_product, 0), 
@@ -98,7 +101,7 @@ AND r.code_dostavchik BETWEEN ($P{otdostavchik} - 1) AND ($P{dodostavchik} + 1)
 AND r.code_distributor BETWEEN ($P{otdistributor} - 1) AND ($P{dodistributor} + 1) 
 AND r.code_operator BETWEEN ($P{otoperator} - 1) AND ($P{dooperator} + 1) 
 AND r.code_speditor BETWEEN ($P{otspeditor} - 1) AND ($P{dospeditor} + 1) 
-AND r.level_df IN(001, 002, 003) 
+AND (r.level_df = $P{levelBoth} OR r.level_df = $P{levelReal} OR r.level_df = $P{levelVirtual}) 
 GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 
 	<field name="con" class="java.lang.String"/>
@@ -1068,7 +1071,7 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 			</band>
 		</columnFooter>
 		<pageFooter>
-			<band height="27"  isSplitAllowed="true" >
+			<band height="22"  isSplitAllowed="true" >
 				<line direction="TopDown">
 					<reportElement
 						x="0"
@@ -1081,9 +1084,9 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="3"
-						y="6"
+						y="0"
 						width="105"
-						height="16"
+						height="22"
 						key="textField-17"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement verticalAlignment="Middle">
@@ -1094,9 +1097,9 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="111"
-						y="6"
+						y="0"
 						width="501"
-						height="16"
+						height="22"
 						key="textField-18"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -1107,9 +1110,9 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="615"
-						y="6"
+						y="0"
 						width="167"
-						height="16"
+						height="22"
 						forecolor="#000000"
 						key="textField-19"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -1121,7 +1124,7 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				<line direction="TopDown">
 					<reportElement
 						x="0"
-						y="25"
+						y="21"
 						width="782"
 						height="0"
 						key="line-6"/>
