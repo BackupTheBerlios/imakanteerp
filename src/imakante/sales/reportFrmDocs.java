@@ -1266,21 +1266,23 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         if (jXDatePicker1.getDateInMillis() <= jXDatePicker2.getDateInMillis()) {
             nubColums =+ 1;
             if (this.jCheckBox13.isSelected())
-                this.setReportFile("report_Documents.jasper");
+                this.setReportFile("report_DocumentsRazbiwkaDati.jasper");
             else if (this.jCheckBox14.isSelected())
-                this.setReportFile("report_Documents2RazbivkaSklad.jasper");
+                this.setReportFile("report_DocumentsRazbiwkaSkladowe.jasper");
             else if (this.jCheckBox15.isSelected())
-                this.setReportFile("report_Documents2RazbivkaKlienti.jasper");
+                this.setReportFile("report_DocumentsRazbiwkaKlienti.jasper");
             else if (this.jCheckBox16.isSelected())
-                this.setReportFile("report_Documents2RazbivkaProd.jasper");
+                this.setReportFile("report_DocumentsRazbiwkaStoki.jasper");
             else if (this.jCheckBox17.isSelected())
-                this.setReportFile("report_Documents.jasper");
+                this.setReportFile("report_DocumentsRazbiwkaDostaw4ici.jasper");
             else if (this.jCheckBox18.isSelected())
-                this.setReportFile("report_Documents2RazbivkaDistributor.jasper");
+                this.setReportFile("report_DocumentsRazbiwkaDistributori.jasper");
             else if (this.jCheckBox19.isSelected())
-                this.setReportFile("report_Documents2RazbivkaOperator.jasper");
+                this.setReportFile("report_DocumentsRazbiwkaOperatori.jasper");
             else if (this.jCheckBox20.isSelected())
-                this.setReportFile("report_Documents.jasper");
+                this.setReportFile("report_DocumentsRazbiwkaSpeditori.jasper");
+//            else if (this.jCheckBox15.isSelected() && this.jCheckBox16.isSelected())
+//                this.setReportFile("report_DocumentsRazbiwka                                           .jasper");
             else this.setReportFile("report_Documents.jasper");
             if (!this.jCheckBox13.isSelected()) newString = newString + ", IFNULL(r.date_edition_df, 0)";
             if (!this.jCheckBox14.isSelected()) newString = newString + ", IFNULL(r.code_store, 0)";

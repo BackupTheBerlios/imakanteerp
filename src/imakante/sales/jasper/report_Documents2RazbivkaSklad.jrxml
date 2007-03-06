@@ -169,7 +169,7 @@ GROUP BY con ORDER BY rep_documents.code_store ASC]]></queryString>
 					<textElement>
 						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[ $F{code_store}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{code_store}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -182,7 +182,7 @@ GROUP BY con ORDER BY rep_documents.code_store ASC]]></queryString>
 					<textElement>
 						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[ $F{name_store}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{name_store}]]></textFieldExpression>
 				</textField>
 			</band>
 			</groupHeader>
@@ -1372,7 +1372,7 @@ GROUP BY con ORDER BY rep_documents.code_store ASC]]></queryString>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
 						<font fontName="Tahoma" pdfFontName="Helvetica" size="10" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
-				<textFieldExpression   class="java.util.Date"><![CDATA[ new Date()]]></textFieldExpression>
+				<textFieldExpression   class="java.util.Date"><![CDATA[new Date()]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
