@@ -127,6 +127,8 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 	<field name="total_df" class="java.math.BigDecimal"/>
 	<field name="dds_df" class="java.math.BigDecimal"/>
 	<field name="date_pay_df" class="java.lang.String"/>
+	<field name="full_price" class="java.math.BigDecimal"/>
+	<field name="dds" class="java.math.BigDecimal"/>
 
 	<variable name="SUM_total_df_1" class="java.math.BigDecimal" resetType="Report" calculation="Sum">
 		<variableExpression><![CDATA[$F{total_df}]]></variableExpression>
@@ -960,7 +962,7 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 					<textElement textAlignment="Right">
 						<font fontName="Tahoma" size="8"/>
 					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{total_df}]]></textFieldExpression>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{full_price}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -973,7 +975,7 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 					<textElement textAlignment="Right">
 						<font fontName="Tahoma" size="8"/>
 					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{dds_df}]]></textFieldExpression>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{dds}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement

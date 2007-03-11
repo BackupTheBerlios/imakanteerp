@@ -127,6 +127,8 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 	<field name="total_df" class="java.math.BigDecimal"/>
 	<field name="dds_df" class="java.math.BigDecimal"/>
 	<field name="date_pay_df" class="java.lang.String"/>
+	<field name="full_price" class="java.math.BigDecimal"/>
+	<field name="dds" class="java.math.BigDecimal"/>
 
 	<variable name="SUM_total_df_1" class="java.math.BigDecimal" resetType="Report" calculation="Sum">
 		<variableExpression><![CDATA[$F{total_df}]]></variableExpression>
@@ -205,7 +207,7 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				<textField isStretchWithOverflow="false" pattern="#,##0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Opaque"
-						x="648"
+						x="651"
 						y="4"
 						width="78"
 						height="13"
@@ -220,9 +222,9 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				<textField isStretchWithOverflow="false" pattern="#,##0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Opaque"
-						x="728"
+						x="732"
 						y="4"
-						width="51"
+						width="47"
 						height="13"
 						backcolor="#FFFFFF"
 						key="textField-34"/>
@@ -861,7 +863,7 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 					<reportElement
 						x="2"
 						y="4"
-						width="55"
+						width="84"
 						height="16"
 						forecolor="#FFFFFF"
 						key="staticText-27"/>
@@ -869,27 +871,13 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Tahoma" size="8"/>
 					</textElement>
-				<text><![CDATA[тип документ]]></text>
+				<text><![CDATA[документ (тип - №)]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="60"
+						x="430"
 						y="4"
-						width="60"
-						height="16"
-						forecolor="#FFFFFF"
-						key="staticText-28"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Tahoma" size="8"/>
-					</textElement>
-				<text><![CDATA[№ документ]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="458"
-						y="4"
-						width="69"
+						width="82"
 						height="16"
 						forecolor="#FFFFFF"
 						key="staticText-29"/>
@@ -901,9 +889,9 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="666"
+						x="679"
 						y="4"
-						width="60"
+						width="52"
 						height="16"
 						forecolor="#FFFFFF"
 						key="staticText-30"/>
@@ -915,9 +903,9 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="727"
+						x="734"
 						y="4"
-						width="52"
+						width="45"
 						height="16"
 						forecolor="#FFFFFF"
 						key="staticText-31"/>
@@ -929,9 +917,9 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="177"
+						x="89"
 						y="4"
-						width="69"
+						width="84"
 						height="16"
 						forecolor="#FFFFFF"
 						key="staticText-32"/>
@@ -943,9 +931,9 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="318"
+						x="260"
 						y="4"
-						width="69"
+						width="84"
 						height="16"
 						forecolor="#FFFFFF"
 						key="staticText-34"/>
@@ -957,9 +945,9 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="389"
+						x="346"
 						y="4"
-						width="69"
+						width="81"
 						height="16"
 						forecolor="#FFFFFF"
 						key="staticText-35"/>
@@ -971,9 +959,9 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="247"
+						x="174"
 						y="4"
-						width="69"
+						width="84"
 						height="16"
 						forecolor="#FFFFFF"
 						key="staticText-36"/>
@@ -994,9 +982,9 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				</line>
 				<staticText>
 					<reportElement
-						x="527"
+						x="514"
 						y="4"
-						width="69"
+						width="83"
 						height="16"
 						forecolor="#FFFFFF"
 						key="staticText-39"/>
@@ -1008,9 +996,9 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="597"
+						x="599"
 						y="4"
-						width="69"
+						width="78"
 						height="16"
 						forecolor="#FFFFFF"
 						key="staticText-40"/>
@@ -1028,33 +1016,20 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 					<reportElement
 						x="2"
 						y="0"
-						width="55"
+						width="84"
 						height="12"
 						key="textField-20"/>
-					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
-					<textElement textAlignment="Right">
-						<font fontName="Tahoma" size="8"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{type_df}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
-						x="60"
-						y="0"
-						width="60"
-						height="12"
-						key="textField-21"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center">
 						<font fontName="Tahoma" size="8"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.Long"><![CDATA[$F{number_df}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{type_df} + " - " + $F{number_df}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="458"
+						x="430"
 						y="0"
-						width="69"
+						width="82"
 						height="12"
 						key="textField-22"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -1065,35 +1040,35 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="666"
+						x="679"
 						y="0"
-						width="60"
+						width="52"
 						height="12"
 						key="textField-23"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Right">
 						<font fontName="Tahoma" size="8"/>
 					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{total_df}]]></textFieldExpression>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{full_price}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="###0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="727"
+						x="734"
 						y="0"
-						width="52"
+						width="45"
 						height="12"
 						key="textField-24"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Right">
 						<font fontName="Tahoma" size="8"/>
 					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{dds_df}]]></textFieldExpression>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{dds}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="177"
+						x="89"
 						y="0"
-						width="69"
+						width="84"
 						height="12"
 						key="textField-25"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -1104,9 +1079,9 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="318"
+						x="260"
 						y="0"
-						width="69"
+						width="84"
 						height="12"
 						key="textField-27"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -1117,9 +1092,9 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="389"
+						x="346"
 						y="0"
-						width="69"
+						width="81"
 						height="12"
 						key="textField-28"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -1130,9 +1105,9 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="247"
+						x="174"
 						y="0"
-						width="69"
+						width="84"
 						height="12"
 						key="textField-29"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -1143,9 +1118,9 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="527"
+						x="514"
 						y="0"
-						width="69"
+						width="83"
 						height="12"
 						key="textField-30"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -1156,9 +1131,9 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="597"
+						x="599"
 						y="0"
-						width="69"
+						width="78"
 						height="12"
 						key="textField-31"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
@@ -1253,7 +1228,7 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				<textField isStretchWithOverflow="false" pattern="#,##0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Opaque"
-						x="650"
+						x="653"
 						y="6"
 						width="72"
 						height="13"
@@ -1268,9 +1243,9 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				<textField isStretchWithOverflow="false" pattern="#,##0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Opaque"
-						x="725"
+						x="728"
 						y="6"
-						width="56"
+						width="53"
 						height="13"
 						backcolor="#CCCCFF"
 						key="textField"/>
