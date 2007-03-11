@@ -130,11 +130,17 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 	<field name="full_price" class="java.math.BigDecimal"/>
 	<field name="dds" class="java.math.BigDecimal"/>
 
-	<variable name="SUM_total_df_1" class="java.math.BigDecimal" resetType="Report" calculation="Sum">
+	<variable name="SUM_total_df" class="java.math.BigDecimal" resetType="Report" calculation="Sum">
 		<variableExpression><![CDATA[$F{total_df}]]></variableExpression>
 	</variable>
-	<variable name="SUM_dds_df_1" class="java.math.BigDecimal" resetType="Report" calculation="Sum">
+	<variable name="SUM_dds_df" class="java.math.BigDecimal" resetType="Report" calculation="Sum">
 		<variableExpression><![CDATA[$F{dds_df}]]></variableExpression>
+	</variable>
+	<variable name="SUM_dds_df_group" class="java.math.BigDecimal" resetType="Group" resetGroup="klient" calculation="Sum">
+		<variableExpression><![CDATA[$F{dds}]]></variableExpression>
+	</variable>
+	<variable name="SUM_total_df_group" class="java.math.BigDecimal" resetType="Group" resetGroup="klient" calculation="Sum">
+		<variableExpression><![CDATA[$F{full_price}]]></variableExpression>
 	</variable>
 
 		<group  name="klient" >
@@ -217,7 +223,7 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$V{SUM_total_df_1}]]></textFieldExpression>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$V{SUM_total_df_group}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="#,##0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -232,7 +238,7 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$V{SUM_dds_df_1}]]></textFieldExpression>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$V{SUM_dds_df_group}]]></textFieldExpression>
 				</textField>
 			</band>
 			</groupFooter>
@@ -1238,7 +1244,7 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" size="9" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$V{SUM_total_df_1}]]></textFieldExpression>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$V{SUM_total_df}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="#,##0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -1253,7 +1259,7 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" size="9" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$V{SUM_dds_df_1}]]></textFieldExpression>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$V{SUM_dds_df}]]></textFieldExpression>
 				</textField>
 				<line direction="TopDown">
 					<reportElement
