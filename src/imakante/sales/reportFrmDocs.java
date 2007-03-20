@@ -1373,20 +1373,20 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
                 newString = newString + " WHERE " + typeDoc +
                         "  AND r.date_edition_df BETWEEN '" + (String)formatterG.format(this.jXDatePicker1.getDate()) +
                         "' AND '" + (String)formatterG.format(this.jXDatePicker2.getDate()) +
-                        "' AND r.code_store BETWEEN '" + (Integer.parseInt(jTextField3.getText()) - 1) +
-                        "' AND '" + (Integer.parseInt(jTextField4.getText()) + 1) +
-                        "' AND r.code_client BETWEEN '" + (Integer.parseInt(jTextField5.getText()) - 1) +
-                        "' AND '" + (Integer.parseInt(jTextField6.getText()) + 1) +
-                        "' AND r.code_product BETWEEN '" + (Integer.parseInt(jTextField7.getText()) - 1) +
-                        "' AND '" + (Integer.parseInt(jTextField8.getText()) + 1) +
-                        "' AND r.code_dostavchik BETWEEN '" + (Integer.parseInt(jTextField9.getText()) - 1) +
-                        "' AND '" + (Integer.parseInt(jTextField10.getText()) + 1) +
-                        "' AND r.code_distributor BETWEEN '" + (Integer.parseInt(jTextField11.getText()) - 1) +
-                        "' AND '" + (Integer.parseInt(jTextField12.getText()) + 1) +
-                        "' AND r.code_operator BETWEEN '" + (Integer.parseInt(jTextField13.getText()) - 1) +
-                        "' AND '" + (Integer.parseInt(jTextField14.getText()) + 1) +
-                        "' AND r.code_speditor BETWEEN '" + (Integer.parseInt(jTextField15.getText()) - 1) +
-                        "' AND '" + (Integer.parseInt(jTextField16.getText()) + 1) + "' ";
+                        "' AND r.code_store BETWEEN '" + Integer.parseInt(jTextField3.getText()) +
+                        "' AND '" + Integer.parseInt(jTextField4.getText()) +
+                        "' AND r.code_client BETWEEN '" + Integer.parseInt(jTextField5.getText()) +
+                        "' AND '" + Integer.parseInt(jTextField6.getText()) +
+                        "' AND r.code_product BETWEEN '" + Integer.parseInt(jTextField7.getText()) +
+                        "' AND '" + Integer.parseInt(jTextField8.getText()) +
+                        "' AND r.code_dostavchik BETWEEN '" + Integer.parseInt(jTextField9.getText()) +
+                        "' AND '" + Integer.parseInt(jTextField10.getText()) +
+                        "' AND r.code_distributor BETWEEN '" + Integer.parseInt(jTextField11.getText()) +
+                        "' AND '" + Integer.parseInt(jTextField12.getText()) +
+                        "' AND r.code_operator BETWEEN '" + Integer.parseInt(jTextField13.getText()) +
+                        "' AND '" + Integer.parseInt(jTextField14.getText()) +
+                        "' AND r.code_speditor BETWEEN '" + Integer.parseInt(jTextField15.getText()) +
+                        "' AND '" + Integer.parseInt(jTextField16.getText()) + "' ";
                 
                 hm.put("otdata", (String)formatterG.format(this.jXDatePicker1.getDate()));
                 hm.put("dodata", (String)formatterG.format(this.jXDatePicker2.getDate()));
