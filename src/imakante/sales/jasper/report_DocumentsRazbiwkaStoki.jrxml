@@ -96,13 +96,13 @@ r.total_df, r.dds_df, r.date_pay_df
 FROM rep_documents_new r
 WHERE r.type_df IN(000, 202, 201, 600, 700, 100, 500, 800, 900)  
 AND r.date_edition_df BETWEEN $P{otdata} AND $P{dodata} 
-AND r.code_store BETWEEN ($P{otsklad} - 1) AND ($P{dosklad} + 1) 
-AND r.code_client BETWEEN ($P{otklient} - 1) AND ($P{doklient} + 1) 
-AND r.code_product BETWEEN ($P{otstoka} - 1) AND ($P{dostoka} + 1) 
-AND r.code_dostavchik BETWEEN ($P{otdostavchik} - 1) AND ($P{dodostavchik} + 1) 
-AND r.code_distributor BETWEEN ($P{otdistributor} - 1) AND ($P{dodistributor} + 1) 
-AND r.code_operator BETWEEN ($P{otoperator} - 1) AND ($P{dooperator} + 1) 
-AND r.code_speditor BETWEEN ($P{otspeditor} - 1) AND ($P{dospeditor} + 1) 
+AND r.code_store BETWEEN $P{otsklad} AND $P{dosklad}
+AND r.code_client BETWEEN $P{otklient} AND $P{doklient} 
+AND r.code_product BETWEEN $P{otstoka} AND $P{dostoka} 
+AND r.code_dostavchik BETWEEN $P{otdostavchik} AND $P{dodostavchik} 
+AND r.code_distributor BETWEEN $P{otdistributor} AND $P{dodistributor}
+AND r.code_operator BETWEEN $P{otoperator} AND $P{dooperator} 
+AND r.code_speditor BETWEEN $P{otspeditor} AND $P{dospeditor}
 AND (r.level_df = $P{levelBoth} OR r.level_df = $P{levelReal} OR r.level_df = $P{levelVirtual}) 
 GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 
