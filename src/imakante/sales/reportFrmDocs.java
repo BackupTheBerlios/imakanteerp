@@ -1240,19 +1240,19 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     }
     
     private void fillBlanck() {
-        if(jTextField3.getText().equals("")) jTextField3.setText("1");
+        if(jTextField3.getText().equals("")) jTextField3.setText("0");
         if(jTextField4.getText().equals("")) jTextField4.setText("999999999");
-        if(jTextField5.getText().equals("")) jTextField5.setText("1");
+        if(jTextField5.getText().equals("")) jTextField5.setText("0");
         if(jTextField6.getText().equals("")) jTextField6.setText("999999999");
-        if(jTextField7.getText().equals("")) jTextField7.setText("1");
+        if(jTextField7.getText().equals("")) jTextField7.setText("0");
         if(jTextField8.getText().equals("")) jTextField8.setText("999999999");
-        if(jTextField9.getText().equals("")) jTextField9.setText("1");
+        if(jTextField9.getText().equals("")) jTextField9.setText("0");
         if(jTextField10.getText().equals("")) jTextField10.setText("999999999");
-        if(jTextField11.getText().equals("")) jTextField11.setText("1");
+        if(jTextField11.getText().equals("")) jTextField11.setText("0");
         if(jTextField12.getText().equals("")) jTextField12.setText("999999999");
-        if(jTextField13.getText().equals("")) jTextField13.setText("1");
+        if(jTextField13.getText().equals("")) jTextField13.setText("0");
         if(jTextField14.getText().equals("")) jTextField14.setText("999999999");
-        if(jTextField15.getText().equals("")) jTextField15.setText("1");
+        if(jTextField15.getText().equals("")) jTextField15.setText("0");
         if(jTextField16.getText().equals("")) jTextField16.setText("999999999");
     }
     
@@ -1449,7 +1449,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE) jtf.setText("");
         else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
             if (jtf.getText().equals("")) {
-                jtf.setText("1");
+                jtf.setText("0");
                 jtf.transferFocus();
             } else jtf.transferFocus();
         }
@@ -1508,7 +1508,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     
     private void processField4() {
         if(this.jTextField3.getText().equals(""))
-            this.jTextField3.setText("1");
+            this.jTextField3.setText("0");
         String newString = strStore + this.jTextField4.getText() + "%' AND r.code_store >= "
                 + this.jTextField3.getText() + " ORDER BY r.code_store ASC;";
         constructDialod(newString, 4, Names);
@@ -1521,7 +1521,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     
     private void processField6() {
         if(this.jTextField5.getText().equals(""))
-            this.jTextField5.setText("1");
+            this.jTextField5.setText("0");
         String newString = strClient + this.jTextField6.getText() + "%' AND r.code_client >= "
                 + this.jTextField5.getText() + " ORDER BY r.code_client ASC;";
         constructDialod(newString, 6, Names);
@@ -1534,7 +1534,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     
     private void processField8() {
         if(this.jTextField7.getText().equals(""))
-            this.jTextField7.setText("1");
+            this.jTextField7.setText("0");
         String newString = strProduct + this.jTextField8.getText() + "%' AND r.code_product >= "
                 + this.jTextField7.getText() + " ORDER BY r.code_product ASC;";
         constructDialod(newString, 8, Names);
@@ -1547,7 +1547,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     
     private void processField10() {
         if(this.jTextField9.getText().equals(""))
-            this.jTextField9.setText("1");
+            this.jTextField9.setText("0");
         String newString = strSupplier + this.jTextField10.getText() + "%' AND r.code_dostavchik >= "
                 + this.jTextField9.getText() + " ORDER BY r.code_dostavchik ASC;";
         constructDialod(newString, 10, Names);
@@ -1560,7 +1560,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     
     private void processField12() {
         if(this.jTextField11.getText().equals(""))
-            this.jTextField11.setText("1");
+            this.jTextField11.setText("0");
         String newString = strDistributor + this.jTextField12.getText() + "%' AND r.code_distributor >= "
                 + this.jTextField11.getText() + " ORDER BY r.code_distributor ASC;";
         constructDialod(newString, 12, Names);
@@ -1573,7 +1573,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     
     private void processField14() {
         if(this.jTextField13.getText().equals(""))
-            this.jTextField13.setText("1");
+            this.jTextField13.setText("0");
         String newString = strOperator + this.jTextField14.getText() + "%' AND r.code_operator >= "
                 + this.jTextField13.getText() + " ORDER BY r.code_operator ASC;";
         constructDialod(newString, 14, Names);
@@ -1586,7 +1586,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
     
     private void processField16() {
         if(this.jTextField15.getText().equals(""))
-            this.jTextField15.setText("1");
+            this.jTextField15.setText("0");
         String newString = strSpeditor + this.jTextField16.getText() + "%' AND r.code_speditor >= "
                 + this.jTextField15.getText() + "ORDER BY r.code_speditor ASC;";
         constructDialod(newString, 16, Names);
