@@ -81,8 +81,8 @@
 IFNULL(r.date_edition_df, 0), IFNULL(r.code_store, 0), 
 IFNULL(r.code_client, 0), IFNULL(r.code_product, 0), 
 IFNULL(r.code_dostavchik, 0), IFNULL(r.code_distributor, 0), 
-IFNULL(r.code_operator, 0), 
-AS con, r.number_df, r.type_df , r.date_edition_df, 
+IFNULL(r.code_operator, 0)) AS con, 
+r.number_df, r.type_df , r.date_edition_df, 
 r.code_store, r.name_store, 
 r.code_client, r.name_client, 
 r.code_product, r.name_product, 
@@ -104,7 +104,7 @@ AND r.code_distributor BETWEEN $P{otdistributor} AND $P{dodistributor}
 AND r.code_operator BETWEEN $P{otoperator} AND $P{dooperator}
 AND r.code_speditor BETWEEN $P{otspeditor} AND $P{dospeditor}
 AND (r.level_df = $P{levelBoth} OR r.level_df = $P{levelReal} OR r.level_df = $P{levelVirtual}) 
-GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
+GROUP BY con ORDER BY r.code_speditor ASC]]></queryString>
 
 	<field name="con" class="java.lang.String"/>
 	<field name="number_df" class="java.lang.Long"/>

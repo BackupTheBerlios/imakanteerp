@@ -104,7 +104,7 @@ AND r.code_distributor BETWEEN $P{otdistributor} AND $P{dodistributor}
 AND r.code_operator BETWEEN $P{otoperator} AND $P{dooperator} 
 AND r.code_speditor BETWEEN $P{otspeditor} AND $P{dospeditor} 
 AND (r.level_df = $P{levelBoth} OR r.level_df = $P{levelReal} OR r.level_df = $P{levelVirtual}) 
-GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
+GROUP BY con ORDER BY r.code_dostavchik ASC]]></queryString>
 
 	<field name="con" class="java.lang.String"/>
 	<field name="number_df" class="java.lang.Long"/>

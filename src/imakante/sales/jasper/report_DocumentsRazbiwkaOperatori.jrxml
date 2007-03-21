@@ -104,7 +104,7 @@ AND r.code_distributor BETWEEN $P{otdistributor} AND $P{dodistributor}
 AND r.code_operator BETWEEN $P{otoperator} AND $P{dooperator} 
 AND r.code_speditor BETWEEN $P{otspeditor} AND $P{dospeditor} 
 AND (r.level_df = $P{levelBoth} OR r.level_df = $P{levelReal} OR r.level_df = $P{levelVirtual}) 
-GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
+GROUP BY con ORDER BY r.code_operator ASC]]></queryString>
 
 	<field name="con" class="java.lang.String"/>
 	<field name="number_df" class="java.lang.Long"/>
@@ -869,7 +869,7 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 					<reportElement
 						x="2"
 						y="4"
-						width="81"
+						width="87"
 						height="16"
 						forecolor="#FFFFFF"
 						key="staticText-27"/>
@@ -923,7 +923,7 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="141"
+						x="144"
 						y="4"
 						width="86"
 						height="16"
@@ -937,7 +937,7 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="87"
+						x="90"
 						y="4"
 						width="51"
 						height="16"
@@ -951,7 +951,7 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="231"
+						x="233"
 						y="4"
 						width="86"
 						height="16"
@@ -965,7 +965,7 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="321"
+						x="322"
 						y="4"
 						width="86"
 						height="16"
@@ -1022,14 +1022,14 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 					<reportElement
 						x="2"
 						y="0"
-						width="81"
+						width="87"
 						height="12"
 						key="textField-20"/>
 					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
 					<textElement textAlignment="Center">
 						<font fontName="Tahoma" size="8"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{type_df}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{type_df} + " - " + $F{number_df}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -1072,7 +1072,7 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="141"
+						x="144"
 						y="0"
 						width="86"
 						height="12"
@@ -1085,7 +1085,7 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="87"
+						x="90"
 						y="0"
 						width="51"
 						height="12"
@@ -1098,7 +1098,7 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="231"
+						x="233"
 						y="0"
 						width="86"
 						height="12"
@@ -1111,7 +1111,7 @@ GROUP BY con ORDER BY r.date_edition_df ASC]]></queryString>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="321"
+						x="322"
 						y="0"
 						width="86"
 						height="12"
