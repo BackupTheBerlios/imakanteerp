@@ -74,6 +74,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED), "\u0418\u0437\u0431\u043e\u0440 \u043d\u0430 \u0422\u0438\u043f\u043e\u0432\u0435 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
         jCheckBox1.setFont(new java.awt.Font("Tahoma", 1, 11));
         jCheckBox1.setText("\u0424\u0430\u043a\u0442\u0443\u0440\u0438");
+        jCheckBox1.setToolTipText("\u0422\u0438\u043f: 202");
         jCheckBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox1.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jCheckBox1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -82,7 +83,8 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             }
         });
 
-        jCheckBox3.setText("\u0420\u0430\u0437\u043f\u0438\u0441\u043a\u0438 \u043f\u043e \u043f\u043e\u043b\u0443\u0447\u0430\u0432\u0430\u043d\u0435");
+        jCheckBox3.setText("\u0420\u0430\u0437\u043f\u0438\u0441\u043a\u0438 \u0437\u0430 \u043f\u043e\u043b\u0443\u0447\u0430\u0432\u0430\u043d\u0435");
+        jCheckBox3.setToolTipText("\u0422\u0438\u043f: 600");
         jCheckBox3.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox3.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jCheckBox3.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -91,7 +93,8 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             }
         });
 
-        jCheckBox4.setText("\u0420\u0430\u0437\u043f\u0438\u0441\u043a\u0438 \u043f\u043e \u043f\u0440\u0435\u0445\u0432\u044a\u0440\u043b\u044f\u043d\u0435");
+        jCheckBox4.setText("\u0420\u0430\u0437\u043f\u0438\u0441\u043a\u0438 \u0437\u0430 \u043f\u0440\u0435\u0445\u0432\u044a\u0440\u043b\u044f\u043d\u0435");
+        jCheckBox4.setToolTipText("\u0422\u0438\u043f: 700");
         jCheckBox4.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox4.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jCheckBox4.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -103,6 +106,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         jCheckBox5.setFont(new java.awt.Font("Tahoma", 1, 11));
         jCheckBox5.setSelected(true);
         jCheckBox5.setText("\u041f\u0440\u043e\u0434\u0430\u0436\u0431\u0438");
+        jCheckBox5.setToolTipText("\u0422\u0438\u043f: 100");
         jCheckBox5.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox5.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jCheckBox5.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -112,6 +116,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         });
 
         jCheckBox6.setText("\u041f\u0440\u043e\u0442\u043e\u043a\u043e\u043b\u0438 \u0437\u0430 \u0431\u0440\u0430\u043a");
+        jCheckBox6.setToolTipText("\u0422\u0438\u043f: 800");
         jCheckBox6.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox6.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jCheckBox6.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -121,6 +126,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         });
 
         jCheckBox7.setText("\u041f\u0440\u043e\u0442\u043e\u043a\u043e\u043b\u0438 \u0437\u0430 \u043b\u0438\u043f\u0441\u0438");
+        jCheckBox7.setToolTipText("\u0422\u0438\u043f: 900");
         jCheckBox7.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox7.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jCheckBox7.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -139,6 +145,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
         });
 
         jCheckBox9.setText("\u041d\u0430\u0440\u0435\u0436\u0434\u0430\u043d\u0438\u044f");
+        jCheckBox9.setToolTipText("\u0422\u0438\u043f: 500");
         jCheckBox9.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox9.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jCheckBox9.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1356,19 +1363,55 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             namesQ.add("\u0421\u0443\u043C\u0430 \u043D\u0430 \u0414\u0414\u0421");
             namesQ.add("\u0414\u0430\u0442\u0430 \u043D\u0430 \u043F\u043B\u0430\u0449\u0430\u043D\u0435");
             nubColums =+ 3;
+            String doctypeList = "000";
             String typeDoc = " r.type_df IN(000";
-            if (this.jCheckBox1.isSelected()) typeDoc = typeDoc + ", 202";
-            if (this.jCheckBox3.isSelected()) typeDoc = typeDoc + ", 600";
-            if (this.jCheckBox4.isSelected()) typeDoc = typeDoc + ", 700";
-            if (this.jCheckBox5.isSelected()) typeDoc = typeDoc + ", 100";
-            if (this.jCheckBox6.isSelected()) typeDoc = typeDoc + ", 800";
-            if (this.jCheckBox7.isSelected()) typeDoc = typeDoc + ", 900";
-            if (this.jCheckBox8.isSelected()) typeDoc = typeDoc + "";
-            if (this.jCheckBox9.isSelected()) typeDoc = typeDoc + ", 500";
-            if (this.jCheckBox10.isSelected()) typeDoc = typeDoc + "";
-            if (this.jCheckBox11.isSelected()) typeDoc = typeDoc + "";
-            if (this.jCheckBox12.isSelected()) typeDoc = typeDoc + "";
-            typeDoc = typeDoc + ")";
+            if (this.jCheckBox1.isSelected()) {
+                doctypeList += ", 202";
+                typeDoc += ", 202";
+            }
+            if (this.jCheckBox3.isSelected()) {
+                doctypeList += ", 600";
+                typeDoc += ", 600";
+            }
+            if (this.jCheckBox4.isSelected()) {
+                doctypeList += ", 700";
+                typeDoc += ", 700";
+            }
+            if (this.jCheckBox5.isSelected()) {
+                doctypeList += ", 100";
+                typeDoc += ", 100";
+            }
+            if (this.jCheckBox6.isSelected()) {
+                doctypeList += ", 800";
+                typeDoc += ", 800";
+            }
+            if (this.jCheckBox7.isSelected()) {
+                doctypeList += ", 900";
+                typeDoc += ", 900";
+            }
+            if (this.jCheckBox8.isSelected()) {
+                doctypeList += "";
+                typeDoc += "";
+            }
+            if (this.jCheckBox9.isSelected()) {
+                doctypeList += ", 500";
+                typeDoc += ", 500";
+            }
+            if (this.jCheckBox10.isSelected()) {
+                doctypeList += "";
+                typeDoc += "";
+            }
+            if (this.jCheckBox11.isSelected()) {
+                doctypeList += "";
+                typeDoc += "";
+            }
+            if (this.jCheckBox12.isSelected()) {
+                doctypeList += "";
+                typeDoc += "";
+            }
+            typeDoc += ")";
+            System.out.println("Document types list: " + doctypeList);
+            hm.put("doctypeList", doctypeList);
             try {
                 newString = newString + " WHERE " + typeDoc +
                         "  AND r.date_edition_df BETWEEN '" + (String)formatterG.format(this.jXDatePicker1.getDate()) +
