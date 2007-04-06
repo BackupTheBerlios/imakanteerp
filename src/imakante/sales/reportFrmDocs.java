@@ -1366,27 +1366,27 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             String doctypeList = "000";
             String typeDoc = " r.type_df IN(000";
             if (this.jCheckBox1.isSelected()) {
-                doctypeList += ", 202";
+                doctypeList += " AND r.type_df=202";
                 typeDoc += ", 202";
             }
             if (this.jCheckBox3.isSelected()) {
-                doctypeList += ", 600";
+                doctypeList += " AND r.type_df=600";
                 typeDoc += ", 600";
             }
             if (this.jCheckBox4.isSelected()) {
-                doctypeList += ", 700";
+                doctypeList += " AND r.type_df=700";
                 typeDoc += ", 700";
             }
             if (this.jCheckBox5.isSelected()) {
-                doctypeList += ", 100";
+                doctypeList += " AND r.type_df=100";
                 typeDoc += ", 100";
             }
             if (this.jCheckBox6.isSelected()) {
-                doctypeList += ", 800";
+                doctypeList += " AND r.type_df=800";
                 typeDoc += ", 800";
             }
             if (this.jCheckBox7.isSelected()) {
-                doctypeList += ", 900";
+                doctypeList += " AND r.type_df=900";
                 typeDoc += ", 900";
             }
             if (this.jCheckBox8.isSelected()) {
@@ -1394,7 +1394,7 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
                 typeDoc += "";
             }
             if (this.jCheckBox9.isSelected()) {
-                doctypeList += ", 500";
+                doctypeList += " AND r.type_df=500";
                 typeDoc += ", 500";
             }
             if (this.jCheckBox10.isSelected()) {
@@ -1409,7 +1409,9 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
                 doctypeList += "";
                 typeDoc += "";
             }
+            doctypeList += " ";
             typeDoc += ")";
+            
             System.out.println("Document types list: " + doctypeList);
             hm.put("doctypeList", doctypeList);
             try {

@@ -95,7 +95,7 @@ r.code_speditor, r.name_speditor,
 ((r.totalall_dl * r.dds_dl) / 100) AS dds, 
 r.total_df, r.dds_df, r.date_pay_df 
 FROM rep_documents_new r
-WHERE r.type_df IN($P{doctypeList})  
+WHERE r.type_df = $P{doctypeList}
 AND r.date_edition_df BETWEEN $P{otdata} AND $P{dodata} 
 AND r.code_store BETWEEN $P{otsklad} AND $P{dosklad} 
 AND r.code_client BETWEEN $P{otklient} AND $P{doklient} 
