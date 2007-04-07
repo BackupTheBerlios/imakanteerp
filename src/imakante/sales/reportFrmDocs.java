@@ -1363,57 +1363,52 @@ public class reportFrmDocs extends imakante.com.vcomponents.iInternalFrame imple
             namesQ.add("\u0421\u0443\u043C\u0430 \u043D\u0430 \u0414\u0414\u0421");
             namesQ.add("\u0414\u0430\u0442\u0430 \u043D\u0430 \u043F\u043B\u0430\u0449\u0430\u043D\u0435");
             nubColums =+ 3;
-            String doctypeList = "000";
             String typeDoc = " r.type_df IN(000";
             if (this.jCheckBox1.isSelected()) {
-                doctypeList += " AND r.type_df=202";
+                hm.put("doctype202", 202);
                 typeDoc += ", 202";
             }
             if (this.jCheckBox3.isSelected()) {
-                doctypeList += " AND r.type_df=600";
+                hm.put("doctype600", 600);
                 typeDoc += ", 600";
             }
             if (this.jCheckBox4.isSelected()) {
-                doctypeList += " AND r.type_df=700";
+                hm.put("doctype700", 700);
                 typeDoc += ", 700";
             }
             if (this.jCheckBox5.isSelected()) {
-                doctypeList += " AND r.type_df=100";
+                hm.put("doctype100", 100);
                 typeDoc += ", 100";
             }
             if (this.jCheckBox6.isSelected()) {
-                doctypeList += " AND r.type_df=800";
+                hm.put("doctype800", 800);
                 typeDoc += ", 800";
             }
             if (this.jCheckBox7.isSelected()) {
-                doctypeList += " AND r.type_df=900";
+                hm.put("doctype900", 900);
                 typeDoc += ", 900";
             }
             if (this.jCheckBox8.isSelected()) {
-                doctypeList += "";
+                // TODO doctype to be added
                 typeDoc += "";
             }
             if (this.jCheckBox9.isSelected()) {
-                doctypeList += " AND r.type_df=500";
+                hm.put("doctype500", 500);
                 typeDoc += ", 500";
             }
             if (this.jCheckBox10.isSelected()) {
-                doctypeList += "";
+                // TODO doctype to be added
                 typeDoc += "";
             }
             if (this.jCheckBox11.isSelected()) {
-                doctypeList += "";
+                // TODO doctype to be added
                 typeDoc += "";
             }
             if (this.jCheckBox12.isSelected()) {
-                doctypeList += "";
+                // TODO doctype to be added
                 typeDoc += "";
             }
-            doctypeList += " ";
             typeDoc += ")";
-            
-            System.out.println("Document types list: " + doctypeList);
-            hm.put("doctypeList", doctypeList);
             try {
                 newString = newString + " WHERE " + typeDoc +
                         "  AND r.date_edition_df BETWEEN '" + (String)formatterG.format(this.jXDatePicker1.getDate()) +

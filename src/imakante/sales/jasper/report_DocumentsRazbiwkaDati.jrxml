@@ -77,6 +77,13 @@
 	<parameter name="levelBoth" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="levelReal" isForPrompting="false" class="java.lang.String"/>
 	<parameter name="levelVirtual" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="doctype100" isForPrompting="false" class="java.lang.Integer"/>
+	<parameter name="doctype202" isForPrompting="false" class="java.lang.Integer"/>
+	<parameter name="doctype500" isForPrompting="false" class="java.lang.Integer"/>
+	<parameter name="doctype600" isForPrompting="false" class="java.lang.Integer"/>
+	<parameter name="doctype700" isForPrompting="false" class="java.lang.Integer"/>
+	<parameter name="doctype800" isForPrompting="false" class="java.lang.Integer"/>
+	<parameter name="doctype900" isForPrompting="false" class="java.lang.Integer"/>
 	<queryString><![CDATA[SELECT  DISTINCT CONCAT(r.level_df, 
 IFNULL(r.code_store, 0), 
 IFNULL(r.code_client, 0), IFNULL(r.code_product, 0), 
@@ -94,7 +101,9 @@ r.code_speditor, r.name_speditor,
 ((r.totalall_dl * r.dds_dl) / 100) AS dds, 
 r.total_df, r.dds_df, r.date_pay_df 
 FROM rep_documents_new r
-WHERE r.type_df IN(000, 202, 201, 600, 700, 100, 500, 800, 900)  
+WHERE (r.type_df = $P{doctype202} OR r.type_df = $P{doctype100} OR r.type_df = $P{doctype600} 
+OR r.type_df = $P{doctype700} OR r.type_df = $P{doctype800} OR r.type_df = $P{doctype900} 
+OR r.type_df = $P{doctype500})  
 AND r.date_edition_df BETWEEN $P{otdata} AND $P{dodata} 
 AND r.code_store BETWEEN $P{otsklad} AND $P{dosklad} 
 AND r.code_client BETWEEN $P{otklient} AND $P{doklient} 
