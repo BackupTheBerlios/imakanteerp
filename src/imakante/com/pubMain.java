@@ -145,6 +145,7 @@ public class pubMain {
     /** Returns system properties filename with full path,
      * depending on OS type
      */
+    
     public static final String getPropFile() {
         String s, ss;
         try {
@@ -156,6 +157,27 @@ public class pubMain {
             }
             s += System.getProperty("file.separator");
             s += "imakante.xml";
+        } catch (SecurityException e) {
+            System.err.println("SecurityException: " + e.getMessage());
+            return "";
+        } catch (Exception e) {
+            System.err.println("Exception: " + e.getMessage());
+            return "";
+        }
+        return s;
+    }
+    
+    public static final String getAvailableLAFsFile() {
+        String s, ss;
+        try {
+            ss = System.getProperty("os.name");
+            if (ss.startsWith("Windows")) {
+                s = System.getenv("windir");
+            } else {
+                s = "/etc";
+            }
+            s += System.getProperty("file.separator");
+            s += "available_lafs.xml";
         } catch (SecurityException e) {
             System.err.println("SecurityException: " + e.getMessage());
             return "";

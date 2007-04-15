@@ -1,21 +1,22 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-<comment>Imakante Properties</comment>
+<comment>Imakante configuration properties</comment>
 <entry key="URL1">jdbc:mysql://localhost:3306/mida</entry>
 <entry key="Name1">"ИНСАЙД 3" ООД</entry>
 <entry key="Firms">2</entry>
 <entry key="Driver1">com.mysql.jdbc.Driver</entry>
 <entry key="path2reports1">C://WINDOWS/Imakante_reports/Sales/</entry>
-<entry key="ImakanteVersion1">xxx</entry>
-<entry key="ImakanteBuild1">xxx</entry>
-<entry key="CurrentTheme1">xxx</entry>
-<entry key="Language1">xxx</entry>
-<entry key="Localisation1">xxx</entry>
-<entry key="path2templates1">xxx</entry>
-<entry key="path2favorites1">xxx</entry>
-<entry key="path2lib1">xxx</entry>
-<entry key="path2repository1">xxx</entry>
+<entry key="ImakanteVersion">0.7.2</entry>
+<entry key="ImakanteBuild">xxx</entry>
+<entry key="CurrentLookAndFeel">org.jvnet.substance.SubstanceLookAndFeel</entry>
+<entry key="CurrentTheme">xxx</entry>
+<entry key="Language">Bulgarian</entry>
+<entry key="Localisation">BG_bg</entry>
+<entry key="path2templates">xxx</entry>
+<entry key="path2favorites">xxx</entry>
+<entry key="path2lib">xxx</entry>
+<entry key="path2repository">xxx</entry>
 <entry key="URL2">jdbc:mysql://katsarov.net:3307/mida</entry>
 <entry key="Name2">"KATZAROV" ООД</entry>
 <entry key="Driver2">com.mysql.jdbc.Driver</entry>

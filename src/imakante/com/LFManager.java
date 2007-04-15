@@ -1,6 +1,9 @@
 
 package imakante.com;
 
+import it.businesslogic.ireport.util.Java2DUtil;
+import java.io.FileNotFoundException;
+
 public class LFManager {
     
     public LFManager() {
@@ -15,13 +18,48 @@ public class LFManager {
         
     }
     
+    
+    
+    private static final String SYSTEM_LAF = javax.swing.UIManager.getSystemLookAndFeelClassName();
+    
     private javax.swing.JMenu jmLF = new javax.swing.JMenu();
     javax.swing.JCheckBoxMenuItem jcbmiX;
     
-    private void CheckDefaultLookAndFeel() {
+    private String currentLookAndFeel = "";
+    
+    private void CheckOutCurrentLookAndFeel() {
+        
+        
+        java.util.Properties p = new java.util.Properties();
+        try {
+            java.io.FileInputStream fist = new java.io.FileInputStream(pubMain.getPropFile());
+            try {
+                p.loadFromXML(fist);
+                setCurrentLookAndFeel(String.valueOf(p.getProperty("CurrentLookAndFeel")));
+                fist.close();
+            } catch (java.io.IOException ex) { ex.printStackTrace(); }
+        } catch (java.io.FileNotFoundException ex) { ex.printStackTrace(); }
+        
+        // TODO da se otbeleji w konstruiranoto meniu, koi e prilojeniqt look and feel!!!!
+        
+    }
+    
+    private void CheckInSelectedLookAndFeel() {
+        
+        
+        // TODO da se wzeme izbranata temai da se zapi6e stojnostta (imeto na klasa) w imakante.xml: CurrentLookAndFeel
         
         
         
+    }
+    
+    private void ExtractAvailableLookAndFeels() {
+        try {
+            java.io.FileInputStream alafs = new java.io.FileInputStream(pubMain.getAvailableLAFsFile());
+            org.jdom.Document ajd = new org.jdom.Document();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
     }
     
     private void MenuConstructor() {
@@ -37,7 +75,7 @@ public class LFManager {
         });
         jmLF.add(jcbmiX);
         
-        
+        // TODO da se izwlekat temite ot available_lafs.xml w HashMap i po nego da se postroi meniuto (Array ot JCheckBoxMenuItem(s))
         
         
     }
@@ -47,9 +85,20 @@ public class LFManager {
     }
     
     private void LookAndFeelChooser() {
-        String sysLook = javax.swing.UIManager.getSystemLookAndFeelClassName();
+        CheckOutCurrentLookAndFeel();
         try {
-            javax.swing.UIManager.setLookAndFeel(sysLook);
+//            javax.swing.UIManager.setLookAndFeel(SYSTEM_LAF);
+            javax.swing.UIManager.setLookAndFeel(getCurrentLookAndFeel());
+            
         } catch(Exception ex) { ex.printStackTrace(); }
     }
+    
+    public String getCurrentLookAndFeel() {
+        return currentLookAndFeel;
+    }
+    
+    public void setCurrentLookAndFeel(String currentLookAndFeel) {
+        this.currentLookAndFeel = currentLookAndFeel;
+    }
+    
 }

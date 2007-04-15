@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<look_and_feels>
+	<class id='Substance'>
+		<name>org.jvnet.substance.SubstanceLookAndFeel</name>
+		<theme></theme>
+	</class>
+	<class id='Metal'>
+		<name>javax.swing.plaf.metal.MetalLookAndFeel</name>
+		<theme>javax.swing.plaf.metal.MetalTheme</theme>
+	</class>
+	<class id='Tonic'>
+		<name>com.digitprop.tonic</name>
+		<theme></theme>
+	</class>
+	<class id='Tiny'>
+		<name>de.muntjak.tinylookandfeel</name>
+		<theme></theme>
+	</class>
+	<class id='Squareness'>
+		<name>net.beeger.squareness</name>
+		<theme></theme>
+	</class>
+	<class id='Motif'>
+		<name>com.sun.java.swing.plaf.motif.MotifLookAndFeel</name>
+		<theme></theme>
+	</class>
+	<class id='Windows'>
+		<name>com.sun.java.swing.plaf.windows.WindowsLookAndFeel</name>
+		<theme></theme>
+	</class>
+</look_and_feels>
