@@ -320,7 +320,8 @@ public class reportFrmDebts extends imakante.com.vcomponents.iInternalFrame {
                 }
                 String previousDebtsQuery = sumContragentDebts + getCodeContragent() +
                         " AND date_edition_df < '" + getStartOfPeriod() +  "' AND (d.level_df = " + level + ");";
-                String debts4PeriodQuery = contragentDebts + getCodeContragent() +
+                String debts4PeriodQuery = contragentDebts + getCodeContragent() + 
+                        " AND IFNULL(@LIQ:=(SELECT SUM(sum_os_val_sl_mop) FROM sl_m_operation WHERE id_order_spec = d.id_df), 0.00) < d.total_df" +
                         " AND date_edition_df BETWEEN '" + getStartOfPeriod() + "' AND '" + getEndOfPeriod() + "' AND (d.level_df = " + level + ")" +
                         "ORDER BY d.date_edition_df;";
                 String nextDebtsQuery = sumContragentDebts + getCodeContragent() +

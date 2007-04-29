@@ -48,6 +48,7 @@ FROM sl_document_facade d
 JOIN n_type_doc td ON td.code_ntd = d.type_df 
 JOIN n_contragent nc ON nc.id_contragent = d.out_contragent_df
 WHERE nc.code_contragent = $P{codeContragent} 
+AND IFNULL(@LIQ:=(SELECT SUM(sum_os_val_sl_mop) FROM sl_m_operation WHERE id_order_spec = d.id_df), 0.00) < d.total_df 
 AND d.date_edition_df BETWEEN $P{startPeriod} AND $P{endPeriod} 
 AND (d.level_df = $P{levelBoth} OR d.level_df = $P{levelReal} OR d.level_df = $P{levelVirtual})
 ORDER BY d.date_edition_df;]]></queryString>
